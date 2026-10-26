@@ -1,4 +1,4 @@
-struct CCombatActionBase { int _vfp; };
+class CCombatActionBase { public: int _vfp; };
 long __fastcall CCombatActionBase_GetAnimDelayTime(const CCombatActionBase* action)
 {
     (void)action;

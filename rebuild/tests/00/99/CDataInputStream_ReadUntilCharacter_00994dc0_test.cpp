@@ -6,7 +6,7 @@ typedef __int64 i64;
 #else
 typedef long long i64;
 #endif
-struct CCharString {
+class CCharString { public:
     char text[64]; int len;
     CCharString() : len(0) { text[0] = 0; }
     CCharString(const CCharString& o) : len(o.len) { std::memcpy(text, o.text, sizeof(text)); }
@@ -14,7 +14,7 @@ struct CCharString {
     CCharString& operator+=(char c) { text[len++] = c; text[len] = 0; return *this; }
 };
 // a memory stream split into two source chunks so the overflow path is exercised
-struct CDataInputStream {
+class CDataInputStream { public:
     const char* base; long chunk;
     unsigned long StreamPos; long StreamSize; const unsigned char* CurrentSourcePtr; long SourceChunkBytesRemaining;
     CDataInputStream(const char* text, long chunkSize) : base(text), chunk(chunkSize), StreamPos(0), StreamSize((long)std::strlen(text)) { Seek(0); }

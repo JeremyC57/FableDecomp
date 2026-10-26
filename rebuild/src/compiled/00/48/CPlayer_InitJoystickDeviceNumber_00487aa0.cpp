@@ -14,15 +14,15 @@
 // `sete cl ; dec ecx ; and ecx,eax` -- the `?:` spelling commutes it to `and eax,ecx`. Members (PlayerManager
 // +0x10, Number +0x28) from engine/CPlayer.h; JoystickDeviceNumber sits at retail +0x228 (PDB +0x230:
 // the retail PlayerModes list at +0x210 is 4 bytes, not 12), so the model is a local retail view.
-struct CGameJoystickManager {
+class CGameJoystickManager { public:
     static CGameJoystickManager& __fastcall Get();          // 0x0049BB90
     long GetMainPlayerJoystickDeviceNumber() const;         // 0x0049BB40
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber() const;                        // 0x00449700
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char   _pad00[0x10];
     CPlayerManager* PlayerManager;                 // +0x10
     unsigned char   _pad14[0x14];

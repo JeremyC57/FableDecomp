@@ -15,7 +15,7 @@
 #pragma optimize("s", on)
 #include "engine/CTattooDef.h"
 
-struct CAppearanceModifierScalingDef {             // retail 0x48 bytes (PDB 0x4c)
+class CAppearanceModifierScalingDef { public:             // retail 0x48 bytes (PDB 0x4c)
     unsigned char _base[0x3c];                     // +0x00 CParentDefClassBase (vptr + def header)
     float         Attractiveness;                  // +0x3c
     float         Scariness;                       // +0x40

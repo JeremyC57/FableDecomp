@@ -3,10 +3,10 @@
 
 static int g_baseSerialises = 0; static bool g_lastLoading = false;
 static const char* g_names[2]; static bool* g_values[2]; static bool g_defaults[2]; static int g_count = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& def) { g_names[g_count] = name; g_values[g_count] = &value; g_defaults[g_count] = def; ++g_count; }
 };
-struct CTCActivationReceptorBase { void OnSerialise(CPersistContext&, bool loading) { ++g_baseSerialises; g_lastLoading = loading; } };
+class CTCActivationReceptorBase { public: void OnSerialise(CPersistContext&, bool loading) { ++g_baseSerialises; g_lastLoading = loading; } };
 struct CTCActivationReceptorCreatureGenerator : CTCActivationReceptorBase {
     bool TriggerOnActivate, ActivateOnActivate;
     void OnSerialise(CPersistContext& context, bool loading)

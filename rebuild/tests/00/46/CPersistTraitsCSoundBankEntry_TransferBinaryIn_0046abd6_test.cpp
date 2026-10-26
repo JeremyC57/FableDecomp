@@ -73,8 +73,8 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct CDefString { int Index; void TransferBinaryIn(CIn* in) { Index = (int)in->ReadLong(); } };
-struct CSoundBankEntry { unsigned int ID; CDefString Filename, SymbolFilename, LipSyncBankHandle; bool DVD; };
+class CDefString { public: int Index; void TransferBinaryIn(CIn* in) { Index = (int)in->ReadLong(); } };
+class CSoundBankEntry { public: unsigned int ID; CDefString Filename, SymbolFilename, LipSyncBankHandle; bool DVD; };
 struct Traits { void TransferBinaryIn(CIn* in, CSoundBankEntry* value)
 {
     value->ID = (unsigned int)in->ReadULong();

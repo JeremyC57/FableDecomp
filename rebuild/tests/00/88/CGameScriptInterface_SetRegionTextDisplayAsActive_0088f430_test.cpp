@@ -1,6 +1,6 @@
 #include <cstdio>
 struct CMid { unsigned char _pad[0xdf]; unsigned char regionTextActive; };
-struct CGameScriptInterface { void* vt; CMid* mid; };
+class CGameScriptInterface { public: void* vt; CMid* mid; };
 
 void __fastcall CGameScriptInterface_SetRegionTextDisplayAsActive(CGameScriptInterface* self, void* edx, char active)
 {

@@ -9,15 +9,15 @@
 // PointOfHit and HitDir are copied word by word from the two vector references; FlipFacing is cleared
 // last. Retail offsets = PDB header offsets - 0x18 (the retail CCombatActionBase is 0x114 bytes, the PDB
 // build 0x12c), so a local model replaces engine/CCombatAction_GenericResponseToExplosion.h.
-struct CThingCreatureBase;
-struct CThing;
-struct CBaseObject;
+class CThingCreatureBase;
+class CThing;
+class CBaseObject;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -35,13 +35,13 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentP
     CIntelligentPointer_CThing(CThing* item) { SetPItem((CBaseObject*)item); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
-struct CCombatAction_GenericResponseToExplosion : CCombatActionBase {   // vtable 0x0125AEDC
+class CCombatAction_GenericResponseToExplosion : public CCombatActionBase { public:   // vtable 0x0125AEDC
     CIntelligentPointer_CThing PExplosion;  // +0x114
     float PointOfHit_X;                     // +0x11c
     float PointOfHit_Y;                     // +0x120

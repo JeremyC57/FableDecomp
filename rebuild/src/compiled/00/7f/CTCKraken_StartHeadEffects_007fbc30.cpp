@@ -6,7 +6,7 @@
 // destroyed after the call; `this` parked in esi.
 #include "fable_string.h"
 
-struct CTCKraken {
+class CTCKraken { public:
     void CreateHeadEffect(const CCharString& effectName);   // 0x007FBB00
     void StartHeadEffects();
 };

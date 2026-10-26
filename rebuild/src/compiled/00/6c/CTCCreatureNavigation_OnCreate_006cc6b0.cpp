@@ -19,12 +19,12 @@
 enum ENavigatorType { NAVIGATOR_TYPE_NONE = 0, NAVIGATOR_TYPE_ASTAR = 1, NAVIGATOR_TYPE_FLYER = 2 };
 struct __true_type { __true_type() { } };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                       // slot 1
     mutable long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->m_refCount == 0) Object->Destroy(); }
@@ -37,11 +37,11 @@ struct CNavigatorTypeVector {                           // STLport vector<ENavig
     const ENavigatorType* begin() const { return _M_start; }
     const ENavigatorType* end() const { return _M_finish; }
 };
-struct CThingCreatureDef : CDefPointeeBase {
+class CThingCreatureDef : public CDefPointeeBase { public:
     unsigned char        _pad08[0xc8 - 0x08];
     CNavigatorTypeVector NavigatorTypes;                // +0xc8
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<const CThingCreatureDef>* out);   // 0x00513160
 };
 void* FindDef(long index);
@@ -57,31 +57,31 @@ bool CDefinitionManager::GetDef(long index, CDefPointer<const CThingCreatureDef>
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                            // +0x8c
 };
-struct CThingCreatureBase;
-struct CNavigatorManager;
-struct CThingManager {
+class CThingCreatureBase;
+class CNavigatorManager;
+class CThingManager { public:
     unsigned char      _pad00[0x34];
     CNavigatorManager* NavigatorManager;                // +0x34
 };
-struct CNavigatorExternalInterface {
+class CNavigatorExternalInterface { public:
     virtual void v00();
     virtual ~CNavigatorExternalInterface();
 };
-struct CGroundNavigatorExternalInterface : CNavigatorExternalInterface {
+class CGroundNavigatorExternalInterface : public CNavigatorExternalInterface { public:
     CThingCreatureBase* Creature;                       // +0x04
     float               Radius;                         // +0x08
     CGroundNavigatorExternalInterface(CThingCreatureBase* creature);   // 0x006CD890
     ~CGroundNavigatorExternalInterface();               // 0x006CDD50
 };
-struct CNavigatorBase;
-struct CNavigatorAStar {
+class CNavigatorBase;
+class CNavigatorAStar { public:
     static CNavigatorBase* __fastcall Create(CNavigatorManager* manager, CNavigatorExternalInterface* external);   // 0x00A1CBF0
 };
-struct CNavigatorFlyer {
+class CNavigatorFlyer { public:
     static CNavigatorBase* __fastcall Create(CNavigatorManager* manager, CNavigatorExternalInterface* external);   // 0x00A18F70
 };
 struct CNavigatorVector {                               // STLport vector<CNavigatorBase*>

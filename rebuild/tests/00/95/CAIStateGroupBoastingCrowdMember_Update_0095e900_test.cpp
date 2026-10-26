@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_BoastingCrowdMember::Update @ 0x0095E900: crowd member repositions near the hero or looks at him.
 #include <cstdio>
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -10,16 +10,16 @@ struct C3DVector {
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
     float Get2DLength() const { return (float)sqrt(X * X + Y * Y); }
 };
-struct CThing {
+class CThing { public:
     C3DVector pos; unsigned char m_flags91;
     CThing() : m_flags91(0) { }
     const C3DVector& GetPosition() const { return pos; }
 };
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     CThing* hero; bool offPodium;
     bool CurrentStateIsOffPodiumType() const { return offPodium; }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     bool directedOk; int directedCalls, wanderCalls; float lastRadius; C3DVector lastDir;
     bool GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float, C3DVector* out)
     {

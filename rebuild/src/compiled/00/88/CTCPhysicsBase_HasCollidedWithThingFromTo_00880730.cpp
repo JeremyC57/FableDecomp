@@ -10,17 +10,17 @@
 // Shape: the scale is a named float from a ternary (one shared x87 value, `fld st(0) ; fmul` per component) applied through an
 //   inline `C3DVector::operator*=`; the cylinder test is a forwarded return; the sphere hit copies `from` with the implicit
 //   assignment (three dword moves); every `return false` shares the final `xor al,al` exit.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
 };
-struct CPhysicsCollideResponse {
+class CPhysicsCollideResponse { public:
     C3DVector CollidePos;                               // +0x00
     C3DVector CollideNormal;                            // +0x0c
     float     Friction;                                 // +0x18
 };
 extern bool g_flipMeshCollideNormals_013b86ec;          // 0x013B86EC
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000();
     bool IsPhysicsMeshTypeMesh() const;                 // 0x006AFD30
     bool IsPhysicsMeshTypeCylinder() const;             // 0x006B0170

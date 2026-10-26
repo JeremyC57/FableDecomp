@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -25,7 +25,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -51,7 +51,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { ++g_getPItem; return m_pItem; }
 };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* PCreature; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* PCreature; };
 struct SThingListNode { SThingListNode* next; SThingListNode* prev; CBaseIntelligentPointer value; };
 struct SThingListIterator {
     SThingListNode* node;
@@ -66,13 +66,13 @@ struct CThingList {
     SThingListIterator end() const { return SThingListIterator(head); }
 };
 struct CTCBuildingContents : CTCBase { unsigned char _pad[0x8]; CThingList Things; };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad2[0x168 - sizeof(CThing)];
     CBaseIntelligentPointer PHome;
     CThing* GetPHome() const { return PHome.GetPItem(); }
 };
 struct CAIBrainSitForMeal { unsigned char _pad[0x18]; CThingAICreature* PCreature; };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     CAIBrainSitForMeal* PBrain;
     long ScriptAIPriority;

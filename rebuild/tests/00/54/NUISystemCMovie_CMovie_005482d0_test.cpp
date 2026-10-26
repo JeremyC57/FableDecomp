@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CIEngine { int id; };
+class CIEngine { public: int id; };
 static int g_defReads = 0;
 struct CDraggableInto { long Id; CDraggableInto(long id) : Id(id) { } CDraggableInto(const CDraggableInto& o) : Id(o.Id) { } };
 struct CMovie : CDraggableInto {

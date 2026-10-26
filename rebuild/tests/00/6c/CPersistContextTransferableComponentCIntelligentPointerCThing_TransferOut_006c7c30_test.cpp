@@ -1,11 +1,11 @@
 // Behaviour test for 006c7c30 CPersistContext_TransferableComponent<CIntelligentPointer<CThing> >::TransferOut (copy
 // of the model; the traits' DefaultVal construction/destruction is counted).
 #include <cstdio>
-struct CPersistContext { int id; };
-struct CStringParser { int id; };
+class CPersistContext { public: int id; };
+class CStringParser { public: int id; };
 static unsigned long long g_appended[4];
 static int g_n = 0;
-struct CCharString {
+class CCharString { public:
     unsigned long long v;
     explicit CCharString(unsigned long long value) : v(value) {}
     CCharString& operator+=(const CCharString& other) { g_appended[g_n++] = other.v; return *this; }
@@ -18,7 +18,7 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { --g_ipLive; }
     CThing* GetPItem() const { return m_pItem; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() {} };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer() {} };
 template <class T> struct CPersistTraits {
     T DefaultVal;
     void TransferOut(CPersistContext& context, CCharString& out, T& value)
@@ -29,7 +29,7 @@ template <class T> struct CPersistTraits {
         out += CCharString(uid);
     }
 };
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual ~CPersistContext_TransferableComponentGenericType() {}
 };

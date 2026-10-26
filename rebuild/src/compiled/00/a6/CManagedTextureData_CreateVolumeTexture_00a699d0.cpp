@@ -7,19 +7,19 @@
 #include "engine/CTexture.h"
 #undef CTexture
 #include "engine/CPixelFormat.h"
-struct C2DExtentsI {long X,Y;C2DExtentsI(long x,long y):X(x),Y(y){}};
-struct C3DExtentsI {long X,Y,Z;C3DExtentsI(long x,long y,long z):X(x),Y(y),Z(z){}};
-struct CTexture {static C2DExtentsI FABLE_FASTCALL GetNextValidDimensions(const C2DExtentsI&,const CPixelFormat&);}; //009FA620
-struct CBaseClass {CBaseClass();virtual ~CBaseClass();}; //0099A2D0, baseVT01231710 slot0
+class C2DExtentsI { public:long X,Y;C2DExtentsI(long x,long y):X(x),Y(y){}};
+class C3DExtentsI { public:long X,Y,Z;C3DExtentsI(long x,long y,long z):X(x),Y(y),Z(z){}};
+class CTexture { public:static C2DExtentsI FABLE_FASTCALL GetNextValidDimensions(const C2DExtentsI&,const CPixelFormat&);}; //009FA620
+class CBaseClass { public:CBaseClass();virtual ~CBaseClass();}; //0099A2D0, baseVT01231710 slot0
 enum EVolumePool {VolumePoolManaged=1}; // Native value1; exact original enumerator spelling unestablished.
-struct CVolumeTexture:CBaseClass {
+class CVolumeTexture:public CBaseClass { public:
  void* PD3DVolumeTexture;long ByteLength;void* PData;
  CVolumeTexture():PD3DVolumeTexture(0),PData(0){}
  virtual ~CVolumeTexture(); //nativeVT0129DC18 scalar deleting slot0 A69590
  bool Initialise(const C3DExtentsI&,long,const CPixelFormat&,unsigned long,EVolumePool,bool); //00A68370
 };
-template<class T>struct CCountedPointer {T* Data;CCPPointerInfo* Info;void Reset(T*);}; //00A6AE60 forVolume
-struct CManagedTextureData:CManagedTextureDataDonor {
+template<class T>class CCountedPointer { public:T* Data;CCPPointerInfo* Info;void Reset(T*);}; //00A6AE60 forVolume
+class CManagedTextureData:public CManagedTextureDataDonor { public:
  CCountedPointer<CVolumeTexture>& Volume(){return *reinterpret_cast<CCountedPointer<CVolumeTexture>*>(&VolumeTexture_Data);}
  bool CreateVolumeTexture(unsigned long,unsigned long,unsigned long,long,const CPixelFormat&);
 };

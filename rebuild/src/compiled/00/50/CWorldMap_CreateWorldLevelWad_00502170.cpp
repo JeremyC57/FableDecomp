@@ -14,12 +14,12 @@
 // Layout: no CWorldMap members are touched (`this` only forwarded to GetLevelFilesFromWorldFile); the two switches
 //   are bytes 0x01375459 / 0x0137545A; the CWADBank local is 0x164 bytes.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
@@ -59,7 +59,7 @@ class CWADBank : public CBankFileAsync {                // vtable 0x012442DC
 public:
     CWADBank() { }
 };
-struct CWorldMap {
+class CWorldMap { public:
     void GetLevelFilesFromWorldFile(const CWideString& worldFile, vector<CWideString>& levelFiles);   // 0x00501D30
     void CreateWorldLevelWad(const CWideString& worldFile, const CWideString& wadFile);
 };

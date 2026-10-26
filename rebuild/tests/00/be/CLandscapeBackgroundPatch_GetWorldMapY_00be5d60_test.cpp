@@ -1,10 +1,10 @@
 // Behaviour test for 00be5d60 CLandscapeBackgroundPatch::GetWorldMapY: the patch's map-local Y plus the world position of
 // the engine map its parent tree node's landscape map wraps (unsigned shorts widened to long).
 #include <cstdio>
-struct CEngineMap { unsigned short MapWidth, MapHeight, WorldPosX, WorldPosY; };
-struct CEngineLandscapeMap { long PatchGridWidth; CEngineMap* Map; };
-struct CLandscapeBackgroundTreeNode { CEngineLandscapeMap* Map; };
-struct CLandscapeBackgroundPatch {
+class CEngineMap { public: unsigned short MapWidth, MapHeight, WorldPosX, WorldPosY; };
+class CEngineLandscapeMap { public: long PatchGridWidth; CEngineMap* Map; };
+class CLandscapeBackgroundTreeNode { public: CEngineLandscapeMap* Map; };
+class CLandscapeBackgroundPatch { public:
     CLandscapeBackgroundTreeNode* Parent;
     unsigned short MapX, MapY;
     long GetWorldMapX() { return Parent->Map->Map->WorldPosX + MapX; }

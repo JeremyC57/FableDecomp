@@ -1,4 +1,4 @@
-struct CTavernGameCardBaseDef;
+class CTavernGameCardBaseDef;
 
 unsigned long __fastcall CTavernGameCardBaseDef_GetSizeofClass(CTavernGameCardBaseDef *self)
 {

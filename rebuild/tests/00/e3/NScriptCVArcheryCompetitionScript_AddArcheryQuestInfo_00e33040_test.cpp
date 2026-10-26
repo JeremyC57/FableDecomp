@@ -1,8 +1,8 @@
 // Behaviour test for CV_ArcheryCompetitionScript::AddArcheryQuestInfo (00e33040).
 #include <cstdio>
 #include <cstring>
-struct CCharString { char t[32]; CCharString(const char* s, long = -1) { std::strcpy(t, s); } };
-struct CTimer { long h; };
+class CCharString { public: char t[32]; CCharString(const char* s, long = -1) { std::strcpy(t, s); } };
+class CTimer { public: long h; };
 struct FakeGSI {
     long next; long upId, upCount, upTarget; float online; bool shown; char icons[3][32]; const CTimer* timer;
     long AddQuestInfoCounter(const CCharString& icon, long c, float s) { if (c != 0 || s != 1.0f) return -99; std::strcpy(icons[next - 1], icon.t); return next++; }

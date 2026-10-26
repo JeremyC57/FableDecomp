@@ -13,8 +13,8 @@
 // Shape: each default is a temporary homed in a dead argument slot (`context` for most, `full` after its test); the
 // unset rent days become 0x7FFFFFFF outside modes 1/3; the money-bag fold tests a NAMED bool (`bool folding = Mode == 1 ||
 // Mode == 3; if (folding) {...; Transfer} else Transfer`) which keeps the then-arm first with the cross-jumped Transfer.
-struct CBaseObject;
-struct CThing {
+class CBaseObject;
+class CThing { public:
     unsigned char _pad00[0x8e];
     short         ThingType;                            // +0x8e
 };
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     void*        __vftable;
     CBaseObject* PData;
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                 // +0x18
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
@@ -30,7 +30,7 @@ struct CPersistContext {
 };
 void __fastcall GFSerialisePointer(CPersistContext* context, const char* name, CBaseIntelligentPointer* pointer,
                                    unsigned long thingType);   // 0x0088AE40
-struct CDefPointeeBase;
+class CDefPointeeBase;
 class CTCBuyableHouse {
 public:
     void*                   __vftable;                  // +0x00

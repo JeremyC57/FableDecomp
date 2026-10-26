@@ -9,7 +9,7 @@
 // interleaved with the push_back set-up) -- that colouring needs a memberwise USER copy constructor over dword members
 // (a POD value copies through ecx as the base and edx/eax/ecx); inner scope so the string destructor precedes the Dirty store. CCharString is modelled locally
 // (fable_string.h inlines its copy constructor, retail calls 0x0099EC30).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);   // 0x0099EC30
     ~CCharString();                          // 0x0099EAE0

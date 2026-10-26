@@ -10,7 +10,7 @@
 //   the dead frame word, landed 0x007504E0 shape) and the component call is tail-duplicated into both paths.
 // Layout: CCreatureActionBase (retail 0xa8 bytes, PCreature at +8) followed by the target pointer at +0xa8; the class
 //   is not in Ego_r.pdb and has no engine header.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -54,11 +54,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCSpecialAbilities {                // interface type 0xa7 component
+class CTCSpecialAbilities { public:                // interface type 0xa7 component
     void OnSoulHarvested();                 // 0x0072A840
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();
     unsigned char _pad04[4];                // +0x04
@@ -66,7 +66,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     unsigned char _pad10[0xa8 - 0x10];
 };
 
-struct CCreatureAction_CastWillHarvestSoulSpell : CCreatureActionBase {
+class CCreatureAction_CastWillHarvestSoulSpell : public CCreatureActionBase { public:
     CBaseIntelligentPointer PTarget;        // +0xa8 CIntelligentPointer<CThing>
     virtual void PerformAction();
 };

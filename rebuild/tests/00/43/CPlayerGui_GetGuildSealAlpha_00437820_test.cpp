@@ -1,9 +1,9 @@
 #include <stdio.h>
 static const void* g_this;
-namespace NPlayerGui { struct CDrawGuildSeal { float a; float GetAlpha() const { g_this = this; return a; } }; }
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer { T* Data; CCPPointerInfo* Info; T* operator->() const { return Data; } };
-struct CPlayerGui {
+namespace NPlayerGui { class CDrawGuildSeal { public: float a; float GetAlpha() const { g_this = this; return a; } }; }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; T* operator->() const { return Data; } };
+class CPlayerGui { public:
     unsigned char _pad00[0x1d0];
     CCountedPointer<NPlayerGui::CDrawGuildSeal> PDrawGuildSeal;
     float GetGuildSealAlpha() const;

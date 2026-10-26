@@ -68,7 +68,7 @@ public:
 bool __fastcall AreThingsEnemies(CThing* a, CThing* b);         // 0x0076D2F0
 __forceinline bool IS_THING_ALIVE(CThing* p) { return p && !p->Dead; }
 
-struct CVectorCompare_BestForTargeting {                        // Ego_r.pdb, 44 bytes
+class CVectorCompare_BestForTargeting { public:                        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                                        // +0x00
     C3DVector PreferredLine;                                    // +0x0c
     float     AngleCompare;                                     // +0x18

@@ -1,6 +1,6 @@
 // CThingCreatureBase::EditWorldUpdate  retail 0x00838ba0
 // Leaf: EditWorldUpdate
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool Helper1();          // 0x6a6880 (thiscall, no args)
     void Helper2();          // 0x838aa0 (thiscall, void)
     bool EditWorldUpdate();

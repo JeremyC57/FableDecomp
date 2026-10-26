@@ -9,7 +9,7 @@
 // hidden pointer; every arm constructs straight into the result.
 enum EParsedItemType { PIT_NONE, PIT_STRING, PIT_QUOTED_STRING, PIT_INTEGER, PIT_FLOAT };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);                      // 0x0099EC30
     CCharString(const char* text, long length);                 // 0x0099EBF0
@@ -17,7 +17,7 @@ struct CCharString {
 };
 CCharString __fastcall GFIntToCharString(long value);            // 0x0099F830
 
-struct CParsedItem {
+class CParsedItem { public:
     EParsedItemType Type;                   // +0
     union {
         long  Integer;                      // +4

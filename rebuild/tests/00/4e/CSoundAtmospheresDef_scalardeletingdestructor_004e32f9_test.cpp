@@ -10,7 +10,7 @@ void __fastcall CMember_dtor_00414ea0(CMember* def) { (void)def; member_calls++;
 void __fastcall Base_dtor(void* def) { (void)def; base_calls++; }
 void __cdecl op_delete(void* p) { (void)p; delete_calls++; }
 
-struct CSoundAtmospheresDef {
+class CSoundAtmospheresDef { public:
     int f0;
     int Parent;
     void* f8;

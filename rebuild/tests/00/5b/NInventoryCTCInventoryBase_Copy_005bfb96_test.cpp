@@ -2,13 +2,13 @@
 #include <cstdio>
 
 static int g_destroyed = 0, g_added = 0, g_baseCopied = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long RefCount;
     virtual void Destroy() { ++g_destroyed; }
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer& operator=(const CDefPointer& other)
     {
@@ -26,7 +26,7 @@ struct CItemVector {
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
 };
 static CItem g_source[3] = { { 2, 7 }, { 0, 8 }, { 5, 9 } };
-struct CTCBase { void Copy(const CTCBase&) { ++g_baseCopied; } };
+class CTCBase { public: void Copy(const CTCBase&) { ++g_baseCopied; } };
 struct CTCInventoryBase : CTCBase {
     long InventorySelectionState;
     bool InventoryOpen;

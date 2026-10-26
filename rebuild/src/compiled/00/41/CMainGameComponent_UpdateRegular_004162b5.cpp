@@ -36,7 +36,7 @@ struct CDisplayHolder {
 extern long   g_frameCounter_013b89a8;             // 0x013B89A8
 extern double g_updateTime_013b8690;               // 0x013B8690
 extern double g_renderTime_013b8698;               // 0x013B8698
-struct CMainGameComponent {
+class CMainGameComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void Update();                         // slot 5 (+0x14)
     virtual void v06();

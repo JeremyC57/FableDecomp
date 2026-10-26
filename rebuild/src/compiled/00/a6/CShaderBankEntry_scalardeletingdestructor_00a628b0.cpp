@@ -1,4 +1,4 @@
-struct CShaderBankEntry {
+class CShaderBankEntry { public:
     void* vftable;
 };
 

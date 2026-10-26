@@ -5,18 +5,18 @@
 #include <cmath>
 #define CHECK(c) do { if (!(c)) { std::printf("00bbc0b0_TEST FAIL\n"); return 1; } } while (0)
 
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; C3DBoundingSphere(const C3DVector& c, float r) : Center(c), Radius(r) { } };
-struct CEnginePrimitiveThemeChannelDesc { unsigned char a, b, c, pad; CEnginePrimitiveThemeChannelDesc() : a(0), b(0), c(0) { } };
-struct CEngineLocalLightArray { signed char Count; };
-struct CEngineLightingManager {
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; C3DBoundingSphere(const C3DVector& c, float r) : Center(c), Radius(r) { } };
+class CEnginePrimitiveThemeChannelDesc { public: unsigned char a, b, c, pad; CEnginePrimitiveThemeChannelDesc() : a(0), b(0), c(0) { } };
+class CEngineLocalLightArray { public: signed char Count; };
+class CEngineLightingManager { public:
     int queries; int uploads; float radius; int maxLights; CEngineLocalLightArray lights;
     CEngineLocalLightArray* GetLightsInSphereFast(const C3DBoundingSphere& s, int maxL, const CEnginePrimitiveThemeChannelDesc& ch)
     { ++queries; radius = s.Radius; maxLights = maxL; return (ch.a == 0 && ch.b == 0 && ch.c == 0) ? &lights : 0; }
     void SetupShaderPointLights(CEngineLocalLightArray*) { ++uploads; }
 };
 static CEngineLightingManager g_lighting;
-struct CEnginePrimitiveManagerParticleGroup {
+class CEnginePrimitiveManagerParticleGroup { public:
     bool PointLightsSet; signed char PointLightCount; C3DVector CurrentWorldPos; float CurrentBSRadius;
     int SetUpPointLights()
     {

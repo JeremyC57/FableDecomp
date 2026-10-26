@@ -9,7 +9,7 @@
 // IS_THING_ALIVE inlined, the masked HasTC word (`test ch,1`) and the const weapon lookup; FireQueued is set before
 // the loaded test, the fire is the last call.
 // Layout: engine/CTCHeroRangedAttacks.h offsets (FireQueued +0x16); local model because the header flattens CTCBase.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                               // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                               // CVectorMap<ETCInterfaceT
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                      // +0x44
@@ -62,16 +62,16 @@ inline bool IS_THING_ALIVE(const CThing* thing)      // pointer set and the dead
     return false;
 }
 
-struct CTCCarrying {                                 // interface type 0x46
+class CTCCarrying { public:                                 // interface type 0x46
     CThing* GetThingInPrimarySlot();                 // 0x006A1440
 };
 
-struct CTCWeapon {                                   // interface type 0x48
+class CTCWeapon { public:                                   // interface type 0x48
     bool IsProjectileWeapon();                       // 0x005DAA40
     bool IsProjectileWeaponLoaded();                 // 0x005DA980
 };
 
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x04];

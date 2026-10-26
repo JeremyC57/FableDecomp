@@ -2,13 +2,13 @@
 #include <cstdio>
 #include <new>
 
-struct CMeshDataBank { int Id; };
-struct CIVCountedPointeeBase {
+class CMeshDataBank { public: int Id; };
+class CIVCountedPointeeBase { public:
     unsigned int IVRefCount;
     CIVCountedPointeeBase() : IVRefCount(0) { }
     virtual ~CIVCountedPointeeBase() { }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) { }
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
@@ -27,7 +27,7 @@ public:
 };
 class CPhysicsMeshInfo : public CMeshDataBankEntry {
 public:
-    struct CMeshData : CIVCountedPointeeBase { };
+    class CMeshData : public CIVCountedPointeeBase { public: };
     CPhysicsMeshInfo() { }
     virtual ~CPhysicsMeshInfo() { }
     virtual int Kind() const { return 2; }

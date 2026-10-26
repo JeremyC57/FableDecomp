@@ -13,15 +13,15 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator=(const CCharString& other); // 0x0099EFB0
 };
 
-struct CMatrix3x4 { float M[12]; };                    // 48 bytes: three axis vectors and the position
+class CMatrix3x4 { public: float M[12]; };                    // 48 bytes: three axis vectors and the position
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10(); virtual void v14();
     virtual CCharString ReadNullTerminatedString();    // slot 6 (+0x18), by value
     unsigned long m_position;              // +4
@@ -50,7 +50,7 @@ struct CMemoryDataInputStream {
     __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
-struct C3DGeneratorObject {
+class C3DGeneratorObject { public:
     CMatrix3x4    Matrix;                  // +0x00
     unsigned long GeneratorID;             // +0x30
     CCharString   ObjectName;              // +0x34

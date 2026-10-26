@@ -8,9 +8,9 @@
 // Layout: CAIStateGroup_GoToBed PBed +0x14, IsBedSleepPointMarker +0x1c, BedPos +0x3c, Rhset +0x48 (Ego_r.pdb).
 // Shape: the out-of-range lookups read an uninitialised component (retail jumps to a load of the empty slot); the list
 // head is a named local; the blocked filter is declared beside the sleep-point filter; operator= names the item first.
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float M[6]; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float M[6]; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -52,7 +52,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 #pragma auto_inline(on)
 float __fastcall GFFloatRandom(unsigned long* seed, float range);   // 0x004978A0
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
@@ -127,7 +127,7 @@ struct CRegionThing {
 struct CTCRegionLink {                          // interface 0x23
     CRegionThing* GetPRegion();                 // 0x007EE540
 };
-struct CThingFilter_IsMySleepPoint {
+class CThingFilter_IsMySleepPoint { public:
     CThing* Creature;
     CThingFilter_IsMySleepPoint(CThing* creature) : Creature(creature) { }
     bool operator()(CThing* thing) const;       // 0x006A8930
@@ -138,11 +138,11 @@ struct CThingFilter_IsBlocked {
 struct CTCSleepPoint {                          // interface 0xAC
     void SetUser(CThing* user);                 // 0x0087C390
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThing* Creature;                           // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

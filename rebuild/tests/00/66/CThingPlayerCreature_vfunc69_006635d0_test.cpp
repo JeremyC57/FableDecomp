@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CCharString { const char* m_pData; };
-struct CAnimationEntry { long m_anim; };
-struct CThingPlayerCreature {
+class CCharString { public: const char* m_pData; };
+class CAnimationEntry { public: long m_anim; };
+class CThingPlayerCreature { public:
     virtual void vfunc_68(long anim, long mode) { m_anim = anim; m_mode = mode; }
     virtual void vfunc_69(const CCharString& name, long mode);
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index)

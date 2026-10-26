@@ -10,7 +10,7 @@
 //   local model (no engine header for CScriptDef, and its PDB offsets do not hold in retail).
 // Shape: a dense `switch` with two shared arms and a default zero -> a bounds check, a 4-entry jump table, two return
 //   blocks and the `xor eax,eax` default.
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0x4a4];
     long          HenchmanPayTimeDelayInSeconds;   // +0x4a4
     long          HenchmanCheapGoldCost;           // +0x4a8
@@ -19,7 +19,7 @@ struct CScriptDef {
 extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 namespace NScript {
-struct CQ_SunnyvaleMasterData;
+class CQ_SunnyvaleMasterData;
 class CV_BodyGuardScript {
 public:
     class CBodyGuard;

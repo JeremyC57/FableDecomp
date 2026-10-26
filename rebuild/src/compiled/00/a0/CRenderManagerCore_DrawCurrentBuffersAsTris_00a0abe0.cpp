@@ -48,7 +48,7 @@ struct IDirect3DDevice9 {
 };
 
 // CTexture: its first word is the IDirect3DBaseTexture9* the stage binding wants (a null CTexture binds no texture).
-struct CTexture {
+class CTexture { public:
     IDirect3DBaseTexture9* PD3DTexture;   // +0x00
 };
 

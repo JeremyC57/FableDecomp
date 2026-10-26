@@ -1,5 +1,5 @@
 // CObjectFamilyDef::Copy @ 0x004611d6
-struct CDefClassBase;
+class CDefClassBase;
 
 struct SubDef {
     void Copy_004611f5(const void* src);   // member @ 0x4611f5 (thiscall)
@@ -9,7 +9,7 @@ struct BaseDef {
     void BaseCopy(const CDefClassBase* src);  // member @ 0x431ed0 (thiscall)
 };
 
-struct CObjectFamilyDef {
+class CObjectFamilyDef { public:
     char pad[0x3c];
     SubDef sub;   // at +0x3c
 };

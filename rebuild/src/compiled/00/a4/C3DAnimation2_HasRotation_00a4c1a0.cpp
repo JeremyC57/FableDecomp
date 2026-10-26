@@ -5,7 +5,7 @@ struct Inner {
 struct Held {
     Inner* p;
 };
-struct C3DAnimation2 {
+class C3DAnimation2 { public:
     char pad[0x40];
     Held* held;
 };

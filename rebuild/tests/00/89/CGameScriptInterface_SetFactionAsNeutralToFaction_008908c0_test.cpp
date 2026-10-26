@@ -14,7 +14,7 @@ struct CFactionMgr {
         return &g_factions[factionId];
     }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x54];
     CFactionMgr* PFactionManager; // +0x54
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMemoryFile {
+class CMemoryFile { public:
     int pad0;
     int pad4;
     long position;

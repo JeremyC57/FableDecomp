@@ -15,14 +15,14 @@ template <class A, class B> struct pair {
     pair(const A& a, const B& b) : first(a), second(b) { }
 };
 }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 struct CActionParamList {                       // STLport list<CActionParam*> (one node pointer)
     void* _M_node;
     ~CActionParamList();                        // 0x0042ABCA
@@ -39,10 +39,10 @@ struct CComponentPointer {                      // CCountedPointer<NUISystem::CC
     CComponentPointer(CComponent* object);      // 0x00429C15
     ~CComponentPointer();                       // 0x004291DE
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
 };
 struct SChildPointer {                          // CCountedPointer<NUISystem::CComponent>
@@ -57,7 +57,7 @@ struct CChildVector {                           // vector<CCountedPointer<CCompo
     unsigned long size() const { return _M_finish - _M_start; }
     const SChildPointer& operator[](unsigned long i) const { return _M_start[i]; }
 };
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07();
     virtual CComponent* FindChild(CCharString name);              // slot 8 (+0x20)
@@ -86,7 +86,7 @@ struct CComponent {
     virtual void v94();
     virtual void ShowArrow();                                    // slot 95 (+0x17C) (name descriptive)
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
 };
 }
 struct SListMapNode {                           // STLport _Rb_tree_node<pair<CComponent* const, CList*> >
@@ -118,7 +118,7 @@ __declspec(noinline) SListMapNode* CListMap::find(NUISystem::CComponent* const& 
 }
 #pragma auto_inline(on)
 
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     std::pair<unsigned long, unsigned long> RecurseRefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* component, CListMap& lists);
 };
 

@@ -9,15 +9,15 @@
 // Layout (Ego_r.pdb, retail offsets 0xc lower than the PDB build): PUnsheatheItem CIntelligentPointer<CThing> at +0xa8,
 // PFollowUpAction CCountedPointer<CCreatureActionBase> at +0xb0 (object) / +0xb4 (count). The follow-up is re-read from
 // the member for the refusal call (`mov ecx,[esi+0b0h]`). Modelled locally (the generated headers flatten the bases).
-struct CTCBase;
-struct CCreatureActionBase;
+class CTCBase;
+class CCreatureActionBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -36,7 +36,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void OnUnsheatheFinished();             // 0x0073A840
 };
 struct CBaseIntelligentPointer {
@@ -49,7 +49,7 @@ struct CCountedPointer {                    // CCountedPointer<CCreatureActionBa
     long* RefCount;                         // +4
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3 (+0x0c)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -68,7 +68,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     void FinishAction();                    // 0x00694430
 };
 
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     CBaseIntelligentPointer PUnsheatheItem; // +0xa8
     CCountedPointer PFollowUpAction;        // +0xb0
     void FinishAction();

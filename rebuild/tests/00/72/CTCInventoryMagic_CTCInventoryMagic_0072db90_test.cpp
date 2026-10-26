@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <new>
 // Behaviour test for 0x0072DB90: both bases built (thing passed on), the handle vector emptied.
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseThing = 0; static int g_secondBase = 0;
 struct CTCInventoryBase { virtual void v00() {} CTCInventoryBase(CThing* thing) { g_baseThing = thing; } };
-namespace NHeroInformationScreens { struct CBase { virtual void v01() {} CBase() { ++g_secondBase; } }; }
-struct CEnginePrimitiveHandle;
+namespace NHeroInformationScreens { class CBase { public: virtual void v01() {} CBase() { ++g_secondBase; } }; }
+class CEnginePrimitiveHandle;
 struct SPrimitiveHandleVector {
     CEnginePrimitiveHandle* _M_start; CEnginePrimitiveHandle* _M_finish; CEnginePrimitiveHandle* _M_end_of_storage;
     SPrimitiveHandleVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct CTCInventoryMagic : CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryMagic : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     SPrimitiveHandleVector InventoryMagicPrimitiveHandles;
     virtual void v00() {}
     CTCInventoryMagic(CThing* thing);

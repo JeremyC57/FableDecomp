@@ -1,6 +1,6 @@
 // Behaviour test for CThing::DrawIsDrawable @ 0x004C7790: Drawable && Activated && !Dead over all 8 combinations.
 #include <cstdio>
-struct CThing {
+class CThing { public:
     unsigned char Dead : 1;
     unsigned char CreatedByOwnerThingCreation : 1;
     unsigned char IncludeInThingScans : 1;

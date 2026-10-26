@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString { char* p; };
+class CCharString { public: char* p; };
 struct CArrayUL { void* vt; unsigned long* a; int n; int c; };
 struct PairT { CCharString first; CArrayUL second; };
 

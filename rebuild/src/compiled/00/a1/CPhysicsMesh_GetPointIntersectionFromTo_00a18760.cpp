@@ -14,7 +14,7 @@
 // body is written out below and reproduces 0x00A17690 byte for byte (centre via an inline GetCentre()).
 // Layout: Ego_r.pdb CPhysicsMesh BoundingBox (C3DBoundingBox MinCoord/MaxCoord) sits at +0xA0 and RootSegment at +0xD0;
 // retail reads them at +0x84 / +0xB4 (0x1C smaller ahead of them), so the class is modelled locally.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
@@ -22,17 +22,17 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& v) const { return C3DVector(x - v.x, y - v.y, z - v.z); }
     C3DVector operator*(float f) const { return C3DVector(x * f, y * f, z * f); }
 };
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord, MaxCoord;
     C3DVector GetCentre() const { return (MinCoord + MaxCoord) * 0.5f; }
 };
 extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(fabs)
-struct CMeshIntersectionData;
-struct CIPhysicsFacesSegmentBase;
+class CMeshIntersectionData;
+class CIPhysicsFacesSegmentBase;
 extern unsigned char g_bUsePhysicsMeshSegmentation;   // 0x013984D0
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char              _pad00[0x84];
     C3DBoundingBox             BoundingBox;            // +0x84 (PDB +0xA0; retail's three vector maps are smaller)
     unsigned char              _pad9c[0xb4 - 0x9c];

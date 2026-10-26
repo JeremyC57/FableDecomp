@@ -7,14 +7,14 @@
 // The by-value C3DVector is built in its argument slot (`sub esp,0Ch ; mov eax,esp ; mov [eax]..`)
 // because it has a user copy constructor; the `reached` bool is an uninitialised local that VC
 // homes in the high byte of the `push ecx` frame slot (`lea eax,[esp+23h]`).
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
                                      bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890

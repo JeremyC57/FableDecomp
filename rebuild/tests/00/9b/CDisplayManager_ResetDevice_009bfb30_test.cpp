@@ -77,8 +77,8 @@ struct IDirect3DDevice9 {
     virtual long __stdcall v39();
     virtual long __stdcall GetDepthStencilSurface(IDirect3DSurface9** out);   // slot 40
 };
-struct C2DExtentsI { long X; long Y; };
-struct C2DBoxI {
+class C2DExtentsI { public: long X; long Y; };
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(long tlx, long tly, long brx, long bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}
 };
@@ -87,7 +87,7 @@ struct SPixelFormatInfo {              // 36-byte format table entry
     unsigned char _rest[0x20];
 };
 extern SPixelFormatInfo g_PixelFormatTable[];   // 0x0129BA40
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat() {}
     void Initialise(unsigned long format);         // 0x009E3830
@@ -109,7 +109,7 @@ struct CCreateDeviceParameters {
     CPresentationIntervalDesc PresentationInterval; // +0x20
     long                      MultisampleType;      // +0x28
 };
-struct CSurface {
+class CSurface { public:
     void*              _vtable;
     IDirect3DSurface9* PD3DSurface;
     unsigned long      AllocationSource;
@@ -120,13 +120,13 @@ struct CSurface {
     CSurface& operator=(const CSurface& other);    // 0x009F2E70
     void Uninitialise();                           // 0x009F2E20
 };
-struct CTexture { void* _vtable; void* PD3DTexture; void Uninitialise(); };   // 0x009F9F70
+class CTexture { public: void* _vtable; void* PD3DTexture; void Uninitialise(); };   // 0x009F9F70
 struct C2DExtentsIRet { long X; long Y; };
-struct CVsyncCallbackTimer { IDirect3DDevice9* Device; };
+class CVsyncCallbackTimer { public: IDirect3DDevice9* Device; };
 struct CD3DFailure { CD3DFailure() {} };
 enum ECreateDeviceResult { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_LOST = 1, CREATE_DEVICE_OK = 2 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void*             _vtable;                     // +0x00
     void*             SystemManager;               // +0x04
     void*             PRenderManager;              // +0x08

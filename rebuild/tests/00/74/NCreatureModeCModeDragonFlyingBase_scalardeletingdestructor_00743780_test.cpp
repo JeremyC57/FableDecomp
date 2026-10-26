@@ -4,8 +4,8 @@
 // then the CModeBase part (name string, anim filter) is destroyed, then the object's memory is released.
 static int g_log[8]; static int g_n = 0; static void* g_freed = 0;
 static void TestFree(void* p) { g_freed = p; g_log[g_n++] = 1; std::free(p); }
-struct CCharString { void* m_pStringData; ~CCharString() { g_log[g_n++] = 2; } };
-struct CAnimFilterBase { virtual void v00() {} ~CAnimFilterBase() { g_log[g_n++] = 3; } };
+class CCharString { public: void* m_pStringData; ~CCharString() { g_log[g_n++] = 2; } };
+class CAnimFilterBase { public: virtual void v00() {} ~CAnimFilterBase() { g_log[g_n++] = 3; } };
 struct CModeBaseRoot { virtual void v00() {} };
 struct CModeBase : CModeBaseRoot {
     long m_type; CAnimFilterBase m_filter; CCharString m_name;

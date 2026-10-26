@@ -2,12 +2,12 @@
 #include <new>
 
 // Model of CCombatAction_GenericStrikeResponseBase::CCombatAction_GenericStrikeResponseBase() @ 0x00867950
-struct CThing;
+class CThing;
 static int g_ptrCtor = 0; static long g_code = -1; static int g_baseCalls = 0;
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { ++g_ptrCtor; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() {} CIntelligentPointer() { } };
-struct CCombatActionBase { virtual void v00() {} unsigned char _body[0x114 - 4]; CCombatActionBase(long code) { ++g_baseCalls; g_code = code; } };
-struct CCombatAction_GenericStrikeResponseBase : CCombatActionBase {
+class CCombatActionBase { public: virtual void v00() {} unsigned char _body[0x114 - 4]; CCombatActionBase(long code) { ++g_baseCalls; g_code = code; } };
+class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:
     CIntelligentPointer PAttacker; unsigned char _pad[0x135 - 0x11c]; bool m_respondToStrike;
     virtual void v00() {}
     CCombatAction_GenericStrikeResponseBase() : CCombatActionBase(250), m_respondToStrike(true) { }

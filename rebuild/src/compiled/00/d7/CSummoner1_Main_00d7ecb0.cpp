@@ -10,12 +10,12 @@
 // Shape: as the landed CHeroSoulsEnemy::Main 0x00D7F110 (scoped CIsThingAlive filter, NewScriptFrame, IsDone); the wait
 // is a `while (!(hit))` loop whose condition builds three conditional CCharString temporaries (ebx construction flags,
 // the condition parked in a frame byte); after the loop an IsDone test guards the quest flag store.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020();
@@ -29,7 +29,7 @@ struct CScriptThing {                                   // 12 bytes, vtable 0x01
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     ~CScriptThing();                                    // 0x004AA840
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
 };

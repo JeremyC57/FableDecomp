@@ -13,7 +13,7 @@
 // byte of the already-consumed argument slot (`lea eax,[ebp+0Bh]`) instead of reserving a stack slot.
 struct CRetailAllocator { CRetailAllocator() { } };
 
-struct CThing;
+class CThing;
 
 struct CThingComponent {
     virtual void v00();
@@ -26,7 +26,7 @@ struct CRetailList_node0x10 {                   // retail std::list, one sentine
     CRetailList_node0x10(const CRetailAllocator& al = CRetailAllocator());   // 0x004B8920
 };
 
-struct CTCParticleAttachmentTracker : CThingComponent {
+class CTCParticleAttachmentTracker : public CThingComponent { public:
     virtual void v00();                          // own vtable (0x01241AB4)
     CRetailList_node0x10 AttachedParticles;                  // +0x0C
     CTCParticleAttachmentTracker(CThing* owner);

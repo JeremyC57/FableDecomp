@@ -19,18 +19,18 @@
 #undef CThingMapManager
 #include "engine/CTCPhysicsBase.h"
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60 (retail CThing)
 };
 
-struct CTCBase {
+class CTCBase { public:
     void*  __vftable;                           // +0x00
     CThing* ParentThing;                        // +0x04
 };
@@ -40,14 +40,14 @@ namespace NThingMap {
 struct CTCMapwho : CTCBase { };
 
 struct CThingMapInfo;
-struct CThingMapCell;
+class CThingMapCell;
 struct C2DCoordI { long X, Y; };
-struct CMapCellPosInfo {
+class CMapCellPosInfo { public:
     CThingMapInfo* PMapInfo;                    // +0x00
     C2DCoordI      LocalPos;                    // +0x04
     CThingMapCell* PCell;                       // +0x0c
 };
-struct CMapCellPosInfoGroup {
+class CMapCellPosInfoGroup { public:
     long            Layer;                      // +0x00
     CMapCellPosInfo TLPos;                      // +0x04
     CMapCellPosInfo TRPos;                      // +0x14
@@ -55,7 +55,7 @@ struct CMapCellPosInfoGroup {
     CMapCellPosInfo BRPos;                      // +0x34
 };
 
-struct CThingMapManager : CThingMapManager_PDB {
+class CThingMapManager : public CThingMapManager_PDB { public:
     unsigned char GetThingMapwhoLevel(float radius) const;                                       // 0x006378E0
     void GetThingLayerCellPositions(float radius, const C2DVector& pos, long layer,
                                     CMapCellPosInfoGroup& group) const;                          // 0x00637E70

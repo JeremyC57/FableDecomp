@@ -3,8 +3,8 @@
 // Callees: 0x00993EA0 CDataOutputStream::WriteULong x2
 //
 #include "engine/C3DMeshFileMaterialExtChunk.h"   // PDB layout agrees with retail here (SelfIllumination +0x10)
-struct CChunkedFileSaver;
-struct CDataOutputStream {
+class CChunkedFileSaver;
+class CDataOutputStream { public:
     void WriteULong(unsigned long value);               // 0x00993EA0
 };
 struct C3DMeshFileMaterialExtChunk_Methods : C3DMeshFileMaterialExtChunk {

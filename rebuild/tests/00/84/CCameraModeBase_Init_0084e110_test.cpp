@@ -2,7 +2,7 @@
 // valid, then frame-update + camera roll for type-8 modes or valid tracking.
 #include <cstdio>
 
-struct CCamera { float x, y, z; };
+class CCamera { public: float x, y, z; };
 struct CCameraTracking {
     CCamera Current, Last; bool Valid;
     void RollCamera() { if (Valid) { Last = Current; Valid = true; } }

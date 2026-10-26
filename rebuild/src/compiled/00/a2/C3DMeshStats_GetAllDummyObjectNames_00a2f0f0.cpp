@@ -10,7 +10,7 @@
 // temporary is built), the empty CCharString temporary is constructed in the dead second argument's home
 // slot (esp+0x10 after the two pushes = the `flag` slot) and destroyed after the call; `true` selects the
 // dummy-object name table (the sibling @ 0x00A2F120 passes false for the helper points).
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     CCharString();                         // 0x0099E4B0
     ~CCharString();                        // 0x0099EAE0
@@ -18,7 +18,7 @@ struct CCharString {
 
 struct CCharStringVector;                  // std::vector<CCharString>
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     void GetAllDummyObjectNames(CCharStringVector& names, bool flag);
     void UnpackNames(CCharStringVector& names, bool dummyObjects, const CCharString& prefix, bool flag);   // 0x00A2ED10

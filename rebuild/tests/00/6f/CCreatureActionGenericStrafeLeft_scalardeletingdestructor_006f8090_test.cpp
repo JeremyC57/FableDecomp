@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_GenericStrafeLeft {
+class CCreatureAction_GenericStrafeLeft { public:
     void* vftable;
     int destroyed;
 };

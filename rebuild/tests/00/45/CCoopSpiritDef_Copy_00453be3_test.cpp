@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCoopSpiritDef { int v; };
+class CCoopSpiritDef { public: int v; };
 
 static int g_called = 0;
 static CCoopSpiritDef* g_self = 0;

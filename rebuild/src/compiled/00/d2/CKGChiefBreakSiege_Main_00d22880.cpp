@@ -5,20 +5,20 @@
 // Shape: CMKGHCHERO3 0x00D29DB0 model; the chief handle ctor is plain inline (the per-function inline budget expands it here
 //   but calls 0x007E72A0 for the later hero handles); hut position via a __forceinline null-test accessor; Me / the hero
 //   reached through reference helpers so MsgIsTalkedToBy / IsAlive stay virtual; the two cut-scene blocks share a tail.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 int __cdecl rand();                                     // 0x00BFEB16
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -44,7 +44,7 @@ struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
@@ -68,7 +68,7 @@ struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12
     virtual bool IsAlive() const;                       // slot 75 (+0x12c) 0x004AB130
     __forceinline const C3DVector& PosOrZero() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }
 };
-struct CBaseObject {                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
+class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
     void* m_pIntelligentPointer;                        // +0x04
     CBaseObject();                                      // 0x0099A380
@@ -87,7 +87,7 @@ struct CHandlePImp {
     CHandlePImp() : Data(0), Info(0) { }
     CHandlePImp& operator=(const CHandlePImp& other);   // 0x008AB1E0
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }    // out of line 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
@@ -109,7 +109,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
 struct CMovieImpWords { void* Data; void* Info; };
-struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4; destructor-less view, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
@@ -130,7 +130,7 @@ struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006e7410
     virtual bool StartScriptingEntity(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase &, EScriptAIPriority);   // slot 8 (+0x20) 0x0089b5b0
@@ -223,7 +223,7 @@ struct CIsThingAlive {                                  // vtable 0x012C32F0: a 
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CEntityScriptBase {                              // retail 0x14 bytes
+class CEntityScriptBase { public:                              // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

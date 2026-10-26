@@ -11,23 +11,23 @@
 //   CVectorMap +0x44.
 // Shape: the agent160 GetTC model with the component in a named local (esi) used twice; the type test sits inside the
 //   alive block.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 enum ECollideType { COLLIDE_NONE = 0, COLLIDE_LANDSCAPE = 1 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CWorld;
-struct CThing;
-struct CTCPerceiveThing {
+class CWorld;
+class CThing;
+class CTCPerceiveThing { public:
     CThing* GetPerceivedThing();                // 0x007446A0
     void SetAsDirectlyAwareOfPerceivedThing();  // 0x007449B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -51,11 +51,11 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void OnCollision(ECollideType type, C3DVector* position, C3DVector* normal, CThing* other);     // 0x00667310
 };
 
-struct CThingAICreature : CThingCreatureBase {
+class CThingAICreature : public CThingCreatureBase { public:
     void OnCollision(ECollideType type, C3DVector* position, C3DVector* normal, CThing* other);
 };
 

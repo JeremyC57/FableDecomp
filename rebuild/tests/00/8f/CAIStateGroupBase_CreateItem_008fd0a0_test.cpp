@@ -7,28 +7,28 @@
 #include "fable_string.h"
 #else
 #define __fastcall
-struct CCharString {
+class CCharString { public:
     CCharString();
     CCharString(const char*, long);
     ~CCharString();
 };
-struct CThingAICreature { unsigned char storage[0x100]; };
-struct CPlayer;
-struct CPlayerManager { long MainPlayer; };
-struct CAIBrain { CThingAICreature* Creature; CPlayerManager* PlayerManager; };
-struct CAIStateGroupBase { CAIBrain* PBrain; };
+class CThingAICreature { public: unsigned char storage[0x100]; };
+class CPlayer;
+class CPlayerManager { public: long MainPlayer; };
+class CAIBrain { public: CThingAICreature* Creature; CPlayerManager* PlayerManager; };
+class CAIStateGroupBase { public: CAIBrain* PBrain; };
 #endif
 
-struct C3DVector { float x, y, z; };
-struct CThing;
-struct CThingObject;
-struct CGameDefinitionManager {
+class C3DVector { public: float x, y, z; };
+class CThing;
+class CThingObject;
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(CCharString*); // 0x009ad410
 };
 // Retail getter 0x00449700 reads native MainPlayer at +0x1c; the donor header
 // places it at +0x20 because its Players vector is four bytes larger.
 struct CPlayerManagerAccess : CPlayerManager { long GetMainPlayer(); };
-struct CTCCarrying {
+class CTCCarrying { public:
     void PutThingInCarrySlot(CThingObject*, long, bool); // 0x006a1f80
 };
 

@@ -8,20 +8,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C3DAnimFileXLoader;
-struct C3DAnimationManager;
-struct C3DMeshFileXLoader;
-struct C3DMeshStripifier;
-struct C3DQuadricBasedMeshOptimiser;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGraphicDataBank;
-struct CMovableResourceMemoryPool;
-struct CPushBufferBuildInfo;
-struct CXboxBufferMemoryPool;
+class C3DAnimFileXLoader;
+class C3DAnimationManager;
+class C3DMeshFileXLoader;
+class C3DMeshStripifier;
+class C3DQuadricBasedMeshOptimiser;
+class CCPPointerInfo;
+class CCharStringData;
+class CGraphicDataBank;
+class CMovableResourceMemoryPool;
+class CPushBufferBuildInfo;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CMeshDataBank {
+class CMeshDataBank {
+public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08

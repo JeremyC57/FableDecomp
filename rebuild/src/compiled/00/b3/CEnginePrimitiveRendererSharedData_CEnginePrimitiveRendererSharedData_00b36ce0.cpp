@@ -13,12 +13,12 @@ struct CBase {
     CBase();                                    // 0x0099A2F0
 };
 
-struct CEngineInterpolationInfo {
+class CEngineInterpolationInfo { public:
     CEngineInterpolationInfo();                 // 0x0042FA30
     long _body[0x70 / 4];
 };
 
-struct CPixelShader {
+class CPixelShader { public:
     CPixelShader();                             // 0x00A5EC00
     void* _vptr;
     void* PShader;

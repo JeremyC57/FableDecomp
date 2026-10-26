@@ -14,14 +14,14 @@
 //   assigns component-wise (a member-init C3DVector copy adds a `lea`).
 #include "engine/CEngineInternalPrimitiveBase.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float LengthSquared() const { float z = Z, y = Y, x = X; return x * x + y * y + z * z; }
 };
 inline float Sqr(float x) { return x * x; }
 extern const float g_epsilon_0129ba3c;               // 0x0129BA3C (1e-4f)
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CMatrix3x4 { float m[12]; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CMatrix3x4 { public: float m[12]; };
 
 class CEnginePrimitive {                           // PDB, 12 bytes
 public:
@@ -32,7 +32,7 @@ public:
 
 class CEnginePrimitiveSpriteTrail : public CEnginePrimitive {
 public:
-    struct CSpriteTrailEntry {
+    class CSpriteTrailEntry { public:
         C3DVector Position;
         float     Width;
     };
@@ -99,7 +99,7 @@ struct CSpriteTrailVector {                        // STLport vector<CSpriteTrai
     void resize(unsigned long n);                                                                        // 0x00BCC3B0
 };
 
-struct CEngineInternalPrimitiveSpriteTrail : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveSpriteTrail : public CEngineInternalPrimitiveBase { public:
     unsigned long      MaxLength;                  // +0x48
     unsigned long      GraphicIndex;               // +0x4c
     unsigned long      GraphicFrame;               // +0x50

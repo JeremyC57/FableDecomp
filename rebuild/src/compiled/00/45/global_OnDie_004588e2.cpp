@@ -2,8 +2,8 @@
 // Leaf: OnDie
 #include "rebuild_abi.h"
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     char pad0[0x54];
     void* field_54; // +0x54
 };

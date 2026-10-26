@@ -1,6 +1,6 @@
 // behaviour test for 0x0072F0F0 CTCDummyVillager::CTCDummyVillager(CThing*)
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct Ptr { void* item; Ptr() : item(0) { } };
 struct Base { CThing* ParentThing; bool ToBeRemoved; Base(CThing* t) : ParentThing(t), ToBeRemoved(false) { } };
 struct Villager : Base {

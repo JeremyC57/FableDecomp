@@ -1,12 +1,12 @@
 // Behaviour test for 0x006A7930 CThingFilter_InMap::operator()
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CTCPhysicsBase { C3DVector m_position; };
-struct CThing { CTCPhysicsBase* PhysicsTC; };
-struct CWorldMap {
+class C3DVector { public: float x, y, z; };
+class CTCPhysicsBase { public: C3DVector m_position; };
+class CThing { public: CTCPhysicsBase* PhysicsTC; };
+class CWorldMap { public:
     virtual long GetMapNumberAt(const C3DVector* pos) { return pos->x < 100.0f ? 1 : 2; }
 };
-struct CThingFilter_InMap {
+class CThingFilter_InMap { public:
     CWorldMap* WorldMap;
     long       MapNo;
     bool operator()(CThing* thing) const

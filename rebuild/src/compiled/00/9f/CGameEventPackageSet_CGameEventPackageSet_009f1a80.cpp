@@ -7,7 +7,7 @@
 // array (out-of-line constructor) goes through the iterator; NoPackages is stored AFTER the loop, so it is a body assignment
 // (an initialiser-list entry would be stored first, in declaration order). TimeStamp is left uninitialised.
 // Leaf: ??0CGameEventPackageSet
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                             // +0x00
     signed char   Player;                           // +0x04
     unsigned char Data[32];                         // +0x05
@@ -17,14 +17,14 @@ struct CGameEvent {
     CGameEvent();                                   // 0x004159A0
 };
 
-struct CGameEventPackage {
+class CGameEventPackage { public:
     long          TimeStamp;                        // +0x00
     unsigned long NoEvents;                         // +0x04
     CGameEvent    Events[40];                       // +0x08
     CGameEventPackage() : NoEvents(0) {}
 };
 
-struct CGameEventPackageSet {
+class CGameEventPackageSet { public:
     unsigned long     NoPackages;                   // +0x00
     CGameEventPackage Packages[50];                 // +0x04
     CGameEventPackageSet();

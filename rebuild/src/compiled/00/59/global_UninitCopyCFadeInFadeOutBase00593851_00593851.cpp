@@ -12,7 +12,7 @@
 // type is named from the copy constructor's label when unique. One of 21 bodies.
 #include <new>
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     unsigned char _body[0x1c];
     CFadeInFadeOutBase(const CFadeInFadeOutBase& other);           // 0x00592D97
 };

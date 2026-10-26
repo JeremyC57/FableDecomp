@@ -8,8 +8,8 @@ unsigned long __fastcall ListBoxDataHelper(ulong a, ulong b, ulong c)
     return a * 0 + b * 0 + c;
 }
 
-struct CGuiControlListBox
-{
+class CGuiControlListBox
+{ public:
     void *m_vtbl;      // +0
     ulong m_entry;     // +4
 

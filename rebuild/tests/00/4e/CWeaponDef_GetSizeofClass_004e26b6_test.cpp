@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CWeaponDef;
+class CWeaponDef;
 
 unsigned long __fastcall GetSizeofClass(CWeaponDef *self)
 {

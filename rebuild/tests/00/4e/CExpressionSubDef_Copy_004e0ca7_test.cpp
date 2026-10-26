@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CDefClassBase { int base[10]; int f28; };
+class CDefClassBase { public: int base[10]; int f28; };
 
-struct CExpressionSubDef {
+class CExpressionSubDef { public:
     int base[10];
     int f28;
     void BaseClone(const CDefClassBase* src);

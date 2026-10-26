@@ -7,7 +7,7 @@
 // PDB CCarryingDef (sizeof 0x3C): AvailableCarrySlots at +0x28 (16-byte PDB vector, 12 in retail) and
 // OverriddenDummyObject (CDefString) at +0x38, which the retail body reaches at +0x34. No vtable store and
 // no `this` return: a plain member function, not a constructor.
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                   // +0x04..+0x27
     void Copy(const CDefClassBase& other);       // 0x00431F10
@@ -20,7 +20,7 @@ struct CLongVector {                             // retail std::vector<long>: {f
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct CCarryingDef : CDefClassBase {
+class CCarryingDef : public CDefClassBase { public:
     CLongVector AvailableCarrySlots;             // +0x28
     long        OverriddenDummyObject_TablePos;  // +0x34 CDefString::TablePos
     void Copy(const CCarryingDef& other);

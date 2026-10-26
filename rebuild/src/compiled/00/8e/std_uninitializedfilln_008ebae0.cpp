@@ -12,7 +12,7 @@
 // the trivially copyable CRadialArea as a block through `lea` (eax / ecx), then the two words. The placement new keeps
 // the `test esi,esi` null check; n counts down in ebx.
 #include <new>
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString(const CCharString& other);      // 0x0099EC30
 };

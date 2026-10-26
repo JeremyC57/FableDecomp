@@ -3,10 +3,10 @@
 #include <cstdio>
 #include <cstring>
 static int g_base = 0; static char g_anim[64]; static char g_added[64];
-struct CThing;
+class CThing;
 struct CSolid { CThing* m_notSolidTo; void AddThingNotSolidTo(CThing* t) { m_notSolidTo = t; } };
 static CSolid g_solid;
-struct CThing { CSolid* AddTC(const char* n, bool, void*) { std::strcpy(g_added, n); return &g_solid; } };
+class CThing { public: CSolid* AddTC(const char* n, bool, void*) { std::strcpy(g_added, n); return &g_solid; } };
 struct CAction {
     CThing* m_creature; CThing* m_target; bool Landed;
     void SetAnimationName(const char* n) { std::strcpy(g_anim, n); }

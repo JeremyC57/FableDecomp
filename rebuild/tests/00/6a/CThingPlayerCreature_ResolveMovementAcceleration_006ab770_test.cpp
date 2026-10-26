@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cmath>
 inline float Magnitude(float x, float y, float z) { return (float)std::sqrt(x * x + y * y + z * z); }
-struct C3DVector { float X, Y, Z; float Length() const { return Magnitude(X, Y, Z); } void operator*=(float s) { X *= s; Y *= s; Z *= s; } };
+class C3DVector { public: float X, Y, Z; float Length() const { return Magnitude(X, Y, Z); } void operator*=(float s) { X *= s; Y *= s; Z *= s; } };
 class CThingPlayerCreature { public:
     unsigned char MovedByPlayer : 1; C3DVector MovementAcceleration; float m_max;
     float GetCurrentMaxMovementSpeed() { return m_max; }

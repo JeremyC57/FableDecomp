@@ -1,16 +1,16 @@
 // Test for 006cb6c0 CTCCreatureNavigation::FindPosZAt: forwards to the navigator's interface with the flag set.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CNavigatorExternalInterface {
+class C3DVector { public: float X, Y, Z; };
+class CNavigatorExternalInterface { public:
     bool LastFlag; const C3DVector* LastPos;
     virtual ~CNavigatorExternalInterface() {}
     virtual float FindPosZAt(const C3DVector& pos, bool flag) { LastFlag = flag; LastPos = &pos; return pos.X + pos.Y + 0.5f; }
 };
-struct CNavigatorBase {
+class CNavigatorBase { public:
     CNavigatorExternalInterface* PInterface;
     float FindPosZAt(const C3DVector& pos) const { return PInterface->FindPosZAt(pos, true); }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     CNavigatorBase* PNavigator;
     float FindPosZAt(const C3DVector& pos) const { return PNavigator->FindPosZAt(pos); }
 };

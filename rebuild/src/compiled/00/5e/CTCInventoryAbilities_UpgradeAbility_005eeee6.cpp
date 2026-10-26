@@ -16,7 +16,7 @@
 // (8-byte entries); retail CTCHeroStats Age +0x30; definition holder +0xD0 -> def +0xD0 the age step.
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -49,11 +49,11 @@ struct CThing {
     }
 };
 
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     bool LearnAbility(long ability, bool notify, long level, bool updateMorph);   // 0x006AC690
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad_0x00[0x30];
     float         Age;                               // +0x30
     void SetAge(float age);                          // 0x0057B05F
@@ -73,7 +73,7 @@ struct CLongVector {
     long* first; long* last; long* end_of_storage;
     unsigned long size() const { return (unsigned long)(last - first); }
 };
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
     unsigned char _pad_0x00[0x80];
     CLongVector   ExperienceCostsToUpgrade;          // +0x80
 };
@@ -85,7 +85,7 @@ struct CAbilityEntryVector {
 template <class T> inline const T& Min(const T& left, const T& right) { return right < left ? right : left; }
 static const long MAX_ABILITY_LEVEL = 3;
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void*                 __vftable;                 // +0x00
     CThingPlayerCreature* ParentThing;               // +0x04 CTCBase
     unsigned char         _pad_0x08[0x158];

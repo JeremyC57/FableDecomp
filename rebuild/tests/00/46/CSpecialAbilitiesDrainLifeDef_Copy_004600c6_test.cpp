@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "rebuild_abi.h"
 
-struct CSpecialAbilitiesDrainLifeDef;
+class CSpecialAbilitiesDrainLifeDef;
 
 static int g_called = 0;
 extern "C" void __fastcall CSpecialAbilitiesDrainLifeDef_Copy_base(

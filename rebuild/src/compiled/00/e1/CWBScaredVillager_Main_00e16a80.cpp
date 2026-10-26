@@ -12,13 +12,13 @@
 // the rotated wait loop.
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -36,7 +36,7 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CScriptThing {                                    // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
     unsigned char _body[0xc];
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     ~CScriptThing();                                     // 0x004AA840
@@ -49,21 +49,21 @@ struct CIsThingConscious {                               // NScript predicate, v
     virtual bool operator()() const;                     // slot 0 (0x00CDDAB0)
 };
 
-struct CBaseObject {                                     // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
+class CBaseObject { public:                                     // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
     void* IntelligentPointer;                            // +0x04
     CBaseObject();                                       // 0x0099A380
     virtual ~CBaseObject();                              // 0x0099A430
 };
 
-struct CScriptGameResourceObjectBase : CBaseObject {     // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:     // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // 16 bytes, vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x0127094C
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
     virtual void v01();                                  // slot 1 (0x007E72C0)
 };
-struct CGameScriptInterface {                           // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                           // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c) 0x006E7410
 };
@@ -71,7 +71,7 @@ struct CGameScriptInterface {                           // retail vtable 0x01260
 struct CQ_WhiteBalverineKnotholeGladeScript;
 struct CQ_SunnyvaleMasterData;
 
-struct CEntityScriptBase {                               // retail 0x14 bytes
+class CEntityScriptBase { public:                               // retail 0x14 bytes
     virtual void v00();
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing          Me;                            // +0x08

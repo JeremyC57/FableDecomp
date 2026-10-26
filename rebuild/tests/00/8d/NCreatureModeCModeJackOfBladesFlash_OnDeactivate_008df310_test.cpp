@@ -1,6 +1,6 @@
 #include <cstdio>
 // CModeJackOfBladesFlash::OnDeactivate model.
-struct CThing {
+class CThing { public:
     bool dead; int kills; bool animSuspended; int resumes;
     void Kill(bool) { ++kills; dead = true; }
     void SetSuspendAnimation(bool suspend, void*) { if (!suspend) { ++resumes; animSuspended = false; } }

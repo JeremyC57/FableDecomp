@@ -1,4 +1,4 @@
-struct CTCFlammable {
+class CTCFlammable { public:
     void* vftable;
 };
 

@@ -1,15 +1,15 @@
 // CAIStateGroup_UsesSeat::MoveToSeat(long movement) -- walk to the seat position while the seat stays valid, then turn to face the seat
 // Leaf: MoveToSeat
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009385F0; SW2 sweep (advisor/009385f0/probe/r1.cpp).
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(x + o.x, y + o.y, z + o.z); }
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -53,11 +53,11 @@ struct CIntelligentPointerThingObject : CBaseIntelligentPointer {  // CIntellige
 struct CTCUserActionPointBase {                 // interface 0x2d
     bool GetFreeActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* PCreature;                  // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

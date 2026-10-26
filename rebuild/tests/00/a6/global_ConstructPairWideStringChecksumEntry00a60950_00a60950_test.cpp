@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 static int g_strCopies = 0;
-struct CWideString {
+class CWideString { public:
     const wchar_t* m_pData;
     CWideString(const wchar_t* s) : m_pData(s) { }
     CWideString(const CWideString& other) : m_pData(other.m_pData) { ++g_strCopies; }

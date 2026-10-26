@@ -2,7 +2,7 @@
 // distinct keys the returned element is the middle one under the comparator.
 #include <cstdio>
 
-struct CThing { float m_distance; };
+class CThing { public: float m_distance; };
 struct CCompare { long m_reference; bool operator()(CThing* a, CThing* b) const { return a->m_distance > b->m_distance; } };
 
 static CThing* const* Median(CThing* const& a, CThing* const& b, CThing* const& c, CCompare comp)

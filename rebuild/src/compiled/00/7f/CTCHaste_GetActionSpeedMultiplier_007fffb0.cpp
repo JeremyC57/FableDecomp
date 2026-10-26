@@ -4,10 +4,10 @@
 // Shape: `test eax,eax ; jl` on +0x14 is a signed `>= 0` test of a long; `fld g ; fcomp 0.0 ; test ah,41h ; jne` is
 // `g > 0.0f` with the global re-loaded for the return (no CSE across the compare); the fall-through `fld [ecx+0Ch]` is the member.
 // Local model: no engine header exists for CTCHaste (members after CTCBase: Multiplier +0xc, ToTerminate +0x10, PauseFrames +0x14).
-struct CThing;
+class CThing;
 extern float g_ActionSpeedMultiplierOverride;              // 0x013BAF18
 
-struct CTCHaste {
+class CTCHaste { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     unsigned char _pad08[4];                                // +0x08 CTCBase flags

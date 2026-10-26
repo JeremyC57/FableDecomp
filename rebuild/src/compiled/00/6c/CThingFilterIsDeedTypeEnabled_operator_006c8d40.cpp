@@ -16,7 +16,7 @@
 // called out of line from this two-lookup body): presence bit, key homed in the dead `thing`
 // argument slot, LowerBound, the `it == last || type < it->type` select. The opinion pointer is NOT initialised:
 // when the 0x4F bit is clear retail returns through the stale argument slot (`mov eax,[esp+10h]`).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -25,7 +25,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type) const;             // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -44,8 +44,8 @@ struct CThing {
     }
 };
 
-struct CTCVillage;
-struct CTCVillageMember {                                   // TC 0x23
+class CTCVillage;
+class CTCVillageMember { public:                                   // TC 0x23
     CTCVillage* GetPVillage() const;                        // 0x007EE540
 };
 
@@ -56,7 +56,7 @@ struct CRetailBoolVector {                                  // retail vector<boo
     bool operator[](unsigned int n) const { return _M_start[n]; }
 };
 
-struct CTCCreatureOpinionOfHero {                           // TC 0x4F (retail layout, see above)
+class CTCCreatureOpinionOfHero { public:                           // TC 0x4F (retail layout, see above)
     unsigned char     _pad00[0x24];
     CRetailBoolVector AttitudeMask;                         // +0x24
     CRetailBoolVector ReactionMask;                         // +0x30

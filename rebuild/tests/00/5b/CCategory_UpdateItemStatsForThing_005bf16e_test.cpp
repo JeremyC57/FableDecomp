@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThing { unsigned char pad[0x8c]; unsigned short DefIndex; };
+class CThing { public: unsigned char pad[0x8c]; unsigned short DefIndex; };
 static CThing* g_t = 0; static int g_slot = -1;
 struct CItem { long a, b; unsigned char rest[12]; void UpdateItemStats(CThing* t) { g_t = t; } };
 struct Cat { unsigned char pad[8]; CItem* First;

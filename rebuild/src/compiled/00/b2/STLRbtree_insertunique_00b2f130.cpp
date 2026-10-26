@@ -124,7 +124,7 @@ _Rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::insert_unique(const value_type
 
 }   // namespace std
 
-struct CCompositeBlendDesc;
+class CCompositeBlendDesc;
 struct CCompositeBlendDescVector {               // retail STLport vector<CCompositeBlendDesc>, 12 bytes
     CCompositeBlendDesc* _M_start;
     CCompositeBlendDesc* _M_finish;

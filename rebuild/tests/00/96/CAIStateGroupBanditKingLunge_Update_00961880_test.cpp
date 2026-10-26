@@ -7,16 +7,16 @@
 #define FABLE_ENGINE_CAISTATEGROUP_BANDITKINGLUNGE_H
 #define FABLE_ENGINE_CAISTATEGROUPBASE_H
 #define FABLE_ENGINE_CAIBRAIN_H
-struct CAIBrain;
-struct CAIStateGroupBase {
+class CAIBrain;
+class CAIStateGroupBase { public:
  void* __vftable; CAIBrain* PBrain; long ScriptAIPriority; void* Name_PStringData;
  bool Terminated; unsigned char Priority; bool Enabled; unsigned char padding;
 };
 struct CAIStateGroup_BanditKingLunge : CAIStateGroupBase {
  void* Player[2]; long TimeOfLastLunge;
 };
-struct CThingAICreature;
-struct CAIBrain { CThingAICreature* Creature; };
+class CThingAICreature;
+class CAIBrain { public: CThingAICreature* Creature; };
 #endif
 // CAIStateGroup_BanditKingLunge::Update() -- wait for idle, face the player and perform a lunge, then advance the boss phase and record its time.
 // Retail 0x00961880, 313 bytes excluding alignment. Shared group/base/brain headers supply the real PDB members.
@@ -26,7 +26,7 @@ struct CAIBrain { CThingAICreature* Creature; };
 #include "engine/CAIStateGroup_BanditKingLunge.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-struct CTCBoss { long GetPhase(); void SetNextBossPhase(long,bool); void ClearPhaseCounter(); }; // 0x007AED10, 0x007AEDA0, 0x007AED50
+class CTCBoss { public: long GetPhase(); void SetNextBossPhase(long,bool); void ClearPhaseCounter(); }; // 0x007AED10, 0x007AEDA0, 0x007AED50
 struct CThingRetail;
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry* first; Entry* last; Entry* LowerBound(const long*); }; // 0x0040F020
 struct CThingRetail {

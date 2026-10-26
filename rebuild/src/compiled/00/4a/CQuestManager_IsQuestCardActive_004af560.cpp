@@ -10,19 +10,19 @@
 // Shape: STLport list walk (node data at +8), the name reference cached in ebx after the entry test; the
 // CDefString temporary is homed in the name's dead argument slot (`lea ecx,[esp+14h]`); `if (card && name ==)`
 // returns through the shared `mov al,1` / `xor al,al` tails.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
-struct CDefString {                                  // 4-byte def-name handle (user constructor: hidden-pointer return)
+class CDefString { public:                                  // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_index;
     CDefString();
     bool operator==(const CCharString& name) const;  // 0x004B7980
 };
 
-struct CBaseObject;
+class CBaseObject;
 
-struct CThing {
+class CThing { public:
     CDefString GetDefName() const;                   // 0x004C7CC0
 };
 
@@ -32,7 +32,7 @@ struct CBaseIntelligentPointer {                     // 8 bytes: vptr, item bloc
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -55,7 +55,7 @@ template <class T> struct CRetailList {              // STLport list: one word, 
     iterator end() const { return iterator(_M_node); }
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char                              m_pad00[0x5c];
     CRetailList< CIntelligentPointer<CThing> > ActiveQuestCards;      // +0x5c
     CRetailList< CIntelligentPointer<CThing> > CompletedQuestCards;   // +0x60

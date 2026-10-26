@@ -5,7 +5,7 @@
 // failed with the kept mask at +0x10; +0x14 = bits set in every value). out.resize is 0x00464931 (resize(n, const T&)).
 // Shape: the repack loop walks explicit inBit/outBit masks (`*= 2` gives `add r,r`; `1 << b` gives `shl cl`), and the
 // four scan bools are declared seenClear, setAfterClear, gapRecorded, seenSet (that order gives the dl/bl split).
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T& operator[](unsigned long i) const { return m_begin[i]; }

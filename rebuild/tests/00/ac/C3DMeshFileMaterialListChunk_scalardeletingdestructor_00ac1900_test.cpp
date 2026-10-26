@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DMeshFileMaterialListChunk {
+class C3DMeshFileMaterialListChunk { public:
     void* vftable;
     int destroyed;
 };

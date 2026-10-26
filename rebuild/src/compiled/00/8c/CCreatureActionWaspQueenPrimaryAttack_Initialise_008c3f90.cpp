@@ -9,12 +9,12 @@
 // advances to &PCreature; the new component rides in esi across the string destructor and is null-checked before the byte store
 // (the landed WaspQueenDiveAttack 0x008C4250 shape without the presence test).
 #include "fable_string.h"
-struct CTCParamsBase;
-struct CTCHitOnCollision {                  // the component AddTC returns
+class CTCParamsBase;
+class CTCHitOnCollision { public:                  // the component AddTC returns
     unsigned char _pad[0x19];
     unsigned char m_hitsObjects;            // +0x19
 };
-struct CThing {
+class CThing { public:
     void RemoveTC(long interfaceType);      // 0x004C9840
     CTCHitOnCollision* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
 };
@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];
@@ -33,7 +33,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_WaspQueenPrimaryAttack : CCombatActionBase {
+class CCreatureAction_WaspQueenPrimaryAttack : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

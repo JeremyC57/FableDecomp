@@ -10,15 +10,15 @@
 // Shape: initialisers in declaration order with one edi zero register (VC7.1 sinks the -1 below the next zero store); the eleven
 // bool:1 flags are body assignments: the full +0x44 byte folds into one `mov byte ptr [esi+44h],30h`, the three +0x45 bits into
 // one `and byte ptr [esi+45h],0F8h` emitted first.
-struct CThing;
-struct CTCDriverBase {
+class CThing;
+class CTCDriverBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
     CTCDriverBase(CThing* parent);              // 0x00771200
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                              // 0x0099E4B0
 };
@@ -35,13 +35,13 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {     // vtable 0x0123
     virtual void v01();
     CIntelligentPointerThing() {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) {}
 };
 struct CParticleCreationParameters;
-struct CTCDParticleEmitter : CTCDriverBase {
+class CTCDParticleEmitter : public CTCDriverBase { public:
     CCharString EmitterName;                    // +0x0c
     long ParticleTypeID;                        // +0x10
     CIntelligentPointerEmitter PEmitter;        // +0x14

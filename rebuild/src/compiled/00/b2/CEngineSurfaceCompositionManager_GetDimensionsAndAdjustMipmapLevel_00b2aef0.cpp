@@ -13,7 +13,7 @@ struct CTextureEntry_00b2aef0 {
     STextureRecord_00b2aef0* m_pRecord;            // +0x0c
 };
 
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     unsigned char _pad[0x10c8];
     long          m_maxDimension;                  // +0x10c8
     void GetDimensionsAndAdjustMipmapLevel(long* dimensions, CTextureEntry_00b2aef0* texture, unsigned long* level);

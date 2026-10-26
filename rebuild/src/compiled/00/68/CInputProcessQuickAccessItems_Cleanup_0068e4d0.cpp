@@ -4,10 +4,10 @@
 // Shape: `this` in esi, `cmp dword ptr [g],-1`, two global stores.
 extern long g_quickAccessChargeItem_0137ee78;      // 0x0137EE78
 extern long g_quickAccessChargeSlot_0137ee7c;      // 0x0137EE7C
-struct CPlayer {
+class CPlayer { public:
     bool HasMode(long mode);                       // 0x00634160
 };
-struct CInputProcessQuickAccessItems {
+class CInputProcessQuickAccessItems { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     unsigned char _pad04[0x14];
     CPlayer*      m_pPlayer;                       // +0x18

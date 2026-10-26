@@ -15,7 +15,7 @@
 // Shape: the text is fetched by an inline helper with a named CCharString (it dies before the directory call, and the
 //   ToWideString result pointer is pushed after GetString returns); a user copy ctor on CRegisteredMusicEntry gives the
 //   in-order Gain/Offset/CacheToHD copy into the pair; the inline Add sets Dirty between the pair and entry destructors.
-struct CWideString {
+class CWideString { public:
     void* Data;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     CWideString(const CWideString& other);              // 0x0099B720
@@ -24,7 +24,7 @@ struct CWideString {
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
 
-struct CCharString {
+class CCharString { public:
     void* Data;
     ~CCharString();                                     // 0x0099EAE0
     CWideString ToWideString() const;                   // 0x0099E480
@@ -38,7 +38,7 @@ extern CDefStringTable GDefStringTable;                 // 0x013CA828
 CWideString __fastcall GetSoundDataDirectory();         // 0x0041A3F0 (L"Data\\Sound\\")
 CWideString __fastcall GetSoundDataDirectory2();        // 0x0041A3D0 (byte-identical twin)
 
-struct CMusicEntry {
+class CMusicEntry { public:
     unsigned long ID;
     unsigned long Filename;
     float Gain;
@@ -53,13 +53,13 @@ struct CMusicEntryVector {
     const CMusicEntry& operator[](unsigned long i) const { return *(Start + i); }
 };
 
-struct CSoundDef {
+class CSoundDef { public:
     unsigned char _pad_0x00[0x54];
     CMusicEntryVector MusicEntries;     // +0x54
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -111,7 +111,7 @@ struct CRegisteredMusicMap {
     }
 };
 
-struct CMusicManager {
+class CMusicManager { public:
     long CurrentState[6];                   // +0x00
     CDefPointer<const CSoundDef> PSoundDef; // +0x18
     CRegisteredMusicMap RegisteredMusic;    // +0x1c

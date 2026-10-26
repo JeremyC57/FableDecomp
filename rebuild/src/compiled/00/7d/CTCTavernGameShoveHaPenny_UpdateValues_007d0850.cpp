@@ -12,7 +12,7 @@
 //          (Ego_r.pdb - 0x18, as the landed CardPairs EndRound 0x007D6150).
 // Label: the catalog calls this CTCTavernGameCardPairs, but the row sits in CTCTavernGameShoveHaPenny vtable 0x0126F2F4 slot
 //          40 and touches the shove-ha-penny stats; 0x007D6F70 is the CardPairs one (the two labels are swapped).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTC
     SEntry* LowerBound(const long* type);    // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
@@ -40,22 +40,22 @@ struct CThing {
     }
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                  // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;          // 0x00449960
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;           // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-struct CPrizeScoreDef {
+class CPrizeScoreDef { public:
     unsigned char _pad_0x00[0x28];
     float Score;                             // +0x28
     float Mult;                              // +0x2c
@@ -64,7 +64,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                  // slot 1
 };
-struct CTavernGameDef : CDefVirtual {
+class CTavernGameDef : public CDefVirtual { public:
     long m_count;                            // +0x04
     unsigned char _pad_0x08[0x16c];
     CPrizeScoreDef* PrizeScores;             // +0x174 (vector _M_start)
@@ -77,14 +77,14 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-struct CTCHeroStats {                        // retail layout
+class CTCHeroStats { public:                        // retail layout
     unsigned char _pad_0x00[0x18c];
     float BestScoreShoveHaPenny;             // +0x18c
     unsigned char _pad_0x190[9];
     bool  PrizeGivenShoveHaPenny;            // +0x199
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _pad_0x04[0x1d];
     bool          GameWon;                   // +0x21

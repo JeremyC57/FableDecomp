@@ -7,7 +7,7 @@
 // CSubtitleRenderer::ProcessEmbeddedGraphicTags at 0x0049243A; 0x00493959, 0x00493984, 0x00493911). The old
 // NPlayerGui::GFToScreen label was propagated from an unrelated body.
 // Shape: the members are copied as four dword moves (the floats of Offset as integers: a plain struct copy).
-struct C2DVector {
+class C2DVector { public:
     float X;                                            // +0x00
     float Y;                                            // +0x04
 };

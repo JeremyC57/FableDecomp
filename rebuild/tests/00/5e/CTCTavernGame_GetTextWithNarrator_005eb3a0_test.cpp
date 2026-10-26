@@ -1,14 +1,14 @@
 // Behaviour test for 0x005EB3A0 CTCTavernGame::GetTextWithNarrator (copy of the source logic over spy callees).
 #include <cstdio>
 #include <cstring>
-struct CTCBase { virtual ~CTCBase() {} };
+class CTCBase { public: virtual ~CTCBase() {} };
 class CWideString {
 public:
     const char* text;                                  // narrow stand-in for the wide text
     CWideString(const char* t) : text(t) {}
     CWideString(const CWideString& o) : text(o.text) {}
 };
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t) : text(t) {}
     CCharString(const CCharString& o) : text(o.text) {}
@@ -21,7 +21,7 @@ struct CDataBank {
     { g_askedId = id; g_askedGroup = group.text; *found = g_entryExists; return g_entryExists ? &g_entry : 0; }
 };
 static CDataBank g_bank;
-struct CMainGameComponent { CDataBank* PDataBank; };
+class CMainGameComponent { public: CDataBank* PDataBank; };
 static CMainGameComponent g_mgc = { &g_bank };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
 struct CInterfaceMap {
@@ -47,13 +47,13 @@ public:
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 enum EDialogueLayer { DIALOGUE_LAYER_0 = 0 };
 static unsigned long g_spoken = 0;
-struct CTCTalk : CTCBase {
+class CTCTalk : public CTCBase { public:
     CCharString DialogueVoice;
     CTCTalk() : DialogueVoice("GAME_MASTER_VOICE") {}
     long PlaySpeech(unsigned long id, EDialogueLayer, bool, bool) { g_spoken = id; return 0; }
     CCharString GetDialogueVoice() const { return DialogueVoice; }
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     CBaseIntelligentPointer PGameMaster;
     CWideString GetTextWithNarrator(unsigned long textId);
 };

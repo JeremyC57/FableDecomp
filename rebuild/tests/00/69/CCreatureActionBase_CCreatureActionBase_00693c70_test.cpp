@@ -3,9 +3,9 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CThing { int id; };
-struct CThingCreatureBase : CThing {};
-struct CBaseObject { void* IntelligentPointer; CBaseObject() : IntelligentPointer(0) {} virtual ~CBaseObject() {} };
+class CThing { public: int id; };
+class CThingCreatureBase : public CThing { public:};
+class CBaseObject { public: void* IntelligentPointer; CBaseObject() : IntelligentPointer(0) {} virtual ~CBaseObject() {} };
 struct CBaseIntelligentPointer {
     CThing* PItem;
     CBaseIntelligentPointer() : PItem(0) {}
@@ -16,18 +16,18 @@ struct CCreaturePointer : CBaseIntelligentPointer {
     CCreaturePointer(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
 };
 struct CThingPointer : CBaseIntelligentPointer { CThingPointer() : CBaseIntelligentPointer() {} };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long a, b, c, type;
     CAnimationEntry(long a_, long b_, long c_, long t) : a(a_), b(b_), c(c_), type(t) {}
 };
-struct CCPPointerInfo { long Count; };
+class CCPPointerInfo { public: long Count; };
 struct CAnimationEntryPointer {
     CAnimationEntry* Data; CCPPointerInfo* Info;
     CAnimationEntryPointer() : Data(0), Info(0) {}
     void Reset(CAnimationEntry* entry) { Data = entry; }
 };
-struct CSoundPair { long FirstSound, LastSound; };
-struct C3DVector { float X, Y, Z; C3DVector() {} };
+class CSoundPair { public: long FirstSound, LastSound; };
+class C3DVector { public: float X, Y, Z; C3DVector() {} };
 struct _Rb_tree_node_base { char _M_color; _Rb_tree_node_base* _M_parent; _Rb_tree_node_base* _M_left; _Rb_tree_node_base* _M_right; };
 struct SCutSceneEventNode : _Rb_tree_node_base { long first; void* second; };
 struct CCutSceneEventMap {
@@ -44,7 +44,7 @@ struct CCutSceneEventMap {
 };
 template <class T> struct CVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {} };
 
-struct CCreatureActionBase : CBaseObject {
+class CCreatureActionBase : public CBaseObject { public:
     CCreaturePointer PCreature;
     long TotalTime, ActionTime, AnimDelayTime, FramesRunning, InterruptionGroupID, InterruptionPriority, ActionID;
     CThingPointer PItemRemoved;

@@ -8,13 +8,13 @@
 // the retail CCombatActionBase is 0x18 bytes narrower, so the header's offsets do not apply here and a
 // local model is used). The facings copy word by word through eax/ecx/edx, the shape of separate
 // scalar members (a struct member would copy through `lea` base registers).
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);   // 0x0062F3B0
 };
 
-struct CCombatAction_ControlledStrafeJump : CCombatActionBase {   // vtable 0x01276974; sizeof 0x130
+class CCombatAction_ControlledStrafeJump : public CCombatActionBase { public:   // vtable 0x01276974; sizeof 0x130
     float RequiredFacing_X;                 // +0x114 C3DVector RequiredFacing
     float RequiredFacing_Y;                 // +0x118
     float RequiredFacing_Z;                 // +0x11c

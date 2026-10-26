@@ -2,11 +2,11 @@
 // the counted pointer copied and its shared count incremented (a null count block is left alone).
 #include <cstdio>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;
 };
 
-struct CScriptGameResourceObjectScriptedThingBase;
+class CScriptGameResourceObjectScriptedThingBase;
 
 struct CCountedPointer_T {
     CScriptGameResourceObjectScriptedThingBase* Data;
@@ -21,7 +21,7 @@ struct CCountedPointer_T {
 
 static int g_baseCopies = 0;
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00() { }
     virtual ~CBaseObject() { }
     unsigned char _body[4];
@@ -29,7 +29,7 @@ struct CBaseObject {
     CBaseObject(const CBaseObject& other) { ++g_baseCopies; for (int i = 0; i < 4; ++i) _body[i] = 0; }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:
     CCountedPointer_T PImp;
     virtual void v00() { }
     CScriptGameResourceObjectScriptedThingBase() { }

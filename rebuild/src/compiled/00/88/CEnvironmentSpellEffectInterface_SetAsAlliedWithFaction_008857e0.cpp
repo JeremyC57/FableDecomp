@@ -16,8 +16,8 @@ struct CIDrawEnvironmentRadialBlurParameters {
  CBlurVector BlurCenter,AreaCenter;CBlurColour ThresholdColour,IntensityColour;
  float Length,Fade,Range,Twist;int BlurTrackPos,AreaTrackPos;
 };
-struct CEnvironment;
-struct CEnvironmentSpellEffectInterface {
+class CEnvironment;
+class CEnvironmentSpellEffectInterface { public:
  CEnvironmentSpellEffectInterface(CEnvironment*); //native8852E0; fablewin94147
  CEnvironment* Environment;CBlurParams RadialBlurParams;CBlurPositionParams RadialBlurPositionParams;
  unsigned char OtherCurrent[48];CBlurParams PrevFrameRadialBlurParams;CBlurPositionParams PrevFrameRadialBlurPositionParams;unsigned char OtherPrevious[48];

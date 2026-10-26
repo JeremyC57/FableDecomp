@@ -6,10 +6,10 @@
 // Shape: a switch with only cases 3 and 2 (`sub eax,2 ; je ; dec eax ; jne`), case 3 laid out first; the binary-load arm's
 //   traits object (CPersistTraits<T> = { T DefaultVal; }, user ctor, nothing stored) is a block-scoped named local that
 //   VC7.1 homes in the dead value-argument slot (`lea ecx,[esp+10h]`), as in the Transfer<long> sibling 0x00410BE0.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                   // 0x00993EB0
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
 template <class T> struct CPersistTraits {
     T DefaultVal;                                 // +0x00
@@ -17,7 +17,7 @@ template <class T> struct CPersistTraits {
     void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x004CBD50 for T = signed char
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;                 // +0x18 (2 binary load, 3 binary save)
     unsigned char           _pad1c[8];

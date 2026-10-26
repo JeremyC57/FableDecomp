@@ -7,7 +7,7 @@
 //   comp and the two null type pointers on the stack): len = last - first (`sar ..,4`), nothing for len < 2,
 //   parent = (len - 2) / 2 (signed `cdq ; sub ; sar`), then `__adjust_heap(first, parent, len, _Tp(first[parent]),
 //   comp)` down to parent 0. The comparator is re-read from its slot every pass (all registers busy).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
@@ -24,7 +24,7 @@ public:
 
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

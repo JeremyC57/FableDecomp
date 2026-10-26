@@ -4,7 +4,7 @@
 // CEngineInternalPrimitiveFlareSprite (rtti-vtables.tsv). Shape: the type test `cmp [esp+4],0x11 ; je` precedes `push esi` (an early `xor eax,eax ; ret 4`); `this` is unused. The two trailing stores are immediates in body order (+0x94 = -1 first, then +0x90 = 0).
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x44];                    // +0x04 .. +0x48
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
@@ -19,7 +19,7 @@ struct CEngineInternalPrimitiveFlareSprite : CEngineInternalPrimitiveBase {   //
     CEngineInternalPrimitiveFlareSprite() : CEngineInternalPrimitiveBase(0x11, 0xc00000) { m_94 = -1; m_90 = 0; }
 };
 
-struct CEnginePrimitiveManagerFlareSprites {
+class CEnginePrimitiveManagerFlareSprites { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);
 };
 

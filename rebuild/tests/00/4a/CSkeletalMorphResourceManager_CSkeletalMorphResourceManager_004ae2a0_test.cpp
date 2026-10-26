@@ -5,7 +5,7 @@
 // then an empty CachedMorphs map: one 0x1C-byte header node, colour red (0), no root, leftmost = rightmost = header,
 // count 0.
 struct NodeBase { bool color; NodeBase* parent; NodeBase* left; NodeBase* right; };
-struct CCharString { void* p; };
+class CCharString { public: void* p; };
 struct CCountedPointer { void* data; long* count; };
 struct MorphNode : NodeBase { CCharString first; CCountedPointer second; };
 static unsigned int g_lastAlloc = 0;
@@ -21,7 +21,7 @@ struct MorphMap {
     }
     ~MorphMap() { std::free(header); }
 };
-struct CSkeletalMorphResourceManager : CTBaseSingleton {
+class CSkeletalMorphResourceManager : public CTBaseSingleton { public:
     MorphMap CachedMorphs;
     CSkeletalMorphResourceManager() { }
     int Kind() const { return 1; }

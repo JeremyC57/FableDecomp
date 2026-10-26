@@ -12,28 +12,28 @@ static int g_fail = 0;
 static int g_live = 0, g_iatt = 0, g_termAt = 1 << 30, g_frames = 0, g_hitFrame = 1 << 30, g_damageFrame = 1 << 30, g_stopFrame = 1 << 30;
 static bool g_badArg = false;
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_stopFrame; }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
     ~CCharString() { }
 };
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
     __forceinline ~CScriptThing() { --g_live; }
     bool MsgIsHitBy(const CCharString& a) const { if (strcmp(a.Text, "") != 0) g_badArg = true; return g_frames >= g_hitFrame; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     float GetHealth(const CScriptThing& t) const { if (t.Id != 7) g_badArg = true; return g_frames >= g_damageFrame ? 40.5f : 100.5f; }
 };
 namespace NScript {
-struct CQ_SunnyvaleMasterData { bool RansomVictimVictimNoDamage; };
+class CQ_SunnyvaleMasterData { public: bool RansomVictimVictimNoDamage; };
 struct CScriptBase {
     bool IsActiveThreadTerminating() { return Term(); }
 };
-struct CQ_RansomVictimScript : CScriptBase {
+class CQ_RansomVictimScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;
     CQ_SunnyvaleMasterData* PMasterData;
     void CheckVictimHit(CScriptThing victim);

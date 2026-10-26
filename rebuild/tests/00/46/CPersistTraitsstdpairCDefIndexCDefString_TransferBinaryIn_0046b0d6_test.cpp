@@ -8,7 +8,7 @@
 typedef long long __int64;
 #endif
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* __vftable;
     long  position;
     long  sourceLength;

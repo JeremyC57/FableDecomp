@@ -7,7 +7,7 @@
 // clears the byte only when it was set (each store is guarded by its own test -- nested `if`s, not assignments).
 // Layout: Sprinting +0x0C, ParentThing +0x04 (PDB = retail for this class).
 
-struct CThing;
+class CThing;
 bool __fastcall IsAvailableForHeroSprint(CThing* thing);   // 0x0085F470
 
 struct CTCHeroSpecialMovement_Retail {

@@ -2,7 +2,7 @@
 #include <cstdio>
 static int g_frame = 50;
 static int GetGameFrame() { return g_frame; }
-struct CCamera { float angle; float GetAngleXY() { return angle; } };
+class CCamera { public: float angle; float GetAngleXY() { return angle; } };
 struct M {
     CCamera Camera; bool ChangeInControlDirection; float ControlAngleXY; bool AngleChange; bool ControlNoControlMovement;
     int ControlNoControlMovementStartFrame;

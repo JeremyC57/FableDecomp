@@ -14,7 +14,7 @@ struct CList {
     CNode* erase(CNode* pos) { CNode* next = pos->next; CNode* prev = pos->prev; prev->next = next; next->prev = prev; std::free(pos); return next; }
 };
 inline void ClampToZero(float& value) { if (value < 0.0f) value = 0.0f; }
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     float ExperienceMultiplierParam, LastExperienceMultiplierParam; long ExperienceAttenuationTimer;
     CList Pickups, AttackHistory; float PerUnit, Decay; int decreases;
     long GetExperiencePickUpMultiplier() const { long m = (long)(ExperienceMultiplierParam / PerUnit + 1.0); if (m < 1) m = 1; return m; }

@@ -20,7 +20,7 @@ static int fails = 0;
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
 
 struct SScalarTag { SScalarTag() { } };
-template<class T> struct CArray {                              // retail STLport vector: first, last, end_of_storage
+template<class T> class CArray { public:                              // retail STLport vector: first, last, end_of_storage
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

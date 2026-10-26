@@ -13,7 +13,7 @@
 // Label: catalogued as Dinkumware `_Make_heap<THitLocationIntersectionElement*, int, ..., THitLocationIntersectionElementPred>`.
 struct CHitLocation;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

@@ -18,8 +18,8 @@
 // after the out-of-line base ctor.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
@@ -56,14 +56,14 @@ struct CLongSet {                               // set<long> (retail 12 bytes)
     void* _M_header; long _M_node_count; long _M_key_compare;
     CLongSet();                                 // 0x005157F0
 };
-struct CVillageDef;
+class CVillageDef;
 struct CVillageDefPointer {
     const CVillageDef* Object;
     CVillageDefPointer() : Object(0) {}
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCVillage : CTCBase {
+class CTCVillage : public CTCBase { public:
     long             TorchTasksUpdateFrame;                  // +0x0c
     long             FrameStartedSecuritySweep;              // +0x10
     C3DVector        PositionPlayerWasInWhenSecuritySweepCalculated; // +0x14

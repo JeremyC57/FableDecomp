@@ -13,7 +13,7 @@
 // (`test ; je ; mov eax,[eax+4] ; jmp ; xor eax,eax`), the slot-3 notification when it is 1, then the counted pointer assigned
 // a default-constructed one (release through a local pointer copy with its own zero store, then the unconditional zero store);
 // every helper is `__forceinline` (the size TU keeps plain inline ones out of line).
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
 struct CEnginePrimitiveBase {                      // counted primitive: vptr, then the reference count
     virtual void v00();
@@ -50,7 +50,7 @@ struct CBase {
     virtual void v00();
 };
 
-struct CEnginePrimitiveHandle : CBase {            // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBase { public:            // vtable 0x0122F598
     CIVCountedPointer_Primitive Data;              // +4
     __forceinline void Clear()                     // 0x0041BE70 out of line (inlined here: size TU needs __forceinline)
     {
@@ -85,14 +85,14 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
     CEnginePrimitiveHandle* end() { return m_pLast; }
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void ClearPrimitivesIfNecessary();     // slot 0: 0x00644627
     unsigned char _body04[0x18 - 4];
     bool          Drawing;                         // +0x18
     unsigned char _body19[0x28 - 0x19];
 };
 
-struct CDrawQuickAccessIcons : CDrawBase {         // vtable 0x0125A704
+class CDrawQuickAccessIcons : public CDrawBase { public:         // vtable 0x0125A704
     unsigned char          _state[0x5c - 0x28];    // charge state, flash fade
     CEnginePrimitiveHandle ChargeUpPrimitiveHandle;       // +0x5c
     CRetailHandleVector    SpecialPrimitiveHandles;       // +0x64

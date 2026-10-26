@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 static const char* g_anim; static int g_baseInit; static int g_order;
-struct CCharString { const char* m_text; CCharString(const char* t, long) : m_text(t) { } ~CCharString() { } };
-struct CCombatActionBase { virtual void v00() { } virtual void Initialise() { ++g_baseInit; g_order = g_order * 10 + 2; }
+class CCharString { public: const char* m_text; CCharString(const char* t, long) : m_text(t) { } ~CCharString() { } };
+class CCombatActionBase { public: virtual void v00() { } virtual void Initialise() { ++g_baseInit; g_order = g_order * 10 + 2; }
     void SetAnimationName(const CCharString& name) { g_anim = name.m_text; g_order = g_order * 10 + 1; }
     unsigned char _pad04[4]; struct CBaseIntelligentPointer* PCreature_; unsigned char _pad[0x114 - 0x0c];
 };
@@ -10,7 +10,7 @@ struct CCombatActionBase { virtual void v00() { } virtual void Initialise() { ++
 struct CPosition { long X, Y, Z; };
 struct CThingCreatureBase_Calls { CPosition m_pos; const CPosition& GetPosition() const { return m_pos; } };
 struct CBaseIntelligentPointer { virtual void v00() { } CThingCreatureBase_Calls* m_pItem; CThingCreatureBase_Calls* GetPItem() const { return m_pItem; } };
-struct CCreatureAction_JackFloatUp : CCombatActionBase { long FloatHeight; long FloatSpeed; unsigned char Moving; long StartHeight; CBaseIntelligentPointer PCreature; virtual void Initialise(); };
+class CCreatureAction_JackFloatUp : public CCombatActionBase { public: long FloatHeight; long FloatSpeed; unsigned char Moving; long StartHeight; CBaseIntelligentPointer PCreature; virtual void Initialise(); };
 void CCreatureAction_JackFloatUp::Initialise()
 {
     { CCharString name("RISE_TO_FLOAT", -1); SetAnimationName(name); }

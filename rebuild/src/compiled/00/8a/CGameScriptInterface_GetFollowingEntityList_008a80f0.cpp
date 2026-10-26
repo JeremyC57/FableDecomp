@@ -13,11 +13,11 @@
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -40,7 +40,7 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
     CCountedScriptImp PImp;                             // +0x04
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -121,7 +121,7 @@ struct CScriptThingRef {
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual bool GetFollowingEntityList(const CScriptThingRef& leader, CScriptThingVector& followers) const;
 };
 

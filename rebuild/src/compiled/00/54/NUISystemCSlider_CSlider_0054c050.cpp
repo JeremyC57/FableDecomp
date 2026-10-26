@@ -17,8 +17,8 @@ struct CSprite : IPrimary_0054c050, CObserver, ISecondaryB_0054c050 {
 };
 
 namespace NUISystem {
-struct CAction;
-struct CComponent;
+class CAction;
+class CComponent;
 struct CActionPointer { CAction* Data; void* Info; };
 struct CActionVector {                             // STLport vector<CCountedPointer<CAction>>, 12 bytes
     CActionPointer* _M_start;
@@ -29,7 +29,7 @@ struct CActionVector {                             // STLport vector<CCountedPoi
 struct CActionList;
 enum EActionType { ACTION_NONE = 0 };
 
-struct CSlider : CSprite {                         // vtables 0x01248D04 / 0x01248CE0 / 0x01248CD8
+class CSlider : public CSprite { public:                         // vtables 0x01248D04 / 0x01248CE0 / 0x01248CD8
     unsigned char _pad01c[0x1c0 - 0x1c];
     CActionVector Actions;                         // +0x1c0 (PDB +0x1f0)
     CActionList*  PActionsOnBack;                  // +0x1cc

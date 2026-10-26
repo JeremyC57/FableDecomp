@@ -3,7 +3,7 @@
 #include <cstring>
 static int g_removes = 0, g_adds = 0, g_insideCalls = 0, g_onInside = 0, g_angleCalls = 0, g_managerCalls = 0;
 static int g_haveManager = 1, g_inside = 0, g_angleValid = 1;
-struct CThing {};
+class CThing { public:};
 static CThing* g_lastThing = 0;
 struct CCameraPointManager {
     void RemoveCameraPoint(CThing* thing) { ++g_removes; g_lastThing = thing; }
@@ -13,7 +13,7 @@ static CCameraPointManager g_manager;
 struct CCameraManagerSource {
     virtual bool GetCameraManager(CCameraPointManager** out) { ++g_managerCalls; *out = &g_manager; return g_haveManager != 0; }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x34];
     CCameraManagerSource* m_pCameraSource;
 };

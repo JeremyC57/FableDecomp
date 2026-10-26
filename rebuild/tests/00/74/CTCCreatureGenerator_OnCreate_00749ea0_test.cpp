@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CCreatureGeneratorDef { long SecondsBetweenEffects; long SecondsBetweenSoundEffects; };
+class CCreatureGeneratorDef { public: long SecondsBetweenEffects; long SecondsBetweenSoundEffects; };
 struct CDefPointer_CreatureGeneratorDef { const CCreatureGeneratorDef* Object; };
-struct CDefClassBase {
+class CDefClassBase { public:
     const CCreatureGeneratorDef* m_def;
     bool GetSubDef(CDefPointer_CreatureGeneratorDef& out) { out.Object = m_def; return m_def != 0; }
 };
-struct CThing {
+class CThing { public:
     CDefClassBase* DefClass;
     unsigned char DeletedOnOwnerLevelOutOfScope : 1;
     unsigned char Drawable : 1;
@@ -17,7 +17,7 @@ struct CThing {
     unsigned char PausedDuringCutscenes : 1;
 };
 static long g_FramesPerSecond = 15;
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     CThing* ParentThing; long SelfTriggerResetInterval; long ActivationFrame;
     CDefPointer_CreatureGeneratorDef PDef; long FramesUntilRandomEffect; long FramesUntilRandomSoundEffect;
     void OnCreate()

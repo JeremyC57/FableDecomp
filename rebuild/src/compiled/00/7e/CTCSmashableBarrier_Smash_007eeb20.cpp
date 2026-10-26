@@ -9,7 +9,7 @@
 //   (engine/CSmashableDef.h): SmashParticleEmitter +0x2c. Local model: the def pointer needs its add-ref/release shape.
 // Shape: the condition reads `GetDef()->SmashParticleEmitter` straight (edi pushed/popped around it); the parent thing comes from
 //   an inline accessor so it loads BEFORE the second def copy, freeing `this`'s esi for that copy (a direct member read loads late).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CThing {
 public:
@@ -18,7 +18,7 @@ public:
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
-struct CSmashableDef {
+class CSmashableDef { public:
     virtual void v00();
     virtual void Destroy();                              // slot 1
     long          m_refCount;                            // +0x04

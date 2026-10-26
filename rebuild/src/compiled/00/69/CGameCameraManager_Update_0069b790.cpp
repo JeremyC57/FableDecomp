@@ -6,14 +6,14 @@
 #define CThing CThingDonor
 #include "engine/_quarantine/CThing.h"
 #undef CThing
-struct CThing {unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
+class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
 struct CObservedThingPointer {void* VTable;void* PointerInfo;CThing* GetPItem()const;}; //00A01B50
-struct C3DVector {float X,Y,Z;};
-struct CRightHandedSet {C3DVector Up,Forward;};
-struct CCamera {C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;unsigned int FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
+class C3DVector { public:float X,Y,Z;};
+class CRightHandedSet { public:C3DVector Up,Forward;};
+class CCamera { public:C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;unsigned int FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
 struct CCameraTools {unsigned char NativeTools[0x20];void FrameUpdate();}; //00877D20
 struct CCameraBase {void FrameUpdate();}; //0084DC10
-struct CGameCameraManager {
+class CGameCameraManager { public:
  void* VTable;CCamera Camera,OldCamera;void* World;CCameraTools CamTools;
  CCameraBase* CurrentMode;void* CurrentInfo;void* PendingMode;void* PendingInfo;
  bool NewAutoMode,ObservedThingInMelee,ObservedThingInBuilding;unsigned char Align;

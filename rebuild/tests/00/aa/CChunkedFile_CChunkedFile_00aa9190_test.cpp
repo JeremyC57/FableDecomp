@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_strings = 0, g_destroyed = 0, g_blocks = 0, g_bases = 0;
-struct CChunkedFileSuperChunk { int x; };
-struct CCharString { void* PStringData; ~CCharString() { ++g_strings; } };
+class CChunkedFileSuperChunk { public: int x; };
+class CCharString { public: void* PStringData; ~CCharString() { ++g_strings; } };
 struct SCountBlock { long m_references; void (__fastcall* m_pfnDestroy)(CChunkedFileSuperChunk*); CChunkedFileSuperChunk* m_pObject; };
 struct CCountedPointer_CChunkedFileSuperChunk {
     CChunkedFileSuperChunk* m_pObject; SCountBlock* m_pCount;
@@ -12,7 +12,7 @@ struct CCountedPointer_CChunkedFileSuperChunk {
     }
 };
 namespace N_0099a300 { struct CBaseClass { virtual ~CBaseClass() { ++g_bases; } }; } using N_0099a300::CBaseClass;
-struct CChunkedFile : CBaseClass {
+class CChunkedFile : public CBaseClass { public:
     CCountedPointer_CChunkedFileSuperChunk RootChunk; unsigned long Version; CCharString FileComment;
     virtual ~CChunkedFile() { }
 };

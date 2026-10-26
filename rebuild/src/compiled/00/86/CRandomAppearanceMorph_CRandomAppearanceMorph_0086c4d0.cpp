@@ -16,7 +16,7 @@ template <class T> struct CArrayAllocProxy {   // STLport _STLP_alloc_proxy: the
     T* p;
     CArrayAllocProxy(T* v) : p(v) { }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_first;                                         // +0
     T* m_last;                                          // +4
     CArrayAllocProxy<T> m_end;                          // +8
@@ -26,21 +26,21 @@ template <class T> struct CArray {
     void resize(unsigned long n);
 };
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     CKeyPairCompareLess() {}
 };
 
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V, class C> class CVectorMap { public:
     CArray<V> Values;                                   // +0x00 (the key/value pairs; modelled by value type)
     C         Compare;                                  // +0x0c
     bool      Dirty;                                    // +0x0d
     CVectorMap() : Dirty(false) {}
 };
 
-struct CRandomAppearanceMorph {
-    struct CBodyPartMesh;
-    struct CTextureMorph;
-    struct CSkeletalMorph;
+class CRandomAppearanceMorph { public:
+    class CBodyPartMesh;
+    class CTextureMorph;
+    class CSkeletalMorph;
     typedef CVectorMap<unsigned long, CTextureMorph, CKeyPairCompareLess<unsigned long, CTextureMorph> > CTextureMorphMap;
     CArray<CArray<CBodyPartMesh> >                                                      BodyParts;              // +0x00
     CArray<CTextureMorphMap>                                                            BodyPartTextureMorphs;  // +0x0c

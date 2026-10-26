@@ -8,11 +8,11 @@ struct CCriticalSectionLock {                      // 8 bytes on the stack
     CCriticalSectionLock(RTL_CRITICAL_SECTION_* section, bool tryOnly);   // 0x00A62920
     ~CCriticalSectionLock();                                              // 0x00A629A0
 };
-struct CThreadedFileObjectDesc { unsigned char _body[0x18]; };
-struct CThreadedFile {
+class CThreadedFileObjectDesc { public: unsigned char _body[0x18]; };
+class CThreadedFile { public:
     unsigned long AddObject(CThreadedFileObjectDesc* desc);              // 0x0098F350
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     T* operator->() const { return Data; }
@@ -22,7 +22,7 @@ struct SRbTreeNode {                               // STLport _Rb_tree_node<CBan
     SRbTreeNode*  m_pParent;                       // +0x04
     SRbTreeNode*  m_pLeft;                         // +0x08
     SRbTreeNode*  m_pRight;                        // +0x0c
-    struct CBankFileAsyncData* m_value;            // +0x10
+    class CBankFileAsyncData* m_value;            // +0x10
 };
 struct CPointerSetIterator {
     SRbTreeNode* m_pNode;
@@ -66,9 +66,9 @@ struct CPointerSet {                               // set<CBankFileAsyncData*> (
         }
     }
 };
-struct CBankFileAsync;
-struct CMovableResourceMemoryPool;
-struct CBankFileAsyncData {                        // Ego_r.pdb layout (72 bytes)
+class CBankFileAsync;
+class CMovableResourceMemoryPool;
+class CBankFileAsyncData { public:                        // Ego_r.pdb layout (72 bytes)
     void*                   Vtbl;
     void*                   Allocation;            // +0x04
     void*                   Data;                  // +0x08
@@ -86,7 +86,7 @@ struct CBankFileAsyncData {                        // Ego_r.pdb layout (72 bytes
     bool                    AllowRestart;          // +0x46
     bool                    Aborted;               // +0x47
 };
-struct CBankFileAsync {                            // retail layout (PDB - 0x64; CBankFile base is 0x110 bytes)
+class CBankFileAsync { public:                            // retail layout (PDB - 0x64; CBankFile base is 0x110 bytes)
     unsigned char _base[0x110];                    // CBankFile
     CCountedPointer<CThreadedFile> ThreadedFile;   // +0x110
     unsigned char _pad118[0x10];                   // LoadingMemoryPool, MemoryFailureHandler

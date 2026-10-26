@@ -14,30 +14,30 @@
 // +0x44, def +0x70, dead flag +0x91; CCarryableDef carry slot +0x28.
 // Model: the landed CCreatureAction_UnsheatheItemFromInventory::PerformAction (0x0069F9E0), with the parent thing held in a
 // local; the carrying and mode-manager components are left unset when absent (retail reads the lookup key's frame word).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);                    // 0x0040F020
 };
-struct CPlayer {
+class CPlayer { public:
     void SetAggressiveMode(bool aggressive);                 // 0x00487EB0
 };
-struct CCarryableDef {
+class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                                  // slot 1
     long RefCount;                                           // +0x04
     unsigned char _pad08[0x28 - 0x08];
     long CarrySlot;                                          // +0x28
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CCarryableDef>* out);         // 0x005CC10E
 };
 CCarryableDef* FindCarryableDef(const CDefClassBase* def);   // stand-in: the sub def lookup (not graded here)
@@ -50,7 +50,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* o
     return def != 0;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];                         // +0x20
     CInterfaceMap  m_interfaces;                             // +0x44
@@ -89,7 +89,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                         // +0x04
     CThing* GetPItem() const;                                // 0x00A01B50
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     bool HasPendingActions();                                // 0x006A1270
     CThing* GetThingInPrimarySlot();                         // 0x006A1440
     void RemoveThing(CThing* thing);                         // 0x006A19B0
@@ -101,16 +101,16 @@ void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner)
 struct CTC1A {
     void OnNotCarried();                                     // 0x005D8E50
 };
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     void RefreshSheathedWeapons();                           // 0x005C9962
 };
-struct CTCCombat {
+class CTCCombat { public:
     void SetMeleeFlourishValid(bool valid);                  // 0x00733E10
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RestartCurrentMode();                               // 0x0073A840
 };
-struct CTCUnholyPower {
+class CTCUnholyPower { public:
     virtual void v00();
     CThing* ParentThing;                                     // +0x04
     bool    ToBeRemoved;                                     // +0x08

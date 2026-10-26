@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Model of CTCHero::GiveTutorialForCategory @ 0x006C9FA0: forwards to the user-profile manager singleton.
-struct CUserProfileManager {
+class CUserProfileManager { public:
     int lastCategory; bool lastForce; int given;
     bool GiveTutorialForCategory(int category, bool force)
     {
@@ -12,7 +12,7 @@ struct CUserProfileManager {
 };
 static CUserProfileManager g_profile = { -1, false, 0 };
 static CUserProfileManager& GetUserProfileManager() { return g_profile; }
-struct CTCHero {
+class CTCHero { public:
     bool GiveTutorialForCategory(int category, bool force) { return GetUserProfileManager().GiveTutorialForCategory(category, force); }
 };
 

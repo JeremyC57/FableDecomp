@@ -11,14 +11,14 @@
 //   landed "assign through a stack CIntelligentPointer" shape (0x008C99C0: default-construct, SetPItem(0), copy the item
 //   into the member, destroy) in its own block, so the lookup keys share the stack pointer's words (8-byte frame); the
 //   weapon lookup is the pointer-returning form so the component loads straight into ecx.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -69,21 +69,21 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCCarrying {                                  // interface type 0x46
+class CTCCarrying { public:                                  // interface type 0x46
     void RemoveThing(CThing* thing);                  // 0x006A19B0
     CThing* GetThingInPrimarySlot();                  // 0x006A1440
 };
-struct CTCWeapon {                                    // interface type 0x48
+class CTCWeapon { public:                                    // interface type 0x48
     void SetProjectileWeaponLoaded(bool loaded, CThing* projectile);   // 0x005DAC50
 };
-struct CCreatureActionBase {                          // retail sizeof 0xa8
+class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();                      // slot 4: 0x00694430
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0xa8 - 0x10];
 };
-struct CCreatureAction_ReloadMissileWeapon : CCreatureActionBase {
+class CCreatureAction_ReloadMissileWeapon : public CCreatureActionBase { public:
     CBaseIntelligentPointer PAmmo;                    // +0xa8
     virtual void FinishAction();
 };

@@ -9,14 +9,14 @@ struct Stream {
     const unsigned char* p; const unsigned char* end;
     u32 ReadU32() { u32 v = 0; if (end - p >= 4) { v = (u32)p[0] | ((u32)p[1] << 8) | ((u32)p[2] << 16) | ((u32)p[3] << 24); p += 4; } return v; }
 };
-struct CDefString { int Index; CDefString() : Index(-1) { } void TransferBinaryIn(Stream* s) { Index = (int)s->ReadU32(); } };
-struct CAnimationEntry {
+class CDefString { public: int Index; CDefString() : Index(-1) { } void TransferBinaryIn(Stream* s) { Index = (int)s->ReadU32(); } };
+class CAnimationEntry { public:
     int BankIndex; CDefString AnimName; CDefString GroupName; void* Components;
     CAnimationEntry() : BankIndex(0), Components(0) { }
     void TransferBinaryIn(Stream* s) { BankIndex = (int)s->ReadU32(); AnimName.TransferBinaryIn(s); GroupName.TransferBinaryIn(s); }
 };
 struct CAnimPair { u32 first; CAnimationEntry second; CAnimPair() : first(0) { } };
-struct CAnimationSet {
+class CAnimationSet { public:
     std::vector<CAnimPair> Anims;
     int DefaultFlags, DefaultTransitionTime, DefaultDelay;
     CDefString DefaultGroup;

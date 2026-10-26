@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CInterestingToVillagersDef
-{
+class CInterestingToVillagersDef
+{ public:
     void* vftable;
 };
 extern void* const g_CInterestingToVillagersDef_vftable;

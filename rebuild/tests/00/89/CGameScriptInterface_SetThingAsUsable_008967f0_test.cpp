@@ -21,14 +21,14 @@ static int fails = 0;
 // (0x0040F020 stand-in, binary search over {type, component} pairs) tells VC7.1 the key's address does not escape,
 // so the 0xC2 key and the hook name share the dead slot instead of opening a push-ecx frame word.
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CTCBase;
-struct CTCParamsBase;
+class CTCBase;
+class CTCParamsBase;
 
 struct CInterfaceMap_Retail {                    // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
     struct SEntry { long type; CTCBase* component; };
@@ -56,12 +56,12 @@ struct CTCUsable_0D {                     // the TC 0x0D component
     bool Usable;                          // +0x10
 };
 
-struct CTCActionUseScriptedHook {
+class CTCActionUseScriptedHook { public:
     unsigned char _pad[0xc];
     bool Usable;                          // +0x0C
 };
 
-struct CThing {
+class CThing { public:
     virtual void v000();
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];       // +0x20 std::bitset of the interface types present
@@ -91,7 +91,7 @@ struct CThing {
     }
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;              // slot 11 (+0x2c)
@@ -106,7 +106,7 @@ struct CScriptThing {
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void SetThingAsUsable(const CScriptThing& thing, bool usable) const;
 };
 

@@ -6,18 +6,18 @@
 // CBase::~CBase @ 0x0099A300 (the root base).
 // Shape: a 0x1c-byte frame for the file; the file name is read before the constructor pushes, the version after it; the Loading
 // byte is stored between the load call and the inlined `~CDiskFileWin32() { Close(); }` sequence.
-struct CWideString {
+class CWideString { public:
     void* PStringData;                              // +0x00
     ~CWideString();                                 // 0x0099B510
 };
-struct CVersion;
+class CVersion;
 namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                       // 0x0099A300
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-struct CDiskFileWin32 : CBase {                     // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                     // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0 (slot 1)
     virtual void Close();                           // 0x0099A920 (slot 2)
@@ -31,7 +31,7 @@ struct CDiskFileWin32 : CBase {                     // vtable 0x0122D06C, 0x1c b
     ~CDiskFileWin32() { Close(); }
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char _pad04[0x34];                     // +0x04 vectors, counters, devices
     bool          Loading;                          // +0x38

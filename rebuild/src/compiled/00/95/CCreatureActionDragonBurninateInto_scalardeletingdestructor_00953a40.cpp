@@ -22,7 +22,7 @@ struct CDragonActionBase {                                                // 300
     unsigned char _body[0x110];                                           // +0x04 .. +0x114
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -40,7 +40,7 @@ struct C3DVectorVector {                                                  // ret
     }
 };
 
-struct CCreatureAction_DragonBurninateInto : CDragonActionBase {          // vtable 0x01294374
+class CCreatureAction_DragonBurninateInto : public CDragonActionBase { public:          // vtable 0x01294374
     C3DVector       PreviousPoint;                                        // +0x114
     C3DVectorVector MovementPoints;                                       // +0x120
     float           BurnStart;                                            // +0x12c

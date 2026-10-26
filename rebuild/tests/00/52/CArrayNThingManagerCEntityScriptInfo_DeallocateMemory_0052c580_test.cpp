@@ -19,7 +19,7 @@ struct __false_type { __false_type() { } };
 CEntityScriptInfo* __fastcall CopyDown(CEntityScriptInfo* first, CEntityScriptInfo* last, CEntityScriptInfo* result, const SCopyTag& tag, long* distance);   // 0x0052BD10
 void __fastcall DestroyRange(CEntityScriptInfo* first, CEntityScriptInfo* last, const __false_type& tag);   // 0x0052BD70
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long capacity() const { return (unsigned long)(_M_end_of_storage - _M_start); }
     void erase(T* f, T* l)

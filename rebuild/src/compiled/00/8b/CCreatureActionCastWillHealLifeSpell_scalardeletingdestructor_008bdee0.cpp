@@ -1,4 +1,4 @@
-struct CCreatureAction_CastWillHealLifeSpell {
+class CCreatureAction_CastWillHealLifeSpell { public:
     void* vftable;
 };
 

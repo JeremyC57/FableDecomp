@@ -1,10 +1,10 @@
 #pragma optimize("s",on)
-struct CPersistContext {
+class CPersistContext { public:
     void TransferA(void* p);
     void TransferB_00455712(void* p);
     void TransferC(void* p);
 };
-struct CMessageEventDef {
+class CMessageEventDef { public:
     char pad[0x3c];
     int f3c;
     int MaxSeenRadius;

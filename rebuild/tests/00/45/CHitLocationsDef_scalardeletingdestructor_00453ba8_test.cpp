@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CHitLocationsDef {
+class CHitLocationsDef { public:
     int f0;
     int Parent;
     void* f8;

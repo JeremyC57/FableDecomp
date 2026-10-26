@@ -9,7 +9,7 @@
 //   reloads ecx from +0x100); both priority words are named locals read before the virtual call; the two compares are
 //   returned as bools (`setge` / `setg`); the different-group `return false` after the same-group block
 //   gives retail's `jne` to a tail with its own `xor al,al`.
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -24,14 +24,14 @@ struct CCreatureActionBase {
     bool Finished;                              // +0x61
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     void* m_pCount;
     T* operator->() const { return Data; }
     T* Get() const { return Data; }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
     unsigned char Dead : 1;                     // +0x91 bit 0
     unsigned char _pad92[0x100 - 0x92];

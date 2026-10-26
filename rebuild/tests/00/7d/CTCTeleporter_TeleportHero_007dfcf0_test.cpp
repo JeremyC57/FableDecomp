@@ -3,8 +3,8 @@
 #include <cstdio>
 #include <cstring>
 class CThing;
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     virtual float GetFacingAngleXY() { return 0.25f; }
 };
 class CThing {
@@ -18,7 +18,7 @@ static unsigned long g_payloadLength = 0;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data) { std::memcpy(g_payload + g_payloadLength, data, length); g_payloadLength += length; }
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;
     signed char   Player;
     unsigned char Data[32];
@@ -30,21 +30,21 @@ struct CGameEvent : CMemoryBuffer {
     void AddBool(bool value) { Copy(1, &value); }
 };
 static long g_eventType = 0; static int g_eventPlayer = 0; static bool g_flagAtEvent = false;
-struct CWorld {
+class CWorld { public:
     bool RegionLoadViaTeleporter;
     void HandleMoveHeroToRegionGameEvent(CGameEvent* event) { g_eventType = event->Type; g_eventPlayer = event->Player; g_flagAtEvent = RegionLoadViaTeleporter; }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber() { return 3; }
 };
 static CWorld g_world; static CPlayerManager g_players;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing;
     CWorld* GetWorld() { return &g_world; }
     CPlayerManager* GetPlayerManager() const { return &g_players; }
 };
-struct CTCTeleporter : CTCBase {
+class CTCTeleporter : public CTCBase { public:
     void TeleportHero();
 };
 void CTCTeleporter::TeleportHero()

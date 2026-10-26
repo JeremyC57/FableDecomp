@@ -13,9 +13,9 @@
 // Layout: retail CTCInventoryBase Categories {first,last,end} at +0x20.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CTCInventoryBase_Retail;
-struct CInventoryCategoryDef {
+class CInventoryCategoryDef { public:
     virtual void v00();
     virtual void Destroy();                                       // slot 1 (+0x04)
     long RefCount;                                                // +0x04
@@ -44,12 +44,12 @@ struct CDefPointer {                                              // CDefPointer
 struct CDefPointerSlot {                                          // the out-parameter view of a CDefPointer (released by hand)
     CInventoryCategoryDef* Object;
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& Get();                         // 0x0044C6B0
     bool GetDef(long defIndex, CDefPointerSlot* def);                 // 0x005C0C99
 };
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     unsigned char _body[0x2C];
     CCategory(CDefPointer def, CTCInventoryBase_Retail* inventory, long defIndex);   // 0x005BFCD9
     ~CCategory();                                                 // 0x005C2739

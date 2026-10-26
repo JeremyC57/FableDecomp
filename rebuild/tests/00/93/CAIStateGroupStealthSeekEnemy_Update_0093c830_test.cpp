@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -25,7 +25,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -72,8 +72,8 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain { unsigned char _pad[0x18]; CThing* PCreature; };
-struct CAIStateGroupBase {
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* PCreature; };
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {}
@@ -93,8 +93,8 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
     void Terminate();
 };
-struct C3DVector { float x, y, z; };
-struct CTCPerceiveThing : CTCBase {
+class C3DVector { public: float x, y, z; };
+class CTCPerceiveThing : public CTCBase { public:
     unsigned char _pad[0x18];
     float m_awareness;
     unsigned char _pad1c[0x20 - 0x1c];
@@ -103,11 +103,11 @@ struct CTCPerceiveThing : CTCBase {
     bool m_heardSound;
 };
 static int g_dangerCalls = 0; static CThing* g_dangerSource = 0; static long g_dangerStatus = 0;
-struct CTCStealth : CTCBase {
+class CTCStealth : public CTCBase { public:
     void SetAsInDanger(CThing* source, long status) { ++g_dangerCalls; g_dangerSource = source; g_dangerStatus = status; }
 };
 static bool g_free = false; static int g_finishCalls = 0;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsFreeToFinishAction() { return g_free; }
     void FinishCurrentAction() { ++g_finishCalls; }
 };

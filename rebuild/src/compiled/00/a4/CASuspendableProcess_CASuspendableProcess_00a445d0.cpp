@@ -12,7 +12,7 @@ struct CBase {
     CBase();                                // 0x0099A2F0
 };
 
-struct CASuspendableProcess : CBase {       // vtable 0x0129D428; sizeof 0x10
+class CASuspendableProcess : public CBase { public:       // vtable 0x0129D428; sizeof 0x10
     unsigned char Running;                  // +0x04 (bool)
     unsigned char StopRunning;              // +0x05 (bool)
     unsigned char TerminateUsingExceptions; // +0x06 (bool)

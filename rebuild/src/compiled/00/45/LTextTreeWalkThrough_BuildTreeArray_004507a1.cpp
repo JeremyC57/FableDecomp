@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct TreeNode {
+class TreeNode { public:
     void* pad0;
     void* pad4;
     TreeNode* next; /* +0x8 */

@@ -19,7 +19,7 @@ struct SCountBlock {
     void* Data;                                         // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;                                  // +0
     SCountBlock* Info;                                  // +4
     CCountedPointer() : Data(0), Info(0) { }
@@ -42,13 +42,13 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct C3DMesh2;
+class C3DMesh2;
 
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     bool GetMesh(CCountedPointer<const C3DMesh2>& out, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
 };
 
-struct C3DMeshObject {
+class C3DMeshObject { public:
     virtual void v00();
     C3DMeshInfo* MeshInfo;                              // +0x04
     CCountedPointer<const C3DMesh2> GetRenderMesh(unsigned long lod, unsigned long flags) const;

@@ -3,7 +3,7 @@
 // behaviour test: CTriangleStripifier2::GenerateTriangleListAndStrip flattens the triangles to an index list, runs the
 // index-list overload, and rebuilds the output triangle list (resized to the input count) from the reordered indices;
 // an empty input clears both outputs
-struct C3DTriangle2 { unsigned short VertexIndex[3]; C3DTriangle2() { } };
+class C3DTriangle2 { public: unsigned short VertexIndex[3]; C3DTriangle2() { } };
 struct CTriangleArray {
     std::vector<C3DTriangle2> V;
     unsigned long size() const { return (unsigned long)V.size(); }

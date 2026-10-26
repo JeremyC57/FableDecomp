@@ -8,17 +8,17 @@
 // use the same offsets: the CMiniMapDisplay member is smaller in the shipped build), so the class is modelled locally with the PDB names.
 // Shape: five tests in source order through `&&`, the fade addressed once (`lea ecx,[esi+100h]`) for its Active byte and the tail call; the
 // early-out result is `mov al,1`.
-struct CDisplayEngine {
+class CDisplayEngine { public:
     bool IsScreenFullyFadedOut();                  // 0x004A9210
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad[0x28];
     CDisplayEngine* m_pDisplayEngine;              // +0x28
 };
-struct CWorld {
+class CWorld { public:
     bool IsDisplayingMiniMapOnRegionLoad();        // 0x0049E9F0
 };
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     unsigned char Active;                          // +0x00
     unsigned char _rest[0x1b];
     bool IsOpen();                                 // 0x0048DA30
@@ -26,7 +26,7 @@ struct CFadeInFadeOutBase {
 
 namespace NPlayerGui {
 
-struct CDrawMiniMap {
+class CDrawMiniMap { public:
     unsigned char       _pad00[0x0c];              // vptr, PlayerGui, PlayerManager
     CWorld*             World;                     // +0x0c (CDrawBase)
     CMainGameComponent* Component;                 // +0x10 (CDrawBase)

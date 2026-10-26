@@ -7,9 +7,9 @@
 // Shape: the key reference is forwarded (`push [esp+4]` through eax), `this` is adjusted in place (`add ecx,38h`),
 // and the float argument is copied with an integer move into the returned C2DVector's Y (+4).
 // Leaf: SetMiniMapRegionExitTextOffsetY
-struct CCharString;
+class CCharString;
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 
@@ -18,7 +18,7 @@ struct CRegionExitTextOffsetMap {                       // map<CCharString, C2DV
     C2DVector& operator[](const CCharString& key);      // 0x006BD6A0
 };
 
-struct CRegion {
+class CRegion { public:
     unsigned char            _pad00[0x38];              // Maps, VisMaps, names, PDef, MiniMapGraphic, scale, offset
     CRegionExitTextOffsetMap MiniMapRegionExitTextOffsets;   // +0x38
     void SetMiniMapRegionExitTextOffsetY(const CCharString& exitName, float y);

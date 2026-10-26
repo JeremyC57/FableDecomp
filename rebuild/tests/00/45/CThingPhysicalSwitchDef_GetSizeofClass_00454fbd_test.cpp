@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingPhysicalSwitchDef {};
+class CThingPhysicalSwitchDef { public:};
 
 unsigned long __fastcall CThingPhysicalSwitchDef_GetSizeofClass(const CThingPhysicalSwitchDef* self)
 {

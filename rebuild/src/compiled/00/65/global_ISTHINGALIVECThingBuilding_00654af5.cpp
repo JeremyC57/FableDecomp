@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 // Leaf: IS_THING_ALIVE<CThingBuilding*>
 // IS_THING_ALIVE(CThingBuilding*) @ 0x00654af5
-struct CThingBuilding { char pad[0x91]; unsigned char m_flags; };
+class CThingBuilding { public: char pad[0x91]; unsigned char m_flags; };
 struct Wrap { CThingBuilding *m_p; };
 extern "C" char FABLE_FASTCALL FableIsAlive_654af5(Wrap *w){
     CThingBuilding *p = w->m_p;

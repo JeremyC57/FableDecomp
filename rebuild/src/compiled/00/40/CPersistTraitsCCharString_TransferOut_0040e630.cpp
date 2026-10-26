@@ -10,9 +10,9 @@
 // quote, then `value`, then the opening quote are pushed before the "" constructor), the three temporaries chain
 // through eax -> edx; the context is unused, so its argument slot holds the last temporary; the four temporaries die
 // in reverse order of construction after the append.
-struct CPersistContext;
+class CPersistContext;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     CCharString(const char* text, long length = -1);             // 0x0099EBF0
     ~CCharString();                                              // 0x0099EAE0

@@ -7,9 +7,9 @@
 //   (`ret 8`, `mov edx,[esp+8]`); the first is unused.
 // Shape: the action pointer is a named local: it is loaded into the dead this-register (ecx) and reused as this
 //   of the virtual call (reading the member twice loads eax and copies it to ecx).
-struct CThing;
+class CThing;
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -26,7 +26,7 @@ struct CCreatureActionBase {
     bool Finished;                                  // +0x61
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad000[0x100];
     CCreatureActionBase* PCurrentAction;            // +0x100 CCountedPointer<CCreatureActionBase>::Object
     void PerformBlockedReaction(CThing* blocker, long blockType);

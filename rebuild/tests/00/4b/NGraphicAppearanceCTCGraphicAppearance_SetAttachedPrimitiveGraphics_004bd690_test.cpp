@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CEnginePrimitive { int id; };
-struct CEnginePrimitiveAttachmentInfo { int id; };
-struct CEnginePrimitiveHandle { long m_header; void* Data; };
+class CEnginePrimitive { public: int id; };
+class CEnginePrimitiveAttachmentInfo { public: int id; };
+class CEnginePrimitiveHandle { public: long m_header; void* Data; };
 struct CPrimitive { long Type; CEnginePrimitiveHandle PrimitiveHandle; long BankIndex; };
 static CEnginePrimitiveHandle* g_prim = 0; static CEnginePrimitive* g_to = 0; static CEnginePrimitiveAttachmentInfo* g_info = 0;
 static CEnginePrimitiveHandle* g_parent = 0; static long g_bone = 0; static unsigned long g_flags = 0xffff;
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual ~CEnginePrimitiveManager() { }
     virtual void AttachPrimitive(CEnginePrimitiveHandle* p, CEnginePrimitive* to, CEnginePrimitiveAttachmentInfo* info,
                                  CEnginePrimitiveHandle* parent, long bone, unsigned long flags)

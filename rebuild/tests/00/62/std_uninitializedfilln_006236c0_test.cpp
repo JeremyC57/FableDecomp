@@ -6,13 +6,13 @@
 #include <new>
 
 static int g_stringCopies = 0;
-struct CWideString {
+class CWideString { public:
     const unsigned short* PStringData;
     explicit CWideString(const unsigned short* s) : PStringData(s) { }
     CWideString(const CWideString& other) : PStringData(other.PStringData) { ++g_stringCopies; }
 };
 
-struct CQuestCardItem {
+class CQuestCardItem { public:
     long        ItemIndex;
     CWideString ItemText;
     CQuestCardItem(long i, const unsigned short* t) : ItemIndex(i), ItemText(t) { }

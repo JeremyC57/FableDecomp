@@ -12,12 +12,12 @@
 // tags homed in the high byte of the `push ecx` slot, the moved-to end kept in edi; the counted-pointer reset nulls
 // the block word BEFORE the data word (the destructor order Data, Info gives the stores swapped). One zero register.
 void __cdecl operator delete(void* p);                           // 0x00BFE9BC
-struct CCPPointerInfo {                                          // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                          // PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                        // +0
     CCPPointerInfo* Info;                                        // +4
     void Clear()
@@ -35,8 +35,8 @@ template<class T> struct CCountedPointer {
 };
 struct SMoveTag { SMoveTag() { } };
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
-struct C3DSkeletalMorphParameter;
-struct C3DSkeletalMorphTarget;
+class C3DSkeletalMorphParameter;
+class C3DSkeletalMorphTarget;
 typedef CCountedPointer<C3DSkeletalMorphParameter> PMorphParameter;
 PMorphParameter* __fastcall _Move(PMorphParameter* first, PMorphParameter* last, PMorphParameter* dest, const SMoveTag& tag, bool overlap);   // 0x00A46460
 void __fastcall DestroyRange(PMorphParameter* first, PMorphParameter* last, const SNonscalarPtrIteratorTag& tag);   // 0x00A464E0
@@ -54,7 +54,7 @@ template<class T> struct CRetailArray {                          // retail CArra
 struct CBaseClassNonCopyable {
     virtual void v00();
 };
-struct C3DSkeletalMorph : CBaseClassNonCopyable {
+class C3DSkeletalMorph : public CBaseClassNonCopyable { public:
     CRetailArray<PMorphParameter>           MorphParameters;   // +0x04
     CCountedPointer<C3DSkeletalMorphTarget> CombinedMorph;     // +0x10
     virtual void v00();

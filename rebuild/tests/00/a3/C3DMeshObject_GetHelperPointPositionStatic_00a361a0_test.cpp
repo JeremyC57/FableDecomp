@@ -5,7 +5,7 @@
 #include "fable_string.h"
 #else
 #define __fastcall
-struct CCharStringData { char* text; unsigned int unknown04,unknown08; unsigned char flags0C; int owners; };
+class CCharStringData { public: char* text; unsigned int unknown04,unknown08; unsigned char flags0C; int owners; };
 class CCharString { public: CCharString(); ~CCharString(); CCharStringData* storage_; };
 #endif
 // Header exposes the real data record; the one-pointer object view supplies native inline accessors.
@@ -14,18 +14,18 @@ struct CCharStringNativeView {
     const char* c_str() const { return PStringData == 0 ? "" : PStringData->text; }
     unsigned long length() const { return PStringData == 0 ? 0 : PStringData->unknown04; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X,Y,Z;
     C3DVector() {}
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z) {}
     void Set(float x,float y,float z) { X=x;Y=y;Z=z; }
     C3DVector(const C3DVector& p):X(p.X),Y(p.Y),Z(p.Z) {}
 };
-struct C3DHelperPoint { C3DVector Position; long BoneIndex; };
-struct C3DMeshStats { C3DHelperPoint* GetHelperPoint(unsigned long,unsigned long); };
+class C3DHelperPoint { public: C3DVector Position; long BoneIndex; };
+class C3DMeshStats { public: C3DHelperPoint* GetHelperPoint(unsigned long,unsigned long); };
 unsigned long __fastcall ComputeCRC(unsigned long seed,const char* text,unsigned long length); // 0x004014A0
 struct CMeshPointer { C3DMeshStats* Data; void* Info; C3DMeshStats* operator->() const { return Data; } };
-struct C3DMeshObject {
+class C3DMeshObject { public:
     void* __vftable;
     void* MeshInfo;
     CMeshPointer Mesh;

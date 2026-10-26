@@ -12,48 +12,48 @@
 //          retail found-position count (PDB places ValidPositionsFound at +0x4C).
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CAnimFilterBase {                                // vtable 0x0122FFCC
+class CAnimFilterBase { public:                                // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() { }
     virtual void v01();
     virtual void v02();
 };
 struct CAnimFilterAnyGroup : CAnimFilterBase {          // vtable 0x0127261C
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool HasAnim(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x00662C70
 };
-struct CCombatDialogueDef {
+class CCombatDialogueDef { public:
     virtual void Destroy();
     virtual void Delete();                              // slot 1
     long m_refCount;                                    // +0x04
     unsigned char _08[0x4c - 0x08];
     unsigned long TakeCoverSpeechGroup;                 // +0x4c (descriptive)
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* object) : Object(object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer() { if (--Object->m_refCount == 0) Object->Delete(); }
     T* operator->() const { return Object; }
 };
-struct CombatDialogueManager {
+class CombatDialogueManager { public:
     unsigned char _00[0x0c];
     CDefPointer<CCombatDialogueDef> PDialogueDef;       // +0x0c
     bool SaySpeech(CThingCreatureBase& talker, unsigned long speechGroup);   // 0x008AFC40
 };
-struct CCombatManager {
+class CCombatManager { public:
     unsigned char _00[0x38];
     CombatDialogueManager DialogueManager;              // +0x38
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _00[0x4c];
     CCombatManager* PThingCombatManager;                // +0x4c
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                      // +0x18
 };

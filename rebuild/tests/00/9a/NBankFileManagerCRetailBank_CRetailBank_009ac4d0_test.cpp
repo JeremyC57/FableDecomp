@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
-struct CCharString { void* m_pStringData; CCharString() : m_pStringData(0) { } };
-template <class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+class CCharString { public: void* m_pStringData; CCharString() : m_pStringData(0) { } };
+template <class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
 struct CContainedBank { unsigned long DataVersion, EntryCount, InfoOffset, InfoSize, Alignment; };
 struct Node { bool _M_color; Node* _M_parent; Node* _M_left; Node* _M_right; };
 struct TreeBase {

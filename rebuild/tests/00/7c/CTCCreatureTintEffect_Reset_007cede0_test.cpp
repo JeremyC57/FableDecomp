@@ -1,8 +1,8 @@
 // Test for 007cede0 CTCCreatureTintEffect::Reset: clock zeroed, fade times = (long)(seconds * fps), colour copied.
 #include <cstdio>
-struct CSpecialAbilitiesCreatureTintDef { float FadeInTimeSecs; float FadeOutTimeSecs; long* Color; };
+class CSpecialAbilitiesCreatureTintDef { public: float FadeInTimeSecs; float FadeOutTimeSecs; long* Color; };
 long g_GameFramesPerSecond = 15;
-struct CTCCreatureTintEffect {
+class CTCCreatureTintEffect { public:
     CSpecialAbilitiesCreatureTintDef* PDef;
     long CurTime, FadeInTime, FadeOutTime;
     long Color[4];

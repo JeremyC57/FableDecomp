@@ -11,15 +11,15 @@
 // Shape: CPixelFormat's default constructor stores -1 (the state block's 14 named formats and the 11-entry array are
 //   written out one by one), CTexture's zeroes both words (a counted loop over the 11 textures); the state block's base
 //   is __declspec(novtable) (no base vptr store).
-struct CTextureManager {
+class CTextureManager { public:
     CTextureManager();                          // 0x00A6A360
     unsigned char _body[0x5d4];
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat() : FormatIndex(-1) {}
 };
-struct CTexture {
+class CTexture { public:
     void*         PD3DTexture;                  // +0x00
     unsigned long Bits;                         // +0x04 ByteLength:28, AllocationSource:4
     CTexture() : PD3DTexture(0), Bits(0) {}
@@ -41,7 +41,7 @@ struct CPixelFormatSet {                        // the seven per-use formats of 
 struct __declspec(novtable) CBankStateBlock {
     virtual void GetDefault(CBankStateBlock& block) = 0;
 };
-struct CGraphicBankStateBlock : CBankStateBlock {   // vtable 0x0129C888, 0x64 bytes
+class CGraphicBankStateBlock : public CBankStateBlock { public:   // vtable 0x0129C888, 0x64 bytes
     CPixelFormatSet BankFormats;                // +0x04
     CPixelFormatSet CompressedBankFormats;      // +0x20
     long         Settings[8];                   // +0x3C CompressionType .. BumpmapFactor
@@ -49,19 +49,19 @@ struct CGraphicBankStateBlock : CBankStateBlock {   // vtable 0x0129C888, 0x64 b
     CGraphicBankStateBlock() {}
     virtual void GetDefault(CBankStateBlock& block);
 };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     CBankFileAsync();                           // 0x009D5F80
     virtual ~CBankFileAsync();
     unsigned char _body[0x160];
 };
-struct CResourceBank {
+class CResourceBank { public:
     CResourceBank();                            // 0x009FC5F0
     virtual ~CResourceBank();
     unsigned char _body[0x78];
 };
-struct CGraphicInfo;
-struct CGraphicInfoFrame;
-struct CGraphicDataBank : CBankFileAsync, CResourceBank {
+class CGraphicInfo;
+class CGraphicInfoFrame;
+class CGraphicDataBank : public CBankFileAsync, public CResourceBank { public:
     CRetailVector<CGraphicInfo>      GraphicList;            // +0x1E0
     CRetailVector<CGraphicInfoFrame> GraphicFrameBuffer;     // +0x1EC
     bool                   Initialised;                      // +0x1F8

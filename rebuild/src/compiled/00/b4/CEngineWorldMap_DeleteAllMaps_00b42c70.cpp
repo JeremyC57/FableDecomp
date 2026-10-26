@@ -12,9 +12,9 @@
 //   as the landed 0x005697C0); last `if (Map) { delete Map; Map = 0; }`.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);
 
-struct CEngineMap;
+class CEngineMap;
 
-template <class T> struct CArray {               // retail CArray: begin, end, capacity
+template <class T> class CArray { public:               // retail CArray: begin, end, capacity
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;
@@ -36,7 +36,7 @@ template <class T> struct CArray {               // retail CArray: begin, end, c
     }
 };
 
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     unsigned char        _pad0[0x0c];
     short*               Map;                    // +0x0c
     unsigned char        _pad10[0x20 - 0x10];

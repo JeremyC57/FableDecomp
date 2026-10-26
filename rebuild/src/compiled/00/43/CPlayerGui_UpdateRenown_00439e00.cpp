@@ -9,7 +9,7 @@
 // +0x48, its previous value +0x4c); the GUI def's renown bar colours +0x4e8/+0x4ec.
 // Shape: the dead-bit test uses the constant 1 held in ebx (also the minimum step, true and the mode compare); the
 // pending amount is a named local homed in a frame word for the fild; each snap store re-reads PRenown.
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x4e8];
     float         RenownBarValueA;                     // +0x4e8
     float         RenownBarValueB;                     // +0x4ec
@@ -20,14 +20,14 @@ extern "C" long __cdecl _ftol2(double);
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char StateFlags;                          // +0x91 (bit 0: dead)
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPlayerCharacter();                      // 0x00487B70
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                          // 0x00449970
 };
 struct CStatBase {
@@ -53,7 +53,7 @@ struct CDrawStatUpdates {
     long          PendingRenown;                       // +0x28
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad000[8];
     CPlayerManager*   PlayerManager;                   // +0x08
     unsigned char     _pad00c[0x19c];

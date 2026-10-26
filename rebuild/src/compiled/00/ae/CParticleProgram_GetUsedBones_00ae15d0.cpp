@@ -15,10 +15,10 @@
 // wave 25 precedent 0x75D2B0) so VC7.1 sees the same; it is written from the retail bytes of 0x00AE1210 (signed
 // `size() > 0` test = `test ebx,0FFFFFFF8h ; jle`, the group array re-read after every byte store). Without the
 // stand-in the build keeps `used` in edi and reloads ecx (39v33).
-struct C4DVector;
-struct CMovableResourceMemoryPool;
-struct C3DTriangle2; struct C3DQuad2; struct C3DClothRenderVertex; struct C2DVector;
-template <class T> struct CArray {                     // retail CArray<T>: STLport vector, three pointers
+class C4DVector;
+class CMovableResourceMemoryPool;
+class C3DTriangle2; class C3DQuad2; class C3DClothRenderVertex; class C2DVector;
+template <class T> class CArray { public:                     // retail CArray<T>: STLport vector, three pointers
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -26,12 +26,12 @@ template <class T> struct CArray {                     // retail CArray<T>: STLp
     T& operator[](unsigned int i) { return _M_start[i]; }
     const T& operator[](unsigned int i) const { return _M_start[i]; }
 };
-struct C3DVertexBlend2 { long Vertex; float Weight; };   // 8 bytes
-struct C3DGroup2 {                                     // 16 bytes in retail
+class C3DVertexBlend2 { public: long Vertex; float Weight; };   // 8 bytes
+class C3DGroup2 { public:                                     // 16 bytes in retail
     long                     BoneIndex;                // +0x0
     CArray<C3DVertexBlend2>  VertexBlends;             // +0x4
 };
-struct CMovableResource {                              // vtable 0x0129B860
+class CMovableResource { public:                              // vtable 0x0129B860
     virtual ~CMovableResource();
 };
 class CParticleProgram : public CMovableResource {     // retail 0x140 bytes, vtable 0x0129F0D8

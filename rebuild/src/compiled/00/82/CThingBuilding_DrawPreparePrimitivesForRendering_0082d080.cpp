@@ -7,19 +7,19 @@
 //   DrawPreparePrimitivesForRendering in two other CThing vtables. The graphic appearance component pointer sits at
 //   retail +0x64 of the thing.
 // Shape: `if (base()) { m_pGraphic->PrepareForDraw(info); return true; } return false;` -- the argument is kept in edi.
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 
 struct CTCGraphicAppearance {
     void PrepareForDraw(CEnginePrimitivePrepareInfo* info);    // 0x004BE4E0
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;                 // +0x64
     bool DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info);   // 0x006A64D0
 };
 
-struct CThingBuilding : CThingPhysical {
+class CThingBuilding : public CThingPhysical { public:
     bool DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info);
 };
 

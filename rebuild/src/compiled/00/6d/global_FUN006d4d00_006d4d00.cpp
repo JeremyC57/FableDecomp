@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006D4D00, 5 bytes: a lone `jmp 0x00A01B50` (tail call, `this` passed through).
 //   Unreferenced out-of-line copy of an inline typed accessor (the next function, 0x006D4D10, is the
 //   CIntelligentPointer<const CThing> constructor).
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     void*        __vftable;                      // +0x00

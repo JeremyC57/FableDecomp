@@ -13,7 +13,7 @@ static int StrICmp(const char* a, const char* b)
         if (!ca) return 0;
     }
 }
-struct CCharString {
+class CCharString { public:
     char Buf[64];
     CCharString(const char* s = "") { std::strcpy(Buf, s); }
     const char* GetData() const { return Buf; }
@@ -21,15 +21,15 @@ struct CCharString {
     CCharString ToLower() const { CCharString r(Buf); for (char* p = r.Buf; *p; ++p) *p = (char)std::tolower((unsigned char)*p); return r; }
     bool IsEqualNoCase(const CCharString& other) const { return StrICmp(GetData(), other.GetData()) == 0; }
 };
-struct CConsoleCommandLine {
+class CConsoleCommandLine { public:
     CCharString CurrentEntry; bool UserEntry; long CursorPosition;
     CConsoleCommandLine() : UserEntry(true), CursorPosition(0) {}
     CConsoleCommandLine(const CCharString& entry) : CurrentEntry(entry), UserEntry(false), CursorPosition((long)entry.GetLength()) {}
     CCharString GetEntry() const { return CurrentEntry; }
 };
-struct CConsoleInputBase { const char* Name; CCharString GetFormattedName() const { return CCharString(Name); } };
+class CConsoleInputBase { public: const char* Name; CCharString GetFormattedName() const { return CCharString(Name); } };
 struct SInputNode { CCharString first; CConsoleInputBase* second; };
-struct CConsole {
+class CConsole { public:
     CConsoleCommandLine FrontCommandLine, BackCommandLine;
     SInputNode* Inputs; int Count;          // the sorted map flattened; index Count is end()
     int GuessPos; bool GuessMode;

@@ -13,21 +13,21 @@
 // RunTimer +0x14, PHeroSpecialMovementDef +0x18; CHeroSpecialMovementDef sprint duration +0x28; CThing def index +0x8c.
 extern long g_framesPerSecond_01375550;         // 0x01375550
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                      // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) {}
     T* operator->() const { return (T*)Object; }
 };
-struct CHeroSpecialMovementDef : CDefPointeeBase {
+class CHeroSpecialMovementDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     float SprintDurationSeconds;                // +0x28
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CHeroSpecialMovementDef>* out);    // 0x007E0A40
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below

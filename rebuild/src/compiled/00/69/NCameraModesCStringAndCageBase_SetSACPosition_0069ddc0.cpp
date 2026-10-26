@@ -6,21 +6,21 @@
 //       position as a go-to attractor of weight 1).
 // Layout: NCameraModes::CBase::GoTo, a CPhysicsState whose Position is its first member, at +0x54 (landed CBase dtor 0x0056E0E0).
 // Shape: the C3DVector copy loads from the argument before `add ecx,54h` (a C3DVector member of a member).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 namespace NCameraModes {
-struct CPhysicsState {
+class CPhysicsState { public:
     C3DVector Position;                            // +0x00
     C3DVector Velocity;                            // +0x0c
 };
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _pad04[0x54 - 0x04];
     CPhysicsState GoTo;                            // +0x54
     unsigned char _pad6c[0xa4 - 0x6c];
 };
-struct CStringAndCageBase : CBase {
+class CStringAndCageBase : public CBase { public:
     virtual void SetSACPosition(const C3DVector& position);
 };
 void CStringAndCageBase::SetSACPosition(const C3DVector& position)

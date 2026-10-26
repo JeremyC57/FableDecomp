@@ -12,9 +12,9 @@
 // `lea edx,[esi+60h]`. The thing's graphic-appearance component is cached at +0x64.
 // Layout: PDB NCameraModes::CScriptModuleGoToLookAt (0x6c bytes): PThing +0x4c, GoTo +0x54, LookAt +0x60;
 // the landed two-vector overload 0x007187C0 uses the same model.
-struct CBaseObject;
+class CBaseObject;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
@@ -24,7 +24,7 @@ struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float t) const;      // 0x004C12D0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;      // +0x64
 };

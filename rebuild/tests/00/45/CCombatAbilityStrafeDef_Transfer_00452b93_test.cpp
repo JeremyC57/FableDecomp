@@ -8,12 +8,12 @@ static void* g_argB = 0;
 static void* g_ctxA = 0;
 static void* g_ctxB = 0;
 
-struct CPersistContext {
+class CPersistContext { public:
     void TransferA(CFieldA* p){ g_calls++; g_ctxA = this; g_argA = p; }
     void TransferB(CFieldB* p){ g_calls++; g_ctxB = this; g_argB = p; }
 };
 
-struct CCombatAbilityStrafeDef {
+class CCombatAbilityStrafeDef { public:
     unsigned char _pad28[0x28];
     CFieldB f28;
     unsigned char _pad40[0x40 - 0x28 - sizeof(CFieldB)];

@@ -8,17 +8,17 @@
 // Shape: an inline creature cast `c = 0; if (t && (t->flags & 8)) c = t;` per argument; the alive tests are
 //   `!alive(a) && !alive(b) -> false`, `!alive(a) -> false`, `!alive(b) -> true`; the 2D offsets are C2DVector
 //   temporaries (the first spilled across the second GetPosition call), squared as X*X + Y*Y and compared `>`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y, Z;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float GetLengthSquared() const { float r = Y * Y; r += X * X; return r; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x6c];
     unsigned char m_flags6c;                    // +0x6c bit 3: creature
     unsigned char _pad6d[0x91 - 0x6d];
@@ -26,7 +26,7 @@ struct CThing {
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad92[0xe8 - 0x92];
     float InitialPosX;                          // +0xe8
     float InitialPosY;                          // +0xec

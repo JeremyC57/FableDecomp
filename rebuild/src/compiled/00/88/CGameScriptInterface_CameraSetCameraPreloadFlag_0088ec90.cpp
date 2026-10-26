@@ -1,6 +1,6 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct Provider { void* vt; };
-struct CWorld { char pad[0x34]; Provider* prov; };
+class CWorld { public: char pad[0x34]; Provider* prov; };
 
 void __fastcall CGameScriptInterface_CameraSetCameraPreloadFlag(CGameScriptInterface* self, void* edx, char flag)
 {

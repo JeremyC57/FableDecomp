@@ -7,12 +7,12 @@
 //   view's 0x40): CameraMode PDB +0x40 = retail +0x3c ... ViewHeroGroundHeightOffset PDB +0xd8 = retail +0xd4. No
 //   engine header exists for this class; the fields are modelled locally with their PDB names.
 #pragma optimize("s", on)
-struct CPersistContext {
+class CPersistContext { public:
     void TransferLong(long* value);                    // 0x00431102
     void TransferFloat(float* value);                  // 0x00431061
     void TransferBool(bool* value);                    // 0x0043314A
 };
-struct CCameraModeDef {
+class CCameraModeDef { public:
     unsigned char prefix[0x38];                        // CDefBase body after the vptr (retail)
     long   CameraMode;                                      // +0x3c
     float  StringLengthXY;                                  // +0x40

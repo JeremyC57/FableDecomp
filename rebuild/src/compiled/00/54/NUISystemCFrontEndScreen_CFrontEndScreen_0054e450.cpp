@@ -8,7 +8,7 @@
 // Layout: retail CFrontEndScreen PLeftClickAction +0x160 (Ego_r.pdb +0x190; engine/CFrontEndScreen.h carries the PDB
 // offsets, retail's 12-byte STLport containers put it 0x30 lower). CCountedPointer model as the ??_G 0x0041BDF0 row.
 // Shape: /O2 (16-aligned entry); empty destructor body.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

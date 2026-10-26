@@ -9,11 +9,11 @@
 // layout struct carries its vptr as a data word and cannot take the vtable stores.
 // Shape: a non-virtual destructor in a polymorphic class (keeps the deleting `??_G` out of the TU); the bridge loop is a
 // `dec ebx ; jne` count with one pointer (`[esi-10h]` reaches the index array).
-struct CIndexBuffer;
-struct CVertexBufferWin32;
-struct CEngineLandscapeMap;
+class CIndexBuffer;
+class CVertexBufferWin32;
+class CEngineLandscapeMap;
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void AppendFreeEdgeNode(void* block);          // 0x00BDA090
     void FreeBlock(void* block);                   // 0x00BDA0D0
 };
@@ -23,13 +23,13 @@ struct SEngine_01436ea8 {
 };
 extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
 
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     CMovableResource() { }
     ~CMovableResource() { }                        // inline: the vtable store
 };
 
-struct CEngineWaterBackgroundSubPatch : CMovableResource {   // vtable 0x012A8334
+class CEngineWaterBackgroundSubPatch : public CMovableResource { public:   // vtable 0x012A8334
     CEngineLandscapeMap* Map;                      // +0x04
     CIndexBuffer*        IndexBuffer;              // +0x08
     CVertexBufferWin32*  VertexBuffer;             // +0x0c

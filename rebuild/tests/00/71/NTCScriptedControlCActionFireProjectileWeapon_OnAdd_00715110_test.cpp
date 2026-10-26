@@ -22,13 +22,13 @@ static bool g_badName = false;          // a callee saw an unexpected name / arg
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_termFrame; }
 static void Reset() { g_live = 0; g_iatt = 0; g_termAt = 1 << 30; g_termFrame = 1 << 30; g_frames = 0; g_badName = false; }
 
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 static int g_destroyed = 0;
 struct CCreatureAction { int Kind; CThing* Target; virtual ~CCreatureAction() { ++g_destroyed; } };
-struct CCreatureAction_ReloadMissileWeapon : CCreatureAction { CCreatureAction_ReloadMissileWeapon(CThing*) { Kind = 1; Target = 0; } };
-struct CCreatureAction_AimMissileWeapon : CCreatureAction { CCreatureAction_AimMissileWeapon(CThing*) { Kind = 2; Target = 0; } };
-struct CCreatureAction_FireMissileWeapon : CCreatureAction { CCreatureAction_FireMissileWeapon(CThing*, CThing* target) { Kind = 3; Target = target; } };
+class CCreatureAction_ReloadMissileWeapon : public CCreatureAction { public: CCreatureAction_ReloadMissileWeapon(CThing*) { Kind = 1; Target = 0; } };
+class CCreatureAction_AimMissileWeapon : public CCreatureAction { public: CCreatureAction_AimMissileWeapon(CThing*) { Kind = 2; Target = 0; } };
+class CCreatureAction_FireMissileWeapon : public CCreatureAction { public: CCreatureAction_FireMissileWeapon(CThing*, CThing* target) { Kind = 3; Target = target; } };
 struct SCountBlock {
     long m_references;
     void (__fastcall* m_pfnDestroy)(void*);
@@ -56,15 +56,15 @@ struct CCountedPointer {
 static int g_kinds[8]; static CThing* g_fireTargets[8]; static int g_added = 0;
 struct CCreatureActionQueue { void Add(const CCountedPointer& action) { if (g_added < 8) { g_kinds[g_added] = action.m_pObject->Kind; g_fireTargets[g_added] = action.m_pObject->Target; } ++g_added; } };
 static bool g_missile = true, g_loaded = false;
-struct CTCInventoryAbilities { CThing* Weapon; CThing* GetWeaponInHand() { return Weapon; } };
-struct CTCWeapon { bool IsMissileWeapon() { return g_missile; } bool IsLoaded() { return g_loaded; } };
+class CTCInventoryAbilities { public: CThing* Weapon; CThing* GetWeaponInHand() { return Weapon; } };
+class CTCWeapon { public: bool IsMissileWeapon() { return g_missile; } bool IsLoaded() { return g_loaded; } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     void*               __vftable;
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];
@@ -86,7 +86,7 @@ struct CThing {
     }
 };
 static bool g_targetAlive = true; static CThing g_targetThing;
-struct CScriptThing {
+class CScriptThing { public:
     CThing* GetThing() const { return &g_targetThing; }
     bool IsAlive() const { return g_targetAlive; }
 };

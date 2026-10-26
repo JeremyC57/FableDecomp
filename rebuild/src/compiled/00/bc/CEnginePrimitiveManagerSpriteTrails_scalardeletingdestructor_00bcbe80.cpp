@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerSpriteTrails {
+class CEnginePrimitiveManagerSpriteTrails { public:
     void* vftable;
 };
 

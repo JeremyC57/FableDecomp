@@ -14,7 +14,7 @@
 // and the empty comparator on the stack. The signed `/ 2` is `cdq ; sub eax,edx ; sar 1`. The implicit
 // memberwise CTestQuest::operator= is inlined in the loop and called out of line for the last store; the
 // by-value `val` is destroyed by the callee. Layout from the landed CTestQuest sources (PDB names).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
@@ -32,7 +32,7 @@ public:
     CCharString QuestCardDefName;                  // +0x18
 };
 
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest& a, const CTestQuest& b) const;   // 0x006238A0
 };
 

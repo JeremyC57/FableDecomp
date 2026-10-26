@@ -3,7 +3,7 @@
 
 #include "fable_boot.h"
 
-struct CDisplayManager;
+class CDisplayManager;
 
 #pragma pack(push, 1)
 struct FableEngineRoot
@@ -27,8 +27,8 @@ struct FableDisplayPrimitive
     fable_u32 maximumHeight3AB4;
 };
 
-struct CDisplayManager
-{
+class CDisplayManager
+{ public:
     fable_u8 unknown00[0x08];
     FableDisplayPrimitive* displayPrimitive08;
     fable_u8 unknown0C[0x1BC];

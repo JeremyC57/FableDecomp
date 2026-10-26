@@ -1,7 +1,7 @@
 // Behaviour test: CRegionConnectionGraph::SetRegionsAsConnected -- both regions' graph nodes are told about each other; a region missing from the graph is skipped
 #include <cstdio>
 
-struct CRegionConnectionNode {
+class CRegionConnectionNode { public:
     long lastRegion;
     bool lastConnected;
     int  calls;
@@ -27,7 +27,7 @@ struct CRegionNodeMap {
         return (it == m_last || key < it->first) ? m_last : it;
     }
 };
-struct CRegionConnectionGraph {
+class CRegionConnectionGraph { public:
     CRegionNodeMap GraphNodes;
     void SetRegionsAsConnected(long region1, long region2, bool connected)
     {

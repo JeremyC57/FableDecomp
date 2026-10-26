@@ -24,18 +24,18 @@ static int fails = 0;
 //   inlined (an early-return helper), while the neighbours' test stays a call; the "no regions" arm (stay blocked) is
 //   the trailing else.
 #include <stdlib.h>
-struct CNavRegion {
+class CNavRegion { public:
     void RemoveConnectionToRegion(CNavRegion* region);      // 0x00A78060
     void SetAsConnectedToRegion(CNavRegion* region);        // 0x00A786C0
 };
-struct CANavQuadTreeNode;
+class CANavQuadTreeNode;
 struct CNodeSmallVector {
     CANavQuadTreeNode** Data;                               // +0x00
     signed char         Count;                              // +0x04
     CANavQuadTreeNode** begin() const { return Data; }
     CANavQuadTreeNode** end() const { return Data + Count; }
 };
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual void _v0();
     virtual const CNodeSmallVector* GetNeighbours();        // slot 1
     virtual void _v2(); virtual void _v3(); virtual void _v4(); virtual void _v5();

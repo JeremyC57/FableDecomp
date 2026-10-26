@@ -17,14 +17,14 @@
 // Label correction: catalog class "CSlider" -- the layout (SelectedChild +0x15c, PreviouslySelectedChild +0x160, Move +0x168,
 //   LastInputTime +0x180, PDefAction +0x188, PAcceptButton +0x198) is NUISystem::CTextSlider (landed Initialise 0x00549230).
 // Model: the landed CSlider::AdjustValueToProfile 0x0054A6F0 (button / front-end manager / def pointer); profile field names from Ego_r.pdb.
-struct C2DVector { float X, Y; };
-struct CRGBColour {
+class C2DVector { public: float X, Y; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(const CRGBColour& c) : B(c.B), G(c.G), R(c.R), A(c.A) {}
 };
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -64,7 +64,7 @@ struct CChangingStateComponent : IPrimary_0054a990, CObserver, ISecondaryB_0054a
     unsigned char _pad88[0x188 - 0x88];
     void ChangeState(unsigned long state);               // 0x0052CF40
 };
-namespace NUISystem { struct CAction; }
+namespace NUISystem { class CAction; }
 struct CRefCounted {                             // reference count base at +4 of a def
     long Count;
     void DecRef() { --Count; }
@@ -81,7 +81,7 @@ struct CFrontEndManagerDef : CDefBase {
     unsigned char _pad08[0x1a0 - 8];
     CSoundName    TextSliderSound;               // +0x1a0 (descriptive)
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     ~CDefPointer()
     {
@@ -90,7 +90,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Data; }
 };
-struct CUserProfileManager {                     // retail = Ego_r.pdb with 12-byte vectors
+class CUserProfileManager { public:                     // retail = Ego_r.pdb with 12-byte vectors
     unsigned char _pad00[0xc];
     bool  UseNewProfileValues;                   // +0x0c
     unsigned char _pad0d[0x17 - 0xd];
@@ -138,7 +138,7 @@ struct CFrontEndManager {
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 namespace NUISystem {
-struct CTextSlider {
+class CTextSlider { public:
     void* __vftable;
     unsigned char _pad04[0x30 - 4];
     float m_time;                                // +0x30 frame time (draggable base)

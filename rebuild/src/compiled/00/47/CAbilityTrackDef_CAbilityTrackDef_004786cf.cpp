@@ -8,7 +8,7 @@
 // the dword before the vector, the vector by its copy constructor (this = &m_levels, the source
 // member's address pushed), then the dword after it. Retail CParentDefClassBase is 0x3c bytes
 // (local model, see 0046f1b4).
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                   // +0x04..+0x3c
     CParentDefClassBase(const CParentDefClassBase& other);       // 0x0046EE98
@@ -21,7 +21,7 @@ struct CAbilityTrackLevelDefVector {                             // retail std::
     CAbilityTrackLevelDefVector(const CAbilityTrackLevelDefVector& other);   // 0x0047876B
 };
 
-struct CAbilityTrackDef : CParentDefClassBase {                  // vtable 0x0123649C
+class CAbilityTrackDef : public CParentDefClassBase { public:                  // vtable 0x0123649C
     long m_abilityType;                                          // +0x3c
     CAbilityTrackLevelDefVector m_levels;                        // +0x40
     long m_maxLevel;                                             // +0x4c

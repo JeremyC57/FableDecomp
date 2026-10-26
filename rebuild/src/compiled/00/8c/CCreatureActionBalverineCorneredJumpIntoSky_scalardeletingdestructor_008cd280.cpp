@@ -1,4 +1,4 @@
-struct CCreatureAction_BalverineCorneredJumpIntoSky {
+class CCreatureAction_BalverineCorneredJumpIntoSky { public:
     void* vftable;
 };
 

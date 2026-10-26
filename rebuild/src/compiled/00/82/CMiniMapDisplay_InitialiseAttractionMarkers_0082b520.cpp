@@ -6,14 +6,14 @@
 //   IsAttractedToHero 0x006CFE80, PeekGuiDef 0x00438570, CMiniMapDisplay::AddMarker 0x0082A500.
 // Shape: the InitialiseTraderMarkers model (0x0082AE80): right-operand-first `current == region(...)`, the inline long map-index
 //   getter, the if / else-if marker calls tail-merged by VC7.1 into one AddMarker call.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                             // a thing's sorted {type, component} vector
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0 (the const copy)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                    // +0x44
@@ -44,7 +44,7 @@ template <class T> struct _List_node {
 template <class T> struct list {                   // STLport list: the header node pointer
     _List_node<T>* _M_node;
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex);    // 0x004FC190
     long GetCurrentRegionNumber();                 // 0x004FB150
 };
@@ -57,12 +57,12 @@ struct CArray_MarkerGraphics {                     // CArray<SMarkerGraphics>: b
     SMarkerGraphics* m_pEnd;
     SMarkerGraphics& operator[](unsigned long i) { return m_pBegin[i]; }
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad00[0x958];
     CArray_MarkerGraphics MiniMapMarkerGraphics;           // +0x958
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
-struct CTCWife {                                   // interface 0xd7
+class CTCWife { public:                                   // interface 0xd7
     bool IsMarriedToThePlayer() const;             // 0x006CEC80
     bool IsAttractedToHero() const;                // 0x006CFE80
 };
@@ -70,23 +70,23 @@ struct CThingLists {
     unsigned char _pad00[0x14];
     list<CThing*> Creatures;                       // +0x14
 };
-struct CThingManager {
+class CThingManager { public:
     void*        __vftable;
     CThingLists* Lists;                            // +0x04
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual CThingManager* GetThingManager();      // slot 4 (+0x10)
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();              // slot 13 (+0x34)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                          // +0x24 scoped_ptr<CWorld>
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CRegion;
-struct CMiniMapDisplay {
+class CRegion;
+class CMiniMapDisplay { public:
     virtual void v00();
     unsigned char _pad04[0xb4];                    // +0x04 .. +0xb8
     CRegion*      m_pRegion;                       // +0xb8 (retail)

@@ -21,9 +21,9 @@
 #include "engine/CModeStandBase.h"
 #undef CModeStandBase
 #include <math.h>
-struct CThing;
+class CThing;
 extern float g_epsilon_0129ba3c;                    // 0x0129BA3C
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                                 // +0x00
     long GetDelayTime() const;                      // 0x005DC1F0
     unsigned long GetAnimateThingFlags() const;     // 0x005DC390
@@ -38,12 +38,12 @@ struct CAnimEntryLite {
     long GetDelayTime() const { return DelayTime; }
     long GetAnimateThingFlags() const { return AnimFlags; }
 };
-struct CAnimFrameInfo {
+class CAnimFrameInfo { public:
     float A, B;
     CAnimFrameInfo() : A(0.0f), B(0.0f) {}
     CAnimFrameInfo(const CAnimFrameInfo& o) : A(o.A), B(o.B) {}
 };
-struct CAnimInit {
+class CAnimInit { public:
     long           UpdateMode;                      // +0x00
     unsigned char  Type;                            // +0x04
     bool           Looping;                         // +0x05
@@ -61,7 +61,7 @@ struct CAnimInit {
         Set(type, mode, anim, a, b, flags, priority);
     }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     long           State;                           // +0x00
     unsigned char  _pad04[0x18];
     CAnimFrameInfo Frame;                           // +0x1C
@@ -74,7 +74,7 @@ template<class T> inline const T& Max(const T& a, const T& b) { return a < b ? b
 class CModeStandBase {
 public:
     enum EExistingAnimStatus { STATUS_NONE, STATUS_SAME, STATUS_REPLACE };
-    struct CMovementSetup {
+    class CMovementSetup { public:
         float            MaxMovementSpeed;              // +0x00
         unsigned char    Type;                          // +0x04
         CAnimationEntry* PAnimEntry;                    // +0x08

@@ -1,7 +1,7 @@
 // Behaviour test for CTCTalk::PlayAISpeech(id, force, layer, b1, b2) @ 0x006E3B60: gate, own voice, layer pinned to 1.
 #include <cstdio>
-struct CCharString { const char* m_pData; };
-struct CTCTalk {
+class CCharString { public: const char* m_pData; };
+class CTCTalk { public:
     bool IsPureAISpeaker; CCharString DialogueVoice; int calls; unsigned long lastId; long lastLayer; const CCharString* lastVoice; bool lastB2;
     long PlaySpeech(unsigned long id, const CCharString& voice, long layer, bool b1, bool b2)
     { ++calls; lastId = id; lastVoice = &voice; lastLayer = layer; lastB2 = b2; return b1 ? 3 : 4; }

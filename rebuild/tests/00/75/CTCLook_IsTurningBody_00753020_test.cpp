@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCLook {
+class CTCLook { public:
     float m_xy, m_yz; int calls;
     bool GetTurningAnglesAndCheckForTurningBody(float* angleXY, float* angleYZ)
     {

@@ -1,5 +1,5 @@
-struct C2DVector { float x; float y; };
-struct C2DBoxF { float minX; float minY; float maxX; float maxY; };
+class C2DVector { public: float x; float y; };
+class C2DBoxF { public: float minX; float minY; float maxX; float maxY; };
 class C2DLineF {
 public:
     float x1; float y1; float x2; float y2;

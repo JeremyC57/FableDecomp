@@ -10,8 +10,8 @@
 // Shape: base constructor, own vtable store (scheduled after the first member's `lea`), the four string
 // default constructors in declaration order, then the def pointer's inline constructor (a single
 // zero store). engine/CTCBase.h holds the layout only, so the base is modelled as `CTCBase_Calls`.
-struct CThing;
-struct CAIScratchpadDef;
+class CThing;
+class CAIScratchpadDef;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -21,20 +21,20 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     CTCBase_Calls(CThing* thing);                           // 0x00686800
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                          // 0x0099E4B0
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     const T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCAIScratchpad : CTCBase_Calls {                    // vtable 0x0126D07C
+class CTCAIScratchpad : public CTCBase_Calls { public:                    // vtable 0x0126D07C
     unsigned long  ThankingPhrase;                          // +0x0c
     unsigned long  IgnoringPhrase;                          // +0x10
     C3DVector      WanderCentrePoint;                       // +0x14

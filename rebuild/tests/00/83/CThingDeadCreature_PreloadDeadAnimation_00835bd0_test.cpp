@@ -3,10 +3,10 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CMeshDataBank { int id; };
+class CMeshDataBank { public: int id; };
 struct SAnimationSetEntry { int id; };
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v000() {}
     virtual void DestroyDef() { ++g_destroyed; }
     long m_refCount;
@@ -16,22 +16,22 @@ struct CDefPointeeBase {
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer() { if (m_pObject) m_pObject->ReleaseDef(); }
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     SAnimationSetEntry* m_first;
     SAnimationSetEntry* m_last;
     SAnimationSetEntry* m_end;
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char       _pad08[0x2c];
     CAnimationSet       m_anims;
 };
 static CAppearanceDef* g_appearance = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     CAppearanceDef* FindAppearanceDef() { ++g_getSubDef; return g_appearance; }
     bool GetSubDef(CDefPointer<CAppearanceDef>& out);
 };
@@ -44,7 +44,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& out)
     out.m_pObject = def;
     return true;
 }
-struct CWorld {
+class CWorld { public:
     unsigned char  _pad00[0x3c];
     CMeshDataBank* PMainMeshBank;
 };
@@ -62,12 +62,12 @@ CPreloadDeadAnimation __fastcall ForEachAnimation(SAnimationSetEntry* first, SAn
     return preload;
 }
 static CWorld g_world;
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PBaseDef;
     const CWorld& PeekWorld() const { return g_world; }
 };
-struct CThingDeadCreature : CThing {
+class CThingDeadCreature : public CThing { public:
     void PreloadDeadAnimation();
 };
 void CThingDeadCreature::PreloadDeadAnimation()

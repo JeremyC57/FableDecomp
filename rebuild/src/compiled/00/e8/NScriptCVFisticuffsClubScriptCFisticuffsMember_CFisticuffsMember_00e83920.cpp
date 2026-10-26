@@ -1,5 +1,5 @@
 // NScript::CV_FisticuffsClubScript::CFisticuffsMember::CFisticuffsMember(CV_FisticuffsClubScript& parent, CScriptDataBase* data, const CScriptThing& me) -- a fisticuffs-club member's entity script: entity-script base over the quest's interface and Me, the parent, the ShoutTimer, the cheer/boo strings, and the master data last
-// Leaf: ??0CFisticuffsMember@CV_FisticuffsClubScript@NScript@@QAE@AAV12@PAUCScriptDataBase@@ABUCScriptThing@@@Z
+// Leaf: ??0CFisticuffsMember@CV_FisticuffsClubScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E83920, 89 bytes (+ int3 padding), `ret 0Ch`; its only caller is the
 //   factory 0x00E838A0 (`push 30h`, CFisticuffsMember::Alloc), bound as "FisticuffsMember" at 0x00E822D4.
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, g_pGameScriptInterface (0x0143E8F8)->RegisterTimer
@@ -10,7 +10,7 @@
 // Shape: the landed entity-script constructors (CDarkwoodTrader 0x00E01670): Game is a plain initialiser of the base stored
 //   before the base vtable, the derived vtable precedes ParentClass, the timer asks the interface for an index, the strings
 //   follow, PMasterData is a body assignment stored last. The interface model is the landed 88-slot one.
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual ~CGameScriptInterface();                    // slot 0 (deleting destructor)
     virtual void Error();
     virtual void TraceMessage();
@@ -101,8 +101,8 @@ struct CGameScriptInterface {
     virtual long RegisterTimer();                       // slot 87 (+0x15c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CScriptDataBase;
-struct CBaseClass {                           // vtable 0x01231710
+class CScriptDataBase;
+class CBaseClass { public:                           // vtable 0x01231710
     virtual void v00();
     CBaseClass();                             // 0x0099A2D0
 };
@@ -111,27 +111,27 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptThing : CBaseClass {            // vtable 0x01238C8C, 12 bytes (PImp Data +4, Info +8)
+class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp Data +4, Info +8)
     CCountedPointerWords PImp;                // +0x04
     virtual void v00();
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };
-struct CEntityScriptBase {                    // vtable 0x012C3224, 0x14 bytes
+class CEntityScriptBase { public:                    // vtable 0x012C3224, 0x14 bytes
     virtual void v00();
     CGameScriptInterface* Game;               // +0x04 (a plain initialiser: stored before the vtable)
     CScriptThing          Me;                 // +0x08
     CEntityScriptBase(const CScriptThing& thing, CGameScriptInterface* game) : Game(game), Me(thing) { }
 };
-struct CTimer {                               // a script timer: the interface's timer index
+class CTimer { public:                               // a script timer: the interface's timer index
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                            // 0x0099E4B0
 };
 namespace NScript {
-struct CQ_SunnyvaleMasterData;
+class CQ_SunnyvaleMasterData;
 class CV_FisticuffsClubScript {                         // the owning quest script: only Game is read
 public:
     unsigned char         _pad00[0x40];                 // CScriptBase

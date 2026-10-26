@@ -21,7 +21,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -33,7 +33,7 @@ __forceinline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
     return C3DVector(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
 }
 
-struct CHeightMapCell {                            // PDB, 12 bytes
+class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
     unsigned char _pad04[8];
 };
@@ -43,7 +43,7 @@ template <class T> struct CRetailVector {
     T* _M_end_of_storage;
     T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-struct CHeightMap {
+class CHeightMap { public:
     virtual ~CHeightMap();
     void*                          World;          // +0x04
     void*                          Map;            // +0x08
@@ -54,7 +54,7 @@ struct CHeightMap {
     long                           SizeY;          // +0x208
     __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) const { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
-struct CMap {
+class CMap { public:
     unsigned char _pad000[0x1a7c];
     CHeightMap*   PHeightMap;                      // +0x1a7c
     C3DVector GetGroundFaceNormalAt(const C3DVector& localPos) const;

@@ -4,18 +4,18 @@
 
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() { }
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long TextureIndex; ECompositeBlendType BlendType; CRGBColour DiffuseColour; CRGBColour SpecularColour;
     CCompositeBlendDesc() { }
     CCompositeBlendDesc(const CCompositeBlendDesc& o) : TextureIndex(o.TextureIndex), BlendType(o.BlendType), DiffuseColour(o.DiffuseColour), SpecularColour(o.SpecularColour) { }
 };
-struct CTextureMorphEntry { long TextureLayer; CCompositeBlendDesc Blend; };
+class CTextureMorphEntry { public: long TextureLayer; CCompositeBlendDesc Blend; };
 struct CMorphPair { EHeroMorphType first; CTextureMorphEntry second; };
 struct CMorphLess { bool operator()(const CMorphPair& a, const CMorphPair& b) const { return a.first < b.first; } };
 typedef CMorphPair T;

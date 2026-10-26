@@ -2,10 +2,10 @@
 // grows; the slot is filled, its box moved to the position, UID allocated and the map registered.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString& operator=(const CCharString& o) { Text = o.Text; return *this; } };
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CMapInfo { C2DBoxI Area; CCharString LevelName; unsigned long MapUID; bool Used, Placed; };
+class CCharString { public: const char* Text; CCharString& operator=(const CCharString& o) { Text = o.Text; return *this; } };
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CMapInfo { public: C2DBoxI Area; CCharString LevelName; unsigned long MapUID; bool Used, Placed; };
 struct CArray {
     CMapInfo Store[8]; CMapInfo* _M_start; CMapInfo* _M_finish;
     unsigned int size() const { return _M_finish - _M_start; }
@@ -13,8 +13,8 @@ struct CArray {
     void resize(unsigned int n) { CMapInfo blank = { { 0, 0, 0, 0 }, { 0 }, 0, false, false }; while (size() < n) *_M_finish++ = blank; }
 };
 static long g_added = -1, g_loaded = -1;
-struct CEngineManager { static CEngineManager& Get() { static CEngineManager m; return m; } void AddMap(long m) { g_added = m; } };
-struct CWorldMap {
+class CEngineManager { public: static CEngineManager& Get() { static CEngineManager m; return m; } void AddMap(long m) { g_added = m; } };
+class CWorldMap { public:
     CArray Maps;
     unsigned long AllocateMapUID(long map) { return 1000 + map; }
     void LoadLoadableGlobalThingsForLevel(long map) { g_loaded = map; }

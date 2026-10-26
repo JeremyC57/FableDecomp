@@ -3,7 +3,7 @@
 // Behaviour test for CEngineSimulationManager::AddSimulationInfo(info, paused, fullUpdateOnly) @ 0x00B817D0: paused wins,
 // then full-update-only, else always-update; the node is appended at the list's end and holds a counted reference.
 inline void* operator new(size_t, void* where, int) { return where; }
-struct CEnginePrimitiveSimulationInfo {
+class CEnginePrimitiveSimulationInfo { public:
     void* vptr;
     long  IVRefCount;
 };

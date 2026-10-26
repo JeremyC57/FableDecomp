@@ -2,7 +2,7 @@
 // __fastcall long GetMemoryFootprint(CMap* this)
 // sums two base/member footprint helpers plus [this+8]
 
-struct CMap {
+class CMap { public:
     char pad0[8];
     long CachedVolumes;              // [this+8]
     long BaseFootprintA();

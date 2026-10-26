@@ -4,12 +4,12 @@
 #endif
 // Behaviour test: CPlayerGui::AddHitByMelee -- the def's smack effect is started (not auto-started) at the hit position,
 // oriented up (0,0,1) / forward (0,1,0); attacker and victim are unused.
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {}
 };
-struct CPlayerGuiDef { long SmackEffect; };
+class CPlayerGuiDef { public: long SmackEffect; };
 static CPlayerGuiDef g_def = { 42 };
 static int g_peeks = 0;
 const CPlayerGuiDef* __fastcall PeekGuiDef() { ++g_peeks; return &g_def; }

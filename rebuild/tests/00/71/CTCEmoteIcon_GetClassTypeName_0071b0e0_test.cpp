@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Self-contained behavior model of CTCEmoteIcon::GetActionName.
-struct CCharString {
+class CCharString { public:
     const char* p;
     int n;
     CCharString(const char* s, int len) : p(s), n(len) {}

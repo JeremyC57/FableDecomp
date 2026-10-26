@@ -29,7 +29,7 @@ namespace N_0099a2d0 { struct CBase {
     virtual void v00();
 }; } using N_0099a2d0::CBase;
 
-struct CVolume : CBase {                                    // vtable 0x0129C840
+class CVolume : public CBase { public:                                    // vtable 0x0129C840
     IDirect3DVolume9* m_pVolume;                            // +4
     CVolume() : m_pVolume(0) { }
     CVolume(IDirect3DVolume9* volume) : m_pVolume(0) { InitialiseFromVolume(volume); }
@@ -40,7 +40,7 @@ struct CVolume : CBase {                                    // vtable 0x0129C840
     virtual void v00();
 };
 
-struct CVolumeTexture {
+class CVolumeTexture { public:
     void*                    vfptr;                         // +0
     IDirect3DVolumeTexture9* m_pTexture;                    // +4
     CVolume GetVolumeLevel(unsigned int level);

@@ -27,13 +27,13 @@ template<class T> struct RetailVector {
  __forceinline T& operator[](unsigned int n)const{return Start[n];}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
  __forceinline bool IsRequestedType()const{return (ThingTypeFlags&15)==15;}
 };
-struct CThingCreatureBase:CThing {};
-struct CThingAICreature:CThingCreatureBase {};
-struct C2DBoxI {
+class CThingCreatureBase:public CThing { public:};
+class CThingAICreature:public CThingCreatureBase { public:};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -43,8 +43,8 @@ struct C2DBoxI {
 struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious;CThingMapCell* PCell;};
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
-struct CMapwhoLevelInfo {long Size;long Width,Height;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;long Width,Height;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -59,10 +59,10 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct CThingFilter_IsAICreatureAwareOf {CThingAICreature* PCreature;bool operator()(const CThingCreatureBase&)const;}; // 0x006a7610
-struct CThingFilter_IsUnconscious {bool operator()(const CThing&)const;}; // 0x006a73e0
-struct CThingFilter_IsAnAlly {CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a7a40
-struct CThingFilter_HasBeenDiscovered {bool operator()(const CThing&)const;}; // 0x006a84b0
+class CThingFilter_IsAICreatureAwareOf { public:CThingAICreature* PCreature;bool operator()(const CThingCreatureBase&)const;}; // 0x006a7610
+class CThingFilter_IsUnconscious { public:bool operator()(const CThing&)const;}; // 0x006a73e0
+class CThingFilter_IsAnAlly { public:CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a7a40
+class CThingFilter_HasBeenDiscovered { public:bool operator()(const CThing&)const;}; // 0x006a84b0
 struct Filters {
  CThingFilter_IsAICreatureAwareOf* F1;
  CThingFilter_IsUnconscious* F2;
@@ -70,7 +70,7 @@ struct Filters {
  CThingFilter_HasBeenDiscovered* F4;
  __forceinline bool operator()(const CThingCreatureBase& p)const{return (*F1)(p)&&(*F2)(p)&&(*F3)(p)&&!(*F4)(p);}
 };
-struct CThingCompare_Nearest {float Pos[3];template<class T> T* operator()(T*,T*)const;}; // 0x00782560
+class CThingCompare_Nearest { public:float Pos[3];template<class T> T* operator()(T*,T*)const;}; // 0x00782560
 struct CThingSearchTools_Calls {
  CWorldMap* WorldMap;
  CThingMapManager* PThingMapManager;

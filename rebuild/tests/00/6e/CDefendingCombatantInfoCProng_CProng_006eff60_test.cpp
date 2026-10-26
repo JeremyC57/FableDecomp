@@ -2,12 +2,12 @@
 #include <new>
 // Test copy of the 0x006EFF60 model: CProng's out-of-line copy constructor over the byte-packed head.
 static int g_links = 0;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00() { }
     CBaseObject* m_pItem;
@@ -27,8 +27,8 @@ struct CProngHead {
     CProngHead() : Blocked(false) { }
 };
 #pragma pack(pop)
-struct CDefendingCombatantInfo {
-    struct CProng : CProngHead {
+class CDefendingCombatantInfo { public:
+    class CProng : public CProngHead { public:
         long                ProngBlockageTimer;
         CIntelligentPointer POccupier;
         CProng() : ProngBlockageTimer(0) { }

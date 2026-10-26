@@ -7,7 +7,7 @@
 // address is formed with `lea ecx,[esi+N]` and its three words are cleared from the shared eax zero. The plain floats/longs
 // have no constructor. Needs the def module's `#pragma optimize("s", on)` (speed folds every address into disp32 stores). Local model: engine/CParentDefClassBase.h is a flat generated layout without the ctor/vtable.
 #pragma optimize("s", on)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
     CParentDefClassBase();                      // 0x00430370
@@ -26,7 +26,7 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CSpecialAbilitiesBerserkDef : CParentDefClassBase {
+class CSpecialAbilitiesBerserkDef : public CParentDefClassBase { public:
     float SpeedMultiplier;                              // +0x3c
     long  FramesToFadeOut;                              // +0x40
     float LowerBerserkPercent;                          // +0x44

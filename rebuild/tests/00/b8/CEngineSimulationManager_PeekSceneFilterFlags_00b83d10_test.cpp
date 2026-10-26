@@ -1,10 +1,10 @@
 #include <cstdio>
 
-struct CEngineSimulationManager;
+class CEngineSimulationManager;
 
 unsigned long __fastcall CEngineSimulationManager_PeekSceneFilterFlags(CEngineSimulationManager* manager);
 
-struct CEngineSimulationManager { int dummy; };
+class CEngineSimulationManager { public: int dummy; };
 
 int main()
 {

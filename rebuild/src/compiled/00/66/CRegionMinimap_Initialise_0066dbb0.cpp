@@ -15,7 +15,7 @@
 struct IDirect3DSurface9;
 struct IDirect3DTexture9;
 
-struct CSurface {
+class CSurface { public:
     IDirect3DSurface9* PD3DSurface;                     // +0x04
     unsigned long      AllocationSource;                // +0x08
     void*              PAllocatedMemory;                // +0x0c
@@ -23,7 +23,7 @@ struct CSurface {
     void Uninitialise();                                // 0x009F2E20
 };
 
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                     // +0x00
     unsigned long      ByteLengthAndSource;             // +0x04 ByteLength:28, AllocationSource:4
     void Uninitialise();                                // 0x009F9F70
@@ -36,19 +36,19 @@ template<class T> struct CRetailVector {                // retail std::vector: t
     void resize(unsigned long n, const T& value);       // 0x00468FA5 (vector<CRGBColour>)
 };
 
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct C3DVector {
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
 };
 struct RegionMinimapCellData;
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char             _pad[0x99c];
     unsigned long             NoRegionMinimapThemeColours;   // +0x99c
     unsigned char             _pad9a0[0xc];

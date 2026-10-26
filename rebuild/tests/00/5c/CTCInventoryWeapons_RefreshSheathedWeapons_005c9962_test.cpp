@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour of CTCInventoryWeapons::RefreshSheathedWeapons (0x005C9962).
-struct CTCBase { bool m_weaponsSheathed; };
+class CTCBase { public: bool m_weaponsSheathed; };
 struct CPresenceBits { unsigned long m_bits[2]; bool test(long bit) { return (m_bits[bit >> 5] >> (bit & 31)) & 1; } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits m_present; CInterfaceMap m_interfaces;
     template <class T> bool GetInterface(long type, T** out)
     {
@@ -24,7 +24,7 @@ struct CThing {
     }
 };
 typedef CTCBase CTCCarrier;
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     CThing* ParentThing; long m_put; long m_taken;
     void PutWeaponsInSheathes() { ++m_put; }
     void TakeWeaponsOutOfSheathes() { ++m_taken; }

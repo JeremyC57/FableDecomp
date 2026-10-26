@@ -3,7 +3,7 @@
 #include <string>
 // Behaviour test for CQ_WizardBattleScript::DoMission (0x00E1C0F0): waits for HookCoast, sets the objective, hides
 // CS_KEY, limbos the village, spawns two threads, records two positions, then runs the phases unless the mission failed.
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 struct CGSI {
     int Frames; int LoadFrame; char Objective[64]; float KeyAlpha; bool Limbo; char Log[128];
     void NewScriptFrame() { ++Frames; }

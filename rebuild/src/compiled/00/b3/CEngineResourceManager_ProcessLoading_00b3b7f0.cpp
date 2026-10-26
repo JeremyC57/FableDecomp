@@ -22,7 +22,7 @@ class CGraphicBankManager {
 public:
     void ProcessLoading(bool flag, double until);        // 0x009F8230
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char        _pad[0x6c];
     CGraphicBankManager* GraphicBankManager;             // +0x6c
 };

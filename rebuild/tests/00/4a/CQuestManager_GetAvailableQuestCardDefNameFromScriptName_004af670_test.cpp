@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <string.h>
 
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 static long Compare_00411570(const char* a, const char* b) { return strcmp(a, b); }
-struct CCharString { CCharStringData* PStringData; };
+class CCharString { public: CCharStringData* PStringData; };
 static inline bool SameText(const CCharStringData* a, const CCharStringData* b)
 {
     if (a == b)
@@ -19,7 +19,7 @@ static CCharString g_EmptyCharString_013bd804 = { 0 };
 struct CQuestCard { CCharString DefName; CCharString ScriptName; bool Replayable; long FeatIndex; };
 struct CQuestCardNode { CQuestCardNode* next; CQuestCardNode* prev; CQuestCard value; };
 
-struct CQuestManager {
+class CQuestManager { public:
     CQuestCardNode* AvailableQuestCardTypes;
     const CCharString& GetAvailableQuestCardDefNameFromScriptName(const CCharString& scriptName) const
     {

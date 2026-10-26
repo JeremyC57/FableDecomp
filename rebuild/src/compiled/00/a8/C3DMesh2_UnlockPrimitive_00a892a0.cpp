@@ -4,11 +4,11 @@
 // Retail C3DMesh2 sits 8 bytes below the Ego_r PDB layout from the handles on: MemoryHandle +0x7c
 // (PDB +0x84), PrimMemoryHandle +0x80, BoneNameMemoryHandle +0x84 (-1 when the mesh has no bone
 // names). Modelled locally for that reason.
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void Unlock(long handle);              // 0x00A02710
 };
 
-struct C3DMesh2 {
+class C3DMesh2 { public:
     void* m_vptr;
     CHandleBasedMemoryPool* MemoryPool;    // +4
     unsigned char _pad_0x08[0x74];

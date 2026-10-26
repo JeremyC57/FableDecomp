@@ -6,10 +6,10 @@
 // Layout: as the sibling HasWaterAt 0x0081FB00 (CMap DefinitionManager +0x1c, palette +0x1a6c, height map +0x1a7c); CEngineThemeDef
 //   WaterHeight is retail +0x6c (PDB +0x70).
 // Shape: the coordinates copied into locals, nested scopes with one raw def pointer per layer released by hand on the way out. GetDef is a same-TU stand-in that only writes its out slot.
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
 };
-struct CHeightMapCell {                            // PDB, 12 bytes
+class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -22,7 +22,7 @@ template <class T> struct CRetailVector {          // STLport vector: begin / en
     T* _M_end_of_storage;
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CHeightMap {                                // retail layout
+class CHeightMap { public:                                // retail layout
     unsigned char                  _pad00[0x10];
     CRetailVector<CHeightMapCell>  Cells;          // +0x10
     unsigned char                  _pad1c[0x1e8];
@@ -34,17 +34,17 @@ struct CEngineThemePaletteEntry {                  // 8 bytes
     long DefIndex;
     long Count;
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void DestroySelf();
     long RefCount;
 };
-struct CEngineThemeDef : CDefPointeeBase {
+class CEngineThemeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x6c - 8];
     float         WaterHeight;                     // +0x6c (retail)
     long          WaterType;                       // +0x70 (retail)
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CEngineThemeDef** out);   // 0x0063F3A0
 };
 void* FindDef_CDefinitionManager_GetDef_0();       // stand-in callee of the stand-in body below
@@ -58,7 +58,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CEngineThemeDef
     return true;
 }
 #pragma auto_inline(on)
-struct CMap {
+class CMap { public:
     unsigned char                            _pad00[0x1c];
     CDefinitionManager*                      DefinitionManager;   // +0x1c
     unsigned char                            _pad20[0x1a6c - 0x20];

@@ -1,6 +1,6 @@
 // Behaviour test for 0x00d77340 CQ_HangingTreeGoodScript::StoreGuardsHealth
 #include <cstdio>
-struct CScriptThing { float m_health; };
+class CScriptThing { public: float m_health; };
 struct CGameScriptInterface_Calls { virtual float GetHealth(const CScriptThing& thing) const { return thing.m_health; } };
 template <class T> struct CRetailVector {
     T* m_pBegin; T* m_pEnd; T* m_pCapacity;

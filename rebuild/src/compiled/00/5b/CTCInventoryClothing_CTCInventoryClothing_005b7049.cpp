@@ -13,10 +13,10 @@
 // PMannequin +0x158, UseMannequin +0x15C, LoadedFromSaveGame +0x15D, ClothingItemMap +0x160, ClothingList +0x16C.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);                    // 0x00BFEA14
-struct CThing {
+class CThing { public:
     void Kill(bool silent);                                   // 0x004C9B80
 };
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 struct SClothingMenuEntry { long Part; NUISystem::CComponent* Component; };
 struct CClothingMenuEntryVector {                             // vector<pair<EClothingSuitPart, CComponent*>>
     SClothingMenuEntry* _M_start;

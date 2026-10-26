@@ -6,7 +6,7 @@
 // The 'this' (CActionPlayAnimation*) is passed in ecx but unused; the
 // hidden struct-return buffer is the sole cleaned stack arg (ret 4).
 
-struct CCharString {
+class CCharString { public:
     CCharString(const char* s, int n);
 };
 

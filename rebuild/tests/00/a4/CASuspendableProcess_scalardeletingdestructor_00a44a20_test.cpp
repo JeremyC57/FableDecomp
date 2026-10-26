@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CASuspendableProcess {
+class CASuspendableProcess { public:
     void* vftable;
     int destroyed;
 };

@@ -5,13 +5,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString() { text[0] = 0; }
     CCharString(const char* s) { std::strcpy(text, s); }
     const char* c_str() const { return text; }
 };
-struct CStringParser {
+class CStringParser { public:
     const char* String;
     CCharString TempCharString;
     CStringParser() : String(0) {}
@@ -37,7 +37,7 @@ struct CStringParser {
         return r;
     }
 };
-struct CPersistContext {
+class CPersistContext { public:
     int mode;                       // 1 save, 2 load
     CCharString* saveTo;
     CStringParser* parser;

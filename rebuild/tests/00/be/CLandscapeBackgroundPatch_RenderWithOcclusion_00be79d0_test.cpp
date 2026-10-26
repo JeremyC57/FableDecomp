@@ -2,11 +2,11 @@
 #include <stdio.h>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { C3DVector Right, Up, Forward, Position; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: C3DVector Right, Up, Forward, Position; };
 struct SOcclusionQuery { long Query; long Result; SOcclusionQuery() : Query(0), Result(0) {} };
 static SOcclusionQuery g_q[0x2000];
-struct CEngineOcclusionManager {
+class CEngineOcclusionManager { public:
     SOcclusionQuery* Queries; unsigned long QueryCount;
     int begins, ends; long lastEnd; unsigned long result; CMatrix3x4 lastBox; long boxRet;
     void BeginQuery() { ++begins; }
@@ -21,9 +21,9 @@ struct CEngineGlobal { bool OcclusionEnabled; };
 static CEngineGlobal g_eng; static CEngineGlobal* g_pEngine = &g_eng;
 struct CLandscapeMapHeader { unsigned short OriginX, OriginY; };
 struct CLandscapeMapView { CLandscapeMapHeader* Header; };
-struct CLandscapeBackgroundTreeNode { CLandscapeMapView* Map; int visCalls; bool lastVis;
+class CLandscapeBackgroundTreeNode { public: CLandscapeMapView* Map; int visCalls; bool lastVis;
     void SetVisibilityFlagAndUpdateParentChain(bool v) { ++visCalls; lastVis = v; } };
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     CLandscapeBackgroundTreeNode* Parent; float MinZ, MaxZ; unsigned short MapX, MapY, Width, Height;
     int renders; bool lastFull;
     bool Render(bool full) { ++renders; lastFull = full; return true; }

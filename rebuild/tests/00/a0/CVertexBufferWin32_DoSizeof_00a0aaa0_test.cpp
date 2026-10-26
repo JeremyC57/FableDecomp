@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     char pad[0x3a3c];
     unsigned long baseSize;
     unsigned long DoSizeof();

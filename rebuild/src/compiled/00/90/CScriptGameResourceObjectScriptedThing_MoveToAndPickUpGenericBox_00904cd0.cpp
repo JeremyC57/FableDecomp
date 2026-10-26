@@ -15,7 +15,7 @@
 
 void* __cdecl operator new(size_t size);           // 0x00BFEA1A
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -30,7 +30,7 @@ struct CThing_Retail {
     CInterfaceMap  m_interfaces;                   // +0x44
     unsigned char  _pad4c[0x20];
     unsigned long  ThingTypeFlags;                 // +0x6c
-    const struct C3DVector& GetPosition() const;   // 0x004C73D0
+    const class C3DVector& GetPosition() const;   // 0x004C73D0
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
@@ -78,8 +78,8 @@ public:
 };
 
 
-struct C3DVector;
-struct CTCScriptedControl;
+class C3DVector;
+class CTCScriptedControl;
 namespace NTCScriptedControl {
 struct CActionBase;
 struct CActionMoveTo {                             // 0x50 bytes
@@ -95,7 +95,7 @@ struct CActionPickUpGenericBox {                   // 0x20 bytes
     CActionPickUpGenericBox(CThing_Retail* box);   // 0x00713200
 };
 }
-struct CTCScriptedControl {                        // interface 0x1f component
+class CTCScriptedControl { public:                        // interface 0x1f component
     void AddAction(void* action);                  // 0x007137D0
 };
 

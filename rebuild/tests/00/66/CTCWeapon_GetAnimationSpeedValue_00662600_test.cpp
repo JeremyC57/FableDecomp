@@ -6,7 +6,7 @@ struct RefObj {
     char   pad[0x64 - 8];
     float  value;
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     char   pad[0x70];
     RefObj* obj;
 };

@@ -1,4 +1,4 @@
-struct CCreatureAction_SummonerSummonInto {
+class CCreatureAction_SummonerSummonInto { public:
     void* vftable;
 };
 

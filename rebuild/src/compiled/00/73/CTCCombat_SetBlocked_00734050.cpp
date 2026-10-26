@@ -10,7 +10,7 @@
 // template (0x007504E0): the key temporary is homed in the consumed argument slot (`lea eax,[esp+0Ch]`),
 // the map pointer is a named local (esi); `(long)(g_FramesPerSecond * 2.0f)` is `fild ; fadd st0,st0 ;
 // __ftol2`; the deregistration is unconditional.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -19,12 +19,12 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CTCBase {
+class CTCBase { public:
     unsigned char _pad[0x50];
     long          m_frameCounter;           // +0x50
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_thingType;              // +0x10 (2 = creature)
     unsigned char _pad11[0xf];
@@ -49,8 +49,8 @@ extern long g_FramesPerSecond;              // 0x01375550
 
 #include "engine/CTCCombat.h"
 
-struct CThingCreatureBase;
-struct CCombatManager {
+class CThingCreatureBase;
+class CCombatManager { public:
     void DeregisterCombatant_006ea430(CThingCreatureBase* creature);   // 0x006EA430
 };
 

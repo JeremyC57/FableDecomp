@@ -1,7 +1,7 @@
 // Behaviour test for 0x004AC860: set<CCharString>::insert converts insert_unique's (tree iterator, bool) result into the set's (const iterator, bool)
 #include <cstdio>
 
-struct CCharString { const char* Text; };               // stand-in key (compared by text pointer here)
+class CCharString { public: const char* Text; };               // stand-in key (compared by text pointer here)
 struct TestNode { CCharString Value; };
 
 struct TestTreeIterator { TestNode* _M_node; };                      // _Rep_type::iterator

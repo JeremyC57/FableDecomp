@@ -11,9 +11,9 @@
 // Shape: the frame loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... }` -- the first three exits expand the
 //   locals' (implicit handle / __forceinline CScriptThing) destructors inline and share one tail; later exits sit under
 //   in-body inline_depth(0). A `while (!IsActiveThreadTerminating())` loop places the shared tail at the first exit.
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -34,7 +34,7 @@ struct CScriptThingImp {
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
 struct CCountBlock { long References; void (__fastcall* DeleteFunc)(void* data); void* Data; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;
     CCountBlock* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -52,11 +52,11 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {                                    // vtable 0x01231710
+class CBaseClass { public:                                    // vtable 0x01231710
     virtual ~CBaseClass();                             // 0x0099A2E0
     __forceinline CBaseClass() { }
 };
-struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     virtual void t1(); virtual void t2();
     virtual CCharString GetDataString() const;         // slot 3 (+0x0c)
     virtual void t4(); virtual void t5();
@@ -76,16 +76,16 @@ struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 
     __forceinline CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     __forceinline ~CScriptThing() { }                  // out of line 0x004AA840
 };
-struct CBaseObject {                                   // vtable 0x0129A7D8
+class CBaseObject { public:                                   // vtable 0x0129A7D8
     void* m_pIntelligentPointer;
     CBaseObject();                                     // 0x0099A380
     virtual ~CBaseObject();                            // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseObject {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                        // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor; out-of-line copy 0x007E74D0
@@ -93,7 +93,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void Release();                                    // 0x00CD2770
     void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, long priority);   // slot 8 (+0x20)
@@ -210,7 +210,7 @@ struct CGameScriptInterface {
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x9f4];
     float ArenaSentryScareDistance;                    // +0x9f4 (retail; PDB name not resolved)
 };

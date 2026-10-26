@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing;
+class CThing;
 static CThing* g_things[4];
 struct CThingUIDMapOwner {
     CThing* GetThingWithUID(long long uid) { return (uid >= 1 && uid <= 3) ? g_things[uid] : 0; }
@@ -7,8 +7,8 @@ struct CThingUIDMapOwner {
 static CThingUIDMapOwner g_owner;
 static CThingUIDMapOwner* g_pThingUIDMapOwner = &g_owner;
 static int g_baseCalls = 0;
-struct CThing { int dummy; void OnInitialActivate() { ++g_baseCalls; } };
-struct CThingTrackNode : CThing {
+class CThing { public: int dummy; void OnInitialActivate() { ++g_baseCalls; } };
+class CThingTrackNode : public CThing { public:
     CThingTrackNode* PNextNode;
     CThingTrackNode* PPreviousNode;
     long long NextNodeUID, PreviousNodeUID;

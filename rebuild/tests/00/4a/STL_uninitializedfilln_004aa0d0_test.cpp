@@ -3,13 +3,13 @@
 
 // Behaviour model of __uninitialized_fill_n<CTestQuest*> (0x004AA0D0): copy-construct x into n slots, return the end.
 static int g_copies = 0;
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* s) : p(s) { }
     CCharString(const CCharString& o) : p(o.p) { ++g_copies; }
 };
 struct __false_type { __false_type() { } };
-struct CTestQuest {
+class CTestQuest { public:
     CCharString QuestName, HSPName;
     long        ColourIndex;
     CCharString DisplayName, IniFile, OutiFile, QuestCardDefName;

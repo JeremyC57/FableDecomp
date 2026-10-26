@@ -5,15 +5,15 @@
 // Label correction: the manifest "CTCShotDefinitionNymphFun::CTCShotDefinitionNymphFun" is propagated; the vtable is
 // CTCDiggingSpot's.
 // Shape: speed TU (`mov eax,[esp+4] ; push eax`); the two byte initialisers follow the vtable store in declaration order.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _body[0x8];                // ParentThing +4, flags +8/+9
     CTCBase(CThing* parent);                 // 0x00686800
 };
 
-struct CTCDiggingSpot : CTCBase {
+class CTCDiggingSpot : public CTCBase { public:
     bool m_canBeDug;                         // +0x0c
     bool m_dug;                              // +0x0d
     virtual void v00();

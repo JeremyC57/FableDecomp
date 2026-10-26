@@ -13,7 +13,7 @@ struct CEngineMeshEffectRoot {
     CEngineMeshEffectRoot() : RefCount(1) { }
 };
 
-struct CEngineMeshEffect : CEngineMeshEffectRoot {
+class CEngineMeshEffect : public CEngineMeshEffectRoot { public:
     long MeshEffect;                        // +0x08 EEngineMeshEffect
     CEngineMeshEffect(long effect) : MeshEffect(effect) { }
 };

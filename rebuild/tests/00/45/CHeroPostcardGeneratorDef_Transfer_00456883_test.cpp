@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CPersistContext {
+class CPersistContext { public:
     int calls; void* last;
     void PutA(void* p){ calls++; last=p; }
     void PutB(void* p){ calls+=10; last=p; }
     void PutC(void* p){ calls+=100; last=p; }
 };
-struct CHeroPostcardGeneratorDef {
+class CHeroPostcardGeneratorDef { public:
     char pad[0x58];
     char base[4];
 };

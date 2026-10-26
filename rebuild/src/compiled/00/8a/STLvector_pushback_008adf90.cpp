@@ -14,7 +14,7 @@
 inline void* operator new(unsigned int, void* where) { return where; }
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-struct CCPPointerInfo {                                 // Ego_r.pdb, 12 bytes
+class CCPPointerInfo { public:                                 // Ego_r.pdb, 12 bytes
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void*);               // +0x04
     void* Data;                                         // +0x08

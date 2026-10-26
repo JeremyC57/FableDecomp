@@ -8,7 +8,7 @@
 //   word +0x24 bit 19, TC 0xac = word +0x34 bit 12), interface map +0x44; CTCOwnedEntity POwner +0xd (odd offset).
 // Shape: nested ifs with one `return false` at the end (the exits laid out last), the unowned case `return true`, and
 //   the owner (a named local) compared and returned directly (`xor edx,edx ; sete dl ; mov al,dl`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -18,15 +18,15 @@ struct CInterfaceMap {
 
 class CThing;
 enum EOccupyType { OCCUPY_TYPE_SLEEP_2 = 2 };
-struct CTCSinglePersonOccupiable {
+class CTCSinglePersonOccupiable { public:
     bool IsOfType(EOccupyType type);            // 0x0087C420
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;              // 0x00A01B50
     CThing* GetThing() const { return (CThing*)GetPItem(); }
 };
-struct CTCOwnedEntity {                         // TC 0x33
+class CTCOwnedEntity { public:                         // TC 0x33
     unsigned char _pad00[0x0d];
     CBaseIntelligentPointer POwner;             // +0x0d
 };
@@ -53,7 +53,7 @@ public:
     }
 };
 
-struct CThingFilter_IsMySleepPoint {
+class CThingFilter_IsMySleepPoint { public:
     CThing* Sleeper;                            // +0x00
     bool operator()(CThing* thing) const;
 };

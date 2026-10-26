@@ -12,7 +12,7 @@
 //   the component stays in esi across the combat calls; IsRegisteredCombatant and GetCombatantInfo both take PCreature;
 //   the combat manager is a named local so GetWorld is called before PCreature is pushed; Attacked is re-read through
 //   the info pointer at each use (a named `attacked` local moves it from ecx to eax and adds a `mov ecx,eax`).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,9 +21,9 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -45,25 +45,25 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsRegisteredCombatant() const;    // 0x00662410
 };
 
-struct CTCLook {                           // interface 0x43
+class CTCLook { public:                           // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
 };
 
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;          // +0x00
 };
 struct CCombatantInfo {
     CThingCreatureBase*     Parent;        // +0x00
     CAttackingCombatantInfo AttackerInfo;  // +0x04
 };
-struct CCombatManager {
+class CCombatManager { public:
     CCombatantInfo* GetCombatantInfo(const CThingCreatureBase* thing);   // 0x006E9360
 };
-struct CWorld {
+class CWorld { public:
     unsigned char   _pad00[0x4c];
     CCombatManager* CombatManager;         // +0x4c
 };

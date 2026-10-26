@@ -71,7 +71,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CAutoPickupBar;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CCrimeStatBar;
 struct CDraw2DText;
 struct CDrawAbilityButtons;
@@ -107,19 +107,19 @@ struct CDrawStamina;
 struct CDrawStatUpdates;
 struct CDrawTargetInfo;
 struct CDrawWorldTime;
-struct CFontBank;
-struct CGamePlayerInterface;
-struct CGraphicDataBank;
-struct CMainGameComponent;
+class CFontBank;
+class CGamePlayerInterface;
+class CGraphicDataBank;
+class CMainGameComponent;
 struct CManager;
 struct CMultiStatBar;
-struct CPlayerManager;
+class CPlayerManager;
 struct CStatBar;
-struct CWorld;
+class CWorld;
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CPlayerGui {
+class CPlayerGui { public:
     void*                             __vftable;             // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                           World;                 // +0x04
     CPlayerManager*                   PlayerManager;         // +0x08
@@ -400,10 +400,10 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGui, DisplayBottomHalfGUI) == 0x35c);
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -1627,7 +1627,7 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseOverlayGraphic) == 0xb4c);
 
 
 #pragma pack(push, 1)
-struct CIEngine {
+class CIEngine { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     bool          Active;                                    // +0x08
@@ -1652,7 +1652,7 @@ FABLE_STATIC_ASSERT(offsetof(CIEngine, Active) == 0x8);
 
 
 #pragma pack(push, 1)
-struct CEnginePersistentPrimitiveBase {
+class CEnginePersistentPrimitiveBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     long          Type;                                      // +0x08
@@ -1665,19 +1665,19 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePersistentPrimitiveBase, Type) == 0x8);
 
 #endif // FABLE_ENGINE_CENGINEPERSISTENTPRIMITIVEBASE_H
 
-struct C2DVector {float X,Y;C2DVector(){}C2DVector(float x,float y):X(x),Y(y){}C2DVector&operator+=(const C2DVector&v){X+=v.X;Y+=v.Y;return *this;}};
-struct C2DBoxF {float TLX,TLY,BRX,BRY;};
+class C2DVector { public:float X,Y;C2DVector(){}C2DVector(float x,float y):X(x),Y(y){}C2DVector&operator+=(const C2DVector&v){X+=v.X;Y+=v.Y;return *this;}};
+class C2DBoxF { public:float TLX,TLY,BRX,BRY;};
 enum EEngine2DLayer {NativeOracleLayer=74};enum EEnginePrimitiveBlendMode {NativeSpriteBlend=2};enum EEngineInterpolationSet {NativeNoInterpolation=0};
-struct CRGBColour {unsigned char Blue,Green,Red,Alpha;};
-struct CTexture;
-struct CEnginePrimitive {long Type;EEngineInterpolationSet InterpolationSet;unsigned char ThemeChannels[4];};
+class CRGBColour { public:unsigned char Blue,Green,Red,Alpha;};
+class CTexture;
+class CEnginePrimitive { public:long Type;EEngineInterpolationSet InterpolationSet;unsigned char ThemeChannels[4];};
 struct CEnginePrimitive2DSprite:CEnginePrimitive {C2DBoxF ClipBox;EEngine2DLayer Layer;unsigned long BankIndex,Frame;float StartAngle,EndAngle;EEnginePrimitiveBlendMode BlendMode;CRGBColour Colour;bool ClipBoxIsPos;unsigned long Flags;CTexture*Texture;C2DVector UVOffsetsStart,UVOffsetsEnd;
  CEnginePrimitive2DSprite(unsigned __int64,const C2DVector&,EEngine2DLayer,unsigned long,unsigned long,EEnginePrimitiveBlendMode,EEngineInterpolationSet,float,float,unsigned char,unsigned char,unsigned char,unsigned char,unsigned long,const C2DVector&,const C2DVector&);
 };
-struct CEnginePrimitiveHandle {int Unrecovered00;CEnginePersistentPrimitiveBase*Data;}; // actual PDB padding0 and CIVCountedPointer Data4
+class CEnginePrimitiveHandle { public:int Unrecovered00;CEnginePersistentPrimitiveBase*Data;}; // actual PDB padding0 and CIVCountedPointer Data4
 struct HandleArray {CEnginePrimitiveHandle*Start,*Finish,*Limit;void Resize(unsigned long);};
 struct EngineMethods:CIEngine {typedef void(EngineMethods::*SetMethod)(CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);void SetPersistentPrimitive(CEnginePrimitiveHandle&h,const CEnginePrimitive&p,unsigned long f){(this->*static_cast<SetMethod*>(__vftable)[23])(h,p,f);}};
-struct CEnginePrimitivePrepareInfo {unsigned char Unrecovered00[0x34];EngineMethods*Engine;};
+class CEnginePrimitivePrepareInfo { public:unsigned char Unrecovered00[0x34];EngineMethods*Engine;};
 struct PlayerGuiAlphaView {unsigned char Unrecovered00[0x2a0];float Alpha;};extern PlayerGuiAlphaView*GlobalPlayerGui;
 struct GuiOracleDefView {unsigned char Unrecovered00[0x594];C2DVector OracleSymbolPos,OracleSymbolOffset;};GuiOracleDefView* __fastcall PeekGuiDef();C2DVector __fastcall GFAnchorToTopRight(const C2DVector&);
 struct OracleNode {OracleNode*Next,*Previous;long Graphic;};

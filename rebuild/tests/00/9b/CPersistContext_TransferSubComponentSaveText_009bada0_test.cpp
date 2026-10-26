@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
 // CPersistContext::TransferSubComponentSaveText: "<name>." then the sub-component writes its own text
-struct CCharString {
+class CCharString { public:
     char buf[128];
     CCharString() { buf[0] = 0; }
     const CCharString& operator+=(const char* text) { std::strcat(buf, text); return *this; }
 };
-struct CPersistContext;
+class CPersistContext;
 struct TransferableSubComponentGenericType {
     virtual void TransferSaveText(CPersistContext* context) = 0;
 };
-struct CPersistContext {
+class CPersistContext { public:
     void* p[8];
     CCharString* PStringToSaveTo;
     void TransferSubComponentSaveText(const char* name, TransferableSubComponentGenericType* sub)

@@ -7,8 +7,8 @@
 // Shape: GetSubDef<CAICreatureWillPowerIndicatorDef> (0x008C5A50) sits in this TU, so it has a same-TU noinline stand-in
 //   (the def pointer's address does not escape: VC keeps it in edi and the release has no null test); operator* is the
 //   constructor form with the scale on the left, operator+ the constructor form (Z, Y, X computed, then stored).
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector operator*(float s) const { return C3DVector(s * X, s * Y, s * Z); }
     C3DVector() {}
@@ -27,14 +27,14 @@ struct CPhysicsBody {                                 // the thing's physics bod
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing() const;                    // slot 70 (+0x118)
 };
-struct CAICreatureWillPowerIndicatorDef {
+class CAICreatureWillPowerIndicatorDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long          RefCount;                           // +0x04
     unsigned char _pad08[0x5c - 0x08];
     float         Radius;                             // +0x5c
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -43,7 +43,7 @@ template<class T> struct CDefPointer {
             Object->Destroy();
     }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAICreatureWillPowerIndicatorDef>* out);   // 0x008C5A50
 };
 void* FindSubDef(CDefClassBase* def);
@@ -57,7 +57,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAICreatureWillPo
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -110,12 +110,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CIntelligentPointerThing PCreature;               // +0x08
@@ -126,7 +126,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     void Initialise();                                // 0x00857520
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_ScorpionChargeInto : CCombatActionBase {
+class CCreatureAction_ScorpionChargeInto : public CCombatActionBase { public:
     float                    ChargeDistance;          // +0x114
     CIntelligentPointerThing PObstruction;            // +0x118
     void Initialise();

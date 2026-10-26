@@ -12,14 +12,14 @@ struct CLongVector {
     void resize(unsigned long n, const long& value) { for (unsigned long i = size(); i < n; ++i) store[i] = value; _M_finish = _M_start + n; ++g_resizes; }
 };
 static const char* g_names[32]; static int g_count = 0;
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer(const char* name, long& value, const long& defaultValue) { g_names[g_count++] = name; if (defaultValue != 0) value = -99; }
     void TransferVector(const char* name, CLongVector* value) { g_names[g_count++] = name; (void)value; }
 };
 static int g_updates = 0; static bool g_notify = false;
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     long FishingLevel, TotalExperiencePoints, ExperiencePointsAvailableToSpend;
     CLongVector StatExperiencePoints, TrainableStatLevels;
     void UpdateAbilitiesForAllStats(bool notify) { ++g_updates; g_notify = notify; }

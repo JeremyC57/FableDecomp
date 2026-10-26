@@ -7,7 +7,7 @@
 // Shape: /Os (pass-through base argument, `and dword ptr [esi+0Ch],0` zero store); the scalar
 // initialiser is stored before the vtable store, the pointer member's out-of-line constructor follows it.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {
     virtual void v00();
@@ -21,7 +21,7 @@ struct CIntelligentPointer_CThing {                         // vptr + PData
     CIntelligentPointer_CThing(CThing* thing);              // 0x004A96F0
 };
 
-struct CTCDiceGame : CTCBase_Calls {
+class CTCDiceGame : public CTCBase_Calls { public:
     long                       NumberOfPlayers;             // +0x0c
     CIntelligentPointer_CThing CurrentPlayer;               // +0x10
     virtual void v00();                                     // own vtable 0x0124093C

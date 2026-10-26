@@ -9,9 +9,9 @@
 // Shape: IS_THING_ALIVE (two GetPItem calls) then a third GetPItem for the use; one emitter local at function scope filled
 // by the out-parameter GetInterface (left as is when the component is absent: retail then reuses the previous value or the
 // shared key slot); the "" helper name is an implicit-conversion temporary.
-struct CTCBase;
-struct CBaseObject;
-struct CCharString {
+class CTCBase;
+class CBaseObject;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -44,7 +44,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CBaseIntelligentPointer {

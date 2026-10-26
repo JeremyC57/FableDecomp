@@ -4,7 +4,7 @@ struct CTCInventoryBase {
     virtual ~CTCInventoryBase() {}
     virtual void RemoveAllConfiscatedItems() { confiscated = 0; }
 };
-struct CTCInventoryWeapons : CTCInventoryBase {
+class CTCInventoryWeapons : public CTCInventoryBase { public:
     long ConfiscatedActiveMeleeWeaponDefIndex, ConfiscatedActiveRangedWeaponDefIndex;
     virtual void RemoveAllConfiscatedItems()
     {

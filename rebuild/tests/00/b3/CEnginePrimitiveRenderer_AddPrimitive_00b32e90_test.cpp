@@ -33,10 +33,10 @@ public:
     ~CEnginePrimitiveHandle() { if (Data.IsUnique()) Data->OnLastHandleReleased(this); }
 };
 
-struct CEnginePrimitive { int type; };
+class CEnginePrimitive { public: int type; };
 static CEnginePersistentPrimitiveBase g_persistent;
 static unsigned int g_flags = 0; static bool g_transient = false; static const CEnginePrimitive* g_prim = 0;
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     void SetPersistentPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive, unsigned int flags, bool transient)
     {
         handle.Data.Object = &g_persistent; ++g_persistent.RefCount; g_flags = flags; g_transient = transient; g_prim = &primitive;

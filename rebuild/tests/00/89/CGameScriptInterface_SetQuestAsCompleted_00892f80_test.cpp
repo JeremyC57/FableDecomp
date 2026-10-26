@@ -24,7 +24,7 @@ CQuestMgr g_mgrObj;
 CQuestMgr* g_questMgr = &g_mgrObj;
 char g_someFlag = 1;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void SetQuestProgress(float v);
 };
 void CGameScriptInterface::SetQuestProgress(float v) {

@@ -6,15 +6,15 @@
 //         LookAt +0x10, the camera manager +0x40 and GoTo (CPhysicsState, Position first) +0x54.
 //         The camera manager: Camera +0x04, OldCamera +0x3c, the cut flag +0xb0 (see OnInit 0x008734F0).
 // Shape: SetPosition(StartPos); then an inline manager helper (`this` read once into ecx, so no reload after the byte store): SingleCut = true; OldCamera = Camera (a 14-dword `rep movsd`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct CCamera {                                     // 0x38 bytes (Ego_r.pdb CGameCameraManager::Camera/OldCamera)
+class CCamera { public:                                     // 0x38 bytes (Ego_r.pdb CGameCameraManager::Camera/OldCamera)
     unsigned long _words[0x38 / 4];
 };
-struct CGameCameraManager {                          // retail offsets (engine/CGameCameraManager.h is the PDB layout:
+class CGameCameraManager { public:                          // retail offsets (engine/CGameCameraManager.h is the PDB layout:
     void*         _vftable;                          // its STL members are wider, so +0xb0 there is AvailableCamPoints)
     CCamera       Camera;                            // +0x04
     CCamera       OldCamera;                         // +0x3c
@@ -23,11 +23,11 @@ struct CGameCameraManager {                          // retail offsets (engine/C
     void SetSingleCut() { SingleCut = true; OldCamera = Camera; }   // descriptive inline helper
 };
 namespace NCameraModes {
-struct CPhysicsState {
+class CPhysicsState { public:
     C3DVector Position;                              // +0x00
     C3DVector Velocity;                              // +0x0c
 };
-struct CBase {
+class CBase { public:
     virtual ~CBase();                                // slot 0
     virtual void Update();                           // slot 1
     unsigned char       _pad04[0x10 - 0x04];

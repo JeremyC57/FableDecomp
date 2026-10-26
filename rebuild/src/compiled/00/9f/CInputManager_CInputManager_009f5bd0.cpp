@@ -18,13 +18,13 @@
 #else
 #define NATIVE_ONLY(x)
 #endif
-struct CInputEvent;
-struct CInputEventPackage;
-struct CMouse;
-struct CKeyboard;
-struct CJoystick;
+class CInputEvent;
+class CInputEventPackage;
+class CMouse;
+class CKeyboard;
+class CJoystick;
 struct CCountedJoystick;
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass(); // 0099A2D0; native vtable01231710
     virtual ~CBaseClass();
 };
@@ -32,10 +32,10 @@ template<class T> struct NativeAllocator {};
 template<class T> struct NativeStorageEnd:NativeAllocator<T> { T* Value; NativeStorageEnd(T* p):Value(p){} };
 template<class T> struct NativeVector { T* Start; T* Finish; NativeStorageEnd<T> End; NativeVector():Start(0),Finish(0),End(Start){} T* erase(T*,T*); void clear(){erase(Start,Finish);} struct iterator { T* current; iterator(T* p):current(p){} iterator operator+(int n)const{return iterator(current+n);} T& operator*()const{return *current;} }; iterator begin()const{return iterator(Start);} T& operator[](int n) const { return *(begin()+n); } };
 template<class T> struct NativeScoped { T* ptr; NativeScoped():ptr(0){} T* get() const {return ptr;} T& operator*() const {return *ptr;} T* operator->() const{return ptr;} };
-struct CChecksum { int Checksum1,Checksum2,Checksum3,Checksum4; CChecksum():Checksum1(0),Checksum2(0),Checksum3(0),Checksum4(0){} };
+class CChecksum { public: int Checksum1,Checksum2,Checksum3,Checksum4; CChecksum():Checksum1(0),Checksum2(0),Checksum3(0),Checksum4(0){} };
 enum EInputEventType { INPUT_NULL, INPUT_KEY_PRESSED, INPUT_KEY_HELD, INPUT_KEY_RELEASED };
 enum EInputKey { INPUT_KEY_NONE };
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char Data[32]; // actual UInputEventData; no member interpreted in this method
     int DeviceType;
     int DeviceNumber;
@@ -50,8 +50,8 @@ struct CInputEvent {
     unsigned long GetChecksum() const; // 00A04160
 };
 
-struct CASuspendableProcess;
-struct CFileInformation;
+class CASuspendableProcess;
+class CFileInformation;
 enum FileAccessType { FILE_READ=1,FILE_WRITE=2 };
 #ifdef _MSC_VER
 #define NATIVE_NOVTABLE __declspec(novtable)
@@ -77,7 +77,7 @@ struct NATIVE_NOVTABLE CAFile : CBaseClassNonCopyable {
     virtual CAFile* Clone()const=0;
     virtual CFileInformation GetFileInformation()=0;
 };
-struct CDiskFileWin32 : CAFile {
+class CDiskFileWin32 : public CAFile { public:
     FileAccessType AccessType;
     int Position,Length;
     void* WinFileHandle;
@@ -100,8 +100,8 @@ struct CDiskFileWin32 : CAFile {
     virtual CFileInformation GetFileInformation();
 };
 NATIVE_ONLY(sizeof(CDiskFileWin32)==sizeof(DonorCDiskFileWin32));
-struct CInputManagerInit { bool UseMouse,UseJoystick,UseKeyboard; };
-struct CInputManager : CBaseClass {
+class CInputManagerInit { public: bool UseMouse,UseJoystick,UseKeyboard; };
+class CInputManager : public CBaseClass { public:
     CInputManager(const CInputManagerInit&,bool);
     NativeVector<CInputEvent> ProcessedEvents;
     NativeVector<CInputEvent> EventStore;

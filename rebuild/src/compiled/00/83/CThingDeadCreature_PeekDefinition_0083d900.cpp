@@ -10,7 +10,7 @@
 // call); retail loads the filled pointer ONCE into esi, releases through it (`dec [esi+4] ; jne`) and returns it. A
 // CDefPointer destructor makes the lane load the address-taken slot into eax and form `&m_refCount` (`add eax,4 ; dec
 // edx ; test edx,edx`), so the release is written by hand on a named pointer local (same behaviour).
-struct CDefPointeeBase {                        // a counted definition object
+class CDefPointeeBase { public:                        // a counted definition object
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
     long m_refCount;                            // +4
@@ -21,15 +21,15 @@ struct CDefPointeeBase {                        // a counted definition object
     }
 };
 
-template<class T> struct CDefPointer {          // CDefPointer<const T>: one counted pointer to a definition
+template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
 
-struct CThingCreatureDef : CDefPointeeBase {
+class CThingCreatureDef : public CDefPointeeBase { public:
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef_0083e0d0(long index, CDefPointer<CThingCreatureDef>& out);   // 0x0083E0D0
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -46,13 +46,13 @@ __declspec(noinline) bool CDefinitionManager::GetDef_0083e0d0(long index, CDefPo
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short m_defGlobalIndex;            // +0x8c
     CDefinitionManager* GetDefinitionManager() const;       // 0x004C7990
 };
 
-struct CThingDeadCreature : CThing {
+class CThingDeadCreature : public CThing { public:
     const CThingCreatureDef& PeekDefinition() const;
 };
 

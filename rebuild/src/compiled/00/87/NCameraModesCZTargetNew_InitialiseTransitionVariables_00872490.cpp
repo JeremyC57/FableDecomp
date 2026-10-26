@@ -29,11 +29,11 @@ class C3DVector { public:
 };
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
 
-struct CCameraModeDef {
+class CCameraModeDef { public:
     unsigned char _pad[0x40];
     float StringLengthXY;                               // +0x40
     float CageRadius;                                   // +0x44

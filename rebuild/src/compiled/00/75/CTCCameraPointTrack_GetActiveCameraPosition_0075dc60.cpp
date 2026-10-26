@@ -16,7 +16,7 @@
 //   landed UpdateActiveCameraPosition 0x0075CAD0); engine/CTCBase.h (ParentThing +4).
 #include "engine/CTCBase.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -41,7 +41,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                         // +0x44

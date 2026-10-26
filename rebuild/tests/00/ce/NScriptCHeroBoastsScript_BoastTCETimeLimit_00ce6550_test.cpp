@@ -10,12 +10,12 @@
 #define __int64 long long
 #endif
 template <class T> T* AddressOfTemporary(const T& t) { return const_cast<T*>(&t); }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
@@ -85,7 +85,7 @@ struct CGameScriptInterface {
 };
 
 namespace NScript {
-struct CQ_SunnyvaleMasterData {
+class CQ_SunnyvaleMasterData { public:
     unsigned char _pad000[0x129];
     bool          TCEMadeTimeLimit;        // +0x129
     unsigned char _pad12a[0x131 - 0x12a];
@@ -100,7 +100,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
 
 enum { BOAST_TCE_TIME_LIMIT = 37 };
 
-struct CHeroBoastsScript : CScriptBase {
+class CHeroBoastsScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                        // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44
     void BoastTCETimeLimit(CCharString questName);

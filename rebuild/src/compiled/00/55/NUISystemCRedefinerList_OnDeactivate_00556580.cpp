@@ -20,12 +20,12 @@ struct CGuiControl_00556580 {                           // the control base (vpt
     virtual void SetState(long state);                  // slot 4 (+0x10)
 };
 
-struct CScrollableList : CListRoot_00556580, CGuiControl_00556580 {
+class CScrollableList : public CListRoot_00556580, public CGuiControl_00556580 { public:
     unsigned char _body[0x174];                         // +0x008 .. +0x17b
     void HideList(float time);                          // 0x005559D0
 };
 
-struct CRedefinerList : CScrollableList {
+class CRedefinerList : public CScrollableList { public:
     bool  m_bActive;                                    // +0x17c
     bool  m_bSelecting;                                 // +0x17d
     float m_fadeTime;                                   // +0x180

@@ -8,7 +8,7 @@
 // 0x00413520 on the static at 0x013CAA40); return *Instance.Data (both paths duplicated by the compiler).
 // Shape: /O2 (16-aligned entry).
 #include <new>
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;

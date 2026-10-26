@@ -8,7 +8,7 @@
 //   then `Object = 0`) inside the not-the-same-pointee test; the new pointee is re-read from `other` after it.
 // Layout: CIVCountedPointeeBase is modelled as in the landed 0x0084B690 (the engine header flattens the vtable to a
 //   void* member, so it cannot carry the virtual Delete): vtable +0, IVRefCount +4.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);              // slot 0
     virtual void Delete();                        // slot 1
     unsigned long IVRefCount;                     // +0x04

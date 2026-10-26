@@ -9,14 +9,14 @@
 // Shape: three byte copies through al/cl/dl, the map pointer stored around the string's address set-up,
 // then one register per dword for the trailing scalars: Pos and Extents are written as separate long
 // members (a struct-typed member copies through `lea`, GOTCHAS wave 24g).
-struct CIDrawMap;
+class CIDrawMap;
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);         // 0x0099EC30
 };
 
-struct CDrawMapInfo {
+class CDrawMapInfo { public:
     bool          Valid;                           // +0x00
     bool          Loadable;                        // +0x01
     bool          GameLoadable;                    // +0x02

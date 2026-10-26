@@ -3,8 +3,8 @@
 #include <cstring>
 
 struct CDef { long m_value; };
-struct CThingAICreature { CDef* m_pDef; long GetDefinitionValue() const { return m_pDef->m_value; } };
-struct CThingFilter_HasBuildingAsHome {
+class CThingAICreature { public: CDef* m_pDef; long GetDefinitionValue() const { return m_pDef->m_value; } };
+class CThingFilter_HasBuildingAsHome { public:
     long m_value;
     bool operator()(const CThingAICreature& creature) const { return creature.GetDefinitionValue() == m_value; }
 };

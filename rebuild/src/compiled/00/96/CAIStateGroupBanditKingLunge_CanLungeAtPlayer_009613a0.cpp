@@ -10,10 +10,10 @@
 // lunge interval at +0x50 (seconds, scaled by the frame rate).
 // Leaf: CanLungeAtPlayer@CAIStateGroup_BanditKingLunge
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
-struct CThingAICreature;
+class CTCBase;
+class CThing;
+class CWorld;
+class CThingAICreature;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
@@ -44,7 +44,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -94,12 +94,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -134,7 +134,7 @@ struct CTCBossDef {
     unsigned char _pad4c[4];
     float LungeIntervalSeconds;                 // +0x50
 };
-struct CTCBoss {
+class CTCBoss { public:
     unsigned char _pad[0x0c];
     CTCBossDef* Def;                            // +0x0c
     long GetBossPhase() const;                  // 0x007AED10

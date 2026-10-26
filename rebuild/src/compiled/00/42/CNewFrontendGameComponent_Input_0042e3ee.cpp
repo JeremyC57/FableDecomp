@@ -8,7 +8,7 @@
 // Shape: size TU with a frame pointer (`#pragma optimize("s", on)` + ("y", off)): compare-tree switches, the flag word lives in [ebp-4], ebx/esi pushed after the early exit. The direction tests are written `a || b` so VC7.1 merges them into one `test bl,mask` and places the arms below the chain as retail does; the character arm passes an unsigned short (KeyPressed takes the UI character), which reorders the push after `mov ecx,esi`.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}
@@ -28,7 +28,7 @@ public:
     float GetMouseWheel() const;                   // 0x00A03BB0
     C2DVector GetJoystickPosition() const;         // 0x00A043A0
 };
-struct CInputEventScanInfo {
+class CInputEventScanInfo { public:
     bool Started;
     long Index;
     CInputEventScanInfo() : Started(false) {}

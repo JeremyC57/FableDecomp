@@ -5,7 +5,7 @@
 // FinishCurrentAction @ 0x00662650. The manifest module label is propagated from the 0x0093D140 body
 // (same logic on PBrain->Creature); this copy takes the creature as its only argument and pops it itself,
 // so it is a static member compiled __stdcall (no sibling jump: the callee cannot pop the caller's slot).
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsPerformingAnyAction();           // 0x006622A0
     bool IsFreeToFinishAction();            // 0x006621C0
     void FinishCurrentAction();             // 0x00662650

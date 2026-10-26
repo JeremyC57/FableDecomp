@@ -9,12 +9,12 @@
 // The engine header CGameCameraManager.h carries the PDB offsets, so the class is modelled locally.
 // Shape: the chained assignment `a = b = C2DVector(0, 0)`: one 8-byte frame temporary written with immediate
 // zero stores and read back once into eax/edx, the target stored first.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char _pad00[0xc4];
     C2DVector     RightStickLookAroundAngles;               // +0xc4
     C2DVector     RightStickTargetLookAroundAngles;         // +0xcc

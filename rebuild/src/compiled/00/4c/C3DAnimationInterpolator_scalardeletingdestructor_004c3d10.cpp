@@ -1,4 +1,4 @@
-struct C3DAnimationInterpolator {
+class C3DAnimationInterpolator { public:
     void* vftable;
 };
 

@@ -13,13 +13,13 @@ static int GetFileInformationByHandle(void* file, BY_HANDLE_FILE_INFORMATION* in
     info->ftCreationTime.dwLowDateTime = 1; info->ftLastAccessTime.dwLowDateTime = 2; info->ftLastWriteTime.dwLowDateTime = 3;
     return 1;
 }
-struct CDateAndTime {
+class CDateAndTime { public:
     long Year; unsigned long Month, Day, Hour, Minute, Second, Millisecond;
     CDateAndTime() : Year(0), Month(0), Day(0), Hour(0), Minute(0), Second(0), Millisecond(0) {}
     void Initialise(const _FILETIME* t) { Year = 2000 + (long)t->dwLowDateTime; Month = t->dwLowDateTime; }
 };
-struct CFileInformation { CDateAndTime CreationTime, LastAccessTime, LastWriteTime; bool ReadOnly; };
-struct CDiskFileWin32 {
+class CFileInformation { public: CDateAndTime CreationTime, LastAccessTime, LastWriteTime; bool ReadOnly; };
+class CDiskFileWin32 { public:
     void* WinFileHandle;
     CFileInformation GetFileInformation();
 };

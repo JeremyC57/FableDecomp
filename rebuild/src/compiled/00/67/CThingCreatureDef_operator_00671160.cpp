@@ -13,7 +13,7 @@
 // Shape: memberwise assignment in declaration order; the one-bit bool fields copy with the
 // xor/and/xor merge per bit.
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _body[0x70];          // CDefClassBase part + the thing-base def fields
     CThingBaseDef& operator=(const CThingBaseDef& other);   // 0x00463950
 };
@@ -26,7 +26,7 @@ struct CNavigatorTypeVector {           // retail std::vector<ENavigatorType> (1
 };
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                 // 14 bytes, 2-aligned
+class CEngineGraphic { public:                 // 14 bytes, 2-aligned
     unsigned long BankIndex;
     float AnimStep;
     float RenderSizeX;
@@ -35,7 +35,7 @@ struct CEngineGraphic {                 // 14 bytes, 2-aligned
 };
 #pragma pack(pop)
 
-struct CThingCreatureDef : CThingBaseDef {                          // vtable 0x0125B2DC
+class CThingCreatureDef : public CThingBaseDef { public:                          // vtable 0x0125B2DC
     float StunTimeMin;                          // +0x70
     float StunTimeMax;                          // +0x74
     float StunHealthThreshold;                  // +0x78

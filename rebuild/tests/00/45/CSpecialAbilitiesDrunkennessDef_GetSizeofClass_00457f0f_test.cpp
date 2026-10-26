@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesDrunkennessDef { int dummy; };
+class CSpecialAbilitiesDrunkennessDef { public: int dummy; };
 
 unsigned long __fastcall CSpecialAbilitiesDrunkennessDef_GetSizeofClass(const CSpecialAbilitiesDrunkennessDef* self)
 {

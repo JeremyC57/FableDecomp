@@ -8,7 +8,7 @@
 // Layout: CThing as the matched 0x0089A330 / 0x0089B0B0 rows. Interface 0x22 is modelled as CTCVillage and World slot 12
 // as GetWorldMap(); neither name is confirmed.
 // Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

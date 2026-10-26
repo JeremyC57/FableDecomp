@@ -65,7 +65,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CComponent {
@@ -209,14 +209,14 @@ FABLE_STATIC_ASSERT(offsetof(CComponent, DefIndex) == 0x158);
 #endif // FABLE_ENGINE_CCOMPONENT_H
 
 #undef CComponent
-struct C2DVector {
+class C2DVector { public:
  float X,Y;C2DVector(){}C2DVector(float x,float y):X(x),Y(y){}
  C2DVector(const C2DVector& v):X(v.X),Y(v.Y){}
 };
 namespace NUISystem {
 struct CUIScreenUnitConverter {static C2DVector FABLE_FASTCALL ConvertVector(C2DVector);}; //0052E580 actual donor55ED1A; ECXhiddenbuffer,stack8,ret8
-struct CComponent;
-struct CComponent {
+class CComponent;
+class CComponent { public:
  void* __vftable;unsigned char _beforeTargetPosition[0x38];C2DVector TargetPosition;
  unsigned char _beforeParent[0x84];CComponent* PParent;unsigned char _beforePositionParent[0x4c];CComponent* PPositionParent;
  bool IsPositionIndependent()const;

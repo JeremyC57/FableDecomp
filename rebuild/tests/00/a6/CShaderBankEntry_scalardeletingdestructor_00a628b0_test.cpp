@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CShaderBankEntry {
+class CShaderBankEntry { public:
     void* vftable;
     int destroyed;
 };

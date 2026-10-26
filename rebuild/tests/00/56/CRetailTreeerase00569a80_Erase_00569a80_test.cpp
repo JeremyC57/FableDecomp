@@ -6,7 +6,7 @@
 static int g_strings = 0, g_frees = 0;
 static void Free(void* p) { if (p) ++g_frees; std::free(p); }
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString() { ++g_strings; }
 };

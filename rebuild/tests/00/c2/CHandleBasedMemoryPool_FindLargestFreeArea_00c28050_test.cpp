@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 struct SFreeArea { void* m_pResource; unsigned char _pad04[4]; long m_size; short m_padding; unsigned char m_state; unsigned char _pad0f; SFreeArea** m_pPrevLink; SFreeArea* m_pNext; };
-struct CHandleBasedMemoryPool { unsigned char _pad[0x10]; long m_usedBytes; long m_freeCount; unsigned char _pad18[4]; long m_largestFreeArea; unsigned char _pad20[0x1c]; SFreeArea* m_freeLists[256];
+class CHandleBasedMemoryPool { public: unsigned char _pad[0x10]; long m_usedBytes; long m_freeCount; unsigned char _pad18[4]; long m_largestFreeArea; unsigned char _pad20[0x1c]; SFreeArea* m_freeLists[256];
     void InsertFreeArea(SFreeArea* area) { area->m_size += area->m_padding; long size = area->m_size; unsigned long bucket = (unsigned long)size >> 9; area->m_padding = 0; if (bucket >= 0xff) bucket = 0xff;
         SFreeArea** head = &m_freeLists[bucket]; area->m_pPrevLink = head; SFreeArea* old = *head; area->m_pNext = old; if (old) old->m_pPrevLink = &area->m_pNext; *head = area; if (m_largestFreeArea < area->m_size) m_largestFreeArea = area->m_size; }
     SFreeArea* FindLargestFreeArea() { long size = m_largestFreeArea; unsigned long bucket = (unsigned long)size >> 9; if (bucket >= 0xff) bucket = 0xff; for (SFreeArea* area = m_freeLists[bucket]; area; area = area->m_pNext) { if (area->m_size == size) return area; } return 0; }

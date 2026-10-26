@@ -12,18 +12,18 @@
 // DistanceSquared +0x18) is the whole `sub esp,1Ch` frame.
 // Shape: the iterator is advanced BEFORE the call (`mov eax,esi ; mov esi,[esi]`): `(it++)->...` on a node-pointer
 // iterator; end() is re-read from the list after every call (`cmp esi,[ebp]`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CMeshIntersectionData {
+class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;             // +0x00
     C3DVector Normal;                           // +0x0c
     float     DistanceSquared;                  // +0x18
     CMeshIntersectionData() { }
 };
 
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     virtual void v00();
     void*         Mesh;                         // +0x04 CIVCountedPointer<const CPhysicsMesh>
     float         PositionMatrix[12];           // +0x08 CMatrix3x4

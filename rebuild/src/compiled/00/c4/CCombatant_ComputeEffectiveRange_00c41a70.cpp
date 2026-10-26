@@ -12,7 +12,7 @@
 // named-delta spellings load m_farFactor first and need an fxch.
 #include <math.h>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

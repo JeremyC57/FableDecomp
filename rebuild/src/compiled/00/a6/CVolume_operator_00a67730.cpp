@@ -22,7 +22,7 @@ struct CBase {
     virtual ~CBase();
     CBase();                                // 0x0099A2D0
 };
-struct CVolume : CBase {
+class CVolume : public CBase { public:
     IDirect3DVolume9* m_pVolume;
     CVolume& operator=(const CVolume& other);
 };

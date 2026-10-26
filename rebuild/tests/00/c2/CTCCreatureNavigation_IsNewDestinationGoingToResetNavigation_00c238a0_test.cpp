@@ -1,6 +1,6 @@
 #include <stdio.h>
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 
 static void* g_expect_self;
 static void* g_expect_vec;
@@ -23,7 +23,7 @@ struct Delegate {
     }
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* f0;
     Delegate* ParentThing;
 };

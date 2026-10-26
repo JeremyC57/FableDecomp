@@ -1,4 +1,4 @@
-struct CThing {
+class CThing { public:
 // Leaf: IS_THING_DEAD<CThing*>
     char pad[0x91];
     unsigned char flags;

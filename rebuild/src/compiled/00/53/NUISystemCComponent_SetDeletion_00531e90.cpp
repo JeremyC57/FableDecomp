@@ -20,7 +20,7 @@ struct CComponentList {                                       // std::list<CComp
     ~CComponentList();                                        // 0x0042ABCA
 };
 
-struct CDeletion {
+class CDeletion { public:
     EDeletionMethod Method;                                   // +0x00
     CComponentList  AssociatedParents;                        // +0x04
 };

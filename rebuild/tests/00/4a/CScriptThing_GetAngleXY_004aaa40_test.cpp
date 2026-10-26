@@ -6,7 +6,7 @@ struct CScriptThingImplementation {
     virtual float GetAngleXY() const { return m_angle; }
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     void* __vftable;
     CScriptThingImplementation* PImp_Data;
     void* PImp_Info;

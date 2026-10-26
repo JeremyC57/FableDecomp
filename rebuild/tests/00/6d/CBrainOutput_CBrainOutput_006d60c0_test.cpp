@@ -2,7 +2,7 @@
 static int g_destroyed, g_ipDtors, g_ipCtors, g_blocksFreed;
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { ++g_ipCtors; } ~CBaseIntelligentPointer() { ++g_ipDtors; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct CCreatureActionBase { long m_tag; };
+class CCreatureActionBase { public: long m_tag; };
 static void __fastcall DestroyAction(CCreatureActionBase* p) { ++g_destroyed; p->m_tag = -1; }
 struct SCountBlock {
     long m_references; void (__fastcall* m_pfnDestroy)(CCreatureActionBase*); CCreatureActionBase* m_pObject;
@@ -17,10 +17,10 @@ struct CCountedPointer_CCreatureActionBase {
         m_pObject = 0; m_pCount = 0;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CNavigationInput { unsigned char _body[0x18]; };
+class C3DVector { public: float X, Y, Z; };
+class CNavigationInput { public: unsigned char _body[0x18]; };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long Types; long LookFlags; CNavigationInput NavigationInput; CCountedPointer_CCreatureActionBase PAction; C3DVector MoveToPos; C3DVector LookAtPos; CIntelligentPointer LookAtThing;
     ~CBrainOutput();
 };

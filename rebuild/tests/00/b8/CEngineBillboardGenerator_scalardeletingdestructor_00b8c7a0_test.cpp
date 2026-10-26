@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineBillboardGenerator {
+class CEngineBillboardGenerator { public:
     void* vftable;
     int destroyed;
 };

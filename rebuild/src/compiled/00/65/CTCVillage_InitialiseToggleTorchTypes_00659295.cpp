@@ -11,9 +11,9 @@
 // without its own test (key in a named local, the map a named pointer, end-or-larger-key -> end entry), `__forceinline`
 // under /Os. The toggle is an inline CTCLight member so the component goes straight into ecx (a named light local
 // keeps it in eax); `!Active` is `cmp byte ptr [ecx+1Ch],0 ; sete al ; push eax`. `this` is unused.
-struct CTCBase;
+class CTCBase;
 
-struct CTCLight {
+class CTCLight { public:
     unsigned char _pad[0x1C];
     bool          Active;                   // +0x1C
     void SetActive(bool active);            // 0x006412B0
@@ -31,7 +31,7 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThingObject {
+class CThingObject { public:
     unsigned char _pad0[0x20];
     CBitset       TypeBits;                 // +0x20 std::bitset of interface types
     unsigned char _pad24[0x20];
@@ -45,7 +45,7 @@ struct CThingObject {
     }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void InitialiseToggleTorchTypes(CThingObject& object);
 };
 

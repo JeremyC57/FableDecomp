@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CTCKraken {
+class CTCKraken { public:
     char pad[0x64];
     int  beamState;
 };

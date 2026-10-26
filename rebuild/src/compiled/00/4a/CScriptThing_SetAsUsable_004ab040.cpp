@@ -3,7 +3,7 @@ struct CInner {
     virtual void v0();
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     void* pad0;
     CInner* inner;
 };

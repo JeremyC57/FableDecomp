@@ -12,14 +12,14 @@
 
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(bool& v);                 // 0x0043314A
     void Transfer(float& v);                // 0x00431061
     void Transfer(long& v);                 // 0x00431102
     void Transfer(CStlVector<long>& v);     // 0x00466A47
 };
 
-struct CVillagePeopleDef {
+class CVillagePeopleDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x21];              // CDefClassBase fields (+0x04)
     bool               Enable;                                          // +0x25

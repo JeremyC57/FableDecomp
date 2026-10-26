@@ -1,10 +1,10 @@
 // Behaviour test for CEngineWaterRenderer::RenderBackgroundPatch (0x00B6E010): world transform at the camera, the main draw,
 // then one draw per present bridge strip with vertex count = length / stride.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { float M[9]; C3DVector Pos; };
-struct CVertexBufferWin32 { int PVertexBuffer; int Length; unsigned char Stride; };
-struct CIndexBuffer { int PD3DIndexBuffer; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: float M[9]; C3DVector Pos; };
+class CVertexBufferWin32 { public: int PVertexBuffer; int Length; unsigned char Stride; };
+class CIndexBuffer { public: int PD3DIndexBuffer; };
 struct Draw { int vb; int stride; int ib; unsigned long verts; unsigned long tris; };
 static Draw g_draws[8]; static int g_nDraws; static int g_curVB, g_curStride, g_curIB; static CMatrix3x4 g_world; static unsigned long g_flags;
 struct CRenderManagerCore {
@@ -14,12 +14,12 @@ struct CRenderManagerCore {
     void DrawCurrentBuffersAsIndexedTris(unsigned long, unsigned long verts, unsigned long, unsigned long tris)
     { Draw d = { g_curVB, g_curStride, g_curIB, verts, tris }; g_draws[g_nDraws++] = d; }
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void SetWorldTransform(const CMatrix3x4& m) { g_world = m; }
     void PrepareForRender(unsigned long f) { g_flags = f; }
 };
 static CRenderManagerCore g_core; static CShaderRenderManager g_srm; static C3DVector g_cam;
-struct CEngineWaterBackgroundSubPatch {
+class CEngineWaterBackgroundSubPatch { public:
     CIndexBuffer* IndexBuffer; CVertexBufferWin32* VertexBuffer;
     CIndexBuffer* BridgeIndexBuffers[4]; CVertexBufferWin32* BridgeVertexBuffers[4];
     unsigned short PolyCount, VertexCount, BridgePolyCount[4];

@@ -76,6 +76,6 @@ template<class _Ty, class _Ax> void vector<_Ty, _Ax>::_Xlen() const
 
 class CHandleBasedMemoryPool {
 public:
-    struct CHeader;                             // a pool block header (32 bytes)
+    class CHeader;                             // a pool block header (32 bytes)
 };
 template class std::vector<CHandleBasedMemoryPool::CHeader*>;

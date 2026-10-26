@@ -1,4 +1,4 @@
-struct CCreatureAction_UnblockableMidAttack {
+class CCreatureAction_UnblockableMidAttack { public:
     void* vftable;
 };
 

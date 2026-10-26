@@ -8,7 +8,7 @@
 // Val +8; the implicit pair assignment is three CCharString calls and a dword.
 // CCompareString<T>: `a.first.FastCompare(b.first)` (CCharString::FastCompare @ 0x009E6530, out of line).
 // Shape: SGI/STLport `__push_heap` (`parent = (hole - 1) / 2; while (hole > top && comp(first[parent], value))`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
@@ -16,8 +16,8 @@ struct CCharString {
     bool FastCompare(const CCharString& other) const;      // 0x009E6530
 };
 
-struct CSymbolMap {
-    struct CSymbolInfo {
+class CSymbolMap { public:
+    class CSymbolInfo { public:
         CCharString GroupName;                             // +0x00
         CCharString EntryName;                             // +0x04
         long Val;                                          // +0x08
@@ -30,7 +30,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<CCharString, CSymbolMap::CSymbolInfo> TEntry;
 
-template<class T> struct CCompareString {
+template<class T> class CCompareString { public:
     char m_tag;
     bool operator()(const pair<CCharString, T>& a, const pair<CCharString, T>& b) const { return a.first.FastCompare(b.first); }
 };

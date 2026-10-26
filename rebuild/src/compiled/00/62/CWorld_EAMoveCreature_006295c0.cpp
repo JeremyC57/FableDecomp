@@ -20,7 +20,7 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -30,23 +30,23 @@ struct CGameEvent {
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 enum EGameAction { GAME_ACTION_NONE = 0 };
 
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     unsigned char _pad[0x91];
     unsigned char Dead : 1;                        // +0x91 bit 0
     void ApplyRelativeMovementAcceleration(const C3DVector& acceleration, EGameAction action);   // 0x006AD3C0
 };
-struct CThingManager {
+class CThingManager { public:
     CThingPlayerCreature* GetThingWithUID(__int64 uid);   // 0x0051ED80
 };
-struct CPlayer;
+class CPlayer;
 
-struct CWorld {
+class CWorld { public:
     virtual void _slot0();
     virtual void _slot1();
     virtual void _slot2();

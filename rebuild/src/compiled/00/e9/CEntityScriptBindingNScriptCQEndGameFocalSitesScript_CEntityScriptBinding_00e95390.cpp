@@ -11,15 +11,15 @@
 // Shape: the derived vtable store sits between the name push and the copy-constructor call (the base has no
 // constructor of its own, so only one vtable store is emitted); the three dword members are stored after the
 // call in the scheduler's order (+0x18, +8, +0x10) and the bool last.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
 };
 
-struct CScriptDataBase;
-struct CScriptThing;
-struct CEntityScriptBase;
-template<class T> struct CCountedPointer {
+class CScriptDataBase;
+class CScriptThing;
+class CEntityScriptBase;
+template<class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
 };
@@ -28,7 +28,7 @@ template<class T> struct CCountedPointer {
 // ClassAllocFunc +0x10); an incomplete forward declaration would give the 16-byte general form.
 namespace NScript { struct __single_inheritance CQ_EndGameFocalSitesScript; }
 
-struct CEntityScriptBindingBase {
+class CEntityScriptBindingBase { public:
     virtual ~CEntityScriptBindingBase();
 };
 

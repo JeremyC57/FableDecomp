@@ -7,7 +7,7 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 long g_CCharStringInstanceCount = 0;
-struct CCharStringData { char text[32]; long NoRefs; };
+class CCharStringData { public: char text[32]; long NoRefs; };
 class CCharString {
 public:
     CCharStringData* PStringData;

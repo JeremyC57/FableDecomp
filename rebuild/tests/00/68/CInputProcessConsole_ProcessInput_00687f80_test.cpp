@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[32] = ""; static bool g_consoleTakes = false; static const void* g_event = 0;
-struct CInputEvent { long m_kind; };
-struct CProcessedInput { long Player; long Type; unsigned char GameEvents[0xa0]; unsigned char NoGameEvents; unsigned char _pad[3]; long Priority; void SetHandled() { NoGameEvents = 0; Type = 2; std::strcat(g_seq, "H"); } };
-struct CConsole { virtual void v00() { } unsigned char _body[0x98]; CConsole() { std::strcat(g_seq, "N"); } bool ProcessInput(const CInputEvent& event) { std::strcat(g_seq, "P"); g_event = &event; return g_consoleTakes; } };
+class CInputEvent { public: long m_kind; };
+class CProcessedInput { public: long Player; long Type; unsigned char GameEvents[0xa0]; unsigned char NoGameEvents; unsigned char _pad[3]; long Priority; void SetHandled() { NoGameEvents = 0; Type = 2; std::strcat(g_seq, "H"); } };
+class CConsole { public: virtual void v00() { } unsigned char _body[0x98]; CConsole() { std::strcat(g_seq, "N"); } bool ProcessInput(const CInputEvent& event) { std::strcat(g_seq, "P"); g_event = &event; return g_consoleTakes; } };
 struct CCountedPointer_CConsole { CConsole* m_pObject; void* m_pCount; void Reset(CConsole* object) { m_pObject = object; std::strcat(g_seq, "R"); } };
 static CCountedPointer_CConsole g_pConsole = { 0, 0 };
-struct CInputProcessConsole {
+class CInputProcessConsole { public:
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed)
     {
         if (g_pConsole.m_pObject == 0) g_pConsole.Reset(new CConsole());

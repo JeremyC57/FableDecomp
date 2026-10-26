@@ -16,7 +16,7 @@ extern "C" int __cdecl printf(const char* format, ...);
 //   CClipListElement {Data, Count}. Local model (names descriptive).
 // Shape: the centre is copied into a local C3DVector; the camera distance is the Z,Y,X sum of squares on the x87 stack and
 //   compared with (radius + range)^2 / (range - radius)^2; the plane flags live in the dead `out` slot.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CEngineCamera {
 public:

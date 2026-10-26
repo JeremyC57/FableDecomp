@@ -9,8 +9,8 @@
 // Shape: the inline out-parameter GetInterface(T** ppOut, long type) template of the landed 0x007504E0 / 0x007B2CF0 family
 // writes straight through the caller's pointer; the key 4 lives in the `push ecx` frame slot. Here the template must be
 // `__forceinline`: with its bool result unused VC7.1 keeps it out of line (50v92).
-struct CTCBase;
-struct CTCHeroStats;
+class CTCBase;
+class CTCHeroStats;
 
 struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTC
     SEntry* LowerBound(const long* type);    // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
@@ -41,19 +41,19 @@ struct CThing {
     }
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPlayerCreature();             // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                // 0x00449960
 };
-struct CWorld {
+class CWorld { public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PPlayerManager;          // +0x1c
 };
 extern CWorld* g_pWorld;                     // 0x013B86A0
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void GetHeroStats(CTCHeroStats** out);
 };
 

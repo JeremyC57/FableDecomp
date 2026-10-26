@@ -39,7 +39,7 @@ struct CModeStandBase : CModeBase {
     void OnDeactivate();                           // 0x00861D00
 };
 
-struct CModeJackOfBladesFlash : CModeStandBase {
+class CModeJackOfBladesFlash : public CModeStandBase { public:
     long                    Timer;                 // +0x68
     long                    BurnCounter;           // +0x6c
     unsigned char           _filter[0xc];          // +0x70 CAnimFilterOfGroup Filter

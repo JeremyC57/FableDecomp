@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CThing; struct CThingEventBase { CThing* m_pThing; CThingEventBase(CThing* thing) : m_pThing(thing) { } };
+class CThing; struct CThingEventBase { CThing* m_pThing; CThingEventBase(CThing* thing) : m_pThing(thing) { } };
 struct CHitThing : CThingEventBase { virtual void v00() { } bool m_8; long m_c; bool m_10; float m_scale; CHitThing(CThing* thing) : CThingEventBase(thing), m_8(false), m_c(0), m_10(true), m_scale(1.0f) { } };
 
 int main() {

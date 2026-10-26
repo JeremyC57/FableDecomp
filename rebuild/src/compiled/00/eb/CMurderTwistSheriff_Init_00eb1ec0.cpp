@@ -12,28 +12,28 @@
 // Shape: the nested GetHero call fetches the interface vtable once (ebx); the by-value CScriptThing copy ctor is inline;
 //   the parent's handle is a named pointer
 //   (esi), the last Release is a tail jump.
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
 };
-struct CBaseClass {                                   // vtable 0x01231710
+class CBaseClass { public:                                   // vtable 0x01231710
     CBaseClass() {}
     virtual ~CBaseClass();
 };
 struct CScriptThingImp;
-struct CScriptThing : CBaseClass {                    // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                    // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImp> PImp;       // +0x04
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) {}
     virtual ~CScriptThing();
 };
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     unsigned char _body[0x10];
     bool IsScripting();                          // 0x00CD23B9
     void Release();                              // 0x00CD2770
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

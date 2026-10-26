@@ -1,16 +1,16 @@
 // Behaviour test for CVillageTaskTorch::IsCreatureMoreAppropriateForTask (0x00860650): the candidate wins only when its squared distance
 // to the Torch thing times 1.5625 is below the assigned creature's (i.e. more than 1.25x nearer).
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { C3DVector r; r.X = X - o.X; r.Y = Y - o.Y; r.Z = Z - o.Z; return r; }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing { C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
+class CThing { public: C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
 struct CIntelligentPointer { CThing* Item; CThing* GetPItem() const { return Item; } };
-struct CVillageTaskTorch {
+class CVillageTaskTorch { public:
     CIntelligentPointer Torch;
     CIntelligentPointer CreatureAssignedToTask;
     bool IsCreatureMoreAppropriateForTask(const CThing& creature) const

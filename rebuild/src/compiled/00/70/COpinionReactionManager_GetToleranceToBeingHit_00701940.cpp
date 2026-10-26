@@ -35,7 +35,7 @@ struct CToleranceMap {                             // map<EOpinionAttitudeType, 
     CToleranceIterator end() const { return CToleranceIterator(m_pHeader); }
 };
 
-struct COpinionReactionManagerDef {
+class COpinionReactionManagerDef { public:
     unsigned char _pad00[0x6C];
     CToleranceMap ToleranceToBeingHit;             // +0x6C (PDB +0x80)
 };

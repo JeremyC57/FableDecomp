@@ -21,7 +21,7 @@ public:
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -30,7 +30,7 @@ struct C3DVector {
     __forceinline C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     __forceinline float Length2D() const { return (float)sqrt(X * X + Y * Y); }
 };
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector Min, Max;
 };
 
@@ -48,11 +48,11 @@ public:
     void AddToList(CEngineInternalPrimitiveBase** list);   // 0x00B8FDF0
 };
 
-struct CEngineSceneMap {
+class CEngineSceneMap { public:
     void AddPrimitive(CEngineInternalPrimitiveBase* primitive, const C2DVector& centre, float diameter);   // 0x00B93B30
 };
 
-struct CEngineScene {
+class CEngineScene { public:
     unsigned char                 _pad00[0x1c];
     unsigned long                 GridLayerMask;            // +0x1c
     CEngineInternalPrimitiveBase* PersistentList;           // +0x20

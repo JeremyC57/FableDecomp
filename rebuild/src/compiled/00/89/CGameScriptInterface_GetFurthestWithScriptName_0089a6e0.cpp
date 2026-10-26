@@ -15,7 +15,7 @@
 // Opt: /O2 (16-aligned entry, loop alignment padding).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 struct CScriptThingImp {
     virtual void _i00();
@@ -98,11 +98,11 @@ struct CScriptThingImp {
     virtual void _i77();
     virtual bool IsSameThing(const CScriptThingImp* other) const;   // slot 78 (+0x138)
 };
-struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -125,8 +125,8 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
         Info = 0;
     }
 };
-struct CCharString { void* PStringData; };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+class CCharString { public: void* PStringData; };
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
     CCountedScriptImp PImp;                             // +0x04
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -155,7 +155,7 @@ struct CScriptThingVector {                             // STLport vector<CScrip
     }
     bool empty() const { return _M_start == _M_finish; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void _g00();
     virtual void _g01();
     virtual void _g02();

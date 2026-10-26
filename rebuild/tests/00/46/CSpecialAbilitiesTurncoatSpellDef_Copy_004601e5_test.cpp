@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CSpecialAbilitiesTurncoatSpellDef { int x; };
+class CSpecialAbilitiesTurncoatSpellDef { public: int x; };
 
 static int g_called = 0;
 static CSpecialAbilitiesTurncoatSpellDef* g_this = 0;

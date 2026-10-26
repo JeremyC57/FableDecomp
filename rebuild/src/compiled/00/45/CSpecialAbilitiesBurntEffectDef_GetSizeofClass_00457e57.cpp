@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesBurntEffectDef {};
+class CSpecialAbilitiesBurntEffectDef { public:};
 
 unsigned long __fastcall CSpecialAbilitiesBurntEffectDef_GetSizeofClass(const CSpecialAbilitiesBurntEffectDef* self)
 {

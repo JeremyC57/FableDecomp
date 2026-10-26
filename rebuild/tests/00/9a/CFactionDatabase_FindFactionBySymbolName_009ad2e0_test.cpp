@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 static unsigned int Crc(const char* s, unsigned int n) { unsigned int h = 0; for (unsigned int i = 0; i < n; ++i) h = h * 31 + (unsigned char)s[i]; return h; }
-struct CCharStringData { const char* m_pChars; unsigned int m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pChars; unsigned int m_length; };
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned int GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? "" : m_pStringData->m_pChars; }

@@ -12,12 +12,12 @@
 // Shape: the animation name is a named local in its own block; the three physics calls each re-fetch the creature; the
 //   physics component comes through the inline GetPhysics accessor (straight into ecx; the direct member read goes
 //   through eax); the position is copied by value into the frame (three integer moves) and HeightOnInit = Z - ground height (`fsubr`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CTCBase;
-struct CCharString {
+class CTCBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -41,7 +41,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -68,13 +68,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                  // +4
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CTCNymph {                                     // interface type 0xF5
+class CTCNymph { public:                                     // interface type 0xF5
     void StopFlyingAround(long mode);                 // 0x0080F870
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetHeightZBelowPos(const C3DVector* position);   // 0x0063E480
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -83,7 +83,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     void Initialise();                                // 0x00857520
     CWorldMap* GetWorldMap();                         // 0x00692C10
 };
-struct CCreatureAction_NymphGetHitDie : CCombatActionBase {
+class CCreatureAction_NymphGetHitDie : public CCombatActionBase { public:
     unsigned char _pad114[0x148 - 0x114];
     float HeightOnInit;                               // +0x148 (PDB +0x160)
     void Initialise();

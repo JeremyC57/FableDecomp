@@ -24,9 +24,9 @@ static long __stdcall FakeSetVSConstF(IDirect3DDevice9* self, unsigned long reg,
 static IDirect3DDevice9Vtbl g_vtbl;
 static IDirect3DDevice9 g_device;
 static void InitDevice() { for (int i = 0; i < 94; ++i) g_vtbl._slots[i] = 0; g_vtbl.SetVertexShaderConstantF = FakeSetVSConstF; g_device.lpVtbl = &g_vtbl; }
-struct C4DVector { float x, y, z, w; };
-struct CVertexShaderConstantLayout { unsigned long ShadowFadeFactorsRegister; };
-struct CShaderRenderManager {
+class C4DVector { public: float x, y, z, w; };
+class CVertexShaderConstantLayout { public: unsigned long ShadowFadeFactorsRegister; };
+class CShaderRenderManager { public:
     CVertexShaderConstantLayout* CurrentVSConstantLayout;
     IDirect3DDevice9*            D3DDevice;
     void SetVertexShaderConstant(unsigned long startRegister, float x, float y, float z, float w)

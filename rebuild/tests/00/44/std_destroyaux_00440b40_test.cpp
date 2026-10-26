@@ -4,7 +4,7 @@
 #include <cstdio>
 static int g_log[64];
 static int g_count = 0;
-struct CWideString {
+class CWideString { public:
     int tag;
     ~CWideString() { if (g_count < 64) g_log[g_count] = tag; ++g_count; }
 };

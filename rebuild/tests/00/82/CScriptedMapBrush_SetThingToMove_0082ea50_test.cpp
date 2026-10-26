@@ -1,7 +1,7 @@
 // Behaviour test for CScriptedMapBrush::SetThingToMove (0x0082EA50): the map entry for the id gets both the position and the facing angles.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct C3DAngles { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
+class C3DAngles { public: float X, Y, Z; };
 struct CThingPosAndOrientation { C3DVector Position; C3DAngles FacingAngles; };
 struct CThingsToMoveMap {
     unsigned long long m_keys[4];
@@ -18,7 +18,7 @@ struct CThingsToMoveMap {
         return m_values[m_count++];
     }
 };
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     CThingsToMoveMap ThingsToMove;
     void SetThingToMove(unsigned long long thingID, const C3DVector& position, const C3DAngles& facingAngles)
     {

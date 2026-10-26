@@ -1,4 +1,4 @@
-struct CInputProcessParalysed {
+class CInputProcessParalysed { public:
     void* vftable;
 };
 

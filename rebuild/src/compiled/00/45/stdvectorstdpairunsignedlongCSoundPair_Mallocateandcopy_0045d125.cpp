@@ -17,7 +17,7 @@
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CSoundPair {                                // PDB 8 bytes
+class CSoundPair { public:                                // PDB 8 bytes
     long FirstSound;                               // +0x00
     long LastSound;                                // +0x04
 };

@@ -15,17 +15,17 @@
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 template <class T>
-struct CArray {                                    // retail CArray<T>: first / last / end (0x0c bytes)
+class CArray { public:                                    // retail CArray<T>: first / last / end (0x0c bytes)
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
     __forceinline ~CArray() { if (m_pFirst) free(m_pFirst); }
 };
 
-struct CCardinalSpline {                           // retail 0x14 bytes
+class CCardinalSpline { public:                           // retail 0x14 bytes
     CArray<C3DVector> ControlPoints;               // +0x00
     float             Tension;                     // +0x0c
     bool              EndPointsConnected;          // +0x10

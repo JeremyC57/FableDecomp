@@ -12,11 +12,11 @@
 // Shape: `v.erase(remove(v.begin(), v.end(), CIntelligentPointer<const CThing>(0)), v.end())` with STLport's inline remove (find with the
 // iterator tag, then remove_copy from the element after the hit); erase's `end()` is read first (ebx). The world and the UID are named
 // locals in retail order (GetWorld call, UID load, frame call); the inline expression reorders the loads and the later registers.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UID;                       // +0x18
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 struct CBaseIntelligentPointer {
@@ -51,14 +51,14 @@ struct CPtrVector {                             // STLport vector<CIntelligentPo
     bool empty() const { return _M_start == _M_finish; }
     CPtr* erase(CPtr* first, CPtr* last);       // 0x00738D70
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     CWorld* GetWorld();                         // 0x00686A70
 };
-struct CTCSolidToThing : CTCBase {
+class CTCSolidToThing : public CTCBase { public:
     CPtrVector NotSolidToThings;                // +0x0c
     void FrameUpdate();
 };

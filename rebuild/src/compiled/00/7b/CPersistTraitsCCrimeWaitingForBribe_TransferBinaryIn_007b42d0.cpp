@@ -37,7 +37,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     }
 };
 
-struct CCrimeWaitingForBribe {                     // 8 bytes
+class CCrimeWaitingForBribe { public:                     // 8 bytes
     long DeedHandle;                               // +0x0
     long Type;                                     // +0x4 EOpinionDeedType
 };

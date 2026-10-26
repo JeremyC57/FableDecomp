@@ -1,6 +1,6 @@
 // behaviour test for 0x00681610 COpinionTransientOffset::COpinionTransientOffset
 #include <cstdio>
-struct COpinionTransientOffset {
+class COpinionTransientOffset { public:
     long Opinion; float OffsetPerFrameRunIn; long FramesToRunIn; long FramesOfCappedPeak; float OffsetPerFrameRunOut; long FramesToRunOut;
     COpinionTransientOffset(long opinion, float peakOffset, long framesToRunIn, long framesToRunOut, float finalOffset)
     {

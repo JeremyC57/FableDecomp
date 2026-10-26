@@ -10,11 +10,11 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
-struct CEnginePrimitiveRenderer2D {
+class CEnginePrimitiveRenderer2D { public:
     unsigned char   _pad00[0x4c];            // vptr, PrimitiveManagers, the manager pointers, the 2D primitive lists, FOV2D
     CRGBFloatColour AmbientLightColour;      // +0x4c
     CRGBFloatColour DiffuseLightColour;      // +0x5c

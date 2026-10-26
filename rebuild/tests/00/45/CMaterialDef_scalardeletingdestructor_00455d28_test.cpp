@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CMaterialDef { int f0; };
+class CMaterialDef { public: int f0; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 void __fastcall CMaterialDef_dtor(CMaterialDef* def){ g_dtor_called++; (void)def; }

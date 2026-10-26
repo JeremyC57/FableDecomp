@@ -7,9 +7,9 @@ typedef long long i64;
 #else
 typedef __int64 i64;
 #endif
-struct CCharStringData { const char* Text; unsigned long Length; };
+class CCharStringData { public: const char* Text; unsigned long Length; };
 static CCharStringData g_block;
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long = -1) { g_block.Text = text; g_block.Length = (unsigned long)std::strlen(text); PStringData = text[0] ? &g_block : 0; }
     ~CCharString() {}
@@ -19,7 +19,7 @@ struct CCharString {
 unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length)
 { unsigned long h = seed; const unsigned char* p = (const unsigned char*)data; for (unsigned long i = 0; i < length; ++i) h = h * 31 + p[i]; return h + 1000 * length; }
 inline unsigned long GetCRC(const CCharString& text) { return Calc(0, text.GetPString(), text.GetLength()); }
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable; unsigned long m_position; long StreamSize; const unsigned char* m_pData; long SourceChunkStreamPos; long m_remaining; int overflows;
     void ReadWithSrcChunkOverflow(unsigned char*, long) { ++overflows; }
     static bool IsValidPosition(i64 position) { return position >= 0 && position <= 0x7fffffff; }
@@ -32,8 +32,8 @@ struct CMemoryDataInputStream {
     }
     unsigned long ReadULong() { unsigned long value = 0; Read(&value, 4); return value; }
 };
-struct CDataOutputStream { int writes; unsigned long last; void WriteULong(unsigned long v) { ++writes; last = v; } };
-struct CPersistContext {
+class CDataOutputStream { public: int writes; unsigned long last; void WriteULong(unsigned long v) { ++writes; last = v; } };
+class CPersistContext { public:
     long Mode; CMemoryDataInputStream* LoadStream; CDataOutputStream* SaveStream;
     void CheckCRC(const char* name)
     {

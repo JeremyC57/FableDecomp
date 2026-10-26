@@ -18,7 +18,7 @@
 //   body is `if (Data) return ...; return false;` (`cmp al,bl` on the zero register; the `&&` form gives `test al,al`).
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator+=(const CCharString& other); // 0x0099F0A0
@@ -39,12 +39,12 @@ template <class T> struct vector {                     // STLport vector<unsigne
     T& operator[](unsigned int i) { return _M_start[i]; }
 };
 }
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
@@ -61,11 +61,11 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { }
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
     __forceinline virtual ~CScriptThing() { }          // out of line 0x004AA840
@@ -100,7 +100,7 @@ struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x012
     }
 };
 typedef long ETextGroupSelectionMethod;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006();
     virtual void NewScriptFrame() const;               // slot 7 (+0x1c)
@@ -125,13 +125,13 @@ struct CGameScriptInterface {
     virtual void v107(); virtual void v108(); virtual void v109(); virtual void v110(); virtual void v111();
     virtual void AddScreenMessage(const CCharString& text, ETextGroupSelectionMethod method) const;   // slot 112 (+0x1c0)
 };
-struct CScriptBase {
+class CScriptBase { public:
     unsigned char         _pad00[0x40];
     CGameScriptInterface* GSI;                         // +0x40
     bool IsActiveThreadTerminating();                  // 0x00CB7940
 };
 namespace NScript {
-struct CPersonalScript_EmptyScript : CScriptBase {
+class CPersonalScript_EmptyScript : public CScriptBase { public:
     void CheckForHeroActions();
 };
 

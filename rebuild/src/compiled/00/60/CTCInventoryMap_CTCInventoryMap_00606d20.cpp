@@ -58,7 +58,7 @@ struct CCountedPointerUIDs {                         // CCountedPointer<vector<u
     void* Info;
     CCountedPointerUIDs() : Data(0), Info(0) {}
 };
-struct C2DBoxI { long X0, Y0, X1, Y1; };
+class C2DBoxI { public: long X0, Y0, X1, Y1; };
 enum EScreenType { SCREEN_TYPE_NONE = -1 };
 class CZoomingComponent;
 class CList;

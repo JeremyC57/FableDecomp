@@ -14,20 +14,20 @@
 // CTexture (engine/CTexture.h) holds the device texture at +0.
 // Shape: the bump constant is `scale * 0.5f` (0x0122F59C is the 0.5f literal; an extern float swaps the fld/fmul).
 
-struct C3DVector { float X, Y, Z; };
-struct C4DVector {
+class C3DVector { public: float X, Y, Z; };
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
 };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
 struct CPreTransposedBoneMatrix {
     float M[12];
     CPreTransposedBoneMatrix() { }
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -36,21 +36,21 @@ template <class T> struct CArray {
     void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;
     long Offset;
     unsigned long Count;
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10
     CArray<C4DVector> ReservedPresets;                  // +0x140
 };
 
-struct CVertexShader;
-struct CPixelShader;
+class CVertexShader;
+class CPixelShader;
 
 class CShaderRenderManager {
 public:
@@ -250,7 +250,7 @@ struct IDirect3DDevice9 {
     virtual long __stdcall SetIndices(void* indexData) = 0;
 };
 
-struct CTexture {                                  // engine/CTexture.h: device texture at +0
+class CTexture { public:                                  // engine/CTexture.h: device texture at +0
     void* PD3DTexture;                             // +0x00
     unsigned long ByteLengthAndSource;             // +0x04
 };
@@ -352,7 +352,7 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
 }
 
 struct SCaptureEntry { void* Block; unsigned long State; };
-struct CRenderStateManager {                       // @ 0x013CB508
+class CRenderStateManager { public:                       // @ 0x013CB508
     void RestoreCaptureBlock();                    // 0x00A05840
     unsigned char _pad000[8];
     SCaptureEntry CaptureStack[0x500];             // +0x008
@@ -373,9 +373,9 @@ extern unsigned long g_renderStateValue_01396dc8;  // 0x01396DC8
 extern unsigned long g_renderStateValue_01396dcc;  // 0x01396DCC
 extern unsigned long g_renderStateValue_01396dd0;  // 0x01396DD0
 
-struct CEngineWaterBackgroundSubPatch;
+class CEngineWaterBackgroundSubPatch;
 
-struct CEngineWaterRenderer {                      // retail layout (12-byte CArrays)
+class CEngineWaterRenderer { public:                      // retail layout (12-byte CArrays)
     unsigned char _pad000[0x150];
     unsigned char IceBackgroundVertexShader[8];    // +0x150 (PDB +0x15c)
     unsigned char _pad158[0x170 - 0x158];

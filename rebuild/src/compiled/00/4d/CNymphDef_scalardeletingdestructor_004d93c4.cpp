@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CNymphDef
-{
+class CNymphDef
+{ public:
     void* vftable;
 };
 extern void* const g_CNymphDef_vftable;

@@ -2,26 +2,26 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* key; CCharString(const char* t, long = -1) : key(t) {} };
-struct CWideString {
+class CCharString { public: const char* key; CCharString(const char* t, long = -1) : key(t) {} };
+class CWideString { public:
     char text[96];
     CWideString() { text[0] = 0; }
     const CWideString& operator+=(const CWideString& o) { std::strcat(text, o.text); return *this; }
     bool operator!=(const char* t) const { return std::strcmp(text, t) != 0; }
 };
 struct CBaseIntelligentPointer { void* m_pItem; void* GetPItem() const { return m_pItem; } };
-struct CTCBuyableHouse { bool OwnedByPlayer; bool Rented; long MaxDressLevel; CBaseIntelligentPointer WifeLivingHere; };
-struct CFontBank { int id; };
+class CTCBuyableHouse { public: bool OwnedByPlayer; bool Rented; long MaxDressLevel; CBaseIntelligentPointer WifeLivingHere; };
+class CFontBank { public: int id; };
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& s) { CWideString w; std::strcpy(w.text, s.key); return w; }
 };
-struct CMainGameComponent { CDataBank* PTextBank; CFontBank* PFont; CDataBank* GetTextBank() const { return PTextBank; } };
+class CMainGameComponent { public: CDataBank* PTextBank; CFontBank* PFont; CDataBank* GetTextBank() const { return PTextBank; } };
 static int g_shown = 0; static char g_text[96]; static const CFontBank* g_font = 0; static unsigned long g_flags = 0;
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float, bool, bool)
     { ++g_shown; std::strcpy(g_text, text.text); g_font = &font; g_flags = flags; }
 };
-struct CPlayerGui { CSubtitleRenderer SubtitleRenderer; };
+class CPlayerGui { public: CSubtitleRenderer SubtitleRenderer; };
 static CMainGameComponent* g_pMainGameComponent;
 static CPlayerGui* g_pPlayerGui;
 class CTCActionUseBuyHouse {

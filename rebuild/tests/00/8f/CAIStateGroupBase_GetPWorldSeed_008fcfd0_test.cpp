@@ -1,6 +1,6 @@
 #include "engine/CAIStateGroupBase.h"
 #include <cstdio>
-struct CAIBrain { char pad[0x14]; unsigned long base; };
+class CAIBrain { public: char pad[0x14]; unsigned long base; };
 
 unsigned long* __fastcall CAIStateGroupBase_GetPWorldSeed(const CAIStateGroupBase* stateGroup)
 {

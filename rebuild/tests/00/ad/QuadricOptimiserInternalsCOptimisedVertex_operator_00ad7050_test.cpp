@@ -4,7 +4,7 @@
 // Behaviour test for 00ad7050 COptimisedVertex assignment: every plain member (vectors, quadric, cost, flags, indices) is copied and each
 // tree member goes through its own operator= exactly once.
 static int g_setCopies = 0, g_setAssigns = 0, g_mapCopies = 0, g_mapAssigns = 0;
-struct C3DVector {                                 // engine C3DVector: user copy ctor, implicit assignment
+class C3DVector { public:                                 // engine C3DVector: user copy ctor, implicit assignment
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
@@ -31,14 +31,14 @@ template <class K, class V, class C = less<K>, class A = allocator<pair<const K,
 };
 }
 namespace QuadricOptimiserInternals {
-struct CQuadric {                                  // eleven doubles, 0x58 bytes
+class CQuadric { public:                                  // eleven doubles, 0x58 bytes
     double AA, AB, AC, AD, BB, BC, BD, CC, CD, DD, Weight;
 };
-struct CIndexList {                                // 12 bytes (STLport set)
+class CIndexList { public:                                // 12 bytes (STLport set)
     std::set<unsigned long> Indices;
 };
-struct CContractionReference { unsigned long Index; long Count; };
-struct COptimisedVertex {                          // retail 0xb8 bytes (Ego_r.pdb members, STLport 12-byte trees)
+class CContractionReference { public: unsigned long Index; long Count; };
+class COptimisedVertex { public:                          // retail 0xb8 bytes (Ego_r.pdb members, STLport 12-byte trees)
     C3DVector     Position;                        // +0x00
     C3DVector     Normal;                          // +0x0c
     C3DVector     TextureCoord;                    // +0x18

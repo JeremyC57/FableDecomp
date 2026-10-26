@@ -13,11 +13,11 @@
 // Shape: `T* log = 0;` preloads edi, and the out-parameter GetInterface result is `&&`-ed with the open-handle test, so
 //        the absent component skips straight to the else call; both arms are complete PostDeed calls (deed type 2,
 //        post type 0x12) differing in the seventh argument, the first storing the new handle.
-struct CTCBase;
-struct CBaseObject;
-struct CFaction;
-struct CThingAICreature;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class CBaseObject;
+class CFaction;
+class CThingAICreature;
+class C3DVector { public: float X, Y, Z; };
 
 enum EOpinionDeedType { OPINION_DEED_TYPE_TRESPASS = 2 };
 enum EOpinionPostDeedType { OPINION_POST_DEED_TYPE_0x12 = 0x12 };
@@ -28,7 +28,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -57,7 +57,7 @@ struct CThing {
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 
-struct CTCHeroOpinionDeedLog {                  // interface 0x51
+class CTCHeroOpinionDeedLog { public:                  // interface 0x51
     long PostDeed(EOpinionDeedType deedType, const C3DVector& position, const CThing* target, CThingAICreature* victim,
                   EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long extra);   // 0x006C6990
 };
@@ -79,7 +79,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCTrespasser {
+class CTCTrespasser { public:
     void*         __vftable;                    // +0x00
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     bool          ToBeRemoved;                  // +0x08

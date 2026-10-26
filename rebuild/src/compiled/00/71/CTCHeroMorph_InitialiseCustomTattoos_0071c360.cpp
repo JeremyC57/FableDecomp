@@ -8,8 +8,8 @@
 //   CopyFileW 0x00998E70.
 // Data: L"Custom Tattoo Tutorial.txt" 0x01265BC0.
 #include <stddef.h>
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                         // 0x0099B510
 };
@@ -25,7 +25,7 @@ namespace N_0099a300 { struct CBase {
     ~CBase();                                               // 0x0099A300
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CDiskFileWin32 : CBase {                             // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                             // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                                   // 0x0099A920 (slot 2)
@@ -40,8 +40,8 @@ struct CDiskFileWin32 : CBase {                             // vtable 0x0122D06C
 };
 void __fastcall CopyFileW(CDiskFileWin32& from, CDiskFileWin32& to);   // 0x00998E70
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* s, long len = -1);              // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -80,8 +80,8 @@ struct CDefPointerBase {                                    // untyped result of
         }
     }
 };
-struct CTattooDef;
-template<class T> struct CDefPointer {
+class CTattooDef;
+template<class T> class CDefPointer { public:
     CDefBase* m_p;
     CDefPointer() : m_p(0) { }
     CDefPointer(const CDefPointerBase& o) : m_p(o.m_p) { if (m_p) m_p->AddRef(); }
@@ -89,10 +89,10 @@ template<class T> struct CDefPointer {
     T* operator->() const { return (T*)m_p; }
     operator bool() const { return m_p != 0; }
 };
-struct CTattooDef {
+class CTattooDef { public:
     bool CopyCustomTattooToUserDir() const;                 // 0x0071B840
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTattooDef>* out) const;     // 0x005B1EFC
 };
 void* FindSubDef(const CDefClassBase* def);
@@ -114,10 +114,10 @@ bool CDefClassBase::GetSubDef(CDefPointer<CTattooDef>* out) const
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointerBase GetPDefFromInstantiationName(const CCharString& name);   // 0x009ADA40
 };
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     CDefinitionManager* GetDefinitionManager();             // 0x006869D0 (CTCBase)
     void InitialiseCustomTattoos();
 };

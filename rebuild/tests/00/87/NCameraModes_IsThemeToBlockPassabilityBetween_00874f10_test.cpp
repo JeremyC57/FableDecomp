@@ -4,7 +4,7 @@
 #endif
 // Model of NCameraModes::IsThemeToBlockPassabilityBetween(map, a, b, flag) @ 0x00874F10: both positions' passability
 // is queried, and the segment is blocked exactly when b is not passable (a's answer does not change the result).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CWorldMap {
 public:
     float Wall;                                         // positions with X >= Wall are impassable

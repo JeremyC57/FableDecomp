@@ -17,8 +17,8 @@ static int g_listRemove, g_listInsert, g_release, g_uninit, g_fdBegin, g_gifBegi
 static unsigned long g_beginMip, g_beginFlags, g_forcedFlags;
 static bool g_forcedResult;
 
-struct CResourceList;
-struct CResource {                                     // Ego_r.pdb, 0x1C bytes
+class CResourceList;
+class CResource { public:                                     // Ego_r.pdb, 0x1C bytes
     virtual void v00() {}
     virtual void Release();                            // slot 1: the CIVCountedPointer release on the last reference
     unsigned long  RefCount;                           // +0x04 (CIVCountedPointer count)
@@ -31,7 +31,7 @@ struct CResource {                                     // Ego_r.pdb, 0x1C bytes
     void ListInsert(CResource* prev, CResource* next); // 0x009FBF90
     __forceinline void Touch();
 };
-struct CResourceList {                                 // Ego_r.pdb, 0x3C bytes
+class CResourceList { public:                                 // Ego_r.pdb, 0x3C bytes
     unsigned long _pad00;
     CResource     Head;                                // +0x04
     unsigned long ResourceCount;                       // +0x20
@@ -68,7 +68,7 @@ struct CTexturePointer {                               // CCountedPointer<CTextu
         Info = 0;
     }
 };
-struct CGraphicFrameData {                             // Ego_r.pdb, 27 bytes
+class CGraphicFrameData { public:                             // Ego_r.pdb, 27 bytes
     unsigned long   ReferenceCount;                    // +0x00
     void*           Data;                              // +0x04
     CTexturePointer PTexture;                          // +0x08
@@ -89,7 +89,7 @@ struct CGraphicFrameData {                             // Ego_r.pdb, 27 bytes
         }
     }
 };
-struct CGraphicFrame {                                 // intrusive pointer to CGraphicFrameData
+class CGraphicFrame { public:                                 // intrusive pointer to CGraphicFrameData
     CGraphicFrameData* FrameData;
     CGraphicFrame() : FrameData(0) { }
     __forceinline ~CGraphicFrame()
@@ -107,12 +107,12 @@ struct CGraphicFrame {                                 // intrusive pointer to C
         return *this;
     }
 };
-struct CManagedTexture {                               // Ego_r.pdb, 8 bytes
+class CManagedTexture { public:                               // Ego_r.pdb, 8 bytes
     unsigned long _pad00;
     CResource*    Data;                                // +0x04 CIVCountedPointer<CManagedTextureData>
     __forceinline void Touch() { if (Data) Data->Touch(); }
 };
-struct CGraphicInfoFrame;
+class CGraphicInfoFrame;
 struct CFrameData : CResource {                        // Ego_r.pdb, 0x44 bytes
     CGraphicFrame   Frame;                             // +0x1c
     CManagedTexture ManagedTexture;                    // +0x20
@@ -134,8 +134,8 @@ struct CFrameData : CResource {                        // Ego_r.pdb, 0x44 bytes
     void BeginLoading(unsigned long mipmapLevel, unsigned long flags);   // 0x009FDE80
     __forceinline void DecRef() { if (--RefCount == 0) Release(); }
 };
-struct CGraphicDataBank;
-struct CGraphicInfo {
+class CGraphicDataBank;
+class CGraphicInfo { public:
     unsigned char      _pad00[0x20];
     CGraphicDataBank*  Bank;                           // +0x20
     long               Index;                          // +0x24
@@ -155,7 +155,7 @@ struct CFrameDataPointer {                             // CIVCountedPointer<CFra
     CFrameData* operator->() const { return P; }
     operator bool() const { return P != 0; }
 };
-struct CGraphicInfoFrame {                             // Ego_r.pdb, 16 bytes
+class CGraphicInfoFrame { public:                             // Ego_r.pdb, 16 bytes
     unsigned long     _pad00;
     unsigned short    FrameNum;                        // +0x04
     signed char       SmallMipmapLevel;                // +0x06
@@ -170,7 +170,7 @@ struct CGraphicInfoArray {
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     CGraphicInfo& operator[](unsigned int n) { return *(_M_start + n); }
 };
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     virtual void v00() {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {} virtual void v08() {}
     virtual void v09() {} virtual void v10() {} virtual void v11() {} virtual void v12() {} virtual void v13() {} virtual void v14() {} virtual void v15() {} virtual void v16() {}
@@ -286,7 +286,7 @@ struct CDefPointer {
     }
     CSpriteDef* operator->() const { return m_p; }
 };
-struct CComponent {
+class CComponent { public:
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {} virtual void v006() {} virtual void v007() {}
     virtual void v008() {} virtual void v009() {} virtual void v010() {} virtual void v011() {} virtual void v012() {} virtual void v013() {} virtual void v014() {} virtual void v015() {}
     virtual void v016() {} virtual void v017() {} virtual void v018() {} virtual void v019() {} virtual void v020() {} virtual void v021() {} virtual void v022() {} virtual void v023() {}
@@ -305,7 +305,7 @@ struct CComponent {
     unsigned char _pad004[0xcc - 0x04];
     float SizeX, SizeY;                                 // +0xcc
 };
-struct CSprite : CComponent {
+class CSprite : public CComponent { public:
     unsigned char _pad0d4[0x164 - 0xd4];
     float         Angle;                                // +0x164
     unsigned long Width;                                // +0x168

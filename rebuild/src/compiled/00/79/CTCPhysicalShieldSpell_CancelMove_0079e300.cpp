@@ -10,7 +10,7 @@
 // Shape: the owner is a named local read first (edi); the sound string is a named local in its own block; the two effect strings
 //   ("" @ 0x0122D70E and "END" @ 0x01239B74) are named locals in a block, built before the argument pushes and destroyed in
 //   reverse order before the Pausable store.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -19,16 +19,16 @@ struct CDefStringTable {
     CCharString GetString(long id);             // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char Type;                         // +0x10 (2 = player)
     void RemoveTC(long type);                   // 0x004C9840
 };
-struct CSpecialAbilitiesPhysicalShieldDef {
+class CSpecialAbilitiesPhysicalShieldDef { public:
     unsigned char _pad00[0x60];
     long CancelSound;                           // +0x60 CDefString id
 };
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x4];

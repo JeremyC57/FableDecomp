@@ -21,7 +21,7 @@ struct CParticleCreationParameters {
 };
 
 namespace NParticleEngine {
-struct CParticleEmitter {                                   // retail layout (PDB - 0xc from +0x18 on)
+class CParticleEmitter { public:                                   // retail layout (PDB - 0xc from +0x18 on)
     unsigned char _pad[0x44];
     bool PreWaterEffect : 1;                                // +0x44 bit 0
     bool WaterEffect : 1;
@@ -38,13 +38,13 @@ struct CBaseIntelligentPointer {                            // sizeof 8: vptr + 
     NParticleEngine::CParticleEmitter* GetPItem() const;    // 0x00A01B50
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Object;
     long* PCount;
     T* operator->() const { return Object; }
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     unsigned char           _base[0x8];                     // CTCBase: ParentThing +4, flags +8/+9
     void*                   EmitterName;                    // +0x0c CCharString

@@ -17,12 +17,12 @@
 
 extern const char g_szEmpty[];                       // 0x0129AAF4 ""
 
-struct CWideString;
-struct CCharStringData {
+class CWideString;
+class CCharStringData { public:
     const char*   Chars;                             // +0
     unsigned long Length;                            // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
@@ -45,7 +45,7 @@ struct CCharString {
     }
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);           // 0x0099B720
     ~CWideString();                                  // 0x0099B510

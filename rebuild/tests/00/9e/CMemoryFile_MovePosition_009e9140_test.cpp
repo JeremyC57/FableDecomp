@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <string.h>
 static char g_last[64];
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* text, long) : p(text) { }
     CCharString(const CCharString& o) : p(o.p) { }
@@ -16,7 +16,7 @@ public:
     EFileExceptionType Type;
     CBBBFileException(CCharString text, EFileExceptionType type) : CExceptionBase(static_cast<const char*>(text)), Type(type) { }
 };
-struct CMemoryFile {
+class CMemoryFile { public:
     long Position, Length;
     void MovePosition(long delta);
 };

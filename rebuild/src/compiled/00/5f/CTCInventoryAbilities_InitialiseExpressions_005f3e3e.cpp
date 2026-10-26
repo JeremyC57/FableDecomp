@@ -13,13 +13,13 @@
 // Shape: the type name is an IMPLICIT conversion temporary (`"EXPRESSION"` through the defaulted length,
 //        re-addressed with `lea eax,[ebp-4]` after its constructor), built before GetDefinitions() is called.
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetNumberOfDefsOfType(const CCharString& typeName);   // 0x009AD3B0
 };
 

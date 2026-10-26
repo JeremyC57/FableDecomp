@@ -8,7 +8,7 @@ static void* g_char_src = 0;
 static void* g_arr_self = 0;
 static void* g_arr_src = 0;
 
-struct CCharString {
+class CCharString { public:
     char pad[0x0c];
     void CopyFrom(void* src){ g_char_calls++; g_char_self=this; g_char_src=src; }
 };

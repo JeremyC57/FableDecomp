@@ -5,13 +5,13 @@
 
 #include "engine/CRegionDialog.h"  // retyped onto the PDB layout; byte parity re-verified
 extern "C" void* __cdecl malloc(unsigned int size);   // MSVCR71 import thunk 0x00BFEA0E
-struct CGuiControlTree;
+class CGuiControlTree;
 
 // callee at 0x5b1b20: __fastcall(ecx=CGuiControlTree* self, edx=long index)
 void __fastcall SubInit_5b1b20(CGuiControlTree* self, long index);
 
-struct CGuiControlTree
-{
+class CGuiControlTree
+{ public:
     char pad[0xC];
 };
 

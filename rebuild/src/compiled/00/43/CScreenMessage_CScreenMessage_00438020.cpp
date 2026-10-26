@@ -8,17 +8,17 @@
 // Shape: the newline scan reads the narrow characters through a pointer taken from a temporary converted copy
 // that dies at the end of its full expression (retail keeps the stale pointer in ebp; VC puts the temporary in
 // the dead `text` argument slot); GetLength is called again every pass and inside the test.
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_pText;                             // +0x00
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     ~CCharString();                                  // 0x0099EAE0
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pText; }
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);           // 0x0099B720
     long GetLength() const;                          // 0x0099B220

@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CDataInputStream {
+class CDataInputStream { public:
     unsigned long StreamPos; long StreamSize; const unsigned char* CurrentSourcePtr; unsigned long SourceChunkStreamPos; long SourceChunkBytesRemaining;
     int overflowCalls;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size) { ++overflowCalls; std::memcpy(buffer, CurrentSourcePtr, size); }
@@ -20,8 +20,8 @@ struct CDataInputStream {
         }
     }
 };
-struct CMemoryDataInputStream : CDataInputStream { unsigned char* StreamSource; };
-struct C3DBoundingSphere { float X, Y, Z, Radius; C3DBoundingSphere() : X(0), Y(0), Z(0), Radius(0) { } };
+class CMemoryDataInputStream : public CDataInputStream { public: unsigned char* StreamSource; };
+class C3DBoundingSphere { public: float X, Y, Z, Radius; C3DBoundingSphere() : X(0), Y(0), Z(0), Radius(0) { } };
 struct CQuadTreeElementFileHeader {
     C3DBoundingSphere BoundingSphere; float MaxFadeDistance; unsigned int PrimitiveTypeMask;
     int FileBlockPos, FileBlockSize, OffsetIntoFileBlock; unsigned short MapX, MapY, Width, Height;

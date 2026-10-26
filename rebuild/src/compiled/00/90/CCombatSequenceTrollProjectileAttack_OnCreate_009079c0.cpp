@@ -11,20 +11,20 @@
 // IMPLICIT conversion of the literal (re-addressed with `lea edx` for the push); an explicit temporary pushes eax.
 // Owner/target are read through inline const getters GetCreature()/GetTarget(): direct member reads give
 // a different eax/ecx/edx rotation for the argument loads and the AddAction address temporaries.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                              // 0x0099EAE0
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x110];
 };
-struct CCreatureAction_TrollProjectileAttack : CCombatActionBase {
+class CCreatureAction_TrollProjectileAttack : public CCombatActionBase { public:
     unsigned char OverriddenAnim;           // +0x114
     CCharString   AnimName;                 // +0x118
     CCreatureAction_TrollProjectileAttack(CThingCreatureBase* owner, CThing* target, const CCharString& animName); // 0x009080B0
@@ -55,7 +55,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pCreature;        // +0x1c

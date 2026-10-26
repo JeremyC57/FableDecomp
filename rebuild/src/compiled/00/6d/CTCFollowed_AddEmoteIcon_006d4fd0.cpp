@@ -10,7 +10,7 @@
 // +0x12c follower icon index; a parent-thing flag byte at +0x6c (bit 0x20: follower icons wanted).
 // Shape: the component is a named local taken right after the lookup (esi), the masked presence word
 // tests as a byte; SetEmoteIcon(priority 1, icon, -1.0f, 0.5f, 0x80) reuses the compared index in eax.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -39,7 +39,7 @@ struct CThing {
 
 enum EEmotePriority { EMOTE_PRIORITY_FOLLOWER = 1 };
 
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     unsigned char _pad00[0x14];
     long          EmoteIcon;                                // +0x14
     void SetEmoteIcon(EEmotePriority priority, long icon, float activeTime, float scale, unsigned char alpha);   // 0x0071AAB0
@@ -55,7 +55,7 @@ struct CDefinitions {
     CGlobalGameDef* PGlobalDef;                             // +0xd0
 };
 
-struct CTCFollowed {
+class CTCFollowed { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     CDefinitions* GetDefinitions();                         // 0x006869D0 (CTCBase)

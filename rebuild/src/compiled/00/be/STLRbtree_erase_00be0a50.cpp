@@ -15,7 +15,7 @@ extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 void __cdecl operator delete(void* p);                     // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCPPointerInfo {                                    // the counted pointer's shared block
+class CCPPointerInfo { public:                                    // the counted pointer's shared block
     long  RefCount;                                        // +0
     void (__fastcall* DeleteFunction)(void* data);         // +4
     void* Data;                                            // +8

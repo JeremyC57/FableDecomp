@@ -7,12 +7,12 @@
 // Shape: FastTrack = a three-way `(float)fabs(a - b) <= eps` && chain as `? true : false` (the bool in al, stored on both arms; VC
 // tail-duplicates the true arm's return), then `return FastTrack` reloads.
 #include <math.h>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern const float g_fastTrackEpsilon;              // 0x0129BA3C (0.0001f)
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
-struct CTCSleep {
+class CTCSleep { public:
     virtual void v00();
     CThing*   ParentThing;                          // +0x04 (CTCBase)
     bool      ToBeRemoved;                          // +0x08

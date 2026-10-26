@@ -1,4 +1,4 @@
-struct CPersistContext;
+class CPersistContext;
 
 // base->TransferX()  at 0xc39d30, __fastcall(this) — no stack args
 extern void __fastcall CThingNoiseDef_baseTransfer(void* self);

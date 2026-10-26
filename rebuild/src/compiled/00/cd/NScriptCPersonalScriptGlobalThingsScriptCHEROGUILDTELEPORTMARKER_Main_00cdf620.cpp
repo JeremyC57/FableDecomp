@@ -10,12 +10,12 @@
 // Shape: the landed WatchForFailure 0x00E1F2D0 / CFader 0x00EFE8D0 wait loop: `bool waiting = !(a && b);` over two
 //   implicit CCharString conversion temporaries, the destruction flags in ebx (zeroed with the first string's frame word
 //   at entry), the condition in a frame byte; the possession call's vtable is fetched before the GetHero call.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CScriptThing { unsigned char _body[12]; };
+class CScriptThing { public: unsigned char _body[12]; };
 struct CGameScriptInterface_Calls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -99,7 +99,7 @@ struct CGameScriptInterface_Calls {
 };
 
 namespace NScript {
-struct CPersonalScript_GlobalThingsScript {
+class CPersonalScript_GlobalThingsScript { public:
     class CHERO_GUILD_TELEPORT_MARKER;
 };
 class CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER {

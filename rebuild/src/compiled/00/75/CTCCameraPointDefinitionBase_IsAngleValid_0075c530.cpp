@@ -10,29 +10,29 @@
 // Shape: the camera direction from the hero is a 3D local with only x and y filled (its unused z keeps a frame word) built
 // before the virtual call; the dot product of the two
 // hero-relative directions is compared `> 0.0f`; the early exits return byte constants, the comparison an int-sized 1/0.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {}
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();            // 0x00487DD0
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual C3DVector PeekCurrentPos() const;      // slot 11 (+0x2C) 0x0069E1F0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x34];
     CGameCameraManager* PCameraManager;         // +0x34
     CGameCameraManager* GetCameraManager() const { return PCameraManager; }

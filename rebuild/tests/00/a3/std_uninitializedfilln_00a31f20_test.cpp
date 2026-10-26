@@ -17,7 +17,7 @@ struct SGeneratorTransform {
     long m_words[13];
 };
 
-struct C3DGeneratorObject {
+class C3DGeneratorObject { public:
     SGeneratorTransform Transform;
     CCharString         ObjectName;
     unsigned long       BankIndex;

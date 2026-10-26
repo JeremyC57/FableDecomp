@@ -4,18 +4,18 @@
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { const char* Name; };
+class CScriptThing { public: const char* Name; };
 struct CIsThingConscious {
     CScriptThing Thing;
     CIsThingConscious(const CScriptThing& thing) : Thing(thing) { Log("Pred+"); }
     ~CIsThingConscious() { Log("Pred-"); }
 };
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     CScriptGameResourceObjectScriptedThingBase() { Log("Handle+"); }
     ~CScriptGameResourceObjectScriptedThingBase() { Log("Handle-"); }
 };
-struct CGameScriptInterface { void NewScriptFrame() { Log("Frame"); } };
-struct CEntityScriptBase {
+class CGameScriptInterface { public: void NewScriptFrame() { Log("Frame"); } };
+class CEntityScriptBase { public:
     CGameScriptInterface* Game;
     CScriptThing Me;
     long TerminateAfter, Calls;

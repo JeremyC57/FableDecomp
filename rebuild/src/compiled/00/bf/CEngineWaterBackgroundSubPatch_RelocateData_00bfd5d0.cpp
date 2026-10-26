@@ -11,7 +11,7 @@
 // re-read the rebased member for the notification call; the vertex arms just return.
 #include "engine/CEngineWaterBackgroundSubPatch.h"
 
-struct CIndexBuffer {
+class CIndexBuffer { public:
     void OnRelocated();                            // 0x00AC1F60
 };
 

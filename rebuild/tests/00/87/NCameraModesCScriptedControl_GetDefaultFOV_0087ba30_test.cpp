@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CCamera { float HorizontalFOV; float GetHorizontalFOV() const { return HorizontalFOV; } };
+class CCamera { public: float HorizontalFOV; float GetHorizontalFOV() const { return HorizontalFOV; } };
 struct CScriptModuleBase {
     bool has; float value;
     bool GetModuleFOV(float& fov) const { if (has) { fov = value; return true; } return false; }
     bool GetModuleRollAngle(float& angle) const { if (has) { angle = value; return true; } return false; }
 };
-template<class T> struct CCountedPointer { T* Data; void* Info; T* operator->() const { return Data; } };
+template<class T> class CCountedPointer { public: T* Data; void* Info; T* operator->() const { return Data; } };
 struct CScriptedControl {
     CCountedPointer<CScriptModuleBase> PScriptModule; CCamera InitCamera;
     float GetDefault() const

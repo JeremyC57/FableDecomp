@@ -3,7 +3,7 @@
 #include <cstring>
 #include <string>
 static std::string g_seq;
-struct CEngineScreenEffectGlowRenderer { unsigned char _pad[8]; bool m_enabled; unsigned char _pad09[3]; bool m_colourDirty; unsigned char _pad0d[0x20b]; void* m_pGlowTexture;
+class CEngineScreenEffectGlowRenderer { public: unsigned char _pad[8]; bool m_enabled; unsigned char _pad09[3]; bool m_colourDirty; unsigned char _pad0d[0x20b]; void* m_pGlowTexture;
     void ComputeGlowColor() { g_seq += 'G'; } void CaptureBackBuffer() { g_seq += 'C'; } void ApplyGlow() { g_seq += 'A'; } void ShowGlowTexture() { g_seq += 'S'; } void FinishRender() { g_seq += 'F'; }
     void Render(const void*) { if (m_enabled) { if (m_colourDirty) ComputeGlowColor(); CaptureBackBuffer(); ApplyGlow(); if (m_pGlowTexture) ShowGlowTexture(); FinishRender(); } } };
 int main() {

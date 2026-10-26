@@ -1,15 +1,15 @@
 // behaviour test for 0x0084AF90 NEntityEvents::CEventTalkedTo::CEventTalkedTo(CThing&): the event starts at world frame 0 and its
 // TalkedToBy intelligent pointer is built empty and then pointed at the argument (CBaseIntelligentPointer ctor, then SetPItem)
 #include <cstdio>
-struct CBaseObject { int tag; };
-struct CThing : CBaseObject { int extra; };
+class CBaseObject { public: int tag; };
+class CThing : public CBaseObject { public: int extra; };
 static int gOrder = 0, gCtorAt = 0, gSetAt = 0;
 struct CBaseIntelligentPointer {
     CBaseObject* PData;
     CBaseIntelligentPointer() : PData(0) { gCtorAt = ++gOrder; }
     void SetPItem(CBaseObject* item) { PData = item; gSetAt = ++gOrder; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     T* Get() const { return (T*)PData; }
 };

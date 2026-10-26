@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CDoorDef
-{
+class CDoorDef
+{ public:
     void* vftable;
 };
 extern void* const g_CDoorDef_vftable;

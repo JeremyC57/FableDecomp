@@ -27,7 +27,7 @@ struct CRetailDamageList {                         // VC6 Dinkumware list<SDamag
     iterator erase(iterator where);                // 0x00655125
 };
 
-struct CDrawDamage {
+class CDrawDamage { public:
     unsigned char     _pad[0x28];
     CRetailDamageList DamageValues;                // +0x28
     void Update();

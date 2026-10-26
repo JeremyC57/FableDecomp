@@ -2,12 +2,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const char* text);                      // 0x0099B6B0
     CWideString(const CWideString& other);              // 0x0099B720
@@ -22,7 +22,7 @@ CWideString __fastcall IntToWideString(long value);                            /
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank* TextBank;                                // +0x14
 };
@@ -38,17 +38,17 @@ struct CPrerequisiteMap {                               // STLport map<EQuestCar
     SNode* header; long count; long compare;
     __forceinline bool empty() const { return count == 0; }
 };
-struct CDefPointeeBase { virtual void VFunc00(); virtual void Release(); long RefCount; };
-struct CQuestCardDef : CDefPointeeBase {
+class CDefPointeeBase { public: virtual void VFunc00(); virtual void Release(); long RefCount; };
+class CQuestCardDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x54];
     CPrerequisiteMap Prerequisites;                     // +0x5c
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     __forceinline ~CDefPointer() { if (Object) { CDefPointeeBase* p = (CDefPointeeBase*)Object; if (--p->RefCount == 0) p->Release(); } }
     __forceinline T* operator->() const { return Object; }
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x70];
     long RenownLevel;                                   // +0x70
 };
@@ -58,7 +58,7 @@ struct CInterfaceMap {
     Entry* LowerBound(const long*);                     // 0x0040F020
 };
 struct CPresenceBits { bool test(long kind); };         // 0x00410DE0
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20]; CPresenceBits present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
     template<class T> __forceinline bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
@@ -70,7 +70,7 @@ struct CThing {
     }
 };
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     void* __vftable; CThing* ParentThing;
     CWideString GetPrerequisitesString(CDefPointer<const CQuestCardDef> def);
 };

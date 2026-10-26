@@ -17,7 +17,7 @@ struct CMember_00453429 {
     CMember_00453429();                              // 0x00453429
 };
 
-struct CTargetingDef : CBase_0044c0c0 {
+class CTargetingDef : public CBase_0044c0c0 { public:
     unsigned char _pad[0x70];
     CMember_00453429 m_member;                       // +0x74
     virtual void v00();

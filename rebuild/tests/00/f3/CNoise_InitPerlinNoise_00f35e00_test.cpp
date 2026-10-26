@@ -5,7 +5,7 @@ static int g_normalised = 0;
 static int g_floatCalls = 0;
 float GFFloatRandom(float range, unsigned long* seed) { ++g_floatCalls; *seed += 1; return range * 0.75f; }
 long GFROR13(unsigned long value) { value &= 0xffffffffUL; return (long)(((value >> 13) | (value << 19)) & 0xffffffffUL); }
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector& Normalise() { ++g_normalised; X = 0.6f; Y = 0.8f; return *this; }
 };

@@ -10,21 +10,21 @@
 // CTCSolidToThing is fetched with HasTC/GetTC else added by name (string temporary dies before the null test); the
 // destination is a C3DVector temporary (X, Y, Z + 35.148f) built in the frame and copied memberwise. Retail
 // CCombatActionBase is 0x114 bytes (the PDB header places Dest at +0x12c), so `this` is modelled locally: Dest at +0x120.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CTCParamsBase;
-struct CCharString;
-struct CTCSolidToThing;
-struct CThing {
+class CTCParamsBase;
+class CCharString;
+class CTCSolidToThing;
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -57,12 +57,12 @@ struct CThing {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
 };
-struct CCharString {                        // one pointer; the defaulted length lets the literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing); // 0x00770FA0
 };
 struct CTCCreatureFlags9 {                  // the interface-9 component: one byte at +0x10 cleared by this action
@@ -74,20 +74,20 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatur
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();              // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();               // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;          // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 void __fastcall SetThingIsAbleToBeLifted(CThing* thing, bool able);   // 0x007E4330
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];                // +0x04
@@ -95,7 +95,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
-struct CCreatureAction_DragonTakeOffIntoFlying : CCombatActionBase {
+class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { public:
     unsigned char _pad114[0x120 - 0x114];   // +0x114
     C3DVector Dest;                         // +0x120 (take-off destination)
     virtual void Initialise();

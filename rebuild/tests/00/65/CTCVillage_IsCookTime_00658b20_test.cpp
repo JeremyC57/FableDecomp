@@ -15,7 +15,7 @@ static void* g_cook_arg_a = 0;
 static int g_cook_arg_b = 0;
 bool __stdcall CookTest(void* a, int b) { g_cook_arg_a = a; g_cook_arg_b = b; return true; }
 
-struct CTCVillage {
+class CTCVillage { public:
     char pad[0x94];
     RCObj* handle;
 };

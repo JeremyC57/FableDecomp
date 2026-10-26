@@ -5,7 +5,7 @@
 // of a {vptr, CIVCountedPointer} handle. The outer compare guards the out-of-line Clear; the
 // inner compare / release / adopt / addref is the inlined CIVCountedPointer::operator= (the same
 // shape as 0x00710600), re-reading other's pointer after the virtual call.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1
     unsigned long IVRefCount;              // +4

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString(const char* t, long) { std::strcpy(text, t); }
 };

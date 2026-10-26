@@ -10,7 +10,7 @@
 //   bytes, ctor stores R,G,B,A -> +2,+1,+0,+3), the second argument's built first.
 #include "engine/CEnginePrimitiveRenderer.h"
 
-struct CRGBColour {                                // B,G,R,A bytes over a packed 32-bit colour
+class CRGBColour { public:                                // B,G,R,A bytes over a packed 32-bit colour
     union {
         struct { unsigned char B, G, R, A; };
         unsigned long Colour;
@@ -65,7 +65,7 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 extern unsigned long g_renderStateDefault_01396ff4;    // 0x01396FF4
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     void UpdateGlobalLightingStates();             // 0x00B46C80
 };
 extern CEngineLightingManager* g_pLightingManager;   // 0x01436E9C

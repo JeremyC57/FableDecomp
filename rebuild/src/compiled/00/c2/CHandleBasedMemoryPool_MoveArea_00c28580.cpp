@@ -51,7 +51,7 @@ public:
 };
 }
 
-struct CHandleBasedMemoryPool {                 // this library's pool variant (see Layout)
+class CHandleBasedMemoryPool { public:                 // this library's pool variant (see Layout)
     virtual void MoveResource(void* resource, long handle, void* from, void* to, unsigned long size);   // slot 0
     void*                 Buffer;               // +0x04
     void*                 UnalignedBuffer;      // +0x08

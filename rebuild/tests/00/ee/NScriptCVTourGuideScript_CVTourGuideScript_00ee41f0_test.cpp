@@ -2,8 +2,8 @@
 // Behaviour test for 00ee41f0: CV_TourGuideScript's ctor keeps the interface/data pair and default-constructs 18 waypoint
 // records (3 strings each), three 5-string response tables and an empty NextTourWaypoint handle.
 static int g_strings = 0;
-struct CCharString { const char* p; CCharString() : p("") { ++g_strings; } };
-struct CScriptThing { void* Data; void* Info; CScriptThing() : Data(0), Info(0) {} };
+class CCharString { public: const char* p; CCharString() : p("") { ++g_strings; } };
+class CScriptThing { public: void* Data; void* Info; CScriptThing() : Data(0), Info(0) {} };
 struct Interface { int unused; };
 struct Base { Interface* Game; void* MasterScriptData; Base(void* data, Interface& game) : Game(&game), MasterScriptData(data) {} };
 struct WaypointData { CCharString locMarker, locTextOverheard, locTextRequested; WaypointData() {} };

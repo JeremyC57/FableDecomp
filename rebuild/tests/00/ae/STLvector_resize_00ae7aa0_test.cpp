@@ -2,7 +2,7 @@
 // [begin() + n, end()), an equal size still issues an empty fill insert, and the surviving head is untouched.
 #include <cstdio>
 #include <new>
-struct C3DQuad2 {
+class C3DQuad2 { public:
     unsigned short VertexIndex[4];
     C3DQuad2() { }
 };

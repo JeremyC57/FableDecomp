@@ -10,7 +10,7 @@
 // Shape: the vector's inline constructor zeroes its three words through edi; the `0` fill value is a byte
 // temporary in the `push ecx` frame slot (`mov [esp+0Fh],al`); Workspace = the vector's first pointer and
 // WorkspaceSize stored after the resize.
-struct CBaseClass {                                         // vtable 0x01231710
+class CBaseClass { public:                                         // vtable 0x01231710
     CBaseClass();                                           // 0x0099A2D0
     virtual void v00();
 };
@@ -23,7 +23,7 @@ struct CByteVector {                                        // retail std::vecto
     void resize(unsigned int size, const unsigned char& value);   // 0x00486189
 };
 
-struct CACompressor : CBaseClass {                          // vtable 0x0129B424
+class CACompressor : public CBaseClass { public:                          // vtable 0x0129B424
     void*         Workspace;                                // +0x04
     unsigned long WorkspaceSize;                            // +0x08
     bool          CompressionOn;                            // +0x0c

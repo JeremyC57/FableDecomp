@@ -1,8 +1,8 @@
 #include <cstdio>
 
 static long g_sum = 0;
-struct CLandscapeBackgroundTreeNode { bool IsBackgroundAtFullDetailInArea(long a, long b, long c, long d) { g_sum = a + b + c + d; return false; } };
-struct CEngineLandscapeMap { void* vt; CLandscapeBackgroundTreeNode* PatchTree;
+class CLandscapeBackgroundTreeNode { public: bool IsBackgroundAtFullDetailInArea(long a, long b, long c, long d) { g_sum = a + b + c + d; return false; } };
+class CEngineLandscapeMap { public: void* vt; CLandscapeBackgroundTreeNode* PatchTree;
     bool IsBackgroundAtFullDetailInArea(long a, long b, long c, long d) { CLandscapeBackgroundTreeNode* t = PatchTree; if (!t) return true; return t->IsBackgroundAtFullDetailInArea(a, b, c, d); } };
 int main()
 {

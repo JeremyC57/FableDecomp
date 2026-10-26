@@ -1,6 +1,6 @@
 // Behaviour test for 0x0052EBB0 NUISystem::CComponent::ChangeZoom: a timed change records target/initial and restarts the timer, an instant change sets all three
 #include <cstdio>
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 struct CComponent {
     unsigned char _pad[0x5c];
     C2DVector Zoom;

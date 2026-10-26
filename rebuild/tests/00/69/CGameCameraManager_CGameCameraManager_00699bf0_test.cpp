@@ -63,7 +63,7 @@ public:
 
 extern CDefPointer<const CCameraModeDef> g_DefaultCameraModeDef;   // 0x013BA8D8
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                            // +0x00
     void (__fastcall* DeleteFunc)(void* data);         // +0x04
     void*         Data;                                // +0x08

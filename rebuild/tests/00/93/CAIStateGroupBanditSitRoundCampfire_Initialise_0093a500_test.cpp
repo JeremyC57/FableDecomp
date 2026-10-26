@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CAIBrain {}; struct CThingAICreature {}; struct CCharString {};
+class CAIBrain { public:}; class CThingAICreature { public:}; class CCharString { public:};
 static int g_baseCalls; static long g_basePriority;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void Initialise(CAIBrain&, CThingAICreature&, long priority, long, const CCharString&) { ++g_baseCalls; g_basePriority = priority; }
     unsigned char _pad[0x10];

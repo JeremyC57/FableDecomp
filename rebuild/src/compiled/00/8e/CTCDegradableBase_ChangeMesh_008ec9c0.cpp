@@ -14,7 +14,7 @@
 // the absent path calls through whatever the slot holds (`mov eax,[esp+0Ch]`) and both arms keep their
 // own call and `ret 4`.
 #pragma pack(push, 2)
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;                                // +0x00
     float         AnimStep;                                 // +0x04
     float         RenderSizeX;                              // +0x08
@@ -23,7 +23,7 @@ struct CEngineGraphic {
 };
 #pragma pack(pop)
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -38,7 +38,7 @@ struct CTCGraphicAppearance {
     void SetAsChanged(unsigned long reasons);               // 0x004BF9E0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -59,7 +59,7 @@ struct CThing {
     }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void CreatePPhysicsMeshInfo(const CEngineGraphic& graphic);   // 0x006B08E0
 };
 
@@ -70,7 +70,7 @@ __forceinline CTCPhysicsBase* GetPhysics(CThing* thing)
     return physics;
 }
 
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     void ChangeMesh(const CEngineGraphic& graphic);

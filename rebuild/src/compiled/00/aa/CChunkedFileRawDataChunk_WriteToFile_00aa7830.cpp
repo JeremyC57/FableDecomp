@@ -1,6 +1,6 @@
 // CChunkedFileRawDataChunk::WriteToFile @ 0x00aa7830
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void slot0();
     virtual void slot1();
     virtual void slot2();
@@ -8,7 +8,7 @@ struct CDataOutputStream {
     virtual void Write(void* buf, unsigned int len);  // slot4 @ vtbl+0x10
 };
 
-struct CChunkedFileSaver;
+class CChunkedFileSaver;
 
 struct CChunkedFileRawDataChunk {
     char pad[0x10];

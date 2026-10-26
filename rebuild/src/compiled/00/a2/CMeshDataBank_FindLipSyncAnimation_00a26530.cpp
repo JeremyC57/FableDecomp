@@ -11,7 +11,7 @@
 // Shape: Compare's real body is defined above under auto_inline(off), so VC7.1 knows the call writes no memory:
 //   the element count and the phoneme's string block stay in registers across it. The hit returns through the
 //   element reference (`[ebx+4]`); indexing `entries[i]` twice re-derives start + i*8 from a spilled start.
-struct CCharStringData {                                 // the shared string block
+class CCharStringData { public:                                 // the shared string block
     const char*   m_pData;                               // +0x00
     unsigned long m_length;                              // +0x04
 };

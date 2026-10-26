@@ -1,4 +1,4 @@
-struct CTCFish {
+class CTCFish { public:
     void* vftable;
 };
 

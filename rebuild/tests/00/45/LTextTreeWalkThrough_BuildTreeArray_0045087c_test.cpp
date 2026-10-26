@@ -1,7 +1,7 @@
 #include <cstdio>
-struct TreeNode;
+class TreeNode;
 struct NodePtr { TreeNode* p; };
-struct TreeNode {
+class TreeNode { public:
     char pad0[8];
     NodePtr sib;
     NodePtr child;

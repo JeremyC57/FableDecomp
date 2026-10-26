@@ -21,18 +21,18 @@ namespace N_0099a300 { struct CBase {
 struct CGameComponentInterface {
     virtual void v00();
 };
-struct CGameComponent : CBase, CGameComponentInterface {   // vtables 0x0122ECB0 / 0x0122ECA4
+class CGameComponent : public CBase, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool m_bShutDown;                                      // +0x08
     virtual __forceinline ~CGameComponent() { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     ~CCountedPointer();                                    // out of line per instantiation
 };
-struct CFontBank; struct CGraphicDataBank; struct CMeshDataBank; struct CASoundBank; struct CIEngine; struct CInputManager;
-namespace NGameText { struct CDataBank; }
-struct CFrontEndDef {
+class CFontBank; class CGraphicDataBank; class CMeshDataBank; class CASoundBank; class CIEngine; class CInputManager;
+namespace NGameText { class CDataBank; }
+class CFrontEndDef { public:
     virtual void v00();
     virtual void Destroy();                                // slot 1
     long m_count;                                          // +0x04
@@ -49,11 +49,11 @@ struct CDefPointer_CFrontEndDef {
         }
     }
 };
-struct CMainGameComponentInit {
+class CMainGameComponentInit { public:
     unsigned long _data[4];
     ~CMainGameComponentInit();                             // 0x004131D0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                        // 0x0099B510
 };
@@ -63,7 +63,7 @@ struct CWideStringVector {                                 // STLport vector<CWi
     CWideString* _M_end_of_storage;
     ~CWideStringVector();                                  // 0x00412130
 };
-struct CDateAndTime {
+class CDateAndTime { public:
     unsigned char _data[0x10];
 };
 struct CDateAndTimeVector {                                // STLport vector<CDateAndTime> over the malloc allocator
@@ -77,7 +77,7 @@ struct CDateAndTimeVector {                                // STLport vector<CDa
     }
 };
 enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
-struct CNewFrontendGameComponent : CGameComponent {        // vtables 0x01230CA0 / 0x01230C94
+class CNewFrontendGameComponent : public CGameComponent { public:        // vtables 0x01230CA0 / 0x01230C94
     unsigned long                          m_reserved0c;               // +0x0c (base padding in the PDB view)
     CCountedPointer<const CFontBank>       m_pMenuFont;                // +0x10
     ECursorMovement                        CurrentMovement;            // +0x18

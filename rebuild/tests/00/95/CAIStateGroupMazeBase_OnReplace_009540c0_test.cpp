@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CThingCreatureBase { bool reg; bool IsRegisteredCombatant() { return reg; } };
-struct CCombatManager { CThingCreatureBase* last; int n; void DeregisterCombatant(CThingCreatureBase* c) { last = c; ++n; } };
-struct CWorld { unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; };
-struct CAIBrain { unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* world; CWorld* GetPWorld() { return world; } };
+class CThingCreatureBase { public: bool reg; bool IsRegisteredCombatant() { return reg; } };
+class CCombatManager { public: CThingCreatureBase* last; int n; void DeregisterCombatant(CThingCreatureBase* c) { last = c; ++n; } };
+class CWorld { public: unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* world; CWorld* GetPWorld() { return world; } };
 struct CAIStateGroup_MazeBase : CAIStateGroupBase { virtual void OnReplace(); };
 void CAIStateGroup_MazeBase::OnReplace()
 { if (PBrain->Creature->IsRegisteredCombatant()) { CThingCreatureBase* creature = PBrain->Creature; CWorld* world = GetPWorld(); world->m_pCombatManager->DeregisterCombatant(creature); } }

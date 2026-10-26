@@ -24,7 +24,7 @@ struct STrainableEntry {
 
 extern STrainableEntry g_TrainableStatTable[10];   // 0x0137C8E8
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CCategory* GetSelectedCategory();   // 0x005BCACE (CTCInventoryBase)
     long GetHeroTrainableStatType(long button);
 };

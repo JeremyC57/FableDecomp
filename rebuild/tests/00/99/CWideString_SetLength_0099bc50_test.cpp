@@ -16,7 +16,7 @@ void* operator new(size_t count)
 #define FABLE_WIDE_STRING_HOST_TYPES
 // Native-width dependency adapter only; VC7.1 uses the real shared header.
 typedef unsigned int fable_u32;
-struct CWideStringData {wchar_t* text;unsigned int unknown04,unknown08;int owners;};
+class CWideStringData { public:wchar_t* text;unsigned int unknown04,unknown08;int owners;};
 #endif
 // CWideString::SetLength(long) -- clear, resize a private copy, or allocate space-filled string storage
 // Retail 0x0099BC50, 162 bytes. String/data layouts use fable_string.h; that header omits

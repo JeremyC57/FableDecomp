@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CInputEvent { unsigned char _body[0x28]; long m_kind; float m_time; unsigned char _pad[4]; long GetType() const { return m_kind; } };
-struct CInputEventScanInfo { bool Started; long Index; };
-struct CMaintainedEvent { long m_0; CInputEvent m_event; };
+class CInputEvent { public: unsigned char _body[0x28]; long m_kind; float m_time; unsigned char _pad[4]; long GetType() const { return m_kind; } };
+class CInputEventScanInfo { public: bool Started; long Index; };
+class CMaintainedEvent { public: long m_0; CInputEvent m_event; };
 struct SNode { SNode* m_pNext; SNode* m_pPrev; CMaintainedEvent m_value; };
-struct CKeyboard { CInputEvent EventStore[256]; SNode* m_pMaintainedEvents; long NoStoredEvents; long NoEventScansRunning;
+class CKeyboard { public: CInputEvent EventStore[256]; SNode* m_pMaintainedEvents; long NoStoredEvents; long NoEventScansRunning;
     bool EventScanStart(CInputEventScanInfo& scan, CInputEvent& event) { scan.Started = true; ++NoEventScansRunning; if (NoStoredEvents > 0) { scan.Index = 0; event = EventStore[0]; return true; } return false; }
     void AddMaintainedEventsToEventStore() { for (SNode* node = m_pMaintainedEvents->m_pNext; node != m_pMaintainedEvents; node = node->m_pNext) { if (NoStoredEvents >= 0 && NoStoredEvents < 256) { EventStore[NoStoredEvents] = node->m_value.m_event; ++NoStoredEvents; } } } };
 

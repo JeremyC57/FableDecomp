@@ -1,8 +1,8 @@
 // behaviour copy of CMurderTwistSheriff::Init
 #include <cstdio>
 static int g_seq[16]; static int g_n = 0; static int g_args[16][3];
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     CScriptThing hero;
     void rec(int s, int a = 0, int b = 0, int c = 0) { g_args[g_n][0] = a; g_args[g_n][1] = b; g_args[g_n][2] = c; g_seq[g_n++] = s; }
     const CScriptThing& GetHero() const { return hero; }

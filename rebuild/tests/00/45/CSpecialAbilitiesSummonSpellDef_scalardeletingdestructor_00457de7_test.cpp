@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesSummonSpellDef { void* vftable; };
+class CSpecialAbilitiesSummonSpellDef { public: void* vftable; };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;

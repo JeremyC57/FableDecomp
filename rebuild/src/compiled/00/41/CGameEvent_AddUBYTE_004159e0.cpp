@@ -5,7 +5,7 @@ struct CMemoryBuffer {
     void Copy(int size, const void* pSource);
 };
 
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     void AddUBYTE(unsigned char value);
 };
 

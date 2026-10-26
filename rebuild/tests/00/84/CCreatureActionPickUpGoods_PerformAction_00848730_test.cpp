@@ -1,13 +1,13 @@
 // Behaviour test for 0x00848730 CCreatureAction_PickUpGoods::PerformAction: a live goods thing goes into the carry slot its
 // carryable def names and a carrying-goods mode is pushed; dead or missing goods do nothing; the def reference is returned.
 #include <cstdio>
-struct CThing;
-struct CCarryableDef { long RefCount; long CarrySlot; };
+class CThing;
+class CCarryableDef { public: long RefCount; long CarrySlot; };
 struct CDefPointer { CCarryableDef* Object; CDefPointer() : Object(0) { } ~CDefPointer() { if (Object) --Object->RefCount; } CCarryableDef* operator->() const { return Object; } };
-struct CTCCarrying { CThing* thing; long slot; bool now; void PutThingInCarrySlot(CThing* t, long s, bool n) { thing = t; slot = s; now = n; } };
+class CTCCarrying { public: CThing* thing; long slot; bool now; void PutThingInCarrySlot(CThing* t, long s, bool n) { thing = t; slot = s; now = n; } };
 struct CMode { CThing* owner; CMode(CThing* o) : owner(o) { } };
-struct CTCCreatureModeManager { CMode* last; int count; void AddMode(CMode* m) { delete last; last = m; ++count; } };
-struct CThing {
+class CTCCreatureModeManager { public: CMode* last; int count; void AddMode(CMode* m) { delete last; last = m; ++count; } };
+class CThing { public:
     bool dead; CCarryableDef* def; CTCCarrying carrying; CTCCreatureModeManager modes;
     void GetSubDef(CDefPointer* out) { out->Object = def; ++def->RefCount; }
     bool GetCarrying(CTCCarrying** out) { *out = &carrying; return true; }

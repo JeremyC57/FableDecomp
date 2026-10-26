@@ -5,8 +5,8 @@ static CAGraphicAppearanceComponent* g_unregistered = 0; static int g_unregCount
 struct CTCGraphicAppearance {
     void UnregisterComponent(CAGraphicAppearanceComponent* c) { g_unregistered = c; ++g_unregCount; }
 };
-struct CThing { CTCGraphicAppearance* PTCGraphicAppearance; unsigned char Dead : 1; unsigned char _f : 7; };
-struct CTCBase {
+class CThing { public: CTCGraphicAppearance* PTCGraphicAppearance; unsigned char Dead : 1; unsigned char _f : 7; };
+class CTCBase { public:
     virtual ~CTCBase() { ++g_baseDtor; }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* owner) : ParentThing(owner), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }

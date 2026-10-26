@@ -12,7 +12,7 @@
 // Compare call: Compare's real body (landed 0x00411570) sits in the TU under `#pragma auto_inline(off)` so VC7.1 knows
 // it writes no memory (the landed 0x0075D2B0 HasMessage model). List node: _M_next +0, _M_prev +4, data +8.
 // The empty-range exit keeps its own copy of the epilogue (`mov [ebx],esi ... ret 0Ch` twice).
-struct CCharStringData {                        // the shared string block
+class CCharStringData { public:                        // the shared string block
     const char*   m_pData;                      // +0x00
     unsigned long m_length;                     // +0x04
 };
@@ -35,7 +35,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
 }
 #pragma auto_inline(on)
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;               // +0x00
     bool operator==(const CCharString& other) const
     {

@@ -39,7 +39,7 @@ public:
         return false;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x74];
     CCharString   ScriptName;                      // +0x74
     unsigned char _pad78[0x91 - 0x78];

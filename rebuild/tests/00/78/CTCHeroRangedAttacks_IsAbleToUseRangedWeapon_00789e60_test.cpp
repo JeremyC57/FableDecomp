@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CTCHeroRangedAttacks::IsAbleToUseRangedWeapon (0x00789E60): same model and body as src/,
 // with the out-of-line callees (LowerBound, GetPlayer, GetThingInPrimarySlot, IsProjectileWeapon, GetCurrentMode) stubbed.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -13,8 +13,8 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CPlayer { bool m_controlsLocked; };
-struct CThing {
+class CPlayer { public: bool m_controlsLocked; };
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -48,11 +48,11 @@ struct CThing {
         return false;
     }
 };
-struct CCreatureActionBase { long m_type; long m_elapsed; };
-struct CThingCreatureBase { CCreatureActionBase* PCurrentAction; };
+class CCreatureActionBase { public: long m_type; long m_elapsed; };
+class CThingCreatureBase { public: CCreatureActionBase* PCurrentAction; };
 struct CTCRangedBlocker { bool m_blocking; };
-struct CTCCarrying { CThing* item; CThing* GetThingInPrimarySlot() { return item; } };
-struct CTCWeapon { bool projectile; bool IsProjectileWeapon() { return projectile; } };
+class CTCCarrying { public: CThing* item; CThing* GetThingInPrimarySlot() { return item; } };
+class CTCWeapon { public: bool projectile; bool IsProjectileWeapon() { return projectile; } };
 struct CMode { long type; virtual long GetType() { return type; } };
 struct CTCModeOwner { CMode* mode; CMode* GetCurrentMode() { return mode; } };
 

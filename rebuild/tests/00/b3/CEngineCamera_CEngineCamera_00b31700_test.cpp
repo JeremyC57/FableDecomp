@@ -5,7 +5,7 @@
 
 static int g_pushes = 0, g_frees = 0;
 
-struct CEngineComponent {
+class CEngineComponent { public:
     long GlobalPointerAddress; bool m_enabled; bool KeepAlive;
     CEngineComponent() : GlobalPointerAddress(0), m_enabled(true), KeepAlive(false) {}
 };
@@ -28,7 +28,7 @@ struct CLongArray {
     }
 };
 struct CDebugScriptArray { void* a; void* b; void* c; CDebugScriptArray() : a(0), b(0), c(0) {} };
-struct CEngineCamera : CEngineComponent {
+class CEngineCamera : public CEngineComponent { public:
     void* GameCamera; void* GameWindow;
     CEngineCameraDesc CameraDesc;
     long ConsoleOverrideViewPortWidth, ConsoleOverrideViewPortHeight;

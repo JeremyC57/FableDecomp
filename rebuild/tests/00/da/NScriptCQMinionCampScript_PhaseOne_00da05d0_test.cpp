@@ -5,9 +5,9 @@
 // 24 second chant marks until the portal is sealed; stage 4 unless the mission failed
 static int g_frames = 0, g_endAt = 1000, g_firstWave = 0, g_spawnPoints = 0, g_capResets = 0;
 static int g_introAt = 2, g_altarAt = 4, g_sealAt = 9; static bool g_fail = false;
-struct CTimer { long Value; long GetTime() const { return Value; } };
+class CTimer { public: long Value; long GetTime() const { return Value; } };
 struct CQ_MinionCampScript;
-struct CGameScriptInterface { CQ_MinionCampScript* Owner; void NewScriptFrame() const; };
+class CGameScriptInterface { public: CQ_MinionCampScript* Owner; void NewScriptFrame() const; };
 struct CQ_MinionCampScript {
     CGameScriptInterface* Game; CTimer ChantTimer; long CurrentStage, MaxNumberOfMinions;
     bool IntroDone, PortalSealed, MissionFailed, BriarRoseAtAltar;

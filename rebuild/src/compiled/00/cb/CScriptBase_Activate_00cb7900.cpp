@@ -1,4 +1,4 @@
-struct CScriptBase;
+class CScriptBase;
 
 struct CScriptBaseVtbl {
     void (__fastcall *slot0)(CScriptBase*);
@@ -7,7 +7,7 @@ struct CScriptBaseVtbl {
     void (__fastcall *slot3)(CScriptBase*);
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     CScriptBaseVtbl* vtbl;
 };
 

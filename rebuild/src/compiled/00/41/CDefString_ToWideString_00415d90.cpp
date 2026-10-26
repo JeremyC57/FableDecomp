@@ -6,13 +6,13 @@
 // Shape: `push ecx` is the slot of the named CCharString local (a bare temporary would reuse GetString's returned
 // pointer in eax; retail re-derives `lea ecx,[esp+8]`); the hidden result pointer is read into esi only after the
 // GetString call and returned in eax after the local's destructor. PDB CDefString: long TablePos at +0.
-struct CWideString {
+class CWideString { public:
     void* PStringData;                     // +0 the shared wide-string block
     CWideString(const CWideString& other);
     ~CWideString();
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;                     // +0 the shared string block
     CCharString(const CCharString& other);     // 0x0099EC30
     ~CCharString();                            // 0x0099EAE0
@@ -25,7 +25,7 @@ struct CDefStringTable {
 
 extern CDefStringTable g_DefStringTable;       // 0x013CA828
 
-struct CDefString {
+class CDefString { public:
     long TablePos;                             // +0
     CWideString ToWideString() const;
 };

@@ -10,11 +10,11 @@
 // Local model: no engine header exists for CTCGuard or CThing; the interface-map members are descriptive.
 // CTCVillage_Calls: engine/CTCVillage.h holds the PDB data layout of CTCVillage; only its member call(s) are needed here, so the
 // callee is declared on a separate call-only struct.
-struct CTCBase;
+class CTCBase;
 struct CTCVillage_Calls {
     long GetFineAmountForCurrentCrimes();                   // 0x0065A41C
 };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage_Calls* GetPVillage() const;                        // 0x007EE540
 };
 
@@ -25,7 +25,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -44,7 +44,7 @@ struct CThing {
     }
 };
 
-struct CTCGuard {
+class CTCGuard { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool IsAttackingToFineRatherThanKill() const;

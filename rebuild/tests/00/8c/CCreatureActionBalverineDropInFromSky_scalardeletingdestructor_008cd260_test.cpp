@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BalverineDropInFromSky {
+class CCreatureAction_BalverineDropInFromSky { public:
     void* vftable;
     int destroyed;
 };

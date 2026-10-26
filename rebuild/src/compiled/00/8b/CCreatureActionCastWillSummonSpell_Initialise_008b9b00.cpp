@@ -7,16 +7,16 @@
 // the new component is kept in ebp, an AI-state owner (thing byte +0x10 == 1) gets the cast level, the target is a named copy of the
 // action's +0x2c pointer, and the component's target pointer is assigned through an inline by-value operator= when the target is alive.
 // Layout: LevelToCast at retail +0x114 (PDB +0x12c).
-struct CTCParamsBase;
-struct CBaseObject;
+class CTCParamsBase;
+class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     virtual void v00();
     CThing* PItem;                              // +4
@@ -31,7 +31,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                      // +0x10
     unsigned char _pad11[0x0f];
@@ -45,7 +45,7 @@ struct CThing {
     }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer PCreature;          // +0x08 (the owning creature)
@@ -55,14 +55,14 @@ struct CCombatActionBase {
     virtual void Initialise();                  // 0x00857520
 };
 
-struct CTCSummonSpell {                         // the component added by name
+class CTCSummonSpell { public:                         // the component added by name
     unsigned char _pad00[0x24];
     long AICastLevel;                           // +0x24 (stored inline)
     unsigned char _pad28[0x2c - 0x28];
     CIntelligentPointerThing PTarget;           // +0x2c
 };
 
-struct CCreatureAction_CastWillSummonSpell : CCombatActionBase {
+class CCreatureAction_CastWillSummonSpell : public CCombatActionBase { public:
     long LevelToCast;                            // +0x114 (PDB +0x12c)
     virtual void Initialise();
 };

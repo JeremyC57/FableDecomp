@@ -14,7 +14,7 @@
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x44];                    // +0x04 .. +0x48
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
@@ -32,7 +32,7 @@ template<class T> struct CRetailList {             // STLport list: the node poi
     }
 };
 
-struct CEnginePrimitiveHandle { void* m_vptr; void* m_pData; };   // 8 bytes (vptr + counted pointer)
+class CEnginePrimitiveHandle { public: void* m_vptr; void* m_pData; };   // 8 bytes (vptr + counted pointer)
 struct CPrimitiveIterator { unsigned char m_used; void* m_pNode; };
 struct CIteratorArray {                            // retail CArray<CPrimitiveIterator>: first, last, end
     CPrimitiveIterator* m_pFirst;
@@ -40,7 +40,7 @@ struct CIteratorArray {                            // retail CArray<CPrimitiveIt
     CPrimitiveIterator* m_pEnd;
     CIteratorArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
-struct C3DBoundingSphere {                         // centre + radius, zeroed by its inline constructor (as dwords)
+class C3DBoundingSphere { public:                         // centre + radius, zeroed by its inline constructor (as dwords)
     long m_centreX, m_centreY, m_centreZ, m_radius;
     C3DBoundingSphere() : m_centreX(0), m_centreY(0), m_centreZ(0), m_radius(0) { }
 };
@@ -56,7 +56,7 @@ struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {   
         : CEngineInternalPrimitiveBase(type, flags) { }
 };
 
-struct CEnginePrimitiveManagerParticleGroup {
+class CEnginePrimitiveManagerParticleGroup { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);
 };
 

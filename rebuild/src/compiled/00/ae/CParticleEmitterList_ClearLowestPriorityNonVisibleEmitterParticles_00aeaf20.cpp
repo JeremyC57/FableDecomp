@@ -9,13 +9,13 @@
 // reverse_iterator walk: rbegin holds the sentinel, `*rit` reads current->prev's data (`mov eax,[esi+4] ; mov
 // ecx,[eax+8]`, re-read before every call), rend is begin() re-read from the sentinel each pass. Initialised is
 // bit 8 of the emitter's ushort flags at +0x40 (`test byte ptr [ecx+41h],1`).
-struct CIEngine;
+class CIEngine;
 struct CParticleStats;
 
 namespace NParticleEngine {
 // CParticleEmitter at retail offsets (rebuild/include/engine/CParticleEmitter.h has the PDB layout, 0x0c bytes
 // higher from +0x18 on: the retail vector is 12 bytes and CParticleUpdateParameters 0x24).
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void*          m_vtable;                         // +0x00
     unsigned char  m_base04[0x04];
     unsigned char  ParticleSystems[0x0c];            // +0x08 vector<CCountedPointer<CParticleSystem>>

@@ -1,7 +1,7 @@
 // Behaviour test for 0x0046B958 GFSerialiseVectorBinaryOut<CMusicSetEntry>: count, then three longs per entry
 #include <cstdio>
 struct Writer { int log[32]; int n; void WriteLong(int v) { log[n++] = v; } };
-struct CMusicSetEntry { int NormalMusicID; int DangerMusicID; int LoopCount; };
+class CMusicSetEntry { public: int NormalMusicID; int DangerMusicID; int LoopCount; };
 struct EntryVector { CMusicSetEntry* _M_start; CMusicSetEntry* _M_finish; CMusicSetEntry* _M_end_of_storage; };
 static void SerialiseOut(Writer& stream, EntryVector& value)
 {

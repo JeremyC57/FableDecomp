@@ -10,14 +10,14 @@
 // (a chained `GetPItem()->Set(0, 0)` pushes first). `this` rides in edi, &PCreature in esi until the lookup re-uses esi for the map.
 // The PDB header (CCreatureAction_ScorpionTailWithdraw.h, 0x138 bytes) sits 0x24 bytes high against retail (CCombatActionBase is 0x114
 // here), so `this` is modelled locally like the landed CCombatActionBase relatives (0x008CB4A0).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_animationSuspended;     // +0x10 (1 while the animation is suspended)
     unsigned char _pad11[0x20 - 0x11];
@@ -43,11 +43,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x00859A20
     unsigned char _pad04[4];                // +0x04
@@ -55,7 +55,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_ScorpionTailWithdraw : CCombatActionBase {
+class CCreatureAction_ScorpionTailWithdraw : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

@@ -40,12 +40,12 @@ struct CHoverableBase {                                   // third base (vptr at
     virtual ~CHoverableBase();
 };
 
-struct CHoverable : CComponentRoot, CGuiControl, CHoverableBase {
+class CHoverable : public CComponentRoot, public CGuiControl, public CHoverableBase { public:
     unsigned char _body[0x16c - 0x1c];                    // +0x01c .. +0x16b (retail)
     virtual ~CHoverable();                                // 0x0055BC30
 };
 
-struct CDraggableInto : CHoverable {                      // vtables 0x0124B2D4 / 0x0124B2B0 / 0x0124B2A8
+class CDraggableInto : public CHoverable { public:                      // vtables 0x0124B2D4 / 0x0124B2B0 / 0x0124B2A8
     CActionList* PActions;                                // +0x16c (PDB +0x19c)
     virtual ~CDraggableInto();
 };

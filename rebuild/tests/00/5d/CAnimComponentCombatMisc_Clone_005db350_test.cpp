@@ -1,11 +1,11 @@
 #include <cstdio>
 
-struct CAnimComponentCombatMisc;
+class CAnimComponentCombatMisc;
 struct Vtbl {
     void* s0; void* s1; void* s2; void* s3;
     CAnimComponentCombatMisc* (__fastcall* clone)(CAnimComponentCombatMisc* component);
 };
-struct CAnimComponentCombatMisc {
+class CAnimComponentCombatMisc { public:
     Vtbl* vptr;
     char pad4[4];
     char b8;

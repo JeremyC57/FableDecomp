@@ -4,7 +4,7 @@ static unsigned int g_reg = 0, g_rows = 0; static float g_seen[4];
 struct Device { long SetVertexShaderConstantF(unsigned int reg, const float* d, unsigned int rows) { g_reg = reg; g_rows = rows; for (int i = 0; i < 4; ++i) g_seen[i] = d[i]; return 0; } };
 struct Range { long Offset; unsigned long Count; };
 struct Layout { Range FogTransform; };
-struct C4DVector { float X, Y, Z, W; C4DVector() {} C4DVector(const C4DVector& o) : X(o.X), Y(o.Y), Z(o.Z), W(o.W) {} };
+class C4DVector { public: float X, Y, Z, W; C4DVector() {} C4DVector(const C4DVector& o) : X(o.X), Y(o.Y), Z(o.Z), W(o.W) {} };
 struct Mgr {
     Layout* CurrentVSConstantLayout; Device* D3DDevice; C4DVector FogTransform; unsigned int UpdateFlags;
     void UpdateWorldSpaceFogTransform()

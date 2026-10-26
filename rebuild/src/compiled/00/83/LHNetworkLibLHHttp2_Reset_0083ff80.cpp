@@ -42,7 +42,7 @@ struct CRetailStringVector {                       // STLport vector<basic_strin
 
 namespace LHNetworkLib {
 
-struct LHHttpHeaders {
+class LHHttpHeaders { public:
     CRetailStringVector HdrDocumentHeader;         // +0x00
     CRetailString       HeaderString;              // +0x0c
     void Reset()                                   // landed out of line at 0x0083FBC0
@@ -59,7 +59,7 @@ struct LDocumentPartVector {                       // STLport vector<LHHttpDocum
     LHHttpDocumentParts** _M_end_of_storage;
 };
 
-struct LHHttp2 {                                   // retail offsets (Ego_r.pdb names)
+class LHHttp2 { public:                                   // retail offsets (Ego_r.pdb names)
     LSocket*            Host;                      // +0x000
     CRetailString       Hostname;                  // +0x004
     unsigned short      Port;                      // +0x010

@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CLookDef { float MaxHeadAngleYZUp; float MaxHeadAngleYZDown; };
-struct CTCLook {
+class CLookDef { public: float MaxHeadAngleYZUp; float MaxHeadAngleYZDown; };
+class CTCLook { public:
     const CLookDef* PDef;
     long IsWithinYZHeadRange(float a)
     {

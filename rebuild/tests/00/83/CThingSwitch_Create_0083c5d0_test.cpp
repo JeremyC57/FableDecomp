@@ -1,13 +1,13 @@
 // Behaviour test for CThingSwitch::Create (0x0083C5D0): by-value name; allocate, construct, place the physics at pos with identity axes, activate.
 #include <cstdio>
 #include <stddef.h>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet() { Up.X = 0; Up.Y = 0; Up.Z = 1; Forward.X = 0; Forward.Y = 1; Forward.Z = 0; }
 };
 static int g_paramsLive = 0;
-struct CTCParamsPhysicsBase {
+class CTCParamsPhysicsBase { public:
     C3DVector Position; CRightHandedSet Rhs;
     CTCParamsPhysicsBase(const C3DVector& p, const CRightHandedSet& a) : Position(p), Rhs(a) { ++g_paramsLive; }
     ~CTCParamsPhysicsBase() { --g_paramsLive; }
@@ -29,7 +29,7 @@ public:
     static void operator delete(void*, bool) throw() {}
 };
 static int g_strings = 0; static float g_radius = 0; static const char* g_text = 0;
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t) : text(t) { ++g_strings; }
     CCharString(const CCharString& o) : text(o.text) { ++g_strings; }

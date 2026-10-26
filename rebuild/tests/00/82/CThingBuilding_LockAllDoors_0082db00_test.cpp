@@ -16,7 +16,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082DB00, `ret 8`.
 // Layout: CThing presence bits +0x20, Components +0x44, Dead +0x91 bit 0; door-list component keeps its list at +0x0C;
 //         CTCDoor +0x0C owner-lock word (descriptive).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,7 +54,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CThing;
+class CThing;
 struct CIntelligentPointer {
     unsigned char _pad00[8];
     CThing* GetPItem() const;                        // 0x00A01B50
@@ -64,7 +64,7 @@ struct SDoorNode {
     SDoorNode*          _M_prev;
     CIntelligentPointer _M_data;                     // +0x08
 };
-struct CTCDoor {                                     // interface type 0x26
+class CTCDoor { public:                                     // interface type 0x26
     unsigned char _pad00[0x0c];
     long          OwnerLock;                         // +0x0c (descriptive)
     bool IsLockableByOwner();                        // 0x00730610
@@ -79,21 +79,21 @@ struct CTCCurrentBuilding {                          // interface type 0x75 (des
     unsigned char _pad00[0x0c];
     CIntelligentPointer Building;                    // +0x0c
 };
-struct C3DVector { float X, Y, Z; };
-struct CTCSwitchableNavigation {                     // interface type 0x79
+class C3DVector { public: float X, Y, Z; };
+class CTCSwitchableNavigation { public:                     // interface type 0x79
     bool WouldBlockPos(const C3DVector& pos);        // 0x00787620
 };
-struct CPlayer;
-struct CThingCreatureBase;
-struct CPlayerManager {
+class CPlayer;
+class CThingCreatureBase;
+class CPlayerManager { public:
     const CPlayer* GetMainPlayer() const;            // 0x00449960
     CPlayer* GetMainPlayer();                        // 0x00449970
 };
-struct CPlayer {
+class CPlayer { public:
     const CThingCreatureBase* GetCharacter() const;  // 0x00487DD0
     CThingCreatureBase* GetCharacter();              // 0x00487DC0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
@@ -129,9 +129,9 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {};
+class CThingCreatureBase : public CThing { public:};
 extern const float G_DoorPlayerRadiusSq;             // 0x0125D108
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     void LockAllDoors(bool lock, bool checkBlocking);
 };
 void CThingBuilding::LockAllDoors(bool lock, bool checkBlocking)

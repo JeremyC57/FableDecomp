@@ -13,16 +13,16 @@
 
 static int g_frees = 0, g_blockDeletes = 0, g_impDeletes = 0;
 void FreeStorage(void* p) { g_frees++; free(p); }
-struct CCharString { void* PStringData; };
-struct C3DVector { float X, Y, Z; };
+class CCharString { public: void* PStringData; };
+class C3DVector { public: float X, Y, Z; };
 C3DVector g_ZeroVector = { 0.0f, 0.0f, 0.0f };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -41,11 +41,11 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() {}
     virtual ~CBaseClass() {}
 };
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
     CCountedPointer<CScriptThing> PImp;
     CScriptThing() { }
     CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
@@ -96,7 +96,7 @@ template <class T> struct vector {
 };
 
 static CThingImp* g_pool[4]; static int g_poolCount = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual long GetAllThingsWithDefName(const CCharString& defName, vector<CScriptThing>& things) const
     {
         if (g_poolCount == 0) return 0;

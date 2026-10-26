@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 struct ListNode { ListNode* next; };
-struct CTCKraken {
+class CTCKraken { public:
     char pad[0x44];
     ListNode* list;
     int a, b, c;

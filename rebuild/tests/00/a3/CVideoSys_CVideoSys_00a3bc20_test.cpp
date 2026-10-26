@@ -14,9 +14,9 @@ struct CTextureRenderer {
     virtual unsigned long __stdcall Release() { return 0; }
     virtual ~CTextureRenderer() { ++g_rendererDeleted; }
 };
-struct CWideString { void* m_pData; ~CWideString() { ++g_wideDtor; } };
+class CWideString { public: void* m_pData; ~CWideString() { ++g_wideDtor; } };
 struct CSubtitleList { void* m_pHead; long m_count; void Clear() { ++g_cleared; } ~CSubtitleList() { Clear(); if (m_pHead) MyFree(m_pHead); } };
-struct CMovieSubtitles { CSubtitleList m_subtitles; unsigned char _pad08[0xc]; CWideString m_text; ~CMovieSubtitles() { } };
+class CMovieSubtitles { public: CSubtitleList m_subtitles; unsigned char _pad08[0xc]; CWideString m_text; ~CMovieSubtitles() { } };
 struct CVideoSys {
     void* GBuilder; void* MControl; void* MPosition; void* MSeeking; void* MEvent; void* BasicAudio; void* PAsfReader; void* PFileSource;
     CTextureRenderer* TexRenderer; long PlayMode; long State; unsigned char RenderVideo; unsigned char _pad2d[3]; CMovieSubtitles Subtitles;

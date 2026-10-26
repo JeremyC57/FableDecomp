@@ -24,7 +24,7 @@ struct CDefCountedBase {                        // counted def: vtable +0 (slot 
 };
 
 template <class T>
-struct CDefPointer {                            // 4-byte intrusive pointer; operator= as the landed CIVCountedPointer 0x00A43720
+class CDefPointer { public:                            // 4-byte intrusive pointer; operator= as the landed CIVCountedPointer 0x00A43720
     CDefCountedBase* Object;                    // +0x00
     CDefPointer& operator=(const CDefPointer& other)
     {
@@ -42,10 +42,10 @@ struct CDefPointer {                            // 4-byte intrusive pointer; ope
     }
 };
 
-struct CTextureReplacementDef;
+class CTextureReplacementDef;
 
 namespace CTCHeroAttachableAppearanceModifiers {
-struct CModifierGraphic {                       // Ego_r.pdb, 12 bytes
+class CModifierGraphic { public:                       // Ego_r.pdb, 12 bytes
     CDefPointer<const CTextureReplacementDef> PTextureReplacement;   // +0x00
     long  BankIndex;                            // +0x04
     float RenderSizeX;                          // +0x08

@@ -3,18 +3,18 @@
 // Callees: CTCShopKeeper::GetShopTC @ 0x00798F50 (called twice: the test and the call), CTCShop::SetShopKeeper
 // (CThingCreatureBase*) @ 0x007751A0. Vtable: CTCShopKeeper 0x0126C154 slot 13.
 // Shape: `test byte ptr [eax+6Ch],10h` on the owner (+4) read through a register; nested ifs with one shared exit.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x6c];
     unsigned char m_flags;                   // +0x6c
 };
 
-struct CTCShop {
+class CTCShop { public:
     void SetShopKeeper(CThingCreatureBase* shopKeeper);   // 0x007751A0
 };
 
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     void*   m_vtable;                        // +0
     CThing* m_pOwner;                        // +4
     CTCShop* GetShopTC();                    // 0x00798F50

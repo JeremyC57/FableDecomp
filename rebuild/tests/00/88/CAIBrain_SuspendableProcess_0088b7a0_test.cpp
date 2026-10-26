@@ -1,9 +1,9 @@
 #include <cstdio>
 static int g_processed = 0; static bool g_flagDuringProcess = false;
-struct CAIBrain;
+class CAIBrain;
 static CAIBrain* g_brain;
-struct CAIStateGroupBase { void* __vftable; void* PBrain; unsigned char ScriptAIPriority[4]; void* Name_PStringData; bool Terminated; unsigned char Priority; bool Enabled; void Process(); };
-struct CAIBrain { void* __vftable; unsigned char _pad0[0x34]; CAIStateGroupBase* PActiveStateGroup; unsigned char _pad1[0x51]; bool UpdatingStateGroup; void SuspendableProcess(); };
+class CAIStateGroupBase { public: void* __vftable; void* PBrain; unsigned char ScriptAIPriority[4]; void* Name_PStringData; bool Terminated; unsigned char Priority; bool Enabled; void Process(); };
+class CAIBrain { public: void* __vftable; unsigned char _pad0[0x34]; CAIStateGroupBase* PActiveStateGroup; unsigned char _pad1[0x51]; bool UpdatingStateGroup; void SuspendableProcess(); };
 void CAIStateGroupBase::Process() { ++g_processed; g_flagDuringProcess = g_brain->UpdatingStateGroup; }
 void CAIBrain::SuspendableProcess()
 {

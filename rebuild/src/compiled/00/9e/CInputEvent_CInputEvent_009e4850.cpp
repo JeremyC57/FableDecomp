@@ -21,7 +21,7 @@ union UInputEventData {
         unsigned long MouseMovementX;              // +0x0c (first word of the mouse view)
     } Mouse;
 };
-struct CInputEvent {
+class CInputEvent { public:
     UInputEventData Data;                          // +0x00
     long            DeviceType;                    // +0x20
     long            DeviceNumber;                  // +0x24

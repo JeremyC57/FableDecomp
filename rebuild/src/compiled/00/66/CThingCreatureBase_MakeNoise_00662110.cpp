@@ -8,25 +8,25 @@
 // Layout: the thing's dead flag is bit 0 of the byte at +0x91 (as in the landed IS_THING_ALIVE family).
 // Shape: arguments right to left: the -1.0f radius is pushed before GetPosition; the def index lives in edi.
 class CCharString;
-struct C3DVector;
+class C3DVector;
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                       // +0x91 bit 0
     CDefinitionManager* GetDefinitionManager();     // 0x004C7990
     const C3DVector& GetPosition();                 // 0x004C73D0
 };
 
-struct CThingNoise : CThing {
+class CThingNoise : public CThing { public:
     static CThingNoise* __fastcall Create(long defIndex, const C3DVector& pos, float radius);   // 0x008385B0
     void PassToNoiseComponent(CThing* thing);       // 0x008386E0
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void MakeNoise(const CCharString& noiseDefName);
 };
 

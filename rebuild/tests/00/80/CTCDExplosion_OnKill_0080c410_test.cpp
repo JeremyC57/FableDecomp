@@ -1,6 +1,6 @@
 // Test for 0080c410 CTCDExplosion::OnKill: every emitter thing that is set and alive is killed; dead/null ones skipped.
 #include <cstdio>
-struct CThing { bool Dead; int KillCalls; void Kill(bool c) { if (c) ++KillCalls; } };
+class CThing { public: bool Dead; int KillCalls; void Kill(bool c) { if (c) ++KillCalls; } };
 struct CBaseIntelligentPointer { CThing* PItem; CThing* GetPItem() const { return PItem; } };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
@@ -16,7 +16,7 @@ struct CEmitterVector {
     CEmitterEntry* begin() { return _M_start; }
     CEmitterEntry* end() { return _M_finish; }
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     CEmitterVector Emitters;
     virtual ~CTCDExplosion() {}
     virtual void OnKill()

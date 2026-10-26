@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cmath>
 #include <cstdlib>
-struct CCharString { const char* s; };
+class CCharString { public: const char* s; };
 static long g_pushed[4]; static int g_npushed = 0;
 struct CRetailLongList { void* head; void push_back(const long& v) { g_pushed[g_npushed++] = v; } void push_front(const long& v) { g_pushed[g_npushed++] = -v; } };
 struct CDrawQuestInfo { unsigned char p[0x40]; CRetailLongList OracleSymbols; long GetScriptSpriteBySymbol(const CCharString& s) { return std::atoi(s.s); } void OracleSymbolPushBack(const CCharString& s) { long sprite = GetScriptSpriteBySymbol(s); if (sprite > 0) OracleSymbols.push_back(sprite); } };

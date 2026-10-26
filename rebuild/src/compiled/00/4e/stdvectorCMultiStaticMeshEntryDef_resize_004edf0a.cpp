@@ -22,7 +22,7 @@
 
 enum ELightingChannel { LIGHTING_CHANNEL_NONE = 0 };
 
-struct CResource {
+class CResource { public:
     virtual ~CResource();                          // 0x009FC550
     unsigned long m_refCount;                      // +0x04
     void*         m_pResourceList;                 // +0x08
@@ -32,18 +32,18 @@ struct CResource {
     unsigned long m_lastUsedFrame;                 // +0x18
 };
 
-struct CDefPointeeBase : CResource {               // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:               // vtable 0x01230BA0
     virtual ~CDefPointeeBase() {}
 };
 
-struct CSubDefClassBase : CDefPointeeBase {        // vtable 0x01231D54
+class CSubDefClassBase : public CDefPointeeBase { public:        // vtable 0x01231D54
     long          m_defIndex;                      // +0x1c
     long          m_reserved;                      // +0x20
     unsigned char m_flags;                         // +0x24
     CSubDefClassBase();                            // 0x0044C0C0
 };
 
-struct CMultiStaticMeshEntryDef : CSubDefClassBase {         // vtable 0x012438A4, 0x38 bytes
+class CMultiStaticMeshEntryDef : public CSubDefClassBase { public:         // vtable 0x012438A4, 0x38 bytes
     long  Mesh;                                    // +0x28
     bool  OverrideLightingChannel;                 // +0x2c
     bool  OverrideRenderFadeDistance;              // +0x2d

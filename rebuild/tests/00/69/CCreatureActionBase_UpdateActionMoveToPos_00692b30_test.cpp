@@ -5,18 +5,18 @@
 #else
 #define FASTCALL
 #endif
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 static long g_frame = 1000;
-struct CWorld { static long GetFrame() { return g_frame; } };
+class CWorld { public: static long GetFrame() { return g_frame; } };
 static CWorld g_world;
-struct CThing { C3DVector m_pos; const C3DVector& GetPosition() const { return m_pos; } CWorld* GetWorld() const { return &g_world; } };
+class CThing { public: C3DVector m_pos; const C3DVector& GetPosition() const { return m_pos; } CWorld* GetWorld() const { return &g_world; } };
 struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer() { } CThing* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { } CThing* GetPItem() const { return m_pItem; } };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase() { }
     virtual bool IsUsingAnimationMovement() { return m_animMovement; }
     virtual void UpdateActionForcedMovement() { ++m_forced; }

@@ -10,7 +10,7 @@
 
 static int g_dtors = 0, g_assigns = 0;
 namespace NSpeechGainManager {
-struct CDialogueLayerDef {
+class CDialogueLayerDef { public:
     int Data[15];
     virtual ~CDialogueLayerDef() { ++g_dtors; }
     CDialogueLayerDef& operator=(const CDialogueLayerDef& other) { ++g_assigns; memcpy(Data, other.Data, sizeof(Data)); return *this; }

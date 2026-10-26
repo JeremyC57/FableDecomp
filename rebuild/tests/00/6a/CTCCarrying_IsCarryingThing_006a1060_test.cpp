@@ -1,7 +1,7 @@
 // Behaviour test for 006a1060 (CTCCarrying::IsCarryingThing): true when some carry slot's intelligent pointer resolves to the thing.
 #include <cstdio>
 
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
@@ -21,7 +21,7 @@ struct CCarrySlotMap {
     SCarrySlotEntry* end() { return m_pLast; }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     CCarrySlotMap CarrySlots;
     SCarrySlotEntry* FindThing(CThing* thing)
     {

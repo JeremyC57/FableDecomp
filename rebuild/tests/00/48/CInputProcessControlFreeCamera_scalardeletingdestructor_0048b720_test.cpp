@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessControlFreeCamera {
+class CInputProcessControlFreeCamera { public:
     void* vftable;
     int destroyed;
 };

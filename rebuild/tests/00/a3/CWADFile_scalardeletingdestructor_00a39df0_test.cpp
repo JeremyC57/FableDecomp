@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CWADFile {
+class CWADFile { public:
     void* vftable;
     int destroyed;
 };

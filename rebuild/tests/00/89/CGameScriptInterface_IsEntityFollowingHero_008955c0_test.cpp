@@ -13,7 +13,7 @@ struct CInterfaceMap_Retail {
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 struct CBase { virtual ~CBase() {} };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     virtual CThing_Retail* GetThing() const { return m_thing; }
     virtual bool IsValid() const { return m_thing != 0; }
     CThing_Retail* m_thing;
@@ -44,7 +44,7 @@ struct CTCFollowed_Retail { bool IsAIFollower(CThing_Retail* thing) { ++g_isAI; 
 static CThing_Retail* g_hero = 0;
 struct CPlayer_Retail { CThing_Retail* GetHeroThing() { return g_hero; } };
 struct CPlayerManager_Retail { CPlayer_Retail m_player; CPlayer_Retail* GetPlayer() { return &m_player; } };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {}
     void* World; void* Component; void* DisplayEngine; void* DefinitionManager;
     CPlayerManager_Retail*     PlayerManager;

@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update (0x0093E2D0): model copy, scripted stubs.
 #include <cstdio>
 
-struct CThing { unsigned char m_flags91; };
+class CThing { public: unsigned char m_flags91; };
 struct CPtr { CThing* item; CThing* GetPItem() const { return item; } };
 static bool IS_THING_ALIVE(const CPtr& p)
 {
@@ -16,8 +16,8 @@ static int g_stopping[64], g_si, g_runnable[64], g_rni, g_combatant[64], g_ci;
 static bool g_hasPerceive, g_combatMode;
 static const CThing* g_lookAt;
 static long g_lookFlags, g_types;
-struct CTCPerceiveThing { void Refresh() { ++g_refreshed; } };
-struct CCombatManager {
+class CTCPerceiveThing { public: void Refresh() { ++g_refreshed; } };
+class CCombatManager { public:
     void RegisterCombatant(CThing*, CThing* target, bool flag) { if (target && flag) ++g_registered; }
     void SetAttackerAsReadyToAttack(CThing*, bool ready) { g_ready[g_ri++] = ready ? 1 : 2; }
 };
@@ -28,14 +28,14 @@ struct CCreature : CThing {
     bool IsInCombatMode() { return g_combatMode; }
     bool IsCombatant() { return g_combatant[g_ci++] != 0; }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long Types; long LookFlags; const CThing* LookAt;
     CBrainOutput() : Types(0), LookFlags(0), LookAt(0) { }
     void SetAsLookAtThing(const CThing* t, long f) { Types |= 4; LookAt = t; LookFlags = f; }
 };
-struct CWorld { CCombatManager* PCombatManager; };
+class CWorld { public: CCombatManager* PCombatManager; };
 static CWorld g_world = { &g_combat };
-struct CAIBrain {
+class CAIBrain { public:
     CCreature* PCreature;
     void SetBrainOutput(const CBrainOutput& o) { ++g_outputs; g_lookAt = o.LookAt; g_lookFlags = o.LookFlags; g_types = (long)o.Types; }
     void Yield() { ++g_yields; }

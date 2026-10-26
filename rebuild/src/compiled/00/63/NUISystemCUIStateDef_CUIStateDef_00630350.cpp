@@ -8,7 +8,7 @@
 // Position +0x48, Zoom +0x50, Colour +0x58, UpdateTime +0x68, ChildrenNotAffected +0x6c, LinearChange +0x78).
 // Shape: body assignments; the zero group's last use (LinearChange) sits after the 1.0f stores in the source so the
 // 1.0f constant takes ecx, and the two immediates (UpdateTime, StateChangeFlag) keep their source order at the end.
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];                     // +0x04..+0x1c
     CResource();                                   // 0x009FBEC0
@@ -23,7 +23,7 @@ struct __declspec(novtable) CDefClassBase : CResource {
     CDefClassBase() : CResource(), PDefManager(0), Setup(0), Template(0), DefaultValsApplied(0) { }
 };
 #pragma pack(pop)
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -56,8 +56,8 @@ struct __declspec(novtable) CParentDefClassBase : CDefClassBase {
     CParentDefClassBase() { }
 };
 #pragma pack(pop)
-struct C2DVector { float X, Y; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C2DVector { public: float X, Y; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CUIStateDef : CParentDefClassBase {         // vtable 0x0125871C
     unsigned long   GraphicIndex;                  // +0x3c
     unsigned long   StateChangeFlag;               // +0x40

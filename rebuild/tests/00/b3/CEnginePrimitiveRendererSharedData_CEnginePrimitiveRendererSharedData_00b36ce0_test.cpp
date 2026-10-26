@@ -3,8 +3,8 @@
 static int g_order[64];
 static int g_n = 0;
 struct CBase { CBase() { g_order[g_n++] = 1; } };
-struct CEngineInterpolationInfo { long body[28]; CEngineInterpolationInfo() { g_order[g_n++] = 2; } };
-struct CPixelShader { void* p; void* q; CPixelShader() : p(0), q(0) { g_order[g_n++] = 3; } };
+class CEngineInterpolationInfo { public: long body[28]; CEngineInterpolationInfo() { g_order[g_n++] = 2; } };
+class CPixelShader { public: void* p; void* q; CPixelShader() : p(0), q(0) { g_order[g_n++] = 3; } };
 struct CEnginePrimitiveRendererSharedData : CBase {
     bool BlockOnLoad;
     CEngineInterpolationInfo CurrentInterpolationInfo;

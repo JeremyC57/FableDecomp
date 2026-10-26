@@ -26,7 +26,7 @@ struct CEnvironmentThemePriorityStack_006b3600 {  // CArray<CEnvironmentThemePri
 
 struct SThemeRecord_006b3600 { long m_a, m_b, m_c; };   // 12 bytes
 
-struct CEnvironment {
+class CEnvironment { public:
     void*                         __vftable;
     CDefinitionManager_006b3600*  DefinitionManager;       // +0x04
     unsigned char                 _pad0[0x3e - 0x8];

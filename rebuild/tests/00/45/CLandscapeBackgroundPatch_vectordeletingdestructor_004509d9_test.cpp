@@ -8,7 +8,7 @@ static void* g_delete_arg = 0;
 void __fastcall Sub_Dtor(void* p) { g_dtor_called++; g_dtor_arg = p; }
 void __cdecl Op_Delete(void* p) { g_delete_called++; g_delete_arg = p; }
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     int f0;
     int Parent;
     void* f8;

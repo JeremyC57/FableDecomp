@@ -9,9 +9,9 @@
 //   order: a memberwise user copy constructor (EnemyPreferenceFactor assigned in the body after the record: in the
 //   initialiser list it is stored first). The floats move as dwords (a user copy constructor copying a float
 //   member goes through the x87), so the float members are modelled as dwords; the trailing bool as a byte.
-struct CThing;
+class CThing;
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     long AnchorPos[3];                  // +0x00 C3DVector
     long PreferredLine[3];              // +0x0c C3DVector
     long AngleCompare;                  // +0x18 float
@@ -21,7 +21,7 @@ struct CVectorCompare_BestForTargeting {
     bool CompareInXYPlane;              // +0x28
 };
 
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero;                                       // +0x00
     CVectorCompare_BestForTargeting VectorCompare;      // +0x04
     long EnemyPreferenceFactor;                         // +0x30 float

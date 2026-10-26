@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <cmath>
 
-struct CCharStringData { const char* m_pChars; unsigned long m_length; };
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
 static const char g_empty[] = "";
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_empty : m_pStringData->m_pChars; }
@@ -15,18 +15,18 @@ static unsigned long Calc(unsigned long seed, const char* data, unsigned long le
     for (unsigned long i = 0; i < length; ++i) h = h * 31 + (unsigned char)data[i];
     return h;
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& p) : X(p.X), Y(p.Y), Z(p.Z) { }
 };
-struct C3DHelperPoint { C3DVector Position; int BoneIndex; };
-struct C3DAnimationBlendState { float Offset; };
-struct C3DAnimationManager { int Calls; };
+class C3DHelperPoint { public: C3DVector Position; int BoneIndex; };
+class C3DAnimationBlendState { public: float Offset; };
+class C3DAnimationManager { public: int Calls; };
 
 static unsigned long g_hash = 0, g_index = 0;
-struct C3DMeshStats {
+class C3DMeshStats { public:
     C3DHelperPoint m_points[2];
     virtual ~C3DMeshStats() { }
     virtual C3DVector GetHelperPointPositionAnimated(const C3DHelperPoint& helper, const C3DAnimationBlendState& state,
@@ -47,7 +47,7 @@ struct CCountedPointer {
     const C3DMeshStats* Data; void* Info;
     const C3DMeshStats* operator->() const { return Data; }
 };
-struct C3DMeshObject {
+class C3DMeshObject { public:
     void* MeshInfo;
     CCountedPointer Mesh;
     float PositionMatrix[12];

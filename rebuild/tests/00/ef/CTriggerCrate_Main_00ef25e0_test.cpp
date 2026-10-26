@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* t, long = -1) : p(t) {}
     CCharString(const CCharString& o) : p(o.p) {}
@@ -10,12 +10,12 @@ static int g_fail = 0;
 static void check(bool c, int line) { if (!c) { if (!g_fail) std::printf("check failed at line %d\n", line); g_fail = 1; } }
 #define CHECK(c) check((c), __LINE__)
 static int g_frame = 0;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CScriptThing {
+class CScriptThing { public:
     C3DVector pos;
     CScriptThing() : pos(5.0f, 6.0f, 7.0f) {}
     const C3DVector& GetPos() const { return pos; }
@@ -31,7 +31,7 @@ struct GameCalls {
 };
 static int g_preds = 0;
 struct CIsThingAlive { CIsThingAlive(const CScriptThing&) {} };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     GameCalls*   Game;
     CScriptThing Me;
     void SetPredicate(const CIsThingAlive&) { ++g_preds; }

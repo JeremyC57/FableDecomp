@@ -10,7 +10,7 @@
 // GoLeft +0x60, PreviousFlightPos +0x65, DragonPosOutOfGround1/2/3Left/3Right/4Left/4Right +0x72/+0x7e/+0x8a/+0x96/+0xa2/+0xae.
 #include <stdlib.h>
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -35,7 +35,7 @@ struct CPhysicsBodyV {
     virtual void s60(); virtual void s61(); virtual void s62();
     virtual float GetHeading();                 // slot 63 (+0xfc)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x60];
     CPhysicsBodyV* PhysicsBody;                 // +0x60
     unsigned char _pad64[0x91 - 0x64];
@@ -43,7 +43,7 @@ struct CThing {
     const C3DVector& GetPosition() const;       // 0x004C73D0
     void Kill(bool b);                          // 0x004C9B80
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
@@ -58,7 +58,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 inline long WorldRandomRange(unsigned long* seed, unsigned long range)
@@ -75,20 +75,20 @@ struct CVector3DList {                          // STLport vector<C3DVector>, re
     ~CVector3DList() { if (_M_start) free(_M_start); }
     void push_back(const C3DVector& v);         // 0x0066E630
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0x13c];
 };
-struct CCreatureAction_DragonTakeOffIntoFlying : CCreatureActionBase {
+class CCreatureAction_DragonTakeOffIntoFlying : public CCreatureActionBase { public:
     unsigned char _takeoff[0x10];
     CCreatureAction_DragonTakeOffIntoFlying(CThingCreatureBase* creature, const CVector3DList& route);   // 0x009533E0
     ~CCreatureAction_DragonTakeOffIntoFlying();  // 0x00953470
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

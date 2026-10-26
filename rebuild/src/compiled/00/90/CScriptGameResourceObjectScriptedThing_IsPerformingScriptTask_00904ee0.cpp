@@ -10,7 +10,7 @@
 // arms, and the dead/null exits share `xor al,al`.
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -46,7 +46,7 @@ struct CIntelligentPointer_Retail {
     CThing_Retail* GetPItem();                     // 0x00A01B50
 };
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     bool IsActionListEmpty();                      // 0x007122C0
 };
 

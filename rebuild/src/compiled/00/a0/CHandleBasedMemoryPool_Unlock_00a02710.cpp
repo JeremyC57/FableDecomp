@@ -8,7 +8,7 @@ struct Entry {
     unsigned char locked;   // +0xf
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     char pad0[0x18];
     int lockedCount;        // +0x18
     char pad1[0x438 - 0x1c];

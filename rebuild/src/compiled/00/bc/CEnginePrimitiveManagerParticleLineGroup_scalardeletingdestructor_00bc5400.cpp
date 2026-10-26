@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerParticleLineGroup {
+class CEnginePrimitiveManagerParticleLineGroup { public:
     void* vftable;
 };
 

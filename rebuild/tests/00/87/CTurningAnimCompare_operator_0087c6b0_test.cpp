@@ -10,7 +10,7 @@ public:
     void GetRotationInAnimation(float* rotation) const; // 0x005DBFD0
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float Dot(const C2DVector& o) const { float d = Y * o.Y; d += X * o.X; return d; }

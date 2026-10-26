@@ -8,12 +8,12 @@
 // Shape: the memberwise copy written out in the body (VC7.1 out-lines a record whose member has its own assignment): the
 // floats as dwords, each C3DVector (a plain POD) as a nested record copy (`lea` of both sides + three moves), the
 // CCharString through its operator=, SpeedFraction last; returns *this.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

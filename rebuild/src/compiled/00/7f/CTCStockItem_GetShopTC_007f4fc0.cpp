@@ -62,8 +62,8 @@ struct CTCLinkComponent {                       // interface 0x33
     CBaseIntelligentPointer PLinkedThing;       // +0x0d
 };
 #pragma pack(pop)
-struct CTCShop;
-struct CTCStockItem {
+class CTCShop;
+class CTCStockItem { public:
     virtual void v00();
     const CThing* ParentThing;                  // +0x04 (CTCBase)
     unsigned char _base08[4];

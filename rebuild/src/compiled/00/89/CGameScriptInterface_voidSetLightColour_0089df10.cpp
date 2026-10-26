@@ -4,7 +4,7 @@
 // Shape: the map address in esi, the entry's value word at +4; the component-kind mask test folded onto the +0x24 word (bit 7).
 // Leaf: ?SetLightColour@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCRGBColour@@@Z
 struct CTCBase_Retail;
-struct CRGBColour;
+class CRGBColour;
 struct CTCBase_Retail;
 struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long           m_kind;
@@ -50,7 +50,7 @@ struct CTCLight_Retail {                           // the component (no vtable m
     unsigned char _pad[0x1d];
     bool m_on;                                     // +0x1d
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
@@ -71,8 +71,8 @@ struct CPlayer_Retail {
 struct CPlayerManager_Retail {
     CPlayer_Retail* GetMainPlayer();               // 0x00449970 (labelled "Catch@0040d959", propagated)
 };
-struct CDisplayEngine_Retail; struct CWorld;
-struct CGameScriptInterface {
+struct CDisplayEngine_Retail; class CWorld;
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
     long                    Component;

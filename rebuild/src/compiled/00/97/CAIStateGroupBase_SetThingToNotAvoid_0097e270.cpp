@@ -11,7 +11,7 @@
 //   both arms and the absent arm reads the never-written out pointer (VC homes it on the argument slot); the presence test
 //   on type 7 is the masked byte test `test cl,cl ; jns`.
 // Leaf: ?SetThingToNotAvoid@CAIStateGroupBase@@
-struct CTCBase;
+class CTCBase;
 class CThing;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
@@ -20,10 +20,10 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,7 +41,7 @@ struct CThingCreatureBase {
         return false;
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     void*               __vftable;              // +0x00
     unsigned char       _pad04[0x14];           // +0x04..+0x18
     CThingCreatureBase* Creature;               // +0x18

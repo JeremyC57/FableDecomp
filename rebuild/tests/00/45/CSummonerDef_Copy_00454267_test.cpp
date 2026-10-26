@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSummonerDef { int v; };
+class CSummonerDef { public: int v; };
 static int g_called = 0;
 static const CSummonerDef* g_src = 0;
 static CSummonerDef* g_self = 0;

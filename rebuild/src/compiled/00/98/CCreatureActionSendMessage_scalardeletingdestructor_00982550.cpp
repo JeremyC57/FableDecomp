@@ -30,12 +30,12 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     ~CBaseIntelligentPointer();            // 0x00A01C10
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                // 0x00693EF0
 };
-struct CCreatureAction_SendMessage {
+class CCreatureAction_SendMessage { public:
     CCreatureActionBase     m_base;        // +0x00
     CSharedPointer          m_pShared;     // +0xa8
     unsigned char           _padac[0xc];   // +0xac (trivially destructible)

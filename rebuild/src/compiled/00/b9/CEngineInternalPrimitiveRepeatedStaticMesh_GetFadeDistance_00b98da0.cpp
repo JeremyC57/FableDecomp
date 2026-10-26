@@ -9,13 +9,13 @@ struct SViewRecord_01436e80 {
 };
 extern SViewRecord_01436e80* g_pViewRecord_01436e80;   // 0x01436E80
 
-struct CEngineFadeDistance {
+class CEngineFadeDistance { public:
     float FadeBeginDistance;
     float MaxDrawDistance;
     CEngineFadeDistance(float begin, float max) : FadeBeginDistance(begin), MaxDrawDistance(max) { }   // a user constructor: hidden-pointer return; the copy stays implicit (bitwise, integer moves)
 };
 
-struct CEngineInternalPrimitiveRepeatedStaticMesh {
+class CEngineInternalPrimitiveRepeatedStaticMesh { public:
     unsigned char _pad[0x14];
     float FadeDistance_FadeBeginDistance;          // +0x14
     float FadeDistance_MaxDrawDistance;            // +0x18

@@ -18,12 +18,12 @@ inline const T& Min(const T& left, const T& right)
     return right < left ? right : left;
 }
 
-struct C2DVector {
+class C2DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
 };
 
-struct C2DLineF {
+class C2DLineF { public:
     C2DVector Point1;   // +0x00
     C2DVector Point2;   // +0x08
     float GetLowestY() const;

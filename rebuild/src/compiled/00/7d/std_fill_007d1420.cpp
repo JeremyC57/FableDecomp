@@ -13,8 +13,8 @@
 // xor`, the other bits of the byte kept), then Start and Score through integer registers.
 // Local base model, not engine/CResource.h: the generated header flattens the vptr into a plain `void* __vftable`,
 // which the implicit assignment would copy -- retail never writes +0.
-struct CResourceList;
-struct CResource {                              // 28 bytes
+class CResourceList;
+class CResource { public:                              // 28 bytes
     virtual void v00();
     long           m_refCount;                  // +0x04 (1 after construction)
     CResourceList* ResourceList;                // +0x08
@@ -23,7 +23,7 @@ struct CResource {                              // 28 bytes
     unsigned long  ResourceSize;                // +0x14
     unsigned long  LastUsedFrame;               // +0x18
 };
-struct CShoveHaPennyRegionDef : CResource {     // 48 bytes
+class CShoveHaPennyRegionDef : public CResource { public:     // 48 bytes
     long          m_def1c;                      // +0x1C (unnamed in the PDB)
     long          m_def20;                      // +0x20 (unnamed in the PDB)
     unsigned char m_flag0 : 1;                  // +0x24 bit 0

@@ -10,7 +10,7 @@ struct CAsyncData_00850530 {
     __forceinline ~CAsyncData_00850530() { DiscardAsyncData_00850530(this); }
 };
 namespace NCameraModes {
-struct CSubComponentBase {                        // vtable 0x012758F4
+class CSubComponentBase { public:                        // vtable 0x012758F4
     virtual void v00();
     ~CSubComponentBase() { }                       // inline: the vtable store
 };

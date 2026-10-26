@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CBaseObject;
+class CBaseObject;
 struct CBaseObjectPointer { CBaseObject* PItem; long RefCount; };
 static int g_deleted = 0;
 struct CBaseIntelligentPointer {

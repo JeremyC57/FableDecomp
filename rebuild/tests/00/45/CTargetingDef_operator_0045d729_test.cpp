@@ -5,7 +5,7 @@
 static int g_order[4];
 static int g_calls = 0;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x24];
     CDefClassBase& operator=(const CDefClassBase& other)
@@ -23,7 +23,7 @@ struct CRetailTree_0045d871 {
     { head = o.head; size = o.size; _alloc = o._alloc; g_order[g_calls++] = 2; return *this; }
 };
 
-struct CTargetingDef : CDefClassBase {
+class CTargetingDef : public CDefClassBase { public:
     unsigned long Type;
     bool  UseGlowTargeting;
     float TargetArc;

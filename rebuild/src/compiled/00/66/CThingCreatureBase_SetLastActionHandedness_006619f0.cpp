@@ -8,11 +8,11 @@
 //   containers sit in front), so engine/CThingCreatureBase.h (PDB offsets) does not fit and a local model is used.
 // Shape: `GetWorld()->GetWorldFrame()` with a STATIC GetWorldFrame: the object expression is still evaluated
 //   (`call GetWorld`, result unused), then the static call -- the same pair as the landed 0x006929E0.
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();        // 0x0049D870
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad000[0x138];
     long PreviousActionHandedness;      // +0x138 ECombatAnimationHandedness
     long PreviousActionHandednessWF;    // +0x13c

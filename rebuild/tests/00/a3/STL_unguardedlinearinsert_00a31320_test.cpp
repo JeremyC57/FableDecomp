@@ -3,8 +3,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CMatrix3x4 { float M[12]; };
-struct C3DDummyObject { CMatrix3x4 Transform; int BoneIndex; };
+class CMatrix3x4 { public: float M[12]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; int BoneIndex; };
 typedef C3DDummyObject TSecond;
 template <class T1, class T2> struct pair {
     T1 first;

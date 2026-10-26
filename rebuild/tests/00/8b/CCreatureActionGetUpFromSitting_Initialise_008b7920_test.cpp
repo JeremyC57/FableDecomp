@@ -2,14 +2,14 @@
 // manager (interface 0x31) only when it is non-zero and RemoveOnPerformAction is not RemoveOnPerformActionset; the base Initialise always runs.
 #include <cstdio>
 
-struct CTCBase { int calls; void* arg; };
+class CTCBase { public: int calls; void* arg; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -49,8 +49,8 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCCreatureModeManager : CTCBase { void RemoveMode(unsigned long mode) { ++calls; arg = (void*)mode; } };
-struct CCreatureAction_GetUpFromSitting {
+class CTCCreatureModeManager : public CTCBase { public: void RemoveMode(unsigned long mode) { ++calls; arg = (void*)mode; } };
+class CCreatureAction_GetUpFromSitting { public:
     CBaseIntelligentPointer PCreature; long SittingMode; bool RemoveOnPerformAction; int m_baseInits;
     void Initialise()
     {

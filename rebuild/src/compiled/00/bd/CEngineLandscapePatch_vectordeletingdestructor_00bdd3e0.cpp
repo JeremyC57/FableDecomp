@@ -12,7 +12,7 @@
 // two-argument `__fastcall` forms (a `(void*, size_t)` usual form passes `mov edx,48h` instead, and a lone
 // `(void*, long)` form is placement-only so VC falls back to the global `operator delete`).
 // The class needs a virtual destructor (vtable slot 0) and the TU must `new[]` it for `??_E` to appear.
-struct CEngineLandscapePatch {                     // vtable 0x012A8200, sizeof 0x48
+class CEngineLandscapePatch { public:                     // vtable 0x012A8200, sizeof 0x48
     unsigned char _body[0x44];                     // +0x04 .. +0x48
     virtual ~CEngineLandscapePatch();              // 0x00BF3A40
     static void* __fastcall operator new(unsigned int size, long flags);        // 0x00BF36C0

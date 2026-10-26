@@ -6,15 +6,15 @@
 // World is CInputProcessGameBase::World (+0x14); the base is modelled locally for the names.
 // Shape: one `push ecx` frame slot for the out pointer, zeroed from ebx (the shared zero that also feeds the second argument and the
 // three byte clears); the LookingAround test is `cmp byte ptr [esi+2Ah],bl`.
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void PushCurrentManualMode();                   // 0x006988B0
 };
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08();
     virtual void GetCameraManager(CGameCameraManager** ppManager);   // slot 9
 };
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad[0x34];
     CAIGameCameraBase* PCurrentGameCamera;          // +0x34
 };
@@ -28,7 +28,7 @@ struct CInputProcessGameBase {                      // engine/CInputProcessGameB
     void*         PGamePlayerInterface;             // +0x24
     bool IsGameActionEventInQueue(long action, long buttonEventType);   // 0x00687D50
 };
-struct CInputProcessControlCreatureRightStick : CInputProcessGameBase {   // vtable 0x01237A40
+class CInputProcessControlCreatureRightStick : public CInputProcessGameBase { public:   // vtable 0x01237A40
     bool PushingCameraModeUp;                       // +0x28
     bool PushingCameraModeDown;                     // +0x29
     bool LookingAround;                             // +0x2a

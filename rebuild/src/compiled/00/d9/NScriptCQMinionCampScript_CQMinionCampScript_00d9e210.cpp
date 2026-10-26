@@ -18,7 +18,7 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
-struct CGameScriptInterface {                      // retail vtable @ 0x01260F0C (only slot 87 matters here)
+class CGameScriptInterface { public:                      // retail vtable @ 0x01260F0C (only slot 87 matters here)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -31,11 +31,11 @@ struct CGameScriptInterface {                      // retail vtable @ 0x01260F0C
     virtual long RegisterTimer();                  // slot 87 (+0x15c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
-struct CTimer {                                    // a script timer: the interface's timer index
+class CTimer { public:                                    // a script timer: the interface's timer index
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
-struct CScriptBase {                               // 0x40 bytes, the quest-script root (vtable 0x012C1648)
+class CScriptBase { public:                               // 0x40 bytes, the quest-script root (vtable 0x012C1648)
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                     // +0x04..+0x3f
     CScriptBase();                                 // 0x00CB8110
@@ -45,9 +45,9 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                    // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CBaseClass { virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0 (vtable 0x01231710)
-template<class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
-struct CScriptThing : CBaseClass {                 // 12 bytes, vtable 0x01238C8C
+class CBaseClass { public: virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0 (vtable 0x01231710)
+template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+class CScriptThing : public CBaseClass { public:                 // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;            // +0x04
     CScriptThing() : CBaseClass(), PImp() { }
     virtual ~CScriptThing();

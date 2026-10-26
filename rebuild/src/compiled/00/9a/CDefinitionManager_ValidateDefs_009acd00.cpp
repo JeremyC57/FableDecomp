@@ -11,7 +11,7 @@
 // (unsigned compares); the name is a block-scoped CCharString.
 #include "fable_string.h"
 
-struct CValidateDefinitionInitBase;
+class CValidateDefinitionInitBase;
 
 class CDefClassBase {
 public:

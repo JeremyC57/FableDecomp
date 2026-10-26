@@ -1,5 +1,5 @@
 #include "engine/COccupiableDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CPersistContext { void Xfer_00431020(void* sub); };
+class CPersistContext { public: void Xfer_00431020(void* sub); };
 struct COccupiableDef_Methods : COccupiableDef {
     void Transfer(CPersistContext* ctx);
 };

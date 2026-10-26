@@ -12,14 +12,14 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CWorld;
+class CWorld;
 namespace NParticleEngine {
-struct CAEnvironmentInteraction {
+class CAEnvironmentInteraction { public:
     virtual void v00();
 };
 }
@@ -29,8 +29,8 @@ struct CGameEnvironmentInteraction : NParticleEngine::CAEnvironmentInteraction {
     CGameEnvironmentInteraction(CWorld* world) : m_pWorld(world) { }
     virtual void v00();
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              m_pObject;
     CCPPointerInfo* m_pInfo;
     CCountedPointer(T* object);                    // 0x0041956C
@@ -45,7 +45,7 @@ void __fastcall Initialise();                                                   
 void __fastcall SetEnvironmentInteraction(CCountedPointer<CAEnvironmentInteraction> interaction);   // 0x00AEAB20
 CParticleEmitterDatabase* __fastcall GetEmitterDatabase();                            // 0x00AEAAE0
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld*       m_pWorld;                        // +0x24
     void InitParticleEngine();

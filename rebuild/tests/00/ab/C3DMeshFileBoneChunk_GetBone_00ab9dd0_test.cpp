@@ -3,7 +3,7 @@
 // LocalizationMatrix copied; the chunk is not changed.
 #include <cstdio>
 
-struct CMatrix3x4 { float m_row[3][4]; };
+class CMatrix3x4 { public: float m_row[3][4]; };
 
 static unsigned int NameCrc(const char* name)
 {

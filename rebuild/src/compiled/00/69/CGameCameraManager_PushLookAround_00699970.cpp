@@ -7,15 +7,15 @@
 #define CThing CThingDonor
 #include "engine/_quarantine/CThing.h"
 #undef CThing
-struct CThing {unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
+class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
 struct CObservedThingPointer {void* VTable;void* PointerInfo;CThing* GetPItem()const;}; //00A01B50
-struct CCameraManagerDef;struct CCameraManagerDefPointer {CCameraManagerDef* Object;operator CCameraManagerDef*()const{return Object;}};
+class CCameraManagerDef;struct CCameraManagerDefPointer {CCameraManagerDef* Object;operator CCameraManagerDef*()const{return Object;}};
 struct CCameraModeDefPointer {void* Object;};
 extern CCameraModeDefPointer g_DefaultCameraModeDef; //013BA8D8
-struct CGameCameraManager;
+class CGameCameraManager;
 struct CPhysicsState {float Position[3],Velocity[3],Acceleration[3];void* Attractors;void* Incidentals;bool Cull;};
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
  void* VTable;float DefaultFOV,DefaultRoll,DefaultOffset;CPhysicsState LookAt;
  CGameCameraManager* Manager;void* ModeDef;void *SubFirst,*SubLast,*SubEnd;
  CPhysicsState GoTo;float FOV,Roll,Offset,RightStick[2],LeftStick[2];bool ViewOccluded;
@@ -31,7 +31,7 @@ struct CManualScriptModule;
 struct CManualScriptVTable {void* ScalarDeletingDestructor;void* InheritedSlot1;bool (__fastcall* AllowsManualControl)(CManualScriptModule*);};
 struct CManualScriptModule {CManualScriptVTable* VTable;bool AllowsManualControl(){return VTable->AllowsManualControl(this);}};
 void __fastcall PlayCameraSoundThroughObservedThing(CThing*,CCameraManagerDef*,const CCharString&); //00698A30
-struct CGameCameraManager {
+class CGameCameraManager { public:
  void* VTable;unsigned char CameraAndControlState[0xd0];
  CManualScriptModule* PCurrentScriptModule;void* CurrentScriptInfo;CManualScriptModule* PPendingScriptModule;void* PendingScriptInfo;
  unsigned char ScriptAndQuakeState[0x1c];CObservedThingPointer PObservedThing;

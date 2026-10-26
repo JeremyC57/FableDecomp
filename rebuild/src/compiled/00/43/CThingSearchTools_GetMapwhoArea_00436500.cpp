@@ -12,7 +12,7 @@
 
 struct CThingMap;
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long x0, y0, x1, y1;
     C2DBoxI() {}
     C2DBoxI(const C2DBoxI& o) : x0(o.x0), y0(o.y0), x1(o.x1), y1(o.y1) {}

@@ -10,12 +10,12 @@
 // manager 0x013B89FC with a list at +0x68.
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                     // 0x0099B510
 };
@@ -253,25 +253,25 @@ struct CBoastMap {
     }
 };
 
-struct CTCBase;
+class CTCBase;
 struct SInterfaceEntry { long type; CTCBase* component; };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                             // 0x00693EF0
 };
-struct CThing;
-struct CSoundPair {
+class CThing;
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThing* creature, const CCharString& animation, float blend,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00843A80
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad0[0x20];
     unsigned long    m_presentBits[9];                  // +0x20
     SInterfaceEntry* m_interfacesFirst;                 // +0x44
@@ -296,12 +296,12 @@ struct CThing {
     }
     void SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-struct CTCBoastingCrowdControl {
+class CTCBoastingCrowdControl { public:
     void OnHeroBoast(const CBoast* boast);              // 0x00783C50
     void DetachAll();                                   // 0x00783680
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetAutomaticCameraControl();                   // 0x00699090
 };
 struct CGameWorldCalls {
@@ -323,13 +323,13 @@ struct CBoastList {
     SListNode* _M_node;
     bool empty() const { return _M_node->_M_next == _M_node; }
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x68];
     CBoastList    AcceptedBoasts;                       // +0x68
 };
 extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
 
-struct CTCBoastUI {
+class CTCBoastUI { public:
     void*         __vftable;                            // +0x00
     CThing*       ParentThing;                          // +0x04
     unsigned char _pad08[0x4];

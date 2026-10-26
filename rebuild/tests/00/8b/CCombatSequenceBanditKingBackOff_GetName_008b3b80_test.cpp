@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     int d;
     CCharString(const char* s, int n);
 };

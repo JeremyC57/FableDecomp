@@ -4,7 +4,7 @@
 #include <cmath>
 
 static const float g_epsilon = 1e-4f;
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
@@ -12,7 +12,7 @@ struct C2DVector {
     C2DVector operator+(const C2DVector& o) const { return C2DVector(X + o.X, Y + o.Y); }
     C2DVector operator*(float f) const { return C2DVector(X * f, Y * f); }
 };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CChangeText { C2DVector OldOffset, Offset; CRGBColour Colour; bool StartToEnd; float PercentageThrough; };
 struct SNode { SNode* next; SNode* prev; CChangeText data; };
 struct iterator {

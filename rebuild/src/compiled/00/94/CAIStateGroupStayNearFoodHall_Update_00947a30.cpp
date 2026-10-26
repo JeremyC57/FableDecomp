@@ -6,13 +6,13 @@
 // The loop continues only while the move action reports 4 and the hall remains live and cooking time continues.
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-struct CThing;
-struct C3DVector { float X,Y,Z; C3DVector() : X(0),Y(0),Z(0) {} C3DVector(const C3DVector& v) : X(v.X),Y(v.Y),Z(v.Z) {} };
+class CThing;
+class C3DVector { public: float X,Y,Z; C3DVector() : X(0),Y(0),Z(0) {} C3DVector(const C3DVector& v) : X(v.X),Y(v.Y),Z(v.Z) {} };
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
-struct CThing { unsigned char pad0[0x20]; unsigned long flags20; unsigned long flags24; unsigned char pad28[0x1c]; CInterfaceMap interfaces; unsigned char pad4c[0x45]; unsigned char dead; };
+class CThing { public: unsigned char pad0[0x20]; unsigned long flags20; unsigned long flags24; unsigned char pad28[0x1c]; CInterfaceMap interfaces; unsigned char pad4c[0x45]; unsigned char dead; };
 struct CBaseIntelligentPointer { virtual void v00(); void* Handle; CThing* GetPItem(); };
 struct CTCVillager;
-struct CTCVillage { bool IsCookTime_00658bb9(); };
+class CTCVillage { public: bool IsCookTime_00658bb9(); };
 struct CAIStateGroup_StayNearFoodHall : CAIStateGroupBase {
     C3DVector Position;
     CBaseIntelligentPointer PFoodHall;

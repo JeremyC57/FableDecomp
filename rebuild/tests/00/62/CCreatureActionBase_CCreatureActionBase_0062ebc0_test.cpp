@@ -3,8 +3,8 @@
 // fields, add-refs both counted animation entries and copy-constructs the containers.
 #include <cstdio>
 
-struct CThing { int id; };
-struct CBaseObject {
+class CThing { public: int id; };
+class CBaseObject { public:
     void* IntelligentPointer;
     CBaseObject() : IntelligentPointer((void*)1) {}
     CBaseObject(const CBaseObject&) : IntelligentPointer(0) {}
@@ -26,16 +26,16 @@ struct CThingPointer : CBaseIntelligentPointer {
     CThingPointer() {}
     CThingPointer(const CThingPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CCPPointerInfo { long Count; };
-struct CAnimationEntry;
+class CCPPointerInfo { public: long Count; };
+class CAnimationEntry;
 struct CAnimationEntryPointer {
     CAnimationEntry* Data; CCPPointerInfo* Info;
     CAnimationEntryPointer() : Data(0), Info(0) {}
     CAnimationEntryPointer(const CAnimationEntryPointer& other) : Data(other.Data), Info(other.Info)
     { if (Info) ++Info->Count; }
 };
-struct CSoundPair { long FirstSound, LastSound; };
-struct C3DVector {
+class CSoundPair { public: long FirstSound, LastSound; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
@@ -46,7 +46,7 @@ struct CContainer {
     CContainer() : Size(0) {}
     CContainer(const CContainer& o) : Size(o.Size) { ++g_containerCopies; }
 };
-struct CCreatureActionBase : CBaseObject {
+class CCreatureActionBase : public CBaseObject { public:
     CCreaturePointer PCreature;
     long TotalTime, ActionTime, AnimDelayTime, FramesRunning, InterruptionGroupID, InterruptionPriority, ActionID;
     CThingPointer PItemRemoved;

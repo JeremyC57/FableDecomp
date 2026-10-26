@@ -13,17 +13,17 @@
 // inline constructor (`and` under /Os), then AlreadyRead = false as a byte store.
 #pragma optimize("s", on)
 
-struct CThing;
-struct CCarriedReadableDef;
+class CThing;
+class CCarriedReadableDef;
 
-struct CTCCarriedActionUseBase {                            // 0x14 bytes, vtable 0x0123F894
+class CTCCarriedActionUseBase { public:                            // 0x14 bytes, vtable 0x0123F894
     virtual void v00();
     unsigned char _body[0x10];                              // CTCBase + PActionUseDef + Usable
     CTCCarriedActionUseBase(CThing* owner);                 // 0x004DAC61
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     const T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };

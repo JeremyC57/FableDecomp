@@ -18,7 +18,7 @@ struct SomeOwner {
 };
 
 // base class
-struct CTCActionUseBase {
+class CTCActionUseBase { public:
     void OnCreate();            // 0x686870 base
 };
 

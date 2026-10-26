@@ -3,17 +3,17 @@
 #include <cstring>
 #include <vector>
 
-struct C3DVector { float X, Y, Z; };
-struct CTCSolidToThing;
-struct CThing { C3DVector pos; const char* track; CTCSolidToThing* solid; C3DVector InitialPos; const C3DVector& GetPosition() { return pos; } };
-struct CTCSolidToThing { CThing* notSolid[8]; int n; void AddThingNotSolidTo(CThing* t) { notSolid[n++] = t; } };
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY; C2DBoxI(long a, long b, long c, long d) : MinX(a), MinY(b), MaxX(c), MaxY(d) { } };
-struct CCharString { const char* s; CCharString(const char* t, long = -1) : s(t) { } };
-struct CThingFilter_HasTrackName { CCharString Name; CThingFilter_HasTrackName(const CCharString& n) : Name(n) { } };
+class C3DVector { public: float X, Y, Z; };
+class CTCSolidToThing;
+class CThing { public: C3DVector pos; const char* track; CTCSolidToThing* solid; C3DVector InitialPos; const C3DVector& GetPosition() { return pos; } };
+class CTCSolidToThing { public: CThing* notSolid[8]; int n; void AddThingNotSolidTo(CThing* t) { notSolid[n++] = t; } };
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; C2DBoxI(long a, long b, long c, long d) : MinX(a), MinY(b), MaxX(c), MaxY(d) { } };
+class CCharString { public: const char* s; CCharString(const char* t, long = -1) : s(t) { } };
+class CThingFilter_HasTrackName { public: CCharString Name; CThingFilter_HasTrackName(const CCharString& n) : Name(n) { } };
 struct CThingFilter_All { CThingFilter_All() { } };
 static CThing* g_world[8]; static int g_nworld;
 static bool Inside(const C2DBoxI& a, CThing* t) { return (long)t->pos.X >= a.MinX && (long)t->pos.X <= a.MaxX && (long)t->pos.Y >= a.MinY && (long)t->pos.Y <= a.MaxY; }
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_All&, std::vector<CThing*>& out) const
     { for (int i = 0; i < g_nworld; ++i) if (Inside(area, g_world[i])) out.push_back(g_world[i]); }
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& f, CThing** out) const
@@ -23,7 +23,7 @@ struct CThingSearchTools {
         return false;
     }
 };
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 static int g_circles;
 
 struct CAIStateGroup_HoverHornetQueen {

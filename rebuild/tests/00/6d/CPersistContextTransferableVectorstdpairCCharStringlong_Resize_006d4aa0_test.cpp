@@ -7,7 +7,7 @@
 #endif
 
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { ++g_strings; }
     CCharString(const CCharString& other) : Text(other.Text) { ++g_strings; }

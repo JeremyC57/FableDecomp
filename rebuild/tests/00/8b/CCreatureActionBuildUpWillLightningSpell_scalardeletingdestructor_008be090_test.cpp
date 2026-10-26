@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BuildUpWillLightningSpell {
+class CCreatureAction_BuildUpWillLightningSpell { public:
     void* vftable;
     int destroyed;
 };

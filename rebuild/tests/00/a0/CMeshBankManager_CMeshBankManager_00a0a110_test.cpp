@@ -8,7 +8,7 @@ struct CRetailList0x14 {
     SNode* head; long size;
     CRetailList0x14() : head(0) { SNode* node = (SNode*)std::malloc(0x14); node->next = node; node->prev = node; head = node; }
 };
-struct CMeshBankManager : CBase, CMeshBankListener { CRetailList0x14 m_banks; virtual void v00() {} CMeshBankManager() : CBase(), CMeshBankListener(), m_banks() {} };
+class CMeshBankManager : public CBase, public CMeshBankListener { public: CRetailList0x14 m_banks; virtual void v00() {} CMeshBankManager() : CBase(), CMeshBankListener(), m_banks() {} };
 int main()
 {
     CMeshBankManager m;

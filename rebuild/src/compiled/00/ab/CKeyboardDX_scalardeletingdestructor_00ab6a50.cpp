@@ -14,7 +14,7 @@ struct IDirectInputDevice8_Retail {              // COM: __stdcall methods, `thi
     virtual long __stdcall Acquire();                               // slot 7 (+0x1c)
     virtual long __stdcall Unacquire();                             // slot 8 (+0x20)
 };
-struct CKeyboard {                                 // retail layout 0x3418 bytes (vtable 0x0129DBA8)
+class CKeyboard { public:                                 // retail layout 0x3418 bytes (vtable 0x0129DBA8)
     virtual ~CKeyboard();                          // slot 0, 0x00A66990
     unsigned char _body[0x3418 - 4];
 };

@@ -7,14 +7,14 @@ typedef unsigned __int64 UID64;
 typedef unsigned long long UID64;
 #endif
 
-struct CThing { short m_level; bool LevelLess; bool IsLevelLess() { return LevelLess; } };
-struct CThingManager {
+class CThing { public: short m_level; bool LevelLess; bool IsLevelLess() { return LevelLess; } };
+class CThingManager { public:
     int Calls; bool LastSaving;
     UID64 RemapUIDForSerialisation(bool saving, bool, long level, UID64 uid)
     { ++Calls; LastSaving = saving; return saving ? uid + 1000 + level : uid - 1000 - level; }
 };
 static CThingManager g_mgr;
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     // a tiny "file": key -> value
     long Version; UID64 Owner; bool Switch; int Count;
@@ -23,7 +23,7 @@ struct CPersistContext {
     void Transfer(const char* name, long& v, const long&) { ++Count; if (std::strcmp(name, "VersionNumber") == 0) { if (IsSaving()) Version = v; else v = Version; } }
     void Transfer(const char* name, UID64& v, const UID64&) { ++Count; if (std::strcmp(name, "OwnerUID") == 0) { if (IsSaving()) Owner = v; else v = Owner; } }
 };
-struct CTCOwnedEntity {
+class CTCOwnedEntity { public:
     CThing* ParentThing;
     bool SwitchableNavigationTCAdded;
     UID64 OwnerUID;

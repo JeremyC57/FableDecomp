@@ -2,10 +2,10 @@
 #include <cstring>
 #include <new>
 static int g_strips = 0;
-struct CMovableResource { virtual ~CMovableResource() {} };
-struct CPatchTesselationEdgeStrip { unsigned char _body[0x2c]; CPatchTesselationEdgeStrip() { ++g_strips; } };
-struct CLandscapeBackgroundTreeNode { int x; };
-struct CLandscapeBackgroundPatch : CMovableResource {
+class CMovableResource { public: virtual ~CMovableResource() {} };
+class CPatchTesselationEdgeStrip { public: unsigned char _body[0x2c]; CPatchTesselationEdgeStrip() { ++g_strips; } };
+class CLandscapeBackgroundTreeNode { public: int x; };
+class CLandscapeBackgroundPatch : public CMovableResource { public:
     CLandscapeBackgroundTreeNode* Parent;
     CPatchTesselationEdgeStrip EdgeStrips[4];
     void* Texture; void* IndexBuffer; void* VertexBuffer; void* BridgeIndexBuffers[4]; void* BridgeVertexBuffers[4];

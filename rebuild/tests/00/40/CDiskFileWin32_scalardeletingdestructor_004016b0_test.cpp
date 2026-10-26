@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     void* vptr;
     char pad[0x18 - 4];
     int member18;

@@ -26,7 +26,7 @@ struct CBuildingSimDefinition {
     long HouseSize;                            // +0x44
     __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
     T* operator->() const { return Object; }

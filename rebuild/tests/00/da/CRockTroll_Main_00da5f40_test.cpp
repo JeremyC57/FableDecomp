@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
 // behaviour test: CRockTroll::Main attaches to the quest, waits for the hero within 20 units, then adds a green health bar
-struct CCharString { const char* t; CCharString(const char* s, long) : t(s) {} };
-struct CRGBColour {
+class CCharString { public: const char* t; CCharString(const char* s, long) : t(s) {} };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 static int g_frames = 0, g_nearAt = 3, g_doneAt = 100, g_attached = 0, g_filters = 0, g_handles = 0;
 static bool g_shown = false; static CRGBColour g_colour(1, 1, 1, 1); static const char* g_icon = 0; static float g_scale = 0;
 static bool IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float d) { return d == 20.0f && g_frames >= g_nearAt; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frames; }
     const CScriptThing& GetHero() const { return hero; }
@@ -21,7 +21,7 @@ struct CGameScriptInterface {
     CCharString GetActiveQuestName() const { return CCharString("Q", -1); }
 };
 struct CIsThingAlive { CIsThingAlive(const CScriptThing&) {} };
-struct CScriptGameResourceObjectScriptedThingBase { CScriptGameResourceObjectScriptedThingBase() { ++g_handles; } };
+class CScriptGameResourceObjectScriptedThingBase { public: CScriptGameResourceObjectScriptedThingBase() { ++g_handles; } };
 static const char g_rockTrollIcon[] = "HUD_QUEST_ICON_ROCK_TROLL";
 class CRockTroll {
 public:

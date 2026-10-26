@@ -2,7 +2,7 @@
 // history list with both visible iterators at begin(), and the default scalar/colour settings.
 #include <cstdio>
 #include <cstdlib>
-struct CCharString { const char* text; CCharString() : text("") { } CCharString(const char* t, long) : text(t) { } };
+class CCharString { public: const char* text; CCharString() : text("") { } CCharString(const char* t, long) : text(t) { } };
 struct CommandLine { CCharString CurrentEntry; bool UserEntry; long CursorPosition; CommandLine() : CurrentEntry("", -1), UserEntry(false), CursorPosition(0) { } };
 struct Colour { unsigned char B, G, R, A; Colour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } };
 struct NodeBase { char Color; NodeBase* Parent; NodeBase* Left; NodeBase* Right; };

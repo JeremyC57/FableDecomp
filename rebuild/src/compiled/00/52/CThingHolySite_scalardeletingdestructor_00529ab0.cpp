@@ -2,7 +2,7 @@
 // Pattern: call scalar dtor (this in ecx), then if (flags&1) operator delete(this),
 // return this. Modeled as a free __fastcall so it always has external linkage.
 
-struct CThingHolySite;
+class CThingHolySite;
 
 void __fastcall dtor_scalar_529ad0(CThingHolySite* site);  // 0x529ad0
 void __fastcall op_delete_4c73b0(CThingHolySite* site);    // 0x4c73b0

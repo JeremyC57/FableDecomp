@@ -19,7 +19,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 void* __cdecl operator new(unsigned int size);      // 0x00BFEA1A
 
 struct CPresenceBits {
@@ -33,9 +33,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -81,11 +81,11 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsChild();                                  // 0x00661F70
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1); // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
@@ -98,7 +98,7 @@ struct CEventBase {
 };
 
 namespace NEntityEvents {
-struct CEventMoralityChanged : CEventBase {          // vtable 0x0124F2DC
+class CEventMoralityChanged : public CEventBase { public:          // vtable 0x0124F2DC
     long ChangedBy;                                  // +0x08
     CEventMoralityChanged(long changedBy) : ChangedBy(changedBy) {}
     virtual ~CEventMoralityChanged();                // 0x0057F36F
@@ -106,24 +106,24 @@ struct CEventMoralityChanged : CEventBase {          // vtable 0x0124F2DC
 };
 }
 
-struct CTCHero {
+class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);                // 0x008113C0
 };
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     unsigned long PlayUnattachedCriteria(const CCharString& name, const C3DVector& pos, bool a, bool b);  // 0x0066BDF0
 };
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     void SetMorality(float morality);                // 0x0071C000
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void AddMoralityChange(long change);             // 0x00437930
 };
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad_0x00[0xD0];
     long          MaxMorality;                       // +0xD0
     long          MaxChildMorality;                  // +0xD4
@@ -141,7 +141,7 @@ template <class T> inline const T& LimitRef(const T& v, const T& lo, const T& hi
     return v;
 }
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x20];

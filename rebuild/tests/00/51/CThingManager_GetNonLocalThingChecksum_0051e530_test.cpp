@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CThingManager::GetNonLocalThingChecksum (0x0051E530): sum over non-Dead things.
-struct CThing {
+class CThing { public:
     unsigned long checksum; unsigned char Dead : 1;
     virtual unsigned long GetChecksum() { return checksum; }
     virtual ~CThing() {}
@@ -11,7 +11,7 @@ struct CThingList {
     SThingListNode* begin() const { return PHead->PNext; }
     SThingListNode* end() const { return PHead; }
 };
-struct CThingManager {
+class CThingManager { public:
     CThingList Things;
     unsigned long GetNonLocalThingChecksum()
     {

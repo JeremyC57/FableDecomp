@@ -10,9 +10,9 @@
 // the CombatSequences vector of 8-byte counted pointers with first at +0x28). The three values are read
 // into callee-saved registers up front (parent edi, attacked ebp, sequence esi). Two exits: the first
 // condition's body returns, the second is the fall-through `if`.
-struct CThing;
+class CThing;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsPerformingAnyAction();           // 0x006622A0
     bool IsFreeToFinishAction();            // 0x006621C0
     void FinishCurrentAction();             // 0x00662650
@@ -20,7 +20,7 @@ struct CThingCreatureBase {
 
 bool __fastcall IsAbleToBeAttacked(CThing* thing);   // 0x0085FB30
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -47,7 +47,7 @@ struct CCombatantInfo {
     CCountedSequencePointer* CombatSequences_end;
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void PerformSequenceReset(CThingCreatureBase* creature);   // 0x006EA2C0
     void UpdateCurrentAction(CThingCreatureBase* creature);    // 0x006E8400
     void UpdateAttackingCombatantSequenceResets(CCombatantInfo* info);

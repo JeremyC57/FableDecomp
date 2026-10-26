@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour test for CTCInventoryBase::AddCloseInventoryEvent (0x005BC527): same logic over a copy of the model.
 struct CMemoryBuffer { };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void Copy(unsigned long length, const void* data) { std::memcpy(Data + EndPos, data, length); EndPos = (unsigned char)(EndPos + length); }
@@ -10,10 +10,10 @@ struct CGameEvent : CMemoryBuffer {
 };
 static CGameEvent g_last(0);
 static int g_events = 0;
-struct CMainGameComponent { void AddGameEvent(const CGameEvent& event) { g_last = event; ++g_events; } };
+class CMainGameComponent { public: void AddGameEvent(const CGameEvent& event) { g_last = event; ++g_events; } };
 static CMainGameComponent g_component;
 static CMainGameComponent* g_pMainGameComponent = &g_component;
-struct CPlayerManager { long m_main; long GetMainPlayerNumber() { return m_main; } };
+class CPlayerManager { public: long m_main; long GetMainPlayerNumber() { return m_main; } };
 static CPlayerManager g_players = { 1 };
 static CPlayerManager* GetPlayerManager_00686d50() { return &g_players; }
 enum { GAME_EVENT_CLOSE_INVENTORY = 0x1B };

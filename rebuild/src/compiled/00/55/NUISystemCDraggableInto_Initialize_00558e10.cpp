@@ -43,7 +43,7 @@ struct CDefPointer {
     CDraggableIntoDef* operator->() const { return m_p; }
 };
 
-struct CAction {                                   // 16 bytes
+class CAction { public:                                   // 16 bytes
     long Type;                                     // +0x00
     unsigned char _body[0xc];
     CAction();                                     // 0x0042BE50

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00724A50 remove_copy_if(CThing**, CThing**, CThing**, CIsCreatureIsIntersecting).
 #include <cstdio>
 class CThing { public: int hit; };
-struct CIsCreatureIsIntersecting {
+class CIsCreatureIsIntersecting { public:
     CThing* Owner;
     bool operator()(CThing* thing) const { return thing->hit == Owner->hit; }
 };

@@ -81,7 +81,7 @@ __declspec(noinline) STCEntry_Retail* CTCMap_Retail::LowerBound(const unsigned l
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 
-struct C3DVector { float X, Y, Z; C3DVector() { } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
 #define VPAD1(a) virtual void a();
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
@@ -91,7 +91,7 @@ struct C3DVector { float X, Y, Z; C3DVector() { } };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CScriptThing {
+class CScriptThing { public:
     VPAD4(a) VPAD2(b)                              // 0..5
     virtual const C3DVector& GetPosition() const;  // slot 6 (+0x18)
     VPAD4(c)                                       // 7..10
@@ -102,7 +102,7 @@ struct CScriptThing {
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -113,7 +113,7 @@ struct CGameEvent : CMemoryBuffer {
     void AddFloat(float value) { Copy(sizeof(value), &value); }
     void AddBool(bool value) { Copy(1, &value); }
 };
-struct CWorldMap {
+class CWorldMap { public:
     VPAD16(a)                                      // 0..15
     virtual long GetRegionAt(const C3DVector& pos);   // slot 16 (+0x40)
     long GetRegionNumberMapIsIn(long map);         // 0x004FC190
@@ -128,14 +128,14 @@ struct CTCWalk {
     void Reset();                                  // 0x006CB6B0
     bool FindNearestWalkablePos(const C3DVector& pos, float radius, C3DVector* out);   // 0x006CB8E0
 };
-struct CTCPerceiveThing { void ResetPerceptionVariables(); };   // 0x00744DB0
-struct CTCCreatureGenerator {
+class CTCPerceiveThing { public: void ResetPerceptionVariables(); };   // 0x00744DB0
+class CTCCreatureGenerator { public:
     unsigned char _pad[0xa1];
     bool          Teleported;                      // +0xa1
     void InitialiseCreatureGenerator(bool flag);   // 0x0074B770
 };
-struct CTCCarrying { void UpdateCarriedObjects(); };   // 0x006A1D60
-struct CGameCameraManager { void ResetCamera(); };    // 0x0069A990
+class CTCCarrying { public: void UpdateCarriedObjects(); };   // 0x006A1D60
+class CGameCameraManager { public: void ResetCamera(); };    // 0x0069A990
 struct CCameraOwner {
     VPAD8(a) VPAD1(b)                              // 0..8
     virtual bool GetCameraManager(CGameCameraManager** out);   // slot 9 (+0x24)
@@ -159,7 +159,7 @@ struct CTeleportThing {
     void SetAsGameStatePersisted(bool persisted);  // 0x00661EA0
     void SetInLimbo(bool limbo);                   // 0x004C8CF0
 };
-struct CWorld {
+class CWorld { public:
     VPAD8(a) VPAD4(b)                              // 0..11
     virtual CWorldMap* GetWorldMap();              // slot 12 (+0x30)
     unsigned char   _pad04[0x30];
@@ -168,7 +168,7 @@ struct CWorld {
     bool            AllowRegionLoad;               // +0x12f
     void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);   // 0x0049EAF0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD1(a)
     CWorld* World;                                 // +0x04
     VPAD256(b) VPAD128(c) VPAD32(d) VPAD1(e)        // 1..417

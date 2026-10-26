@@ -13,12 +13,12 @@
 // Layout: local model. engine/CCreatureActionBase.h (Ego_r PDB, 0xb4 bytes) agrees up to PPreceedingPAnimEntry
 // (+0x80); the PDB's 16-byte containers are 12 bytes in retail (the copy constructor calls take +0x84, +0x90 and
 // +0x9c), so ActionEvents +0x84, CutSceneEvents +0x90, DependentThings +0x9c and the class is 0xa8 bytes.
-struct CThing;
-struct CThingCreatureBase;
-struct CAnimationEntry;
+class CThing;
+class CThingCreatureBase;
+class CAnimationEntry;
 
 struct CBaseObjectPointer;
-struct CBaseObject {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     virtual void v00();
     CBaseObjectPointer* IntelligentPointer; // +0x04
     CBaseObject(const CBaseObject& other);  // 0x0099A390
@@ -38,7 +38,7 @@ struct CThingPointer : CBaseIntelligentPointer {        // CIntelligentPointer<C
     virtual void v00();
     CThingPointer(const CThingPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long Count;
 };
 struct CAnimationEntryPointer {             // CCountedPointer<CAnimationEntry>
@@ -50,11 +50,11 @@ struct CAnimationEntryPointer {             // CCountedPointer<CAnimationEntry>
             ++Info->Count;
     }
 };
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
@@ -77,7 +77,7 @@ struct CDependentThingVector {              // vector<CIntelligentPointer<CThing
     CDependentThingVector(const CDependentThingVector& other);   // 0x0062ED40
 };
 
-struct CCreatureActionBase : CBaseObject {  // vtable 0x01259D24
+class CCreatureActionBase : public CBaseObject { public:  // vtable 0x01259D24
     CCreaturePointer       PCreature;                   // +0x08
     long                   TotalTime;                   // +0x10
     long                   ActionTime;                  // +0x14

@@ -2,7 +2,7 @@
 // behaviour test: CQ_MinionCampScript::RunFirstWaveControl -- while in stage 2, whenever neither hero attacker is
 // alive, pick the two minion guards nearest the hero that are not already attacking him and make them the attackers
 static int g_frames = 0, g_endAt = 1000, g_added[8], g_addCount = 0;
-struct CScriptThing { int id; bool null, alive; bool IsNull() const { return null; } bool IsAlive() const { return alive; } };
+class CScriptThing { public: int id; bool null, alive; bool IsNull() const { return null; } bool IsAlive() const { return alive; } };
 static CScriptThing g_guards[5];
 static float g_distance[5] = { 9.0f, 3.0f, 7.0f, 1.0f, 2.0f };
 static bool g_assigned[5] = { false, false, false, true, false };
@@ -12,7 +12,7 @@ struct CThings {
     CScriptThing& operator[](unsigned int i) { return Items[i]; }
 };
 struct CQ_MinionCampScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CQ_MinionCampScript* Owner;
     void NewScriptFrame() const;
     void GetAllThingsWithScriptName(const char*, CThings& v) const { v.Count = 5; for (int i = 0; i < 5; ++i) v.Items[i] = g_guards[i]; }

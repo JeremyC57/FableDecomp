@@ -6,13 +6,13 @@
 // number of characters revealed per frame (descriptive name).
 // Shape: the lazy def load is the same inline helper as CPlayerGui::GetAbilityButton (agent153 0x00438990); the
 // sum is stored before the length call; the clamp is `if (n < 0) n = 0; else if (n > len) n = len;`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CPlayerGuiDef {                                      // the "PLAYER_GUI_PC" definition (descriptive)
+class CPlayerGuiDef { public:                                      // the "PLAYER_GUI_PC" definition (descriptive)
     unsigned char _pad000[0x90C];
     long          MessageCharactersPerFrame;                // +0x90C
 };
@@ -22,11 +22,11 @@ struct CPlayerGuiDefPointer {                               // CDefPointer<CPlay
 };
 extern CPlayerGuiDefPointer g_PlayerGuiDef;                 // 0x013B878C (filled on first use)
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CPlayerGuiDefPointer* out);   // 0x0043FF30 (GetDef<T> instantiation)
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
@@ -39,7 +39,7 @@ __forceinline const CPlayerGuiDef* GetPlayerGuiDef()        // lazily load the G
     return g_PlayerGuiDef.Object;
 }
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     long GetLength() const;                                 // 0x0099B220
 };

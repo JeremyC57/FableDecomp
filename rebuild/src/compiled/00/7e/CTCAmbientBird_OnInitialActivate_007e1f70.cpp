@@ -13,17 +13,17 @@ struct CGameSubsystem {                        // the main game component's memb
     virtual bool IsSuppressed();               // slot 9 (+0x24)
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();           // 0x0049D810
 };
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CThing {
+class CThing { public:
     void Kill(bool immediately);               // 0x004C9B80
 };
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08

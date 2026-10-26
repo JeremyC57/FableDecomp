@@ -10,14 +10,14 @@
 // Shape: the landed CCreatureAction_BriarRoseIntoInvulnerable::Initialise 0x008C1E80 model (named animation string in its
 //   own block, the owner through the intelligent pointer's inline `operator CThing*()` evaluated before the target's
 //   GetPItem) with the boss-phase lookup in front; the target is the combat action's +0xa8 pointer.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -37,7 +37,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
 struct CBaseIntelligentPointer {
     void*   __vftable;
@@ -49,14 +49,14 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
 struct CModeBase { };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;                            // +0
     void* m_pCount;                             // +4
     CCountedPointer(T* object);                 // 0x00718A00
@@ -66,10 +66,10 @@ struct CModeIceTrollGroundSmashIcicleAssault : CModeBase {
     unsigned char _pad[0x9c];
     CModeIceTrollGroundSmashIcicleAssault(CThing* thing, CThing* target);   // 0x008C7C00
 };
-struct CTCBoss {                                // interface type 0xAD
+class CTCBoss { public:                                // interface type 0xAD
     void IncrementBossPhase();                  // 0x007AED20
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
 };
 

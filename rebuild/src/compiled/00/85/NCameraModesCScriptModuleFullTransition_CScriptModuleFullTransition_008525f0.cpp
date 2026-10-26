@@ -9,7 +9,7 @@
 // lives in the dead `lookAt` slot for the `fild`, each increment is `(end - start) / (float)count` through C3DVector value
 // operators (operator/ multiplies by the reciprocal, which VC computes once for both) (frame temporaries, the result copied with integer moves by the implicit operator=),
 // Increment first; EndFrame adds the ORIGINAL frames argument to the world frame.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -18,7 +18,7 @@ struct C3DVector {
     C3DVector operator/(float d) const { float inverse = 1.0f / d; return C3DVector(X * inverse, Y * inverse, Z * inverse); }
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 

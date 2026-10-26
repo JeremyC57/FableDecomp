@@ -10,7 +10,7 @@
 // the header's flat-animated bit is +0x12 bit 0.
 // Leaf: ?BeginLoading@CGraphicInfoFrame@@
 void* operator new(unsigned int size);             // 0x00BFEA1A
-struct CGraphicInfoFrame;
+class CGraphicInfoFrame;
 struct CFrameData {                                // CGraphicInfoFrame::CFrameData (0x44 bytes): an intrusively counted pointee
     virtual void v00();
     virtual void Destroy();                        // slot 1 (+4)
@@ -19,7 +19,7 @@ struct CFrameData {                                // CGraphicInfoFrame::CFrameD
     CFrameData(CGraphicInfoFrame* frame);          // 0x009FE380
     void BeginLoading(unsigned long a, unsigned long b);   // 0x009FDE80
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     void Reset()
     {
@@ -42,12 +42,12 @@ struct CGraphicHeader {
     unsigned char IsFlatAnimatedGraphic : 1;       // +0x12 bit 0
     unsigned char _pad13[0x1c - 0x13];
 };
-struct CGraphicInfo {
+class CGraphicInfo { public:
     CGraphicHeader     Header;                     // +0x00
     unsigned char      _pad1c[0x0c];
     CGraphicInfoFrame* Frames;                     // +0x28
 };
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     long                          _pad00;
     unsigned short                FrameNum;        // +0x04
     signed char                   SmallMipmapLevel;   // +0x06

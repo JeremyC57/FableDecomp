@@ -10,7 +10,7 @@ struct ListHead {
 static void* g_freed;
 void __stdcall FreeNode_00450828(void* p) { g_freed = p; }
 
-struct CTCCarryable {
+class CTCCarryable { public:
     ListHead* head;
     int flag;
 };

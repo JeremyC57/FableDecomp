@@ -2,10 +2,10 @@
 #include <cstring>
 static int g_clear = 0, g_close = 0, g_destroyed = 0;
 struct CEngineScene_00bdc4f0 { void Clear() { ++g_clear; } };
-struct CLocalDetailCacheMap { void CloseStaticMap() { ++g_close; } };
+class CLocalDetailCacheMap { public: void CloseStaticMap() { ++g_close; } };
 struct CCountedItem_00b3ef40 { void Destroy() { ++g_destroyed; } };
 struct SCountedBlock_00b3ef40 { long m_count; void (CCountedItem_00b3ef40::*m_pfnDestroy)(); CCountedItem_00b3ef40* m_pItem; };
-struct CEngineMap { CEngineScene_00bdc4f0* m_pScene; CLocalDetailCacheMap* m_pDetailCache; unsigned char _pad08[0x18]; void* m_pStaticMap; unsigned char _pad24[0x18]; void* m_pStaticMapItem; SCountedBlock_00b3ef40* m_pStaticMapBlock;
+class CEngineMap { public: CEngineScene_00bdc4f0* m_pScene; CLocalDetailCacheMap* m_pDetailCache; unsigned char _pad08[0x18]; void* m_pStaticMap; unsigned char _pad24[0x18]; void* m_pStaticMapItem; SCountedBlock_00b3ef40* m_pStaticMapBlock;
     void CloseStaticMap() { if (m_pStaticMap) { if (m_pScene) m_pScene->Clear(); if (m_pDetailCache) m_pDetailCache->CloseStaticMap();
         if (m_pStaticMapBlock) { --m_pStaticMapBlock->m_count; if (m_pStaticMapBlock->m_count == 0) { (m_pStaticMapBlock->m_pItem->*m_pStaticMapBlock->m_pfnDestroy)(); delete m_pStaticMapBlock; } }
         m_pStaticMapBlock = 0; m_pStaticMapItem = 0; m_pStaticMap = 0; } } };

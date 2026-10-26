@@ -8,13 +8,13 @@
 // constructor's returned `this` is pushed straight from eax: explicit temporaries, not implicit
 // conversions), the bool result parked in bl across the three destructors (reverse construction order:
 // INTO at +8, LOOP at +0xc, OUTOF at +0x10). No engine header for the class; local model.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                                   // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13

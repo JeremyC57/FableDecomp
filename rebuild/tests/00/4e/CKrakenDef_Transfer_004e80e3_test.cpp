@@ -1,12 +1,12 @@
 #include <cstdio>
 struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; };
 static void* g_seq[32]; static char g_kind[32]; static int g_n = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(float& v) { g_seq[g_n] = &v; g_kind[g_n++] = 'f'; v += 1.0f; }
     void Transfer(long& v) { g_seq[g_n] = &v; g_kind[g_n++] = 'l'; v += 1; }
     void Transfer(CLongVector& v) { g_seq[g_n] = &v; g_kind[g_n++] = 'v'; }
 };
-struct CKrakenDef {
+class CKrakenDef { public:
     float HeightOffset, PoolRadius, HeadRiseDelay, HeadIdleTime;
     long LowStrikesBeforeHigh, LowStrikeChargeLoops, LowStrikeAttackLoops, HighStrikeAttackLoops, RoarLoops;
     float DelayBeforeLowBeam, DelayBeforeHighBeam, BeamExplosionRadius, BeamTrackSpeed, TargetingTrackSpeed, BeamMouthDistLow, BeamMouthDistHigh;

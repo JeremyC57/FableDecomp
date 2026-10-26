@@ -15,7 +15,7 @@
 //   (CQ_PrisonWardenGameScript, retail = PDB - 0x14: SecretDiaryOpened +0x48, HeroHasSecretDiaryKey +0x49, BookOpened
 //   +0x4c, SThingBookOpened +0x50), PMasterData +0x18 (CQ_SunnyvaleMasterData: BooksPreviouslyOpened[3] +0xef), BookType
 //   +0x1c. CScriptThing / CCountedPointer models as the landed CBanditAttacker::Main 0x00D1F610.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -24,14 +24,14 @@ static inline C3DVector RaisedBy(const C3DVector& pos, float height)
 {
     return C3DVector(pos.X, pos.Y, pos.Z + height);
 }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator=(const char* text);          // 0x0099EFE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
@@ -39,7 +39,7 @@ struct CCPPointerInfo {
 struct CBase {
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;                            // slot 6 (+0x18)
     virtual void s007() const; virtual void s008() const; virtual void s009() const;
@@ -63,7 +63,7 @@ struct CScriptThing : CBase {
         PImp_Info = 0;
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const;
     virtual void v006() const;
     virtual void NewScriptFrame() const;                                // slot 7 (+0x1c)
@@ -166,7 +166,7 @@ struct CQ_SunnyvaleMasterData {
     unsigned char _pad00[0xef];
     bool          BooksPreviouslyOpened[3];             // +0xef
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

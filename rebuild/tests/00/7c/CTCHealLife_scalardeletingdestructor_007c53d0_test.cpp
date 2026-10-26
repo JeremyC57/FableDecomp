@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCHealLife {
+class CTCHealLife { public:
     void* vftable;
     int destroyed;
 };

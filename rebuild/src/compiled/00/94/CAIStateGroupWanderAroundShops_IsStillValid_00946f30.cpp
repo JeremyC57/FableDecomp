@@ -7,7 +7,7 @@
 // Shape: `IsInWorkHours() && IsAlive(Shop) && IsAlive(PrettyThing)` -- the int-typed `&&` chain
 // materialises `mov eax,1` / shared `xor eax,eax` (full register); each pointer's address is formed
 // once into esi for both GetPItem calls. Base modelled locally (flattened header).
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                      // +0x91 bit 0: dead
 };
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {
     }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
 };

@@ -10,11 +10,11 @@ typedef unsigned short wchar16;                    // wchar_t under the era defa
 extern "C" int __cdecl iswdigit(wchar16 c);        // 0x00BFEDE2 (MSVCR71 import thunk)
 extern "C" int __cdecl iswalpha(wchar16 c);        // 0x00BFEDE8
 extern "C" int __cdecl iswspace(wchar16 c);        // 0x00BFEB90
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     void SetAsSubString(const wchar16* text, long length);   // 0x0099B770
 };
-struct CWParsedItem {
+class CWParsedItem { public:
     long Type;                                     // +0x00 EParsedItemType (1 = symbol, 3 = integer, 4 = float)
     union { long Integer; float Float; } Value;    // +0x04
     CWideString String;                            // +0x08

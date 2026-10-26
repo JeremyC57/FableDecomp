@@ -27,7 +27,7 @@ struct CDefRefCounted {                           // second base: the count sits
     __forceinline long GetRefCount() const { return m_count; }
 };
 
-struct CDefClassBase : CDefVirtual, CDefRefCounted {
+class CDefClassBase : public CDefVirtual, public CDefRefCounted { public:
     __forceinline void ReleaseTemporary()
     {
         DecRef();
@@ -36,10 +36,10 @@ struct CDefClassBase : CDefVirtual, CDefRefCounted {
     }
 };
 
-struct CExpressionDef : CDefClassBase {
+class CExpressionDef : public CDefClassBase { public:
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() { }
     template <class U> __forceinline CDefPointer(const CDefPointer<U>& other) : m_p((T*)other.m_p)
@@ -54,7 +54,7 @@ template <class T> struct CDefPointer {
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
 };
 

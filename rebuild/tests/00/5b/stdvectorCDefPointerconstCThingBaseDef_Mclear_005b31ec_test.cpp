@@ -6,7 +6,7 @@ static void* g_freed[8];
 static int g_nfreed, g_aux;
 static const void* g_first; static const void* g_last;
 extern "C" void __cdecl free(void* p) { if (g_nfreed < 8) g_freed[g_nfreed] = p; ++g_nfreed; }
-struct CThingBaseDef;
+class CThingBaseDef;
 class CDefPointeeBase;
 template <class T> class CDefPointer { public: CDefPointeeBase* Object; };
 typedef CDefPointer<const CThingBaseDef> CThingDefPointer;

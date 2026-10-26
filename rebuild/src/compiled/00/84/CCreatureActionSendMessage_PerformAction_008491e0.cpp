@@ -10,9 +10,9 @@
 // to left (receiver into ebx, sender into edi, the def word into ebp) before the manager is fetched through GetWorld().
 // Members: MessageDef at +0xa8 is a counted def pointer (the copy constructor 0x00982750 bumps the count at +4), Position at +0xac,
 // PReceiver at +0xb8 (an intelligent pointer), Extra at +0xc0. No engine header for this class; modelled locally (retail CCreatureActionBase is 0xa8 bytes).
-struct CMessageEventDef;
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class CMessageEventDef;
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
 };
@@ -32,15 +32,15 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void* AddMessage(CMessageEventDef* def, const C3DVector* position, CThing* sender, CThing* receiver, long extra);   // 0x00687730
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x60];
     CMessageEventManager* MessageEventManager;   // +0x60
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -48,7 +48,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     CWorld* GetWorld();                     // 0x00692940
 };
 
-struct CCreatureAction_SendMessage : CCreatureActionBase {
+class CCreatureAction_SendMessage : public CCreatureActionBase { public:
     CMessageEventDef* MessageDef;           // +0xa8 (raw word of a counted def pointer)
     C3DVector Position;                     // +0xac
     CBaseIntelligentPointer PReceiver;      // +0xb8 CIntelligentPointer<CThing>

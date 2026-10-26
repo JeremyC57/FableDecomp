@@ -3,9 +3,9 @@
 #include <cstdio>
 static long g_frame = 0;
 static int g_worldCalls = 0;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 static CWorld g_world;
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00() { }
     unsigned char _base[0x8];
     long          LastWorldFrameHit;

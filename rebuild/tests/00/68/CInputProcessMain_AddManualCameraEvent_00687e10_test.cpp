@@ -7,7 +7,7 @@
 #endif
 
 #pragma pack(push, 1)
-struct CGameEvent {
+class CGameEvent { public:
     int           Type;
     signed char   Player;
     unsigned char Data[32];

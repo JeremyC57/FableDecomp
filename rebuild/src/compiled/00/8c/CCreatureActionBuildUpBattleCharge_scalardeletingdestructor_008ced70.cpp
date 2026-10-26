@@ -1,4 +1,4 @@
-struct CCreatureAction_BuildUpBattleCharge {
+class CCreatureAction_BuildUpBattleCharge { public:
     void* vftable;
 };
 

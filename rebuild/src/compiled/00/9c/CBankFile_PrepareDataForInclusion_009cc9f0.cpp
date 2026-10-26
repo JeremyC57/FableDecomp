@@ -18,21 +18,21 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                     // 0x0099AED0
     ~CWideString();                                    // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CWideString ToWideString() const;                  // 0x0099E480
 };
-struct CASuspendableProcess;
+class CASuspendableProcess;
 namespace N_0099a300 { struct CBase {                                         // the polymorphic root (vptr at +0)
     CBase();                                           // 0x0099A2F0
     virtual ~CBase();                                  // 0x0099A300
 }; } using N_0099a300::CBase;
-struct CDiskFileWin32 : CBase {                        // vtable 0x0122D06C
+class CDiskFileWin32 : public CBase { public:                        // vtable 0x0122D06C
     long        AccessType;                            // +0x04
     long        Position;                              // +0x08
     long        Length;                                // +0x0c
@@ -78,7 +78,7 @@ struct CByteArray : _Vector_base<unsigned char> {      // CArray<unsigned char> 
 
 struct SCountInfo { long RefCount; void (__fastcall* Destroy)(void*); void* Object; };
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*          Data;
     SCountInfo* Info;
     ~CCountedPointer()

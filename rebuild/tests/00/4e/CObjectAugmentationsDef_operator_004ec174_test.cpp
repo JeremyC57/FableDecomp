@@ -5,7 +5,7 @@
 static int g_order[12];
 static int g_calls = 0;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x24];
     CDefClassBase& operator=(const CDefClassBase& other)
@@ -36,12 +36,12 @@ struct CRetailTree_004ec28c {
     { head = o.head; size = o.size; _alloc = o._alloc; g_order[g_calls++] = 4; return *this; }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& o) { m_pData = o.m_pData; g_order[g_calls++] = 5; return *this; }
 };
 
-struct CObjectAugmentationsDef : CDefClassBase {
+class CObjectAugmentationsDef : public CDefClassBase { public:
     long                 NumberOfSlots;
     long                 MaximumNumberOfSlots;
     CRetailTree_004ec3b1 AugmentationParticles;

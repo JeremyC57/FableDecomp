@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <math.h>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static float AngleDifference(float a, float b) { return b - a; }
 static float AngleBetweenPositions(const C3DVector& from, const C3DVector& to) { return (to.X - from.X) * 0.01f; }
 static float AngleYZBetweenPositions(const C3DVector& from, const C3DVector& to) { return (to.Z - from.Z) * 0.01f; }
@@ -10,8 +10,8 @@ static bool g_bQueryCreatureHeadPos = false;
 static float g_epsilon = 1e-4f;
 
 struct CPhysics { float FacingXY, FacingYZ; float GetFacingAngleXY() { return FacingXY; } float GetFacingAngleYZ() { return FacingYZ; } };
-struct CThing { CPhysics* PhysicsTC; };
-struct CThingCreatureBase {
+class CThing { public: CPhysics* PhysicsTC; };
+class CThingCreatureBase { public:
     unsigned char m_flags91;
     C3DVector Head;
     C3DVector GetHeadPos(bool) { return Head; }
@@ -24,7 +24,7 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
     }
     return false;
 }
-struct CTCLook {
+class CTCLook { public:
     CThing* ParentThing;
     CThingCreatureBase* PParentCreature;
     float RecoveryAngleToLookAtXY, RecoveryAngleToLookAtYZ;

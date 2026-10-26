@@ -9,13 +9,13 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct CWideString {
+class CWideString { public:
     void* m_data;
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
@@ -31,7 +31,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0xac];
     unsigned long BestScore;                    // +0xb4
     void ReleaseTemporary()
@@ -48,13 +48,13 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-struct CTCHeroStats {                           // retail layout (PDB - 0x18 here)
+class CTCHeroStats { public:                           // retail layout (PDB - 0x18 here)
     unsigned char _pad[0x18c];
     float BestScoreShoveHaPenny;                // +0x18c
     float BestTimeGuessTheAddition;             // +0x190
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
     void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0

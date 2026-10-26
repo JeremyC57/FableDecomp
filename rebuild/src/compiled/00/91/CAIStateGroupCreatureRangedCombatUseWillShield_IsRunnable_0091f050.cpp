@@ -10,9 +10,9 @@
 // GetInterface template routes it through eax); the creature is re-read from PBrain for every use; the
 // interface-0x93 test is the inline raw bitset probe (`test dword ptr [eax+30h],80000h ; jne false`).
 // Model: local (engine/CAIStateGroup_CreatureRangedCombatUseWillShield.h is a flattened base blob).
-struct CTCBase;
-struct CThingCreatureBase;
-struct CThingAICreature;
+class CTCBase;
+class CThingCreatureBase;
+class CThingAICreature;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -48,12 +48,12 @@ struct CTCTargeting {                           // interface 8
     virtual CThingCreatureBase* GetTarget();    // slot 29 (+0x74)
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

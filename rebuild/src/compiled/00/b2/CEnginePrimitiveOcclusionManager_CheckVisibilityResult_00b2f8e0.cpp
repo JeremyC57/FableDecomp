@@ -21,7 +21,7 @@ struct CHandleVector {
  unsigned long& operator[](unsigned long i){return *(begin()+i);}
  void Clear(){Last=(unsigned long*)CopyTrivial(Last,Last,First);}
 };
-struct CEnginePrimitiveOcclusionInfo {
+class CEnginePrimitiveOcclusionInfo { public:
  void* NativeVTable; unsigned long ReferenceCount;
  long InvisibleFrames; CHandleVector OcclusionTestHandles;
  bool Seen; unsigned long TestFrame;

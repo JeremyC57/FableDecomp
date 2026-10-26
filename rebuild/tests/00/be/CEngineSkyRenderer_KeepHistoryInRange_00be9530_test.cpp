@@ -1,8 +1,8 @@
 // Behaviour test for 0x00BE9530 CEngineSkyRenderer::KeepHistoryInRange: both history entries wrap by the range per axis.
 #include <cstdio>
 
-struct C2DVector { float X, Y; };
-struct CEngineSkyRenderer {
+class C2DVector { public: float X, Y; };
+class CEngineSkyRenderer { public:
     void KeepHistoryInRange(C2DVector* history, float range)
     {
         if (history[0].X > range) { history[0].X -= range; history[1].X -= range; }

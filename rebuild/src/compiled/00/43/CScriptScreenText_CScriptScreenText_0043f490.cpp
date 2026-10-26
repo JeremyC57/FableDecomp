@@ -11,19 +11,19 @@
 // would be one dword move); the channels sit in D3DCOLOR order in memory (B at +0xc, G, R, A at
 // +0xf), which is what gives the retail load/store permutation -- and the copy constructor is
 // spelled out so the symbol is emitted out of line.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);                  // 0x0099B720
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                  // 0x0099EC30
 };
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
-struct CRGBColour {                                         // the union's channel view: D3DCOLOR byte order
+class CRGBColour { public:                                         // the union's channel view: D3DCOLOR byte order
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }

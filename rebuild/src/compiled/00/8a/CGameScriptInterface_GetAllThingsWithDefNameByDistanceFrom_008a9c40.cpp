@@ -17,11 +17,11 @@
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -44,7 +44,7 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
     CCountedScriptImp PImp;                             // +0x04
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -78,10 +78,10 @@ struct CThingVector {                                   // STLport vector<CThing
     bool empty() const { return _M_start == _M_finish; }
     unsigned long size() const { return _M_finish - _M_start; }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
 struct CScriptThingVirtuals : CBaseClass {              // CScriptThing's virtual interface (slots 1-6)
     virtual bool IsDead() const;
     virtual const CCharString& GetName() const;
@@ -93,11 +93,11 @@ struct CScriptThingVirtuals : CBaseClass {              // CScriptThing's virtua
 struct CScriptThingFrom : CScriptThingVirtuals {
     CCountedScriptImp PImp;
 };
-struct CThingFilter_HasDefGlobalIndex {
+class CThingFilter_HasDefGlobalIndex { public:
     unsigned long DefGlobalIndex;
     CThingFilter_HasDefGlobalIndex(unsigned long index) : DefGlobalIndex(index) {}
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector Pos;
     CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) {}
 };
@@ -107,11 +107,11 @@ template <class It, class Cmp> void __fastcall sort(It first, It last, Cmp comp)
 struct CThing_Retail {
     CScriptThing GetScriptThing();                      // 0x004C7E50
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 CGameDefinitionManager* __fastcall GetGameDefinitionManager();   // 0x0044C6B0
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThings(const CThingFilter_HasDefGlobalIndex& filter, CThingVector& out);   // 0x008ADBA0
 };
 CThing_Retail** FindThings_GetAllThingsWithDefGlobalIndex(const CThingFilter_HasDefGlobalIndex* filter, CThing_Retail** capacity);
@@ -129,7 +129,7 @@ struct CWorld_Retail {
     unsigned char      _pad00[0x20];
     CThingSearchTools* ThingSearchTools;                // +0x20
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual long GetAllThingsWithDefNameByDistanceFrom(const CScriptThingFrom& from, const CCharString& defName, CScriptThingVector& things) const;
     CWorld_Retail*   World;                             // +0x04 (engine/CGameScriptInterface.h)
 };

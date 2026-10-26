@@ -7,21 +7,21 @@
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-struct C3DVector { float X,Y,Z; };
-struct C2DVector { float X,Y; C2DVector(const C3DVector& p):X(p.X),Y(p.Y){} };
+class C3DVector { public: float X,Y,Z; };
+class C2DVector { public: float X,Y; C2DVector(const C3DVector& p):X(p.X),Y(p.Y){} };
 struct CThingRetail { const C3DVector& GetPosition() const; }; // 0x004C73D0
 struct CIntelligentPointerRetail { CThingRetail* GetPItem() const; }; // 0x00A01B50 (opaque handle methods)
 struct CThingVector { CThingRetail** first; CThingRetail** last; CThingRetail** limit; unsigned char allocators[4]; };
-struct CThingFilter_CanBeUsedAsCover { CThingFilter_CanBeUsedAsCover() {} bool operator()(CThingRetail*) const; }; // 0x006A7AB0
-struct CThingFilter_IsOccupiableOccupied { CThingFilter_IsOccupiableOccupied() {} bool operator()(CThingRetail*) const; }; // 0x006A8A30
+class CThingFilter_CanBeUsedAsCover { public: CThingFilter_CanBeUsedAsCover() {} bool operator()(CThingRetail*) const; }; // 0x006A7AB0
+class CThingFilter_IsOccupiableOccupied { public: CThingFilter_IsOccupiableOccupied() {} bool operator()(CThingRetail*) const; }; // 0x006A8A30
 struct CNotOccupied { CThingFilter_IsOccupiableOccupied predicate; CNotOccupied() {} };
-struct CThingFilter_IsNot { CThingRetail* Thing; CThingFilter_IsNot(CThingRetail* t):Thing(t){} bool operator()(CThingRetail*) const; }; // 0x006A76A0
-struct CThingFilter_In2DRange { C3DVector Pos; float Range; CThingFilter_In2DRange(const C3DVector& p,float r):Pos(p),Range(r){} bool operator()(CThingRetail*) const; }; // 0x006A76B0
+class CThingFilter_IsNot { public: CThingRetail* Thing; CThingFilter_IsNot(CThingRetail* t):Thing(t){} bool operator()(CThingRetail*) const; }; // 0x006A76A0
+class CThingFilter_In2DRange { public: C3DVector Pos; float Range; CThingFilter_In2DRange(const C3DVector& p,float r):Pos(p),Range(r){} bool operator()(CThingRetail*) const; }; // 0x006A76B0
 struct CFilterBind4 {
  const CThingFilter_CanBeUsedAsCover* F1; const CNotOccupied* F2; const CThingFilter_IsNot* F3; const CThingFilter_In2DRange* F4;
  CFilterBind4(const CThingFilter_CanBeUsedAsCover& a,const CNotOccupied& b,const CThingFilter_IsNot& c,const CThingFilter_In2DRange& d):F1(&a),F2(&b),F3(&c),F4(&d){}
 };
-struct C2DBoxI { long minX,minY,maxX,maxY; };
+class C2DBoxI { public: long minX,minY,maxX,maxY; };
 struct C2DBox { float minX,minY,maxX,maxY;
  C2DBox(const C2DVector& p,float radius) { minX=p.X-radius; minY=p.Y-radius; maxX=p.X+radius; maxY=p.Y+radius; }
  C2DBoxI ToInteger() const; // 0x00A55A30, audited four float-to-long conversions

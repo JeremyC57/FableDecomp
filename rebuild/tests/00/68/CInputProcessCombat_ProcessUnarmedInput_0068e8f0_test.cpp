@@ -3,13 +3,13 @@
 
 static int g_strings, g_events, g_lastType;
 static unsigned char g_lastData[32]; static int g_lastLen;
-struct CInputEvent { int button; int action; float pressure; };
-struct CCharString {
+class CInputEvent { public: int button; int action; float pressure; };
+class CCharString { public:
     const char* p;
     CCharString(const char* text, long = -1) : p(text) { ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void Copy(unsigned long length, const void* data) { std::memcpy(Data + EndPos, data, length); EndPos = (unsigned char)(EndPos + length); }
@@ -17,14 +17,14 @@ struct CGameEvent {
     void AddFloat(float value) { Copy(sizeof(value), &value); }
     void AddBool(bool value) { Copy(1, &value); }
 };
-struct CProcessedInput {
+class CProcessedInput { public:
     void AddGameEvent(const CGameEvent& e) { ++g_events; g_lastType = e.Type; g_lastLen = e.EndPos; std::memcpy(g_lastData, e.Data, 32);
         if (e.Player != -1 || !e.Valid || e.Replacement) g_lastType = -99; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { return std::strcmp(name.p, "CREATURE_ABILITY") == 0 ? 0x1234 : -1; }
 };
-struct CInputProcessCombat {
+class CInputProcessCombat { public:
     CDefinitionManager* DefinitionManager;
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 0x13; }
     bool IsEventGameAction(long action, const CInputEvent& e) { return e.action == action; }

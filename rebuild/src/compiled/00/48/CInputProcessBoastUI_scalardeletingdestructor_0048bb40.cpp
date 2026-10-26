@@ -1,4 +1,4 @@
-struct CInputProcessBoastUI {
+class CInputProcessBoastUI { public:
     void* vftable;
 };
 

@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <new>
 
-struct CThing { int unused; };
+class CThing { public: int unused; };
 
 struct CTCBase_Calls {
     virtual ~CTCBase_Calls() {}
@@ -23,7 +23,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCAICreatureWillPowerIndicator : CTCBase_Calls {
+class CTCAICreatureWillPowerIndicator : public CTCBase_Calls { public:
     bool                PoweredUp;
     long                Timer;
     long                ResetCount;

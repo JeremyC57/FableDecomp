@@ -7,11 +7,11 @@
 // ObservedThingInBuilding +0xaa) with PObservedThing +0x100.
 // Shape: the twin of UpdateObservedThingInMelee: early return unless interruptable or pending, then the alive tests of the thing and
 // of its building in one `&&` chain; ObservedThingInBuilding read in each arm.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_statusFlags;            // +0x91 (bit 0: dead)
 };
-struct CThingBuilding : CThing { };
+class CThingBuilding : public CThing { public: };
 CThingBuilding* __fastcall GetPBuildingThingOccupying(CThing* thing);   // 0x006989D0
 
 struct CBaseIntelligentPointer {
@@ -20,14 +20,14 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-namespace NCameraModes { struct CBase; }
+namespace NCameraModes { class CBase; }
 struct SCountBlock {
     long m_references;                      // +0
     void (__fastcall* m_pfnDestroy)(void*); // +4
     void* m_pObject;                        // +8
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -45,7 +45,7 @@ struct CCountedPointer {
     }
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*         __vftable;                                // +0x00
     unsigned char _pad04[0x94];                             // +0x04
     CCountedPointer<NCameraModes::CBase> CurrentMode;       // +0x98

@@ -6,11 +6,11 @@ typedef unsigned long long u64;
 typedef unsigned __int64 u64;
 #endif
 
-struct CPersistContext { int id; };
-struct CStringParser { int id; };
-struct CCharString { int id; };
+class CPersistContext { public: int id; };
+class CStringParser { public: int id; };
+class CCharString { public: int id; };
 class C2DVector { public: float X; float Y; };
-struct CActionInputControl {
+class CActionInputControl { public:
     long      GameAction;
     long      ControllerType;
     long      KeyboardKey;

@@ -1,6 +1,6 @@
 // Behaviour test for 0x006A8B40 CThingFilter_HasFreeActionPoint::operator()
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -34,7 +34,7 @@ struct CTCUserActionPointBase {
     bool m_free;
     bool IsActionPointFree() { return m_free; }
 };
-struct CThingFilter_HasFreeActionPoint {
+class CThingFilter_HasFreeActionPoint { public:
     bool operator()(CThing* thing) const
     {
         CTCUserActionPointBase* actionPoint;

@@ -4,12 +4,12 @@
 // sit 0x30 above retail at the tail), so the class is modelled locally like the landed 0x00833BA0.
 // Shape: the creature def pointer at +0xe0, its interaction-type mask at def +0xec tested against the argument
 // (`test [eax+0ECh],edx`); one `&&` expression gives the full-register 0/1 bool.
-struct CCreatureDef {
+class CCreatureDef { public:
     unsigned char _pad00[0xec];
     unsigned long m_interactionTypes;                // +0xec
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad00[0xe0];
     CCreatureDef* m_pCreatureDef;                    // +0xe0
     unsigned char _pade4[0x12c - 0xe4];

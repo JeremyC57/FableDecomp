@@ -14,14 +14,14 @@
 //   idiom: the name chain is built before the value/default pushes), each element goes through `*(begin() + i)` so the
 //   array start is read first, and the loop is `if (i < count) { two zero defaults; do ... while (++i < count); }`
 //   (the six zero stores sit once inside the guard). The size is `count > size ? count : size` (retail `cmp ; jg`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -30,13 +30,13 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);             // 0x004045C0
     void Transfer(const char* name, long& value, const long& defaultValue);             // 0x00410BE0
     void Transfer(const char* name, C3DVector& value, const C3DVector& defaultValue);   // 0x004859AD
 };
 
-template <class T> struct CArray {              // STLport vector<T> (12 bytes in retail)
+template <class T> class CArray { public:              // STLport vector<T> (12 bytes in retail)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -64,7 +64,7 @@ template <class T> struct CArray {              // STLport vector<T> (12 bytes i
     __forceinline void clear() { erase(begin(), end()); }
 };
 
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;    // +0x00
     float             Tension;          // +0x0C
     bool              EndPointsConnected; // +0x10
@@ -77,8 +77,8 @@ __forceinline void SaveValue(CPersistContext& context, const char* name, T& valu
 }
 
 namespace NParticleEngine {
-struct CPSCSplineBase {
-    struct CSplineRandomOffsetData {
+class CPSCSplineBase { public:
+    class CSplineRandomOffsetData { public:
         CCardinalSpline*  InitialSpline;          // +0x00
         CCardinalSpline   ThisSpline;             // +0x04
         CCardinalSpline   PreviousSpline;         // +0x18

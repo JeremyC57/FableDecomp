@@ -3,7 +3,7 @@
 static const char* g_strings[] = { "alpha", "beta" };
 struct CDefStringTable { const char* GetStringAsCharArray(long id) { return g_strings[id]; } };
 CDefStringTable g_DefStringTable;
-struct CDefString { long TablePos; bool operator==(const char* text) const { return strcmp(g_DefStringTable.GetStringAsCharArray(TablePos), text) == 0; } };
+class CDefString { public: long TablePos; bool operator==(const char* text) const { return strcmp(g_DefStringTable.GetStringAsCharArray(TablePos), text) == 0; } };
 int main()
 {
     CDefString a; a.TablePos = 1;

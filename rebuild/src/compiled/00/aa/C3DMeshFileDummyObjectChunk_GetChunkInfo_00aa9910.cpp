@@ -3,7 +3,7 @@
 #if !defined(_MSC_VER)
 #define __fastcall
 #endif
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();
     CCharString(const char* text, long length); // 0x0099EBF0
@@ -14,8 +14,8 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 CCharString __fastcall operator+(const CCharString& left, const char* right); // 0x0099F600
 // Local virtual shell matches shared CChunkedFileChunk storage while declaring its virtual slots;
 // donor 16-byte superchunk vectors conflict with the 12-byte retail vectors used here.
-struct CDataInputStream; struct CDataOutputStream; struct CChunkedFileLoader; struct CChunkedFileSaver;
-struct CChunkedFileChunk {
+class CDataInputStream; class CDataOutputStream; class CChunkedFileLoader; class CChunkedFileSaver;
+class CChunkedFileChunk { public:
     virtual void v00(); virtual void v01(); virtual CCharString GetChunkInfo() const;
     virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&);
@@ -24,18 +24,18 @@ struct CChunkedFileChunk {
     virtual CChunkedFileChunk* InitNewInstance(CChunkedFileChunk*);
     char ChunkType[5]; unsigned char _pad[3]; void* Parent;
 };
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     struct CArrayPair { void* begin; void* end; void* capacity; };
     CArrayPair SubChunks; CArrayPair RegisteredSubChunkTypes; unsigned long CurrentChunkIndex;
 };
 struct C3DMeshFileChunk : CChunkedFileSuperChunk {};
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { float row[3][4]; };
-struct C3DMeshFileHelperPointChunk : C3DMeshFileChunk {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: float row[3][4]; };
+class C3DMeshFileHelperPointChunk : public C3DMeshFileChunk { public:
     C3DVector Position; long SubMeshIndex; long BoneIndex; CCharString Name;
     CCharString GetChunkInfo() const; // 0x00AA96B0
 };
-struct C3DMeshFileDummyObjectChunk : C3DMeshFileHelperPointChunk {
+class C3DMeshFileDummyObjectChunk : public C3DMeshFileHelperPointChunk { public:
     C3DVector Direction; CMatrix3x4 Transform; bool UseLocalOrigin;
     CCharString GetChunkInfo() const;
 };

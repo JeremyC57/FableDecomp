@@ -40,7 +40,7 @@ template <class T> __declspec(noinline) bool CBasicString<T>::operator<(const CB
 }
 #pragma auto_inline(on)
 
-struct CCharStringData {
+class CCharStringData { public:
     CBasicString<char> Data;
 };
 

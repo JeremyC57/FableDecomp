@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_kills; static bool g_inRange; static const C3DVector* g_rangePos; static float g_range; static bool g_silent;
-struct CThing { unsigned char _pad[0x91]; unsigned char m_flags91; C3DVector m_pos;
+class CThing { public: unsigned char _pad[0x91]; unsigned char m_flags91; C3DVector m_pos;
     const C3DVector& GetPosition_006a4d00() const { return m_pos; }
     bool IsInRange(const C3DVector& position, float range) { g_rangePos = &position; g_range = range; return g_inRange; }
     void Kill(bool silent) { ++g_kills; g_silent = silent; } };

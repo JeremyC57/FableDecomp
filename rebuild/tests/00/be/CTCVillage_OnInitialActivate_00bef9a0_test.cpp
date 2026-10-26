@@ -12,7 +12,7 @@ void __fastcall Callee(CObj* obj, void* edxarg, unsigned char v)
     g_obj = obj; g_edx = edxarg; g_v = v; g_calls++;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     CObj*  f0;
     void*  ParentThing;
     int    pad8;

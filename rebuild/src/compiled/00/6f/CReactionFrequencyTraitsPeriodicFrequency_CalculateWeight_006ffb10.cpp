@@ -11,9 +11,9 @@
 // (`f = t * t; f *= t;`, a single expression is reassociated onto the member multiply), the second clamp's argument an unnamed temporary.
 #include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"
 
-struct CThingAICreature;
+class CThingAICreature;
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                         // 0x0049D870
 };
 

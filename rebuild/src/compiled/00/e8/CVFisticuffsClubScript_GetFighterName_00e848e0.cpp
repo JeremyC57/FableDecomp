@@ -8,7 +8,7 @@
 // Layout: RelevantRegion at retail +0x48 (Ego_r.pdb - 0x14).
 // Shape: an unused "An error" local from an inline by-value helper (VC7.1 has no NRVO: build, copy, destroy) heads the body; the cases in source
 // order 1, 4, 2, 3 share one result-construction tail.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);         // 0x0099EC30

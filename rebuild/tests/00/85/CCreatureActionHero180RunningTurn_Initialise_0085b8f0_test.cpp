@@ -7,14 +7,14 @@
 
 static char g_anim[64]; static int g_baseInit = 0;
 static float g_rotAngle = 0; static float g_rotAxisZ = 0;
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} };
-struct C3DVector {
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     void Rotate(const C3DVector& axis, float angle) { g_rotAxisZ = axis.Z; g_rotAngle = angle; X = X + angle; }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet(const C3DVector& f) : Up(0.0f, 0.0f, 1.0f), Forward(f) {}
 };
@@ -24,15 +24,15 @@ struct CPhysicsBody {
     C3DVector GetFacing() const { return Facing; }
     void SetOrientation(const CRightHandedSet& s) { g_setUp = s.Up; g_setFwd = s.Forward; ++g_sets; }
 };
-struct CThing { CPhysicsBody* PhysicsBody; CPhysicsBody* GetPhysics() const { return PhysicsBody; } };
-struct CAnimationEntry { float Rot; void GetRotationInAnimation(float* r) const { *r = Rot; } };
+class CThing { public: CPhysicsBody* PhysicsBody; CPhysicsBody* GetPhysics() const { return PhysicsBody; } };
+class CAnimationEntry { public: float Rot; void GetRotationInAnimation(float* r) const { *r = Rot; } };
 struct CPtr { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CPtr PCreature; CAnimationEntry* PAnimEntry;
     void SetAnimationName(const CCharString& n) { std::strcpy(g_anim, n.s); }
     void Initialise() { ++g_baseInit; }
 };
-struct CCreatureActionHero180RunningTurn : CCombatActionBase { C3DVector RequiredFacing; void Initialise(); };
+class CCreatureActionHero180RunningTurn : public CCombatActionBase { public: C3DVector RequiredFacing; void Initialise(); };
 
 void CCreatureActionHero180RunningTurn::Initialise()
 {

@@ -9,7 +9,7 @@
 // form copies the record through edx/ax (as 0x0083BA20 does); `optimize("s")` gives the movs block.
 #pragma optimize("s", on)
 #pragma pack(push, 2)
-struct CEngineGraphic {                             // 14 bytes (PDB size 14)
+class CEngineGraphic { public:                             // 14 bytes (PDB size 14)
     unsigned long BankIndex;                        // +0x00
     float         AnimStep;                         // +0x04
     float         RenderSizeX;                      // +0x08

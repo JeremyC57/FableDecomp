@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
 static int g_deleted = 0;
-struct CCPPointerInfo {                                 // the shared count block
+class CCPPointerInfo { public:                                 // the shared count block
     long  RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -73,7 +73,7 @@ public:
     T* operator->() const { return Data; }
 };
 
-struct C3DGroup2 { int id; };
+class C3DGroup2 { public: int id; };
 typedef CCountedPointer<C3DGroup2> TGroupPtr;
 
 // the row: std::fill over CCountedPointer<C3DGroup2> elements (assignment releases each old group)

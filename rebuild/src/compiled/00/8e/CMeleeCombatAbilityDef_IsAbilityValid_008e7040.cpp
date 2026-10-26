@@ -16,7 +16,7 @@
 #pragma optimize("t", on)
 #pragma optimize("y", on)
 void StandInSink(void* p, unsigned long n);
-struct CTCBase;
+class CTCBase;
 struct CTCEntry { long Type; CTCBase* TC; };
 struct CTCMap {
     CTCEntry* _M_start;
@@ -28,7 +28,7 @@ struct CTCBitset {
     unsigned long _M_w[9];
     __forceinline bool test(long bit) const { return (_M_w[bit >> 5] & (1UL << (bit & 31))) != 0; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CTCBitset     UsingComponents;                       // +0x20
     CTCMap        Components;                            // +0x44
@@ -72,8 +72,8 @@ CTCEntry* CTCMap::LowerBound(const unsigned long& type) const
     return it;
 }
 #pragma auto_inline(on)
-struct CCharStringData { char* PData; unsigned long StringLength; };
-struct CCharString {
+class CCharStringData { public: char* PData; unsigned long StringLength; };
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                      // 0x0099EAE0
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
@@ -83,18 +83,18 @@ namespace N_00415dd0 { struct CDefString {
     operator CCharString();                              // 0x00415D70
     operator CCharString() const;                        // 0x00415DD0
 }; } using N_00415dd0::CDefString;
-struct CAnimFilterBase {                                 // vtable 0x0122FFCC
+class CAnimFilterBase { public:                                 // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() { }
     virtual void v01();
 };
 struct CAnimFilterNoGroup : CAnimFilterBase {            // vtable 0x0122FFDC
     virtual void v01();
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x005DC2E0
 };
-struct CCombatManager;
-struct CThingCreatureBase : CThing {
+class CCombatManager;
+class CThingCreatureBase : public CThing { public:
     CCombatManager* GetCombatManager() const;            // 0x00661EC0
     const CAnimationSet& GetCombatAnimationSet() const;  // 0x00663260
 };
@@ -121,24 +121,24 @@ struct CCombatantInfo {
     unsigned char _pad00[0x34];
     CAttackerMap  Attackers;                             // +0x34
 };
-struct CCombatManager {
+class CCombatManager { public:
     CCombatantInfo* GetCombatantInfo(const CThingCreatureBase* thing);   // 0x006E9360
 };
-struct CTCHeroStats { long GetComboMultiplier() const; };   // 0x006D6570
-struct CTCCarrying { CThing* GetThingInPrimarySlot() const; };   // 0x006A1440
-struct CTCCombat {
+class CTCHeroStats { public: long GetComboMultiplier() const; };   // 0x006D6570
+class CTCCarrying { public: CThing* GetThingInPrimarySlot() const; };   // 0x006A1440
+class CTCCombat { public:
     bool IsInMelee() const;                              // 0x00733190
     bool CanFlourish() const;                            // 0x00733180
 };
-struct CTCWeapon { long GetWeaponClass() const; };       // 0x005DA7F0
-struct CHeroAbilityStatPackage {
+class CTCWeapon { public: long GetWeaponClass() const; };       // 0x005DA7F0
+class CHeroAbilityStatPackage { public:
     unsigned char _body[0xc];
     bool IsMetBy(const CTCHeroStats* stats) const;       // 0x00851B50
 };
 struct CIteratorTag { CIteratorTag() { } };
 __declspec(noinline) long* __fastcall find(long* first, long* last, const long& value, const CIteratorTag&) { StandInSink((void*)first, (unsigned long)value); return last; }   // 0x008E6FB0
 
-struct CMeleeCombatAbilityDef {
+class CMeleeCombatAbilityDef { public:
     unsigned char           _pad00[0x40];
     CDefString              FlourishAnimName;            // +0x40
     CDefString              FlourishResponseAnimName;    // +0x44

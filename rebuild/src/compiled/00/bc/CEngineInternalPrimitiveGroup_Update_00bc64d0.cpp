@@ -1,7 +1,7 @@
 // CEngineInternalPrimitiveGroup::Update  @ 00bc64d0
 // void __fastcall Update(CEngineInternalPrimitiveGroup*, CEnginePrimitive const&, unsigned long)
 
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     int pad0;   // +0x0
     int pad4;   // +0x4
     int pad8;   // +0x8

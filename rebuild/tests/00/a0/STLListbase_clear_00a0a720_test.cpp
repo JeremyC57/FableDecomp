@@ -11,7 +11,7 @@
 // Model of _List_base<CMeshBankManager::CMeshDataBankInfo>::clear() @ 0x00A0A720: destroy and free every node
 // (counted mesh bank, then the bank handle string), then relink the sentinel to itself.
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

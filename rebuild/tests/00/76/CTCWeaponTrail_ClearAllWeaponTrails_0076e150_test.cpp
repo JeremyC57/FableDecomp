@@ -22,15 +22,15 @@ static int fails = 0;
 //        list-vector loop re-read end() each pass.
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
-struct CEnginePrimitiveHandle;
-struct CEnginePrimitive {
+class CEnginePrimitiveHandle;
+class CEnginePrimitive { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     virtual void v02();
     virtual void OnLastHandleReleased(CEnginePrimitiveHandle* handle);   // slot 3 (+0xc)
     long RefCount;                              // +0x04
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     virtual ~CEnginePrimitiveHandle();
     CEnginePrimitive* P;                        // +0x04
     unsigned long GetReferenceCount() const { return P ? P->RefCount : 0; }
@@ -82,7 +82,7 @@ template<class T> struct CRetailVector {        // STLport vector (12 bytes)
     T* _M_end_of_storage;
 };
 
-struct CTCWeaponTrail {
+class CTCWeaponTrail { public:
     virtual void v00();
     void*         ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[4];

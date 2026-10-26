@@ -13,8 +13,8 @@
 // Layout: engine/CAIStateGroup_WhisperRetreat.h over the landed CAIStateGroupBase model; the retail target pointer sits at
 //          +0x14 (the PDB header's `_pad_0x14/_0x18`; PArenaCentre +0x1c is unused here).
 #include <math.h>
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -23,9 +23,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -64,21 +64,21 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCBoss {                                // interface 173
+class CTCBoss { public:                                // interface 173
     long GetBossPhase();                        // 0x007AED10
     bool IsReadyForPhaseChange();               // 0x007AEE90
     void SetNextBossPhase(long phase, bool immediate);   // 0x007AEDA0
 };
-struct CTCStealth {                             // interface 54
+class CTCStealth { public:                             // interface 54
     void SetAsInDanger(CThing* source, long status);     // 0x00747B80
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

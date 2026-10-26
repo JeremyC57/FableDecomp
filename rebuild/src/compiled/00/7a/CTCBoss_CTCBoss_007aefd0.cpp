@@ -12,7 +12,7 @@
 // C3DVector is declared packed), HelperCreatures +0x30, Effects +0x3C; retail CThing: bitset +0x20, map +0x44, base def +0x70,
 // Dead +0x91.
 #pragma pack(push, 1)
-struct C3DVector {                              // packed: CTCBoss keeps one at the unaligned +0x22
+class C3DVector { public:                              // packed: CTCBoss keeps one at the unaligned +0x22
     float X, Y, Z;
 };
 #pragma pack(pop)
@@ -23,7 +23,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020 (the FrameUpdate copy is 0x004365B0)
 };
-struct CDefClassBase;
+class CDefClassBase;
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -69,22 +69,22 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes): _V
     unsigned int size() const { return _M_finish - _M_start; }
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
-struct CBossDef;
-struct CPlayer {
+class CBossDef;
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0 (CPlayer::GetHeroThing)
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) {}
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CBossDef>* out) const;    // 0x007AFA90 (catalog: a byte-twin instantiation)
 };
 
-struct CTCEntityEvents;
+class CTCEntityEvents;
 class CTCBase {
 public:
     CTCBase(CThing* owner);                     // 0x00686800

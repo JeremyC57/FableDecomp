@@ -3,18 +3,18 @@
 #include <cstring>
 #include <cmath>
 // Text-builder model: a fixed-buffer CCharString with operator+= and the scalar traits' TransferOut formatting.
-struct CCharString {
+class CCharString { public:
     char Text[256];
     CCharString() { Text[0] = 0; }
     CCharString(const char* s) { std::strcpy(Text, s); }
     CCharString& operator+=(const char* s) { std::strcat(Text, s); return *this; }
     bool Equals(const char* s) const { return std::strcmp(Text, s) == 0; }
 };
-struct CPersistContext { int Unused; };
+class CPersistContext { public: int Unused; };
 static void TransferOutLong(CPersistContext*, CCharString* out, const int* value) { char b[32]; std::sprintf(b, "%d", *value); *out += b; }
 static void TransferOutFloat(CPersistContext*, CCharString* out, const float* value) { char b[32]; std::sprintf(b, "%g", (double)*value); *out += b; }
 static void TransferOutString(CPersistContext*, CCharString* out, const CCharString* value) { *out += "\""; *out += value->Text; *out += "\""; }
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CUIMiniMapMarker { int Region; CCharString UIDefName; C2DVector Position; int DefNameLength; int GraphicIndex; float Angle; };
 static void TransferOut(CPersistContext* context, CCharString* out, const CUIMiniMapMarker* value)
 {

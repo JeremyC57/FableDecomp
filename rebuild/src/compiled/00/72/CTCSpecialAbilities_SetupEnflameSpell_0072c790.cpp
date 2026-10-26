@@ -11,7 +11,7 @@
 #include <stddef.h>
 void* operator new(size_t size);                       // 0x00BFEA1A
 class CThing;
-struct CPlayer { unsigned char _pad[0x20a]; bool LockFlag; };
+class CPlayer { public: unsigned char _pad[0x20a]; bool LockFlag; };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
@@ -24,7 +24,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) { SetPItem(item); }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last; SEntry* end;
@@ -42,8 +42,8 @@ public:
     unsigned char Dead : 1;                             // +0x91 bit 0
     CPlayer* GetPlayer();                               // 0x004C7A10
 };
-struct CTCInventory { CThing* GetThingInPrimarySlot(); };   // 0x006A1440
-struct CTCCombat {
+class CTCInventory { public: CThing* GetThingInPrimarySlot(); };   // 0x006A1440
+class CTCCombat { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -79,27 +79,27 @@ struct CTCCombat {
     virtual void v32();
     virtual CThing* GetCurrentTarget();                // slot 33 (+0x84)
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual ~CCombatActionBase();
     unsigned char _pad04[0x28];
 };
-struct CCreatureAction_CastWillEnflameSpell : CCombatActionBase {
+class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public:
     CIntelligentPointerThing Weapon;                    // +0x2c
     unsigned char _pad34[0x11c - 0x34];
     CCreatureAction_CastWillEnflameSpell(CThing* creature, CThing* target, bool lock, long flags);   // 0x008BB500
     ~CCreatureAction_CastWillEnflameSpell();            // 0x0062E900
 };
-struct CCharString { void* m_data; };
+class CCharString { public: void* m_data; };
 extern const CCharString g_StrikeResponseName;         // 0x013BAD30
-struct CCombatAction_GenericStrikeResponse {
+class CCombatAction_GenericStrikeResponse { public:
     unsigned char _pad[0x110];
     CCombatAction_GenericStrikeResponse(CThing* creature, const CCharString& name, CCombatActionBase* action, long flags);   // 0x0069F060
     ~CCombatAction_GenericStrikeResponse();             // 0x0072D390
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     void* __vftable;
     unsigned char _pad04[0x14];
     CThingCreatureBase* Creature;                       // +0x18

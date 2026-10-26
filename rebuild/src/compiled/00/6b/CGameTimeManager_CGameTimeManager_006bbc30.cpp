@@ -12,18 +12,18 @@
 //   VillageTime = Time (integer copy).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 void* __cdecl operator new(unsigned int size);        // 0x00BFEA1A
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     CCharString(const CCharString& other);            // 0x0099EC30
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CConsoleInputBase {                            // vtable 0x0122E5B0
+class CConsoleInputBase { public:                            // vtable 0x0122E5B0
     virtual ~CConsoleInputBase();
     CCharString Name;                                 // +0x04
     CConsoleInputBase(const CCharString& name) : Name(name) { }
 };
-struct CConsoleCommandParameters {                    // 12-byte vector of parameter types
+class CConsoleCommandParameters { public:                    // 12-byte vector of parameter types
     long* first; long* last; long* end_of_storage;
     CConsoleCommandParameters(long type);             // 0x009EBB30
 };
@@ -42,7 +42,7 @@ template<class T> struct CConsoleCommand : CConsoleCommandBase {   // vtable 0x0
         : CConsoleCommandBase(name, type), Object(&object), Callback(callback) { }
     virtual ~CConsoleCommand();
 };
-struct CConsole {                                     // vtable 0x0129C600, 0x9c bytes
+class CConsole { public:                                     // vtable 0x0129C600, 0x9c bytes
     unsigned char _pad[0x9c];
     CConsole();                                       // 0x009ECD80
     void AddInput(CConsoleInputBase* input);          // 0x009EC5E0
@@ -80,20 +80,20 @@ struct CLongSet {                                     // STLport set<long> (12 b
         _M_header->Right = _M_header;
     }
 };
-struct CEnvironmentDef {
+class CEnvironmentDef { public:
     unsigned char _pad[0xb4];
     float StartTime;                                  // +0xb4 (hours)
     float DaySpeed;                                   // +0xb8
 };
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char _pad[0xd8];
     const CEnvironmentDef* Def;                       // +0xd8
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x10];
     CEnvironment* Environment;                        // +0x10
 };
-struct CMainGameComponent;
+class CMainGameComponent;
 class CGameTimeManager {
 public:
     CWorld*             World;                        // +0x00

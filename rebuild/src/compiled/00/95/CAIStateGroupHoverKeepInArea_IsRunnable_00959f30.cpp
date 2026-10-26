@@ -10,18 +10,18 @@
 // `xor al,al`: bool. The engine header flattens PBrain into a pad, so the base layout is modelled locally.
 #include <math.h>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     C3DVector* GetPosition();                   // 0x004C73D0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

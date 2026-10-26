@@ -36,15 +36,15 @@ static int g_ok = 1;
 // SplinePosParamData call goes through the counted pointer's inline `operator->`: a plain pointer member
 // loads the position argument into ecx and pushes it at once (retail: edx, pushed after the ecx load) and
 // shifts the later sete/spill registers (al -> dl, ecx -> eax). `ret 4`.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 float GetParticleFrameTime_00aeaa00();      // 0x00AEAA00
 
 namespace NParticleEngine {
 
 template <class A, class B> class CParticleUpdateParameters;
-struct CParticleSystem;
+class CParticleSystem;
 
-struct CPSCBase {
+class CPSCBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -59,8 +59,8 @@ struct CPSCBase {
     bool             Initialised : 1;       // +0x08 bit 1
 };
 
-struct CPSCSplineBase : CPSCBase {
-    struct CSplinePosParamData {
+class CPSCSplineBase : public CPSCBase { public:
+    class CSplinePosParamData { public:
         float GetScaleFactor(const CParticleUpdateParameters<unsigned long, unsigned long>& params, float pos);   // 0x00B216F0
     };
     float      SplineAnimSpeedBase;         // +0x0c
@@ -80,7 +80,7 @@ struct CPSCSplineBase : CPSCBase {
     virtual void StartUpdate(const CParticleUpdateParameters<unsigned long, unsigned long>& params);   // 0x00B215E0
 };
 
-struct CPSCSpline : CPSCSplineBase {        // vtable 0x012A0934
+class CPSCSpline : public CPSCSplineBase { public:        // vtable 0x012A0934
     float SplineCurrentPosition;            // +0x34
     bool  ReverseSpline;                    // +0x38
     bool  SplineBounce;                     // +0x39

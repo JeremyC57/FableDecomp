@@ -11,13 +11,13 @@
 // Pragma: #pragma optimize("s", on) -- a size TU: every member address goes through eax.
 // Shape: one transfer per member in declaration order, except that HeavyWeapons is transferred straight after
 //   DefaultCombatAbilities, ahead of ProjectileWeaponFirstPersonModeMaxFOVValues (retail order 0x11c, 0x13c, 0x128).
-struct CFloatRange { float Min; float Max; };
-struct CHeroAbilityStatWeight { float Weights[3]; };
-struct CHeroAbilityStatPackage { unsigned char _body[0x10]; };
+class CFloatRange { public: float Min; float Max; };
+class CHeroAbilityStatWeight { public: float Weights[3]; };
+class CHeroAbilityStatPackage { public: unsigned char _body[0x10]; };
 struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; };
 struct CFloatVector { float* _M_start; float* _M_finish; float* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(CFloatRange& value);                  // 0x00458F2B
     void Transfer(CHeroAbilityStatWeight& value);       // 0x00466813
     void Transfer(float& value);                        // 0x00431061
@@ -28,12 +28,12 @@ struct CPersistContext {
     void Transfer(CFloatVector& value);                 // 0x00464CBF
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x3c - 4];
 };
 
-struct CHeroCombatDef : CDefClassBase {
+class CHeroCombatDef : public CDefClassBase { public:
     CFloatRange RangedAccuracySecondsForMaximumWithSkill;              // +0x3c
     CFloatRange RangedAccuracyPercentFractionWithBuildup;              // +0x44
     CFloatRange RangedAccuracyPercentWithStats;                        // +0x4c

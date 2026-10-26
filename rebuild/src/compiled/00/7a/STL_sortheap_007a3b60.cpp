@@ -15,12 +15,12 @@
 // Label correction: catalogued as `_Sort_heap<long*>`; the body is STLport sort_heap<CThing**, CThingCompare_NearestToPos>.
 class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-struct CThingCompare_NearestToPos {                      // 12 bytes, passed by value
+class CThingCompare_NearestToPos { public:                      // 12 bytes, passed by value
     C3DVector Pos;                                       // +0x00
     bool operator()(CThing* a, CThing* b) const;         // 0x007A2F90
 };

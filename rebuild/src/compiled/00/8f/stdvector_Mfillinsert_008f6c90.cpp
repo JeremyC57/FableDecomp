@@ -19,7 +19,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E (allocator, not emitted here)
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CHeightMapCell {                                     // 12 bytes
+class CHeightMapCell { public:                                     // 12 bytes
     float         Height;                                   // +0x0
     unsigned char EngineThemePaletteIndex[3];               // +0x4
     unsigned char EngineBlend[2];                           // +0x7

@@ -17,9 +17,9 @@
 // call Error`). The implicit const char* -> CCharString conversions use the (text, -1) constructor.
 #include "engine/CStringParser.h"
 
-struct CPersistContext;
+class CPersistContext;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     CCharString(const char* text, long length = -1);             // 0x0099EBF0
     ~CCharString();                                              // 0x0099EAE0
@@ -38,7 +38,7 @@ struct CStringParserReader : CStringParser {
     CCharString ReadAsStringUntilString(const CCharString& end); // 0x009BA330
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
 };
 

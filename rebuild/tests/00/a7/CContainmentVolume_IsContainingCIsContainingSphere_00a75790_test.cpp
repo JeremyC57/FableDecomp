@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CContainmentVolume { void* __vftable; void* ContainmentPlanes; unsigned long Size; void* MemoryPool; };
-struct C3DVector { float X; float Y; float Z; };
-struct CPlane {
+class CContainmentVolume { public: void* __vftable; void* ContainmentPlanes; unsigned long Size; void* MemoryPool; };
+class C3DVector { public: float X; float Y; float Z; };
+class CPlane { public:
     C3DVector Normal;
     float     Distance;
     __forceinline float GetSignedDistance(const C3DVector& point) const
@@ -9,7 +9,7 @@ struct CPlane {
         return point.Z * Normal.Z + point.Y * Normal.Y + point.X * Normal.X - Distance;
     }
 };
-struct CIsContainingSphere {
+class CIsContainingSphere { public:
     C3DVector Point;
     float     Radius;
     __forceinline bool operator()(const CPlane& plane) const { return plane.GetSignedDistance(Point) > -Radius; }

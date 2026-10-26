@@ -1,6 +1,6 @@
 #include <cstdio>
 // CMouseDX::PeekScreenPos model: exclusive mode returns Pos, otherwise Pos + the client rectangle's screen origin.
-struct C2DVector { float x, y; C2DVector(float ax, float ay) : x(ax), y(ay) { } };
+class C2DVector { public: float x, y; C2DVector(float ax, float ay) : x(ax), y(ay) { } };
 struct POINT { long x; long y; };
 struct RECT { long left; long top; long right; long bottom; };
 static void ClientToScreen(POINT* p) { p->x += 100; p->y += 50; }

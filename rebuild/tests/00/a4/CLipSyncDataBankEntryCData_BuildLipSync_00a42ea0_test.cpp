@@ -22,7 +22,7 @@ static int fails = 0;
 //   pointer is cleared with the inline counted-pointer release (count block re-read, destroy + delete at zero) and both
 //   words zeroed; each Sizeof term is `p ? p->Sizeof() + 8 : 8` (VC folds the +8 into both arms) and the size is
 //   `a + b + 0x34` (`lea edi,[eax+edi+34h]`); the stream is a function-scope local destroyed at the end.
-struct CLipSyncSampleData;
+class CLipSyncSampleData;
 class CMemoryDataInputStream {
 public:
     CMemoryDataInputStream(const void* data, long size);   // 0x00994930
@@ -31,7 +31,7 @@ private:
     void* m_vtable;
     long m_words[6];                                       // sizeof 0x1c
 };
-struct CLipSyncSampleData {                                // 0x10 bytes
+class CLipSyncSampleData { public:                                // 0x10 bytes
     void* m_pFirst;
     void* m_pLast;
     void* m_pEnd;
@@ -40,7 +40,7 @@ struct CLipSyncSampleData {                                // 0x10 bytes
     void ReadFromFile(CMemoryDataInputStream* stream);     // 0x00A495F0
     unsigned long Sizeof() const;                          // 0x00A43960
 };
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     unsigned char _pad00[0x10];
     long m_size;                                           // +0x10
     long GetSize() const { return m_size; }
@@ -54,7 +54,7 @@ struct SCountBlock {
     void (__fastcall* destroy)(void*);
     void* object;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* object;
     SCountBlock* count;
     void Reset(T* value);                                  // 0x00A44170 (sample data instantiation)
@@ -72,22 +72,22 @@ template<class T> struct CCountedPointer {
         object = 0;
     }
 };
-struct CResourceList {
+class CResourceList { public:
     bool MakeFreeSpace(unsigned long size);                // 0x009FC4F0
-    void AddResource(struct CResource* resource);          // 0x009FBFE0
+    void AddResource(class CResource* resource);          // 0x009FBFE0
 };
-struct CLipSyncDataBank {
+class CLipSyncDataBank { public:
     unsigned char _pad00[0x170];
     struct SResourceOwner { long _pad; CResourceList List; }* m_pResources;   // +0x170 (list object at +4)
 };
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];                             // +0x04..+0x1c
     void SetResourceSize(unsigned long size);              // 0x009FBF20
     void AddToResourceList();                              // 0x009FC440
 };
-struct CLipSyncDataBankEntry {
-    struct CData : CResource {
+class CLipSyncDataBankEntry { public:
+    class CData : public CResource { public:
         CCountedPointer<CLipSyncSampleData> m_pSampleData; // +0x1c
         CCountedPointer<CBankFileAsyncData> m_pAsyncData;  // +0x24
         unsigned char _pad2c[4];

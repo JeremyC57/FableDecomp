@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() : B(0), G(0), R(0), A(0) {}
     CRGBColour(const CRGBColour& other) { R = other.R; G = other.G; B = other.B; A = other.A; }

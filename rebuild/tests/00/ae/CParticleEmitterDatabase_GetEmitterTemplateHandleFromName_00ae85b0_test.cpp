@@ -3,14 +3,14 @@
 // Behaviour of CParticleEmitterDatabase::GetEmitterTemplateHandleFromName (0x00AE85B0): the upper-cased name is
 // looked up in the symbol map; its handle is returned, or 0 when it is unknown. The temporary is destroyed.
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString(const char* s) { std::strcpy(m_text, s); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_live; }
     ~CCharString() { --g_live; }
     CCharString ToUpper() const { CCharString r(m_text); for (int i = 0; r.m_text[i]; ++i) if (r.m_text[i] >= 'a' && r.m_text[i] <= 'z') r.m_text[i] -= 32; return r; }
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     bool Lookup(const CCharString& name, long* value)
     {
         if (std::strcmp(name.m_text, "SMOKE") == 0) { *value = 42; return true; }

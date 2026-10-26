@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct INavTarget {
     virtual bool Query(void* self, C3DVector* v) = 0;
@@ -13,7 +13,7 @@ struct FakeTarget : INavTarget {
     bool Query(void* self, C3DVector* v) { seenSelf = self; seenV = v; return ret; }
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* field_0;
     INavTarget* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest) {

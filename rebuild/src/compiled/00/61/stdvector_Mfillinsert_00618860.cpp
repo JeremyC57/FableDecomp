@@ -23,7 +23,7 @@ public:
     CCharString& operator=(const CCharString& other);
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 

@@ -1,7 +1,7 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 long g_GameFramesPerSecond = 15;
-struct CTCRotate {
+class CTCRotate { public:
     C3DVector m_axis; float m_speed; long m_unknown1c; long m_framesElapsed; long m_framesTotal;
     void SetRotationInfo(const C3DVector& axis, float speed, float seconds)
     {

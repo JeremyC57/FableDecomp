@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CEngineSubPrimitiveMeshBase;
+class CEngineSubPrimitiveMeshBase;
 
 static int g_dtor = 0;
 static int g_del = 0;

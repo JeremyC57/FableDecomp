@@ -8,7 +8,7 @@ static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static const char* g_near;   // per distance test
 static const char* g_done;   // per IsActiveThreadTerminating
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     CScriptThing() : id(0) {}
     CScriptThing(const CScriptThing& o) : id(o.id) {}
@@ -23,7 +23,7 @@ namespace N_00ef7ab0 { struct CIsThingAlive {
 static CScriptThing g_hero;
 static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float d)
 { char c = *g_near; if (c) ++g_near; return c == '1' && a.id == 5 && &b == &g_hero && d == 2.0f; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void NewScriptFrame() { Log("frame"); }
     virtual CScriptThing& GetHero() { return g_hero; }
     virtual void Pause(float s) { Log(s == 10.0f ? "pause10" : "pause?"); }

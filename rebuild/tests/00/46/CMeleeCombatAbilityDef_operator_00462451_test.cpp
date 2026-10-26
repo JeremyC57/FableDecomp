@@ -1,14 +1,14 @@
 // behaviour test for 0x00462451 CMeleeCombatAbilityDef::operator=
 #include <cstdio>
 static int g_copies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int baseTag;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { baseTag = o.baseTag; return *this; }
 };
-struct CDefString { long m_index; };
+class CDefString { public: long m_index; };
 struct CWeaponClassVector { long v; CWeaponClassVector& operator=(const CWeaponClassVector& o) { v = o.v; ++g_copies; return *this; } };
-struct CHeroAbilityStatPackage { long v; CHeroAbilityStatPackage& operator=(const CHeroAbilityStatPackage& o) { v = o.v; g_copies += 10; return *this; } };
-struct CMeleeCombatAbilityDef : CParentDefClassBase {
+class CHeroAbilityStatPackage { public: long v; CHeroAbilityStatPackage& operator=(const CHeroAbilityStatPackage& o) { v = o.v; g_copies += 10; return *this; } };
+class CMeleeCombatAbilityDef : public CParentDefClassBase { public:
     CDefString FlourishAnimName, FlourishResponseAnimName;
     float DamageMultiplier; bool Flourish, BlockCounter; long AbilityButtonGraphicOverride;
     CWeaponClassVector ValidWeaponClasses; bool Decapitate; long KnockDownEffects; bool EvadeAllHits, CauseRecoil;

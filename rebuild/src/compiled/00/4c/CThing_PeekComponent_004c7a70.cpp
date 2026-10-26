@@ -1,4 +1,4 @@
-struct CDisplayEngine;
+class CDisplayEngine;
 struct GlobalRoot { char pad[0x1c]; CDisplayEngine* engine; };
 extern GlobalRoot* g_root;
 struct CViewBase {};

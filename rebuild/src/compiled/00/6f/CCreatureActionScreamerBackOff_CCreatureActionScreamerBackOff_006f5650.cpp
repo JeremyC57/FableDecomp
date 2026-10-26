@@ -13,7 +13,7 @@ namespace N_008bfd40 { struct C3DAnimFileHelpersChunk {
     C3DAnimFileHelpersChunk();                           // 0x008BFD40
 }; } using N_008bfd40::C3DAnimFileHelpersChunk;
 
-struct CCreatureAction_ScreamerBackOff : C3DAnimFileHelpersChunk {
+class CCreatureAction_ScreamerBackOff : public C3DAnimFileHelpersChunk { public:
     virtual void v00();                    // this class has its own vtable
     CCreatureAction_ScreamerBackOff();
 };

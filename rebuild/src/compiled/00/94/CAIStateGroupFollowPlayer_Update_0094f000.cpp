@@ -10,7 +10,7 @@
 // member (+0x1c, loaded as a dword before the constant pushes), the by-value CIntelligentPointer<const CThing>
 // converted from the member (inline converting copy constructor, vtable 0x01237F1C), repeat 1.
 // Model: local (engine/CAIStateGroup_FollowPlayer.h flattens the base).
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 };
@@ -37,7 +37,7 @@ enum EAIActionRepeat { AI_ACTION_REPEAT_NONE, AI_ACTION_REPEAT_ONCE };
 enum EAIActionReturn { AI_ACTION_RETURN_NONE, AI_ACTION_RETURN_1, AI_ACTION_RETURN_SUCCEEDED };
 enum EMovementType { MOVEMENT_TYPE_0, MOVEMENT_TYPE_1, MOVEMENT_TYPE_2, MOVEMENT_TYPE_3, MOVEMENT_TYPE_4, MOVEMENT_TYPE_FOLLOW };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                                   // +0x04
     long ScriptAIPriority;                          // +0x08

@@ -11,7 +11,7 @@
 // Model of CNavRegion::RemoveConnectionFromConnectionList(const CNavRegionConnection*) @ 0x00A77710: erase the first
 // counted connection entry for the connection; an unlisted connection leaves the list alone.
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

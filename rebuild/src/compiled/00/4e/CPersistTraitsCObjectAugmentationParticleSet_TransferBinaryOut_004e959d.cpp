@@ -15,14 +15,14 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteFloat(float value);                   // 0x00993EE0
 };
 
-struct CDefString { long Index; };
-template<class T> struct CArray {                   // STLport vector, 12 bytes in retail
+class CDefString { public: long Index; };
+template<class T> class CArray { public:                   // STLport vector, 12 bytes in retail
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
 };
 
-struct CObjectAugmentationParticleSet {
+class CObjectAugmentationParticleSet { public:
     float              PeriodSecs;                      // +0x00
     long               ParticleEffect;                  // +0x04
     long               ParticleEffectToBlendTo;         // +0x08

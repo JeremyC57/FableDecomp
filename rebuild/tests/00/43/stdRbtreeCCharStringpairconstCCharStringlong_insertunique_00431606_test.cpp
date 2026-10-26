@@ -10,7 +10,7 @@
 #endif
 long __fastcall Compare(const char* a, const char* b);  // 0x00411570
 
-template <class C> struct CBasicString {
+template <class C> class CBasicString { public:
     C* PData;                                            // +0x00
     __forceinline bool operator<(const CBasicString& other) const { return Compare(PData, other.PData) < 0; }
 };

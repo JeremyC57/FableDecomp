@@ -1,6 +1,6 @@
 // Behaviour test for CTCInventoryExperience::GetExperienceStatDescription @ 0x0056FDC3 (model copy with stub lookups).
 #include <cstdio>
-struct CWideString {
+class CWideString { public:
     const char* PStringData;
     CWideString() : PStringData(0) {}
     CWideString(const CWideString& o) : PStringData(o.PStringData) {}
@@ -8,18 +8,18 @@ struct CWideString {
 };
 static CWideString g_EmptyWideString;
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
-struct CAbilityTrackLevelDef { unsigned char _pad00[0x44]; long Description; };
-struct CAbilityTrackDef {
+class CAbilityTrackLevelDef { public: unsigned char _pad00[0x44]; long Description; };
+class CAbilityTrackDef { public:
     unsigned char _pad00[0x40];
     CAbilityTrackLevelDef* Abilities_first; CAbilityTrackLevelDef* Abilities_last; CAbilityTrackLevelDef* Abilities_end;
     long MaxedOutDescription;
 };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0xfc];
     CAbilityTrackDef* StatLevels_first; CAbilityTrackDef* StatLevels_last; CAbilityTrackDef* StatLevels_end;
 };
 struct CDefinitionHolder { unsigned char _pad_0x00[0xDC]; CHeroStatsDef* PHeroStatsDef; };
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     long maxLevel[4];
     long calls;
     long GetTrainableStatMaxLevel(EHeroTrainableStatType stat) { ++calls; return maxLevel[(long)stat]; }
@@ -30,7 +30,7 @@ struct CInterfaceMap {
     Entry* LowerBound(const long* key) { Entry* e = first; while (e != last && e->type < *key) ++e; return e; }
 };
 struct CPresenceBits { bool test(long kind) { return kind == 0x68 || kind == 0x10; } };   // the thing carries kinds 0x10 and 0x68
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20]; CPresenceBits present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
     template<class T> bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
@@ -48,7 +48,7 @@ struct CTCInventoryBase {
     CDefinitionHolder* GetDefinitions() const { return holder; }
     CWideString GetInventoryText(long text_id) { ++textLookups; CWideString s; s.PStringData = g_texts[text_id]; return s; }
 };
-struct CTCInventoryExperience : CTCInventoryBase {
+class CTCInventoryExperience : public CTCInventoryBase { public:
     CWideString GetExperienceStatDescription(long stat, long level);
 };
 CWideString CTCInventoryExperience::GetExperienceStatDescription(long stat, long level)

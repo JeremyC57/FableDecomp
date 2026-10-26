@@ -1,7 +1,7 @@
 // Byte-exact reconstruction of CTCPerceiveThing::SetAsIndirectlyAwareOfPerceivedThing @ 0x007449e0
 
 #include "engine/CTCPerceiveThing.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CTCPerceiveThing;
+class CTCPerceiveThing;
 
 // callee at 0xa01b50: takes (this+0xc) in ecx, returns int
 extern int __fastcall Sub_a01b50(void* self);

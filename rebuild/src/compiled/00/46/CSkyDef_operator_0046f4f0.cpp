@@ -12,14 +12,14 @@
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes, 16-byte map); the retail base is
 // 0x39 bytes, so it is modelled locally as a packed polymorphic base.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CLensFlareElementDef;
+class CLensFlareElementDef;
 struct CLensFlareElementDefVector {         // retail std::vector<CLensFlareElementDef> (12 bytes)
     CLensFlareElementDef* m_first;
     CLensFlareElementDef* m_last;
@@ -27,7 +27,7 @@ struct CLensFlareElementDefVector {         // retail std::vector<CLensFlareElem
     CLensFlareElementDefVector& operator=(const CLensFlareElementDefVector& other);   // 0x0046F565
 };
 
-struct CSkyDef : CParentDefClassBase {      // vtable 0x0123353C
+class CSkyDef : public CParentDefClassBase { public:      // vtable 0x0123353C
     long  SunRadius;                        // +0x3c
     long  SunTexture;                       // +0x40
     long  MoonRadius;                       // +0x44

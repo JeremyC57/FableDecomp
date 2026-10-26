@@ -3,8 +3,8 @@
 // 2-arg wrapper: builds a zeroed default and forwards to the 3-arg
 // Transfer<long>(name, value, defaultValue) primitive at 0x5cc1e8.
 
-struct CPersistContext
-{
+class CPersistContext
+{ public:
     // The 3-arg primitive (out-of-line): __fastcall so ecx = this.
     void TransferImpl(char* name, long* value, long* defaultValue);
 

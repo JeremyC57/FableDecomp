@@ -6,11 +6,11 @@ long g_framesPerSecond = 30;
 static long g_frame = 1234;
 static unsigned long g_seed = 0x12345678UL;
 static unsigned long GFROR13(unsigned long v) { v &= 0xFFFFFFFFUL; return ((v >> 13) | (v << 19)) & 0xFFFFFFFFUL; }
-struct CWorld { static long GetCurrentFrame() { return g_frame; } };
+class CWorld { public: static long GetCurrentFrame() { return g_frame; } };
 static CWorld g_world;
-struct CThingAICreature {};
+class CThingAICreature { public:};
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed() { return &g_seed; }
     CWorld* GetPThingWorld() { return &g_world; }
     unsigned long RandomFramesWithin(float seconds)

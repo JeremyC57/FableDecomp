@@ -16,9 +16,9 @@
 //        ebx) and the villager pointer temporary of IS_THING_DEAD; the matching dummy's CreateVillager result is returned.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CCharString { void* m_data; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: void* m_data; };
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
@@ -48,7 +48,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CBaseObject {
+class CBaseObject { public:
     unsigned char _pad00[0x20];
     CBitset       m_present;                    // +0x20
     unsigned char _pad24[0x20];
@@ -64,8 +64,8 @@ struct CBaseObject {
         return it->component;
     }
 };
-struct CThing : CBaseObject { };
-struct CThingAICreature : CThing { };
+class CThing : public CBaseObject { public: };
+class CThingAICreature : public CThing { public: };
 bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
 bool ThingAliveBit_s7(const CBaseObject* thing);   // stand-in: the dead-flag test (outside the bytes graded here)
 #pragma auto_inline(off)
@@ -89,10 +89,10 @@ __declspec(noinline) bool __fastcall IS_THING_DEAD(CThing* const& thing)
 }
 #pragma auto_inline(on)
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);  // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
 
@@ -101,8 +101,8 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCVillage;
-struct CTCDummyVillager {                       // interface 0xD6
+class CTCVillage;
+class CTCDummyVillager { public:                       // interface 0xD6
     unsigned char _pad_0x00[0x0c];
     long          VillagerDefIndex;             // +0x0c
     unsigned char _pad_0x10[0x20];
@@ -123,7 +123,7 @@ struct SThingNode {                             // STLport list node
     CBaseIntelligentPointer _M_data;            // +0x08
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad_0x00[0x74];
     SThingNode*   VillageDummies;               // +0x74 list<CIntelligentPointer<CThing> > head node
     CThingAICreature* TryToRespawnDefNamed(const CCharString& defName, const C3DVector& position);

@@ -4,7 +4,7 @@ extern "C" void __fastcall SubMemberDtor(void* sub);
 extern "C" void __cdecl FreeMem(void* p);
 extern "C" void __fastcall BaseOnDie(void* self);
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void* vtbl;      // +0x00
     char pad0[0x0C]; // +0x04..0x0F
     void* PInventory;     // +0x10

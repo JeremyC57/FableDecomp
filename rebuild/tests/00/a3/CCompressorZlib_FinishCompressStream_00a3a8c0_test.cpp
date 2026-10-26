@@ -8,7 +8,7 @@ static int g_result = 0, g_produce = 0, g_ends = 0;
 static int z_deflate(z_stream_s* s, int flush) { if (flush != 4) return -99; s->avail_out -= g_produce; return g_result; }
 static int z_deflateEnd(z_stream_s*) { ++g_ends; return 0; }
 
-struct CCompressorZlib {
+class CCompressorZlib { public:
     z_stream_s Stream; bool ZlibInitialised, Compressing, ErrorFlag;
     unsigned long FinishCompressStream(void* dest, unsigned long destSize, bool* finished)
     {

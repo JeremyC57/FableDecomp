@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C2DCoordI { int x, y; };
+class C2DCoordI { public: int x, y; };
 
 struct Target {
     void* got_a; C2DCoordI* got_b; unsigned long got_c, got_d; int called;
@@ -9,7 +9,7 @@ struct Target {
     }
 };
 
-struct CEditTransactionBase {
+class CEditTransactionBase { public:
     void*   m0;
     Target* m4;
     void*   m8;

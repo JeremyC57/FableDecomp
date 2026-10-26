@@ -5,12 +5,12 @@
 static int g_removeCalls = 0;
 static long g_removedType = 0;
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     void RemoveTC(long interfaceType) { ++g_removeCalls; g_removedType = interfaceType; }
 };
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     CThing* ParentThing;
     void OnKill();
 };

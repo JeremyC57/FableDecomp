@@ -1,16 +1,16 @@
 #include <cstdio>
-struct CCharString { const char* text; };
+class CCharString { public: const char* text; };
 struct CSoundComponent {
     int plays; const CCharString* last;
     unsigned long PlaySound(const CCharString& name, bool, long, long, long) { ++plays; last = &name; return 1000 + plays; }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -28,7 +28,7 @@ struct CThing {
     }
 };
 static unsigned long g_InvalidSoundHandle = 0xFFFFFFFFUL;
-struct CTCTrophy {
+class CTCTrophy { public:
     CThing* Thing;
     unsigned long PlaySoundW(const CCharString& name)
     {

@@ -8,18 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CDisplayViewManager;
-struct CGameDefinitionManager;
-struct CGraphicDataBank;
-struct CIEngine;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CPlayerManager;
-struct CWorld;
+class CCPPointerInfo;
+class CDisplayViewManager;
+class CGameDefinitionManager;
+class CGraphicDataBank;
+class CIEngine;
+class CMainGameComponent;
+class CMeshDataBank;
+class CPlayerManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CDisplayEngine {
+class CDisplayEngine {
+public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long           EnginePreloadFlags;              // +0x04
     CMainGameComponent*     Component;                       // +0x08

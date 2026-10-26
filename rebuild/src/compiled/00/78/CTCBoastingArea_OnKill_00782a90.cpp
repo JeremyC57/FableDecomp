@@ -8,16 +8,16 @@
 // Layout = Ego_r.pdb CTCBoastingArea: HeroWithinRadiusState +0xc (EHeroWithinRadiusState; 2 = inside);
 // the hero's dead flag is bit 0 of +0x91 (as the landed 0x006E73B0 / 0x008A0C60).
 // Shape: the state is tested twice (zero first, then == 2 after the hero checks), re-read from memory.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                               // +0x91 bit 0
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                              // 0x00487DC0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                               // 0x00449970
 };
 

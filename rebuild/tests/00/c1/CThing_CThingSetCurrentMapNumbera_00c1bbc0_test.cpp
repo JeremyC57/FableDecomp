@@ -1,4 +1,4 @@
-struct CThing {
+class CThing { public:
     char pad[10];
     unsigned short mapNumber;
 

@@ -1,4 +1,4 @@
-struct CTCThingUIDDummyForSerialisation {
+class CTCThingUIDDummyForSerialisation { public:
     void* vftable;
 };
 

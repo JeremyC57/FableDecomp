@@ -4,14 +4,14 @@
 static int g_log[64]; static int g_n = 0;
 static void Log(int v) { if (g_n < 64) g_log[g_n++] = v; }
 
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     CScriptThing(int i) : id(i) { }
     CScriptThing(const CScriptThing& o) : id(o.id) { Log(1); }
     ~CScriptThing() { if (id == 2) Log(2); }
 };
 struct CQ_SunnyvaleMasterData { bool CollectedSoulFromNostro; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero; CQ_SunnyvaleMasterData* data; int frames, collectAt;
     const CScriptThing* targeter; const CScriptThing* target; const CScriptThing* removed; bool ra, rb;
     CGameScriptInterface() : hero(5), frames(0), collectAt(3), targeter(0), target(0), removed(0) { }

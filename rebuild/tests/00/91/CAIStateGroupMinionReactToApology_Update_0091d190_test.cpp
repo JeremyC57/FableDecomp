@@ -6,12 +6,12 @@
 #define FABLE_ENGINE_CTCENTITYEVENTS_H
 #define FABLE_ENGINE_CPLAYERMANAGER_H
 #define FABLE_ENGINE_CPLAYER_H
-struct CThingAICreature;
-struct CAIBrain { CThingAICreature* Creature; };
-struct CAIStateGroupBase { CAIBrain* PBrain; };
-struct CTCEntityEvents {};
-struct CPlayerManager {};
-struct CPlayer {};
+class CThingAICreature;
+class CAIBrain { public: CThingAICreature* Creature; };
+class CAIStateGroupBase { public: CAIBrain* PBrain; };
+class CTCEntityEvents { public:};
+class CPlayerManager { public:};
+class CPlayer { public:};
 #endif
 // BEGIN EXACT CANDIDATE
 // CAIStateGroup_MinionReactToApology::Update() -- speak accepted or rejected apology response then terminate
@@ -23,9 +23,9 @@ struct CPlayer {};
 #include "engine/CTCEntityEvents.h"
 #include "engine/CPlayerManager.h"
 #include "engine/CPlayer.h"
-struct CCharString;
+class CCharString;
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*); };
-struct CThing {
+class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
     template<class T> __forceinline bool GetInterface(T** out,long type) {
@@ -73,7 +73,7 @@ void CAIStateGroup_MinionReactToApology::Update() {
 CCharString::CCharString():storage_(0) {}
 CCharString::~CCharString() {}
 #else
-struct CCharString { void* storage_; };
+class CCharString { public: void* storage_; };
 #endif
 CCharString g_ApologyAccepted,g_ApologyRejected;
 static int errors,lookups,eventCalls,players,speeches,terms,ctorCalls,dtorCalls,scenario;

@@ -28,14 +28,14 @@ long __fastcall GFGetCurrentFrame();                                // 0x0049D87
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 extern long g_framesPerSecond;                                      // 0x01375550
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -51,15 +51,15 @@ struct CThing {
     }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct CTCHeroOpinionDeedLog {                  // interface 0x51
+class CTCHeroOpinionDeedLog { public:                  // interface 0x51
     void RemoveDeedStillSearchingForWitnesses(long deed);   // 0x006C5920
 };
-struct CTCOpinionSource;
-struct COpinionReactionManager {
+class CTCOpinionSource;
+class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* thing, bool flag);                                      // 0x007008C0
     bool AttachOpinionSource(CThing* thing, const CCharString& name, CTCOpinionSource** source);   // 0x00700780
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* OpinionReactionManager;   // +0x74
 };
@@ -68,7 +68,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                              // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x24 - 0x08];

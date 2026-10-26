@@ -8,7 +8,7 @@ struct CLayerMesh_00bf3790 {
     virtual ~CLayerMesh_00bf3790();
 };
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
 
@@ -18,7 +18,7 @@ struct CEngineGlobal_01436ea8 {
 };
 extern CEngineGlobal_01436ea8* g_pEngine_01436ea8;   // 0x01436EA8
 
-struct CEngineLandscapePatch {
+class CEngineLandscapePatch { public:
     unsigned char        _pad[8];
     CLayerMesh_00bf3790* m_pLayerMesh;             // +0x08
     void*                m_pLayerBlock;            // +0x0c

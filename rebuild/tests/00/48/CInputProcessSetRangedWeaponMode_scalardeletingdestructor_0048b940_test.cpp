@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessSetRangedWeaponMode {
+class CInputProcessSetRangedWeaponMode { public:
     void* vftable;
     int destroyed;
 };

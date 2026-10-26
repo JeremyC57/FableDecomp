@@ -9,7 +9,7 @@
 // `test ch,2`), the sorted interface map at +0x44 is searched with LowerBound (end or a larger key ->
 // the end entry), the component goes to the out pointer (eax); the type key lives in the `push ecx`
 // frame slot and the map pointer is a named local (esi). The ChestOpen guard is the outer `if`.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -18,12 +18,12 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CTCBase {
+class CTCBase { public:
     unsigned char _pad[0x10];
     bool          m_flag;                   // +0x10
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -42,7 +42,7 @@ struct CThing {
     }
 };
 
-struct CTCChest {                           // vtable 0x0126957C
+class CTCChest { public:                           // vtable 0x0126957C
     void*         __vftable;                // +0x00
     CThing*       ParentThing;              // +0x04 (CTCBase)
     unsigned char _pad08[0x28];             // +0x08 CTCContainerRewardHero, ChestOpener

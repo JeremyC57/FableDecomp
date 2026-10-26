@@ -10,11 +10,11 @@
 #undef CBaseObject
 #include "fable_string.h"
 #include <stdlib.h>
-struct CTCWeaponTrail;
-struct C3DVector {float X,Y,Z;};
-struct CThing;
-struct CThingCreatureBase;
-struct CBaseObject {
+class CTCWeaponTrail;
+class C3DVector { public:float X,Y,Z;};
+class CThing;
+class CThingCreatureBase;
+class CBaseObject { public:
  virtual ~CBaseObject(); // ordinary 0x0099A430, deleting0x0099A4D0
  virtual void Validate()const; //0x0099A400
  CBaseObjectPointer* IntelligentPointer;
@@ -34,7 +34,7 @@ struct CIntelligentPointer_CThingCreatureBase : CBaseIntelligentPointer {
  CIntelligentPointer_CThingCreatureBase() {}
  CIntelligentPointer_CThingCreatureBase(CThingCreatureBase* p) {SetPItem(p);}
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
  long BankIndex; unsigned long AnimName,GroupName; void* Components;
  CAnimationEntry(long,long,long,long); //0x005DED00
 };
@@ -43,7 +43,7 @@ struct CAnimationEntryPointer {
  CAnimationEntryPointer():Data(0),Info(0){}
  void Reset(CAnimationEntry*); //0x00696830
 };
-struct CSoundPair {
+class CSoundPair { public:
  long FirstSound,LastSound;
  CSoundPair():FirstSound(0),LastSound(0){}
 };
@@ -67,7 +67,7 @@ struct CCutSceneEventMap {
  }
 };
 extern long g_NextCreatureActionID; //0x013BA8B4
-struct CCreatureActionBase : CBaseObject {
+class CCreatureActionBase : public CBaseObject { public:
     virtual ~CCreatureActionBase(); // native slot0 0062ED20
     virtual void EditUpdate(float elapsed); // native slot2 00692DB0
     virtual void PerformAction() = 0; // native slot3 00BFEA08

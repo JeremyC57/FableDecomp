@@ -10,7 +10,7 @@
 // times 0x92492493 plus the difference, `sar edx,5` (= / 56); the discarded functor result is
 // homed in the dead `names` argument slot (`lea ecx,[esp+14h]`), which needs the functor to have a
 // user constructor (hidden-pointer return) and no user copy constructor (pushed as a plain dword).
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 struct SDummyObject {                              // pair<CCharString, C3DDummyObject>, 56 bytes
     CCharString   m_name;                          // +0x00
     unsigned char m_object[0x34];                  // C3DDummyObject
@@ -27,7 +27,7 @@ struct CAddName {
 };
 CAddName __fastcall ForEach_AddDummyObjectName(const SDummyObject* first, const SDummyObject* last, CAddName f);   // 0x00A72F40
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char       _pad00[0x20];
     SDummyObject*       m_pDummyObjectsFirst;      // +0x20 (DummyObjects)
     SDummyObject*       m_pDummyObjectsLast;       // +0x24

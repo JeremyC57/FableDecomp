@@ -12,8 +12,8 @@ struct CInventoryItemBase
 };
 void CInventoryItemBase::OnDie() { g_base_called++; }
 
-struct CTCInventoryItem : public CInventoryItemBase
-{
+class CTCInventoryItem : public CInventoryItemBase
+{ public:
     char pad[0x10];
     void* m_ptr;
     void OnDie();

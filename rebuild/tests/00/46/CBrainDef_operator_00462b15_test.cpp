@@ -4,7 +4,7 @@
 static int g_order[4];
 static int g_calls = 0;
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x38];
     CParentDefClassBase& operator=(const CParentDefClassBase& other)
@@ -33,7 +33,7 @@ struct CBrainUpdateZoneVector {
     { m_first = o.m_first; m_last = o.m_last; m_end = o.m_end; g_order[g_calls++] = 4; return *this; }
 };
 
-struct CBrainDef : CParentDefClassBase {
+class CBrainDef : public CParentDefClassBase { public:
     CBrainBehaviourVector  Behaviours;
     CDefStringVector       DisabledBehaviours;
     CBrainUpdateZoneVector UpdateZones;

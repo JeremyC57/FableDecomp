@@ -1,11 +1,11 @@
 // Behaviour test for 0x00429880 CRGBFloatColour::GetRGBColour: each float component scaled by 255 and truncated into the
 // B, G, R, A byte layout.
 #include <cstdio>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBColour GetRGBColour() const
     { return CRGBColour((unsigned char)(R * 255.0f), (unsigned char)(G * 255.0f), (unsigned char)(B * 255.0f), (unsigned char)(A * 255.0f)); }

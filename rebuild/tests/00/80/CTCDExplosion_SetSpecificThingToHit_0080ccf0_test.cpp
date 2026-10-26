@@ -1,7 +1,7 @@
 // behaviour test for 0x0080CCF0 CTCDExplosion::SetSpecificThingToHit(CThing&): the argument is wrapped in a temporary intelligent pointer that
 // is appended to the SpecifiedThingsToHit container and released again
 #include <cstdio>
-struct CThing { int tag; };
+class CThing { public: int tag; };
 static int gLive = 0;
 struct CIntelligentPointer {
     const CThing* p;

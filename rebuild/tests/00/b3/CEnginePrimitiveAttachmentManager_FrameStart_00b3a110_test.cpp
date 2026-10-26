@@ -23,7 +23,7 @@ extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 struct SScalarTag { SScalarTag() { } };           // user constructor: no zero-initialisation of the 1-byte temporary
 
 template <class T>
-struct CArray {                                    // retail CArray: first / last / end of storage (12 bytes)
+class CArray { public:                                    // retail CArray: first / last / end of storage (12 bytes)
     T* first;
     T* last;
     T* end;
@@ -58,10 +58,10 @@ __declspec(noinline) void CArray<T>::InsertGrow(T* where, const T& value, const 
 }
 #pragma auto_inline(on)
 
-struct CEngineCamera;
+class CEngineCamera;
 extern CEngineCamera* g_pEngineCamera_01436ea0;    // 0x01436EA0
 
-struct CEngineComponentParams {
+class CEngineComponentParams { public:
     float m_frameTime;                             // +0x00
 };
 
@@ -69,7 +69,7 @@ struct CEngineRoot_0099a2f0 {
     virtual void v00();
 };
 
-struct CEngineComponent {                          // secondary base at +4
+class CEngineComponent { public:                          // secondary base at +4
     virtual void v00();
     virtual void FrameStart(const CEngineComponentParams& params);   // slot 1
     long GlobalPointerAddress;                                      // +0x04
@@ -77,7 +77,7 @@ struct CEngineComponent {                          // secondary base at +4
     bool KeepAlive;                                      // +0x09
 };
 
-struct CEnginePrimitiveAttachmentManager : CEngineRoot_0099a2f0, CEngineComponent {
+class CEnginePrimitiveAttachmentManager : public CEngineRoot_0099a2f0, public CEngineComponent { public:
     void* AttachedPrimitives;                      // +0x10 (retail STLport list: sentinel pointer)
     void UpdatePrimitives(const CArray<CEngineCamera*>& cameras, float frameTime);   // 0x00B39FB0
     virtual void FrameStart(const CEngineComponentParams& params);

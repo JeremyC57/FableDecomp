@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CAugmentationDef { int v; };
+class CAugmentationDef { public: int v; };
 
 static int g_called = 0;
 static CAugmentationDef* g_self = 0;

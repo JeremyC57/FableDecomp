@@ -1,6 +1,6 @@
 typedef int (__stdcall *PFN)(int obj, int f60, int f5c, int f1c4, int z, int three, int fourcc);
 
-struct CDisplayManager {
+class CDisplayManager { public:
     char pad0[0x54];
     void*** D3D;        // +0x54: object whose vtable holds the query method
     char pad1[0x5c-0x58];

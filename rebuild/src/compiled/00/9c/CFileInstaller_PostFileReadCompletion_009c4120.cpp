@@ -96,7 +96,7 @@ struct SOverlapped { unsigned long Internal, InternalHigh, Offset, OffsetHigh; v
 
 class CFileInstaller {
 public:
-    struct CFileInfo {                              // 0x10 bytes
+    class CFileInfo { public:                              // 0x10 bytes
         void* SrcPath;                              // +0x00 CWideString
         void* DstPath;                              // +0x04 CWideString
         long InputSize;                             // +0x08
@@ -104,20 +104,20 @@ public:
         bool Decompress;                            // +0x0D
         bool CreateMarkerFile;                      // +0x0E
     };
-    struct CBufferChunk {
+    class CBufferChunk { public:
         unsigned char* Mem;                         // +0x00
         bool Used;                                  // +0x04
         bool IsInput;                               // +0x05
     };
-    struct CPendingWrite {                          // 0x0C bytes
+    class CPendingWrite { public:                          // 0x0C bytes
         CBufferChunk* PBufferChunk;                 // +0x00
         unsigned long FilePos;                      // +0x04
         unsigned long WriteLength;                  // +0x08
         CPendingWrite(CBufferChunk* chunk, unsigned long filePos, unsigned long writeLength)
             : PBufferChunk(chunk), FilePos(filePos), WriteLength(writeLength) {}
     };
-    struct CActiveRead;
-    struct CActiveFile {                            // retail 0xB0 bytes
+    class CActiveRead;
+    class CActiveFile { public:                            // retail 0xB0 bytes
         void* SrcFileHandle;                        // +0x00
         void* DstFileHandle;                        // +0x04
         unsigned long CurrentSrcOffset;             // +0x08
@@ -134,7 +134,7 @@ public:
         std::list<CPendingWrite> PendingWrites;     // +0x90
         std::list<CActiveRead*> PendingDecompression;   // +0x94
     };
-    struct CActiveRead {                            // 0x28 bytes
+    class CActiveRead { public:                            // 0x28 bytes
         CActiveFile* PActiveFile;                   // +0x00
         long FilePos;                               // +0x04
         long TransferSize;                          // +0x08

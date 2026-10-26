@@ -16,7 +16,7 @@
 // Leaf: ?FrameEnd@CEnginePrimitiveRenderer@@UAEXABVCEngineComponentParams@@@Z
 
 class CEngineComponentParams;
-struct CEngineScene {
+class CEngineScene { public:
     void FrameEnd();                                      // 0x00B94A30
     void ResetRenderLists();                              // 0x00B93DF0
 };
@@ -45,13 +45,13 @@ struct CEnginePrimitiveRendererBase {                     // primary base, vtabl
     bool          m_frameFlag;                            // +0x98
     unsigned char _pad99[0x268 - 0x99];
 };
-struct CEngineComponent {                                 // secondary base at +0x268, vtable 0x012A1348
+class CEngineComponent { public:                                 // secondary base at +0x268, vtable 0x012A1348
     virtual void FrameStartHook();
     virtual void v01();
     virtual void FrameEnd(const CEngineComponentParams& params);   // slot 2
 };
 
-struct CEnginePrimitiveRenderer : CEnginePrimitiveRendererBase, CEngineComponent {
+class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererBase, public CEngineComponent { public:
     unsigned char      _pad26c[0x8];
     CRetailEntryVector m_nonsortedPrimitives;             // +0x274
     unsigned char      _pad280[0x338 - 0x280];

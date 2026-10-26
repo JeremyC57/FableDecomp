@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_TeleportIn {
+class CCreatureAction_TeleportIn { public:
     void* vftable;
     int destroyed;
 };

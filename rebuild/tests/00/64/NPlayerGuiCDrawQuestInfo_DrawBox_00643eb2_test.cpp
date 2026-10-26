@@ -2,8 +2,8 @@
 // Behaviour test for 00643eb2.
 
 // NPlayerGui::CDrawQuestInfo::DrawBox: marks the drawer as drawing and draws the box grown by 8 left/top/bottom and 2 right on layer 0x4b.
-struct C2DVector { float X, Y; };
-struct C2DBoxF { C2DVector TopLeft, BottomRight; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: C2DVector TopLeft, BottomRight; };
 static C2DBoxF g_drawn; static long g_layer; static void* g_handles;
 static void DrawBoxPrimitive(void* info, void* handles, const C2DBoxF& box, long layer) { (void)info; g_drawn = box; g_layer = layer; g_handles = handles; }
 struct CDrawQuestInfo {

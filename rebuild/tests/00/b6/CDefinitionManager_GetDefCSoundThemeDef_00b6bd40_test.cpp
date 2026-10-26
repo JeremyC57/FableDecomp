@@ -14,7 +14,7 @@ struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefBase* m_defs[4];
     CDefPointer GetPDefFromGlobalIndex(const unsigned long&, long index) { CDefBase* d = m_defs[index]; if (d) ++d->m_count; return CDefPointer(d); }
     bool GetDef(const unsigned long& kind, long index, CDefPointer& out)

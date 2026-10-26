@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CTCInventory::ClosePCScoreboard (retail 0x00584AF6).
-struct CTCBase { long tag; };
+class CTCBase { public: long tag; };
 
 struct CPresenceBits {
     unsigned long bits[16];
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(long wanted, T** out)
@@ -42,7 +42,7 @@ static CTCBase* g_closedWho = 0;
 struct CTCPCScoreboard : CTCBase {
     void Close() { ++g_closed; g_closedWho = this; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CThing* ParentThing;
     void ClosePCScoreboard();
 };

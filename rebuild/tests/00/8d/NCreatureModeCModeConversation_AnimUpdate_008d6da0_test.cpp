@@ -5,40 +5,40 @@ static int g_ctor = 0, g_dtor = 0, g_lookups = 0, g_flagsCalls = 0, g_blendCalls
 static bool g_acting = false; static bool g_lookupNull = false; static long g_blendReturn = 9;
 static const char* g_lastName = 0; static bool g_lastLoaded = true; static const void* g_blendThing = 0;
 static long g_setType = 0, g_setAnim = 0, g_setLoop = 0, g_setPri = 0, g_setFlags = 0, g_blend = -1, g_trans = -1;
-struct CThing { unsigned char _pad0[0x50]; };
-struct CCharString {
+class CThing { public: unsigned char _pad0[0x50]; };
+class CCharString { public:
     void* m_pData;
     CCharString() : m_pData(0) { }
     CCharString(const char* text, long length = -1) { m_pData = (void*)text; ++g_ctor; }
     ~CCharString() { ++g_dtor; }
 };
-struct CAnimationEntry;
+class CAnimationEntry;
 static CAnimationEntry* g_entry;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() { ++g_actionCalls; return g_acting; }
     CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool loadedOnly) { ++g_lookups; g_lastName = (const char*)name.m_pData; g_lastLoaded = loadedOnly; return g_lookupNull ? 0 : g_entry; }
 };
 struct CBlendPair { float m_first; float m_second; CBlendPair() : m_first(0.0f), m_second(0.0f) { } };
-struct CAnimInit {
+class CAnimInit { public:
     long Mode; unsigned char AnimType; bool Flag05; long AnimIndex; float Scales[3]; CBlendPair Blend; unsigned long Flags; long Arg24; long Percent;
     void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
     { AnimType = (unsigned char)animType; Arg24 = arg24; AnimIndex = animIndex; Mode = mode; Flag05 = flag05; Flags = flags; Percent = percent; }
     CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
     { Set(animType, arg24, animIndex, mode, flag05, flags, percent); }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;
     unsigned long GetAnimateThingFlags() { ++g_flagsCalls; return 0x55; }
     long GetAnimationTransitionInTime() { ++g_transCalls; return 3; }
     long GetTimeToBlendIn(CThing* thing) { ++g_blendCalls; g_blendThing = thing; return g_blendReturn; }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     long UpdateMode; void* AnimsBegin; void* AnimsEnd; unsigned char _pad0c[0x44]; unsigned char CurrentAnimType; unsigned char CurrentAnimFlags;
     void SetMainAnim(const CAnimInit& init, long blendIn, long transition)
     { ++g_setMain; g_setType = init.AnimType; g_setAnim = init.AnimIndex; g_setLoop = init.Flag05; g_setPri = init.Percent; g_setFlags = init.Flags; g_blend = blendIn; g_trans = transition; }
 };
 struct CModeBase { virtual void v00() {} CThingCreatureBase* ParentThing; unsigned char _body[0x14]; };
-struct CAnimFilterOfGroup { virtual void v00() {} CCharString Group; unsigned long GroupCRC; };
+class CAnimFilterOfGroup { public: virtual void v00() {} CCharString Group; unsigned long GroupCRC; };
 enum EConversationAttitude { CONVERSATION_ATTITUDE_NEUTRAL = 0 };
 namespace NCreatureMode {
 

@@ -13,14 +13,14 @@
 //   return into the 8-byte frame it shares with the text wrapper) and VC7.1 tail-merges that copy into the reset arm
 //   (`jmp` back to the two-dword copy, eax = source). A bare `value = ReadC2DVector()` temporary gets its own frame
 //   slot (0x10 frame); a named result local copies from the frame instead of eax.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}                                // non-POD: returned through a hidden pointer (as in landed 0x005DBDA0)
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void Write2DVector(const C2DVector& v);       // 0x00993F90
 };
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     C2DVector ReadC2DVector();                    // 0x00995030
 };
 template <class T> struct CPersistTraits;
@@ -39,7 +39,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     virtual void TransferIn();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

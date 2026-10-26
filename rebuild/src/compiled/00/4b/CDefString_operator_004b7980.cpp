@@ -8,12 +8,12 @@
 // PDB CDefString: long TablePos at +0.
 #include <string.h>
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                         // +0x00
     unsigned long m_length;                         // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];        // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
@@ -24,7 +24,7 @@ struct CDefStringTable {
 
 extern CDefStringTable g_DefStringTable;            // 0x013CA828
 
-struct CDefString {
+class CDefString { public:
     long TablePos;                                  // +0
     bool operator==(const CCharString& text) const;
 };

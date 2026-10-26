@@ -2,7 +2,7 @@
 // UpdateFrequency and InterruptionFrequency as longs, in element order
 #include <cstdio>
 struct Writer { long out[16]; int n; Writer() : n(0) { } void WriteLong(long v) { out[n++] = v; } };
-struct CBrainUpdateZone { long Distance; long UpdateFrequency; long InterruptionFrequency; };
+class CBrainUpdateZone { public: long Distance; long UpdateFrequency; long InterruptionFrequency; };
 struct ZoneVector { CBrainUpdateZone* _M_start; CBrainUpdateZone* _M_finish; CBrainUpdateZone* _M_end_of_storage;
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); } CBrainUpdateZone& operator[](unsigned int i) { return _M_start[i]; } };
 struct ZoneTraits {

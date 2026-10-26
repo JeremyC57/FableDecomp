@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CHeroCombatDef;
+class CHeroCombatDef;
 
 extern "C" void __fastcall CHeroCombatDef_Copy_impl(CHeroCombatDef* thisptr, CHeroCombatDef* src);
 

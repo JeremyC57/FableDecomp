@@ -3,7 +3,7 @@
 // The chunk label "CHitParameters::~CHitParameters" is propagated (a different layout); the member label "CActiveFile::OnReadFinished" too. Shape: the size-optimised module (`and dword ptr [esi+4Ch],0`, `pop ecx` after free).
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4

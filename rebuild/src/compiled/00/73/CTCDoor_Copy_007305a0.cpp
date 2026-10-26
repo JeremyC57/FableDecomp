@@ -9,7 +9,7 @@
 // Shape: `ret 4` (one argument); each byte goes through dl in member order, the long through eax last.
 #include "engine/CTCDoor.h"
 
-struct CTCBase;                                             // the flat engine/CTCDoor.h model does not derive from it
+class CTCBase;                                             // the flat engine/CTCDoor.h model does not derive from it
 
 struct CTCDoor_Methods : CTCDoor {
     void Copy(const CTCBase& other);

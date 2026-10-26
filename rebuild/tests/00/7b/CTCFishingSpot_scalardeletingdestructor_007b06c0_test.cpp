@@ -2,9 +2,9 @@
 // Behaviour test for CTCFishingSpot scalar deleting destructor (0x007B06C0): RemoveParticles runs first, then
 // the three intelligent pointers in reverse order (fish, particle 2, particle 1), then the CTCBase base.
 static int g_order[8]; static int g_n = 0;
-struct CTCBase { virtual ~CTCBase() { g_order[g_n++] = 0; } long ParentThing; bool ToBeRemoved; };
+class CTCBase { public: virtual ~CTCBase() { g_order[g_n++] = 0; } long ParentThing; bool ToBeRemoved; };
 struct CIntelligentPointer { int m_id; void* m_pItem; ~CIntelligentPointer() { g_order[g_n++] = m_id; } };
-struct CTCFishingSpot : CTCBase {
+class CTCFishingSpot : public CTCBase { public:
     CIntelligentPointer PParticle1, PParticle2, PParticleFish;
     bool Enabled;
     void RemoveParticles() { g_order[g_n++] = 9; }

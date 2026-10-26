@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BuildWillForceSpell {
+class CCreatureAction_BuildWillForceSpell { public:
     void* vftable;
     int destroyed;
 };

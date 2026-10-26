@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-struct CCharString { char* s; CCharString(const char* t, long n = -1) { s = strdup(t); } CCharString(const CCharString& o) { s = strdup(o.s); } ~CCharString() { free(s); } };
+class CCharString { public: char* s; CCharString(const char* t, long n = -1) { s = strdup(t); } CCharString(const CCharString& o) { s = strdup(o.s); } ~CCharString() { free(s); } };
 namespace N_00411910 { struct CByteArray { unsigned char* b; unsigned char* e; unsigned char* c; CByteArray(unsigned long n) { b = (unsigned char*)calloc(n ? n : 1, 1); e = b + n; c = e; } ~CByteArray() { free(b); }
     unsigned char* GetData() { return e - b != 0 ? b : (unsigned char*)this; } unsigned char& operator[](long i) { return b[i]; } }; } using N_00411910::CByteArray;
 struct Stream {

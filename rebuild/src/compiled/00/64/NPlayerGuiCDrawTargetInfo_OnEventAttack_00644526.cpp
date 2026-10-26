@@ -10,7 +10,7 @@
 // slot (it has a user copy constructor) by its user constructor (R +2, G +1, B +0, A +3: a B,G,R,A layout assigned r, g, b, a in the
 // constructor body; an initialiser list stores in declaration order; the zeros from bl), then the
 // `fldz` 0.0f, then PeekGuiDef() and the duration through the x87; the def is fetched again for the second fade.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
@@ -22,13 +22,13 @@ struct CRGBColour {
     CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) {}
 };
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x7cc];
     float         ABXYButtonFadeDurationSeconds;   // +0x7cc (retail)
 };
 extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool       Active;                       // +0x00
     float      FadeInTime;                   // +0x04
     float      FadeOutTime;                  // +0x08
@@ -42,7 +42,7 @@ struct CFadeInFadeOutBase {
 
 namespace NPlayerGui {
 
-struct CDrawTargetInfo {
+class CDrawTargetInfo { public:
     void*              __vftable;            // +0x00
     unsigned char      _base[0x28 - 4];      // CDrawBase
     CFadeInFadeOutBase AttackAlphaFade;      // +0x28

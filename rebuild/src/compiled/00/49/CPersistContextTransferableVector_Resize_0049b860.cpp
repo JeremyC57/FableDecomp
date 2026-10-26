@@ -10,7 +10,7 @@
 // `push ecx` frame word; the size is `(finish - start) >> 2`; the
 // shrink arm passes `start + n` and the cached finish, the grow arm reloads finish and passes (finish, n - size, &x);
 // both arms destroy the temporary and return separately (`ret 4`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0

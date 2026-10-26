@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCOnHeroPush {
+class CTCOnHeroPush { public:
   char pad[0x3c];
   float f3c;
   float f40;

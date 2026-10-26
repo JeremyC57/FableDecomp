@@ -2,7 +2,7 @@
 // entry is open, false as soon as one entry is closed.
 #include <cstdio>
 struct SEntry { unsigned long idLo, idHi; bool Open; };
-struct CMap { SEntry* m_pFirst; SEntry* m_pLast; SEntry* m_pEnd; unsigned int size() const { return (unsigned int)(m_pLast - m_pFirst); } const SEntry& operator[](unsigned int i) const { return m_pFirst[i]; } };
+class CMap { public: SEntry* m_pFirst; SEntry* m_pLast; SEntry* m_pEnd; unsigned int size() const { return (unsigned int)(m_pLast - m_pFirst); } const SEntry& operator[](unsigned int i) const { return m_pFirst[i]; } };
 struct CNode {
     CMap UniqueIDsOpen;
     bool IsEveryUniqueIDOpen() const

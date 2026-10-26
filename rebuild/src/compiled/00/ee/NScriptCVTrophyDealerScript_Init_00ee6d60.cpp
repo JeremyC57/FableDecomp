@@ -12,12 +12,12 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 #define GSI_V10(p) virtual void v##p##0(); virtual void v##p##1(); virtual void v##p##2(); virtual void v##p##3(); virtual void v##p##4(); virtual void v##p##5(); virtual void v##p##6(); virtual void v##p##7(); virtual void v##p##8(); virtual void v##p##9();
 #define GSI_V100(p) GSI_V10(p##0) GSI_V10(p##1) GSI_V10(p##2) GSI_V10(p##3) GSI_V10(p##4) GSI_V10(p##5) GSI_V10(p##6) GSI_V10(p##7) GSI_V10(p##8) GSI_V10(p##9)
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CGameScriptInterface {                      // retail vtable @ 0x01260F0C
+class CGameScriptInterface { public:                      // retail vtable @ 0x01260F0C
     GSI_V100(0) GSI_V100(1)
     GSI_V10(20) GSI_V10(21) GSI_V10(22) GSI_V10(23) GSI_V10(24) GSI_V10(25) GSI_V10(26) GSI_V10(27) GSI_V10(28)
     virtual void v290(); virtual void v291(); virtual void v292(); virtual void v293(); virtual void v294(); virtual void v295();
@@ -29,7 +29,7 @@ struct CGameScriptInterface {                      // retail vtable @ 0x01260F0C
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
 };
 extern const char g_trophyDealerObjective[];       // 0x012F5208 "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_..."
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];
 };

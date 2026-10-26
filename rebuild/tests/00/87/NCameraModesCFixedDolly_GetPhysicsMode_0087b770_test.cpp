@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CGameCameraManager { int id; };
-struct CCPPointerInfo {
+class CGameCameraManager { public: int id; };
+class CCPPointerInfo { public:
     long RefCount; void (*DeleteFunc)(void* data); void* Data;
     CCPPointerInfo(void (*deleteFunc)(void*), void* data) : RefCount(1), DeleteFunc(deleteFunc), Data(data) { }
 };
@@ -10,7 +10,7 @@ struct CSubComponentBase {
     CSubComponentBase(CBase* o, const CGameCameraManager* m) : Owner(o), CameraManager(m) { }
     virtual ~CSubComponentBase() { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     static void DeleteData(void* data) { delete (T*)data; }
     CCountedPointer(T* data) : Data(data)

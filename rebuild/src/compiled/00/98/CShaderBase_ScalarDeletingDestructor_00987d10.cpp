@@ -9,7 +9,7 @@
 // the flag's bit 0 is set (operator delete @ 0x00BFE9BC, landed-trusted) and returns `this`. The
 // inline destructor is re-emitted in every translation unit that needs it, which is why 72
 // byte-identical copies exist; this file is the copy at this address.
-struct CShaderBase {
+class CShaderBase { public:
     virtual ~CShaderBase() { }
 };
 

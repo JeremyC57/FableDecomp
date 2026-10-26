@@ -1,6 +1,6 @@
 #include <cstdio>
 long g_FramesPerSecond_01375550 = 15;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual float GetActionTimeSeconds() = 0;
     unsigned char _pad[0x3c];
     float RunningTimeSeconds;

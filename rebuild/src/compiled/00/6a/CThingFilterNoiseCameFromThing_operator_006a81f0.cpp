@@ -5,7 +5,7 @@
 // (manifest "_Cons_val<...>" is a propagated label; it returns the source thing).
 // Layout: PDB CThingFilter_NoiseCameFromThing { CThing* Thing; } (+0); interface 0x37 -> bitset word 1 bit 23.
 // Shape: `cmp eax,[edi]` -- the call result is the left operand; byte-constant exits.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -14,7 +14,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -37,7 +37,7 @@ struct CTCInterface37 {                             // interface 0x37 component 
     CThing* GetSourceThing();                       // 0x007498D0
 };
 
-struct CThingFilter_NoiseCameFromThing {
+class CThingFilter_NoiseCameFromThing { public:
     CThing* Thing;                                  // +0x00
     bool operator()(CThing* thing) const;
 };

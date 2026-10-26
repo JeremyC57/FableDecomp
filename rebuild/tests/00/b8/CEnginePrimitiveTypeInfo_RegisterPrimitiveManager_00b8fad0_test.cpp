@@ -12,7 +12,7 @@ struct CPrimitiveTypeVector {
     unsigned int size() const { return (unsigned int)(m_pLast - m_pFirst); }
     int operator[](unsigned int n) const { return *(m_pFirst + n); }
 };
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     int types[3]; int typeCount;
     void GetSupportedTypes(CPrimitiveTypeVector& v)
     {
@@ -21,7 +21,7 @@ struct CEnginePrimitiveManager {
         for (int i = 0; i < typeCount; ++i) v.m_pFirst[i] = types[i];
     }
 };
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     CEnginePrimitiveManager* PrimitiveManagers[47];
     void RegisterPrimitiveManager(CEnginePrimitiveManager* manager)
     {

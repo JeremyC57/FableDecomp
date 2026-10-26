@@ -7,7 +7,7 @@
 // re-pushed from the argument slot (`ret 4`). The base is modelled locally.
 typedef long EMovementType;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
 };

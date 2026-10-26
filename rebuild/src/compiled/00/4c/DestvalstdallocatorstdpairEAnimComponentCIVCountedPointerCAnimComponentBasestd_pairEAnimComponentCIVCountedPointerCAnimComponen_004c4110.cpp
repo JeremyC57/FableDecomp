@@ -5,8 +5,8 @@
 // the pointee's refcount at [p+4]; if it reaches zero, virtual-call
 // vtable slot 1 (delete-this); then null the stored pointer.
 
-struct CAnimComponentBase
-{
+class CAnimComponentBase
+{ public:
     virtual void v0();          // slot 0
     virtual void Release();     // slot 1  ([vtable+4])
     int m_refCount;             // +4

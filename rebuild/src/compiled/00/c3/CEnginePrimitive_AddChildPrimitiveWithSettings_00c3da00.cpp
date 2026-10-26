@@ -12,7 +12,7 @@ typedef void (__stdcall* PFNREPORT_00c3da00)(long error);
 extern long g_lastError_0143bb48;                  // 0x0143BB48
 extern PFNREPORT_00c3da00 g_pfnReport_0143bbd4;    // 0x0143BBD4
 
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     long                                  Type;
     CEngineInternalPrimitiveBase_00c3da00* m_pInternal;   // +0x04
     unsigned char                         _pad[0x9c];

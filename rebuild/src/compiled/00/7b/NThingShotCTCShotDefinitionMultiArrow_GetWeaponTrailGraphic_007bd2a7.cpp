@@ -30,7 +30,7 @@ struct CMultiArrowDef : CDefPointee {
     long          WeaponTrailGraphic;        // +0x3c
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer()
@@ -40,7 +40,7 @@ template<class T> struct CDefPointer {
     T* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CMultiArrowDef>* out);   // 0x007BE7EA
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below

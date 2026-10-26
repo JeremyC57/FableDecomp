@@ -16,7 +16,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void*                __vftable;
     unsigned long        StreamPos;                          // +0x04
     long                 StreamSize;                         // +0x08
@@ -45,10 +45,10 @@ struct CDataInputStream {
     __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
 };
 
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector MinCoord, MaxCoord; };             // 0x18
-struct C3DBoundingSphere { C3DVector Centre; float Radius; };        // 0x10
-struct CMatrix3x4 { float E[12]; };                                  // 0x30
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };             // 0x18
+class C3DBoundingSphere { public: C3DVector Centre; float Radius; };        // 0x10
+class CMatrix3x4 { public: float E[12]; };                                  // 0x30
 struct SObjectBlock { long m_words[4]; };                            // 0x10
 
 struct CObject {                                                     // 0x4c
@@ -59,7 +59,7 @@ struct CObject {                                                     // 0x4c
 };
 struct CObjectEntry { long m_words[4]; };                            // 0x10
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long bytes, void* owner);                     // 0x00BD9AF0
     template <class T> T* AllocArrayOfObjects(long count, void* owner);   // 0x00BFBC80 (T = CObject)
     template <class T> __forceinline T* AllocArray(long count, void* owner)

@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CThing { int id; };
-struct CTCBase {
+class CThing { public: int id; };
+class CTCBase { public:
     virtual ~CTCBase() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* owner) : ParentThing(owner), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
@@ -22,7 +22,7 @@ struct CRetailList_CIntelligentPointer {
     CListNode* head;
     CRetailList_CIntelligentPointer() : head(&g_sentinel) { g_sentinel.next = g_sentinel.prev = &g_sentinel; }
 };
-struct CTCCarrying : CTCBase {
+class CTCCarrying : public CTCBase { public:
     CVectorMap_CarrySlots           CarrySlots;
     bool                            BypassFilters;
     void*                           Key;

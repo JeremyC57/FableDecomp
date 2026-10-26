@@ -7,7 +7,7 @@ struct SubBuffer {
     void Clear();   // 0x9e4710, __fastcall
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     char     pad0[0x3404];   // 0..0x3403
     unsigned WritePos;       // 0x3404
     char     pad1[0x340c - 0x3408];

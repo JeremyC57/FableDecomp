@@ -6,7 +6,7 @@ struct CBase_0099a300 {
     virtual void v00();
     ~CBase_0099a300();                             // 0x0099A300 (a non-virtual destructor keeps the deleting destructor out of the TU)
 };
-struct CInputProcessManager : CBase_0099a300 {    // vtable 0x0129CA38
+class CInputProcessManager : public CBase_0099a300 { public:    // vtable 0x0129CA38
     virtual void v00();
     void RemoveAllInputProcesses();                // 0x00A0D530
     ~CInputProcessManager();

@@ -12,14 +12,14 @@
 // intrusive pointer's operator= (self test, release, null store, store, count bump); VC7.1 keeps second induction
 // registers at the Components members (`lea esi,[ebp+10h]` / `lea edi,[ebx+10h]`). Element model from the landed
 // std::fill @ 0x005E1820 (Ego_r.pdb CAnimationEntry).
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;                                  // +0x00
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
@@ -38,11 +38,11 @@ struct CIVCountedPointer {
     }
 };
 
-struct CDefString {                             // one word (Ego_r.pdb: TablePos)
+class CDefString { public:                             // one word (Ego_r.pdb: TablePos)
     long TablePos;                              // +0x00
 };
-struct CAnimComponentMap : CIVCountedPointeeBase { };
-struct CAnimationEntry {                        // 16 bytes
+class CAnimComponentMap : public CIVCountedPointeeBase { public: };
+class CAnimationEntry { public:                        // 16 bytes
     long                                 BankIndex;     // +0x00
     CDefString                           AnimName;      // +0x04
     CDefString                           GroupName;     // +0x08

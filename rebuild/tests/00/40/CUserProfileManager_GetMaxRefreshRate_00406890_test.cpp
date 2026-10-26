@@ -4,7 +4,7 @@
 long g_maxDisplayRefreshRate = -1;
 const long g_refreshRateOptions[4] = { 60, 75, 85, 100 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned long GetMaxRefreshRate();
 };
 

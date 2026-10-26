@@ -1,13 +1,13 @@
 #include <cstdio>
-struct CPlane { float Normal_X; float Normal_Y; float Normal_Z; float Distance; };
+class CPlane { public: float Normal_X; float Normal_Y; float Normal_Z; float Distance; };
 static long g_freed = -1;
 struct CMovableResourceMemoryPool_Calls {
     long m_handle;
     long GetHandle(void* block) { return m_handle; }
     void Free(long handle) { g_freed = handle; }
 };
-struct CMovableResource { virtual void v00() { } ~CMovableResource() { } };
-struct CContainmentVolume : CMovableResource {
+class CMovableResource { public: virtual void v00() { } ~CMovableResource() { } };
+class CContainmentVolume : public CMovableResource { public:
     CPlane*                           ContainmentPlanes;
     unsigned long                     Size;
     CMovableResourceMemoryPool_Calls* MemoryPool;

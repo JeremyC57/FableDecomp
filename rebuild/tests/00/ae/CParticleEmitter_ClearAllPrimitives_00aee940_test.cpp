@@ -7,7 +7,7 @@ struct CHandle {
     void Clear() { if ((p ? p->refs : 0) == 1) ++g_notified; if (p) { if (--p->refs == 0) ++g_destroyed; p = 0; } p = 0; }
 };
 struct CSystem { void ClearAllPrimitives(CHandle*) { ++g_cleared; } };
-struct CEngine { void RemovePrimitive(CHandle*) { ++g_removed; } };
+class CEngine { public: void RemovePrimitive(CHandle*) { ++g_removed; } };
 struct CEmitter {
     CSystem* first; CSystem* last; CHandle PrimitiveGroupHandle;
     void ClearAllPrimitives(CEngine* engine)

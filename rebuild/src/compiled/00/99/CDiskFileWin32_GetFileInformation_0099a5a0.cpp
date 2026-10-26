@@ -25,20 +25,20 @@ struct BY_HANDLE_FILE_INFORMATION {
 };
 extern "C" __declspec(dllimport) int __stdcall GetFileInformationByHandle(void* file, BY_HANDLE_FILE_INFORMATION* info);
 
-struct CDateAndTime {
+class CDateAndTime { public:
     long Year;
     unsigned long Month, Day, Hour, Minute, Second, Millisecond;
     CDateAndTime();                                // 0x009E9AB0
     void Initialise(const _FILETIME* time);        // 0x009E9CB0
 };
-struct CFileInformation {
+class CFileInformation { public:
     CDateAndTime CreationTime;                     // +0x00
     CDateAndTime LastAccessTime;                   // +0x1c
     CDateAndTime LastWriteTime;                    // +0x38
     bool ReadOnly;                                 // +0x54
 };
 
-struct CDiskFileWin32 {                            // vtable 0x0122D06C
+class CDiskFileWin32 { public:                            // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c

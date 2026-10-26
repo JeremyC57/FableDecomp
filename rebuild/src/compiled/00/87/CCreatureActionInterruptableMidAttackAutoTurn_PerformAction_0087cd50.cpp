@@ -7,14 +7,14 @@
 // (inlined GetInterface for type 0x31), CTCCreatureModeManager::AddMode @ 0x0073AE10.
 // Shape: the parameters pointer (fetched in an inline accessor, so its out pointer is an inner-scope local) and the GetInterface key share the single `push ecx` frame word (the absent GetInterface arm
 // reads it back as the out pointer); IS_THING_ALIVE inlined; AddMode tail-duplicated into both GetInterface arms.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -49,24 +49,24 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCCreatureModeManager {             // interface type 0x31
+class CTCCreatureModeManager { public:             // interface type 0x31
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
 struct CAnimationParameters {
     unsigned char _pad00[8];
     bool m_autoTurn;                        // +0x08 flag tested before turning the target
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     void GetParameters(CAnimationParameters** out);   // 0x00738A00
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0x74 - 4];         // +0x04
     CAnimationEntry* PAnimEntry_Data;       // +0x74 CCountedPointer<CAnimationEntry>::Data
     unsigned char _pad78[0xa8 - 0x78];      // +0x78
 };
-struct CCreatureAction_InterruptableMidAttackAutoTurn : CCreatureActionBase {
+class CCreatureAction_InterruptableMidAttackAutoTurn : public CCreatureActionBase { public:
     CBaseIntelligentPointer PTarget;        // +0xa8 the creature being attacked
     void PerformAction();
     // inline accessor: its out pointer lives in an inner scope, so it shares the frame word with the lookup key

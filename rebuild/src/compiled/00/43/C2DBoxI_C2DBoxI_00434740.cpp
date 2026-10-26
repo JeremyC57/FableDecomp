@@ -3,12 +3,12 @@
 // Layout from the PDB (C2DBoxI: TLX +0, TLY +4, BRX +8, BRY +0xc; C2DCoordI: X +0, Y +4).
 // Member-initialiser order: TLX = c.X - r, TLY = c.Y - r, BRX = c.X + r, BRY = c.Y + r; `this`
 // is moved to eax up front and returned (constructor), radius lives in edx, the centre in ecx.
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;     // +0x00
     long Y;     // +0x04
 };
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX;   // +0x00
     long TLY;   // +0x04
     long BRX;   // +0x08

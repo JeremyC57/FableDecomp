@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString() { ++g_strDtors; }
 };
@@ -14,12 +14,12 @@ struct CDefStringTable {
 };
 CDefStringTable g_DefStringTable;
 static int g_deleted = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy() {}
     virtual void Delete() { ++g_deleted; }
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -31,12 +31,12 @@ struct CDefStringArray {
     unsigned long size() const { return _M_finish - _M_start; }
     long operator[](unsigned long n) const { return _M_start[n]; }
 };
-struct CSkeletalMorphDef : CDefPointeeBase {
+class CSkeletalMorphDef : public CDefPointeeBase { public:
     unsigned char   _pad08[0x28 - 0x08];
     CDefStringArray SkeletalMorphs;
 };
 static CSkeletalMorphDef* g_morphDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CSkeletalMorphDef>* out)
     {
         ++g_getSubDef;
@@ -44,12 +44,12 @@ struct CDefClassBase : CDefPointeeBase {
         ++g_morphDef->m_refCount; out->Object = g_morphDef; return true;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;
 };
 static int g_addMorph = 0; static long g_tags[4]; static void* g_names[4]; static float g_weights[4]; static int g_calculate = 0;
-struct CTCSkeletalMorph {
+class CTCSkeletalMorph { public:
     virtual void v00() {}
     CThing* ParentThing;
     void AddMorph(long tag, const CCharString& name, float weight) { if (g_addMorph < 4) { g_tags[g_addMorph] = tag; g_names[g_addMorph] = name.PStringData; g_weights[g_addMorph] = weight; } ++g_addMorph; }

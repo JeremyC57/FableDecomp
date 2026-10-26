@@ -1,17 +1,17 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString(const char* t, long) { std::strcpy(text, t); }
     ~CCharString() {}
 };
 
-struct CSoundPair { long a, b; CSoundPair() : a(0), b(0) {} };
+class CSoundPair { public: long a, b; CSoundPair() : a(0), b(0) {} };
 
-struct CCreatureActionBase { char anim[64]; bool flags[3]; virtual ~CCreatureActionBase() {} };
+class CCreatureActionBase { public: char anim[64]; bool flags[3]; virtual ~CCreatureActionBase() {} };
 
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(void*, const CCharString& animation, const CSoundPair& s, bool a, bool b, bool c, long, long)
     { std::strcpy(anim, animation.text); flags[0] = a; flags[1] = b; flags[2] = c; if (s.a || s.b) anim[0] = 0; }
 };

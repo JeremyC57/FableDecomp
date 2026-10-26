@@ -3,8 +3,8 @@
 #include <cstdio>
 #include <new>
 
-struct CThing { int unused; };
-struct CAIScratchpadDef { int unused; };
+class CThing { public: int unused; };
+class CAIScratchpadDef { public: int unused; };
 
 static int g_stringCtors = 0;
 static const char g_empty[1] = { 0 };
@@ -17,18 +17,18 @@ struct CTCBase_Calls {
     CTCBase_Calls(CThing* thing) : ParentThing(thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false) {}
 };
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData(g_empty) { ++g_stringCtors; }
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     const T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };
 
-struct CTCAIScratchpad : CTCBase_Calls {
+class CTCAIScratchpad : public CTCBase_Calls { public:
     unsigned long ThankingPhrase;
     CCharString   Action;
     bool          FaceHeroForAction;

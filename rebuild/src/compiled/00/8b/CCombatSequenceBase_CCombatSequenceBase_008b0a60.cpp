@@ -11,9 +11,9 @@
 // CChunkedFileSuperChunk 0x00AA8490 form) and frees `first` after a null test.
 extern "C" void __cdecl free(void* block);                                  // 0x00BFEA14
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCombatAction { unsigned char _body[8]; };                           // a counted pointer (8 bytes)
+class CCombatAction { public: unsigned char _body[8]; };                           // a counted pointer (8 bytes)
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 
@@ -31,7 +31,7 @@ template <class T> struct CRetailVector {                                    // 
     }
 };
 
-struct CCombatSequenceBase {                                                 // vtable 0x01278FEC
+class CCombatSequenceBase { public:                                                 // vtable 0x01278FEC
     bool                          Running;              // +0x04
     long                          NoAvailableActions;   // +0x08
     long                          CurrentActionIndex;   // +0x0c

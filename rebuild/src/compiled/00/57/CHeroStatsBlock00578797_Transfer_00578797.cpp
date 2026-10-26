@@ -5,7 +5,7 @@
 // temporary), CPersistContext::Transfer<signed char> @ 0x0049B8D0. Strings @ 0x0124F298 / 0x0124F288. Shape: the context is re-read from the stack for each
 // call (ecx is clobbered by the first), the first member address is a `lea`, the second an `add esi,248h` (esi is dead afterwards); the second argument is unused.
 // The chunk label "CEngineLocalDetailLayerDef::Transfer" is propagated from an unrelated body; the class is named by address.
-struct CPersistContext {
+class CPersistContext { public:
     void TransferBool(const char* name, bool* value);                 // 0x004107C0 (Transfer<bool>)
     void TransferSignedChar(const char* name, signed char* value);    // 0x0049B8D0 (Transfer<signed char>)
 };

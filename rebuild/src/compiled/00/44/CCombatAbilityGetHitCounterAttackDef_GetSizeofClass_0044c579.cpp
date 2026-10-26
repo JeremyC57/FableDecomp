@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CCombatAbilityGetHitCounterAttackDef { int dummy; };
+class CCombatAbilityGetHitCounterAttackDef { public: int dummy; };
 
 unsigned long __fastcall CCombatAbilityGetHitCounterAttackDef_GetSizeofClass(const CCombatAbilityGetHitCounterAttackDef* self)
 {

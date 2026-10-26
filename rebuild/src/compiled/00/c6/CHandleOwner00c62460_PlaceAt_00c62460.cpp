@@ -1,7 +1,7 @@
 // CHandleOwner_00c62460::PlaceAt(SContext* context) -- when the handle at +8 is not negative, add this owner's offset (+0xc) to the context target's position (+0x14 of the object at +0; C3DVector operator+ @ 0x00C257E0, `__fastcall` with the hidden result in ecx) and hand the handle and the position to the context's table (0x00C62440, a member getter) through virtual slot 27
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C62460, length 96 bytes.
 // The chunk label "CItem::GetItemThings" is propagated; named by its effect. Shape: a 0x18-byte frame (the sum temporary at +8, the named position at +0x14), `ret 4`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }   // a constructor: the `__fastcall` hidden result pointer travels in ecx

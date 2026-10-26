@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CThing
-{
+class CThing
+{ public:
     virtual bool vf00(); virtual bool vf01(); virtual bool vf02(); virtual bool vf03();
     virtual bool vf04(); virtual bool vf05(); virtual bool vf06(); virtual bool vf07();
     virtual bool vf08(); virtual bool vf09(); virtual bool vf10(); virtual bool vf11();
@@ -23,8 +23,8 @@ struct CThing
     unsigned char flags;
 };
 
-struct CThingFilter_CanBeUsedAsCover
-{
+class CThingFilter_CanBeUsedAsCover
+{ public:
     bool operator()(CThing *t);
 };
 

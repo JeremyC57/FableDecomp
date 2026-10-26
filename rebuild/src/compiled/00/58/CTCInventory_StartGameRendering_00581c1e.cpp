@@ -40,13 +40,13 @@ struct CGameObject {
 
 extern CGameObject* g_pGameObject;                   // 0x013B86A0
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad_0x00[0x8c];
     long          m_gameRenderingStartFrame;         // +0x8c
     static long GetWorldFrame();                     // 0x0049D870
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     CWorld* GetWorld();                              // CTCBase, 0x00686A70
     void StartGameRendering();
 };

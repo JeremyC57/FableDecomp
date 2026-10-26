@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour of 0x00991640 (chunk 901 piece): every component is multiplied by the +0x10 scale
-struct C3DVector { float X; float Y; float Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C3DVector { public: float X; float Y; float Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 struct CScaledObject_Retail {
     unsigned char _pad_0x00[0x10];
     float m_scale;

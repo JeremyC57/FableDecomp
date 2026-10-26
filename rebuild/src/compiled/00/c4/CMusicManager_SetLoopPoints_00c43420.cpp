@@ -11,7 +11,7 @@ struct SLoopPoints {
     bool operator==(const SLoopPoints& other) const { return m_start == other.m_start && m_length == other.m_length; }
 };
 
-struct CMusicManager {
+class CMusicManager { public:
     unsigned char _pad00[0x14];
     unsigned long m_dirtyFlags;                    // +0x14
     void SetLoopPoints(SLoopPoints** current, SLoopPoints* storage, const SLoopPoints* value);

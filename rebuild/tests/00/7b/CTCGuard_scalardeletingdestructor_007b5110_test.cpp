@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCGuard {
+class CTCGuard { public:
     void* vftable;
     int destroyed;
 };

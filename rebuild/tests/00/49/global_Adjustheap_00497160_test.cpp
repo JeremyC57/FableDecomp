@@ -12,7 +12,7 @@ static int IcmpText(const char* a, const char* b)
     }
 }
 static char g_text[16][8];
-struct CWideString { const char* Text; };
+class CWideString { public: const char* Text; };
 struct CCaseInsensitiveStringCompare { char m_tag; bool operator()(const CWideString& a, const CWideString& b) const { return IcmpText(a.Text, b.Text) < 0; } };
 typedef CWideString T;
 typedef CCaseInsensitiveStringCompare C;

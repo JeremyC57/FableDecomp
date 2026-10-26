@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <string.h>
 enum EShaderTarget { SHADER_TARGET_DEFAULT = 0, SHADER_TARGET_OTHER = 3 };
-struct CBankStateBlock { virtual ~CBankStateBlock() {} virtual void GetDefault(CBankStateBlock& block) = 0; };
+class CBankStateBlock { public: virtual ~CBankStateBlock() {} virtual void GetDefault(CBankStateBlock& block) = 0; };
 struct CShaderBankStateBlock : CBankStateBlock {
     struct CStateBlock { EShaderTarget ShaderTarget; bool EnableShaderOptimisation; };
     CStateBlock State;

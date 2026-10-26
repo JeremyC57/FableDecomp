@@ -14,12 +14,12 @@ public:
 
 static long g_baseCtors = 0;
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual long Kind() const { return 1; }
     CBaseClass() { ++g_baseCtors; }
 };
 
-struct CConsoleCommandLine : CBaseClass {
+class CConsoleCommandLine : public CBaseClass { public:
     CCharString CurrentEntry;
     bool        UserEntry;
     long        CursorPosition;

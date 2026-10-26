@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString
-{
+class CCharString
+{ public:
     char* m_data;
     long m_length;
     unsigned long m_flags;

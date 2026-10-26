@@ -28,7 +28,7 @@ struct CCameraModeBase {
     virtual void v00();
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
@@ -68,7 +68,7 @@ template <class T> void CCountedPointer<T>::Reset(T* object)
 struct SCameraDescriptor;
 extern const SCameraDescriptor g_cameraDescriptor;   // 0x013BA8D8
 
-struct CThing;
+class CThing;
 struct CCombatSequence_WillLightning;
 
 struct CCameraMode_0069dfe0 : CCameraModeBase {

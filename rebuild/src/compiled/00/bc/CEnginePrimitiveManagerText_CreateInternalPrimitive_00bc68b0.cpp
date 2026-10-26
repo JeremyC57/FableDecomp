@@ -10,7 +10,7 @@
 // 2D class its own vtable last; `this` is unused.
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x44];                    // +0x04 .. +0x48
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
@@ -22,7 +22,7 @@ public:
     CWideString();                                 // 0x0099AED0
 };
 
-struct CEngineInternalPrimitiveText : CEngineInternalPrimitiveBase {   // vtable 0x012A676C; 0x68 bytes
+class CEngineInternalPrimitiveText : public CEngineInternalPrimitiveBase { public:   // vtable 0x012A676C; 0x68 bytes
     float         Pos[3];                          // +0x48 C3DVector
     float         Scale;                           // +0x54
     unsigned long Colour;                          // +0x58 CRGBColour
@@ -39,7 +39,7 @@ struct CEngineInternalPrimitive2DText : CEngineInternalPrimitiveText {   // vtab
     CEngineInternalPrimitive2DText() : CEngineInternalPrimitiveText(0x27, 0x80000000) { }
 };
 
-struct CEnginePrimitiveManagerText {
+class CEnginePrimitiveManagerText { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);
 };
 

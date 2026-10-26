@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CExplodingObjectDef
-{
+class CExplodingObjectDef
+{ public:
     void* vftable;
 };
 extern void* const g_CExplodingObjectDef_vftable;

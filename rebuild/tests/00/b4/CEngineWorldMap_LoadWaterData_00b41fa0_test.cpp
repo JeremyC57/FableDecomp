@@ -10,10 +10,10 @@ struct CByteBuffer {
     unsigned char* GetData() { return First; }
 };
 struct CBankEntryRecord { unsigned long Offset, Size; void CopyRange(unsigned long, void* dst, unsigned long size) { std::memset(dst, 0x11, size); } };
-struct CMemoryDataInputStream { const unsigned char* data; unsigned long size; CMemoryDataInputStream(void* d, unsigned long s) : data((unsigned char*)d), size(s) {} };
+class CMemoryDataInputStream { public: const unsigned char* data; unsigned long size; CMemoryDataInputStream(void* d, unsigned long s) : data((unsigned char*)d), size(s) {} };
 struct SCountBlock { long m_references; };
-struct CBankFile { unsigned long GetEntryDataSize(unsigned long index) { return index * 10; } };
-struct CBankFileAsyncEntry {
+class CBankFile { public: unsigned long GetEntryDataSize(unsigned long index) { return index * 10; } };
+class CBankFileAsyncEntry { public:
     CBankFile* Bank; unsigned long Index;
     void Read(long, void* dst, unsigned long size) { std::memset(dst, 0x22, size); }
     unsigned long GetDataSize() { return Bank->GetEntryDataSize(Index); }
@@ -25,17 +25,17 @@ struct CEntryPointer {
     ~CEntryPointer() { if (Info) { --Info->m_references; if (Info->m_references == 0) { ++g_destroyed; delete Info; } } Object = 0; Info = 0; }
 };
 static CBankFile g_bank; static CBankFileAsyncEntry g_entry = { &g_bank, 0 };
-struct CStaticMapBankFile {
+class CStaticMapBankFile { public:
     unsigned long found;
     unsigned long FindEntry() { return found; }
     CEntryPointer CreateEntry(unsigned long index) { g_entry.Index = index; CEntryPointer p; p.Object = &g_entry; p.Info = new SCountBlock; p.Info->m_references = 1; return p; }
 };
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     void LoadNonPatchData(CMemoryDataInputStream& data, CMemoryDataInputStream& header)
     { ++g_loaded; g_dataSize = data.size; g_headerSize = header.size; if (data.data[0] != 0x22 || header.data[0] != 0x11) g_loaded = -100; }
 };
 static CEngineWaterRenderer g_water;
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     CStaticMapBankFile StaticMapFile; CBankEntryRecord** Entries;
     void LoadWaterData();
 };

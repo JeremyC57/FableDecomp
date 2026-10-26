@@ -19,13 +19,13 @@ namespace N_0099a300 { struct CBase {                                     // vta
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 
-struct C3DVertex2;
-struct C3DVector { float x, y, z; };
-struct C3DBoundingSphere { C3DVector Centre; float Radius; };
-namespace N3DPrimitive { struct CTriangleList; }
-struct C3DGroup2;
-template <class T> struct CIVCountedPointer { T* Object; };
-template <class T> struct CCountedPointer { T* Data; void* Count; };
+class C3DVertex2;
+class C3DVector { public: float x, y, z; };
+class C3DBoundingSphere { public: C3DVector Centre; float Radius; };
+namespace N3DPrimitive { class CTriangleList; }
+class C3DGroup2;
+template <class T> class CIVCountedPointer { public: T* Object; };
+template <class T> class CCountedPointer { public: T* Data; void* Count; };
 
 void __fastcall DestroyRange(CIVCountedPointer<N3DPrimitive::CTriangleList>* first,
                              CIVCountedPointer<N3DPrimitive::CTriangleList>* last, const SNonscalarPtrIteratorTag& tag);   // 0x00A96990
@@ -40,7 +40,7 @@ struct CPodArray {                                 // retail CArray<T> of a triv
     ~CPodArray() { if (m_pFirst) free(m_pFirst); }
 };
 template <class T>
-struct CArray {                                    // retail CArray<T>: first / last / end
+class CArray { public:                                    // retail CArray<T>: first / last / end
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

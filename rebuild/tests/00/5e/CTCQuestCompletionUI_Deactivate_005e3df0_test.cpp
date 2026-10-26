@@ -10,7 +10,7 @@ static int g_fail = 0;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -20,12 +20,12 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -37,7 +37,7 @@ struct CComponent {
     virtual void SetFading(bool on);               // slot 48 (+0xC0)
 };
 }
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     virtual void v00();
     unsigned char _pad04[0x08];
     bool          Active;                          // +0x0c

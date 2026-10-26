@@ -1,7 +1,7 @@
 #include <cstdio>
 // behaviour test: CPlayerGui::DrawDebugSafeAreas -- resize the handle vector to eight; with the debug flag set add the
 // eight safe-area line sprites (outer frame alpha 0, inner frame opaque) to handles 0..7, otherwise clear every handle
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     int m_header; int Data;
     void Clear() { m_header = 0; Data = 0; }
 };
@@ -19,8 +19,8 @@ struct CRetailVector {
     CEnginePrimitiveHandle* _M_start; CEnginePrimitiveHandle* _M_finish;
     void resize(unsigned int n) { _M_start = g_store; _M_finish = g_store + n; }
 };
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
-struct C2DBoxF {
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
+class C2DBoxF { public:
     C2DVector TopLeft, BottomRight;
     C2DBoxF(float l, float t, float r, float b) : TopLeft(l, t), BottomRight(r, b) {}
 };
@@ -31,7 +31,7 @@ struct CEnginePrimitive2DSprite {
         : Box(box), Layer(layer), Blend(blend), R(r), G(g), B(b), A(a) {}
 };
 static float g_area; static int g_added, g_opaque, g_bad;
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     void AddPrimitive(CEnginePrimitiveHandle* h, const CEnginePrimitive2DSprite& s, int flags)
     {
         h->m_header = 1; h->Data = ++g_added;
@@ -40,8 +40,8 @@ struct CEnginePrimitiveRenderer {
         if (flags != 0x40 || s.Layer != 0x43 || s.Blend != 3 || s.R != 0xff || s.G != 0xff || s.B != 0xff) ++g_bad;
     }
 };
-struct CEnginePrimitivePrepareInfo { CEnginePrimitiveRenderer* Renderer; };
-struct CPlayerGui {
+class CEnginePrimitivePrepareInfo { public: CEnginePrimitiveRenderer* Renderer; };
+class CPlayerGui { public:
     bool ShowDebugSafeAreas; CRetailVector SafeAreaHandles;
     void DrawDebugSafeAreas(const CEnginePrimitivePrepareInfo& info);
 };

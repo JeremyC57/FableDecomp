@@ -1,14 +1,14 @@
 #include <cstdio>
 // behaviour test for CThingCreatureBase::PerformBlockedReaction (0x00661EF0)
-struct CThing;
+class CThing;
 static long g_lastBlock = -1;
 static int g_calls = 0;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     bool Finished;
     virtual void OnBlowBlocked(long blockType) { ++g_calls; g_lastBlock = blockType; }
     CCreatureActionBase() : Finished(false) {}
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CCreatureActionBase* PCurrentAction;
     void PerformBlockedReaction(CThing* blocker, long blockType);
 };

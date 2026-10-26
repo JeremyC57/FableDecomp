@@ -19,7 +19,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -48,13 +48,13 @@ struct CRetailHandleVector {                         // std::vector<CEnginePrimi
 };
 
 namespace NInventory {
-struct CTCInventoryBase {                            // retail 0x130 bytes
+class CTCInventoryBase { public:                            // retail 0x130 bytes
     unsigned char _pad04[0x12C];
     virtual ~CTCInventoryBase();                     // 0x005C00A0
 };
 }
 namespace NHeroInformationScreens {
-struct CBase {                                       // vtable 0x0123A3E0
+class CBase { public:                                       // vtable 0x0123A3E0
     virtual void v00();
     virtual ~CBase() {}
 };

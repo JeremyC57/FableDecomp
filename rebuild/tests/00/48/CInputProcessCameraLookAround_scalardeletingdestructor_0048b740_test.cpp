@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessCameraLookAround {
+class CInputProcessCameraLookAround { public:
     void* vftable;
     int destroyed;
 };

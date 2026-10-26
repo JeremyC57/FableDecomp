@@ -51,7 +51,7 @@ struct CDraggable_Retail : CComponentInterface, CObserver_Retail, CEventSinkInte
     virtual void Update(float deltaTime);        // CClickable::Update 0x0055ACB0
 };
 
-struct CScrollBar : CDraggable_Retail {
+class CScrollBar : public CDraggable_Retail { public:
     virtual void Update(float deltaTime);
 };
 

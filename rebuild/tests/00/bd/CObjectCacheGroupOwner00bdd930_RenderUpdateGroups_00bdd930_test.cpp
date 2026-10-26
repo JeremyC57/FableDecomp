@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CEngineCamera { int x; };
+class CEngineCamera { public: int x; };
 static int g_calls = 0; static float g_sum = 0; static unsigned long g_c = 0; static const CEngineCamera* g_cam = 0;
 struct CGroup { unsigned char _pad[0xc]; CGroup* m_pNext; void RenderUpdate(CEngineCamera* cam, float a, float b, unsigned long c, float d) { ++g_calls; g_cam = cam; g_sum += a + b + d; g_c = c; } };
 struct COwner { unsigned char _pad[0x20]; CGroup* m_pGroups; unsigned char _pad24[0x12]; unsigned char m_renderEnabled : 1;

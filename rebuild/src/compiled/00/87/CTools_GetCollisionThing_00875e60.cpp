@@ -7,13 +7,13 @@
 // Layout: CThing::PhysicsTC at retail +0x60 (Ego_r.pdb 0x70, CThing sits 0x10 below the PDB there);
 // CPhysicsMeshObject 0x40 bytes (vptr, Mesh, PositionMatrix, Scale, OO_Scale), CMeshIntersectionData 0x1c bytes
 // (IntersectionPosition, Normal, DistanceSquared). The STLport vector walk reloads end() each step.
-struct C3DVector { float x, y, z; };
-struct CMeshIntersectionData {
+class C3DVector { public: float x, y, z; };
+class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;                // +0x00
     C3DVector Normal;                              // +0x0c
     float     DistanceSquared;                     // +0x18
 };
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     virtual void v00();
     void*         Mesh;                            // +0x04 CIVCountedPointer<CPhysicsMesh const>
     float         PositionMatrix[12];              // +0x08 CMatrix3x4
@@ -22,7 +22,7 @@ struct CPhysicsMeshObject {
     ~CPhysicsMeshObject();                         // 0x00A127D0
     bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* out) const;   // 0x00A12450
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -36,7 +36,7 @@ struct CTCPhysicsBase {
     virtual void* GetPhysicsMesh() const;          // slot 93 (+0x174)
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                     // +0x60
 };

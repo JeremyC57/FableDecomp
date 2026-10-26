@@ -6,7 +6,7 @@ struct Sub {
     void Copy(const void* src);   // 0x46078c, __fastcall(this, src)
 };
 
-struct CSkeletalMorphDef {
+class CSkeletalMorphDef { public:
     char pad[0x28];
     Sub sub;
 };

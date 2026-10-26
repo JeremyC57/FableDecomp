@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ShowFear {
+class CCreatureAction_ShowFear { public:
     void* vftable;
     int destroyed;
 };

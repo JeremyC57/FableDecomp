@@ -12,7 +12,7 @@ typedef unsigned __int64 u64;
 static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
-struct C3DClothQuad { unsigned short VertexIndex[4]; unsigned short TexCoordIndex[4]; };
+class C3DClothQuad { public: unsigned short VertexIndex[4]; unsigned short TexCoordIndex[4]; };
 // the row: std::fill<C3DClothQuad*, C3DClothQuad>
 static void __fastcall FillQuads(C3DClothQuad* first, C3DClothQuad* last, const C3DClothQuad& val)
 {

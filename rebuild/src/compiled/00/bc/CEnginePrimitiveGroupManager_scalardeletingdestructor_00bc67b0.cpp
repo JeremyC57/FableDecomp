@@ -1,4 +1,4 @@
-struct CEnginePrimitiveGroupManager {
+class CEnginePrimitiveGroupManager { public:
     void* vftable;
 };
 

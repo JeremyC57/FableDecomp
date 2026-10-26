@@ -2,24 +2,24 @@
 // empty, the script interface stored, PThing null, ScriptID 0, NullResource true, ActionPriority 0.
 #include <cstdio>
 
-struct CCPPointerInfo;
-struct CGameScriptInterface { int dummy; };
+class CCPPointerInfo;
+class CGameScriptInterface { public: int dummy; };
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00() { }
     virtual ~CBaseObject() { }
     void* IntelligentPointer;
     CBaseObject() : IntelligentPointer(0) { }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase;
+class CScriptGameResourceObjectScriptedThingBase;
 struct CCountedPointer_ScriptedThingBase {
     CScriptGameResourceObjectScriptedThingBase* Data;
     CCPPointerInfo*                             Info;
     CCountedPointer_ScriptedThingBase() : Data(0), Info(0) { }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:
     CCountedPointer_ScriptedThingBase PImp;
     virtual void v00() { }
     CScriptGameResourceObjectScriptedThingBase() { }
@@ -36,7 +36,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { SetPItem(0); }
 };
 
-struct CScriptGameResourceObjectScriptedThing : CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThing : public CScriptGameResourceObjectScriptedThingBase { public:
     CGameScriptInterface* ScriptInterface;
     CIntelligentPointer   PThing;
     long                  ScriptID;

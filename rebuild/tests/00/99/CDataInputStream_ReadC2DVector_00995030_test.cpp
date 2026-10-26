@@ -73,7 +73,7 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
 struct CReader : CIn {
     C2DVector ReadC2DVector()
     {

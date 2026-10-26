@@ -23,8 +23,8 @@ static int fails = 0;
 // stays in ebp). The filter, box and search sit in a nested block: VC7.1 packs escaped locals by lexical scope, so
 // the latch temporary in the loop then shares the filter's frame slot as in retail.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -36,7 +36,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -116,7 +116,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -124,7 +124,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -160,20 +160,20 @@ struct CAIStateGroupBase {
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct C3DVector { float x, y, z; };
-struct CThingCreatureBase;
+class C3DVector { public: float x, y, z; };
+class CThingCreatureBase;
 struct CPersonalSpaceInfo {
     static float GetPersonalSpaceRadius();      // 0x00661CC0
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CPersonalSpaceInfo* GetPersonalSpaceInfo(); // 0x006A4D00
     const C3DVector& GetPosition();             // 0x004C73D0
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long x0, y0, x1, y1;
     C2DBoxI(const C2DCoordI& centre, long radius) : x0(centre.X - radius), y0(centre.Y - radius), x1(centre.X + radius), y1(centre.Y + radius) { }
 };
@@ -185,14 +185,14 @@ struct CCreatureVector {                        // std::vector<CThingCreatureBas
     CCreatureVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
     ~CCreatureVector() { if (m_pFirst) free(m_pFirst); }
 };
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     CThing* m_pThing;
     CThingFilter_IsNot(CThing* thing) : m_pThing(thing) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetThingsInRoughArea(const C2DBoxI& box, const CThingFilter_IsNot& filter, CCreatureVector& out);  // 0x00725F10
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x20];
     CThingSearchTools* m_pSearchTools;          // +0x20
 };

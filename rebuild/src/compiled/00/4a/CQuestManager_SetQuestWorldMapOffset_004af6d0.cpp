@@ -6,7 +6,7 @@
 // Shape: the inlined GetActiveQuestFromScriptName walk (head in ebp, the name's block in esi read once after the empty
 // test) written as a __forceinline bool finder with an out-pointer so esi/ebx are pushed only on the non-empty path and
 // the hit goes straight to the two-dword marker copy.
-struct CCharStringData {                           // the shared string block
+class CCharStringData { public:                           // the shared string block
     const char*   m_pData;                         // +0x00
     unsigned long m_length;                        // +0x04
 };
@@ -21,10 +21,10 @@ inline bool SameString(CCharStringData* a, CCharStringData* b)
         return Compare_00411570(a->m_pData, b->m_pData) == 0;
     return false;
 }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
 };
 struct CActiveQuest {                              // CQuestManager::CActiveQuest, retail layout (landed 0x004AF5B0 model)
@@ -38,7 +38,7 @@ struct CActiveQuest {                              // CQuestManager::CActiveQues
     void*         PScriptData[2];                  // +0x28 CCountedPointer<CScriptDataBase>
     CCharString   QuestName;                       // +0x30
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct SActiveQuestNode {                          // STLport list node of CCountedPointer<CActiveQuest>
     SActiveQuestNode* next;                        // +0x00
     SActiveQuestNode* prev;                        // +0x04

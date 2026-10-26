@@ -1,16 +1,16 @@
 #include <cstdio>
 // Behaviour test for 007f4f40: GetSellersBanter fetches the CStockItemDef (one reference taken by GetSubDef),
 // reads SellersBanter, then drops the reference (destroying the def when it was the last one).
-struct CStockItemDef {
+class CStockItemDef { public:
     long RefCount; unsigned long SellersBanter; int destroyed;
     void DestroySelf() { ++destroyed; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     CStockItemDef* def;
     bool GetSubDef(CStockItemDef** out) { ++def->RefCount; *out = def; return true; }
 };
-struct CThing { CDefClassBase* PDef; };
-struct CTCStockItem {
+class CThing { public: CDefClassBase* PDef; };
+class CTCStockItem { public:
     CThing* Parent;
     unsigned long GetSellersBanter()
     {

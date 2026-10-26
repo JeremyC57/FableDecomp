@@ -43,7 +43,7 @@ struct SBoneConfigRecord {                      // three words, all cleared by t
     SBoneConfigRecord() : m_first(0), m_second(0), m_third(0) { }
 };
 
-struct CSkeletalMorphResourceManager {
+class CSkeletalMorphResourceManager { public:
     unsigned char     _pad00[0x2c];
     CBoneConfigTree   m_boneConfigs;            // +0x2c
     SBoneConfigRecord m_boneConfigRecord;       // +0x38

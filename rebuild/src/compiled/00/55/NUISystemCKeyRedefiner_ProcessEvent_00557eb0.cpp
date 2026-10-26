@@ -43,7 +43,7 @@ struct CEventReceiver {                            // the second base (vptr at +
     virtual void SetMode(long mode);               // slot 3 (+0x0c)
     virtual void SetState(long state);             // slot 4 (+0x10)
 };
-struct CFrontEndManager {
+class CFrontEndManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void SetFocusControl(CEventReceiver* control);   // slot 4 (+0x10)
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();

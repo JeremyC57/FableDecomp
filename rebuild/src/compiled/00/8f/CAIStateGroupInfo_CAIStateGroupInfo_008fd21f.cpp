@@ -13,16 +13,16 @@
 // Pragma: optimize("s").
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;                                  // +0x00
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CAIStateGroupBase;
+class CAIStateGroupBase;
 typedef CAIStateGroupBase* (__fastcall* TAIStateGroupAllocFunc)();
 
-struct CAIStateGroupInfo {
+class CAIStateGroupInfo { public:
     CCharString            StateGroupName;              // +0x00
     TAIStateGroupAllocFunc AllocFunc;                   // +0x04
     CAIStateGroupInfo(CCharString name, TAIStateGroupAllocFunc alloc);

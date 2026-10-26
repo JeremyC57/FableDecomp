@@ -1,7 +1,7 @@
 // Behaviour test for 0x0072DB00 CTCInventoryMagic::GetScreenName
 #include <cstdio>
 #include <cstring>
-struct CWideString { char buf[32]; };
+class CWideString { public: char buf[32]; };
 struct CGroupEntry {
     long refs; const char* text;
     CWideString GetText() const { CWideString w; std::strcpy(w.buf, text); return w; }
@@ -10,7 +10,7 @@ struct CDataBank {
     CGroupEntry entries[4];
     CGroupEntry* GetPGroupEntry(unsigned long tag, bool) { ++entries[tag].refs; return &entries[tag]; }
 };
-struct CInventoryDef { long refs; long MagicScreenNameTag; };
+class CInventoryDef { public: long refs; long MagicScreenNameTag; };
 static CWideString GetScreenName(CDataBank* bank, CInventoryDef* pdef)
 {
     ++pdef->refs;

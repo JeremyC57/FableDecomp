@@ -84,7 +84,7 @@ struct CGameScriptInterface_Calls {                      // the quest's game scr
     virtual void EntitySetAsDisplayingEmoteIcon(const CScriptThing& thing, bool displaying) const;   // slot 530 (+0x848)
 };
 
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                              // +0x04 .. +0x40
 };

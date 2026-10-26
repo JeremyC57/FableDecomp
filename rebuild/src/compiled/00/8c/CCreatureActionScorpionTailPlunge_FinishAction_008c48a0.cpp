@@ -12,14 +12,14 @@
 // released inline afterwards (block {refs, __fastcall destroy, object}, freed with operator delete). `this` is spilled to the
 // frame across the block (register pressure).
 // Layout: the owner (CIntelligentPointer<CThingCreatureBase>) at +8, the target at +0xa8 (retail CCreatureActionBase is 0xa8).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -58,7 +58,7 @@ struct SCountBlock {
 };
 
 struct CModeBase { };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                     // +0
     SCountBlock* m_pCount;                      // +4
     CCountedPointer(T* object);                 // 0x008C58F0 for CModeScorpionKingTailPlunge
@@ -80,7 +80,7 @@ struct CModeScorpionKingTailPlunge : CModeBase {
     void SetTarget(CThing* target);             // 0x008D7430
 };
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
 };
 

@@ -2,12 +2,12 @@
 #include <cstdio>
 
 static int g_deleted = 0;
-struct CReactionFrequencyTraits {
+class CReactionFrequencyTraits { public:
     int m_id;
     void operator delete(void* p) { if (p) ++g_deleted; ::operator delete(p); }
 };
 
-struct CReactionFrequencyTraitsArray {
+class CReactionFrequencyTraitsArray { public:
     CReactionFrequencyTraits* LowHigh[2][79];
     ~CReactionFrequencyTraitsArray()
     {

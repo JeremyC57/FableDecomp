@@ -26,7 +26,7 @@ struct IDirect3DSurface9;
 
 // engine/CSurface.h member names (+4 PD3DSurface, +8 AllocationSource, +0xC PAllocatedMemory); the generated header
 // flattens the vptr into a plain word, so a polymorphic local model is used.
-struct CSurface {                               // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                               // vtable 0x0122F84C, 0x10 bytes
     virtual void v00();
     IDirect3DSurface9* PD3DSurface;             // +0x04
     unsigned long AllocationSource;             // +0x08
@@ -36,7 +36,7 @@ struct CSurface {                               // vtable 0x0122F84C, 0x10 bytes
     ~CSurface() { Uninitialise(); }
 };
 
-struct CRenderTarget : CBase {                  // vtable 0x0129C800
+class CRenderTarget : public CBase { public:                  // vtable 0x0129C800
     CSurface m_colour;                          // +0x04
     CSurface m_depth;                           // +0x14
 };

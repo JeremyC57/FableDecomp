@@ -11,7 +11,7 @@ struct CMatrix {                                 // 3x4 row-major source (12 dwo
     unsigned int m[12];
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad000[0x1e8];
     bool          WorldMatrixIsIdentity;         // +0x1e8
     unsigned char _pad1e9[7];

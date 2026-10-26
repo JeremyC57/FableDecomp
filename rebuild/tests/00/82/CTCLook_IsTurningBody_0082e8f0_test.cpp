@@ -8,8 +8,8 @@ struct LookSub
     int pad[8];
 };
 
-struct CTCLook
-{
+class CTCLook
+{ public:
     char pad0[0x14];
     LookSub sub;
     bool IsTurningBody(Vec2 arg);

@@ -6,9 +6,9 @@
 // Shape: `this` rides in edi, the target pointer member in esi (reused for the target itself); the creature is a named local
 // (fetched before the 2.0f immediate 0x40000000 is pushed; an inline argument expression would push first). Retail CCreatureActionBase is 0xa8 bytes (PDB 0xb4), so
 // PTargetCreature (engine-header name, PDB +0xb4) is at +0xa8 and `this` is modelled locally.
-struct C3DVector;
+class C3DVector;
 
-struct CThing {                             // engine/CThing.h exists but is not used: only the dead bit and the calls are modelled
+class CThing { public:                             // engine/CThing.h exists but is not used: only the dead bit and the calls are modelled
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00

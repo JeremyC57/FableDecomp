@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CTCInventoryAbilities::ForceAllAbilitiesToNextLevel (005f3f14): same logic over a copy of the model.
 struct SAbilityEntry { long Level; long MaxLevel; };
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     long learned[8]; int count;
     bool LearnAbility(long ability, bool notify, long level, bool silent) { if (!notify || level != -1 || !silent) return false; learned[count++] = ability; return true; }
 };

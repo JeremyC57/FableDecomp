@@ -5,14 +5,14 @@
 #include <cstring>
 static char g_log[64];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char Flags91;
@@ -36,24 +36,24 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { };
 static int g_cleared = 0; static CThing* g_clearedThing = 0; static bool g_clearedFlag = false;
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* thing, bool flag) { ++g_cleared; g_clearedThing = thing; g_clearedFlag = flag; Log('c'); }
 };
-struct CWorld { COpinionReactionManager* OpinionReactionManager; };
+class CWorld { public: COpinionReactionManager* OpinionReactionManager; };
 static COpinionReactionManager g_orm; static CWorld g_world = { &g_orm };
 struct CTCBoastComponent {
     CThing* Removed;
     void RemoveBoast(CThing* hero) { Removed = hero; Log('r'); }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase() { Log('b'); }
     CThing* ParentThing;
     CWorld* GetWorld() { return &g_world; }
 };
-struct CTCCreatureGroup : CTCBase {
+class CTCCreatureGroup : public CTCBase { public:
     virtual ~CTCCreatureGroup() { Log('g'); }
 };
-struct CTCCreatureGroupBoastingCrowd : CTCCreatureGroup {
+class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:
     CIntelligentPointer PHero;
     long HeroOpinionSourcesPushed;
     long LastState;

@@ -17,7 +17,7 @@
 //   MapScreenTeleportPrimitiveHandles +0x1C4, MapScreenHousePrimitiveHandles +0x1D0. No engine header exists for the class.
 // Shape: speed TU (aligned, no pragma); the dropped functor result of every for_each lives in the one `push ecx` frame word;
 //   `this` stays in esi, each member's address (`lea edi,[esi+N]`) is erase's `this`.
-struct CEnginePrimitiveHandle {                    // 8 bytes: vptr + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // 8 bytes: vptr + counted primitive pointer
     void* _vtable;
     void* m_pPrimitive;
     void Clear();                                  // 0x0041BE70
@@ -53,7 +53,7 @@ public:
 
 typedef std::vector<CEnginePrimitiveHandle> CPrimitiveHandleVector;
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     unsigned char          MembersBeforeHandleVectors[0x1ac];   // +0x000..+0x1AB (not modelled)
     CPrimitiveHandleVector MapScreenPrimitiveHandles;            // +0x1ac
     CPrimitiveHandleVector MapScreenQuestPrimitiveHandles;       // +0x1b8

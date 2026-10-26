@@ -56,15 +56,15 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CBankFileEntryDependencies;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CDiskFileWin32;
+class CBankFileEntryDependencies;
+class CCPPointerInfo;
+class CCharStringData;
+class CDiskFileWin32;
 struct CProgressCallback;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CBankFile {
+class CBankFile { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long               Size;                        // +0x04
     unsigned char               Symbols[0x10];               // +0x08 CArray<CCharString>
@@ -186,13 +186,13 @@ FABLE_STATIC_ASSERT(offsetof(CCriticalSectionLock, Locked) == 0x4);
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 
-struct CCharStringData;
-struct CFailedAllocationHandler;
+class CCharStringData;
+class CFailedAllocationHandler;
 struct CHeader;
 struct _RTL_CRITICAL_SECTION_DEBUG;
 
 #pragma pack(push, 1)
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void*                        __vftable;                  // +0x00 vptr, or first dword of a flattened base subobject
     void*                        Buffer;                     // +0x04
     void*                        UnalignedBuffer;            // +0x08
@@ -265,7 +265,7 @@ FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, CriticalSection_SpinCount) 
 #include <stddef.h>
 
 #pragma pack(push, 1)
-struct CMovableResource {
+class CMovableResource { public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
 };
 #pragma pack(pop)
@@ -286,7 +286,7 @@ FABLE_STATIC_ASSERT(offsetof(CMovableResource, __vftable) == 0x0);
 #include <stddef.h>
 
 #pragma pack(push, 1)
-struct CMovableResourceMemoryPool {
+class CMovableResourceMemoryPool { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x464];                         // +0x04 flattened base-class subobject(s)
 };
@@ -322,7 +322,7 @@ struct CBankFileAsyncRetail {
     _RTL_CRITICAL_SECTION CriticalSection; // +0x14c, retail async-bank view
     unsigned long Align(unsigned long size); // 0x009CBB90, inherited CBankFile method
 };
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     void* __primaryVftable; // +0, primary object view evidenced by native constructor
     CMovableResource MovableResource; // +4, secondary base passed to AllocateResource
     void* Data; // +8

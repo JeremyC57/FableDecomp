@@ -2,7 +2,7 @@
 // Behaviour of CTCInventoryQuests::vfunc_72 (0x0061A1D0): index steps back and wraps to count - 1 below 0.
 long g_testQuestIndex = 0;
 long g_testQuestCount = 0;
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     void vfunc_72()
     {
         if (--g_testQuestIndex < 0)

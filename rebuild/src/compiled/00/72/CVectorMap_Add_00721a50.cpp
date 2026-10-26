@@ -19,10 +19,10 @@
 inline void* operator new(unsigned int, void* p) { return p; }
 
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
-struct CRGBColour {                                // D3DCOLOR byte order
+class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
 };
-struct CCompositeBlendDesc {                       // Ego_r.pdb, 16 bytes
+class CCompositeBlendDesc { public:                       // Ego_r.pdb, 16 bytes
     unsigned long       TextureIndex;              // +0x00
     ECompositeBlendType BlendType;                 // +0x04
     CRGBColour          DiffuseColour;             // +0x08

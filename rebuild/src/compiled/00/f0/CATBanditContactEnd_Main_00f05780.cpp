@@ -7,13 +7,13 @@
 // owning quest whose +0x88 is the contact thing. The second argument is evaluated first (pushed
 // first), then the member address; the loop is `do { } while (!IsFinished())` (a rotated loop with
 // the 7-byte alignment nop before its head).
-struct CScriptThing {
+class CScriptThing { public:
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

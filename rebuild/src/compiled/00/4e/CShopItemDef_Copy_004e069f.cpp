@@ -9,9 +9,9 @@
 #pragma optimize("s", on)
 #include "engine/CShopItemDef.h"
 
-struct CDefClassBase;
+class CDefClassBase;
 
-struct CShopItem {                              // CShopItemDef::Item (+0x2c), 0x1c bytes
+class CShopItem { public:                              // CShopItemDef::Item (+0x2c), 0x1c bytes
     float Quantity;
     float PriceMultiplier;
     float MaxStock;

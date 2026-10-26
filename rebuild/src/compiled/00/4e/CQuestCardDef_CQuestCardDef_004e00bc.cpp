@@ -31,7 +31,7 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CDefString {                             // a def-name table index, -1 = none
+class CDefString { public:                             // a def-name table index, -1 = none
     long m_index;
     CDefString() : m_index(-1) { }
 };
@@ -41,7 +41,7 @@ struct CPrerequisiteMap {                       // map<EQuestCardPrerequisite, l
     CPrerequisiteMap();                         // 0x004DF7D3
 };
 
-struct CQuestCardDef : CDefBase_0044c0c0 {
+class CQuestCardDef : public CDefBase_0044c0c0 { public:
     long                QuestName;                          // +0x28
     long                QuestSummary;                       // +0x2c
     long                QuestObjective;                     // +0x30

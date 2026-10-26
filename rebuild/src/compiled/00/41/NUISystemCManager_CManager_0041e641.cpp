@@ -11,10 +11,10 @@
 // Shape: the empty counted-pointer arguments are default-constructed in their argument slots (a declared copy constructor), zeroed from
 //   the size-TU zero register ebx (`push ecx ; push ecx ; mov eax,esp ; mov [eax],ebx`); GetInstance is evaluated after the argument.
 #pragma optimize("s", on)
-struct CGraphicDataBank;
-struct CFontBank;
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CGraphicDataBank;
+class CFontBank;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              m_pObject;
     CCPPointerInfo* m_pInfo;
     CCountedPointer() : m_pObject(0), m_pInfo(0) { }
@@ -34,12 +34,12 @@ struct __declspec(novtable) CManagerBase {
     virtual ~CManagerBase();                       // 0x0042BEC0
     unsigned char _d04[0xc];
 };
-struct CFrontEndManager {
+class CFrontEndManager { public:
     static CFrontEndManager* __fastcall GetInstance();                        // 0x0041E5F2
     void SetFontBank(CCountedPointer<CFontBank> bank);                        // 0x0041D198
     void SetGraphicsBank(CCountedPointer<CGraphicDataBank> bank);             // 0x0042A9B7
 };
-struct CManager : CManagerBase {
+class CManager : public CManagerBase { public:
     SMember10     m_graphicsBank;                  // +0x10
     SMember18     m_fontBank;                      // +0x18
     unsigned char _pad20[4];

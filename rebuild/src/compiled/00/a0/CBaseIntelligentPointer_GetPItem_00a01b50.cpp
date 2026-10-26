@@ -9,7 +9,7 @@
 // When a record exists and still holds an object it is returned directly.  A record whose object
 // has detached is released on the spot (ClearData inlined: its leading null test folds into the one
 // already taken) and 0 comes back.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseObjectPointer {
     CBaseObject* PItem;        // +0x00

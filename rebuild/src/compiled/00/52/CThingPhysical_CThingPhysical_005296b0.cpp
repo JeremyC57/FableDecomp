@@ -12,7 +12,7 @@
 // Shape: the inline list ctor nulls its head before malloc and links the node to itself before storing it.
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _body[0x98 - 0x04];
     CThing(unsigned long type);                 // 0x004C9030
@@ -37,7 +37,7 @@ struct CIntelligentPointerPhysical : CBaseIntelligentPointer {  // vtable 0x0124
     virtual void v01();
     CIntelligentPointerPhysical() {}
 };
-struct CThingPhysical : CThing {
+class CThingPhysical : public CThing { public:
     CRetailList_node0x10 HealthOverTimeEffects; // +0x98
     float Scale;                                // +0x9c
     CIntelligentPointerPhysical PLastCreator;   // +0xa0

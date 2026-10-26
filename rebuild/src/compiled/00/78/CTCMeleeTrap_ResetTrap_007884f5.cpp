@@ -27,11 +27,11 @@ struct CAnimFilterNoGroup : CAnimFilter {
     virtual bool Accepts(const void* entry) const;
 };
 
-struct CAnimationSet {
+class CAnimationSet { public:
     bool FindAnimationByName(const CCharString& name, const CAnimFilter& filter);   // 0x005DC2E0
 };
 
-struct CAppearanceDef {                            // counted def: vptr, count at +4
+class CAppearanceDef { public:                            // counted def: vptr, count at +4
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long          m_count;                         // +0x04
@@ -50,7 +50,7 @@ struct CAppearanceDefPointer {                     // CDefPointer<CAppearanceDef
     CAppearanceDef* operator->() const { return m_pDef; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CAppearanceDefPointer& out);    // 0x0042B0A2
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -67,7 +67,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CAppearanceDefPointer& out)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PBaseDef;                       // +0x70
 };

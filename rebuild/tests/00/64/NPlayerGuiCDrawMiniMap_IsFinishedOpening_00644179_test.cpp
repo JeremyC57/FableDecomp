@@ -4,10 +4,10 @@
 #include <cstdlib>
 
 static bool g_faded, g_showing, g_open; static int g_openCalls = 0;
-struct CDisplayEngine { bool IsScreenFullyFadedOut() { return g_faded; } };
-struct CMainGameComponent { unsigned char p[0x28]; CDisplayEngine* m_pDisplayEngine; };
-struct CWorld { bool IsDisplayingMiniMapOnRegionLoad() { return g_showing; } };
-struct CFadeInFadeOutBase { unsigned char Active; unsigned char r[0x1b]; bool IsOpen() { g_openCalls++; return g_open; } };
+class CDisplayEngine { public: bool IsScreenFullyFadedOut() { return g_faded; } };
+class CMainGameComponent { public: unsigned char p[0x28]; CDisplayEngine* m_pDisplayEngine; };
+class CWorld { public: bool IsDisplayingMiniMapOnRegionLoad() { return g_showing; } };
+class CFadeInFadeOutBase { public: unsigned char Active; unsigned char r[0x1b]; bool IsOpen() { g_openCalls++; return g_open; } };
 struct CDrawMiniMap { unsigned char p0[0xc]; CWorld* World; CMainGameComponent* Component; unsigned char p1[0xe8 - 0x14]; unsigned char Enabled, Active, OldActive, RegionChange; unsigned char Alpha; unsigned char p2[0x100 - 0xed]; CFadeInFadeOutBase FadeInOut;
     bool IsFinishedOpening() { if (RegionChange && Active && Component->m_pDisplayEngine->IsScreenFullyFadedOut() && World->IsDisplayingMiniMapOnRegionLoad() && FadeInOut.Active) return FadeInOut.IsOpen(); return true; } };
 static CDisplayEngine g_eng; static CMainGameComponent g_comp; static CWorld g_world;

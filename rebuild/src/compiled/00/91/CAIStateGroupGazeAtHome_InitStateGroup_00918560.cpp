@@ -44,9 +44,9 @@ public:
 };
 
 class CWorld;
-struct CAIStateGroupBase;
+class CAIStateGroupBase;
 
-struct CTCIdleScheduler {                       // interface type 0xd3
+class CTCIdleScheduler { public:                       // interface type 0xd3
     void RegisterIdleStateGroup(CAIStateGroupBase* group, long idleGroup);   // 0x00801920
 };
 
@@ -59,7 +59,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(void* item);                  // 0x00A01B90
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();                         // own vtable (0x0127B4D8 for CThingGameObject)
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -69,7 +69,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

@@ -3,8 +3,8 @@
 #include <cstdio>
 #include <list>
 #include <utility>
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 static int g_losCalls = 0;
 struct CTools {
     bool Clear;

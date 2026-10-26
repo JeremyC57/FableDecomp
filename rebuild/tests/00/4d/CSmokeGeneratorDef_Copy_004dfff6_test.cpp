@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSmokeGeneratorDef {
+class CSmokeGeneratorDef { public:
     char pad[0x28];
     int m28;
     int ParticleEmitter;

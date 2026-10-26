@@ -25,7 +25,7 @@ struct C2DVector {
 struct CRGBColour {                         // D3DCOLOR byte order
     unsigned char B, G, R, A;
 };
-struct CUIState {                           // PDB 0x24 bytes
+class CUIState { public:                           // PDB 0x24 bytes
     unsigned long StateChangeFlag;          // +0x00
     long          StateChangeType;          // +0x04 EStateChangeType
     C2DVector     Position;                 // +0x08

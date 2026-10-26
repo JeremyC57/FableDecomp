@@ -5,9 +5,9 @@
 // CIntelligentPointer vtable 0x01238C6C), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
 // Shape: the landed 30-body copy-constructor family (0x008C9790): the source rides in ebx, the pointer member's user copy
 // constructor (`CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }`) is inlined after the string copy. `ret 4`.
-struct CBaseObject;
+class CBaseObject;
 
-struct CCharString {                        // one pointer; the copy constructor runs out of line
+class CCharString { public:                        // one pointer; the copy constructor runs out of line
     void* m_pStringData;
     CCharString(const CCharString& other);   // 0x0099EC30
 };
@@ -23,13 +23,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCreatureAction_UnsheatheItemFromInventory {   // retail sizeof 0xb8
+class CCreatureAction_UnsheatheItemFromInventory { public:   // retail sizeof 0xb8
     virtual void v00();
     unsigned char _body[0xb8 - 4];
     CCreatureAction_UnsheatheItemFromInventory(const CCreatureAction_UnsheatheItemFromInventory& other);   // 0x006A0E80
 };
 
-struct CCreatureAction_UnsheatheToShowToSheatheTrophy : CCreatureAction_UnsheatheItemFromInventory {   // vtable 0x0125F8D4
+class CCreatureAction_UnsheatheToShowToSheatheTrophy : public CCreatureAction_UnsheatheItemFromInventory { public:   // vtable 0x0125F8D4
     CCharString m_animationName;            // +0xb8
     CIntelligentPointer PTrophy;            // +0xbc
     virtual void v00();

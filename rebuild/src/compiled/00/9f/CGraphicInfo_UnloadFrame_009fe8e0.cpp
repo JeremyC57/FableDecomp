@@ -14,13 +14,13 @@ struct GraphicInfoFrame;
 struct FrameData:ManagedTextureOwner {FrameData(const GraphicInfoFrame*);virtual ~FrameData();virtual unsigned long GetUnloadableMemory()const;virtual bool IsResourceLoaded()const;virtual void OnResourceLoaded();virtual unsigned long GetDebugMemoryInUse()const;virtual void ResetDebugMemoryInUse();virtual void ReleaseTexture();bool StopLoading();bool FreeTextureMemory(bool);unsigned char NativeTail[40];}; //009FDC20/PDB00B58150 bool nonconst;009FE460/PDB00B58A80 bool(bool); ctor00B589A0
 // Native FrameData VT0129C89C: A010A0,42D930,42D940,9FD830,9FD7F0,9FF860,42D970,42D980,9FDCB0,9FD4D0,9FEA00. Full11 real slots, no padding virtuals.
 struct FramePointer {FrameData*P;void Reset(){if(P){FrameData*old=P;if(old->Release()==0)old->Delete();P=0;}P=0;}};
-struct CGraphicInfo;
+class CGraphicInfo;
 struct GraphicInfoFrame {void*VTable;unsigned short FrameNum;signed char SmallMipmapLevel;FramePointer Data;CGraphicInfo*GraphicInfo;}; //native16
 #pragma pack(push,1)
 struct GraphicHeader {unsigned short Width,Height,Depth,FrameWidth,FrameHeight,FrameCount;CPixelFormat PixelFormat;unsigned char TransparencyType,MipmapLevels,Flags,Padding;unsigned long FrameDataSize,CompressedMipmapSizes;};
 #pragma pack(pop)
 struct BankNative {unsigned char NativeState[0x268];unsigned long UnloadFrameDelay;}; //retail+268 vs donor+2E4, actual donor header retained
-struct CGraphicInfo {CGraphicInfo();GraphicHeader Header;long TextureType;BankNative*Bank;long Index;GraphicInfoFrame*Frames;void UnloadFrame(unsigned long);}; //actual default PDB00B57D00; no repository header
+class CGraphicInfo { public:CGraphicInfo();GraphicHeader Header;long TextureType;BankNative*Bank;long Index;GraphicInfoFrame*Frames;void UnloadFrame(unsigned long);}; //actual default PDB00B57D00; no repository header
 __forceinline const unsigned long& MinAge(const unsigned long&a,const unsigned long&b){return a<b?a:b;}
 void CGraphicInfo::UnloadFrame(unsigned long index){
  unsigned long count=Header.FrameCount;

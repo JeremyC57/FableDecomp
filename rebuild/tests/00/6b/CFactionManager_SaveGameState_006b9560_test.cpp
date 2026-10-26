@@ -47,8 +47,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #define FABLE_STATIC_ASSERT(expression) \
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -56,8 +56,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -146,14 +146,14 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 CCharString __fastcall GFIntToCharString(long);
 CCharString __fastcall operator+(const char*,const CCharString&);
-struct CFaction;
-struct CPersistContext {
+class CFaction;
+class CPersistContext { public:
  void Transfer(const char*,long&,const long&);
  void TransferFaction(const char*,CFaction&);
 };
 struct CountedFaction { CFaction* Data; void* Info; __forceinline CFaction& operator*() const { return *Data; } };
 struct FactionEntry { unsigned long Key; CountedFaction Faction; };
-struct CFactionManager {
+class CFactionManager { public:
  FactionEntry *Start,*Finish,*EndOfStorage;
  void SaveGameState(CPersistContext&) const;
 };
@@ -173,7 +173,7 @@ CCharString::operator const char*() const {return storage_?storage_->text:"";}
 CCharString& CCharString::operator=(const CCharString&s) { storage_=s.storage_;return *this; }
 CCharString __fastcall GFIntToCharString(long n) { char b[40];std::sprintf(b,"%ld",n);return CCharString(b,-1); }
 CCharString __fastcall operator+(const char*a,const CCharString& b) { char s[150];std::strcpy(s,a);std::strcat(s,(const char*)b);return CCharString(s,-1); }
-struct CFaction { int id; };
+class CFaction { public: int id; };
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(FactionEntry)==12);
 FABLE_STATIC_ASSERT(offsetof(CFactionManager,Start)==0);

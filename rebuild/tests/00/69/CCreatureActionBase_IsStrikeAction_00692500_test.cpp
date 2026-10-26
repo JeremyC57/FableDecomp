@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureActionBase { int vtbl; };
+class CCreatureActionBase { public: int vtbl; };
 
 bool __fastcall CCreatureActionBase_IsStrikeAction(const CCreatureActionBase* action);
 

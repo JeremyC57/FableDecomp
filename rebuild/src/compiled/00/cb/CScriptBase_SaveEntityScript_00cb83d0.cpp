@@ -9,19 +9,19 @@
 // member at +0x30, ~CCharString @ 0x0099EAE0.
 // Shape: the landed CQuestManager::SaveMasterScriptDataToGameState form (0x004B5030): string at frame +0, the
 // 0x2C-byte context above it with no destructor call.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                   // 0x0099E4B0
     ~CCharString();                                  // 0x0099EAE0
     bool operator!=(const char* text) const;         // 0x0099E960
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _body[0x2c];
     CPersistContext(CCharString& output);            // 0x009BAE10
 };
 
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
     virtual void Persist(CPersistContext& context);  // slot 4 (+0x10)
 };

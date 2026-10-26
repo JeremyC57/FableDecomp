@@ -1,7 +1,7 @@
 // behaviour test for 0x00AF3CF0 NParticleEngine::GFInterpolate(const C3DVector& a, const C3DVector& b, float t): a * (1 - t) + b * t
 #include <cstdio>
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

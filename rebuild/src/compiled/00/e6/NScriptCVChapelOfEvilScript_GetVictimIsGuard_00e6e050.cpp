@@ -15,8 +15,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharStringData { const char* m_pText; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pText; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -24,7 +24,7 @@ struct CCharString {
 };
 extern "C" char* __cdecl strstr(const char* text, const char* pattern);   // 0x00BFEB3A
 
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
 };

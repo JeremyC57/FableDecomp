@@ -14,7 +14,7 @@
 // dtor code is emitted for them).  The last dtor is tail-called.
 
 // ---- CCharString: destroyed via 0x99b510 (non-trivial, has vtable/heap) ----
-struct CCharString {
+class CCharString { public:
     char* m_buf;              // +0x00
     ~CCharString();           // -> 0x99b510
 };

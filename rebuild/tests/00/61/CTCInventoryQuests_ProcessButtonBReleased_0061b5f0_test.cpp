@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     char pad[0x157];
     unsigned char m_flag;   // +0x157
 };

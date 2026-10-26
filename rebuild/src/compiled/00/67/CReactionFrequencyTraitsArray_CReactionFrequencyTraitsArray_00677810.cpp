@@ -9,11 +9,11 @@
 // CReactionFrequencyTraits has a trivial, non-virtual destructor in this build. The class itself is not polymorphic
 // (no vtable store) and is never deleted here, so the TU emits only `??1`.
 // Leaf: ??1CReactionFrequencyTraitsArray
-struct CReactionFrequencyTraits {
+class CReactionFrequencyTraits { public:
     void* __vftable;                                    // +0x00 (polymorphic in the engine; its destructor is trivial)
 };
 
-struct CReactionFrequencyTraitsArray {
+class CReactionFrequencyTraitsArray { public:
     CReactionFrequencyTraits* LowHigh[2][79];           // +0x000 low row, +0x13C high row
     ~CReactionFrequencyTraitsArray();
 };

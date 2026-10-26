@@ -10,7 +10,7 @@ struct SVarChunk_00a646e0 {                        // the chunk tree node: left 
     SVarChunk_00a646e0* m_pRight;                  // +0x10
 };
 
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     unsigned char       _pad00[0xc34];
     SVarChunk_00a646e0* m_pChunkTreeRoot;          // +0xc34
     void RotateLeft(SVarChunk_00a646e0* node);

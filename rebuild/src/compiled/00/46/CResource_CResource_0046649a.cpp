@@ -12,15 +12,15 @@
 // so the store is not dead -- a default constructor drops it); the implicit copy constructor moves every member,
 // floats included, with integer moves. VC7.1 emits the implicit copy constructor out of line, so the placement-new
 // helper only makes the TU emit it -- it is not part of the retail body.
-struct CResourceList;
+class CResourceList;
 
 // engine/CIVCountedPointeeBase.h names the count IVRefCount (+4); its generated header flattens the vptr.
-struct CIVCountedPointeeBase {               // vtable 0x012354D0
+class CIVCountedPointeeBase { public:               // vtable 0x012354D0
     virtual ~CIVCountedPointeeBase();
     long IVRefCount;                           // +0x04
 };
 
-struct CResource : CIVCountedPointeeBase {   // vtable 0x012354A4, 0x1C bytes
+class CResource : public CIVCountedPointeeBase { public:   // vtable 0x012354A4, 0x1C bytes
     CResourceList* ResourceList;             // +0x08
     CResource*     PrevResource;             // +0x0C
     CResource*     NextResource;             // +0x10

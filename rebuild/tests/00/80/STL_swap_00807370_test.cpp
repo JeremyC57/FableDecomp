@@ -1,6 +1,6 @@
 // Behaviour test for 0x00807370 STLport swap<CIntelligentPointer<CThing> >: the two pointers exchange their things.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPointer {
     CThing* Item;
     CPointer() : Item(0) { }

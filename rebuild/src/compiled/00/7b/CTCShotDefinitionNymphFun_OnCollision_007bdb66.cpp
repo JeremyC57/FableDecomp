@@ -7,12 +7,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet;
-struct CCharString {
+class CRightHandedSet;
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -52,14 +52,14 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CThing* GetPItem() const;                           // 0x00A01B50
 };
-struct CWorldMap { float GetHeightZBelowPos(const C3DVector& pos); };   // 0x0063E480
+class CWorldMap { public: float GetHeightZBelowPos(const C3DVector& pos); };   // 0x0063E480
 struct CTrapSpawnDef { unsigned char _pad[0x3c]; long TrapObjectType; };   // +0x3c
 struct CTCTrapSpawner { unsigned char _pad[0x0c]; CTrapSpawnDef* Def; };   // TC 0xF5
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long type, const C3DVector& pos, long team, const CRightHandedSet* rh, unsigned long flags,
                                            const CCharString& name);   // 0x00703210
 };
-struct CTCTrapBase {
+class CTCTrapBase { public:
     void SetThingAsImmune(CThing* thing);               // 0x0078839A
     void ManualTrigger();                               // 0x00788388
 };

@@ -17,18 +17,18 @@ class CEngineSceneRenderStats;
 class CEngineInternalPrimitiveBase;
 class CEngineSubPrimitiveBase;
 
-struct CEngineSubPrimitiveChain {
+class CEngineSubPrimitiveChain { public:
     CEngineSubPrimitiveBase* LastOpaque;
     CEngineSubPrimitiveBase* LastAlpha;
     CEngineSubPrimitiveChain() : LastOpaque(0), LastAlpha(0) {}
 };
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06();
     virtual long RenderPrimitive(CEngineInternalPrimitiveBase& primitive, long layer, CEngineSubPrimitiveChain& chain);   // slot 7
 };
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };
@@ -49,11 +49,11 @@ public:
     CEngineInternalPrimitiveBase* NextLayerMask;    // +0x40
 };
 
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     void RenderCellAll(unsigned long x, unsigned long y, long layer, CEngineSceneRenderStats& stats);   // 0x00B92C20
 };
 struct CGridPointer { CEngineSceneGrid* m_pObject; long* m_pCount; };
-struct CEngineSceneMap {
+class CEngineSceneMap { public:
     unsigned char  _pad[0x18];
     CGridPointer*  GridLevelsFirst;               // +0x18 (GridLevels.first)
 };
@@ -83,7 +83,7 @@ CEngineSceneRenderStats& CRenderStatsMap::operator[](const long& key)
 }
 #pragma auto_inline(on)
 
-struct CEngineScene {
+class CEngineScene { public:
     unsigned long                 Base;           // +0x00
     COuterNode*                   MapListHead;    // +0x04
     unsigned long                 MapListCount;   // +0x08

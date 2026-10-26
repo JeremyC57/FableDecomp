@@ -9,16 +9,16 @@
 //   CNavigatorAStar LastNavigableNodeVisited +0x88; CANavQuadTreeNode Blocked +0x0f.
 // Shape: named C2DVector locals for the two lookups; the final test is one `&&` chain (int-valued exits), the early
 //   failures are plain `return false`.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C3DVector { float X, Y, Z; };
-struct CNavRegion {
+class C3DVector { public: float X, Y, Z; };
+class CNavRegion { public:
     bool IsConnectedTo(const CNavRegion* other) const;   // 0x00A77780
 };
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -33,10 +33,10 @@ struct CANavQuadTreeNode {
     bool          LeafNode;                        // +0x0e
     bool          Blocked;                         // +0x0f
 };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer);   // 0x00A14F70
 };
-struct CNavigatorExternalInterface {
+class CNavigatorExternalInterface { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -55,8 +55,8 @@ struct CNavigatorExternalInterface {
     virtual void v15();
     virtual unsigned char GetNavLayer(const C3DVector& position) const;   // slot 16 (+0x40)
 };
-struct CSteeringAgent;
-struct CNavigatorBase {
+class CSteeringAgent;
+class CNavigatorBase { public:
     virtual void v00();
     unsigned char                _pad04[0x10];
     CNavigatorExternalInterface* PInterface;        // +0x14
@@ -67,7 +67,7 @@ struct CNavigatorBase {
     CANavQuadTreeNode* FindNearestNavigableNode(CANavQuadTreeNode* from, CANavQuadTreeNode* node, const C3DVector& position, float distance, CNavigatorManager* manager) const;   // 0x00A475C0
     bool IsAnyPartOfNodeWithinDistOfPos(CANavQuadTreeNode* node, float distance, const C3DVector& position, C2DVector* nearest) const;   // 0x00A471D0
 };
-struct CNavigatorAStar : CNavigatorBase {
+class CNavigatorAStar : public CNavigatorBase { public:
     unsigned char      _pad24[0x88 - 0x24];
     CANavQuadTreeNode* LastNavigableNodeVisited;   // +0x88
     virtual bool CanNavigateToPos(const C3DVector& from, const C3DVector& to, float radius, bool useLastNavigable) const;

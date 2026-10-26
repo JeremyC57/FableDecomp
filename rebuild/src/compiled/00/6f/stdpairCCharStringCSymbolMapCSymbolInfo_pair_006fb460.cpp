@@ -16,7 +16,7 @@ public:
 
 class CSymbolMap {
 public:
-    struct CSymbolInfo {                                     // 0xc bytes
+    class CSymbolInfo { public:                                     // 0xc bytes
         CCharString GroupName;                               // +0x00
         CCharString EntryName;                               // +0x04
         long        Val;                                     // +0x08

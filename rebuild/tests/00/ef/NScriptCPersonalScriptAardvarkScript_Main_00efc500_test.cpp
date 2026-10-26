@@ -6,7 +6,7 @@
 #include <string>
 
 static std::string g_log;
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CScriptThingLocal {
     CScriptThing thing;
     int destroyed;
@@ -33,7 +33,7 @@ struct CMovie {
     void DestroyInline() { g_log += "~movie "; }
     void DestroyOutOfLine() { g_log += "~movie "; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int startFailures;
     CScriptThing hero;
     CHandle* lastHandle;
@@ -59,7 +59,7 @@ struct CGameScriptInterface {
     void Pause(float seconds) { char b[32]; sprintf(b, "pause%g ", seconds); g_log += b; }
     void PauseAllNonScriptedEntities(bool pause) { g_log += pause ? "freeze " : "thaw "; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     CGameScriptInterface* GSI;
     int calls, stopAt;
     CHandle** speaker;
@@ -69,11 +69,11 @@ struct CScriptBase {
         return ++calls >= stopAt;
     }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CHandle { };
-struct CScriptGameResourceObjectMovieBase : CMovie { };
+class CScriptGameResourceObjectScriptedThingBase : public CHandle { public: };
+class CScriptGameResourceObjectMovieBase : public CMovie { public: };
 
 namespace NScript {
-struct CPersonalScript_AardvarkScript : CScriptBase {
+class CPersonalScript_AardvarkScript : public CScriptBase { public:
     void Main();
 };
 void CPersonalScript_AardvarkScript::Main()

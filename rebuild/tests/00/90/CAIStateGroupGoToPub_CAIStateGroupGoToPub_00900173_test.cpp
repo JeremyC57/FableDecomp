@@ -8,13 +8,13 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) { ++g_baseCtors; }
     virtual ~CBaseIntelligentPointer() {}
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
-struct CThing {}; struct CThingObject {}; struct CThingBuilding {}; struct CThingAICreature {};
+class CThing { public:}; class CThingObject { public:}; class CThingBuilding { public:}; class CThingAICreature { public:};
 
 static int g_stateBase = 0;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIStateGroupBase() { ++g_stateBase; }
     virtual ~CAIStateGroupBase() {}
 };

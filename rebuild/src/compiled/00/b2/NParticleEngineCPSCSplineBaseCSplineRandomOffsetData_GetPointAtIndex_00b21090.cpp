@@ -8,15 +8,15 @@
 //   with the current one (control-point counts differ, ThisSpline's count computed first), it is re-snapshotted
 //   (array, Tension, EndPointsConnected) and the current point is returned; else last frame's point. The 12-byte
 //   C3DVector copies are POD dword moves; the model is the native 20-byte CCardinalSpline of the landed siblings.
-struct C3DVector { float X, Y, Z; };
-template<class T> struct CArray {
+class C3DVector { public: float X, Y, Z; };
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     CArray& operator=(const CArray& other);                 // 0x0075B8D0
     long Size() const { return (long)(m_end - m_begin); }
     T* begin_() const { return m_begin; }
     T& operator[](long i) { return *(begin_() + i); }
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;
     float Tension;
     bool EndPointsConnected;

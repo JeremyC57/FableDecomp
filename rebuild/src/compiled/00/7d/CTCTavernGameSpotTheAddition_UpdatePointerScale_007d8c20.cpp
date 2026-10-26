@@ -10,14 +10,14 @@
 //   vectors): TavernGameState +0xc0; CTCTavernGameSpotTheAddition (PDB minus 0x18 up to KnickKnacks, minus 0x1c after):
 //   Pointer +0x104, PointerScale +0x108, Selected +0x144; CTavernGameDef PointerPhaseSpeed +0x1a0 (PDB +0x1a4 - 4).
 // Shape: two def lookups through CDefPointer locals; the graphic appearance comes through the out-parameter GetInterface.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -36,7 +36,7 @@ struct CThing {
     }
 };
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetScale(float scale);                             // 0x004BFA50
 };
 }
@@ -44,7 +44,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                                 // slot 1
 };
-struct CTavernGameDef : CDefVirtual {
+class CTavernGameDef : public CDefVirtual { public:
     long m_count;                                           // +0x04
     unsigned char _pad_0x08[0x1a0 - 0x08];
     float PointerPhaseSpeed;                                // +0x1a0
@@ -56,7 +56,7 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) Object->Release(); }
     CTavernGameDef* operator->() const { return Object; }
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _pad_0x04[0xc0 - 0x04];
     long          TavernGameState;                          // +0xc0

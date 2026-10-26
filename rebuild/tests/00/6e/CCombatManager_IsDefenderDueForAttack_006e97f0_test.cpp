@@ -3,20 +3,20 @@
 #include <cstdio>
 
 static int g_traces = 0;
-struct CCharString { int len; };
+class CCharString { public: int len; };
 static CCharString operator+(const CCharString& a, const char*) { CCharString r = a; r.len += 1; return r; }
 static void CombatTrace(const CCharString&) { ++g_traces; }
-struct CThingCreatureBase { bool Attackable; int Id; };
+class CThingCreatureBase { public: bool Attackable; int Id; };
 static bool IsAbleToBeAttacked(const CThingCreatureBase& c) { return c.Attackable; }
 static CCharString GetName(const CThingCreatureBase&) { CCharString s = { 3 }; return s; }
-struct CCombatSequenceBase { bool Melee, Ranged, Running; bool IsMeleeSequence() { return Melee; } bool IsRangedSequence() { return Ranged; } };
+class CCombatSequenceBase { public: bool Melee, Ranged, Running; bool IsMeleeSequence() { return Melee; } bool IsRangedSequence() { return Ranged; } };
 struct CCombatantInfo {
     CThingCreatureBase* Parent;
     long CurrentSequence; CCombatSequenceBase* Sequences[2];
     CThingCreatureBase* Attackers[4]; unsigned long AttackerCount;
     long* AttackPattern; long AttackPatternIndex;
 };
-struct CCombatManager {
+class CCombatManager { public:
     CCombatantInfo* Infos; int Count;
     const CCombatantInfo& GetCombatantInfo(int id) const { for (int i = 0; i < Count; ++i) if (Infos[i].Parent->Id == id) return Infos[i]; return Infos[0]; }
     bool IsAnotherAttackerAttacking(const CCombatantInfo& info) const

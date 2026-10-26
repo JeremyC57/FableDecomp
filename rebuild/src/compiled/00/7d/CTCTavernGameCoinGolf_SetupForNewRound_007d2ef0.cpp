@@ -20,7 +20,7 @@
 class CThing;
 class CThing { };
 class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
@@ -41,7 +41,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerThingObject : CBaseIntelligentPointer {
     operator CThingObject*() const { return (CThingObject*)GetPItem(); }
 };
-struct Coin {                                   // 0x3c bytes
+class Coin { public:                                   // 0x3c bytes
     long      _pad_0x00;
     C2DVector Pos;                              // +0x04
     C2DVector Velocity;                         // +0x0c
@@ -72,7 +72,7 @@ struct CTCTavernGameCoinBase {
     void FindObstacles();                       // 0x008EFB00
     void AddNewCoin(const C3DVector& position); // 0x008EFA00
 };
-struct CTCTavernGameCoinGolf : CTCTavernGameCoinBase {
+class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     float         ZAngle;                       // +0x148
     float         XAngle;                       // +0x14c
     float         CameraDistance;               // +0x150

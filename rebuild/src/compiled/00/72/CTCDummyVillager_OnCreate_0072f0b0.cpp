@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCDummyVillager { void OnCreate(); };
+class CTCDummyVillager { public: void OnCreate(); };
 void CTCDummyVillager::OnCreate() {}

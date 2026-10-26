@@ -12,7 +12,7 @@
 // `call [eax+1Ch]`), returning that pointer.
 #include "engine/CScriptThing.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy: hidden-pointer return
 };

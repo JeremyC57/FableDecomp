@@ -18,12 +18,12 @@ extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 
 struct SScalarTag { SScalarTag() { } };
 
-struct CBaseClass {                                    // vtable 0x01231710
+class CBaseClass { public:                                    // vtable 0x01231710
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
 
-struct CEnginePrimitiveHandle;
-struct CEnginePersistentPrimitiveBase {
+class CEnginePrimitiveHandle;
+class CEnginePersistentPrimitiveBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1
     virtual void v02();
@@ -31,7 +31,7 @@ struct CEnginePersistentPrimitiveBase {
     long m_refCount;                                   // +0x04
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     ~CIVCountedPointer() { Release(); }
     void Release()
@@ -48,7 +48,7 @@ template <class T> struct CIVCountedPointer {
     long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {           // vtable 0x0122F598, 8 bytes
+class CEnginePrimitiveHandle : public CBaseClass { public:           // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
     __forceinline virtual ~CEnginePrimitiveHandle()
     {
@@ -114,7 +114,7 @@ struct SProjectileTrailList {                          // list<CWeaponTrailEntry
     ~SProjectileTrailList();                           // 0x004DB5BB
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                                // 0x00686830
     unsigned char _body[8];
 };

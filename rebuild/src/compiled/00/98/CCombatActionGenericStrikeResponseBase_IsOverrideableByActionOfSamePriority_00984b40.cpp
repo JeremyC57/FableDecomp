@@ -16,7 +16,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -34,7 +34,7 @@ inline C3DVector operator-(const C3DVector& a, const C3DVector& b)
     return result;
 }
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     unsigned char _pad44[0x91 - 0x44];

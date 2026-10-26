@@ -4,7 +4,7 @@
 // Retail body is a single 5-byte `jmp rel32` tail-call thunk (relocation-masked).
 // Model as a __fastcall(this, src) that tail-calls the real Copy implementation.
 // Modeled member of the target type.
-struct CSpecialAbilitiesFireballSpellDef;
+class CSpecialAbilitiesFireballSpellDef;
 
 // The tail-call target (relocation-masked; a plausible extern decl suffices).
 extern void __fastcall CSpecialAbilitiesFireballSpellDef_Copy_impl(

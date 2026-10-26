@@ -15,7 +15,7 @@
 // copied with integer load/store pairs (plain assignment never touches the FPU).
 #pragma optimize("s", on)   // the def module is size-optimised: every copy pair goes through eax
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                            // +0x04..+0x3c
     CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
@@ -28,11 +28,11 @@ struct CEnvironmentThemeDefArray {                                        // ret
     CEnvironmentThemeDefArray& operator=(const CEnvironmentThemeDefArray& other);   // 0x00472EDA
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
 
-struct CEnvironmentThemeDaySetDef : CParentDefClassBase {                 // vtable 0x0123360C
+class CEnvironmentThemeDaySetDef : public CParentDefClassBase { public:                 // vtable 0x0123360C
     CEnvironmentThemeDefArray TimeTheme;                                  // +0x3c
     float                     SunTilt;                                    // +0x48
     float                     SunRotate;                                  // +0x4c

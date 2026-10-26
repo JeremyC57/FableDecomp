@@ -16,7 +16,7 @@
 //   offsets, so the class is modelled locally.
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                  // 0x0099B510
 };
@@ -24,7 +24,7 @@ struct CBaseClassNonCopyable {                       // vtable 0x0129A7C4
     virtual void v00();
     ~CBaseClassNonCopyable();                        // 0x0099A300
 };
-struct CDiskFileWin32 : CBaseClassNonCopyable {      // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:      // vtable 0x0122D06C
     virtual void v00();
     virtual void Open();                             // slot 1
     virtual void Close();                            // slot 2 (+8), 0x0099A920
@@ -37,7 +37,7 @@ struct CDiskFileWin32 : CBaseClassNonCopyable {      // vtable 0x0122D06C
     ~CDiskFileWin32() { Close(); }
 };
 
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char Data[0x34];
     ~CInputEvent();                                  // 0x00A03B30
 };
@@ -53,8 +53,8 @@ struct CDefBase {
     long RefCount;                                   // +4
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CControlsDef : CDefBase { };
-template <class T> struct CDefPointer {
+class CControlsDef : public CDefBase { public: };
+template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
     {
@@ -65,8 +65,8 @@ template <class T> struct CDefPointer {
     }
 };
 
-struct CInputTypeBase;
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+class CInputTypeBase;
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
 struct SControlEntry { long Action; CCountedPointer<CInputTypeBase> Input; };   // pair<EGameAction, CCountedPointer<const CInputTypeBase>>
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
@@ -89,15 +89,15 @@ struct CControlsMap {                                // CVectorMap<EGameAction, 
     bool                         Dirty;              // +0x0c
 };
 
-struct CInputProcessManager {
+class CInputProcessManager { public:
     virtual void v00();
     unsigned char _body[0x6f8 - 0x04];
     ~CInputProcessManager();                         // 0x00A0D810
 };
 
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CGamePlayerInterface : CInputProcessManager { // vtable 0x01231BDC
+class CMainGameComponent;
+class CPlayerManager;
+class CGamePlayerInterface : public CInputProcessManager { public: // vtable 0x01231BDC
     virtual void v00();
     CMainGameComponent* Component;                   // +0x6f8
     CPlayerManager*     PlayerManager;               // +0x6fc

@@ -2,7 +2,7 @@
 #include <cstdio>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
 static int g_find = 0; static const CCharString* g_findValue = 0; static CCharString* g_findResult = 0;
 static CCharString* __fastcall FindString_004b8e40(CCharString* first, CCharString* last, const CCharString& value, const SRandomAccessIteratorTag& tag)
@@ -18,7 +18,7 @@ struct CCharStringVector {
     void push_back(const CCharString& value) { ++g_pushBack; g_pushed = &value; }
     CCharString* erase(CCharString* where) { ++g_erase; g_erased = where; return where; }
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad_0x00[0x40];
     CCharStringVector CreatureGenerationDisabledQuests;   // +0x40
     void SetCreatureGenerationEnabledDuringScript(const CCharString& script, bool enabled);

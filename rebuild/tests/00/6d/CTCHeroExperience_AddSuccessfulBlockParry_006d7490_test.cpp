@@ -7,7 +7,7 @@ struct HelperData {
 
 int g_blockParryCount = 0;
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     char pad[0x38];
     long m38;
 

@@ -6,7 +6,7 @@
 // 0x00455E72 builds this object at +0x3c, and the landed CSimVoice::HasVoice 0x00680910 has the map layout.
 // Shape: the vtable store between `xor eax,eax` and the member stores -- the zeroes belong to the map member's
 // inline constructor (vector +8/+0xc/+0x10, dirty flag +0x15).
-struct CInitBaseClass {                         // vtable 0x0129A7CC
+class CInitBaseClass { public:                         // vtable 0x0129A7CC
     virtual ~CInitBaseClass();
     bool m_initialised;                         // +0x04
     CInitBaseClass();                           // 0x0099A310
@@ -30,7 +30,7 @@ struct CVoiceMap {                              // CVectorMap<EReactionSpeechTyp
     CVoiceMap() : m_pFirst(0), m_pLast(0), m_pEnd(0), m_dirty(false) { }
 };
 
-struct CSimVoice : CInitBaseClass {             // vtable 0x012337AC
+class CSimVoice : public CInitBaseClass { public:             // vtable 0x012337AC
     CVoiceMap Voices;                           // +0x08
     CSimVoice();
     virtual ~CSimVoice();

@@ -1,7 +1,7 @@
 // Behaviour test for CHandleBasedMemoryPool::Allocate @ 0x00C28C20 (copy of the model and logic; callees are fakes).
 #include <cstdio>
 
-struct CFailedAllocationHandler {
+class CFailedAllocationHandler { public:
     int calls;
     int freesPerCall;
     int budget;                       // how many calls succeed

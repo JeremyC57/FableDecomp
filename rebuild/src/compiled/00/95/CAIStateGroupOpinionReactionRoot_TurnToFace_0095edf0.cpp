@@ -8,7 +8,7 @@
 // then `if (r != 2) { Terminate(); return false; } return true;` (the failure path falls through, the
 // `mov al,1` tail is out of line). The member is unaligned
 // at +0x6b (engine header, pack 1), so the class is modelled packed.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -24,17 +24,17 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x0
     CIntelligentPointerConstThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   // 0x0097D6F0
     void Terminate();                           // 0x008FCF40
 };
 
-struct CTCTalk;
+class CTCTalk;
 
 #pragma pack(push, 1)
-struct CAIStateGroup_OpinionReactionRoot : CAIStateGroupBase {
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     CTCTalk* PTCTalk;                           // +0x14
     long CurrentReactionType;                   // +0x18
     bool ReactionFlags[79];                     // +0x1c

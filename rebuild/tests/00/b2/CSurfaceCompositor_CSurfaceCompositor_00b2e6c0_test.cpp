@@ -2,21 +2,21 @@
 #include <cstdio>
 static int g_log[32]; static int g_n = 0;
 class CCharString { public: int id; ~CCharString() { g_log[g_n++] = id; } };
-struct CCPPointerInfo { unsigned long RefCount; void (*DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: unsigned long RefCount; void (*DeleteFunc)(void* data); void* Data; };
 static int g_dataDeleted = 0;
 static void DeleteData(void* data) { (void)data; ++g_dataDeleted; g_log[g_n++] = 50; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     void ReleaseInfo() { if (Info) { --Info->RefCount; if (Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } }
     ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
 };
 static CCPPointerInfo* NewInfo(unsigned long refs) { CCPPointerInfo* i = new CCPPointerInfo; i->RefCount = refs; i->DeleteFunc = DeleteData; i->Data = 0; return i; }
 static int g_restores = 0;
-struct CRenderStateManager { void RestoreCaptureBlock() { ++g_restores; g_log[g_n++] = 60; } };
+class CRenderStateManager { public: void RestoreCaptureBlock() { ++g_restores; g_log[g_n++] = 60; } };
 static CRenderStateManager g_manager; static CRenderStateManager* g_pRenderStateManager = &g_manager;
 struct CRenderStateCaptureBlock { bool Open; ~CRenderStateCaptureBlock() { if (Open) { Open = false; g_pRenderStateManager->RestoreCaptureBlock(); } } };
 class CBase { public: virtual ~CBase() { g_log[g_n++] = 100; } };
-struct CRenderTarget; struct CSurface;
+class CRenderTarget; class CSurface;
 class CSurfaceCompositor : public CBase { public: long CurrentBlend; CRenderStateCaptureBlock StateCaptureBlock; bool WasRendering; CSurface* DestSurface; CCountedPointer<CRenderTarget> RenderTarget; float OldWindow[4]; long LayerCount; bool AlphaTarget; };
 int main()
 {

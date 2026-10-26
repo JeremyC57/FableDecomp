@@ -17,7 +17,7 @@ extern "C" int __cdecl printf(const char* format, ...);
 // Shape: the count is the signed 24-byte difference; the walk keeps the entry pointer in a frame slot and VC's
 // strength-reduced pointer to its instance name in ebx (component and flag at -0x0c / -0x04); the name temporary
 // is destroyed right after it is written.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CCharString {
 public:
@@ -37,7 +37,7 @@ public:
 struct CParticleUpdateParameters { unsigned char m_data[0x24]; };   // retail 0x24 bytes (PDB 0x2c)
 
 namespace NParticleEngine {
-struct CPSCBase {                                  // particle-system component; slots by retail call offsets
+class CPSCBase { public:                                  // particle-system component; slots by retail call offsets
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CCharString GetName();                                     // slot 3 (+0x0c)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();

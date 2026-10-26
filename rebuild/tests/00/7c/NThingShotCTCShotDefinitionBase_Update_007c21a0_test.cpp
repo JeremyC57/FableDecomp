@@ -5,16 +5,16 @@
 // the post-update steps.
 static char g_log[256];
 static void logc(const char* s) { strcat(g_log, s); strcat(g_log, ","); }
-struct CWorld {
+class CWorld { public:
     static long s_frame;
     static long GetWorldFrame() { return s_frame; }
 };
 long CWorld::s_frame = 0;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool moving;
     void SetAsMoving(bool m) { moving = m; logc("moving"); }
 };
-struct CThing {
+class CThing { public:
     CTCPhysicsBase* PhysicsTC;
     bool killed;
     void Kill(bool removeNow) { killed = removeNow; logc("kill"); }
@@ -38,7 +38,7 @@ struct CPtrVector {
     CPtr* end() { return _M_finish; }
     CPtr* erase(CPtr* first, CPtr* last) { _M_finish = first + (_M_finish - last); return first; }
 };
-struct CThingShotDef { long NumSubShots; float SubShotDelay; bool KillOnSubShots; };
+class CThingShotDef { public: long NumSubShots; float SubShotDelay; bool KillOnSubShots; };
 static long g_framesPerSecond = 30;
 struct CTCShotDefinitionBase {
     CThing* ParentThing;

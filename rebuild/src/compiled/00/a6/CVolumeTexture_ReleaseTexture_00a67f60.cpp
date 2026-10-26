@@ -24,7 +24,7 @@ struct IDirect3DVolumeTexture9 {                   // IUnknown + IDirect3DResour
     virtual unsigned long __stdcall GetLOD();
     virtual unsigned long __stdcall GetLevelCount();                         // slot 13 (+0x34)
 };
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     unsigned long GetAllocationSize(void* block);  // 0x009F2390
 };
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
@@ -34,14 +34,14 @@ struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A2E0
 };
-struct CVolume : CBase {                           // vtable 0x0129C840
+class CVolume : public CBase { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
     ~CVolume() { ReleaseVolume(true); }
     void ReleaseVolume(bool flag);                 // 0x00A67460
     unsigned long GetByteLength() const;           // 0x00A674E0
     virtual void v00();
 };
-struct CVolumeTexture {                            // vtable 0x0129DC18, 16 bytes (Ego_r.pdb)
+class CVolumeTexture { public:                            // vtable 0x0129DC18, 16 bytes (Ego_r.pdb)
     virtual ~CVolumeTexture();
     IDirect3DVolumeTexture9* PD3DVolumeTexture;    // +0x04
     long                     ByteLength;           // +0x08

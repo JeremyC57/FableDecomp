@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     void* vftable;
     int destroyed;
 };

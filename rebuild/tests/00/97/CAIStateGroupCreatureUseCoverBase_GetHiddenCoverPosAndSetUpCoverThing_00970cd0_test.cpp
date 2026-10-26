@@ -4,9 +4,9 @@
 #define FABLE_ENGINE_CAISTATEGROUP_CREATUREUSECOVERBASE_H
 #define FABLE_ENGINE_CAISTATEGROUPBASE_H
 #define FABLE_ENGINE_CAIBRAIN_H
-struct CThingAICreature;
-struct CAIBrain {void* __vftable;CThingAICreature* Creature;};
-struct CAIStateGroupBase {void* __vftable;CAIBrain* PBrain;};
+class CThingAICreature;
+class CAIBrain { public:void* __vftable;CThingAICreature* Creature;};
+class CAIStateGroupBase { public:void* __vftable;CAIBrain* PBrain;};
 struct CAIStateGroup_CreatureUseCoverBase : CAIStateGroupBase {void* _pad_0x14[2];void* PCoverThing[2];void* CoverList[4];};
 #endif
 // CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing(C3DVector&) -- find a live available cover, release old cover, retain and occupy the new one; yield after a failed position test.
@@ -15,7 +15,7 @@ struct CAIStateGroup_CreatureUseCoverBase : CAIStateGroupBase {void* _pad_0x14[2
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-struct C3DVector {float X,Y,Z;};
+class C3DVector { public:float X,Y,Z;};
 struct CThingRetail;
 struct CIntelligentPointerRetail { virtual void v00(); void* PData; CThingRetail* GetPItem() const; void SetPItem(CThingRetail*); }; //00A01B50/00A01B90
 struct CIntelligentVector { CIntelligentPointerRetail* first; CIntelligentPointerRetail* last; CIntelligentPointerRetail* capacity; unsigned char allocators[4];

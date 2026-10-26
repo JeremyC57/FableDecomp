@@ -14,7 +14,7 @@
 // Label correction: catalogued as `Vector_PushBack_TextureMorph`; the body is CTCSkeletalMorph::AddSkeletalMorph.
 class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
@@ -23,7 +23,7 @@ struct CCharString {
 struct __false_type { __false_type() { } };
 inline void* operator new(unsigned int, void* where) { return where; }
 
-template <class T> struct CArray {                       // retail: the 12-byte STLport vector
+template <class T> class CArray { public:                       // retail: the 12-byte STLport vector
     T* _M_start;                                         // +0x00
     T* _M_finish;                                        // +0x04
     T* _M_end_of_storage;                                // +0x08
@@ -47,15 +47,15 @@ public:
     bool    IsInGlobalUpdateTCs;                         // +0x09
 };
 
-struct C3DSkeletalMorph;
-template <class T> struct CCountedPointer {
+class C3DSkeletalMorph;
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
 };
 
 class CTCSkeletalMorph : public CTCBase {
 public:
-    struct CSkeletalMorph {                              // 12 bytes
+    class CSkeletalMorph { public:                              // 12 bytes
         long        Type;                                // +0x00
         CCharString Name;                                // +0x04
         float       Value;                               // +0x08

@@ -7,16 +7,16 @@
 // zero stores share ebx, the vtable store sinks to just before the GetScriptThing call, then the
 // -1 frame store follows the false flag (declaration order +0x18, +0x1c; the scheduler stores the
 // register zero first).
-struct CThing;
+class CThing;
 
-struct CScriptThing {                       // engine/CScriptThing.h layout (12 bytes)
+class CScriptThing { public:                       // engine/CScriptThing.h layout (12 bytes)
     void* __vftable;
     CThing* PImp_Data;
     void* PImp_Info;
     CScriptThing(const CScriptThing& other);
 };
 
-struct CThing {
+class CThing { public:
     CScriptThing GetScriptThing();          // 0x004C7E50
 };
 

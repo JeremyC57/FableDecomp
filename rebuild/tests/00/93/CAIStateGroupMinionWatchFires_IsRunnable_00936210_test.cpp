@@ -1,16 +1,16 @@
 // Behaviour test for CAIStateGroup_MinionWatchFires::IsRunnable (0x00936210): same logic over mocks.
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CThing { bool dead; bool onFire; C3DVector pos; CThing() : dead(false), onFire(false) { pos.x = pos.y = pos.z = 0; } };
-struct CTCIdleScheduler { bool preferred; bool IsPreferredIdle(void*) { return preferred; } };
-struct CTCPerceiveThing { float radius; float GetSightRadius() { return radius; } };
+class C3DVector { public: float x, y, z; };
+class CThing { public: bool dead; bool onFire; C3DVector pos; CThing() : dead(false), onFire(false) { pos.x = pos.y = pos.z = 0; } };
+class CTCIdleScheduler { public: bool preferred; bool IsPreferredIdle(void*) { return preferred; } };
+class CTCPerceiveThing { public: float radius; float GetSightRadius() { return radius; } };
 struct CThingFilter_OnFire { CThingFilter_OnFire() { } bool operator()(const CThing* t) const { return t->onFire; } };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     C3DVector Pos; float Range;
     CThingFilter_In2DRange(const C3DVector& p, float r) : Pos(p), Range(r) { }
     bool operator()(const CThing* t) const { float dx = Pos.x - t->pos.x, dy = Pos.y - t->pos.y; return dx * dx + dy * dy < Range * Range; }
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector m_pos; CThingCompare_Nearest(const C3DVector& p) : m_pos(p) { }
     float D(const CThing* t) const { float dx = m_pos.x - t->pos.x, dy = m_pos.y - t->pos.y, dz = m_pos.z - t->pos.z; return dx * dx + dy * dy + dz * dz; }
 };

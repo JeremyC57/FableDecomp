@@ -3,7 +3,7 @@ static int g_patchDtors = 0, g_treeDtors = 0, g_releases = 0, g_discards = 0, g_
 class CReleaseTarget { public: void ReleaseMe() { ++g_releases; } };
 typedef void (CReleaseTarget::*CReleaseMethod)();
 struct SCountBlock { long RefCount; CReleaseMethod Release; CReleaseTarget* Object; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object; SCountBlock* Block;
     void Reset()
     {
@@ -16,7 +16,7 @@ static void DiscardAsyncData(CCountedPointer<CData>* d) { ++g_discards; d->Objec
 class CTree { public: virtual ~CTree() { ++g_treeDtors; } };
 class CPatch { public: virtual ~CPatch() { ++g_patchDtors; } };
 class CManager { public: void ReleaseRequest(long r) { g_requestReleased = (int)r; } void RemoveFinished() { ++g_removeFinished; } };
-struct CMap {
+class CMap { public:
     CTree* PatchTree; CPatch* Patches; CCountedPointer<CData> MapFileEntry; CManager* FileBlockManager; unsigned int Words[5];
     CCountedPointer<CData> LoadingPatches; bool IsDynamic; bool PatchTreeBaseLoading;
     void Clear()

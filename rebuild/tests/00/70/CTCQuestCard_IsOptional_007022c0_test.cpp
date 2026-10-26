@@ -1,6 +1,6 @@
 #include <cstdio>
 struct Inner { char pad[0x58]; unsigned char flag; };
-struct CTCQuestCard { char pad0c[0x0c]; Inner* f0c; char pad10[0x04]; int f14; };
+class CTCQuestCard { public: char pad0c[0x0c]; Inner* f0c; char pad10[0x04]; int f14; };
 static bool model(CTCQuestCard* self) {
     if (self->f14 > -1) return true;
     if (self->f0c->flag == 0) return true;

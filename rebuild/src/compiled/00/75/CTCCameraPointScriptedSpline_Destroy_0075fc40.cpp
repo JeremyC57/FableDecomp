@@ -1,7 +1,7 @@
 // 0075fc40 CTCCameraPointScriptedSpline::Destroy
 // Flags: /O2 /Oy
 // Leaf: DestroySpline
-struct CTCCameraPointScriptedSpline;
+class CTCCameraPointScriptedSpline;
 #include <stdlib.h>
 // Layout: retail tree+c0/count+c4, object at+9c, pointer+98, counted pairs60/78/80/88/90, vector68/6c. Donor container widths differ.
 struct Info{int count;void (__fastcall *destroy)(void*);void* data;};

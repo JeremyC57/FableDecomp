@@ -18,7 +18,7 @@ static int fails = 0;
 struct SScalarTag { SScalarTag() { } };   // user constructor: no zero-initialisation of the 1-byte temporary
 
 template <class T>
-struct CArray {                                    // retail CArray: first / last / end of storage (12 bytes)
+class CArray { public:                                    // retail CArray: first / last / end of storage (12 bytes)
     T* first;
     T* last;
     T* end;
@@ -46,7 +46,7 @@ __declspec(noinline) void CArray<T>::InsertGrow(T* where, const T& value, const 
         *p = value;
 }
 #pragma auto_inline(on)
-struct CEnginePrimitiveManager2DSprites {
+class CEnginePrimitiveManager2DSprites { public:
     void GetSupportedTypes(CArray<long>& types);
 };
 

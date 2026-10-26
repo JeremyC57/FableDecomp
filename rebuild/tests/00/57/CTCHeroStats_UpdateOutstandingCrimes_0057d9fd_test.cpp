@@ -2,7 +2,7 @@
 #include <cstdio>
 
 class CTCBase;
-struct CCharString { int id; };
+class CCharString { public: int id; };
 struct CPresenceBits { unsigned long bits; bool test(long kind) { return ((bits >> (kind & 31)) & 1) != 0 && kind == 0x51; } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -25,12 +25,12 @@ public:
     }
 };
 static int g_destroyed = 0;
-struct COpinionDeedEffectsDef {
+class COpinionDeedEffectsDef { public:
     long m_count;
     long KnowledgeLifeInSeconds;
     void ReleaseTemporary() { if (--m_count == 0) ++g_destroyed; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     explicit CDefPointer(T* object) : Object(object) { ++Object->m_count; }
     T* operator->() const { return Object; }
@@ -38,7 +38,7 @@ template <class T> struct CDefPointer {
 };
 static COpinionDeedEffectsDef g_defs[10];
 static int g_fetches = 0;
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType)
     {
         ++g_fetches;
@@ -51,8 +51,8 @@ struct CCrimeStatusMap {
     MirroredCriminalStatus& operator[](const CCharString& key) { return regions[key.id]; }
 };
 static long g_frame = 1000;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
-struct CTCHeroStats {
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CTCHeroStats { public:
     CThing*         ParentThing;
     CCrimeStatusMap OutstandingCrimes;
     CWorld* GetWorld() const { static CWorld w; return &w; }

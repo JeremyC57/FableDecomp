@@ -8,7 +8,7 @@
 // not trusted): a constructor building the CCharString at `this` from the literal with length -1
 // (strlen) and returning `this`. The literal is a thing-component-def class name, so this is the
 // name tag for that def class. CCharString::CCharString(char*, long) @ 0x0099EBF0 is landed-trusted.
-struct CCharString {
+class CCharString { public:
     void* PStringData;                              // +0x00 CCharString::PStringData
     CCharString(const char* text, long length);     // 0x0099EBF0
 };

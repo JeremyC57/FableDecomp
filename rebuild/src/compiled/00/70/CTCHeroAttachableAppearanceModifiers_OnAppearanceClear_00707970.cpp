@@ -19,7 +19,7 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
 namespace NGraphicAppearance {
-struct CPrimitive;
+class CPrimitive;
 class CTCGraphicAppearance {
 public:
     void SetAsChanged(unsigned long mask);      // 0x004BF9E0

@@ -7,16 +7,16 @@
 // reference pushed), then the two member addresses go to edx/ecx; the float result is divided in place by DamageRadius
 // (`fdiv [esi+0Ch]`) and returned in st0.
 // Layout: CTCDExplosion (Ego_r.pdb) -- DamageRadius +0x0c, StartPos +0x20, EndPos +0x2c; no engine header, local model.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;   // 0x004C73D0
 };
 
 float __fastcall Geometry_DistancePointToLineSegment(const C3DVector& lineStart, const C3DVector& lineEnd,
                                                      const C3DVector& point);   // 0x008F5BA0
 
-struct CTCDExplosion {
+class CTCDExplosion { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

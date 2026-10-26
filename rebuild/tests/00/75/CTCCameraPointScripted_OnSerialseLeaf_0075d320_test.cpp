@@ -12,20 +12,20 @@ static int g_floatCalls = 0, g_uidCalls = 0;
 static u64 g_lastUidSaved = 0;
 static bool g_lastRemapSaving = false;
 
-struct CThing { short m_level; bool IsLevelLess() { return m_level == 0; } };
-struct CThingManager {
+class CThing { public: short m_level; bool IsLevelLess() { return m_level == 0; } };
+class CThingManager { public:
     u64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, u64 uid)
     { g_lastRemapSaving = saving; return saving ? uid + 100 + level + (levelLess ? 1 : 0) : uid * 2; }
 };
 static CThingManager g_mgr;
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer(const char*, float& value, const float& def) { ++g_floatCalls; if (!IsSaving()) value = def; }
     void Transfer(const char*, u64& value, const u64& def) { ++g_uidCalls; if (IsSaving()) g_lastUidSaved = value; else value = def + 7; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CTCCameraPointScripted {
+class C3DVector { public: float X, Y, Z; };
+class CTCCameraPointScripted { public:
     CThing* ParentThing;
     C3DVector StartPos, EndPos, LookPos, LookPosEnd;
     u64 ThingUID;

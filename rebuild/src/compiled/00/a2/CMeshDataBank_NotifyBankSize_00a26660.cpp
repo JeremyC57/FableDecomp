@@ -9,11 +9,11 @@
 // over 8-byte {type, size} records strength-reduced to a pointer and a down-counter (`this` spilled to the frame); the type tests are
 // if/else chains over two inline type predicates (types 1/2/4/5 meshes, 3 physics meshes, 6/10/7/8/9 animations; written inline
 // the first chain places its add block at the end), the totals declared mesh, physics, animation.
-struct CMeshDataBankEntry;
-struct C3DMeshInfo;
-struct CPhysicsMeshInfo;
-struct C3DAnimationInfo;
-template<class T> struct CArray {               // retail CArray: 12 bytes
+class CMeshDataBankEntry;
+class C3DMeshInfo;
+class CPhysicsMeshInfo;
+class C3DAnimationInfo;
+template<class T> class CArray { public:               // retail CArray: 12 bytes
     T* First;
     T* Last;
     T* End;
@@ -33,7 +33,7 @@ template<class T> struct vector {               // STLport vector
 };
 inline bool IsMeshType(long type) { return type == 1 || type == 2 || type == 4 || type == 5; }
 inline bool IsAnimationType(long type) { return type == 6 || type == 10 || type == 7 || type == 8 || type == 9; }
-struct CMeshDataBank {
+class CMeshDataBank { public:
     void*         __vftable;                    // +0x000
     unsigned char _bankFile[0x88];              // +0x004 CBankFile
     bool          RetailMode;                   // +0x08c

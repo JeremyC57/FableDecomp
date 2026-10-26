@@ -6,16 +6,16 @@
 // Vtable: slot 9 of CTCLight's primary vtable (0x0125A194); the real slot name is not recorded (catalog "vfunc_9"), so the
 // method is named from what it does. Layout (local model, no engine header): the CTCBase owner at +4, PLightDef +0x18,
 // Active +0x1c. Shape: two byte tests through al/dl, the owner loaded into ecx last; retail keeps `call ; ret`.
-struct CLightDef {
+class CLightDef { public:
     unsigned char _pad_0x00[0x42];
     bool          m_bNeedsAppearanceUpdate;        // +0x42
 };
 
-struct CThing {
+class CThing { public:
     void ForwardToGraphicAppearance(long request);  // 0x004C7590
 };
 
-struct CTCLight {
+class CTCLight { public:
     void*            __vftable;                    // +0x00 (CTCBase)
     CThing*          m_pThing;                     // +0x04 (CTCBase owner)
     unsigned char    _pad_0x08[0x18 - 0x08];

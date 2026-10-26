@@ -13,8 +13,8 @@
 // `if (fabsf(...) < 0.0001f) { counts }` block inside the stats branch (VC7.1 tail-merges it with the no-stats fallback and
 // lays the counts path out first, which also gives retail's frame-slot assignment; a negated test lays the ratio first).
 #include <math.h>
-struct CTCBase;
-struct CCharString {
+class CTCBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const;     // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -60,22 +60,22 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                      // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                 // 0x00449960
 };
 struct CTCInventoryBase {
     long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x58];
     long          WillPower;                        // +0x58
     long          MaxWillPower;                     // +0x5c
 };
 
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     void*   __vftable;                              // +0x00
     CThing* Thing;                                  // +0x04 CTCBase parent thing
     const CPlayerManager* GetPlayerManager() const; // 0x00686D50

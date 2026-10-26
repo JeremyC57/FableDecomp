@@ -35,8 +35,8 @@ template<class T> struct CActionList {               // head-only doubly linked 
     }
 };
 
-struct CActionParam;
-struct CAction {                                     // 0x10 bytes
+class CActionParam;
+class CAction { public:                                     // 0x10 bytes
     long                       ActionType;           // +0x00 EActionType
     CActionList<CActionParam*> UIActionParams;       // +0x04
     CActionList<long>          ThingActionParams;    // +0x08
@@ -77,7 +77,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 
-struct CObserver {                                   // the observer base at +0x04 (vtable, 0x10 bytes of state)
+class CObserver { public:                                   // the observer base at +0x04 (vtable, 0x10 bytes of state)
     virtual void ProcessEvent();
     unsigned char _state[0x10];
 };
@@ -87,12 +87,12 @@ struct IEventSink {                                  // the interface base at +0
 struct CComponentRoot {                              // the primary base: vptr at +0
     virtual ~CComponentRoot();
 };
-struct CChangingStateComponent : CComponentRoot, CObserver, IEventSink {
+class CChangingStateComponent : public CComponentRoot, public CObserver, public IEventSink { public:
     unsigned char _body[0x15c - 0x1c];               // +0x1c .. +0x15c: the base's state
     virtual ~CChangingStateComponent();              // 0x0052CCF0
 };
 
-struct CFrontEndManager {
+class CFrontEndManager { public:
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void RemoveObserver(CObserver* observer);                        // slot 5 (+0x14)
@@ -101,7 +101,7 @@ struct CFrontEndManager {
     virtual void ExecuteAction(const CCountedPointer<CAction>& action);      // slot 14 (+0x38)
 };
 
-struct CComponent;
+class CComponent;
 template<class T> struct CRetailVector {             // STLport vector over a POD element
     T* _M_start;
     T* _M_finish;
@@ -109,7 +109,7 @@ template<class T> struct CRetailVector {             // STLport vector over a PO
     ~CRetailVector() { if (_M_start) free(_M_start); }
 };
 
-struct CSpellContainerList : CChangingStateComponent {
+class CSpellContainerList : public CChangingStateComponent { public:
     float         LastInputTime;                     // +0x15c
     unsigned long SpellIndex;                        // +0x160
     unsigned long SelectedChild;                     // +0x164

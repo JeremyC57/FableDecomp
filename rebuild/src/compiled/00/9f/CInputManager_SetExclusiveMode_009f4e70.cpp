@@ -4,15 +4,15 @@
 // The device pointers are scoped_ptr members read through the inline `operator->` (the pointer lands straight in ecx).
 // Shape: as SetHasInputFocus (0x009F4E20) but each joystick object is null-tested before its virtual call and the body ends
 // with `mov al,1`.
-struct CMouse {
+class CMouse { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void SetExclusiveMode(long exclusive);  // slot 6
 };
-struct CKeyboard {
+class CKeyboard { public:
     virtual void v00(); virtual void v01();
     virtual void SetExclusiveMode(long exclusive);  // slot 2
 };
-struct CJoystick {
+class CJoystick { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void SetExclusiveMode(long exclusive);  // slot 12
@@ -27,7 +27,7 @@ struct CCountedPointer_CJoystick {                  // 8 bytes: object, count bl
     void*      m_pCount;
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char _pad04[0x20];                     // +0x04 the event vectors and counters
     scoped_ptr<CMouse>    PMouse;                   // +0x24

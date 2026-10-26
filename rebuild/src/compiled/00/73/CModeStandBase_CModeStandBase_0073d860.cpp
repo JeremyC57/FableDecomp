@@ -12,7 +12,7 @@
 // pointer-to-member, delete the block, clear both words); a NON-virtual destructor on a `__declspec(novtable)` class.
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                  // 0x0099EAE0
 };
@@ -25,7 +25,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                                    // +0x00
     SCountBlock* m_pBlock;                           // +0x04
     CCountedPointer() : m_pObject(0), m_pBlock(0) { }
@@ -43,17 +43,17 @@ struct CCountedPointer {
     }
 };
 
-struct CAnimFilterBase {                             // vtable 0x0122FFCC
+class CAnimFilterBase { public:                             // vtable 0x0122FFCC
     virtual void v00();
     ~CAnimFilterBase() { }
 };
 
-struct CAnimFilterOfGroup : CAnimFilterBase {        // vtable 0x01267568 (not stored by the implicit destructor)
+class CAnimFilterOfGroup : public CAnimFilterBase { public:        // vtable 0x01267568 (not stored by the implicit destructor)
     CCharString   Group;                             // +4
     unsigned long GroupCRC;                          // +8
 };
 
-struct CThing;
+class CThing;
 struct CModeBase {                                   // CTCCreatureModeManager::CModeBase, vtable 0x012673CC
     virtual void v00();
     CThing*            ParentThing;                  // +0x04
@@ -63,7 +63,7 @@ struct CModeBase {                                   // CTCCreatureModeManager::
     ~CModeBase() { }
 };
 
-namespace NAnimationEntryBodge { struct CAnimEntryLite; }
+namespace NAnimationEntryBodge { class CAnimEntryLite; }
 
 struct __declspec(novtable) CModeStandBase : CModeBase {
     long          IdleCounter;                       // +0x1c

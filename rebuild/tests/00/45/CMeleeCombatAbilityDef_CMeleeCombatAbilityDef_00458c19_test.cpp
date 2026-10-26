@@ -5,7 +5,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_baseCtor = 0, g_statsCtor = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _base[0x38];
     CParentDefClassBase() { ++g_baseCtor; memset(_base, 0x77, sizeof(_base)); }
@@ -22,9 +22,9 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CAllocProxy<T> end;
     CRetailVector() : first(0), last(0), end(0) { }
 };
-struct CDefString { long m_index; CDefString() : m_index(-1) { } };
-struct CHeroAbilityStatPackage { long m_stats[4]; CHeroAbilityStatPackage() { ++g_statsCtor; m_stats[0] = m_stats[1] = m_stats[2] = m_stats[3] = 9; } };
-struct CMeleeCombatAbilityDef : CParentDefClassBase {
+class CDefString { public: long m_index; CDefString() : m_index(-1) { } };
+class CHeroAbilityStatPackage { public: long m_stats[4]; CHeroAbilityStatPackage() { ++g_statsCtor; m_stats[0] = m_stats[1] = m_stats[2] = m_stats[3] = 9; } };
+class CMeleeCombatAbilityDef : public CParentDefClassBase { public:
     CDefString FlourishAnimName; CDefString FlourishResponseAnimName; float DamageMultiplier; bool Flourish; bool BlockCounter; long AbilityButtonGraphicOverride;
     CRetailVector<long> ValidWeaponClasses; bool Decapitate; long KnockDownEffects; bool EvadeAllHits; bool CauseRecoil; CHeroAbilityStatPackage StatsNeeded;
     long ComboMultiplierLowerBound; long ComboMultiplierUpperBound;

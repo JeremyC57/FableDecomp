@@ -15,8 +15,8 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                       // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct CThingCreatureBase;
-struct CGameCameraManager;
+class CThingCreatureBase;
+class CGameCameraManager;
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
 namespace NCreatureAction {

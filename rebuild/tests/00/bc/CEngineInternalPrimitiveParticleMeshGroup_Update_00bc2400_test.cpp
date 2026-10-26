@@ -1,7 +1,7 @@
 #include <cstdio>
-struct C3DMeshInfo { int x; };
+class C3DMeshInfo { public: int x; };
 static C3DMeshInfo g_info; static long g_askedId = -1;
-struct CMatrix3x4 { float m_rows[12]; };
+class CMatrix3x4 { public: float m_rows[12]; };
 struct CBank { C3DMeshInfo* GetMeshInfo(long id) { g_askedId = id; return &g_info; } };
 struct CEngineData { unsigned char _pad[0x10]; CBank* m_pMeshBank; };
 static CEngineData g_data; static CEngineData* g_pEngineData = &g_data;

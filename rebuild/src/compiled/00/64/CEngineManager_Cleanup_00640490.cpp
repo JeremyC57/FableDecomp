@@ -9,7 +9,7 @@ struct SComponentNode {
     void*           m_pComponent;                  // +0x08
 };
 
-struct CEngineManager {
+class CEngineManager { public:
     unsigned char   _pad[4];
     SComponentNode* m_pComponents;                 // +0x04 (sentinel node)
     void CleanupComponent(SComponentNode* node) { }   // nothing left to do per component in the retail build

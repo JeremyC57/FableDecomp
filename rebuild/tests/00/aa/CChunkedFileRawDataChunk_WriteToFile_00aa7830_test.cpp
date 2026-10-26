@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void slot0() {}
     virtual void slot1() {}
     virtual void slot2() {}
@@ -8,7 +8,7 @@ struct CDataOutputStream {
     virtual void Write(void* buf, unsigned int len);
 };
 
-struct CChunkedFileSaver { int dummy; };
+class CChunkedFileSaver { public: int dummy; };
 
 struct CChunkedFileRawDataChunk {
     char pad[0x10];

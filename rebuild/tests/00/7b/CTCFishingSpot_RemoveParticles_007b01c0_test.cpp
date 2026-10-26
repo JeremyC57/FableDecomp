@@ -1,7 +1,7 @@
 // Behaviour test for CTCFishingSpot::RemoveParticles (retail 0x007B01C0): model copy + stub callees.
 #include <cstdio>
 
-struct CBaseObject;
+class CBaseObject;
 static int g_killCalls = 0;
 
 class CThing {
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return (CThing*)m_pItem; }
     void SetPItem(CBaseObject* item) { m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
@@ -38,7 +38,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCFishingSpot {
+class CTCFishingSpot { public:
     CIntelligentPointer<CThing> PParticle1;
     CIntelligentPointer<CThing> PParticle2;
     CIntelligentPointer<CThing> PParticleFish;

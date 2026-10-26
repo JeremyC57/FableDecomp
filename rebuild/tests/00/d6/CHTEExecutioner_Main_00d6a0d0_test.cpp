@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_registered = 0, g_updates = 0, g_held = 0, g_alive = 0;
-struct CScriptThing { int id; CScriptThing(int i) : id(i) { ++g_alive; } CScriptThing(const CScriptThing& o) : id(o.id) { ++g_alive; } ~CScriptThing() { --g_alive; } };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; CScriptThing(int i) : id(i) { ++g_alive; } CScriptThing(const CScriptThing& o) : id(o.id) { ++g_alive; } ~CScriptThing() { --g_alive; } };
+class CGameScriptInterface { public:
     int m_doneAfter; const CScriptThing* m_held; long m_flag;
     virtual ~CGameScriptInterface() { }
     virtual void Update() { ++g_updates; }

@@ -7,7 +7,7 @@ struct CCountedObject {
     CCountedObject(long c) : m_refCount(c) {}
     virtual void Destroy() { ++g_destroyed; }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     CIVCountedPointer() : m_p(0) {}
     ~CIVCountedPointer()
@@ -20,8 +20,8 @@ template <class T> struct CIVCountedPointer {
         }
     }
 };
-struct CBaseClass { virtual ~CBaseClass() { ++g_baseDtor; } };
-struct C3DAnimationBlendState {
+class CBaseClass { public: virtual ~CBaseClass() { ++g_baseDtor; } };
+class C3DAnimationBlendState { public:
     CBaseClass                        m_base;
     CIVCountedPointer<CCountedObject> Data;
 };

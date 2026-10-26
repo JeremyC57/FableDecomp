@@ -20,7 +20,7 @@ extern "C" int __cdecl printf(const char* format, ...);
 // `" (" + IntToCharString(count) + ")"` appended with `+=`, the count load shared with the running total.
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (MSVCR71)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
     ~CCharString();                                     // 0x0099EAE0
@@ -118,7 +118,7 @@ template <class Tag> __declspec(noinline) void CLongVector::_M_insert_overflow(l
 }
 
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad000[0x40];
     unsigned short Priority : 3;                        // +0x40 (PDB ushort bitfield group; PDB +0x4C, retail vector is 12 bytes)
     unsigned short IsScreenDisplacement : 1;

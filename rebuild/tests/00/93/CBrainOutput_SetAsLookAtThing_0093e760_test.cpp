@@ -1,6 +1,6 @@
 #include <stdio.h>
 static int g_ctors, g_dtors, g_sets; static bool g_tempDeadAtFlagStore;
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 struct CBaseIntelligentPointer {
     virtual void v00() {} void* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { ++g_ctors; }
@@ -9,7 +9,7 @@ struct CBaseIntelligentPointer {
     const CThing* GetPItem() { return (const CThing*)m_pItem; }
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() {} CIntelligentPointer() : CBaseIntelligentPointer() { } };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long Types; long LookFlags; unsigned char _pad[0x38]; CIntelligentPointer LookAtThing;
     void SetAsLookAtThing(const CThing* thing, long lookFlags);
 };

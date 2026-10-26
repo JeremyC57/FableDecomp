@@ -16,14 +16,14 @@
 // `_M_set_node(_M_node + 1)` (buffer = 128 / sizeof(T) = 4 elements = 0x70 bytes: `lea ebx,[esi+70h]`) then `_M_cur =
 // _M_first`; `!=` compares `_M_cur` only. Shape: speed TU (/O2); `last._M_cur` in ebp, the cursor in esi, `_M_last` in ebx,
 // `_M_node` in edi (the dead `_M_first` store is dropped).
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     ~CWideString();                                // 0x0099B510
 };
 
 class CSubtitleRenderer {
 public:
-    struct CSetTextInfo {                          // 28 bytes
+    class CSetTextInfo { public:                          // 28 bytes
         CWideString   Text;                        // +0x00
         CWideString   Button1Text;                 // +0x04
         CWideString   Button2Text;                 // +0x08

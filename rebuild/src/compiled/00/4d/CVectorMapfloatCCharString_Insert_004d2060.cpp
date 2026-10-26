@@ -18,7 +18,7 @@
 
 inline void* operator new(size_t, void* where) { return where; }
 
-struct CCharString {                            // 4 bytes: the string-data pointer
+class CCharString { public:                            // 4 bytes: the string-data pointer
     void* m_pData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
@@ -57,9 +57,9 @@ template <class T> struct vector {              // STLport vector (12 bytes in r
     }
 };
 
-template <class K, class V> struct CKeyPairCompareLess { };   // empty
+template <class K, class V> class CKeyPairCompareLess { public: };   // empty
 
-template <class K, class V> struct CVectorMap {
+template <class K, class V> class CVectorMap { public:
     vector<pair<K, V> >       Vector;           // +0x00
     CKeyPairCompareLess<K, V> Compare;          // +0x0c
     bool                      Dirty;            // +0x0d

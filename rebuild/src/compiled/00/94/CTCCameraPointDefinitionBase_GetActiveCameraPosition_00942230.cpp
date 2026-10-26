@@ -12,16 +12,16 @@
 // argument is kept in edi across the call. A C3DVector member copied as a struct materialises its
 // address first (`mov ecx,esi ; mov [ecx],edx`, 49v47).
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCPhysicsBase
-{
+class CTCPhysicsBase
+{ public:
     unsigned char _pad_0x00[0x34];
     float         Radius;                           // +0x34
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char   _pad_0x00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
     const C3DVector& GetPosition() const;           // 0x004C73D0

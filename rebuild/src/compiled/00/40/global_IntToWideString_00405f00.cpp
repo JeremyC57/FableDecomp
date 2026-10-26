@@ -6,7 +6,7 @@
 // "CGuiControlNumber::SetSLongValue" is propagated; the body is a free `__fastcall` formatter (0x0040xxxx module built with /Gr).
 typedef unsigned short wchar_t;                    // VC7.1 without /Zc:wchar_t
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                 // 0x0099AED0
     CWideString(const CWideString& other);         // 0x0099B720

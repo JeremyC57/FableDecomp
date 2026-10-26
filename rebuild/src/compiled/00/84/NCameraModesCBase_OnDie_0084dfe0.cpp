@@ -8,14 +8,14 @@
 #define CGameCameraManager CGameCameraManagerDonor
 #include "engine/CGameCameraManager.h"
 #undef CGameCameraManager
-struct C3DVector {
+class C3DVector { public:
  float X,Y,Z;
  C3DVector() {}
  C3DVector(const float& x,const float& y,const float& z):X(x),Y(y),Z(z){}
  C3DVector(const C3DVector& s):X(s.X),Y(s.Y),Z(s.Z){}
 };
-struct CCamera { unsigned long Words[14]; };
-struct CGameCameraManager {
+class CCamera { public: unsigned long Words[14]; };
+class CGameCameraManager { public:
  void* VTable; CCamera Camera,OldCamera;
  unsigned char OtherState[0x3c];
  bool SingleCut; // retail +0xb0: donor +0xbc minus STL shrink
@@ -29,7 +29,7 @@ struct CCountedSubComponent {CSubComponentBase* Data;void* Info;};
 struct CCallResetMFInSubComponent {};
 CCallResetMFInSubComponent __fastcall ForEachReset(CCountedSubComponent*,CCountedSubComponent*,CCallResetMFInSubComponent); //0x0084F280
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
  void* VTable;float DefaultFOV,DefaultRollAngle,DefaultObservedPositionZOffset;
  CPhysicsState LookAt; CGameCameraManager* CameraManager;void* PCameraModeDef;
  CCountedSubComponent *SubStart,*SubFinish,*SubEnd;

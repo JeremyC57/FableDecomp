@@ -6,12 +6,12 @@
 // an unidentified quest-script class (the catalog label is shared by several script bodies).
 // Shape: the WAIT macro `while (!(a || b || c)) { NewScriptFrame(); if (terminating) return; }` (rotated: `a` tested
 // at the entry and at the bottom, `b`/`c` at the aligned loop head), the trailing terminate test, the flag store.
-struct CGameScriptInterface {                            // retail vtable @ 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                            // retail vtable @ 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                 // slot 7 (+0x1c)
 };
 
-struct CScriptBase {                                     // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                           // +0x04..+0x40
     bool IsActiveThreadTerminating();                    // 0x00CB7940

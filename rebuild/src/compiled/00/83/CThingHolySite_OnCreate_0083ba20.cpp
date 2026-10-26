@@ -8,7 +8,7 @@
 // and one word move through edx/ax. The two 100.0f stores share eax. Retail CThingHolySiteDef
 // is 4 bytes below the PDB (Graphic at +0x70, PlayerStart at +0x7e).
 #pragma pack(push, 2)
-struct CEngineGraphic {                             // 14 bytes (PDB size 14)
+class CEngineGraphic { public:                             // 14 bytes (PDB size 14)
     unsigned long BankIndex;                        // +0x00
     float         AnimStep;                         // +0x04
     float         RenderSizeX;                      // +0x08
@@ -16,7 +16,7 @@ struct CEngineGraphic {                             // 14 bytes (PDB size 14)
     unsigned char Type;                             // +0x0d
 };
 #pragma pack(pop)
-struct CThingHolySiteDef {
+class CThingHolySiteDef { public:
     unsigned char  _pad00[0x70];
     CEngineGraphic Graphic;                         // +0x70
     bool           PlayerStart;                     // +0x7e
@@ -29,7 +29,7 @@ struct CTCGraphicAppearance {                       // graphic-appearance compon
     unsigned char  _pad00[0x44];
     CEngineGraphic m_graphic;                       // +0x44
 };
-struct CThingGameObject {
+class CThingGameObject { public:
     virtual void v00();
     unsigned char   _pad04[0x60];
     CTCGraphicAppearance* PTCGraphicAppearance;        // +0x64
@@ -39,7 +39,7 @@ struct CThingGameObject {
     unsigned char   _padb8[0x18];
     virtual bool OnCreate();                        // 0x00838A40
 };
-struct CThingHolySite : CThingGameObject {
+class CThingHolySite : public CThingGameObject { public:
     CDefPointerHolySiteDef Def;                     // +0xd0
     unsigned char          PlayerStart;             // +0xd4
     virtual bool OnCreate();

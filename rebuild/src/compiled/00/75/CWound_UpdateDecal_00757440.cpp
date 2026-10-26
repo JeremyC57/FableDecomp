@@ -13,26 +13,26 @@
 // filled member by member and the colours through an inline Set(r, g, b, a)
 // storing R, G, B, A (the retail +2, +1, +0, +3 byte order); the
 // entry id is read once and kept in esi for both tests.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() { }
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 enum ECompositeBlendType { COMPOSITE_BLEND_TYPE_2 = 2 };
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;                        // +0x00
     ECompositeBlendType BlendType;                           // +0x04
     CRGBColour          DiffuseColour;                       // +0x08
     CRGBColour          SpecularColour;                      // +0x0C
 };
-struct CTCTextureDecal {
+class CTCTextureDecal { public:
     void DeleteDecal(long id);                                           // 0x0070A430
     long AddDecal(long decal, CCompositeBlendDesc& desc);                // 0x0070A490
     void ChangeDecal(long id, CCompositeBlendDesc& desc);                // 0x0070A3E0
 };
 
-struct CTCWound {
-    struct CWound {
+class CTCWound { public:
+    class CWound { public:
         void UpdateDecal(CTCTextureDecal& decals, long& entryID, long decal, long textureIndex, float strength);
     };
 };

@@ -18,7 +18,7 @@ struct __declspec(novtable) CPredicateBase {
     virtual CPredicateBase* Clone() const=0;
     virtual ~CPredicateBase() {}
 };
-struct CIsThingConscious : CPredicateBase {
+class CIsThingConscious : public CPredicateBase { public:
     ScriptThing Thing;
     CIsThingConscious(const ScriptThing& t):Thing(t) {}
     virtual bool operator()() const;
@@ -38,7 +38,7 @@ __forceinline bool ScriptThing::MsgIsHitBy(const CCharString& name) const { retu
 struct ScriptGame : ::CGameScriptInterface {
     __forceinline void WaitForNextFrame() const { (this->*static_cast<GameSlot*>(__vftable)[7].Wait)(); }
 };
-struct CQ_HobbeToothContestScript {
+class CQ_HobbeToothContestScript { public:
     unsigned char BaseAndQuestFields[0x5a];
     bool DrinkingHobbesNotHit;
 };

@@ -7,12 +7,12 @@
 //   the components into float locals (x = X*m00 + Y*m10 + Z*m20, ...; the helper's name is not from the PDB): VC7.1 keeps
 //   the copies of X (dead index slot) and Y (a fourth frame word) because the first stores overwrite them, Z is read from
 //   the local; the local is then returned through C3DVector's memberwise copy constructor (`fxch st(2)` + three `fstp`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];
     CMatrix3x4() { }
     void RotateInPlace(C3DVector& v) const
@@ -25,26 +25,26 @@ struct CMatrix3x4 {
         v.Z = m[2] * x + m[5] * y + m[8] * z;
     }
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     unsigned char _pad[0x18];
     C3DVector MovementVector;                  // +0x18
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     C3DAnimationInfo* GetAnimation(long index);   // 0x00A242C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x3c];
     CMeshDataBank* PMainMeshBank;              // +0x3c
 };
 struct CTCGraphicAppearance {
     CMatrix3x4 GetPositionMatrix(float scale);  // 0x004BC800
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64
     const CWorld& PeekWorld() const;           // 0x004C7AB0
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     C3DVector GetAnimMovementVector(long animIndex);
 };
 

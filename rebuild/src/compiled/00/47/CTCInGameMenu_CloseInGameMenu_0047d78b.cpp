@@ -26,7 +26,7 @@
 double __fastcall GFGetTime();                       // 0x009E1BC0
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[0xC];
     bool  UseNewProfileValues;                       // +0x0C
     unsigned char _pad0d[0x24 - 0xD];
@@ -52,7 +52,7 @@ struct CGameState {
 };
 extern CGameState* g_pGameState;                     // 0x013B8394
 
-struct CIEngine {
+class CIEngine { public:
     V10(0) V10(1) V10(2) V10(3) V10(4)
     virtual void v500(); virtual void v501(); virtual void v502(); virtual void v503(); virtual void v504(); virtual void v505();
     virtual void SetCameraMoved(bool fastMode, bool moved);   // slot 56 (+0xE0)
@@ -67,7 +67,7 @@ struct CIEngine {
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                              // +0x00
     signed char   Player;                            // +0x04
     unsigned char Data[32];                          // +0x05
@@ -77,31 +77,31 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddLong(long value) { Copy(sizeof(value), &value); }
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char _pad00[0x2C];
     CIEngine*     Engine3D;                          // +0x2C
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                  // +0x28 scoped_ptr
     void AddGameEvent(const CGameEvent& event);      // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 
-struct CThing {
+class CThing { public:
 };
 template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad_0x00[0x90];
     signed char   PlayerNumber;                      // +0x90
 };
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetCharacterThing();         // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                        // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x8C];
     long          FrameStarted3DRendering;           // +0x8C
 };
@@ -130,10 +130,10 @@ struct CIconsDefPointer {                            // CDefPointer<const NUISys
     CUIIconsDef* operator->() const { return Object; }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual ~CComponent();                           // slot 0 (scalar deleting destructor)
 };
-struct CManager {
+class CManager { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04(); virtual void m05();
     virtual void ResetA();                           // slot 6 (+0x18)
     virtual void m07(); virtual void m08(); virtual void m09(); virtual void m10(); virtual void m11(); virtual void m12();
@@ -154,7 +154,7 @@ struct CManager {
 }
 struct CGlobalList { void clear(); };                // 0x004855A3
 extern CGlobalList g_UIList;                         // 0x013B8A98
-struct CPlayerGui { void Close(); };                 // 0x004374B0
+class CPlayerGui { public: void Close(); };                 // 0x004374B0
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 struct CComponentVector {                            // retail 12-byte STLport vector<NUISystem::CComponent*>
@@ -170,7 +170,7 @@ struct CComponentVector {                            // retail 12-byte STLport v
 };
 struct CYesNo;
 enum { GAME_EVENT_OPEN_INVENTORY = 0x1A };
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     void*            __vftable;                      // +0x00
     void*            ParentThing;                    // +0x04 CTCBase
     unsigned char    _pad_0x08[0x04];

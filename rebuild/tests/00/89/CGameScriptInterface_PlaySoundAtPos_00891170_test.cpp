@@ -3,18 +3,18 @@
 #include <cstdio>
 #include <cstring>
 class CCharString { public: const char* text; };
-struct C3DVector { float X, Y, Z; };
-struct CThing;
-struct CASoundBank {
+class C3DVector { public: float X, Y, Z; };
+class CThing;
+class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol) { return std::strcmp(symbol.text, "SND_DOOR") == 0 ? 12 : 0; }
 };
-struct CSoundInit {
+class CSoundInit { public:
     float Volume, Pitch, Pan; long NoPlays, PlaybackType; unsigned long GainFaderBits, PitchFaderBits; long OverrideID;
     CSoundInit() : Volume(1.0f), Pitch(1.0f), Pan(0.0f), NoPlays(1), PitchFaderBits(0), OverrideID(-1) { PlaybackType = 1; GainFaderBits = 0; }
 };
 static int g_created = 0, g_failCreate = 0, g_makeDead = 0;
 static CSoundInit g_lastInit; static long g_lastSample; static C3DVector g_lastPos; static CASoundBank* g_lastBank; static bool g_lastFlags[2];
-struct CThingSoundEmitter {
+class CThingSoundEmitter { public:
     unsigned char Dead : 1;
     unsigned char _flags91_1 : 7;
     static CThingSoundEmitter* Create(const C3DVector& position, const CThing* parent, bool unattached)
@@ -27,10 +27,10 @@ struct CThingSoundEmitter {
     unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached)
     { g_lastBank = &bank; g_lastSample = sample; g_lastInit = init; g_lastFlags[0] = loop; g_lastFlags[1] = attached; return 0x1234; }
 };
-struct CMainGameComponent { CASoundBank* PSampleBank; CASoundBank& GetSampleBank() const { return *PSampleBank; } };
+class CMainGameComponent { public: CASoundBank* PSampleBank; CASoundBank& GetSampleBank() const { return *PSampleBank; } };
 static CMainGameComponent* g_pMainGameComponent;
 static unsigned long g_InvalidSoundHandle = 0xffffffff;
-struct CGameScriptInterface { unsigned long PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const; };
+class CGameScriptInterface { public: unsigned long PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const; };
 unsigned long CGameScriptInterface::PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const
 {
     long sample = g_pMainGameComponent->GetSampleBank().GetSoundIndexFromSymbol(sound);

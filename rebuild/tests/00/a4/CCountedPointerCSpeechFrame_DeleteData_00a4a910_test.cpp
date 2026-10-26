@@ -63,7 +63,7 @@ public:
     CSpeechFrame() { ++g_frames; }
     ~CSpeechFrame() { --g_frames; }
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T>
 class CCountedPointer {
 public:

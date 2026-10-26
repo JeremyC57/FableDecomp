@@ -11,7 +11,7 @@
 // the storage freed). STLport _Destroy(first, last) takes its bounds by value (end cached in edi).
 extern "C" void __cdecl free(void* p);              // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                 // 0x0099EAE0
 };

@@ -5,7 +5,7 @@
 // Model the this-only member as a free __fastcall and tail-call the real impl,
 // which VC7.1 compiles to a single `jmp rel32`.
 
-struct CSpecialAbilitiesElectrocutedEffectDef;
+class CSpecialAbilitiesElectrocutedEffectDef;
 
 // The real copy implementation this thunk forwards to (address relocation-masked).
 extern void __fastcall CSpecialAbilitiesElectrocutedEffectDef_Copy_impl(

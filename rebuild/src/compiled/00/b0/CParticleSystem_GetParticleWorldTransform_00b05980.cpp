@@ -3,13 +3,13 @@
 // Callees: CParticleSystem::GetUnscaledWorldTransform @ 0x00B05840.
 // Shape: ScaleParticles is bit 7 of the flag byte +0x50 (`test al,al ; jns`), Scale the C3DVector at +0x60.
 // Each diagonal term is `m *= s` (`fld [scale] ; fmul [m] ; fstp [m]`: the right operand is loaded first).
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];                                     // 3x3 rotation (rows) then the translation
 };
 

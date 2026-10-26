@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) { }
     virtual void Delete() { ++g_deleted; }
     unsigned long IVRefCount;
@@ -27,7 +27,7 @@ struct CIVCountedPointer {
         return *this;
     }
 };
-struct C3DAnimationTransitionState { virtual void v00() { } unsigned long IVRefCount; CIVCountedPointer StartState; CIVCountedPointer EndState; float Progress;
+class C3DAnimationTransitionState { public: virtual void v00() { } unsigned long IVRefCount; CIVCountedPointer StartState; CIVCountedPointer EndState; float Progress;
     void SetEndState(const CIVCountedPointer& s) { EndState = s; } };
 int main()
 {

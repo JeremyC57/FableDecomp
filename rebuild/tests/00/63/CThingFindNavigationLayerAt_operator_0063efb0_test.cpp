@@ -1,21 +1,21 @@
 // Behaviour test for 0x0063EFB0 CThingFindNavigationLayerAt::operator()
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 static int g_live = 0;
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     long m_level;
     CPhysicsMeshObject(long level) : m_level(level) { ++g_live; }
     CPhysicsMeshObject(const CPhysicsMeshObject& o) : m_level(o.m_level) { ++g_live; }
     ~CPhysicsMeshObject() { --g_live; }
     long GetNavigationLevelAt(const C3DVector& pos) { return m_level + (pos.x > 0.0f ? 1 : 0); }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool m_hasMesh; long m_level;
     virtual bool HasPhysicsMeshObject() { return m_hasMesh; }
     CPhysicsMeshObject GetPhysicsMeshObject() { return CPhysicsMeshObject(m_level); }
 };
-struct CThing { CTCPhysicsBase* PhysicsTC; };
-struct CThingFindNavigationLayerAt {
+class CThing { public: CTCPhysicsBase* PhysicsTC; };
+class CThingFindNavigationLayerAt { public:
     C3DVector Pos;
     long      Layer;
     bool operator()(CThing* thing)

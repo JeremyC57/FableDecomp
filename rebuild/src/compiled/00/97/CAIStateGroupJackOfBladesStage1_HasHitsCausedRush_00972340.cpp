@@ -40,7 +40,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 #pragma auto_inline(on)
 
-struct CAICreatureWillPowerIndicatorDef {
+class CAICreatureWillPowerIndicatorDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
@@ -48,7 +48,7 @@ struct CAICreatureWillPowerIndicatorDef {
     long HitsToRush;                            // +0x40 (descriptive)
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CAICreatureWillPowerIndicatorDef** out);   // 0x008C33E0
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -65,7 +65,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CAICreatureWillPowerIndicator
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -86,17 +86,17 @@ struct CThing {
     }
 };
 
-struct CTCBoss {                                // interface type 0xad
+class CTCBoss { public:                                // interface type 0xad
     unsigned char _pad[0x10];
     long m_hitCount;                            // +0x10 (cleared by JackOfBladesBase::Initialise)
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

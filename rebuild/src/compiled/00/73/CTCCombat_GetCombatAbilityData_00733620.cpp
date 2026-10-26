@@ -12,7 +12,7 @@
 //   re-read from it at the top of each pass; end() is reloaded each time.  The increment must be STLport 4.6's
 //   `_M_node = _Rb_global<bool>::_M_increment(_M_node)` (static, node in / node out, inlined): the walk runs in eax and
 //   stores once; an in-place `_M_increment()` on the member stores through the reference at every step (122 v 106).
-struct CCombatAbilityData {                     // Ego_r.pdb, 0x18 bytes
+class CCombatAbilityData { public:                     // Ego_r.pdb, 0x18 bytes
     void*  __vftable;                           // +0x00
     long   PercentageChance;                    // +0x04
     float  SecondsDuration;                     // +0x08
@@ -20,12 +20,12 @@ struct CCombatAbilityData {                     // Ego_r.pdb, 0x18 bytes
     void*  Anim;                                // +0x10 CDefString
     long   InterfaceType;                       // +0x14 ECombatAbilityInterfaceType
 };
-template <class T> struct CCountedPointer {     // 8 bytes: object + count block
+template <class T> class CCountedPointer { public:     // 8 bytes: object + count block
     T*    Object;
     long* Count;
     T* operator->() const { return Object; }
 };
-struct CCombatAbility {                         // Ego_r.pdb, 8 bytes
+class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;                           // +0x00
     long ActiveTimer;                           // +0x04
     void Reset()
@@ -93,7 +93,7 @@ struct CCombatAbilityMap {                      // STLport multimap<ECombatAbili
 
 class CCombatManager;
 class CThingCreatureBase;
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 class CTCCombat {                               // retail layout (STLport containers), 0x98 bytes
 public:

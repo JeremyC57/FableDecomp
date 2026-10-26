@@ -14,11 +14,11 @@
 #include <new>
 void StandInSink(void* p, unsigned int n);
 extern "C" int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);
-struct CWideStringData {
+class CWideStringData { public:
     wchar_t* Begin;
     wchar_t* End;
 };
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                              // 0x0099AED0
     CWideString(const wchar_t* text);           // 0x0099B6B0
@@ -48,7 +48,7 @@ struct CFindFileHandle {
 };
 bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
 bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850
-struct CDateAndTime {
+class CDateAndTime { public:
     long Fields[7];
     CDateAndTime(long year = 0, long month = 0, long day = 0, long hour = 0, long minute = 0, long second = 0,
                  long millisecond = 0);                 // 0x009E9A70

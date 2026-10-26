@@ -9,7 +9,7 @@
 // after the second test (the `||` form or a nested success block places it at the end); the 64-bit id is
 // copied into the 8-byte frame (low word first) and passed by const reference; `find(id) != end()` reads
 // the header after the call and becomes the full-register `xor edx,edx ; setne dl ; mov al,dl` bool.
-struct CThing {
+class CThing { public:
     unsigned char    _pad0[0x18];
     unsigned __int64 UniqueID;                              // +0x18
     unsigned char    _pad20[0x71];                          // +0x20
@@ -32,7 +32,7 @@ struct CGroupMemberMap {                                    // STLport map<unsig
     SMemberNode* FindNode(const unsigned __int64& key) const;   // 0x00812790
 };
 
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     void*           __vftable;                              // +0x00
     unsigned char   _pad04[8];                              // +0x04 CTCBase
     unsigned long   MemberCount;                            // +0x0c

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     void* vftable;
     int destroyed;
 };

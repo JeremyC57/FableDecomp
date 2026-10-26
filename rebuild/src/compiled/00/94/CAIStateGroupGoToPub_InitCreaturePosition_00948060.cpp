@@ -10,14 +10,14 @@
 // conditional copies (ebx mask 1 / 3); the pointer operator= names the item before SetPItem.
 // Layout: Ego_r.pdb CAIStateGroup_GoToPub PPub +0x14, PTable +0x24, NextFramePub +0x68, UnderScriptControl +0xa1;
 // CTCAIScratchpad (0xaa) TableName +0x70, SeatName +0x74; CTCOwnedEntity (0x33) POwner +0x0d (odd offset, pack(1)).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -33,10 +33,10 @@ struct CThing {
         }
     }
 };
-struct CThingBuilding;
-struct CThingObject;
-struct CThingAICreature;
-struct CThingCreatureBase : CThing {
+class CThingBuilding;
+class CThingObject;
+class CThingAICreature;
+class CThingCreatureBase : public CThing { public:
     bool AutoPlaceNearBuilding(CThingBuilding* building, float distance);   // 0x00666EF0
 };
 struct CBaseIntelligentPointer {
@@ -47,19 +47,19 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer(T* item) { SetPItem((const CThing*)item); }
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
     T* Get() const { return (T*)GetPItem(); }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
     bool operator!=(const char* text) const;    // 0x0099E960
 };
-struct CTCAIScratchpad {                        // interface 0xaa
+class CTCAIScratchpad { public:                        // interface 0xaa
     unsigned char _pad0[0x70];
     CCharString TableName;                      // +0x70
     CCharString SeatName;                       // +0x74
@@ -67,22 +67,22 @@ struct CTCAIScratchpad {                        // interface 0xaa
     CCharString GetSeatName() const { return SeatName; }
 };
 #pragma pack(push, 1)
-struct CTCOwnedEntity {                         // interface 0x33
+class CTCOwnedEntity { public:                         // interface 0x33
     unsigned char _pad0[0x0d];
     CIntelligentPointer<CThing> POwner;         // +0x0d
 };
 #pragma pack(pop)
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CWorld {
+class CWorld { public:
     static long __fastcall GetWorldFrame();     // 0x0049D870
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01();
     virtual void v02();

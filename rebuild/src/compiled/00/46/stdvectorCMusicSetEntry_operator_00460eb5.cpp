@@ -15,7 +15,7 @@
 #pragma optimize("s", on)
 #include <new>
 
-struct CMusicSetEntry {             // PDB: 12 bytes
+class CMusicSetEntry { public:             // PDB: 12 bytes
     long NormalMusicID;
     long DangerMusicID;
     long LoopCount;

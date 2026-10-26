@@ -3,9 +3,9 @@
 // Behaviour test for 006977f0.
 
 // CGameCameraManager::GetViewWidthAtPosition: 2 * distance * tan(fov * 0.5 * 2pi), the FOV in turns.
-struct C3DVector { float X, Y, Z; };
-struct CCamera { C3DVector WorldPosition; float HorizontalFOV; float GetHorizontalFOV() const { return HorizontalFOV; } };
-struct CGameCameraManager {
+class C3DVector { public: float X, Y, Z; };
+class CCamera { public: C3DVector WorldPosition; float HorizontalFOV; float GetHorizontalFOV() const { return HorizontalFOV; } };
+class CGameCameraManager { public:
     CCamera Camera;
     float GetViewWidthAtPosition(const C3DVector& position)
     {

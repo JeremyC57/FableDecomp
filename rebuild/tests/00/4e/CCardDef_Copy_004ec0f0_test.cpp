@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CDefClassBase;
+class CDefClassBase;
 
-struct CCardDef {
+class CCardDef { public:
     char pad[0x3c];
     unsigned int f3c;
     unsigned int CardName;

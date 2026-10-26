@@ -23,8 +23,8 @@ struct _Rb_tree_node_base {
     _Rb_tree_node_base* _M_left;
     _Rb_tree_node_base* _M_right;
 };
-struct CCharString { const char* PData; };
-struct CWideString { const unsigned short* PData; };
+class CCharString { public: const char* PData; };
+class CWideString { public: const unsigned short* PData; };
 struct SNPCName {                          // pair<CCharString, CWideString>
     CCharString first;
     CWideString second;

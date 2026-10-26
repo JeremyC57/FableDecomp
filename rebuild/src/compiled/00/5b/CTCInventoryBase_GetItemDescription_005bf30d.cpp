@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 // Byte-exact reconstruction of CTCInventoryBase::GetItemDescription @ 0x005bf30d
 
-struct CWideString;
+class CWideString;
 
 struct CTCInventoryBase {
     char pad20[0x20];

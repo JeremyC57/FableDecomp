@@ -8,7 +8,7 @@
 // allocator_type())` -> _Vector_base(alloc): start, finish and the _STLP_alloc_proxy end-of-storage nulled); with that
 // real structure the second string constructor's `mov ecx,edi` lands between the 2nd and 3rd zero stores as in retail
 // (a plain three-pointer class with an inline constructor schedules it above all three -- the 24i "lane gap").
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
 };

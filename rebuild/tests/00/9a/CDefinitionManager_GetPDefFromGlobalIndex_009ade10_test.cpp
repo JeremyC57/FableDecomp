@@ -1,11 +1,11 @@
 #include <cstdio>
 static long g_loaded = -1; static unsigned long g_key = 0;
-struct CDefPointeeBase { virtual void v00() { } long RefCount; void AddRef() { ++RefCount; } };
+class CDefPointeeBase { public: virtual void v00() { } long RefCount; void AddRef() { ++RefCount; } };
 struct CDefPointer { CDefPointeeBase* Object; CDefPointer() : Object(0) { } CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) Object->AddRef(); } };
 struct CInstantiatedDefInfo { long ClassName, InstantiationName; unsigned long ClassIndex; CDefPointer PDef; };
 struct CDefClassInfo { unsigned char _pad[8]; unsigned long* GlobalIndices; };
 static unsigned long g_indices[2] = { 7, 1 }; static CDefClassInfo g_classInfo = { { 0 }, g_indices };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char _pad[0xa4]; CInstantiatedDefInfo** InstantiatedDefs;
     CDefClassInfo* FindClassInfo(const unsigned long& k) { g_key = k; return &g_classInfo; }
     void LoadDef(unsigned long i) { g_loaded = (long)i; }

@@ -10,13 +10,13 @@
 // Layout: Ego_r.pdb CBordelloEntrance (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CV_BordelloScript, retail = PDB - 0x14: BecomeNunnery +0x4d), PMasterData +0x18.
 // Shape: no alive filter; the sign's text tag is set from the nested by-value lookup (Game's vtable cached in ebx).
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                                  // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
     virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
     virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019();
@@ -29,7 +29,7 @@ struct CScriptThing {                                  // vtable 0x01238C8C, 12 
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
-struct CBaseObject {
+class CBaseObject { public:
     virtual void b00();
     void* m_pIntelligentPointer;                       // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -39,7 +39,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
@@ -47,7 +47,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -147,7 +147,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (ghi
     virtual void v711(); virtual void v712(); virtual void v713();
     virtual void SetReadableObjectTextTag(const CScriptThing& thing, const CCharString& tag) const;   // slot 714 (+0xb28)
 };
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

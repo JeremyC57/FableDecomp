@@ -15,7 +15,7 @@
 // Label: catalog "CAIStateGroup_SitInPub_FindAndValidateTask" -> Ego_r.pdb
 //   ?GetBenchWithOnePersonSittingThere@CAIStateGroup_SitInPub@@ABEPAVCThingObject@@ABVCThingBuilding@@@Z.
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -69,7 +69,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                        // +0x04
     CThing* GetPItem() const;                               // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : public CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 namespace std {
 struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
@@ -101,13 +101,13 @@ template <class _InputIter, class _Predicate>
 _InputIter __fastcall find_if(_InputIter __first, _InputIter __last, _Predicate __pred);   // 0x0094BA90
 }
 
-struct CTCThingOwner {                                      // interface 0x21
+class CTCThingOwner { public:                                      // interface 0x21
     virtual void v00();
     unsigned char _pad04[0x8];
     std::list<CIntelligentPointer<CThing> > ObjectList;    // +0x0c
 };
 
-struct CIsBenchWithOnePerson {                              // empty predicate
+class CIsBenchWithOnePerson { public:                              // empty predicate
     CIsBenchWithOnePerson() { }
     bool operator()(const CIntelligentPointer<CThing>& bench) const;   // 0x0094B9B0
 };

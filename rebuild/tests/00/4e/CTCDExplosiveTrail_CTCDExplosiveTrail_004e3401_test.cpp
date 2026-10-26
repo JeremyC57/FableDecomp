@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstdlib>
-struct CThing { int id; };
-struct CTCDriverBase { CThing* m_pThing; long m_baseWord; CTCDriverBase(CThing* o) : m_pThing(o), m_baseWord(0) { } virtual ~CTCDriverBase() { } };
+class CThing { public: int id; };
+class CTCDriverBase { public: CThing* m_pThing; long m_baseWord; CTCDriverBase(CThing* o) : m_pThing(o), m_baseWord(0) { } virtual ~CTCDriverBase() { } };
 struct CBaseIntelligentPointer { void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { } virtual ~CBaseIntelligentPointer() { } };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() { } };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer() { } };
 struct STrapAllocator { STrapAllocator() { } };
 struct STrapNode { STrapNode* next; STrapNode* prev; long value[3]; };
 struct CTrapList {
@@ -13,7 +13,7 @@ struct CTrapList {
 };
 struct CThingPointerVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; CThingPointerVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { } };
 struct CExplosiveTrailDefPointer { const void* m_pDef; CExplosiveTrailDefPointer() : m_pDef(0) { } };
-struct CTCDExplosiveTrail : CTCDriverBase {
+class CTCDExplosiveTrail : public CTCDriverBase { public:
     CIntelligentPointer<const CThing> PTarget; long Timer; bool Terminated; CTrapList ComponentTraps; CThingPointerVector ThingsToIgnore; CExplosiveTrailDefPointer PDef;
     CTCDExplosiveTrail(CThing* owner) : CTCDriverBase(owner), Timer(-1), Terminated(false) { }
 };

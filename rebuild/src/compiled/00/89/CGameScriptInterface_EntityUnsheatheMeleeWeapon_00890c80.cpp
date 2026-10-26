@@ -3,7 +3,7 @@
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
-struct C3DVector{float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
+class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const long&)const;}; //004365B0 (const lower_bound specialization)
 struct ScriptMethods;
 #include "engine/CThingCreatureBase.h"
@@ -15,7 +15,7 @@ FABLE_STATIC_ASSERT(sizeof(CThingNative::PlayerMethod)==4);
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-struct CCPPointerInfo{unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
@@ -111,9 +111,9 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 #include "engine/CWorld.h"
 #include "engine/CGameEvent.h"
 bool __fastcall IsThingCarryingMeleeWeapon(CThingNative*); //006A15A0
-struct CCombatManager{void CreatureUnsheathWeapon(CThingNative*,long);}; //006EBDD0
+class CCombatManager{ public:void CreatureUnsheathWeapon(CThingNative*,long);}; //006EBDD0
 struct GameEventMethods:CGameEvent{void AddData(long,const void*);}; //009F1760 appends to Data at current EndPos
-struct CMainGameComponent{void AddGameEvent(const CGameEvent&);};extern CMainGameComponent* g_MainGameComponent; //0041649C,013B86A0
+class CMainGameComponent{ public:void AddGameEvent(const CGameEvent&);};extern CMainGameComponent* g_MainGameComponent; //0041649C,013B86A0
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityUnsheatheMeleeWeapon(const ScriptMethods&,bool)const;};
 void CGameScriptInterfaceMethods::EntityUnsheatheMeleeWeapon(const ScriptMethods& script,bool instant)const{
  if(script.IsAlive()){CThingNative* creature=script.GetPThing();if(creature->_pad_0x6c[0]&8){if(!IsThingCarryingMeleeWeapon(creature)){

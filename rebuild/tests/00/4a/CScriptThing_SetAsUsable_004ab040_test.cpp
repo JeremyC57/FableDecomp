@@ -5,7 +5,7 @@ struct CInner {
     int captured;
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     void* pad0;
     CInner* inner;
 };

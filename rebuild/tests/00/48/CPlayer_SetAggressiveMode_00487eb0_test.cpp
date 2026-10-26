@@ -1,6 +1,6 @@
 #include <cstdio>
 static unsigned char g_bAggressiveModeAvailable = 1;
-struct CPlayer {
+class CPlayer { public:
     bool AggressiveMode; int m_setups;
     void SetUpControlsBasedOnAggressiveMode() { ++m_setups; }
     void SetAggressiveMode(bool on)

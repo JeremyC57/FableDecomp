@@ -23,7 +23,7 @@ struct CThingPlacement {
 
 extern const float g_zero;                                   // 0x0122DEDC (0.0f)
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad_00[0x60];
     CThingPlacement* m_pPlacement;                          // +0x60
 };

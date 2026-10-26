@@ -15,7 +15,7 @@
 // Shape: /O2 (16-aligned entry). Ego_r.pdb ?GetThingSearchTools@CWorld@@QAEAAVCThingSearchTools@@XZ as an inline accessor
 // gives retail's order: the search tools go to ecx before the arguments are pushed. Writing `World->PThingSearchTools->`
 // directly, or binding it to a local, loads ecx after the pushes.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0

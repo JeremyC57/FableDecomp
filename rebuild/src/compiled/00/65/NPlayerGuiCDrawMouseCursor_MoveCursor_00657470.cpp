@@ -11,14 +11,14 @@
 // Shape: the cursor width is a named float local (`fild` + 2^32 fix-up of an unsigned long); `Pos.X += delta.X * scaleX`,
 // `Pos.Y -= delta.Y * scaleY`; each axis bound is computed on the FPU and the clamp is `if (pos < 0) pos = 0; else if
 // (bound < pos) pos = bound;` (the zero stored as an integer).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     C2DVector TopLeft;                             // +0x00
     C2DVector BottomRight;                         // +0x08
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0xa98];
     float MouseCursorScaleX;                       // +0xa98
     float MouseCursorScaleY;                       // +0xa9c
@@ -32,7 +32,7 @@ struct CGraphicBank {
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22();
     virtual unsigned long GetGraphicWidth(long graphic);   // slot 23 (+0x5c)
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad[0x14];
     CGraphicBank* Bank;                            // +0x14
 };
@@ -40,13 +40,13 @@ extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 struct CScreen {
     C2DBoxF GetScreenArea() const;                 // 0x00434B50
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x28];
     CScreen* Screen;                               // +0x28
 };
 
 namespace NPlayerGui {
-struct CDrawMouseCursor {
+class CDrawMouseCursor { public:
     void* __vftable;                               // +0x00
     void* PlayerGui;                               // +0x04
     void* PlayerManager;                           // +0x08

@@ -1,4 +1,4 @@
-struct CEngineInternalPrimitiveSpriteTrail {
+class CEngineInternalPrimitiveSpriteTrail { public:
     void* vftable;
 };
 

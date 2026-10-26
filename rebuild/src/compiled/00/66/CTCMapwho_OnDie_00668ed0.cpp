@@ -3,7 +3,7 @@
 
 extern void sink(void*);
 
-struct CTCMapwho {
+class CTCMapwho { public:
     int dummy;
     __declspec(noinline) ~CTCMapwho();
 };

@@ -13,7 +13,7 @@
 // pair(__lower_bound(...), __upper_bound(...)) so VC's right-to-left argument order calls upper_bound first and never
 // advances `first` in place (the faithful statement-by-statement form calls lower_bound first: DIFFER 156v147).
 struct CHitLocation;
-struct C3DVector { float X, Y, Z; };                // 12 bytes
+class C3DVector { public: float X, Y, Z; };                // 12 bytes
 namespace {
 struct THitLocationIntersectionElement {        // 32 bytes
     long          key;                          // +0x00

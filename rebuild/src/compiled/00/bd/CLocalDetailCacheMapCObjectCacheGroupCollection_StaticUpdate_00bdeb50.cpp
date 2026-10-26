@@ -9,30 +9,30 @@
 //   `GFGetFastSubFrameTimer() < deadline` (`test ah,5 ; jp`) guard the load, whose bool is returned; the unload path returns false.
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Centre;
     float     Radius;
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     Position;                                 // +0x54
 };
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     float ModifyFadeDistanceForVideoOptions(unsigned long typeMask, float distance);   // 0x00B597E0
 };
 extern CEngineCamera* g_pEngineCamera;                      // 0x01436EA0
 extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator; // 0x01436E88
 double __fastcall GFGetFastSubFrameTimer();                 // 0x009E1C70
-struct CEngineStaticMapFileBlockManager;
-struct CMovableResource {
+class CEngineStaticMapFileBlockManager;
+class CMovableResource { public:
     virtual void v00();
 };
-struct CLocalDetailCacheMap {
-    struct CObjectTypeCollectionPalette;
-    struct CObjectCacheGroupCollection : CMovableResource {
+class CLocalDetailCacheMap { public:
+    class CObjectTypeCollectionPalette;
+    class CObjectCacheGroupCollection : public CMovableResource { public:
         CObjectCacheGroupCollection* Next;                  // +0x04
         C3DBoundingSphere            BoundingSphere;        // +0x08
         float                        MaxFadeDistance;       // +0x18

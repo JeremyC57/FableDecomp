@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <string.h>
 
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     CBaseObject* PData;
     CBaseIntelligentPointer() : PData(0) {}
@@ -12,7 +12,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const { return PData; }
     void SetPItem(CBaseObject* item) { PData = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() {}
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
@@ -52,12 +52,12 @@ static bool GetSubDef(const CDefClassBase* base, CDefPointer<const CCrateStackDe
     return false;
 }
 
-struct CThingMarker : CBaseObject {
+class CThingMarker : public CBaseObject { public:
     bool HasCrateStack;          // the interface bit 0xB5
     CDefClassBase* PBaseDef;
     template <class T> bool PeekTC(const T** out) const { if (HasCrateStack) { *out = 0; return true; } return false; }
 };
-struct CTCCrateStack { };
+class CTCCrateStack { public: };
 
 class IsCrateStackOfType {
 public:

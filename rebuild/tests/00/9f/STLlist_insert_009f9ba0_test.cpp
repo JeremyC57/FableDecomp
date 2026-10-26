@@ -7,7 +7,7 @@
 
 static int gStringCtors = 0, gStringCopies = 0, gStringDtors = 0, gProfileCopies = 0, gVectorCopies = 0, gFrees = 0;
 
-struct CWideString {
+class CWideString { public:
     int m_id;
     CWideString() : m_id(0) { ++gStringCtors; }
     CWideString(const CWideString& other) : m_id(other.m_id) { ++gStringCopies; }

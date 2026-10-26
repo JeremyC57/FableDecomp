@@ -47,10 +47,10 @@ struct CIconsDefPointer {                            // CDefPointer<const NUISys
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual ~CComponent();                           // slot 0 (scalar deleting destructor)
 };
-struct CManager {
+class CManager { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04();
     virtual void m05(); virtual void m06(); virtual void m07(); virtual void m08(); virtual void m09();
     virtual void m10(); virtual void m11(); virtual void m12(); virtual void m13(); virtual void m14();
@@ -80,7 +80,7 @@ struct CComponentVector {                            // retail 12-byte STLport v
 
 struct CYesNo;
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     void*            __vftable;                      // +0x00
     unsigned char    _pad_0x04[0x08];
     bool             InGameMenuOpen;                 // +0x0C

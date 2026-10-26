@@ -6,7 +6,7 @@
 static int g_live = 0;
 static char g_sound[64];
 static int g_soundCalls = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long) : PStringData(text) { ++g_live; }
     ~CCharString() { --g_live; }
@@ -32,7 +32,7 @@ public:
         g_setText[3] = button2.Id; g_flags = flags; g_time = time; g_b1 = b1; g_b2 = b2; g_liveAtSetText = g_live;
     }
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     CSubtitleRenderer SubtitleRenderer;
 };
 CPlayerGui* g_pPlayerGui;
@@ -40,7 +40,7 @@ static unsigned char g_payload[8]; static unsigned long g_payloadLen = 0;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data) { std::memcpy(g_payload, data, length); g_payloadLen = length; }
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;
     signed char   Player;
     unsigned char Data[32];
@@ -51,17 +51,17 @@ struct CGameEvent : CMemoryBuffer {
     void AddBOOL(bool value) { Copy(1, &value); }
 };
 static long g_eventType = 0; static int g_eventPlayer = 0; static bool g_eventValid = false; static int g_eventCalls = 0;
-struct CMainGameComponent {
+class CMainGameComponent { public:
     CFontBank* Font;
     void AddGameEvent(const CGameEvent& event) { ++g_eventCalls; g_eventType = event.Type; g_eventPlayer = event.Player; g_eventValid = event.Valid && !event.Replacement && event.EndPos == 0; }
 };
 CMainGameComponent* g_pMainGameComponent;
-struct CFireheartMinigameDef {
+class CFireheartMinigameDef { public:
     unsigned long QuitText;
     unsigned long YesText;
     unsigned long NoText;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

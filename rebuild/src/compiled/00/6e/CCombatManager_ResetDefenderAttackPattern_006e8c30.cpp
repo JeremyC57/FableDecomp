@@ -50,9 +50,9 @@ struct CDefBase : CDefVirtual {
     }
 };
 
-struct CAttackPatternDef : CDefBase { };
+class CAttackPatternDef : public CDefBase { public: };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_p;
     CDefPointer(const CDefPointer& other);
     ~CDefPointer()
@@ -88,7 +88,7 @@ struct CCombatantInfo {                         // retail layout (Ego_r.pdb name
     long FrameForNextInstruction;               // +0x6c
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void ResetDefenderAttackPattern(CCombatantInfo& info, CDefPointer<CAttackPatternDef> pattern);
 };
 

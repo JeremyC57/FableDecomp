@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CThing;
-struct CCreatureActionBase { long ActionType; long ActionSubType; bool Finished; };
-struct CThingCreatureBase {
+class CThing;
+class CCreatureActionBase { public: long ActionType; long ActionSubType; bool Finished; };
+class CThingCreatureBase { public:
     bool m_stance; CCreatureActionBase* CurrentAction;
     virtual bool IsInCombatStance() { return m_stance; }
     bool IsPerformingAnyAction() { return CurrentAction != 0 && !CurrentAction->Finished; }
 };
-struct CTCCombat {
+class CTCCombat { public:
     CThingCreatureBase* ParentCreature;
     float GetCombatReducedDamage(float damage, CThing* attacker)
     {

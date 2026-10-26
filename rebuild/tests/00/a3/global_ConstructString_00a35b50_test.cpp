@@ -4,7 +4,7 @@ struct Inner {
     bool Build(void* a, long b, int zero);
 };
 
-struct CWideString {
+class CWideString { public:
     char pad0[8];
     Inner* field8;
 };

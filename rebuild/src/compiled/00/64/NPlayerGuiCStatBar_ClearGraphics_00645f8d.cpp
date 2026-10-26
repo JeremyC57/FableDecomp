@@ -18,8 +18,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CBaseObject;
-struct CEnginePrimitiveHandle {
+class CBaseObject;
+class CEnginePrimitiveHandle { public:
     void Clear();                                        // 0x0041BE70
     unsigned long m_handle;
 };
@@ -31,7 +31,7 @@ struct CMemFunRefClear {                                 // std::mem_fun_ref_t<v
 CMemFunRefClear __fastcall for_each(CEnginePrimitiveHandle* first, CEnginePrimitiveHandle* last, CMemFunRefClear f);   // 0x0043F360
 
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void Kill();                                         // 0x00AEE8C0
 };
 }
@@ -42,7 +42,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                       // 0x00A01B50
     ~CBaseIntelligentPointer();                          // 0x00A01C10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                        // 0x00655318
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x0065533C
 };
@@ -55,7 +55,7 @@ template<class T> struct CRetailVector {                 // VC6 Dinkumware vecto
 
 namespace NPlayerGui {
 
-struct CStatBar {
+class CStatBar { public:
     virtual void v00();
     virtual void ClearGraphics();                        // slot 1
     unsigned char                                                       _pad04[0x2c];

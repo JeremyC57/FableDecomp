@@ -18,7 +18,7 @@ struct __true_type { __true_type() {} };
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on: UsingComponents +0x20 [PDB +0x20],
 // ThingTypeFlags +0x6c [PDB +0x7c], the state bit byte +0x91 [PDB +0xa1] = Dead 0x01,
 // IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned char UsingComponents[0x24];              // +0x20 bitset<274> of present thing components
@@ -94,7 +94,7 @@ template <class T> struct CResultList {
     void push_back(const T& x) { insert(end(), x); }
 };
 
-struct CThingCreatureBase : CThing { enum { ThingTypeMask = 0xf }; };
+class CThingCreatureBase : public CThing { public: enum { ThingTypeMask = 0xf }; };
 // std::const_mem_fun_ref_t<bool, CThingCreatureBase>: a pointer to a const member predicate (single
 // inheritance, 4 bytes at +0), called on the thing reference.
 template <class R, class T> struct const_mem_fun_ref_t {

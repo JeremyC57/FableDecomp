@@ -2,18 +2,18 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* s; CCharString(const char* t, long = -1) : s(t) { } };
-struct C3DVector { float X, Y, Z; };
-struct CThing { unsigned char m_flags91; C3DVector pos; C3DVector* GetPosition() { return &pos; } };
-struct CThingCreatureBase { int id; };
+class CCharString { public: const char* s; CCharString(const char* t, long = -1) : s(t) { } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: unsigned char m_flags91; C3DVector pos; C3DVector* GetPosition() { return &pos; } };
+class CThingCreatureBase { public: int id; };
 struct CPointer { CThing* item; CThing* GetPItem() const { return item; } };
-struct CSoundPair { long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
-struct CCreatureActionBase { const char* anim; bool useMove, usePhysics; CThingCreatureBase* owner; };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CSoundPair { public: long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CCreatureActionBase { public: const char* anim; bool useMove, usePhysics; CThingCreatureBase* owner; };
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase* o, const CCharString& n, const CSoundPair& snd, bool m, bool p, bool, long, long)
     { anim = n.s; useMove = m; usePhysics = p; owner = o; if (snd.FirstSound || snd.LastSound) anim = 0; }
 };
-struct CAIBrain { CThingCreatureBase* PCreature; CThingCreatureBase* GetPCreature() const { return PCreature; } };
+class CAIBrain { public: CThingCreatureBase* PCreature; CThingCreatureBase* GetPCreature() const { return PCreature; } };
 
 static int g_look, g_lookResult, g_terminated, g_played, g_results[8];
 static const char* g_anims[8];

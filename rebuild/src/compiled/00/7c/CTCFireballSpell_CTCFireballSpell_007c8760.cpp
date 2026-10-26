@@ -19,7 +19,7 @@
 // { Object->Release(); Object = 0; }`, the timer's implicit dtor frees its vector then its pointer.
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                                  // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
@@ -33,14 +33,14 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     ~CBaseIntelligentPointer();                             // 0x00A01C10
     CThing* GetPItem() const;                               // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
 };
 #pragma pack(pop)
 
 inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                         // 0x0099EAE0
 };
@@ -52,14 +52,14 @@ template <class T> struct CRetailVector {                   // STLport vector (1
     ~CRetailVector() { if (_M_start) free(_M_start); }
 };
 
-struct CSpecialAbilitiesFireballSpellDef {
+class CSpecialAbilitiesFireballSpellDef { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long RefCount;                                          // +0x04
     void Release() { if (--RefCount == 0) DestroySelf(); }
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer() { if (Object) { Object->Release(); Object = 0; } }
 };
@@ -80,14 +80,14 @@ struct CWillButtonHelperTimer {                             // retail 0x34 bytes
     long                        LevelToCast;                // +0x30
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                                     // 0x00686830
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
 };
 
-struct CTCFireballSpell : CTCBase {                         // vtable 0x0126E964
+class CTCFireballSpell : public CTCBase { public:                         // vtable 0x0126E964
     CWillButtonHelperTimer                         Timer;                    // +0x0c
     CDefPointer<CSpecialAbilitiesFireballSpellDef> PDef;                     // +0x40
     unsigned long                                  InitLoopingSound;         // +0x44

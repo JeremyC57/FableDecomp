@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 0x0056EC79: both indicator words are zeroed before the reset helper runs.
 static long g_seenPos = -1, g_seenMax = -1;
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     long statIndicatorPos;
     long statIndicatorMax;
     void ResetStatIndicatorValues() { g_seenPos = statIndicatorPos; g_seenMax = statIndicatorMax; statIndicatorMax = 5; }

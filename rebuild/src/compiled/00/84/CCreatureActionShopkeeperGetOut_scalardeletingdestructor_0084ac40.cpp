@@ -1,4 +1,4 @@
-struct CCreatureAction_ShopkeeperGetOut {
+class CCreatureAction_ShopkeeperGetOut { public:
     void* vftable;
 };
 

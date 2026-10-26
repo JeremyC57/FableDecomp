@@ -1,7 +1,7 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
-struct CWorld { char pad[0xd7]; char flag; };
+class CWorld { public: char pad[0xd7]; char flag; };
 
 char __fastcall CGameScriptInterface_IsSavingEnabled(const CGameScriptInterface* self)
 {

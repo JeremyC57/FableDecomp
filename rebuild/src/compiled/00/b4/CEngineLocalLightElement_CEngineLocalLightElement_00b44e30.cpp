@@ -9,16 +9,16 @@
 // WorldPos is copied word by word through edx/ecx straight into [eax]: C3DVector has a memberwise user copy constructor
 // (the implicit POD copy goes through `mov edx,eax` and esi). The class has no generated engine header in the tree, so it is
 // modelled locally with the PDB names.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
-struct CEngineLocalLightElement {
+class CEngineLocalLightElement { public:
     C3DVector       WorldPos;                      // +0x00
     float           Radius;                        // +0x0C
     float           RadiusSquared;                 // +0x10

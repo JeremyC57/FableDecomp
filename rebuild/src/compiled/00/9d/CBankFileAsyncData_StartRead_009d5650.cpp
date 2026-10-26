@@ -13,7 +13,7 @@ struct Inner {
     Reader* m110;        // +0x110 : object whose method is called
 };
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     char    pad0[0x18];
     int     f18;         // +0x18  result store
     char    pad1c[0x28 - 0x1c];

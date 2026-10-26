@@ -12,16 +12,16 @@
 //   ParentClass +0x14 (its quest state long at +0x4c).
 // Shape: the slot-296 vtable is fetched before the nested slot-655 call (plain nested call); the three literal temporaries
 //   (the objective's trailing arguments) are built right to left before the quest-name result slot is pushed.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefString {
+class CDefString { public:
     long Index;
     operator CCharString() const;                  // 0x00415D70
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x704];
     float         MurderTwistMorality;             // +0x704
     unsigned char _pad708[0x714 - 0x708];
@@ -50,7 +50,7 @@ struct CScriptThingMethods {
     virtual void v017();
     virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -708,7 +708,7 @@ struct CGameScriptInterface {
     virtual void v654();
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) 0x00891880
 };
-struct CScriptThing : CScriptThingMethods {        // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CScriptThingMethods { public:        // 12 bytes, vtable 0x01238C8C
     void* PImp_Data;
     void* PImp_Info;
 };

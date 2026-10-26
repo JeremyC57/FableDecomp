@@ -11,7 +11,7 @@
 // Shape: the inlined CRuntimeScriptedEntityPersist::GetEntityPersistScript (find = LowerBound on a copy of the key,
 // `it != end() && key >= it->first` keeps the hit (gives retail's jb/ja order), then `it == end ? 0 : &it->second.Script`), then the copy as a named local in its
 // own block (VC places it in the dead entityID argument slot).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();                                  // 0x0099EAE0
@@ -19,7 +19,7 @@ struct CCharString {
 
 namespace NScript {
 struct CRuntimeScriptedEntityPersist {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         unsigned __int64 EntityID;                   // +0x00 (pair +0x08)
         CCharString      Script;                     // +0x08 (pair +0x10)
         long             Flags;                      // +0x0C (pair +0x14)

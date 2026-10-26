@@ -1,4 +1,4 @@
-struct CTCWillResponse {
+class CTCWillResponse { public:
     void* vftable;
 };
 

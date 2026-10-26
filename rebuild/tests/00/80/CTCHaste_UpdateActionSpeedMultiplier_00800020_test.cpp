@@ -19,7 +19,7 @@ struct CMultiplierMap {
     CMultiplierIterator begin() { return CMultiplierIterator(_M_header->_M_left); }
     CMultiplierIterator end() { return CMultiplierIterator(_M_header); }
 };
-struct CTCHaste {
+class CTCHaste { public:
     float Multiplier;
     CMultiplierMap Multipliers;
     void UpdateActionSpeedMultiplier()

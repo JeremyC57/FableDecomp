@@ -5,7 +5,7 @@ static char g_seq[128] = "";
 static void note(const char* s) { std::strcat(g_seq, s); }
 struct CGameMapGrid { long m_size; long GetMemoryFootprint() { note("G"); return m_size; } };
 struct CQuarterGrid { long m_size; long GetMemoryFootprint() { note("Q"); return m_size; } };
-struct CMap { unsigned char _pad[0x1a78]; CQuarterGrid* m_pQuarterGrid; CGameMapGrid* m_pGameMapGrid;
+class CMap { public: unsigned char _pad[0x1a78]; CQuarterGrid* m_pQuarterGrid; CGameMapGrid* m_pGameMapGrid;
     long GetMemoryFootprint() { long footprint = m_pGameMapGrid->GetMemoryFootprint(); return m_pQuarterGrid->GetMemoryFootprint() + footprint; } };
 
 int main()

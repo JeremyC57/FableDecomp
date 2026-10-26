@@ -14,7 +14,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : PItem(0) { }
     CThing* GetPItem() const { return PItem; }    // stands in for 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
 };
 typedef CIntelligentPointer<CThing> PThing;
 template <class A, class R> struct unary_function {

@@ -2,7 +2,7 @@
 #include <new>
 // Behaviour model of CScriptGameResourceObjectScriptedThing::~CScriptGameResourceObjectScriptedThing @ 0x00903AC0.
 static int g_log[32], g_n = 0;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
@@ -28,7 +28,7 @@ struct CThing_Retail {
 struct CBase { virtual ~CBase() {} };
 struct CActionBase : CBase { long m_actionState; bool m_started, m_finished; CActionBase() : m_actionState(0), m_started(false), m_finished(false) {} };
 struct CActionStopScripting : CActionBase { };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     bool Locked; CActionBase* last;
     void AddAction(CActionBase* a) { last = a; g_log[g_n++] = 1; }
     void ClearLocked() { Locked = false; g_log[g_n++] = 2; }
@@ -37,7 +37,7 @@ struct CTCScriptedControl {
 static int g_destroyed = 0;
 static void DestroyImp(void*) { ++g_destroyed; }
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; SCountBlock* Info;
     ~CCountedPointer()
     {
@@ -48,15 +48,15 @@ template<class T> struct CCountedPointer {
         Data = 0; Info = 0;
     }
 };
-struct CBaseObject { virtual ~CBaseObject() { g_log[g_n++] = 9; } };
-struct CScriptGameResourceObjectBase : CBaseObject { virtual ~CScriptGameResourceObjectBase() {} };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase { CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp; };
+class CBaseObject { public: virtual ~CBaseObject() { g_log[g_n++] = 9; } };
+class CScriptGameResourceObjectBase : public CBaseObject { public: virtual ~CScriptGameResourceObjectBase() {} };
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public: CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp; };
 struct CIntelligentPointer {
     CThing_Retail* m_pItem;
     ~CIntelligentPointer() { g_log[g_n++] = 8; }
     CThing_Retail* GetPItem() { return m_pItem; }
 };
-struct CScriptGameResourceObjectScriptedThing : CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThing : public CScriptGameResourceObjectScriptedThingBase { public:
     CIntelligentPointer PThing;
     virtual ~CScriptGameResourceObjectScriptedThing()
     {

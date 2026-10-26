@@ -13,7 +13,7 @@
 // unique. One of 26 bodies.
 #include <new>
 
-struct CAbilityButtonGuiDef {
+class CAbilityButtonGuiDef { public:
     unsigned char _body[0x5c];
     CAbilityButtonGuiDef(const CAbilityButtonGuiDef& other);           // 0x0046F1B4
 };

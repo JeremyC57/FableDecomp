@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CThing;
-struct CTCCrateStack {
+class CThing;
+class CTCCrateStack { public:
     CThing* crates[4];
     int count;
     CThing* GetNextCrate() { return count ? crates[count - 1] : 0; }
@@ -14,7 +14,7 @@ struct CTCUserActionPointBase {
     int freed;
     void FreeActionPoint(int index) { freed = index; }
 };
-struct CThing {
+class CThing { public:
     bool dead;
     CTCCrateStack* stack;
     CTCUserActionPointBase* point;

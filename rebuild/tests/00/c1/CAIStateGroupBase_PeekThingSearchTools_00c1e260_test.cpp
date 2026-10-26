@@ -2,7 +2,7 @@
 #include <cstring>
 #include <new>
 
-struct CThingSearchTools;
+class CThingSearchTools;
 
 struct Sub {
     virtual void  s0() {}
@@ -23,7 +23,7 @@ struct Field4 { void* pad; Inner* inner; };
 
 extern void* const s_vtbl_12b33f0[16] = {0};
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void** vptr;
     Field4* PBrain;
     CThingSearchTools* PeekThingSearchTools();

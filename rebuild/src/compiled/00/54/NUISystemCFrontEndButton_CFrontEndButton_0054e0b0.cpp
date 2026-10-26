@@ -74,15 +74,15 @@ struct CRetailList {                         // STLport list: the sentinel node 
     }
 };
 
-struct CAction;
-struct CActionParam;
+class CAction;
+class CActionParam;
 
 struct CCountedPointerAction {               // CCountedPointer<CAction>
     CAction* m_pObject;
     void*    m_pCount;
 };
 
-struct CFrontEndButton : CClickable_Retail {             // vtables 0x01249554 / 0x01249530 / 0x01249528
+class CFrontEndButton : public CClickable_Retail { public:             // vtables 0x01249554 / 0x01249530 / 0x01249528
     float                                m_fLastInputTime;   // +0x194
     CRetailVector<CCountedPointerAction> Actions;            // +0x198
     CRetailVector<CCountedPointerAction> ActionsOnDelete;    // +0x1a4

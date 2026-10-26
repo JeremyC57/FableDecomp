@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCLook {
+class CTCLook { public:
     long HeadTurnState; long BodyTurnState; long TimeToStopLooking; bool OneFrameDelay;
     void SetHeadTurnState(long state)
     {

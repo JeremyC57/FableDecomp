@@ -11,7 +11,7 @@ struct CGameDefinitionManager_006b2c60 {
     long GetGlobalIndexFromLocal(const CCharString& className, long localIndex);   // 0x009AD390
 };
 
-struct CEnvironment {
+class CEnvironment { public:
     void*                           __vftable;
     CGameDefinitionManager_006b2c60* DefinitionManager;   // +0x04
     long GetGlobalEnvironmentThemeIndexFromLocal(long localIndex);

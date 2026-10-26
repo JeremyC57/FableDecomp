@@ -13,7 +13,7 @@
 // Layout: retail CWorldMap keeps Maps (CArray<CMapInfo>, 0x48-byte entries) at +0x20 and Regions (vector<CRegion>,
 //   0x58-byte entries) at +0x2c, 4 bytes below rebuild/include/engine/CWorldMap.h (the landed
 //   CWorldMap::GetMapNumberFromMapUID 0x004FB920 models Maps at +0x20 the same way), so the class is modelled locally.
-struct CWideString {
+class CWideString { public:
     void* PStringData;                              // +0x00
     ~CWideString();                                 // 0x0099B510
 };
@@ -23,7 +23,7 @@ namespace N_0099a300 { struct CBase {
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-struct CDiskFileWin32 : CBase {                     // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                     // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                           // 0x0099A920 (slot 2)
@@ -37,32 +37,32 @@ struct CDiskFileWin32 : CBase {                     // vtable 0x0122D06C, 0x1c b
     ~CDiskFileWin32() { Close(); }
     void Write(const void* data, long size, CASuspendableProcess* process);   // 0x0099AA90
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteSLONG(long value);                    // 0x00993EB0
 };
-struct CMemoryDataOutputStream : CDataOutputStream {
+class CMemoryDataOutputStream : public CDataOutputStream { public:
     unsigned char _body[0x18];
     CMemoryDataOutputStream();                      // 0x00996AF0
     ~CMemoryDataOutputStream();                     // 0x00996B30
     long GetSize() const;                           // 0x00994B40
     const void* PeekData() const;                   // 0x00995E70
 };
-struct CMapInfo {                                   // 0x48 bytes
+class CMapInfo { public:                                   // 0x48 bytes
     unsigned char _body[0x48];
     void SaveBinary(CDataOutputStream& stream);         // 0x004FB3E0
 };
-struct CRegion {                                    // 0x58 bytes
+class CRegion { public:                                    // 0x58 bytes
     unsigned char _body[0x58];
     void SaveBinary(CDataOutputStream& stream);         // 0x006BBFD0
 };
-template <class T> struct CArray {                  // STLport vector layout (12 bytes)
+template <class T> class CArray { public:                  // STLport vector layout (12 bytes)
     T* Start;
     T* Finish;
     T* EndOfStorage;
     unsigned long size() const { return Finish - Start; }
     T& operator[](unsigned long i) { return Start[i]; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char    _pad00[0x20];
     CArray<CMapInfo> Maps;                          // +0x20
     CArray<CRegion>  Regions;                       // +0x2c

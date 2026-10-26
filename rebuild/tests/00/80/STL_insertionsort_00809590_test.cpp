@@ -1,7 +1,7 @@
 // Behaviour test for 0x00809590 std::__insertion_sort over the first-person targeting (position, index) pairs with a 0x2C-byte comparator by value.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -12,7 +12,7 @@ struct PairVectorLong {
     PairVectorLong() : second(0) { }
     PairVectorLong(const PairVectorLong& o) : first(o.first), second(o.second) { }
 };
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos; C3DVector PreferredLine;
     float AngleCompare, SqrDistCompare, OverrideShortDistanceFactor, OverrideShortDistanceFalloff;
     bool CompareInXYPlane;

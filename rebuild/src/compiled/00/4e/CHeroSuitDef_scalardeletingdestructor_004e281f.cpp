@@ -5,7 +5,7 @@ extern void __fastcall Base_dtor(void* def);
 extern void __cdecl op_delete(void* p);
 extern const int g_vtbl;
 
-struct CHeroSuitDef {
+class CHeroSuitDef { public:
     int f0;
     int Parent;
     void* f8;

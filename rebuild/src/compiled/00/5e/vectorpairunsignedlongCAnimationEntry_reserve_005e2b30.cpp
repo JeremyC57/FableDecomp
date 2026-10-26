@@ -1,6 +1,6 @@
 // vector<pair<unsigned long, CAnimationEntry> >::reserve(unsigned int n) -- STLport vector reserve for the CRC-keyed animation entries: when the capacity is short, copy into a fresh malloc block, destroy and free the old one
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- same-TU auto_inline(off) noinline bodies for __uninitialized_copy and __destroy_aux (tags unnamed) home both __false_type temporaries on n's live argument slot
-// Leaf: ?reserve@?$vector@U?$pair@KUCAnimationEntry@@@@@@QAEXI@Z
+// Leaf: ?reserve@?$vector@U?$pair@KVCAnimationEntry@@@@@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E2B30, 226 bytes (+ padding to 240), `ret 4` (__fastcall).
 // Callees: 0x00BFEA0E malloc, 0x005E16F0 __uninitialized_copy(first, last, result, __false_type) (landed), 0x00454404
 //   __destroy_aux(first, last, __false_type) (ICF-shared body; manifest `_Destroy_range<allocator<CFlash>>`), 0x00BFEA14 free.
@@ -13,13 +13,13 @@
 // Label: catalogued as `std_Vector_Reserve`.
 #include <stdlib.h>
 #include <new>
-struct CAnimComponentMap {                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
+class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
     long IVRefCount;                                       // +0x04
 };
 
-template <class T> struct CIVCountedPointer {              // one word: the intrusively counted object
+template <class T> class CIVCountedPointer { public:              // one word: the intrusively counted object
     T* Object;
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
     {
@@ -48,11 +48,11 @@ template <class T> struct CIVCountedPointer {              // one word: the intr
     }
 };
 
-struct CDefString {                                        // one word: the def string table position
+class CDefString { public:                                        // one word: the def string table position
     long TablePos;                                         // +0x00
 };
 
-struct CAnimationEntry {                                   // Ego_r.pdb, 0x10 bytes
+class CAnimationEntry { public:                                   // Ego_r.pdb, 0x10 bytes
     long                                 BankIndex;        // +0x00
     CDefString                           AnimName;         // +0x04
     CDefString                           GroupName;        // +0x08
@@ -66,7 +66,7 @@ template <class T1, class T2> struct pair {                // STLport pair: expl
 };
 typedef pair<unsigned long, CAnimationEntry> SAnimationEntryPair;   // 0x14 bytes: CRC key + entry
 
-template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value
+template <class K, class V> class CKeyPairCompareLess { public:   // empty, passed by value
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<unsigned long, CAnimationEntry> TAnimationEntryLess;

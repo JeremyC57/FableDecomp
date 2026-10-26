@@ -5,7 +5,7 @@
 // Copy implementation. The jmp target is relocation-masked, so any plausible
 // extern tail-callee reproduces the bytes.
 
-struct CSpecialAbilitiesDrainLifeDef;
+class CSpecialAbilitiesDrainLifeDef;
 
 // Base-class Copy that this def forwards to (address relocation-masked).
 extern "C" void __fastcall CSpecialAbilitiesDrainLifeDef_Copy_base(

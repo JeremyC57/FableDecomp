@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_TrollIdle {
+class CCreatureAction_TrollIdle { public:
     void* vftable;
     int destroyed;
 };

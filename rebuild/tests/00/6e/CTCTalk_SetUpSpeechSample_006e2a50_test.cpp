@@ -22,7 +22,7 @@ static int fails = 0;
 // the map re-read from the global for every call, the first-value fallback); with PSpeechBank just zeroed
 // VC folds the test and calls the default getter directly with `this` still in ecx. The sample index is
 // stored to the member and re-read for BeginLoadingEntry and the duration call (member, not local).
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     CCharStringData* m_pData;

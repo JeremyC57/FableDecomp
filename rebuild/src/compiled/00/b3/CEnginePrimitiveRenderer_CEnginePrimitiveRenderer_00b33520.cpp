@@ -12,7 +12,7 @@
 //   CEnginePrimitiveRenderer2D dtor 0x00B4AAA0 (whose CCountedPointer / manager-array models are reused here).
 #include <stddef.h>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (__fastcall *DeleteFunc)(void*);
     void* Data;
@@ -22,7 +22,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" void __cdecl free(void* pointer);                                         // 0x00BFEA14
 void __cdecl operator delete(void* pointer);                                         // 0x00BFE9BC
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
 
@@ -40,30 +40,30 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct CEnginePrimitiveManager;
-struct CEnginePrimitiveManagerStaticMeshes;
-struct CEnginePrimitiveManagerAnimatedMeshes;
-struct CEnginePrimitiveManagerRepeatedStaticMeshes;
-struct CEnginePrimitiveManagerRepeatedZSprites;
-struct CEnginePrimitiveManagerSprites;
-struct CEnginePrimitiveManagerFlareSprites;
-struct CEnginePrimitiveManagerWeaponTrails;
-struct CEnginePrimitiveManagerSpriteTrails;
-struct CEnginePrimitiveManagerLines;
-struct CEnginePrimitiveManagerText;
-struct CEnginePrimitiveManagerGameMeshes;
-struct CEnginePrimitiveOcclusionGroupManager;
-struct CEnginePrimitiveGroupManager;
-struct CEnginePrimitiveChangerManager;
-struct CEngineClothRenderer;
-struct CEnginePrimitiveManagerParticleLineGroup;
-struct CEnginePrimitiveManagerParticleMeshGroup;
-struct CEnginePrimitiveManagerParticleSpriteGroup;
-struct CEnginePrimitiveManagerParticleSpriteTrailGroup;
-struct CEnginePrimitiveManagerParticleGroup;
-struct CEnginePrimitiveManagerDecal;
-struct CEnginePrimitiveManagerParticleDecalGroup;
-struct CEnginePrimitiveManagerWeatherMask;
+class CEnginePrimitiveManager;
+class CEnginePrimitiveManagerStaticMeshes;
+class CEnginePrimitiveManagerAnimatedMeshes;
+class CEnginePrimitiveManagerRepeatedStaticMeshes;
+class CEnginePrimitiveManagerRepeatedZSprites;
+class CEnginePrimitiveManagerSprites;
+class CEnginePrimitiveManagerFlareSprites;
+class CEnginePrimitiveManagerWeaponTrails;
+class CEnginePrimitiveManagerSpriteTrails;
+class CEnginePrimitiveManagerLines;
+class CEnginePrimitiveManagerText;
+class CEnginePrimitiveManagerGameMeshes;
+class CEnginePrimitiveOcclusionGroupManager;
+class CEnginePrimitiveGroupManager;
+class CEnginePrimitiveChangerManager;
+class CEngineClothRenderer;
+class CEnginePrimitiveManagerParticleLineGroup;
+class CEnginePrimitiveManagerParticleMeshGroup;
+class CEnginePrimitiveManagerParticleSpriteGroup;
+class CEnginePrimitiveManagerParticleSpriteTrailGroup;
+class CEnginePrimitiveManagerParticleGroup;
+class CEnginePrimitiveManagerDecal;
+class CEnginePrimitiveManagerParticleDecalGroup;
+class CEnginePrimitiveManagerWeatherMask;
 
 struct EmptyRangeTag {};
 extern void __fastcall DestroyManagerRange(
@@ -85,7 +85,7 @@ struct CManagerPointerArray {
     }
 };
 
-struct CEngineScene {
+class CEngineScene { public:
     virtual ~CEngineScene();
 };
 
@@ -120,7 +120,7 @@ struct CEnginePrimitiveRendererSharedData {       // vtable 0x012A1380 (as the d
     unsigned char _pad004[0x264];
 };
 
-struct CEngineComponent {                          // +0x268, vtable 0x012A1348
+class CEngineComponent { public:                          // +0x268, vtable 0x012A1348
     virtual ~CEngineComponent();                     // 0x00B59730
     void** GlobalPointerAddress;
     bool RenderEnabled;
@@ -128,7 +128,7 @@ struct CEngineComponent {                          // +0x268, vtable 0x012A1348
     unsigned char Padding[2];
 };
 
-struct CEnginePrimitiveRenderer : CEnginePrimitiveRendererSharedData, CEngineComponent {
+class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent { public:
     CManagerPointerArray PrimitiveManagers;          // +0x274
     CCountedPointer<CEnginePrimitiveManagerStaticMeshes> StaticMeshManager; // +0x280
     CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes> AnimatedMeshManager; // +0x288

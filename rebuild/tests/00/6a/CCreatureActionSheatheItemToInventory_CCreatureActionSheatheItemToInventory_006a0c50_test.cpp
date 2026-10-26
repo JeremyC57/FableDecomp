@@ -2,11 +2,11 @@
 // the counted pointer copied and its shared count incremented (a null count block is left alone).
 #include <cstdio>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
 struct CCountedPointer_T {
     CCreatureActionBase* Data;
@@ -21,7 +21,7 @@ struct CCountedPointer_T {
 
 static int g_baseCopies = 0;
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00() { }
     virtual ~CCreatureActionBase() { }
     unsigned char _body[164];
@@ -29,7 +29,7 @@ struct CCreatureActionBase {
     CCreatureActionBase(const CCreatureActionBase& other) { ++g_baseCopies; for (int i = 0; i < 164; ++i) _body[i] = 0; }
 };
 
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
     CCountedPointer_T PFollowUpAction;
     virtual void v00() { }
     CCreatureAction_SheatheItemToInventory() { }

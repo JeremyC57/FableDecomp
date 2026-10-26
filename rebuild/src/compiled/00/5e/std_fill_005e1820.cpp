@@ -11,14 +11,14 @@
 // stored at [esi-0Ch] / [esi-8] / [esi-4]).
 // Local base model, not engine/CIVCountedPointeeBase.h: the generated header flattens the vptr into a plain
 // `void* __vftable`, which cannot make the slot-1 virtual destroy call the release runs.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;                                  // +0x00
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
@@ -37,11 +37,11 @@ struct CIVCountedPointer {
     }
 };
 
-struct CDefString {                             // one word (Ego_r.pdb: TablePos)
+class CDefString { public:                             // one word (Ego_r.pdb: TablePos)
     long TablePos;                              // +0x00
 };
-struct CAnimComponentMap : CIVCountedPointeeBase { };
-struct CAnimationEntry {                        // 16 bytes
+class CAnimComponentMap : public CIVCountedPointeeBase { public: };
+class CAnimationEntry { public:                        // 16 bytes
     long                                 BankIndex;     // +0x00
     CDefString                           AnimName;      // +0x04
     CDefString                           GroupName;     // +0x08

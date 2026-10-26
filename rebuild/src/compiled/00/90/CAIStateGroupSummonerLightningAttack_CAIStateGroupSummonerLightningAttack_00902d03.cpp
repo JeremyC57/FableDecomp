@@ -8,7 +8,7 @@
 // PDef's inline null store as `and dword ptr [esi+1Ch],0` -- the size-optimised zero store, hence
 // `#pragma optimize("s", on)`. NextFrameForPreemptiveUse (+0x20) is left uninitialised.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -17,20 +17,20 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v01();                         // own vtable 0x01238C6C
     CIntelligentPointer() : CBaseIntelligentPointer() {}
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;                                  // +0x00
     CDefPointer() : Object(0) {}
 };
 
-struct CSummonerDef;
+class CSummonerDef;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
     CAIStateGroupBase();                        // 0x008FD255

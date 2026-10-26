@@ -17,7 +17,7 @@ template<class T> struct CRetailVector {
     unsigned long size() const { return (unsigned long)(last - first); }
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
-struct CTCTavernTable {
+class CTCTavernTable { public:
     CRetailVector<void*> Occupants;
     CRetailVector<CIntelligentPointer> Tankards;
     CRetailVector<CIntelligentPointer> Food;

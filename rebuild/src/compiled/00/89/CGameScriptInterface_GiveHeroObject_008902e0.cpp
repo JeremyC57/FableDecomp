@@ -27,7 +27,7 @@ extern const char GHO_ItemName[];
 extern void* GHO_RefreshGate;
 
 /* engine string: single opaque pointer; ctor/dtor manage internals */
-struct CCharString {
+class CCharString { public:
     void* rep;
 };
 

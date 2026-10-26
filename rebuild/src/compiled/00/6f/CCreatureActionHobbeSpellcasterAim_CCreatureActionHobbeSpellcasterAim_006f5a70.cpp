@@ -6,7 +6,7 @@
 // followed by its inline CIntelligentPointer vtable store (0x01238C6C). Own vtable 0x01263CF4
 // (CCreatureAction_HobbeSpellcasterAim). The manifest label (CAIStateGroupBehaviourBase ctor)
 // is propagated garbage; the class is read off the vtable.
-struct CCreatureAction_GenericAimProjectileWeapon {
+class CCreatureAction_GenericAimProjectileWeapon { public:
     virtual void v00();
     CCreatureAction_GenericAimProjectileWeapon();      // 0x008BFB00
     unsigned char _body[0x110];             // +0x4..+0x113
@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {     // vtable 0x01238C6C
     CIntelligentPointer() { }
 };
 
-struct CCreatureAction_HobbeSpellcasterAim : CCreatureAction_GenericAimProjectileWeapon {   // vtable 0x01263CF4
+class CCreatureAction_HobbeSpellcasterAim : public CCreatureAction_GenericAimProjectileWeapon { public:   // vtable 0x01263CF4
     CIntelligentPointer m_pTarget;          // +0x114
     CCreatureAction_HobbeSpellcasterAim();
 };

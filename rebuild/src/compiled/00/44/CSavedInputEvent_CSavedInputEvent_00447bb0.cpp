@@ -9,15 +9,15 @@
 // No direct caller or address reference exists in the image (an unreferenced inline-constructor copy).
 // Shape: the member constructor call, then the two bool initialisers through a cleared al.
 // Leaf: ??0CSavedInputEvent
-struct CInputEvent {                                    // 0x34 bytes: UInputEventData Data, DeviceType, DeviceNumber, Type, CurrentTime, StartTime
+class CInputEvent { public:                                    // 0x34 bytes: UInputEventData Data, DeviceType, DeviceNumber, Type, CurrentTime, StartTime
     unsigned char _body[0x34];
     CInputEvent();                                      // 0x00A04410
 };
 
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCamera {
+class CCamera { public:
     C3DVector       WorldPosition;                      // +0x00
     unsigned char   RHSet[0x18];                        // +0x0c CRightHandedSet (opaque here)
     bool            HeightLocked;                       // +0x24

@@ -1,13 +1,13 @@
 // behaviour copy of NCreatureMode::CModeCreatureIsProjectile::Recover
 #include <cstdio>
 static int g_suspend = -1, g_enable = -1, g_wake = 0, g_actions = 0, g_removed = -1, g_dtor = 0; static bool g_flip = true;
-struct CThingCreatureBase;
-struct CCombatActionBase { CThingCreatureBase* owner; ~CCombatActionBase() { ++g_dtor; } };
+class CThingCreatureBase;
+class CCombatActionBase { public: CThingCreatureBase* owner; ~CCombatActionBase() { ++g_dtor; } };
 struct CRecover : CCombatActionBase { bool CanBeHit, Flip;
     CRecover(CThingCreatureBase* o, bool flip) { owner = o; CanBeHit = false; Flip = flip; } };
 struct CPhysics { void SetEnabled(bool e) { g_enable = e; } void Wake() { ++g_wake; } };
-struct CTCCreatureModeManager { void RemoveMode(unsigned long m) { g_removed = (int)m; } };
-struct CThingCreatureBase {
+class CTCCreatureModeManager { public: void RemoveMode(unsigned long m) { g_removed = (int)m; } };
+class CThingCreatureBase { public:
     unsigned char m_state; CPhysics* PPhysics; CTCCreatureModeManager modes;
     void SetSuspendAnimation(bool s, long) { g_suspend = s; }
     bool SetCurrentAction(const CCombatActionBase& a) { ++g_actions; g_flip = static_cast<const CRecover&>(a).Flip; return a.owner == this; }

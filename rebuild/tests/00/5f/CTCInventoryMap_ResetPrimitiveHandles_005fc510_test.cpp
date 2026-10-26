@@ -5,7 +5,7 @@
 
 static int g_clears = 0;
 
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     int  m_id;
     bool m_cleared;
     void Clear() { m_cleared = true; ++g_clears; }
@@ -48,7 +48,7 @@ public:
 
 typedef stl::vector<CEnginePrimitiveHandle> CPrimitiveHandleVector;
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     CPrimitiveHandleVector MapScreenPrimitiveHandles;
     CPrimitiveHandleVector MapScreenQuestPrimitiveHandles;
     CPrimitiveHandleVector MapScreenTeleportPrimitiveHandles;

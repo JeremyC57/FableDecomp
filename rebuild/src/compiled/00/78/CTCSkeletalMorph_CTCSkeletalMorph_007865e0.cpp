@@ -10,8 +10,8 @@
 // _STLP_alloc_proxy end member; the new-expression's null test feeds Reset.
 #include <stddef.h>
 void* __cdecl operator new(size_t size);            // 0x00BFEA1A
-struct CThing;
-struct C3DSkeletalMorph {
+class CThing;
+class C3DSkeletalMorph { public:
     unsigned char _data[0x18];
     C3DSkeletalMorph();                             // 0x00A44E80
 };
@@ -19,28 +19,28 @@ template <class T> struct _STLP_alloc_proxy {
     T* _M_data;
     _STLP_alloc_proxy(T* p) : _M_data(p) { }
 };
-template <class T> struct CArray {                  // retail 12 bytes: STLport _Vector_base layout
+template <class T> class CArray { public:                  // retail 12 bytes: STLport _Vector_base layout
     T* _M_start;
     T* _M_finish;
     _STLP_alloc_proxy<T> _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T* Data;                                        // +0x00
     CCPPointerInfo* Info;                           // +0x04
     CCountedPointer() : Data(0), Info(0) { }
     void Reset(T* item);                            // 0x00786BF0
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     bool    ToBeRemoved;                            // +0x08
     bool    IsInGlobalUpdateTCs;                    // +0x09
     CTCBase(CThing* thing);                         // 0x00686800
 };
-struct CTCSkeletalMorph : CTCBase {                 // vtable 0x0126B6F4
-    struct CSkeletalMorph;
+class CTCSkeletalMorph : public CTCBase { public:                 // vtable 0x0126B6F4
+    class CSkeletalMorph;
     bool                              Changed;          // +0x0c
     CArray<CSkeletalMorph>            Morphs;           // +0x10
     CCountedPointer<C3DSkeletalMorph> PSkeletalMorph;   // +0x1c

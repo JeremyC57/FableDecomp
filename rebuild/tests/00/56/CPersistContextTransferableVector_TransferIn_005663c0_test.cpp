@@ -9,9 +9,9 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 005663c0: a default-constructed CPersistTraits<float> transfers element [index] of the vector (In).
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 static const void* g_target = 0;
 static int g_defaultOk = 0;
 template <class T> struct CRetailVector {

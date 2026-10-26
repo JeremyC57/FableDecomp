@@ -39,11 +39,11 @@ public:
     }
 };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CTCOwnedEntity : CTCBase { CBaseIntelligentPointer POwner; };
-struct CTCVillage {};
-struct CTCVillageMember : CTCBase { CTCVillage* village; CTCVillage* GetPVillage() const { return village; } };
+class CTCOwnedEntity : public CTCBase { public: CBaseIntelligentPointer POwner; };
+class CTCVillage { public:};
+class CTCVillageMember : public CTCBase { public: CTCVillage* village; CTCVillage* GetPVillage() const { return village; } };
 struct CTCFreeUseMarker : CTCBase { bool m_freeToUse; };
-struct CTCActionUseBase {
+class CTCActionUseBase { public:
     const CThing* ParentThing;
     bool IsThisTheft() const
     {

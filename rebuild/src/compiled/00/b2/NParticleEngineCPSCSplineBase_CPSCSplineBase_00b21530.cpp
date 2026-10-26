@@ -9,22 +9,22 @@
 // Shape: the spline is a mem-initialiser with two C3DVector(0,0,0) temporaries (built in the frame after the vtable
 // store, between the argument pushes); the counted pointers' inline constructors zero their words afterwards.
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 struct CBase {
     virtual ~CBase();
 };
-struct CPSCBase : CBase {                   // vtable 0x0129F3F4
+class CPSCBase : public CBase { public:                   // vtable 0x0129F3F4
     CParticleSystem* ParticleSystem;        // +0x04
     bool             UpdateStarted : 1;     // +0x08 bit 0
     bool             Initialised : 1;       // +0x08 bit 1
     CPSCBase();                             // 0x00AF2620
 };
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CCardinalSpline {                    // retail 0x14 bytes
+class CCardinalSpline { public:                    // retail 0x14 bytes
     C3DVector* m_first;                     // +0x00 ControlPoints (vector)
     C3DVector* m_last;                      // +0x04
     C3DVector* m_end;                       // +0x08
@@ -32,16 +32,16 @@ struct CCardinalSpline {                    // retail 0x14 bytes
     bool       EndPointsConnected;          // +0x10
     CCardinalSpline(const C3DVector& p0, const C3DVector& p1, float tension, bool endPointsConnected);   // 0x00A56AA0
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) {}
 };
 
 namespace NParticleEngine {
-struct CPSCSplineBase : CPSCBase {          // vtable 0x012A0B14
-    struct CSplineRandomOffsetData;
-    struct CSplinePosParamData;
+class CPSCSplineBase : public CPSCBase { public:          // vtable 0x012A0B14
+    class CSplineRandomOffsetData;
+    class CSplinePosParamData;
     float                                    SplineAnimSpeed;           // +0x0c
     CCardinalSpline                          Spline;                    // +0x10
     CCountedPointer<CSplineRandomOffsetData> SplineRandomOffsetData;    // +0x24

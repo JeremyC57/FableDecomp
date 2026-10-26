@@ -12,10 +12,10 @@
 #include "engine/CClass.h"
 #include "fable_string.h"
 
-struct CThing;
-struct CThingCreatureBase;
-struct CTCParamsBase;
-struct CTCTurncoatSpell;
+class CThing;
+class CThingCreatureBase;
+class CTCParamsBase;
+class CTCTurncoatSpell;
 struct CBaseObjectPointer { CThing* Object; unsigned long refs; };
 
 struct CBaseIntelligentPointer {
@@ -30,7 +30,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     CIntelligentPointer_CThing() : CBaseIntelligentPointer() { }
 };
 
-struct CThing : CClass {
+class CThing : public CClass { public:
     unsigned char _nativeTailBeforeLifeFlags[0x80];
     unsigned char LifeFlags;                          // +0x91 retail; named native view of CThing life state
     CTCTurncoatSpell* AddTC(const CCharString&, bool, CTCParamsBase*); // 0x004C9D60
@@ -38,14 +38,14 @@ struct CThing : CClass {
 FABLE_STATIC_ASSERT(offsetof(CThing, Type) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CThing, LifeFlags) == 0x91);
 
-struct CTCTurncoatSpell {
+class CTCTurncoatSpell { public:
     unsigned char _nativeBase[0x54];
     CIntelligentPointer_CThing PItemRemoved; // native +0x54, donor +0x58 (timer differs)
     void SetPTarget(CThingCreatureBase*); // 0x007C6940
     void SetAICast(long); // 0x007C66E0
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void* __vftable;
     unsigned char _pad04[0x04];
     CIntelligentPointer_CThing PCreature;              // +0x08
@@ -57,7 +57,7 @@ struct CCombatActionBase {
     void Initialise();                                 // 0x00857520
 };
 
-struct CCreatureAction_CastWillTurncoatSpell : CCombatActionBase {
+class CCreatureAction_CastWillTurncoatSpell : public CCombatActionBase { public:
     long Level; // native +0x114
     void PerformAction();
 };

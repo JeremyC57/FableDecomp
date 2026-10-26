@@ -16,7 +16,7 @@ struct SFreeArea_00c27fd0 {                        // a pool area record (as lan
     SFreeArea_00c27fd0** m_pPrevLink;              // +0x10
     SFreeArea_00c27fd0*  m_pNext;                  // +0x14
 };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     unsigned char       _pad[0x3c];
     SFreeArea_00c27fd0* m_freeLists[256];          // +0x3c
     SFreeArea_00c27fd0* FindFreeArea(long size);

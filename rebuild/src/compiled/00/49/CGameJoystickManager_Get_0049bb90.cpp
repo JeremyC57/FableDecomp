@@ -18,7 +18,7 @@ struct CBase {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T*    m_pObject;                                // +0x00
     void* m_pCount;                                 // +0x04 count block {references, destroy, object}
     T* Get() const { return m_pObject; }
@@ -26,7 +26,7 @@ struct CCountedPointer {
     void Reset(T* object);                          // 0x0049BCE0
 };
 
-struct CGameJoystickManager : CBase {
+class CGameJoystickManager : public CBase { public:
     long m_MainPlayerJoystickDeviceNumber;          // +0x04
     bool m_MainPlayerJoystickDeviceNumberSet;       // +0x08
     CGameJoystickManager()

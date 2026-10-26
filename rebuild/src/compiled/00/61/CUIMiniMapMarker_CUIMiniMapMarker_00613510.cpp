@@ -6,7 +6,7 @@
 // Shape: non-polymorphic record (no vtable store); everything in the init list in declaration order. Region's
 // zero store is scheduled before the string constructor call, the float zeros share the integer zero register (edi).
 #include "fable_string.h"
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };

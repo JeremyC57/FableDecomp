@@ -196,7 +196,7 @@ struct CClickable_Retail : CHoverable_Retail {               // retail 0x194 byt
     void OnDeactivate();                                     // 0x0055AF30
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() : X(0.0f), Y(0.0f) { }
 };

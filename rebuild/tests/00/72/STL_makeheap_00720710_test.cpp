@@ -2,16 +2,16 @@
 #include <cstdio>
 
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0, COMPOSITE_BLEND_ADD = 2 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour() : B(0), G(0), R(0), A(0) { }
     CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
-struct CCompositeBlendDesc { unsigned long TextureIndex; ECompositeBlendType BlendType; CRGBColour DiffuseColour; CRGBColour SpecularColour; };
+class CCompositeBlendDesc { public: unsigned long TextureIndex; ECompositeBlendType BlendType; CRGBColour DiffuseColour; CRGBColour SpecularColour; };
 struct CTextureLayer { long TextureID; CCompositeBlendDesc Blend; };
 template <class T1, class T2> struct pair { T1 first; T2 second; };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef pair<long, CTextureLayer> T;

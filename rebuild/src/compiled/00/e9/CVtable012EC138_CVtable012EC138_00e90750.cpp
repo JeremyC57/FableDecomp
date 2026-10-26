@@ -12,7 +12,7 @@
 // Then the vtable is stored and the name at +0x50 is default-constructed out of line.
 #include "fable_string.h"
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];              // +0x04..+0x40
     CScriptBase();                          // 0x00CB8110

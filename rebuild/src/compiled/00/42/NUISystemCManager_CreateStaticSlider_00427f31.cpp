@@ -5,26 +5,26 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC50 (a user copy: by-value arguments are built in place)
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     ~CWideString();                                     // 0x0099B510
 };
 CWideString __fastcall LongToWideString(long value);   // 0x00405F00 (hidden result in ecx, value in edx)
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() {}
     CRGBFloatColour(float r, float g, float b, float a = 1.0f) : R(r), G(g), B(b), A(a) {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     __forceinline CRGBColour(const CRGBFloatColour& c)

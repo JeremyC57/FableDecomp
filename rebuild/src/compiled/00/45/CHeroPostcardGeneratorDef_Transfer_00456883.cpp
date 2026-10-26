@@ -1,10 +1,10 @@
 #pragma optimize("s",on)
-struct CPersistContext {
+class CPersistContext { public:
     void PutA(void* p);
     void PutB(void* p);
     void PutC(void* p);
 };
-struct CHeroPostcardGeneratorDef {
+class CHeroPostcardGeneratorDef { public:
     char pad[0x58];
     char base[4];
 };

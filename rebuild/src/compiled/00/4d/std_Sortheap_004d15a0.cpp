@@ -13,7 +13,7 @@
 // float (`fld`) and the callee is the pair<float,EConversationAttitude> _Adjust_heap with a by-value
 // CKeyPairCompareLess comparator (`ret 4`).
 enum EConversationAttitude { CONVERSATION_ATTITUDE_FORCE_DWORD = 0x7fffffff };
-template <class K, class V> struct CKeyPairCompareLess { };
+template <class K, class V> class CKeyPairCompareLess { public: };
 namespace std {
 template <class _Ty1, class _Ty2> struct pair {
     _Ty1 first;

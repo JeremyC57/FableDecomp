@@ -1,4 +1,4 @@
-struct CCreatureAction_WaspQueenLashOutAttack {
+class CCreatureAction_WaspQueenLashOutAttack { public:
     void* vftable;
 };
 

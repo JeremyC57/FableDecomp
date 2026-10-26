@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CMatrix3x4 { float m[4][3]; };
-struct C3DDummyObject { CMatrix3x4 Transform; long BoneIndex; C3DDummyObject(const CMatrix3x4& t, long b) : Transform(t), BoneIndex(b) { } };
+class CMatrix3x4 { public: float m[4][3]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; long BoneIndex; C3DDummyObject(const CMatrix3x4& t, long b) : Transform(t), BoneIndex(b) { } };
 int main()
 {
     CMatrix3x4 t; for (int r = 0; r < 4; ++r) for (int c = 0; c < 3; ++c) t.m[r][c] = (float)(r * 10 + c);

@@ -24,7 +24,7 @@ struct CAllocSizeToAllocator {
     CMemoryAllocatorBase* PAllocator;
     unsigned char ID;
 };
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     unsigned long MemoryAllocatedPerTrackingID[256];
     unsigned long MemoryAllocated;
     void** MemoryAuditBuffer;

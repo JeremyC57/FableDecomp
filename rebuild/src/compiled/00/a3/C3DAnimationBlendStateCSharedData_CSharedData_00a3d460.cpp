@@ -11,7 +11,7 @@
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
-struct CIVCountedPointeeBase {                     // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
     virtual ~CIVCountedPointeeBase() {}
     long m_references;                             // +4
 };

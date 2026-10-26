@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_log[16]; static int g_n = 0;
-struct CParentDefClassBase { ~CParentDefClassBase() { g_log[g_n++] = 100; } };
+class CParentDefClassBase { public: ~CParentDefClassBase() { g_log[g_n++] = 100; } };
 struct CFloatVector { int id; float* first; ~CFloatVector() { if (first) { std::free(first); g_log[g_n++] = id; } } };
 struct CDef : CParentDefClassBase {
     CFloatVector v[8];

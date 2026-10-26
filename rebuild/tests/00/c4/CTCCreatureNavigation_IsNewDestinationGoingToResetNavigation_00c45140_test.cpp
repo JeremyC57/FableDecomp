@@ -1,14 +1,14 @@
 
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 static int g_calls=0; static void* g_h=0; static void* g_self=0; static void* g_v=0; static bool g_ret=false;
 struct Helper {
     virtual bool slot7(CTCCreatureNavigation* nav, C3DVector* v){
         g_calls++; g_h=this; g_self=(void*)nav; g_v=(void*)v; return g_ret;
     }
 };
-struct CTCCreatureNavigation { void* f0; Helper* ParentThing; };
+class CTCCreatureNavigation { public: void* f0; Helper* ParentThing; };
 bool model(CTCCreatureNavigation* self, C3DVector* v){ return self->ParentThing->slot7(self, v); }
 int main(){
     Helper h; CTCCreatureNavigation nav; nav.f0=0; nav.ParentThing=&h; C3DVector v={1,2,3};

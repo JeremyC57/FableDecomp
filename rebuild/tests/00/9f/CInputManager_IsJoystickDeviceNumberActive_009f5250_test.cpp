@@ -1,8 +1,8 @@
 #include <cstdio>
 static long g_calls = 0;
-struct CJoystick { long m_number; virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { } virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { } virtual long GetDeviceNumber() { ++g_calls; return m_number; } };
+class CJoystick { public: long m_number; virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { } virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { } virtual long GetDeviceNumber() { ++g_calls; return m_number; } };
 struct CCountedPointer_CJoystick { CJoystick* m_pObject; void* m_pCount; };
-struct CInputManager {
+class CInputManager { public:
     virtual void v00() { }
     unsigned char _pad04[0x28];
     CCountedPointer_CJoystick* m_pJoysticksFirst; CCountedPointer_CJoystick* m_pJoysticksLast; CCountedPointer_CJoystick* m_pJoysticksEnd;

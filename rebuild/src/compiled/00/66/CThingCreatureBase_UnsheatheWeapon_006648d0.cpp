@@ -13,13 +13,13 @@
 //   absent arm reads the never-written local from its dead argument slot); the "" name is an implicit conversion
 //   temporary (built before the other arguments); the def out pointer sits in the dead index slot and is released
 //   without a null test.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -27,22 +27,22 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CCarryableDef : CDefPointeeBase {
+class CCarryableDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long ActiveCarrySlot;                       // +0x28
     long SecondaryActiveCarrySlot;              // +0x2c
     long PassiveCarrySlot;                      // +0x30
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CCarryableDef>* out);   // 0x005CC10E GetSubDef<CCarryableDef>
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -61,7 +61,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CCarryableD
 
 class CThing;
 class CThingObject;
-struct CTCCarrying {
+class CTCCarrying { public:
     bool IsCarryingThing(long defIndex);                         // 0x006A10A0
     CThing* GetCarriedThing(long defIndex);                      // 0x006A1120
     void RemoveThing(CThing* thing);                             // 0x006A19B0

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CInputProcessManager { void* vptr; };
+class CInputProcessManager { public: void* vptr; };
 static int g_calls=0; static void* g_vwrite=0;
 void model_sub(void* s){ g_calls++; }
 void model_base(void* s){ g_calls++; }

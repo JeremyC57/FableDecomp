@@ -6,9 +6,9 @@ struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
 struct CDefinitionManager_Retail;
-struct CWorld;
-struct CCharString;
-struct CScriptThing;
+class CWorld;
+class CCharString;
+class CScriptThing;
 struct CDefPointer_Retail;
 struct CTCBase_Retail;
 struct CInterfaceMap_Retail {                 // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
@@ -61,7 +61,7 @@ struct CThing_Retail {
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }   // the masked word (a bool would narrow the test)
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
@@ -88,16 +88,16 @@ struct CBulletTimeManager_Retail {
     void RemoveBulletTimeSlowdown(unsigned long key);   // 0x004C6140 (the label "CTCInventoryExperience::ProcessButtonBReleased" is propagated)
 };
 struct CMessageEvent_Retail;
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
-struct CMessageEventFilter_CanBeSeenOrHeard {
+class CMessageEventFilter_CanBeSeenOrHeard { public:
     long m_frame;
     long m_maxFrame;
     CMessageEventFilter_CanBeSeenOrHeard(long frame, long maxFrame) : m_frame(frame), m_maxFrame(maxFrame) { }
 };
-template<class A, class B> struct CFilter_Bind2 {   // the bound filter holds POINTERS to its operands (landed 0x00939D70)
+template<class A, class B> class CFilter_Bind2 { public:   // the bound filter holds POINTERS to its operands (landed 0x00939D70)
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
@@ -125,7 +125,7 @@ struct COpinionReactionManager_Retail {
     void ClearOpinionSource(CThing_Retail* thing, bool flag);   // 0x007008C0
     void SetExclusiveOpinionSource(CThing_Retail* thing);   // 0x00700770 (16 bytes before AttachOpinionSource; the manifest label is propagated)
 };
-struct CWorld {
+class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CThingManager_Retail* GetThingManager();   // slot 3 (+0x0c)
     unsigned char                   _pad04[0x5c];               // +0x04 .. +0x60
@@ -139,7 +139,7 @@ struct CWorld {
     COpinionReactionManager_Retail* GetOpinionReactionManager() { return POpinionReactionManager_Data; }
 };
 extern const float g_fNoOpinion_0122dedc;        // 0x0122DEDC (0.0f in .rdata)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent_Retail*  Component;          // +0x08

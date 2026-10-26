@@ -18,7 +18,7 @@ struct Obj28 {
     void Draw(int val) { g_draw_self = this; g_draw_value = val; }
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad_18[0x18];
     int mode;
     char pad_1c[0x24-0x1c];

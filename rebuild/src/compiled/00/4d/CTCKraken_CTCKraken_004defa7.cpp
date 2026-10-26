@@ -14,8 +14,8 @@
 // homed in the top byte of the dead parent-argument slot (`lea eax,[ebp+0Bh]`); one ebx zero register.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
@@ -42,8 +42,8 @@ struct CDefPointer_CKrakenDef {
     const void* m_pDef;
     CDefPointer_CKrakenDef() : m_pDef(0) {}
 };
-struct CTCBoss;
-struct CTCKraken : CTCBase {
+class CTCBoss;
+class CTCKraken : public CTCBase { public:
     CDefPointer_CKrakenDef PKrakenDef;          // +0x0c
     CIntelligentPointerThing PChamber;          // +0x10
     CIntelligentPointerThing PCentreMarker;     // +0x18

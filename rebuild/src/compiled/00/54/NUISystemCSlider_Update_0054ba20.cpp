@@ -11,7 +11,7 @@
 // reassociates it into `(v - min) * (dim / range)` when dim and range are both memory operands. The X range is a
 // named local (spilled, reused by the move arm); the Y range is recomputed in each arm.
 #include <math.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector& operator+=(const C2DVector& v) { X += v.X; Y += v.Y; return *this; }
 };

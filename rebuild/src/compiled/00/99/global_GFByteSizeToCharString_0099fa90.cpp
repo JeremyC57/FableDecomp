@@ -13,7 +13,7 @@
 // literal push and multiply. The default-constructed CCharString at [esp+4] (null block, counter++, destroyed after
 // the temporary) is an unused local of the large-size block; the
 // small-size return is written last, which puts its block at the function end like retail.
-struct CCharStringData;
+class CCharStringData;
 extern long g_CCharStringInstanceCount;         // 0x013BD800
 
 class CCharString {

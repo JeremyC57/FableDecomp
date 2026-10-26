@@ -22,14 +22,14 @@
 //   a float local (x87 `fld`/`fstp`, not integer moves); the nav result is read before the Active store; the squared
 //   length is written X*X + Y*Y + Z*Z over the output member (emitted Z, Y, X); the step target is `offset + position`
 //   through an inline operator+.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -48,7 +48,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     void*         __vftable;
     unsigned char _pad04[0x10 - 0x04];
     unsigned char ThingType;                    // +0x10 (2 = the hero; descriptive)
@@ -85,12 +85,12 @@ struct CThing {
         return false;
     }
 };
-struct CTCCarrying;
-struct CTCCarryable {                           // interface 0x47
+class CTCCarrying;
+class CTCCarryable { public:                           // interface 0x47
     unsigned char _pad00[0x10];
     CTCCarrying*  PCarryingTC;                  // +0x10
 };
-struct CNavigationInput {
+class CNavigationInput { public:
     C3DVector Destination;                      // +0x00
     float     Proximity;                        // +0x0c
     long      MovementType;                     // +0x10
@@ -101,20 +101,20 @@ struct CCreatureNavOutput {
     long      NavResult;                        // +0x00 (0 arrived, 1 failed, 2 moving)
     C3DVector MovementVector;                   // +0x04
 };
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     unsigned char _pad[0x56];
     bool Active;                                // +0x56
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
     CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool b1, bool b2, bool b3, bool b4, bool b5);   // 0x006CBAC0
     void SetNavigationTarget(const CNavigationInput& input);  // 0x006CB960 (PDB ?SetNavigationTarget@CTCCreatureNavigation@@QAEXABVCNavigationInput@@@Z)
 };
-struct CTCLook {                                // interface 0x43
+class CTCLook { public:                                // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b);   // 0x007534B0
     void StopLooking(long timeToStop);          // 0x00751B80
 };
 extern float g_navEpsilon;                      // 0x0129BA3C (0.0001f)
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;   // slot 11 (+0x2c)
@@ -133,7 +133,7 @@ struct CScriptThing {
     long _a, _b;
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 namespace NTCScriptedControl { class CActionBase; }
 struct SActionNode {
     SActionNode*                     _M_next;      // +0x00
@@ -146,7 +146,7 @@ struct CActionList {                               // STLport list<CCountedPoint
     bool empty() const { return _M_node->_M_next == _M_node; }
     void clear();                                  // 0x00719280
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void*        __vftable;
     CThing*      ParentThing;                      // +0x04
     unsigned char _pad08[0x14 - 0x08];

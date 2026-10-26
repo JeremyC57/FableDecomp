@@ -8,14 +8,14 @@
 // Layout: Ego_r.pdb CTCBuyableHouse (PDef +0x0c, Rented +0x12, DayNextRentIsDue +0x18, CurrentDressLevel +0x1c,
 // VirtualMoneyBags +0x44); retail CBuyableHouseDef Rent vector +0x34, DaysBetweenRentPayments +0x40, MaxRentBags
 // +0x44 (landed 0x006C0270); world +0x1c -> +0x14 is the day; CTCGold (0xCC) Gold +0x0c.
-struct CTCBase;
-struct C3DVector { float x, y, z; };
-struct CCharString {
+class CTCBase;
+class C3DVector { public: float x, y, z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CTCParamsBase;
+class CTCParamsBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -40,7 +40,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return lo;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -57,16 +57,16 @@ struct CThing {
         return false;
     }
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
         void* orientation, unsigned long flags, const CCharString& name);   // 0x00703210
 };
-struct CTCOwnedEntity { void SetPOwner(CThing* owner); };   // 0x007E8590
-struct CTCGold { unsigned char _pad[0xc]; long Gold; };     // interface 0xCC
-struct CDefinitionManager { long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
+class CTCOwnedEntity { public: void SetPOwner(CThing* owner); };   // 0x007E8590
+class CTCGold { public: unsigned char _pad[0xc]; long Gold; };     // interface 0xCC
+class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
 struct CGameTime { unsigned char _pad[0x14]; long Day; };
-struct CWorld { unsigned char _pad[0x1c]; CGameTime* Time; };
-struct CBuyableHouseDef {
+class CWorld { public: unsigned char _pad[0x1c]; CGameTime* Time; };
+class CBuyableHouseDef { public:
     virtual void v00();
     long          m_refCount;                           // +0x04
     unsigned char _pad08[0x2c];
@@ -78,7 +78,7 @@ struct CBuyableHouseDef {
 };
 template<class T> inline const T& min_of(const T& a, const T& b) { return b < a ? b : a; }
 
-struct CTCBuyableHouse {
+class CTCBuyableHouse { public:
     void*             __vftable;                        // +0x00
     CThing*           ParentThing;                      // +0x04
     unsigned char     _pad08[0x4];

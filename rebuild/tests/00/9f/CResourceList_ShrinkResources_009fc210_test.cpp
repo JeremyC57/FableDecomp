@@ -6,7 +6,7 @@ static int gUnloads = 0;
 static int gFailAfter = 1000;
 static long gFreedPerUnload = 100;
 
-struct CResourceList {
+class CResourceList { public:
     void* __vftable;
     unsigned char Head[0x1c];
     unsigned long ResourceCount;

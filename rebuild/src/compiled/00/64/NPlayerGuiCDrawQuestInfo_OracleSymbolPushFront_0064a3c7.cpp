@@ -6,7 +6,7 @@
 // the body inserts before the head node = end(), so this is push_front; the sibling @ 0x0064A3C7 inserts before head->next = push_front).
 // Shape: a frame-pointer size TU; the sprite index is a local whose address is passed on, and VC homes it in the dead `symbol` argument slot
 // (`mov [ebp+8],eax ; lea eax,[ebp+8]`); `jle` skips non-positive indices.
-struct CCharString;
+class CCharString;
 
 struct CRetailLongList {                           // VC6 Dinkumware list<long>: one sentinel pointer
     void* head;
@@ -15,7 +15,7 @@ struct CRetailLongList {                           // VC6 Dinkumware list<long>:
 
 namespace NPlayerGui {
 
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     unsigned char   _pad[0x40];
     CRetailLongList OracleSymbols;                 // +0x40
     long GetScriptSpriteBySymbol(const CCharString& symbol);   // 0x0064A37B

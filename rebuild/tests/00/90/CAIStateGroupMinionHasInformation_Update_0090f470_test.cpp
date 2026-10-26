@@ -3,33 +3,33 @@
 #include <cstring>
 
 static long g_frame, g_framesPerSecond = 30;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 inline bool HasTimePassed(const long& lastFrame, long seconds)
 {
     long fps = g_framesPerSecond;
     return CWorld::GetWorldFrame() - lastFrame > seconds * fps;
 }
 static int g_sounds;
-struct CCharString { const char* text; CCharString(const char* t) : text(t) { } };
+class CCharString { public: const char* text; CCharString(const char* t) : text(t) { } };
 struct CTCSound {
     void PlaySound(const CCharString& name, long, long, long, long d)
     {
         if (std::strcmp(name.text, "ATTRACT_HERO_ATTENTION") == 0 && d == -1) ++g_sounds;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_flags91;
     CTCSound* sound;
     bool GetInterface(CTCSound** out, long type) { if (type != 0x10 || !sound) return false; *out = sound; return true; }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     bool wander, wave;
     bool GetWanderWithInformation() const { return wander; }
     bool GetWaveWithInformation() const { return wave; }
 };
 struct CIntelligentPointer { const CThing* item; CIntelligentPointer(const CThing* t) : item(t) { } };
 static CThing* g_hero;
-struct CAIBrain { CThingAICreature* PCreature; };
+class CAIBrain { public: CThingAICreature* PCreature; };
 
 static int g_wants[512], g_wi, g_look[512], g_li, g_nothing[512], g_ni, g_wanderOk[512], g_wo, g_terminated, g_lastFrames;
 static float g_lastSpeed;

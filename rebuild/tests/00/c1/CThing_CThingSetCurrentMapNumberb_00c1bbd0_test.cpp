@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { char pad[4]; short currentMapNumber_b; short after; };
+class CThing { public: char pad[4]; short currentMapNumber_b; short after; };
 
 void __fastcall SetCurrentMapNumber_b(CThing *self, int edx, short mapNumber) {
     self->currentMapNumber_b = mapNumber;

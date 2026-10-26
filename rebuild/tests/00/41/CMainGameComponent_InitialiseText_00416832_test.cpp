@@ -67,8 +67,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -76,8 +76,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -163,7 +163,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 #undef CCharString
 // Restore the native owning-copy declaration omitted by the hand header.
-struct CCharString { CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
+class CCharString { public: CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
 #define CDataBank CDataBankDonor
 #pragma once
 
@@ -209,8 +209,8 @@ namespace NGameText
 }
 
 #undef CDataBank
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer { T* Data;CCPPointerInfo* Info; void Reset(T*); }; //00403e40
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public: T* Data;CCPPointerInfo* Info; void Reset(T*); }; //00403e40
 namespace NGameText {
 class CDataBank {
 public:
@@ -223,7 +223,7 @@ private:
 }
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&,float,bool,bool); } //009e9f40
 namespace NLocalisation { CCharString __fastcall GetFontBankName(); } //00415260
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char BaseAndSampleBank[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;
     void InitialiseText();

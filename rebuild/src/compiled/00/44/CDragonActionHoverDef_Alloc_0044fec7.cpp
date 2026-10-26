@@ -15,7 +15,7 @@ struct CBase_0044c0c0 {
     CBase_0044c0c0();                           // 0x0044C0C0
 };
 
-struct CDragonActionHoverDef : CBase_0044c0c0 {
+class CDragonActionHoverDef : public CBase_0044c0c0 { public:
     virtual void v00();
     CDragonActionHoverDef() : CBase_0044c0c0() { }
 };

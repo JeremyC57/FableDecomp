@@ -6,13 +6,13 @@
 // Shape: the symbol map is the member at +0 (`mov ecx,esi`); the upper-cased temporary is homed in the name's dead
 // argument slot (`lea ecx,[esp+14h]`), the handle in the `push ecx` slot; the lookup result survives the
 // temporary's destructor in bl and selects the handle branch-free (`neg bl ; sbb ebx,ebx ; and ebx,eax`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                  // 0x0099EAE0
     CCharString ToUpper() const;                     // 0x0099EE20
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     unsigned char m_data[0x24];
     bool Lookup(const CCharString& name, long* value);   // 0x009E5170
 };

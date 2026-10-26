@@ -7,7 +7,7 @@ struct Base {
     void SelectHighlightedItem(bool& selected) { std::strcat(g_seq, selected ? "x" : "S"); selected = willSelect; }
     void ProcessButtonAReleased() { std::strcat(g_seq, "B"); }
 };
-struct CTCInventoryWeapons : Base {
+class CTCInventoryWeapons : public Base { public:
     void ProcessButtonAReleased()
     {
         if (InventorySelectionState == 1) {

@@ -8,7 +8,7 @@ typedef unsigned long long u64;
 static char g_seq[64] = "";
 static void note(const char* s) { std::strcat(g_seq, s); }
 static long g_pauseBehaviour = -1;
-struct CThing { void SetCutscenePauseBehaviour(long behaviour) { g_pauseBehaviour = behaviour; note("P"); } };
+class CThing { public: void SetCutscenePauseBehaviour(long behaviour) { g_pauseBehaviour = behaviour; note("P"); } };
 struct CBaseIntelligentPointer { virtual void v00() { } void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { note("I"); } };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() { } CIntelligentPointer() : CBaseIntelligentPointer() { } };
 struct CTCDriverBase_Calls {
@@ -16,7 +16,7 @@ struct CTCDriverBase_Calls {
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCDriverBase_Calls(CThing* thing) : ParentThing(thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { note("D"); }
 };
-struct CTCDRegionExit : CTCDriverBase_Calls {
+class CTCDRegionExit : public CTCDriverBase_Calls { public:
     bool Active, InLetterBoxMode, WaitingForConfirmation, WaitingForActivationOrPlayerToLeave, WaitingForPlayerToLeaveMessageArea;
     float Radius, MessageRadius; u64 EntranceConnectedToUID; bool ReversedOnMiniMap, HiddenOnMiniMap;
     CIntelligentPointer PEntranceConnectedTo;

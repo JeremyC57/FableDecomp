@@ -3,7 +3,7 @@
 // behaviour test: CEngineThemeDef::Transfer visits the members in the persisted order and round-trips the Passable bit
 enum EWaterType { WATER_TYPE_NONE, WATER_TYPE_SEA };
 enum EMinimapThemeType { MINIMAP_THEME_NONE, MINIMAP_THEME_ROAD };
-struct CPersistContext {
+class CPersistContext { public:
     const void* order[32];
     int count;
     bool loading;
@@ -20,11 +20,11 @@ struct CPersistContext {
         if (loading) value = loadValue;
     }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual ~CDefClassBase() {}
     virtual void Transfer(CPersistContext& context) {}
 };
-struct CEngineThemeDef : CDefClassBase {
+class CEngineThemeDef : public CDefClassBase { public:
     long BaseTexture, BackgroundTexture, CliffBaseTexture, CliffBackgroundTexture, BaseBumpMap, CliffBumpMap;
     long BaseTextureMaxSize, CliffTextureMaxSize, BaseBumpMapMaxSize, CliffBumpMapMaxSize;
     float BaseTextureSelfIllumination, CliffTextureSelfIllumination, WaterHeight;

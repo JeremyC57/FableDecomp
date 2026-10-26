@@ -17,7 +17,7 @@
 //        bit and its conditional destructor, the bool its frame byte; the deed log is assigned only when present.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
@@ -28,7 +28,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CBitset       m_present;                    // +0x20
     unsigned char _pad24[0x20];
@@ -45,14 +45,14 @@ struct CThing {
     }
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
     static long __fastcall GetFrame();          // 0x0049D870 (GFGetCurrentFrame)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
@@ -68,7 +68,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
+class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x34];
     long KnowledgeLifeInSeconds;                // +0x3c
     unsigned char _pad_0x40[0x3c];
@@ -80,7 +80,7 @@ struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline ~CDefPointer()
     {
@@ -90,13 +90,13 @@ template <class T> struct CDefPointer {
         }
     }
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long DeedType;                              // +0x00 EOpinionDeedType
     long DeedHandle;                            // +0x04
     float Position[3];                          // +0x08
     long FrameHappened;                         // +0x14
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
@@ -110,7 +110,7 @@ struct SNode {                                  // STLport _Rb_tree_node<long>
 };
 SNode* __cdecl Successor(SNode* node);          // 0x004292C0
 
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00();
     unsigned char _pad_0x04[0x60];
     SNode*        PlayersCrimes;                // +0x64 set<long> header node

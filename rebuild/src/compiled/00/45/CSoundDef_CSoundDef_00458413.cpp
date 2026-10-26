@@ -7,7 +7,7 @@
 // Shape: `xor eax,eax` scheduled before the vtable store, the vtable store before the fifteen
 // `mov [esi+N],eax`: each vector is a member object whose inline constructor zeroes its three pointers
 // (plain init-list scalars would sink the vtable store below them). The floats are left uninitialised.
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
     CParentDefClassBase();                      // 0x00430370
@@ -21,13 +21,13 @@ struct CRetailVector {                          // VC6-era Dinkumware vector: fi
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CSoundBankEntry;
-struct CAtmosBankEntry;
-struct CMusicEntry;
-struct CMusicSetEntry;
-struct CReverbEnvironmentEntry;
+class CSoundBankEntry;
+class CAtmosBankEntry;
+class CMusicEntry;
+class CMusicSetEntry;
+class CReverbEnvironmentEntry;
 
-struct CSoundDef : CParentDefClassBase {
+class CSoundDef : public CParentDefClassBase { public:
     CRetailVector<CSoundBankEntry>         SoundBankEntries;            // +0x3c
     CRetailVector<CAtmosBankEntry>         AtmosBankEntries;            // +0x48
     CRetailVector<CMusicEntry>             MusicEntries;                // +0x54

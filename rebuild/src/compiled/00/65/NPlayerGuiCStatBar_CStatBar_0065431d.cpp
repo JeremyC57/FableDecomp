@@ -22,7 +22,7 @@
 #pragma optimize("s", on)
 class CCharString;
 class CFontBank;
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x4e0];
     unsigned char StatBarsFontName[4];                        // +0x4E0 CCharString (retail)
     const CCharString& GetStatBarsFontName() const { return *(const CCharString*)StatBarsFontName; }
@@ -105,7 +105,7 @@ __declspec(noinline) CStatBase::CStatBase(const CPlayerGuiDef& def)
 
 class CStatBar : public CStatBase {
 public:
-    struct CChangeText;
+    class CChangeText;
     class CChangeTextList {                                   // STLport list<CChangeText>: the node pointer
     public:
         void* _M_node;

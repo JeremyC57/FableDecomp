@@ -6,9 +6,9 @@
 // Shape: the vtable store follows the base constructor; the members (PDB names, retail offsets with the 12-byte vector)
 // share one zero register: Active (+0x0c), the Components vector (+0x10, a member object with an inline constructor),
 // Quitting (+0x1c), then CreditPart (+0x20) is constructed and LastRenderTime (+0x28, double) loaded from the pool.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* parent);                // 0x00686800
     virtual void v00();
     CThing* ParentThing;                    // +0x04
@@ -16,7 +16,7 @@ struct CTCBase {
     bool IsInGlobalUpdateTCs;               // +0x09
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;                      // +0x00
     CCharString();                          // 0x0099E4B0
 };
@@ -28,7 +28,7 @@ struct CComponentVector {                   // vector<NUISystem::CComponent*> (1
     CComponentVector() : First(0), Last(0), End(0) { }
 };
 
-struct CTCCreditsUI : CTCBase {
+class CTCCreditsUI : public CTCBase { public:
     bool Active;                            // +0x0c
     CComponentVector Components;            // +0x10
     bool Quitting;                          // +0x1c

@@ -1,10 +1,10 @@
 #ifndef _MSC_VER
 #define __forceinline inline
-struct CEngineSceneGridCell;
-struct CEnginePrimitiveManager;
+class CEngineSceneGridCell;
+class CEnginePrimitiveManager;
 #define FABLE_ENGINE_CENGINEINTERNALPRIMITIVEBASE_H
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -33,7 +33,7 @@ struct CEngineInternalPrimitiveBase {
 #pragma pack(pop)
 #define FABLE_ENGINE_CENGINEPRIMITIVETYPEINFO_H
 #pragma pack(push, 1)
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     void*                    __vftable;                      // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char            _pad_0x04[0x4];                 // +0x04
     unsigned char            _pad_0x08[0x4];                 // +0x08
@@ -47,7 +47,7 @@ struct CEnginePrimitiveTypeInfo {
 #include "engine/CEnginePrimitiveTypeInfo.h"
 enum ERendered { RENDERED_NOTHING=0, RENDERED_SUB_PRIMITIVES=2 };
 enum EEngineRenderLayer { ENGINE_RENDER_LAYER_DEFAULT=0 };
-struct CEngineMeshEffect {
+class CEngineMeshEffect { public:
  virtual void v00();
  virtual void Release(); // counted object virtual release slot1
  unsigned long RefCount;
@@ -67,16 +67,16 @@ struct CPrimitiveEffectInterface {
  virtual void v20();virtual void v21();virtual void v22();virtual void v23();virtual void v24();
  virtual void SetMeshEffect(const CMeshEffectPointer& effect);
 };
-struct CEngineSubPrimitiveChain { void* LastOpaque;void* LastAlpha;CEngineSubPrimitiveChain():LastOpaque(0),LastAlpha(0){} };
-struct CEnginePrimitiveManager {
+class CEngineSubPrimitiveChain { public: void* LastOpaque;void* LastAlpha;CEngineSubPrimitiveChain():LastOpaque(0),LastAlpha(0){} };
+class CEnginePrimitiveManager { public:
  virtual void v00();virtual void v01();virtual void v02();virtual void v03();virtual void v04();virtual void v05();virtual void v06();
  virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
 };
-struct CEnginePrimitiveHandle { virtual ~CEnginePrimitiveHandle(); CEngineInternalPrimitiveBase* Data; operator bool() const { return Data!=0; } };
+class CEnginePrimitiveHandle { public: virtual ~CEnginePrimitiveHandle(); CEngineInternalPrimitiveBase* Data; operator bool() const { return Data!=0; } };
 struct CPrimitiveArray { CEnginePrimitiveHandle *First,*Last,*Limit; CEnginePrimitiveHandle& operator[](unsigned long i) { return First[i]; } };
 struct CEngineInternalPrimitiveChanger : CEngineInternalPrimitiveBase { CPrimitiveArray Primitives; CMeshEffectPointer MeshEffect; long ActiveIndex;bool PreloadAll;unsigned long PrimitiveFlags; };
 extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo; //01436e84
-struct CEnginePrimitiveChangerManager {
+class CEnginePrimitiveChangerManager { public:
  void* Vtable;void* SceneList;bool Enable;
  ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);
 };

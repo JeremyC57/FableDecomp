@@ -23,31 +23,31 @@ static int g_ok = 1;
 // Shape: three exits: any other parameter type returns false; the initial query zeroes the vector with a
 // chain assignment (`Z = Y = X = 0`: stores +8, +4, +0 from one zero register); otherwise the offset is
 // copied through C3DVector's memberwise copy (`add ecx,54h` then dword moves). `ret 18h`.
-namespace NParticleEngine { template <class A, class B> struct CParticleUpdateParameters; }
+namespace NParticleEngine { template <class A, class B> class CParticleUpdateParameters; }
 struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
     C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {}   // test scaffolding: lets the component be constructed
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 
-struct CPSCBase : CBaseClassNonCopyable {          // vtable 0x0129F3F4
+class CPSCBase : public CBaseClassNonCopyable { public:          // vtable 0x0129F3F4
     CParticleSystem* ParticleSystem;               // +0x04
     bool             UpdateStarted : 1;            // +0x08 bit 0
     bool             Initialised : 1;              // +0x08 bit 1
 };
 
-struct CPSCUpdateNormal : CPSCBase {               // vtable 0x0129FC1C
+class CPSCUpdateNormal : public CPSCBase { public:               // vtable 0x0129FC1C
     unsigned long FadeInEndInteger : 10;           // +0x0c
     unsigned long FadeOutBeginInteger : 10;
     unsigned long UseParticleLifeSecs : 1;

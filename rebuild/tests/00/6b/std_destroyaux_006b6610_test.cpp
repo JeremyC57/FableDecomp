@@ -8,14 +8,14 @@ static void RecordFree(void* p) { g_freed[g_nfreed++] = p; }
 struct FalseType { FalseType() { } };
 
 template <class T>
-struct CArray {
+class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     ~CArray() { if (_M_start != 0) RecordFree(_M_start); }
 };
 
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 
 struct CIDrawEnvironmentTextureSet {
     CArray<int>   Textures;

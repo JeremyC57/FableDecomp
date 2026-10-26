@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     char pad0[0x34];
     int frame;
     char pad1[0x40 - 0x34 - 4];

@@ -13,36 +13,36 @@
 #undef CResourceList
 #undef CResource
 #include "engine/CIVCountedPointeeBase.h"
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
  virtual ~CResource();virtual void Delete()const;
  virtual bool UnloadResource();virtual unsigned long GetUnloadableMemory()const;
  virtual bool IsResourceLoaded()const;virtual void OnResourceLoaded();
  virtual bool CanAbortResourceLoad(long)const;virtual void OnResourceLoadAborted();
  virtual unsigned long GetDebugMemoryInUse()const;virtual void ResetDebugMemoryInUse();
- unsigned long IVRefCount;struct CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;
+ unsigned long IVRefCount;class CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;
  void ListRemove(); //009FBFB0
  void ListInsert(CResource*,CResource*); //009FBF90
  void Touch();
 };
-struct CResourceList {
+class CResourceList { public:
  void* VTable;CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
  bool MakeFreeSpace(unsigned long); //009FC4F0
 };
 __forceinline void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource,&ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
 template<class T>struct CArrayNative {T* First;T* Last;T* End;T& operator[](unsigned long n)const{return First[n];}};
-template<class T>struct CIVCountedPointer {
+template<class T>class CIVCountedPointer { public:
  T* Object;
  CIVCountedPointer(T* p):Object(p){if(Object)++const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount;}
  CIVCountedPointer(const CIVCountedPointer& p):Object(p.Object){if(Object)++const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount;}
  ~CIVCountedPointer(){if(Object&&!--const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount)Object->Delete();}
 };
-struct CBankFileAsyncData {bool IsFinished();}; //009D54E0
+class CBankFileAsyncData { public:bool IsFinished();}; //009D54E0
 namespace NGameText {
-struct CDataBank;struct CDataBankGroupEntry;
-struct CGroupEntry:CResource {virtual bool UnloadResource();CArrayNative<long> Entries;CBankFileAsyncData* PFileData;void* FileDataInfo;CDataBankGroupEntry* Owner;};
-struct CDataBankGroupEntry {CGroupEntry* PGroup;void BeginLoading(unsigned long,CDataBank*);/*009C80F0*/void BuildGroup();/*009C8700*/};
-struct CDataBank {
+class CDataBank;class CDataBankGroupEntry;
+class CGroupEntry:public CResource { public:virtual bool UnloadResource();CArrayNative<long> Entries;CBankFileAsyncData* PFileData;void* FileDataInfo;CDataBankGroupEntry* Owner;};
+class CDataBankGroupEntry { public:CGroupEntry* PGroup;void BeginLoading(unsigned long,CDataBank*);/*009C80F0*/void BuildGroup();/*009C8700*/};
+class CDataBank { public:
  unsigned char BankAsyncState[0x168];CResourceList ResourceCache,OtherResourceCache;CArrayNative<CDataBankGroupEntry*> Entries;
  unsigned long GetEntryDataType(unsigned long)const; //009CC210
  void FlushAsyncUpdates()const; //009D68B0: invokes009D6730 then009D5A90

@@ -7,7 +7,7 @@
 extern long g_maxDisplayRefreshRate;            // 0x01375088
 extern const long g_refreshRateOptions[4];      // 0x0122DE30
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned long GetMaxRefreshRate();
 };
 

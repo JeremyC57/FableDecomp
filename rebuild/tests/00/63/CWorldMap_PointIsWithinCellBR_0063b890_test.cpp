@@ -1,7 +1,7 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CWorldMap
-{
+class C3DVector { public: float X, Y, Z; };
+class CWorldMap
+{ public:
     bool PointIsWithinCellBR(const C3DVector* point, const C3DVector* cell) const;
 };
 bool CWorldMap::PointIsWithinCellBR(const C3DVector* point, const C3DVector* cell) const

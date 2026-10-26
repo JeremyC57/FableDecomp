@@ -7,11 +7,11 @@
 // the class name is kept as catalogued.
 // Layout (local model): the filter's value (long) at +0.
 // Shape: `this` kept in esi across the call; `return creature.f() == m_value;` as `sub eax,[esi] ; neg ; sbb ; inc`.
-struct CThingAICreature {
+class CThingAICreature { public:
     long GetDefinitionValue() const;            // 0x00662000
 };
 
-struct CThingFilter_HasBuildingAsHome {
+class CThingFilter_HasBuildingAsHome { public:
     long m_value;                               // +0x00
     bool operator()(const CThingAICreature& creature) const;
 };

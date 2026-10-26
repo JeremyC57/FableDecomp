@@ -16,9 +16,9 @@
 //   store, the zero mask the constant `xor al,al ; jne`), then a named alive sender for AreThingsAllies and a named
 //   GetPThing() result compared with PTracked (GetPThing is called before PTracked's GetPItem).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                 // the base class matches every thing (landed 0x008D04E0 typed-item test)
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
@@ -69,12 +69,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -108,9 +108,9 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CWorld;
-struct CMessageEventFilter_IsOfType { long Type; CMessageEventFilter_IsOfType(long type) : Type(type) { } };
-struct CMessageEventFilter_CanBeSeenOrHeard { CThing* PPerceiver; CMessageEventFilter_CanBeSeenOrHeard(CThing* perceiver) : PPerceiver(perceiver) { } };
+class CWorld;
+class CMessageEventFilter_IsOfType { public: long Type; CMessageEventFilter_IsOfType(long type) : Type(type) { } };
+class CMessageEventFilter_CanBeSeenOrHeard { public: CThing* PPerceiver; CMessageEventFilter_CanBeSeenOrHeard(CThing* perceiver) : PPerceiver(perceiver) { } };
 template<class A, class B> struct CFilter_Bind2T {
     const A* PFirst;
     const B* PSecond;
@@ -119,14 +119,14 @@ template<class A, class B> struct CFilter_Bind2T {
 template<class A, class B> inline CFilter_Bind2T<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2T<A, B>(a, b); }
 typedef CFilter_Bind2T<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CFilter_Bind2;
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     CThing* GetPThing();                        // 0x006AF520
 };
-struct CMessageEvent : CGameScriptThing {
+class CMessageEvent : public CGameScriptThing { public:
     unsigned char _pad[0x48];
     CBaseIntelligentPointerCtor PSender;        // +0x48
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CFilter_Bind2& filter);   // 0x00746260
 };
 long TmplSink_s7_1(const void* self, long seen);   // stand-in: the work FindMostRecentMessage does (outside the bytes graded here)

@@ -10,18 +10,18 @@ static int g_fail = 0;
 
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);   // 0x00BFEB10
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
 };
 
-struct C3DVertexBlend2 { unsigned short m_index; float m_weight; };   // 8 bytes
-template <class T> struct CArray {                  // retail CArray<T>: begin/end/capacity
+class C3DVertexBlend2 { public: unsigned short m_index; float m_weight; };   // 8 bytes
+template <class T> class CArray { public:                  // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return m_end - m_begin; }
 };
 
-struct C3DMeshFileGroupChunk {
+class C3DMeshFileGroupChunk { public:
     virtual ~C3DMeshFileGroupChunk();
     unsigned char _base_body[0x28];                 // +0x04 .. +0x2B (C3DMeshFileChunk base, retail size)
     long BoneIndex;                                 // +0x2C

@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <stddef.h>
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseThing = 0;
 struct CTCBase_Calls {
     virtual void v00() { }

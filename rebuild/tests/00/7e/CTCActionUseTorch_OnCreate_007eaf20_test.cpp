@@ -2,8 +2,8 @@
 #include <cstring>
 
 static int g_baseCreates = 0;
-struct CThing { unsigned long m_flags; unsigned long GetStateFlags() { return m_flags; } };
-struct CTCActionUseBase { CThing* ParentThing; void OnCreate() { ++g_baseCreates; } };
+class CThing { public: unsigned long m_flags; unsigned long GetStateFlags() { return m_flags; } };
+class CTCActionUseBase { public: CThing* ParentThing; void OnCreate() { ++g_baseCreates; } };
 struct CTCActionUseTorch : CTCActionUseBase {
     bool TorchLit;
     void OnCreate() { CTCActionUseBase::OnCreate(); TorchLit = !((ParentThing->GetStateFlags() >> 8) & 1); }

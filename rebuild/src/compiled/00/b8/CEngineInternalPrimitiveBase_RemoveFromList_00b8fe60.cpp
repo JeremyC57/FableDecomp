@@ -6,7 +6,7 @@
 // Shape: the zero needed by the four closing stores is held in esi from the start, so every null test is `cmp reg,esi`; the
 // mask-group hand-over (`RefLayerMask` set) re-reads every member from `this` after each store (no locals); the inner test
 // `NextLayerMask && NextLayerMask != NextPrimitive` gives `cmp eax,esi ; je ; mov edx,[ecx+38h] ; cmp eax,edx`.
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell { public:
     unsigned char _pad[0x34];
     long          NoPrimitives;                       // +0x34
 };

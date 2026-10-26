@@ -11,20 +11,20 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const { return strcmp(PData, text) == 0; }
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
 class CCharString { public: CCharStringData* PStringData; };
-struct CThingBaseDef;
+class CThingBaseDef;
 struct CDefPointer { const CThingBaseDef* Object; };
 static int g_nameCalls = 0, g_defCalls = 0; static long g_lastIndex = -1; static CDefPointer* g_lastOut = 0; static long g_nameResult = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { ++g_nameCalls; return g_nameResult; }
     bool GetDef(long index, CDefPointer* out) { ++g_defCalls; g_lastIndex = index; g_lastOut = out; out->Object = (const CThingBaseDef*)0x5150; return true; }
 };
-struct CThingManager { unsigned char _pad00[0x20]; CDefinitionManager* DefinitionManager; };
+class CThingManager { public: unsigned char _pad00[0x20]; CDefinitionManager* DefinitionManager; };
 CThingManager* g_pThingManager;
-struct CThingInfo { unsigned __int64 UniqueID; CCharString DefName; signed char Player; };
-struct CThing {
+class CThingInfo { public: unsigned __int64 UniqueID; CCharString DefName; signed char Player; };
+class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;
     unsigned char    _pad20[0x70 - 0x20];

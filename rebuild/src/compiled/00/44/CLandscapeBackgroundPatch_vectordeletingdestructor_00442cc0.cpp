@@ -1,7 +1,7 @@
 extern void __cdecl eng_operator_delete(void* p);
 // Leaf: `vector_deleting_destructor'
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void* vftable;
     void base_dtor();
     void* CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags);

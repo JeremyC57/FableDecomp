@@ -10,7 +10,7 @@
 // Shape: /O2; the equal-type arm first (`jne` to the false tail) -- testing `!=` first lays the false arm inline.
 enum EInputType {};
 enum EInputKey {};
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 class CInputTypeBase {
 public:
     virtual ~CInputTypeBase();

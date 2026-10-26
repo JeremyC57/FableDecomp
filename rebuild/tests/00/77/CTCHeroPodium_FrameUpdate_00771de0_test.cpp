@@ -2,25 +2,25 @@
 // message once (resetting the crowd), leaving removes it; no controlled creature does nothing.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 const float g_podiumRadiusSquared_0126a88c = 1.0f;
-struct CThing { C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
-struct CPlayer { CThing* Creature; CThing* GetControlledCreature() { return Creature; } };
-struct CMessageEvent { long Type; };
-struct CMessageEventFilter_IsOfType { long Type; CMessageEventFilter_IsOfType(long type) : Type(type) {} };
+class CThing { public: C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
+class CPlayer { public: CThing* Creature; CThing* GetControlledCreature() { return Creature; } };
+class CMessageEvent { public: long Type; };
+class CMessageEventFilter_IsOfType { public: long Type; CMessageEventFilter_IsOfType(long type) : Type(type) {} };
 static CMessageEvent g_event; static bool g_posted = false; static int g_adds = 0, g_removes = 0; static CThing* g_from = 0; static unsigned long g_delay = 0;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CMessageEventFilter_IsOfType& f) { return (g_posted && f.Type == 0x23) ? &g_event : 0; }
     CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector&, CThing* from, CThing*, float, float, long)
     { g_posted = true; g_event.Type = type; g_delay = delay; g_from = from; ++g_adds; return &g_event; }
     void RemoveMessage(const CMessageEvent*) { g_posted = false; ++g_removes; }
 };
-struct CWorld { CMessageEventManager* PMessageEventManager; CPlayer* Player; CPlayer* GetCurrentPlayer() { return Player; } };
+class CWorld { public: CMessageEventManager* PMessageEventManager; CPlayer* Player; CPlayer* GetCurrentPlayer() { return Player; } };
 static int g_resizes = 0, g_clears = 0;
 struct CLongVector { void resize(unsigned long n, const long& v) { if (n == 8 && v == 0) ++g_resizes; } void clear() { ++g_clears; } };
 static CWorld g_world;
-struct CTCBase { CThing* ParentThing; CWorld* GetWorld() { return &g_world; } };
-struct CTCHeroPodium : CTCBase {
+class CTCBase { public: CThing* ParentThing; CWorld* GetWorld() { return &g_world; } };
+class CTCHeroPodium : public CTCBase { public:
     long NumberOfCrowdOccupants; CLongVector CrowdOccupation;
     void FrameUpdate();
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
     void* vftable;
     int destroyed;
 };

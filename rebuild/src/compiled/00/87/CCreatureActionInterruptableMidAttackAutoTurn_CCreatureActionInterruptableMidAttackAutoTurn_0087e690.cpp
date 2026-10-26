@@ -5,7 +5,7 @@
 // Shape: `ret 4`; explicit memberwise copy: RequiredFacing (+0x114) as three dword moves through eax/ecx/edx (a vector with a
 // memberwise user copy constructor over dword members, so no FPU and no `lea`), PWeapon (+0x120) through the inline intelligent-pointer
 // copy constructor (its address kept in ebx), PerformedStrikeEnd (+0x128). Members = PDB names (PDB +0x12c.. sit 0x18 high).
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
@@ -17,17 +17,17 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct C3DVector {                          // floats in the engine; copied as dwords
+class C3DVector { public:                          // floats in the engine; copied as dwords
     long X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);   // 0x0062F3B0
 };
-struct CCreatureAction_InterruptableMidAttackAutoTurn : CCombatActionBase {   // vtable 0x012778CC
+class CCreatureAction_InterruptableMidAttackAutoTurn : public CCombatActionBase { public:   // vtable 0x012778CC
     C3DVector           RequiredFacing;     // +0x114
     CIntelligentPointer PWeapon;            // +0x120 CIntelligentPointer<CThing const>
     bool                PerformedStrikeEnd; // +0x128

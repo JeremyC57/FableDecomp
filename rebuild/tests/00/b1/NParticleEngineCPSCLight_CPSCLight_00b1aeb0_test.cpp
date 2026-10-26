@@ -16,14 +16,14 @@
 // re-reading the pointer, then the out-of-line root destructor), and the root destructor as a tail jump.
 #include <stdlib.h>
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                           // 0x0099A2E0
 };
 
 class CEnginePrimitiveHandle;
 
-struct CEngineInternalPrimitiveBase {        // the referenced primitive: count at +4
+class CEngineInternalPrimitiveBase { public:        // the referenced primitive: count at +4
     virtual void v00();
     virtual void Destroy();                  // slot 1 (+0x04)
     virtual void v02();
@@ -67,12 +67,12 @@ public:
     __forceinline ~CEnginePrimitiveHandle() { Clear(); }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
 template <class T>
-struct CArray {                              // retail CArray: 12 bytes, the buffer freed when non-null
+class CArray { public:                              // retail CArray: 12 bytes, the buffer freed when non-null
     T* m_pData;
     T* m_pLast;
     T* m_pEnd;

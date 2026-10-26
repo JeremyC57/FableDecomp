@@ -11,7 +11,7 @@ void __fastcall CBase_dtor(CBase* self) { (void)self; g_base_dtor++; }
 static int g_deletes = 0;
 void __cdecl free(void* p) { (void)p; g_deletes++; }
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char pad0[0x50];
     void* p50;
     char pad54[0x8];

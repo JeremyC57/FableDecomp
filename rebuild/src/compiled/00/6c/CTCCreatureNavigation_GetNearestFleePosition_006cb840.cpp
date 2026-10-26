@@ -5,7 +5,7 @@
 // Shape: nested ifs with `return true; ... return false;` give the byte exits.
 // Layout: Ego_r.pdb CTCCreatureNavigation: PNavigator +0xC (the active CNavigatorBase). Retail CThing::GetPosition @ 0x004C73D0.
 // Globals: the 1e-4f tolerance @ 0x0129BA3C is an extern float variable (`fld [g] ; fmul [g]` squares it).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector operator-(const C3DVector& o) const
     {
@@ -33,20 +33,20 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
     return dx * dx + dy * dy;
 }
 extern float g_fTolerance;                      // 0x0129BA3C (1e-4f)
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos);      // 0x004FC600
 };
-struct CNavigatorBase {
+class CNavigatorBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual C3DVector GetRandomPosition(const C3DVector& centre, float radius, bool flee);     // slot 7 (+0x1c)
     virtual void v08();
     virtual bool IsAbleToNavigate(const C3DVector& from, const C3DVector& to, float proximity, bool fromCurrentPos);   // slot 9 (+0x24)
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool    ToBeRemoved;                        // +0x08

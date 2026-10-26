@@ -13,25 +13,25 @@
 // the entry's index (its first word) feeds the mesh bank lookup; the durations are pushed through `fstp` onto the argument stack.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 extern CCharString g_meleeTrapTriggerAnimName;       // 0x013BADF8
 extern CCharString g_meleeTrapSecondAnimName;        // 0x013BADFC
-struct CAnimFilterBase {                             // vtable 0x0122FFCC
+class CAnimFilterBase { public:                             // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() { }
 };
 struct CAnimFilterAll : CAnimFilterBase {            // vtable 0x0122FFDC: accepts every entry
     virtual ~CAnimFilterAll() { }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimationIndex;                             // +0x00
 };
 struct CAnimationTable {
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
     bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;                                 // 0x005DC2E0
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long m_refCount;                                 // +0x04
@@ -41,7 +41,7 @@ struct CDefPointeeBase {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {              // the out slot the definition lookups fill (released by hand)
+template <class T> class CDefPointer { public:              // the out slot the definition lookups fill (released by hand)
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer()
@@ -55,25 +55,25 @@ struct CMeleeTrapDef : CDefPointeeBase {
     unsigned char   _pad08[0x34 - 0x08];
     CAnimationTable Animations;                      // +0x34
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CMeleeTrapDef>* out) const;   // 0x0042B0A2
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;                 // +0x70
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     unsigned char _pad00[0x10];
     float Duration;                                  // +0x10
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     C3DAnimationInfo* GetAnimation(long index);      // 0x00A242C0
 };
 struct CMeshDataBankPointer {                        // CCountedPointer<CMeshDataBank>
     CMeshDataBank* Data;
     void*          Info;
 };
-struct CWorld {
+class CWorld { public:
     unsigned char        _pad00[0x3c];
     CMeshDataBankPointer PMainMeshBank;              // +0x3c
 };

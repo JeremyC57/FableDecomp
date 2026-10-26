@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_HobbeLungeAttack {
+class CCreatureAction_HobbeLungeAttack { public:
     void* vftable;
     int destroyed;
 };

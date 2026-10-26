@@ -7,18 +7,18 @@
 // Shape: the vtable store precedes the four `-1` stores because each is a member object with an
 // inline constructor (a CDefString, "no name" = -1); one `or eax,-1` register feeds all four.
 #pragma optimize("s", on)
-struct CShoveHaPennyRegionDef {
+class CShoveHaPennyRegionDef { public:
     virtual void v00();
     unsigned char _body[0x24];                  // +0x04..+0x27
     CShoveHaPennyRegionDef();                   // 0x0044C0C0
 };
 
-struct CDefString {                             // a name index into the def string table
+class CDefString { public:                             // a name index into the def string table
     long m_index;
     CDefString() : m_index(-1) { }
 };
 
-struct CCoopSpiritDef : CShoveHaPennyRegionDef {   // vtable 0x01232214
+class CCoopSpiritDef : public CShoveHaPennyRegionDef { public:   // vtable 0x01232214
     CDefString m_name0;                         // +0x28
     CDefString m_name1;                         // +0x2c
     CDefString m_name2;                         // +0x30

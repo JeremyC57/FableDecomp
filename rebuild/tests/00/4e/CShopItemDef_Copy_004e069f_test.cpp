@@ -4,11 +4,11 @@
 #define __fastcall
 #define __cdecl
 #endif
-struct CDefClassBase { int m_unused; };
+class CDefClassBase { public: int m_unused; };
 static int g_baseCopies = 0;
 struct CDefBase { unsigned long m_words[10]; CDefBase& operator=(const CDefBase& o) { ++g_baseCopies; for (int i = 0; i < 10; ++i) m_words[i] = o.m_words[i]; return *this; } };
-struct CShopItem { float Quantity, PriceMultiplier, MaxStock; long RestockPeriod; float RestockPeriodRandomness, SalesPerDay, SalesPerDayRandomness; };
-struct CShopItemDef {                           // the header's flattened layout
+class CShopItem { public: float Quantity, PriceMultiplier, MaxStock; long RestockPeriod; float RestockPeriodRandomness, SalesPerDay, SalesPerDayRandomness; };
+class CShopItemDef { public:                           // the header's flattened layout
     CDefBase base;                              // +0x00..+0x27 in retail
     long  Type;
     float Item_Quantity, Item_PriceMultiplier, Item_MaxStock;

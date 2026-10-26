@@ -12,7 +12,7 @@ struct CDefVirtual { virtual void v00() {} virtual void Destroy() { ++g_destroye
 struct CDefBase : CDefVirtual, CRefCounted {
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-struct CThingSwitchDef : CDefBase { long TriggerType; };
+class CThingSwitchDef : public CDefBase { public: long TriggerType; };
 struct CSwitchDefPointer {
     CThingSwitchDef* m_p;
     explicit CSwitchDefPointer(CThingSwitchDef* p) : m_p(p) { if (m_p) ++m_p->m_count; }
@@ -20,9 +20,9 @@ struct CSwitchDefPointer {
     ~CSwitchDefPointer() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } }
     CThingSwitchDef* operator->() const { return m_p; }
 };
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 static CWorld g_world;
-struct CThingSwitch {
+class CThingSwitch { public:
     U64 UniqueID;
     unsigned char baseResult;
     CThingSwitchDef* def;

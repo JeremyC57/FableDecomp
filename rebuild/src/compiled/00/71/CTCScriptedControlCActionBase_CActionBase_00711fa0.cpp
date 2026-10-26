@@ -10,7 +10,7 @@ struct CBase {
 };
 
 namespace CTCScriptedControl {
-struct CActionBase : CBase {
+class CActionBase : public CBase { public:
     long m_actionState;                             // +0x04
     bool m_started;                                 // +0x08
     bool m_finished;                                // +0x09

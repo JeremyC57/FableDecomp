@@ -18,10 +18,10 @@
 // `(long)(strength * 1024.0f)` through __ftol2.
 #include "engine/CEngineWeatherRenderer.h"
 
-struct C3DVector { float X, Y, Z; };
-struct C4DVector { float X, Y, Z, W; };
+class C3DVector { public: float X, Y, Z; };
+class C4DVector { public: float X, Y, Z, W; };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -29,13 +29,13 @@ template <class T> struct CArray {
     const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges

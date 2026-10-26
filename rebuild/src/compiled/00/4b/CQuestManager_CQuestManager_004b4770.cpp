@@ -30,7 +30,7 @@ template <class T> struct CSTLList {                 // STLport list<T>: one nod
             free(_M_node);
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                  // 0x0099EAE0
 };
@@ -96,7 +96,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* Info;
     ~CCountedPointer()
@@ -116,16 +116,16 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();              // 0x00A01C10
     void* m_pItem;
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
 };
 template <class T> struct CTBaseSingletonNoDefaultAlloc {
     virtual ~CTBaseSingletonNoDefaultAlloc() {}
 };
-struct CThing;
-struct CWorld { static long GetWorldFrame(); };       // 0x0049D870
-struct CGameScriptThingManager;
-struct CScriptInfoManager;
-struct CGameScriptInterface;
+class CThing;
+class CWorld { public: static long GetWorldFrame(); };       // 0x0049D870
+class CGameScriptThingManager;
+class CScriptInfoManager;
+class CGameScriptInterface;
 struct CActiveQuest;
 struct CActiveQuestEntry;
 struct CQuestCardType;
@@ -134,7 +134,7 @@ struct CBoast;
 struct CObjective;
 struct CPendingQuest;
 
-struct CQuestManager : CTBaseSingletonNoDefaultAlloc<CQuestManager> {
+class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> { public:
     CCountedPointer<CGameScriptThingManager> PGameScriptThingManager;   // +0x04
     CRuntimeQuestPersistence RuntimeQuestPersistence;                   // +0x0c
     CStringVector            RegisteredQuestNames;                      // +0x2c

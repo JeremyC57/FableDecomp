@@ -16,8 +16,8 @@
 //   `enable` slot.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
@@ -45,7 +45,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CBaseObject {
+class CBaseObject { public:
     unsigned char _pad00[0x20];
     CBitset       m_present;                    // +0x20
     unsigned char _pad24[0x20];
@@ -61,11 +61,11 @@ struct CBaseObject {
         return it->component;
     }
 };
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
     void Kill(bool silent);                     // 0x004C9B80
 };
-struct CThingAICreature : CThing { };
+class CThingAICreature : public CThing { public: };
 bool ThingAliveBit_s8(const CBaseObject* thing);   // stand-in: the dead-flag test (outside the bytes graded here)
 bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
 #pragma auto_inline(off)
@@ -87,13 +87,13 @@ __declspec(noinline) bool __fastcall IS_THING_ALIVE(CThingAICreature* const& thi
 #pragma auto_inline(on)
 
 
-template <class T> struct CIntelligentPointer {
+template <class T> class CIntelligentPointer { public:
     void* _vfptr;
     T*    m_pItem;
     T* GetPItem() const;                        // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
 };
-struct CTCVillage;
-struct CTCDummyVillager {                       // interface 0xD6
+class CTCVillage;
+class CTCDummyVillager { public:                       // interface 0xD6
     unsigned char _pad_0x00[0x30];
     CIntelligentPointer<CThingAICreature> PVillager;   // +0x30 Creature
     unsigned char _pad_0x38[0x11];
@@ -119,11 +119,11 @@ struct SPersonNode {
     CIntelligentPointer<CThingAICreature> _M_data;   // +0x08
 };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThingAICreature>& thing);   // 0x004AB8F0
-struct CTCCreatureOpinionOfHero {              // interface 0x4F
+class CTCCreatureOpinionOfHero { public:              // interface 0x4F
     void DecriminaliseAllKnownCrimes();         // 0x00684050
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*         __vftable;                    // +0x00
     CThing*       ParentThing;                  // +0x04
     unsigned char _pad_0x08[0x24];

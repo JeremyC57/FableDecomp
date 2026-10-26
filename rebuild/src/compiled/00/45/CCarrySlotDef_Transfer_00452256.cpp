@@ -3,13 +3,13 @@ struct A { int x; };
 struct B { int x; };
 struct C { int x; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA(A* p);
     void PersistB(B* p);
     void PersistC(C* p);
 };
 
-struct CCarrySlotDef {
+class CCarrySlotDef { public:
     unsigned char _pad[0x28];
     A a;   // +0x28
     B b;   // +0x2c

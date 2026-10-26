@@ -13,7 +13,7 @@ struct CLandscapeBackgroundTreeNodeCalls {
     bool IsBackgroundAtFullDetailInArea(long minX, long minY, long maxX, long maxY);   // 0x00BF6D50
 };
 
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void*                              __vftable;   // +0x00
     CLandscapeBackgroundTreeNodeCalls* PatchTree;   // +0x04 (PDB: CLandscapeBackgroundTreeNode*)
     bool IsBackgroundAtFullDetailInArea(long minX, long minY, long maxX, long maxY);

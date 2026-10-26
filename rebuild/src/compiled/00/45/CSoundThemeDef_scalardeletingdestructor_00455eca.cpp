@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 // scalar deleting destructor for CSoundThemeDef
-struct CSoundThemeDef { char pad[0x58]; };
+class CSoundThemeDef { public: char pad[0x58]; };
 
 extern "C" void __fastcall Sub54_dtor(void* ecx);
 extern "C" void __fastcall CSoundThemeDef_realdtor(void* ecx);

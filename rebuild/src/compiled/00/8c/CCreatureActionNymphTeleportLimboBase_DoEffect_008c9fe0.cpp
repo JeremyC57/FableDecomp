@@ -11,21 +11,21 @@
 // Shape: the JackDeathInto 0x008C0EA0 model: `found = GetSubDef(&def) && def->CalcAndLookup("TELEPORT_POS", &effect)` (the
 //   conditionally built string tracked by a flag in ebx, the bool kept in a frame byte); the emitter pointer is a
 //   zero-initialised local filled by an unchecked lookup; the GetSubDef same-TU stand-in carries retail's LTCG knowledge.
-struct C3DVector { float x, y, z; };
-struct CTCBase;
-struct CCharString {
+class C3DVector { public: float x, y, z; };
+class CTCBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CSpecialEffectsDef {
+class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30 (CCRC, at the def)
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
@@ -47,10 +47,10 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CSpecialEffectsDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void Destroy(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -84,7 +84,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -138,16 +138,16 @@ struct CBaseIntelligentPointer {
 };
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector* position, bool attached);   // 0x006E0880
 
-struct CTCDParticleEmitter {                          // interface type 0x4B
+class CTCDParticleEmitter { public:                          // interface type 0x4B
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
 };
-struct CCreatureAction_NymphTeleportLimboBase : CCombatActionBase {
+class CCreatureAction_NymphTeleportLimboBase : public CCombatActionBase { public:
     void DoEffect();
 };
 

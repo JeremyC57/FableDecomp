@@ -2,31 +2,31 @@
 // collides with things; the search gets the caller's box and list and a Bind3 of {this, exclude-creatures}, the sphere at the
 // position with radius + extra, and HasTC(2).
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CThing;
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CThing;
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
-struct CTCPhysicsBase;
-struct CThingFilter_CanCollideOrInteractWithThing {
+class CTCPhysicsBase;
+class CThingFilter_CanCollideOrInteractWithThing { public:
     CTCPhysicsBase* TCPhysics;
     bool            ExcludeCreatures;
     CThingFilter_CanCollideOrInteractWithThing(CTCPhysicsBase* physics, bool excludeCreatures)
         : TCPhysics(physics), ExcludeCreatures(excludeCreatures) { }
 };
-struct CThingFilter_OverlappingSphere {
+class CThingFilter_OverlappingSphere { public:
     C3DVector SpherePos;
     float     Radius;
     CThingFilter_OverlappingSphere(const C3DVector& pos, float radius) : SpherePos(pos), Radius(radius) { }
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Type;
     CThingFilter_HasTC(long type) : Type(type) { }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A* F1;
     const B* F2;
     const C* F3;
@@ -34,7 +34,7 @@ template <class A, class B, class C> struct CFilter_Bind3 {
 };
 static int g_searches = 0; static const C2DBoxI* g_box = 0; static void* g_out = 0;
 static CTCPhysicsBase* g_physics = 0; static bool g_exclude = false; static float g_sx = 0, g_sy = 0, g_sz = 0, g_sr = 0; static long g_type = 0;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class T, class TContainer, class TFilter>
     void GetAllThingsInRoughArea(const C2DBoxI& box, const TFilter& filter, TContainer& out) const
     {
@@ -45,7 +45,7 @@ struct CThingSearchTools {
     }
 };
 static CThingSearchTools g_tools;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool m_collides, m_oneWay, m_interacts, m_exclude;
     C3DVector Position;
     float     Radius;

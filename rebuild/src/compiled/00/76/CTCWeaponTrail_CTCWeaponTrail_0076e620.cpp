@@ -10,25 +10,25 @@
 // HelperNames +0x54, ProjectileWeaponTrail +0x60, MinProjectileTrailTimer +0x64, WeaponTrailActive +0x68.
 // Shape: initialisers in declaration order sharing the `xor ebx,ebx` zero (after the handle's vtable store, as in
 // the landed CTCEmoteIcon 0x0071AFE0); the list head is nulled, then the self-linked sentinel stored.
-struct CThing;
+class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
     CTCBase(CThing* thing);                        // 0x00686800
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     CBaseClass();                                  // 0x0099A2D0
 };
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 struct CIVCountedPointer {
     CEnginePersistentPrimitiveBase* Object;
     CIVCountedPointer() : Object(0) { }
 };
-struct CEnginePrimitiveHandle : CBaseClass {       // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598
     CIVCountedPointer Data;                        // +0x04
     virtual void v00();
     CEnginePrimitiveHandle() { }
@@ -52,7 +52,7 @@ template <class T> struct CRetailList {            // the shipped list: one sent
 };
 struct CWeaponTrailEntry { unsigned char _body[0x1c]; };   // CEnginePrimitiveWeaponTrail::CWeaponTrailEntry
 struct CCharStringPair { void* first; void* second; };
-struct CTCWeaponTrail : CTCBase {                  // vtable 0x0126A5B4
+class CTCWeaponTrail : public CTCBase { public:                  // vtable 0x0126A5B4
     long                                        NoTrails;                    // +0x0c
     long                                        NoProjectileTrails;          // +0x10
     long                                        WeaponTrailGraphicIndex;     // +0x14

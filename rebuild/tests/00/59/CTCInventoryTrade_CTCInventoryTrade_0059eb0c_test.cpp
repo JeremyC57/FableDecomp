@@ -15,7 +15,7 @@ struct CComponentListMap { void* _M_header; CComponentListMap() : _M_header(0) {
 struct CLongLongMap { void* _M_header; CLongLongMap() : _M_header(0) { ++g_ctors; } };
 struct CComponentStringMap { void* _M_header; CComponentStringMap() : _M_header(0) { ++g_ctors; } };
 struct CComponentMap { void* _M_header; CComponentMap() : _M_header(0) { ++g_ctors; } };
-struct CWideString { void* m_pData; CWideString() : m_pData(0) { ++g_ctors; } };
+class CWideString { public: void* m_pData; CWideString() : m_pData(0) { ++g_ctors; } };
 namespace NInventory {
 class CTCInventoryBase {
 public:

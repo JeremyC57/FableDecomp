@@ -1,7 +1,7 @@
 // Behaviour test for CTCMultiArrow::SetAICast @ 0x007CBF20: per-level tables, volleys = shots / per volley.
 #include <cstdio>
-struct CSpecialAbilitiesMultiArrowDef { long NumberOfShots[4]; long NumberInVolley[4]; };
-struct CTCMultiArrow {
+class CSpecialAbilitiesMultiArrowDef { public: long NumberOfShots[4]; long NumberInVolley[4]; };
+class CTCMultiArrow { public:
     const CSpecialAbilitiesMultiArrowDef* PDef;
     long NumberOfShots, NumberInVolley, NumOfVolleys, SpellLevel;
     unsigned char RemovedEffect;

@@ -11,19 +11,19 @@
 // `mov esi,[esp+10h]`; reading the temporary's member uses the returned eax); the release is written by hand on the
 // pointer local through an inline guard after the text copy (`dec [esi+4] ; jne ; call [vtable+4]`): a destructor on the
 // counted-pointer object re-reads the slot at every use.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);          // 0x0099B720
 };
@@ -51,7 +51,7 @@ struct CEntryReference {                            // holds the reference taken
 };
 
 namespace NGameText {
-struct CDataBank {
+class CDataBank { public:
     unsigned long LookupValue(unsigned long crc) const;          // 0x009CC410
     unsigned long GetEntryDataType(unsigned long index) const;   // 0x009CC210
     CIVCountedPointer GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070

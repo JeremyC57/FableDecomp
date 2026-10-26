@@ -21,7 +21,7 @@ struct CBasicStringW {                                  // STLport basic_string<
             free(_M_start);
     }
 };
-struct CWideStringData {                                // 16 bytes
+class CWideStringData { public:                                // 16 bytes
     CBasicStringW Data;                                 // +0x00
     long          NoRefs;                               // +0x0c
 };

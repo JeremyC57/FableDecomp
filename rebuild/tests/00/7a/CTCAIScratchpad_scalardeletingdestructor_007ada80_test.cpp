@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCAIScratchpad {
+class CTCAIScratchpad { public:
     void* vftable;
     int destroyed;
 };

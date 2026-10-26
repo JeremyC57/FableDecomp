@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerParticleSpriteTrailGroup {
+class CEnginePrimitiveManagerParticleSpriteTrailGroup { public:
     void* vftable;
 };
 

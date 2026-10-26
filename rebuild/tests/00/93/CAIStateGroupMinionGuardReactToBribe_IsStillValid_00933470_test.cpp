@@ -3,14 +3,14 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -34,8 +34,8 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain { unsigned char _pad[0x18]; CThing* PCreature; };
-struct CAIStateGroupBase {
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* PCreature; };
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     CAIBrain* PBrain; long ScriptAIPriority; void* Name_PStringData; unsigned char Terminated; unsigned char Priority; unsigned char Enabled; unsigned char _pad_0x13;
 };

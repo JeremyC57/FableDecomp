@@ -13,20 +13,20 @@
 //          the handle model as there (16 bytes).
 // Shape: the woman is a const reference bound to the returned temporary (IsAlive dispatches through the vtable); the
 //        follow wait is `while (!IsDone())` with the not-alive exit inside (a plain `while (alive)` wait rotates).
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -43,13 +43,13 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CBaseClass {                                      // polymorphic root of the script handles
+class CBaseClass { public:                                      // polymorphic root of the script handles
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptGameResourceObjectScriptedThingBase;
+class CScriptGameResourceObjectScriptedThingBase;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     ~CScriptThing();                                     // 0x004AA840
@@ -65,7 +65,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual void v73() const; virtual void v74() const;
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c)
 };
-struct CGameScriptInterface {   // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:   // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -90,12 +90,12 @@ struct CCountedPointerWords {                            // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CBaseObject {                                     // CBaseIntelligentPointer root (polymorphic: vptr +0)
+class CBaseObject { public:                                     // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;                         // +0x04
     CBaseObject();                                       // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                           // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0

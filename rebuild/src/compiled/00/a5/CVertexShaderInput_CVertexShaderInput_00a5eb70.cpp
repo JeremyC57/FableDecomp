@@ -13,7 +13,7 @@
 // destructor as a plain call (the frame slot is popped after it); `ret`.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0 (stores its vtable; labelled "CBase::CBase")
 };

@@ -10,14 +10,14 @@
 // STLport vector 12 bytes; the fetch action is CCreatureActionBase (0xa8) + a CIntelligentPointer<CThing> at +0xa8).
 // Shape: one shared false tail (success path nested); goods.Start read into a local after the walk; the target item hoisted into a local before the action ctor; the crate-stack lookup is the word-local HasTC in the first test and the masked test (null-checked) in the second.
 extern "C" void __cdecl free(void* block);
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -51,8 +51,8 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
-struct CTCCrateStack {                          // interface 0xB5
+class CThingCreatureBase : public CThing { public: };
+class CTCCrateStack { public:                          // interface 0xB5
     CThing* GetNextCrate();                     // 0x007B6750
     long GetNumCrates();                        // 0x007B6660
     CThing* RemoveNextCrate();                  // 0x007B6790
@@ -90,7 +90,7 @@ struct CLongVector {                            // STLport vector<long>, 12 byte
     ~CLongVector() { if (Start) free(Start); }
 };
 struct CAIFilterBase;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
@@ -100,11 +100,11 @@ struct CCreatureAction_FetchGoods : CCreatureActionBase {
     CIntelligentPointerThing PTarget;           // +0xa8
     CCreatureAction_FetchGoods(CThingCreatureBase* creature, CThing* target, long good);   // 0x00916590
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x10];

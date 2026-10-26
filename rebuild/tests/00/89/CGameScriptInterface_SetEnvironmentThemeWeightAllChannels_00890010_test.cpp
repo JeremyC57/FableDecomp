@@ -5,7 +5,7 @@ struct Inner {
     int applied; int one; int count; int arg2;
     void Apply(int a, int b, int c) { applied = 1; one = a; count = b; arg2 = c; }
 };
-struct CWorld { char pad[0x18]; Inner* PEnvironment; };
+class CWorld { public: char pad[0x18]; Inner* PEnvironment; };
 
 struct ThemeObj { int cnt; };
 

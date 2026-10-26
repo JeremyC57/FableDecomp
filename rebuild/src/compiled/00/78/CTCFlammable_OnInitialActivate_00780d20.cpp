@@ -23,7 +23,7 @@ struct CDefPointee {
     }
 };
 
-struct CFlammableDef : CDefPointee {
+class CFlammableDef : public CDefPointee { public:
     unsigned char _pad[0x20];
     long FireResistance;                         // +0x28
 };
@@ -42,17 +42,17 @@ struct CFlammableDefPointer {                    // CDefPointer<CFlammableDef co
     }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CFlammableDefPointer* out);   // 0x007815A0 (GetSubDef<CFlammableDef>)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad[0x70];
     CDefClassBase* m_pDefClass;                  // +0x70
     void SetForceFrameUpdate(bool update);       // 0x004C7C60
 };
 
-struct CTCFlammable : CTCBase {
+class CTCFlammable : public CTCBase { public:
     CFlammableDefPointer PDef;                   // +0x0c
     unsigned char FirePoints[0xc];               // +0x10 vector<NFire::CFirePoint>
     bool          Burning;                       // +0x1c

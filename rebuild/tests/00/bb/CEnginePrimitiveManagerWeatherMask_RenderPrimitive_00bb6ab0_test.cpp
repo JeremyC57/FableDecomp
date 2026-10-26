@@ -5,7 +5,7 @@
 #include <math.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CBase {
 public:
     virtual ~CBase() {}
@@ -25,12 +25,12 @@ public:
     static void* operator new(unsigned int size) { ++g_newCalls; g_newSize = size; return g_pool; }
     static void operator delete(void*) {}
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;
 };
 CEngineCamera* g_pEngineCamera;
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 class CEngineInternalPrimitiveWeatherMask {
 public:
     unsigned char     _base[0x48];

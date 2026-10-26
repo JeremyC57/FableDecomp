@@ -12,24 +12,24 @@
 //   variable's uninitialised slot), the carryable def a CDefPointer local (DecRefToZero release, null test folded), the
 //   new mode built through the owner pointer's inline `operator CThing*()`; the GetSubDef and LowerBound same-TU stand-ins
 //   carry retail's LTCG knowledge (def held in ebx, key and def share one frame word).
-struct CThing;
-struct CThingObject;
-struct C3DVector { float x, y, z; };
-struct CTCBase;
-struct CCharString {
+class CThing;
+class CThingObject;
+class C3DVector { public: float x, y, z; };
+class CTCBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CCarryableDef {
+class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
     unsigned char _pad08[0x28 - 0x08];
     long CarrySlot;                                   // +0x28
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -49,10 +49,10 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CCarryableDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -106,7 +106,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -130,18 +130,18 @@ struct CThing {
         return false;
     }
 };
-struct CThingObject : CThing { };
+class CThingObject : public CThing { public: };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CThing* GetPItem() const;                         // 0x00A01B50
     operator CThing*() const { return GetPItem(); }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     void PutThingInCarrySlot(CThingObject* thing, long slot, bool immediately);   // 0x006A1F80
 };
 struct CModeBase { };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;                                  // +0
     void* m_pCount;                                   // +4
     CCountedPointer(T* object);                       // 0x00718A00
@@ -151,16 +151,16 @@ struct CModeCarryingGoodsStand : CModeBase {
     unsigned char _pad[0x74];
     CModeCarryingGoodsStand(CThing* owner);           // 0x0073FCE0
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode);    // 0x0073ACC0
 };
-struct CCreatureActionBase {                          // retail sizeof 0xa8
+class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0xa8 - 0x10];
 };
-struct CCreatureAction_PickUpGoods : CCreatureActionBase {
+class CCreatureAction_PickUpGoods : public CCreatureActionBase { public:
     CBaseIntelligentPointer PGoods;                   // +0xa8
     void PerformAction();
 };

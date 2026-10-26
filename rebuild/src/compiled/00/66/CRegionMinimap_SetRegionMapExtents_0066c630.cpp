@@ -13,14 +13,14 @@
 // Leaf: SetRegionMapExtents
 #include "engine/CRegionMinimap.h"
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI() { }
     C2DCoordI(long x, long y) : X(x), Y(y) { }
     C2DCoordI operator+(const C2DCoordI& o) const { return C2DCoordI(X + o.X, Y + o.Y); }
 };
 
-struct CMap {
+class CMap { public:
     unsigned char _pad[0x1d0c];
     long          WorldSizeX;                       // +0x1d0c (PDB +0x1d1c)
     long          WorldSizeY;                       // +0x1d10 (PDB +0x1d20)

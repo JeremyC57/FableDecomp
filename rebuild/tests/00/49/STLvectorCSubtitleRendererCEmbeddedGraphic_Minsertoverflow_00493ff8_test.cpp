@@ -13,14 +13,14 @@
 extern "C" void* __cdecl malloc(size_t size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
 class CSubtitleRenderer {
 public:
-    struct CEmbeddedGraphic {                       // Ego_r.pdb, 16 bytes
+    class CEmbeddedGraphic { public:                       // Ego_r.pdb, 16 bytes
         long      Graphic;                          // +0x00
         long      CharIndex;                        // +0x04
         C2DVector Offset;                           // +0x08

@@ -5,8 +5,8 @@ struct IDirect3DDevice9 {
     virtual unsigned long __stdcall AddRef() { return 1; }
     virtual unsigned long __stdcall Release() { ++g_released; return 0; }
 };
-struct CSurface { unsigned char _body[0x10]; void Uninitialise() { if (g_n < 2) g_uninit[g_n] = this; ++g_n; } };
-struct CDisplayManager {
+class CSurface { public: unsigned char _body[0x10]; void Uninitialise() { if (g_n < 2) g_uninit[g_n] = this; ++g_n; } };
+class CDisplayManager { public:
     unsigned char _pad[0x2c]; CSurface BackBufferSurface; CSurface DepthBufferSurface; unsigned char _pad2[0xc]; IDirect3DDevice9* D3DDevice;
     void DestroyDevice() { BackBufferSurface.Uninitialise(); DepthBufferSurface.Uninitialise(); if (D3DDevice) D3DDevice->Release(); }
 };

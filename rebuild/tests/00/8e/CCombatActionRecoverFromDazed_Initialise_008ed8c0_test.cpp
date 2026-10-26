@@ -1,11 +1,11 @@
 // Behaviour test for 0x008ED8C0 CCombatAction_RecoverFromDazed::Initialise.
 #include <cstdio>
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     long removed[8]; int count;
     CTCCreatureModeManager() : count(0) { }
     void RemoveMode(unsigned long mode) { removed[count++] = (long)mode; }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_type;
     bool hasModes;
     CTCCreatureModeManager* modes;
@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
 };
 static int g_baseInit = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature;
     void Initialise() { ++g_baseInit; }
 };

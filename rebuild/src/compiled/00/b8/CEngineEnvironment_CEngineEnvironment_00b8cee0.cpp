@@ -10,7 +10,7 @@
 //          +0x640..+0x648 speeds, +0x64C CurrentRenderFrame, +0x650 EnvironmentalEffectsAlwaysUpdate, +0x651 ShowWindVector.
 // Shape: C3DVector has a user ctor and a user copy ctor but no operator=, so each history slot is written through a
 //          pointer register (`lea ebx,[eax-300h]`); the two zero temporaries are hoisted to the frame and re-read.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -24,7 +24,7 @@ struct CEnvironmentBase {                       // 12-byte base: vptr + two word
     CEnvironmentBase();                         // 0x00B59710
 };
 
-struct CEngineEnvironment : CEnvironmentBase {
+class CEngineEnvironment : public CEnvironmentBase { public:
     float     CurrentInterpolation;             // +0x0C
     float     BulletTimeInterpolation;          // +0x10
     float     PausedInterpolation;              // +0x14

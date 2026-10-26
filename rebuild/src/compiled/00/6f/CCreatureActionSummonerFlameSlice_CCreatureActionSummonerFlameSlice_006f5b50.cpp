@@ -5,7 +5,7 @@
 // Shape: base, this class's vtable, then the init-list member: the member's inline constructor is a call so the
 // derived vtable store stays ahead of it (only plain stores sink it). The member's address is kept in edi for its
 // vtable store. The PDB build has this pointer at +0x12c (its CCombatActionBase is 0x18 bytes wider).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -22,13 +22,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01238
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
+class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(long actionCode);     // 0x00857E40
 };
 
-struct CCreatureAction_SummonerFlameSlice : CCombatActionBase {             // vtable 0x01264214
+class CCreatureAction_SummonerFlameSlice : public CCombatActionBase { public:             // vtable 0x01264214
     CIntelligentPointer PTarget;            // +0x114 CIntelligentPointer<CThing>
     virtual void v00();
     CCreatureAction_SummonerFlameSlice();

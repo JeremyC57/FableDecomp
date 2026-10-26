@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <string.h>
 #define FAIL { std::printf("0099e520_TEST FAIL\n"); return 1; }
-struct CCharStringData { char* PData; };
-struct CCharString {
+class CCharStringData { public: char* PData; };
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(char character) const
     {

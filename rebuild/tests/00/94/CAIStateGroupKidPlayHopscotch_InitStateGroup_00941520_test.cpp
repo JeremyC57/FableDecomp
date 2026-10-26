@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour model of CAIStateGroup_KidPlayHopscotch::InitStateGroup @ 0x00941520.
-struct CWorld { int x; }; struct CThingAICreature { int x; };
+class CWorld { public: int x; }; class CThingAICreature { public: int x; };
 static long g_frame = 1234; static long GFGetCurrentFrame() { return g_frame; } static long g_framesPerSecond = 30;
 struct CAIStateGroup_KidPlayHopscotch { bool m_foundBoard; long m_startFrame, m_playDurationFrames; bool m_thrown; long m_hopCount, m_currentSquare;
     void InitStateGroup(const CWorld&, CThingAICreature&) { m_foundBoard = false; m_startFrame = GFGetCurrentFrame(); m_playDurationFrames = g_framesPerSecond * 60; m_hopCount = 0; m_currentSquare = 0; m_thrown = false; } };

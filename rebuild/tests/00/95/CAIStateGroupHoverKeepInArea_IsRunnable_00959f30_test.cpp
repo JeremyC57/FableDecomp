@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <math.h>
 // Behaviour model of CAIStateGroup_HoverKeepInArea::IsRunnable @ 0x00959F30.
-struct C3DVector { float X, Y, Z; };
-struct CThingAICreature { C3DVector m_pos; C3DVector* GetPosition() { return &m_pos; } };
-struct CAIBrain { unsigned char _pad[0x18]; CThingAICreature* PCreature; };
+class C3DVector { public: float X, Y, Z; };
+class CThingAICreature { public: C3DVector m_pos; C3DVector* GetPosition() { return &m_pos; } };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingAICreature* PCreature; };
 static bool g_baseRunnable = true; static int g_baseCalls = 0; static const float g_radius = 20.0f;
-struct CAIStateGroupBase { virtual void v00() {} CAIBrain* PBrain; };
+class CAIStateGroupBase { public: virtual void v00() {} CAIBrain* PBrain; };
 struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase { bool IsRunnable() { g_baseCalls++; return g_baseRunnable; } };
 struct CAIStateGroup_HoverKeepInArea : CAIStateGroup_EnemyCreatureBase { C3DVector StartPos;
     bool IsRunnable() { C3DVector* p = PBrain->PCreature->GetPosition(); float dx = p->X - StartPos.X; float dy = p->Y - StartPos.Y;

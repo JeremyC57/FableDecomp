@@ -1,18 +1,18 @@
 // Behaviour test for CThing::WorldUpdateBulletTime @ 0x004C8BA0: carried objects updated when interface 0x46 is present, then each live update-list TC.
 #include <cstdio>
-struct CTCBase {
+class CTCBase { public:
     bool ToBeRemoved; int updates;
     CTCBase() : ToBeRemoved(false), updates(0) { }
     virtual void UpdateBulletTime() { ++updates; }
 };
-struct CTCCarrying : CTCBase { int carried; CTCCarrying() : carried(0) { } void UpdateCarriedObjects() { ++carried; } };
+class CTCCarrying : public CTCBase { public: int carried; CTCCarrying() : carried(0) { } void UpdateCarriedObjects() { ++carried; } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 struct SComponentListNode { SComponentListNode* m_next; SComponentListNode* m_prev; CTCBase* m_data; };
-struct CThing {
+class CThing { public:
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
     SComponentListNode* UpdateComponentsList;

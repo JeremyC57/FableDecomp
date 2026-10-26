@@ -1,13 +1,13 @@
 #include <cstdio>
 
 // Model: CTCTrapBase::SetTransitionParams forwards both fade times and opaque black to the opener fader.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& o) { B = o.B; G = o.G; R = o.R; A = o.A; }
 };
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool       Active;
     float      FadeInTime;
     float      FadeOutTime;

@@ -12,7 +12,7 @@ typedef long long __int64;
 
 
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -49,7 +49,7 @@ long __fastcall GetWorldFrame();                             // 0x0049D870
 namespace NCameraModes {
 class CBase;
 }
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char        _pad000[0x98];
     NCameraModes::CBase* CurrentMode;                        // +0x98
     unsigned char        _pad09c[0xb0 - 0x9c];

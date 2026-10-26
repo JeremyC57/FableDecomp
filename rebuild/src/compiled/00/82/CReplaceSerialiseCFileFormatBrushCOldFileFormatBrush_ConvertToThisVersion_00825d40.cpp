@@ -12,7 +12,7 @@
 //   temporary's destructor decrements the count, re-reads the block and on zero runs the deleter and frees it.
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long refs;                        // +0x0
     void (__fastcall* destroy)(void*);         // +0x4
     void* object;                              // +0x8
@@ -34,7 +34,7 @@ public:
     T& operator*() const { return *object; }
 };
 
-struct C2DBoxI { long m_x0, m_y0, m_x1, m_y1; };
+class C2DBoxI { public: long m_x0, m_y0, m_x1, m_y1; };
 
 #pragma pack(push, 1)
 template <class T, class TOld> class CReplaceSerialise {

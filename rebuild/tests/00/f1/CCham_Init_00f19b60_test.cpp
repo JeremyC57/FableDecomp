@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CScriptThing { unsigned char data[12]; };
+class CScriptThing { public: unsigned char data[12]; };
 static const CScriptThing* g_thing[2] = { 0, 0 }; static bool g_enabled[2] = { true, true }; static int g_calls = 0;
 struct CGameScriptInterface_Calls {
     virtual void EntitySetAllStategroupsEnabled(const CScriptThing& thing, bool enabled) { g_thing[0] = &thing; g_enabled[0] = enabled; ++g_calls; }

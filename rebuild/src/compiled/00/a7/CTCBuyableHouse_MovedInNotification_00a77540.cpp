@@ -12,7 +12,7 @@
 // argument's dead slot (`lea eax,[esp+8]`); `return find(...) != last;` keeps the full-register bool
 // (`xor ecx,ecx ; cmp ; setne cl ; mov al,cl`).
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct SRandomAccessTag { SRandomAccessTag() {} };  // random_access_iterator_tag
 

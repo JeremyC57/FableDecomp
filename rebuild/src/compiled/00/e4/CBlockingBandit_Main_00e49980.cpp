@@ -12,23 +12,23 @@
 //   +0x18. pGlobalScriptDef: the toll bandit's close-to-exit distance +0x43c and fade time +0x440 (PDB +0x470/+0x474
 //   TollBanditCloseToExit / TollBanditTimeToFade; the retail def is 0x34 smaller ahead of them, as in the landed
 //   CSafeTrader::Main 0x00E4A280).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);         // +4
     void* Data;                                        // +8
 };
-struct CScriptThing;
+class CScriptThing;
 struct CCountedPointer {                               // {Data, Info}
     CScriptThing*   Data;
     CCPPointerInfo* Info;
@@ -58,7 +58,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     VPAD2(p0x0) VPAD1(p0x1)   // slots 0..2
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     VPAD2(p1x0)   // slots 4..5
@@ -84,12 +84,12 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);        // 0x00CBE716
 struct CCountedPointerWords { void* Data; void* Info; };
-struct CBaseObject {                                   // {vptr, intelligent-pointer link}
+class CBaseObject { public:                                   // {vptr, intelligent-pointer link}
     void* IntelligentPointer;                          // +0x04
     CBaseObject();                                     // 0x0099A380
     virtual ~CBaseObject();                            // 0x0099A430
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     CCountedPointerWords PImp;                         // +0x08
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -101,7 +101,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     bool IsPerformingScriptTask() const;               // 0x007E7450
     CScriptThing GetScriptThing() const;               // 0x007E7490
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(p0x0) VPAD2(p0x1) VPAD1(p0x2)   // slots 0..6
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -122,7 +122,7 @@ struct CV_BanditTollScript {
     unsigned char _pad4a[0x4f - 0x4a];
     bool BanditsFlee;                                  // +0x4f
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x43c];
     float TollBanditCloseToExit;                       // +0x43c
     float TollBanditTimeToFade;                        // +0x440

@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 struct CVandalTarget { char pad00[0x38]; unsigned char m_flag; };
-struct CTCDoor { char pad00[0x20]; CVandalTarget *m_target; bool PostVandalismCrimeIfDestroyed(); };
+class CTCDoor { public: char pad00[0x20]; CVandalTarget *m_target; bool PostVandalismCrimeIfDestroyed(); };
 bool CTCDoor::PostVandalismCrimeIfDestroyed(){ CVandalTarget *t=m_target; if(t && t->m_flag) return true; return false; }
 int main(){
     CTCDoor d; d.m_target=0;

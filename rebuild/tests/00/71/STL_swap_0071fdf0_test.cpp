@@ -6,8 +6,8 @@
 static int g_blendCopies = 0;
 enum EHeroMorphType { HERO_MORPH_NONE = 0, HERO_MORPH_FAT = 2, HERO_MORPH_EVIL = 5 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0, COMPOSITE_BLEND_ADD = 3 };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CCompositeBlendDesc {
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;
     ECompositeBlendType BlendType;
     CRGBColour          DiffuseColour;
@@ -16,7 +16,7 @@ struct CCompositeBlendDesc {
     { DiffuseColour.B = DiffuseColour.G = DiffuseColour.R = DiffuseColour.A = d; SpecularColour.B = SpecularColour.G = SpecularColour.R = SpecularColour.A = s; }
     CCompositeBlendDesc(const CCompositeBlendDesc& o) : TextureIndex(o.TextureIndex), BlendType(o.BlendType), DiffuseColour(o.DiffuseColour), SpecularColour(o.SpecularColour) { ++g_blendCopies; }
 };
-struct CTextureMorphEntry {
+class CTextureMorphEntry { public:
     long                TextureLayer;
     CCompositeBlendDesc Blend;
     CTextureMorphEntry(long l, const CCompositeBlendDesc& b) : TextureLayer(l), Blend(b) { }

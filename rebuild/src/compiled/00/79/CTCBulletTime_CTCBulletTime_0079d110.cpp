@@ -10,7 +10,7 @@
 // Layout: engine/CTCBulletTime.h offsets (its opaque member arrays carry no destructors, so the members are re-typed here):
 // DisplacementEffectPrimitive +0x18, PDef +0x20, m_tpLoopingEffect +0x30, LoopSound +0x38, PItemRemoved +0x3c,
 // HitCreatureBlur +0x44, ScreenFilterKey +0x50, CutSceneCancel +0x56.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                             // 0x0099EAE0
 };
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -44,7 +44,7 @@ struct CThing {
     }
 };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad00[0x40];
     unsigned short Flags40 : 5;
     unsigned short Dead : 1;                    // +0x40 bit 5
@@ -61,7 +61,7 @@ struct CBaseIntelligentPointer {
     NParticleEngine::CParticleEmitter* GetPItem() const;   // 0x00A01B50
     void SetPItem(NParticleEngine::CParticleEmitter* item); // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
@@ -73,14 +73,14 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
 struct CEnvironmentSpellEffects {
     void RemoveFilter_006b83f0(long mode, void* key);   // 0x006B83F0 (descriptive)
 };
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char _pad00[0x1964];
     CEnvironmentSpellEffects* SpellEffects;     // +0x1964
 };
-struct CBulletTimeManager {
+class CBulletTimeManager { public:
     void RemoveBulletTimeSlowdown(unsigned long key);   // 0x004C6140
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x18];
     CEnvironment* PEnvironment;                 // +0x18
     unsigned char _pad1c[0x68 - 0x1c];
@@ -126,7 +126,7 @@ public:
     }
     __forceinline ~CEnginePrimitiveHandle() { Clear(); }
 };
-struct CSpecialAbilitiesBulletTimeDef {
+class CSpecialAbilitiesBulletTimeDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
@@ -147,14 +147,14 @@ struct CDefPointer_BulletTimeDef {
     }
     const CSpecialAbilitiesBulletTimeDef* operator->() const { return Object; }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                         // 0x00686830
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     CWorld* GetWorld();                         // 0x00686A70
 };
-struct CTCBulletTime : CTCBase {
+class CTCBulletTime : public CTCBase { public:
     long BulletTimeRemainingTicks;              // +0x0c
     long BulletTimeAbilityLevel;                // +0x10
     void* DisplacementMask;                     // +0x14

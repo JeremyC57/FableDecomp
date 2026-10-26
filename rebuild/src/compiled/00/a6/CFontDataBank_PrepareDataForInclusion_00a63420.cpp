@@ -21,7 +21,7 @@ struct CountedPtr { RefBlock* p; };
 
 void operator delete(void*);   // 0x00bfe9bc
 
-struct CFontDataBank;
+class CFontDataBank;
 
 // Free __fastcall model of the __fastcall member.
 //   ecx = self, edx = unused

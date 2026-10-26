@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
 };
 
@@ -16,7 +16,7 @@ CCharString* __fastcall CCharString_ctor(CCharString* self, int /*edx*/, const c
     return self;
 }
 
-struct CEngineScreenEffectColourFilter {
+class CEngineScreenEffectColourFilter { public:
     virtual CCharString GetConsoleEnableFunctionName();
 };
 

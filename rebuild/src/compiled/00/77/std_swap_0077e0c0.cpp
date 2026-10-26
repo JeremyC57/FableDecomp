@@ -18,7 +18,7 @@ public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();                                  // 0x0099EAE0

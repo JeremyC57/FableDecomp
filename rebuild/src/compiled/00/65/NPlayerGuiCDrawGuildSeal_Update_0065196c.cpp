@@ -17,7 +17,7 @@
 // success); IS_THING_ALIVE binds a converted base-pointer temporary in the frame slot, which the interface key then reuses; the
 // message text is a named CCharString local built before the argument pushes; the component lookup returns through ONE ternary
 // (`end-or-miss ? last : it`), which loads the component straight into ecx for the call (the if/assign form goes through eax).
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
@@ -28,7 +28,7 @@ struct CInterfaceMap {
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
@@ -42,21 +42,21 @@ struct CThing {
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsChild();                                // 0x00661F70
 };
-struct CThingPlayerCreature : CThingCreatureBase { };
+class CThingPlayerCreature : public CThingCreatureBase { public: };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetControlledCreature(); // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
-struct CTCHeroExperience {                         // the thing's interface 0x68
+class CTCHeroExperience { public:                         // the thing's interface 0x68
     bool IsReadyToLevelUp();                       // 0x006D7CB0
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
@@ -68,12 +68,12 @@ struct CGuiDef {
 extern CGuiDef* __fastcall PeekGuiDef();           // 0x00438570
 long __fastcall GFGetCurrentFrame();               // 0x0049D870
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0xd5];
     bool          FlagD5;                          // +0xd5
     bool          FlagD6;                          // +0xd6
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad[0xf6];
     bool          BlockMessages;                   // +0xf6
 };
@@ -163,7 +163,7 @@ struct CMessageQueue {                             // STLport queue<pair<CCharSt
 
 namespace NPlayerGui {
 
-struct CDrawGuildSeal {
+class CDrawGuildSeal { public:
     void*           _vtable;                       // +0x00
     CPlayerGui*     PlayerGui;                     // +0x04
     CPlayerManager* PlayerManager;                 // +0x08

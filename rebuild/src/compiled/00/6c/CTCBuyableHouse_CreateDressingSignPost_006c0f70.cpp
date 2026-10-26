@@ -11,9 +11,9 @@
 // is SetPItem(other.GetPItem()) on the member, and the temporary's destructor is the base one (the
 // derived pointer template declares no destructor, so no vtable store on the way out).
 
-struct CThing;
-struct CBaseObject;
-struct CCharString { void* PStringData; };
+class CThing;
+class CBaseObject;
+class CCharString { public: void* PStringData; };
 
 struct CBaseIntelligentPointer
 {
@@ -26,8 +26,8 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // vtable 0x01238C6C for <CThing>
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // vtable 0x01238C6C for <CThing>
+{ public:
     virtual void v00();
     CIntelligentPointer() {}
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
@@ -37,8 +37,8 @@ struct CIntelligentPointer : CBaseIntelligentPointer   // vtable 0x01238C6C for 
 extern const CCharString g_DressingSignPostDefName;   // 0x013BAAFC
 
 #pragma pack(push, 1)
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     void*         ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

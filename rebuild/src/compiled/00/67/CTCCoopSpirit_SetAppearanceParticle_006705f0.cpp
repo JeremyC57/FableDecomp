@@ -11,15 +11,15 @@
 //   unset out pointer, the key and the empty bone name sharing the dead argument slot); both liveness tests are the inline
 //   IS_THING_ALIVE (two GetPItem calls); the new pointer is assigned through a CIntelligentPointer<CThing> temporary (inline
 //   converting ctor = base ctor + vtable + SetPItem, inline operator= = SetPItem(other.GetPItem()), out-of-line base dtor).
-struct CTCBase;
-struct C3DVector;
+class CTCBase;
+class C3DVector;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -41,13 +41,13 @@ struct CThing {
     const C3DVector& GetPosition() const;                   // 0x004C73D0
     void Kill(bool immediately);                            // 0x004C9B80
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 __forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
@@ -81,7 +81,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     unsigned char _pad08[0x2c - 0x08];

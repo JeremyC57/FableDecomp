@@ -8,7 +8,7 @@
 // Shape: an unsigned index loop `i < size()` with size() the signed byte distance / 12 (`imul
 // 2AAAAAABh ; sar edx,1`) recomputed every pass; the element is STLport `*(begin() + i)` (begin
 // re-read, the scaled offset strength-reduced into ebx), its pointer address held in ebp.
-struct CThing {
+class CThing { public:
     void Kill(bool removeNow);                      // 0x004C9B80
 };
 
@@ -34,7 +34,7 @@ struct CCarrySlotMap {                              // retail CVectorMap<long,CI
     SCarrySlotEntry& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];           // +0x04 .. +0x0c: CTCBase state
     CCarrySlotMap CarrySlots;                       // +0x0c

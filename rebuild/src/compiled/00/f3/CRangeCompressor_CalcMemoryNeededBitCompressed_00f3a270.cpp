@@ -7,7 +7,7 @@
 // the width `bit + 1`, and the size is the unsigned `(Size() * bits + 31) / 32 * 4`.
 // Size() is called at the loop test and again in the result (a count local changes the register allocation).
 // Leaf: CalcMemoryNeededBitCompressed
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T& operator[](unsigned long i) const { return m_begin[i]; }

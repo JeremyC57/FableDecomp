@@ -8,7 +8,7 @@ struct BoastList {
 static int g_default = 0;
 int MakeDefault() { return g_default; }
 
-struct CQuestManager {
+class CQuestManager { public:
     char pad[0x64];
     int  field64;
     BoastList a;

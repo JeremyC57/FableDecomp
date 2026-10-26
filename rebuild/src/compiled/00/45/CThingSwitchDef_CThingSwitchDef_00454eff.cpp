@@ -8,12 +8,12 @@
 // constructor @ 0x006772D0 runs, then the compiler stores this class's vtable (0x012332CC
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CThingBaseDef {
+class CThingBaseDef { public:
     virtual void v00();
     CThingBaseDef();                           // 0x006772D0
 };
 
-struct CThingSwitchDef : CThingBaseDef {
+class CThingSwitchDef : public CThingBaseDef { public:
     virtual void v00();                    // this class has its own vtable
     CThingSwitchDef();
 };

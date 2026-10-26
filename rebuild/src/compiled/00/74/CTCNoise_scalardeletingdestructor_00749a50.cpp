@@ -1,4 +1,4 @@
-struct CTCNoise {
+class CTCNoise { public:
     void* vftable;
 };
 

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_StartBlocking {
+class CCreatureAction_StartBlocking { public:
     void* vftable;
     int destroyed;
 };

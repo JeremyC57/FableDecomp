@@ -1,4 +1,4 @@
-struct CCreatureAction_IceTrollIcicleAssaultLoop {
+class CCreatureAction_IceTrollIcicleAssaultLoop { public:
     void* vftable;
 };
 

@@ -3,15 +3,15 @@
 
 // NPlayerGui::CDrawQuestInfo::AddBar: both sprites are looked up first, the bar is built from all seven values, appended
 // through AddElement and its new ID returned.
-struct CCharString { const char* m_pData; };
-struct CRGBColour { unsigned char R, G, B, A; };
+class CCharString { public: const char* m_pData; };
+class CRGBColour { public: unsigned char R, G, B, A; };
 struct CQuestInfoElement { long ID; virtual ~CQuestInfoElement() { } };
 struct CBar : CQuestInfoElement {
     float Value, MaxValue; CRGBColour Colour, FadeColour; long Graphic1, Graphic2; float Scale;
     CBar(float v, float m, const CRGBColour& c, const CRGBColour& f, long g1, long g2, float s)
         : Value(v), MaxValue(m), Colour(c), FadeColour(f), Graphic1(g1), Graphic2(g2), Scale(s) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     explicit CCountedPointer(T* object) : m_pObject(object) { }
     template <class U> CCountedPointer(const CCountedPointer<U>& other) : m_pObject(other.m_pObject) { }

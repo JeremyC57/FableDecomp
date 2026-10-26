@@ -15,7 +15,7 @@ static int fails = 0;
 //        otherwise the LevelPersistent bit (bit 4 of +0x92) as an unsigned char bitfield (`shr al,4 ; and al,1`).
 // Layout: retail CThing = Ego_r.pdb - 0x10 here: UsingComponents +0x20, SerialisationSectionName +0x58, flag bytes +0x91..
 //         +0x93 with the PDB bit order.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     bool operator!=(const char* text) const;     // 0x0099E960
 };

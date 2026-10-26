@@ -6,7 +6,7 @@ static int fails = 0;
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
 namespace NGraphicAppearance {
-struct CMeshInfo {
+class CMeshInfo { public:
     long Index; float SizeX; unsigned char PrimaryMesh : 1;
     CMeshInfo(long index, float sizeX, bool primary) : Index(index), SizeX(sizeX) { PrimaryMesh = primary; }
 };

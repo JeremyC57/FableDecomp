@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char m_text[64];
     CCharString() { m_text[0] = 0; }
     CCharString(const char* text, long length = -1) { (void)length; std::strcpy(m_text, text); }
     CCharString& operator=(const char* text) { std::strcpy(m_text, text); return *this; }
 };
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     long FindEntry(const CCharString& name)
     {
         if (std::strcmp(name.m_text, "UI_RING_PIC_HEALTH") == 0) return 11;
@@ -19,7 +19,7 @@ struct CGraphicDataBank {
 };
 
 static int g_refs = 0;
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* m_pObject;
     CCountedPointer(T* p) : m_pObject(p) {}
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject) { ++g_refs; }
@@ -43,7 +43,7 @@ struct CFrontEndManager {
     static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
 };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CComponent* GetExperienceStatPic(long stat);
 };
 

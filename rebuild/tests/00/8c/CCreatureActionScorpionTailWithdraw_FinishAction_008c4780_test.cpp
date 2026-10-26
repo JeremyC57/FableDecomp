@@ -5,11 +5,11 @@
 static int g_log[16]; static int g_n = 0;
 static void Log(int v) { if (g_n < 16) g_log[g_n++] = v; }
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     unsigned int m_removed;
     void RemoveMode(unsigned int mode) { m_removed = mode; Log(100 + (int)mode); }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_animationSuspended;
     unsigned int m_presentBits[9];
     CTCCreatureModeManager* m_modes;        // stands in for the {0x31, component} map entry
@@ -21,11 +21,11 @@ struct CThing {
     }
 };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature;
     void BaseFinishAction() { Log(2); }
 };
-struct CCreatureAction_ScorpionTailWithdraw : CCombatActionBase {
+class CCreatureAction_ScorpionTailWithdraw : public CCombatActionBase { public:
     void FinishAction()
     {
         if (PCreature.GetPItem()->m_animationSuspended == 1) {

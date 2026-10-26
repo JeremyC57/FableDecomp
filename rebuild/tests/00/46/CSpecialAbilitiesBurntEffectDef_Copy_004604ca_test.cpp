@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CSpecialAbilitiesBurntEffectDef { int dummy; };
+class CSpecialAbilitiesBurntEffectDef { public: int dummy; };
 
 // Provide the impl target so the thunk links; record that it ran.
 static int g_called = 0;

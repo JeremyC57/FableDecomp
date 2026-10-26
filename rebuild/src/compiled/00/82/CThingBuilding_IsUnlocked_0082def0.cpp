@@ -9,7 +9,7 @@
 //        in the order locked, barred, open.
 // Layout: CThing presence bits +0x20, Components +0x44, Dead +0x91 bit 0; the door-list component keeps its list at +0x0C;
 //         CTCDoor bytes +0x10 (open), +0x12 (locked), +0x13 (barred) (descriptive).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -53,7 +53,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CThing;
+class CThing;
 struct CIntelligentPointer {                         // CIntelligentPointer<CThing>
     unsigned char _pad00[8];
     CThing* GetPItem() const;                        // 0x00A01B50 (CBaseIntelligentPointer)
@@ -63,7 +63,7 @@ struct SDoorNode {                                   // STLport list node
     SDoorNode*          _M_prev;
     CIntelligentPointer _M_data;                     // +0x08
 };
-struct CTCDoor {                                     // interface type 0x26
+class CTCDoor { public:                                     // interface type 0x26
     unsigned char _pad00[0x10];
     bool          Open;                              // +0x10 (descriptive)
     unsigned char _pad11;
@@ -74,7 +74,7 @@ struct CTCDoorList {                                 // interface type 0x21 (des
     unsigned char _pad00[0x0c];
     SDoorNode*    Doors;                             // +0x0c list<CIntelligentPointer<CThing>> header node
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
@@ -107,7 +107,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     bool IsUnlocked() const;
 };
 bool CThingBuilding::IsUnlocked() const

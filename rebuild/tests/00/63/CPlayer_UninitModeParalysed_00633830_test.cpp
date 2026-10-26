@@ -1,8 +1,8 @@
 // Behaviour test for CPlayer::UninitModeParalysed (0x00633830): the six input processes are detached in init order.
 #include <cstdio>
 static int g_order[16]; static int g_count = 0;
-struct CAInputProcess { int id; void RemoveFromInterface() { g_order[g_count++] = id; } };
-struct CPlayer {
+class CAInputProcess { public: int id; void RemoveFromInterface() { g_order[g_count++] = id; } };
+class CPlayer { public:
     CAInputProcess* InputProcessCreatureMovement_ptr;
     CAInputProcess* InputProcessDebugControls_ptr;
     CAInputProcess* InputProcessControlCreatureRightStick_ptr;

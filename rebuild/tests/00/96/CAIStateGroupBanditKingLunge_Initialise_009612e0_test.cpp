@@ -1,9 +1,9 @@
 #include "engine/CAIStateGroup_BanditKingLunge.h"
 #include <cstdio>
 
-struct CAIBrain { int x; };
-struct CThingAICreature { int x; };
-struct CCharString { int x; };
+class CAIBrain { public: int x; };
+class CThingAICreature { public: int x; };
+class CCharString { public: int x; };
 
 typedef long EScriptAIPriority;
 

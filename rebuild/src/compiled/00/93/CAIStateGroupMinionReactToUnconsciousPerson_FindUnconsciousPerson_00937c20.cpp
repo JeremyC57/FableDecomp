@@ -9,8 +9,8 @@
 // Shape: the landed filter-chain model (`a && b && c` binding pointers to frame temporaries; the empty filter is one
 // byte); the result is zeroed up front and returned through its out slot.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -152,7 +152,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -160,7 +160,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -197,7 +197,7 @@ struct CAIStateGroupBase {
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 extern long g_framesPerSecond;                  // 0x01375550
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
 };
@@ -206,26 +206,26 @@ struct CThingWithUID {                          // a thing seen through its 64-b
     unsigned char _pad[0x18];
     __int64 UID;                                // +0x18 (read signed: the frame stagger uses __allrem)
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 struct CThingPos : CThing {
     const C3DVector& GetPosition();             // 0x004C73D0
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long x0, y0, x1, y1;
     C2DBoxI(long ax0, long ay0, long ax1, long ay1) : x0(ax0), y0(ay0), x1(ax1), y1(ay1) { }
 };
-struct CThingFilter_IsAICreatureAwareOf {
+class CThingFilter_IsAICreatureAwareOf { public:
     const CThing* m_pCreature;
     CThingFilter_IsAICreatureAwareOf(const CThing* creature) : m_pCreature(creature) { }
 };
-struct CThingFilter_IsUnconscious {
+class CThingFilter_IsUnconscious { public:
     CThingFilter_IsUnconscious() { }
 };
-struct CThingFilter_IsAnAlly {
+class CThingFilter_IsAnAlly { public:
     const CThing* m_pCreature;
     CThingFilter_IsAnAlly(const CThing* creature) : m_pCreature(creature) { }
 };
-struct CThingFilter_HasBeenDiscovered {
+class CThingFilter_HasBeenDiscovered { public:
     CThingFilter_HasBeenDiscovered() { }
 };
 template<class F> struct unary_negate_ {        // std::unary_negate<F>: holds the predicate (one empty byte)
@@ -233,18 +233,18 @@ template<class F> struct unary_negate_ {        // std::unary_negate<F>: holds t
     explicit unary_negate_(const F& f) : m_pred(f) { }
 };
 template<class F> inline unary_negate_<F> not1_(const F& f) { return unary_negate_<F>(f); }
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
-template<class A, class B, class C> struct CFilter_Bind3 {
+template<class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
     CFilter_Bind3(const CFilter_Bind2<A, B>& ab, const C& c) : m_pFirst(ab.m_pFirst), m_pSecond(ab.m_pSecond), m_pThird(&c) { }
 };
-template<class A, class B, class C, class D> struct CFilter_Bind4 {
+template<class A, class B, class C, class D> class CFilter_Bind4 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
@@ -255,7 +255,7 @@ template<class A, class B, class C, class D> struct CFilter_Bind4 {
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(const CFilter_Bind2<A, B>& ab, const C& c) { return CFilter_Bind3<A, B, C>(ab, c); }
 template<class A, class B, class C, class D> inline CFilter_Bind4<A, B, C, D> operator&&(const CFilter_Bind3<A, B, C>& abc, const D& d) { return CFilter_Bind4<A, B, C, D>(abc, d); }
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector m_pos;
     CThingCompare_Nearest(const C3DVector& pos) : m_pos(pos) { }
 };
@@ -267,7 +267,7 @@ bool IsAwareOf(const CThing* creature, const CThing* thing);
 bool IsUnconscious(const CThing* thing);
 bool IsAlly(const CThing* creature, const CThing* thing);
 const C3DVector& PositionOf(const CThing* thing);
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThing** m_things;                          // candidate list (stand-in model)
     CThing** m_thingsEnd;
     bool GetPBestThingInRoughArea(const C2DBoxI& box, const TUnconsciousFilter& filter,

@@ -20,13 +20,13 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)   // the def module is size-optimised
 
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
+class CDataOutputStream;
+class CMemoryDataInputStream;
 
-namespace NHitLocations { struct CPhysicalPrimitiveBase; }
+namespace NHitLocations { class CPhysicalPrimitiveBase; }
 struct SCountBlock;
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;                  // +0
     SCountBlock* Count;                 // +4
     CCountedPointer() : Data(0), Count(0) {}
@@ -45,7 +45,7 @@ template <> struct CPersistTraits<CPhysicalPrimitiveInit> {
     void TransferBinaryIn(CMemoryDataInputStream* stream, CPhysicalPrimitiveInit* value);   // 0x0067F870
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;                           // +0x18 (2 = binary load, 3 = binary save)
     unsigned char           _pad1c[8];

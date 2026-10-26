@@ -9,7 +9,7 @@
 // Shape: the observed thing is a named local (fetched before the call pushes); C3DVector with a user copy ctor and
 //          no operator=: the focal point (a named return) and the camera position are copied into
 //          locals, the first hit is copied back through a pointer register.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -17,7 +17,7 @@ struct C3DVector {
 struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float scale);   // 0x004C12D0
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad[0x64];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
 };

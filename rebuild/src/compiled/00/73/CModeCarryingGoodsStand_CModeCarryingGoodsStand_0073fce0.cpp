@@ -12,14 +12,14 @@
 // (Calc @ 0x004014A0, `__fastcall(seed, data, length)`, run over the empty literal when the
 // string has no data block). The temporary is destroyed (@ 0x0099EAE0) before returning
 // `this`. Names come from rtti-vtables.tsv. One of 46 bodies of this shape.
-struct CThing;
+class CThing;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_pData;                   // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0; the default argument makes the literal convert implicitly
@@ -29,7 +29,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual void v00();
     CCharString m_string;                  // +4
     unsigned long m_hash;                  // +8

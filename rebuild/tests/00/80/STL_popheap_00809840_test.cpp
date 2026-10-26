@@ -1,9 +1,9 @@
 // Behaviour test for 0x00809840 std::pop_heap front end: forwards (first, last, (T*)0, comp).
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } C3DVector() : X(0), Y(0), Z(0) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } C3DVector() : X(0), Y(0), Z(0) { } };
 struct PairVectorLong { C3DVector first; long second; PairVectorLong() : second(0) { } PairVectorLong(const PairVectorLong& o) : first(o.first), second(o.second) { } };
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos; C3DVector PreferredLine;
     float AngleCompare, SqrDistCompare, OverrideShortDistanceFactor, OverrideShortDistanceFalloff;
     bool CompareInXYPlane;

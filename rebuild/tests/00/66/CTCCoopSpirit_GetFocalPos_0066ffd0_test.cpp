@@ -1,14 +1,14 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct CThing {
+class CThing { public:
     C3DVector Position;
     const C3DVector& GetPosition() const { return Position; }
 };
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     CThing* ParentThing;
     C3DVector GetFocalPos() const
     {

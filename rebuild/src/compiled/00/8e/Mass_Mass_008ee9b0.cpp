@@ -12,14 +12,14 @@
 // (both temporaries share the frame slot; the implicit assignment moves the words through ecx/edx -- an init-list
 // `Pos(C2DVector(0, 0))` is folded to plain zero stores). Body assignments are scheduled around the vtable store, and the
 // two float zeros share the zero register.
-struct C2DVector {
+class C2DVector { public:
     float X;                                 // +0x00
     float Y;                                 // +0x04
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
 
-struct Mass {                                // vtable 0x01288230, 0x24 bytes
+class Mass { public:                                // vtable 0x01288230, 0x24 bytes
     C2DVector Pos;                           // +0x04
     C2DVector Vel;                           // +0x0C
     float IMass;                             // +0x14 (not initialised here)

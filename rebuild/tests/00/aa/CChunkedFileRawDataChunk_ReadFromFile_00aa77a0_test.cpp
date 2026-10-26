@@ -7,7 +7,7 @@ typedef __int64 S64;
 typedef long long S64;
 #endif
 static int g_overflowReads = 0;
-struct CDataInputStream {
+class CDataInputStream { public:
     unsigned long m_position; const unsigned char* m_pData; long m_remaining;
     void ReadWithSrcChunkOverflow(unsigned char*, long) { ++g_overflowReads; }
     void Read(void* buffer, long size)

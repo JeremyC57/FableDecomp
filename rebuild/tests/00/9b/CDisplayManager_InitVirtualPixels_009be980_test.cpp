@@ -4,7 +4,7 @@
 
 // CDisplayManager::InitVirtualPixels: whole virtual pixels per screen pixel (floor(65536 / size)) and the virtual screen size.
 static double g_scaleX, g_scaleY, g_width, g_height;
-struct CDisplayManager {
+class CDisplayManager { public:
     long X, Y; bool VirtualCoordsResolutionIndependant;
     void InitVirtualPixels()
     {

@@ -1,5 +1,5 @@
 // SetAsPickUpNewLockTarget @ 008023a0
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     char pad[0x3c];
     unsigned char f3c;   // +0x3c
     char pad2[3];        // align to +0x40

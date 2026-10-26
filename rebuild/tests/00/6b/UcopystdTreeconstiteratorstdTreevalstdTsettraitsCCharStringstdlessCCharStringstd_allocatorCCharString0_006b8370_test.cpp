@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString { int tag; };
+class CCharString { public: int tag; };
 
 struct TreeIter { void* _Ptr; };
 

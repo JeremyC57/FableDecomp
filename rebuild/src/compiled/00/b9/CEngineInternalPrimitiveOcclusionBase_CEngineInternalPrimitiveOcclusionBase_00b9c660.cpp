@@ -5,7 +5,7 @@
 // the inlined CIVCountedPointer release; no vtable store of this class's own (an abstract class: `__declspec(novtable)`), then the empty inline
 // CEngineInternalPrimitiveBase and CIVCountedPointeeBase destructors, whose stores collapse to the root's. The layout comes from
 // engine/CEngineInternalPrimitiveOcclusionBase.h (OcclusionInfo +0x48) over the 0x48-byte CEngineInternalPrimitiveBase (engine header).
-struct CIVCountedPointeeBase {                     // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
     virtual ~CIVCountedPointeeBase() { }           // slot 0 (deleting destructor)
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4
@@ -24,7 +24,7 @@ struct CIVCountedPointer {
     }
 };
 
-struct CEngineInternalPrimitiveBase : CIVCountedPointeeBase {   // engine/CEngineInternalPrimitiveBase.h: 0x48 bytes
+class CEngineInternalPrimitiveBase : public CIVCountedPointeeBase { public:   // engine/CEngineInternalPrimitiveBase.h: 0x48 bytes
     unsigned char _pad08[0x40];                    // +0x08 .. +0x48
     ~CEngineInternalPrimitiveBase() { }
 };

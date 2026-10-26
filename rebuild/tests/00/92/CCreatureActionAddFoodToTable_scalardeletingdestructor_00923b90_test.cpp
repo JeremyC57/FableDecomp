@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_AddFoodToTable {
+class CCreatureAction_AddFoodToTable { public:
     void* vftable;
     int destroyed;
 };

@@ -3,7 +3,7 @@
 #include <cstring>
 
 static char g_file[512];
-struct CCharString {
+class CCharString { public:
     char text[96];
     CCharString(const char* t) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }
@@ -14,7 +14,7 @@ static CCharString operator+(const char* l, const CCharString& r) { CCharString 
 static CCharString operator+(const CCharString& l, const char* r) { CCharString s(l); std::strcat(s.text, r); return s; }
 static CCharString operator+(const CCharString& l, const CCharString& r) { CCharString s(l); std::strcat(s.text, r.text); return s; }
 static CCharString GFIntToCharString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CCharString(b); }
-struct CAFile { int dummy; };
+class CAFile { public: int dummy; };
 static CAFile& operator<<(CAFile& f, const CCharString& t) { std::strcat(g_file, t.text); return f; }
 struct CParticleEmitter { CCharString Name; CParticleEmitter(const char* n) : Name(n) {} };
 struct CEmitterEntry { long Handle; CParticleEmitter* Data; void* Info; };

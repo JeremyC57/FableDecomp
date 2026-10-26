@@ -10,15 +10,15 @@
 //   CThing UsingComponents bitset +0x20, interface map +0x44 (as the landed GetInterface users) and Dead = bit 0 of
 //   retail +0x91 (PDB +0xa1, TLC CThing 0x10 shorter); the type byte at +0x10 is descriptive (no PDB name).
 //   Local model: no engine/ header exists for CGameScriptThing/CTCPerceiveThing/CThing.
-struct CThing;
-struct CBaseObject;
-struct CTCBase;
+class CThing;
+class CBaseObject;
+class CTCBase;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* PData;
     CBaseObject* GetPItem() const;                      // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }           // CThing's CBaseObject base is at offset 0
 };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
@@ -26,7 +26,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long*) const;                    // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char ThingType;                            // +0x10 (descriptive)
     unsigned char _pad11[0x0f];
@@ -35,7 +35,7 @@ struct CThing {
     unsigned char _pad4c[0x45];
     unsigned char Dead : 1;                             // +0x91 bit 0
 };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     unsigned char _base00[0x0c];
     CIntelligentPointer<const CThing> PerceivedThing;   // +0x0c
     float DistanceFromPerceivedThingSquared;            // +0x14
@@ -43,7 +43,7 @@ struct CTCPerceiveThing {
     CThing* GetPerceivedThing() const;                  // 0x007446A0
     bool IsPlayerExtendedLineOfSight();                 // 0x00744830
 };
-struct CGameScriptThing {
+class CGameScriptThing { public:
     unsigned char _base00[0x0c];
     CIntelligentPointer<CThing> PThing;                 // +0x0c
     bool IsAwareOfHero();

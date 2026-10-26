@@ -9,14 +9,14 @@
 // Shape: the forward transform is copied to a local (rep movsd), the inverse straight into the result; each
 // translation component is the negated dot product of the forward translation with a column of the inverse
 // rotation; the scale multiplies in place, element by element.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];                                   // 3x3 rotation (rows) then the translation
 };
 
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char m_pad00[0x60];
     C3DVector     Scale;                           // +0x60
     const CMatrix3x4* GetSystemTransform() const;           // 0x00AF3D80

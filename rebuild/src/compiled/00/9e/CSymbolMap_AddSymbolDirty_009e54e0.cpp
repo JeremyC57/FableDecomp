@@ -9,7 +9,7 @@
 // Shape (the module needs `__forceinline` on Add, the pair ctor and CSymbolInfo's memberwise copy): CVectorMap::Add (landed out of line at 0x009E7C00 for another caller) is inlined: the pair temporary is built from
 //   the key and the CSymbolInfo temporary, pushed, destroyed, then Dirty is set before the info temporary dies; the
 //   insert result lives in the `if` scope and shares the info temporary's frame slot.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
@@ -46,13 +46,13 @@ template <class T> struct vector {                 // retail STLport vector: 12 
 };
 struct CCompareString {
 };
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V, class C> class CVectorMap { public:
     vector< pair<K, V> > Data;                     // +0x00
     C                    Compare;                  // +0x0c
     bool                 Dirty;                    // +0x0d
     __forceinline void Add(const K& key, const V& value) { Data.push_back(pair<K, V>(key, value)); Dirty = true; }
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     long                                                    _padding_;               // +0x00
     CVectorMap<CCharString, CSymbolInfo, CCompareString>    SLONGMap;                // +0x04
     CCharStringSet                                          NamesUsed;               // +0x14

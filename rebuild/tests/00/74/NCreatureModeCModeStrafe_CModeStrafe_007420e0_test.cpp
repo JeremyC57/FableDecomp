@@ -21,7 +21,7 @@ struct CCountedPointer {
         m_pBlock = 0;
     }
 };
-struct CCharString { void* p; ~CCharString() { ++g_strings; } };
+class CCharString { public: void* p; ~CCharString() { ++g_strings; } };
 struct CModeStrafeModel {
     CCharString StrafeAnimName; CCharString FilterGroup;
     CCountedPointer PAnimProjectileAim, PAnimProjectileBuildUp, PAnimProjectilePullBack, PAnimStrafeUpperBody;

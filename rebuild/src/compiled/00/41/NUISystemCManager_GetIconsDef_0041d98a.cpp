@@ -15,8 +15,8 @@
 #define CCharString CCharStringDonor
 #include "fable_string.h"
 #undef CCharString
-struct CCharString { CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
-struct CIVCountedPointeeBase {
+class CCharString { public: CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
+class CIVCountedPointeeBase { public:
  virtual ~CIVCountedPointeeBase();
  virtual void Delete() const;
  unsigned long IVRefCount;
@@ -25,16 +25,16 @@ struct CIVCountedPointeeBase {
  void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
  long GetRefCount()const{return IVRefCount;}
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
  CIVCountedPointeeBase* PObject;
  CDefPointer():PObject(0){}
  CDefPointer(const CDefPointer& p):PObject(p.PObject){if(PObject)PObject->AddReference();}
  ~CDefPointer(){if(PObject)PObject->RemoveReference();}
  CDefPointer& operator=(const CDefPointer& p){if(PObject!=p.PObject){if(PObject){PObject->RemoveReference();PObject=0;}PObject=p.PObject;if(PObject)PObject->AddReference();}return *this;}
 };
-struct CDefClassBase;
-namespace NUISystem { struct CUIMiscThingsDef; struct CUIIconsDef; }
-struct CDefinitionManager {
+class CDefClassBase;
+namespace NUISystem { class CUIMiscThingsDef; class CUIIconsDef; }
+class CDefinitionManager { public:
  CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long); //009ad9e0
  long GetGlobalIndexFromClassIndex(const CCharString&,long)const; //009ad390
  bool GetDef(long,CDefPointer<NUISystem::CUIMiscThingsDef>*); //0042b312
@@ -54,7 +54,7 @@ bool CDefinitionManager::GetDef(long index,CDefPointer<NUISystem::CUIIconsDef>* 
 #pragma auto_inline(on)
 CDefinitionManager* __fastcall GetDefinitionManager(); //0044c6b0
 namespace NUISystem {
-struct CManager {
+class CManager { public:
  // Explicit native member projection: PDB donor+88 is retail+64 (0041d8f3).
  // Header preserved above; preceding UI state is opaque, no fabricated vtable slots.
  unsigned char NativeUIState[0x64];

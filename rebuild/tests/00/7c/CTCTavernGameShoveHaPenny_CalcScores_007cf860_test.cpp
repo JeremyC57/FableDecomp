@@ -20,10 +20,10 @@ static int fails = 0;
 //        Regions[i] goes through the STLport `*(begin() + i)` operator[] with an inline begin(); a raw `*(_M_start + i)`
 //        loads Pos.Y before Radius in the hoisted sum (operand order flips).
 class CThing;
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
 
-struct Coin {                                   // 0x3c bytes (packed in retail; only floats are read here)
+class Coin { public:                                   // 0x3c bytes (packed in retail; only floats are read here)
     long      _pad_0x00;
     C2DVector Pos;                              // +0x04
     unsigned char _pad_0x0c[0x24];
@@ -31,7 +31,7 @@ struct Coin {                                   // 0x3c bytes (packed in retail;
     long      Owner;                            // +0x34
     unsigned long Sound;                        // +0x38
 };
-struct CShoveHaPennyRegionDef {                 // 0x30 bytes
+class CShoveHaPennyRegionDef { public:                 // 0x30 bytes
     unsigned char _defbase[0x28];
     float         Start;                        // +0x28
     float         Score;                        // +0x2c
@@ -45,7 +45,7 @@ struct CRegionVector {                          // STLport vector<CShoveHaPennyR
     CShoveHaPennyRegionDef& operator[](unsigned long i) const { return *(begin() + i); }
 };
 
-struct CTavernGameShoveHaPennyDef {
+class CTavernGameShoveHaPennyDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long          m_count;                      // +0x04
@@ -64,7 +64,7 @@ struct CShoveHaPennyDefPointer {                // CDefPointer<const CTavernGame
     CTavernGameShoveHaPennyDef* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CShoveHaPennyDefPointer* out);   // 0x007D1260
 };
 CTavernGameShoveHaPennyDef* FindRef_CDefClassBase_GetSubDef_0(CDefClassBase* defClass);   // stand-in callee of the stand-in body below

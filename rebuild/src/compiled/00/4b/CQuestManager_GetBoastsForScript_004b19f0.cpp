@@ -17,7 +17,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);      // 0x00BFEA0E
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;
     unsigned long m_length;
 };
@@ -32,11 +32,11 @@ inline bool SameString(CCharStringData* a, CCharStringData* b)
     return false;
 }
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const { return SameString(PStringData, other.PStringData); }
 };
-struct CWideString { void* PStringData; };
+class CWideString { public: void* PStringData; };
 
 struct CBoast {                                    // CQuestManager::CBoast (PDB, 32 bytes)
     long        ID;                                // +0x00
@@ -86,7 +86,7 @@ struct CBoastList {                                // STLport list<CBoast>
     void push_back(const CBoast& x) { insert(end(), x); }
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x68];
     CBoastList    Boasts;                          // +0x68
     void GetBoastsForScript(const CCharString& scriptName, CBoastList& boasts) const;

@@ -16,7 +16,7 @@
 // base is modelled locally.
 #pragma optimize("s", on)   // the def module is size-optimised
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                            // +0x04..+0x3c
     CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
@@ -43,7 +43,7 @@ struct CBrainUpdateZoneVector {                                           // ret
     CBrainUpdateZoneVector& operator=(const CBrainUpdateZoneVector& other);   // 0x00462CB0
 };
 
-struct CBrainDef : CParentDefClassBase {                                  // vtable 0x0123520C
+class CBrainDef : public CParentDefClassBase { public:                                  // vtable 0x0123520C
     CBrainBehaviourVector  Behaviours;                                    // +0x3c
     CDefStringVector       DisabledBehaviours;                            // +0x48
     CBrainUpdateZoneVector UpdateZones;                                   // +0x54

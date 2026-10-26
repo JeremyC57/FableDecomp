@@ -17,15 +17,15 @@
 //          the physics component (position +0xc).
 // PDB spelling (sweep 3): CActionFollowCreature is class-keyed, OnCleanup virtual and SetAsSneaking private, as Ego_r spells
 //   them (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z; was QAE). Same bytes.
-struct CTCBase;
-struct CThing;
-struct C3DVector {
+class CTCBase;
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CCharString {
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                   // 0x0099EAE0
 };
@@ -34,8 +34,8 @@ namespace N_0099a300 { struct CBase {
     CBase();                                          // 0x0099A2F0
     ~CBase();                                         // 0x0099A300
 }; } using N_0099a300::CBase;
-struct CTCParamsBase : CBase { };
-struct CTCParamsPhysicsBase : CTCParamsBase {         // vtable 0x0125C818, 0x28 bytes
+class CTCParamsBase : public CBase { public: };
+class CTCParamsPhysicsBase : public CTCParamsBase { public:         // vtable 0x0125C818, 0x28 bytes
     C3DVector       Position;                         // +0x04
     CRightHandedSet Rhs;                              // +0x10
     CTCParamsPhysicsBase(const C3DVector& position, const CRightHandedSet& rhs) : Position(position), Rhs(rhs) { }
@@ -67,10 +67,10 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -96,11 +96,11 @@ struct CThing {
         return false;
     }
 };
-struct CTCScriptedControl {                     // a CTCBase
+class CTCScriptedControl { public:                     // a CTCBase
     virtual void v00();
     CThing* ParentThing;                        // +0x04
 };
-struct CScriptThing { unsigned char _body[12]; };
+class CScriptThing { public: unsigned char _body[12]; };
 
 namespace NTCScriptedControl {
 

@@ -1,4 +1,4 @@
-struct CCreatureAction_JackDeathInto {
+class CCreatureAction_JackDeathInto { public:
     void* vftable;
 };
 

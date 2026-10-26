@@ -7,14 +7,14 @@
 // Shape: the three guards are early returns; `!light->Active` on a bool member gives `test dl,dl ; sete dl ; push edx`.
 // Layout: PObjectToUse is the CIntelligentPointer<CThing> at +0xa8 (Ego_r.pdb +0xb4, retail CCreatureActionBase is 0xa8 bytes);
 // CTCLight's active byte at +0x1c. Modelled locally (the generated headers flatten the bases).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -29,7 +29,7 @@ struct CThing {
     }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct CTCLight {
+class CTCLight { public:
     unsigned char _pad[0x1c];
     bool Active;                            // +0x1c
     void SetActive(bool active);            // 0x006412B0
@@ -40,12 +40,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];
 };
 
-struct CCreatureAction_UseLamp : CCreatureActionBase {
+class CCreatureAction_UseLamp : public CCreatureActionBase { public:
     CBaseIntelligentPointer PObjectToUse;   // +0xa8 CIntelligentPointer<CThing>
     void PerformAction();
 };

@@ -14,16 +14,16 @@
 //   path, the instance name copied into its named local); only the separator byte is a named local of its own.
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
     ~CCharString();                                                    // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5();
     virtual CCharString ReadNullTerminatedString();                    // slot 6 (+0x18)
     unsigned long StreamPos;                                           // +0x04

@@ -10,7 +10,7 @@
 // Layout: as the landed sibling NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript 0x00CB8440 and the
 //   landed SetQuestScriptPersistScript 0x004B4E30 (PersistScripts +0, MasterDataPersistScripts +0x10; each CVectorMap =
 //   12-byte STLport vector + Compare +0xc + Dirty +0xd; element pair<CCharString, CPersistInfo> 12 bytes).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -18,7 +18,7 @@ struct CCharString {
     ~CCharString();                                // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -26,7 +26,7 @@ struct CStringParserCommentList {
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBaseClass {                // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -52,7 +52,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 namespace NQuestManager {
 struct CRuntimeQuestPersistence {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         CCharString QuestName;                     // +0x00
         CCharString PersistScript;                 // +0x04
         CPersistInfo() { }

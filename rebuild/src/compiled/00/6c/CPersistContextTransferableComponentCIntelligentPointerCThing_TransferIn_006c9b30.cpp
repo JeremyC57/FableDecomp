@@ -10,11 +10,11 @@
 // Shape: the generic component body (as the landed CRGBColour TransferIn 0x006421C0): the traits object in the
 // 8-byte frame, its pointer's vtable store scheduled after the argument pushes, the out-of-line traits call, then
 // the traits' DefaultVal destroyed through the base destructor.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 class CBaseObject;
 
-struct CCharString;
+class CCharString;
 class CThing;
 
 struct CBaseIntelligentPointer {
@@ -25,7 +25,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                                    // 0x00A01B50
     void SetPItem(CThing* item);                                 // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
     virtual void v00();
     CIntelligentPointer() { }
 };
@@ -35,7 +35,7 @@ template <class T> struct CPersistTraits {
     void TransferIn(CPersistContext& context, CStringParser& parser, T& value);   // 0x006C9900 for CIntelligentPointer<CThing>
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

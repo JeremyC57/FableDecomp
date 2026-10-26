@@ -1,9 +1,9 @@
 #include <cstdio>
 
-struct CRGBFloatColour { float x, y, z, w; };
+class CRGBFloatColour { public: float x, y, z, w; };
 
 struct IShaderDevice { void* vtbl; };
-struct CShaderRenderManager { char pad[0x1d4]; IShaderDevice* dev; };
+class CShaderRenderManager { public: char pad[0x1d4]; IShaderDevice* dev; };
 
 typedef void (__stdcall *SetVSConstFn)(IShaderDevice* dev, long reg, float* data, long count);
 

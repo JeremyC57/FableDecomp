@@ -21,8 +21,8 @@ static int fails = 0;
 // the centre pointer +0x170; the 0x33 component's centre pointer +0x0D; the 0x19 component's flag +0x14D (retail).
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -70,7 +70,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -111,24 +111,24 @@ struct CThingVector {                                   // vector<CIntelligentPo
     CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     ~CThingVector();                                    // 0x004406D0
 };
-struct CTCHeroCentre {                                  // interface 0x6A
+class CTCHeroCentre { public:                                  // interface 0x6A
     bool GetQuestCards(CThingVector* cards) const;      // 0x0077DBC0
 };
 struct CTCQuestSelect {                                 // the hero's interface 0x19 component
     unsigned char _pad00[0x14d];
     bool QuestSelectPending;                            // +0x14D
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
     long GetMainPlayerNumber();                         // 0x00449700
 };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -138,21 +138,21 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CFontBank;
-struct CSubtitleRenderer {
+class CFontBank;
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer Subtitles;                        // +0x18
 };
@@ -161,11 +161,11 @@ struct CGameSubsystem {
     unsigned char _pad00[0x1614c];
     CFontBank* SubtitleFont;                            // +0x1614C
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xda];
     bool QuestCardsEnabled;                             // +0xDA
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     CWorld* GetWorld() const;                           // 0x00686A80
@@ -173,7 +173,7 @@ struct CTCBase {
     CPlayerManager* GetPlayerManager() const;           // 0x00686D50
     CGameSubsystem* GetGameSubsystem() const;           // 0x00686D60
 };
-struct CTCHeroGuide : CTCBase {
+class CTCHeroGuide : public CTCBase { public:
     void OpenQuestSelectInterface();
 };
 

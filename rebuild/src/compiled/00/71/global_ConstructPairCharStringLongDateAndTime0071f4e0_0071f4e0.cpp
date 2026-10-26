@@ -9,11 +9,11 @@
 // The manifest label `_Cons_val<allocator<...>>` is propagated; the body is STLport _Construct.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;                               // +0x00
     CCharString(const CCharString& other);       // 0x0099EC30
 };
-struct CDateAndTime {                            // 28 bytes, POD
+class CDateAndTime { public:                            // 28 bytes, POD
     long m_words[7];
 };
 struct CLongDateAndTimePair {                    // std::pair<long, CDateAndTime>

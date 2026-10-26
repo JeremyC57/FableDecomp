@@ -12,7 +12,7 @@ extern "C" void __fastcall Callee_Do(Callee* self, void* arg2, unsigned char fla
     g_lastSelf = self; g_lastArg = arg2; g_lastFlag = flag; ++g_calls;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     Callee* m_pCallee;
     void*   m_arg;
     unsigned char pad08, pad09, pad0a, pad0b;

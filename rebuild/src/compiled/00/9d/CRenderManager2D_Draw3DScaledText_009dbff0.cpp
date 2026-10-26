@@ -6,11 +6,11 @@
 // (`lea edx,[esp+18h]`: its own argument slot) and destroyed by this callee afterwards (`lea ecx,[esp+0Ch] ; call
 // ~CWideString`), which also blocks the sibling-call jump; the bool result is the constant `mov al,1`.
 // Leaf: Draw3DScaledText
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CFontBank;
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CFontBank;
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     ~CWideString();                                     // 0x0099B510
 };

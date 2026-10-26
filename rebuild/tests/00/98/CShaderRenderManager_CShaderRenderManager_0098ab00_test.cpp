@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();                        // 0x0099A300
@@ -58,21 +58,21 @@ struct CIndexedArrayCharString {                            // CIndexedArray<CCh
     CRbTree        IndexMap;                                // +0x0c map<CCharString, long>
 };
 
-struct CVertexShaderConstantLayout {                        // 0x14C bytes in retail (PDB 0x150)
+class CVertexShaderConstantLayout { public:                        // 0x14C bytes in retail (PDB 0x150)
     CVertexShaderConstantLayout();                          // 0x0098D490
     unsigned char _body[0x14c];
 };
-struct CSimpleMemoryPool {                                  // 0x1C bytes
+class CSimpleMemoryPool { public:                                  // 0x1C bytes
     CSimpleMemoryPool(unsigned long count, unsigned long size);   // 0x00A5C570
     unsigned char _body[0x1c];
 };
-struct CPixelShader {                                       // 8 bytes: vtable 0x0129A054 + Data
+class CPixelShader { public:                                       // 8 bytes: vtable 0x0129A054 + Data
     CPixelShader();                                         // 0x00A5EC00
     unsigned char _body[8];
 };
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 
-struct CShaderRenderManager : CBaseClassNonCopyable {      // vtable 0x0129A080, retail 0x3E8 bytes
+class CShaderRenderManager : public CBaseClassNonCopyable { public:      // vtable 0x0129A080, retail 0x3E8 bytes
     void*                       CurrentVSConstantLayout;    // +0x04
     long                        CurrentVSConstantLayoutIndex; // +0x08
     CVector<void*>              VertexShaderConstantLayouts; // +0x0c

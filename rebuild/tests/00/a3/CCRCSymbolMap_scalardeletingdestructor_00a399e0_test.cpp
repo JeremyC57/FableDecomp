@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCRCSymbolMap {
+class CCRCSymbolMap { public:
     void* vftable;
     int destroyed;
 };

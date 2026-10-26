@@ -8,7 +8,7 @@
 // Shape: VC7.1 emits a non-virtual `??_G` for a non-polymorphic class that is `delete`d (the `Destroy`
 // helper below); the inner CSymbolInfo's implicit destructor is inlined with its address in edi
 // (`lea edi,[esi+4]`, `lea ecx,[edi+4]`).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                      // 0x0099EAE0
 };

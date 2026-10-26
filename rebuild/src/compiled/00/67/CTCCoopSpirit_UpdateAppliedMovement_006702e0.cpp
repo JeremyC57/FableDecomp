@@ -40,14 +40,14 @@ class C3DVector { public:
     void RotateAboutZ(float angle);                         // 0x00A14040
     C3DVector& AccurateNormalise();                                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -67,14 +67,14 @@ struct CThing {
         return tc;
     }
 };
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     bool IsPerformingAnyAction();                           // 0x006622A0
     float GetCurrentRelativeMovementAngleXY() const;        // 0x006A9640
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void ApplyAcceleration(const C3DVector& acceleration);  // 0x006B0210
 };
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     virtual void v00();
     CThingPlayerCreature* ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

@@ -14,14 +14,14 @@
 // retail (the Jugs vector at +0x0c is 12 bytes in STLport).
 #include "engine/CAIStateGroupBase.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -45,8 +45,8 @@ struct CThing {
         return false;
     }
 };
-struct CThingObject;
-struct CThingAICreature;
+class CThingObject;
+class CThingAICreature;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -56,7 +56,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
@@ -81,7 +81,7 @@ struct CTCBuildingContents {
     SContentsNode* head;                        // +0x0c
 };
 
-struct CTCTavernBar {                           // interface 0xb9
+class CTCTavernBar { public:                           // interface 0xb9
     unsigned char _pad[0x18];
     CIntelligentPointer<CThingAICreature> Barman;   // +0x18
     CIntelligentPointer<CThingAICreature> GetPBarman() const { return Barman; }

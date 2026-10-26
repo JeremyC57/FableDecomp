@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveManagerWeaponTrails {
+class CEnginePrimitiveManagerWeaponTrails { public:
     void* vftable;
     int destroyed;
 };

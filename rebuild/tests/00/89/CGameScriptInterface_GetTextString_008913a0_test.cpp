@@ -1,8 +1,8 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
-struct CCharString { const char* p; };
-struct CWideString { const wchar_t* p; };
+class CCharString { public: const char* p; };
+class CWideString { public: const wchar_t* p; };
 struct CGameScriptInterface_Methods : CGameScriptInterface {
 };
 

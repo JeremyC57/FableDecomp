@@ -6,7 +6,7 @@ static int g_fail = 0;
 // Host model of the parser pieces the reconstructed reader uses: a string type, the parsed item and a scripted ReadNextItem.
 struct Str { char s[64]; Str() { s[0] = 0; } Str(const char* t) { std::strcpy(s, t); } bool eq(const char* t) const { return std::strcmp(s, t) == 0; } };
 enum EParsedItemType { PIT_NONE = 0, PIT_SYMBOL = 1, PIT_STRING = 2, PIT_INTEGER = 3, PIT_FLOAT = 4 };
-struct CParsedItem { EParsedItemType Type; union { int Integer; float Float; }; Str String; };
+class CParsedItem { public: EParsedItemType Type; union { int Integer; float Float; }; Str String; };
 struct CCursorPos { bool InQuotes; unsigned int StringPos; unsigned int Line; };
 struct Parser {
     bool ok; CParsedItem next; Str lastError; int errors; CCursorPos CursorPos;

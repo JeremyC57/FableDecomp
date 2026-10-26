@@ -13,8 +13,8 @@
 // /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on the stack.
 // Label correction: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` is propagated (CTargetPoint is 28
 // bytes); the 16-byte element is not named by any landed relative -- descriptive member names.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     void* PData;                                 // +0x04
@@ -25,7 +25,7 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };

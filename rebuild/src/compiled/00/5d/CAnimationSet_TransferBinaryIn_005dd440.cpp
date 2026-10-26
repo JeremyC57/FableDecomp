@@ -11,7 +11,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;                       // +8
@@ -49,12 +49,12 @@ template <class T> __forceinline T PersistRead(CMemoryDataInputStream* stream)
     return value;
 }
 
-struct CDefString {
+class CDefString { public:
     long Index;                            // -1 = none
     CDefString() : Index(-1) { }
     void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x0044FC00
 };
-struct CAnimComponentMap {
+class CAnimComponentMap { public:
     virtual void v00();
     virtual void DeleteThis();             // slot 1
     long RefCount;                         // +4
@@ -71,7 +71,7 @@ struct CIVCountedPointerAnimComponentMap {
         }
     }
 };
-struct CAnimationEntry {                   // 16 bytes
+class CAnimationEntry { public:                   // 16 bytes
     long BankIndex;                        // +0x00
     CDefString AnimName;                   // +0x04
     CDefString GroupName;                  // +0x08
@@ -89,7 +89,7 @@ struct CAnimVector {                       // STLport vector, 12 bytes
     CAnimPair* _M_end_of_storage;
     void resize(unsigned int n, const CAnimPair& x);   // 0x005E39E0
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     CAnimVector Anims;                     // +0x00 (CVectorMap data)
     long _vectorMapTail;                   // +0x0c
     long DefaultFlags;                     // +0x10

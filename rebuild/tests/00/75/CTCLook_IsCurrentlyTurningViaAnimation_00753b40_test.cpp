@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CTurnState { void* m_pFirst; void* m_pLast; unsigned char m_kind; unsigned char m_flags; };
 struct CTCTurnSource { CTurnState* m_pState; CTurnState* GetState() { return m_pState; } };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CTCTurnSource* m_comp;
     template <class T> bool GetInterface(long type, T** out)
     {
@@ -9,7 +9,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCLook {
+class CTCLook { public:
     CThing* m_pThing;
     bool IsCurrentlyTurningViaAnimation()
     {

@@ -14,7 +14,7 @@ struct CIntelligentPointer_Retail {
     CThing_Retail* m_pItem;
     CThing_Retail* GetPItem() { return m_pItem; }
 };
-struct CScriptGameResourceObjectScriptedThing {
+class CScriptGameResourceObjectScriptedThing { public:
     CIntelligentPointer_Retail PThing;
     void ClearAllActionsIncludingLoopingAnimations();
 };

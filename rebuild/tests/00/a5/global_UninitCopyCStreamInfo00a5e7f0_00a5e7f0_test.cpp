@@ -10,14 +10,14 @@ public:
     virtual int Kind() const { return 1; }
 };
 static int g_arrayCopies = 0;
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* start; T* finish; T* end;
     CArray() : start(0), finish(0), end(0) { }
     CArray(const CArray& other) : start(other.start), finish(other.finish), end(other.end) { ++g_arrayCopies; }
 };
 class CVertexStreamFormat : public CBaseClass {
 public:
-    struct CDataElement { unsigned int Register; int DataType; };
+    class CDataElement { public: unsigned int Register; int DataType; };
     CArray<CDataElement> DataElements;
     CVertexStreamFormat() { }
     CVertexStreamFormat(const CVertexStreamFormat& o) : CBaseClass(), DataElements(o.DataElements) { }

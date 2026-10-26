@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stddef.h>
 static int g_assign, g_wdtors, g_resets; static void* g_resetArg; static void* g_assignedFrom;
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString() : m_pStringData(0) {}
     CWideString(const CWideString& o) : m_pStringData(o.m_pStringData) {}
     CWideString& operator=(const CWideString& other) { ++g_assign; g_assignedFrom = other.m_pStringData; m_pStringData = other.m_pStringData; return *this; }
     ~CWideString() { ++g_wdtors; }
 };
-struct CAFile {
+class CAFile { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {}
     virtual long GetLength() { return 777; }
     virtual void v08() {} virtual void v09() {} virtual void v10() {}
@@ -17,7 +17,7 @@ struct CAFile {
     virtual CAFile* GetSharedFile() { return this; }
 };
 struct CCountedPointer_CAFile { CAFile* m_pObject; void* m_pCount; void Reset(CAFile* file) { ++g_resets; g_resetArg = file; m_pObject = file; } };
-struct CCachedFile {
+class CCachedFile { public:
     void* _vptr; long Position; long BufferStartPosition; unsigned char DataBuffer[0x0c]; CWideString Pathname; CCountedPointer_CAFile PDiskFile; bool Opened; bool BufferValid;
     void OpenFromFile(CAFile* file, long mode);
 };

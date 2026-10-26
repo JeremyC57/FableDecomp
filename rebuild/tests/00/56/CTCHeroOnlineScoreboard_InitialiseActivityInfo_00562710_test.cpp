@@ -4,7 +4,7 @@
 #include <cstring>
 #include <cstdlib>
 
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString() : text(0) { }
     CCharString& operator=(const char* t) { text = t; return *this; }
@@ -26,7 +26,7 @@ struct CActivityVector {
     void resize(unsigned int n) { delete[] _M_start; _M_start = new CActivity[n]; _M_finish = _M_end_of_storage = _M_start + n; }
     CActivity& operator[](unsigned int n) { return _M_start[n]; }
 };
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     CActivityVector ActivityInfo;
     void InitialiseActivityInfo();
 };

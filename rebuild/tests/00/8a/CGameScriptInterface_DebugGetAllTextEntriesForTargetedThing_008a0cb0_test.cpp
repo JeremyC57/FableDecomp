@@ -25,9 +25,9 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                      // 0x0099EAE0
     bool operator==(const char* text) const
@@ -73,7 +73,7 @@ struct ComponentMap {
     ComponentEntry* Finish;
     const ComponentEntry* LowerBound(const long& key) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     void*          VTable;
     unsigned char  Base[0x1c];
     unsigned long  UsingComponents[9];                   // +0x20
@@ -92,9 +92,9 @@ struct CTCTargeting {
     virtual CThing* GetTarget() const;   // slot 33 (+0x84)
 };
 struct CTCText { CCharString GetBankHandle() const; };  // 0x004FAEE0
-struct CPlayer { CThing* GetTargetThing() const; };      // 0x00487DD0
-struct CPlayerManager { CPlayer* GetMainPlayer() const; };   // 0x00449960
-struct CMainGameComponent {
+class CPlayer { public: CThing* GetTargetThing() const; };      // 0x00487DD0
+class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
+class CMainGameComponent { public:
     unsigned char   Data[0x14];
     CTextDataBank*  TextBank;                            // +0x14
     unsigned char   Data2[4];
@@ -110,7 +110,7 @@ template <class T, long TYPE> __forceinline T* GetComponent(const CThing* thing)
     const ComponentEntry* end = map->Finish;
     return (T*)((it == end || it->Type > TYPE) ? end : it)->Component;
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     void DebugGetAllTextEntriesForTargetedThing(CStringSet& entries) const;
 };

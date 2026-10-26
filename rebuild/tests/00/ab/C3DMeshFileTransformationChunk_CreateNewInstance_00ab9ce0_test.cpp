@@ -1,8 +1,8 @@
 // Behaviour test for 0x00AB9CE0 C3DMeshFileTransformationChunk::CreateNewInstance
 #include <cstdio>
 #include <cstring>
-struct C3DVector  { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector  { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }
     void SetIdentity()
@@ -16,7 +16,7 @@ struct C3DMeshFileChunk {
     C3DMeshFileChunk(const char* t) { std::strncpy(ChunkType, t, 5); }
     virtual ~C3DMeshFileChunk() {}
 };
-struct C3DMeshFileTransformationChunk : C3DMeshFileChunk {
+class C3DMeshFileTransformationChunk : public C3DMeshFileChunk { public:
     CMatrix3x4 Transform;
     C3DMeshFileTransformationChunk() : C3DMeshFileChunk("TRFM") {}
 };

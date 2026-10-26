@@ -10,7 +10,7 @@
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
-struct CProcessedInput;
+class CProcessedInput;
 
 struct CInputProcessVirtuals {
     virtual void v00();

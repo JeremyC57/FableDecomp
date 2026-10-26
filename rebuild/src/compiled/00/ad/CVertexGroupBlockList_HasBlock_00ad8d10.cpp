@@ -48,7 +48,7 @@ struct CGroupArray {                               // CArray<unsigned long> (ret
     unsigned long size() const { return m_last - m_first; }
     const unsigned long& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CVertexGroupBlock {                         // retail 0x18 bytes (PDB 32: debug containers)
+class CVertexGroupBlock { public:                         // retail 0x18 bytes (PDB 32: debug containers)
     CGroupArray      Groups;                       // +0x00
     CGroupToIndexMap GroupToIndexMap;              // +0x0c
     __forceinline bool ContainsAll(const unsigned long* groups, unsigned long count) const
@@ -74,7 +74,7 @@ struct CBlockArray {                               // CArray<CVertexGroupBlock> 
     const_reverse_iterator<CVertexGroupBlock> rbegin() const { return const_reverse_iterator<CVertexGroupBlock>(m_last); }
     const_reverse_iterator<CVertexGroupBlock> rend() const { return const_reverse_iterator<CVertexGroupBlock>(m_first); }
 };
-struct CVertexGroupBlockList {
+class CVertexGroupBlockList { public:
     CBlockArray Blocks;                            // +0x00
     bool HasBlock(const CVertexGroupBlock& block) const;
 };

@@ -26,7 +26,7 @@ struct CBasicStringChar {                               // CBasicString<char>, 1
     bool          UseFastExtend : 1;                    // +0x0c
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharStringData {                                // 17 bytes
+class CCharStringData { public:                                // 17 bytes
     CBasicStringChar Data;                              // +0x00
     long             NoRefs;                            // +0x0d
 };
@@ -48,7 +48,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
     }
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     __forceinline bool operator==(const CCharString& other) const
     {
@@ -65,7 +65,7 @@ struct CScriptThingImp {                                // vtable view of the pi
     virtual void v0();
     virtual const CCharString& GetName() const;         // slot 1
 };
-struct CScriptThing {                                   // vtable 0x01238C8C
+class CScriptThing { public:                                   // vtable 0x01238C8C
     virtual ~CScriptThing();                            // 0x004AA840
     virtual const CCharString& GetName() const
     {
@@ -96,7 +96,7 @@ struct CThingNative {
         return static_cast<CTCEntityEvents*>((it == end || it->Type > 66 ? end : it)->Component);
     }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* VTable; void* Info;
     CBaseObject* GetPItem() const;                      // 0x00A01B50

@@ -3,8 +3,8 @@
 #include <string.h>
 
 // CBaseIntelligentPointer model: the tracked item pointer behind GetPItem / SetPItem
-struct CBaseObject { int id; };
-struct CThing : CBaseObject { };
+class CBaseObject { public: int id; };
+class CThing : public CBaseObject { public: };
 struct CBaseIntelligentPointer {
     CBaseObject* PData;
     CBaseIntelligentPointer() : PData(0) {}
@@ -12,12 +12,12 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const { return PData; }
     void SetPItem(CBaseObject* item) { PData = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() {}
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
@@ -36,7 +36,7 @@ struct CTargetPoint {
     }
 };
 // comparator with state (the 0x34-byte CThingCompare_BestForTargeting2 in retail): ranks points by a weighted score
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero;
     float EnemyPreferenceFactor;
     bool operator()(const CTargetPoint& a, const CTargetPoint& b) const

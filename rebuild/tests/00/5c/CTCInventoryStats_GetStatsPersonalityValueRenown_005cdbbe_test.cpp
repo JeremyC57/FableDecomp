@@ -35,7 +35,7 @@ __declspec(noinline) CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long*
     }
     return lo;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20]; CPresenceBits present; unsigned char _pad21[0x23]; CInterfaceMap interfaces; unsigned int bits;
     template<class T> __forceinline bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {

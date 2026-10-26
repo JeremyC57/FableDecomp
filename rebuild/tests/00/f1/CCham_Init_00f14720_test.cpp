@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_calls = 0; static long g_slots[4]; static long g_args[4]; static const void* g_things[4];
-struct CScriptThing { void* __vftable; void* PImp_Data; void* PImp_Info; };
-struct CGameScriptInterface { virtual void F594(const CScriptThing& t, long a) { g_slots[g_calls] = 594; g_args[g_calls] = a; g_things[g_calls] = &t; ++g_calls; } virtual void F595(const CScriptThing& t, long a) { g_slots[g_calls] = 595; g_args[g_calls] = a; g_things[g_calls] = &t; ++g_calls; } };
+class CScriptThing { public: void* __vftable; void* PImp_Data; void* PImp_Info; };
+class CGameScriptInterface { public: virtual void F594(const CScriptThing& t, long a) { g_slots[g_calls] = 594; g_args[g_calls] = a; g_things[g_calls] = &t; ++g_calls; } virtual void F595(const CScriptThing& t, long a) { g_slots[g_calls] = 595; g_args[g_calls] = a; g_things[g_calls] = &t; ++g_calls; } };
 struct CCham { virtual void v00() {} CGameScriptInterface* m_pInterface; CScriptThing m_thing;  void Init() { m_pInterface->F594(m_thing, 0); m_pInterface->F595(m_thing, 0); } };
 
 int main()

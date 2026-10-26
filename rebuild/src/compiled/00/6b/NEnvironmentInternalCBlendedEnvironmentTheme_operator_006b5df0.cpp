@@ -6,11 +6,11 @@
 // Layout (Ego_r.pdb CBlendedEnvironmentTheme with the retail 12-byte CArray, so 0x1F4 not 0x20C): +0 TimeOfDay,
 //          +4 Colours CRGBFloatColour[19], +0x134 Scalers float[30], +0x1AC TextureSets CIDrawEnvironmentTextureSet[3]
 //          (+0 Textures CArray<long>, +0xC Blends CArray<float>).
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -23,7 +23,7 @@ struct CIDrawEnvironmentTextureSet {
 };
 
 namespace NEnvironmentInternal {
-struct CBlendedEnvironmentTheme {
+class CBlendedEnvironmentTheme { public:
     float                       TimeOfDay;      // +0x000
     CRGBFloatColour             Colours[19];    // +0x004
     float                       Scalers[30];    // +0x134

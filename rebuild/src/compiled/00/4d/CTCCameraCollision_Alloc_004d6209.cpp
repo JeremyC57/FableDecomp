@@ -9,7 +9,7 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x007E3020 on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-struct CThing;
+class CThing;
 
 namespace N_007e3020 { struct CTCCameraCollision {
     unsigned char _body[0x10];       // sizeof(CTCCameraCollision) = 0x10

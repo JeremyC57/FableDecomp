@@ -1,17 +1,17 @@
 // Behaviour test for 0x00A24870 C3DMeshLODInfo::ConvertToMeshStats
 #include <cstdio>
 static char g_log[16]; static int g_n = 0;
-struct C3DMesh2 { unsigned long size; void ConvertToMeshStats() { g_log[g_n++] = 'C'; size = 100; } unsigned long Sizeof() const { return size; } };
-struct CBankFileAsyncData { unsigned long Sizeof() const { return 0x48; } };
-struct C3DMeshLODInfo;
-struct CResourceList {
+class C3DMesh2 { public: unsigned long size; void ConvertToMeshStats() { g_log[g_n++] = 'C'; size = 100; } unsigned long Sizeof() const { return size; } };
+class CBankFileAsyncData { public: unsigned long Sizeof() const { return 0x48; } };
+class C3DMeshLODInfo;
+class CResourceList { public:
     C3DMeshLODInfo* added; unsigned long freeArg;
     void AddResource(C3DMeshLODInfo* r) { g_log[g_n++] = 'A'; added = r; }
     bool MakeFreeSpace(unsigned long b) { g_log[g_n++] = 'F'; freeArg = b; return true; }
 };
 struct CMeshInfoOwner { CResourceList ResourceList; };
-struct C3DMeshInfo { CMeshInfoOwner* m_pOwner; };
-struct C3DMeshLODInfo {
+class C3DMeshInfo { public: CMeshInfoOwner* m_pOwner; };
+class C3DMeshLODInfo { public:
     unsigned long resourceSize;
     C3DMesh2* Mesh_Data; CBankFileAsyncData* FileData_Data; C3DMeshInfo* MeshInfo; unsigned char LOD;
     void RemoveFromList() { g_log[g_n++] = 'R'; }

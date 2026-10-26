@@ -1,6 +1,6 @@
 // Behaviour test for GetNewCameraPosFromOcclusionParams (0x0084CCC0): start + direction * distance.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }

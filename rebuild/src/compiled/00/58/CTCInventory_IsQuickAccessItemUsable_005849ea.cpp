@@ -14,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;            // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -55,7 +55,7 @@ struct CThing {
 
 bool __fastcall IsAugmentation(long item);           // 0x005D97F0
 
-struct CTCHero {                         // interface type 0x29
+class CTCHero { public:                         // interface type 0x29
     unsigned char _pad_0x00[0xC];
     bool          AllowAugmentations;                // +0x0C
 };
@@ -68,7 +68,7 @@ struct CLongVector {                                 // std::vector<long> {first
     const long& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x140];

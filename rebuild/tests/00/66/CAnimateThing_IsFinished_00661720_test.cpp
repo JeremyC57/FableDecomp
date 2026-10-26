@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CAnimateThing {
+class CAnimateThing { public:
     bool m_queueDone; unsigned char m_markedFinished : 1;
     bool IsAnimationFinished() const { return m_queueDone; }
     bool IsFinished() const { return IsAnimationFinished() || m_markedFinished; }

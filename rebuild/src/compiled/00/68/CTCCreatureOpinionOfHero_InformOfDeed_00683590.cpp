@@ -10,14 +10,14 @@
 // Shape: the deed log is the unchecked out-parameter GetInterface (the absent arm reads the never-written local's home, the
 // `deedHandle` slot, into edi); the effects def is a CDefPointer temporary returned into the dead handle slot (the handle lives
 // on in ebx), its object read through the returned pointer, and released after the call by a null-tested dtor calling the def's inline ReleaseTemporary() over its ref-count base at +4.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -40,10 +40,10 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
 struct CRefCounted {
@@ -55,7 +55,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                             // slot 1
 };
-struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
+class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -63,7 +63,7 @@ struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
     {
@@ -71,14 +71,14 @@ template <class T> struct CDefPointer {
             Object->ReleaseTemporary();
     }
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long Type;                                          // +0x00 EOpinionDeedType
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle);       // 0x006C58F0
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     CPlayerManager* GetPlayerManager();                 // 0x00686D40 (CTCBase)

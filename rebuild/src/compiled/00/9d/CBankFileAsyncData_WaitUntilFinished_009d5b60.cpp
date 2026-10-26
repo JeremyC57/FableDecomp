@@ -27,7 +27,7 @@ public:
     void WaitForRead(unsigned long readUID);     // 0x0098F370
 };
 
-struct CBankFileAsync {
+class CBankFileAsync { public:
     unsigned char _pad[0x110];
     CThreadedFile* ThreadedFile;                 // +0x110 (CCountedPointer object)
     unsigned char _pad2[0x35];
@@ -37,7 +37,7 @@ struct CBankFileAsync {
     void KickPendingReads();                     // 0x009D5A90
 };
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     virtual void v00();
     void*                       m_pAllocation;    // +0x04
     void*                       m_pData;          // +0x08

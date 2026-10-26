@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMap { unsigned __int64 AllocateMapThingUID() { return 0x100000002ULL; } };
+class CMap { public: unsigned __int64 AllocateMapThingUID() { return 0x100000002ULL; } };
 static CMap g_map; static long g_idx = -1;
 struct V { virtual CMap* GetMap(long i) { g_idx = i; return &g_map; }
     unsigned __int64 Alloc(long i) { CMap* m = GetMap(i); return m->AllocateMapThingUID(); } };

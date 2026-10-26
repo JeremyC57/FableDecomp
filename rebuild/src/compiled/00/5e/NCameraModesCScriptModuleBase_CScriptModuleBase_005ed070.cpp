@@ -10,10 +10,10 @@
 // Layout: PDB NCameraModes::CScriptModuleBase (0x4c bytes): PCamPoint +4, PThingOrigin +0xc,
 // CoordOrigin +0x14, CoordAxis +0x20 (Up, Forward), POwner +0x38, PCameraManager +0x3c,
 // SelfTerminate +0x40, ShortenOnCollision +0x41, CutOutOverride +0x44, FOVOverride +0x48.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 struct CBase;
-struct CGameCameraManager;
+class CGameCameraManager;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -29,11 +29,11 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
     CIntelligentPointer_CThingConst() {}
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(1.0f, 0.0f, 0.0f) {}
@@ -41,7 +41,7 @@ struct CRightHandedSet {
 
 namespace NCameraModes {
 
-struct CScriptModuleBase {                           // vtable 0x01255F74
+class CScriptModuleBase { public:                           // vtable 0x01255F74
     virtual void v00();
     CIntelligentPointer_CThing      PCamPoint;       // +0x04
     CIntelligentPointer_CThingConst PThingOrigin;    // +0x0c

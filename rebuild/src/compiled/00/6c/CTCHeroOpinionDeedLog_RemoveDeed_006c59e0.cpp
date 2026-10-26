@@ -25,9 +25,9 @@ struct CBaseIntelligentPointer {                       // 8 bytes: vptr + the po
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { };   // CIntelligentPointer<const CThing>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct COpinionDeed {                                  // Ego_r.pdb, 0x28 bytes
+class COpinionDeed { public:                                  // Ego_r.pdb, 0x28 bytes
     long                DeedType;                      // +0x00 EOpinionDeedType
     long                DeedHandle;                    // +0x04
     C3DVector           Position;                      // +0x08
@@ -100,7 +100,7 @@ COpinionDeedIterator COpinionDeedMap::find(const long& key)
 }
 #pragma auto_inline(on)
 
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     virtual void v00();
     unsigned char   _pad_0x04[0x8];                    // +0x04 CTCBase
     COpinionDeedMap OpinionDeedMap;                    // +0x0C

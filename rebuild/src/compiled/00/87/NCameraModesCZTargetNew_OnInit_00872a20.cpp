@@ -33,15 +33,15 @@ struct CThingPhysics {
     virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
     virtual C3DVector GetFacingVector() const;               // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad[0x60];
     CThingPhysics* m_pPhysics;                               // +0x60
     CThingPhysics* GetPhysics() const { return m_pPhysics; }
 };
-struct CThingGameObject : CThing { };
+class CThingGameObject : public CThing { public: };
 
 namespace NCameraModes { class CBase; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* operator->() const { return Data; }

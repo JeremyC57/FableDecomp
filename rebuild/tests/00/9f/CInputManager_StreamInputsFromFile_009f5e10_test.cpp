@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[32] = ""; static const void* g_name = 0; static long g_access = 0, g_flags = 0; static const void* g_version = 0; static const void* g_file = 0;
-struct CWideString { void* PStringData; ~CWideString() { std::strcat(g_seq, "w"); } };
-struct CVersion { long a; };
+class CWideString { public: void* PStringData; ~CWideString() { std::strcat(g_seq, "w"); } };
+class CVersion { public: long a; };
 namespace N_0099a300 { struct CBase { virtual void v00() { } ~CBase() { std::strcat(g_seq, "b"); } }; } using N_0099a300::CBase;
-struct CDiskFileWin32 : CBase {
+class CDiskFileWin32 : public CBase { public:
     virtual void v00() { }
     virtual void Open(const CWideString&, long, unsigned long) { }
     virtual void Close() { std::strcat(g_seq, "c"); }
@@ -12,7 +12,7 @@ struct CDiskFileWin32 : CBase {
     CDiskFileWin32(const CWideString& pathname, long access, unsigned long flags) { std::strcat(g_seq, "O"); g_name = &pathname; g_access = access; g_flags = flags; }
     ~CDiskFileWin32() { Close(); }
 };
-struct CInputManager {
+class CInputManager { public:
     virtual void v00() { }
     unsigned char _pad04[0x34]; bool Loading; bool Saving;
     void LoadAllEventPackages(const CVersion& version, CDiskFileWin32& file) { std::strcat(g_seq, "L"); g_version = &version; g_file = &file; }

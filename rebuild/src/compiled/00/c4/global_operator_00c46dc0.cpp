@@ -6,7 +6,7 @@
 // siblings are integer tests on `this`).
 // Shape: `fld [edx] ; fld [ecx] ; fucompp ; test ah,44h ; jp` per component (the left operand is loaded last); the `&&` of
 // two float equalities returned as bool materialises the full-register `mov eax,1` / `xor eax,eax` exits.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };

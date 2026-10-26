@@ -8,14 +8,14 @@
 // CTCShopKeeper RepressedOpinions +0x42; CTCShop StockState +0x0c.
 // Shape: the id is read into a local before the frame call (`frame + id`, unsigned 64-bit remainder); HasTC + one-ternary
 // GetTC on the re-read ParentThing; the flag byte is loaded once for both arms of the criminal test.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UniqueID;                          // +0x18
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
@@ -29,20 +29,20 @@ struct CThing {
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                        // 0x0049D870
 };
-struct CTCVillage {
+class CTCVillage { public:
     bool IsHeroCriminal();                              // 0x0065BFCE
 };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage* GetPVillage() const;                    // 0x007EE540
 };
-struct CTCShop {
+class CTCShop { public:
     unsigned char _pad00[0x0c];
     long StockState;                                    // +0x0c ESTOCK_STATE
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x42 - 0x08];

@@ -8,12 +8,12 @@
 // derived vtable store follows; the all-POD param copies implicitly as `rep movsd` x12, posparam memberwise
 // (C3DVector has a user copy constructor, so it is copied dword by dword).
 // Leaf: ??0CRadialBlurEntry
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float r, g, b, a;
 };
 
@@ -35,7 +35,7 @@ struct CRadialBlurPositionParams {
     long      BlurTrackPos;                             // +0x1c ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION
 };
 
-struct CScreenEffectPriorityStack {
+class CScreenEffectPriorityStack { public:
     struct CStackEntry {
         virtual void v00();                             // vtable 0x01277FF0
         long curdurationcount;                          // +0x04

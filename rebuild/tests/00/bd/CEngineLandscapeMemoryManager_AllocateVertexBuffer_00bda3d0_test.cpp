@@ -2,7 +2,7 @@
 #include <cstdlib>
 static int g_disposal = 0; static int g_inits = 0;
 static void* AllocFromGlobalAllocator(unsigned int size) { return std::malloc(size); }
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW, PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams() : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f), PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
 };

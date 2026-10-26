@@ -12,9 +12,9 @@ struct CGameEventPackageSetOverlay {
     CGameEventPackageOverlay Packages[50];
 };
 
-struct CGameEventPackage;
+class CGameEventPackage;
 
-struct CGameEventPackageSet {
+class CGameEventPackageSet { public:
     void AddPackage(CGameEventPackage const* package);
 };
 

@@ -3,7 +3,7 @@
 #include <cstring>
 struct C3DVector_006b8730 { float X, Y, Z; C3DVector_006b8730() { } C3DVector_006b8730(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 static long g_a, g_b, g_c, g_d, g_e, g_f; static C3DVector_006b8730 g_s, g_r;
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     void RadialBlurFadeTo(long a, long b, const C3DVector_006b8730& s, long c, const C3DVector_006b8730& r, long d, long e, long f) { g_a = a; g_b = b; g_s = s; g_c = c; g_r = r; g_d = d; g_e = e; g_f = f; }
     void RadialBlurFadeTo(long a, long b, float s, long c, float r, long d, long e, long f) { RadialBlurFadeTo(a, b, C3DVector_006b8730(s, s, s), c, C3DVector_006b8730(r, r, r), d, e, f); } };
 int main() {

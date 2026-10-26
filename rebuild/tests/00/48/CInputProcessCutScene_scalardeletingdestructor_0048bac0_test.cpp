@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessCutScene {
+class CInputProcessCutScene { public:
     void* vftable;
     int destroyed;
 };

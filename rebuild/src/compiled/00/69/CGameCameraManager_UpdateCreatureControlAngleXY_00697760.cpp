@@ -6,14 +6,14 @@
 // so `this` is modelled locally with PDB names at retail offsets: ChangeInControlDirection +0xb1 (landed setter 0x00697750),
 // ControlAngleXY +0xb8 (landed getter 0x00697700), AngleChange +0xbc, ControlNoControlMovement +0xbd, ControlNoControlMovementStartFrame +0xc0.
 // Shape: one zero register (ebx) for every byte compare and store; each flag re-read after a store or call.
-struct CCamera {
+class CCamera { public:
     unsigned char _body[0x38];
     float GetAngleXY();                                     // 0x00A0C380
 };
 
 long GetGameFrame();                                        // 0x0049D870
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*         __vftable;                                // +0x00
     CCamera       Camera;                                   // +0x04
     unsigned char _pad3c[0x74];                             // +0x3c

@@ -1,4 +1,4 @@
-struct CCreatureAction_UndeadReturnToEarth {
+class CCreatureAction_UndeadReturnToEarth { public:
     void* vftable;
 };
 

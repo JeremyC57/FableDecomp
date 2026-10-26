@@ -10,9 +10,9 @@
 // float defaults are `0.0f` literals bound to const references, stored as immediates into that same slot.
 // Layout (Ego_r.pdb CTCInfoDisplay, 0x20 bytes, matches retail): TextTag +0x10, TextTagBack +0x14, Radius +0x18,
 // DisplayTime +0x1C -- the landed ctor 0x007E1AC0 uses the same model.
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -21,7 +21,7 @@ struct CCharString {
 
 inline CCharString EmptyString() { CCharString empty; return empty; }
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);   // 0x004109A0
     void Transfer(const char* name, float& value, const float& defaultValue);               // 0x00410620
 };

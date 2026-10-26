@@ -16,7 +16,7 @@
 //   InCutscene +0xDE.
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Text;                                  // +0x00
     long          Length;                                // +0x04
 };

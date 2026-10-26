@@ -8,16 +8,16 @@
 // the bool argument second; the phase store is scheduled before the GetPosition call and the
 // 12-byte vector is copied through `add esi,22h` (a plain struct copy).
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing
-{
+class CThing
+{ public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
 
 #pragma pack(push, 1)
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     CThing*       ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

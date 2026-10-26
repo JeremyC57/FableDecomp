@@ -5,7 +5,7 @@
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
 // retail labels); the class itself is not attributed, so it is named by address.
 #pragma optimize("t", on)
-struct CWideString {                        // one word: CWideStringData*
+class CWideString { public:                        // one word: CWideStringData*
     void* PStringData;
     ~CWideString();                         // 0x0099B510 (NoRefs at data+0xc, free(), instance count 0x013BCA20)
 };

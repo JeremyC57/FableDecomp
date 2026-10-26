@@ -24,8 +24,8 @@ enum EConversationCameraFocus { CONVERSATION_CAMERA_FOCUS_NONE };
 enum EConversationCameraZoomType { CONVERSATION_CAMERA_ZOOM_NONE };
 enum EConversationCameraView { CONVERSATION_CAMERA_VIEW_NONE };
 
-struct CSubtitledMessage {
-    struct CCameraTag {                         // 24 bytes
+class CSubtitledMessage { public:
+    class CCameraTag { public:                         // 24 bytes
         EConversationProtagonist    CameraPositionPerson;   // +0x00
         EConversationCameraPosition CameraPosition;         // +0x04
         EConversationProtagonist    CameraFocusPerson;      // +0x08

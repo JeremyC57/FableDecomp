@@ -1,14 +1,14 @@
 // Behaviour test for CAIStateGroup_OpenAndCloseShop::IsRunnable (0x00926C50): model copy, scripted stubs.
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
-struct CTCShop {
+class C3DVector { public: float x, y, z; };
+class CTCShop { public:
     long StockState;
     bool openHours, permanent;
     bool IsOpeningHours() { return openHours; }
     bool IsPermanentlyStocked() { return permanent; }
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     CTCShop* shop;
     bool othersInShop;
     int otherCalls;
@@ -16,7 +16,7 @@ struct CTCShopKeeper {
     bool GetAreOtherPeopleInShop(bool flag) { ++otherCalls; return flag ? false : othersInShop; }
 };
 struct CTCShopSign { bool m_closed; };
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char m_flags91;
     unsigned char m_buildingFlags;
     bool hasSign, occupants, busy, inside;
@@ -36,7 +36,7 @@ struct CThingShopkeeper {
     bool GetInterface(CTCShopKeeper** out, long type) { if (type != 0x90 || !keeper) return false; *out = keeper; return true; }
     const C3DVector& GetPosition() const { return pos; }
 };
-struct CAIBrain { CThingShopkeeper* PCreature; };
+class CAIBrain { public: CThingShopkeeper* PCreature; };
 struct CAIStateGroup_OpenAndCloseShop {
     CAIBrain* PBrain;
     bool GoToInsideFace;

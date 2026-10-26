@@ -12,7 +12,7 @@
 //        the branch, keeps one GetAbilityInventoryThingName call per arm, loads each arm's list into ecx and
 //        merges the push_back and the temporary's destructor after the join.
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     ~CCharString();                               // 0x0099EAE0
 };

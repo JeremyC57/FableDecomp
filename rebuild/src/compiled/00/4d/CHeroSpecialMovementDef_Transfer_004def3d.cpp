@@ -3,11 +3,11 @@ struct A { int x; };
 struct B { int x; };
 struct C { int x; };
 
-struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     void TransferFloat(void* value);                // 0x00431061 Transfer(float&)
 };
 
-struct CCarrySlotDef {
+class CCarrySlotDef { public:
     unsigned char _pad[0x28];
     A a;   // +0x28
     B b;   // +0x2c

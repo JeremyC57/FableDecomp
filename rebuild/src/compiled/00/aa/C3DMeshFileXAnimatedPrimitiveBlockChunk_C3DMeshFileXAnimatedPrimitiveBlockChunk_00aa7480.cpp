@@ -15,25 +15,25 @@
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 template <class T>
-struct CArray {                                    // retail CArray<T>: first / last / end (0x0c bytes)
+class CArray { public:                                    // retail CArray<T>: first / last / end (0x0c bytes)
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
     ~CArray() { if (m_pFirst) free(m_pFirst); }
 };
 
-struct CChunkedFileSuperChunk {                    // vtable 0x0129E4F0, retail 0x2c bytes
+class CChunkedFileSuperChunk { public:                    // vtable 0x0129E4F0, retail 0x2c bytes
     virtual void v00();
     unsigned char _body[0x28];                     // +0x04 chunk header, SubChunks, RegisteredSubChunkTypes, CurrentChunkIndex
     ~CChunkedFileSuperChunk();                     // 0x00AA8490
 };
 
-struct CVertexGroupBlock {                         // retail 0x18 bytes
+class CVertexGroupBlock { public:                         // retail 0x18 bytes
     unsigned char _body[0x18];
     ~CVertexGroupBlock();                          // 0x00A96DA0
 };
 
-struct C3DIndexedBoneWeight;
+class C3DIndexedBoneWeight;
 
 struct __declspec(novtable) C3DMeshFileXAnimatedPrimitiveBlockChunk : CChunkedFileSuperChunk {   // vtable 0x0129E404
     CVertexGroupBlock              GroupBlock;     // +0x2c

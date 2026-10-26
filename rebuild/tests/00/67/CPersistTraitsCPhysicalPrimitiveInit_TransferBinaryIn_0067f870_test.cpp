@@ -75,7 +75,7 @@ static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
 struct CPrim { int type; int readValue; virtual ~CPrim() {} virtual void TransferBinaryIn(CIn* in) { readValue = (int)in->ReadLong(); } };
 static CPrim g_prims[2];
-struct CPhysicalPrimitiveInit {
+class CPhysicalPrimitiveInit { public:
     CPrim* PPrimitive;
     bool SetPPrimitiveFromType(int type) { if (type < 1 || type > 2) return false; PPrimitive = &g_prims[type - 1]; PPrimitive->type = type; return true; }
 };

@@ -8,7 +8,7 @@
 // duplicate the tail and push ebx late); the crate pointer member's
 // address is formed once into esi, the warehouse pointer's into ebx; the slot-7 call fetches the vtable
 // before the argument's GetPItem (plain nested call). Layout from the constructor 0x00944470.
-struct CBaseObject;
+class CBaseObject;
 
 struct CCrateThing {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -18,7 +18,7 @@ struct CCrateThing {
     unsigned char m_bCarried;                           // +0x18
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     bool IsThereACratePutDownTask();                    // 0x00658E09
     bool IsCookTime_00658b20();                                  // 0x00658B20
 };

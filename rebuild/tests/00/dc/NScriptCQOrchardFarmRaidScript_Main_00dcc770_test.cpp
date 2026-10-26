@@ -6,8 +6,8 @@
 static int g_frames, g_endAt, g_loadedAt, g_bound, g_activated, g_freed;
 static bool g_barricadeActive;
 static char g_spawned[256];
-struct CCPPointerInfo { long RefCount; void* Data; };
-struct CScriptThing {
+class CCPPointerInfo { public: long RefCount; void* Data; };
+class CScriptThing { public:
     void* Data; CCPPointerInfo* Info;
     CScriptThing() : Data(0), Info(0) {}
     CScriptThing(const CScriptThing& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
@@ -22,7 +22,7 @@ struct CScriptThing {
 };
 static CCPPointerInfo g_banditInfo, g_guardInfo;
 static int g_banditObj, g_guardObj;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsRegionLoaded(const char* n) const { return !std::strcmp(n, "OrchardFarm") && g_frames >= g_loadedAt; }
     void PostAddScriptedEntities() const {}

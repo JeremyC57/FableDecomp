@@ -2,13 +2,13 @@
 
 typedef unsigned short wchar16;
 
-struct CCharString {
+class CCharString { public:
     void* p;
     CCharString(const char* s, int len);   // 0x597c80 (this, char*, len)
     ~CCharString();                          // 0x597b70 (this)
 };
 
-struct CWideString {
+class CWideString { public:
     void* p;
     CWideString(const wchar16* s);                              // 0x594740 (this, wchar_t*)
     ~CWideString();                                             // 0x5945a0 (this)
@@ -21,7 +21,7 @@ CWideString __fastcall WConcat(const wchar16* pre, const CWideString& suf);
 // 0x406e30
 extern "C" long __fastcall CreateSaveGame(CCharString* a, CWideString* b, long c, long d, wchar16* e, long f);
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad[8];
     CWideString field8;
     CWideString GetAutoSavePathName();

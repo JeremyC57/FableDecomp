@@ -2,18 +2,18 @@
 #include <cstring>
 
 static int g_live = 0, g_made = 0;
-struct CWideString {
+class CWideString { public:
     const char* m_text;
     CWideString() : m_text("") { ++g_live; ++g_made; }
     CWideString(const CWideString& o) : m_text(o.m_text) { ++g_live; ++g_made; }
     ~CWideString() { --g_live; }
 };
 static const char* g_name = 0; static CWideString* g_value = 0; static int g_defaultEmpty = 0, g_liveAtCall = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, CWideString& value, const CWideString& def) { g_name = name; g_value = &value; g_defaultEmpty = (def.m_text[0] == 0); g_liveAtCall = g_live; }
 };
 inline CWideString EmptyWideString() { CWideString empty; return empty; }
-struct CTCActionUseReadable {
+class CTCActionUseReadable { public:
     CWideString TextTag;
     void OnSerialise(CPersistContext& context, bool) { context.Transfer("GameTextDefName", TextTag, EmptyWideString()); }
 };

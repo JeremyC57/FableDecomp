@@ -1,9 +1,9 @@
 // Behaviour test for 0x0061A3B0 CTCInventoryQuests::GetCategoryNameFromAssociation
 #include <cstdio>
 #include <cstring>
-struct CWideString { char buf[32]; };
-struct CTCQuestCard { const char* name; CWideString GetQuestName() const { CWideString w; std::strcpy(w.buf, name); return w; } };
-struct CThing {
+class CWideString { public: char buf[32]; };
+class CTCQuestCard { public: const char* name; CWideString GetQuestName() const { CWideString w; std::strcpy(w.buf, name); return w; } };
+class CThing { public:
     unsigned int m_presentBits[9]; CTCQuestCard* card; unsigned char Dead;
     bool GetInterface(CTCQuestCard** out, long t)
     {

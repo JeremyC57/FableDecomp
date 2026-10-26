@@ -13,7 +13,7 @@ typedef int LONG32;   // the retail 4-byte long (the g++ host is LP64)
 #define CHECK(c) do { if (!(c)) { std::printf("%s_TEST FAIL (line %d)\n", TEST_ADDR, __LINE__); return 1; } } while (0)
 
 static int g_leafDtors = 0, g_andDtors = 0, g_baseDtors = 0;
-struct CScriptThing { void* m_vtable; unsigned char m_data[8]; };
+class CScriptThing { public: void* m_vtable; unsigned char m_data[8]; };
 template <class T> struct CPredicate {
     virtual ~CPredicate() { ++g_baseDtors; }
     virtual bool operator()(const T& thing) const = 0;

@@ -1,4 +1,4 @@
-struct CCreatureAction_CastStrengthBerserk {
+class CCreatureAction_CastStrengthBerserk { public:
     void* vftable;
 };
 

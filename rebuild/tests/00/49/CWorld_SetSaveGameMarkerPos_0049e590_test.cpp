@@ -3,17 +3,17 @@
 #include <cstdio>
 
 class C3DVector { public: float X, Y, Z; };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     float Angle;
     virtual ~CTCPhysicsBase() {}
     virtual float GetAngleXY() const { return Angle; }
 };
-struct CThing {
+class CThing { public:
     CTCPhysicsBase* PhysicsTC;
     unsigned char   Dead : 1;
 };
-struct CPlayer { CThing* Hero; CThing* GetHeroThing() { return Hero; } };
-struct CPlayerManager { CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
+class CPlayer { public: CThing* Hero; CThing* GetHeroThing() { return Hero; } };
+class CPlayerManager { public: CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
 
 class CWorld {
 public:

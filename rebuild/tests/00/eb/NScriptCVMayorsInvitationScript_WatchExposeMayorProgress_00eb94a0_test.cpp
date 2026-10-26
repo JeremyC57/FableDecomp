@@ -4,7 +4,7 @@
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 struct CMasterScriptData { bool HeroDuelDone, MayorBribePathTaken; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CMasterScriptData* data;
     void NewScriptFrame() { Log("frame"); data->MayorBribePathTaken = true; }
     void GiveHeroQuestCardDirectly(const char* card, const char* quest, bool) { Log(card); Log(quest); }

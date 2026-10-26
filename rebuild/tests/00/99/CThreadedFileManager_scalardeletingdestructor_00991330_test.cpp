@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     void* vftable;
     int destroyed;
 };

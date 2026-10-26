@@ -12,7 +12,7 @@
 // Kill(true) tail and the false exits land on the two pops.
 #include "engine/CTCPhysicsBase.h"
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad0[0x60];
     CTCPhysicsBase* PhysicsTC;                              // +0x60
     unsigned char   _pad1[0x91 - 0x64];
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {                            // sizeof 8: vptr + 
     CThing* GetPItem() const;                               // 0x00A01B50
 };
 
-struct CTCDeadShotInThingTracker {
+class CTCDeadShotInThingTracker { public:
     virtual void v00();
     CThing*                 ParentThing;                    // +0x04 (CTCBase)
     bool                    ToBeRemoved;                    // +0x08

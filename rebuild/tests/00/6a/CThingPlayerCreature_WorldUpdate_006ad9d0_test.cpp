@@ -2,16 +2,16 @@
 // last position exists, look/trail components driven when present, the collision record cleared, result false.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
 static int g_calls[6];
-struct CTCLook { bool TrackNearestInterestingThing(bool f) { if (f) ++g_calls[0]; return true; } };
-struct CTCWeaponTrail { void UpdateWeaponTrails() { ++g_calls[1]; } };
-struct CThingPlayerCreature {
+class CTCLook { public: bool TrackNearestInterestingThing(bool f) { if (f) ++g_calls[0]; return true; } };
+class CTCWeaponTrail { public: void UpdateWeaponTrails() { ++g_calls[1]; } };
+class CThingPlayerCreature { public:
     C3DVector Pos, LastPos, MovementVector; unsigned char m_updateFlags;
     CTCLook* Look; CTCWeaponTrail* Trail; float AnimStep;
     bool CollidedWithThing; C3DVector LastThingCollisionNormal, LastThingCollisionPosition;

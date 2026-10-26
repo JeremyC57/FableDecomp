@@ -15,7 +15,7 @@
 //   movie name, one named copy of Game for the pause pair); here the cast map's destructor is inline (free of the header).
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -23,13 +23,13 @@ struct CCharString {
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -65,25 +65,25 @@ template <class T> struct CCountedPointer {
 };
 
 struct CScriptThingImp;
-struct CBaseClass {                                     // vtable 0x01231710
+class CBaseClass { public:                                     // vtable 0x01231710
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;              // +0x04
     virtual ~CScriptThing() {}                          // out of line: 0x004AA840
 };
 
-struct CBaseObject {                                    // vtable 0x0129A7D8
+class CBaseObject { public:                                    // vtable 0x0129A7D8
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();                             // 0x0099A430
     CBaseObject& operator=(const CBaseObject& other);   // 0x0099A3B0
     void* IntelligentPointer;                           // +0x04
 };
-struct CScriptGameResourceObjectBase : CBaseObject {    // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointer<CScriptThingImp> PImp;
     // implicit destructor; out of line: 0x007E74D0
     __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
@@ -99,7 +99,7 @@ struct CMovieImpPointer {
     CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CMovieImpPointer PImp;
 };
 
@@ -140,7 +140,7 @@ struct CCutsceneArgMap {                                // map<CCharString, CCha
 };
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();
@@ -201,7 +201,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
 
-struct CQ_HeroSoulsBriarScript : CScriptBase {
+class CQ_HeroSoulsBriarScript : public CScriptBase { public:
     CGameScriptInterface* Game;                         // +0x40
     void*                 PMasterData;                  // +0x44
     bool                  PlayedBriarCS;                // +0x48

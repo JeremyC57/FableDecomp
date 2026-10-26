@@ -14,7 +14,7 @@ template <class T> struct scoped_ptr {
     void reset(T* p) { T* old = ptr; ptr = p; if (old) delete old; }
 };
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     scoped_ptr<Loader> MeshLoader, AnimLoader;
     Bank MeshResourceBank, MeshStatsResourceBank, AnimationResourceBank, PhysicsMeshResourceBank;
     Observable* AnimationManager;

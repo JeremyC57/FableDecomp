@@ -13,9 +13,9 @@
 //        a third GetPItem for the Kill; the shared ebx = 1 serves both the dead-bit mask and the `true` push; the clear is
 //        the inline STLport `erase(begin(), end())`: `__copy(last, finish, first, tag, (int*)0)`, the range destroy, then
 //        `finish = i` (as the landed CTCTavernGame::ClearBox 0x005EC5C0).
-struct CBaseObject;
+class CBaseObject;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x91];
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
@@ -33,7 +33,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
 };
 #pragma pack(pop)
 
-struct Coin {                                   // 0x3c bytes
+class Coin { public:                                   // 0x3c bytes
     virtual ~Coin();
     unsigned char _pad_0x04[0x20];
     bool          Owned;                        // +0x24

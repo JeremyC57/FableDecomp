@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; } };
-struct CThingCreatureBase { unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
+class CThingCreatureBase { public: unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType) {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) { long type = interfaceType; CInterfaceMap* map = &m_interfaces;
             CInterfaceMap::SEntry* it = map->LowerBound(&type); if (it == map->last || interfaceType < it->type) it = map->last; *ppOut = (T*)it->component; return true; }
@@ -11,7 +11,7 @@ struct CThingCreatureBase { unsigned char _pad0[0x20]; unsigned long m_presentBi
 
 struct CTCEnflameSpell { unsigned char _pad0[0x0d]; unsigned char m_cast; };
 struct CBaseIntelligentPointer { virtual void v00() { } CThingCreatureBase* m_pItem; CThingCreatureBase* GetPItem() const { return m_pItem; } };
-struct CCreatureAction_CastWillEnflameSpell { virtual void v00() { } virtual void PerformAction(); unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; };
+class CCreatureAction_CastWillEnflameSpell { public: virtual void v00() { } virtual void PerformAction(); unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; };
 void CCreatureAction_CastWillEnflameSpell::PerformAction() { CTCEnflameSpell* pSpell; if (PCreature.GetPItem()->GetInterface(&pSpell, 0x95)) pSpell->m_cast = 1; }
 int main()
 {

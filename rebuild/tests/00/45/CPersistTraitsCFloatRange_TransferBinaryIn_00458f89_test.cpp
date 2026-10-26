@@ -73,7 +73,7 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct CFloatRange { float HighValue; float LowValue; };
+class CFloatRange { public: float HighValue; float LowValue; };
 struct Traits { void TransferBinaryIn(CIn* in, CFloatRange* value)
 {
     value->LowValue = in->ReadFloat();

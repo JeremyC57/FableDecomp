@@ -18,29 +18,29 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct CMeshDataBank;
+class CMeshDataBank;
 
 #include "engine/CIVCountedPointeeBase.h"      // Ego_r.pdb: vtable word +0, IVRefCount +4 (only the count is touched here)
 
 template <class T>
-struct CIVCountedPointer {                      // 4 bytes; the copy adds a reference
+class CIVCountedPointer { public:                      // 4 bytes; the copy adds a reference
     CIVCountedPointeeBase* Object;
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) ++Object->IVRefCount; }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-struct CMeshDataBankEntry {                     // Ego_r.pdb, 0x0c bytes; vtable 0x0129CD28
+class CMeshDataBankEntry { public:                     // Ego_r.pdb, 0x0c bytes; vtable 0x0129CD28
     virtual ~CMeshDataBankEntry();
     CMeshDataBank* Bank;                        // +0x04
     unsigned long  Index;                       // +0x08
 };
 
-struct C3DAnimationInfo : CMeshDataBankEntry {  // Ego_r.pdb, 0x28 bytes; vtable 0x0129CD64
-    struct CAnimationData;
+class C3DAnimationInfo : public CMeshDataBankEntry { public:  // Ego_r.pdb, 0x28 bytes; vtable 0x0129CD64
+    class CAnimationData;
     CIVCountedPointer<CAnimationData> Data;     // +0x0c
     float     Duration;                         // +0x10
     float     NonLoopingDuration;               // +0x14

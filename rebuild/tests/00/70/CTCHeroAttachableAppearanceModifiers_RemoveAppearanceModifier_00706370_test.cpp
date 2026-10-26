@@ -78,7 +78,7 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long ind
 #pragma auto_inline(on)
 class CDefinitionHolder : public CDefinitionManager { };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                    // 0x0049D870
 };
 

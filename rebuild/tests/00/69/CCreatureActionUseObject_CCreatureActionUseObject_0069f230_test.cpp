@@ -1,8 +1,8 @@
 // Behaviour test for 0x0069F230 CCreatureAction_UseObject constructor: base gets the creature, a zero sound pair and two
 // zero longs; PUsedThing points at the used thing; the bookkeeping members are cleared and AllowTurn follows the argument.
 #include <cstdio>
-struct CThing { int id; };
-struct CSoundPair { int a, b; CSoundPair() : a(0), b(0) {} };
+class CThing { public: int id; };
+class CSoundPair { public: int a, b; CSoundPair() : a(0), b(0) {} };
 static int g_soundA = -1, g_soundB = -1, g_x = -1, g_y = -1; static CThing* g_creature = 0;
 struct CBase {
     CBase(CThing* c, const CSoundPair& s, int x, int y) { g_creature = c; g_soundA = s.a; g_soundB = s.b; g_x = x; g_y = y; }

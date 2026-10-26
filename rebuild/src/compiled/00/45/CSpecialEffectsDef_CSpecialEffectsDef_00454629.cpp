@@ -17,7 +17,7 @@ struct CMember_004533c5 {
     CMember_004533c5();                              // 0x004533C5
 };
 
-struct CSpecialEffectsDef : CBase_0044c0c0 {
+class CSpecialEffectsDef : public CBase_0044c0c0 { public:
     unsigned char _pad[0x24];
     CMember_004533c5 m_member;                       // +0x28
     virtual void v00();

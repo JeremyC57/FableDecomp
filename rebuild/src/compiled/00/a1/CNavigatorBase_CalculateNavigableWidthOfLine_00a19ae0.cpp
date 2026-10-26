@@ -1,6 +1,6 @@
 #include "engine/CNavigatorBase.h"
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct CNavigatorBase_Methods : CNavigatorBase {
     void CalculateNavigableWidthOfLine(C3DVector const& a, C3DVector const& pos,

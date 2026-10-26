@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharString { const char* m_pData; };
+class CCharString { public: const char* m_pData; };
 struct SRecord { CCharString m_name; unsigned char _rest[0x34]; };
 struct CCharStringVector {
     CCharString m_items[16]; unsigned long m_count; unsigned long m_capacity;
@@ -13,7 +13,7 @@ struct CAddName {
 };
 CAddName ForEach_AddName(const SRecord* first, const SRecord* last, CAddName f)
 { for (; first != last; ++first) f(*first); return f; }
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     SRecord* m_pFirst; SRecord* m_pLast;
     void GetAllDummyObjectNames(CCharStringVector& names) const
     {

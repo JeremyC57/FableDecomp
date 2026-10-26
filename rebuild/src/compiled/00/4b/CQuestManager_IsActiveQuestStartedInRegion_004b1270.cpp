@@ -9,16 +9,16 @@
 // Shape: the unchecked GetQuestCard helper again (register seeded from the argument word); the definition is a counted
 // copy in an inner block (copy null test, the compare called on the unchecked pointer, then the null-tested release),
 // so the bool result rides in bl across the release and `this` is reloaded from its frame word afterwards.
-struct CCharString {
-    struct CCharStringData* PStringData;
+class CCharString { public:
+    class CCharStringData* PStringData;
     bool operator!=(const char* text) const;             // 0x0099E960
 };
-struct CDefString {                                      // 4-byte def-name handle
+class CDefString { public:                                      // 4-byte def-name handle
     long m_index;
     bool operator==(const CCharString& name) const;      // 0x004B7980
 };
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {                                        // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     Type;
     CTCBase* TC;
@@ -36,7 +36,7 @@ struct CTCMap {                                          // CThing::Components: 
         return it->TC;
     }
 };
-struct CThing {                                          // retail CThing (local model: offsets PDB -0x10 past the containers)
+class CThing { public:                                          // retail CThing (local model: offsets PDB -0x10 past the containers)
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                    // +0x20 which TC types the thing holds
     unsigned char _pad40[4];
@@ -45,7 +45,7 @@ struct CThing {                                          // retail CThing (local
     __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
 };
 
-struct CQuestCardDef {                                   // intrusively counted definition (vptr, count +4)
+class CQuestCardDef { public:                                   // intrusively counted definition (vptr, count +4)
     virtual void v00();
     virtual void Release();                              // slot 1 (+4): destroys the definition
     long          RefCount;                              // +0x04
@@ -62,7 +62,7 @@ struct CQuestCardDefPointer {                            // CDefPointer<const CQ
     CQuestCardDefPointer(const CQuestCardDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CQuestCardDefPointer() { if (Object) Object->DecRef(); }
 };
-struct CTCQuestCard {                                    // TC type 0x6c (retail layout = PDB, 0x34 bytes)
+class CTCQuestCard { public:                                    // TC type 0x6c (retail layout = PDB, 0x34 bytes)
     unsigned char        _pad00[0x0c];                   // CTCBase: vptr, ParentThing, flags
     CQuestCardDefPointer PDef;                           // +0x0c
     bool                 Finished;                       // +0x10
@@ -96,7 +96,7 @@ struct CCardNode {                                       // STLport list<CIntell
     CBaseIntelligentPointer _M_data;                     // +0x08
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x5c];
     CCardNode*    ActiveQuestCards;                      // +0x5c list<CIntelligentPointer<CThing>> (head node)
     CCardNode*    CompletedQuestCards;                   // +0x60

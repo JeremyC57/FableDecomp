@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -43,7 +43,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsChild() const;                       // 0x00661F70
 };
 
@@ -70,13 +70,13 @@ template<class T> struct CRetailVector {
 
 struct CRetailList { void* _Myhead; };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_count; }
     ~CDefPointer()
@@ -89,30 +89,30 @@ template<class T> struct CDefPointer {
     bool IsValid() const { return Object != 0; }
 };
 
-struct CFloatRange {
+class CFloatRange { public:
     float HighValue;
     float LowValue;
 };
 
 class CTCHeroExperience;
-struct CHeroAbilityStatWeight {
+class CHeroAbilityStatWeight { public:
     unsigned char StatWeights[0xc];
     float GetParameter(const CTCHeroExperience& experience) const;   // 0x00851BD0
 };
 
-struct CAttackHistoryCombo {
+class CAttackHistoryCombo { public:
     CRetailVector<long> AttackCombo;            // +0x00
     float Multiplier;                           // +0x0c
     bool IsComboSuccess(const CRetailList& history) const;   // 0x006D7080
 };
 
-struct CComboMultiplierData {
+class CComboMultiplierData { public:
     unsigned char ComboMultiplier[0xc];
     float ExperienceMultiplierNumSecondsForAttenuation;     // +0x0c
     float ExperienceMultiplierParamDecayDeltaPerSecond;     // +0x10
 };
 
-struct CHeroExperienceDef {
+class CHeroExperienceDef { public:
     unsigned char _base[0x28];
     CRetailVector<long> ExperienceLevelThresholds;          // +0x28
     CRetailVector<long> HeroLevelTitles;                    // +0x34
@@ -129,7 +129,7 @@ struct CHeroExperienceDef {
     CRetailVector<CAttackHistoryCombo> AttackHistoryCombos; // +0xa8
 };
 
-struct CHeroCombatDef : CDefPointeeBase {
+class CHeroCombatDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x44];
     CFloatRange RangedAccuracyPercentWithStats;             // +0x4c
     CHeroAbilityStatWeight RangedAccuracyWeighting;         // +0x54
@@ -138,21 +138,21 @@ struct CHeroCombatDef : CDefPointeeBase {
     CHeroAbilityStatWeight MeleeStrikeAnimationSpeedWeighting;  // +0xf8
 };
 
-struct CAbilityTrackLevelDef {
+class CAbilityTrackLevelDef { public:
     unsigned char _base[0x3c];
     long ExperienceCost;                        // +0x3c
     long AbilityUnlocked;                       // +0x40
     long Description;                           // +0x44
 };
 
-struct CAbilityTrackDef {
+class CAbilityTrackDef { public:
     unsigned char _base[0x3c];
     long ExperienceStat;                        // +0x3c
     CRetailVector<CAbilityTrackLevelDef> Abilities;   // +0x40
     long MaxedOutDescription;                   // +0x4c
 };
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0xfc];
     CRetailVector<CAbilityTrackDef> StatLevels;             // +0xfc
     CRetailVector<float> MaxHitPointsPerHealthLevel;        // +0x108

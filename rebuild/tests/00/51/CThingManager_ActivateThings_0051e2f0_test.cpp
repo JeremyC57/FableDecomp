@@ -21,7 +21,7 @@
 // Layout (retail): CThing ThingType byte +0x10, Dead bit 0 of +0x91, InitialisationStage bits 0..2 of +0x94 (Ego_r.pdb
 //   +0xa1/+0xa4, CThing 0x10 lower); CThingManager +0x24 the main game component (Ego_r.pdb Component +0x28 -- the
 //   base part is 4 smaller in retail; unproven), whose bool at +0x101 holds the hero back.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -33,7 +33,7 @@ __forceinline void ShowProgress(const char* message)
     DisplayProgress(text, -1.0f, false, false);
 }
 
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void Initialise();                          // slot 8
@@ -57,12 +57,12 @@ template<class T> struct vector {
     T* end() { return _Mylast; }
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x101];
     bool          HoldHero;                             // +0x101
 };
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char       _pad00[0x24];
     CMainGameComponent* Component;                      // +0x24
     void ActivateThings(vector<CThing*>& things);

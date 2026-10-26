@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for CTyler::CleanupAfterFight (0x00E83680): release, flag cleared, thing re-enabled, fight ended.
 static int g_log[16]; static int g_n = 0;
-struct CScriptThing {
+class CScriptThing { public:
     bool alive; bool available;
     virtual bool IsAlive() { return alive; }
     virtual void SetAvailable(bool a) { available = a; g_log[g_n++] = 67; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long released; const CScriptThing* fightThing; long fightTarget; const CScriptThing* ended;
     virtual long GetHero() { g_log[g_n++] = 70; return 5; }
     virtual void ReleaseCreature(long c) { released = c; g_log[g_n++] = 338; }

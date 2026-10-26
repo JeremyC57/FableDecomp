@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesDrainLifeDef;
+class CSpecialAbilitiesDrainLifeDef;
 
 extern void __fastcall CSpecialAbilitiesDrainLifeDef_dtor(CSpecialAbilitiesDrainLifeDef* def);
 extern void __cdecl fable_operator_delete(void* p);

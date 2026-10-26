@@ -15,7 +15,7 @@ static int fails = 0;
 //   second CDefPointer in its own block, released (inline dtor) before the set is used; each return arm releases the
 //   first def through its own inline dtor copy.
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-struct CAnimationEntry;
+class CAnimationEntry;
 struct CAnimFilter {
     virtual bool Accept(const CAnimationEntry* entry) const = 0;
     virtual CAnimFilter* Clone() const = 0;
@@ -24,19 +24,19 @@ struct CAnimFilterNoGroup : CAnimFilter {      // vtable 0x0122FFDC
     virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
     virtual CAnimFilter* Clone() const;                         // 0x00429A2F
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     bool HasAnimation(long animation, const CAnimFilter& filter) const;     // 0x005DC2E0
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
 };
-struct CAppearanceDef : CDefClassBase {
+class CAppearanceDef : public CDefClassBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                    // +0x34
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -46,7 +46,7 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CThingBaseDef {
+class CThingBaseDef { public:
     template<class T> bool GetSubDef(CDefPointer<const T>* out) const;      // 0x0042B0A2
 };
 void* FindDef_s7r_0();
@@ -68,7 +68,7 @@ template<class T> __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer
 }
 #pragma auto_inline(on)
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x70];
     const CThingBaseDef* PBaseDef;              // +0x70
     bool IsCombatAnimationValid(long animation);

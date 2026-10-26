@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCBattleCharge {
+class CTCBattleCharge { public:
     void* vftable;
     int destroyed;
 };

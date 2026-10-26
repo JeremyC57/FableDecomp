@@ -6,7 +6,7 @@ struct SubObj {
     void Method(int arg);   // __fastcall by default (member)
 };
 
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     int    f0;      // +0x00
     int    f4;      // +0x04
     int    Map;      // +0x08

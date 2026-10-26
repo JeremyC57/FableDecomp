@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pChars; unsigned long m_length; };
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
 long Compare_00411570(const char* a, const char* b) { return std::strcmp(a, b); }
-struct CCharString { CCharStringData* m_pData; };
+class CCharString { public: CCharStringData* m_pData; };
 static bool operator==(const CCharString& sa, const CCharString& sb)
 {
     CCharStringData* a = sa.m_pData; CCharStringData* b = sb.m_pData;
@@ -11,7 +11,7 @@ static bool operator==(const CCharString& sa, const CCharString& sb)
     if (a->m_length != b->m_length) return false;
     return Compare_00411570(a->m_pChars, b->m_pChars) == 0;
 }
-struct CQuestManager {
+class CQuestManager { public:
     CCharString* m_pNamesFirst; CCharString* m_pNamesLast;
     long GetIndexFromRegisteredQuest(const CCharString& name)
     {

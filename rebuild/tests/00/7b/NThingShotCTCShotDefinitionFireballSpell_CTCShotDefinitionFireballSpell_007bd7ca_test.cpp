@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { bool m_dead; int m_fades; };
+class CThing { public: bool m_dead; int m_fades; };
 bool IS_THING_ALIVE(CThing* const& thing) { return thing != 0 && !thing->m_dead; }
 void FadeOutEffect(CThing* effect) { ++effect->m_fades; }
 struct CIntelligentPointer_CThing { CThing* m_pItem; CThing* Get() const { return m_pItem; } };

@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CInputManager;
+class CInputManager;
 
 #pragma pack(push, 1)
-struct CJoystick {
+class CJoystick {
+public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  EventStore[0xd00];                        // +0x04 CInputEvent[64]
     CInputManager* InputManager;                             // +0xd04

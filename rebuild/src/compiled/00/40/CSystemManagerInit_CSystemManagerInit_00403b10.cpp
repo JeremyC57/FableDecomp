@@ -24,25 +24,25 @@
 struct HINSTANCE__;
 struct HWND__;
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                           // 0x0099AED0
     const CWideString& operator=(const unsigned short* text);   // 0x0099B800
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                           // 0x0099E4B0
 };
 
-struct CInputManagerInit {
+class CInputManagerInit { public:
     bool UseMouse;                                           // +0x00
     bool UseJoystick;                                        // +0x01
     bool UseKeyboard;                                        // +0x02
     CInputManagerInit() : UseMouse(false), UseJoystick(false), UseKeyboard(false) {}
 };
 
-struct CDisplayManagerInit {
+class CDisplayManagerInit { public:
     unsigned char _body[0x38];
     CWideString   ShaderResourcePath;                        // +0x38
     CDisplayManagerInit();                                   // 0x004016F0
@@ -74,7 +74,7 @@ struct SStartupSizes {
 
 enum ESystemCode { SYSTEM_OK = 0 };
 
-struct CSystemManagerInit {
+class CSystemManagerInit { public:
     HINSTANCE__*          InstanceHandle;                    // +0x00
     char*                 CommandLine;                       // +0x04
     long                  WindowsShow;                       // +0x08

@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
 
-struct CLandscapeBackgroundPatch;
+class CLandscapeBackgroundPatch;
 
 // scalar destructor (this-only member), relocation-masked call target
 extern void __fastcall CQuickAccessItemButtonGuiDef_dtor(CLandscapeBackgroundPatch* thisptr);

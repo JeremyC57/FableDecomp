@@ -1,13 +1,13 @@
 // CAnimateThing::PreloadAnims(const CCompleteAnimation&) -- touch every animation the complete animation (and the delayed combination anims) will need
 // Layout: no engine/CAnimSet.h / CCompleteAnimation.h; retail STLport vector is 12 bytes and list 4 bytes, so CAnimSet is 0x54,
 // CCompleteAnimation keeps TransitionAnimSets at +0x54 / CombinationAnims at +0x58, CAnimateThing::DelayedAnim at +0x64 (ctor 0x0070E710).
-struct C3DAnimationInfo { void Precache(bool wait); };                    // 0xA26730
-struct CMeshDataBank { C3DAnimationInfo* PeekAnimation(unsigned long index) const; };   // 0xA242C0
-struct CWorld { char _pad[0x3c]; CMeshDataBank* PMainMeshBank; };
-struct CMainGameComponent { char _pad[0x24]; CWorld* PWorld; };
+class C3DAnimationInfo { public: void Precache(bool wait); };                    // 0xA26730
+class CMeshDataBank { public: C3DAnimationInfo* PeekAnimation(unsigned long index) const; };   // 0xA242C0
+class CWorld { public: char _pad[0x3c]; CMeshDataBank* PMainMeshBank; };
+class CMainGameComponent { public: char _pad[0x24]; CWorld* PWorld; };
 extern CMainGameComponent* g_PMainGameComponent;   // 0x13B86A0
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);
     virtual void Delete();
     unsigned long IVRefCount;
@@ -37,7 +37,7 @@ public:
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
 };
-struct C3DAnimationBlendState : CBaseClass {       // vtable 0x01239838
+class C3DAnimationBlendState : public CBaseClass { public:       // vtable 0x01239838
     CIVCountedPointer Animation;
     virtual void v000();
     C3DAnimationBlendState() { }
@@ -48,7 +48,7 @@ struct CShortVector {
     unsigned int size() const { return _M_finish - _M_start; }
     const short& operator[](unsigned int i) const { return _M_start[i]; }
 };
-struct CTransitionBlendAlpha { float CurrentAlpha; float LastAlpha; };
+class CTransitionBlendAlpha { public: float CurrentAlpha; float LastAlpha; };
 struct CAlphaVector {
     CTransitionBlendAlpha* _M_start; CTransitionBlendAlpha* _M_finish; CTransitionBlendAlpha* _M_end_of_storage;
     unsigned int size() const { return _M_finish - _M_start; }

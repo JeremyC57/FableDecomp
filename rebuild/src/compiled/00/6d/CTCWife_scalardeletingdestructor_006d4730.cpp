@@ -1,4 +1,4 @@
-struct CTCWife {
+class CTCWife { public:
     void* vftable;
 };
 

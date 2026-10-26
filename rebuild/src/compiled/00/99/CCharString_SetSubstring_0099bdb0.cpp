@@ -4,16 +4,16 @@ extern "C" unsigned short g_emptyWideStringData; // 0x00129a8e0 (empty wide-stri
 extern "C" void __cdecl free_00bfea14(void* p);      // 0x00bfea14 (free thunk)
 extern "C" void __cdecl operator_delete_00bfe9bc(void* p); // 0x00bfe9bc (operator delete)
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     unsigned short* data;
     long unused1;
     long unused2;
     long refCount; // offset +0xC
 };
 
-struct CCharString
-{
+class CCharString
+{ public:
     CWideStringData* storage;
 
     CWideStringData* AllocStringData(unsigned short* s, long n);

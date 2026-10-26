@@ -9,8 +9,8 @@
 // C3DVector*) @ 0x00815F00 (__fastcall) with the line start.
 // Shape: as 0x008169B0: the 0x100-byte array of 32-byte records filled through a strength-reduced pointer while the count is
 // below 8, the vector end re-read each pass, the comparator value-initialised in the frame.
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -20,13 +20,13 @@ struct CHitVolume {
     virtual bool IntersectFiniteLine(CThing* owner, const C3DVector& start, const C3DVector& end, C3DVector* hitA,
                                      C3DVector* hitB, long flags);   // slot 7 (+0x1c)
 };
-struct CHitLocationDef {
+class CHitLocationDef { public:
     unsigned char _pad_0x00[0x3C];
     CHitVolume*   PVolume;                           // +0x3C
 };
 
 namespace NHitLocations {
-struct CHitLocation {                                // 0x18 bytes
+class CHitLocation { public:                                // 0x18 bytes
     CThing*          POwnerThing;                    // +0x00
     CHitLocationDef* PDef;                           // +0x04 CDefPointer<const CHitLocationDef>::Object
     void*            PArmourDef;                     // +0x08
@@ -60,7 +60,7 @@ void __fastcall sort(THitLocationIntersectionElement* first, THitLocationInterse
 NHitLocations::CHitLocation* __fastcall GetPBestHitLocationFromList(THitLocationIntersectionElement* elements,
     unsigned long count, const C3DVector* origin, C3DVector* outA, C3DVector* outB);   // 0x00815F00
 
-struct CTCHitLocations {
+class CTCHitLocations { public:
     void*              __vftable;                    // +0x00
     unsigned char      _pad_0x04[0x08];
     SHitLocationEntry* HitLocations_start;           // +0x0C vector begin

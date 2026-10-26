@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCQuestCompletionUI { void OnCreate(); };
+class CTCQuestCompletionUI { public: void OnCreate(); };
 void CTCQuestCompletionUI::OnCreate() {}

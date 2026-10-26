@@ -10,7 +10,7 @@
 // Layout: retail CComponent States (map, 12 bytes) +0x24, as the landed 0x0054BBB0 model; no engine/ header exists.
 // Shape: the literal key is a frame temporary whose address is pushed before its zero store; the reference result is
 //          returned as the pointer.
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CUIState {
     unsigned long StateChangeFlag;                 // +0x00
     long          StateChangeType;                 // +0x04

@@ -3,22 +3,22 @@
 #ifndef _MSC_VER
 #define __declspec(x)
 #endif
-struct CCharStringData {
+class CCharStringData { public:
     char* Text;                                 // +0
     long  Length;                               // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PData;
     CCharString& operator=(const char* text);   // 0x0099EFE0
     bool IsEmpty() const { return PData == 0 || PData->Length == 0; }
 };
 bool g_bForceStandAroundBrain = false;
-struct CBrainDef {
+class CBrainDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object)
@@ -32,7 +32,7 @@ template<class T> struct CDefPointer {
             Object->Destroy();
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CBrainDef>* out);          // 0x0079BD80
     bool GetDef(const CCharString& name, CDefPointer<CBrainDef>* out);   // 0x006D3E80
 };
@@ -57,7 +57,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(const CCharString& name, CD
     return true;
 }
 
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x90];
     float MaxWalkingSpeed;                      // +0x90
     float MaxJoggingSpeed;                      // +0x94
@@ -72,7 +72,7 @@ struct CThingCreatureDef {
     bool CreateDummyOnDeath : 1;
     bool ImmuneToAttack : 1;                    // bit 3
 };
-struct CThingAICreature {
+class CThingAICreature { public:
     void*         __vftable;
     unsigned char _pad04[0xe0 - 0x04];
     CThingCreatureDef* PDef;                    // +0xe0 CDefPointer<CThingCreatureDef const>::Object

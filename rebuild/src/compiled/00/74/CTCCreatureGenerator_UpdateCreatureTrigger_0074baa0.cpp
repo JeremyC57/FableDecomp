@@ -8,18 +8,18 @@
 // from GenParams: retail CArray 0xc, STLport list one word): CreatedCreatures (list node) +0x18, CreatureTriggerers +0x1c,
 // GenParams +0x28 (SelfTriggerRadius +0x2c, SelfTriggerResetInterval +0x34), Active +0x4c, ExternalTrigger +0x4f,
 // WaitForAllCreaturesDead +0x50, NumTriggersLeft +0x54, ActivationFrame +0x58, LastSpaceTest +0x5c, UndeadTriggered +0x88.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
 };
 struct CIntelligentPointer_Creature {                       // CIntelligentPointer<CThingCreatureBase>: 8 bytes
     void* Data[2];
@@ -31,7 +31,7 @@ struct CListNode {
 };
 float __stdcall DivideByGameSpeed(float f);                 // 0x00415FD3
 
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     void*                          __vftable;              // +0x00
     CThing*                        ParentThing;            // +0x04
     unsigned char                  _pad08[0x10];           // +0x08

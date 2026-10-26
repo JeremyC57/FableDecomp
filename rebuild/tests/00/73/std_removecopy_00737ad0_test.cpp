@@ -8,7 +8,7 @@ struct CBaseIntelligentPointer {
     const CThing* GetPItem() const { return m_pItem; }
     void SetPItem(const CThing* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() { }
     CIntelligentPointer() { }
     CIntelligentPointer(const CThing* t) { SetPItem(t); }

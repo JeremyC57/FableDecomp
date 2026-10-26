@@ -20,12 +20,12 @@
 // Leaf: ??1CRegion
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
@@ -55,7 +55,7 @@ struct CLongVector {                            // STLport vector<long>: {start,
     }
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 

@@ -15,31 +15,31 @@ static int fails = 0;
 // Layout: CTCSwitchableNavigation MapIndex +0x0C (Ego_r.pdb, unused here). CThing UID __int64 at +0x18.
 // Shape: the 2D position is a named local built first (`C2DVector p(pos.X, pos.Y)`), the manager fetched before the layer call (kept in
 // ebx); the node's answer is returned directly.
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     __int64 UID;                                // +0x18
 };
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual void n00(); virtual void n01(); virtual void n02(); virtual void n03(); virtual void n04();
     virtual void n05(); virtual void n06(); virtual void n07(); virtual void n08(); virtual void n09();
     virtual bool WouldBeBlockedBy(__int64 thingUID);   // slot 10 (+0x28)
 };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer);   // 0x00A14F70
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x48];
     CNavigatorManager* NavigatorManager;        // +0x48
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetNavigationLayerAt(const C3DVector& pos, CThing* thing);   // 0x0063E590
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     __int64 GetParentUID() const { return ParentThing->UID; }
@@ -48,7 +48,7 @@ struct CTCBase {
     CWorld* GetWorld();                         // 0x00686A70
     CWorldMap* GetWorldMap();                   // 0x00686D20
 };
-struct CTCSwitchableNavigation : CTCBase {
+class CTCSwitchableNavigation : public CTCBase { public:
     long MapIndex;                              // +0x0c
     bool WouldBlockPos(const C3DVector& pos);
 };

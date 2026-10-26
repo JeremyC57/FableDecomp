@@ -10,8 +10,8 @@
 // absent path reads garbage, as the landed 0x0069F480 family); the found component rides in esi. The `kind == 1 ? a : b` object of the
 // centre call selects between the component (register) and a second, never-assigned component pointer read from the same shared
 // frame word -- retail's `mov ecx,esi ; je ; mov ecx,[esp+8]`.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -22,7 +22,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -41,7 +41,7 @@ struct CThing {
     }
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();

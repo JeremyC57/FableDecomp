@@ -9,17 +9,17 @@
 // through the inline converting constructor (vtable 0x0123E7D8, SetPItem(0)), the inline operator= and the base
 // destructor.
 // Model: local (engine/CAIStateGroup_EnemyCreatureBase.h flattens the base).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CThingAICreature {
+class CThingAICreature { public:
     bool IsRegisteredCombatant();                   // 0x00662410
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void DeregisterCombatant(CThingCreatureBase* creature);     // 0x006ED9C0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* CombatManager;                  // +0x4c
 };
@@ -39,12 +39,12 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                     // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

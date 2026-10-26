@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for 0x005D8E70: no inventory -> 0, else the inventory's price for the owner's def index.
-struct CThing { unsigned short DefIndex; };
+class CThing { public: unsigned short DefIndex; };
 static long g_seen = -1;
 struct CTCInventoryBase { long GetBoughtPrice(long defIndex) { g_seen = defIndex; return defIndex * 10 + 1; } };
-struct CTCBase { virtual void v00() {} CThing* ParentThing; };
-struct CTCInventoryItem : CTCBase {
+class CTCBase { public: virtual void v00() {} CThing* ParentThing; };
+class CTCInventoryItem : public CTCBase { public:
     void* PDef;
     CTCInventoryBase* PInventory;
     long GetBoughtPrice();

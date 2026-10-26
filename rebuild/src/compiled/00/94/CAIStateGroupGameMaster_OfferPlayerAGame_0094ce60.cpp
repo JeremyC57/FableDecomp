@@ -14,15 +14,15 @@
 //          before GFGetCurrentFrame (fps rides in ebx across the call).
 // Layout: PDB CAIStateGroup_GameMaster (176 bytes) derives CAIStateGroup_GoToPub: PTable +0x24 (CIntelligentPointer<CThingObject>),
 //          TimeNextReactToPlayer +0xa8; no engine header for these classes (flattened bases), so modelled locally.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -69,30 +69,30 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
-struct CPlayer { CThing* GetHeroThing(); };                     // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };            // 0x00449970
-struct CTCTavernGame { long GetBanter(); };                     // 0x005EA3C0 (interface 0xcf)
-struct CAIBrain {
+class CPlayer { public: CThing* GetHeroThing(); };                     // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };            // 0x00449970
+class CTCTavernGame { public: long GetBanter(); };                     // 0x005EA3C0 (interface 0xcf)
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
@@ -109,7 +109,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
         return 0;
     return seed % range;
 }
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];

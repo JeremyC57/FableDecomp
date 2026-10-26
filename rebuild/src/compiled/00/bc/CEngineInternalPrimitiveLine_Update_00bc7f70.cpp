@@ -13,8 +13,8 @@
 // second getter folds to `sbb ; and`), called even when null; both getters must be `__forceinline` (else GetFrame stays out of line).
 #include "engine/CEngineInternalPrimitiveBase.h"
 
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
 class CEnginePrimitive {                           // PDB, 12 bytes
 public:
@@ -35,7 +35,7 @@ public:
     bool          UseZBuffer;                      // +0x38
 };
 
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     void BeginLoading(unsigned long priority, unsigned long flags);   // 0x009FE620
 };
 
@@ -67,7 +67,7 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
-struct CEngineInternalPrimitiveLine : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveLine : public CEngineInternalPrimitiveBase { public:
     C3DVector     Start;                           // +0x48
     C3DVector     End;                             // +0x54
     CRGBColour    Colour;                          // +0x60

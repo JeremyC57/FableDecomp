@@ -26,7 +26,7 @@ struct CTCInventoryBase {
     void ProcessButtonAReleased();                   // 0x005BC65C
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     bool EnableQuickAccessAssign;                    // +0x1cc (PDB +0x204)
     bool EnableQuickAccessRemove;                    // +0x1cd (PDB +0x205)
     void ProcessButtonAReleased();

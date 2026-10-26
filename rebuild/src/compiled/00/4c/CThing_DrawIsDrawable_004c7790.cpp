@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7790, 32 bytes. CThing vtable 0x01239ABC slot 27. No callees.
 // Shape: Drawable is bit 1 of +0x92, Activated bit 3 and Dead bit 0 of +0x91 (retail offsets, PDB +0x10 higher);
 // `return a && b && !c;` materialises the bool through the full register (`mov eax,1` / `xor eax,eax`).
-struct CThing {
+class CThing { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad04[0x91 - 0x04];
     unsigned char Dead : 1;                          // +0x91 bit 0 (PDB +0xa1)

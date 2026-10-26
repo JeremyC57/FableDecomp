@@ -8,13 +8,13 @@
 // Shape: `return p ? CCharString(p, -1) : CCharString("", -1);` -- VC's conditional-temporary bookkeeping: the flag word in ebx
 // (1 / 2 per arm, its frame home zeroed first), the chosen temporary copied into the hidden result, then each temporary
 // destroyed under its own flag test.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();                                  // 0x0099EAE0
 };
-struct CParticleMorphs {
+class CParticleMorphs { public:
     const char* m_pName;                             // +0x00
     CCharString MorphEntry_FromPointer() const;
 };

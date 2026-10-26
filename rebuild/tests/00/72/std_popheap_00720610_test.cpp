@@ -24,12 +24,12 @@ static int fails = 0;
 //   the reciprocal multiply by 0x2AAAAAAB with `sar edx,2` (divide by 24).
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
-struct CRGBColour {                                // D3DCOLOR byte order
+class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;              // +0x00
     ECompositeBlendType BlendType;                 // +0x04
     CRGBColour          DiffuseColour;             // +0x08
@@ -49,7 +49,7 @@ __declspec(noinline) CCompositeBlendDesc::CCompositeBlendDesc(const CCompositeBl
 }
 #pragma auto_inline(on)
 
-struct CTextureMorphEntry {
+class CTextureMorphEntry { public:
     long                TextureLayer;              // +0x00
     CCompositeBlendDesc Blend;                     // +0x04
 };
@@ -59,7 +59,7 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 }
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef std::pair<EHeroMorphType, CTextureMorphEntry> CMorphPair;

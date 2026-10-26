@@ -9,7 +9,7 @@
 // offsets: `#pragma pack(1)`), PTargetingDef +0x30, LookAtCamera +0x34.
 // Shape: init list in declaration order; each pointer member's address is formed in edi (`lea edi,[esi+0Dh]`) for the base ctor and the
 // derived vtable store.
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                              // +0x04
@@ -19,12 +19,12 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     virtual void v00();
     CIntelligentPointerThing() { }
 };
-struct CTargetingDef;
-template<class T> struct CDefPointer {
+class CTargetingDef;
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
@@ -32,7 +32,7 @@ struct CTCBase {
     CTCBase(CThing* thing);                     // 0x00686800
 };
 #pragma pack(push, 1)
-struct CTCTargetingBase : CTCBase {             // vtable 0x01271E74
+class CTCTargetingBase : public CTCBase { public:             // vtable 0x01271E74
     bool ScriptOverrideIgnoreEverything;                    // +0x0c
     CIntelligentPointerThing PNearestInterestingThing;      // +0x0d
     CIntelligentPointerThing PScriptOverrideInterestingThing;   // +0x15

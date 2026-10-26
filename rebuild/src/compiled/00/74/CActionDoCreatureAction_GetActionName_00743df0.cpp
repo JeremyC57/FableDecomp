@@ -1,10 +1,10 @@
-struct CCharString {
+class CCharString { public:
 // Leaf: GetActionName
     CCharString(const char* lit, int len);
     int dummy;
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CCharString GetStrikeEventHelperName();
 };
 

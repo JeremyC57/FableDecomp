@@ -8,8 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CStreamingFontDataBank;
-struct CTexture;
+class CStreamingFontDataBank;
+class CTexture;
 struct GlyphBank;
 
 #pragma pack(push, 1)

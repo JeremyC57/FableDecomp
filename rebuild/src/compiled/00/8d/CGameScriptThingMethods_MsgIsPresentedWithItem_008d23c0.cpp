@@ -11,12 +11,12 @@
 // Shape: the two event types are a switch with two identical case bodies, each returning (case 11 laid out first).
 #include "engine/CGameScriptThing.h"
 #include "engine/CSpawnedFuncBase.h"
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefString {
+class CDefString { public:
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }
     operator CCharString() const;

@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for 006d4d00: the typed intelligent-pointer accessor returns GetPItem() cast to CThing*.
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer { void* PData; void* GetPItem() const { return PData; } };
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer { CThing* Get() const { return (CThing*)GetPItem(); } };
 int main()

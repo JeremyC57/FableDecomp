@@ -29,20 +29,20 @@
 // Shape: the CPreMeleeMaze row 0x00D43DB0 model (counted CScriptThing with inline destructor, local handle with the
 //   implicit inline destructor) plus the CTH_ThunderBoy InlineCopy argument, the landed cutscene cast-map calls
 //   (CScytheNearOracle 0x00E2A320) and a CRGBColour built in its argument slot.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour {                                    // D3DCOLOR byte order
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public:                                    // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
 };
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -61,11 +61,11 @@ struct CScriptThingImpl {                              // the polymorphic implem
     virtual void i071() {} virtual void i072() {} virtual void i073() {} virtual void i074() {}
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-struct CBaseClass {                                    // vtable 0x01231710
+class CBaseClass { public:                                    // vtable 0x01231710
     CBaseClass() { }
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
-template <class T> struct CCountedPointer {            // {Data, Info}
+template <class T> class CCountedPointer { public:            // {Data, Info}
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -106,7 +106,7 @@ template <class T> struct CCountedPointer {            // {Data, Info}
         return *this;
     }
 };
-struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     virtual void s001() {} virtual void s002() {} virtual void s003() {} virtual void s004() {} virtual void s005() {} virtual void s006() {} virtual void s007() {} virtual void s008() {}
     virtual void s009() {} virtual void s010() {} virtual void s011() {} virtual void s012() {} virtual void s013() {} virtual void s014() {} virtual void s015() {} virtual void s016() {}
     virtual void s017() {} virtual void s018() {} virtual void s019() {} virtual void s020() {} virtual void s021() {} virtual void s022() {} virtual void s023() {} virtual void s024() {}
@@ -132,12 +132,12 @@ struct CBaseIntelligentPointer {                       // vtable 0x0129A7D8
     CBaseIntelligentPointer();                         // 0x0099A380
     virtual ~CBaseIntelligentPointer();                // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
 struct CScriptGameResourceObjectImpl;
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     virtual void h001() {} virtual void h002() {} virtual void h003() {}
     virtual void MoveToPosition(const C3DVector& position, float speed, EScriptEntityMoveType moveType, bool a, bool b);   // slot 4 (+0x10)
     virtual void h005() {} virtual void h006() {} virtual void h007() {} virtual void h008() {} virtual void h009() {}
@@ -161,7 +161,7 @@ struct CResourcePImp {                                 // the movie's counted im
     CResourcePImp() : Data(0), Info(0) { }
     ~CResourcePImp();                                  // 0x006E7AB0
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CResourcePImp PImp;                                // +0x08
     CScriptGameResourceObjectMovieBase() { }
     // implicit destructor; out-of-line copies: ctor 0x006E7B60, dtor 0x006E7B80
@@ -316,11 +316,11 @@ struct CEntityScriptBase {                             // retail 0x14 bytes
     CScriptThing Me;                                   // +0x08
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
 };
-struct CQ_SunnyvaleMasterData {
+class CQ_SunnyvaleMasterData { public:
     unsigned char _pad[0xc6];
     bool HeroTakingGuildTest;                          // +0xc6
 };
-struct CQ_GuildTrainingDepartureScript {
+class CQ_GuildTrainingDepartureScript { public:
     class CTheRealGuildmaster;
 };
 class CQ_GuildTrainingDepartureScript::CTheRealGuildmaster : public CEntityScriptBase {

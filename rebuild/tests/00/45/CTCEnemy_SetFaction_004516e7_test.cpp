@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCEnemy { void* vtbl; int ParentThing; };
+class CTCEnemy { public: void* vtbl; int ParentThing; };
 
 static int g_helper_a, g_helper_b;
 void __stdcall SF_helper(int a, int b){ g_helper_a=a; g_helper_b=b; }

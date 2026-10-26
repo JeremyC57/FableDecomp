@@ -14,7 +14,7 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -64,7 +64,7 @@ template <class T> struct CDefPointer {
     T* operator->() const { return Data; }
 };
 
-struct CComponent {
+class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual C2DVector GetScale() const;   // slot 12 (+0x30)
@@ -111,7 +111,7 @@ template <class T> struct Vector {
     bool empty() const { return First == Last; }
 };
 
-struct CList {
+class CList { public:
     unsigned char           _pad000[0x15c];
     int                     SelectedChild;                  // +0x15c
     float                   LastInputTime;                  // +0x160

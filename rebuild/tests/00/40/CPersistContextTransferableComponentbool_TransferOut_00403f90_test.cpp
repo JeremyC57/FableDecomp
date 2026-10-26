@@ -10,8 +10,8 @@ typedef unsigned __int64 UInt64;
 #endif
 #include <cstring>
 // Behaviour test for 00403f90: the bool component appends "TRUE" or "FALSE" to the output string.
-struct CPersistContext;
-struct CCharString {
+class CPersistContext;
+class CCharString { public:
     char m_text[16];
     CCharString& operator+=(const char* text) { std::strcat(m_text, text); return *this; }
 };

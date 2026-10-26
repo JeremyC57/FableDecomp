@@ -3,13 +3,13 @@
 #include <string>
 // Behaviour model of CBriarRose::Init: one spawned WatchForAttack thread on Me, then six interface calls in order.
 static std::string g_log;
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString(const char* t, int = -1) : s(t) {}
 };
 static CCharString operator+(const CCharString& a, const CCharString& b) { return CCharString((a.s + b.s).c_str()); }
 static int g_refs = 1;
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     CScriptThing(int i) : id(i) {}
     CScriptThing(const CScriptThing& o) : id(o.id) { ++g_refs; }
@@ -20,7 +20,7 @@ struct CParent {
     CSpawned* added; std::string region;
     void Add(CSpawned* f, const CCharString& r) { added = f; region = r.s; g_log += "add;"; }
 };
-struct CGame {
+class CGame { public:
     void SetThingHasInformation(const CScriptThing& t, bool a, bool b, bool c) const { char x[64]; std::sprintf(x, "info%d%d%d%d;", t.id, a, b, c); g_log += x; }
     void EntitySheatheWeapons(const CScriptThing& t, bool s) const { char x[64]; std::sprintf(x, "sheathe%d%d;", t.id, s); g_log += x; }
     void EntitySetAsOpinionSource(const CScriptThing&, const CCharString& n) const { g_log += "op:" + n.s + ";"; }

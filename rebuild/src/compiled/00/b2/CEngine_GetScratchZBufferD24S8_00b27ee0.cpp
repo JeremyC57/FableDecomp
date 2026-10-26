@@ -30,7 +30,7 @@ __forceinline long HighestSetBit(unsigned long value)
     return r;
 }
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width, Height;
     C2DExtentsI(long w, long h) : Width(w), Height(h) { }
 };
@@ -51,7 +51,7 @@ template <class T> struct CRetailArray {           // retail CArray: {first, las
     void resize(unsigned int count, const T& value);   // 0x00B2AAB0
 };
 
-struct CEngine {
+class CEngine { public:
     unsigned char                  _pad[0x14c];
     CRetailArray<CSurfaceNative*>  ScratchZBuffersD24S8;   // +0x14c
     CSurfaceNative* GetScratchZBufferD24S8(unsigned long size);

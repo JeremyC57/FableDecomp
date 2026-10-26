@@ -2,8 +2,8 @@
 #include <cstdlib>
 #include <cstring>
 // behaviour test for 0x00A65F00: exercises the same logic through a copy of the model (compiled separately from the source)
-struct CGuiWindow { int id; CGuiWindow* PPrevWindow; CGuiWindow* PNextWindow; };
-struct CGuiWindowManager {
+class CGuiWindow { public: int id; CGuiWindow* PPrevWindow; CGuiWindow* PNextWindow; };
+class CGuiWindowManager { public:
     CGuiWindow* PLastWindow; CGuiWindow* PFirstWindow;
     void AddWindow(CGuiWindow* window)
     {

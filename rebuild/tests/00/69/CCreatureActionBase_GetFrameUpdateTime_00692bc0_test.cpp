@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThingCreatureBase { float mult; float GetAnimationSpeedMultiplier() const { return mult; } };
+class CThingCreatureBase { public: float mult; float GetAnimationSpeedMultiplier() const { return mult; } };
 struct CBaseIntelligentPointer { virtual void v00() {} CThingCreatureBase* m_pItem; CThingCreatureBase* GetPItem() const { return m_pItem; } };
 long g_frameRate = 25;
-struct CCreatureActionBase { virtual void v00() {} unsigned char _pad04[4]; CBaseIntelligentPointer PCreature;
+class CCreatureActionBase { public: virtual void v00() {} unsigned char _pad04[4]; CBaseIntelligentPointer PCreature;
     float GetFrameUpdateTime() const { float frameTime = 1.0f / (float)g_frameRate; return PCreature.GetPItem()->GetAnimationSpeedMultiplier() * frameTime; } };
 int main()
 {

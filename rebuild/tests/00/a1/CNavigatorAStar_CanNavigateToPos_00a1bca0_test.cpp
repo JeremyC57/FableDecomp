@@ -3,12 +3,12 @@
 // reaches the radius; true only for unblocked nodes in connected regions.
 #include <cstdio>
 
-struct C2DVector { float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
-struct C3DVector { float X, Y, Z; };
-struct CNavRegion { int group; bool IsConnectedTo(const CNavRegion* o) const { return group == o->group; } };
+class C2DVector { public: float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
+class C3DVector { public: float X, Y, Z; };
+class CNavRegion { public: int group; bool IsConnectedTo(const CNavRegion* o) const { return group == o->group; } };
 struct CNode { bool Blocked; CNavRegion* region; CNavRegion* GetRegion() const { return region; } };
 static CNode* g_nodeAt[4]; static CNode* g_nearest; static bool g_reaches; static int g_findCalls; static float g_lastFindDist;
-struct CNavigatorAStar {
+class CNavigatorAStar { public:
     CNode* LastNavigableNodeVisited;
     CNode* GetNodeAt(const C2DVector& p) const { return g_nodeAt[(int)p.X]; }
     CNode* FindNearestNavigableNode(CNode*, CNode*, const C3DVector&, float d) const { ++g_findCalls; g_lastFindDist = d; return g_nearest; }

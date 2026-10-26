@@ -19,7 +19,7 @@
 // WindStrength +0x38, DraggingEnable/Rotational +0x3c/+0x3d, DraggingStrength +0x40, AccelerationEnable +0x44,
 // GlobalDamping +0x48. MaximumAdjustment (+0x30) is not saved.
 // Shape: the TimestepChanged flag goes out as a ULONG (`movzx`), the other flags through WriteBool.
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 
 class CDataOutputStream {
 public:
@@ -35,7 +35,7 @@ public:
 
 void __fastcall WriteVectors_00ae18c0(const C4DVector* vectors, unsigned long count, CDataOutputStream& stream);   // 0x00AE18C0
 
-struct CParticleSimulation {
+class CParticleSimulation { public:
     void*         __vftable;                       // +0x00
     unsigned char RenderData[8];                   // +0x04 CCountedPointer<CParticleSimulationRenderData>
     float         Timestep;                        // +0x0c

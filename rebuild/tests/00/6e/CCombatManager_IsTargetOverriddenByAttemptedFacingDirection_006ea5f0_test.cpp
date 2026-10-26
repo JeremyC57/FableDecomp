@@ -4,7 +4,7 @@
 #include <cmath>
 
 static float g_Epsilon = 1e-4f;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -13,8 +13,8 @@ struct C3DVector {
     void Normalise() { float l = std::sqrt(GetLengthSquared()); X /= l; Y /= l; Z /= l; }
 };
 static float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
-struct CThing { C3DVector Pos; bool HasOverride; float OverrideAngle; CThing* Carried; bool Dead; const C3DVector& GetPosition() const { return Pos; } };
-struct CCombatManager {
+class CThing { public: C3DVector Pos; bool HasOverride; float OverrideAngle; CThing* Carried; bool Dead; const C3DVector& GetPosition() const { return Pos; } };
+class CCombatManager { public:
     bool IsTargetOverriddenByAttemptedFacingDirection(const CThing& creature, const CThing& target, const C3DVector& facing) const
     {
         C3DVector targetPosition = target.GetPosition();

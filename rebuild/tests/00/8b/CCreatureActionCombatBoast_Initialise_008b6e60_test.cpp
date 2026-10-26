@@ -21,9 +21,9 @@ static int fails = 0;
 // Layout: retail CCombatManager holds DialogueManager at +0x38 (PDB +0x40: the two leading maps are 12 bytes in
 //   retail) and CombatDialogueManager::PDialogueDef at its +0x0c (after the 12-byte map); CCombatActionBase is 0x114
 //   bytes with PCreature at +8. CCombatDialogueDef +0x5c is the boast speech id (name descriptive).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -37,26 +37,26 @@ struct CDefBase {                           // counted game definition: vtable +
     void Release() const { if (--((CDefBase*)this)->m_refCount == 0) ((CDefBase*)this)->Destroy(); }
 };
 
-struct CCombatDialogueDef : CDefBase {
+class CCombatDialogueDef : public CDefBase { public:
     unsigned char _pad08[0x5c - 0x08];
     unsigned long BoastSpeech;              // +0x5c
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pDef;
     CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) m_pDef->AddRef(); }
     ~CDefPointer() { m_pDef->Release(); }
     T* operator->() const { return m_pDef; }
 };
 
-struct CombatDialogueManager {
+class CombatDialogueManager { public:
     unsigned char SpeechGroupInfoMap[0x0c];                  // +0x00 map<ulong, TSpeechGroupInfo>
     CDefPointer<const CCombatDialogueDef> PDialogueDef;      // +0x0c
     bool SaySpeech(CThingCreatureBase& creature, unsigned long speech);   // 0x008AFC40
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     unsigned char _pad00[0x38];
     CombatDialogueManager DialogueManager;  // +0x38
 };
@@ -67,7 +67,7 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + it
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];                // +0x04
@@ -77,7 +77,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_CombatBoast : CCombatActionBase {
+class CCreatureAction_CombatBoast : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

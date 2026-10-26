@@ -19,7 +19,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CResource {
+class CResource { public:
     virtual ~CResource();                          // 0x009FC550
     unsigned long m_refCount;                      // +0x04
     void*         m_pResourceList;                 // +0x08
@@ -29,18 +29,18 @@ struct CResource {
     unsigned long m_lastUsedFrame;                 // +0x18
 };
 
-struct CDefPointeeBase : CResource {               // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:               // vtable 0x01230BA0
     virtual ~CDefPointeeBase() {}
 };
 
-struct CSubDefClassBase : CDefPointeeBase {        // vtable 0x01231D54
+class CSubDefClassBase : public CDefPointeeBase { public:        // vtable 0x01231D54
     long          m_defIndex;                      // +0x1c
     long          m_reserved;                      // +0x20
     unsigned char m_flags;                         // +0x24
     CSubDefClassBase();                            // 0x0044C0C0
 };
 
-struct CPrizeScoreDef : CSubDefClassBase {         // vtable 0x012437D4, 0x30 bytes
+class CPrizeScoreDef : public CSubDefClassBase { public:         // vtable 0x012437D4, 0x30 bytes
     float Score;                                   // +0x28
     long  Mult;                                    // +0x2c
     CPrizeScoreDef() {}

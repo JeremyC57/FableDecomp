@@ -18,7 +18,7 @@ struct CBankStateBlock_00a23a30 {
     SBankState_00a23a30 m_state;                   // +0x04
 };
 
-struct CMeshBankStateBlock {
+class CMeshBankStateBlock { public:
     void GetDefault(CBankStateBlock_00a23a30* block);
 };
 

@@ -115,7 +115,7 @@ public:
     static bool __fastcall AreThingsEnemies(const CThing& a, const CThing& b);   // 0x0076D2F0
 };
 bool __fastcall IsValidRangedWeaponTargetForShooter(const CThing* shooter, const CThing* target, float range);   // 0x0085F8D0
-struct CSpecialAbilitiesFireballSpellDef {
+class CSpecialAbilitiesFireballSpellDef { public:
     unsigned char _pad00[0x50];
     float TargettingArcAngle;                           // +0x50
 };

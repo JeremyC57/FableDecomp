@@ -8,9 +8,9 @@
 // value at +0x4. Both halves are pushed (high word first) and a CCharString temporary is built in
 // the `push ecx` frame slot by the unsigned 64-bit constructor; its returned `this` (eax) is
 // appended to the output string (second argument), then the temporary dies.
-struct CPersistContext;
+class CPersistContext;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0

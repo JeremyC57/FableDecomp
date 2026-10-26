@@ -1,7 +1,7 @@
 // Behaviour test for 0x00817840 __unguarded_partition<THitLocationIntersectionElement> (model copy).
 #include <cstdio>
 struct CHitLocation { int id; };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

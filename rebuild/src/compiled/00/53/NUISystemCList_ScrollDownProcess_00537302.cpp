@@ -30,13 +30,13 @@ struct CIconsDefPointer {
 };
 
 namespace NUISystem {
-struct CAction;
+class CAction;
 struct CCPPointerInfo;
 struct CActionPointer {                              // CCountedPointer<NUISystem::CAction>
     CAction*        Data;
     CCPPointerInfo* Info;
 };
-struct CManager {
+class CManager { public:
     virtual void m000(); virtual void m001(); virtual void m002(); virtual void m003(); virtual void m004();
     virtual void m005(); virtual void m006(); virtual void m007(); virtual void m008(); virtual void m009();
     virtual void m010(); virtual void m011(); virtual void m012(); virtual void m013();
@@ -101,7 +101,7 @@ struct CComponentBase {
     virtual void c170(); virtual void c171();
     virtual bool IsReversed();                        // slot 172 (+0x2B0, 0x0053CE50)
 };
-struct CComponent : CComponentBase, CStateHolder {
+class CComponent : public CComponentBase, public CStateHolder { public:
     unsigned char _pad_0x08[0x28];
     float         Time;                              // +0x30
 };
@@ -110,7 +110,7 @@ template <class T> struct Vector {
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     T& operator[](unsigned int n) { return *(_M_start + n); }
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
     unsigned char       _pad_0x34[0x128];
     long                SelectedChild;               // +0x15C
     float               LastInputTime;               // +0x160

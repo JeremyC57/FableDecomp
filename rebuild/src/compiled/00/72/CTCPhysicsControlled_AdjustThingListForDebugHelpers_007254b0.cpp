@@ -14,9 +14,9 @@
 #include <string.h>
 #include "engine/CTCPhysicsStandard.h"
 
-struct CThing;
+class CThing;
 
-struct CPlayerManager {
+class CPlayerManager { public:
     bool IsThingMainPlayer(const CThing* thing) const;   // 0x004497C0
 };
 

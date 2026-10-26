@@ -1,4 +1,4 @@
-struct CEditInputProcessCopyPaste {
+class CEditInputProcessCopyPaste { public:
     char pad[0x10];
     unsigned char m_flag; /* +0x10 */
 };

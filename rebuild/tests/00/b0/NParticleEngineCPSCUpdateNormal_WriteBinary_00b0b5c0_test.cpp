@@ -1,8 +1,8 @@
 // Behaviour test for CPSCUpdateNormal::WriteBinary (0x00B0B5C0): records every stream write and checks the order,
 // the bit-field extraction and the member values.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CCharString { const char* Text; };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: const char* Text; };
 struct Rec { char kind; unsigned long u; float f; };
 struct Stream {
     Rec recs[64]; int n;

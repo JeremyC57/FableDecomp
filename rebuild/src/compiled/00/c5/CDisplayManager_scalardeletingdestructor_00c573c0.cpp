@@ -1,4 +1,4 @@
-struct CDisplayManager {
+class CDisplayManager { public:
 // Leaf: `scalar_deleting_destructor'
     void* vftable;
 };

@@ -14,7 +14,7 @@ struct SScreenEffectState_01436e40 {
 };
 extern SScreenEffectState_01436e40* g_pScreenEffectState_01436e40;   // 0x01436E40
 
-struct CEngine {
+class CEngine { public:
     void SetScreenColourFilter(const SScreenColourFilter& filter);   // a member (`ret 4`), `this` unused
 };
 

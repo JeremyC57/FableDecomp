@@ -28,16 +28,16 @@ extern "C" void free(void* block);                              // 0x00BFEA14
 
 namespace QuadricOptimiserInternals {
 
-struct CUniqueVertex {
+class CUniqueVertex { public:
     unsigned char _body[0x1c];
     ~CUniqueVertex();                                           // 0x00AD4A70
 };
-struct COptimisedVertex {
+class COptimisedVertex { public:
     unsigned char _body[0xb8];
     ~COptimisedVertex();                                        // 0x00AD7400
 };
-struct COptimisedFace { unsigned char _body[0x48]; };
-struct COptimisedEdge { long Vertex[2]; long Face[2]; };
+class COptimisedFace { public: unsigned char _body[0x48]; };
+class COptimisedEdge { public: long Vertex[2]; long Face[2]; };
 struct CCountedPointerAny { void* m_pObject; void* m_pCount; }; // CCountedPointer<CChunkedFileChunk>
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
@@ -85,9 +85,9 @@ struct CContractionMultimap {                                   // STLport _Rb_t
     ~CContractionMultimap() { clear(); if (_M_header != 0) free(_M_header); }
 };
 
-struct COptimisationParameters { unsigned char _body[0x28]; };
+class COptimisationParameters { public: unsigned char _body[0x28]; };
 
-struct COptimisedPrimitive {
+class COptimisedPrimitive { public:
     long MaterialIndex;                                         // +0x00
     CObjectArray<CUniqueVertex> UniqueVertices;                 // +0x04
     CObjectArray<COptimisedVertex> Vertices;                    // +0x10

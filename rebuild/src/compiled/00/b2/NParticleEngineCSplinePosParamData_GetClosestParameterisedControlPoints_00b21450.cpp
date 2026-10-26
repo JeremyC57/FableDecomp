@@ -6,7 +6,7 @@
 // Shape: `index - 1 > 0 ? index - 1 : 0` is VC's branchless `setle ; dec ; and`; the upper clamp a signed compare and branch.
 // Leaf: GetClosestParameterisedControlPoints
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 struct CParticleUpdateParameters;           // CParticleUpdateParameters<unsigned long, unsigned long>
 
 struct C3DVector {

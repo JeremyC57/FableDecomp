@@ -10,8 +10,8 @@
 // flag 0x400 of +0x34 is set (inlined find over LowerBound @ 0x0040F020; with the flag
 // clear retail reads an uninitialised local). The result is held in esi across the inlined
 // CScriptThing destructor. One of 9 bodies of this shape.
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 
 enum ETCInterfaceType { TC_FIRST = 0 };
 
@@ -58,7 +58,7 @@ struct CBase {
     ~CBase();                              // 0x0099A2E0 (sets the CBase vtable; manifest label propagated)
 };
 
-struct CScriptThing : CBase {             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
+class CScriptThing : public CBase { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
     CCountedPointer PImp;                  // +4 Data / +8 Info
     ~CScriptThing() { }
     CThing* GetThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }
@@ -83,7 +83,7 @@ struct CVectorMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x34];
     unsigned long m_34;                 // +0x34 flags
     unsigned char _pad2[0xc];
@@ -102,7 +102,7 @@ struct STC_5c {
     unsigned long m_5c;                 // +0x5c
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     unsigned long GetTimeToSpendHarassingHero(CScriptThing thing);
 };
 

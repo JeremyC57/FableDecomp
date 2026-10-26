@@ -3,15 +3,15 @@
 #define __fastcall
 #endif
 // Test model: a 1280x960 render target; the GUI layout space is 640x480.
-struct C2DVector { float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
-struct C2DBoxF {
+class C2DVector { public: float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() {}
     C2DBoxF(float tlx, float tly, float brx, float bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}
 };
-struct C2DExtentsI { long Width, Height; };
+class C2DExtentsI { public: long Width, Height; };
 static int g_dimsCalls = 0;
-struct CDisplayManager {
+class CDisplayManager { public:
     long W, H;
     C2DExtentsI GetRenderTargetDimensions() { ++g_dimsCalls; C2DExtentsI e; e.Width = W; e.Height = H; return e; }
 };

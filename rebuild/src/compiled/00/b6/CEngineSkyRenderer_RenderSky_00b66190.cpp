@@ -16,7 +16,7 @@
 //   fold to the all-zero arguments. The third parameter is unused.
 #include "engine/CEngineSkyRenderer.h"
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct IDirect3DVertexBuffer9;
 struct IDirect3DIndexBuffer9;
 
@@ -58,7 +58,7 @@ struct CVertexBufferBase {                         // PDB CVertexBufferBase view
     long                    Type;                  // +0x0c
     unsigned char           Stride;                // +0x10
 };
-struct CIndexBuffer {
+class CIndexBuffer { public:
     void*                  _vptr;                  // +0x00
     IDirect3DIndexBuffer9* PD3DIndexBuffer;        // +0x04
 };

@@ -18,7 +18,7 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -27,11 +27,11 @@ struct CGameEvent {
     bool          Replacement;                     // +0x27
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CWorld {
+class CWorld { public:
     void SetAsLoadingRegion(const C3DVector& pos, float angleXY, bool viaTeleporter, bool force, bool viaDoor);   // 0x0049E2C0
     void HandleMoveHeroToRegionGameEvent(const CGameEvent* event);
 };

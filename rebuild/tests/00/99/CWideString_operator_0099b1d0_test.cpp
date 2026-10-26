@@ -1,7 +1,7 @@
 // Behaviour test for 0099b1d0 CWideString::operator!=(wchar_t) (true unless the string is exactly that one character)
 #include <cstdio>
 #include <wchar.h>
-struct CWideStringData { wchar_t* text; unsigned long unknown04; unsigned long unknown08; long owners; };
+class CWideStringData { public: wchar_t* text; unsigned long unknown04; unsigned long unknown08; long owners; };
 class CWideString {
 public:
     CWideStringData* storage_;

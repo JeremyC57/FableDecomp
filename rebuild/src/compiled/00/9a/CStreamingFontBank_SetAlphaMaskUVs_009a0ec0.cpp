@@ -6,7 +6,7 @@
 // Globals: the two UV pairs @ 0x013CA2F8 and 0x013CA300 (file statics of the streaming-font module; no PDB names).
 // Shape: two whole-object assignments of the 8-byte C2DVector POD (two floats, implicit copy) are dword moves
 // through eax/ecx; a user operator= on the float members would go through the x87.
-struct C2DVector {
+class C2DVector { public:
     float X;                                    // +0x00
     float Y;                                    // +0x04
 };

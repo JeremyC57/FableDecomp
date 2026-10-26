@@ -10,24 +10,24 @@
 // Shape: the third argument feeds the filter and the second the name (argument order fixed by the
 // `[esp+10h]` / `[esp+0Ch]` loads); init-list order = declaration order; the counted pointer's own
 // inline constructor zeroes both words through the shared zero register.
-struct CThing;
+class CThing;
 struct SCountBlock;
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CAnimFilterOfGroup {                         // vtable 0x01267568
+class CAnimFilterOfGroup { public:                         // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                            // +4
     unsigned long GroupCRC;                         // +8
     CAnimFilterOfGroup(const CCharString& group);   // 0x0073E8F0
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
@@ -41,7 +41,7 @@ struct CModeBase {
 
 namespace NCreatureMode {
 
-struct CModeSleepBed : CModeBase {                  // vtable 0x01275760
+class CModeSleepBed : public CModeBase { public:                  // vtable 0x01275760
     CAnimFilterOfGroup                    Filter;          // +0x1c
     CCharString                           SleepAnimName;   // +0x28
     CCountedPointer<CCreatureActionBase>  PRemoveAction;   // +0x2c

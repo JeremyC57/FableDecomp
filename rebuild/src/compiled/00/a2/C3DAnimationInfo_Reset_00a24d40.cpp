@@ -7,7 +7,7 @@
 // `if (Object)`, then the pointer is stored again unconditionally (the `if (p)` addref folds
 // away for a null constant), which is why retail writes +0xc twice. The vector is zeroed
 // with a chained assignment (`X = Y = Z = 0`), hence the Z, Y, X store order.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1
     unsigned long IVRefCount;              // +4
@@ -30,11 +30,11 @@ struct CIVCountedPointer {
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct C3DAnimationInfo {                  // engine/C3DAnimationInfo.h offsets
+class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h offsets
     virtual void v00();
     virtual void v01();
     virtual void v02();

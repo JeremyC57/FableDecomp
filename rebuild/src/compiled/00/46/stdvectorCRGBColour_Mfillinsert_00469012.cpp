@@ -1,5 +1,5 @@
 // std::vector<CRGBColour>::_M_fill_insert(CRGBColour* position, unsigned int n, const CRGBColour& x) -- STLport insert of n copies of a colour: slide the tail inside the spare capacity, or grow through _M_insert_overflow
-// Leaf: ?_M_fill_insert@?$vector@UCRGBColour@@
+// Leaf: ?_M_fill_insert@?$vector@VCRGBColour@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00469012, 311 bytes, thiscall `ret 0Ch`; size TU with a frame pointer.
 // Callees: _Construct<CRGBColour>(p, value) 0x0045BB8F (__fastcall placement copy, landed), uninitialized_fill_n(first, n,
 //   x) 0x00469149 (__fastcall, landed), _M_insert_overflow(position, x, const __false_type&, n, atend) 0x0046916B (landed).
@@ -15,7 +15,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CRGBColour {                                      // D3DCOLOR byte order
+class CRGBColour { public:                                      // D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline CRGBColour(const CRGBColour& other) { R = other.R; G = other.G; B = other.B; A = other.A; }
 };

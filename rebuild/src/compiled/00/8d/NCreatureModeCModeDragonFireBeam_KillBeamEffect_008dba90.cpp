@@ -10,7 +10,7 @@
 //   FadeOrKillEffect body of 0x0072ABD0 (IS_THING_ALIVE, a null-default interface 0x4b lookup into edi, the emitter
 //   call made even on null).
 // Leaf: KillBeamEffect
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -44,7 +44,7 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + it
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
@@ -55,7 +55,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCDParticleEmitter {                // interface type 0x4b component
+class CTCDParticleEmitter { public:                // interface type 0x4b component
     void FadeOrKill();                      // 0x006E05F0
 };
 

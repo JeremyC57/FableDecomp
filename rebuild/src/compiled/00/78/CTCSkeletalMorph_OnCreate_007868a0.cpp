@@ -11,7 +11,7 @@
 // 4-byte ids) +0x28.
 // Shape: the sub-def out pointer starts null in the `push ecx` word and is read into esi after the call; each name
 // string reuses that dead word; unsigned index against size() recomputed each pass; the def is released by hand.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                 // 0x0099EAE0
 };
@@ -19,12 +19,12 @@ struct CDefStringTable {
     CCharString GetString(long id);                 // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;            // 0x013CA828
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                         // slot 0
     virtual void Delete();                          // slot 1 (+0x04)
     long m_refCount;                                // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -36,11 +36,11 @@ struct CDefStringArray {                            // CArray<CDefString>
     unsigned long size() const { return _M_finish - _M_start; }
     long operator[](unsigned long n) const { return _M_start[n]; }
 };
-struct CSkeletalMorphDef : CDefPointeeBase {
+class CSkeletalMorphDef : public CDefPointeeBase { public:
     unsigned char   _pad08[0x28 - 0x08];
     CDefStringArray SkeletalMorphs;                 // +0x28
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CSkeletalMorphDef>* out);   // 0x00787060
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -56,11 +56,11 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CSkeletalMorphDef
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                            // +0x70
 };
-struct CTCSkeletalMorph {                           // vtable 0x0126B6F4
+class CTCSkeletalMorph { public:                           // vtable 0x0126B6F4
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     void AddMorph(long tag, const CCharString& name, float weight);   // 0x00786670

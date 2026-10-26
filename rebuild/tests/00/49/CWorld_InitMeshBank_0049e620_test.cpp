@@ -3,12 +3,12 @@
 // the global appearance bank, both progress texts are shown and the result is true.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString(const char* t) : Text(t) {} };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) {} };
 static const char* g_progress[4]; static int g_np = 0;
 static void DisplayProgress(const CCharString& t, float, bool, bool) { g_progress[g_np++] = t.Text; }
 static int g_deleted = 0;
-struct CCPPointerInfo { long RefCount; void* Data; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long RefCount; void* Data; };
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
@@ -23,22 +23,22 @@ template <class T> struct CCountedPointer {
     T* operator->() const { return Data; }
     T& operator*() const { return *Data; }
 };
-struct C3DAnimationManager { int id; };
-struct CMeshDataBank { C3DAnimationManager* AnimationManager; };
+class C3DAnimationManager { public: int id; };
+class CMeshDataBank { public: C3DAnimationManager* AnimationManager; };
 static CMeshDataBank g_bank; static CCPPointerInfo g_info; static C3DAnimationManager g_anim; static const char* g_opened;
-struct CMeshBankManager {
+class CMeshBankManager { public:
     CCountedPointer<CMeshDataBank> OpenMeshBank(const CCharString& name, bool)
     {
         g_opened = name.Text; CCountedPointer<CMeshDataBank> p; p.Data = &g_bank; p.Info = &g_info; ++g_info.RefCount; return p;
     }
 };
 static CMeshBankManager g_mgr;
-struct CSystemManager { CMeshBankManager* MeshBankManager; CMeshBankManager& GetMeshBankManager() { return *MeshBankManager; } };
+class CSystemManager { public: CMeshBankManager* MeshBankManager; CMeshBankManager& GetMeshBankManager() { return *MeshBankManager; } };
 static CSystemManager g_sys = { &g_mgr };
 static CSystemManager* GFGetSystemManager() { return &g_sys; }
 static CMeshDataBank* g_globalBank = 0;
 struct CTCGraphicAppearance { static void SetMeshBank(CMeshDataBank& b) { g_globalBank = &b; } };
-struct CWorld {
+class CWorld { public:
     CCountedPointer<CMeshDataBank> PMainMeshBank;
     C3DAnimationManager* PAnimationManager;
     bool InitMeshBank()

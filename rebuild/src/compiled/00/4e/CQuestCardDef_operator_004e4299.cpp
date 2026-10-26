@@ -9,7 +9,7 @@
 //   flattens the base (no base operator= to call), so the classes are modelled locally like the landed 0x00463BA2.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -21,11 +21,11 @@ struct CPrerequisiteMap {                       // retail std::map<EQuestCardPre
     unsigned long m_words[3];
     CPrerequisiteMap& operator=(const CPrerequisiteMap& other);   // 0x004E4326
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;                      // index into the def string table (trivially copied)
 };
 
-struct CQuestCardDef : CDefClassBase {
+class CQuestCardDef : public CDefClassBase { public:
     long                     QuestName;                   // +0x28
     long                     QuestSummary;                // +0x2c
     long                     QuestObjective;              // +0x30

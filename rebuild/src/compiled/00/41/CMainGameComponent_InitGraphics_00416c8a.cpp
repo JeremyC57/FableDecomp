@@ -14,17 +14,17 @@
 // Shape: the frame-pointer size TU of the landed twin; the progress texts share one frame slot in their own blocks.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
-struct CPixelFormat {
+class CPixelFormat { public:
     long Format;
     void Initialise(long d3dFormat);               // 0x009E3830
 };
-struct CGraphicDataBankInit {                      // 0x2c bytes
+class CGraphicDataBankInit { public:                      // 0x2c bytes
     CPixelFormat  NonAlphaFormat;                  // +0x00
     CPixelFormat  AlphaFormat;                     // +0x04
     CPixelFormat  InterpolatedAlphaFormat;         // +0x08
@@ -40,7 +40,7 @@ struct CGraphicDataBankInit {                      // 0x2c bytes
     bool          AllowDXT1ForBooleanAlpha;        // +0x2a
     CGraphicDataBankInit();                        // 0x00415B80
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     bool IsSupportingCompressedTextures();                                                       // 0x009BE800
     bool GetBestCompressedNonAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);       // 0x009BE830
     bool GetBestCompressedAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);          // 0x009BE870
@@ -50,7 +50,7 @@ struct CDisplayManager {
     bool GetBestBooleanAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);             // 0x009BE750
     bool GetBestSignedTextureFormat(unsigned long bitDepth, CPixelFormat* out);                   // 0x009BE590
 };
-struct CGraphicDataBank;
+class CGraphicDataBank;
 template <class T> class CCountedPointer {
 public:
     T*    m_pObject;
@@ -63,7 +63,7 @@ struct CGraphicDataBankManager {
     CCountedPointer<CGraphicDataBank> CreateAndInitialize(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0
 };
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     static void __fastcall SetGraphicBank(CGraphicDataBank& bank);   // 0x004BBFC0
 };
 }
@@ -75,7 +75,7 @@ extern unsigned long g_MaxGraphicHeight;           // 0x013B7D60
 extern bool g_AllowCompressedTextures;             // 0x01375453
 extern bool g_AllowDither;                         // 0x01375452
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char                     _pad00[0x161c8];
     CCountedPointer<CGraphicDataBank> PMainGraphicBank;   // +0x161C8
     bool InitGraphics();

@@ -9,7 +9,7 @@ struct CHeader {
  void* Resource; int Handle,Size; short Padding; unsigned char Status,Locked;
  CHeader** RefAvailable; CHeader *NextAvailable,*PrevContiguous,*NextContiguous;
 };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
  virtual void MoveResource(void*,int,void*,void*,unsigned int); // native slot0
  virtual int CanMoveResource(void*,int); // native slot1; full EAX tested
  int TestIfAreaIsGrowable(CHeader*,int);

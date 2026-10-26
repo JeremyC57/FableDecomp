@@ -4,17 +4,17 @@
 static long g_worldFrame = 0;
 static int g_getWorldCalls = 0;
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame() { return g_worldFrame; }
 };
 static CWorld g_world;
 
-struct CTCBase {
+class CTCBase { public:
     void* ParentThing;
     CWorld* GetWorld() const { ++g_getWorldCalls; return &g_world; }
 };
 
-struct CTCSmashableBase : CTCBase {
+class CTCSmashableBase : public CTCBase { public:
     long LastWorldFrameHit;
     bool Smashed;
     bool IsAvailableToHit() const;

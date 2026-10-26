@@ -5,10 +5,10 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-struct CThing { int x; };
+class CThing { public: int x; };
 static CThing* g_asked = 0;
-struct COpinionReactionManager { float GetToleranceToBeingHit(CThing* thing) { g_asked = thing; return 10.0f; } };
-struct CDisplayEngine { unsigned char _pad00[0x74]; COpinionReactionManager* m_pOpinionManager; };
+class COpinionReactionManager { public: float GetToleranceToBeingHit(CThing* thing) { g_asked = thing; return 10.0f; } };
+class CDisplayEngine { public: unsigned char _pad00[0x74]; COpinionReactionManager* m_pOpinionManager; };
 struct CViewTarget { unsigned char _pad00[0x50]; float m_displayOffset; };
 static CDisplayEngine g_engine;
 struct CViewBase {

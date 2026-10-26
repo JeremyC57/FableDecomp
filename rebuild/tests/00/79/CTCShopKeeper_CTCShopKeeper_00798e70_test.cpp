@@ -30,10 +30,10 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 // (placement new from <new>)
 
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
-struct CTCBase {                                       // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                       // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00() {}
     CThing* ParentThing;                               // +0x04
     bool    ToBeRemoved;                               // +0x08
@@ -49,7 +49,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                          // 0x00A01B50
     void SetPItem(CThing* item);                       // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
@@ -82,7 +82,7 @@ struct CCustomerVector {                               // vector<CIntelligentPoi
 };
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                                // Ego_r.pdb: 14 bytes (2-byte packed)
+class CEngineGraphic { public:                                // Ego_r.pdb: 14 bytes (2-byte packed)
     unsigned long BankIndex;                           // +0x00
     float         AnimStep;                            // +0x04
     float         RenderSizeX;                         // +0x08
@@ -92,7 +92,7 @@ struct CEngineGraphic {                                // Ego_r.pdb: 14 bytes (2
 };
 #pragma pack(pop)
 
-struct CTCShopKeeper : CTCBase {                       // vtable 0x0126C154
+class CTCShopKeeper : public CTCBase { public:                       // vtable 0x0126C154
     CIntelligentPointer<CThingCreatureBase> Customer;  // +0x0c
     CIntelligentPointer<CThing>             Shop;      // +0x14
     CCustomerVector                         PreviousCustomers;   // +0x1c

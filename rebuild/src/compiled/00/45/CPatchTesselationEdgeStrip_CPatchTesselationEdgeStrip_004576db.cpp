@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 // Leaf: ??1CPatchTesselationEdgeStrip@
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     unsigned char _pad0[0x78];
     void* p78;   // +0x78
     unsigned char _pad1[0x8c-0x7c];

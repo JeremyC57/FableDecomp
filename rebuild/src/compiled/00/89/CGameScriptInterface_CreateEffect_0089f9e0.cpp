@@ -3,7 +3,7 @@
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
-struct C3DVector{float X,Y,Z;};
+class C3DVector{ public:float X,Y,Z;};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char BetweenMapAndEmitter[0x10];struct EmitterMethods* ParticleEmitter;const C3DVector& GetPosition()const;ScriptMethods GetScriptThing()const;}; //004C73D0,004C7E50
@@ -12,7 +12,7 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-struct CCPPointerInfo{unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
@@ -102,9 +102,9 @@ FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
 CThingNative* __fastcall CreateParticle(const CCharString&,const C3DVector&,bool); //006E0970
-struct CRightHandedSet;
+class CRightHandedSet;
 struct EmitterMethods{void AttachToThing(CThingNative*,long,const CCharString&,long,float);void SetAlwaysUpdate(bool);void SetEmitterOrientation(const CRightHandedSet&);}; //006E0BE0,006E0590
-struct CRightHandedSet{C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}void RotateAboutAxis(const C3DVector&,float);__forceinline void RotateAboutUp(float angle){RotateAboutAxis(Up,angle);}}; //00A22F80
+class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}void RotateAboutAxis(const C3DVector&,float);__forceinline void RotateAboutUp(float angle){RotateAboutAxis(Up,angle);}}; //00A22F80
 void SetEmitterOrientationDeclaration();
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateEffect(const CCharString&,const C3DVector&,const CCharString&,float,bool,bool)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateEffect(const CCharString& name,const C3DVector& pos,const CCharString&,float angle,bool,bool always)const{

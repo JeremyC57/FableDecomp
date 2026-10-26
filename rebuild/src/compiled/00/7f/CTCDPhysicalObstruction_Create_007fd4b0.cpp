@@ -13,7 +13,7 @@
 //   presence word 7 bit 13 of the thing (`test ah,20h` on +0x3c), the driver itself at +0x5c.
 // Shape: the CTCDRumble::Create 0x007F1AC0 / CTCDExperienceOrb::Create 0x00779E90 pattern (named CCharString in its own
 //   block, `result` local), with the inline SetParams (Ego_r 0x007F86A0) storing the two vectors and the radius.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };

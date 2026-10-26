@@ -11,7 +11,7 @@
 // +8 RepeatingMeshReps (long), +0x48 AnimatedBlockCount (ulong: the `jbe` is the unsigned `> 0` test),
 // +0x68 InitFlags. Each branch returns the callee's bool straight through (`call ; ret`, the value-returning
 // forwarder shape that VC7.1 does not turn into a sibling jump).
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     virtual void v00();
     long          MaterialIndex;           // +0x04
     long          RepeatingMeshReps;       // +0x08

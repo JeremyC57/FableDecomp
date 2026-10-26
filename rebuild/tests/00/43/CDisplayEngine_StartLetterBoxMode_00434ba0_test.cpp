@@ -1,6 +1,6 @@
 #include <cstdio>
 #include "engine/CDisplayEngine.h"
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

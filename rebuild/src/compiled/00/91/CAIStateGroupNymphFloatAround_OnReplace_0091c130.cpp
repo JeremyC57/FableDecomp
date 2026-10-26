@@ -10,9 +10,9 @@
 // Shape: the landed AIAction_PumpCombatActions (0x0097D980) CBrainOutput model with its inline counted-pointer dtor.
 // No engine header for this class; PFloatTarget is +0x1c.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -60,12 +60,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -122,7 +122,7 @@ struct CCountedPointer {                        // CCountedPointer<..> {object, 
     }
 };
 
-struct CBrainOutput {                           // 0x48 bytes
+class CBrainOutput { public:                           // 0x48 bytes
     unsigned long Flags;                        // +0x00
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointer PAction;                    // +0x20
@@ -134,7 +134,7 @@ struct CBrainOutput {                           // 0x48 bytes
 struct CThingKill {
     void Kill(bool silent);                     // 0x004C9B80
 };
-struct CTCNymph {
+class CTCNymph { public:
     void StopFlyingAround(long mode);           // 0x0080F870
 };
 

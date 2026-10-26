@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCShop {
+class CTCShop { public:
     void* vftable;
     int destroyed;
 };

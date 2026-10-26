@@ -11,26 +11,26 @@
 // CInventoryDef +0xA4/+0xAC (retail offsets; names descriptive).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     __forceinline C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     C2DVector TL;
     C2DVector Extents;
     __forceinline C2DBoxF(const C2DVector& tl, const C2DVector& extents) : TL(tl), Extents(extents) {}
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-struct CInventoryDef : CDefPointeeBase {
+class CInventoryDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xa4 - 0x08];
     C2DVector WeaponsAnimBoxTLPos;                // +0xa4
     C2DVector WeaponsAnimBoxExtents;              // +0xac
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
@@ -44,7 +44,7 @@ struct CTCInventoryBase_Weapons {
     void OpenInventory();                       // 0x005BD4EA
     void SetInventoryAnimRenderBox(const C2DBoxF& box);   // 0x005BC58F
 };
-struct CTCInventoryWeapons;
+class CTCInventoryWeapons;
 struct CFrontEndManager {
     virtual void v00();
     virtual void v01();
@@ -64,7 +64,7 @@ struct CFrontEndManager {
     virtual void OnScreenOpened(CTCInventoryWeapons* screen);   // slot 15 (+0x3C)
     static CFrontEndManager* __fastcall GetInstance();          // 0x0041E5F2
 };
-struct CTCInventoryWeapons : CTCInventoryBase_Weapons {
+class CTCInventoryWeapons : public CTCInventoryBase_Weapons { public:
     void OpenInventory();
 };
 

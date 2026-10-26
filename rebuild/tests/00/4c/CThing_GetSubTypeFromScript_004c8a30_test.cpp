@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* PStringData;        // null = the empty string, as CCharString's null data block
     char buffer[64];
     CCharString() : PStringData(0) { buffer[0] = 0; }
@@ -22,7 +22,7 @@ struct CCharString {
         return std::strcmp(PStringData, text) == 0;
     }
 };
-struct CStringParser {
+class CStringParser { public:
     const char* String;
     CStringParser(const char* text) : String(text) {}
     CCharString ReadAsStringUntilString(const CCharString& end)
@@ -36,7 +36,7 @@ struct CStringParser {
 };
 struct CSerialiseInfo { unsigned int UIDLow, UIDHigh; CCharString DefinitionType; signed char Player; };
 static int g_lookups = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     int GetDefGlobalIndexFromName(const CCharString& name) const
     {
         ++g_lookups;
@@ -45,7 +45,7 @@ struct CDefinitionManager {
     }
 };
 static CDefinitionManager g_defs;
-struct CThingManager { CDefinitionManager* DefinitionManager; };
+class CThingManager { public: CDefinitionManager* DefinitionManager; };
 static CThingManager g_manager = { &g_defs };
 static CThingManager* g_pThingManager = &g_manager;
 

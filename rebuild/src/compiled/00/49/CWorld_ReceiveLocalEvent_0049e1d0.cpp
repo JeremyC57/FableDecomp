@@ -1,5 +1,5 @@
 // CWorld::ReceiveLocalEvent(const CGameEvent*) -- run the world's local-action handler registered for the event's type, if any
-// Leaf: ?ReceiveLocalEvent@CWorld_Methods@@QAEXPBUCGameEvent@@@Z
+// Leaf: ?ReceiveLocalEvent@CWorld_Methods@@QAEXPBVCGameEvent@@@Z
 // Retail: Fable.exe @ 0x0049E1D0, 36 bytes; Ego_r.pdb ?ReceiveLocalEvent@CWorld@@QAEXPBVCGameEvent@@@Z (public). Identity
 //   (sweep1, 2026-10-25; FINDINGS chunk 467): the landed row was CWorld::ProcessEvent, but the PDB's protected ProcessEvent
 //   (?ProcessEvent@CWorld@@IAEXPBVCGameEvent@@@Z) is chunk 467's 0x0049D980, which calls ActionFunction (+0x00); this body
@@ -17,9 +17,9 @@
 #include "engine/CWorld.h"
 #include "engine/CGameEvent.h"
 struct CWorld_Methods;
-struct CDisplayEngine;
+class CDisplayEngine;
 typedef void (CWorld_Methods::*TWorldEventFunction)(const CGameEvent* event);
-struct CGameEventDispatch {
+class CGameEventDispatch { public:
     TWorldEventFunction ActionFunction;                  // +0x00
     TWorldEventFunction LocalActionFunction;             // +0x10
     unsigned char       FeedbackFunction[0x10];          // +0x20 CDisplayEngine pointer to member

@@ -16,14 +16,14 @@ static int fails = 0;
 // The running maximum stays on the FPU stack; its value is spilled into the dead `centre` slot.
 #include "engine/CContainmentVolume.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
     float GetX() const { return X; }
 };
 
-struct CPlane {
+class CPlane { public:
     C3DVector Normal;
     float     Distance;
 };

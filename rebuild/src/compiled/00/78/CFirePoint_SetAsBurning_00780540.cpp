@@ -10,18 +10,18 @@
 // Shape: Create's bool is pushed before the position call (right-to-left argument evaluation of a __fastcall); the emitter
 // getter is an inline zero-initialised local assigned under the bit test (`xor ecx,ecx` hoisted; a ternary adds a `jmp`); the effect is stored as `PEffect = CIntelligentPointer(effect)` (temporary
 // built with SetPItem, assigned through GetPItem/SetPItem, destroyed), as the landed CSeatTable::SetOccupant 0x007B85F0.
-struct CThing;
-struct C3DVector { float x, y, z; };
+class CThing;
+class C3DVector { public: float x, y, z; };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char        _pad00[0x28];
     unsigned long        m_interfaceFlags;          // +0x28
     unsigned char        _pad2c[0x30];

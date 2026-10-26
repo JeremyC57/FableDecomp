@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 

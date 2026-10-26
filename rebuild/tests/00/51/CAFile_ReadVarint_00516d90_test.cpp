@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CASuspendableProcess {};
+class CASuspendableProcess { public:};
 static int g_buffers = 0;
 struct CByteVector {
     unsigned char* _First; unsigned char* _Last; unsigned char* _End;
@@ -10,7 +10,7 @@ struct CByteVector {
     ~CByteVector() { std::free(_First); --g_buffers; }
     unsigned char& operator[](unsigned long i) { return _First[i]; }
 };
-struct CAFile {
+class CAFile { public:
     long alignment; unsigned char source[16]; long lastSize; unsigned long maxBuffer;
     virtual void Read(void* buffer, long size, CASuspendableProcess*) { std::memcpy(buffer, source, size); lastSize = size; }
     virtual long GetAlignment() const { return alignment; }

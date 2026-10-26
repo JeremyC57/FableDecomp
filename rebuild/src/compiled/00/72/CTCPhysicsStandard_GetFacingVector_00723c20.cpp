@@ -7,7 +7,7 @@
 // The direct `return expr;` form keeps the 0x0049D150 schedule (84 bytes).
 // Layout: Ego_r.pdb CTCPhysicsStandard RHSet +0x50 / OldRHSet +0x68 (CRightHandedSet = Up, Forward), so the Forward vectors sit at
 // +0x5c / +0x74. engine/CTCPhysicsStandard.h is a flattened POD without virtuals, so the class is modelled locally.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -16,7 +16,7 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CTCPhysicsStandard {
     virtual void v00();

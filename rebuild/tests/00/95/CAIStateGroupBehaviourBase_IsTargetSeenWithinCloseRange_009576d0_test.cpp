@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for CAIStateGroupBehaviourBase::IsTargetSeenWithinCloseRange (0x009576D0).
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector pos; const C3DVector* GetPosition() const { return &pos; } };
-struct CAIBrain { CThing* Creature; };
-struct CTCPerceiveThing { float AwarenessTimer; bool LineOfSight; bool DirectAwareness; bool GetDirectAwareness() { return DirectAwareness; } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector pos; const C3DVector* GetPosition() const { return &pos; } };
+class CAIBrain { public: CThing* Creature; };
+class CTCPerceiveThing { public: float AwarenessTimer; bool LineOfSight; bool DirectAwareness; bool GetDirectAwareness() { return DirectAwareness; } };
 struct CBaseIntelligentPointer { CThing* p; CThing* GetPItem() { return p; } };
 struct CAIStateGroupBehaviourBase {
     CAIBrain* PBrain; CBaseIntelligentPointer PTargetThing; CTCPerceiveThing* PTCPerception;

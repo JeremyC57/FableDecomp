@@ -7,11 +7,11 @@
 // Layout: Ego_r.pdb CTCStealableItemLocation (0x14 bytes): RadiusToBeWithin +0x0c, RadiusToTakeItemsBackTo +0x10.
 // Shape: each default is a zero dword in a frame slot (the first in the `push ecx` word, the second in the dead
 // argument slot), stored with an integer immediate.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
 };
 
-struct CTCStealableItemLocation {
+class CTCStealableItemLocation { public:
     void*   __vftable;                                      // +0x00 (virtuals below)
     void*   ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08

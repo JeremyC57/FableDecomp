@@ -1,13 +1,13 @@
 // Behaviour test for 0x008E6AE0 CCreatureAction_CastStrengthMultiStrike::FinishAction: chain n-1 strikes or remove TC 0x8c.
 #include <cstdio>
-struct CCreatureActionBase { long strikes; void* owner; void* target; };
-struct CThing { unsigned char m_flags91; long removed; void RemoveTC(long t) { removed = t; } };
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase { public: long strikes; void* owner; void* target; };
+class CThing { public: unsigned char m_flags91; long removed; void RemoveTC(long t) { removed = t; } };
+class CThingCreatureBase : public CThing { public:
     CCreatureActionBase current; int sets;
     bool SetCurrentAction(const CCreatureActionBase& a) { current = a; ++sets; return true; }
 };
 struct CBaseIntelligentPointer { CThingCreatureBase* PItem; CThingCreatureBase* GetPItem() const { return PItem; } };
-struct CCreatureAction_CastStrengthMultiStrike : CCreatureActionBase {
+class CCreatureAction_CastStrengthMultiStrike : public CCreatureActionBase { public:
     CBaseIntelligentPointer Owner, Target; long NumberOfStrikes; int baseFinish;
     CCreatureAction_CastStrengthMultiStrike(CThingCreatureBase* o, CThing* t, long n) : NumberOfStrikes(n), baseFinish(0)
     { strikes = n; owner = o; target = t; Owner.PItem = o; Target.PItem = (CThingCreatureBase*)t; }

@@ -3,34 +3,34 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     long RefCount; int destroyed;
     CDefClassBase() : RefCount(1), destroyed(0) {}
     virtual ~CDefClassBase() {}
     void Destroy() { ++destroyed; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CContextSensitiveItemDef : CDefClassBase { long ItemType; long Slot; };
+class CContextSensitiveItemDef : public CDefClassBase { public: long ItemType; long Slot; };
 static CContextSensitiveItemDef* g_sub = 0;
 struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CContextSensitiveItemDef>* out)
     { if (g_sub) ++g_sub->RefCount; out->Object = g_sub; return g_sub != 0; }
 };
 static CThingDef* g_def = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long, CDefPointer<CThingDef>* out)
     { if (g_def) ++g_def->RefCount; out->Object = g_def; return g_def != 0; }
 };
 static CDefinitionManager g_mgr;
 
-struct CThing { bool alive; unsigned short DefIndex; };
+class CThing { public: bool alive; unsigned short DefIndex; };
 static bool IS_THING_ALIVE(CThing* const& thing) { return thing != 0 && thing->alive; }
-struct CTCCarrying { CThing* held; CThing* GetThingInPrimarySlot() { return held; } };
+class CTCCarrying { public: CThing* held; CThing* GetThingInPrimarySlot() { return held; } };
 
 template <class T> struct CRetailVector {
     T* _M_start;
@@ -38,7 +38,7 @@ template <class T> struct CRetailVector {
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     CTCCarrying* carryingTC;
     CRetailVector<long> QuickAccessItems, SlotItems, PreviousSlotItems;
     int usedThing, usedDef; long usedDefIndex; CThing* usedThingPtr;

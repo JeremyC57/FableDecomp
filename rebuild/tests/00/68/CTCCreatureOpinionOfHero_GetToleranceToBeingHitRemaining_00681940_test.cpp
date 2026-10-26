@@ -1,10 +1,10 @@
 // Test for 00681940 GetToleranceToBeingHitRemaining: override when >= 0, else manager tolerance + personality bonus.
 #include <cstdio>
-struct CThing { float Tolerance; };
-struct COpinionReactionManager { float GetToleranceToBeingHit(const CThing* t) const { return t->Tolerance; } };
-struct CWorld { COpinionReactionManager* POpinionReactionManager; };
-struct COpinionPersonalityDef { float ToleranceToBeingHit; };
-struct CTCCreatureOpinionOfHero {
+class CThing { public: float Tolerance; };
+class COpinionReactionManager { public: float GetToleranceToBeingHit(const CThing* t) const { return t->Tolerance; } };
+class CWorld { public: COpinionReactionManager* POpinionReactionManager; };
+class COpinionPersonalityDef { public: float ToleranceToBeingHit; };
+class CTCCreatureOpinionOfHero { public:
     CThing* ParentThing; float ToleranceToBeingHitOverride; COpinionPersonalityDef* PPersonalityDef; CWorld* World;
     CWorld* GetWorld_00686a80() const { return World; }
     float GetToleranceToBeingHitRemaining() const

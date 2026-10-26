@@ -20,12 +20,12 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;
     long             NoRefs;
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -47,14 +47,14 @@ struct CCharString {
 };
 struct CRetailWideString { void* PStringData; };
 extern CRetailWideString g_CRCSymbolFileName;          // 0x013D27E8
-struct CParsedItem {                                   // 12 bytes
+class CParsedItem { public:                                   // 12 bytes
     long        Type;                                  // 1 = symbol, 2 = identifier
     long        Value;
     CCharString Text;
     const CCharString& GetString();                    // 0x009B9880
     const CCharString& GetSymbol();                    // 0x009B9870
 };
-struct CStringParser {                                 // retail 0x28 bytes
+class CStringParser { public:                                 // retail 0x28 bytes
     void*         vfptr;                               // +0x00
     char*         String;                              // +0x04
     unsigned long BaseLineOffset;                      // +0x08
@@ -68,9 +68,9 @@ struct CStringParser {                                 // retail 0x28 bytes
     bool ReadNextItem(CParsedItem& item);              // 0x009BA080
     bool SkipUntilString(const CCharString& text);     // 0x009B9A20
 };
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CPersistContext {                               // 0x2c bytes
+class CDefinitionManager;
+class CSymbolMap;
+class CPersistContext { public:                               // 0x2c bytes
     CDefinitionManager* PDefinitionManager;
     CSymbolMap*         PSymbolMap;
     CStringParser*      PParser;
@@ -86,7 +86,7 @@ struct CPersistContext {                               // 0x2c bytes
                     CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* text);   // 0x009BADD0
 };
 void __fastcall TransferInLong_009e2590(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
-struct CCRCSymbolMap {
+class CCRCSymbolMap { public:
     void Error(const CRetailWideString& file, long line, const char* format, ...);   // 0x00A381D0
     void AddSymbolDirty(const CCharString& name, long value);                       // 0x00A385A0
     bool ParseEnum(CStringParser* parser, const CCharString& wantedName);

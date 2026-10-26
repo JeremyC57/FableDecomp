@@ -1,8 +1,8 @@
-struct CCharString {
+class CCharString { public:
     void* copyCtor(char* src);   // default thiscall: ecx=this, src on stack
 };
 
-struct CCachedFile {
+class CCachedFile { public:
     char pad[0x18];
     char m_pathname[4];
 };

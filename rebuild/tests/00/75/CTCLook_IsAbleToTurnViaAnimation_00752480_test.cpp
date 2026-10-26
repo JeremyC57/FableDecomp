@@ -11,11 +11,11 @@
 // CombatAllowTurningViaAnimation +0x4C), TurningViaAnimationDisable +0x41, TurningAnims vector begin/end +0x8C/+0x90 (PDB offsets);
 // the creature's dead bit is CThing +0x91 bit 0.
 // Shape: the def flag is a conditional read into al; IS_ALIVE inlined twice; nested ifs with one shared `xor al,al` exit.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                         // +0x91 bit 0: dead
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -27,7 +27,7 @@ struct CCreatureActionBase {
     virtual void v48(); virtual void v49();
     virtual bool PreventsTurningViaAnimation();      // slot 50 (+0xc8)
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionBase* PCurrentAction;             // +0x100
     bool IsInCombatMode() const;                     // 0x00661E80
@@ -38,19 +38,19 @@ template<class T> inline bool IS_ALIVE(T* const& p)
     return p != 0 && !(p->m_flags91 & 1);
 }
 bool __fastcall IsAbleToUseTurningAnimations(CThing* thing);   // 0x0085FCD0
-struct CLookDef {
+class CLookDef { public:
     unsigned char _pad00[0x40];
     bool  AllowTurningViaAnimation;                  // +0x40
     unsigned char _pad41[0x4c - 0x41];
     bool  CombatAllowTurningViaAnimation;            // +0x4c
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CAnimationEntry;
+class CAnimationEntry;
 struct CTurningAnim { float Angle; const CAnimationEntry* Anim; };
-struct CTCLook {
+class CTCLook { public:
     virtual void v00();
     CThing* ParentThing;                             // +0x04 (CTCBase)
     unsigned char _base08[0x10 - 0x08];

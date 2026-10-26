@@ -11,17 +11,17 @@
 // Shape: the scoped filter object of the landed entity-script Mains; the faction name is an implicit conversion; the
 // distance test's float is pushed before GetHero() is evaluated (right-to-left); the final wait is an endless frame loop
 // that only leaves when the thread terminates.
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CScriptThing {                                    // 12 bytes
+class CScriptThing { public:                                    // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     ~CScriptThing();                                     // 0x004AA840
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const;
     virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)

@@ -47,9 +47,9 @@ struct TestStream {
 };
 static void PutLong(unsigned char* p, int v) { std::memcpy(p, &v, 4); }
 static void PutFloat(unsigned char* p, float v) { std::memcpy(p, &v, 4); }
-struct C3DVector { float X, Y, Z; C3DVector() : X(0), Y(0), Z(0) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() : X(0), Y(0), Z(0) {} };
 struct CThingRef { int UID; };
-struct COpinionDeed {
+class COpinionDeed { public:
     int DeedType; int DeedHandle; C3DVector Position; CThingRef PTarget; int FrameHappened;
     bool IsStillHappening; bool IsCrimeReportedToVillage; bool IsCrime; int ExtraData;
     COpinionDeed(int type, int handle, const C3DVector& position, bool still, bool crime, int extra)

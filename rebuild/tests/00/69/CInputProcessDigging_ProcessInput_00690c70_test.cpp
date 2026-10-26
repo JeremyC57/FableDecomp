@@ -10,7 +10,7 @@ class CInputEvent { public: int id; };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -44,7 +44,7 @@ public:
 };
 void CProcessedInput::AddGameEvent(const CGameEvent& event) { ++g_queued; g_lastEvent = event; }
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20: which component kinds the thing holds
     bool HasTC(long kind) const
@@ -62,7 +62,7 @@ public:
 };
 CThing* CPlayer::GetHeroThing() { ++g_heroCalls; return &g_hero; }
 
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 static bool g_pressed = false, g_action3 = false;
 static int g_pressCalls = 0, g_actionCalls = 0;
 static long g_lastAction = 0;

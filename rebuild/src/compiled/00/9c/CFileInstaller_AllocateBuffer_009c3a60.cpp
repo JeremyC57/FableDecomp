@@ -20,7 +20,7 @@ struct CBufferChunkArray {                      // retail STLport vector<CBuffer
     CBufferChunk& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CFileInstaller {
+class CFileInstaller { public:
     unsigned char        _pad[0x1c];
     CBufferChunkArray BufferChunks;                // +0x1c
     unsigned char        _pad28[8];

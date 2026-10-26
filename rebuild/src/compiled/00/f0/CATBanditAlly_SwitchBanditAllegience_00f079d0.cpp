@@ -10,13 +10,13 @@
 // nested calls VC fetches the outer vtable (ebx) before evaluating the inner GetHeroThing and re-reads the
 // interface member afterwards; the (thing, hero) / (hero, thing) argument swaps follow right-to-left evaluation.
 // Layout: +4 interface, +8 CScriptThing (12 bytes), +0x24 the quest-info element id. Local model.
-struct CScriptThing {
+class CScriptThing { public:
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

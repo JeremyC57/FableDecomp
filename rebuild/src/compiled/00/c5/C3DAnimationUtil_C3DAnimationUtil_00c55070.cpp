@@ -8,7 +8,7 @@
 // constructor @ 0x00C6CA20 runs, then the compiler stores this class's vtable (0x012B8A64
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     virtual void v00();
     CEnvironmentSpellEffectInterface();                           // 0x00C6CA20
 };

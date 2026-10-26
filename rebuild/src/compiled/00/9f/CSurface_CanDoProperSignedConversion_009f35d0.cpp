@@ -35,14 +35,14 @@ struct IDirect3DSurface9 {
     virtual long __stdcall GetDesc(D3DSURFACE_DESC_Local* desc);   // slot 12 (+0x30)
 };
 
-struct C2DBoxI { long left, top, right, bottom; };
-struct C2DExtentsI {
+class C2DBoxI { public: long left, top, right, bottom; };
+class C2DExtentsI { public:
     long X;
     long Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) {}
 };
 
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                              // +0x00
     CPixelFormat(unsigned long d3dFormat);         // 0x009E3830
     bool IsSigned() const;                         // 0x009E3970

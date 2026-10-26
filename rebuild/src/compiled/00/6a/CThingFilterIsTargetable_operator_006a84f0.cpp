@@ -36,11 +36,11 @@ public:
         return it->component;
     }
 };
-struct CTCTargeted {
+class CTCTargeted { public:
     bool IsTargetable() const;                  // 0x007EA280
     bool IsZTargetable() const;                 // 0x007EA290
 };
-struct CThingFilter_IsTargetable {
+class CThingFilter_IsTargetable { public:
     bool ZTargeting;                            // +0x00
     bool UsingLightning;                        // +0x01
     bool operator()(CThing* thing) const;

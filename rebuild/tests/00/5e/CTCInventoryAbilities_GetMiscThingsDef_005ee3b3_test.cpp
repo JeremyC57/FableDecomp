@@ -28,7 +28,7 @@ void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -41,7 +41,7 @@ struct CDefBase {                           // counted game definition: vtable +
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pDef;
     __forceinline CDefPointer() : m_pDef(0) { }
     __forceinline CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
@@ -50,7 +50,7 @@ struct CDefPointer {
 
 struct CUIMiscThingsDef : CDefBase { };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndex(const CCharString& name, bool mustExist);          // 0x009AD390
     template <class T> bool GetDef(long index, CDefPointer<T>* result);        // 0x0042B312 (one instantiation)
 };
@@ -73,11 +73,11 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0,
 }
 #pragma auto_inline(on)
 
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     CDefPointer<CUIMiscThingsDef> GetMiscThingsDef() const;
 };
 

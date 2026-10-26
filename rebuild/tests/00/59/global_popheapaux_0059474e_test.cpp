@@ -3,7 +3,7 @@
 // moves the largest key to the back.
 #include <cstdio>
 
-struct CHeroAbilityDef { long refs; };
+class CHeroAbilityDef { public: long refs; };
 
 struct SAbilityEntry {
     long             first;

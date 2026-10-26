@@ -4,8 +4,8 @@
 #include <cmath>
 #include <string>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector Pos; bool Dead; C3DVector Up, Forward; std::string Mode; CThing* Drainer; };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector Pos; bool Dead; C3DVector Up, Forward; std::string Mode; CThing* Drainer; };
 struct CAction {
     CThing* PCreature; CThing* PTarget; std::string Anim; int BaseInit;
     void Initialise()

@@ -9,22 +9,22 @@
 // (`F==0 || F==1` -> push 2/pop eax; `F==2`, `F==3`, `F==4`, else -> the 2 promoted to edi). The sibling
 // GetMenuBranchFromDefIndex @ 0x0059B79A has the same chain with a distinct label per case.
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PImp;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
 long __fastcall GetInventoryCategory(long defIndex);          // 0x005D97B0
 long __fastcall GetInventoryTabState(long defIndex);          // 0x005D96F0
 
 // CTCInventoryTrade: no member is read; a method-only model (the engine header is not needed here).
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     long GetTypeFromDefIndexPC(long defIndex);
 };
 

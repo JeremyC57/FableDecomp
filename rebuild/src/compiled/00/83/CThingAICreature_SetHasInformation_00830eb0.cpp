@@ -7,12 +7,12 @@
 //   bit 6 ImmuneToAttack, bit 7 EnableCreatureAutoPlacing.
 // Shape: the change test is taken first (kept in the dead hasInformation slot: `setne [esp+0Ch]`), then the four
 //   adjacent bit assignments fold into one read-modify-write (`and al,0C3h ; shl dl,2 ; or`).
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long mode);                    // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad[0x1c8];
     bool PerformingVillageTaskFlag : 1;         // +0x1c8 bit 0
     bool AISuspended : 1;

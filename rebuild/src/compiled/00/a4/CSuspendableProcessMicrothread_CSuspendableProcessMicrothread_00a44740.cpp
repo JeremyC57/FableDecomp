@@ -24,7 +24,7 @@ struct CBase {
     virtual void v00();
 };
 
-struct CASuspendableProcess : CBase {       // vtable 0x0129D428; sizeof 0x10 (engine/CASuspendableProcess.h names)
+class CASuspendableProcess : public CBase { public:       // vtable 0x0129D428; sizeof 0x10 (engine/CASuspendableProcess.h names)
     unsigned char Running;                  // +0x04
     unsigned char StopRunning;              // +0x05
     unsigned char TerminateUsingExceptions; // +0x06
@@ -34,7 +34,7 @@ struct CASuspendableProcess : CBase {       // vtable 0x0129D428; sizeof 0x10 (e
     CASuspendableProcess(bool terminateUsingExceptions, long unused, long timesliceLength);   // 0x00A445D0
 };
 
-struct CSuspendableProcessMicrothread : CASuspendableProcess {   // vtable 0x0129D440
+class CSuspendableProcessMicrothread : public CASuspendableProcess { public:   // vtable 0x0129D440
     MicroThreadInfo* PMicrothread;          // +0x10
     virtual void v00();
     CSuspendableProcessMicrothread(bool terminateUsingExceptions, long unused, long timesliceLength);

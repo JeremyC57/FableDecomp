@@ -15,7 +15,7 @@ struct CSuspenderSet {
     }
     bool empty() const { return m_size == 0; }
 };
-struct CThingAICreature {
+class CThingAICreature { public:
     bool PerformingVillageTaskFlag : 1;
     bool AISuspended : 1;
     CSuspenderSet Suspenders;

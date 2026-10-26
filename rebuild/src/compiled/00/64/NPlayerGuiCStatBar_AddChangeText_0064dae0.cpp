@@ -13,11 +13,11 @@
 // The CChangeText temporary lives in the 0x24-byte frame and dies through its inline destructor (~CWideString only).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                  // 0x0099B510
 };
@@ -46,7 +46,7 @@ struct CStatBarOwner {
 
 namespace NPlayerGui {
 
-struct CStatBar {
+class CStatBar { public:
     void*           __vftable;                       // +0x00
     CStatBarOwner*  m_pOwner;                        // +0x04
     unsigned char   _pad08[0x5C];

@@ -12,7 +12,7 @@
 // Shape: the list head is nulled by the alloc-proxy initialiser, then the sentinel node is malloc'd and linked to itself
 // before it is stored; the vector's three zero words share the zero register (edi) with the AddMode(0) argument; the
 // frame count is converted AFTER the vector zero stores, so it is a body assignment, not an initialiser.
-struct CThing;
+class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern long g_framesPerSecond;                          // 0x01375550
 
@@ -47,7 +47,7 @@ struct CTCBase_Calls {                                  // CTCBase, 0xc bytes
     CTCBase_Calls(CThing* parent);                      // 0x00686800
 };
 
-struct CTCCreatureModeManager : CTCBase_Calls {         // vtable 0x01268854
+class CTCCreatureModeManager : public CTCBase_Calls { public:         // vtable 0x01268854
     CRetailList<CModePointer> PModes;                   // +0x0C
     long TimeLeftForCurrentMode;                        // +0x10
     long TimeForNextIdleMode;                           // +0x14

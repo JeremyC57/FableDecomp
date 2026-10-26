@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CPersistContext;
-struct CThingNoiseDef;
+class CPersistContext;
+class CThingNoiseDef;
 
 static int g_base_called = 0;
 static int g_sub_a_ok = 0;
@@ -12,7 +12,7 @@ struct SubObj {
     char pad[4];
     void M(CThingNoiseDef* a, int b);
 };
-struct CThingNoiseDef {
+class CThingNoiseDef { public:
     char pad[0x14];
     SubObj sub;
 };

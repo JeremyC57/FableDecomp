@@ -71,11 +71,11 @@ struct CPlayer_Retail {
 struct CPlayerManager_Retail {
     CPlayer_Retail* GetMainPlayer();               // 0x00449970
 };
-struct CCharString;
+class CCharString;
 struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CWorld; struct CMainGameComponent; struct CDisplayEngine; struct CThingSearchTools;
+class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
 __forceinline CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
 {
     CTCBase_Retail* tc;                            // deliberately unset when the component is absent (retail reads a dead slot)
@@ -98,7 +98,7 @@ template <class T> __forceinline bool GetTCOut(CThing_Retail* thing, long kind, 
     }
     return false;
 }
-struct CCharString {                               // fable_string.h layout: one data-block pointer
+class CCharString { public:                               // fable_string.h layout: one data-block pointer
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
@@ -119,7 +119,7 @@ struct CTCInsideBuilding_Retail {
     unsigned char _pad[0xc];
     CBaseIntelligentPointer_Retail m_building;     // +0x0c
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent*         Component;         // +0x08

@@ -49,8 +49,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -58,8 +58,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -152,15 +152,15 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 
-struct CBankFileEntryDependencies;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CDiskFileWin32;
+class CBankFileEntryDependencies;
+class CCPPointerInfo;
+class CCharStringData;
+class CDiskFileWin32;
 struct CProgressCallback;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CBankFile {
+class CBankFile { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long               Size;                        // +0x04
     unsigned char               Symbols[0x10];               // +0x08 CArray<CCharString>
@@ -255,10 +255,10 @@ FABLE_STATIC_ASSERT(offsetof(CBankFile, CurrentEntryDependencies) == 0x170);
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    AccessType[0x4];                        // +0x04 FileAccessType
     long             Position;                               // +0x08
@@ -290,10 +290,10 @@ FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, Pathname_PStringData) == 0x18);
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CCharStringData* NewLine_PStringData;                    // +0x04 CCharString::PStringData
 };
@@ -314,7 +314,7 @@ FABLE_STATIC_ASSERT(offsetof(CDataOutputStream, NewLine_PStringData) == 0x4);
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 
-struct CAFile;
+class CAFile;
 
 #pragma pack(push, 1)
 struct CFileDataOutputStream {
@@ -343,9 +343,9 @@ FABLE_STATIC_ASSERT(offsetof(CFileDataOutputStream, File) == 0x8);
 // The recovery signature is the four-byte word plus terminator at 0x0129B59C.
 // Flags: /GS
 
-struct CASuspendableProcess;
-struct CAFile;
-struct CFileInformation;
+class CASuspendableProcess;
+class CAFile;
+class CFileInformation;
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 
 struct CBaseClassNonCopyable {
@@ -425,8 +425,8 @@ void CBankFileRuntime::WriteRecoveryFile(unsigned long version, unsigned long st
 #endif
 
 // PDB CDateAndTime28 / CFileInformation88, no generated headers available.
-struct CDateAndTime { fable_i32 Year; fable_u32 Month,Day,Hour,Minute,Second,Millisecond; };
-struct CFileInformation { CDateAndTime CreationTime,LastAccessTime,LastWriteTime; bool ReadOnly; };
+class CDateAndTime { public: fable_i32 Year; fable_u32 Month,Day,Hour,Minute,Second,Millisecond; };
+class CFileInformation { public: CDateAndTime CreationTime,LastAccessTime,LastWriteTime; bool ReadOnly; };
 FABLE_STATIC_ASSERT(sizeof(CFileInformation)==88);
 
 const RecoveryFileSignature gBankRecoverySignature = { 0x43455242u, 0 };

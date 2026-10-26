@@ -11,7 +11,7 @@
 // pop_heap / __pop_heap_aux inline; the 8-byte stride turns the count test into `and eax,-8 ; cmp eax,8`.
 // The value copy is built in the argument area by the pair's implicit copy constructor: the key dword, then
 // the intrusive counted pointer's inline copy (`test ; je ; inc [eax+4]`, the count sits at +4 of the pointee).
-struct CAnimComponentBase {                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
+class CAnimComponentBase { public:                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long m_count;                           // +4

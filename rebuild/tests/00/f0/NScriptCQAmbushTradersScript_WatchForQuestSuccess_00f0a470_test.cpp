@@ -4,7 +4,7 @@
 // behaviour test: CQ_AmbushTradersScript::WatchForQuestSuccess -- after the three waits, the quest finishes once the convoy
 // spy is (alive and) in the hero's following list while Bowerstone Posh is loaded; success is set once the speech is done
 static int g_frames = 0, g_endAt = 1000, g_spyFollowsAt = 6, g_speechAt = 8;
-struct CScriptThing {
+class CScriptThing { public:
     const char* name; bool alive;
     CScriptThing() : name(""), alive(true) {}
     CScriptThing(const char* n, bool a) : name(n), alive(a) {}
@@ -12,7 +12,7 @@ struct CScriptThing {
     const char* GetName() const { return name; }
 };
 struct CQ_AmbushTradersScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     CQ_AmbushTradersScript* script;
     void NewScriptFrame() const;

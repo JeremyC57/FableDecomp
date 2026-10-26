@@ -14,7 +14,7 @@
 // built from an allocator() temporary: with a flat three-pointer vector VC pops edi before the three zero stores,
 // retail pops it between the second and third (92 v 92, scheduling only).
 // The interface model (88 virtual slots of vtable 0x01260F0C, simplified signatures) is the landed one.
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual ~CGameScriptInterface();                    // slot 0 (deleting destructor)
     virtual void Error();
     virtual void TraceMessage();
@@ -105,8 +105,8 @@ struct CGameScriptInterface {
     virtual long RegisterTimer();                       // slot 87 (+0x15c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CScriptDataBase;
-struct CScriptBase {                                    // 0x40 bytes, the quest-script root
+class CScriptDataBase;
+class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f
     CScriptBase();                                      // 0x00CB8110
@@ -117,7 +117,7 @@ struct __declspec(novtable) CLevelScriptBase : CScriptBase {
     TData*                MasterScriptData;             // +0x44
     CLevelScriptBase(CScriptDataBase* data, CGameScriptInterface& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
 };
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
@@ -139,7 +139,7 @@ template <class T> struct vector : _Vector_base<T> {   // STLport vector<T>, 12 
     vector() : _Vector_base<T>(allocator<T>()) { }
 };
 namespace NScript {
-struct CEmptyData;
+class CEmptyData;
 class CQ_HeroSoulsArenaScript : public CLevelScriptBase<CEmptyData> {
 public:
     long CreatureCount;                                 // +0x48

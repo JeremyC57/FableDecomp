@@ -11,10 +11,10 @@
 // The intelligent pointer classes are declared under `#pragma pack(1)` so the PDB's unaligned member offsets come out;
 // the `__forceinline` destructor and the inline model constructor + `new` factory put `??_G` (with the body inlined)
 // into the TU. engine/CTCBase.h is a flattened POD, so the polymorphic CTCBase is modelled locally.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -57,7 +57,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
 };
 #pragma pack(pop)
 
-struct CTCSummonSpell : CTCBase {   // vtable 0x0126C2B4
+class CTCSummonSpell : public CTCBase { public:   // vtable 0x0126C2B4
     CDefPointer         PDef;                  // +0x0c CDefPointer<CSpecialAbilitiesSummonSpellDef const>
     bool                JustReleased;          // +0x10
     CIntelligentPointer Minion;                // +0x11 CIntelligentPointer<CThingAICreature> (unaligned)

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineInternalPrimitiveAnimatedMesh {
+class CEngineInternalPrimitiveAnimatedMesh { public:
     void* vftable;
     int destroyed;
 };

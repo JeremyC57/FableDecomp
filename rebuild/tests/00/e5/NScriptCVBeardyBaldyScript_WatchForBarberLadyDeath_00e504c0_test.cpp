@@ -13,12 +13,12 @@ static int g_fail = 0;
 static int g_live = 0, g_iatt = 0, g_termAt = 1 << 30, g_frames = 0, g_stopFrame = 1 << 30, g_aliveFrame = 0, g_killFrame = 1 << 30;
 static bool g_badArg = false;
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_stopFrame; }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
     ~CCharString() { }
 };
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { if (Id != 1) ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { if (Id != 1) ++g_live; }
@@ -27,7 +27,7 @@ struct CScriptThing {
     bool IsAlive() const { if (Id != 9) g_badArg = true; return g_frames >= g_aliveFrame; }
 };
 static CScriptThing g_hero(1);
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     const CScriptThing& GetHero() { return g_hero; }
     CScriptThing GetNearestWithScriptName(const CScriptThing& thing, const CCharString& name) const
@@ -36,7 +36,7 @@ struct CGameScriptInterface {
         return CScriptThing(9);
     }
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating() { return Term(); }
 };
 struct CV_BeardyBaldyScript : CScriptBase {

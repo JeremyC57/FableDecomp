@@ -15,7 +15,7 @@ public:
     void AddPrimitive(CEngineInternalPrimitiveBase& primitive, unsigned long flags);   // 0x00BACDD0
 };
 
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* Managers[1];          // +0x10, indexed by primitive type
 };

@@ -6,7 +6,7 @@ struct CMiniMapManager {
 };
 static CMiniMapManager g_manager;
 static CMiniMapManager* g_pMiniMapManager = &g_manager;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool m_flags15d : 7;
     bool m_hiddenOnMiniMap : 1;
     void SetHiddenOnMiniMap(bool hidden)

@@ -33,7 +33,7 @@ struct CDefBase : CDefVirtual {
     long m_count;                               // +0x04
     void Release() { if (--m_count == 0) Destroy(); }
 };
-struct CVillagePeopleDef : CDefBase {
+class CVillagePeopleDef : public CDefBase { public:
     unsigned char _pad_0x08[0x8c];
     long Guard;                                 // +0x94
     long MaleGhost;                             // +0x98
@@ -50,7 +50,7 @@ struct CDefPointer {                            // CDefPointer<const CVillagePeo
     CVillagePeopleDef* operator->() const { return m_p; }
     operator bool() const { return m_p != 0; }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_00512fe0(CDefPointer& out);  // 0x00512FE0 (GetSubDef<CVillagePeopleDef>)
 };
 void* FindDef_CDefClassBase_GetSubDef_00512fe0_0();   // stand-in callee of the stand-in body below
@@ -72,12 +72,12 @@ struct CThingDefPointer {                       // CDefPointer<const CThingDef> 
     ~CThingDefPointer() { if (m_p) m_p->Release(); }
     CDefClassBase* operator->() const { return m_p; }
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad_0x00[0x70];
     CThingDefPointer PDef;                      // +0x70
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*         __vftable;                    // +0x00
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x9c];

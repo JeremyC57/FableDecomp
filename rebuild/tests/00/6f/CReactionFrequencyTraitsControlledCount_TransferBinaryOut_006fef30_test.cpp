@@ -1,7 +1,7 @@
 // Behaviour test for CReactionFrequencyTraits_ControlledCount::TransferBinaryOut @ 0x006FEF30: the persisted members in order.
 #include <cstdio>
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     int kinds[16]; float values[16]; int n;
     CDataOutputStream() : n(0) {}
     void WriteBool(bool v) { kinds[n] = 1; values[n++] = v ? 1.0f : 0.0f; }

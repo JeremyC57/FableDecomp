@@ -3,9 +3,9 @@
 // behaviour test: CQ_HangingTreeGoodScript::CleanUp -- remove all freedom fighters and audience members, then the
 // prisoner and executioner when alive; any terminate check that fires stops the clean-up
 static int g_checks, g_endAt, g_removed[16], g_nRemoved;
-struct CScriptThing { int id; bool alive; bool IsAlive() const { return id != 0 && alive; } };
+class CScriptThing { public: int id; bool alive; bool IsAlive() const { return id != 0 && alive; } };
 struct CThingList { CScriptThing items[8]; unsigned int n; CThingList() : n(0) {} unsigned int size() const { return n; } CScriptThing& operator[](unsigned int i) { return items[i]; } };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing GetThingWithScriptName(const char* name) const
     {
         CScriptThing t; t.id = 0; t.alive = false;

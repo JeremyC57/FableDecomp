@@ -5,7 +5,7 @@ static int g_killed = 0; static long g_reason = -1; static int g_baseDtor = 0;
 struct CThing_00811040 { unsigned char _pad[0x91]; unsigned char m_flags; void Kill(long reason) { ++g_killed; g_reason = reason; } };
 struct CBaseIntelligentPointer { virtual void v00() { } void* m_pItem; CThing_00811040* GetPItem() { return (CThing_00811040*)m_pItem; } ~CBaseIntelligentPointer() { ++g_baseDtor; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() { } };
-namespace NEntityEvents { struct CEventBase { virtual void v00() { } long m_eventType; ~CEventBase() { } };
+namespace NEntityEvents { class CEventBase { public: virtual void v00() { } long m_eventType; ~CEventBase() { } };
 struct CEventSoldItem : CEventBase { CIntelligentPointer m_giver; CIntelligentPointer m_item; bool m_ownsItem; virtual void v00() { }
     ~CEventSoldItem() { if (m_ownsItem) { if (m_item.GetPItem()) { if (!(m_item.GetPItem()->m_flags & 1)) m_item.GetPItem()->Kill(0); } } } }; }
 int main() {

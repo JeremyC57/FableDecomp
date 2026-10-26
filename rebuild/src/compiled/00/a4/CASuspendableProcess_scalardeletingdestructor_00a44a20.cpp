@@ -1,4 +1,4 @@
-struct CASuspendableProcess {
+class CASuspendableProcess { public:
     void* vftable;
 };
 

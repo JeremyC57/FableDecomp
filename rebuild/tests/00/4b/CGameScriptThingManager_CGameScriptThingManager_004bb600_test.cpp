@@ -8,9 +8,9 @@ struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pOb
 struct CBase { virtual ~CBase() { std::strcat(g_seq, "B"); } };
 struct CCountedPointer { void* m_pThing; SCountBlock* m_pCount;
     ~CCountedPointer() { if (m_pCount) { --m_pCount->m_references; if (m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); DeleteBlock(m_pCount); } } m_pThing = 0; m_pCount = 0; } };
-struct CScriptThing : CBase { CCountedPointer m_thing; virtual ~CScriptThing() { } };
+class CScriptThing : public CBase { public: CCountedPointer m_thing; virtual ~CScriptThing() { } };
 struct CScriptThingListBase { void* m_pBuffer; void Clear() { std::strcat(g_seq, "C"); } ~CScriptThingListBase() { Clear(); if (m_pBuffer) FreeBuffer(m_pBuffer); } };
-struct CGameScriptThingManager : CScriptThingListBase { CScriptThing m_nullThing; ~CGameScriptThingManager() { } };
+class CGameScriptThingManager : public CScriptThingListBase { public: CScriptThing m_nullThing; ~CGameScriptThingManager() { } };
 
 int main() {
     SCountBlock c; int thing; c.m_references = 1; c.m_pfnDestroy = DestroyThing; c.m_pObject = &thing; int buffer;

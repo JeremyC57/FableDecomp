@@ -6,25 +6,25 @@
 static int g_baseCalls = 0, g_highlights = 0, g_sounds = 0, g_releases = 0;
 static char g_lastSound[32];
 static float g_lastTime = 0.0f;
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CCharString {
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long) : text(t) {}
 };
 namespace NGraphicAppearance {
 enum EAppearanceMeshEffectPriority { APPEARANCE_MESH_EFFECT_PRIORITY_3 = 3 };
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     int highlighted;
     void SetAsHighlighted(float a, float, const CRGBColour&, bool, bool, EAppearanceMeshEffectPriority priority, void*)
     { ++highlighted; ++g_highlights; g_lastTime = a; (void)priority; }
 };
 }
-struct CThing {
+class CThing { public:
     NGraphicAppearance::CTCGraphicAppearance appearance;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
     { if (interfaceType != 0x5b) return false; *ppOut = &appearance; return true; }
 };
-struct CCard {
+class CCard { public:
     CThing* Thing;
     long    Name;
     long    Value;
@@ -32,7 +32,7 @@ struct CCard {
     bool    FaceDown;
 };
 struct CCardVector { CCard** _M_start; CCard** _M_finish; CCard** _M_end_of_storage; };
-struct CTavernGameCardBaseDef {
+class CTavernGameCardBaseDef { public:
     long       m_count;
     float      HighlightTime;
     CRGBColour HighlightColour;

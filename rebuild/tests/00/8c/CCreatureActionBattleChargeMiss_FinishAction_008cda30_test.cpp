@@ -11,11 +11,11 @@
 #endif
 
 static int g_liveStrings = 0;
-struct CTCBase;
-struct CThing;
-struct CBaseObject;
+class CTCBase;
+class CThing;
+class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     char* PStringData;
     CCharString(const char* text, long length = -1)
     {
@@ -44,13 +44,13 @@ struct CInterfaceMap {
     }
 };
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 static int g_liveActions = 0;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00() {}
     virtual ~CCreatureActionBase() {}
 };
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     CThingCreatureBase* Owner;
     char Animation[64];
     CThing* Item;
@@ -67,7 +67,7 @@ struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
     ~CCreatureAction_UnsheatheItemFromInventory() { --g_liveActions; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
     unsigned char Flags91;
@@ -93,7 +93,7 @@ static char g_setActionAnimation[64];
 static CThing* g_setActionItem = 0;
 static long g_setActionPriority = 0, g_setActionTimeout = 0;
 static CCreatureActionBase* g_setActionNext = (CCreatureActionBase*)1;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action)
     {
         const CCreatureAction_UnsheatheItemFromInventory& a = (const CCreatureAction_UnsheatheItemFromInventory&)action;
@@ -114,7 +114,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* PData;
     CBaseObject* GetPItem() const { return PData; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* operator->() const { return (T*)GetPItem(); }
     T& operator*() const { return *(T*)GetPItem(); }
 };
@@ -127,7 +127,7 @@ template<class T> inline bool IS_THING_ALIVE(const T& p)
     return false;
 }
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     bool AbilityMutexLock;
     long CurrentAbility;
 };
@@ -136,7 +136,7 @@ struct CTCSpecialAbilities {
 struct SAttach { const void* emitter; CThing* thing; long attachType; char helperName[16]; long helperIndex; float offset; };
 static SAttach g_attach[4];
 static int g_attachCount = 0;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     int Id;
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset)
     {
@@ -151,13 +151,13 @@ struct CTCDParticleEmitter {
 };
 
 static int g_baseFinishCalls = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() {}
     CIntelligentPointer<CThingCreatureBase> PCreature;
     CIntelligentPointer<CThing> PItemRemoved;
     void FinishAction() { ++g_baseFinishCalls; }
 };
-struct CCreatureAction_BattleChargeMiss : CCombatActionBase {
+class CCreatureAction_BattleChargeMiss : public CCombatActionBase { public:
     CIntelligentPointer<CThing> Left;
     CIntelligentPointer<CThing> Right;
     void FinishAction();

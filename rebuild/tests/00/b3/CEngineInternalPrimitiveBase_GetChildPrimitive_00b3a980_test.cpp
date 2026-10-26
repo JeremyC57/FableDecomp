@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CEngineInternalPrimitiveBase;
-struct CEnginePersistentPrimitiveBase;
+class CEngineInternalPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 
 CEnginePersistentPrimitiveBase* __fastcall CEngineInternalPrimitiveBase_GetChildPrimitive(CEngineInternalPrimitiveBase* primitive, int edx_pad, unsigned long index)
 {

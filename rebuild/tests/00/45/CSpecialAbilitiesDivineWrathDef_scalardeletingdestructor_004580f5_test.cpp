@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSpecialAbilitiesDivineWrathDef { void* vftable; int dtored; };
+class CSpecialAbilitiesDivineWrathDef { public: void* vftable; int dtored; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 static void dtor_impl(CSpecialAbilitiesDivineWrathDef* def){ g_dtor_called++; def->dtored = 1; }

@@ -1,16 +1,16 @@
 // Behaviour test for CLandscapeBackgroundPatch::RelocateData @ 0x00BE65A0 (copy of the model with stub notifications).
 #include <cstdio>
 static int g_indexNotes, g_waterNotes, g_stripCalls;
-struct CIndexBuffer { void OnRelocated() { ++g_indexNotes; } };
-struct CEngineWaterBackgroundSubPatch { void OnPostRelocation() { ++g_waterNotes; } };
+class CIndexBuffer { public: void OnRelocated() { ++g_indexNotes; } };
+class CEngineWaterBackgroundSubPatch { public: void OnPostRelocation() { ++g_waterNotes; } };
 struct CVertexBuffer {};
-struct CTexture {};
-struct CPatchTesselationEdgeStrip {
+class CTexture { public:};
+class CPatchTesselationEdgeStrip { public:
     char* data;
     bool RelocateData(void* oldBase, void* newBase) { ++g_stripCalls; if (data != oldBase) return false; data = (char*)newBase; return true; }
 };
 template <class T> inline void RelocatePointer(T*& p, void* oldBase, void* newBase) { if (p) p = (T*)((char*)p - (char*)oldBase + (long)newBase); }
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     CPatchTesselationEdgeStrip EdgeStrips[4]; CTexture* Texture; CIndexBuffer* IndexBuffer; CVertexBuffer* VertexBuffer;
     CIndexBuffer* BridgeIndexBuffers[4]; CVertexBuffer* BridgeVertexBuffers[4]; CEngineWaterBackgroundSubPatch* WaterSubPatch; bool SharedIndexBuffer;
     void RelocateData(long, void* oldBase, void* newBase, long)

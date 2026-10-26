@@ -1,4 +1,4 @@
-struct CCreatureAction_ReleaseAndLoopUnholyPowerSpell {
+class CCreatureAction_ReleaseAndLoopUnholyPowerSpell { public:
     void* vftable;
 };
 

@@ -14,7 +14,7 @@
 // inline. The final test reads TL, TR, BR, BL.
 class CNavRegion;
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };

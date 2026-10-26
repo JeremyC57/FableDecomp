@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_deallocs = 0, g_dtors = 0, g_locks = 0, g_unlocks = 0; static long g_count = 0;
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void InternalDeallocate(void*) { ++g_deallocs; --g_count; }
     long GetAllocationCount() { return g_count; }
     ~CMemoryAllocator() { ++g_dtors; }

@@ -3,12 +3,12 @@
 // Callees: AddLightPrimitive @ 0x00B47FD0 (point) and @ 0x00B480E0 (spot), both members on `this` (ecx is never touched: `this` passes straight through) taking
 // the primitive. Shape: the type at primitive+8 is loaded into eax and compared against 15 then 16 with a `mov eax,2 ; ret 0Ch` in each arm and `xor eax,eax`
 // at the end; the two trailing arguments are unused.
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     unsigned char _pad[8];
     long          m_type;                          // +0x08
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     void AddPointLightPrimitive(CEngineInternalPrimitiveBase* primitive);   // 0x00B47FD0
     void AddSpotLightPrimitive(CEngineInternalPrimitiveBase* primitive);    // 0x00B480E0
     long RenderPrimitive(CEngineInternalPrimitiveBase* primitive, long pass, long unused);

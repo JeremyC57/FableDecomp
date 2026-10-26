@@ -8,18 +8,18 @@
 // CParentDefClassBase; the retail base is 0x3C bytes (its CDefString is 4 bytes shorter), so the member
 // sits at +0x3C / +0x40. The vtable store precedes the zero stores (`and dword ptr,0` = size TU) because
 // the zeroed words belong to an embedded member object with an inline constructor.
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     CParentDefClassBase();                       // 0x00430370
 };
 
-struct CPhysicalPrimitiveInit {
+class CPhysicalPrimitiveInit { public:
     long m_type;                                 // +0x00
     long m_param;                                // +0x04
     CPhysicalPrimitiveInit() : m_type(0), m_param(0) { }
 };
 
-struct CHitLocationDef : CParentDefClassBase {
+class CHitLocationDef : public CParentDefClassBase { public:
     unsigned char          _body[0x38];          // +0x04..+0x3B base members
     CPhysicalPrimitiveInit PhysicalPrimitive;    // +0x3C
     virtual void v00();                          // own vtable (0x01234B54)

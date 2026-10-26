@@ -4,9 +4,9 @@
 
 typedef unsigned long ULONG;
 
-struct CAnimComponentBase;
+class CAnimComponentBase;
 
-struct CAnimComponentStrikeSpeedMultiplier {
+class CAnimComponentStrikeSpeedMultiplier { public:
     ULONG vtable;   // +0
     ULONG field4;   // +4
     ULONG field8;   // +8

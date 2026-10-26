@@ -2,7 +2,7 @@
 // Flags: none
 // Leaf: BinarySearch_IntelligentPointer
 // Layout: retail advances 8-byte CBaseIntelligentPointer values; GetPItem binds 00a01b50.
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
  void* Data; void* Info;
  CBaseObject* GetPItem() const;

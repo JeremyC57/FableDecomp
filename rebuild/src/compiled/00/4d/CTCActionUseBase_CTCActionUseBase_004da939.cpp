@@ -12,8 +12,8 @@
 // modelled as `CTCBase_Calls` (as the landed CTCRockTrollShield).
 #pragma optimize("s", on)
 
-struct CThing;
-struct CActionUseDef;
+class CThing;
+class CActionUseDef;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -24,12 +24,12 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     const T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };
 
-struct CTCActionUseBase : CTCBase_Calls {                   // vtable 0x0123F09C
+class CTCActionUseBase : public CTCBase_Calls { public:                   // vtable 0x0123F09C
     CDefPointer<CActionUseDef> PActionUseDef;               // +0x0c
     bool                       Usable;                      // +0x10
     virtual void v00();

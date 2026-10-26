@@ -6,11 +6,11 @@
 // +0x1c (1.0f), AvoidDynamicObstacles +0x20 (true), PreviousPushableByHero +0x21, ExpressionUsed +0x22,
 // FollowerAdded +0x23 (false, one shared `xor al,al`), CurrentMovementType +0x24 (3). The PFollowee
 // CIntelligentPointer at +0x14 is untouched. The header flattens the base, so the class is modelled locally.
-struct CAIBrain;
-struct CThingAICreature;
-struct CCharString;
+class CAIBrain;
+class CThingAICreature;
+class CCharString;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13
     void Initialise(CAIBrain& brain, CThingAICreature& creature, long id, long priority, const CCharString& name);  // 0x008FCEC0

@@ -3,11 +3,11 @@ typedef unsigned short wch;
 static int t_isspace(wch c) { return c == ' ' || c == '\t' || c == '\n' || c == '\r'; }
 static int t_isdigit(wch c) { return c >= '0' && c <= '9'; }
 static int t_isalpha(wch c) { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); }
-struct CWideString {
+class CWideString { public:
     const wch* text; long length;
     void SetAsSubString(const wch* t, long n) { text = t; length = n; }
 };
-struct CWParsedItem {
+class CWParsedItem { public:
     long Type; long Integer; CWideString String;
     void InitAsString(const wch* t, unsigned long n) { String.SetAsSubString(t, n); Type = 2; }
 };

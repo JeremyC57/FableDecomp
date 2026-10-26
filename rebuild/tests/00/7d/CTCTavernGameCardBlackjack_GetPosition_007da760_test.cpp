@@ -19,12 +19,12 @@ static int fails = 0;
 // offset, is addressed and loaded first); the C3DVector constructor's arguments evaluate
 // right to left (TableSeparation first); the CDefPointer destructor's null test is dropped (the def was dereferenced) and
 // the release is the def's inline `DecRef(); if (GetRefCount() == 0) Destroy();`.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector operator+(const C2DVector& v) const { return C2DVector(X + v.X, Y + v.Y); }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
@@ -37,7 +37,7 @@ template<class T> struct CVector {              // STLport vector<T> (12 bytes)
     unsigned int size() const { return end() - begin(); }
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
-struct CCardPositionsDef {
+class CCardPositionsDef { public:
     unsigned char      _defbase[0x3c];          // CDefClassBase (retail 0x3c)
     CVector<C2DVector> Offset;                  // +0x3c
 };
@@ -50,7 +50,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameCardBaseDef : CDefVirtual, CRefCounted {
+class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x24];
     float CardWidth;                            // +0x2c
     float CardHeight;                           // +0x30
@@ -71,7 +71,7 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CTavernGameCardBaseDef* operator->() const { return Object; }
 };
-struct CCard;
+class CCard;
 struct CTCTavernGameCardBlackjack {
     void* __vfptr;                              // +0x00 (CTCBase)
     unsigned char _base04[0x318 - 0x04];        // CTCTavernGameCardBase (retail 0x318)

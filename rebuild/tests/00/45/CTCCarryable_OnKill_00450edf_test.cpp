@@ -1,6 +1,6 @@
 #include <cstdio>
 struct Node { void* f0; long f4; struct Node* f8; struct Node* fc; };
-struct CTCCarryable { Node* head; long count; };
+class CTCCarryable { public: Node* head; long count; };
 static void* g_freed = (void*)1;
 void __stdcall FreeNode(void* p){ g_freed = p; }
 void __fastcall CTCCarryable_OnKill(CTCCarryable* self)

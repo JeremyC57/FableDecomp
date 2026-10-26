@@ -8,18 +8,18 @@
 // at +0x70: null-checked AddRef `inc [esi+4]`), GetSubDef runs on the pointee with `&PDef`, and
 // the temporary's destructor releases it (`dec [esi+4] ; jne`, virtual Delete at zero; the null
 // store is elided before the return). The two reference arguments are unused (`ret 8`).
-struct CAIBrain;
-struct CThingAICreature;
-struct CSummonerDef;
+class CAIBrain;
+class CThingAICreature;
+class CSummonerDef;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1: `call [eax+4]`
     long m_refCount;                            // +0x04
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     CDefPointeeBase* Object;                    // +0x00
     __forceinline CDefPointer(CDefPointeeBase* object) : Object(object)
     {
@@ -37,7 +37,7 @@ struct CDefPointer {
     T* operator->() const { return static_cast<T*>(Object); }
 };
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CSummonerDef>* out);    // 0x008CBFF0 GetSubDef<CSummonerDef>
 };
 
@@ -51,7 +51,7 @@ struct CAIBrainModel {
     CThingAICreatureModel* Creature;            // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrainModel* PBrain;                      // +0x04
     long ScriptAIPriority;                      // +0x08

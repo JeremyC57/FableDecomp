@@ -8,7 +8,7 @@
 // pointer's inline destructor decrements, re-reads the block, destroys + frees on zero and nulls
 // both words (speed form: `test eax,eax`, immediate zero stores).
 // Byte-identical to the destructor @ 0x00A16D70 (another TU's copy of the same class).
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                             // 0x0099EAE0
 };

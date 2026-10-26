@@ -1,7 +1,7 @@
 // behaviour test for CThingMapManager::GetThingLayerCellPositions (0x00637E70): layer stored, four truncated corners handed to InitPos in TL, TR, BL, BR order
 #include <cstdio>
-struct C2DVector { float X, Y; };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) {} };
+class C2DVector { public: float X, Y; };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) {} };
 struct CMapCellPosInfo { void* PMapInfo; C2DCoordI LocalPos; void* PCell; CMapCellPosInfo() : PMapInfo(0), LocalPos(0, 0), PCell(0) {} };
 struct CMapCellPosInfoGroup { long Layer; CMapCellPosInfo TLPos, TRPos, BLPos, BRPos; };
 static int g_order = 0;

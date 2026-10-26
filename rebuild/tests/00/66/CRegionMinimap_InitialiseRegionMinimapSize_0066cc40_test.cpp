@@ -1,9 +1,9 @@
 #include <cstdio>
 
 // Self-contained behaviour model of CRegionMinimap::InitialiseRegionMinimapSize.
-struct CRegion { int id; };
+class CRegion { public: int id; };
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual char TestRegion(CRegion* r) { return (char)(r->id % 2); } // accept odd ids
     virtual int  GetRegionExtent(CRegion* r) { return r->id * 10; }
 };

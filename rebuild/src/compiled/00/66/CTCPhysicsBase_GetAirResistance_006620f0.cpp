@@ -3,7 +3,7 @@ struct CPhysicsData {
     float airResistance;
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     char pad[0xe0];
     CPhysicsData* data;
 };

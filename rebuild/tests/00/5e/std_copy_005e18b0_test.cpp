@@ -2,7 +2,7 @@
 // [first, last) onto result, returns the end of the output, and keeps the component maps' intrusive counts right.
 #include <cstdio>
 static int g_destroyed = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00() { }
     virtual void Destroy() { ++g_destroyed; }   // slot 1
     long m_count;
@@ -10,7 +10,7 @@ struct CIVCountedPointeeBase {
     virtual ~CIVCountedPointeeBase() { }
 };
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) { }
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
@@ -30,9 +30,9 @@ struct CIVCountedPointer {
     }
     void Attach(T* p) { Object = p; ++p->m_count; }
 };
-struct CDefString { long TablePos; };
-struct CAnimComponentMap : CIVCountedPointeeBase { };
-struct CAnimationEntry {
+class CDefString { public: long TablePos; };
+class CAnimComponentMap : public CIVCountedPointeeBase { public: };
+class CAnimationEntry { public:
     long                                 BankIndex;
     CDefString                           AnimName;
     CDefString                           GroupName;

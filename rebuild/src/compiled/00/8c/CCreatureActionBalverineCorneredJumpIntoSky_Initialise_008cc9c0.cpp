@@ -8,16 +8,16 @@
 // Shape: the animation name is an implicit conversion temporary (re-addressed with `lea`) that dies before the base call;
 // the PCreature address rides in edi; one `push ecx` frame slot for the lookup key. Retail CCombatActionBase is 0x114 bytes
 // (engine/CCreatureAction_BalverineCorneredJumpIntoSky.h is the PDB's 0x12c-byte layout), so `this` is modelled locally.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 struct CTCGraphicAppearance;
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -45,12 +45,12 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatur
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CCharString {                        // one pointer; the defaulted length lets the literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -73,7 +73,7 @@ struct CTCCreatureFlags9 {                  // the interface-9 component: one by
 };
 void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];                // +0x04
@@ -82,7 +82,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_BalverineCorneredJumpIntoSky : CCombatActionBase {
+class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

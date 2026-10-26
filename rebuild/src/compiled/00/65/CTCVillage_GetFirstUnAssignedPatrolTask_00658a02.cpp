@@ -8,7 +8,7 @@
 // virtual calls; the null result shares the epilogue (`xor eax,eax`), the found arm jumps back into it.
 // Layout: CTCVillage.h is the PDB layout (PatrolTasks +0xAC); with 4-byte retail lists it sits at +0x54
 // (RemoveThingFromAllTasks 0x00659EA9 walks the six task lists +0x4C..+0x60), so a local model.
-struct CVillageTaskPatrol {
+class CVillageTaskPatrol { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -22,7 +22,7 @@ struct SPatrolTaskNode {                    // retail std::list node of CCounted
     CVillageTaskPatrol* Object;             // +0x08 CCountedPointer::Object
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*            __vftable;             // +0x00
     unsigned char    _pad_0x04[0x50];
     SPatrolTaskNode* PatrolTasks;           // +0x54 retail std::list (sentinel pointer only)

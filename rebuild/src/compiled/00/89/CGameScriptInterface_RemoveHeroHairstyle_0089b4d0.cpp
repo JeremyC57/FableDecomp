@@ -4,7 +4,7 @@
 // then CThing::GetTC<CTCHeroAttachableAppearanceModifiers> (Ego_r.pdb bool/out-pointer form; Components lower_bound 0x0040F020); CTCHeroAttachableAppearanceModifiers::RemoveAllAppearanceModifiers 0x00706640.
 // Layout: CGameScriptInterface per engine/CGameScriptInterface.h (+0x14 PlayerManager); CThing retail (UsingComponents +0x20,
 // Components +0x44, Dead +0x91 bit 0).
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

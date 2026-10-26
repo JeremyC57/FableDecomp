@@ -9,7 +9,7 @@ static int g_erased = 0; static void* g_erasedFrom = 0;
 struct CRetailEntryList_00884b60 { SEntryNode_00884b60* m_pHead; long m_count; void EraseFrom(SEntryNode_00884b60* n) { ++g_erased; g_erasedFrom = n; }
     void clear() { if (m_count) { EraseFrom(m_pHead->m_pFirst); m_pHead->m_pNext = m_pHead; m_pHead->m_pFirst = 0; m_pHead->m_pPrev = m_pHead; m_count = 0; } }
     ~CRetailEntryList_00884b60() { clear(); if (m_pHead) free(m_pHead); } };
-namespace NScreenEffect { struct CScreenEffectPriorityStack { struct CStackEntry { virtual void v00() { } unsigned char _pad[0x2c]; ~CStackEntry() { } };
+namespace NScreenEffect { class CScreenEffectPriorityStack { public: struct CStackEntry { virtual void v00() { } unsigned char _pad[0x2c]; ~CStackEntry() { } };
     struct CScreenFilterEntry : CStackEntry { CRetailEntryList_00884b60 m_entries; ~CScreenFilterEntry() { } }; }; }
 int main() {
     SEntryNode_00884b60 head, first; head.m_pFirst = &first; head.m_pNext = &first; head.m_pPrev = &first;

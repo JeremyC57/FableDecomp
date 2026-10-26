@@ -12,7 +12,7 @@
 // Shape: the functor is a scoped frame object (its own {} block); the handle is a function-scope local default-constructed
 //   inline (CBaseObject ctor, own vtable, PImp {0,0} as an embedded member object so the zero stores follow the vtable store);
 //   the `while (!Start(...)) { NewScriptFrame(); if (IsDone()) return; } IsDone();` loop is rotated with &Me in edi.
-struct CScriptThing {                                  // 12 bytes
+class CScriptThing { public:                                  // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
 };
@@ -24,7 +24,7 @@ struct CScriptThingFunctor_00ef7ab0 {                  // vtable 0x012C2FE8
     ~CScriptThingFunctor_00ef7ab0();                   // 0x00EF7AB0
 };
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00();
     void* IntelligentPointer;                          // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -36,7 +36,7 @@ struct CCountedPointer_ScriptedThing {                 // PImp {Data, Info}
     CCountedPointer_ScriptedThing() : Data(0), Info(0) { }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer_ScriptedThing PImp;                // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
@@ -46,7 +46,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOW = 1 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)

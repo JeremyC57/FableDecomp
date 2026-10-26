@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_AlertAllNearbyToThing {
+class CCreatureAction_AlertAllNearbyToThing { public:
     void* vftable;
     int destroyed;
 };

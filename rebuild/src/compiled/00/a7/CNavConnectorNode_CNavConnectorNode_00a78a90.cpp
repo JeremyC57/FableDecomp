@@ -8,11 +8,11 @@
 // Shape: the members are initialisers; the inline push_back is `resize(size() + 1)` with the default `T()` fill value homed in
 //   the dead first-argument slot, then `data[size - 1] = value` with the size re-read; the first region is a named local
 //   (called before the argument's getter).
-struct CNavRegion {
+class CNavRegion { public:
     void SetAsConnectedToRegion(CNavRegion* other);        // 0x00A786C0
 };
-struct CANavQuadTreeNode;
-template <class T, int N> struct CSmallVector {
+class CANavQuadTreeNode;
+template <class T, int N> class CSmallVector { public:
     T*          m_data;                                    // +0
     signed char m_size;                                    // +4
     signed char m_capacity;                                // +5
@@ -23,8 +23,8 @@ template <class T, int N> struct CSmallVector {
         m_data[m_size - 1] = value;
     }
 };
-struct C2DVector { float X, Y; };
-struct CANavQuadTreeNode {
+class C2DVector { public: float X, Y; };
+class CANavQuadTreeNode { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual CNavRegion* GetRegion() const;                 // slot 7 (+0x1c)
     C2DVector     Position;                                // +0x04
@@ -33,12 +33,12 @@ struct CANavQuadTreeNode {
     bool          LeafNode;                                // +0x0e
     bool          Blocked;                                 // +0x0f
 };
-struct CNavNavigableLeafNode : CANavQuadTreeNode {
+class CNavNavigableLeafNode : public CANavQuadTreeNode { public:
     CNavRegion*                                  PRegion;            // +0x10
     CSmallVector<const CANavQuadTreeNode*, 8>    Neighbours;         // +0x14
     unsigned char                                PreferabilityCost;  // +0x1c
 };
-struct CNavConnectorNode {
+class CNavConnectorNode { public:
     CNavNavigableLeafNode* Neighbour1;                     // +0
     CNavNavigableLeafNode* Neighbour2;                     // +4
     CNavConnectorNode(const CANavQuadTreeNode* node1, const CANavQuadTreeNode* node2);

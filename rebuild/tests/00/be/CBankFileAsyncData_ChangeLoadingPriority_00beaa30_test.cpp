@@ -2,7 +2,7 @@
 
 typedef int EThreadedFilePriority;
 
-struct CBankFileAsyncData;
+class CBankFileAsyncData;
 
 struct AsyncMgr {
     void Reprioritise(void* item, CBankFileAsyncData* owner);
@@ -15,7 +15,7 @@ struct AsyncRoot {
 
 AsyncRoot* g_asyncRoot;
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     char pad[0x10];
     void* item;
     void ChangeLoadingPriority();

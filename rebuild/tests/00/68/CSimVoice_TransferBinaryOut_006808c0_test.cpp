@@ -33,7 +33,7 @@ struct SVoiceEntry {                            // pair<EReactionSpeechType, lon
     long                second;
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -59,12 +59,12 @@ struct CVoiceMap {                              // CVectorMap<EReactionSpeechTyp
     }
 };
 
-struct CInitBaseClass {                         // vtable 0x0129A7CC
+class CInitBaseClass { public:                         // vtable 0x0129A7CC
     virtual ~CInitBaseClass();
     bool m_initialised;                         // +0x04
 };
 
-struct CSimVoice : CInitBaseClass {             // vtable 0x012337AC
+class CSimVoice : public CInitBaseClass { public:             // vtable 0x012337AC
     CVoiceMap Voices;                           // +0x08
     void TransferBinaryOut(CDataOutputStream& out) const;
 };

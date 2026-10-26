@@ -8,9 +8,9 @@
 // Layout (Ego_r.pdb): CMainGameComponent PDisplayEngine +0x28, LastInterpolationInfo (0x34 bytes) +0x70; CDisplayEngine
 // Engine3D +0x2c; CUserProfileManager PBackBufferTexture +0x138 (PDB +0x13c, retail 4 bytes lower).
 // Shape: the global chain re-read for every call; the interpolation info is copied whole (`rep movsd`) into a local.
-struct CTexture;
-struct CInterpolationInfo { long m_words[13]; };            // 0x34 bytes (six CInterpolationInfoSet + WFServerCurrentTime)
-struct CEngine {
+class CTexture;
+class CInterpolationInfo { public: long m_words[13]; };            // 0x34 bytes (six CInterpolationInfoSet + WFServerCurrentTime)
+class CEngine { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
@@ -23,25 +23,25 @@ struct CEngine {
     virtual void v77();
     virtual void Enable2DSceneRendering(bool enable);       // slot 78 (+0x138) 0x00B23FD0
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char _pad00[0x2c];
     CEngine*      Engine3D;                                 // +0x2c
     void DoRender(CInterpolationInfo* info, bool a, bool b);   // 0x00435F70
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char      _pad00[0x28];
     CDisplayEngine*    PDisplayEngine;                      // +0x28 scoped_ptr<CDisplayEngine>
     unsigned char      _pad2c[0x70 - 0x2c];
     CInterpolationInfo LastInterpolationInfo;               // +0x70
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     CTexture* CopyBackBufferToTexture();                    // 0x009BF5E0
 };
 extern bool                g_bCaptureUIBackground;         // 0x013750A7
 extern CMainGameComponent* g_pMainGameComponent;           // 0x013B86A0
 extern CDisplayManager*    g_pDisplayManager;              // 0x013B8390
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad000[0x138];
     CTexture*     PBackBufferTexture;                       // +0x138
     void CaptureBackBufferForUIBackground();

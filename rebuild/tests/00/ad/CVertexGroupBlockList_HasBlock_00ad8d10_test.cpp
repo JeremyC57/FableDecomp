@@ -17,7 +17,7 @@ struct CGroupArray {
     unsigned long* begin() const { return m_first; }
     unsigned long size() const { return (unsigned long)(m_last - m_first); }
 };
-struct CVertexGroupBlock {
+class CVertexGroupBlock { public:
     CGroupArray Groups; CGroupToIndexMap GroupToIndexMap;
     bool ContainsAll(const unsigned long* groups, unsigned long count) const
     {
@@ -26,7 +26,7 @@ struct CVertexGroupBlock {
         return true;
     }
 };
-struct CVertexGroupBlockList {
+class CVertexGroupBlockList { public:
     CVertexGroupBlock* m_first; CVertexGroupBlock* m_last;
     bool HasBlock(const CVertexGroupBlock& block) const
     {

@@ -14,12 +14,12 @@
 // end() re-read from the carrier each pass; the by-value CIVCountedPointer is built in the argument area
 // by its declared copy constructor (`push ecx ; mov ecx,esp ; mov [ecx],eax ; inc [eax+4]`); the bool
 // argument read from memory is `xor edx,edx ; mov dl`.
-struct CEngineMeshEffect {
+class CEngineMeshEffect { public:
     virtual void v00();
     long RefCount;                                          // +0x04
 };
 
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     ~CIVCountedPointer();
@@ -29,7 +29,7 @@ namespace NGraphicAppearance {
 
 enum EAppearanceMeshEffectPriority { MESH_EFFECT_PRIORITY_DEFAULT };
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     struct CMeshEffectPriorityEntry {
         CIVCountedPointer<CEngineMeshEffect> PEffect;       // +0x0
         EAppearanceMeshEffectPriority        Priority;      // +0x4

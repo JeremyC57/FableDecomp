@@ -8,7 +8,7 @@
 // stream argument is loaded once into edi and pushed for both calls; `this` lives in esi.
 class CDataInputStream;
 
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     unsigned char _body[0xE8];
     void LoadHeader(CDataInputStream* stream);   // 0x00BF7400
 };

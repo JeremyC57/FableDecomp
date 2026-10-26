@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CTCTavernGameCoinGolf::vfunc_30 (0x007D4A90).
 static int g_auto = 0, g_reset = 0, g_base = 0, g_fade = 0, g_fadeArg = -1;
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetAutomaticCameraControl() { ++g_auto; }
     void ResetCamera() { ++g_reset; }
 };
@@ -11,7 +11,7 @@ struct CCameraManagerSource {
     virtual bool GetCameraManager(CGameCameraManager** camera) { if (m_has) *camera = &g_camera; return m_has; }
     virtual ~CCameraManagerSource() {}
 };
-struct CWorld {
+class CWorld { public:
     CCameraManagerSource* m_pCameraSource;
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
 };
@@ -21,7 +21,7 @@ struct CTCTavernGameCoinBase {
     CWorld* GetWorld() { return &g_world; }
     void LeaveGame() { ++g_base; }
 };
-struct CTCTavernGameCoinGolf : CTCTavernGameCoinBase {
+class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     void FadeOutTableOccupants(bool fadeOut) { ++g_fade; g_fadeArg = fadeOut ? 1 : 0; }
     void vfunc_30();
 };

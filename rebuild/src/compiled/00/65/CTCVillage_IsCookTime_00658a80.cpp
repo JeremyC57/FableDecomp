@@ -10,7 +10,7 @@ struct RefObj {
 
 extern bool __stdcall CheckCookTime(void* subobj, void* arg);
 
-struct CTCVillage {
+class CTCVillage { public:
     char pad[0x94];
     RefObj* smartptr;
 };

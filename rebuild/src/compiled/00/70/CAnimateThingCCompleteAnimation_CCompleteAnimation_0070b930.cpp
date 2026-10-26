@@ -19,10 +19,10 @@ template <class T> struct CRetailVector {           // STLport vector with the m
     ~CRetailVector() { if (_M_start) free(_M_start); }
 };
 
-struct CTransitionBlendAlpha;
+class CTransitionBlendAlpha;
 struct CAnimSetNode;
 
-struct CAnimSet {                                   // 0x54 bytes retail (PDB 92)
+class CAnimSet { public:                                   // 0x54 bytes retail (PDB 92)
     long                                  UpdateMode;       // +0x00
     CRetailVector<short>                  Anims;            // +0x04
     CRetailVector<CTransitionBlendAlpha>  InternalAlphas;   // +0x10

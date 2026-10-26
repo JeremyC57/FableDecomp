@@ -12,7 +12,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;
     unsigned char _pad_0x21[0x23];
@@ -26,10 +26,10 @@ struct CThing {
     }
     unsigned long HasTC(long wanted) { return m_present.test(wanted); }
 };
-struct CTCInventoryItem { long m_ident; long GetCategoryIdentifier() const { return m_ident; } };
+class CTCInventoryItem { public: long m_ident; long GetCategoryIdentifier() const { return m_ident; } };
 static int g_updates = 0; static const CThing* g_updateThing = 0; static void* g_updateCategory = 0;
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     unsigned char _body[0x2C];
     void UpdateItemStatsForThing(const CThing& thing) { ++g_updates; g_updateThing = &thing; g_updateCategory = this; }
 };

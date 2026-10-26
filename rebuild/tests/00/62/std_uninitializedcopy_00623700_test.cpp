@@ -2,12 +2,12 @@
 #include <new>
 struct __false_type { __false_type() { } };
 static int g_stringCopies = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData("") { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_stringCopies; }
 };
-struct CTestQuest { CCharString QuestName, HSPName; long ColourIndex; CCharString DisplayName, IniFile, OutiFile, QuestCardDefName; CTestQuest() : ColourIndex(0) { } };
+class CTestQuest { public: CCharString QuestName, HSPName; long ColourIndex; CCharString DisplayName, IniFile, OutiFile, QuestCardDefName; CTestQuest() : ColourIndex(0) { } };
 static const char* g_texts[4] = { "q0", "q1", "q2", "q3" };
 static const char* g_other[4] = { "o0", "o1", "o2", "o3" };
 typedef CTestQuest TElem;

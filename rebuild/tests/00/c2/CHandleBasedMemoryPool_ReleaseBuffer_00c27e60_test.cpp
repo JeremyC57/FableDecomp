@@ -4,7 +4,7 @@
 #include <cstdlib>
 static int g_frees = 0;
 static void PoolFree(void* block) { ++g_frees; std::free(block); }
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void* Buffer;
     void* UnalignedBuffer;
     long PoolSize;

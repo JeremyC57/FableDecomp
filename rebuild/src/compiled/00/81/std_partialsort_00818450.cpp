@@ -14,7 +14,7 @@
 // __pop_heap is `__forceinline` as in the landed sort_heap 0x008182E0: plain `inline` leaves it a call (by-value
 // element with a non-trivial copy constructor).
 struct CHitLocation;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

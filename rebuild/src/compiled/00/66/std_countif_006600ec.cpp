@@ -10,7 +10,7 @@
 // (`lea ecx,[esp+18h]`), `last` is compared from its slot. Opt: an unaligned, size-optimised TU -- the loop is entered
 // through a `jmp` to the bottom test (`#pragma optimize("s", on)`).
 #pragma optimize("s", on)
-struct CBaseObject;
+class CBaseObject;
 class CBaseIntelligentPointer {
 public:
     virtual void v000();
@@ -50,7 +50,7 @@ long __stdcall count_if(_InputIter __first, _InputIter __last, _Predicate __pred
 class CThing;
 class CThingAICreature;
 
-struct HasBuildingAsHomeOrWork {
+class HasBuildingAsHomeOrWork { public:
     CThing* Building;                                        // +0x00
     bool operator()(const CIntelligentPointer<CThingAICreature>& creature) const;   // 0x0065FBE1
 };

@@ -9,14 +9,14 @@
 #include "engine/CTCPhysicsBase.h"
 #include "engine/CBaseObject.h"
 #include "fable_string.h"
-struct CThing;
-struct CThingCreatureBase;
-struct CTCWeaponTrail;
-struct C3DVector { float x, y, z; };
-struct CThingCreatureBase;
-struct CSoundPair { long first; long last; CSoundPair():first(0),last(0) {} };
-struct CAnimationEntry;
-struct CCreatureActionBase {
+class CThing;
+class CThingCreatureBase;
+class CTCWeaponTrail;
+class C3DVector { public: float x, y, z; };
+class CThingCreatureBase;
+class CSoundPair { public: long first; long last; CSoundPair():first(0),last(0) {} };
+class CAnimationEntry;
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -100,7 +100,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;
     void SetPItem(CBaseObject* item);
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual ~CIntelligentPointer(); // CIntelligentPointer<CThing> vtable 0x01238C6C, slot 0 @0x004A9710
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(reinterpret_cast<CBaseObject*>(item)); } // native initializer used by overload @0x0069F230
     CIntelligentPointer(const CIntelligentPointer& other)
@@ -113,14 +113,14 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
 #define CIVCountedPointeeBase CIVCountedPointeeBaseLayout
 #include "engine/CIVCountedPointeeBase.h"
 #undef CIVCountedPointeeBase
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase(); // slot0
     virtual void Delete() const; // slot1 native0042D930 deletes this through slot0
     unsigned long IVRefCount;
     void Release() { if(--IVRefCount==0) Delete(); }
 };
-struct CAnimComponentMap : CIVCountedPointeeBase {};
-struct CAnimationEntry {
+class CAnimComponentMap : public CIVCountedPointeeBase { public:};
+class CAnimationEntry { public:
     long BankIndex,AnimName,GroupName;
     CAnimComponentMap* Components;
     CAnimationEntry(long bank,long transitionIn,long transitionOut,long flags); //005DED00 real seed overload
@@ -141,7 +141,7 @@ struct ActionPointer {
     ActionPointer(CCreatureActionBase* p):Data(p) { if(Data) Info=new ActionPointerInfo(Data); else Info=0; }
     ~ActionPointer() { if(Info && --Info->RefCount==0) { Info->DeleteData(Info->Data); delete Info; } }
 };
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> Item;
     ActionPointer FollowUp;
     virtual ~CCreatureAction_UnsheatheItemFromInventory();

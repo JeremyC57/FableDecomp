@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CTCTavernGameSpotTheAddition::QuitMidGame (0x007D8140).
 static long g_state = -1; static float g_cover = -1.0f;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned char _pad[0x21];
     bool GameWon;
     unsigned char _pad_0x22[0x6];

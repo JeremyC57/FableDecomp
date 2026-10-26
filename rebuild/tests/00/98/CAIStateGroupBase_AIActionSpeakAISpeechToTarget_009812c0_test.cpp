@@ -1,7 +1,7 @@
 // Behaviour test for 0x009812c0: the six-argument speech action forwards every argument (pointers copied by value,
 // the copies released after the call) and appends `true`.
 #include <cstdio>
-struct CBaseObject { int refs; };
+class CBaseObject { public: int refs; };
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) {}

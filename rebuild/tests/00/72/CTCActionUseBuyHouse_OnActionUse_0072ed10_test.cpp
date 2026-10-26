@@ -39,13 +39,13 @@ public:
     }
 };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CTCOwnedEntity : CTCBase { CBaseIntelligentPointer POwner; };
-struct CTCBuyableHouse : CTCBase { int id; };
-struct CTCHeroStats : CTCBase { long Money; };
-struct CPlayer { CThing* hero; CThing* GetHeroThing() { return hero; } };
-struct CPlayerManager { CPlayer* main; CPlayer* GetMainPlayer() { return main; } };
-struct CBuyHouseDef { bool Main; };
-template <class T> struct CDefPointer { T* Object; T* operator->() const { return Object; } };
+class CTCOwnedEntity : public CTCBase { public: CBaseIntelligentPointer POwner; };
+class CTCBuyableHouse : public CTCBase { public: int id; };
+class CTCHeroStats : public CTCBase { public: long Money; };
+class CPlayer { public: CThing* hero; CThing* GetHeroThing() { return hero; } };
+class CPlayerManager { public: CPlayer* main; CPlayer* GetMainPlayer() { return main; } };
+class CBuyHouseDef { public: bool Main; };
+template <class T> class CDefPointer { public: T* Object; T* operator->() const { return Object; } };
 static int g_base = 0, g_main = 0, g_dress = 0; static long g_money = 0; static CTCBuyableHouse* g_house = 0;
 class CTCActionUseBase {
 public:

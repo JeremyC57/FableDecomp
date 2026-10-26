@@ -11,8 +11,8 @@
 // 0x0092C070 / 0x007E4B60) so the def stays in edi; operator= is a __forceinline SetPItem(other.GetPItem()).
 // Layout: Ego_r.pdb CAIStateGroup_IceTrollIcicleAssault (PTarget +0x14); CSnowTrollDef::IceTrailDistanceLimit +0x5c
 // (Ego_r.pdb); the creature's counted def class at +0x70. The engine header flattens the base, so the model is local.
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CSnowTrollDef {
+class CSnowTrollDef { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1
     long RefCount;                              // +0x04
@@ -35,7 +35,7 @@ struct CDefPointerSnowTroll {                   // CDefPointer<const CSnowTrollD
     ~CDefPointerSnowTroll() { if (m_p) m_p->Release(); }
     CSnowTrollDef* operator->() const { return m_p; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1
     long RefCount;                              // +0x04
@@ -50,7 +50,7 @@ struct CDefClassPointer {                       // the counted def class pointer
     CDefClassBase* operator->() const { return m_p; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -110,7 +110,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointerSnowTroll* out) co
 }
 #pragma auto_inline(on)
 
-struct CTCTargetingAI {                         // interface 8
+class CTCTargetingAI { public:                         // interface 8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -118,17 +118,17 @@ struct CTCTargetingAI {                         // interface 8
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual CThing* GetPTarget();               // slot 29 (+0x74)
 };
-struct CTCBoss {                                // interface 0xAD
+class CTCBoss { public:                                // interface 0xAD
     bool IsReadyForPhaseChange() const;         // 0x007AEE90
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     unsigned char _pad[0x14];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

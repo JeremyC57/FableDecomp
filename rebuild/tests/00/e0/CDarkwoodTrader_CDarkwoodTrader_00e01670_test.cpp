@@ -2,10 +2,10 @@
 // copied, ParentClass/PMasterData follow the arguments and each of the three timers gets its own timer index.
 #include <cstdio>
 static int g_nextTimer = 100;
-struct CTimer { int TimerIndex; CTimer() : TimerIndex(g_nextTimer++) {} };
-struct CScriptThing { int m_id; };
+class CTimer { public: int TimerIndex; CTimer() : TimerIndex(g_nextTimer++) {} };
+class CScriptThing { public: int m_id; };
 struct CScriptOwner { void* m_pInterface; };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     void* Game; CScriptThing Me;
     CEntityScriptBase(const CScriptThing& t, void* g) : Game(g), Me(t) {}
 };

@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CQuickDrawTriInfo
-{
+class CQuickDrawTriInfo
+{ public:
     unsigned char _pad00[0x24];
     float         m_depth;
     unsigned char _pad28[0x3C - 0x28];

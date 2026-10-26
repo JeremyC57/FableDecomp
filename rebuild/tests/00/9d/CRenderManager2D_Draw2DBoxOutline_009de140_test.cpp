@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 float GFVXToAX(float x) { return x * 0.5f; }
 float GFVYToAY(float y) { return y * 0.25f; }
 

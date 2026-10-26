@@ -10,7 +10,7 @@ struct Holder {
     Inner* pInner;   // +4
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     int pad0;        // +0x00
     int pad4;        // +0x04
     int pad8;        // +0x08

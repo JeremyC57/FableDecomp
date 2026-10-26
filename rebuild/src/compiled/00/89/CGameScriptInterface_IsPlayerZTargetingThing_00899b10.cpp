@@ -12,7 +12,7 @@
 // whose ->component is stored (`*out = ((it == last || 8 < it->type) ? last : it)->component`): the if/assign form puts
 // the component in eax and copies it to ecx (142 bytes); the ternary loads it straight into ecx as retail does.
 #include "engine/CPlayer.h"
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };
@@ -82,7 +82,7 @@ class CThingPlayerCreature : public CThing { };
 struct CPlayer_Methods : CPlayer {
     CThingPlayerCreature* GetPControlledCreature() const; // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager {
 public:
     CPlayer_Methods& GetMainPlayer();                    // 0x00449970
 };

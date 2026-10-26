@@ -2,7 +2,7 @@
 // Behaviour test for NCreatureMode::CModeBriarRoseConcentrate::FrameUpdate (retail 0x008E8760): unless she was hit, a
 // real (non-imposter) Briar Rose counts the concentrate timer down; at zero she tries to start the concentrate-out-of
 // action at a live target, and when that cannot start (or she was hit) the mode removes itself (mode 0x3f).
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -55,13 +55,13 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup {
+class CThing : public CThingLookup { public:
     unsigned char m_flags91;
 };
-struct CCreatureActionBase { CThing* Target; };
+class CCreatureActionBase { public: CThing* Target; };
 static int g_accept;
 static CThing* g_startedAt;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action)
     {
         if (!g_accept) return false;
@@ -69,10 +69,10 @@ struct CThingCreatureBase : CThing {
         return true;
     }
 };
-struct CCreatureAction_BriarRoseConcentrateOutof : CCreatureActionBase {
+class CCreatureAction_BriarRoseConcentrateOutof : public CCreatureActionBase { public:
     CCreatureAction_BriarRoseConcentrateOutof(CThingCreatureBase* owner, CThing* target) { Target = target; (void)owner; }
 };
-struct CTCCreatureModeManager : CTCBase {
+class CTCCreatureModeManager : public CTCBase { public:
     long removed;
     void RemoveMode(long type) { removed = type; }
 };

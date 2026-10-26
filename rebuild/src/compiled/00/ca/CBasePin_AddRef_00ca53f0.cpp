@@ -21,7 +21,7 @@ struct INonDelegatingUnknown {
     virtual unsigned long __stdcall NonDelegatingAddRef() = 0;
     virtual unsigned long __stdcall NonDelegatingRelease() = 0;
 };
-struct CBaseObject {                             // release build: the debug object-name/cookie fields are absent
+class CBaseObject { public:                             // release build: the debug object-name/cookie fields are absent
 };
 struct CUnknown : INonDelegatingUnknown, CBaseObject {
     IUnknown* const m_pUnknown;                  // +0x04 the owner

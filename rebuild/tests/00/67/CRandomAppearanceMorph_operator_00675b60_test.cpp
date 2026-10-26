@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static int g_assigns = 0;
-template<class T> struct CArray {
+template<class T> class CArray { public:
     long m_items[4]; int m_count;
     CArray() : m_count(0) {}
     CArray& operator=(const CArray& other)
@@ -13,10 +13,10 @@ template<class T> struct CArray {
     }
 };
 struct CKeyPairCompareLess {};
-template<class K, class V> struct CVectorMap { CArray<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted; CVectorMap() : m_sorted(false) {} };
+template<class K, class V> class CVectorMap { public: CArray<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted; CVectorMap() : m_sorted(false) {} };
 struct CBodyPartMesh {}; struct CTextureMorph {}; struct CSkeletalMorph {};
 
-struct CRandomAppearanceMorph {
+class CRandomAppearanceMorph { public:
     CArray<CArray<CBodyPartMesh> > BodyParts;
     CArray<CVectorMap<unsigned long, CTextureMorph> > BodyPartTextureMorphs;
     CVectorMap<long, CSkeletalMorph> SkeletalMorphs;

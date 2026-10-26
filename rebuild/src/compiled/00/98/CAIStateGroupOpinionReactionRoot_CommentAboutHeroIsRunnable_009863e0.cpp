@@ -7,14 +7,14 @@
 #include "engine/CThingSearchTools.h"
 #include "engine/_quarantine/CThing.h"
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CThingView : CThing { C3DVector* GetPosition(); };
 struct CThingAICreatureView : CThingAICreature { C3DVector* GetPosition(); };
 struct CThingIntelligentPointerView {
     unsigned char NativeBytes[9];
     operator CThing*(); // retail 0x00a01b50
 };
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY; };
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; };
 struct CNearbyCreatureFilter {
     unsigned char NativeStorage[0x2c];
     CNearbyCreatureFilter(CThingAICreature*, float, bool); // retail 0x00986ed0

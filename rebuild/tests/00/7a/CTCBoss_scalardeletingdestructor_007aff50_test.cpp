@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCBoss {
+class CTCBoss { public:
     void* vftable;
     int destroyed;
 };

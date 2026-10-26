@@ -4,7 +4,7 @@
 // spawn the WatchForLeaving and TeleportOutHero threads, then (unless already failed) wait for the mission to end
 // and complete the quest
 static int g_frames = 0, g_endAt = 1000, g_loadedAt = 2, g_overAt = 6, g_spawned = 0, g_completed = 0, g_objectives = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     void GiveHeroNewQuestObjective(const char* t, long n) const { if (std::strcmp(t, "first objective") == 0 && n == 1) ++g_objectives; }
     bool IsLevelLoaded(const char* n) const { return std::strcmp(n, "GuildWoods") == 0 && g_frames >= g_loadedAt; }

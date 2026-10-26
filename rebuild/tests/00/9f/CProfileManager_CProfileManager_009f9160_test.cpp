@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 struct ListNode { ListNode* next; ListNode* prev; };
-struct TreeNode { char color; TreeNode* parent; TreeNode* left; TreeNode* right; long key; long value; };
+class TreeNode { public: char color; TreeNode* parent; TreeNode* left; TreeNode* right; long key; long value; };
 struct Entry { char profile[0x48]; long id; void* children[3]; Entry* parent; };
 struct EntryNode { ListNode link; Entry data; };
 

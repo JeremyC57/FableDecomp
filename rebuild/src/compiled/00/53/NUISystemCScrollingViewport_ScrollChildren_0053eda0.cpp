@@ -8,14 +8,14 @@
 // vector<CComponent*> +0x164 (descriptive), ScrollingSpeed +0x174, Window C2DBoxF +0x178, PScrollBar +0x188,
 // PScrollBarOutside +0x18c. Float pool: -1.0f 0x0122DEE0, 0.2f immediate.
 #include <math.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 namespace NUISystem {
-struct CManager {
+class CManager { public:
     float GetDescriptionScrollingOffset();   // 0x0041CF40
     C2DVector GetUIScale();                  // 0x0041CF47
     bool IsScrollUnclamped();                // 0x0041CF2C (descriptive: the +0xc8 flag)
@@ -25,7 +25,7 @@ struct CFrontEndManager {
     static NUISystem::CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
@@ -66,7 +66,7 @@ struct CComponentVector {            // STLport vector<CComponent*> (12 bytes)
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     CComponent*& operator[](unsigned int n) { return _M_start[n]; }
 };
-struct CScrollingViewport : CComponent {
+class CScrollingViewport : public CComponent { public:
     unsigned char    _pad004[0xb0 - 0x04];
     CChildVector     Children;            // +0xb0
     unsigned char    _pad0bc[0x164 - 0xbc];

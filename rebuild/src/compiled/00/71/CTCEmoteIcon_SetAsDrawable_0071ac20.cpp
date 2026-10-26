@@ -56,7 +56,7 @@ public:
     }
 };
 
-struct CTCEmoteIcon : CTCBase {
+class CTCEmoteIcon : public CTCBase { public:
     long          ActiveTimer;                     // +0x0c
     void*         EmoteText;                       // +0x10 CWideString
     long          EmoteIcon;                       // +0x14

@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_calls = 0; static bool g_arg = true;
-struct CSubtitleRenderer { unsigned char _pad[0xe0]; bool m_visible, m_fading, m_queued; unsigned char _pade3[3]; bool m_forced;
+class CSubtitleRenderer { public: unsigned char _pad[0xe0]; bool m_visible, m_fading, m_queued; unsigned char _pade3[3]; bool m_forced;
     void SetAsInCutscene(bool b) { ++g_calls; g_arg = b; } void ResetCutsceneState(); };
 void CSubtitleRenderer::ResetCutsceneState() { SetAsInCutscene(false); m_visible = true; m_fading = false; m_queued = false; m_forced = false; }
 int main()

@@ -14,7 +14,7 @@
 struct CCreatureKillMap {
     unsigned char _body[0xc];
 };
-struct CPersistContext {
+class CPersistContext { public:
     template <class T> void Transfer(const char* name, T* value);
 };
 struct CTCInventoryBase_Retail {
@@ -23,11 +23,11 @@ struct CTCInventoryBase_Retail {
     void OnSerialise(CPersistContext& context, bool loading);   // 0x005BFD5E
 };
 namespace NHeroInformationScreens {
-struct CBase {
+class CBase { public:
     virtual long vfunc_0();
 };
 }
-struct CTCInventoryStats : CTCInventoryBase_Retail, NHeroInformationScreens::CBase {
+class CTCInventoryStats : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     CCreatureKillMap CreaturesKilled;         // +0x134
     void OnSerialise(CPersistContext& context, bool loading);
 };

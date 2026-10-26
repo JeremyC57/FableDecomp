@@ -13,7 +13,7 @@
 //   `_Tp __x` is not inlined by the lane and, forced inline, re-forms the address with a `lea`. Both tail-duplicated arms
 //   destroy the temporary.
 // Label correction: catalogued as `Vector_InsertElement`; the body is STLport `vector<CCharString>::resize`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const CCharString& other);              // 0x0099EC30

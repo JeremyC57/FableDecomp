@@ -11,7 +11,7 @@
 //   memberwise out of line: each array copied as one block through `lea` source/destination pointers, the vectors
 //   through their (inline) copy ctors, then the scalars. A placement-new copy in this TU makes VC7.1 emit it.
 inline void* operator new(unsigned int, void* p) { return p; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

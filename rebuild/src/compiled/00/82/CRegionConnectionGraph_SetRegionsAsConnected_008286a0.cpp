@@ -11,11 +11,11 @@
 // Shape: two inline map finds -- LowerBound on the key's own argument slot, then `(it == end || key < it->first) ? end
 //   : it` (signed `jge`) -- each followed by `if (it != end) it->second->SetAsConnectedToRegion(other, connected);`.
 //   The region ids and the flag live in ebp/edi/ebx only with a same-TU noinline LowerBound body (below).
-struct CRegionConnectionNode {
+class CRegionConnectionNode { public:
     void SetAsConnectedToRegion(long region, bool connected);   // 0x008285D0
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Object;                                       // +0x00
     void* PBlock;                                       // +0x04
     T* operator->() const { return Object; }
@@ -56,7 +56,7 @@ SRegionNodeEntry* CRegionNodeMap::LowerBound(const long& key)
     return first;
 }
 
-struct CRegionConnectionGraph {
+class CRegionConnectionGraph { public:
     CRegionNodeMap GraphNodes;                          // +0x00
     void SetRegionsAsConnected(long region1, long region2, bool connected);
 };

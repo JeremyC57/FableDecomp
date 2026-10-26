@@ -7,7 +7,7 @@
 // (first/last/end) with an inline constructor; the size-optimised def module (0x0045xxxx) forms
 // each block's address once (`lea eax,[esi+N]`) and stores through short displacements.
 #pragma optimize("s", on)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x74];                  // +0x04..+0x77
     CParentDefClassBase();                      // 0x00430370
@@ -21,7 +21,7 @@ struct CRetailVector {                          // VC6-era Dinkumware vector: fi
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CSpecialAbilitiesForcePushDef : CParentDefClassBase {   // vtable 0x012342CC
+class CSpecialAbilitiesForcePushDef : public CParentDefClassBase { public:   // vtable 0x012342CC
     CRetailVector<long> m_values0;              // +0x78
     unsigned char       _pad[0x08];             // +0x84..+0x8b
     CRetailVector<long> m_values1;              // +0x8c

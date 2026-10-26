@@ -4,7 +4,7 @@
 // Shape: PText's object pointer (+0) null -> false (`xor al,al`); its async-data pointer at +0x38 null -> true
 // (`mov al,1`); otherwise the IsFinished result is tested and both true paths share the `mov al,1` tail.
 // PDB: CDataBankTextEntry { CIVCountedPointer<NGameText::CTextEntry> PText +0, long NarratorIndex +4 }.
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished() const;             // 0x009D54E0
 };
 

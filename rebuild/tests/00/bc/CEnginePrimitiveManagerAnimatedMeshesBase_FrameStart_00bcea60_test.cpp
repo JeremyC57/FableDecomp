@@ -8,9 +8,9 @@
 // Layout: PDB (Ego_r) names; retail offsets equal the PDB (CVertexShader is 8 bytes): the selector pointers
 //   VertexShadersPalSkinShadowBufferRender +0x2e8 .. VertexShadersPalSkinDP3BumpSpotShadow +0x308; the shader arrays they
 //   point at +0x098..+0x268. Global shadow renderer as in 0x00B9D100. Local model: no engine/ header exists.
-struct CVertexShader { unsigned long _data[2]; };       // 8 bytes (PDB)
+class CVertexShader { public: unsigned long _data[2]; };       // 8 bytes (PDB)
 enum EShadowRenderingTechnique { SHADOW_TECHNIQUE_2 = 2 };   // only value 2 (the colour-buffer arm) is evidenced here
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     unsigned char _pad000[0x334];
     EShadowRenderingTechnique RenderingTechnique;       // +0x334
 };

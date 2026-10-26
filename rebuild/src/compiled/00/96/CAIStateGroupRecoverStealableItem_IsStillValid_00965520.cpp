@@ -3,10 +3,10 @@
 #include "engine/CAIStateGroup_RecoverStealableItem.h"
 #include "engine/CAIBrain.h"
 // No shared CTCAIScratchpad header; PDB flags at104/105.
-struct CTCAIScratchpad { unsigned char prefix[104]; bool StealStealableItems, RecoverStealableItems; };
+class CTCAIScratchpad { public: unsigned char prefix[104]; bool StealStealableItems, RecoverStealableItems; };
 #include "engine/CTCEntityEvents.h"
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*); };
-struct CThing {
+class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
     template<class T> __forceinline bool GetInterface(T** out,long type) {

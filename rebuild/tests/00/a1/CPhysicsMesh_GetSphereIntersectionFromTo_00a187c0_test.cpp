@@ -17,7 +17,7 @@ static int fails = 0;
 // returns its result); the result byte is zeroed in bl before the box test and receives either query's al; `ret 10h`.
 // `this` stays in edx across the box test because its body (and the point query's) is compiled above this function
 // in the same TU and never touches edx (VC7.1 callee register-usage knowledge).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
@@ -25,22 +25,22 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& v) const { return C3DVector(x - v.x, y - v.y, z - v.z); }
     C3DVector operator*(float f) const { return C3DVector(x * f, y * f, z * f); }
 };
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord, MaxCoord;
     C3DVector GetCentre() const { return (MinCoord + MaxCoord) * 0.5f; }
 };
 extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(fabs)
-struct CMeshIntersectionData;
-struct CIPhysicsFacesSegmentBase;
-template <class T> struct CCountedPointer {
+class CMeshIntersectionData;
+class CIPhysicsFacesSegmentBase;
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Count;
 };
 
 extern bool g_PhysicsUseSegmentation;              // 0x013984D0
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char                              _pad00[0x84];
     C3DBoundingBox                             BoundingBox;   // +0x84 (PDB +0xA0)
     unsigned char                              _pad9c[0xb4 - 0x9c];

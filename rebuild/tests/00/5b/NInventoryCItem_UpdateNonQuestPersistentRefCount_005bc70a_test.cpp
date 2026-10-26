@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 struct CPerItemData;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CItem { long ItemType; long NumberOfItems; CPerItemData* PPerItemData_Data; CCPPointerInfo* PPerItemData_Info; long AverageBoughtPrice; };
 struct CPerItemData {
     unsigned char Augmentations[0xc];                    // +0x00 STLport vector<long>

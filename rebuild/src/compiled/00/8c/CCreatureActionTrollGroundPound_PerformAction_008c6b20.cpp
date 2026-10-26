@@ -6,8 +6,8 @@
 // Layout: CThing interface bitset +0x20, map +0x44, PTCDriver +0x5c (the cached driver component), def +0x70, player +0x90.
 // Shape: GetSubDef 0x008C79B0 sits in this TU (same-TU noinline stand-in), as does the LowerBound stand-in (0x0040F020),
 //   so the key word, the def word and the out pointers share frame slots; each position is a block-scoped copy.
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -31,7 +31,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -46,7 +46,7 @@ struct CTrollGroundPoundDef {
     float         ObstructionRadius;                  // +0x44
     long          ObstructionValue;                   // +0x48
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -55,7 +55,7 @@ template<class T> struct CDefPointer {
             Object->Destroy();
     }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTrollGroundPoundDef>* out);   // 0x008C79B0
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -109,7 +109,7 @@ public:
         return false;
     }
 };
-struct CRightHandedSet;
+class CRightHandedSet;
 CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set,
                                      unsigned long flags, const CCharString& name);   // 0x00703210
 __forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
@@ -118,7 +118,7 @@ __forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& p
 }
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position);             // 0x0080C460
 CThing* __fastcall CreateObstruction(const C3DVector* a, const C3DVector* b, float radius);   // 0x007FD4B0
-struct CTCTrapBase {                                  // interface 0x7D
+class CTCTrapBase { public:                                  // interface 0x7D
     void SetThingAsImmune(CThing* thing);             // 0x0078839A
     void ManualTrigger();                             // 0x00788388
 };
@@ -133,13 +133,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_TrollGroundPound : CCreatureActionBase {
+class CCreatureAction_TrollGroundPound : public CCreatureActionBase { public:
     void PerformAction();
 };
 

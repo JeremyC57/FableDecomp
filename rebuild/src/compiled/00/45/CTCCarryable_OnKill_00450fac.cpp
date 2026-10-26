@@ -2,7 +2,7 @@
 // Leaf: OnKill
 extern void __stdcall FreeNode_00450747(void* p);
 struct ListNode { ListNode* nextish; void* freeptr; ListNode* nxt; ListNode* prv; };
-struct CTCCarryable { ListNode* head; int count; };
+class CTCCarryable { public: ListNode* head; int count; };
 void __fastcall CTCCarryable_OnKill(CTCCarryable* self)
 {
     if (self->count != 0) {

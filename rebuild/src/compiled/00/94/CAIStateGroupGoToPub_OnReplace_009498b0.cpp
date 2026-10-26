@@ -11,14 +11,14 @@
 // resets are converting-ctor temporaries assigned through the inline operator= (the <CThingObject> vtable cached in edi).
 // Layout: GoToPub from Ego_r.pdb (base 0x14): PPub +0x14, PBar +0x1c, PTable +0x24, PBarman +0x2c, PTankard +0x34, SeatIndex
 // +0x3c, Sitting +0x70, BarActionPointIndex +0x74, HandsOffMode +0xa0.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -34,9 +34,9 @@ struct CThing {
         }
     }
 };
-struct CThingBuilding;
-struct CThingObject;
-struct CThingAICreature;
+class CThingBuilding;
+class CThingObject;
+class CThingAICreature;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
@@ -45,26 +45,26 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer(T* item) { SetPItem((const CThing*)item); }
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 bool __fastcall GetUpFromSitting(CThing* creature, long movement, const CCharString* anim, CAIBrain* brain);   // 0x0085FF10
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

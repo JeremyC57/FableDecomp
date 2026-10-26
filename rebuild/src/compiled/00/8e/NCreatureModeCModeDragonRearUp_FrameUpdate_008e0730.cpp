@@ -9,22 +9,22 @@
 // Layout: Ego_r.pdb CModeDragonRearUp (0x78): CModeStandBase 0x68, Filter +0x68, Timer +0x74.
 // Shape: the creature is a named local read once (edi) for the busy test, the ctor argument and the call; the timer is
 //   decremented in memory (`dec [esi+74h]`) and re-read for the test.
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsPerformingAnyAction();          // 0x006622A0
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                  // 0x0062E900
 };
-struct CCreatureAction_DragonRearUpOutOf : CCombatActionBase {
+class CCreatureAction_DragonRearUpOutOf : public CCombatActionBase { public:
     CCreatureAction_DragonRearUpOutOf(CThingCreatureBase* owner);   // 0x008F5020
 };
 

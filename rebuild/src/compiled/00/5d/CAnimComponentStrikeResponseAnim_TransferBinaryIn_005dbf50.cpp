@@ -18,7 +18,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CCharStringData;
+class CCharStringData;
 
 class CCharString {
 public:

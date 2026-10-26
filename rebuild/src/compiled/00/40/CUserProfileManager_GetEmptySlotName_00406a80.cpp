@@ -14,7 +14,7 @@ struct SaveMgr {
 };
 extern SaveMgr* g_saveMgr;                  // [0x13b86a0]
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWideString GetEmptySlotName();
 };
 

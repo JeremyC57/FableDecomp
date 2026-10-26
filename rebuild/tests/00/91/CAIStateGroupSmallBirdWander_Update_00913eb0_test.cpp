@@ -1,6 +1,6 @@
 #include <cstdio>
 // Model of CAIStateGroup_SmallBirdWander::Update @ 0x00913EB0: random flight position -> fly there -> terminate.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static bool g_randomOk; static int g_executed; static C3DVector g_flownTo; static float g_radius; static bool g_ground;
 struct Group {
     bool Terminated;

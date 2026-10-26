@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CFrameSource { long m_frame; long GetFrameNumber() { return m_frame; } };
 static CFrameSource g_source;
-struct CTCLook {
+class CTCLook { public:
     long LookTimer;
     CFrameSource* GetFrameSource() { return &g_source; }
     void UpdateLookTimer() { LookTimer = GetFrameSource()->GetFrameNumber() + 90; }

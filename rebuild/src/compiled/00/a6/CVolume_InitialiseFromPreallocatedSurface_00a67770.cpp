@@ -18,7 +18,7 @@ extern unsigned long g_GraphicsMemoryBytes;        // 0x013CAAB0
 
 // CVolume (PDB, 8 bytes): +0 the vptr, +4 the Direct3D volume. No engine header exists for it; the body
 // never touches the vptr, so it is kept as an opaque word.
-struct CVolume {
+class CVolume { public:
     void*             __vftable;                   // +0x00
     IDirect3DVolume9* PD3DVolume;                  // +0x04
 

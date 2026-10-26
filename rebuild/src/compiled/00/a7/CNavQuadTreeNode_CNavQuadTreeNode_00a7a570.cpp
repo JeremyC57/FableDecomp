@@ -9,7 +9,7 @@
 //   layer, LeafNode = true, Blocked = false) merges with the derived initialisers (four null children); every store lands before
 //   the derived vtable store. A LeafNode body assignment in the derived ctor stores after that vtable; the POD position copy
 //   schedules the level store before the last argument load.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
@@ -17,13 +17,13 @@ struct CBase {
     virtual ~CBase();
     CBase();                                       // 0x0099A2F0
 };
-struct CNavQuadTree;
+class CNavQuadTree;
 enum ENavQuadTreeNodeType { NAV_NODE_QUADTREE = 0 };
 namespace std {
 template <class T> struct allocator { };
 template <class T, class A = allocator<T> > struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 }
-struct CANavQuadTreeNode : CBase {
+class CANavQuadTreeNode : public CBase { public:
     C2DVector     Position;                        // +0x04
     unsigned char QuadTreeLevel;                   // +0x0c
     unsigned char NavLayer;                        // +0x0d
@@ -33,7 +33,7 @@ struct CANavQuadTreeNode : CBase {
         : Position(pos), QuadTreeLevel(level), NavLayer(layer), LeafNode(true), Blocked(false) { }
     virtual ~CANavQuadTreeNode();
 };
-struct CNavQuadTreeNode : CANavQuadTreeNode {
+class CNavQuadTreeNode : public CANavQuadTreeNode { public:
     CANavQuadTreeNode* TLNode;                     // +0x10
     CANavQuadTreeNode* TRNode;                     // +0x14
     CANavQuadTreeNode* BLNode;                     // +0x18

@@ -23,12 +23,12 @@
 //   CEnginePrimitiveHandle model (`Clear()` = last-handle notice + `Data = 0`, then `Data = p`, every helper inline, so
 //   two release sequences precede the store); the index is the old size kept in esi for the return; the enable bit is a bool
 //   local `(flags & 0x20) ? false : true` computed before the null test (bl).
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     long Type;                                         // +0x00
 };
 
-struct CEnginePrimitiveHandle;
-struct CEngineInternalPrimitiveBase {
+class CEnginePrimitiveHandle;
+class CEngineInternalPrimitiveBase { public:
     virtual void v00() {}
     virtual void Destroy() = 0;                            // slot 1 (+0x04)
     virtual void v02() {}
@@ -64,7 +64,7 @@ public:
     }
 };
 
-struct CEnginePrimitiveHandle {                        // 8 bytes: vptr (0x0122F598) + counted Data
+class CEnginePrimitiveHandle { public:                        // 8 bytes: vptr (0x0122F598) + counted Data
     virtual void v00() {}
     CIVCountedPointer Data;                            // +0x04
     void Clear()
@@ -94,7 +94,7 @@ struct CEnginePrimitiveManagerTable {
 };
 extern CEnginePrimitiveManagerTable* g_pPrimitiveManagers;   // 0x01436E84
 
-struct CEngineInternalPrimitive2DViewport : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitive2DViewport : public CEngineInternalPrimitiveBase { public:
     unsigned char _pad38[0x94 - 0x38];
     CHandleVector Primitives;                          // +0x94
     void UpdateRenderLayerMask();                      // 0x00BE1D80

@@ -90,7 +90,7 @@ public:
 
 class CBankFileAsyncEntry;
 class CBankFileAsyncData;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 template <class T> class CCountedPointer {
 public:
@@ -101,7 +101,7 @@ public:
 
 class CEngineStaticMapFileBlockManager {
 public:
-    class CFileBlock {                                  // 16 bytes
+    struct CFileBlock {                                  // 16 bytes
     public:
         long                                RefCount;     // +0x00
         bool                                LowPriority;  // +0x04

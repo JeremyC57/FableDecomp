@@ -9,13 +9,13 @@ struct CStatBarInfo;
 
 namespace NPlayerGui {
 
-struct CStatBase {
+class CStatBase { public:
     virtual void v00();
     unsigned char _body[0x6c - 4];             // +0x04 .. +0x6c: the stat-bar base state
     CStatBase(CStatBarInfo* info);             // 0x0065431D
 };
 
-struct CCrimeStatBar : CStatBase {             // vtable 0x0125A748
+class CCrimeStatBar : public CStatBase { public:             // vtable 0x0125A748
     virtual void v00();
     float NormalisedTimeLeft;                  // +0x6c (PDB +0x7c)
     CCrimeStatBar(CStatBarInfo* info);

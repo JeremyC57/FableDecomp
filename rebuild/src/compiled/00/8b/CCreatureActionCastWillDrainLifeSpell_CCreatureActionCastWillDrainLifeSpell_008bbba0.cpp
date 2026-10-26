@@ -5,10 +5,10 @@
 // Shape: the three trailing arguments are loaded into registers together after the base call (target pushed for
 // SetPItem, the two longs stored after the vtable). Vtable 0x012645EC (rtti-vtables.tsv); member names from the
 // Ego_r.pdb layout (PDB +0x12c/+0x130; retail CCombatActionBase is 0x114 bytes, CCreatureActionBase 0xa8). `ret 10h`.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -16,13 +16,13 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item);       // 0x00A01B90
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (the register-zeroed
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
     long FirstSound;                        //   stack stores before the base call: an embedded object's inline ctor)
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114 (PDB 0x12c)
+class CCombatActionBase { public:                  // retail sizeof 0x114 (PDB 0x12c)
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];         // +0x04 (PCreature at +8, the rest of the 0xa8-byte CCreatureActionBase)
     CBaseIntelligentPointer PTarget;        // +0xa8 CIntelligentPointer<CThing> (PDB +0xb4)
@@ -30,7 +30,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114 (PDB 0x12c)
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
-struct CCreatureAction_CastWillDrainLifeSpell : CCombatActionBase {   // vtable 0x012645EC; sizeof 0x11c
+class CCreatureAction_CastWillDrainLifeSpell : public CCombatActionBase { public:   // vtable 0x012645EC; sizeof 0x11c
     long Level;                             // +0x114 (PDB +0x12c)
     long DrainDefIndex;                     // +0x118 (PDB +0x130)
     virtual void v00();

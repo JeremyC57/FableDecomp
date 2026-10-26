@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cctype>
 struct Sym { char name[16]; int value; };
-struct CSymbolMap {
+class CSymbolMap { public:
     Sym syms[8]; int n; bool finalised;
     void Clear() { n = 0; finalised = false; }
     void AddSymbolDirty(const char* prefix, const char* name, int value)

@@ -5,7 +5,7 @@
 
 struct CItem;
 
-struct CTCInventory {
+class CTCInventory { public:
     CItem* GetHighlightedItem();                       // @ 0x5bcae3
     void AddQuickAccess(CItem* item, long arg, int f); // @ 0x584157
     void SetHighlightedItemAsQuickAccessItem(long arg);

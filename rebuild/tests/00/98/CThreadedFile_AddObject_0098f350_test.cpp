@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThreadedFileObjectDesc { unsigned char _body[0x18]; };
+class CThreadedFileObjectDesc { public: unsigned char _body[0x18]; };
 class CThreadedFile;
 class CThreadedFileManager {
 public:

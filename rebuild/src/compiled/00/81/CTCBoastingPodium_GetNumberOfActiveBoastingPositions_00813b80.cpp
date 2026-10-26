@@ -15,7 +15,7 @@ struct CInterfaceMap {                          // a thing's sorted {type, compo
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components

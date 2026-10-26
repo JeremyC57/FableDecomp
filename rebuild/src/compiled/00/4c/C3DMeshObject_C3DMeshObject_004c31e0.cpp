@@ -23,7 +23,7 @@ struct SZeroed {                        // the zeroed block is one embedded memb
     SZeroed() : m_00(0), m_01(0), m_02(0) { }           // inlined into every constructor that embeds it
 };
 
-struct C3DMeshObject : CBase_0099a2d0 {
+class C3DMeshObject : public CBase_0099a2d0 { public:
     unsigned char _pad[0x4];
     SZeroed m_data;                        // +0x8
     virtual void v00();

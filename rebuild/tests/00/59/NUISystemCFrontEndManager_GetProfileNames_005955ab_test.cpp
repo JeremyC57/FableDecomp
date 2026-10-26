@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <string.h>
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                              // 0x0099AED0
     CWideString(const unsigned short* text);    // 0x0099B6B0
@@ -10,7 +10,7 @@ struct CWideString {
     CWideString& operator+=(const unsigned short* text);   // 0x0099B940
     class CCharString ConvertToCharString() const;          // 0x0099B2C0
 };
-struct CCharStringData {
+class CCharStringData { public:
     char* Text;
     long  Length;
 };
@@ -102,7 +102,7 @@ void CFrontEndManager::GetProfileNames(std::vector<CWideString>& names)
 #include <stdlib.h>
 static int g_fail = 0;
 static void check(bool c, const char* w) { if (!c) { std::printf("FAIL %s\n", w); g_fail = 1; } }
-struct CWideStringData { unsigned short s[300]; };
+class CWideStringData { public: unsigned short s[300]; };
 static void wset(unsigned short* d, const unsigned short* s) { int i = 0; while (s[i]) { d[i] = s[i]; ++i; } d[i] = 0; }
 static void wsetn(unsigned short* d, const char* s) { int i = 0; while (s[i]) { d[i] = (unsigned short)s[i]; ++i; } d[i] = 0; }
 static int wlen(const unsigned short* s) { int i = 0; while (s[i]) ++i; return i; }

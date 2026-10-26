@@ -9,13 +9,13 @@ struct CRetailVector
     const T& operator[](unsigned int i) const { return _First[i]; }
 };
 
-struct CBossDef { CRetailVector<long> PhaseHealthPercent; };
+class CBossDef { public: CRetailVector<long> PhaseHealthPercent; };
 
-struct CThing { unsigned long ThingTypeFlags; };
-struct CThingPhysical : CThing { float MaxHealth; float Health; };
+class CThing { public: unsigned long ThingTypeFlags; };
+class CThingPhysical : public CThing { public: float MaxHealth; float Health; };
 
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     CThing*         ParentThing;
     const CBossDef* PBossDef;
 

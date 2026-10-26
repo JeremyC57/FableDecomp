@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     unsigned long w[9];
     bool test(long bit) { return (w[bit >> 5] & (1UL << (bit & 31))) != 0; }
@@ -14,7 +14,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
@@ -28,14 +28,14 @@ struct CThing {
     }
 };
 static int g_tutCalls = 0; static long g_tutCat = -1; static int g_tutForce = -1;
-struct CTCHero {
+class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force) { ++g_tutCalls; g_tutCat = category; g_tutForce = force; return true; }
 };
-struct CWorld { unsigned char _pad_0x00[0xA4]; bool Paused; };
-struct CPlayerGui { unsigned char _pad_0x00[0xFD]; bool BlockingTutorials; };
+class CWorld { public: unsigned char _pad_0x00[0xA4]; bool Paused; };
+class CPlayerGui { public: unsigned char _pad_0x00[0xFD]; bool BlockingTutorials; };
 static CPlayerGui g_gui; CPlayerGui* g_pPlayerGui = &g_gui;
 static CWorld g_world;
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void* __vftable;
     CThing* ParentThing;
     unsigned char _pad_0x08[0x50];

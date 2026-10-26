@@ -13,7 +13,7 @@
 //   (two different bodies cannot share one inline symbol) -- see NOTES.md / LESSONS.md.
 extern "C" int __cdecl _stricmp(const char* a, const char* b);   // 0x00BFEBA8
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                         // +0x00
     unsigned long m_length;                         // +0x04
 };

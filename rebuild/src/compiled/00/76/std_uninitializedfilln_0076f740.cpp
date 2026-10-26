@@ -11,7 +11,7 @@
 //   `first` then `second` (`lea eax,[ebx+4]` re-derived each iteration).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
 };

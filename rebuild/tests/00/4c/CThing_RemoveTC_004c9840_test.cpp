@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CThing;
+class CThing;
 static int g_setPItem = 0;
 struct CBaseIntelligentPointer {
     virtual void v00() {}
@@ -19,7 +19,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 static int g_onRemove = 0; static int g_getType = 0;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {} virtual void v01() {}
     virtual void OnRemove() { ++g_onRemove; CHECK(PendingRemoval); }
     virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {} virtual void v08() {}
@@ -84,7 +84,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-struct CThing {
+class CThing { public:
     void*         __vftable;
     unsigned char _pad04[0x1c];
     CTCBitset     m_presentBits;

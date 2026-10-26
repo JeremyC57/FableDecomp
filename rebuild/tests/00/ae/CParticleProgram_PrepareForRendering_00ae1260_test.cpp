@@ -18,16 +18,16 @@
 // Layout: as the 4-argument overload 0x00AE1600 (retail 12-byte containers); only the matrix of the animation
 // arguments is used.
 // Shape: the buffer pointer from GetGroupVectorBuffer stays in ebx for the transform and the blend.
-struct C4DVector { float X, Y, Z, W; };
-struct CMatrix4x4;
-struct C3DGroup2;
-struct C3DAnimationBlendState;
-struct C3DAnimationManager;
-struct C3DVector;
-struct C3DMesh2;
-struct CMovableResourceMemoryPool;
+class C4DVector { public: float X, Y, Z, W; };
+class CMatrix4x4;
+class C3DGroup2;
+class C3DAnimationBlendState;
+class C3DAnimationManager;
+class C3DVector;
+class C3DMesh2;
+class CMovableResourceMemoryPool;
 
-template<class T> struct CArray {                  // retail CArray<T>: three pointers
+template<class T> class CArray { public:                  // retail CArray<T>: three pointers
     T* m_pData;
     T* m_pLast;
     T* m_pEnd;
@@ -42,7 +42,7 @@ void __cdecl GFInterpolateVectors(C4DVector* out, unsigned long outStride, const
 
 extern const float g_MinimumMorphBlend;            // 0x0129BA3C (1e-4f)
 
-struct CParticleSimulation {                       // Ego_r.pdb, retail 0x80 bytes
+class CParticleSimulation { public:                       // Ego_r.pdb, retail 0x80 bytes
     void*         __vftable;                       // +0x00
     unsigned char RenderData[8];                   // +0x04 CCountedPointer<CParticleSimulationRenderData>
     float         Timestep;                        // +0x0c

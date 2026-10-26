@@ -5,7 +5,7 @@
 // Behaviour model of list<CIntelligentPointer<CThing> >::erase(iterator) (0x004B7CA0): unlink the node, run the
 // element's virtual destructor, free the node, return the iterator to the next node.
 static int g_dtors = 0;
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer() { ++g_dtors; } CThing* m_pItem; };
 struct CIntelligentPointer : CBaseIntelligentPointer { };
 struct NodeBase { NodeBase* next; NodeBase* prev; };

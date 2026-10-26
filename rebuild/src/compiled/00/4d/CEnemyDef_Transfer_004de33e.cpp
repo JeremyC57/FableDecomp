@@ -1,5 +1,5 @@
 #include "engine/CEnemyDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CPersistContext { void Xfer(void* sub); };
+class CPersistContext { public: void Xfer(void* sub); };
 struct CEnemyDef_Methods : CEnemyDef {
     void Transfer(CPersistContext* ctx);
 };

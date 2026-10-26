@@ -14,10 +14,10 @@
 // Layout: CTCTrapBase.h is the PDB layout (16-byte vectors); retail vectors are 12 bytes, which moves every later
 // member 4 bytes per vector (PObstruction +0x24, TriggerThings +0x2C, TrapOpener +0x38, PTrapDef +0x54, Active +0x58),
 // so a local model is used.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       Thing;                    // +0x04
     unsigned char _pad_0x08[0x4];
@@ -55,19 +55,19 @@ struct CRetailVector : CRetailVectorBase {  // std::vector<T> (retail 12 bytes)
     explicit CRetailVector(const CRetailAllocator& a = CRetailAllocator()) : CRetailVectorBase(a) { }
 };
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     unsigned char _body[0x1C];
     CFadeInFadeOutBase();                   // 0x00436560
 };
 
-struct CTrapDef;
+class CTrapDef;
 
 struct CDefPointerTrapDef {
     const CTrapDef* Object;
     CDefPointerTrapDef() : Object(0) { }
 };
 
-struct CTCTrapBase : CTCBase {
+class CTCTrapBase : public CTCBase { public:
     CRetailVector       HitThings;          // +0x0C vector<pair<CIntelligentPointer<CThing>, long> >
     CRetailVector       ImmuneThings;       // +0x18
     CIntelligentPointer PObstruction;       // +0x24

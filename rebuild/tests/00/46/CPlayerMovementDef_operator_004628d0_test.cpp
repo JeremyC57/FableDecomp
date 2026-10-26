@@ -1,10 +1,10 @@
 // behaviour test for 0x004628D0 CPlayerMovementDef::operator=
 #include <cstdio>
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int baseTag;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { baseTag = o.baseTag; return *this; }
 };
-struct CPlayerMovementDef : CParentDefClassBase {
+class CPlayerMovementDef : public CParentDefClassBase { public:
     float JoystickMovementStationaryBand, JoystickMovementSlowBand, JoystickMovementWalkingBand, JoystickMovementJoggingBand;
     float MinRequiredAngleFor180, SecondsToStoreLastMovementFor;
     long NoMovementFramesToCheckFor180, NoMovementFramesToCheckFor180PriorStraightLine;

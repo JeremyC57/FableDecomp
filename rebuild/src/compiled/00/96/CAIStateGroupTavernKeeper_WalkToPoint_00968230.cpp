@@ -9,18 +9,18 @@
 //          CRightHandedSet's forward axis at +0x0c (descriptive).
 #include "engine/CAIStateGroup_TavernKeeper.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                               // +0x00 (descriptive)
     C3DVector Forward;                          // +0x0c (descriptive)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
@@ -38,7 +38,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

@@ -19,7 +19,7 @@ public:
     void* PData;                               // +0x0
 };
 
-struct CTestQuest {                            // Ego_r.pdb, 28 bytes
+class CTestQuest { public:                            // Ego_r.pdb, 28 bytes
     CCharString QuestName;                     // +0x00
     CCharString HSPName;                       // +0x04
     long        ColourIndex;                   // +0x08

@@ -3,7 +3,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #define FABLE_ENGINE_C3DMESHFILEMATERIALCHUNK_H
-struct C3DMeshFileMaterialChunk {};
+class C3DMeshFileMaterialChunk { public:};
 #endif
 // C3DMeshFileMaterialChunk::GetMap(EMaterialMapType) const -- find the requested MMAP child by its map type
 // Retail @ 0x00AC1160, 263 bytes. FindFirstMap @ 0x00AC0E50 wraps FindFirstSubChunkOfType @ 0x00AA7F40
@@ -11,7 +11,7 @@ struct C3DMeshFileMaterialChunk {};
 // MapType is at +0x2c from the retail compare at 0x00AC11C5. The generated map header is absent, so the
 // fixture models only the required prefix and field; the CCountedPointer contract follows landed siblings.
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
  T* Object; SCountBlock* Count;
  CCountedPointer():Object(0),Count(0){}
  CCountedPointer(const CCountedPointer& o):Object(o.Object),Count(o.Count){if(Count)++Count->references;}
@@ -22,9 +22,9 @@ template<class T> struct CCountedPointer {
  CCountedPointer& operator=(const CCountedPointer& o){SCountBlock*c=o.Count;T*p=o.Object;if(Count!=c){if(Count){--Count->references;if(!Count->references){Count->destroy(Count->object);delete Count;}}Object=p;Count=c;if(c)++c->references;}return *this;}
  T* operator->()const{return Object;}
 };
-struct CChunkedFileChunk;
+class CChunkedFileChunk;
 enum EMaterialMapType { MAP_DIFFUSE=0, MAP_BUMP=1, MAP_REFLECTION=2, MAP_ILLUMINATION=3 };
-struct C3DMeshFileMapChunk { unsigned char pad[0x2c]; EMaterialMapType MapType; };
+class C3DMeshFileMapChunk { public: unsigned char pad[0x2c]; EMaterialMapType MapType; };
 #include "engine/C3DMeshFileMaterialChunk.h"
 // Method-only view: this function does not access owner fields, so shared owner storage is sufficient.
 // The two inherited superchunk helpers receive the same object address; no secondary base adjustment.

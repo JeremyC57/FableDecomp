@@ -2,7 +2,7 @@
 // component (interface 0x29) title def supplies the "comment at hero" tag, spoken by the brain's creature to that thing
 // with interrupt=true, priority 0x93; the result is true only when the action returns 2 (completed).
 #include <cstdio>
-struct CTCBase { int id; };
+class CTCBase { public: int id; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -57,7 +57,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {
     CIntelligentPointerCreature(CThing* item) { SetPItem(item); }
 };
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 static CThing* g_speaker; static CThing* g_target; static unsigned long g_speech; static bool g_interrupt;
 static long g_priority; static int g_repeat; static int g_result;
 class CAIStateGroupBase {

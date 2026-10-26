@@ -11,7 +11,7 @@
 // Shape: the CIntelligentPointer operator= names the GetPItem() CALL result (`item = other.GetPItem(); SetPItem(item);`), which
 //   keeps the member's address (this of SetPItem) after the source's GetPItem call and colours the registers as retail; the
 //   inline `SetPItem(other.GetPItem())` form evaluates the inlined member's `this` first.
-struct CBaseObject;
+class CBaseObject;
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {                            // sizeof 8: vptr + PData
@@ -29,7 +29,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x01237F1C
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 
-struct CTCDiscovery {
+class CTCDiscovery { public:
     virtual void v00();
     unsigned char       _base[0x8];                         // CTCBase: ParentThing +4, flags +8/+9
     bool                Discovered;                         // +0x0c

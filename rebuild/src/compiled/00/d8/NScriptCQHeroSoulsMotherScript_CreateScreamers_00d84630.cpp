@@ -15,22 +15,22 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass();                                           // 0x0099A2D0
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -47,9 +47,9 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImpl;
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;                // slot 6 (+0x18) 0x004AA980
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
@@ -69,12 +69,12 @@ public:
     T& operator[](unsigned int n) { return _M_start[n]; }
 };
 }
-struct CRGBColour {                                         // D3DCOLOR byte order
+class CRGBColour { public:                                         // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 int __cdecl rand();                                         // 0x00BFEB16
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -130,11 +130,11 @@ struct CGameScriptInterface {                       // the quest's game script i
     virtual void RemoveQuestInfoElement(long id) const;   // slot 338 (+0x548) RemoveQuestInfoElement
 };
 extern CGameScriptInterface* g_pGameScriptInterface;        // 0x0143E8F8
-struct CTimer {                                             // a script timer: the interface's timer index
+class CTimer { public:                                             // a script timer: the interface's timer index
     long Index;
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad0[0xc70];
     float HS_ScreamerCount;                                 // +0xc70
     long  HS_ScreamersAtOnce;                               // +0xc74

@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* s) : m_pData(s) {}
     CCharString(const CCharString& o) : m_pData(o.m_pData) {}
@@ -20,7 +20,7 @@ public:
         OutiFile(""), QuestCardDefName("") {}
 };
 
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest& a, const CTestQuest& b) const { return std::strcmp(a.QuestName.m_pData, b.QuestName.m_pData) < 0; }
 };
 

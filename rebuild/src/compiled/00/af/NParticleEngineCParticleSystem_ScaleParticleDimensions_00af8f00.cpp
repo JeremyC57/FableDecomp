@@ -8,18 +8,18 @@
 // re-evaluates the inner MAX on the taken arm -- hence the second x/y compare; the size is scaled by an inline
 // C2DVector::operator*=(float) (`fld st(0) ; fmul [eax] ; fstp [eax] ; fmul [eax+4] ; fstp [eax+4]`), tail-duplicated per arm.
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector& operator*=(float s) { X *= s; Y *= s; return *this; }
 };
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char _system[0x50];
     bool          Initialised           : 1;   // +0x50 bit 0
     bool          Enabled               : 1;

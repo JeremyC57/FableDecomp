@@ -20,7 +20,7 @@ extern "C" double __cdecl fmod(double x, double y);
 extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(atan2, fmod, fabs)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

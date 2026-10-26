@@ -5,7 +5,7 @@
 // out of line, so EH state 0 is entered once it exists) then the body resolves the other pointer's
 // thing out of line and Sets it. The manifest label (`operator=`) is propagated; the class is
 // named by address.
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer_00c16900 {
     void* m_pThing;                        // +0
     void* m_pLink;                         // +4

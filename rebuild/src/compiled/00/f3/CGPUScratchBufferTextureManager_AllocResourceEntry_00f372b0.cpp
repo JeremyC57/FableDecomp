@@ -14,9 +14,9 @@
 
 #include "engine/CPixelFormat.h"
 
-struct CTexture;
-struct CSurface;
-struct C2DExtentsI { long Width; long Height; };
+class CTexture;
+class CSurface;
+class C2DExtentsI { public: long Width; long Height; };
 
 struct __true_type { __true_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }

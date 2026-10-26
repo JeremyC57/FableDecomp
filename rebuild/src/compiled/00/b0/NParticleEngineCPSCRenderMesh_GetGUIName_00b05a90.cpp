@@ -4,7 +4,7 @@
 // (was: NParticleEngine::CPSCRenderMesh::GetGUIName (returns CCharString by value))
 // retail 0x00b05a90: build CCharString from literal @0x129f534 with len -1.
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     CCharString(const char* s, int len);
 };
@@ -16,7 +16,7 @@ __declspec(noinline) CCharString::CCharString(const char* s, int len) {
 }
 
 namespace NParticleEngine {
-struct CPSCRenderMesh {
+class CPSCRenderMesh { public:
     CCharString GetGUIName();
 };
 }

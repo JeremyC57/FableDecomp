@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C20C0, length 41 bytes.
 // Callees: the holder destructor @ 0x009F9F70, CWideString::~CWideString @ 0x0099B510, operator delete @ 0x00BFE9BC. Shape: two `lea ecx ; call` pairs then
 // `test byte ptr [esp+8],1`. The chunk label is propagated; the class is named by address.
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                // 0x0099B510
 };

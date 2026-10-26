@@ -3,12 +3,12 @@
 // behaviour test: CQ_GuildTrainingScript::RunCeremonyCutscene -- wait for FrescoDome, create Whisper and the GM, script
 // them and the hero, cast WHIS/GM/HERO, play the ceremony cut-scene, then remove both actors
 static int g_frames = 0, g_endAt = 1000, g_created = 0, g_scripted = 0, g_faction = 0, g_removed = 0, g_played = 0, g_paused = 0, g_cast = 0;
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing { const char* name; C3DVector pos; const C3DVector& GetPos() const { return pos; } };
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public: const char* name; C3DVector pos; const C3DVector& GetPos() const { return pos; } };
 struct CHandle { const CScriptThing* thing; CHandle() : thing(0) {} bool IsScripting() { return thing != 0; } void Release() { thing = 0; } };
 struct CCastMap { const char* keys[3]; const CScriptThing* things[3]; int n; CCastMap() : n(0) {}
     void Set(const char* k, const CHandle& h) { keys[n] = k; things[n] = h.thing; ++n; } };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frames; }
     bool StartScriptingEntity(const CScriptThing& t, CHandle& h, int priority) { if (g_frames < 2 || priority != 4) return false; h.thing = &t; ++g_scripted; return true; }

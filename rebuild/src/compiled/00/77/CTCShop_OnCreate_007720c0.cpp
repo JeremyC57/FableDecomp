@@ -1,6 +1,6 @@
 // Clear the member at this+0x24. __fastcall this=ecx.
 #pragma pack(push,1)
-struct CTCShop {
+class CTCShop { public:
     char pad_0[0x24];
     char field;
     void Clear();

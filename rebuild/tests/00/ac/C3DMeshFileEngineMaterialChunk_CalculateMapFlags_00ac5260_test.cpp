@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CCharStringData { const char* m_pChars; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
 };
 struct CMapFilenames { CCharString DiffuseMap, BumpMap, ReflectionMap, IlluminationMap; };
-struct C3DMeshFileEngineMaterialChunk {
+class C3DMeshFileEngineMaterialChunk { public:
     CMapFilenames* MapFilenames;
     unsigned long DiffuseMapBankIndex, BumpMapBankIndex, ReflectionMapBankIndex, IlluminationMapBankIndex;
     unsigned long MapFlags;

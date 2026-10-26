@@ -3,18 +3,18 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase { };
-struct CBaseObject;
+class CTCBase { public: };
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00() {}
     CBaseObject* m_pItem;
     CBaseObject* GetPItem() const { return m_pItem; }
 };
-struct CThing;
+class CThing;
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 struct CInterfaceMap {
@@ -52,7 +52,7 @@ struct CTCThingList_0x21 : CTCBase {
     unsigned char _pad_0x00[0xc];
     SThingNode*   m_head;
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;

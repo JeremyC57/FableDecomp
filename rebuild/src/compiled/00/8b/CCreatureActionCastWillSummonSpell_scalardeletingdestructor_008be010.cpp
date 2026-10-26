@@ -1,4 +1,4 @@
-struct CCreatureAction_CastWillSummonSpell {
+class CCreatureAction_CastWillSummonSpell { public:
     void* vftable;
 };
 

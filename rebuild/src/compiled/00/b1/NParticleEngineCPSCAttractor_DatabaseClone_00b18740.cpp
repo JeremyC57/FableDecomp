@@ -5,7 +5,7 @@
 // retail: 56 57 8bf9 e8.. 8bf0 8b06 57 8bce ff5048 5f 8bc6 5e c3
 // same shape as 0x00afe580.
 
-namespace NParticleEngine { struct CPSCAttractor; }
+namespace NParticleEngine { class CPSCAttractor; }
 using NParticleEngine::CPSCAttractor;
 
 struct IDrawableObj {
@@ -16,7 +16,7 @@ struct IDrawableObj {
 extern IDrawableObj* __fastcall CreateInternalPrimitive(CPSCAttractor* self);
 
 namespace NParticleEngine {
-struct CPSCAttractor {
+class CPSCAttractor { public:
     IDrawableObj* DatabaseClone();
 };
 }

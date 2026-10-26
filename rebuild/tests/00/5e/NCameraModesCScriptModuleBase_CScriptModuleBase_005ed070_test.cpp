@@ -1,8 +1,8 @@
 // Behaviour test for 0x005ED070 NCameraModes::CScriptModuleBase::CScriptModuleBase: the default member state.
 #include <cstdio>
 struct IP { void* item; IP() : item(0) {} };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(1.0f, 0.0f, 0.0f) {} };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(1.0f, 0.0f, 0.0f) {} };
 struct CScriptModuleBase {
     IP PCamPoint; IP PThingOrigin; C3DVector CoordOrigin; CRightHandedSet CoordAxis;
     void* POwner; void* PCameraManager; bool SelfTerminate; bool ShortenOnCollision; long CutOutOverride; float FOVOverride;

@@ -6,8 +6,8 @@
 // the ring index follows at +0x28); the element bound to a named REFERENCE local gives retail's
 // `mov eax,[edi+1Ch] ; lea ecx,[esi+eax]` (calling through `m_recentCustomers[i].` directly gives `mov ecx ; add ecx,esi`).
 // The found exit is `mov al,1`, the fall-through `xor al,al`.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -39,7 +39,7 @@ template<class T> struct CRetailVector {
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     unsigned char        _pad[0x1c];
     CRetailVector<CIntelligentPointer> m_recentCustomers;   // +0x1c: vector of three slots (first/last/end)
     bool HasBeenCustomer(CThing* thing);

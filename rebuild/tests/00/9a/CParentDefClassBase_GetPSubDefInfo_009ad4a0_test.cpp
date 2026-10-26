@@ -1,8 +1,8 @@
 // behaviour test for 0x009AD4A0 CParentDefClassBase::GetPSubDefInfo: CRC of the name, lower bound, exact-key check, &second or null
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pData; unsigned int m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pData; unsigned int m_length; };
+class CCharString { public:
     CCharStringData* m_pData;
     unsigned int GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
@@ -16,7 +16,7 @@ struct CSubDefInfoMap {
     const CSubDefPair* end() const { return m_last; }
     const CSubDefPair* Find(unsigned int key) const { unsigned int k = key; const CSubDefPair* it = LowerBound(&k); return (it == m_last || key < it->first) ? m_last : it; }
 };
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     CSubDefInfoMap SubDefInfoMap;
     const CSubDefInfo* GetPSubDefInfo(const CCharString& name) const
     {

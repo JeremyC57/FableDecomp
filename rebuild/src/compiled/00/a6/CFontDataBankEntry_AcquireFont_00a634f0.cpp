@@ -20,7 +20,7 @@ struct CCountedPointer_00a634f0 {                        // 8 bytes: object + co
     void Reset(CStaticFontBank* object);                        // 0x0041947A
 };
 
-struct CFontDataBankEntry {
+class CFontDataBankEntry { public:
     virtual void v00();
     CCountedPointer_00a634f0 m_font;                     // +0x04
     long Bank;                                      // +0x0c

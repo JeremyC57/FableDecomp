@@ -3,7 +3,7 @@
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x004e3e89
 // this-call modeled as __fastcall free fn (this in ecx).
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void* vtbl;      // +0x00
     char  pad[0x24]; // +0x04 .. +0x27
     void* m28;       // +0x28

@@ -8,13 +8,13 @@
 // beyond `this`).
 #include "engine/CContainmentVolume.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CIsContainingPoint {
+class CIsContainingPoint { public:
     C3DVector Point;
     CIsContainingPoint(const C3DVector& point) : Point(point) { }
 };

@@ -3,12 +3,12 @@
 #include <string.h>
 #include <new>
 #include <stddef.h>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool       Active;                                   // +0x00
     float      FadeInTime;                               // +0x04
     float      FadeOutTime;                              // +0x08

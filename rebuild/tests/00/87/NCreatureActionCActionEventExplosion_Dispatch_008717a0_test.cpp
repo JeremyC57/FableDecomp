@@ -49,8 +49,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #define FABLE_STATIC_ASSERT(expression) \
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -58,8 +58,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -161,11 +161,11 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -331,14 +331,14 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -454,9 +454,9 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 #undef CThing
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector First; C3DVector Second; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector First; C3DVector Second; };
+class CThing;
 struct CInterfaceMap {
     struct Entry { long Type; void* Component; };
     Entry* First;
@@ -493,7 +493,7 @@ struct CTCGraphicAppearance {
     bool GetHelperPoint(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, float scale); // 0x004C0560
     bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, CRightHandedSet* orientation, float scale); // 0x004C08C0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
@@ -501,7 +501,7 @@ struct CThing {
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64, native adjusted view from PDB +0x74
     C3DVector* GetPosition(); // 0x004C73D0
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     void AddExcludedThing(CThing* thing); // 0x0080CBF0
 };
 struct CActionEventExplosion {

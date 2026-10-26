@@ -3,14 +3,14 @@
 // Callees: 0x00BFEA1A operator new, 0x00AA7590 CChunkedFileChunk ctor, vslot +0x28
 //
 #include "engine/C3DMeshFilePartitionChunk.h"   // PDB layout agrees with retail here (counted pointer at +0x10)
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual void v0();
     CChunkedFileChunk(const char* chunkType);           // 0x00AA7590
     unsigned char _base_body[0x0c];                     // ChunkType[5] + pad + Parent  (sizeof == 0x10)
 };
-struct C3DMeshPartitionElement;
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class C3DMeshPartitionElement;
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T* m_pData; CCPPointerInfo* m_pInfo;
     CCountedPointer() : m_pData(0), m_pInfo(0) {}
     void Reset(T* p);                                   // 0x00AC38A0

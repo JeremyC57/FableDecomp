@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString { void* p; };
+class CCharString { public: void* p; };
 CCharString g_EmptyQuestName;
 struct Q { unsigned char pad[0x2c]; CCharString* First; CCharString* Last;
     CCharString* Get(long i) { if (i >= 0 && (unsigned long)i < (unsigned long)(Last - First)) return &First[i]; return &g_EmptyQuestName; } };

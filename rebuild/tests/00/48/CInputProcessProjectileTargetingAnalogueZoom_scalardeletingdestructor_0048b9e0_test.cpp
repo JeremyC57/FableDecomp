@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessProjectileTargetingAnalogueZoom {
+class CInputProcessProjectileTargetingAnalogueZoom { public:
     void* vftable;
     int destroyed;
 };

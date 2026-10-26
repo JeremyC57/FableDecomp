@@ -6,12 +6,12 @@ struct HomeObj {
 };
 int HomeObj::GetHomeId() { return id; }
 
-struct CThingAICreature {
+class CThingAICreature { public:
     char pad[0x168];
     HomeObj home;
 };
 
-struct CThingFilter_HasBuildingAsHome {
+class CThingFilter_HasBuildingAsHome { public:
     int HomeBuilding;
     bool operator()(CThingAICreature* creature);
 };

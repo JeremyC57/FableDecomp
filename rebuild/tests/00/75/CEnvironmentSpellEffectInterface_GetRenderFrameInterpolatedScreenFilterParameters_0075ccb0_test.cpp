@@ -3,7 +3,7 @@
 #include <cstring>
 struct SFilterParams_0075ccb0 { float m_weight; long m_a; long m_b; };
 static const SFilterParams_0075ccb0* g_in = 0; static void* g_view = 0;
-struct CEnvironmentSpellEffectInterface { unsigned char _pad[0x58]; SFilterParams_0075ccb0 m_filter;
+class CEnvironmentSpellEffectInterface { public: unsigned char _pad[0x58]; SFilterParams_0075ccb0 m_filter;
     void TransformVector(SFilterParams_0075ccb0& out, const SFilterParams_0075ccb0& in, void* view) { g_in = &in; g_view = view; out.m_weight = in.m_weight * 2.0f; out.m_a = in.m_a + 1; out.m_b = in.m_b + 2; }
     void Get(SFilterParams_0075ccb0* result, void* view) { SFilterParams_0075ccb0 p; TransformVector(p, m_filter, view); result->m_weight = p.m_weight; result->m_a = p.m_a; result->m_b = p.m_b; } };
 int main() {

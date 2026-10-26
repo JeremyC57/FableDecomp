@@ -19,7 +19,7 @@ static int fails = 0;
 // statements share one slot) (X homed in the dead event slot, Y kept on the x87) BEFORE
 // the two divisions (dividing right after each fetch moves the X division between the calls); ChangePosition gets
 // (position, 0.0f, false).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
@@ -82,12 +82,12 @@ struct CEventSinkInterface {                       // vtable at +0x18
     virtual void v00();
 };
 
-struct CClickable : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x194 bytes
+class CClickable : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:   // retail 0x194 bytes
     unsigned char _body[0x194 - 0x1c];
     virtual void ProcessEvent(EEvent event);       // 0x0055AD60
 };
 
-struct CDraggable : CClickable {                   // retail 0x1ac bytes
+class CDraggable : public CClickable { public:                   // retail 0x1ac bytes
     C2DVector PositionBeforeDrag;                  // +0x194
     bool      WasDragged;                          // +0x19c
     virtual void ProcessEvent(EEvent event);

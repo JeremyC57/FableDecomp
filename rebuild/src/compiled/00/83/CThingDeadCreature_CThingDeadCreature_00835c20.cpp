@@ -30,27 +30,27 @@ struct CCreaturePointer : CBaseIntelligentPointer {         // CIntelligentPoint
     CCreaturePointer() { }
 };
 
-struct CAnimFilterBase;
-struct CCPPointerInfo;
+class CAnimFilterBase;
+class CCPPointerInfo;
 struct CAnimFilterPointer {                     // CCountedPointer<CAnimFilterBase>
     CAnimFilterBase* Data;
     CCPPointerInfo*  Info;
     CAnimFilterPointer() : Data(0), Info(0) { }
 };
 
-struct CThingBodyReorienter;
+class CThingBodyReorienter;
 struct CReorienterPointer {                     // scoped_ptr<CThingBodyReorienter>
     CThingBodyReorienter* ptr;
     explicit CReorienterPointer(CThingBodyReorienter* p = 0) : ptr(p) { }
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     virtual void v00();
     unsigned char _pad04[0xbc];
     CThingPhysical(long type);                  // 0x005296B0
 };
 
-struct CThingGameObject : CThingPhysical {      // vtable 0x01244F7C
+class CThingGameObject : public CThingPhysical { public:      // vtable 0x01244F7C
     CThingPointer PThingStandingOn;             // +0xc0
     unsigned char m_gameObjectFlags;            // +0xc8 (bitfield group, not initialised here)
     unsigned char _padc9[7];                    // +0xc9 tail padding: the PDB size 0xe8 is the 0xe1 data rounded to 8
@@ -58,7 +58,7 @@ struct CThingGameObject : CThingPhysical {      // vtable 0x01244F7C
     CThingGameObject(long type) : CThingPhysical(type) { }
 };
 
-struct CThingDeadCreature : CThingGameObject {  // vtable 0x01272B04
+class CThingDeadCreature : public CThingGameObject { public:  // vtable 0x01272B04
     CAnimFilterPointer    PAnimFilter;          // +0xd0
     CCreaturePointer      PKiller;              // +0xd8
     long                  BodyDieTimer;         // +0xe0

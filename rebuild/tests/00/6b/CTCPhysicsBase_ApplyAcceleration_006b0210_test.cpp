@@ -1,11 +1,11 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
 };
 static int g_updated = 0;
-struct CThing { void SetAsFrameUpdated() { ++g_updated; } };
-struct CTCPhysicsBase {
+class CThing { public: void SetAsFrameUpdated() { ++g_updated; } };
+class CTCPhysicsBase { public:
     CThing* sub;
     C3DVector Velocity;
     bool Moving : 1;

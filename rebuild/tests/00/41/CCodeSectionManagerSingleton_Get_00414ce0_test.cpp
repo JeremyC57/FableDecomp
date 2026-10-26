@@ -3,7 +3,7 @@
 // Model of 0x00414CE0 CCodeSectionManagerSingleton::Get: create the CCodeSectionManager on first use into the static counted
 // pointer (Reset 0x00413590 through an inline operator=) and return the object; later calls reuse it.
 static int g_constructed = 0;
-struct CCodeSectionManager {
+class CCodeSectionManager { public:
     unsigned char m_body[0x2C];
     CCodeSectionManager() { ++g_constructed; m_body[0] = 0x5A; }
 };

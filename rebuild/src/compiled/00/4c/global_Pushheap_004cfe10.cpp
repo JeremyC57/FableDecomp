@@ -9,7 +9,7 @@
 // The implicit pair assignment moves the float through eax inside the loop but through the FPU
 // (`fld [esp+18h] ... fstp`) for the final drop from the value slot -- both are the same source.
 // Shape: SGI/STLport `__push_heap` (`parent = (hole - 1) / 2; while (hole > top && comp(first[parent], value))`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
@@ -22,7 +22,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<float, CCharString> TEntry;
 
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };

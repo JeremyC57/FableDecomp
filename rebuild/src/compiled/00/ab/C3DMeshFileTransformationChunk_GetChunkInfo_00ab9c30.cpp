@@ -1,5 +1,5 @@
 #include "engine/C3DMeshFileTransformationChunk.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString {
+class CCharString { public:
     CCharString(const char* lit, int len);
     int dummy;
 };

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 00681680 COpinionTransientOffset ctor: peak and persist scaled by the sign-specific traits, frame counts
 // time-scaled and truncated (zero run-in/run-out become one frame), slopes rebuilt from the scaled values.
-struct COpinionPersonalityTraits {                 // 36 bytes
+class COpinionPersonalityTraits { public:                 // 36 bytes
     float BaseOffset;                              // +0x00
     float HeroStatScaling;                         // +0x04
     float VillageOpinionScaling;                   // +0x08

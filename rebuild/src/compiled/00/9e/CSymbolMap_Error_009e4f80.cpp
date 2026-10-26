@@ -17,7 +17,7 @@
 extern "C" int __cdecl _snprintf(char* buffer, unsigned int count, const char* format, ...);   // 0x00BFEB96
 extern "C" int __cdecl vsprintf(char* buffer, const char* format, va_list args);              // 0x00BFEDD0
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                           // 0x0099E4B0
     CCharString(const char* text, long length);              // 0x0099EBF0
@@ -27,7 +27,7 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CCharString ConvertToCharString() const;                 // 0x0099B2C0
 };

@@ -1,9 +1,9 @@
 #include <cstdio>
 
-struct C3DBoundingBox { float lo[3]; float hi[3]; };
+class C3DBoundingBox { public: float lo[3]; float hi[3]; };
 
-struct CEngineSceneGrid
-{
+class CEngineSceneGrid
+{ public:
     int cellW;
     bool BuildCellBounds(C3DBoundingBox* bbox, unsigned long* pOut,
                          unsigned long a, unsigned long b);

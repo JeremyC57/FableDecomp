@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 0080aa60: STLport __linear_insert on target points -- when val sorts before *first, the range
 // [first,last) shifts up one and val lands at first; otherwise the unguarded linear insert walks back from last.
-struct CThing { int id; };
+class CThing { public: int id; };
 struct Ptr { CThing* item; };
 struct TP { Ptr PThing; long Index; float X, Y, Z; long FrameRejected; };
 struct Comp { int calls; bool operator()(const TP& a, const TP& b) { ++calls; return a.Index < b.Index; } };

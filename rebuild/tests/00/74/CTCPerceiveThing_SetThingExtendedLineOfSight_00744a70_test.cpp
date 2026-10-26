@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour model of CTCPerceiveThing::SetThingExtendedLineOfSight (0x00744a70)
 static int g_adds, g_removes;
-struct CPlayerGui { void AddPerceivingThing(void*) { ++g_adds; } void RemovePerceivingThing(void*) { ++g_removes; } };
+class CPlayerGui { public: void AddPerceivingThing(void*) { ++g_adds; } void RemovePerceivingThing(void*) { ++g_removes; } };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     void* ParentThing; void* Perceived; long FramesSinceDirectlyPerceivedThing; bool ExtendedLineOfSight;
     void UpdateDrawPerceivers() { if (Perceived) g_pPlayerGui->AddPerceivingThing(ParentThing); else g_pPlayerGui->RemovePerceivingThing(ParentThing); }
     void Set(bool v) {

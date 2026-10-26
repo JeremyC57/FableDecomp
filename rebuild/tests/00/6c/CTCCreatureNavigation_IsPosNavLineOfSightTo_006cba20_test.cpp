@@ -8,7 +8,7 @@ struct CNavHelper { int add; };
 static int g_helper_val;
 static float g_arg_seen;
 static bool Vm(void* self, float arg) { CNavObj* o = (CNavObj*)self; union { int i; float f; } u; u.f = arg; g_arg_seen = arg; return (o->base + u.i) != 0; }
-struct CTCCreatureNavigation { void* pad0; CNavHelper* helper; void* pad8; CNavObj* obj; };
+class CTCCreatureNavigation { public: void* pad0; CNavHelper* helper; void* pad8; CNavObj* obj; };
 static int HelperCompute(CNavHelper* h, const CPos* p) { return h->add + p->v; }
 static bool run(CTCCreatureNavigation* self, const CPos* pos) {
     CNavObj* obj = self->obj;

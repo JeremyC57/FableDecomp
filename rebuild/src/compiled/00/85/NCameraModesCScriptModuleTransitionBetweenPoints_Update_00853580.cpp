@@ -19,7 +19,7 @@
 // the returned pointer and loads the component into eax); the drift is an inline `+=` straight into the member.
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector operator+(const C3DVector& other) const

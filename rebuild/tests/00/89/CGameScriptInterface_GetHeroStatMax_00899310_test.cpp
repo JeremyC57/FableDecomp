@@ -1,7 +1,7 @@
 // behaviour test for 0x00899310 CGameScriptInterface::GetHeroStatMax
 #include <stdio.h>
 #include <string.h>
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

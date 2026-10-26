@@ -1,7 +1,7 @@
 // Behaviour test for CTCTavernBar::FreeBarPoint @ 0x007BA4F0: the bar point index reaches the parent thing's interface-0x2E component.
 #include <cstdio>
 
-struct CTCBase { int unused; };
+class CTCBase { public: int unused; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -15,7 +15,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -56,7 +56,7 @@ struct CTCFreePointList : CTCBase {
     void AddFreePoint(long index) { if (count < 4) added[count] = index; ++count; }
 };
 
-struct CTCTavernBar {
+class CTCTavernBar { public:
     CThing* ParentThing;
     void FreeBarPoint(long index)
     {

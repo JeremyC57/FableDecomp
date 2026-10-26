@@ -9,7 +9,7 @@
 // Shape: as the landed ReplacePathExtension 0x00997800 (three locals, null extension); the joined path is a NAMED local
 // copied into the result (VC7.1 has no NRVO here); the two operator+ temporaries die at the end of the full expression.
 // Layout: retail CBankFile BankFile_Data (CDiskFileWin32*) +0x7c (PDB +0x8c, retail -0x10).
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     CWideString(const CWideString& other);         // 0x0099B720
@@ -19,7 +19,7 @@ CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   
 CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);   // 0x0099BF30 (wchar_t is unsigned short in this lane)
 void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
 
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual CWideString GetPathname() const;       // slot 11 (+0x2c)

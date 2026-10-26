@@ -4,22 +4,22 @@
 static int g_freed = 0, g_wide = 0, g_char = 0, g_erased = 0, g_destroyed = 0, g_cleared = 0, g_base = 0, g_range = 0;
 static void xfree(void* p) { if (p) ++g_freed; }
 struct __false_type {};
-struct CCharString { void* PStringData; ~CCharString() { ++g_char; } };
-struct CWideString { void* PStringData; ~CWideString() { ++g_wide; } };
+class CCharString { public: void* PStringData; ~CCharString() { ++g_char; } };
+class CWideString { public: void* PStringData; ~CWideString() { ++g_wide; } };
 struct CDefClassInfo { unsigned char _body[0x18]; };
 static void DestroyRange(CDefClassInfo* f, CDefClassInfo* l, const __false_type&) { g_range += (int)(l - f); }
 template <class T> struct CRetailVector { T* s; T* f; T* e; ~CRetailVector() { T* last = f; for (T* p = s; p != last; ++p) p->~T(); xfree(s); } };
 template <> struct CRetailVector<unsigned long> { unsigned long* s; unsigned long* f; unsigned long* e; ~CRetailVector() { xfree(s); } };
 template <> struct CRetailVector<CDefClassInfo> { CDefClassInfo* s; CDefClassInfo* f; CDefClassInfo* e; ~CRetailVector() { __false_type tag; DestroyRange(s, f, tag); xfree(s); } };
-template <class T> struct CVectorMap { CRetailVector<T> Entries; bool Locked; bool Sorted; };
-template <class T> struct CArray { T* Data; long Count; long Capacity; ~CArray() { xfree(Data); } };
+template <class T> class CVectorMap { public: CRetailVector<T> Entries; bool Locked; bool Sorted; };
+template <class T> class CArray { public: T* Data; long Count; long Capacity; ~CArray() { xfree(Data); } };
 struct Node { unsigned char c; Node* parent; Node* left; Node* right; };
 struct CRetailMap { Node* head; unsigned long count; void Erase(Node*) { ++g_erased; } ~CRetailMap() { if (count) { Erase(head->parent); head->left = head; head->parent = 0; head->right = head; count = 0; } xfree(head); } };
 struct SCountBlock { long refs; void (*destroy)(void*); void* obj; };
 static void DestroyObj(void*) { ++g_destroyed; }
-template <class T> struct CCountedPointer { T* obj; SCountBlock* cnt; ~CCountedPointer() { if (cnt) { --cnt->refs; if (cnt->refs == 0) { cnt->destroy(cnt->obj); delete cnt; } } obj = 0; cnt = 0; } };
-struct CResourceList { virtual void v00() {} ~CResourceList() { ++g_base; } };
-struct CSymbolMap; struct CInstantiatedDefInfo;
+template <class T> class CCountedPointer { public: T* obj; SCountBlock* cnt; ~CCountedPointer() { if (cnt) { --cnt->refs; if (cnt->refs == 0) { cnt->destroy(cnt->obj); delete cnt; } } obj = 0; cnt = 0; } };
+class CResourceList { public: virtual void v00() {} ~CResourceList() { ++g_base; } };
+class CSymbolMap; struct CInstantiatedDefInfo;
 class CDefinitionManager : public CResourceList {
 public:
     CRetailVector<CWideString> SymbolPathList; CRetailVector<CWideString> CompilePathList;

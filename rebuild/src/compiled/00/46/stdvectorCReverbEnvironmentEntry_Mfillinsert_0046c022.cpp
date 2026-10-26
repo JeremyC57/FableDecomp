@@ -1,5 +1,5 @@
 // std::vector<CReverbEnvironmentEntry>::_M_fill_insert(CReverbEnvironmentEntry* position, unsigned int n, const CReverbEnvironmentEntry& x) -- STLport insert of n copies of a reverb environment: slide the tail inside the spare capacity, or grow through _M_insert_overflow
-// Leaf: ?_M_fill_insert@?$vector@UCReverbEnvironmentEntry@@
+// Leaf: ?_M_fill_insert@?$vector@VCReverbEnvironmentEntry@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0046C022, 326 bytes, thiscall `ret 0Ch`; size TU with a frame pointer.
 // Identity: the only caller is vector<CReverbEnvironmentEntry>::resize(n, x) 0x0046BF98 (insert(end(), n - size(), x)),
 //   itself called only by resize(n) 0x0046BF72 (landed: GFSerialiseVectorBinaryIn<CReverbEnvironmentEntry>). The forge
@@ -15,7 +15,7 @@
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CReverbEnvironmentEntry {
+class CReverbEnvironmentEntry { public:
     float Params[21];                                    // +0x00
 };
 

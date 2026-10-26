@@ -14,10 +14,10 @@
 //   offset is added in place (operator+=) and C3DVector needs its user copy ctor or the Y add keeps t.Y on the x87 stack.
 // Layout: local model -- retail CThing PTCDriver +0x5C, PhysicsTC +0x60, PTCGraphicAppearance +0x64 (PDB +0x6C/+0x70/
 //   +0x74, as in the landed CTCUnholyPower::OnCreate and CActionEventExplosion::Dispatch); the action's PCreature +0x08.
-struct CTCBase;
-struct CBaseObject;
-struct CThing;
-struct CCharString {
+class CTCBase;
+class CBaseObject;
+class CThing;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
@@ -41,7 +41,7 @@ template <class T> struct CRetailVector {
     SRetailAllocProxy<T> _M_end_of_storage;
     void push_back(const T& value);             // 0x004AD520
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
@@ -50,8 +50,8 @@ struct C3DVector {
     C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CTCDriverBase {
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CTCDriverBase { public:
     unsigned char _pad00[0x2c];
     CRetailVector< CIntelligentPointer<CThing> > Passengers;   // +0x2c
     void SetLifetime(float seconds);            // 0x007FD3D0
@@ -59,7 +59,7 @@ struct CTCDriverBase {
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, CRightHandedSet* orientation, float scale); // 0x004C08C0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
@@ -69,7 +69,7 @@ struct CTCPhysicsBase {
     virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
     virtual C3DVector GetFacing();              // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     unsigned char _pad44[0x5c - 0x44];
@@ -89,7 +89,7 @@ struct CThing {
 };
 CThing* __fastcall CreatePhysicalBarrierThing(const C3DVector& start, const C3DVector& end, float radius);   // 0x007FD4B0
 
-struct CCreatureAction_DragonRoar {
+class CCreatureAction_DragonRoar { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer PCreature;          // +0x08

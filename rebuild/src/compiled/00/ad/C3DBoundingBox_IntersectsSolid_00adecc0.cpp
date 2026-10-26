@@ -5,12 +5,12 @@
 // running float; `if (d <= r*r) return true; return false;` gives the byte constants.
 // Layout: PDB C3DBoundingBox MinCoord +0, MaxCoord +0xc; C3DBoundingSphere Center +0, Radius +0xc.
 // Leaf: IntersectsSolid
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere {
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public:
     C3DVector Center;              // +0
     float Radius;                  // +0xc
 };
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord;            // +0
     C3DVector MaxCoord;            // +0xc
     bool IntersectsSolid(const C3DBoundingSphere& sphere) const;

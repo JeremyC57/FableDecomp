@@ -1,14 +1,14 @@
 // Behaviour test for CSurface::CanDoProperSignedConversion (0x009F35D0).
 #include <cstdio>
 
-struct C2DBoxI { long left, top, right, bottom; };
-struct CPixelFormat {
+class C2DBoxI { public: long left, top, right, bottom; };
+class CPixelFormat { public:
     long FormatIndex;                         // test encoding: sign in bit 8, bytes in the low byte
     CPixelFormat(unsigned long f) : FormatIndex((long)f) {}
     bool IsSigned() const { return (FormatIndex & 0x100) != 0; }
     unsigned long GetByteColourDepth() const { return FormatIndex & 0xff; }
 };
-struct CSurface {
+class CSurface { public:
     unsigned long m_format, m_width, m_height;
     CPixelFormat GetPixelFormat() const { return CPixelFormat(m_format); }
     unsigned long GetWidth() const { return m_width; }

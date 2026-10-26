@@ -15,7 +15,7 @@ struct SCountBlock {
     void* m_pObject;                            // +8
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void FinishAction();                // slot 4 (+0x10)
     unsigned char _pad04[0x5d];
@@ -42,7 +42,7 @@ struct CActionPointer {                         // CCountedPointer<CCreatureActi
     CCreatureActionBase* operator->() const { return m_pObject; }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char  _pad00[0x100];
     CActionPointer m_currentAction;             // +0x100
     unsigned char  _pad108[0x55];

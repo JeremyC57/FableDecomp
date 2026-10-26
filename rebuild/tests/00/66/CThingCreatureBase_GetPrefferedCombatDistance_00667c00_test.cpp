@@ -16,7 +16,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-struct CCombatTypeDef : CDefBase {
+class CCombatTypeDef : public CDefBase { public:
     unsigned char _pad08[0x6c - 0x08];
     float FrontFarLimit;                   // +0x6c
     float FrontMiddleLimit;                // +0x70
@@ -25,7 +25,7 @@ struct CCombatTypeDef : CDefBase {
     float RearLimit;                       // +0x7c
     float PreferredCombatDistance;         // +0x80
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -38,7 +38,7 @@ template<class T> struct CDefPointer {
     T* operator->() const { return m_p; }
     operator T*() const { return m_p; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CDefPointer<CCombatTypeDef> GetPCombatTypeDef() const;     // 0x00664D40
     const CCombatTypeDef* GetCombatTypeDef() const { return GetPCombatTypeDef(); }
     float GetPrefferedCombatDistance();

@@ -11,7 +11,7 @@
 // inlined here (the __pop_heap TU calls an out-of-line copy at 0x004A89D0): six CCharString copy constructors
 // in member order with the ColourIndex dword moved between HSPName and DisplayName. Layout from the landed
 // CTestQuest sources (PDB member names).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
@@ -29,7 +29,7 @@ public:
     CCharString QuestCardDefName;                  // +0x18
 };
 
-struct CTestQuestNameCompare { };
+class CTestQuestNameCompare { public: };
 
 void __fastcall __pop_heap(CTestQuest* first, CTestQuest* last, CTestQuest* result, CTestQuest value,
                            CTestQuestNameCompare comp, long*);   // 0x00624800

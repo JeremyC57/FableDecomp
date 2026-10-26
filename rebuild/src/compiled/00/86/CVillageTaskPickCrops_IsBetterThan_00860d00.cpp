@@ -7,8 +7,8 @@
 // Layout (Ego_r.pdb = retail): Crop +0x08, CreatureAssignedToTask +0x10.
 // Shape: the landed CVillageTaskSecuritySweep::IsBetterThan (0x00860430) with both goal points taken from the crop
 //   things: by-value position copies, named deltas, `myDist < rivalDist` evaluated left first.
-struct CBaseObject { };
-struct C3DVector {
+class CBaseObject { public: };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -22,7 +22,7 @@ struct C3DVector {
     }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     const C3DVector& GetPosition() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vptr + item
@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vp
     CBaseObject* m_pItem;                          // +0x04
     CBaseObject* GetPItem() const;                 // 0x00A01B50
 };
-struct CVillageTaskPickCrops {                     // vtable 0x0125A928
+class CVillageTaskPickCrops { public:                     // vtable 0x0125A928
     virtual ~CVillageTaskPickCrops();
     virtual void v01();
     virtual long GetTaskType() const;              // slot 2 0x0065EF31

@@ -4,7 +4,7 @@
 // into the hidden result (X, Y from the x87 stack, Z reloaded); `ret 4` pops the hidden pointer. The same shape as CEngineInternalPrimitiveLine::GetWorldPosition
 // @ 0x00A11430 (landed) with `+` for `-`. The chunk label (CEngineInternalPrimitiveParticleLine::GetWorldPosition) is propagated: the particle line's vectors sit
 // at +0x48/+0x54 behind a vtable (see 0x00BC3D50), while this body reads two vectors at +0 and +0xc of a plain record, so it is modelled as a line-segment record.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };

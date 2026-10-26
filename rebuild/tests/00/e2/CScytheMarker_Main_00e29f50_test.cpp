@@ -3,8 +3,8 @@
 #include <cstring>
 
 static int g_destroys = 0, g_blockDeletes = 0;
-struct CCharString { const char* text; CCharString(const char* t, long = -1) : text(t) { } };
-struct C3DVector { float X, Y, Z; };
+class CCharString { public: const char* text; CCharString(const char* t, long = -1) : text(t) { } };
+class C3DVector { public: float X, Y, Z; };
 struct CCountedItem { void Destroy() { ++g_destroys; } };
 struct SCountBlock { long m_references; void (CCountedItem::*m_pfnDestroy)(); CCountedItem* m_pItem; };
 struct CCountedPointer {
@@ -20,12 +20,12 @@ struct CCountedPointer {
         Data = 0; Info = 0;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     CCountedPointer PImp; C3DVector pos;
     const C3DVector& GetPos() const { return pos; }
 };
 static CCountedItem g_item; static SCountBlock g_block;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int creates, removes; const char* def; const char* script; const C3DVector* where; bool flag; const CScriptThing* removed; bool ra, rb;
     CScriptThing CreateCreature(const CCharString& d, const C3DVector& p, const CCharString& s, bool b)
     {

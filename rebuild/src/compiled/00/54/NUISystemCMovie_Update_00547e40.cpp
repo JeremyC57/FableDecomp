@@ -66,7 +66,7 @@ extern CVideoSys* g_pVideoSys;                     // 0x013B8ABC
 
 namespace NUISystem {
 
-struct CComponent {
+class CComponent { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -211,11 +211,11 @@ struct CComponent {
     unsigned long CurrentState;                    // +0x144 (CChangingStateComponent)
     unsigned char _pad148[0x15c - 0x148];
 };
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
     void Update(float dt);                         // 0x0052C7E0
 };
 
-struct CMovie : CChangingStateComponent {
+class CMovie : public CChangingStateComponent { public:
     bool                   Playing;                // +0x15c
     CEnginePrimitiveHandle Handle;                 // +0x160
     unsigned long          Width;                  // +0x168

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
-struct CTCBase { CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
 struct CIntelligentPointer { void* m_pItem; CIntelligentPointer() : m_pItem(0) { } virtual ~CIntelligentPointer() { } };
 struct CLongAllocator { CLongAllocator() { } };
 struct CLongAllocProxy : CLongAllocator { long* _M_data; CLongAllocProxy(const CLongAllocator& a, long* p) : CLongAllocator(a), _M_data(p) { } };

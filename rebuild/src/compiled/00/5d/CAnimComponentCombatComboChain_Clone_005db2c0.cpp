@@ -1,4 +1,4 @@
-struct CAnimComponentCombatComboChain {
+class CAnimComponentCombatComboChain { public:
     void* vtbl_slot0;
     void* f4;
     void* f8;

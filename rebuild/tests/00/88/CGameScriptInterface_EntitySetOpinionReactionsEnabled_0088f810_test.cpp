@@ -3,15 +3,15 @@
 
 class CScriptThing;
 
-struct CCharString
-{
+class CCharString
+{ public:
     void* m_pRep; // 0x00
     CCharString(const char* pText, int length);
     ~CCharString();
 };
 
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     void** vt; // +0x0
     void EntitySetOpinionReactionsEnabled(
         const CScriptThing& entity, int enabled) const;

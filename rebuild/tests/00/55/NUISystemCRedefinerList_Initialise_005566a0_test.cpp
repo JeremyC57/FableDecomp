@@ -2,10 +2,10 @@
 #include <new>
 // Behaviour model of NUISystem::CRedefinerList::Initialise @ 0x005566A0 (copy of the source's logic, stand-in callees).
 static int g_log[32], g_n = 0, g_destroyed = 0, g_defDestroyed = 0;
-struct C2DVector { float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {} };
+class C2DVector { public: float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {} };
 static void DestroyObj(void*) { ++g_destroyed; }
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* o) : m_pObject(o)
     { if (o) { m_pCount = new SCountBlock; m_pCount->m_references = 1; m_pCount->m_pfnDestroy = DestroyObj; m_pCount->m_pObject = o; } else m_pCount = 0; }

@@ -11,12 +11,12 @@
 //          CSubtitleRenderer::IsWaitingForClickPast @ 0x0048DB46; PDB +0xE7).
 // Shape: `&&` of the two byte tests to the Terminated store and `ret`; the else arm is the qualified base call, emitted as
 //          a tail jump.
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0xf7];
     bool          CutsceneSkipped;                 // +0xF7 SubtitleRenderer.CutsceneSkipped
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
-struct CTCScriptedControl;
+class CTCScriptedControl;
 
 namespace NTCScriptedControl {
 class CActionBase {

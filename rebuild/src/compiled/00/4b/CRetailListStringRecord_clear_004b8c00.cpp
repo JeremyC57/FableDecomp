@@ -5,8 +5,8 @@
 // (cursor advanced before the old node is destroyed, the head re-read from `this` every iteration, `push esi` inside the non-empty path). The chunk label
 // "CGuiControlTreePane::SortTreeRecursively" is a propagated STL label; the value type is reconstructed from the destructor calls.
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14
-struct CCharString { void* m_pData; ~CCharString(); };   // 0x0099EAE0
-struct CWideString { void* m_pData; ~CWideString(); };   // 0x0099B510
+class CCharString { public: void* m_pData; ~CCharString(); };   // 0x0099EAE0
+class CWideString { public: void* m_pData; ~CWideString(); };   // 0x0099B510
 
 struct SStringRecord_004b8c00 {                    // 24 bytes: three words, then the three strings
     long        m_a;                               // +0x00

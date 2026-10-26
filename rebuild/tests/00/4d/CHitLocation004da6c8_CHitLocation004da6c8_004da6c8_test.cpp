@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-struct CIVCountedPointeeBase { virtual void Destroy(int) { } virtual void Delete() { std::strcat(g_seq, "D"); } unsigned long IVRefCount; };
+class CIVCountedPointeeBase { public: virtual void Destroy(int) { } virtual void Delete() { std::strcat(g_seq, "D"); } unsigned long IVRefCount; };
 struct CIVCountedPointer { CIVCountedPointeeBase* Object; void Release() { CIVCountedPointeeBase* old = Object; if (old) { if (--old->IVRefCount == 0) old->Delete(); Object = 0; } } ~CIVCountedPointer() { Release(); } };
 struct CHitLocation { long m_0; CIVCountedPointer m_pointer4; CIVCountedPointer m_pointer8; ~CHitLocation() { } };
 

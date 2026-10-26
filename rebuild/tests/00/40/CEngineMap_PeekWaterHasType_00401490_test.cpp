@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineMap;
+class CEngineMap;
 
 static int g_ret = 0;
 extern "C" int __cdecl Water_QueryType(CEngineMap* self, int type)

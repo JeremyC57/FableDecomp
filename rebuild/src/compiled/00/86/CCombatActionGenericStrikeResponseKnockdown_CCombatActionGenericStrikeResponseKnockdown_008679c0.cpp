@@ -8,9 +8,9 @@
 //          +0x118, PointOfHit +0x120, GotPointOfHit +0x12c, DirectionOfHit +0x12d, GotDirectionOfHit +0x139, FlipFacing +0x13a.
 // Shape: the empty CSoundPair temporary is zeroed in the frame first; the members are initialised in declaration order,
 //          the two Got* flags share one `mov cl,1`; FlipFacing is left unset.
-struct CThingCreatureBase;
-struct CThing;
-struct C3DVector {
+class CThingCreatureBase;
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }                          // leaves the words unset
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy (fixed-offset moves)
@@ -27,22 +27,22 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // CIntelligentPo
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                          // 0x0099E4B0
 };
 #pragma pack(push, 1)
-struct CCombatAction_GenericStrikeResponseKnockdown : CCombatActionBase {   // vtable 0x01277344; retail sizeof 0x13c
+class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase { public:   // vtable 0x01277344; retail sizeof 0x13c
     CCharString AnimName;                   // +0x114
     CIntelligentPointer PThingThatHit;      // +0x118
     C3DVector PointOfHit;                   // +0x120

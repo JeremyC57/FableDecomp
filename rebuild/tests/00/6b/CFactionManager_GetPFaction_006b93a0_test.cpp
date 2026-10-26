@@ -1,9 +1,9 @@
 // Behaviour test for 0x006B93A0 CFactionManager::GetPFaction(unsigned long hash) const.
 #include <cstdio>
 
-struct CFaction { int id; };
+class CFaction { public: int id; };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* Get() const { return Data; }
@@ -35,7 +35,7 @@ struct CFactionMap {
     }
 };
 
-struct CFactionManager {
+class CFactionManager { public:
     CFactionMap Factions;
     CFaction* GetPFaction(unsigned int hash) const
     {

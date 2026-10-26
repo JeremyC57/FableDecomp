@@ -10,7 +10,7 @@
 // Shape: the counted pointer is a NAMED local built in registers (edi object, esi block); passing it by value copies it
 //   into the argument area (`sub esp,8 ; mov eax,esp ; ... ; inc dword ptr [esi]`), the callee destroys its copy, and
 //   the local is released after the FindEntry call (`dec dword ptr [esi] ; jne`).
-struct CCharString;
+class CCharString;
 
 void __fastcall DeleteStaticMapBankStateBlock(void* block);   // 0x00B430A0
 
@@ -22,7 +22,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T*           m_pObject;                      // +0
     SCountBlock* m_pCount;                       // +4
     CCountedPointer(T* object, void (__fastcall* destroy)(void*)) : m_pObject(object)
@@ -48,23 +48,23 @@ struct CCountedPointer {
     }
 };
 
-struct CBankStateBlock {
+class CBankStateBlock { public:
     virtual ~CBankStateBlock();
 };
 
-struct CStaticMapBankStateBlock : CBankStateBlock {    // vtable 0x012A1F3C, 8 bytes
+class CStaticMapBankStateBlock : public CBankStateBlock { public:    // vtable 0x012A1F3C, 8 bytes
     long State;                                         // +0x04 CStateBlock
     CStaticMapBankStateBlock() {}
     virtual ~CStaticMapBankStateBlock();
 };
 
-struct CStaticMapBankFile {
+class CStaticMapBankFile { public:
     void AddEntry(const CCharString& symbol, unsigned long type, const CCharString& filename,
                   CCountedPointer<CBankStateBlock> state);                 // 0x009CD620
     unsigned long FindEntry(const CCharString& symbol);                   // 0x009CCDC0
 };
 
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     unsigned char      _pad0[0x34];
     CStaticMapBankFile StaticMapFile;                                      // +0x34
     unsigned long CreateNewBankMap(const CCharString& name);

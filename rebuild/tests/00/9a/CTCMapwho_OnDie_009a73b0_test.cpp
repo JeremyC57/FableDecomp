@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCMapwho { int x; };
+class CTCMapwho { public: int x; };
 
 static int g_helper = 0;
 static CTCMapwho* g_freed = 0;

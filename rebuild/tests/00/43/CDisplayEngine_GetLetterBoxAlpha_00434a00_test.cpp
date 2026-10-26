@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stddef.h>
-struct CFadeInFadeOutBase { bool Active; float FadeInTime; float FadeOutTime; bool Closing; bool Opening; float OpenTimer; float CloseTimer; unsigned long ToColour; };
+class CFadeInFadeOutBase { public: bool Active; float FadeInTime; float FadeOutTime; bool Closing; bool Opening; float OpenTimer; float CloseTimer; unsigned long ToColour; };
 static const void* g_this;
 struct CFadeInFadeOutBase_Methods : CFadeInFadeOutBase {
     float GetFadeInOutAlpha() const { g_this = this; return Active ? OpenTimer : 0.25f; }
 };
 struct CLetterBoxModeInfo : CFadeInFadeOutBase_Methods { float Ratio; };
-struct CDisplayEngine { unsigned char _pad[0x70]; unsigned char LetterBox[0x20]; bool CameraInputsOn; };
+class CDisplayEngine { public: unsigned char _pad[0x70]; unsigned char LetterBox[0x20]; bool CameraInputsOn; };
 struct CDisplayEngine_Methods : CDisplayEngine { float GetLetterBoxAlpha() const; };
 
 float CDisplayEngine_Methods::GetLetterBoxAlpha() const

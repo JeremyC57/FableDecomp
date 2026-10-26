@@ -2,8 +2,8 @@
 // killed when the thing is gone, dead, or its physics component is moving; nothing happens otherwise.
 #include <cstdio>
 static int g_kills = 0;
-struct CTCPhysicsBase { unsigned char _pad[0x3c]; unsigned char OldMoving[0x4]; };
-struct CThing {
+class CTCPhysicsBase { public: unsigned char _pad[0x3c]; unsigned char OldMoving[0x4]; };
+class CThing { public:
     unsigned char   _pad0[0x60];
     CTCPhysicsBase* PhysicsTC;
     unsigned char   _pad1[0x91 - 0x64];
@@ -16,7 +16,7 @@ struct CBaseIntelligentPointer {
     void* PData;
     CThing* GetPItem() const { return static_cast<CThing*>(PData); }
 };
-struct CTCDeadShotInThingTracker {
+class CTCDeadShotInThingTracker { public:
     virtual void v00() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CBaseIntelligentPointer PThingStuckIn;

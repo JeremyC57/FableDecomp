@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour test for CNearestBuildingWithProperty::CNearestBuildingWithProperty(const C3DVector&, ESimBuildingProperty) @ 0x0065846C
-struct C3DVector {
+class C3DVector { public:
     unsigned long x, y, z;
     C3DVector() : x(0), y(0), z(0) {}
     C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) {}
 };
 class CThingBuilding;
 enum ESimBuildingProperty { SIM_BUILDING_PROPERTY_NONE = 0, SIM_BUILDING_PROPERTY_SHOP = 7 };
-struct CNearestBuildingWithProperty {
+class CNearestBuildingWithProperty { public:
     ESimBuildingProperty BuildingProperty;
     C3DVector            Pos;
     CThingBuilding*      NearestBuilding;

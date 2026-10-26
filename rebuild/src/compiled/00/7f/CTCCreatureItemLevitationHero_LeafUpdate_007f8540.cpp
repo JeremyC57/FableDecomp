@@ -8,7 +8,7 @@
 // local of an inline timeout test before the frame call and offset by 30 after it; the `||` shares one PopItem body.
 #include <stdlib.h>
 
-struct CThing;
+class CThing;
 
 struct SThingListNode {                     // STLport _List_node<CThing*>
     SThingListNode* Next;                   // +0x00
@@ -30,13 +30,13 @@ struct CThingList {                         // STLport list<CThing*> (4 bytes: t
     }
 };
 
-struct CThing {
+class CThing { public:
     void Kill(bool checkLocked);            // 0x004C9B80
 };
 
 long GetWorldFrame();                       // 0x0049D870 (returns the global frame counter @ 0x013B89BC)
 
-struct CTCCreatureItemLevitationBase {
+class CTCCreatureItemLevitationBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

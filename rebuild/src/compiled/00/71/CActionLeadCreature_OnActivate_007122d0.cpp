@@ -6,7 +6,7 @@
 // Layout: +4 the owning scripted control (its +4 is the creature), +0x24 the "state saved" flag,
 // +0x25 the saved byte. The creature pointer is re-read through the control for every use (no
 // named local), which is what the retail loads show.
-struct CThing;
+class CThing;
 
 struct CMovementController {
     virtual void v000();
@@ -96,12 +96,12 @@ struct CMovementController {
     virtual void SetMovementLocked(long locked);   // slot 84 (+0x150)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char        _pad[0x60];
     CMovementController* m_pMovement;                   // +0x60
 };
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void*   __vftable;
     CThing* m_pCreature;                                // +0x04
 };

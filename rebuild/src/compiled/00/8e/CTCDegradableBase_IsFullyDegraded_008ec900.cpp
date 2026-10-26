@@ -11,7 +11,7 @@
 // (`inc dword ptr [eax+4]` = an inline AddRef helper), the def is then dereferenced unchecked (back() =
 // last - 0x1c), the compare result is parked in bl (`sete bl`) across the release (load/dec/store
 // of the count, then the virtual destroy), and two return tails follow.
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long RefCount;                                          // +0x04
@@ -19,14 +19,14 @@ struct CDefPointeeBase {
     void Release() { --RefCount; if (RefCount == 0) DestroySelf(); }
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object != 0) Object->AddRef(); }
     ~CDefPointer() { if (Object != 0) Object->Release(); }
     T* operator->() const { return Object; }
 };
 
-struct CDegradableInfo {                                    // 0x1c bytes
+class CDegradableInfo { public:                                    // 0x1c bytes
     float         HealthPercentage;                         // +0x00
     unsigned char EngineGraphic[0x10];                      // +0x04 CEngineGraphic
     long          SmashParticleEmitter;                     // +0x14
@@ -40,12 +40,12 @@ template<class T> struct CRetailVector {
     T& back() const { return *(m_pLast - 1); }
 };
 
-struct CDegradableDef : CDefPointeeBase {
+class CDegradableDef : public CDefPointeeBase { public:
     unsigned char                 _pad[0x30 - 0x8];         // CDefBase / CThingComponentDef fields, GraphicType ...
     CRetailVector<CDegradableInfo> Degradations;            // +0x30
 };
 
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00();
     unsigned char                       _base[0x8];         // CTCBase: ParentThing +4, flags +8/+9
     long                                LastWorldFrameHit;  // +0x0c

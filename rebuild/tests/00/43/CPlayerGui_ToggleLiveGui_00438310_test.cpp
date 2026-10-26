@@ -10,7 +10,7 @@ static int g_fail = 0;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -28,12 +28,12 @@ void CMemoryBuffer::Copy(unsigned long length, const void* data)
 
 static long g_mainPlayer = 3;
 static int g_playerCalls = 0;
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber() { ++g_playerCalls; return g_mainPlayer; }   // 0x00449700
 };
 static int g_events = 0;
 static CGameEvent g_last(0);
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
     void AddGameEvent(const CGameEvent& event) { ++g_events; g_last = event; }   // 0x0041649C
@@ -46,13 +46,13 @@ enum {
 };
 
 namespace NHeroInformationScreens {
-struct CManager {
+class CManager { public:
     unsigned char _pad00[0x34];
     bool          Open;                                 // +0x34
 };
 }
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad000[0x2be];
     bool          LiveGuiMode;                          // +0x2be
     unsigned char _pad2bf[0x32c - 0x2bf];

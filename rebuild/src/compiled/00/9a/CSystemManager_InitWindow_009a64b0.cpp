@@ -48,7 +48,7 @@ namespace N_0099af00 { struct CWideString {
     void* PStringData;
     operator const unsigned short*() const;                // 0x0099AF00
 }; } using N_0099af00::CWideString;
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad00[0x90];
     HINSTANCE     WinInstanceHandle;                       // +0x90
     HWND          ApplicationWinHandle;                    // +0x94

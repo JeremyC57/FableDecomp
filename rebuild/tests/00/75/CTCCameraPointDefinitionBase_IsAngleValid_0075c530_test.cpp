@@ -4,33 +4,33 @@
 #include <new>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {}
 };
 static C3DVector g_heroPos; static int g_heroPosCalls;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;
     bool IsDead() const { return (Flags91 & 1) != 0; }
     const C3DVector& GetPosition() const { ++g_heroPosCalls; return g_heroPos; }
 };
 static CThing* g_hero;
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature() { return g_hero; }
 };
 static C3DVector g_cameraPos; static int g_cameraCalls;
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {}
     virtual C3DVector PeekCurrentPos() const { ++g_cameraCalls; return g_cameraPos; }
 };
 static CGameCameraManager g_cameraManager; static CPlayer g_player;
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x34];
     CGameCameraManager* PCameraManager;
     CGameCameraManager* GetCameraManager() const { return PCameraManager; }

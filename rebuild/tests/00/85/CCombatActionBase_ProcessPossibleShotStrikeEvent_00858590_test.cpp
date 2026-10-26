@@ -2,7 +2,7 @@
 #include <cmath>
 #include <vector>
 // behaviour test: CCombatActionBase::ProcessPossibleShotStrikeEvent (0x00858590)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Normalise() { float l = std::sqrt(X * X + Y * Y + Z * Z); X /= l; Y /= l; Z /= l; }
 };
@@ -10,8 +10,8 @@ struct CVecPair { C3DVector first, second; };
 static const float g_Epsilon = 0.0001f;
 static long g_StrikeHitPauseFrames = 7;
 struct CHitLocation { int id; };
-struct CHitParameters { C3DVector Dir; C3DVector Pos; int Weapon; int Hitter; };
-struct CTCHitLocations {
+class CHitParameters { public: C3DVector Dir; C3DVector Pos; int Weapon; int Hitter; };
+class CTCHitLocations { public:
     CHitLocation* Result;
     int Calls;
     CHitLocation* Intersect(const std::vector<C3DVector>& tri, C3DVector* pos, C3DVector* nrm, float tol)
@@ -23,7 +23,7 @@ struct CTCHitLocations {
         return Result;
     }
 };
-struct CThing {
+class CThing { public:
     int Id;
     bool Dead;
     CTCHitLocations* HitLocs;   // null = no interface 0x7f
@@ -34,7 +34,7 @@ struct CThing {
     { out.Dir = dir; out.Pos = pos; out.Weapon = weapon ? weapon->Id : 0; out.Hitter = hitter.Id; }
     void OnHit(CHitParameters& h) { LastHit = h; ++Hits; }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThing* Creature;
     CThing* Target;
     CThing* Weapon;

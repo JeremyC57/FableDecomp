@@ -15,9 +15,9 @@
 #include "fable_string.h"
 #include <string.h>
 
-struct CASuspendableProcess;
-struct CAFile;
-struct CFileInformation;
+class CASuspendableProcess;
+class CAFile;
+class CFileInformation;
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 
 struct CBaseClassNonCopyable {

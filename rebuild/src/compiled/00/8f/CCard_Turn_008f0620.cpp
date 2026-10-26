@@ -5,7 +5,7 @@
 // PDB CCard: +0x0C InitialRotation, +0x10 FinalRotation, +0x18 TurnFraction, +0x24 Turning, +0x25 FaceDown.
 // The old FaceDown is read once into a register (`cmp al,1` is the `== true` test, the `cmp al,dl ; sete`
 // is the toggle computed from that same byte).
-struct CCard {
+class CCard { public:
     void*   Thing;                               // +0x00
     long    Name;                                // +0x04
     long    Value;                               // +0x08

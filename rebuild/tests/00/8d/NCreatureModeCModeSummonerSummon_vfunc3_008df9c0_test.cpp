@@ -13,7 +13,7 @@
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -37,7 +37,7 @@ struct CTCMap {
         return (it == Last || interfaceType < it->Type ? Last : it);
     }
 };
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     unsigned char BeforeComponents[0x20-sizeof(CBaseObject)];
     unsigned long UsingComponents[9];
     CTCMap Interfaces;
@@ -51,10 +51,10 @@ struct CThing : CBaseObject {
     }
     const C3DVector& GetPos() const; // 0x004C73D0
 };
-struct CThingCreatureBase : CThing {
-    bool SetCurrentAction(const struct CCreatureActionBase& action); // 0x006644F0
+class CThingCreatureBase : public CThing { public:
+    bool SetCurrentAction(const class CCreatureActionBase& action); // 0x006644F0
 };
-struct CTCAISummon : CTCInterface {
+class CTCAISummon : public CTCInterface { public:
     long GetNumberMySummonLimit() const; // 0x007FDE60
     long SummonCreatures(const C3DVector* position); // 0x007FE040
 };
@@ -67,13 +67,13 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const; // 0x00a01b50
     void SetPItem(CBaseObject*);
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() : CBaseIntelligentPointer() {}
     T* Get() const { return static_cast<T*>(GetPItem()); }
 };
-struct CAnimateThing;
-struct CTCCreatureModeManager {
-    struct CModeBase {
+class CAnimateThing;
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
         virtual ~CModeBase() {}
         virtual unsigned long GetType() const = 0;
         virtual void AnimUpdate(CAnimateThing&) = 0;
@@ -103,15 +103,15 @@ struct CModeSummonerSummon : CModeStandBase {
 // Layout: donor is 0xb4; retail is 0xa8 because its three STLport containers
 // are each four bytes smaller. Confirmed by 00693ef0 and 00858030 bodies.
 // This caller treats action state as opaque and invokes its genuine external cleanup.
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     unsigned char Opaque[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char CombatState[0x6c];
     virtual ~CCombatActionBase(); // 0x0062E900
 };
-struct CCreatureAction_SummonerSummonOutOf : CCombatActionBase {
+class CCreatureAction_SummonerSummonOutOf : public CCombatActionBase { public:
     CCreatureAction_SummonerSummonOutOf(CThingCreatureBase& owner); // 0x008CBD50
 };
 

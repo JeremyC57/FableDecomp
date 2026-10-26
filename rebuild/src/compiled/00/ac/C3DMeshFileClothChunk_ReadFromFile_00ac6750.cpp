@@ -15,20 +15,20 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
-struct CCharString {
+class CChunkedFileLoader;
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                       // 0x0099EAE0
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* Begin; T* End; T* Capacity;
     unsigned long Size() const { return (unsigned long)(End - Begin); }
     T* GetData() { return Size() > 0 ? Begin : (T*)this; }
     void Resize(unsigned long, const T&);                 // 0x004122D0
 };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();                  // slot 2 (+0x08)
     virtual void v3(); virtual void v4(); virtual void v5();
@@ -61,12 +61,12 @@ struct CDataInputStream {
     __forceinline bool ReadBool() { char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0();
     unsigned char _base_body[0x28];        // +0x04 .. +0x2b (retail C3DMeshFileChunk size 0x2c)
     void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // 0x00AA8830
 };
-struct C3DMeshFileClothChunk : CChunkedFileSuperChunk {
+class C3DMeshFileClothChunk : public CChunkedFileSuperChunk { public:
     CCharString Name;                      // +0x2c (PDB +0x34)
     long MaterialIndex;                    // +0x30
     CCharString ParticleCode;              // +0x34

@@ -10,8 +10,8 @@ struct CPixelShaderData {
     void* m_pShader; void* m_pDeclaration; long m_handle; long m_refCount;
     CPixelShaderData(long n) : m_pShader(0), m_pDeclaration(0), m_handle(0), m_refCount(n) { }
 };
-struct CShaderBase { virtual ~CShaderBase() { ++g_baseDtor; } };
-struct CPixelShader : CShaderBase {
+class CShaderBase { public: virtual ~CShaderBase() { ++g_baseDtor; } };
+class CPixelShader : public CShaderBase { public:
     CPixelShaderData* Data;
     CPixelShader(CPixelShaderData* d) : Data(d) { }
     __forceinline virtual ~CPixelShader() { CPixelShaderData* data = Data; if (data) { if (--data->m_refCount == 0) delete data; } }

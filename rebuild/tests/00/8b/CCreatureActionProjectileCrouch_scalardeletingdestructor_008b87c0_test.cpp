@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ProjectileCrouch {
+class CCreatureAction_ProjectileCrouch { public:
     void* vftable;
     int destroyed;
 };

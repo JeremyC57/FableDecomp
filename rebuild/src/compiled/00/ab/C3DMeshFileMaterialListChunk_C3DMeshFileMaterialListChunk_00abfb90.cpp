@@ -12,7 +12,7 @@ struct CBase_00aa8360 {
     CBase_00aa8360(long typeCode);              // 0x00AA8360
 };
 
-struct C3DMeshFileMaterialListChunk : CBase_00aa8360 {
+class C3DMeshFileMaterialListChunk : public CBase_00aa8360 { public:
     virtual void v00();
     C3DMeshFileMaterialListChunk();
 };

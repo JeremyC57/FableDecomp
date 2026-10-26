@@ -7,7 +7,7 @@ struct L2 { char pad2c[0x2c]; L3* p2c; };              // +0x2c
 struct L1 { char pad08[0x08]; L2* p08; };              // +0x08
 struct Root { char pad88[0x88]; L1* p88; };            // +0x88
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
 extern Root* g_root;   // global at 0x13b89fc
 

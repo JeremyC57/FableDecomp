@@ -7,7 +7,7 @@
 // by value: the hidden result pointer is the only stack argument, `ret 4`).
 // Layout: the PDB shows CConsoleVariable as 16 bytes with the CGenericVarRef at +8; the dword at
 // +4 (listed as padding) is the name string this function concatenates.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                              // 0x0099EAE0 (not reached: the result is returned)
 };

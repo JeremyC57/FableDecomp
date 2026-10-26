@@ -9,11 +9,11 @@
 //   return tmp;` -- `_M_create_node` = `malloc(sizeof(node))` + the null-tested placement copy (`lea ecx,[eax+10h] ;
 //   cmp ecx,edx`): the key and Position move directly, FacingAngles through its own address; one zero register (edx)
 //   serves the null test and both child stores.
-struct C3DVector {                                          // user memberwise copy constructor
+class C3DVector { public:                                          // user memberwise copy constructor
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct C3DAngles {                                          // trivially copyable
+class C3DAngles { public:                                          // trivially copyable
     float X, Y, Z;
 };
 struct CThingPosAndOrientation {                            // CScriptedMapBrush::CThingPosAndOrientation, 24 bytes

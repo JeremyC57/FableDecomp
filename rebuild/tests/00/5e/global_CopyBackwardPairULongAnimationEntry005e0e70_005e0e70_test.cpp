@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static int g_destroyed = 0;
-struct CAnimComponentMap {
+class CAnimComponentMap { public:
     virtual void v00() { }
     virtual void Destroy() { ++g_destroyed; m_dead = true; }
     long m_refCount;
@@ -9,7 +9,7 @@ struct CAnimComponentMap {
     CAnimComponentMap() : m_refCount(0), m_dead(false) { }
 };
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;
     void Release()
     {
@@ -31,8 +31,8 @@ struct CIVCountedPointer {
         return *this;
     }
 };
-struct CDefString { long TablePos; };
-struct CAnimationEntry { long BankIndex; CDefString AnimName; CDefString GroupName; CIVCountedPointer<CAnimComponentMap> Components; };
+class CDefString { public: long TablePos; };
+class CAnimationEntry { public: long BankIndex; CDefString AnimName; CDefString GroupName; CIVCountedPointer<CAnimComponentMap> Components; };
 struct SElem { unsigned long first; CAnimationEntry second; };
 struct STag { STag() { } };
 

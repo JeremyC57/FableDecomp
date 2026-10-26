@@ -21,22 +21,22 @@
 #undef C3DAnimationInfo
 #include "engine/CMeshDataBankEntry.h"
 #include "fable_string.h"
-struct C3DVector {float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
+class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
  C3DVector operator*(const float& f)const{return C3DVector(X*f,Y*f,Z*f);}
  C3DVector operator/(float f)const{return *this*(1.0f/f);}
 };
 struct CRetailString:CCharString {CRetailString(const char*,long);CRetailString(const CRetailString&);}; //native99EBF0/99EC30, actual shared storage and destructor
-struct CBankFile:CBankFile_PDB {CRetailString GetEntrySymbol(unsigned long)const;}; //009CC1D0 native const/byvalue string ABI
-struct C3DAnimationInfo:CMeshDataBankEntry {CRetailString GetName()const;};
-struct CMeshDataBank:CBankFile {const C3DAnimationInfo* PeekAnimation(unsigned long)const;}; //00A242C0
+class CBankFile:public CBankFile_PDB { public:CRetailString GetEntrySymbol(unsigned long)const;}; //009CC1D0 native const/byvalue string ABI
+class C3DAnimationInfo:public CMeshDataBankEntry { public:CRetailString GetName()const;};
+class CMeshDataBank:public CBankFile { public:const C3DAnimationInfo* PeekAnimation(unsigned long)const;}; //00A242C0
 inline CRetailString C3DAnimationInfo::GetName()const{return Bank->GetEntrySymbol(Index);}
-struct CWorld {unsigned char _beforeMainMeshBank[0x3c];CMeshDataBank* PMainMeshBank;};
-struct CThingCreatureBase {
+class CWorld { public:unsigned char _beforeMainMeshBank[0x3c];CMeshDataBank* PMainMeshBank;};
+class CThingCreatureBase { public:
  C3DVector GetAnimMovementVector(long)const; //006626E0
  CWorld* GetWorld()const; //004C7AB0
 };
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThingCreatureBase* GetPItem()const;}; //00A01B50
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
  virtual ~CCreatureActionBase(); //0062ED20 deleting
  virtual void Validate(); //0099A400
  virtual void EditUpdate(float); //00692DB0

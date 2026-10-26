@@ -11,7 +11,7 @@
 // the rotation axis is a C3DVector(0, 0, 1) temporary in the subtraction's dead slots.
 // Layout: CCombatantInfo / CAttackingCombatantInfo of the landed copy ctor 0x006F4990: Parent +0,
 // PreferredAttackDollySet +0x10, PreferredAttackDollyTimer +0x14, PreferredAttackDollyVector +0x18.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
@@ -28,13 +28,13 @@ extern float g_Epsilon;                     // 0x0129BA3C (1e-4f)
 extern long g_framesPerSecond;              // 0x01375550
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     const C3DVector& GetPosition_004c73d0() const;   // 0x004C73D0 (CThing::GetPosition)
 };
-struct CWorld {
+class CWorld { public:
     unsigned long* GetRandomSeed();         // 0x0049D810
 };
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;           // +0x00
     long AttackerNumber;                    // +0x04
     long CombatWheelRingIndex;              // +0x08

@@ -15,15 +15,15 @@
 // Leaf: ??1CProgressDisplay
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     ~CWideString();                                // 0x0099B510
 };
-struct CTexture {                                  // 8 bytes
+class CTexture { public:                                  // 8 bytes
     void* m_pTexture;
     void* m_pHandle;
     ~CTexture();                                   // 0x009F9F70
@@ -47,7 +47,7 @@ template <class T> struct CVector {                // STLport vector<T> (12 byte
     }
 };
 
-struct CAProgressDisplay {                         // vtable 0x012387A0
+class CAProgressDisplay { public:                         // vtable 0x012387A0
     virtual ~CAProgressDisplay() {}
     virtual void v01();
     virtual void StopProgress(bool a, bool b) = 0; // slot 2

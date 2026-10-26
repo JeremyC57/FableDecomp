@@ -6,7 +6,7 @@ struct MsgVtbl {
     int (__fastcall *slot1)(Msg* self);
 };
 struct Msg { MsgVtbl* vtbl; };
-struct CTCHeroAttachableAppearanceModifiers {
+class CTCHeroAttachableAppearanceModifiers { public:
     char pad[0x14];
     unsigned char f14;
 };

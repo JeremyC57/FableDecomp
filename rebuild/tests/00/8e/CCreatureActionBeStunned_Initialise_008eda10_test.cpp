@@ -5,7 +5,7 @@
 #else
 #define FASTCALL
 #endif
-struct CTCBase { long type; };
+class CTCBase { public: long type; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -17,7 +17,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry m_entries[4];
@@ -53,7 +53,7 @@ struct CBaseIntelligentPointer {
 };
 struct CMode { virtual ~CMode() { } virtual long GetModeType() = 0; };
 struct CTestMode : CMode { long m_type; int m_queries; CTestMode(long t) : m_type(t), m_queries(0) { } virtual long GetModeType() { ++m_queries; return m_type; } };
-struct CTCCreatureModeManager : CTCBase {
+class CTCCreatureModeManager : public CTCBase { public:
     CMode* m_current; int m_restarts; unsigned long m_added[4]; int m_addCount; unsigned long m_removed[4]; int m_removeCount;
     CTCCreatureModeManager(CMode* current) : m_current(current), m_restarts(0), m_addCount(0), m_removeCount(0) { }
     CMode* GetCurrentMode() { return m_current; }
@@ -62,8 +62,8 @@ struct CTCCreatureModeManager : CTCBase {
     void RemoveMode(unsigned long mode) { if (m_removeCount < 4) m_removed[m_removeCount] = mode; ++m_removeCount; }
 };
 static int g_baseInit = 0;
-struct CCreatureActionBase { virtual ~CCreatureActionBase() { } virtual void Initialise() { ++g_baseInit; } CBaseIntelligentPointer PCreature; };
-struct CCreatureAction_BeStunned : CCreatureActionBase { virtual void Initialise(); };
+class CCreatureActionBase { public: virtual ~CCreatureActionBase() { } virtual void Initialise() { ++g_baseInit; } CBaseIntelligentPointer PCreature; };
+class CCreatureAction_BeStunned : public CCreatureActionBase { public: virtual void Initialise(); };
 void CCreatureAction_BeStunned::Initialise()
 {
     CTCCreatureModeManager* pModes;

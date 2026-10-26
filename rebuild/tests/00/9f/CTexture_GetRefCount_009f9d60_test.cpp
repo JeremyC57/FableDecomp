@@ -11,7 +11,7 @@ struct IRefObj {
     long count;
 };
 
-struct CTexture {
+class CTexture { public:
     IRefObj* obj;
     long GetRefCount();
 };

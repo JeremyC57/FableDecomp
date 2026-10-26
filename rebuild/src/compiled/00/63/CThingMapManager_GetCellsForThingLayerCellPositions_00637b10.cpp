@@ -15,14 +15,14 @@
 
 namespace NThingMap {
 struct C2DExtentsI { long X, Y; };
-struct CMapwhoLevelInfo {
+class CMapwhoLevelInfo { public:
     long        Size;                              // +0x00
     C2DExtentsI Extents;                           // +0x04
     long        ScaleShift;                        // +0x0c
     long        NoThings;                          // +0x10
 };
-struct CMapwhoNode;
-struct CThingMapCell {
+class CMapwhoNode;
+class CThingMapCell { public:
     CMapwhoNode* PFirstNode;
 };
 template<class T> struct CRetailVector {           // STLport vector: {start, finish, end_of_storage}
@@ -32,7 +32,7 @@ template<class T> struct CRetailVector {           // STLport vector: {start, fi
     T* begin() const { return _M_start; }
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CThingMap {
+class CThingMap { public:
     virtual void v00();
     CRetailVector<CMapwhoLevelInfo>               MapwhoLevelInfo;   // +0x04
     void*                                         Manager;           // +0x10
@@ -41,7 +41,7 @@ struct CThingMap {
 };
 }
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     bool operator==(const C2DCoordI& o) const { return X == o.X && Y == o.Y; }
 };

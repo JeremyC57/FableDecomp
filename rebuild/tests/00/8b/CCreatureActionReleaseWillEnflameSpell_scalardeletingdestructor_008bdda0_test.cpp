@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ReleaseWillEnflameSpell {
+class CCreatureAction_ReleaseWillEnflameSpell { public:
     void* vftable;
     int destroyed;
 };

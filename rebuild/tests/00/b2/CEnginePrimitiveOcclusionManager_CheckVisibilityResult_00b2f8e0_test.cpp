@@ -68,7 +68,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveOcclusionManager {
+class CEnginePrimitiveOcclusionManager { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -118,7 +118,7 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, NewSceneFlag) == 
 struct COccluderEntry;
 
 #pragma pack(push, 1)
-struct CEngineOcclusionManager {
+class CEngineOcclusionManager { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char   _pad_0x04[0x4];                          // +0x04
     unsigned char   _pad_0x08[0x4];                          // +0x08
@@ -183,7 +183,7 @@ struct CHandleVector {
  unsigned long& operator[](unsigned long i){return *(begin()+i);}
  void Clear(){Last=(unsigned long*)CopyTrivial(Last,Last,First);}
 };
-struct CEnginePrimitiveOcclusionInfo {
+class CEnginePrimitiveOcclusionInfo { public:
  void* NativeVTable; unsigned long ReferenceCount;
  long InvisibleFrames; CHandleVector OcclusionTestHandles;
  bool Seen; unsigned long TestFrame;

@@ -2,8 +2,8 @@
 // Compiles with cl /O2 ; prints the PassPattern on success.
 #include <stdio.h>
 
-struct CGameCameraManager
-{
+class CGameCameraManager
+{ public:
     char _pad0[0xB8];
     float m_controlAngleXY;
 };

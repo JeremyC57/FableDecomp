@@ -17,7 +17,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
-struct CTCBase;
+class CTCBase;
 namespace std {
 template <class A, class B> struct pair {
     A first; B second;
@@ -64,7 +64,7 @@ struct CDefBase {
     virtual void Destroy();
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
@@ -84,13 +84,13 @@ template <class T> struct CDefBasePointer {
         }
     }
 };
-struct CHairCardDef : CDefBase { };
-struct CTattooDef : CDefBase { };
+class CHairCardDef : public CDefBase { public: };
+class CTattooDef : public CDefBase { public: };
 CDefBasePointer<CHairCardDef> __fastcall GetHairCardDef(long defIndex);      // 0x005D9A10
 CDefBasePointer<CTattooDef> __fastcall GetTattooCardDef(long defIndex);      // 0x005D9AA0
 bool __fastcall IsBuyable(long defIndex);               // 0x005D9B50
-struct CAbilityDef : CDefBase { };
-struct CDefClassBase : CDefBase {
+class CAbilityDef : public CDefBase { public: };
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_005b1e5a(CDefPointer<CAbilityDef>* out);      // 0x005B1E5A
 };
 void* FindDef_a();
@@ -105,7 +105,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_005b1e5a(CDefPointer<CAbility
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
 };
 #pragma auto_inline(off)
@@ -126,7 +126,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 struct CPresenceBits { bool test(long kind) const; };   // 0x00410DE0
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     CPresenceBits  m_present;                           // +0x20
     unsigned char  _pad21[0x44 - 0x21];
@@ -154,11 +154,11 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer { CThing* GetControlledCreature();       // 0x00487DD0
+class CPlayer { public: CThing* GetControlledCreature();       // 0x00487DD0
 };
-struct CPlayerManager { CPlayer* GetMainPlayer() const;       // 0x00449960
+class CPlayerManager { public: CPlayer* GetMainPlayer() const;       // 0x00449960
 };
-struct CMainGameComponent { unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };   // +0x1c
+class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };   // +0x1c
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 struct CTCShopkeeper {
     CLongMap GetStockMap() const;                          // 0x00774610
@@ -167,12 +167,12 @@ struct CTCShopkeeper {
     bool IsAbilityShop() const;                        // 0x00772590
     long GetMaxStock(long defIndex) const;         // 0x00772720
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void GetAllItems(std::vector<std::pair<long, long> >& out) const;   // 0x005BF482
 };
 struct CLongList { void clear(); void push_back(const long& v); };   // 0x0042A168 / 0x0042B687 (labelled LinkedList_PushFront)
 typedef std::vector<std::pair<long, long> > CItemVector;
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     unsigned char _pad00[0x140];
     CLongList NotInStock;                               // +0x140
     unsigned char _pad144[0x168 - 0x144];

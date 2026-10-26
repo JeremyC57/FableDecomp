@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for COpinionDeedFilter_IsCrimeToRunAndFindAGuard::operator() @ 0x00681750
-struct COpinionDeed {
+class COpinionDeed { public:
     long DeedType;
     bool IsCrimeReportedToVillage;
     bool IsCrime;
     long ExtraData;
 };
-struct COpinionDeedFilter_IsCrimeToRunAndFindAGuard {
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:
     bool operator()(const COpinionDeed& deed) const
     {
         switch (deed.DeedType) {

@@ -12,9 +12,9 @@
 // The flag at +0xc is set once at the end. `it + 1` is a strength-reduced induction variable
 // (ebx). The manifest label (CreatureUseCoverBase::RemoveThingFromCoverList) is propagated --
 // that class keeps its list at +0x28 -- so the owner is named by shape.
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };

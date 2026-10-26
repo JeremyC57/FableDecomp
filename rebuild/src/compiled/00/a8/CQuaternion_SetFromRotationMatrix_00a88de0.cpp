@@ -10,14 +10,14 @@
 // Layout: CMatrix3x4 is the PDB's E11..E43 union arm (12 floats, rows of 3); CQuaternion is X, Y, Z, W.
 #include <math.h>
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E11, E12, E13;
     float E21, E22, E23;
     float E31, E32, E33;
     float E41, E42, E43;
 };
 
-struct CQuaternion {
+class CQuaternion { public:
     float X, Y, Z, W;
     void SetFromRotationMatrix(const CMatrix3x4& mat);
 };

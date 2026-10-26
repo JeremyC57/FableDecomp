@@ -16,12 +16,12 @@ int ReadFileEx(void* file, void* buffer, unsigned long bytes, OVERLAPPED_Fable* 
 { g_readBytes = bytes; g_readOv = ov; g_readBuf = buffer; return g_readOk; }
 struct CBufferChunk { unsigned char* Mem; bool Used; bool IsInput; };
 static CBufferChunk g_chunk; static int g_freed = 0, g_dirty = 0, g_allocs = 0; static bool g_haveChunk = true;
-struct CFileInstaller {
-    struct CActiveFile {
+class CFileInstaller { public:
+    class CActiveFile { public:
         void* SrcFileHandle; void* DstFileHandle; unsigned long CurrentSrcOffset; unsigned long NoBytesRead; unsigned long NoBytesWritten;
         unsigned long InputSize; unsigned long OutputSize; void* PFileInfo[2]; unsigned long MinWriteSize; unsigned long MinReadSize;
     };
-    struct CActiveRead {
+    class CActiveRead { public:
         CActiveFile* PActiveFile; long FilePos; long TransferSize; CBufferChunk* PBufferChunk; OVERLAPPED_Fable OverlappedInfo; CFileInstaller* PFileInstaller;
         CActiveRead(CFileInstaller* installer, CActiveFile& file, CBufferChunk* chunk, long pos)
             : PActiveFile(&file), FilePos(pos), PBufferChunk(chunk), PFileInstaller(installer) {}

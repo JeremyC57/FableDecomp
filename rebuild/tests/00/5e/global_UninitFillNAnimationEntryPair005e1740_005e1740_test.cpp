@@ -4,14 +4,14 @@
 #include <new>
 
 struct __false_type { __false_type() { } };
-struct CAnimComponentMap { long m_vtablePlaceholder; long m_count; CAnimComponentMap() : m_vtablePlaceholder(0), m_count(1) { } };
+class CAnimComponentMap { public: long m_vtablePlaceholder; long m_count; CAnimComponentMap() : m_vtablePlaceholder(0), m_count(1) { } };
 struct CIVCountedPointer_CAnimComponentMap {
     CAnimComponentMap* Object;
     CIVCountedPointer_CAnimComponentMap() : Object(0) { }
     CIVCountedPointer_CAnimComponentMap(const CIVCountedPointer_CAnimComponentMap& x) : Object(x.Object) { if (Object) ++Object->m_count; }
 };
-struct CDefString { long TablePos; };
-struct CAnimationEntry {
+class CDefString { public: long TablePos; };
+class CAnimationEntry { public:
     long                                BankIndex;
     CDefString                          AnimName;
     CDefString                          GroupName;

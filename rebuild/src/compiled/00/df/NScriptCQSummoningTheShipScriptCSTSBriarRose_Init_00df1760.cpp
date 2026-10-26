@@ -8,15 +8,15 @@
 // 516 EntitySetAsDamageable, 526 EntitySetAsToAddToComboMultiplierWhenHit.
 // Shape: `&Me` lives in edi for every call; Game is re-read before each call; the ally call reads Game's vtable
 // before the nested GetHero call (ebx keeps it).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CScriptThing {                            // vtable 0x01238C8C
+class CScriptThing { public:                            // vtable 0x01238C8C
     virtual const C3DVector& GetPos() const;
     void* PImp_Data;                             // +0x04
     void* PImp_Info;                             // +0x08
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -94,8 +94,8 @@ struct CGameScriptInterface {
 
 namespace NScript {
 
-struct CQ_SummoningTheShipScript;
-struct CQ_SunnyvaleMasterData;
+class CQ_SummoningTheShipScript;
+class CQ_SunnyvaleMasterData;
 
 struct CEntityScriptBase {
     virtual ~CEntityScriptBase();
@@ -103,7 +103,7 @@ struct CEntityScriptBase {
     CScriptThing          Me;                    // +0x08
 };
 
-struct CQ_SummoningTheShipScript {
+class CQ_SummoningTheShipScript { public:
     struct CSTS_BriarRose : CEntityScriptBase {
         CQ_SummoningTheShipScript* ParentClass;  // +0x14
         CQ_SunnyvaleMasterData*    PMasterData;  // +0x18

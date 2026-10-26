@@ -8,7 +8,7 @@
 //   the class is restated locally with the real shader / buffer types (models as the landed 0x00BABB50 / 0x00BAD040).
 // Shape: the decal vertex resource (+0x29C0) is read once into a named local ahead of the first name temporary (retail edi);
 //   the occlusion vertex (+0x2A60) and pixel (+0x2A98) resources go through inline getters so each is loaded right before the pushes.
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -31,10 +31,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -47,7 +47,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -61,7 +61,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
@@ -82,7 +82,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams()
@@ -97,7 +97,7 @@ struct CVertexBufferBase : CBase {                 // 0x34 bytes
     CVertexCompressionParams CompressionParams;    // +0x14
     CVertexBufferBase() : Length(0), Type(0), CompressionParams() { }
 };
-struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
+class CVertexBufferWin32 : public CVertexBufferBase { public:    // vtable 0x0129BA20
     virtual void VSlot1();
     CVertexBufferWin32()
     {
@@ -105,19 +105,19 @@ struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
         Stride = 0;
     }
 };
-struct CIndexBuffer {                              // 0x14 bytes
+class CIndexBuffer { public:                              // 0x14 bytes
     void* _vtable;
     unsigned char _body[0x10];
     CIndexBuffer();                                // 0x00AC1EC0
 };
-struct CEnginePrimitiveManager {                   // 0x0c bytes
+class CEnginePrimitiveManager { public:                   // 0x0c bytes
     virtual ~CEnginePrimitiveManager();
     unsigned char _body[0x8];
     CEnginePrimitiveManager(CEngineSceneArray* scenes);   // 0x00BACDB0
     void RegisterEnable(const CCharString& name);  // 0x00BACD80
 };
 
-struct CEnginePrimitiveManagerParticleDecalGroup : CEnginePrimitiveManager {   // vtable 0x012A5998, 0x124 bytes
+class CEnginePrimitiveManagerParticleDecalGroup : public CEnginePrimitiveManager { public:   // vtable 0x012A5998, 0x124 bytes
     unsigned long      PointLightShaderIndex[6];                // +0x0c
     CVertexShader      LandscapeDecalVertexShader[3];           // +0x24
     CVertexShader      MeshDecalVertexShader[3];                // +0x3c

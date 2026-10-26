@@ -2,8 +2,8 @@
 // Behaviour model of the NScreenEffect::CScreenEffectPriorityStack key-set functions (0x00880F60 .. 0x00881860):
 // look the entry up in the stack's key set and touch it only when it is still registered; the set (find / erase)
 // is a small array here.
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CRadialBlurParams { CRGBFloatColour ThresholdColour, IntensityColour; float Length, Fade, Range, Twist; CRadialBlurParams() {} };
 enum ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION { TRACK_NONE = 0, TRACK_HERO = 1, TRACK_CAMERA = 2 };
 struct CRadialBlurPositionParams { C3DVector AreaCenter, BlurCenter; ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION AreaTrackPos, BlurTrackPos; };

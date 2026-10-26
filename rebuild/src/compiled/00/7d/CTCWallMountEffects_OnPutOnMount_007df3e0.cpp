@@ -8,16 +8,16 @@
 // (1 = teleport, 0 = none).
 // Shape: the class-name string is an implicit conversion temporary (re-addressed with `lea` for the push and the
 // destructor, one `push ecx` frame slot); Effect is re-read through PDef for the second test.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CTCBase;
-struct CTCParamsBase;
+class CTCBase;
+class CTCParamsBase;
 
-struct CThing {
+class CThing { public:
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     bool IsGameStatePersisted() const;                      // 0x004C8280
     void SetAsGameStatePersisted(bool persisted);           // 0x004C7880
@@ -25,12 +25,12 @@ struct CThing {
 
 enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT = 1 };
 
-struct CWallMountEffectsDef {
+class CWallMountEffectsDef { public:
     unsigned char     _pad_00[0x28];
     EWallMountEffects Effect;                               // +0x28
 };
 
-struct CTCWallMountEffects {
+class CTCWallMountEffects { public:
     void*                       __vftable;                  // +0x00
     CThing*                     ParentThing;                // +0x04
     bool                        ToBeRemoved;                // +0x08

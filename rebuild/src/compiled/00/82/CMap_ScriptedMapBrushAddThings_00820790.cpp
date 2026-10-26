@@ -29,29 +29,29 @@ struct UIDList {
  void Clear(){UIDNode* p=Head->Next;while(p!=Head){UIDNode* old=p;p=p->Next;free(old);}Head->Next=Head;Head->Previous=Head;}
  ~UIDList(){Clear();free(Head);}
 };
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
  void GetThingsToAdd(UIDList&)const; //0082E9C0 PDB007355A0
  void GetThingsToDelete(UIDList&)const; //0082E910 PDB00735500
 };
-struct CThing {
+class CThing { public:
  unsigned char NativeThingPrefix[0x91];unsigned char Dead:1;
  void SetAsActivated(bool); //004C7770
  void Kill(bool); //004C9B80
 };
-struct CThingManager {CThing* GetPThingWithUID(ThingUID);}; //0051ED80 actual byvalue64bit lookup; PDB00529000
-struct C2DCoordI {long X,Y;};
-struct CWorldMap {
+class CThingManager { public:CThing* GetPThingWithUID(ThingUID);}; //0051ED80 actual byvalue64bit lookup; PDB00529000
+class C2DCoordI { public:long X,Y;};
+class CWorldMap { public:
  void* VTable;typedef long(CWorldMap::*MapNumberMethod)(const C2DCoordI&)const;
  __forceinline long GetMapNumberAt(const C2DCoordI& p)const{return(this->*static_cast<MapNumberMethod*>(VTable)[17])(p);}
 };
-struct CWorld {
+class CWorld { public:
  void* VTable;
  typedef CThingManager&(CWorld::*ThingManagerMethod)();
  typedef const CWorldMap&(CWorld::*WorldMapMethod)()const;
  __forceinline CThingManager& GetThingManager(){return(this->*static_cast<ThingManagerMethod*>(VTable)[3])();}
  __forceinline const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VTable)[13])();}
 };
-struct CMap {
+class CMap { public:
  unsigned char NativeMapPrefix[0x20];CWorld* World;
  unsigned char NativeRippleAndMapState[0x1d24-0x20-sizeof(CWorld*)];C2DCoordI WorldPos;
  void ScriptedMapBrushAddThings(const CScriptedMapBrush&);

@@ -8,7 +8,7 @@ struct CCombatAbilityData_Calls {
     CCombatAbilityData_Calls(long interfaceType) : PercentageChance(100), SecondsDuration(-1.0f), SecondsToWaitBeforeRepeat(0.0f), Anim(-1), InterfaceType(interfaceType) { note("A"); }
 };
 struct CRetailSet_WeaponClass { void* Header; unsigned long Count; unsigned char Compare[4]; CRetailSet_WeaponClass() : Header(0), Count(0) { note("S"); } };
-struct CCombatAbilityBlockingData : CCombatAbilityData_Calls {
+class CCombatAbilityBlockingData : public CCombatAbilityData_Calls { public:
     float BlockAngle; bool BlockCanBeBroken; bool ForceRecoilWhenBlocking; CRetailSet_WeaponClass ValidBlockWeaponTypes; long WeaponClass;
     virtual void v00() { }
     CCombatAbilityBlockingData(long interfaceType, long weaponClass)

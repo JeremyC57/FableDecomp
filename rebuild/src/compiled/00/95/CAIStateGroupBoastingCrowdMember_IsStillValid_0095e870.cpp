@@ -8,7 +8,7 @@
 // formed once into esi and re-fetched for every use; the lookup is the landed GetInterface out-parameter
 // template whose bool is tested.
 // Model: local (no engine header for this class); the boaster pointer is a CIntelligentPointer<CThing>.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -51,7 +51,7 @@ struct CTCBoastingCrowd {                       // interface 0x74
     long State;                                 // +0x2c
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

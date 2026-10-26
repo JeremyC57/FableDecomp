@@ -22,12 +22,12 @@ template<class T> struct CRetailVector {        // retail std::vector: {first, l
 };
 struct CCombatRing;
 
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     unsigned char _pad[0x4c];
     bool RotatesCombatRings;                    // +0x4c
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                  // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
@@ -56,12 +56,12 @@ CCombatRing* CCombatWheel::GetRing(long index)  // same-TU body (landed 0x006E84
 }
 #pragma auto_inline(on)
 
-struct CAttackPatternDef {
+class CAttackPatternDef { public:
     unsigned char _pad00[0x3c];
     CRetailVector<long> AttackPattern;          // +0x3c
 };
 
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     const CThingCreatureBase* Attacked;         // +0x00
     long AttackerNumber;                        // +0x04
     long CombatWheelRingIndex;                  // +0x08
@@ -110,7 +110,7 @@ __declspec(noinline) CRetailRbMap_UID_CombatantInfo::node* CRetailRbMap_UID_Comb
 }
 #pragma auto_inline(on)
 
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];              // +0x04
     CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10

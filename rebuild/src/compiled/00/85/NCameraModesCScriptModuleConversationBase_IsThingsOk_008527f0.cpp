@@ -7,11 +7,11 @@
 // two exits) -- the `if (...) return true; return false;` form would give `mov al,1`/`xor al,al`.
 // Layout: PDB NCameraModes::CScriptModuleConversationBase (0x60 bytes): PSpeaker +0x4c, PSpokenTo +0x54,
 // RandomDirection +0x5c, over the 0x4c-byte CScriptModuleBase. No engine header exists.
-struct CBaseObject;
+class CBaseObject;
 struct CBase;
-struct CGameCameraManager;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CGameCameraManager;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CThing_Retail {
     unsigned char  _pad00[0x91];

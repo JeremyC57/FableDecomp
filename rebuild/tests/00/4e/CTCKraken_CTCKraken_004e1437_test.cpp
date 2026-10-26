@@ -3,7 +3,7 @@
 #include <string.h>
 static char g_log[64]; static int g_n = 0;
 static void Log(char c) { g_log[g_n++] = c; g_log[g_n] = 0; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long RefCount; int Destroyed;
     virtual ~CDefPointeeBase() {}
     virtual void Destroy() { ++Destroyed; }
@@ -21,9 +21,9 @@ struct CDefPointer {
         Log(0x44);
     }
 };
-struct CTCBase { ~CTCBase() { Log(0x42); } };
+class CTCBase { public: ~CTCBase() { Log(0x42); } };
 template <char C> struct CMember { ~CMember() { Log(C); } };
-struct CTCKraken : CTCBase {
+class CTCKraken : public CTCBase { public:
     CDefPointer PDef;                       // PKrakenDef +0x0c
     CMember<0x43> PChamber;                 // C +0x10
     CMember<0x47> PCentreMarker;            // G +0x18

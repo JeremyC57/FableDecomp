@@ -3,7 +3,7 @@ struct Sub;
 // callee at 0xa84cf0: this in ecx, edx arg, one stack arg
 extern void __fastcall Sub_Handle(Sub* thisp, int edxArg, unsigned char stackArg);
 
-struct CTCVillage {
+class CTCVillage { public:
     Sub*          f0;   // +0x00
     int           ParentThing;   // +0x04
     // ... padding to 0x0c

@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CChecksum { long Checksum1, Checksum2, Checksum3, Checksum4; };
-struct CInputManager {
+class CChecksum { public: long Checksum1, Checksum2, Checksum3, Checksum4; };
+class CInputManager { public:
     virtual void v00() { }
     unsigned char _pad04[0x38];
     CChecksum Checksum;

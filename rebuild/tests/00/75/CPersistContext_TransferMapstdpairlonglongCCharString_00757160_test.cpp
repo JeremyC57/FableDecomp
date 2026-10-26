@@ -6,7 +6,7 @@ class CCharString { public: void* PStringData; };
 template <class T1, class T2> struct pair { T1 first; T2 second; pair() : first(T1()), second(T2()) { } };
 struct CrimeMap { long dummy; };                       // stands for std::map<CCharString, std::pair<long, long> >
 static const char* g_name; static CrimeMap* g_map; static long g_a = 9, g_b = 9; static long g_calls;
-struct CPersistContext {
+class CPersistContext { public:
     long pad[11];
     void TransferMap(const char* name, CrimeMap& map, const pair<long, long>& def) { g_name = name; g_map = &map; g_a = def.first; g_b = def.second; ++g_calls; }
     void TransferMap(const char* name, CrimeMap& map) { TransferMap(name, map, pair<long, long>()); }

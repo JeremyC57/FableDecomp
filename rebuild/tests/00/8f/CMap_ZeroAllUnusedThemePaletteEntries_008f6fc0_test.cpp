@@ -56,7 +56,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 // ---- end rebuild_abi.h ----
 
 #pragma pack(push, 1)
-struct CHeightMapCell {
+class CHeightMapCell { public:
     float         Height;                                    // +0x00
     unsigned char EngineThemePaletteIndex[3];                // +0x04
     unsigned char EngineBlend[2];                            // +0x07
@@ -92,7 +92,7 @@ template <class T> struct vector {                 // STLport vector, 12 bytes
     T* _M_end_of_storage;
     T& operator[](unsigned long i) { return _M_start[i]; }
 };
-struct CMap {
+class CMap { public:
     unsigned char              _pad[0x1a6c];
     vector<SThemePaletteEntry> m_ThemePalette;     // +0x1a6c
     void*                      m_pQuarterGrid;     // +0x1a78

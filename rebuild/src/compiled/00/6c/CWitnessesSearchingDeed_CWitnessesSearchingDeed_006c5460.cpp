@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingAICreature>: vtable 0x0123E7E0
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThingAICreature>: vtable 0x0123E7E0
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -43,7 +43,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // C
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE };
 enum EOpinionPostDeedType { OPINION_POST_DEED_TYPE_NONE };
 
-struct CWitnessesSearchingDeed {
+class CWitnessesSearchingDeed { public:
     long                                  DeedHandle;            // +0x00
     EOpinionDeedType                      DeedType;              // +0x04
     CIntelligentPointer<CThingAICreature> Recipient;             // +0x08

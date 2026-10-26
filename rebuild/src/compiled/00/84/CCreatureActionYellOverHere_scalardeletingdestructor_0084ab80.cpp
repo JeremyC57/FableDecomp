@@ -1,4 +1,4 @@
-struct CCreatureAction_YellOverHere {
+class CCreatureAction_YellOverHere { public:
     void* vftable;
 };
 

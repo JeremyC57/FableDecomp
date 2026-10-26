@@ -2,7 +2,7 @@
 #include <cstdio>
 
 struct Vec3 { int x; int y; int z; };
-struct CWorld { char pad[0x154]; Vec3 loc; int extra; };
+class CWorld { public: char pad[0x154]; Vec3 loc; int extra; };
 
 void __fastcall CGameScriptInterface_SetGuildSealRecallLocation(
     CGameScriptInterface* self, int edx_dummy, const Vec3* loc, int val)

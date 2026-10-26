@@ -17,7 +17,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -27,7 +27,7 @@ struct CCharString {
 
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 
-struct CSpawnedFuncBase {                               // retail 0x34 bytes (CScriptProcessBase + thread state)
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes (CScriptProcessBase + thread state)
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -53,14 +53,14 @@ template <class T> struct CRetailVector {               // STLport vector (12 by
     void resize(unsigned long n, const T& value);       // 0x004428F0
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char             _pad000[0x3cc];
     CRetailVector<CCharString> AssassinAttackRegionNames;   // +0x3cc
     CRetailVector<long>        AssassinAttackRegionLimits;  // +0x3d8
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];                          // +0x04 .. +0x40
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50

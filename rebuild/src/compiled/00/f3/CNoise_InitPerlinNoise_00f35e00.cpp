@@ -10,7 +10,7 @@
 //   and a 0..255 pick; the duplication copies P then G2 per index.
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 long __fastcall GFROR13(unsigned long value);                       // 0x00497890
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector& Normalise();                        // 0x00A14540
 };

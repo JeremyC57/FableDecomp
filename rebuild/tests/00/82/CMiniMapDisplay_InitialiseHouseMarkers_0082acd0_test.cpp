@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -21,7 +21,7 @@ struct CInterfaceMap {
         return ((it == last || kind < it->type) ? last : it)->component;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -42,7 +42,7 @@ struct CThing {
 template <class T> struct _List_node { _List_node* _M_next; _List_node* _M_prev; T _M_data; };
 template <class T> struct list { _List_node<T>* _M_node; };
 static int g_regionCalls = 0, g_currentCalls = 0;
-struct CWorldMap {
+class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex) { ++g_regionCalls; return mapIndex / 10; }
     long GetCurrentRegionNumber() { ++g_currentCalls; return 3; }
 };
@@ -52,30 +52,30 @@ struct CArray_MarkerGraphics {
     SMarkerGraphics* m_pEnd;
     SMarkerGraphics& operator[](unsigned long i) { return m_pBegin[i]; }
 };
-struct CPlayerGuiDef { unsigned char _pad00[0x958]; CArray_MarkerGraphics MiniMapMarkerGraphics; };
+class CPlayerGuiDef { public: unsigned char _pad00[0x958]; CArray_MarkerGraphics MiniMapMarkerGraphics; };
 static CPlayerGuiDef g_guiDef; static SMarkerGraphics g_graphics[8];
 CPlayerGuiDef* __fastcall PeekGuiDef() { return &g_guiDef; }
 static int g_forSaleCalls = 0;
-struct CTCBuyableHouse : CTCBase {
+class CTCBuyableHouse : public CTCBase { public:
     unsigned char _pad00[0x11];
     bool          OwnedByHero;
     bool          ForSale;
     bool IsForSale() const { ++g_forSaleCalls; return ForSale; }
 };
 struct CThingLists { unsigned char _pad00[0x3c]; list<CThing*> Houses; };
-struct CThingManager { void* __vftable; CThingLists* Lists; };
+class CThingManager { public: void* __vftable; CThingLists* Lists; };
 static CThingManager g_thingManager; static CWorldMap g_worldMap;
-struct CWorld {
+class CWorld { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
     virtual CThingManager* GetThingManager() { return &g_thingManager; }
     virtual void v05() {} virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {} virtual void v12() {}
     virtual CWorldMap* GetWorldMap() { return &g_worldMap; }
 };
-struct CMainGameComponent { unsigned char _pad00[0x24]; CWorld* PWorld; };
+class CMainGameComponent { public: unsigned char _pad00[0x24]; CWorld* PWorld; };
 static CMainGameComponent g_mainGame; CMainGameComponent* g_pMainGameComponent = &g_mainGame; static CWorld g_world;
-struct CRegion;
+class CRegion;
 static const CThing* g_added[8]; static long g_addedGraphic[8]; static int g_addCount = 0;
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     virtual void v00() {}
     unsigned char _pad04[0xb4];
     CRegion*      m_pRegion;

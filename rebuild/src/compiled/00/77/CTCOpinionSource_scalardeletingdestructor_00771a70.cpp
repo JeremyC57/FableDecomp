@@ -1,4 +1,4 @@
-struct CTCOpinionSource {
+class CTCOpinionSource { public:
     void* vftable;
 };
 

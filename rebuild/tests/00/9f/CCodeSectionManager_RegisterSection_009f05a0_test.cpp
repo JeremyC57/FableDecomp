@@ -18,7 +18,7 @@ static int fails = 0;
 //          (`sectionKey = g_nextCodeSectionHandle`, stored at entry), because the map's operator[] takes it by const reference.
 //          Copying the handle into the key swaps `this`/handle between edi and ebp. A single address-taken handle is
 //          re-read after every call (315 bytes).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const CCharString& other);             // 0x0099EC30

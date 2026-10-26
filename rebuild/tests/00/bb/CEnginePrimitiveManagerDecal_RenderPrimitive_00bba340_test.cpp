@@ -5,17 +5,17 @@
 #include <cmath>
 #define CHECK(c) do { if (!(c)) { std::printf("00bba340_TEST FAIL\n"); return 1; } } while (0)
 
-struct C3DVector { float X, Y, Z; };
-struct CEngineCamera { C3DVector WorldPosition; };
-struct CEngineInternalPrimitiveDecal { C3DVector WorldPos; };
+class C3DVector { public: float X, Y, Z; };
+class CEngineCamera { public: C3DVector WorldPosition; };
+class CEngineInternalPrimitiveDecal { public: C3DVector WorldPos; };
 struct CEngineSubPrimitiveDecal { CEngineInternalPrimitiveDecal* Parent; void* NextSubPrimitive; CEngineSubPrimitiveDecal(CEngineInternalPrimitiveDecal& p) : Parent(&p), NextSubPrimitive(0) { } };
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
     int calls; int list; CEngineSubPrimitiveDecal* sub; float distance; void* manager;
     void AddSubPrimitive(int l, CEngineSubPrimitiveDecal* s, float d, void* m) { ++calls; list = l; sub = s; distance = d; manager = m; }
 };
 static CEngineCamera g_camera = { { 1, 2, 3 } };
 static CEngineSubPrimitiveRenderer g_renderer = { 0, -1, 0, 0, 0 };
-struct CEnginePrimitiveManagerDecal {
+class CEnginePrimitiveManagerDecal { public:
     void* SceneList; bool Enable;
     int RenderPrimitive(CEngineInternalPrimitiveDecal& decal)
     {

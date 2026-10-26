@@ -1,6 +1,6 @@
 // CPersistContext_TransferableVector::TransferIn(CPersistContext* context, CStringParser* parser, long index) -- parse element `index` of a vector of (CCharString, long) pairs through a CPersistTraits whose default value is ("", 0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D4180, length 101 bytes (+ int3 padding).
-// Leaf: ?TransferIn@CPersistContext_TransferableVector@@UAEXPAUCPersistContext@@PAUCStringParser@@J@Z
+// Leaf: ?TransferIn@CPersistContext_TransferableVector@@UAEXPAVCPersistContext@@PAVCStringParser@@J@Z
 // Slot 3 of the CPersistContext_TransferableVector vtable 0x0125ED48 (catalogued "vfunc_3"; slot 3 is the persist READ
 // hook, as the landed TransferIn 0x0049B070). The element type is 8 bytes {CCharString, long}: the traits reader
 // @ 0x006D41F0 (catalogued as the propagated CPersistTraits<CSimVoice>::TransferIn; Ego_r.pdb CSimVoice is 28 bytes)
@@ -10,10 +10,10 @@
 // Shape: the traits object (esp+8: the pair) is built inline as `DefaultVal("", 0)`: the IMPLICIT CCharString("") conversion
 // temporary (esp+4; an explicit `CCharString("")` argument reuses the constructor's eax for the copy) is copied into
 // `first` and destroyed right after `second = 0`; the element address is `first + index*8`; `ret 0Ch`.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30

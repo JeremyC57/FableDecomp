@@ -2,8 +2,8 @@
 #include <cstring>
 // behaviour test: CTCHeroCentreDoorMarker::FrameUpdate raises event 0x34 once when the hero enters the radius,
 // clears the inside flag when the hero leaves or is gone, and runs the particle update only for door type 1
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     unsigned long long UID;
     signed char Player;
     bool Dead;
@@ -13,10 +13,10 @@ struct CThing {
 struct CIntelligentPointer { CThing* p; CThing* GetPItem() const { return p; } };
 static bool IS_THING_ALIVE(const CIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetHeroThing() { return g_hero; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CPlayer { public: CThing* GetHeroThing() { return g_hero; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
 static CPlayerManager g_pm;
-struct CGameEvent {
+class CGameEvent { public:
     long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos;
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0) {}
     void Copy(unsigned long n, const void* d) { std::memcpy(Data + EndPos, d, n); EndPos = (unsigned char)(EndPos + n); }

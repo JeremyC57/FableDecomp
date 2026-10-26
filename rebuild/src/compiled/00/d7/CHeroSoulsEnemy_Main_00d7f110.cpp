@@ -8,12 +8,12 @@
 // ParentClass +0x14, PMasterData +0x18.
 // Shape: as the landed CHTE_Prisoner::Main 0x00D69F50 (scoped filter, `do/while` wait); the target call is the
 // nested `Game->GiveThingBestEnemyTarget(Me, Game->GetHero())` (the outer vtable fetched before the inner call).
-struct CScriptThing {                              // 12 bytes
+class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
+class CGameScriptInterface { public:                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

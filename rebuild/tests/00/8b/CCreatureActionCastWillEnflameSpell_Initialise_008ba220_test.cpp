@@ -3,9 +3,9 @@
 #include <cstdio>
 #include <string>
 
-struct CThing;
-struct CTCWillEnflame { bool Active; long Level; CThing* PTarget; CThing* Aim; bool Z; void SetPTarget(CThing* t, bool z) { Aim = t; Z = z; } };
-struct CThing {
+class CThing;
+class CTCWillEnflame { public: bool Active; long Level; CThing* PTarget; CThing* Aim; bool Z; void SetPTarget(CThing* t, bool z) { Aim = t; Z = z; } };
+class CThing { public:
     unsigned char m_state; bool Dead; bool Has; CTCWillEnflame TC; int Added;
     bool GetInterface(CTCWillEnflame** out) { if (!Has) return false; *out = &TC; return true; }
     CTCWillEnflame* AddTC(const std::string& name) { if (name == "CTCWillEnflame") { ++Added; Has = true; } return &TC; }

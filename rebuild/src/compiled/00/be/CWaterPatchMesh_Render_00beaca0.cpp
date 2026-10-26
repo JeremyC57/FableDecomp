@@ -14,10 +14,10 @@
 // CShaderRenderManager view is the landed RenderRainBox model (retail layout, UpdateFlags +0x3d8).
 #include "engine/CWaterPatchMesh.h"
 
-struct C3DVector { float X, Y, Z; };
-struct C4DVector { float X, Y, Z, W; };
+class C3DVector { public: float X, Y, Z; };
+class C4DVector { public: float X, Y, Z, W; };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }
     void SetIdentity()
@@ -27,7 +27,7 @@ struct CMatrix3x4 {
     }
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -35,13 +35,13 @@ template <class T> struct CArray {
     const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;
     long Offset;
     unsigned long Count;
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10
@@ -243,13 +243,13 @@ public:
 };
 extern CRenderManagerCore* g_pRenderManagerCore;        // 0x01436E18
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad0[0x54];
     C3DVector WorldPosition;                            // +0x54
 };
 extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
 
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     void* _vptr;                                        // +0x00
     IDirect3DVertexBuffer9* PVertexBuffer;              // +0x04
     unsigned char _pad8[8];

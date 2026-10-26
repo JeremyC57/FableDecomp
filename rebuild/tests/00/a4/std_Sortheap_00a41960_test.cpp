@@ -25,7 +25,7 @@ template<class T1, class T2> struct pair {
     pair() : second(0) { }
 };
 typedef pair<CCharString, unsigned long> TEntry;
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return StrLess(a.first, b.first); }
 };

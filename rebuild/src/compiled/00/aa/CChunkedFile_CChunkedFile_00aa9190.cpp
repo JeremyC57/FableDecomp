@@ -7,9 +7,9 @@
 // the Ego_r PDB (CChunkedFile, 20 bytes): RootChunk CCountedPointer<CChunkedFileSuperChunk> at +4,
 // Version at +0xc, FileComment at +0x10. Members are destroyed in reverse order (string first, then
 // the inlined CCountedPointer destructor whose two null stores precede the out-of-line base destructor).
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;                     // +0 the shared string block
     CCharString(const CCharString& other); // 0x0099EC30
     ~CCharString();                        // 0x0099EAE0
@@ -42,7 +42,7 @@ namespace N_0099a300 { struct CBaseClass {                             // vtable
     virtual ~CBaseClass();                      // 0x0099A300
 }; } using N_0099a300::CBaseClass;
 
-struct CChunkedFile : CBaseClass {              // vtable 0x0129E4E8
+class CChunkedFile : public CBaseClass { public:              // vtable 0x0129E4E8
     CCountedPointer_CChunkedFileSuperChunk RootChunk;   // +0x04
     unsigned long                          Version;     // +0x0c
     CCharString                            FileComment; // +0x10

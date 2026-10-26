@@ -12,7 +12,7 @@
 // (SecsDelayPerGainedWitnessSound +0x44, SoundGainedWitness +0x50 flattened to its PStringData word).
 #include "engine/CTrophyDef.h"
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
@@ -21,13 +21,13 @@ struct CDefPointerTrophyDef {
     const CTrophyDef* Object;
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();            // 0x0049D870
 };
 
 extern long g_FramesPerSecond;              // 0x01375550
 
-struct CTCTrophy {
+class CTCTrophy { public:
     void*                __vftable;         // +0x00
     unsigned char        _pad_0x04[0x8];
     CDefPointerTrophyDef PDef;              // +0x0C

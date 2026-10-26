@@ -14,10 +14,10 @@
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 namespace NUISystem {
-struct CAction;
-struct CActionParam;
+class CAction;
+class CActionParam;
 }
-template <class T> struct CCountedPointer { T* Data; void* Count; };
+template <class T> class CCountedPointer { public: T* Data; void* Count; };
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 void __fastcall DestroyRange(CCountedPointer<NUISystem::CAction>* first, CCountedPointer<NUISystem::CAction>* last,
@@ -48,7 +48,7 @@ struct CFrontEndControl_0055b760 : SControlBase0, SControlBase1, SControlBase2 {
 };
 
 namespace NUISystem {
-struct CFrontEndButton : CFrontEndControl_0055b760 {   // vtables 0x01249554 / 0x01249530 / 0x01249528
+class CFrontEndButton : public CFrontEndControl_0055b760 { public:   // vtables 0x01249554 / 0x01249530 / 0x01249528
     float            m_fLastInputTime;             // +0x194
     CActionVector    Actions;                      // +0x198
     CActionVector    ActionsOnDelete;              // +0x1a4

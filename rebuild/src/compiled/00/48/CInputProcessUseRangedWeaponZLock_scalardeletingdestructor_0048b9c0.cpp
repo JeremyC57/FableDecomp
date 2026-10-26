@@ -1,4 +1,4 @@
-struct CInputProcessUseRangedWeaponZLock {
+class CInputProcessUseRangedWeaponZLock { public:
     void* vftable;
 };
 

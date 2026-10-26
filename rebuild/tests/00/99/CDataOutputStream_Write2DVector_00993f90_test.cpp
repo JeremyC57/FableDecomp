@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { char* text; long length; };
+class CCharStringData { public: char* text; long length; };
 static char g_EmptyCharString_0129AAF4[1] = { 0 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     const char* GetText() const { return m_pStringData == 0 ? g_EmptyCharString_0129AAF4 : m_pStringData->text; }
     long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->length; }
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { }
     virtual void Write(const void* data, long length) { std::memcpy(log + used, data, length); used += length; ++calls; }
     CCharString NewLine;
@@ -15,7 +15,7 @@ struct CDataOutputStream {
     CDataOutputStream() { used = 0; calls = 0; }
     void WriteFloat(float v) { Write(&v, 4); }
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CStream : CDataOutputStream { void Write2DVector(const C2DVector& v) { WriteFloat(v.X); WriteFloat(v.Y); } };
 int main()
 {

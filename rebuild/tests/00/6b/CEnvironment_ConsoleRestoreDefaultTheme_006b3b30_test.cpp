@@ -1,17 +1,17 @@
 // Behaviour test for 006b3b30: CEnvironment::ConsoleRestoreDefaultTheme reads (channel, priority, duration) from the console args and transitions even while forced (model copy).
 #include <cstdio>
 static int g_calls = 0; static void* g_last = 0; static float g_dur = 0.0f; static bool g_forced_at_call = true;
-struct CEnvironment;
+class CEnvironment;
 static CEnvironment* g_env = 0;
 struct CEntry {
     unsigned char pad[0x30];
     void TransitionToDefaultTheme(float duration);
 };
-template <class T> struct CArray { T* first; T* last; T* end; T& operator[](long i) { return first[i]; } };
+template <class T> class CArray { public: T* first; T* last; T* end; T& operator[](long i) { return first[i]; } };
 struct CStack { CArray<CEntry> Ents; };
-struct CGenericVar { void* vt; long Type; void* ValString; long ValSLONG; unsigned long ValULONG; bool ValBool; float ValFloat; };
+class CGenericVar { public: void* vt; long Type; void* ValString; long ValSLONG; unsigned long ValULONG; bool ValBool; float ValFloat; };
 struct CVarVector { CGenericVar* first; CGenericVar* last; CGenericVar* end; const CGenericVar& operator[](unsigned int n) const { return first[n]; } };
-struct CEnvironment {
+class CEnvironment { public:
     bool ForcedEnvironmentTheme;
     CArray<CStack> PriorityStackChannels;
     void TransitionToDefaultTheme(long channel, long priority, float duration)

@@ -8,7 +8,7 @@ struct CInputProcessBase;
 struct SProcessNode { CInputProcessBase* m_pOwner; SProcessNode* m_pNext; SProcessNode* m_pPrev; };
 struct CInputProcessBase { int id; SProcessNode m_node; };
 struct SProcessCursor { SProcessNode* m_pForward; SProcessNode* m_pBackward; SProcessCursor* m_pNextCursor; };
-struct CInputProcessManager {
+class CInputProcessManager { public:
     SProcessNode* m_pFirst; SProcessNode* m_pLast; long m_count; SProcessCursor* m_pCursors;
     void AddInputProcess(CInputProcessBase* p)
     {

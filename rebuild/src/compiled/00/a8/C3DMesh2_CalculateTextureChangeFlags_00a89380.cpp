@@ -5,14 +5,14 @@
 // +0x94); the retail C3DPrimitive2 is 0xa0 bytes. The loop keeps an index and a byte offset
 // and re-reads the array base and count each iteration (the callee may reallocate); unsigned
 // compare (`jb`).
-struct C3DMesh2;
+class C3DMesh2;
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _body[0xa0];
     void CalculateTextureChangeFlags(C3DMesh2* mesh);   // 0x00A8E5C0
 };
 
-struct C3DMesh2 {
+class C3DMesh2 { public:
     unsigned char _pad_0x00[0x90];
     unsigned long PrimitiveCount;          // +0x90
     C3DPrimitive2* Primitives;             // +0x94

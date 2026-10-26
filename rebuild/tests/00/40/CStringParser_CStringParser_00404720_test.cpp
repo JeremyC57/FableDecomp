@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstdlib>
 // Behaviour test for CStringParser::CStringParser(const CCharString&, callback, const CCharString&, long) (0x00404720).
-struct CCharStringData { char* PData; unsigned long Length; };
+class CCharStringData { public: char* PData; unsigned long Length; };
 char g_emptyLiteral_0129aaf4[] = "";
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) {}
     CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
@@ -17,7 +17,7 @@ struct CCommentList {
 typedef void (*StringParserErrorCallback)(CCharString*);
 static const char* g_initText = 0; static long g_initOffset = -1; static StringParserErrorCallback g_initCb = 0; static const CCharString* g_initFile = 0;
 static void OnError(CCharString*) {}
-struct CStringParser {
+class CStringParser { public:
     virtual ~CStringParser() {}
     char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString; CCommentList Comments;
     StringParserErrorCallback ErrorCallback; long CursorPos[3];

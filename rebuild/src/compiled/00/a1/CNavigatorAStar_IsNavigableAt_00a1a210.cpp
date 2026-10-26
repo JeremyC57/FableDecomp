@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A1A210, length 80 bytes.
 // Leaf: IsNavigableAt
 // Shape: an 8-byte frame for the conversion temporary, a long result (`mov eax,1`), two epilogues, `ret 8`.
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame
 };
@@ -11,11 +11,11 @@ struct CANavQuadTreeNode_00a1a210 {
     unsigned char _pad00[0xf];
     bool          m_switchedOff;                   // +0x0f
 };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     CANavQuadTreeNode_00a1a210* GetNodeAt(const C2DVector& position, bool layer);   // 0x00A14F70
 };
 
-struct CNavigatorAStar {
+class CNavigatorAStar { public:
     unsigned char      _pad00[0x1c];
     CNavigatorManager* m_pManager;                 // +0x1c
     long IsNavigableAt(const C3DVector* position, bool layer);

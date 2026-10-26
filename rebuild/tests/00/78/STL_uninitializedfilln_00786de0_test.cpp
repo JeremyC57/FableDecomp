@@ -9,7 +9,7 @@
 // Model: STLport __uninitialized_fill_n over the 12-byte skeletal-morph entry.
 static int g_copies = 0;
 
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* t) : PStringData(t) { }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }

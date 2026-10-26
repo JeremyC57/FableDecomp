@@ -1,8 +1,8 @@
 // Behaviour test for CAnimateThing::GetCombinationAnimFromTypeAndIndex @ 0x0070c170: first node in either list whose type byte and pointed-to short index match.
 #include <cstdio>
 template<class T> struct CRetailList { struct SNode { SNode* next; SNode* prev; T value; }; void* m_allocator; SNode* m_head; unsigned long m_size; };
-struct CAnimSet { long m_value0; short* m_pIndex; unsigned char _pad[0x48]; unsigned char m_type; };
-struct CAnimateThing {
+class CAnimSet { public: long m_value0; short* m_pIndex; unsigned char _pad[0x48]; unsigned char m_type; };
+class CAnimateThing { public:
     unsigned char _pad[0x54]; CRetailList<CAnimSet> m_combinationAnims; CRetailList<CAnimSet> m_combinationAnims2;
     CAnimSet* GetCombinationAnimFromTypeAndIndex(long type, long index)
     {

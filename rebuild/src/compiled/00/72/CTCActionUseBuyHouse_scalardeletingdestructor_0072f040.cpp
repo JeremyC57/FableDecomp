@@ -17,7 +17,7 @@
 // destructor does not collapse to `call ??1`. Left implicit, the intermediate base's destructor is
 // emitted out of line in this TU (it inlines in 0x007EBDD0's): it is written as an empty
 // `__forceinline` destructor of a `__declspec(novtable)` model so it inlines without a vtable store.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     CThing* ParentThing;                                    // +0x04
@@ -28,14 +28,14 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     void RemoveFromGlobalTCs();                             // 0x00686DF0
 };
 
-struct CDefPointeeBase {                                    // counted definition object
+class CDefPointeeBase { public:                                    // counted definition object
     virtual void Destroy();                                 // slot 0
     virtual void Delete();                                  // slot 1
     long m_refCount;                                        // +4
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) { }
     __forceinline ~CDefPointer()

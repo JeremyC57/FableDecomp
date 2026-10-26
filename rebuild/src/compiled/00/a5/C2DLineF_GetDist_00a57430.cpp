@@ -8,7 +8,7 @@
 // Leaf: GetDist
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}
@@ -17,7 +17,7 @@ struct C2DVector {
     float operator*(const C2DVector& o) const { return X * o.X + Y * o.Y; }
     float GetLengthSquared() const { return X * X + Y * Y; }
 };
-struct C2DLineF {
+class C2DLineF { public:
     C2DVector Point1;   // +0x00
     C2DVector Point2;   // +0x08
     bool Intersects2D(const C2DLineF& other) const;      // 0x00A57030

@@ -4,7 +4,7 @@
 // the release through a local copy of the pointee (`dec [ecx+4] ; jne ; call [eax+4]`) with its own zero store inside the null test, then the unconditional
 // zero store of the assignment (the add-reference of a null pointee folds away). The element address is `[esi+edi*4+48h]`.
 // engine/CEngineInternalPrimitiveOcclusionBase.h (PDB) has OcclusionInfo (CIVCountedPointer<CEnginePrimitiveOcclusionInfo>[2]) at +0x48.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4
@@ -31,7 +31,7 @@ struct CIVCountedPointer {
     }
 };
 
-struct CEngineInternalPrimitiveOcclusionBase {
+class CEngineInternalPrimitiveOcclusionBase { public:
     unsigned char     _pad[0x48];
     CIVCountedPointer OcclusionInfo[2];            // +0x48
     void ResetOcclusionInfo(long layer);

@@ -21,7 +21,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (import thunk)
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 class CCompositeBlendDesc {                     // Ego_r.pdb, 16 bytes
 public:
     unsigned long TextureIndex;                 // +0x00

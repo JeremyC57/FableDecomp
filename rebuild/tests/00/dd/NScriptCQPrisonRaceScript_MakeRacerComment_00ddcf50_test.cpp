@@ -3,17 +3,17 @@
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString {
+class CCharString { public:
     char Text[64];
     CCharString(const char* t) { std::strcpy(Text, t); }
 };
 static CCharString operator+(const char* left, const CCharString& right) { CCharString r(left); std::strcat(r.Text, right.Text); return r; }
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     CScriptThing() : Name("NULL") {}
     CScriptThing(const char* n) : Name(n) {}
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool Active;
     long Next;
     bool IsConversationActive(long c) { char t[32]; std::sprintf(t, "Active(%ld)", c); Log(t); return Active; }

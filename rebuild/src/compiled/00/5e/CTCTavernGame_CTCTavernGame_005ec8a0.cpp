@@ -16,12 +16,12 @@
 //        intelligent pointer are the initialiser list (one shared zero register; the 0.0 load hoisted above the vtable
 //        store); the five scalar clears and the three Resize calls are the constructor body, in source order (the
 //        vector addresses of the first two Resize calls are formed early in edi/ebp).
-struct CThing;
-struct CThingAICreature;
-struct CFontBank;
-struct CCPPointerInfo;
-struct CEnginePrimitiveHandle;
-namespace NUISystem { struct CComponent; }
+class CThing;
+class CThingAICreature;
+class CFontBank;
+class CCPPointerInfo;
+class CEnginePrimitiveHandle;
+namespace NUISystem { class CComponent; }
 
 template <class T> struct CAllocator {              // STLport allocator<T>: empty
     CAllocator() { }
@@ -43,13 +43,13 @@ struct CHandleVector : CVector<CEnginePrimitiveHandle> {   // vector<CEnginePrim
     void Resize(long count);                    // 0x00443F90
 };
 
-template <class T> struct CCountedPointer {         // Data + Info (8 bytes)
+template <class T> class CCountedPointer { public:         // Data + Info (8 bytes)
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {                    // 8 bytes: vptr + item
     virtual void v00();
     CBaseObject* PItem;
@@ -60,7 +60,7 @@ struct CIntelligentPointerAICreature : CBaseIntelligentPointer {   // CIntellige
     CIntelligentPointerAICreature() { }
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       ParentThing;                      // +0x04
     bool          ToBeRemoved;                      // +0x08
@@ -71,7 +71,7 @@ struct CTCBase {
 
 typedef void (__cdecl* TTavernGameFunc)();
 
-struct CTCTavernGame : CTCBase {                    // vtable 0x012560BC
+class CTCTavernGame : public CTCBase { public:                    // vtable 0x012560BC
     CVector<NUISystem::CComponent*> UIComponents;   // +0x0c
     double        LastRenderTime;                   // +0x18
     bool          IsBeingPlayed;                    // +0x20

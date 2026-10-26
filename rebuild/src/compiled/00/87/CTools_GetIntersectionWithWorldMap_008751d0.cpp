@@ -9,7 +9,7 @@
 // Layout: CTools first member the owner (+0x00) whose +0x74 object hands out the world map (slot 13).
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -19,7 +19,7 @@ struct C3DVector {
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
-struct CWorldMap {
+class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector* position) const;   // 0x0063AB10
 };
 struct CWorldMapOwner {

@@ -2,7 +2,7 @@
 // positive, 0 for a zero or negative maximum.
 #include <cstdio>
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     int Stamina; int MaxStamina;
     float GetStaminaPercentage() const
     {

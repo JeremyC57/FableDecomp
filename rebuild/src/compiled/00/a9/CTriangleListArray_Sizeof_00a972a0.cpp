@@ -13,7 +13,7 @@ struct STriangle {                              // 6 bytes: three 16-bit vertex 
     unsigned short m_index[3];
 };
 
-template <class T> struct CArray {              // retail CArray: 12 bytes
+template <class T> class CArray { public:              // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

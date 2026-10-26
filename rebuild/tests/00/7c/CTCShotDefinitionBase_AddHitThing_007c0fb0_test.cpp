@@ -1,7 +1,7 @@
 // behaviour test for 0x007C0FB0 CTCShotDefinitionBase::AddHitThing(const CThing*): the argument is wrapped in a temporary intelligent pointer that
 // is appended to the HitThingsList container and released again
 #include <cstdio>
-struct CThing { int tag; };
+class CThing { public: int tag; };
 static int gLive = 0;
 struct CIntelligentPointer {
     const CThing* p;

@@ -36,7 +36,7 @@ struct CCarrySlotMap {                     // retail CVectorMap<long,CIntelligen
     }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];  // +0x4 .. +0xC: CTCBase state
     CCarrySlotMap CarrySlots;              // +0xC

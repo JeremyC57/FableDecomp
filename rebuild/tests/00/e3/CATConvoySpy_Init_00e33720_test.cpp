@@ -2,14 +2,14 @@
 #include <cstdio>
 
 struct SCountBlock { long m_count; };
-struct CScriptThing {
+class CScriptThing { public:
     int id; SCountBlock* PImp_Info;
     CScriptThing(int i, SCountBlock* b) : id(i), PImp_Info(b) {}
     CScriptThing(const CScriptThing& o) : id(o.id), PImp_Info(o.PImp_Info) { if (PImp_Info) ++PImp_Info->m_count; }
     ~CScriptThing() { if (PImp_Info) --PImp_Info->m_count; }
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero; int info[4]; int allies[4][2]; int nAllies; int pushable;
     CGameScriptInterface() : hero(1, 0), nAllies(0), pushable(-1) {}
     const CScriptThing& GetHero() { return hero; }

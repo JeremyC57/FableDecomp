@@ -9,13 +9,13 @@
 // memberwise shape of a user-written copy constructor (an implicit one would block-copy).
 // The retail CParentDefClassBase is 0x3c bytes (the PDB header says 0x3d because its Ego
 // CVectorMap is 4 bytes wider than the retail one), so the base is modelled locally.
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                   // +0x04..+0x3c
     CParentDefClassBase(const CParentDefClassBase& other);       // 0x0046EE98
 };
 
-struct CAbilityButtonGuiDef : CParentDefClassBase {              // vtable 0x0123610C
+class CAbilityButtonGuiDef : public CParentDefClassBase { public:              // vtable 0x0123610C
     long m_buttonX;                                              // +0x3c
     long m_buttonY;                                              // +0x40
     long m_buttonWidth;                                          // +0x44

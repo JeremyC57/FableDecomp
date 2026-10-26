@@ -8,7 +8,7 @@
 // Destroys second (CSymbolInfo) which itself has an inner subobject at +0 that
 // needs (ecx=*(sec+0), edx=*(sec+4)) then the CSymbolInfo dtor, then CCharString dtor.
 
-struct CCharString {
+class CCharString { public:
     void* p;
 };
 

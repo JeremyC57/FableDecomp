@@ -5,7 +5,7 @@
 #include <string>
 struct CFileInfo { std::string Source; bool Needed; };
 struct CActiveFile { const CFileInfo* Info; int Handle; unsigned int Read, Size; int Reads; };
-struct CFileInstaller {
+class CFileInstaller { public:
     std::list<const CFileInfo*> FilesToCopy, FilesToFinish;
     std::list<CActiveFile> ActiveFiles;
     std::set<std::string> CompletedFiles;

@@ -4,12 +4,12 @@
 // Callees: CDataOutputStream::WriteCBYTE @ 0x00993EB0 (the word pushed straight from memory), WriteFloat @ 0x00993EE0 three times (each float loaded through the x87
 // and stored into the reserved slot: the values come from inline float getters). Shape: the size-optimised module (`push dword ptr [esi+4]`), the stream in edi,
 // `ret 4`.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteCBYTE(long value);                   // 0x00993EB0
     void WriteFloat(float value);                  // 0x00993EE0
 };
 
-struct CExplosionRing {
+class CExplosionRing { public:
     float m_radius;                                // +0x00
     long  m_count;                                 // +0x04
     float m_height;                                // +0x08

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCVolumeContainmentTracker {
+class CTCVolumeContainmentTracker { public:
     void* vftable;
     int destroyed;
 };

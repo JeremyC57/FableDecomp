@@ -15,16 +15,16 @@
 //   before the first push); the creature through inline getters (loaded right after the string constructors); both
 //   "needs attention" exits written out in full (`FreeBarPoint(); SetPushableByHero(true); return true;`) -- a shared goto
 //   label gives `push 1 ; mov ecx,esi` in the merged tail where retail's cross-jumped copy has `mov ecx,esi ; push 1`.
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float m[6]; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float m[6]; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -50,34 +50,34 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                // 0x00A01B90
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-struct CThingCreatureBase;
-struct CTCTavernBar {                           // interface 0xb9
+class CThingCreatureBase;
+class CTCTavernBar { public:                           // interface 0xb9
     bool GetRandomBarSlot(CThing& creature, C3DVector& position, CRightHandedSet& orientation, long& actionPoint, long& slot);  // 0x007BA3C0
     bool HasEmptyJugSlot(CThing* creature);     // 0x007BA8C0
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureActionBase {
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x14];
     CCharString LoopAnimName;                   // +0xbc
     CCharString OutOfAnimName;                  // +0xc0
     CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
         const CCharString& loop, const CCharString& outOf, float loopTime, bool b, long c, long d);   // 0x008427E0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

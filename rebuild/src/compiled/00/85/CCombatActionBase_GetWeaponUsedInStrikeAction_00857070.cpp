@@ -10,7 +10,7 @@
 // Also: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 on the event's PWeapon (+0x14, Ego_r.pdb); the dead bit is
 // +0x91 & 1 of the thing (the IS_THING_DEAD test of the landed 0x00836BE0).
 // Shape: nested ifs, one `xor eax,eax` null tail shared by the three failing paths, the live weapon returned in eax.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char DeadFlags;                    // +0x91 (bit 0: dead)
 };
@@ -64,7 +64,7 @@ struct CGetActiveStrikeEventThatIsFirstToFinish {
 CGetActiveStrikeEventThatIsFirstToFinish __fastcall for_each(CStrikeEventIterator first, CStrikeEventIterator last,
                                                              CGetActiveStrikeEventThatIsFirstToFinish functor);   // 0x0085A960
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[0x1c - 4];             // +0x04
     long FramesRunning;                         // +0x1c

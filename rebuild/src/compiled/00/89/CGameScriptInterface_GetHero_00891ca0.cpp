@@ -11,15 +11,15 @@
 // info release re-reading the member after the decrement, `delete Info`, both words cleared, then the out-of-line
 // CBaseClass dtor) is expanded per arm, VC merging the arms at the shared `operator delete` call.
 
-struct CThing;
+class CThing;
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                   // 0x0099A2D0
     virtual void v00();
     ~CBaseClass();                                  // 0x0099A2E0 (non-virtual here: only the direct call is emitted)
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -53,7 +53,7 @@ public:
     static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
 
-struct CThing {
+class CThing { public:
     CScriptThing GetScriptThing();                  // 0x004C7E50
 };
 
@@ -61,11 +61,11 @@ class CPlayer {
 public:
     CThing* GetHeroThing();                         // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer& GetMainPlayer();                       // 0x00449970 (the non-const overload; 0x00449960 is the const one)
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     void* World;                                    // +0x04
     void* Component;                                // +0x08

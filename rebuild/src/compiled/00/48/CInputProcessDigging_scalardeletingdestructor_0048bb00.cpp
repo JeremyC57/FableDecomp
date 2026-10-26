@@ -1,4 +1,4 @@
-struct CInputProcessDigging {
+class CInputProcessDigging { public:
     void* vftable;
 };
 

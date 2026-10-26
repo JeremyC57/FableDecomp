@@ -6,7 +6,7 @@
 // Signature from ghidra_out/egor_signatures.tsv (`?AttachToCamera@CTCDParticleEmitter@@QAEXJM@Z`).
 // Shape: `ret 8`; the bool:1 set is `or cl,40h`; the float argument is copied with integer moves; the three
 // stores are interleaved by the scheduler around the argument loads.
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     unsigned char _base[0x8];                               // CTCBase: ParentThing +4, flags +8/+9
     unsigned char _body0[0x24 - 0x0c];                      // EmitterName, ParticleTypeID, PEmitter, PAttachedToThing

@@ -4,14 +4,14 @@
 // CRegionMinimap::~CRegionMinimap: theme colours freed, cell list freed, texture then surface uninitialised
 static char g_log[32];
 static void Log(const char* s) { std::strcat(g_log, s); }
-struct CSurface { void* PD3DSurface; virtual void v00() { } void Uninitialise() { Log("S"); } ~CSurface() { Uninitialise(); } };
-struct CTexture { void* PD3DTexture; unsigned long bits; void Uninitialise() { Log("T"); } ~CTexture() { Uninitialise(); } };
+class CSurface { public: void* PD3DSurface; virtual void v00() { } void Uninitialise() { Log("S"); } ~CSurface() { Uninitialise(); } };
+class CTexture { public: void* PD3DTexture; unsigned long bits; void Uninitialise() { Log("T"); } ~CTexture() { Uninitialise(); } };
 template <class T> struct CRetailVector {
     T* m_pFirst; T* m_pLast; T* m_pEnd; char tag;
     CRetailVector() : m_pFirst(0), m_pLast(0), m_pEnd(0), tag('?') { }
     ~CRetailVector() { if (m_pFirst) { std::free(m_pFirst); char t[2] = { tag, 0 }; Log(t); } }
 };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct RegionMinimapCellData { long v; };
 struct CRegionMinimap {
     long RegionMinimapSize; long RegionMapBox[4]; long RegionMapSquare[4];

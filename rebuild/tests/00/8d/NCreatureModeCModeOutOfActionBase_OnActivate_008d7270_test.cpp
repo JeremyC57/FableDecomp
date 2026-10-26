@@ -3,8 +3,8 @@
 #include <cstdio>
 static long g_framesPerSecond = 30;
 static int g_suspend = -1, g_created = 0, g_hook = 0, g_base = 0; static long g_type = -9;
-struct CThing { unsigned char m_state; unsigned char m_flags6c; void SetSuspendAnimation(bool s, long) { g_suspend = s; } };
-struct C3DVector { float X, Y, Z; };
+class CThing { public: unsigned char m_state; unsigned char m_flags6c; void SetSuspendAnimation(bool s, long) { g_suspend = s; } };
+class C3DVector { public: float X, Y, Z; };
 static C3DVector GetHeadPosWithOffset(CThing*) { C3DVector v = { 1, 2, 3 }; return v; }
 static CThing g_effect;
 static CThing* CreateEffectThing(long type, const C3DVector* p, bool) { ++g_created; g_type = type; return p->Z == 3 ? &g_effect : 0; }

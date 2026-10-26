@@ -5,7 +5,7 @@
 // Layout: the retail CAppearanceModifierDef is the PDB layout minus 8 (the HideMaterials vector at +0x28 and the
 // vector inside MorphGraphics are 12 bytes each, not 16): CoversBodyAreaFlags +0x40 (PDB 72), SuitPart +0x50
 // (PDB 84). Size-optimised TU (`push 3 ; pop eax`); the sparse three-case switch lowers to the subtract chain.
-struct CAppearanceModifierDef {
+class CAppearanceModifierDef { public:
     unsigned char _pad0[0x40];
     long CoversBodyAreaFlags;                            // +0x40
     unsigned char _pad1[0xc];

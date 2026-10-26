@@ -16,7 +16,7 @@
 //   containers 4 bytes shorter); CPlayer +0x218 is a control-lock byte.
 #include "engine/CTCHeroRangedAttacks.h"
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -25,12 +25,12 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;     // 0x004365B0
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad000[0x218];
     bool m_controlsLocked;                          // +0x218
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -66,13 +66,13 @@ struct CThing {
     }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     unsigned char _pad00[0x20];
     long m_type;                                    // +0x20
     long m_elapsed;                                 // +0x24
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad000[0x100];
     CCreatureActionBase* PCurrentAction;            // +0x100 (retail) CCountedPointer<CCreatureActionBase>::Data
 };
@@ -82,11 +82,11 @@ struct CTCRangedBlocker {                           // interface 0xA7
     bool m_blocking;                                // +0x0c
 };
 
-struct CTCCarrying {                                // interface 0x46
+class CTCCarrying { public:                                // interface 0x46
     CThing* GetThingInPrimarySlot();                // 0x006A1440
 };
 
-struct CTCWeapon {                                  // interface 0x48
+class CTCWeapon { public:                                  // interface 0x48
     bool IsProjectileWeapon();                      // 0x005DAA40
 };
 

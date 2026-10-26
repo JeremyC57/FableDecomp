@@ -13,8 +13,8 @@
 // the sequence is modelled locally like the landed relatives. Owner/target go through inline const
 // getters GetCreature()/GetTarget(): direct member reads give a different eax/ecx/edx rotation for the
 // AddAction address temporaries (eax,eax,eax instead of retail's eax,ecx,edx).
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -22,19 +22,19 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
 };
 
-struct CCreatureAction_WalkInto : CCombatActionBase {
+class CCreatureAction_WalkInto : public CCombatActionBase { public:
     unsigned char _body[0x110];             // sizeof = 0x114
     CCreatureAction_WalkInto(CThingCreatureBase* owner, CThing* target);   // 0x00908400
 };
-struct CCreatureAction_TrollPursue : CCombatActionBase {
+class CCreatureAction_TrollPursue : public CCombatActionBase { public:
     unsigned char _body[0x110];
     CCreatureAction_TrollPursue(CThingCreatureBase* owner, CThing* target);  // 0x00908340
 };
-struct CCreatureAction_WalkOutOf : CCombatActionBase {
+class CCreatureAction_WalkOutOf : public CCombatActionBase { public:
     unsigned char _body[0x110];
     CCreatureAction_WalkOutOf(CThingCreatureBase* owner, CThing* target);  // 0x009083A0
 };
@@ -59,7 +59,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pCreature;        // +0x1c owner

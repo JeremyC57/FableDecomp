@@ -12,7 +12,7 @@
 //   Size-optimised TU: #pragma optimize("s", on) (`push 0Eh ; pop ecx`).
 #pragma optimize("s", on)
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -22,7 +22,7 @@ struct CDataOutputStream {
 };
 
 #pragma pack(push, 1)              // PDB sizeof(CEngineGraphic) == 0x0E: the class is packed in retail
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;        // +0x00
     float         AnimStep;         // +0x04
     float         RenderSizeX;      // +0x08
@@ -31,7 +31,7 @@ struct CEngineGraphic {
 };
 #pragma pack(pop)
 
-template<class T> struct CArray {   // STLport vector, 12 bytes in retail
+template<class T> class CArray { public:   // STLport vector, 12 bytes in retail
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -40,7 +40,7 @@ template<class T> struct CArray {   // STLport vector, 12 bytes in retail
 };
 
 namespace NGraphicAppearance {
-struct CReplaceableMeshes {
+class CReplaceableMeshes { public:
     CArray<CEngineGraphic> Vector;  // +0x00
 };
 }

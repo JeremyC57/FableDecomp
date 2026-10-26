@@ -1,7 +1,7 @@
 #include <stdio.h>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 namespace NShape {
-struct CSubdivisionTriangle {
+class CSubdivisionTriangle { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
     virtual unsigned char IsPosInShape(const C3DVector& pos) { return pos.X > m_min; }
     float m_min;

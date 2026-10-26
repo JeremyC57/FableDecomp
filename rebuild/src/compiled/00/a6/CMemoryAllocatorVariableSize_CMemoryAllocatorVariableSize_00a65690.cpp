@@ -10,7 +10,7 @@ struct CMemoryAreaChunk;
 extern CMemoryAreaChunk* g_LastAllocatorChunkCounter_013d28d8;   // 0x013D28D8
 extern long g_LastAllocatorUsage_013d28d4;                       // 0x013D28D4
 
-struct CMemoryAllocatorVariableSize {              // vtable 0x0129DB1C
+class CMemoryAllocatorVariableSize { public:              // vtable 0x0129DB1C
     virtual void v00();
     unsigned char     _pad04[0xc14 - 4];
     long              m_usage;                     // +0xc14

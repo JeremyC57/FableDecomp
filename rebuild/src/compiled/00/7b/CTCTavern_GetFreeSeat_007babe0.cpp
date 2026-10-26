@@ -11,7 +11,7 @@
 // word, which is the lookup key's frame word) and is re-read from that word on every pass; the seat
 // is a named local after the alive test; HasTC is the raw bitset test and GetTC the one-ternary const lookup into ecx.
 class CThing;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -86,7 +86,7 @@ struct CObjectNode {                                    // STLport list node of 
     CObjectNode* _M_prev;
     CBaseIntelligentPointer _M_data;                    // +0x08
 };
-struct CTCThingOwner {
+class CTCThingOwner { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     bool ToBeRemoved;                                   // +0x08
@@ -97,7 +97,7 @@ struct CTCThingOwner {
 struct CTCUserActionPointBase {
     bool IsActionPointFree();                           // 0x007FEBF0
 };
-struct CTCTavern {
+class CTCTavern { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     CThing* GetFreeSeat(long unused);

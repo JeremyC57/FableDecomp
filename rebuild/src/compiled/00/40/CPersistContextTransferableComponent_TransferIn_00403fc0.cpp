@@ -13,8 +13,8 @@
 // traits object gives only `xor al,al ; mov byte ptr [esp],al`; a user ctor sinks the byte store below the
 // pushes. The same bytes come from a 4-byte traits ctor `{ memset(this, 0, sizeof(*this)); DefaultVal = T(); }`
 // or a `union { T DefaultVal; unsigned long Raw; }` zeroed through Raw.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
 template <class T> struct CPersistTraits {
     T DefaultVal;

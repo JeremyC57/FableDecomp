@@ -15,11 +15,11 @@ struct CLandscapeMapOrigin {
     unsigned short OriginX;                          // +0x60
     unsigned short OriginY;                          // +0x62
 };
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     unsigned char        _pad00[0x14];
     CLandscapeMapOrigin* PSection;                   // +0x14
 };
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     unsigned char        _pad00[0xa4];
     CEngineLandscapeMap* Map;                        // +0xa4 (retail)
 };

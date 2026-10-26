@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -8,7 +8,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { m_pItem = item; }
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     unsigned char _pad[0xc];
     CBaseIntelligentPointer m_pController;
     unsigned char m_locked;

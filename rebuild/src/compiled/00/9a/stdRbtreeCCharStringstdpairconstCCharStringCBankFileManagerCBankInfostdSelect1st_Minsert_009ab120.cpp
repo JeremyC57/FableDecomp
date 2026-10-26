@@ -20,7 +20,7 @@ public:
     char* PData;
     bool operator<(const CBasicStringChar& other) const;    // 0x00429950
 };
-struct CCharStringData {                                    // shared string block (Data, then NoRefs at +0x0D)
+class CCharStringData { public:                                    // shared string block (Data, then NoRefs at +0x0D)
     CBasicStringChar Data;                                  // +0x00
 };
 class CCharString {

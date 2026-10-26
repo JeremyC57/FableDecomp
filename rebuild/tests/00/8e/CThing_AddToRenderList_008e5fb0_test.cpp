@@ -1,7 +1,7 @@
 // Behaviour test for 0x008E5FB0 (catalog CThing::AddToRenderList): velocity scaled by (1 - air resistance) only while moving.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; void operator*=(float f) { X *= f; Y *= f; Z *= f; } };
-struct CThing {
+class C3DVector { public: float X, Y, Z; void operator*=(float f) { X *= f; Y *= f; Z *= f; } };
+class CThing { public:
     bool moving; float resistance; C3DVector Velocity;
     virtual bool IsMoving() { return moving; }
     float GetAirResistance() { return resistance; }

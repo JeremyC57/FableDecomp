@@ -8,7 +8,7 @@
 
 class CThing;
 class CThingBuilding;
-struct CTCBase { CThing* ParentThing; };
+class CTCBase { public: CThing* ParentThing; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;

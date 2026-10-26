@@ -1,13 +1,13 @@
 // Behaviour test for 0x00d36860 CFH_GuildMaster::Init
 #include <cstdio>
 struct SCount { long m_references; };
-struct CScriptThing {
+class CScriptThing { public:
     void* m_pThing; SCount* m_pCount;
     CScriptThing(void* t, SCount* c) : m_pThing(t), m_pCount(c) {}
     CScriptThing(const CScriptThing& o) : m_pThing(o.m_pThing), m_pCount(o.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
     ~CScriptThing() { if (m_pCount) --m_pCount->m_references; }
 };
-struct CGame {
+class CGame { public:
     int log[8]; int n; long refsSeen;
     void EntitySetAsKillable(const CScriptThing&, bool killable, bool b) { log[n++] = 517 + killable * 1000 + b * 2000; }
     void SetIsPushableByHero(CScriptThing thing, bool pushable) { log[n++] = 844 + pushable * 1000; refsSeen = thing.m_pCount->m_references; }

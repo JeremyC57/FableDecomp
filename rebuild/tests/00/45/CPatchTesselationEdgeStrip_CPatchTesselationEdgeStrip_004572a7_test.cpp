@@ -5,7 +5,7 @@ extern "C" void free_mem(void* p) { g_freed++; g_last = p; }
 static int g_basedtor = 0;
 struct CBase { int base_pad; };
 void CBase_dtor(CBase* self) { (void)self; g_basedtor++; }
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char pad[0x68];
     void* p68;
     char pad2[0x74 - 0x68 - 4];

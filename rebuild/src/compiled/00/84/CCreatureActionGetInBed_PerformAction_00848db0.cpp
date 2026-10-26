@@ -10,14 +10,14 @@
 // Shape: GetTC written as the end/hit ternary leaves the bed component in ecx for the call; the mode ctor is inline (base ctor, vtable, filter, name copy, two zeroed longs); the counted pointer is built in the
 // argument area with its null-checked count block (the mode was never dereferenced); IS_THING_ALIVE on PBed then HasTC/GetTC.
 void __fastcall Destroy_007180b0(void* object);   // 0x007180B0
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -61,11 +61,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
 };
-struct CAnimFilterOfGroup {                     // 12 bytes
+class CAnimFilterOfGroup { public:                     // 12 bytes
     unsigned char _body[0xc];
     CAnimFilterOfGroup(const CCharString& group);   // 0x0073E8F0
 };
@@ -75,7 +75,7 @@ struct SCountBlock {
     void* m_pObject;                            // +8
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_007180b0), m_pObject(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                     // +0
     SCountBlock* m_pCount;                      // +4
     CCountedPointer(T* object) : m_pObject(object)
@@ -104,21 +104,21 @@ struct CModeSleepBed : CModeBase {              // retail sizeof 0x34, vtable 0x
     CModeSleepBed(CThing* creature, const CCharString& group, const CCharString& animName)
         : CModeBase(creature), AnimFilter(group), SleepAnimName(animName), GetInAnim(0), SleepAnim(0) {}
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
 };
-struct CTCBed {
+class CTCBed { public:
     unsigned char _pad[0xc];
     bool Empty;                                 // +0x0c
     void StartGetInBedAnimation(long getInAnim, long sleepAnim);   // 0x007469C0
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char _pad10[0xa8 - 0x10];
 };
-struct CCreatureAction_GetInBed : CCreatureActionBase {
+class CCreatureAction_GetInBed : public CCreatureActionBase { public:
     CBaseIntelligentPointer PBed;               // +0xa8
     CCharString AnimGroup;                      // +0xb0
     CCharString SleepAnimName;                  // +0xb4

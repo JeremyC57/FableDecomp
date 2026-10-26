@@ -5,20 +5,20 @@
 //   CCreatureAction_PlayIntoLoopOutOfAnimation 0x008427E0 / base dtor 0x00693EF0, AIAction_PerformActionAndWait 0x0097DB70,
 //   DestroyItem 0x008FD1B0. Shape: Drink's action block verbatim, the second stage under `if (result == 2)`; bool return.
 // Layout: the landed Drink/Singsong model (PBrain +4, creature +0x18).
-struct CThingCreatureBase
-{
+class CThingCreatureBase
+{ public:
     unsigned char _pad0[0x20];
     void SheatheAllWeapons();                   // 0x006647F0
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CCreatureActionBase
-{
+class CCreatureActionBase
+{ public:
     virtual void v00();
     unsigned char _body[0xa4];
 };
@@ -27,16 +27,16 @@ struct CCreatureAction_PlayAnimationBase : CCreatureActionBase
     unsigned char _anim[0xbc - 0xa8];
     ~CCreatureAction_PlayAnimationBase();           // 0x00693EF0
 };
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureAction_PlayAnimationBase
-{
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureAction_PlayAnimationBase
+{ public:
     CCharString LoopAnim;                           // +0xbc
     CCharString OutAnim;                            // +0xc0
     CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
                                                const CCharString& loop, const CCharString& out, float duration,
                                                bool a, bool b, bool c);   // 0x008427E0
 };
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;                   // +0x18
 };

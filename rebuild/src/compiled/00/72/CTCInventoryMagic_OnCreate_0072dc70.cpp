@@ -10,12 +10,12 @@
 // pointer is zeroed before the call and released by hand at the end without a null test (`dec [esi+4] ; jne`).
 // Layout: CThing PDef +0x70; retail CTCInventoryBase 0x130 bytes, ParentThing +0x04; the CBase subobject at +0x130 (vptr) with
 // its 8-byte-element vector at +0x134; the magic def's inventory-def index at +0x94 (retail offset).
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -29,10 +29,10 @@ struct CInventoryMagicDef : CDefPointeeBase {
     unsigned char _pad08[0x94 - 0x08];
     long InventoryDefIndex;                     // +0x94
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CInventoryMagicDef>* out);   // 0x00485815
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;            // +0x70
     CCopiedDefPointer<CDefClassBase> GetDef() const { return PDef; }
@@ -55,7 +55,7 @@ struct CScreenEntryVector {                     // STLport vector of 8-byte entr
     void resize(unsigned long n);               // 0x00443F90
 };
 namespace NHeroInformationScreens {
-struct CBase {                                  // vtable 0x0123A3E0
+class CBase { public:                                  // vtable 0x0123A3E0
     virtual void v00();
     virtual void v01();
     virtual void v02();

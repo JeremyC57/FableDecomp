@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour test for CTCInGameMenu::SetPDef(long) (retail 0x0047D5F2): the index is stored and the definition
 // pointer is resolved for that index.
-struct CInventoryDef { long id; };
+class CInventoryDef { public: long id; };
 static CInventoryDef g_defs[4] = { { 100 }, { 101 }, { 102 }, { 103 } };
 static int g_lookups = 0;
 
 struct CInventoryDefPointer { const CInventoryDef* Object; };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     bool GetDef(long globalDefIndex, CInventoryDefPointer* pDef) const
     {
         ++g_lookups;
@@ -18,7 +18,7 @@ struct CGameDefinitionManager {
 };
 static CGameDefinitionManager g_manager;
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     long                 m_other;
     CInventoryDefPointer PDef;
     long                 GlobalDefIndex;

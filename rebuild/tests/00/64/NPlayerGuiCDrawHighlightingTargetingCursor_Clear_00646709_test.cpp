@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { int x; };
+class CThing { public: int x; };
 static int g_cleared = 0; static void* g_key = 0; static int g_dtors = 0, g_assigns = 0;
 struct CTCGraphicAppearance { void ClearMeshEffect(void* k) { ++g_cleared; g_key = k; } };
 struct CThingWithAppearance { unsigned char _pad[0x64]; CTCGraphicAppearance* m_pGraphicAppearance; bool alive; CTCGraphicAppearance* GetGraphicAppearance() const { return m_pGraphicAppearance; } };
@@ -8,7 +8,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer { CIntelligentPointe
     CIntelligentPointer_CThing& operator=(const CIntelligentPointer_CThing& o) { ++g_assigns; m_pItem = o.m_pItem; return *this; } };
 static bool IS_THING_ALIVE(CIntelligentPointer_CThing* p) { return p->m_pItem && ((CThingWithAppearance*)p->m_pItem)->alive; }
 namespace NPlayerGui {
-struct CDrawHighlightingTargetingCursor { unsigned char _pad[0x28]; CIntelligentPointer_CThing PTargetedThing; unsigned char _pad30[0x14]; long CursorType;
+class CDrawHighlightingTargetingCursor { public: unsigned char _pad[0x28]; CIntelligentPointer_CThing PTargetedThing; unsigned char _pad30[0x14]; long CursorType;
     CDrawHighlightingTargetingCursor() : PTargetedThing(0) { }
     void Clear() { if (IS_THING_ALIVE(&PTargetedThing)) { if (PTargetedThing.GetPItem()->m_pGraphicAppearance != 0) PTargetedThing.GetPItem()->GetGraphicAppearance()->ClearMeshEffect(this); }
         PTargetedThing = (CThing*)0; CursorType = 0; } }; }

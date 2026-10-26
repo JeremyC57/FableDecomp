@@ -11,10 +11,10 @@
 // Shape: the plain bool initialiser is scheduled before the vtable store; the vector is a member object with an inline
 // constructor (its zeroes follow the vtable store) and the later initialisers keep member order, the global's load
 // pushing its store after the zero of +0x28.
-struct CThing;
+class CThing;
 extern unsigned long g_defaultFramesToDeactivate;   // 0x0138448C
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -29,7 +29,7 @@ struct CThingPtrVector {                       // retail std::vector<CThing*> (1
     CThingPtrVector() : m_first(0), m_last(0), m_end(0) { }
 };
 
-struct CTCActivationReceptorBase : CTCBase {   // vtable 0x01271F7C
+class CTCActivationReceptorBase : public CTCBase { public:   // vtable 0x01271F7C
     bool            Activated;                 // +0x0c
     CThingPtrVector Triggers;                  // +0x10
     long            LogicType;                 // +0x1c ELogicType

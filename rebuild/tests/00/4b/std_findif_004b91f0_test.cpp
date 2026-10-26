@@ -3,7 +3,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CCharStringData {                        // the shared string block
+class CCharStringData { public:                        // the shared string block
     const char*   m_pData;                      // +0x00
     unsigned long m_length;                     // +0x04
 };
@@ -24,7 +24,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
     }
 }
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;               // +0x00
     bool operator==(const CCharString& other) const
     {

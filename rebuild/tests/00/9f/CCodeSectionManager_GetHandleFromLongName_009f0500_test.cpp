@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData("") { ++g_live; }
     CCharString(const char* s) : PStringData(s) { ++g_live; }
@@ -22,7 +22,7 @@ struct CRetailMap {
     }
     Node* end() { return &header; }
 };
-struct CCodeSectionManager {
+class CCodeSectionManager { public:
     CRetailMap LongNameToHandle;
     unsigned long GetHandleFromLongName(CCharString longName)
     {

@@ -1,16 +1,16 @@
 // Behaviour test for CAIStateGroup_MinionReactToCriminal::IsRunnable (0x00931010): model copy with stub callees.
 #include <cstdio>
 
-struct CThing { unsigned char m_flags91; int hasAB; };
+class CThing { public: unsigned char m_flags91; int hasAB; };
 struct CPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } CPointer& operator=(CThing* t) { CThing* item = t; m_pItem = item; return *this; } };
-struct CTCShop { long StockState; bool StallLike; };
-struct CTCShopKeeper { CTCShop* shop; CTCShop* GetShopTC() const { return shop; } };
-struct CThingAICreature { CPointer HomeBuilding, WorkBuilding; CTCShopKeeper* keeper; CThing* aware; };
+class CTCShop { public: long StockState; bool StallLike; };
+class CTCShopKeeper { public: CTCShop* shop; CTCShop* GetShopTC() const { return shop; } };
+class CThingAICreature { public: CPointer HomeBuilding, WorkBuilding; CTCShopKeeper* keeper; CThing* aware; };
 static bool IsAwareOfThingImplementation(const CThingAICreature* c, const CThing* t, bool) { return c->aware == t; }
 static CThing* g_hero;
 static long g_frame, g_framesPerSecond = 30;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
-struct CAIBrain { CThingAICreature* PCreature; };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CAIBrain { public: CThingAICreature* PCreature; };
 static int g_validCalls;
 
 struct CAIStateGroup_MinionReactToCriminal {

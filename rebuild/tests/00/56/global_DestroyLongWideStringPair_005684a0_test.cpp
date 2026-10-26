@@ -3,7 +3,7 @@
 #include <new>
 static const void* g_log[8];
 static int g_count = 0;
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString() : m_pData(0) { }
     ~CWideString() { g_log[g_count++] = this; }   // stands in for 0x0099B510

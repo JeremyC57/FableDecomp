@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameScriptInterface { void* vt; };
+class CGameScriptInterface { public: void* vt; };
 
 void __fastcall CGameScriptInterface_EntityCastLightningAtTarget(CGameScriptInterface* self, int edx_ignored, int caster, int target)
 {

@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_called = 0;
 void SoundMutedChanged(void) { g_called++; }
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad[0x31];
     char muted;
     void SetSoundAsMuted(char v);

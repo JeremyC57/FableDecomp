@@ -13,24 +13,24 @@
 //   its slot for the elapsed-frames temp; the world pointer is read before the frames-per-second copy.
 extern long g_framesPerSecond;                  // 0x01375550
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& p) : X(p.X), Y(p.Y) { }
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
-struct C2DBoxI { long minX, minY, maxX, maxY; };
+class C2DBoxI { public: long minX, minY, maxX, maxY; };
 struct C2DBox {
     float minX, minY, maxX, maxY;
     C2DBox(float x, float y, float radius) { minX = x - radius; minY = y - radius; maxX = x + radius; maxY = y + radius; }
     C2DBox(const C2DBox& b) : minX(b.minX), minY(b.minY), maxX(b.maxX), maxY(b.maxY) { }
     C2DBoxI ToInteger() const;                  // 0x00A55A30
 };
-struct CThingFilter_InArea {
+class CThingFilter_InArea { public:
     C2DBox Area;
     CThingFilter_InArea(const C2DBox& area) : Area(area) { }
 };
-struct CThingFilter_IsWithinZRange {
+class CThingFilter_IsWithinZRange { public:
     float Z;
     float Range;
     CThingFilter_IsWithinZRange(float z, float range) : Z(z), Range(range) { }
@@ -40,26 +40,26 @@ struct CInAreaZRangeFilter {                    // CFilter_Bind2<CThingFilter_In
     const CThingFilter_IsWithinZRange* Second;
     CInAreaZRangeFilter(const CThingFilter_InArea& a, const CThingFilter_IsWithinZRange& b) : First(&a), Second(&b) { }
 };
-struct CThingCreatureBase;
-struct CThingSearchTools {
+class CThingCreatureBase;
+class CThingSearchTools { public:
     bool GetPFirstThingInRoughArea(const C2DBoxI& box, const CInAreaZRangeFilter& filter, CThingCreatureBase** out);   // 0x007313B0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector Position;                         // +0x0c
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };
-struct CWorld {
+class CWorld { public:
     long GetFrame() const { return GFGetCurrentFrame(); }
 };
-struct CDoorDef {
+class CDoorDef { public:
     unsigned char _pad00[0x2c];
     float TriggerRadius;                        // +0x2c
 };
-struct CTCDoor {
+class CTCDoor { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];

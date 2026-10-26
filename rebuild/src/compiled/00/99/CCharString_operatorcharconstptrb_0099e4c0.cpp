@@ -17,7 +17,7 @@
 // function and is NOT reproduced here.
 
 struct StringRep { char* data; long len; };
-struct CCharString { StringRep* rep; };
+class CCharString { public: StringRep* rep; };
 
 extern char g_EmptyCharString_0129AAF4[1];
 

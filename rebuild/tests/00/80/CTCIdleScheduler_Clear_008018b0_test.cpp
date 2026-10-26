@@ -3,7 +3,7 @@
 struct SIdleNode { long _M_color; SIdleNode* _M_parent; SIdleNode* _M_left; SIdleNode* _M_right; };
 static int g_erased = 0;
 static void CountErase(SIdleNode* x) { if (!x) return; CountErase(x->_M_right); CountErase(x->_M_left); ++g_erased; }
-struct CMap {
+class CMap { public:
     SIdleNode* _M_header; unsigned int _M_node_count; unsigned int _M_key_compare;
     void _M_erase(SIdleNode* x) { CountErase(x); }
     void clear()
@@ -15,7 +15,7 @@ struct CMap {
         }
     }
 };
-struct CTCIdleScheduler {
+class CTCIdleScheduler { public:
     CMap IdleStates; CMap IdleStatesWeight; long Preferred; long FrameLastChecked;
     void Clear() { FrameLastChecked = 0; Preferred = 0; IdleStates.clear(); IdleStatesWeight.clear(); }
 };

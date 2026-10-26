@@ -7,9 +7,9 @@
 // is built in its argument slot (`sub esp,0Ch ; mov ecx,esp` + three dword moves) from the returned position,
 // then the repeat mode. `xor ecx,ecx ; cmp eax,2 ; sete cl ; mov al,cl` is a plain `return r == 2;`.
 // The pointer member is unaligned at +0x6b (engine header, pack 1), so the class is modelled packed.
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
@@ -24,16 +24,16 @@ struct CBaseIntelligentPointer {
     CThingPos* GetPItem() const;                // 0x00A01B50
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
     long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
 };
 
-struct CTCTalk;
+class CTCTalk;
 
 #pragma pack(push, 1)
-struct CAIStateGroup_OpinionReactionRoot : CAIStateGroupBase {
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     CTCTalk* PTCTalk;                           // +0x14
     long CurrentReactionType;                   // +0x18
     bool ReactionFlags[79];                     // +0x1c

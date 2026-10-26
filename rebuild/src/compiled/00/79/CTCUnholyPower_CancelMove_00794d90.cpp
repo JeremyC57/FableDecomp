@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CBaseObject* item);                    // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7D8 (the copy's)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7D8 (the copy's)
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };

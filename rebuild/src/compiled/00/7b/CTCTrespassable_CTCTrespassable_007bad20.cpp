@@ -5,7 +5,7 @@
 // Vtable 0x0126DD9C = CTCTrespassable (rtti-vtables.tsv): the chunk label "CTCEditor" is propagated.
 // PDB CTCTrespassable (0x10 bytes): Trespassable +0x0c, IsBeingTrespassedIn +0x0d.
 // Shape: speed TU; `xor al,al` and both byte initialisers are scheduled before the derived vtable store.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {
     virtual void v00();
@@ -13,7 +13,7 @@ struct CTCBase_Calls {
     CTCBase_Calls(CThing* parent);                          // 0x00686800
 };
 
-struct CTCTrespassable : CTCBase_Calls {
+class CTCTrespassable : public CTCBase_Calls { public:
     bool Trespassable;                                      // +0x0c
     bool IsBeingTrespassedIn;                               // +0x0d
     virtual void v00();                                     // own vtable 0x0126DD9C

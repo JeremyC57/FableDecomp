@@ -10,24 +10,24 @@
 // the new-expression, constructed only when operator new succeeded, so VC7.1 tracks it with flag bits in
 // ebx (`mov ebx,1` doubles as the `true` argument: `push ebx`). Owner/target are read through inline const
 // getters. Strings: "ST_FORCE_PUSH_INTO" (0x012801A0), "ST_FORCE_PUSH_RELEASE" (0x01280B8C).
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                              // 0x0099EAE0
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x110];
 };
-struct CCreatureAction_PlayCombatAnimation : CCombatActionBase {
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     unsigned char _body2[4];                // sizeof 0x118
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* owner, CThingCreatureBase* target, const CCharString& anim, bool flag); // 0x008B7F80
 };
-struct CCreatureAction_CastWillForceSpell : CCombatActionBase {
+class CCreatureAction_CastWillForceSpell : public CCombatActionBase { public:
     unsigned char _body2[8];                // sizeof 0x11c
     CCreatureAction_CastWillForceSpell(CThingCreatureBase* owner, long level, bool flag, const CCharString& anim); // 0x008BB200
 };
@@ -57,7 +57,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pCreature;        // +0x1c

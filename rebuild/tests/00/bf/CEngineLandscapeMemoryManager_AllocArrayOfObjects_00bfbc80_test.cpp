@@ -11,16 +11,16 @@ static int g_baseCtors = 0;
 static long g_allocBytes = -1;
 #include <new>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct C3DBoundingSphere {                                   // 0x10
+class C3DBoundingSphere { public:                                   // 0x10
     C3DVector Centre;
     float     Radius;
     C3DBoundingSphere() : Centre(0.0f, 0.0f, 0.0f), Radius(0.0f) { }
 };
-struct CMatrix3x4 { float E[12]; };                          // 0x30, no constructor
+class CMatrix3x4 { public: float E[12]; };                          // 0x30, no constructor
 
 class CBaseClass {
 public:
@@ -35,7 +35,7 @@ public:
 };
 
 struct CLocalDetailPrimitiveMeshZSpriteBatch {
-    struct CObject {                                         // 0x4c
+    class CObject { public:                                         // 0x4c
         CMatrix3x4             Matrix;                       // +0x00
         float                  Scale;                        // +0x30
         C3DBoundingSphere      BoundingSphere;               // +0x34
@@ -43,7 +43,7 @@ struct CLocalDetailPrimitiveMeshZSpriteBatch {
     };
 };
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long bytes, void* owner);             // 0x00BD9AF0
     static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     template<class T> T* AllocArrayOfObjects(long count, void* owner);

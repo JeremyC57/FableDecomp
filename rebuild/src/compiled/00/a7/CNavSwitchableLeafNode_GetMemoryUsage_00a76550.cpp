@@ -4,7 +4,7 @@
 // Shape: no frame, the vector size by `sar eax,4`, the sum folded into `lea eax,[ecx+eax*4+0Ch] ; shl eax,2`, `ret 10h`.
 struct SSwitchEntry_00a76550 { unsigned char m_body[16]; };
 
-struct CNavSwitchableLeafNode {
+class CNavSwitchableLeafNode { public:
     unsigned char         _pad00[0x18];
     char                  m_noNeighbours;          // +0x18
     unsigned char         _pad19[7];

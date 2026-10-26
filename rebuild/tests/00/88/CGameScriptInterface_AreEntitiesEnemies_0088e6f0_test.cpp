@@ -10,7 +10,7 @@ struct CScriptThingVTbl {
     unsigned char pad_0030[0xFC];
     bool (__fastcall* HasThing)(const void* self);
 };
-struct CScriptThing { const CScriptThingVTbl* vftable; };
+class CScriptThing { public: const CScriptThingVTbl* vftable; };
 class CGameScriptInterface {
 public:
     bool AreEntitiesEnemies(const CScriptThing& entity1, const CScriptThing& entity2) const;

@@ -4,7 +4,7 @@ struct SubObj {
     bool Query(Vec8* out, Vec8* in);
 };
 
-struct CTCLook {
+class CTCLook { public:
     char pad[0x2c];
     SubObj sub;
     bool IsTurningBody(Vec8 arg);

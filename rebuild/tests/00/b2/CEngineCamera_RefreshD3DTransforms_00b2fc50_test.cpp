@@ -65,11 +65,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct C2DBoxF;
-struct CCamera;
+class C2DBoxF;
+class CCamera;
 
 #pragma pack(push, 1)
-struct CEngineCamera {
+class CEngineCamera { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -154,8 +154,8 @@ FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScriptElementStartTime) == 0x22
 #include <stddef.h>
 
 
-struct CDisplayManager;
-struct CIndexBuffer;
+class CDisplayManager;
+class CIndexBuffer;
 struct IDirect3DBaseTexture9;
 struct IDirect3DDevice9;
 
@@ -3959,16 +3959,16 @@ FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, CurrentlySelectedTextures) == 0
 
 #endif // FABLE_ENGINE_CRENDERMANAGERCORE_H
 
-struct C2DBoxF { float MinX, MinY, MaxX, MaxY; };
-struct CMatrix3x4 {
+class C2DBoxF { public: float MinX, MinY, MaxX, MaxY; };
+class CMatrix3x4 { public:
  float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
  void Identity() {
   E12=E13=E21=E23=E31=E32=E41=E42=E43=0.0f;
   E11=E22=E33=1.0f;
  }
 };
-struct CMatrix4x4 { float E[16]; };
-struct CRGBFloatColour { float R,G,B; };
+class CMatrix4x4 { public: float E[16]; };
+class CRGBFloatColour { public: float R,G,B; };
 struct CEngineCameraDesc {
  C2DBoxF Window; CMatrix3x4 RotationMatrix;
  float WorldPosition[3]; float HorizontalFOV,VerticalFOV; bool Use2DFOV;
@@ -3981,7 +3981,7 @@ struct CRenderManagerCore_Methods : CRenderManagerCore {
  void SetPerspectiveTransform(float,float,float,float); // 00A0B320
  void SetWorldTransform(const CMatrix3x4&); // 00A0B140
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
  void SetViewTransform(const CMatrix3x4&); // 00988350
  void SetProjectionTransform(const CMatrix4x4&); // 00988540
  void SetFogColour(const CRGBFloatColour&); // 00988320

@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 struct Elem { int a; int flag; int b; int c; int d; }; /* 20 bytes */
-struct CRenderTarget {
+class CRenderTarget { public:
     char pad0[8];
     Elem* arr;              /* +0x8 */
     char pad1[0x24-0xC];

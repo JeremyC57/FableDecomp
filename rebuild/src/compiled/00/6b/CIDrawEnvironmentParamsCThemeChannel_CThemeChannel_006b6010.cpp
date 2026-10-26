@@ -1,5 +1,5 @@
 // CIDrawEnvironmentParams::CThemeChannel::CThemeChannel(const CThemeChannel& other) -- implicit memberwise copy of an environment theme channel: block-copy the 19 colours and 30 scalers, then deep-copy the two vectors of each of the three texture sets
-// Leaf: ??0CThemeChannel@CIDrawEnvironmentParams@@QAE@ABV01@@Z
+// Leaf: ??0CThemeChannel@CIDrawEnvironmentParams@@QAE@ABU01@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B6010, 291 bytes, thiscall, `ret 4`, no EH frame.
 // Identity: the catalog's "CFeatDef_CopySpecializedData" is a descriptive auto label (CFeatDef is 100 bytes). This is
 //   the compiler-generated copy constructor of CIDrawEnvironmentParams::CThemeChannel (Ego_r.pdb: Colours
@@ -90,15 +90,15 @@ public:
     float R, G, B, A;
 };
 
-class CIDrawEnvironmentTextureSet {
+struct CIDrawEnvironmentTextureSet {
 public:
     CArray<long>  Textures;                                 // +0x00
     CArray<float> Blends;                                   // +0x0C
 };
 
-class CIDrawEnvironmentParams {
+struct CIDrawEnvironmentParams {
 public:
-    class CThemeChannel {                                   // 0x1F0 bytes, implicit copy constructor @ 0x006B6010
+    struct CThemeChannel {                                   // 0x1F0 bytes, implicit copy constructor @ 0x006B6010
     public:
         CRGBFloatColour             Colours[19];            // +0x000
         float                       Scalers[30];            // +0x130

@@ -11,19 +11,19 @@
 // `if (..) return true; return false;` gives the byte-register results (`xor al,al` / `mov al,1`), a bare `||` return
 // gives `xor eax,eax` / `mov eax,1`.
 enum EWeaponType { WEAPON_TYPE_NONE, WEAPON_TYPE_PROJECTILE_A = 5, WEAPON_TYPE_PROJECTILE_B = 6 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04
     __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
     __forceinline ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CWeaponDef : CDefPointeeBase {
+class CWeaponDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x1c];                          // +0x08
     unsigned char _pad08b[0x04];                         // +0x24
     EWeaponType   Type;                                  // +0x28

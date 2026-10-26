@@ -7,18 +7,18 @@
 // Shape: the direction test compares two integer coordinates built member-wise from the floats (the argument's first);
 //   elements are read as *(begin() + i) with size() re-read every iteration; if/else arms with ONE shared trailing
 //   `return false` (a return false in each arm lets VC7.1 merge the two found-copy blocks).
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;
     long Y;
     C2DCoordI(const C2DVector& v) : X((long)v.X), Y((long)v.Y) { }
     bool operator==(const C2DCoordI& other) const { return X == other.X && Y == other.Y; }
 };
 enum EGameAction { GAME_ACTION_NONE = 0 };
-struct CActionInputControl {                            // 0x1C bytes
+class CActionInputControl { public:                            // 0x1C bytes
     EGameAction GameAction;                             // +0x00
     long        ControllerType;                         // +0x04 EControllerType
     long        KeyboardKey;                            // +0x08 EInputKey

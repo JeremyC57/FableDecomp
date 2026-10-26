@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Model of CCombatActionBase::GetWeaponUsedInStrikeAction @ 0x00857070
-struct CThing { unsigned char _pad[0x91]; unsigned char DeadFlags; };
+class CThing { public: unsigned char _pad[0x91]; unsigned char DeadFlags; };
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 
 struct CStrikeEvent { bool Legacy; bool PrimaryLegacy; bool Weapon; void* HelperPointName; long StrikeEventIndex; long StartFrame; long EndFrame; CBaseIntelligentPointer PWeapon; };
@@ -25,7 +25,7 @@ struct CCombatActionBaseCore {
 static void Setup(CCombatActionBaseCore& a, CStrikeEventNode* head, CStrikeEventNode* nodes, CStrikeEvent* e, int n)
 { for (int i = 0; i < n; ++i) { nodes[i].m_pEvent = &e[i]; e[i].Legacy = (i == 0); e[i].StrikeEventIndex = i + 1; e[i].StartFrame = 0; e[i].EndFrame = 10 * (n - i); } Link(head, nodes, n); a.StrikeEvents.m_pHead = head; a.StrikeEvents.m_size = n; a.FramesRunning = 5; }
 
-struct CCombatActionBase : CCombatActionBaseCore { CThing* GetWeaponUsedInStrikeAction() const { CStrikeEvent* p = GetPActiveStrikeEvent(); if (p != 0) { CThing* w = p->PWeapon.GetPItem(); if (w != 0) { if (!(w->DeadFlags & 1)) return w; } } return 0; } };
+class CCombatActionBase : public CCombatActionBaseCore { public: CThing* GetWeaponUsedInStrikeAction() const { CStrikeEvent* p = GetPActiveStrikeEvent(); if (p != 0) { CThing* w = p->PWeapon.GetPItem(); if (w != 0) { if (!(w->DeadFlags & 1)) return w; } } return 0; } };
 int main()
 {
     CStrikeEventNode head, nodes[3]; CStrikeEvent e[3]; CThing weapon; weapon.DeadFlags = 0; CCombatActionBase a; Setup(a, &head, nodes, e, 3);

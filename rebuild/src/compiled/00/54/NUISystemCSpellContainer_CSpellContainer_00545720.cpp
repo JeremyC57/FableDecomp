@@ -16,7 +16,7 @@ struct CComponentInterface { virtual void v000(); };
 struct CObserver_Retail { virtual void ProcessEvent(); unsigned char _body[0x10]; };
 struct CEventSinkInterface { virtual void v0(); };
 
-struct CChangingStateComponent : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x15C bytes
+class CChangingStateComponent : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:   // retail 0x15C bytes
     unsigned char _body[0x15c - 0x1c];
     CChangingStateComponent(long owner);         // 0x0052CC50
 };
@@ -57,7 +57,7 @@ template <class T> struct CRetailVector {
     T* m_start; T* m_finish; T* m_end;
     CRetailVector() : m_start(0), m_finish(0), m_end(0) {}
 };
-struct CComponent;
+class CComponent;
 struct CCountedPointerComponent { CComponent* Data; void* Info; };
 struct SNewSpell {
     CComponent*   first;
@@ -65,7 +65,7 @@ struct SNewSpell {
     SNewSpell() : first(0), second(0) {}
 };
 
-struct CSpellContainer : CChangingStateComponent {   // vtables 0x0124786C / 0x01247848 / 0x01247840
+class CSpellContainer : public CChangingStateComponent { public:   // vtables 0x0124786C / 0x01247848 / 0x01247840
     virtual void v000();
     virtual void ProcessEvent();
     virtual void v0();

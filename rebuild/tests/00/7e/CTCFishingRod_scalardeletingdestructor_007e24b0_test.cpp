@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCFishingRod {
+class CTCFishingRod { public:
     void* vftable;
     int destroyed;
 };

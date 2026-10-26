@@ -1,6 +1,6 @@
 // CEngineLandscapeMemoryManager::EnablePoolAllocation
 // void __fastcall (self, bool enable)
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     char pad[0x39];
     bool m_poolEnabled; // +0x39
     void Reconfigure();

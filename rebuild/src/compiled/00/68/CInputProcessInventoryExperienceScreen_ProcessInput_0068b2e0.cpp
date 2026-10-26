@@ -54,7 +54,7 @@ public:
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                           // +0x00
     signed char   Player;                         // +0x04
     unsigned char Data[32];                       // +0x05
@@ -63,16 +63,16 @@ struct CGameEvent : CMemoryBuffer {
     bool          Replacement;                    // +0x27
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                   // 0x00449700
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                // +0x1C
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     void PanMap(CMousePosition direction);        // 0x005FB140
 };
 struct STCEntry {                                  // one CVectorMap<ETCInterfaceType, CTCBase*> element
@@ -90,7 +90,7 @@ struct CTCMap {                                    // the thing's component map 
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20
     CTCMap        m_tcs;                           // +0x44

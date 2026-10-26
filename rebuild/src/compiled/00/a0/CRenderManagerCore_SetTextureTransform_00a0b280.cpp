@@ -56,7 +56,7 @@ struct _D3DMATRIX {
 };
 
 // CMatrix3x4: three basis rows and the translation row, 3 floats each (48 bytes).
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float _11, _12, _13;
     float _21, _22, _23;
     float _31, _32, _33;

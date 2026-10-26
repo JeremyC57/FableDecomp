@@ -3,25 +3,25 @@
 // released, SetTransitionParams(0, 0).
 #include <cstdio>
 #include <cstring>
-struct C3DVector;
-struct CRightHandedSet;
+class C3DVector;
+class CRightHandedSet;
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length = -1) : m_pData(text) { ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const { return std::strcmp(name.m_pData, "SHOT_ARROW_SINGLE") == 0 ? 77 : -1; }
 };
 static CGameDefinitionManager g_dm;
 struct CRefCounted { long m_count; void DecRef() { --m_count; } long GetRefCount() const { return m_count; } };
 static int g_destroyed = 0;
 struct CDefVirtual { virtual void v00() { } virtual void Destroy() { ++g_destroyed; } };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } }
@@ -37,9 +37,9 @@ CThing* CreateShot(long defIndex, CThing* shooter, CThing* origin, CThing* targe
     return 0;
 }
 long g_framesPerSecond = 30;
-struct CTrapDef { float SecondsBetweenShots; };
+class CTrapDef { public: float SecondsBetweenShots; };
 static float g_t1 = -1, g_t2 = -1;
-struct CTCTrapBase {
+class CTCTrapBase { public:
     CThing*       ParentThing;
     const CTrapDef* PTrapDef;
     const CGameDefinitionManager& GetDefinitionManager() const { return g_dm; }

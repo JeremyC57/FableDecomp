@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_deleted = 0;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -17,13 +17,13 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     while (it != last && it->type < *type) ++it;
     return it;
 }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Delete() { ++g_deleted; }
     long m_refCount;
 };
-struct CBonusItemDef : CDefPointeeBase { };
-template <class T> struct CDefPointer {
+class CBonusItemDef : public CDefPointeeBase { public: };
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -37,7 +37,7 @@ template <class T> struct CDefHolder {
     }
 };
 static CBonusItemDef* g_bonusDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CBonusItemDef>* out);
 };
 bool CDefClassBase::GetSubDef(CDefPointer<CBonusItemDef>* out)
@@ -46,7 +46,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CBonusItemDef>* out)
     if (!g_bonusDef) return false;
     ++g_bonusDef->m_refCount; out->Object = g_bonusDef; return true;
 }
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];
     CInterfaceMap  m_interfaces;
@@ -72,7 +72,7 @@ struct CThing {
     }
 };
 static int g_applied = 0; static CBonusItemDef* g_appliedDef = 0; static int g_showEnded = 0;
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void ApplyBonusItemEffects(CBonusItemDef* def) { ++g_applied; g_appliedDef = def; }
 };
 struct CTCShowableItem {

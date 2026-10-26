@@ -12,7 +12,7 @@
 // Shape: nested tests with every exit on the shared `xor al,al`; the lookup keys and the implicit component-name temporary
 //   share one frame word.
 class CTCBase;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CTCParamsBase;
+class CTCParamsBase;
 class CThing;
 struct CTCTargeter {                                    // interface 8 (named descriptively)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -63,14 +63,14 @@ public:
 };
 class CThingCreatureBase : public CThing {};
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
-struct CTCTurncoat {
+class CTCTurncoat { public:
     bool IsTurncoatable();                              // 0x007C7870
     bool IsTurncoated();                                // 0x007C7890
 };
-struct CTCTurncoatSpell {
+class CTCTurncoatSpell { public:
     void SetPTarget(CThingCreatureBase* target);        // 0x007C6940
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _base08[4];

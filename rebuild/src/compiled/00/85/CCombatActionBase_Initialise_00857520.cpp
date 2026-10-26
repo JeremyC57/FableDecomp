@@ -12,8 +12,8 @@
 //          the chosen entry is read the STLport way, `*(begin() + index)`; SetAnimation gets -1.0 / 1.0; the landed
 //          out-parameter GetInterface template (0x008CB4A0 family) feeds the combat component.
 // Members (retail layout, Ego_r.pdb names): CombatAnimations +0xf0 (PDB +0x104), so `this` is modelled locally.
-struct CTCBase;
-struct CAnimationEntry;
+class CTCBase;
+class CAnimationEntry;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -29,7 +29,7 @@ struct CAnimationEntryVector {              // STLport vector<const CAnimationEn
     const CAnimationEntry* const& operator[](long n) const { return *(begin() + n); }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -54,12 +54,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCombatActionBase;
-struct CTCCombat {
+class CCombatActionBase;
+class CTCCombat { public:
     void SetNextComboChainPos(CCombatActionBase* action);   // 0x00734570
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12: 0x00694D10
@@ -71,7 +71,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     void SetAnimation(const CAnimationEntry* entry, float blendIn, float speed);   // 0x00693030
 };
 
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _pada8[0xf0 - 0xa8];
     CAnimationEntryVector CombatAnimations; // +0xf0
     unsigned char _padfc[0x114 - 0xfc];

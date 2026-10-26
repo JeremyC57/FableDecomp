@@ -15,7 +15,7 @@
 //   before the embedded zeroed member (landed 0x00485400 model).
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 struct CByteVector {                               // STLport vector<unsigned char>, 12 bytes
     unsigned char* _M_start;
@@ -35,7 +35,7 @@ struct CByteVector {                               // STLport vector<unsigned ch
     unsigned char* GetData() { return (_M_finish - _M_start) ? _M_start : (unsigned char*)this; }
 };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v00();
     unsigned char _pad04[0x14];
     CDataInputStream();                            // 0x00993B20
@@ -45,7 +45,7 @@ struct SZeroed {
     long m_00;
     SZeroed() : m_00(0) { }
 };
-struct CMemoryDataInputStream : CDataInputStream { // vtable 0x0123675C, 0x1c bytes
+class CMemoryDataInputStream : public CDataInputStream { public: // vtable 0x0123675C, 0x1c bytes
     SZeroed m_source;                              // +0x18
     virtual void v00();
     CMemoryDataInputStream() { }
@@ -58,7 +58,7 @@ struct CBankEntryRecord {
     unsigned long Size;                            // +4
     void CopyRange(unsigned long offset, void* destination, unsigned long size);   // 0x009CBE90
 };
-struct CBankFileAsyncEntry;
+class CBankFileAsyncEntry;
 struct CAsyncEntryPointer {                        // CCountedPointer<CBankFileAsyncEntry>
     CBankFileAsyncEntry* Object;
     void* Info;
@@ -66,7 +66,7 @@ struct CAsyncEntryPointer {                        // CCountedPointer<CBankFileA
     ~CAsyncEntryPointer();                         // 0x009C9FC0
     CAsyncEntryPointer& operator=(const CAsyncEntryPointer& other);   // 0x00A5F6D0
 };
-struct CStaticMapBankFile {
+class CStaticMapBankFile { public:
     unsigned char      _pad00[0x2c];
     CBankEntryRecord** Entries;                    // +0x2c
     unsigned long FindEntry(const CCharString& name);   // 0x009CCDC0
@@ -89,18 +89,18 @@ struct CStaticMapInfoBlock {                       // 0x5c bytes
 };
 void __fastcall ReadMapInfoBlock(CStaticMapInfoBlock* info, CDataInputStream* stream);   // 0x00B3EFA0
 
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     unsigned char _body[0x18];
     void SetBankFileEntry(CAsyncEntryPointer entry);   // 0x00BE03A0
 };
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void OpenStaticMap(CEngineStaticMapFileBlockManager* blocks, CDataInputStream* stream);   // 0x00BDD0E0
 };
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     void OpenStaticMap(CEngineStaticMapFileBlockManager* blocks, CDataInputStream* stream);   // 0x00BDF010
 };
 
-struct CEngineMap {
+class CEngineMap { public:
     CEngineLandscapeMap*  m_pLandscape;            // +0x00
     CLocalDetailCacheMap* m_pDetailCache;          // +0x04
     unsigned char         _pad08[0x14];

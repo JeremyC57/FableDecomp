@@ -9,14 +9,14 @@
 // Layout: retail = engine/CTCCreatureGroupBoastingCrowd.h - 4 (the retail member map is 12 bytes): PHero +0x24,
 // HeroBoasted +0x34. Local model (the header flattens the vptr and has the PDB offsets).
 // Shape: one guarded block; the hero tutorial is an inline IsThingAlive test then GetInterface + null test.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -32,11 +32,11 @@ struct CThing {
     }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct CTCHero {                                // interface 0x29
+class CTCHero { public:                                // interface 0x29
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
 struct SListNode { SListNode* next; SListNode* prev; };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x68];
     SListNode* m_boasts;                        // +0x68 list head (retail 4-byte STLport list)
     bool BoastsEmpty() const { return m_boasts->next == m_boasts; }
@@ -48,7 +48,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                              // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x24 - 0x08];          // CTCBase tail + CTCCreatureGroup members

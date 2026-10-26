@@ -10,7 +10,7 @@
 // "CParticleSkeletalMorphMap::EmplaceOrAppend" is synthetic), ~CCharString @ 0x0099EAE0 (x2).
 // Shape: the 24-byte pair temporary is built by the pair ctor (key copy, then the value's memberwise copy with its
 // string copy out of line), pushed by address and destroyed.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0

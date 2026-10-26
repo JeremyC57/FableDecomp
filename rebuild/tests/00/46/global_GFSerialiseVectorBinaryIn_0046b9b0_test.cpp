@@ -1,7 +1,7 @@
 // Behaviour test for 0x0046B9B0 GFSerialiseVectorBinaryIn<CMusicSetEntry>: count, resize(n, T()), one traits read per element
 #include <cstdio>
 #include <cstring>
-struct CMusicSetEntry { int NormalMusicID; int DangerMusicID; int LoopCount; CMusicSetEntry() : NormalMusicID(0), DangerMusicID(0), LoopCount(123) {} };
+class CMusicSetEntry { public: int NormalMusicID; int DangerMusicID; int LoopCount; CMusicSetEntry() : NormalMusicID(0), DangerMusicID(0), LoopCount(123) {} };
 struct EntryVector {
     CMusicSetEntry data[8]; unsigned int count;
     void resize(unsigned int n, const CMusicSetEntry& x) { for (unsigned int i = count; i < n; ++i) data[i] = x; count = n; }

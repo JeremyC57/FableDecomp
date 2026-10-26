@@ -6,11 +6,11 @@
 // the string copy ctor called is the CWideString one (as in 0x0040DD00).
 inline void* operator new(unsigned int, void* where) throw() { return where; }
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);               // 0x0099B720
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}   // memberwise user copy ctor (engine C3DVector)
 };

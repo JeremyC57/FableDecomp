@@ -64,7 +64,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CCreatureAction_DragonLand {
+class CCreatureAction_DragonLand { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x128];                         // +0x04 flattened base-class subobject(s)
 };
@@ -87,10 +87,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonLand, __vftable) == 0x0);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -216,14 +216,14 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -297,7 +297,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 
 #pragma pack(push, 1)
-struct CClass {
+class CClass { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x4];                           // +0x04 flattened base-class subobject(s)
     unsigned char ClassListPos[0x4];                         // +0x08 _List_iterator<std::_List_val<CClass_*,std::allocator<CClass_*>_>_>
@@ -324,10 +324,10 @@ FABLE_STATIC_ASSERT(offsetof(CClass, Type) == 0x10);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCTargeted {
+class CTCTargeted { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             obj;                                    // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -361,10 +361,10 @@ FABLE_STATIC_ASSERT(offsetof(CTCTargeted, PTargetingDef_Object) == 0x14);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             sub;                                    // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -409,8 +409,8 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldMoving) == 0x3c);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -418,8 +418,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -503,7 +503,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct C3DVector {float X,Y,Z;C3DVector(){} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
+class C3DVector { public:float X,Y,Z;C3DVector(){} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
 struct CPhysicsMethods : CTCPhysicsBase { void ResetPosition(const C3DVector&); const C3DVector& GetFacingVectorInto(C3DVector&)const;};
 union CPhysicsSlot {
  void* Address;
@@ -529,7 +529,7 @@ struct CMapwhoNode;
 struct CThingMapCell;
 
 #pragma pack(push, 1)
-struct CTCMapwho {
+class CTCMapwho { public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     unsigned char  _pad_0x08[0x4];                           // +0x08
@@ -578,7 +578,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCMapwho, InMapwho) == 0x50);
 #endif // FABLE_ENGINE_CTCMAPWHO_H
 
 struct CInterfaceMap {struct Entry {long Type;void* Component;};Entry* First;Entry* Last;Entry* LowerBound(const long*);}; //0040F020
-struct CThing : CClass {
+class CThing : public CClass { public:
  unsigned char _nativeBeforeUsingComponents[0xf];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char _nativeBeforePhysics[0x14];CPhysicsMethods* PPhysics;
  __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
@@ -586,12 +586,12 @@ struct CThing : CClass {
  void SetSuspendAnimation(bool,const void*); //00833A10, requester keyed suspension
 };
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThing* GetPItem() const;}; //00A01C10/00A01B50
-struct CCombatActionBase {void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
+class CCombatActionBase { public:void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  void SetAnimation(const CCharString&); //008574D0
  void Initialise(); //00857520
 };
 extern const float g_DragonLandingHeightDrop; //0128838C =30.148378372192383
-struct CCreatureAction_DragonLand : CCombatActionBase {void Initialise();};
+class CCreatureAction_DragonLand : public CCombatActionBase { public:void Initialise();};
 FABLE_STATIC_ASSERT(offsetof(CThing,PPhysics)==0x60);
 void CCreatureAction_DragonLand::Initialise(){
  {CCharString animation("LAND",-1);SetAnimation(animation);}

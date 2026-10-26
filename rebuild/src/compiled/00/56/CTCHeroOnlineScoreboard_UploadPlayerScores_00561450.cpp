@@ -19,8 +19,8 @@ extern "C" void __cdecl free(void* block);
 extern "C" unsigned int __cdecl strlen(const char* text);
 #pragma intrinsic(strlen)
 
-struct CCharStringData { char* m_pString; };
-struct CCharString {
+class CCharStringData { public: char* m_pString; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
@@ -52,7 +52,7 @@ struct LHStringVector {                              // vector<std::string>
 };
 
 namespace LHNetworkLib {
-struct LHHttp2 {
+class LHHttp2 { public:
     ~LHHttp2();                                      // 0x008410D0
 };
 }
@@ -67,7 +67,7 @@ struct CHttpScopedPtr {
     }
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     enum ENetworkSuccess { NETWORK_SUCCESS = 1000, NETWORK_BUSY = 1001, NETWORK_FAILED = 1002 };
     void*          __vftable;                        // +0x00
     void*          ParentThing;                      // +0x04

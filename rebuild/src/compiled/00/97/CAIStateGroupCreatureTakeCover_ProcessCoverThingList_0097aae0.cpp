@@ -15,20 +15,20 @@
 // to be built in place in the argument area (else it is built in the frame and copied), and its origin/direction
 // come from C3DVectors through a C2DVector(const C3DVector&) constructor (dword moves, no x87).
 // Model: local (engine/CAIStateGroup_CreatureTakeCover.h is a flattened base blob).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
     C2DVector* Normalise();                         // 0x00A14540
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector* GetPosition() const;           // 0x004C73D0
 };
 
@@ -56,12 +56,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                       // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                               // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     long ScriptAIPriority;                          // +0x08

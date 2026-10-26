@@ -13,16 +13,16 @@
 // landed 0x00835370 family (head = 0, node linked to itself, then head = node).
 extern "C" void* __cdecl malloc(unsigned int size);
 
-struct CThing;
+class CThing;
 
-struct CScriptThing {                       // engine/CScriptThing.h layout: vptr, PImp_Data, PImp_Info (12 bytes)
+class CScriptThing { public:                       // engine/CScriptThing.h layout: vptr, PImp_Data, PImp_Info (12 bytes)
     void* __vftable;
     CThing* PImp_Data;
     void* PImp_Info;
     CScriptThing(const CScriptThing& other);    // non-POD: returned through a hidden pointer
 };
 
-struct CThing {
+class CThing { public:
     CScriptThing GetScriptThing();          // 0x004C7E50
 };
 

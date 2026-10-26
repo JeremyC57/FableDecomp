@@ -16,7 +16,7 @@
 struct CBasicStringChar {
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     ~CCharString();                                     // 0x0099EAE0
     __forceinline bool operator==(const char* text) const
@@ -26,10 +26,10 @@ struct CCharString {
         return *PStringData == text;
     }
 };
-struct CStringParser {
+class CStringParser { public:
     CCharString ReadAsSymbol();                         // 0x009BA790
 };
-struct CPersistContext;
+class CPersistContext;
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
 __forceinline long TransferInLong(CPersistContext* context, CStringParser* parser)
 {

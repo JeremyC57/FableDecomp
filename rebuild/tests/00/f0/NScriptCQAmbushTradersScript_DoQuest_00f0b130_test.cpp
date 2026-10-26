@@ -6,9 +6,9 @@
 // intro and both phases and finally waits for Bowerstone Posh when the quest finished cleanly
 static int g_frames = 0, g_endAt = 1000, g_objectives = 0, g_activated = 0, g_spawned = 0, g_bandits = 0, g_intro = 0, g_start = 0, g_phases = 0, g_poshWaits = 0;
 static std::string g_log;
-struct CScriptThing { std::string data; std::string GetDataString() const { return data; } };
+class CScriptThing { public: std::string data; std::string GetDataString() const { return data; } };
 struct CQ_AmbushTradersScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     CQ_AmbushTradersScript* script;
     void NewScriptFrame() const;

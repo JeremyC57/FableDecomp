@@ -1,4 +1,4 @@
-struct CInputProcessQuickAccessMenu {
+class CInputProcessQuickAccessMenu { public:
     void* vftable;
 };
 

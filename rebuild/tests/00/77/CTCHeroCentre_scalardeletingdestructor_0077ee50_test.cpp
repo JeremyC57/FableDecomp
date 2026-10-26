@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCHeroCentre {
+class CTCHeroCentre { public:
     void* vftable;
     int destroyed;
 };

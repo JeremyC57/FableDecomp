@@ -12,18 +12,18 @@ struct SLookAnglePair { float XY; float YZ; };
 extern SLookAnglePair g_HeadTurnSpeedTargetAcquired;   // 0x01382680 (.data tunables)
 extern SLookAnglePair g_HeadTurnSpeedNoTarget;         // 0x01382688
 extern SLookAnglePair g_HeadTurnAcceleration;          // 0x01382690
-struct CLookDef {
+class CLookDef { public:
     unsigned char _pad00[0x30];
     float MaxHeadAngleXY;                       // +0x30 (degrees)
     float MaxHeadAngleYZUp;                     // +0x34 (degrees)
     float MaxHeadAngleYZDown;                   // +0x38 (degrees)
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CThingCreatureBase;
-struct CTCLook {
+class CThingCreatureBase;
+class CTCLook { public:
     virtual void v00();
     void* ParentThing;                          // +0x04 (CTCBase)
     unsigned char _base08[0x10 - 0x08];

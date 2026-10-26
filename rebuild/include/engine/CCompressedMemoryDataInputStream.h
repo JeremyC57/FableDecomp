@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCompressorZlib;
+class CCompressorZlib;
 
 #pragma pack(push, 1)
 struct CCompressedMemoryDataInputStream {

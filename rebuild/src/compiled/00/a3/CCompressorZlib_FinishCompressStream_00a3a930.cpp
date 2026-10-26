@@ -3,7 +3,7 @@
 
 extern "C" int __cdecl EndDeflateStream(void* strm);
 
-struct CCompressorZlib {
+class CCompressorZlib { public:
     char pad[0x1c];      // 0x00
     char zstream[0x38];  // 0x1c: z_stream-like block
     char active;         // 0x54: "stream open" flag

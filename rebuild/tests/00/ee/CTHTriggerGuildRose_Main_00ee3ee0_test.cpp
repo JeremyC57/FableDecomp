@@ -4,7 +4,7 @@
 // leaves the game untouched after the mark.
 #include <cstdio>
 #include <cstring>
-struct CScriptThing { long id; long a, b; CScriptThing(long i) : id(i), a(0), b(0) {} CScriptThing(const CScriptThing& o) : id(o.id), a(o.a), b(o.b) {} ~CScriptThing() { id = -1; } };
+class CScriptThing { public: long id; long a, b; CScriptThing(long i) : id(i), a(0), b(0) {} CScriptThing(const CScriptThing& o) : id(o.id), a(o.a), b(o.b) {} ~CScriptThing() { id = -1; } };
 static int g_strings = 0;
 class CCharString {
 public:
@@ -17,7 +17,7 @@ static int g_updates = 0, g_marks = 0, g_releases = 0, g_fails = 0, g_cutscenes 
 static long g_markedId = 0; static bool g_markFlag = false; static long g_releasedId = 0; static long g_releaseA = 1; static bool g_releaseB = false;
 static char g_failedQuest[64]; static char g_cutsceneName[64]; static long g_predicateId = 0;
 static bool g_terminating = false; static int g_terminateAfterChecks = 0; static bool g_near = true; static long g_heroId = 77;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void Update() { ++g_updates; }
     virtual const CScriptThing& GetHero_slot70() { static CScriptThing hero(g_heroId); return hero; }
     virtual void ReleaseThing_slot108(const CScriptThing& thing, long a, bool b) { ++g_releases; g_releasedId = thing.id; g_releaseA = a; g_releaseB = b; }

@@ -13,9 +13,9 @@
 #include <stdlib.h>
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                         // 0x0099EAE0
 };
@@ -43,7 +43,7 @@ struct CRetailVector_ContainerItem {                        // STLport vector<pa
     }
 };
 
-struct CTCBase {                                            // 0xc bytes; its destructor stores the CTCBase vtable
+class CTCBase { public:                                            // 0xc bytes; its destructor stores the CTCBase vtable
     virtual void v00();
     CThing*       ParentThing;                              // +0x04
     unsigned char _pad08[4];                                // +0x08
@@ -53,7 +53,7 @@ struct CTCBase {                                            // 0xc bytes; its de
 // The retail destructor stores no vtable of its own: modelled (as GOTCHAS 24m describes for a base chain
 // whose destructor is out of line) with the CTCBase part as the FIRST MEMBER of a non-polymorphic class,
 // whose `delete` emits the non-virtual scalar deleting destructor `??_GCTCContainer@@QAEPAXI@Z`.
-struct CTCContainer {                                       // vtable 0x012693AC (owned by the CTCBase part)
+class CTCContainer { public:                                       // vtable 0x012693AC (owned by the CTCBase part)
     CTCBase                     Base;                       // +0x00
     CRetailVector_ContainerItem ContainerItems;             // +0x0c
     __forceinline ~CTCContainer() { }

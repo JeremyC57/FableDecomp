@@ -14,9 +14,9 @@
 //   `__declspec(novtable)` intermediate base before the derived vtable store; the CCharString array has a constructor and no
 //   destructor in this TU, so it is built with an inline counted loop (`mov ebx,4 ; ... ; dec ebx ; jne`); the plain bools and
 //   the long are left uninitialised.
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
-struct CScriptBase {                                    // 0x40 bytes in retail, the quest-script root
+class CScriptBase { public:                                    // 0x40 bytes in retail, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f
     CScriptBase();                                      // 0x00CB8110
@@ -28,13 +28,13 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
 };
 
 namespace NScript {
-struct CQ_OpeningGraveyardSecretPassageScript : CQuestScriptObject {   // retail 0x74 bytes, vtable 0x012DA11C
+class CQ_OpeningGraveyardSecretPassageScript : public CQuestScriptObject { public:   // retail 0x74 bytes, vtable 0x012DA11C
     bool finished_quest;                                // +0x48
     bool DoorChange;                                    // +0x49
     bool ZombieCamPlayed;                               // +0x4a

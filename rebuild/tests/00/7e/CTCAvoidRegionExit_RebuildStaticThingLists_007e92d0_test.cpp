@@ -2,22 +2,22 @@
 // first is filled through a HasTC(99) + InMap(world map, current map) filter and the second through a leaf-type(100) filter.
 #include <cstdio>
 struct CThingList { int m_cleared; int m_filled; int m_type; const void* m_world; long m_map; void clear() { ++m_cleared; m_filled = 0; } };
-struct CWorldMap { long m_current; long GetCurrentMap() const { return m_current; } };
-struct CThingFilter_HasTC { long m_type; CThingFilter_HasTC(long t) : m_type(t) {} };
-struct CThingFilter_InMap { const CWorldMap* m_worldMap; long m_map; CThingFilter_InMap(const CWorldMap& w, long m) : m_worldMap(&w), m_map(m) {} };
+class CWorldMap { public: long m_current; long GetCurrentMap() const { return m_current; } };
+class CThingFilter_HasTC { public: long m_type; CThingFilter_HasTC(long t) : m_type(t) {} };
+class CThingFilter_InMap { public: const CWorldMap* m_worldMap; long m_map; CThingFilter_InMap(const CWorldMap& w, long m) : m_worldMap(&w), m_map(m) {} };
 struct CFilter_Bind2 {
     const CThingFilter_HasTC* m_first; const CThingFilter_InMap* m_second;
     CFilter_Bind2(const CThingFilter_HasTC& a, const CThingFilter_InMap& b) : m_first(&a), m_second(&b) {}
 };
 struct CThingFilter_HasTCOfLeafType { long m_type; CThingFilter_HasTCOfLeafType(long t) : m_type(t) {} };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThings(const CFilter_Bind2& f, CThingList& out) { out.m_filled = 1; out.m_type = f.m_first->m_type; out.m_world = f.m_second->m_worldMap; out.m_map = f.m_second->m_map; }
     void GetAllThings(const CThingFilter_HasTCOfLeafType& f, CThingList& out) { out.m_filled = 1; out.m_type = f.m_type; }
 };
 static CThingList g_A, g_B;
 static CWorldMap g_world;
 static CThingSearchTools g_tools;
-struct CTCAvoidRegionExit {
+class CTCAvoidRegionExit { public:
     const CWorldMap& PeekWorldMap() const { return g_world; }
     CThingSearchTools* GetThingSearchTools() const { return &g_tools; }
     void RebuildStaticThingLists()

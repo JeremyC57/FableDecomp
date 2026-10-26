@@ -12,8 +12,8 @@ static int fails = 0;
 //   only (the def is then loaded once into esi and reused for the range test and the release), the CVectorMap LowerBound
 //   instantiation 0x0040F020 has its same-TU binary-search body, and the static accessor CGameDefinitionManager::Get
 //   0x0044C6B0 is `__fastcall` as in the landed headers (that convention puts the name temporary's `lea` after `push 1`).
-struct CTCBase;
-struct C3DVector { float x, y, z; };
+class CTCBase;
+class C3DVector { public: float x, y, z; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -39,7 +39,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -80,7 +80,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -98,7 +98,7 @@ struct CDefPointer {
     ~CDefPointer() { if (--m_p->m_refs == 0) m_p->Destroy(); }
     CSpecialAbilityDef* operator->() const { return m_p; }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();       // 0x0044C6B0
     long GetDefGlobalIndex(const CCharString& name, bool b);   // 0x009AD390
     bool GetDef(long index, CDefPointer* out);  // 0x008E31D0
@@ -116,27 +116,27 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
     return true;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase;
-struct CTCStealth {                             // interface 0x36
+class CThingCreatureBase;
+class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* creature, long level);   // 0x00747B80
 };
 struct CTCThunderCombat {                       // interface 0xad
     long GetState();                            // 0x007AED10
     void Reset();                               // 0x007AED50
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0x110];
 };
-struct CCreatureAction_ThunderLightningStorm : CCreatureActionBase {
+class CCreatureAction_ThunderLightningStorm : public CCreatureActionBase { public:
     CCreatureAction_ThunderLightningStorm(CThingCreatureBase* creature);   // 0x0096C6E0
     ~CCreatureAction_ThunderLightningStorm();   // 0x0062E900
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

@@ -1,15 +1,15 @@
 // Behaviour test for 00878a10 CTCCameraPointDefinitionBase::GetActiveCameraPosition: the thing's position raised by 1.6 on Z.
 #include <cstdio>
 
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
-struct CThing
-{
+class CThing
+{ public:
     C3DVector m_pos;
     CThing() : m_pos(1.0f, 2.0f, 3.0f) {}
     const C3DVector& GetPosition() const { return m_pos; }

@@ -1,6 +1,6 @@
 // Byte-exact reconstruction of CShaderRenderManager::SetXBoxUserVertexShaderConstant @ 0x00989ba0
 
-struct CRGBFloatColour { float x, y, z, w; };
+class CRGBFloatColour { public: float x, y, z, w; };
 
 struct Device;
 struct DeviceVtbl {
@@ -11,7 +11,7 @@ struct Device {
     DeviceVtbl* vtbl;
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     char pad[0x1d4];
     Device* device; // +0x1d4
 };

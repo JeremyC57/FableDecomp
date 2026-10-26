@@ -3,7 +3,7 @@
 // Callees: the frame getters, FindMostRecentMessage @ 0x008ABED0, CWorld virtual slot 13 (PeekWorldMap, +0x34), CWorldMap::GetRegion @ 0x004FC180 (name at +0x18), CCharString::operator=(const CCharString&) @ 0x0099EFB0 and operator=(const char*) @ 0x0099EFE0 ("" @ 0x0122D70E).
 // Shape (shared by the Msg family): the two frame getters 0x006E7510 / 0x006E7530 (both labelled GetMaxWorldFrameForMessages), the 0x14-byte frame holds the IsOfType filter at +8, the CanBeSeenOrHeard filter at +0xc..+0x10 and the Bind2 pair of pointers at +0x14..+0x18; CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, CanBeSeenOrHeard>> @ 0x008ABED0 through CWorld+0x60 (engine/CWorld.h).
 // Leaf: MsgOnHeroUsedTeleporter
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     CCharString& operator=(const char* text);           // 0x0099EFE0
@@ -13,16 +13,16 @@ struct CMessageEvent_Retail {
     unsigned char _pad[0x3c];
     long          m_extraData;                      // +0x3c (the message's payload word: region/quest index, feat id, record pointer ...)
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
-struct CMessageEventFilter_CanBeSeenOrHeard {
+class CMessageEventFilter_CanBeSeenOrHeard { public:
     long m_frame;
     long m_maxFrame;
     CMessageEventFilter_CanBeSeenOrHeard(long frame, long maxFrame) : m_frame(frame), m_maxFrame(maxFrame) { }
 };
-template<class A, class B> struct CFilter_Bind2 {   // the bound filter holds POINTERS to its operands
+template<class A, class B> class CFilter_Bind2 { public:   // the bound filter holds POINTERS to its operands
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
@@ -42,14 +42,14 @@ struct CRegion_Retail {
 struct CWorldMap_Retail {
     CRegion_Retail& GetRegion(long index);          // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012();
     virtual CWorldMap_Retail* PeekWorldMap();       // slot 13 (+0x34)
     unsigned char                _pad04[0x5c];
     CMessageEventManager_Retail* PMessageEventManager_Data;   // +0x60 (engine/CWorld.h)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld* World;                                  // +0x04 (engine/CGameScriptInterface.h)
     void*   Component;                              // +0x08

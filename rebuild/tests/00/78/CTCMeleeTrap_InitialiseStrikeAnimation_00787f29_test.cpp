@@ -28,8 +28,8 @@ public:
         return Compare_00411570(PData, other.PData) == 0;
     }
 };
-struct CCharStringData : CBasicString<char> { };
-struct CCharString {
+class CCharStringData : public CBasicString<char> { public: };
+class CCharString { public:
     CCharStringData* PStringData;
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->PData; }
     unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
@@ -79,10 +79,10 @@ CAnimationManager* GetAnimationManager() { return &g_manager; }
 struct CAnimationBank {
     long Query(long animation) const { g_queriedBank = animation; return 0; }
 };
-struct CWorld { CAnimationBank* PAnimationBank; };
+class CWorld { public: CAnimationBank* PAnimationBank; };
 static CAnimationBank g_bank;
 static CWorld g_world = { &g_bank };
-struct CAnimationEntry { long Animation; };
+class CAnimationEntry { public: long Animation; };
 
 struct CTCMeleeTrap {
     bool StrikeAnimation;

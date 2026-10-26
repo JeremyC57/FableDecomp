@@ -14,7 +14,7 @@ namespace NUISystem {
 
 enum EEvent { EVENT_NONE };
 
-struct CActionParam {
+class CActionParam { public:
     long Type;                                          // +0x04
     CActionParam(long type) : Type(type) {}
     virtual void v00();
@@ -30,7 +30,7 @@ struct CActionParamList {                               // STLport list<CActionP
 };
 struct CActionTarget { void* _vf; };
 struct CActionPointer;
-struct CAction {                                        // retail 0x10 bytes
+class CAction { public:                                        // retail 0x10 bytes
     long             ActionType;                        // +0x00
     CActionParamList UIActionParams;                    // +0x04
     void*            ThingActionParams;                 // +0x08
@@ -121,7 +121,7 @@ struct CComponentBase {
     virtual void AddIgnoreAction(const CActionPointer& action);   // slot 70 (+0x118) descriptive
     unsigned char _pad04[0x18 - 0x04];
 };
-struct CComponent : CComponentBase, CActionTarget {     // CActionTarget at +0x18
+class CComponent : public CComponentBase, public CActionTarget { public:     // CActionTarget at +0x18
 };
 
 class CManager {

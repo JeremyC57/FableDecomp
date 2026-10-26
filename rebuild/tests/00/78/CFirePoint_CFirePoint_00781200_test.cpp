@@ -3,10 +3,10 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CThing { long m_id; };
-struct CBaseObject;
+class CThing { public: long m_id; };
+class CBaseObject;
 static int g_copies;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(void* data) : PStringData(data) { }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }

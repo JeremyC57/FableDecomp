@@ -12,7 +12,7 @@
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStackEntry {   // retail 48 bytes (8-aligned for the double)
 public:
-    class CThemeWeight;
+    struct CThemeWeight;
     float BaseWeight;                         // +0x00
     bool BaseWeightLocked;                    // +0x04
     CThemeWeight* Themes[3];                  // +0x08  CArray<CThemeWeight> (STLport vector)

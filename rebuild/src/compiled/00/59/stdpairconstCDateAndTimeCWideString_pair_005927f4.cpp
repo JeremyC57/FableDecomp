@@ -8,7 +8,7 @@
 //   pointer is copied to esi and advanced to `&o.second` (`add eax,1Ch`) before the 7-dword `rep movsd`, then pushed.
 #pragma optimize("s", on)
 
-struct CDateAndTime {                       // 0x1c bytes, POD
+class CDateAndTime { public:                       // 0x1c bytes, POD
     long          Year;                     // +0x00
     unsigned long Month;                    // +0x04
     unsigned long Day;                      // +0x08

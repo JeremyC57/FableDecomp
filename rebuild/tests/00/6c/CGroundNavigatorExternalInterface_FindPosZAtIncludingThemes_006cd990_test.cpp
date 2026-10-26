@@ -1,7 +1,7 @@
 #include "engine/CGroundNavigatorExternalInterface.h"
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CThingCreatureBase { float FindPosZAt(const C3DVector& v, bool a, bool b){ return v.x + (a?10.0f:0.0f) + (b?100.0f:0.0f); } };
+class C3DVector { public: float x, y, z; };
+class CThingCreatureBase { public: float FindPosZAt(const C3DVector& v, bool a, bool b){ return v.x + (a?10.0f:0.0f) + (b?100.0f:0.0f); } };
 float __fastcall CGroundNavigatorExternalInterface_FindPosZAtIncludingThemes(CGroundNavigatorExternalInterface* self, void* edx, const C3DVector& v, bool inc);
 float __fastcall CGroundNavigatorExternalInterface_FindPosZAtIncludingThemes(CGroundNavigatorExternalInterface* self, void* edx, const C3DVector& v, bool inc)
 {

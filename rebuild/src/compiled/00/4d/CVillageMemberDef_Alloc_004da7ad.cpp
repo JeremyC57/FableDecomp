@@ -16,7 +16,7 @@ struct CBase_0044c0c0 {
     CBase_0044c0c0();                           // 0x0044C0C0
 };
 
-struct CVillageMemberDef : CBase_0044c0c0 {
+class CVillageMemberDef : public CBase_0044c0c0 { public:
     virtual void v00();
     CVillageMemberDef() : CBase_0044c0c0() { }
 };

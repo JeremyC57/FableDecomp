@@ -12,8 +12,8 @@
 // Shape: the inline const PeekTC and GetPointType<T> out-parameter queries with their results ignored (as the landed
 //        CFixedDolly::OnInitLeaf 0x0087B6F0): both out pointers are uninitialised and share the lookup key's frame word, so the
 //        absent and wrong-type paths read it (`mov esi,[esp+8]` / `mov ecx,[esp+8]`); TrackThing is stored before its test.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
 };
 struct CInterfaceMap {                               // a thing's sorted {type, component} vector map at +0x44
@@ -22,7 +22,7 @@ struct CInterfaceMap {                               // a thing's sorted {type, 
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                      // +0x44
@@ -40,14 +40,14 @@ struct CThing {
         return false;
     }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                            // +0x04
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 #pragma pack(push, 1)
-struct CTCCameraPointDefinitionBase {
+class CTCCameraPointDefinitionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
@@ -63,13 +63,13 @@ struct CTCCameraPointDefinitionBase {
         return false;
     }
 };
-struct CTCCameraPointFixedPoint : CTCCameraPointDefinitionBase {
+class CTCCameraPointFixedPoint : public CTCCameraPointDefinitionBase { public:
     enum { POINT_TYPE_ID = 0 };
     bool      TrackThing;                            // +0x40
     C3DVector LookVector;                            // +0x41
 };
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _body[0xa0];                       // +0x04..+0xa3 (retail)
 };

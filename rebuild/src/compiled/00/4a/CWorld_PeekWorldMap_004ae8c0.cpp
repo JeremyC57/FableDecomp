@@ -1,5 +1,5 @@
 #include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorldMap;
+class CWorldMap;
 struct CWorld_Methods : CWorld {
     CWorldMap& G();
 };

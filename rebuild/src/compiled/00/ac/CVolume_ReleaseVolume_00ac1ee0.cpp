@@ -8,7 +8,7 @@ struct IResource {
     IResVtbl* vtbl;
 };
 
-struct CVolume {
+class CVolume { public:
     void* pad0;      // +0
     IResource* res;  // +4
     void ReleaseVolume();

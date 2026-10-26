@@ -26,15 +26,15 @@ template <class T> struct CRetailVector {           // STLport vector (12 bytes)
     void push_back_default();                       // 0x005ED940
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     C2DVector TopLeft, BottomRight;
     C2DBoxF(float left, float top, float right, float bottom) : TopLeft(left, top), BottomRight(right, bottom) {}
 };
-struct C2DExtentsI { long X, Y; };
+class C2DExtentsI { public: long X, Y; };
 
 class CDisplayManager {
 public:

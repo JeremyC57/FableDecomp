@@ -15,8 +15,8 @@
 // in ecx and delete the block; the stores nulling a dead local are elided. The sequence class
 // is this body's manifest module; the action class is named by its constructor when the label
 // is unique. One of 18 bodies of this shape.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 struct SCountBlock {
     long m_references;                     // +0
@@ -24,7 +24,7 @@ struct SCountBlock {
     void* m_pObject;                       // +8
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
 };
 

@@ -18,7 +18,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
     void*         Data;                                 // +0x08
@@ -44,7 +44,7 @@ public:
 
 class CNavQuadTree;
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
 };
 

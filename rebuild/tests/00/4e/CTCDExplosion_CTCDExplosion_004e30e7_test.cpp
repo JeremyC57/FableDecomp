@@ -3,16 +3,16 @@
 #include <new>
 // Behaviour of CTCDExplosion::CTCDExplosion (0x004E30E7): zero radii, -1 life timer and ring, CreatedEmitter false,
 // NeedToTriggerExplosion true, null def pointer, empty vectors, zero evolution timer; damage and positions untouched.
-struct CThing { int id; };
-struct CTCDriverBase {
+class CThing { public: int id; };
+class CTCDriverBase { public:
     virtual long v00() { return 0; }
     CThing* m_parent;
     CTCDriverBase(CThing* parent) : m_parent(parent) {}
 };
-struct C3DVector { float x, y, z; C3DVector() {} };
+class C3DVector { public: float x, y, z; C3DVector() {} };
 struct CDefPointer_Retail { void* Object; CDefPointer_Retail() : Object(0) {} };
 struct CPtrVector { void* m_pFirst; void* m_pLast; void* m_pEnd; CPtrVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) {} };
-struct CTCDExplosion : CTCDriverBase {
+class CTCDExplosion : public CTCDriverBase { public:
     float DamageRadius;
     float PhysicsRadius;
     float MaxDamage;

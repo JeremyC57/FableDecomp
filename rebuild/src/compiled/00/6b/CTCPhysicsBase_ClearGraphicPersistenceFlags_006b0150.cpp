@@ -10,7 +10,7 @@ struct CTCGraphicAppearance {
     void SetActivePersistenceFlags(unsigned long flags);   // 0x004BFFD0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;              // +0x64
 };

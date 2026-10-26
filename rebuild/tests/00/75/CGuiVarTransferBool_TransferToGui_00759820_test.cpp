@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     void*         gui;
     int           edxv;
     char          pad8, pad9, pada, padb;

@@ -11,13 +11,13 @@
 // pointer arithmetic `(C3DDummyObject*)base + dummyObjects` (`add ebp,eax`: the byte offset as destination; a byte-offset
 // add commutes to `add eax,ebp`).
 // Leaf: AllocateBuffers@C3DMeshStats
-struct CMovableResource { virtual void RelocateData(); };
-struct CMovableResourceMemoryPool {
+class CMovableResource { public: virtual void RelocateData(); };
+class CMovableResourceMemoryPool { public:
     bool AllocateResource(long* handle, CMovableResource* owner, unsigned long size, unsigned long flags);   // 0x00A62E40
     void* GetPointerFromHandle(long handle);        // 0x00A026B0 (CHandleBasedMemoryPool)
 };
-struct C3DHelperPoint { unsigned char _body[0x14]; };
-struct C3DDummyObject { unsigned char _body[0x38]; };
+class C3DHelperPoint { public: unsigned char _body[0x14]; };
+class C3DDummyObject { public: unsigned char _body[0x38]; };
 
 template<class T> struct CPreAllocBuffer {        // the pre-allocated vector map's storage words
     T* Data;
@@ -25,7 +25,7 @@ template<class T> struct CPreAllocBuffer {        // the pre-allocated vector ma
     void SetBuffer(void* data, unsigned long count) { Data = (T*)data; Count = count; }
 };
 
-struct C3DMeshStats : CMovableResource {
+class C3DMeshStats : public CMovableResource { public:
     CMovableResourceMemoryPool* MemoryPool;         // +0x04
     long StatsMemoryHandle;                         // +0x08
     unsigned char _0c[0x30];

@@ -12,19 +12,19 @@ struct CModifierVector {
     }
 };
 static long g_frame = 0; static int g_worldCalls = 0;
-struct CWorld { static long GetFrame() { return g_frame; } };
+class CWorld { public: static long GetFrame() { return g_frame; } };
 static CWorld g_world;
 static int g_log[8]; static int g_logCount = 0; static unsigned long g_appearanceFlags = 0;
 struct CTCGraphicAppearance { void SetAsChanged(unsigned long flags) { g_appearanceFlags |= flags; g_log[g_logCount++] = 4; } };
-struct CThing { CTCGraphicAppearance* PTCGraphicAppearance; };
-struct CTCBase {
+class CThing { public: CTCGraphicAppearance* PTCGraphicAppearance; };
+class CTCBase { public:
     CThing* ParentThing;
     CWorld& GetWorld() const { ++g_worldCalls; return g_world; }
     virtual void FrameUpdate() { }
     virtual void Copy(const CTCBase&) { }
     virtual ~CTCBase() { }
 };
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     unsigned long FrameLastChanged;
     bool Changed : 1; bool RecreatePrimitives : 1; bool AppearanceModifiersLoaded : 1;
     CModifierVector* Lists; long ListCount;                     /* AppearanceModifiers (vector of vectors) */

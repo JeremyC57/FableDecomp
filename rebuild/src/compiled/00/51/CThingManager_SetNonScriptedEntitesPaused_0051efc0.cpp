@@ -8,7 +8,7 @@
 // +0x2c -- and Dead = bit 0 of the flag byte at +0x91 (PDB +0xa1).
 // Shape: the argument is tested before the store (both from al); the bitset probe is an inline
 // HasTC() returning the masked word (a bool result narrows to `shr ; test al,1`) that folds to `test dword ptr [ecx+2Ch],800000h`; a null test on each list value.
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x0c];
     unsigned char ThingType;                    // +0x10
@@ -29,7 +29,7 @@ struct CThingList {
     SThingListNode* begin() const { return PHead->PNext; }
     SThingListNode* end() const { return PHead; }
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x18];
     CThingList    Things;                       // +0x18
     unsigned char _pad1c[0x38];

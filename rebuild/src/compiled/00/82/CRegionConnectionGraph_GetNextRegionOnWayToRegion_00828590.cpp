@@ -10,13 +10,13 @@
 // `if (it != end) return ...; return -1;` so the found path comes first; the node is reached through the counted pointer's
 // inline `operator->` (`mov eax,[eax+4] ; ... mov ecx,eax`; reading `.Object` directly loads straight into ecx).
 // Leaf: GetNextRegionOnWayToRegion
-struct CRegionConnectionGraph;
+class CRegionConnectionGraph;
 
-struct CRegionConnectionNode {
+class CRegionConnectionNode { public:
     long GetNextRegionOnWayToRegion(long toRegion, CRegionConnectionGraph* graph);   // 0x00828360
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Object;                                       // +0x00
     void* PBlock;                                       // +0x04
     T* operator->() const { return Object; }
@@ -39,7 +39,7 @@ struct CRegionNodeMap {                                 // CVectorMap<long, CCou
     }
 };
 
-struct CRegionConnectionGraph {
+class CRegionConnectionGraph { public:
     CRegionNodeMap GraphNodes;                          // +0x00
     long GetNextRegionOnWayToRegion(long fromRegion, long toRegion);
 };

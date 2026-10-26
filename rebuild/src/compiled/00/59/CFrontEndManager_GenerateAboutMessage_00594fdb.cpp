@@ -15,7 +15,7 @@
 //   (`push [eax+edi*4]`); the registry default is an implicit L"" conversion; a non-static member gives `ret 4`.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                         // 0x0099AED0
     CWideString(const unsigned short* text);               // 0x0099B6B0
@@ -25,7 +25,7 @@ struct CWideString {
     const CWideString& operator+=(const unsigned short* text); // 0x0099B940
     long GetLength() const;                                // 0x0099B220
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
@@ -43,7 +43,7 @@ struct CRefCounted {
 struct CRefBase : CRefVirtual, CRefCounted {
     __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     __forceinline ~CIVCountedPointer() { if (Data) { Data->ReleaseTemporary(); Data = 0; } }
     __forceinline T* operator->() const { return Data; }
@@ -67,7 +67,7 @@ struct CDataBank {                                         // NGameText::CDataBa
     CIVCountedPointer<CGroup> GetPGroup(unsigned long tag, bool load) const;            // 0x009C8890
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool load) const;  // 0x009C9070
 };
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char _pad00[0x60];
     CDataBank*    TextBank;                                // +0x60
 };

@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerStaticMeshes {
+class CEnginePrimitiveManagerStaticMeshes { public:
     void* vftable;
 };
 

@@ -11,15 +11,15 @@
 // Shape: the event is {vptr, long 0, CIntelligentPointer<CThing>} with an inline ctor (the OpenChest 0x008448E0 model); &PCreature is
 // spilled across the new/ctor block; the `new` null test selects 0 for AddEvent; the absent-events arm still evaluates a
 // PUsedThing.GetPItem() whose result is dropped (a compiled-out assertion on the used thing); the scripted-hook branch returns early.
-struct C3DVector;
-struct CTCBase;
+class C3DVector;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -65,15 +65,15 @@ struct __declspec(novtable) CEventBase {
     CEventBase() : m_data(0) {}
 };
 namespace NEntityEvents {
-struct CEventItemUsed : CEventBase {            // 0x10 bytes, vtable 0x0125C820
+class CEventItemUsed : public CEventBase { public:            // 0x10 bytes, vtable 0x0125C820
     CIntelligentThingPointer User;              // +0x08
     CEventItemUsed(CThing* user) : User(user) {}
 };
 }
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);           // 0x008113C0
 };
-struct CTCActionUseScriptedHook {               // interface type 0xC2
+class CTCActionUseScriptedHook { public:               // interface type 0xC2
     void OnActionUse(CThing* user);             // 0x00729B20
 };
 struct CTCActionUse {                           // interface type 0xD
@@ -82,14 +82,14 @@ struct CTCActionUse {                           // interface type 0xD
     VF10(0) VF10(1) VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27)
     virtual void OnUsed(CThing* user);          // slot 28 (+0x70)
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
     void SetMoveToPos(const C3DVector& pos);    // 0x006929E0
 };
-struct CCreatureAction_UseObject : CCreatureActionBase {
+class CCreatureAction_UseObject : public CCreatureActionBase { public:
     CBaseIntelligentPointer PUsedThing;         // +0xa8
     void PerformAction();
 };

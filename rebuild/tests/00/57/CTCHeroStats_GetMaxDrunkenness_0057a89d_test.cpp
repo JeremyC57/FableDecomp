@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct CTCHeroStatsInner { char pad[0xa4]; float maxDrunkenness; };
-struct CTCHeroStats { char pad[0xdc]; CTCHeroStatsInner* inner; };
+class CTCHeroStats { public: char pad[0xdc]; CTCHeroStatsInner* inner; };
 
 static CTCHeroStats* g_owner = 0;
 

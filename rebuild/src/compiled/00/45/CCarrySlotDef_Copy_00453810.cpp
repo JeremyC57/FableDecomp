@@ -1,4 +1,4 @@
-struct CCarrySlotDef { char pad[4]; };
+class CCarrySlotDef { public: char pad[4]; };
 
 extern void __fastcall CCarrySlotDef_CopyImpl(CCarrySlotDef* self, void* src);
 

@@ -9,7 +9,7 @@ struct CBasicStringChar {
     bool operator<(const CBasicStringChar& other) const { return std::strcmp(Text, other.Text) < 0; }
 };
 static CBasicStringChar g_payloads[16];
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString() : PStringData(0) { }
     bool operator<(const CCharString& other) const

@@ -9,13 +9,13 @@ struct SAttitudeBlock {
     SAttitudeBlock& operator=(const SAttitudeBlock& other) { m_attitudes = other.m_attitudes; m_flag = other.m_flag; return *this; }
 };
 struct CSubObject_00471e44 { unsigned char _body[0x0c]; CSubObject_00471e44& operator=(const CSubObject_00471e44& o) { ++g_tailOp; _body[0] = o._body[0]; return *this; } };
-struct CBlurredAttitudesDef : CBase_00431f10 {
+class CBlurredAttitudesDef : public CBase_00431f10 { public:
     long m_id; SAttitudeBlock m_block; unsigned char m_pad37[5]; CSubObject_00471e44 m_tail;
-    void Copy(const struct CDefClassBase* source);
+    void Copy(const class CDefClassBase* source);
     CBlurredAttitudesDef& operator=(const CBlurredAttitudesDef& other) { CBase_00431f10::operator=(other); m_id = other.m_id; m_block = other.m_block; m_tail = other.m_tail; return *this; }
 };
 #pragma pack(pop)
-struct CDefClassBase { };
+class CDefClassBase { public: };
 void CBlurredAttitudesDef::Copy(const CDefClassBase* source) { *this = *reinterpret_cast<const CBlurredAttitudesDef*>(source); }
 int main()
 {

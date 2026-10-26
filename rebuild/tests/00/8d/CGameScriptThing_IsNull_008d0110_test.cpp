@@ -1,7 +1,7 @@
 #include "engine/CGameScriptThing.h"
 #include <cstdio>
 
-struct CCharStringData {
+class CCharStringData { public:
     void* p0;
     int   v4;
 };

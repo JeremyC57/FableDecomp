@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour model of CChasingScreamer::Main.
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 static int g_frame, g_terminateAt, g_startOkAt, g_heroNearAt, g_targetLog[4], g_targets, g_follow, g_releases, g_scripting;
 static float g_followDist; static bool g_followRun; static char g_name[32];
 struct CHandle {
@@ -9,7 +9,7 @@ struct CHandle {
     void Release() { ++g_releases; g_scripting = 0; }
     void FollowThing(const CScriptThing& t, float d, bool run) { g_follow = t.id; g_followDist = d; g_followRun = run; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frame; }
     bool StartScriptingEntity(const CScriptThing&, CHandle&, int priority) { if (priority == 4 && g_frame >= g_startOkAt) { g_scripting = 1; return true; } return false; }

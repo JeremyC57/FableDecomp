@@ -1,24 +1,24 @@
 // Behaviour test for CM_BodyGuardRespawn::Main @ 0x00E5E0C0 (copy of the model with a stub world).
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 static char g_def[40], g_tag[16];
 static int g_created;
 static bool g_done;
 static long g_timer[4];
-struct CScriptThing {
+class CScriptThing { public:
     const char* data; bool real; C3DVector pos;
     const char* GetDataString() const { return data; }
     void SetDataString(const char* t) { if (real) std::strcpy(g_tag, t); }
     const C3DVector& GetPos() const { return pos; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long GetTimer(long index) const { return g_timer[index]; }
     CScriptThing CreateCreature(const char* def, const C3DVector&, const char* name, bool f) const
     { CScriptThing t; t.data = ""; t.real = !std::strcmp(name, "BodyGuard") && !f; std::strcpy(g_def, def); ++g_created; return t; }
 };
 static CGameScriptInterface g_gsi;
-struct CTimer { long TimerIndex; long GetTime() const { return g_gsi.GetTimer(TimerIndex); } };
+class CTimer { public: long TimerIndex; long GetTime() const { return g_gsi.GetTimer(TimerIndex); } };
 struct CV_BodyGuardScript {
     CTimer HenchmanDeadRespawnTimer[4]; long HenchmanGlobalStatus[4];
     long GetHenchmanIndex(const char* code) { return code[0] - '0'; }

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00661CD0 CThingCreatureBase::GetCurrentSpeed (model copy)
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct Physics { C3DVector Position; C3DVector OldPosition; };
 struct Creature { Physics* PhysicsTC; float GetCurrentSpeed() const {
     float dx = PhysicsTC->Position.X - PhysicsTC->OldPosition.X, dy = PhysicsTC->Position.Y - PhysicsTC->OldPosition.Y, dz = PhysicsTC->Position.Z - PhysicsTC->OldPosition.Z;

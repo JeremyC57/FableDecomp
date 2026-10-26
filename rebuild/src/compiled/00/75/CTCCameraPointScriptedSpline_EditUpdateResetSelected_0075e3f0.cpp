@@ -9,14 +9,14 @@
 // Shape: the selected iterator is a named local (esi); C3DVector has a user copy ctor and the view
 // direction comes from an inline by-value getter, so it is copied into a frame
 // temporary first and then into the key camera; the position is a direct member copy.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct CCamera {
+class CCamera { public:
     C3DVector       WorldPosition;                  // +0x00
     CRightHandedSet RHSet;                          // +0x0c
     bool            HeightLocked;                   // +0x24
@@ -37,7 +37,7 @@ struct CKeyCamera {                                 // CTCCameraPointScriptedSpl
     unsigned char _rest[0x38 - 0x20];               // +0x20 Roll .. SpeedFraction
 };
 
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     unsigned char _pad00[0x68];
     CKeyCamera*   KeyCameras_first;                 // +0x68 vector<CKeyCamera>
     CKeyCamera*   KeyCameras_last;                  // +0x6c

@@ -8,7 +8,7 @@
 // Shape: `push ecx` (the patch) then `add ecx,100h ; push ecx` (&ZSorterHandle), then the renderer into ecx.
 #include "engine/CLandscapeBackgroundPatch.h"
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void RegisterSubPatchForZSorting(long& handle, CLandscapeBackgroundPatch* patch);   // 0x00B67E30
 };
 extern CEngineLandscapeRenderer* g_pLandscapeRenderer;     // 0x01436EA8

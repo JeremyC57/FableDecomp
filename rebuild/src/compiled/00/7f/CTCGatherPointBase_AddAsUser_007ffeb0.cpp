@@ -9,7 +9,7 @@
 //        MaxOccupation (`sar ; cmp ; ja`); the exits are byte constants, the push in the `if` arm
 //        and `return false` in the `else` (an early `return false` places its epilogue before the push).
 // Layout: retail CTCGatherPointBase: Users +0x0C (12-byte STLport vector), MaxOccupation +0x18 (PDB +0x1C).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -36,7 +36,7 @@ struct CPtrVector {                             // STLport vector<CIntelligentPo
     void push_back(const CPtr& value);          // 0x007398B0
 };
 
-struct CTCGatherPointBase {
+class CTCGatherPointBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool ToBeRemoved;                           // +0x08

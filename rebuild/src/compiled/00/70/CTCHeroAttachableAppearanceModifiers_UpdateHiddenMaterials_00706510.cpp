@@ -14,7 +14,7 @@
 // Shape: per entry the def index is fetched, the manager taken unconditionally, and a positive index converted into a
 // typed def pointer (the add-ref and the manager temporary's release share one null test); the sub-def pointer is
 // dereferenced before its release, so its null test drops.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 struct CRefCounted {
@@ -40,11 +40,11 @@ struct CStringVector {                                      // retail vector<CCh
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
 };
-struct CAppearanceModifierDef : CDefBase {
+class CAppearanceModifierDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CStringVector HideMaterials;                            // +0x28
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p) m_p->Release(); }
@@ -61,10 +61,10 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointerBase GetPDefFromGlobalIndex_009ad9e0(long index);     // 0x009AD9E0 (hidden result pointer)
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefPointer<CAppearanceModifierDef>& out);   // 0x0057FF92
 };
 void* FindDef_GetSubDef_CAppearanceModifierDef(CDefClassBase* def);    // stand-in callee of the stand-in body below
@@ -127,8 +127,8 @@ struct CCharStringSet {                                     // 12 bytes: head, c
         }
     }
 };
-struct CThing;
-struct CTCHeroAttachableAppearanceModifiers {
+class CThing;
+class CTCHeroAttachableAppearanceModifiers { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     bool ToBeRemoved;                                       // +0x08

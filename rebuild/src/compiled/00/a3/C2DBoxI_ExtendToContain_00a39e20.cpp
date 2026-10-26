@@ -4,12 +4,12 @@
 // The argument is a point (only +0/+4 are read), not a box as the manifest's parameter list says.
 // Four guarded stores, member on the left of each compare (`cmp [this+n],reg`); p.X is re-read
 // between the TLX and BRX tests, p.Y between TLY and BRY.
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;     // +0x00
     long Y;     // +0x04
 };
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX;   // +0x00
     long TLY;   // +0x04
     long BRX;   // +0x08

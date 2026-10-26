@@ -13,7 +13,7 @@
 #define __int64 long long
 #endif
 void* GrowArrayStorage(unsigned long bytes) { return malloc(bytes); }
-struct CCharString {
+class CCharString { public:
     char m_Text[128];
     CCharString(const char* text) { strcpy(m_Text, text); }
     CCharString(const CCharString& other) { strcpy(m_Text, other.m_Text); }
@@ -27,7 +27,7 @@ struct CCharString {
         return r;
     }
 };
-struct CWideString {
+class CWideString { public:
     char m_Text[128];
     CWideString() { m_Text[0] = 0; }
     CWideString(const char* text) { strcpy(m_Text, text); }

@@ -6,17 +6,17 @@
 // Layout: PDB CThingFilter_MakesLineWithPosInDirectionOfLine { C3DVector Pos; C3DVector Line; }.
 // Shape: the delta is a C3DVector local assigned member by member (three separate float locals are scheduled one
 // product at a time); the three deltas are loaded first, then the products are summed z, y, x; the compare materialises an int.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
 extern const float g_fZero;                         // 0x0122DEDC
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
 
-struct CThingFilter_MakesLineWithPosInDirectionOfLine {
+class CThingFilter_MakesLineWithPosInDirectionOfLine { public:
     C3DVector Pos;                                  // +0x00
     C3DVector Line;                                 // +0x0c
     bool operator()(CThing* thing) const;

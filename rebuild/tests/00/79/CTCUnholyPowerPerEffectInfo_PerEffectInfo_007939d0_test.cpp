@@ -1,9 +1,9 @@
 // Behaviour test for 0x007939D0 CTCUnholyPower::PerEffectInfo::PerEffectInfo(): the Position is left as it was, the Effect intelligent pointer is default-constructed (empty)
 #include <cstdio>
 #include <new>
-struct CThing;
+class CThing;
 static int g_pointers = 0;
-struct C3DVector {
+class C3DVector { public:
     float X; float Y; float Z;
     C3DVector() { }
 };

@@ -11,7 +11,7 @@
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -42,12 +42,12 @@ struct SExpressionData {
     long Values[9];
 };
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const V& a, const V& b) const { return a.Type < b.Type; }
 };
 
-struct CExpressionSet {
-    struct CEntry {
+class CExpressionSet { public:
+    class CEntry { public:
         EExpressionType Type;                           // +0x00
         SExpressionData Data;                           // +0x04
         CEntry() : Type(EXPRESSION_NONE), Data() { Data.Values[3] = -1; }

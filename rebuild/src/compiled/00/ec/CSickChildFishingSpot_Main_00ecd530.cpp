@@ -7,12 +7,12 @@
 // the parent's flag byte is at +0x69 in retail (PDB CV_SickChildScript::GotFishingSpotMushroom +0x7d).
 // Shape: the landed CHHUndead::Main 0x00E95E80 prelude; the first IsDone test is explicit and the second is the rotated
 // `while (!IsDone())` entry test; the disabled-spot exit re-tests IsDone before the flag store and returns.
-struct CScriptThing {                              // 12 bytes
+class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
+class CGameScriptInterface { public:                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

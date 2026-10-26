@@ -3,12 +3,12 @@
 #ifndef _MSC_VER
 #define __int64 long long
 #endif
-struct C3DAnimationInterpolator;
-struct C3DPositionInterpolator;
-struct C3DOrientationInterpolator;
-struct CEnginePrimitiveThemeChannelDesc;
+class C3DAnimationInterpolator;
+class C3DPositionInterpolator;
+class C3DOrientationInterpolator;
+class CEnginePrimitiveThemeChannelDesc;
 enum EEngineInterpolationSet {INTERPOLATION_DEFAULT=0};
-struct CRGBColour {
+class CRGBColour { public:
  unsigned char B,G,R,A;
  CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){Set(r,g,b,a);}
  CRGBColour(const CRGBColour& o){Set(o.R,o.G,o.B,o.A);}
@@ -35,10 +35,10 @@ CEnginePrimitiveMorphedAnimatingMesh::CEnginePrimitiveMorphedAnimatingMesh(unsig
 
 #include <cstdio>
 #include <stddef.h>
-struct C3DAnimationInterpolator {int Marker;};
-struct C3DPositionInterpolator {int Marker;};
-struct C3DOrientationInterpolator {int Marker;};
-struct CEnginePrimitiveThemeChannelDesc {int Marker;};
+class C3DAnimationInterpolator { public:int Marker;};
+class C3DPositionInterpolator { public:int Marker;};
+class C3DOrientationInterpolator { public:int Marker;};
+class CEnginePrimitiveThemeChannelDesc { public:int Marker;};
 static int failures=0,sequence=0,baseCalls=0,morphCalls=0,setCalls=0;
 static const C3DAnimationInterpolator* expectedAnim;
 static const C3DPositionInterpolator* expectedPos;

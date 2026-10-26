@@ -12,7 +12,7 @@
 // because it is passed by reference and re-read by the inlined size update.
 #include "engine/CResource.h"
 
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned char  _pad[0x14];
     unsigned short Width;                                       // +0x14
     unsigned short Height;                                      // +0x16

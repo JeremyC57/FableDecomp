@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour model of CBankFile::BeginUpdateEntries: wide strings are modelled as small char buffers.
-struct CWideString {
+class CWideString { public:
     char s[64];
     CWideString() { s[0] = 0; }
     CWideString(const char* t) { std::strcpy(s, t); }
@@ -19,14 +19,14 @@ void SplitPath(const CWideString& path, CWideString* drive, CWideString* directo
     std::strcpy(extension->s, dot);
 }
 static char g_log[256];
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     long m_length; long m_seek; long m_access; long m_lengthCalls;
     CDiskFileWin32() : m_length(1000), m_seek(-1), m_access(0), m_lengthCalls(0) {}
     void Open(const CWideString&, long access, unsigned long) { m_access = access; }
     void Seek(long position) { m_seek = position; }
     long GetLength() { ++m_lengthCalls; return m_length; }
 };
-struct CBankFile {
+class CBankFile { public:
     CDiskFileWin32* BankFile;
     CWideString Filename;
     bool RetailMode, WrittenToFile, Solid, UpdatingFlag;

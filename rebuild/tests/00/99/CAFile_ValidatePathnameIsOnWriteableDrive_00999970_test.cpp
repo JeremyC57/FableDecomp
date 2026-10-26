@@ -129,7 +129,7 @@ static void CatW(wchar16* d, const wchar16* s) { CopyW(d + WLen(d), s); }
 static bool DebugUseReadOnlyDrives = false;
 static int g_splits = 0;
 static CStr g_lastDrive;
-struct CAFile {
+class CAFile { public:
     static WStr ConvertPathToFullPath(const WStr& path) { return ExpandPath(path, GetCurrentPath()); }
     static void ValidatePathnameIsOnWriteableDrive(const WStr& path)
     {

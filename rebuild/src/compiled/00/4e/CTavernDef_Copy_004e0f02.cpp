@@ -1,6 +1,6 @@
 #include "engine/CTavernDef.h"
 
-struct CDefClassBase;
+class CDefClassBase;
 struct CTavernDef_Methods : CTavernDef { void base_clone(const CDefClassBase* src); };
 
 void __fastcall CTavernDef_Copy(CTavernDef* self, int /*edx*/, const CDefClassBase* src)

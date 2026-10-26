@@ -2,13 +2,13 @@
 // the introsort loop with depth 2*lg(n) and then the final insertion sort; an empty range does nothing.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-struct CThing { C3DVector P; };
-struct CThingCompare_NearestToPos {
+class CThing { public: C3DVector P; };
+class CThingCompare_NearestToPos { public:
     C3DVector Pos;
     bool operator()(const CThing* a, const CThing* b) const
     {

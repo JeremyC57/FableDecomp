@@ -1,15 +1,15 @@
 #include <cstdio>
 // behaviour test: MoveToAndPickUpGenericBox queues move-to (movement 3/5/1), turn-to-face and pick-up for a live box
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CThing_Retail { bool m_dead; C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
-struct CScriptThing { CThing_Retail* t; CThing_Retail* GetPThing() const { return t; } };
+class CScriptThing { public: CThing_Retail* t; CThing_Retail* GetPThing() const { return t; } };
 static int g_kinds[16], g_n = 0; static long g_movement = -1; static bool g_run = false; static float g_speed = 0;
 struct CActionBase { int kind; virtual ~CActionBase() {} };
 struct CActionMoveTo : CActionBase { CActionMoveTo(CThing_Retail*, long m, float p, bool a, bool run, bool, bool, bool, bool z)
     { kind = 1; g_movement = m; g_run = run; (void)p; (void)a; (void)z; } };
 struct CActionTurnToFacePosition : CActionBase { CActionTurnToFacePosition(const C3DVector&, float s) { kind = 2; g_speed = s; } };
 struct CActionPickUpGenericBox : CActionBase { CActionPickUpGenericBox(CThing_Retail*) { kind = 3; } };
-struct CTCScriptedControl { void AddAction(CActionBase* a) { g_kinds[g_n++] = a->kind; delete a; } };
+class CTCScriptedControl { public: void AddAction(CActionBase* a) { g_kinds[g_n++] = a->kind; delete a; } };
 static CTCScriptedControl g_control;
 struct CThingWithControl : CThing_Retail { bool GetInterface(CTCScriptedControl** out, long) { *out = &g_control; return true; } };
 struct CIntelligentPointer_Retail { CThingWithControl* item; CThingWithControl* GetPItem() { return item; } };

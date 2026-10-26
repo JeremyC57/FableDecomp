@@ -11,7 +11,7 @@
 // user-declared `virtual ~X() {}` keeps its vtable store alive across the free calls); they free Attitudes then the map
 // vector and the inline CDefPointeeBase destructor stores 0x01230BA0 before the out-of-line CResource destructor.
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
-struct CResource {
+class CResource { public:
     virtual ~CResource();                          // 0x009FC550
     unsigned long m_refCount;                      // +0x04
     void*         m_pResourceList;                 // +0x08
@@ -21,11 +21,11 @@ struct CResource {
     unsigned long m_lastUsedFrame;                 // +0x18
     CResource();                                   // 0x009FBEC0
 };
-struct CDefPointeeBase : CResource {               // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:               // vtable 0x01230BA0
     virtual ~CDefPointeeBase() {}
 };
 #pragma pack(push, 1)
-struct CDefClassBase : CDefPointeeBase {           // vtable 0x01230BCC
+class CDefClassBase : public CDefPointeeBase { public:           // vtable 0x01230BCC
     long          m_defIndex;                      // +0x1c
     long          m_reserved;                      // +0x20 (not initialised here)
     unsigned char m_flag0 : 1;                     // +0x24 three 1-bit fields
@@ -34,7 +34,7 @@ struct CDefClassBase : CDefPointeeBase {           // vtable 0x01230BCC
     CDefClassBase() : m_defIndex(0), m_flag0(0), m_flag1(0), m_flag2(0) {}
 };
 #pragma pack(pop)
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) {}
 };
@@ -54,7 +54,7 @@ struct CSubDefInfoMap {                            // CVectorMap<unsigned long, 
     CSubDefInfoMap() : Dirty(false) {}
 };
 #pragma pack(push, 1)
-struct CParentDefClassBase : CDefClassBase {       // vtable 0x01230CBC
+class CParentDefClassBase : public CDefClassBase { public:       // vtable 0x01230CBC
     CDefString     InstantiationName;              // +0x25
     CSubDefInfoMap SubDefInfoMap;                  // +0x29
     CParentDefClassBase() {}
@@ -67,7 +67,7 @@ struct CAttitudeVector {                           // retail std::vector<EOpinio
     CAttitudeVector() : m_first(0), m_last(0), m_end(0) {}
     ~CAttitudeVector() { if (m_first) free(m_first); }
 };
-struct CBlurredAttitudesDef : CParentDefClassBase {   // vtable 0x0125B8AC, 0x48 bytes
+class CBlurredAttitudesDef : public CParentDefClassBase { public:   // vtable 0x0125B8AC, 0x48 bytes
     CAttitudeVector Attitudes;                     // +0x3c
     CBlurredAttitudesDef() {}
 };

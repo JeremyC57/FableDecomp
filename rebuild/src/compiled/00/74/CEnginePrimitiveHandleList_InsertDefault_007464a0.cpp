@@ -11,8 +11,8 @@
 //   slots, which the handle's destructor needs (Delete slot 1, NotifyReleased slot 3).
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t);                 // 0x00BFEA0E
-struct CEnginePrimitiveHandle;
-struct CEnginePersistentPrimitiveBase {
+class CEnginePrimitiveHandle;
+class CEnginePersistentPrimitiveBase { public:
  virtual ~CEnginePersistentPrimitiveBase();
  virtual void Delete()const;
  virtual void ReservedSlot2();
@@ -21,14 +21,14 @@ struct CEnginePersistentPrimitiveBase {
  long Type;
  __forceinline unsigned long RemoveReference(){return --IVRefCount;}
 };
-struct CBaseClass {CBaseClass();virtual ~CBaseClass();}; //0099a2d0/0099a2e0
+class CBaseClass { public:CBaseClass();virtual ~CBaseClass();}; //0099a2d0/0099a2e0
 struct CHandlePointer {
  CEnginePersistentPrimitiveBase* Object;
  CHandlePointer():Object(0){}
  CHandlePointer(const CHandlePointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}
  __forceinline ~CHandlePointer(){if(Object){CEnginePersistentPrimitiveBase* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
 };
-struct CEnginePrimitiveHandle:CBaseClass {
+class CEnginePrimitiveHandle:public CBaseClass { public:
  CHandlePointer Data;
  CEnginePrimitiveHandle():CBaseClass(),Data(){}
  __forceinline virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}

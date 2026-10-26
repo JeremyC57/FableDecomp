@@ -12,8 +12,8 @@
 // VC schedules the first global load early because the matrix stores are independent of it.
 #include "engine/CEnginePrimitiveRenderer.h"
 
-struct C3DVector  { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector  { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }
     void SetIdentity()                                   // chained assignments: the stores run right to left
@@ -23,7 +23,7 @@ struct CMatrix3x4 {
     }
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void SetWorldTransform(const CMatrix3x4& transform);     // 0x009881F0
 };
 struct CRenderManagerCore {

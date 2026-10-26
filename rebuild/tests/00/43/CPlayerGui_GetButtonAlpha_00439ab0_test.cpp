@@ -5,12 +5,12 @@
 #include <cstdio>
 #include <cmath>
 
-struct CTCInventory { float fade; float GetContextSensitiveFadeAlpha(long b) { return fade + (float)b; } };
-struct CThing { bool Dead; CTCInventory* inv; bool HasTC(long t) const { return t == 0x11 && inv; } CTCInventory* GetTC(long) const { return inv; } };
-struct CPlayer { CThing* c; CThing* GetPlayerCharacter() { return c; } };
-struct CPlayerManager { CPlayer* p; CPlayer* GetMainPlayer() { return p; } };
+class CTCInventory { public: float fade; float GetContextSensitiveFadeAlpha(long b) { return fade + (float)b; } };
+class CThing { public: bool Dead; CTCInventory* inv; bool HasTC(long t) const { return t == 0x11 && inv; } CTCInventory* GetTC(long) const { return inv; } };
+class CPlayer { public: CThing* c; CThing* GetPlayerCharacter() { return c; } };
+class CPlayerManager { public: CPlayer* p; CPlayer* GetMainPlayer() { return p; } };
 template <class T> struct vector { T* _M_start; T& operator[](long n) { return *(_M_start + n); } };
-struct CPlayerGui {
+class CPlayerGui { public:
     CPlayerManager* PlayerManager;
     vector<float> AbilityButtonsAlpha, QuickAccessButtonsAlpha;
     float AbilityButtonScale; bool NormalToSpecial, SpecialToNormal;

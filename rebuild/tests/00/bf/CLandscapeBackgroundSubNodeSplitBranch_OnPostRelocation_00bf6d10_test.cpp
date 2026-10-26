@@ -13,7 +13,7 @@ void __fastcall HelperRelocate(Sub* self)
     g_calls++;
 }
 
-struct CLandscapeBackgroundSubNodeSplitBranch {
+class CLandscapeBackgroundSubNodeSplitBranch { public:
     Sub sub0;
     char pad1[0xe4];
     Sub sub1;

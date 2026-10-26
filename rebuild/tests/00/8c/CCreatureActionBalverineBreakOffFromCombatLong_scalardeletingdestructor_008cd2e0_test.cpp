@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BalverineBreakOffFromCombatLong {
+class CCreatureAction_BalverineBreakOffFromCombatLong { public:
     void* vftable;
     int destroyed;
 };

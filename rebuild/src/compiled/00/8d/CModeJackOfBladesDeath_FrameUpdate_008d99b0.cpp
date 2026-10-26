@@ -13,7 +13,7 @@
 //   local filled by GetSubDef(&def) and released by hand (no null test) on both exits; the position is the lerp
 //   (target - start) * t + start with t = Timer / (long)(fps * duration); the mode manager pointer is zero-initialised and the
 //   GetInterface result is not tested.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -39,7 +39,7 @@ struct CJackOfBladesDeathDef {
     float         RiseHeight;                   // +0x64
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CJackOfBladesDeathDef** out);   // 0x008C33E0
 };
 void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee
@@ -66,11 +66,11 @@ struct CPhysicsObject {
     virtual void SetEnabled(bool enabled);      // slot 38 (+0x98)
 };
 
-struct CTCCreatureModeManager {                 // interface type 0x31
+class CTCCreatureModeManager { public:                 // interface type 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;               // +0x44

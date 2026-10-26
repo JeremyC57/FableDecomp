@@ -9,12 +9,12 @@
 // so the driver out pointer reuses its frame word: the inlined GetTCDriver (bit 1 of the flag byte at +0x28, cached pointer at +0x5c,
 // the landed 0x00750DD0 template) is not tested and the absent arm reads that word (`mov edi,[esp+8]`); the add call is
 // tail-duplicated into both arms.
-struct C3DVector { float x, y, z; };
-struct CThing;
+class C3DVector { public: float x, y, z; };
+class CThing;
 struct CExplosionDriver {                   // the spawned thing's driver component
     void AddExcludedThing(CThing* thing);   // 0x0080CBF0
 };
-struct CThing {
+class CThing { public:
     unsigned char     _pad0[0x28];
     unsigned char     m_driverFlags;        // +0x28 bit 1: the driver component is cached
     unsigned char     _pad1[0x5c - 0x29];
@@ -31,12 +31,12 @@ struct CThing {
 };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position);   // 0x0080C460
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                 // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);        // 0x009AD410
 };
@@ -46,13 +46,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
-struct CCreatureAction_ScorpionTailPlunge : CCombatActionBase {
+class CCreatureAction_ScorpionTailPlunge : public CCombatActionBase { public:
     void PerformAction();
 };
 

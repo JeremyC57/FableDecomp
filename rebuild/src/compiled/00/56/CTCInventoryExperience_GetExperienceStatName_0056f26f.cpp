@@ -15,7 +15,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString(const CWideString& other);         // 0x0099B720
     ~CWideString();                                // 0x0099B510
@@ -28,7 +28,7 @@ struct SLongVector {
     long* _M_end_of_storage;
 };
 
-struct CInventoryDef {
+class CInventoryDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long refCount;                                 // +0x004
@@ -46,7 +46,7 @@ struct CInventoryDefPointer {
     CInventoryDef* operator->() const { return m_p; }
 };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x68];
     CInventoryDefPointer PDef;                     // +0x068
     CWideString GetInventoryText(long textId);     // 0x005BD273 (CTCInventoryBase)

@@ -4,8 +4,8 @@ struct CTCInner
     char flag;      // +0x25
 };
 
-struct CTCTurncoat
-{
+class CTCTurncoat
+{ public:
     char pad0[0x14];
     CTCInner* inner;   // +0x14
     char pad1[0x2c - 0x18];

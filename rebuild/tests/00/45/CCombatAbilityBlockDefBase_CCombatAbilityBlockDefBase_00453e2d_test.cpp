@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <stddef.h>
 static int g_base = 0; static long g_type = -1, g_weapon = -1;
-struct CSubDefClassBase { virtual void v00() { } unsigned char _body[0x24]; CSubDefClassBase() { ++g_base; } };
+class CSubDefClassBase { public: virtual void v00() { } unsigned char _body[0x24]; CSubDefClassBase() { ++g_base; } };
 struct CCombatAbilityBlockingData_Calls { virtual void v00() { } unsigned char _body[0x2c]; CCombatAbilityBlockingData_Calls(long t, long w) { g_type = t; g_weapon = w; } };
-struct CCombatAbilityBlockDefBase : CSubDefClassBase {
+class CCombatAbilityBlockDefBase : public CSubDefClassBase { public:
     CCombatAbilityBlockingData_Calls CombatAbility; virtual void v00() { }
     CCombatAbilityBlockDefBase(long t, long w) : CSubDefClassBase(), CombatAbility(t, w) { }
 };

@@ -14,7 +14,7 @@
 // Both empty tags share frame byte 3.
 extern "C" void __cdecl free(void* p);                                           // 0x00BFEA14
 
-struct CMapInfo {                                       // 0x48 bytes
+class CMapInfo { public:                                       // 0x48 bytes
     unsigned char _body[0x48];
 };
 struct forward_iterator_tag { forward_iterator_tag() { } };
@@ -22,7 +22,7 @@ struct __false_type { __false_type() { } };
 
 void __fastcall DestroyRange(CMapInfo* first, CMapInfo* last, const __false_type& tag);   // 0x00515250
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }

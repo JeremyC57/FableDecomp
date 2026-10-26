@@ -9,7 +9,7 @@
 #define __declspec(x)
 #endif
 struct CBase { CBase(); virtual ~CBase(); };
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
  float PosScaleX,PosScaleY,PosScaleZ,PosScaleW,PosBiasX,PosBiasY,PosBiasZ,PosBiasW;
  CVertexCompressionParams():PosScaleX(1),PosScaleY(1),PosScaleZ(1),PosScaleW(1),PosBiasX(0),PosBiasY(0),PosBiasZ(0),PosBiasW(0){}
 };

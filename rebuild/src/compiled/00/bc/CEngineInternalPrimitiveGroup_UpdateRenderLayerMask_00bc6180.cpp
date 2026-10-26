@@ -3,8 +3,8 @@
 // Callees: UpdatePosition @ 0x00B91840 (`__fastcall`: the primitive in ecx, the flags at +0x5c in edx; a sibling jump). Shape: the end pointer is read once
 // (the mask is a local, so nothing aliases it) and kept in edi; `cmp [ecx+30h],esi ; je` skips the store and the call. The chunk label
 // "ClearAllChildPrimitives" belongs to the sibling @ 0x00BC6580, which inlines this after clearing the vector.
-struct CEngineInternalPrimitiveBase;
-struct C3DBoundingBox { float Min[3]; float Max[3]; };
+class CEngineInternalPrimitiveBase;
+class C3DBoundingBox { public: float Min[3]; float Max[3]; };
 
 struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalPrimitiveBase vtable slots used by the group/changer/viewport bodies
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -20,14 +20,14 @@ struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalP
     virtual void ResetOcclusionInfo(long layer);                     // slot 28 (+0x70)
 };
 
-struct CEngineInternalPrimitiveBase : CEngineInternalPrimitiveVtable {   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
+class CEngineInternalPrimitiveBase : public CEngineInternalPrimitiveVtable { public:   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
     unsigned char  _pad04[0x2c];                   // +0x04 .. +0x30
     unsigned long  RenderLayerMask;                // +0x30
     unsigned char  PostRenderEnable;               // +0x34 bitfield group: bit 3 = post-render enabled
     unsigned char  _pad35[0x13];                   // +0x35 .. +0x48
 };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: the handle id and the primitive
+class CEnginePrimitiveHandle { public:                    // 8 bytes: the handle id and the primitive
     long                          m_id;
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };

@@ -3,21 +3,21 @@
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
 static int g_destroyed = 0;
 static void DestroyRoot(void*) { ++g_destroyed; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* object) : m_pObject(object), m_pCount(new SCountBlock) { m_pCount->m_references = 1; m_pCount->m_pfnDestroy = DestroyRoot; m_pCount->m_pObject = object; }
     template <class U> CCountedPointer(const CCountedPointer<U>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
     ~CCountedPointer() { if (m_pCount) { --m_pCount->m_references; if (m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; } } }
 };
-struct CChunkedFileSuperChunk { virtual void v00() {} };
-struct C3DMeshFileRootChunk : CChunkedFileSuperChunk { };
+class CChunkedFileSuperChunk { public: virtual void v00() {} };
+class C3DMeshFileRootChunk : public CChunkedFileSuperChunk { public: };
 static long g_baseRefsSeen = -1;
-struct CChunkedFile {
+class CChunkedFile { public:
     virtual void v00() {}
     CChunkedFileSuperChunk* m_pRoot;
     CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>& root) : m_pRoot(root.m_pObject) { g_baseRefsSeen = root.m_pCount->m_references; }
 };
-struct C3DMeshFile : CChunkedFile {
+class C3DMeshFile : public CChunkedFile { public:
     virtual void v00() {}
     C3DMeshFile(const CCountedPointer<C3DMeshFileRootChunk>& root) : CChunkedFile(root) {}
 };

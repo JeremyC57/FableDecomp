@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CACompressor {
+class CACompressor {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     void*         Workspace;                                 // +0x04
     unsigned long WorkspaceSize;                             // +0x08

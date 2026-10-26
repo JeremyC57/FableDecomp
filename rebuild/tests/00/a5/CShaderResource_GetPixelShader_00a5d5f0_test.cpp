@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CPixelShader { int a, b, c, d; };
+class CPixelShader { public: int a, b, c, d; };
 struct CSubResource { void* found; };
-struct CShaderResource { void* pad0; CSubResource* sub; };
+class CShaderResource { public: void* pad0; CSubResource* sub; };
 
 static void* g_last_found;
 static CPixelShader* g_last_ret;

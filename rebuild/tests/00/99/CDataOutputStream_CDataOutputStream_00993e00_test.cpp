@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_base = 0, g_strings = 0;
 struct CBase { virtual void v00() { } CBase() { ++g_base; } };
-struct CCharString { const char* m_text; long m_length; CCharString(const char* t, long l = -1) : m_text(t), m_length(l) { ++g_strings; } };
-struct CDataOutputStream : CBase { CCharString NewLine; CDataOutputStream() : CBase(), NewLine("\r\n") { } };
+class CCharString { public: const char* m_text; long m_length; CCharString(const char* t, long l = -1) : m_text(t), m_length(l) { ++g_strings; } };
+class CDataOutputStream : public CBase { public: CCharString NewLine; CDataOutputStream() : CBase(), NewLine("\r\n") { } };
 int main()
 {
     CDataOutputStream s;

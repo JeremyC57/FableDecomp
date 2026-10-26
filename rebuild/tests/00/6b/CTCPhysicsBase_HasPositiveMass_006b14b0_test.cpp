@@ -1,7 +1,7 @@
 #include <cstdio>
 static float g_fZero = 0.0f;
-struct CPhysicsDef { float Mass; };
-struct CTCPhysicsBase {
+class CPhysicsDef { public: float Mass; };
+class CTCPhysicsBase { public:
     const CPhysicsDef* PhysicsDef_Object;
     long HasPositiveMass() const { return PhysicsDef_Object->Mass > g_fZero; }
 };

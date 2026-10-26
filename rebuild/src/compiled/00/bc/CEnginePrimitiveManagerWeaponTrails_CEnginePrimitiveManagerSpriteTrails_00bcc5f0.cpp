@@ -15,18 +15,18 @@
 #define __forceinline inline
 #endif
 
-struct CEngineScene;
-template<class T> struct CArray;
-struct CEngineInternalPrimitiveBase;
-struct CEngineSubPrimitiveBase;
-struct CEngineSubPrimitiveChain;
-struct CEnginePrimitiveTypeList;
-struct C3DVector;
+class CEngineScene;
+template<class T> class CArray;
+class CEngineInternalPrimitiveBase;
+class CEngineSubPrimitiveBase;
+class CEngineSubPrimitiveChain;
+class CEnginePrimitiveTypeList;
+class C3DVector;
 struct CNodeHeader;
 struct IDirect3DVertexDeclaration9;
 struct IDirect3DVertexShader9;
 struct _D3DVERTEXELEMENT9;
-namespace NEngineShadowRenderer { struct CShadowSceneContext; }
+namespace NEngineShadowRenderer { class CShadowSceneContext; }
 
 enum ERendered { ERenderedNativeView = 0 };
 enum EEngineRenderLayer { EEngineRenderLayerNativeView = 0 };
@@ -39,7 +39,7 @@ enum EVertexType { EVertexTypeNativeView = 0 };
 // WeaponTrails -> Manager -> RenderUtil -> NonCopyable -> BaseClass. The two
 // engine PDB headers flatten that ancestry; keep its real virtual destructors
 // and constructors here, with no synthetic members in these bases.
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass(); // FableWin PDB 03044700; retail native base initializer 0099A2D0/E0
     virtual ~CBaseClass(); // FableWin PDB 03044720
 };
@@ -55,7 +55,7 @@ struct CEnginePrimitiveRenderUtil : CBaseClassNonCopyable {
 
 // Manager extends the actual RenderUtil base chain and owns only the fields
 // proven at +4/+8 by BACDB0; native base extent remains 0x0C.
-struct CEnginePrimitiveManager : CEnginePrimitiveRenderUtil {
+class CEnginePrimitiveManager : public CEnginePrimitiveRenderUtil { public:
     virtual ~CEnginePrimitiveManager();
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType) = 0;
     virtual void GetSupportedTypes(CEnginePrimitiveTypeList&) const = 0;
@@ -75,7 +75,7 @@ struct CEnginePrimitiveManager : CEnginePrimitiveRenderUtil {
     void AddEnableConsoleVariable(const CCharString&); // 00BACD80, retail hook
 };
 
-struct CShaderBase {
+class CShaderBase {
 protected:
     CShaderBase(); // FableWin PDB: 02C938E0
     __forceinline virtual ~CShaderBase() { } // FableWin PDB: 02C8DBF0, empty body
@@ -98,7 +98,7 @@ private:
 
 // CVertexShader.h is a flattened donor record; retail RTTI/vtable plus PDB
 // signatures prove the real CShaderBase -> CVertexShader virtual hierarchy.
-struct CVertexShader : CShaderBase {
+class CVertexShader : public CShaderBase { public:
     CVertexShaderData* Data;
     CVertexShader(); // retail helper 00A62FB0; FableWin PDB 032F34F0
     CVertexShader(const CVertexShader& other) : CShaderBase(other), Data(other.Data) {
@@ -169,7 +169,7 @@ struct CEngineVertexBufferPoolNativeView : CEngineDynamic3DResourceManagerNative
     }
 };
 
-struct CEnginePrimitiveManagerWeaponTrails : CEnginePrimitiveManager {
+class CEnginePrimitiveManagerWeaponTrails : public CEnginePrimitiveManager { public:
     CVertexShader VertexShaderZSortedUnlit; // +0x0C, PDB layout
     CEngineVertexBufferPoolNativeView VertexBufferPool; // +0x14, PDB layout / native vptr audit
     CEnginePrimitiveManagerWeaponTrails(CArray<CEngineScene*>&);

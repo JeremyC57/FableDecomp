@@ -2,9 +2,9 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A75FC0, length 80 bytes.
 // Leaf: ?MakeRegion@CNavQuadTreeNode@@MAE_NPBVCNavRegion@@AAV?$list@PAVCANavQuadTreeNode@@V?$allocator@PAVCANavQuadTreeNode@@@std@@@std@@@Z
 // Shape: the region in ebx, the list in edi, `this` in esi, the first three results merged into one `mov al,1` exit, the fourth call's al returned directly, `ret 8`.
-struct CNavRegion;
+class CNavRegion;
 struct CNavNodeList;
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -25,7 +25,7 @@ struct CANavQuadTreeNode {
     virtual void SetNeighbour(long side, CANavQuadTreeNode* neighbour);   // slot 17 (+0x44)
     virtual void CalculateChildrenNeighbours();   // slot 18 (+0x48)
 };
-struct CNavQuadTreeNode : CANavQuadTreeNode {
+class CNavQuadTreeNode : public CANavQuadTreeNode { public:
     unsigned char      _pad04[0xc];
     CANavQuadTreeNode* m_pChildren[4];             // +0x10
     virtual bool MakeRegion(const CNavRegion* region, CNavNodeList& list);

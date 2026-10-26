@@ -11,27 +11,27 @@
 // Layout: as the landed sibling InitialiseTeleportMarkers 0x0082ABD0 (PRegion +0xb8; GUI def marker-graphics array +0x958,
 //   8-byte entries); the thing's def index (unsigned short) +0x8c; the information list at thing-lists +0x14.
 // Shape: the Teleport model; the followed component is HasTC + the const GetTC (0x4365B0 copy) assigned over a null default.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                    // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);            // 0x009AD410
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0 (the const copy)
 };
-struct CThing;
-struct CTCFollowed {                               // interface 0xbc
+class CThing;
+class CTCFollowed { public:                               // interface 0xbc
     bool IsFollower(const CThing* thing) const;    // 0x006D4D70
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                    // +0x44
@@ -66,7 +66,7 @@ template <class T> struct _List_node {
 template <class T> struct list {                   // STLport list: the header node pointer
     _List_node<T>* _M_node;
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex);    // 0x004FC190
     long GetCurrentRegionNumber();                 // 0x004FB150
 };
@@ -79,7 +79,7 @@ struct CArray_MarkerGraphics {                     // CArray<SMarkerGraphics>: b
     SMarkerGraphics* m_pEnd;
     SMarkerGraphics& operator[](unsigned long i) { return m_pBegin[i]; }
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad00[0x958];
     CArray_MarkerGraphics MiniMapMarkerGraphics;   // +0x958
 };
@@ -88,31 +88,31 @@ struct CThingLists {
     unsigned char _pad00[0x14];
     list<CThing*> InformationThings;               // +0x14
 };
-struct CThingManager {
+class CThingManager { public:
     void*        __vftable;
     CThingLists* Lists;                            // +0x04
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual CThingManager* GetThingManager();      // slot 4 (+0x10)
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();              // slot 13 (+0x34)
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature() const;         // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     const CPlayer* GetMainPlayer() const;          // 0x00449960 (the const overload)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     const CPlayerManager* PPlayerManager;          // +0x1c
     unsigned char   _pad20[4];
     CWorld*         PWorld;                        // +0x24 scoped_ptr<CWorld>
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CRegion;
-struct CMiniMapDisplay {
+class CRegion;
+class CMiniMapDisplay { public:
     virtual void v00();
     unsigned char _pad04[0xb4];                    // +0x04 .. +0xb8
     CRegion*      m_pRegion;                       // +0xb8 (retail)

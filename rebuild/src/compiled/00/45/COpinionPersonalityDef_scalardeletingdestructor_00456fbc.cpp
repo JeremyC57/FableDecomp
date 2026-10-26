@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct COpinionPersonalityDef { int f0; };
+class COpinionPersonalityDef { public: int f0; };
 extern void __fastcall COpinionPersonalityDef_dtor(COpinionPersonalityDef* def);
 extern void __cdecl engine_operator_delete(void* p);
 

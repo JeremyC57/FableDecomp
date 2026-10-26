@@ -17,21 +17,21 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
 };
 
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     unsigned char _body[0x3c - 4];                          // +0x04
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 
-struct CQuickAccessItemButtonGuiDef : CParentDefClassBase {   // vtable 0x012360A4, retail sizeof 0x50
+class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:   // vtable 0x012360A4, retail sizeof 0x50
     long      ButtonGraphic;                                // +0x3c
     C2DVector Position;                                     // +0x40
     C2DVector Offset;                                       // +0x48

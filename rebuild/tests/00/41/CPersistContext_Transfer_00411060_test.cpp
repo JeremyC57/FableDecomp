@@ -3,13 +3,13 @@
 // CPersistContext::Transfer(name, CWideString&): the default is a copy of a default-constructed CWideString (helper with a named
 // return); the temporary dies before the call, the default after it
 static long g_ctor, g_copy, g_dtor, g_calls; static bool g_defaultEmpty;
-struct CWideString {
+class CWideString { public:
     int m_len;
     CWideString() : m_len(0) { ++g_ctor; }
     CWideString(const CWideString& other) : m_len(other.m_len) { ++g_copy; }
     ~CWideString() { ++g_dtor; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long pad[11];
     void Transfer(const char* name, CWideString& value, const CWideString& def) { ++g_calls; g_defaultEmpty = def.m_len == 0 && &def != &value && std::strcmp(name, "Name") == 0 && g_ctor + g_copy - g_dtor == 2; }
     static CWideString DefaultValue() { CWideString value; return value; }

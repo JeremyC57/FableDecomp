@@ -15,7 +15,7 @@
 //   mov ecx,esi ; pop esi ; jmp 0xaa8490   // ~first (tail)
 
 // 4-byte CCharString (buffer pointer). Non-inline dtor -> real call.
-struct CCharString {
+class CCharString { public:
     char* buf;
     ~CCharString();
 };

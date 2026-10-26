@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CPlayer;
-struct CThing { unsigned char m_flags; CPlayer* m_player; bool IsDead() const { return (m_flags & 1) != 0; } CPlayer* GetPlayer() { return m_player; } };
-struct CPlayer { CThing* m_creature; long m_mode; int m_modeCalls; CThing* GetPlayerCreature() { return m_creature; } void AddMode(long mode, bool) { m_mode = mode; ++m_modeCalls; } };
-struct CPlayerManager { CPlayer* m_main; CPlayer* GetMainPlayer() { return m_main; } };
+class CPlayer;
+class CThing { public: unsigned char m_flags; CPlayer* m_player; bool IsDead() const { return (m_flags & 1) != 0; } CPlayer* GetPlayer() { return m_player; } };
+class CPlayer { public: CThing* m_creature; long m_mode; int m_modeCalls; CThing* GetPlayerCreature() { return m_creature; } void AddMode(long mode, bool) { m_mode = mode; ++m_modeCalls; } };
+class CPlayerManager { public: CPlayer* m_main; CPlayer* GetMainPlayer() { return m_main; } };
 static CPlayerManager g_manager;
-struct CTCFishing {
+class CTCFishing { public:
     void* vptrSlot; CThing* ParentThing; long Stage; bool StageInitialised; bool m_canCreate; bool m_lastArg;
     CPlayerManager* GetPlayerManager() { return &g_manager; }
     bool CreateFish(bool arg) { m_lastArg = arg; return m_canCreate; }

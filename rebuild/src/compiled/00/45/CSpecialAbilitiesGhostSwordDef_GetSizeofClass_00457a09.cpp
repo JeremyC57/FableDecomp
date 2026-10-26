@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 typedef unsigned long ulong;
-struct CSpecialAbilitiesGhostSwordDef {};
+class CSpecialAbilitiesGhostSwordDef { public:};
 ulong __fastcall CSpecialAbilitiesGhostSwordDef_GetSizeofClass(CSpecialAbilitiesGhostSwordDef* self)
 {
     (void)self;

@@ -20,12 +20,12 @@ struct IDirectInput8_Retail {                     // COM
     virtual long __stdcall CreateDevice(void* guid, IDirectInputDevice8_Retail** device, void* outer);
     virtual long __stdcall EnumDevices(unsigned long devClass, void* callback, void* ref, unsigned long flags);   // slot 4 (+0x10)
 };
-struct CInputManagerDX {
+class CInputManagerDX { public:
     unsigned char        _pad[0x80];
     IDirectInput8_Retail* m_pDirectInput;          // +0x80
 };
 long __stdcall EnumJoysticksCallback_00ab6b10(const void* instance, void* ref);   // 0x00AB6B10
-struct CInputManagerDX;
+class CInputManagerDX;
 struct CJoystickDX {                               // retail layout: the device at +0xd38, the acquired flag at +0xd3c, the DX manager at +0xd40 (the engine header, from Ego_r, is 8 bytes longer)
     virtual void v000();
     virtual void v001();

@@ -15,8 +15,8 @@
 // the second (edx) slot is an unused placeholder, the 'flags' word is the single
 // stack parameter (at [esp+8] after the push esi), matching the retail test.
 
-struct CLandscapeBackgroundPatch
-{
+class CLandscapeBackgroundPatch
+{ public:
     fable_u32 vtbl; // this+0x00 (layout inferred; only 'this' is used)
 };
 

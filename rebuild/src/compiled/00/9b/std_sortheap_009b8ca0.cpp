@@ -53,15 +53,15 @@ template <class T> struct vector : _Vector_base<T> {
         this->_M_finish = __uninitialized_copy((const T*)x._M_start, (const T*)x._M_finish, this->_M_start, tag);
     }
 };
-template <class T> struct CArray : vector<T> { };
+template <class T> class CArray : public vector<T> { public: };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
 };
-struct CDefClassBase;
-struct CDefinitionManager {
-    struct CDefClassInfo {                      // 0x14 bytes in retail
+class CDefClassBase;
+class CDefinitionManager { public:
+    class CDefClassInfo { public:                      // 0x14 bytes in retail
         CCharString Name;                       // +0x00
         CDefClassBase* (__cdecl* AllocFunc)();  // +0x04
         CArray<unsigned long> GlobalIndices;    // +0x08

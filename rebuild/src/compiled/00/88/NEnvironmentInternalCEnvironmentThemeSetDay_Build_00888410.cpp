@@ -12,7 +12,7 @@
 #undef CEnvironmentThemeDef
 #endif
 #include <stddef.h>
-struct CGameDefinitionManager; struct CEnvironmentDef; struct CEnvironmentLookupTexture;
+class CGameDefinitionManager; class CEnvironmentDef; struct CEnvironmentLookupTexture;
 struct CEnvironmentThemeDefRetail { unsigned char DefinitionBase[60];float TimeOfDay;unsigned char Parameters[132]; };
 template<class T>struct CArrayRetail {
  T* First;T* Last;T* Capacity;
@@ -25,13 +25,13 @@ struct CEnvironmentThemeDaySetDefRetail {
  long ColourLookupColumn;
 };
 namespace NEnvironmentInternal {
-struct CBlendedEnvironmentTheme {
+class CBlendedEnvironmentTheme { public:
  float TimeOfDay;float Colours[19][4];float Scalers[30];
  struct CIDrawEnvironmentTextureSet {CArrayRetail<long> Textures;CArrayRetail<float> Blends;} TextureSets[3];
  CBlendedEnvironmentTheme();~CBlendedEnvironmentTheme();
  void Build(CEnvironmentDef*,CEnvironmentLookupTexture*,CEnvironmentThemeDaySetDefRetail*,CEnvironmentThemeDefRetail*,long);
 };
-struct CEnvironmentThemeSetDay {
+class CEnvironmentThemeSetDay { public:
  CArrayRetail<CBlendedEnvironmentTheme> Themes;
  void Build(CGameDefinitionManager*,CEnvironmentDef*,CEnvironmentLookupTexture*,CEnvironmentThemeDaySetDefRetail*);
 };

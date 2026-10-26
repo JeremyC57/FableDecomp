@@ -1,7 +1,7 @@
 #include <cstring>
 
-struct CGameEvent
-{
+class CGameEvent
+{ public:
     long type;
     unsigned char player;
     unsigned char data[0x20];
@@ -9,8 +9,8 @@ struct CGameEvent
     unsigned char valid;
     unsigned char replacement;
 };
-struct CGameEventPackage
-{
+class CGameEventPackage
+{ public:
     unsigned long sequence;
     unsigned long eventCount;
     CGameEvent events[40];

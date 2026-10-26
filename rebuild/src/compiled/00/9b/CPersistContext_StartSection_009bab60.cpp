@@ -10,7 +10,7 @@
 // CPersistContextWriteSection {CCharString Name; long StartPosition}.
 // Shape: the save stream re-read from +0x28 for every call; the two string temporaries live in the dead argument slots
 // (section's, then name's); `ret 8` on both exits.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
     CCharString& operator+=(const CCharString& other);      // 0x0099F0A0
@@ -19,21 +19,21 @@ struct CCharString {
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
     virtual long GetPosition();                             // slot 2
     void WriteLong(long value);                             // 0x00993EB0
     void WriteNullTerminatedString(const CCharString& value);   // 0x00995AE0
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
-struct CPersistContextWriteSection {
+class CPersistContextWriteSection { public:
     CCharString Name;                                       // +0x00
     long        StartPosition;                              // +0x04
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void*                   PDefinitionManager;             // +0x00
     void*                   PSymbolMap;                     // +0x04
     void*                   PParser;                        // +0x08

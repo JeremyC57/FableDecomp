@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CThing;
+class CThing;
 struct CRbNode {
     long     _M_color;
     CRbNode* _M_parent;
@@ -35,12 +35,12 @@ struct CTargetingSpiritDef {
     unsigned char _pad08[0x74 - 0x08];
     CDistanceMap Distances;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
 static CTargetingSpiritDef* g_def = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTargetingSpiritDef>* out) const;
 };
 bool CDefClassBase::GetSubDef(CDefPointer<CTargetingSpiritDef>* out) const
@@ -54,7 +54,7 @@ struct CThingDefHolder {
     CDefClassBase* PDef;
 };
 static int g_baseActivate = 0;
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     void* __vfptr;
     CThingDefHolder* ParentThing;
     unsigned char _pad08[0x38 - 0x08];

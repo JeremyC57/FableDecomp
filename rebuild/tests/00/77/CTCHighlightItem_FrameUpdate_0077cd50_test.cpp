@@ -18,11 +18,11 @@ static int fails = 0;
 // PParticleEmitter +0x20 (CIntelligentPointer<CThing>); CTCBase ParentThing +0x04; retail CThing def object +0x70.
 // The def pointer is read once into edi after GetSubDef and released by hand (`dec [edi+4] ; jne ; call [vtbl+4]`).
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CHighlightItemDef {
+class CHighlightItemDef { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1 (+0x04): called when the last reference goes
     long          RefCount;                          // +0x04
@@ -34,7 +34,7 @@ struct CHighlightItemDef {
     float         StartDelaySeconds;                 // +0x44
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() {}
 };
@@ -63,7 +63,7 @@ template <class T> struct CDefPointerMember {
     T* operator->() const { return Object; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefPointerMember<CThingDef> PDef;               // +0x70 CDefPointer<const CThingDef>
     const C3DVector& GetPosition() const;            // 0x004C73D0

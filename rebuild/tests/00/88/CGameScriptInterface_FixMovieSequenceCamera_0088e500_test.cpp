@@ -1,7 +1,7 @@
 #include <cstdio>
 
 unsigned char g_movieSeqCameraFixed;
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
 void __fastcall CGameScriptInterface_FixMovieSequenceCamera(CGameScriptInterface* self, void* edx, unsigned char enabled)
 {

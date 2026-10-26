@@ -7,16 +7,16 @@ static int g_termAt = 1000;
 static void (*g_hook)(int frame) = 0;
 static void Log(const std::string& s) { char b[16]; std::sprintf(b, "@%d", g_frame); g_log += s; g_log += b; g_log += ";"; }
 static void Reset(int termAt) { g_log = ""; g_frame = 0; g_termAt = termAt; g_hook = 0; }
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long length = -1) : S(text) { (void)length; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     std::string Name;
     CScriptThing() { }
     CScriptThing(const std::string& name) : Name(name) { }
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating() { return g_frame >= g_termAt; }
 };
 static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL %s [%s]\n", addr, what, g_log.c_str()); return 1; }
@@ -29,7 +29,7 @@ struct CScriptThingA : CScriptThing {
     CScriptThingA(const std::string& n) : CScriptThing(n) { }
     bool IsAlive() const { return g_altarAlive; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() { ++g_frame; }
     CScriptThingA GetThingWithScriptName(const CCharString& name) { return CScriptThingA(name.S); }
     CScriptThing GetHero() { return CScriptThing("HERO"); }

@@ -1,9 +1,9 @@
 #include <cstdio>
 enum EPlayerMode { PLAYER_MODE_3 = 3 };
-struct CPlayerManager { long m_main; long GetMainPlayerNumber() const { return m_main; } };
-struct CThing { int m_killed; bool m_silently; void Kill(bool silently) { ++m_killed; m_silently = silently; } };
+class CPlayerManager { public: long m_main; long GetMainPlayerNumber() const { return m_main; } };
+class CThing { public: int m_killed; bool m_silently; void Kill(bool silently) { ++m_killed; m_silently = silently; } };
 struct CIntelligentPointer_CThing { CThing* m_pPointer; CThing* GetPItem() const { return m_pPointer; } };
-struct CPlayer {
+class CPlayer { public:
     CPlayerManager* PlayerManager; long Number; CIntelligentPointer_CThing PlayerCharacter;
     int m_resets; int m_lastMode; bool m_lastFlag;
     bool IsMainPlayer() const { long number = Number; return number == PlayerManager->GetMainPlayerNumber(); }

@@ -12,7 +12,7 @@ struct CMeshInfoSize {                             // the draw-size record at +0
     long  m_b;                                     // +0x04
     float m_x;                                     // +0x08 (read by 0x00837060)
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     unsigned char _pad[0xe6];
     CMeshInfoSize m_size;                          // +0xe6
 };
@@ -20,7 +20,7 @@ struct CMeshDataBank {
 
 CMeshDataBank* GetMeshBank();                      // 0x004C79A0
 
-struct CThingTrackNode {
+class CThingTrackNode { public:
     long GetDrawRecordA();
 };
 

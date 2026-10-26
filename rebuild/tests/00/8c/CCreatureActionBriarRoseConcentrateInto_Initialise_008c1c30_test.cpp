@@ -4,23 +4,23 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 static int g_unsheathes = 0, g_baseInit = 0, g_modes = 0, g_effects = 0; static char g_anim[32];
 static CThing* g_modeCreature = 0; static CThing* g_modeEnemy = 0; static bool g_modeImposter = false;
 static long g_effectType = -1; static const C3DVector* g_effectPos = 0;
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} };
-struct CSpecialEffectsDef {
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
+class CSpecialEffectsDef { public:
     long m_refCount; int Destroyed; const char* Known; long KnownType;
     void Destroy() { ++Destroyed; }
     bool GetEffectFromString(const CCharString& n, long& type) const { if (std::strcmp(n.s, Known) != 0) return false; type = KnownType; return true; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p && --m_p->m_refCount == 0) m_p->Destroy(); }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     long m_refCount; int Destroyed; CSpecialEffectsDef* Effects;
     void Destroy() { ++Destroyed; }
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>& out) { if (!Effects) return false; ++Effects->m_refCount; out.m_p = Effects; return true; }
@@ -31,8 +31,8 @@ struct CDefClassReference {
     ~CDefClassReference() { if (m_p && --m_p->m_refCount == 0) m_p->Destroy(); }
     CDefClassBase* operator->() const { return m_p; }
 };
-struct CTCCreatureModeManager;
-struct CThing {
+class CTCCreatureModeManager;
+class CThing { public:
     unsigned char m_flags91; CDefClassBase* m_pDef; C3DVector Pos; CTCCreatureModeManager* Modes;
     const C3DVector& GetPosition() const { return Pos; }
     void UnsheatheMeleeWeapon_00666820() { ++g_unsheathes; }
@@ -43,7 +43,7 @@ struct CModeBriarRoseConcentrate {
     CModeBriarRoseConcentrate(CThing* c, CThing* e, bool i) { g_modeCreature = c; g_modeEnemy = e; g_modeImposter = i; }
 };
 struct CCountedModePointer { CModeBriarRoseConcentrate* m_pObject; CCountedModePointer(CModeBriarRoseConcentrate* o) : m_pObject(o) {} };
-struct CTCCreatureModeManager { bool AddMode(CCountedModePointer m) { ++g_modes; delete m.m_pObject; return true; } };
+class CTCCreatureModeManager { public: bool AddMode(CCountedModePointer m) { ++g_modes; delete m.m_pObject; return true; } };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer { CThing* GetCreature() const { return GetPItem(); } };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
@@ -54,13 +54,13 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature;
     void SetAnimationName(const CCharString& n) { std::strcpy(g_anim, n.s); }
     void Initialise() { ++g_baseInit; }
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_BriarRoseConcentrateInto : CCombatActionBase { bool Imposter; CIntelligentPointerCreature PEnemy; void Initialise(); };
+class CCreatureAction_BriarRoseConcentrateInto : public CCombatActionBase { public: bool Imposter; CIntelligentPointerCreature PEnemy; void Initialise(); };
 
 void CCreatureAction_BriarRoseConcentrateInto::Initialise()
 {

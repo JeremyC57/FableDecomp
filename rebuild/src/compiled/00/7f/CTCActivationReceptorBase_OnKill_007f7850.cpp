@@ -8,10 +8,10 @@
 // not used: PDB 16-byte vector, see 0x007F7710).
 // Shape: the `push ecx` frame word receives the returned functor; `this` is pushed as the 4-byte functor (a class with a
 // user constructor but an implicit copy, so a plain dword); `last` is loaded before `first` (right-to-left arguments).
-struct CThing;
-struct CTCActivationReceptorBase;
+class CThing;
+class CTCActivationReceptorBase;
 
-struct CInformTriggerOfReceptorDeath {         // 4-byte functor
+class CInformTriggerOfReceptorDeath { public:         // 4-byte functor
     CTCActivationReceptorBase* m_pReceptor;
     CInformTriggerOfReceptorDeath(CTCActivationReceptorBase* receptor) : m_pReceptor(receptor) { }
     void operator()(CThing* trigger);
@@ -28,7 +28,7 @@ struct CThingPtrVector {                       // retail std::vector<CThing*> (1
     CThing** end() { return m_last; }
 };
 
-struct CTCActivationReceptorBase {             // retail layout (see 0x007F7710)
+class CTCActivationReceptorBase { public:             // retail layout (see 0x007F7710)
     virtual void v00();
     unsigned char   _body04[8];                // +0x04 CTCBase
     bool            Activated;                 // +0x0c

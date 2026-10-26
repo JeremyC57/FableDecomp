@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BlockCounter {
+class CCreatureAction_BlockCounter { public:
     void* vftable;
     int destroyed;
 };

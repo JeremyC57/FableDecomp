@@ -3,7 +3,7 @@
 #include <cstring>
 
 static int g_deletes = 0, g_destroys = 0;
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t) : text(t) { }
     CCharString(const CCharString& o) : text(o.text) { }
@@ -21,7 +21,7 @@ template <class T> struct SCountBlock {
     SCountBlock(T* item) : m_references(1), m_pfnDestroy(&T::DeleteData), m_pItem(item) { }
     static void operator delete(void* p) { ++g_deletes; ::operator delete(p); }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; SCountBlock<T>* Info;
     CCountedPointer(T* item) : Data(item), Info(new SCountBlock<T>(item)) { }
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->m_references; }
@@ -57,7 +57,7 @@ struct CBindingMap {
         Dirty = true;
     }
 };
-struct CScriptBase {
+class CScriptBase { public:
     CBindingMap EntityScriptBindings;
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding)
     {

@@ -12,7 +12,7 @@
 //          `result == 2` returned int-width. A same-TU LowerBound stand-in lets the elapsed-frame fild temporary reuse
 //          the lookup key's slot as retail.
 // Layout: the landed Singsong model (PBrain +4); the drunk component's level at +0x10.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -38,8 +38,8 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase
-{
+class CThingCreatureBase
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -65,14 +65,14 @@ struct CTCDrunk {                               // interface 0xc3
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 extern float g_DrunkennessPerFrame;             // 0x013BAE70
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CCreatureActionBase
-{
+class CCreatureActionBase
+{ public:
     virtual void v00();
     unsigned char _body[0xa4];
 };
@@ -81,16 +81,16 @@ struct CCreatureAction_PlayAnimationBase : CCreatureActionBase
     unsigned char _anim[0xbc - 0xa8];
     ~CCreatureAction_PlayAnimationBase();           // 0x00693EF0
 };
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureAction_PlayAnimationBase
-{
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureAction_PlayAnimationBase
+{ public:
     CCharString LoopAnim;                           // +0xbc
     CCharString OutAnim;                            // +0xc0
     CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
                                                const CCharString& loop, const CCharString& out, float duration,
                                                bool a, bool b, bool c);   // 0x008427E0
 };
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;                   // +0x18
 };

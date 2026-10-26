@@ -15,7 +15,7 @@ struct CBasicStringChar {
     char*         PData;                                // +0x00
     unsigned long StringLength;                         // +0x04
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;                              // +0x00
 };
 

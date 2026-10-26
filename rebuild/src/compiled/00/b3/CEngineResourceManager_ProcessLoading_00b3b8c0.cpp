@@ -6,7 +6,7 @@ struct SubObj {
     void Do(int a, double d);   // extern -> emits a call, cleans 12 bytes (__fastcall)
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     char pad[0x10];
 };
 

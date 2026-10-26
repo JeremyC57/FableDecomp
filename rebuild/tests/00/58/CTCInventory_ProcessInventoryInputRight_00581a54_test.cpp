@@ -9,7 +9,7 @@ struct CTCInventoryBase {
     void ProcessInventoryInputRight() { ++g_baseCalls; }
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     bool EnableQuickAccessAssign;
     bool EnableQuickAccessRemove;
     void SetQuickAccessAssign(bool assign) { ++g_assignCalls; g_assignArg = assign; EnableQuickAccessAssign = assign; }

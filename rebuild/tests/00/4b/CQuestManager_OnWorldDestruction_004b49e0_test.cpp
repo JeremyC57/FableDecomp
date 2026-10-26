@@ -11,7 +11,7 @@ struct CBoastList {
     void clear() { m_size = 0; if (g_logCount < 7) g_log[g_logCount++] = m_tag; }
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned long FrameBoastsLastUpdated;
     CBoastList    Boasts;
     CBoastList    AcceptedBoasts;

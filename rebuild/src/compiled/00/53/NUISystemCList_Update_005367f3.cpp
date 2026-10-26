@@ -22,7 +22,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void DestroySelf();                      // slot 1 (+4)
 };
-struct CUIDef : CDefVirtual, CRefCounted {
+class CUIDef : public CDefVirtual, public CRefCounted { public:
     __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) DestroySelf(); }
     unsigned char _pad08[0x220 - 8];
     bool          IsFrontList;                       // +0x220 (name not recovered)
@@ -34,7 +34,7 @@ public:
     T* operator->() const { return Object; }
     __forceinline ~CDefPointer() { if (Object) const_cast<CUIDef*>(Object)->ReleaseTemporary(); }
 };
-struct CComponent;
+class CComponent;
 extern std::list<CComponent*> g_ComponentList;      // 0x013B8A98
 struct CActionList;
 struct CStateHolder {
@@ -93,7 +93,7 @@ struct CComponentBase {
     virtual void RefreshScrollBars();                // slot 186 (+0x2E8)
     virtual void RefreshChildren();                  // slot 187 (+0x2EC)
 };
-struct CComponent : CComponentBase, CStateHolder {
+class CComponent : public CComponentBase, public CStateHolder { public:
     unsigned char _pad_0x08[0x13C];
     long          CurrentState;                      // +0x144
     void Update(float time);                         // 0x0052C7E0
@@ -103,7 +103,7 @@ template <class T> struct Vector {
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     T& operator[](unsigned int n) { return *(_M_start + n); }
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
     unsigned char       _pad_0x148[0x14];
     long                SelectedChild;               // +0x15C
     float               LastInputTime;               // +0x160

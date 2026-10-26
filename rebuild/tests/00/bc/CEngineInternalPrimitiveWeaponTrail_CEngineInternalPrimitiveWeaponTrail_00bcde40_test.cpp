@@ -6,8 +6,8 @@ static char g_log[16]; static int g_n = 0;
 static void Log(char c) { g_log[g_n++] = c; g_log[g_n] = 0; }
 struct CTrailArray { void* _M_start; void* _M_finish; void* _M_end_of_storage; ~CTrailArray() { Log('T'); } };
 struct CFloatArray { float* m_pData; long m_count; long m_capacity; ~CFloatArray() { if (m_pData) { Log('F'); std::free(m_pData); } } };
-struct CIVCountedPointeeBase { virtual void v00() {} ~CIVCountedPointeeBase() { Log('B'); } };
-struct CEngineInternalPrimitiveWeaponTrail : CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public: virtual void v00() {} ~CIVCountedPointeeBase() { Log('B'); } };
+class CEngineInternalPrimitiveWeaponTrail : public CIVCountedPointeeBase { public:
     CTrailArray Trail;
     CFloatArray TrailElementCreationTime;
     virtual void v00() {}

@@ -10,9 +10,9 @@
 // call) and the pointer is nulled; then the base destructor and the deleting tail. The vtable
 // (and this `??_G`) is emitted because the TU constructs the object (MakeOne); the destructor is
 // `__forceinline` so its body sits inside the `??_G` (VC7.1 would otherwise emit `??1` out of line).
-struct CAInputProcess;
+class CAInputProcess;
 
-struct CInputProcessManager {
+class CInputProcessManager { public:
     void RemoveInputProcess(CAInputProcess* process);    // 0x00A0D780
 };
 
@@ -20,7 +20,7 @@ struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();           // slot 0; 0x0099A300 (called directly from the derived dtor)
 };
 
-struct CAInputProcess : CBaseClassNonCopyable {
+class CAInputProcess : public CBaseClassNonCopyable { public:
     CInputProcessManager* PPlayerInterface;     // +0x04
     void* InputProcessListPos[3];               // +0x08 CLinkedListPosition
     __forceinline virtual ~CAInputProcess()

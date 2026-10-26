@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     long PercentageChance; float SecondsDuration; float SecondsToWaitBeforeRepeat; long Anim_TablePos; long InterfaceType;
     virtual ~CCombatAbilityData() { }
     virtual int Kind() const { return 1; }
 };
 
-struct CCombatAbilityMeleeAttackData : CCombatAbilityData {
+class CCombatAbilityMeleeAttackData : public CCombatAbilityData { public:
     bool Blockable; bool Knockdown; float Damage;
     virtual int Kind() const { return 2; }
 };

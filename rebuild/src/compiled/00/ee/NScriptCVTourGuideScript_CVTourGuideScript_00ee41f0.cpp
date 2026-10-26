@@ -1,5 +1,5 @@
 // NScript::CV_TourGuideScript::CV_TourGuideScript(CScriptDataBase* data, CGameScriptInterface& game) -- the tour-guide village script's ctor: script base and interface/data pair, vtable 0x012F46B8, the 18 waypoint records (three strings each), the three five-string response tables and the NextTourWaypoint handle
-// Leaf: ??0CV_TourGuideScript@NScript@@QAE@PAUCScriptDataBase@@AAUCGameScriptInterface@@@Z
+// Leaf: ??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterface@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EE41F0, 176 bytes, `ret 8`. Its only caller is the factory 0x00EE6C00
 //   (`push 178h`, CV_TourGuideScript::Alloc) registered at 0x00CD97BC under "S_VTG" / "V_TourGuide". PDB:
 //   ??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z.
@@ -13,9 +13,9 @@
 //   `__declspec(novtable)` CLevelScriptBase<T> before the derived vtable store; arrays of classes with an inline constructor
 //   and no destructor in the TU become inline counted loops (`mov ebx,12h` ... `dec ebx ; jne`); the scalars stay
 //   uninitialised; CScriptThing() is CBaseClass() + its vtable + the two zeroed counted-pointer words.
-struct CGameScriptInterface;
-struct CScriptDataBase;
-struct CScriptBase {                                    // 0x40 bytes, the quest-script root
+class CGameScriptInterface;
+class CScriptDataBase;
+class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f
     CScriptBase();                                      // 0x00CB8110
@@ -26,16 +26,16 @@ struct __declspec(novtable) CLevelScriptBase : CScriptBase {
     TData*                MasterScriptData;             // +0x44
     CLevelScriptBase(CScriptDataBase* data, CGameScriptInterface& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
 };
-struct CCharString { void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
-struct CBaseClass { virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0 (vtable 0x01231710 = CBaseClass)
-template<class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
+class CBaseClass { public: virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0 (vtable 0x01231710 = CBaseClass)
+template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                 // +0x04
     CScriptThing() : CBaseClass(), PImp() { }
     virtual ~CScriptThing();
 };
 namespace NScript {
-struct CQ_SunnyvaleMasterData;
+class CQ_SunnyvaleMasterData;
 class CV_TourGuideScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {   // vtable 0x012F46B8
 public:
     struct WaypointData {                               // 12 bytes

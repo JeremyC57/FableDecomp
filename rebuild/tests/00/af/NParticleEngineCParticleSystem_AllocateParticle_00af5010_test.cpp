@@ -18,7 +18,7 @@ static int fails = 0;
 // and the old prev read before the node's links are stored (named `prev` local).
 // Tried: `return 0` vs an `if (particle)` guard around the append (same code), STLport link order vs the prev local (this file).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CIEngine;
+class CIEngine;
 inline void* operator new(unsigned int, void* where) { return where; }
 struct CParticleEmitterList {
     void* m_activeHeader;                   // +0x00 (STLport list header)
@@ -31,7 +31,7 @@ struct CParticleEmitterManager {
 };
 CParticleEmitterManager* GetParticleEmitterManager();   // 0x00AEAAF0
 namespace NParticleEngine {
-struct CParticle {
+class CParticle { public:
     unsigned char _particle[0x9c];
     CParticle();                            // 0x00AF7A90
     static void* __fastcall operator new(unsigned int size);   // 0x00AF86C0 (particle pool)
@@ -67,7 +67,7 @@ struct CParticleList {                      // STLport list<CParticle*> (one hea
     }
     void push_back(CParticle* const& x) { insert(end(), x); }
 };
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char _system[0x1c];
     CParticleList Particles;                // +0x1c
     unsigned char _system2[0x28];

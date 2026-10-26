@@ -59,7 +59,7 @@ struct CLocalLightElementLink {
 };
 struct CManagerLocalLight;
 struct CManagerShadowedSpotLight;
-struct CEngineLocalLightArray;
+class CEngineLocalLightArray;
 
 template <class T> struct CPointerVector {         // STLport vector<T*> (12 bytes)
     T** _M_start;
@@ -74,7 +74,7 @@ template <class T> struct CPointerVector {         // STLport vector<T*> (12 byt
     }
 };
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00();
     void* Engine;                                  // +0x04
     bool  Enabled;                                 // +0x08
@@ -87,7 +87,7 @@ struct CEngineFrameListener {                      // secondary base at +0x0c
     unsigned char _pad04[8];
 };
 
-struct CEngineLightingManager : CEnginePrimitiveManager, CEngineFrameListener {
+class CEngineLightingManager : public CEnginePrimitiveManager, public CEngineFrameListener { public:
     unsigned char                             _pad18[0xac - 0x18];
     CPointerVector<CManagerLocalLight>        LocalLightList;          // +0xac
     CPointerVector<CManagerShadowedSpotLight> ShadowedSpotLightList;   // +0xb8

@@ -8,17 +8,17 @@
 // Shape: the &PCreature address stays in edi (named by the compiler, not the source); the component rides in esi for its two
 // calls; the player chain pushes 0x22 before evaluating its object expression (natural VC argument-first order). Retail
 // CCreatureActionBase is 0xa8 bytes (the PDB build is larger), so `this` is modelled locally.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CPlayer {
+class CPlayer { public:
     void RemoveMode(long mode);             // 0x00634190 (EPlayerMode)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -37,7 +37,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     void CancelAimingWeapon();              // 0x00789FF0
     void ResetProjectileWeaponMode();       // 0x00789B30
 };
@@ -47,7 +47,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -55,7 +55,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     void Initialise();                      // 0x00694D10
 };
 
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     void Initialise();
 };
 

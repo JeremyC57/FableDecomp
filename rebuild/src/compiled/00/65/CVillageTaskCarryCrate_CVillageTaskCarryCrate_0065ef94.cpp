@@ -8,9 +8,9 @@
 // after it), PCrateStack's out-of-line converting constructor, then Pickup / Priority. Member names from the engine header
 // (CVillageTaskCarryCrate.h, same offsets); local polymorphic model because the header flattens the vptr.
 #pragma optimize("s", on)
-struct CBaseObject;
-struct CThing;
-struct CThingTrackNode;
+class CBaseObject;
+class CThing;
+class CThingTrackNode;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -33,7 +33,7 @@ struct CVillageTask {
     void* m_pVillage;                       // +0x04
     CVillageTask();                         // 0x0099A380
 };
-struct CVillageTaskCarryCrate : CVillageTask {
+class CVillageTaskCarryCrate : public CVillageTask { public:
     CIntelligentPointerConstThing CreatureAssignedToTask;   // +0x08
     CIntelligentPointerThing      PCrateStack;              // +0x10
     bool                          Pickup;                   // +0x18

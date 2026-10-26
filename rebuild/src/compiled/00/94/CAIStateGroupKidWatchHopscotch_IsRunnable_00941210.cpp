@@ -14,13 +14,13 @@
 // Layout: Ego_r.pdb CAIStateGroup_KidWatchHopscotch (PHopscotchBoard +0x14, HopscotchCentre +0x1c, HopscotchRadius +0x28,
 // CreationFrame +0x2c, FramesPerMin +0x34, Fatigued +0x38, ActivationCount +0x3c, ActivationFrequency +0x40);
 // CThingPhysicsMeshInfo from Ego_r.pdb (ToCentre +0x08, BoundingCircleRadius +0x18). The engine header flattens the base.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
 };
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -48,10 +48,10 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const C3DVector& GetPosition() const;       // 0x006A4D00
 };
-struct CThingObject : CThing { };
+class CThingObject : public CThing { public: };
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
@@ -67,14 +67,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned short BankIndex;                   // +0x00
     float          RenderSizeX;                 // +0x04
     C3DVector      ToCentre;                    // +0x08
     float          BoundingRadius;              // +0x14
     float          BoundingCircleRadius;        // +0x18
 };
-struct CTCPhysicsBase {                         // interface 2
+class CTCPhysicsBase { public:                         // interface 2
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -94,26 +94,26 @@ struct CTCPhysicsBase {                         // interface 2
     virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo();   // slot 93 (+0x174)
 };
 
-struct CIsHopscotchBoard { CIsHopscotchBoard() { } };
-struct CThingCompare_Nearest {
+class CIsHopscotchBoard { public: CIsHopscotchBoard() { } };
+class CThingCompare_Nearest { public:
     C3DVector Pos;
     CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template<class TFilter, class TCompare, class TThing>
     bool GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** ppBest) const;   // 0x00941450 <..>
 };
-struct CWorld {
+class CWorld { public:
     static long __fastcall GetWorldFrame();     // 0x0049D870
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     unsigned char _pad[0x14];
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

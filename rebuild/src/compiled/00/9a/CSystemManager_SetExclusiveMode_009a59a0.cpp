@@ -10,15 +10,15 @@
 extern "C" __declspec(dllimport) void* __stdcall GetCurrentProcess();
 extern "C" __declspec(dllimport) int __stdcall SetPriorityClass(void* process, unsigned long priorityClass);
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     virtual bool SetExclusiveMode(bool exclusive);  // slot 1
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     long SetExclusiveMode(bool exclusive);          // 0x009C0020 (ECreateDeviceSuccess)
 };
 
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad00[0x58];
     CInputManager* PInputManager;               // +0x58
     void* PInputManagerInfo;                    // +0x5c

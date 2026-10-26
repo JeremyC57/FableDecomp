@@ -4,7 +4,7 @@
 
 static int g_destroyed = 0;
 
-class CPreTransposedBoneMatrix {                                       // test stand-in for the element: one tag word
+struct CPreTransposedBoneMatrix {                                       // test stand-in for the element: one tag word
 public:
     long Tag;
     CPreTransposedBoneMatrix() : Tag(0) { }

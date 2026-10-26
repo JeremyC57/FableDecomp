@@ -2,9 +2,9 @@
 #include <stdlib.h>
 // Behaviour test for CQ_MinionCampScript::StartMinionSpawnTimer (0x00D9F200): the timer gets a whole-second wait inside [min, max].
 static long g_timer = -1, g_time = -1;
-struct CGameScriptInterface { virtual void SetTimer(long timer, long time) const { g_timer = timer; g_time = time; } };
+class CGameScriptInterface { public: virtual void SetTimer(long timer, long time) const { g_timer = timer; g_time = time; } };
 static CGameScriptInterface g_game; static CGameScriptInterface* g_pGameScriptInterface = &g_game;
-struct CTimer { long Handle; };
+class CTimer { public: long Handle; };
 class CScriptBase { public: void* __vftable; };
 class CQ_MinionCampScript : public CScriptBase {
 public:

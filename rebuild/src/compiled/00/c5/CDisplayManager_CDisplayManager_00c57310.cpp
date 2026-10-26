@@ -17,7 +17,7 @@ struct CDisplayManagerBase_00c57310 {      // vtable 0x012B5868
     ~CDisplayManagerBase_00c57310() { }
 };
 
-struct CDisplayManager : CDisplayManagerBase_00c57310 {   // vtable 0x012B8DF8
+class CDisplayManager : public CDisplayManagerBase_00c57310 { public:   // vtable 0x012B8DF8
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void ReleaseResources();       // slot 5
     __forceinline void DoReleaseResources() { ReleaseResources(); }

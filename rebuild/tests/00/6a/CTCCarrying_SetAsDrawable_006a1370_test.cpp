@@ -2,7 +2,7 @@
 // slot pointer is copied into a local (constructed and destroyed once per slot).
 #include <cstdio>
 static int g_ctors = 0, g_dtors = 0;
-struct CThing {
+class CThing { public:
     int Calls; bool Last;
     virtual void SetAsDrawable(bool drawable) { ++Calls; Last = drawable; }
     unsigned char Dead : 1;
@@ -33,7 +33,7 @@ struct CCarrySlotMap {
     unsigned long size() const { return m_pLast - m_pFirst; }
     SCarrySlotEntry& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00() {}
     CCarrySlotMap CarrySlots;
     void SetAsDrawable(bool drawable);

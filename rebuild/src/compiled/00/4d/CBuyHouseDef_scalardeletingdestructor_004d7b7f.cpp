@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CBuyHouseDef
-{
+class CBuyHouseDef
+{ public:
     void* vftable;
 };
 extern void* const g_CBuyHouseDef_vftable;

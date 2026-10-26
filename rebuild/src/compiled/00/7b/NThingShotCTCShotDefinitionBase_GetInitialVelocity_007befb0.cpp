@@ -9,7 +9,7 @@
 // bytes); the def's speed float at +0x3c.
 // Shape: the per-frame speed is a named float local in the `push ecx` slot (`fild [g] ; fdivr [def+3Ch] ; fstp [esp]`);
 // `(0.5f - random) * 0.4f + 1.0f` then `* speed` (fsubr / fmul / fadd / fmul [esp]).
-struct CThingShotDef {
+class CThingShotDef { public:
     unsigned char _pad[0x3c];
     float         Speed;                     // +0x3c
 };
@@ -18,13 +18,13 @@ extern long g_GameFramesPerSecond;           // 0x01375550
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();         // 0x0049D810
 };
 
 namespace NThingShot {
 
-struct CTCShotDefinitionBase {
+class CTCShotDefinitionBase { public:
     unsigned char        _pad[0x38];
     const CThingShotDef* PShotDef;           // +0x38 (PDB +0x3c)
     CWorld* GetWorld();                      // 0x00686A70 (CTCBase)

@@ -5,12 +5,12 @@
 #include <cstring>
 // Test doubles: a quest card TC with a counted definition (AddRef/DecRef counted, Release recorded), card things on
 // a sentinel ring, a CCharString is its text.
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* t = "") : Text(t) {}
 };
 static int g_releases;
-struct CQuestCardDef {
+class CQuestCardDef { public:
     long RefCount; bool IsVignette;
     CQuestCardDef(bool v) : RefCount(1), IsVignette(v) {}
     void Release() { ++g_releases; }
@@ -23,11 +23,11 @@ struct CQuestCardDefPointer {
     CQuestCardDefPointer(const CQuestCardDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CQuestCardDefPointer() { if (Object) Object->DecRef(); }
 };
-struct CTCQuestCard {
+class CTCQuestCard { public:
     CQuestCardDefPointer PDef; long FeatIndex; CCharString ScriptQuestName;
     CTCQuestCard(CQuestCardDef* d, long feat, const char* name) : PDef(d), FeatIndex(feat), ScriptQuestName(name) {}
 };
-struct CThing {
+class CThing { public:
     CTCQuestCard* Card; bool Dead;
     bool HasTC(long type) const { return type == 0x6c && Card != 0; }
     CTCQuestCard* GetTC(long) const { return Card; }
@@ -41,13 +41,13 @@ static void Ring(CCardNode* head, CCardNode* n, CThing** t, int count)
     for (int i = 0; i < count; ++i) { n[i]._M_data.Item = t[i]; prev->_M_next = &n[i]; n[i]._M_prev = prev; prev = &n[i]; }
     prev->_M_next = head; head->_M_prev = prev;
 }
-struct CRegion { int Id; };
+class CRegion { public: int Id; };
 struct CActiveQuest {
     const CRegion* Region;
     bool ContainsRegion(const CRegion& region) const { return Region == &region; }
 };
 static CActiveQuest g_qa, g_qb;
-struct CQuestManager {
+class CQuestManager { public:
     CCardNode* ActiveQuestCards;
     CActiveQuest* GetActiveQuestFromScriptName(const CCharString& name) const
     {

@@ -1,18 +1,18 @@
 // Behaviour test for CHTG_AmbushPointCond::Main @ 0x00D73970 (copy of the model with a scripted stub world).
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 static C3DVector g_ZeroVector = { 0, 0, 0 };
 static int g_frame, g_doneAt, g_nearAt, g_offScreenAt, g_spawned, g_pauses, g_removed;
 static bool g_spawnPosOk;
-struct CScriptThing {
+class CScriptThing { public:
     int id; const C3DVector* pos;
     const C3DVector& GetPos() const { return pos ? *pos : g_ZeroVector; }
     int GetDataString() const { return id * 10; }
 };
 static C3DVector g_markerPos = { 1, 2, 3 };
 static bool IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float d) { return d == 6.0f && g_frame >= g_nearAt; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frame; }
     const CScriptThing& GetHero() const { return hero; }

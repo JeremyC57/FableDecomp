@@ -1,13 +1,13 @@
 // behaviour test for 0x0045C112 CMaterialDef::operator=
 #include <cstdio>
 static int g_copies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int baseTag;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { baseTag = o.baseTag; return *this; }
 };
 struct CLongVector { long v; CLongVector& operator=(const CLongVector& o) { v = o.v; ++g_copies; return *this; } };
 struct CBlendedEffectMap { long v; CBlendedEffectMap& operator=(const CBlendedEffectMap& o) { v = o.v; g_copies += 10; return *this; } };
-struct CMaterialDef : CParentDefClassBase {
+class CMaterialDef : public CParentDefClassBase { public:
     long FirstHitSound, LastHitSound; float OnHitRumbleLevel, OnHitRumbleFalloff; bool DeflectAllHits, IsDiggable;
     CLongVector SlideFootParticleEffect, SwordHitParticleEffect, KnockdownHitFloorParticleEffect, WindBlowDustEffect, BerserkedSwordHitParticleEffect;
     CBlendedEffectMap BlendedSwordHitEffects;

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CUserProfileManager { char pad[0x138]; void* m_pBackBuffer; };
+class CUserProfileManager { public: char pad[0x138]; void* m_pBackBuffer; };
 
 static int g_called = 0;
 void __fastcall CUserProfileManager_CaptureBackBufferForUIBackground(CUserProfileManager* self) { (void)self; g_called = 1; }

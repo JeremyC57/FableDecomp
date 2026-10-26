@@ -14,34 +14,34 @@
 // constructor as in retail. On EAIActionReturn 2 the event is removed through the world's message manager
 // (+0x60, inline accessor so its load follows the event push) and `true` returns via `mov al,1`. No engine
 // header for the class.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x18];
     unsigned __int64 UID;                       // +0x18
 };
 class CMessageEvent;
 
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
 
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     unsigned __int64 UID;
     CMessageEventFilter_IsOriginatedByThing(const CThing& thing);   // 0x006AF2B0
 };
 
-struct CMessageEventFilter_IsTargettedAtThing {
+class CMessageEventFilter_IsTargettedAtThing { public:
     unsigned __int64 UID;
     CMessageEventFilter_IsTargettedAtThing(const CThing* thing);    // 0x006AF290
 };
 
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 
-template<class A, class B, class C> struct CFilter_Bind3 {
+template<class A, class B, class C> class CFilter_Bind3 { public:
     const A* F1;
     const B* F2;
     const C* F3;
@@ -54,11 +54,11 @@ template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, con
 typedef CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing,
     CMessageEventFilter_IsTargettedAtThing> CReplyFilter;
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void RemoveMessage(const CMessageEvent* event);     // 0x00493B5B
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
@@ -70,12 +70,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

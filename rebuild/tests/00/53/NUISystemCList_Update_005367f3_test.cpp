@@ -33,7 +33,7 @@ struct CDefVirtual {
     virtual void v00() { }
     virtual void DestroySelf() { ++g_destroyed; }
 };
-struct CUIDef : CDefVirtual, CRefCounted {
+class CUIDef : public CDefVirtual, public CRefCounted { public:
     __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) DestroySelf(); }
     bool IsFrontList;
 };
@@ -45,7 +45,7 @@ public:
     T* operator->() const { return Object; }
     __forceinline ~CDefPointer() { if (Object) const_cast<CUIDef*>(Object)->ReleaseTemporary(); }
 };
-struct CComponent;
+class CComponent;
 std::list<CComponent*> g_ComponentList;
 struct CActionList { int Id; };
 struct CStateHolder {
@@ -69,7 +69,7 @@ struct CComponentBase {
     virtual void RefreshScrollBars() { g_refreshes += 10; }
     virtual void RefreshChildren() { g_refreshes += 100; }
 };
-struct CComponent : CComponentBase, CStateHolder {
+class CComponent : public CComponentBase, public CStateHolder { public:
     long CurrentState;
     CComponent() : CurrentState(0) { }
     void Update(float time);
@@ -83,7 +83,7 @@ template <class T> struct Vector {
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     T& operator[](unsigned int n) { return *(_M_start + n); }
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
     long                SelectedChild;
     float               LastInputTime;
     Vector<CComponent*> ScrollingChildren;

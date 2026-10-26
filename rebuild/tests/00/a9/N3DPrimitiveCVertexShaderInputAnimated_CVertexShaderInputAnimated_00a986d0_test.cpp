@@ -4,7 +4,7 @@
 // CVertexShaderInputAnimated destructor: the D3D declaration array freed, the stream infos destroyed then freed, then the CBaseClass destructor
 static char g_log[32]; static long g_destroyed;
 static void Log(const char* s) { std::strcat(g_log, s); }
-struct CBaseClass { virtual void v00() { } ~CBaseClass() { Log("B"); } };
+class CBaseClass { public: virtual void v00() { } ~CBaseClass() { Log("B"); } };
 struct CStreamInfo { long stream; long stride; };
 static void DestroyRange(CStreamInfo* first, CStreamInfo* last) { g_destroyed += (long)(last - first); Log("r"); }
 struct CStreamInfoArray {
@@ -18,7 +18,7 @@ struct CVertexElementArray {
     CVertexElementArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
     ~CVertexElementArray() { if (m_pFirst) { std::free(m_pFirst); Log("d"); } }
 };
-struct CVertexShaderInput : CBaseClass {
+class CVertexShaderInput : public CBaseClass { public:
     CStreamInfoArray DataStreams; CVertexElementArray D3DDeclaration;
     virtual void v00() { }
     ~CVertexShaderInput() { }

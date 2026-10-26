@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     unsigned int value;
     CCharString() : value(0) {}
     CCharString(const CCharString& other) : value(other.value) {}
@@ -14,7 +14,7 @@ void __stdcall CGameScriptInterface_FindOrCreateRumourCategory(CCharString categ
     g_lastVal = category.value;
 }
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void* vt;
     void AddRumourCategory(const CCharString& category) const;
 };

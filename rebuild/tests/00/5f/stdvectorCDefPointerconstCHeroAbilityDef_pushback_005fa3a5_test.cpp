@@ -5,14 +5,14 @@
 #include <cstddef>
 #include <new>
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() { }
     virtual void Destroy() const { }
     mutable long m_refCount;
     CDefPointeeBase() : m_refCount(1) { }
     virtual ~CDefPointeeBase() { }
 };
-struct CHeroAbilityDef : CDefPointeeBase { };
+class CHeroAbilityDef : public CDefPointeeBase { public: };
 
 template <class T> class CDefPointer {
 public:

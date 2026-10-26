@@ -1,15 +1,15 @@
 // Behaviour test for CAnimComponentCombatFlourishTargetOffset::TransferBinaryOut @ 0x005db3d0: WriteBool(flag) then Write2DVector(offset at +9).
 #include <cstdio>
 #include <cstddef>
-struct C2DVector { float X, Y; };
-struct CDataOutputStream {
+class C2DVector { public: float X, Y; };
+class CDataOutputStream { public:
     int count; bool flag; float x, y;
     CDataOutputStream() : count(0), flag(false), x(0), y(0) { }
     void WriteBool(bool value) { flag = value; ++count; }
     void Write2DVector(const C2DVector& v) { x = v.X; y = v.Y; count += 10; }
 };
 #pragma pack(push, 1)
-struct CAnimComponentCombatFlourishTargetOffset {
+class CAnimComponentCombatFlourishTargetOffset { public:
     void* __vftable; long m_refCount; bool TargetOffset; C2DVector TargetOffsetVector;
     void TransferBinaryOut(CDataOutputStream& stream) const { stream.WriteBool(TargetOffset); stream.Write2DVector(TargetOffsetVector); }
 };

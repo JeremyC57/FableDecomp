@@ -18,7 +18,7 @@ struct CPlayerRetail {
     CThingCalls* GetHeroThing();                            // 0x00487DC0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void*         __vftable;                                // +0x00
     void*         Component;                                // +0x04
     void*         DefinitionManager;                        // +0x08

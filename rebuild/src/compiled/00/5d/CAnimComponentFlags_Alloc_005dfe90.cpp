@@ -6,15 +6,15 @@
 // derived vtable store because it belongs to the root base CIVCountedPointeeBase, whose own vtable
 // store is dead and dropped; the intermediate CAnimComponentBase adds only virtuals.
 // Member from engine/CAnimComponentFlags.h (PDB name); modelled here with the real vtable layout.
-struct CPersistContext; struct CCharString; struct CDataInputStream; struct CDataOutputStream;
+class CPersistContext; class CCharString; class CDataInputStream; class CDataOutputStream;
 
-struct CIVCountedPointeeBase {                  // root: vptr + intrusive ref count
+class CIVCountedPointeeBase { public:                  // root: vptr + intrusive ref count
     virtual void v0();
     long m_refCount;                            // +0x04
     CIVCountedPointeeBase() : m_refCount(1) { }
 };
 
-struct CAnimComponentBase : CIVCountedPointeeBase {
+class CAnimComponentBase : public CIVCountedPointeeBase { public:
     virtual void v1();
     virtual long GetType() const;                                                // slot 2
     virtual bool Initialise(CPersistContext& context, const CCharString& name);  // slot 3
@@ -25,7 +25,7 @@ struct CAnimComponentBase : CIVCountedPointeeBase {
     virtual void SetDefaultValue();                                              // slot 8
 };
 
-struct CAnimComponentFlags : CAnimComponentBase {                // vtable 0x01255850
+class CAnimComponentFlags : public CAnimComponentBase { public:                // vtable 0x01255850
     long Flags;                                 // +0x08 (left uninitialised)
     CAnimComponentFlags() { }
     virtual CAnimComponentBase* Alloc() const;

@@ -14,7 +14,7 @@ struct CBase_0099a430 {
     ~CBase_0099a430();                          // 0x0099A430
 };
 
-struct CScriptGameResourceObjectBase : CBase_0099a430 {
+class CScriptGameResourceObjectBase : public CBase_0099a430 { public:
     virtual ~CScriptGameResourceObjectBase() { }
 };
 

@@ -26,7 +26,7 @@ static int fails = 0;
 typedef long EPlayerMode;
 extern "C" void free(void* p);                         // 0x00BFEA14 (MSVCR71)
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {
     long     Type;
     CTCBase* TC;
@@ -44,7 +44,7 @@ struct CTCMap {
         return it->TC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                  // +0x20
     unsigned char _pad40[4];
@@ -75,7 +75,7 @@ template <class T> struct vector {                     // STLport vector (12 byt
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
 
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThings(const long& interfaceType, vector<CThing*>& things);   // 0x0048D400
 };
 CThing** SearchFirst_0048d400();
@@ -104,7 +104,7 @@ struct CPlayerManager_Retail {
     long GetMainPlayerID() const;                      // 0x00449700
     CPlayer* GetMainPlayer();                          // 0x00449970
 };
-struct CTCCoopSpirit {                                 // TC type 0xc7
+class CTCCoopSpirit { public:                                 // TC type 0xc7
     void SetMaster(CPlayer* master);                   // 0x0066FA50
 };
 

@@ -2,7 +2,7 @@
 struct SubObj { int x; };
 static int g_sub=0, g_real=0, g_del=0;
 extern "C" void __fastcall SubObj_dtor(SubObj* p){ (void)p; g_sub++; }
-struct CEnvironmentThemeDaySetDef {
+class CEnvironmentThemeDaySetDef { public:
   char pad[0x3c];
   SubObj member;
   void realdtor(){ g_real++; }

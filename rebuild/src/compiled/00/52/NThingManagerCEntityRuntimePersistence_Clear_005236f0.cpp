@@ -66,7 +66,7 @@ struct CRetailDeadEntityMap {                      // map<unsigned __int64, CPer
     }
 };
 
-struct CEntityRuntimePersistence {
+class CEntityRuntimePersistence { public:
     CArray_EntityScriptInfo LevelPersistentEntityScripts;   // +0x00
     CArray_EntityScriptInfo GamePersistentEntityScripts;    // +0x0c
     CRetailDeadEntityMap    PersistedDeadEntities;          // +0x18

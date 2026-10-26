@@ -8,7 +8,7 @@ struct CInterfaceMap {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char Flags91;
     bool IsDead() const { return (Flags91 & 1) != 0; }
     bool HasTC(long t) const { if (m_presentBits[t >> 5] & (1UL << (t & 31))) return true; return false; }
@@ -18,11 +18,11 @@ struct CThing {
         return (T*)((it == map->last || t < it->type) ? map->last : it)->component;
     }
 };
-struct CCharString { const char* PStringData; CCharString(const char* text, long = -1) : PStringData(text) {} };
+class CCharString { public: const char* PStringData; CCharString(const char* text, long = -1) : PStringData(text) {} };
 struct CBoast { long ID; long Cost; long Reward; };
 static CBoast g_boast = { 9, 250, 0 };
 static long g_madeId = -1; static bool g_nameEmpty = false;
-struct CQuestManager {
+class CQuestManager { public:
     CBoast* GetBoast(long id, CCharString scriptName) { g_nameEmpty = std::strcmp(scriptName.PStringData, "") == 0; return id == 9 ? &g_boast : 0; }
     void SetBoastAsMade(long id, CCharString) { g_madeId = id; }
 };

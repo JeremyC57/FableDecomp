@@ -14,12 +14,12 @@
 // Shape: the child handle is a reference local into the vector (`lea edi,[edx+edi*8]`); storing the new primitive is the
 //   landed CEnginePrimitiveHandle model (`Clear()` = last-handle notice + `Data = 0`, then `Data = p`, every helper inline, so
 //   two release sequences precede the store); the enable bit is `!(flags & 0x20)` (hoisted into bl).
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     long Type;                                         // +0x00
 };
 
-struct CEnginePrimitiveHandle;
-struct CEngineInternalPrimitiveBase {
+class CEnginePrimitiveHandle;
+class CEngineInternalPrimitiveBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1 (+0x04)
     virtual void v02();
@@ -55,7 +55,7 @@ public:
     }
 };
 
-struct CEnginePrimitiveHandle {                        // 8 bytes: vptr (0x0122F598) + counted Data
+class CEnginePrimitiveHandle { public:                        // 8 bytes: vptr (0x0122F598) + counted Data
     virtual void v00();
     CIVCountedPointer Data;                            // +0x04
     void Clear()

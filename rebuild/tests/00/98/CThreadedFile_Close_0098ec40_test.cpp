@@ -2,11 +2,11 @@
 // Behaviour test for CThreadedFile::Close (0x0098EC40): an open handle is purged, closed, reset to
 // INVALID_HANDLE_VALUE and both flags cleared; a second Close does nothing.
 static int g_purged = 0; static int g_closed = 0; static void* g_lastClosed = 0;
-struct CThreadedFile;
-struct CThreadedFileManager { void RemovePendingRequests(CThreadedFile*) { ++g_purged; } };
+class CThreadedFile;
+class CThreadedFileManager { public: void RemovePendingRequests(CThreadedFile*) { ++g_purged; } };
 static CThreadedFileManager g_ThreadedFileManager;
 static int CloseHandle(void* h) { ++g_closed; g_lastClosed = h; return 1; }
-struct CThreadedFile {
+class CThreadedFile { public:
     void* m_vtable; long DeviceID; void* FileHandle; void* Filename; unsigned long Length, PhysicalSortKey;
     bool OpenedForWrite, OpenFlag;
     void Close()

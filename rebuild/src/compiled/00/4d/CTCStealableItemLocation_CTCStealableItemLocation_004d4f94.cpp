@@ -11,7 +11,7 @@
 // (fld1 / fldz), the first scheduled before the vtable store.
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                              // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -21,7 +21,7 @@ struct CTCBase_Calls {                              // engine/CTCBase.h layout (
     CTCBase_Calls(CThing* thing);                   // 0x00686800
 };
 
-struct CTCStealableItemLocation : CTCBase_Calls {   // vtable 0x0123C65C
+class CTCStealableItemLocation : public CTCBase_Calls { public:   // vtable 0x0123C65C
     float RadiusToBeWithin;                         // +0x0c
     float RadiusToTakeItemsBackTo;                  // +0x10
     virtual void v00();

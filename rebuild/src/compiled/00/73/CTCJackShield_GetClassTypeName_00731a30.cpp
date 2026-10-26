@@ -1,9 +1,9 @@
-struct CCharString {
+class CCharString { public:
     CCharString(const char* lit, int len);
     int dummy;
 };
 
-struct CTCJackShield {
+class CTCJackShield { public:
     CCharString GetClassTypeName();
 };
 

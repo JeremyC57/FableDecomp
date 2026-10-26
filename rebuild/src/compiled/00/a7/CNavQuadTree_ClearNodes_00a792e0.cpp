@@ -12,7 +12,7 @@
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* block);                          // 0x00BFEA14
 namespace std { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
-template <class T> struct CArray {                  // retail CArray (STLport vector): first / last / end
+template <class T> class CArray { public:                  // retail CArray (STLport vector): first / last / end
     T* m_first;
     T* m_last;
     T* m_end;
@@ -71,7 +71,7 @@ struct CNavConnectorNodeMap {                       // CVectorMap<long, CCounted
 };
 class CNavQuadTree {
 public:
-    struct CNavigationLayer {                       // 40 bytes
+    class CNavigationLayer { public:                       // 40 bytes
         CArray<CANavQuadTreeNode*> Nodes;           // +0x00
         unsigned char LineLists[0xc];               // +0x0c vector<list<C2DLineF> >
         unsigned char SwitchableLineLists[0x10];    // +0x18 CVectorMap<unsigned __int64, list<C2DLineF> >

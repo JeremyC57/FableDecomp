@@ -1,5 +1,5 @@
 extern "C" unsigned char g_defStringInit;
-struct CDefString;
+class CDefString;
 extern CDefString* __fastcall SetDefaultString_helper(CDefString* self);
 
 CDefString* __fastcall SetDefaultString(CDefString* self)

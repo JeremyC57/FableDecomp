@@ -29,7 +29,7 @@ struct ScopedWS {
     ~ScopedWS() { WSdtor_0099b510(&r); }
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWS GetManualSaveFileName(long slot);
 };
 

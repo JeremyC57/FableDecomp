@@ -11,8 +11,8 @@
 #endif
 template <class T> T* AddressOfTemporary(const T& t) { return const_cast<T*>(&t); }
 // test-side stand-in for engine/CPlayer.h (only the members these bodies touch; host layout)
-struct CGamePlayerInterface; struct CWorld;
-struct CPlayer {
+class CGamePlayerInterface; class CWorld;
+class CPlayer { public:
     void* __vftable;
     CGamePlayerInterface* PlayerInterface;
     CWorld* World;
@@ -25,15 +25,15 @@ struct CPlayer {
 
 typedef long EPlayerMode;
 typedef long EControlledMovementType;
-struct CProcessedInput;
-struct CBaseObject;
+class CProcessedInput;
+class CBaseObject;
 
-struct CAInputProcess {
+class CAInputProcess { public:
     virtual void VFunc00();
     virtual bool AddToInterface(CGamePlayerInterface* playerInterface);   // slot 1 (+0x04)
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -51,14 +51,14 @@ struct CTCPhysicsBase {
     virtual void SetFacingAngleYZ(float angle);        // slot 67 (+0x10C)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60 (PDB +0x70)
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   m_stateFlags;                       // +0x91 (bit 0: dead)
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
 };
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     unsigned char           _pad94[0x17c - 0x94];
     EControlledMovementType ControlledMovementType;     // +0x17c (PDB +0x1a4)
 };
@@ -86,14 +86,14 @@ struct CView3DThirdPerson : CViewBase {                 // 0x9c bytes, vtable 0x
     CView3DThirdPerson();                               // 0x0069E940
 };
 }
-struct CDisplayViewManager {
+class CDisplayViewManager { public:
     void SetView(CViewBase* view);                      // 0x00640050
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char        _pad00[0xe0];
     CDisplayViewManager* ViewManager;                   // +0xe0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* DisplayEngine;                      // +0x28
 };

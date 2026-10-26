@@ -10,10 +10,10 @@
 // members scheduled around the vtable store.
 #pragma optimize("s", on)
 
-struct CThing;
-struct CTCCarrying;
+class CThing;
+class CTCCarrying;
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -28,7 +28,7 @@ struct CTCBase_Calls {                              // engine/CTCBase.h layout (
     CTCBase_Calls(CThing* thing);                   // 0x00686800
 };
 
-struct CTCCarryable : CTCBase_Calls {               // vtable 0x0123B35C
+class CTCCarryable : public CTCBase_Calls { public:               // vtable 0x0123B35C
     bool         ForceFragility;                    // +0x0c
     CTCCarrying* PCarryingTC;                       // +0x10
     C3DVector    OffsetCoordRelativeToAttachToDummy;// +0x14

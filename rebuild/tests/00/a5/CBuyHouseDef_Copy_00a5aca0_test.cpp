@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDefClassBase;
+class CDefClassBase;
 
 struct CBuyHouseBase {
     char pad[0xd];
@@ -8,7 +8,7 @@ struct CBuyHouseBase {
     void BaseCopy(CDefClassBase* src);
 };
 
-struct CBuyHouseDef : CBuyHouseBase {
+class CBuyHouseDef : public CBuyHouseBase { public:
     void Copy(CDefClassBase* src);
 };
 

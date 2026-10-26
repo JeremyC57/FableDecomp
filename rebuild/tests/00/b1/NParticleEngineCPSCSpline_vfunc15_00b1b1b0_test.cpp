@@ -22,8 +22,8 @@ struct InputCalls:CDataInputStream {
 static __forceinline void TransferBool(InputCalls& in,bool* out){unsigned char value;in.Read(&value,1);*out=value!=0;}
 static __forceinline void TransferFloat(InputCalls& in,float* out){float value;in.Read(&value,4);*out=value;}
 namespace NParticleEngine {
-struct CPSCSplineBase {unsigned char BaseData[0x34];void ReadBinary(InputCalls&);}; //00b22b40
-struct CPSCSpline:CPSCSplineBase {
+class CPSCSplineBase { public:unsigned char BaseData[0x34];void ReadBinary(InputCalls&);}; //00b22b40
+class CPSCSpline:public CPSCSplineBase { public:
  float SplineCurrentPosition;bool ReverseSpline,SplineBounce,ScaleSplineSpeed;unsigned char Align;
  float SplineAnimSpeed;
  void ReadBinary(InputCalls&);

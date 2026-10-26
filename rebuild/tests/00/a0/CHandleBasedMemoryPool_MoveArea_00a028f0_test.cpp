@@ -26,7 +26,7 @@ struct CHeader {                                   // CHandleBasedMemoryPool::CH
     }
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     virtual void v00() {}
     void* m_res; long m_handle; void* m_from; void* m_to; long m_size; int m_inserted; CHeader* m_resized; long m_newSize;
     virtual void MoveResourceData(void* resource, long handle, void* from, void* to, long size)

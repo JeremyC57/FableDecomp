@@ -40,7 +40,7 @@ struct CScriptThingInner {
   virtual bool m36(int abilityEnum){ return true; }
   virtual bool m37(int abilityEnum){ return true; }
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgPerformedSpecialAbility(int abilityEnum); };
+class CScriptThing { public: void *pad0; CScriptThingInner *m_impl; bool MsgPerformedSpecialAbility(int abilityEnum); };
 bool CScriptThing::MsgPerformedSpecialAbility(int abilityEnum){ CScriptThingInner *p=m_impl; if(!p) return false; return p->m37(abilityEnum); }
 int main(){
     CScriptThing t; t.m_impl=0;

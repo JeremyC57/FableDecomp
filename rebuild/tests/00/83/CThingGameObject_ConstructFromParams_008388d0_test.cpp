@@ -1,19 +1,19 @@
 // Behaviour test for 0x008388D0 CThingGameObject::ConstructFromParams
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CThingPhysicalArg { int x; };
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     bool operator!=(const char* text) const { return std::strcmp(m_text, text) != 0; }
     CCharString& operator=(const CCharString& other) { m_text = other.m_text; return *this; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     int m_baseCalls; bool m_baseResult; long m_lastIndex;
     bool ConstructFromParams(long defIndex, const C3DVector*, long, unsigned long, CThingPhysicalArg*, CThingPhysicalArg*, bool)
     { ++m_baseCalls; m_lastIndex = defIndex; return m_baseResult; }
 };
-struct CThingGameObject : CThingPhysical {
+class CThingGameObject : public CThingPhysical { public:
     CCharString ScriptName;
     bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, const CCharString& scriptName,
                              CThingPhysicalArg* creator, CThingPhysicalArg* originalCreator, bool a8)

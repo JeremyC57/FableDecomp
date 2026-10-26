@@ -19,8 +19,8 @@
 // Shape: the landed Spike 0x008DA0F0 model: same-TU out-only stand-ins for GetSubDef / GetEffectFromString (the effects
 //   def lives in ebp after the call, its slot reused by the TAIL_DUST_EFFECT temporary), a counted out pointer released at
 //   the function end, GetTCIfPresent (`xor ecx,ecx` default) and IS_THING_ALIVE.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -46,7 +46,7 @@ template <class T> struct CCountedDefPointer {
             m_p->Release();
     }
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
@@ -60,7 +60,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CCountedDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -74,7 +74,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CCountedDe
     return true;
 }
 #pragma auto_inline(on)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -84,7 +84,7 @@ struct CInterfaceMap {
 struct CTCAD {                                  // interface type 0xAD (descriptive: the dependent-things component)
     void KillDependentThings();                 // 0x007AEF60
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
@@ -114,8 +114,8 @@ struct CThing {
         return component;
     }
 };
-struct CCombatActionBase;
-struct CThingCreatureBase : CThing {
+class CCombatActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
@@ -133,12 +133,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 4];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_ScorpionTailWithdraw : CCombatActionBase {   // retail sizeof 0x120
+class CCreatureAction_ScorpionTailWithdraw : public CCombatActionBase { public:   // retail sizeof 0x120
     C3DVector TargetPos;                        // +0x114 (retail sizeof 0x120; Ego_r +0x12C of 0x138)
     CCreatureAction_ScorpionTailWithdraw(CThingCreatureBase* creature, CThing* target);   // 0x008E45B0
 };
@@ -149,7 +149,7 @@ struct CModeBase {
 };
 namespace NCreatureMode {
 #pragma pack(push, 1)
-struct CModeScorpionKingTailPlunge : CModeBase {
+class CModeScorpionKingTailPlunge : public CModeBase { public:
     unsigned char       _pad08[0x84 - 0x08];
     CThingCreatureBase* PCreature;              // +0x84
     bool                bRecovering;            // +0x88

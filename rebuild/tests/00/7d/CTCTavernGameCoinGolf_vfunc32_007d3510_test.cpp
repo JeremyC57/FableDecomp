@@ -22,7 +22,7 @@ struct CDefObject {
     long m_refCount;                                // +0x04
 };
 
-struct CTavernGameCoinGolfDef : CDefObject {
+class CTavernGameCoinGolfDef : public CDefObject { public:
     unsigned char _pad[0x50];
     long m_par;                                     // +0x58
 };
@@ -32,7 +32,7 @@ struct CDefPointer {                                // CDefPointer<const CTavern
     CDefPointer() : m_p(0) {}
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef_007d4bd0(CDefPointer* out);               // 0x007D4BD0
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -49,7 +49,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_007d4bd0(CDefPointer* out)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x70];
     CDefClassBase* m_pDefinition;                   // +0x70
     CDefClassBase* GetDefinition() { return m_pDefinition; }
@@ -66,7 +66,7 @@ struct CTCTavernGameCoinBase {
     void SetState(long state);                      // 0x005E9B20
 };
 
-struct CTCTavernGameCoinGolf : CTCTavernGameCoinBase {
+class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     void SetupForNewRound();                        // 0x007D2EF0
     void vfunc_32();
 };

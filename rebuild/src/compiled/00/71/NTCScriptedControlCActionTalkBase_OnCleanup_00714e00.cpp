@@ -14,14 +14,14 @@
 //   profile manager's "profile loaded" flag +0x0C, its default subtitles flag +0x0D and the profile's +0xCD.
 // Shape: the parent thing is read into a local before the second GetThing() compare (as the landed OnAdd); the mode
 //   linger value is converted before GetCurrentMode() is fetched again; the subtitles setting is an inline accessor.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     void*         __vftable;
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];               // +0x20
@@ -40,8 +40,8 @@ struct CThing {
         return false;
     }
 };
-struct CCPPointerInfo;
-struct CScriptThing {
+class CCPPointerInfo;
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;               // slot 11 (+0x2c)
@@ -83,10 +83,10 @@ public:
     static CUserProfileManager& __fastcall Get();   // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
 };
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void ClearText(bool immediately);               // 0x00492BAB
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;             // +0x18
     unsigned char     _pad19[0xff - 0x19];
@@ -95,7 +95,7 @@ struct CPlayerGui {
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 extern long g_FramesPerSecond;                      // 0x01375550
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void*   __vftable;
     CThing* ParentThing;                            // +0x04
 };

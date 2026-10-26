@@ -2,10 +2,10 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CPersistContext { int dummy; };
+class CPersistContext { public: int dummy; };
 static int g_defaults = 0, g_live = 0;
-struct CCharStringData { long m_refCount; long Length; char text[32]; };
-struct CCharString {
+class CCharStringData { public: long m_refCount; long Length; char text[32]; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) { ++g_live; }
     CCharString(const char* s) { PStringData = (CCharStringData*)std::malloc(sizeof(CCharStringData)); PStringData->Length = (long)std::strlen(s); std::strcpy(PStringData->text, s); ++g_live; }
@@ -16,7 +16,7 @@ struct CCharString {
     CCharString GetSubString(unsigned long start, unsigned long count) const { char buf[32]; std::memcpy(buf, PStringData->text + start, count); buf[count] = 0; return CCharString(buf); }
     long GetLength() const { return PStringData ? PStringData->Length : 0; }
 };
-struct CAnimComponentStrikeResponseAnim {
+class CAnimComponentStrikeResponseAnim { public:
     virtual void SetDefaultValue() { ++g_defaults; }
     long m_refCount; CCharString ResponseAnimName;
     bool Initialise(CPersistContext& context, const CCharString& name)

@@ -1,16 +1,16 @@
 #include <cstdio>
-struct CCharString { const char* m_text; };
-struct C3DVector {
+class CCharString { public: const char* m_text; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CRightHandedSet { C3DVector m_position; C3DVector m_lastPosition; CRightHandedSet() : m_position(0, 0, 0), m_lastPosition(0, 0, 0) { } };
-struct CThing { CRightHandedSet* m_pRHSet; const C3DVector& GetPosition() const { return m_pRHSet->m_position; } };
-struct CWeaponDef { CCharString UnsheatheToCombatAnim, UnsheatheToNormalAnim, SheatheFromCombatAnim, SheatheFromNormalAnim; };
+class CRightHandedSet { public: C3DVector m_position; C3DVector m_lastPosition; CRightHandedSet() : m_position(0, 0, 0), m_lastPosition(0, 0, 0) { } };
+class CThing { public: CRightHandedSet* m_pRHSet; const C3DVector& GetPosition() const { return m_pRHSet->m_position; } };
+class CWeaponDef { public: CCharString UnsheatheToCombatAnim, UnsheatheToNormalAnim, SheatheFromCombatAnim, SheatheFromNormalAnim; };
 static float g_MovingEpsilon = 1e-4f;
-struct CTCWeapon {
+class CTCWeapon { public:
     CThing* ParentThing; const CWeaponDef* Def;
     const CCharString& GetUnsheatheAnim() const
     {

@@ -9,12 +9,12 @@
 // kept in bl); the out pointer is a CDefPointer local whose dtor null-tests, so the arm that dereferenced it releases
 // without the test; it lives in the dead thing argument slot.
 class CThing;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
@@ -24,7 +24,7 @@ struct CCreatureSubDef : CDefPointeeBase {
     unsigned char _pad08[0xe4 - 0x08];
     bool IsGhost;                               // +0xe4
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CCreatureSubDef>* out);   // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below

@@ -8,7 +8,7 @@
 // +0x48, AllowRightStickZoom +0x4C, AllowRightStickRotation +0x4D, AllowZTarget +0x4E, AutoGoBehind +0x4F, AutoGoBehindTime +0x50.
 // Shape: one Transfer per member with a literal default (a const-reference temporary: the first in the frame word, the rest in
 // the dead `context` slot; the `true` defaults share bl).
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
     void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
 };

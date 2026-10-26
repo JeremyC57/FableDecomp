@@ -14,7 +14,7 @@
 // (`values[i]` through `begin() + i`, the calls may alias it) with the byte offset strength-reduced
 // into ebx and the trip count spilled to the `push ecx` slot. CActionInputControl::TransferBinaryOut
 // (out of line at 0x00405D60) is defined in this TU and inlined.
-struct C2DVector {
+class C2DVector { public:
     float X;                                      // +0
     float Y;                                      // +4
 };

@@ -11,19 +11,19 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -61,7 +61,7 @@ struct CGameScriptInterface {
     virtual void v302();
     virtual void AddBoast(const CCharString& description, long boastID, long cost, long reward, bool hasAmount, const CCharString& extra, long extraValue) const;   // slot 303 (+0x4bc)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad0[0x198];
     long PrisonNakedBoastCost;                          // +0x198
     long PrisonNakedBoastReward;                        // +0x19c
@@ -78,7 +78,7 @@ struct CQ_SunnyvaleMasterData {
     bool PrisonTorturedBefore;                          // +0xf2
     bool PrisonGameDoneBefore;                          // +0xf3
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
 namespace NScript {

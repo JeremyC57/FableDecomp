@@ -8,7 +8,7 @@
 // Shape: `T* p = 0; if (HasTC(k)) p = GetTC<T>(k);` gives the `xor ecx,ecx` preload with the dword presence test
 //   (`mov edx,[eax+20h] ; test dh,2`), and the flag store goes through p unconditionally; ParentThing is re-read for the
 //   physics call and the flag; the inline CModeBase::OnDeactivate (`Active = false`) comes last.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -26,7 +26,7 @@ struct CPhysicsObject {
     virtual void Wake();   // slot 44 (+0xb0)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];      // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;          // +0x44

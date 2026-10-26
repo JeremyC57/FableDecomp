@@ -11,7 +11,7 @@ struct CDefBase {
 };
 struct CSoundDefPointer { const CDefBase* m_p; ~CSoundDefPointer() { if (m_p) { m_p->Release(); m_p = 0; } } };
 struct CEntryVector { int n; ~CEntryVector() { ++g_vectorsFreed; } };
-struct CMusicManager {
+class CMusicManager { public:
     long CurrentState[6];
     CSoundDefPointer PSoundDef;
     CEntryVector RegisteredMusic;

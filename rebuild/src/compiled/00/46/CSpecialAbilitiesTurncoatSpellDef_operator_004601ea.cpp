@@ -15,7 +15,7 @@
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally as a packed polymorphic base
 // whose operator= is out of line; the derived members follow at their natural alignment.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -29,7 +29,7 @@ struct CFloatVector {                   // retail std::vector<float> (12 bytes)
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
 };
 
-struct CSpecialAbilitiesTurncoatSpellDef : CParentDefClassBase { // vtable 0x0123453C
+class CSpecialAbilitiesTurncoatSpellDef : public CParentDefClassBase { public: // vtable 0x0123453C
     CFloatVector         StaminaCostPerSec;           // +0x3c
     CFloatVector         ResistanceDamagePerSec;      // +0x48
     CFloatVector         TurncoatTime;                // +0x54

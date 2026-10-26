@@ -13,7 +13,7 @@ struct CInterfaceMap_Retail {
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 namespace N_0099a2d0 { struct CBase { virtual ~CBase() {} }; } using N_0099a2d0::CBase;
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     virtual CThing_Retail* GetThing() const { return m_thing; }
     virtual bool IsValid() const { return m_thing != 0; }
     CThing_Retail* m_thing;
@@ -41,7 +41,7 @@ struct CThing_Retail {
 
 static int g_respawn = 0; static const CCharString* g_name = 0; static long g_count = 0; static void* g_respawnThis = 0; static CThing_Retail* g_respawnResult = 0;
 struct CTCVillage_Retail { CThing_Retail* TryToRespawnDefNamed(const CCharString& defName, long count) { ++g_respawn; g_name = &defName; g_count = count; g_respawnThis = this; return g_respawnResult; } };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {}
     CScriptThing TryToRespawnDefNamed(const CScriptThing& village, const CCharString& defName, long count) const;
 };

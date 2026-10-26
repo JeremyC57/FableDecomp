@@ -7,20 +7,20 @@
 //   `?:` max (je, not jp); lodScale is read between the dx/dy statements.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 #include <math.h>
-struct CEngineInternalPrimitiveBase;
-struct CEngineSubPrimitiveChain;
-struct CCharString {
+class CEngineInternalPrimitiveBase;
+class CEngineSubPrimitiveChain;
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099B7D0
 };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
 struct SCountBlock {
     long  m_references;
     void (__fastcall* m_pfnDestroy)(void* object);
     void* m_pObject;
 };
-struct CTexture;
+class CTexture;
 struct CCountedPointer_CTexture {
     CTexture*    m_pObject;
     SCountBlock* m_pCount;
@@ -37,7 +37,7 @@ struct CCountedPointer_CTexture {
         m_pCount = 0;
     }
 };
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned long            ReferenceCount;       // +0x00
     void*                    Data;                 // +0x04
     CCountedPointer_CTexture PTexture;             // +0x08
@@ -50,7 +50,7 @@ struct CGraphicFrameData {
             Uninitialise();
     }
 };
-struct CGraphicFrame {
+class CGraphicFrame { public:
     CGraphicFrameData* FrameData;
     CGraphicFrame(const CGraphicFrame& other) : FrameData(other.FrameData) { if (FrameData) ++FrameData->ReferenceCount; }
     __forceinline ~CGraphicFrame()
@@ -61,8 +61,8 @@ struct CGraphicFrame {
     CTexture* GetTexture() const { return FrameData->PTexture.m_pObject; }
 };
 
-struct CResource;
-struct CResourceList {
+class CResource;
+class CResourceList { public:
     unsigned char _pad00[4];
     CResource*    Tail;                            // +0x04
     unsigned char _pad08[0x10 - 0x08];
@@ -70,7 +70,7 @@ struct CResourceList {
     unsigned char _pad14[0x2c - 0x14];
     unsigned long Stamp;                           // +0x2c
 };
-struct CResource {
+class CResource { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1 (+4)
     long           m_references;                   // +0x04
@@ -92,7 +92,7 @@ struct CVolumeHolder {
     void*      _word00;                            // +0x00
     CResource* Volume;                             // +0x04
 };
-struct CGraphicInfoFrame;
+class CGraphicInfoFrame;
 struct CFrameData : CResource {
     CGraphicFrame Frame;                           // +0x1c
     CVolumeHolder VolumeHolder;                    // +0x20
@@ -110,11 +110,11 @@ struct CFrameCounter {
     unsigned char _pad[0x194];
     unsigned long FrameStamp;                      // +0x194
 };
-struct CGraphicInfo {
+class CGraphicInfo { public:
     unsigned char  _pad[0x20];
     CFrameCounter* Counter;                        // +0x20
 };
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     void*          _word00;
     unsigned short FrameNum;
     signed char    SmallMipmapLevel;
@@ -122,7 +122,7 @@ struct CGraphicInfoFrame {
     CGraphicInfo*  GraphicInfo;                    // +0x0c
     bool InternalGetFrameForcedLoading(long flags);   // 0x009FF6B0
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     void Reset()
     {
@@ -188,13 +188,13 @@ struct CGraphicBank {
 
 
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CRefInfo {
     long  RefCount;                                // +0
     void (__fastcall* Destroy)(void*);             // +4
     void* Object;                                  // +8
 };
-struct C3DMesh2;
+class C3DMesh2;
 struct CCountedMeshPointer {                       // CCountedPointer<const C3DMesh2>
     C3DMesh2* Object;
     CRefInfo* Info;
@@ -220,7 +220,7 @@ struct CSubMesh {                                  // 0xa0 bytes
     long          MaterialIndex;                   // +0x04
     unsigned char _pad08[0x98];
 };
-struct C3DMesh2 {
+class C3DMesh2 { public:
     unsigned char  _pad00[0x8c];
     CMeshMaterial* Materials;                      // +0x8c
     unsigned long  SubMeshCount;                   // +0x90
@@ -230,7 +230,7 @@ struct CMeshResources {
     unsigned char _pad[0x3d4];
     CGraphicBank* GraphicBank;                     // +0x3d4
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void*           _vtbl;
     CMeshResources* Resources;                     // +0x04
     unsigned char   _pad08[0x44 - 0x08];
@@ -245,8 +245,8 @@ struct CEngineRenderSettings {
     float         FieldOfViewScale;                // +0xa8
 };
 extern CEngineRenderSettings* g_pEngineRenderSettings;   // 0x01436E78
-struct CEngineInternalPrimitiveBase;
-struct CEngineInternalPrimitiveRepeatedStaticMesh {
+class CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveRepeatedStaticMesh { public:
     unsigned char _pad00[0x50];
     C3DMeshInfo*  MeshInfo;                        // +0x50
     unsigned char _pad54[0x70 - 0x54];
@@ -260,7 +260,7 @@ __forceinline bool IsBelowLODCount(unsigned long lod)
     return true;
 }
 
-struct CEnginePrimitiveManagerRepeatedStaticMeshes {
+class CEnginePrimitiveManagerRepeatedStaticMeshes { public:
     virtual bool PreloadPrimitive(CEngineInternalPrimitiveBase& primitive, const C3DVector& position, unsigned long flags);
 };
 

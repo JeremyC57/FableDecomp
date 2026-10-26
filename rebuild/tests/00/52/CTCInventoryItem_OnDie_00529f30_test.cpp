@@ -12,8 +12,8 @@ struct CTCInventoryItemBase
     void OnDie();
 };
 
-struct CTCInventoryItem : public CTCInventoryItemBase
-{
+class CTCInventoryItem : public CTCInventoryItemBase
+{ public:
     void* m_pField4;
     void OnDie();
 };

@@ -15,7 +15,7 @@
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally as a packed polymorphic base
 // whose operator= is out of line; the derived members follow at their natural alignment.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -29,7 +29,7 @@ struct CLongVector {                    // retail std::vector<long> (12 bytes)
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct CSpecialAbilitiesElectrocutedEffectDef : CParentDefClassBase { // vtable 0x01234744
+class CSpecialAbilitiesElectrocutedEffectDef : public CParentDefClassBase { public: // vtable 0x01234744
     float                FadeInTimeSecs;              // +0x3c
     float                FadeOutTimeStartSecs;        // +0x40
     float                FadeOutTimeSecs;             // +0x44

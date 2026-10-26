@@ -8,7 +8,7 @@
 //   result goes straight into ecx for the call (the out-parameter form parks it in eax first); the carried thing's alive test is inline on the raw pointer (null, then dead bit +0x91);
 //   everything joins on the base FinishAction call.
 // Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; nothing else of the class is touched.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -57,15 +57,15 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + it
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CTCCarrying {                        // interface type 0x46 component
+class CTCCarrying { public:                        // interface type 0x46 component
     CThing* GetThingInPrimarySlot();        // 0x006A1440
 };
 
-struct CTCWeapon {                          // interface type 0x48 component
+class CTCWeapon { public:                          // interface type 0x48 component
     void SetProjectileWeaponLoaded(bool loaded, CThing* projectile);   // 0x005DAC50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -73,7 +73,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     virtual void FinishAction();            // 0x00859A20
 };
 
-struct CCreatureAction_GenericLoadProjectileWeapon : CCombatActionBase {
+class CCreatureAction_GenericLoadProjectileWeapon : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

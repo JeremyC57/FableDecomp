@@ -8,7 +8,7 @@
 #define __fastcall
 #define __declspec(x)
 #endif
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Destroy() const;
     virtual void Release() const;                // slot 1
     mutable long RefCount;                       // +0x04
@@ -19,7 +19,7 @@ struct CDefClassBase {
     }
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -30,7 +30,7 @@ template <class T> struct CDefPointer {
     T* operator->() const { return Object; }
 };
 
-struct CAugmentationDef : CDefClassBase {
+class CAugmentationDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
     unsigned long Name;                          // +0x28
     long  Type;                                  // +0x2c
@@ -42,7 +42,7 @@ struct CAugmentationDef : CDefClassBase {
 void* FindDef_GetSubDef_007661c0();              // stand-in callees of the stand-in bodies below
 void* FindDef_GetDef_007661c0(long index);
 
-struct CThingBaseDef : CDefClassBase {
+class CThingBaseDef : public CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CAugmentationDef>* out) const;   // 0x0042B248 (GetSubDef<CAugmentationDef>)
 };
 

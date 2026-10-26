@@ -8,14 +8,14 @@
 // Layout: Ego_r.pdb CParticleEmitter minus 0x0c (landed constructor 0x00AF0380): ParticleSystems +0x08, UpdateParameters
 //   +0x14, PrimitiveGroupHandle +0x38, flag word +0x40, flag bytes +0x44/+0x45, PositionInterpolator +0x94 (StartPosition
 //   +0x98), Transform +0xb0, BSphere +0x144, DistanceToCam +0x154.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
 };
@@ -45,7 +45,7 @@ public:
     }
 };
 enum EEngineEffectWaterStage { WATER_STAGE_PRE, WATER_STAGE_WATER, WATER_STAGE_POST };
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     unsigned long Type;                            // +0x00
     unsigned long _pad04;
     unsigned char _flags08[4];
@@ -58,11 +58,11 @@ struct CEnginePrimitiveParticleGroup2D : CEnginePrimitive {
     unsigned char _body0c[0x40];
     CEnginePrimitiveParticleGroup2D(long layer, const CMatrix3x4& transform, const C2DVector& position, bool screenDisplacement, bool readZBuffer);   // 0x00AF0880
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     void* __vftable;
     void* Data;
 };
-struct CIEngine {
+class CIEngine { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -75,7 +75,7 @@ struct CParticleUpdateParameters {
     void*         __vftable;                       // +0x00
     unsigned char _maps[0x20];                     // +0x04
 };
-struct CParticleSystem {
+class CParticleSystem { public:
     bool Initialise(CIEngine* engine, CParticleUpdateParameters* params, CEnginePrimitiveHandle* group);   // 0x00AF4010
 };
 struct CParticleSystemPtr { CParticleSystem* Data; void* Info; };

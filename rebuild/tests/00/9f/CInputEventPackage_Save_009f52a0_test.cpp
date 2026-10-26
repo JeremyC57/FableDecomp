@@ -25,8 +25,8 @@ public:
     ~CInputEvent() {}
 };
 double __fastcall GFGetTime() { return 100.0; }
-struct CChecksum { unsigned long Words[4]; };      // 16 bytes
-struct C2DVector { float X, Y; };
+class CChecksum { public: unsigned long Words[4]; };      // 16 bytes
+class C2DVector { public: float X, Y; };
 class CDataOutputStream {
 public:
     unsigned char m_buf[1024]; long m_pos; int m_badFlags;

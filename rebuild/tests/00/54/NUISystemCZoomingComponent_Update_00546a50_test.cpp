@@ -3,7 +3,7 @@
 #include <cmath>
 static const float g_positionEpsilon = 1e-4f;
 static int g_baseUpdates = 0;
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 struct CChangingStateComponent {
     C2DVector Position;
     C2DVector TargetPosition;

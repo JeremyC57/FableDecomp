@@ -4,7 +4,7 @@
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
 // retail labels); the class itself is not attributed, so it is named by address.
 #pragma optimize("s", on)
-struct C3DAnimationBlendState {             // label C3DAnimationBlendState::~C3DAnimationBlendState
+class C3DAnimationBlendState { public:             // label C3DAnimationBlendState::~C3DAnimationBlendState
     void* _vptr;                            // (layout beyond the first word not modelled)
     ~C3DAnimationBlendState();              // 0x004DA967 (releases the counted object at +0xc)
 };

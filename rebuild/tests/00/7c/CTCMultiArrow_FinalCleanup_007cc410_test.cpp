@@ -1,9 +1,9 @@
 // Behaviour test for CTCMultiArrow::FinalCleanup @ 0x007CC410: the type-0x13 component's weapon is passed to RemoveEffectOnWeapon.
 #include <cstdio>
-struct CThing;
+class CThing;
 struct CWeaponHolder { CThing* m_weapon; CThing* GetWeapon() const { return m_weapon; } };
 struct SEntry { long type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     SEntry* first; SEntry* last;
     SEntry* LowerBound(long type) { SEntry* p = first; while (p != last && p->type < type) ++p; return p; }
@@ -18,7 +18,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCMultiArrow {
+class CTCMultiArrow { public:
     CThing* ParentThing;
     CThing* m_removedFrom; int m_calls;
     void RemoveEffectOnWeapon(CThing* weapon) { m_removedFrom = weapon; ++m_calls; }

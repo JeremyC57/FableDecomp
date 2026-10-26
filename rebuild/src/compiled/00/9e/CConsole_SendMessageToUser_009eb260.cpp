@@ -9,12 +9,12 @@
 // UserEntry and takes the text's length (the inline GetLength: `p ? p->StringLength : 0`, where the
 // null pointer itself serves as the zero); the inlined destructor destroys the string and calls the
 // base destructor without re-storing the line's vtable.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   PData;                                        // +0
     unsigned long StringLength;                                 // +4
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                      // 0x0099EC30
     ~CCharString();                                             // 0x0099EAE0
@@ -26,13 +26,13 @@ struct CCharString {
     }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();                                         // vtable 0x01231710
     CBaseClass();                                               // 0x0099A2D0
     ~CBaseClass();                                              // 0x0099A2E0
 };
 
-struct CConsoleCommandLine : CBaseClass {                       // vtable 0x0129C400
+class CConsoleCommandLine : public CBaseClass { public:                       // vtable 0x0129C400
     CCharString CurrentEntry;                                   // +0x04
     bool        UserEntry;                                      // +0x08
     long        CursorPosition;                                 // +0x0c

@@ -6,7 +6,7 @@ struct CGuiVarTarget;
 // helper @ 0x7441d0 : __fastcall(target*, int field, bool value)
 void __fastcall CGuiVarTransferBool_helper(CGuiVarTarget* target, int field, bool value);
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     CGuiVarTarget* target; // +0
     int            field;  // +4
     // +8 padding/other

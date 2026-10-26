@@ -38,7 +38,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
@@ -64,8 +64,8 @@ public:
     }
 };
 
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -75,7 +75,7 @@ struct CInterfaceMap {
 };
 
 #define VF(n) virtual void v##n();
-struct CThing {
+class CThing { public:
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09)
     VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16) VF(17) VF(18) VF(19)
     VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28) VF(29)
@@ -105,22 +105,22 @@ struct CThing {
     }
 };
 
-struct CTCCombat {
+class CTCCombat { public:
     bool IsUsingUnarmedCombatIdle() const;              // 0x00733100
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                                     // +0x00
     unsigned long GetAnimateThingFlags() const;         // 0x005DC390
     long GetAnimationTransitionInTime() const;          // 0x005DC1F0
     long GetTimeToBlendIn(const CThing* thing) const;   // 0x005DC230
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction();                       // 0x006622A0
     const CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool loadedOnly) const;   // 0x00662FA0
 };
-struct CThingAICreature : CThingCreatureBase {
+class CThingAICreature : public CThingCreatureBase { public:
     bool GetHasInformation() const;                     // 0x008300D0
     bool GetWaveWithInformation() const;                // 0x008300F0
 };
@@ -130,15 +130,15 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                           // 0x00A01B50
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x34];
     CBaseIntelligentPointer PCharacterThing;            // +0x34
     CThing* GetPCharacterThing() const { return PCharacterThing.GetPItem(); }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
 };
@@ -149,7 +149,7 @@ struct CBlendPair {                                     // the two floats at CAn
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                                      // 0x2c bytes
+class CAnimInit { public:                                      // 0x2c bytes
     long          Mode;
     unsigned char AnimType;
     bool          Flag05;
@@ -165,7 +165,7 @@ struct CAnimInit {                                      // 0x2c bytes
 };
 
 enum EAnimUpdateMode { AUM_NONE };
-struct CAnimateThing {
+class CAnimateThing { public:
     long          UpdateMode;              // +0x00
     void*         AnimsBegin;              // +0x04
     void*         AnimsEnd;                // +0x08

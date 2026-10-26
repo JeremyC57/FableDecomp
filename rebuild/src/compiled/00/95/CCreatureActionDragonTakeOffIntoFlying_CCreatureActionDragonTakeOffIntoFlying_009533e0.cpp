@@ -11,17 +11,17 @@
 // Layout: engine/CCreatureAction_DragonTakeOffIntoFlying.h is the PDB build (base 0x12c, 16-byte vectors): the retail
 //   base is 0x114 and the vector 12 bytes, so MovementPoints sits at +0x138, UsePreviousPoint at +0x144 and the
 //   PEndAction counted pointer at +0x148 here (the Dest/StartPos/PreviousPoint vectors at +0x114..+0x137 are untouched).
-struct CThingCreatureBase;
-struct CCreatureActionBase;
-struct CCPPointerInfo;
+class CThingCreatureBase;
+class CCreatureActionBase;
+class CCPPointerInfo;
 
-struct CCharString {                        // one pointer; the defaulted length makes a literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length makes a literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CSoundPair {                         // user constructor: the 8-byte result comes back through the hidden pointer
+class CSoundPair { public:                         // user constructor: the 8-byte result comes back through the hidden pointer
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -29,7 +29,7 @@ struct CSoundPair {                         // user constructor: the 8-byte resu
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 template <class T>
 struct CRetailVector {                      // VC6-era Dinkumware vector: first / last / end (12 bytes)
@@ -40,19 +40,19 @@ struct CRetailVector {                      // VC6-era Dinkumware vector: first 
 };
 
 template <class T>
-struct CCountedPointer {                    // Data + Info, both cleared by the inline default constructor
+class CCountedPointer { public:                    // Data + Info, both cleared by the inline default constructor
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
-struct CCreatureAction_DragonTakeOffIntoFlying : CCombatActionBase {   // vtable 0x01293A7C
+class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { public:   // vtable 0x01293A7C
     C3DVector Dest;                                       // +0x114
     C3DVector StartPos;                                   // +0x120
     C3DVector PreviousPoint;                              // +0x12c

@@ -19,7 +19,7 @@ struct __false_type { __false_type() { } };
 
 void __fastcall DestroyRange(SAnimationPair* first, SAnimationPair* last, const __false_type& tag);   // 0x00454404
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }

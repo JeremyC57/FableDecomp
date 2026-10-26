@@ -9,29 +9,29 @@
 // def base is 4 bytes narrower). Local model.
 // Shape: the member's address held in edi for the store and the call; the name is a named CCharString
 // local (re-addressed with `lea` for the call), destroyed out of line at the end.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);          // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x90];
     float         MaxWalkingSpeed;                             // +0x90
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     T* operator->() const { return m_pDef; }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char                   _pad00[0xe0];
     CDefPointer<CThingCreatureDef>  PDef;                // +0xe0
     void InitialiseMovementSpeed(float* speed, const CCharString& name);   // 0x00663510
 };
 
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     unsigned char _pade4[0x190 - 0xe4];
     float         MaxWalkingSpeed;                             // +0x190
     void ResetMaxWalkingSpeedToDefault();

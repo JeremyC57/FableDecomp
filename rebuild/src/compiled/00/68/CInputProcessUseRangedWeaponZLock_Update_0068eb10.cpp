@@ -11,7 +11,7 @@ struct CTarget {
     void Method_00487dc0();                         // 0x00487DC0
 };
 
-struct CInputProcessUseRangedWeaponZLock {
+class CInputProcessUseRangedWeaponZLock { public:
     unsigned char _pad[0x18];
     CTarget* m_pTarget;                    // +0x18
     void Update(long);

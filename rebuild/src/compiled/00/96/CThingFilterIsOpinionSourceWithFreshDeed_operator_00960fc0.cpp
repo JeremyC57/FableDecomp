@@ -10,7 +10,7 @@
 //   ReactNonstopFlag +0x77, VirtualDeed +0x80, VirtualDeedID +0x84.
 // Shape: nested ifs with the single false exit last; HasTC/GetTC inline; the stale-deed test is the deed id compare plus a 64-bit UID equality; each awareness test is
 //   an inline helper whose by-value flag parameter is homed in the dead argument slot before the creature is fetched.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -21,7 +21,7 @@ struct CInterfaceMap {
 class CThing;
 class CThingAICreature;
 class COpinionDeed;
-struct CTCOpinionSource {
+class CTCOpinionSource { public:
     unsigned char _pad00[0x18];
     bool UseNavLineOfSight;                     // +0x18
     unsigned char _pad19[0x75 - 0x19];
@@ -59,18 +59,18 @@ public:
 bool __fastcall IsAwareOfThingImplementation(CThingAICreature* creature, CThing* thing, bool flag);   // 0x00864700
 bool __fastcall CanCreatureSeeCreature(const CThing* viewer, const CThing* target, bool ignoreLight);  // 0x008645E0
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;
     CBaseObject* GetPItem() const;              // 0x00A01B50
     CThing* GetThing() const { return (CThing*)GetPItem(); }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetTypedItem() const { return (T*)GetThing(); }
 };
 
-struct CThingFilter_IsOpinionSourceWithFreshDeed {
+class CThingFilter_IsOpinionSourceWithFreshDeed { public:
     CIntelligentPointer<CThingAICreature> PCreature;    // +0x00
     long LastVDeedID;                                   // +0x08
     unsigned __int64 LastSourceUID;                     // +0x10

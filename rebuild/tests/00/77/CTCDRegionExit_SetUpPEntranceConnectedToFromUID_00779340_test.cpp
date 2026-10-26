@@ -6,7 +6,7 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 
-struct CThing { unsigned char Flags91; bool IsDead() const { return (Flags91 & 1) != 0; } };
+class CThing { public: unsigned char Flags91; bool IsDead() const { return (Flags91 & 1) != 0; } };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) {}
@@ -14,7 +14,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
 };
@@ -22,13 +22,13 @@ inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem()
 
 static u64 g_askedUID = 0;
 static CThing* g_found = 0;
-struct CThingManager { CThing* GetThingByUID(u64 uid) { g_askedUID = uid; return g_found; } };
+class CThingManager { public: CThing* GetThingByUID(u64 uid) { g_askedUID = uid; return g_found; } };
 static bool g_allow = true;
 struct CGameSubsystem { virtual bool IsSuppressed() { return g_allow; } };
 static unsigned long g_askedMapUID = 0;
 static long g_mapNumber = 0;
 static bool g_used = false, g_loaded = false;
-struct CWorldMap {
+class CWorldMap { public:
     virtual bool IsMapLoaded(long) const { return g_loaded; }
     virtual bool IsMapUsed(long) const { return g_used; }
     long GetMapNumberFromMapUID(unsigned long uid) const { g_askedMapUID = uid; return g_mapNumber; }

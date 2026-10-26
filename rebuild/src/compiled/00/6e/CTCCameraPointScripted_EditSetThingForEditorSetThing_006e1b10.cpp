@@ -10,8 +10,8 @@
 // fld [ecx+0D8h]`), X is an integer move, then Y, X, Z are stored into the hidden result. A plain
 // `return Position;` through the memberwise copy constructor is three integer moves (33v33).
 
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}

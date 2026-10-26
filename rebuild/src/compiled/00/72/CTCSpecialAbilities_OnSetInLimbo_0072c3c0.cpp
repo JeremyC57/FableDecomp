@@ -9,7 +9,7 @@
 // PThing} so PThing sits at node+0xc. CThing dead flag +0x91 bit 0.
 // Shape: the intelligent pointer is a reference local (`lea esi,[edi+0Ch]` once per node) and every use calls GetPItem again; the loop
 // compares the node with the sentinel re-read from `this`.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsUnconscious();                       // 0x0085EE40
@@ -31,7 +31,7 @@ struct CUndeadFollowerList {                    // retail std::list<CUndeadFollo
     };
     node* head;
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];

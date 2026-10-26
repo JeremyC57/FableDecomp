@@ -64,13 +64,13 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CBase;
-struct CCPPointerInfo;
-struct CDefPointeeBase;
+class CCPPointerInfo;
+class CDefPointeeBase;
 struct CScriptModuleBase;
-struct CWorld;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char      Camera[0x38];                         // +0x04 CCamera
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
@@ -207,34 +207,34 @@ FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPoints) == 0x178);
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -477,7 +477,7 @@ struct CQuakePodTag {CQuakePodTag(){}};
 struct CQuakeArray {CQuake* Begin;CQuake* End;CQuake* Capacity;void Insert(CQuake*,const CQuake&,const CQuakePodTag&,unsigned,bool);
  __forceinline void Push(const CQuake& quake){if(End!=Capacity){ConstructQuake(End,quake);++End;}else Insert(End,quake,CQuakePodTag(),1,true);}
 }; //69D300
-struct CGameCameraManager {
+class CGameCameraManager { public:
  unsigned char Prefix[0x10];CQuakeVector CameraAxis,CameraUp;unsigned char CameraTail[0x4c];CQuakeWorld* World;
  unsigned char BeforeQuakes[0x74];CQuakeArray EarthQuakes;
  void SetEarthquakeAt(const CQuakeVector&,float,float,bool);

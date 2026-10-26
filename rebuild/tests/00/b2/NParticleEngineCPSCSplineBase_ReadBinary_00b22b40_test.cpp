@@ -38,8 +38,8 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
-struct C3DVector { float X, Y, Z; };
-template <class T> struct CArray {                     // STLport vector<T> (12 bytes in retail)
+class C3DVector { public: float X, Y, Z; };
+template <class T> class CArray { public:                     // STLport vector<T> (12 bytes in retail)
     T* m_begin; T* m_end; T* m_capacity;
     CArray() : m_begin(0), m_end(0), m_capacity(0) {}
     explicit CArray(unsigned long n);                  // 0x007C2AB0 (T = C3DVector)
@@ -49,7 +49,7 @@ template <class T> struct CArray {                     // STLport vector<T> (12 
     CArray& operator=(const CArray& other);            // 0x0075B8D0 (T = C3DVector)
     void resize(unsigned long newSize, const T& value);   // 0x00464931 (T = unsigned long)
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0();
     unsigned long StreamPos;                                           // +0x04
     long StreamSize;                                                   // +0x08
@@ -75,7 +75,7 @@ struct CDataInputStream {
     __forceinline unsigned char ReadUByte() { unsigned char value; Read(&value, 1); return value; }
     __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;                   // +0x00
     float             Tension;                         // +0x0c
     bool              EndPointsConnected;              // +0x10
@@ -85,7 +85,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;
     SCountBlock* Info;
     void Reset(T* object);                             // 0x00B23240 / 0x00B23170
@@ -104,20 +104,20 @@ template <class T> struct CCountedPointer {
     }
 };
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase {
+class CParticleSystem;
+class CPSCBase { public:
     virtual void v00();
     CParticleSystem* ParticleSystem;                   // +0x04
     bool UpdateStarted : 1;                            // +0x08
     bool Initialised : 1;
 };
-struct CPSCSplineBase : CPSCBase {
-    struct CSplineRandomOffsetData {                   // 0x48 bytes
+class CPSCSplineBase : public CPSCBase { public:
+    class CSplineRandomOffsetData { public:                   // 0x48 bytes
         unsigned char _body[0x48];
         CSplineRandomOffsetData(CCardinalSpline* initialSpline);   // 0x00B21DD0
         void ReadBinary(CDataInputStream* in);                     // 0x00B22100
     };
-    struct CSplinePosParamData {                       // 0x18 bytes
+    class CSplinePosParamData { public:                       // 0x18 bytes
         CParticleSystem*      PParentParticleSystem;   // +0x00
         CCardinalSpline*      Spline;                  // +0x04
         bool                  MaintainSplineShape;     // +0x08

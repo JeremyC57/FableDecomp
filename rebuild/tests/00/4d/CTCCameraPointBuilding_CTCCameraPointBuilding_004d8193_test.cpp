@@ -2,7 +2,7 @@
 // three building flags are cleared.
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseParent = 0;
 struct CTCCameraPointDefinitionBase_Calls {
     virtual void v00() { }

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CThingObject::ResetDieOffTimer (0x00702CE0).
-struct CThingObjectDef { long DieOffTimer; };
-struct CThingObject {
+class CThingObjectDef { public: long DieOffTimer; };
+class CThingObject { public:
     const CThingObjectDef* PDef; long DieOffTimer; bool DiesOff;
     void ResetDieOffTimer() { DieOffTimer = PDef->DieOffTimer; DiesOff = DieOffTimer > 0; }
 };

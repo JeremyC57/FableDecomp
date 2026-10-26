@@ -11,11 +11,11 @@
 // Name: the class is NInventory::CTCInventoryBase (RTTI vtable 0x01253DBC .?AVCTCInventoryBase@NInventory@@, slot 5);
 // Ego_r.exe ?InitialActivate@CTCInventoryBase@NInventory@@UAEXXZ 0x00622A5A (CTCBase slot 5 = InitialActivate).
 #pragma optimize("s", on)
-struct CCharString { void* m_pData; };
-struct CDefinitionManager {
+class CCharString { public: void* m_pData; };
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);     // 0x009AD410
 };
-namespace NInventory { struct CItem; }
+namespace NInventory { class CItem; }
 struct CItemVector;
 struct CCharStringVector { CCharString* first; CCharString* last; CCharString* end_of_storage; };
 struct CSerialisedItemsPointer {                                  // CCountedPointer<vector<NInventory::CItem>>

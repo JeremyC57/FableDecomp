@@ -9,8 +9,8 @@ long GFGetCurrentFrame() { return g_now; }
 long g_FramesPerSecond = 10;
 const long g_AppearanceCategoryPriority[16] = { 1, 5, 3, 5, 2, 9, 4, 4, 7, 1, 1, 8, 6, 2, 3, 9 };
 
-struct CHeroMarriageDef { long AppearanceChangeNoticeSeconds; };
-struct CTCWife {
+class CHeroMarriageDef { public: long AppearanceChangeNoticeSeconds; };
+class CTCWife { public:
     CHeroMarriageDef* PHeroMarriageDef;
     long FrameNoticedChangeInAppearance[16];
     bool GetAppearanceChangedNoticed(EWifeAppearanceCategories* category);

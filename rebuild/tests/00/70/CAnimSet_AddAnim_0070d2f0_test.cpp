@@ -5,7 +5,7 @@
 
 static long g_frame = 41;
 static long GFGetFrameCount() { return ++g_frame; }
-struct CTransitionBlendAlpha { float Current; float Last; CTransitionBlendAlpha(float c, float l) : Current(c), Last(l) {} };
+class CTransitionBlendAlpha { public: float Current; float Last; CTransitionBlendAlpha(float c, float l) : Current(c), Last(l) {} };
 template <class T> struct CVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     void push_back(const T& x)
@@ -19,7 +19,7 @@ template <class T> struct CVector {
         _M_start = p; _M_finish = p + size + 1; _M_end_of_storage = p + len;
     }
 };
-struct CAnimSet {
+class CAnimSet { public:
     CVector<short> Anims; CVector<CTransitionBlendAlpha> InternalAlphas; unsigned long FrameInternalAlphasUpdated;
     void AddAnim(short anim, float alpha)
     {

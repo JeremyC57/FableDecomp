@@ -8,7 +8,7 @@
 // (`Categories[index]` through the accessor re-derives it as `add ecx,[eax+20h]` after the push).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                                    // 0x0099B510

@@ -10,8 +10,8 @@
 #include "engine/CChunkedFileChunk.h"
 #undef CChunkedFileChunk
 struct CRetailString : CCharString { CRetailString(const CCharString& s); }; // native copy0x0099EC30
-struct CChunkedFileSaver; struct CDataInputStream; struct CChunkedFileLoader;
-struct CDataOutputStream {
+class CChunkedFileSaver; class CDataInputStream; class CChunkedFileLoader;
+class CDataOutputStream { public:
     virtual ~CDataOutputStream();
     virtual void SetPosition(unsigned long position)=0;
     virtual unsigned long GetPosition() const=0;
@@ -21,7 +21,7 @@ struct CDataOutputStream {
     void WriteULong(unsigned long value); // 0x00993EA0
     void WriteNullTerminatedString(const CCharString& value); // 0x00995AE0
 };
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual ~CChunkedFileChunk();
     virtual CCharString GetChunkDescription() const;
     virtual CCharString GetChunkInfo() const;
@@ -43,12 +43,12 @@ struct ChunkPointer {
     ~ChunkPointer() { if(Info && --Info->References==0) { Info->Destroy(Info->Object); operator delete(Info); } }
     CChunkedFileChunk* operator->() const { return Data; }
 };
-struct CChunkedFile {
+class CChunkedFile { public:
     virtual ~CChunkedFile();
     ChunkPointer RootChunk; unsigned long Version; CCharString FileComment;
     ChunkPointer GetRootChunk() const { return RootChunk; }
 };
-struct CChunkedFileSaver {
+class CChunkedFileSaver { public:
     virtual ~CChunkedFileSaver();
     char SupportedFileType[5];
     unsigned long SaveChunkedFile(CChunkedFile& file,CDataOutputStream& out);

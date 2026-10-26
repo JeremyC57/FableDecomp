@@ -10,7 +10,7 @@
 // owning a member with its own assignment, so the memberwise copy is written out: the seven words go
 // through eax/ecx/edx in order, the 16-byte POD record at +0x58 is one implicit record assignment
 // (`lea` of both ends + four moves), the +0x68 word is stored around the member call, the byte last.
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned char _body[0x3c];
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
@@ -24,7 +24,7 @@ struct CAssignedMember {
     CAssignedMember& operator=(const CAssignedMember& other);   // 0x0045BC09
 };
 
-struct CConfigOptionsDefaultsDef : CParentDefClassBase {
+class CConfigOptionsDefaultsDef : public CParentDefClassBase { public:
     long m_3c;                              // +0x3c
     long m_40;                              // +0x40
     long m_44;                              // +0x44

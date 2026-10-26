@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CWideString {
+class CWideString { public:
     char text[32];
     CWideString(const char* t) { std::strcpy(text, t); }
     CWideString(const CWideString& o) { std::strcpy(text, o.text); }

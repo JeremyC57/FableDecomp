@@ -1,10 +1,10 @@
 #include <cstdio>
 static long g_frame = 0;
 static long g_FramesPerSecond = 15;
-struct CWorld { static long GetWorldFrame() { return g_frame; } static long GetFramesPerSecond() { return g_FramesPerSecond; } };
-struct CHeroMarriageDef { float SecsInLoveAndHusbandPresentBeforeSexOffered; };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } static long GetFramesPerSecond() { return g_FramesPerSecond; } };
+class CHeroMarriageDef { public: float SecsInLoveAndHusbandPresentBeforeSexOffered; };
 static int g_worldCalls = 0;
-struct CTCWife {
+class CTCWife { public:
     const CHeroMarriageDef* PHeroMarriageDef; long FrameEnteredLoveWithHusbandPresentAtHome;
     const CWorld* GetWorld() const { ++g_worldCalls; return 0; }
     bool IsOfferingSex() const

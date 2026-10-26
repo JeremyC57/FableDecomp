@@ -2,13 +2,13 @@
 
 struct CMember { int x; };
 
-struct CPersistContext {
+class CPersistContext { public:
     int calls;
     void* args[4];
     void Persist_00431102(CMember* m) { if (calls < 4) args[calls] = m; calls++; }
 };
 
-struct CGuildMasterDef {
+class CGuildMasterDef { public:
     unsigned char pad0[0x28];
     CMember m28;
     CMember m2c;

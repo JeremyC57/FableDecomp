@@ -70,7 +70,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveManagerParticleLineGroup {
+class CEnginePrimitiveManagerParticleLineGroup { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -110,7 +110,7 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleLineGroup, ConstantB
 
 
 #pragma pack(push, 1)
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x30];                          // +0x04 flattened base-class subobject(s)
 };
@@ -134,7 +134,7 @@ FABLE_STATIC_ASSERT(offsetof(CVertexBufferWin32, __vftable) == 0x0);
 struct IDirect3DIndexBuffer9;
 
 #pragma pack(push, 1)
-struct CIndexBuffer {
+class CIndexBuffer { public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DIndexBuffer9* PD3DIndexBuffer;                  // +0x04
     unsigned long          ByteLength;                       // +0x08
@@ -162,17 +162,17 @@ FABLE_STATIC_ASSERT(offsetof(CIndexBuffer, PAllocatedBuffer) == 0x10);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CFontBank;
-struct CGraphicDataBank;
-struct CLoadingMemoryFailureHandler;
-struct CMeshDataBank;
-struct CMovableResourceMemoryPool;
-struct CWideStringData;
+class CCPPointerInfo;
+class CFontBank;
+class CGraphicDataBank;
+class CLoadingMemoryFailureHandler;
+class CMeshDataBank;
+class CMovableResourceMemoryPool;
+class CWideStringData;
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -286,7 +286,7 @@ struct CIndexBuffer_Methods:CIndexBuffer {
 };
 struct ShaderArray {void* First;void* Last;void* End;};
 struct ShaderHandle {void* NativeVTable;void* Data;};
-struct CEnginePrimitiveManagerParticleLineGroup {
+class CEnginePrimitiveManagerParticleLineGroup { public:
  void* NativeVTable;void* Scenes;bool Enable;unsigned char Alignment[3];
  ShaderArray VertexShadersLinePointLights;
  ShaderHandle VertexShaderDisplacement;

@@ -10,13 +10,13 @@
 //          block (address re-taken, destroyed before the null test); do/while(result == 4) keeps the loop unrotated; a
 //          named `action` copy read before the dead lookup puts Action in ebx and result in ebp (proximity reloaded).
 #include "engine/CAIStateGroup_ApprenticeHero.h"
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-struct CThingGameObject { const C3DVector& GetPosition() const; };   // CThing::GetPosition 0x004C73D0
-struct CTCBase;
+class CThingGameObject { public: const C3DVector& GetPosition() const; };   // CThing::GetPosition 0x004C73D0
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -37,7 +37,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -54,12 +54,12 @@ struct CThing {
     }
 };
 struct CTCInformation;                          // interface 0xaa
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

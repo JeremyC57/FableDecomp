@@ -7,7 +7,7 @@
 // Virtual override forwarding all three arguments to the base class (the arguments are gathered
 // into registers before `this` is saved), then the byte at +0x149 of the async bank is set
 // (the base class ends at +0x148: the derived flags start there, so +0x149 is the second one).
-struct CCharString;
+class CCharString;
 
 struct CBankFile_Retail {
     virtual void v00();
@@ -15,7 +15,7 @@ struct CBankFile_Retail {
     void OpenReadWrite(const CCharString& name, unsigned long flags, unsigned long alignment);   // 0x009CB960
 };
 
-struct CBankFileAsync : CBankFile_Retail {
+class CBankFileAsync : public CBankFile_Retail { public:
     bool m_asyncReading;                                                                         // +0x148 (untouched here)
     bool m_asyncOpen;                                                                            // +0x149
     virtual void OpenReadWrite(const CCharString& name, unsigned long flags, unsigned long alignment);   // 0x009D51D0

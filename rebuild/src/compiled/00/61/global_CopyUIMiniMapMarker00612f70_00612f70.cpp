@@ -10,15 +10,15 @@
 //   The count lives in the dead `result` argument slot; result in ebp, the string pair addressed as [esi-4]/[edi-4].
 struct random_access_iterator_tag { random_access_iterator_tag() { } };   // empty tag, passed by const reference
 
-struct CCharString {                            // 4-byte counted string handle
+class CCharString { public:                            // 4-byte counted string handle
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
 namespace CTCInventoryMap {
-struct CUIMiniMapMarker {                       // Ego_r.pdb, 0x1c bytes
+class CUIMiniMapMarker { public:                       // Ego_r.pdb, 0x1c bytes
     long        Region;                         // +0x00
     CCharString UIDefName;                      // +0x04
     C2DVector   Position;                       // +0x08

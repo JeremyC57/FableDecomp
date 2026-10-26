@@ -3,7 +3,7 @@
 // false, so every sift step takes the right-hand child (idx is never decremented).
 #include <cstdio>
 #include <cmath>
-struct CAnimationEntry {
+class CAnimationEntry { public:
     float Rotation;
     void GetRotationInAnimation(float* pRotation) const { *pRotation = -Rotation; }
 };

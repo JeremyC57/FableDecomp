@@ -11,25 +11,25 @@
 // Shape: the min/max pair is copied into an 8-byte frame record first (mov edx/eax, then [esp] and [esp+4]):
 //   a by-value CFloatRange local; then the seed (right-most argument) is evaluated, then the difference
 //   max - min is pushed, and the trailing + min reads the record after the call (fadd [esp]).
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();        // 0x0049D810
 };
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CFloatRange {
+class CFloatRange { public:
     float Min;
     float Max;
 };
 
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x70];
     CFloatRange StunTime;                   // +0x70 StunTimeMin, StunTimeMax
     unsigned char _pad78[0x4];              // +0x78 StunHealthThreshold
     CFloatRange DazedTime;                  // +0x7c DazedTimeMin, DazedTimeMax
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad000[0xe0];
     const CThingCreatureDef* PDef;          // +0xe0 CDefPointer<const CThingCreatureDef>::Object
     CWorld* GetWorld();                     // 0x004C7AB0 (CThing)

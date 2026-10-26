@@ -6,9 +6,9 @@
 // Shape: base call, derived vtable, PatrolStart's out-of-line converting constructor, CreatureAssignedToTask's inline default
 // constructor (edi = &member, vtable stored after the base call), then `TaskLocked = false`. Member names from CVillageTaskPatrol.h.
 #pragma optimize("s", on)
-struct CBaseObject;
-struct CThing;
-struct CThingTrackNode;
+class CBaseObject;
+class CThing;
+class CThingTrackNode;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -31,7 +31,7 @@ struct CVillageTask {
     void* m_pVillage;                       // +0x04
     CVillageTask();                         // 0x0099A380
 };
-struct CVillageTaskPatrol : CVillageTask {
+class CVillageTaskPatrol : public CVillageTask { public:
     CIntelligentPointerTrackNode  PatrolStart;              // +0x08
     CIntelligentPointerConstThing CreatureAssignedToTask;   // +0x10
     bool                          TaskLocked;               // +0x18

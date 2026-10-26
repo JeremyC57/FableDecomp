@@ -4,19 +4,19 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_deleted = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     virtual void Delete() { ++g_deleted; }
     long RefCount;
 };
 #pragma pack(push, 1)
-struct CThingBuildingDef : CDefClassBase {
+class CThingBuildingDef : public CDefClassBase { public:
     unsigned char _pad08[0x74 - 0x08];
     unsigned long SimBuildingDef;
 };
 #pragma pack(pop)
-struct CSimBuildingDef : CDefClassBase { };
-template <class T> struct CDefPointer {
+class CSimBuildingDef : public CDefClassBase { public: };
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object)
@@ -34,7 +34,7 @@ template <class T> struct CDefPointer {
     }
 };
 static CThingBuildingDef* g_buildingDef = 0; static CSimBuildingDef* g_subDef = 0; static int g_getBuilding = 0, g_getSub = 0; static long g_buildingIndex = -1, g_subIndex = -1;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingBuildingDef>* out)
     {
         ++g_getBuilding; g_buildingIndex = index;
@@ -49,7 +49,7 @@ struct CDefinitionManager {
     }
 };
 static CDefinitionManager g_manager;
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefGlobalIndex;
     CDefinitionManager* GetDefinitionManager() const { return &g_manager; }

@@ -43,7 +43,7 @@ public:
     bool CrimeReportedFlag;                     // +0x7c
     void RemoveCrime(long handle);              // 0x0065C146
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     unsigned char _pad00[0x22];
     bool          ReportedToVillage;            // +0x22
 };

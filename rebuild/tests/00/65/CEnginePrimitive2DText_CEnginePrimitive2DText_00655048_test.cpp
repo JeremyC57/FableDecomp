@@ -1,17 +1,17 @@
 // Behaviour test for CEnginePrimitive2DText::CEnginePrimitive2DText(const CEnginePrimitive2DText&) @ 0x00655048.
 #include <cstdio>
 static int g_textCopies = 0;
-struct C2DVector { float X, Y; };
-struct CRGBColour {
+class C2DVector { public: float X, Y; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) { }
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& o) { Set(o.R, o.G, o.B, o.A); }
 };
-struct CWideString { const void* m_pData; CWideString(const void* p) : m_pData(p) { } CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_textCopies; } };
-struct CFontBank { int id; };
+class CWideString { public: const void* m_pData; CWideString(const void* p) : m_pData(p) { } CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_textCopies; } };
+class CFontBank { public: int id; };
 struct SEnginePrimitive2DHeader { long m_type, m_interpolation; bool m_flag8, m_flag9, m_flagA; };
-struct CEnginePrimitive2DText {
+class CEnginePrimitive2DText { public:
     SEnginePrimitive2DHeader m_header; C2DVector m_position; unsigned int m_userData; long m_layer; float m_depth;
     CRGBColour m_colour; CWideString m_text; CFontBank* m_pFont;
     CEnginePrimitive2DText(const SEnginePrimitive2DHeader& h, const CRGBColour& c, const CWideString& t)

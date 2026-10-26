@@ -12,16 +12,16 @@
 // Layout: engine/C3DMeshInfo.h MeshData +0xc, LODDataSizes[4] +0x50; CMeshData LODMeshes[4] +8, MeshStats +0x18 (landed
 //   RemoveLOD 0x00A249A0); engine/C3DMeshLODInfo.h is a CResource (list +8, LastUsedFrame +0x18) with Mesh +0x1c
 //   (CCountedPointer<C3DMesh2>), FileData +0x24, UsedMeshStats +0x31 -- modelled locally for the polymorphic base.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
 
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
     virtual void Destroy(int flags);
     virtual void Delete();                 // slot 1 (+4)
     virtual void v08(); virtual void v0c(); virtual void v10();
@@ -37,7 +37,7 @@ struct CResource {
     void SetAsUnloadable();                // 0x009FBF50
     void AddToResourceList();              // 0x009FC440
 };
-struct CResourceList {
+class CResourceList { public:
     long m_pad0;
     CResource Head;                        // +4
     unsigned long ResourceCount;           // +0x20
@@ -47,7 +47,7 @@ struct CResourceList {
 };
 
 struct SCountBlock { long m_references; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     SCountBlock* m_pCount;
     template <class U> CCountedPointer(const CCountedPointer<U>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -56,11 +56,11 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CBankFileAsyncData { bool WaitUntilFinished(); };   // 0x009D5B60
-struct C3DMeshStats {};
-struct C3DMesh2 : C3DMeshStats {};
+class CBankFileAsyncData { public: bool WaitUntilFinished(); };   // 0x009D5B60
+class C3DMeshStats { public:};
+class C3DMesh2 : public C3DMeshStats { public:};
 
-struct C3DMeshLODInfo : CResource {
+class C3DMeshLODInfo : public CResource { public:
     CCountedPointer<C3DMesh2> Mesh;        // +0x1c
     CBankFileAsyncData* FileData;          // +0x24 CCountedPointer<CBankFileAsyncData>::Data
     void* FileDataInfo;                    // +0x28

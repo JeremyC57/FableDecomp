@@ -12,12 +12,12 @@
 // Shape: the LRU refresh is a `__forceinline` CResource member applied to the volume then to the frame data; the texture
 //   pointer is read through a full-expression CTexturePointer copy (+1 then -1 on its count, before the null test); the
 //   success path is nested so the callee-saved pushes stay at entry and both failures share one `xor al,al` exit.
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished();                             // 0x009D54E0
     void WaitUntilFinished();                      // 0x009D5B60
 };
-struct CResource;
-struct CResourceList {
+class CResource;
+class CResourceList { public:
     unsigned char _pad00[4];
     CResource*    Tail;                            // +0x04
     unsigned char _pad08[0x10 - 0x08];
@@ -25,7 +25,7 @@ struct CResourceList {
     unsigned char _pad14[0x2c - 0x14];
     unsigned long Stamp;                           // +0x2c
 };
-struct CResource {
+class CResource { public:
     unsigned char  _pad00[8];
     CResourceList* List;                           // +0x08
     unsigned char  _pad0C[0x18 - 0x0c];
@@ -46,7 +46,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-struct CVolumeTexture;
+class CVolumeTexture;
 struct CTexturePointer {
     CVolumeTexture* m_pObject;
     SCountBlock*    m_pCount;
@@ -92,7 +92,7 @@ struct CFrameCounter {
     unsigned char _pad[0x194];
     unsigned long FrameStamp;                      // +0x194
 };
-struct CGraphicInfo {
+class CGraphicInfo { public:
     unsigned char  _pad[0x20];
     CFrameCounter* Counter;                        // +0x20
 };

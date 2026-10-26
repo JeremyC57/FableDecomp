@@ -22,8 +22,8 @@ public:
     void* m_pStringData;
     CCharString();                                   // 0x0099E4B0
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -31,7 +31,7 @@ template <class T> struct CCountedPointer {
 class CDiskFileWin32;
 class CThreadedFile;
 namespace NBankFileManager {
-struct CContainedBank {
+class CContainedBank { public:
     unsigned long DataVersion;                       // +0x00
     unsigned long EntryCount;                        // +0x04
     unsigned long InfoOffset;                        // +0x08

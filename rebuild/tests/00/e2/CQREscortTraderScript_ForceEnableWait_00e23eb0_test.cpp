@@ -1,7 +1,7 @@
 // Behaviour test for CQR_EscortTraderScript::ForceEnableWait (0x00E23EB0): flags, quest stage and the three
 // interface calls with their arguments, in order.
 #include <cstdio>
-struct CScriptThing { long m_id; };
+class CScriptThing { public: long m_id; };
 static int g_seq = 0;
 struct CInterface {
     CScriptThing hero; int stopAt; const CScriptThing* stopThing; int emoteAt; const CScriptThing* emoteThing; bool emote;

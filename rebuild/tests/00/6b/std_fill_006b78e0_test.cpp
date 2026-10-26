@@ -1,6 +1,6 @@
 // Behaviour test for 0x006B78E0 std::fill(CGameMapCell*, CGameMapCell*, const CGameMapCell&).
 #include <cstdio>
-struct CGameMapCell {
+class CGameMapCell { public:
     unsigned char AtmosThemes[3];
     unsigned char AtmosBlends[2];
     signed char   SoundTheme;

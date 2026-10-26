@@ -12,15 +12,15 @@
 // (CCharString operator= + the CRC word, no vptr copy), then destroyed: the implicit CAnimFilterOfGroup
 // dtor runs ~Group and the inline user ~CAnimFilter() stores the base vtable 0x0122FFCC; the literal's
 // implicit CCharString conversion temporary dies last.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0
     unsigned long m_length;                // +4
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -37,7 +37,7 @@ struct CAnimFilter {                       // vtable 0x0122FFCC
     ~CAnimFilter() { }
 };
 
-struct CAnimFilterOfGroup : CAnimFilter {  // vtable 0x01267568
+class CAnimFilterOfGroup : public CAnimFilter { public:  // vtable 0x01267568
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
     virtual void v00();
@@ -68,7 +68,7 @@ struct CModeStandBase {                    // retail sizeof 0x68
 
 namespace NCreatureMode {
 
-struct CModeDragonHover : CModeStandBase { // vtable 0x0126845C, 0x80 bytes
+class CModeDragonHover : public CModeStandBase { public: // vtable 0x0126845C, 0x80 bytes
     CAnimFilterOfGroup       Filter;       // +0x68
     CIntelligentPointerThing PTarget;      // +0x74
     bool                     UseHeadTurning;   // +0x7c

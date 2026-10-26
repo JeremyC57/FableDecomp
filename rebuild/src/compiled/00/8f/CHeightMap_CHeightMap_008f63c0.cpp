@@ -13,8 +13,8 @@
 // Shape: the count guard is the inline 64-bit `0 <= n <= 0x7FFFFFFF` predicate over `((__int64)SizeY + 1) *
 //   ((__int64)x + 1)` with x a named local (homed in the dead `size` argument slot); the resize takes a frame
 //   CHeightMapCell() whose user constructor is empty; NoMapUpdateAreas and Clear() run only inside the guard.
-struct CWorld;
-struct CMap;
+class CWorld;
+class CMap;
 
 struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();
@@ -27,7 +27,7 @@ struct SHeightMapSize {                            // the map's cell counts and 
     unsigned long* WorldSeed;
 };
 
-struct CHeightMapCell {                            // 12 bytes
+class CHeightMapCell { public:                            // 12 bytes
     float         Height;
     unsigned char EngineThemePaletteIndex[3];
     unsigned char EngineBlend[2];
@@ -55,7 +55,7 @@ struct CHeightMapCellVector : _Vector_base<CHeightMapCell> {   // STLport vector
     void resize(unsigned int n, const CHeightMapCell& value);   // 0x008F6E30
 };
 
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY;
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY;
     C2DBoxI() { } C2DBoxI(const C2DBoxI& o) : MinX(o.MinX), MinY(o.MinY), MaxX(o.MaxX), MaxY(o.MaxY) { }
 };
 
@@ -64,7 +64,7 @@ static inline bool IsSafeCount(__int64 count)
     return count >= 0 && count <= 0x7FFFFFFF;
 }
 
-struct CHeightMap : CBaseClassNonCopyable {        // vtable 0x01288BEC
+class CHeightMap : public CBaseClassNonCopyable { public:        // vtable 0x01288BEC
     CWorld*              World;                    // +0x004
     CMap*                Map;                      // +0x008
     unsigned long*       WorldSeed;                // +0x00c

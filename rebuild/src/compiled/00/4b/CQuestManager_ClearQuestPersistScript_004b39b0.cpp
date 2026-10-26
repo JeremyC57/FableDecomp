@@ -18,7 +18,7 @@
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 namespace NQuestManager {
 struct CPersistInfo { CCharString a; CCharString b; };
@@ -41,16 +41,16 @@ struct CPersistMap {                                // CVectorMap<CCharString, C
     CPersistPair* end() { return _M_finish; }
 };
 
-struct CThingManager {
+class CThingManager { public:
     void ClearPersistenceDataForSection(const CCharString& section);   // 0x00520C70
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CThingManager& GetThingManager();       // slot 3 (+0xc)
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0xc];
     CPersistMap   RuntimeQuestPersistence;          // +0x0c (its quest map)
     unsigned char _pad18[0x64];

@@ -7,17 +7,17 @@
 // Layout (local model): the thing's script name CCharString at +0x74.
 // Shape: the name is a named pointer local (`add esi,74h` once, reused as `this` for both compares); `if (a && b) return
 // true; return false;` gives the `mov al,1` exit after both tests and the shared `xor al,al` tail.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     bool operator!=(const char* text) const;    // 0x0099E960
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x74];
     CCharString   m_scriptName;                 // +0x74
 };
 
-struct CThingFilter_HasAnyScriptName {
+class CThingFilter_HasAnyScriptName { public:
     bool operator()(const CThing& thing) const;
 };
 

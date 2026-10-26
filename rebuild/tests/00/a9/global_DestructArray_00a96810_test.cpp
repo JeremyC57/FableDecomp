@@ -4,13 +4,13 @@
 #define __fastcall
 #endif
 static int g_destroyed = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_count;
 };
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;
     ~CIVCountedPointer()
     {

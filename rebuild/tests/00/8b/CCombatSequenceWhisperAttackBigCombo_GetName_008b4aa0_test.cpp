@@ -6,7 +6,7 @@
 static const char* g_last_str = 0;
 static int         g_last_len = 999;
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     CCharString() { m_data = 0; }
     CCharString(const char* s, int n) { g_last_str = s; g_last_len = n; m_data = (char*)s; }

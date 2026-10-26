@@ -1,7 +1,7 @@
 // Behaviour test for 0x0070FD30 std::__upper_bound over list<CAnimSet>::const_iterator ordered by Priority.
 #include <cstdio>
 
-struct CAnimSet {
+class CAnimSet { public:
     unsigned char _pad00[0x4c];
     long          Priority;
 };

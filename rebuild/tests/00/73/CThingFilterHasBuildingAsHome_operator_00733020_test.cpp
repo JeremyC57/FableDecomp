@@ -2,12 +2,12 @@
 #include <cstdio>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CThingBuilding { int id; };
+class CThingBuilding { public: int id; };
 static CThingBuilding* g_home; static int g_calls;
-struct CThingAICreature {
+class CThingAICreature { public:
     CThingBuilding* GetHomeBuilding() const { ++g_calls; return g_home; }
 };
-struct CThingFilter_HasBuildingAsHome {
+class CThingFilter_HasBuildingAsHome { public:
     const CThingBuilding* m_building;
     bool operator()(const CThingAICreature& creature) const;
 };

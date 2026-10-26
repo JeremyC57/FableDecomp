@@ -11,7 +11,7 @@
 // pushed by value first. The by-value `*i` is CTestQuest's IMPLICIT copy constructor inlined into the argument
 // area inside the loop (`sub esp,1Ch ; mov edi,esp`, six CCharString copies, ColourIndex moved between the second
 // and third). Layout from the landed CTestQuest sources (PDB names).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
@@ -29,7 +29,7 @@ public:
     CCharString QuestCardDefName;                  // +0x18
 };
 
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest& a, const CTestQuest& b) const;   // 0x006238A0
 };
 

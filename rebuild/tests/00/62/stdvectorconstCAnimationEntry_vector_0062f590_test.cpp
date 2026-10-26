@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 // Behaviour test: the vector<const CAnimationEntry*> copy constructor allocates size() slots and copies the pointers.
-struct CAnimationEntry { int Id; };
+class CAnimationEntry { public: int Id; };
 template <class T> struct TestVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     TestVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}

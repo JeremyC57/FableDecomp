@@ -1,10 +1,10 @@
 #pragma optimize("s",on)
-struct CPersistContext {
+class CPersistContext { public:
     void TransferA(int* v);
     void TransferB(int* v);
 };
 
-struct CTCNoiseDef {
+class CTCNoiseDef { public:
     char pad[0x28];
     int a;
     int b;

@@ -1,7 +1,7 @@
 // CTCStealth::OnCreate  retail 0x00c5a1d0
 // xor eax,eax; [ecx+0x1e8]=0x1000; [ecx+0x1ec]=0; [ecx+0xd8]=0; jmp base::OnCreate
 
-struct CTCStealth {
+class CTCStealth { public:
     char pad_d8[0xd8];
     unsigned int f_d8;      // +0xd8
     char pad2[0x1e8 - 0xd8 - 4];

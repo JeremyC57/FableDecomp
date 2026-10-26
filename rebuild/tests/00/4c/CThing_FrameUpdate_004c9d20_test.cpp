@@ -1,17 +1,17 @@
 // Behaviour test for CThing::FrameUpdate @ 0x004C9D20: bullet-time update only when active, not a full frame and affected.
 #include <cstdio>
-struct CBulletTimeManager {
+class CBulletTimeManager { public:
     long m_bulletTimeInfoCount; bool Override; bool fullFrame;
     bool IsActive() const { return Override || m_bulletTimeInfoCount; }
     bool IsTimeForFullUpdate() { return fullFrame; }
 };
 struct CWorldTime { CBulletTimeManager* m_pBulletTimeManager; };
-struct CThingManager { CWorldTime* m_pWorldTime; };
+class CThingManager { public: CWorldTime* m_pWorldTime; };
 static CBulletTimeManager g_bt;
 static CWorldTime g_time;
 static CThingManager g_manager;
 static CThingManager* g_pThingManager = &g_manager;
-struct CThing {
+class CThing { public:
     int normal, bullet; bool affected;
     virtual void WorldUpdate() { ++normal; }
     virtual void WorldUpdateBulletTime() { ++bullet; }

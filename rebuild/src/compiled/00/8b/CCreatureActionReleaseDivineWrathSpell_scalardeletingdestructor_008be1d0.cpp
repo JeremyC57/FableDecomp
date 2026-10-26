@@ -1,4 +1,4 @@
-struct CCreatureAction_ReleaseDivineWrathSpell {
+class CCreatureAction_ReleaseDivineWrathSpell { public:
     void* vftable;
 };
 

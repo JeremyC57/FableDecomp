@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CCharString { const char* text; };
+class CCharString { public: const char* text; };
 static long g_loaded = -1;
-struct CDefPointeeBase { virtual void v00() { } long RefCount; };
+class CDefPointeeBase { public: virtual void v00() { } long RefCount; };
 struct CDefPointer { CDefPointeeBase* Object; CDefPointer() : Object(0) { } CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) Object->RefCount = Object->RefCount + 1; } };
 struct CInstantiatedDefInfo { long ClassName, InstantiationName; unsigned long ClassIndex; CDefPointer PDef; };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char _pad[0xa4]; CInstantiatedDefInfo** InstantiatedDefs;
     long GetDefGlobalIndexFromName(const CCharString& n) { return n.text[0] == 'x' ? 2 : -1; }
     void LoadDef(unsigned long i) { g_loaded = (long)i; }

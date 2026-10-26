@@ -9,7 +9,7 @@
 #include <new>
 #include <stdlib.h>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise (landed 0x0084F4D0 model)
 };

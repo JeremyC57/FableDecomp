@@ -10,9 +10,9 @@
 // AlliedFactions; set<CCharString> EnemyFactions; } is 36 bytes in Ego_r.pdb but 0x1C in retail (STLport sets are
 // 12 bytes, PDB 16). The implicit traits constructor/destructor call the out-of-line CFaction ones; the module is
 // built without C++ exceptions (no EH frame around the traits' lifetime).
-struct CPersistContext;
-struct CStringParser;
-struct CCharString { struct SBlock* m_pBlock; };
+class CPersistContext;
+class CStringParser;
+class CCharString { public: struct SBlock* m_pBlock; };
 
 template <class T> struct set {                        // STLport set (_Rb_tree), 12 bytes in retail
     void*         _M_header;
@@ -34,7 +34,7 @@ template <class T> struct CPersistTraits {
     void TransferIn(CPersistContext& context, CStringParser& parser, T* value);   // 0x006BA480 for CFaction
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

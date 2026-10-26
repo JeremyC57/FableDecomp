@@ -13,12 +13,12 @@
 // `def` local or a bool flag CSEs the field into one load (107v110). The entry temporary's release is the
 // DecRef()/GetRefCount() pair (load/dec/store, `test edx,edx`), its dead null store dropped.
 #include "engine/CInventoryItemDef.h"
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
 };
 extern CWideString g_emptyWideString;                   // 0x013BCA24
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);                    // slot 0
     virtual void Delete();                              // slot 1
     unsigned long IVRefCount;                           // +0x04
@@ -31,7 +31,7 @@ struct CIVCountedPointeeBase {
             Delete();
     }
 };
-template <class T> struct CIVCountedPointer {           // 4 bytes
+template <class T> class CIVCountedPointer { public:           // 4 bytes
     T* Object;
     ~CIVCountedPointer()
     {
@@ -47,13 +47,13 @@ struct CGroupEntry : CIVCountedPointeeBase {            // NGameText::CGroupEntr
 struct CDataBank {                                      // NGameText::CDataBank
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CDefPointeeBase;
-template <class T> struct CDefPointer {
+class CDefPointeeBase;
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

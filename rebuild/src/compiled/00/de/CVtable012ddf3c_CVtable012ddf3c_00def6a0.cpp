@@ -29,7 +29,7 @@ struct CScriptThingRef {
     CScriptThingRef() : m_pObject(0), m_pCount(0) { }
 };
 
-struct CScriptThing : CBase {              // vtable 0x01238C8C, 0x0C bytes
+class CScriptThing : public CBase { public:              // vtable 0x01238C8C, 0x0C bytes
     CScriptThingRef m_ref;                 // +0x04
     virtual void v00();
     CScriptThing() { }

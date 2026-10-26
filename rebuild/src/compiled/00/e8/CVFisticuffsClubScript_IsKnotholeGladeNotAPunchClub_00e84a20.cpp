@@ -9,12 +9,12 @@
 //   flags as the constant-folded mask in ebx (1/3/7/0xF), zero-initialises the flag word, stores the result in a frame
 //   byte and destroys the built temporaries last-first after the chain; both arms end in the script terminate macro
 //   (`if (IsActiveThreadTerminating()) return true;`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -48,7 +48,7 @@ struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slo
     virtual void v285();
     virtual bool IsQuestCompleted(const CCharString& name) const;   // slot 286 (+0x478) CGameScriptInterface::IsQuestCompleted @ 0x00892F60
 };
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940

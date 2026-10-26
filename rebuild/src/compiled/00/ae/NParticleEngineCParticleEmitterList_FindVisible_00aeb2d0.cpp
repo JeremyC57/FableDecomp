@@ -19,14 +19,14 @@
 //   shares one `CIEngine* engine` local.
 #include <stdlib.h>
 void __cdecl operator delete(void* block);
-struct CIEngine;
+class CIEngine;
 struct CCountedItem { };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;
     void (CCountedItem::*m_pfnDestroy)();
     CCountedItem* m_pItem;
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[4];
     float         AlwaysUpdateDistance;             // +0x04
     unsigned char _pad08[0x1c];
@@ -36,7 +36,7 @@ struct CEnginePrimitivePrepareInfo {
 };
 namespace NParticleEngine {
 #pragma pack(push, 1)
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char  _pad00[0x40];
     unsigned short Priority : 3;                    // +0x40
     unsigned short IsScreenDisplacement : 1;

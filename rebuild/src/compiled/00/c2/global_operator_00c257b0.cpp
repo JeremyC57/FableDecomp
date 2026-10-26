@@ -3,7 +3,7 @@
 // Callees: none. Shape: the three differences computed Z, Y, X onto the FPU stack (the constructor's arguments right to left) and stored X, Y, Z into the hidden result, `ret 4`.
 // The chunk label "CGuiWindow::OnBeginDrag" is propagated (0x00C2xxxx module).
 // Leaf: ??G
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {}
 };

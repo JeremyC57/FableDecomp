@@ -4,7 +4,7 @@ static int g_baseAssigns = 0;
 static int g_containerAssigns = 0;
 static int g_stringAssigns = 0;
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() { }
     long m_marker;                              // stands in for the out-of-line base part
     CParentDefClassBase() : m_marker(0) { }
@@ -27,7 +27,7 @@ struct CContainer {                             // a retail vector / map: assign
     }
 };
 
-struct CCharString {
+class CCharString { public:
     long m_id;
     CCharString() : m_id(0) { }
     CCharString& operator=(const CCharString& other)
@@ -38,12 +38,12 @@ struct CCharString {
     }
 };
 
-struct CDefString { long TablePos; };
-struct CRGBColour { unsigned long m_packed; };
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
+class CDefString { public: long TablePos; };
+class CRGBColour { public: unsigned long m_packed; };
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
 
-struct COpinionReactionMaskDef : CParentDefClassBase {
+class COpinionReactionMaskDef : public CParentDefClassBase { public:
     bool ReactionEnabledDefault;
     CContainer ReactionEnabled;
     COpinionReactionMaskDef& operator=(const COpinionReactionMaskDef& other);

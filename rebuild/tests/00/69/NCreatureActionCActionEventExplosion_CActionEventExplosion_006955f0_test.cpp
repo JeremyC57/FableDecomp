@@ -1,6 +1,6 @@
 #include <cstdio>
 int g_strings = 0;
-struct CCharString { void* data; CCharString() : data(0) { ++g_strings; } };
+class CCharString { public: void* data; CCharString() : data(0) { ++g_strings; } };
 namespace N_0099a2d0 { struct CBase { int baseCtor; CBase() : baseCtor(1) { } }; } using N_0099a2d0::CBase;
 struct CEventBase : CBase { bool triggered; long actionId, eventType, param; CEventBase(long a, long e, long p) : CBase(), triggered(false), actionId(a), eventType(e), param(p) { } };
 struct CExplosion : CEventBase { CCharString name; long index; bool f1c, f1d; CExplosion(long a, long e, long p) : CEventBase(a, e, p), name() { index = -1; f1c = false; f1d = false; } };

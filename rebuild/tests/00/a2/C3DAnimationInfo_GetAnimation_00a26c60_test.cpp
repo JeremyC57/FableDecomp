@@ -20,8 +20,8 @@ static int fails = 0;
 // slot) for find() on a map reference local (esi); `it.Node != Header` compared directly; both returns convert CCountedPointer<C3DAnimation2> to the
 // const pointer (copy + add-ref), the built instance through a temporary released after the copy.
 // Leaf: GetAnimation@C3DAnimationInfo
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
     virtual void v00();
     unsigned long IVRefCount;                  // +4
     CResourceList* ResourceList;           // +8
@@ -32,7 +32,7 @@ struct CResource {
     void ListRemove();                     // 0x009FBFB0
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
 };
-struct CResourceList {
+class CResourceList { public:
     long m_pad0;                           // +0
     CResource Head;                        // +4
     unsigned long ResourceCount;           // +0x20
@@ -46,7 +46,7 @@ struct SCountBlock {
     void* m_pObject;
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                          // +0
     SCountBlock* m_pCount;                 // +4
     template<class U> CCountedPointer(const CCountedPointer<U>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -68,7 +68,7 @@ struct CCountedPointer {
         }
     }
 };
-struct C3DAnimation2;
+class C3DAnimation2;
 struct CAnimationNode {                    // STLport _Rb_tree_node<pair<const unsigned long, CCountedPointer<C3DAnimation2> > >
     long            _M_color;              // +0x00
     CAnimationNode* _M_parent;             // +0x04
@@ -116,11 +116,11 @@ struct CAnimationData : CResource {
         }
     }
 };
-struct C3DMesh2 {
+class C3DMesh2 { public:
     unsigned char _pad[0xe8];
     unsigned long MeshID;                  // +0xe8 the instance-map key
 };
-struct C3DAnimationInfo {                  // engine/C3DAnimationInfo.h offsets
+class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h offsets
     virtual void v00();
     void* Bank;                            // +4
     unsigned long Index;                   // +8

@@ -1,4 +1,4 @@
-struct CCreatureAction_VillagerAdvance {
+class CCreatureAction_VillagerAdvance { public:
     void* vftable;
 };
 

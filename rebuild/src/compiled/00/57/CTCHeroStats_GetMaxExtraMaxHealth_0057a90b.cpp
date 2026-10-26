@@ -14,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     virtual void v00();
     virtual void Destroy();                    // slot 1 (+0x04)
     long          RefCount;                    // +0x04 CDefPointeeBase

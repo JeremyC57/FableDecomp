@@ -19,7 +19,7 @@ template <class T> struct CRetailVector {          // STLport vector over a POD 
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     ~CRetailVector() { if (_M_start) free(_M_start); }
 };
-struct CScriptThing {                              // vtable 0x01238C8C
+class CScriptThing { public:                              // vtable 0x01238C8C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -28,7 +28,7 @@ struct CScriptThing {                              // vtable 0x01238C8C
     virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
     virtual bool MsgGetThingsKilled(CRetailVector<unsigned long>& killed) const;   // slot 55 (+0xdc)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void Update();   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -44,7 +44,7 @@ struct CQ_TraderConflictGoodData {
     unsigned char _pad[0x126];
     bool          m_flag126;                       // +0x126
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating();              // 0x00CB7940
 };
 namespace NScript {

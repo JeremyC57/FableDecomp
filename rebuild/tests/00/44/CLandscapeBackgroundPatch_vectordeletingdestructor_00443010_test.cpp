@@ -5,7 +5,7 @@ static int g_delete_called = 0;
 
 void __cdecl eng_operator_delete(void* p) { (void)p; g_delete_called++; }
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void* vftable;
     void inner_dtor();
     void* vector_deleting_destructor(unsigned int flags);

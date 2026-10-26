@@ -6,7 +6,7 @@
 //   ret
 // Idiomatic: a global CViewBase* singleton; return m_pDisplayEngine at +0x24.
 
-struct CDisplayEngine;
+class CDisplayEngine;
 
 struct CViewBase {
     char pad[0x24];

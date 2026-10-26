@@ -5,16 +5,16 @@
 #define __forceinline inline
 #endif
 static int g_deregisters = 0, g_resets = 0, g_lowerBounds = 0, g_worldCalls = 0, g_combatantCalls = 0, g_isCombatant = 0;
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { ++g_lowerBounds; SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -36,11 +36,11 @@ struct CThing {
         return sel;
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual bool IsStillValid() { return true; }
     virtual void Cleanup() {}
@@ -68,10 +68,10 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
     return false;
 }
 static CThing* g_deregistered = 0;
-struct CCombatManager {
+class CCombatManager { public:
     void DeregisterCombatant(CThing* creature) { ++g_deregisters; g_deregistered = creature; }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* PCombatManager;
 };

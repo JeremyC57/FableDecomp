@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     const char* p;
     int n;
     CCharString(const char* s, int len) : p(s), n(len) {}
 };
 
-struct CTCTavern {
+class CTCTavern { public:
     char pad;
     CCharString GetClassTypeName();
 };

@@ -1,6 +1,6 @@
 // Behaviour test for 0x00687b30 (CInputProcessGameBase::IsEventButtonReleased): the reconstructed predicate over a host input-event model.
 #include <cstdio>
-struct CInputEvent {
+class CInputEvent { public:
     long device; long kind; mutable int calls;
     CInputEvent(long d, long k) : device(d), kind(k), calls(0) {}
     long GetDeviceType() const { ++calls; return device; }

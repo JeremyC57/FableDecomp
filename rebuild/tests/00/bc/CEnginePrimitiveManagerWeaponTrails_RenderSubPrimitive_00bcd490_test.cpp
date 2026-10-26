@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CTrackedRenderState { long id; unsigned long m_value; unsigned long m_captureMask; long applied; bool m_queued; void Set(unsigned long v); };
 struct SCaptured { CTrackedRenderState* s; unsigned long prior; };
-struct CRenderStateManager {
+class CRenderStateManager { public:
     SCaptured m_captured[16]; CTrackedRenderState* m_dirty[16]; long m_capturedCount, m_dirtyCount; unsigned long m_captureMask;
     CTrackedRenderState m_state2854, m_state2890;
     void ChangeState(CTrackedRenderState& state, unsigned long value)
@@ -21,11 +21,11 @@ static void reset(CTrackedRenderState& s, unsigned long v) { s.m_value = v; s.m_
 
 // behaviour test: CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive
 static unsigned long g_default = 7; static int g_trails = 0, g_restores = 0, g_applies = 0;
-struct CShaderRenderManager { bool PixelShadersEnabled; bool flipDuringRender;
+class CShaderRenderManager { public: bool PixelShadersEnabled; bool flipDuringRender;
     void DisablePixelShaders() { PixelShadersEnabled = false; } void EnablePixelShaders() { PixelShadersEnabled = true; } };
 static CShaderRenderManager g_shader;
 struct CSub { void* Parent; };
-struct CEnginePrimitiveManagerWeaponTrails {
+class CEnginePrimitiveManagerWeaponTrails { public:
     void RenderWeaponTrail(void*) { ++g_trails; if (g_shader.flipDuringRender) g_shader.PixelShadersEnabled = true; }
     void RenderSubPrimitive(CSub& sub, long pass);
 };

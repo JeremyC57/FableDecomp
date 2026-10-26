@@ -6,7 +6,7 @@ float GetParticleUpdatePeriod() { return g_period; }
 
 namespace NParticleEngine {
 
-struct CParticle {
+class CParticle { public:
     virtual void v00() {}
     unsigned char _state[0x6e];
     short         Lifetimer;

@@ -14,25 +14,25 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-struct CScriptThing {                                   // 12 bytes {vptr, PImp.Data, PImp.Info}
+class CScriptThing { public:                                   // 12 bytes {vptr, PImp.Data, PImp.Info}
     void* VTable;
     void* PImpData;
     void* PImpInfo;
     ~CScriptThing();                                    // 0x004AA840
 };
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -49,11 +49,11 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
 
-struct CScriptThing;
-struct CScriptDataBase;
-struct CEntityScriptBase;
-struct CActiveEntityScriptBase;
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+class CScriptThing;
+class CScriptDataBase;
+class CEntityScriptBase;
+class CActiveEntityScriptBase;
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
 
 struct __declspec(novtable) CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const = 0;
@@ -71,16 +71,16 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };
 
-struct CBaseObject {                                    // vtable 0x0129A7D8
+class CBaseObject { public:                                    // vtable 0x0129A7D8
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
 };
-struct CScriptGameResourceObjectBase : CBaseObject {    // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
     bool IsScripting();                                 // 0x00CD23B9
@@ -93,7 +93,7 @@ struct CMovieImpPointer {
     CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CMovieImpPointer PImp;
 };
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
@@ -105,7 +105,7 @@ struct CCutsceneCastMap {                               // map<CCharString, CScr
 struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, long priority);   // slot 8 (+0x20)
@@ -201,7 +201,7 @@ struct CGameScriptInterface {
     virtual void v719();
     virtual void SetCategoryActivity(const CCharString& category, bool active) const;   // slot 720 (+0xb40)
 };
-struct CScriptBase {                                     // retail 0x40 bytes
+class CScriptBase { public:                                     // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                                                 // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50

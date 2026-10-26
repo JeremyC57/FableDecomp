@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DADF00, length 96 bytes.
 // Leaf: Init
 // Shape: `this` in esi, the thing in edi, the last two calls share one vtable fetch in ebx (the nested `g->B(&thing, g->A())`), `ret`.
-struct CScriptThing { unsigned char m_body[0xc]; };
+class CScriptThing { public: unsigned char m_body[0xc]; };
 struct CGameCalls_00dadf00 {
     virtual void v000();
     virtual void v001();

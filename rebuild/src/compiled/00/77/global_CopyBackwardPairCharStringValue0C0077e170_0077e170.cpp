@@ -10,7 +10,7 @@
 // count is decremented in the dead `result` argument slot. Same {name, 12-byte value} pair as the landed
 // __uninitialized_copy 0x0077E280 of this TU. The manifest label pair<pair<long,long>, CEngineTextureDecal> (28
 // bytes in retail) is propagated.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };

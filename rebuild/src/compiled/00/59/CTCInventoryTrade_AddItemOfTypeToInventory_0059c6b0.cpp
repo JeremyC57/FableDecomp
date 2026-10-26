@@ -13,9 +13,9 @@
 // The by-value arguments are re-pushed from their slots (`push dword ptr [esp+8]` ... `push dword ptr [esp+10h]`).
 // The local view is named CTCInventoryTrade_Retail so it does not shadow the PDB header engine/CTCInventoryTrade.h.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     bool AddItem(long itemType, bool silent, long price, long count);   // 0x005BF060
 };
 }

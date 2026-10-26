@@ -8,25 +8,25 @@
 // Shape: the creature is read into a named local BEFORE the world call (retail keeps it in edi across
 // GetPWorld and pushes it afterwards); the world itself is a named local too, which is what keeps the
 // creature push after the call instead of before it. Base layout modelled locally (PDB names).
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsRegisteredCombatant();           // 0x00662410
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* m_pCombatManager;       // +0x4c
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

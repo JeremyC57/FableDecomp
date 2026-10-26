@@ -1,7 +1,7 @@
 // Behaviour test for 0x00721400 __partial_sort over pair<CSkeletalMorphs::CEntry,float>
 // (__make_heap / __adjust_heap / sort_heap callees modelled with their SGI bodies).
 #include <cstdio>
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSkeletalMorphsEntry { CDefString MorphName; short Priority; bool SupressesLowerMorphs; };
 struct SMorphWeight {
     CSkeletalMorphsEntry first;

@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CCharStringData { const char* Chars; unsigned long Length; };
+class CCharStringData { public: const char* Chars; unsigned long Length; };
 static long Compare(const char* a, const char* b) { int r = std::strcmp(a, b); return r < 0 ? -1 : (r > 0 ? 1 : 0); }
 class CCharString {
 public:

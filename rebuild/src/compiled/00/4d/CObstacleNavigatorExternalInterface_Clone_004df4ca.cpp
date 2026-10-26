@@ -3,10 +3,10 @@
 // Pattern: return new CObstacleNavigatorExternalInterface(*this);
 //   -> operator new(0x14); if (p) copy-ctor(p, this); return p;
 
-struct CNavigatorExternalInterface { int dummy; };
+class CNavigatorExternalInterface { public: int dummy; };
 
-struct CObstacleNavigatorExternalInterface
-{
+class CObstacleNavigatorExternalInterface
+{ public:
     char data[0x14];
     CObstacleNavigatorExternalInterface() {}
     CObstacleNavigatorExternalInterface(const CObstacleNavigatorExternalInterface& src);

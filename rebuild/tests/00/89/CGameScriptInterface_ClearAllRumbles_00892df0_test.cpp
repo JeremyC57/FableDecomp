@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void* vt;
     void* f4;
     void* f8;

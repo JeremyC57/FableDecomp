@@ -10,13 +10,13 @@
 // StateChangeType +0x44, Position +0x48, Zoom +0x50, Colour (CRGBFloatColour) +0x58, UpdateTime +0x68,
 // ChildrenNotAffected +0x6c (12-byte vector), LinearChange +0x78.
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x21];                     // +0x04..+0x25 (CResource, PDefManager, GlobalIndex, flags)
     CDefClassBase(const CDefClassBase& other);     // 0x0046644C
 };
 #pragma pack(pop)
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 struct CSubDefInfoVector {                         // retail std::vector (12 bytes)
@@ -37,7 +37,7 @@ struct CSubDefInfoMap {                            // CVectorMap<unsigned long, 
     }
 };
 #pragma pack(push, 1)
-struct CParentDefClassBase : CDefClassBase {       // vtable 0x01230CBC
+class CParentDefClassBase : public CDefClassBase { public:       // vtable 0x01230CBC
     CDefString     InstantiationName;              // +0x25
     CSubDefInfoMap SubDefInfoMap;                  // +0x29
     virtual void v00();
@@ -47,8 +47,8 @@ struct CParentDefClassBase : CDefClassBase {       // vtable 0x01230CBC
     }
 };
 #pragma pack(pop)
-struct C2DVector { float X, Y; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C2DVector { public: float X, Y; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CULongVector {                              // retail std::vector<unsigned long> (12 bytes)
     unsigned long* m_first;
     unsigned long* m_last;

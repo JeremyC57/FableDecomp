@@ -12,7 +12,7 @@
 // Shape: the inline SetAsTargetNextThingInDirection(method) (landed 0x008023C0) is expanded in both arms of an if/else, so
 // retail tail-duplicates the three stores and the frame call; the 1 is hoisted into ecx and serves as both the method
 // and the bool.
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x91];
     unsigned char m_removalFlags;            // +0x91 (bit 0)
 };
@@ -21,7 +21,7 @@ typedef long ETargetNextThingMethod;
 
 extern long GFGetCurrentFrame();             // 0x0049D870
 
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

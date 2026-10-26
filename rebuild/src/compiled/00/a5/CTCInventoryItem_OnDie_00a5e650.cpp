@@ -4,8 +4,8 @@
 
 void __cdecl FreeThing(void* p);              // 0xbfea14 (cdecl free)
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     void* m_field0;                           // +0
     void* m_thing;                            // +4
     void OnDie();

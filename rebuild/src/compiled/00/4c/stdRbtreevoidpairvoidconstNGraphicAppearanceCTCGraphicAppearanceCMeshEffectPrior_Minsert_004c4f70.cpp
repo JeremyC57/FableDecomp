@@ -1,5 +1,5 @@
 // std::_Rb_tree<void*, pair<void* const, NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>, ...>::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport: link a new mesh-effect node left or right of y, fix the header links, rebalance, count it
-// Leaf: ?_M_insert@?$_Rb_tree@PAXU?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@U?$_Select1st@U?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@U?$less@PAX@2@U?$allocator@U?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@2@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@PAXU?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@U?$_Select1st@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@U?$less@PAX@2@U?$allocator@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAXUCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C4F70, length 208 bytes (201 + int3 padding), `ret 14h` (hidden iterator result, x, y, v, w).
 // Identity: the MeshEffects map (CTCGraphicAppearance +0x0c, map<void*, CMeshEffectPriorityEntry>): called by insert_unique(v)
 // 0x004C5040 and insert_unique(hint, v) 0x004C5480, under the landed SetPMeshEffect 0x004C0240's operator[] 0x004C5B90.
@@ -32,7 +32,7 @@ enum EAppearanceMeshEffectPriority { MESH_EFFECT_PRIORITY_DEFAULT };
 namespace NGraphicAppearance {
 class CTCGraphicAppearance {
 public:
-    class CMeshEffectPriorityEntry {                         // Ego_r.pdb, 12 bytes
+    struct CMeshEffectPriorityEntry {                         // Ego_r.pdb, 12 bytes
     public:
         CIVCountedPointer<CEngineMeshEffect> PEffect;        // +0x0
         EAppearanceMeshEffectPriority        Priority;       // +0x4

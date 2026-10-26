@@ -9,7 +9,7 @@
 // out-of-line CCharString copies, the argument pointer kept in edi and advanced by 4), then the long value; inner
 // scope so both string destructors (second first) precede the Dirty store. The manifest names the push_back callee
 // "Vector_PushBack_CCharStringTriple".
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);   // 0x0099EC30
     ~CCharString();                          // 0x0099EAE0

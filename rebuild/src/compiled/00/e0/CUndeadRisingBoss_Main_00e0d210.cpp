@@ -10,22 +10,22 @@
 //   +0x18. CQ_UndeadRisingScript is retail = Ego_r.pdb - 0x14: number_of_boss_kills_in_right_area +0x4c, quest_status +0x5c.
 // Shape: generated script code; CScriptThing destructors out of line; the effect is reassigned through the inline
 //   counted-pointer operator= (as CQ_HangingTreeGoodScript::UpdateWayPoint 0x00D74E80); IsAlive is the `Data && ...` form.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass();                                           // 0x0099A2D0
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -103,8 +103,8 @@ struct CScriptThingImpl {                                   // the game-side thi
     virtual void i074();
     virtual bool IsAlive() const;                                                      // slot 75 (+0x12c)
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     virtual void t001() const; virtual void t002() const; virtual void t003() const; virtual void t004() const; virtual void t005() const;
     virtual const C3DVector& GetPos() const;                // slot 6 (+0x18) 0x004AA980
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info

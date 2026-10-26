@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_SheatheWeapons {
+class CCreatureAction_SheatheWeapons { public:
     void* vftable;
     int destroyed;
 };

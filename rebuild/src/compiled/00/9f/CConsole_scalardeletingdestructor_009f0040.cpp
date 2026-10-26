@@ -1,4 +1,4 @@
-struct CConsole {
+class CConsole { public:
     void* vftable;
 };
 

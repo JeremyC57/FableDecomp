@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char Buf[128];
     CCharString(const char* s = "") { std::strcpy(Buf, s); }
     unsigned long GetLength() const { return (unsigned long)std::strlen(Buf); }
@@ -11,8 +11,8 @@ struct CCharString {
     CCharString& operator+=(const char* t) { std::strcat(Buf, t); return *this; }
 };
 struct CCursorPos { bool InQuotes; };
-struct CParsedItem { CCharString String; const CCharString& GetString() { return String; } };
-struct CStringParser {                       // splits at ';', tracking whether the split point is inside quotes
+class CParsedItem { public: CCharString String; const CCharString& GetString() { return String; } };
+class CStringParser { public:                       // splits at ';', tracking whether the split point is inside quotes
     char Text[128]; const char* p; CCursorPos CursorPos;
     CStringParser(const CCharString& text) { std::strcpy(Text, text.Buf); p = Text; CursorPos.InQuotes = false; }
     bool ReadAsStringUntilString(const CCharString& until, CParsedItem& item)
@@ -25,11 +25,11 @@ struct CStringParser {                       // splits at ';', tracking whether 
     }
     bool ReadNextItem(CParsedItem& item) { if (*p) { item.String.Buf[0] = *p++; item.String.Buf[1] = 0; return true; } return false; }
 };
-struct CConsoleCommandLine {
+class CConsoleCommandLine { public:
     CCharString CurrentEntry; bool UserEntry; long CursorPosition;
     void Reset() { CurrentEntry = ""; UserEntry = false; CursorPosition = 0; }
 };
-struct CConsole {
+class CConsole { public:
     CConsoleCommandLine FrontCommandLine;
     char Log[256]; int Runs; long LastCursor;
     void RunCommandLine() { ++Runs; LastCursor = FrontCommandLine.CursorPosition; std::strcat(Log, FrontCommandLine.CurrentEntry.Buf); std::strcat(Log, "|"); }

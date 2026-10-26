@@ -10,7 +10,7 @@
 //        DirectionLastRotated negated last. C3DVector carries memberwise user copy/assignment (plain `mov` copies).
 // Layout: Ego_r.pdb CTCWobble (0x30): ParentThing +0x04, ParentRHSet +0x0c (Up +0x0c, Forward +0x18), FramesOfWobbleRemaining
 //         +0x24, DirectionLastRotated +0x28, AngleOfWobble +0x2c. CThing PhysicsTC +0x60.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
@@ -30,11 +30,11 @@ __declspec(noinline) void C3DVector::Rotate(const C3DVector& axis, float angle)
     
 }
 #pragma auto_inline(on)
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -47,12 +47,12 @@ struct CTCPhysicsBase {
     virtual void v072(); virtual void v073(); virtual void v074();
     virtual void SetFacingAnglesFromRHSet(const CRightHandedSet& rhSet);   // slot 75 (+0x12c)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                     // +0x60
     void RemoveTC(long interfaceType);             // 0x004C9840
 };
-struct CTCWobble {
+class CTCWobble { public:
     virtual void v00();
     CThing*         ParentThing;                   // +0x04
     unsigned char   _pad_0x08[4];

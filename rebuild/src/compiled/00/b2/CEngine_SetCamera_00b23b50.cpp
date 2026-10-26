@@ -5,7 +5,7 @@
 // final member store.
 #include "engine/CEngine.h"
 
-struct CEngineCamera {
+class CEngineCamera { public:
     void AddExclusiveObserver(CCamera* observer);  // 0x00B2FBF0 (CObservable)
     void Process(bool force);                      // 0x00B314E0
 };

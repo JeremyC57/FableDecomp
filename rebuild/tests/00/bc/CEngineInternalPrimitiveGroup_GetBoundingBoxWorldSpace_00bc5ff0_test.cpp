@@ -109,10 +109,10 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveGroup, PrimitiveFlags) == 0
 #include <stddef.h>
 
 
-struct CEngineSceneGridCell;
+class CEngineSceneGridCell;
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -165,7 +165,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveBase, RefLayerMask) == 0x44
 
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEBASE_H
 
-struct C3DBoundingBox { float MinX,MinY,MinZ,MaxX,MaxY,MaxZ; };
+class C3DBoundingBox { public: float MinX,MinY,MinZ,MaxX,MaxY,MaxZ; };
 struct CEngineInternalPrimitiveBase_Methods : CEngineInternalPrimitiveBase {
  typedef bool (CEngineInternalPrimitiveBase_Methods::*BoundsMethod)(C3DBoundingBox&);
  bool DispatchBounds(C3DBoundingBox& bounds) {

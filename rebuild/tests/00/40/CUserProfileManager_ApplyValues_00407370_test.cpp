@@ -10,17 +10,17 @@ struct CRendererPtr {
 };
 static int g_refreshes = 0;
 struct CPlayerObject { void Refresh() { ++g_refreshes; } };
-struct CPlayer { CPlayerObject* Object; };
-struct CPlayerManager {
+class CPlayer { public: CPlayerObject* Object; };
+class CPlayerManager { public:
     CPlayer player; bool exists;
     long GetMainPlayerNumber() { return 3; }
     bool IsPlayer(long number) { return exists && number == 3; }
     CPlayer* GetMainPlayer() { return &player; }
 };
-struct CMainGameComponent { CPlayerManager* PlayerManager; CRendererPtr Renderer; };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; CRendererPtr Renderer; };
 static CMainGameComponent* g_pMainGameComponent;
 static float g_dmGamma = -1.0f;
-struct CDisplayManager { void SetGamma(float gamma, bool b) { g_dmGamma = b ? -2.0f : gamma; } };
+class CDisplayManager { public: void SetGamma(float gamma, bool b) { g_dmGamma = b ? -2.0f : gamma; } };
 static CDisplayManager* g_pDisplayManager;
 static float g_vol[9];
 static bool g_head = false;
@@ -34,7 +34,7 @@ struct CSoundSystem {
 };
 static CSoundSystem* g_pSoundSystem;
 static bool g_bVibrationEnabled;
-struct CUserProfileManager {
+class CUserProfileManager { public:
     bool  UseNewProfileValues;
     bool  VibrationEnabled;
     float Gamma;

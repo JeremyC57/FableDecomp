@@ -11,9 +11,9 @@
 // move arm (an initialised block local is stored after the address lea instead of after the first push).
 // Layout: no engine header for CTCAIScratchpad or CCreatureNavigationDef; members named from Ego_r.pdb (WanderCentrePoint
 // +0x14, WanderMaxDistance +0x24, ScriptingStateGroup +0x38; AvoidDynamicObstacles +0x34).
-struct CTCBase;
+class CTCBase;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CCreatureNavigationDef {
+class CCreatureNavigationDef { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1
     long RefCount;                              // +0x04
@@ -46,11 +46,11 @@ struct CNavDefHolder {
     ~CNavDefHolder() { if (p) p->Release(); }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointerNav* out);        // 0x006CD2F0 (GetSubDef<CCreatureNavigationDef>)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -73,7 +73,7 @@ struct CThing {
     }
 };
 
-struct CTCAIScratchpad {                        // interface 0xAA
+class CTCAIScratchpad { public:                        // interface 0xAA
     unsigned char _pad[0x14];
     C3DVector WanderCentrePoint;                // +0x14
     float WanderMinDistance;                    // +0x20
@@ -83,13 +83,13 @@ struct CTCAIScratchpad {                        // interface 0xAA
     C3DVector GetWanderCentrePoint() const { return WanderCentrePoint; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CThingBuilding;
-struct CAIStateGroupBase {
+class CThingBuilding;
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

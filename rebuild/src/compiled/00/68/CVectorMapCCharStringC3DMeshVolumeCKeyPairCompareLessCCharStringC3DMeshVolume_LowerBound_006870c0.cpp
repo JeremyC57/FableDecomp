@@ -30,7 +30,7 @@ public:
         return *PData < *other.PData;
     }
 };
-struct C3DMeshVolume {
+class C3DMeshVolume { public:
     unsigned char _payload[12];                      // opaque value
 };
 namespace std {
@@ -39,7 +39,7 @@ template <class A, class B> struct pair {
     B second;
 };
 }
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
 };

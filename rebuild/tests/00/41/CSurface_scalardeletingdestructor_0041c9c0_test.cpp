@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_deleted = 0;
 static int g_dtored = 0;
-struct CSurface { void* vftable; };
+class CSurface { public: void* vftable; };
 static void* op_delete(void* p) { g_deleted = 1; return p; }
 static const void* g_vft = (const void*)0x122f84c;
 static void dtor(CSurface* surface) { g_dtored = 1; }

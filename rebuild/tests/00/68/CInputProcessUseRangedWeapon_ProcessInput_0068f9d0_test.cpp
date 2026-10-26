@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for CInputProcessUseRangedWeapon::ProcessInput (0x0068F9D0).
-struct CTCWeapon { bool Projectile, Loaded, Analogue; };
-struct CThing;
-struct CTCCarrying { CThing* Primary; CThing* GetThingInPrimarySlot() { return Primary; } };
+class CTCWeapon { public: bool Projectile, Loaded, Analogue; };
+class CThing;
+class CTCCarrying { public: CThing* Primary; CThing* GetThingInPrimarySlot() { return Primary; } };
 struct CRanged { int Cancelled, Reset; };
-struct CPlayer { bool InRangedWeaponMode; int RemovedMode; void RemoveMode(long m) { RemovedMode = m; } };
-struct CThing {
+class CPlayer { public: bool InRangedWeaponMode; int RemovedMode; void RemoveMode(long m) { RemovedMode = m; } };
+class CThing { public:
     bool Dead; CTCCarrying* Carrying; CTCWeapon* Weapon; CRanged* Ranged; bool MeleeCarried; CPlayer* Player;
     CPlayer* GetPlayer_004c7a30() { return Player; }
 };

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString(const char* t, long = -1) { std::strcpy(text, t); }
     ~CCharString() {}

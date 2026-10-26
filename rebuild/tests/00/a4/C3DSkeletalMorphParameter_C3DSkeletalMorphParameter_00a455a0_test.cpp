@@ -1,17 +1,17 @@
 // Behaviour test for 0x00A455A0 C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget&)
 #include <cstdio>
 #include <cstring>
-struct CCharString { char t[16]; CCharString() { t[0] = 0; } CCharString& operator=(const CCharString& o) { std::strcpy(t, o.t); return *this; } };
-template<class T> struct CArray {
+class CCharString { public: char t[16]; CCharString() { t[0] = 0; } CCharString& operator=(const CCharString& o) { std::strcpy(t, o.t); return *this; } };
+template<class T> class CArray { public:
     T* b; T* e; T* c;
     CArray() : b(0), e(0), c(0) {}
     CArray& operator=(const CArray& o) { b = o.b; e = o.e; c = o.c; return *this; }
 };
-struct C3DSkeletalMorphTarget {
+class C3DSkeletalMorphTarget { public:
     CCharString Name; CArray<int> BoneMorphs;
     C3DSkeletalMorphTarget& operator=(const C3DSkeletalMorphTarget& o) { Name = o.Name; BoneMorphs = o.BoneMorphs; return *this; }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; void* Info;
     CCountedPointer() : Data(0), Info(0) {}
     ~CCountedPointer() { delete Data; }
@@ -20,8 +20,8 @@ template<class T> struct CCountedPointer {
 };
 static int g_base = 0;
 struct CBase { CBase() { ++g_base; } virtual ~CBase() {} };
-struct C3DSkeletalMorphParameter : CBase {
-    struct CShared { C3DSkeletalMorphTarget PositiveTarget, NegativeTarget; bool SignedFlag; };
+class C3DSkeletalMorphParameter : public CBase { public:
+    class CShared { public: C3DSkeletalMorphTarget PositiveTarget, NegativeTarget; bool SignedFlag; };
     float CurrentValue; void* SkeletalMorph; CCountedPointer<CShared> SharedData;
     C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget& target) : CBase()
     {

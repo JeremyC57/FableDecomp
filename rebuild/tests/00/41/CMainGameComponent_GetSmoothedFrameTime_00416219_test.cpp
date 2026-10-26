@@ -4,7 +4,7 @@ struct CFrameRateSmoother {
     double SmoothedTime;
     double GetSmoothedTime() const { g_this = this; return SmoothedTime; }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char      _pad00[0x16178];
     CFrameRateSmoother FrameRateSmoother;
     double GetSmoothedFrameTime() const;

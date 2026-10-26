@@ -6,7 +6,7 @@
 //        VC7.1, which homes it in the dead argument slot (`fld ; fmul ; fstp [esp+4]`); the squared
 //        speed `x*x + y*y` loads y first (right operand), squares each through stack copies;
 //        `fcomp ; test ah,41h ; je` = `>` early return.
-struct C2DVector {
+class C2DVector { public:
     float x;
     float y;
     float GetLengthSquared() const { return x * x + y * y; }

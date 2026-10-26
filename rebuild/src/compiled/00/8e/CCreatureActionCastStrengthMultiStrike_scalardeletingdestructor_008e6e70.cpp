@@ -1,4 +1,4 @@
-struct CCreatureAction_CastStrengthMultiStrike {
+class CCreatureAction_CastStrengthMultiStrike { public:
     void* vftable;
 };
 

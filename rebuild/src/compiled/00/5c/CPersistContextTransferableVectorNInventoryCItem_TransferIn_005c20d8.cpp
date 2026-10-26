@@ -15,11 +15,11 @@
 // EBP frame + size TU (optimize("y", off), optimize("s", on)), as the landed 0x005C2A5C next to it.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 struct CPerItemData;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 struct CCountedPointer_CPerItemData {
     CPerItemData*   Data;                   // +0x0
@@ -29,7 +29,7 @@ struct CCountedPointer_CPerItemData {
 };
 
 namespace NInventory {
-struct CItem {                              // 0x14 bytes
+class CItem { public:                              // 0x14 bytes
     long                         ItemType;            // +0x00
     long                         NumberOfItems;       // +0x04
     CCountedPointer_CPerItemData PPerItemData;        // +0x08

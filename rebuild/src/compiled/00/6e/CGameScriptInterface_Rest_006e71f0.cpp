@@ -17,7 +17,7 @@ extern CScriptRunner* g_pScriptRunner;      // 0x013D2838
 extern long g_FramesPerSecond;              // 0x01375550
 long GetGameFrame();                        // 0x0049D870
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void Rest(float seconds);
 };
 

@@ -5,7 +5,7 @@ struct HeightMap {
     Cell* Cells; int SizeX, SizeY;
     Cell& GetCellIncludingExtraCells(int x, int y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
-struct CMap {
+class CMap { public:
     HeightMap* hm; unsigned int lastTheme;
     unsigned char AddThemeDefIndexToPalette(unsigned int t) { lastTheme = t; return (unsigned char)(t + 1); }
     void SetEngineThemeAtIncludingExtraCells(int x, int y, unsigned int theme, int layer)

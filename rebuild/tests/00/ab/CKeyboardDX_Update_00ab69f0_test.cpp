@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[128] = "";
-static bool g_active = false, g_focus = false; struct CSystemManager { bool IsApplicationActive() { return g_active; } bool HasInputFocus() { return g_focus; } }; static CSystemManager g_sys; static CSystemManager* GFGetSystemManager() { return &g_sys; }
+static bool g_active = false, g_focus = false; class CSystemManager { public: bool IsApplicationActive() { return g_active; } bool HasInputFocus() { return g_focus; } }; static CSystemManager g_sys; static CSystemManager* GFGetSystemManager() { return &g_sys; }
 static int g_set = -1;
 struct CKeyboardDX { virtual void SetHasInputFocus(bool f) { std::strcat(g_seq, f ? "1" : "0"); }
     void UpdateKeyStates() { std::strcat(g_seq, "K"); } void UpdateEvents() { std::strcat(g_seq, "E"); }

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int refs;
     void (*destroy)(void*);
     void* object;

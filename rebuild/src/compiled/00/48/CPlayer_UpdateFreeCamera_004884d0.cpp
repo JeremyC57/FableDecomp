@@ -19,12 +19,12 @@
 #include "engine/CPlayer.h"
 #include <math.h>
 
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCamera {                                        // 0x38 bytes
+class CCamera { public:                                        // 0x38 bytes
     C3DVector Position;                                 // +0x00
     unsigned char _body[0x38 - 0x0c];
     void PointAt(const C3DVector& target);              // 0x00A0C2B0
@@ -42,7 +42,7 @@ struct CTCGraphicAppearance {                           // interface 0x5B
     C3DVector GetHelperPointPosition();                 // 0x004C10E0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44

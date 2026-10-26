@@ -1,9 +1,9 @@
 // Behaviour test for CQuestManager::OnRegionLoaded(const CCharString&) @ 0x004AFC00
 #include <cstdio>
 
-struct CCharString { const char* m_text; };
+class CCharString { public: const char* m_text; };
 
-struct CScriptBase {
+class CScriptBase { public:
     const CCharString* m_last; int m_calls;
     void OnRegionLoaded(const CCharString& region) { m_last = &region; ++m_calls; }
 };
@@ -11,7 +11,7 @@ struct CScriptBase {
 struct CActiveQuest { long ID; void* PScriptInfo; CScriptBase* PScript; };
 struct CActiveQuestNode { CActiveQuestNode* next; CActiveQuestNode* prev; CActiveQuest* quest; };
 
-struct CQuestManager {
+class CQuestManager { public:
     CActiveQuestNode* ActiveQuests;
     void OnRegionLoaded(const CCharString& region)
     {

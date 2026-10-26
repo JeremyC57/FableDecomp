@@ -56,8 +56,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -65,8 +65,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -161,10 +161,10 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -291,7 +291,7 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 
 
 #pragma pack(push, 1)
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -393,7 +393,7 @@ FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdownRecover
 
 
 #pragma pack(push, 1)
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -551,11 +551,11 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, IsPushedByExplosions) == 0x151);
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
-struct C3DVector { float X,Y,Z;float GetLength()const {return (float)sqrt(X*X+Y*Y+Z*Z);} };
-struct CTCCreatureModeManager {void RemoveMode(unsigned long mode);}; //0x0073ABA0
+class C3DVector { public: float X,Y,Z;float GetLength()const {return (float)sqrt(X*X+Y*Y+Z*Z);} };
+class CTCCreatureModeManager { public:void RemoveMode(unsigned long mode);}; //0x0073ABA0
 struct InterfaceEntry {long Type;CTCCreatureModeManager* Component;};
 struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* type);}; //0x0040F020
-struct CThingCreatureDef {unsigned char _beforeRecoveryPercent[0x140];float RecoverEvadeHitsPercent;};
+class CThingCreatureDef { public:unsigned char _beforeRecoveryPercent[0x140];float RecoverEvadeHitsPercent;};
 struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];
     unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforeDefinition[0x24];
@@ -570,7 +570,7 @@ struct Creature {
 };
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //0x00A01B50
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual ~CCombatActionBase();
     virtual void Validate()const;
     virtual void EditUpdate(float);
@@ -582,7 +582,7 @@ struct CCombatActionBase {
     unsigned char _combatTail[0x37];
     void FrameUpdate(); //direct qualified base call0x00859D80; unused later virtual slots omitted
 };
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase:CCombatActionBase {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase:public CCombatActionBase { public:
     bool CanBeHit,Flip;
     void FrameUpdate();
 };

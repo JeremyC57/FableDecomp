@@ -11,12 +11,12 @@
 #include "engine/CTCPerceiveThing.h"
 #include "engine/CPerceivedThingDef.h"
 
-struct CGameTimeManager {
+class CGameTimeManager { public:
     bool IsDay() const;                     // 0x006BB2C0
     bool IsNightTime() const;               // 0x006BB210
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char     _pad00[0x1c];
     CGameTimeManager* GameTimeManager;      // +0x1c
 };

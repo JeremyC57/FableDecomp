@@ -6,7 +6,7 @@ static void* g_freed = 0; struct CLandscapeMemory { void FreeVirtual(void* p) { 
 struct CRequestOwner { virtual ~CRequestOwner() { std::strcat(g_seq, "O"); } }; static void* g_released = 0; struct CBlockManager { void ReleaseRequest(void* r) { std::strcat(g_seq, "R"); g_released = r; } };
 struct CLoadTask { CRequestOwner* m_pOwner; CBlockManager* m_pManager; void* m_pRequest; unsigned char _pad[2]; bool m_requested; unsigned char _pad2;
     ~CLoadTask() { if (m_pOwner) delete m_pOwner; if (m_requested) m_pManager->ReleaseRequest(m_pRequest); } static void operator delete(void* p) { g_pEngine->m_pMem->FreeVirtual(p); } static void* operator new(size_t n) { return std::malloc(n); } };
-struct CPatch { virtual ~CPatch() { std::strcat(g_seq, "P"); } }; struct CMovableResource { virtual void v00() { } ~CMovableResource() { std::strcat(g_seq, "M"); } };
+struct CPatch { virtual ~CPatch() { std::strcat(g_seq, "P"); } }; class CMovableResource { public: virtual void v00() { } ~CMovableResource() { std::strcat(g_seq, "M"); } };
 struct CTreeNode : CMovableResource { unsigned char _pad04[0x94]; CLoadTask* m_pLoadTask; long OffsetIntoFileBlock; CPatch* m_pPatch; virtual void v00() { } ~CTreeNode() { delete m_pPatch; delete m_pLoadTask; } };
 
 int main() {

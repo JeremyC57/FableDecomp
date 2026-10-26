@@ -3,17 +3,17 @@
 #include <cstdio>
 #include <new>
 
-struct CThing { int unused; };
-struct CCarriedReadableDef { int unused; };
+class CThing { public: int unused; };
+class CCarriedReadableDef { public: int unused; };
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual ~CTCCarriedActionUseBase() {}
     CThing* ParentThing;
     CTCCarriedActionUseBase(CThing* owner) : ParentThing(owner) {}
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     const T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };

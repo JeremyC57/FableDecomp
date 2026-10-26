@@ -4,13 +4,13 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
 };
-struct CThingPhysicalSwitchDef : CDefPointeeBase { };
-template<class T> struct CDefPointer {
+class CThingPhysicalSwitchDef : public CDefPointeeBase { public: };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object)
@@ -25,7 +25,7 @@ template<class T> struct CDefPointer {
     }
 };
 static CThingPhysicalSwitchDef* g_def = 0; static long g_askedIndex = -1; static int g_getDef = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CThingPhysicalSwitchDef>* out);
 };
 bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingPhysicalSwitchDef>* out)
@@ -35,7 +35,7 @@ bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingPhysicalSwit
     ++g_def->m_refCount; out->Object = g_def; return true;
 }
 static CDefinitionManager g_manager;
-struct CThingSwitch {
+class CThingSwitch { public:
     unsigned char _pad00[0x8c];
     unsigned short DefGlobalIndex;
     CDefinitionManager* GetDefinitionManager() { return &g_manager; }

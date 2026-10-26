@@ -11,7 +11,7 @@ static int g_log[64]; static int g_logN = 0;
 static void Log(int v) { if (g_logN < 64) g_log[g_logN++] = v; }
 class CCharString { public: const char* PStringData; CCharString(const char* t, long = -1) : PStringData(t) {} ~CCharString() {} };
 class CWideString { public: void* PStringData; };
-struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
 static int g_liveInfos = 0;
 namespace NUISystem {
 class CComponent; class CList; class CActionParam; class CActionParamString;

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessCreatureMovementWatchForControlAngleChange {
+class CInputProcessCreatureMovementWatchForControlAngleChange { public:
     void* vftable;
     int destroyed;
 };

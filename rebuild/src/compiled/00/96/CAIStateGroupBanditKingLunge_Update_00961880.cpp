@@ -6,7 +6,7 @@
 #include "engine/CAIStateGroup_BanditKingLunge.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-struct CTCBoss { long GetPhase(); void SetNextBossPhase(long,bool); void ClearPhaseCounter(); }; // 0x007AED10, 0x007AEDA0, 0x007AED50
+class CTCBoss { public: long GetPhase(); void SetNextBossPhase(long,bool); void ClearPhaseCounter(); }; // 0x007AED10, 0x007AEDA0, 0x007AED50
 struct CThingRetail;
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry* first; Entry* last; Entry* LowerBound(const long*); }; // 0x0040F020
 struct CThingRetail {

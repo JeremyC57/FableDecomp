@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CQ_TraderEscortScript::WatchForPickpocketing (0x00E04F10): each pickpocket of the watched trader
 // bumps the count and ends the thread (count > 2 sets the master-data state to 2); the trader's death resets it to 0.
-struct CScriptThing {
+class CScriptThing { public:
     int Id; bool* Killed;
     CScriptThing() : Id(0), Killed(0) {}
     bool operator==(const CScriptThing& o) const { return Id == o.Id; }

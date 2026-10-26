@@ -76,10 +76,10 @@ public:
 
 } // namespace std
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
-struct CConsoleCommandLine                                      // vtable 0x0129C400 (16 bytes)
-{
+class CConsoleCommandLine                                      // vtable 0x0129C400 (16 bytes)
+{ public:
     virtual void v00();
     CCharString CurrentEntry;                                   // +0x04
     bool        UserEntry;                                      // +0x08

@@ -14,7 +14,7 @@
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };

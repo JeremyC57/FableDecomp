@@ -9,7 +9,7 @@
 // Layout: engine/CEngineWeatherRenderer.h offsets hold, but its members are opaque byte arrays; restated locally with the real
 //   buffer / shader types (models as the landed 0x00BABB50). CWeatherMask's implicit ctor only zeroes its C3DBoundingSphere, which
 //   VC7.1 emits as a fully unrolled 3-element loop.
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -32,10 +32,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -48,7 +48,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -62,7 +62,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
@@ -80,7 +80,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams()
@@ -95,7 +95,7 @@ struct CVertexBufferBase : CBase {                 // 0x34 bytes
     CVertexCompressionParams CompressionParams;    // +0x14
     CVertexBufferBase() : Length(0), Type(0), CompressionParams() { }
 };
-struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
+class CVertexBufferWin32 : public CVertexBufferBase { public:    // vtable 0x0129BA20
     virtual void VSlot1();
     CVertexBufferWin32()
     {
@@ -103,12 +103,12 @@ struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
         Stride = 0;
     }
 };
-struct CIndexBuffer {                              // 0x14 bytes
+class CIndexBuffer { public:                              // 0x14 bytes
     void* _vtable;
     unsigned char _body[0x10];
     CIndexBuffer();                                // 0x00AC1EC0
 };
-struct CEngineComponent {                          // 0x0c bytes
+class CEngineComponent { public:                          // 0x0c bytes
     virtual ~CEngineComponent();
     void** GlobalPointerAddress;
     bool   RenderEnabled;
@@ -119,19 +119,19 @@ struct CEngineWeatherSettings {                    // 0x558 bytes
     unsigned char _body[0x558];
     CEngineWeatherSettings();                      // 0x00B50FB0
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     float X, Y, Z, Radius;
     C3DBoundingSphere() : X(0.0f), Y(0.0f), Z(0.0f), Radius(0.0f) { }
 };
-struct CWeatherMask {                              // 0x5c bytes
+class CWeatherMask { public:                              // 0x5c bytes
     C3DBoundingSphere BSphere;                     // +0x00
     unsigned char     BBox[0x18];                  // +0x10 C3DBoundingBox
     unsigned char     InvTransform[0x30];          // +0x28 CMatrix3x4
     float             Scale;                       // +0x58
 };
-struct CVolumeTexture;
+class CVolumeTexture;
 
-struct CEngineWeatherRenderer : CEngineComponent { // vtable 0x012A2434, 0x1328 bytes
+class CEngineWeatherRenderer : public CEngineComponent { public: // vtable 0x012A2434, 0x1328 bytes
     CVertexBufferWin32 RainVertexBuffer;           // +0x0c
     CIndexBuffer       RainIndexBuffer;            // +0x40
     CVertexBufferWin32 SnowVertexBuffer;           // +0x54

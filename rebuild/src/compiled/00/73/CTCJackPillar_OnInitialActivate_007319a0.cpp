@@ -18,7 +18,7 @@ struct CEngineGlobals {
 };
 extern CEngineGlobals* g_pEngineGlobals;      // 0x013B86A0
 
-struct CTCJackPillar : CTCBase {
+class CTCJackPillar : public CTCBase { public:
     void Enable(bool enable);                 // 0x007317D0
     void OnInitialActivate();
 };

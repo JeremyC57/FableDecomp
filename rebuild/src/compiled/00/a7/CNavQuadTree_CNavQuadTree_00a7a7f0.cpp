@@ -24,10 +24,10 @@ public:
 };
 
 struct CNavigationLayer;                            // CNavQuadTree::CNavigationLayer (non-trivial destructor)
-struct CNavigationTransitionPoint;
-struct CNavigationPosition;
-struct C2DBoxF;
-struct CANavQuadTreeNode;
+class CNavigationTransitionPoint;
+class CNavigationPosition;
+class C2DBoxF;
+class CANavQuadTreeNode;
 struct CNavConnectorNodePair;                       // pair<long, CCountedPointer<CNavConnectorNode> >
 struct SwitchableNodePair;                          // pair<unsigned __int64, CANavQuadTreeNode*>
 
@@ -55,7 +55,7 @@ template <class T> struct pod_vector {              // trivially destructible el
             free(_M_start);
     }
 };
-template <class V> struct CVectorMap {
+template <class V> class CVectorMap { public:
     V    Data;
     long Compare;                                   // empty comparator, padded
 };

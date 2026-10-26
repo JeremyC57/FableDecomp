@@ -5,7 +5,7 @@
 #endif
 extern long g_FramesPerSecond;                          // 0x01375550
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x90c];
     long          TextCharactersPerFrame;               // +0x90c (retail)
 };

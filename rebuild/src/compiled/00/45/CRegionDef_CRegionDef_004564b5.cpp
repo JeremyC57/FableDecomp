@@ -13,13 +13,13 @@
 // Leaf: ??0CRegionDef
 #pragma optimize("s", on)
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned char _body[0x35];                          // +0x04 .. +0x38 (packed def-class base, InstantiationName, SubDefInfoMap)
     CParentDefClassBase();                              // 0x00430370
     virtual void v00();
 };
 
-template<class K, class V> struct CVectorMap {          // retail: vector (first/last/end), comparator byte, sorted flag
+template<class K, class V> class CVectorMap { public:          // retail: vector (first/last/end), comparator byte, sorted flag
     V*            m_first;                              // +0x00
     V*            m_last;                               // +0x04
     V*            m_end;                                // +0x08
@@ -28,18 +28,18 @@ template<class K, class V> struct CVectorMap {          // retail: vector (first
     CVectorMap() : m_first(0), m_last(0), m_end(0), m_sorted(false) {}
 };
 
-struct CSoundPair;
-struct CDefString {
+class CSoundPair;
+class CDefString { public:
     long TablePos;                                      // +0x00
     CDefString() : TablePos(-1) {}
 };
 
-struct CSoundMap {
+class CSoundMap { public:
     CVectorMap<unsigned long, CSoundPair> SoundMap;     // +0x00
     CVectorMap<unsigned long, CDefString> CriteriaMap;  // +0x10
 };
 
-struct CRegionDef : CParentDefClassBase {
+class CRegionDef : public CParentDefClassBase { public:
     long       EnvironmentTheme;                        // +0x3c
     long       InternalEnvironmentTheme;                // +0x40
     long       InternalLightingChannelCount;            // +0x44

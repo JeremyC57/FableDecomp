@@ -1,15 +1,15 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() { } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
 static long g_lastFlags = -1;
-struct CWorldMap {
+class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector& pos, long flags) { g_lastFlags = flags; C3DVector n; n.X = 0.0f; n.Y = 0.0f; n.Z = pos.Z + 1.0f; return n; }
 };
 static CWorldMap g_map;
-struct CWorld { virtual ~CWorld() { } virtual CWorldMap* GetWorldMap() { return &g_map; } };
+class CWorld { public: virtual ~CWorld() { } virtual CWorldMap* GetWorldMap() { return &g_map; } };
 static CWorld g_world;
 static long g_kind = 0; static C3DVector g_pos, g_normal;
-struct CThing { virtual ~CThing() { } virtual void OnCollision(long kind, const C3DVector& pos, const C3DVector& normal) { g_kind = kind; g_pos = pos; g_normal = normal; } };
-struct CTCPhysicsBase {
+class CThing { public: virtual ~CThing() { } virtual void OnCollision(long kind, const C3DVector& pos, const C3DVector& normal) { g_kind = kind; g_pos = pos; g_normal = normal; } };
+class CTCPhysicsBase { public:
     CThing* sub;
     CWorld* GetWorld() { return &g_world; }
     void UpdateCollisionGroundIneractions(const C3DVector& pos)

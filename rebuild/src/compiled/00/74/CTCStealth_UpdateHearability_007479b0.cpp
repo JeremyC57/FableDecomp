@@ -12,21 +12,21 @@
 //          retail CThing PhysicsTC +0x60 (Position +0x0c, OldPosition +0x18), dead flag +0x91 bit 0.
 // Shape: the frame movement's squared length is summed Z, Y, X (statement order, as the landed UpdateEffects 0x007C2480); each
 //          pace limit is a named float (`r * r` from the x87 stack); the noise def name is an unnamed temporary.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 extern const float g_epsilon_0129ba3c;          // 0x0129BA3C (1e-4f)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                     // +0x0c
     C3DVector     OldPosition;                  // +0x18
@@ -49,18 +49,18 @@ public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingNoise : CThing {
+class CThingNoise : public CThing { public:
     static CThingNoise* __fastcall Create(long defIndex, const C3DVector& pos, float radius);   // 0x008385B0
     void PassToNoiseComponent(CThing* thing);   // 0x008386E0
 };
-struct CStealthDef {
+class CStealthDef { public:
     unsigned char _pad00[0x28];
     float BaseHearingDistance;                  // +0x28
     float RunningMultiplier;                    // +0x2c
     float WalkingMultiplier;                    // +0x30
     float CreepingMultiplier;                   // +0x34
 };
-struct CTCStealth {
+class CTCStealth { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[4];

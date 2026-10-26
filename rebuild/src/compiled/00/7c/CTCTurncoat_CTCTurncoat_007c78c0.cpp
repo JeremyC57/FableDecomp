@@ -17,7 +17,7 @@ struct CDefPointee {
     virtual void Destroy();
     long m_count;
 };
-struct CTurncoatDef : CDefPointee {
+class CTurncoatDef : public CDefPointee { public:
     unsigned char _pad_0x08[0x30];
     float TimeDelayBeforeResistanceRecoverySecs;        // +0x38
     float ResistanceRecoveryPerSec;                     // +0x3c
@@ -27,7 +27,7 @@ struct CDefPointer {                                    // CDefPointer<const CTu
     CDefPointer() : Object(0) {}
     CTurncoatDef* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef_007c8000(CDefPointer* out);                   // 0x007C8000
 };
 struct CThingDefs {
@@ -60,14 +60,14 @@ template <class T> struct CRetailVector {               // STLport vector (12 by
 
 extern long g_framesPerSecond;                          // 0x01375550
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* parent);                            // 0x00686800
     virtual void v00();
     CThingDefs* ParentThing;                            // +0x04
     unsigned char _pad_0x08[0x4];
 };
 
-struct CTCTurncoat : CTCBase {
+class CTCTurncoat : public CTCBase { public:
     long                WillTurncoatTimer;              // +0x0c
     float               CurrentTurncoatedness;          // +0x10
     CDefPointer         PDef;                           // +0x14

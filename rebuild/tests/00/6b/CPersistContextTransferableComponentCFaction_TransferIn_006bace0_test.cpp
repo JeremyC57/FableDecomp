@@ -2,13 +2,13 @@
 // Behaviour test for 006bace0: TransferableComponent<CFaction>::TransferIn builds and destroys a default faction around the reader call.
 static int g_live = 0;
 static int g_built = 0;
-struct CFaction {
+class CFaction { public:
     int id;
     CFaction() : id(0) { ++g_live; ++g_built; }
     ~CFaction() { --g_live; }
 };
-struct CPersistContext { int empty; };
-struct CStringParser { int id; };
+class CPersistContext { public: int empty; };
+class CStringParser { public: int id; };
 struct Traits {
     CFaction DefaultVal;
     void TransferIn(CPersistContext&, CStringParser& parser, CFaction* value) { value->id = parser.id + DefaultVal.id; }

@@ -1,6 +1,6 @@
-struct CTexture;
+class CTexture;
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void Helper_004dd342(char *a, char *b);
     CTexture * CopyBackBufferToTexture();
 };

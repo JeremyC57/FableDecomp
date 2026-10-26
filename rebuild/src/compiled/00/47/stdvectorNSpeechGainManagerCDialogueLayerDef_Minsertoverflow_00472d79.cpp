@@ -19,7 +19,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
 namespace NSpeechGainManager {
-struct CDialogueLayerDef {                          // retail sizeof 0x40, polymorphic
+class CDialogueLayerDef { public:                          // retail sizeof 0x40, polymorphic
     unsigned long Data[15];                         // +0x04
     CDialogueLayerDef(const CDialogueLayerDef& other);   // 0x004663E7
     virtual ~CDialogueLayerDef();

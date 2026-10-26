@@ -8,7 +8,7 @@
 // pointer sits at CThing +0x64.
 // Shape: the TC pointer is re-read from the thing after the first call (a plain member, no local); the channel's
 // address is formed with `add esi,14h` because `this` is dead after it.
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     long m_channel;
 };
 
@@ -17,12 +17,12 @@ struct CTCGraphicAppearance {
     void SetAsChanged(unsigned long flags);                 // 0x004BF9E0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad_00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;             // +0x64
 };
 
-struct CTCVolumeContainmentTracker {
+class CTCVolumeContainmentTracker { public:
     void*                            __vftable;             // +0x00
     CThing*                          ParentThing;           // +0x04
     bool                             ToBeRemoved;           // +0x08

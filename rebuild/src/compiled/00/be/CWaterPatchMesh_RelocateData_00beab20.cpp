@@ -12,7 +12,7 @@
 class CEngineLandscapeMap;
 class CVertexBufferWin32;
 class CVertexHeightData;
-struct C2DCoordI { long X, Y; };
+class C2DCoordI { public: long X, Y; };
 enum EWaterType { WATER_TYPE_NONE };
 
 template <class T> inline void RelocatePointer(T*& p, void* oldData, void* newData)

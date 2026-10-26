@@ -15,7 +15,7 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CPointVector {
     C3DVector* _M_start;
@@ -38,9 +38,9 @@ struct CPointPtrVector {
     }
 };
 
-struct CTCShapeManager;
+class CTCShapeManager;
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00();
     CTCShapeManager* Owner;
     CPointVector     Points;           // +0x08

@@ -13,13 +13,13 @@ static int g_fail = 0;
 static int g_live = 0, g_iatt = 0, g_termAt = 1 << 30, g_frames = 0, g_stopFrame = 1 << 30, g_queries = 0;
 static const char* g_script[16];
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_stopFrame; }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString() : Text("") { }
     ~CCharString() { }
     bool operator==(const char* text) const { return strcmp(Text, text) == 0; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
@@ -33,10 +33,10 @@ struct CScriptThing {
         return true;
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating() { return Term(); }
 };
 struct CV_AmbushScamScript : CScriptBase {

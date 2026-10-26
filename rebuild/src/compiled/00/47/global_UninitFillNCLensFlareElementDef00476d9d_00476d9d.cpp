@@ -13,7 +13,7 @@
 // unique. One of 26 bodies.
 #include <new>
 
-struct CLensFlareElementDef {
+class CLensFlareElementDef { public:
     unsigned char _body[0x4c];
     CLensFlareElementDef(const CLensFlareElementDef& other);           // 0x0046F6DC
 };

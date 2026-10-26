@@ -5,15 +5,15 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static bool feq(float a, float b) { float d = a - b; if (d < 0) d = -d; return d < 1e-5f; }
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     void Set(float x, float y) { X = x; Y = y; }
 };
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned short BankIndex;
     float          RenderSizeX;
     C3DVector      ToCentre;
@@ -23,14 +23,14 @@ struct CTCGraphicAppearance {
     unsigned char _pad00[0x44];
     unsigned char GraphicData[0x10];
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;
 };
 static int g_create = 0, g_baseOnCreate = 0, g_init = 0, g_getInfo = 0; static const void* g_createArg = 0;
 static CThingPhysicsMeshInfo g_info;
 static int g_order[8]; static int g_n = 0;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {}
     virtual void OnCreate() { ++g_baseOnCreate; g_order[g_n++] = 3; }
     virtual void v005() {} virtual void v006() {} virtual void v007() {} virtual void v008() {} virtual void v009() {} virtual void v010() {}

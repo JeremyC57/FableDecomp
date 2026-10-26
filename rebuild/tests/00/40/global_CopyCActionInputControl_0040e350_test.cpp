@@ -2,11 +2,11 @@
 
 // Model of 0x0040E350 STLport __copy<CActionInputControl*>(first, last, result, random_access_iterator_tag, int*):
 // counted forward assignment of the 28-byte bindings, returning the advanced result.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
-struct CActionInputControl {
+class CActionInputControl { public:
     long GameAction;
     long ControllerType;
     long KeyboardKey;

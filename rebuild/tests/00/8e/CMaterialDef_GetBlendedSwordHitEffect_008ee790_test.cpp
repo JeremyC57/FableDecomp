@@ -16,7 +16,7 @@ static int fails = 0;
 //   speed through math.h fabs(double)), the particle stores follow, then `*blend = (float)tanh(x)`.
 // Leaf: GetBlendedSwordHitEffect
 #include <math.h>
-struct CBlendedParticleEffectSet {
+class CBlendedParticleEffectSet { public:
     long  Particle1Index;
     float Particle1Value;
     long  Particle2Index;
@@ -45,12 +45,12 @@ struct CCombatConstantsDef {
     unsigned char _pad[0x14c];
     float m_maxSwordHitSpeed;
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     unsigned char _pad[0xd0];
     CCombatConstantsDef* m_pCombatConstants;
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
-struct CMaterialDef {
+class CMaterialDef { public:
     unsigned char _pad[0x8c];
     CBlendedEffectMap BlendedSwordHitEffects;
     bool GetBlendedSwordHitEffect(long material, float speed, long* particle1, long* particle2, float* blend);

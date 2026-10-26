@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     void* vftable;
     int destroyed;
 };

@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct CAnimComponentBase
-{
+class CAnimComponentBase
+{ public:
     virtual void v0() = 0;
     virtual void Release() = 0;
     int m_refCount;

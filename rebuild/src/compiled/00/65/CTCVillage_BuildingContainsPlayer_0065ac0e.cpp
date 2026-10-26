@@ -53,14 +53,14 @@ struct CTCBuildingLocation {                    // the hero's interface-117 comp
 };
 
 class CThingCreatureBase : public CThing {};
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetCharacterThing();    // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetCurrentPlayer();                // 0x00449970
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00();
     CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)
     bool BuildingContainsPlayer(CThing* building);

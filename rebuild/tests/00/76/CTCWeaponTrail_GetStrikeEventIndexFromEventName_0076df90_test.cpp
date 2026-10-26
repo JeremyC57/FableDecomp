@@ -49,9 +49,9 @@ struct CBasicStringChar {
         return Compare(PData, other.PData) == 0;
     }
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                         // 0x0099EAE0
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->Data.PData; }
@@ -73,7 +73,7 @@ extern CCharString g_StrikeEventName1;                     // 0x013BAC80
 extern CCharString g_StrikeEventExcludedPrefix;            // 0x013BAC64
 extern CCharString g_StrikeEventPrefix;                    // 0x013BAC6C
 struct CStrikeEvent { CCharString Name; long Data; };
-struct CTCWeaponTrail {
+class CTCWeaponTrail { public:
     unsigned char _pad00[0x0c];
     long NoStrikeEvents;                                    // +0x0c
     unsigned char _pad10[0x54 - 0x10];

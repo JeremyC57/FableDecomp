@@ -11,7 +11,7 @@ struct CRetailVector_CCharString {
     CRetailVector_CCharString() : first(0), last(0), end(0) { }
     CRetailVector_CCharString(const CRetailVector_CCharString& other) : first(other.first), last(other.last), end(other.end) { ++g_vectorCopies; }
 };
-struct CConversation : CDefClassBase_Retail {
+class CConversation : public CDefClassBase_Retail { public:
     long Lines; CRetailVector_CCharString Speaker; CRetailVector_CCharString Dialogue; CRetailVector_CCharString Animation; CRetailVector_CCharString AnimLoop;
     virtual void v00() { }
     CConversation() : Lines(0) { }

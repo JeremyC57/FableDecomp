@@ -13,7 +13,7 @@ struct CTCGraphicAppearance {
     void SetByPassColorFilter(bool byPass); // 0x004BFB00
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
     unsigned char _pad68[0x29];

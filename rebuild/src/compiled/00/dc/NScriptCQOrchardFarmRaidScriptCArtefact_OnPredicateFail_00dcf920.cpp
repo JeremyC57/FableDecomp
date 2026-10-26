@@ -53,7 +53,7 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-struct CScriptThing : CBase {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
     virtual void v00();
     __forceinline CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}
@@ -70,7 +70,7 @@ struct CScriptThingVector {                        // STLport vector<CScriptThin
 };
 
 namespace NScript {
-struct CQ_OrchardFarmRaidScript {
+class CQ_OrchardFarmRaidScript { public:
     unsigned char _pad[0x54];
     CScriptThingVector CrateList;                  // +0x54
     struct CArtefact;

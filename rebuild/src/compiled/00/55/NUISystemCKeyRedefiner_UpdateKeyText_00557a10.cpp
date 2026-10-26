@@ -11,7 +11,7 @@
 // Shape: the text, the tag flag and the colour are function-scope locals (the flag set before the text ctor runs, the
 //   red colour built in place by the R,G,B,A-assigning ctor); the key name lives in the `if` block; the white colour is
 //   a temporary assigned over the local (VC builds it in the local's own slot, hence the self copy).
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                 // 0x0099AED0
     CWideString(const unsigned short* text);       // 0x0099B6B0
@@ -20,11 +20,11 @@ struct CWideString {
     operator unsigned short*() const;              // 0x0099AF10
 };
 extern "C" unsigned short* __cdecl _wcsupr(unsigned short* text);   // 0x00F3FB8A
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CActionInputControl {                       // 28 bytes
+class CActionInputControl { public:                       // 28 bytes
     long  GameAction;                              // +0x00
     long  ControllerType;                          // +0x04
     long  KeyboardKey;                             // +0x08
@@ -35,7 +35,7 @@ struct CActionInputControl {                       // 28 bytes
 bool __fastcall GetActionName(const CActionInputControl& control, CWideString& name, bool shortName);   // 0x00446720
 
 namespace NUISystem {
-struct CText {
+class CText { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012();
@@ -64,7 +64,7 @@ struct CText {
     virtual void v140(); virtual void v141(); virtual void v142(); virtual void v143();
     virtual void SetText(const CWideString& text, bool isTag, bool b);   // slot 144 (+0x240)
 };
-struct CKeyRedefiner {
+class CKeyRedefiner { public:
     virtual void v00();
     unsigned char       _sprite04[0x194];          // +0x04 the CSprite / control bases
     CText*              PKeyText;                  // +0x198

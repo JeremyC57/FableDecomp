@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_JumpOutFromCover {
+class CCreatureAction_JumpOutFromCover { public:
     void* vftable;
     int destroyed;
 };

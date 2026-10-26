@@ -3,13 +3,13 @@
 
 static int g_baseCopies = 0;
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual ~CDefClassBase() { }
 };
 
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     long m_baseValue;
     virtual void Copy(const CDefClassBase* other)
     {
@@ -18,7 +18,7 @@ struct CParentDefClassBase : CDefClassBase {
     }
 };
 
-struct CQuickAccessItemButtonGuiDef : CParentDefClassBase {
+class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:
     long      ButtonGraphic;
     C2DVector Position;
     C2DVector Offset;

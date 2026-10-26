@@ -1,4 +1,4 @@
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void* vftable;
 };
 

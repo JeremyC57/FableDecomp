@@ -1,6 +1,6 @@
 // Behaviour test for 0x006B79A0 std::__copy(const CGameMapCell*, const CGameMapCell*, CGameMapCell*, random_access_iterator_tag, int*).
 #include <cstdio>
-struct CGameMapCell {
+class CGameMapCell { public:
     unsigned char AtmosThemes[3];
     unsigned char AtmosBlends[2];
     signed char   SoundTheme;

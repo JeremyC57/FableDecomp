@@ -27,31 +27,31 @@ static int g_ok = 1;
 // Shape: `if (--count <= 0)` (decrement, compare, store); the zero register of the compare is reused for the
 // CSoundPair zero stores, which land after the three argument pushes; the action is an unnamed temporary passed
 // by reference and destroyed by the base destructor. Plain `ret`.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
 };
 
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _body[0x110];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     ~CCombatActionBase();                  // 0x0062E900
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                 // +0x10 (1 = the player creature)
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CCreatureAction_SummonerDead : CCombatActionBase {   // vtable 0x01287174
+class CCreatureAction_SummonerDead : public CCombatActionBase { public:   // vtable 0x01287174
     virtual void v00();
     CCreatureAction_SummonerDead(CThingCreatureBase* owner)
         : CCombatActionBase(owner, 250, CSoundPair())

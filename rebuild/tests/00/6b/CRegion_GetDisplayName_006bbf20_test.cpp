@@ -4,7 +4,7 @@ static bool g_result = true;
 static const void* g_lastSelf = 0;
 static const char* g_lastArg = 0;
 
-struct CCharString {
+class CCharString { public:
     char* data;
     bool Compare(const char* s) const;
 };
@@ -17,7 +17,7 @@ bool CCharString::Compare(const char* s) const {
     return g_result;
 }
 
-struct CRegion {
+class CRegion { public:
     char pad[0x18];
     CCharString nameA;
     CCharString nameB;

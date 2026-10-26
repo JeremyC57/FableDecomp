@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -10,15 +10,15 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     float Magnitude() const { return (float)std::sqrt(X * X + Y * Y + Z * Z); }
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CTCSleep { bool IsReadyToSleep; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CTCSleep { public: bool IsReadyToSleep; };
 
 static bool g_hasAnim, g_hasSleepTC, g_bedAlive;
 static long g_playResult, g_type, g_lookResult, g_moves[8], g_mi, g_movement, g_terminated;
 static C3DVector g_lookPos;
 static CTCSleep g_sleep;
 
-struct CThing {
+class CThing { public:
     C3DVector pos;
     unsigned char m_flags91;
     long GetCreatureType() const { return g_type; }

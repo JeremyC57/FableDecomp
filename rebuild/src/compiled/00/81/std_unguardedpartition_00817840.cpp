@@ -10,7 +10,7 @@
 // user copy constructor makes the element's implicit copy constructor memberwise) into the dead pivot slot (only
 // pivot.key, held in ebx, is read), the two assignments are the trivial 8-dword `rep movsd`.
 struct CHitLocation;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

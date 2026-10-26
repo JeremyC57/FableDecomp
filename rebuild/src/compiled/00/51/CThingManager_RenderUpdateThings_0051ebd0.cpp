@@ -32,7 +32,7 @@ struct SUpdateListRecord {                      // 20 bytes
     bool          m_bRender;                    // +0x08
     unsigned char _pad09[0x14 - 0x09];
 };
-struct CThingManager {
+class CThingManager { public:
     void*              __vftable;
     SUpdateListRecord* m_pUpdateListRecords;    // +0x04
     unsigned char      _pad08[0x8c - 0x08];

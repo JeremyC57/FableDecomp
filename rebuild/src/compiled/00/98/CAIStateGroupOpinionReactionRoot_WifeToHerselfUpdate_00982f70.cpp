@@ -28,7 +28,7 @@ extern CCharString g_OpinionAttitudeNames[];               // 0x013BABD0
 
 namespace NSpeechGainManager { enum EDialogueLayer { DIALOGUE_LAYER_2 = 2 }; }
 
-struct CAIStateGroup_OpinionReactionRoot {
+class CAIStateGroup_OpinionReactionRoot { public:
     long GetReactionContext();                             // 0x008FCFC0
     EAIActionReturn WaitForTextToLoadThenSpeak(const CCharString& text, NSpeechGainManager::EDialogueLayer layer);   // 0x0095ED80
     bool WifeToHerselfUpdate(EOpinionAttitudeType attitude);

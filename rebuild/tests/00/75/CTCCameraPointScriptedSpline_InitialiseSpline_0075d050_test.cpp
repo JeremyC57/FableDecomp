@@ -3,7 +3,7 @@
 
 struct CKeyCamera { unsigned char _body[0x38]; };
 
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     CKeyCamera* KeyCameras_first;
     CKeyCamera* KeyCameras_last;
     CKeyCamera* KeyCameras_end;

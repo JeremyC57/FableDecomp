@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessDigging {
+class CInputProcessDigging { public:
     void* vftable;
     int destroyed;
 };

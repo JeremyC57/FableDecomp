@@ -1,7 +1,7 @@
 #include "engine/CCombatSequence_BanditAttackSide.h"
 #include <stdio.h>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     void Init(const char* s, int n);
 };

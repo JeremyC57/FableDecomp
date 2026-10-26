@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } }; static C3DVector Add(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } }; static C3DVector Add(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 static long g_handle = 0; static C3DVector g_pos; static void* g_context = 0; struct CTable { virtual void Place(long handle, const C3DVector* p) { g_handle = handle; g_pos = *p; } }; static CTable g_table;
 struct STarget { unsigned char _pad[0x14]; C3DVector m_position; }; struct SContext { STarget* m_pTarget; };
 struct COwner { unsigned char _pad[8]; long m_handle; C3DVector m_offset; CTable* GetHandleTable(SContext* c) { g_context = c; return &g_table; } void PlaceAt(SContext* context) { if (m_handle >= 0) { C3DVector sum = Add(m_offset, context->m_pTarget->m_position); C3DVector position(sum); GetHandleTable(context)->Place(m_handle, &position); } } };

@@ -8,7 +8,7 @@
 // Shape: the fill value is a default CEntry temporary in the frame (DriverType/Override zeroed before the argument
 //   pushes, Name's -1 after them); the new last element (`Start + Size*9 - 9`) is assigned memberwise.
 #pragma pack(push, 1)
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -21,14 +21,14 @@ struct CEntry {                         // CThingComponentSet::CEntry, 9 bytes (
 };
 #pragma pack(pop)
 
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T* Start;                           // +0x00
     signed char Size;                   // +0x04
     void resize(long n, const T& fill);     // 0x00870370
     T& back() { return Start[Size - 1]; }
 };
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVector<CEntry, 8> Entries;    // +0x00
     void Add(const CEntry& entry);
 };

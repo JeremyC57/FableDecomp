@@ -64,15 +64,15 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CManagedTextureOwner;
-struct CTexture;
-struct CVolumeTexture;
+class CCPPointerInfo;
+class CManagedTextureOwner;
+class CTexture;
+class CVolumeTexture;
 struct IDirect3DTexture9;
 struct IDirect3DVolumeTexture9;
 
 #pragma pack(push, 1)
-struct CManagedTextureData {
+class CManagedTextureData { public:
     void*                    __vftable;                      // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char            _pad_0x04[0x4];                 // +0x04
     unsigned char            _pad_0x08[0x4];                 // +0x08
@@ -134,7 +134,7 @@ FABLE_STATIC_ASSERT(offsetof(CManagedTextureData, BusyFlag) == 0x4a);
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                          // +0x00
     unsigned char      ByteLength[0x3];                      // +0x04 bitfield group: ulong:28
     unsigned char      AllocationSource[0x1];                // +0x07 bitfield group: ulong:4
@@ -160,7 +160,7 @@ FABLE_STATIC_ASSERT(offsetof(CTexture, AllocationSource) == 0x7);
 
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -170,19 +170,19 @@ FABLE_STATIC_ASSERT(offsetof(CPixelFormat, FormatIndex) == 0x0);
 
 #endif // FABLE_ENGINE_CPIXELFORMAT_H
 
-struct C2DExtentsI {long X,Y;C2DExtentsI(long x,long y):X(x),Y(y){}};
-struct C3DExtentsI {long X,Y,Z;C3DExtentsI(long x,long y,long z):X(x),Y(y),Z(z){}};
-struct CTexture {static C2DExtentsI FABLE_FASTCALL GetNextValidDimensions(const C2DExtentsI&,const CPixelFormat&);}; //009FA620
-struct CBaseClass {CBaseClass();virtual ~CBaseClass();}; //0099A2D0, baseVT01231710 slot0
+class C2DExtentsI { public:long X,Y;C2DExtentsI(long x,long y):X(x),Y(y){}};
+class C3DExtentsI { public:long X,Y,Z;C3DExtentsI(long x,long y,long z):X(x),Y(y),Z(z){}};
+class CTexture { public:static C2DExtentsI FABLE_FASTCALL GetNextValidDimensions(const C2DExtentsI&,const CPixelFormat&);}; //009FA620
+class CBaseClass { public:CBaseClass();virtual ~CBaseClass();}; //0099A2D0, baseVT01231710 slot0
 enum EVolumePool {VolumePoolManaged=1}; // Native value1; exact original enumerator spelling unestablished.
-struct CVolumeTexture:CBaseClass {
+class CVolumeTexture:public CBaseClass { public:
  void* PD3DVolumeTexture;long ByteLength;void* PData;
  CVolumeTexture():PD3DVolumeTexture(0),PData(0){}
  virtual ~CVolumeTexture(); //nativeVT0129DC18 scalar deleting slot0 A69590
  bool Initialise(const C3DExtentsI&,long,const CPixelFormat&,unsigned long,EVolumePool,bool); //00A68370
 };
-template<class T>struct CCountedPointer {T* Data;CCPPointerInfo* Info;void Reset(T*);}; //00A6AE60 forVolume
-struct CManagedTextureData:CManagedTextureDataDonor {
+template<class T>class CCountedPointer { public:T* Data;CCPPointerInfo* Info;void Reset(T*);}; //00A6AE60 forVolume
+class CManagedTextureData:public CManagedTextureDataDonor { public:
  CCountedPointer<CVolumeTexture>& Volume(){return *reinterpret_cast<CCountedPointer<CVolumeTexture>*>(&VolumeTexture_Data);}
  bool CreateVolumeTexture(unsigned long,unsigned long,unsigned long,long,const CPixelFormat&);
 };
@@ -217,7 +217,7 @@ C2DExtentsI FABLE_FASTCALL CTexture::GetNextValidDimensions(const C2DExtentsI& s
  ++roundCalls;if(size.X!=(long)inputW||size.Y!=(long)inputH||&format!=expectedFormat)good=0;
  return C2DExtentsI(expectedX,expectedY);
 }
-struct CCPPointerInfo {unsigned long RefCount;void(FABLE_FASTCALL*DeleteFunc)(void*);void*Data;};
+class CCPPointerInfo { public:unsigned long RefCount;void(FABLE_FASTCALL*DeleteFunc)(void*);void*Data;};
 template<class T> void CCountedPointer<T>::Reset(T* p){
  ++resetCalls;if(p->PD3DVolumeTexture||p->PData)good=0;
  if(Info){if(--Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}

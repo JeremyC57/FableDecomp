@@ -14,11 +14,11 @@
 #include <stddef.h>
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 extern "C" void* __cdecl malloc(size_t size);
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CThing { const C3DVector& GetPosition() const; };    // 0x004C73D0
+class CThing { public: const C3DVector& GetPosition() const; };    // 0x004C73D0
 struct CThingVector {
     CThing** _M_start;
     CThing** _M_finish;
@@ -57,11 +57,11 @@ struct CRingVector {
     bool empty() const { return _M_start == _M_finish; }
     unsigned long size() const { return _M_finish - _M_start; }
 };
-struct CExplosionDef {
+class CExplosionDef { public:
     unsigned char _pad00[0x58];
     CRingVector Rings;                          // +0x58
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

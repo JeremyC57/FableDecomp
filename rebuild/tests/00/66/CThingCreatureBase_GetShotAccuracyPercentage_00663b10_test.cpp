@@ -1,16 +1,16 @@
 // behaviour test for CThingCreatureBase::GetShotAccuracyPercentage (0x00663B10)
 #include <cstdio>
-struct CTCHeroExperience { int pct; int GetShotAccuracyPercentage() { return pct; } };
-struct CThing { bool runningAway; };
+class CTCHeroExperience { public: int pct; int GetShotAccuracyPercentage() { return pct; } };
+class CThing { public: bool runningAway; };
 struct CCombatantInfo { int w; CThing* Attacked; };
-struct CThingCreatureBase;
-struct CCombatManager {
+class CThingCreatureBase;
+class CCombatManager { public:
     bool attacking; CCombatantInfo info;
     bool IsCreatureAttacking(const CThingCreatureBase&) { return attacking; }
     CCombatantInfo* GetCombatantInfo(const CThingCreatureBase&) { return &info; }
 };
 static bool IsThingRunningAwayFromCombat(CThing* t) { return t->runningAway; }
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char m_flags6c; bool hasExp; CTCHeroExperience* exp; CCombatManager* cm; int ShotAccuracyPercentage;
     int GetShotAccuracyPercentage()
     {

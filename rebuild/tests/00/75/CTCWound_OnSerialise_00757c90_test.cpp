@@ -6,7 +6,7 @@ struct CContext {
     void Transfer(long& v) { if (Saving) Values[N++] = v; else v = Values[Pos++]; }
     void Transfer(unsigned long& v) { if (Saving) Values[N++] = (long)v; else v = (unsigned long)Values[Pos++]; }
 };
-struct CTCWound {
+class CTCWound { public:
     CWound Wounds[40]; long Count;
     void OnSerialise(CContext& c)
     {

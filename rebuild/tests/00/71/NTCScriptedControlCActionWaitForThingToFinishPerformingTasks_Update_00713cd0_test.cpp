@@ -2,7 +2,7 @@
 #include <cstdio>
 struct SNode { SNode* next; };
 struct CControl { SNode* node; bool Locked; bool empty() const { return node->next == node; } };
-struct CThing {
+class CThing { public:
     unsigned long UsingComponents[9]; CControl* control;
     bool GetInterface(CControl** out, long type) const
     {
@@ -10,7 +10,7 @@ struct CThing {
         return false;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     bool valid, alive; int refreshes; CThing* thing;
     bool IsValid() const { return valid; }
     void Refresh() { ++refreshes; valid = true; }

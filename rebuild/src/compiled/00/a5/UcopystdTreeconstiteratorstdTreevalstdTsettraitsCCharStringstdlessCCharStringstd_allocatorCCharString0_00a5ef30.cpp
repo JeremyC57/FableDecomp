@@ -14,7 +14,7 @@
 //
 // i.e. return this->m188->_Ucopy(arg2, arg1, arg3);
 
-struct CCharString;
+class CCharString;
 
 struct Inner;
 

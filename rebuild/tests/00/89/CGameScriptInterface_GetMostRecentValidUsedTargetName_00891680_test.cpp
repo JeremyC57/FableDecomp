@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     void* p;
     CCharString() { p = 0; }
     CCharString(const CCharString& o) { p = o.p; }
@@ -10,7 +10,7 @@ struct CGlobal { char pad[0xb0]; CCharString name; };
 static CGlobal g_storage;
 CGlobal* g_obj = &g_storage;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     char pad[0x1010];
     CCharString GetMostRecentValidUsedTargetName();
 };

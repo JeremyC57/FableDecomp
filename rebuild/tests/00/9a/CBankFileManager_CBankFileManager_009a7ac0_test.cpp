@@ -11,7 +11,7 @@ struct Tree {
 };
 struct ListNode { ListNode* next; ListNode* prev; void* data[2]; };
 struct List { ListNode* node; List() : node(0) { ListNode* n = (ListNode*)std::malloc(sizeof(ListNode)); n->next = n; n->prev = n; node = n; } };
-struct CWideString { void* PStringData; CWideString() : PStringData(0) {} };
+class CWideString { public: void* PStringData; CWideString() : PStringData(0) {} };
 struct CBankFileManager {
     Tree Banks; List RetailBanks; bool UsingRetailBanks; Tree BankAliasMap; CWideString BasePath; Tree CreatedRetailBanks; unsigned int FileVersion;
     CBankFileManager() : Banks(0x28), BankAliasMap(0x18), CreatedRetailBanks(0x14) { UsingRetailBanks = false; FileVersion = 100; }

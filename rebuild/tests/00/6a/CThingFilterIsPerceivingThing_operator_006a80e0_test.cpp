@@ -1,6 +1,6 @@
 // Behaviour test for CThingFilter_IsPerceivingThing::operator() (0x006A80E0)
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct STCEntry { long m_kind; CTCBase* m_pTC; };
 struct CTCMap {
     STCEntry* m_pFirst; STCEntry* m_pLast; STCEntry* m_pEnd;
@@ -11,7 +11,7 @@ struct CTCMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_tcMask[8];
     CTCMap m_tcs;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
@@ -32,8 +32,8 @@ struct CThing {
 };
 
 
-struct CTCPerceiveThing { const CThing* m_perceived; const CThing* GetPerceivedThing() const { return m_perceived; } };
-struct CThingFilter_IsPerceivingThing {
+class CTCPerceiveThing { public: const CThing* m_perceived; const CThing* GetPerceivedThing() const { return m_perceived; } };
+class CThingFilter_IsPerceivingThing { public:
     const CThing* m_thing;
     bool operator()(const CThing& thing) const
     {

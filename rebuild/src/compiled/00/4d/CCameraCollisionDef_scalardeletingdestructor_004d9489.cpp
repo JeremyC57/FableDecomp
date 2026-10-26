@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CCameraCollisionDef
-{
+class CCameraCollisionDef
+{ public:
     void* vftable;
 };
 extern void* const g_CCameraCollisionDef_vftable;

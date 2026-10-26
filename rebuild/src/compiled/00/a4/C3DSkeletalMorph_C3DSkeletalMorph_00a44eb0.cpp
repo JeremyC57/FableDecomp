@@ -14,12 +14,12 @@
 extern "C" void __cdecl free(void* block);                      // 0x00BFEA14
 void __cdecl operator delete(void* p);                           // 0x00BFE9BC
 
-struct CCPPointerInfo {                                          // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                          // PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                        // +0
     CCPPointerInfo* Info;                                        // +4
     ~CCountedPointer()
@@ -38,9 +38,9 @@ template<class T> struct CCountedPointer {
 };
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
-struct C3DSkeletalMorph;
-struct C3DSkeletalMorphTarget;
-struct C3DSkeletalMorphParameter {
+class C3DSkeletalMorph;
+class C3DSkeletalMorphTarget;
+class C3DSkeletalMorphParameter { public:
     virtual void v00();
     float             CurrentValue;                              // +0x04
     C3DSkeletalMorph* SkeletalMorph;                             // +0x08
@@ -65,7 +65,7 @@ struct CBaseClassNonCopyable {
     ~CBaseClassNonCopyable();                                    // 0x0099A300
 };
 
-struct C3DSkeletalMorph : CBaseClassNonCopyable {
+class C3DSkeletalMorph : public CBaseClassNonCopyable { public:
     CRetailArray<CCountedPointer<C3DSkeletalMorphParameter> > MorphParameters;   // +0x04
     CCountedPointer<C3DSkeletalMorphTarget>                   CombinedMorph;     // +0x10   sizeof == 0x18
     virtual void v00();                                          // own vtable 0x0129D498

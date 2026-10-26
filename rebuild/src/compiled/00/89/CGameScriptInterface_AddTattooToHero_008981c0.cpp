@@ -11,12 +11,12 @@
 // Layout: CThing player byte +0x90, dead flags +0x91 bit 0, UsingComponents +0x20 (TC 3 = word 0 bit 3), component map
 //   +0x44, physics +0x60; the engine singleton's +0x28 object holds the CIEngine at +0x2C.
 // Shape: the scratch script name is a named local in its own block around Create (destroyed right after it).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -24,8 +24,8 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
 };
-struct CRightHandedSet;
-struct CIEngine;
+class CRightHandedSet;
+class CIEngine;
 struct CEngineHolder_Retail {
     unsigned char _pad00[0x2c];
     CIEngine*     Engine;                               // +0x2C
@@ -87,19 +87,19 @@ struct CThing_Retail {
     const C3DVector& GetPosition() const;               // 0x004C73D0
     void Kill(bool silent);                             // 0x004C9B80
 };
-struct CThingObject : CThing_Retail {
+class CThingObject : public CThing_Retail { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                            const CRightHandedSet* orientation, unsigned long uid,
                                            const CCharString& scriptName);   // 0x00703210
 };
 struct CLongSet;
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     void AddTattoo(CThing_Retail* tattoo);              // 0x0071D7C0
     void UploadTextureMorphsToEngine(CIEngine* engine, CLongSet* morphs, bool b, float f);   // 0x006CA7F0
 };
-struct CPlayer { CThing_Retail* GetHeroThing(); };      // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };    // 0x00449970
-struct CGameScriptInterface {
+class CPlayer { public: CThing_Retail* GetHeroThing(); };      // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
+class CGameScriptInterface { public:
     virtual void AddTattooToHero(const CCharString& tattooDefName) const;
     void*            World;                             // +0x04 (engine/CGameScriptInterface.h)
     void*            Component;                         // +0x08

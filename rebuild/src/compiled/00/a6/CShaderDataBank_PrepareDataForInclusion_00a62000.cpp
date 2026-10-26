@@ -3,9 +3,9 @@
 // this-call member with a by-value CCountedPointer arg; body only touches that arg's control block.
 
 #include "engine/CShaderDataBank.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorldMap;
+class CWorldMap;
 struct CArrayCS;
-struct CDataOutputStream;
+class CDataOutputStream;
 
 // Reference-count control block held by a CCountedPointer<CBankStateBlock>.
 struct RefBlock {

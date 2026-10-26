@@ -7,15 +7,15 @@
 // Shape: Loading is `test byte [+48h],8` / `and byte [+48h],0F7h`; the children are the counted delete-and-null loop
 // (ebx = 4); the collection chain is the inline RemoveObjectCollections loop; the two trailing bit-field clears merge
 // into one `and byte [+48h],0FAh`.
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 struct CObjectCacheGroupCollection {               // polymorphic; the chain is singly linked through +4
     virtual ~CObjectCacheGroupCollection();        // slot 0: the deleting destructor
     CObjectCacheGroupCollection* Next;             // +0x04
 };
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(long fileBlockPos);        // 0x00BE0400
 };
-struct C3DBoundingSphere {                         // centre + radius (16 bytes)
+class C3DBoundingSphere { public:                         // centre + radius (16 bytes)
     float X, Y, Z, Radius;
     C3DBoundingSphere() : X(0.0f), Y(0.0f), Z(0.0f), Radius(0.0f) { }
     void Reset() { X = 0.0f; Y = 0.0f; Z = 0.0f; Radius = 0.0f; }

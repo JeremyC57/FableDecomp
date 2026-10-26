@@ -15,7 +15,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
 #pragma pack(push, 1)
-struct C2DVector {                              // byte-packed 2D vector (alignment 1)
+class C2DVector { public:                              // byte-packed 2D vector (alignment 1)
     float X, Y;
 };
 #pragma pack(pop)

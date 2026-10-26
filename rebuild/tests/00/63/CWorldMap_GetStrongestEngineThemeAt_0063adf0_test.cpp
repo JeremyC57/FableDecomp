@@ -1,13 +1,13 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct C2DCoordI { long x, y; C2DCoordI() {} C2DCoordI(long a, long b) : x(a), y(b) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C2DCoordI { public: long x, y; C2DCoordI() {} C2DCoordI(long a, long b) : x(a), y(b) {} };
 static C2DCoordI g_last; static int g_calls;
-struct CMap
-{
+class CMap
+{ public:
     long GetStrongestEngineThemeAt(const C2DCoordI& p, long* s) const { g_last = p; ++g_calls; if (s) *s = 7; return 42; }
 };
-struct CWorldMap
-{
+class CWorldMap
+{ public:
     long MapAt; bool Loaded; float OffX, OffY; CMap TheMap;
     long GetMapNumberAt(const C3DVector&) const { return MapAt; }
     bool IsMapLoaded(long) const { return Loaded; }

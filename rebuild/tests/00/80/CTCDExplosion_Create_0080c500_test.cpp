@@ -1,8 +1,8 @@
 // Behaviour test for 0x0080C500 CTCDExplosion::Create(long, const C3DVector&, const C3DVector&) (model copy, stubbed calls).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CTCDExplosion { C3DVector StartPos, EndPos; C3DVector constructedAt; int constructed; };
-struct CThing { unsigned int UsingComponents[9]; CTCDExplosion* PTCDriver; int activateOk; int killed; int activated; };
+class C3DVector { public: float X, Y, Z; };
+class CTCDExplosion { public: C3DVector StartPos, EndPos; C3DVector constructedAt; int constructed; };
+class CThing { public: unsigned int UsingComponents[9]; CTCDExplosion* PTCDriver; int activateOk; int killed; int activated; };
 static int g_createOk = 1, g_lastMap = -1, g_lastPlayer = -1, g_lastDef = -1; static bool g_lastPersist = false;
 static CThing g_thing; static CTCDExplosion g_expl;
 static long GetMapNumberAt(const C3DVector& p) { return (long)p.Z; }

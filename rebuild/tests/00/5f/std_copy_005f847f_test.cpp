@@ -4,7 +4,7 @@
 
 static int g_destroyed = 0;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() { }
     virtual void Destroy() const { ++g_destroyed; }
     mutable long m_refCount;
@@ -13,9 +13,9 @@ struct CDefPointeeBase {
     void Release() const { if (--m_refCount == 0) Destroy(); }
 };
 
-struct CHeroAbilityDef : CDefPointeeBase { };
+class CHeroAbilityDef : public CDefPointeeBase { public: };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer& operator=(const CDefPointer& other)
     {

@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <stddef.h>
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseThing = 0; static CThing* g_mountThing = 0; static int g_order = 0, g_baseOrder = 0, g_mountOrder = 0;
-struct CTCCarriedActionUseBase { virtual void v00() { } unsigned char _body[0x10]; CTCCarriedActionUseBase(CThing* t) { g_baseThing = t; g_baseOrder = ++g_order; } };
+class CTCCarriedActionUseBase { public: virtual void v00() { } unsigned char _body[0x10]; CTCCarriedActionUseBase(CThing* t) { g_baseThing = t; g_baseOrder = ++g_order; } };
 struct CTCCarriedActionUseWallMount { virtual void v00() { } unsigned char _body[0x10]; CTCCarriedActionUseWallMount(CThing* t) { g_mountThing = t; g_mountOrder = ++g_order; } };
 struct CTCCarriedActionUseTrophy : CTCCarriedActionUseBase {
     CTCCarriedActionUseWallMount PTCCarriedActionUseWallMount;

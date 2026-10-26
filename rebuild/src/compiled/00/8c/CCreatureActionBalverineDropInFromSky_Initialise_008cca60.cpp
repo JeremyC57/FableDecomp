@@ -8,16 +8,16 @@
 // Shape: `this` rides in edi and the PCreature address in ebx; esi is pushed only inside the lookup block; the animation name is
 // an implicit conversion temporary re-addressed with `lea`. Retail CCombatActionBase is 0x114 bytes (the engine header is the PDB's
 // 0x12c-byte layout), so `this` is modelled locally.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 struct CTCGraphicAppearance;
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -45,7 +45,7 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatur
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CCharString {                        // one pointer; the defaulted length lets the literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
@@ -58,12 +58,12 @@ struct CThingCreatureCalls {                // the creature's own virtuals: slot
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
     virtual void SetInvisible(bool invisible);   // slot 28 (+0x70)
 };
-struct CTCParticleAttacher {                // the interface-130 component
+class CTCParticleAttacher { public:                // the interface-130 component
     void AttachParticles();                 // 0x007F8890
 };
 void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];                // +0x04
@@ -72,7 +72,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_BalverineDropInFromSky : CCombatActionBase {
+class CCreatureAction_BalverineDropInFromSky : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

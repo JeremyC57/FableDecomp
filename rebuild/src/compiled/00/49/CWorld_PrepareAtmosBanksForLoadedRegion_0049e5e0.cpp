@@ -9,22 +9,22 @@
 // 0x58 bytes with SoundThemesEnabled at +0x56 (PDB +0x62: two 12-byte vectors and a 12-byte map ahead of it).
 // Shape: the world map is peeked twice through the virtual (once per call), the mute flag is the negated region
 // byte (`test dl,dl ; sete al`) and the fade time is the 1000.0f immediate.
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x56];
     bool          SoundThemesEnabled;           // +0x56 (PDB +0x62)
     unsigned char _pad57;
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     long GetLoadedRegion() const;               // 0x004FB150
     const CRegion& GetRegion(long region) const;    // 0x004FC180
 };
 
-struct CAtmosProcess {
+class CAtmosProcess { public:
     void SetAtmosSoundsAsMuted(bool muted, float fadeTime);    // 0x006B1D30
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

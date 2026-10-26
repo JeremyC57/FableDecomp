@@ -1,4 +1,4 @@
-struct CCharString;
+class CCharString;
 
 struct Sub {
     int resolve(CCharString* s);  // thiscall: ecx=this, s on stack
@@ -9,11 +9,11 @@ struct Obj {
     Sub* p54;
 };
 
-struct CTCEnemy;
+class CTCEnemy;
 // call 0x686a80 : thiscall on CTCEnemy, returns Obj*
 extern "C" Obj* __fastcall Enemy_GetObj(CTCEnemy* self);
 
-struct CTCEnemy {
+class CTCEnemy { public:
     char pad[0x18];
     int f18;
 };

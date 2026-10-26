@@ -24,16 +24,16 @@ static int fails = 0;
 // __false_type()), then stores the new finish. GetDef, __find and remove_copy are same-TU noinline stand-in bodies (retail's
 // LTCG saw none of them keep the def slot's address), so the def pointer's inline destructor releases with
 // `mov ecx,[slot] ; dec [ecx+4] ; jne` and no re-read.
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long m_refCount;                                // +4
 };
 
-struct CMeleeCombatAbilityDef;
+class CMeleeCombatAbilityDef;
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     CDefPointeeBase* m_pObject;
     CDefPointer() : m_pObject(0) {}
     ~CDefPointer()
@@ -105,7 +105,7 @@ struct CAbilityVector {                             // STLport vector<CDefPointe
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CAbilityPointer* out);  // 0x00737F80
 };
 CDefPointeeBase* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
@@ -120,7 +120,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CAbilityPointer
 }
 #pragma auto_inline(on)
 
-struct CTCCombat {
+class CTCCombat { public:
     virtual void v00();
     void*          ParentThing;                     // +0x04 (CTCBase)
     unsigned char  _pad08[0x2c - 0x08];

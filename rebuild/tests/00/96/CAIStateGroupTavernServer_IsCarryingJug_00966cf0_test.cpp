@@ -18,16 +18,16 @@ static int fails = 0;
 // result `!found` is `neg ; sbb ; inc`; the def released without a null test (`dec [esi+4] ; jne`).
 // The engine header is padding only (PDB names PJug +0x14 ...), so a local model is used.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
+class CTCBase;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1: `call [eax+4]` at refcount zero
     long m_refCount;                            // +0x04
 };
 
 template <class T>
-struct CDefPointer {                            // counted def pointer (GetSubDef's out pointer, released by hand)
+class CDefPointer { public:                            // counted def pointer (GetSubDef's out pointer, released by hand)
     CDefPointeeBase* Object;                    // +0x00
     CDefPointer() : Object(0) {}
     T* operator->() const { return (T*)Object; }
@@ -39,7 +39,7 @@ struct CJugDef : CDefPointeeBase {              // the jug object's sub-def
     long GetItemID() const { return ItemID; }
 };
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CJugDef>* out);   // 0x005CC10E (manifest "GetSubDef<CAbilityDef>", propagated)
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -84,7 +84,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -125,12 +125,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -141,10 +141,10 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
 };
 
-struct CRightHandedSet { float m[6]; };         // 0x18 bytes
-struct C3DVector { float X, Y, Z; };
+class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCInventory {                           // interface 0x46
+class CTCInventory { public:                           // interface 0x46
     bool HasItemWithID(long id);                // 0x006A1230
 };
 

@@ -18,7 +18,7 @@ struct SCountBlock {
     void* m_pObject;                                    // +8
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                                       // +0
     SCountBlock* m_pCount;                              // +4
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -33,7 +33,7 @@ struct CCountedPointer {
         }
     }
 };
-struct CActiveEntityScriptBase;
+class CActiveEntityScriptBase;
 struct SScriptPair {                                    // std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> >, 16 bytes
     unsigned __int64                         first;     // +0x00
     CCountedPointer<CActiveEntityScriptBase> second;    // +0x08

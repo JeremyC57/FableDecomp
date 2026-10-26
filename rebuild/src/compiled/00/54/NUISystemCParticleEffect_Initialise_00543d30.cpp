@@ -12,12 +12,12 @@
 // for its depth, with the default axes (Up (0,0,1), Forward (0,1,0)); callers start it only when the state's
 // info exists, wants an effect and none is running. The manager getter is called after the arguments are pushed (VC
 // evaluates the object expression of a member call last), the axes are built between the pushes.
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CRightHandedSet {                           // PDB: Up then Forward; the default set is Z up, Y forward
+class CRightHandedSet { public:                           // PDB: Up then Forward; the default set is Z up, Y forward
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(0.0f, 1.0f, 0.0f) { }

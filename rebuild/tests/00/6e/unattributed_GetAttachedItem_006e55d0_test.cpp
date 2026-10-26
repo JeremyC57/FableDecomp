@@ -1,6 +1,6 @@
 // Behaviour test for GetAttachedItem @ 0x006e55d0: current slot -> slot's item index -> pointer array element -> GetPItem; -1 at either level gives null.
 #include <cstdio>
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer { virtual void v0() { } CBaseObject* m_pItem; CBaseObject* GetPItem() const { return m_pItem; } };
 struct SAttachmentSlot { long m_type; long m_itemIndex; long m_reserved8; long m_reservedC; };
 struct CAttachmentHolder_006e55d0 {

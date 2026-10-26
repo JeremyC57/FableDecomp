@@ -63,13 +63,13 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCharStringData;
-struct CFailedAllocationHandler;
+class CCharStringData;
+class CFailedAllocationHandler;
 struct CHeader;
 struct _RTL_CRITICAL_SECTION_DEBUG;
 
 #pragma pack(push, 1)
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void*                        __vftable;                  // +0x00 vptr, or first dword of a flattened base subobject
     void*                        Buffer;                     // +0x04
     void*                        UnalignedBuffer;            // +0x08
@@ -135,7 +135,7 @@ FABLE_STATIC_ASSERT(offsetof(CHandleBasedMemoryPool, CriticalSection_SpinCount) 
 struct BaseClass {BaseClass();virtual ~BaseClass();}; // genuine99A2D0/99A2E0
 struct BaseNonCopyable:BaseClass {BaseNonCopyable();virtual ~BaseNonCopyable();}; // genuine99A2F0/99A300
 struct Header {Header();void*Resource;long Handle,Size;short Padding;unsigned char Status,Locked;Header**RefAvailable;Header*NextAvailable,*PrevContiguous,*NextContiguous;}; //PDBB6CBD0, native32 no repository header
-struct CHandleBasedMemoryPool:BaseNonCopyable {
+class CHandleBasedMemoryPool:public BaseNonCopyable { public:
  CHandleBasedMemoryPool();virtual ~CHandleBasedMemoryPool();
  virtual void MoveResource(void*,long,void*,void*,unsigned long);
  virtual bool CanMoveResource(void*,long);

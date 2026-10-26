@@ -9,8 +9,8 @@
 // PParticleFish +0x1c, Enabled +0x24.
 // Shape: each pointer is built from a null item (`CIntelligentPointer<CThing>(0)`: base ctor, vtable
 // store, SetPItem(0)), addressed once in edi; Enabled is the last initialiser.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -18,12 +18,12 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     CBaseIntelligentPointer();                              // 0x00A01B10
     void SetPItem(CBaseObject* item);                       // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -31,7 +31,7 @@ struct CTCBase {
     CTCBase(CThing* thing);                                 // 0x00686800
 };
 
-struct CTCFishingSpot : CTCBase {                           // vtable 0x0126D51C
+class CTCFishingSpot : public CTCBase { public:                           // vtable 0x0126D51C
     CIntelligentPointer<CThing> PParticle1;                 // +0x0c
     CIntelligentPointer<CThing> PParticle2;                 // +0x14
     CIntelligentPointer<CThing> PParticleFish;              // +0x1c

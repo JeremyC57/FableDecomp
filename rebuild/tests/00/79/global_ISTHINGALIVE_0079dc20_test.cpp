@@ -3,7 +3,7 @@
 #define __fastcall
 #endif
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad_0x00[0x40];
     unsigned short LowFlags : 5;
     unsigned short Dead : 1;
@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     void* PItem;
     void* GetPItem() const { ++g_calls; return PItem; }   // test stand-in for 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing)

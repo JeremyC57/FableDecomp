@@ -1,8 +1,8 @@
 // behaviour test for 0x00AF8F00 CParticleSystem::ScaleParticleDimensions(C2DVector&): scale by the largest Scale component when enabled
 #include <cstdio>
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; C2DVector& operator*=(float s) { X *= s; Y *= s; return *this; } };
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; C2DVector& operator*=(float s) { X *= s; Y *= s; return *this; } };
 struct CParticleSystem {
     bool ScaleParticles; C3DVector Scale;
     void ScaleParticleDimensions(C2DVector& d) const { if (ScaleParticles) d *= MAX(MAX(Scale.X, Scale.Y), Scale.Z); }

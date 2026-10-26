@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -12,13 +12,13 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     void Normalise() { float l = (float)std::sqrt(X * X + Y * Y + Z * Z); if (l > 0.0f) { X /= l; Y /= l; Z /= l; } }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_flags91;
     C3DVector pos;
     const C3DVector& GetPosition() const { return pos; }
 };
-struct CThingCreatureBase : CThing { };
-struct CThingAICreature : CThingCreatureBase { };
+class CThingCreatureBase : public CThing { public: };
+class CThingAICreature : public CThingCreatureBase { public: };
 static int g_attack;
 static bool IsToAttackTarget(CThingAICreature*, CThingCreatureBase* target) { return g_attack != 0 && target != 0; }
 inline float GetDistanceSquaredXY(const CThing* a, const CThing* b)
@@ -34,7 +34,7 @@ struct CPointer {
     CThingCreatureBase* GetPItem() const { return item; }
 };
 inline bool IsThingAlive(const CPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
-struct CAIBrain { CThingAICreature* PCreature; };
+class CAIBrain { public: CThingAICreature* PCreature; };
 
 static int g_move[16], g_mi, g_look[16], g_li, g_terminated;
 static C3DVector g_lastMove;

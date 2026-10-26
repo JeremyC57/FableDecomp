@@ -58,8 +58,8 @@
 
 #include <wchar.h>
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;      // +0x00 (opaque here)
     unsigned long unknown04;   // +0x04
     unsigned long unknown08;   // +0x08

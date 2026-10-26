@@ -1,13 +1,13 @@
 #include <cstdio>
 
-struct CPersistContext {
+class CPersistContext { public:
     int calls;
     void* last;
     void TransferA(int* v) { calls++; last = v; }
     void TransferB(int* v) { calls++; last = v; }
 };
 
-struct CTCNoiseDef {
+class CTCNoiseDef { public:
     char pad[0x28];
     int a;
     int b;

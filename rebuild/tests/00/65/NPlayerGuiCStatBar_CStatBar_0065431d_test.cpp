@@ -4,7 +4,7 @@
 // handles and one effect slot.
 class CCharString { public: int Id; };
 class CFontBank { public: int Id; };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     CCharString StatBarsFontName;
     const CCharString& GetStatBarsFontName() const { return StatBarsFontName; }
 };
@@ -39,7 +39,7 @@ public:
 };
 class CStatBar : public CStatBase {
 public:
-    struct CChangeText { int Unused; };
+    class CChangeText { public: int Unused; };
     class CChangeTextList {
     public:
         void* _M_node;

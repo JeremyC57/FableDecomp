@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -39,7 +39,7 @@ public:
     void TransitionToDefaultTheme(long channel, float time);   // 0x006B3950
 };
 class CAtmosProcess;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Clear()
@@ -67,18 +67,18 @@ class CDisplayEngine {
 public:
     void PrepareForLoad();                              // 0x00434AD0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                     // +0x28
 };
 struct CMessageList {
     void clear();                                       // 0x004A9CF0
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void*        _vptr;
     CMessageList Messages;                              // +0x04
 };
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 namespace std {
 template <class T> class vector {
 public:
@@ -199,7 +199,7 @@ void CMessageList::clear() { L("Msgs"); }
 static int g_deleted = 0;
 static void __fastcall DeleteAtmos(void* d) { ++g_deleted; L("AtmosDelete"); }
 namespace std { template <class T> T* vector<T>::erase(T* first, T* last) { sprintf(tmp, "Erase%d", (int)(last - first)); L(tmp); _M_finish = first; return first; } }
-struct CEnginePrimitiveHandle { long h; };
+class CEnginePrimitiveHandle { public: long h; };
 static CWorldMap g_map;
 void CWorld::v00() {} void CWorld::v01() {} void CWorld::v02() {} void CWorld::v03() {} void CWorld::v04() {} void CWorld::v05() {}
 void CWorld::v06() {} void CWorld::v07() {} void CWorld::v08() {} void CWorld::v09() {} void CWorld::v10() {} void CWorld::v11() {}

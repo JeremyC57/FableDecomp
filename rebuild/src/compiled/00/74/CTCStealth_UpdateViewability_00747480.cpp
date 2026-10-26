@@ -8,21 +8,21 @@
 // Layout: CTCStealth Viewable +0x0C, Sneaking +0x0F (retail = PDB); engine theme def float at +0x88.
 // Shape: the position is a named reference local (GetPosition runs before the pushes); the def pointer's null-safe dtor merges with the
 // `if (def.Object)` test; `value > 1e-4f` gives `fcomp ; test ah,41h ; jne`.
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetStrongestEngineThemeAt(const C3DVector& pos, long* weight);   // 0x0063ADF0
 };
-struct CEngineThemeDef {
+class CEngineThemeDef { public:
     virtual void v00();
     virtual void Destroy() const;               // slot 1
     mutable long RefCount;                      // +0x04
     unsigned char _pad08[0x88 - 0x08];
     float StealthFactor;                        // +0x88
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -31,7 +31,7 @@ template<class T> struct CDefPointer {
             Object->Destroy();
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<const CEngineThemeDef>* out);     // 0x0063F3A0
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -47,7 +47,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<con
     return true;
 }
 #pragma auto_inline(on)
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
@@ -55,7 +55,7 @@ struct CTCBase {
     CWorldMap* GetWorldMap_00686d30();                   // 0x00686D30
     CDefinitionManager* GetDefinitionManager(); // 0x006869D0
 };
-struct CTCStealth : CTCBase {
+class CTCStealth : public CTCBase { public:
     bool Viewable;                              // +0x0c
     bool Smellable;                             // +0x0d
     bool Hearable;                              // +0x0e

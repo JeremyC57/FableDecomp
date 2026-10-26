@@ -37,7 +37,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
-struct CReverbEnvironmentEntry {
+class CReverbEnvironmentEntry { public:
     float Params[21];                                       // +0x00
 };
 namespace std {

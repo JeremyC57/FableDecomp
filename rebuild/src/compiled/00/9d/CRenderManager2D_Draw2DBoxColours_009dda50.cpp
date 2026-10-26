@@ -9,13 +9,13 @@
 // (TL, TR, BR, BL) filled field by field -- U, V, Diffuse, Z, RHW of every vertex first, the X/Y positions of all four
 // last (that source order reproduces retail's store schedule and the RHW word copied into three registers); triangles (0, 1, 2) and (0, 2, 3). Blend mode: flag 1 picks 3, otherwise
 // flag 2 picks 2, else 1 (`setne dl ; inc edx`). Returns true.
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour {
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     unsigned long GetARGB() const { return (((((unsigned long)A << 8) | R) << 8 | G) << 8) | B; }
 };
-struct CTexture;
-struct CTVertexRHWColSpecTex1 {
+class CTexture;
+class CTVertexRHWColSpecTex1 { public:
     float X, Y, Z, RHW;
     unsigned long Diffuse;
     unsigned long Specular;

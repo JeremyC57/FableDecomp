@@ -12,12 +12,12 @@
 // Shape: the region reference is a named local (edi) kept across the second GetWorld call (a named world local whose name member is
 // pushed by address); the player GUI is read into a local right after that call, before the argument pushes; the two `else` arms
 // end in tail jumps.
-struct CCharString { void* PStringData; };
-struct CRegion;
-struct CWorldMap {
+class CCharString { public: void* PStringData; };
+class CRegion;
+class CWorldMap { public:
     CRegion& GetRegion(long index);                // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();              // slot 12
@@ -27,15 +27,15 @@ struct CWorld {
     unsigned char _pad88[0xd5 - 0x88];
     unsigned char m_teleportAllowed;               // +0xD5 (name from use)
 };
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     void InitialiseMiniMapFileLoading_Region(CRegion* region, CCharString* worldName, bool b);   // 0x00829D90
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     CMiniMapDisplay* GetPMiniMapDisplay();         // 0x00437CE0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 namespace NHeroInformationScreens {
-struct CBase {                                     // secondary base at +0x130
+class CBase { public:                                     // secondary base at +0x130
     virtual void v00();
     virtual void v01();
     virtual void v02();

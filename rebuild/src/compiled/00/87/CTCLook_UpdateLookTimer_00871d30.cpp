@@ -17,7 +17,7 @@ struct A {
     B* GetB();   // 0x4c73d0
 };
 
-struct CTCLook {
+class CTCLook { public:
     char pad[0xb0];
     float fB0;   // +0xb0
 

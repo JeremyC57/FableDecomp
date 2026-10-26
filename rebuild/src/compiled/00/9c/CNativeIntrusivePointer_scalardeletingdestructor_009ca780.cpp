@@ -6,7 +6,7 @@
 #define CIVCountedPointeeBase CIVCountedPointeeBasePdb
 #include "engine/CIVCountedPointeeBase.h"
 #undef CIVCountedPointeeBase
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
  virtual ~CIVCountedPointeeBase();
  virtual void Delete()const;
  unsigned long IVRefCount;

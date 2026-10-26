@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF73A0, length 96 bytes.
 // Leaf: ??1CLandscapeBackgroundTreeNode@@QAE@XZ
 // Shape: `this` in edi, the task in esi, `push 1 ; call [eax]` twice, `ret`.
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
 struct SEngine_01436ea8 {
@@ -13,7 +13,7 @@ extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
 struct CRequestOwner_00bf8c10 {                   // the owned object: a virtual deleting destructor in slot 0
     virtual ~CRequestOwner_00bf8c10();
 };
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(void* request);            // 0x00BE0400
 };
 struct CLandscapeBackgroundLoadTask {              // 16 bytes, no vtable: freed through the landscape memory manager
@@ -35,11 +35,11 @@ struct CLandscapeBackgroundLoadTask {              // 16 bytes, no vtable: freed
 struct CPatch_00bf73a0 {
     virtual ~CPatch_00bf73a0();                    // slot 0: the deleting destructor
 };
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     ~CMovableResource() { }                        // inline: the vtable store
 };
-struct CLandscapeBackgroundTreeNode : CMovableResource {   // vtable 0x012A8240
+class CLandscapeBackgroundTreeNode : public CMovableResource { public:   // vtable 0x012A8240
     unsigned char                  _pad04[0x94];
     CLandscapeBackgroundLoadTask*  m_pLoadTask;    // +0x98
     long                           OffsetIntoFileBlock;

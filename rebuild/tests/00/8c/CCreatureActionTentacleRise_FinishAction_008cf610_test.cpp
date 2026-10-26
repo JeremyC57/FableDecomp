@@ -3,13 +3,13 @@
 
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char m_flags91; float m_health;
     CInterfaceMap::SEntry m_entries[4]; int m_count;
     CThing() : m_flags91(0), m_health(0), m_count(0)
@@ -35,14 +35,14 @@ struct CThing {
     }
 };
 static unsigned long g_modeArg = 0; static int g_modeCalls = 0;
-struct CTCCreatureModeManager { void RemoveMode(unsigned long m) { g_modeArg = m; ++g_modeCalls; } bool AddMode(unsigned long m) { g_modeArg = m; ++g_modeCalls; return true; } };
-struct CSoundPair { long m_first; long m_second; CSoundPair() : m_first(0), m_second(0) { } };
-struct CCombatActionBase;
+class CTCCreatureModeManager { public: void RemoveMode(unsigned long m) { g_modeArg = m; ++g_modeCalls; } bool AddMode(unsigned long m) { g_modeArg = m; ++g_modeCalls; return true; } };
+class CSoundPair { public: long m_first; long m_second; CSoundPair() : m_first(0), m_second(0) { } };
+class CCombatActionBase;
 static int g_setCalls = 0; static long g_setCode = 0; static int g_setVt = 0; static long g_lastTick = 0; static bool g_lastInt = true; static float g_lastHealth = 1;
-struct CThingCreatureBase : CThing { bool SetCurrentAction(const CCombatActionBase& action); };
+class CThingCreatureBase : public CThing { public: bool SetCurrentAction(const CCombatActionBase& action); };
 struct CBaseIntelligentPointer { CThingCreatureBase* m_pItem; CThingCreatureBase* GetPItem() const { return m_pItem; } };
 static int g_base = 0; static int g_dtors = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature; long m_code; CSoundPair m_sound;
     virtual int Kind() const { return 0; }
     CCombatActionBase() : m_code(0) { }
@@ -51,12 +51,12 @@ struct CCombatActionBase {
     void FinishAction() { ++g_base; }
 };
 struct CTCInterface9 { bool m_flag10; };
-struct CCreatureAction_TentacleIdle : CCombatActionBase {
+class CCreatureAction_TentacleIdle : public CCombatActionBase { public:
     virtual int Kind() const { return 1; }
     CCreatureAction_TentacleIdle(CThingCreatureBase* owner) : CCombatActionBase(owner, 50, CSoundPair()) { }
 };
 bool CThingCreatureBase::SetCurrentAction(const CCombatActionBase& a) { ++g_setCalls; g_setCode = a.m_code; g_setVt = a.Kind(); return a.PCreature.m_pItem == this; }
-struct CCreatureAction_TentacleRise : CCombatActionBase {
+class CCreatureAction_TentacleRise : public CCombatActionBase { public:
     CTCInterface9* GetInterface9() const { CTCInterface9* c = 0; PCreature.GetPItem()->GetInterface(&c, 9); return c; }
     void FinishAction();
 };

@@ -10,14 +10,14 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 
 struct CLongVector {                    // retail std::vector<long> (12 bytes)
     long* m_first; long* m_last; long* m_end;
@@ -27,13 +27,13 @@ struct CFloatVector {                   // retail std::vector<float> (12 bytes)
     float* m_first; float* m_last; float* m_end;
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
 };
-struct CCharString;
+class CCharString;
 struct CStringVector {                  // retail std::vector<CCharString> (12 bytes)
     CCharString* m_first; CCharString* m_last; CCharString* m_end;
     CStringVector& operator=(const CStringVector& other); // 0x00432EE9
 };
 
-struct CSpecialAbilitiesMultiStrikeDef : CParentDefClassBase {   // vtable 0x0123412C
+class CSpecialAbilitiesMultiStrikeDef : public CParentDefClassBase { public:   // vtable 0x0123412C
     CDefString    Sounds[4];                            // +0x3c
     CDefString    Animations[4];                        // +0x4c
     float         HighlightWidth;                       // +0x5c

@@ -3,7 +3,7 @@
 #include <cstdlib>
 static int g_baseBuilt = 0;
 struct Node { char color; Node* parent; Node* left; Node* right; };
-struct CMap {
+class CMap { public:
     Node* header; unsigned int count;
     CMap() : header(0) { header = (Node*)std::malloc(sizeof(Node)); count = 0; header->color = 0; header->parent = 0; header->left = header; header->right = header; }
     ~CMap() { std::free(header); }

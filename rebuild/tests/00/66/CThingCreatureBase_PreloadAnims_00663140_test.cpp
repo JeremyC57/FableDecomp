@@ -19,17 +19,17 @@ static int fails = 0;
 // Shape: the sub-def is read once from the out slot into a holder (ebx) whose dtor releases it; the bank is a named
 //   local (ebp); the loop re-reads the vector end each pass.
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     void TouchAnimation();                      // 0x00A26A50
 };
 struct CMeshBank {
     C3DAnimationInfo* GetAnimation(long index); // 0x00A242C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x3c];
     CMeshBank* PMainMeshBank;                   // +0x3c
 };
-struct CAnimationEntry {                        // 16 bytes
+class CAnimationEntry { public:                        // 16 bytes
     long AnimIndex;                             // +0x00
     unsigned long _rest[3];
     long GetFlags() const;                      // 0x005DC210
@@ -38,17 +38,17 @@ struct CAnimationPair {                         // 20 bytes
     unsigned long Key;
     CAnimationEntry Entry;
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
 };
-struct CAppearanceDef : CDefClassBase {
+class CAppearanceDef : public CDefClassBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationPair* AnimsFirst;                 // +0x34 Animation.Anims vector
     CAnimationPair* AnimsLast;                  // +0x38
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -62,7 +62,7 @@ template<class T> struct CDefHolder {          // releases a def taken out of a 
     }
     T* operator->() const { return Object; }
 };
-struct CThingBaseDef {
+class CThingBaseDef { public:
     template<class T> bool GetSubDef(CDefPointer<const T>* out) const;      // 0x0042B0A2
 };
 void* FindDef_s7r_0();
@@ -84,7 +84,7 @@ template<class T> __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer
 }
 #pragma auto_inline(on)
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x70];
     const CThingBaseDef* PBaseDef;              // +0x70
     CWorld* GetWorld();                         // 0x004C7AB0

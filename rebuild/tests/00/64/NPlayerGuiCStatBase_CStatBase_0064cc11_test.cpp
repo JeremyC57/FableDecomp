@@ -2,8 +2,8 @@
 #include <new>
 // Behaviour test for 0064cc11: the stat-bar base stores the GUI def, clears every value/max/fade member, sets the GUI
 // mode to 1 and starts with empty vectors.
-struct CPlayerGuiDef { int m_id; };
-struct CEnginePrimitiveHandle;
+class CPlayerGuiDef { public: int m_id; };
+class CEnginePrimitiveHandle;
 struct CParticleEmitterPointer;
 enum EPlayerGuiMode { PLAYER_GUI_MODE_DEFAULT = 1 };
 template<class T> struct CRetailVector {

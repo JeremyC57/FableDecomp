@@ -6,8 +6,8 @@
 #define ALIGN16 __attribute__((aligned(16)))
 #endif
 struct CMatrix4x4Fwd;
-struct C4DVector { float X, Y, Z, W; };
-struct CMatrix3x4 { float m[4][3]; };                  // rows: right, up, forward, position
+class C4DVector { public: float X, Y, Z, W; };
+class CMatrix3x4 { public: float m[4][3]; };                  // rows: right, up, forward, position
 
 class CMatrix4x4;
 static const CMatrix4x4* g_to; static float g_t, g_lastW, g_lastM; static int g_transforms; static const void* g_lastIn; static const void* g_lastOut; static unsigned long g_lastCount;
@@ -36,8 +36,8 @@ public:
     virtual ~CParticleContext() {}
 };
 
-struct CMovableResource { virtual ~CMovableResource() {} };
-struct CMovableResourceMemoryPool;
+class CMovableResource { public: virtual ~CMovableResource() {} };
+class CMovableResourceMemoryPool;
 
 class CParticleSimulation : public CMovableResource {
 public:

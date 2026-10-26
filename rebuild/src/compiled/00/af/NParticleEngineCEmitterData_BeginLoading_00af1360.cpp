@@ -28,7 +28,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object;                                     // +0
     SCountBlock* Info;                             // +4
     ~CCountedPointer()
@@ -47,13 +47,13 @@ template <class T> struct CCountedPointer {
 
 enum EThreadedFilePriority { };
 extern EThreadedFilePriority g_ParticleReadPriority;   // 0x0139954C
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     unsigned long Sizeof() const;                  // 0x009D5620
 };
-struct CBankFileAsyncEntry {
+class CBankFileAsyncEntry { public:
     CCountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long offset, unsigned long size, EThreadedFilePriority priority);   // 0x009D6100
 };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     unsigned char _pad[0x168];
     CResourceListMethods ResourceList;             // +0x168
     unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
@@ -66,7 +66,7 @@ struct CParticleEmitterInfo {
 };
 
 namespace NParticleEngine {
-struct CParticleEmitter;
+class CParticleEmitter;
 struct CEmitterData : CResourceMethods {
     CCountedPointer<CBankFileAsyncData> FileData;  // +0x1c
     CCountedPointer<CParticleEmitter> EmitterTemplate;   // +0x24

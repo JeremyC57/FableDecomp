@@ -2,13 +2,13 @@
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004EB864, length 57 bytes.
 // Callees: CDefClassBase::CDefClassBase(const CDefClassBase&) @ 0x0046644C. Shape: the size-optimised module (every member through eax/al), the source in edi, `this` in esi, `ret 4`.
-struct CDefClassBase {                             // 0x28 bytes
+class CDefClassBase { public:                             // 0x28 bytes
     virtual void v00();
     unsigned char _body[0x24];
     CDefClassBase(const CDefClassBase& other);     // 0x0046644C
 };
 
-struct CMultiStaticMeshEntryDef : CDefClassBase { // vtable 0x012438A4
+class CMultiStaticMeshEntryDef : public CDefClassBase { public: // vtable 0x012438A4
     long          m_28;                            // +0x28
     bool          m_2c;                            // +0x2c
     bool          m_2d;                            // +0x2d

@@ -8,13 +8,13 @@
 // result held in eax (a named local), the null menu entry pushed first. Size TU (`#pragma optimize("s", on)`, the
 // weapons module). No member is touched. Local model.
 #pragma optimize("s", on)
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 struct CTCInventoryBase_Retail {
     virtual void v00();
     unsigned char _pad_0x04[0x130 - 4];
     long GetHighlightedItem();                // 0x005BCAE3
 };
-struct CTCInventoryWeapons : CTCInventoryBase_Retail {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail { public:
     void SetThingAsActiveWeapon(long defIndex, NUISystem::CComponent* menuEntry);   // 0x005CB2B0
     void SetHighlightedWeaponAsActiveWeapon();
 };

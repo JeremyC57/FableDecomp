@@ -6,7 +6,7 @@
 // is relocation-masked in parity, so any tail call to a plausible extern
 // with the matching signature reproduces the exact bytes (jmp rel32).
 
-struct COpinionReactionMaskDef;
+class COpinionReactionMaskDef;
 
 // The real implementation this thunk tail-jumps to (relocation-masked target).
 extern void __fastcall COpinionReactionMaskDef_Copy_impl(COpinionReactionMaskDef* thisptr, void* src);

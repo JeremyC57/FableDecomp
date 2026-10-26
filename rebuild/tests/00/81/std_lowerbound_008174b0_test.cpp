@@ -1,7 +1,7 @@
 // Behaviour test for 0x008174B0 __lower_bound over THitLocationIntersectionElement (model copy).
 #include <cstdio>
 struct CHitLocation;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct THitLocationIntersectionElement {
     long          key;
     CHitLocation* hit_location;

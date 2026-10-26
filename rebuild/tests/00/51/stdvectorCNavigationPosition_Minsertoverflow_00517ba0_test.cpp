@@ -3,12 +3,12 @@
 #include <cstdlib>
 #include <new>
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
-struct CNavigationPosition {
+class CNavigationPosition { public:
     C2DVector Position;
     long Layer;
     CNavigationPosition(float x, float y, long l) : Position(x, y), Layer(l) { }

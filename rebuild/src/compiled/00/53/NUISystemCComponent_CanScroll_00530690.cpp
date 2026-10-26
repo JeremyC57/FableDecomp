@@ -26,7 +26,7 @@ template<class T> struct CRetailVector {                        // retail std::v
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct C2DBoxF;
+class C2DBoxF;
 struct CComponent;
 
 struct CCountedComponentPointer {                               // CCountedPointer<NUISystem::CComponent>

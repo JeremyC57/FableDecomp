@@ -2,10 +2,10 @@
 #include <cmath>
 // Behaviour test: CTCVillageMember::GetPVillage -- null when the village pointer is empty, else the village thing's CTCVillage component.
 #define CHECK(c) if (!(c)) { std::printf("007ee540_TEST FAIL\n"); return 1; }
-struct CTCVillage { int id; };
-struct CThing { CTCVillage* Village; void GetTC(CTCVillage** out) { *out = Village; } };
+class CTCVillage { public: int id; };
+class CThing { public: CTCVillage* Village; void GetTC(CTCVillage** out) { *out = Village; } };
 struct CIntelligentPointer { CThing* Item; CThing* GetPItem() const { return Item; } };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CIntelligentPointer PVillage;
     CTCVillage* GetPVillage() const
     {

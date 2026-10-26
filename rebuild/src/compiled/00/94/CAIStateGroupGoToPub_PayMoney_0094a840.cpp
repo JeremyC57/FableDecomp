@@ -10,28 +10,28 @@
 // by-value GetBarman (temporary CIntelligentPointer, vtable 0x0123E7E0).
 // Layout: Ego_r.pdb CAIStateGroup_GoToPub PBar +0x1c, PBarman +0x2c, BarIndex +0x9c; CTCTavernBar (0xb9) Barman +0x18
 // (retail STLport vector 12 bytes); CWorld +0x60 message event manager.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);              // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
@@ -45,10 +45,10 @@ struct CThing {
         }
     }
 };
-struct CThingCreatureBase : CThing { };
-struct CThingAICreature;
-struct CThingObject;
-struct CThingBuilding;
+class CThingCreatureBase : public CThing { public: };
+class CThingAICreature;
+class CThingObject;
+class CThingBuilding;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
@@ -57,44 +57,44 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                          // 0x00A01B50
     void SetPItem(const CThing* item);                 // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer() { }
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CTCTavernBar {                                  // interface 0xb9
+class CTCTavernBar { public:                                  // interface 0xb9
     unsigned char _pad0[0x18];
     CIntelligentPointer<CThingAICreature> Barman;      // +0x18
     CIntelligentPointer<CThingAICreature> GetBarman() const { return Barman; }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                            // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long distance, const C3DVector& pos, CThing* source, CThing* target,
                               float a, float b, long index);   // 0x00687540
     void RemoveMessage(const CMessageEvent* message);   // 0x00493B5B
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x60];
     CMessageEventManager* MessageEventManager;         // +0x60
     static long __fastcall GetWorldFrame();            // 0x0049D870
 };
 extern long g_framesPerSecond;                         // 0x01375550
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                     // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                  // +0x04
     unsigned char _pad08[0x0c];

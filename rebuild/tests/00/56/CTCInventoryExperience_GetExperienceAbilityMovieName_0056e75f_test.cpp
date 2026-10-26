@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString {
+class CWideString { public:
     const char* m_text;
     CWideString(const char* text) : m_text(text) {}
 };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CWideString GetExperienceAbilityMovieName(long ability);
 };
 

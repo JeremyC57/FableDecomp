@@ -8,8 +8,8 @@
 //   edi, stored, null-tested and its reference count (+4) incremented in place.
 // Layout: Ego_r.pdb puts PTarget at +0xb4 and the shot fields at +0xbc..+0xd0 (PDB CCreatureActionBase 0xb4 bytes,
 //   retail 0xa8): +0xa8..+0xc4 here; engine/CCreatureAction_FireMissileWeapon.h is the PDB build and is not used.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -20,7 +20,7 @@ struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>: vtable 0x01237F1C
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<const CThing>: vtable 0x01237F1C
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
@@ -31,20 +31,20 @@ struct CDefCounted {                        // a game definition: vtable + refer
 };
 
 template <class T>
-struct CDefPointer {                        // shares a def and bumps its count
+class CDefPointer { public:                        // shares a def and bumps its count
     T* m_pDef;
     CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
 };
 
-struct CMeleeCombatAbilityDef : CDefCounted { };
+class CMeleeCombatAbilityDef : public CDefCounted { public: };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
 };
 
-struct CCreatureAction_FireMissileWeapon : CCreatureActionBase {   // vtable 0x01285424
+class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:   // vtable 0x01285424
     CIntelligentPointer<const CThing> PTarget;              // +0xa8 (PDB +0xb4)
     float ShotAccuracyPercentage;                           // +0xb0
     float ShotDamageMultiplier;                             // +0xb4

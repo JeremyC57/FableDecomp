@@ -8,7 +8,7 @@
 //   object holds its state pointer at +4.
 extern long g_framesPerSecond;                       // 0x01375550
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -25,7 +25,7 @@ template <class T> struct list {
 };
 }
 namespace NCameraModes {
-struct CPhysicsState {
+class CPhysicsState { public:
     C3DVector Position;                                          // +0x00
     C3DVector Velocity;                                          // +0x0c
     C3DVector Acceleration;                                      // +0x18
@@ -40,7 +40,7 @@ inline void ClampComponent(float& value)
     else if (value > 100.0f)
         value = 100.0f;
 }
-struct CPhysicsCoordCartesian {
+class CPhysicsCoordCartesian { public:
     virtual void FrameUpdate();
     CPhysicsState* PState;                                       // +0x04
 };

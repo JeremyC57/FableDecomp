@@ -3,11 +3,11 @@
 // strike; inside the radius only a buried undead rises.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 enum { ACT_NONE, ACT_RETURN, ACT_RISE_STRIKE };
-struct CThing { C3DVector Pos; bool Underground; bool Free; int Action; int Moves; C3DVector MovedTo; };
+class CThing { public: C3DVector Pos; bool Underground; bool Free; int Action; int Moves; C3DVector MovedTo; };
 static bool g_pointOk = true;
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     CThing** TriggerersStart;
     CThing** TriggerersFinish;
     CThing** Created; int NumCreated;

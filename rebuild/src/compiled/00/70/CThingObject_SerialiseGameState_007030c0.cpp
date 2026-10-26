@@ -8,19 +8,19 @@
 // edi for the mode test; the GetDef arguments (the 16-bit def index at +0x8c, &PDef at +0xd0)
 // are pushed before the manager call (VC evaluates arguments before the object expression).
 // The catalog label "vfunc_3" is the vtable slot (the base call is CThingPhysical::SerialiseGameState).
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          m_mode;                                  // +0x18
 };
-struct CThingObjectDef;
+class CThingObjectDef;
 struct CDefPointerThingObjectDef {
     CThingObjectDef* m_pDef;
     CThingObjectDef* operator->() const { return m_pDef; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointerThingObjectDef& out);   // 0x0042B040
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     virtual void v00();
     unsigned char  _pad04[0x88];
     unsigned short DefGlobalIndex;                             // +0x8c
@@ -28,7 +28,7 @@ struct CThingPhysical {
     CDefinitionManager* GetDefinitionManager();            // 0x004C7990
     virtual bool SerialiseGameState(CPersistContext& context);   // 0x006A5AF0
 };
-struct CThingObject : CThingPhysical {
+class CThingObject : public CThingPhysical { public:
     CDefPointerThingObjectDef PDef;                        // +0xd0
     virtual bool SerialiseGameState(CPersistContext& context);
 };

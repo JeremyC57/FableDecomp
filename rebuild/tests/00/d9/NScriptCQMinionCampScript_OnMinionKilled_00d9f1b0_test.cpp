@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for CQ_MinionCampScript::OnMinionKilled (0x00D9F1B0): the live count never goes below zero, and the spawn timer is restarted only when the camp is below its maximum and the old timer has run out.
 static int g_timeLeft = 0; static int g_restarted = 0; static bool g_terminating = false;
-struct CGameScriptInterface { virtual long GetTimer(long) const { return g_timeLeft; } };
+class CGameScriptInterface { public: virtual long GetTimer(long) const { return g_timeLeft; } };
 static CGameScriptInterface g_game; static CGameScriptInterface* g_pGameScriptInterface = &g_game;
-struct CTimer { long Handle; };
+class CTimer { public: long Handle; };
 class CScriptBase { public: void* __vftable; bool IsActiveThreadTerminating() { return g_terminating; } };
 class CQ_MinionCampScript : public CScriptBase {
 public:

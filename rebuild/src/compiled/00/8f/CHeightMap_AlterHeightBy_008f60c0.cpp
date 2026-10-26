@@ -3,10 +3,10 @@
 // a donor 16-byte vector; retail uses 12 bytes, shifting later members by four.
 // CHeightMap has only its virtual destructor (retail vtable 01288bec slot0).
 #include "engine/CHeightMapCell.h"
-struct CWorld; struct CMap;
-struct C2DCoordI { int X,Y; C2DCoordI(int x,int y):X(x),Y(y){} };
-struct C2DBoxI { C2DCoordI Min,Max; };
-struct CHeightMap {
+class CWorld; class CMap;
+class C2DCoordI { public: int X,Y; C2DCoordI(int x,int y):X(x),Y(y){} };
+class C2DBoxI { public: C2DCoordI Min,Max; };
+class CHeightMap { public:
  virtual ~CHeightMap(); // 008f6de0
  CWorld* World; CMap* Map; unsigned int* WorldSeed;
  CHeightMapCell *CellsStart,*CellsFinish,*CellsEnd;

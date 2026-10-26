@@ -16,7 +16,7 @@ struct CEngineVideoQualitySettings {
     bool          RadialBlurEnabled;               // +0x6f
 };
 
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page);                // 0x00F37030
 };
 struct CEngineGlobal_01436e98 {

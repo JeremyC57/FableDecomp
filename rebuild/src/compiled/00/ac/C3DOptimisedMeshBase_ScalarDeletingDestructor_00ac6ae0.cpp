@@ -14,7 +14,7 @@ struct CBase_0099a300 {
     ~CBase_0099a300();                          // 0x0099A300
 };
 
-struct C3DOptimisedMeshBase : CBase_0099a300 {
+class C3DOptimisedMeshBase : public CBase_0099a300 { public:
     virtual ~C3DOptimisedMeshBase() { }
 };
 

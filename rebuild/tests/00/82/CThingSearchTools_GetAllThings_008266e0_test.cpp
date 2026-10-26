@@ -7,9 +7,9 @@
 #define __forceinline inline
 #endif
 struct __true_type { __true_type() {} };
-struct CBaseObject { int Tag; };
+class CBaseObject { public: int Tag; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char UsingComponents[0x24];
     unsigned long ThingTypeFlags;
@@ -75,19 +75,19 @@ template <class T> void CResultVector<T>::_M_insert_overflow(T* position, const 
     free(_M_start);
     _M_start = mem; _M_finish = out; _M_end_of_storage = mem + cap;
 }
-struct CThingPhysical : CThing { enum { ThingTypeMask = 0x3 }; };
-template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
+class CThingPhysical : public CThing { public: enum { ThingTypeMask = 0x3 }; };
+template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing); }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A& First;
     const B& Second;
     const C& Third;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing) && Third(thing); }
 };
-template <class A, class B, class C, class D, class E> struct CFilter_Bind5 {
+template <class A, class B, class C, class D, class E> class CFilter_Bind5 { public:
     const A& First;
     const B& Second;
     const C& Third;
@@ -96,15 +96,15 @@ template <class A, class B, class C, class D, class E> struct CFilter_Bind5 {
     template <class T> __forceinline bool operator()(const T& thing) const
     { return First(thing) && Second(thing) && Third(thing) && Fourth(thing) && Fifth(thing); }
 };
-template <class A> struct CFilter_Not {               // the negated filter, held by reference
+template <class A> class CFilter_Not { public:               // the negated filter, held by reference
     const A& Filter;
     template <class T> bool operator()(const T& thing) const { return !Filter(thing); }
 };
-struct CThingFilter_BoundingBoxOverlapsMap {
+class CThingFilter_BoundingBoxOverlapsMap { public:
     long Data;
     bool operator()(const CThing& thing) const { return ((thing.Accept >> Data) & 1) != 0; }
 };
-struct CThingFilter_HasNavigationInformation {
+class CThingFilter_HasNavigationInformation { public:
     long Data;
     bool operator()(const CThing& thing) const { return ((thing.Accept >> Data) & 1) != 0; }
 };

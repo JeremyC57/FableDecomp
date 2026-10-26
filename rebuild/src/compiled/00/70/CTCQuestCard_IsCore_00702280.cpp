@@ -2,7 +2,7 @@ struct Inner {
     char pad[0x58];
     char flag;
 };
-struct CTCQuestCard {
+class CTCQuestCard { public:
     char pad0[0xc];
     Inner* inner;   // +0xc
     char pad1[4];   // +0x10

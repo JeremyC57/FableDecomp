@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CThingCreatureBase { int x; }; static CThingCreatureBase* g_first = 0; static CThingCreatureBase* g_second = 0;
-struct CCombatSequenceBase { virtual void v00() { } unsigned char _body[0x28 - 4]; CCombatSequenceBase(CThingCreatureBase* f, CThingCreatureBase* s) { g_first = f; g_second = s; } };
+class CThingCreatureBase { public: int x; }; static CThingCreatureBase* g_first = 0; static CThingCreatureBase* g_second = 0;
+class CCombatSequenceBase { public: virtual void v00() { } unsigned char _body[0x28 - 4]; CCombatSequenceBase(CThingCreatureBase* f, CThingCreatureBase* s) { g_first = f; g_second = s; } };
 struct CCombatSequence_WillPhysicalShieldNonMelee : CCombatSequenceBase { virtual void v00() { } CCombatSequence_WillPhysicalShieldNonMelee(CThingCreatureBase* f, CThingCreatureBase* s) : CCombatSequenceBase(f, s) { } };
 static CCombatSequence_WillPhysicalShieldNonMelee* Alloc_CCombatSequence_WillPhysicalShieldNonMelee(CThingCreatureBase* f, CThingCreatureBase* s) { return new CCombatSequence_WillPhysicalShieldNonMelee(f, s); }
 int main() {

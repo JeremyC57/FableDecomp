@@ -1,8 +1,8 @@
 // Behaviour test for 0x00687510 CMessageEventManager(const CWorld&): world stored, empty self-linked message list.
 #include <cstdio>
 #include <cstdlib>
-struct CWorld { int dummy; };
-struct CMessageEvent { unsigned char Data[0x58]; };
+class CWorld { public: int dummy; };
+class CMessageEvent { public: unsigned char Data[0x58]; };
 struct NodeBase { NodeBase* next; NodeBase* prev; };
 struct Node : NodeBase { CMessageEvent data; };
 struct Manager {

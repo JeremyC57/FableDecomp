@@ -1,6 +1,6 @@
 // Behaviour test for 0x00E81A60 CFishCompOrganiser::CheckForFish (RodDef, done -> true).
 #include <cstdio>
-struct CCharString { int id; };
+class CCharString { public: int id; };
 static int g_queries = 0;
 struct Game {
     int carried;

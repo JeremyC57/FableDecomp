@@ -38,7 +38,7 @@ static float FastInvSqrt(float lengthSquared)
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -49,7 +49,7 @@ static C3DVector Normalise(const C3DVector& v) { return v * FastInvSqrt(v.X * v.
 static C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
 static int g_defDestroyed = 0;
-struct CJackOfBladesBattleDef {
+class CJackOfBladesBattleDef { public:
     long RefCount;
     long MaxRushCount;
     void Destroy() { ++g_defDestroyed; }
@@ -66,9 +66,9 @@ struct CDefPointer_CJackOfBladesBattleDef {
 };
 struct CTCRushCounter { long RushCount; };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 static CCreatureActionBase* g_current = 0;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     C3DVector Position;
     CTCRushCounter* Counter;
     CJackOfBladesBattleDef* Def;
@@ -84,12 +84,12 @@ struct CBaseIntelligentPointer {
 };
 
 static int g_actionsDestroyed = 0;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CBaseIntelligentPointer PCreature;
     virtual ~CCreatureActionBase() { }
     CThingCreatureBase* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCPPointerInfo { long m_count; CCreatureActionBase* m_pItem; };
+class CCPPointerInfo { public: long m_count; CCreatureActionBase* m_pItem; };
 struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* Data;
     CCPPointerInfo*      Info;
@@ -114,7 +114,7 @@ struct CCountedPointer_CCreatureActionBase {
     }
 };
 
-struct CCreatureAction_PlayCombatAnimation : CCreatureActionBase {
+class CCreatureAction_PlayCombatAnimation : public CCreatureActionBase { public:
     char Animation[32];
     bool Loop;
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const char* animation, bool loop) : Loop(loop)
@@ -138,7 +138,7 @@ static bool g_finalIsRushOut = false;
 static bool g_finalLoops = false;
 static CThingCreatureBase* g_finalOwner = 0;
 
-struct CCreatureAction_CastAssassinRush : CCreatureActionBase {
+class CCreatureAction_CastAssassinRush : public CCreatureActionBase { public:
     C3DVector Dir;
     float Distance;
     bool UseCollision;
@@ -169,10 +169,10 @@ bool CThingCreatureBase::SetCurrentAction(CCreatureActionBase* action)
 }
 
 static int g_baseFinish = 0;
-struct CCombatAction_GenericStrikeResponseBase : CCreatureActionBase {
+class CCombatAction_GenericStrikeResponseBase : public CCreatureActionBase { public:
     void FinishAction() { ++g_baseFinish; }
 };
-struct CCombatAction_StrikeResponseJackOfBladesIntoRush : CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_StrikeResponseJackOfBladesIntoRush : public CCombatAction_GenericStrikeResponseBase { public:
     bool CauseRush;
     bool HasPosition;
     C3DVector Target;

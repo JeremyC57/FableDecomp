@@ -9,7 +9,7 @@
 // Shape (landed 0x00E68F70 model): the two arguments are stored BEFORE the vtable by an inlined
 // `__declspec(novtable)` intermediate base (interface at +0x40, owner at +0x44); the timer member's inline
 // constructor registers the timer (CTimer() : Index(RegisterTimer())); the three zero words are init-list members.
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -101,12 +101,12 @@ struct CGameScriptInterface {
 };
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];                       // +0x04..+0x40
     CScriptBase();                                   // 0x00CB8110

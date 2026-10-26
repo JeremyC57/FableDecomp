@@ -7,7 +7,7 @@ static int g_base = 0;
 extern "C" void __cdecl eng_free(void* p) { g_last[g_freed++ & 3] = p; }
 void __fastcall CBase_dtor(void* self) { g_base++; (void)self; }
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     unsigned char _pad_0x0[0x48];
     void* p48;   // +0x48
     unsigned char _pad_0x4c[0x8];

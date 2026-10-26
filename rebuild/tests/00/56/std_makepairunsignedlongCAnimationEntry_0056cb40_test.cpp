@@ -3,7 +3,7 @@
 #include <cstdio>
 
 static int g_copies = 0;
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long  BankIndex;
     void* AnimName;
     void* GroupName;

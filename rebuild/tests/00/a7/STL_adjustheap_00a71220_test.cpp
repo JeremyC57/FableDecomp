@@ -5,7 +5,7 @@
 
 // CCharString model: a nullable payload pointer; operator< is the retail inline (same payload -> false,
 // null this -> true, null other -> false, else the payload compare); FastCompare = length first, then bytes.
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString() : p(0) {}
     CCharString(const char* s) : p(s) {}
@@ -37,7 +37,7 @@ static bool SameString(const CCharString& a, const CCharString& b)
 // unless both share it; the last release calls the block's destroy function on the object and frees the block).
 static int g_destroyed = 0;
 static void DestroyObject(void* data) { (void)data; ++g_destroyed; }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CAIBrain {
+class CAIBrain { public:
     void* vftable;
     int destroyed;
 };

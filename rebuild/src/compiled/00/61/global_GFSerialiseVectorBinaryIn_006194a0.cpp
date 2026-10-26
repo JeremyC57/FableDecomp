@@ -28,12 +28,12 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 struct CUIMiniMapMarker {

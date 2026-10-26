@@ -37,17 +37,17 @@ struct CTCMap_Retail {                             // the thing's component map 
     }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                        // slot 0
     virtual void Delete();                         // slot 1 (+0x04)
     long m_refCount;                               // +0x04
     void Release() { if (DecRefToZero(m_refCount)) Delete(); }
 };
-struct CCreatureNavigationDef : CDefPointeeBase {
+class CCreatureNavigationDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x30 - 0x08];
     float         Radius;                          // +0x30
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -60,7 +60,7 @@ template <class T> struct CDefHolder {             // releases the fetched def w
     }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CCreatureNavigationDef>* out);   // 0x006CD2F0
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -77,7 +77,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureNavigati
 }
 #pragma auto_inline(on)
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char  _pad00[0x10];
     unsigned char  m_navigatorKind;                // +0x10 (2 = gets the 0.1 radius pad)
     unsigned char  _pad11[0x0f];
@@ -110,11 +110,11 @@ struct CObstaclesList {                            // STLport list<CNavigatorObs
     _List_node* _M_node;
 };
 extern CObstaclesList g_registeredObstacles;       // 0x013D2834 (the obstacle records of every live ground navigator)
-struct CNavigatorExternalInterface {               // vtable 0x01241D74
+class CNavigatorExternalInterface { public:               // vtable 0x01241D74
     virtual void v00();
     virtual ~CNavigatorExternalInterface() {}
 };
-struct CGroundNavigatorExternalInterface : CNavigatorExternalInterface {   // vtable 0x0125EC9C
+class CGroundNavigatorExternalInterface : public CNavigatorExternalInterface { public:   // vtable 0x0125EC9C
     CThingCreatureBase* Creature;                  // +0x04
     float               Radius;                    // +0x08
     __forceinline CNavigatorObstacles* GetPNavigatorObstacles()   // inline twin of 0x006CD7B0

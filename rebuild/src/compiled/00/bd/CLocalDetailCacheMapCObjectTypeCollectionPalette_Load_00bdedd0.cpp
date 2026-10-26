@@ -17,7 +17,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void*                m_pVtable;        // +0x00
     unsigned long        m_position;       // +0x04
     long                 m_08;

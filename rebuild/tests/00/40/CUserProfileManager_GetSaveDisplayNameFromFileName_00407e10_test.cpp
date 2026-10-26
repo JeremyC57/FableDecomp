@@ -3,14 +3,14 @@
 #include <string>
 // CWideString stand-in: the test keeps the text narrow (g++'s wchar_t is 4 bytes); every operation the function uses
 // (Contains, concatenation, equality, ToCharString) behaves as on the 16-bit original
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString() { }
     CCharString(const char* text) : S(text) { }
     long GetLength() const { return (long)S.size(); }
     operator const char*() const { return S.c_str(); }
 };
-struct CWideString {
+class CWideString { public:
     std::string S;
     CWideString() { }
     CWideString(const char* text) : S(text) { }
@@ -26,7 +26,7 @@ static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL 
 struct CCharStringOps {
     static bool StartsWith(const CCharString& text, const CCharString& prefix) { return std::strncmp(text, prefix, prefix.GetLength()) == 0; }
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWideString GetManualSaveBaseFileName() const { return "Save"; }
     CWideString GetAutoSaveFileName() const { return "AutoSave"; }
     CWideString GetAutoSaveDisplayName() const { return "Auto Save"; }

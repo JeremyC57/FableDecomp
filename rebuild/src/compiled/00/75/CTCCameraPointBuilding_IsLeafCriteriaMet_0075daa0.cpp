@@ -12,7 +12,7 @@
 // word. That sharing needs the same-TU GetOwnerBuilding body (0x0075D940 stand-in: writes the out pointer only on success,
 // the lookup itself behind an extern), which tells VC7.1 the owner's address does not escape; with only a declaration the
 // hit-thing gets its own word, and one shared variable swaps the camera/owner words.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing;
 class CThingBuilding;
 struct CTCGraphicAppearance {
@@ -30,7 +30,7 @@ struct CTools {
                                const CThing*& hitThing, long filter, bool flag);    // 0x00877C40
 };
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     CThing* GetObservedThing() const;           // 0x0084F1B0
 };
 }
@@ -40,12 +40,12 @@ struct CCameraManager {
     unsigned char _pad7c[0x98 - 0x7c];
     NCameraModes::CBase* PCurrentMode;          // +0x98
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool GetCameraManager(CCameraManager** out);   // slot 10 (+0x28) 0x0069E1D0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x34];
     CGameCameraManager* PCameraManager;         // +0x34
     CGameCameraManager* GetCameraManager() const { return PCameraManager; }

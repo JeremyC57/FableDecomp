@@ -11,7 +11,7 @@
 // Model: local (CResource from Ego_r.pdb: vptr, ResourceList +8, Prev +0x0c, Next +0x10, ResourceSize +0x14,
 // LastUsedFrame +0x18; the derived members from the bytes).
 // Leaf: ??0CGroupEntry@NGameText@@
-struct CResource {                                 // 0x1c bytes
+class CResource { public:                                 // 0x1c bytes
     virtual void v00();
     unsigned char _pad04[0x18];
     CResource();                                   // 0x009FBEC0
@@ -29,7 +29,7 @@ struct CGroup {
     unsigned long Sizeof() const;                  // 0x009D5620
 };
 }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     long* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -40,7 +40,7 @@ template <class T> struct CCountedPointer {
     unsigned long Sizeof() const { return Data ? Data->Sizeof() + sizeof(CCountedPointer) : sizeof(CCountedPointer); }
 };
 namespace NGameText {
-struct CGroupEntry : CResource {
+class CGroupEntry : public CResource { public:
     vector<long>             m_ids;                // +0x1c
     CCountedPointer<CGroup>  m_group;              // +0x28
     long                     m_id;                 // +0x30

@@ -4,9 +4,9 @@
 // CTCCarriedActionUseTrophy::OnActionUseCommon @ 0x007EDEE0.
 // Shape: byte-identical to slot 28 (0x007EDFB0): user argument in edi pushed twice, `this` in esi, two
 // `__fastcall` calls on `this`.
-struct CThing;
+class CThing;
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     void OnUseBase(CThing* user);                   // 0x007EAB90 (empty base implementation)
 };

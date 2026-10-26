@@ -1,6 +1,6 @@
 #include "engine/CAInputProcess.h"
 
-struct CInputProcessManager { void Register(CAInputProcess* process); };
+class CInputProcessManager { public: void Register(CAInputProcess* process); };
 struct CAInputProcess_Methods : CAInputProcess {
     virtual void v0(); virtual void v1(); virtual void OnAdded();
     virtual bool AddToInterface(CInputProcessManager* manager);

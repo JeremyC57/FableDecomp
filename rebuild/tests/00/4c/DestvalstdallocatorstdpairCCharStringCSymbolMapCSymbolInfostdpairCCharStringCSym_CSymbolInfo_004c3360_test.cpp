@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-struct CCharString;
+class CCharString;
 struct SymbolPair;
 
 extern "C" void __fastcall CCharString_Dtor(CCharString *self);
 extern "C" void __fastcall SymbolPair_Dtor(SymbolPair *self);
 
-struct CCharString {};
+class CCharString { public:};
 
 struct SymbolPair
 {

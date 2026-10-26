@@ -64,12 +64,12 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #include <stddef.h>
 
 
-struct CBaseClass;
-struct CInputProcessManager;
-struct CLinkedListPosition;
+class CBaseClass;
+class CInputProcessManager;
+class CLinkedListPosition;
 
 #pragma pack(push, 1)
-struct CAInputProcess {
+class CAInputProcess { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     CInputProcessManager* PPlayerInterface;                  // +0x04
     CBaseClass*           InputProcessListPos_Data;          // +0x08 CLinkedListPosition::Data
@@ -99,11 +99,11 @@ FABLE_STATIC_ASSERT(offsetof(CAInputProcess, InputProcessListPos_Previous) == 0x
 #include <stddef.h>
 
 
-struct CGameDefinitionManager;
-struct CGamePlayerInterface;
-struct CMainGameComponent;
-struct CPlayer;
-struct CWorld;
+class CGameDefinitionManager;
+class CGamePlayerInterface;
+class CMainGameComponent;
+class CPlayer;
+class CWorld;
 
 #pragma pack(push, 1)
 struct CInputProcessGameBase {
@@ -142,7 +142,7 @@ FABLE_STATIC_ASSERT(offsetof(CInputProcessGameBase, PGamePlayerInterface) == 0x2
 
 
 #pragma pack(push, 1)
-struct CProcessedInput {
+class CProcessedInput { public:
     long          Player;                                    // +0x00
     unsigned char Type[0x4];                                 // +0x04 EProcessedEventType
     unsigned char GameEvents[0xa0];                          // +0x08 CGameEvent[4]
@@ -161,12 +161,12 @@ FABLE_STATIC_ASSERT(offsetof(CProcessedInput, Priority) == 0xac);
 
 #endif // FABLE_ENGINE_CPROCESSEDINPUT_H
 
-struct CInputEvent; struct CEnginePrimitivePrepareInfo;
-struct CBaseClass {virtual ~CBaseClass();};
+class CInputEvent; class CEnginePrimitivePrepareInfo;
+class CBaseClass { public:virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {virtual ~CBaseClassNonCopyable();};
-struct CLinkedListPosition {CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
-struct CInputProcessManager;
-struct CAInputProcess:CBaseClassNonCopyable {
+class CLinkedListPosition { public:CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
+class CInputProcessManager;
+class CAInputProcess:public CBaseClassNonCopyable { public:
  CInputProcessManager* PPlayerInterface;
  CLinkedListPosition InputProcessListPos;
  virtual ~CAInputProcess();
@@ -180,14 +180,14 @@ struct CAInputProcess:CBaseClassNonCopyable {
  virtual bool IsInputEventToBeSentToThisInputProcess(const CInputEvent&)const;
 };
 
-struct CLinkedListScanInfo;
+class CLinkedListScanInfo;
 struct CInputProcessList {
  CLinkedListPosition* Head; CLinkedListPosition* Tail; int NoEntries; mutable CLinkedListScanInfo* FirstScanInfo;
  CAInputProcess* StartScanAtHead(CLinkedListScanInfo*)const;
  CAInputProcess* ScanForward(CLinkedListScanInfo*)const;
  void RemoveScanInfo(CLinkedListScanInfo*)const;
 };
-struct CLinkedListScanInfo {
+class CLinkedListScanInfo { public:
  CLinkedListPosition* Current; CLinkedListPosition* Next; CLinkedListPosition* Previous;
  bool Started,Forwards;
  CLinkedListScanInfo* NextScan; CLinkedListScanInfo* PreviousScan;
@@ -217,7 +217,7 @@ inline void CInputProcessList::RemoveScanInfo(CLinkedListScanInfo* s)const {
  s->PreviousScan->NextScan=s->NextScan;
  if(s->NextScan)s->NextScan->PreviousScan=s->PreviousScan;
 }
-struct CInputProcessManager:CBaseClassNonCopyable {
+class CInputProcessManager:public CBaseClassNonCopyable { public:
  CInputProcessList InputProcessList;
  CProcessedInput QueuedProcessedInputs[10]; int NoQueuedProcessedInputs;
  void PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo&)const;
@@ -247,7 +247,7 @@ void CAInputProcess::Update(CProcessedInput&){}
 bool CAInputProcess::ProcessWhilePaused()const{return false;}
 bool CAInputProcess::IsInputEventToBeSentToThisInputProcess(const CInputEvent&)const{return true;}
 
-struct CEnginePrimitivePrepareInfo {};
+class CEnginePrimitivePrepareInfo { public:};
 static CInputProcessManager* manager;
 static CLinkedListPosition* first;static CLinkedListPosition* second;
 static CLinkedListScanInfo* outer;

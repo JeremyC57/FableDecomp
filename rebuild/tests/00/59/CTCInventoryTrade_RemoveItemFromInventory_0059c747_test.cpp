@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 struct SCategoryIdentIndex { long CategoryIdent; long CategoryIndex; };
 SCategoryIdentIndex g_categoryIdentIndices[2] = { { 11, 3 }, { 12, 4 } };
 struct CCategory {
@@ -10,7 +10,7 @@ struct CCategory {
 };
 static CCategory g_categories[5];
 struct CTCInventoryBase_Retail { CCategory* GetCategoryWithIndex(long index) { return index < 0 ? 0 : &g_categories[index]; } };
-struct CTCInventoryTrade : CTCInventoryBase_Retail {
+class CTCInventoryTrade : public CTCInventoryBase_Retail { public:
     long CategoryIdent;
     long GetCategoryIndexForTradeType()
     {

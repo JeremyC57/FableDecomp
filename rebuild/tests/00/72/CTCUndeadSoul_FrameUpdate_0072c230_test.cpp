@@ -2,7 +2,7 @@
 // hero is alive and can use ability 7, and stops otherwise; a player-type soul toggles its animation suspension
 #include <cstdio>
 class CThing;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -37,11 +37,11 @@ public:
     }
     void SetSuspendAnimation(bool suspend, long reason) { ++g_suspendCalls; g_suspend = suspend; (void)reason; }
 };
-struct CTCInventoryAbilities { bool able; bool IsAbleToUseAbility(long ability, bool checkLevel) const { return ability == 7 && checkLevel && able; } };
-struct CTCTargeted { bool Targetable; };
+class CTCInventoryAbilities { public: bool able; bool IsAbleToUseAbility(long ability, bool checkLevel) const { return ability == 7 && checkLevel && able; } };
+class CTCTargeted { public: bool Targetable; };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetControlledCreature() { return g_hero; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CPlayer { public: CThing* GetControlledCreature() { return g_hero; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
 static CPlayerManager g_players;
 struct CTCBaseModel {
     virtual void v00() {}

@@ -9,9 +9,9 @@
 //   temporary's compiler-generated destructor runs the base destructor (landed AssignCreatureToTask 0x00860A00 model).
 //   The start pointer's address (edi) is reused as `this` of its SetPItem.
 // Layout (engine/CVillageTaskPatrol.h): PatrolStart +0x08, CreatureAssignedToTask +0x10, TaskLocked +0x18.
-struct CBaseObject { };
-struct CThing : CBaseObject { };
-struct CThingTrackNode : CThing { };
+class CBaseObject { public: };
+class CThing : public CBaseObject { public: };
+class CThingTrackNode : public CThing { public: };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                          // +0x04
@@ -20,12 +20,12 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item);              // 0x00A01B90
     ~CBaseIntelligentPointer();                    // 0x00A01C10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CVillageTaskPatrol {
+class CVillageTaskPatrol { public:
     virtual void v00();
     void*                                          m_pVillage;              // +0x04
     CIntelligentPointer<const CThingTrackNode>     PatrolStart;             // +0x08

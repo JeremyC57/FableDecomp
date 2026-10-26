@@ -11,24 +11,24 @@
 //   zero store sits between the bit test and the jump); GetSubDef has a same-TU stand-in so the def stays in edi; the
 //   sound name is a named CCharString in its own block (lea, not the ctor's eax); the def class comes from an inline
 //   owner accessor (edx/ecx/eax order at the GetSubDef call).
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) {}
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
-struct CSoundInit {
+class CSoundInit { public:
     float Volume, Pitch; long a, b, c, d, e, f;
     CSoundInit();                                   // 0x0041C930
 };
 struct CSoundGroup { unsigned char* first; unsigned char* last; };
-struct CSoundDef {
+class CSoundDef { public:
     virtual void v00();
     virtual void Destroy();
     long RefCount;
@@ -40,7 +40,7 @@ struct CSoundDefPtr {
     CSoundDefPtr() : Object(0) {}
     ~CSoundDefPtr() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
 };
-struct CDefClassBase { bool GetSubDef(CSoundDefPtr* out); };   // 0x0065F604
+class CDefClassBase { public: bool GetSubDef(CSoundDefPtr* out); };   // 0x0065F604
 CSoundDef* FindRef_CDefClassBase_GetSubDef(CDefClassBase* defClass);   // stand-in callee of the stand-in body below
 // Stand-in body (the real 0x0065F604 sits in this TU out of line): it only writes the def through the out parameter, so
 // VC7.1 knows the caller's def pointer does not escape the call (retail keeps the def in edi across the later calls).
@@ -52,14 +52,14 @@ bool CDefClassBase::GetSubDef(CSoundDefPtr* out)
     return def != 0;
 }
 #pragma auto_inline(on)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last; SEntry* end;
     SEntry* LowerBound(const long& key);            // 0x0040F020
 };
 struct CTCAI { void PlaySound(const unsigned char& sound, const CSoundInit& init, long a, long b); };   // 0x0066ACE0
-struct CThing {
+class CThing { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -168,13 +168,13 @@ struct CBaseIntelligentPointer {
     void* __vftable; void* m_pItem; long m_link;
     CThing* GetPItem() const;                       // 0x00A01B50
 };
-struct CThingFilter_IsNot { const CThing* Thing; };
+class CThingFilter_IsNot { public: const CThing* Thing; };
 struct CThingFilter_All { CThingFilter_All() {} };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_IsNot& filter, CThingVector& out);   // 0x00725F10
     bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_All& filter, CThingVector& out);     // 0x007197C0
 };
-struct CWorld { unsigned long* GetRandomSeed(); };  // 0x0049D810
+class CWorld { public: unsigned long* GetRandomSeed(); };  // 0x0049D810
 struct CTCShotDefinitionBase {
     void*   __vftable;
     CThing* ParentThing;                            // +0x04

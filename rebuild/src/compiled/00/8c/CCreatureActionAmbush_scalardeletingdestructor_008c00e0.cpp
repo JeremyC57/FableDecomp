@@ -1,4 +1,4 @@
-struct CCreatureAction_Ambush {
+class CCreatureAction_Ambush { public:
     void* vftable;
 };
 

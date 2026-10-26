@@ -6,7 +6,7 @@
 // Model of the STLport __unguarded_linear_insert @ 0x0087DC30 over turning-animation pointers: with a working
 // rotation-distance comparator it shifts the farther entries up; with the retail CTurningAnimCompare (never true)
 // it just stores the value at `last`.
-struct CAnimationEntry {
+class CAnimationEntry { public:
     float Rotation;
     void GetRotationInAnimation(float* rotation) const { *rotation = Rotation; }
 };

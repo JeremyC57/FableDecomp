@@ -35,11 +35,11 @@ public:
         return false;
     }
 };
-struct CTCBoastUI {
+class CTCBoastUI { public:
     void RequestActivate();                     // 0x0056A860
     void Deactivate();                          // 0x0056A880
 };
-struct CTCBoastingCrowdControl {
+class CTCBoastingCrowdControl { public:
     void OnHeroEnterPodiumArea();               // 0x00783BF0 (catalog "OnHeroApproachPodiumArea")
     void OnHeroLeavePodiumArea();               // 0x00783C20 (catalog "OnHeroAttackCrowdMember")
 };

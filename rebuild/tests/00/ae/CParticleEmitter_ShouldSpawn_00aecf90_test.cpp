@@ -1,6 +1,6 @@
 // behaviour test for 0x00AECF90 CParticleEmitter::ShouldSpawn: continuous emitters always spawn, otherwise within MaxSpawnDistance of the camera
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static C3DVector g_camera = { 10.0f, 0.0f, 0.0f };
 struct CParticleEmitter {
     unsigned short ContinuousEmitter : 1; float MaxSpawnDistance;

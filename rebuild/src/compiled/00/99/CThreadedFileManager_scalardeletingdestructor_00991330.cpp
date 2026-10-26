@@ -1,4 +1,4 @@
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     void* vftable;
 };
 

@@ -52,7 +52,7 @@ struct CRetailString {                             // STLport basic_string<char>
 };
 
 namespace LHNetworkLib {
-struct LHHttp2 {                                   // retail offsets (Ego_r.pdb names)
+class LHHttp2 { public:                                   // retail offsets (Ego_r.pdb names)
     LSocket*       Host;                           // +0x000
     CRetailString  Hostname;                       // +0x004
     unsigned short Port;                           // +0x010

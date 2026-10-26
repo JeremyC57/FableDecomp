@@ -1,4 +1,4 @@
-struct CCreatureAction_SummonerSummonOutOf {
+class CCreatureAction_SummonerSummonOutOf { public:
     void* vftable;
 };
 

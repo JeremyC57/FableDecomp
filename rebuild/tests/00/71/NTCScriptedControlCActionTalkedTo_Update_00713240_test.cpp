@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CBaseObject { int x; };
+class CBaseObject { public: int x; };
 static int g_resolved = 0; static bool g_isResolved = true, g_finishedTalking = false;
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000() { }
     virtual void v001() { }
     virtual void v002() { }

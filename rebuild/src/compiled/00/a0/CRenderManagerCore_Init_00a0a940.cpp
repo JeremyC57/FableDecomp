@@ -20,11 +20,11 @@ struct IDirect3DDevice9 {
     virtual long __stdcall GetDeviceCaps(_D3DCAPS9* caps);          // slot 7 (+0x1c)
 };
 
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
 };
 
-struct CSurface {
+class CSurface { public:
     void*         __vftable;
     void*         PD3DSurface;
     unsigned long AllocationSource;
@@ -32,7 +32,7 @@ struct CSurface {
     CPixelFormat GetPixelFormat();                     // 0x009F2F60
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad[0x2c];
     CSurface      BackBufferSurface;                   // +0x2c
 };

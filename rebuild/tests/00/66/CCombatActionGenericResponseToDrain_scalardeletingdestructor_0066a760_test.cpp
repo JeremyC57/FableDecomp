@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_GenericResponseToDrain {
+class CCombatAction_GenericResponseToDrain { public:
     void* vftable;
     int destroyed;
 };

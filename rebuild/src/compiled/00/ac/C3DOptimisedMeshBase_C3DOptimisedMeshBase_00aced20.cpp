@@ -13,7 +13,7 @@ struct CBase {
     CBase();                           // 0x0099A2F0
 };
 
-struct C3DOptimisedMeshBase : CBase {
+class C3DOptimisedMeshBase : public CBase { public:
     virtual void v00();                    // this class has its own vtable
     C3DOptimisedMeshBase();
 };

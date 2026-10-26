@@ -4,7 +4,7 @@
 // Leaf: ?GetWanderingPopulationScriptDefNameInCurrentRegion@CGameScriptInterface@@UBEXAAVCCharString@@@Z
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
-struct CWorld;
+class CWorld;
 struct CThingPhysics_Retail;
 struct CThing_Retail {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -61,12 +61,12 @@ struct CThing_Retail {
     void PreloadBasicAnimations();                 // 0x00663610 (CThingCreatureBase)
     void SetInLimbo(bool inLimbo);                 // 0x004C8CF0 (CThing)
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
 };
-struct CCharString;
+class CCharString;
 struct CRegion_Retail {
     unsigned char _pad[0x18];
     unsigned char m_name[4];                       // +0x18 (a CCharString)
@@ -102,7 +102,7 @@ struct CScriptConversationManager_Retail {
     long MakeNewConversation(CThing_Retail* thing, bool a, bool b);   // 0x006E61A0
     void AddPersonToConversation(long conversation, CThing_Retail* thing);   // 0x006E5800
 };
-struct CWorld {
+class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CThingManager_Retail* GetThingManager();   // slot 3 (+0x0c)
         virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -117,7 +117,7 @@ struct CWorld {
     CScriptConversationManager_Retail*   PScriptConversationManager_ptr; // +0x7c
     CEnvironment_Retail* GetEnvironment() { return PEnvironment_ptr; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

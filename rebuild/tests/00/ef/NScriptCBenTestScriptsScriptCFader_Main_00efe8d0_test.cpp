@@ -5,12 +5,12 @@ static int g_strings, g_frames, g_filters, g_talkCalls, g_useCalls, g_doneAfter 
 static int g_talkAt = -1, g_useAt = -1;
 static char g_log[64];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* text, long = -1) : p(text) { ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     bool MsgIsTalkedToBy(const CCharString& who) const { ++g_talkCalls; return std::strcmp(who.p, "SCRIPT_NAME_HERO") == 0 && g_frames == g_talkAt; }
     bool MsgIsUsedBy(const CCharString& who) const { ++g_useCalls; return std::strcmp(who.p, "SCRIPT_NAME_HERO") == 0 && g_frames == g_useAt; }

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad_c[0xc];
     char UseNewProfileValues;
     char SubtitlingEnabled;

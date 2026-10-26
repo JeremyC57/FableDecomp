@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <new>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void* Data;
 };

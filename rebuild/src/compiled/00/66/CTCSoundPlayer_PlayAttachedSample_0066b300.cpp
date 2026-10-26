@@ -7,9 +7,9 @@
 // Layout: CSoundPair {Min +0, Max +4} (sample index range); the generator's seed is its only word.
 // Shape: the generator step `seed = GFROR13(seed * 0x24A1 + 0x24DF)` and `n ? r % n : 0` inlined (as the landed 0x008EE720); the generator
 // is a named reference fetched first; the index is a named local computed before the argument pushes (min re-read after the divide).
-struct CASoundBank;
-struct CSoundInit;
-struct CSoundPair {
+class CASoundBank;
+class CSoundInit;
+class CSoundPair { public:
     long Min;                                   // +0x00
     long Max;                                   // +0x04
 };
@@ -23,12 +23,12 @@ struct CRandomOwner {
     unsigned char _pad00[0x16140];
     CRandomGenerator Random;                    // +0x16140
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     void* ParentThing;                          // +0x04
     CRandomOwner* GetRandomOwner();             // 0x00686D60
 };
-struct CTCSoundPlayer : CTCBase {
+class CTCSoundPlayer : public CTCBase { public:
     unsigned long PlayAttachedSampleIndex(CASoundBank* bank, long index, CSoundInit* init, bool a, bool b, bool c);   // 0x0066B080
     unsigned long PlayAttachedSample(CASoundBank* bank, const CSoundPair* pair, CSoundInit* init, bool a, bool b, bool c);
 };

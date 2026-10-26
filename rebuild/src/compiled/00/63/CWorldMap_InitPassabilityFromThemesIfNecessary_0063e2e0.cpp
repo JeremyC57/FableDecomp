@@ -17,18 +17,18 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long x;
     long y;
 };
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX;   // +0x00
     long TLY;   // +0x04
     long BRX;   // +0x08

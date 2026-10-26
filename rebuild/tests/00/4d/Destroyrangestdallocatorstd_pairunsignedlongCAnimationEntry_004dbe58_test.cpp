@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CAnimationEntry
-{
+class CAnimationEntry
+{ public:
     unsigned long a;
     unsigned long b;
     unsigned long c;

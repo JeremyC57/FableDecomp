@@ -29,7 +29,7 @@ enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_READ_WRITE = 2, FILE_ACC
 static unsigned char g_disk[256];                       // the "file" on disk
 static long g_diskLength = 0;
 static int g_opens = 0, g_closes = 0;
-struct CDiskFileWin32 {                                 // an in-memory stand-in with the retail call surface
+class CDiskFileWin32 { public:                                 // an in-memory stand-in with the retail call surface
     FileAccessType AccessType;
     long Position;
     long Length;

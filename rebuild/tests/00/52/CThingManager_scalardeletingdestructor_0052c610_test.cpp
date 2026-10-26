@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingManager {
+class CThingManager { public:
     void* vftable;
     int destroyed;
 };

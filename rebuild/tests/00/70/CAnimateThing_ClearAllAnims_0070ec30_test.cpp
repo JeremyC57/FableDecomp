@@ -14,7 +14,7 @@ static void ClearList(SNodeBase* list)
 static unsigned int Size(SNodeBase* list) { unsigned int c = 0; for (SNodeBase* n = list->next; n != list; n = n->next) ++c; return c; }
 
 struct SDelayedNode : SNodeBase { SNodeBase* anims; };
-struct CAnimateThing {
+class CAnimateThing { public:
     int MainAnimCleared;
     SNodeBase* Transition;
     SNodeBase* Combination;

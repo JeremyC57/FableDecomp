@@ -1,13 +1,13 @@
 #include <cstdio>
 
 static int g_baseCopies = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() { }
     unsigned char _body[0x110];
     CCombatActionBase() { }
     CCombatActionBase(const CCombatActionBase& other) { ++g_baseCopies; }
 };
-struct CCreatureAction_DuckAndCover : CCombatActionBase {
+class CCreatureAction_DuckAndCover : public CCombatActionBase { public:
     long m_coverState, m_coverTimer, m_coverTarget;
     virtual void v00() { }
     CCreatureAction_DuckAndCover() : m_coverState(1), m_coverTimer(2), m_coverTarget(3) { }

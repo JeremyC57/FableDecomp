@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour test for CV_ExposeMayorScript::Main (0x00e75ba0): the bindings are added in order with their names, parent and
 // flags, then PostAddScriptedEntities runs locally and on the interface, the "V_ExposeMayorRhodri" quest is activated, the gossip categories are declared last, then the threads spawn in order.
-struct CCharString {
+class CCharString { public:
     char Text[64];
     CCharString(const char* t) { std::strcpy(Text, t); }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); }

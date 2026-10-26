@@ -11,10 +11,10 @@
 // Shape: the 64-bit ID zeroed into esi/edi before the first GetPItem test, re-fetched through a second GetPItem;
 // the CCharString temporary lives in the dead `value` argument slot (as the landed unsigned __int64 component
 // TransferOut 0x0044B800 builds it), appended to `out`, then destroyed.
-struct CPersistContext;
+class CPersistContext;
 class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0
@@ -35,7 +35,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                                    // 0x00A01B50
     void SetPItem(CThing* item);                                 // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
     virtual void v00();
     CIntelligentPointer() { }
 };

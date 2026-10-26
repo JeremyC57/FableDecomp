@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CMainGameComponent;
+class CMainGameComponent;
 struct CNetworkPlayer;
 
 #pragma pack(push, 1)

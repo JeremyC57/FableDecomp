@@ -53,7 +53,7 @@ struct CDefPointer {
     CUIDef* operator->() const { return m_p; }
 };
 namespace NUISystem {
-struct CViewport {
+class CViewport { public:
     virtual void v00();
     unsigned char _component[0x16c];        // +0x004
     long          m_defValue;               // +0x170

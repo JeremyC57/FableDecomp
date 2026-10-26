@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CHitLocationsDef {};
+class CHitLocationsDef { public:};
 unsigned long __fastcall CHitLocationsDef_GetSizeofClass(const CHitLocationsDef* self)
 {
     (void)self;

@@ -2,13 +2,13 @@
 #include <cstdio>
 
 static int g_notified = 0;
-struct CIndexBuffer { void OnRelocated() { ++g_notified; } };
-struct CVertexBufferWin32 { int x; };
+class CIndexBuffer { public: void OnRelocated() { ++g_notified; } };
+class CVertexBufferWin32 { public: int x; };
 template <class T> inline void RelocatePointer(T*& p, void* oldBase, void* newBase)
 {
     if (p) p = (T*)((char*)p - (char*)oldBase + (long)newBase);
 }
-struct CEngineWaterBackgroundSubPatch {
+class CEngineWaterBackgroundSubPatch { public:
     CIndexBuffer* IndexBuffer; CVertexBufferWin32* VertexBuffer;
     CIndexBuffer* BridgeIndexBuffers[4]; CVertexBufferWin32* BridgeVertexBuffers[4];
     void RelocateData(long, void* oldBase, void* newBase, long)

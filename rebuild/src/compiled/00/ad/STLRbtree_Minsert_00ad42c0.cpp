@@ -16,7 +16,7 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
     void* Data;                                         // +8

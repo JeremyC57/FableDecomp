@@ -69,22 +69,22 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
-struct CDefinitionManager;
-struct CGraphicDataBank;
-struct CInputManager;
-struct CMeshDataBank;
-struct CTCHeroExperience;
-struct CTCInventory;
-struct CTCInventoryAbilities;
-struct CTCInventoryClothing;
-struct CTCInventoryExperience;
-struct CTCInventoryMap;
-struct CTCInventoryQuests;
-struct CTCInventoryTrade;
-struct CTCInventoryWeapons;
-struct CThing;
+class CDefinitionManager;
+class CGraphicDataBank;
+class CInputManager;
+class CMeshDataBank;
+class CTCHeroExperience;
+class CTCInventory;
+class CTCInventoryAbilities;
+class CTCInventoryClothing;
+class CTCInventoryExperience;
+class CTCInventoryMap;
+class CTCInventoryQuests;
+class CTCInventoryTrade;
+class CTCInventoryWeapons;
+class CThing;
 
 #pragma pack(push, 1)
 struct CManager {
@@ -327,7 +327,7 @@ NativeUIManager* __cdecl GetUIManager(); //0041E5F2
 namespace NUISystem {
 extern const float g_PositionEpsilon; //0129BA3C
 struct C2DVector {float X,Y;bool operator==(const C2DVector& p)const{return (float)fabs(p.X-X)<=g_PositionEpsilon&&(float)fabs(p.Y-Y)<=g_PositionEpsilon;}};
-struct CDraggable {
+class CDraggable { public:
  void* VTable;unsigned char BeforeTime[0x30-4];float Time;C2DVector Position,TargetPosition;
  unsigned char BeforeLayer[0x12f-0x44];unsigned char Layer;unsigned char BeforeClick[0x170-0x130];bool WasLeftClicked;
  unsigned char BeforeDrag[0x194-0x171];C2DVector PositionBeforeDrag;bool WasDragged;unsigned char Align[3];void* PActionsOnDropped;void* PActionsOnDroppedNowhere;bool SnapBackIfDroppedNowhere,ChangeLayer;

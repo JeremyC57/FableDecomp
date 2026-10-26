@@ -8,14 +8,14 @@
 // animation prelude (`this` kept in edi until the out pointer spill reuses the frame word): the owner argument goes through the intelligent pointer's inline `operator CThing*()` (fetched
 // before the target), the `new` null test selects 0 for the counted pointer.
 // Layout: owner CIntelligentPointer +8, target +0xa8.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -44,7 +44,7 @@ struct CBaseIntelligentPointer {
 };
 
 struct CModeBase { };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;                            // +0
     void* m_pCount;                             // +4
     CCountedPointer(T* object);                 // 0x00718A00
@@ -54,7 +54,7 @@ struct CModeSummonerSummon : CModeBase {
     unsigned char _pad[0x90];
     CModeSummonerSummon(CThing* owner, CThing* target);         // 0x008CC0B0
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
 };
 

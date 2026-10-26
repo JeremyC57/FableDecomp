@@ -19,7 +19,7 @@ struct __true_type { __true_type() {} };
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on: UsingComponents +0x20 [PDB +0x20],
 // ThingTypeFlags +0x6c [PDB +0x7c], the state bit byte +0x91 [PDB +0xa1] = Dead 0x01,
 // IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned char UsingComponents[0x24];              // +0x20 bitset<274> of present thing components
@@ -67,7 +67,7 @@ struct CThingList {
 
 // The result: STLport list<CIntelligentPointer<T> >, push_back out of line (0x006604EB); the pointer is built in a
 // named stack temporary: CBaseIntelligentPointer() 0x00A01B10, SetPItem 0x00A01B90, ~CBaseIntelligentPointer 0x00A01C10.
-struct CBaseObject;
+class CBaseObject;
 struct CBaseObjectPointer { CBaseObject* Object; unsigned long RefCount; };
 struct CBaseIntelligentPointer {
     CBaseObjectPointer* PData;
@@ -75,14 +75,14 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();               // 0x00A01C10
     void SetPItem(CBaseObject* item);                 // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7E0
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7E0
     CIntelligentPointer(T* p) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)p); }
 };
 template <class T> struct CResultList {
     void push_back(const T& x);                       // 0x006604EB
 };
 
-struct CBaseObject;
+class CBaseObject;
 // CThingAICreature: retail HomeBuilding +0x168, WorkBuilding +0x170 (Ego_r.pdb +0x190/+0x198), each a
 // CIntelligentPointer<CThingBuilding> read through CBaseIntelligentPointer::GetPItem 0x00A01B50.
 struct CBuildingPointer {
@@ -90,13 +90,13 @@ struct CBuildingPointer {
     void* PData;
     CBaseObject* GetPItem() const;                    // 0x00A01B50
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     enum { ThingTypeMask = 0x1f };
     unsigned char _pad_0x94[0x168 - sizeof(CThing)];
     CBuildingPointer HomeBuilding;                    // +0x168
     CBuildingPointer WorkBuilding;                    // +0x170
 };
-struct CThingFilter_HasBuildingAsHomeOrWork {
+class CThingFilter_HasBuildingAsHomeOrWork { public:
     CBaseObject* Building;
     bool operator()(const CThingAICreature& creature) const
     {

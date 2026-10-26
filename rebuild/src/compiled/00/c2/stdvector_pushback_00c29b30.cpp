@@ -1,5 +1,5 @@
 // std::vector::push_back(const _Ty& _Val) -- VC7.1 Dinkumware vector<CHeader*>::push_back, the pool's defragment block list: store in place below capacity (_Ufill -> the scalar fill_n, inline), else insert(end(), _Val) -> _Insert_n(end(), 1, _Val)
-// Leaf: ?push_back@?$vector@PAUCHeader@CHandleBasedMemoryPool@@V?$allocator@PAUCHeader@CHandleBasedMemoryPool@@@std@@@std@@QAEXABQAUCHeader@CHandleBasedMemoryPool@@@Z
+// Leaf: ?push_back@?$vector@PAVCHeader@CHandleBasedMemoryPool@@V?$allocator@PAVCHeader@CHandleBasedMemoryPool@@@std@@@std@@QAEXABQAVCHeader@CHandleBasedMemoryPool@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C29B30, length 77 bytes, thiscall, `ret 4`.
 // Identity: the only caller is the libpk CHandleBasedMemoryPool::PartialDefragment @ 0x00C28870 (call 0x00C289F8; Ego_r.pdb
 //   ?PartialDefragment@CHandleBasedMemoryPool@@QAE_NJ@Z), which walks the free lists (pool+0x3C, Ego_r FreeLists
@@ -14,7 +14,7 @@
 //   address (CVector_ulong_00c29b30, element type unknown).
 class CHandleBasedMemoryPool {
 public:
-    struct CHeader;                         // a pool block header (32 bytes)
+    class CHeader;                         // a pool block header (32 bytes)
 };
 
 namespace std {

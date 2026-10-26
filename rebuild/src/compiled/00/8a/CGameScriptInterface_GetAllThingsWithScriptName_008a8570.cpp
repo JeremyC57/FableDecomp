@@ -13,11 +13,11 @@
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -40,7 +40,7 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
     CCountedScriptImp PImp;                             // +0x04
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -74,19 +74,19 @@ struct CThingVector {                                   // STLport vector<CThing
     bool empty() const { return _M_start == _M_finish; }
     unsigned long size() const { return _M_finish - _M_start; }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CThingFilter_HasScriptName {
+class CThingFilter_HasScriptName { public:
     CCharString m_name;
     CThingFilter_HasScriptName(const CCharString& name) : m_name(name) {}
 };
 struct CThing_Retail {
     CScriptThing GetScriptThing();                      // 0x004C7E50
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThingsWithScriptName(const CThingFilter_HasScriptName& filter, CThingVector& out);   // 0x005ED860
 };
 CThing_Retail** FindThings_GetAllThingsWithScriptName(CThing_Retail** capacity);   // stand-in callee of the stand-in body below
@@ -104,7 +104,7 @@ struct CWorld_Retail {
     unsigned char      _pad00[0x20];
     CThingSearchTools* ThingSearchTools;                // +0x20
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual long GetAllThingsWithScriptName(const CCharString& scriptName, CScriptThingVector& things) const;
     CWorld_Retail*   World;                             // +0x04 (engine/CGameScriptInterface.h)
 };

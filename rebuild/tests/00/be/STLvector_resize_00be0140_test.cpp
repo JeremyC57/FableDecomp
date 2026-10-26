@@ -2,11 +2,11 @@
 // [begin() + n, end()), an equal size still issues an empty fill insert, and the surviving head is untouched.
 #include <cstdio>
 #include <new>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DBoundingSphere() : Center(0.0f, 0.0f, 0.0f), Radius(0.0f) { }

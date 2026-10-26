@@ -4,13 +4,13 @@
 // Layout matches the CTCRotate constructor (0x004D2B2A): axis +0xc, speed +0x18, total frames +0x24.
 // Shape: the axis is a 12-byte POD assigned whole (`lea eax,[esi+0Ch]` then three dword moves); the speed is copied as a
 // dword; `seconds * g_GameFramesPerSecond` loads the extern first (`fild [g] ; fmul [arg]`).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
 extern long g_GameFramesPerSecond;           // 0x01375550
 
-struct CTCRotate {
+class CTCRotate { public:
     unsigned char _pad[0xc];
     C3DVector     m_axis;                    // +0x0c
     float         m_speed;                   // +0x18

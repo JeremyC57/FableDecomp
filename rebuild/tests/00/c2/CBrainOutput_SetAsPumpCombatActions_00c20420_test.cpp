@@ -5,7 +5,7 @@ struct SubThing {
     void Apply(int arg) { lastArg = arg; }
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned int flags;    // +0x00
     int pad4;              // +0x04
     SubThing sub;          // +0x08

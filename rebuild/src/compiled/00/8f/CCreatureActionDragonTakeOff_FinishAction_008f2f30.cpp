@@ -12,9 +12,9 @@
 //   PCreature's address is taken once (esi); the base FinishAction is a direct call.
 // Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; CThing's PhysicsTC at +0x60 (landed
 //   CThingPhysical 0x006A4D90 model).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCPhysicsBase {                     // the thing's physics TC; only slots 31 and 36 are modelled
+class CTCPhysicsBase { public:                     // the thing's physics TC; only slots 31 and 36 are modelled
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -26,7 +26,7 @@ struct CTCPhysicsBase {                     // the thing's physics TC; only slot
     virtual void SetAirborne(bool airborne);                 // slot 36 (+0x90)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;              // +0x60
     const C3DVector& GetPosition() const;   // 0x004C73D0
@@ -39,7 +39,7 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + it
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>

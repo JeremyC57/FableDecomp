@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, long len);
 };
@@ -14,7 +14,7 @@ CCharString::CCharString(const char* s, long len) {
     p = g_buf;
 }
 
-struct CEngineScreenEffectRadialBlurRenderer {
+class CEngineScreenEffectRadialBlurRenderer { public:
     void* vtbl;
     virtual CCharString GetConsoleEnableFunctionName();
 };

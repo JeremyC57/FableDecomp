@@ -8,7 +8,7 @@ struct CTree_00868ca0 {
     unsigned char _body[8];
     SIterator_00868ca0 Insert(const SPair_00868ca0& entry);   // 0x004619BA (labelled "RBTree_LowerBound")
 };
-struct CHitParameters {
+class CHitParameters { public:
     unsigned char   _pad[0x30];
     CTree_00868ca0  m_tree;                        // +0x30
     void AddDamageWithAttribute(long key, float value);

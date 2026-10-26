@@ -7,16 +7,16 @@
 // Layout: the retail CWorldMap model of the landed CWorldMap::IsPosPassable 0x004FCBD0 (Maps CArray<CMapInfo> at +0x20;
 //   the PDB header rebuild/include/engine/CWorldMap.h has 16-byte STL containers, retail 12, so Maps there is +0x24);
 //   CMapInfo is 72 bytes with Area (C2DBoxI) at +0.
-struct C2DCoordI
-{
+class C2DCoordI
+{ public:
     long x;
     long y;
     C2DCoordI() {}
     C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
 };
 
-struct C2DBoxI
-{
+class C2DBoxI
+{ public:
     long TLX;
     long TLY;
     long BRX;
@@ -25,8 +25,8 @@ struct C2DBoxI
 
 class CMap { };
 
-struct CMapInfo
-{
+class CMapInfo
+{ public:
     C2DBoxI        Area;                 // +0x00
     unsigned char  _pad10[0x38];         // +0x10 .. 0x48
 };
@@ -61,7 +61,7 @@ public:
     virtual CMap& GetMapAt(const C2DCoordI& pos);                    // slot 14
     virtual const CMap& PeekMapAt(const C2DCoordI& pos) const;       // slot 15
     virtual long GetMapNumberAt(const C2DCoordI& pos) const;         // slot 17 (+0x44) 0x004FC080
-    virtual long GetMapNumberAt(const struct C3DVector& pos) const;  // slot 16 (+0x40) 0x004FC0C0
+    virtual long GetMapNumberAt(const class C3DVector& pos) const;  // slot 16 (+0x40) 0x004FC0C0
     virtual CMap& GetMap(long map);                                  // slot 18 (+0x48) 0x0051CE20
     virtual const CMap& PeekMap(long map) const;                     // slot 19 (+0x4C) 0x0051CE40
     virtual void v20(); virtual void v21(); virtual void v22();

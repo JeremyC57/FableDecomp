@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CEnginePrimitiveHandle { int x; }; static int g_invalidated = 0, g_removed = 0;
-struct CEngineSceneGridCell { void InvalidateAll() { ++g_invalidated; } };
+class CEnginePrimitiveHandle { public: int x; }; static int g_invalidated = 0, g_removed = 0;
+class CEngineSceneGridCell { public: void InvalidateAll() { ++g_invalidated; } };
 struct CPrimBase { unsigned char _pad[0x20]; CEngineSceneGridCell* GridCell; signed char GridPos_Level; unsigned char _pad25[0x0f]; unsigned char PostRenderEnable; void RemoveFromList() { ++g_removed; }
     void NotifyReleased(const CEnginePrimitiveHandle&) { if (!(PostRenderEnable & 2)) { if (GridCell != 0) GridCell->InvalidateAll(); } GridPos_Level = -1; RemoveFromList(); } };
 int main() { CEngineSceneGridCell cell; CEnginePrimitiveHandle h; CPrimBase p; p.GridCell = &cell; p.PostRenderEnable = 0; p.GridPos_Level = 3; p.NotifyReleased(h); if (g_invalidated != 1 || g_removed != 1 || p.GridPos_Level != -1) { std::printf("00b8ff70_TEST FAIL\n"); return 1; }

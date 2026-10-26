@@ -14,11 +14,11 @@
 // before the new pointer; the loop index and `this` live in frame words (the resize's default value shares the index's).
 void* operator new(unsigned int size);                 // 0x00BFEA1A
 
-struct CResourceList {
-    void AddResource(struct CResource* resource);      // 0x009FBFE0
+class CResourceList { public:
+    void AddResource(class CResource* resource);      // 0x009FBFE0
 };
 
-struct CResource {                                     // 0x1c bytes
+class CResource { public:                                     // 0x1c bytes
     virtual void v00();
     virtual void DeleteThis();                         // slot 1 (+0x04)
     long RefCount;                                     // +0x04
@@ -31,13 +31,13 @@ struct CResource {                                     // 0x1c bytes
     }
 };
 
-struct CTexture {                                      // 8 bytes
+class CTexture { public:                                      // 8 bytes
     void* m_pFirst;
     void* m_pSecond;
     __forceinline CTexture() : m_pFirst(0), m_pSecond(0) { }
 };
-struct CVolumeTexture;
-template <class T> struct CCountedPointer {
+class CVolumeTexture;
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -47,11 +47,11 @@ template <class T> struct scoped_ptr {
     T* ptr;
     scoped_ptr() : ptr(0) { }
 };
-struct CManagedTextureOwner;
+class CManagedTextureOwner;
 struct IDirect3DTexture9;
 struct IDirect3DVolumeTexture9;
 
-struct CManagedTextureData : CResource {               // vtable 0x0129DC24
+class CManagedTextureData : public CResource { public:               // vtable 0x0129DC24
     unsigned short                  Width;             // +0x1c
     unsigned short                  Height;            // +0x1e
     CCountedPointer<CTexture>       Texture;           // +0x20
@@ -71,7 +71,7 @@ struct CManagedTextureData : CResource {               // vtable 0x0129DC24
     virtual void v00();
 };
 
-template <class T> struct CIVCountedPointer {          // intrusive: the object carries the count
+template <class T> class CIVCountedPointer { public:          // intrusive: the object carries the count
     T* Object;
     CIVCountedPointer() : Object(0) { }
     CIVCountedPointer& operator=(T* object)
@@ -84,7 +84,7 @@ template <class T> struct CIVCountedPointer {          // intrusive: the object 
         return *this;
     }
 };
-template <class T> struct CArray {                     // STLport vector (12 bytes)
+template <class T> class CArray { public:                     // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

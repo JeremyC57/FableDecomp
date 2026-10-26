@@ -10,8 +10,8 @@
 // Shape: the manager's SetVertexShadersEnable / SetPixelShadersEnable(bool, bool* old) are inlined with a null `old`
 // (the save folds away), leaving compare-and-switch; the pixel-shader calls are tail jumps (`jmp`), the destructor
 // returning nothing.
-struct CShaderRenderManager
-{
+class CShaderRenderManager
+{ public:
     unsigned char _pad000[0x390];
     bool          VertexShadersEnabled;          // +0x390
     bool          PixelShadersEnabled;           // +0x391

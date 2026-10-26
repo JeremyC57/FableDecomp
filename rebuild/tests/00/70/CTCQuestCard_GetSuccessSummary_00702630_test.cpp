@@ -4,7 +4,7 @@ struct CEntry { long refs; long tag; int destroyed; };
 struct CEntryPtr { CEntry* Data; CEntryPtr() : Data(0) {} CEntryPtr(const CEntryPtr& o) : Data(o.Data) { if (Data) ++Data->refs; } ~CEntryPtr() { if (Data && --Data->refs == 0) ++Data->destroyed; } };
 static CEntry g_entry = { 1, 0, 0 };
 static CEntryPtr GetPGroupEntry(unsigned long tag, bool) { CEntryPtr p; p.Data = 0; if (tag == 7) { ++g_entry.refs; g_entry.tag = 7; p.Data = &g_entry; } return p; }
-struct CQuestCardDef { long SuccessSummary; };
+class CQuestCardDef { public: long SuccessSummary; };
 static long GetSuccessSummary(const CQuestCardDef* def)
 {
     if (def->SuccessSummary > 0) {

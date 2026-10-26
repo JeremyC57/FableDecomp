@@ -23,7 +23,7 @@ public:
 private:
     void* PStringData;
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
@@ -34,15 +34,15 @@ inline float GetDistance(const C3DVector& a, const C3DVector& b)
     float dz = a.Z - b.Z;
     return (float)sqrt(dz * dz + dy * dy + dx * dx);
 }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCParamsBase;
-struct CThing {
+class CTCParamsBase;
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -60,12 +60,12 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const C3DVector& GetPosition() const;       // 0x006A4D00
 };
-struct CThingAICreature : CThingCreatureBase { };
+class CThingAICreature : public CThingCreatureBase { public: };
 CThing* __fastcall Create(long defGlobalIndex, const C3DVector& pos);   // 0x00870BB0
-struct CTCCreatureGroupTag {                    // interface 0xA4
+class CTCCreatureGroupTag { public:                    // interface 0xA4
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -75,27 +75,27 @@ struct CTCCreatureGroupTag {                    // interface 0xA4
     virtual bool AddMember(CThing* creature);   // slot 28 (+0x70)
     CThing* GetNearestMember(const C3DVector& pos);   // 0x008128F0
 };
-struct CThingFilter_HasDefGlobalIndex {
+class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
     CThingFilter_HasDefGlobalIndex(long index) : DefGlobalIndex(index) { }
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector Pos;
     CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) { }
 };
 bool SearchFilterPasses1(const CThingFilter_HasDefGlobalIndex& filter, const CThing* thing);
 float SearchDistanceTo(const CThingCompare_Nearest& compare, const CThing* thing);
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThing** m_things;                          // candidate list (stand-in model)
     CThing** m_thingsEnd;
     bool GetPBestThing_00935040(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** best);   // 0x00935040
 };
-struct CMessageEvent;
-struct CMessageEventFilter_IsOfType {
+class CMessageEvent;
+class CMessageEventFilter_IsOfType { public:
     long Type;
     CMessageEventFilter_IsOfType(long type) : Type(type) { }
 };
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     CThing* Thing;
     long ID;
     CMessageEventFilter_IsOriginatedByThing(CThing* thing);    // 0x006AF2B0
@@ -104,20 +104,20 @@ struct CThingFilter_IsNotThing {
     CThing* Thing;
     CThingFilter_IsNotThing(CThing* thing) : Thing(thing) { }
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float Range;
     __forceinline CThingFilter_In2DRange(const CThing* thing, float range) : Pos(thing->GetPosition()), Range(range) { }
 };
-template<class F> struct CMessageEventFilter_ThingSearchFilter {
+template<class F> class CMessageEventFilter_ThingSearchFilter { public:
     const F* Filter;
     CMessageEventFilter_ThingSearchFilter(const F& filter) : Filter(&filter) { }
 };
-template<class F1, class F2> struct CFilter_Bind2 {
+template<class F1, class F2> class CFilter_Bind2 { public:
     const F1* PF1; const F2* PF2;
     CFilter_Bind2(const F1& f1, const F2& f2) : PF1(&f1), PF2(&f2) { }
 };
-template<class F1, class F2, class F3> struct CFilter_Bind3 {
+template<class F1, class F2, class F3> class CFilter_Bind3 { public:
     const F1* PF1; const F2* PF2; const F3* PF3;
     CFilter_Bind3(const CFilter_Bind2<F1, F2>& f12, const F3& f3) : PF1(f12.PF1), PF2(f12.PF2), PF3(&f3) { }
     CFilter_Bind3(const F1& f1, const F2& f2, const F3& f3) : PF1(&f1), PF2(&f2), PF3(&f3) { }
@@ -128,17 +128,17 @@ typedef CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNotThing> TSFNotMe;
 typedef CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange> TSFRange;
 typedef CFilter_Bind3<CMessageEventFilter_IsOfType, TSFNotMe, TSFRange> CInvitationFilter;
 typedef CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing, TSFRange> COwnMessageFilter;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     const CMessageEvent* FindMostRecentMessage(const CInvitationFilter& filter) const;      // 0x00934E50
     const CMessageEvent* FindMostRecentMessage(const COwnMessageFilter& filter) const;      // 0x0090E090
     void RemoveMessage(const CMessageEvent* message);                                      // 0x00493B5B
     void AddMessage(long type, unsigned long lifetime, const C3DVector* pos, CThing* from, CThing* to,
                     float range, float radius, long data);                                 // 0x00687540
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x10];
     CDefinitionManager* PDefinitionManager;     // +0x10
     unsigned char _pad14[0x4c];
@@ -146,11 +146,11 @@ struct CWorld {
     CDefinitionManager* GetPDefinitionManager() { return PDefinitionManager; }
     CMessageEventManager* GetPMessageManager() { return PMessageEventManager; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

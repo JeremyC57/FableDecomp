@@ -17,7 +17,7 @@ struct ScratchTemp {
     char data[0x38];
 };
 
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     // vtable with at least 2 slots; slot 1 (index 1) = [eax+4]
     virtual SomeObj *vf0();
     virtual SomeObj *GetSomeObj(ScratchTemp *out, float t);

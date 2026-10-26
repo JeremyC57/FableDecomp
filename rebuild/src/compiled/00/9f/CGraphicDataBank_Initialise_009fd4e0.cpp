@@ -11,9 +11,9 @@
 //   resource bank's frame delay word +0x19C. The landed CMinimapData::InitialiseMinimapTexture 0x00642880 texture model.
 struct IDirect3DTexture9;
 struct IDirect3DSurface9;
-struct C2DExtentsI { long X, Y; };
-struct CPixelFormat { long FormatIndex; };
-struct CSurface {                               // vtable 0x0122F84C
+class C2DExtentsI { public: long X, Y; };
+class CPixelFormat { public: long FormatIndex; };
+class CSurface { public:                               // vtable 0x0122F84C
     IDirect3DSurface9* PD3DSurface;             // +0x04
     unsigned long      AllocationSource;        // +0x08
     void*              PAllocatedMemory;        // +0x0c
@@ -22,13 +22,13 @@ struct CSurface {                               // vtable 0x0122F84C
     void Uninitialise();                        // 0x009F2E20
     void Clear();                               // 0x009F40A0
 };
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;             // +0x00
     unsigned long      Bits;                    // +0x04
     bool Initialise(const C2DExtentsI* size, long levels, const CPixelFormat* format, unsigned long usage, long pool, bool a, bool b);   // 0x009FA280
     CSurface GetSurface(long level);            // 0x009F9E00
 };
-struct CGraphicDataBankInit {
+class CGraphicDataBankInit { public:
     CPixelFormat NonAlphaFormat;                // +0x00
     CPixelFormat AlphaFormat;                   // +0x04
     CPixelFormat InterpolatedAlphaFormat;       // +0x08
@@ -40,7 +40,7 @@ struct CGraphicDataBankInit {
     unsigned long MaxGraphicWidth;              // +0x20
     unsigned long MaxGraphicHeight;             // +0x24
 };
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     unsigned char _pad000[0x19c];
     unsigned long ResourceFrameDelay;           // +0x19C (resource bank base)
     unsigned char _pad1a0[0x58];

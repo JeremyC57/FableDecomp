@@ -15,7 +15,7 @@ struct CInterfaceMap {                          // a thing's sorted {type, compo
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -42,14 +42,14 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
 };
 struct CCreatureModeBase {
     virtual void v00();
     virtual long GetType() const;               // slot 1 (+4)
 };
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     CCreatureModeBase* GetCurrentMode() const;  // 0x0073A6E0
 };
 struct CBaseIntelligentPointer {
@@ -57,7 +57,7 @@ struct CBaseIntelligentPointer {
     void* PData;                                // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     unsigned char           _base[0x8];         // CTCBase: ParentThing +4, flags +8/+9
     void*                   EmitterName;        // +0x0c CCharString

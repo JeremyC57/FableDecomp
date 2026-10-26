@@ -27,13 +27,13 @@ struct CBasicStringChar {                              // CBasicString<char>, 13
     unsigned long DataLength : 31;                     // +0x08
     bool          UseFastExtend : 1;                   // +0x0c
 };
-struct CCharStringData {                               // 17 bytes
+class CCharStringData { public:                               // 17 bytes
     CBasicStringChar Data;                             // +0x00
     long             NoRefs;                           // +0x0d
 };
 #pragma pack(pop)
 long __fastcall Compare(const char* a, const char* b); // 0x00411570 CBasicString<char>::Compare
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -49,7 +49,7 @@ struct CCharString {
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 void operator delete(void* p);                         // 0x00BFE9BC
 struct CCountBlock {
     long References;
@@ -79,7 +79,7 @@ struct CCountedPointer {                               // CCountedPointer<CScrip
         return *this;
     }
 };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void t00(); virtual void t01(); virtual void t02();
     virtual CCharString GetDataString() const;         // slot 3 (+0x0c)
     virtual void t04(); virtual void t05();
@@ -97,7 +97,7 @@ struct CScriptThingVector {                            // STLport vector<CScript
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall AreAllThingsInVectorDead(const CScriptThingVector& things);                                // 0x00CBED00
-struct CSpawnedFuncBase {                              // retail 0x34 bytes
+class CSpawnedFuncBase { public:                              // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -113,7 +113,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-struct CScriptBase {                                   // retail 0x40 bytes
+class CScriptBase { public:                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };
@@ -132,7 +132,7 @@ struct CQ_SecretPassageScript : CScriptBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD2(qe)                              // slots 8..69
@@ -146,7 +146,7 @@ struct CGameScriptInterface {
     VPAD256(ua) VPAD64(ub) VPAD16(uc) VPAD4(ud) VPAD2(ue)                            // slots 109..450
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

@@ -10,16 +10,16 @@
 extern "C" __declspec(dllimport) int __stdcall DeleteFileW(const wchar_t* path);   // 0x0143FE34
 extern "C" __declspec(dllimport) unsigned long __stdcall GetLastError();                 // 0x0143FD58
 
-struct CWideString {
+class CWideString { public:
     wchar_t* m_pchData;
     operator const wchar_t*();                     // 0x0099AF00
     ~CWideString();                                // 0x0099B510
 };
 CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
 
-struct CSystemManager;
+class CSystemManager;
 
-struct CDriveManager {
+class CDriveManager { public:
     void*           __vftable;                     // +0x00
     CSystemManager* SystemManager;                 // +0x04
     long DeleteFile(const CWideString& path);

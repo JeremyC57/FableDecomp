@@ -9,7 +9,7 @@ struct CModes {
     bool AddMode(unsigned int m) { mask[m >> 5] |= 1u << (m & 31); ++adds; return true; }
 };
 struct CEntry { int type; CModes* component; };
-struct CThing {
+class CThing { public:
     unsigned int presentBits[9];
     CEntry entries[2];
     int count;

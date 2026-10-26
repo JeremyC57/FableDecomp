@@ -10,7 +10,7 @@
 // Shape: the element is a POD of two dwords, so the by-value copy is two plain pushes (`push [i+4] ; push [i]`), the
 // comparator dword is loaded once into ebp and pushed each iteration. The callee-saved pushes are shrink-wrapped behind
 // the two early exits (VC7.1 RTM does this on its own for this loop).
-struct CEngineSubPrimitiveBase;
+class CEngineSubPrimitiveBase;
 
 struct CSortElement {                     // CEngineSubPrimitiveRenderer::CSortElement (PDB, 8 bytes)
     unsigned long SortValue;              // +0x00

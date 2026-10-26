@@ -11,16 +11,16 @@
 // @ 0x00857F30 with the action code 150 (0x96); the string temporary dies after the base
 // constructor, then this class's vtable (0x01280A44, rtti-vtables.tsv) is stored.
 // One of 11 bodies of this shape.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CCharString {                     // one pointer; the default length makes the literal convert implicitly
+class CCharString { public:                     // one pointer; the default length makes the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                        // 0x0099EAE0
 };
 
-struct CSoundPair {                       // a user constructor makes the 8-byte result return through the hidden pointer (a POD would ride in edx:eax)
+class CSoundPair { public:                       // a user constructor makes the 8-byte result return through the hidden pointer (a POD would ride in edx:eax)
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -28,12 +28,12 @@ struct CSoundPair {                       // a user constructor makes the 8-byte
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
 
-struct CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend : CCombatActionBase {
+class CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend : public CCombatActionBase { public:
     virtual void v00();
     CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend(CThingCreatureBase* owner, CThing* thing);
 };

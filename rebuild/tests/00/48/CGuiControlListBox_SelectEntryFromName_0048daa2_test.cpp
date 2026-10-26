@@ -4,7 +4,7 @@
 // behaviour test for 0x0048DAA2: exercises the same logic through a copy of the model (compiled separately from the source)
 namespace N_0099af10 { struct CCharString { const char* m_pData; operator const char*() const { return m_pData; } }; } using N_0099af10::CCharString;
 struct SEntryHandle_0048daa2 { long m_index; long m_tag; SEntryHandle_0048daa2() {} };
-struct CGuiControlListBox {
+class CGuiControlListBox { public:
     virtual void v00() {}
     virtual SEntryHandle_0048daa2 SelectEntryFromName(const char* name, long mode) { SEntryHandle_0048daa2 h; h.m_index = (long)std::strlen(name); h.m_tag = mode * 10; return h; }
     SEntryHandle_0048daa2 SelectEntryFromName(const CCharString& name, long mode) { return SelectEntryFromName((const char*)name, mode); }

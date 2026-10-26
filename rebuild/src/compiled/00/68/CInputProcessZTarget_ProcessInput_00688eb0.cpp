@@ -16,7 +16,7 @@ class CProcessedInput {
 public:
     void SetHandled();                             // 0x00A0D390
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -71,10 +71,10 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     bool IsInputEnabled();                         // 0x00445B80 (descriptive)
 };
-struct CWorld; struct CPlayer; struct CGameDefinitionManager; struct CMainGameComponent;
+class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameComponent;
 class CInputProcessGameBase {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CVillagePeopleDef { char pad[0xC4]; };
+class CVillagePeopleDef { public: char pad[0xC4]; };
 
 unsigned long __fastcall CVillagePeopleDef_GetSizeofClass(const CVillagePeopleDef* self)
 {

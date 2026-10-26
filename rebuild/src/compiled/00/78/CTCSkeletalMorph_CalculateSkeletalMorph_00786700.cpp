@@ -11,14 +11,14 @@
 // Shape: the manager's map is its own member object (inline ctor), so the vtable store precedes the header malloc; the
 //          parameter's count block is a `new SCountBlock(1, DeleteData, object)` expression; the counted-pointer dtor nulls both words.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 struct SCountBlock {
     long  references;
     void (__fastcall* destroy)(void*);
     void* object;
     SCountBlock(long refs, void (__fastcall* fn)(void*), void* data) : references(refs), destroy(fn), object(data) {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           object;
     SCountBlock* count;
     CCountedPointer(const CCountedPointer& other) : object(other.object), count(other.count)
@@ -41,8 +41,8 @@ template <class T> struct CCountedPointer {
     T* operator->() const { return object; }
     void Reset(T* value);                           // 0x004A9A80 (twin instantiation)
 };
-struct C3DSkeletalMorphTarget;
-struct C3DSkeletalMorphParameter {
+class C3DSkeletalMorphTarget;
+class C3DSkeletalMorphParameter { public:
     unsigned char _d[0x14];
     C3DSkeletalMorphParameter(C3DSkeletalMorphTarget* target);   // 0x00A455A0
     void SetCurrentValue(float value);              // 0x00A45370
@@ -83,7 +83,7 @@ public:
     const CCountedPointer<C3DSkeletalMorphTarget>& GetMorphTarget(const CCharString& name);   // 0x006C3620
 };
 extern CCountedPointer<CSkeletalMorphResourceManager> g_SkeletalMorphResourceManager;   // 0x013BAB10
-struct C3DSkeletalMorph {
+class C3DSkeletalMorph { public:
     void ClearMorphParameters();                    // 0x00A45410
     void AddMorphParameter(const CCountedPointer<C3DSkeletalMorphParameter>& parameter);   // 0x00A45470
     void ResetCombinedMorph();                      // 0x00A45330

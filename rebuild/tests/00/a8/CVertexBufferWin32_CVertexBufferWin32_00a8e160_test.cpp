@@ -2,7 +2,7 @@
 static int g_baseCtor = 0; static long g_init[5] = { -1, -1, -1, -1, -1 };
 struct CBase { virtual void VSlot0() { } CBase() { ++g_baseCtor; } };
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW, PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams() : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f), PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
 };

@@ -1,7 +1,7 @@
 #include <cstdio>
 // CCharString test model: default construction and assignment (copy of the data pointer).
 static int g_defaults = 0, g_assigns = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_data;
     CCharString() : m_data(0) { ++g_defaults; }
     CCharString(const char* text) : m_data(text) {}

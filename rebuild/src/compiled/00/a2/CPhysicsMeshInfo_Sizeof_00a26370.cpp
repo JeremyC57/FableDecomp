@@ -12,8 +12,8 @@
 // CCountedPointer<CBankFileAsyncData> (8 + Sizeof) footprints, folded into one
 // `lea eax,[eax+edi+0F0h]` per arm. Layout: CPhysicsMeshInfo::MeshData +0xC (PDB); CMeshData is
 // 0x2C bytes with FileData +0x1C, Mesh +0x24, Owner +0x28 (PDB).
-struct CPhysicsMesh       { long Sizeof() const; };            // 0x00A6C900
-struct CBankFileAsyncData { unsigned long Sizeof() const; };   // 0x009D5620
+class CPhysicsMesh       { public: long Sizeof() const; };            // 0x00A6C900
+class CBankFileAsyncData { public: unsigned long Sizeof() const; };   // 0x009D5620
 
 struct CMeshData_a26370 {                          // CPhysicsMeshInfo::CMeshData (0x2C bytes)
     unsigned char       _base[0x1c];               // the resource base (vptr, state, ...)
@@ -29,7 +29,7 @@ struct CMeshData_a26370 {                          // CPhysicsMeshInfo::CMeshDat
     }
 };
 
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     virtual void v00();
     virtual void v01();
     virtual unsigned long Sizeof() const;          // slot 2

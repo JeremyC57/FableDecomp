@@ -66,13 +66,13 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCharStringData;
-struct CFailedAllocationHandler;
+class CCharStringData;
+class CFailedAllocationHandler;
 struct CHeader;
 struct _RTL_CRITICAL_SECTION_DEBUG;
 
 #pragma pack(push, 1)
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void*                        __vftable;                  // +0x00 vptr, or first dword of a flattened base subobject
     void*                        Buffer;                     // +0x04
     void*                        UnalignedBuffer;            // +0x08
@@ -147,7 +147,7 @@ struct CHeader {
     CHeader* NextContiguous;
 };
 struct CHandleArray { CHeader** first; CHeader** last; CHeader** end; };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     virtual ~CHandleBasedMemoryPool(); // slot0: 00A03AA0 deleting destructor
     virtual void MoveResource(void*,long,void*,void*,unsigned long); // slot1 00A02120
     virtual bool CanMoveResource(void*,long); // slot2 00A03A40

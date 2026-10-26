@@ -28,7 +28,7 @@ static int g_ok = 1;
 // stream-argument slot, then the member is stored; the second read's member store is duplicated
 // into both exits. `ret 4`.
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -53,7 +53,7 @@ struct CMemoryDataInputStream {
     }
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x0044FC00
 };

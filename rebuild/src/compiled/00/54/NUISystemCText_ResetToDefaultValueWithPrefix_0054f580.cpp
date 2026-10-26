@@ -12,7 +12,7 @@
 // slots), so the class is modelled locally by its virtual interface.
 typedef unsigned short wchar_t;                    // VC7.1 without /Zc:wchar_t
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString(const CWideString& other);         // 0x0099B720
     ~CWideString();                                // 0x0099B510
@@ -20,7 +20,7 @@ struct CWideString {
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 
 namespace NUISystem {
-struct CText {
+class CText { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();

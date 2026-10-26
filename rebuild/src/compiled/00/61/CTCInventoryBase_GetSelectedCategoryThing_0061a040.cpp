@@ -7,7 +7,7 @@
 // CTCInventoryBase::GetCategoryWithIndex(long) @ 0x005BCE3C (`first + index*2Ch`, out of line),
 // CCategory::GetAssociatedThing @ 0x005BD1AE (a `jmp CBaseIntelligentPointer::GetPItem` on PAssociatedThing at +0).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CCategory_Retail {
     unsigned char _body[0x2C];
     CThing* GetAssociatedThing();                                // 0x005BD1AE (jmp CBaseIntelligentPointer::GetPItem)

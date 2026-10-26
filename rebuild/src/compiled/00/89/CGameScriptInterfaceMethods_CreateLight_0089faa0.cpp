@@ -3,7 +3,7 @@
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
-struct C3DVector{float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
+class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();}; //004C7E50 //004C73D0,004C7E50
@@ -12,7 +12,7 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-struct CCPPointerInfo{unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
@@ -104,8 +104,8 @@ FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
 
-struct CRGBColour{unsigned char B,G,R,A;};
-struct CGameDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&);}; //009AD410
+class CRGBColour{ public:unsigned char B,G,R,A;};
+class CGameDefinitionManager{ public:long GetDefGlobalIndexFromName(const CCharString&);}; //009AD410
 CThingNative* __fastcall CreateMarker(long,const C3DVector&,const CCharString&); //0083D460
 struct LightMethods{void SetOverridden(bool);void SetColour(const CRGBColour&);void SetInnerRadius(float);void SetOuterRadius(float);void SetFlicker(float);void SetActive(bool);}; //00640DF0,00640BB0,00640C40,00640C70,00640CA0,006412B0; CLightInfo offsets0/4/8/C
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateLight(const C3DVector&,const CRGBColour&,const CCharString&,float,float,bool)const;};

@@ -5,7 +5,7 @@
 // 0x0040F020 with the key in the `push ecx` frame word) is fetched with the
 // `T* p = 0; if (HasTC(k)) p = GetTC(k);` shape (the preloaded `xor esi,esi`), then
 // RemoveMode(GetModeType()) (0x0073ABA0; GetModeType is vtable slot 1).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -14,7 +14,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -33,10 +33,10 @@ struct CThing {
     }
 };
 
-struct CTCCreatureModeManager {                 // interface type 0x31 component
+class CTCCreatureModeManager { public:                 // interface type 0x31 component
     void RemoveMode(long modeType);             // 0x0073ABA0
 
-    struct CModeBase {
+    class CModeBase { public:
         virtual void v00();
         virtual long GetModeType();             // slot 1
         CThing* ParentThing;                    // +4

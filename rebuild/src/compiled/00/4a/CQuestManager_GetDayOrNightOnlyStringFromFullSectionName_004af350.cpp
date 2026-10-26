@@ -7,7 +7,7 @@
 // Shape: `pos > -1` gives `cmp eax,-1 ; jle`; the substring length is the inline GetLength() (`PStringData == 0 ? 0 :
 // PStringData->StringLength`; the null arm reuses the tested zero register), whose two arms VC7.1 tail-duplicates through the GetSubString call and return;
 // the empty result is a direct return of a converted literal (built in the hidden result).
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                           // +0x00
     unsigned long StringLength;                    // +0x04
 };
@@ -19,7 +19,7 @@ public:
     CCharString GetSubString(unsigned long start, unsigned long count) const;   // 0x0099EC70
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
 };
-struct CQuestManager {
+class CQuestManager { public:
     CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& fullName);
 };
 CCharString CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(const CCharString& fullName)

@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for CThingTrackNode::DrawGetDrawSizeX (0x00837060): out = bank size x * node scale.
 struct CMeshInfoSize { long m_a; long m_b; float m_x; };
-struct CMeshDataBank { CMeshInfoSize m_size; };
+class CMeshDataBank { public: CMeshInfoSize m_size; };
 static CMeshDataBank g_bank;
 static CMeshDataBank* GetMeshBank() { return &g_bank; }
-struct CThingTrackNode {
+class CThingTrackNode { public:
     float m_scale;
     void DrawGetDrawSizeX(float, float* out)
     {

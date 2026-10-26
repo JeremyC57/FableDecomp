@@ -6,12 +6,12 @@ struct SubB { int b; };
 static int g_log[8];
 static int g_n;
 
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA(SubA* obj) { g_log[g_n++] = 0xA0000000 | (obj->a); }
     void PersistB(SubB* obj) { g_log[g_n++] = 0xB0000000 | (obj->b); }
 };
 
-struct CEngineLocalDetailLayerDef {
+class CEngineLocalDetailLayerDef { public:
     char pad[0x3c];
     SubA m3c;
     char pad2[0x48 - 0x3c - (int)sizeof(SubA)];

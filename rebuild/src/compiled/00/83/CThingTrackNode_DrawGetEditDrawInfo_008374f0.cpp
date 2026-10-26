@@ -10,14 +10,14 @@
 // Shape: the colour is a CRGBColour temporary whose (r, g, b, a) constructor assigns R, G, B, A in its body
 // (+2/+1/+0/+3 byte stores into a dead argument slot) copied as one dword; then the name expression
 // `CCharString("") + "TrackNode"` (temporaries in the dead argument slots, destroyed in reverse), then the flag.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B;                            // +0
     unsigned char G;                            // +1
     unsigned char R;                            // +2
@@ -30,8 +30,8 @@ struct CRGBColour {
         A = a;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CEditEngineDrawInfo {
+class C3DVector { public: float X, Y, Z; };
+class CEditEngineDrawInfo { public:
     C3DVector   Pos;                            // +0x00
     float       Radius;                         // +0x0c
     CCharString Fullname;                       // +0x10
@@ -41,11 +41,11 @@ struct CEditEngineDrawInfo {
     bool        UsesEffectRadius;               // +0x20
     float       AngleXY;                        // +0x24
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     void* __vftable;
     bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;   // 0x006A4E90
 };
-struct CThingTrackNode : CThingPhysical {
+class CThingTrackNode : public CThingPhysical { public:
     bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;
 };
 

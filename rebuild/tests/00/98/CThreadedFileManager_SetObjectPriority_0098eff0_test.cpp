@@ -23,7 +23,7 @@ extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);       
 struct _RTL_CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 extern "C" __declspec(dllimport) void* __stdcall GlobalFree(void* hMem);                // IAT 0x0143FDF8
 void operator delete(void* p);                                                           // 0x00BFE9BC
-struct CThreadedFile {
+class CThreadedFile { public:
     void* m_vtable;                                // +0x00
     long  DeviceID;                                // +0x04 EThreadedFileDeviceID
 };
@@ -106,7 +106,7 @@ struct CPendingObjectMap {                         // 16 bytes in retail
     CPendingMap Objects;                           // +0x00
     void*       NextObject;                        // +0x0c (iterator)
 };
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     void*             m_vtable;                    // +0x00
     CPendingObjectMap DeviceQueue[2][7];           // +0x04
     unsigned char     _padE4[0x13c - 0xe4];        // device levels, time slices, current object

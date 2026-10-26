@@ -14,7 +14,7 @@ struct CBase_006f83c0 {
     CBase_006f83c0(const CBase_006f83c0& other);     // 0x006F83C0
 };
 
-struct CCombatAction_StrikeResponseJackOfBladesIntoRush : CBase_006f83c0 {
+class CCombatAction_StrikeResponseJackOfBladesIntoRush : public CBase_006f83c0 { public:
     unsigned char m_extra;                          // +0x148
     virtual void v00();                    // own vtable; copy constructor implicit
     CBase_006f83c0* Clone();

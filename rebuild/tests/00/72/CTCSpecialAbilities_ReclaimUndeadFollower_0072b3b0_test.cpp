@@ -1,6 +1,6 @@
 // Behaviour test for 0x0072B3B0 CTCSpecialAbilities::ReclaimUndeadFollower.
 #include <stdio.h>
-struct CTCBase { void* vt; struct CThing* ParentThing; bool ToBeRemoved; };
+class CTCBase { public: void* vt; class CThing* ParentThing; bool ToBeRemoved; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     CInterfaceMap m_interfaces;
     int killed;
@@ -29,10 +29,10 @@ struct CThing {
     }
     void Kill(bool silent) { killed = silent ? 2 : 1; }
 };
-struct CThingGameObject : CThing { float Health; };
-struct CTCRandomAppearanceMorph { unsigned int Seed; };
+class CThingGameObject : public CThing { public: float Health; };
+class CTCRandomAppearanceMorph { public: unsigned int Seed; };
 struct CUndeadFollower { long Health; void* PThing; bool Active; unsigned int AppearanceSeed; };
-struct CTCSpecialAbilities : CTCBase {
+class CTCSpecialAbilities : public CTCBase { public:
     CUndeadFollower records[2];
     const CThing* owners[2];
     CUndeadFollower* GetUndeadFollower(const CThing* thing)

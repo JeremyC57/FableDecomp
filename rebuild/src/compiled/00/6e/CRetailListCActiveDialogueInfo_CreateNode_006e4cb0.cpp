@@ -13,7 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {            // sizeof 8: vptr + item
     virtual void v00();

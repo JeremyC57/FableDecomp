@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* text; };
-struct C2DVector { float X, Y; };
+class CCharString { public: const char* text; };
+class C2DVector { public: float X, Y; };
 
 struct Node { const char* key; C2DVector value; };
 
@@ -18,7 +18,7 @@ struct ExitMap {                                        // stand-in: flat array,
     }
 };
 
-struct CRegion {
+class CRegion { public:
     ExitMap MiniMapRegionExitTextOffsets;
     bool GetMiniMapRegionExitTextOffset(const CCharString& exitName, C2DVector& offset) const
     {

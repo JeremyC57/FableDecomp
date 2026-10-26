@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CMusicSetEntry { long NormalMusicID; long DangerMusicID; long LoopCount; };
+class CMusicSetEntry { public: long NormalMusicID; long DangerMusicID; long LoopCount; };
 
 struct CMusicSetEntryVector {
     typedef CMusicSetEntry* pointer;

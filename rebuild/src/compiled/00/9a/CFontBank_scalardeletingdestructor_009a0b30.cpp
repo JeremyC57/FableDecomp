@@ -8,9 +8,9 @@
 // Layout: engine/CFontBank.h (vptr, FontHeight +4, Name +8 as its string-data word, PManager +0x0c); the
 // class is modelled locally as a polymorphic CBase-derived class over the same offsets, with the name
 // as a real CCharString member. Shape: own vtable store, one member destructor, the base destructor.
-struct CFontManager;
+class CFontManager;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
@@ -21,7 +21,7 @@ namespace N_0099a300 { struct CBase {                                     // roo
     virtual ~CBase();                              // 0x0099A300
 }; } using N_0099a300::CBase;
 
-struct CFontBank : CBase {                         // vtable 0x0129AB38
+class CFontBank : public CBase { public:                         // vtable 0x0129AB38
     unsigned long FontHeight;                      // +0x04
     CCharString   Name;                            // +0x08
     CFontManager* PManager;                        // +0x0c

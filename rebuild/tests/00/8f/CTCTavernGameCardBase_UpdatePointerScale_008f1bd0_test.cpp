@@ -11,10 +11,10 @@
 //        against the integer constant held in edx (also the 1.0f store); each arm stores and joins the shared
 //        `fstp PointerScale`; the graphic-appearance component comes from the out-parameter GetInterface(T**, type)
 //        template (the 0x007504E0 shape), which leaves it in eax above the scale push (`mov eax,[eax+4] ; push ecx ; mov ecx,eax`).
-struct CTCBase;
+class CTCBase;
 
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetScale(float scale);                 // 0x004BFA50
 };
 }
@@ -25,7 +25,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44

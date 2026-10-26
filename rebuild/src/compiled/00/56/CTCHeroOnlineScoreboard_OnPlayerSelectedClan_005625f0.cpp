@@ -14,27 +14,27 @@
 // Shape: the map clear is STLport `clear()` inlined (erase from the root, then leftmost/root/rightmost/count reset through
 // the re-read header); the colour is a CRGBColour(255,255,255,0) temporary whose body assigns R,G,B,A (+2,+1,+0,+3), homed in
 // the dead clanMenuEntry slot; the same-TU LowerBound stand-in lets the lookup key share that slot too.
-struct CTCBase;
+class CTCBase;
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const CWideString& other);              // (declared: by-value arguments are built in place)
     ~CWideString();                                     // 0x0099B510
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
-struct CRGBColour {                                     // B, G, R, A bytes
+class CRGBColour { public:                                     // B, G, R, A bytes
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 
 namespace NUISystem {
-struct CObserver {                                      // the observer interface at +4 of every component
+class CObserver { public:                                      // the observer interface at +4 of every component
     virtual void o00(); virtual void o01(); virtual void o02(); virtual void o03();
     virtual void StopObservingEvent(long eventType);    // slot 4 (+0x10)
 };
-struct CComponent;
+class CComponent;
 struct CComponentBase {                                 // the primary vtable
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
@@ -53,7 +53,7 @@ struct CComponentBase {                                 // the primary vtable
     virtual CComponent* GetFirstButton();               // slot 175 (+0x2BC)
     virtual CComponent* GetSecondButton();              // slot 176 (+0x2C0)
 };
-struct CComponent : CComponentBase, CObserver {
+class CComponent : public CComponentBase, public CObserver { public:
 };
 }
 
@@ -83,7 +83,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                         // +0x44
@@ -103,7 +103,7 @@ struct CThing {
         return (T*)it->component;
     }
 };
-struct CTCInventory {                                   // interface type 0x11
+class CTCInventory { public:                                   // interface type 0x11
     unsigned char          _pad_0x000[0x214];
     NUISystem::CComponent* PMouse_Pointer;              // +0x214 (PDB +0x260)
 };
@@ -127,7 +127,7 @@ struct CClanScoreboardMap {                             // STLport map<EOnlineSc
     }
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void*                  __vftable;                   // +0x00
     CThing*                ParentThing;                 // +0x04 CTCBase
     unsigned char          _pad_0x08[0x3c - 0x08];

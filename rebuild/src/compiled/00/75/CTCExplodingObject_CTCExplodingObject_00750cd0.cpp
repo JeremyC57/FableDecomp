@@ -11,7 +11,7 @@
 // out-of-line intelligent-pointer destructor, then the inline def-pointer release (a local copy in ecx:
 // `dec [ecx+4] ; jne ; call [vt+4]`, one zero store inside the null test). engine/CTCBase.h is a flat struct, so the
 // polymorphic base with its out-of-line destructor is modelled locally over the same offsets.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                         // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }

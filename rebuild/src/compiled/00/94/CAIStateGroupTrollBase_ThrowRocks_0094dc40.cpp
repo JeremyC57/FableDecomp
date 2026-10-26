@@ -12,9 +12,9 @@
 // a function-scope local (its implicit destructor runs on return), the action a temporary passed by pointer to an
 // inline SetPerformAction (so Clone is a virtual call on the constructor's returned this; implicit destructor:
 // projectile pointer, then the combat-action base); the creature is a named local read before PEnemy.
-struct CThing;
-struct CThingCreatureBase;
-struct C3DVector { float X, Y, Z; };
+class CThing;
+class CThingCreatureBase;
+class C3DVector { public: float X, Y, Z; };
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -45,7 +45,7 @@ struct CCountedPointer {                            // CCountedPointer<..> {obje
         Block = 0;
     }
 };
-struct CBrainOutput {                               // 0x48 bytes
+class CBrainOutput { public:                               // 0x48 bytes
     unsigned long Flags;                            // +0x00 (8: perform action)
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointer PAction;                        // +0x20
@@ -53,11 +53,11 @@ struct CBrainOutput {                               // 0x48 bytes
     CBaseIntelligentPointer PTarget;                // +0x40 CIntelligentPointer<const CThing>
     CBrainOutput();                                 // 0x00835620
 };
-struct CCombatActionBase;
+class CCombatActionBase;
 // post an action in a brain output (flag 8) -- the action arrives by pointer, so its clone is a real virtual call
 inline void SetPerformAction(CBrainOutput& output, CCombatActionBase* action);
 
-struct CCombatActionBase {                          // retail sizeof 0x114
+class CCombatActionBase { public:                          // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
@@ -68,7 +68,7 @@ struct CCombatActionBase {                          // retail sizeof 0x114
 struct CIntelligentPointerProjectile : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     virtual void v00();
 };
-struct CCreatureAction_TrollThrowProjectile : CCombatActionBase {  // retail sizeof 0x130
+class CCreatureAction_TrollThrowProjectile : public CCombatActionBase { public:  // retail sizeof 0x130
     CIntelligentPointerProjectile PProjectile;      // +0x114
     C3DVector TargetPos;                            // +0x11c
     bool TargetIsPosition;                          // +0x128
@@ -82,16 +82,16 @@ inline void SetPerformAction(CBrainOutput& output, CCombatActionBase* action)
     output.PAction.Reset(action->Clone());
 }
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     long GetActionID() const;                       // 0x00692620
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x100];
     CCreatureActionBase* CurrentAction;             // +0x100
     bool IsPerformingAnyAction();                   // 0x006622A0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                           // slot 2 (+0x08)
     unsigned char _pad04[0x18 - 0x04];
@@ -99,7 +99,7 @@ struct CAIBrain {
     void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08

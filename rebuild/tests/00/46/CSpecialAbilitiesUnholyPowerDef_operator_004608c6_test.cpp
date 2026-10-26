@@ -3,7 +3,7 @@
 #include <cstdio>
 
 static int g_order[32]; static int g_n;
-struct CParentDefClassBase { int base; CParentDefClassBase& operator=(const CParentDefClassBase& o) { base = o.base; g_order[g_n++] = 0; return *this; } };
+class CParentDefClassBase { public: int base; CParentDefClassBase& operator=(const CParentDefClassBase& o) { base = o.base; g_order[g_n++] = 0; return *this; } };
 struct CVec { int id; int value; CVec& operator=(const CVec& o) { value = o.value; g_order[g_n++] = id; return *this; } };
 struct CDef : CParentDefClassBase {
     CVec StartPowerupSound, LoopingPowerupSound, ReleaseSound, ReleaseLoopSound, FinishSound, CancelSound;

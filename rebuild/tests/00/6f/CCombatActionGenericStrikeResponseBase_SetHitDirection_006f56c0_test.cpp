@@ -1,10 +1,10 @@
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_GenericStrikeResponseBase { public:
     char pad[0x128];
     C3DVector m_hitDir;
     void SetHitDirection(C3DVector v);

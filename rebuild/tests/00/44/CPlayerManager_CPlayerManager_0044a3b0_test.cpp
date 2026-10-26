@@ -4,7 +4,7 @@
 #include <cstring>
 #include <cstdlib>
 
-struct CCharString {
+class CCharString { public:
     char text[24];
     CCharString(const char* t, long = -1) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }
@@ -27,10 +27,10 @@ template <class T> struct Vector {
         else overflow(x);
     }
 };
-struct CMainGameComponent { int id; };
-struct CGameDefinitionManager { int id; };
-struct CPlayer;
-struct CPlayerManager {
+class CMainGameComponent { public: int id; };
+class CGameDefinitionManager { public: int id; };
+class CPlayer;
+class CPlayerManager { public:
     CMainGameComponent* Component;
     const CGameDefinitionManager* DefinitionManager;
     Vector<CPlayer*> Players;

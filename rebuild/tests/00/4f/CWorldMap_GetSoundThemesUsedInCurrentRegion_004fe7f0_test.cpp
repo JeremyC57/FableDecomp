@@ -4,7 +4,7 @@
 // switch ID to the output set, and each looked-up definition reference is released again.
 #include <cstdio>
 
-struct CGameMap {
+class CGameMap { public:
     int SizeX, SizeY;
     signed char Cells[16];                     // SoundTheme per cell, row-major from the bottom row
     signed char PeekSoundTheme(int x, int y) const { return Cells[(SizeY - y - 1) * SizeX + x]; }
@@ -13,7 +13,7 @@ static CGameMap g_maps[2] = {
     { 2, 2, { 3, 1, 3, 2 } },
     { 3, 1, { 5, 1, 7 } },
 };
-struct CRegion { int MapNumbers[2]; int MapCount; };
+class CRegion { public: int MapNumbers[2]; int MapCount; };
 static CRegion g_regions[2] = { { { 0, 0 }, 0 }, { { 0, 1 }, 2 } };
 
 // themes 1..7: global index = theme * 10 for even themes, 0 (unknown) for odd ones except 1 and 5 (index 15 / 55)
@@ -23,7 +23,7 @@ static int GetGlobalIndexFromClassIndex(int theme)
     if (theme == 5) return 55;
     return (theme % 2 == 0) ? theme * 10 : 0;
 }
-struct CSoundThemeDef { int RefCount; int SwitchID; };
+class CSoundThemeDef { public: int RefCount; int SwitchID; };
 static CSoundThemeDef g_defs[80];
 static int g_lookups = 0, g_released = 0;
 static bool GetDef(int index, CSoundThemeDef*& def)

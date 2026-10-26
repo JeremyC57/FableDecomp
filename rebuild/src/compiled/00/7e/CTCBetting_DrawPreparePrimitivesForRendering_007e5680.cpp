@@ -20,40 +20,40 @@
 //   (0x24 frame), an out pointer plus a releasing holder (0x24 frame); the base def through the inline GetBaseDef()
 //   accessor fixes the last register rotation.
 #include <stddef.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI() {}
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
 extern CDisplayManager* g_pDisplayDevice;      // 0x013B8390
 extern bool g_bBettingInputEnabled;             // 0x013BAE1D
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                             // 0x0099B510
 };
-struct CEnginePrimitiveHandle { void* _vtable; void* Data; };
+class CEnginePrimitiveHandle { public: void* _vtable; void* Data; };
 struct CHandleVector {                          // STLport vector<CEnginePrimitiveHandle> (12 bytes)
     CEnginePrimitiveHandle* _M_start;
     CEnginePrimitiveHandle* _M_finish;
     CEnginePrimitiveHandle* _M_end_of_storage;
 };
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 void __fastcall DrawStatBoxWithText(const CEnginePrimitivePrepareInfo& info, CHandleVector& handles, const C2DVector& pos,
                                     long width, const CWideString& text, long value, unsigned char alpha, bool money);   // 0x00646A46
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad00[0x2e8];
     long          StatBoxWidth;                 // +0x2e8
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();         // 0x00438570
 
-struct CBettingDef {
+class CBettingDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long          RefCount;                     // +0x04
@@ -68,7 +68,7 @@ struct CBettingDef {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     __forceinline ~CDefPointer()
@@ -78,7 +78,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CBettingDef>* out);   // 0x007E5820
 };
 CBettingDef* FindRef_GetSubDef_0();             // stand-in callee of the stand-in body below

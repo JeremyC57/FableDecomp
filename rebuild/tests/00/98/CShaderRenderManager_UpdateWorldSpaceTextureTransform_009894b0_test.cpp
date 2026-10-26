@@ -5,7 +5,7 @@ static int g_calls = 0; static unsigned int g_regs[4], g_rows[4]; static const f
 struct Device { long SetVertexShaderConstantF(unsigned int reg, const float* d, unsigned int rows) { g_regs[g_calls] = reg; g_rows[g_calls] = rows; g_data[g_calls] = d; ++g_calls; return 0; } };
 struct Range { long Offset; unsigned long Count; };
 struct Layout { Range TextureTransform[4]; };
-struct CMatrix4x4 { float m[16]; };
+class CMatrix4x4 { public: float m[16]; };
 struct Mgr {
     Layout* CurrentVSConstantLayout; Device* D3DDevice; CMatrix4x4 TextureTransforms[4]; unsigned long TextureTransformCount; unsigned int UpdateFlags;
     void UpdateWorldSpaceTextureTransform()

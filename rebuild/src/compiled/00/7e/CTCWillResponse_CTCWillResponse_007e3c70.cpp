@@ -9,13 +9,13 @@
 //   +0x25..+0x2c (offsets equal the PDB); CThing PBaseDef at retail +0x70 and IsAffectedByBulletTimeOverride bit 5 of
 //   retail +0x93 (PDB +0x80 / +0xa3: the TLC CThing is 0x10 bytes shorter before them). Local model: engine/CTCBase.h is
 //   a flat generated layout without the constructor, and no CThing/CWillResponseDef header exists.
-template<class T> struct CDefPointer;
-struct CDefClassBase {
+template<class T> class CDefPointer;
+class CDefClassBase { public:
     template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x007E47D0
 };
-template<class T> struct CDefPointer { T* Object; CDefPointer() : Object(0) {} };
-struct CThingBaseDef : CDefClassBase {};
-struct CThing {
+template<class T> class CDefPointer { public: T* Object; CDefPointer() : Object(0) {} };
+class CThingBaseDef : public CDefClassBase { public:};
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<const CThingBaseDef> PBaseDef;          // +0x70
     unsigned char _pad74[0x1f];
@@ -27,14 +27,14 @@ struct CThing {
     unsigned char IsAffectedByBulletTimeOverride : 1;   // +0x93 bit 5
     unsigned char AddingTCsPermitted : 1;
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void VFunc00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
     CTCBase(CThing* thing);                             // 0x00686800
 };
-struct CWillResponseDef {
+class CWillResponseDef { public:
     unsigned char _base[0x25];
     bool IsForcePushable;                               // +0x25
     bool IsLifeDrainable;                               // +0x26
@@ -45,7 +45,7 @@ struct CWillResponseDef {
     bool IsEpicPowerExplodable;                         // +0x2b
     bool IsEpicSpellable;                               // +0x2c
 };
-struct CTCWillResponse : CTCBase {
+class CTCWillResponse : public CTCBase { public:
     CDefPointer<const CWillResponseDef> PDef;           // +0x0c
     bool IsForcePushable : 1;                           // +0x10 bit 0
     bool IsLifeDrainable : 1;

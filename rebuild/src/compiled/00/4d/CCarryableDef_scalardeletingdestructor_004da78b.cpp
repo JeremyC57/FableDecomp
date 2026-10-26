@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CCarryableDef
-{
+class CCarryableDef
+{ public:
     void* vftable;
 };
 extern void* const g_CCarryableDef_vftable;

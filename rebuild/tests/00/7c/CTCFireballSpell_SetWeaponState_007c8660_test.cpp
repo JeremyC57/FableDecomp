@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CCharString { const char* m_pData; };
+class CCharString { public: const char* m_pData; };
 static CCharString g_RightHandAttachmentName = { "right" };
 static CCharString g_LeftHandAttachmentName = { "left" };
-struct CTCFireballSpell {
+class CTCFireballSpell { public:
     long WeaponState; bool LeftHandAnim; CCharString FireballAttachmentName;
     void SetWeaponState(long state)
     {

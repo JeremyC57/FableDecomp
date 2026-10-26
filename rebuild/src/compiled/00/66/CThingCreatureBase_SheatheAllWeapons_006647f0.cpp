@@ -9,7 +9,7 @@
 //   the end) with the key in the first frame word and the component in a register; the vector<CThing*> is a local
 //   STLport vector (three zero words, `free` of the storage at the end), walked with its end re-read every pass;
 //   IS_THING_ALIVE is inline.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -30,7 +30,7 @@ struct CThingVector {                           // STLport vector<CThing*> (12 b
     CThing** end() { return _M_finish; }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     void GetWeapons_006a22d0(CThingVector* things, bool flag);   // 0x006A22D0
     bool IsCarryingThing(CThing* thing);                        // 0x006A1060
 };

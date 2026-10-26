@@ -3,7 +3,7 @@
 #define __stdcall
 #endif
 struct IDirect3DSurface9 { int level; int owner; };
-struct C2DBoxI { long left, top, right, bottom; };
+class C2DBoxI { public: long left, top, right, bottom; };
 
 
 struct IDirect3DTexture9 {                         // IUnknown + IDirect3DResource9 + IDirect3DBaseTexture9 + texture slots

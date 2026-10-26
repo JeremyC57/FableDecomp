@@ -9,7 +9,7 @@
 // pointer registers instead). The manifest's `_Copy_backward<pair<CCharString,
 // C3DVector>*>` label is propagated (that pair is 16 bytes and this is a forward copy); the TU is a COMDAT-folded mix
 // of STL helpers, so the record stays descriptive.
-struct CCharString {                         // one-word handle
+class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };

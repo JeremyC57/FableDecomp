@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CVillageTaskBase
-{
+class CVillageTaskBase
+{ public:
     void* vftable;
 };
 extern void* const g_CVillageTaskBase_vftable;

@@ -4,12 +4,12 @@
 // Shape: the colour is copied byte by byte (R, G, B, A: the engine's member-wise copy constructor of the 4-byte
 // CRGBColour union) into a local that VC homes in the dead argument slot (`[esp+4..7]`, re-addressed as `[esp+8]`
 // after `push 4`), and the local's address is passed. PDB: CRGBColour is a 4-byte union; the bytes are named here.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char R, G, B, A;
     CRGBColour(const CRGBColour& other) : R(other.R), G(other.G), B(other.B), A(other.A) { }
 };
 
-struct CDataOutputStream {                     // engine/CDataOutputStream.h: vptr +0, NewLine +4
+class CDataOutputStream { public:                     // engine/CDataOutputStream.h: vptr +0, NewLine +4
     virtual void v00();
     virtual void v01();
     virtual void v02();

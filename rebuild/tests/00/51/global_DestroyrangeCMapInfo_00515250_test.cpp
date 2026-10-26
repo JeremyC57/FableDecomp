@@ -8,7 +8,7 @@ typedef unsigned long long TStamp;
 #endif
 static int g_strings = 0;
 static int g_mapsDestroyed = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString() : m_pData(0) { }
     ~CCharString() { ++g_strings; }                 // stands in for 0x0099EAE0
@@ -18,7 +18,7 @@ struct SCountBlock {
     void (*m_pfnDestroy)(void*);
     void* m_pObject;
 };
-struct CMap { int id; };
+class CMap { public: int id; };
 static void DestroyMap(void* p) { ++g_mapsDestroyed; delete static_cast<CMap*>(p); }
 struct CCountedPointerCMap {
     CMap* m_pObject;
@@ -37,8 +37,8 @@ struct CCountedPointerCMap {
         m_pCount = 0;
     }
 };
-struct C2DBoxI { long x0, y0, x1, y1; };
-struct CMapInfo {
+class C2DBoxI { public: long x0, y0, x1, y1; };
+class CMapInfo { public:
     C2DBoxI Area;
     CCountedPointerCMap PMap;
     CCharString LevelName;

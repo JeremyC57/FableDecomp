@@ -1,10 +1,10 @@
 // Behaviour test for 00485348 CPersistContext_TransferableComponent<C3DVector>::TransferOut (copy of the model; the traits
 // TransferOut is a stand-in that records its arguments and the default it was built with).
 #include <cstdio>
-struct CPersistContext { int id; };
-struct CStringParser { int id; };
-struct CCharString { int len; };
-struct C3DVector {
+class CPersistContext { public: int id; };
+class CStringParser { public: int id; };
+class CCharString { public: int len; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CCreatureGenerationFamilyDef { int f0; };
+class CCreatureGenerationFamilyDef { public: int f0; };
 extern void __fastcall CCreatureGenerationFamilyDef_dtor(CCreatureGenerationFamilyDef* def);
 extern void __cdecl eng_operator_delete(void* p);
 

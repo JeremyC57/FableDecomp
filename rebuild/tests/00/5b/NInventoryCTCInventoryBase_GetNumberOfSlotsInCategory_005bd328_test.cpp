@@ -1,6 +1,6 @@
 #include <cstdio>
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     long m_slots;
     unsigned char _body[0x2C - 4];
     long GetNumberOfSlots() { return m_slots; }

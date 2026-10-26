@@ -2,7 +2,7 @@
 // Behaviour test for NCreatureMode::CModeBlock::FrameUpdate (retail 0x008D8EA0): a blocking creature with a look component
 // (interface 0x43) that is a registered combatant looks (priority 0x21) at the live creature it is attacking; then the
 // base update.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -55,28 +55,28 @@ struct CThingLookup {
         return false;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CThing : CThingLookup {
+class C3DVector { public: float X, Y, Z; };
+class CThing : public CThingLookup { public:
     unsigned char m_flags91;
     C3DVector Position;
     const C3DVector& GetPosition() const { return Position; }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool Registered;
     bool IsRegisteredCombatant() const { return Registered; }
 };
-struct CTCLook : CTCBase {
+class CTCLook : public CTCBase { public:
     const C3DVector* At;
     long Priority;
     void LookAtPos(const C3DVector* position, long priority) { At = position; Priority = priority; }
 };
-struct CAttackingCombatantInfo { CThingCreatureBase* Attacked; };
+class CAttackingCombatantInfo { public: CThingCreatureBase* Attacked; };
 struct CCombatantInfo { CThingCreatureBase* Parent; CAttackingCombatantInfo AttackerInfo; };
-struct CCombatManager {
+class CCombatManager { public:
     CCombatantInfo Info;
     CCombatantInfo* GetCombatantInfo(const CThingCreatureBase* thing) { Info.Parent = (CThingCreatureBase*)thing; return &Info; }
 };
-struct CWorld { CCombatManager* CombatManager; };
+class CWorld { public: CCombatManager* CombatManager; };
 static CWorld g_world;
 static int g_baseUpdates;
 struct CModeBase {

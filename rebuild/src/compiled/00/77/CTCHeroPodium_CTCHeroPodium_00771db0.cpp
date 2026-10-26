@@ -10,9 +10,9 @@
 // Layout: retail vector<long> is 12 bytes (PDB 16), so E_X / E_Y sit at +0x1C / +0x28 (PDB +0x20 / +0x2C); they
 // are C3DVectors with an empty default constructor and stay uninitialised. Local model (no engine header).
 
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -20,7 +20,7 @@ struct CTCBase {
     CTCBase(CThing* parent);                   // 0x00686800
 };
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
 };
@@ -32,7 +32,7 @@ struct CLongVector {                           // retail std::vector<long>: firs
     CLongVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) {}
 };
 
-struct CTCHeroPodium : CTCBase {
+class CTCHeroPodium : public CTCBase { public:
     long        NumberOfCrowdOccupants;        // +0x0C
     CLongVector CrowdOccupation;               // +0x10 (PDB +0x10, 16 bytes)
     C3DVector   E_X;                           // +0x1C (PDB +0x20)

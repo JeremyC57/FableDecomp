@@ -11,7 +11,7 @@
 // Shape: the three scalar initialisers are scheduled BEFORE the derived vtable store (plain init-list members in this
 // module), the intelligent pointer after it (out-of-line base constructor + inline vtable store through `edi`).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CTCTrapBase_Calls {                                  // retail 0x60 bytes
     virtual void v00();

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <vector>
 #include <algorithm>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_live = 0;
 struct IPtr {                                   // CIntelligentPointer<CThing>: equal when observing the same thing
     CThing* item;
@@ -11,7 +11,7 @@ struct IPtr {                                   // CIntelligentPointer<CThing>: 
     ~IPtr() { --g_live; }
     bool operator==(const IPtr& o) const { return item == o.item; }
 };
-struct CTCFadeOutAndIn {
+class CTCFadeOutAndIn { public:
     std::vector<IPtr> FadingThings;
     void AddThingToFade(CThing& thing) {
         if (std::find(FadingThings.begin(), FadingThings.end(), IPtr(&thing)) == FadingThings.end())

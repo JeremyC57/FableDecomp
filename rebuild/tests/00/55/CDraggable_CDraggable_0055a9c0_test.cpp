@@ -174,7 +174,7 @@ static bool Layout()
         && offsetof(CClickable_Retail, WasRightClicked) == 0x184 && offsetof(CClickable_Retail, PActionsOnRightClicked) == 0x188 && sizeof(CClickable_Retail) == 0x194
         && (char*)(CObserver_Retail*)(CClickable_Retail*)0x1000 == (char*)0x1004 && (char*)(CEventSinkInterface*)(CClickable_Retail*)0x1000 == (char*)0x1018;
 }
-struct C2DVector { float X, Y; C2DVector() : X(0.0f), Y(0.0f) { } };
+class C2DVector { public: float X, Y; C2DVector() : X(0.0f), Y(0.0f) { } };
 struct CDraggable_Retail : CClickable_Retail {
     C2DVector PositionBeforeDrag; bool WasDragged; CActionList* PActionsOnDropped; CActionList* PActionsOnDroppedNowhere; bool SnapBackIfDroppedNowhere; bool ChangeLayer;
     CDraggable_Retail(long owner) : CClickable_Retail(owner), PositionBeforeDrag(), WasDragged(false), PActionsOnDropped(0), PActionsOnDroppedNowhere(0), SnapBackIfDroppedNowhere(true), ChangeLayer(false) { RegisterDragging(); }

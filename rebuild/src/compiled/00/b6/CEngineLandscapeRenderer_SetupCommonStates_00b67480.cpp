@@ -8,7 +8,7 @@
 // diagonal words (m[8], m[4], m[0]); VC drops the three dead zero stores and keeps the order: nine descending zero
 // immediates, then the diagonal, all after the address push. A twelve-float constructor stores interleaved
 // ascending, an ascending clear gives ascending stores.
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];
     void SetIdentity()
     {
@@ -18,18 +18,18 @@ struct CMatrix3x4 {
     }
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     void UpdateGlobalLightingStates();             // 0x00B46C80
     void EnableFog();                              // 0x00B46890
 };
 extern CEngineLightingManager* g_pEngineLightingManager_01436e9c;   // 0x01436E9C
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void SetWorldTransform(const CMatrix3x4* matrix);   // 0x009881F0
 };
 extern CShaderRenderManager* g_pShaderRenderManager_01436e14;     // 0x01436E14
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void SetupCommonStates();
 };
 

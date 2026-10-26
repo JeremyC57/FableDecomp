@@ -2,12 +2,12 @@
 
 // Model of CTCFlammable::CTCFlammable(CThing*) @ 0x00780820: null def, no fire points, not burning, every counter and
 // the damage caused zeroed, both per-point flags cleared.
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) { } virtual ~CTCBase() { } };
 struct CDefPointer { void* Object; CDefPointer() : Object(0) { } };
 struct CFirePoint { float x; };
 template<class T> struct CRetailVector { T* m_pFirst; T* m_pLast; T* m_pEnd; CRetailVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
-struct CTCFlammable : CTCBase {
+class CTCFlammable : public CTCBase { public:
     CDefPointer PDef; CRetailVector<CFirePoint> FirePoints; bool Burning; long FireDamageAfterFrame; long FireResistance;
     long FireStrength; float DamageCaused; bool DamagePerPoint; bool HasFirePoint;
     CTCFlammable(CThing* thing)

@@ -79,7 +79,7 @@ template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
 
 class CBulletTimeManager {
 public:
-    struct CBulletTimeInfo {
+    class CBulletTimeInfo { public:
         float Multiplier;                             // +0x00
         float SoundPitch;                             // +0x04
     };

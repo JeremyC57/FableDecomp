@@ -6,13 +6,13 @@
 // Shape: the presence test is the inlined bitset probe (type 200 = bit 8 of the dword at +0x38, `test ch,1`); the name is a scoped named local
 // (re-addressed with `lea` for the argument), the new component rides in esi across the string destructor and is null-checked before the two stores, which share one register value (a chained assignment).
 #include "fable_string.h"
-struct CTCParamsBase;
-struct CTCHitOnCollision {                  // the component AddTC returns: two arming bytes
+class CTCParamsBase;
+class CTCHitOnCollision { public:                  // the component AddTC returns: two arming bytes
     unsigned char _pad[0x18];
     unsigned char m_hitsCreatures;          // +0x18
     unsigned char m_hitsObjects;            // +0x19
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CTCHitOnCollision* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
@@ -23,7 +23,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];
@@ -31,7 +31,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];
 };
 
-struct CCreatureAction_WaspQueenDiveAttack : CCombatActionBase {
+class CCreatureAction_WaspQueenDiveAttack : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

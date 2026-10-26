@@ -10,7 +10,7 @@
 // Shape: the thing's physics component is read first into a local (homed in the dead argument slot); each TC 0x4d test
 //   is HasTC + the inline const GetTC (the filter's own parent re-read for the second call's argument); the final
 //   collide/interact pair is an `||` inside the null and identity tests with separate true/false exits.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -22,7 +22,7 @@ class CThing;
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4)
@@ -35,7 +35,7 @@ struct CTCPhysicsBase {
     CThing* ParentThing;                        // +0x04 (CTCBase)
 };
 
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     bool IsSolidToThing(const CThing* thing) const;     // 0x00770DE0
 };
 
@@ -63,7 +63,7 @@ public:
     }
 };
 
-struct CThingFilter_CanCollideOrInteractWithThing {
+class CThingFilter_CanCollideOrInteractWithThing { public:
     CTCPhysicsBase* TCPhysics;                  // +0x00
     bool ExcludeCreatures;                      // +0x04
     bool operator()(CThing* thing) const;

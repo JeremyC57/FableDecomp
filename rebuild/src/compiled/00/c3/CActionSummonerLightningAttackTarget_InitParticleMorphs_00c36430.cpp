@@ -16,7 +16,7 @@ struct CThingDef {
     CParticleMorphDef* m_pMorphDef;                     // +0x04
 };
 
-struct CThing {
+class CThing { public:
     CThingDef*    m_pDef;                               // +0x00
     unsigned char _pad[0xc8 - 0x04];
     void*         m_pMorphTable;                        // +0xc8
@@ -26,7 +26,7 @@ struct CScriptOwner {
     CThing* m_pThing;                                   // +0x00
 };
 
-struct CParticleMorphs {
+class CParticleMorphs { public:
     unsigned char _body[0x4];
     void SetScale(float scale);                         // 0x00C45980
     void Init(long morphType, void* morphTable);        // 0x00C461E0

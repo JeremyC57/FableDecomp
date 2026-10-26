@@ -11,18 +11,18 @@
 // Layout: CTCBase ParentThing +0x04; retail CThing PTCGraphicAppearance +0x64 (PDB +0x74; the retail CThing
 // sits 0x10 lower than the PDB from the component map on, cf. the dead bit at +0x91 vs PDB +0xa1).
 // Shape: one null test, then the sibling-call `jmp` (void forwarder with the same argument).
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 
 struct CTCGraphicAppearance {
     void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x004BE4E0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;             // +0x64
 };
 
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08

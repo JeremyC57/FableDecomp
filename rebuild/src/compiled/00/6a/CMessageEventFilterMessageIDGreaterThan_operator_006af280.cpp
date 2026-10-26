@@ -12,7 +12,7 @@ struct CMessageEventCalls {
     unsigned long MessageID;                // +0x40
 };
 
-struct CMessageEventFilter_MessageIDGreaterThan {
+class CMessageEventFilter_MessageIDGreaterThan { public:
     unsigned long MessageID;                // +0x00 threshold
     bool operator()(CMessageEventCalls* event);
 };

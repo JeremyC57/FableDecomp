@@ -16,21 +16,21 @@
 // slot and the inline operator+ computes X first), converted into a second named local; the right-align arithmetic parks
 // a partial in the dead `rightAlign` slot, the white colour temporary reuses that slot.
 #pragma optimize("s", on)
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 
 class CWideString;
-struct CEnginePrimitivePrepareInfo;
-struct CEnginePrimitiveHandle { unsigned long m_handle; };
+class CEnginePrimitivePrepareInfo;
+class CEnginePrimitiveHandle { public: unsigned long m_handle; };
 
 namespace std {
 template <class T> class allocator {};
@@ -42,8 +42,8 @@ public:
 };
 }
 
-struct C2DExtentsI { long Width, Height; };
-struct CDisplayManager { C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
+class C2DExtentsI { public: long Width, Height; };
+class CDisplayManager { public: C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
 extern CDisplayManager* g_pDisplayManager;                              // 0x013B8390
 
 void __fastcall GFACoordToVCoord(const C2DVector& in, C2DVector& out);  // 0x009E21D0
@@ -66,7 +66,7 @@ struct CGameUI {
 };
 extern CGameUI* g_pGameUI;                                              // 0x013B8790
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x4ac];
     C2DVector     MoneyTextOffset;                                      // +0x4AC (retail)
 };

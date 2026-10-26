@@ -15,7 +15,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -28,7 +28,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -58,7 +58,7 @@ struct CTCInventoryMenu {                            // interface type 0xF6
     void RequestClose();                             // 0x00625920
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad_0x000[0x2BE];
     bool          LiveGuiMode;                     // +0x2BE
     void ToggleLiveGui();                            // 0x00438310
@@ -72,7 +72,7 @@ struct CTCInventoryBase {
     void AddCloseInventoryEvent();                   // 0x005BC527
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     void AddCloseInventoryEvent();
 };
 

@@ -1,8 +1,8 @@
 #include <cstdio>
 
 static void* g_seen = 0;
-struct CEngineInternalPrimitiveBase { int dummy; };
-struct CEngineSubPrimitiveBase { void* vt; unsigned long flags; unsigned char alpha; unsigned char pad[3]; CEngineInternalPrimitiveBase* Parent; };
+class CEngineInternalPrimitiveBase { public: int dummy; };
+class CEngineSubPrimitiveBase { public: void* vt; unsigned long flags; unsigned char alpha; unsigned char pad[3]; CEngineInternalPrimitiveBase* Parent; };
 struct CEnginePrimitiveManagerOcclusionBase {
     void RenderBoundingBox(CEngineInternalPrimitiveBase* p) { g_seen = p; }
     void RenderBoundingVolume(CEngineSubPrimitiveBase& s) { RenderBoundingBox(s.Parent); }

@@ -13,8 +13,8 @@ public:
     ~CCharString();                                  // 0x0099EAE0
     bool operator!=(const char* text) const;         // 0x0099E960
 };
-struct CTCBase;
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
 struct CBoundingBox { C3DVector Min, Max; };
 
 class CBaseClassNonCopyable {
@@ -31,7 +31,7 @@ public:
     __forceinline CPhysicsSnapshot(const C3DVector& position, const CBoundingBox& bounds) : Position(position), Bounds(bounds) { }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual ~CTCPhysicsBase();   // slot 0 (+0x0)
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();
@@ -54,7 +54,7 @@ struct CTCPhysicsBase {
     CTCPhysicsBase* Clone();                         // 0x00686FA0
 };
 
-struct CTCStealth { char _pad[0xf]; bool Sneaking; };   // interface 0x36
+class CTCStealth { public: char _pad[0xf]; bool Sneaking; };   // interface 0x36
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -63,7 +63,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;            // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     void*               __vftable;                   // +0x00
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
@@ -89,7 +89,7 @@ struct CThing {
 bool __fastcall IsAbleToMove(CThing* creature);                  // 0x0085F3E0
 void __fastcall RemoveMovementBlockingModes(CThing* creature);   // 0x0085F600
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;   // slot 11 (+0x2c)
@@ -105,7 +105,7 @@ struct CScriptThing {
     long _a, _b;
 };
 
-struct CTCScriptedControl { void* __vftable; CThing* ParentThing; };   // CTCBase: ParentThing +0x04
+class CTCScriptedControl { public: void* __vftable; CThing* ParentThing; };   // CTCBase: ParentThing +0x04
 
 namespace NTCScriptedControl {
 class CActionFollowCreature {

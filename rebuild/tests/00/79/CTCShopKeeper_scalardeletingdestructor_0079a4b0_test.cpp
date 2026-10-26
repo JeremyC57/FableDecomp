@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     void* vftable;
     int destroyed;
 };

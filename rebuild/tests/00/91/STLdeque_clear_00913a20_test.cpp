@@ -10,8 +10,8 @@ static void* TMalloc(size_t n) { ++g_mallocs; return std::malloc(n); }
 static void TFree(void* p) { ++g_frees; std::free(p); }
 
 static int g_dtors = 0;
-struct C3DVector { float X, Y, Z; };
-struct CBezierCurve {
+class C3DVector { public: float X, Y, Z; };
+class CBezierCurve { public:
     C3DVector Point1, Point2, Point3, Point4;
 };
 struct CCountedCurve {                          // test-only element: same 48-byte size, counts destructor calls

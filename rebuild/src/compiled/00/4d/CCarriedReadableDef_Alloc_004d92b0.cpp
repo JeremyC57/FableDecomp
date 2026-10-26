@@ -9,7 +9,7 @@
 // landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor
 // (which returns `this`). The class is named from the constructor's manifest label when that label
 // is unique. One of 12 bodies of this shape.
-struct CCarriedReadableDef {
+class CCarriedReadableDef { public:
     unsigned char _body[0x30];       // sizeof(CCarriedReadableDef) = 0x30
     CCarriedReadableDef();                               // 0x004D5ECA
 };

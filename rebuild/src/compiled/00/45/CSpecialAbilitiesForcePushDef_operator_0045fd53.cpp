@@ -10,7 +10,7 @@
 // element in a loop (the fld/fstp loop over the source-minus-dest delta), as the implicit assignment of
 // an array member does.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -24,7 +24,7 @@ struct CFloatVector {                   // retail std::vector<float> (12 bytes)
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
 };
 
-struct CSpecialAbilitiesForcePushDef : CParentDefClassBase {   // vtable 0x012342CC
+class CSpecialAbilitiesForcePushDef : public CParentDefClassBase { public:   // vtable 0x012342CC
     float        MaxDistanceToPush;         // +0x3c
     float        MinDistanceToPush;         // +0x40
     float        DustBoxWidth;              // +0x44

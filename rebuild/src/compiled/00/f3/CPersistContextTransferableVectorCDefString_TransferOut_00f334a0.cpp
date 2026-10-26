@@ -10,9 +10,9 @@
 // dead index slot, which also becomes the callee's third argument. VC7.1 only emits that tail jump when the traits
 // writer's body sits EARLIER in the same TU (an out-of-line `#pragma auto_inline(off)` stand-in that never touches
 // `this`); with the writer only declared it keeps `push ; push ; push ; call ; ret 0Ch` (35 bytes v 25).
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 class CDefString {
 public:
@@ -43,7 +43,7 @@ template <class T> struct vector {                   // STLport, 12 bytes in ret
     T& operator[](long index) { return _M_start[index]; }
 };
 
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long Size() = 0;
     virtual void Resize(long count) = 0;
     virtual void TransferOut(CPersistContext& context, CCharString& out, long index) = 0;

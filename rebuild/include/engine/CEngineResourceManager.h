@@ -8,17 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CFontBank;
-struct CGraphicDataBank;
-struct CLoadingMemoryFailureHandler;
-struct CMeshDataBank;
-struct CMovableResourceMemoryPool;
-struct CWideStringData;
+class CCPPointerInfo;
+class CFontBank;
+class CGraphicDataBank;
+class CLoadingMemoryFailureHandler;
+class CMeshDataBank;
+class CMovableResourceMemoryPool;
+class CWideStringData;
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CEngineResourceManager {
+class CEngineResourceManager {
+public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08

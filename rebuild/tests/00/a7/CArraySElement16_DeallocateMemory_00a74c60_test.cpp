@@ -2,7 +2,7 @@
 #include <cstdlib>
 struct SElement16 { unsigned long a, b, c, d; };
 static int g_erase = 0;
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* first; T* last; T* end_of_storage;
     unsigned long capacity() const { return (unsigned long)(end_of_storage - first); }
     void Erase(T* f, T* l) { if (f == first && l == last) ++g_erase; last = f; }

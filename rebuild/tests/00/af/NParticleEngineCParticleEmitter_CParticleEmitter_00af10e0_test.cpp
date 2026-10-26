@@ -3,8 +3,8 @@
 #include <cstring>
 static char g_log[64]; static int g_n = 0;
 static void Log(char c) { g_log[g_n++] = c; g_log[g_n] = 0; }
-struct CEnginePrimitiveHandle;
-struct CEnginePersistentPrimitiveBase {
+class CEnginePrimitiveHandle;
+class CEnginePersistentPrimitiveBase { public:
     long m_refCount; int notified, destroyed;
     void Destroy() { ++destroyed; }
     void OnLastHandleReleased(CEnginePrimitiveHandle*) { ++notified; }
@@ -18,16 +18,16 @@ struct CIVCountedPointer {
     CEnginePersistentPrimitiveBase* operator->() const { return m_p; }
     long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     CIVCountedPointer Data;
     ~CEnginePrimitiveHandle() { if (Data.GetRefCount() == 1) Data->OnLastHandleReleased(this); Data = 0; Log('H'); }
 };
-struct CCharString { ~CCharString() { Log('N'); } };
-struct CBaseObject { ~CBaseObject() { Log('B'); } };
+class CCharString { public: ~CCharString() { Log('N'); } };
+class CBaseObject { public: ~CBaseObject() { Log('B'); } };
 struct SParticleSystemVector { ~SParticleSystemVector() { Log('V'); } };
 struct SUpdateParameters { ~SUpdateParameters() { Log('U'); } };
-struct C3DOrientationInterpolator { ~C3DOrientationInterpolator() { Log('O'); } };
-struct C3DPositionInterpolator { ~C3DPositionInterpolator() { Log('P'); } };
+class C3DOrientationInterpolator { public: ~C3DOrientationInterpolator() { Log('O'); } };
+class C3DPositionInterpolator { public: ~C3DPositionInterpolator() { Log('P'); } };
 struct CParticleEmitter : CBaseObject {
     SParticleSystemVector ParticleSystems; SUpdateParameters UpdateParameters; CEnginePrimitiveHandle PrimitiveGroupHandle;
     C3DOrientationInterpolator OrientationInterpolator; C3DPositionInterpolator PositionInterpolator; CCharString Name;

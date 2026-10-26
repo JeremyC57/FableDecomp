@@ -6,7 +6,7 @@
 // CTCRegionFollower in rtti-vtables.tsv; PDB CTCRegionFollower holds only Followers at +0xc.
 // Shape: the inline list constructor runs after the derived vtable store (member init): the head is nulled, the
 // sentinel allocated and linked to itself, then stored. The retail list is the 4-byte STLport one (PDB: 12 bytes).
-struct CThing;
+class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
 // The retail (STLport) std::list: one sentinel-node pointer, nulled by the alloc-proxy initialiser, then a node is
@@ -34,7 +34,7 @@ struct CIntelligentPointer_CThing {                 // CIntelligentPointer<CThin
     void* PData;
 };
 
-struct CTCRegionFollower : CTCBase_Calls {         // vtable 0x0125D234
+class CTCRegionFollower : public CTCBase_Calls { public:         // vtable 0x0125D234
     CRetailList<CIntelligentPointer_CThing> Followers;   // +0x0c
     virtual void v00();
     CTCRegionFollower(CThing* parent);

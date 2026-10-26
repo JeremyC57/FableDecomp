@@ -7,7 +7,7 @@
 #endif
 static int g_thingCtor = 0, g_thingDtor = 0, g_objCtor = 0, g_objDtor = 0, g_resizeA = 0, g_resizeB = 0; static unsigned g_nA = 0, g_nB = 0;
 namespace N_006e7b40 { struct CScriptThing { unsigned char _body[0xc]; CScriptThing() { ++g_thingCtor; } ~CScriptThing() { ++g_thingDtor; } }; } using N_006e7b40::CScriptThing;
-struct CScriptGameResourceObjectScriptedThingBase { unsigned char _body[0x10]; CScriptGameResourceObjectScriptedThingBase() { ++g_objCtor; } ~CScriptGameResourceObjectScriptedThingBase() { ++g_objDtor; } };
+class CScriptGameResourceObjectScriptedThingBase { public: unsigned char _body[0x10]; CScriptGameResourceObjectScriptedThingBase() { ++g_objCtor; } ~CScriptGameResourceObjectScriptedThingBase() { ++g_objDtor; } };
 struct CScriptThingVector { CScriptThing* m_pFirst; CScriptThing* m_pLast; CScriptThing* m_pEnd; void resize(unsigned int n, const CScriptThing&) { ++g_resizeA; g_nA = n; if (g_thingDtor != 0) g_resizeA = -1; } };
 struct CScriptedThingVector { CScriptGameResourceObjectScriptedThingBase* m_pFirst; CScriptGameResourceObjectScriptedThingBase* m_pLast; CScriptGameResourceObjectScriptedThingBase* m_pEnd; void resize(unsigned int n, const CScriptGameResourceObjectScriptedThingBase&) { ++g_resizeB; g_nB = n; if (g_objDtor != 0 || g_thingDtor != 1) g_resizeB = -1; } };
 struct CV_SwordInTheStoneScript {

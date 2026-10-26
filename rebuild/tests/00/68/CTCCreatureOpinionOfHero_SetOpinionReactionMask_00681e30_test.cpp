@@ -1,8 +1,8 @@
 // Test for 00681e30 CTCCreatureOpinionOfHero::SetOpinionReactionMask(const CCharString&): name -> def index; apply only a non-zero index.
 #include <cstdio>
 #include <string.h>
-struct CCharString { const char* Text; };
-struct CGameDefinitionManager {
+class CCharString { public: const char* Text; };
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const
     {
         if (strcmp(name.Text, "OPINION_MASK_A") == 0) return 17;
@@ -10,8 +10,8 @@ struct CGameDefinitionManager {
         return 0;
     }
 };
-struct CWorld { CGameDefinitionManager* DefinitionManager; };
-struct CTCCreatureOpinionOfHero {
+class CWorld { public: CGameDefinitionManager* DefinitionManager; };
+class CTCCreatureOpinionOfHero { public:
     CWorld* World; long Applied; int ApplyCalls;
     CWorld* GetWorld() const { return World; }
     void SetOpinionReactionMask(long defIndex) { Applied = defIndex; ++ApplyCalls; }

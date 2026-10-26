@@ -2,7 +2,7 @@
 // summoned-creature list (live ones stay, in order), then the base frame hook runs.
 #include <cstdio>
 
-struct CThing { int unused; };
+class CThing { public: int unused; };
 static int g_baseCalls = 0;
 
 struct CBaseIntelligentPointer {
@@ -13,7 +13,7 @@ struct CBaseIntelligentPointer {
 };
 
 template<class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
@@ -29,9 +29,9 @@ struct CSimpleList {
     }
 };
 
-struct CTCBase { void FrameUpdate() { ++g_baseCalls; } };
+class CTCBase { public: void FrameUpdate() { ++g_baseCalls; } };
 
-struct CTCAISummon : CTCBase {
+class CTCAISummon : public CTCBase { public:
     CSimpleList<CIntelligentPointer<CThing> > MySummonedCreatures;
     void FrameUpdate()
     {

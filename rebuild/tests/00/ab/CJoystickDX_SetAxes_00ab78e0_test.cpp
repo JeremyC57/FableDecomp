@@ -2,7 +2,7 @@
 #include "engine/CJoystickDX.h"
 #include <stdio.h>
 
-struct C2DVector { float x; float y; };
+class C2DVector { public: float x; float y; };
 
 void __fastcall CJoystickDX_SetAxes(CJoystickDX* joystickDX, int /*edx*/, const C2DVector& v)
 {

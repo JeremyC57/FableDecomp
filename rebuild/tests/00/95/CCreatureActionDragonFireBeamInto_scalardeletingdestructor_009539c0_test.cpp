@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_DragonFireBeamInto {
+class CCreatureAction_DragonFireBeamInto { public:
     void* vftable;
     int destroyed;
 };

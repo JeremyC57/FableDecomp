@@ -2,21 +2,21 @@
 // SuitParts vector come out null on a garbage-filled buffer.
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
-struct CHeroSuitDef;
+class CThing { public: int id; };
+class CHeroSuitDef;
 static CThing* g_baseParent = 0;
 struct CTCDriverBase_Calls {
     virtual void v00() { }
     unsigned char _body[0x8];
     CTCDriverBase_Calls(CThing* parent) { g_baseParent = parent; }
 };
-template<class T> struct CDefPointer { T* m_pDef; CDefPointer() : m_pDef(0) { } };
+template<class T> class CDefPointer { public: T* m_pDef; CDefPointer() : m_pDef(0) { } };
 template<class T> struct CRetailVector {
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     CRetailVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
 struct SSuitPart { long Part; bool Worn; };
-struct CTCDHeroSuit : CTCDriverBase_Calls {
+class CTCDHeroSuit : public CTCDriverBase_Calls { public:
     CDefPointer<const CHeroSuitDef> PDef;
     CRetailVector<SSuitPart>        SuitParts;
     virtual void v00() { }

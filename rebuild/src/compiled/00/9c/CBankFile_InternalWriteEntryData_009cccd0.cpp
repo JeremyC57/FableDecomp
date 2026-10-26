@@ -10,7 +10,7 @@
 // entry's pending flag.
 // Layout: the landed retail CBankFile model (0x009CC240), plus Filename +0x84 (CWideString), WrittenToFile +0x8e,
 // Alignment +0x98.
-struct CWideString { void* PStringData; };
+class CWideString { public: void* PStringData; };
 struct CDiskFileCalls {
     virtual void v00();
     virtual void Open(const CWideString& pathname, long access, unsigned long flags);   // slot 1 (+0x04)
@@ -21,7 +21,7 @@ struct CDiskFileCalls {
     virtual void v06();
     virtual unsigned long GetPosition();           // slot 7 (+0x1c)
 };
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     unsigned char _pad[0x14];
     bool RequiresUpdate;                           // +0x14
 };
@@ -43,7 +43,7 @@ struct CPackedUIntArray {               // 16 bytes; m_pData == 0 means "not pac
     bool IsPacked() const { return m_pData != 0; }
 };
 
-template <class T> struct CArray {      // retail CArray: 12 bytes
+template <class T> class CArray { public:      // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

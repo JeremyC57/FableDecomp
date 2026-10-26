@@ -25,7 +25,7 @@ struct CRetailVector_counted {                     // VC6 vector of counted poin
 };
 
 namespace NShape {
-struct CShape {                                    // vtable 0x0126A208
+class CShape { public:                                    // vtable 0x0126A208
     virtual void v00();
     long             m_id;                         // +0x04
     CRetailVector_pod m_points;                    // +0x08

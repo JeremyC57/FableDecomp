@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCard { void* Thing; long Name; long Value; float InitialRotation; float FinalRotation; float TurnSpeed; float TurnFraction; float MoveSpeed; float MoveFraction; bool Turning; bool FaceDown; bool Moving;
+class CCard { public: void* Thing; long Name; long Value; float InitialRotation; float FinalRotation; float TurnSpeed; float TurnFraction; float MoveSpeed; float MoveFraction; bool Turning; bool FaceDown; bool Moving;
     void Turn() { bool faceDown = FaceDown; Turning = true; TurnFraction = 0.0f; if (faceDown == true) { InitialRotation = 0.5f; FinalRotation = 0.0f; } else { InitialRotation = 0.0f; FinalRotation = 0.5f; } FaceDown = !faceDown; } };
 
 int main()

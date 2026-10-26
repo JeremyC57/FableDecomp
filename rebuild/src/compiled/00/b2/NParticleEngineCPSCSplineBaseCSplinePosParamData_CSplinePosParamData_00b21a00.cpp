@@ -10,16 +10,16 @@
 // the expression straight to resize schedules the zero temporary before the member load and colours the zero in eax
 // instead of retail's hoisted `xor edx,edx`); CArray's inline constructor zeroes its three words from one zero register; the `unsigned long()` temporary bound to resize's const reference is homed in
 // the constructor's dead argument slot (`mov [esp+8],edx ; lea edx,[esp+0Ch]`).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     CArray() : m_begin(0), m_end(0), m_capacity(0) {}
     long Size() const { return (long)(m_end - m_begin); }
     void resize(unsigned long newSize, const T& value);  // 0x00464931 for T = unsigned long
 };
 
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;                     // +0x0
     float             Tension;                           // +0xC
     bool              EndPointsConnected;                // +0x10

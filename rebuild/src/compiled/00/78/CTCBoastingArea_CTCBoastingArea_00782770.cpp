@@ -6,7 +6,7 @@
 // Layout = Ego_r.pdb CTCBoastingArea (24 bytes): HeroWithinRadiusState +0xc, Radius +0x10,
 // AnticipationRadius +0x14. Shape (as the landed 0x007AEE10): constant initialisers are immediate
 // stores after the vtable store (0x40400000 = 3.0f, 0x41200000 = 10.0f).
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();

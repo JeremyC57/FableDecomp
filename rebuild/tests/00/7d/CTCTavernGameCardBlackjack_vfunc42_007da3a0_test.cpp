@@ -3,8 +3,8 @@
 #include <cstring>
 static int g_destroyed = 0;
 static int g_lookups = 0;
-struct CWideString { int length; };
-struct CCharString {
+class CWideString { public: int length; };
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long length) : text(t) { (void)length; }
     ~CCharString() {}

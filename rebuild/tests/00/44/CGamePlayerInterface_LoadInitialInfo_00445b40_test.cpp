@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "engine/CGamePlayerInterface.h"
 class CASuspendableProcess;
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 class CAFile {
 public:
     virtual ~CAFile();
@@ -17,7 +17,7 @@ public:
     virtual void _slot03();
     virtual void SetPos(const C2DVector* pos);          // slot 4 (+0x10)
 };
-struct CInputManager {
+class CInputManager { public:
     unsigned char _pad00[0x24];
     CMouse*       PMouse;                                // +0x24 scoped_ptr<CMouse>
     CMouse* GetMouse() const { return PMouse; }

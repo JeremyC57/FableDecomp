@@ -6,7 +6,7 @@
 // Shape: each per-frame step is first stored undivided and overwritten by the division only when the
 // frame count is non-zero; the count member is stored after the join from the (possibly bumped) parameter;
 // the run-out difference is a named local kept on the FPU across the test.
-struct COpinionTransientOffset {
+class COpinionTransientOffset { public:
     long  Opinion;                  // +0x00 EOpinion
     float OffsetPerFrameRunIn;      // +0x04
     long  FramesToRunIn;            // +0x08

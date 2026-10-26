@@ -8,7 +8,7 @@ extern const char g_text_01258c1c[];               // " "
 extern const char g_text_0125c2b8[];               // " not "
 extern const char g_text_0125c2a8[];               // "using fast mode"
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     CCharString& operator+=(const char* text);     // 0x0099F100
@@ -35,7 +35,7 @@ struct CEngine_00697860 {
 };
 extern CEngine_00697860* g_pEngine_013b86a0;       // 0x013B86A0
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void TellEngineThatCameraHasMoved(bool fastMode);
 };
 

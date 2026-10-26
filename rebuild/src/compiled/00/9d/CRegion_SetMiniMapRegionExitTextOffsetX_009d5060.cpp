@@ -1,6 +1,6 @@
 // CRegion::SetMiniMapRegionExitTextOffsetX @ 009d5060
 // Leaf: SetMiniMapRegionExitTextOffsetX
-struct CRegion;
+class CRegion;
 
 struct Singleton {
     void* method(void* arg);  // __fastcall, ecx=this, pushes arg; at 0x9d4f90
@@ -8,7 +8,7 @@ struct Singleton {
 
 extern Singleton g_singleton_13ca828;
 
-struct CRegion {
+class CRegion { public:
     void* f0;
 };
 

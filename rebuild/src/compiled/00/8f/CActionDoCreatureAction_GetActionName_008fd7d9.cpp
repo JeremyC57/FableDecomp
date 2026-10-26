@@ -5,8 +5,8 @@
 // A no-arg fastcall value factory: hidden CCharString return slot arrives in
 // ECX, the body constructs it from a string literal with length -1.
 
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     unsigned int unknown04;
     unsigned int unknown08;

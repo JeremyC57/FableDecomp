@@ -7,7 +7,7 @@ struct IDirect3D9 {
     int GetAdapterDisplayMode(unsigned int adapter, D3DDISPLAYMODE* mode) { adapterSeen = adapter; mode->Width = 640; mode->Height = 480; mode->RefreshRate = 75; mode->Format = 22; return hr; }
 };
 struct CCreateDeviceFailed { CCreateDeviceFailed() {} };
-struct CDisplayManager {
+class CDisplayManager { public:
     IDirect3D9* PD3D;
     unsigned int GetRefreshRate()
     {

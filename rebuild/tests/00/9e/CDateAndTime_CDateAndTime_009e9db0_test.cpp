@@ -7,7 +7,7 @@ static int FileTimeToSystemTime(const _FILETIME* ft, _SYSTEMTIME* st)   // stand
     st->wDayOfWeek = 3; st->wDay = (unsigned short)(ft->dwLowDateTime >> 24); st->wHour = (unsigned short)((ft->dwLowDateTime >> 16) & 0xff);
     st->wMinute = (unsigned short)((ft->dwLowDateTime >> 8) & 0xff); st->wSecond = (unsigned short)(ft->dwLowDateTime & 0xff); st->wMilliseconds = 123; return 1;
 }
-struct CDateAndTime {
+class CDateAndTime { public:
     long Year; unsigned long Month, Day, Hour, Minute, Second, Millisecond;
     CDateAndTime(const _FILETIME& ft) { _SYSTEMTIME st; FileTimeToSystemTime(&ft, &st); Year = st.wYear; Month = st.wMonth; Day = st.wDay; Hour = st.wHour; Minute = st.wMinute; Second = st.wSecond; Millisecond = st.wMilliseconds; }
 };

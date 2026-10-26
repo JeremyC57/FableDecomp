@@ -12,7 +12,7 @@
 // OriginalFacing +0x138, AddedRollMode +0x144 over a 0x12c-byte CCombatActionBase); retail's CCombatActionBase is
 // 0x114 bytes (the landed CCombatAction ctors, e.g. 0x008C94D0), so the members sit 0x18 lower: RequiredFacing
 // +0x114, OriginalFacing +0x120, AddedRollMode +0x12c.
-struct CThing;
+class CThing;
 extern float g_Epsilon;                     // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
@@ -20,7 +20,7 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CSoundPair {                         // the zeroed two-dword sound argument of CCombatActionBase
+class CSoundPair { public:                         // the zeroed two-dword sound argument of CCombatActionBase
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -31,16 +31,16 @@ struct CPhysicsBody {                       // the thing's physics body at +0x60
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing();          // slot 70 (+0x118)
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* PhysicsBody;              // +0x60
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x110];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
-struct CCombatAction_ControlledStrafeJump : CCombatActionBase {    // vtable 0x01276974
+class CCombatAction_ControlledStrafeJump : public CCombatActionBase { public:    // vtable 0x01276974
     C3DVector RequiredFacing;               // +0x114
     C3DVector OriginalFacing;               // +0x120
     bool      AddedRollMode;                // +0x12c

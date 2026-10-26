@@ -6,10 +6,10 @@
 // type. The driver type is kept as the catalog's for the symbol; only the bit differs.
 // Shape: the inlined HasTC probe is the raw bitset word test in the `if` (`mov eax,[ecx+2Ch] ; test ah,2`);
 // PTCDriver is retail +0x5c (PDB +0x6c). `mov al,1` / `xor al,al` = bool.
-struct CTCDriverBase;
-struct CTCDExperienceOrb;
+class CTCDriverBase;
+class CTCDExperienceOrb;
 
-struct CThing {
+class CThing { public:
     void*          __vftable;                        // +0x00
     unsigned char  _pad04[0x20 - 0x04];
     unsigned long  UsingComponents[9];               // +0x20 bitset<274>

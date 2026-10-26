@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CEngineMap;
-struct CEngineStaticMapFileBlockManager;
+class CEngineMap;
+class CEngineStaticMapFileBlockManager;
 
 #pragma pack(push, 1)
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap {
+public:
     bool                              LockedFromMemoryRelocation; // +0x00
     unsigned char                     _pad_0x01[0x3];        // +0x01
     CEngineStaticMapFileBlockManager* FileBlockManager;      // +0x04

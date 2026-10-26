@@ -11,7 +11,7 @@
 // UnitOfMeasurement, ...}); the script-module neighbourhood (QuestData constructor at 0x00CD45A0)
 // does not single one out and the constructor has no direct callers, so the record keeps a
 // descriptive name.
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     CCharString();                         // 0x0099E4B0
 };

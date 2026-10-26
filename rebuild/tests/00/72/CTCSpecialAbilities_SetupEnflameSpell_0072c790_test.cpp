@@ -4,28 +4,28 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 class CThing;
-struct CPlayer { bool LockFlag; };
+class CPlayer { public: bool LockFlag; };
 struct CIntelligentPointerThing { CThing* m_pItem; CIntelligentPointerThing() : m_pItem(0) {} CIntelligentPointerThing(CThing* i) : m_pItem(i) {} CThing* GetPItem() const { return m_pItem; } void SetPItem(CThing* i) { m_pItem = i; } };
-struct CTCInventory { CThing* Primary; CThing* GetThingInPrimarySlot() { return Primary; } };
-struct CTCCombat { CThing* Target; CThing* GetCurrentTarget() { return Target; } };
+class CTCInventory { public: CThing* Primary; CThing* GetThingInPrimarySlot() { return Primary; } };
+class CTCCombat { public: CThing* Target; CThing* GetCurrentTarget() { return Target; } };
 class CThing { public:
     std::map<long, void*> TCs; unsigned char Flags6c; bool Dead; CPlayer* Player;
     CPlayer* GetPlayer() { return Player; }
     bool Has(long k) const { return TCs.count(k) != 0; }
     void* Get(long k) { return TCs.find(k)->second; }
 };
-struct CCombatActionBase { int Kind; CThing* Target; bool Lock; CThing* Weapon; virtual ~CCombatActionBase() {} };
-struct CCreatureAction_CastWillEnflameSpell : CCombatActionBase {
+class CCombatActionBase { public: int Kind; CThing* Target; bool Lock; CThing* Weapon; virtual ~CCombatActionBase() {} };
+class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public:
     CIntelligentPointerThing WeaponPtr;
     CCreatureAction_CastWillEnflameSpell(CThing*, CThing* t, bool l, long) { Kind = 1; Target = t; Lock = l; Weapon = 0; }
 };
 static CCombatActionBase* g_wrapped;
-struct CCombatAction_GenericStrikeResponse : CCombatActionBase {
+class CCombatAction_GenericStrikeResponse : public CCombatActionBase { public:
     CCombatAction_GenericStrikeResponse(CThing*, const char*, CCombatActionBase* a, long) { Kind = 2; g_wrapped = a; Target = a->Target; Lock = a->Lock; Weapon = ((CCreatureAction_CastWillEnflameSpell*)a)->WeaponPtr.GetPItem(); }
 };
 static int g_kind; static CThing* g_target; static bool g_lock; static CThing* g_weapon;
-struct CThingCreatureBase : CThing { bool Accept; bool SetCurrentAction(const CCombatActionBase& a) { g_kind = a.Kind; g_target = a.Target; g_lock = a.Lock; g_weapon = a.Weapon; return Accept; } };
-struct CTCSpecialAbilities { CThingCreatureBase* Creature; bool SetupEnflameSpell(); };
+class CThingCreatureBase : public CThing { public: bool Accept; bool SetCurrentAction(const CCombatActionBase& a) { g_kind = a.Kind; g_target = a.Target; g_lock = a.Lock; g_weapon = a.Weapon; return Accept; } };
+class CTCSpecialAbilities { public: CThingCreatureBase* Creature; bool SetupEnflameSpell(); };
 bool CTCSpecialAbilities::SetupEnflameSpell()
 {
     CTCInventory* inventory = 0;

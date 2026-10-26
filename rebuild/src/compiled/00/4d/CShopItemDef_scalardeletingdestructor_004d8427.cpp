@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CShopItemDef
-{
+class CShopItemDef
+{ public:
     void* vftable;
 };
 extern void* const g_CShopItemDef_vftable;

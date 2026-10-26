@@ -3,25 +3,25 @@
 // the result is whether a creature was found.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(long tlx, long tly, long brx, long bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) { }
 };
-struct CCharString { const char* PStringData; };
+class CCharString { public: const char* PStringData; };
 class CThing;
-struct CThingCreatureBase { int id; };
-struct CThingFilter_IsNot {
+class CThingCreatureBase { public: int id; };
+class CThingFilter_IsNot { public:
     CThing* Thing;
     CThingFilter_IsNot(CThing* thing) : Thing(thing) { }
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float     Range;
     CThingFilter_In2DRange(const C3DVector& pos, float range) : Pos(pos), Range(range) { }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A* F1;
     const B* F2;
     const C* F3;
@@ -29,7 +29,7 @@ template <class A, class B, class C> struct CFilter_Bind3 {
 };
 static long g_box[4]; static CThing* g_not1 = 0; static CThing* g_not2 = 0; static float g_range = 0; static float g_px = 0;
 static CThingCreatureBase g_blocker; static bool g_found = false;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class TFilter, class T>
     bool GetPFirstThingInRoughArea(const C2DBoxI& box, const TFilter& filter, T** out) const
     {
@@ -40,7 +40,7 @@ struct CThingSearchTools {
     }
 };
 static CThingSearchTools g_tools;
-struct CWorld { const CThingSearchTools* PThingSearchTools; };
+class CWorld { public: const CThingSearchTools* PThingSearchTools; };
 static CWorld g_world = { &g_tools };
 static const char* g_dummyName = 0;
 struct CTCGraphicAppearance {
@@ -70,7 +70,7 @@ struct CTCUserActionPointBase {
     CBaseIntelligentPointer PThing;
     const CWorld* GetWorld() const { return &g_world; }
 };
-struct CTCNamedUserActionPoints : CTCUserActionPointBase {
+class CTCNamedUserActionPoints : public CTCUserActionPointBase { public:
     vector<CCharString> Names;
     bool IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long index) const;
 };

@@ -7,7 +7,7 @@ typedef int (*EBUEulaProc)(const char*, const char*, const char*, int);
 static int FakeEula(const char* key, const char*, const char*, int first) { g_lastKey = key; return first == 1 ? g_result : -1; }
 static void* GetProcAddress(void*, const char*) { return g_procOk ? (void*)FakeEula : 0; }
 static int FreeLibrary(void*) { ++g_freed; return 1; }
-struct CCharStringData { const char* Text; unsigned int Length; };
+class CCharStringData { public: const char* Text; unsigned int Length; };
 class CCharString {
 public:
     CCharStringData* PStringData;
@@ -17,7 +17,7 @@ public:
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->Text; }
 };
 static CCharStringData g_keyData = { "Software\\Fable", 14 };
-struct CWideString { CCharString ConvertToCharString() const { return CCharString(&g_keyData); } };
+class CWideString { public: CCharString ConvertToCharString() const { return CCharString(&g_keyData); } };
 static CWideString g_RegistryKeyLocation;
 static const char* g_EULAFileName = "eula.txt";
 static const char* g_WarrantyFileName = "warranty.txt";

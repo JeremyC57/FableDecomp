@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Model of CEngineLayerRenderer::AddComponent (retail 0x00B2AC80): push a non-null component onto the layer's list.
-struct CEngineComponent { int id; };
+class CEngineComponent { public: int id; };
 
 static int g_overflow = 0;
 struct ComponentVector {
@@ -19,7 +19,7 @@ struct ComponentVector {
     }
 };
 
-struct CEngineLayerRenderer {
+class CEngineLayerRenderer { public:
     long Layer;
     unsigned long Flags;
     unsigned long SceneFilterFlags;

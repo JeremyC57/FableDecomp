@@ -23,12 +23,12 @@ struct CDefBase {
     }
 };
 
-struct CBalverineBattleDef : CDefBase {
+class CBalverineBattleDef : public CDefBase { public:
     unsigned char _pad08[0x3c - 0x08];
     float SecondsBetweenLunges;                 // +0x3c
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -39,7 +39,7 @@ template<class T> struct CDefPointer {
     T* operator->() const { return m_p; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     template<class T> bool GetSubDef(CDefPointer<T>& out);     // 0x008CD0D0 (this instantiation)
 };
 void* FindSubDef_CDefClassBase_GetSubDef(CDefClassBase* def);   // stand-in callee of the stand-in body below
@@ -55,7 +55,7 @@ template<class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer
 }
 #pragma auto_inline(on)
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x70];
     CDefClassBase* m_pDef;                      // +0x70
 };

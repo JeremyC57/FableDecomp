@@ -2,8 +2,8 @@
 
 // Model of CRenderManager2D::Add2DTri: each screen-space vertex is converted to viewport space without the origin offset, with Z 0 and RHW 1, and queued with a triangle record, unless the viewport is offscreen.
 struct CTVertex { float X, Y, Z, RHW; unsigned long Diffuse, Specular; float U, V; };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CTexture { int id; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CTexture { public: int id; };
 struct CInfo { bool Line, IsText; C2DBoxF Window; CTexture UploadedTexture; long BlendMode; float ZAverage; };
 
 struct CRenderManager2D {

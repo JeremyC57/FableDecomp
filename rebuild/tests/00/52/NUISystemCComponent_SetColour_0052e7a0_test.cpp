@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CRGBColour { unsigned long Colour; };
+class CRGBColour { public: unsigned long Colour; };
 struct CComponent {
     CRGBColour Colour, TargetColour, InitialColour;
     void SetColour(const CRGBColour& colour) { CRGBColour v = colour; TargetColour = v; InitialColour = v; Colour = v; }

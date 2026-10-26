@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour model of CCham::Main (00ef3aa0).
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 static int g_frame, g_terminateAt, g_startOkAt, g_scared, g_moveTo, g_routes[16], g_routeCount, g_scripting, g_releases;
 struct CHandle {
     bool IsScripting() { return g_scripting != 0; }
@@ -9,7 +9,7 @@ struct CHandle {
     void MoveToThing(const CScriptThing& t, float d, int type, bool a, bool b, bool c, bool e) { if (d == 0.0f && type == 0 && a && b && !c && e) g_moveTo = t.id; }
     void FollowPreCalculatedRoute(const CScriptThing& t, int type, bool a, bool b) { if (type == 1 && a && !b && g_routeCount < 16) g_routes[g_routeCount++] = t.id; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frame; }
     bool StartScriptingEntity(const CScriptThing&, CHandle&, int priority) { if (priority == 4 && g_frame >= g_startOkAt) { g_scripting = 1; return true; } return false; }
     CScriptThing GetThingWithScriptName(const char* name) const { CScriptThing t; t.id = std::strcmp(name, "InMap1") == 0 ? 1 : std::strcmp(name, "InMap2") == 0 ? 2 : 0; return t; }

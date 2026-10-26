@@ -15,11 +15,11 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
     return (last == first) ? result
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                     // +0x00
     unsigned long m_length;                     // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
 };
 int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
@@ -47,10 +47,10 @@ public:
     bool IsAlive() const { return m_dead ? false : true; }   // IS_THING_ALIVE: `not al ; test al,1`
 };
 class CThingPlayerCreature;
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0 (CIntelligentPointer at +0x2c)
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();             // 0x00449970
 };
 struct SThingListNode {                         // STLport list<CThing*> node
@@ -71,7 +71,7 @@ struct CThingVector {                           // STLport vector<CThing*> (12 b
         _M_finish = i;
     }
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char   _pad00[0x18];
     SThingListNode* Things;                     // +0x18 STLport list<CThing*> sentinel (all things)
     unsigned char   _pad1c[0x30 - 0x1c];

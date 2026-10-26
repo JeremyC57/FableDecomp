@@ -12,13 +12,13 @@
 // untouched. Same shape as the landed IsContainingPoint (0x00A75430).
 #include "engine/CContainmentVolume.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CIsContainingSphere {
+class CIsContainingSphere { public:
     C3DVector Point;
     float     Radius;
     CIsContainingSphere(const C3DVector& point, float radius) : Point(point), Radius(radius) { }

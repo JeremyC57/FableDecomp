@@ -11,7 +11,7 @@ struct Sub {
     void nonvirt_dtor();
 };
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     int   field0;      // +0
     Sub   sub;         // +4
 };

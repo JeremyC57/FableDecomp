@@ -2,12 +2,12 @@
 // callees; checks the obstruction kill, the def-name lookup, the explosion spawned at the summoner and the exclusion.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
-struct CThing;
+class C3DVector { public: float x, y, z; };
+class CThing;
 static CThing* g_excluded = 0; static int g_excl = 0;
 struct CExplosionDriver { void AddExcludedThing(CThing* t) { g_excluded = t; ++g_excl; } };
 static int g_kills = 0;
-struct CThing {
+class CThing { public:
     unsigned char m_driverFlags; CExplosionDriver* m_pDriver; unsigned char m_flags91; C3DVector m_pos;
     const C3DVector& GetPosition() const { return m_pos; }
     void Kill(bool silent) { if (silent) ++g_kills; }
@@ -16,14 +16,14 @@ struct CThing {
 static CThing g_explosion; static long g_index = 0; static const C3DVector* g_at = 0; static bool g_spawn = true;
 CThing* CreateThing(long defIndex, const C3DVector& position) { g_index = defIndex; g_at = &position; return g_spawn ? &g_explosion : 0; }
 static char g_def[64];
-struct CCharString { const char* m_pData; CCharString(const char* t, long) : m_pData(t) { } ~CCharString() { } };
-struct CGameDefinitionManager {
+class CCharString { public: const char* m_pData; CCharString(const char* t, long) : m_pData(t) { } ~CCharString() { } };
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; }
     long GetDefGlobalIndexFromName(const CCharString& name) { std::strcpy(g_def, name.m_pData); return 1234; }
 };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase { CBaseIntelligentPointer PCreature; };
-struct CCreatureAction_SummonerFlameSlice : CCombatActionBase {
+class CCombatActionBase { public: CBaseIntelligentPointer PCreature; };
+class CCreatureAction_SummonerFlameSlice : public CCombatActionBase { public:
     CBaseIntelligentPointer PObstruction;
     void PerformAction();
 };

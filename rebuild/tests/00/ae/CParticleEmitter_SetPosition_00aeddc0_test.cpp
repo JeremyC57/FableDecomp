@@ -1,8 +1,8 @@
 // behaviour test for 0x00AEDDC0 CParticleEmitter::SetPosition: non-2D emitters take the interpolator and set both matrix translations
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct C3DPositionInterpolator { C3DVector StartPosition, EndPosition; };
-struct CMatrix3x4 { float m[9]; float PositionX, PositionY, PositionZ;
+class C3DVector { public: float X, Y, Z; };
+class C3DPositionInterpolator { public: C3DVector StartPosition, EndPosition; };
+class CMatrix3x4 { public: float m[9]; float PositionX, PositionY, PositionZ;
     void SetPosition(const C3DVector& v) { PositionX = v.X; PositionY = v.Y; PositionZ = v.Z; } };
 struct CParticleEmitter {
     unsigned short Emitter2D : 1; C3DPositionInterpolator PositionInterpolator; CMatrix3x4 Transform, EndTransform;

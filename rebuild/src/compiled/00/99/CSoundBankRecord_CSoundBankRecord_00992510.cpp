@@ -15,7 +15,7 @@ struct SCountBlock {                         // the shared count block of CCount
 };
 
 template <class T>
-struct CCountedPointer {                     // {object, count block}
+class CCountedPointer { public:                     // {object, count block}
     T*           m_pObject;
     SCountBlock* m_pCount;
     ~CCountedPointer()
@@ -35,7 +35,7 @@ struct CCountedPointer {                     // {object, count block}
 class CCharString {
 public:
     ~CCharString();                          // 0x0099EAE0
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
 };
 
 struct CSoundBank;

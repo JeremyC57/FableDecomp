@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CRegion {
+class CRegion { public:
     void* f0;
 };
 

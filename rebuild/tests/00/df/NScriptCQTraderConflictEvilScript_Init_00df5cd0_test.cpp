@@ -4,12 +4,12 @@
 // activation, timer and member/master-data resets happen in retail order with retail values.
 static char g_log[4096];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString {
+class CCharString { public:
     char Text[64];
     CCharString(const char* t) { std::strcpy(Text, t); }
     CCharString& operator=(const char* t) { std::strcpy(Text, t); return *this; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void SetTimer(long timer, long seconds) { char b[64]; std::sprintf(b, "T:%ld:%ld", timer, seconds); Log(b); }
     void AddQuestRegion(const CCharString& q, const CCharString& r) { char b[128]; std::sprintf(b, "R:%s:%s", q.Text, r.Text); Log(b); }
     void ActivateQuest(const CCharString& q) { char b[128]; std::sprintf(b, "A:%s", q.Text); Log(b); }
@@ -17,11 +17,11 @@ struct CGameScriptInterface {
     { char b[160]; std::sprintf(b, "B:%s:%ld:%ld:%ld:%d:%s:%ld", d.Text, id, cost, reward, (int)flag, extra.Text, ev); Log(b); }
 };
 static CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CTimer {                                         // a script timer: the interface's timer index
+class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
     void SetTime(long seconds) { const CTimer* const& self = this; g_pGameScriptInterface->SetTimer(self->Index, seconds); }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad0[0x1c8];
     long TraderConflictEvilNakedBoastCost;              // +0x1C8
     long TraderConflictEvilNakedBoastReward;            // +0x1CC
@@ -41,7 +41,7 @@ struct CQ_SunnyvaleMasterData {
     bool TCEKeepBanditFollowerAlive;                    // +0x128
     bool TCEMadeTimeLimit;                              // +0x129
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
 struct CQ_TraderConflictEvilScript : CScriptBase {

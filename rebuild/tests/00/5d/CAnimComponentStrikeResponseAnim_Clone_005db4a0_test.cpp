@@ -1,13 +1,13 @@
 #include <cstdio>
 
-struct CAnimComponentBase;
+class CAnimComponentBase;
 
 struct SubObj {
     int marker;
     void copyFrom(SubObj* src);
 };
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     virtual void v0();
     virtual void v1();
     virtual void v2();
@@ -17,7 +17,7 @@ struct CAnimComponentBase {
     SubObj sub;
 };
 
-struct CAnimComponentStrikeResponseAnim : public CAnimComponentBase {
+class CAnimComponentStrikeResponseAnim : public CAnimComponentBase { public:
     CAnimComponentBase* Clone() const;
 };
 

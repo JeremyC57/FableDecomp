@@ -1,4 +1,4 @@
-struct CCreatureAction_BanditKingLunge {
+class CCreatureAction_BanditKingLunge { public:
     void* vftable;
 };
 

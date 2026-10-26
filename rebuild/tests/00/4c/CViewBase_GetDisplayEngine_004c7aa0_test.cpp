@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CDisplayEngine;
+class CDisplayEngine;
 
 struct CViewBase {
     char pad[0x24];

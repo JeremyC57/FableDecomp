@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct C3DAnimationStateAlpha;
+class C3DAnimationStateAlpha;
 
 struct SubMember
 {
@@ -9,8 +9,8 @@ struct SubMember
     void AddAlpha(C3DAnimationStateAlpha* alpha);
 };
 
-struct C3DAnimationBlendState
-{
+class C3DAnimationBlendState
+{ public:
     void* m_head;      // offset +0
     SubMember m_sub;   // offset +4
     int resetCount;

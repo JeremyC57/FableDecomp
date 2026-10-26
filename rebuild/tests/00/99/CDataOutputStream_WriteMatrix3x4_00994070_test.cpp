@@ -54,10 +54,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CCharStringData* NewLine_PStringData;                    // +0x04 CCharString::PStringData
 };
@@ -76,8 +76,8 @@ FABLE_STATIC_ASSERT(offsetof(CDataOutputStream, NewLine_PStringData) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -85,8 +85,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -171,10 +171,10 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                         // RTTI base vtable 0x01231710
 };
 
@@ -189,7 +189,7 @@ struct CDataStream : CBaseClassNonCopyable {
     virtual void Close() = 0;                             // slot 3
 };
 
-struct CDataOutputStream : CDataStream {
+class CDataOutputStream : public CDataStream { public:
     virtual ~CDataOutputStream();                  // slot 0, retail destructor 0x00996F00
     CCharString NewLine;                           // +0x04, actual CCharString member
     virtual void Write(const void* data, long length) = 0; // slot 4

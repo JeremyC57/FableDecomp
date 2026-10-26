@@ -8,11 +8,11 @@ template <class T> struct vector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-struct CMainGameComponent { unsigned long WorldSeed; };
+class CMainGameComponent { public: unsigned long WorldSeed; };
 static CMainGameComponent g_component;
 namespace NGraphicAppearance {
-    struct CPrimitive;
-    struct CAGraphicAppearanceComponent {
+    class CPrimitive;
+    class CAGraphicAppearanceComponent { public:
         virtual void v00() { }
         CAGraphicAppearanceComponent() { }
     };
@@ -21,7 +21,7 @@ static const void* g_registered = 0; static int g_registrations = 0;
 struct CTCGraphicAppearance {
     void RegisterComponent(NGraphicAppearance::CAGraphicAppearanceComponent* component) { g_registered = component; ++g_registrations; }
 };
-struct CThing {
+class CThing { public:
     CTCGraphicAppearance* PTCGraphicAppearance;
     const CMainGameComponent& PeekComponent() const { return g_component; }
     unsigned long* GetPWorldSeed() const { return const_cast<unsigned long*>(&PeekComponent().WorldSeed); }
@@ -32,25 +32,25 @@ inline unsigned long GFNextRandomSeed(unsigned long* seed)
     *seed = GFROR13(*seed);
     return *seed;
 }
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() { }
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
     CTCBase(CThing* owner) : ParentThing(owner), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
 };
-struct CTCSkeletalMorph;
-struct CTCAppearanceMorphBase {
-    struct CMeshMorphSet { vector<long> MeshMorphs; vector<long> TextureMorphs; };
+class CTCSkeletalMorph;
+class CTCAppearanceMorphBase { public:
+    class CMeshMorphSet { public: vector<long> MeshMorphs; vector<long> TextureMorphs; };
 };
 static int g_resets = 0;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Object;
     void* Info;
     CCountedPointer() : Object(0), Info(0) { }
     void Reset(T* object) { ++g_resets; Object = object; }
 };
-struct CTCRandomAppearanceMorph : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {
+class CTCRandomAppearanceMorph : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:
     CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet> PMeshMorphSet;
     unsigned long     Seed;
     vector<NGraphicAppearance::CPrimitive*> PrimHandles;

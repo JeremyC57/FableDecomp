@@ -7,13 +7,13 @@
 // The manifest label (CAnimatedBlock::DiscardDeviceIndependentResources) is propagated from the +0x2c body
 // @ 0x00A8EE90; this body resets a counted pointer at +0x34, so it is a sibling N3DPrimitive block class
 // (not identified in the PDB layouts) -- modelled by its address.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long m_refCount;                            // +0x04
 };
 
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     void Release()
     {

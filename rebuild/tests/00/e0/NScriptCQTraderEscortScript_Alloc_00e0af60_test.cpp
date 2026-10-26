@@ -3,8 +3,8 @@
 struct Interface { long nextTimer; long RegisterTimer() { return nextTimer++; } };
 static Interface g_interface;
 static int g_strings = 0;
-struct CTimer { long Index; CTimer() : Index(g_interface.RegisterTimer()) {} };
-struct CCharString { const char* PStringData; CCharString() : PStringData("") { ++g_strings; } };
+class CTimer { public: long Index; CTimer() : Index(g_interface.RegisterTimer()) {} };
+class CCharString { public: const char* PStringData; CCharString() : PStringData("") { ++g_strings; } };
 struct Base { Interface* Game; void* MasterScriptData; Base(void* data, Interface& game) : Game(&game), MasterScriptData(data) {} };
 struct Script : Base {
     CTimer CommentTimer; long a, b; bool f[7]; long c, d, e, g; bool h[6]; long TimesBantered;

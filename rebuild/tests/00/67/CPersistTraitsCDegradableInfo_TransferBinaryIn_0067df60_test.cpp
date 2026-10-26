@@ -48,9 +48,9 @@ struct TestStream {
 static void PutLong(unsigned char* p, int v) { std::memcpy(p, &v, 4); }
 static void PutFloat(unsigned char* p, float v) { std::memcpy(p, &v, 4); }
 #pragma pack(push, 1)
-struct CEngineGraphic { unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CEngineGraphic { public: unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
 #pragma pack(pop)
-struct CDegradableInfo { float HealthPercentage; CEngineGraphic EngineGraphic; int SmashParticleEmitter; bool BlocksNavigation; };
+class CDegradableInfo { public: float HealthPercentage; CEngineGraphic EngineGraphic; int SmashParticleEmitter; bool BlocksNavigation; };
 static void TransferBinaryIn(TestStream* stream, CDegradableInfo* value)
 {
     { float f; stream->Read(&f, 4); value->HealthPercentage = f; }

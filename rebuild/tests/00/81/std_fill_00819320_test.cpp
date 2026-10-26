@@ -1,7 +1,7 @@
 // Behaviour test for 0x00819320 fill<CTextureManagerPoolInfo> (model copy).
 #include <cstdio>
-struct CPixelFormat { int FormatIndex; };
-struct CTextureManagerPoolInfo {
+class CPixelFormat { public: int FormatIndex; };
+class CTextureManagerPoolInfo { public:
     unsigned int Width, Height; CPixelFormat PixelFormat; bool UseMipmaps; unsigned int Count;
 };
 static void fill_model(CTextureManagerPoolInfo* first, CTextureManagerPoolInfo* last, const CTextureManagerPoolInfo& val)

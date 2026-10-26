@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_orbDef;
 struct CLightningOrbDefPointer { const void* m_pDef; };
-struct CThingBaseDef {
+class CThingBaseDef { public:
     long m_count; int destroyed; int lookups;
     virtual ~CThingBaseDef() { }
     virtual void Destroy() { ++destroyed; }
@@ -17,8 +17,8 @@ struct CThingBaseDefPointer {
     CThingBaseDef* operator->() const { return m_pDef; }
 };
 struct CTCGraphicAppearance { unsigned char m_updateFlags; };
-struct CThing { CTCGraphicAppearance* PTCGraphicAppearance; CThingBaseDefPointer PBaseDef; CThing(CThingBaseDef* d) : PBaseDef(d) { } };
-struct CTCLightningOrb {
+class CThing { public: CTCGraphicAppearance* PTCGraphicAppearance; CThingBaseDefPointer PBaseDef; CThing(CThingBaseDef* d) : PBaseDef(d) { } };
+class CTCLightningOrb { public:
     CThing* m_pThing; CLightningOrbDefPointer PDef;
     void LoadDefAndFlagAppearance()
     {

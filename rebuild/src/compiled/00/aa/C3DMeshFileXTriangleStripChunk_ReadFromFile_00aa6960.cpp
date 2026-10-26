@@ -27,13 +27,13 @@ struct CInputStreamAccess : CDataInputStream {
 };
 
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
  T* Begin;T* End;T* Capacity;
  unsigned long Size()const{return (unsigned long)(End-Begin);}
  T* GetData(){return Size()>0?Begin:(T*)this;}
  void Resize(unsigned long,const T&); // 0x00517900
 };
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 struct C3DMeshFileXTriangleStripChunkMethods : C3DMeshFileXTriangleStripChunk {
  CArray<unsigned short>& Indices(){return *(CArray<unsigned short>*)StripVertices;}
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);

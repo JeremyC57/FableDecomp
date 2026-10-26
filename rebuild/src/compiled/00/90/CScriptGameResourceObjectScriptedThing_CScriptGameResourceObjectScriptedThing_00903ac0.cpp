@@ -16,7 +16,7 @@
 // Leaf: ??1CScriptGameResourceObjectScriptedThing
 void* __cdecl operator new(unsigned int size);       // 0x00BFEA1A
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                               // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -65,7 +65,7 @@ struct CActionStopScripting : CActionBase {          // vtable 0x0128D788, 0xc b
 };
 }
 
-struct CTCScriptedControl {                          // interface 0x1f component
+class CTCScriptedControl { public:                          // interface 0x1f component
     unsigned char _pad00[0x18];
     bool          Locked;                            // +0x18
     void AddAction(NTCScriptedControl::CActionBase* action);   // 0x007137D0
@@ -78,7 +78,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);          // +4
     void* m_pObject;                                 // +8
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*           Data;                               // +0
     SCountBlock* Info;                               // +4
     ~CCountedPointer()
@@ -95,14 +95,14 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual ~CBaseObject();                          // 0x0099A430
     void* IntelligentPointer;                        // +0x04
 };
-struct CScriptGameResourceObjectBase : CBaseObject { // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public: // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08 / +0x0c
 };
 
@@ -115,8 +115,8 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
 };
 
-struct CGameScriptInterface;
-struct CScriptGameResourceObjectScriptedThing : CScriptGameResourceObjectScriptedThingBase {   // vtable 0x0128D86C
+class CGameScriptInterface;
+class CScriptGameResourceObjectScriptedThing : public CScriptGameResourceObjectScriptedThingBase { public:   // vtable 0x0128D86C
     CGameScriptInterface* ScriptInterface;           // +0x10
     CIntelligentPointer   PThing;                    // +0x14
     long                  ScriptID;                  // +0x1c

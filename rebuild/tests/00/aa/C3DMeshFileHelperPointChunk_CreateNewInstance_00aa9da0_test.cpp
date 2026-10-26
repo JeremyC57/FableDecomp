@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CCharString { char* m_pStringData; CCharString() : m_pStringData(0) {} };
-struct C3DVector { float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
+class CCharString { public: char* m_pStringData; CCharString() : m_pStringData(0) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
 static int g_inits = 0;
 struct C3DMeshFileChunk {
     char m_type[5];
@@ -11,7 +11,7 @@ struct C3DMeshFileChunk {
     virtual C3DMeshFileChunk* CreateNewInstance() const = 0;
     virtual C3DMeshFileChunk* InitNewInstance(C3DMeshFileChunk* chunk) const { ++g_inits; return chunk; }
 };
-struct C3DMeshFileHelperPointChunk : C3DMeshFileChunk {
+class C3DMeshFileHelperPointChunk : public C3DMeshFileChunk { public:
     C3DVector Position; long SubMeshIndex; long BoneIndex; CCharString Name;
     C3DMeshFileHelperPointChunk() : C3DMeshFileChunk("HPNT"), SubMeshIndex(-1), BoneIndex(-1) {}
     C3DMeshFileChunk* CreateNewInstance() const { return InitNewInstance(new C3DMeshFileHelperPointChunk); }

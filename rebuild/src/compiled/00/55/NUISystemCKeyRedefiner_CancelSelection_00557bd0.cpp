@@ -12,7 +12,7 @@
 // NUISystemCKeyRedefiner_SetAction_005586a0.cpp). Bytes unchanged.
 // Shape: `this` in esi compared against the global, then esi advanced to the control base (+4) for the three calls, `ret`.
 namespace NUISystem {
-struct CObserver;
+class CObserver;
 struct CClickableBase_00557bd0 {                 // the second base (vptr at +4): the clickable / observer side
     virtual void v000();
     virtual void v001();
@@ -27,13 +27,13 @@ struct CObservable {                              // NUISystem::CObservable vtab
     virtual void AddExclusiveObserver(CObserver* observer);        // slot 3 (0x0055C930)
     virtual void RemoveExclusiveObserver(CObserver* observer);     // slot 4 (0x0055C940)
 };
-struct CManager : CObservable {                  // vtable 0x01230134
+class CManager : public CObservable { public:                  // vtable 0x01230134
     static CManager* __fastcall GetInstance();    // 0x0041E5F2
 };
 struct CKeyRedefinerRoot_00557bd0 {               // the first base (vptr at +0)
     virtual void v00();
 };
-struct CKeyRedefiner : CKeyRedefinerRoot_00557bd0, CClickableBase_00557bd0 {
+class CKeyRedefiner : public CKeyRedefinerRoot_00557bd0, public CClickableBase_00557bd0 { public:
     void UpdateKeyText();                          // 0x00557A10
     void CancelSelection();
 };

@@ -4,11 +4,11 @@
 #include "fable_string.h"
 #else
 #define __cdecl
-struct CCharStringData;
+class CCharStringData;
 class CCharString { CCharStringData* storage_; public: CCharString(const char*,long); ~CCharString(); operator const char*() const; };
 #endif
 struct CVertexShaderData { virtual ~CVertexShaderData(); void* VertexDeclaration;void* VertexShader;const void* FormatDecl;long ReferenceCount; long RemoveReference(){return --ReferenceCount;} void ReleaseReference(){if(--ReferenceCount==0)delete this;} };
-struct CShaderBase { virtual ~CShaderBase(){} };
+class CShaderBase { public: virtual ~CShaderBase(){} };
 struct CVertexShaderNativeView : CShaderBase {
  CVertexShaderData* Data;
  CVertexShaderNativeView(); //00a62fb0
@@ -16,14 +16,14 @@ struct CVertexShaderNativeView : CShaderBase {
  CVertexShaderNativeView& operator=(const CVertexShaderNativeView& other) { CVertexShaderData* old=Data; if(old)old->ReleaseReference(); Data=other.Data; ++Data->ReferenceCount;return *this; }
  virtual ~CVertexShaderNativeView(){if(Data){ CVertexShaderData* current=Data; if(!current->RemoveReference())delete current;}}
 };
-struct CShaderResource { CVertexShaderNativeView* GetVertexShader(CVertexShaderNativeView* result,const CCharString&); }; //00a5d5f0 (propagated GetPixelShader label)
+class CShaderResource { public: CVertexShaderNativeView* GetVertexShader(CVertexShaderNativeView* result,const CCharString&); }; //00a5d5f0 (propagated GetPixelShader label)
 struct CEngineData { unsigned char Prefix[0x29c0];CShaderResource* ShaderResource; CShaderResource* GetShaderResource(){return ShaderResource;} };
 extern CEngineData* g_pEngineData; //01436e98
 
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t);
 struct CEngineSceneArray;
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
  virtual ~CEnginePrimitiveManager();
  CEngineSceneArray* SceneList;bool Enable;
  CEnginePrimitiveManager(CEngineSceneArray*);
@@ -35,7 +35,7 @@ struct CFlareBufferMap {
  CFlareBufferMap() { Header=0;Header=static_cast<SFlareBufferTreeNode*>(malloc(sizeof(SFlareBufferTreeNode)));Count=0;Header->Colour=0;Header->Parent=0;Header->Left=Header;Header->Right=Header; }
  ~CFlareBufferMap();
 };
-struct CEnginePrimitiveManagerFlareSprites:CEnginePrimitiveGroupManager {
+class CEnginePrimitiveManagerFlareSprites:public CEnginePrimitiveGroupManager { public:
  CFlareBufferMap FlareVertexBuffers;
  CVertexShaderNativeView VertexShaderFlareTest;
  float FadeInSpeed;

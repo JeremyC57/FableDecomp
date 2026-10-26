@@ -5,7 +5,7 @@ static void* g_this = 0;
 
 struct Sub { char pad[4]; };
 struct Inner { char pad[0x1ec]; Sub sub; };
-struct CEngineResourceManager { char pad[0x10]; Inner* field10; };
+class CEngineResourceManager { public: char pad[0x10]; Inner* field10; };
 
 void model_update(Sub* self) { g_called++; g_this = self; }
 

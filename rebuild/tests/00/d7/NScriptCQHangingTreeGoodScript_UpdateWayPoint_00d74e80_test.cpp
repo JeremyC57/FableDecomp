@@ -15,10 +15,10 @@ public:
 static CCharString GFIntToCharString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CCharString(b); }
 static CCharString operator+(const char* l, const CCharString& r) { char b[64]; std::strcpy(b, l); std::strcat(b, r.Text); return CCharString(b); }
 
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static int g_pointeeDeletes = 0;
 static void DeletePointee(void*) { ++g_pointeeDeletes; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     void Release()
     {
@@ -35,8 +35,8 @@ template <class T> struct CCountedPointer {
     }
     ~CCountedPointer() { Release(); Data = 0; Info = 0; }
 };
-struct CBaseClass { CBaseClass() {} virtual ~CBaseClass() {} };
-struct CScriptThing : CBaseClass {
+class CBaseClass { public: CBaseClass() {} virtual ~CBaseClass() {} };
+class CScriptThing : public CBaseClass { public:
     CCountedPointer<CScriptThing> PImp;
     bool alive;
     CScriptThing() { PImp.Data = 0; PImp.Info = 0; alive = false; }
@@ -46,7 +46,7 @@ struct CScriptThing : CBaseClass {
     virtual bool IsAlive() const { return alive && PImp.Data != 0; }
 };
 static CScriptThing g_pointee;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     char lastName[64];
     virtual CScriptThing GetThingWithScriptName(const CCharString& name)
     {

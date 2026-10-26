@@ -5,7 +5,7 @@
 // Reads: the thing's dead bit (+0x91 & 1, the IS_THING_DEAD test of the landed 0x00836BE0) and its flags at
 // +0x30 (bit 0x40000). Shape: nested ifs returning false, shared `mov al,1` true tail; the pointer address
 // is formed once into esi. No engine header exists for this class.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x30];
     unsigned long Flags;                        // +0x30
     unsigned char _pad34[0x91 - 0x34];          // +0x34
@@ -18,7 +18,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_GenericStrikeResponseBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CBaseIntelligentPointer PAttacker;          // +0x114

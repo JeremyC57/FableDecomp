@@ -4,7 +4,7 @@
 struct CSub60 { void dtor(); };
 struct CBase { void dtor(); };
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     unsigned char _pad_0x0[0x3c];
     void* p3c;   // +0x3c
     unsigned char _pad_0x40[0x8];

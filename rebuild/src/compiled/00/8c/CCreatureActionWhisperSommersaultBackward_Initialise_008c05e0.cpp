@@ -6,14 +6,14 @@
 // Shape: the landed "scoped name + base Initialise" family (0x008CC760) with one byte store scheduled between `mov ecx,esi` and the base call.
 #include "fable_string.h"
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _body[0x114 - 4];
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_WhisperSommersaultBackward : CCombatActionBase {
+class CCreatureAction_WhisperSommersaultBackward : public CCombatActionBase { public:
     unsigned char m_hasLanded;              // +0x114
     virtual void Initialise();
 };

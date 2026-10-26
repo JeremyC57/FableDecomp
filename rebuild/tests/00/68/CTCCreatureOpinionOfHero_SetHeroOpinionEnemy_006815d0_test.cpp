@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     char pad[0x33c];
     int m_opinionValue;   // +0x33c
     char pad2[0x342 - 0x33c - 4];

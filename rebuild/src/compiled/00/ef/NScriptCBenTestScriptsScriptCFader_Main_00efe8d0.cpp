@@ -14,13 +14,13 @@
 //   conversion temporaries keeps the destruction flags in ebx (`or ebx,1/2`, zeroed with the first string's frame word
 //   at entry) and the condition in a frame byte; the filter is a block-scoped polymorphic object (vtable stored before the
 //   member copy) whose out-of-line destructor runs at the end of its block.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
@@ -90,7 +90,7 @@ namespace N_00ef7ab0 { struct CIsThingAlive {                                  /
 }; } using N_00ef7ab0::CIsThingAlive;
 
 namespace NScript {
-struct CBenTestScriptsScript {
+class CBenTestScriptsScript { public:
     void FadeEntityOut(const CScriptThing& thing, bool fadeOut);   // 0x00EFE9F0
     class CFader;
 };

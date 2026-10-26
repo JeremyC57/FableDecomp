@@ -14,9 +14,9 @@
 // register allocation, so the compare disappears but the callee-saved copy stays (a plain dropped result
 // emits no `mov edi,eax`). The dead flag is bit 0 of the thing's byte at +0x91. No engine header for this class; layout local, names from the
 // PDB pattern (PFamilyMember descriptive).
-struct CThingAICreature;
+class CThingAICreature;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
 };
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                     // 0x00A01B50
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];              // +0x04..+0xa7
     ~CCreatureActionBase();                 // 0x00693EF0
@@ -37,12 +37,12 @@ namespace N_00933cc0 { struct CCreatureAction_AlertToPlayer : CCreatureActionBas
     CCreatureAction_AlertToPlayer(CThingAICreature* creature);     // 0x00933CC0
 }; } using N_00933cc0::CCreatureAction_AlertToPlayer;
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;             // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

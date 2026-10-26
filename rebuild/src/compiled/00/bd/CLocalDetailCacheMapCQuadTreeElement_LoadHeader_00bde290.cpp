@@ -13,7 +13,7 @@
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -35,11 +35,11 @@ struct CDataInputStream {
         }
     }
 };
-struct CMemoryDataInputStream : CDataInputStream {
+class CMemoryDataInputStream : public CDataInputStream { public:
     unsigned char* StreamSource;                        // +0x18
 };
 
-struct C3DBoundingSphere {                              // centre + radius
+class C3DBoundingSphere { public:                              // centre + radius
     float X, Y, Z, Radius;
     C3DBoundingSphere() : X(0), Y(0), Z(0), Radius(0) { }
 };
@@ -54,9 +54,9 @@ struct CQuadTreeElementFileHeader {                     // 0x2c bytes on disk
     unsigned short MapX, MapY, Width, Height;           // +0x24
 };
 
-struct CLocalDetailCacheMap {
-    struct CObjectCacheGroupCollection;
-    struct CQuadTreeElement {                           // PDB layout (76 bytes)
+class CLocalDetailCacheMap { public:
+    class CObjectCacheGroupCollection;
+    class CQuadTreeElement { public:                           // PDB layout (76 bytes)
         virtual ~CQuadTreeElement();                    // slot 0
         CObjectCacheGroupCollection* ObjectCacheGroupCollections;   // +0x04
         CQuadTreeElement*  Children[4];                 // +0x08

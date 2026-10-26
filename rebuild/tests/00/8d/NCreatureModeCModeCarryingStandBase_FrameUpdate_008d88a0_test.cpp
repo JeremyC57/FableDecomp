@@ -2,16 +2,16 @@
 // main anim is of type 1, else add the carrying anim when the mode has one and it is not already playing
 #include <cstdio>
 static int g_base = 0, g_removed = 0, g_added = 0, g_addIndex = -2;
-struct CAnimInit { long AnimType, Arg24, AnimIndex, Mode; bool Flag05; unsigned long Flags; long Percent; float Blend[2];
+class CAnimInit { public: long AnimType, Arg24, AnimIndex, Mode; bool Flag05; unsigned long Flags; long Percent; float Blend[2];
     CAnimInit(long t, long a, long i, long m, bool f, unsigned long fl, long p) : AnimType(t), Arg24(a), AnimIndex(i), Mode(m), Flag05(f), Flags(fl), Percent(p) { Blend[0] = Blend[1] = 0.0f; } };
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char CurrentAnimType; bool hasCombo;
     void* FindCombinationAnim(long type) { return (type == 0x18 && hasCombo) ? this : 0; }
     void AddCombinationAnim(const CAnimInit& init, long, long, bool, bool) { ++g_added; g_addIndex = init.AnimIndex; if (init.AnimType != 0x18 || !init.Flag05 || init.Percent != 100) g_addIndex = -3; }
     void RemoveCombinationAnimsOfType(long type) { if (type == 0x18) ++g_removed; }
 };
-struct CTCAnimationComplex { CAnimateThing anim; CAnimateThing& GetAnimation() { return anim; } };
-struct CThing { CTCAnimationComplex* tc; bool GetInterface(CTCAnimationComplex** out, long type) { if (type == 0x5a) { *out = tc; return true; } return false; } };
+class CTCAnimationComplex { public: CAnimateThing anim; CAnimateThing& GetAnimation() { return anim; } };
+class CThing { public: CTCAnimationComplex* tc; bool GetInterface(CTCAnimationComplex** out, long type) { if (type == 0x5a) { *out = tc; return true; } return false; } };
 struct CModeCarryingStandBase {
     CThing* ParentThing; long carryIndex;
     void BaseFrameUpdate() { ++g_base; }

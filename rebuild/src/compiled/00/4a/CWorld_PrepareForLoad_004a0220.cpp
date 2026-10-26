@@ -22,7 +22,7 @@
 // Shape: the atmos pointer is a CCountedPointer member with an inline Clear() and the handle vector an inline clear()
 // over erase(begin(), end()) (open-coded forms schedule the environment load and the vector words differently).
 // Opt: /O2 (16-aligned entry).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -62,7 +62,7 @@ public:
     void TransitionToDefaultTheme(long channel, float time);   // 0x006B3950
 };
 class CAtmosProcess;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Clear()
@@ -90,18 +90,18 @@ class CDisplayEngine {
 public:
     void PrepareForLoad();                              // 0x00434AD0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                     // +0x28
 };
 struct CMessageList {
     void clear();                                       // 0x004A9CF0
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void*        _vptr;
     CMessageList Messages;                              // +0x04
 };
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 namespace std {
 template <class T> class vector {
 public:

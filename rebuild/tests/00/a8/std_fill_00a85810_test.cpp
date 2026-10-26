@@ -20,11 +20,11 @@ struct pair {
 };
 }
 template <class K, class V>
-struct CKeyPairCompareLess {
+class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 template <class K, class V, class Compare>
-struct CVectorMap {                             // retail 16 bytes
+class CVectorMap { public:                             // retail 16 bytes
     std::vector<std::pair<K, V> > Data;         // +0x00
     Compare                       Comparator;   // +0x0C (empty)
     bool                          Dirty;        // +0x0D

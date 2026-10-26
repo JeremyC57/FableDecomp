@@ -2,7 +2,7 @@
 // by-value CScriptThing copy adding a reference.
 #include <cstdio>
 struct Info { long count; };
-struct CScriptThing { void* Data; Info* InfoP; CScriptThing() : Data(0), InfoP(0) {} CScriptThing(const CScriptThing& o) : Data(o.Data), InfoP(o.InfoP) { if (InfoP) ++InfoP->count; } };
+class CScriptThing { public: void* Data; Info* InfoP; CScriptThing() : Data(0), InfoP(0) {} CScriptThing(const CScriptThing& o) : Data(o.Data), InfoP(o.InfoP) { if (InfoP) ++InfoP->count; } };
 static int g_order[8]; static int g_n = 0; static long g_seenCount = 0;
 struct GSI {
     void SetIsThingForcePushable(const CScriptThing&, bool b) { g_order[g_n++] = b ? -1 : 745; }

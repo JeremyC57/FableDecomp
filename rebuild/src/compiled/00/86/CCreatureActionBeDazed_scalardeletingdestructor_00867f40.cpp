@@ -1,4 +1,4 @@
-struct CCreatureAction_BeDazed {
+class CCreatureAction_BeDazed { public:
     void* vftable;
 };
 

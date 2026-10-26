@@ -10,7 +10,7 @@ struct CScriptDefinitionManagerBase {
     ~CScriptDefinitionManagerBase();                          // 0x00C33120
 };
 
-struct CScriptDefinitionManager : CScriptDefinitionManagerBase {                 // vtable 0x012B4F84
+class CScriptDefinitionManager : public CScriptDefinitionManagerBase { public:                 // vtable 0x012B4F84
     void Shutdown_00c3c720();                       // 0x00C3C720
     ~CScriptDefinitionManager();
 };

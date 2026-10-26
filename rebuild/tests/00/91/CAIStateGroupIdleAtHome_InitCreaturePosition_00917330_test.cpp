@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour model of CAIStateGroup_IdleAtHome::InitCreaturePosition @ 0x00917330.
-struct CThingBuilding { int x; };
+class CThingBuilding { public: int x; };
 struct CBaseIntelligentPointer { virtual void v00() {} CThingBuilding* m_pItem; CThingBuilding* GetPItem() { return m_pItem; } };
 static CThingBuilding* g_placedNear = 0; static float g_radius = 0; static bool g_placeResult = true;
-struct CThingAICreature { unsigned char _pad[0x168]; CBaseIntelligentPointer PHome; CThingBuilding* GetPHome() { return PHome.GetPItem(); }
+class CThingAICreature { public: unsigned char _pad[0x168]; CBaseIntelligentPointer PHome; CThingBuilding* GetPHome() { return PHome.GetPItem(); }
     bool AutoPlaceNearBuilding(CThingBuilding* b, float r) { g_placedNear = b; g_radius = r; return g_placeResult; } };
-struct CAIBrain { unsigned char _pad[0x18]; CThingAICreature* PCreature; };
-struct CAIStateGroupBase { virtual void v00() {} CAIBrain* PBrain; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingAICreature* PCreature; };
+class CAIStateGroupBase { public: virtual void v00() {} CAIBrain* PBrain; };
 struct CAIStateGroup_IdleAtHome : CAIStateGroupBase {
     long InitCreaturePosition() { if (PBrain->PCreature->GetPHome() != 0) { CThingAICreature* c = PBrain->PCreature; if (c->AutoPlaceNearBuilding(c->GetPHome(), 3.0f)) return 1; } return 0; } };
 int main()

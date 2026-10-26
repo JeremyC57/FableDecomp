@@ -5,16 +5,16 @@
 #else
 #define FASTCALL
 #endif
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct CBaseObject { int id; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class CBaseObject { public: int id; };
 static int g_stringCopies = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString(const char* text) : m_text(text) { }
     CCharString(const CCharString& other) : m_text(other.m_text) { ++g_stringCopies; }
 };
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { }
     CBaseObject* m_pItem;
@@ -27,12 +27,12 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
 };
 struct SBaseArgs { CThingCreatureBase* owner; long first; long last; long c; long d; };
 static SBaseArgs g_base;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase() { }
     CCreatureActionBase(CThingCreatureBase* owner, const CSoundPair& sound, long c, long d)
     { g_base.owner = owner; g_base.first = sound.FirstSound; g_base.last = sound.LastSound; g_base.c = c; g_base.d = d; }
 };
-struct CCreatureAction_ActivateQuest : CCreatureActionBase {
+class CCreatureAction_ActivateQuest : public CCreatureActionBase { public:
     CCharString         ScriptName;
     bool                LoadResources;
     CIntelligentPointer PObjectToUse;

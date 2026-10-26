@@ -10,7 +10,7 @@
 // offsets from struct_layouts_egor.tsv (CAIStateGroup_UsesSeat, 52 bytes); SeatPos (+0x24) is left alone.
 // Pragma: `#pragma optimize("s", on)` (the `or [mem],-1` store is the size-optimised -1 initialiser).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -22,7 +22,7 @@ struct CIntelligentPointerObject : CBaseIntelligentPointer {   // vtable 0x0125A
     CIntelligentPointerObject() : CBaseIntelligentPointer() { }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
     CAIStateGroupBase();                        // 0x008FD255

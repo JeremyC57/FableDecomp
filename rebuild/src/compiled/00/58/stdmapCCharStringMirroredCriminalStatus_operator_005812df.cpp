@@ -46,7 +46,7 @@ public:
     }
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     struct MirroredCriminalStatus {                      // 0x44 bytes (Ego_r.pdb)
         long  Crimes[10];                                // +0x00
         long  LastTimeSeenByGuard;                       // +0x28

@@ -14,9 +14,9 @@
 #include "engine/CClass.h"
 #include "fable_string.h"
 
-struct CThing;
-struct CTCParamsBase;
-struct CTCWillLightning;
+class CThing;
+class CTCParamsBase;
+class CTCWillLightning;
 struct CBaseObjectPointer { CThing* Object; unsigned long refs; };
 
 struct CBaseIntelligentPointer {
@@ -31,7 +31,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     CIntelligentPointer_CThing() : CBaseIntelligentPointer() { }
 };
 
-struct CThing : CClass {
+class CThing : public CClass { public:
     unsigned char _nativeTailBeforeLifeFlags[0x80];
     unsigned char LifeFlags;                          // +0x91 retail; named native view of CThing life state
     void RemoveTC(long type); // 0x004C9840 marks matching component removed and queues removal
@@ -42,7 +42,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, LifeFlags) == 0x91);
 
 // Packed member offset is explicit in actual header and retail lea [component+0x11].
 #pragma pack(push, 1)
-struct CTCWillLightning {
+class CTCWillLightning { public:
     unsigned char _nativeBase[0x10];
     bool LeftHandAnim;
     CIntelligentPointer_CThing PItemRemoved; // native +0x11
@@ -53,7 +53,7 @@ struct CTCWillLightning {
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PItemRemoved)==0x11);
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void* __vftable;
     unsigned char _pad04[0x04];
     CIntelligentPointer_CThing PCreature;              // +0x08
@@ -65,7 +65,7 @@ struct CCombatActionBase {
     void Initialise();                                 // 0x00857520
 };
 
-struct CCreatureAction_CastWillLightningSpell : CCombatActionBase {
+class CCreatureAction_CastWillLightningSpell : public CCombatActionBase { public:
     long Level; // native +0x114
     float Secs; // native +0x118
     void Initialise();

@@ -11,7 +11,7 @@
 #define __fastcall
 #define __forceinline inline
 #endif
-struct CDataInputStream;struct CDataOutputStream;struct CChunkedFileLoader;struct CChunkedFileSaver;
+class CDataInputStream;class CDataOutputStream;class CChunkedFileLoader;class CChunkedFileSaver;
 struct NativeSuperChunk;
 template<class T> struct CountedPointer;
 struct NativeChunk {
@@ -47,7 +47,7 @@ public:
  NativeChunkVector SubChunks,RegisteredSubChunkTypes;unsigned long CurrentChunkIndex;
 };
 enum EMaterialMapType { MATERIAL_MAP_UNSPECIFIED=-1 };
-struct C3DMeshFileMapChunk:NativeSuperChunk {
+class C3DMeshFileMapChunk:public NativeSuperChunk { public:
  EMaterialMapType MapType;CCharString MapDescription,Filename;unsigned long CRC;
  C3DMeshFileMapChunk(EMaterialMapType type):NativeSuperChunk("MMAP"),MapType(type){}
  virtual const CCharString GetChunkDescription() const; //AC1290
@@ -57,7 +57,7 @@ struct C3DMeshFileMapChunk:NativeSuperChunk {
  virtual NativeChunk* CreateNewInstance() const; //ABFFB0
 };
 void __fastcall DeleteMapChunk(void*); //AC1460: if(p) delete static_cast<C3DMeshFileMapChunk*>(p)
-struct CCPPointerInfo {unsigned long RefCount;void (__fastcall *DeleteFunc)(void*);void* Data;CCPPointerInfo(void* p):RefCount(1),DeleteFunc(DeleteMapChunk),Data(p){} };
+class CCPPointerInfo { public:unsigned long RefCount;void (__fastcall *DeleteFunc)(void*);void* Data;CCPPointerInfo(void* p):RefCount(1),DeleteFunc(DeleteMapChunk),Data(p){} };
 template<class T> struct CountedPointer {
  T* Data;CCPPointerInfo* Info;
  __forceinline CountedPointer(T* p):Data(p),Info(p?new CCPPointerInfo(p):0){}

@@ -10,9 +10,9 @@
 // overwrites the incoming argument slot with sub.Parent and jumps.
 // Member evidence: Ego_r.pdb CEngineSubPrimitiveBase +0x0C = CEngineInternalPrimitiveBase* Parent.
 
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
-struct CEngineSubPrimitiveBase {
+class CEngineSubPrimitiveBase { public:
     void*                         __vftable;    // +0x00
     unsigned long                 RenderFlags;  // +0x04 (PDB)
     unsigned char                 Alpha;        // +0x08 (PDB)

@@ -4,7 +4,7 @@
 /* Retail advances the range in 8-byte strides (ebx*8, span>>3), so the
    effective element unit is 8 bytes (two floats); model the test container
    to match. */
-struct C2DVector { float x; float y; };
+class C2DVector { public: float x; float y; };
 
 struct VecRange {
     C2DVector* first;

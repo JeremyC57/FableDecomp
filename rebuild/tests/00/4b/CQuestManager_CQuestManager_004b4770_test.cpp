@@ -10,7 +10,7 @@ static int g_Deactivated;
 static int g_ManagerDestroyed;
 static int g_Frame = 77;
 static int g_LastStamp;
-struct CThingManager { ~CThingManager() { ++g_ManagerDestroyed; } };
+class CThingManager { public: ~CThingManager() { ++g_ManagerDestroyed; } };
 struct CCountBlock { int Refs; CThingManager* Object; };
 struct CQuestManagerModel {
     CThingManager* Data; CCountBlock* Info;

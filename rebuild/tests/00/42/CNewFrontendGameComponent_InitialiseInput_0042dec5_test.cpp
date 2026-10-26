@@ -1,8 +1,8 @@
 // Behaviour test for 0x0042DEC5 CNewFrontendGameComponent::InitialiseInput.
 #include <cstdio>
 class CInputManager { public: int id; };
-template <class T> struct CCountedPointer { T* Data; long* RefCount; };
-struct CSystemManager { unsigned char pad[0x58]; CCountedPointer<CInputManager> PInputManager; };
+template <class T> class CCountedPointer { public: T* Data; long* RefCount; };
+class CSystemManager { public: unsigned char pad[0x58]; CCountedPointer<CInputManager> PInputManager; };
 static CSystemManager g_system;
 static int g_calls = 0;
 CSystemManager* GFGetSystemManager() { ++g_calls; return &g_system; }

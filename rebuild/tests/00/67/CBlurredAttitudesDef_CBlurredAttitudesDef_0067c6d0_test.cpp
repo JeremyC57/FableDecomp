@@ -5,7 +5,7 @@
 static int g_order[4];
 static int g_calls = 0;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x21];
     CDefClassBase() {}
@@ -16,7 +16,7 @@ struct CDefClassBase {
     }
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -43,7 +43,7 @@ struct CSubDefInfoMap {
     }
 };
 
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     CDefString     InstantiationName;
     CSubDefInfoMap SubDefInfoMap;
     CParentDefClassBase() {}
@@ -62,7 +62,7 @@ struct CAttitudeVector {
     }
 };
 
-struct CBlurredAttitudesDef : CParentDefClassBase {
+class CBlurredAttitudesDef : public CParentDefClassBase { public:
     CAttitudeVector Attitudes;
     CBlurredAttitudesDef() {}
     CBlurredAttitudesDef(const CBlurredAttitudesDef& other);

@@ -8,8 +8,8 @@
 // Shape: the landed SetPTarget family (0x007A7150): an 8-byte stack CIntelligentPointer built by the inline
 //   default constructor, pointed at the argument, read back into the member pointer and destroyed. The frame
 //   store comes first (no GetWorld call here: the static getter is called directly).
-struct CBaseObject;
-struct CThingCreatureBase;
+class CBaseObject;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -25,11 +25,11 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPoint
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                    // 0x0049D870
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad000[0xf4];
     CBaseIntelligentPointer PLastAttackedByCreature;    // +0xf4
     unsigned long WFLastAttackedByCreature;             // +0xfc

@@ -24,7 +24,7 @@ struct CComponentRoot {                        // the primary base: vptr at +0
     virtual void v00();
 };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];         // +0x1c .. +0x15c: the base's state
     CChangingStateComponent(long owner);       // 0x0052CC50
 };
@@ -47,7 +47,7 @@ struct CComponentVector {                      // 12-byte retail vector {first, 
     CComponentVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
 
-struct CViewport : CChangingStateComponent {   // vtables 0x01249A5C / 0x01249A38 / 0x01249A30
+class CViewport : public CChangingStateComponent { public:   // vtables 0x01249A5C / 0x01249A38 / 0x01249A30
     virtual void v00();
     virtual void va00();
     virtual void vb00();

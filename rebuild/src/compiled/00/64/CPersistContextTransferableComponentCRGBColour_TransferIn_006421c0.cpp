@@ -10,9 +10,9 @@
 // after the argument pushes (`mov byte ptr [esp+0Fh],0FFh`).
 // Shape: the constructor body assigns A first, then R, G, B: that source order gives retail's +2/+1/+0 byte stores
 // and the late alpha store; the B, G, R, A (member order) and R, G, B, A forms store +0/+1/+2.
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 class CRGBColour {
 public:
@@ -25,7 +25,7 @@ template <class T> struct CPersistTraits {
     void TransferIn(CPersistContext& context, CStringParser& parser, T* value);   // 0x009E8C10 for CRGBColour
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

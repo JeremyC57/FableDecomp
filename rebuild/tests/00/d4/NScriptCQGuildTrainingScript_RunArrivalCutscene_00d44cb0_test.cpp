@@ -5,8 +5,8 @@
 // and the camera fixed, fade out, then remove the rival
 static int g_frames = 0, g_endAt = 1000, g_scriptOkAt = 2, g_paused = 0, g_removed = 0, g_cast = 0;
 static float g_time = 0; static const char* g_played = 0;
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     void SetTimeOfDay(float t) const { g_time = t; }
     CScriptThing CreateCreature(const char* def) const { CScriptThing t; t.id = std::strcmp(def, "CREATURE_RIVAL_HERO_MAZE_CUTSCENE") == 0 ? 5 : 0; return t; }

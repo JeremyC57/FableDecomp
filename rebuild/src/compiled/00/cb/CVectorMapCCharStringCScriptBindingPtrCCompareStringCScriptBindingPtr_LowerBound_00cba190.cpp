@@ -27,7 +27,7 @@ template <class A, class B> struct pair {
     B second;
 };
 }
-template <class V> struct CCompareString {
+template <class V> class CCompareString { public:
     bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.FastCompare(key); }
 };
 template <class K, class V, class C> class CVectorMap {

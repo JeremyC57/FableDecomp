@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct CGuiVarTransferBool
-{
+class CGuiVarTransferBool
+{ public:
     void*         field0;
     void*         field4;
     int           field8;

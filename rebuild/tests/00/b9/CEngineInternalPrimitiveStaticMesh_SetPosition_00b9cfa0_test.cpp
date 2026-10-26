@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitivePosition {
+class CEnginePrimitivePosition { public:
     char pad[0xc];
     int payload;
 };
@@ -16,7 +16,7 @@ void __fastcall CEngineInternalPrimitiveStaticMesh_Sub_Apply(
     g_self = self; g_rawPos = rawPos; g_payloadPtr = payloadPtr; g_field58 = field58;
 }
 
-struct CEngineInternalPrimitiveStaticMesh {
+class CEngineInternalPrimitiveStaticMesh { public:
     char pad0[0x58];
     int field58;
     char pad1[0x70 - 0x58 - 4];

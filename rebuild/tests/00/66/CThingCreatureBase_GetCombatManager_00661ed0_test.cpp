@@ -1,8 +1,8 @@
 // Standalone behaviour test for CThingCreatureBase::GetCombatManager @ 0x00661ed0
 #include <stdio.h>
 
-struct CThingCreatureBase;
-struct CCombatManager;
+class CThingCreatureBase;
+class CCombatManager;
 
 extern void * __fastcall CThingCreatureBase_GetCombatBase(CThingCreatureBase *self);
 

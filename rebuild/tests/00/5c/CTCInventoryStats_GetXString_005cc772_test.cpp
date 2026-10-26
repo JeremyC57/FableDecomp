@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <cstring>
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char buf[64];
     CCharString(const char* text) { std::strcpy(buf, text); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(buf, o.buf); ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CWideString {
+class CWideString { public:
     unsigned short buf[64];
     CWideString(const unsigned short* text) { int i = 0; for (; text[i]; ++i) buf[i] = text[i]; buf[i] = 0; ++g_live; }
     CWideString(const CWideString& o) { std::memcpy(buf, o.buf, sizeof(buf)); ++g_live; }

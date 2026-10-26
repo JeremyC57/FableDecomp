@@ -5,7 +5,7 @@
 static int g_frames = 0, g_endAt = 1000, g_overrides = 0, g_restores = 0;
 static const char g_lookout[] = "0011100011100000";      // LookoutPoint loaded per frame
 static int g_doorAt = 11;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsLevelLoaded(const char* n) const
     {

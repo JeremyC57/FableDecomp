@@ -4,9 +4,9 @@
 #define __forceinline inline
 #define __fastcall
 #endif
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance);   // 0x006614F0
-struct CDefPointeeBase {                        // a counted definition object
+class CDefPointeeBase { public:                        // a counted definition object
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
     long m_refCount;                            // +4
@@ -16,15 +16,15 @@ struct CDefPointeeBase {                        // a counted definition object
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {          // CDefPointer<const T>: one counted pointer to a definition
+template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
-struct CCreatureDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xca - 0x08];
     bool PickPocketable;                        // +0xca
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CCreatureDef>* out);         // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -39,21 +39,21 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* ou
     return true;
 }
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing;
-struct CPlayer {
+class CThing;
+class CPlayer { public:
     CThing* GetPlayerCreature();            // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;               // 0x00449960
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;            // +0x44
@@ -77,11 +77,11 @@ struct CThing {
         return false;
     }
 };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     CThing* GetPerceivedThing() const;          // 0x007446A0
     bool CanSeeOrSmellPerceivedThing() const;   // 0x00661600
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsPickPocketable();
 };
 

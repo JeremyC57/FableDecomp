@@ -7,7 +7,7 @@
 
 static int g_inserts = 0, g_frees = 0;
 
-struct CWideString { void* PStringData; };
+class CWideString { public: void* PStringData; };
 namespace stl {
 template <class _T1, class _T2> struct pair {
     _T1 first; _T2 second;

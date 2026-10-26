@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static int g_baseAssigns = 0, g_vecAssigns = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() { }
     unsigned char _body[0x38];
     CParentDefClassBase& operator=(const CParentDefClassBase& other) { ++g_baseAssigns; return *this; }
@@ -10,7 +10,7 @@ struct CAbilityTrackLevelDefVector {
     void* m_first; void* m_last; void* m_end;
     CAbilityTrackLevelDefVector& operator=(const CAbilityTrackLevelDefVector& o) { m_first = o.m_first; m_last = o.m_last; m_end = o.m_end; ++g_vecAssigns; return *this; }
 };
-struct CAbilityTrackDef : CParentDefClassBase {
+class CAbilityTrackDef : public CParentDefClassBase { public:
     long m_abilityType; CAbilityTrackLevelDefVector m_levels; long m_maxLevel;
     virtual void v00() { }
     CAbilityTrackDef& operator=(const CAbilityTrackDef& other)

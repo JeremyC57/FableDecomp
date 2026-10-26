@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CEngineStaticMapFileBlockManager { int id; };
+class CEngineStaticMapFileBlockManager { public: int id; };
 static CEngineStaticMapFileBlockManager* g_cleared = 0;
 struct CQuadTreeElement_Retail {
     unsigned char _body[0x4c];

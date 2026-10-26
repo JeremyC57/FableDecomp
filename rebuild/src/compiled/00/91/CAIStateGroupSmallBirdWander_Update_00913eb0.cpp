@@ -10,20 +10,20 @@
 // retail hoists ABOVE the `je` (and repeats after ExecuteFlyingPath) is the early-return form
 // `if (!ok) { Terminate(); return; }` with the duplicated Terminate tail merged -- the plain
 // `if (ok) Execute(); Terminate();` schedules the ecx load after the argument push.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

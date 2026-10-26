@@ -9,7 +9,7 @@
 // Shape: /Os pass-through base argument (`push dword ptr [esp+8]`), `xor eax,eax`, the vtable store,
 // the three vector zero stores (inline member constructor) and the 1000 immediate.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CThingConst;
 
 struct CTCBase_Calls {
@@ -30,7 +30,7 @@ struct CIntelligentPointerThing {                           // CIntelligentPoint
     void* PData;
 };
 
-struct CTCGatherPointBase : CTCBase_Calls {
+class CTCGatherPointBase : public CTCBase_Calls { public:
     CRetailVector<CIntelligentPointerThing> Users;          // +0x0c
     long                                    MaxOccupation;  // +0x18
     virtual void v00();                                     // own vtable 0x012421E4

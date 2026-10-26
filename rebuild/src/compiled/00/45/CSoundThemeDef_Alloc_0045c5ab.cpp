@@ -9,7 +9,7 @@
 // landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor
 // (which returns `this`). The class is named from the constructor's manifest label when that label
 // is unique. One of 12 bodies of this shape.
-struct CSoundThemeDef {
+class CSoundThemeDef { public:
     unsigned char _body[0x64];       // sizeof(CSoundThemeDef) = 0x64
     CSoundThemeDef();                               // 0x00455EAC
 };

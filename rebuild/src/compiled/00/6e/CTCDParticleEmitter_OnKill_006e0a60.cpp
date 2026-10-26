@@ -15,7 +15,7 @@ struct CInterfaceMap {                          // a thing's sorted {type, compo
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,7 +40,7 @@ struct CTCDependentThings {                     // interface 0xD8 (class not est
     void AddDependentThing(CThing* thing);      // 0x0071A8F0
 };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void Kill();                                // 0x00AEE8C0
 };
 }
@@ -63,7 +63,7 @@ inline bool IS_THING_ALIVE(const CThingPointer& p)
     }
     return false;
 }
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
@@ -72,7 +72,7 @@ struct CTCBase {
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
 };
-struct CTCDParticleEmitter : CTCBase {
+class CTCDParticleEmitter : public CTCBase { public:
     void*           EmitterName;                // +0x0c CCharString
     long            ParticleTypeID;             // +0x10
     CEmitterPointer PEmitter;                   // +0x14

@@ -17,12 +17,12 @@
 // natural layout lands every member on the retail offset with no #pragma pack.
 #pragma optimize("s", on)   // the def module is size-optimised
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
-struct CEngineGraphic {                 // 14 packed bytes: BankIndex +0, AnimStep +4, RenderSizeX +8, AdditiveAlpha +12, Type +13
+class CEngineGraphic { public:                 // 14 packed bytes: BankIndex +0, AnimStep +4, RenderSizeX +8, AdditiveAlpha +12, Type +13
     unsigned char _bytes[14];
 };
 

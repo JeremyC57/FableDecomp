@@ -18,7 +18,7 @@
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally as a packed polymorphic base
 // whose operator= is out of line; the derived members follow at their natural alignment.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -39,7 +39,7 @@ struct CGenerateTypeVector {            // retail std::vector<ECreatureGenerator
     CGenerateTypeVector& operator=(const CGenerateTypeVector& other);   // 0x0045C64D
 };
 
-struct CCreatureGenerationFamilyDef : CParentDefClassBase { // vtable 0x0123390C
+class CCreatureGenerationFamilyDef : public CParentDefClassBase { public: // vtable 0x0123390C
     CLongVector          Creatures;                   // +0x3c
     long                 DifficultyLevel;             // +0x48
     long                 GeneratorObject;             // +0x4c

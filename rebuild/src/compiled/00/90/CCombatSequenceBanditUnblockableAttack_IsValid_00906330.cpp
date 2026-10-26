@@ -5,7 +5,7 @@
 // The CThing component-table model is the landed GetInterface shape. The target is the base's +0x20
 // (retail layout, see 0x008B0AB0). The found path returns the callee's bool through `? true : false`
 // (the false branch re-uses al, the true branch shares the `mov al,1` tail); an `||` form widens to eax.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -14,7 +14,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;      // 0x004365B0 (CVectorMap::LowerBound)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44 sorted {type, component} vector map

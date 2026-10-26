@@ -3,11 +3,11 @@
 #include <new>
 static int g_base = 0;
 struct CBase { virtual void v00() { } CBase() { ++g_base; } };
-template <class T> struct CArray { T* m_begin; T* m_end; T* m_capacity; CArray() : m_begin(0), m_end(0), m_capacity(0) { } };
-struct C3DBoundingSphere { long m_x, m_y, m_z, m_radius; C3DBoundingSphere() : m_x(0), m_y(0), m_z(0), m_radius(0) { } };
-struct C3DVertex2; struct C3DVector; struct CTriangleListRef; struct CGroupRef;
+template <class T> class CArray { public: T* m_begin; T* m_end; T* m_capacity; CArray() : m_begin(0), m_end(0), m_capacity(0) { } };
+class C3DBoundingSphere { public: long m_x, m_y, m_z, m_radius; C3DBoundingSphere() : m_x(0), m_y(0), m_z(0), m_radius(0) { } };
+class C3DVertex2; class C3DVector; struct CTriangleListRef; struct CGroupRef;
 namespace N3DPrimitive {
-struct CDeviceIndependent : CBase {
+class CDeviceIndependent : public CBase { public:
     virtual void v00() { }
     CArray<C3DVertex2> Vertices; CArray<CTriangleListRef> TriangleLists; CArray<CGroupRef> Groups; C3DBoundingSphere BoundingSphere; CArray<C3DVector> UTangents; CArray<C3DVector> VTangents;
     CDeviceIndependent() { }

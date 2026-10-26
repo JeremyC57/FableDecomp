@@ -9,7 +9,7 @@ struct CWriteLog {
     CWriteLog() : Count(0) {}
     void Add(char kind, long value, const char* text) { Kind[Count] = kind; Value[Count] = value; Text[Count] = text; ++Count; }
 };
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString() : Text("") {}
     CCharString(const char* text, long) : Text(text) {}
@@ -69,8 +69,8 @@ template <class T> void SerialiseVectorBinaryOut(CDataOutputStreamWriter& stream
         traits.TransferBinaryOut(stream, &value[i]);
 }
 struct CTextureMorph { long A; long B; };
-template <class K, class V> struct CKeyPairCompareLess {};
-template <class V, class K, class C> struct CVectorMap {
+template <class K, class V> class CKeyPairCompareLess { public:};
+template <class V, class K, class C> class CVectorMap { public:
     typedef pair<K, V> value_type;
     CVector<value_type> Entries;
     C Compare;

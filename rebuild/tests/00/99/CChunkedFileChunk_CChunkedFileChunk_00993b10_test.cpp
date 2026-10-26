@@ -16,8 +16,8 @@ void CBase::RestoreVTable()
 
 void* g_CChunkedFileChunkVTable_0129a69c[4] = { (void*)0x5555, (void*)0x6666, (void*)0x7777, (void*)0x8888 };
 
-struct CChunkedFileChunk : CBase
-{
+class CChunkedFileChunk : public CBase
+{ public:
     ~CChunkedFileChunk();
 };
 

@@ -8,12 +8,12 @@
 // Layout: Ego_r.pdb CPreMeleeDummy (0x1c): CEntityScriptBase vptr, Game +4, Me +8, ParentClass +0x14; the parent
 // CQ_GuildTrainingPreMeleeScript is PDB - 0x14 (PreMeleeMode +0x4c, DummyHits +0x50).
 // Shape: the calls on the member Me stay virtual; ebx is saved only after the first wait loop (retail shrink-wrap).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                                  // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
     virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
     virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
@@ -23,7 +23,7 @@ struct CScriptThing {                                  // vtable 0x01238C8C, 12 
     void* PImp_Data;
     void* PImp_Info;
 };
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410 public: virtual void __fastcall CGameScriptInterface::NewScriptFrame(void) const
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -91,7 +91,7 @@ struct CQ_GuildTrainingPreMeleeScript {
     long PreMeleeMode;                                 // +0x4c
     long DummyHits;                                    // +0x50
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual ~CEntityScriptBase();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

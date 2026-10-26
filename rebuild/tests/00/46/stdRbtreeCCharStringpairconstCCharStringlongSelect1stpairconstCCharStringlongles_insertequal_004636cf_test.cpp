@@ -3,12 +3,12 @@
 // signed character compare) and right otherwise (equal keys go right); the new node is linked where the walk ended
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* Chars; unsigned long Length; };
+class CCharStringData { public: const char* Chars; unsigned long Length; };
 static long Compare(const char* a, const char* b)
 {
     for (;;) { char ca = *a; if (ca == 0 && *b == 0) return 0; char cb = *b; if (ca < cb) return -1; if (ca > cb) return 1; ++a; ++b; }
 }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator<(const CCharString& other) const
     {

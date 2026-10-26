@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesDrunkennessDef {
+class CSpecialAbilitiesDrunkennessDef { public:
     void* vftable;
 };
 

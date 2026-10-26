@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CEntitySoundDef;
+class CEntitySoundDef;
 
 // Provide a definition for the tail-call target so the test links & runs.
 static int g_called = 0;

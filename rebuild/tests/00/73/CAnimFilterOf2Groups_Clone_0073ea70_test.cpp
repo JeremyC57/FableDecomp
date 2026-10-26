@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharString { void* PStringData; CCharString() : PStringData(0) {} };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) {} };
 static int g_sets = 0;
 struct CAnimFilterOf2Groups {
     virtual long Accepts(const void*) { return 0; }

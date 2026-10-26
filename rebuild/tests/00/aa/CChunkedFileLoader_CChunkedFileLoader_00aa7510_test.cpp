@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CChunkedFileLoader {
+class CChunkedFileLoader { public:
     virtual void VSlot0() { }
     long ReadUnknownChunkTypes; char SupportedFileType[5];
     CChunkedFileLoader(const char* type) { std::memset(SupportedFileType, 0, sizeof(SupportedFileType)); std::memcpy(SupportedFileType, type, 4); ReadUnknownChunkTypes = 0; }

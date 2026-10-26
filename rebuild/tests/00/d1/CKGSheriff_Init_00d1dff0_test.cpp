@@ -4,8 +4,8 @@
 #include <cmath>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
-struct CScriptThing { const char* name; };
-struct CGameScriptInterface {
+class CScriptThing { public: const char* name; };
+class CGameScriptInterface { public:
     const char* attached; const char* village; const char* hidden; bool hiddenFlag;
     CScriptThing GetThingWithScriptName(const char* n) const { CScriptThing t; t.name = n; return t; }
     void EntityAttachToVillage(const CScriptThing& thing, const CScriptThing& v) { attached = thing.name; village = v.name; }

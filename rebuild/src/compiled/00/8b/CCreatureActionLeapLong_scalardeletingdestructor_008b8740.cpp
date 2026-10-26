@@ -1,4 +1,4 @@
-struct CCreatureAction_LeapLong {
+class CCreatureAction_LeapLong { public:
     void* vftable;
 };
 

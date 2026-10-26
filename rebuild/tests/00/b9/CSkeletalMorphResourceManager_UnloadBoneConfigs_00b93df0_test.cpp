@@ -18,7 +18,7 @@ struct CBoneConfigTree {
     }
 };
 struct SBoneConfigRecord { long m_first; long m_second; long m_third; SBoneConfigRecord() : m_first(0), m_second(0), m_third(0) { } };
-struct CSkeletalMorphResourceManager {
+class CSkeletalMorphResourceManager { public:
     CBoneConfigTree   m_boneConfigs;
     SBoneConfigRecord m_boneConfigRecord;
     void UnloadBoneConfigs() { m_boneConfigs.clear(); m_boneConfigRecord = SBoneConfigRecord(); }

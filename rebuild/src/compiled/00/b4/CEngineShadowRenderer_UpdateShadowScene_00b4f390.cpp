@@ -10,11 +10,11 @@
 #include "engine/CEngineShadowRenderer.h"
 #include "engine/CEngineCamera.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];
 };
 

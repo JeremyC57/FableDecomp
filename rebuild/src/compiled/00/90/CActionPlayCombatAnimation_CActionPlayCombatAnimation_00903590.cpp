@@ -6,12 +6,12 @@
 // (a byte) is stored at +0xd and the vtable store sinks to just before the string copy constructor
 // (ecx = &m_animation, the source reference pushed); the last four byte arguments are loaded and
 // stored in declaration order (ret 0x18 = six arguments).
-struct CCharString {                         // the string copy runs out of line (0x0099EC30), so the copy constructor is declared only
+class CCharString { public:                         // the string copy runs out of line (0x0099EC30), so the copy constructor is declared only
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
 };
 
-struct CThing;
+class CThing;
 
 struct CBase {
     virtual void v00();

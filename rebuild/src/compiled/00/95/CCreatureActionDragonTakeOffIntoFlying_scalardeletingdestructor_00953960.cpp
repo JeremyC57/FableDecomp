@@ -1,4 +1,4 @@
-struct CCreatureAction_DragonTakeOffIntoFlying {
+class CCreatureAction_DragonTakeOffIntoFlying { public:
     void* vftable;
 };
 

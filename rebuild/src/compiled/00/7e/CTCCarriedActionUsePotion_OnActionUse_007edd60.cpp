@@ -14,7 +14,7 @@
 // a local first (`mov eax,[edi+4] ; mov ecx,[eax+70h]`); the hero stats come from the out-parameter GetInterface
 // (bitset test, LowerBound, end/hit choice, `*out = component`: the component goes through eax into ecx); the pointer's
 // release has a null test and no null store (the object is in ebx).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -23,20 +23,20 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1: `call [eax+4]`
     long m_refCount;                            // +0x04
 };
 
 template <class T>
-struct CDefPointer {                            // GetSubDef's out pointer (released by hand below)
+class CDefPointer { public:                            // GetSubDef's out pointer (released by hand below)
     CDefPointeeBase* Object;                    // +0x00
 };
 
-struct CBonusItemDef;
+class CBonusItemDef;
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CBonusItemDef>* out);  // 0x007E1D30 GetSubDef<CBonusItemDef>
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -53,11 +53,11 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CBonusItemD
 }
 #pragma auto_inline(on)
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void ApplyBonusItemEffects(const CBonusItemDef* def);   // 0x0057C4F1
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad0[0x20];
     unsigned long    m_presentBits[9];                      // +0x20 interface-present bitset
     CInterfaceMap    m_interfaces;                          // +0x44
@@ -79,7 +79,7 @@ struct CThing {
     void Kill(bool removeNow);                              // 0x004C9B80
 };
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     void OnUseBase(CThing* user);                           // 0x007EAB90 (empty base implementation)

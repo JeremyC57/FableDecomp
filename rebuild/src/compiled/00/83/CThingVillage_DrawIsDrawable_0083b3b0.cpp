@@ -6,7 +6,7 @@
 // CThing::DrawIsDrawable @ 0x004C7790.
 // Label correction: the manifest files this row under CThingHolySite; the only reference is CThingVillage's vtable slot 27.
 // Shape: `return a && b;` materialises an int (`mov eax,1` / `xor eax,eax`); `this` is kept in esi across the calls.
-struct CDisplayEngine {
+class CDisplayEngine { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsDrawingEnabled();                // slot 9 (+0x24)
@@ -14,11 +14,11 @@ struct CDisplayEngine {
 
 CDisplayEngine* GetDisplayEngine();                 // 0x004C7A70
 
-struct CThing {
+class CThing { public:
     bool DrawIsDrawable();                          // 0x004C7790
 };
 
-struct CThingVillage : CThing {
+class CThingVillage : public CThing { public:
     bool DrawIsDrawable();
 };
 

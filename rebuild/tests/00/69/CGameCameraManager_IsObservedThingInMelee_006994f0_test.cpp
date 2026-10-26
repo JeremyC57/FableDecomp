@@ -1,7 +1,7 @@
 // Behaviour test for 0x006994F0 CGameCameraManager::IsObservedThingInMelee.
 #include <cstdio>
-struct CTCCombat { int m_meleeTarget; };
-struct CThing {
+class CTCCombat { public: int m_meleeTarget; };
+class CThing { public:
     unsigned int m_presentBits[9]; CTCCombat* m_combat; unsigned char m_statusFlags;
     template<class T> bool GetInterface(T** ppOut, int type)
     {

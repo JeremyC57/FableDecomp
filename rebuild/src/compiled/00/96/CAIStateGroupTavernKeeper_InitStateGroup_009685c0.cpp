@@ -12,7 +12,7 @@
 // Leaf: InitStateGroup
 #include "engine/CAIStateGroup_TavernKeeper.h"
 
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the landed out-parameter
@@ -25,12 +25,12 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 
-struct CThing {
+class CThing { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -151,21 +151,21 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CTCShop {
+class CTCShop { public:
     void SetStockState(long state);             // 0x00773C00
 };
 
-struct CTCShopKeeper {                          // interface type 0x90 component
+class CTCShopKeeper { public:                          // interface type 0x90 component
     CTCShop* GetShopTC();                       // 0x00798F50
 };
 
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
 struct CAIStateGroup_TavernKeeper_Methods : CAIStateGroup_TavernKeeper {
     CAIBrain* GetPBrain() const { return *(CAIBrain* const*)_pad_0x04; }   // CAIStateGroupBase::PBrain (+0x04)

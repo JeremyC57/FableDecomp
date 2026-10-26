@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCWallMountEffects {
+class CTCWallMountEffects { public:
     void* vftable;
     int destroyed;
 };

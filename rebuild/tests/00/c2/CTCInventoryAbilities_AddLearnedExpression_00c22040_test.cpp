@@ -4,7 +4,7 @@ struct SubObj1F8 {
     void Add(long &value);
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     char pad0[0x1f8];
     SubObj1F8 sub;
     void AddLearnedExpression(long value);

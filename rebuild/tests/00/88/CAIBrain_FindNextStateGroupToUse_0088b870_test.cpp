@@ -2,7 +2,7 @@
 struct CAIStateGroupBaseCalls { unsigned char _pad_0x00[0x11]; unsigned char Priority; bool Enabled; bool m_runnable; bool IsEnabledAndRunnable() { return Enabled && m_runnable; } };
 struct CStateGroupEntry { long Key; CAIStateGroupBaseCalls* Group; };
 struct CStateGroupVectorMap { CStateGroupEntry* Begin; CStateGroupEntry* End; };
-struct CAIBrain { unsigned char _pad[0x28]; CStateGroupVectorMap StateGroupList; CAIStateGroupBaseCalls* FindNextStateGroupToUse(long priority); };
+class CAIBrain { public: unsigned char _pad[0x28]; CStateGroupVectorMap StateGroupList; CAIStateGroupBaseCalls* FindNextStateGroupToUse(long priority); };
 CAIStateGroupBaseCalls* CAIBrain::FindNextStateGroupToUse(long priority)
 {
     CStateGroupVectorMap* groups = &StateGroupList;

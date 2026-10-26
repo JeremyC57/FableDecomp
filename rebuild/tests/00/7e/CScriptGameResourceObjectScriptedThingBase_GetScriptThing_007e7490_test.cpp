@@ -3,13 +3,13 @@
 // is returned.
 #include <cstdio>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;
 };
 
 static int g_baseCtors = 0;
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00() { }
     virtual ~CBaseClass() { }
     CBaseClass() { ++g_baseCtors; }
@@ -22,7 +22,7 @@ struct CCountedPointer_CScriptThing {
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
 
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
     CCountedPointer_CScriptThing PImp;
     virtual void v00() { }
     CScriptThing() { }
@@ -42,7 +42,7 @@ struct CScriptedThingBaseVirtuals {
     }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     void* __vftable;
     unsigned char _pad_0x04[4];
     CScriptedThingBaseVirtuals* PImp_Data;

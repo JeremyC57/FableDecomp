@@ -15,13 +15,13 @@
 extern "C" int __cdecl _stricmp(const char* a, const char* b);   // 0x00BFEBA8
 extern char g_CCharStringEmptyText[];      // 0x0129AAF4 ("")
 
-struct CCharStringData { char* Text; };
-struct CCharString {
+class CCharStringData { public: char* Text; };
+class CCharString { public:
     CCharStringData* PStringData;
     const char* GetText() const { if (PStringData == 0) return g_CCharStringEmptyText; return PStringData->Text; }
 };
 
-struct CMapInfo {
+class CMapInfo { public:
     long          Area[4];                      // +0x00 C2DBoxI
     void*         PMap[2];                      // +0x10 CCountedPointer<CMap>
     CCharString   LevelName;                    // +0x18
@@ -30,7 +30,7 @@ struct CMapInfo {
     unsigned char _rest[0x24];                  // +0x24 .. +0x48
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;                                   // +0x00
     T* Finish;                                  // +0x04
     T* EndOfStorage;                            // +0x08
@@ -38,7 +38,7 @@ template <class T> struct CArray {
     const T& operator[](unsigned long i) const { return Start[i]; }
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char    _pad[0x20];
     CArray<CMapInfo> Maps;                      // +0x20
     long GetMapNumberFromScriptName(const CCharString& name) const;

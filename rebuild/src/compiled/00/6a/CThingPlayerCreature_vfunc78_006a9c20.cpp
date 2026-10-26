@@ -12,7 +12,7 @@ struct CTarget {
     float m_value;                         // +0x9c
 };
 
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     unsigned char _pad[0xe0];
     CTarget* m_object;                     // +0xe0
     float vfunc_78(long unused);

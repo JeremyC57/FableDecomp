@@ -13,8 +13,8 @@ static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
 static int g_nodes = 0;
-struct C2DVector { float X, Y; };
-struct CWall {                                          // 24 bytes
+class C2DVector { public: float X, Y; };
+class CWall { public:                                          // 24 bytes
     C2DVector Point1;
     C2DVector Point2;
     C2DVector ToInternal;

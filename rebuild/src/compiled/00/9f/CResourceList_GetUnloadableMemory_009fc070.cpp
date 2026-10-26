@@ -10,9 +10,9 @@
 // are the PDB ones from engine/CResource.h and engine/CResourceList.h, the +4 word of CResource is IVRefCount of its
 // CIVCountedPointeeBase base. CResource vtable 0x012354A4: slot 3 (+0x0C) GetUnloadableMemory (0x009FBEF0, returns
 // ResourceSize), slot 9 (+0x24) ResetDebugMemoryInUse (0x009FBF10).
-struct CResourceList;
+class CResourceList;
 
-struct CResource {                                   // 0x1C bytes
+class CResource { public:                                   // 0x1C bytes
     virtual ~CResource();                            // slot 0
     virtual void v01();
     virtual void v02();
@@ -31,7 +31,7 @@ struct CResource {                                   // 0x1C bytes
     unsigned long  LastUsedFrame;                    // +0x18
 };
 
-struct CResourceList {                               // vtable 0x0129C808, 0x3C bytes
+class CResourceList { public:                               // vtable 0x0129C808, 0x3C bytes
     virtual ~CResourceList();
     CResource     Head;                              // +0x04 (sentinel)
     unsigned long ResourceCount;                     // +0x20

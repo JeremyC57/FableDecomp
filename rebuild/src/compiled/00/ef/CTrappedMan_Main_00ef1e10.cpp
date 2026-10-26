@@ -10,12 +10,12 @@
 // Shape: the landed CHHUndead::Main filter block; `WAIT_UNTIL(Me.MsgIsHitBy("SCRIPT_NAME_HERO"))` is a `while (!x)` whose
 //          neg/sbb/inc bool survives the string temporary's dtor (VC duplicates the test at the loop bottom); the outer
 //          loop is a rotated `while (!IsDone())`.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CScriptThing {   // 12 bytes: vptr + counted implementation (vtable 0x01238C8C)
+class CScriptThing { public:   // 12 bytes: vptr + counted implementation (vtable 0x01238C8C)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
@@ -24,7 +24,7 @@ struct CScriptThing {   // 12 bytes: vptr + counted implementation (vtable 0x012
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CGameScriptInterface {   // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:   // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

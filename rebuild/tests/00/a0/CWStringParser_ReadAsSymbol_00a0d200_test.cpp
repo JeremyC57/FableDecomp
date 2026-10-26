@@ -20,15 +20,15 @@ static int fails = 0;
 // and there is no EH frame (the TU is built without /EHsc, so the item is not unwound).
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                   // 0x0099AED0
     CWideString(const CWideString& other);           // 0x0099B720
     ~CWideString();                                  // 0x0099B510
 };
 
-struct CWParsedItem {
+class CWParsedItem { public:
     long        Type;      // +0x00 EParsedItemType (1 = symbol, 2 = string)
     long        Integer;   // +0x04
     CWideString String;    // +0x08

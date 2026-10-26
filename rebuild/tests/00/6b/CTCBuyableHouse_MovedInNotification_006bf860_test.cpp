@@ -4,8 +4,8 @@
 template <class T>
 inline const T& DinkumMin(const T& _Left, const T& _Right) { return _Right < _Left ? _Right : _Left; }
 
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     long DayNextRentIsDue;
     void MovedInNotification(long day)
     {

@@ -10,7 +10,7 @@
 // at retail +0x3c..+0x80 (retail base 0x39 bytes, vectors 12 bytes instead of 16).
 // Shape: memberwise assignment in declaration order, each vector through its own out-of-line operator=.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -26,7 +26,7 @@ FABLE_RETAIL_VECTOR(CMusicEntryVector);             // operator= 0x00460D75
 FABLE_RETAIL_VECTOR(CMusicSetEntryVector);          // operator= 0x00460EB5
 FABLE_RETAIL_VECTOR(CReverbEnvironmentEntryVector); // operator= 0x00461017
 
-struct CSoundDef : CParentDefClassBase {            // vtable 0x012349B4
+class CSoundDef : public CParentDefClassBase { public:            // vtable 0x012349B4
     CSoundBankEntryVector         SoundBankEntries;          // +0x3c
     CAtmosBankEntryVector         AtmosBankEntries;          // +0x48
     CMusicEntryVector             MusicEntries;              // +0x54

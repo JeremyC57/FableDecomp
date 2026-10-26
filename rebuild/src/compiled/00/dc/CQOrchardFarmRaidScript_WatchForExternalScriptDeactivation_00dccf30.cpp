@@ -6,12 +6,12 @@
 // Shape: the wait condition is a named `bool deactivated = !(A || B);` tested at the top of a `for (;;)` loop: VC keeps
 //   the two conversion temporaries' construction flags in ebx and the bool in a frame byte (1 = both inactive); a
 //   `while (!(...))` form inverts the stored byte; each string literal is passed straight to a `const CCharString&` parameter.
-struct CCharString {
+class CCharString { public:
     void* Data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -55,7 +55,7 @@ struct CGameScriptInterface {
     virtual void v285(); virtual void v286(); virtual void v287(); virtual void v288(); virtual void v289(); virtual void v290(); virtual void v291();
     virtual void AddQuestCard(const CCharString& card, const CCharString& quest, bool flag1, bool flag2);   // slot 292 (+0x490)
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

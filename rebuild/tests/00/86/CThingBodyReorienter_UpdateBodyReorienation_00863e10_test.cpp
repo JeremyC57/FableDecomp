@@ -3,7 +3,7 @@
 long g_BodyReorientSlopePeriod = 3;
 static int g_fill = 0, g_check = 0, g_gradual = 0, g_slopes = 0;
 static bool g_checkFinishes = false;
-struct CThingBodyReorienter {
+class CThingBodyReorienter { public:
     bool BodyReorientationDone;
     bool ReorientingBody;
     long ReorientationCount;

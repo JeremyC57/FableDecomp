@@ -12,7 +12,7 @@ public:
         const C3DVector& lookFrom2, long frames);   // 0x008525F0
 };
 }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

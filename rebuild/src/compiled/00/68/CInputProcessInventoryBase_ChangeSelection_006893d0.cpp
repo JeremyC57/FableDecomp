@@ -14,12 +14,12 @@
 #include "engine/CInputProcessGameBase.h"
 #undef CInputProcessGameBase
 #include "engine/CProcessedInput.h"
-struct CInputEvent; struct CEnginePrimitivePrepareInfo;
-struct CBaseClass {CBaseClass();virtual ~CBaseClass();};
+class CInputEvent; class CEnginePrimitivePrepareInfo;
+class CBaseClass { public:CBaseClass();virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {protected:CBaseClassNonCopyable();public:virtual ~CBaseClassNonCopyable();};
-struct CLinkedListPosition {CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
-struct CInputProcessManager;
-struct CAInputProcess:CBaseClassNonCopyable {
+class CLinkedListPosition { public:CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
+class CInputProcessManager;
+class CAInputProcess:public CBaseClassNonCopyable { public:
  CAInputProcess(); //PDBegorB74B80 genuine default
  CInputProcessManager* PPlayerInterface;
  CLinkedListPosition InputProcessListPos;
@@ -34,18 +34,18 @@ struct CAInputProcess:CBaseClassNonCopyable {
  virtual bool IsInputEventToBeSentToThisInputProcess(const CInputEvent&)const;
 };
 
-struct CGame;struct CMainGameComponentInit;
-struct CMainGameComponent { CMainGameComponent(CGame&,const CMainGameComponentInit&); long GetCurrentServerFrame()const; }; //00416225
+class CGame;class CMainGameComponentInit;
+class CMainGameComponent { public: CMainGameComponent(CGame&,const CMainGameComponentInit&); long GetCurrentServerFrame()const; }; //00416225
 namespace NInventory {
-struct CTCInventoryBase;
+class CTCInventoryBase;
 #pragma pointers_to_members(full_generality,single_inheritance)
 union InventorySlot {
  void* Address;
  float(CTCInventoryBase::*RepeatDelay)()const;
 };
-struct CTCInventoryBase : ::CTCInventoryBase { CTCInventoryBase(CThing&); };
+class CTCInventoryBase : public ::CTCInventoryBase { public: CTCInventoryBase(CThing&); };
 }
-struct CInputProcessGameBaseInit {
+class CInputProcessGameBaseInit { public:
  CWorld* World;CPlayer* MyPlayer;CGameDefinitionManager* DefinitionManager;CMainGameComponent* Component;
  CInputProcessGameBaseInit(); //PDBfablewin1AC7CF0; no available header
 };

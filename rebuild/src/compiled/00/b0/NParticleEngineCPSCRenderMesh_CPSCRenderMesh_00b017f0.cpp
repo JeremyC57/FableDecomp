@@ -67,13 +67,13 @@ public:
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase : CBaseClassNonCopyable {
+class CParticleSystem;
+class CPSCBase : public CBaseClassNonCopyable { public:
     CParticleSystem* ParticleSystem;               // +0x04
     bool UpdateStarted : 1;                        // +0x08
     bool Initialised : 1;
 };
-struct CPSCRenderMesh : CPSCBase {                 // vtable 0x0129F96C
+class CPSCRenderMesh : public CPSCBase { public:                 // vtable 0x0129F96C
     long                   BankIndex;              // +0x0c
     long                   TrailBankIndex;         // +0x10
     unsigned long          Colours[6];             // +0x14 trail / main CRGBColours

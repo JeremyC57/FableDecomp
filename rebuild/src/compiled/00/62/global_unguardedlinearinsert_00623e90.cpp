@@ -14,7 +14,7 @@
 // CCharString::operator= calls with the ColourIndex dword moved between the second and third) and calls the
 // out-of-line COMDAT for the last assignment; the callee destroys the by-value `val` (six string dtors in
 // reverse member order, skipping ColourIndex). Layout from the landed CTestQuest sources (PDB names).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
@@ -32,7 +32,7 @@ public:
     CCharString QuestCardDefName;                  // +0x18
 };
 
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest& a, const CTestQuest& b) const;   // 0x006238A0
 };
 

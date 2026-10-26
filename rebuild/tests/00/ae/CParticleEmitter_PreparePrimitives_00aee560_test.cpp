@@ -16,15 +16,15 @@ extern "C" int __cdecl printf(const char* format, ...);
 // Layout: as the Initialise row 0x00AEE240 (Ego_r.pdb CParticleEmitter minus 0x0c); CParticleSystem Visible is bit 5 of
 //   +0x50; CEnginePrimitivePrepareInfo engine +0x34 (landed 0x00AEB2D0). CEnginePrimitiveParticleGroup2D (0x4c bytes):
 //   type 0x20, layer +0x0c, screen displacement +0x10, z read +0x11, transform +0x14, position +0x44.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
 };
@@ -54,7 +54,7 @@ public:
     }
 };
 enum EEngineEffectWaterStage { WATER_STAGE_PRE, WATER_STAGE_WATER, WATER_STAGE_POST };
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     unsigned long Type;                            // +0x00
     unsigned long Unknown04;                       // +0x04
     bool          Flag08, Flag09, Flag0a;          // +0x08
@@ -73,11 +73,11 @@ struct CEnginePrimitiveParticleGroup2D : CEnginePrimitive {
     CEnginePrimitiveParticleGroup2D(long layer, const CMatrix3x4& transform, const C2DVector& position, bool screenDisplacement, bool readZBuffer)
         : CEnginePrimitive(0x20), Layer(layer), ScreenDisplacement(screenDisplacement), ReadZBuffer(readZBuffer), Transform(transform), Position(position) {}   // out of line at 0x00AF0880
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     void* __vftable;
     void* Data;
 };
-struct CIEngine {
+class CIEngine { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -85,7 +85,7 @@ struct CIEngine {
     virtual void v20(); virtual void v21(); virtual void v22();
     virtual void AddPrimitive(CEnginePrimitiveHandle* handle, const CEnginePrimitive* primitive, long flags);   // slot 23 (+0x5c)
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CIEngine*     Engine;                          // +0x34
 };
@@ -94,7 +94,7 @@ struct CParticleUpdateParameters {
     void*         __vftable;                       // +0x00
     unsigned char _maps[0x20];                     // +0x04
 };
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char _state00[0x50];
     bool Initialised : 1;                          // +0x50
     bool Enabled : 1;

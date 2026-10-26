@@ -17,17 +17,17 @@ static int fails = 0;
 //   components into locals x, y, z, w first (loads in X..W order), and the norm sums w*w + z*z + y*y + x*x. The translation
 //   is a C3DVector temporary built from the position (its Z travels as an integer copy). The scale components are float
 //   locals declared Z, Y, X, and the rows are scaled with `*=` (the rotation values are forwarded from the frame).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct C4DVector { float X, Y, Z, W; };
-struct CMatrix3x4 {
+class C4DVector { public: float X, Y, Z, W; };
+class CMatrix3x4 { public:
     union {
         struct { float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43; };
     };
 };
-struct CQuaternion {
+class CQuaternion { public:
     float X, Y, Z, W;
     __forceinline void ToMatrix(CMatrix3x4& m, const C3DVector& pos) const
     {
@@ -52,7 +52,7 @@ struct CQuaternion {
         m.E43 = pos.Z;
     }
 };
-struct C3DKeyframe {
+class C3DKeyframe { public:
     CQuaternion Rotation;
     C4DVector Position;
     C4DVector Scaling;

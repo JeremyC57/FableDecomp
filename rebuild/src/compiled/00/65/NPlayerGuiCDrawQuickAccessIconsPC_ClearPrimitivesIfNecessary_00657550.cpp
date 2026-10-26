@@ -7,7 +7,7 @@
 // Layout: Drawing +0x18 (CDrawBase); the PC subclass's 12-byte VC6 handle vector at +0x94, past the 0x94-byte CDrawQuickAccessIcons
 // (whose last landed member, QuickAccessSpellCrossHandles, sits at +0x70). The member name is descriptive.
 // Shape: a speed TU (16-byte aligned, `mov al ; test al,al` flag test, `last` loaded into eax before `first` into edx).
-struct CEnginePrimitiveHandle {                    // 8 bytes: vptr + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // 8 bytes: vptr + counted primitive pointer
     void* _vtable;
     void* m_pPrimitive;
     void Clear();                                  // 0x0041BE70
@@ -38,14 +38,14 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
     CEnginePrimitiveHandle* end() { return m_pLast; }
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void ClearPrimitivesIfNecessary();     // slot 0: 0x00644627
     unsigned char       _body04[0x18 - 4];
     bool                Drawing;                   // +0x18
     CRetailHandleVector PrimitiveHandles;          // +0x1c
 };
 
-struct CDrawQuickAccessIcons : CDrawBase {         // vtable 0x0125A704
+class CDrawQuickAccessIcons : public CDrawBase { public:         // vtable 0x0125A704
     unsigned char       _state28[0x94 - 0x28];     // charge state, handles, spell-cross handles
     virtual void ClearPrimitivesIfNecessary();     // 0x0064D62F
 };

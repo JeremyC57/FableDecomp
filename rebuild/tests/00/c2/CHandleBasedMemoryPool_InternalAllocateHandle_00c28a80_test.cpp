@@ -3,7 +3,7 @@
 #include <cstring>
 struct SFreeArea; static long g_pushed = 0; static SFreeArea* g_value = (SFreeArea*)1;
 struct CHandleVector { unsigned char _pad[4]; SFreeArea** m_pFirst; SFreeArea** m_pLast; SFreeArea** m_pEnd; void PushBack(SFreeArea* const& value) { ++g_pushed; g_value = value; } long Size() { if (m_pFirst == 0) return 0; return m_pLast - m_pFirst; } SFreeArea*& At(long index) { return m_pFirst[index]; } };
-struct CHandleBasedMemoryPool { unsigned char _pad[0x43c]; CHandleVector m_handles; long m_firstFreeHandle;
+class CHandleBasedMemoryPool { public: unsigned char _pad[0x43c]; CHandleVector m_handles; long m_firstFreeHandle;
     long InternalAllocateHandle() { long index = m_firstFreeHandle; if (index != -1) { SFreeArea*& slot = m_handles.At(index); m_firstFreeHandle = (long)(size_t)slot; slot = (SFreeArea*)-1; return index; } long count = m_handles.Size(); SFreeArea* empty = 0; m_handles.PushBack(empty); return count; } };
 
 int main() {

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CParticleProgram {
+class CParticleProgram { public:
     char pad[0xc0];
     char* data;   // +0xc0
     void RelocateData(long a, void* oldBase, void* newBase, long d);

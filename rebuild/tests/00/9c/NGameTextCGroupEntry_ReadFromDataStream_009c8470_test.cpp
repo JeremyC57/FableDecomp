@@ -64,7 +64,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CDataInputStream {
+class CDataInputStream { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long StreamPos;                                 // +0x04
     long          StreamSize;                                // +0x08
@@ -94,10 +94,10 @@ FABLE_STATIC_ASSERT(offsetof(CDataInputStream, SourceChunkBytesRemaining) == 0x1
 #include <stddef.h>
 
 
-struct CResourceList;
+class CResourceList;
 
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     CResourceList* ResourceList;                             // +0x08

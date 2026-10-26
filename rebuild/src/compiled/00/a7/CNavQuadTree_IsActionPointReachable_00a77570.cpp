@@ -6,7 +6,7 @@
 // Layout: local model: the point is a C2DVector plus the layer at +8; the leaf node keeps its centre at +4/+8, its level
 //   byte at +0xc and the blocked flag at +0xf.
 // Shape: the 8-byte probe vector whose address is passed inside the loops gives the aligned frame (GOTCHAS chunk 252).
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CNavigationPoint {
     C2DVector Position;                             // +0x00
     long      Layer;                                // +0x08

@@ -8,7 +8,7 @@
 #endif
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) g_fail = 1; } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -17,7 +17,7 @@ struct PairVectorLong {                // std::pair<C3DVector, long>, 16 bytes
     long      second;                  // +0x0C
 };
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     unsigned char _body[0x2c];
     float GetCompareValueForPoint(const C3DVector& point);     // 0x007F9660
 };

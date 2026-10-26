@@ -1,9 +1,9 @@
 // Behaviour test for 006bad20 CPersistContext_TransferableComponent<CFaction>::TransferOut (copy of the model; the
 // CFaction constructor/destructor and the traits TransferOut are recording stand-ins).
 #include <cstdio>
-struct CPersistContext { int id; };
-struct CStringParser { int id; };
-struct CCharString { struct SBlock* m_pBlock; };
+class CPersistContext { public: int id; };
+class CStringParser { public: int id; };
+class CCharString { public: struct SBlock* m_pBlock; };
 template <class T> struct set { void* _M_header; unsigned long _M_node_count; unsigned long _M_key_compare; };
 static int g_live = 0, g_liveInCall = 0;
 static const void* g_ctx = 0; static const void* g_out = 0; static const void* g_val = 0;

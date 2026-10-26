@@ -14,8 +14,8 @@
 // Shape: the animation name is passed as const char* (its temporary shares the def pointer's frame word); same-TU
 //   noinline GetSubDef / GetEffectFromString stand-ins; the def references are counted temporaries inside the &&
 //   chains (the second chain's flags live in ebx: 2 = def temporary, 4 = name temporary).
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
@@ -28,11 +28,11 @@ struct CDefBase : CDefVirtual {
     long m_refCount;                                         // +0x04
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-struct CSummonerDef : CDefBase {
+class CSummonerDef : public CDefBase { public:
     unsigned char _pad08[0x4c - 8];
     long          DeathObjectDefIndex;                       // +0x4c
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
@@ -46,13 +46,13 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p) m_p->Release(); }
     T* operator->() const { return m_p; }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefPointer<CSummonerDef>* out);          // 0x008CBFF0
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);    // 0x00669580
 };
@@ -78,7 +78,7 @@ struct CDefClassReference {                                  // a counted CDefCl
     CDefClassBase* operator->() const { return m_p; }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -121,13 +121,13 @@ CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool 
 struct CTCDriver41 {
     void SetOwner(CThing* owner);                            // 0x0080CBF0
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);                     // 0x0073ABA0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                                  // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xe1];
     bool          Loading;                                   // +0xe1 (name descriptive)
     CPlayer* GetMainPlayer();                                // 0x0049D9D0
@@ -137,7 +137,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                                // 0x00A01B50
 };
-struct CCombatActionBase {                                   // retail sizeof 0x114
+class CCombatActionBase { public:                                   // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();                               // 0x00857520
     unsigned char           _pad04[4];
@@ -147,7 +147,7 @@ struct CCombatActionBase {                                   // retail sizeof 0x
     CWorld* GetWorld() const;                                // 0x00692950
     void SetAnimationName(const CCharString& name);          // 0x008574D0
 };
-struct CCreatureAction_SummonerDead : CCombatActionBase {
+class CCreatureAction_SummonerDead : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

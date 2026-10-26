@@ -7,7 +7,7 @@ static bool g_bools[2];
 static int g_boolCount = 0;
 static float g_float = 0.0f;
 static int g_floatOrder = 0, g_baseOrder = 0;
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value) { g_bools[g_boolCount] = value; g_boolOrder[g_boolCount++] = ++g_order; }
     void WriteFloat(float value) { g_float = value; g_floatOrder = ++g_order; }
 };

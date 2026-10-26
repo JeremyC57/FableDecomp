@@ -7,7 +7,7 @@
 // intelligent pointer at +0x0C (`lea ecx,[eax+0Ch]`).
 // Shape: Override (+4) is stored before PThingInside (+0) is cleared -- the bool is an init-list member and the pointer
 // is assigned in the body (zero first, then the component's item when present).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -46,7 +46,7 @@ struct CTCInterface75 {                             // interface 0x75 component 
     CBaseIntelligentPointer m_inside;               // +0x0c
 };
 
-struct CThingFilter_IsInSameVolumeContextAsThing {
+class CThingFilter_IsInSameVolumeContextAsThing { public:
     CThing* PThingInside;                           // +0x00
     bool    Override;                               // +0x04
     CThingFilter_IsInSameVolumeContextAsThing(CThing* thing, bool override);

@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CCoinGameObstacleDef
-{
+class CCoinGameObstacleDef
+{ public:
     void* vftable;
 };
 extern void* const g_CCoinGameObstacleDef_vftable;

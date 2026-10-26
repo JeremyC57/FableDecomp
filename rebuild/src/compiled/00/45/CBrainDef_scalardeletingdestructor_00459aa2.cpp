@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
 
-struct CBrainDef {
+class CBrainDef { public:
     void *vtbl;
 };
 

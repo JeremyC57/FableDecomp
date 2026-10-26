@@ -8,7 +8,7 @@ struct CTCGraphicAppearance {
     bool LastByPass;
     void SetByPassColorFilter(bool byPass) { ++Calls; LastByPass = byPass; }
 };
-struct CThing {
+class CThing { public:
     int Id;
     unsigned char m_flags91;                            // bit 0: dead
     CTCGraphicAppearance* m_pGraphicAppearance;

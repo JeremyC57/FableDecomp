@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 static long g_framesPerSecond = 20;
-struct CAnimInit { long Anim; };
+class CAnimInit { public: long Anim; };
 template <class T> struct SListNode { SListNode* _M_next; SListNode* _M_prev; T _M_data; };
 template <class T> struct CRetailList {
     SListNode<T>* _M_node;
@@ -20,19 +20,19 @@ template <class T> struct CRetailList {
 };
 struct CAnimFrameTime { float Seconds; long Reserved1, Reserved2; CAnimFrameTime(float s) : Seconds(s), Reserved1(0), Reserved2(0) {} };
 static float g_lastSeconds = 0.0f;
-struct CAnimateThing {
+class CAnimateThing { public:
     int m_pCurrent, m_pEnd; unsigned char m_stateFlags;
     void UpdateFrameLogic(const CAnimFrameTime& t) { g_lastSeconds = t.Seconds; }
     bool IsFinished() const { return m_pCurrent == m_pEnd || (m_stateFlags & 2); }
 };
-struct CTCAnimationComplex { CAnimateThing anim; CAnimateThing& GetAnimation() { return anim; } };
+class CTCAnimationComplex { public: CAnimateThing anim; CAnimateThing& GetAnimation() { return anim; } };
 struct CBulletTime {
     void* m_pController; bool m_active; float scale;
     float GetTimeScale() { return scale; }
     bool IsActive() const { return m_active || m_pController != 0; }
 };
-struct CWorld { CBulletTime* m_pBulletTime; };
-struct CThing { bool affected; bool IsAffectedByBulletTime() { return affected; } };
+class CWorld { public: CBulletTime* m_pBulletTime; };
+class CThing { public: bool affected; bool IsAffectedByBulletTime() { return affected; } };
 static long g_played = -1; static int g_playCount = 0;
 class CTCAnimatingObject {
 public:

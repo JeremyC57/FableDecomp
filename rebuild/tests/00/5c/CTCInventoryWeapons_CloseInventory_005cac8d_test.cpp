@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour of CTCInventoryWeapons::CloseInventory (0x005CAC8D).
-struct CEnginePrimitiveHandle { long m_id; void* m_pPrimitive; void Clear() { m_id = 0; m_pPrimitive = 0; } };
+class CEnginePrimitiveHandle { public: long m_id; void* m_pPrimitive; void Clear() { m_id = 0; m_pPrimitive = 0; } };
 template <class R, class T> class mem_fun_ref_t {
 public:
     explicit mem_fun_ref_t(R (T::*pfn)()) : m_pfn(pfn) {}
@@ -15,7 +15,7 @@ struct CPrimitiveHandleVector {
     CEnginePrimitiveHandle* begin() { return _First; }
     CEnginePrimitiveHandle* end() { return _Last; }
 };
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     bool InventoryOpen; CPrimitiveHandleVector ActiveWeaponPrimitiveHandles; long m_setups;
     void SetupActiveWeaponsOnCarrier() { ++m_setups; }
     void CloseInventory()

@@ -9,7 +9,7 @@ float AngleDifference(float a, float b)
     while (d < -0.5f) d += 1.0f;
     return d;
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
@@ -69,7 +69,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     float AngleOffset;
 };
 struct CTCScriptedHook {
@@ -92,7 +92,7 @@ struct CTentacleList {
         return n;
     }
 };
-struct CTCKraken {
+class CTCKraken { public:
     CThing*                 ParentThing;
     CBaseIntelligentPointer Body;
     CBaseIntelligentPointer Target;

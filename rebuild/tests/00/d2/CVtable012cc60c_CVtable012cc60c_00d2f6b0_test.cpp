@@ -7,13 +7,13 @@
 #endif
 #include <new>
 static int g_scriptBase = 0, g_baseObject = 0, g_baseClass = 0;
-struct CScriptBase { virtual void v00() { } unsigned char _body[0x3c]; CScriptBase() { ++g_scriptBase; } };
+class CScriptBase { public: virtual void v00() { } unsigned char _body[0x3c]; CScriptBase() { ++g_scriptBase; } };
 struct __declspec(novtable) CScriptObject : CScriptBase { void* m_pInterface; void* m_pData; CScriptObject(void* data, void* iface) : CScriptBase(), m_pInterface(iface), m_pData(data) { } };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CBaseObject { virtual void v00() { } void* m_pIntelligentPointer; CBaseObject() : m_pIntelligentPointer(0) { ++g_baseObject; } };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject { CCountedPointerWords PImp; virtual void v00() { } CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { } };
-struct CBaseClass { virtual void v00() { } CBaseClass() { ++g_baseClass; } };
-struct CScriptThing : CBaseClass { CCountedPointerWords PImp; virtual void v00() { } CScriptThing() : CBaseClass(), PImp() { } };
+class CBaseObject { public: virtual void v00() { } void* m_pIntelligentPointer; CBaseObject() : m_pIntelligentPointer(0) { ++g_baseObject; } };
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: CCountedPointerWords PImp; virtual void v00() { } CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { } };
+class CBaseClass { public: virtual void v00() { } CBaseClass() { ++g_baseClass; } };
+class CScriptThing : public CBaseClass { public: CCountedPointerWords PImp; virtual void v00() { } CScriptThing() : CBaseClass(), PImp() { } };
 struct CVtable_012cc60c : CScriptObject {
     unsigned char _pad48[8]; CScriptGameResourceObjectScriptedThingBase m_scriptedThing; CScriptThing m_thing; virtual void v00() { }
     CVtable_012cc60c(void* data, void* iface) : CScriptObject(data, iface), m_scriptedThing(), m_thing() { }

@@ -17,7 +17,7 @@ extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 struct __false_type { __false_type() { } };
 
 template <class T>
-struct CArray {                                         // STLport vector<T> (12 bytes)
+class CArray { public:                                         // STLport vector<T> (12 bytes)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -28,7 +28,7 @@ struct CArray {                                         // STLport vector<T> (12
     }
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 

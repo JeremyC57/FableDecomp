@@ -3,7 +3,7 @@
 // Callees: the player getter @ 0x00449970 (labelled "Catch@0040d959", propagated), CHeroLogBook::AddLogEntry @ 0x0047A9F0 (labelled "CHeroLogBook_AddLogEntry"). Shape: the four arguments re-read as the pushes shift the stack, `ret 10h`.
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
-struct CWorld;
+class CWorld;
 struct CHeroLogBook_Retail {
     void AddLogEntry(long a, long b, long c, long d, long flag);   // 0x0047A9F0
 };
@@ -14,7 +14,7 @@ struct CPlayer_Retail {
 struct CPlayerManager_Retail {
     CPlayer_Retail* GetPlayer();                   // 0x00449970
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
     long                    Component;

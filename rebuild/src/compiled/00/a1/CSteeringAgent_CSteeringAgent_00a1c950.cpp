@@ -14,9 +14,9 @@
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 
 class CNavigatorExternalInterface;
-struct CSB { virtual ~CSB(); };
-struct CSBInput { virtual ~CSBInput(); };
-struct CSBConstraint { virtual ~CSBConstraint(); };
+class CSB { public: virtual ~CSB(); };
+class CSBInput { public: virtual ~CSBInput(); };
+class CSBConstraint { public: virtual ~CSBConstraint(); };
 
 template <class T>
 struct SListNode {

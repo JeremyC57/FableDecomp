@@ -14,7 +14,7 @@
 // constructor, inlined into the argument area (`sub esp,1Ch ; mov esi,esp`, six CCharString copies with the
 // ColourIndex dword between the second and third) inside the loop, the source pointer strength-reduced to
 // `first + parent*28 + 8`. Layout from the landed CTestQuest sources (PDB names).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
@@ -32,7 +32,7 @@ public:
     CCharString QuestCardDefName;                  // +0x18
 };
 
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest& a, const CTestQuest& b) const;   // 0x006238A0
 };
 

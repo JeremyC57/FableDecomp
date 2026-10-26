@@ -11,7 +11,7 @@ struct SubObj {
     }
 };
 
-struct CTCLook {
+class CTCLook { public:
     char pad[0xc0];
     SubObj sub;
     bool IsTurningBody(Arg arg) {

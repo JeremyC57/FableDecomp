@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void* vt; // +0x0
     unsigned char _pad[0x29]; // to 0x2d
     char allowFadeIfFaded; // +0x2d

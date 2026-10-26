@@ -7,7 +7,7 @@ typedef unsigned long long u64;
 #endif
 static char g_seq[64] = "";
 static void note(const char* s) { std::strcat(g_seq, s); }
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer { virtual void v00() { } void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { note("I"); } };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() { } CIntelligentPointer() : CBaseIntelligentPointer() { } };
 struct CTCBase_Calls {

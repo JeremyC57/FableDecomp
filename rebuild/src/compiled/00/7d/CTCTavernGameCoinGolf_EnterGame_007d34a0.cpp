@@ -10,7 +10,7 @@
 //         (PDB +0x34).
 // Shape: as CTCTavernGameCoinGolf::LeaveGame 0x007D4A90: the out pointer is zero-initialised and the getter's result tested;
 //        the world's +0x34 object comes through an inline accessor.
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void PushLookAround();                          // 0x00699A50
 };
 
@@ -20,7 +20,7 @@ struct CCameraManagerSource {
     virtual bool GetCameraManager(CGameCameraManager** camera);     // slot 9 (+0x24)
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x34];
     CCameraManagerSource* m_pCameraSource;          // +0x34
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
@@ -34,7 +34,7 @@ struct CTCTavernGameCoinBase {
     void EnterGame();                               // 0x008EF390
 };
 
-struct CTCTavernGameCoinGolf : CTCTavernGameCoinBase {
+class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     float ZAngle;                                   // +0x148
     float XAngle;                                   // +0x14c
     float CameraDistance;                           // +0x150

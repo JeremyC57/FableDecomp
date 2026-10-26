@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CMovableResourceMemoryPool {
+class CMovableResourceMemoryPool { public:
     unsigned long GetAllocatedSize(long handle) { return (unsigned long)handle * 100; }
 };
-struct C3DPrimitive2 { unsigned char _body[0xA0]; unsigned long m_extra; unsigned long Sizeof() const { return 0xA0 + m_extra; } };
-struct C3DMesh2 {
+class C3DPrimitive2 { public: unsigned char _body[0xA0]; unsigned long m_extra; unsigned long Sizeof() const { return 0xA0 + m_extra; } };
+class C3DMesh2 { public:
     CMovableResourceMemoryPool* MemoryPool;
     long StatsMemoryHandle, MemoryHandle, PrimMemoryHandle;
     unsigned long PrimitiveCount;

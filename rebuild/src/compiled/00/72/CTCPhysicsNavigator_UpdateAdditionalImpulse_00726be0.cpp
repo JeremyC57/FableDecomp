@@ -18,14 +18,14 @@ class CThing;
 class CThingCreatureBase;
 class CTCPhysicsBase;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI {
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
 };
@@ -40,11 +40,11 @@ template <class T> struct vector {                  // STLport vector (12 bytes)
 };
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     CThing* Thing;
     CThingFilter_IsNot(CThing* thing) : Thing(thing) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_IsNot& filter, vector<CThingCreatureBase*>& out);   // 0x00725F10
 };
 
@@ -156,7 +156,7 @@ public:
     float         Radius;                           // +0x34
 };
 #pragma pack(pop)
-struct CApplyAdditionalImpulseIfInCombatAndTooClose {   // 0x18 bytes
+class CApplyAdditionalImpulseIfInCombatAndTooClose { public:   // 0x18 bytes
     C3DVector           Position;                   // +0x00
     float               Radius;                     // +0x0c
     CTCPhysicsBase*     Owner;                      // +0x10

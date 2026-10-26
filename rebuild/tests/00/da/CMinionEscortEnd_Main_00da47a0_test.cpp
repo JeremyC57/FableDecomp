@@ -5,7 +5,7 @@
 static char g_log[256];
 static void logs(const char* s) { std::strcat(g_log, s); }
 
-struct CScriptThing {
+class CScriptThing { public:
     mutable int awareAfter;
     bool IsAwareOfHero() const { logs("a"); return awareAfter-- <= 0; }
 };
@@ -16,7 +16,7 @@ struct CHandle {
     bool IsScripting() { return scripting; }
     void Release() { logs("R"); }
 };
-struct CGame {
+class CGame { public:
     int frames, startFailures, doneAt;
     CScriptThing hero;
     void NewScriptFrame() { ++frames; logs("f"); }

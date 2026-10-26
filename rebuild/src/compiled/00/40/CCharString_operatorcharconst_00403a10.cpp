@@ -12,7 +12,7 @@
 
 // Representation block: character storage first, so `rep->data` is a single load.
 struct StringRep { char* data; long len; };
-struct CCharString { StringRep* rep; };     // null rep == empty string
+class CCharString { public: StringRep* rep; };     // null rep == empty string
 
 // Shared empty-string sentinel.
 extern char g_EmptyCharString_0129AAF4[1];

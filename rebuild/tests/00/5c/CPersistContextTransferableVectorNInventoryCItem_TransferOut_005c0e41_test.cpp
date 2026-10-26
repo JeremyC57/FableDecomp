@@ -6,11 +6,11 @@ typedef unsigned long long u64;
 typedef unsigned __int64 u64;
 #endif
 
-struct CPersistContext { int id; };
-struct CStringParser { int id; };
-struct CCharString { int id; };
+class CPersistContext { public: int id; };
+class CStringParser { public: int id; };
+class CCharString { public: int id; };
 static int g_pointerDtors = 0;
-struct CPerItemData; struct CCPPointerInfo;
+struct CPerItemData; class CCPPointerInfo;
 struct CCountedPointer_CPerItemData {
     CPerItemData*   Data;
     CCPPointerInfo* Info;
@@ -18,7 +18,7 @@ struct CCountedPointer_CPerItemData {
     ~CCountedPointer_CPerItemData() { ++g_pointerDtors; }
 };
 namespace NInventory {
-struct CItem {
+class CItem { public:
     long                         ItemType;
     long                         NumberOfItems;
     CCountedPointer_CPerItemData PPerItemData;

@@ -32,7 +32,7 @@ struct CByteArray {                        // retail CArray<unsigned char>: {fir
 
 typedef unsigned short wchar_t;          // VC7.1 without /Zc:wchar_t: wchar_t is the CRT typedef
 
-struct CWideString {
+class CWideString { public:
     wchar_t* m_pString;
     CWideString();                         // 0x0099AED0
 };
@@ -43,7 +43,7 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-struct CCachedFile : CBase {
+class CCachedFile : public CBase { public:
     virtual void v00();                    // own vtable (0x012724D4)
     long            Position;              // +0x04 (not initialised)
     long            BufferStartPosition;   // +0x08

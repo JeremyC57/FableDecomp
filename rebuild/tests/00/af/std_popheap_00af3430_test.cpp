@@ -2,7 +2,7 @@
 // *result = *first, then the saved value is sifted down from the root over [first, last).
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* Text;
     bool operator<(const CCharString& o) const { return std::strcmp(Text, o.Text) < 0; }
 };

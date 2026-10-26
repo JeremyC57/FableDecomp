@@ -6,24 +6,24 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 
-struct C3DVector { float X, Y, Z; };
-struct CThingCreatureBase {
+class C3DVector { public: float X, Y, Z; };
+class CThingCreatureBase { public:
     u64 UID;
     int combatant;
     bool IsRegisteredCombatant() { return combatant != 0; }
 };
 static long g_frame;
 static int g_prefCalls, g_unreachable;
-struct CCombatManager {
+class CCombatManager { public:
     C3DVector GetPreferredPos(CThingCreatureBase*) { C3DVector v; v.X = (float)(++g_prefCalls); v.Y = 0; v.Z = 0; return v; }
     void OnCombatPositionUnreachable(CThingCreatureBase*) { ++g_unreachable; }
 };
-struct CWorld {
+class CWorld { public:
     CCombatManager* CombatManager;
     CCombatManager* GetPCombatManager() const { return CombatManager; }
     static long GetWorldFrame() { return g_frame; }
 };
-struct CAIBrain { CThingCreatureBase* PCreature; };
+class CAIBrain { public: CThingCreatureBase* PCreature; };
 struct CPointer { CThingCreatureBase* item; CThingCreatureBase* GetPItem() const { return item; } };
 
 static int g_runnable[16], g_inPos[16], g_move[16];

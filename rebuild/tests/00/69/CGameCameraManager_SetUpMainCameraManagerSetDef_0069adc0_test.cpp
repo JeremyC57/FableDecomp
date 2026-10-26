@@ -30,20 +30,20 @@ public:
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long m_refCount;                                // +0x04
     void AddRef() { ++m_refCount; }
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-struct CRegionDef : CDefPointeeBase {
+class CRegionDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x40];
     long CameraManagerSetIndex;                     // +0x48
 };
-struct CCameraManagerSetDef : CDefPointeeBase {};
+class CCameraManagerSetDef : public CDefPointeeBase { public:};
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(T* object) : Object(object) { if (Object) Object->AddRef(); }
@@ -54,7 +54,7 @@ template <class T> struct CDefPointer {
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CCameraManagerSetDef>* def);                 // 0x004AB920
     bool GetDef(const CCharString& name, CDefPointer<CCameraManagerSetDef>* def);    // 0x004AB990
 };
@@ -80,16 +80,16 @@ __declspec(noinline) bool CDefinitionManager::GetDef(const CCharString& name, CD
 }
 #pragma auto_inline(on)
 
-template <class T> struct CDefPointer;
-struct CRegion {
+template <class T> class CDefPointer;
+class CRegion { public:
     unsigned char _pad00[0x24];
     CDefPointer<CRegionDef> m_pDef;                 // +0x24
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetCurrentRegionNumber();                  // 0x004FB150
     CRegion& GetRegion(long region);                // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void w000(); virtual void w001(); virtual void w002(); virtual void w003(); virtual void w004(); virtual void w005();
     virtual void w006(); virtual void w007(); virtual void w008(); virtual void w009(); virtual void w010(); virtual void w011();
     virtual CWorldMap* GetWorldMap();               // slot 12 (+0x30)

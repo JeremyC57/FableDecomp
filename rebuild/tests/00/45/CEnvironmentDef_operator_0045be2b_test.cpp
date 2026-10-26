@@ -1,11 +1,11 @@
 #include <cstdio>
 static int g_calls = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     long m_base;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { m_base = o.m_base; ++g_calls; return *this; }
 };
-struct CCharString { long v; CCharString& operator=(const CCharString& o) { v = o.v; ++g_calls; return *this; } };
-struct CEnvironmentDef : CParentDefClassBase {
+class CCharString { public: long v; CCharString& operator=(const CCharString& o) { v = o.v; ++g_calls; return *this; } };
+class CEnvironmentDef : public CParentDefClassBase { public:
     CCharString ColourLookupTexture;
     long DiffuseLookupRow;
     long AmbientLookupRow;

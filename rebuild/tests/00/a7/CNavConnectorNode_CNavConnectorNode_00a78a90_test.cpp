@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CNavRegion { CNavRegion* connected; void SetAsConnectedToRegion(CNavRegion* o) { connected = o; } };
+class CNavRegion { public: CNavRegion* connected; void SetAsConnectedToRegion(CNavRegion* o) { connected = o; } };
 struct Node;
 struct SmallVec {
     const Node* m_data[8]; signed char m_size;
@@ -7,7 +7,7 @@ struct SmallVec {
     void push_back(const Node* v) { resize(m_size + 1); m_data[m_size - 1] = v; }
 };
 struct Node { CNavRegion* region; SmallVec Neighbours; CNavRegion* GetRegion() const { return region; } };
-struct CNavConnectorNode {
+class CNavConnectorNode { public:
     Node* Neighbour1; Node* Neighbour2;
     CNavConnectorNode(const Node* a, const Node* b) : Neighbour1((Node*)a), Neighbour2((Node*)b)
     {

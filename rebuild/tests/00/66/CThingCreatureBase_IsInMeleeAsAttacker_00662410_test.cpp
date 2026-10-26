@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 class CThingCreatureBase;
-struct CWorld;
-struct CCombatManager {
+class CWorld;
+class CCombatManager { public:
     bool IsAttacker(const CThingCreatureBase& creature) const;
 };
 static const void* g_asked;

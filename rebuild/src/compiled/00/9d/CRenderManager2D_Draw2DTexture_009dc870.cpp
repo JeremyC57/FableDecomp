@@ -11,15 +11,15 @@
 // format whose table row flag is set, else 0.01 / width and 0.01 / height (unsigned to float); then Z 0, RHW, and
 // U/V = offset + uv (per vertex: Diffuse, X, Y first; U, V, Z, RHW after the offset -- the store order that
 // reproduces retail's schedule). Blend mode: flag 2 picks 2, else flag 1 picks 3, else 1. Triangles (0, 1, 2) and (0, 2, 3).
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CUVBox { float U[4]; float V[4]; };
-struct CRGBColour {
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CUVBox { public: float U[4]; float V[4]; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     unsigned long GetARGB() const { return (((((unsigned long)A << 8) | R) << 8 | G) << 8) | B; }
 };
-struct CPixelFormat { long FormatIndex; };
-struct C2DExtentsI { unsigned long Width, Height; };
-struct CTexture {
+class CPixelFormat { public: long FormatIndex; };
+class C2DExtentsI { public: unsigned long Width, Height; };
+class CTexture { public:
     CPixelFormat GetPixelFormat() const;               // 0x009F9D80
     C2DExtentsI GetDimensions(unsigned long level);    // 0x009F9DB0
 };
@@ -28,7 +28,7 @@ struct SPixelFormatInfo {                              // 36-byte rows
     unsigned char _pad01[0x23];
 };
 extern SPixelFormatInfo g_PixelFormatInfo[];          // 0x0129BA60
-struct CTVertexRHWColSpecTex1 {
+class CTVertexRHWColSpecTex1 { public:
     float X, Y, Z, RHW;
     unsigned long Diffuse;
     unsigned long Specular;

@@ -39,8 +39,8 @@ struct RECT_Local { long left, top, right, bottom; };
 extern "C" long __stdcall D3DXLoadSurfaceFromSurface(IDirect3DSurface9* dst, const void* dstPalette, const RECT_Local* dstRect,
     IDirect3DSurface9* src, const void* srcPalette, const RECT_Local* srcRect, unsigned long filter, unsigned long colourKey);
 class C2DBoxI { public: long left, top, right, bottom; };
-struct C2DExtentsI { long X; long Y; C2DExtentsI(long x, long y) : X(x), Y(y) {} };
-struct CSurfaceLockedRect { long DimX; long DimY; long Pitch; unsigned char* PMem; };
+class C2DExtentsI { public: long X; long Y; C2DExtentsI(long x, long y) : X(x), Y(y) {} };
+class CSurfaceLockedRect { public: long DimX; long DimY; long Pitch; unsigned char* PMem; };
 class CPixelFormat {
 public:
     long FormatIndex;

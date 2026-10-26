@@ -12,9 +12,9 @@
 // global would be loaded first.
 // `mov al,1` / `xor al,al`: bool. The engine header keeps the pointers as opaque byte arrays, so the
 // layout is modelled locally with their names.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     C3DVector* GetPosition();                   // 0x004C73D0
 };
 
@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                         // 0x00A01B50
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

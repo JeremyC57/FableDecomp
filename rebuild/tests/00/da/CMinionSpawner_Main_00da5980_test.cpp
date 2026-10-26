@@ -5,8 +5,8 @@
 // then summon effect, pause, war-dog minion facing the hero, and remove the spawner.
 static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); }
-struct CScriptThing { const char* Data; float Pos; const char* GetDataString() const { return Data; } float GetPos() const { return Pos; } };
-struct CGame {
+class CScriptThing { public: const char* Data; float Pos; const char* GetDataString() const { return Data; } float GetPos() const { return Pos; } };
+class CGame { public:
     int Frames, TerminateAt; float HeroPos, LastRange;
     CScriptThing Hero;
     void NewScriptFrame() { Frames++; HeroPos -= 1.0f; Log("F"); }

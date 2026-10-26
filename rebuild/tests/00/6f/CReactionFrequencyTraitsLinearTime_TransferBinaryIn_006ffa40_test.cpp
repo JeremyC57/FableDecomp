@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     unsigned long m_position;
     const unsigned char* m_pData;
     long m_remaining;

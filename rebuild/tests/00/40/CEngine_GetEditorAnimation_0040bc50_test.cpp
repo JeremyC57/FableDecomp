@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimationInfo { int tag; };
+class C3DAnimationInfo { public: int tag; };
 
 static int g_loadCalled = 0;
 static void* g_loadSelf = 0;
@@ -17,7 +17,7 @@ struct CBank {
     }
 };
 
-struct CEngine {
+class CEngine { public:
     char pad[0xc0];
     CBank* banks; // +0xc0
     C3DAnimationInfo* Resolve()

@@ -10,16 +10,16 @@
 //   CSoundPair (user constructor -> returned through the hidden pointer in ecx) lands in a frame temporary that is
 //   passed by reference to the base constructor; the string dies after the base call, then the vtable store and the
 //   Timer initialiser (a float copied through edx from the third argument slot).
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CCharString {                        // one pointer; the defaulted length makes a literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length makes a literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CSoundPair {                         // user constructor: the 8-byte result comes back through the hidden pointer
+class CSoundPair { public:                         // user constructor: the 8-byte result comes back through the hidden pointer
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -27,13 +27,13 @@ struct CSoundPair {                         // user constructor: the 8-byte resu
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
 
-struct CCreatureAction_DragonFireBeamInto : CCombatActionBase {   // vtable 0x01293E54
+class CCreatureAction_DragonFireBeamInto : public CCombatActionBase { public:   // vtable 0x01293E54
     float Timer;                            // +0x114 (PDB +0x12c)
     virtual void v00();
     CCreatureAction_DragonFireBeamInto(CThingCreatureBase* owner, CThing* target, float timer);

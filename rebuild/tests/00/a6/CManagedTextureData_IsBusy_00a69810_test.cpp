@@ -6,8 +6,8 @@ struct CTextureResource
     bool CheckBusy();
 };
 
-struct CManagedTextureData
-{
+class CManagedTextureData
+{ public:
     char pad00[0x20];
     CTextureResource* resource;   // +0x20
     char pad24[0x4a - 0x24];

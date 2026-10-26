@@ -5,9 +5,9 @@
 //   CCharString ctor 0x0099EBF0, CTCNamedUserActionPoints::GetFreeNamedActionPoint 0x007FF190, CTCTavernGame::CreateGamePiece 0x005EA9B0,
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0, 0x00686D60 (game view), PositionCover 0x007D7F10
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -24,13 +24,13 @@ struct CSpotTheAdditionDef : CDefBase {                 // descriptive
     unsigned char _pad30[0x64 - 0x30];
     long GamePieceType;                                 // +0x64
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CSpotTheAdditionDef>* def) const;   // 0x007D9A80
 };
 struct CInterfaceMap {
@@ -96,7 +96,7 @@ struct CTCLinkedThings {                                // component 0x21 (descr
     unsigned char _pad00[0x0c];
     CLinkNode* Head;                                    // +0x0c (STLport list sentinel)
 };
-struct CTCNamedUserActionPoints {
+class CTCNamedUserActionPoints { public:
     bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
                                  long flags, bool reserve);   // 0x007FF190
 };

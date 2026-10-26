@@ -14,12 +14,12 @@
 // vtable (and so the `??_G`) into the TU.
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
 // Leaf: ??_GCTCGraphicAppearanceAnimatedMesh
-struct CThing;
+class CThing;
 
 namespace NGraphicAppearance {
 
-struct CAGraphicAppearanceComponent;
-struct CPrimitive;
+class CAGraphicAppearanceComponent;
+class CPrimitive;
 
 }
 
@@ -27,14 +27,14 @@ struct CTCGraphicAppearance {
     void UnregisterComponent(NGraphicAppearance::CAGraphicAppearanceComponent* component);   // 0x004C0000
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64 (retail)
     unsigned char         _pad_0x68[0x29];
     unsigned char         Dead : 1;                     // +0x91 bit 0 (retail)
 };
 
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual ~CTCBase();                                 // 0x00686830
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -44,13 +44,13 @@ struct CTCBase {                                        // 0x0c bytes: vptr, Par
 
 namespace NGraphicAppearance {
 
-struct CAGraphicAppearanceComponent {                   // vtable 0x0125A170 (no destructor slot)
+class CAGraphicAppearanceComponent { public:                   // vtable 0x0125A170 (no destructor slot)
     virtual void v00();
     CAGraphicAppearanceComponent() { }
     ~CAGraphicAppearanceComponent() { }
 };
 
-struct CTCGraphicAppearanceAnimatedMesh : CTCBase, CAGraphicAppearanceComponent {
+class CTCGraphicAppearanceAnimatedMesh : public CTCBase, public CAGraphicAppearanceComponent { public:
     CPrimitive* PrimHandle;                             // +0x10
     virtual void v00();
     CTCGraphicAppearanceAnimatedMesh(CThing* owner) : CTCBase(owner), PrimHandle(0) { }

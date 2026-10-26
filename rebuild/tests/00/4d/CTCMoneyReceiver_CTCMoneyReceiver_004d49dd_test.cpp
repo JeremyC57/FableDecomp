@@ -1,12 +1,12 @@
 // Behaviour test for CTCMoneyReceiver::CTCMoneyReceiver @ 0x004D49DD: base gets the owner, the amount defaults to 50.
 #include <cstdio>
-struct CThing { long id; };
-struct CTCBase {
+class CThing { public: long id; };
+class CTCBase { public:
     CThing* ParentThing;
     CTCBase(CThing* owner) : ParentThing(owner) {}
     virtual ~CTCBase() {}
 };
-struct CTCMoneyReceiver : CTCBase {
+class CTCMoneyReceiver : public CTCBase { public:
     long AmountOfMoneyWanted;
     static long GetDefaultAmountOfMoneyWanted() { return 50; }
     CTCMoneyReceiver(CThing* owner) : CTCBase(owner) { AmountOfMoneyWanted = GetDefaultAmountOfMoneyWanted(); }

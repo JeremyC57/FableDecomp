@@ -47,7 +47,7 @@ struct TestStream {
 };
 static void PutLong(unsigned char* p, int v) { std::memcpy(p, &v, 4); }
 static void PutFloat(unsigned char* p, float v) { std::memcpy(p, &v, 4); }
-struct CReactionMatch {
+class CReactionMatch { public:
     int Type; int Payload;
     CReactionMatch(int type) : Type(type), Payload(0) {}
     virtual ~CReactionMatch() {}

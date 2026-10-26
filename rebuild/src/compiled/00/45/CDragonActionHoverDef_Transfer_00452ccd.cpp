@@ -4,7 +4,7 @@ struct CSerializer {
     void Transfer(CSubField* p);
 };
 
-struct CDragonActionHoverDef {
+class CDragonActionHoverDef { public:
     char pad[0x28];
     CSubField field28;
 };

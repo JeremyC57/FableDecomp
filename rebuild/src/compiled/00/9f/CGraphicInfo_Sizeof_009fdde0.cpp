@@ -8,10 +8,10 @@
 // (register pressure), the frame offset steps by 16 in ebp.
 // Layout: Ego_r.pdb CGraphicInfo (FrameCount +0x0a in the header, Frames +0x28) / CGraphicInfoFrame (Data +8).
 // Leaf: ?Sizeof@CGraphicInfo@@
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned long Sizeof() const;                  // 0x009FCBF0
 };
-struct CGraphicFrame {                             // engine/CGraphicFrame.h: one pointer
+class CGraphicFrame { public:                             // engine/CGraphicFrame.h: one pointer
     CGraphicFrameData* FrameData;
     unsigned long Sizeof() const { return FrameData ? FrameData->Sizeof() + sizeof(CGraphicFrame) : sizeof(CGraphicFrame); }
 };
@@ -34,8 +34,8 @@ struct CFrameData {                                // CGraphicInfoFrame::CFrameD
         return size;
     }
 };
-struct CGraphicInfo;
-struct CGraphicInfoFrame {                         // Ego_r.pdb, 16 bytes
+class CGraphicInfo;
+class CGraphicInfoFrame { public:                         // Ego_r.pdb, 16 bytes
     long           _pad00;
     unsigned short FrameNum;                       // +0x04
     signed char    SmallMipmapLevel;               // +0x06
@@ -54,7 +54,7 @@ struct CGraphicHeader {
     unsigned short FrameCount;                     // +0x0a
     unsigned char  _rest[0x10];
 };
-struct CGraphicInfo {                              // Ego_r.pdb, 0x2c bytes
+class CGraphicInfo { public:                              // Ego_r.pdb, 0x2c bytes
     CGraphicHeader     Header;                     // +0x00
     long               TextureType;                // +0x1c
     void*              Bank;                       // +0x20

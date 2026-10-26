@@ -12,14 +12,14 @@
 //          `PStall.GetPItem() != 0` (neg/sbb/neg).
 // Layout: no engine header for this class; modelled locally like the landed OnReplace / IsStillValid rows (next hawk
 //          frame +0x14, PStall +0x18); the shop's +0x50 flag is descriptive.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -38,18 +38,18 @@ struct CThing {
     }
 };
 bool __fastcall IsSpeaking(CThing* creature);   // 0x008644E0
-struct CTCShop {
+class CTCShop { public:
     unsigned char _pad[0x50];
     bool OnTheSpot;                             // +0x50 (descriptive)
 };
-struct CTCShopKeeper {                          // interface 0x90
+class CTCShopKeeper { public:                          // interface 0x90
     CTCShop* GetShopTC();                       // 0x00798F50
     CThing* GetShopThing();                     // 0x00798D80
 };
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     long GetThingAttitudeToPlayer(CThing* thing);   // 0x00701840
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x74];
     COpinionReactionManager* POpinionReactionManager;   // +0x74
     COpinionReactionManager* GetOpinionReactionManager() const { return POpinionReactionManager; }
@@ -66,12 +66,12 @@ namespace N_00668b60 { struct CIntelligentPointerConstThing : CBaseIntelligentPo
     CIntelligentPointerConstThing(CThing* item);    // 0x00668B60
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x00668B80
 }; } using N_00668b60::CIntelligentPointerConstThing;
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

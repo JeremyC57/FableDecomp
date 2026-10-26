@@ -15,20 +15,20 @@ namespace N_0099a2d0 { struct CBase {
 void* __cdecl operator new(unsigned int size);  // 0x00BFEA1A
 
 struct IDirect3DSurface9;
-struct CSurface {                               // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                               // vtable 0x0122F84C, 0x10 bytes
     virtual ~CSurface();
     IDirect3DSurface9* PD3DSurface;             // +0x04
     unsigned long AllocationSource;             // +0x08
     void* PAllocatedMemory;                     // +0x0c
     CSurface() : PD3DSurface(0), AllocationSource(0) {}
 };
-struct CRenderTarget : CBase {                  // vtable 0x0129C800, 0x24 bytes
+class CRenderTarget : public CBase { public:                  // vtable 0x0129C800, 0x24 bytes
     CSurface ColourSurface;                     // +0x04
     CSurface DepthSurface;                      // +0x14
     CRenderTarget() {}
     virtual ~CRenderTarget();
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                    // +0x00
     void* Info;                                 // +0x04
     CCountedPointer() : Data(0), Info(0) {}
@@ -38,7 +38,7 @@ struct CRenderStateCaptureBlock {
     bool Captured;
     CRenderStateCaptureBlock() : Captured(false) {}
 };
-struct C2DBoxF { float left, top, right, bottom; };
+class C2DBoxF { public: float left, top, right, bottom; };
 struct CSurfaceCompositor : CBase {             // vtable 0x01301CF0, 0x30 bytes
     long CurrentBlend;                          // +0x04 ECompositeBlendType
     CRenderStateCaptureBlock StateCaptureBlock; // +0x08

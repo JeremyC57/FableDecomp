@@ -2,7 +2,7 @@
 
 static int g_clears = 0, g_names = 0, g_order = 0, g_nameOrder = 0, g_clearOrder = 0; static void* g_freed = 0;
 static void FakeFree(void* p) { g_freed = p; }
-struct CWideString { void* m_p; ~CWideString() { ++g_names; g_nameOrder = ++g_order; } };
+class CWideString { public: void* m_p; ~CWideString() { ++g_names; g_nameOrder = ++g_order; } };
 struct CRetailList_009be060 { struct SNode; SNode* m_pHead; unsigned long m_size;
     void Clear() { ++g_clears; g_clearOrder = ++g_order; }
     ~CRetailList_009be060() { Clear(); if (m_pHead) FakeFree(m_pHead); } };

@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_baseCtors = 0, g_stringCtors = 0;
-struct CWideString { void* m_pData; CWideString() : m_pData(0) { ++g_stringCtors; } };
+class CWideString { public: void* m_pData; CWideString() : m_pData(0) { ++g_stringCtors; } };
 struct CDefPointer { void* m_pDef; CDefPointer() : m_pDef(0) { } };
-struct CTCActionUseBase { CThing* ParentThing; bool Usable; CTCActionUseBase(CThing& owner) : ParentThing(&owner), Usable(true) { ++g_baseCtors; } };
-struct CTCActionUseReadable : CTCActionUseBase {
+class CTCActionUseBase { public: CThing* ParentThing; bool Usable; CTCActionUseBase(CThing& owner) : ParentThing(&owner), Usable(true) { ++g_baseCtors; } };
+class CTCActionUseReadable : public CTCActionUseBase { public:
     CDefPointer PDef; CWideString TextTag;
     CTCActionUseReadable(CThing& owner) : CTCActionUseBase(owner) { }
 };

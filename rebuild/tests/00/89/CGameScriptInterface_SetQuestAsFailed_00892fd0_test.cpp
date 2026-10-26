@@ -12,7 +12,7 @@ CQuestMgr gm = {0,0,0};
 CQuestMgr* g_questMgr = &gm;
 char g_someFlag = 1;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     float applied;
     void applyFloat(float v){ applied=v; }
 };

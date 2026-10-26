@@ -15,7 +15,7 @@
 #include <math.h>
 #pragma intrinsic(fabs)
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                                             // 0x0099EAE0
     CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
@@ -25,11 +25,11 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 CCharString __fastcall GFIntToCharString(long value);                           // 0x0099F830
 
-struct CThing {
+class CThing { public:
     virtual void Save(CCharString& out);                                        // 0x004C9120
 };
 
-struct CThingPhysical : CThing {
+class CThingPhysical : public CThing { public:
     unsigned char _pad04[0x9c - 4];
     float         Scale;                                                        // +0x9c
     unsigned char _padA0[0xb4 - 0xa0];

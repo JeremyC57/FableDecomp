@@ -6,7 +6,7 @@
 #endif
 // Model of CCombatSequenceBase's scalar deleting destructor @ 0x008B3430: the virtual destructor destroys the
 // CombatActions vector (each action's counted pointer released, the block freed), then the object is deleted.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -52,7 +52,7 @@ public:
         if (_M_start != 0) { ++g_freed; free(_M_start); }
     }
 };
-struct CThingCreatureBase { int Id; };
+class CThingCreatureBase { public: int Id; };
 class CCombatSequenceBase {
 public:
     CCombatSequenceBase() : Running(false), NoAvailableActions(0), CurrentActionIndex(0), Creature(0), Target(0),

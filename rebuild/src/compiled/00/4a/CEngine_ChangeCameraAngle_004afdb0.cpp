@@ -4,7 +4,7 @@
 // Invoke a member on the embedded camera subobject at +0x58, then flag the change.
 struct CCameraSub;
 extern "C" void FABLE_FASTCALL FableCameraSubTick_4afdb0(CCameraSub *sub);
-struct CEngine {
+class CEngine { public:
     char pad00[0x58];
     char m_cameraSub[0x8f-0x58];  // subobject region starting at +0x58
     unsigned char m_changed;      // +0x8f

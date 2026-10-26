@@ -6,13 +6,13 @@
 //   from Ego_r.pdb member names; no engine header exists for the N3DPrimitive blocks.
 // Shape: `ebx = 0` holds the zero for every store and `ecx = -1` the MaterialIndex; the pointer walks at +8 into the block.
 #include <new>
-struct CTexture;
+class CTexture;
 namespace N3DPrimitive {
 struct CBlockBase {
     long m_start; long m_count; unsigned char m_flag0, m_flag1, m_flag2;
     CBlockBase() : m_start(0), m_count(0), m_flag0(0), m_flag1(0), m_flag2(0) {}
 };
-struct CStaticBlock : CBlockBase {
+class CStaticBlock : public CBlockBase { public:
     unsigned long DiffuseTextureFixupOffset; unsigned long BumpTextureFixupOffset;
     CTexture* DiffuseTexture; CTexture* BumpTexture; long MaterialIndex;
     CStaticBlock() : DiffuseTextureFixupOffset(0), BumpTextureFixupOffset(0), DiffuseTexture(0), BumpTexture(0), MaterialIndex(-1) {}

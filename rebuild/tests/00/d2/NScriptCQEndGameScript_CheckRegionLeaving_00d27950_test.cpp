@@ -9,7 +9,7 @@ static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL 
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
 // behaviour test: CQ_EndGameScript::CheckRegionLeaving -- per Darkwood5 visit: start screen once, undead bar shown while visiting, removed on leaving
 static int g_loadFrom = 2, g_loadTo = 5;
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -24,7 +24,7 @@ struct CGSI {
     void RemoveQuestInfoElement(long id) const { char x[32]; std::sprintf(x, "remove %ld", id); Log(x); }
     void SetCreatureGeneratorsEnabled(const char* n, bool e) const { (void)n; (void)e; }
 };
-struct CScriptDef { float UndeadBarMaximum; };
+class CScriptDef { public: float UndeadBarMaximum; };
 static CScriptDef g_def;
 static CScriptDef* g_pScriptDef = &g_def;
 struct CQ_EndGameScript {

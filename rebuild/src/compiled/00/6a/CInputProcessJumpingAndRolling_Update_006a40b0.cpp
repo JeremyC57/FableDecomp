@@ -1,11 +1,11 @@
 #pragma optimize("s",on)
 
-struct CInputProcessJumpingAndRolling {
+class CInputProcessJumpingAndRolling { public:
     char pad[0x4c];
     char field_4c;
 };
 
-struct CProcessedInput;
+class CProcessedInput;
 
 extern "C" char __stdcall JR_Helper(int a, int b);
 

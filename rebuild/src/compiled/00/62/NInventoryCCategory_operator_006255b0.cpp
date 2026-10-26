@@ -9,7 +9,7 @@
 // Layout: PAssociatedThing +0x00 (CIntelligentPointer<CThing>, vptr + item), ItemsInCategory +0x08, PDef +0x14 (CDefPointer:
 // release through slot 1, cleared inside the null test, then AddRef of the new def), PInventory +0x18, GlobalDefIndex +0x1C,
 // SelectedItemIndex +0x20, HighlightedItemIndex +0x24, Selected +0x28, DisplayItems +0x29.
-struct CBaseObject;
+class CBaseObject;
 class CBaseIntelligentPointer {
 public:
     virtual ~CBaseIntelligentPointer();
@@ -21,12 +21,12 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { SetPItem(o.GetPItem()); return *this; }
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                      // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     CDefPointer& operator=(const CDefPointer& o)
     {
@@ -45,7 +45,7 @@ template <class T> struct CDefPointer {
     }
 };
 namespace NInventory {
-struct CItem { unsigned char _body[0x14]; };
+class CItem { public: unsigned char _body[0x14]; };
 }
 struct CItemVector {                            // STLport vector<NInventory::CItem> (12 bytes)
     NInventory::CItem* _M_start;
@@ -55,11 +55,11 @@ struct CItemVector {                            // STLport vector<NInventory::CI
 };
 class CThing;
 class CTCBase;
-struct CInventoryCategoryDef;
+class CInventoryCategoryDef;
 class CTCInventoryBase;
 
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     CIntelligentPointer<CThing>              PAssociatedThing;      // +0x00
     CItemVector                              ItemsInCategory;       // +0x08
     CDefPointer<const CInventoryCategoryDef> PDef;                  // +0x14

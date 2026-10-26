@@ -10,13 +10,13 @@
 // Shape: the loop test is an inline helper with a NAMED region string (built before the interface's vtable load) and a
 // `? true : false` result (`setne bl` across the string destructor); VC rotates the loop so the helper is inlined at
 // the top and at the bottom. The quest name is an implicit conversion temporary (re-addressed with `lea`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -52,7 +52,7 @@ struct CGameScriptInterface {
 };
 
 namespace NScript {
-struct CQ_SunnyvaleMasterData {
+class CQ_SunnyvaleMasterData { public:
     unsigned char _pad000[0x5c];
     long          OrchardFarmTraderEscortCounter;       // +0x5c
 };
@@ -63,7 +63,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
 
-struct CQR_EscortTrader_ManagerScript : CScriptBase {
+class CQR_EscortTrader_ManagerScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                        // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44
     bool IsLookoutPointLoaded()

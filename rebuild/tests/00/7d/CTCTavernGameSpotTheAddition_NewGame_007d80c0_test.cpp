@@ -14,7 +14,7 @@ struct CDefPointee {
             Destroy();
     }
 };
-struct CTavernGameSpotTheAdditionDef : CDefPointee {};
+class CTavernGameSpotTheAdditionDef : public CDefPointee { public:};
 struct CDefPointer {
     CTavernGameSpotTheAdditionDef* Object;
     CDefPointer() : Object(0) {}
@@ -25,7 +25,7 @@ struct CDefPointer {
     }
 };
 static CTavernGameSpotTheAdditionDef* g_def = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer* out);
 };
 bool CDefClassBase::GetSubDef(CDefPointer* out)
@@ -34,12 +34,12 @@ bool CDefClassBase::GetSubDef(CDefPointer* out)
     if (!g_def) return false;
     ++g_def->m_count; out->Object = g_def; return true;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefClassBase* DefHolder;
 };
 static const char* g_log[8]; static int g_logN = 0; static long g_state = -1; static float g_coverFraction = -1.0f;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00() {}
     CThing* ParentThing;
     unsigned char _pad_0x08[0x19];

@@ -1,27 +1,27 @@
 // Behaviour test for 0x00B058E0 (see src/00b058e0.cpp): the constructor copied onto a portable model.
 #include <cstdio>
 #define CHECK(c) do { if (!(c)) { std::printf("00b058e0_TEST FAIL\n"); return 1; } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
-struct CRGBColour {                                      // D3DCOLOR byte order
+class CRGBColour { public:                                      // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) { }
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& o) { Set(o.R, o.G, o.B, o.A); }
 };
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
 };
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     unsigned int Type;
     unsigned int InterpolationSet;
     CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;
@@ -38,7 +38,7 @@ static bool Col(const CRGBColour& c, unsigned char r, unsigned char g, unsigned 
 }
 static bool Vec(const C3DVector& v, float x, float y, float z) { return v.X == x && v.Y == y && v.Z == z; }
 
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; CRightHandedSet(const C3DVector& u, const C3DVector& f) : Up(u), Forward(f) { } };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; CRightHandedSet(const C3DVector& u, const C3DVector& f) : Up(u), Forward(f) { } };
 struct CEnginePrimitiveParticleMesh : CEnginePrimitive {
     C3DVector WorldPos; C3DVector Size; CRightHandedSet RightHandedSet; CRGBColour Colour;
     CEnginePrimitiveParticleMesh(unsigned int, unsigned int, const C3DVector& pos, const CRightHandedSet& rh, const C3DVector& size,

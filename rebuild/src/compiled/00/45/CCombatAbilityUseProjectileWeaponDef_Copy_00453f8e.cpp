@@ -1,4 +1,4 @@
-struct CCombatAbilityUseProjectileWeaponDef;
+class CCombatAbilityUseProjectileWeaponDef;
 
 extern void __fastcall base_copy(CCombatAbilityUseProjectileWeaponDef* self, void* edx, const CCombatAbilityUseProjectileWeaponDef* other);
 

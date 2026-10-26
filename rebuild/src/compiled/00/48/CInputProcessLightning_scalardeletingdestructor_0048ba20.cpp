@@ -1,4 +1,4 @@
-struct CInputProcessLightning {
+class CInputProcessLightning { public:
     void* vftable;
 };
 

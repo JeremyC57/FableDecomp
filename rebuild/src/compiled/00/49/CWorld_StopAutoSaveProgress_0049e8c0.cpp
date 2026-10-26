@@ -9,7 +9,7 @@
 //   (CCountedPointer<CAProgressDisplay>: object +0, count block +4; its atexit destructor is the landed 0x01228C60).
 // Shape: `while (GFGetTime() < end)` is rotated (test before the loop and at the bottom); the empty text is an
 //   implicit conversion temporary; the handle is released by an inline Clear() that zeroes the block word first.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -19,7 +19,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-struct CAProgressDisplay;
+class CAProgressDisplay;
 struct CCountedPointer_CAProgressDisplay {
     CAProgressDisplay* Data;                       // +0
     SCountBlock*       Info;                       // +4
@@ -44,7 +44,7 @@ void __fastcall SetProgressDisplay(CCountedPointer_CAProgressDisplay* display); 
 extern bool g_bAutoSaveProgressShown;              // 0x013B89C1
 extern double g_AutoSaveProgressEndTime;           // 0x013B89C8
 extern CCountedPointer_CAProgressDisplay GOldAutoSaveProgressDisplay;   // 0x013B89E0
-struct CWorld {
+class CWorld { public:
     void StopAutoSaveProgress();
 };
 void CWorld::StopAutoSaveProgress()

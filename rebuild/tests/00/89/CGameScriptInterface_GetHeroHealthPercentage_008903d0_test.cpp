@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CThing { char pad[0x92]; };
-struct CGameScriptInterface { char pad[0x14]; void* field14; };
+class CThing { public: char pad[0x92]; };
+class CGameScriptInterface { public: char pad[0x14]; void* field14; };
 
 static CThing g_hero;
 static void* g_mgr = (void*)0x1234;

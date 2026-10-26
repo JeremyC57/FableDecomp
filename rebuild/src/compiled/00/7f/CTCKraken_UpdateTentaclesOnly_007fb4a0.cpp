@@ -8,8 +8,8 @@
 // bit 3 -> `test byte ptr [eax+3Ch],8`; key 0E3h in the `push ecx` frame slot); its bool is ignored, so the absent path
 // stores through the uninitialised out word (`mov eax,[esp+4]`) and the Tracking store is duplicated into both paths.
 // The template is `__forceinline` here: behind the GetPItem call VC7.1 otherwise emits it out of line.
-struct CBaseObject;
-struct CTCBase;
+class CBaseObject;
+class CTCBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -28,7 +28,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -48,7 +48,7 @@ struct CThing {
     }
 };
 
-struct CTCKrakenTentacle {                          // interface 227
+class CTCKrakenTentacle { public:                          // interface 227
     unsigned char _pad_0x00[0x29];
     bool          Tracking;                         // +0x29
 };
@@ -66,7 +66,7 @@ struct STentacleIterator {
 
 enum { TC_KRAKEN_TENTACLE = 227 };
 
-struct CTCKraken {
+class CTCKraken { public:
     unsigned char     _pad_0x00[0x48];
     STentacleIterator AttackingTentacleIterator;    // +0x48
     bool GetClosestTentacleToTarget(STentacleIterator* closest);   // 0x007FB270

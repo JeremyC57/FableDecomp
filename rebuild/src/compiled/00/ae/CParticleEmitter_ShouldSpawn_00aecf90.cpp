@@ -9,7 +9,7 @@
 // (memberwise user copy ctor, so the three differences stay on the FPU stack); the length squared is summed first and the
 // limit squared second, and the test is written `!(lengthSq <= max * max)` -- that gives retail's `test ah,1 ; je`
 // (`>` gives `test ah,5 ; jp`, `max*max < lengthSq` squares the limit first).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

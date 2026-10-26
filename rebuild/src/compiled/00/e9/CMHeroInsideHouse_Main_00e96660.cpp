@@ -14,14 +14,14 @@
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -35,7 +35,7 @@ struct CScriptThingImp {
     virtual bool IsAlive() const;                        // slot 75 (+0x12c)
 };
 extern const C3DVector g_ZeroPos;                        // 0x0143E8E0
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -71,11 +71,11 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;               // +0x04
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
@@ -84,7 +84,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual const C3DVector& GetPos() const;                                   // slot 6 (+0x18)
     __forceinline const C3DVector& PosOrZero() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }
 };
-struct CBaseObject {                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
+class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
     void* m_pIntelligentPointer;                        // +0x04
     CBaseObject();                                      // 0x0099A380
@@ -102,7 +102,7 @@ struct CHandlePImp {
     CCPPointerInfo* Info;
     CHandlePImp() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
@@ -116,7 +116,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
 struct CMovieImpWords { void* Data; void* Info; };
-struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4; destructor-less view, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
@@ -138,7 +138,7 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast
 void __fastcall AddLogbookStoryEntry(long entry);       // 0x00CBE87F
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006e7410
     virtual bool StartScriptingEntity(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase &, EScriptAIPriority);   // slot 8 (+0x20) 0x0089b5b0

@@ -1,8 +1,8 @@
 // Behaviour test for 0x005ccf86 OpenInventory (stats / weapons screen)
 #include <cstdio>
-struct C2DVector { float X, Y; };
-struct C2DBoxF { C2DVector TL, Extents; };
-struct CInventoryDef { long m_refCount; C2DVector BoxTL, BoxExtents; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: C2DVector TL, Extents; };
+class CInventoryDef { public: long m_refCount; C2DVector BoxTL, BoxExtents; };
 struct CDefPointer {
     CInventoryDef* Object;
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; }

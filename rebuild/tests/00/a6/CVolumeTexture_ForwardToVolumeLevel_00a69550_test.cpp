@@ -13,7 +13,7 @@ struct IVolume {
 struct CBase {
     virtual ~CBase() { ++g_baseDtors; }
 };
-struct CVolume : CBase {
+class CVolume : public CBase { public:
     IVolume* m_pVolume;
     CVolume(IVolume* v) : m_pVolume(v) { }
     CVolume(const CVolume& o) : CBase(), m_pVolume(o.m_pVolume) { if (m_pVolume) ++m_pVolume->m_refs; }
@@ -21,7 +21,7 @@ struct CVolume : CBase {
     void Helper_00a67450(void* argument) { ++g_helperCalls; g_helperArg = argument; }
     virtual ~CVolume() { ReleaseVolume(true); }
 };
-struct CVolumeTexture {
+class CVolumeTexture { public:
     IVolume m_levels[4];
     CVolume GetVolumeLevel(unsigned long level)
     {

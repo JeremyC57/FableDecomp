@@ -2,8 +2,8 @@
 // region and method, runs the attack phases, then waits frame by frame for the gates; termination aborts early.
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
-struct CSpawnedFuncBase {
+class CCharString { public: char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
+class CSpawnedFuncBase { public:
     char name[32]; unsigned long id;
     virtual ~CSpawnedFuncBase() { }
     virtual void SuspendableProcess() = 0;
@@ -16,7 +16,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
 struct CV_KnotholeGladeGatesScript;
-struct CGameScriptInterface { CV_KnotholeGladeGatesScript* owner; int frames; virtual void NewScriptFrame(); };
+class CGameScriptInterface { public: CV_KnotholeGladeGatesScript* owner; int frames; virtual void NewScriptFrame(); };
 struct CV_KnotholeGladeGatesScript {
     CGameScriptInterface* Game; bool GatesOpened, BalvsKilled;
     int terminateAfter, checks, attacks, controls, banters; CSpawnedFuncBase* spawned; char region[32];

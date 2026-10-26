@@ -7,11 +7,11 @@
 //   WorldToShadowBufferMatrixHomogenousScreenSpace +0x4c and WorldToShadowBufferMatrixTextureSpace +0x8c.
 #include "engine/CEngineShadowRenderer.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CMatrix4x4 {
+class CMatrix4x4 { public:
     float M[4][4];
     __forceinline void Scale(const C3DVector& s)
     {
@@ -30,7 +30,7 @@ struct CMatrix4x4 {
         }
     }
 };
-struct CShadowRendererSceneData {
+class CShadowRendererSceneData { public:
     CMatrix4x4 WorldToShadowBufferMatrix;                       // +0x00 (renderer +0x0c)
     CMatrix4x4 WorldToShadowBufferMatrixHomogenousScreenSpace;  // +0x40 (renderer +0x4c)
     CMatrix4x4 WorldToShadowBufferMatrixTextureSpace;           // +0x80 (renderer +0x8c)

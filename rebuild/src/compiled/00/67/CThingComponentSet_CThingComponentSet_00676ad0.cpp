@@ -1,6 +1,6 @@
 void operator delete[](void*);
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     void* m_ptr;
     unsigned char m_flag;
 };

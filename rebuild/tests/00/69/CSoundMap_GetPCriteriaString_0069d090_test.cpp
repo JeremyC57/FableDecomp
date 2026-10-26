@@ -19,7 +19,7 @@ public:
         return h;
     }
 };
-struct CCharStringData { char* PData; unsigned int StringLength; };
+class CCharStringData { public: char* PData; unsigned int StringLength; };
 static const char g_EmptyString[] = "";
 class CCharString {
 public:

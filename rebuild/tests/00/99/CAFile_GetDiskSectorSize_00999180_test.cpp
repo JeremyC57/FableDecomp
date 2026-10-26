@@ -127,7 +127,7 @@ static void SplitPathA(const char* path, char* drive, char* dir, char* name, cha
 static void CopyW(wchar16* d, const wchar16* s) { unsigned i = 0; for (; s[i]; ++i) d[i] = s[i]; d[i] = 0; }
 static void CatW(wchar16* d, const wchar16* s) { CopyW(d + WLen(d), s); }
 static WStr g_lastDrive;
-struct CAFile {
+class CAFile { public:
     static long GetHDSectorSize() { return 0x800; }
     static long GetDiskSectorSize(const WStr& path)
     {

@@ -4,7 +4,7 @@
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 struct CV_SwordInTheStoneScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     const char** regions; int ri;       // region-loaded messages delivered one per frame (0 = none this frame)
     bool* taken; int takeAfter; int leaveAfter;
     bool MsgOnRegionLoaded(const char*& out) { if (regions[ri]) { out = regions[ri]; return true; } return false; }

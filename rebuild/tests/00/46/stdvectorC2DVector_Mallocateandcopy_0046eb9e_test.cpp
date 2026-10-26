@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 static C2DVector* AllocateAndCopy(unsigned int n, const C2DVector* first, const C2DVector* last)
 {
     C2DVector* result = n != 0 ? (C2DVector*)std::malloc(n * sizeof(C2DVector)) : 0;

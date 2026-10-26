@@ -11,18 +11,18 @@
 //   repeats the default body (VC cross-jumps it into the default after the input load, hoisting that load above the
 //   free-camera test; a fall-through into `default:` does not); every handled case sets the priority itself; the
 //   do-nothing cases just break.
-struct CProcessedInput {
+class CProcessedInput { public:
     void SetPriority(long priority);               // 0x00A0D330
 };
 void __fastcall AddManualCameraEvent_0B(bool on, CProcessedInput& input);   // 0x00687E10
 void __fastcall AddManualCameraEvent_0C(bool on, CProcessedInput& input);   // 0x00687E70
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad000[0x220];
     bool          UsingFreeCamera;                 // +0x220
     long GetCurrentMode();                         // 0x00633BE0
 };
-struct CInputProcessMain {
+class CInputProcessMain { public:
     virtual void v00();
     void*    PPlayerInterface;                     // +0x04 (CAInputProcess)
     unsigned char InputProcessListPos[0xc];        // +0x08

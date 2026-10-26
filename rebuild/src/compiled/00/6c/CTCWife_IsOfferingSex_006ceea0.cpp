@@ -15,7 +15,7 @@
 
 extern long g_FramesPerSecond;                              // 0x01375550
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
     static long GetFramesPerSecond() { return g_FramesPerSecond; }
 };

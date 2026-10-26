@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesEnflameDef {
+class CSpecialAbilitiesEnflameDef { public:
     void* vftable;
     void Dtor();
     void* scalar_deleting_destructor(unsigned int flags);

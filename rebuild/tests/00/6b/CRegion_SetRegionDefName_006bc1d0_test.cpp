@@ -23,7 +23,7 @@ static Applied g_applied_obj;
 extern "C" Counted* __stdcall Resolve(NameField* p) { (void)p; return &g_counted; }
 extern "C" Applied* __stdcall Resolve2(int count, void* p) { (void)count; (void)p; return &g_applied_obj; }
 
-struct CRegion {
+class CRegion { public:
     char pad0[0x20];
     NameField field20;
     int field24;

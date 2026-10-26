@@ -9,7 +9,7 @@
 // interface map at +0x44, as in the landed 0x0072C370 / 0x007504E0 GetInterface shape.
 // Shape: nine inline `if (HasTC(type)) GetTC(type)->CancelMove();` blocks; the lookup is the out-parameter
 // GetInterface with the ternary entry pick, the key homed in the one frame word (`push ecx` prologue).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
     CInterfaceMap m_interfaces;                             // +0x44
@@ -45,17 +45,17 @@ struct CThing {
     }
 };
 
-struct CTCBulletTime          { void CancelMove(); };       // 0x0079C640
-struct CTCPhysicalShieldSpell { void CancelMove(); };       // 0x0079E300
-struct CTCBerserk             { void CancelMove(); };       // 0x0078C610
-struct CTCSummonSpell         { void CancelMove(); };       // 0x0079A820
-struct CTCGhostSword          { void CancelMove(); };       // 0x007C5710
-struct CTCMultiStrike         { void CancelMove(); };       // 0x007CC9B0
-struct CTCMultiArrow          { void CancelMove(); };       // 0x007CBEE0
-struct CTCDivineWrath         { void CancelAbilities(); };  // 0x0078F820
-struct CTCUnholyPower         { void CancelAbilities(); };  // 0x00794D90
+class CTCBulletTime          { public: void CancelMove(); };       // 0x0079C640
+class CTCPhysicalShieldSpell { public: void CancelMove(); };       // 0x0079E300
+class CTCBerserk             { public: void CancelMove(); };       // 0x0078C610
+class CTCSummonSpell         { public: void CancelMove(); };       // 0x0079A820
+class CTCGhostSword          { public: void CancelMove(); };       // 0x007C5710
+class CTCMultiStrike         { public: void CancelMove(); };       // 0x007CC9B0
+class CTCMultiArrow          { public: void CancelMove(); };       // 0x007CBEE0
+class CTCDivineWrath         { public: void CancelAbilities(); };  // 0x0078F820
+class CTCUnholyPower         { public: void CancelAbilities(); };  // 0x00794D90
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     void CancelAllAbilities();

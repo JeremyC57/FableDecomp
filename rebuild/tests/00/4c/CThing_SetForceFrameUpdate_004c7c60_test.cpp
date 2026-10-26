@@ -1,13 +1,13 @@
 // Behaviour test for CThing::SetForceFrameUpdate @ 0x004C7C60: sets the flag; a forced live thing goes on the update list.
 #include <cstdio>
-struct CThing;
-struct CThingManager {
+class CThing;
+class CThingManager { public:
     int calls; CThing* last;
     void AddToUpdateList(CThing* thing) { ++calls; last = thing; }
 };
 static CThingManager g_manager;
 static CThingManager* g_pThingManager = &g_manager;
-struct CThing {
+class CThing { public:
     unsigned char Dead : 1;
     unsigned char ForceFrameUpdate : 1;
     void SetForceFrameUpdate(bool force)

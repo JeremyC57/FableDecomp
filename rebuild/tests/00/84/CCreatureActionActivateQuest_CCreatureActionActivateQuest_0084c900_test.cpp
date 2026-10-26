@@ -5,7 +5,7 @@
 #else
 #define FASTCALL
 #endif
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { }
     CBaseObject* m_pItem;
@@ -25,12 +25,12 @@ struct CActionBase {
     CActionBase(const CActionBase& other) : m_baseWord(other.m_baseWord) { ++g_baseCopies; }
 };
 static int g_stringCopies = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString() : m_text(0) { }
     CCharString(const CCharString& other) : m_text(other.m_text) { ++g_stringCopies; }
 };
-struct CCreatureAction_ActivateQuest : CActionBase {
+class CCreatureAction_ActivateQuest : public CActionBase { public:
     CCharString ScriptName;
     bool LoadResources;
     CIntelligentPointer PObjectToUse;

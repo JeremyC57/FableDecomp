@@ -7,7 +7,7 @@
 // Virtual getter that forwards to Method_00881210 @ 0x00881210 on the embedded smart pointer at
 // +0x90: `this` is advanced to the member and the call becomes a sibling jump (same
 // signature, no locals). The class comes from the vtable-slot label. One of 15 bodies.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

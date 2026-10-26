@@ -8,13 +8,13 @@
 void* __cdecl operator new[](unsigned int size);          // 0x00BFEB22 (MSVCR71 ??_U thunk; the lane <new> lacks it)
 void __cdecl operator delete[](void* block);              // 0x00BFEB1C (MSVCR71 ??_V thunk)
 #pragma pack(push, 1)
-struct CDefString {
+class CDefString { public:
     long TablePos;                                        // +0x00
     CDefString() : TablePos(-1) { }
 };
 class CThingComponentSet {
 public:
-    struct CEntry {                                       // Ego_r.pdb: 9 bytes, packed
+    class CEntry { public:                                       // Ego_r.pdb: 9 bytes, packed
         CDefString Name;                                  // +0x00
         unsigned long DriverType;                         // +0x04
         bool Override;                                    // +0x08

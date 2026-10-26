@@ -7,7 +7,7 @@
 // across both calls; `Def->PlayerStart != 0` into the byte at +0xd4 (`setne al`). The catalog
 // label "vfunc_4" is the vtable slot; slot 4 across the CThing hierarchy is ConstructFromLevelScript.
 struct CLevelScriptThingInfo;
-struct CThingHolySiteDef {
+class CThingHolySiteDef { public:
     unsigned char _pad00[0x7e];
     unsigned char PlayerStart;                             // +0x7e
 };
@@ -15,10 +15,10 @@ struct CDefPointerHolySiteDef {
     CThingHolySiteDef* m_pDef;
     CThingHolySiteDef* operator->() const { return m_pDef; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointerHolySiteDef& out);   // 0x0083BD10
 };
-struct CThingGameObject {
+class CThingGameObject { public:
     virtual void v00();
     unsigned char  _pad04[0x88];
     unsigned short m_defIndex;                             // +0x8c
@@ -26,7 +26,7 @@ struct CThingGameObject {
     CDefinitionManager* GetDefinitionManager();            // 0x004C7990
     virtual bool ConstructFromLevelScript(const CLevelScriptThingInfo& info);   // 0x00838930
 };
-struct CThingHolySite : CThingGameObject {
+class CThingHolySite : public CThingGameObject { public:
     CDefPointerHolySiteDef Def;                            // +0xd0
     bool                   PlayerStart;                    // +0xd4
     virtual bool ConstructFromLevelScript(const CLevelScriptThingInfo& info);

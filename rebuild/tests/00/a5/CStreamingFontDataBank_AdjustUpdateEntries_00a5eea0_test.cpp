@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 00a5eea0: every existing entry is flagged for update; the result counts the entries whose
 // update flag could not be set; missing entries are skipped.
-struct CBankFile {
+class CBankFile { public:
     unsigned long Size;
     bool          m_exists[8];
     bool          m_accepts[8];

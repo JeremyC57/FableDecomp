@@ -7,7 +7,7 @@ struct SomeDef {
     unsigned char flags; // +0x148
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     char pad0[0xe0];
     SomeDef* def;   // +0xe0
     long GetDefaultWeaponDef();

@@ -2,7 +2,7 @@
 #include <cstring>
 #include <math.h>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_temps = 0, g_tempDtors = 0;
 struct CIntelligentPointer {
     CThing* m_pItem;
@@ -11,7 +11,7 @@ struct CIntelligentPointer {
     ~CIntelligentPointer() { ++g_tempDtors; }
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { m_pItem = o.m_pItem; return *this; }
 };
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     bool StartTrailDelay; CIntelligentPointer CollidedThing;
     void SetThingCollisionPtr(CThing* thing) { if (!StartTrailDelay) CollidedThing = thing; }
 };

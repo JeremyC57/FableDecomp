@@ -5,7 +5,7 @@
 static int g_backing[64];
 int* const g_bitDepthTable = &g_backing[2];
 
-struct CDisplayManager {
+class CDisplayManager { public:
     char  pad0[0x54];
     void* dev;                 // +0x54
     char  pad1[0x04];

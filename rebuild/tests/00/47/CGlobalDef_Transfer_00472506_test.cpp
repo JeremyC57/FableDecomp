@@ -1,12 +1,12 @@
 // behaviour test for CGlobalDef::Transfer (0x00472506): every member is handed to the typed transfer once, in order
 #include <cstdio>
-struct CCharString { void* m_pData; };
-struct CEngineGraphic { unsigned char _body[0xe]; };
+class CCharString { public: void* m_pData; };
+class CEngineGraphic { public: unsigned char _body[0xe]; };
 struct CConversationCameraMap { void* h[3]; };
 struct CCharStringVector { void* a[3]; };
 struct CDialogueLayerDefVector { void* a[3]; };
 static const void* g_log[80]; static int g_type[80]; static int g_n = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& v) { g_log[g_n] = &v; g_type[g_n++] = 1; }
     void Transfer(float& v) { g_log[g_n] = &v; g_type[g_n++] = 2; }
     void Transfer(CCharString& v) { g_log[g_n] = &v; g_type[g_n++] = 3; }
@@ -15,7 +15,7 @@ struct CPersistContext {
     void Transfer(CCharStringVector& v) { g_log[g_n] = &v; g_type[g_n++] = 6; }
     void Transfer(CDialogueLayerDefVector& v) { g_log[g_n] = &v; g_type[g_n++] = 7; }
 };
-struct CGlobalDef {
+class CGlobalDef { public:
     long a0, a1, a2, a3, a4, a5, a6; float f7; long a8, a9, a10, a11; float f12; long a13; float f14; long a15, a16, a17, a18, a19, a20;
     CCharString s21, s22, s23; long a24, a25, a26, a27; CCharString s28; long a29, a30, a31, a32, a33, a34; float f35; long a36; float f37; long a38;
     CEngineGraphic g39, g40; CConversationCameraMap m41; CCharStringVector v42; CDialogueLayerDefVector v43;

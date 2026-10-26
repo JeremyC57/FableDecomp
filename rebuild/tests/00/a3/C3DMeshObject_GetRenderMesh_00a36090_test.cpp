@@ -9,7 +9,7 @@ struct SCountBlock {
 };
 static void DeleteMesh(void* data) { ++g_deleted; (void)data; }
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -23,9 +23,9 @@ template <class T> struct CCountedPointer {
         Data = 0; Info = 0;
     }
 };
-struct C3DMesh2 { int m_id; };
+class C3DMesh2 { public: int m_id; };
 static unsigned long g_lod = 0, g_flags = 0;
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     C3DMesh2* m_mesh;
     SCountBlock* m_block;
     bool GetMesh(CCountedPointer<const C3DMesh2>& out, unsigned long lod, unsigned long flags) const
@@ -36,7 +36,7 @@ struct C3DMeshInfo {
         return true;
     }
 };
-struct C3DMeshObject {
+class C3DMeshObject { public:
     C3DMeshInfo* MeshInfo;
     CCountedPointer<const C3DMesh2> GetRenderMesh(unsigned long lod, unsigned long flags) const
     {

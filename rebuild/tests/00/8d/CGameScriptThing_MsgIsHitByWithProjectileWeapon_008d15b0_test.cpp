@@ -64,7 +64,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -86,11 +86,11 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CWorld;
+class CCharStringData;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptThing {
+class CGameScriptThing { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -139,7 +139,7 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, World) == 0x44);
 
 
 #pragma pack(push, 1)
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     long          sub;                                       // +0x04 retail-only long (previous header)
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -165,15 +165,15 @@ FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, Events) == 0xc);
 
 
 struct CActiveQuest;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGameScriptInterface;
-struct CGameScriptThingManager;
-struct CScriptInfoManager;
-struct CWorld;
+class CCPPointerInfo;
+class CCharStringData;
+class CGameScriptInterface;
+class CGameScriptThingManager;
+class CScriptInfoManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CQuestManager {
+class CQuestManager { public:
     void*                    __vftable;                      // +0x00 vptr, or first dword of a flattened base subobject
     CGameScriptThingManager* PGameScriptThingManager_Data;   // +0x04 CCountedPointer<CGameScriptThingManager>::Data
     CCPPointerInfo*          PGameScriptThingManager_Info;   // +0x08 CCountedPointer<CGameScriptThingManager>::Info
@@ -255,12 +255,12 @@ FABLE_STATIC_ASSERT(offsetof(CQuestManager, PMostRecentValidUsedTargetName_PStri
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCharStringData;
+class CCPPointerInfo;
+class CCharStringData;
 struct CPredicateBase;
 
 #pragma pack(push, 1)
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -304,14 +304,14 @@ FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, PPredicate_Info) == 0x30);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -397,8 +397,8 @@ __forceinline long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->P
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -406,8 +406,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -492,10 +492,10 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 #undef CCharString
-struct CCharString {CCharStringData* storage_;CCharString();CCharString(const char*,long);CCharString(const CCharString&);~CCharString();}; //copy0099EC30, dtor0099EAE0
+class CCharString { public:CCharStringData* storage_;CCharString();CCharString(const char*,long);CCharString(const CCharString&);~CCharString();}; //copy0099EC30, dtor0099EAE0
 namespace NEntityEvents {enum EEventType { HitThing=29,MoralityChanged=35,CutSceneAnimEvent=36 };}
 struct EventBase {EventBase();virtual ~EventBase();virtual NEntityEvents::EEventType GetType()const=0;virtual void OnAdd(const CTCEntityEvents&);virtual long GetLifeTime()const;virtual bool IsReadyToDie()const;long WorldFrame;};
-struct CHitParameters;
+class CHitParameters;
 struct HitEventBase:EventBase {HitEventBase(const CHitParameters&);virtual ~HitEventBase();virtual long GetLifeTime()const;virtual bool IsFlourish()const;CHitParameters* HitParams;void*HitParamsInfo;CThingNative* GetPHitBy()const;float GetBuildupTime()const;}; // PDB008078C0 ctor,00807010 virtual IsFlourish; native00810F30 GetBuildupTime
 struct HitByEvent:HitEventBase {HitByEvent(const CHitParameters&);virtual ~HitByEvent();virtual NEntityEvents::EEventType GetType()const;}; // PDB00815E20 genuine const-reference ctor
 
@@ -541,7 +541,7 @@ void EventBase::OnAdd(const CTCEntityEvents&){}
 long EventBase::GetLifeTime()const{return 10;}
 bool EventBase::IsReadyToDie()const{return true;}
 // CHitParameters has no repository header. Retail size60 vs donor68; constructor PDB007A92E0. Fixture passes a genuine default-constructed parameter object; its payload is not inspected by these event query tests.
-struct CHitParameters {CHitParameters();unsigned char NativePayload[0x60];};
+class CHitParameters { public:CHitParameters();unsigned char NativePayload[0x60];};
 CHitParameters::CHitParameters(){}
 HitEventBase::HitEventBase(const CHitParameters& p):HitParams(const_cast<CHitParameters*>(&p)),HitParamsInfo(0){}
 HitEventBase::~HitEventBase(){}

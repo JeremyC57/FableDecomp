@@ -2,7 +2,7 @@
 static int g_dtor = 0;
 static int g_freed = 0;
 extern "C" void operator_delete_stub(void* p){ g_freed++; (void)p; }
-struct COpinionSourceDef {
+class COpinionSourceDef { public:
     int x;
     void dtor(){ g_dtor++; }
     void* scalar_deleting_destructor(unsigned int flags);

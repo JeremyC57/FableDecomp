@@ -12,7 +12,7 @@
 #pragma optimize("s", on)
 #include "engine/CHeroMarriageDef.h"
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(float& value);              // 0x00431061
     void Transfer(long& value);               // 0x00431102
     void Transfer(CCharStringData*& value);   // 0x00431143 Transfer(CCharString&)

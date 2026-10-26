@@ -5,7 +5,7 @@ static void note(const char* s) { std::strcat(g_seq, s); }
 static const char* g_name = 0;
 static bool* g_value = 0;
 static bool g_default = true;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue) { g_name = name; g_value = &value; g_default = defaultValue; note("T"); }
 };
 static bool g_baseFlag = false;
@@ -15,7 +15,7 @@ struct CTCContainer_Calls {
     unsigned char _pad04[0x14];
 };
 struct CTCContainerRewardHero_Calls : CTCContainer_Calls { bool Enabled; bool CreateObjectsThatTimeOut; unsigned char _pad1a[2]; };
-struct CTCChest : CTCContainerRewardHero_Calls {
+class CTCChest : public CTCContainerRewardHero_Calls { public:
     unsigned char ChestOpener[0x14]; bool ChestOpen;
     virtual void Persist(CPersistContext* context, bool flag)
     {

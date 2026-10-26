@@ -3,8 +3,8 @@
 #include <cstring>
 // behaviour test for 0x006E8810: exercises the same logic through a copy of the model (compiled separately from the source)
 static bool near(float a, float b) { float d = a - b; if (d < 0) d = -d; return d < 1e-4f; }
-struct CThing { int id; };
-struct C3DVector { float x, y, z; C3DVector(float a, float b, float c) : x(a), y(b), z(c) {} };
+class CThing { public: int id; };
+class C3DVector { public: float x, y, z; C3DVector(float a, float b, float c) : x(a), y(b), z(c) {} };
 struct CProng {
     CThing* m_pOccupier; float m_px, m_py, m_pz;
     C3DVector GetRotatedPosition(float angle) { return C3DVector(m_px + angle, m_py + angle, m_pz); }   // stand-in for the out-of-line rotation

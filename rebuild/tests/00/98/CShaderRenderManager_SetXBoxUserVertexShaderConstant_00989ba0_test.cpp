@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CRGBFloatColour { float x, y, z, w; };
+class CRGBFloatColour { public: float x, y, z, w; };
 
 struct Device;
 struct DeviceVtbl {
@@ -8,7 +8,7 @@ struct DeviceVtbl {
     void (__stdcall *SetConstant)(Device* self, long index, const float* data, long count);
 };
 struct Device { DeviceVtbl* vtbl; };
-struct CShaderRenderManager { char pad[0x1d4]; Device* device; };
+class CShaderRenderManager { public: char pad[0x1d4]; Device* device; };
 
 static long g_index;
 static long g_count;

@@ -4,14 +4,14 @@
 // behaviour test: CQ_AmbushTradersScript::WatchForRegionClear -- the region is clear once the spy and every collected group
 // (bandit allies, convoy members, phase 1/3 guards and archers) are dead; termination stops the wait without setting it
 static int g_frames = 0, g_endAt = 1000, g_spyDiesAt = 2, g_groupDiesAt = 4;
-struct CScriptThing { const char* name; bool alive; bool IsAlive() const { return alive && g_frames < g_spyDiesAt; } };
+class CScriptThing { public: const char* name; bool alive; bool IsAlive() const { return alive && g_frames < g_spyDiesAt; } };
 static bool AreAllThingsInVectorDead(std::vector<CScriptThing>* things)
 {
     for (size_t i = 0; i < things->size(); ++i)
         if (std::strcmp((*things)[i].name, "AT_Phase1Archer") == 0 ? g_frames < g_groupDiesAt : false) return false;
     return true;
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     long GetAllThingsWithScriptName(const char* name, std::vector<CScriptThing>& things) const
     { CScriptThing t; t.name = name; t.alive = true; things.push_back(t); return 1; }

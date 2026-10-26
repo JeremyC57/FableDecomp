@@ -9,7 +9,7 @@ struct CFrameSource {
     long GetFrameNumber();                         // 0x004167C8
 };
 
-struct CTCLook {
+class CTCLook { public:
     unsigned char _pad_0x00[0x3c];
     long          LookTimer;                       // +0x3c
     CFrameSource* GetFrameSource();                // 0x00686D60 (CTCBase accessor)

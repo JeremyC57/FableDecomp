@@ -5,13 +5,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString {
+class CWideString { public:
     char s[64];                                        // narrow stand-in for the wide text
     CWideString() { s[0] = 0; }
     CWideString& operator=(const char* t) { std::strcpy(s, t); return *this; }
     bool operator!=(const char* t) const { return std::strcmp(s, t) != 0; }
 };
-struct CCharString {
+class CCharString { public:
     char s[64];
     CCharString() { s[0] = 0; }
     CCharString& operator=(const char* t) { std::strcpy(s, t); return *this; }
@@ -27,8 +27,8 @@ struct CDataBank {
         return r;
     }
 };
-struct CMainGameComponent { CDataBank* bank; };
-struct CNewFrontendGameComponent { CDataBank* bank; };
+class CMainGameComponent { public: CDataBank* bank; };
+class CNewFrontendGameComponent { public: CDataBank* bank; };
 static CMainGameComponent* g_pMainGameComponent;
 static CNewFrontendGameComponent* g_pNewFrontendGameComponent;
 static bool KeyboardGetKeyName(long key, CWideString& name)
@@ -36,7 +36,7 @@ static bool KeyboardGetKeyName(long key, CWideString& name)
     if (key == 0x1e) { name = "A"; return true; }
     return false;
 }
-struct CActionInputControl { long GameAction, ControllerType, KeyboardKey, XboxButton, MouseButton; float Dir[2]; };
+class CActionInputControl { public: long GameAction, ControllerType, KeyboardKey, XboxButton, MouseButton; float Dir[2]; };
 
 // the function under test (shape of 0x00446720)
 static bool GetActionName(const CActionInputControl& control, CWideString& name, bool shortName)

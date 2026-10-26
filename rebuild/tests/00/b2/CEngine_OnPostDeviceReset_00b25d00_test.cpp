@@ -10,7 +10,7 @@ int __fastcall B_DoReset(B* self) {
     return g_reset_ret;
 }
 
-struct CEngine {
+class CEngine { public:
     char pad1[0xb1];
     unsigned char flag_b1;
 };

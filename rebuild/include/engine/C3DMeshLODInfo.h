@@ -8,13 +8,14 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C3DMesh2;
-struct C3DMeshInfo;
-struct CBankFileAsyncData;
-struct CCPPointerInfo;
+class C3DMesh2;
+class C3DMeshInfo;
+class CBankFileAsyncData;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct C3DMeshLODInfo {
+class C3DMeshLODInfo {
+public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08

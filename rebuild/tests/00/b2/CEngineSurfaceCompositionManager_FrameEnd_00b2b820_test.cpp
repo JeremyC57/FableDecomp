@@ -11,17 +11,17 @@
 #else
 #define __forceinline inline
 #define __fastcall
-struct CGraphicFrameData;
-struct CGraphicFrame { CGraphicFrameData* FrameData; };
+class CGraphicFrameData;
+class CGraphicFrame { public: CGraphicFrameData* FrameData; };
 #endif
 extern "C" void free(void*); // 0x00BFEA14
 void operator delete(void*) throw(); // 0x00BFE9BC
-struct CGraphicFrameData { unsigned long Sizeof(); }; // 0x009FCBF0
+class CGraphicFrameData { public: unsigned long Sizeof(); }; // 0x009FCBF0
 struct CGraphicFrameMethods : CGraphicFrame {
  unsigned long Sizeof() {return FrameData ? FrameData->Sizeof()+sizeof(CGraphicFrame) : sizeof(CGraphicFrame);}
 };
-struct CCompositeSurfaceCache { unsigned char ResourceAndMorphs[0x4c]; CGraphicFrameMethods GraphicFrame; };
-struct CCPPointerInfo { unsigned long RefCount; void (__fastcall *DeleteFunc)(void*); void* Data; };
+class CCompositeSurfaceCache { public: unsigned char ResourceAndMorphs[0x4c]; CGraphicFrameMethods GraphicFrame; };
+class CCPPointerInfo { public: unsigned long RefCount; void (__fastcall *DeleteFunc)(void*); void* Data; };
 struct CCachePointer {
  CCompositeSurfaceCache* Data; CCPPointerInfo* Info;
  __forceinline unsigned long GetRefCount() const { return Info ? Info->RefCount : 0; }
@@ -31,10 +31,10 @@ struct CCachePointer {
  }
 };
 struct CacheNode {CacheNode* Next;CacheNode* Prev;CCachePointer Value;};
-struct CResourceBank {unsigned char State[0x7c];void FrameEnd();}; // 0x009FC430
-struct CGraphicDataBank {unsigned char State[0x30c];void FrameEnd();}; // 0x009FD660
-struct CTextureManager {unsigned char State[0x5d4];void FrameEnd();}; // 0x00A698B0
-struct CEngineComponentParams;
+class CResourceBank { public:unsigned char State[0x7c];void FrameEnd();}; // 0x009FC430
+class CGraphicDataBank { public:unsigned char State[0x30c];void FrameEnd();}; // 0x009FD660
+class CTextureManager { public:unsigned char State[0x5d4];void FrameEnd();}; // 0x00A698B0
+class CEngineComponentParams;
 struct CSurfaceCompositionFrameEnd {
  unsigned char ComponentData[0xc];
  CacheNode* CachedSurfaces;
@@ -67,7 +67,7 @@ void CSurfaceCompositionFrameEnd::FrameEnd(const CEngineComponentParams&)
 #include <stdio.h>
 extern "C" void* malloc(unsigned long);
 #include <new>
-struct CEngineComponentParams {};
+class CEngineComponentParams { public:};
 static CSurfaceCompositionFrameEnd* activeManager;
 static bool mutateSize,mutateFrame;
 static void* order[8];static int orderCount;static int destroyed;static unsigned long payloadSize=40;

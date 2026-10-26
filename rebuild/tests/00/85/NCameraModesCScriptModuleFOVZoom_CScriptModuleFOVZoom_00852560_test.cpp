@@ -3,7 +3,7 @@
 #include <cstdio>
 static long g_frame = 100;
 long GFGetCurrentFrame() { return g_frame; }
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
 struct Module {
     C3DVector LookAtPos; long EndFrame; long WorldFrames; float FOVFraction; C3DVector Increment; C3DVector StartPos;
     bool ShortenOnOcclusion; bool ResetCamera;

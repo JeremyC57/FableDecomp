@@ -12,7 +12,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* Data;                                    // +0x00
     SCountBlock* Info;                          // +0x04
     ~CCountedPointer()
@@ -29,7 +29,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     ~CCharString() { if (m_pStringData) ++g_stringsFreed; m_pStringData = 0; }
 };

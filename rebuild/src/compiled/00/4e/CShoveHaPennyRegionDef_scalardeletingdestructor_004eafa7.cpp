@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CShoveHaPennyRegionDef
-{
+class CShoveHaPennyRegionDef
+{ public:
     void* vftable;
 };
 extern void* const g_CShoveHaPennyRegionDef_vftable;

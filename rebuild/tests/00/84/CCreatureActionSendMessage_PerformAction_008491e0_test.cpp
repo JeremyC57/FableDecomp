@@ -1,19 +1,19 @@
 #include <cstdio>
 // Behaviour test for CCreatureAction_SendMessage::PerformAction (0x008491E0): posts the message only while the receiver is alive.
-struct CMessageEventDef;
-struct C3DVector { float X, Y, Z; };
-struct CThing { unsigned char m_flags91; };
+class CMessageEventDef;
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: unsigned char m_flags91; };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p) { if (p.GetPItem() != 0) { if (!(p.GetPItem()->m_flags91 & 1)) return true; } return false; }
 static int g_posts = 0; static CMessageEventDef* g_def = 0; static const C3DVector* g_pos = 0; static CThing* g_sender = 0; static CThing* g_receiver = 0; static long g_extra = 0;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void* AddMessage(CMessageEventDef* def, const C3DVector* position, CThing* sender, CThing* receiver, long extra)
     { ++g_posts; g_def = def; g_pos = position; g_sender = sender; g_receiver = receiver; g_extra = extra; return 0; }
 };
-struct CWorld { CMessageEventManager* MessageEventManager; };
+class CWorld { public: CMessageEventManager* MessageEventManager; };
 static CMessageEventManager g_manager; static CWorld g_world = { &g_manager };
-struct CCreatureActionBase { CBaseIntelligentPointer PCreature; CWorld* GetWorld() { return &g_world; } };
-struct CCreatureAction_SendMessage : CCreatureActionBase {
+class CCreatureActionBase { public: CBaseIntelligentPointer PCreature; CWorld* GetWorld() { return &g_world; } };
+class CCreatureAction_SendMessage : public CCreatureActionBase { public:
     CMessageEventDef* MessageDef; C3DVector Position; CBaseIntelligentPointer PReceiver; long Extra;
     void PostMessage(CMessageEventDef* def, CThing* sender, CThing* receiver)
     { CWorld* world = GetWorld(); world->MessageEventManager->AddMessage(def, &Position, sender, receiver, Extra); }

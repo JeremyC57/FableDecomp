@@ -6,7 +6,7 @@ static char g_seq[64] = "";
 static long g_arg[8];
 static void rec(const char* s) { std::strcat(g_seq, s); }
 static int g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     const char* s;
     CCharString() : s("") { }
     CCharString(const char* t) : s(t) { }
@@ -21,7 +21,7 @@ struct CCharString {
 static const char* g_strings[4] = { "", "DEF_ONE", "DEF_TWO", "DEF_THREE" };
 struct CDefStringTable_Retail { CCharString GetString(long index) { return CCharString(g_strings[index]); } };
 static CDefStringTable_Retail g_defStringTable;
-struct CDefString {
+class CDefString { public:
     long m_index;
     CDefString(long i) : m_index(i) { }
     CDefString(const CDefString& o) : m_index(o.m_index) { }
@@ -33,7 +33,7 @@ struct CInterfaceMap_Retail {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CScriptThing;
+class CScriptThing;
 struct CThing_Retail {
     unsigned char m_type;
     unsigned long m_presentBits[9];
@@ -89,7 +89,7 @@ struct CThing_Retail {
     }
 };
 static bool g_valid = true;
-struct CScriptThing {
+class CScriptThing { public:
     CThing_Retail* m_pThing;
     CThing_Retail* GetThing() const { rec("g"); return m_pThing; }
     bool IsValid() const { rec("v"); return g_valid; }
@@ -132,7 +132,7 @@ struct CRegionDef_Retail {
     void DeleteThis() { ++m_deleted; }
     CDefString GetDefName() const { return CDefString(m_def); }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data) { if (Data) Data->AddRef(); }
     ~CCountedPointer() { if (Data && --Data->m_refCount == 0) Data->DeleteThis(); }
@@ -153,13 +153,13 @@ struct CWorldMap_Retail {
     long GetRegionNumberFromName(const CCharString& name) { return std::strcmp(name.s, "TWO") == 0 ? 2 : (std::strcmp(name.s, "ZERO") == 0 ? 0 : -1); }
 };
 struct CCombatManager_Retail { void CreatureUnsheathWeapon(CThing_Retail* creature, long mode) { rec("C"); g_arg[0] = (long)creature; g_arg[1] = mode; } };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 struct CMessageEventManager_Retail {
     void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data)
     { rec("m"); g_arg[0] = type; g_arg[1] = (long)delay; g_arg[2] = (long)(position.X + position.Y + position.Z); g_arg[3] = (long)from + (long)to; g_arg[4] = (long)(value1 + value2); g_arg[6] = data; return 0; }
 };
 struct CAIGameCameraBase_Retail { void ScriptEnd() { rec("E"); } };
-struct CWorld {
+class CWorld { public:
     CWorldMap_Retail m_map; CCombatManager_Retail m_combat; CMessageEventManager_Retail m_messages; CAIGameCameraBase_Retail m_camera;
     CCombatManager_Retail* m_pCombatManager;
     CMessageEventManager_Retail* PMessageEventManager_Data;
@@ -175,7 +175,7 @@ struct CPlayerGui_Retail { void Close() { rec("X"); } };
 static CPlayerGui_Retail g_gui;
 static CPlayerGui_Retail* g_pPlayerGui = &g_gui;
 struct CDisplayEngine_Retail { void EndScreenFadeOut() { rec("Y"); } };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CWorld* World;
     CDisplayEngine_Retail* DisplayEngine;
     CPlayerManager_Retail* PlayerManager;

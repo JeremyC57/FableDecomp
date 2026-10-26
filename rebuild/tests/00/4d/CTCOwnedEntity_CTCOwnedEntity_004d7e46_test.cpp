@@ -1,9 +1,9 @@
 // Behaviour test for CTCOwnedEntity::CTCOwnedEntity @ 0x004D7E46: owner forwarded, flag false, empty pointer, UID 0.
 #include <cstdio>
-struct CThing { long id; };
+class CThing { public: long id; };
 struct CBaseIntelligentPointer { CThing* m_pItem; CBaseIntelligentPointer() : m_pItem(0) {} };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* owner) : ParentThing(owner) {} virtual ~CTCBase() {} };
-struct CTCOwnedEntity : CTCBase {
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* owner) : ParentThing(owner) {} virtual ~CTCBase() {} };
+class CTCOwnedEntity : public CTCBase { public:
     bool SwitchableNavigationTCAdded;
     CBaseIntelligentPointer POwner;
     unsigned long OwnerUIDLow, OwnerUIDHigh;

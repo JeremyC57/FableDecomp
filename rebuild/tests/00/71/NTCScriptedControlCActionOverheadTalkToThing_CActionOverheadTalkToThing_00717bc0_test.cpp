@@ -4,7 +4,7 @@
 
 static int g_destroyed = 0;
 
-struct CSubtitledMessage { int id; ~CSubtitledMessage() { ++g_destroyed; } };
+class CSubtitledMessage { public: int id; ~CSubtitledMessage() { ++g_destroyed; } };
 
 struct CSubtitledMessageArray {
     CSubtitledMessage* m_pFirst; CSubtitledMessage* m_pLast; CSubtitledMessage* m_pEnd;
@@ -34,7 +34,7 @@ static void GetMessagesFromTextName(CSubtitledMessageArray* messages, const char
     messages->m_pLast = messages->m_pEnd = messages->m_pFirst + count;
 }
 
-struct CThing {};
+class CThing { public:};
 
 struct CActionTalkBase {
     CThing* target; CSubtitledMessageArray Messages;

@@ -6,7 +6,7 @@ struct Sub {
     int SetActive(int on){ active = on; return 7; }
     void Refresh(){ refreshed = 1; }
 };
-struct CTCElectrocutedEffect {
+class CTCElectrocutedEffect { public:
     void* vt;
     Sub*  sub;
 };

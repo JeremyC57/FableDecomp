@@ -1,6 +1,6 @@
 #include "engine/CInputProcessGameBase.h"
 
-struct CInputProcessManager;
+class CInputProcessManager;
 
 struct CInputProcessGameBase_Methods : CInputProcessGameBase {
     bool AddToInterface(CInputProcessManager* manager);

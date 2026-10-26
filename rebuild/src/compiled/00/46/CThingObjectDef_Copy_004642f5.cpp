@@ -5,7 +5,7 @@
 // It tail-calls the real implementation. Modeled as __fastcall(thisptr, src)
 // whose only op is a tail-call to an extern impl -> compiler emits `jmp rel32`.
 
-struct CThingObjectDef;
+class CThingObjectDef;
 
 // The real copy implementation this thunk forwards to (address masked).
 extern void __fastcall CThingObjectDef_Copy_impl(CThingObjectDef* thisptr, CThingObjectDef* src);

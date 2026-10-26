@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct CIDrawEnvironment
-{
+class CIDrawEnvironment
+{ public:
     unsigned long marker;
 };
 

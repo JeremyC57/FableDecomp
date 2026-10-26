@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCInventoryItem { void* vptr; char _pad4[0x44]; void* ptr48; };
+class CTCInventoryItem { public: void* vptr; char _pad4[0x44]; void* ptr48; };
 static int g_freed = 0;
 static int g_based = 0;
 extern "C" void freeThing(void* p){ (void)p; g_freed++; }

@@ -6,8 +6,8 @@
 #endif
 static char g_log[512];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CDataOutputStream { int id; long written; void WriteLong(long v) { LOG("write"); written = v; } };
-struct CMemoryDataInputStream { int id; };
+class CDataOutputStream { public: int id; long written; void WriteLong(long v) { LOG("write"); written = v; } };
+class CMemoryDataInputStream { public: int id; };
 enum ESheriffState { ESheriffState_A, ESheriffState_B, ESheriffState_C, ESheriffState_Seven = 7 };
 template <class T> struct CPersistTraits {
     T DefaultVal;
@@ -20,7 +20,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual long Peek() { return (long)*Value; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     bool UseDefaults;
     long Mode;
     CMemoryDataInputStream* PLoadStream;

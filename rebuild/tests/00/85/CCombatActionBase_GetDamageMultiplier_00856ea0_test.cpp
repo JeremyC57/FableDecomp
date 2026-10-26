@@ -3,7 +3,7 @@
 // Model of CCombatActionBase::GetDamageMultiplier @ 0x00856EA0
 
 static int g_deletes = 0;
-struct CMeleeCombatAbilityDef { virtual void v00() {} virtual void Delete() { ++g_deletes; } long m_references; unsigned char _pad08[0x44 - 8]; float DamageMultiplier; };
+class CMeleeCombatAbilityDef { public: virtual void v00() {} virtual void Delete() { ++g_deletes; } long m_references; unsigned char _pad08[0x44 - 8]; float DamageMultiplier; };
 struct CCountedAbilityPointer {
     CMeleeCombatAbilityDef* m_pItem;
     CCountedAbilityPointer(CMeleeCombatAbilityDef* p) : m_pItem(p) { if (m_pItem) ++m_pItem->m_references; }
@@ -13,7 +13,7 @@ struct CCountedAbilityPointer {
     CMeleeCombatAbilityDef* operator->() const { return m_pItem; }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CCountedAbilityPointer PMeleeAbilityDef;
     CCombatActionBase(CMeleeCombatAbilityDef* p) : PMeleeAbilityDef(p) {}
     CCountedAbilityPointer GetPMeleeAbilityDef() const { return PMeleeAbilityDef; }

@@ -8,9 +8,9 @@
 //   (`mov eax,edx ; mov dl,1 ; cmp [ecx+1Ch],dl ; ... jne` back-edge); retail's tail `jmp` to its own entry needs
 //   the recursive call inside an inline helper (the null test of the left child and the call), which VC7.1 expands
 //   after its tail-recursion pass and then emits as a plain tail call.
-struct CMemoryAllocatorVariableSize {
-    struct CMemoryAreaChunk;
-    struct CMemoryArea {
+class CMemoryAllocatorVariableSize { public:
+    class CMemoryAreaChunk;
+    class CMemoryArea { public:
         CMemoryArea*      PNextArea;             // +0x00
         CMemoryArea*      PRightChild;           // +0x04
         CMemoryArea*      PPreviousArea;         // +0x08

@@ -24,7 +24,7 @@ class CPlayerManager {
 public:
     CPlayer* GetMainPlayer();                            // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                      // +0x1c scoped_ptr<CPlayerManager>
 };

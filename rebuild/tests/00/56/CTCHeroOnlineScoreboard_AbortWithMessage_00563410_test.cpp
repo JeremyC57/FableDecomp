@@ -7,11 +7,11 @@ static int g_count = 0;
 static int g_shownText = 0;
 static int g_liveStrings = 0;
 
-struct CCharString {
+class CCharString { public:
     int m_symbol;
 };
 
-struct CWideString {
+class CWideString { public:
     int m_text;
     CWideString(int text) : m_text(text) { ++g_liveStrings; }
     CWideString(const CWideString& other) : m_text(other.m_text) { ++g_liveStrings; }
@@ -32,7 +32,7 @@ static CEngineGlobals g_globals;
 static CEngineGlobals* g_pEngineGlobals_013b86a0 = &g_globals;
 
 namespace LHNetworkLib {
-struct LHHttp2 {
+class LHHttp2 { public:
     int m_closed;
     void Close() { ++m_closed; g_events[g_count++] = 3; }
 };
@@ -48,7 +48,7 @@ struct CHttpScopedPtr {
 
 struct CComponent;
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     virtual void v00() {}
     void*          m_pThing;
     long           m_8;

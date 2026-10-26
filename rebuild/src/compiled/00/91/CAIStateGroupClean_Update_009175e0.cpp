@@ -6,7 +6,7 @@
 //   CCreatureAction_PlayAnimation 0x008424F0, ~CCreatureActionBase 0x00693EF0, the action id getter 0x00692620,
 //   AIAction_PerformActionAndWait 0x0097DB70, AIAction_DoNothing 0x0097E200, Terminate 0x008FCF40.
 // Constants: 4.0f @ 0x0128FD88, 1.4f @ 0x0128FD90, 0.0001f @ 0x0129BA3C.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -15,39 +15,39 @@ struct C3DVector {
     __forceinline C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
     void RotateAboutZ(float angle, bool flag);  // 0x00A14260
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);    // 0x006AF640
 };
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* Physics;                    // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsPointInside(const C3DVector& point); // 0x0082D000
 };
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void* __vftable;
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
     long GetActionID();                         // 0x00692620
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThing* owner, const CCharString& animationName, const CSoundPair& sound,
                                   bool useAnimationMovement, bool usePhysics, bool cameraUpdate, long c, long d);   // 0x008424F0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

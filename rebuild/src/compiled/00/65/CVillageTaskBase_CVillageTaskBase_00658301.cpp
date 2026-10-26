@@ -13,7 +13,7 @@ namespace N_0099a380 { struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                           // 0x0099A380
 }; } using N_0099a380::CBaseIntelligentPointer;
 
-struct CVillageTaskBase : CBaseIntelligentPointer {
+class CVillageTaskBase : public CBaseIntelligentPointer { public:
     virtual void v00();                    // this class has its own vtable
     CVillageTaskBase();
 };

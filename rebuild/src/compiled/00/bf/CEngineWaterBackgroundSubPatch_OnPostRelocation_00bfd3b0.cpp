@@ -8,7 +8,7 @@
 // pointer walking the vertex array (`[edi-10h]` reaches the index array); each buffer is null-tested before its call.
 #include "engine/CEngineWaterBackgroundSubPatch.h"
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, void* owner);   // 0x00BD9AB0
 };
 struct SEngine_01436ea8 {

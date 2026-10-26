@@ -17,7 +17,7 @@ struct SCountBlock {
     SCountBlock(void (__fastcall* destroy)(void*), void* object) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) {}
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object;                                      // +0
     SCountBlock* Count;                             // +4
     static void __fastcall DeleteData(void* object);   // 0x00A99FD0
@@ -34,26 +34,26 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length);     // 0x0099EBF0 (-1 = strlen)
     ~CCharString();                                 // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     void* m_pStringData;
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual ~CChunkedFileSuperChunk();
 };
 struct C3DMeshFileChunk : CChunkedFileSuperChunk {
     C3DMeshFileChunk(const char* chunkType);        // 0x00AA8360
     unsigned char _base_body[0x28];                 // +0x04 .. +0x2b
 };
-struct C3DMeshFileRootChunk : C3DMeshFileChunk {
+class C3DMeshFileRootChunk : public C3DMeshFileChunk { public:
     C3DMeshFileRootChunk() : C3DMeshFileChunk("3DRT") {}
     virtual ~C3DMeshFileRootChunk();
 };
 
-struct CChunkedFile {
+class CChunkedFile { public:
     CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>& root);   // 0x00AA7DB0
     virtual ~CChunkedFile();
     CCountedPointer<CChunkedFileSuperChunk> RootChunk;  // +0x04
@@ -61,7 +61,7 @@ struct CChunkedFile {
     CCharString FileComment;                        // +0x10
 };
 
-struct C3DMeshFile : CChunkedFile {
+class C3DMeshFile : public CChunkedFile { public:
     C3DMeshFile();
     virtual ~C3DMeshFile();
 };

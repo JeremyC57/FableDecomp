@@ -9,7 +9,7 @@
 
 class CCharString;
 
-struct CDateAndTime {
+class CDateAndTime { public:
     unsigned char _raw[0x10];
     CDateAndTime(long year, long month, long day, long hour, long minute, long second, long millisecond);   // 0x009E9A70
 };

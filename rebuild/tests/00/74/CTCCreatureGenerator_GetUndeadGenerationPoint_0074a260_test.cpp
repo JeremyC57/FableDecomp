@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static unsigned long g_seed = 1;
 static unsigned long ROR13(unsigned long v) { return (v >> 13) | (v << 19); }
 static unsigned long GFRandom() { g_seed = (unsigned long)(g_seed * 0x24a1 + 0x24df) & 0xffffffffUL; g_seed = ROR13(g_seed) & 0xffffffffUL; return g_seed; }

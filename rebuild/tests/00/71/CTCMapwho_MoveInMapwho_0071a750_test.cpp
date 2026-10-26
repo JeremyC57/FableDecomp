@@ -1,14 +1,14 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CTCMapwho;
+class C3DVector { public: float x, y, z; };
+class CTCMapwho;
 struct CThingMapManager {
     int destroyed, placed; C3DVector last;
     void DestroyMapwhoNode(CTCMapwho* m);
     void PlaceThing(CTCMapwho* m, const C3DVector& p);
 };
-struct CWorldMap { CThingMapManager* m_pThingMapManager; };
+class CWorldMap { public: CThingMapManager* m_pThingMapManager; };
 static CWorldMap* g_map;
-struct CTCMapwho {
+class CTCMapwho { public:
     unsigned char InMapwho; bool m_staysIn;
     CWorldMap* GetWorldMap() { return g_map; }
     bool IsInMapwho() const { return (InMapwho & 1) != 0; }

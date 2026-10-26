@@ -7,11 +7,11 @@
 // of 0x00A14EE0).
 // Shape: the landed inline `operator==` (same block -> true; a null block -> false; lengths differ -> false; else
 // `Compare(a, b) == 0` as `neg ; sbb al,al ; inc al`).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                         // +0x00
     unsigned long m_length;                         // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
 };
 int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
@@ -29,12 +29,12 @@ static __forceinline bool operator==(const CCharString& sa, const CCharString& s
     return Compare_00411570(a->m_pChars, b->m_pChars) == 0;
 }
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0xe8];
     CCharString   m_scriptData;                     // +0xe8
 };
 
-struct CThingFilter_HasScriptData {
+class CThingFilter_HasScriptData { public:
     CCharString Data;                               // +0x00
     bool operator()(CThing* thing) const;
 };

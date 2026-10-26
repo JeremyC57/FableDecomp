@@ -6,7 +6,7 @@ class CEngineLandscapeMap { public: int dummy; };
 class CDataInputStream { public: int dummy; };
 class CVertexBufferWin32;
 class CVertexHeightData;
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI() : X(0), Y(0) {}
     C2DCoordI(const C2DCoordI& other) : X(other.X), Y(other.Y) {}

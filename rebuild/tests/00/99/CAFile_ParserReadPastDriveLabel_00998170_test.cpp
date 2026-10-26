@@ -98,7 +98,7 @@ static WStr ExpandPath(const WStr& path, const WStr& base)
 }
 
 // CStringParser stand-in: a scripted list of (type, text) items with a read position that can be saved and restored.
-struct CParsedItem {
+class CParsedItem { public:
     long Type;                       // 1 = symbol, 2 = name (EParsedItemType)
     long Value;
     CStr String;
@@ -106,7 +106,7 @@ struct CParsedItem {
     const CStr& GetString() const { return String; }
 };
 struct SScriptItem { long type; const char* text; };
-struct CStringParser {
+class CStringParser { public:
     const SScriptItem* Items;
     unsigned long Count;
     unsigned long StringPos;
@@ -122,7 +122,7 @@ struct CStringParser {
     unsigned long GetStringPos() const { return StringPos; }
     void SetStringPos(unsigned long pos) { StringPos = pos; }
 };
-struct CAFile {
+class CAFile { public:
     static bool ParserReadPastDriveLabel(CStringParser& parser, CParsedItem& item)
     {
         if (parser.ReadNextItem(item) && item.Type == 2 && parser.ReadNextItem(item) && item.Type == 1 &&

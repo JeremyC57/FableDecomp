@@ -10,7 +10,7 @@ struct CTCShotDefinitionBase {
     bool CanBeHitByMeleeStrike();                  // 0x00815270
 };
 bool __fastcall IsPlayHitResponse_0085ee90(CThing_008685a0* thing);   // 0x0085EE90
-struct CHitParameters {
+class CHitParameters { public:
     unsigned char          _pad[0x20];
     bool                   m_playGetHitResponse;   // +0x20
     bool                   m_overrideGetHitResponse;   // +0x21

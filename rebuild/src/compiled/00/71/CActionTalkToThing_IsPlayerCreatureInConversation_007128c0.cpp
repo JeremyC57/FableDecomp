@@ -8,7 +8,7 @@
 // the hoisted constant serves both byte compares of the `||`.
 enum EConversationState { CONVERSATION_NONE, CONVERSATION_STARTING, CONVERSATION_ACTIVE };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x10];
     unsigned char m_conversationState;                  // +0x10
     EConversationState GetConversationState() const { return (EConversationState)m_conversationState; }
@@ -21,7 +21,7 @@ struct CIntelligentPointer {
     CThing* PItem;                                      // +0x04
 };
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void*   __vftable;
     CThing* m_pCreature;                                // +0x04
 };

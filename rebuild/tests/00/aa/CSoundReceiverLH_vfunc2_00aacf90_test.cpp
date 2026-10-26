@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour of 0x00AACF90 (chunk 901 piece): slot 2 forwards its position to slot 1
-struct C3DVector { float X; float Y; float Z; };
+class C3DVector { public: float X; float Y; float Z; };
 static int g_set = 0;
 struct CSoundReceiverLH {
     virtual void v00() {}

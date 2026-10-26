@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct CCharString { const char* m_text; CCharString(const char* t, long = -1) : m_text(t) { } ~CCharString() { } };
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class CCharString { public: const char* m_text; CCharString(const char* t, long = -1) : m_text(t) { } ~CCharString() { } };
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 static CThingCreatureBase* g_owner; static CThing* g_target; static long g_code; static long g_s0 = 7, g_s1 = 7;
 static const char* g_anim; static int g_setCalls;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() { }
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound)
@@ -16,7 +16,7 @@ struct CCombatActionBase {
     void SetAnimationName(const CCharString& name) { g_anim = name.m_text; ++g_setCalls; }
 };
 
-struct CCreatureAction_GetUpFromSitting : CCombatActionBase {
+class CCreatureAction_GetUpFromSitting : public CCombatActionBase { public:
     long SittingMode; unsigned char RemoveOnPerformAction;
     virtual void v00() { }
     CCreatureAction_GetUpFromSitting(CThingCreatureBase* owner, const CCharString& animName, long sittingMode, bool removeOnPerformAction) : CCombatActionBase(owner, 50, CSoundPair()), SittingMode(sittingMode), RemoveOnPerformAction(removeOnPerformAction) { SetAnimationName(animName); }

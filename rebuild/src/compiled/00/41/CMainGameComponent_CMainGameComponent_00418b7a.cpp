@@ -34,13 +34,13 @@
 #define CFontBank CFontBankDonor
 #include "engine/CFontBank.h"
 #undef CFontBank
-struct CCharString { CCharStringData* Data; CCharString(); CCharString(const CCharString&); ~CCharString(); };
-struct CGame;struct CFontBank;struct CLUA;struct CGraphicDataBank;struct CCPPointerInfo;
-namespace NGameText {struct CDataBank;}
-struct CBaseClass { CBaseClass(); virtual ~CBaseClass() {} };
+class CCharString { public: CCharStringData* Data; CCharString(); CCharString(const CCharString&); ~CCharString(); };
+class CGame;class CFontBank;class CLUA;class CGraphicDataBank;class CCPPointerInfo;
+namespace NGameText {class CDataBank;}
+class CBaseClass { public: CBaseClass(); virtual ~CBaseClass() {} };
 struct CBaseClassNonCopyable : CBaseClass { protected: CBaseClassNonCopyable(); virtual ~CBaseClassNonCopyable(); /* 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (protected virtual; byte twin of ~CBaseClass 0x0099A2E0, its own vtable store is dead) */ private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
-struct CDeviceResetCallback {CDeviceResetCallback();virtual void OnPreDeviceReset()=0;virtual bool OnPostDeviceReset()=0;};
-struct CGameComponent : CBaseClassNonCopyable,CDeviceResetCallback {
+class CDeviceResetCallback { public:CDeviceResetCallback();virtual void OnPreDeviceReset()=0;virtual bool OnPostDeviceReset()=0;};
+class CGameComponent : public CBaseClassNonCopyable,public CDeviceResetCallback { public:
  bool Quit,Running; CGame* Game;
  CGameComponent(CGame&);
  virtual ~CGameComponent(){}
@@ -50,20 +50,20 @@ struct CGameComponent : CBaseClassNonCopyable,CDeviceResetCallback {
  virtual void SetQuit();
 };
 // Deleted-pointee interface views: only destructor prefix is used; fixtures supply pre-existing interface doubles, not native game constructors.
-struct CWorld { virtual ~CWorld(); };
-struct CPlayerManager { virtual ~CPlayerManager(); };
-struct CGamePlayerInterface { virtual ~CGamePlayerInterface(); };
-struct CDisplayEngine : CBaseClassNonCopyable { virtual ~CDisplayEngine(); virtual bool InitEngine(); virtual void UninitEngine(); };
+class CWorld { public: virtual ~CWorld(); };
+class CPlayerManager { public: virtual ~CPlayerManager(); };
+class CGamePlayerInterface { public: virtual ~CGamePlayerInterface(); };
+class CDisplayEngine : public CBaseClassNonCopyable { public: virtual ~CDisplayEngine(); virtual bool InitEngine(); virtual void UninitEngine(); };
 template<class T>struct scoped_ptr {
  T* ptr;
  scoped_ptr():ptr(0){}
  ~scoped_ptr(){delete ptr;}
 };
-template<class T>struct CCountedPointer {T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}~CCountedPointer();};
-struct CInitBaseClass : CBaseClass {bool Valid;CInitBaseClass();virtual void Validate()const;};
+template<class T>class CCountedPointer { public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}~CCountedPointer();};
+class CInitBaseClass : public CBaseClass { public:bool Valid;CInitBaseClass();virtual void Validate()const;};
 struct CNetworkClient : CInitBaseClass {unsigned char NetworkState[0x2678];CNetworkClient();virtual ~CNetworkClient();}; //00419352
-enum FileAccessType {FileRead=0};struct CASuspendableProcess;
-struct CAFile : CBaseClassNonCopyable {
+enum FileAccessType {FileRead=0};class CASuspendableProcess;
+class CAFile : public CBaseClassNonCopyable { public:
  CAFile();virtual ~CAFile();
  virtual void Open(const CWideString&,FileAccessType,unsigned long)=0;
  virtual void Close()=0;
@@ -80,7 +80,7 @@ struct CAFile : CBaseClassNonCopyable {
  virtual long GetAlignment()const;
  virtual CAFile* Clone()const=0;
 };
-struct CDiskFileWin32 : CAFile {
+class CDiskFileWin32 : public CAFile { public:
  long AccessType,Position,Length;void* WinFileHandle;bool Opened;CWideString Pathname;
  CDiskFileWin32();virtual ~CDiskFileWin32(); //00401630
  virtual void Open(const CWideString&,FileAccessType,unsigned long);
@@ -92,8 +92,8 @@ struct CDiskFileWin32 : CAFile {
 struct CFrameRateSmoother : CInitBaseClass {
  unsigned char Times[0x10];long MaxNoTimes,NoTimes,NoFramesToChangeFrameRateOver,FirstTime,LastTime;double SmoothedTime;
  CFrameRateSmoother();virtual ~CFrameRateSmoother();}; //00419764
-struct CMainGameComponentInit {CWideString InitialWorldName,InitialWorldHolySiteName;CCharString InitialQuestName;CWideString SaveGameName;CMainGameComponentInit();CMainGameComponentInit(const CMainGameComponentInit&);~CMainGameComponentInit();}; //004131d0
-struct CMainGameComponent : CGameComponent {
+class CMainGameComponentInit { public:CWideString InitialWorldName,InitialWorldHolySiteName;CCharString InitialQuestName;CWideString SaveGameName;CMainGameComponentInit();CMainGameComponentInit(const CMainGameComponentInit&);~CMainGameComponentInit();}; //004131d0
+class CMainGameComponent : public CGameComponent { public:
  void* PSampleBank;
  CCountedPointer<NGameText::CDataBank> PTextBank;
  scoped_ptr<CPlayerManager> PPlayerManager;

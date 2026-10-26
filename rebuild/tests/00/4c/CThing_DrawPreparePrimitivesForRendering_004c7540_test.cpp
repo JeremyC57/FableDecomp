@@ -1,12 +1,12 @@
 // Behaviour test for CThing::DrawPreparePrimitivesForRendering @ 0x004C7540: limbo / not drawable -> false; else driver prepared (if any) and true.
 #include <cstdio>
 struct CRenderContext { int id; };
-struct CTCDriverBase {
+class CTCDriverBase { public:
     int calls; CRenderContext* last;
     CTCDriverBase() : calls(0), last(0) { }
     virtual void DrawPreparePrimitivesForRendering(CRenderContext* context) { ++calls; last = context; }
 };
-struct CThing {
+class CThing { public:
     bool drawable;
     CTCDriverBase* PTCDriver;
     unsigned char InLimbo : 1;

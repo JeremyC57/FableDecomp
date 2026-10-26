@@ -7,12 +7,12 @@
 // Shape: a user copy constructor whose body assigns in retail's store order (the two vectors as struct copies through
 // re-based pointers, the scalars, the name, then Roll, SpeedFraction and DeltaIndex); EventName's default constructor
 // runs first as the only member with one.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                 // 0x0099E4B0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 struct CKeyCamera {

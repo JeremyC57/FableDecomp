@@ -11,8 +11,8 @@
 // Shape: STLport `first = find_if(first, last, pred); if (first == last) return first; next = first; return
 //   remove_copy_if(++next, last, first, pred);` -- each by-value predicate copy is memberwise (8 dwords and the
 //   AngleTest3D byte, held in bl for both copies: C3DVector's user copy constructor makes the copy non-trivial).
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor, implicit operator=
 };

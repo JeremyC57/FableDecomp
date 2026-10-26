@@ -35,7 +35,7 @@ __declspec(noinline) bool CBasicStringChar::operator<(const CBasicStringChar& ot
     return Compare(other) < 0;
 }
 #pragma auto_inline(on)
-struct CCharStringData {                            // shared string block (17 bytes: Data, then NoRefs at +0x0D)
+class CCharStringData { public:                            // shared string block (17 bytes: Data, then NoRefs at +0x0D)
     CBasicStringChar Data;                          // +0x00
 };
 class CCharString {
@@ -98,7 +98,7 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 }
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

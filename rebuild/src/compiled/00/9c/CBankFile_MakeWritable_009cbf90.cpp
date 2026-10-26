@@ -11,7 +11,7 @@
 // on each member sits 0x10 lower than the PDB offset.  The PDB member names are kept at their retail
 // offsets; the header itself cannot be included because its offsets disagree with the bytes.
 struct CDiskFileCalls;
-struct CBankFileEntryUpdateData;
+class CBankFileEntryUpdateData;
 
 struct CRuntimeData {                   // CBankFile::CRuntimeData, 12 bytes, RuntimeData[0] is unused
     unsigned long DataOffset;           // +0x00
@@ -30,7 +30,7 @@ struct CPackedUIntArray {               // 16 bytes; m_pData == 0 means "not pac
     bool IsPacked() const { return m_pData != 0; }
 };
 
-template <class T> struct CArray {      // retail CArray: 12 bytes
+template <class T> class CArray { public:      // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -61,7 +61,7 @@ struct CBankFile_Retail {        // the retail layout; engine/CBankFile.h (PDB) 
     void MakeWritable();   // 0x009CBF90
 };
 
-struct CWideString;
+class CWideString;
 
 struct CDiskFileCalls {
     virtual void v00();

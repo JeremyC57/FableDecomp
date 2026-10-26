@@ -11,18 +11,18 @@
 // Layout: Ego_r.pdb - 0x14 (SpyContactMade +0x5f, SpeechBanditCount +0x74, SpyHealthBarID +0x84).
 // Shape: as the landed CV_ChapelOfEvilScript::DoMission 0x00E6A7F0 spawn (entry-zeroed guard flag for the thread name
 // temporary); the CRGBColour temporary is built by a ctor that assigns R, G, B, A in that order.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CScriptThing;
+class CScriptThing;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
-struct CScriptGameResourceObjectScriptedThingBase {    // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x0127094C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void StopFollowingThing(const CScriptThing& thing);   // slot 8 (+0x20) 0x007E7330
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();
@@ -32,7 +32,7 @@ struct CScriptGameResourceObjectScriptedThingBase {    // vtable 0x0127094C
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410 public: virtual void __fastcall CGameScriptInterface::NewScriptFrame(void) const
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20) 0x0089B5B0 public: virtual bool __fastcall CGameScriptInterface::StartScriptingEntity(class CScriptThing const &, class CScriptGameResourceObjectScriptedThingBase &, enum EScriptAIPriority)
@@ -115,7 +115,7 @@ struct CGameScriptInterface {                      // retail vtable 0x01260F0C (
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) 0x00891880 public: virtual class CCharString __fastcall CGameScriptInterface::GetActiveQuestName(void) const
 };
 
-struct CSpawnedFuncBase {                              // retail 0x34 bytes
+class CSpawnedFuncBase { public:                              // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -131,14 +131,14 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-struct CScriptBase {                                   // retail 0x40 bytes
+class CScriptBase { public:                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                  // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
 namespace NScript {
-struct CQ_AmbushTradersScript : CScriptBase {
+class CQ_AmbushTradersScript : public CScriptBase { public:
     CGameScriptInterface* Game;                        // +0x40
     void*                 Data;                        // +0x44
     bool QuestFailed;                                  // +0x48

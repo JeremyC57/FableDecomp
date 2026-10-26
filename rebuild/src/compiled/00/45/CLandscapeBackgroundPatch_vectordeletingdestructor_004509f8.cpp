@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 // Leaf: `vector_deleting_destructor'
 struct CInner { int a; };
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     int f0;
     int Parent;
     void* f8;

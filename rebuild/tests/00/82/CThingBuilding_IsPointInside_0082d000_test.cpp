@@ -1,10 +1,10 @@
 #include <cstdio>
 // behaviour test for CThingBuilding::IsPointInside (0x0082D000)
 class CCharString { public: const char* text; };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 CCharString g_containmentVolumeName = { "inside" };
 static int g_live = 0;
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     float minX, maxX;
     CPhysicsMeshObject(float a, float b) : minX(a), maxX(b) { ++g_live; }
     CPhysicsMeshObject(const CPhysicsMeshObject& o) : minX(o.minX), maxX(o.maxX) { ++g_live; }
@@ -14,12 +14,12 @@ struct CPhysicsMeshObject {
         return volume.text == g_containmentVolumeName.text && tolerance == 0.0f && pos.X >= minX && pos.X <= maxX;
     }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     const void* mesh;
     virtual const void* GetPhysicsMesh() { return mesh; }
     CPhysicsMeshObject GetPhysicsMeshObject() { return CPhysicsMeshObject(0.0f, 10.0f); }
 };
-struct CThingBuilding {
+class CThingBuilding { public:
     CTCPhysicsBase* m_pPhysics;
     bool IsPointInside(const C3DVector& pos);
 };

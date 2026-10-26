@@ -13,7 +13,7 @@
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
     const unsigned char* CurrentSourcePtr;              // +0x0c
@@ -61,14 +61,14 @@ struct CMemoryDataInputStream {
     }
 };
 
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     void Initialise(long vertexType, long count, long stride, unsigned long usage, long pool);   // 0x00A63150
     void Uninitialise();                                                                        // 0x00A63200
     unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);         // 0x00AC20A0
     void Unlock();                                                                              // 0x00AC20B0
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned long GetVertexBufferUsage();          // 0x00B3B030 (folded with GetIndexBufferUsage)
 };
 extern CEngineResourceManager* g_pEngineResourceManager_01436e98;   // 0x01436E98
@@ -77,7 +77,7 @@ struct CRangeCompressor {
     void Decompress(const unsigned char* source, long count, long stride, void* destination);   // 0x00F39ED0
 };
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     void LoadCompressedBuffer(CMemoryDataInputStream& stream, CVertexBufferWin32& buffer, long* vertexCount);
 };
 

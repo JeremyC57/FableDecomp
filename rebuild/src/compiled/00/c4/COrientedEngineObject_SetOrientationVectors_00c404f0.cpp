@@ -8,7 +8,7 @@
 // store arm) and an inline whole-vector copy; the flag is a one-bit field (setting it gives the dword `or [ecx+48h],20000h`; an explicit `|=` on a
 // plain word loads, ors and stores through eax). C3DVector needs its user inline operator= (with the implicit one the
 // flag RMW was split, 155v147).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     bool operator!=(const C3DVector& v) const { return v.x != x || v.y != y || v.z != z; }
     C3DVector& operator=(const C3DVector& o) { x = o.x; y = o.y; z = o.z; return *this; }

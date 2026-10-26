@@ -6,9 +6,9 @@ struct CBasicStringChar {
     CBasicStringChar(const char* text) { strcpy(buf, text); StringLength = (unsigned long)strlen(text); }
     void AppendData(const char* text, unsigned long length) { memcpy(buf + StringLength, text, length); StringLength += length; buf[StringLength] = 0; }
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; CCharStringData(const char* t) : Data(t), NoRefs(1) { } };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; CCharStringData(const char* t) : Data(t), NoRefs(1) { } };
 static int g_cow = 0;
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     void MakeOwnCopyOfData() { ++g_cow; }
     const CCharString& operator+=(const char* text)

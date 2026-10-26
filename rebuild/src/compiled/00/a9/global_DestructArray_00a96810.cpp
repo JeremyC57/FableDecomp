@@ -15,14 +15,14 @@
 // member's address (`lea esi,[ecx+2Ch]`).
 // Local base model, not engine/CIVCountedPointeeBase.h: the generated header flattens the vptr into a plain
 // `void* __vftable`, which cannot make the slot-1 virtual destroy call the release runs.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;                                  // +0x00
     __forceinline ~CIVCountedPointer()
     {

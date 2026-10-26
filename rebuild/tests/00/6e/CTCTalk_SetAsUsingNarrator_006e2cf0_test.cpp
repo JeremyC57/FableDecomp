@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 struct SRandomAccessTag { SRandomAccessTag() {} };
 static int g_findCalls = 0;
 CCharString* __fastcall FindString(CCharString* first, CCharString* last, const CCharString& value, const SRandomAccessTag& tag)
@@ -20,12 +20,12 @@ struct SNarratorRecord {
     CCharString*  m_pNamesLast;
 };
 static SNarratorRecord g_narrators;
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     unsigned char    _pad_0x00[0xd0];
     SNarratorRecord* m_pNarrators;
     static CGameDefinitionManager& __fastcall Get() { static CGameDefinitionManager m; m.m_pNarrators = &g_narrators; return m; }
 };
-struct CTCTalk {
+class CTCTalk { public:
     unsigned char _base[0x34];
     bool          IsPureAISpeaker;
     void SetAsUsingNarrator(const CCharString& narrator);

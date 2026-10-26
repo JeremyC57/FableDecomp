@@ -1,4 +1,4 @@
-struct CCreatureAction_CastTimeSpell {
+class CCreatureAction_CastTimeSpell { public:
     void* vftable;
 };
 

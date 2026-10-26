@@ -7,7 +7,7 @@
 // `fill(first, last, value)` (`__fastcall`: first in ecx, last in edx, the value reference on
 // the stack) for 72-byte elements with an out-of-line copy-assignment @ 0x00513BF0.
 // One of 12 bodies of this shape.
-struct CMapInfo {
+class CMapInfo { public:
     unsigned char _body[0x48];
     CMapInfo& operator=(const CMapInfo& other);   // 0x00513BF0
 };

@@ -3,8 +3,8 @@
 #include <cstring>
 static int g_msgs, g_cards, g_objectives, g_removed, g_pauses;
 static bool g_done;
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     void HeroReceiveMessageFromGuildMaster(const char* m, const char* e, bool a, bool b) const { if (!std::strcmp(m, "TEXT_QST_011_GUILDSEAL_MESSAGE") && !*e && a && b) ++g_msgs; }
     void Pause(float s) const { if (s == 2.0f) ++g_pauses; }
     const char* GetActiveQuestName() const { return "Q"; }

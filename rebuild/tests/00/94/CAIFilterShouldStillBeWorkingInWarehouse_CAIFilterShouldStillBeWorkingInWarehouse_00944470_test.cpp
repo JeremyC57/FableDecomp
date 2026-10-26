@@ -1,7 +1,7 @@
 // Behaviour test for 0x00944470: the filter stores the village and copies both intelligent pointers;
 // the by-value arguments are destroyed (released) at the end.
 #include <cstdio>
-struct CBaseObject { int refs; };
+class CBaseObject { public: int refs; };
 static int g_live = 0;
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
@@ -14,7 +14,7 @@ struct CIP : CBaseIntelligentPointer {
     CIP() {}
     CIP(const CIP& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CTCVillage { int id; };
+class CTCVillage { public: int id; };
 struct CFilter {
     CTCVillage* m_pVillage; CIP m_pCrate; CIP m_pWarehouse;
     CFilter(CIP crate, CIP warehouse, CTCVillage* village) : m_pVillage(village), m_pCrate(crate), m_pWarehouse(warehouse) {}

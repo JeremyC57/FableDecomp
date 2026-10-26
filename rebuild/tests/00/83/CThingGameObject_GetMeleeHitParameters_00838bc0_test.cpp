@@ -2,9 +2,9 @@
 #include <stdio.h>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector { float X, Y, Z; };
-struct CThing;
-struct CHitParameters {
+class C3DVector { public: float X, Y, Z; };
+class CThing;
+class CHitParameters { public:
     CThing* Hitter; CThing* Weapon; int Location; C3DVector Position, Direction;
     bool Localised, Directional, Flourish, KnockDown, Blockable, Decapitate, MoveBack, PlayHitResponseOverrideSet, PlayHitResponse;
     long Attribute; float Damage;
@@ -18,7 +18,7 @@ struct CTCWeaponModifier { float Mult; bool KnockDown; };
 struct CExperience { float T, Low, High; };
 struct CCharge { float Mult; C3DVector Hit; bool Decap; };
 struct CWeaponTC { bool HasDamage; float Damage; long Attribute; };
-struct CThing {
+class CThing { public:
     bool Dead; unsigned ThingTypeFlags; CAction* CurrentAction; CTCWeaponModifier* Modifier; CExperience* Experience;
     float DamageMultiplierDef; CCharge* Charge; CWeaponTC* Weapon; float BaseMelee; bool HasCharge;
 };

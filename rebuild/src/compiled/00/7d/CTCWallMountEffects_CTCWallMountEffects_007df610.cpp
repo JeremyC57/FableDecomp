@@ -10,8 +10,8 @@
 // Shape: the derived vtable is stored first, the null def pointer (inline constructor) and the confirmation
 // enum are cleared around the creature pointer's base call, its vtable follows; FrameEffectLastUsed starts at
 // 0xC0000000 (a "long ago" frame); the body then asks the owner's def (CThing +0x70) for the sub-def into PDef.
-struct CThing;
-struct CWallMountEffectsDef;
+class CThing;
+class CWallMountEffectsDef;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -37,7 +37,7 @@ struct CDefPointer_CWallMountEffectsDef {
     CDefPointer_CWallMountEffectsDef() : Object(0) { }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer_CWallMountEffectsDef* out);  // 0x007DF9E0
 };
 
@@ -46,14 +46,14 @@ struct CDefPointer_CThingDef {
     CDefClassBase* operator->() const { return Object; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad_00[0x70];
     CDefPointer_CThingDef PDef;                             // +0x70
 };
 
 enum EWallMountEffectsConfirmationType { WALL_MOUNT_CONFIRMATION_NONE = 0 };
 
-struct CTCWallMountEffects : CTCBase_Calls {                // vtable 0x0126FC84
+class CTCWallMountEffects : public CTCBase_Calls { public:                // vtable 0x0126FC84
     CDefPointer_CWallMountEffectsDef        PDef;                       // +0x0c
     EWallMountEffectsConfirmationType       WaitingForConfirmation;     // +0x10
     CIntelligentPointer_CThingCreatureBase  CreaturePerformingAction;   // +0x14

@@ -7,14 +7,14 @@
 #include <string.h>
 #include <math.h>
 
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long length = -1) : text(t) { (void)length; }
     CCharString(const CCharString& o) : text(o.text) { }
     CCharString& operator=(const CCharString& o) { text = o.text; return *this; }
 };
 static CCharString g_CrowdMemberScriptName("CrowdMember");
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static unsigned long __fastcall GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
 static float g_floatRandom;
 static float __fastcall GFFloatRandom(float range, unsigned long* seed) { (void)seed; return g_floatRandom * range; }
@@ -33,16 +33,16 @@ __forceinline float WrapAngle(float angle)
     }
     return angle;
 }
-struct CThingAICreatureInit {
+class CThingAICreatureInit { public:
     CCharString ScriptName;
     bool EnableCreatureAutoPlacing;
     CThingAICreatureInit() : ScriptName(""), EnableCreatureAutoPlacing(true) { }
 };
 static float g_facing;
 struct CTCPlacement { void SetFacingAngleXY(float a) { g_facing = a; } };
-struct CThing;
+class CThing;
 static CThing* g_added;
-struct CTCVillage {
+class CTCVillage { public:
     CThing* ParentThing;
     void AddThingToVillage(CThing* t) { g_added = t; }
 };
@@ -80,18 +80,18 @@ struct CCrowdDef {
     long FemaleDef;
     void Destroy() { ++g_destroys; }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
 static CCrowdDef* g_crowdDef;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CCrowdDef>* out) { if (!g_crowdDef) return false; ++g_crowdDef->RefCount; out->Object = g_crowdDef; return true; }
 };
 static bool g_persisted;
-struct CThing {
+class CThing { public:
     unsigned long  m_tcMask[9];
     CTCMap         m_tcs;
     CDefClassBase* m_pDef;
@@ -107,7 +107,7 @@ struct CThing {
 };
 static long g_createDef = -1; static long g_createPlayer; static bool g_createAuto; static const char* g_createScript;
 static float g_autoRadius; static float g_sexuality;
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     void AutoPlaceNear(const C3DVector&, float radius) { g_autoRadius = radius; }
     void AutoSetupSexuality(float c) { g_sexuality = c; }
     static CThingAICreature* g_next;
@@ -120,7 +120,7 @@ struct CThingAICreature : CThing {
 };
 CThingAICreature* CThingAICreature::g_next;
 static unsigned long g_seed;
-struct CTCBoastingCrowdControl {
+class CTCBoastingCrowdControl { public:
     CThing* ParentThing;
     unsigned long* GetRandomSeed() { return &g_seed; }
     bool SpawnCrowdMember(CThing* lookAt, CThing* spawnPoint, CThing* village);

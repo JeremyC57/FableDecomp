@@ -3,8 +3,8 @@
 // Behaviour test for CTCWife::CTCWife (0x006CF040): the constructor of src/ over stand-ins -- the base gets the thing,
 // the flags are false, the "never" frames LONG_MAX, gift price 500, and both trees start empty with self-linked headers.
 static unsigned long g_invalidSampleID = 0xdeadbeef;
-struct CThing { int dummy; };
-struct CTCBase {
+class CThing { public: int dummy; };
+class CTCBase { public:
     CThing* ParentThing;
     bool ToBeRemoved;
     bool IsInGlobalUpdateTCs;
@@ -26,9 +26,9 @@ template <class TNode> struct CTree : CTreeBase<TNode> {
 };
 struct SLongLongNode { unsigned char m_color; SLongLongNode* m_pParent; SLongLongNode* m_pLeft; SLongLongNode* m_pRight; long m_key; long m_value; };
 struct SLongNode { unsigned char m_color; SLongNode* m_pParent; SLongNode* m_pLeft; SLongNode* m_pRight; long m_key; };
-struct CHeroMarriageDef;
+class CHeroMarriageDef;
 struct CDefPointerHeroMarriage { const CHeroMarriageDef* Object; CDefPointerHeroMarriage() : Object(0) {} };
-struct CTCWife : CTCBase {
+class CTCWife : public CTCBase { public:
     CDefPointerHeroMarriage PHeroMarriageDef;
     long OpinionAttitude;
     unsigned char AttitudeUpdateCounter;

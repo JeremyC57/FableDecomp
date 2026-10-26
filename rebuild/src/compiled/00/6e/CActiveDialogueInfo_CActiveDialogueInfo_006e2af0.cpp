@@ -7,7 +7,7 @@
 // (0x01238C6C) is CIntelligentPointer's own: the pointer is a member and the class is not
 // polymorphic. CIntelligentPointer() is the family shape: base ctor, vtable, SetPItem(0). The
 // float literal 0 is folded to an integer immediate store.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

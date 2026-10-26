@@ -1,9 +1,9 @@
 // Behaviour test for CTCDNone::Create (0x00835A20): map 0 when flagged, driver bit required, activation required.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CTCDNone;
-struct CWorldMap { long GetMapNumberAt(const C3DVector& pos) const { return (long)pos.X + 10; } };
-struct CThingManager { CWorldMap* WorldMap; };
+class CWorldMap { public: long GetMapNumberAt(const C3DVector& pos) const { return (long)pos.X + 10; } };
+class CThingManager { public: CWorldMap* WorldMap; };
 static CWorldMap g_map; static CThingManager g_mgr = { &g_map }; static CThingManager* g_pThingManager = &g_mgr;
 static long g_lastMap = -1, g_lastDef = -1, g_lastPlayer = -1; static bool g_lastPersistent = false;
 static bool g_activate = true, g_fail = false;

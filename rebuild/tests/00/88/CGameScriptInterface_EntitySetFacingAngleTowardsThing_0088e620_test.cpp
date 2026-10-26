@@ -2,14 +2,14 @@
 // the bearing is a turn fraction in [0, 1).
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:
     C3DVector pos; bool valid;
     const C3DVector& GetPos() const { return pos; }
     bool IsValid() const { return valid; }
 };
 static int g_calls = 0; static float g_angle = -5.0f; static const CScriptThing* g_entity = 0; static bool g_imm = false;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void EntitySetFacingAngle(const CScriptThing& entity, float angle, bool immediate) const { ++g_calls; g_angle = angle; g_entity = &entity; g_imm = immediate; }
     void EntitySetFacingAngleTowardsThing(const CScriptThing& entity, const CScriptThing& target, bool immediate) const;
 };

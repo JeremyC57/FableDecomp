@@ -2,7 +2,7 @@
 // Struct-return const method: return CCharString("...", -1);
 
 #include "engine/C3DMeshFileMaterialListChunk.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString {
+class CCharString { public:
     char* m_ptr;
     int   m_len;
     // ctor at 0x0099ebf0: CCharString(const char* str, long len)

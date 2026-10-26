@@ -13,7 +13,7 @@
 float GetParticleUpdatePeriod();                     // 0x00AEAA00
 
 namespace NParticleEngine {
-struct CDecal : ::CDecal {
+class CDecal : public ::CDecal { public:
     float GetInterpolatedLifetimerInSeconds(float fraction) const;
 };
 float CDecal::GetInterpolatedLifetimerInSeconds(float fraction) const

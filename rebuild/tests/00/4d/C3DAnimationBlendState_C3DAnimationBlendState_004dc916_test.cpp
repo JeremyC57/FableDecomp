@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 struct RefCounted { void** vtable; int refCount; };
-struct C3DAnimationBlendState { char pad0[0xc]; RefCounted* handle; };
+class C3DAnimationBlendState { public: char pad0[0xc]; RefCounted* handle; };
 
 static int g_destroyed = 0;
 static int g_base_called = 0;

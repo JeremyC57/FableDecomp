@@ -13,12 +13,12 @@
 // Label correction: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` is propagated.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long m_refCount;                            // +0x04
 };
-template<class T> struct CIVCountedPointer {    // intrusive counted pointer (4 bytes)
+template<class T> class CIVCountedPointer { public:    // intrusive counted pointer (4 bytes)
     T* m_pObject;
     __forceinline CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject)
     {
@@ -26,10 +26,10 @@ template<class T> struct CIVCountedPointer {    // intrusive counted pointer (4 
             ++m_pObject->m_refCount;
     }
 };
-struct CDefString { long TablePos; };
-struct CAnimComponentMap : CIVCountedPointeeBase { };
+class CDefString { public: long TablePos; };
+class CAnimComponentMap : public CIVCountedPointeeBase { public: };
 
-struct CAnimationEntry {                        // PDB layout, 0x10 bytes
+class CAnimationEntry { public:                        // PDB layout, 0x10 bytes
     long BankIndex;                             // +0x00
     CDefString AnimName;                        // +0x04
     CDefString GroupName;                       // +0x08

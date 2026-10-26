@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThingPhysicsMeshInfo { int dummy; };
-struct CThing { unsigned long Flags; };
+class CThingPhysicsMeshInfo { public: int dummy; };
+class CThing { public: unsigned long Flags; };
 static CThingPhysicsMeshInfo g_info;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     CThing* sub;
     int calls;
     int answer[2];                          // results of the first and second slot-93 calls

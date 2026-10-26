@@ -11,15 +11,15 @@
 // FrameToNextCheckIfWeNeedToCreateAnything +0x34); the parent thing is CTCBase +4; the def's byte +0x26 asks for eviction.
 // Shape: the stats lookup has an unchecked result (the miss path reads the never-written out local, which shares the
 // dead `owned` slot with the key); the world is a named local read before the position for the stats call.
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -40,46 +40,46 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                      // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 CPlayerManager* GetPlayerManager();                 // 0x00686D40
 long __fastcall GFGetCurrentFrame();                // 0x0049D870
 
-struct CRegion;
-struct CWorldMap {
+class CRegion;
+class CWorldMap { public:
     long GetCurrentRegionNumber();                  // 0x004FB150
     CRegion& GetRegion(long region);                // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();               // slot 13 (+0x34)
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void AddHousePosition(const CRegion& region, const C3DVector& pos);      // 0x0057CB4B
     void RemoveHousePosition(const CRegion& region, const C3DVector& pos);   // 0x0057ADF7
 };
-template<class T> struct CIntelligentPointer {
+template<class T> class CIntelligentPointer { public:
     void* m_pHandle;
     void* m_pExtra;
     T* GetPItem() const;                            // 0x00A01B50
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                        // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
-struct CBuyableHouseDef {
+class CBuyableHouseDef { public:
     unsigned char _pad00[0x26];
     bool          EvictOnSale;                      // +0x26
 };
 
-struct CTCBuyableHouse {
+class CTCBuyableHouse { public:
     void*            __vftable;                     // +0x00
     CThing*          Thing;                         // +0x04 CTCBase parent thing
     unsigned char    _pad08[0x4];

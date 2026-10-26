@@ -3,13 +3,13 @@
 // Callees: CCreatureActionBase::CCreatureActionBase(const CCreatureActionBase&) @ 0x0062EBC0 (out-of-line base copy constructor).
 // Shape: `ret 4`; the source rides in edi; the vtable store follows the base copy, then the six members in declaration order
 // (bytes through al/cl/dl, the loop count as a dword) -- the explicit memberwise copy constructor (used by Clone).
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);   // 0x0062EBC0
 };
 
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {   // vtable 0x01273A0C; members = engine header names (PDB +0xb4.. sit 0xc high)
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:   // vtable 0x01273A0C; members = engine header names (PDB +0xb4.. sit 0xc high)
     bool UseAnimationMovement;              // +0xa8
     bool UsePhysics;                        // +0xa9
     bool StayOnLastFrame;                   // +0xaa

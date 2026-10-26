@@ -6,7 +6,7 @@ namespace N_0099b720 { struct CWideString {
     CWideString(const char* s) { p = (char*)s; }
 }; } using N_0099b720::CWideString;
 
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     char pad[0x18];
     char name[4];
     CWideString GetPathname() const;

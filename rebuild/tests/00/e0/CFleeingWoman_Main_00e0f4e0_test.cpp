@@ -3,10 +3,10 @@
 #include <cstring>
 static char g_log[4096];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CDef { int trigger; int talk; float fade; };
 static CDef g_def;
-struct CGame {
+class CGame { public:
     const char* dist;   // script of answers for IsDistanceBetweenThingsUnder: 'y' / 'n'
     int distIdx;
     int busy;           // IsPerformingScriptTask answers true this many times first

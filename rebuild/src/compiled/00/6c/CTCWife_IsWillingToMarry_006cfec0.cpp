@@ -6,7 +6,7 @@
 // retail +0x91 (header +0x95: the retail object sits 4 bytes below the PDB past the GiftsReceived map). The owner thing's
 // flag byte +0x1c9 bit 4 must be set.
 // Shape: `if (a && b && c && d && e) return true; return false;` -- shared `mov al,1` / `xor al,al` tails.
-struct CThing {
+class CThing { public:
     unsigned char _pad_00[0x1c9];
     unsigned char m_flags1c9;                               // +0x1c9 (bit 4: may marry)
 };
@@ -15,9 +15,9 @@ enum EOpinionAttitudeType { OPINION_ATTITUDE_LOVE = 12 };
 
 extern const float g_zero;                                  // 0x0122DEDC (0.0f)
 
-struct CThingBuilding;
+class CThingBuilding;
 
-struct CTCWife {                                            // retail layout: engine/CTCWife.h up to the GiftsReceived map,
+class CTCWife { public:                                            // retail layout: engine/CTCWife.h up to the GiftsReceived map,
     void*                __vftable;                         // +0x00   4 bytes below the PDB after it (12-byte retail map)
     CThing*              ParentThing;                       // +0x04
     bool                 ToBeRemoved;                       // +0x08

@@ -41,7 +41,7 @@ struct CResourcePageVector {
     CResourcePage& operator[](long n) { return *(begin() + n); }
 };
 static int g_freed = 0; static long g_freedSlots[8]; static CResourcePage* g_page = 0;
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     unsigned char       Resources[0x0c];
     CResourcePageVector MemoryPages;
     unsigned char       ScratchPools[0x0c];

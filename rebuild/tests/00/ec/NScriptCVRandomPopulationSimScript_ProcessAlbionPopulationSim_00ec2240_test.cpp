@@ -14,7 +14,7 @@ static const RegionDef* FindDef(const std::string& n)
     return 0;
 }
 static std::string Upper(std::string s) { for (unsigned i = 0; i < s.size(); ++i) if (s[i] >= 'a' && s[i] <= 'z') s[i] = (char)(s[i] - 32); return s; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int frame; const char* const* loads; bool bounty;
     bool MsgOnRegionLoaded(std::string& r) { if (loads[frame]) { r = loads[frame]; return true; } return false; }
     bool IsQuestActive(const std::string& q) { return q == "Q_BountyHunt" && bounty; }

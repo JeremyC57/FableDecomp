@@ -6,7 +6,7 @@ struct CMemberDef {
     void Copy_00461bb7(const CMemberDef* other);
 };
 
-struct CCombatAbilityFlourishCounterAttackDef {
+class CCombatAbilityFlourishCounterAttackDef { public:
     unsigned char _base[0x28];
     CMemberDef m_member; // at +0x28
     unsigned char _tail[0x18 - sizeof(CMemberDef)];

@@ -16,7 +16,7 @@
 // No engine header exists for the class: modelled locally from struct_layouts_egor.tsv.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                                            // +0x04..+0x28
     CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
@@ -45,12 +45,12 @@ struct CRetailTree_004ec28c {                                             // ret
     CRetailTree_004ec28c& operator=(const CRetailTree_004ec28c& other);   // 0x004EC219
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);                     // 0x0099EFB0
 };
 
-struct CObjectAugmentationsDef : CDefClassBase {                          // vtable 0x01243974
+class CObjectAugmentationsDef : public CDefClassBase { public:                          // vtable 0x01243974
     long                 NumberOfSlots;                                   // +0x28
     long                 MaximumNumberOfSlots;                            // +0x2c
     CRetailTree_004ec3b1 AugmentationParticles;                           // +0x30

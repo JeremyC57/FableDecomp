@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-struct CCPPointerInfo { long RefCount; };
+class CCPPointerInfo { public: long RefCount; };
 struct CCountedPointerFileInfo {
     void* Data; CCPPointerInfo* Info;
     CCountedPointerFileInfo(void* d, CCPPointerInfo* i) : Data(d), Info(i) { }

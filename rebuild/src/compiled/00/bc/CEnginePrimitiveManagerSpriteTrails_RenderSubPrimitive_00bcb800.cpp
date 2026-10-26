@@ -230,8 +230,8 @@ struct CShaderEnableSaver {
         g_ShaderRenderManager.SetPixelShadersEnabled(m_pixelShaders);
     }
 };
-struct CVertexShader;
-struct CShaderRenderManager {
+class CVertexShader;
+class CShaderRenderManager { public:
     void ApplyVertexShader(CVertexShader* shader, bool force);   // 0x00988020
     void ResetWorldTransform();                    // 0x00988290
 };
@@ -253,7 +253,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void* object);
     void* m_pObject;
 };
-struct CTexture {
+class CTexture { public:
     IDirect3DBaseTexture9* m_pD3DTexture;          // +0x00
 };
 struct CCountedPointer_CTexture {
@@ -272,7 +272,7 @@ struct CCountedPointer_CTexture {
         m_pCount = 0;
     }
 };
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned long            ReferenceCount;       // +0x00
     void*                    Data;                 // +0x04
     CCountedPointer_CTexture PTexture;             // +0x08
@@ -285,7 +285,7 @@ struct CGraphicFrameData {
             Uninitialise();
     }
 };
-struct CGraphicFrame {
+class CGraphicFrame { public:
     CGraphicFrameData* FrameData;
     CGraphicFrame() : FrameData(0) { }
     __forceinline ~CGraphicFrame()
@@ -301,7 +301,7 @@ struct CGraphicFrame {
         }
     }
 };
-struct CGraphicInfo {                              // 0x2c bytes
+class CGraphicInfo { public:                              // 0x2c bytes
     unsigned char _pad[0x2c];
     bool GetFrame(CGraphicFrame* frame, unsigned long frameIndex, unsigned long a, unsigned long b);   // 0x009FF8D0
 };
@@ -329,16 +329,16 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
-struct CEngineInternalPrimitiveSpriteTrail {
+class CEngineInternalPrimitiveSpriteTrail { public:
     unsigned char _pad00[0x4c];
     unsigned long BankIndex;                       // +0x4c
     unsigned long FrameIndex;                      // +0x50
 };
-struct CEngineSubPrimitiveBase {
+class CEngineSubPrimitiveBase { public:
     unsigned char _pad00[0xc];
     CEngineInternalPrimitiveSpriteTrail* m_pPrimitive;   // +0x0c
 };
-struct CEnginePrimitiveManagerSpriteTrails {
+class CEnginePrimitiveManagerSpriteTrails { public:
     void*         SceneList;                       // +0x04
     bool          Enable;                          // +0x08
     struct { void* _vptr; void* Data; } VertexShader;   // +0x0c CVertexShader

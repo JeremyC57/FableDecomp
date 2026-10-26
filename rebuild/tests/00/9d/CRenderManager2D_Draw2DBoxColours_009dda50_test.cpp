@@ -3,8 +3,8 @@
 // Model of CRenderManager2D::Draw2DBoxColours: the box edges are converted to screen space, the four corners (TL, TR,
 // BR, BL) take their own ARGB colour, Z 0, UV 0 and the screen RHW; flag 1 picks blend mode 3, else flag 2 picks 2,
 // else 1; two triangles (0,1,2) and (0,2,3) are queued and the call returns true.
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour {
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     unsigned long GetARGB() const { return (((((unsigned long)A << 8) | R) << 8 | G) << 8) | B; }
 };

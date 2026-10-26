@@ -2,8 +2,8 @@
 // Standard MSVC scalar/deleting destructor thunk shape:
 //   save this; call real dtor; if(flags&1) operator delete(this); return this;
 
-struct CInputProcessInventoryMapScreen
-{
+class CInputProcessInventoryMapScreen
+{ public:
     void Destroy();  // the real (scalar) destructor body @ 0xa0d3d0
     void* ScalarDeletingDestructor(unsigned int flags);
 };

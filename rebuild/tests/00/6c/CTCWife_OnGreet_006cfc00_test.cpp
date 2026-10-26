@@ -2,8 +2,8 @@
 static long g_frame = 100;
 static int g_posted = 0; static long g_deed = 0;
 struct CLog { void PostDeed(long d, const float* pos, void* t, void* c, long type) { (void)pos; (void)t; (void)c; (void)type; ++g_posted; g_deed = d; } };
-struct CThing { bool dead; CLog* log; unsigned char flags6c; float pos[3]; };
-struct CTCWife {
+class CThing { public: bool dead; CLog* log; unsigned char flags6c; float pos[3]; };
+class CTCWife { public:
     CThing* parent; CThing* hero; long married;
     void OnGreet() {
         if (married > g_frame) return;

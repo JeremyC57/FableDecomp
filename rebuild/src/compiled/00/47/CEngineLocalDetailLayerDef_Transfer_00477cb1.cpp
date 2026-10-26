@@ -4,12 +4,12 @@
 struct SubA { int a; };
 struct SubB { int b; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA(SubA* obj);   // __fastcall: ecx=this(persist), obj on stack
     void PersistB(SubB* obj);
 };
 
-struct CEngineLocalDetailLayerDef {
+class CEngineLocalDetailLayerDef { public:
     char pad[0x3c];
     SubA m3c;   // at +0x3c
     char pad2[0x48 - 0x3c - (int)sizeof(SubA)];

@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static int g_stringCtors = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString() : m_text("") { ++g_stringCtors; }
 };

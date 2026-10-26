@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_SpiritReturnToHero {
+class CCreatureAction_SpiritReturnToHero { public:
     void* vftable;
     int destroyed;
 };

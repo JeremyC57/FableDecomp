@@ -10,7 +10,7 @@ struct CCountedPointer_CSkeletalMorph {
     }
 };
 static int g_calcs = 0;
-struct CTCSkeletalMorph {
+class CTCSkeletalMorph { public:
     bool m_dirty; CCountedPointer_CSkeletalMorph m_pSkeletalMorph;
     CTCSkeletalMorph(CSkeletalMorph* o, long* c) : m_dirty(true), m_pSkeletalMorph(o, c) { }
     void CalculateSkeletalMorph() { ++g_calcs; }

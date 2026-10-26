@@ -17,7 +17,7 @@ struct CArrayChar {                                // CArray<char> (STLport vect
     void resize(unsigned long newSize, const char& fill = char());   // 0x004122D0
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     virtual void v00();
     void*         m_lineTerminator;                // +0x04 CCharString
     CArrayChar    Data;                            // +0x08

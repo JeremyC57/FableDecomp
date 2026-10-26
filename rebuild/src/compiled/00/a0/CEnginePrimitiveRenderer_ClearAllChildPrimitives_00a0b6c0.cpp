@@ -5,9 +5,9 @@ struct Child;
 struct ChildVtbl { void (__fastcall *slot0)(Child* self); };
 struct Child { ChildVtbl* vtbl; };
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     char pad[0x10];
     Child* child;   // +0x10
 };

@@ -2,9 +2,9 @@
 // to null without one, and the counted info blocks are released (deleter run once the last reference goes).
 #include <cstdio>
 static int g_deleted = 0, g_freed = 0;
-struct CCPPointerInfo { unsigned long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: unsigned long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static void DeleteData(void*) { ++g_deleted; }
-struct CBaseClass { virtual ~CBaseClass() {} };
+class CBaseClass { public: virtual ~CBaseClass() {} };
 struct CCountedScriptImp {
     void* Data; CCPPointerInfo* Info;
     ~CCountedScriptImp()
@@ -16,7 +16,7 @@ struct CCountedScriptImp {
         Data = 0; Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
     CCountedScriptImp PImp;
     CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
     CScriptThing(void* data) { PImp.Data = data; PImp.Info = new CCPPointerInfo; PImp.Info->RefCount = 1; PImp.Info->DeleteFunc = DeleteData; PImp.Info->Data = data; }
@@ -30,10 +30,10 @@ struct CScriptThing : CBaseClass {
         return *this;
     }
 };
-struct CThing { int id; CScriptThing GetScriptThing() { return CScriptThing(this); } };
-struct CPlayer { CThing* hero; CThing* GetHeroThing() { return hero; } };
-struct CPlayerManager { CPlayer* player; CPlayer* GetMainPlayer() { return player; } };
-struct CGameScriptInterface {
+class CThing { public: int id; CScriptThing GetScriptThing() { return CScriptThing(this); } };
+class CPlayer { public: CThing* hero; CThing* GetHeroThing() { return hero; } };
+class CPlayerManager { public: CPlayer* player; CPlayer* GetMainPlayer() { return player; } };
+class CGameScriptInterface { public:
     CPlayerManager* PlayerManager;
     CScriptThing Hero;
     CScriptThing& GetHero();

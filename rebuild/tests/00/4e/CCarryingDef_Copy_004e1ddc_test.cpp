@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_baseCopies = 0, g_vecCopies = 0;
-struct CDefClassBase { virtual void v00() {} unsigned char _body[0x24]; void Copy(const CDefClassBase& o) { ++g_baseCopies; _body[3] = o._body[3]; } };
+class CDefClassBase { public: virtual void v00() {} unsigned char _body[0x24]; void Copy(const CDefClassBase& o) { ++g_baseCopies; _body[3] = o._body[3]; } };
 struct CLongVector { long* m_pFirst; long* m_pLast; long* m_pEnd; CLongVector& operator=(const CLongVector& o) { ++g_vecCopies; m_pFirst = o.m_pFirst; m_pLast = o.m_pLast; m_pEnd = o.m_pEnd; return *this; } };
-struct CCarryingDef : CDefClassBase { CLongVector AvailableCarrySlots; long OverriddenDummyObject_TablePos;
+class CCarryingDef : public CDefClassBase { public: CLongVector AvailableCarrySlots; long OverriddenDummyObject_TablePos;
     void Copy(const CCarryingDef& o) { CDefClassBase::Copy(o); AvailableCarrySlots = o.AvailableCarrySlots; OverriddenDummyObject_TablePos = o.OverriddenDummyObject_TablePos; } };
 
 int main()

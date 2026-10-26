@@ -2,11 +2,11 @@
 struct Field { unsigned char b[4]; };
 static int g_calls = 0;
 static void* g_last = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA(void* p){ g_calls++; g_last = p; }
     void PersistB(void* p){ g_calls++; g_last = p; }
 };
-struct CContextSensitiveItemDef {
+class CContextSensitiveItemDef { public:
     unsigned char _pad[0x28];
     Field f0;
     Field f1;

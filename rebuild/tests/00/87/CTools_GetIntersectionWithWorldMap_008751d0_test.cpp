@@ -3,7 +3,7 @@
 static int g_fail = 0;
 static void check(bool c, int line) { if (!c) { if (!g_fail) std::printf("check failed at line %d\n", line); g_fail = 1; } }
 #define CHECK(c) check((c), __LINE__)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -14,7 +14,7 @@ struct C3DVector {
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 // A wall at x = 3: a segment hits when it reaches x >= 3.
-struct CWorldMap {
+class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector* p) const { return C3DVector(-1.0f, 0.0f, p->Z); }
 };
 static CWorldMap g_map;

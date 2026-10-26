@@ -2,12 +2,12 @@
 
 static int g_baseCopies = 0;
 static int g_vectorCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual ~CParentDefClassBase() {}
     int m_base;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { m_base = o.m_base; ++g_baseCopies; return *this; }
 };
-struct CCameraModeDef : CParentDefClassBase {          // vtable 0x01233B7C
+class CCameraModeDef : public CParentDefClassBase { public:          // vtable 0x01233B7C
     long CameraMode;
     float StringLengthXY;
     float CageRadius;

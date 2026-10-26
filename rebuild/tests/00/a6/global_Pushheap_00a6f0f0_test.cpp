@@ -3,7 +3,7 @@
 #include <cstring>
 // CCharString stand-in: a pointer to static text (null = empty string); `<` follows the retail
 // inline operator< (same payload -> false, null this -> true, null other -> false, else strcmp).
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData(0) { }
     explicit CCharString(const char* s) : PStringData(s) { }
@@ -17,8 +17,8 @@ struct CCharString {
     bool FastCompare(const CCharString& other) const { return *this < other; }
     bool operator==(const CCharString& other) const { return !(*this < other) && !(other < *this); }
 };
-struct C3DVector { float X, Y, Z; };
-struct C3DHelperPoint { C3DVector Position; int BoneIndex; };
+class C3DVector { public: float X, Y, Z; };
+class C3DHelperPoint { public: C3DVector Position; int BoneIndex; };
 template<class T1, class T2> struct pair {
     T1 first;
     T2 second;

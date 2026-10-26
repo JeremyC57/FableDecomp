@@ -10,14 +10,14 @@
 // after the base call, the CSoundPair() temporary is zeroed through ecx after the first two pushes, and the owner for the
 // call's `this` is fetched after the temporary is built.
 // Layout: owner CIntelligentPointer +8.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -36,7 +36,7 @@ struct CThing {
     }
 };
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 struct CTCInterface9 {                          // the owner's interface-9 component (descriptive)
@@ -44,14 +44,14 @@ struct CTCInterface9 {                          // the owner's interface-9 compo
     bool          m_flag10;                     // +0x10
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase;
-struct CThingCreatureBase : CThing {
+class CCombatActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 
@@ -61,7 +61,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -77,12 +77,12 @@ struct CCombatActionBase {
     }
 };
 
-struct CCreatureAction_TentacleIdle : CCombatActionBase {   // vtable 0x01284DAC
+class CCreatureAction_TentacleIdle : public CCombatActionBase { public:   // vtable 0x01284DAC
     virtual void v00();
     CCreatureAction_TentacleIdle(CThingCreatureBase* owner) : CCombatActionBase(owner, 50, CSoundPair()) { }
 };
 
-struct CCreatureAction_TentacleRise : CCombatActionBase {
+class CCreatureAction_TentacleRise : public CCombatActionBase { public:
     void FinishAction();
 };
 

@@ -7,7 +7,7 @@
 // CWideString::CWideString(const CWideString&) @ 0x0099B720 from the empty-string global 0x013BCA24.
 // Shape: the inline IsThingAlive test (null, dead bit 0 of +0x91) and the bitset test share the empty-string arm; the
 // GetInterface key is homed in the dead `thing` slot.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);      // 0x0099B720
 };
@@ -42,7 +42,7 @@ public:
 };
 inline bool IsThingAlive(const CThing* thing) { return thing && !thing->Dead; }
 
-struct CTCQuestCard {                           // interface type 0x6C
+class CTCQuestCard { public:                           // interface type 0x6C
     CWideString GetQuestName() const;           // 0x00702310
 };
 

@@ -12,18 +12,18 @@
 //   object pointers as a `setb` bool; every exit returns a byte bool (`mov al,1` / `xor al,al`). The two physical sort
 //   keys are NAMED locals: that makes VC7.1 finish x's chain (`mov ecx,[eax+28h] ; mov edx,[ecx+14h]`) before it loads
 //   y (the member-expression form loads y's address first and walks x's chain through edx).
-struct CThreadedFile {
+class CThreadedFile { public:
     unsigned char _pad00[0x14];
     unsigned long PhysicalSortKey;             // +0x14
 };
-struct CThreadedFileObjectDesc {
+class CThreadedFileObjectDesc { public:
     void*         PDst;                        // +0x00
     unsigned long FilePos;                     // +0x04
     unsigned char _pad08[0x10];
 };
 class CThreadedFileManager {
 public:
-    struct CFileObject {
+    class CFileObject { public:
         CThreadedFileObjectDesc Desc;          // +0x00
         unsigned long  UID;                    // +0x18
         long           LoadingStatus;          // +0x1C

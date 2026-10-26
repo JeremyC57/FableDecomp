@@ -7,14 +7,14 @@
 // Shape: the route component is deliberately unset when the interface is absent (retail reads a dead slot), the
 // navigation component is kept in ebx; the creature is re-read into a named local before the setup call (retail loads
 // it ahead of the argument calls, reusing the `this` register).
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
     struct SEntry { long type; CTCBase* component; };
@@ -24,8 +24,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -57,8 +57,8 @@ struct CThing
     }
 };
 
-struct CTCPreCalculatedNavigationRoute              // interface type 0xA6
-{
+class CTCPreCalculatedNavigationRoute              // interface type 0xA6
+{ public:
     unsigned char _pad00[0x20];
     C3DVector RouteStart;                           // +0x20
     bool HasRoute();                                // 0x00800500
@@ -70,14 +70,14 @@ struct CTCNavigation                                // interface type 7
     void SetUpRoute(const C3DVector& from, const C3DVector& start, const C3DVector& destination);   // 0x006CB9C0
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad[0x18];
     CThing* Creature;                               // +0x18
 };
 
-struct CAIStateGroupBase
-{
+class CAIStateGroupBase
+{ public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08

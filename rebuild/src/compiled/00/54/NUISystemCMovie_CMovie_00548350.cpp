@@ -10,7 +10,7 @@
 // Shape: three vtable stores, then the members in declaration order: the Playing flag, the handle (out-of-line CBaseClass ctor,
 //   its own vtable and the null Data), the string and playback ctors, the AttempToPlay flag; the body only re-reads the def
 //   (the user copy constructor copies none of the movie's own members and leaves the engine global alone).
-struct CIEngine;
+class CIEngine;
 
 class CBaseClass {                                 // vtable 0x01231710
 public:
@@ -18,7 +18,7 @@ public:
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
 };
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 class CIVCountedPointer {
 public:
     CEnginePersistentPrimitiveBase* Object;
@@ -30,11 +30,11 @@ public:
     virtual void v001();
     CEnginePrimitiveHandle() { }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
 };
-struct CXMVPlaybackInfo {
+class CXMVPlaybackInfo { public:
     unsigned char _data[0x18];
     CXMVPlaybackInfo();                            // 0x009BC7D0
 };
@@ -50,12 +50,12 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-struct CDraggableInto : CComponentInterface, CDrawableInterface, CDraggableInterface {
+class CDraggableInto : public CComponentInterface, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x15c - 0x1c];
     CDraggableInto(long id);                       // 0x0052CC50
     CDraggableInto(const CDraggableInto& other);   // 0x0052CCA0
 };
-struct CMovie : CDraggableInto {
+class CMovie : public CDraggableInto { public:
     bool                   Playing;                // +0x15c
     CEnginePrimitiveHandle Handle;                 // +0x160
     unsigned long          Width;                  // +0x168

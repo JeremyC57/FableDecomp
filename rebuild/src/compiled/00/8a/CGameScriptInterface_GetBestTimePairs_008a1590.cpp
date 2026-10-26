@@ -7,7 +7,7 @@
 // CTCHeroStats retail = Ego_r.pdb minus 8 through +0x118 (12-byte STLport map and vector), minus 0x18 after the four vectors
 // (Age +0x30, Stamina +0x58, RenownLevel +0x70, Attractiveness +0x9c, BestTimePairs +0x178, Marriages +0x1d8); engine/CTCHeroStats.h
 // carries the PDB offsets.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

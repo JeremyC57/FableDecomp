@@ -10,8 +10,8 @@
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (stage +0x4c, counter +0x60).
 // Shape: the respawn test goes through an inline helper taking const CScriptThing& (BothGone), so its IsAlive calls stay
 //   virtual; the first test on the locals is devirtualised and the inline IsAlive expands.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -35,9 +35,9 @@ struct CCountedPointer {
     void*            Info;
     CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580
 };
-struct CBaseClass {
+class CBaseClass { public:
 };
-struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     virtual void t0(); virtual void t1(); virtual void t2(); virtual void t3(); virtual void t4(); virtual void t5();
     virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
     virtual void t07(); virtual void t08(); virtual void t09(); virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14();
@@ -57,15 +57,15 @@ struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 
     float GetHeading() const { return !PImp.Data ? -1.0f : PImp.Data->GetHeading(); }
 };
 namespace NScript {
-struct CPredicateBase { virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; };
-struct CIsThingAlive : CPredicateBase {                // vtable 0x012C32F0
+class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; };
+class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;
     __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
     ~CIsThingAlive() { }
 };
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

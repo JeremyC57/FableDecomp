@@ -1,4 +1,4 @@
-struct CTCMapwho;
+class CTCMapwho;
 // Leaf: OnDie
 extern "C" void __fastcall CTCMapwho_dtor(CTCMapwho* self);
 extern "C" void __cdecl fable_opdel(void* p);

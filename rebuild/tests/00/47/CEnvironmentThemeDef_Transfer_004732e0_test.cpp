@@ -1,6 +1,6 @@
 // behaviour test for 004732e0 CEnvironmentThemeDef::Transfer: 34 members persisted in declaration order with the right overload
 #include <cstdio>
-struct CPersistContext {
+class CPersistContext { public:
     char kinds[64];
     void* addrs[64];
     int n;
@@ -9,7 +9,7 @@ struct CPersistContext {
     void Transfer(bool& v)  { kinds[n] = 'b'; addrs[n++] = &v; }
     void Transfer(long& v)  { kinds[n] = 'l'; addrs[n++] = &v; }
 };
-struct CEnvironmentThemeDef {
+class CEnvironmentThemeDef { public:
     float TimeOfDay; bool MoonLit; float FogStartZ, FogEndZ; long SkyTexture0, SkyTexture1; float SkyTexture1Blend;
     long CloudLowerLayerTexture0, CloudLowerLayerTexture1; float CloudLowerLayerTexture1Blend, CloudLowerLayerSpeedMultiplier;
     long CloudUpperLayerTexture0, CloudUpperLayerTexture1; float CloudUpperLayerTexture1Blend, CloudUpperLayerSpeedMultiplier;

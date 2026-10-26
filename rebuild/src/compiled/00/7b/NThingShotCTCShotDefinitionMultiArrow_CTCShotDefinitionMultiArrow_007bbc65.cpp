@@ -10,16 +10,16 @@
 // (x, y, z) constructor (`lea eax,[esi+9Ch]` before the vtable store, three `fldz ; fstp`); StraightArrow is an
 // initialiser; the base's MultiArrowShotType is a body assignment, stored last.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
 namespace NThingShot {
 
-struct CTCShotDefinitionBase {
+class CTCShotDefinitionBase { public:
     virtual void v00();
     unsigned char _body[0x98 - 4];           // CTCBase + the shot fields (retail 0x9c bytes)
     bool          MultiArrowShotType;        // +0x98 (PDB +0x9c)
@@ -27,7 +27,7 @@ struct CTCShotDefinitionBase {
     CTCShotDefinitionBase(CThing* parent);   // 0x007BF460
 };
 
-struct CTCShotDefinitionMultiArrow : CTCShotDefinitionBase {
+class CTCShotDefinitionMultiArrow : public CTCShotDefinitionBase { public:
     C3DVector     Acceleration;              // +0x9c
     float         MaxCosAngleToTurn;         // +0xa8
     float         MaxAngleToTurn;            // +0xac

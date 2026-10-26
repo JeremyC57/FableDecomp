@@ -2,15 +2,15 @@
 // thing falls back to the keeper's own thing; null when the chosen thing has no shop interface.
 #include <cstdio>
 #include <cstring>
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -28,8 +28,8 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CThing* GetPItem() const { return (CThing*)m_pItem; }
 };
-struct CTCShop { int id; };
-struct CTCShopKeeper {
+class CTCShop { public: int id; };
+class CTCShopKeeper { public:
     virtual void v00() { }
     CThing* ParentThing;
     bool ToBeRemoved;

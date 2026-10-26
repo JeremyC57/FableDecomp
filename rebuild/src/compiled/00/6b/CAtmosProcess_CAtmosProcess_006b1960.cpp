@@ -19,33 +19,33 @@
 // Shape: all members in the initialiser list (one zero register); the def lookup is the landed CMusicManager ctor's
 //   block-scoped "MAIN_SOUND_SETUP" string with the chained `Get().GetDef(name, def)`; the def is released by hand
 //   without a null test after the two loaders.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CSoundDef : CDefPointeeBase {
+class CSoundDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x78 - 0x08];
     float AtmosListenerDampingMin;              // +0x78
     float AtmosListenerDampingRange;            // +0x7c
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();                                    // 0x0044C6B0
     template <class T> bool GetDef(const CCharString& name, CDefPointer<T>& out);   // 0x004196B2 for T = const CSoundDef
 };
 
-struct C2DCoordI;
+class C2DCoordI;
 struct CMyAtmosMap {                            // CAtmosProcess::CMyAtmosMap, vtable 0x0125D47C
     virtual long GetBlockValue(const C2DCoordI& block);     // 0x006B1580
     virtual float GetBlockHeight(const C2DCoordI& block);   // 0x006B15C0
@@ -64,14 +64,14 @@ public:
 };
 extern CSoundSystem* g_pSoundSystem;            // 0x013B8394
 
-struct CBaseObject;
+class CBaseObject;
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A860
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A860
     virtual void v00();
     CIntelligentPointer() { }
 };

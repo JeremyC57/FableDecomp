@@ -17,38 +17,38 @@ struct CDefBase {
     long RefCount;
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CHeroAbilityDef : CDefBase {
+class CHeroAbilityDef : public CDefBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long Ability;
     unsigned char _pad40[0x94 - 0x40];
     bool Aggressive;
 };
 static CHeroAbilityDef g_defs[4]; static long g_count = 0; static int g_countCalls = 0; static int g_getDef = 0; static long g_lastIndex = -1;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();
     long GetNumberOfDefsOfType(const CCharString& typeName) { ++g_countCalls; return g_count; }
     bool GetDef_005f89f2(const CCharString& typeName, long index, CDefPointer<CHeroAbilityDef>& out) { ++g_getDef; g_lastIndex = index; ++g_defs[index].RefCount; out.Object = &g_defs[index]; return true; }
 };
 static CDefinitionManager g_manager;
 CDefinitionManager& __fastcall CDefinitionManager::Get() { return g_manager; }
-struct CHitParameters { int tag; };
-struct CCPPointerInfo;
+class CHitParameters { public: int tag; };
+class CCPPointerInfo;
 namespace NEntityEvents {
 static int g_baseCtor = 0; static const CHitParameters* g_baseParams = 0;
-struct CEventHitBase {
+class CEventHitBase { public:
     virtual void v00() {}
     long WorldFrame;
     CHitParameters* PHitParams_Data;
     CCPPointerInfo* PHitParams_Info;
     CEventHitBase(const CHitParameters& params) : WorldFrame(77), PHitParams_Data((CHitParameters*)&params), PHitParams_Info(0) { ++g_baseCtor; g_baseParams = &params; }
 };
-struct CEventHitBySpecialAbility : CEventHitBase {
+class CEventHitBySpecialAbility : public CEventHitBase { public:
     long Ability;
     bool Aggressive;
     virtual void v00() {}

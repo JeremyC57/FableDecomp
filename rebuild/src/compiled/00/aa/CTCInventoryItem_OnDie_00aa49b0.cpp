@@ -4,8 +4,8 @@
 
 void __cdecl free_target(void* p);        // 0xbfea14  operator delete(void*)
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     char pad0[0x10];
     void* m_ptr;          // +0x10
     void BaseOnDie_00aa75c0();     // 0xaa75c0  __fastcall base method

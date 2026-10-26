@@ -62,7 +62,7 @@ bool CThingInner::v70(){return false;} bool CThingInner::v71(){return false;}
 bool CThingInner::v72(){return false;} bool CThingInner::v73(){return false;}
 bool CThingInner::v74(){return false;}
 
-struct CScriptThing {
+class CScriptThing { public:
     void*        pad0;
     CThingInner* thing;
     virtual bool IsAlive() const;

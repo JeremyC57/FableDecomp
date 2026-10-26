@@ -13,14 +13,14 @@
 // Layout: engine/CAIStateGroupBase.h (PBrain +4). The pick-up action's CIntelligentPointer member sits at +0xA8.
 #include "engine/CAIStateGroupBase.h"
 
-struct CThing;
-struct CThingCreatureBase;
-struct CCharString {
+class CThing;
+class CThingCreatureBase;
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -30,13 +30,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     ~CBaseIntelligentPointer();                         // 0x00A01C10
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                             // 0x00693EF0
 };
 enum EPickUpMode { PICK_UP_MODE_28 = 0x28 };
-struct CCreatureAction_PickUpThingAtTable : CCreatureActionBase {
+class CCreatureAction_PickUpThingAtTable : public CCreatureActionBase { public:
     CBaseIntelligentPointer PThing;                     // +0xa8
     CCreatureAction_PickUpThingAtTable(CThingCreatureBase* creature, CThing* thing, const CCharString& anim,
         EPickUpMode mode);                              // 0x008440C0
@@ -46,7 +46,7 @@ struct CCreatureAction_PickUpFoodAtTable : CCreatureAction_PickUpThingAtTable { 
         : CCreatureAction_PickUpThingAtTable(creature, food, "ST_SAT_EATING_INTO", PICK_UP_MODE_28) { }
     virtual void v00();
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
@@ -54,7 +54,7 @@ struct CCreatureAction_PlayAnimation : CCreatureActionBase {
 namespace N_0096c820 { struct CCreatureAction_PutDownTankard : CCreatureAction_PlayAnimation {
     CCreatureAction_PutDownTankard(CThingCreatureBase* creature);           // 0x0096C820
 }; } using N_0096c820::CCreatureAction_PutDownTankard;
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                      // +0x18
 };

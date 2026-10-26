@@ -2,12 +2,12 @@
 #include <cstring>
 
 // --- test harness: a scripted world advanced one frame per NewScriptFrame ---
-struct CThing {
+class CThing { public:
     int id;                 // 0 = none, 1 = hero, 2 = Me, 3+ = named things
     CThing() : id(0) {}
     explicit CThing(int i) : id(i) {}
 };
-struct CWorld {
+class CWorld { public:
     int frame;
     int terminateAt;        // IsActiveThreadTerminating() turns true from this frame on (-1 = never)
     float heroDistance[64]; // hero distance per frame

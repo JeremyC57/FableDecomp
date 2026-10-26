@@ -13,12 +13,12 @@
 // Model: rebuild/include/engine/CPhysicsFacesSegmentBranch.h flattens the vptr into a `void*`
 // member, which cannot produce the vtable stores, so the class is modelled locally with the same
 // PDB member names and offsets (ChildDividingPlane +0x04, PositiveChild +0x14, NegativeChild +0x18).
-struct CPlane {
+class CPlane { public:
     float m_normal[3];
     float m_distance;
 };
 
-struct CIPhysicsFacesSegmentBase {
+class CIPhysicsFacesSegmentBase { public:
     virtual unsigned char HasChildren() = 0;   // slot 0
     virtual long Sizeof() = 0;                 // slot 1
     virtual long GetNoFaces() = 0;             // slot 2

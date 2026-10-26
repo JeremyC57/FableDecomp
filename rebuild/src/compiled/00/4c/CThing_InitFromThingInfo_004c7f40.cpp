@@ -20,7 +20,7 @@ struct CBasicStringChar {                             // CBasicString<char>, 13 
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;          // 0x004115A0
 };
-struct CCharStringData {                              // 17 bytes
+class CCharStringData { public:                              // 17 bytes
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -30,23 +30,23 @@ class CCharString {
 public:
     CCharStringData* PStringData;
 };
-struct CThingBaseDef;
+class CThingBaseDef;
 struct CDefPointer { const CThingBaseDef* Object; };  // CDefPointer<const CThingBaseDef>
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
     bool GetDef(long index, CDefPointer* out);        // 0x0042AF3C
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x20];
     CDefinitionManager* DefinitionManager;            // +0x20 (PDB +0x2c)
 };
 extern CThingManager* g_pThingManager;                // 0x013B8A1C
-struct CThingInfo {
+class CThingInfo { public:
     unsigned __int64 UniqueID;                        // +0x00
     CCharString      DefName;                         // +0x08
     signed char      Player;                          // +0x0c
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                        // +0x18
     unsigned char    _pad20[0x70 - 0x20];

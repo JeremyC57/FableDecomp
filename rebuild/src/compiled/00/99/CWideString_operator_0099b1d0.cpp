@@ -11,7 +11,7 @@
 // model with the same single storage pointer is used (CWideStringData: text +0).
 #include <wchar.h>    // wcscmp, MSVCR71 import thunk 0x00BFE94C (wchar_t is the unsigned short typedef under VC7.1)
 
-struct CWideStringData {
+class CWideStringData { public:
     wchar_t*      text;                // +0x00
     unsigned long unknown04;           // +0x04
     unsigned long unknown08;           // +0x08

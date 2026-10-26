@@ -7,7 +7,7 @@
 // user copy constructor, so each is built in its reserved argument slot (`push ecx ; mov eax,esp ; mov [eax],edx`).
 // The functor returned by for_each (non-POD -> hidden pointer) is dropped; its temporary reuses the argument slot
 // (`lea ecx,[esp+10h]`). The retail list is the one-pointer VC6-era Dinkumware list (landed ctor 0x004DDAED).
-struct CThing;
+class CThing;
 
 struct SThingListNode {
     SThingListNode* next;                   // +0x00
@@ -26,7 +26,7 @@ struct CThingList {                         // retail std::list<CIntelligentPoin
     CThingListIterator end() { return CThingListIterator(m_head); }
 };
 
-struct CSetThingInLimbo {
+class CSetThingInLimbo { public:
     bool m_inLimbo;
     CSetThingInLimbo(bool inLimbo) : m_inLimbo(inLimbo) { }
 };
@@ -39,7 +39,7 @@ struct CThingComponent {
     unsigned char _pad_0x04[0x8];           // +0x04 .. +0x0B
 };
 
-struct CTCThingOwner : CThingComponent {
+class CTCThingOwner : public CThingComponent { public:
     CThingList ObjectList;                  // +0x0C
     bool CallOnDie;                         // +0x10
     virtual void OnSetInLimbo(bool inLimbo);

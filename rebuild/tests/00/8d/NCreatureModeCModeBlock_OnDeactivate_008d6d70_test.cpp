@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeBlock::OnDeactivate (retail 0x008D6D70): the mode goes inactive, and a live
 // creature in state 1 has its animation resumed.
-struct CThing {
+class CThing { public:
     unsigned char m_state;
     unsigned char m_flags91;
     int suspendCalls;

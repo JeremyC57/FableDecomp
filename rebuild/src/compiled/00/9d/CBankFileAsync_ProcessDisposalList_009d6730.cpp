@@ -23,7 +23,7 @@ struct SCountBlock {
     void* m_pObject;                               // +8
 };
 class CBankFileAsync;
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     virtual void v00();
     unsigned char _pad04[0x24];                    // +0x04
     CBankFileAsync* m_pBank;                       // +0x28

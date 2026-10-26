@@ -21,7 +21,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 struct __false_type { __false_type() { } };
 
-struct CGameMapCell {                                   // 7 bytes (Ego_r.pdb)
+class CGameMapCell { public:                                   // 7 bytes (Ego_r.pdb)
     unsigned char AtmosThemes[3];                       // +0
     unsigned char AtmosBlends[2];                       // +3
     signed char   SoundTheme;                           // +5

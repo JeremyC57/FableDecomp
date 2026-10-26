@@ -68,7 +68,7 @@ struct CFrontEndManager_Data {
     static CFrontEndManager_Data* __fastcall GetInstance();   // 0x0041E5F2
 };
 
-struct CComponentContainer {
+class CComponentContainer { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

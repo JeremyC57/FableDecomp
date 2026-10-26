@@ -16,7 +16,7 @@
 // results are used unchecked (a miss reads the key slot); the next-greet frame goes through a float local and a village
 // local; the creature and tag-table locals are loaded ahead of the calls and the opinion manager comes through an inline
 // accessor (the `mov ecx,eax` after the argument pushes).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);                   // 0x0040F020
     const SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -58,23 +58,23 @@ struct CThing {
         return present != 0;
     }
 };
-struct CThingCreatureBase : CThing { };
-struct CThingPlayerCreature : CThingCreatureBase { };
+class CThingCreatureBase : public CThing { public: };
+class CThingPlayerCreature : public CThingCreatureBase { public: };
 struct CVillage {
     unsigned char _pad[0xac];
     long NextGreetFrame;                        // +0xAC
 };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CVillage* GetPVillage();                    // 0x007EE540
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad[0x114];
     long Field114;                              // +0x114
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     unsigned long GetGreetDialogueGroupIndex(long attitude);    // 0x00683C10
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
@@ -84,13 +84,13 @@ unsigned long __fastcall CCharString_ComputeCRC32(const CCharString& text);    /
 struct CTagTable {
     unsigned long GetTagFromCRC(unsigned long crc) const;   // 0x009CC410
 };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPCharacter();      // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer();                // 0x0049D9D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x14];
     CTagTable* PTags;                           // +0x14
     unsigned char _pad18[0x0c];
@@ -121,11 +121,11 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }

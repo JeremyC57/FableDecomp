@@ -7,7 +7,7 @@
 // Shape: a `__fastcall` member (this in ecx, the other vector in edx, plain `ret`); each compare loads the
 // right operand first (`fld [edx] ; fld [ecx] ; fucompp ; test ah,44h ; jp`); the `&&` chain shares one
 // `xor eax,eax` false tail and the true exit is `mov eax,1` (an int result, not bool).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     int __fastcall operator==(const C3DVector& other) const;
 };

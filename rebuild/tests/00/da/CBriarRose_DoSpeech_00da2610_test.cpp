@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CCharString { const char* text; };
-struct CScriptThing { int id; };
+class CCharString { public: const char* text; };
+class CScriptThing { public: int id; };
 static int g_seq[8]; static int g_n = 0; static const CCharString* g_line = 0; static long g_listener = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual ~CGameScriptInterface() { }
     virtual long GetHero() { g_seq[g_n++] = 70; return 55; }
     virtual long StartSpeech(const CScriptThing& s, long a, long b) { g_seq[g_n++] = 364; return 9 + s.id + a + b; }
@@ -11,7 +11,7 @@ struct CGameScriptInterface {
 };
 struct CTimerManager { long m_remaining, m_set; long GetTimer(long) { return m_remaining; } void SetTimer(long, long t) { m_set = t; } };
 CTimerManager g_tm; CTimerManager* g_pScriptTimerManager = &g_tm;
-struct CTimer { long TimerIndex; };
+class CTimer { public: long TimerIndex; };
 struct CBriarRose {
     CGameScriptInterface* Game; CScriptThing Me; CTimer SpeechTimer; bool m_done;
     bool IsDone() { return m_done; }

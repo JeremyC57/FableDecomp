@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 static char g_log[64];
-struct CAnimateThing { void RemoveCombinationAnimsOfType(long t) { char b[8]; sprintf(b, "R%ld", t); strcat(g_log, b); } };
+class CAnimateThing { public: void RemoveCombinationAnimsOfType(long t) { char b[8]; sprintf(b, "R%ld", t); strcat(g_log, b); } };
 struct CTCAnimation { CAnimateThing anim; CAnimateThing& GetAnimation() { return anim; } };
 static long g_animV, g_animH;
 struct Model {

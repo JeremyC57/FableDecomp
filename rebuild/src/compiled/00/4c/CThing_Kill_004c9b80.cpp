@@ -9,7 +9,7 @@
 //        assignments (`or cl,4` etc.); the `immediately` byte lives in bl.
 // Layout: retail CThing = Ego_r.pdb - 0x10: flag bytes +0x91..+0x93 with the PDB bit order (+0x93 bit 1 = DeathPersistent).
 class CThing;
-struct CThingManager {
+class CThingManager { public:
     void OnThingKilled(CThing* thing);           // 0x005202B0 (catalog "CTCCameraPointScriptedSpline::EditCyclePreviousKeyCamera"
                                                  //   is a byte-twin label; descriptive name)
     void RemoveFromRenderList(CThing* thing);    // 0x0051E000

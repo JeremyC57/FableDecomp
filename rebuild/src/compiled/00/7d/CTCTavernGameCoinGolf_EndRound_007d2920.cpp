@@ -13,21 +13,21 @@
 //        if / else-if pair storing the same flag; `best == 0.0f` is `fld [0.0] ; fld best ; fucompp ; test ah,44h ; jnp`,
 //        `score < best` is `fld score ; fcomp best ; test ah,5`; the parent thing comes through an inline accessor so it
 //        is loaded straight into ecx before the literal push; the CDefString temporaries share one frame word.
-struct CTCHeroStats {                           // retail layout
+class CTCHeroStats { public:                           // retail layout
     unsigned char _pad[0x184];
     float BestScoreCoinGolfOakVale;             // +0x184
     float BestScoreCoinGolfSnowSpire;           // +0x188
 };
-struct CDefString {                             // 4-byte def-name handle (user constructor: hidden-pointer return)
+class CDefString { public:                             // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_tablePos;
     CDefString();
     bool operator==(const char* text) const;    // 0x005B3440
 };
-struct CThing {
+class CThing { public:
     CDefString GetDefName() const;              // 0x004C7CC0
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x19];
@@ -43,7 +43,7 @@ struct CTCTavernGame {
 struct CTCTavernGameCoinBase : CTCTavernGame {
     void EndRound();                            // 0x008EF190
 };
-struct CTCTavernGameCoinGolf : CTCTavernGameCoinBase {
+class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     void EndRound();
 };
 

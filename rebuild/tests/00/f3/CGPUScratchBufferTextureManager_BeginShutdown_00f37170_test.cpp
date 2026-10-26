@@ -65,7 +65,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                          // +0x00
     unsigned char      ByteLength[0x3];                      // +0x04 bitfield group: ulong:28
     unsigned char      AllocationSource[0x1];                // +0x07 bitfield group: ulong:4
@@ -93,7 +93,7 @@ FABLE_STATIC_ASSERT(offsetof(CTexture, AllocationSource) == 0x7);
 struct IDirect3DSurface9;
 
 #pragma pack(push, 1)
-struct CSurface {
+class CSurface { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DSurface9* PD3DSurface;                          // +0x04
     unsigned long      AllocationSource;                     // +0x08
@@ -120,8 +120,8 @@ FABLE_STATIC_ASSERT(offsetof(CSurface, PAllocatedMemory) == 0xc);
 #include <stddef.h>
 
 
-struct CDisplayManager;
-struct CIndexBuffer;
+class CDisplayManager;
+class CIndexBuffer;
 struct IDirect3DBaseTexture9;
 struct IDirect3DDevice9;
 
@@ -3936,7 +3936,7 @@ FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, CurrentlySelectedTextures) == 0
 
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -3969,7 +3969,7 @@ template<class T>struct CScratchArray {
  T& operator[](unsigned i){return Begin[i];}
 };
 struct CScratchPage {int ScratchPool;CScratchArray<int> ResourceList;unsigned char* NextFreeBufferAddress;int FreeSpaceSize;bool EnableAutoRestore;};
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
  void* VTable;CScratchArray<CScratchResource> Resources;CScratchArray<CScratchPage> MemoryPages;
  CScratchArray<int> ScratchPools,FreeTexturePageSlots,FreeTextureSlots;bool ShutdownFlag;
  void FreeMemoryPage(int); //00f37030

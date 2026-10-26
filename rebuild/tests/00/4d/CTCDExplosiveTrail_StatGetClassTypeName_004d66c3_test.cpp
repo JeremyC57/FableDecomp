@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharString { char* p; };
+class CCharString { public: char* p; };
 static int g_called=0; static const char* g_arg=0; static int g_n=0;
 struct Helper {
     void Do(const char* s, int n){ g_called=1; g_arg=s; g_n=n; }

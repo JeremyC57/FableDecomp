@@ -7,9 +7,9 @@
 // PDB CTCInfoDisplay (0x20 bytes): Forward +0x0c, Backward +0x0d, TextTag +0x10, TextTagBack +0x14, Radius +0x18,
 // DisplayTime +0x1c.
 // Shape: one zero register (ebx) for the two bytes before the string constructors and the two words after them.
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
 };

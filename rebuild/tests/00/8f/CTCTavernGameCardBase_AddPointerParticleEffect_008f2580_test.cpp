@@ -9,9 +9,9 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct CTCBase;
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,9 +41,9 @@ struct CThing {
     }
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingObject : CThing { };
+class CThingObject : public CThing { public: };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -51,7 +51,7 @@ struct CCharString {
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
@@ -69,7 +69,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointe
     ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
@@ -83,7 +83,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     void push_back(const T& value);             // 0x004AD520
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _body04[0xf0 - 0x04];         // CTCBase + CTCTavernGame members (retail 0xF0)
 };

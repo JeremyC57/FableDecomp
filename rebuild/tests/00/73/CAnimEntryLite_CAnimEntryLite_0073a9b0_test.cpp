@@ -1,9 +1,9 @@
 // Behaviour test for CAnimEntryLite::CAnimEntryLite(const CAnimationEntry&) @ 0x0073a9b0: bank index copied, times and flags fetched.
 #include <cstdio>
 #include <cstddef>
-struct CAnimComponentFlags { unsigned char _pad[8]; long Flags; };
+class CAnimComponentFlags { public: unsigned char _pad[8]; long Flags; };
 static CAnimComponentFlags g_component;
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex; long AnimName; long GroupName; void* Components;
     long GetAnimationTransitionInTime_005dc1d0() const { return 300; }
     long GetAnimationDelayTime() const { return 40; }

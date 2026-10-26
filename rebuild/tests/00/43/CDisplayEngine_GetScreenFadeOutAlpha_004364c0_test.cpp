@@ -1,12 +1,12 @@
 // behaviour test for 0x004364C0
 #include <stdio.h>
 #include <stddef.h>
-struct CFadeInFadeOutBase { bool Active; float FadeInTime; float FadeOutTime; bool Closing; bool Opening; float OpenTimer; float CloseTimer; unsigned long ToColour; };
+class CFadeInFadeOutBase { public: bool Active; float FadeInTime; float FadeOutTime; bool Closing; bool Opening; float OpenTimer; float CloseTimer; unsigned long ToColour; };
 static const void* g_this;
 struct CFadeInFadeOutBase_Methods : CFadeInFadeOutBase {
     float GetFadeInOutAlpha() const { g_this = this; return Active ? OpenTimer : 0.0f; }
 };
-struct CDisplayEngine { unsigned char _pad[0xbc]; unsigned char ScreenFadeOutInfo[0x1c]; bool ScreenFadeOutLocked; };
+class CDisplayEngine { public: unsigned char _pad[0xbc]; unsigned char ScreenFadeOutInfo[0x1c]; bool ScreenFadeOutLocked; };
 struct CDisplayEngine_Methods : CDisplayEngine {
     unsigned char GetScreenFadeOutAlpha() const;
 };

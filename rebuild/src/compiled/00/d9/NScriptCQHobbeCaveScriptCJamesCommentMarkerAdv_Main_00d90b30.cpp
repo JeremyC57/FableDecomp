@@ -20,15 +20,15 @@
 // Shape (frame): the counter, the distance and the loop sit in their own block (as CJamesCommentMarker::Main 0x00D907B0);
 //   both handles are destructor-less views destroyed inline (Nymph first) at the first exit and the loop exit, out of line
 //   at the nested exits.
-struct CCharString;
+class CCharString;
 struct CScriptThingImpl;
 void operator delete(void* p);                      // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                             // CCountedPointer's shared block
+class CCPPointerInfo { public:                             // CCountedPointer's shared block
  long RefCount;
  void (__fastcall* DeleteFunc)(void* data);
  void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
  T*              Data;
  CCPPointerInfo* Info;
  CCountedPointer() : Data(0), Info(0) { }
@@ -44,10 +44,10 @@ template <class T> struct CCountedPointer {
  }
  ~CCountedPointer() { Release(); Data = 0; Info = 0; }
 };
-struct CBaseClass {                                 // polymorphic root of the script handles
+class CBaseClass { public:                                 // polymorphic root of the script handles
  virtual ~CBaseClass();                             // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
  virtual void v01(); virtual void v02();
  virtual CCharString GetDataString() const;     // slot 3 (+0x0c)
  virtual void v04(); virtual void v05(); virtual void v06();
@@ -162,31 +162,31 @@ struct CScriptThingLocal {                              // a by-value CScriptThi
 };
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
-struct CPredicateBase {virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-struct CIsThingAlive:CPredicateBase {
+class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
+class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };
 }
-struct C2DCoordI;
-struct C2DVector;
-struct C3DVector;
-struct CCharString;
-struct CRGBColour;
-struct CRGBFloatColour;
-struct CRightHandedSet;
+class C2DCoordI;
+class C2DVector;
+class C3DVector;
+class CCharString;
+class CRGBColour;
+class CRGBFloatColour;
+class CRightHandedSet;
 struct CScreenFilterSThingByPass;
-struct CScriptGameResourceObjectMovieBase;
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CThing;
-struct CTimer;
-struct CWideString;
-template<class T> struct CArray;
-struct CCounter;
+class CScriptGameResourceObjectMovieBase;
+class CScriptGameResourceObjectScriptedThingBase;
+class CThing;
+class CTimer;
+class CWideString;
+template<class T> class CArray;
+class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
-struct CHeroLogBook { struct CHeroLogBookEntry { typedef long ECategory; }; };
+class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
 typedef long ECameraOp;
 typedef long EClothingCoversArea;
 typedef long ECreatureGroup;
@@ -1059,12 +1059,12 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-struct CCharString {
+class CCharString { public:
  void* PStringData;
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
  ~CCharString();                                    // 0x0099EAE0
 };
-struct CBaseObject {                                   // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
+class CBaseObject { public:                                   // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
  virtual void b000();
  void* m_pIntelligentPointer;
  CBaseObject();                                     // 0x0099A380
@@ -1076,7 +1076,7 @@ struct CBaseObjectDtor {                               // the same root, as its 
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
  __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
  struct Words {                                     // CCountedPointer<void> {Data, Info}, released by hand
   void* Data; CCPPointerInfo* Info;
   __forceinline void Release()
@@ -1104,13 +1104,13 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
 };
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CCounter {
+class CCounter { public:
  long RelevantWorldFrame;
  CCounter() { RelevantWorldFrame = g_pGameScriptInterface->GetWorldFrame(); }
  bool operator>(float seconds) const;               // 0x00D90670
  CCounter& operator=(float seconds);                // 0x00D90550
 };
-struct CScriptDef {
+class CScriptDef { public:
  unsigned char _pad[0xcac];
  long HC_BanditTimeBeforeComment;                   // +0xCAC (PDB +0xd5c)
  unsigned char _padcb0[0xcc4 - 0xcb0];

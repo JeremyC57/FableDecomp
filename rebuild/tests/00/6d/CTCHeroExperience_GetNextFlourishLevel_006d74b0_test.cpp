@@ -25,17 +25,17 @@ struct CDefVirtual {
     virtual void Destroy();                     // slot 1
 };
 struct CDefObject : CDefVirtual, CRefCounted {};
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_count; }
     ~CDefPointer() { if (DecRefToZero(Object->m_count)) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CHeroExperienceDef : CDefObject {
+class CHeroExperienceDef : public CDefObject { public:
     unsigned char _pad08[0x64 - 0x08];
     float ExperienceMultiplierParamPerLevel;    // +0x64
 };
-struct CHeroCombatDef : CDefObject {
+class CHeroCombatDef : public CDefObject { public:
     unsigned char _pad08[0xd0 - 0x08];
     bool  FlourishesEnabled;                    // +0xd0
     unsigned char _padd1[3];

@@ -20,7 +20,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -33,7 +33,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -56,7 +56,7 @@ struct CThing {
 #define V10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     V10(0) V10(1) V10(2) V10(3) V10(4) V10(5) V10(6) V10(7) V10(8) V10(9)
     V10(10) V10(11) V10(12) V10(13) V10(14) V10(15) V10(16) V10(17) V10(18) V10(19)
     V10(20) V10(21) V10(22) V10(23) V10(24) V10(25) V10(26) V10(27) V10(28) V10(29)
@@ -66,12 +66,12 @@ struct CGameScriptInterface {
 };
 #undef V10
 
-struct CGameTimeManager {
+class CGameTimeManager { public:
     unsigned char _pad_0x00[0x10];
     float         TimeStep;                          // +0x10
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad_0x00[0x1C];
     CGameTimeManager*     PGameTimeManager;          // +0x1C scoped_ptr<CGameTimeManager>
     unsigned char         _pad_0x20[0x18];
@@ -79,19 +79,19 @@ struct CWorld {
     CGameScriptInterface* GetGameScriptInterface() const { return PGameScriptInterface; }
 };
 
-struct CThingPlayerCreature : CThing {};
-struct CPlayer {
+class CThingPlayerCreature : public CThing { public:};
+class CPlayer { public:
     CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960
 };
 
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     void RemoveDeedStillSearchingForWitnesses(long handle);   // 0x006C5920
 };
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad_0x00[0x94];
     long          MinSecondsToVomit;                 // +0x94
     long          MaxSecondsToVomit;                 // +0x98
@@ -110,7 +110,7 @@ long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 extern float g_DrunkennessSoberRate;                 // 0x0137CBD8
 extern long g_framesPerSecond;                       // 0x01375550
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x000
     CThing*       ParentThing;                       // +0x004 CTCBase
     unsigned char _pad_0x008[0x194];

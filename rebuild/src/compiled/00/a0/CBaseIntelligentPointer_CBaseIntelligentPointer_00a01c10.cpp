@@ -10,7 +10,7 @@
 // destructor does and ClearData is inlined.  The class is polymorphic through a plain virtual
 // function here so only the `??1` body is emitted (a virtual destructor would make the lander grade
 // the deleting `??_G`, which is 0x00A01C50).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseObjectPointer {
     CBaseObject* PItem;        // +0x00

@@ -1,7 +1,7 @@
 // Behaviour test for 0x0046AA91 GFSerialiseVectorBinaryOut<CSoundBankEntry>: count, then one traits write per entry
 #include <cstdio>
 struct Writer { int log[32]; int n; void WriteLong(int v) { log[n++] = v; } };
-struct CSoundBankEntry {
+class CSoundBankEntry { public:
     unsigned int ID; int Filename; int SymbolFilename; int LipSyncBankHandle; bool DVD;
     CSoundBankEntry() : ID(0), Filename(-1), SymbolFilename(-1), LipSyncBankHandle(-1) {}
 };

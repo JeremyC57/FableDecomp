@@ -5,7 +5,7 @@
 #include <string.h>
 static long g_played_id = -1;
 static int g_plays, g_dtors;
-struct CCharString { void* PStringData; ~CCharString(); };
+class CCharString { public: void* PStringData; ~CCharString(); };
 CCharString::~CCharString() { ++g_dtors; }
 struct CDefStringTable { CCharString GetString(long id); };
 CCharString CDefStringTable::GetString(long id) { CCharString s; s.PStringData = (void*)id; return s; }
@@ -29,9 +29,9 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     while (it != last && it->type < *type) ++it;
     return it;
 }
-struct CThing { unsigned char _pad00[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; };
-struct CSpecialAbilitiesLightningSpellDef { unsigned char _pad00[0x114]; long LoopingSound; };
-struct CTCWillLightning {
+class CThing { public: unsigned char _pad00[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; };
+class CSpecialAbilitiesLightningSpellDef { public: unsigned char _pad00[0x114]; long LoopingSound; };
+class CTCWillLightning { public:
     void* __vftable; CThing* ParentThing; unsigned char _pad08[0x20];
     const CSpecialAbilitiesLightningSpellDef* m_lspDef; unsigned char _pad2c[0x6c];
     unsigned long LoopingSound;

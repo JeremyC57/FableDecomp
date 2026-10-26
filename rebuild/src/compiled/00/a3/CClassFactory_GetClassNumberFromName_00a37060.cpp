@@ -13,9 +13,9 @@
 // Shape: the CCharString == of the landed CMapBrushList::GetScriptedMapBrush (same block, or equal lengths and Compare == 0);
 //          the message is traced by reference (release build: only the const char* conversion survives); no EH frame.
 #include <stddef.h>
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -47,7 +47,7 @@ struct CClassTypeInfo_Retail {                  // 20 bytes
     CCharString   Name;                         // +0x10
 };
 
-struct CClassFactory {
+class CClassFactory { public:
     void*                  __vftable;           // +0x00
     CClassTypeInfo_Retail* ClassTypeInfo_first; // +0x04
     CClassTypeInfo_Retail* ClassTypeInfo_last;  // +0x08

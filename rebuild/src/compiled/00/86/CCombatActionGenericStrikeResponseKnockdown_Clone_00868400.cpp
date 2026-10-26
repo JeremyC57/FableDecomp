@@ -7,11 +7,11 @@
 // Virtual clone: allocates sizeof(CCombatAction_GenericStrikeResponseKnockdown) = 0x13c, null-checks and copy-constructs from
 // `*this` through the out-of-line copy constructor @ 0x00868430; the constructor's `this` return
 // is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
 };
 
-struct CCombatAction_GenericStrikeResponseKnockdown : CCreatureActionBase {
+class CCombatAction_GenericStrikeResponseKnockdown : public CCreatureActionBase { public:
     unsigned char _body[0x13c - 4];    // sizeof(CCombatAction_GenericStrikeResponseKnockdown) = 0x13c
     CCombatAction_GenericStrikeResponseKnockdown(const CCombatAction_GenericStrikeResponseKnockdown& other);             // 0x00868430
     CCreatureActionBase* Clone();

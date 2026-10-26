@@ -13,11 +13,11 @@
 //   so everything after them is 8 lower: TargetedPos +0x84, OldTargetedPos +0x90, TargetedPosOffset3D +0x9C,
 //   OldTargetedPosOffset3D +0xA8, the four C2DVectors +0xB4..+0xCC; MaxTargetingDistance +0x48 and ZLockTargetSelectionTimer
 //   +0x38 agree. CTCTargetingAI PSubDef +0x30 (as the landed 0x007F59C0).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
@@ -66,14 +66,14 @@ struct CTargetingPlayerDef {
     unsigned char _pad00[0x74];
     CRangeMap TargetingRanges;                     // +0x74
 };
-struct CTCTargetingAI {
+class CTCTargetingAI { public:
     void* __vftable;
     unsigned char _pad04[0x2c];
     CTargetingPlayerDef* PSubDef;                  // +0x30
     unsigned char _pad34[0x4];
     void OnInitialActivate();                      // 0x007F59C0
 };
-struct CTCTargetingPlayer : CTCTargetingAI {
+class CTCTargetingPlayer : public CTCTargetingAI { public:
     long          ZLockTargetSelectionTimer;       // +0x38
     unsigned char _pad3c[0x48 - 0x3c];
     float         MaxTargetingDistance;            // +0x48

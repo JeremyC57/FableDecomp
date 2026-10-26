@@ -1,7 +1,7 @@
 #include <cstdio>
 #ifndef _MSC_VER
 #define FABLE_ENGINE_CDATAOUTPUTSTREAM_H
-struct CDataOutputStream {void* __vftable;void* NewLine_PStringData;};
+class CDataOutputStream { public:void* __vftable;void* NewLine_PStringData;};
 #endif
 // CSoundMap::TransferBinaryOut(CDataOutputStreamMethods&) -- write sound-key/range records then criteria-key/string-table records
 // Leaf: TransferBinaryOut
@@ -13,8 +13,8 @@ struct CDataOutputStream {void* __vftable;void* NewLine_PStringData;};
 #pragma optimize("s",on)
 #include "engine/CDataOutputStream.h"
 struct CDataOutputStreamMethods : CDataOutputStream { void WriteULONG(unsigned long); void WriteSLONG(long); };
-struct CSoundPair {long FirstSound,LastSound;};
-struct CDefString {long TablePos;};
+class CSoundPair { public:long FirstSound,LastSound;};
+class CDefString { public:long TablePos;};
 template<class Value> struct CMapEntry {unsigned long Key;Value Data;};
 template<class Value> struct CSoundVectorMap {
     CMapEntry<Value>* Start;CMapEntry<Value>* Finish;CMapEntry<Value>* End;
@@ -22,7 +22,7 @@ template<class Value> struct CSoundVectorMap {
     unsigned long size() const {return Finish-Start;}
     CMapEntry<Value>& operator[](unsigned long index) {return Start[index];}
 };
-struct CSoundMap {
+class CSoundMap { public:
     CSoundVectorMap<CSoundPair> SoundMap;
     CSoundVectorMap<CDefString> CriteriaMap;
     void TransferBinaryOut(CDataOutputStreamMethods&);

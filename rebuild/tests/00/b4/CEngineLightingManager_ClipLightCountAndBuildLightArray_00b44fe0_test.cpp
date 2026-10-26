@@ -1,18 +1,18 @@
 // behaviour test for 00b44fe0 CEngineLightingManager::ClipLightCountAndBuildLightArray
 #include <cstdio>
 #include <cmath>
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour {
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public:
     float R, G, B, A;
     void operator*=(float f) { R *= f; G *= f; B *= f; A *= f; }
 };
-struct CEngineLocalLightElement {
+class CEngineLocalLightElement { public:
     C3DVector WorldPos; float Radius, RadiusSquared, SpotRadius; CRGBFloatColour Colour;
     float AttenuationDistSquared, AttenuationConstant; unsigned long ChannelMask;
 };
-struct CEngineLocalLightArray { unsigned long LightCount; CEngineLocalLightElement Lights[8]; };
-struct CEnginePrimitiveThemeChannelDesc { unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad; };
+class CEngineLocalLightArray { public: unsigned long LightCount; CEngineLocalLightElement Lights[8]; };
+class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad; };
 static float DistanceSquaredXY(const C3DVector& a, const C2DVector& b)
 {
     float dx = a.X - b.X;

@@ -11,12 +11,12 @@
 //   a local and is copied into the fresh info block (the info has no ctor: `new` is not null-tested).
 #include <stddef.h>
 void* operator new(size_t size);                       // 0x00BFEA1A
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                 // +0x18
     void Transfer(const char* name, bool& value, const bool& defaultValue);               // 0x004045C0
@@ -31,14 +31,14 @@ struct CSpotLightInfo {
     float      Flicker;                                 // +0x10
     CRGBColour Colour;                                  // +0x14
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CSpotLightInfoPointer {                          // CCountedPointer<CTCSpotLight::CSpotLightInfo>
     CSpotLightInfo* Data;
     CCPPointerInfo* Info;
     void Reset(CSpotLightInfo* data);                   // 0x007323D0
     CSpotLightInfo* operator->() const { return Data; }
 };
-struct CTCSpotLight {
+class CTCSpotLight { public:
     void*         __vftable;
     unsigned char _pad04[0x0c];
     CSpotLightInfoPointer PLightInfo;                   // +0x10

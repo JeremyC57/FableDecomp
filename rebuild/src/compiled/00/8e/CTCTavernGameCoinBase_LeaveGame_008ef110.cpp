@@ -9,7 +9,7 @@ public:
     void Kill(bool immediate);          // 0x004C9B80
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned char _pad[0xf0];
     void LeaveGame();                   // 0x005EC650
 };

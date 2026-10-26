@@ -1,18 +1,18 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* m_text; long m_length;
     CCharString(const char* text, long length) : m_text(text), m_length(length) {}
     CCharString(const CCharString& o) : m_text(o.m_text), m_length(o.m_length) {}
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     struct iterator { T* m_p; iterator(T* p) : m_p(p) {} iterator operator+(unsigned long n) const { return iterator(m_p + n); } T& operator*() const { return *m_p; } };
     bool IsEmpty() const { return m_pFirst == m_pLast; }
     iterator begin() const { return iterator(m_pFirst); }
 };
-struct CBankFile {
+class CBankFile { public:
     CArray<CCharString> Symbols;
     CCharString GetEntrySymbol(unsigned long index) const
     {

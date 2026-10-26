@@ -15,8 +15,8 @@
 // stored first); the unused sub-def is a CDefPointer homed in the dead `a3` slot, released through the pointee's
 // Release() (DecRefToZero; ecx form) once GetSubDef has a same-TU `auto_inline(off)` stand-in (without it VC7.1 reloads
 // the def into eax and emits the long count update).
-struct C3DVector;
-struct CCharString {
+class C3DVector;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
@@ -30,13 +30,13 @@ struct CDefObject {
     long m_refCount;                                           // +0x04
     void Release() { if (DecRefToZero(m_refCount)) Destroy(); }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
 };
 struct CPlayerCreatureSubDef : CDefObject { };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CPlayerCreatureSubDef>* out);   // 0x0042B0A2
 };
 void* FindDef_CDefClassBase_GetSubDef_0042b0a2();
@@ -52,12 +52,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CPlayerCreatureSu
     return true;
 }
 #pragma auto_inline(on)
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x50];
     float         Health;                                      // +0x50
 };
 class CThingPhysical;
-struct CThingPlayerCreatureInit {
+class CThingPlayerCreatureInit { public:
     CThingPhysical* OriginalThing;                             // +0x00
     CThingPhysical* PreviousThing;                             // +0x04
     bool            PlaceAtEndOfList;                          // +0x08

@@ -3,7 +3,7 @@ struct HelperResult {
     void* f20;
 };
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 // helper at 0x686a80: __fastcall(this) -> HelperResult*
 extern HelperResult* __fastcall helper_686a80(CThingCreatureBase* self);

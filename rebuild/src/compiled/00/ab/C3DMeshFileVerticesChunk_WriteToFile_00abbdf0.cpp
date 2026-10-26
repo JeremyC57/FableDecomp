@@ -13,7 +13,7 @@
 // pointers (0x0c: the XUVTangent factory allocates 0x28 bytes for two CArrays behind a 0x10 base).
 // The bytes decide, so this file models the retail layout with the PDB member names and says so here
 // instead of including the disagreeing header.
-struct CCharString {
+class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
     CCharString(const char* text, long length);         // 0x0099EBF0 (-1 = strlen)
     CCharString(const CCharString& other);              // 0x0099EC30 copy
@@ -21,8 +21,8 @@ struct CCharString {
     void* m_pStringData;                                // CCharStringData*
 };
 
-struct C3DVector  { float X, Y, Z; };                   // trivial default constructor (retail leaves it uninitialised)
-struct CMatrix3x4 {                                     // 48 bytes: three axis vectors and the position, copied with rep movsd
+class C3DVector  { public: float X, Y, Z; };                   // trivial default constructor (retail leaves it uninitialised)
+class CMatrix3x4 { public:                                     // 48 bytes: three axis vectors and the position, copied with rep movsd
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }
     void SetIdentity()                                  // chained assignments: the stores run right to left
@@ -32,16 +32,16 @@ struct CMatrix3x4 {                                     // 48 bytes: three axis 
     }
 };
 
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity, no allocator state
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity, no allocator state
     T* m_begin; T* m_end; T* m_capacity;
     CArray() : m_begin(0), m_end(0), m_capacity(0) {}
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T& operator[](unsigned long index) const { return m_begin[index]; }
 };
 
-struct CChunkedFileSaver;
-struct CChunkedFileLoader;
-struct CDataOutputStream {
+class CChunkedFileSaver;
+class CChunkedFileLoader;
+class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteUShort(unsigned short value);             // 0x00993E80
@@ -52,14 +52,14 @@ struct CDataOutputStream {
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();                // slot 2 (+0x08)
     CMatrix3x4 ReadMatrix3x4();                         // 0x00995340 (by value through the hidden pointer)
 };
 
 // CChunkedFileChunk (0x10: vptr, ChunkType[5], Parent) is the base of the X* chunks.
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual void v0();
     CChunkedFileChunk(const char* chunkType);           // 0x00AA7590
     unsigned char _base_body[0x0c];                     // ChunkType[5] + pad + Parent  (sizeof == 0x10)
@@ -90,13 +90,13 @@ struct CChunkedFileChunkFactory {
 };
 // ------------------------------------------------------------------------------------------------
 
-struct C3DVertex2 {                      // 32 bytes (PDB)
+class C3DVertex2 { public:                      // 32 bytes (PDB)
     C3DVector Position;                  // +0x00
     C3DVector Normal;                    // +0x0c
     float     U;                         // +0x18
     float     V;                         // +0x1c
 };
-struct C3DMeshFileVerticesChunk : CChunkedFileChunk {
+class C3DMeshFileVerticesChunk : public CChunkedFileChunk { public:
     virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
     CArray<C3DVertex2> VertexList;       // +0x10 (PDB header agrees on the offset; its CArray is 0x10 wide, retail's is 0x0c)
     virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const;   // slot 8

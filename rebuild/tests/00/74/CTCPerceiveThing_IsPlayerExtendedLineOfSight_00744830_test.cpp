@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct CTarget { char pad[0x10]; unsigned char kind; };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     char pad0[0xc];
     char sub[0x21];
     unsigned char flag;

@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing {};
+class CThing { public:};
 static int g_destroyed;
-struct CCharString { char* m_pData; ~CCharString() { ++g_destroyed; } };
+class CCharString { public: char* m_pData; ~CCharString() { ++g_destroyed; } };
 struct SCoverEntry { CThing* thing; CCharString name; long value; };
 struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
 static SCoverEntry* CopyEntries(SCoverEntry* first, SCoverEntry* last, SCoverEntry* dest, const SRandomAccessIteratorTag&, long)

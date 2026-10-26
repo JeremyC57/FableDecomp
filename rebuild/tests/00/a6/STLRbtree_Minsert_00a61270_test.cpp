@@ -21,7 +21,7 @@ public:
 };
 class CChecksumCacheFile {
 public:
-    class CEntry {
+    struct CEntry {
     public:
         unsigned long Data[8];
     };

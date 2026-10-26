@@ -1,7 +1,7 @@
 // Behaviour test for CTCPerceiveThing::FrameUpdate (0x00745C70): counter ageing, the every-fourth-frame / melee-entry update
 // (reset when nothing is perceived), the automatic player perception and PerceptionCombat tracking the melee state.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 static int g_log[8]; static int g_n = 0; static long g_frame = 0; static const void* g_perceived = 0;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -9,7 +9,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     bool HasTC(long type) const
@@ -28,18 +28,18 @@ struct CThing {
         return it->component;
     }
 };
-struct CTCCombat { bool m_melee; bool IsInMelee() const { return m_melee; } };
+class CTCCombat { public: bool m_melee; bool IsInMelee() const { return m_melee; } };
 static CThing g_hero;
-struct CPlayer { CThing* GetControlledCreature() const { return &g_hero; } };
+class CPlayer { public: CThing* GetControlledCreature() const { return &g_hero; } };
 static CPlayer g_player;
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame() { return g_frame; }
     const CPlayer* PeekMyPlayer() const { return &g_player; }
 };
 static CWorld g_world;
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CPerceivedThingDef { long Type; };
-struct CTCPerceiveThing {
+class CPerceivedThingDef { public: long Type; };
+class CTCPerceiveThing { public:
     CThing*       ParentThing;
     CBaseIntelligentPointer PerceivedThing;
     long          FramesSinceDirectlyPerceivedThing;

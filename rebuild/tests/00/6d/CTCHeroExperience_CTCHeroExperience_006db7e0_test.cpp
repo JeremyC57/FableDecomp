@@ -16,8 +16,8 @@ template <class T> struct CRetailVector {
 };
 struct CPickupList { ~CPickupList() { Log(300); } };
 struct CAttackHistoryList { ~CAttackHistoryList() { Log(301); } };
-struct CTCBase { virtual ~CTCBase() { Log(400); } };
-struct CTCHeroExperience : CTCBase {
+class CTCBase { public: virtual ~CTCBase() { Log(400); } };
+class CTCHeroExperience : public CTCBase { public:
     long FishingLevel, TotalExperiencePoints, ExperiencePointsAvailableToSpend;
     CRetailVector<long> StatExperiencePoints, TrainableStatLevels;
     float ExperienceMultiplierParam, LastExperienceMultiplierParam; long ExperienceAttenuationTimer; bool AbleToGainExperience;

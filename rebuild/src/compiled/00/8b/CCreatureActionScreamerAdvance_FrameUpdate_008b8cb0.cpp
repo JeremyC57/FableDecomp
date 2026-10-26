@@ -8,14 +8,14 @@
 // Shape: the mode manager pointer is NULL-INITIALISED (`xor esi,esi` before the GetPItem call), so it lives in esi rather than in the
 // frame word of the lookup key and the miss path falls through with esi = 0 into the single HasMode call (no tail duplication, unlike
 // the uninitialised form of 0x008C4780). TotalTime is the CCreatureActionBase long at +0x10 (PDB name).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -38,11 +38,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     bool HasMode(unsigned long mode);       // 0x0073A8A0
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void FrameUpdate();             // 0x00859D80
     unsigned char _pad04[4];                // +0x04
@@ -52,7 +52,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     float GetAnimationFraction();           // 0x006925E0 (CCreatureActionBase)
 };
 
-struct CCreatureAction_ScreamerAdvance : CCombatActionBase {
+class CCreatureAction_ScreamerAdvance : public CCombatActionBase { public:
     virtual void FrameUpdate();
 };
 

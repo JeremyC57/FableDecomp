@@ -6,11 +6,11 @@ struct CPixelShaderData {
     void* m_pShader; 
     long m_refCount;
 };
-struct CShaderBase {
+class CShaderBase { public:
     virtual void v00() { }
     ~CShaderBase() { ++g_baseDestroyed; }
 };
-struct CPixelShader : CShaderBase {
+class CPixelShader : public CShaderBase { public:
     CPixelShaderData* m_pData;
     virtual void v00() { }
     ~CPixelShader()

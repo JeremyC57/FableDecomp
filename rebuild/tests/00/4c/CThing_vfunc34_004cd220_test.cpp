@@ -1,6 +1,6 @@
 // Behaviour test for 004cd220 CThing::vfunc_34 (default: always false)
 #include <cstdio>
-struct CThing {
+class CThing { public:
     virtual bool vfunc_34(void* arg);
     virtual ~CThing() {}
 };

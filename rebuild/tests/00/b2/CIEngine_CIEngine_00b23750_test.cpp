@@ -1,7 +1,7 @@
 #include <cstdio>
 int g_instances = 0;
-struct CInitBaseClass { bool flag04; CInitBaseClass() : flag04(false) { ++g_instances; } };
-struct CIEngine : CInitBaseClass { bool initialised; CIEngine() : CInitBaseClass() { initialised = false; } };
+class CInitBaseClass { public: bool flag04; CInitBaseClass() : flag04(false) { ++g_instances; } };
+class CIEngine : public CInitBaseClass { public: bool initialised; CIEngine() : CInitBaseClass() { initialised = false; } };
 int main()
 {
     CIEngine e; bool ok = g_instances == 1 && !e.flag04 && !e.initialised;

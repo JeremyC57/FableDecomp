@@ -14,13 +14,13 @@
 // last float branch); the (1, 1) frame info is a temporary assigned in the loop (VC7.1 hoists the two stores into frame slots;
 // a named local or member-wise copy caches the wrong half in ebx); the movie test goes through an inline CWorld wrapper.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-struct CAnimFrameInfo {                                 // CAnimInit +0x18, zeroed by its ctor
+class CAnimFrameInfo { public:                                 // CAnimInit +0x18, zeroed by its ctor
     float m_first;
     float m_second;
     CAnimFrameInfo() : m_first(0.0f), m_second(0.0f) { }
     CAnimFrameInfo(float first, float second) : m_first(first), m_second(second) { }
 };
-struct CAnimInit {                                      // 0x2c bytes
+class CAnimInit { public:                                      // 0x2c bytes
     long           UpdateMode;                          // +0x00
     unsigned char  Type;                                // +0x04
     bool           Looping;                             // +0x05
@@ -38,14 +38,14 @@ struct CAnimInit {                                      // 0x2c bytes
         Set(animType, typeFlags, anim, mode, looping, flags, priority);
     }
 };
-struct CAnimSet;
-struct CAnimateThing {
+class CAnimSet;
+class CAnimateThing { public:
     CAnimSet* GetCombinationAnimFromTypeAndIndex(long type, long index);   // 0x0070C170
     void AddCombinationAnim(const CAnimInit& init, long a, long b, bool c, bool d);   // 0x0070D780
     void RemoveCombinationAnim(const CAnimSet* anim);   // 0x0070D8E0
     void RemoveAllAnimsWithTypeFlags(unsigned long flags);   // 0x0070D900
 };
-struct CAnimateThingUpdate {
+class CAnimateThingUpdate { public:
     float FrameTime;                                    // +0x00
 };
 struct CExpressionState {
@@ -77,7 +77,7 @@ struct CExpressionStateList {                           // STLport list: the hea
         return next;
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(00) VF10(01) VF10(02) VF10(03) VF10(04) VF10(05) VF10(06) VF10(07) VF10(08) VF10(09)
@@ -89,12 +89,12 @@ struct CGameScriptInterface {
 #undef VF
     virtual bool IsInMovieSequence() const;             // slot 395 (+0x62c)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x38];
     CGameScriptInterface* PGameScriptInterface;         // +0x38
     bool IsInMovieSequence() { return PGameScriptInterface->IsInMovieSequence(); }
 };
-struct CTCCreatureExpression {
+class CTCCreatureExpression { public:
     virtual void v00();
     void* ParentThing;                                  // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

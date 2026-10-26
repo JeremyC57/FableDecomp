@@ -9,7 +9,7 @@
 // Shape: the child pointer is re-read from the counted pointer for each call (`mov ecx,[edi]`); the text cast is a
 //   plain static_cast (single inheritance, no adjustment).
 // Layout: retail CTextContainer Window at +0x15c (Ego_r.pdb +0x18c), as the landed GetDataFromDef 0x00546CD0.
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 };
 

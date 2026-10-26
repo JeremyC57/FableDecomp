@@ -7,16 +7,16 @@
 #include <map>
 static std::string g_log;
 static void L(const std::string& s) { g_log += s; g_log += ' '; }
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString() {}
     CCharString(const char* text, long = -1) : s(text) {}
     bool operator<(const CCharString& o) const { return s < o.s; }
 };
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static int s_deleted = 0;
 static void DeleteImp(void*) { ++s_deleted; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }

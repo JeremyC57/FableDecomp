@@ -2,9 +2,9 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-static void* g_block = 0; static void* g_owner = 0; struct CMovableResource; struct CLandscapeMemory { void RebindBlockOwner(void* b, CMovableResource* o) { std::strcat(g_seq, "R"); g_block = b; g_owner = o; } void AppendFreeEdgeNode(void* b) { std::strcat(g_seq, "E"); g_block = b; } void FreeBlock(void* b) { std::strcat(g_seq, "F"); g_block = b; } };
+static void* g_block = 0; static void* g_owner = 0; class CMovableResource; struct CLandscapeMemory { void RebindBlockOwner(void* b, CMovableResource* o) { std::strcat(g_seq, "R"); g_block = b; g_owner = o; } void AppendFreeEdgeNode(void* b) { std::strcat(g_seq, "E"); g_block = b; } void FreeBlock(void* b) { std::strcat(g_seq, "F"); g_block = b; } };
 struct SEngine { unsigned char _pad[0x6b0]; CLandscapeMemory* m_pMem; }; static CLandscapeMemory g_mem; static SEngine g_engine; static SEngine* g_pEngine = &g_engine;
-struct CMovableResource { virtual void v00() { } ~CMovableResource() { } };
+class CMovableResource { public: virtual void v00() { } ~CMovableResource() { } };
 struct COwned { virtual ~COwned() { std::strcat(g_seq, "D"); } };
 struct CLayerMesh : CMovableResource { unsigned char _pad04[0x30]; void* m_pVertexBlock; void* m_pIndexBlock; COwned* m_pOwned; unsigned char _pad40[8]; bool m_shared;
     CLayerMesh() : m_pVertexBlock(0), m_pIndexBlock(0), m_pOwned(0), m_shared(false) { }

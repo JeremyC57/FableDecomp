@@ -1,10 +1,10 @@
 // Behaviour test for 0x00A36010 C3DMeshObject::SetMesh
 #include <cstdio>
 #include <cstdlib>
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static int g_deleted = 0;
 static void DeleteData(void*) { ++g_deleted; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
@@ -23,11 +23,11 @@ template<class T> struct CCountedPointer {
         return *this;
     }
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     CCountedPointer<int> Stats;
     CCountedPointer<int> GetMeshStats() { return Stats; }
 };
-struct C3DMeshObject {
+class C3DMeshObject { public:
     C3DMeshInfo* MeshInfo; CCountedPointer<int> Mesh;
     void SetMesh(C3DMeshInfo* meshInfo) { MeshInfo = meshInfo; Mesh = meshInfo->GetMeshStats(); }
 };

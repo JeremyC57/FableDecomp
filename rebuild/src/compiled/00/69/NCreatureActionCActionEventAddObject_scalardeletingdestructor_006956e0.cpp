@@ -4,11 +4,11 @@
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
 // retail labels); the class itself is not attributed, so it is named by address.
 #pragma optimize("t", on)
-struct CBaseClass {                         // vtable 0x01231710 (.?AVCBaseClass@@)
+class CBaseClass { public:                         // vtable 0x01231710 (.?AVCBaseClass@@)
     void* _vptr;
     ~CBaseClass();                          // 0x0099A2E0
 };
-struct CCharString {                        // one word: CCharStringData*
+class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;
     ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
 };

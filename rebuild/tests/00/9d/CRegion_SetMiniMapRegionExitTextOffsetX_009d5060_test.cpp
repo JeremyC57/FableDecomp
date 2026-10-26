@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CRegion;
+class CRegion;
 
 struct Singleton {
     void* method(void* arg);
@@ -15,7 +15,7 @@ void* Singleton::method(void* arg) {
     return g_ret_val;
 }
 
-struct CRegion {
+class CRegion { public:
     void* f0;
 };
 

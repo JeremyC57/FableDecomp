@@ -1,21 +1,21 @@
 #include <cstdio>
-struct CWideString { int id; };
-struct C2DExtentsI { long X, Y; C2DExtentsI(long x, long y) : X(x), Y(y) { } };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CWideString { public: int id; };
+class C2DExtentsI { public: long X, Y; C2DExtentsI(long x, long y) : X(x), Y(y) { } };
+class CRGBColour { public: unsigned char B, G, R, A; };
 static long g_fmt[5]; static long g_initX = 0, g_initY = 0; static long g_pixels[4][4]; static int g_sets = 0; static const CWideString* g_saved = 0;
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat() : FormatIndex(-1) { }
     void Initialise(long r, long g, long b, long a, bool alpha) { g_fmt[0] = r; g_fmt[1] = g; g_fmt[2] = b; g_fmt[3] = a; g_fmt[4] = alpha; FormatIndex = 5; }
 };
-struct CSurface {
+class CSurface { public:
     bool InitialiseAsImage(const C2DExtentsI* size, const CPixelFormat* format, bool) { g_initX = size->X; g_initY = size->Y; return format->FormatIndex == 5; }
     void SetPixel(long x, long y, const CRGBColour* c) { g_pixels[y][x] = c->R; ++g_sets; }
     bool SaveAsTGA(const CWideString* f, const C2DExtentsI*, bool) { g_saved = f; return true; }
 };
 struct MinimapTheme { long ThemeIndex; };
 template<class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; T& operator[](unsigned long i) { return *(_M_start + i); } };
-struct CMinimapData {
+class CMinimapData { public:
     C2DExtentsI MinimapExtents; vector<MinimapTheme> MinimapThemeList; CSurface MinimapSurface; vector<CRGBColour> ColourMinimapTheme;
     CMinimapData() : MinimapExtents(0, 0) { }
     void BuildMinimapTGA(const CWideString& filename);

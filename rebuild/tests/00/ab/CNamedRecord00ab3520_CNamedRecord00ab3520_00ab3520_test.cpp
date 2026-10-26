@@ -9,7 +9,7 @@
 #endif
 
 static int g_strings = 0;
-struct CCharString { void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
+class CCharString { public: void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
 struct CNamedRecord { CCharString m_name; long m_4, m_8, m_c, m_10, m_14, m_18, m_1c; bool m_20, m_21;
     CNamedRecord() : m_name(), m_c(0), m_10(0), m_14(0), m_18(0), m_1c(0), m_20(false), m_21(false) { } };
 int main()

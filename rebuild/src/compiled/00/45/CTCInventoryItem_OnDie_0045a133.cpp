@@ -11,7 +11,7 @@ extern "C" void __cdecl FreeOwner48(Owner48* p);
 // member call on subobject at +0x3c (0x45180f), __fastcall -> __fastcall
 extern void __fastcall Sub3c_Notify(Sub3c* self);
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char pad[0x3c];
     Sub3c* sub3c_marker; // subobject region begins at +0x3c
 };

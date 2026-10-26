@@ -1,12 +1,12 @@
 // Behaviour test for 007ed060 (CTCCarriedActionUseDropGenericBox::vfunc_28): the base hook always runs; a creature with flag 8 is given an alert-to-player action, which is destroyed after the call.
 #include <cstdio>
 
-struct CThingAICreature;
+class CThingAICreature;
 
 static int g_baseCalls = 0, g_setCalls = 0, g_dtorCalls = 0;
 static CThingAICreature* g_actionCreature = 0;
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThingAICreature* m_creature;
     ~CCreatureActionBase() { ++g_dtorCalls; }
 };
@@ -15,12 +15,12 @@ namespace N_00842150 { struct CCreatureAction_AlertToPlayer : CCreatureActionBas
     CCreatureAction_AlertToPlayer(CThingAICreature* creature) { m_creature = creature; }
 }; } using N_00842150::CCreatureAction_AlertToPlayer;
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char m_flags6c;
     bool SetCurrentAction(CCreatureActionBase* action) { ++g_setCalls; g_actionCreature = action->m_creature; return true; }
 };
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     void OnUseBase(CThingAICreature*) { ++g_baseCalls; }
 };
 

@@ -8,12 +8,12 @@
 // arguments right to left, so the THIRD argument is copied first (into [esp]) and the second into [esp+0Ch]; each copy goes
 // through three registers. The copies need C3DVector's memberwise user copy constructor: with it the z word is stored
 // first and eax is reused for the second source pointer (a POD C3DVector, or named locals, allocate ecx/edx/eax differently).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     void SetOrientationVectors(const C3DVector& forward, const C3DVector& up);   // 0x00C404F0
 };
 

@@ -1,6 +1,6 @@
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 // Leaf: IsNewDestinationGoingToResetNavigation
-struct CTCCreatureNavigation;
+class CTCCreatureNavigation;
 
 struct Delegate {
     virtual void v0();
@@ -13,7 +13,7 @@ struct Delegate {
     virtual bool v7(CTCCreatureNavigation* nav, C3DVector* vec);
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* f0;
     Delegate* ParentThing;
 };

@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CTexture;
+class CTexture;
 
-struct CDisplayManager {
+class CDisplayManager { public:
     int calls;
     char* seen_a;
     char* seen_b;

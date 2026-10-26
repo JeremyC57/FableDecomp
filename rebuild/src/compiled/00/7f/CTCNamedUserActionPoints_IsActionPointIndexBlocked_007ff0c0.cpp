@@ -13,35 +13,35 @@
 // Shape: the box is built from two truncated longs (x, y, x, y); the three filters and the Bind3 are named locals (the IsNot
 //   filters and the result land in the dead parameter slots); the search tools are read into a named local before the pushes
 //   (the chained form loads them after); `? true : false` gives the `test al,al ; setne al` tail.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(long tlx, long tly, long brx, long bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) { }
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 class CThing;
-struct CThingCreatureBase;
-struct CThingFilter_IsNot {
+class CThingCreatureBase;
+class CThingFilter_IsNot { public:
     CThing* Thing;
     CThingFilter_IsNot(CThing* thing) : Thing(thing) { }
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float     Range;
     CThingFilter_In2DRange(const C3DVector& pos, float range) : Pos(pos), Range(range) { }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A* F1;
     const B* F2;
     const C* F3;
     CFilter_Bind3(const A& a, const B& b, const C& c) : F1(&a), F2(&b), F3(&c) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class TFilter, class T>
     bool GetPFirstThingInRoughArea(const C2DBoxI& box, const TFilter& filter, T** out) const;   // 0x007FE730
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* PThingSearchTools;               // +0x20 scoped_ptr
 };
@@ -77,7 +77,7 @@ struct CTCUserActionPointBase {
     CBaseIntelligentPointer PThing;                     // +0x2c CIntelligentPointer<CThing>
     const CWorld* GetWorld() const;                     // 0x00686A80 (CTCBase)
 };
-struct CTCNamedUserActionPoints : CTCUserActionPointBase {
+class CTCNamedUserActionPoints : public CTCUserActionPointBase { public:
     vector<CCharString> Names;                          // +0x34
     virtual bool IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& orientation, long index) const;
 };

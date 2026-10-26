@@ -11,7 +11,7 @@
 // precedes the argument pushes; the colour 0x122 and time 0.0f (`fldz`) are immediates on the argument stack.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -30,7 +30,7 @@ struct CDisplayEngine_Retail {
     unsigned char     _pad00[0x1614c];
     CFontBank_Retail* m_pFontBank;                   // +0x1614c
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -49,7 +49,7 @@ struct CThing {
     }
     CDisplayEngine_Retail* GetDisplayEngine();       // 0x004C7A70
 };
-struct CTCInventory {                                // interface type 0x11
+class CTCInventory { public:                                // interface type 0x11
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -61,7 +61,7 @@ struct CTCInventory {                                // interface type 0x11
 struct CSubtitleRenderer_Retail {                    // embedded at g_pPlayerGui+0x18
     void SetText(CFontBank_Retail* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char           _pad00[0x18];
     CSubtitleRenderer_Retail m_subtitles;            // +0x18
 };

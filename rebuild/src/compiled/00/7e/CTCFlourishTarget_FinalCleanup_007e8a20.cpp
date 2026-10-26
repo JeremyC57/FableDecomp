@@ -9,13 +9,13 @@
 // `push eax ; push 0` and a plain call (a void call with a test before it: no tail jump since retail keeps `call ; ret`).
 #include "engine/CTCBase.h"
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x10];
     unsigned char m_type;                          // +0x10
     void SetComponentRegistered(bool registered, CTCBase* component);   // 0x00833A10
 };
 
-struct CTCFlourishTarget : CTCBase {
+class CTCFlourishTarget : public CTCBase { public:
     void FinalCleanup();
 };
 

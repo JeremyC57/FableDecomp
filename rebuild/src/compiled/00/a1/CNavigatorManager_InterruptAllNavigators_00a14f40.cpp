@@ -29,7 +29,7 @@ struct SNode_00a14f40 {
     IListed_00a14f40*  m_pObject;                     // +0x08
 };
 
-struct CNavigatorManager {
+class CNavigatorManager { public:
     unsigned char _pad00[0x18];
     SNode_00a14f40*  m_pList;                         // +0x18: the sentinel
     void InterruptAllNavigators();

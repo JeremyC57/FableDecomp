@@ -7,7 +7,7 @@ struct CBasicStringChar {
     char* PData; unsigned long StringLength; unsigned long DataLength : 31; bool UseFastExtend : 1;
     bool operator==(const char* text) const { ++g_opEq; return g_opEqResult; }
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 class CCharString {
 public:
     CCharStringData* PStringData;
@@ -18,12 +18,12 @@ public:
         return PStringData->Data == text;
     }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const { ++g_lookups; g_lookupName = &name; return g_lookupResult; }
 };
-struct CWorld { unsigned char _pad00[0x10]; CGameDefinitionManager* DefinitionManager; };
+class CWorld { public: unsigned char _pad00[0x10]; CGameDefinitionManager* DefinitionManager; };
 static CWorld g_world; static CGameDefinitionManager g_defs;
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     void* __vftable;
     CWorld* GetWorld() const { return &g_world; }
     void SetPersonalityOverride(long defIndex, bool force) { ++g_sets; g_setIndex = defIndex; g_setForce = force; }

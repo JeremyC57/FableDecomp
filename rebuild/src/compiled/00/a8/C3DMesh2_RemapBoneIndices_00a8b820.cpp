@@ -41,10 +41,10 @@ struct CBoneMap {                                   // map<unsigned long, unsign
     }
 };
 
-struct C3DMeshStats;
-struct CCharString { void* PStringData; };
-struct C3DBoundingSphere { float values[4]; };
-struct C3DBoundingBox { float values[6]; };
+class C3DMeshStats;
+class CCharString { public: void* PStringData; };
+class C3DBoundingSphere { public: float values[4]; };
+class C3DBoundingBox { public: float values[6]; };
 template<class T> struct CPreAllocVectorMap {
     unsigned long Compare;
     T* Elements;
@@ -60,17 +60,17 @@ template<class T> struct CPreAllocVectorMap {
     iterator begin() { return iterator(Elements); }
     iterator end() { return iterator(Elements + Size); }
 };
-struct C3DHelperPoint {
+class C3DHelperPoint { public:
     float Position[3]; long BoneIndex;
     void RemapBoneIndices(CBoneMap& remap) { if (BoneIndex != -1) BoneIndex = remap[BoneIndex]; }
 };
 struct C3DHelperPointEntry { unsigned long Key; C3DHelperPoint Value; };
-struct C3DDummyObject {
+class C3DDummyObject { public:
     float Transform[12]; long BoneIndex;
     void RemapBoneIndices(CBoneMap& remap) { if (BoneIndex != -1) BoneIndex = remap[BoneIndex]; }
 };
 struct C3DDummyObjectEntry { unsigned long Key; C3DDummyObject Value; };
-struct C3DMeshStats {
+class C3DMeshStats { public:
     void* __vftable;
     void* MemoryPool;
     long StatsMemoryHandle;
@@ -86,17 +86,17 @@ struct C3DMeshStats {
     bool AnimatedFlag;
 };
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _retailPrimitive[0xa0];
     void RemapBoneIndices(CBoneMap& remap);         // 0x00A90F00
 };
-struct C3DBone2 {                                   // 0x3c
+class C3DBone2 { public:                                   // 0x3c
     unsigned long NameCRC;
     long          Parent;                           // +0x04
     long          OriginalNoChildren;
     float         LocalizationMatrix[12];
 };
-struct C3DMesh2 : C3DMeshStats {
+class C3DMesh2 : public C3DMeshStats { public:
     long MemoryHandle;
     long PrimMemoryHandle;
     long BoneNameMemoryHandle;

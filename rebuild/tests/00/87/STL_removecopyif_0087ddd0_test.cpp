@@ -4,7 +4,7 @@
 #endif
 // Model of the STLport remove_copy_if @ 0x0087DDD0 over a unary_negate predicate: copies down the entries the wrapped
 // predicate accepts and returns the new end.
-struct CAnimationEntry { float Rotation; };
+class CAnimationEntry { public: float Rotation; };
 class CRotationBelow {
 public:
     typedef const CAnimationEntry* argument_type;

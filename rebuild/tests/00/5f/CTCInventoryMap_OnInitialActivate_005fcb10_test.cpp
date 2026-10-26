@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char _pad4c[0x91 - 0x4c];
     unsigned char IsDead : 1;
     template<class T> bool GetInterface(T** ppOut, long interfaceType) {
@@ -38,8 +38,8 @@ struct CThing {
         return false;
     }
 };
-struct CThingManager { CThing* things[8]; CThing* GetThingWithUID(int64_model uid) { return uid >= 0 && uid < 8 ? things[(long)uid] : 0; } };
-struct CTCTeleporter { long activations; bool lastActive; void SetAsActive(bool active) { ++activations; lastActive = active; } };
+class CThingManager { public: CThing* things[8]; CThing* GetThingWithUID(int64_model uid) { return uid >= 0 && uid < 8 ? things[(long)uid] : 0; } };
+class CTCTeleporter { public: long activations; bool lastActive; void SetAsActive(bool active) { ++activations; lastActive = active; } };
 struct CTCInventoryBase_Map {
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void OnInitialActivate() { ++baseActivates; }
@@ -47,7 +47,7 @@ struct CTCInventoryBase_Map {
     CThingManager* manager; long baseActivates;
     CThingManager* GetThingManager() { return manager; }
 };
-struct CTCInventoryMap : CTCInventoryBase_Map {
+class CTCInventoryMap : public CTCInventoryBase_Map { public:
     CSerialisedUIDPointer SerialisedTeleporterUIDs;
     virtual void OnInitialActivate();
 };

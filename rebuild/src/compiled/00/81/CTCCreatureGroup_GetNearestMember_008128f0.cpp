@@ -10,7 +10,7 @@
 //   the frame); the member thing is fetched at the top of every iteration; the first member's distance-squared fills the
 //   best (initialised to 0 through the zero register), later ones are compared as `d < best * best` (fst into the dead `pos` slot, fld/fmul/fxch/
 //   fcompp); the sum of squares is the statement-order Z, Y, X form.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -18,7 +18,7 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float GetLengthSquared() const { float s = Z * Z; s += Y * Y; s += X * X; return s; }
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
 };
 struct CBaseIntelligentPointer {
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {
     void* PData;                                // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CGroupMemberData {
+class CGroupMemberData { public:
     CBaseIntelligentPointer PMember;            // +0x00
     bool IsActive;                              // +0x08
     unsigned long JoinedFrame;                  // +0x0c
@@ -71,7 +71,7 @@ struct CGroupMemberMap {                        // STLport map<unsigned __int64,
     SGroupMemberNode* begin() const { return Header->Left; }
     SGroupMemberNode* end() const { return Header; }
 };
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     void* __vftable;                            // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08

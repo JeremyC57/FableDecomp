@@ -3,13 +3,13 @@
 // Only the parent declaration is needed for pointer-based host behavior tests.
 #define FABLE_ENGINE_CAISTATEGROUPBEHAVIOURBASE_H
 #define FABLE_ENGINE_CTCPERCEIVETHING_H
-struct CTCPerceiveThing {};
+class CTCPerceiveThing { public:};
 #endif
 // CAIStateGroupBehaviourBase::IsRunnable() -- reset target, check behavior predicate, and acquire perceived target.
 // Grade: RELOCATION_MATCH -- explicit reset temporary lifetime preserves retail target-address ordering.
 #include "engine/CAIStateGroupBehaviourBase.h"
 #include "engine/CTCPerceiveThing.h"
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

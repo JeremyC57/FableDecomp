@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour test for 00b21160: Update is a no-op when offsets apply only at start-up; otherwise the current spline is
 // kept as the previous one, optionally reset to the initial spline, and the positions are re-offset.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_assignCalls = 0;
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     CArray& operator=(const CArray& other) { ++g_assignCalls; m_begin = other.m_begin; m_end = other.m_end; m_capacity = other.m_capacity; return *this; }
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;
     float             Tension;
     bool              EndPointsConnected;

@@ -3,9 +3,9 @@
 // Behaviour test: CTCDRumble::Create -- creates THING_RUMBLE on the map under the position; with the rumble driver it stores strength/length/global, constructs and activates it (null if activation fails); without the driver the thing is killed and null returned.
 #define CHECK(c) if (!(c)) { std::printf("007f1ac0_TEST FAIL\n"); return 1; }
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CTCDRumble { float Strength, Length; bool GlobalRumble; int constructed; };
-struct CThing { bool hasDriver; bool activates; bool killed; CTCDRumble driver; };
+class C3DVector { public: float X, Y, Z; };
+class CTCDRumble { public: float Strength, Length; bool GlobalRumble; int constructed; };
+class CThing { public: bool hasDriver; bool activates; bool killed; CTCDRumble driver; };
 static CThing g_thing;
 static bool g_createOk = true;
 static const char* g_lastName = 0;

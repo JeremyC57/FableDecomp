@@ -1,20 +1,20 @@
 // Behaviour test for CEngineLightingManager::CreateInternalPrimitive @ 0x00B44EB0.
 #include <cstdio>
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     long m_type; unsigned int m_flags;
     CEngineInternalPrimitiveBase(long type, unsigned int flags) : m_type(type), m_flags(flags) { }
     virtual int Kind() { return 0; }
     virtual ~CEngineInternalPrimitiveBase() { }
 };
-struct CEngineInternalPrimitiveLight : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveLight : public CEngineInternalPrimitiveBase { public:
     CEngineInternalPrimitiveLight() : CEngineInternalPrimitiveBase(15, 1) { }
     virtual int Kind() { return 1; }
 };
-struct CEngineInternalPrimitiveShadowedSpotLight : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveShadowedSpotLight : public CEngineInternalPrimitiveBase { public:
     CEngineInternalPrimitiveShadowedSpotLight() : CEngineInternalPrimitiveBase(16, 1) { }
     virtual int Kind() { return 2; }
 };
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type)
     {
         if (type == 15) return new CEngineInternalPrimitiveLight;

@@ -9,7 +9,7 @@
 //        Components {type, component} pairs at +0x44/+0x48 with the last pointer re-read after each pass; the component
 //        pointer is re-read from the pair after the slot-19 call; the three string temporaries (name, left join, full
 //        line) are destroyed in reverse order; the output reference is loaded into ebx after the empty-map test.
-struct CTCBase;
+class CTCBase;
 struct SComponentPair {                              // pair<ETCInterfaceType, CTCBase*>
     long     first;
     CTCBase* second;
@@ -22,7 +22,7 @@ public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -34,7 +34,7 @@ struct CTCBase {
     void* ParentThing;                               // +0x04
     bool  ToBeRemoved;                               // +0x08
 };
-struct CThing {
+class CThing { public:
     void*           __vftable;                       // +0x00
     unsigned char   _pad04[0x44 - 0x04];
     SComponentPair* m_componentsFirst;               // +0x44 Components

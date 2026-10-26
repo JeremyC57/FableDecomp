@@ -5,7 +5,7 @@
 static int g_seq[8]; static int g_pos;
 int TestRand() { return g_seq[g_pos++]; }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 class CThingObject { public: int id; };

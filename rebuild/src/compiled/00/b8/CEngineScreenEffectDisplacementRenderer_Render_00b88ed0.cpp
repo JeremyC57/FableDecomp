@@ -12,12 +12,12 @@
 // displacement texture released and cleared).
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 
-struct CEngineComponentRenderParams {
+class CEngineComponentRenderParams { public:
     long          Params;
     unsigned long m_pass;                          // +0x04
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     CTexture* CopyBackBufferToTexture();           // 0x009BF5E0
 };
 extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C

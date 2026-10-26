@@ -3,13 +3,13 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1) : PStringData((void*)text) { CHECK(length == -1); }
     ~CCharString() { }
 };
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -22,23 +22,23 @@ struct CInterfaceMap {
     }
 };
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0() {}
     virtual void Destroy() { ++g_destroyed; }
     long RefCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CCarryableDef : CDefPointeeBase {
+class CCarryableDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long ActiveCarrySlot;
     long SecondaryActiveCarrySlot;
     long PassiveCarrySlot;
 };
 static CCarryableDef* g_carryDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CCarryableDef>* out)
     {
         ++g_getSubDef;
@@ -50,7 +50,7 @@ class CThing;
 class CThingObject;
 static bool g_isCarrying = false; static CThing* g_carried = 0; static int g_removed = 0; static CThing* g_removedThing = 0;
 static int g_put = 0; static CThing* g_putThing = 0; static long g_putSlot = -1; static bool g_putFlag = false; static long g_askedDef = -1;
-struct CTCCarrying {
+class CTCCarrying { public:
     bool IsCarryingThing(long defIndex) { g_askedDef = defIndex; return g_isCarrying; }
     CThing* GetCarriedThing(long defIndex) { CHECK(defIndex == g_askedDef); return g_carried; }
     void RemoveThing(CThing* thing) { ++g_removed; g_removedThing = thing; }

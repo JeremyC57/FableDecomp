@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_TrollSwipe {
+class CCreatureAction_TrollSwipe { public:
     void* vftable;
     int destroyed;
 };

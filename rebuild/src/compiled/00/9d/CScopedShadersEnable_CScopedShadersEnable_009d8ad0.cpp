@@ -16,7 +16,7 @@
 // are inlined with old = &OldVertexEnable / &OldPixelEnable, which is where VC's null tests of `this`
 // and `this+1` come from; the pixel-shader switch is tail-duplicated into both returns.
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad000[0x390];
     bool          VertexShadersEnabled;          // +0x390
     bool          PixelShadersEnabled;           // +0x391

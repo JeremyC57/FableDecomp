@@ -6,7 +6,7 @@
 #include <cstring>
 #include <new>
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -30,7 +30,7 @@ template <class T> struct CArray {
     }
 };
 
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CIDrawEnvironmentTextureSet {
     CArray<long>  Textures;
     CArray<float> Blends;

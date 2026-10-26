@@ -6,9 +6,9 @@
 // inline copy constructor (add-ref) and the parameter's inline destructor (release) share one null test and are folded into
 // `inc ecx ; mov eax,ecx ; dec eax` with both count stores kept (GOTCHAS 24d); the parameter's dead field clears are dropped.
 // Layout: PMode (CCountedPointer<CModeSitBase>) at +0xa8/+0xac; the PDB header (CCreatureAction_SitDown.h) sits 0x0c high, modelled locally.
-struct CThingCreatureBase;
-struct CAnimationEntry;
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CThingCreatureBase;
+class CAnimationEntry;
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -41,12 +41,12 @@ struct CCountedPointer_CModeSitBase {       // {object, count block}
     }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
-struct CCreatureAction_SitDown : CCreatureActionBase {          // vtable 0x012781FC; retail sizeof 0xb0
+class CCreatureAction_SitDown : public CCreatureActionBase { public:          // vtable 0x012781FC; retail sizeof 0xb0
     CCountedPointer_CModeSitBase PMode;     // +0xa8
     virtual void v00();
     CCreatureAction_SitDown(CThingCreatureBase* owner, CAnimationEntry* animation, CCountedPointer_CModeSitBase mode);

@@ -7,7 +7,7 @@
 // exists in the image (an unreferenced inline-constructor copy), so the attribution rests on the layout alone.
 // Shape: three member constructor calls in declaration order, then both byte members cleared through al.
 // Leaf: ??0CActivity
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                      // 0x0099E4B0
 };

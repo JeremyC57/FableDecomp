@@ -11,10 +11,10 @@
 // move through eax/ecx/edx in member order, the C2DVector is a plain two-float POD (integer moves),
 // and only its CombatSequences vector calls an out-of-line copy constructor. The defending info's copy
 // constructor is out of line. No engine header exists for CCombatantInfo (local model).
-struct CThingCreatureBase;
-struct CCombatSequenceBase;
+class CThingCreatureBase;
+class CCombatSequenceBase;
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
@@ -26,7 +26,7 @@ struct CCountedPointerSequenceVector {      // vector<CCountedPointer<CCombatSeq
     CCountedPointerSequenceVector(const CCountedPointerSequenceVector& other);   // 0x006F19F0
 };
 
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;           // +0x00
     long AttackerNumber;                    // +0x04
     long CombatWheelRingIndex;              // +0x08
@@ -38,7 +38,7 @@ struct CAttackingCombatantInfo {
     CCountedPointerSequenceVector CombatSequences;   // +0x24
 };
 
-struct CDefendingCombatantInfo {
+class CDefendingCombatantInfo { public:
     unsigned char _body[0x44];
     CDefendingCombatantInfo(const CDefendingCombatantInfo& other);   // 0x006F46D0
 };

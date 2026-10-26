@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CChunkedFileSuperChunk;
-struct CChunkedFileChunk { void* vt; char ChunkType[5]; unsigned char pad[3]; CChunkedFileSuperChunk* Parent; };
+class CChunkedFileSuperChunk;
+class CChunkedFileChunk { public: void* vt; char ChunkType[5]; unsigned char pad[3]; CChunkedFileSuperChunk* Parent; };
 struct CCountedChunkPointer { CChunkedFileChunk* Object; void* Info; };
 static CCountedChunkPointer* g_erased = 0; static int g_erases = 0;
 struct CRetailChunkArray {

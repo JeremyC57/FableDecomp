@@ -19,11 +19,11 @@
 // a creature mode manager (interface 0x31 = bit 17 of the bitset word at +0x24), removes mode 7 if it is current.
 // Layout: engine/CScriptGameResourceObjectScriptedThing.h (PDB, sizeof 0x28) agrees on every offset but is a
 // flat record without bases or constructors, so the class chain is modelled locally (as in 0x00903710).
-struct CCPPointerInfo;
-struct CGameScriptInterface;
-struct CTCBase;
+class CCPPointerInfo;
+class CGameScriptInterface;
+class CTCBase;
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00();
     void* IntelligentPointer;                         // +0x04
     CBaseObject();                                    // 0x0099A380
@@ -36,7 +36,7 @@ struct CInterfaceMap {                                // CVectorMap<ETCInterface
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
 
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     unsigned char  _pad08[0x18];
     unsigned long  m_presentBits[9];                  // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;                      // +0x44
@@ -66,14 +66,14 @@ struct CThing : CBaseObject {
     }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase;
+class CScriptGameResourceObjectScriptedThingBase;
 struct CCountedPointer_ScriptedThingBase {            // CCountedPointer<CScriptGameResourceObjectScriptedThingBase>
     CScriptGameResourceObjectScriptedThingBase* Data;
     CCPPointerInfo*                             Info;
     CCountedPointer_ScriptedThingBase() : Data(0), Info(0) { }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:
     CCountedPointer_ScriptedThingBase PImp;           // +0x08 PImp_Data / +0x0c PImp_Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() { }
@@ -94,8 +94,8 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_0 = 0 };
 
-struct CScriptGameResourceObjectScriptedThing;
-struct CTCScriptedControl {                           // interface 0x1f component
+class CScriptGameResourceObjectScriptedThing;
+class CTCScriptedControl { public:                           // interface 0x1f component
     void SetLocked(CScriptGameResourceObjectScriptedThing& owner, EScriptAIPriority priority);   // 0x00712C20
 };
 
@@ -103,12 +103,12 @@ struct CCreatureMode {
     virtual void v00();
     virtual unsigned long GetModeType();              // slot 1
 };
-struct CTCCreatureModeManager {                       // interface 0x31 component
+class CTCCreatureModeManager { public:                       // interface 0x31 component
     CCreatureMode* GetCurrentMode();                  // 0x0073A6E0
     void RemoveMode(unsigned long mode);              // 0x0073ABA0
 };
 
-struct CScriptGameResourceObjectScriptedThing : CScriptGameResourceObjectScriptedThingBase {   // vtable 0x0128D86C
+class CScriptGameResourceObjectScriptedThing : public CScriptGameResourceObjectScriptedThingBase { public:   // vtable 0x0128D86C
     CGameScriptInterface* ScriptInterface;            // +0x10
     CIntelligentPointer   PThing;                     // +0x14
     long                  ScriptID;                   // +0x1c

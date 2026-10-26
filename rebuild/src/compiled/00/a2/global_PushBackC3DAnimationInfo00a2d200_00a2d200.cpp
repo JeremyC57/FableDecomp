@@ -13,7 +13,7 @@
 // The element type is named from the copy constructor's label when unique. One of 11 bodies.
 #include <new>
 
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     unsigned char _body[0x28];
     C3DAnimationInfo(const C3DAnimationInfo& other);           // 0x00A2A4F0
 };

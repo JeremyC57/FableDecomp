@@ -2,7 +2,7 @@
 struct AbilityEntry { void* a; void* ability; };
 struct AbilityObj { char pad[0x90]; float costFactor; };
 float g_defaultMoralityCostFactor = 2.5f;
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     char pad[0x160];
     AbilityEntry* table;
     float GetAbilityMoralityCostFactor(int index);

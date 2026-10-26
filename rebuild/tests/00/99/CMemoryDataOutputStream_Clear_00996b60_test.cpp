@@ -44,7 +44,7 @@ template <class T> struct vector : _Vector_base<T> {
         swap_values(this->_M_end_of_storage._M_data, x._M_end_of_storage._M_data);
     }
 };
-template <class T> struct CArray : vector<T> {
+template <class T> class CArray : public vector<T> { public:
     void Clear()
     {
         if (this->capacity() != 0) {
@@ -54,7 +54,7 @@ template <class T> struct CArray : vector<T> {
         }
     }
 };
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     virtual ~CMemoryDataOutputStream() { }
     void*         m_lineTerminator;
     CArray<char>  Data;

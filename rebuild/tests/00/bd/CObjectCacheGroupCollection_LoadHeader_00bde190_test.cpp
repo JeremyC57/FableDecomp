@@ -67,11 +67,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CEngineMap;
-struct CEngineStaticMapFileBlockManager;
+class CEngineMap;
+class CEngineStaticMapFileBlockManager;
 
 #pragma pack(push, 1)
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     bool                              LockedFromMemoryRelocation; // +0x00
     unsigned char                     _pad_0x01[0x3];        // +0x01
     CEngineStaticMapFileBlockManager* FileBlockManager;      // +0x04
@@ -105,7 +105,7 @@ FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, CollectionTypePalette) == 0x6
 
 
 #pragma pack(push, 1)
-struct CDataInputStream {
+class CDataInputStream { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long StreamPos;                                 // +0x04
     long          StreamSize;                                // +0x08
@@ -138,7 +138,7 @@ FABLE_STATIC_ASSERT(offsetof(CDataInputStream, SourceChunkBytesRemaining) == 0x1
 
 
 #pragma pack(push, 1)
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
     long  position;                                          // +0x04 retail-only long (previous header)
     long  sourceLength;                                      // +0x08 retail-only long (previous header)
@@ -168,7 +168,7 @@ typedef long S32; typedef unsigned long U32; typedef __int64 S64;
 #define INLINE inline
 typedef int S32; typedef unsigned int U32; typedef long long S64;
 #endif
-struct CDataInputStream : CDataInputStreamLayout {
+class CDataInputStream : public CDataInputStreamLayout { public:
     void ReadWithSrcChunkOverflow(unsigned char*,long); // 0x00993ca0
     INLINE void Read(void* destination,long bytes) {
         S64 next=(U32)(StreamPos+bytes);
@@ -184,14 +184,14 @@ struct CDataInputStream : CDataInputStreamLayout {
 };
 // Native memory stream derives from the six-field CDataInputStream base;
 // donor flattened chunkBase is incorrectly long, native +0c is a pointer.
-struct CMemoryDataInputStream : CDataInputStream {unsigned char* StreamSource;};
+class CMemoryDataInputStream : public CDataInputStream { public:unsigned char* StreamSource;};
 struct BoundingSphere { float X,Y,Z,Radius; BoundingSphere():X(0),Y(0),Z(0),Radius(0) {} };
 struct CacheGroupFileHeader {
     S32 FileBlockPos,FileBlockSize,OffsetIntoFileBlock;
     BoundingSphere Sphere; float MaxFadeDistance; U32 PrimitiveTypeMask;
     unsigned short CacheGroupIndex; bool RenderUpdateNeeded;
 };
-struct CLocalDetailCacheMap {struct CObjectCacheGroupCollection {
+class CLocalDetailCacheMap { public:class CObjectCacheGroupCollection { public:
     void* VTable; CObjectCacheGroupCollection* Next; BoundingSphere Sphere;
     float MaxFadeDistance; U32 PrimitiveTypeMask; void* ObjectTypeCollections; void* Map;
     S32 FileBlockPos,FileBlockSize,OffsetIntoFileBlock;

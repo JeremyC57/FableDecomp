@@ -5,7 +5,7 @@
 #endif
 #include <string.h>
 // Behaviour test for CGameScriptInterface::SetHeroWillAsUsable (0x00898340).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap_Retail {                    // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -13,7 +13,7 @@ struct CInterfaceMap_Retail {                    // CVectorMap<ETCInterfaceType,
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
 
-struct CThing {
+class CThing { public:
     virtual void v000() {}
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];       // +0x20 std::bitset of the interface types present
@@ -42,7 +42,7 @@ struct CThing {
     }
 };
 
-struct CTCHero {                          // TC 0x29 (PDB layout agrees)
+class CTCHero { public:                          // TC 0x29 (PDB layout agrees)
     unsigned char _pad[0xc];
     bool WeaponsUsable;                   // +0x0C
     bool WillUsable;                      // +0x0D
@@ -56,12 +56,12 @@ public:
     CThing* GetHeroThing() { return hero; }
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer player;
     CPlayer& GetMainPlayer() { return player; }
 };
 
-struct CRegionDef {
+class CRegionDef { public:
     virtual void v000() {}
     int deleted;
     virtual void DeleteThis() { ++deleted; }
@@ -72,7 +72,7 @@ struct CRegionDef {
     bool PreventHeroWillUse;                 // +0x71
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCountedPointer(T* data) : Data(data) { if (Data) Data->AddRef(); }
     ~CCountedPointer() { if (Data) Data->Release(); }
@@ -80,27 +80,27 @@ template<class T> struct CCountedPointer {
     bool IsNull() const { return Data == 0; }
 };
 
-struct CRegion {
+class CRegion { public:
     CRegion() : m_pDef(0) {}
     unsigned char _pad00[0x24];
     CCountedPointer<CRegionDef> m_pDef;   // +0x24
     unsigned char _pad28[0x30];
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     CRegion regions[3]; long current;
     long GetCurrentRegionNumber() { return current; }
     CRegion& GetRegionEntry(long region) { return regions[region]; }
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void w000() {} virtual void w001() {} virtual void w002() {} virtual void w003() {} virtual void w004() {} virtual void w005() {}
     virtual void w006() {} virtual void w007() {} virtual void w008() {} virtual void w009() {} virtual void w010() {} virtual void w011() {}
     CWorldMap* map;
     virtual CWorldMap* GetWorldMap() { return map; }
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {}
     CWorld* World;                        // +0x04
     void* Component;                      // +0x08

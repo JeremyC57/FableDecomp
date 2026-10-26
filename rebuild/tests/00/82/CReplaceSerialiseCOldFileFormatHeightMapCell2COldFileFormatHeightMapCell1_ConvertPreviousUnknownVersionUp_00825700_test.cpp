@@ -1,7 +1,7 @@
 // Behaviour test: CReplaceSerialise<COldFileFormatHeightMapCell2,COldFileFormatHeightMapCell1>::ConvertPreviousUnknownVersionUp -- build a new version-2 cell from a version-1 record (converting an older record up first), default alpha 0x80
 #include <cstdio>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int refs;
     void (*destroy)(void*);
     void* object;

@@ -1,4 +1,4 @@
-struct CCompressorZlib {
+class CCompressorZlib { public:
     char pad[0x1c];
     void* streamInput;   // +0x1c
     unsigned long size;  // +0x20

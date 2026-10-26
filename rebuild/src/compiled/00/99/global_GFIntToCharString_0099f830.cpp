@@ -8,7 +8,7 @@
 // Shape: the landed GFUHUGEToCharString (0x0099F930, catalog "CCharString::FromUInt64") with a 32-bit argument: named
 // local default-constructed, formatted, copied out through the inline copy constructor (no NRVO) and destroyed.
 // Leaf: ?GFIntToCharString@@
-struct CCharStringData;
+class CCharStringData;
 extern long g_CCharStringInstanceCount;        // 0x013BD800
 
 class CCharString {

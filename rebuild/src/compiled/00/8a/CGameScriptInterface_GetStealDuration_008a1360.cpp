@@ -22,7 +22,7 @@ struct CDefBase {
     long RefCount;                              // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
@@ -36,11 +36,11 @@ struct CStealableDef : CDefBase {
     float MinDuration;                          // +0xa8
     float MaxDuration;                          // +0xac
 };
-struct CCreatureStatsDef : CDefBase {
+class CCreatureStatsDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long StealSkill;                            // +0x28
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_005130a0(CDefPointer<CStealableDef>& out);     // 0x005130A0
     bool GetSubDef_0059350c(CDefPointer<CCreatureStatsDef>& out); // 0x0059350C
 };
@@ -92,13 +92,13 @@ struct CTCStealable {
     CBaseIntelligentPointer Item;               // +0x0d
 };
 #pragma pack(pop)
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;           // slot 11 (+0x2c)
 };
-struct CWorld; struct CMainGameComponent; struct CDisplayEngine; struct CDefinitionManager; struct CPlayerManager;
-struct CGameScriptInterface {
+class CWorld; class CMainGameComponent; class CDisplayEngine; class CDefinitionManager; class CPlayerManager;
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                 World;              // +0x04
     virtual long GetStealDuration(const CScriptThing& thing) const;

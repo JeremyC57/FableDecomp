@@ -7,19 +7,19 @@
 // Shape: the component name is a NAMED CCharString local in its own scope (a bare temporary
 // reuses the constructor's returned `this`; retail re-derives `lea eax,[esp+0Ch]`), destroyed
 // before the base call; the base's byte result is normalised with `? true : false` (`setne al`).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-struct CTCBase;
-struct CTCParamsBase;
-struct CThing {
+class CTCBase;
+class CTCParamsBase;
+class CThing { public:
     virtual void v00();
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     unsigned char OnCreate();                                // 0x004C9560 (CThing's, called non-virtually)
 };
-struct CThingPhysical : CThing {
+class CThingPhysical : public CThing { public:
     virtual bool OnCreate();
 };
 

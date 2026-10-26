@@ -7,7 +7,7 @@
 // adds x*x last. VC7.1 (no /Op) re-associates the float sum: `X*X + Y*Y + Z*Z` comes out (z*z + x*x) + y*y and
 // `Z*Z + Y*Y + X*X` differs too; only the grouping `X*X + (Y*Y + Z*Z)` reproduces retail. `Range * Range` is compared
 // against it (`fcompp ; test ah,5 ; jp`) and the bool is materialised per branch (`mov al,1` / `xor al,al`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }

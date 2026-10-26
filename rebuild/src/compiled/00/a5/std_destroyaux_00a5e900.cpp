@@ -45,7 +45,7 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 }
-template <class T> struct CArray : std::vector<T> { };
+template <class T> class CArray : public std::vector<T> { public: };
 class CArrayHolder : public CBaseClass {    // 16 bytes: vptr +0, array +4
 public:
     CArray<long> m_array;

@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicsBase::HasCollidedWithLandscapeAt (0x00880220)
-struct C3DVector { float X, Y, Z; };
-struct CPhysicsCollideResponse { C3DVector CollidePos, CollideNormal; float Friction; };
-struct CWorldMap { float ground;
+class C3DVector { public: float X, Y, Z; };
+class CPhysicsCollideResponse { public: C3DVector CollidePos, CollideNormal; float Friction; };
+class CWorldMap { public: float ground;
     float GetGroundSizeZAt(const C3DVector&) { return ground; }
     C3DVector GetGroundFaceNormalAt(const C3DVector&) { C3DVector n = { 0, 0, 1 }; return n; } };
 static bool HasCollided(CWorldMap* map, const C3DVector& p, CPhysicsCollideResponse* r)

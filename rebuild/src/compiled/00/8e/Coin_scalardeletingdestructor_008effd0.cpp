@@ -29,7 +29,7 @@ public:
 };
 #pragma pack(pop)
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
 class Mass {
 public:

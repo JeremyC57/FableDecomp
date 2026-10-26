@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CDataOutputStream {
+class CDataOutputStream { public:
     unsigned char m_buf[256];
     unsigned long m_size;
     CDataOutputStream() : m_size(0) {}
@@ -8,15 +8,15 @@ struct CDataOutputStream {
     void WriteULONG(unsigned long value) { unsigned int v = (unsigned int)value; std::memcpy(m_buf + m_size, &v, 4); m_size += 4; }
     void WriteData(const void* data, unsigned long size) { std::memcpy(m_buf + m_size, data, size); m_size += size; }
 };
-struct CMemoryDataOutputStream : CDataOutputStream {
+class CMemoryDataOutputStream : public CDataOutputStream { public:
     unsigned long GetSize() { return m_size; }
     void* PeekData() { return m_buf; }
 };
-struct CParticleProgram {
+class CParticleProgram { public:
     void WriteToFile(CDataOutputStream& out) { out.WriteData("prog", 4); out.WriteULONG(9); }
 };
-template <class T> struct CCountedPointer { T* m_pObject; void* m_pCount; T* operator->() const { return m_pObject; } };
-struct C3DClothPrimitive {
+template <class T> class CCountedPointer { public: T* m_pObject; void* m_pCount; T* operator->() const { return m_pObject; } };
+class C3DClothPrimitive { public:
     CCountedPointer<CParticleProgram> ParticleProgram;
     unsigned long PrimitiveIndex;
     unsigned long MaterialIndex;

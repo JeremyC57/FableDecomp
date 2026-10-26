@@ -3,8 +3,8 @@
 // Model of CScrollableList::UnhideComponent: all eight states get the position and full alpha, the component slides
 // to state 5's position and fades to state 5's colour; an instant move (time <= 0.0001) into an active list raises
 // state flag 0x19, anything else clears it.
-struct C2DVector { float X, Y; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CUIState { unsigned long StateChangeFlag; long StateChangeType; C2DVector Position; unsigned char pad[8]; CRGBColour Colour; };
 
 struct CComponent {

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CParticleContext {
+class CParticleContext { public:
     void* vftable;
     int destroyed;
 };

@@ -15,7 +15,7 @@
 // Shape: the per-line width is `(long)(window.BRX - left)` with `float left = window.TLX;` read first in the loop body:
 //        retail loads TLX, keeps it on the x87 stack through __ftol2 and drops it with `fstp st(0)`; the same named
 //        local also restores the inner newline loop's head alignment. Exits are written out in full.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                          // 0x0099AED0
     CWideString(const unsigned short* text);                // 0x0099B6B0
@@ -36,13 +36,13 @@ void __fastcall WordWrap_SetOption(long option, long value);                    
 void __fastcall WordWrap_SetCallback(TWordWrapWidthCallback callback, long user);       // 0x00A0FD90
 const unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, long width, long* lineWidth);   // 0x00A10390
 
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CCPPointerInfo;
-struct CFontBank {
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CCPPointerInfo;
+class CFontBank { public:
     void* _vf;
     long Height;                                            // +0x04
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -59,10 +59,10 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-struct CDraggableInto : CComponentInterface, CDrawableInterface, CDraggableInterface {
+class CDraggableInto : public CComponentInterface, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x15c - 0x1c];
 };
-struct CText : CDraggableInto {
+class CText : public CDraggableInto { public:
     CWideString            Value;                  // +0x15c
     CCountedPointer<CFontBank> PFont;              // +0x160
     virtual void v000();

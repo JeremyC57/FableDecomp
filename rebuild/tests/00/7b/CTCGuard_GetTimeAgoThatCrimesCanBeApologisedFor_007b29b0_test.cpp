@@ -10,7 +10,7 @@ template<class T> inline const T& Clamp(const T& value, const T& low, const T& h
 {
     return (value < low) ? low : ((high < value) ? high : value);
 }
-struct CTCGuard {
+class CTCGuard { public:
     long FrameLastReceivedApology;
     long GetTimeAgoThatCrimesCanBeApologisedFor() const
     {

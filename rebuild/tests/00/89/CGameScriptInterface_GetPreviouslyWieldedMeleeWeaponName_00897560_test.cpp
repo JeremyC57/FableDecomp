@@ -15,21 +15,21 @@ struct CDefStringTable {
     CCharString GetString(long index) { return CCharString(index == 3 ? "OBJECT_IRON_LONGSWORD" : ""); }
 };
 static CDefStringTable g_DefStringTable;
-struct CDefString {
+class CDefString { public:
     long Index;
     CCharString GetString() const { return g_DefStringTable.GetString(Index); }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index) { CDefString d; d.Index = index == 77 ? 3 : 4; return d; }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     virtual ~CThing() {}
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -65,9 +65,9 @@ struct CThing {
     }
 };
 struct CTCHeroWeaponHistory { long PreviouslyWieldedMeleeWeapon; };
-struct CPlayer { CThing* hero; CThing* GetHeroThing() { return hero; } };
-struct CPlayerManager { CPlayer* player; CPlayer* GetMainPlayer() { return player; } };
-struct CGameScriptInterface {
+class CPlayer { public: CThing* hero; CThing* GetHeroThing() { return hero; } };
+class CPlayerManager { public: CPlayer* player; CPlayer* GetMainPlayer() { return player; } };
+class CGameScriptInterface { public:
     CDefinitionManager* DefinitionManager;
     CPlayerManager* PlayerManager;
     bool GetPreviouslyWieldedMeleeWeaponName(CCharString& name) const;

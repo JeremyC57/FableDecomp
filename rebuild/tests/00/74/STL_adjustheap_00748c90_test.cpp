@@ -1,7 +1,7 @@
 // Behaviour test for 0x00748C90 std::__adjust_heap(CThing**, int, int, CThing*, CCompare_FurthestFromInitPos2D)
 #include <cstdio>
 
-struct CThing { int key; };
+class CThing { public: int key; };
 struct CCompare_FurthestFromInitPos2D {
     bool operator()(CThing* a, CThing* b) const { return a->key < b->key; }   // stand-in: max-heap on key
 };

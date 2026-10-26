@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstdlib>
-struct CScriptBase { unsigned char _body[0x3c]; CScriptBase() { for (int i = 0; i < 0x3c; ++i) _body[i] = 0; } };
+class CScriptBase { public: unsigned char _body[0x3c]; CScriptBase() { for (int i = 0; i < 0x3c; ++i) _body[i] = 0; } };
 struct CQuestScriptObject : CScriptBase {
     void* Game; void* Data;
     CQuestScriptObject(void* data, void* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CBaseObject { void* m_pIntelligentPointer; CBaseObject() : m_pIntelligentPointer(0) { } };
+class CBaseObject { public: void* m_pIntelligentPointer; CBaseObject() : m_pIntelligentPointer(0) { } };
 struct CScriptedThing : CBaseObject { void* Data; void* Info; CScriptedThing() : Data(0), Info(0) { } };
 struct Vec { void* s; void* f; void* e; Vec() : s(0), f(0), e(0) { } };
 struct Node { char color; Node* parent; Node* left; Node* right; };

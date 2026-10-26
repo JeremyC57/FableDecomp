@@ -8,12 +8,12 @@
 #endif
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) g_fail = 1; } while (0)
-struct CCharString {                         // one-word handle
+class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
     virtual void v00();
@@ -23,11 +23,11 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThing;
+class CThing;
 
 struct SStringStringThing {                  // 0x18 bytes
     CCharString                 First;       // +0x00

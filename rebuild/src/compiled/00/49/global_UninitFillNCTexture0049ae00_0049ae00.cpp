@@ -12,7 +12,7 @@
 // unique. One of 12 bodies.
 #include <new>
 
-struct CTexture {
+class CTexture { public:
     unsigned char _body[0x8];
     CTexture(const CTexture& other);           // 0x009F9D00
 };

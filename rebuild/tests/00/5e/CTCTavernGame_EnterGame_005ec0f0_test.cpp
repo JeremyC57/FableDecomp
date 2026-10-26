@@ -6,7 +6,7 @@ typedef long ETavernGameStates;
 static bool g_bTavernGameQuitRequested = false;
 static int g_visible = -1, g_limbo = -1, g_menuClose = 0, g_guiClose = 0, g_openUI = 0, g_releases = 0, g_leave = 0;
 static void* g_boundGame = 0;
-struct CTavernGameDef { long m_count; long MinBet; void Release() { --m_count; ++g_releases; } };
+class CTavernGameDef { public: long m_count; long MinBet; void Release() { --m_count; ++g_releases; } };
 static CTavernGameDef g_def = { 1, 10 };
 struct CDefPointer {
     CTavernGameDef* Object;
@@ -14,15 +14,15 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) Object->Release(); }
     CTavernGameDef* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef_005ed4a0(CDefPointer& out) { out.Object = &g_def; ++g_def.m_count; return true; }
 };
-struct CTCTavernGame;
-struct CTCGamePlayer { void SetGame(CTCTavernGame* game) { g_boundGame = game; } };
+class CTCTavernGame;
+class CTCGamePlayer { public: void SetGame(CTCTavernGame* game) { g_boundGame = game; } };
 struct CHeroMenuComponent { void RequestClose() { ++g_menuClose; } };
 static CTCGamePlayer g_gamePlayer;
 static CHeroMenuComponent g_menu;
-struct CThing {
+class CThing { public:
     CDefClassBase* PDef;
     void SetVisible(bool v) { g_visible = v; }
     template<class T> bool GetInterface(T** ppOut, long type) { if (type != 0xd0) return false; *ppOut = (T*)(void*)&g_gamePlayer; return true; }
@@ -31,19 +31,19 @@ struct CThing {
 };
 static CDefClassBase g_defClass;
 static CThing g_hero = { &g_defClass };
-struct CTCHeroStats { long Money; };
+class CTCHeroStats { public: long Money; };
 static CTCHeroStats g_stats = { 75 };
-struct CPlayer { CThing* GetHeroThing() { return &g_hero; } };
+class CPlayer { public: CThing* GetHeroThing() { return &g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static CPlayerManager g_pm;
-struct CMainGameComponent { CPlayerManager* PlayerManager; };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; };
 static CMainGameComponent g_mgc = { &g_pm };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
-struct CPlayerGui { bool m_bShowing; void Close(bool) { ++g_guiClose; } void OpenGameUI() { ++g_openUI; } };
+class CPlayerGui { public: bool m_bShowing; void Close(bool) { ++g_guiClose; } void OpenGameUI() { ++g_openUI; } };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     CThing*           ParentThing;
     bool              IsBeingPlayed;
     bool              GameWon;

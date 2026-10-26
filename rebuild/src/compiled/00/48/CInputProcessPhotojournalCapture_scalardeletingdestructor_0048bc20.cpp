@@ -1,4 +1,4 @@
-struct CInputProcessPhotojournalCapture {
+class CInputProcessPhotojournalCapture { public:
     void* vftable;
 };
 

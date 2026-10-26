@@ -21,7 +21,7 @@ static bool g_badName = false;          // a callee saw an unexpected name / arg
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_termFrame; }
 static void Reset() { g_live = 0; g_iatt = 0; g_termAt = 1 << 30; g_termFrame = 1 << 30; g_frames = 0; g_badName = false; }
 
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData(0) { }
     ~CCharString() { }
@@ -35,7 +35,7 @@ struct CCharString {
         return strcmp(PStringData, text) == 0;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     CScriptThing() : Id(0) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
@@ -43,7 +43,7 @@ struct CScriptThing {
 };
 static const char* g_loads[16];          // region loaded at frame f (0 = none)
 static int g_teleports = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool MsgOnRegionLoaded(CCharString& region) const
     {

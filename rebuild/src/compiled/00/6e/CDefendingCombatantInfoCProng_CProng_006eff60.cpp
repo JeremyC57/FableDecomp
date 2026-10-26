@@ -8,11 +8,11 @@
 //   POccupier +0x14; sizeof 0x1C.
 // Shape: memberwise copy -- the head's byte then three unaligned dwords at +1/+5/+9 (C3DVector has a user memberwise copy, so the
 //   head is not block-copied), the timer, then the intelligent-pointer copy built in ebx.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                             // +4
@@ -30,8 +30,8 @@ struct CProngHead {                                   // the PDB's byte-packed h
     C3DVector Prong;                                  // +0x01
 };
 #pragma pack(pop)
-struct CDefendingCombatantInfo {
-    struct CProng : CProngHead {                      // 28 bytes
+class CDefendingCombatantInfo { public:
+    class CProng : public CProngHead { public:                      // 28 bytes
         long                ProngBlockageTimer;       // +0x10
         CIntelligentPointer POccupier;                // +0x14
         CProng(const CProng& other);

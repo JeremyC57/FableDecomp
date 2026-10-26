@@ -11,12 +11,12 @@
 // Shape: the hand walk re-reads `CurrentPlayerCards->end()` every pass; the sound name is a named CCharString in its own
 // block (the `push ecx` frame word); the index is a `long` against the unsigned size() (`jb`); STLport operator[] as
 // `*(begin() + n)`. The single SetState call after the if/else is tail-duplicated into both arms by VC7.1.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CCard {
+class CCard { public:
     void*         Thing;                     // +0x00
     long          Name;                      // +0x04
     long          Value;                     // +0x08

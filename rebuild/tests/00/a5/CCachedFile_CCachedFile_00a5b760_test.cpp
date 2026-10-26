@@ -3,14 +3,14 @@
 static int g_baseBuilt = 0, g_stringBuilt = 0, g_copied = 0;
 
 struct CBase { CBase() { ++g_baseBuilt; } virtual ~CBase() { } };
-struct CAFile : CBase { };
+class CAFile : public CBase { public: };
 struct CByteArrayRange { unsigned char* m_pFirst; unsigned char* m_pLast; CByteArrayRange() : m_pFirst(0), m_pLast(0) { } };
 struct CByteArrayEnd { unsigned char* m_pEnd; CByteArrayEnd() : m_pEnd(0) { } };
 struct CByteArray : CByteArrayRange { CByteArrayEnd m_end; };
-struct CWideString { unsigned short* m_pString; CWideString() : m_pString(0) { ++g_stringBuilt; } };
+class CWideString { public: unsigned short* m_pString; CWideString() : m_pString(0) { ++g_stringBuilt; } };
 struct CCountedPointer { void* m_pObject; void* m_pCount; CCountedPointer() : m_pObject(0), m_pCount(0) { } };
 
-struct CCachedFile : CAFile {
+class CCachedFile : public CAFile { public:
     long Position; long BufferStartPosition; CByteArray DataBuffer; CWideString Pathname; CCountedPointer PDiskFile;
     bool Opened; bool BufferValid;
     CCachedFile() : Position(3), BufferStartPosition(4), Opened(true), BufferValid(true) { }

@@ -7,9 +7,9 @@
 //   A +3. Local model of the channel view.
 // Shape: nine appends in source order; each channel goes through a GFIntToCharString temporary (homed in the dead
 //   context-argument slot) destroyed right after its append. Speed-optimised (default) TU.
-struct CCharStringData;
-struct CPersistContext;
-struct CCharString {
+class CCharStringData;
+class CPersistContext;
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator+=(const char* text);          // 0x0099F100
@@ -17,7 +17,7 @@ struct CCharString {
 };
 CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830
 
-struct CRGBColour {                                     // the union's channel view
+class CRGBColour { public:                                     // the union's channel view
     unsigned char B, G, R, A;
 };
 

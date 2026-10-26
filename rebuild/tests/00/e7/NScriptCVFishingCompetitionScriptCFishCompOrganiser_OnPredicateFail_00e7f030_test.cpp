@@ -2,7 +2,7 @@
 #include <cstring>
 
 static int g_live;
-struct CCharString {
+class CCharString { public:
     char buf[64];
     CCharString(const char* text, long = -1) { std::strcpy(buf, text); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(buf, o.buf); ++g_live; }
@@ -13,10 +13,10 @@ static CCharString operator+(const CCharString& left, const CCharString& right)
     CCharString r(left); std::strcat(r.buf, right.buf); return r;
 }
 static bool g_killedByHero;
-struct CScriptThing {
+class CScriptThing { public:
     bool MsgIsKilledBy(const CCharString& killer) const { return g_killedByHero && std::strcmp(killer.buf, "SCRIPT_NAME_HERO") == 0; }
 };
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     char Name[64]; unsigned long Id;
     CSpawnedFuncBase(const CCharString& name, unsigned long id) : Id(id) { std::strcpy(Name, name.buf); }
     virtual ~CSpawnedFuncBase() {}
@@ -30,7 +30,7 @@ template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
 static CSpawnedFuncBase* g_spawned; static char g_region[16]; static int g_ended;
-struct CScriptBase {
+class CScriptBase { public:
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName) { g_spawned = func; std::strcpy(g_region, regionName.buf); }
 };
 struct CV_FishingCompetitionScript : CScriptBase {

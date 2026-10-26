@@ -17,7 +17,7 @@ struct Sub100 {
 extern const char kStrA[];
 extern const char kStrB[];
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     char pad[0x100];
     Sub100 sub100;           // 0x100
     char pad1[0x2c - sizeof(Sub100)];

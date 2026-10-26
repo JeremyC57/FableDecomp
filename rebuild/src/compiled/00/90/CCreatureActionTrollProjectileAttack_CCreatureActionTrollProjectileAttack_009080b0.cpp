@@ -6,27 +6,27 @@
 // CCreatureAction_TrollProjectileAttack's (rtti-vtables.tsv). OverriddenAnim / AnimName are the engine-header names
 // (PDB +0x12c/+0x130; retail CCombatActionBase is 0x114 bytes). The string is modelled locally because fable_string.h
 // declares no copy constructor. `ret 0Ch`: three arguments.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CCharString {                        // one pointer to the shared string data
+class CCharString { public:                        // one pointer to the shared string data
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (the register-zeroed
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
     long FirstSound;                        //   stack stores before the base call: an embedded object's inline ctor)
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
 };
 
-struct CCreatureAction_TrollProjectileAttack : CCombatActionBase {   // vtable 0x0128E3AC
+class CCreatureAction_TrollProjectileAttack : public CCombatActionBase { public:   // vtable 0x0128E3AC
     unsigned char OverriddenAnim;           // +0x114 (bool)
     CCharString   AnimName;                 // +0x118
     virtual void v00();

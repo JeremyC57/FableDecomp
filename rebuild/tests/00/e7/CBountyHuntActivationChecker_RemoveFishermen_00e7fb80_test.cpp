@@ -5,8 +5,8 @@
 // Behaviour model of CBountyHuntActivationChecker::RemoveFishermen: the organiser is removed only while alive, then
 // each living competitor is removed (dead ones are skipped); RemoveThing always gets (false, true).
 static std::string g_log;
-struct CScriptThing { std::string name; bool alive; bool IsAlive() const { return alive; } };
-struct CGame {
+class CScriptThing { public: std::string name; bool alive; bool IsAlive() const { return alive; } };
+class CGame { public:
     bool organiserAlive; std::vector<CScriptThing> competitors;
     CScriptThing GetThingWithScriptName(const char* name) const { CScriptThing t; t.name = name; t.alive = organiserAlive; return t; }
     long GetAllThingsWithScriptName(const char* name, std::vector<CScriptThing>& out) const

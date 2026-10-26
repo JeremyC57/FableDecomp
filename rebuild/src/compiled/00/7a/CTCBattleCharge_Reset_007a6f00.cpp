@@ -12,7 +12,7 @@
 // Shape: the CTCAssassinRush::Reset sibling (0x007A9B70): each intelligent pointer cleared through the inline operator=
 //   from a CIntelligentPointer(0) temporary; the start position is the implicit C3DVector copy.
 extern long g_framesPerSecond;                  // 0x01375550
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CBaseObject;
 class CThing {
 public:
@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -49,7 +49,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CSpecialAbilitiesBattleChargeDef {
+class CSpecialAbilitiesBattleChargeDef { public:
     unsigned char _pad00[0x40];
     float* DashDistance;                        // +0x40 vector<float> first
     float* DashDistanceLast;                    // +0x44
@@ -59,7 +59,7 @@ struct CSpecialAbilitiesBattleChargeDef {
     float  PoseDelaySecs;                       // +0x88
     float  ChargeDelay;                         // +0x8c
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

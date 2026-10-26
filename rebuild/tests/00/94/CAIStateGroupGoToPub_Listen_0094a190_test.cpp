@@ -7,7 +7,7 @@ static int g_dtors = 0;
 static bool g_result = true;
 static bool g_argsOk = false;
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long) : m_pData(text) {}
     ~CCharString() { ++g_dtors; }

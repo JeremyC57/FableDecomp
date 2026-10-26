@@ -13,7 +13,7 @@
 // CCountedPointer with its inline zeroing constructor. Landed as _unattributed with descriptive names.
 typedef unsigned short wchar_t;          // VC7.1 without /Zc:wchar_t: wchar_t is the CRT typedef
 
-struct CWideString {
+class CWideString { public:
     wchar_t* m_pString;
     CWideString();                         // 0x0099AED0
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCDivineWrath {
+class CTCDivineWrath { public:
     void* vftable;
     int destroyed;
 };

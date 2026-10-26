@@ -36,7 +36,7 @@ struct CIndexBuffer_Methods:CIndexBuffer {
 };
 struct ShaderArray {void* First;void* Last;void* End;};
 struct ShaderHandle {void* NativeVTable;void* Data;};
-struct CEnginePrimitiveManagerParticleSpriteGroup {
+class CEnginePrimitiveManagerParticleSpriteGroup { public:
  void* NativeVTable;void* Scenes;bool Enable;unsigned char Alignment[3];
  ShaderArray VertexShadersBillboardSpritePointLights,VertexShadersCrossedSpritePointLights,VertexShaders3DFaceMeSpritePointLights;
  ShaderHandle VertexShadersBillboardSpriteDisplacement,VertexShadersCrossedSpriteDisplacement,VertexShaders3DFaceMeSpriteDisplacement;

@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CThingTrackNode::PeekTrackStartNode (0x00836DA0): walks previous links to the first IsStart node.
-struct CThingTrackNode {
+class CThingTrackNode { public:
     CThingTrackNode* PreviousNode;
     bool IsStart;
     CThingTrackNode* PeekTrackStartNode()

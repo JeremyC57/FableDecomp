@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMacro { char pad[4]; };
+class CMacro { public: char pad[4]; };
 
 static void* g_order[8];
 static int g_n = 0;

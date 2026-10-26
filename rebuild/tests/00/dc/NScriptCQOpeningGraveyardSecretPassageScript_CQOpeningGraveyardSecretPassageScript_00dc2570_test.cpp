@@ -3,10 +3,10 @@
 // four hero_object strings are default-constructed; nothing else is initialised.
 #include <cstdio>
 
-struct CGameScriptInterface { int dummy; };
+class CGameScriptInterface { public: int dummy; };
 static int g_scriptBases = 0;
 static int g_strings = 0;
-struct CScriptBase {
+class CScriptBase { public:
     virtual ~CScriptBase() { }
     unsigned char _body[0x3c];
     CScriptBase() { ++g_scriptBases; }
@@ -16,12 +16,12 @@ struct CQuestScriptObject : CScriptBase {
     void*                 Data;
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData("") { ++g_strings; }
 };
 namespace NScript {
-struct CQ_OpeningGraveyardSecretPassageScript : CQuestScriptObject {
+class CQ_OpeningGraveyardSecretPassageScript : public CQuestScriptObject { public:
     bool finished_quest;
     bool DoorChange;
     bool ZombieCamPlayed;

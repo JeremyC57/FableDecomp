@@ -8,8 +8,8 @@ struct CCreatureAction_Base
     void BaseFinishAction();       // __fastcall base finish (tail-call 0x859a20)
 };
 
-struct CCreatureAction_SummonerLightningOrbInto : public CCreatureAction_Base
-{
+class CCreatureAction_SummonerLightningOrbInto : public CCreatureAction_Base
+{ public:
     bool Check();                  // __fastcall helper 0x6925a0
     void FinishAction();
 };

@@ -21,7 +21,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CMessageEvent;
+class CMessageEvent;
 struct SMessageNode {                              // list node: next, prev, then the event at +8
     SMessageNode*  m_pNext;
     SMessageNode*  m_pPrev;
@@ -32,14 +32,14 @@ struct CMessageList {
     SMessageNode* m_pHead;
 };
 
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     bool operator()(CMessageEvent* event) const;   // 0x006AF1C0
 };
-struct CMessageEventFilter_OccuredBetween {
+class CMessageEventFilter_OccuredBetween { public:
     bool operator()(CMessageEvent* event) const;   // 0x006AF180
 };
 
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     bool operator()(CMessageEvent* event) const { return (*m_pFirst)(event) && (*m_pSecond)(event); }
@@ -87,8 +87,8 @@ struct CMessagePtrList {                           // STLport list<CMessageEvent
     }
 };
 
-struct CWorld;
-struct CMessageEventManager {
+class CWorld;
+class CMessageEventManager { public:
     CWorld*      World;                            // +0x00
     CMessageList Messages;                         // +0x04
     template <class TFilter> long FindAllMessages(const TFilter& filter, CMessagePtrList& found)

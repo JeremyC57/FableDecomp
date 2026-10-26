@@ -8,7 +8,7 @@
 // Layout: engine/CGameScriptInterface.h (PDB) puts PlayerManager at +0x14; retail reads it at +0xc, so `this` is modelled locally.
 // Shape: the hero is a local (the alive idiom on a register), then the out-parameter GetInterface template as the condition (its out
 // pointer shares the key's frame word); the amount is re-read from its slot after the lookup.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -42,14 +42,14 @@ struct CTCHeroMoney {                       // interface type 0x8e
     void GiveGold(long amount);             // 0x00639E40
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();        // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;               // 0x00449960
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*           __vftable;              // +0x00
     unsigned char   _pad04[8];              // +0x04
     CPlayerManager* PlayerManager;          // +0x0c (retail)

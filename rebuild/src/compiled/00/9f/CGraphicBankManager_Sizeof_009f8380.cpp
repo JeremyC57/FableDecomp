@@ -10,7 +10,7 @@ struct SBankNode_009f8200 {                        // a list node: next, prev, t
     unsigned char       _pad08[0x30];
     CGraphicDataBank_009f8200* m_pBank;             // +0x38 (after the entry record)
 };
-struct CGraphicBankManager {
+class CGraphicBankManager { public:
     unsigned char       _pad[4];
     SBankNode_009f8200* m_pHead;                   // +0x04 (the sentinel)
     long Sizeof();

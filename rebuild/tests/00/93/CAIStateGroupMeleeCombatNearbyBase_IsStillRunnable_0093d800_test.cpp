@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable (0x0093D800): model copy, scripted stubs.
 #include <cstdio>
 
-struct CThing { unsigned char m_flags91; float x, y, z; bool engageable; bool hasStealth; int stealthFlagged; };
+class CThing { public: unsigned char m_flags91; float x, y, z; bool engageable; bool hasStealth; int stealthFlagged; };
 struct Creature {
     bool engaged;
     CThing* target;

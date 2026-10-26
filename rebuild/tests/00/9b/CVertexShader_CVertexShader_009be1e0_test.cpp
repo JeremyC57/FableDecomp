@@ -6,11 +6,11 @@ struct CVertexShaderData {
     void* m_pShader; void* m_pDeclaration; long m_stride;
     long m_refCount;
 };
-struct CShaderBase {
+class CShaderBase { public:
     virtual void v00() { }
     ~CShaderBase() { ++g_baseDestroyed; }
 };
-struct CVertexShader : CShaderBase {
+class CVertexShader : public CShaderBase { public:
     CVertexShaderData* m_pData;
     virtual void v00() { }
     ~CVertexShader()

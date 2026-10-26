@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
 };
 

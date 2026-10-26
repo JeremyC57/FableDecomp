@@ -2,7 +2,7 @@
 // Reads pointer fields at +8, +0xc, +4, +0x10, returns first non-null,
 // else field at +0 (mov eax,[ecx]). Returns raw pointer value in eax.
 
-struct CMusicManager {
+class CMusicManager { public:
     void* f0;   // +0x00
     void* f4;   // +0x04
     void* f8;   // +0x08

@@ -1,8 +1,8 @@
 #include <cstdio>
 
 static int g_base = 0;
-struct CThing;
-struct C3DVector { long x, y, z; C3DVector(long a, long b, long c) : x(a), y(b), z(c) { } C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { } };
+class CThing;
+class C3DVector { public: long x, y, z; C3DVector(long a, long b, long c) : x(a), y(b), z(c) { } C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { } };
 struct CBase { virtual void v00() { } CBase() { ++g_base; } };
 struct __declspec(novtable) CAction : CBase { CThing* m_pThing; bool m_active; bool m_finished;
     CAction() : CBase(), m_pThing(0), m_active(false), m_finished(false) { } };

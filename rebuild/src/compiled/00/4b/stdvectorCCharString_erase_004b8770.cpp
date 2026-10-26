@@ -6,7 +6,7 @@
 // `if (pos + 1 != end()) __copy_ptrs(pos + 1, _M_finish, pos, __false_type()); --_M_finish; _Destroy(_M_finish);`.
 // Shape: the random-access __copy counts `n = last - first` (the `sar 2 ; test ; jle`) and assigns element by
 // element; VC folds the source pointer onto the destination (`lea esi,[ecx+4]`), one register walking both.
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0

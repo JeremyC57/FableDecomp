@@ -13,9 +13,9 @@
 // argument push, and the base-relative &PCreature takes over esi). The lookup's string comes from the implicit
 // const char* conversion inside a `found && ...` condition, so VC keeps a "temporary constructed" flag (zeroed at
 // entry, set with the string) and destroys the string under it before branching on the condition saved in bl.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -28,10 +28,10 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                            // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
-template <class T> struct CDefPointer {      // the out-slot GetSubDef fills (counted reference handed over)
+template <class T> class CDefPointer { public:      // the out-slot GetSubDef fills (counted reference handed over)
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
@@ -40,11 +40,11 @@ template <class T> __forceinline void ReleaseDef(T* def)
     if (def && --def->m_refCount == 0)
         def->Destroy();
 }
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x70];
     CDefClassBase* m_pDef;                      // +0x70
     const C3DVector& GetPosition() const;       // 0x004C73D0
@@ -58,7 +58,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];
@@ -66,7 +66,7 @@ struct CCombatActionBase {
     unsigned char           _pad10[0x114 - 0x10];
 };
 
-struct CCreatureAction_TeleportOut : CCombatActionBase {
+class CCreatureAction_TeleportOut : public CCombatActionBase { public:
     float TeleportPos_X, TeleportPos_Y, TeleportPos_Z;   // +0x114 C3DVector
     bool  CreateEffects;                        // +0x120
     virtual void Initialise();

@@ -6,7 +6,7 @@
 // read, prev->next then next->prev, free); --NumItems is a load / dec / store around the `add esp,4`.
 #include <stdlib.h>
 
-struct CThing;
+class CThing;
 
 struct SThingListNode {                     // STLport _List_node<CThing*>
     SThingListNode* Next;                   // +0x00
@@ -28,11 +28,11 @@ struct CThingList {                         // STLport list<CThing*> (4 bytes: t
     }
 };
 
-struct CThing {
+class CThing { public:
     void Kill(bool checkLocked);            // 0x004C9B80
 };
 
-struct CTCCreatureItemLevitationBase {
+class CTCCreatureItemLevitationBase { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

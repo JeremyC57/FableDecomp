@@ -14,7 +14,7 @@ struct CRecordSet_00cbd510 {                // catalog/landed name for the class
     void* _vptr;                            // (layout beyond the first word not modelled)
     ~CRecordSet_00cbd510();                 // 0x00CBD510
 };
-struct CScriptGameResourceObjectScriptedThingBase {   // ctor 0x007E72A0 (landed rows)
+class CScriptGameResourceObjectScriptedThingBase { public:   // ctor 0x007E72A0 (landed rows)
     void* _vptr;                            // (layout beyond the first word not modelled)
     ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0 (releases the counted handle at +0xc)
 };

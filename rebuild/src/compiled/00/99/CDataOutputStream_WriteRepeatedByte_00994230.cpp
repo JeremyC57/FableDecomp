@@ -11,8 +11,8 @@
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memset)
 
-struct CCharStringData;
-struct CDataOutputStream {
+class CCharStringData;
+class CDataOutputStream { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long size);   // slot 4 (+0x10)
     CCharStringData* NewLine_PStringData;              // +0x04

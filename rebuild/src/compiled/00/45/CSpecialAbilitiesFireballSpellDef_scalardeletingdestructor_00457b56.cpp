@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 extern void __cdecl eng_operator_delete(void* p);
 
-struct CSpecialAbilitiesFireballSpellDef {
+class CSpecialAbilitiesFireballSpellDef { public:
     void* vftable;
     void dtor();
     void* scalar_deleting_destructor(unsigned int flags);

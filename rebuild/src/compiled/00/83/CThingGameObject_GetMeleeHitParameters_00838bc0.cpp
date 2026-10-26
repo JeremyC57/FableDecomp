@@ -5,8 +5,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00838BC0, `ret 0x18`.
 // Layout (retail; Ego_r.pdb in brackets): CThing interface bitset +0x20, map +0x44, ThingTypeFlags +0x6c [+0x7c],
 //   PBaseDef +0x70 [+0x80], Dead +0x91 bit 0; creature current action +0x100; CHitParameters Position +0x2, Direction +0xe.
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,7 +54,7 @@ struct CCountedBase {
             DeleteThis();
     }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object;
     __forceinline CCountedPointer() : Object(0) { }
     __forceinline CCountedPointer(const CCountedPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
@@ -65,7 +65,7 @@ template<class T> struct CCountedPointer {
     }
     T* operator->() const { return Object; }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -75,17 +75,17 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CTCHeroExperience;
+class CTCHeroExperience;
 struct CExperienceCurve {
     float GetAbilityMultiplier(const CTCHeroExperience* experience) const;   // 0x00851BD0
 };
-struct CExperienceDef : CCountedBase {
+class CExperienceDef : public CCountedBase { public:
     unsigned char _pad08[0xa8 - 0x08];
     float High;                                      // +0xa8
     float Low;                                       // +0xac
     CExperienceCurve Curve;                          // +0xb0
 };
-struct CTCHeroExperience {                           // interface 0x68
+class CTCHeroExperience { public:                           // interface 0x68
     unsigned char _pad00[0x58];
     CCountedPointer<CExperienceDef> Def;             // +0x58
 };
@@ -98,7 +98,7 @@ struct CTCCharge {                                   // interface 0x84 (descript
     bool IsDecapitating() const;                     // 0x0078BFC0
     void GetHitPosition(C3DVector* out) const;       // 0x0078C150
 };
-struct CTCWeapon {                                   // interface 0x48 (descriptive)
+class CTCWeapon { public:                                   // interface 0x48 (descriptive)
     bool HasDamage() const;                          // 0x005DAA00
     long GetDamageAttribute() const;                 // 0x005DA810
     float GetDamage() const;                         // 0x005DAAA0
@@ -107,10 +107,10 @@ struct CDamageMultiplierDef : CCountedBase {
     unsigned char _pad08[0x44 - 0x08];
     float DamageMultiplier;                          // +0x44
 };
-struct CThingBaseDef {
+class CThingBaseDef { public:
     bool GetDamageMultiplierDef(CDefPointer<CDamageMultiplierDef>* out) const;   // 0x00696130
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -135,7 +135,7 @@ struct CCreatureActionBase {
     virtual void v75(); virtual void v76(); virtual void v77(); virtual void v78(); virtual void v79();
     virtual float GetDamageMultiplier();             // slot 80 (+0x140)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
@@ -180,9 +180,9 @@ struct CThing {
         return false;
     }
 };
-namespace NHitLocations { struct CHitLocation; }
+namespace NHitLocations { class CHitLocation; }
 #pragma pack(push, 1)
-struct CHitParameters {
+class CHitParameters { public:
     bool Localised;                                  // +0x00
     bool Directional;                                // +0x01
     C3DVector Position;                              // +0x02
@@ -202,7 +202,7 @@ struct CHitParameters {
     void AddDamageWithAttribute(long attribute, float damage);    // 0x00868CA0
 };
 #pragma pack(pop)
-struct CThingGameObject : CThing {
+class CThingGameObject : public CThing { public:
     void GetMeleeHitParameters(NHitLocations::CHitLocation* location, CThing& hitter, CThing* weapon,
                                const C3DVector& position, const C3DVector& direction, CHitParameters& params) const;
 };

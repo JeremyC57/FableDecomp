@@ -4,7 +4,7 @@
 // non-trivial members are four CCharStrings: +0x14, +0x10, +0xc and finally +0x0, each destroyed with
 // CCharString::~CCharString @ 0x0099EAE0, then the block is freed with operator delete (MSVCR71 thunk 0x00BFE9BC)
 // when flags & 1. __thiscall shape modelled as __fastcall with a dead edx.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                 // 0x0099EAE0
 };

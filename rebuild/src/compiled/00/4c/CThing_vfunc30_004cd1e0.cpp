@@ -3,7 +3,7 @@
 // Callees: CThing::DrawIsDrawable (virtual slot 27, +0x6C; base body 0x004C7790).
 // Shape: `return DrawIsDrawable();` through the vtable becomes `mov eax,[ecx] ; jmp [eax+6Ch]`.
 // Slots 0..26 are declared only to place DrawIsDrawable at slot 27; no constructor, so no vtable is emitted.
-struct CThing {
+class CThing { public:
     virtual void Slot00(); virtual void Slot01(); virtual void Slot02(); virtual void Slot03();
     virtual void Slot04(); virtual void Slot05(); virtual void Slot06(); virtual void Slot07();
     virtual void Slot08(); virtual void Slot09(); virtual void Slot10(); virtual void Slot11();

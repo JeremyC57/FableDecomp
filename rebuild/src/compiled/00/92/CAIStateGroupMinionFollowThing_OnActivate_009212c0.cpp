@@ -9,8 +9,8 @@
 //          frame bool passed by address and then by value; the valid-follower result is kept in bl.
 // Layout: PDB names from engine/CAIStateGroup_MinionFollowThing.h (the header flattens the base and this class has a
 //          virtual OnActivate, so the class is modelled locally like the landed Cleanup).
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -105,13 +105,13 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -139,7 +139,7 @@ struct CTCFollowerState {                       // interface 0xAA
     unsigned char _pad[0x7b];
     bool m_followStopped;                       // +0x7b
 };
-struct CTCFollowed {                            // interface 0xBC
+class CTCFollowed { public:                            // interface 0xBC
     bool IsCreatureValidFollower(CThing* creature, bool* addToFront);   // 0x006D4E60
     void AddFollower(CThing* follower, bool addToFront);               // 0x006D50C0
 };

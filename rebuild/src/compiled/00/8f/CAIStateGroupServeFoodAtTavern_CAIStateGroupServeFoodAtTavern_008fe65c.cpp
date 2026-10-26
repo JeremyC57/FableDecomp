@@ -8,7 +8,7 @@
 // constructor @ 0x008FD255 runs, then the compiler stores this class's vtable (0x0128AA7C
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIStateGroupBase();                           // 0x008FD255
 };

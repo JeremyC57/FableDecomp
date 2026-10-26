@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     unsigned long w[9];
     bool test(long bit) { return (w[bit >> 5] & (1UL << (bit & 31))) != 0; }
@@ -14,7 +14,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
@@ -28,7 +28,7 @@ struct CThing {
     }
 };
 static int g_closeCalls = 0; static void* g_closeThis = 0;
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {}
     virtual void v05() {} virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {}
     virtual void v10() {} virtual void v11() {} virtual void v12() {} virtual void v13() {} virtual void v14() {}
@@ -38,7 +38,7 @@ struct CTCInGameMenu {
     virtual void v30() {}
     virtual void ClosePCInventoryMenu() { ++g_closeCalls; g_closeThis = this; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     virtual void v00() {}
     CThing* ParentThing;
     void ClosePCInventoryMenu();

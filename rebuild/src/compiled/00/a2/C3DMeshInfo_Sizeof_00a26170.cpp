@@ -13,8 +13,8 @@
 #include "engine/C3DMeshInfo.h"
 #include "engine/C3DMeshLODInfo.h"
 
-struct C3DMesh2           { unsigned long Sizeof() const; };   // 0x00A893C0
-struct CBankFileAsyncData { unsigned long Sizeof() const; };   // 0x009D5620
+class C3DMesh2           { public: unsigned long Sizeof() const; };   // 0x00A893C0
+class CBankFileAsyncData { public: unsigned long Sizeof() const; };   // 0x009D5620
 
 struct C3DMeshLODInfo_Methods : C3DMeshLODInfo {
     unsigned long Sizeof() const
@@ -25,7 +25,7 @@ struct C3DMeshLODInfo_Methods : C3DMeshLODInfo {
     }
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     T* operator->() const { return Data; }
 };

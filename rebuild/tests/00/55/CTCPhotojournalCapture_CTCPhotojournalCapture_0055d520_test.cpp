@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour model of CTCPhotojournalCapture::CTCPhotojournalCapture (0x0055D520)
-struct CWideString { void* m_data; CWideString() : m_data(0) {} };
-struct CTCBase { void* ParentThing; int registered; CTCBase(void* p) : ParentThing(p), registered(0) {} void AddToGlobalUpdateTCs() { ++registered; } };
+class CWideString { public: void* m_data; CWideString() : m_data(0) {} };
+class CTCBase { public: void* ParentThing; int registered; CTCBase(void* p) : ParentThing(p), registered(0) {} void AddToGlobalUpdateTCs() { ++registered; } };
 struct CComponentVector { void* a; void* b; void* c; CComponentVector() : a(0), b(0), c(0) {} };
-struct CTCPhotojournalCapture : CTCBase {
+class CTCPhotojournalCapture : public CTCBase { public:
     CWideString Description; bool DiscardScreenShot; long FrameCounter; bool FirstRenderFrame; bool ScreenOpen;
     double LastRenderTime; CWideString FileName; CComponentVector Components; void* PMannequin; bool WasPlayerGuiOpen; long TakeScreenshotAfterFrames;
     CTCPhotojournalCapture(void* parent) : CTCBase(parent), FrameCounter(30), FirstRenderFrame(true), ScreenOpen(false),

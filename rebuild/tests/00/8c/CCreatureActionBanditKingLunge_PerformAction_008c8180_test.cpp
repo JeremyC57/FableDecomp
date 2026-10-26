@@ -5,29 +5,29 @@
 // Shape: CalcAndLookup (0x00669D30) gets a same-TU out-value-only stand-in body (the 0x008D9740 idiom): the effect index
 //   stops escaping, so the GetInterface(0x4B) key shares the dead effect word (+0x1c) as retail.
 // Layout: CThing bitset +0x20, map +0x44, PTCDriver +0x5c, physics +0x60, def +0x70, dead flag +0x91 bit 0 (as 0x8C8380/0x8F5060).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 
-struct CSpecialEffectsDef {
+class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
@@ -46,7 +46,7 @@ __declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& n
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
 };
 void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee of the stand-in body below
@@ -94,7 +94,7 @@ struct CPhysicsBody {
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing() const;              // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -144,27 +144,27 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     static CThing* __fastcall Create(long defIndex, const C3DVector& position);   // 0x0080C460
 };
 struct CTCDriver41 {
     void SetOwner(CThing* owner);                     // 0x0080CBF0
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     CThing* GetCreature() const { return PCreature.GetPItem(); }
     CDefinitionManager* GetPDefinitionManager() const;   // 0x00692910
 };
-struct CCreatureAction_BanditKingLunge : CCreatureActionBase {
+class CCreatureAction_BanditKingLunge : public CCreatureActionBase { public:
     void PerformAction();
 };
 

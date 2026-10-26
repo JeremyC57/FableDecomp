@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ReleaseTimeSpell {
+class CCreatureAction_ReleaseTimeSpell { public:
     void* vftable;
     int destroyed;
 };

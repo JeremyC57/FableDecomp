@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CEngine { int id; };
-struct CEnginePrimitiveManager {
+class CEngine { public: int id; };
+class CEnginePrimitiveManager { public:
     CEngine* m_pEngine;
     CEnginePrimitiveManager(CEngine* engine) : m_pEngine(engine) { }
     virtual ~CEnginePrimitiveManager() { }
 };
-struct CEnginePrimitiveManagerParticleGroup : CEnginePrimitiveManager {
+class CEnginePrimitiveManagerParticleGroup : public CEnginePrimitiveManager { public:
     bool ClipEffectToWeatherMask, m_enabled, WriteZBuffer, DisplayBoundingBox, DisplayBoundingSphere;
     CEnginePrimitiveManagerParticleGroup(CEngine* engine)
         : CEnginePrimitiveManager(engine), ClipEffectToWeatherMask(false), WriteZBuffer(false), DisplayBoundingBox(false), DisplayBoundingSphere(false)

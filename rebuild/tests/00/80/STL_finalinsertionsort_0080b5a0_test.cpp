@@ -5,7 +5,7 @@
 static unsigned int g_seed = 12345u;
 static int NextValue() { g_seed = g_seed * 1103515245u + 12345u; return (int)((g_seed >> 16) % 1000u); }
 
-struct CThing { int id; };
+class CThing { public: int id; };
 struct STargetPoint { CThing* PThing; long Index; float X, Y, Z; long FrameRejected; };   // NPlayerTargeting::CTargetPoint
 struct CCompare {                                           // stand-in for CThingCompare_BestForTargeting2: larger X first
     bool operator()(const STargetPoint& a, const STargetPoint& b) const { return a.X > b.X; }

@@ -9,11 +9,11 @@
 // Shape: the C3DVector copies go through a scratch register in dword pairs; `test ah,1 ; jne` is the `>= 0` test; the float
 //   speed is stored with an integer move.
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char _pad0[0xc10];
     float         WindSpeed;                 // +0xc10
     C3DVector     WindDirection;             // +0xc14

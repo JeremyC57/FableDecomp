@@ -13,7 +13,7 @@
 // Leaf `??0CScriptThing`: the TU also emits the vtable's scalar deleting destructor.
 // Leaf: ??0CScriptThing
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_references;                       // +0 reference count (bumped with `inc dword ptr [ecx]`)
 };
 
@@ -21,7 +21,7 @@ struct CBase {
     virtual ~CBase();                        // 0x0099A2E0
 };
 
-struct CScriptThing;
+class CScriptThing;
 
 struct CCountedPointer_CScriptThing {
     CScriptThing* Data;                      // +0
@@ -34,7 +34,7 @@ struct CCountedPointer_CScriptThing {
     }
 };
 
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CCountedPointer_CScriptThing PImp;       // +0x04
     CScriptThing(const CScriptThing& other);
     virtual ~CScriptThing();

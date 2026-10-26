@@ -1,7 +1,7 @@
 // Behaviour test for 0x009A0190 (CBasicString<char> / CCharStringData destructor)
 #include <stdio.h>
 #pragma pack(push, 1)
-template <class T> struct CBasicString {
+template <class T> class CBasicString { public:
     T*            PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
@@ -16,7 +16,7 @@ template <class T> struct CBasicString {
         DataLength = 0;
     }
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicString<char> Data;
     long               NoRefs;
     ~CCharStringData() { }

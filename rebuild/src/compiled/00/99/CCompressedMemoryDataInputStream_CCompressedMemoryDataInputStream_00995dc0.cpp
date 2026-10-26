@@ -11,7 +11,7 @@
 // its null store sinks below the vtable store (GOTCHAS: embedded members follow the vtable).
 #include "engine/CCompressedMemoryDataInputStream.h"
 
-struct CCompressorZlib;
+class CCompressorZlib;
 
 struct CBaseClassNonCopyable {
     virtual void v00();

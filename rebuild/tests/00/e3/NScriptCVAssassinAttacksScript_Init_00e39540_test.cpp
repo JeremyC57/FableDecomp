@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CScriptDef { const char* Names[5]; long Limits[5]; };
+class CScriptDef { public: const char* Names[5]; long Limits[5]; };
 static CScriptDef g_def = { { "A", "B", "C", "D", "E" }, { 1, 2, 3, 4, 5 } };
 static CScriptDef* g_pScriptDef = &g_def;
 struct RegionData { char name[8]; long count; long max; bool assassinActive; };

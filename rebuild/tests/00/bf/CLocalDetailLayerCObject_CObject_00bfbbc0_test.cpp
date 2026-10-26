@@ -3,25 +3,25 @@
 
 static int g_baseCtors = 0;
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { ++g_baseCtors; }
     virtual ~CBaseClass() { }
 };
 
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 struct CIVCountedPointer {
     CEnginePersistentPrimitiveBase* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {
+class CEnginePrimitiveHandle : public CBaseClass { public:
     CIVCountedPointer Data;
     CEnginePrimitiveHandle() { }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DBoundingSphere() { Center.X = 0; Center.Y = 0; Center.Z = 0; Radius = 0; }

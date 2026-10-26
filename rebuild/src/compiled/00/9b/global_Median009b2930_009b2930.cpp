@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B2930, length 94 bytes.
 // Leaf: Median_009b2930
 // The chunk label is propagated; named by address. Shape: a `__fastcall` function (a in ecx -> edi, b in edx -> esi, c on the stack -> ebx, the empty comparator in the second stack slot), the five compare calls in the SGI order, `ret 8`.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     bool operator<(const CWideString& other) const;   // 0x0099AF70
 };

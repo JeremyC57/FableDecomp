@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
 };
 

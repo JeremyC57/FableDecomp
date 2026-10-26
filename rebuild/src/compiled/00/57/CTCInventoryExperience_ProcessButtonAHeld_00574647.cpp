@@ -17,7 +17,7 @@ struct ExperienceSpendEvent {
     long time;              // +0x4
 };
 
-struct CInventoryDef {
+class CInventoryDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long refCount;                                 // +0x004
@@ -40,7 +40,7 @@ struct CTCInventoryBase {
     void ProcessButtonAHeld();                     // 0x005BC65B
 };
 
-struct CTCInventoryExperience : CTCInventoryBase {
+class CTCInventoryExperience : public CTCInventoryBase { public:
     unsigned char _pad_000[0x1C];
     long InventorySelectionState;                  // +0x01C
     unsigned char _pad_020[0x48];

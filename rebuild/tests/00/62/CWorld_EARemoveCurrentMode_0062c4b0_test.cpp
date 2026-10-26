@@ -8,26 +8,26 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data) { std::memcpy(data, Data + ReadPos, length); ReadPos += (long)length; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     signed char Player;
     unsigned char Data[32];
     long GetData(CMemoryBuffer& buffer) const { std::memcpy(buffer.Data, Data, 32); buffer.Length = 32; return 32; }
 };
 enum EPlayerMode { PLAYER_MODE_NONE = 0, PLAYER_MODE_X = 9 };
 static int g_resets = 0, g_removes = 0; static EPlayerMode g_lastMode = PLAYER_MODE_NONE;
-struct CTCHeroRangedAttacks { void ResetProjectileWeaponMode() { ++g_resets; } };
-struct CThing {
+class CTCHeroRangedAttacks { public: void ResetProjectileWeaponMode() { ++g_resets; } };
+class CThing { public:
     bool Dead; CTCHeroRangedAttacks* Ranged;
     bool HasTC(long type) const { return type == 0x81 && Ranged != 0; }
     template<class T> T* GetTC(long) { return Ranged; }
 };
 static CThing* g_hero = 0;
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() { return g_hero; }
     void RemoveMode(EPlayerMode m) { ++g_removes; g_lastMode = m; }
 };
 static CPlayer g_player;
-struct CWorld {
+class CWorld { public:
     CPlayer* GetPlayer(long) { return &g_player; }
     void EARemoveCurrentMode(const CGameEvent* event);
 };

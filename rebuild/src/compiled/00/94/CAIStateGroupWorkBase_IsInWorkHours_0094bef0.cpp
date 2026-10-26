@@ -7,8 +7,8 @@
 // looked-up component goes straight to the getter; both nulls fall to the shared `xor al,al` tail and the
 // predicate's true result is re-materialised (`mov al,1`), so the body is the early-return form.
 // The manifest module (a WorkBase template instantiation) is kept; the class is identified by the component type.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // vector map at +0x44 searched with LowerBound -- the shape of the landed GetInterface bodies.
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -38,19 +38,19 @@ struct CThing {
     }
 };
 
-struct CTCShop {
+class CTCShop { public:
     bool IsShopKeeperAvailable();                                  // 0x00773AA0
 };
 
-struct CTCShopKeeper;
+class CTCShopKeeper;
 CTCShop* __fastcall GetShopTC(CTCShopKeeper* component);     // 0x00798F50
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

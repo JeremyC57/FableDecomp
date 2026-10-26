@@ -23,7 +23,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
     C3DVector& AccurateNormalise();                              // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c
     void MakePerpendicular();                      // 0x00A22E10

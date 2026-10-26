@@ -5,15 +5,15 @@
 // Callees: AllocResourceEntry 00f372b0; operator new 00bfea1a; CSurface::CreateDepthBufferSurface 009f32a0; FreeResourceEntry 00f36f40.
 #include "engine/CSurface.h"
 #include "engine/CPixelFormat.h"
-struct C2DExtentsI { long Width, Height; };
+class C2DExtentsI { public: long Width, Height; };
 extern char g_HeadlessRendering; // 0143e968
 extern void* g_CSurfaceVtable[]; // 0122f84c
 struct CSurfaceNative : CSurface {
     CSurfaceNative() { __vftable=g_CSurfaceVtable; PD3DSurface=0; AllocationSource=0; }
     bool CreateDepthBufferSurface(const C2DExtentsI&,const CPixelFormat&,long,bool); // 009f32a0
 };
-struct CTexture;
-struct CGPUScratchBufferTextureManager {
+class CTexture;
+class CGPUScratchBufferTextureManager { public:
     struct CResourceEntry {
         long ResourceType; CTexture* Texture; CSurfaceNative* Surface; long PageIndex;
         C2DExtentsI Dimensions; long NoLevels; CPixelFormat PixelFormat;

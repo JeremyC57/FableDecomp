@@ -28,7 +28,7 @@ public:
     bool Running;                                           // +0x04
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;                                             // +0x00
     void* Info;                                             // +0x04
     T* operator->() const { return Data; }
@@ -41,7 +41,7 @@ template <class T> struct CRetailVector {                   // retail std::vecto
     T& operator[](unsigned long n) const { return first[n]; }
 };
 
-struct CAttackingCombatantInfo {                            // retail 0x30 bytes (PDB 0x34)
+class CAttackingCombatantInfo { public:                            // retail 0x30 bytes (PDB 0x34)
     const CThingCreatureBase* Attacked;                     // +0x00
     long AttackerNumber;                                    // +0x04
     long CombatWheelRingIndex;                              // +0x08

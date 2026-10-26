@@ -29,14 +29,14 @@ struct CInputStreamAccess : CDataInputStream {
  }
  __forceinline unsigned int ReadULong() {unsigned int value;Read(&value,4);return value;}
 };
-struct C3DVector { float X, Y, Z; C3DVector() {} };
-template<class T> struct CArray {
+class C3DVector { public: float X, Y, Z; C3DVector() {} };
+template<class T> class CArray { public:
  T* Begin;T* End;T* Capacity;
  unsigned long Size()const{return (unsigned long)(End-Begin);}
  T* GetData(){return Size()>0?Begin:(T*)this;}
  void Resize(unsigned long,const T&); // 0x0075C040
 };
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 struct C3DMeshFileXUVTangentChunkMethods : C3DMeshFileXUVTangentChunk {
  CArray<C3DVector>& U(){return *(CArray<C3DVector>*)UTangents;}
  CArray<C3DVector>& V(){return *(CArray<C3DVector>*)(UTangents+12);}

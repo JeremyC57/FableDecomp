@@ -1,4 +1,4 @@
-struct CCreatureAction_HobbeLungeAttack {
+class CCreatureAction_HobbeLungeAttack { public:
     void* vftable;
 };
 

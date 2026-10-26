@@ -13,7 +13,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v00();
     virtual void v04();
     virtual void v08();
@@ -48,11 +48,11 @@ struct CDataInputStream {
     }
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void* GetPointerFromHandle(long handle);                       // 0x00A026B0
 };
 
-struct CMovableResourceMemoryPool : CHandleBasedMemoryPool {
+class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
     bool AllocateResource(long* handle, void* owner, unsigned long size, unsigned long alignment);   // 0x00A62E40
 };
 

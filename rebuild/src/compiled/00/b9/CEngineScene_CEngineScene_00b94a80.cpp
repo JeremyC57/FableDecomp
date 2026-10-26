@@ -29,7 +29,7 @@ private:
     CCharStringData* PStringData;
 };
 
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
@@ -70,13 +70,13 @@ template <int ValueSize> struct CRbTree : CRbTreeBase<ValueSize> {   // STLport 
     }
 };
 
-struct CEngineSceneUpdateStats {                            // 12 bytes
+class CEngineSceneUpdateStats { public:                            // 12 bytes
     unsigned long StaticPrimitivesAdded;
     unsigned long MovingPrimitivesAdded;
     unsigned long NonPersistentPrimitives;
     CEngineSceneUpdateStats() : StaticPrimitivesAdded(0), MovingPrimitivesAdded(0), NonPersistentPrimitives(0) { }
 };
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
 class CEngineScene : public CBaseClassNonCopyable {
 public:

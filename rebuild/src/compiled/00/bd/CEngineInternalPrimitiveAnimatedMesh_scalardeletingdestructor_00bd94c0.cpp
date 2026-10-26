@@ -1,4 +1,4 @@
-struct CEngineInternalPrimitiveAnimatedMesh {
+class CEngineInternalPrimitiveAnimatedMesh { public:
     void* vftable;
 };
 

@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CTCBase {
+class CThing { public: int id; };
+class CTCBase { public:
     CThing* m_pParent;
     CTCBase(CThing* parent) : m_pParent(parent) { }
     virtual ~CTCBase() { }
 };
-struct CTCDiggingSpot : CTCBase {
+class CTCDiggingSpot : public CTCBase { public:
     bool m_canBeDug; bool m_dug;
     CTCDiggingSpot(CThing* parent) : CTCBase(parent), m_canBeDug(true), m_dug(false) { }
 };

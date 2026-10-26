@@ -20,12 +20,12 @@
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14 (the list node allocator's deallocate)
 void __cdecl operator delete(void* block);           // 0x00BFE9BC (count blocks)
 
-struct CIEngine;
+class CIEngine;
 struct CInterpolationInfoSet {
     float GTPredictedTimeSinceLastRenderFrame;       // +0x00
     float WFInterpolate;                             // +0x04
 };
-struct CInterpolationInfo {
+class CInterpolationInfo { public:
     CInterpolationInfoSet Current;                   // +0x00
     CInterpolationInfoSet Last;                      // +0x08
     CInterpolationInfoSet PausedCurrent;             // +0x10
@@ -34,7 +34,7 @@ struct CInterpolationInfo {
     CInterpolationInfoSet BulletTimeLast;            // +0x28
     long                  WFServerCurrentTime;       // +0x30
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     CInterpolationInfo Interpolate;                  // +0x00
     CIEngine*          Engine;                       // +0x34
 };
@@ -42,7 +42,7 @@ struct CEnginePrimitivePrepareInfo {
 namespace NParticleEngine {
 // CParticleEmitter at retail offsets (as the landed GetParticleStats 0x00AEB000): the ushort flag word at +0x40,
 // the uchar flag byte at +0x44 (PDB +0x4c / +0x50).
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void*          m_vtable;                         // +0x00
     unsigned char  m_base04[0x3c];                   // +0x04 .. +0x3f
     unsigned short Priority : 3;                     // +0x40

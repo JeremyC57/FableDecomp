@@ -26,7 +26,7 @@ struct CSharedPointer {
     }
 };
 
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned char _body[0xd0];
     ~CThingGameObject();                             // 0x00838A00
 };

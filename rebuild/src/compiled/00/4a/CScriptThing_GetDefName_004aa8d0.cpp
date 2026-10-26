@@ -12,7 +12,7 @@
 // writes the result through the forwarded hidden pointer.
 #include "engine/CScriptThing.h"
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString(const CCharString& other);          // 0x0099EC30 (out of line in retail; fable_string.h would inline it)
 };

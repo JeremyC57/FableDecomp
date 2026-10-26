@@ -2,7 +2,7 @@
 
 typedef unsigned long ulong;
 
-struct CAbilityDef {};
+class CAbilityDef { public:};
 
 ulong __fastcall CAbilityDef_GetSizeofClass(const CAbilityDef* self)
 {

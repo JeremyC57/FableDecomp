@@ -4,13 +4,13 @@
 
 class CThing { public: int Id; };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CMessageEvent { int Unused; };
-struct CMessageEventManager {
+class CMessageEvent { public: int Unused; };
+class CMessageEventManager { public:
     int Count;
     long Type; unsigned long Delay; float PosX, PosY, PosZ; CThing* From; CThing* To; float Value1, Value2; long Data;
     CMessageEventManager() : Count(0) { }
@@ -22,13 +22,13 @@ struct CMessageEventManager {
         return 0;
     }
 };
-struct CWorld { CMessageEventManager* MessageEventManager; };
+class CWorld { public: CMessageEventManager* MessageEventManager; };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CAIBrain { CThing* PCreature; };
-struct CAIStateGroupBase {
+class CAIBrain { public: CThing* PCreature; };
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     CWorld* World;                              // what GetPWorld reaches through the brain (test model)
     CThing* GetCreature() const { return PBrain->PCreature; }

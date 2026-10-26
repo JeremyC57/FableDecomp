@@ -10,7 +10,7 @@
 // _Rb_tree: header node pointer first; the value of a node at +0x14 after the 16-byte node links and the key).
 // Shape: the def pointer local is zeroed and filled by GetSubDef, read once into a named pointer (ebx) and released by hand at the end;
 // `it._M_node != map._M_header` compared directly; the float is a ternary stored once.
-struct CThing;
+class CThing;
 struct CRbNode {
     long     _M_color;
     CRbNode* _M_parent;
@@ -40,11 +40,11 @@ struct CTargetingSpiritDef {
     unsigned char _pad08[0x74 - 0x08];
     CDistanceMap Distances;                     // +0x74
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTargetingSpiritDef>* out) const;   // 0x007EA960
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -64,7 +64,7 @@ struct CThingDefHolder {
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                        // +0x70
 };
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     void* __vfptr;                              // +0x00 (CTCBase)
     CThingDefHolder* ParentThing;               // +0x04
     unsigned char _pad08[0x38 - 0x08];

@@ -1,7 +1,7 @@
 // behaviour test for 005d9a10: CTCInventoryItem::GetHairCardDef(long) -- manager lookup of the thing def, then its CHairCardDef sub-def;
 // the result holds one reference, every temporary reference is dropped, and a miss on either lookup gives a null pointer
 #include <cstdio>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long RefCount; int destroyed; CDefPointeeBase* sub;
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) ++destroyed; }

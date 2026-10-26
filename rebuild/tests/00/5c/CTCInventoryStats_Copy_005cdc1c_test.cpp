@@ -14,7 +14,7 @@ struct CInterfaceMap {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits UsingComponents;
     CInterfaceMap Components;
     template <class T> void GetInterface(long typeId, T** out) const
@@ -35,7 +35,7 @@ struct CTCInventoryBase {
     CThing* ParentThing;
     int pad[8];
 };
-struct CTCInventoryStats : CTCInventoryBase, CScreenBase {
+class CTCInventoryStats : public CTCInventoryBase, public CScreenBase { public:
     void* pTCHeroExperience;
     void* pTCHeroStats;
     virtual void Copy(const CTCInventoryBase* other)

@@ -11,8 +11,8 @@
 // uninitialised local), and the TC member at +0x28 is reset from its def: the object at
 // +0x80 of the TC supplies +0x44. The CScriptThing destructor is inlined on both paths.
 // One of 17 bodies of this shape.
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 
 enum ETCInterfaceType { TC_FIRST = 0 };
 
@@ -59,7 +59,7 @@ struct CBase {
     ~CBase();                              // 0x0099A2E0 (sets the CBase vtable; manifest label propagated)
 };
 
-struct CScriptThing : CBase {             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
+class CScriptThing : public CBase { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
     CCountedPointer PImp;                  // +4 Data / +8 Info
     ~CScriptThing() { }
     CThing* GetThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }
@@ -84,7 +84,7 @@ struct CVectorMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x34];
     unsigned long m_34;                 // +0x34 flags
     unsigned char _pad2[0xc];
@@ -110,7 +110,7 @@ struct STC_28_80 {
     STCDef_44* m_80;                 // +0x80 def
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void ResetGossipCounter(CScriptThing thing);
 };
 

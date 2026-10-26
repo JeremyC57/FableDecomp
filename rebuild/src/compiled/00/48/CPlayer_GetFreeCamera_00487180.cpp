@@ -15,7 +15,7 @@
 #include "engine/CPlayer.h"
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -35,11 +35,11 @@ struct C3DVector {
         Z *= r;
     }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                       // +0x00
     C3DVector Forward;                                  // +0x0c
 };
-struct CCamera {                                        // 0x38 bytes
+class CCamera { public:                                        // 0x38 bytes
     C3DVector       WorldPosition;                      // +0x00
     CRightHandedSet RHSet;                              // +0x0c
     unsigned char   _body[0x38 - 0x24];

@@ -211,7 +211,7 @@ template <> __declspec(noinline) bool CDefinitionManager::GetDef<CSoundThemeDef>
 }
 #pragma auto_inline(on)
 
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
 class CGameMapCell {                                   // 7 bytes
 public:
     unsigned char AtmosThemes[3];

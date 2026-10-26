@@ -1,5 +1,5 @@
 // CDisplayEngine::ReceiveFeedbackGameEvent(const CGameEvent*) -- run the display engine's feedback handler registered for the event's type, if any
-// Leaf: ?ReceiveFeedbackGameEvent@CDisplayEngine_Methods@@QAEXPBUCGameEvent@@@Z
+// Leaf: ?ReceiveFeedbackGameEvent@CDisplayEngine_Methods@@QAEXPBVCGameEvent@@@Z
 // Retail: Fable.exe @ 0x00434A30, 36 bytes. Catalog label CWorld::ProcessEvent is wrong (ICF/neighbour propagation): the
 // caller CMainGameComponent (0x004164D6) passes ecx = PDisplayEngine (+0x28), and the handler read is FeedbackFunction
 // (+0x20) of the CGameEventDispatch table at 0x013B9288. It sits 0x30 bytes before landed
@@ -16,7 +16,7 @@
 #include "engine/CGameEvent.h"
 struct CDisplayEngine_Methods;
 typedef void (CDisplayEngine_Methods::*TDisplayEventFunction)(const CGameEvent* event);
-struct CGameEventDispatch {
+class CGameEventDispatch { public:
     unsigned char         ActionFunction[0x10];          // +0x00 CWorld pointer to member
     unsigned char         LocalActionFunction[0x10];     // +0x10 CWorld pointer to member
     TDisplayEventFunction FeedbackFunction;              // +0x20

@@ -7,30 +7,30 @@
 // generated header's `void* __vftable` cannot carry the CMovableResource virtuals (same choice as the landed dtor 0x00BE6090).
 // Shape: the memory manager is read once into a local (ebp); the four-iteration loop over the bridge buffers and edge strips runs on a
 // down-counter in the `push ecx` frame word with the buffer/strip pointers stepped in edi/ebx; the renderer is re-read for the last call.
-struct CMovableResource {
+class CMovableResource { public:
     virtual ~CMovableResource();
 };
-struct CTexture;
-struct CIndexBuffer;
-struct CVertexBufferWin32;
-struct CSubPatchTreeLODLockElement;
-struct CEngineWaterBackgroundSubPatch;
-struct CLandscapeBackgroundTreeNode;
-struct CLandscapeBackgroundPatch;
-struct CEngineLandscapeMemoryManager {
+class CTexture;
+class CIndexBuffer;
+class CVertexBufferWin32;
+class CSubPatchTreeLODLockElement;
+class CEngineWaterBackgroundSubPatch;
+class CLandscapeBackgroundTreeNode;
+class CLandscapeBackgroundPatch;
+class CEngineLandscapeMemoryManager { public:
     void SetMovableResourceHandler(void* block, CMovableResource* handler);   // 0x00BD9AB0
 };
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     unsigned char                  _pad[0x6b0];
     CEngineLandscapeMemoryManager* MemoryManager;            // +0x6b0
     void OnRegistedZSortingPatchRelocation(long handle, CLandscapeBackgroundPatch* patch);   // 0x00B67780
 };
 extern CEngineLandscapeRenderer* g_pLandscapeRenderer;     // 0x01436EA8
-struct CPatchTesselationEdgeStrip {                         // 0x2c bytes
+class CPatchTesselationEdgeStrip { public:                         // 0x2c bytes
     unsigned char _body[0x2c];
     void SetMovableResourceHandler(CMovableResource* handler);   // 0x00BFC510
 };
-struct CLandscapeBackgroundPatch : CMovableResource {
+class CLandscapeBackgroundPatch : public CMovableResource { public:
     CLandscapeBackgroundTreeNode*   Parent;                  // +0x04
     CPatchTesselationEdgeStrip      EdgeStrips[4];           // +0x08
     CTexture*                       Texture;                 // +0xb8

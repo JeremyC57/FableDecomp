@@ -10,7 +10,7 @@
 // ParticleList vector<CIntelligentPointer<CThing>> +0x10 (Ego_r.pdb; only start/finish are read).
 // Shape: the thing's inline HasTC / GetTC pair (the key a frame word, `type < it->type` folding to `cmp [eax],82h ; jle`),
 // the attacher result used without a null test, `empty()` as start == finish.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -43,14 +43,14 @@ struct CIntelligentPointerThing {                       // CIntelligentPointer<C
     void* Data[2];
 };
 
-struct CTCBase {
+class CTCBase { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
 };
 
-struct CTCParticleAttacher : CTCBase {
+class CTCParticleAttacher : public CTCBase { public:
     void*                     PDef;                     // +0x0C CDefPointer<const CParticleAttacherDef>
     CIntelligentPointerThing* ParticleList_start;       // +0x10 vector<CIntelligentPointer<CThing>>
     CIntelligentPointerThing* ParticleList_finish;      // +0x14
@@ -59,7 +59,7 @@ struct CTCParticleAttacher : CTCBase {
     void AttachParticles();                             // 0x007F8890
 };
 
-struct CTCLight : CTCBase {
+class CTCLight : public CTCBase { public:
     void AttachParticles();
 };
 

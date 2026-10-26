@@ -14,7 +14,7 @@ struct Stream {
     long ReadLong() { long v = 0; Read(&v, 4); return v; }
 };
 static unsigned char g_blob[64];
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     long size; long readSize;
     void SetSize(long n) { size = n; }
     void ReadFromInputStream(Stream& in, long n) { readSize = n; in.Read(g_blob, n); }

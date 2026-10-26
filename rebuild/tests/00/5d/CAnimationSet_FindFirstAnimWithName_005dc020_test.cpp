@@ -1,7 +1,7 @@
 // behaviour test for 005dc020: CAnimationSet::FindFirstAnimWithName -- a CRC-keyed sorted animation map (20-byte pairs): the first entry
 // under the name's CRC (else end()), and the count of that equal-key run the filter accepts
 #include <cstdio>
-struct CCharStringData { const char* Data; unsigned int Length; };
+class CCharStringData { public: const char* Data; unsigned int Length; };
 static const char g_EmptyCharString[] = "";
 static unsigned int Calc(unsigned int crc, const void* data, unsigned int length)
 {
@@ -9,17 +9,17 @@ static unsigned int Calc(unsigned int crc, const void* data, unsigned int length
     for (unsigned int i = 0; i < length; ++i) crc = crc * 31u + p[i] + 1u;
     return crc;
 }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     const char* GetAsCharArray() const { return PStringData == 0 ? g_EmptyCharString : PStringData->Data; }
     unsigned int GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
     unsigned int GetCRC() const { return Calc(0, GetAsCharArray(), GetLength()); }
 };
-struct CAnimationEntry { int BankIndex; int a, b, c; };
+class CAnimationEntry { public: int BankIndex; int a, b, c; };
 struct Pair { unsigned int first; CAnimationEntry second; };
-struct CAnimFilterBase { virtual bool operator()(const CAnimationEntry& e) const = 0; };
+class CAnimFilterBase { public: virtual bool operator()(const CAnimationEntry& e) const = 0; };
 struct CAnimFilterOdd : CAnimFilterBase { virtual bool operator()(const CAnimationEntry& e) const { return (e.BankIndex & 1) != 0; } };
-struct CAnimationSet {
+class CAnimationSet { public:
     Pair* _M_start; Pair* _M_finish; Pair* _M_end_of_storage;
     const Pair* end() const { return _M_finish; }
     const Pair* LowerBound(const unsigned int& key) const

@@ -7,7 +7,7 @@
 // second and third string calls, its load scheduled before the `lea` of the next source member; the last source address
 // is formed with `add edi,18h`. Written out by hand: the DDK out-lines the compiler-generated
 // copy/assignment of a record whose members have their own (out-of-line) copy operations.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0

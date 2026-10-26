@@ -11,16 +11,16 @@
 // Shape: the combat manager and the parent thing are named locals read before the boss call (edi/ebx); the switch re-reads Phase.
 // The target is a named local (GetPItem runs before the `push 0`); the tentacle list is a class whose inline empty() compares
 // begin() with end() -- a direct `head->next == head` read is hoisted above the Mode store.
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
-struct CCombatManager {
+class CCombatManager { public:
     bool IsCreatureAttacking(const CThingCreatureBase& creature);               // 0x006E92C0
     void DeregisterCombatant(CThingCreatureBase* creature);                     // 0x006ED9C0
     void RegisterCombatant(CThingCreatureBase* creature, CThing* target, bool hostile);   // 0x006EDC50
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char   _pad00[0x4c];
     CCombatManager* CombatManager;                       // +0x4c
 };
@@ -33,7 +33,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer { };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer_CThing& thing);   // 0x004CC340
 
-struct CTCBoss {
+class CTCBoss { public:
     void SetNextBossPhase(long phase, bool force);       // 0x007AEDA0
 };
 

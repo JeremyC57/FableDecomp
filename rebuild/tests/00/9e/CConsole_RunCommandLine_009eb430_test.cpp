@@ -5,9 +5,9 @@
 #include <string>
 #include <map>
 
-struct CConsole;
+class CConsole;
 struct CInput { std::string Last; int Runs; void Execute(const std::string& line, CConsole*) { Last = line; ++Runs; } };
-struct CConsole {
+class CConsole { public:
     std::string Front; std::map<std::string, CInput*> Inputs; std::string Message;
     static std::string ToLower(std::string s) { for (size_t i = 0; i < s.size(); ++i) s[i] = (char)std::tolower((unsigned char)s[i]); return s; }
     void RunCommandLine()

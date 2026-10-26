@@ -1,7 +1,7 @@
 // Behaviour test for CTCObjectAugmentations::GetOnHitExplodingEffect @ 0x00766480: combined beats fire beats lightning, else 0.
 #include <cstdio>
-struct CObjectAugmentationsDef { long Fire, Lightning, FireAndLightning; };
-struct CTCObjectAugmentations {
+class CObjectAugmentationsDef { public: long Fire, Lightning, FireAndLightning; };
+class CTCObjectAugmentations { public:
     const CObjectAugmentationsDef* PDef;
     long m_types;
     bool HasCombinationOfAugmentations(long types) const { return (m_types & types) == types; }

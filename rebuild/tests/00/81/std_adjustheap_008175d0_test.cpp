@@ -1,7 +1,7 @@
 // Behaviour test for 0x008175D0 __adjust_heap<THitLocationIntersectionElement> (model copy): sift-down + push_heap.
 #include <cstdio>
 struct CHitLocation { int id; };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

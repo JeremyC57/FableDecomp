@@ -11,9 +11,9 @@
 // itself a CIVCountedPointer member object (its zero follows the handle vtable, as 0x00BFBBC0); under optimize("s")
 // both constructors must be `__forceinline` or the handle's is called out of line.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -21,24 +21,24 @@ struct CTCBase {
     CTCBase(CThing* parent);                                // 0x00686800
 };
 
-struct CBaseClass {                                         // vtable 0x01231710
+class CBaseClass { public:                                         // vtable 0x01231710
     CBaseClass();                                           // 0x0099A2D0
     virtual void v00();
 };
 
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 struct CIVCountedPointer {                                  // CIVCountedPointer<CEnginePersistentPrimitiveBase>
     CEnginePersistentPrimitiveBase* m_pObject;
     __forceinline CIVCountedPointer() : m_pObject(0) { }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {                // vtable 0x0122F598, 8 bytes
+class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598, 8 bytes
     CIVCountedPointer Data;                                 // +0x04
     __forceinline CEnginePrimitiveHandle() { }
     virtual void v00();
 };
 
-struct CTCStockItem : CTCBase {
+class CTCStockItem : public CTCBase { public:
     bool                   ForSale;                         // +0x0c
     bool                   Stealable;                       // +0x0d
     bool                   Initialised;                     // +0x0e

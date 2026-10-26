@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
-struct CTCBase { int id; };
+class CThing { public: int id; };
+class CTCBase { public: int id; };
 static int g_ctor = 0;
 struct CBaseIntelligentPointer {
     virtual int Kind() const { return 1; }

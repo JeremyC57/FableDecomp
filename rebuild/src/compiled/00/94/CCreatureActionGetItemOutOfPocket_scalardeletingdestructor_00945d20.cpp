@@ -1,4 +1,4 @@
-struct CCreatureAction_GetItemOutOfPocket {
+class CCreatureAction_GetItemOutOfPocket { public:
     void* vftable;
 };
 

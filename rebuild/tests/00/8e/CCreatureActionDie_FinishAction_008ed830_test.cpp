@@ -34,8 +34,8 @@ void Base::FinishAction()
     g_base = 1;
 }
 
-struct CCreatureAction_Die : public Base
-{
+class CCreatureAction_Die : public Base
+{ public:
     int filler;
     SubObj sub;
     virtual void FinishAction();

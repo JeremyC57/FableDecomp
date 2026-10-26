@@ -21,7 +21,7 @@ public:
 static const unsigned short g_empty[1] = { 0 };
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long renown; bool emptyMsg;
     virtual void GiveHeroRenownPoints(long p) { Log("renown"); renown = p; }
     virtual void SetQuestAsCompleted(const CCharString& q, bool a, bool b, bool c) { Log("done"); Log(q.PStringData); if (a || b || c) Log("flag"); }
@@ -30,10 +30,10 @@ struct CGameScriptInterface {
     virtual void MiniMapAllowRouteBetweenRegions(const CCharString& f, const CCharString& t, bool a) { Log("route"); Log(f.PStringData); Log(t.PStringData); if (a) Log("allow"); }
     virtual CCharString GetActiveQuestName() { return CCharString("Q_Escort"); }
 };
-struct CScriptDef { long EscortTraderRenown; };
+class CScriptDef { public: long EscortTraderRenown; };
 static CScriptDef g_def;
 static CScriptDef* g_pScriptDef = &g_def;
-struct CScriptBase {
+class CScriptBase { public:
     bool terminating;
     bool IsActiveThreadTerminating() { Log("term?"); return terminating; }
 };

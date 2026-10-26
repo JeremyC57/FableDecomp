@@ -48,7 +48,7 @@ public:
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStackEntry {     // retail 48 bytes (8-aligned for the double)
 public:
-    class CThemeWeight {                        // 12 bytes
+    struct CThemeWeight {                        // 12 bytes
     public:
         long ThemeID;
         float Weight;

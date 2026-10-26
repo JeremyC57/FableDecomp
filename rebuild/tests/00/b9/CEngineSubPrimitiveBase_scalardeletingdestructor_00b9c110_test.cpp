@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CEngineSubPrimitiveBase
-{
+class CEngineSubPrimitiveBase
+{ public:
     int marker;
     void Destroy();
     void FreeSelf();

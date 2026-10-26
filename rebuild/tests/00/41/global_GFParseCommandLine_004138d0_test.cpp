@@ -15,14 +15,14 @@ static int icmp(const char* a, const char* b)
         if (!x) return 0;
     }
 }
-struct CCharString {
+class CCharString { public:
     char s[128];
     CCharString(const char* t = "") { std::strcpy(s, t); }
     const char* GetString() const { return s; }
     bool EqualsNoCase(const CCharString& o) const { return icmp(s, o.s) == 0; }
 };
-struct CParsedItem { long Type; long Integer; CCharString String; };
-struct CStringParser {                             // simplified tokenizer with the retail call surface
+class CParsedItem { public: long Type; long Integer; CCharString String; };
+class CStringParser { public:                             // simplified tokenizer with the retail call surface
     const char* text; unsigned long pos;
     CStringParser(char* t, void*, const CCharString&, long) : text(t), pos(0) { }
     bool ReadAsStringUntilString(const CCharString& term, CParsedItem* item)

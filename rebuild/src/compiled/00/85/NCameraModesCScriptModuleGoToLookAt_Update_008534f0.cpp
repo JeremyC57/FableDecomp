@@ -8,9 +8,9 @@
 // focal point in a named local re-read from the frame, LookAt assigned; finally the owner's look-at.
 // Layout: PDB NCameraModes::CScriptModuleGoToLookAt (0x6c bytes): PThing +0x4c, GoTo +0x54, LookAt +0x60,
 // over the 0x4c-byte CScriptModuleBase (POwner +0x38).
-struct CBaseObject;
+class CBaseObject;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
@@ -20,7 +20,7 @@ struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float t) const;      // 0x004C12D0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;      // +0x64
     unsigned char         _pad68[0x29];

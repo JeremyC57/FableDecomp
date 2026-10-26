@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeConversation::OnDeactivate (retail 0x008D93C0): the talk component (interface 15)
 // gets the attitude it had when the conversation started back, and the mode goes inactive.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,9 +54,9 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
+class CThing : public CThingLookup { public: };
 enum EConversationAttitude { ATTITUDE_NEUTRAL, ATTITUDE_HAPPY, ATTITUDE_ANGRY };
-struct CTCTalk : CTCBase {
+class CTCTalk : public CTCBase { public:
     EConversationAttitude Attitude;
     void SetAttitude(EConversationAttitude attitude) { Attitude = attitude; }
 };

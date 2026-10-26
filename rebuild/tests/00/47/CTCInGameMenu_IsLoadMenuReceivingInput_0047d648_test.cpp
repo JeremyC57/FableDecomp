@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* Text; CCharString(const char* text, long length = -1) : Text(text) { (void)length; } };
+class CCharString { public: const char* Text; CCharString(const char* text, long length = -1) : Text(text) { (void)length; } };
 namespace NUISystem { class CComponent; }
 struct SComponentListNode { SComponentListNode* m_pNext; SComponentListNode* m_pPrev; NUISystem::CComponent* m_data; };
 static int g_lists = 0;

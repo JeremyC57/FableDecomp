@@ -1,7 +1,7 @@
 // Behaviour test for 00c458d0: CAmbientCube::SetCentre -- apex position = centre + apex offset
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static C3DVector Add(const C3DVector& a, const C3DVector& b) { C3DVector r = { a.X + b.X, a.Y + b.Y, a.Z + b.Z }; return r; }
 struct SAmbientApex { C3DVector m_offset, m_position; float m_minDistance; };
 struct CAmbientCube {

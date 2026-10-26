@@ -7,7 +7,7 @@ struct Thing {
     int count();
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char pad[0x18];
     Inner* PEnvironment; // +0x18
 };

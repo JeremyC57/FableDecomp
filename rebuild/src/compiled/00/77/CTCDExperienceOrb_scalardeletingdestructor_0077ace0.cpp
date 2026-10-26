@@ -7,9 +7,9 @@
 // unconditional zero store), then the PDef member destructor runs the same release again on the re-read member. The
 // release, the assignment, the member destructor and the virtual destructor are `__forceinline` (else the deleting
 // destructor collapses to `call ??1 ; delete`); a `new` factory pulls the vtable and the ??_G into the TU.
-struct CThing;
+class CThing;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long RefCount;                          // +0x04
@@ -36,7 +36,7 @@ struct CDefPointer {                        // CDefPointer<CExperienceDef const>
     __forceinline ~CDefPointer() { Release(); }
 };
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* parent);                // 0x00686800
     virtual ~CTCBase();                     // 0x00686830
     CThing* ParentThing;                    // +0x04
@@ -44,7 +44,7 @@ struct CTCBase {
     bool IsInGlobalUpdateTCs;               // +0x09
 };
 
-struct CTCDExperienceOrb : CTCBase {
+class CTCDExperienceOrb : public CTCBase { public:
     CDefPointer PDef;                       // +0x0c
     long ExperiencePoints;                  // +0x10
     long CombinationImmunityTimer;          // +0x14

@@ -14,12 +14,12 @@
 //   canTeleport slot) and the two Activate calls tail-merge; the quest manager is read into a named local before the
 //   ScriptName copy is built in the argument slot.
 class CTCBase;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
@@ -51,17 +51,17 @@ public:
         return false;
     }
 };
-struct CTCBoastUI {
+class CTCBoastUI { public:
     void Deactivate();                                  // 0x0056A880
 };
-struct CTCQuestCard;
-struct CQuestManager {
+class CTCQuestCard;
+class CQuestManager { public:
     CThing* GetActiveQuestCardFromScriptName(const CCharString& name);   // 0x004B0C80
     void RemoveAcceptedBoastsForScript(CCharString name);               // 0x004AFFA0
 };
 extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
 enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x50 - 0x08];

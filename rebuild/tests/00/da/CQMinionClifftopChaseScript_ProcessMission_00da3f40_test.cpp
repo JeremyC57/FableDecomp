@@ -3,9 +3,9 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CRGBColour { unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } };
+class CRGBColour { public: unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } };
 struct CQ_MinionClifftopChaseScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CQ_MinionClifftopChaseScript* script;
     int frame;
     void NewScriptFrame();

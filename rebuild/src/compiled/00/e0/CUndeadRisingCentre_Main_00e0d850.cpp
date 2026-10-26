@@ -8,17 +8,17 @@
 //   PMasterData +0x18, DoorOpen +0x1c. CQ_UndeadRisingScript is retail = Ego_r.pdb - 0x14: HeroReachedCentre +0x50.
 // Shape: a CTimer local (RegisterTimer in the ctor, DeregisterTimer in the dtor); the line index is a frame word and the
 //   three lines are a switch (case 0, case 1, default).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CScriptThing;
-struct CBaseClass {                                      // vtable 0x01231710
+class CScriptThing;
+class CBaseClass { public:                                      // vtable 0x01231710
     virtual void v00();
 };
 struct CCountBlock { long References; };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
     void*        PImpData;
     CCountBlock* PImpInfo;
 };
@@ -82,7 +82,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void AddLineToConversation(long, CCharString const &, bool, CScriptThing const &, CScriptThing const &) const; //slot366 0x00890750
 };
 extern GameCalls* g_pGameScriptInterface;                // 0x0143E8F8
-struct CTimer {                                          // a script timer: the interface's timer index
+class CTimer { public:                                          // a script timer: the interface's timer index
     long Index;
     CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }

@@ -3,11 +3,11 @@
 // Retail 009FE550, 208 bytes. CFrameData ctor 009FE380; managed texture assignment A69B20 and ClearHandle A69AD0.
 // No CGraphicInfoFrame/CManagedTexture headers exist. CResource header retained at native size 1C.
 #include "engine/CTexture.h"
-struct C2DExtentsI { long X,Y; C2DExtentsI(); };
+class C2DExtentsI { public: long X,Y; C2DExtentsI(); };
 // Native method view: generated CTexture has the right fields but no declarations.
 struct CTextureMethods : CTexture { C2DExtentsI GetDimensions(unsigned long mip) const; }; // 0x009F9DB0
 void __cdecl operator delete(void*); // 0x00BFE9BC
-struct CCPPointerInfo { long References; void (__fastcall* Destroy)(void*); void* Object; };
+class CCPPointerInfo { public: long References; void (__fastcall* Destroy)(void*); void* Object; };
 struct CountedTexture {
  CTextureMethods* Data; CCPPointerInfo* Info;
  __forceinline void Release() { if(Info) { --Info->References; if(Info->References==0) { Info->Destroy(Info->Object); operator delete(Info); } } }
@@ -15,7 +15,7 @@ struct CountedTexture {
  __forceinline void Assign(const CountedTexture& p) { CTextureMethods* data=p.Data; CCPPointerInfo* info=p.Info; if(Info!=info) { Release(); Data=data; Info=info; if(info) ++info->References; } }
 };
 // No engine/CGraphicFrameData.h exists; PDB fields agree with all native offsets.
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
  unsigned long ReferenceCount; void* Data; CountedTexture PTexture;
  unsigned short TLX,TLY,Width,Height,Pitch;
  unsigned char Alpha:1,BooleanAlpha:1,UsesSurface:1,SectionOfTPage:1,IsInitialised:1,ScreenGraphic:1;
@@ -45,8 +45,8 @@ struct SharedFrame {
  CGraphicFrameData* FrameData;
  __forceinline void Assign(const SharedFrame& p) { CGraphicFrameData* old=FrameData; if(old && --old->ReferenceCount==0) { old->~CGraphicFrameData(); operator delete(old); } FrameData=p.FrameData; if(FrameData) ++FrameData->ReferenceCount; }
 };
-struct CManagedTexture { void* VTable; CIVCountedPointeeBase* Data; CManagedTexture& operator=(const CManagedTexture&); bool ClearHandle() const; };
-struct CGraphicInfoFrame;
+class CManagedTexture { public: void* VTable; CIVCountedPointeeBase* Data; CManagedTexture& operator=(const CManagedTexture&); bool ClearHandle() const; };
+class CGraphicInfoFrame;
 struct CFrameData : CResource {
  SharedFrame Frame; CManagedTexture Texture; CManagedTexture SmallTexture; void* LoadInfo; void* LoadContext;
  signed char CurrentPreloadMipmap; unsigned char Unknown39; signed char RequestedMipmap; unsigned char Unknown3B; long ResourcePriority; CGraphicInfoFrame* Owner;
@@ -55,7 +55,7 @@ struct CFrameData : CResource {
 struct ResourcePointer { CFrameData* Object;
  __forceinline void Assign(CFrameData* p) { if(Object) { IVRelease((CIVCountedPointeeBase*)Object); Object=0; } Object=p; }
 };
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
  unsigned long Unknown; unsigned short FrameNum; signed char SmallMipmapLevel; unsigned char Unknown7;
  ResourcePointer Data; void* GraphicInfo;
  void InitialiseFrame(const SharedFrame&,const CManagedTexture&,signed char);

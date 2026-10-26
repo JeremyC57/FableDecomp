@@ -24,22 +24,22 @@
 //   in the frame and assigned (integer copies through `lea eax,[ebx+5Ch]`); C3DVector needs its memberwise user copy ctor
 //   for the centre to go through the frame temporary (the implicit copy forwards Pos straight into BSphere); plain stores
 //   in source order otherwise.
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CMatrix3x4 { float E[12]; };
+class CMatrix3x4 { public: float E[12]; };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DBoundingSphere() { }
     C3DBoundingSphere(const C3DVector& centre, float radius) : Center(centre), Radius(radius) { }
 };
 
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     long Type;                                         // +0x00
     long InterpolationSet;                             // +0x04
     unsigned char ThemeChannelDesc[4];                 // +0x08
@@ -52,7 +52,7 @@ struct CEnginePrimitive2DParticleGroup : CEnginePrimitive {
     C2DVector  Position;                               // +0x44
 };
 
-struct CEnginePrimitiveRenderer2D {
+class CEnginePrimitiveRenderer2D { public:
     float GetLayerDepth(long layer);                   // 0x00B4A6B0
 };
 extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D;   // 0x01436E7C

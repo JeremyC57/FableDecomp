@@ -1,6 +1,6 @@
 // Behaviour test for 0x00808120 STLport __unguarded_insertion_sort_aux over pair<C3DVector, long> (score = compare value, larger first).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct SPair { C3DVector first; long second; };
 struct CCompare {                                        // stand-in score: the X coordinate
     float Score(const C3DVector& v) const { return v.X; }

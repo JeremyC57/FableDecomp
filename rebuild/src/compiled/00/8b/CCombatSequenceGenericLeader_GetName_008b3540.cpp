@@ -4,7 +4,7 @@
 // from the string literal at 0x12786d4 with length -1.
 
 #include "engine/CCombatSequence_GenericLeader.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int len);
 };

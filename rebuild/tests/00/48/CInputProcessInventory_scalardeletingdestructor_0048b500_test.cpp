@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CInputProcessInventory
-{
+class CInputProcessInventory
+{ public:
     void dtor();
     int marker;
 };

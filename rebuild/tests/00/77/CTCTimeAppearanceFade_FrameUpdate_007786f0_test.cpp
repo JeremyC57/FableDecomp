@@ -4,7 +4,7 @@
 class CThing;
 static int g_alpha = -1, g_destroyed = 0;
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAlpha(unsigned char alpha) { g_alpha = alpha; }
 };
 }
@@ -16,7 +16,7 @@ bool GFGetValPositionInLimitsLooping(float value, float start, float end, float 
     *position = (value - start) / (end - start);
     return true;
 }
-struct CTimeAppearanceFadeDef {
+class CTimeAppearanceFadeDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long  m_count;
@@ -34,7 +34,7 @@ struct CFadeDefPointer {
     CTimeAppearanceFadeDef* operator->() const { return Object; }
 };
 static CTimeAppearanceFadeDef g_def;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CFadeDefPointer* out) { ++g_def.m_count; out->Object = &g_def; return true; }
 };
 class CThing {
@@ -42,10 +42,10 @@ public:
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;
     CDefClassBase*  DefClass;
 };
-struct CGameTimeManager { float Time; };
-struct CWorld { CGameTimeManager* PGameTimeManager; };
+class CGameTimeManager { public: float Time; };
+class CWorld { public: CGameTimeManager* PGameTimeManager; };
 static CGameTimeManager g_time; static CWorld g_world;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing;
     CWorld* GetWorld() { return &g_world; }

@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static bool feq(float a, float b) { float d = a - b; if (d < 0) d = -d; return d < 1e-5f; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -12,19 +12,19 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     void operator+=(const C3DVector& o) { float x = o.X; float y = o.Y; float z = o.Z; X += x; Y += y; Z += z; }
 };
-struct C3DKeyframe {
+class C3DKeyframe { public:
     float Rotation[4];
     C3DVector Position;
     float PositionW;
     float Scaling[4];
 };
 static int g_interp = 0; static float g_interpTime = -99.0f; static C3DVector g_keyPos(0, 0, 0);
-struct C3DAnimationSequenceData {
+class C3DAnimationSequenceData { public:
     void GetKeyframeInterpolate(C3DKeyframe* keyframe, float time) { ++g_interp; g_interpTime = time; keyframe->Position = g_keyPos; }
 };
-struct C3DAnimationSequence { C3DAnimationSequenceData* Data; };
+class C3DAnimationSequence { public: C3DAnimationSequenceData* Data; };
 #pragma pack(push, 2)
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
     virtual ~C3DAnimationStats() {}
     long _04;
     long AnimType;
@@ -35,7 +35,7 @@ struct C3DAnimationStats {
     unsigned char _1e[0x0e];
 };
 #pragma pack(pop)
-struct C3DAnimation2 : C3DAnimationStats {
+class C3DAnimation2 : public C3DAnimationStats { public:
     unsigned char _2c[0x14];
     C3DAnimationSequence* MovementTrack;
     C3DVector GetMovementAtTime(float time) const;

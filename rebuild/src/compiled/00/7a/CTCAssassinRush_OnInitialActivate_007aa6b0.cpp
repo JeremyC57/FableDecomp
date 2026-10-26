@@ -13,9 +13,9 @@
 // loop caches the end pointer; each live item goes through an intelligent-pointer temporary into push_back. The 8-byte
 // stack alignment (`and esp,-8`) comes out of VC7.1 for this body as written (no double local is needed).
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
-struct CTCBase;
-struct CBaseObject;
-struct CThing;
+class CTCBase;
+class CBaseObject;
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -32,7 +32,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                            // 0x00A01C10
     void SetPItem(CBaseObject* item);                      // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
@@ -44,7 +44,7 @@ template <class T> struct CRetailVector {                  // STLport vector (12
     ~CRetailVector() { if (_M_start) free(_M_start); }
     void push_back(const T& value);                        // 0x004AD520
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x10];
     unsigned char         ThingType;                       // +0x10
     unsigned char         _pad11[0x20 - 0x11];
@@ -77,13 +77,13 @@ struct CThing {
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);                      // 0x0073AE10
 };
-struct CTCInventory {
+class CTCInventory { public:
     void GetAllItems(CRetailVector<CThing*>& items);       // 0x006A2220
 };
-struct CSpecialAbilitiesAssassinRushDef {
+class CSpecialAbilitiesAssassinRushDef { public:
     unsigned char _pad00[0x74];
     unsigned char Alpha;                                   // +0x74
 };

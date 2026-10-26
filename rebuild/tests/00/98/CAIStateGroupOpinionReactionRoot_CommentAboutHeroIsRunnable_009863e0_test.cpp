@@ -9,12 +9,12 @@
 #define FABLE_ENGINE_CTHINGSEARCHTOOLS_H
 #define FABLE_ENGINE_CTHING_H
 #pragma pack(push, 1)
-struct CAIStateGroup_OpinionReactionRoot { unsigned char prefix[0x6b]; unsigned char ThingReactingTo[9]; unsigned char suffix[0x24]; };
-struct CAIBrain { unsigned char prefix[0x18]; struct CThingAICreature* Creature; };
-struct CAIStateGroupBase { unsigned char prefix[4]; CAIBrain* PBrain; };
-struct CThingAICreature { unsigned char bytes[0x210]; };
-struct CThingSearchTools { unsigned char bytes[0x1c]; };
-struct CThing { unsigned char bytes[0xa8]; };
+class CAIStateGroup_OpinionReactionRoot { public: unsigned char prefix[0x6b]; unsigned char ThingReactingTo[9]; unsigned char suffix[0x24]; };
+class CAIBrain { public: unsigned char prefix[0x18]; class CThingAICreature* Creature; };
+class CAIStateGroupBase { public: unsigned char prefix[4]; CAIBrain* PBrain; };
+class CThingAICreature { public: unsigned char bytes[0x210]; };
+class CThingSearchTools { public: unsigned char bytes[0x1c]; };
+class CThing { public: unsigned char bytes[0xa8]; };
 #pragma pack(pop)
 #endif
 // BEGIN EXACT CANDIDATE SOURCE
@@ -27,14 +27,14 @@ struct CThing { unsigned char bytes[0xa8]; };
 #include "engine/CThingSearchTools.h"
 #include "engine/_quarantine/CThing.h"
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CThingView : CThing { C3DVector* GetPosition(); };
 struct CThingAICreatureView : CThingAICreature { C3DVector* GetPosition(); };
 struct CThingIntelligentPointerView {
     unsigned char NativeBytes[9];
     operator CThing*(); // retail 0x00a01b50
 };
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY; };
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; };
 struct CNearbyCreatureFilter {
     unsigned char NativeStorage[0x2c];
     CNearbyCreatureFilter(CThingAICreature*, float, bool); // retail 0x00986ed0

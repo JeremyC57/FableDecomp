@@ -5,7 +5,7 @@ struct CTrackVec { void* a[3]; };
 struct CLongVector { long* a[3]; };
 struct CFloatVector { float* a[3]; };
 static const void* g_log[64]; static int g_n = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& v) { g_log[g_n++] = &v; }
     void Transfer(float& v) { g_log[g_n++] = &v; }
     void Transfer(CAppVec& v) { g_log[g_n++] = &v; }
@@ -13,7 +13,7 @@ struct CPersistContext {
     void Transfer(CFloatVector& v) { g_log[g_n++] = &v; }
     void Transfer(CTrackVec& v) { g_log[g_n++] = &v; }
 };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     long a0; float f1, f2, f3; long a4, a5, a6, a7, a8, a9, a10; float f11, f12; CAppVec v13; float f14, f15, f16, f17;
     long a18, a19, a20, a21; float f22, f23, f24, f25; CLongVector v26, v27, v28; long a29, a30; float f31; long a32, a33, a34;
     long Picklock, Vandalism; CFloatVector v37; CTrackVec v38; CFloatVector v39; CLongVector v40; CFloatVector v41, v42;

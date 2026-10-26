@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 struct C2DPointI { int x; int y; };
-struct C2DBoxI {
+class C2DBoxI { public:
     int minX; int minY; int maxX; int maxY;
     int ContainsPoint(const C2DPointI* coordI) const;
 };

@@ -53,7 +53,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 struct IDirect3DSurface9;
 
 #pragma pack(push, 1)
-struct CSurface {
+class CSurface { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DSurface9* PD3DSurface;                          // +0x04
     unsigned long      AllocationSource;                     // +0x08
@@ -80,7 +80,7 @@ FABLE_STATIC_ASSERT(offsetof(CSurface, PAllocatedMemory) == 0xc);
 
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -90,15 +90,15 @@ FABLE_STATIC_ASSERT(offsetof(CPixelFormat, FormatIndex) == 0x0);
 
 #endif // FABLE_ENGINE_CPIXELFORMAT_H
 
-struct C2DExtentsI { long Width, Height; };
+class C2DExtentsI { public: long Width, Height; };
 extern char g_HeadlessRendering; // 0143e968
 extern void* g_CSurfaceVtable[]; // 0122f84c
 struct CSurfaceNative : CSurface {
     CSurfaceNative() { __vftable=g_CSurfaceVtable; PD3DSurface=0; AllocationSource=0; }
     bool CreateDepthBufferSurface(const C2DExtentsI&,const CPixelFormat&,long,bool); // 009f32a0
 };
-struct CTexture;
-struct CGPUScratchBufferTextureManager {
+class CTexture;
+class CGPUScratchBufferTextureManager { public:
     struct CResourceEntry {
         long ResourceType; CTexture* Texture; CSurfaceNative* Surface; long PageIndex;
         C2DExtentsI Dimensions; long NoLevels; CPixelFormat PixelFormat;

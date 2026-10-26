@@ -23,7 +23,7 @@ struct CCriticalSectionLock_Retail {              // 8 bytes on the stack
     void Unlock();                                                                // 0x00A62960
 };
 
-struct CFileInstaller {
+class CFileInstaller { public:
     unsigned char          _pad[4];
     CRITICAL_SECTION_Fable CriticalSection;              // +0x04
     unsigned char          _pad1c[0x5f];

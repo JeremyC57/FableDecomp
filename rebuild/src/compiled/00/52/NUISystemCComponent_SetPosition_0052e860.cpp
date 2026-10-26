@@ -8,13 +8,13 @@
 // InitialPosition +0x44.
 // Shape: three memberwise C2DVector copies through edx, the source re-read for each one, target first, then
 // initial, then the current position.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     unsigned char _pad00[0x34];
     C2DVector Position;                     // +0x34
     C2DVector TargetPosition;               // +0x3c

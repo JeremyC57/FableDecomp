@@ -6,8 +6,8 @@ static void op_delete(void* p) { ++g_blockFreed; std::free(p); }
 struct CCountedResourcePointer { void* m_pObject; SCountBlock* m_pBlock;
     ~CCountedResourcePointer() { if (m_pBlock) { --m_pBlock->m_count; if (m_pBlock->m_count == 0) { m_pBlock->m_pfnDestroy(m_pBlock->m_pObject); op_delete(m_pBlock); } } m_pObject = 0; m_pBlock = 0; } };
 static void DestroyObject(void* o) { ++g_destroy; g_destroyed = o; }
-struct CMovableResource { virtual ~CMovableResource() { } };
-struct CEngineLandscapePatch : CMovableResource { unsigned char _pad04[0x3c]; CCountedResourcePointer m_resource; void Clear() { ++g_clear; } virtual ~CEngineLandscapePatch() { Clear(); } };
+class CMovableResource { public: virtual ~CMovableResource() { } };
+class CEngineLandscapePatch : public CMovableResource { public: unsigned char _pad04[0x3c]; CCountedResourcePointer m_resource; void Clear() { ++g_clear; } virtual ~CEngineLandscapePatch() { Clear(); } };
 int main()
 {
     int obj; SCountBlock* b = (SCountBlock*)std::malloc(sizeof(SCountBlock)); b->m_count = 2; b->m_pfnDestroy = DestroyObject; b->m_pObject = &obj;

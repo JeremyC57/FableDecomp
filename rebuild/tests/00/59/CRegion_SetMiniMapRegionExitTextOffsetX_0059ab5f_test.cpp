@@ -2,8 +2,8 @@
 
 extern int __cdecl RegionHelper_4292c0(int a);
 
-struct CRegion
-{
+class CRegion
+{ public:
     int f0;
     CRegion* SetMiniMapRegionExitTextOffsetX();
 };

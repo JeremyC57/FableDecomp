@@ -1,4 +1,4 @@
-struct CCreatureAction_CombatBoast {
+class CCreatureAction_CombatBoast { public:
     void* vftable;
 };
 

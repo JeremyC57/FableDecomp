@@ -9,9 +9,9 @@
 #pragma optimize("s", on)
 #define FORCEINLINE __forceinline
 
-struct CThing;
+class CThing;
 
-struct CTCBase {                            // CTCBase root: vptr, ParentThing, two flags (0x0c bytes)
+class CTCBase { public:                            // CTCBase root: vptr, ParentThing, two flags (0x0c bytes)
     void* __vftable;                        // +0x00
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
@@ -19,7 +19,7 @@ struct CTCBase {                            // CTCBase root: vptr, ParentThing, 
     ~CTCBase();                             // 0x00686830 (stores the CTCBase vtable, then the CBaseObject destructor)
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long RefCount;                          // +0x04
@@ -44,7 +44,7 @@ struct CIntelligentPointer {                // CIntelligentPointer<CThing>
     ~CIntelligentPointer();                 // 0x00A01C10 (CBaseIntelligentPointer::~CBaseIntelligentPointer)
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CThingPointerVector {                // vector<CIntelligentPointer<CThing> > (12 bytes)
     void* First;
@@ -60,7 +60,7 @@ struct CEmitterVector {                     // vector<pair<CIntelligentPointer<C
     ~CEmitterVector();                      // 0x004E1B08
 };
 
-struct CTCDExplosion : CTCBase {
+class CTCDExplosion : public CTCBase { public:
     float DamageRadius;                     // +0x0c
     float PhysicsRadius;                    // +0x10
     float MaxDamage;                        // +0x14

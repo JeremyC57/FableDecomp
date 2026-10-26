@@ -11,7 +11,7 @@ struct CTCInventoryBase {
     virtual ~CTCInventoryBase() { }
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     bool EnableQuickAccessAssign;
     bool EnableQuickAccessRemove;
     void ProcessButtonAReleased();

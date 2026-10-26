@@ -13,7 +13,7 @@
 //   arm's compare jumps into the unowned arm's `jne`. The owner is read through a direct component-map Find (the mask was
 //   already tested as ownedBit; the out-parameter GetInterface form pops edi early and compares from memory); the
 //   free-point test returns through its own `mov al,1` exit.
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* PData;
@@ -41,7 +41,7 @@ struct CTCUserActionPointBase {
     bool IsActionPointFree();                      // 0x007FEBF0
 };
 #pragma pack(push, 1)
-struct CTCOwnedEntity {                            // component kind 0x33
+class CTCOwnedEntity { public:                            // component kind 0x33
     unsigned char           _base[0x0c];           // CTCBase
     bool                    SwitchableNavigationTCAdded;   // +0x0c
     CBaseIntelligentPointer POwner;                // +0x0d CIntelligentPointer<CThing>

@@ -6,7 +6,7 @@
  * free __fastcall(thisptr, other) so the compiler emits an identical
  * tail-call jmp. Callee address is relocation-masked in parity. */
 
-struct CArmourDef;
+class CArmourDef;
 
 /* real implementation this thunk tail-calls (relocation-masked target) */
 extern void __fastcall CArmourDef_Copy_impl_0046133f(CArmourDef* thisptr, CArmourDef* other);

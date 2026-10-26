@@ -1,6 +1,6 @@
 // CPlayerManager::GetPlayer(long number) const -- the player whose Number matches, else the neutral player
-// Leaf: ?GetPlayer@CPlayerManager@@QBEABVCPlayer@J@Z
-// Retail: Fable.exe @ 0x00449910, 73 bytes, `ret 4`; Ego_r.pdb ?GetPlayer@CPlayerManager@@QBEABVCPlayer@J@Z. 0x004498C0 and 0x00449910
+// Leaf: ?GetPlayer@CPlayerManager@@QBEABVCPlayer@@J@Z
+// Retail: Fable.exe @ 0x00449910, 73 bytes, `ret 4`; Ego_r.pdb ?GetPlayer@CPlayerManager@@QBEABVCPlayer@@J@Z. 0x004498C0 and 0x00449910
 // are byte-identical (the const and non-const overloads); which address is which overload is not recoverable from the bytes.
 // Layout: retail CPlayerManager -- Players (12-byte STLport vector<CPlayer*>) +0x0c, PlayerNeutral +0x18 (Ego_r.pdb +0x1c with a
 // 16-byte vector; engine/CPlayerManager.h carries the PDB offsets), modelled locally as at 0x00449990. CPlayer from

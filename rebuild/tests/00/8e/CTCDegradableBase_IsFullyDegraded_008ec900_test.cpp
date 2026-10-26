@@ -3,26 +3,26 @@
 // held the last reference).
 #include <cstdio>
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() { }
     virtual void DestroySelf() { ++g_destroyed; }
     long RefCount;
     void AddRef() { ++RefCount; }
     void Release() { --RefCount; if (RefCount == 0) DestroySelf(); }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object != 0) Object->AddRef(); }
     ~CDefPointer() { if (Object != 0) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CDegradableInfo { float HealthPercentage; unsigned char EngineGraphic[0x10]; long SmashParticleEmitter; bool BlocksNavigation; };
+class CDegradableInfo { public: float HealthPercentage; unsigned char EngineGraphic[0x10]; long SmashParticleEmitter; bool BlocksNavigation; };
 template<class T> struct CRetailVector { T* m_pFirst; T* m_pLast; T* m_pEnd; T& back() const { return *(m_pLast - 1); } };
-struct CDegradableDef : CDefPointeeBase {
+class CDegradableDef : public CDefPointeeBase { public:
     unsigned char                  _pad[0x30 - 0x8];
     CRetailVector<CDegradableInfo> Degradations;
 };
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00() { }
     unsigned char               _base[0x8];
     long                        LastWorldFrameHit;

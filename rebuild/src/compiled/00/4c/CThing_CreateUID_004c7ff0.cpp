@@ -10,7 +10,7 @@ struct SThingClassInfo {                             // 20-byte record
     unsigned char _pad0a[20 - 10];
 };
 
-struct CThingManager {
+class CThingManager { public:
     void*            __vftable;                      // +0x00
     SThingClassInfo* m_pClassInfo;                   // +0x04
     unsigned __int64 AllocateNewThingUID(long mapNumber, bool classFlag, bool levelLess); // 0x0051E100
@@ -18,7 +18,7 @@ struct CThingManager {
 
 extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad00[0x41];
     unsigned char AvailableInEditor : 1;             // +0x41 bit 0
     unsigned char AlwaysFrameUpdate : 1;             // bit 1
@@ -26,7 +26,7 @@ struct CThingBaseDef {
     unsigned char LevelLess : 1;                     // bit 3
 };
 
-struct CThing {
+class CThing { public:
     void*            __vftable;                      // +0x00
     unsigned char    _pad04[0x10 - 0x04];
     unsigned char    m_thingClass;                   // +0x10

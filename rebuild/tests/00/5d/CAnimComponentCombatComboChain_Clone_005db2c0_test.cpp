@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-struct CAnimComponentCombatComboChain { void* v; void* f4; void* f8; void* fc; };
+class CAnimComponentCombatComboChain { public: void* v; void* f4; void* f8; void* fc; };
 struct VT { void* s0; void* s1; void* s2; void* s3; CAnimComponentCombatComboChain* (__fastcall* clone)(void*); };
 static CAnimComponentCombatComboChain g_new;
 static CAnimComponentCombatComboChain* __fastcall do_clone(void* component){ g_new.f8=(void*)1; g_new.fc=(void*)2; return &g_new; }

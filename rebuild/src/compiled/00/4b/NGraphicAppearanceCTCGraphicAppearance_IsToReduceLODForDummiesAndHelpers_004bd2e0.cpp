@@ -15,7 +15,7 @@
 // Layout: retail CThing PBaseDef.Object +0x70; retail CThingBaseDef::RenderFadeDistance +0x48 (PDB +0x4C).
 class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };

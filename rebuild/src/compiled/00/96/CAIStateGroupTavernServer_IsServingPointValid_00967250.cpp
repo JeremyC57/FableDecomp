@@ -12,7 +12,7 @@
 // named bool local returned on both paths, the true path's `mov al,1` is the constant-folded `return ok`.
 #include "engine/CAIStateGroup_TavernServer.h"
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -46,7 +46,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CTCTavernTable {                         // interface type 0xB8 component
+class CTCTavernTable { public:                         // interface type 0xB8 component
     bool IsSeatValid(long seatIndex);           // 0x007B8570
 };
 

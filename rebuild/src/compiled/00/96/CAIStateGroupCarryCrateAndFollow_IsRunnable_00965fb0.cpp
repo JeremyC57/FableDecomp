@@ -11,12 +11,12 @@
 // Model: local (engine/CAIStateGroup_CarryCrateAndFollow.h flattens the base; member names from it).
 // Shape: the CIntelligentPointer operator= names the GetPItem() CALL result (`item = other.GetPItem(); SetPItem(item);`), which
 //   keeps the member's address (this of SetPItem) after the temporary's GetPItem call as retail; the inline form hoists it.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
-struct CThingObject;
+class CThingObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -33,7 +33,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligent
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                                   // +0x04
     long ScriptAIPriority;                          // +0x08

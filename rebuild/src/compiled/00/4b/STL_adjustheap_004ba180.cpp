@@ -1,5 +1,5 @@
 // std::__adjust_heap(pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>* first, int holeIndex, int len, pair<CCharString,CPersistInfo> val, CKeyPairCompareLess comp) -- STLport heap sift-down of the quest-persistence (quest name, persist info) table by name, then __push_heap val back up
-// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@UCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@
+// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004BA180, 282 bytes (+ int3 padding), `ret 14h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 12-byte value and the empty comparator on the stack: 4 + 0xC + 4 = 0x14).
 // Element (12 bytes, `lea eax,[esi+esi*2]` * 4): CCharString key +0, CPersistInfo +4 (Ego_r.pdb, 8 bytes:
@@ -37,7 +37,7 @@ private:
 namespace NQuestManager {
 class CRuntimeQuestPersistence {
 public:
-    struct CPersistInfo {                       // Ego_r.pdb, 8 bytes
+    class CPersistInfo { public:                       // Ego_r.pdb, 8 bytes
         CCharString QuestName;                  // +0x0
         CCharString PersistScript;              // +0x4
     };

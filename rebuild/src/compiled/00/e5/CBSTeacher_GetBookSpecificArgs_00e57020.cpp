@@ -18,12 +18,12 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
@@ -52,7 +52,7 @@ struct CTextArgMap {                                   // std::map<CCharString, 
 #define VPAD32(a) VPAD16(a##0) VPAD16(a##1)
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD128(p0) VPAD32(p1) VPAD16(p2) VPAD2(p3)        // slots 0..177
     virtual float GetHeroScariness() const;            // slot 178 (+0x2c8)
     virtual float GetHeroAttractiveness() const;       // slot 179 (+0x2cc)
@@ -65,7 +65,7 @@ struct CQ_SunnyvaleMasterData {
     unsigned char _pad3b[0x54 - 0x3b];
     CCharString TeddySolution;                         // +0x54
 };
-struct CScriptThing { void* vptr; void* PImp[2]; };
+class CScriptThing { public: void* vptr; void* PImp[2]; };
 struct CV_BookCollectingScript;
 class CBS_Teacher {
 public:

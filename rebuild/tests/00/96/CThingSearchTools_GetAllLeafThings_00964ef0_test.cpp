@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CThing {
+class CThing { public:
     unsigned char StateBits;          // Dead 0x01, IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20
     long Tag;
     bool IsIncludedInThingScans() const
@@ -70,13 +70,13 @@ template <class T> struct CList {
         n->_M_prev = tmp;
     }
 };
-struct CThingMarker : CThing { enum { ThingListType = 0xb }; };
-struct CThingFilter_MarkerHasProperty {
+class CThingMarker : public CThing { public: enum { ThingListType = 0xb }; };
+class CThingFilter_MarkerHasProperty { public:
     long Property;
     bool operator()(CThingMarker* marker) const { return (marker->Tag & 1) == Property; }
 };
 // The candidate logic.
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThingList* Lists[16];
     CThingList* PeekTypeList(long type) { return Lists[type]; }
     template <class TThing, class TContainer, class TFilter> void GetAllLeafThings(const TFilter& filter, TContainer& things)

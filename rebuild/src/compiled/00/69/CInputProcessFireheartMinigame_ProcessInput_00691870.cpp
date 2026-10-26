@@ -9,7 +9,7 @@ class CInputEvent;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -25,8 +25,8 @@ public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
     void SetHandled();                             // 0x00A0D390
 };
-struct C2DVector { float X, Y; };
-struct CTCBase;
+class C2DVector { public: float X, Y; };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -67,7 +67,7 @@ public:
         return (T*)(it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CTCFireheartMinigame {
+class CTCFireheartMinigame { public:
     unsigned char _pad00[0x88];
     bool          Quitting;                        // +0x88 (descriptive)
     void ProcessInput(long input);                 // 0x007E79C0 (EFireheartMinigameInput)

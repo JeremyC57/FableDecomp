@@ -10,7 +10,7 @@
 // Globals: the global allocator @ 0x013CAA90 and its destroy-when-empty flag @ 0x013CAA94.
 // Shape: the chunk destructor tests Mem and calls the landed GFFreeFromGlobalAllocator body (0x009A4350) inline, whose
 // own null test survives (`test esi,esi` twice) because it sits after the lock call.
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void InternalDeallocate(void* block);          // 0x009F2920
     long GetAllocationCount();                     // 0x009F1F10
     ~CMemoryAllocator();                           // 0x009F2310
@@ -34,8 +34,8 @@ __forceinline void GFFreeFromGlobalAllocator(void* block)
     }
     GFLeaveAllocatorLock();
 }
-struct CFileInstaller {
-    struct CBufferChunk {                          // Ego_r.pdb, 8 bytes
+class CFileInstaller { public:
+    class CBufferChunk { public:                          // Ego_r.pdb, 8 bytes
         unsigned char* Mem;                        // +0x00
         bool           Used;                       // +0x04
         ~CBufferChunk()

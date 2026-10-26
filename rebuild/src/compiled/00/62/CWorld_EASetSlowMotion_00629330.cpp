@@ -31,7 +31,7 @@ public:
 #define CWorld DonorCWorld
 #include "engine/CWorld.h"
 #undef CWorld
-struct CWorld : DonorCWorld {                      // engine/CWorld.h: SlowMotion +0xA5 (PDB = retail here)
+class CWorld : public DonorCWorld { public:                      // engine/CWorld.h: SlowMotion +0xA5 (PDB = retail here)
     void EASetSlowMotion(const CGameEvent* event);
 };
 

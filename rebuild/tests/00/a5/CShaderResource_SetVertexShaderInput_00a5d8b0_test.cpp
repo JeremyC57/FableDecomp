@@ -7,18 +7,18 @@
 struct SElement { unsigned short Stream; unsigned short Offset; unsigned char Type, Method, Usage, UsageIndex; };
 struct SStreamInput { long m_value; };
 static int g_assigns = 0;
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     CArray& operator=(const CArray& other) { ++g_assigns; m_pFirst = other.m_pFirst; m_pLast = other.m_pLast; m_pEnd = other.m_pEnd; return *this; }
     unsigned long Size() const { return m_pLast - m_pFirst; }
     T* GetData() { return Size() > 0 ? m_pFirst : (T*)this; }
 };
-struct CBaseClass { virtual ~CBaseClass() { } };
-struct CVertexShaderInput : CBaseClass {
+class CBaseClass { public: virtual ~CBaseClass() { } };
+class CVertexShaderInput : public CBaseClass { public:
     CArray<SStreamInput> Streams;
     CArray<SElement>     Elements;
 };
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShaderInput VertexShaderInput;
     SElement*          VertexShaderDeclaration;
     void SetVertexShaderInput(const CVertexShaderInput& input)

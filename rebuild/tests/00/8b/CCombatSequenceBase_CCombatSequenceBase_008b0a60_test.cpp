@@ -1,7 +1,7 @@
 // Behaviour test for 008b0a60 (CCombatSequenceBase::~CCombatSequenceBase): the CombatActions vector destroys its element range and then frees its block when allocated.
 #include <cstdio>
 
-struct CCombatAction { long m_words[2]; };
+class CCombatAction { public: long m_words[2]; };
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 
@@ -27,7 +27,7 @@ template <class T> struct CRetailVector {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     bool                          Running;
     long                          NoAvailableActions;
     long                          CurrentActionIndex;

@@ -3,12 +3,12 @@
 #include <cstdlib>
 
 static int g_has = 0; static long g_filterType = 0; static bool g_hasResult = false;
-struct CTCBase { };
-struct CMap { struct SEntry { long type; CTCBase* comp; }; SEntry* first; SEntry* last;
+class CTCBase { public: };
+class CMap { public: struct SEntry { long type; CTCBase* comp; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* t) { SEntry* p = first; while (p != last && p->type < *t) ++p; return p; } };
-struct CThing { unsigned char pad[0x20]; unsigned long bits[9]; CMap map;
+class CThing { public: unsigned char pad[0x20]; unsigned long bits[9]; CMap map;
     template<class T> bool GetInterface(T** out, long type) { if (bits[type >> 5] & (1UL << (type & 31))) { long k = type; CMap* m = &map; CMap::SEntry* it = m->LowerBound(&k); if (it == m->last || type < it->type) it = m->last; *out = (T*)it->comp; return true; } return false; } };
-struct CIsEventOfType { long type; CIsEventOfType(long t) : type(t) { } };
+class CIsEventOfType { public: long type; CIsEventOfType(long t) : type(t) { } };
 struct CEvents : CTCBase { bool HasEvent(CIsEventOfType& f) { ++g_has; g_filterType = f.type; return g_hasResult; } };
 struct CModeBase { virtual ~CModeBase() { } CThing* thing; };
 struct CMode : CModeBase { bool FindHitEvent() { CEvents* ev; if (thing->GetInterface(&ev, 0x42)) { CIsEventOfType f(1); if (ev->HasEvent(f)) return true; } return false; } };

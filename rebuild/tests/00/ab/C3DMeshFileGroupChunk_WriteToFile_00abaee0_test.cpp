@@ -1,22 +1,22 @@
 #include <cstdio>
 #include <cstring>
-struct CChunkedFileSaver { int dummy; };
+class CChunkedFileSaver { public: int dummy; };
 static char g_trace[256];
 static void Log(const char* s) { std::strcat(g_trace, s); }
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLONG(long v) { char b[32]; std::sprintf(b, "L%ld;", v); Log(b); }
     void WriteULONG(unsigned long v) { char b[32]; std::sprintf(b, "U%lu;", v); Log(b); }
     void WriteUSHORT(unsigned short v) { char b[32]; std::sprintf(b, "W%u;", (unsigned)v); Log(b); }
     void WriteFLOAT(float v) { char b[32]; std::sprintf(b, "F%g;", v); Log(b); }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin; T* m_pEnd; T* m_pEndOfStorage;
     unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
     const T& operator[](unsigned long i) const { return m_pBegin[i]; }
 };
-struct CChunkedFileSuperChunk { void WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const { Log("SUPER;"); } };
-struct C3DVertexBlend2 { unsigned long VertexIndex; float BlendValue; };
-struct C3DMeshFileGroupChunk : CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public: void WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const { Log("SUPER;"); } };
+class C3DVertexBlend2 { public: unsigned long VertexIndex; float BlendValue; };
+class C3DMeshFileGroupChunk : public CChunkedFileSuperChunk { public:
     long BoneIndex;
     CArray<C3DVertexBlend2> VertexList;
     void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const

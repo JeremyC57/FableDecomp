@@ -12,7 +12,7 @@
 // +0x60 object are re-read for each use.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
@@ -31,12 +31,12 @@ struct CThingPlacement {                     // the owner's +0x60 object (class 
     C3DVector     m_position;                // +0x0c
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad[0x60];
     CThingPlacement* m_pPlacement;           // +0x60
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector& position);     // 0x0063A300
 };
 

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_SnapDragonFast {
+class CCreatureAction_SnapDragonFast { public:
     void* vftable;
     int destroyed;
 };

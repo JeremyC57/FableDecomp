@@ -10,8 +10,8 @@
 // the lookup key and the empty CCharString (a named local in its own `{}` block) all share the dead
 // argument slot (a clear bit reads it back, `mov esi,[esp+0Ch]`); with the out pointer and the string
 // as plain locals of the body VC opens a `push ecx` frame word instead.
-struct CTCBase;
-struct C3DVector;
+class CTCBase;
+class C3DVector;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -20,7 +20,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -40,7 +40,7 @@ struct CThing {
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -48,7 +48,7 @@ struct CCharString {
 
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
@@ -59,7 +59,7 @@ __forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
     return emitter;
 }
 
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     void AddAppearanceParticle(const CCharString& particleThingName);

@@ -1,14 +1,14 @@
 // Behaviour test for CTCCreatureOpinionOfHero::FindMostRecentDeed<IsStillHappening> (0x0093A3C0): pending deeds (of the type,
 // still happening) are checked first when asked, then the known deeds of the type; the handle goes to outHandle when given.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -30,24 +30,24 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* Creature;
     CThing* GetControlledCreature() { return Creature; }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* Player;
     CPlayer* GetMainPlayer() const { return Player; }
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long          DeedType;                             // +0x00 EOpinionDeedType
     long          DeedHandle;                           // +0x04
     bool          Other;
     bool          IsStillHappening;                     // +0x21
 };
-struct COpinionDeedFilter_IsStillHappening {
+class COpinionDeedFilter_IsStillHappening { public:
     bool operator()(const COpinionDeed& deed) const { return deed.IsStillHappening; }
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* Deeds; int Count;
     const COpinionDeed* GetDeedFromHandle(long handle) const { for (int i = 0; i < Count; ++i) if (Deeds[i].DeedHandle == handle) return &Deeds[i]; return 0; }
 };
@@ -59,7 +59,7 @@ struct SHandleNode {                                    // STLport list<long> no
 struct CHandleList {                                    // retail list: the sentinel node pointer
     SHandleNode* head;
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00() { }
     const CPlayerManager* PM;
     CHandleList PendingDeeds;                           // +0x54 (PDB +0x70)

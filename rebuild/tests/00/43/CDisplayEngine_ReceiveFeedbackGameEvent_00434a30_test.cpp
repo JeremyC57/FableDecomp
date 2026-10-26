@@ -5,7 +5,7 @@
 #include "engine/CGameEvent.h"
 struct CDisplayEngine_Methods;
 typedef void (CDisplayEngine_Methods::*TDisplayEventFunction)(const CGameEvent* event);
-struct CGameEventDispatch {
+class CGameEventDispatch { public:
     unsigned char         ActionFunction[0x10];          // +0x00 CWorld pointer to member
     unsigned char         LocalActionFunction[0x10];     // +0x10 CWorld pointer to member
     TDisplayEventFunction FeedbackFunction;              // +0x20

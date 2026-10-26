@@ -14,13 +14,13 @@
 // `xor ecx,ecx ; setg cl ; mov al,cl`).
 #include "engine/CSummonDef.h"                           // TimeBetweenSummons +0x40
 
-struct CThing;
+class CThing;
 
 extern long g_FramesPerSecond;                              // 0x01375550 (.data), 15
 long GetWorldFrame();                                       // 0x0049D870
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     const T* m_pDef;
     const T* operator->() const { return m_pDef; }
 };
@@ -32,7 +32,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     bool    IsInGlobalUpdateTCs;                            // +0x09
 };
 
-struct CTCAISummon : CTCBase_Calls {
+class CTCAISummon : public CTCBase_Calls { public:
     CDefPointer<CSummonDef> PSummonDef;                     // +0x0c
     void*                   MySummonedCreatures;            // +0x10 retail list (sentinel pointer)
     long                    LastSummonTick;                 // +0x14

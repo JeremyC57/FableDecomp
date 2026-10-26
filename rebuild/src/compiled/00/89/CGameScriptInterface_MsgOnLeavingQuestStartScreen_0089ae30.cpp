@@ -12,7 +12,7 @@
 // Shape: the frames are taken as they are (no -1) and the manager read into a local before the filters are built (the
 //   landed MsgOnExpressionPerformed 0x00893B00 form); the `__forceinline` CCharString operator== (same block, both non-null, equal
 //   length, `Compare ? false : true`) gives the 8-bit `neg ; sbb al,al ; inc al`; true and false keep separate exits.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                          // +0x00
     unsigned long m_length;                         // +0x04
 };
@@ -33,7 +33,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
     }
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     __forceinline bool operator==(const CCharString& other) const
     {
@@ -45,7 +45,7 @@ struct CCharString {
     }
 };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20
@@ -79,42 +79,42 @@ template <class T> inline bool IsThingOfType(const CThing* const& thing)
     unsigned long mask = T::ThingTypeMask;
     return (thing->ThingTypeFlags & mask) == mask;
 }
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* Info;
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPTypedItem() const
     {
         return (GetPItem() != 0 && IsThingOfType<T>((T*)GetPItem())) ? (T*)GetPItem() : 0;
     }
 };
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad[0x48];
     CIntelligentPointer<CThing> PTarget;            // +0x48
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
-struct CMessageEventFilter_CanBeSeenOrHeard {
+class CMessageEventFilter_CanBeSeenOrHeard { public:
     long m_frame;
     long m_maxFrame;
     CMessageEventFilter_CanBeSeenOrHeard(long frame, long maxFrame) : m_frame(frame), m_maxFrame(maxFrame) { }
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CSeenOrHeardFilter;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CSeenOrHeardFilter& filter);   // 0x008ABED0
 };
-struct CWorld {
+class CWorld { public:
     virtual void w000();
     unsigned char _pad04[0x5c];
     CMessageEventManager* PMessageEventManager_Data;   // +0x60
@@ -124,7 +124,7 @@ struct CTCQuestStartTarget {                        // interface 0xFC
     CCharString QuestName;                          // +0x50
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual bool MsgOnLeavingQuestStartScreen(CCharString& questName) const;
     CWorld* World;                                  // +0x04
     long GetCurrentWorldFrameForMessages() const;   // 0x006E7510

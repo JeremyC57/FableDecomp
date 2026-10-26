@@ -16,7 +16,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* last;
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20
     CInterfaceMap m_interfaces;                     // +0x44
@@ -47,14 +47,14 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     void RepressOpinions(bool repress);             // 0x007996B0
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                        // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     void*                   ParentThing;            // +0x04 (CTCBase)
     bool                    ToBeRemoved;            // +0x08

@@ -8,9 +8,9 @@
 // Shape: four filter objects + the Bind4 pointer block in the 0x38 frame, the nearest-compare holding a copy of the
 // creature position; the out object lands in the dead first-argument slot. Engine header names (base modelled locally).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -58,12 +58,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -97,25 +97,25 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 struct CThingCreaturePos {
     const C3DVector& GetPosition();             // 0x004C73D0
 };
-struct CThingObject;
+class CThingObject;
 
-struct CThingFilter_ObjectHasProperty {
+class CThingFilter_ObjectHasProperty { public:
     unsigned long Property;
     CThingFilter_ObjectHasProperty(unsigned long property) : Property(property) { }
 };
-struct CThingFilter_HasFreeActionPoint { CThingFilter_HasFreeActionPoint() { } };
-struct CThingFilter_HasTC {
+class CThingFilter_HasFreeActionPoint { public: CThingFilter_HasFreeActionPoint() { } };
+class CThingFilter_HasTC { public:
     long Type;
     CThingFilter_HasTC(long type) : Type(type) { }
 };
-struct CThingFilter_In3DRange {
+class CThingFilter_In3DRange { public:
     C3DVector Point;
     float Range;
     CThingFilter_In3DRange(const C3DVector& point, float range) : Point(point), Range(range) { }
@@ -132,11 +132,11 @@ struct CFilter_Bind4 {
     CFilter_Bind4(const CThingFilter_ObjectHasProperty& a, const CThingFilter_HasFreeActionPoint& b,
                   const CThingFilter_HasTC& c, const CThingFilter_NotIn3DRange& d) : P1(&a), P2(&b), P3(&c), P4(&d) { }
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector Pos;
     CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestThing(const CFilter_Bind4& filter, const CThingCompare_Nearest& compare, CThingObject** out);   // 0x009650C0
 };
 long NearSink_s7_0(const void* self, long seen);   // stand-in: the search GetPBestThing runs (returns the best thing or 0)

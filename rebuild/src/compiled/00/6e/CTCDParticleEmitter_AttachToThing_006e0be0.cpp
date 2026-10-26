@@ -18,10 +18,10 @@
 //   one-ternary form, both over a same-TU LowerBound body; GetSubDef has a same-TU out-only stand-in (the def is cached in
 //   ebp and reloaded from its slot); the emitter name is reached through a named emitter pointer; SetAlwaysUpdate(true)
 //   is inline with one GetPItem.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                         // 0x0099EAE0
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
@@ -35,17 +35,17 @@ struct CDefBase {
     virtual void Destroy();                                 // slot 1
     long RefCount;                                          // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CEntitySoundDef : CDefBase {
+class CEntitySoundDef : public CDefBase { public:
     unsigned char _pad08[0x48 - 0x08];
     CCharString SoundIdentifier;                            // +0x48
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CEntitySoundDef>* out);      // 0x0065F604
 };
 CEntitySoundDef* FindRef_CDefClassBase_GetSubDef(CDefClassBase* defClass);   // stand-in callee of the stand-in body below
@@ -85,7 +85,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -133,7 +133,7 @@ struct CBaseIntelligentPointer {
     void* GetPItem() const;                                 // 0x00A01B50
     void SetPItem(void* item);                              // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing> vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing> vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
@@ -141,7 +141,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // C
 };
 
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad00[0x44];
     bool PreWaterEffect : 1;                                // +0x44 bit 0
     bool WaterEffect : 1;
@@ -156,7 +156,7 @@ struct CParticleEmitter {
 };
 }
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void*                                         __vftable;               // +0x00
     CThing*                                       ParentThing;             // +0x04 (CTCBase)
     unsigned char                                 _pad08[0x14 - 0x08];

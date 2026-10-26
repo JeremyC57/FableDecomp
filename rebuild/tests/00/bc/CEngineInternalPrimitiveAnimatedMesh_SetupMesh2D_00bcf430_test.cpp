@@ -20,13 +20,13 @@
 //   render info takes the raw mesh pointer (no add-ref).
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
-struct C3DMesh2;
-struct CCPPointerInfo {
+class C3DMesh2;
+class CCPPointerInfo { public:
     long  References;                                  // +0x00
     void (__fastcall* Destroy)(void* object);          // +0x04
     void* Object;                                      // +0x08
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -42,17 +42,17 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     bool GetMesh(CCountedPointer<const C3DMesh2>* mesh, unsigned long lod, unsigned long flags);   // 0x00A25E70
 };
 
-struct CEngine {
+class CEngine { public:
     unsigned char _pad[0x88];
     long          CurrentRenderFrame;                  // +0x88 (retail)
 };
 extern CEngine* g_pEngine_01436ea4;                             // 0x01436EA4
 
-struct CEngineRenderInfoAnimatedMesh {                 // retail +0xe0 in the primitive
+class CEngineRenderInfoAnimatedMesh { public:                 // retail +0xe0 in the primitive
     void*           Lights;                            // +0x00
     const C3DMesh2* Mesh;                              // +0x04
     unsigned long   LOD;                               // +0x08
@@ -62,7 +62,7 @@ struct CEngineRenderInfoAnimatedMesh {                 // retail +0xe0 in the pr
     long            RenderFrame;                       // +0x44
 };
 
-struct CEngineInternalPrimitiveAnimatedMesh {
+class CEngineInternalPrimitiveAnimatedMesh { public:
     unsigned char                 _pad00[0x50];
     C3DMeshInfo*                  MeshInfo;            // +0x50
     unsigned char                 _pad54[0xe0 - 0x54];

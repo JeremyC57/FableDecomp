@@ -3,7 +3,7 @@
 #include <cstdio>
 
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     int m_state;
     int m_constructed;
     CParticleSystem() : m_state(0), m_constructed(1) {}

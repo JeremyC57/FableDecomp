@@ -4,7 +4,7 @@
 
 static int g_baseRuns = 0;
 struct CBase { virtual ~CBase() {} CBase() { ++g_baseRuns; } };
-struct CGameJoystickManager : CBase {
+class CGameJoystickManager : public CBase { public:
     long m_MainPlayerJoystickDeviceNumber; bool m_MainPlayerJoystickDeviceNumberSet;
     CGameJoystickManager() : m_MainPlayerJoystickDeviceNumber(0), m_MainPlayerJoystickDeviceNumberSet(false) {}
 };

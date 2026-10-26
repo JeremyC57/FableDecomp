@@ -10,7 +10,7 @@
 // registers (key in ecx, X/Y on the x87 stack, Z spilled to the frame) because both copy constructors are
 // memberwise user constructors; `*_Dest = *_First` is the implicit assignment (four dword moves) and the value
 // argument is stored field by field from the temporary.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };

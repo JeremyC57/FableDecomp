@@ -20,9 +20,9 @@
 //   ebx) with zeroed CDefPointer locals released by their inline dtors; GetSubDef / CalcAndLookup have same-TU out-only
 //   stand-ins (non-template) so VC7.1 keeps the defs in registers. CSoundInit's default ctor sets PlaybackType in its
 //   body after the list (retail stores OverrideID -1 before PlaybackType 1).
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -38,23 +38,23 @@ struct CDefBase {
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
-struct CSoundMap {
+class CSoundMap { public:
     const long* GetPSound(const CCharString& name) const;       // 0x0065FBA4
 };
-struct CEntitySoundDef : CDefBase {
+class CEntitySoundDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CSoundMap     SoundMap;                             // +0x28
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);       // 0x00669580
     bool GetSubDef(CDefPointer<CEntitySoundDef>* out);          // 0x0065F604
 };
@@ -104,10 +104,10 @@ public:
         PlaybackType = 1;
     }
 };
-struct CTCSoundPlayer {                                 // interface 0x10
+class CTCSoundPlayer { public:                                 // interface 0x10
     unsigned long PlaySound(long sound, const CSoundInit& init, long a, long b);   // 0x0066ACE0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -130,7 +130,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
 struct CBaseIntelligentPointer {
@@ -143,7 +143,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
 };
 struct CModeBase { };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer(T* object);                         // 0x00718A00
@@ -153,7 +153,7 @@ struct CModeBriarRoseTeleportIntangible : CModeBase {
     unsigned char _pad[0x80];
     CModeBriarRoseTeleportIntangible(CThing* owner, CThingCreatureBase* enemy);   // 0x008C3700
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode);      // 0x0073ACC0
 };
 class CCombatActionBase {

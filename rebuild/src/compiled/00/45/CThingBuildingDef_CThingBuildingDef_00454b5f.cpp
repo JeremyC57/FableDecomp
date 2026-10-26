@@ -10,7 +10,7 @@
 // of the record, the long and both flag bytes share the `xor ecx,ecx` zero.
 #pragma optimize("s", on)
 
-struct CThingBaseDef {                          // vtable 0x0125B664
+class CThingBaseDef { public:                          // vtable 0x0125B664
     virtual void v00();
     unsigned char _body[0x6c];                  // +0x04..+0x6f
     CThingBaseDef();                            // 0x006772D0
@@ -25,7 +25,7 @@ struct SBuildingRecord {                        // +0x78 in CThingBuildingDef
     SBuildingRecord() : m_value(0), m_levelA(0.0f), m_levelB(0.0f), m_flagA(false), m_flagB(false) { }
 };
 
-struct CThingBuildingDef : CThingBaseDef {      // vtable 0x01233144
+class CThingBuildingDef : public CThingBaseDef { public:      // vtable 0x01233144
     unsigned char   _pad70[0x8];                // +0x70..+0x77 (not initialised here)
     SBuildingRecord m_record;                   // +0x78
     virtual void v00();

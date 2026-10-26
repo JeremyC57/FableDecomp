@@ -8,25 +8,25 @@
 //   assignment addresses the element once with `lea` and copies three dwords through it.
 // Layout: engine/CCreatureAction_DragonSwoop.h is the PDB build (SwoopPoints at +0x12c); the retail CCombatActionBase
 //   is 0x114 bytes, so the array sits at +0x114 and the header is not used.
-struct CThingCreatureBase;
-struct CCharString;
+class CThingCreatureBase;
+class CCharString;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);                                           // 0x008574D0
 };
 
-struct CCreatureAction_DragonSwoop : CCombatActionBase {   // vtable 0x012887D4
+class CCreatureAction_DragonSwoop : public CCombatActionBase { public:   // vtable 0x012887D4
     C3DVector SwoopPoints[3];               // +0x114 (PDB +0x12c)
     virtual void v00();
     CCreatureAction_DragonSwoop(CThingCreatureBase* owner, const CCharString& animation,

@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 static int g_baseCtor;
 struct CTCBase_Calls {
@@ -16,7 +16,7 @@ struct CTCBase_Calls {
 
 static double g_storage[64];
 static void* Fresh() { std::memset(g_storage, 0xAB, sizeof g_storage); return g_storage; }
-struct CBaseObject;
+class CBaseObject;
 static int g_ipCtor;
 struct CBaseIntelligentPointer {
     virtual void v00() { }
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
-struct CTCCrateStack : CTCBase_Calls {
+class CTCCrateStack : public CTCBase_Calls { public:
     CIntelligentPointer FirstCrate;
     CIntelligentPointer SecondCrate;
     long CrateDefIndex;

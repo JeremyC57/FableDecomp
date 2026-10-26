@@ -1,6 +1,6 @@
 // Behaviour test for 0x00643FC8 NPlayerGui::CDrawAbilityButtons::GetSpecialMoveIndexForButton
 #include <cstdio>
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     long Buttons[4];
     long GetAssignableSpecialMoveIndexForButton(long button)
     {
@@ -9,13 +9,13 @@ struct CGamePlayerInterface {
         return -1;
     }
 };
-struct CPlayer { CGamePlayerInterface* PlayerInterface; };
-struct CPlayerManager {
+class CPlayer { public: CGamePlayerInterface* PlayerInterface; };
+class CPlayerManager { public:
     CPlayer* Players[2];
     long MainPlayer;
     CPlayer* GetMainPlayer() { return Players[MainPlayer]; }
 };
-struct CAbilityButtonGuiDef { long ControllerButton; long MouseButton; };
+class CAbilityButtonGuiDef { public: long ControllerButton; long MouseButton; };
 struct CDrawAbilityButtons {
     CPlayerManager* PlayerManager;
     long GetSpecialMoveIndexForButton(const CAbilityButtonGuiDef& def)

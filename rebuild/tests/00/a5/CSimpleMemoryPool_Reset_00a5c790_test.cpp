@@ -15,7 +15,7 @@ struct CMemoryBlock {
     CMemoryBlock(bool owns, unsigned long size, CMemoryBlock* next) : IVRefCount(1), BlockData(0), OwnsData(owns), BlockSize(size), NextBlock(next) { }
 };
 struct CArea { unsigned long Size; CArea* NextFreeArea; long Status; };
-struct CSimpleMemoryPool {                      // the header layout, Root as its CArea type (member access only)
+class CSimpleMemoryPool { public:                      // the header layout, Root as its CArea type (member access only)
     void*         __vftable;
     CMemoryBlock* FirstMemoryBlock;
     unsigned long Capacity;

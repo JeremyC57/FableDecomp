@@ -12,7 +12,7 @@
 //   HealthWarningsGiven +0x58.
 // Shape: the Tutorial_LowMagic loop with two cooldown counters (low in ebp, critical in ebx) both decremented each
 //   player-controlled frame; the def is read into a block-local pointer before each health call.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -73,7 +73,7 @@ struct CGameScriptInterface_Calls {
     virtual void v387(); virtual void v388(); virtual void v389(); virtual void v390(); virtual void v391(); virtual void v392(); virtual void v393();
     virtual bool IsHeroControlledByPlayer() const;   // slot 394 (+0x628)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0xfe0];
     long LowHealthThreshold;                            // +0xfe0
     long CriticalHealthThreshold;                       // +0xfe4
@@ -92,7 +92,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
-struct CGameflowAssistanceScript : CScriptBase {
+class CGameflowAssistanceScript : public CScriptBase { public:
     CGameScriptInterface_Calls* GSI;                    // +0x40
     CQuestMasterData*           PMasterData;            // +0x44
     unsigned char               _pad48[0x58 - 0x48];

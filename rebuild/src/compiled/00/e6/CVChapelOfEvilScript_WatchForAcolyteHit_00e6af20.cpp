@@ -12,22 +12,22 @@
 //   CV_TalentlessBardScript::WatchForAttack 0x00ED9790.
 // Shape: generated script code; ~CScriptThing is __forceinline and the two in-loop terminate returns sit under
 //   `#pragma inline_depth(0)` (out-of-line destructor), the prologue return and the loop exit expand it.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass();                                           // 0x0099A2D0
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -87,7 +87,7 @@ struct CScriptThingImpl {                                   // the game-side thi
     virtual void i074();
     virtual bool IsAlive() const;                                                      // slot 75 (+0x12c)
 };
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
     __forceinline ~CScriptThing() {}                                      // out of line 0x004AA840
@@ -182,7 +182,7 @@ struct CIsThingAlive : NScript::CPredicateBase {            // vtable 0x012C32F0
     ~CIsThingAlive();                                       // 0x00E241B0
     virtual bool IsTrue();
 };
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                              // +0x04 .. +0x40
     void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00CB7920

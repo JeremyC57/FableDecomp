@@ -6,13 +6,13 @@
 // Shape: a and b stay on the FPU stack, c and d are float locals VC7.1 parks in the dead argument slots; the plane offset is
 // the inline C3DVector::DotProduct (Z + Y + X order, landed 0x00C256A0) negated; every product is `term = first * second`
 // (the right operand is loaded first).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float DotProduct(const C3DVector& other) const { return Z * other.Z + Y * other.Y + X * other.X; }
 };
 namespace QuadricOptimiserInternals {
 
-struct CQuadric {
+class CQuadric { public:
     double AA, AB, AC, AD;
     double BB, BC, BD;
     double CC, CD;

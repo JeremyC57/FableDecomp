@@ -6,8 +6,8 @@
 // placed after the shared `xor al,al` fall-through. GetPItem's result is on the left of `==` (`cmp eax,ebx`).
 // Layout = Ego_r.pdb CTCRegionFollower (0x18) with the retail one-pointer list: Followers
 // (list<CIntelligentPointer<CThing>>, node = next, prev, 8-byte pointer) at +0x0c. No engine header; modelled locally.
-struct CBaseObject { };
-struct CThing : CBaseObject { };
+class CBaseObject { public: };
+class CThing : public CBaseObject { public: };
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
@@ -32,7 +32,7 @@ struct CRetailList {                                        // retail std::list:
     iterator end() const { return iterator(head); }
 };
 
-struct CTCRegionFollower {
+class CTCRegionFollower { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     bool    ToBeRemoved;                                    // +0x08

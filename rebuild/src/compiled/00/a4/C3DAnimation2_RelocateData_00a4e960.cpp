@@ -13,10 +13,10 @@
 //          Sequences +0x5c, SequenceDataBufferSize +0x60, SequenceDataBuffer +0x64, BoneMask +0x68,
 //          RigidBoneMask +0x6c, RigidBonePositions +0x70, InstanceList +0x78). The generated engine header
 //          C3DAnimation2.h carries the PDB offsets (+0x30 shifted), so a local model is used.
-struct C3DVector;
-struct CCPPointerInfo;
-struct CSimpleMemoryPool;
-struct CMovableResourceMemoryPool;
+class C3DVector;
+class CCPPointerInfo;
+class CSimpleMemoryPool;
+class CMovableResourceMemoryPool;
 
 template <class T> inline void RelocatePointer(T*& p, void* oldAddress, void* newAddress)
 {
@@ -24,7 +24,7 @@ template <class T> inline void RelocatePointer(T*& p, void* oldAddress, void* ne
         p = (T*)((char*)p - (char*)oldAddress + (char*)newAddress);
 }
 
-struct C3DAnimationSequenceData {              // 0x2c bytes
+class C3DAnimationSequenceData { public:              // 0x2c bytes
     char* BoneName;                             // +0x00
     unsigned char _04[0x10];
     void* Track14;                              // +0x14
@@ -43,40 +43,40 @@ struct C3DAnimationSequenceData {              // 0x2c bytes
     }
 };
 
-struct C3DAnimationSequence {                  // 8 bytes (PDB)
+class C3DAnimationSequence { public:                  // 8 bytes (PDB)
     C3DAnimationSequenceData* Data;            // +0
     short ParentIndex;                         // +4
     bool  Shared;                              // +6
 };
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* m_pItem;
     void* m_pInfo;
     CBaseObject* GetPItem() const;             // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct C3DAnimation2;
+class C3DAnimation2;
 struct CInstanceNode {                         // STLport list<CIntelligentPointer<C3DAnimation2> > node
     CInstanceNode* _M_next;
     CInstanceNode* _M_prev;
     CIntelligentPointer<C3DAnimation2> _M_data;
 };
 
-template <class T> struct CCountedPointer { T* Data; CCPPointerInfo* Info; };
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };
 
-struct C3DAnimationStats {                     // 0x2c-byte primary base
+class C3DAnimationStats { public:                     // 0x2c-byte primary base
     virtual ~C3DAnimationStats();
     unsigned char _04[0x28];
 };
-struct CMovableResource {                      // second base at +0x2c
+class CMovableResource { public:                      // second base at +0x2c
     virtual void RelocateData(long handle, void* oldAddress, void* newAddress, long size);
 };
 
-struct C3DAnimation2 : C3DAnimationStats, CMovableResource {
+class C3DAnimation2 : public C3DAnimationStats, public CMovableResource { public:
     CCountedPointer<CSimpleMemoryPool>        Allocator;           // +0x30
     CMovableResourceMemoryPool*               MemoryPool;          // +0x38
     long                                      MemoryHandle;        // +0x3c

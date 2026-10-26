@@ -21,13 +21,13 @@ static bool g_badName = false;          // a callee saw an unexpected name / arg
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_termFrame; }
 static void Reset() { g_live = 0; g_iatt = 0; g_termAt = 1 << 30; g_termFrame = 1 << 30; g_frames = 0; g_badName = false; }
 
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString() : Text(0) { }
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
     ~CCharString() { }
 };
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
@@ -55,7 +55,7 @@ bool __fastcall AreAllThingsInVectorDead(const CScriptThingVector& things)
     if (things._M_finish - things._M_start != 3) g_badName = true;
     return g_frames >= g_deadFrom;
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool MsgIsRegionUnloaded(const CCharString& region) const
     {

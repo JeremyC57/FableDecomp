@@ -10,7 +10,7 @@
 //   called explicitly, placement construction inside the null test, then one `p && Construct && Activate` chain storing p;
 //   VC splits the exits (a refused allocation leaves before esi is pushed) and returns p directly on success.
 #include <new>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 class CThing {
 public:

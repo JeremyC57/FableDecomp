@@ -19,12 +19,12 @@ namespace std {
 struct __false_type { };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 }
-struct CParentDefClassBase {                               // retail 0x3C bytes
+class CParentDefClassBase { public:                               // retail 0x3C bytes
     virtual void v00();
     unsigned char _body[0x38];                              // +0x04 def-class base body
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct C2DVectorVector {                                    // STLport vector<C2DVector>, 12 bytes
     C2DVector* _M_start;
     C2DVector* _M_finish;

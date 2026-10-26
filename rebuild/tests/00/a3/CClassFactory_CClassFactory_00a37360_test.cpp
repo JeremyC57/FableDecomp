@@ -5,7 +5,7 @@
 static char g_log[16]; static int g_n = 0;
 static void Log(char c) { g_log[g_n++] = c; g_log[g_n] = 0; }
 struct SScalarTag { SScalarTag() {} };
-struct CClassTypeInfo { int id; };
+class CClassTypeInfo { public: int id; };
 static long g_rangeCount = -1;
 static void _Destroy_range(CClassTypeInfo* first, CClassTypeInfo* last, const SScalarTag&) { g_rangeCount = (long)(last - first); Log('R'); }
 struct SClassTypeInfoVector {
@@ -18,7 +18,7 @@ struct SClassTypeInfoVector {
 };
 struct SClassList { void* head; ~SClassList() { Log('L'); } };
 struct CBase { virtual void v00() {} ~CBase() { Log('B'); } };
-struct CClassFactory : CBase {
+class CClassFactory : public CBase { public:
     SClassTypeInfoVector ClassTypeInfo;
     unsigned long MaxClassTypeID, NoAllocatedClasses;
     SClassList ClassList;

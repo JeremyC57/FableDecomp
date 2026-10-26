@@ -4,7 +4,7 @@ extern "C" void __fastcall inner_dtor(void* p);
 extern void __cdecl op_delete(void* p);
 
 struct CInner { int a; };
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     int f0;
     CInner inner; // at +0x4
 };

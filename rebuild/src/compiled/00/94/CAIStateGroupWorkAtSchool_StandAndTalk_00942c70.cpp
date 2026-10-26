@@ -13,7 +13,7 @@
 // Local model.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0 / 0x0040F020 (byte-identical instantiations)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -43,12 +43,12 @@ struct CThing {
 
 
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -62,7 +62,7 @@ struct CAIStateGroupBase {
 extern long g_FramesPerSecond;                  // 0x01375550
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     bool AddMode(unsigned long mode);           // 0x0073AE10
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };

@@ -2,7 +2,7 @@
 #include <cstdio>
 struct CSkeletalMorphsEntry { int MorphName; short Priority; bool SupressesLowerMorphs; };
 struct SMorphWeight { CSkeletalMorphsEntry first; float second; };
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

@@ -9,12 +9,12 @@
 // Shape: the landed CHTE_Prisoner::Main (0x00D69F50) model: a scoped filter object, then a frame loop that bails out when the
 //          script is done.
 // Leaf: Main
-struct CScriptThing {                              // 12 bytes
+class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void Update();                         // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -39,7 +39,7 @@ struct CIsThingAlive {                              // vtable 0x012C32F0: a filt
     ~CIsThingAlive() { }
 };
 namespace NScript {
-struct CQ_HeroSoulsMotherScript {
+class CQ_HeroSoulsMotherScript { public:
     unsigned char _body[0x64];
     bool          QuestStartScreened;            // +0x64
     class CSummonerToKill;

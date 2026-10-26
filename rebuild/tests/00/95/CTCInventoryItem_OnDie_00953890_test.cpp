@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char pad[0x120];
     void* m120;
 };

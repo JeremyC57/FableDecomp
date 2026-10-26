@@ -1,4 +1,4 @@
-struct CTCCameraPointScripted {
+class CTCCameraPointScripted { public:
     void* vftable;
 };
 

@@ -19,13 +19,13 @@ struct CThingPhysics_0x70 {
     unsigned char m_flags;                         // +0x41 (bit 1: already frame-updating)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char       _pad[0x70];
     CThingPhysics_0x70* m_pState;                  // +0x70
     void SetForceFrameUpdate(bool force);          // 0x004C7C60
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _body[0x8];                      // ParentThing +4, ToBeRemoved +8, IsInGlobalUpdateTCs +9
     CTCBase(CThing* parent);                       // 0x00686800
@@ -48,7 +48,7 @@ struct CRetailList_node0x10 {
     }
 };
 
-struct CTCTrophy : CTCBase {
+class CTCTrophy : public CTCBase { public:
     CDefPointer_CTrophyDef PDef;                   // +0x0c
     long                   NonMinigameDeedHandle;  // +0x10
     bool                   MinigameInProgress;     // +0x14

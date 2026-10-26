@@ -7,7 +7,7 @@ struct CInterfaceMap {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry m_storage[4];
@@ -33,8 +33,8 @@ struct CThing {
 };
 
 static int g_baseActivates = 0, g_baseDeactivates = 0;
-struct CTCChest : CComponent { int opens, closes; void Open() { ++opens; } void Close() { ++closes; } };
-struct CTCActivationReceptorBase {
+class CTCChest : public CComponent { public: int opens, closes; void Open() { ++opens; } void Close() { ++closes; } };
+class CTCActivationReceptorBase { public:
     CThing* ParentThing;
     void Activate() { ++g_baseActivates; }
     void Deactivate() { ++g_baseDeactivates; }

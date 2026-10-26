@@ -5,11 +5,11 @@
 static int g_emitterSets = 0, g_assigns = 0;
 static const void* g_emitterArg = 0;
 namespace NParticleEngine {
-template<class A, class B> struct CParticleUpdateParameters {
+template<class A, class B> class CParticleUpdateParameters { public:
     long Value;
     CParticleUpdateParameters& operator=(const CParticleUpdateParameters& other) { ++g_assigns; Value = other.Value; return *this; }
 };
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void SetUpdateParameters(const CParticleUpdateParameters<unsigned long, unsigned long>& parameters) { ++g_emitterSets; g_emitterArg = &parameters; }
 };
 }
@@ -24,8 +24,8 @@ struct CBaseIntelligentPointer {
     void* PData;
     NParticleEngine::CParticleEmitter* GetPItem() const { return static_cast<NParticleEngine::CParticleEmitter*>(PData); }
 };
-template<class T> struct CCountedPointer { T* Object; long* PCount; T* operator->() const { return Object; } };
-struct CTCDParticleEmitter {
+template<class T> class CCountedPointer { public: T* Object; long* PCount; T* operator->() const { return Object; } };
+class CTCDParticleEmitter { public:
     virtual void v00() { }
     unsigned char _base[0x8]; void* EmitterName; long ParticleTypeID;
     CBaseIntelligentPointer PEmitter;

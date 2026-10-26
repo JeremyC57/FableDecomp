@@ -10,7 +10,7 @@
 // Model: engine/CSurface.h (+4 PD3DSurface) with a methods struct.
 #include "engine/CSurface.h"
 
-struct CCharString;
+class CCharString;
 
 namespace N_0099af00 { class CWideString {
 public:

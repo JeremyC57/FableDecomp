@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 class CThing;
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -77,7 +77,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
 };
 struct CObjectNode { CObjectNode* _M_next; CObjectNode* _M_prev; CBaseIntelligentPointer _M_data; };
-struct CTCThingOwner : CTCBase {
+class CTCThingOwner : public CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool ToBeRemoved;
@@ -90,7 +90,7 @@ struct CTCUserActionPointBase : CTCBase {
     bool Free;
     bool IsActionPointFree() { ++g_apCalls; return Free; }
 };
-struct CTCTavern {
+class CTCTavern { public:
     virtual void v00() {}
     CThing* ParentThing;
     CThing* GetFreeSeat(long unused);

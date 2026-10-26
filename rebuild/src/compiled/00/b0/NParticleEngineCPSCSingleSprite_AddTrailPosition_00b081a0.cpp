@@ -88,7 +88,7 @@ public:
 
 class CEnginePrimitiveSpriteTrail {
 public:
-    struct CSpriteTrailEntry {
+    class CSpriteTrailEntry { public:
         C3DVector Position;                                 // +0x00
         float     Width;                                    // +0x0C
         CSpriteTrailEntry(const C3DVector& pos, float width) : Position(pos), Width(width) { }

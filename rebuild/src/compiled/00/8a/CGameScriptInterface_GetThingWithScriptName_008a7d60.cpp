@@ -8,13 +8,13 @@
 // argument's own slot by a `__forceinline` helper taking the CCharString BY VALUE; the null script thing is built
 // inline into the hidden pointer; the vector storage is released by hand-inlined `free`.
 // Leaf: GetThingWithScriptName
-struct CCharString {                               // fable_string.h layout: one data-block pointer
+class CCharString { public:                               // fable_string.h layout: one data-block pointer
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct SCountBlock;
 namespace N_0099a2d0 { struct CBase {
     CBase();                                       // 0x0099A2D0 (out of line)
@@ -26,7 +26,7 @@ struct CScriptThingPImp {                          // the counted pointer member
     SCountBlock*     Info;                         // +8
     CScriptThingPImp() : Data(0), Info(0) {}
 };
-struct CScriptThing : CBase {                      // 12 bytes, vtable 0x01238C8C (rtti-vtables.tsv)
+class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C (rtti-vtables.tsv)
     CScriptThingPImp PImp;
     CScriptThing() {}                              // inline: CBase::CBase, the vtable, two zero words
 };
@@ -44,7 +44,7 @@ struct CDefinitionManager_Retail {
 struct CGameDefinitionManager_Retail {
     static CDefinitionManager_Retail& Get();       // 0x0044C6B0
 };
-struct CWorld; struct CMainGameComponent; struct CDisplayEngine; struct CPlayerManager_Retail; struct CThingSearchTools;
+class CWorld; class CMainGameComponent; class CDisplayEngine; struct CPlayerManager_Retail; class CThingSearchTools;
 extern "C" void free(void* p);                     // 0x00BFEA14
 template <class T> struct vector {                 // retail STLport vector: 12 bytes
     T* _M_start;
@@ -86,11 +86,11 @@ __declspec(noinline) void CThingScriptNameSearch_Retail::FindThingsWithScriptNam
     }
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x20];
     CThingScriptNameSearch_Retail* Things;         // +0x20
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent*         Component;         // +0x08

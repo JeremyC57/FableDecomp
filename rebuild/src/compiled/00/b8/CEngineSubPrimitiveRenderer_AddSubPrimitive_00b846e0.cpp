@@ -4,7 +4,7 @@
 // its address pushed first, then the five arguments re-read last-first in alternating edx/eax; `add esp,8 ; ret 14h`.
 struct SSortKey_00b846e0 { long m_a; long m_b; };
 
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
     void AddSubPrimitive(void* a, void* b, void* c, void* d, void* e, SSortKey_00b846e0* key);   // 0x00B84580
     void AddSubPrimitive(void* a, void* b, void* c, void* d, void* e);
 };

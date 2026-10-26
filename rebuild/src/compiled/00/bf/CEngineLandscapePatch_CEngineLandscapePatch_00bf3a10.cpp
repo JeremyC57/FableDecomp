@@ -10,10 +10,10 @@
 // LayerMeshList, the flag byte as one read-modify-write (`and dl,0F0h ; or dl,10h`: four flags cleared, ForegroundNeeded set;
 // the LayerMeshList store is scheduled between its load and store) and the remaining members in the body's order (WaterPatch,
 // FilePos, FileDataSize, FastAccessTextureIDs, the count) from one zero register. Grades: 2 (flags-first body put +8 after the byte store).
-struct CBankFileAsyncData;
-struct CEngineLandscapeMap;
-struct CLandscapeLayerMesh;
-struct CWaterPatchMesh;
+class CBankFileAsyncData;
+class CEngineLandscapeMap;
+class CLandscapeLayerMesh;
+class CWaterPatchMesh;
 
 struct SCountBlock_00bf3a10 {
     long  m_references;
@@ -21,14 +21,14 @@ struct SCountBlock_00bf3a10 {
     void* m_pObject;
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*                    m_pObject;               // +0
     SCountBlock_00bf3a10* m_pCount;                // +4
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
     ~CCountedPointer();
 };
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     float m_min[3];
     float m_max[3];
 };

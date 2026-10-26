@@ -1,7 +1,7 @@
 // Behaviour test for 00567a40 (catalog CTCCameraPointScripted::GetLookDirection): the list find front end returns the first node whose data equals the value, or last.
 #include <cstdio>
 
-struct CWideString { int id; };
+class CWideString { public: int id; };
 
 struct SListNode
 {

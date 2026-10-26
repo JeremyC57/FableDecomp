@@ -26,12 +26,12 @@ struct C2DBoxF {
     float TLX, TLY, BRX, BRY;
 };
 
-struct CChangingStateComponent : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x15C bytes
+class CChangingStateComponent : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:   // retail 0x15C bytes
     unsigned char _body[0x15c - 0x1c];
     CChangingStateComponent(long owner);           // 0x0052CC50
 };
 
-struct CTextContainer : CChangingStateComponent {  // vtables 0x01248064 / 0x0124803C / 0x01248034
+class CTextContainer : public CChangingStateComponent { public:  // vtables 0x01248064 / 0x0124803C / 0x01248034
     virtual void v000();
     virtual void ProcessEvent();
     virtual void v0();

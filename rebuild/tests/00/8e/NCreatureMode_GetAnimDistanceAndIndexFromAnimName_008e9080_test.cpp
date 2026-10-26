@@ -4,16 +4,16 @@
 
 static long g_FramesPerSecond = 30;
 
-struct C3DAnimationInfo { float Duration; float GetDuration() const { return Duration; } };
-struct CMeshDataBank {
+class C3DAnimationInfo { public: float Duration; float GetDuration() const { return Duration; } };
+class CMeshDataBank { public:
     C3DAnimationInfo anims[4];
     const C3DAnimationInfo* PeekAnimation(unsigned int index) const { return &anims[index]; }
 };
 static CMeshDataBank g_bank;
 
-struct CAnimationEntry { long BankIndex; };
+class CAnimationEntry { public: long BankIndex; };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CAnimationEntry entries[2];
     float           distances[4];
     const CAnimationEntry* GetAnimFromName(const char* name, long) const { return std::strcmp(name, "WALK") ? &entries[1] : &entries[0]; }

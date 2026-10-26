@@ -5,7 +5,7 @@ struct Faction {
 struct FactionMgr {
     Faction* Lookup(int id);
 };
-struct CWorld { char pad[0x54]; FactionMgr* mgr; };
+class CWorld { public: char pad[0x54]; FactionMgr* mgr; };
 
 void __fastcall CGameScriptInterface_SetFactionAsEnemyToFaction(CGameScriptInterface* self, int dummy, int faction1, int faction2)
 {

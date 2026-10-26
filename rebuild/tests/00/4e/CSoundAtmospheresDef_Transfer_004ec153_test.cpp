@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct CPersistContext
-{
+class CPersistContext
+{ public:
     void Transfer(void* p);
 };
 
-struct CSoundAtmospheresDef
-{
+class CSoundAtmospheresDef
+{ public:
     char pad[0x28];
     int  m_member;
     void Transfer(CPersistContext& ctx);

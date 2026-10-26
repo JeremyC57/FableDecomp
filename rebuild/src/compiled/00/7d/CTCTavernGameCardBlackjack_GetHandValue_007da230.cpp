@@ -7,7 +7,7 @@
 // Shape: a pointer walk from first to last (both loaded once), `total` in eax and `aces` in edi zeroed before the empty
 // test; the visibility test reads the flag byte register (bl) against the members; the bust correction is a
 // `while (total > 21 && aces > 0)` loop after the walk (its entry test sits inside the walk's exit).
-struct CCard {
+class CCard { public:
     void*         Thing;                     // +0x00 CThingObject*
     long          Name;                      // +0x04
     long          Value;                     // +0x08

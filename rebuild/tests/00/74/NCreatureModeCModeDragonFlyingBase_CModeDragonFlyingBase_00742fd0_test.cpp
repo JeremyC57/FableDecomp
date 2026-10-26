@@ -6,15 +6,15 @@
 static char g_log[16];
 static int g_len = 0;
 static void Log(char c) { if (g_len < 15) { g_log[g_len++] = c; g_log[g_len] = 0; } }
-struct CCharString { ~CCharString() { Log('S'); } };
-struct C3DVector { float X, Y, Z; };
+class CCharString { public: ~CCharString() { Log('S'); } };
+class C3DVector { public: float X, Y, Z; };
 struct CArrayC3DVector {
     C3DVector* Data; long Size; long Capacity; long GrowBy;
     ~CArrayC3DVector() { if (Data) { Log('F'); std::free(Data); } }
 };
-struct CCardinalSpline { CArrayC3DVector ControlPoints; float Tension; bool EndPointsConnected; };
-struct CAnimFilterBase { ~CAnimFilterBase() { Log('A'); } };
-struct CAnimFilterOfGroup : CAnimFilterBase { CCharString Group; unsigned long GroupCRC; };
+class CCardinalSpline { public: CArrayC3DVector ControlPoints; float Tension; bool EndPointsConnected; };
+class CAnimFilterBase { public: ~CAnimFilterBase() { Log('A'); } };
+class CAnimFilterOfGroup : public CAnimFilterBase { public: CCharString Group; unsigned long GroupCRC; };
 struct CModeBase {
     void* ParentThing;
     CAnimFilterOfGroup WeaponBasedFilter;

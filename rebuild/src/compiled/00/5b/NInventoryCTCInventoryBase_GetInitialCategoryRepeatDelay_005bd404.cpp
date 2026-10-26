@@ -12,19 +12,19 @@
 // two 12-byte STLport containers before it). Local model: no engine/ header for CTCInventoryBase.
 // Opt: size TU (ebp frame, in-place `dec dword ptr [ecx+4]`, the float result spilled across the release call).
 #pragma optimize("s", on)
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     mutable unsigned long IVRefCount;                    // +0x04
     __forceinline void Release() const { if (--IVRefCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
     __forceinline ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CInventoryDef : CDefPointeeBase {
+class CInventoryDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34];                          // +0x08
     float         InitialCategoryMovementRepeatDelay;    // +0x3c
     float         ContinuedCategoryMovementRepeatDelay;  // +0x40

@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing& o) : ParentThing(&o) { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing& o) : ParentThing(&o) { } };
 struct CTCAmbientBird : CTCBase { bool Flying; float InitialHeight; CTCAmbientBird(CThing& o) : CTCBase(o), Flying(false), InitialHeight(0.0f) { } };
 int main()
 {

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCOverheadDisplay {
+class CTCOverheadDisplay { public:
     void* vftable;
     int destroyed;
 };

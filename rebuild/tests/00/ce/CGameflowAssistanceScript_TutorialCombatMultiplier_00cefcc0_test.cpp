@@ -1,17 +1,17 @@
 // behaviour test for CGameflowAssistanceScript::Tutorial_CombatMultiplier (0x00CEFCC0): new-high messages, nag after stalling, master ends the thread
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString(const char* t) : Text(t) {} };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) {} };
 struct CGameflowMasterData { bool StopAssistance; };
 static int g_frame, g_mult[64], g_msgs, g_limit; static const char* g_msg[16]; static CGameflowMasterData* g_data;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frame; if (g_frame >= g_limit) g_data->StopAssistance = true; }
     long GetPlayerCreatureCombatMultiplier() const { return g_mult[g_frame]; }
     bool IsPlayerWieldingWeapon() const { return true; }
     void HeroReceiveMessageFromGuildMaster(const CCharString& text, const CCharString&, bool, bool) const { g_msg[g_msgs++] = text.Text; }
     bool IsHeroControlledByPlayer() const { return true; }
 };
-struct CScriptDef { long CombatMultFramesPerLevel; long CombatMultMasterLevel; };
+class CScriptDef { public: long CombatMultFramesPerLevel; long CombatMultMasterLevel; };
 static CScriptDef g_def = { 4, 16 };
 static CScriptDef* g_pScriptDef = &g_def;
 struct CGameflowAssistanceScript {

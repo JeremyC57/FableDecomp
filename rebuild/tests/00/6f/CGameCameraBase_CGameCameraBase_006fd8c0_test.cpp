@@ -2,9 +2,9 @@
 #include <cstdlib>
 
 static long g_framesPerSecond = 30;
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 static C3DVector g_pos(9, 9, 9), g_up(9, 9, 9), g_look(9, 9, 9); static float g_fov, g_zoom;
-struct CCamera {
+class CCamera { public:
     float WorldPosition[3]; float RHSet[6]; bool HeightLocked; bool ViewVecZLocked;
     unsigned long FOVFlags; float HorizontalFOV; float VerticalFOV; float Zoom;
     CCamera() : HeightLocked(false), ViewVecZLocked(false) {}
@@ -20,8 +20,8 @@ template <class T> struct CList {
         node->Next = node; node->Prev = node; m_node = node;
     }
 };
-struct CWorld { int id; };
-struct CAIGameCameraBase { virtual ~CAIGameCameraBase() {} };
+class CWorld { public: int id; };
+class CAIGameCameraBase { public: virtual ~CAIGameCameraBase() {} };
 struct CGameCameraBase : CAIGameCameraBase {
     CCamera InternalCam; CCamera LastInternalCam; float LastPointingAt[3]; float PointingAt[3]; CWorld* World;
     float Theta, Phi, Rad, ThetaFixed, RadFixed; bool ActAsFixedCam, GoingIntoBuilding;

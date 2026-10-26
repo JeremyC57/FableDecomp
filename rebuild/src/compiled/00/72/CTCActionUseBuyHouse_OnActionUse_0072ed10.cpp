@@ -60,27 +60,27 @@ struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing>: 
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 #pragma pack(push, 1)
-struct CTCOwnedEntity {                         // interface 0x33
+class CTCOwnedEntity { public:                         // interface 0x33
     unsigned char _pad00[0x0d];
     CBaseIntelligentPointer POwner;             // +0x0d
 };
 #pragma pack(pop)
-struct CTCBuyableHouse;                         // interface 0xD5
-struct CTCHeroStats {                           // interface 4
+class CTCBuyableHouse;                         // interface 0xD5
+class CTCHeroStats { public:                           // interface 4
     unsigned char _pad00[0x3c];
     long Money;                                 // +0x3c
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CBuyHouseDef {
+class CBuyHouseDef { public:
     unsigned char _pad00[0x25];
     bool Main;                                  // +0x25
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

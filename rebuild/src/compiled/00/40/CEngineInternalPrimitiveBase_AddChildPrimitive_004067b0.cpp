@@ -1,6 +1,6 @@
 typedef unsigned long ulong;
 // Leaf: AddChildPrimitive
-struct CEngineInternalPrimitiveBase {};
+class CEngineInternalPrimitiveBase { public:};
 ulong __fastcall CEngineInternalPrimitiveBase_AddChildPrimitive(CEngineInternalPrimitiveBase* self, void* a)
 {
     (void)self; (void)a;

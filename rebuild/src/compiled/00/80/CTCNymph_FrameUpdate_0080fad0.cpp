@@ -13,24 +13,24 @@
 //   address (a temporary passes the ctor's eax), the POldEffect reset one so the two destructor calls tail-merge as retail.
 #include "engine/CTCBase.h"
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-template <class T> struct CDefPointer;
-struct CDefClassBase {
+template <class T> class CDefPointer;
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy() const;                           // slot 1
     mutable long RefCount;                                  // +0x04
-    bool GetSubDef(CDefPointer<const struct CSpecialEffectsDef>* out) const;   // GetSubDef<CSpecialEffectsDef> 0x00669580
+    bool GetSubDef(CDefPointer<const class CSpecialEffectsDef>* out) const;   // GetSubDef<CSpecialEffectsDef> 0x00669580
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -40,7 +40,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefClassBase {
+class CSpecialEffectsDef : public CDefClassBase { public:
     bool GetEffectFromString(const CCharString& name, long* effect) const;   // 0x00669D30
 };
 
@@ -87,7 +87,7 @@ struct CInterfaceBits {                                     // bitset<> at CThin
     unsigned long _M_w[9];
     bool test(unsigned long pos) const { return (_M_w[pos / 32] & (1ul << (pos % 32))) != 0; }
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -107,7 +107,7 @@ struct CThing {
     unsigned char _pad92[0xbc - 0x92];
     unsigned char FlagsBC;                                  // +0xbc
     void Kill(bool removeNow);                              // 0x004C9B80
-    bool GetDummyObject(const CCharString& name, C3DVector* position, struct CRightHandedSet* orientation);
+    bool GetDummyObject(const CCharString& name, C3DVector* position, class CRightHandedSet* orientation);
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
@@ -137,7 +137,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<const CSpecialEffectsDef>* out) const
 
 
 
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CTCGraphicAppearance {
     void SetAlpha(unsigned char alpha);                     // 0x004BFAC0
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
@@ -147,7 +147,7 @@ inline bool CThing::GetDummyObject(const CCharString& name, C3DVector* position,
 {
     return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
 }
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long effect, const C3DVector& position, bool attached);   // 0x006E0880
     void AttachToThing(CThing* thing, long mode, const CCharString& bone, long flags, float offset);   // 0x006E0BE0
 };
@@ -161,7 +161,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CThing* item);                            // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -175,10 +175,10 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
 #pragma pack(pop)
 
 extern float g_FramesPerSecondF;                            // 0x013844F4
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
-struct CCardinalSpline {                                    // retail 0x14 bytes
+class CCardinalSpline { public:                                    // retail 0x14 bytes
     void* ControlPoints[3];
     float Tension;
     bool EndPointsConnected;
@@ -212,16 +212,16 @@ struct CPhysicsBody {
     virtual void v42(); virtual void v43();
     virtual void Reset();                                   // slot 44 (+0xb0)
 };
-struct CNymphDef {
+class CNymphDef { public:
     unsigned char _pad00[0x48];
     float FadeInTime;                                       // +0x48
     float FadeOutTime;                                      // +0x4c
 };
 struct CTCBaseFrame : CTCBase {
-    struct CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
+    class CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
     void FrameUpdate();                                     // 0x006868A0 (CTCBase)
 };
-struct CTCNymph : CTCBaseFrame {
+class CTCNymph : public CTCBaseFrame { public:
     const CNymphDef* PDef;                                  // +0x0c
     C3DVector PointToFlyAround;                             // +0x10
     float EffectHeightOffset;                               // +0x1c

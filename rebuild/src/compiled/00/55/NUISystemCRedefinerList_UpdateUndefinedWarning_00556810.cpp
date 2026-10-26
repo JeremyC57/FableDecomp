@@ -34,7 +34,7 @@ template <class T> struct CRetailVector {               // STLport vector (12 by
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
 
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -103,11 +103,11 @@ struct CComponent {
     virtual long GetComponentType();                    // slot 65 (+0x104) descriptive
 };
 
-struct CKeyRedefiner : CComponent {
+class CKeyRedefiner : public CComponent { public:
     bool IsUndefined();                                 // 0x00557940
 };
 
-struct CScrollableList : CComponent {
+class CScrollableList : public CComponent { public:
     unsigned char _pad004[0xac];
     CRetailVector<CCountedPointer<CComponent> > Children;   // +0xb0 (CComponent::Children, PDB +0xb8)
     unsigned char _pad0bc[0xc0];
@@ -115,7 +115,7 @@ struct CScrollableList : CComponent {
     void UnhideComponent(CComponent* component, float startTime, float endTime, C2DVector position);                      // 0x005556F0
 };
 
-struct CRedefinerList : CScrollableList {
+class CRedefinerList : public CScrollableList { public:
     bool          IsActivated;                          // +0x17c
     bool          RefreshAfterFade;                     // +0x17d
     float         FadeOutTime;                          // +0x180

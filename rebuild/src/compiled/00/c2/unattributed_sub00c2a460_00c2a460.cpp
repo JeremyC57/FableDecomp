@@ -7,7 +7,7 @@
 // Virtual forwarder: the one argument becomes `this` of a __fastcall call @ 0x00C37840 with no
 // further arguments; this object is not read. Callee names are kept from the manifest only when the
 // label is unique. One of 11 bodies of this shape.
-struct CPlayer {
+class CPlayer { public:
     void OnModeActivityUpdate();                         // 0x00C37840
 };
 

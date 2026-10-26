@@ -5,8 +5,8 @@
 // (The previous version of this test DEFINED its own GetHomePos and therefore proved
 // nothing about the landed source.)
 
-struct C3DVector
-{
+class C3DVector
+{ public:
     float x, y, z;
     C3DVector(const float& xx, const float& yy, const float& zz);
 };

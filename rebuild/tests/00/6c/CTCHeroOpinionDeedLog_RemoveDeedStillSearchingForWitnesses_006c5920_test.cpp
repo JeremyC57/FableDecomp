@@ -26,7 +26,7 @@ public:
     void* PData;
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {};
-struct COpinionDeed {
+class COpinionDeed { public:
     unsigned char _pad00[0x14];
     long          FrameWitnessSearchEnded;      // +0x14
     unsigned char _pad18[0x21 - 0x18];
@@ -69,7 +69,7 @@ __declspec(noinline) CDeedMapIterator COpinionDeedMap::find(const long& key)
     return CDeedMapIterator(y);
 }
 #pragma auto_inline(on)
-struct CWitnessesSearchingDeed {
+class CWitnessesSearchingDeed { public:
     long Handle;                                // +0x00
     long Frame;                                 // +0x04
     CIntelligentPointer<CThing> PThing;         // +0x08

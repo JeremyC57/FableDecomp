@@ -24,8 +24,8 @@
 //   `return true`, except the files-differ exit.
 // Opt: odd catalog address, frame pointer: `#pragma optimize("y", off)` + `#pragma optimize("s", on)`.
 #include <stddef.h>                                         // wchar_t
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                         // 0x0099B510
 };
@@ -37,25 +37,25 @@ namespace NResourceDirectoryNames {
 CWideString __fastcall GetSaveDir_0041a650();                        // 0x0041A650
 CWideString __fastcall GetCustomTattooDir();                // 0x0041A6A0
 }
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CWideString ToWideString() const;                       // 0x0099E480
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[8];
     CWideString ProfileName;                                // +0x08
     static CUserProfileManager* Get();                      // 0x0040D2A0
 };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CDiskFileWin32 {                                     // 0x1c bytes
+class CDiskFileWin32 { public:                                     // 0x1c bytes
     void* __vftable;
     unsigned char _pad04[0x18];
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32();                                      // 0x00401630
 };
 bool __fastcall FilesAreIdentical(CDiskFileWin32& a, CDiskFileWin32& b);   // 0x00998F60 (name inferred from use)
-struct CTattooDef {
+class CTattooDef { public:
     void* __vftable;
     unsigned char _pad04[0x30];
     long BankIndex;                                         // +0x34
@@ -83,7 +83,7 @@ bool CTattooDef::IsInvalidCustomTattoo() const
     return true;
 }
 
-struct CWideStringData { int tag; };
+class CWideStringData { public: int tag; };
 static CWideStringData g_tags[8];
 static int g_dtors = 0, g_pathCalls = 0, g_fileCtors = 0, g_fileDtors = 0;
 static bool g_exists[2], g_identical;

@@ -12,17 +12,17 @@
 //   +0x14 (vector per level, 4-byte list heads); cell node {entry, next}; entry thing +4, search stamp +0x4c;
 //   CThing ThingTypeFlags +0x6c (low two bits = physical).
 #include <string.h>
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() {}
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x6c];
     unsigned long ThingTypeFlags;                          // +0x6c
 };
-struct CThingPhysical : CThing {};
-struct CThingFilter_None { bool operator()(const CThing&) const { return true; } };
+class CThingPhysical : public CThing { public:};
+class CThingFilter_None { public: bool operator()(const CThing&) const { return true; } };
 struct CThingMapEntry {
     unsigned char _pad00[4];
     CThing*       Thing;                                   // +0x04
@@ -66,7 +66,7 @@ struct CMapVector {
     void erase(CThingMap** first, CThingMap** last) { _M_finish = CopyDown(last, _M_finish, first); }
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void*      _pad00;
     void*      Manager;                                    // +0x04
     void*      _pad08;

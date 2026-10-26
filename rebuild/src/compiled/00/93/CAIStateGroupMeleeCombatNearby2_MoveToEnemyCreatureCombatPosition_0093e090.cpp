@@ -8,9 +8,9 @@
 // Shape: the UID is read through a named creature local before the static frame call (edi:ebx), the last frame lives in
 // ebp; the inline navigation lookup has no consumer, so only its binary-search loop survives.
 // Layout: engine/CAIStateGroup_MeleeCombatNearby2.h flattens the base; local model with its PEnemy (+0x14); CThing UID +0x18.
-struct CTCBase;
+class CTCBase;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -43,7 +43,7 @@ struct CPhysicsBody {
     float GetDiameter() const { return m_radius * 2.0f; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
@@ -66,7 +66,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsRegisteredCombatant();               // 0x00662410
 };
 
@@ -85,28 +85,28 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelli
     CIntelligentPointerConstThing(const CIntelligentPointerCreature& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     bool IsPosNavLineOfSightTo(const C3DVector& pos);      // 0x006CBA20
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     C3DVector GetPreferredPos(CThingCreatureBase* creature);        // 0x006EA770
     bool IsCreatureOnRotatingCombatRing(CThingCreatureBase* creature);  // 0x006E9700
     void OnCombatPositionUnreachable(CThingCreatureBase* creature);     // 0x006E9D10 (autoname label only; called when the move returns 3)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x4c];
     CCombatManager* CombatManager;              // +0x4c
     CCombatManager* GetPCombatManager() const { return CombatManager; }
     static long __fastcall GetWorldFrame();     // 0x0049D870
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

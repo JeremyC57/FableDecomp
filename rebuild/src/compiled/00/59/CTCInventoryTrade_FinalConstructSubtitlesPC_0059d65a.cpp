@@ -9,12 +9,12 @@
 // FinalRefreshSubtitles 0x0059D761), the name conversion homed in the dead `component` slot, the counted-pointer local.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
@@ -23,7 +23,7 @@ struct CWideString {
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
 CWideString __fastcall IntToWideString(long value);     // 0x00405F00
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer(T* object);                         // 0x00429C15
@@ -58,7 +58,7 @@ struct CTextSource {                                    // the typed child: only
     virtual void v138(); virtual void v139(); virtual void v140(); virtual void v141();
     virtual const CWideString& GetText();               // slot 142 (+0x238)
 };
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CComponent* FindChild(CCharString name);    // slot 3 (+0x0c)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
@@ -92,10 +92,10 @@ struct CComponent {
     virtual void v142(); virtual void v143();
     virtual void SetText(const CWideString& text, bool a, bool b);   // slot 144 (+0x240)
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 }

@@ -2,14 +2,14 @@
 
 // Model of CRadialBlurProcess::Process: every radial-blur parameter of the stack moves towards the entry's value,
 // current = current * (1 - t) + entry * t; the track-position enums are left alone.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() {}
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) {}

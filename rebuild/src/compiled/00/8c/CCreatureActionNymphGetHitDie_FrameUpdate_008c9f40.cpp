@@ -8,7 +8,7 @@
 // offset `HeightOnInit * (...)` is a named float local parked in the frame word below the vector, the new Z is the ground height plus
 // that offset; the physics component comes through an inline accessor (straight into ecx). HeightOnInit is the engine header's
 // member (PDB +0x160, retail +0x148: CCombatActionBase is 0x114 bytes in retail).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
@@ -20,7 +20,7 @@ struct CPhysicsComponent {
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void SetPositionOnGround(const C3DVector& position);   // slot 30 (+0x78)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsComponent* m_pPhysics;          // +0x60
     const C3DVector& GetPosition() const;   // 0x004C73D0
@@ -31,11 +31,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetHeightZBelowPos(const C3DVector* position);   // 0x0063E480
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -44,7 +44,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     float GetProgress();                    // 0x006925E0
     CWorldMap* GetWorldMap();               // 0x00692C10
 };
-struct CCreatureAction_NymphGetHitDie : CCombatActionBase {
+class CCreatureAction_NymphGetHitDie : public CCombatActionBase { public:
     unsigned char _pad114[0x148 - 0x114];   // +0x114
     float HeightOnInit;                     // +0x148 (PDB +0x160)
     void FrameUpdate();

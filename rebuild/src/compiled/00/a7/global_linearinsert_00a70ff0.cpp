@@ -15,7 +15,7 @@
 //   const-ref temporary homed in the dead comparator slot, a null Distance*); the record's implicit assignment is the
 //   string operator= plus a block copy; on the other branch the comparator is pushed and STLport's explicit pair copy
 //   constructor rebuilds the record in the argument area.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0

@@ -14,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CInventoryDef {
+class CInventoryDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long refCount;                                 // +0x004
@@ -43,11 +43,11 @@ struct CSpendInfoVector {                          // vector<ExperienceSpendInfo
 };
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
 enum EHeroExperienceStatCategory { EHeroExperienceStatCategory_Force32 = 0x7fffffff };
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat);   // 0x006D6850
 };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x68];
     CInventoryDefPointer PDef;                     // +0x068
     unsigned char _pad_06c[0x1bc - 0x6c];

@@ -1,12 +1,12 @@
 // Behaviour test for CAIStateGroup_WorkBase::IsInWorkHours @ 0x0091a6f0: interface 0x23 -> GFGetPVillageInterface -> CTCVillage::IsCookTime.
 #include <cstdio>
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -19,11 +19,11 @@ struct CThing {
         return false;
     }
 };
-struct CTCVillage { bool m_answer; bool IsCookTime_00658b20() { return m_answer; } };
+class CTCVillage { public: bool m_answer; bool IsCookTime_00658b20() { return m_answer; } };
 struct CComponent : CTCBase { CTCVillage* m_pOwner; };
 CTCVillage* __fastcall GFGetPVillageInterface(CComponent* c) { return c->m_pOwner; }
-struct CAIBrain { unsigned char _pad[0x18]; CThing* Creature; };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() { } CAIBrain* PBrain; long a; void* b; unsigned char c, d, e, f; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* Creature; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() { } CAIBrain* PBrain; long a; void* b; unsigned char c, d, e, f; };
 struct CAIStateGroup_WorkBase : CAIStateGroupBase {
     bool IsInWorkHours()
     {

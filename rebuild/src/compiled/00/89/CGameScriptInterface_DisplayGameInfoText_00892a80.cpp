@@ -18,8 +18,8 @@ public:
     CWideString(const wchar_t* text);                   // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-struct CFontBank;
-struct CSubtitleRenderer {
+class CFontBank;
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CWideString& text, const CWideString& a, const CWideString& b, const CWideString& c, const CWideString& d,
                  unsigned long colour, float time, bool b1, bool b2);   // 0x00492973
 };

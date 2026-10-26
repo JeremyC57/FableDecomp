@@ -8,7 +8,7 @@
 // quest pointer +4 and the CScriptThing +8 are the script base's (as in the landed CArenaHeroGate 0x00D7DF30).
 // Shape: a top-tested `while (!IsDone())` rotated with the test at the bottom; the 3.0f pushes before the
 // virtual GetHero call (fastcall arguments right to left); `false` lives in bl for both compares and stores.
-struct CScriptThing {
+class CScriptThing { public:
     long m_thingId;
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing* a, const CScriptThing* b, float distance);   // 0x00CBE2FF

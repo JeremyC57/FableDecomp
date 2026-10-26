@@ -13,7 +13,7 @@
 // Shape: each remove gets an intelligent-pointer temporary (base ctor, vtable store, SetPItem, direct dtor); the two lookups are the
 // out-parameter GetInterface with the result unchecked; the deed lookup's thing is a named local reused for the position.
 class CTCBase;
-struct C3DVector;
+class C3DVector;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -67,7 +67,7 @@ public:
     const C3DVector& GetPosition() const;            // 0x004C73D0
     void SetAsGameStatePersisted(bool persisted);           // 0x004C7880
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CBaseIntelligentPointer {
 public:
     CBaseIntelligentPointer();                              // 0x00A01B10
@@ -98,8 +98,8 @@ template <class T> struct CRetailList {                     // STLport list: the
 struct CTCFollowActionHandler {
     void HandleFollowerQuit(CThing* follower);              // 0x006AEBA0 (component 0x7a)
 };
-struct CFaction;
-struct CTCHeroOpinionDeedLog {
+class CFaction;
+class CTCHeroOpinionDeedLog { public:
     long PostDeed(long deed, const C3DVector& position, CThing* doer, CThingAICreature* creature, long postType, bool a, bool b,
                   CFaction* faction, bool c, long d);       // 0x006C6990
 };

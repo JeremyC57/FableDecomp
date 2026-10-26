@@ -2,7 +2,7 @@
 // is default-constructed (base constructor only, no SetPItem).
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseParent = 0;
 static int g_baseCtorCalls = 0;
 struct CTCBase_Calls {
@@ -20,7 +20,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     virtual void v00() { }
     CIntelligentPointer() { }
 };
-struct CTCDiscovery : CTCBase_Calls {
+class CTCDiscovery : public CTCBase_Calls { public:
     bool                Discovered;
     CIntelligentPointer Discoverer;
     virtual void v00() { }

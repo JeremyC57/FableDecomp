@@ -2,11 +2,11 @@
 #include <cstdlib>
 static int g_baseCtors = 0, g_copies = 0;
 struct CBase { virtual void v00() {} CBase() { ++g_baseCtors; } };
-struct CAFile : CBase { };
+class CAFile : public CBase { public: };
 struct CByteArray { unsigned char* m_pFirst; unsigned char* m_pLast; CByteArray() : m_pFirst(0), m_pLast(0) {} };
-struct CWideString { unsigned short* m_pString; CWideString() : m_pString(0) {} };
+class CWideString { public: unsigned short* m_pString; CWideString() : m_pString(0) {} };
 struct CCountedPointer { void* m_pObject; void* m_pCount; CCountedPointer() : m_pObject(0), m_pCount(0) {} };
-struct CCachedFile : CAFile {
+class CCachedFile : public CAFile { public:
     virtual CAFile* Clone() const;
     long Position; long BufferStartPosition; CByteArray DataBuffer; long DataBufferCapacity; CWideString Pathname; CCountedPointer PDiskFile; bool Opened; bool BufferValid;
     CCachedFile() : Position(7), BufferStartPosition(9), DataBufferCapacity(0), Opened(true), BufferValid(true) {}

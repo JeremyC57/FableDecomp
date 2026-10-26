@@ -6,7 +6,7 @@
 // Shape: `GetPWorld()->GetWorldFrame()` keeps the accessor call before the static call; the target's dead bit is tested
 // inline; PTargetThing = CIntelligentPointer<CThing>(target) (vtable 0x01238C6C) through SetPItem(GetPItem()).
 // Layout: PTargetThing +0x14, next-use frame +0x1c (local model; the header is byte-flattened).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer
 {
@@ -19,15 +19,15 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
+{ public:
     virtual void v00();
     __forceinline CIntelligentPointer() { }
     __forceinline CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
@@ -37,8 +37,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -82,13 +82,13 @@ struct CThing
     }
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad0[0x18];
     CThing* Creature;                               // +0x18
 };
 
-struct CWorld;
+class CWorld;
 
 
 struct CTCAttackTarget                              // interface type 8 component
@@ -102,8 +102,8 @@ struct CTCAttackTarget                              // interface type 8 componen
     virtual CThing* GetTarget();                    // slot 29 (+0x74)
 };
 
-struct CWorld
-{
+class CWorld
+{ public:
     static long GetWorldFrame();                    // 0x0049D870
 };
 

@@ -6,11 +6,11 @@
 // CCountedPointer<CSubdivisionTriangle> {object, count block}; the loop walks first..last and
 // re-reads `last` after each virtual call (the callee may touch the container). The result is
 // `unsigned char` (retail `xor al,al` / `mov al,1`, no `xor eax,eax`).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 namespace NShape {
 
-struct CSubdivisionTriangle {
+class CSubdivisionTriangle { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

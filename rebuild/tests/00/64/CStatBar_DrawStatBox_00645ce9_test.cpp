@@ -17,31 +17,31 @@
 //   indices, +0x2d0 / +0x2d8 C2DVector offsets; the game UI's font bank at +0x138.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector& operator+=(const C2DVector& o) { X += o.X; Y += o.Y; return *this; }
 };
 inline C2DVector operator+(const C2DVector& a, const C2DVector& b) { return C2DVector(a.X + b.X, a.Y + b.Y); }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward);   // 0x00487050
 };
 class CWideString;
-struct CEnginePrimitivePrepareInfo;
-struct CEnginePrimitiveHandle { unsigned long m_handle; };
-struct C2DExtentsI { long Width, Height; };
-struct CDisplayManager { C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
+class CEnginePrimitivePrepareInfo;
+class CEnginePrimitiveHandle { public: unsigned long m_handle; };
+class C2DExtentsI { public: long Width, Height; };
+class CDisplayManager { public: C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
 extern CDisplayManager* g_pDisplayManager_013b8390;                    // 0x013B8390
-struct CFontBank { float GetStringWidth(const CWideString& text); };    // 0x0048DA62
+class CFontBank { public: float GetStringWidth(const CWideString& text); };    // 0x0048DA62
 struct CGameUI { unsigned char _pad[0x138]; CFontBank* Font; };        // +0x138
 extern CGameUI* g_pGameUI;                                              // 0x013B8790
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x2c8];
     float     StatBoxTextWidth;          // +0x2c8
     long      StatBoxTextGraphic;        // +0x2cc
@@ -51,7 +51,7 @@ struct CPlayerGuiDef {
     long      StatBoxTextEdgeGraphic;    // +0x2e4
 };
 extern CPlayerGuiDef* __fastcall PeekGuiDef();                          // 0x00438570
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -61,24 +61,24 @@ struct CGraphicDataBank {
 };
 enum EEngine2DLayer { ENGINE_2D_LAYER_STAT_BOX = 0x44 };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void Kill();                                                        // 0x00AEE8C0
     void Set2DPosition(const C2DVector* position, EEngine2DLayer layer);   // 0x00AED090
 };
-struct CParticleEmitterManager {
+class CParticleEmitterManager { public:
     static CParticleEmitterManager* Get();                              // 0x00AEAAF0
     CParticleEmitter* Create2DEmitter(long effect, const C2DVector* position, EEngine2DLayer layer, bool start,
                                       const CRightHandedSet& axes);     // 0x00AEB790
 };
 }
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;
     CBaseObject* GetPItem() const;                                      // 0x00A01B50
     ~CBaseIntelligentPointer();                                         // 0x00A01C10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                                       // 0x00655318
     CIntelligentPointer& operator=(const CIntelligentPointer& other);  // 0x0065533C
 };
@@ -88,7 +88,7 @@ template<class T> struct CRetailVector {
 };
 struct CStatBarDef { unsigned char _pad[0x528]; C2DVector EffectOffset; };   // +0x528
 namespace NPlayerGui {
-struct CStatBar {
+class CStatBar { public:
     virtual void v00();
     CStatBarDef* Def;                                                   // +0x04
     unsigned char _pad08[0x28];

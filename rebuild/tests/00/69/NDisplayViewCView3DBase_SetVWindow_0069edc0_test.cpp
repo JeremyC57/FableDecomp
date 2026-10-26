@@ -24,8 +24,8 @@ static int g_ok = 1;
 // landed Render model.
 // Shape: the implicit copy of the 16-byte POD box: `add ecx,8` forms &Window once, then four dword moves
 // through edx (the last through eax). `ret 4`.
-struct C2DBoxF { float Left, Top, Right, Bottom; };
-struct CIEngine;
+class C2DBoxF { public: float Left, Top, Right, Bottom; };
+class CIEngine;
 
 namespace NDisplayView {
 

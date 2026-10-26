@@ -6,9 +6,9 @@ struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
 struct CDefinitionManager_Retail;
-struct CWorld;
-struct CCharString;
-struct CScriptThing;
+class CWorld;
+class CCharString;
+class CScriptThing;
 struct CDefPointer_Retail;
 struct CTCBase_Retail;
 struct CInterfaceMap_Retail {                 // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
@@ -61,7 +61,7 @@ struct CThing_Retail {
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }   // the masked word (a bool would narrow the test)
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
@@ -80,13 +80,13 @@ struct CScriptThing {
 };
 typedef unsigned short wchar_t;                // VC7.1 without /Zc:wchar_t: the type of L""
 struct CCharStringData_Retail { const char* m_pData; unsigned long m_length; };   // CBasicString<char>: PData, StringLength
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);         // 0x0099B720
     ~CWideString();                                // 0x0099B510
     bool operator!=(const wchar_t* text) const;    // 0x0099B150
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData_Retail* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -97,7 +97,7 @@ struct CCharString {
 };
 struct CThing_Retail;
 struct CFontBank_Retail;
-struct CRGBColour;
+class CRGBColour;
 struct CSubtitleRenderer_Retail {               // embedded at CGameUI+0x18 (`add ecx,18h`)
     void SetText(CFontBank_Retail* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
     void SetText(CFontBank_Retail* font, const CCharString& text, const CCharString& name, const CCharString& a, const CCharString& b, unsigned long colour, float time, bool c, bool d);   // 0x00492FB4
@@ -125,7 +125,7 @@ struct CMainGameComponent_Retail {
     unsigned char    _pad[0x1614c];
     CFontBank_Retail* m_pFontBank;               // +0x1614c
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent_Retail*  Component;          // +0x08

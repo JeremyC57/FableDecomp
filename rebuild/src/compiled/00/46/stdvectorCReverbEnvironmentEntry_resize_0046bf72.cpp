@@ -12,7 +12,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CReverbEnvironmentEntry {
+class CReverbEnvironmentEntry { public:
     float Params[21];                                       // +0x00
 };
 namespace std {

@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 
 // Model the delegate as a raw vtable pointer object so the test is fully
 // self-contained (no undefined base-class virtuals to link).
@@ -9,7 +9,7 @@ struct Delegate {
     void** vptr;
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* f0;
     Delegate* ParentThing;
 };

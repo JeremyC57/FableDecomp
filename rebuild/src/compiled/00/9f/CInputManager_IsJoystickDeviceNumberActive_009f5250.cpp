@@ -4,7 +4,7 @@
 // Shape: the count is a signed pointer difference (`sar esi,3`) taken before the loop, the argument is loaded into ebp only
 // inside the non-empty branch, the first pointer is re-read after every virtual call, `cmp ebp,eax` keeps the source
 // operand order (argument first), `xor al,al` / `mov al,1` tails.
-struct CJoystick {
+class CJoystick { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual long GetDeviceNumber();                 // slot 8
 };
@@ -13,7 +13,7 @@ struct CCountedPointer_CJoystick {                  // 8 bytes: object, count bl
     void*      m_pCount;
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char _pad04[0x28];                     // +0x04 the event vectors, counters and the mouse/keyboard pointers
     CCountedPointer_CJoystick* m_pJoysticksFirst;   // +0x2c PJoysticks.first

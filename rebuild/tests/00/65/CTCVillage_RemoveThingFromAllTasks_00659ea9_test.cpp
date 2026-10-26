@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 template<class T> struct CTaskList { int removed; const CThing* last; };
-struct CVillageTaskTorch; struct CVillageTaskHorn; struct CVillageTaskPatrol; struct CVillageTaskPickCrops; struct CVillageTaskSecuritySweep; struct CVillageTaskCarryCrate;
+class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol; class CVillageTaskPickCrops; class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
 static int g_order = 0;
-struct CTCVillage {
+class CTCVillage { public:
     CTaskList<CVillageTaskTorch> TorchTasks; CTaskList<CVillageTaskHorn> HornTasks; CTaskList<CVillageTaskPatrol> PatrolTasks;
     CTaskList<CVillageTaskPickCrops> CropTasks; CTaskList<CVillageTaskSecuritySweep> SecuritySweepTasks; CTaskList<CVillageTaskCarryCrate> CrateTasks;
     template<class T> void RemoveThingFromTaskList(const CThing& thing, CTaskList<T>& tasks) { tasks.removed = ++g_order; tasks.last = &thing; }

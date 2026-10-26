@@ -9,8 +9,8 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct C2DVector { float X; float Y; };
-struct C2DLineF { C2DVector Point1; C2DVector Point2; };
+class C2DVector { public: float X; float Y; };
+class C2DLineF { public: C2DVector Point1; C2DVector Point2; };
 struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
 template <class _Tp> struct _List_node : public _List_node_base { _Tp _M_data; };
 template <class _Tp> struct list {              // STLport list: a malloc'd self-linked header, insert(begin(), x.begin(), x.end())

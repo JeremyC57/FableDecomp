@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CSpecialAbilitiesForcePushDef;
+class CSpecialAbilitiesForcePushDef;
 
 // Provide the impl so the test links; record that the tail-call reached it.
 static int g_called = 0;

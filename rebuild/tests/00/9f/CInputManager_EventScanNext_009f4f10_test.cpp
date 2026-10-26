@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
-struct CInputEvent { long m_words[10]; long m_kind; long m_2c, m_30; long GetType() const { return m_kind; } };
-struct CInputEventScanInfo { bool Started; long Index; };
-struct CInputManager {
+class CInputEvent { public: long m_words[10]; long m_kind; long m_2c, m_30; long GetType() const { return m_kind; } };
+class CInputEventScanInfo { public: bool Started; long Index; };
+class CInputManager { public:
     virtual void v00() { }
     unsigned char _pad04[0x0c];
     CInputEvent* m_pEventStoreFirst; CInputEvent* m_pEventStoreLast; CInputEvent* m_pEventStoreEnd;

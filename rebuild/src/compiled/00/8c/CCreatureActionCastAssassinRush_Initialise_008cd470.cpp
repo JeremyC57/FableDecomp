@@ -14,13 +14,13 @@
 #include "engine/CClass.h"
 #include "fable_string.h"
 #include <string.h>
-struct C3DVector {float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){};};
-struct CRightHandedSet {C3DVector Up,Forward;};
+class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){};};
+class CRightHandedSet { public:C3DVector Up,Forward;};
 struct CPhysicsMethods:CTCPhysicsBase {void SetFacingAnglesFromRHSet(const CRightHandedSet&);};
 union CPhysicsSlot {void* Address;void(CPhysicsMethods::*SetFacingAnglesFromRHSet)(const CRightHandedSet&);};
 inline void CPhysicsMethods::SetFacingAnglesFromRHSet(const CRightHandedSet& v){(this->*reinterpret_cast<CPhysicsSlot*>(__vftable)[74].SetFacingAnglesFromRHSet)(v);}
 FABLE_STATIC_ASSERT(sizeof(CPhysicsSlot)==4);
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct CCountedActionInfo {long References;void(FABLE_FASTCALL *Destroy)(void*);void* Owner;};
 struct CCountedAction {
  CCreatureActionBase* Data;CCountedActionInfo* Info;
@@ -28,28 +28,28 @@ struct CCountedAction {
  CCountedAction(const CCountedAction& p):Data(p.Data),Info(p.Info){if(Info)++Info->References;}
  ~CCountedAction(){if(Info&&!--Info->References){Info->Destroy(Info->Owner);delete Info;}}
 };
-struct CThing;
+class CThing;
 // CTCAssassinRush generated header absent. PDB native member offsets are donor minus4 (TC base).
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
  unsigned char _beforeDashDistance[0x70];float DashDistance;
  unsigned char _beforeSpellLevel[0x18];long SpellLevel;CCountedAction FinalAction;void* RadialBlurFadeKey;bool UseCollision;bool IsZTargetting;
  void SetPTarget(CThing*,bool); //007A9AB0
  void SetFinalAction(CCountedAction); //008CEAE0; PDB906010; propagated CMeshDataBank label rejected
 };
-struct CTCParamsBase;
-struct CThing:CClass {
+class CTCParamsBase;
+class CThing:public CClass { public:
  unsigned char _beforePhysics[0x4f];CPhysicsMethods* PPhysics;
  __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
  void RemoveTC(long); //004C9840
  CTCAssassinRush* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
 };
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThing* GetPItem()const;}; //00A01C10/00A01B50
-struct CCombatActionBase {
+class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  unsigned char _beforeTarget[0x98];CBaseIntelligentPointer PTarget;unsigned char _remainingBase[0x64];
  void Initialise(); //00857520
 };
-struct CCreatureAction_CastAssassinRush:CCombatActionBase {
+class CCreatureAction_CastAssassinRush:public CCombatActionBase { public:
  bool Override;unsigned char Dir[15];float Distance;long Level;CCountedAction FinalAction;bool UseCollision;bool IsZTargetting;
  void CopyDirection(C3DVector& v)const{memcpy(&v.X,Dir,4);memcpy(&v.Y,Dir+4,4);memcpy(&v.Z,Dir+8,4);}
  void Initialise();

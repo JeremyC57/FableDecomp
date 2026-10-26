@@ -8,7 +8,7 @@
 //   after the call) for the data block; the data pointer is the CSmallVector-style `count ? first : this` select
 //   written into the dead this-register; 0x01AB6D32 (outside the image) is a constant end marker, not an address.
 //   The same template body is instantiated for 24-, 40- and 12-byte elements at 0x00757500 (44), 0x0081ACE0 (24), 0x0081AD50 (40), 0x0086F590 (12).
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long bytes);  // slot 4
     void WriteLong(long value);                        // 0x00993EB0
@@ -31,7 +31,7 @@ template <class T> struct CRecordVector {
     }
 };
 
-struct CExpressionSet : CRecordVector<SRecord12> {
+class CExpressionSet : public CRecordVector<SRecord12> { public:
     void TransferBinaryOut(CDataOutputStream& stream) const;
 };
 

@@ -6,7 +6,7 @@
 // Leaf: SetPosition
 // Shape: the current position comes from an inline by-value getter (x stays on the FPU, y/z are copied to the frame);
 //        `!=` is the inline three-term C3DVector compare (`fucompp ; test ah,44h ; jp`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }

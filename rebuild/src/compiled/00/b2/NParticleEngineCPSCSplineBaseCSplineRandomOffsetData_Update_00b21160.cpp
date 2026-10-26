@@ -9,14 +9,14 @@
 // Shape: CCardinalSpline's assignment is the memberwise copy (out-of-line CArray assignment, then Tension and
 // EndPointsConnected through registers) inlined at both sites; the bool flags are `mov al ; test al,al` tests; the
 // final member call is a sibling-call `jmp`.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     CArray& operator=(const CArray& other);              // 0x0075B8D0 for T = C3DVector
 };
 
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;                     // +0x0
     float             Tension;                           // +0xC
     bool              EndPointsConnected;                // +0x10

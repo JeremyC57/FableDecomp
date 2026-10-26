@@ -20,7 +20,7 @@ static bool Same(const CCharString& s, const char* prefix, int k) { char buf[32]
 static bool StrLess(const CCharString& a, const CCharString& b) { return std::strcmp(a.c_str(), b.c_str()) < 0; }
 
 static int g_arrays = 0;
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -38,10 +38,10 @@ template <class T> struct CArray {
         _M_end_of_storage = _M_finish;
     }
 };
-struct CDefClassBase;
+class CDefClassBase;
 static CDefClassBase* AllocDef() { return 0; }
-struct CDefinitionManager {
-    struct CDefClassInfo {
+class CDefinitionManager { public:
+    class CDefClassInfo { public:
         CCharString Name;
         CDefClassBase* (*AllocFunc)();
         CArray<unsigned long> GlobalIndices;

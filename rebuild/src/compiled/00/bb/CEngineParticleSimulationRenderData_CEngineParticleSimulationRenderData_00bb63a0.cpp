@@ -18,7 +18,7 @@ struct CBase {
 
 struct IDirect3DVertexBuffer9;
 
-struct CVertexCompressionParams {               // PDB: PosScale XYZW then PosBias XYZW
+class CVertexCompressionParams { public:               // PDB: PosScale XYZW then PosBias XYZW
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams()
@@ -35,7 +35,7 @@ struct CVertexBufferBase : CBase {              // 0x34 bytes, PDB member names
     CVertexBufferBase() : Length(0), Type(0), CompressionParams() { }
 };
 
-struct CVertexBufferWin32 : CVertexBufferBase { // vtable 0x0129BA20
+class CVertexBufferWin32 : public CVertexBufferBase { public: // vtable 0x0129BA20
     virtual void VSlot1();
     CVertexBufferWin32() : CVertexBufferBase()
     {

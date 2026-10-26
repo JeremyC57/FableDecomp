@@ -10,7 +10,7 @@
 // chained `X = Y = Z = 0.0f` member stores let the lane hoist both bit loads above the zeros and sink the stores. The
 // bit-field group is the PDB `unsigned short` run (bits 0..11 at +0x40): with `unsigned char` units the final clear is a
 // load/and/store split around `pop edi`.
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct CEnginePrimitiveBase {               // counted primitive: vptr, then the reference count
     virtual void v00();
     virtual void Destroy();                 // slot 1
@@ -43,7 +43,7 @@ struct CIVCountedPointer_Primitive {
 struct CBase {
     virtual void v00();
 };
-struct CEnginePrimitiveHandle : CBase {     // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBase { public:     // vtable 0x0122F598
     CIVCountedPointer_Primitive Data;       // +4
     void Clear()
     {
@@ -52,7 +52,7 @@ struct CEnginePrimitiveHandle : CBase {     // vtable 0x0122F598
         Data = CIVCountedPointer_Primitive();
     }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Set(float x, float y, float z) { Z = z; Y = y; X = x; }
 };

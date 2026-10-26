@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     long m_counter;
     long DecrementScriptCounter() { return m_counter++; }
 };

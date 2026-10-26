@@ -5,19 +5,19 @@
 // a thiscall virtual returning CFileInformation by value. `this` (ecx) is never read; the hidden
 // result pointer ([esp+8]) is default-constructed in place -- three CDateAndTime members at +0,
 // +0x1c and +0x38 (created / modified / accessed) -- and returned in eax (`ret 4`).
-struct CDateAndTime {
+class CDateAndTime { public:
     unsigned char _body[0x1c];
     CDateAndTime();                         // 0x009E9AB0
 };
 
-struct CFileInformation {
+class CFileInformation { public:
     CDateAndTime m_created;                 // +0x00
     CDateAndTime m_modified;                // +0x1c
     CDateAndTime m_accessed;                // +0x38
     CFileInformation() : m_created(), m_modified(), m_accessed() { }
 };
 
-struct CAFile {
+class CAFile { public:
     virtual void v00();
     virtual CFileInformation GetFileInformation();
 };

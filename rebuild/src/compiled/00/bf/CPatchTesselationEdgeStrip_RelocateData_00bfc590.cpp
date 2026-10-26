@@ -5,10 +5,10 @@
 // Shape: four identical arms in member order, each `mov eax,Data ; cmp old,eax ; jne next ; test ; je ; Data - old + new ;
 // mov al,1 ; ret 8`: the vertex array's own inline bool RelocateData (Data read into a local first, then compared with
 // oldBase -- comparing the member directly loads oldBase first), called in member order with an early `return true`.
-struct CPatchTesselationEdgeStrip;
+class CPatchTesselationEdgeStrip;
 
 template <class T>
-struct CEdgeStipVertexArray {
+class CEdgeStipVertexArray { public:
     T*   Data;                                     // +0x00
     long Count;                                    // +0x04
     bool RelocateData(void* oldBase, void* newBase)
@@ -22,7 +22,7 @@ struct CEdgeStipVertexArray {
     }
 };
 
-struct CPatchTesselationEdgeStrip {                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
+class CPatchTesselationEdgeStrip { public:                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
     struct CVertex;
     struct CFanBaseVertex;
     struct CWaterVertex;

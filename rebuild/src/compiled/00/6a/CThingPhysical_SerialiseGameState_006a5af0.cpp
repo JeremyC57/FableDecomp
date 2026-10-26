@@ -11,7 +11,7 @@
 // Shape: the reset block is ConstructFromParams' tail (creators cleared through CIntelligentPointer(0) temporaries,
 // MaxHealth copied from the def as a dword); the Scale default is a 1.0f local homed in the dead `context` slot; the
 // health clamp is `if (Health > MaxHealth) Health = MaxHealth;` (`fcomp ; test ah,41h`).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CWorldMap {
 public:
@@ -27,7 +27,7 @@ public:
 };
 extern CThingManager* g_pThingManager;                         // 0x013B8A1C
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad00[0x42];
     unsigned char AvailableInEditor_42 : 6;                    // +0x42 bits 0..5 (IsLoadableGlobal .. DrawProjectileWeaponTrails, IsVulnerableToMelee)
     unsigned char Damageable : 1;                              // +0x42 bit 6
@@ -57,7 +57,7 @@ struct CIntelligentPointerPhysical : CBaseIntelligentPointer { // CIntelligentPo
     }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                        // +0x18 EMode
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620

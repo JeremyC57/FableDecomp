@@ -13,7 +13,7 @@
 // evaluated first and spilled into the dead argument slot across the calls (the child pointer is read before the slot is
 // reused; a named float local gets its own frame word instead); the map key 0 is a frame temporary; GetStates() is called before the operator[] whose
 // key argument was pushed first; the float is stored as a raw dword.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() { }
@@ -22,7 +22,7 @@ struct C2DVector {
 namespace NUISystem {
 class CComponent;
 }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;

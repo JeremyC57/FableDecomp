@@ -14,7 +14,7 @@
 #include <math.h>
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -40,13 +40,13 @@ struct C3DVector {
     }
 };
 
-struct CPhysicsCollideResponse {
+class CPhysicsCollideResponse { public:
     C3DVector CollidePos;       // +0x00
     C3DVector CollideNormal;    // +0x0c
     float     Friction;         // +0x18
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*     __vftable;                       // +0x00
     void*     m_tcBase[2];                     // +0x04 CTCBase body
     C3DVector Position;                        // +0x0c

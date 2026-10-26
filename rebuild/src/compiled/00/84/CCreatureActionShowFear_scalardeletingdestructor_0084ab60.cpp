@@ -1,4 +1,4 @@
-struct CCreatureAction_ShowFear {
+class CCreatureAction_ShowFear { public:
     void* vftable;
 };
 

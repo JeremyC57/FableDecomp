@@ -9,15 +9,15 @@
 // CIntelligentPointer members over the out-of-line CBaseIntelligentPointer ctor (0x00A01B10):
 // <CThingCreatureBase> at +0x74 (vtable 0x01237F1C) set from the target (SetPItem 0x00A01B90) and
 // <CThing> at +0x7c (vtable 0x01238C6C) left empty.
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_pData;                   // +0
     unsigned long m_length;                // +4
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -29,7 +29,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual void v00();
     CCharString m_string;                  // +4
     unsigned long m_hash;                  // +8

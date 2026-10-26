@@ -5,7 +5,7 @@
 #include <new>
 
 static int g_copies = 0;
-struct CAnimSet {
+class CAnimSet { public:
     int Priority;
     unsigned char rest[0x50];
     CAnimSet(int p) : Priority(p) {}

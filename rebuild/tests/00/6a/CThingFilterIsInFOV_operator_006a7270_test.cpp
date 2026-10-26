@@ -21,7 +21,7 @@ static int fails = 0;
 //   (its bit pattern built in the dead argument slot).
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 
-struct C3DVector {
+class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     float Z;    // +0x08
@@ -41,7 +41,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
 
-struct CThingFilter_IsInFOV {
+class CThingFilter_IsInFOV { public:
     C3DVector FromPos;                              // +0x00
     C3DVector Direction;                            // +0x0c
     float     CosFOV;                               // +0x18

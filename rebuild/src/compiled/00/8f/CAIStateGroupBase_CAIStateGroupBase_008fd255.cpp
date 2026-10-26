@@ -17,7 +17,7 @@ struct CMember_0099e4b0 {
     CMember_0099e4b0();                              // 0x0099E4B0
 };
 
-struct CAIStateGroupBase : CBase_0099a2d0 {
+class CAIStateGroupBase : public CBase_0099a2d0 { public:
     unsigned char _pad[0x8];
     CMember_0099e4b0 m_member;                       // +0xc
     virtual void v00();

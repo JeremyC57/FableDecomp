@@ -3,14 +3,14 @@
 // Model of CTCHeroAttachableAppearanceModifiers::Copy(const CTCBase&) @ 0x00706EC0: the other TC's modifier lists are
 // assigned to ours, then Changed is set and the frame stamped (no CTCBase::Copy chain).
 static long g_frame = 0; static int g_baseCopies = 0;
-struct CWorld { static long GetFrame() { return g_frame; } };
+class CWorld { public: static long GetFrame() { return g_frame; } };
 static CWorld g_world;
 struct CModifierVectorVector {
     long values[4]; long count;
     CModifierVectorVector& operator=(const CModifierVectorVector& o) { count = o.count; for (long i = 0; i < 4; ++i) values[i] = o.values[i]; return *this; }
 };
-struct CTCBase { CWorld& GetWorld() const { return g_world; } virtual void Copy(const CTCBase&) { ++g_baseCopies; } virtual ~CTCBase() { } };
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCBase { public: CWorld& GetWorld() const { return g_world; } virtual void Copy(const CTCBase&) { ++g_baseCopies; } virtual ~CTCBase() { } };
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     unsigned long FrameLastChanged; bool Changed : 1; bool RecreatePrimitives : 1;
     CModifierVectorVector AppearanceModifiers;
     void SetAsChanged() { Changed = true; FrameLastChanged = GetWorld().GetFrame(); }

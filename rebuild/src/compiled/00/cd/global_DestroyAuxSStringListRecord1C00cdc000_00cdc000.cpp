@@ -10,7 +10,7 @@
 // (`_Move_backward<pair<unsigned long, CDefString>*>`) is propagated: there is no move (no destination, `ret 4`).
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;                                         // +0
     ~CCharString();                                        // 0x0099EAE0
 };

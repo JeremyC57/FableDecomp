@@ -35,7 +35,7 @@ struct CDequeIterator {
     T& operator*() const { return *_M_cur; }
 };
 
-struct CUserProfileManager {                 // really std::deque<SElement30>
+class CUserProfileManager { public:                 // really std::deque<SElement30>
     CDequeIterator<SElement30> _M_start;     // +0x00
     CDequeIterator<SElement30> _M_finish;    // +0x10
     SElement30** _M_map;                     // +0x20

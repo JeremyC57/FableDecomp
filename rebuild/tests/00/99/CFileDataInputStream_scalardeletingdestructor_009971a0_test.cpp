@@ -4,7 +4,7 @@
 static int g_order[8]; static int g_n = 0;
 namespace N_0099a300 { struct CBase { virtual ~CBase() { g_order[g_n++] = 1; } }; } using N_0099a300::CBase;
 struct CDataStream : CBase { virtual void Close() { g_order[g_n++] = 7; } virtual ~CDataStream() { g_order[g_n++] = 2; } };
-struct CFileDataInputStream : CDataStream {
+class CFileDataInputStream : public CDataStream { public:
     void* File; unsigned char* Buffer; long BufferSize;
     virtual void Close() { g_order[g_n++] = 3; }
     virtual ~CFileDataInputStream() { Close(); }

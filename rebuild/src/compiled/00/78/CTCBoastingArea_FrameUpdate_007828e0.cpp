@@ -8,8 +8,8 @@
 // before the squares, `X*X + (Y*Y + Z*Z)` for retail's Z,Y,X order); the anticipation result lives in a frame byte,
 // the boasting one in cl; the state switch returns from every arm. The parent thing goes through an inline GetThing()
 // accessor so it is read into ebx BEFORE the hero position call (a direct `Thing->` loads it after and keeps the bool in bl).
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -44,14 +44,14 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                      // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 CPlayerManager* GetPlayerManager();                 // 0x00686D40
-struct CTCBoastingCrowdControl {
+class CTCBoastingCrowdControl { public:
     void OnHeroApproachPodiumArea();                // 0x00783BC0
 };
 

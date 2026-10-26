@@ -43,7 +43,7 @@ CWideString __fastcall ExpandPath(const CWideString& path, const CWideString& ba
 }
 
 struct SFindFileState { bool Finished; long Handle; };
-struct CAFile {
+class CAFile { public:
     static bool __fastcall FindNextFileSequential(const CWideString& pattern, SFindFileState& state, wchar16* outPath);
 };
 

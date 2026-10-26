@@ -9,7 +9,7 @@
 // pointer (ebx: `lea ebx,[esi+4Ch]`) declared after it (callee-saved registers go in reverse declaration order);
 // the found path is the `if` body so the `return false` tail sits at the end; the empty iterator-category tag is a const-reference temporary that VC homes
 // in the quest argument's slot once its value is in ecx (`lea eax,[esp+10h]`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
@@ -28,7 +28,7 @@ struct CCharStringVector {                         // retail vector<CCharString>
     CCharString* erase(CCharString* where);             // 0x004B8770
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad_0x00[0x4c];
     CCharStringVector BetweenStartAndEndScreenQuests;              // +0x4c
     unsigned char     _pad_0x58[0x40];

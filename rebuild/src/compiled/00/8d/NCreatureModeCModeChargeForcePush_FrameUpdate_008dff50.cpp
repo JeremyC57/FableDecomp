@@ -11,33 +11,33 @@
 // Shape: a named action local built by the inline ctor (zeroed CSoundPair temporary in the first frame words, then the
 //   base call, the vtable and the false OnlyHitEnemies store), `if (OnlyHitEnemies) action.SetOnlyHitEnemies();`
 //   (the 0 then 1 byte stores), SetCurrentAction, then the generated dtor (just ~CCombatActionBase).
-struct CThingCreatureBase;
-struct CCreatureActionBase;
+class CThingCreatureBase;
+class CCreatureActionBase;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x6c];
     unsigned long ThingTypeFlags;          // +0x6c
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     ~CCombatActionBase();                  // 0x0062E900
 };
-struct CCreatureAction_ForcePushOutOf : CCombatActionBase {   // vtable 0x01286874, retail sizeof 0x118
+class CCreatureAction_ForcePushOutOf : public CCombatActionBase { public:   // vtable 0x01286874, retail sizeof 0x118
     bool OnlyHitEnemies;                   // +0x114
     virtual void v00();
     CCreatureAction_ForcePushOutOf(CThingCreatureBase& owner)

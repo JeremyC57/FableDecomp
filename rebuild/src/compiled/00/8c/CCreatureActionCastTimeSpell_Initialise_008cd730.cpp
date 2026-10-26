@@ -6,16 +6,16 @@
 // Shape: presence bit 0x92 (dword +0x30, bit 18) on a fresh owner fetch; the component name is an implicit literal temporary
 // (built before `push 0 ; push 1`); the target is a named copy of the action's +0x2c pointer; the component's +0x3c pointer is
 // assigned through an inline by-value operator= (the parameter copy lands in the dead string slot).
-struct CTCParamsBase;
-struct CBaseObject;
+class CTCParamsBase;
+class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     virtual void v00();
     CThing* PItem;                              // +4
@@ -30,7 +30,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                      // +0x10
     unsigned char _pad11[0x0f];
@@ -44,7 +44,7 @@ struct CThing {
     }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer PCreature;          // +0x08 (the owning creature)
@@ -54,12 +54,12 @@ struct CCombatActionBase {
     virtual void Initialise();                  // 0x00857520
 };
 
-struct CTCBulletTime {                          // the interface-0x92 component
+class CTCBulletTime { public:                          // the interface-0x92 component
     unsigned char _pad00[0x3c];
     CIntelligentPointerThing PTarget;           // +0x3c
 };
 
-struct CCreatureAction_CastTimeSpell : CCombatActionBase {
+class CCreatureAction_CastTimeSpell : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

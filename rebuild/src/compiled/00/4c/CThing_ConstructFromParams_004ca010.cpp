@@ -17,10 +17,10 @@
 // inline by-value copy of the global (bare temporary); the two GetString results and the two AddTC names are NAMED
 // locals in their own blocks (retail re-derives `lea [esp+18h]` instead of reusing eax, and builds the AddTC name
 // before pushing the two zero arguments); the player-number clamp keeps its redundant `== 5` test.
-struct CTCBase;
-struct CTCParamsBase;
+class CTCBase;
+class CTCParamsBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     CCharString(const CCharString& other);           // 0x0099EC30
@@ -31,7 +31,7 @@ struct CCharString {
 extern CCharString g_DefaultSerialisationSectionName;   // 0x013BAB0C
 inline CCharString GetDefaultSerialisationSectionName() { return g_DefaultSerialisationSectionName; }
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad00[0x68];
     long DefaultScriptName;                          // +0x68 (CDefString)
     long DefaultScriptData;                          // +0x6C (CDefString)
@@ -46,18 +46,18 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_DefStringTable;             // 0x013CA828
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     bool GetDef(long globalIndex, CThingBaseDefPointer* out);   // 0x0042AF3C
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsEditorRunning();                  // slot 9 (+0x24)
 };
 
 class CThing;
-struct CThingManager {                               // a CClassFactory
+class CThingManager { public:                               // a CClassFactory
     unsigned char           _pad00[0x1c];
     CMainGameComponent*     Component;               // +0x1C
     CGameDefinitionManager* DefinitionManager;       // +0x20

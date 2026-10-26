@@ -1,4 +1,4 @@
-struct CCreatureAction_DiagonalStrafeBR {
+class CCreatureAction_DiagonalStrafeBR { public:
     void* vftable;
 };
 

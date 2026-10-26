@@ -3,7 +3,7 @@
 // Not CBase-derived (no base constructor call). PDB layout: ReadUnknownChunkTypes +4, SupportedFileType[5] +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA7510, length 40 bytes. No callees (intrinsic memset/memcpy).
 #include <string.h>
-struct CChunkedFileLoader {
+class CChunkedFileLoader { public:
     virtual void VSlot0();
     long ReadUnknownChunkTypes;                 // +0x04
     char SupportedFileType[5];                  // +0x08

@@ -1,4 +1,4 @@
-struct CHeroStatsDef {};
+class CHeroStatsDef { public:};
 
 unsigned long __fastcall CHeroStatsDef_GetSizeofClass(CHeroStatsDef* self)
 {

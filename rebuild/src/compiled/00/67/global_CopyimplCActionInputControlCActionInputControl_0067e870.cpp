@@ -1,4 +1,4 @@
-struct CActionInputControl { int m[7]; };
+class CActionInputControl { public: int m[7]; };
 
 CActionInputControl* __fastcall Copy_impl(CActionInputControl* _First, CActionInputControl* _Last, CActionInputControl* _Dest, int _pad)
 {

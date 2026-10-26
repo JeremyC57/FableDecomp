@@ -9,13 +9,13 @@
 // first); `if (!f()) return false; return true;` gives retail's `test al,al ; setne al`.
 #include "engine/CTCMapwho.h"
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct CThingMapManager {
     bool IsOverlappingCells(CTCMapwho* mapwho, const C3DVector& pos);   // 0x00637F40
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char     _pad_0x00[0x10];
     CThingMapManager* m_pThingMapManager;                               // +0x10
     bool IsPosInMap(const C3DVector& pos);                              // 0x004FC600

@@ -14,7 +14,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 
 // CDataInputStream (retail CMemoryDataInputStream layout, as in the landed 0x00701990 / 0x00AC5080):
 // +4 read position, +0xC current chunk read pointer, +0x14 bytes left in the chunk.
-struct CDataInputStream {
+class CDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -41,7 +41,7 @@ struct CDataInputStream {
     __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     T* begin() { return m_begin; }
     T& operator[](unsigned long n) { return *(begin() + n); }
@@ -49,7 +49,7 @@ template<class T> struct CArray {                       // retail CArray<T>: beg
 };
 
 struct CParticleSystem;
-struct CCardinalSpline;
+class CCardinalSpline;
 
 struct CSplinePosParamData {
     CParticleSystem*      PParentParticleSystem;         // +0x00

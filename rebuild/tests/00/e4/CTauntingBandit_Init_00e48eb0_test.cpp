@@ -5,12 +5,12 @@
 #include <cstring>
 
 static int g_live = 0;                       // outstanding CScriptThing copies of Me / the marker
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long = -1) : text(t) {}
 };
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     C3DVector pos;
     CScriptThing(int i, float x, float y, float z) : id(i) { pos.X = x; pos.Y = y; pos.Z = z; ++g_live; }
@@ -21,7 +21,7 @@ struct CScriptThing {
 
 static bool g_faction = false, g_centre = false, g_min = false;
 static float g_max = -1.0f;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing GetThingWithScriptName(const CCharString& n) const
     {
         return std::strcmp(n.text, "M_BanditCampCentrePos") == 0 ? CScriptThing(9, 1.5f, 2.5f, -3.0f)
@@ -34,7 +34,7 @@ struct CGameScriptInterface {
     void SetWanderMinDistance(CScriptThing t, float d) { g_min = t.id == 3 && d == 0.0f; }
     void SetWanderMaxDistance(CScriptThing t, float d) { if (t.id == 3) g_max = d; }
 };
-struct CScriptDef { long BanditTollBanditWanderDistance; };
+class CScriptDef { public: long BanditTollBanditWanderDistance; };
 static CScriptDef g_def = { 25 };
 static CScriptDef* g_pScriptDef = &g_def;
 

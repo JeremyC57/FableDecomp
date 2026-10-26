@@ -11,7 +11,7 @@
 // argument counts differ).
 #include "engine/CTCInGameMenu.h"
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     bool GetDef(long globalDefIndex, CDefPointeeBase** pDefObject) const;   // 0x0048591C (CDefPointer<T>* = its Object word)
 };
 

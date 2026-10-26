@@ -1,3 +1,3 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-struct CThingSwitch { bool DrawGetEditDrawInfo(int a0, int info); };
+class CThingSwitch { public: bool DrawGetEditDrawInfo(int a0, int info); };
 bool CThingSwitch::DrawGetEditDrawInfo(int a0, int info) { return false; }

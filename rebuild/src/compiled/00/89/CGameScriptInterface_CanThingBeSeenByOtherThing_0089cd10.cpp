@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CThing;
+class CThing;
 struct CGameScriptInterface_Methods : CGameScriptInterface {
     bool CanThingBe_Seen_ByOtherThing(CThing* thing1, CThing* thing2);
     bool CanSeeImpl(CThing* thing1, CThing* thing2, int mode);

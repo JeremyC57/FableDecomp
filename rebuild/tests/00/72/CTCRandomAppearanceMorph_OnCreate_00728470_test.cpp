@@ -4,7 +4,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 static int g_lower = 0; static long g_lowerKey = -1;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -37,7 +37,7 @@ struct CThing {
     }
 };
 static int g_update = 0;
-struct CTCRandomAppearanceMorph {
+class CTCRandomAppearanceMorph { public:
     virtual void v00() {}
     CThing*       ParentThing;
     unsigned char _pad08[0x20];

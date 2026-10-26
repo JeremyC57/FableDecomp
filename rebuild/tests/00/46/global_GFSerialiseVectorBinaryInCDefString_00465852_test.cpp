@@ -9,7 +9,7 @@ struct Reader {
         if (chunkLength >= size) { std::memcpy(buffer, chunkBase, size); chunkBase += size; chunkLength -= size; position += size; }
     }
 };
-struct CDefString { int TablePos; CDefString() : TablePos(-1) { } void TransferBinaryIn(Reader& s) { s.Read(&TablePos, 4); } };
+class CDefString { public: int TablePos; CDefString() : TablePos(-1) { } void TransferBinaryIn(Reader& s) { s.Read(&TablePos, 4); } };
 struct Traits { CDefString DefaultVal; void TransferBinaryIn(Reader* s, CDefString* v) { v->TransferBinaryIn(*s); } };
 struct Vec {
     CDefString _M_data[8]; unsigned int n;

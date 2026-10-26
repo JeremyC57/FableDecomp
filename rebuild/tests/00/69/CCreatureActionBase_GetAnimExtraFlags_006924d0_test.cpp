@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureActionBase { void* vtbl; };
+class CCreatureActionBase { public: void* vtbl; };
 
 unsigned long __fastcall CCreatureActionBase_GetAnimExtraFlags(const CCreatureActionBase* action);
 

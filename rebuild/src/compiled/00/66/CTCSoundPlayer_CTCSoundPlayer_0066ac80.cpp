@@ -8,11 +8,11 @@
 // VoiceName +0x14, ExtraTag +0x18, AnimCriteriaClipDistance (short) +0x1c, LastMaterialIndex +0x20.
 // Shape: the derived vtable store comes before the member constructors; the intelligent pointer is built by an
 // inline converting constructor from a null pointer (base constructor, own vtable, SetPItem(0)).
-struct CThing;
-struct CBaseObject;
-struct CThingSoundEmitter;
+class CThing;
+class CBaseObject;
+class CThingSoundEmitter;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -32,12 +32,12 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPoint
     CIntelligentPointer(CThingSoundEmitter* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                          // 0x0099E4B0
 };
 
-struct CTCSoundPlayer : CTCBase {
+class CTCSoundPlayer : public CTCBase { public:
     CIntelligentPointer PAttachedEmitter;                   // +0x0c
     CCharString         VoiceName;                          // +0x14
     CCharString         ExtraTag;                           // +0x18

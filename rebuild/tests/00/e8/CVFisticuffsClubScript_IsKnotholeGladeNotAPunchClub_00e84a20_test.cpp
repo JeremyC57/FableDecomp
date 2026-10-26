@@ -2,9 +2,9 @@
 // short-circuit order of the queries, and a terminating thread reporting true.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString(const char* t) : Text(t) {} };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) {} };
 static int g_calls; static bool g_term;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool Completed, Siege, Ransom, Thunder;
     bool IsQuestCompleted(const CCharString& n) const { ++g_calls; return std::strcmp(n.Text, "Q_WhiteBalverineKnotholeGlade") == 0 && Completed; }
     bool IsQuestActive(const CCharString& n) const

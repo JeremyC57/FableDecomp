@@ -11,13 +11,13 @@
 // Leaf: InitStateGroup
 #include "engine/CAIStateGroup_TavernServer.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
 };
-struct CThing;
-struct CWorld;
-struct CThingAICreature;
+class CThing;
+class CWorld;
+class CThingAICreature;
 #define V16(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3(); \
     virtual void n##4(); virtual void n##5(); virtual void n##6(); virtual void n##7(); virtual void n##8(); \
     virtual void n##9(); virtual void n##a(); virtual void n##b(); virtual void n##c(); virtual void n##d(); \
@@ -48,7 +48,7 @@ struct CIntelligentPointerBuilding : CBaseIntelligentPointer {   // CIntelligent
     __forceinline CIntelligentPointerBuilding(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     __forceinline CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureSpeed* PCreature;             // +0x18
 };

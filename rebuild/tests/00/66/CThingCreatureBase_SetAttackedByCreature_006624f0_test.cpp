@@ -1,6 +1,6 @@
 #include <cstdio>
 // behaviour test for CThingCreatureBase::SetAttackedByCreature (0x006624F0)
-struct CBaseObject { int dummy; };
+class CBaseObject { public: int dummy; };
 static long g_frame = 0;
 static int g_live = 0;
 struct CBaseIntelligentPointer {
@@ -13,8 +13,8 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
-struct CThingCreatureBase {
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CThingCreatureBase { public:
     CBaseIntelligentPointer PLastAttackedByCreature;
     unsigned long WFLastAttackedByCreature;
     void SetAttackedByCreature(CThingCreatureBase* attacker);

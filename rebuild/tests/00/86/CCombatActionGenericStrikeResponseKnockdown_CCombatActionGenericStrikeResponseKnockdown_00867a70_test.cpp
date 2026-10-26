@@ -1,14 +1,14 @@
 // Behaviour test for 0x00867A70 CCombatAction_GenericStrikeResponseKnockdown(owner, thingThatHit, animName).
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct CCharString {
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class CCharString { public:
     char text[32];
     CCharString(const char* t) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }
 };
-struct CSoundPair { long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CSoundPair { public: long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 struct CBaseIntelligentPointer {
     const void* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -18,10 +18,10 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {
     CIntelligentPointer_CThingConst(const CThing* item) { SetPItem(item); }
 };
 static long g_code = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CCombatActionBase(CThingCreatureBase*, long actionCode, const CSoundPair&) { g_code = actionCode; }
 };
-struct CCombatAction_GenericStrikeResponseKnockdown : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase { public:
     CCharString AnimName;
     CIntelligentPointer_CThingConst PThingThatHit;
     bool GotPointOfHit, GotDirectionOfHit;

@@ -17,7 +17,7 @@ struct BaseProc {
 };
 
 // Derived class. Member subobject lands at +0xa4 (after base's vtbl+pad = 0xa4).
-struct CInputProcessManager : public BaseProc {
+class CInputProcessManager : public BaseProc { public:
     MemberObj member;      // at +0xa4
     virtual ~CInputProcessManager();
 };

@@ -2,11 +2,11 @@
 // length, intensity, fade, range, twist): builds the radial-blur block (opaque colours from the vectors, the four
 // scalars) and forwards it with the same duration and priority, returning the block overload's result.
 #include <stdio.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
@@ -25,7 +25,7 @@ struct CRadialBlurParams {
     CRadialBlurParams() { }
 };
 
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     void* RadialBlurFadeTo(float duration, ScreenEffectPriority priority, const CRadialBlurParams& params);   // 0x006B84E0
     void* RadialBlurFadeTo(float duration, ScreenEffectPriority priority, const C3DVector& thresholdColour, float length,
                            const C3DVector& intensityColour, float fade, float range, float twist);

@@ -20,7 +20,7 @@ struct CDefPointee {
             Destroy();
     }
 };
-struct CTavernGameSpotTheAdditionDef : CDefPointee {};
+class CTavernGameSpotTheAdditionDef : public CDefPointee { public:};
 struct CDefPointer {
     CTavernGameSpotTheAdditionDef* Object;
     CDefPointer() : Object(0) {}
@@ -31,7 +31,7 @@ struct CDefPointer {
     }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer* out);           // 0x007D9A80
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -47,12 +47,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer* out)
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefClassBase* DefHolder;                   // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     unsigned char _pad_0x08[0x19];

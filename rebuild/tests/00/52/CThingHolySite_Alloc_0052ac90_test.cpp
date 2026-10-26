@@ -62,7 +62,7 @@ public:
 };
 
 class CThingHolySiteDef;
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };

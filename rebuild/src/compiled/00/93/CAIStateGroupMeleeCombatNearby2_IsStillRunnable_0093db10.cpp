@@ -11,9 +11,9 @@
 // false` guard emits its own epilogue, and `if (a != b) return false; return true;` becomes a `sete`); the
 // named enemy/creature locals land in ebx/edi, the first region in esi. Member names from the engine header (PEnemy +0x14, Archer +0x1c); the header
 // flattens the base, so the layout is local.
-struct C3DVector;
+class C3DVector;
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition();         // 0x004C73D0
     long GetRegionAtPosition(const C3DVector& pos);   // 0x00661D20
 };
@@ -24,12 +24,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                     // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                       // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

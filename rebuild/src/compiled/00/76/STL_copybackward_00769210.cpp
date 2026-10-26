@@ -10,7 +10,7 @@
 //   def adopted and addref'd); the pointee is read into a local, as the landed 0x007691A0 fill. An empty
 //   range returns the untouched result (`mov eax,[esp+8]`).
 // Layout: def pointee = vtable +0, reference count +4 (CDefBase's counted base, as the landed 0x0083BD10).
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                 // slot 1: destroy at count zero
     mutable unsigned long m_count;                // +0x04 (mutable: CDefPointer<const T> still counts)

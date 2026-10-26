@@ -14,14 +14,14 @@
 #include <stddef.h>
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CBaseClass {                                  // vtable 0x01231710
+class CBaseClass { public:                                  // vtable 0x01231710
     virtual ~CBaseClass();                           // 0x0099A2E0
 };
 struct CCountedItem { };
@@ -30,7 +30,7 @@ struct SCountBlock {
     void (CCountedItem::*m_pfnDestroy)();            // +0x04 (called with the item as `this`)
     CCountedItem* m_pItem;                           // +0x08
 };
-struct CGameScriptThing;
+class CGameScriptThing;
 struct CCountedPointer_GameScriptThing {             // CCountedPointer<CGameScriptThing>
     CGameScriptThing* Data;                          // +0x00
     SCountBlock*      Info;                          // +0x04
@@ -47,13 +47,13 @@ struct CCountedPointer_GameScriptThing {             // CCountedPointer<CGameScr
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                   // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                   // vtable 0x01238C8C, 12 bytes
     CCountedPointer_GameScriptThing PImp;            // +0x04
     virtual ~CScriptThing() { }
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual const C3DVector& GetPos() const;         // slot 6 (+0x18)
 };
-struct CGameScriptInterface {                     // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv names)
+class CGameScriptInterface { public:                     // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

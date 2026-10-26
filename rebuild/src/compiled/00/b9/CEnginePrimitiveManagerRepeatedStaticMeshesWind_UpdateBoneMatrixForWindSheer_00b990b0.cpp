@@ -9,10 +9,10 @@
 #include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
 #include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
 };
 

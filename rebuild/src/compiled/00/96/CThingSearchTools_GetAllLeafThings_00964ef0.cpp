@@ -11,7 +11,7 @@
 //   the caller CAIStateGroup_StealStealableItem::FindPEscapePoint make this the marker instance.
 #include "engine/CThingSearchTools.h"
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20
     unsigned char _pad_0x44[0x6c - 0x44];
@@ -40,7 +40,7 @@ struct CThingList {
     iterator begin() { return iterator(m_pHead->m_pNext); }
     iterator end() { return iterator(m_pHead); }
 };
-struct CThingMarker : CThing { enum { ThingListType = 0xb }; };
+class CThingMarker : public CThing { public: enum { ThingListType = 0xb }; };
 
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
@@ -70,7 +70,7 @@ template <> void std::vector<CThingMarker*>::_M_insert_overflow(CThingMarker** p
 }
 #pragma auto_inline(on)
 
-struct CThingFilter_MarkerHasProperty {
+class CThingFilter_MarkerHasProperty { public:
     void* Property;
     bool operator()(CThingMarker* marker) const;      // 0x006A75B0
 };

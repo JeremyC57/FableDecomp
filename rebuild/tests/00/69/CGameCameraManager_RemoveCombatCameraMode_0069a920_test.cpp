@@ -15,18 +15,18 @@ static int fails = 0;
 // +0xa9, PCameraManagerSet +0x130); the set def's main manager def index at +0x44.
 // Shape: `push 2Fh` before the GetMainPlayer call (the HasMode argument is evaluated before the object expression); the local
 // CDefPointer's zero initialisation is scheduled after the GetDef argument pushes; its destructor releases with `dec [ecx+4] ; jne`.
-struct CPlayer {
+class CPlayer { public:
     bool HasMode(long mode);                        // 0x00634160
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
-struct CEngine {
+class CEngine { public:
     unsigned char _pad[0x1c];
     CPlayerManager* m_pPlayerManager;               // +0x1c
 };
 extern CEngine* g_pEngine;                          // 0x013B86A0
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1: runs when the last reference goes
     long m_refCount;                                // +4
@@ -37,12 +37,12 @@ struct CDefPointeeBase {
             Destroy();
     }
 };
-struct CCameraManagerSetDef : CDefPointeeBase {
+class CCameraManagerSetDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x3c];
     long          MainCameraManagerDef;             // +0x44 global def index of the set's main camera manager def
 };
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer()
@@ -70,9 +70,9 @@ struct CDefPointer {
         return *this;
     }
 };
-struct CCameraManagerDef : CDefPointeeBase { };
+class CCameraManagerDef : public CDefPointeeBase { public: };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CCameraManagerDef>& out);   // 0x0069CE80 (manifest names the CThingPhysicalSwitchDef instantiation: identical body)
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -88,11 +88,11 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPoint
     return true;
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char       _pad[0x10];
     CDefinitionManager* m_pDefinitionManager;      // +0x10
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*         __vftable;                        // +0x00
     unsigned char _pad04[0x70];                     // +0x04 Camera, OldCamera
     CWorld*       World;                            // +0x74

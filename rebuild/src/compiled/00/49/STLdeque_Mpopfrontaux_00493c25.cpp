@@ -18,7 +18,7 @@
 //   _M_first` re-reads the member just stored.
 extern "C" void __cdecl free(void* block);               // 0x00BFEA14 (import thunk)
 
-struct CWideString { void* PStringData; };
+class CWideString { public: void* PStringData; };
 
 class CSubtitleRenderer {
 public:

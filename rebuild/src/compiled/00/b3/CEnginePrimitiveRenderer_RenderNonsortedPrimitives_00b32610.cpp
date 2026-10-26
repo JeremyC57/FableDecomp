@@ -18,7 +18,7 @@ struct CRetailEntryVector_00b32610 {
     unsigned long GetCount() const { return m_pLast - m_pFirst; }
 };
 
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     unsigned char               _pad[0x274];
     CRetailEntryVector_00b32610 m_nonsorted;       // +0x274
     void RenderNonsortedPrimitives();

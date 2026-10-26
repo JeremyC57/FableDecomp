@@ -4,7 +4,7 @@
 // Shape: the EBP frame with `this` reloaded from its spill for every use, `and eax,1`, `mov esp,ebp`.
 #pragma optimize("", off)
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CSuspendableProcessMicrothread {
+class CSuspendableProcessMicrothread { public:
     virtual ~CSuspendableProcessMicrothread();     // 0x00A44620 (out of line)
 };
 

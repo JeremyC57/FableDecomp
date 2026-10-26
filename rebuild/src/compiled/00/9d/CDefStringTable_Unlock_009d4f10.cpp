@@ -10,11 +10,11 @@
 // Shape: the two flag tests are early-outs; the stream sub-object is addressed once (`lea esi,[edi+0Ch]`); the blob base
 // and size are fetched before the rotated `offset < size` loop (unsigned); each record's name is a scoped CCharString built
 // at blob + offset + 4, its length read through the null-case-first accessor for the `+ 5` step.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                         // +0x00
     unsigned long m_length;                         // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -26,7 +26,7 @@ struct CStringOffsetMap {                           // map<CCharString, long> (S
     long& operator[](const CCharString& key);       // 0x00519230
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     unsigned long GetSize();                        // 0x00994B40
     void* PeekData();                               // 0x00995E70
 };

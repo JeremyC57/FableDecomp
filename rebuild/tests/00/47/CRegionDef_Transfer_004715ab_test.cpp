@@ -3,16 +3,16 @@
 #include <cstdio>
 enum EReverbEnvironmentType { REVERB_ENVIRONMENT_DEFAULT };
 enum EWorldMapNameGraphic { WORLD_MAP_NAME_GRAPHIC_NONE };
-struct CDefString { long Index; };
-struct CSoundMap { unsigned long _words[8]; };
-struct C2DVector { float X; float Y; };
+class CDefString { public: long Index; };
+class CSoundMap { public: unsigned long _words[8]; };
+class C2DVector { public: float X; float Y; };
 
 static const void* g_seen[64];
 static char g_kind[64];
 static int g_count = 0;
 static void Note(const void* p, char k) { if (g_count < 64) { g_seen[g_count] = p; g_kind[g_count] = k; } ++g_count; }
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& value) { Note(&value, 'l'); }
     void Transfer(bool& value) { Note(&value, 'b'); }
     void Transfer(float& value) { Note(&value, 'f'); }
@@ -23,7 +23,7 @@ struct CPersistContext {
     void Transfer(EWorldMapNameGraphic& value) { Note(&value, 'n'); }
 };
 
-struct CRegionDef {
+class CRegionDef { public:
     long EnvironmentTheme; long InternalEnvironmentTheme; long InternalLightingChannelCount;
     long CameraManagerSetIndex; long CameraManagerSetBuildingIndex; CSoundMap SoundMap;
     bool PreventHeroWeaponUse; bool PreventHeroWillUse; CDefString WanderingPopulationScriptDefName;

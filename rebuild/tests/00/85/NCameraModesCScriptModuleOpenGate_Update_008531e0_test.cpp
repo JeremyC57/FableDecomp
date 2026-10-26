@@ -4,14 +4,14 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static bool feq(float a, float b) { float d = a - b; if (d < 0) d = -d; return d < 1e-5f; }
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
 static int g_helper = 0; static float g_helperArg = 0.0f;
 struct CTCGraphicAppearance {
     C3DVector Helper;
     C3DVector GetHelperPointOrCentre(float t) const { ++g_helper; g_helperArg = t; return Helper; }
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;
 };

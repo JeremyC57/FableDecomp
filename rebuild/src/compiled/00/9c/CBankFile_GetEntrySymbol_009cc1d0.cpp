@@ -11,9 +11,9 @@
 // of the 4-byte-element array is copy-constructed into the result.  The first pointer is re-read
 // for the element (retail does not CSE it with the emptiness test), the mark of an element reached
 // through the array's iterator object (`*(begin() + index)`) rather than a raw subscript.
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {                    // 4 bytes: the shared string data
+class CCharString { public:                    // 4 bytes: the shared string data
     CCharStringData* m_pStringData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     CCharString(const CCharString& other);        // 0x0099EC30
@@ -24,7 +24,7 @@ struct CCharString {                    // 4 bytes: the shared string data
 // on each member sits 0x10 lower than the PDB offset.  The PDB member names are kept at their retail
 // offsets; the header itself cannot be included because its offsets disagree with the bytes.
 struct CDiskFileCalls;
-struct CBankFileEntryUpdateData;
+class CBankFileEntryUpdateData;
 
 struct CRuntimeData {                   // CBankFile::CRuntimeData, 12 bytes, RuntimeData[0] is unused
     unsigned long DataOffset;           // +0x00
@@ -43,7 +43,7 @@ struct CPackedUIntArray {               // 16 bytes; m_pData == 0 means "not pac
     bool IsPacked() const { return m_pData != 0; }
 };
 
-template <class T> struct CArray {      // retail CArray: 12 bytes
+template <class T> class CArray { public:      // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

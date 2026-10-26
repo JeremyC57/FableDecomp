@@ -1,12 +1,12 @@
 // CPhysicsMeshData::BuildMesh() -- build the physics mesh from the loaded file data and register the resource
 // Shape: the pool for the loader call is a named local read before the size and loader locals (retail loads pool, FileData, size, then the Owner->Manager->MeshFileLoader chain in ebx); the CPhysicsMesh ctor re-reads it inside the new-expression (`pool = manager->MemoryPool`) so it lands in the dying manager register edi
 void operator delete(void* p);                     // 0x00BFE9BC
-struct CCPPointerInfo {                            // CCountedPointer's shared block
+class CCPPointerInfo { public:                            // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -36,21 +36,21 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-template <class T> struct CIVCountedPointer {      // intrusive counted pointer
+template <class T> class CIVCountedPointer { public:      // intrusive counted pointer
     T* Data;
     void Clear() { if (Data) { Data->Release(); Data = 0; } }
     CIVCountedPointer& operator=(T* p) { Clear(); Data = p; return *this; }
     long Sizeof() const { return Data ? Data->Sizeof() + 4 : 4; }
 };
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     unsigned char _pad00[0x10];
     unsigned long Size;                            // +0x10
     void* GetData();                               // 0x009D5530
     unsigned long DoSizeof();                      // 0x009D5620
 };
-struct C3DMeshFile;
-struct CMovableResourceMemoryPool;
-struct CPhysicsMesh {
+class C3DMeshFile;
+class CMovableResourceMemoryPool;
+class CPhysicsMesh { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1 (+0x04)
     long RefCount;                                 // +0x04
@@ -62,8 +62,8 @@ struct CPhysicsMesh {
 struct C3DMeshFileLoader {
     CCountedPointer<C3DMeshFile> LoadMeshFileCompressed(void* data, unsigned long size, CMovableResourceMemoryPool* pool);   // 0x00A9B740
 };
-struct CResource;
-struct CResourceList {
+class CResource;
+class CResourceList { public:
     bool MakeFreeSpace(unsigned long size);        // 0x009FC4F0
     void AddResource(CResource* resource);         // 0x009FBFE0
 };
@@ -75,11 +75,11 @@ struct CPhysicsMeshManager {
     unsigned char               _pad2e9[0x370 - 0x2e9];
     CMovableResourceMemoryPool* MemoryPool;        // +0x370
 };
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     void*                __vftable;
     CPhysicsMeshManager* Manager;                  // +0x04
 };
-struct CResource {                                 // 0x1c bytes
+class CResource { public:                                 // 0x1c bytes
     void* __vftable;
     unsigned char _pad04[0x18];
     void SetResourceSize(unsigned long size);      // 0x009FBF20

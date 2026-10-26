@@ -12,7 +12,7 @@
 // back edge (the call may change it); `return true` / `return false` as byte exits (`mov al,1` / `xor al,al`).
 #include "engine/CTCBase.h"
 
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {                 // CIntelligentPointer<CThing>: 8 bytes
     void* m_pItem;
@@ -29,7 +29,7 @@ struct CThingPointerList {                       // retail std::list<CIntelligen
     node* head;
 };
 
-struct CTCFollowed : CTCBase {
+class CTCFollowed : public CTCBase { public:
     CThingPointerList Followers;                 // +0x0c list<CIntelligentPointer<CThing>>
     CThingPointerList AIFollowers;               // +0x10 list<CIntelligentPointer<CThingAICreature>>
     long FrameLastIdleReaction;                  // +0x14

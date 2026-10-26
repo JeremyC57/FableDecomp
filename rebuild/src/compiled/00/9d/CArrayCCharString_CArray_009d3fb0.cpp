@@ -15,12 +15,12 @@
 // store is not eliminated as dead (plain stores let the compiler reorder/elide both).
 extern "C" void __cdecl free(void* p);                                           // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* first; T* last; T* end_of_storage;
     unsigned long capacity() const { return (unsigned long)(end_of_storage - first); }
     void Erase(T* f, T* l);                              // 0x0043336A
@@ -48,4 +48,4 @@ template<class T> CArray<T>::~CArray()
     }
 }
 
-template struct CArray<CCharString>;
+template class CArray<CCharString>;

@@ -1,10 +1,10 @@
 // behaviour test for CThingCompare_Nearest::operator()<CThingAICreature> (0x0065DA97)
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; } };
-struct CThing { C3DVector p; const C3DVector& GetPosition() const { return p; } };
-struct CThingCompare_Nearest {
+class CThing { public: C3DVector p; const C3DVector& GetPosition() const { return p; } };
+class CThingCompare_Nearest { public:
     C3DVector Pos;
     template<class T> T* operator()(T* a, T* b) const
     {

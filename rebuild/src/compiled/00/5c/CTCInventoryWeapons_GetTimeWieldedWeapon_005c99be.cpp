@@ -12,11 +12,11 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace NInventory {
-struct CPerItemData {
+class CPerItemData { public:
     unsigned char _pad_0x00[0x10];
     long TimeWielded;                         // +0x10
 };
-struct CItem {
+class CItem { public:
     long ItemType;                            // +0x00
     long NumberOfItems;                       // +0x04
     CPerItemData* PPerItemData;               // +0x08 CCountedPointer<CPerItemData>::m_pObject
@@ -38,7 +38,7 @@ struct CTCInventoryBase_Retail {
     unsigned char _pad_0x04[0x130 - 4];
     void GetAllInventoryItemsOfType(long itemType, CItemVector* items);   // 0x005BFA69
 };
-struct CTCInventoryWeapons : CTCInventoryBase_Retail {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail { public:
     long GetTimeWieldedWeapon(long itemType);
 };
 long CTCInventoryWeapons::GetTimeWieldedWeapon(long itemType)

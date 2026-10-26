@@ -12,21 +12,21 @@
 // zero register shared with the new-mode and target-speed initialisers); the action is a named local destroyed through the
 // out-of-line ~CCombatActionBase (the derived class is `__declspec(novtable)` with no dtor of its own); the duration is a
 // long local so the division is a `fidiv` of its frame copy.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-struct CThingCreatureBase;
-struct CCreatureActionBase {                            // retail sizeof 0xa8
+class CThingCreatureBase;
+class CCreatureActionBase { public:                            // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body04[0x10 - 0x04];
     long TotalTime;                                     // +0x10
     unsigned char _body14[0xa8 - 0x14];
     long GetTotalTime() const;                          // 0x006925B0
 };
-struct CCombatActionBase : CCreatureActionBase {        // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:        // retail sizeof 0x114
     unsigned char _bodyA8[0x114 - 0xa8];
     ~CCombatActionBase();                               // 0x0062E900
 };
@@ -35,7 +35,7 @@ struct __declspec(novtable) CCreatureAction_DragonFlight : CCombatActionBase {
     float         TurnRate;                             // +0x118
     CCreatureAction_DragonFlight(CThingCreatureBase* owner, const CCharString& animName);   // 0x008F4CB0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool SetCurrentAction(CCreatureActionBase* action); // 0x006644F0
 };
 struct CTCCreatureFlyInCircles {

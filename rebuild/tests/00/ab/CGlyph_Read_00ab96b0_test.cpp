@@ -1,7 +1,7 @@
 // behaviour test for CGlyph::Read (0x00AB96B0): four floats then three shorts, fast path and overflow path
 #include <cstdio>
 #include <cstring>
-struct CDataInputStream {
+class CDataInputStream { public:
     unsigned long StreamPos; long StreamSize; const unsigned char* CurrentSourcePtr; long SourceChunkBytesRemaining;
     const unsigned char* Base; int OverflowCalls;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size)
@@ -18,7 +18,7 @@ struct CDataInputStream {
         } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
 };
-struct CGlyph {
+class CGlyph { public:
     float Left, Top, Right, Bottom; short Offset, Width, Advance;
     void Read(CDataInputStream* in)
     {

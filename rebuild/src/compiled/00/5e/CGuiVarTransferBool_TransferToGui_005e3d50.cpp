@@ -6,7 +6,7 @@ struct GuiTarget;
 // helper @ 0x5e3cd0 : __fastcall(GuiTarget* ecx, int edx, bool val)
 extern void __fastcall GuiSetBool(GuiTarget* self, int edx, bool val);
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     GuiTarget* target;   // +0x0  -> helper ecx
     int        arg2;     // +0x4  -> helper edx
     int        pad8;     // +0x8

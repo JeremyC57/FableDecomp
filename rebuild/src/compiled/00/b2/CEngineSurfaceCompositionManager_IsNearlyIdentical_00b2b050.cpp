@@ -1,5 +1,5 @@
 // CEngineSurfaceCompositionManager::IsNearlyIdentical(const CEngineTextureMorph& a, const CEngineTextureMorph& b, float tolerance) -- two texture morphs match when they blend the same textures in the same order with diffuse and specular colours each within `tolerance`
-// Leaf: ?IsNearlyIdentical@CEngineSurfaceCompositionManager_Methods@@QBE_NABUCEngineTextureMorph@@0M@Z
+// Leaf: ?IsNearlyIdentical@CEngineSurfaceCompositionManager_Methods@@QBE_NABVCEngineTextureMorph@@0M@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B2B050, 197 bytes (+ int3 padding), `ret 0Ch`; Ego_r.pdb names it
 //   ?IsNearlyIdentical@CEngineSurfaceCompositionManager@@AAE_NABVCEngineTextureMorph@@0M@Z.
 // Callees: the colour-distance helper 0x00B2AF50 (catalogued CalcColourDifference; a `__fastcall` member that ignores `this`: the
@@ -18,8 +18,8 @@
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CCompositeBlendDesc {
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CCompositeBlendDesc { public:
     unsigned long TextureIndex;                     // +0x0
     long          BlendType;                        // +0x4 ECompositeBlendType
     CRGBColour    DiffuseColour;                    // +0x8
@@ -32,7 +32,7 @@ template <class T> struct vector {
     unsigned int size() const { return _M_finish - _M_start; }
     const T& operator[](unsigned int index) const { return _M_start[index]; }
 };
-struct CEngineTextureMorph {
+class CEngineTextureMorph { public:
     long                         OriginalTextureIndex;   // +0x0
     long                         MorphID;                // +0x4
     vector<CCompositeBlendDesc>  Blends;                 // +0x8

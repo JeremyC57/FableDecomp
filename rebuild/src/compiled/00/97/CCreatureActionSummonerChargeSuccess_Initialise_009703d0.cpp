@@ -8,7 +8,7 @@
 // Shape: the scoped name string lives in the `push ecx` frame word; `this` is held in esi across the three calls.
 #include "fable_string.h"
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();                  // 0x00857520 (slot 12)
     unsigned char _body[0x114 - 4];

@@ -5,12 +5,12 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 // Behaviour model of CTCPreCalculatedNavigationRoute::OnInitialActivate (0x00800460)
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing g_thing = { 5 };
-struct CThingManager { CThing* GetThingByUID(u64 uid) { return uid == 77 ? &g_thing : 0; } };
+class CThingManager { public: CThing* GetThingByUID(u64 uid) { return uid == 77 ? &g_thing : 0; } };
 static CThingManager g_tm;
 struct CPtr { CThing* item; void SetPItem(CThing* p) { item = p; } CThing* GetPItem() const { return item; } };
-struct CTCPreCalculatedNavigationRoute { CPtr PThingToCalculateRouteTo; u64 ThingToCalculateRouteToUID;
+class CTCPreCalculatedNavigationRoute { public: CPtr PThingToCalculateRouteTo; u64 ThingToCalculateRouteToUID;
     void OnInitialActivate() {
         if (ThingToCalculateRouteToUID) { CPtr tmp; tmp.SetPItem(g_tm.GetThingByUID(ThingToCalculateRouteToUID)); PThingToCalculateRouteTo.SetPItem(tmp.GetPItem()); }
     } };

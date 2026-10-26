@@ -11,14 +11,14 @@
 // (bit 14 of the +0x30 word, `test ch,40h`).
 // Shape: a user destructor (own vtable store first); the hero is alive-tested as a raw pointer; the region display is the
 // unchecked out-parameter GetInterface (the absent arm reads the key's frame word); the member and base dtors follow.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -39,23 +39,23 @@ struct CThing {
     }
 };
 inline bool IsThingAlive(const CThing* thing) { return thing && !(thing->Flags91 & 1); }
-struct CTCRegionDisplay {
+class CTCRegionDisplay { public:
     void FinishShowingRegionName();                     // 0x00639930
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xdf];
     bool LetterBoxShown;                                // +0xdf
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     void EndLetterBox();                                // 0x004349D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                     // +0x28
 };
@@ -68,7 +68,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { };   // CIntelligentPointer<CThing>
 #pragma pack(pop)
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                                 // 0x00686830
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -76,7 +76,7 @@ struct CTCBase {
     const CWorld* GetWorld() const;                     // 0x00686A80
     CPlayerManager* GetPlayerManager();                 // 0x00686D40
 };
-struct CTCDRegionExit : CTCBase {                       // vtable 0x0126AB54
+class CTCDRegionExit : public CTCBase { public:                       // vtable 0x0126AB54
     bool Active;                                        // +0x0c
     bool InLetterBoxMode;                               // +0x0d
     bool WaitingForConfirmation;                        // +0x0e

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThing;
+class CThing;
 
 struct CIntelligentPointer {
     void* vptr;

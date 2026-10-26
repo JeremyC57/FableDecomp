@@ -33,13 +33,13 @@ struct CRegionPairList {
     }
 };
 struct CCountedPointerUIDs { void* Data; void* Info; CCountedPointerUIDs() : Data(0), Info(0) {} };
-struct C2DBoxI { int X0, Y0, X1, Y1; };
+class C2DBoxI { public: int X0, Y0, X1, Y1; };
 enum EScreenType { SCREEN_TYPE_NONE = -1 };
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_base1 = 0, g_base2 = 0; static const CThing* g_thing = 0;
 struct CTCInventoryBase { virtual ~CTCInventoryBase() {} CTCInventoryBase(CThing& t) { g_base1++; g_thing = &t; } };
 struct CInventoryMapListener { virtual ~CInventoryMapListener() {} CInventoryMapListener() { g_base2++; } };
-struct CTCInventoryMap : CTCInventoryBase, CInventoryMapListener {
+class CTCInventoryMap : public CTCInventoryBase, public CInventoryMapListener { public:
     CRetailVector VisitedRegions; float AccumFadeTime; CRetailMap<8> CategoriesList;
     CRetailVector LogBookNameTag, LogBookAbbreviatedNameTag, LogBookTextTag, LogBookCategory;
     int GenerateDataTimer; bool C1, C2, HN, HS; void* pmap_real; CRetailVector MiniMapMarkers, UIRegionsInfo;

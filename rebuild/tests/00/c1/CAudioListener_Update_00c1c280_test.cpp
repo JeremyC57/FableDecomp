@@ -8,7 +8,7 @@ struct CScopedLock {
 };
 static int g_audioLock;
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector SwapYZ() const { C3DVector r; r.x = x; r.y = z; r.z = y; return r; }
 };

@@ -10,8 +10,8 @@ template <class T> struct CRetailVector {
     void Make(unsigned int n) { _M_start = (T*)Alloc(n * sizeof(T)); _M_finish = _M_end_of_storage = _M_start + n; }
     ~CRetailVector() { if (_M_start) Free(_M_start); }
 };
-struct CTransitionBlendAlpha { float Alpha; };
-struct CAnimSet {
+class CTransitionBlendAlpha { public: float Alpha; };
+class CAnimSet { public:
     long                                 UpdateMode;
     CRetailVector<short>                 Anims;
     CRetailVector<CTransitionBlendAlpha> InternalAlphas;

@@ -7,7 +7,7 @@ struct CRandomSeed {
     u32 Random() { Seed = Seed * 0x24a1 + 0x24df; Seed = ror13(Seed); return Seed; }
 };
 static CRandomSeed g_seed;
-struct CThing { int id; };
+class CThing { public: int id; };
 struct ThingPointer {
     CThing* item;
     CThing* GetPItem() const { return item; }

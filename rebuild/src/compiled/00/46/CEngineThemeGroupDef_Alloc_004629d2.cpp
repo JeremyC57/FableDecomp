@@ -16,7 +16,7 @@ struct CBase_00430370 {
     CBase_00430370();                           // 0x00430370
 };
 
-struct CEngineThemeGroupDef : CBase_00430370 {
+class CEngineThemeGroupDef : public CBase_00430370 { public:
     virtual void v00();
     CEngineThemeGroupDef() : CBase_00430370() { }
 };

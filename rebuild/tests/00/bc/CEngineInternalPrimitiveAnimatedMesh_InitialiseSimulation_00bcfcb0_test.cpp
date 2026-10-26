@@ -68,7 +68,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -91,7 +91,7 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveAnimatedMesh {
+class CEngineInternalPrimitiveAnimatedMesh { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -149,10 +149,10 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveAnimatedMesh, RenderInfo) =
 #include <stddef.h>
 
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     long                   f4;                               // +0x04 retail-only long (previous header)
     unsigned char          _pad_0x08[0x4];                   // +0x08
@@ -190,7 +190,7 @@ FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, LODDataSizes) == 0x50);
 
 
 #pragma pack(push, 1)
-struct CEngineSimulationManager {
+class CEngineSimulationManager { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -260,7 +260,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, PausedStepsPending) == 0x
 
 #endif // FABLE_ENGINE_CENGINESIMULATIONMANAGER_H
 
-struct CEngineSimulationBase;
+class CEngineSimulationBase;
 struct SimulationCountInfo {int References;void(__fastcall* Destroy)(CEngineSimulationBase*);CEngineSimulationBase* Object;};
 struct SimulationPointer {
  CEngineSimulationBase* Data;SimulationCountInfo* Info;
@@ -269,7 +269,7 @@ struct SimulationPointer {
 };
 struct SimulationArray {SimulationPointer* Start;SimulationPointer* Finish;SimulationPointer* Limit;bool Empty()const{return Start==Finish;}};
 // Native CIVCountedPointer pointee: actual unsigned IVRefCount and const Delete slot1 (0042D930).
-struct CEnginePrimitiveSimulationInfo:CIVCountedPointeeBase {
+class CEnginePrimitiveSimulationInfo:public CIVCountedPointeeBase { public:
  SimulationArray Simulations;
  CEnginePrimitiveSimulationInfo(); //00B81E00
  void AddSimulation(unsigned int,const SimulationPointer&); //00B82330
@@ -282,9 +282,9 @@ struct SimulationInfoPointer {
 };
 struct CEngineSimulationManager_Methods:CEngineSimulationManager {void AddSimulationInfo(const SimulationInfoPointer&,bool,bool);}; //00B817D0
 extern CEngineSimulationManager_Methods* g_SimulationManager; //01436E68
-struct C3DPrimitive2 {unsigned char Prefix[0x20];SimulationArray ClothPrimitives;unsigned char Tail[0xa0-0x2c];};
-struct C3DMesh2 {unsigned char Prefix[0x90];unsigned int PrimitiveCount;C3DPrimitive2* Primitives;};
-struct CEngineSimulationBase {void* VTable;int RunState;unsigned char SimStepOffset;unsigned char Align[3];};
+class C3DPrimitive2 { public:unsigned char Prefix[0x20];SimulationArray ClothPrimitives;unsigned char Tail[0xa0-0x2c];};
+class C3DMesh2 { public:unsigned char Prefix[0x90];unsigned int PrimitiveCount;C3DPrimitive2* Primitives;};
+class CEngineSimulationBase { public:void* VTable;int RunState;unsigned char SimStepOffset;unsigned char Align[3];};
 struct ClothVector {float X,Y,Z;};struct ClothMatrix {ClothVector X,Y,Z,Position;};
 struct CEngineClothSimulationAnimatedMesh:CEngineSimulationBase {
  SimulationArray ParticleSims;ClothMatrix CurrentTransform,LastTransform,InverseTransform;const C3DMeshInfo* MeshInfo;unsigned int PrimitiveIndex;CEngineInternalPrimitiveAnimatedMesh* Owner;

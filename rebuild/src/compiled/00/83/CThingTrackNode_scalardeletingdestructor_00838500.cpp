@@ -9,15 +9,15 @@
 // operator delete(void*)` (the pointer is handed over in ecx). Layout as the landed ??1 0x00836D00:
 // PDB CThingTrackNode is 264 bytes, retail 0x18 smaller (the CThingGameObject base is 0xd0 bytes): the
 // two track words +0xd0/+0xd4, NextNodeUID +0xd8, PreviousNodeUID +0xe0, TrackName +0xe8, IsStart +0xec.
-struct CThingTrackNode;
+class CThingTrackNode;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CThingGameObject {                          // the polymorphic thing base (vptr at +0)
+class CThingGameObject { public:                          // the polymorphic thing base (vptr at +0)
     virtual void v00();
     unsigned char _pad04[0xcc];                    // +0x04
     CThingGameObject();
@@ -26,7 +26,7 @@ struct CThingGameObject {                          // the polymorphic thing base
 };
 
 #pragma pack(push, 4)
-struct CThingTrackNode : CThingGameObject {        // vtable 0x01272CE4
+class CThingTrackNode : public CThingGameObject { public:        // vtable 0x01272CE4
     long             m_trackWordD0;                // +0xd0 (CThingTrackNode_u_232)
     CThingTrackNode* PreviousNode;                 // +0xd4 (CThingTrackNode_u_236)
     unsigned __int64 NextNodeUID;                  // +0xd8

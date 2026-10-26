@@ -14,30 +14,30 @@
 extern "C" void* __cdecl malloc(size_t size);    // 0x00BFEA0E
 inline void* __cdecl operator new(size_t, void* place) { return place; }
 
-struct CMainGameComponent;
-struct CWorld;
-struct CThingManager;
-struct CWorldMap;
-struct CGamePlayerInterface;
-struct CBaseObject;
-struct CThingPlayerCreature;
-struct CDefPointeeBase;
-struct CPlayerDef;
+class CMainGameComponent;
+class CWorld;
+class CThingManager;
+class CWorldMap;
+class CGamePlayerInterface;
+class CBaseObject;
+class CThingPlayerCreature;
+class CDefPointeeBase;
+class CPlayerDef;
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     bool GetDef(long type, CDefPointer<CPlayerDef>* out);    // 0x0044BA90 (GetDef<T> shared body)
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber() const;                        // 0x00449700
 };
-struct CGameJoystickManager {
+class CGameJoystickManager { public:
     static CGameJoystickManager& __fastcall Get();          // 0x0049BB90
     long GetMainPlayerJoystickDeviceNumber() const;         // 0x0049BB40
 };
-struct CPlayerInit {
+class CPlayerInit { public:
     CMainGameComponent*     Component;          // +0x00
     CWorld*                 World;              // +0x04
     CGameDefinitionManager* DefinitionManager;  // +0x08
@@ -86,13 +86,13 @@ struct CPlayerModeList {                         // std::list<EPlayerMode>: reta
     }
 };
 
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                  // +0x04
     bool Init();                                 // 0x0099A350
 };
 
-struct CPlayer : CInitBaseClass {
+class CPlayer : public CInitBaseClass { public:
     bool                     DrawingFreeCamDebug;      // +0x08
     bool                     PlayerIsCharacter;        // +0x09
     CGamePlayerInterface*    PlayerInterface;          // +0x0c

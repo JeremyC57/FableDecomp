@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CUIMiniMapMarker::CUIMiniMapMarker() (0x005FA530): everything zero, empty def name.
-struct CCharString { const char* p; long n; CCharString(const char* t, long len) : p(t), n(len) { } };
-struct C2DVector { float X, Y; };
+class CCharString { public: const char* p; long n; CCharString(const char* t, long len) : p(t), n(len) { } };
+class C2DVector { public: float X, Y; };
 struct CUIMiniMapMarker {
     long Region; CCharString UIDefName; C2DVector Position; long DefNameLength; long GraphicIndex; float Angle;
     CUIMiniMapMarker() : Region(0), UIDefName("", -1) { Position.X = 0; Position.Y = 0; DefNameLength = 0; GraphicIndex = 0; Angle = 0; }

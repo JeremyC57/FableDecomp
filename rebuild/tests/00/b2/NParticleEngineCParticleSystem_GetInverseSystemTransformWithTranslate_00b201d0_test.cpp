@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 // Behaviour test for NParticleEngine::CParticleSystem::GetInverseSystemTransformWithTranslate (0x00B201D0).
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { float m[12]; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: float m[12]; };
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char m_pad00[0x60];
     C3DVector Scale;
     CMatrix3x4 fwd, inv;

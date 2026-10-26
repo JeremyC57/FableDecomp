@@ -7,7 +7,7 @@
 //          C3DVector is 1-aligned in this module -- modelled under pack(1) -- ProngBlockageTimer +0x10, POccupier +0x14).
 #include <new>
 #pragma pack(push, 1)
-struct C3DVector {                              // 1-aligned in retail (CProng::Prong sits at +1)
+class C3DVector { public:                              // 1-aligned in retail (CProng::Prong sits at +1)
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

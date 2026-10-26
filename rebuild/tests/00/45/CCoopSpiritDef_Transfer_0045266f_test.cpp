@@ -4,11 +4,11 @@ static int g_count = 0;
 static void* g_fields[8];
 static int g_overload[8];
 
-struct CPersistContext {
+class CPersistContext { public:
     void TransferA_0045228f(void* field) { g_overload[g_count] = 0; g_fields[g_count++] = field; }
     void TransferB(void* field) { g_overload[g_count] = 1; g_fields[g_count++] = field; }
 };
-struct CCoopSpiritDef {
+class CCoopSpiritDef { public:
     unsigned char _tail[0x3c];
     void CCoopSpiritDef_Transfer(CPersistContext& ctx);
 };

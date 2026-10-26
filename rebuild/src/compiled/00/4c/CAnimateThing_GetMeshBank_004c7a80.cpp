@@ -1,9 +1,9 @@
-struct CMeshDataBank;
+class CMeshDataBank;
 // Leaf: GetMeshBank
 struct SubObj { char pad0[0x10]; CMeshDataBank* bank; };
 struct RootObj { char pad0[0x1c]; SubObj* sub; };
 extern RootObj* g_animRoot;
-struct CAnimateThing;
+class CAnimateThing;
 CMeshDataBank* __fastcall CAnimateThing_GetMeshBank(CAnimateThing* self)
 {
     (void)self;

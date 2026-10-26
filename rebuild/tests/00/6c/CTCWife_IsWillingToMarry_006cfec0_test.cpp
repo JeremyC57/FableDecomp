@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThing { unsigned char m_flags1c9; };
-struct CThingBuilding { int id; };
+class CThing { public: unsigned char m_flags1c9; };
+class CThingBuilding { public: int id; };
 static CThingBuilding g_home;
-struct CTCWife {
+class CTCWife { public:
     CThing* ParentThing; bool courting; int OpinionAttitude; bool ReceivedWeddingRing; bool hasHome;
     bool IsCourtingHero() const { return courting; }
     bool IsInLoveWithHero() const { return IsCourtingHero() && OpinionAttitude == 12; }

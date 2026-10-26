@@ -1,6 +1,6 @@
 // behaviour test for 0x00819b10 _Push_heap<pair<EHeroMorphType,CTextureMorphEntry>, CKeyPairCompareLess>
 #include <cstdio>
-struct CTextureMorphEntry { int MorphType; int TextureLayer; int ReplacingTextureIndex; int BankIndex; int Blend; };
+class CTextureMorphEntry { public: int MorphType; int TextureLayer; int ReplacingTextureIndex; int BankIndex; int Blend; };
 struct TEntry { int first; CTextureMorphEntry second; };
 struct TCompare { char m_tag; bool operator()(const TEntry& a, const TEntry& b) const { return a.first < b.first; } };
 typedef TEntry E;

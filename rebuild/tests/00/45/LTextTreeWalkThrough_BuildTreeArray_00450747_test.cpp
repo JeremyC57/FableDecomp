@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct TreeNode { char pad0[8]; TreeNode* next; TreeNode* child; };
+class TreeNode { public: char pad0[8]; TreeNode* next; TreeNode* child; };
 
 static int g_freed = 0;
 extern "C" void FreeNode(TreeNode* n) { (void)n; ++g_freed; }

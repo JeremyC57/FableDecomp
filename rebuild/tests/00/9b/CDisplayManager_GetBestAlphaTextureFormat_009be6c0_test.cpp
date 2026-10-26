@@ -6,8 +6,8 @@ static const CD3DFormatInfo g_D3DFormatInfo[] = {
     { 20, 2, 24, 0, 8, 8, 8, 0, false }, { 21, 2, 32, 8, 8, 8, 8, 0, false }, { 25, 2, 16, 1, 5, 5, 5, 0, false },
     { 26, 2, 16, 4, 4, 4, 4, 0, false }, { 60, 6, 16, 0, 8, 8, 0, 0, false }, { 61, 6, 16, 0, 5, 5, 6, 0, false },
     { 64, 6, 32, 0, 16, 16, 0, 0, false }, { 0, 0, -1, 0, 0, 0, 0, 0, false } };
-struct CPixelFormat { long f; void Initialise(long format) { f = format; } };
-struct CDisplayManager {
+class CPixelFormat { public: long f; void Initialise(long format) { f = format; } };
+class CDisplayManager { public:
     long unsupported;
     long CheckDeviceFormat(long format) { return format == unsupported ? -1 : 0; }
 

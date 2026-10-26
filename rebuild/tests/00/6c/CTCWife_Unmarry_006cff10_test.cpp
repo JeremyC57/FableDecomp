@@ -41,28 +41,28 @@ public:
     unsigned char _pad95[0x168 - 0x95];
     CBaseIntelligentPointer HomeBuilding;       // +0x168 CIntelligentPointer<CThingBuilding>
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void SetMarriageState(CThingAICreature* spouse, long state);   // 0x0057BC6E
 };
-struct CTCBuyableHouse {                        // interface type 0xD5
+class CTCBuyableHouse { public:                        // interface type 0xD5
     void SetOccupant(CThing* occupant);         // 0x006D3C40 (name not recovered)
     void SetRented(bool rented);                // 0x006C1150
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThingAICreature* ParentThing;              // +0x04
     unsigned char _pad_0x08[0x20 - 0x08];

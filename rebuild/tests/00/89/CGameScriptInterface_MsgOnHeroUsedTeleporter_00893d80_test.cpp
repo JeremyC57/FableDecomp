@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour model of the Msg family: the message manager stub records the filter it was handed and returns a canned message.
-struct CCharString {
+class CCharString { public:
     const char* s;
     CCharString() : s("") { }
     CCharString(const char* t) : s(t) { }
@@ -10,12 +10,12 @@ struct CCharString {
     CCharString& operator=(const char* t) { s = t; return *this; }
 };
 struct CMessageEvent_Retail { long m_extraData; };
-struct CMessageEventFilter_IsOfType { long m_type; CMessageEventFilter_IsOfType(long type) : m_type(type) { } };
-struct CMessageEventFilter_CanBeSeenOrHeard { long m_frame; long m_maxFrame; CMessageEventFilter_CanBeSeenOrHeard(long f, long m) : m_frame(f), m_maxFrame(m) { } };
-struct CMessageEventFilter_HasExtraData { long m_data; CMessageEventFilter_HasExtraData(long d) : m_data(d) { } };
-struct CMessageEventFilter_OccuredBetween { long m_frame; long m_maxFrame; CMessageEventFilter_OccuredBetween(long f, long m) : m_frame(f), m_maxFrame(m) { } };
-template<class A, class B> struct CFilter_Bind2 { const A* m_pFirst; const B* m_pSecond; CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { } };
-template<class A, class B, class C> struct CFilter_Bind3 {
+class CMessageEventFilter_IsOfType { public: long m_type; CMessageEventFilter_IsOfType(long type) : m_type(type) { } };
+class CMessageEventFilter_CanBeSeenOrHeard { public: long m_frame; long m_maxFrame; CMessageEventFilter_CanBeSeenOrHeard(long f, long m) : m_frame(f), m_maxFrame(m) { } };
+class CMessageEventFilter_HasExtraData { public: long m_data; CMessageEventFilter_HasExtraData(long d) : m_data(d) { } };
+class CMessageEventFilter_OccuredBetween { public: long m_frame; long m_maxFrame; CMessageEventFilter_OccuredBetween(long f, long m) : m_frame(f), m_maxFrame(m) { } };
+template<class A, class B> class CFilter_Bind2 { public: const A* m_pFirst; const B* m_pSecond; CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { } };
+template<class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst; const B* m_pSecond; const C* m_pThird;
     CFilter_Bind3(const CFilter_Bind2<A, B>& ab, const C& c) : m_pFirst(ab.m_pFirst), m_pSecond(ab.m_pSecond), m_pThird(&c) { }
 };
@@ -36,7 +36,7 @@ struct CWorldMap_Retail {
     CRegion_Retail m_regions[4];
     CRegion_Retail& GetRegion(long index) { return m_regions[index]; }
 };
-struct CWorld {
+class CWorld { public:
     CWorldMap_Retail             m_map;
     CMessageEventManager_Retail  m_manager;
     CMessageEventManager_Retail* PMessageEventManager_Data;
@@ -51,7 +51,7 @@ static CQuestManager_Retail* g_pQuestManager = &g_questManager;
 struct CBoastRecord_Retail { long m_boast; CCharString m_name; };
 struct CRewardRecord_Retail { CCharString m_name; };
 struct CThing_Retail;
-struct CScriptThing {
+class CScriptThing { public:
     CThing_Retail* m_pThing; int m_assigned;
     CScriptThing() : m_pThing(0), m_assigned(0) { }
     CScriptThing& operator=(const CScriptThing& o) { m_pThing = o.m_pThing; ++m_assigned; return *this; }
@@ -60,7 +60,7 @@ struct CThing_Retail {
     int m_id;
     CScriptThing GetScriptThing() { CScriptThing t; t.m_pThing = this; return t; }
 };
-struct CDefString {
+class CDefString { public:
     long m_index;
     CDefString(long i) : m_index(i) { }
     CDefString(const CDefString& o) : m_index(o.m_index) { }
@@ -81,7 +81,7 @@ struct CUserProfileManager_Retail {
 static CUserProfileManager_Retail g_profiles = { true, false, true };
 CUserProfileManager_Retail& CUserProfileManager_Retail::Get() { return g_profiles; }
 static long g_curFrame = 100, g_maxFrame = 200;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CWorld*                    World;
     CDefinitionManager_Retail* DefinitionManager;
     long GetCurrentWorldFrameForMessages() const { return g_curFrame; }

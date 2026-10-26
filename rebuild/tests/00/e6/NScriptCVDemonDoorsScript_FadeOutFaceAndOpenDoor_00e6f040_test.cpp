@@ -1,8 +1,8 @@
 // Behaviour test for CV_DemonDoorsScript::FadeOutFaceAndOpenDoor (00e6f040): call order and arguments.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* t; };
-struct CScriptThing { int id; };
+class CCharString { public: const char* t; };
+class CScriptThing { public: int id; };
 static char g_log[128];
 static void Log(const char* s) { std::strcat(g_log, s); }
 static const CScriptThing* g_faded; static float g_secs; static bool g_kill, g_fadeIn;

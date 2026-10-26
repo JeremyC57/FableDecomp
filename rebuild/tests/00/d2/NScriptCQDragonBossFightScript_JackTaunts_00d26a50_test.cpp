@@ -7,7 +7,7 @@
 static int g_registered = 0, g_deregistered = 0;
 struct Game { long timerValue; int frames, termAt, conversations; char lines[8][40]; int nLines; };
 static Game* g_game = 0;
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() : Index(++g_registered) {}
     ~CTimer() { ++g_deregistered; }

@@ -15,7 +15,7 @@ struct CStringReadResult : CCharString {
     CStringReadResult(const CStringReadResult&); //0099EC30 native CCharString copy constructor
     CCharString& AppendChar(char); //0099F180 native operator+=(char); return unused
 };
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass { virtual ~CBaseClassNonCopyable(); };
 struct CDataStream : CBaseClassNonCopyable {
     virtual ~CDataStream();
@@ -23,7 +23,7 @@ struct CDataStream : CBaseClassNonCopyable {
     virtual unsigned long GetPosition() const=0;
     virtual void Close()=0;
 };
-struct CDataInputStream : CDataStream {
+class CDataInputStream : public CDataStream { public:
     unsigned long StreamPos;
     long StreamSize;
     void* CurrentSourcePtr;

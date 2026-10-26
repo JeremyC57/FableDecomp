@@ -1,6 +1,6 @@
 // behaviour test for 005d9320: CTCInventoryItem::ClearCachedDefs -- zero the cached index, release and null both cached defs
 #include <cstdio>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     int RefCount; int destroyed;
     void Destroy() const { ++((CDefPointeeBase*)this)->destroyed; }
     void Release() const { --((CDefPointeeBase*)this)->RefCount; if (RefCount == 0) Destroy(); }

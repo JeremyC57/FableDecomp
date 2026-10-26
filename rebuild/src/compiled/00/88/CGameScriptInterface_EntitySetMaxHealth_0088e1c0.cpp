@@ -4,7 +4,7 @@
 // Leaf: ?EntitySetMaxHealth@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
-struct CWorld;
+class CWorld;
 struct CThingPhysics_Retail;
 struct CThing_Retail {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -61,7 +61,7 @@ struct CThing_Retail {
     void PreloadBasicAnimations();                 // 0x00663610 (CThingCreatureBase)
     void SetInLimbo(bool inLimbo);                 // 0x004C8CF0 (CThing)
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
@@ -75,7 +75,7 @@ struct CScriptThing {
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
     long                    Component;

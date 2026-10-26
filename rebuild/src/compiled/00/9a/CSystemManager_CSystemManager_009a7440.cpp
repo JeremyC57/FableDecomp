@@ -6,30 +6,30 @@
 // members are out-of-line ctors in declaration order; nothing else is initialised.
 // Model: PDB CSystemManager (0x178) with the retail layout: one extra counted pointer at +0x84 (retail is 8 bytes larger from
 // there on: WinAppName +0xA0, ProfileManager +0xF8, TempPath +0x164, ApplicationName +0x168).
-struct CInitBaseClass {
+class CInitBaseClass { public:
     CInitBaseClass();                           // 0x0099A310
     virtual ~CInitBaseClass();
     unsigned char _pad04[4];
 };
-struct CWideString {
+class CWideString { public:
     void* PString;
     CWideString();                              // 0x0099AED0
 };
-struct CCharString {
+class CCharString { public:
     void* PString;
     CCharString();                              // 0x0099E4B0
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) {}
 };
-struct CDebugManager; struct CInputManager; struct CDisplayManager; struct CGraphicBankManager;
-struct CMeshBankManager; struct CFontManager; struct CProfileManager; struct CRetailManager;
+class CDebugManager; class CInputManager; class CDisplayManager; class CGraphicBankManager;
+class CMeshBankManager; class CFontManager; class CProfileManager; struct CRetailManager;
 struct GUID { unsigned long Data1; unsigned short Data2, Data3; unsigned char Data4[8]; };
 struct RTL_CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 
-struct CSystemManager : CInitBaseClass {        // vtable 0x0129AFFC
+class CSystemManager : public CInitBaseClass { public:        // vtable 0x0129AFFC
     bool WindowsQuit;                           // +0x08
     bool ApplicationActive;                     // +0x09
     bool ApplicationHasInputFocus;              // +0x0a

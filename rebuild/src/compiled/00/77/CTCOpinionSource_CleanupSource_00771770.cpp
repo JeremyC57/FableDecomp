@@ -12,13 +12,13 @@
 // cursor before an inline erase (unlink, in-place virtual dtor, free) and then moves the node to it.
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
-struct CThing;
-struct CCPPointerInfo {                             // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CThing;
+class CCPPointerInfo { public:                             // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Release()
@@ -60,13 +60,13 @@ struct COpinionManager {
     unsigned char _pad00[0x71c];
     CSourceList OpinionSources;                     // +0x71c
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionManager* POpinionManager;               // +0x74
     COpinionManager* GetOpinionManager() const { return POpinionManager; }
 };
-struct COpinionSet;
-struct CTCOpinionSource {
+class COpinionSet;
+class CTCOpinionSource { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x78 - 0x08];

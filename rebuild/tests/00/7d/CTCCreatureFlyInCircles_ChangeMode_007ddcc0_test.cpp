@@ -3,27 +3,27 @@
 #include <cstdio>
 #include <cstring>
 static int g_strDtors = 0, g_actionDtors = 0, g_actions = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData("") { }
     ~CCharString() { ++g_strDtors; }
     CCharString& operator=(const char* text) { PStringData = text; return *this; }
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 static long g_duration = 10;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() { }
     long TotalTime;
     const char* Anim;
     ~CCombatActionBase() { ++g_actionDtors; }
     long GetTotalTime() const { return TotalTime; }
 };
-struct CCreatureAction_DragonFlight : CCombatActionBase {
+class CCreatureAction_DragonFlight : public CCombatActionBase { public:
     unsigned char FaceTarget;
     float         TurnRate;
     CCreatureAction_DragonFlight(CThingCreatureBase* owner, const CCharString& animName) { TotalTime = g_duration; Anim = animName.PStringData; ++g_actions; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool Accept; const char* LastAnim;
     bool SetCurrentAction(CCombatActionBase* action) { LastAnim = action->Anim; return Accept; }
 };

@@ -1,7 +1,7 @@
 // Behaviour test for 0075d8b0 (CTCCameraPointScriptedSpline::IsCombatSplineValidForAnimAndThing): true only for a combat spline whose valid-animation set holds the index.
 #include <cstdio>
 
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 struct SAnimNode { long m_key; };
 
@@ -10,7 +10,7 @@ struct CAnimSetIterator {
     CAnimSetIterator() { }
 };
 
-struct CAnimSet {
+class CAnimSet { public:
     SAnimNode*    m_head;                           // the end sentinel
     SAnimNode*    m_nodes;
     unsigned long m_size;
@@ -24,7 +24,7 @@ struct CAnimSet {
     }
 };
 
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     bool     m_combat;
     CAnimSet ValidAnimList;
     bool IsCombatSpline() { return m_combat; }

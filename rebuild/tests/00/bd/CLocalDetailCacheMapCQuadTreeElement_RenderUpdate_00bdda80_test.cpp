@@ -17,7 +17,7 @@ static int fails = 0;
 // Shape: the camera distance is the vector length taken into a DOUBLE local and narrowed (`double length =
 // delta.GetLength(); float distance = (float)length;`): retail keeps the root on the FPU (`fstp st(2) ; fstp st(0) ;
 // fst [slot]`); a float local stores and reloads it.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -34,27 +34,27 @@ inline float C3DVector::GetLength() const
     lengthSq += X * X;
     return (float)sqrt(lengthSq);
 }
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;                                  // +0x00
     float     Radius;                                  // +0x0c
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     Position;                            // +0x54
     bool ClipSphere(const C3DVector& centre, float radius, unsigned long* flags);   // 0x00B30480
 };
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     float ModifyFadeDistanceForVideoOptions(unsigned long primitiveTypeMask, float fadeDistance);   // 0x00B597E0
 };
 extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator;   // 0x01436E88
 
-struct CLocalDetailCacheMap {
-    struct CObjectCacheGroupCollection {
+class CLocalDetailCacheMap { public:
+    class CObjectCacheGroupCollection { public:
         void* __vftable;
         CObjectCacheGroupCollection* Next;             // +0x04
         void RenderUpdateGroups(CEngineCamera* camera, float nearDistance, float farDistance, unsigned long clipFlags, float lodDistance);   // 0x00BDD930
     };
-    struct CQuadTreeElement {
+    class CQuadTreeElement { public:
         virtual ~CQuadTreeElement();
         CObjectCacheGroupCollection* ObjectCacheGroupCollections;   // +0x04
         CQuadTreeElement*  Children[4];                // +0x08

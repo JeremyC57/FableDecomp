@@ -7,30 +7,30 @@
 // Shape: the overload is called with false and the time argument; its bool stays in eax across the two
 // implicit POD assignments (12 and 24 bytes), which copy as dword pairs through ecx/edx with the
 // destination advanced in place (`add ebp,10h`, `add ebx,1Ch`).
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
 };
 
-struct C3DPositionInterpolator {
+class C3DPositionInterpolator { public:
     virtual void v00();
     C3DVector StartPosition;                        // +0x04
     C3DVector EndPosition;                          // +0x10
 };
 
-struct C3DOrientationInterpolator {
+class C3DOrientationInterpolator { public:
     virtual void v00();
     CRightHandedSet StartOrientation;               // +0x04
     CRightHandedSet EndOrientation;                 // +0x1c
 };
 
-struct CTCCarryable {
+class CTCCarryable { public:
     virtual void v00();
     bool GetCarriedPositionInfo(C3DVector* position, CRightHandedSet* orientation, bool forceUpdate, float time);   // 0x007055D0
     bool GetCarriedPositionInfo(C3DPositionInterpolator* position, C3DOrientationInterpolator* orientation, float time);

@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for CTCInventory::RemoveContextSensitivePreferredItem (retail 0x005829CD).
-struct CCharString { const char* m_pData; };
-struct CDefinitionManager {
+class CCharString { public: const char* m_pData; };
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name)
     {
         if (std::strcmp(name.m_pData, "OBJECT_APPLE") == 0) return 40;
@@ -23,7 +23,7 @@ struct CPreferredItemVector {
         return where;
     }
 };
-struct CTCInventory {
+class CTCInventory { public:
     static CPreferredItemVector ContextSensitivePreferredItems;
     CDefinitionManager* GetDefinitions() { return &g_defs; }
     bool RemoveContextSensitivePreferredItem(const CCharString& itemName);

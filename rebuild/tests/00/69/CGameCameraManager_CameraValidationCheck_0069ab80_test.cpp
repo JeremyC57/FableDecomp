@@ -55,13 +55,13 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CBase;
-struct CCPPointerInfo;
-struct CDefPointeeBase;
+class CCPPointerInfo;
+class CDefPointeeBase;
 struct CScriptModuleBase;
-struct CWorld;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char      Camera[0x38];                         // +0x04 CCamera
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
@@ -189,11 +189,11 @@ FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPoints) == 0x178);
 #endif // FABLE_ENGINE_CGAMECAMERAMANAGER_H
 
 #undef CGameCameraManager
-struct C3DVector { float X,Y,Z; };
-struct CRightHandedSet { C3DVector Up,Forward; };
-struct CCamera { C3DVector WorldPosition; CRightHandedSet RHSet; bool HeightLocked,ViewVecZLocked; unsigned int FOVFlags; float HorizontalFOV,VerticalFOV,Zoom; };
+class C3DVector { public: float X,Y,Z; };
+class CRightHandedSet { public: C3DVector Up,Forward; };
+class CCamera { public: C3DVector WorldPosition; CRightHandedSet RHSet; bool HeightLocked,ViewVecZLocked; unsigned int FOVFlags; float HorizontalFOV,VerticalFOV,Zoom; };
 extern "C" int _isnan(double); // 00BFEC26 import thunk
-struct CGameCameraManager {
+class CGameCameraManager { public:
  void* VTable; CCamera Camera,OldCamera;
  void Reset(); //0069A990
  void CameraValidationCheck();

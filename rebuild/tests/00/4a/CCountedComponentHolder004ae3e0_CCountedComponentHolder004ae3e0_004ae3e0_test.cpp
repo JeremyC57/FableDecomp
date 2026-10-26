@@ -1,8 +1,8 @@
 // Behaviour test for 0x004AE3E0: the record vector at +0x1c is destroyed first, then the counted component at +0x18 released.
 #include <cstdio>
 static int g_log[8]; static int g_n = 0; static int g_deleted = 0;
-struct CIVCountedPointeeBase { virtual ~CIVCountedPointeeBase() {} virtual void DeleteThis() { ++g_deleted; g_log[g_n++] = 2; } unsigned long IVRefCount; };
-struct CAnimComponentBase : CIVCountedPointeeBase { };
+class CIVCountedPointeeBase { public: virtual ~CIVCountedPointeeBase() {} virtual void DeleteThis() { ++g_deleted; g_log[g_n++] = 2; } unsigned long IVRefCount; };
+class CAnimComponentBase : public CIVCountedPointeeBase { public: };
 template<class T> class CIVCountedPointer {
 public:
     T* Object;

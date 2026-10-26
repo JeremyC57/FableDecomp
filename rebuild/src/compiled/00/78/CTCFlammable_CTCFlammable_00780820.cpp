@@ -10,9 +10,9 @@
 // (`xor eax,eax`), every store after the vtable store, in declaration order (the float 0.0 is a dword store of eax).
 // Local model: no engine header exists for CTCFlammable; engine/CTCBase.h is a flattened POD, so the polymorphic CTCBase is
 // modelled locally.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -20,20 +20,20 @@ struct CTCBase {
     CTCBase(CThing* thing);                                 // 0x00686800
 };
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 struct CDefPointer {                                        // CDefPointer<CFlammableDef const>
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
 };
 
-namespace NFire { struct CFirePoint; }
+namespace NFire { class CFirePoint; }
 
 template<class T> struct CRetailVector {                    // std::vector<T>, VC7.1 release: first / last / end
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     CRetailVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
 
-struct CTCFlammable : CTCBase {                             // vtable 0x0126B1A4
+class CTCFlammable : public CTCBase { public:                             // vtable 0x0126B1A4
     CDefPointer PDef;                                       // +0x0c
     CRetailVector<NFire::CFirePoint> FirePoints;            // +0x10
     bool Burning;                                           // +0x1c

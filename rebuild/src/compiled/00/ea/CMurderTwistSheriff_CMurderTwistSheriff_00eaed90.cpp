@@ -12,7 +12,7 @@
 // Shape: as the landed CVtable_012efee8 constructor (0x00EB2000): Game and ParentClass are plain initialisers stored
 // before their vtables, the handle's zero words follow its vtable through eax, the timer's constructor calls the
 // service, PMasterData is a body assignment stored last.
-struct CBaseClass {                           // vtable 0x01231710
+class CBaseClass { public:                           // vtable 0x01231710
     virtual void v00();
     CBaseClass();                             // 0x0099A2D0
 };
@@ -21,18 +21,18 @@ struct CCountedPointerWords {                 // {Data, Info}: a member object s
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptThing : CBaseClass {            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
+class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
     CCountedPointerWords PImp;                // +0x04
     virtual void v00();
     CScriptThing() : CBaseClass(), PImp() { }
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };
-struct CBaseObject {                          // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
+class CBaseObject { public:                          // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
     virtual void v00();
     void* m_pIntelligentPointer;              // +0x04
     CBaseObject();                            // 0x0099A380
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                // +0x08 Data, +0x0c Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
@@ -128,7 +128,7 @@ struct CTimerManager {                        // the game-script timer service b
     virtual long NewTimer();                  // slot 87 (+0x15c)
 };
 extern CTimerManager* g_pScriptTimerManager;  // 0x0143E8F8
-struct CTimer {                               // 4 bytes
+class CTimer { public:                               // 4 bytes
     long TimerIndex;                          // +0x00
     CTimer() : TimerIndex(g_pScriptTimerManager->NewTimer()) { }
 };
@@ -136,7 +136,7 @@ struct CScriptOwner {                         // the quest script that owns this
     unsigned char _pad00[0x40];
     void*         m_pInterface;               // +0x40 CGameScriptInterfaceBase*
 };
-struct CEntityScriptBase {                    // vtable 0x012C3224, 0x14 bytes
+class CEntityScriptBase { public:                    // vtable 0x012C3224, 0x14 bytes
     virtual void v00();
     void*        Game;                        // +0x04 (a plain initialiser: stored before the vtable)
     CScriptThing Me;                          // +0x08

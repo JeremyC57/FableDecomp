@@ -1,21 +1,21 @@
 // Behaviour test for CAIStateGroup_MinionReactToPlayerInteraction::IsRunnable (0x00930A70): model copy, scripted stubs.
 #include <cstdio>
 
-struct COpinionDeed { int Type; int Handle; };
+class COpinionDeed { public: int Type; int Handle; };
 struct CVillage {
     int GuardCount;
     int handledHandle;
     bool IsDeedHandled(int handle) { return handle == handledHandle; }
 };
-struct CTCVillageMember { CVillage* village; CVillage* GetPVillage() const { return village; } };
-struct CTCCreatureOpinionOfHero {
+class CTCVillageMember { public: CVillage* village; CVillage* GetPVillage() const { return village; } };
+class CTCCreatureOpinionOfHero { public:
     COpinionDeed* deed;
     int outHandle;
     COpinionDeed* FindMostRecentDeed(int* handle, bool) { *handle = outHandle; return deed; }
 };
-struct CTCWife { bool married; bool IsMarriedToThePlayer() const { return married; } };
+class CTCWife { public: bool married; bool IsMarriedToThePlayer() const { return married; } };
 struct CTCInteractionState { bool Active; };
-struct CThing {
+class CThing { public:
     unsigned char m_flags91;
     CTCVillageMember* member;
     CTCCreatureOpinionOfHero* opinion;
@@ -27,7 +27,7 @@ struct CThing {
     bool GetInterface(CTCWife** out) const { if (!wife) return false; *out = wife; return true; }
     bool GetInterface(CTCInteractionState** out) const { if (!state) return false; *out = state; return true; }
 };
-struct CMessageEvent { int Type; };
+class CMessageEvent { public: int Type; };
 static unsigned int g_frame;
 static int g_failed, g_tests, g_far, g_near, g_testResult;
 static CThing* g_player;

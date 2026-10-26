@@ -1,9 +1,9 @@
 #include <cstdio>
 
-struct CStockItemDef { long RefCount; int destroyed; long DefaultPrice; bool DefaultIsStealable; void DestroySelf() { ++destroyed; } };
+class CStockItemDef { public: long RefCount; int destroyed; long DefaultPrice; bool DefaultIsStealable; void DestroySelf() { ++destroyed; } };
 struct CThingDef { CStockItemDef* sub; void GetSubDef(CStockItemDef** out) { *out = sub; ++sub->RefCount; } };
-struct CThing { CThingDef* PDef; };
-struct CTCStockItem {
+class CThing { public: CThingDef* PDef; };
+class CTCStockItem { public:
     CThing* thing; bool Stealable; bool Initialised; long Price;
     CThing* GetThing() { return thing; }
     void OnCreate()

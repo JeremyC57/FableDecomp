@@ -19,7 +19,7 @@ template <class T> struct CArray {
     const T& operator[](long i) const { return First[i]; }
 };
 
-struct CBlendedEnvironmentTheme {                // 500 bytes in retail
+class CBlendedEnvironmentTheme { public:                // 500 bytes in retail
     float TimeOfDay;                             // +0x00 hours
     float Colours[19][4];
     float Scalers[30];
@@ -27,7 +27,7 @@ struct CBlendedEnvironmentTheme {                // 500 bytes in retail
     void Blend(CBlendedEnvironmentTheme& out, const CBlendedEnvironmentTheme& other, float t) const;   // 0x00887B70
 };
 
-struct CEnvironmentThemeSetDay {
+class CEnvironmentThemeSetDay { public:
     CArray<CBlendedEnvironmentTheme> Themes;     // +0x00
     void GetBlendedTheme(CBlendedEnvironmentTheme& out, float time) const;
 };

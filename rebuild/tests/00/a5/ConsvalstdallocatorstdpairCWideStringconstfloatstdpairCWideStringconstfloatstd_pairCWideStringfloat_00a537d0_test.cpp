@@ -2,7 +2,7 @@
 
 static int g_ctor_calls = 0;
 
-struct CWideString {
+class CWideString { public:
 	// Local stand-in for the external CWideString copy-ctor (0x0099ec30).
 	// Out-of-line so it emits a real symbol s.obj can link against.
 	void CopyCtor(CWideString* src);

@@ -18,7 +18,7 @@
 // read before the accessor (retail loads it into ecx above the empty test).
 #include <stdlib.h>
 
-struct CWideString;
+class CWideString;
 
 struct CDiskFileCalls {
     virtual void v00();

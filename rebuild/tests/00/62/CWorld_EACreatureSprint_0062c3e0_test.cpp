@@ -8,25 +8,25 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data) { std::memcpy(data, Data + ReadPos, length); ReadPos += (long)length; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     signed char Player;
     unsigned char Data[32];
     long GetData(CMemoryBuffer& buffer) const { std::memcpy(buffer.Data, Data, 32); buffer.Length = 32; return 32; }
 };
 static int g_sets = 0;
-struct CTCHeroSpecialMovement {
+class CTCHeroSpecialMovement { public:
     bool Sprinting;
     void SetSprinting(bool s) { ++g_sets; Sprinting = s; }
 };
-struct CThing {
+class CThing { public:
     bool Dead; CTCHeroSpecialMovement* Movement;
     bool HasTC(long type) const { return type == 0xDF && Movement != 0; }
     template<class T> T* GetTC(long) { return Movement; }
 };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetHeroThing() { return g_hero; } };
+class CPlayer { public: CThing* GetHeroThing() { return g_hero; } };
 static CPlayer g_player;
-struct CWorld {
+class CWorld { public:
     CPlayer* GetPlayer(long) { return &g_player; }
     void EACreatureSprint(const CGameEvent* event);
 };

@@ -18,7 +18,7 @@ public:
     static CParticleEmitterManager* Get();          // 0x00AEAAF0
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B;                                // +0
     unsigned char G;                                // +1
     unsigned char R;                                // +2
@@ -32,7 +32,7 @@ struct CRGBColour {
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
@@ -42,7 +42,7 @@ struct CEnginePrimitiveSpriteTrail {
     CEnginePrimitiveSpriteTrail();                  // 0x00B09F90
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T*   Data;
     long Size;
     long Capacity;
@@ -51,13 +51,13 @@ template <class T> struct CArray {
 
 namespace NParticleEngine {
 
-struct CPSCSplineBase {
+class CPSCSplineBase { public:
     virtual ~CPSCSplineBase();
     unsigned char _base[0x30];                      // +0x04 CPSCBase part, SplineAnimSpeed, Spline, counted pointers
     CPSCSplineBase();                               // 0x00B21530
 };
 
-struct CPSCSingleSprite : CPSCSplineBase {          // vtable 0x0129FB84
+class CPSCSingleSprite : public CPSCSplineBase { public:          // vtable 0x0129FB84
     long          SpriteBankIndex;                  // +0x34
     CRGBColour    StartColour;                      // +0x38
     CRGBColour    MidColour;                        // +0x3c

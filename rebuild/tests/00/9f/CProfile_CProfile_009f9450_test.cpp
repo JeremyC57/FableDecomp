@@ -2,8 +2,8 @@
 // copy constructor.
 #include <cstdio>
 static int g_nameCopies = 0;
-struct CWideString { int id; CWideString() : id(0) { } CWideString(const CWideString& o) : id(o.id) { ++g_nameCopies; } };
-struct CProfile {
+class CWideString { public: int id; CWideString() : id(0) { } CWideString(const CWideString& o) : id(o.id) { ++g_nameCopies; } };
+class CProfile { public:
     void* Manager; double StartTime; double TotalTime; double LastTime; bool Running; double Percentage; CWideString Name;
     long TreeDepth; bool NewNode; long Visible; long CallCounter; long UpdatedCallCounter;
     CProfile() { }

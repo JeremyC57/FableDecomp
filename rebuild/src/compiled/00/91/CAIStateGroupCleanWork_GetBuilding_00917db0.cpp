@@ -10,8 +10,8 @@
 // accessor returning the item (`lea ecx,[eax+170h]`; direct member access or a pointer-returning accessor
 // gives `mov ecx ; add ecx`).
 // Model: local (no engine header for this class).
-struct CTCBase;
-struct CThingBuilding;
+class CTCBase;
+class CThingBuilding;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {
     CThingBuilding* GetPItem() const;           // 0x00A01B50
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -48,22 +48,22 @@ struct CThingAICreature {
     }
 };
 
-struct CTCShop {
+class CTCShop { public:
     unsigned char _pad[0x50];
     unsigned char m_bClosedDown;                // +0x50
     bool IsOpeningHours();                      // 0x00773950
 };
 
-struct CTCShopKeeper {                          // interface 0x90
+class CTCShopKeeper { public:                          // interface 0x90
     CTCShop* GetShopTC();                       // 0x00798F50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

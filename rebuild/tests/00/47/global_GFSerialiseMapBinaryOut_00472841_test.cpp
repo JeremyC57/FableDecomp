@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 static int ctorCount = 0, dtorCount = 0;
-struct CCharString { const char* text; CCharString() : text("") { ++ctorCount; } CCharString(const char* t) : text(t) {} ~CCharString() { if (text[0] == 0) ++dtorCount; } };
+class CCharString { public: const char* text; CCharString() : text("") { ++ctorCount; } CCharString(const char* t) : text(t) {} ~CCharString() { if (text[0] == 0) ++dtorCount; } };
 struct Writer {
     char log[256]; int len;
     void WriteSLONG(int v) { len += std::sprintf(log + len, "%d;", v); }

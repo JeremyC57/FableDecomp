@@ -2,8 +2,8 @@
 // action has a single animation set, start it at the fraction of the delay-to-total window already run; when the dragon
 // has a creature-mode manager, add a CModeDragonFlying over MovementPoints from PreviousPoint (or the first point) at Speed
 // Leaf: ?Initialise@CCreatureAction_DragonFlyInto
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -18,7 +18,7 @@ struct CPhysicsBody {                                 // the thing's physics bod
     VF(32) VF(33) VF(34) VF(35)
     virtual void SetFlying(bool flying);              // slot 36 (+0x90)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -41,15 +41,15 @@ struct CThing {
         return false;
     }
 };
-struct CAnimSet {
+class CAnimSet { public:
     unsigned char _pad[0x1c];
     float StartFraction;                              // +0x1c
     float CurrentFraction;                            // +0x20
 };
 CAnimSet* __fastcall GetSingleActionAnimSet(CThing* creature, long action);   // 0x008F4AA0
-struct CAnimationEntry { long BankIndex; };
+class CAnimationEntry { public: long BankIndex; };
 extern long g_framesPerSecond;                        // 0x01375550
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -69,7 +69,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct CCountedActionPointer {                        // CCountedPointer<CCreatureActionBase>
     CCreatureActionBase* m_pObject;
     SCountBlock* m_pCount;
@@ -93,7 +93,7 @@ struct CModeDragonFlying : CModeBase {
     CModeDragonFlying(CThing* creature, const C3DVectorVector& path, const C3DVector& pos, float speed,
                       CCountedActionPointer action);  // 0x008E1150
 };
-struct CTCCreatureModeManager {                       // interface 0x31
+class CTCCreatureModeManager { public:                       // interface 0x31
     bool AddMode(CCountedModePointer mode);           // 0x0073ACC0
 };
 
@@ -102,7 +102,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual long GetAnimDelayTime();                  // slot 6 (+0x18)
     VF(07) VF(08) VF(09) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF(60) VF(61)

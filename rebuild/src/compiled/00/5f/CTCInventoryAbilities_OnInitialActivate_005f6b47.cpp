@@ -22,7 +22,7 @@ struct CTCInventoryBase {
     void OnInitialActivate();                        // 0x005BD1EB
 };
 
-struct CTCInventoryAbilities : CTCInventoryBase {
+class CTCInventoryAbilities : public CTCInventoryBase { public:
     long          CurrentAssignedAbilityLevel;       // +0x144
     unsigned char _pad_0x148[0x70];
     long          CurrentAssignedExpressionLevel;    // +0x1B8

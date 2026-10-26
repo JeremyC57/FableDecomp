@@ -30,7 +30,7 @@ class CBaseObject;
 typedef CBaseObject* (*TDefAllocFunc)();
 
 namespace CDefinitionManager {
-struct CDefClassInfo {                                  // Ego_r.pdb, 20 bytes
+class CDefClassInfo { public:                                  // Ego_r.pdb, 20 bytes
     CCharString           Name;                         // +0x00
     TDefAllocFunc         AllocFunc;                    // +0x04
     CArray<unsigned long> GlobalIndices;                // +0x08

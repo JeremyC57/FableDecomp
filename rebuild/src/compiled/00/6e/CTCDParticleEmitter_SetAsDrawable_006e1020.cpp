@@ -8,7 +8,7 @@
 // ParticleCreationDisabled). Retail CThing: the Dead bit is bit 0 of +0x91.
 // Shape: the inline "thing alive" test (non-null item, dead bit clear) guards the same switch sync as
 // OnSetInLimbo 0x006E0FC0 (flag byte loaded once after the predicate's `test al,al`, tested in both arms).
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                                // +0x91 bit 0: Dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
@@ -20,7 +20,7 @@ struct CBaseIntelligentPointer {                            // sizeof 8: vptr + 
     CThing* GetPItem() const;                               // 0x00A01B50
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     unsigned char           _base[0x8];                     // CTCBase: ParentThing +4, flags +8/+9
     void*                   EmitterName;                    // +0x0c CCharString

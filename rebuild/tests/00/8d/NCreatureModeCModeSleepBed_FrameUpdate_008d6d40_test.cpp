@@ -5,7 +5,7 @@
 static int g_base = 0, g_free = 0, g_set = 0; static bool g_freeResult = false; static void* g_freeArg = 0; static const void* g_setArg = 0;
 struct CAction { int x; };
 struct CCounted { CAction* data; void* info; };
-struct CThing { bool IsFreeToPerformAction(CAction* a) { ++g_free; g_freeArg = a; return g_freeResult; } void SetCurrentAction(const CCounted& c) { ++g_set; g_setArg = &c; } };
+class CThing { public: bool IsFreeToPerformAction(CAction* a) { ++g_free; g_freeArg = a; return g_freeResult; } void SetCurrentAction(const CCounted& c) { ++g_set; g_setArg = &c; } };
 struct CModeBase { virtual ~CModeBase() { } virtual void FrameUpdate() { ++g_base; } CThing* thing; };
 
 struct CMode : CModeBase { unsigned char pad[0x24]; CCounted pending; virtual void FrameUpdate() { CModeBase::FrameUpdate(); if (pending.data) { CThing* t = thing; if (t->IsFreeToPerformAction(pending.data)) t->SetCurrentAction(pending); } } };

@@ -9,16 +9,16 @@
 // Members per the PDB CMemoryFile (retail packs DataBuffer in 12 bytes: Opened +0x1c, Pathname +0x20).
 #include <stddef.h>    // wchar_t
 
-struct CWideStringData;
-struct CASuspendableProcess;
+class CWideStringData;
+class CASuspendableProcess;
 
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                 // 0x0099B510
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
-struct CAFile {
+class CAFile { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -37,7 +37,7 @@ struct CArrayUChar {                                // CArray<unsigned char> (ST
     void resize(unsigned long newSize, const unsigned char& fill = (unsigned char)0);   // 0x00486189
 };
 
-struct CMemoryFile {
+class CMemoryFile { public:
     virtual void v00();
     long          AccessType;                       // +0x04
     long          Position;                         // +0x08

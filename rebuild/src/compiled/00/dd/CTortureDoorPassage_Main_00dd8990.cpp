@@ -11,12 +11,12 @@
 // its mother-rescued flag at +0x67), PMasterData +0x18.
 // Shape: both strings are implicit conversion temporaries (the use test's result kept in bl across its destructor); the
 // outer loop tests the parent flag at the bottom, every wait checks IsActiveThreadTerminating and returns.
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CScriptThing {                                    // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
     virtual void s000() const; virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual void s006() const; virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const;
     virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const; virtual void s017() const;
@@ -25,7 +25,7 @@ struct CScriptThing {                                    // 12 bytes, vtable 0x0
     void* PImpData;                                      // +0x04
     void* PImpInfo;                                      // +0x08
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const;
     virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)

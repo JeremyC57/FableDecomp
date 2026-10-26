@@ -4,7 +4,7 @@
 // No CShaderRenderManager header. PDB LightGlobals+19c shifts8 bytes to retail194;
 // UpdateFlags+3f8 shifts32 to3d8 after eight16->12-byte containers.
 // Vector Erase0098CF70/FillInsert0098D360; resized default vector=(0,0,0,1).
-struct C4DVector {
+class C4DVector { public:
     float X,Y,Z,W;
     C4DVector():X(0),Y(0),Z(0),W(1) {}
 };
@@ -18,7 +18,7 @@ struct CLightGlobalArray {
         else FillInsert(Finish,count-size(),value);
     }
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void* VTable;
     unsigned char BeforeGlobals[0x194-4];
     CLightGlobalArray LightGlobals;

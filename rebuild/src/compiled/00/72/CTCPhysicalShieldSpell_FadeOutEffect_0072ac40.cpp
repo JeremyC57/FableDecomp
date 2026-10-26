@@ -9,7 +9,7 @@
 //   ZERO-initialised (`xor ecx,ecx` before the bitset test), the key in the `push ecx` slot, the map a named pointer (esi);
 //   the emitter call is made even when the interface is absent (ecx = 0).
 // Leaf: FadeOutEffect
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -34,11 +34,11 @@ struct CThing {
     }
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void EnterTimelineEnd();                // 0x006E05F0
 };
 
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     static void __fastcall FadeOutEffect(CThing* effect);
 };
 

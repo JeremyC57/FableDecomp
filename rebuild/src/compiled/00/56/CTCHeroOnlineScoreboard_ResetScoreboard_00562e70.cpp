@@ -16,13 +16,13 @@
 // non-virtual LHHttp2 destructor out of line plus operator delete, the ClearScoreboard call, then the
 // four zero stores in source order through the callee-saved zero register.
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
 namespace LHNetworkLib {
 
-struct LHHttp2 {
+class LHHttp2 { public:
     ~LHHttp2();                                                           // 0x008410D0
 };
 
@@ -40,7 +40,7 @@ struct CHttpScopedPtr {                                                   // sco
 
 struct CComponent;
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     virtual void v00();
     void*          m_pThing;                                              // +0x04
     long           m_8;                                                   // +0x08

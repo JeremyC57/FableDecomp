@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <new>
 static int g_rebalances = 0;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Object;
     long* Count;
     CCountedPointer(T* o, long* c) : Object(o), Count(c) {}
@@ -13,8 +13,8 @@ template <class T> struct CCountedPointer {
             ++*Count;
     }
 };
-struct CCombatAbilityData { int id; };
-struct CCombatAbility { long RepeatTimer; long ActiveTimer; };
+class CCombatAbilityData { public: int id; };
+class CCombatAbility { public: long RepeatTimer; long ActiveTimer; };
 struct SCombatAbilityPair { CCountedPointer<CCombatAbilityData> first; CCombatAbility second; };
 struct SCombatAbilityValue { long first; SCombatAbilityPair second; };
 template <class T1, class T2>

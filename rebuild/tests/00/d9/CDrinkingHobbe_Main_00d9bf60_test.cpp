@@ -5,7 +5,7 @@
 
 static int g_frames, g_terminateAt, g_grantAt, g_hitAt, g_releases;
 static char g_target[32];
-struct CScriptThing {
+class CScriptThing { public:
     float X; char Name[32];
     bool MsgIsHitBy(const char*) const { return g_frames >= g_hitAt; }
 };

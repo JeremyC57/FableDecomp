@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Model of CCombatant::ComputeLightingAdjustment @ 0x00C41A20
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static float g_combatLightingScale = 0.5f;
 struct CCombatant {
     unsigned char _pad[0x108]; C3DVector m_lightDirection; unsigned char _pad114[0x120 - 0x114]; C3DVector m_facing; unsigned char _pad12c[0x18c - 0x12c]; float m_lightingIntensity;

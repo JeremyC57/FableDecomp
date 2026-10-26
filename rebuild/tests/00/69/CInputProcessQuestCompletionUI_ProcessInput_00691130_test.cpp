@@ -27,7 +27,7 @@ static int fails = 0;
 #ifdef _MSC_VER
 #include "engine/CInputProcessGameBase.h"
 #else   // 64-bit g++ cannot satisfy the header's pointer-size asserts: same layout by hand (only MyPlayer is used)
-struct CInputProcessGameBase { void* __vftable; unsigned char _pad_0x04[0x10]; struct CWorld* World; struct CPlayer* MyPlayer; struct CGameDefinitionManager* DefinitionManager; struct CMainGameComponent* Component; struct CGamePlayerInterface* PGamePlayerInterface; };
+struct CInputProcessGameBase { void* __vftable; unsigned char _pad_0x04[0x10]; class CWorld* World; class CPlayer* MyPlayer; class CGameDefinitionManager* DefinitionManager; class CMainGameComponent* Component; class CGamePlayerInterface* PGamePlayerInterface; };
 #endif
 struct CMousePosition {
     float X, Y;
@@ -56,7 +56,7 @@ public:
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     unsigned char _pad00[0x0c];
     bool          Active;                          // +0x0C
     unsigned char _pad0d[0x0f];
@@ -80,7 +80,7 @@ struct CTCMap {                                    // the thing's component map 
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20: which component kinds the thing holds
     CTCMap        m_tcs;                           // +0x44

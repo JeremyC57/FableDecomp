@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct Thing { bool building; C3DVector pos; };
 struct Creature { int placedBuilding, placedNear; float radius; bool AutoPlaceNearBuilding(Thing*, float r) { ++placedBuilding; radius = r; return true; } bool AutoPlaceNear(const C3DVector&, float r) { ++placedNear; radius = r; return true; } };
 struct Group {

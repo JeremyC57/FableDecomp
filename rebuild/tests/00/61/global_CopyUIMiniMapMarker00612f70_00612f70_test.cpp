@@ -6,13 +6,13 @@
 
 struct random_access_iterator_tag { };
 static int g_assigns = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData("") { }
     CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
 };
 static const char* g_text[8] = { "a", "b", "c", "d", "e", "f", "g", "h" };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CUIMiniMapMarker {
     long        Region;
     CCharString UIDefName;

@@ -6,12 +6,12 @@ static int fails = 0;
 class CThing;
 class CThingAICreature;
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
 };
 template <class T> struct CSubDefPointer {
@@ -25,7 +25,7 @@ struct CCreatureSubDef : CDefPointeeBase {
     bool IsGhost;
 };
 static CCreatureSubDef* g_subDef = 0; static int g_getSubDef = 0; static long g_countAtGet = -1;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CSubDefPointer<CCreatureSubDef>* out);
 };
 bool CDefClassBase::GetSubDef(CSubDefPointer<CCreatureSubDef>* out)
@@ -47,17 +47,17 @@ struct CThingFilter_IsAICreatureAwareOfMoreGenerous {
     CThingAICreature* PCreature;
     CThingFilter_IsAICreatureAwareOfMoreGenerous(CThingAICreature* c) : PCreature(c) {}
 };
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     CThing* Thing;
     CThingFilter_IsNot(CThing* t) : Thing(t) {}
 };
-struct CThingFilter_IsThingAbleToBeEngagedInCombat {
+class CThingFilter_IsThingAbleToBeEngagedInCombat { public:
 };
-struct CThingFilter_EnemyCreature {
+class CThingFilter_EnemyCreature { public:
     CThing* SourceThing;
     CThingFilter_EnemyCreature(CThing* t) : SourceThing(t) {}
 };
-struct CThingFilter_IsNotList {
+class CThingFilter_IsNotList { public:
     vector<const CThing*>* PNotList;
     void*                  PNotList2;
     CThingFilter_IsNotList(vector<const CThing*>* l) : PNotList(l), PNotList2(0) {}

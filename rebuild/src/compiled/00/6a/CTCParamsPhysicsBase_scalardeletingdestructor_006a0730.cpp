@@ -1,4 +1,4 @@
-struct CTCParamsPhysicsBase {
+class CTCParamsPhysicsBase { public:
     void* vftable;
 };
 

@@ -9,7 +9,7 @@
 // family-44 copy constructor inlined: base CBaseIntelligentPointer() @ 0x00A01B10, its vtable (0x01238C6C),
 // SetPItem(other.GetPItem()) (@ 0x00A01B90 / 0x00A01B50). Class names from rtti-vtables.tsv.
 // One of 9 bodies of this shape.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -28,7 +28,7 @@ struct CBase_0062f3b0 {
     CBase_0062f3b0(const CBase_0062f3b0& other);     // 0x0062F3B0
 };
 
-struct CCreatureAction_ScreamerDie : CBase_0062f3b0 {
+class CCreatureAction_ScreamerDie : public CBase_0062f3b0 { public:
     unsigned char _pad[0x110];
     CIntelligentPointer m_target;                       // +0x114
     virtual void v00();

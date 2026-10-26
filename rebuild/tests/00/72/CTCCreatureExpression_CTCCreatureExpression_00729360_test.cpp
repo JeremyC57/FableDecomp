@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CThing { int unused; };
+class CThing { public: int unused; };
 
 struct CTCBase_Calls {
     virtual ~CTCBase_Calls() {}
@@ -30,7 +30,7 @@ struct CRetailList {
     ~CRetailList() { std::free(head); }
 };
 
-struct CTCCreatureExpression : CTCBase_Calls {
+class CTCCreatureExpression : public CTCBase_Calls { public:
     CRetailList<CExpressionState> ExpressionStates;
     bool                          Blinking;
     CTCCreatureExpression(CThing* owner) : CTCBase_Calls(owner), Blinking(false) {}

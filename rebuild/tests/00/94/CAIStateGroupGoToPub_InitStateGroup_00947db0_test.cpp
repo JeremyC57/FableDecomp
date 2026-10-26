@@ -9,12 +9,12 @@ struct CBaseIntelligentPointer {
     void* GetPItem() const { return m_pItem; }
     void SetPItem(void* item) { m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CThing { int dummy; };
-struct CWorld {}; struct CThingAICreature {};
+class CThing { public: int dummy; };
+class CWorld { public:}; class CThingAICreature { public:};
 
 struct CAIStateGroup_GoToPub {
     CAIStateGroup_GoToPub() : PTankard(0) {}

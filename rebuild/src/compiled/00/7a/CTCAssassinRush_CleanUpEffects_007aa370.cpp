@@ -27,7 +27,7 @@ struct CInterfaceMap {
 struct CTCGraphicAppearance {
     void SetAlpha(unsigned char alpha);         // 0x004BFAC0
 };
-struct CPlayer {
+class CPlayer { public:
     void EndSpecialMoveMode();                  // 0x00487150
 };
 class CThing {
@@ -61,7 +61,7 @@ public:
         return false;
     }
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 class CBaseObject;
@@ -71,7 +71,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
         CThing* item = other.GetPItem();

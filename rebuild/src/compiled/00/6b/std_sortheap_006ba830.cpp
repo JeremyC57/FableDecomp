@@ -12,7 +12,7 @@
 // __pop_heap_aux inline; the value copy is the pair's implicit copy constructor in the argument area: the key,
 // then CCountedPointer's inline copy (Data, Info, `test ; je ; inc [Info->RefCount]`). CCountedPointer /
 // CCPPointerInfo members from Ego_r.pdb (struct_layouts_egor.tsv).
-struct CCPPointerInfo {                     // 12 bytes
+class CCPPointerInfo { public:                     // 12 bytes
     unsigned long RefCount;                 // +0x00
     void (__fastcall* DeleteFunc)(void*);   // +0x04
     void*         Data;                     // +0x08

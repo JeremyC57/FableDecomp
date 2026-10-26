@@ -15,9 +15,9 @@ struct CCountedPointer {
     }
 };
 struct CBase { int m_tag; virtual ~CBase() { g_order[g_n++] = m_tag; } };
-struct CScriptThing : CBase { CCountedPointer PImp; virtual ~CScriptThing() { } };
+class CScriptThing : public CBase { public: CCountedPointer PImp; virtual ~CScriptThing() { } };
 static long g_releasedTimer = -1;
-struct CTimer { long TimerIndex; ~CTimer() { g_releasedTimer = TimerIndex; g_order[g_n++] = 99; } };
+class CTimer { public: long TimerIndex; ~CTimer() { g_releasedTimer = TimerIndex; g_order[g_n++] = 99; } };
 struct CCrateTeamManager { long MemberCount; CTimer Timer; CScriptThing CrateDropPos; CScriptThing TeamCrateCarrier; };
 
 int main()

@@ -11,13 +11,13 @@
 //   WorldMapOffset +0x44, NameGraphicOffset +0x4c, the three flags +0x54..+0x56.
 //   engine/CRegion.h carries the Ego_r 16-byte vectors (every member after Maps is 4..8 bytes late), so this row
 //   uses a local model. CDefPointer releases its pointee through virtual slot 1 when the count at +0x04 drops to 0.
-struct CCharString { void* PStringData; CCharString& operator=(const CCharString&); };   // 0x0099EFB0
-struct C2DVector { float X, Y; };
+class CCharString { public: void* PStringData; CCharString& operator=(const CCharString&); };   // 0x0099EFB0
+class C2DVector { public: float X, Y; };
 template<class T> struct CRetailVector { T* m_first; T* m_last; T* m_end; CRetailVector& operator=(const CRetailVector&); };   // long: 0x00454886
 template<class K, class V> struct CRetailMap { void* m_header; unsigned long m_node_count; unsigned long m_compare; CRetailMap& operator=(const CRetailMap&); };   // 0x00517370
-struct CDefPointeeBase { virtual void VFunc00(); virtual void Release(); long RefCount; };
-struct CRegionDef;
-template<class T> struct CDefPointer {
+class CDefPointeeBase { public: virtual void VFunc00(); virtual void Release(); long RefCount; };
+class CRegionDef;
+template<class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     CDefPointer& operator=(const CDefPointer& o) {
         if (Object != o.Object) {
@@ -32,7 +32,7 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CRegion {
+class CRegion { public:
     CRetailVector<long> Maps;                           // +0x00
     CRetailVector<long> VisMaps;                        // +0x0c
     CCharString Name;                                   // +0x18

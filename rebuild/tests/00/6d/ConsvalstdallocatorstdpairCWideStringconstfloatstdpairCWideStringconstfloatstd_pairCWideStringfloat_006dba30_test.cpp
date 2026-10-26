@@ -2,7 +2,7 @@
 
 struct PairSrc;
 
-struct CWideString {
+class CWideString { public:
     void* buf;
     int   a;
     int   b;

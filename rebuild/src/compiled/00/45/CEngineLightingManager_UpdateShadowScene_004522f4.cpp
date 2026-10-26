@@ -7,7 +7,7 @@ struct CShadowSink {
     void Consume(CShadowArg* a); // thiscall
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad0[0x18];
     int  mode;      // +0x18
     char pad1c[0x24-0x1c];

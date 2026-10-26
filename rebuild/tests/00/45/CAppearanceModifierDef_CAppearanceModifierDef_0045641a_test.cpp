@@ -4,18 +4,18 @@
 // Behaviour test for 0x0045641A: MorphGraphics block freed, then HideMaterials destroyed, then the base destructor.
 static char g_log[16]; static int g_n = 0;
 static void Log(char c) { g_log[g_n++] = c; g_log[g_n] = 0; }
-struct CCharString { void* m_pStringData; };
+class CCharString { public: void* m_pStringData; };
 struct SCharStringVector {
     CCharString* _M_start; CCharString* _M_finish; CCharString* _M_end_of_storage;
     ~SCharStringVector() { Log('H'); }
 };
-struct CAppearanceModifierGraphics {
+class CAppearanceModifierGraphics { public:
     void* m_pData; long m_count; long m_capacity;
     ~CAppearanceModifierGraphics() { if (m_pData) { Log('F'); std::free(m_pData); } }
 };
 struct CBase_009fc550 { virtual void v00() {} ~CBase_009fc550() { Log('B'); } };
-struct CDefPointeeBase : CBase_009fc550 { virtual void v00() {} ~CDefPointeeBase() {} };
-struct CAppearanceModifierDef : CDefPointeeBase {
+class CDefPointeeBase : public CBase_009fc550 { public: virtual void v00() {} ~CDefPointeeBase() {} };
+class CAppearanceModifierDef : public CDefPointeeBase { public:
     SCharStringVector HideMaterials;
     CAppearanceModifierGraphics MorphGraphics;
     virtual void v00() {}

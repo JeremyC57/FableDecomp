@@ -9,19 +9,19 @@
 // Layout: retail CCombatActionBase is 0x114 bytes (landed 0x008C5370); the stuck thing pointer is this class's +0x114.
 // Shape: the 0x118-byte action temporary sits above the zeroed CSoundPair, whose 8 bytes the later clear-pointer temporary
 //   reuses; the clear is the landed "assign through a stack CIntelligentPointer" shape (0x008C99C0).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     void Kill(bool immediately);                // 0x004C9B80
 };
 
-struct CCombatActionBase;
+class CCombatActionBase;
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -56,7 +56,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CCreaturePointer PCreature;                 // +0x08
@@ -66,7 +66,7 @@ struct CCombatActionBase {                      // retail sizeof 0x114
     void FinishAction();                        // 0x00859A20
 };
 
-struct CCreatureAction_BanditKingUnstuck : CCombatActionBase {   // retail sizeof 0x118, vtable 0x01281D9C
+class CCreatureAction_BanditKingUnstuck : public CCombatActionBase { public:   // retail sizeof 0x118, vtable 0x01281D9C
     bool m_114;                                 // +0x114
     bool m_bStarted;                            // +0x115
     virtual void v00();
@@ -77,7 +77,7 @@ struct CCreatureAction_BanditKingUnstuck : CCombatActionBase {   // retail sizeo
     }
 };
 
-struct CCreatureAction_BanditKingStuckGetHit : CCombatActionBase {
+class CCreatureAction_BanditKingStuckGetHit : public CCombatActionBase { public:
     CBaseIntelligentPointer PStuckThing;        // +0x114
     void FinishAction();
 };

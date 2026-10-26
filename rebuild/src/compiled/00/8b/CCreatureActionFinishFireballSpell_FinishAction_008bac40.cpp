@@ -2,20 +2,20 @@
 // counter), set the 0x9D component's flag, drop combination animations 1 and 0x23, remove creature mode 0x19 unless the
 // player auto-faces, and re-equip the item taken out (fast unsheathe to the combat pose) when it still lives
 // Leaf: ?FinishAction@CCreatureAction_FinishFireballSpell
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x20a];
     unsigned char m_autoFaceTarget;                   // +0x20a
 };
 class CThingCreatureBase;
-struct CCreatureActionBase;
-struct CThing {
+class CCreatureActionBase;
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -46,13 +46,13 @@ struct CTC9D {                                        // interface 0x9D
     unsigned char _pad[0x7c];
     bool          m_flag;                             // +0x7c
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void RemoveCombinationAnimsOfType(long type);     // 0x0070D8C0
 };
 struct CTCAnimation {                                 // interface 0x5A
     CAnimateThing* GetAnimation();                    // 0x0070B460
 };
-struct CTCCreatureModeManager {                       // interface 0x31
+class CTCCreatureModeManager { public:                       // interface 0x31
     void RemoveMode(unsigned long mode);              // 0x0073ABA0
 };
 struct CBaseIntelligentPointer {
@@ -68,12 +68,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CCreatureActionBase {                          // retail sizeof 0xa8
+class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -82,17 +82,17 @@ struct CCreatureActionBase {                          // retail sizeof 0xa8
     unsigned char _pad34[0xa8 - 0x34];
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     unsigned char _body[0x10];
     CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& animation, CThing* item,
                                                long priority, long timeout, CCreatureActionBase* next);   // 0x0069F0F0
     ~CCreatureAction_UnsheatheItemFromInventory();    // 0x005CC091
 };
-struct CCombatActionBase : CCreatureActionBase {      // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:      // retail sizeof 0x114
     unsigned char _pad0a8[0x114 - 0xa8];
     void FinishAction();                              // 0x00859A20
 };
-struct CCreatureAction_FinishFireballSpell : CCombatActionBase {
+class CCreatureAction_FinishFireballSpell : public CCombatActionBase { public:
     void FinishAction();
 };
 

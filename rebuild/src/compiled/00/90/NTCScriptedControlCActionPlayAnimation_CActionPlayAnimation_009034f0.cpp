@@ -11,7 +11,7 @@
 // order differs from the member order: UsePhysics (+0x1d) is the 8th scalar argument (PDB member names).
 // Leaf: ??0CActionPlayAnimation
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);      // 0x0099EC30
 };

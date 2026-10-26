@@ -10,7 +10,7 @@
 // Retail vector<long> is 12 bytes: every member after FishTypes sits 4 below the PDB.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -19,7 +19,7 @@ struct CLongVector {                       // retail std::vector<long> (retail 0
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct CFishingDef : CDefClassBase {
+class CFishingDef : public CDefClassBase { public:
     CLongVector              FishTypes;                   // +0x28
     float                    FishingSpotProximity;        // +0x34
     float                    FishingSpotMinDepth;         // +0x38

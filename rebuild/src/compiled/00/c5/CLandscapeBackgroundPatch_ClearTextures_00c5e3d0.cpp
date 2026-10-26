@@ -5,8 +5,8 @@
 // push eax; call [mem]; no stack cleanup at call site -> callee cleans up (stdcall).
 extern void (__stdcall *g_ReleaseTexture)(int handle);
 
-struct CLandscapeBackgroundPatch
-{
+class CLandscapeBackgroundPatch
+{ public:
     int field_0;      // +0x00
     int textureHandle; // +0x04
 

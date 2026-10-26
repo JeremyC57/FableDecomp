@@ -5,7 +5,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -14,14 +14,14 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                                         // 0x00A01C10
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                                       // 0x00655318
     CIntelligentPointer& operator=(const CIntelligentPointer& other);  // 0x0065533C
     T* operator->() const { return (T*)GetPItem(); }
 };
 
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void Kill();                                                        // 0x00AEE8C0
 };
 }

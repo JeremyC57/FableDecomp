@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
-struct C4DVector { float X, Y, Z, W; };
+class C3DVector { public: float X, Y, Z; };
+class C4DVector { public: float X, Y, Z, W; };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First; T* Last; T* End;
     unsigned long Size() const { return (unsigned long)(Last - First); }
     const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
 };
-struct CShaderConstantRange { void* _vptr; long Offset; unsigned long Count; };
-struct CVertexShaderConstantLayout { void* _vptr; CShaderConstantRange Reserved; CArray<C4DVector> ReservedPresets; };
+class CShaderConstantRange { public: void* _vptr; long Offset; unsigned long Count; };
+class CVertexShaderConstantLayout { public: void* _vptr; CShaderConstantRange Reserved; CArray<C4DVector> ReservedPresets; };
 
 static char g_log[256];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
@@ -76,7 +76,7 @@ struct CEngineWeatherSettingsView {
     float CurrentRainStrength;
     float CurrentSnowStrength;
 };
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     CEngineWeatherSettingsView S;
     CEngineWeatherSettingsView& GetSettings() { return S; }
     void RenderRainBox(const C3DVector& boxPos)

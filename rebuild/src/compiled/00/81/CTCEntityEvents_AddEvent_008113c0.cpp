@@ -17,17 +17,17 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 void __cdecl operator delete(void* p);               // 0x00BFE9BC
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-namespace NEntityEvents { struct CEventBase; }
+namespace NEntityEvents { class CEventBase; }
 void __fastcall DeleteData(NEntityEvents::CEventBase* event);   // 0x008119A0
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
 
-struct CTCEntityEvents;
+class CTCEntityEvents;
 
 namespace NEntityEvents {
-struct CEventBase {
+class CEventBase { public:
     virtual void v00();
     virtual void v01();
     virtual void OnAddedTo(CTCEntityEvents& events);        // slot 2 (+0x08)
@@ -35,7 +35,7 @@ struct CEventBase {
 };
 }
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     struct SBlock {
         long m_count;
         void (__fastcall *m_destroy)(T*);
@@ -89,9 +89,9 @@ template <class T> struct CRetailList {                    // STLport list: the 
     void push_front(const T& value) { insert(begin(), value); }
 };
 
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     virtual void v00();
-    struct CThing* ParentThing;                             // +0x04 (CTCBase)
+    class CThing* ParentThing;                             // +0x04 (CTCBase)
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
     CRetailList<CCountedPointer<NEntityEvents::CEventBase> > Events;   // +0x0c

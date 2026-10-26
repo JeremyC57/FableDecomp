@@ -1,6 +1,6 @@
 #include <stdio.h>
 namespace NInventory {
-struct CCategory { unsigned char _body[0x2C]; };
+class CCategory { public: unsigned char _body[0x2C]; };
 struct CCategoryVector {
     CCategory* first; CCategory* last; CCategory* end_of_storage;
     CCategory& operator[](unsigned long n) { return first[n]; }

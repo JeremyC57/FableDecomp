@@ -5,7 +5,7 @@
 // Behaviour test for CTrophyDealerInCave::Main (0x00EE76F0): after the dealer is made unkillable/undamageable and the hero
 // is scripted, waits until the dealer can be scripted, plays CS_TROPHY_DEALER with Hero/Trophy cast inside a paused movie,
 // then enables the Witchwood2 generators, completes the active quest, fades in and deactivates it.
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 struct CHandle { int Thing; bool Scripting; CHandle() : Thing(0), Scripting(false) {} bool IsScripting() { return Scripting; } void Release() { Scripting = false; } };
 struct CGSI {
     int Frames; int ReadyFrame; bool Killable; bool Damageable; bool Paused; int PauseCalls; char Log[256];

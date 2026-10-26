@@ -19,15 +19,15 @@
 // C3DAnimationInfo copy ctor 0x00A2A4F0, which shares the base).
 #include <new>
 
-struct CMeshDataBank;
+class CMeshDataBank;
 
-struct CMeshDataBankEntry {                // vtable 0x0129CD28
+class CMeshDataBankEntry { public:                // vtable 0x0129CD28
     virtual void v00();
     CMeshDataBank* Bank;                   // +4
     unsigned long Index;                   // +8
 };
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);
     unsigned long IVRefCount;              // +4
 };
@@ -41,7 +41,7 @@ struct CIVCountedPointer {
     }
 };
 
-struct CPhysicsMeshInfo : CMeshDataBankEntry {   // vtable 0x0129CD50
+class CPhysicsMeshInfo : public CMeshDataBankEntry { public:   // vtable 0x0129CD50
     virtual void v00();
     CIVCountedPointer MeshData;            // +0xc
 };

@@ -12,7 +12,7 @@
 #define CCameraModeDef CCameraModeDefDonor
 #include "engine/_quarantine/CCameraModeDef.h"
 #undef CCameraModeDef
-struct CThing {unsigned char NativeState[0x91];unsigned char LifetimeFlags;}; // native bit0 means unavailable; all GetPItem guards use this mask
+class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;}; // native bit0 means unavailable; all GetPItem guards use this mask
 struct CObservedThingPointer {void* VTable;void* PointerInfo;CThing* GetPItem()const;}; // A01B50 reads info+0 and may release stale info
 struct CCameraModeDefNative;
 struct CCameraModeVTable {void* Destructor;void (__fastcall* Destroy)(CCameraModeDefNative*);};
@@ -26,10 +26,10 @@ struct CCameraDefPointer {
 struct CManualScriptModule;
 struct CManualScriptVTable {void* ScalarDeletingDestructor;void* InheritedSlot1;bool (__fastcall* AllowsManualControl)(CManualScriptModule*);};
 struct CManualScriptModule {CManualScriptVTable* VTable;bool AllowsManualControl(){return VTable->AllowsManualControl(this);}};
-struct CCameraManagerDef;
+class CCameraManagerDef;
 struct CCameraManagerDefPointer {CCameraManagerDef* Object;operator CCameraManagerDef*()const{return Object;}};
 void __fastcall PlayCameraSoundThroughObservedThing(CThing*,CCameraManagerDef*,const CCharString&); //00698A30
-struct CGameCameraManager {
+class CGameCameraManager { public:
  void* VTable;unsigned char CameraAndControlState[0xd0];
  CManualScriptModule* PCurrentScriptModule;void* CurrentScriptInfo;CManualScriptModule* PPendingScriptModule;void* PendingScriptInfo;
  unsigned char ScriptAndQuakeState[0x1c];CObservedThingPointer PObservedThing;

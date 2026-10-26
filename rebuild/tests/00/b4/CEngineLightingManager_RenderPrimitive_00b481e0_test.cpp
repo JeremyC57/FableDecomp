@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_point = 0, g_spot = 0;
-struct CEngineInternalPrimitiveBase { unsigned char _pad[8]; long m_type; };
-struct CEngineLightingManager { void AddPointLightPrimitive(CEngineInternalPrimitiveBase*) { ++g_point; } void AddSpotLightPrimitive(CEngineInternalPrimitiveBase*) { ++g_spot; }
+class CEngineInternalPrimitiveBase { public: unsigned char _pad[8]; long m_type; };
+class CEngineLightingManager { public: void AddPointLightPrimitive(CEngineInternalPrimitiveBase*) { ++g_point; } void AddSpotLightPrimitive(CEngineInternalPrimitiveBase*) { ++g_spot; }
     long RenderPrimitive(CEngineInternalPrimitiveBase* p, long, long) { if (p->m_type == 15) { AddPointLightPrimitive(p); return 2; } if (p->m_type == 16) { AddSpotLightPrimitive(p); return 2; } return 0; } };
 int main() {
     CEngineLightingManager m; CEngineInternalPrimitiveBase p; p.m_type = 15;

@@ -12,15 +12,15 @@
 //   same-TU noinline stand-ins of the landed CCreatureActionJackFloatUp::PerformAction 0x008C0FB0 (the effect type shares the
 //   frame word left by the first push); the sub-def is released by hand after SetVisible(true).
 // Strings: "RISE" @ 0x01266F98, "RISE_UP_EFFECT" @ 0x01266F88.
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -32,7 +32,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                                  // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
@@ -46,11 +46,11 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -125,20 +125,20 @@ public:
     }
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
-struct CTCSwitchableNavigation {                      // interface 0x79
+class CTCSwitchableNavigation { public:                      // interface 0x79
     void SetEnabled(bool enabled);                    // 0x00787580 (manifest "InitialActivate")
 };
-struct CTCAnimatingObject {                           // interface 0x83
+class CTCAnimatingObject { public:                           // interface 0x83
     void PlayAnimation(const CCharString& name, long a, bool b);   // 0x007F90B0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsLoading();                         // slot 9 (+0x24) (name descriptive)
 };
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 
-struct CTCJackPillar {
+class CTCJackPillar { public:
     virtual void v00();
     CThing* ParentThing;                              // +0x04
     void Enable(bool enable);

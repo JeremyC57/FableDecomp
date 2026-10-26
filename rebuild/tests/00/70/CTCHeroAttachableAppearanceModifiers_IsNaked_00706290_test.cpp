@@ -30,13 +30,13 @@ struct CDefBase {
     long RefCount;                                      // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {                 // a counted def reference (released at scope end)
+template <class T> class CDefPointer { public:                 // a counted def reference (released at scope end)
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x0057FF92 (CAppearanceModifierDef instantiation)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -51,7 +51,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
 }
 #pragma auto_inline(on)
 struct CAppearanceModifierGraphicsEntry { unsigned char _data[0x18]; };
-struct CAppearanceModifierDef : CDefClassBase {
+class CAppearanceModifierDef : public CDefClassBase { public:
     unsigned char _pad08[0x34 - 0x08];
     struct CGraphicsArray {                                  // MorphGraphics.Graphics (CArray, 12 bytes)
         CAppearanceModifierGraphicsEntry* _Myfirst;
@@ -61,8 +61,8 @@ struct CAppearanceModifierDef : CDefClassBase {
     } MorphGraphics;                                          // +0x34
     long GetNumMorphGraphics() const { return MorphGraphics.size(); }
 };
-struct CThingObjectDef : CDefClassBase { };
-struct CDefinitionManager {
+class CThingObjectDef : public CDefClassBase { public: };
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CThingObjectDef>& out);   // 0x0042B040
 };
 void* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
@@ -93,8 +93,8 @@ struct CModifierVectorVector {
     CModifierVector* _Myend;
     const CModifierVector& operator[](long i) const { return _Myfirst[i]; }
 };
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -102,7 +102,7 @@ struct CTCBase {
     unsigned char _pad0a[2];
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 };
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void* __vftable_0c;                                 // +0x0c secondary vptr
     unsigned long FrameLastChanged;                     // +0x10
     unsigned char Flags14[4];                           // +0x14 Changed / RecreatePrimitives / AppearanceModifiersLoaded

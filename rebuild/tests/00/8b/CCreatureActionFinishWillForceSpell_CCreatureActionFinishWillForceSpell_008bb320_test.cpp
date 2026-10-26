@@ -2,19 +2,19 @@
 // level-indexed deliver animation (no animation for an out-of-range level).
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[64]; CCharString(const char* s) { std::strcpy(text, s); } };
-struct CSoundPair { long FirstSound; long LastSound; };
-struct CThingCreatureBase {
+class CCharString { public: char text[64]; CCharString(const char* s) { std::strcpy(text, s); } };
+class CSoundPair { public: long FirstSound; long LastSound; };
+class CThingCreatureBase { public:
     virtual ~CThingCreatureBase() { }
     virtual CSoundPair GetCombatSoundPair(const CCharString& name)
     { CSoundPair p; p.FirstSound = std::strcmp(name.text, "FORCE_PUSH") == 0 ? 41 : -1; p.LastSound = 42; return p; }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThingCreatureBase* owner; long code; CSoundPair sounds; char anim[64];
     CCombatActionBase(CThingCreatureBase* o, long c, const CSoundPair& s) : owner(o), code(c), sounds(s) { anim[0] = 0; }
     void SetAnimationName(const CCharString& n) { std::strcpy(anim, n.text); }
 };
-struct CCreatureAction_FinishWillForceSpell : CCombatActionBase {
+class CCreatureAction_FinishWillForceSpell : public CCombatActionBase { public:
     CCreatureAction_FinishWillForceSpell(CThingCreatureBase* owner, long level);
 };
 CCreatureAction_FinishWillForceSpell::CCreatureAction_FinishWillForceSpell(CThingCreatureBase* owner, long level)

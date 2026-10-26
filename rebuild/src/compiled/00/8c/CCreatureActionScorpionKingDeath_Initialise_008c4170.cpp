@@ -11,15 +11,15 @@
 // esi (its null test merges with the `if`, its release is the trailing `dec [esi+4] ; jne`), so the dead out slot is
 // reused by the block-scoped "DEATH" string; the bool result survives the string's destructor in bl. Create's third
 // argument (0) is pushed before the owner's position is fetched.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     void*        m_vtable;
@@ -27,13 +27,13 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                     // 0x00A01B50
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                            // slot 0
     virtual void Delete();                             // slot 1 (+0x04)
     long m_refCount;                                   // +0x04
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -49,11 +49,11 @@ template <class T> struct CDefHolder {
     T* operator->() const { return Object; }
 };
 
-struct CSpecialEffectsDef : CDefPointeeBase {
+class CSpecialEffectsDef : public CDefPointeeBase { public:
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);       // 0x00669580
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -81,7 +81,7 @@ template <class T> struct CDefCopy {                   // by-value CDefPointer c
     T* operator->() const { return Object; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                               // +0x70
     const C3DVector& GetPosition() const;              // 0x004C73D0
@@ -89,7 +89,7 @@ struct CThing {
 
 CThing* __fastcall Create(long defIndex, const C3DVector& position, long flags);   // 0x006E0880
 
-struct CCombatActionBase {                             // retail sizeof 0x114
+class CCombatActionBase { public:                             // retail sizeof 0x114
     virtual void v00();
     long                    _pad04;
     CBaseIntelligentPointer POwner;                    // +0x08
@@ -106,7 +106,7 @@ struct CCombatActionBase {                             // retail sizeof 0x114
     }
 };
 
-struct CCreatureAction_ScorpionKingDeath : CCombatActionBase {
+class CCreatureAction_ScorpionKingDeath : public CCombatActionBase { public:
     void Initialise();
 };
 

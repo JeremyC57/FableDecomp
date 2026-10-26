@@ -2,7 +2,7 @@
 #include <cstdio>
 struct CVillageTaskPickCropsSub { long v; };
 extern "C" long FABLE_FASTCALL FableAssignee_0065ef72(CVillageTaskPickCropsSub *sub){ return sub->v; }
-struct CVillageTaskPickCrops { char pad00[0x10]; char m_sub[4]; bool IsCreatureAssignedToTask(long who); };
+class CVillageTaskPickCrops { public: char pad00[0x10]; char m_sub[4]; bool IsCreatureAssignedToTask(long who); };
 bool CVillageTaskPickCrops::IsCreatureAssignedToTask(long who){ return FableAssignee_0065ef72((CVillageTaskPickCropsSub*)&m_sub[0])==who; }
 int main(){
     CVillageTaskPickCrops o; *(long*)&o.m_sub[0]=42;

@@ -13,7 +13,7 @@
 //          PBrain is the first dword of the flattened base at +0x04.
 #include "engine/CAIStateGroup_TavernServer.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 struct CBaseIntelligentPointer;
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,7 +40,7 @@ struct CThing {
     }
 };
 struct CVillage;
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillageMember { public:                       // interface 0x23
     CVillage* GetPVillage() const;              // 0x007EE540
 };
 
@@ -71,11 +71,11 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 bool __fastcall IS_THING_ALIVE_Pointer_0078b2a0(const CBaseIntelligentPointer& p);   // 0x0078B2A0 (IS_THING_ALIVE<CIntelligentPointer<T>>)
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad[0x170];
     CBaseIntelligentPointer PWorkplace;         // +0x170 (descriptive)
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

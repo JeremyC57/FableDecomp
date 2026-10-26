@@ -7,8 +7,8 @@
 static char g_log[512];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 struct Elem { long v[3]; };
-struct CDataOutputStream { int id; };
-struct CMemoryDataInputStream { int id; };
+class CDataOutputStream { public: int id; };
+class CMemoryDataInputStream { public: int id; };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 Elem* __fastcall __copy(Elem* first, Elem* last, Elem* result, const random_access_iterator_tag&, int*)
 { LOG("copy"); while (first != last) *result++ = *first++; return result; }
@@ -20,13 +20,13 @@ template <class T> struct vector {
 static vector<Elem>* g_seen;
 void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream* s, vector<Elem>& v) { LOG(s->id == 1 ? "binin" : "binin?"); g_seen = &v; }
 void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream* s, vector<Elem>& v) { LOG(s->id == 2 ? "binout" : "binout?"); g_seen = &v; }
-struct CPersistContext_TransferableVectorGenericType { virtual long GetCount() { return -1; } virtual ~CPersistContext_TransferableVectorGenericType() {} };
+class CPersistContext_TransferableVectorGenericType { public: virtual long GetCount() { return -1; } virtual ~CPersistContext_TransferableVectorGenericType() {} };
 template <class T> struct CPersistContext_TransferableVector : CPersistContext_TransferableVectorGenericType {
     vector<T>* TransVector;
     CPersistContext_TransferableVector(vector<T>& v) : TransVector(&v) {}
     virtual long GetCount() { return (long)(TransVector->_M_finish - TransVector->_M_start); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     CMemoryDataInputStream* PLoadStream;
     CDataOutputStream* PSaveStream;

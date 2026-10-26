@@ -10,14 +10,14 @@ struct CBase {
     virtual ~CBase();
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteULong(unsigned long value);                           // 0x00993EA0
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 
 struct COrbitSettings {                     // 48 bytes
     long  Type;
@@ -34,13 +34,13 @@ struct COrbitSettings {                     // 48 bytes
     float RotateStartRandom;
 };
 
-struct CPSCBase : CBase {                   // vtable 0x0129F3F4
+class CPSCBase : public CBase { public:                   // vtable 0x0129F3F4
     CParticleSystem* ParticleSystem;        // +0x04
     bool             UpdateStarted : 1;     // +0x08 bit 0
     bool             Initialised : 1;       // +0x08 bit 1
 };
 
-struct CPSCOrbit : CPSCBase {               // vtable 0x012A0374
+class CPSCOrbit : public CPSCBase { public:               // vtable 0x012A0374
     unsigned long  CentreParam;             // +0x0c
     COrbitSettings Orbits[3];               // +0x10
     void WriteBinary(CDataOutputStream* out);

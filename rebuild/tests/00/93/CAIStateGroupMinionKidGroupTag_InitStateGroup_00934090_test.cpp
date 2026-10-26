@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CWorld {}; struct CThingAICreature {};
+class CWorld { public:}; class CThingAICreature { public:};
 static long g_frame = 1000; static long g_framesPerSecond = 15; static unsigned long g_seed = 1;
 long GFGetCurrentFrame() { return g_frame; }
 unsigned long GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; unsigned long* GetPWorldSeed() { return &g_seed; }
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; unsigned long* GetPWorldSeed() { return &g_seed; }
     unsigned long RandomFramesWithin(long seconds) { long fps = g_framesPerSecond; unsigned long* seed = GetPWorldSeed(); unsigned long range = fps * seconds; unsigned long next = *seed * 0x24A1U + 0x24DFU; *seed = next; unsigned long rotated = GFROR13(next); *seed = rotated; if (range != 0) return rotated % range; return 0; } };
 struct CAIStateGroup_MinionKidGroupTag : CAIStateGroupBase { bool InitiatedTag; unsigned char _pad15[3]; void* PTCGroupTag; float x, y, z; bool StandModeAddedToCreature; unsigned char _pad29[3]; long FrameLastPlayedIn;
     virtual void InitStateGroup(const CWorld&, CThingAICreature&); };

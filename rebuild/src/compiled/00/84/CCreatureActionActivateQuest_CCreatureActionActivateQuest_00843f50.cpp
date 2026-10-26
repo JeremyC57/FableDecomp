@@ -11,16 +11,16 @@
 // Layout: byte-packed as the PDB header (engine/CCreatureAction_ActivateQuest.h: ScriptName +0xb4, LoadResources +0xb8,
 // PObjectToUse +0xb9 -- 12 bytes high, the retail CCreatureActionBase being 0xa8 bytes), so `this` is modelled locally
 // under #pragma pack(1) with the retail offsets +0xa8 / +0xac / +0xad.
-struct CThingCreatureBase;
-struct CThing;
-struct CBaseObject;
+class CThingCreatureBase;
+class CThing;
+class CBaseObject;
 
-struct CCharString {                        // one pointer (PStringData)
+class CCharString { public:                        // one pointer (PStringData)
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (register-zeroed frame stores)
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed frame stores)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -37,14 +37,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, const CSoundPair& sound, long c, long d);   // 0x00693C70
 };
 
 #pragma pack(push, 1)
-struct CCreatureAction_ActivateQuest : CCreatureActionBase {   // vtable 0x012752C4
+class CCreatureAction_ActivateQuest : public CCreatureActionBase { public:   // vtable 0x012752C4
     CCharString         ScriptName;         // +0xa8 (PDB +0xb4)
     bool                LoadResources;      // +0xac (PDB +0xb8)
     CIntelligentPointer PObjectToUse;       // +0xad (PDB +0xb9), unaligned

@@ -10,9 +10,9 @@
 // pointer between the list-head push and the call, then increments the count interleaved with the flag test; the inline
 // Invalidate (`test al,7 ; and al,0F8h`, parent null test between the and and the store) runs per primitive on the
 // destination and once on this cell.
-struct CEngineSceneGridCell;
+class CEngineSceneGridCell;
 
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     unsigned char                 _pad[0x20];
     CEngineSceneGridCell*         m_pCell;         // +0x20
     unsigned char                 _pad24[0x14];
@@ -21,7 +21,7 @@ struct CEngineInternalPrimitiveBase {
     void AddToList(CEngineInternalPrimitiveBase** head);   // 0x00B8FDF0
 };
 
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell { public:
     CEngineSceneGridCell*         Parent;          // +0x00
     CEngineInternalPrimitiveBase* FirstPrimitive;  // +0x04
     unsigned char                 _pad08[0x2c];    // +0x08 bounding box, draw distance, group handles

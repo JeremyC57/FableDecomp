@@ -2,7 +2,7 @@
 // larger key, insert (key, default value) at that hint; return the mapped value.
 #include <cstdio>
 
-struct CCharString { int id; CCharString() : id(0) { } };
+class CCharString { public: int id; CCharString() : id(0) { } };
 struct CEntry { long first; CCharString second; };
 struct CLongStringMap {                         // a sorted array standing in for the tree
     CEntry entries[8];

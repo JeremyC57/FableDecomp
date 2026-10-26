@@ -11,7 +11,7 @@
 
 // CCharString: out-of-line dtor -> the 0x99b510 call. 3 dwords = 0xc bytes,
 // which gives the +0x10 -> +0x14 spacing.
-struct CCharString {
+class CCharString { public:
     char* p;              // +0x00  (single pointer -> 4-byte member)
     ~CCharString();       // out-of-line
 };

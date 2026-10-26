@@ -70,14 +70,14 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -150,10 +150,10 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCWeapon {
+class CTCWeapon { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -192,15 +192,15 @@ FABLE_STATIC_ASSERT(offsetof(CTCWeapon, Wielded) == 0x24);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -344,8 +344,8 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 
 
 struct CAnimEntryLite;
-struct CCPPointerInfo;
-struct CCharStringData;
+class CCPPointerInfo;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CModeStandBase {
@@ -413,34 +413,34 @@ FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PSprintAnimation_Info) == 0x64);
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -679,20 +679,20 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x1b0);
 #include <stddef.h>
 
 
-struct C3DAnimFileXLoader;
-struct C3DAnimationManager;
-struct C3DMeshFileXLoader;
-struct C3DMeshStripifier;
-struct C3DQuadricBasedMeshOptimiser;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGraphicDataBank;
-struct CMovableResourceMemoryPool;
-struct CPushBufferBuildInfo;
-struct CXboxBufferMemoryPool;
+class C3DAnimFileXLoader;
+class C3DAnimationManager;
+class C3DMeshFileXLoader;
+class C3DMeshStripifier;
+class C3DQuadricBasedMeshOptimiser;
+class CCPPointerInfo;
+class CCharStringData;
+class CGraphicDataBank;
+class CMovableResourceMemoryPool;
+class CPushBufferBuildInfo;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CMeshDataBank {
+class CMeshDataBank { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -915,10 +915,10 @@ FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, StateBlock) == 0x4bc);
 #include <stddef.h>
 
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char          _pad_0x04[0x4];                   // +0x04
     unsigned char          _pad_0x08[0x4];                   // +0x08
@@ -950,8 +950,8 @@ FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, Rotation) == 0x24);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -959,8 +959,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -1078,7 +1078,7 @@ struct NativeStringValue:CCharString {
 enum EMovementType {MovementWalk=0};
 NativeStringValue __fastcall GetStrafingAnimationName(const ThingNative&,EMovementType); //8E8FF0 hidden resultECX,parentEDX,movementstack
 bool __fastcall GetAnimDistanceAndIndexFromAnimName(const ThingNative&,const CCharString&,long&,float&); //8E9080, donor90F530
-struct CAnimSet;
+class CAnimSet;
 struct AnimateThingMethods {CAnimSet*GetFirstCombinationAnimFromType(long);void RemoveCombinationAnimsOfType(long);}; //70C4E0,70D8C0
 struct AnimationComponentMethods {AnimateThingMethods&GetAnimation();}; //70B460, actual CTCAnimationComplex +C
 // Native CModeBase prefix from PDB and actual CModeStandBase offsets; no generated CModeBase/Strafe header.

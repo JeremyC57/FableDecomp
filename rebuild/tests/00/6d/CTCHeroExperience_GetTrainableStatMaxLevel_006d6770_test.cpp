@@ -1,10 +1,10 @@
 #include <cstdio>
 
 // Model of CTCHeroExperience::GetTrainableStatMaxLevel @ 0x006D6770: max(levels in the stat's ability track - 1, 0).
-struct CAbilityTrackLevelDef { long ExperienceCost; long AbilityUnlocked; long Description; };
-struct CAbilityTrackDef { long ExperienceStat; CAbilityTrackLevelDef* first; CAbilityTrackLevelDef* last; };
-struct CHeroStatsDef { CAbilityTrackDef* StatLevels; };
-struct CTCHeroExperience {
+class CAbilityTrackLevelDef { public: long ExperienceCost; long AbilityUnlocked; long Description; };
+class CAbilityTrackDef { public: long ExperienceStat; CAbilityTrackLevelDef* first; CAbilityTrackLevelDef* last; };
+class CHeroStatsDef { public: CAbilityTrackDef* StatLevels; };
+class CTCHeroExperience { public:
     CHeroStatsDef* PHeroStatsDef;
     long GetTrainableStatMaxLevel(long stat) const
     {

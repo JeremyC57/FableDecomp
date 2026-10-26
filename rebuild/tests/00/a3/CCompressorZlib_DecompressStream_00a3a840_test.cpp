@@ -8,7 +8,7 @@ static int g_inits = 0, g_result = 0, g_produce = 0;
 static int inflateInit(z_stream_s*) { ++g_inits; return 0; }
 static int z_inflate(z_stream_s* s, int flush) { if (flush != 2) return -99; s->avail_out -= g_produce; return g_result; }
 
-struct CCompressorZlib {
+class CCompressorZlib { public:
     z_stream_s Stream; bool ZlibInitialised, Compressing, ErrorFlag;
     unsigned long DecompressStream(void* dest, unsigned long destSize, bool* end)
     {

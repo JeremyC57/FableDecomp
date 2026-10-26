@@ -23,22 +23,22 @@ static int fails = 0;
 //          (built before the pushes, `lea`-addressed); the created thing's alive test is `p && !(p->flags & 1)`.
 // Layout: Ego_r.pdb CActionEventAddObject (32 bytes): CActionEventBase {vptr, Finished +4, ActivationFrame +8, PThing +0xc,
 //          PCameraManager +0x10}, Object +0x14, Hand +0x18, DestroyOnExit +0x1c.
-struct CTCBase;
-struct CCreatureActionBase;
-struct CGameCameraManager;
+class CTCBase;
+class CCreatureActionBase;
+class CGameCameraManager;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector First;
     C3DVector Second;
     CRightHandedSet() : First(0.0f, 0.0f, 1.0f), Second(0.0f, 1.0f, 0.0f) { }
@@ -50,7 +50,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -72,20 +72,20 @@ struct CThing {
         return false;
     }
 };
-struct CTCCarrying {                            // interface 70
+class CTCCarrying { public:                            // interface 70
     void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                 // 0x00449700
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
     CPlayerManager* GetPlayerManager() const { return PlayerManager; }

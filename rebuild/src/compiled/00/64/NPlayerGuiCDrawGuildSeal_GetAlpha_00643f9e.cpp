@@ -7,7 +7,7 @@
 // CDrawGuildSeal: Drawing (CDrawBase) +0x18, FlashAlpha +0x2e -> retail +0x2a.
 namespace NPlayerGui {
 
-struct CDrawGuildSeal {
+class CDrawGuildSeal { public:
     unsigned char _pad[0x18];
     bool          Drawing;                         // +0x18
     unsigned char _pad19[0x11];

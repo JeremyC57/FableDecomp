@@ -9,9 +9,9 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x004D7D7E on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-struct CInputProcessGameBaseInit;
+class CInputProcessGameBaseInit;
 
-struct CTCExclusiveUse {
+class CTCExclusiveUse { public:
     unsigned char _body[0x14];       // sizeof(CTCExclusiveUse) = 0x14
     CTCExclusiveUse(CInputProcessGameBaseInit* owner);                   // 0x004D7D7E
 };

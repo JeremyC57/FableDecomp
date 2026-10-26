@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CTCHeroSpecialMovement::FrameUpdate (0x007E0750): same body as src/, with the player, input
 // queue and availability predicates stubbed.
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     bool runHeld, sprintHeld; long lastPlayer;
     bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber)
     {
@@ -10,19 +10,19 @@ struct CGamePlayerInterface {
         return action == 0x1f ? runHeld : action == 0x1e ? sprintHeld : false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CGamePlayerInterface* m_pInterface;
     bool m_controlsLocked;
     long GetPlayerNumber() const { return 3; }
 };
-struct CThing {
+class CThing { public:
     CPlayer* player; bool canRun, canSprint;
     CPlayer* GetPlayer() { return player; }
     const CPlayer* GetPlayer() const { return player; }
 };
 bool IsAvailableForHeroRun(CThing* thing) { return thing->canRun; }
 bool IsAvailableForHeroSprint(CThing* thing) { return thing->canSprint; }
-struct CHeroSpecialMovementDef {
+class CHeroSpecialMovementDef { public:
     float TotalTimeToSprintSeconds;
     float MinimumNumberOfSecondsLeftToBeAllowedToSprint;
     float TotalTimeToFullyRestoreSprintBarSeconds;
@@ -32,7 +32,7 @@ long g_FramesPerSecond = 10;
 bool g_bHeroRunOption = true;
 inline void ClampLow(float& value, float lo) { if (value < lo) value = lo; }
 inline void Raise(float& value, float hi) { if (hi > value) value = hi; }
-struct CTCHeroSpecialMovement {
+class CTCHeroSpecialMovement { public:
     CThing* ParentThing;
     bool Sprinting;
     bool Running;

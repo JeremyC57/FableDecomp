@@ -16,8 +16,8 @@ public:
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator=(const char* text);          // 0x0099EFE0
 };
-struct CScriptThing;
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CScriptThing;
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410 public: virtual void __fastcall CGameScriptInterface::NewScriptFrame(void) const
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -65,7 +65,7 @@ struct CGameScriptInterface {                      // retail vtable 0x01260F0C (
     virtual bool IsConversationActive(long conversation) const;   // slot 368 (+0x5c0) 0x008907D0 public: virtual bool __fastcall CGameScriptInterface::IsConversationActive(long) const
 };
 
-struct CScriptBase {                                   // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                   // retail 0x40 bytes (PDB 0x54: debug containers)
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                  // 0x00CB7940
 };

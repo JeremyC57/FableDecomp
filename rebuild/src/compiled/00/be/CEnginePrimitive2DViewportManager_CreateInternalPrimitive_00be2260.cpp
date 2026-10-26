@@ -7,8 +7,8 @@
 typedef unsigned int size_t;
 typedef int EEnginePrimitiveType;
 
-struct CEnginePrimitive2DViewportManager;
-struct CEngineInternalPrimitiveBase;
+class CEnginePrimitive2DViewportManager;
+class CEngineInternalPrimitiveBase;
 
 // this-call ctor: this in ecx, returns this in eax.
 extern "C" CEngineInternalPrimitiveBase* __fastcall InternalPrimitiveCtor(CEngineInternalPrimitiveBase* self);

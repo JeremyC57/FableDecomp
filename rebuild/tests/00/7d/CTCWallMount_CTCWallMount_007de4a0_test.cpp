@@ -1,9 +1,9 @@
 // Behaviour test for CTCWallMount::CTCWallMount @ 0x007DE4A0: bought for 0, no trophy, trophy id 0.
 #include <cstdio>
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* o) : ParentThing(o) {} };
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* o) : ParentThing(o) {} };
 struct CIntelligentPointer { void* p; CIntelligentPointer() : p(0) {} };
-struct CTCWallMount : CTCBase {
+class CTCWallMount : public CTCBase { public:
     long BoughtForAmount; CIntelligentPointer Trophy; unsigned long TrophyIDLow, TrophyIDHigh;
     CTCWallMount(CThing* o) : CTCBase(o), BoughtForAmount(0), Trophy(), TrophyIDLow(0), TrophyIDHigh(0) {}
 };

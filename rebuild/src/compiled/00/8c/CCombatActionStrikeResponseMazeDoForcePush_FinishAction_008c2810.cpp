@@ -17,13 +17,13 @@
 //   compared as a long).
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct CTCBase;
-struct CDefPointeeBase {
+class CTCBase;
+class CDefPointeeBase { public:
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4)
     long m_refCount;                            // +4
 };
-struct CMazeBattleDef : CDefPointeeBase {
+class CMazeBattleDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x50 - 0x08];
     long TutorialNumGetHits;                    // +0x50 (PDB +0x54)
 };
@@ -37,7 +37,7 @@ struct CMazeBattleDefPointer {                  // CDefPointer<const CMazeBattle
     }
     CMazeBattleDef* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CMazeBattleDefPointer& out) const;   // 0x008C3510
 };
 void* FindDef_GetSubDef_008c3510();             // stand-in callee of the stand-in body below
@@ -77,19 +77,19 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float Get2DLength() const { return sqrtf(X * X + Y * Y); }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
     float GetLength() const { return sqrtf(X * X + Y * Y); }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -113,11 +113,11 @@ struct CThing {
         return false;
     }
 };
-struct CCombatActionBase;
-struct CThingCreatureBase : CThing {
+class CCombatActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
-struct CTCBoss {                                // interface type 0xAD
+class CTCBoss { public:                                // interface type 0xAD
     unsigned char _pad00[0x10];
     long GenericCounter;                        // +0x10
     long GetCurrentPhase();                     // 0x007AED10 (currentBossPhase +0x18)
@@ -132,20 +132,20 @@ struct CCreaturePointer {                       // CIntelligentPointer<CThingCre
     CThingCreatureBase* m_pItem;                // +4
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CCreaturePointer PCreature;                 // +0x08
     unsigned char _pad10[0x114 - 0x10];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCombatAction_WillForcePushInto : CCombatActionBase {   // vtable 0x012804FC
+class CCombatAction_WillForcePushInto : public CCombatActionBase { public:   // vtable 0x012804FC
     CCombatAction_WillForcePushInto(CThingCreatureBase* owner);   // 0x008C38B0
 };
-struct CCombatAction_GenericStrikeResponseBase : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:
     void FinishAction();                        // 0x008663D0
 };
-struct CCombatAction_StrikeResponseMazeDoForcePush : CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_StrikeResponseMazeDoForcePush : public CCombatAction_GenericStrikeResponseBase { public:
     CBaseIntelligentPointer PAttacker;          // +0x114
     void FinishAction();
 };

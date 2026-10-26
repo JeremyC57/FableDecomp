@@ -7,7 +7,7 @@ public:
     void Kill(bool immediate) { if (immediate) ++killed; ++g_kills; }
 };
 static int g_base = 0;
-struct CTCTavernGame { unsigned char _pad[0xf0]; void LeaveGame() { ++g_base; } };
+class CTCTavernGame { public: unsigned char _pad[0xf0]; void LeaveGame() { ++g_base; } };
 struct CTCTavernGameCoinBase : CTCTavernGame {
     CThing* m_pCoin0; CThing* m_pCoin1; CThing* m_pCoin2;
     void LeaveGame();

@@ -3,16 +3,16 @@
 #include <cstdio>
 static int g_baseCopies = 0;
 static int g_vectorCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     long Base;
     CParentDefClassBase& operator=(const CParentDefClassBase& other) { Base = other.Base; ++g_baseCopies; return *this; }
 };
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CFloatVector {
     float Value;
     CFloatVector& operator=(const CFloatVector& other) { Value = other.Value; ++g_vectorCopies; return *this; }
 };
-struct CSpecialAbilitiesPhysicalShieldDef : CParentDefClassBase {
+class CSpecialAbilitiesPhysicalShieldDef : public CParentDefClassBase { public:
     CDefString InitSound; CDefString PowerUpSound[3]; CDefString CastSound; CDefString LoopingSound[4]; CDefString EndSound;
     float Health[4]; float LevelUpTimings[3]; float CamDist[4]; float CamHeight[4]; float CamFOV[4]; float CamSwitchTime[4];
     float CastCamDist, CastCamHeight, CastCamFOV, CastCamSwitchTime, MinWidth; CFloatVector MaxWidth;

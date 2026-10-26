@@ -27,7 +27,7 @@ struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
     unsigned long        m_priorValue;             // +0x04
 };
-struct CRenderStateManager {
+class CRenderStateManager { public:
     unsigned char        _pad0000[0x8];
     SCapturedRenderState m_captured[0x400];        // +0x0008
     CTrackedRenderState* m_dirty[0x200];           // +0x2008
@@ -74,7 +74,7 @@ __forceinline void CTrackedRenderState::Set(unsigned long value)
         g_pRenderManagerCore->ChangeState(*this, value);
 }
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad[0x391];
     bool          PixelShadersEnabled;             // +0x391
     void DisablePixelShaders();                    // 0x00988190

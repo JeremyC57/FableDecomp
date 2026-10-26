@@ -1,13 +1,13 @@
 // Behaviour test for 007edfb0 (CTCCarriedActionUseTrophy::vfunc_28): the base hook runs first, then the shared use handler, both with the user.
 #include <cstdio>
 
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 static int     g_order[2];
 static int     g_count = 0;
 static CThing* g_users[2];
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     void OnUseBase(CThing* user) { g_users[g_count] = user; g_order[g_count++] = 1; }
 };
 

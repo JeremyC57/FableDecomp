@@ -25,7 +25,7 @@ struct CLongVector {
     long& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char _pad_0x000[0x154];
     CLongVector   ContextSensitiveItems;             // +0x154 (PDB +0x178)
     bool IsContextSensitiveOpinionExpressionAvailable();

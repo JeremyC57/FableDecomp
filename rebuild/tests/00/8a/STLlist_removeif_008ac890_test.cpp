@@ -11,7 +11,7 @@
 // Model of list<CCountedPointer<CEventBase> >::remove_if<CConvFilterToCP<CIsEventOfType> > @ 0x008AC890: erase every
 // event of the filter's type (the filter is reached through the adaptor's pointer).
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

@@ -36,11 +36,11 @@ struct SSkyVertex {                                    // 24 bytes
     unsigned long Colour;                              // +0x0c
     float         U, V;                                // +0x10
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Data;
 };
 
-struct CEngineSkyRenderer {
+class CEngineSkyRenderer { public:
     void BuildBaseBandMesh(CArray<SSkyVertex>& vertices, CArray<unsigned short>& indices, long firstIndex, long firstVertex);
 };
 

@@ -7,7 +7,7 @@
 static int   g_innerCalls = 0;
 static char  g_innerLast[64];
 
-struct CCharString {
+class CCharString { public:
     char buf[64];
     CCharString() { buf[0] = 0; }
     CCharString(const CCharString& o) { strcpy(buf, o.buf); }

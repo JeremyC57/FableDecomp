@@ -12,15 +12,15 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
 };
 
 class CTCHeroOnlineScoreboard {
 public:
-    struct CClanMember {                                // 0x0C
+    class CClanMember { public:                                // 0x0C
         CWideString Name;                               // +0x00
         long        MemberID;                           // +0x04
         CWideString Description;                        // +0x08

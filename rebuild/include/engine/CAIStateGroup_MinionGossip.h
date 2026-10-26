@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CTCGossip;
+class CTCGossip;
 
 #pragma pack(push, 1)
 struct CAIStateGroup_MinionGossip {

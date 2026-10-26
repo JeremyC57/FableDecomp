@@ -2,7 +2,7 @@
 // Leaf: TransferToGui
 // helper(ecx=[esi], edx=[esi+4], (u8)this->f0c); this->f0d=0
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     void* f0;   // +0x00
     void* f4;   // +0x04
     char  pad8[4]; // +0x08

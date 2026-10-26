@@ -3,7 +3,7 @@
 // behaviour test: CQ_GuildTrainingWoodsMeleeScript::Main -- initialise, wait for GuildWoods, bind ScorpionHome, post
 // the scripted entities, spawn WatchForTermination and DoMission, then succeed once no scorpion is left alive
 static int g_frames = 0, g_endAt = 1000, g_loadedAt = 2, g_deadAt = 5, g_bound = 0, g_spawned = 0, g_posted = 0, g_inits = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsLevelLoaded(const char* n) const { return std::strcmp(n, "GuildWoods") == 0 && g_frames >= g_loadedAt; }
     void PostAddScriptedEntities() const { ++g_posted; }

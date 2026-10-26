@@ -20,7 +20,7 @@ static int fails = 0;
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() { } };
 
-struct CWaterPatchMesh {
+class CWaterPatchMesh { public:
     unsigned char _pad[0x1c];
     long          Type;                                // +0x1c
 };
@@ -63,11 +63,11 @@ __declspec(noinline) void CRetailVector<T>::push_back(const T& x)
 }
 #pragma auto_inline(on)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C3DBoundingBox { C3DVector Min, Max; };
+class C3DBoundingBox { public: C3DVector Min, Max; };
 
 struct SBoxedWaterPatch {                              // 28 bytes
     C3DBoundingBox   Box;
@@ -81,7 +81,7 @@ struct CBoxedWaterPatchVector {
     void push_back(const SBoxedWaterPatch& x);         // 0x00BF5FE0
 };
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     unsigned char                  _pad000[0x1fc];
     CRetailVector<CWaterPatchMesh*> GeneralPatches;    // +0x1fc
     unsigned char                  _pad208[0x220 - 0x208];
@@ -107,7 +107,7 @@ __declspec(noinline) void CBoxedWaterPatchVector::push_back(const SBoxedWaterPat
 #pragma auto_inline(on)
    // 0x01436E54
 
-struct CEngineLandscapePatch {
+class CEngineLandscapePatch { public:
     void*            __vftable;                        // +0x00
     void*            Map;                              // +0x04
     void*            LayerMeshList;                    // +0x08

@@ -9,10 +9,10 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float Up[3], Forward[3]; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float Up[3], Forward[3]; };
 
-struct CCard {
+class CCard { public:
     void FrameUpdate(const C3DVector& position, const CRightHandedSet& orientation);   // 0x008F06F0
 };
 struct CCardVector {                            // STLport vector<CCard*> (12 bytes)
@@ -23,7 +23,7 @@ struct CCardVector {                            // STLport vector<CCard*> (12 by
     CCard** end() { return _M_finish; }
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _pad_0x04[0x1c];
     bool          IsBeingPlayed;                // +0x20

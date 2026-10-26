@@ -9,11 +9,11 @@
 // void call that is not the last statement of a two-way body keeps `call ; ret` (no tail jump with an argument push).
 #include "engine/CTCBase.h"
 
-struct CThing {
+class CThing { public:
     void SetForceFrameUpdate(bool update);         // 0x004C7C60
 };
 
-struct CTCExplodingObject : CTCBase {
+class CTCExplodingObject : public CTCBase { public:
     float MaxDamage;                               // +0x0c
     float Radius;                                  // +0x10
     long  FireDamage;                              // +0x14

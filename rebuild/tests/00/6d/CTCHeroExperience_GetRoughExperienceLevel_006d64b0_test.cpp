@@ -2,8 +2,8 @@
 
 // Model of CTCHeroExperience::GetRoughExperienceLevel @ 0x006D64B0: count the thresholds the total has reached.
 struct CLongVector { long* _Myfirst; long* _Mylast; unsigned long size() const { return (unsigned long)(_Mylast - _Myfirst); } };
-struct CHeroExperienceDef { CLongVector ExperienceLevelThresholds; };
-struct CTCHeroExperience {
+class CHeroExperienceDef { public: CLongVector ExperienceLevelThresholds; };
+class CTCHeroExperience { public:
     long TotalExperiencePoints; CHeroExperienceDef* PDef;
     long GetRoughExperienceLevel() const
     {

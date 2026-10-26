@@ -55,7 +55,7 @@ struct CAbilityVector {                              // retail std::vector<EHero
     void clear() { erase(begin(), end()); }
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void*          __vftable;                        // +0x000
     unsigned char  _pad_0x004[0x140];
     long           CurrentAssignedAbilityLevel;      // +0x144 (PDB +0x15C)

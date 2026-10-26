@@ -18,7 +18,7 @@ struct CLayerTree {
 };
 
 namespace NUISystem {
-struct CManager {
+class CManager { public:
     unsigned char _pad[0x70];
     CLayerTree    m_layers;                        // +0x70
     long GetLayer(long key);

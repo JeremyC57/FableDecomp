@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     int dummy;
     CCharString(const char* lit, int len);
 };
@@ -15,7 +15,7 @@ CCharString::CCharString(const char* lit, int len)
     this->dummy = 0x1234;
 }
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CCharString GetStrikeEventHelperName();
 };
 

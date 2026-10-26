@@ -20,7 +20,7 @@ struct CDefStringTable {
     CCharString GetString(long id);                  // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;             // 0x013CA828
-struct CTCBase; struct CTCParamsBase;
+class CTCBase; class CTCParamsBase;
 struct SComponentPair { long first; CTCBase* second; };
 struct CComponentMap {                               // CVectorMap<ETCInterfaceType, CTCBase*>: STLport vector first
     SComponentPair* m_first;
@@ -29,11 +29,11 @@ struct CComponentMap {                               // CVectorMap<ETCInterfaceT
     void reserve(unsigned long count);               // 0x004CC9B0
     long size() const { return m_last - m_first; }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x102];
     bool          m_loadingSavedGame;                // +0x102 (descriptive)
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x24];
     CWorld*       World;                             // +0x24
 };
@@ -54,7 +54,7 @@ struct CThingDef {
     unsigned char KillLocked : 1;
 };
 #pragma pack(pop)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x44];
     CComponentMap Components;                        // +0x44
     unsigned char _pad50[0x6c - 0x50];

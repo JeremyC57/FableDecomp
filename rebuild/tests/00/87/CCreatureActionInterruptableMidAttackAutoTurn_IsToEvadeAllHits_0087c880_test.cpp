@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
-struct CMeleeCombatAbilityDef { unsigned char _pad[0x64]; unsigned char EvadeAllHits; unsigned char CauseRecoil; };
+class CMeleeCombatAbilityDef { public: unsigned char _pad[0x64]; unsigned char EvadeAllHits; unsigned char CauseRecoil; };
 static bool g_flourish;
-struct CCombatActionBase { virtual void v00() { } virtual bool IsMeleeFlourish() const { return g_flourish; } unsigned char _pad04[0xb8 - 4]; CMeleeCombatAbilityDef* PMeleeAbilityDef; unsigned char _padbc[0x114 - 0xbc]; };
+class CCombatActionBase { public: virtual void v00() { } virtual bool IsMeleeFlourish() const { return g_flourish; } unsigned char _pad04[0xb8 - 4]; CMeleeCombatAbilityDef* PMeleeAbilityDef; unsigned char _padbc[0x114 - 0xbc]; };
 
-struct CCreatureAction_InterruptableMidAttackAutoTurn : CCombatActionBase { virtual bool IsToEvadeAllHits() const; };
+class CCreatureAction_InterruptableMidAttackAutoTurn : public CCombatActionBase { public: virtual bool IsToEvadeAllHits() const; };
 bool CCreatureAction_InterruptableMidAttackAutoTurn::IsToEvadeAllHits() const { if (IsMeleeFlourish() && PMeleeAbilityDef->EvadeAllHits) return true; return false; }
 int main()
 {

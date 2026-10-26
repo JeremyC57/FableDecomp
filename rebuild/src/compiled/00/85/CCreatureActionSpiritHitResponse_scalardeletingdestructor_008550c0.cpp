@@ -1,4 +1,4 @@
-struct CCreatureAction_SpiritHitResponse {
+class CCreatureAction_SpiritHitResponse { public:
     void* vftable;
 };
 

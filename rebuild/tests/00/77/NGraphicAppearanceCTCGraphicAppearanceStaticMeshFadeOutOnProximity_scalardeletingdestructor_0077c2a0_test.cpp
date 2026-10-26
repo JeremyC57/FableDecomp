@@ -11,11 +11,11 @@ struct CAGraphicAppearanceComponent { virtual void OnAppearanceDraw() { } virtua
 struct CTCGraphicAppearance {
     void UnregisterComponent(CAGraphicAppearanceComponent* component) { g_unregistered = component; ++g_unregisterCalls; }
 };
-struct CThing {
+class CThing { public:
     CTCGraphicAppearance* PTCGraphicAppearance;
     unsigned char Dead : 1;
 };
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     CTCBase(CThing* thing) : ParentThing(thing) { }
     virtual ~CTCBase() { ++g_baseDtorCalls; }

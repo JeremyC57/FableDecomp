@@ -7,8 +7,8 @@
 // Shape: the out-parameter GetInterface as the if condition; the component rides in esi (re-used after `this` is dead) for both of its calls,
 // &PCreature in edi. The PlayerMode argument is pushed before the creature/player chain (a chained call evaluates its argument first).
 // No usable engine header layout (retail CCreatureActionBase is 0xa8 bytes); modelled like the landed _ForEnflame relative 0x0069F750.
-struct CTCBase;
-struct CPlayer {
+class CTCBase;
+class CPlayer { public:
     void RemoveMode(long mode);             // 0x00634190 (EPlayerMode by value)
 };
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
@@ -17,7 +17,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -41,12 +41,12 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCHeroRangedAttacks {               // interface type 0x81 component
+class CTCHeroRangedAttacks { public:               // interface type 0x81 component
     void CancelAimingWeapon();              // 0x00789FF0
     void ResetProjectileWeaponMode();       // 0x00789B30
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00694D10
@@ -54,7 +54,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
     virtual void Initialise();
 };
 

@@ -19,14 +19,14 @@
 //   dereferenced) and the thing def release (null-tested).
 // Layout: CAugmentationDef Name (text index) +0x28 (as the landed 0x00766140 model); def reference count +4, release
 //   slot 1; CGroupEntry: vptr, IVRefCount +4 (second base), Delete slot 1.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);       // 0x0099B720
 };
 
 extern CWideString g_CWideString_013bad98;       // 0x013BAD98 L"Missing augmentation name!"
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Destroy() const;
     virtual void Release() const;                // slot 1
     mutable long RefCount;                       // +0x04
@@ -37,7 +37,7 @@ struct CDefClassBase {
     }
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -48,7 +48,7 @@ template <class T> struct CDefPointer {
     T* operator->() const { return Object; }
 };
 
-struct CAugmentationDef : CDefClassBase {
+class CAugmentationDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
     unsigned long Name;                          // +0x28
     long  Type;                                  // +0x2c
@@ -60,7 +60,7 @@ struct CAugmentationDef : CDefClassBase {
 void* FindDef_GetSubDef_00765f90();              // stand-in callees of the stand-in bodies below
 void* FindDef_GetDef_00765f90(long index);
 
-struct CThingBaseDef : CDefClassBase {
+class CThingBaseDef : public CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CAugmentationDef>* out) const;   // 0x0042B248 (GetSubDef<CAugmentationDef>)
 };
 
@@ -105,7 +105,7 @@ struct CIVRefCounted {                           // second base: the count at +4
     __forceinline void DecRef() { --IVRefCount; }
     __forceinline unsigned long GetRefCount() const { return IVRefCount; }
 };
-struct CIVCountedPointeeBase : CIVCountedPointeeVirtual, CIVRefCounted {
+class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public:
     __forceinline void ReleaseTemporary()
     {
         DecRef();
@@ -113,7 +113,7 @@ struct CIVCountedPointeeBase : CIVCountedPointeeVirtual, CIVRefCounted {
             Delete();
     }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     ~CIVCountedPointer()
     {
@@ -126,15 +126,15 @@ template <class T> struct CIVCountedPointer {
 };
 
 namespace NGameText {
-struct CGroupEntry : CIVCountedPointeeBase {
+class CGroupEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                 // 0x009C7A40
 };
-struct CDataBank {
+class CDataBank { public:
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
 }
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* TextBank;              // +0x14
 };

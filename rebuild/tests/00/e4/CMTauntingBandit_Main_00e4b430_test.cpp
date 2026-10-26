@@ -1,10 +1,10 @@
 // Behaviour test for CM_TauntingBandit::Main @ 0x00E4B430 (copy of the model with a stub world).
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 static int g_existing, g_created, g_attached, g_live;
 static bool g_done;
-struct CScriptThing {
+class CScriptThing { public:
     int kind;                                        // 1 marker, 2 spawned bandit, 3 village
     CScriptThing() : kind(0) { ++g_live; }
     CScriptThing(const CScriptThing& o) : kind(o.kind) { ++g_live; }
@@ -19,7 +19,7 @@ struct ThingVector {                                 // minimal owning vector of
     unsigned int size() const { return count; }
     void resize(unsigned int n) { delete[] items; items = n ? new CScriptThing[n] : 0; count = n; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long GetAllThingsWithScriptName(const char* name, ThingVector& v) const
     { if (std::strcmp(name, "TauntingBandit")) return 0; v.resize(g_existing); return (long)v.size(); }
     CScriptThing CreateCreature(const char* def, const C3DVector&, const char* name, bool f) const
@@ -27,7 +27,7 @@ struct CGameScriptInterface {
     CScriptThing GetThingWithScriptName(const char* name) const { CScriptThing t; if (!std::strcmp(name, "BanditTollVillage")) t.kind = 3; return t; }
     void EntityAttachToVillage(const CScriptThing& t, const CScriptThing& v) const { if (t.kind == 2 && v.kind == 3) ++g_attached; }
 };
-struct CScriptDef { unsigned long MaxTauntingBandits; };
+class CScriptDef { public: unsigned long MaxTauntingBandits; };
 static CScriptDef g_def;
 struct CM_TauntingBandit {
     CGameScriptInterface* Game; CScriptThing Me;

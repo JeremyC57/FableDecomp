@@ -4,8 +4,8 @@
 #include <cstdio>
 #include <string>
 
-struct CThing { bool HasSound; std::string Played; };
-struct CLightningDef { long RefCount; std::string CastSound; };
+class CThing { public: bool HasSound; std::string Played; };
+class CLightningDef { public: long RefCount; std::string CastSound; };
 static CLightningDef g_def = { 1, "SND_LIGHTNING_CAST" };
 struct CAction {
     CThing* PCreature; long Code; CThing* PTarget; std::string Anim; long State, Param;

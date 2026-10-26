@@ -16,7 +16,7 @@ public:
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data) { ++g_copyCalls; if (length == 4) std::memcpy(&g_addedLong, data, 4); }
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -37,7 +37,7 @@ public:
     long GetCurrentMode() const { return g_mode; }
     bool HasMode(long mode) { return mode == g_hasMode; }
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     unsigned char           _pad04[0x10];          // +0x04 CAInputProcess

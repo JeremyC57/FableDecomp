@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CNavigationPosition { float x0, y0, x1; };   // 12 bytes (x, y, layer as a float slot)
+class CNavigationPosition { public: float x0, y0, x1; };   // 12 bytes (x, y, layer as a float slot)
 static int g_frees = 0;
 struct SVec {
     CNavigationPosition* start; CNavigationPosition* finish; CNavigationPosition* end;

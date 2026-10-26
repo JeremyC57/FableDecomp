@@ -2,8 +2,8 @@
 static int g_calls = 0;
 static unsigned long g_lastFlags = 99;
 struct CTCGraphicAppearance { void SetActivePersistenceFlags(unsigned long flags) { ++g_calls; g_lastFlags = flags; } };
-struct CThing { CTCGraphicAppearance* PGraphicAppearance; };
-struct CTCPhysicsBase {
+class CThing { public: CTCGraphicAppearance* PGraphicAppearance; };
+class CTCPhysicsBase { public:
     CThing* sub;
     void ClearGraphicPersistenceFlags()
     {

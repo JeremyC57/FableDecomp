@@ -2,25 +2,25 @@
 // callees; checks the emitter guards and ClearAttachments, the base call and the WaspQueenDie(owner, 0) restart.
 #include <cstdio>
 static int g_cleared = 0;
-struct CTCDParticleEmitter { void ClearAttachments_006e0de0() { ++g_cleared; } };
-struct CThing {
+class CTCDParticleEmitter { public: void ClearAttachments_006e0de0() { ++g_cleared; } };
+class CThing { public:
     unsigned long m_interfaceBits28; CTCDParticleEmitter* m_pParticleEmitter; unsigned char m_flags91;
     bool GetTCParticleEmitter(CTCDParticleEmitter** out) { if (m_interfaceBits28 & 0x800) { *out = m_pParticleEmitter; return true; } return false; }
 };
-struct CSoundPair { long m_first; long m_second; CSoundPair() : m_first(0), m_second(0) { } };
-struct CCombatActionBase;
+class CSoundPair { public: long m_first; long m_second; CSoundPair() : m_first(0), m_second(0) { } };
+class CCombatActionBase;
 static int g_set = 0; static long g_code = 0; static long g_loop = -1;
-struct CThingCreatureBase : CThing { bool SetCurrentAction(const CCombatActionBase& action); };
+class CThingCreatureBase : public CThing { public: bool SetCurrentAction(const CCombatActionBase& action); };
 struct CBaseIntelligentPointer { void* m_pItem; CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)m_pItem; } };
 static int g_base = 0, g_dtors = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature; long m_code;
     CCombatActionBase() : m_code(0) { }
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair&) : m_code(actionCode) { PCreature.m_pItem = owner; }
     ~CCombatActionBase() { ++g_dtors; }
     void FinishAction() { ++g_base; }
 };
-struct CCreatureAction_WaspQueenDie : CCombatActionBase {
+class CCreatureAction_WaspQueenDie : public CCombatActionBase { public:
     long LoopNum;
     CCreatureAction_WaspQueenDie(CThingCreatureBase* owner, long loopNum) : CCombatActionBase(owner, 250, CSoundPair()), LoopNum(loopNum) { }
 };
@@ -28,7 +28,7 @@ bool CThingCreatureBase::SetCurrentAction(const CCombatActionBase& a)
 {
     ++g_set; g_code = a.m_code; g_loop = ((const CCreatureAction_WaspQueenDie&)a).LoopNum; return a.PCreature.m_pItem == this;
 }
-struct CCreatureAction_WaspQueenDeath : CCombatActionBase {
+class CCreatureAction_WaspQueenDeath : public CCombatActionBase { public:
     CBaseIntelligentPointer PEmitter;
     void FinishAction();
 };

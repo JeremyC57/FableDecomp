@@ -22,20 +22,20 @@ static int fails = 0;
 //          copy then addresses the pointer subobject off `this` ([edi+0x10]/[edi+0xc]) instead of reusing the &Me
 //          register the interface calls keep in ebp.
 #include <new>
-struct CCharString {                                 // 4 bytes: the shared string block pointer
+class CCharString { public:                                 // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 
-struct CCPPointerInfo { long References; };
-template <class T> struct CCountedPointer {         // PDB CScriptThing::PImp: CCountedPointer<CScriptThing> {Data, Info}
+class CCPPointerInfo { public: long References; };
+template <class T> class CCountedPointer { public:         // PDB CScriptThing::PImp: CCountedPointer<CScriptThing> {Data, Info}
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptThingRuntime {
     virtual ~CScriptThingRuntime(); // CScriptThing RTTI slot 0, 0x004AB170
@@ -101,7 +101,7 @@ struct CSpawnedFuncBaseRuntime : CScriptProcessBaseRuntime {
 };
 
 struct CSpawnedFuncPhase3;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

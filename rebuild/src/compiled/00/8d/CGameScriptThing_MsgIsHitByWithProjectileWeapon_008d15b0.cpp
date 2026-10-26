@@ -27,10 +27,10 @@ __forceinline long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->P
 #define CCharString CCharStringDonor
 #include "fable_string.h"
 #undef CCharString
-struct CCharString {CCharStringData* storage_;CCharString();CCharString(const char*,long);CCharString(const CCharString&);~CCharString();}; //copy0099EC30, dtor0099EAE0
+class CCharString { public:CCharStringData* storage_;CCharString();CCharString(const char*,long);CCharString(const CCharString&);~CCharString();}; //copy0099EC30, dtor0099EAE0
 namespace NEntityEvents {enum EEventType { HitThing=29,MoralityChanged=35,CutSceneAnimEvent=36 };}
 struct EventBase {EventBase();virtual ~EventBase();virtual NEntityEvents::EEventType GetType()const=0;virtual void OnAdd(const CTCEntityEvents&);virtual long GetLifeTime()const;virtual bool IsReadyToDie()const;long WorldFrame;};
-struct CHitParameters;
+class CHitParameters;
 struct HitEventBase:EventBase {HitEventBase(const CHitParameters&);virtual ~HitEventBase();virtual long GetLifeTime()const;virtual bool IsFlourish()const;CHitParameters* HitParams;void*HitParamsInfo;CThingNative* GetPHitBy()const;float GetBuildupTime()const;}; // PDB008078C0 ctor,00807010 virtual IsFlourish; native00810F30 GetBuildupTime
 struct HitByEvent:HitEventBase {HitByEvent(const CHitParameters&);virtual ~HitByEvent();virtual NEntityEvents::EEventType GetType()const;}; // PDB00815E20 genuine const-reference ctor
 

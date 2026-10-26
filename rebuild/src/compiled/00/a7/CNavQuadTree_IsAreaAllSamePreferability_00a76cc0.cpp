@@ -9,8 +9,8 @@
 //   `return true` exit keeps every callee-saved push at entry); the cell loops compare `(float)index`
 //   against loop-invariant far edges; the first cell's weight is kept in a byte local (homed in the dead node slot)
 //   with a found flag in bl.
-struct C2DVector { float X, Y; };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 extern const float g_QuadTreeLevelSizes[];         // 0x0129DCAC
 class CANavQuadTreeNode {
 public:

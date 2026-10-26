@@ -4,8 +4,8 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 typedef unsigned int u32;
-struct C3DVector { float x, y, z; };
-struct CThing { long type; C3DVector pos; };
+class C3DVector { public: float x, y, z; };
+class CThing { public: long type; C3DVector pos; };
 static std::vector<CThing*> g_things;
 static u32 g_seed = 7;
 static u32 GFROR13(u32 v) { return (v >> 13) | (v << 19); }

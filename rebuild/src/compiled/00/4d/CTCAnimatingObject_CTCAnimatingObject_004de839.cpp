@@ -14,9 +14,9 @@
 // Leaf: ??0CTCAnimatingObject
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -31,7 +31,7 @@ struct CRetailList_CAnimInit {                          // retail std::list<CAni
     CRetailList_CAnimInit(const CRetailAllocator& al = CRetailAllocator());   // 0x004DB674
 };
 
-struct CTCAnimatingObject : CTCBase {
+class CTCAnimatingObject : public CTCBase { public:
     bool                  Animating;                    // +0x0c
     long                  CurrentAnimationPriority;     // +0x10
     CRetailList_CAnimInit QueuedAnims;                  // +0x14

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DB6BF0, length 80 bytes.
 // Leaf: Init
 // Shape: `this` in esi, the thing in edi, the game interface and its vtable reloaded for each call, `ret`.
-struct CScriptThing { unsigned char m_body[0xc]; };
+class CScriptThing { public: unsigned char m_body[0xc]; };
 struct CGameCalls_00db6bf0 {
     virtual void v000();
     virtual void v001();

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF8C10, length 80 bytes.
 // Leaf: ??_GCLandscapeBackgroundLoadTask@@QAEPAXI@Z
 // Shape: no vtable (a non-polymorphic class with its own `operator delete`), `this` in esi, `ret 4`.
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
 struct SEngine_01436ea8 {
@@ -13,7 +13,7 @@ extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
 struct CRequestOwner_00bf8c10 {                   // the owned object: a virtual deleting destructor in slot 0
     virtual ~CRequestOwner_00bf8c10();
 };
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(void* request);            // 0x00BE0400
 };
 struct CLandscapeBackgroundLoadTask {              // 16 bytes, no vtable: freed through the landscape memory manager

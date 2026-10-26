@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[32] = ""; static bool g_held = false, g_isAction = false; static long g_action = 0, g_mode = 0; static const void* g_event = 0;
-struct CInputEvent { long m_kind; };
-struct CProcessedInput { long Player; long Type; unsigned char GameEvents[0xa0]; unsigned char NoGameEvents; unsigned char _pad[3]; long Priority; void SetHandled() { NoGameEvents = 0; Type = 2; std::strcat(g_seq, "H"); } };
-struct CPlayer { void RemoveMode(long mode) { std::strcat(g_seq, "R"); g_mode = mode; } };
+class CInputEvent { public: long m_kind; };
+class CProcessedInput { public: long Player; long Type; unsigned char GameEvents[0xa0]; unsigned char NoGameEvents; unsigned char _pad[3]; long Priority; void SetHandled() { NoGameEvents = 0; Type = 2; std::strcat(g_seq, "H"); } };
+class CPlayer { public: void RemoveMode(long mode) { std::strcat(g_seq, "R"); g_mode = mode; } };
 struct CInputProcessGameBase { virtual void v00() { } unsigned char _pad04[0x10]; void* World; CPlayer* MyPlayer; void* DefinitionManager; void* Component; void* PGamePlayerInterface;
     bool IsEventButtonHeld(const CInputEvent& event) { std::strcat(g_seq, "B"); g_event = &event; return g_held; }
     bool IsEventGameAction(long action, const CInputEvent& event) { std::strcat(g_seq, "A"); g_action = action; g_event = &event; return g_isAction; } };
-struct CInputProcessFirstPersonTargeting : CInputProcessGameBase {
+class CInputProcessFirstPersonTargeting : public CInputProcessGameBase { public:
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed) { if (IsEventButtonHeld(event)) { if (!IsEventGameAction(10, event)) { MyPlayer->RemoveMode(0x16); processed.SetHandled(); } } }
 };
 int main()

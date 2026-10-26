@@ -1,11 +1,11 @@
 // behaviour test for CThingCreatureBase::IsThingInFOV (0x00665190): default/perception radius and fov, squared-range gate, angle test forwarding
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} float GetLengthSquared() const { return X * X + Y * Y + Z * Z; } };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} float GetLengthSquared() const { return X * X + Y * Y + Z * Z; } };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; } };
-struct CTCPerceiveThing { float m_radius, m_fov; float GetExtendedSightRadius() { return m_radius; } float GetFieldOfView_007445d0() { return m_fov; } };
+class CTCPerceiveThing { public: float m_radius, m_fov; float GetExtendedSightRadius() { return m_radius; } float GetFieldOfView_007445d0() { return m_fov; } };
 class CThing { public:
     unsigned long UsingComponents[9]; CInterfaceMap Components; C3DVector m_pos;
     CThing() : m_pos(0, 0, 0) {}

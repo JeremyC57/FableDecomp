@@ -17,7 +17,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCompositeBlendDesc;
+class CCompositeBlendDesc;
 
 class CCompositeBlendDescVector {                           // vector<CCompositeBlendDesc> (retail STLport, 12 bytes)
 public:
@@ -29,7 +29,7 @@ public:
     ~CCompositeBlendDescVector();                                                   // inline in the helpers
 };
 
-struct CEngineTextureDecal {                                // Ego_r.pdb; 20 bytes retail
+class CEngineTextureDecal { public:                                // Ego_r.pdb; 20 bytes retail
     long                      OriginalTextureIndex;         // +0x00
     long                      DecalID;                      // +0x04
     CCompositeBlendDescVector OverlaidBlends;               // +0x08

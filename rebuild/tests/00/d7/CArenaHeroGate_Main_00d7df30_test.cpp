@@ -2,7 +2,7 @@
 // abort test ending the script inside a wait or between the steps.
 #include <cstdio>
 
-struct CScriptThing { long id; };
+class CScriptThing { public: long id; };
 struct CQ_HeroSoulsArenaScript { bool m_gateMayOpen; };
 struct CQ_SunnyvaleMasterData { bool m_gateMayClose; };
 struct CArenaHeroGate;

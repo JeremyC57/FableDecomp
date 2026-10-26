@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     bool m_forceFrameUpdate; int m_calls;
     void SetForceFrameUpdate(bool update) { m_forceFrameUpdate = update; ++m_calls; }
 };
-struct CTCExplodingObject {
+class CTCExplodingObject { public:
     CThing* ParentThing; float MaxDamage; float Radius; long FireDamage; long CountdownTimer;
     bool TriggeredOnCreatureProximity; float TriggerRadius;
     void OnCreate() { if (TriggeredOnCreatureProximity) ParentThing->SetForceFrameUpdate(true); }

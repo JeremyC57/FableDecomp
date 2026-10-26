@@ -7,7 +7,7 @@
 // first in ecx, last in edx, no tag argument -> plain `ret`).
 // Callees: CLevelFiles::~CLevelFiles @ 0x0050F980.
 // Shape: the for loop becomes the guarded do-while (`cmp ; je` once, `cmp ; jne` at the bottom); `last` stays in edi.
-struct CAFile;
+class CAFile;
 struct CCountedPointerAFile { CAFile* Object; void* Block; };
 struct CLevelFiles {                        // CLevelLoader::CObject::CLevelFiles (28 bytes)
     long LevelID;                           // +0x00

@@ -6,7 +6,7 @@
 #endif
 static int g_stringCopies = 0, g_stringAssigns = 0;
 struct CHitLocation;
-struct C3DVector { float X, Y, Z; };                // 12 bytes
+class C3DVector { public: float X, Y, Z; };                // 12 bytes
 namespace {
 struct THitLocationIntersectionElement {        // 32 bytes
     long          key;                          // +0x00

@@ -1,4 +1,4 @@
-struct CCreatureAction_BuildHealLifeSpell {
+class CCreatureAction_BuildHealLifeSpell { public:
     void* vftable;
 };
 

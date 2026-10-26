@@ -1,5 +1,5 @@
 // CWorldMap::DrawGetSizeZAt(const C3DVector&, float) const -- draw interface: ask the loaded map under a world position for its Z size there (0 when no loaded map)
-// Leaf: ?DrawGetSizeZAt@CWorldMap@@UBEMABUC3DVector@@M@Z
+// Leaf: ?DrawGetSizeZAt@CWorldMap@@UBEMABVC3DVector@@M@Z
 // Retail: Fable.exe @ 0x004FC6C0, 153 bytes, `ret 8`. PDB ?DrawGetSizeZAt@CWorldMap@@UBEMABVC3DVector@@M@Z
 // Virtual slot 5 of the CIDrawWorldMap interface (vtable 0x01244AB4) at +0x04 of CWorldMap (primary vtable 0x01244AEC):
 // `this` arrives at +4 and the primary calls go through `lea esi,[ebp-4]`.
@@ -16,24 +16,24 @@
 // +0x20 MapUID, +0x24 Used ... +0x40 IsSea.
 // Shape: the position is converted to map-local space (pos - map corner, Z kept) in a frame C3DVector that reuses the
 // coordinate's slot; map 0 and unloaded maps give 0.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
 
-struct CMap {
+class CMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual float DrawGetSizeZAt(const C3DVector* pos, float f) const;   // slot 4 (+0x10) 0x008F7630
 };
 
-struct CMapInfo {
+class CMapInfo { public:
     C2DBoxI       Area;                         // +0x00
     unsigned char _rest[0x38];                  // +0x10 .. +0x48
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;                                   // +0x00
     T* Finish;                                  // +0x04
     T* EndOfStorage;                            // +0x08
@@ -50,12 +50,12 @@ struct CIWorldMap {                             // primary vtable 0x01244AEC
     virtual const CMap& PeekMap(long map) const;                   // slot 19 (+0x4C)
 };
 
-struct CIDrawWorldMap {                         // vtable 0x01244AB4
+class CIDrawWorldMap { public:                         // vtable 0x01244AB4
     virtual void d00(); virtual void d01(); virtual void d02(); virtual void d03(); virtual void d04();
     virtual float DrawGetSizeZAt(const C3DVector& pos, float f) const = 0;   // slot 5
 };
 
-struct CWorldMap : CIWorldMap, CIDrawWorldMap {
+class CWorldMap : public CIWorldMap, public CIDrawWorldMap { public:
     unsigned char    _pad08[0x18];
     CArray<CMapInfo> Maps;                      // +0x20
     float DrawGetSizeZAt(const C3DVector& pos, float f) const;

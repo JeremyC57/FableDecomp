@@ -13,14 +13,14 @@
 // Shape: the handle is declared (never used) at function scope after the first terminating test; the two creature-name
 //        strings are implicit conversion temporaries built before the CreateCreature pushes (Me.GetPos() is evaluated
 //        between the pushes); the spawned creature is a block-scoped by-value local.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void v00();   // slot 0 (+0x0)
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
@@ -46,7 +46,7 @@ struct CScriptThingView {
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CBaseObject {                                   // CBaseIntelligentPointer root
+class CBaseObject { public:                                   // CBaseIntelligentPointer root
     virtual void v00();
     void* m_pIntelligentPointer;                       // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -56,14 +56,14 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     virtual void FollowThing(const CScriptThing& thing, float distance, bool run);   // slot 7 (+0x1c)
 };
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -134,7 +134,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
     ~CIsThingAlive() { }
 };
 
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

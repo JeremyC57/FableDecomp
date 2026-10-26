@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -7,7 +7,7 @@ struct C2DVector {
     C2DVector operator-(const C2DVector& v) const { return C2DVector(X - v.X, Y - v.Y); }
     C2DVector operator*(float s) const { return C2DVector(X * s, Y * s); }
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 
     void MoveTo(const C2DVector& tl)
@@ -23,7 +23,7 @@ struct SCountBlock {
     void (*m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;
     SCountBlock* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -36,7 +36,7 @@ template <class T> struct CCountedPointer {
         }
     }
 };
-struct CGraphicDataBank;
+class CGraphicDataBank;
 float GFAXToVX_009e1da0(float x) { return x * 2.0f; }
 float GFAYToVY_009e1dd0(float y) { return y * 4.0f; }
 struct CRenderManager2D {
@@ -44,8 +44,8 @@ struct CRenderManager2D {
     bool Draw2DScaledGraphic(const C2DBoxF& box, CGraphicDataBank* bank, unsigned long graphic,
                              unsigned long a, unsigned long b);
 };
-struct CRenderManager { unsigned char _pad[8]; CRenderManager2D* RenderManager2D; };   // +0x08
-struct CSystemManager { unsigned char _pad[0x60]; CRenderManager* RenderManager; };     // +0x60
+class CRenderManager { public: unsigned char _pad[8]; CRenderManager2D* RenderManager2D; };   // +0x08
+class CSystemManager { public: unsigned char _pad[0x60]; CRenderManager* RenderManager; };     // +0x60
 CSystemManager* GFGetSystemManager();
 struct CFrontEndManager {
     static CFrontEndManager* GetInstance();

@@ -11,14 +11,14 @@ struct CCountedVirtual {
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
 };
-struct CAnimComponentMap : CCountedVirtual, CRefCounted {
+class CAnimComponentMap : public CCountedVirtual, public CRefCounted { public:
     void Release()
     {
         if (DecRefToZero(m_count))
             Destroy();
     }
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -32,7 +32,7 @@ struct CIVCountedPointer_AnimComponentMap {
             object->Release();
     }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long                               BankIndex;
     CDefString                         AnimName;
     CDefString                         GroupName;

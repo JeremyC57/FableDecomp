@@ -7,7 +7,7 @@
 // `fill(first, last, value)` (`__fastcall`: first in ecx, last in edx, the value reference on
 // the stack) for 8-byte elements with an out-of-line copy-assignment @ 0x009FA1C0.
 // One of 12 bodies of this shape.
-struct CTexture {
+class CTexture { public:
     unsigned char _body[0x8];
     CTexture& operator=(const CTexture& other);   // 0x009FA1C0
 };

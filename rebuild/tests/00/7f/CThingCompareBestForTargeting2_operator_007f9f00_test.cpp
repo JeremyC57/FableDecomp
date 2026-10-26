@@ -18,18 +18,18 @@ static int fails = 0;
 //   argument slot `[esp+10h]`), then `if (valueA > valueB) return true;` -- `fcomp ; pop edi ; pop esi ; fnstsw ax ;
 //   pop ebx` (the inline call-expression compare schedules all three pops before fnstsw); the if-form gives the byte
 //   `mov al,1` / `xor al,al` exits.
-struct C3DVector;
+class C3DVector;
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition();     // 0x004C73D0
 };
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     unsigned char _body[0x2c];
     float GetCompareValueForPoint(const C3DVector& point);     // 0x007F9660
 };
 
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero;                                       // +0x00
     CVectorCompare_BestForTargeting VectorCompare;      // +0x04
     float EnemyPreferenceFactor;                        // +0x30
@@ -51,7 +51,7 @@ bool CThingCompare_BestForTargeting2::operator()(CThing* a, CThing* b)
 }
 
 // ---- stubs and driver ----
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_log[16]; static int g_n = 0;
 static C3DVector g_pos[2];
 static CThing g_things[2];

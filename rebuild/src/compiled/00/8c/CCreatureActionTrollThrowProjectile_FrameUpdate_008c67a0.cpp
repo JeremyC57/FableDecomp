@@ -10,9 +10,9 @@
 // the absent path skipping the test; the shot is fetched into a named local before the alpha argument is pushed; its "being deleted" byte is bit 0 of thing +0x91.
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
-struct CTCBase;
-struct CTCCarrying;
-struct CThing;
+class CTCBase;
+class CTCCarrying;
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -25,7 +25,7 @@ struct CTCGraphicAppearance {
     void SetAlpha(unsigned char alpha);         // 0x004BFAC0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
@@ -46,7 +46,7 @@ struct CThing {
     }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
 
@@ -56,7 +56,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
@@ -64,7 +64,7 @@ struct CCombatActionBase {
     void FrameUpdate();                         // 0x00859D80
 };
 
-struct CCreatureAction_TrollThrowProjectile : CCombatActionBase {
+class CCreatureAction_TrollThrowProjectile : public CCombatActionBase { public:
     CBaseIntelligentPointer PShot;              // +0x114
     unsigned char           _pad11c[0x12c - 0x11c];
     long                    ShotAlpha;          // +0x12c

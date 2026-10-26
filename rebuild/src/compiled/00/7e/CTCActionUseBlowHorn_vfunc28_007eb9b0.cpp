@@ -20,7 +20,7 @@
 // Header note: engine/CCreatureActionBase.h, CThingCreatureBase.h and CCreatureAction_BlowHorn.h hold the
 // flattened PDB layouts only (the retail action is 0xc bytes narrower), so the action classes and the
 // creature are modelled locally with a _Retail suffix.
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
@@ -46,7 +46,7 @@ struct CCreatureAction_BlowHorn_Retail : CCreatureActionBase_Retail {
     CCreatureAction_BlowHorn_Retail(CThingCreatureBase_Retail* creature, CThing* horn);   // 0x00842EC0
 };
 
-struct CTCActionUseBase {
+class CTCActionUseBase { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     void vfunc_28(CThingCreatureBase_Retail* creature);  // 0x007EAB90 (empty)

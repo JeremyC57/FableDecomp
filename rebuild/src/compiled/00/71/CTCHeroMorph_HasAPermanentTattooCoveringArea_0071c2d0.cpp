@@ -10,12 +10,12 @@
 // Layout: retail Tattoos +0x1c (12-byte vector of CDefPointer<const CThingBaseDef>); the tattoo sub-def: permanent flag +0x3d,
 // covered area +0x40 (descriptive names).
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                      // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; }
@@ -35,13 +35,13 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     const T* begin() const { return _M_start; }
     const T* end() const { return _M_finish; }
 };
-struct CTattooDef : CDefPointeeBase {
+class CTattooDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x3d - 0x08];
     bool  Permanent;                            // +0x3d
     unsigned char _pad3e[2];
     long  CoveredArea;                          // +0x40
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CSubDefPointer<const CTattooDef>* out) const;  // 0x005B1EFC
 };
 void* FindDef_CThingBaseDef_GetSubDef_0();   // stand-in callee of the stand-in body below

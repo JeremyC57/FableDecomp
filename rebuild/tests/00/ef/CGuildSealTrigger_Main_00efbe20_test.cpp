@@ -3,10 +3,10 @@
 #include <cstring>
 static int g_frame, g_doneAt, g_filters, g_on, g_off, g_pauses;
 static bool g_hasSeal, g_triggerActive;
-struct CScriptThing { int id; void SetActivationTriggerStatus(bool a) { g_triggerActive = a; if (a) ++g_on; else ++g_off; } };
+class CScriptThing { public: int id; void SetActivationTriggerStatus(bool a) { g_triggerActive = a; if (a) ++g_on; else ++g_off; } };
 struct CIsThingConscious { CScriptThing m_thing; CIsThingConscious(const CScriptThing& t) : m_thing(t) {} };
 static bool IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float d) { return d == 2.0f && (g_frame % 3) == 0; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frame; }
     const CScriptThing& GetHero() const { return hero; }

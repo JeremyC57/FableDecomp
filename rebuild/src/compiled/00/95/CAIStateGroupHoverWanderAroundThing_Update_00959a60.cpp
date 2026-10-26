@@ -12,8 +12,8 @@
 // Layout: the generated engine/CAIStateGroup_HoverWanderAroundThing.h spells the vptr as a data member, so the class is
 //          modelled locally with a polymorphic base (PBrain +0x04, PThing intelligent pointer +0x1c as in the header):
 //          the function makes a virtual call through slot 22.
-struct CTCBase;
-struct CThingCreatureBase;
+class CTCBase;
+class CThingCreatureBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -22,11 +22,11 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -52,7 +52,7 @@ struct CThing {
     }
 };
 
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool onMap);   // 0x006CB6E0
 };
 
@@ -65,7 +65,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
@@ -78,17 +78,17 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

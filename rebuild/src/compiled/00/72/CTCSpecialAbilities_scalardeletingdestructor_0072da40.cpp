@@ -1,4 +1,4 @@
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     void* vftable;
 };
 

@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 #pragma optimize("y", off)
 
-struct CEngineSceneGrid {};
+class CEngineSceneGrid { public:};
 
 // __cdecl helper at 0x5b1afd: (ulong, ulong, out ptr) -> bool
 extern bool helper_5b1afd(unsigned long a, unsigned long b, void* out);

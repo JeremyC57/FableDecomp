@@ -6,7 +6,7 @@
 // retail-only (no PDB layout for this class here), modelled locally.
 // Shape: the factor is a named float read first (`fld [eax*4+...]` before the differences); `(end - start) * t + start` through the
 // inline C3DVector operators (as the line midpoint 0x00BC7D40), the sum copied into the argument by integer moves.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -21,7 +21,7 @@ struct CEngineInterpolationInfoSet {
     float WFInterpolate;
 };
 
-struct CEngineInterpolationInfo {
+class CEngineInterpolationInfo { public:
     CEngineInterpolationInfoSet Sets[6];
     long                        WFServerCurrentTime;   // +0x48
     CEngineInterpolationInfoSet InterpolationSetList[3];   // +0x4c

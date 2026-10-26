@@ -14,11 +14,11 @@
 // `if (HasTC) t = GetTC; else t = AddTC(...)` with the string slot address formed before the branch.
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
-struct CTCBase;
-struct CTCParamsBase;
-struct CRightHandedSet;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class CTCBase;
+class CTCParamsBase;
+class CRightHandedSet;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -48,14 +48,14 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CEnginePrimitiveThemeChannelDesc;
+class CEnginePrimitiveThemeChannelDesc;
 struct CTCGraphicAppearance {
     unsigned char _pad00[0x40];
     unsigned char LightingChannel[4];                   // +0x40
     void SetLightingChannel(CEnginePrimitiveThemeChannelDesc* channel, bool a, bool b);   // 0x004BFB40
     void SetAsChanged(unsigned long what);              // 0x004BF9E0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -70,7 +70,7 @@ struct CTCPhysicsBase {
     virtual void SetSpin(float spin);                   // slot 66 (+0x108)
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x20];
     unsigned long         m_presentBits[9];             // +0x20
     CInterfaceMap         m_interfaces;                 // +0x44
@@ -95,10 +95,10 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 struct CGameComponents {
     unsigned long* GetRandomSeed();                     // 0x0049D810
 };
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing);             // 0x00770FA0
 };
-struct CTCLifeTimer {
+class CTCLifeTimer { public:
     unsigned char _pad00[0x10];
     bool          Active;                               // +0x10
     bool          Expired;                              // +0x11

@@ -1,15 +1,15 @@
 #include <cstdio>
 #include <cstring>
 static int g_dtors = 0;
-struct CCharString { const char* text; ~CCharString() { ++g_dtors; } };
+class CCharString { public: const char* text; ~CCharString() { ++g_dtors; } };
 static const char* g_table[4] = { "loop1", "loop2", "loop3", "loop4" };
 struct CDefStringTable { CCharString GetString(long id) { CCharString s; s.text = g_table[id]; return s; } };
 static CDefStringTable g_DefStringTable;
-struct CThing { unsigned char Type; };
-struct CSpecialAbilitiesPhysicalShieldDef { long LoopingSound[4]; };
+class CThing { public: unsigned char Type; };
+class CSpecialAbilitiesPhysicalShieldDef { public: long LoopingSound[4]; };
 static char g_lastSound[16] = "";
 static int g_lastPlayer = -1;
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     CThing* ParentThing;
     const CSpecialAbilitiesPhysicalShieldDef* PDef;
     long SpellLevel;

@@ -4,11 +4,11 @@
 
 struct CThingState { unsigned char m_flags; };
 static int g_forced = 0;
-struct CThing {
+class CThing { public:
     CThingState* m_pState;
     void SetForceFrameUpdate(bool force) { if (force) ++g_forced; }
 };
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     CTCBase(CThing* parent) : ParentThing(parent) {}
     virtual ~CTCBase() {}
@@ -23,7 +23,7 @@ struct CList {
         sentinel->next = sentinel; sentinel->prev = sentinel; head = sentinel;
     }
 };
-struct CTCTrophy : CTCBase {
+class CTCTrophy : public CTCBase { public:
     CDefPointer PDef; long NonMinigameDeedHandle; bool MinigameInProgress;
     long BestWitnessesAheadToDate, MinigameInitialFramesLeft, MinigameCurrentFramesLeft, MinigameStartingWitnessCount,
          NumberOfWitnessesLeft, PendingGainedWitnessSounds, FrameForNextGainedWitnessSound;

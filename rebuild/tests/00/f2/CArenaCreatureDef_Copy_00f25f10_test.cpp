@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString { void* PStringData; CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; } };
+class CCharString { public: void* PStringData; CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; } };
 static int g_base = 0;
 struct CDefBase { unsigned char _body[0x28]; CDefBase& Copy(const CDefBase& o) { std::memcpy(_body, o._body, 0x28); ++g_base; return *this; } };
-struct CArenaCreatureDef : CDefBase {
+class CArenaCreatureDef : public CDefBase { public:
     CCharString CreatureType; long NumCreatures; CCharString HUDType; long DeathScore;
     CArenaCreatureDef& Copy(const CArenaCreatureDef& o) { CDefBase::Copy(o); CreatureType = o.CreatureType; NumCreatures = o.NumCreatures; HUDType = o.HUDType; DeathScore = o.DeathScore; return *this; }
 };

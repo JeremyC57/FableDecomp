@@ -1,6 +1,6 @@
 #include <stdio.h>
 struct CHeader { unsigned char _pad00[0xf]; unsigned char Locked; };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     unsigned char _pad00[0x18]; long LockCount; unsigned char _pad1c[0x440 - 0x1c]; CHeader** Handles;
     void Lock(long handle) { CHeader** slot = &Handles[handle]; if ((*slot)->Locked == 0) { (*slot)->Locked = 1; LockCount++; } }
 };

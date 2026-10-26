@@ -19,7 +19,7 @@ typedef long S32; typedef unsigned long U32; typedef __int64 S64;
 #define INLINE inline
 typedef int S32; typedef unsigned int U32; typedef long long S64;
 #endif
-struct CDataInputStream : CDataInputStreamLayout {
+class CDataInputStream : public CDataInputStreamLayout { public:
     void ReadWithSrcChunkOverflow(unsigned char*,long); // 0x00993ca0
     INLINE void Read(void* destination,long bytes) {
         S64 next=(U32)(StreamPos+bytes);
@@ -35,14 +35,14 @@ struct CDataInputStream : CDataInputStreamLayout {
 };
 // Native memory stream derives from the six-field CDataInputStream base;
 // donor flattened chunkBase is incorrectly long, native +0c is a pointer.
-struct CMemoryDataInputStream : CDataInputStream {unsigned char* StreamSource;};
+class CMemoryDataInputStream : public CDataInputStream { public:unsigned char* StreamSource;};
 struct BoundingSphere { float X,Y,Z,Radius; BoundingSphere():X(0),Y(0),Z(0),Radius(0) {} };
 struct CacheGroupFileHeader {
     S32 FileBlockPos,FileBlockSize,OffsetIntoFileBlock;
     BoundingSphere Sphere; float MaxFadeDistance; U32 PrimitiveTypeMask;
     unsigned short CacheGroupIndex; bool RenderUpdateNeeded;
 };
-struct CLocalDetailCacheMap {struct CObjectCacheGroupCollection {
+class CLocalDetailCacheMap { public:class CObjectCacheGroupCollection { public:
     void* VTable; CObjectCacheGroupCollection* Next; BoundingSphere Sphere;
     float MaxFadeDistance; U32 PrimitiveTypeMask; void* ObjectTypeCollections; void* Map;
     S32 FileBlockPos,FileBlockSize,OffsetIntoFileBlock;

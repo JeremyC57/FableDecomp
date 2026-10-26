@@ -1,10 +1,10 @@
 // Behaviour test for CThingVillage::ConstructFromParams (0x0083B340): forwards to the game-object base with an empty name.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 class CThingPhysical;
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long = -1) : text(t) { ++g_live; }
     ~CCharString() { --g_live; }

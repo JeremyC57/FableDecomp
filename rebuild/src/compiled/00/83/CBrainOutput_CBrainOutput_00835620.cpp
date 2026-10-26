@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01237F1C
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
 struct SCountBlock {                            // the shared count block of a CCountedPointer
     long m_references;                          // +0x00
@@ -48,9 +48,9 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CNavigationInput {                       // 24 bytes: the first three dwords are left to the caller
+class CNavigationInput { public:                       // 24 bytes: the first three dwords are left to the caller
     long m_00;
     long m_04;
     long m_08;
@@ -60,7 +60,7 @@ struct CNavigationInput {                       // 24 bytes: the first three dwo
     CNavigationInput() : m_0c(0), MovementType(0), m_14(0) { }
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long                     Types;            // +0x00
     long                              LookFlags;        // +0x04
     CNavigationInput                  NavigationInput;  // +0x08

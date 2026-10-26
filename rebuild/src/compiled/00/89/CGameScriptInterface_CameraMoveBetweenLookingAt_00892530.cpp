@@ -22,7 +22,7 @@ public:
     CScriptModuleMoveBetweenLookingAt(const C3DVector& lookAt, const C3DVector& from, const C3DVector& to, long frames, float f);   // 0x008524C0
 };
 }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

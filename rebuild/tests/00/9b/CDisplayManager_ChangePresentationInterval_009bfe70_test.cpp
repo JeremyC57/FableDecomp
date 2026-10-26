@@ -10,7 +10,7 @@ struct CCreateDeviceParameters {
     void* WinHandle; long X, Y; long BackBufferBitDepth, ZBufferBitDepth, BackBufferCount, RefreshRate;
     bool ExclusiveMode; CPresentationIntervalDesc PresentationInterval; long MultisampleType;
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     CCreateDeviceParameters LastDeviceCreationParameters;
     int resets; CCreateDeviceParameters seen;
     long ResetDevice(CCreateDeviceParameters* p) { ++resets; seen = *p; return 0; }

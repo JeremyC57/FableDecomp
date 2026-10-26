@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-struct C3DVector { float X, Y, Z; C3DVector() { } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
 
 #pragma pack(push, 1)
 struct CPlayerPositionInfo {

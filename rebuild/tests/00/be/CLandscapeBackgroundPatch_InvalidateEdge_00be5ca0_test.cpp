@@ -1,8 +1,8 @@
 // Behaviour test for 00be5ca0 CLandscapeBackgroundPatch::InvalidateEdge: clears the Tesselated flag of edge strip 0..3,
 // ignores any other index.
 #include <cstdio>
-struct CPatchTesselationEdgeStrip { unsigned short StartPos, Size; bool Tesselated; bool Vertical; };
-struct CLandscapeBackgroundPatch {
+class CPatchTesselationEdgeStrip { public: unsigned short StartPos, Size; bool Tesselated; bool Vertical; };
+class CLandscapeBackgroundPatch { public:
     CPatchTesselationEdgeStrip EdgeStrips[4];
     CPatchTesselationEdgeStrip* Strip(long index) { return EdgeStrips + index; }
     void InvalidateEdge(long edge)

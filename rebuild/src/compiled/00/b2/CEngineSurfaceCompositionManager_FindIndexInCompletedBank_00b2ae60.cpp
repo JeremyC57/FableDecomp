@@ -8,7 +8,7 @@
 // at +0x41c (PDB containers are wider), so `this` is modelled locally. The morph's two texture ids are its first words.
 // Shape: both ids are read into locals before the first conversion (the first one survives the call in edi); the chained `+` evaluates right to left (the second id is converted first); the three temporaries die in
 // construction order before the lookup; the name itself is homed in the dead `morph` argument slot.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
@@ -16,16 +16,16 @@ CCharString __fastcall GFIntToCharString(long value);                           
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 
-struct CEngineTextureMorph {
+class CEngineTextureMorph { public:
     long m_fromTexture;                            // +0x00
     long m_toTexture;                              // +0x04
 };
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     unsigned long FindIndex(const CCharString& name);   // 0x009CCDC0
 };
 
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     unsigned char    _pad[0x398];
     CGraphicDataBank m_completedBank;              // +0x398
     unsigned long FindIndexInCompletedBank(const CEngineTextureMorph* morph);

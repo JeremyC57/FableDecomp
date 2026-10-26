@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct TreeNode {
+class TreeNode { public:
     char pad0[8];
     TreeNode* next;   // +0x8
     TreeNode* child;  // +0xc

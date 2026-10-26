@@ -9,9 +9,9 @@ template<class T> struct CVectorBase {
     CVectorBase(const SAllocator& a) : m_pFirst(0), m_pLast(0), m_end(a, 0) {}
 };
 template<class T> struct CRetailVector : CVectorBase<T> { CRetailVector() : CVectorBase<T>(SAllocator()) {} };
-struct CMap { int built; CMap() : built(1) { ++g_mapCtor; } };
-struct CAttackHistoryCombo { long a; };
-struct CHeroExperienceDef : CDefinitionBase {
+class CMap { public: int built; CMap() : built(1) { ++g_mapCtor; } };
+class CAttackHistoryCombo { public: long a; };
+class CHeroExperienceDef : public CDefinitionBase { public:
     CRetailVector<long> ExperienceLevelThresholds, HeroLevelTitles, FallbackMultipliers;
     CMap SoundIntensityThresholds, ComboMultiplierMap;
     float f1, f2;

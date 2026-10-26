@@ -2,9 +2,9 @@
 #include <cstring>
 // Model of CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath::Clone @ 0x007F06D0
 static int g_copies = 0;
-struct CCombatActionBase { virtual void v00() {} unsigned char _body[0x114 - 4]; CCombatActionBase() { std::memset(_body, 0x11, sizeof(_body)); } CCombatActionBase(const CCombatActionBase& o) { ++g_copies; std::memcpy(_body, o._body, sizeof(_body)); } };
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase : CCombatActionBase { bool CanBeHit; bool Flip; virtual void v00() {} };
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath : CCombatAction_GenericStrikeResponseKnockdownRecoverBase {
+class CCombatActionBase { public: virtual void v00() {} unsigned char _body[0x114 - 4]; CCombatActionBase() { std::memset(_body, 0x11, sizeof(_body)); } CCombatActionBase(const CCombatActionBase& o) { ++g_copies; std::memcpy(_body, o._body, sizeof(_body)); } };
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public: bool CanBeHit; bool Flip; virtual void v00() {} };
+class CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath : public CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:
     virtual void v00() {}
     CCombatActionBase* Clone() const { return new CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath(*this); }
 };

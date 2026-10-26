@@ -74,7 +74,7 @@ static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
 struct CPrim { int type; int written; virtual long GetType() const { return type; } virtual void TransferBinaryOut(COut* out) const { out->add('p', type); } };
-struct CPhysicalPrimitiveInit { CPrim* PPrimitive; };
+class CPhysicalPrimitiveInit { public: CPrim* PPrimitive; };
 struct Traits { void TransferBinaryOut(COut* out, const CPhysicalPrimitiveInit* value)
 {
     if (value->PPrimitive != 0) {

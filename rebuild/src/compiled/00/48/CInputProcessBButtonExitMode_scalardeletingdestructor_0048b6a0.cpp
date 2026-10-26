@@ -3,7 +3,7 @@
 //   push esi; mov esi,ecx; call <dtor>; test [esp+8],1; je L;
 //   push esi; call <operator delete>; add esp,4; L: mov eax,esi; pop esi; ret 4
 
-struct CInputProcessBButtonExitMode;
+class CInputProcessBButtonExitMode;
 
 // base/scalar destructor (this in ecx) -> retail 0xa0d3d0
 void __fastcall CInputProcessBButtonExitMode_dtor(CInputProcessBButtonExitMode* process);

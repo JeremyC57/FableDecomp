@@ -3,14 +3,14 @@
 #include <cstring>
 
 enum EAnimComponent { ANIM_COMPONENT_A = 1, ANIM_COMPONENT_B, ANIM_COMPONENT_C, ANIM_COMPONENT_D, ANIM_COMPONENT_E };
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     long IVRefCount;
     int  Deletes;
     CAnimComponentBase() : IVRefCount(0), Deletes(0) {}
     virtual ~CAnimComponentBase() {}
     virtual void Delete() { ++Deletes; }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     explicit CIVCountedPointer(T* o) : Object(o) { if (Object) ++Object->IVRefCount; }
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) ++Object->IVRefCount; }

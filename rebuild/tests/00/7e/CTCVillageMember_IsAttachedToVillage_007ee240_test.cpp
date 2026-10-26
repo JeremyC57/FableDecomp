@@ -4,9 +4,9 @@ typedef unsigned __int64 TUID;
 #else
 typedef unsigned long long TUID;
 #endif
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CBaseIntelligentPointer PVillage; TUID VillageUID;
     bool IsAttachedToVillage() const { if (PVillage.GetPItem()) return true; return VillageUID != 0; }
 };

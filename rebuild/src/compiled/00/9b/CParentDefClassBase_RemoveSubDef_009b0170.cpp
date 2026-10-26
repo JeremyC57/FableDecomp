@@ -7,11 +7,11 @@
 // Shape: the inline Remove takes the key by value (`__forceinline`), names the UpperBound result before the
 // __copy pushes, caches the old end in ebx; Dirty sort as in AddSubDef.
 // ---- shared model (CParentDefClassBase sub-def map) ----
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                  // +0 (CBasicString<char>::PData)
     unsigned long m_length;                 // +4 (StringLength)
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }   // "" = the shared empty literal 0x0129AAF4
@@ -90,7 +90,7 @@ struct CSubDefInfoMap {
     }
 };
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char  _defClassBase[0x21];     // +0x04 CDefClassBase part
     long           InstantiationName;       // +0x25

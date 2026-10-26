@@ -2,20 +2,20 @@
 // behaviour test: with a live hero the exit flags the world and hands it one 0x2c event holding the entrance's X, Y, Z and heading
 // plus three false flags, stamped with the hero's player; a missing or dead hero does nothing
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector Pos; float Angle; signed char Player; bool Dead; };
-struct CGameEvent {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector Pos; float Angle; signed char Player; bool Dead; };
+class CGameEvent { public:
     long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos;
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0) { }
     void Copy(unsigned long n, const void* p) { std::memcpy(Data + EndPos, p, n); EndPos = (unsigned char)(EndPos + n); }
     void AddFLOAT(float v) { Copy(4, &v); }
     void AddBOOL(bool v) { Copy(1, &v); }
 };
-struct CWorld { bool HeroMovingThroughRegionExit; int events; CGameEvent last; CWorld() : HeroMovingThroughRegionExit(false), events(0), last(0) { }
+class CWorld { public: bool HeroMovingThroughRegionExit; int events; CGameEvent last; CWorld() : HeroMovingThroughRegionExit(false), events(0), last(0) { }
     void Handle(const CGameEvent& e) { ++events; last = e; } };
 static CWorld g_world;
 static CThing* g_hero = 0;
-struct CTCDRegionExit {
+class CTCDRegionExit { public:
     CThing* PEntranceConnectedTo;
     void MoveHeroThroughExit()
     {

@@ -33,7 +33,7 @@ struct CStrikeEvent {
     void* PWeapon[2];                           // +0x14 CIntelligentPointer<const CThing>
     CRetailVector<CThingGameObject*> StruckThingList;   // +0x1c
 };
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
 struct SStrikeNode {
     SStrikeNode* _M_next;
     SStrikeNode* _M_prev;

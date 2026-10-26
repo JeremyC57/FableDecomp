@@ -10,7 +10,7 @@ struct CPixelFormatFromD3D {
     long FormatIndex;
     CPixelFormatFromD3D(unsigned long d3dFormat) : FormatIndex((long)d3dFormat) {}
 };
-struct CVolume {
+class CVolume { public:
     void* __vftable;
     IDirect3DVolume9* PD3DVolume;
     CPixelFormatFromD3D GetPixelFormat() const { D3DVOLUME_DESC_Local desc; PD3DVolume->GetDesc(&desc); return CPixelFormatFromD3D(desc.Format); }

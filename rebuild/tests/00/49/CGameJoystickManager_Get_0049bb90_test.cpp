@@ -9,7 +9,7 @@ struct CBase {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     struct SBlock { long refs; T* obj; };
     T*      m_pObject;
     SBlock* m_pCount;
@@ -27,7 +27,7 @@ struct CCountedPointer {
     }
 };
 
-struct CGameJoystickManager : CBase {
+class CGameJoystickManager : public CBase { public:
     long m_MainPlayerJoystickDeviceNumber;
     bool m_MainPlayerJoystickDeviceNumberSet;
     CGameJoystickManager() : m_MainPlayerJoystickDeviceNumber(0), m_MainPlayerJoystickDeviceNumberSet(false) { ++g_news; }

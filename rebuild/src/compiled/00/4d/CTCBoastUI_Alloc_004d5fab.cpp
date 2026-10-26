@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCBoastUI {
+class CTCBoastUI { public:
     unsigned char _body[0x2c];       // sizeof(CTCBoastUI) = 0x2c
     CTCBoastUI(long owner);                   // 0x0056AC10
 };

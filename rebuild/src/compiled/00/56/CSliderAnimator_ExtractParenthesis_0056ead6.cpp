@@ -8,9 +8,9 @@
 // Leaf: ExtractParenthesis
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
-struct CWideString;
-struct CCharString {
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
+class CWideString;
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                            // 0x0099EAE0
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->m_length; }
@@ -18,7 +18,7 @@ struct CCharString {
     CCharString GetSubString(unsigned long start, unsigned long length) const;   // 0x0099EC70
     CWideString ToWideString() const;                          // 0x0099E480
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);                     // 0x0099B720
     CCharString ConvertToCharString() const;                   // 0x0099B2C0
@@ -26,7 +26,7 @@ struct CWideString {
 extern const CWideString g_EmptyWideString;                    // 0x013BCA24
 
 namespace NUISystem {
-struct CText {
+class CText { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -173,7 +173,7 @@ struct CText {
 };
 }
 
-struct CSliderAnimator {
+class CSliderAnimator { public:
     CWideString ExtractParenthesis(NUISystem::CText* text);
 };
 

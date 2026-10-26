@@ -7,7 +7,7 @@
 #include "engine/CWorldMap.h"
 struct Vec3 {float X,Y,Z;Vec3(){}Vec3(float x,float y,float z):X(x),Y(y),Z(z){} Vec3(const Vec3& v):X(v.X),Y(v.Y),Z(v.Z){} };
 struct Colour {unsigned char B,G,R,A;};
-struct CEnginePrimitiveLine {
+class CEnginePrimitiveLine { public:
  unsigned long Type,InterpolationSet;unsigned char Theme[4];
  Vec3 Start,End;Colour Color;float Width;unsigned long BankIndex;long BlendMode,BlendOp;bool UseZBuffer;unsigned char Align[3];
  CEnginePrimitiveLine(unsigned __int64,const Vec3&,const Vec3&,const Colour&,float,long,unsigned long,bool,long,long); //0x004c3090
@@ -39,7 +39,7 @@ struct PrepareInfo {unsigned char BeforeEngine[0x34];EngineCalls* Engine;};
 struct WorldMapCalls:CWorldMap {float GetGroundSizeZAt(const Vec3*) const;}; //0x0063a300
 struct PointVector {Vec3* Start;Vec3* Finish;Vec3* Limit;unsigned size()const{return Finish-Start;}};
 namespace NShape {
-struct CTrack {void* Primary;void* Owner;PointVector Points;
+class CTrack { public:void* Primary;void* Owner;PointVector Points;
  void EditorDrawPreparePrimitivesForRendering(const PrepareInfo&,const WorldMapCalls&,const Vec3&,const Colour&);
 };
 void CTrack::EditorDrawPreparePrimitivesForRendering(const PrepareInfo& info,const WorldMapCalls& world,const Vec3&,const Colour& color) {

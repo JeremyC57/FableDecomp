@@ -19,7 +19,7 @@ struct Callee;
 // callee at 0xa73ba0: __fastcall on obj (ecx), edx=second param, one stack bool arg.
 void __fastcall Callee_method(Callee* obj, void* edxArg, bool flag);
 
-struct CTCVillage {
+class CTCVillage { public:
     Callee*       field0;  // +0x00  -> ecx to callee
     void*         ParentThing;  // +0x04  -> edx to callee
     int           dummy8;  // +0x08

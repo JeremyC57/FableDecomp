@@ -12,7 +12,7 @@
 // BEFORE its Data, the old count decremented and re-read through the member (`dec [eax] ; mov eax,[esi+4] ; cmp [eax],0`).
 void operator delete(void* block);               // 0x00BFE9BC
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;                                   // +0x00
     void (__fastcall* Destroy)(void* item);        // +0x04
     void* Item;                                    // +0x08

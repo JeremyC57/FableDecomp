@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString(const char* t, long = -1) { std::strcpy(Text, t); }
     CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
 };
 CCharString operator+(const CCharString& l, const char* r) { CCharString s(l.Text); std::strcat(s.Text, r); return s; }
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CEditEngineDrawInfo {
+class CEditEngineDrawInfo { public:
     float Radius;
     CCharString Fullname;
     CRGBColour Colour;
@@ -18,10 +18,10 @@ struct CEditEngineDrawInfo {
     CEditEngineDrawInfo() : Fullname("x"), Colour(1, 2, 3, 4), UsesEffectRadius(true) {}
 };
 static bool g_base = true;
-struct CThingPhysical {
+class CThingPhysical { public:
     bool DrawGetEditDrawInfo(float, CEditEngineDrawInfo* info) const { info->Radius = 2.0f; return g_base; }
 };
-struct CThingTrackNode : CThingPhysical {
+class CThingTrackNode : public CThingPhysical { public:
     bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;
 };
 bool CThingTrackNode::DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const

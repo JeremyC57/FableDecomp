@@ -6,13 +6,13 @@
 // The manifest label (CAbilityTrackLevelDef) is propagated: the vtable stored, 0x01236434, is
 // CAppearanceModifierScalingDef in rtti-vtables.tsv. Memberwise one-register copies = a user
 // copy constructor. Retail CParentDefClassBase is 0x3c bytes (local model, see 0046f1b4).
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                   // +0x04..+0x3c
     CParentDefClassBase(const CParentDefClassBase& other);       // 0x0046EE98
 };
 
-struct CAppearanceModifierScalingDef : CParentDefClassBase {     // vtable 0x01236434
+class CAppearanceModifierScalingDef : public CParentDefClassBase { public:     // vtable 0x01236434
     long m_scaleX;                                               // +0x3c
     long m_scaleY;                                               // +0x40
     long m_scaleZ;                                               // +0x44

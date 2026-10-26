@@ -8,8 +8,8 @@ static int GetSystemMetrics_(int i) { return i == 32 ? 4 : i == 33 ? 3 : i == 4 
 struct POINT_ { long x, y; };
 static void ClientToScreen_(void* w, POINT_* p) { (void)w; p->x += 100; p->y += 50; }
 static void MoveWindow_(void* w, int x, int y, int cx, int cy, int repaint) { (void)w; (void)repaint; ++g_moves; g_mx = x; g_my = y; g_mw = cx; g_mh = cy; }
-struct CSystemManager { bool AttachedToExternalWindow; };
-struct CDisplayManager {
+class CSystemManager { public: bool AttachedToExternalWindow; };
+class CDisplayManager { public:
     CSystemManager* SystemManager; long BBX, BBY; bool ExclusiveMode; void* WindowHandle;
     void ResizeWindowToBackBufferSize()
     {

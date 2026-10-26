@@ -7,11 +7,11 @@
 // VC folds it into `imul eax,[g]` after the call); the difference scaled with `imul`, a signed compare against the def member.
 extern long g_GameFramesPerSecond;                  // 0x01375550
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                    // 0x0049D870
 };
 
-struct CNymphDef {
+class CNymphDef { public:
     unsigned char _pad00[0x38];
     long          FlyAroundTime;                    // +0x38
 };
@@ -21,7 +21,7 @@ struct CTCBase_0080f210 {
     unsigned char _pad04[8];
 };
 
-struct CTCNymph : CTCBase_0080f210 {
+class CTCNymph : public CTCBase_0080f210 { public:
     const CNymphDef* PDef;                          // +0x0c
     unsigned char    _pad10[0x58 - 0x10];
     bool             CanAttack;                     // +0x58

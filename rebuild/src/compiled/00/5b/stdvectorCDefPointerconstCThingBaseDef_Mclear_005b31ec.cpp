@@ -1,5 +1,5 @@
 // std::vector<CDefPointer<const CThingBaseDef> >::_M_clear() -- STLport: destroy [start, finish), then release the block
-// Leaf: ?_M_clear@?$vector@V?$CDefPointer@$$CBUCThingBaseDef@@@@
+// Leaf: ?_M_clear@?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005B31EC, 35 bytes, thiscall `ret`: `__destroy_aux(start, finish, __false_type())`
 //   (0x005B26E9, `__fastcall` -- ecx = first, edx = last, the empty tag by reference in the high byte of the `push ecx`
 //   slot, `lea eax,[esp+7]`), then `if (start) free(start)` (0x00BFEA14).
@@ -16,7 +16,7 @@
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CThingBaseDef;
+class CThingBaseDef;
 class CDefPointeeBase;
 
 template <class T> class CDefPointer {

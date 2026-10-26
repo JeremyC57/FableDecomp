@@ -2,12 +2,12 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}           // test only: lets the test build list nodes
@@ -25,19 +25,19 @@ template <class T> struct CCountedPointer {
     }
     T* operator->() const { return Data; }
 };
-struct CThing {
+class CThing { public:
     int            Tag;                               // test: stands for the script name
     unsigned short DefGlobalIndex;
     unsigned char  StateBits;
 };
 namespace NEntityEvents {
-struct CEventBase {
+class CEventBase { public:
     virtual ~CEventBase() {}
     virtual long GetType() const = 0;
     long WorldFrame;
 };
 // test event: one record holding every attribute the filters read
-struct CEventHitBase : CEventBase {
+class CEventHitBase : public CEventBase { public:
     CThing* Hitting;
     CThing* Weapon;
     bool KnockDown, Decapitate, Blocked, Shot, Melee, FlourishHit, Flourish;
@@ -47,20 +47,20 @@ struct CEventHitBase : CEventBase {
     bool IsKnockDown() const { return KnockDown; }
     bool IsDecapitate() const { return Decapitate; }
 };
-struct CEventHitBy : CEventHitBase { enum { EventType = 0x1 }; };
-struct CEventHitBySpecialAbility : CEventHitBase { enum { EventType = 0x1b }; };
-struct CEventHitThing : CEventHitBase { enum { EventType = 0x1d }; };
-struct CEventShotStruck : CEventHitBase { enum { EventType = 0x27 }; };
+class CEventHitBy : public CEventHitBase { public: enum { EventType = 0x1 }; };
+class CEventHitBySpecialAbility : public CEventHitBase { public: enum { EventType = 0x1b }; };
+class CEventHitThing : public CEventHitBase { public: enum { EventType = 0x1d }; };
+class CEventShotStruck : public CEventHitBase { public: enum { EventType = 0x27 }; };
 }
 
-namespace NEntityEvents { struct CIsEventCreatedAfter { long WorldFrame; bool operator()(const CEventBase* e) const { return e->WorldFrame > WorldFrame; } }; }
-namespace NEntityEvents { struct CIsEventCreatedBeforeOrOn { long WorldFrame; bool operator()(const CEventBase* e) const { return e->WorldFrame <= WorldFrame; } }; }
+namespace NEntityEvents { class CIsEventCreatedAfter { public: long WorldFrame; bool operator()(const CEventBase* e) const { return e->WorldFrame > WorldFrame; } }; }
+namespace NEntityEvents { class CIsEventCreatedBeforeOrOn { public: long WorldFrame; bool operator()(const CEventBase* e) const { return e->WorldFrame <= WorldFrame; } }; }
 namespace {
 struct CEventFilter_HitThingWithFlourish {
     bool operator()(const NEntityEvents::CEventHitBase* event) const { return event->Flourish; }
 };
 }
-template <class A, class B, class C> struct CFilter_Bind3 {     // every filter, held by reference
+template <class A, class B, class C> class CFilter_Bind3 { public:     // every filter, held by reference
     const A& First;
     const B& Second;
     const C& Third;

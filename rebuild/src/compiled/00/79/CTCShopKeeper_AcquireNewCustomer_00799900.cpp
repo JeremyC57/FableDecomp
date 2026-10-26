@@ -13,16 +13,16 @@
 // Shape: the shop position is a named copy taken before the keeper's own position; the box is a named C2DBoxI built from
 //          two truncated coordinates (+/-15); the best-thing result is ignored and the out pointer latched through a
 //          temporary; the by-value AddNewCustomer argument is copy-constructed in its stack slot.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
 };
-struct CBaseObject;
-struct CThing {
+class CBaseObject;
+class CThing { public:
     const C3DVector& GetPosition() const;          // 0x004C73D0
 };
-struct CThingCreatureBase;
-struct C2DBoxI {
+class CThingCreatureBase;
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
@@ -40,29 +40,29 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CIntelligentPointerCreature(const CIntelligentPointerCreature& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
     void operator=(const CIntelligentPointerCreature& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); }
 };
-struct CTCShop {
+class CTCShop { public:
     void* __vftable;
     CThing* ParentThing;                           // +0x04 (CTCBase)
 };
-struct CTCShopKeeper;
-struct CThingFilter_IsPotentialCustomer {
+class CTCShopKeeper;
+class CThingFilter_IsPotentialCustomer { public:
     CThing* ShopperContainer;                      // +0x00
     C3DVector Pos;                                 // +0x04
     CTCShopKeeper* TCShopKeeper;                   // +0x10
     bool AllowExistingShopper;                     // +0x14
     CThingFilter_IsPotentialCustomer(CTCShopKeeper* shopKeeper, bool allowExistingShopper);   // 0x00799D80
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector Pos;
     CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestThingInRoughArea(const C2DBoxI& area, const CThingFilter_IsPotentialCustomer& filter,
                                   const CThingCompare_Nearest& compare, CThingCreatureBase** out);   // 0x0079A050
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_IsPotentialCustomer& filter,
                                    CThingCreatureBase** out);                                         // 0x0079A280
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     void* __vftable;
     CThing* ParentThing;                           // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

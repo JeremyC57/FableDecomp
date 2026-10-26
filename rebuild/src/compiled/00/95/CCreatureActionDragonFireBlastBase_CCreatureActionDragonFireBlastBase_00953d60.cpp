@@ -6,7 +6,7 @@
 // +0x114, then CEnginePrimitiveHandle's inline copy: vtable 0x0122F598 and the counted data pointer copied with an
 // intrusive add-ref (`test ; mov ; je ; inc [p+4]`). Member names from the engine header (PDB +0x12c/+0x134; retail
 // CCombatActionBase is 0x114 bytes). `ret 4`: one argument.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {            // sizeof 8: vptr + item
     virtual void v00();
@@ -21,24 +21,24 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CEnginePersistentPrimitiveBase {     // engine/CEnginePersistentPrimitiveBase.h exists but is not used: only the intrusive count at +4 (behind the vtable) is touched
+class CEnginePersistentPrimitiveBase { public:     // engine/CEnginePersistentPrimitiveBase.h exists but is not used: only the intrusive count at +4 (behind the vtable) is touched
     virtual void v00();
     long m_references;                      // +0x04
 };
 
-struct CEnginePrimitiveHandle {             // vtable 0x0122F598; {vptr, CIVCountedPointer Data}
+class CEnginePrimitiveHandle { public:             // vtable 0x0122F598; {vptr, CIVCountedPointer Data}
     virtual void v00();
     CEnginePersistentPrimitiveBase* Data;   // +0x04
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& other) : Data(other.Data) { if (Data != 0) ++Data->m_references; }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);   // 0x0062F3B0
 };
 
-struct CCreatureAction_DragonFireBlastBase : CCombatActionBase {   // vtable 0x01293F9C; sizeof 0x124
+class CCreatureAction_DragonFireBlastBase : public CCombatActionBase { public:   // vtable 0x01293F9C; sizeof 0x124
     CIntelligentPointer    PShot;           // +0x114 CIntelligentPointer<CThing>
     CEnginePrimitiveHandle Line1;           // +0x11c
     virtual void v00();

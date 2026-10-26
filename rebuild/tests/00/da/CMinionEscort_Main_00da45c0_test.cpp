@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <cstring>
 static int g_seq[32]; static int g_n = 0; static int g_frames = 0, g_doneAfter = 3, g_filters = 0;
-struct CScriptThing { int id; };
-struct CCharString { const char* p; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CCharString { public: const char* p; };
+class CGameScriptInterface { public:
     CScriptThing hero; const char* attached; const CScriptThing* faced; const CScriptThing* target;
     void NewScriptFrame() { ++g_frames; g_seq[g_n++] = 1; }
     const CScriptThing& GetHero() const { return hero; }

@@ -4,9 +4,9 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CImp { long refs; C3DVector pos; };
-struct CScriptThing {
+class CScriptThing { public:
     CImp* PImp;
     bool killed;
     CScriptThing() : PImp(0), killed(false) {}
@@ -23,7 +23,7 @@ static bool IsDistanceFromThingToPositionUnder(const CScriptThing& t, const C3DV
     return dx * dx + dy * dy + dz * dz < d * d;
 }
 static CImp* g_nearest; static const char* g_lastName;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     CScriptThing& GetHero() { return hero; }
     CScriptThing GetNearestWithScriptName(const CScriptThing&, const char* name) const { g_lastName = name; return CScriptThing(g_nearest); }

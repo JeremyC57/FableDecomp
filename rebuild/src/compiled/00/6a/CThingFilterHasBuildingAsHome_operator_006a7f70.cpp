@@ -10,12 +10,12 @@ struct HomeObj {
     int GetHomeId();   // __fastcall, returns int in eax
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     char pad[0x168];
     HomeObj home;      // object embedded at +0x168; add ecx,0x168 = &creature->home
 };
 
-struct CThingFilter_HasBuildingAsHome {
+class CThingFilter_HasBuildingAsHome { public:
     int HomeBuilding;        // the id to match
 
     bool operator()(CThingAICreature* creature);

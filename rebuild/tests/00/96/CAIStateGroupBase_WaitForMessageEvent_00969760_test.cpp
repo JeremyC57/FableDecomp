@@ -20,12 +20,12 @@ static int fails = 0;
 // do/while body, the 2 and 1 cases `break` out with their own value; returning the constants directly puts the
 // `mov eax,4` after the branch). The world's message manager (+0x60) is read into a
 // local before the filter is pushed (the chained call pushes the argument first).
-struct CMessageEvent;
+class CMessageEvent;
 struct CFilter_Bind2;                                  // the bound message filter, passed by address
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CFilter_Bind2& filter);   // 0x008D46D0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad[0x60];
     CMessageEventManager* MessageEventManager; // +0x60
 };

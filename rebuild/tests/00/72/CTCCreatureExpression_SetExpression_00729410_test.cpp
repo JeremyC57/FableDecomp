@@ -34,7 +34,7 @@ struct CExpressionStateList {                       // STLport list<CExpressionS
     bool empty() const { return head->next == head; }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long m_refCount;                                // +4
@@ -50,7 +50,7 @@ struct CCreatureExpressionDef : CDefPointeeBase {
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -61,7 +61,7 @@ struct CDefPointer {
     T* operator->() const { return Object; }
 };
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CCreatureExpressionDef>* out);   // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -78,16 +78,16 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureExpressi
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef_Object;                     // +0x70
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();                // 0x0049D810
 };
 
-struct CTCCreatureExpression {
+class CTCCreatureExpression { public:
     virtual void v00();
     CThing*              ParentThing;               // +0x04 (CTCBase)
     unsigned char        _pad08[4];

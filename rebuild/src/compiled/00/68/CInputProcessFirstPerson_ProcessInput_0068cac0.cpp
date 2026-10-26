@@ -10,7 +10,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 class CInputEvent;
-struct C2DVector {
+class C2DVector { public:
     float x, y;
 };
 class CInputEvent {
@@ -26,7 +26,7 @@ class CPlayer {
 public:
     void RemoveMode(long mode);                    // 0x00634190
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

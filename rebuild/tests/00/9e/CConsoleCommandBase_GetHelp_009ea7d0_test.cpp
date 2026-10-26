@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[128];
     CCharString(const char* s = "") { std::strcpy(text, s); }
     CCharString& operator+=(const CCharString& o) { std::strcat(text, o.text); return *this; }
@@ -12,7 +12,7 @@ struct CCharString {
 static CCharString operator+(const CCharString& l, const char* r) { CCharString t(l.text); t += r; return t; }
 static CCharString GFIntToCharString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CCharString(b); }
 
-struct CConsoleCommandParameters {
+class CConsoleCommandParameters { public:
     long* m_pTypesStart; long* m_pTypesFinish; long* m_pTypesEnd;
     long GetNumParameters() const { return m_pTypesFinish - m_pTypesStart; }
     CCharString GetParameterTypeAsString(long index) const

@@ -2,7 +2,7 @@
 #include <cstdio>
 
 struct Inner2 { char _p[0x14]; long f14; };
-struct CWorld { char _p[0x1c]; Inner2* PGameTimeManager; };
+class CWorld { public: char _p[0x1c]; Inner2* PGameTimeManager; };
 
 long __fastcall CGameScriptInterface_GetDayOfWeek(const CGameScriptInterface* self)
 {

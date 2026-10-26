@@ -27,12 +27,12 @@ struct CCountedPointer {
     }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                              // 0x0099A2E0
 };
 
-struct C3DAnimationInterpolator {
+class C3DAnimationInterpolator { public:
     unsigned char _body[0x14];
     ~C3DAnimationInterpolator();                // 0x004C2E90
 };

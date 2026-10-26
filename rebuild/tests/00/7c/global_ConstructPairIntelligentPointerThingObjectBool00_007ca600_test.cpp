@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 static int g_ctor = 0;
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { ++g_ctor; }

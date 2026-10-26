@@ -12,8 +12,8 @@
 // Retail layout: CPreAllocVectorMap {Compare +0, Elements +4, Size +8, Dirty +0xC}. The map's Find() is
 // inlined (lower bound, then end() = Elements + Size when the key sorts before the element) and the result
 // is compared with a recomputed end().
-struct CMatrix3x4 { float m[12]; };
-struct C3DDummyObject { CMatrix3x4 Transform; long BoneIndex; };
+class CMatrix3x4 { public: float m[12]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; long BoneIndex; };
 
 struct SDummyObjectEntry {                 // pair<unsigned long, C3DDummyObject>, 56 bytes
     unsigned long  first;
@@ -36,7 +36,7 @@ struct CDummyObjectMap {                   // CPreAllocVectorMap<unsigned long, 
     }
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     unsigned char   _pad_0x04[0x48 - 0x04];
     CDummyObjectMap DummyObjects;          // +0x48

@@ -2,13 +2,13 @@
 #include <cstring>
 // Behaviour test for CTCInventoryMap::TeleportHeroToGuildSealRecallLocation (0x005FAD40): same body as src/, with the
 // player lookups, world access, buffer copy and the event handler stubbed and recorded.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CMemoryBuffer {
     unsigned char buf[64]; int len;
     CMemoryBuffer() : len(0) { }
     void Copy(unsigned long length, const void* data) { std::memcpy(buf + len, data, length); len += (int)length; }
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;
     signed char   Player;
     unsigned char Data[32];
@@ -19,21 +19,21 @@ struct CGameEvent : CMemoryBuffer {
     void AddFloat(float value) { Copy(sizeof(value), &value); }
     void AddBool(bool value) { Copy(1, &value); }
 };
-struct CThing { unsigned char IsDead : 1; };
+class CThing { public: unsigned char IsDead : 1; };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetControlledCreature() const { return g_hero; } };
+class CPlayer { public: CThing* GetControlledCreature() const { return g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const { return &g_player; }
     long GetMainPlayerID() const { return 0x103; }      // truncated to the event's signed char
 };
 static CPlayerManager g_pm;
-struct CEngine { CPlayerManager* PlayerManager; };
+class CEngine { public: CPlayerManager* PlayerManager; };
 static CEngine g_engine = { &g_pm };
 static CEngine* g_pEngine = &g_engine;
 static int g_events = 0; static long g_type = 0; static signed char g_playerId = 0;
 static unsigned char g_payload[64]; static int g_payloadLen = 0;
-struct CWorld {
+class CWorld { public:
     bool DisplayMiniMapOnRegionLoad;
     C3DVector GuildSealRecallPos;
     float GuildSealRecallAngleXY;
@@ -41,7 +41,7 @@ struct CWorld {
     { ++g_events; g_type = e->Type; g_playerId = e->Player; g_payloadLen = e->len; std::memcpy(g_payload, e->buf, e->len); }
 };
 static CWorld g_world;
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     CPlayerManager* GetPlayerManager() const { return &g_pm; }
     CWorld* GetWorld() { return &g_world; }
     const CWorld* GetWorld() const { return &g_world; }

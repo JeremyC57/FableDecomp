@@ -33,17 +33,17 @@ struct CLongVector {                               // STLport vector<long> (12 b
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void GetSupportedAntialiasingLevels(CLongVector& levels);   // 0x009C05C0
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* operator->() const { return Data; }
 };
 
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CCountedPointer<CDisplayManager> PDisplayManager;   // +0x60
 };
@@ -52,7 +52,7 @@ CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
 extern long g_ConfigLevel;                         // 0x01375080 (GFConfigDetection result, -1 = no cap)
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned long GetMaxAntialiasing() const;
 };
 

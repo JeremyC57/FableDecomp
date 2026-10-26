@@ -11,7 +11,7 @@
 // type is named from the copy constructor's label when unique. One of 21 bodies.
 #include <new>
 
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     unsigned char _body[0x60];
     C3DMeshInfo(const C3DMeshInfo& other);           // 0x00A2A400
 };

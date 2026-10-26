@@ -9,7 +9,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() {}
     CIntelligentPointer(const CIntelligentPointer& o) : CBaseIntelligentPointer() { SetPItem(o.GetPItem()); }
 };
@@ -18,14 +18,14 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     if (p.GetPItem() != 0) { if (!(p.GetPItem()->m_stateFlags & 1)) return true; }
     return false;
 }
-struct CCharString { const char* text; CCharString(const char* t, long) : text(t) {} };
-struct CCreatureActionBase { int kind; };
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCharString { public: const char* text; CCharString(const char* t, long) : text(t) {} };
+class CCreatureActionBase { public: int kind; };
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     const char* anim; CThing* item; long a, b;
     CCreatureAction_UnsheatheItemFromInventory(void*, const CCharString& n, CThing* i, long p, long t, CCreatureActionBase*)
     { kind = 1; anim = n.text; item = i; a = p; b = t; }
 };
-struct CCreatureAction_BattleChargeImpact : CCreatureActionBase {
+class CCreatureAction_BattleChargeImpact : public CCreatureActionBase { public:
     CThing* left; CThing* right;
     CCreatureAction_BattleChargeImpact(void*, CIntelligentPointer<CThing> l, CIntelligentPointer<CThing> r)
     { kind = 2; left = l.GetPItem(); right = r.GetPItem(); }

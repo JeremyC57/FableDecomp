@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
-struct CTCBase { CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
 struct CIntelligentPointer { void* m_pItem; CIntelligentPointer() : m_pItem(0) { } virtual ~CIntelligentPointer() { } };
 struct CRetailAllocator { CRetailAllocator() { } };
 struct CRetailAllocProxy : CRetailAllocator { void* _M_data; CRetailAllocProxy(const CRetailAllocator& a, void* p) : CRetailAllocator(a), _M_data(p) { } };
@@ -11,9 +11,9 @@ struct CRetailVectorBase {
 };
 struct CRetailVector : CRetailVectorBase { explicit CRetailVector(const CRetailAllocator& a = CRetailAllocator()) : CRetailVectorBase(a) { } };
 static int g_fades = 0;
-struct CFadeInFadeOutBase { int state; CFadeInFadeOutBase() : state(5) { ++g_fades; } };
+class CFadeInFadeOutBase { public: int state; CFadeInFadeOutBase() : state(5) { ++g_fades; } };
 struct CDefPointerTrapDef { const void* Object; CDefPointerTrapDef() : Object(0) { } };
-struct CTCTrapBase : CTCBase {
+class CTCTrapBase : public CTCBase { public:
     CRetailVector HitThings, ImmuneThings;
     CIntelligentPointer PObstruction;
     CRetailVector TriggerThings;

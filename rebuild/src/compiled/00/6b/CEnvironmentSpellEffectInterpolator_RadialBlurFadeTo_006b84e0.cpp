@@ -7,7 +7,7 @@
 // Shape: the position block is a 0x20-byte frame local; its two track words (1 = world position) are stored before the
 //   argument pushes and the six zero coordinates after them -- the C3DVector members have their own inline constructors
 //   while the track words are plain initialisers of the outer constructor.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() : x(0.0f), y(0.0f), z(0.0f) {}
 };
@@ -36,10 +36,10 @@ struct CScreenEffectPriorityStack {
                                const CRadialBlurPositionParams* position, ScreenEffectPriority priority);   // 0x00881690
 };
 
-struct CEnvironment;
-struct CEnvironmentSpellEffectInterface;
+class CEnvironment;
+class CEnvironmentSpellEffectInterface;
 
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     CEnvironment*                     Environment;           // +0x00
     CEnvironmentSpellEffectInterface* SpellInterface;        // +0x04
     unsigned char                     _pad8[0x90 - 0x8];     // radial-blur fade and theme-transition state

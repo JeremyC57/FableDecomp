@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static int g_render = 0;
-struct CThing { void AddToRenderList() { ++g_render; } };
+class CThing { public: void AddToRenderList() { ++g_render; } };
 struct CTCGraphicAppearance {
     CThing* ParentThing;
     unsigned char UpdatePrimitiveReasons;

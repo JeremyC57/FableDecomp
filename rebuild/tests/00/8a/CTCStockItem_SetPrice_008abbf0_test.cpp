@@ -42,7 +42,7 @@ public:
     }
 };
 
-struct CTCStockItem {
+class CTCStockItem { public:
     bool                   ForSale;
     long                   Price;
     CEnginePrimitiveHandle PrimHandle;

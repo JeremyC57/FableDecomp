@@ -9,10 +9,10 @@ struct CRetailVector
     const T& operator[](unsigned int i) const { return _First[i]; }
 };
 
-struct CBuyableHouseDef { CRetailVector<long> Price; };
+class CBuyableHouseDef { public: CRetailVector<long> Price; };
 
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     const CBuyableHouseDef* PDef_Object;
     long CurrentDressLevel;
 

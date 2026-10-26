@@ -22,15 +22,15 @@
 #define __forceinline inline
 #endif
 
-struct CEngineScene;
-template<class T> struct CArray;
-struct CEngineInternalPrimitiveBase;
-struct CEngineSubPrimitiveBase;
-struct CEngineSubPrimitiveChain;
-struct CEnginePrimitiveTypeList;
-struct C3DVector;
-struct C3DMesh2;
-namespace NEngineShadowRenderer { struct CShadowSceneContext; }
+class CEngineScene;
+template<class T> class CArray;
+class CEngineInternalPrimitiveBase;
+class CEngineSubPrimitiveBase;
+class CEngineSubPrimitiveChain;
+class CEnginePrimitiveTypeList;
+class C3DVector;
+class C3DMesh2;
+namespace NEngineShadowRenderer { class CShadowSceneContext; }
 
 enum ERendered { ERenderedNativeView = 0 };
 enum EEngineRenderLayer { EEngineRenderLayerNativeView = 0 };
@@ -38,7 +38,7 @@ enum EEnginePrimitiveType { EEnginePrimitiveTypeNativeView = 0 };
 enum ERenderPassType { ERenderPassTypeNativeView = 0 };
 enum ESubPrimitiveType { ESubPrimitiveTypeNativeView = 0 };
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass(); // native 0099A2D0
     virtual ~CBaseClass();
 };
@@ -51,7 +51,7 @@ struct CEnginePrimitiveRenderUtil : CBaseClassNonCopyable {
     CEnginePrimitiveRenderUtil(); // native 00B8B5E0
     virtual ~CEnginePrimitiveRenderUtil();
 };
-struct CEnginePrimitiveManager : CEnginePrimitiveRenderUtil {
+class CEnginePrimitiveManager : public CEnginePrimitiveRenderUtil { public:
     virtual ~CEnginePrimitiveManager();
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType) = 0;
     virtual void GetSupportedTypes(CEnginePrimitiveTypeList&) const = 0;
@@ -70,7 +70,7 @@ struct CEnginePrimitiveManager : CEnginePrimitiveRenderUtil {
     CEnginePrimitiveManager(CArray<CEngineScene*>&); // native 00BACDB0
 };
 
-struct CShaderBase {
+class CShaderBase {
 protected:
     CShaderBase();
     __forceinline virtual ~CShaderBase() { }
@@ -84,7 +84,7 @@ struct CVertexShaderData {
     unsigned long ReferenceCount;
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
-struct CVertexShader : CShaderBase {
+class CVertexShader : public CShaderBase { public:
     CVertexShaderData* Data;
     CVertexShader(); // native 00A62FB0
     CVertexShader(const CVertexShader& other) : CShaderBase(other), Data(other.Data) {
@@ -112,7 +112,7 @@ extern CEngineResourceManager_PDB* g_pEngineData; // native global 01436E98
 
 // Native CCPPointerInfo evidence in the landed renderer and surface-composition
 // sources: 32-bit RefCount at +0, __fastcall DeleteFunc at +4, Data at +8.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (FABLE_FASTCALL *DeleteFunc)(void*);
     void* Data;

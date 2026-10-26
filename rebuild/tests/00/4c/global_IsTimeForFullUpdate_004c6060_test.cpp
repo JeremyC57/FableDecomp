@@ -7,7 +7,7 @@ extern "C" int __fastcall sub_4c5fa0(void*) { return 0; }
 extern "C" int __cdecl   sub_bfea70(void) { return g_div; }
 extern "C" int __cdecl   sub_49d870(void) { return g_num; }
 
-struct CBulletTimeManager;
+class CBulletTimeManager;
 extern "C" bool __fastcall IsTimeForFullUpdate(CBulletTimeManager* self);
 
 int main()

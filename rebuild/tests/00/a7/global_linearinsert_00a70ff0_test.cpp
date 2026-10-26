@@ -1,7 +1,7 @@
 // Behaviour test for 0x00a70ff0 __linear_insert over string-keyed records
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char m_text[16];
     CCharString(const char* t) { std::strcpy(m_text, t); }
     bool operator<(const CCharString& o) const { return std::strcmp(m_text, o.m_text) < 0; }

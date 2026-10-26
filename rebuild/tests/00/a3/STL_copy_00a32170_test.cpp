@@ -12,7 +12,7 @@ public:
     CCharString(const CCharString& o) : Id(o.Id) { ++g_copies; }
     CCharString& operator=(const CCharString& o) { Id = o.Id; ++g_assigns; return *this; }
 };
-struct CMatrix3x4 { float M[12]; };
+class CMatrix3x4 { public: float M[12]; };
 class C3DDummyObject { public: CMatrix3x4 Transform; int BoneIndex; };
 class C3DGeneratorObject : public C3DDummyObject {
 public:

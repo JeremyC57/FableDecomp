@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <math.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -10,16 +10,16 @@ struct C2DVector {
     float GetLengthSquared() const { return X * X + Y * Y; }
     C2DVector& Normalise() { float l = (float)sqrt(X * X + Y * Y); X /= l; Y /= l; return *this; }
 };
-struct CKinematic {
+class CKinematic { public:
     C2DVector Vector;
     CKinematic() {}
     CKinematic(const C2DVector& v) : Vector(v) {}
 };
-struct CNavigatorExternalInterface {
+class CNavigatorExternalInterface { public:
     virtual C2DVector GetPosition() const { return Pos; }
     C2DVector Pos;
 };
-struct CSteeringAgent {
+class CSteeringAgent { public:
     CNavigatorExternalInterface* NavigatorInterface;   // +0x00
 };
 bool g_SteeringDisabled;

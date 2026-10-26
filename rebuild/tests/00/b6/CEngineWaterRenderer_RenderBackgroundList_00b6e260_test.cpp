@@ -22,7 +22,7 @@ extern "C" int __cdecl printf(const char* format, ...);
 //   16-bit `mov cx` load --, MinZ, MaxZ-MinZ, map X); the occlusion id is one local shared by both arms and stored once
 //   after them (tail-merged per arm, held in edi); the query allocation is an inline manager helper (id = count; record =
 //   SOcclusionQuery(0,0); ++count) returning -1 when full.
-struct CMatrix3x4 { float M[12]; };
+class CMatrix3x4 { public: float M[12]; };
 struct SOcclusionQuery { long A; long B; SOcclusionQuery() {} SOcclusionQuery(long a, long b) : A(a), B(b) {} };
 
 class CEngineOcclusionManager {
@@ -48,7 +48,7 @@ public:
 };
 extern CEngineOcclusionManager* g_pEngineOcclusionManager;   // 0x01436E5C
 
-struct C2DCoordI { long X, Y; };
+class C2DCoordI { public: long X, Y; };
 class CEngineWaterBackgroundSubPatch {
 public:
     unsigned char  _pad00[0x48];
@@ -60,7 +60,7 @@ public:
     float          MaxZ;                           // +0x5c
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;

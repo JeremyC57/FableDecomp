@@ -2,11 +2,11 @@
 
 // Model of CTCInventoryExperience::UpdateExternalExperienceSpendAbility @ 0x00572689: the inventory screen forwards the amount
 // to the per-Ability spent table of the hero's CTCInventoryAbilities.
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     long Spent[20];
     void SetExperienceSpentOnAbility(long index, long amount) { Spent[index] = amount; }
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CTCInventoryAbilities* Target;
     CTCInventoryAbilities* GetTCInventoryAbilities() { return Target; }
     void UpdateExternalExperienceSpendAbility(long index, long amount) { GetTCInventoryAbilities()->SetExperienceSpentOnAbility(index, amount); }

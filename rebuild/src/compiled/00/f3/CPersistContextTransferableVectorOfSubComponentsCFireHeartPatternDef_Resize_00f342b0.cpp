@@ -19,22 +19,22 @@
 //   ~CResource) -- the implicit destructors of CDefClassBase/CFireHeartPatternDef store no vtable.
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14
 
-struct CDefinitionManager;
-struct CPersistContext;
+class CDefinitionManager;
+class CPersistContext;
 
-struct CResource {
+class CResource { public:
     unsigned char _resource[0x18];                       // +0x04 resource list links, size, last used frame
     CResource();                                         // 0x009FBEC0
     virtual ~CResource();                                // 0x009FC550
 };
 
-struct CDefPointeeBase : CResource {                     // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:                     // vtable 0x01230BA0
     CDefPointeeBase() { }
     virtual ~CDefPointeeBase() { }
 };
 
 #pragma pack(push, 1)                                    // def classes are byte packed (the bits at +0x24)
-struct CDefClassBase : CDefPointeeBase {                 // vtable 0x01230BCC, 0x25 bytes
+class CDefClassBase : public CDefPointeeBase { public:                 // vtable 0x01230BCC, 0x25 bytes
     CDefinitionManager* PDefManager;                     // +0x1c
     unsigned long       GlobalIndex;                     // +0x20
     unsigned char       Setup : 1;                       // +0x24 bit 0
@@ -86,7 +86,7 @@ public:
     std::vector<bool> PadActive;                        // +0x28
 };
 
-struct CPersistContext_TransferableVectorOfSubComponentsGenericType {
+class CPersistContext_TransferableVectorOfSubComponentsGenericType { public:
     virtual long Size() = 0;
     virtual void Resize(long count) = 0;
     virtual bool AreDefaultValsApplied(long index) = 0;

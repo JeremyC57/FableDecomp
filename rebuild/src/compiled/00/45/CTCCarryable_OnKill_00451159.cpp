@@ -9,7 +9,7 @@ struct ListHead {
 
 extern void __stdcall FreeNode_00450828(void* p);
 
-struct CTCCarryable {
+class CTCCarryable { public:
     ListHead* head;  /* +0 */
     int flag;        /* +4 */
 };

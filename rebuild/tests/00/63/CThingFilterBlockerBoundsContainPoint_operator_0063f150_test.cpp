@@ -1,22 +1,22 @@
 #include <cstdio>
 // Test model: a thing whose physics component may report the slot-42 flag, a CanBlockNavigatingCreature answer, an optional
 // physics mesh and a bounding box; the mesh object is a temporary whose destruction is counted.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_meshObjects = 0;
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     float MinX, MaxX;
     CPhysicsMeshObject(float a, float b) : MinX(a), MaxX(b) { ++g_meshObjects; }
     CPhysicsMeshObject(const CPhysicsMeshObject& o) : MinX(o.MinX), MaxX(o.MaxX) { ++g_meshObjects; }
     ~CPhysicsMeshObject() { --g_meshObjects; }
     bool IsPointContainedInBoundingBox(const C3DVector& p) const { return p.X >= MinX && p.X <= MaxX; }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool Flag42; bool HasMesh; float MinX, MaxX;
     bool IsFlag42() const { return Flag42; }
     const void* GetPhysicsMeshInfo() const { return HasMesh ? this : 0; }
     CPhysicsMeshObject GetPhysicsMeshObject() const { return CPhysicsMeshObject(MinX, MaxX); }
 };
-struct CThing {
+class CThing { public:
     bool Blocks; CTCPhysicsBase* PhysicsTC;
     bool CanBlockNavigatingCreature() const { return Blocks; }
 };

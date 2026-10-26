@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesElectrocutedEffectDef { char pad[0x6c]; };
+class CSpecialAbilitiesElectrocutedEffectDef { public: char pad[0x6c]; };
 
 unsigned long __fastcall CSpecialAbilitiesElectrocutedEffectDef_GetSizeofClass(const CSpecialAbilitiesElectrocutedEffectDef* self)
 {

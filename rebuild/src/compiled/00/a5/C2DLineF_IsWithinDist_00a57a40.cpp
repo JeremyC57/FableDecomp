@@ -7,7 +7,7 @@
 // in source order (mid, dir, rel); the compare is written `bound > rel^2` (left side evaluated first);
 // the squared length must be a NAMED float before `* 0.25f`, else VC distributes the scale into
 // both squares.
-struct C2DVector {
+class C2DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     C2DVector() {}
@@ -18,7 +18,7 @@ struct C2DVector {
     float GetLengthSquared() const { return X * X + Y * Y; }
 };
 
-struct C2DLineF {
+class C2DLineF { public:
     C2DVector Point1;   // +0x00
     C2DVector Point2;   // +0x08
     int IsWithinDist(const C2DVector& pos, float dist) const;

@@ -12,9 +12,9 @@
 // /EHsc in this module: the message local is never destroyed on the throw path. Otherwise Position
 // (+8) = position. Members per the PDB CMemoryFile (retail packs DataBuffer in 12 bytes, so the
 // engine header's +0x20/+0x24 sit 4 bytes low in retail).
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     CCharString(const CCharString& other);          // 0x0099EC30
@@ -36,7 +36,7 @@ public:
     CBBBFileException(EFileExceptionType type, const CCharString& message) : Type(type) { ReportError(message); }
 };
 
-struct CMemoryFile {
+class CMemoryFile { public:
     virtual void v00();
     long          AccessType;                       // +0x04
     long          Position;                         // +0x08

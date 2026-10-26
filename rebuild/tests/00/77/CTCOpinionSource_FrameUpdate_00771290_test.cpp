@@ -1,8 +1,8 @@
 // Behaviour test for CTCOpinionSource::FrameUpdate @ 0x00771290: the deed clears at or after its frame only.
 #include <cstdio>
 static long g_frame = 0;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
-struct CTCOpinionSource {
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CTCOpinionSource { public:
     long VirtualDeed, VirtualDeedID;
     unsigned long FrameToClearVirtualDeed;
     void FrameUpdate()

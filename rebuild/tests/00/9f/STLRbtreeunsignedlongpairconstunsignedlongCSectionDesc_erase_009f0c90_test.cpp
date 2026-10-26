@@ -7,7 +7,7 @@
 
 static char gLog[64];
 
-struct CCharString { const char* Name; ~CCharString() { std::strcat(gLog, Name); std::strcat(gLog, ";"); } };
+class CCharString { public: const char* Name; ~CCharString() { std::strcat(gLog, Name); std::strcat(gLog, ";"); } };
 struct CSectionDesc { CCharString ShortName; CCharString LongName; bool Loaded; long Size; };
 
 struct NodeBase { bool Color; NodeBase* Parent; NodeBase* Left; NodeBase* Right; };

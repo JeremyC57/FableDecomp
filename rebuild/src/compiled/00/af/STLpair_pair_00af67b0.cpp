@@ -15,7 +15,7 @@ public:
     CBaseClass();                                       // 0x0099A2D0
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;                                         // +0x00
     void* m_pCount;                                     // +0x04
     CCountedPointer() : Data(0), m_pCount(0) {}

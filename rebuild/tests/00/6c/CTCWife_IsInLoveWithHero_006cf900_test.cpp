@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CTCWife {
+class CTCWife { public:
     char pad0[0x10];
     int state;
     bool SomeCondition();

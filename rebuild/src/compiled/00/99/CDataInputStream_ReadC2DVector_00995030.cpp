@@ -12,7 +12,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector(float x, float y) : X(x), Y(y) {}

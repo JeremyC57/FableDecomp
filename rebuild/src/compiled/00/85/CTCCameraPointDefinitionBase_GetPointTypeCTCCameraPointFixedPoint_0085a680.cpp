@@ -2,7 +2,7 @@
 // retail 0x0072a430: virtual call to slot 0x70 returns a point-type enum;
 // if it equals 7 (fixed-point), writes this into *out and returns true.
 
-struct CTCCameraPointDefinitionBase;
+class CTCCameraPointDefinitionBase;
 
 struct CTCCameraPointVtbl {
     // slot 0x70 / 4 = index 28
@@ -10,7 +10,7 @@ struct CTCCameraPointVtbl {
     int (__fastcall *GetPointType)(CTCCameraPointDefinitionBase*);
 };
 
-struct CTCCameraPointDefinitionBase {
+class CTCCameraPointDefinitionBase { public:
     CTCCameraPointVtbl* vtbl;
 };
 

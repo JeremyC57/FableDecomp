@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CThreadedFileManager::RemoveObjectFromPendingMap (0x0098E770): the object is erased from
 // DeviceQueue[device][priority]; the queue cursor steps on only when it pointed at the erased object.
-struct CThreadedFile { long DeviceID; };
+class CThreadedFile { public: long DeviceID; };
 struct CFileObject { long Priority; CThreadedFile* File; };
 struct CPendingObjectSortKey { CFileObject* Object; CPendingObjectSortKey(CFileObject* o) : Object(o) { } };
 struct CPendingMap {                       // tiny ordered set of objects, enough for the test
@@ -16,7 +16,7 @@ struct CPendingMap {                       // tiny ordered set of objects, enoug
 };
 struct CPendingIterator { int m_node; CPendingIterator& operator++() { ++m_node; return *this; } };
 struct CPendingObjectMap { CPendingMap Objects; CPendingIterator NextObject; };
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     CPendingObjectMap DeviceQueue[2][7];
     void RemoveObjectFromPendingMap(CFileObject* object)
     {

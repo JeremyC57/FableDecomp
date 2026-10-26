@@ -11,7 +11,7 @@
 // Layout: CThing as the matched 0x00899B10 row (UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0).
 // Shape: /O2 (16-aligned entry); GetTC uses the one-ternary component store (the 0x00899B10 idiom).
 #include "engine/CPlayer.h"
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };
@@ -72,7 +72,7 @@ class CThingPlayerCreature : public CThing { };
 struct CPlayer_Methods : CPlayer {
     CThingPlayerCreature* GetPControlledCreature() const; // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager {
 public:
     CPlayer_Methods& GetMainPlayer();                    // 0x00449970
 };

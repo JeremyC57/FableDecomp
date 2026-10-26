@@ -7,12 +7,12 @@
 // that construct it with 0x00436560 (CSubtitleRenderer, NPlayerGui::CDraw*, NHeroInformationScreens::CManager, CTCTrapBase).
 // Layout: as 0x00436560 -- engine/CFadeInFadeOutBase.h models ToColour as opaque bytes, retail passes a CRGBColour by value.
 // Shape: /O2; any statement order that sets the fields (CloseTimer from the argument or from FadeOutTime) schedules the same.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool       Active;                                   // +0x00
     float      FadeInTime;                               // +0x04
     float      FadeOutTime;                              // +0x08

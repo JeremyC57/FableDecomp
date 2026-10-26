@@ -7,8 +7,8 @@
 #include "engine/CScriptThing.h"
 #include "engine/CASuspendableProcess.h"
 
-struct CCPPointerInfo { long References; };
-struct C3DVector { float X, Y, Z; };
+class CCPPointerInfo { public: long References; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptThingRuntime {
     virtual ~CScriptThingRuntime(); // CScriptThing RTTI slot 0, 0x004AB170

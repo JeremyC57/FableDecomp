@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessCreditsUI {
+class CInputProcessCreditsUI { public:
     void* vftable;
     int destroyed;
 };

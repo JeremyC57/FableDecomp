@@ -1,6 +1,6 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, long>, ...>::insert_unique(const value_type&) -- insert a (string, long) pair into the map unless the key is present
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the inlined comparator's eq test is a goto into the !b arm's result=false block (the merged false block then sits after the !b test with the eq je forward, as retail; early returns place it there too but jump-thread the bool)
-// Leaf: ?insert_unique@_Rb_tree@std@@QAE?AU?$pair@U_Rb_tree_iterator@std@@_N@2@ABQAU?$CBasicString@D@@@Z
+// Leaf: ?insert_unique@_Rb_tree@std@@QAE?AU?$pair@U_Rb_tree_iterator@std@@_N@2@ABQAV?$CBasicString@D@@@Z
 // TYPE NOTE (found after the 4 grades were spent): the tree is map<CCharString, long> -- its _M_insert is the next row 0x004316CF
 // (matched with a CCharString key and an inlined CCharString::operator<) and its _M_create_node is the landed 0x00431773. The
 // model below was graded as a set of CBasicString<char>* under CComparePointer, which loads the same words (value.first's data
@@ -21,7 +21,7 @@
 #pragma optimize("s", on)
 long __fastcall Compare(const char* a, const char* b);  // 0x00411570
 
-template <class C> struct CBasicString {
+template <class C> class CBasicString { public:
     C* PData;                                            // +0x00
     __forceinline bool operator<(const CBasicString& other) const { return Compare(PData, other.PData) < 0; }
 };

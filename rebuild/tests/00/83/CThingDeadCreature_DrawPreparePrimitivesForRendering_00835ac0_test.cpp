@@ -1,16 +1,16 @@
 // Behaviour test for CThingDeadCreature::DrawPreparePrimitivesForRendering (0x00835AC0)
 #include <cstdio>
-struct CEnginePrimitivePrepareInfo { int frame; };
+class CEnginePrimitivePrepareInfo { public: int frame; };
 static int g_prepared = 0; static const CEnginePrimitivePrepareInfo* g_info = 0;
 struct CTCGraphicAppearance {
     void PrepareForDraw(const CEnginePrimitivePrepareInfo& info) { ++g_prepared; g_info = &info; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     CTCGraphicAppearance* m_pGraphicAppearance;
     bool m_baseResult;
     bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) { return m_baseResult; }
 };
-struct CThingDeadCreature : CThingPhysical {
+class CThingDeadCreature : public CThingPhysical { public:
     bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
     {
         if (CThingPhysical::DrawPreparePrimitivesForRendering(info)) {

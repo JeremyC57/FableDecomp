@@ -11,7 +11,7 @@
 // {name, 12-byte value} pair like the landed CVectorMap<CCharString, STargetPoint> @ 0x0077F270 -- descriptive names.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);       // 0x0099EC30
 };

@@ -7,7 +7,7 @@
 // unless both share it; the last release calls the block's destroy function on the object and frees the block).
 static int g_destroyed = 0;
 static void DestroyObject(void* data) { (void)data; ++g_destroyed; }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;

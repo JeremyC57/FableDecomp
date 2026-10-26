@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00540980, length 873 bytes (`ret`). Callees: CWideString 0x0099AED0/0x0099B720/0x0099B510/0x0099B220/0x0099B800/0x0099B7D0/0x0099B940/0x0099B8D0/0x0099AF10/0x0099BDB0, GFGetIME 0x00404A80, CIME 0x00404BA0 (IME on) / 0x00404B80 (composition position), __ftol2, GetCharWidthW 0x0054F4B0, map::operator[] 0x0042D5B1. Strings L"" 0x0122D70C, L"*" 0x0122DE6C, L"|" 0x0122DE58; 3.0f 0x0122DED4.
 // Layout: as AddCharacter 0x0053FE50 (CEditBox members 0x40 below Ego_r.pdb); text component slots from the landed CText::ForceWidth 0x0054FB10 and CComponentContainer::Initialise 0x005461D0.
 // Grade note: the home-X offset sum is `C2DVector((double)home.X + offset, home.Y)` -- a double sum narrowed by the float ctor parameter makes VC7.1 load home.X first and keep the X store after the temporary lea (a float sum loads the frame float first in either order; an explicit (float) cast stores X early). Found by advisor B4.
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                          // 0x0099AED0
     CWideString(const CWideString& other);                  // 0x0099B720
@@ -23,14 +23,14 @@ struct CIME {
     void SetCompositionPosition(long x, long y);            // 0x00404B80
 };
 CIME* GFGetIME();                                           // 0x00404A80
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector operator*(const C2DVector& o) const { return C2DVector(X * o.X, Y * o.Y); }
     C2DVector Offset(float dx) const { return C2DVector(X + dx, Y); }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 struct SComponentState {
     unsigned char _pad00[8];
     C2DVector     Position;                                 // +0x08

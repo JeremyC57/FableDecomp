@@ -2,7 +2,7 @@
 
 struct Vec3 { float x, y, z; };
 struct CObj34 { char pad[0x44]; float f44; };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     char pad0[4];
     int field4;
     char pad8[4];

@@ -14,7 +14,7 @@ struct SElement16 {
     unsigned long a; unsigned long b; unsigned long c; unsigned long d;
 };
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* first; T* last; T* end_of_storage;
     unsigned long capacity() const { return (unsigned long)(end_of_storage - first); }
     void Erase(T* f, T* l);                              // 0x00A748E0
@@ -32,4 +32,4 @@ template<class T> void CArray<T>::DeallocateMemory()
     }
 }
 
-template struct CArray<SElement16>;
+template class CArray<SElement16>;

@@ -1,7 +1,7 @@
 // Behaviour test for std::fill<QuadricOptimiserInternals::COptimisedFace*> @ 0x00AD04A0
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct COptimisedFace {
     unsigned int VertexIndices[3];
     unsigned int UniqueVertexIndices[3];

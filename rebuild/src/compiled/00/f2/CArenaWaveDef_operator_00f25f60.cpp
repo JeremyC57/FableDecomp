@@ -10,7 +10,7 @@
 // Shape: compiler-generated memberwise assignment in declaration order: base out of line, the
 // long through eax, the vector out of line, the bool through dl.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                                            // +0x04..+0x28 (0x25 bytes + alignment)
     CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
@@ -23,7 +23,7 @@ struct CArenaCreatureDefVector {                                          // ret
     CArenaCreatureDefVector& operator=(const CArenaCreatureDefVector& other);   // 0x00F25F90
 };
 
-struct CArenaWaveDef : CDefClassBase {                                    // vtable 0x012FB2F0 (no RTTI)
+class CArenaWaveDef : public CDefClassBase { public:                                    // vtable 0x012FB2F0 (no RTTI)
     long                    NumWaveCreatures;                             // +0x28
     CArenaCreatureDefVector Creatures;                                    // +0x2c
     bool                    ShortWave;                                    // +0x38

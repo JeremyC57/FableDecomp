@@ -6,7 +6,7 @@
 // The compiler-generated memberwise assignment for the class of 004786cf: base assignment out of
 // line, then each member in declaration order (the retail vector's operator= is out of line).
 // Written as a user operator= with the same order; retail CParentDefClassBase is 0x3c bytes.
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                   // +0x04..+0x3c
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -19,7 +19,7 @@ struct CAbilityTrackLevelDefVector {                             // retail std::
     CAbilityTrackLevelDefVector& operator=(const CAbilityTrackLevelDefVector& other);   // 0x004788CA
 };
 
-struct CAbilityTrackDef : CParentDefClassBase {                  // vtable 0x0123649C
+class CAbilityTrackDef : public CParentDefClassBase { public:                  // vtable 0x0123649C
     long m_abilityType;                                          // +0x3c
     CAbilityTrackLevelDefVector m_levels;                        // +0x40
     long m_maxLevel;                                             // +0x4c

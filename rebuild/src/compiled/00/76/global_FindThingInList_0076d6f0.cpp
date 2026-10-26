@@ -11,7 +11,7 @@
 // constructor, so each copy is built in its own argument slot (`push ecx ; mov eax,esp ; mov [eax],ecx`);
 // the empty category tag (user constructor, no zero store) is homed in the dead `last` slot
 // (`lea eax,[esp+0Ch]`). Twin of 0x0076D850, whose iterator has no user copy constructor.
-struct CThing;
+class CThing;
 struct SThingListNode;
 
 struct CThingListIterator {

@@ -8,7 +8,7 @@
 // Shape: base #1 ctor, base #2 vtable, then the initialiser list: two false flags at +8/+9 and the owner
 // pointer argument at +0xc, then both derived vtables (sunk below the member stores by the scheduler).
 // `ret 4`: one stack argument. Member names are descriptive.
-struct CGame;
+class CGame;
 
 struct CBase {
     virtual void v00();
@@ -20,7 +20,7 @@ struct CGameListener {                          // second base, vtable 0x0122DE5
     CGameListener() { }
 };
 
-struct CGameComponent : CBase, CGameListener {
+class CGameComponent : public CBase, public CGameListener { public:
     bool m_initialised;                         // +0x08
     bool m_active;                              // +0x09
     CGame* m_pGame;                             // +0x0c

@@ -21,7 +21,7 @@ extern      CWS __fastcall AddWide_0099be70(CWSraw* left, CWSraw* right);
 extern const unsigned short kFmtSave_0122de44[] = { 'S','a','v','e',' ','%','d',0 };
 extern const unsigned short kSavePrefix_0122de90[] = { 'S','a','v','e',0 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWS GetManualSaveFileName(long slot);
 };
 

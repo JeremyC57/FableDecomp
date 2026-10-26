@@ -10,15 +10,15 @@
 //   (two stores from one zero register; stores through the member's `this` keep the ParentThing load AFTER them, as
 //   retail -- direct member stores let VC hoist `mov edx,[esi+4]` above the last RHSet pair; a `C2DVector(0, 0)`
 //   temporary goes through the frame); the offset copy takes &info->ToCentre and copies X, Y as dwords.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     void Set(float x, float y) { X = x; Y = y; }
 };
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned short BankIndex;                   // +0x00
     float          RenderSizeX;                 // +0x04
     C3DVector      ToCentre;                    // +0x08
@@ -28,11 +28,11 @@ struct CTCGraphicAppearance {
     unsigned char _pad00[0x44];
     unsigned char GraphicData[0x10];            // +0x44 the graphic data reference (index +0, type byte +0xd)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void OnCreate();   // slot 4 (+0x10)
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();

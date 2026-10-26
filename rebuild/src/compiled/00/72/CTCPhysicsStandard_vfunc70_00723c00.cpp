@@ -6,12 +6,12 @@
 // memberwise user copy constructor (the implicit POD copy is a block copy through `add ecx,5Ch` + esi). Layout from Ego_r.pdb CTCPhysicsStandard (0x88 bytes): RHSet (CRightHandedSet, two C3DVectors) at +0x50, OldRHSet at
 // +0x68. engine/CTCPhysicsStandard.h is a flattened POD (no virtuals, RHSet as opaque bytes), so the polymorphic class is
 // modelled locally with the same offsets (as the landed constructor 0x00723FD0 does).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CTCPhysicsStandard {
     virtual void v00();

@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CAFile
-{
+class CAFile
+{ public:
     virtual void V0() {}
     virtual void V1() {}
     virtual void V2() {}
@@ -20,8 +20,8 @@ struct CWorldFileLoader
     virtual void Load(CAFile* file, long value);
 };
 
-struct CWorld
-{
+class CWorld
+{ public:
     virtual void V0() {}
     virtual void FinishLoad();
     long pad[4];

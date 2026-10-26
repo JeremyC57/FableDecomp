@@ -2,19 +2,19 @@
 // name and added before activation; a loaded map is only activated.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString(const char* t) : Text(t) {} };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CNavigationAreaInit { C2DBoxI WorldArea; long MapIndex; CNavigationAreaInit() : MapIndex(0) { WorldArea.TLX = WorldArea.TLY = WorldArea.BRX = WorldArea.BRY = 0; } };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) {} };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CNavigationAreaInit { public: C2DBoxI WorldArea; long MapIndex; CNavigationAreaInit() : MapIndex(0) { WorldArea.TLX = WorldArea.TLY = WorldArea.BRX = WorldArea.BRY = 0; } };
 static int g_log[8]; static int g_n = 0; static long g_addedArea = -1; static int g_nameOk = 0;
-struct CNavigatorManager {
+class CNavigatorManager { public:
     bool Loaded;
     bool IsNavigationMapLoaded(long) const { g_log[g_n++] = 1; return Loaded; }
     void AddNavigationMap(long map, const CNavigationAreaInit& init) { g_log[g_n++] = 3; g_addedArea = init.WorldArea.BRX + map; }
     void ActivateNavigationMap(long map) { g_log[g_n++] = 4 + (int)map * 10; }
 };
-struct CWorld { CNavigatorManager* PNavigationManager; };
-struct CMapInfo { C2DBoxI Area; };
-struct CWorldMap {
+class CWorld { public: CNavigatorManager* PNavigationManager; };
+class CMapInfo { public: C2DBoxI Area; };
+class CWorldMap { public:
     CWorld* World; CMapInfo* Maps;
     void GetMapNavigationAreaInit(long map, const C2DBoxI& area, const CCharString& name, CNavigationAreaInit& init)
     { g_log[g_n++] = 2; init.WorldArea = area; init.MapIndex = map; g_nameOk = std::strcmp(name.Text, "NULL") == 0; }

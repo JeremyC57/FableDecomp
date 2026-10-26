@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     void* vftable;
     int destroyed;
 };

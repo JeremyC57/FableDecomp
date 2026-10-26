@@ -1,4 +1,4 @@
-struct CCombatAction_FallStunned {
+class CCombatAction_FallStunned { public:
     void* vftable;
 };
 

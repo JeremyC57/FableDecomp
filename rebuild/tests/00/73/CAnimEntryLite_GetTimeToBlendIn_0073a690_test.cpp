@@ -1,12 +1,12 @@
 // Behaviour test for CAnimEntryLite::GetTimeToBlendIn @ 0x0073a690: cached TransitionTime, scaled (truncated) by bullet time when affected and active.
 #include <cstdio>
-struct CThing { bool m_affected; bool IsAffectedByBulletTime() { return m_affected; } };
+class CThing { public: bool m_affected; bool IsAffectedByBulletTime() { return m_affected; } };
 struct CBulletTime {
     unsigned char _pad0[4]; void* m_pController; unsigned char _pad1[4]; bool m_active; float m_scale;
     float GetTimeScale() { return m_scale; }
     bool IsActive() const { return m_active || m_pController != 0; }
 };
-struct CGame { unsigned char _pad[0x68]; CBulletTime* m_pBulletTime; };
+class CGame { public: unsigned char _pad[0x68]; CBulletTime* m_pBulletTime; };
 struct CApplication { unsigned char _pad[0x24]; CGame* m_pGame; };
 static CApplication* g_pApplication;
 struct CAnimEntryLite {

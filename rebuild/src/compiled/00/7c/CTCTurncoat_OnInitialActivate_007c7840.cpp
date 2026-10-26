@@ -9,7 +9,7 @@
 // TurncoatStageEffects vector is 4 bytes smaller), so a local model as the landed 0x007C7810. CTurncoatDef (PDB):
 // MinimumResistance +0x34; PercentageOfHealthAsResistance / ExtraResistance at retail +0x4C / +0x50 (after the
 // 12-byte vector). The owner's float at +0xB0 is its health (descriptive name).
-struct CTurncoatDef {
+class CTurncoatDef { public:
     unsigned char _pad[0x34];
     float         MinimumResistance;                // +0x34
     unsigned char _pad38[0x14];
@@ -17,12 +17,12 @@ struct CTurncoatDef {
     float         ExtraResistance;                  // +0x50
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0xB0];
     float         Health;                           // +0xB0
 };
 
-struct CTCTurncoat {
+class CTCTurncoat { public:
     void*               __vftable;                  // +0x00
     CThingCreatureBase* Thing;                      // +0x04
     unsigned char       _pad_0x08[0xC];

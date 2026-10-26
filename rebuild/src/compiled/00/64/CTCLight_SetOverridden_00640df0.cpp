@@ -9,7 +9,7 @@
 // order); `new CLightInfo` has no ctor so the raw pointer goes straight to Reset.
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 void* __cdecl operator new(unsigned int size);      // 0x00BFEA1A
-struct CRGBColour { unsigned char B, G, R, A; };    // D3DCOLOR byte order
+class CRGBColour { public: unsigned char B, G, R, A; };    // D3DCOLOR byte order
 struct CLightInfo {                                 // CTCLight::CLightInfo (0x18, no ctor)
     CRGBColour    Colour;                           // +0x00
     float         InnerRadius;                      // +0x04
@@ -18,12 +18,12 @@ struct CLightInfo {                                 // CTCLight::CLightInfo (0x1
     unsigned long LightingChannelsEffected;         // +0x10
     bool          Inverted;                         // +0x14
 };
-struct CCPPointerInfo {                             // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                             // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -41,7 +41,7 @@ template<class T> struct CCountedPointer {
         Data = 0;
     }
 };
-struct CLightDef {
+class CLightDef { public:
     unsigned char _pad00[0x28];
     CRGBColour Colour;                              // +0x28
     long       HaloGraphic;                         // +0x2c
@@ -51,12 +51,12 @@ struct CLightDef {
     unsigned char _pad3c[0x58 - 0x3c];
     bool       Inverted;                            // +0x58
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CThing;
-struct CTCLight {
+class CThing;
+class CTCLight { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _base08[0x10 - 0x08];             // CTCBase flags, CAGraphicAppearanceComponent vptr +0x0c

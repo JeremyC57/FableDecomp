@@ -4,8 +4,8 @@
 #include <string.h>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CCharStringData { char* m_pData; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: char* m_pData; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetPString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pData; }
@@ -14,7 +14,7 @@ static unsigned long Calc_004014a0(unsigned long seed, const char* data, unsigne
 { unsigned long h = seed; for (unsigned long i = 0; i < length; ++i) h = h * 31 + (unsigned char)data[i]; return h; }
 static int g_destroyed = 0;
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     T* operator->() const { return m_pObject; }
     ~CCountedPointer()
@@ -26,7 +26,7 @@ template <class T> struct CCountedPointer {
         m_pObject = 0; m_pCount = 0;
     }
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43;
     void SetIdentity()
     {
@@ -52,23 +52,23 @@ struct CMatrix3x4 {
         E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
     }
 };
-struct C3DDummyObject { CMatrix3x4 Transform; };
-struct C3DMeshStats {
+class C3DDummyObject { public: CMatrix3x4 Transform; };
+class C3DMeshStats { public:
     const C3DDummyObject* dummy; unsigned long wantKey, lastKey, lastIndex;
     const C3DDummyObject* GetDummyObject(unsigned long key, unsigned long index) const
     { const_cast<C3DMeshStats*>(this)->lastKey = key; const_cast<C3DMeshStats*>(this)->lastIndex = index; return key == wantKey ? dummy : 0; }
 };
 static void destroyStats(void*) { ++g_destroyed; }
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     bool loaded; int begins; bool lastHigh; C3DMeshStats* stats;
     bool IsLoadedStats() const { return loaded; }
     void BeginLoadingStats(bool high) { ++begins; lastHigh = high; }
     CCountedPointer<const C3DMeshStats> GetMeshStats() const
     { CCountedPointer<const C3DMeshStats> p; p.m_pObject = stats; p.m_pCount = new SCountBlock; p.m_pCount->m_references = 1; p.m_pCount->m_pfnDestroy = destroyStats; p.m_pCount->m_pObject = stats; return p; }
 };
-struct CEngineInternalPrimitiveMeshBase { C3DMeshInfo* MeshInfo; };
-struct CEnginePrimitiveAttachmentInfo { unsigned long Flags; CCharString ParentDummyName; long ParentDummyIndex; CCharString ChildDummyName; long ChildDummyIndex; };
-struct CEngineInternalAttachedPrimitive {
+class CEngineInternalPrimitiveMeshBase { public: C3DMeshInfo* MeshInfo; };
+class CEnginePrimitiveAttachmentInfo { public: unsigned long Flags; CCharString ParentDummyName; long ParentDummyIndex; CCharString ChildDummyName; long ChildDummyIndex; };
+class CEngineInternalAttachedPrimitive { public:
     CEngineInternalPrimitiveMeshBase* OutputPrimitive;
     CEnginePrimitiveAttachmentInfo AttachmentInfo;
     bool GetChildInverseTransformStaticMesh(CMatrix3x4* inverse)

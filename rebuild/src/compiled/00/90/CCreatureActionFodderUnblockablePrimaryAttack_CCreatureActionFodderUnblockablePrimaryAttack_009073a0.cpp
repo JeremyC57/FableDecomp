@@ -14,13 +14,13 @@
 class CThing { };
 class CThingCreatureBase : public CThing { };
 
-struct CCharString {                     // one pointer; the default length makes the literal convert implicitly
+class CCharString { public:                     // one pointer; the default length makes the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                        // 0x0099EAE0
 };
 
-struct CSoundPair {                       // a user constructor makes the 8-byte result return through the hidden pointer
+class CSoundPair { public:                       // a user constructor makes the 8-byte result return through the hidden pointer
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }

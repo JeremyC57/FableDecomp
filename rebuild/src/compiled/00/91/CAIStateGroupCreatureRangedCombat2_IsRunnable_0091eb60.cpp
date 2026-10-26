@@ -9,7 +9,7 @@
 // right to left) and the member stores precede the vtable store (novtable base ctor). The module is a temporary (a named local
 // gets its own slot and a direct call); the intelligent pointer is a named local in its own block (a temporary reuses the
 // out-of-line ctor's eax) and shares the module's slot. Layout: PTargetThing +0x14 (Ego_r.pdb CAIStateGroup_CreatureRangedCombat2).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer
 {
@@ -22,15 +22,15 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
+{ public:
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
@@ -40,8 +40,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -85,13 +85,13 @@ struct CThing
     }
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad0[0x18];
     CThing* Creature;                               // +0x18
 };
 
-struct CWorld;
+class CWorld;
 
 namespace NCreatureAI
 {

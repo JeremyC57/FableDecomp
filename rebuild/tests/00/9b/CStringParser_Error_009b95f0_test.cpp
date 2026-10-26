@@ -6,7 +6,7 @@
 #define __fastcall
 #endif
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char* PStringData;
     CCharString(const char* s) { PStringData = (char*)std::malloc(std::strlen(s) + 1); std::strcpy(PStringData, s); ++g_live; }
     CCharString(const CCharString& o) { PStringData = (char*)std::malloc(std::strlen(o.PStringData) + 1); std::strcpy(PStringData, o.PStringData); ++g_live; }
@@ -18,7 +18,7 @@ CCharString __fastcall GFIntToCharString(long value) { char b[32]; std::sprintf(
 CCharString __fastcall operator+(const CCharString& left, const char* right) { return Cat(left.PStringData, right); }
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right) { return Cat(left.PStringData, right.PStringData); }
 struct CCursorPos { bool InQuotes; unsigned long StringPos; unsigned long Line; };
-struct CStringParser {
+class CStringParser { public:
     char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString; void* Comments;
     void (__fastcall* ErrorCallback)(const CCharString&); CCursorPos CursorPos;
     CStringParser() : Filename("quests.txt"), TempCharString("") {}

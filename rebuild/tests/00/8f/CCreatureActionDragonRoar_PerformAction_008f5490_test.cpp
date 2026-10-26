@@ -4,10 +4,10 @@
 #include <cstdio>
 #include <vector>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 struct CDriver { float Lifetime; std::vector<CThing*> Passengers; };
-struct CThing { C3DVector Pos, Mouth, Facing; CDriver* Driver; };
+class CThing { public: C3DVector Pos, Mouth, Facing; CDriver* Driver; };
 static C3DVector g_start, g_end; static CThing* g_barrier;
 static CThing* CreateBarrier(const C3DVector& s, const C3DVector& e, float r) { g_start = s; g_end = e; return r == 2.0f ? g_barrier : 0; }
 static void PerformAction(CThing* dragon)

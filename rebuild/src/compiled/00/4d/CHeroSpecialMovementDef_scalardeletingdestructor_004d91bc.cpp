@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CHeroSpecialMovementDef
-{
+class CHeroSpecialMovementDef
+{ public:
     void* vftable;
 };
 extern void* const g_CHeroSpecialMovementDef_vftable;

@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cmath>
 
-struct CPlayerGui { void* w; void* pm; void* ii; void* comp; void* bank; };
+class CPlayerGui { public: void* w; void* pm; void* ii; void* comp; void* bank; };
 static int g_resizeCount = 0, g_resizeArg = -1, g_baseCalls = 0;
 struct CRetailHandleVector { void* f; void* l; void* e; void Resize(long n) { g_resizeCount++; g_resizeArg = n; } };
 struct CDrawBase {

@@ -12,7 +12,7 @@
 // The creature is reached by a direct cast at each use: an inline GetCreature() accessor rotates eax/edx in the loop.
 // Layout: the creature's current action at +0x100 (IsPerformingAnyAction reads it), the action id at +0x28.
 // Leaf: AIAction_CombatPerformActionAndWait
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer
 {
@@ -49,8 +49,8 @@ struct CCountedPointer                              // CCountedPointer<..> {obje
     }
 };
 
-struct CBrainOutput                                 // 0x48 bytes
-{
+class CBrainOutput                                 // 0x48 bytes
+{ public:
     unsigned long Flags;                            // +0x00 (8: perform action, 0x20: pump combat actions)
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointer PAction;                        // +0x20
@@ -60,8 +60,8 @@ struct CBrainOutput                                 // 0x48 bytes
 
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                           // slot 2 (+0x08)
     unsigned char _pad04[0x18 - 0x04];
@@ -69,8 +69,8 @@ struct CAIBrain
     void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0 (manifest "CQuestManager::RemoveAvailableQuestCardType" is propagated)
 };
 
-struct CCreatureActionBase
-{
+class CCreatureActionBase
+{ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
@@ -78,15 +78,15 @@ struct CCreatureActionBase
     long GetActionID() const;                       // 0x00692620
 };
 
-struct CThingCreatureBase
-{
+class CThingCreatureBase
+{ public:
     unsigned char _pad[0x100];
     CCreatureActionBase* CurrentAction;             // +0x100
     bool IsPerformingAnyAction();                   // 0x006622A0
 };
 
-struct CAIStateGroupBase
-{
+class CAIStateGroupBase
+{ public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08

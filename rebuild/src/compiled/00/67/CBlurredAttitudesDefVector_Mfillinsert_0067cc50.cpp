@@ -27,10 +27,10 @@ struct CBase_009fc550 {                                // polymorphic root (its 
     ~CBase_009fc550();                                 // 0x009FC550 (labelled "~CMemoryBlock")
 };
 #pragma pack(push, 1)
-struct CDefPointeeBase : CBase_009fc550 {              // vtable 0x01230BA0, 28 bytes
+class CDefPointeeBase : public CBase_009fc550 { public:              // vtable 0x01230BA0, 28 bytes
     ~CDefPointeeBase() { }
 };
-struct CDefinitionManager;
+class CDefinitionManager;
 struct __declspec(novtable) CDefClassBase : CDefPointeeBase {
     CDefinitionManager* PDefManager;                   // +0x1c
     unsigned long GlobalIndex;                         // +0x20
@@ -38,12 +38,12 @@ struct __declspec(novtable) CDefClassBase : CDefPointeeBase {
 };
 struct CSubDefInfo;
 struct CKeyPairCompareLess {};
-template<class K, class V> struct CVectorMap {         // retail: 14 bytes
+template<class K, class V> class CVectorMap { public:         // retail: 14 bytes
     CRetailVector<V>    m_vector;                      // +0x00
     CKeyPairCompareLess m_compare;                     // +0x0c (empty)
     bool                m_sorted;                      // +0x0d
 };
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct __declspec(novtable) CParentDefClassBase : CDefClassBase {
     CDefString                             InstantiationName;   // +0x25
     CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap;       // +0x29

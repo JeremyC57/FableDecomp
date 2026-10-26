@@ -1,7 +1,7 @@
 // Behaviour test for 0076d850 (_global::FindThingInList): the find front end forwards to the tagged loop and returns the first node holding the thing, or last.
 #include <cstdio>
 
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 struct SThingListNode {
     SThingListNode* m_pNext;

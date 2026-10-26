@@ -7,17 +7,17 @@
 // and the returned reference is copied into the hidden result through C3DVector's memberwise user copy constructor (result
 // pointer in ecx, handed back with `mov eax,ecx`; `ret 4`).
 // Layout = Ego_r.pdb CTCPreCalculatedNavigationRoute: PThingToCalculateRouteTo (CIntelligentPointer<const CThing>) +0x0c.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
 
-struct CBaseObject;
+class CBaseObject;
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -25,12 +25,12 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
 template<class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* operator->() const { return (T*)GetPItem(); }
 };
 #pragma pack(pop)
 
-struct CTCPreCalculatedNavigationRoute {
+class CTCPreCalculatedNavigationRoute { public:
     virtual void v00();
     void* ParentThing;                                      // +0x04 (CTCBase)
     bool  ToBeRemoved;                                      // +0x08

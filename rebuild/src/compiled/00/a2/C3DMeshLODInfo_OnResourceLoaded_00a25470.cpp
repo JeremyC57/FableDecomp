@@ -4,12 +4,12 @@
 //
 #include "engine/C3DMeshLODInfo.h"   // PDB layout agrees with retail (Mesh +0x1c, FileData +0x24, MeshInfo +0x2c, LOD +0x30)
 
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void RemoveLOD(unsigned long lod, bool keepStats);   // 0x00A249A0
 };
 

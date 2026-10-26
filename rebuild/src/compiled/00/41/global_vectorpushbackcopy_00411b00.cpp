@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CActionInputControl;
+class CActionInputControl;
 
 struct VectorPushBackCopyOverlay
 {

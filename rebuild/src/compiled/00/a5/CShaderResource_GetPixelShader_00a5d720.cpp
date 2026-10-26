@@ -1,11 +1,11 @@
-struct CCharString;
-struct CPixelShader;
+class CCharString;
+class CPixelShader;
 
 struct CShaderResourceField4 {
     int ResolveHandle(CPixelShader* p);
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     void* field0;
     CShaderResourceField4* ShaderBank;
     CCharString* GetPixelShader(CCharString* a, CPixelShader* b);

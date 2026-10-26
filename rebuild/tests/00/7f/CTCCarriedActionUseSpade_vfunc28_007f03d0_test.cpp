@@ -3,8 +3,8 @@
 // is notified whenever present.
 #include <cstdio>
 #include <cstring>
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -18,7 +18,7 @@ struct CInterfaceMap {
 };
 static char g_log[64];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length) : m_pData(text) { Log('s'); }
     CCharString(const CCharString& o) : m_pData(o.m_pData) { Log('c'); }
@@ -31,12 +31,12 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer() { Log('p'); }
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00() {}
     ~CCreatureActionBase() { Log('b'); }
 };
-struct CThingCreatureBase;
-struct CCreatureAction_ActivateQuest : CCreatureActionBase {
+class CThingCreatureBase;
+class CCreatureAction_ActivateQuest : public CCreatureActionBase { public:
     CCharString         ScriptName;
     bool                LoadResources;
     CIntelligentPointer PObjectToUse;
@@ -45,7 +45,7 @@ struct CCreatureAction_ActivateQuest : CCreatureActionBase {
         : ScriptName(scriptName), LoadResources(loadResources), Owner(owner) { PObjectToUse.m_pItem = objectToUse; Log('a'); }
 };
 template <class T> T* AddressOf(const T& t) { return const_cast<T*>(&t); }
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -74,7 +74,7 @@ struct CTCShowableItem {
     int Calls;
     void OnShowEnded() { ++Calls; }
 };
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00() {}
     CThingCreatureBase* ParentThing;
     int BaseCalls;

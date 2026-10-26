@@ -4,7 +4,7 @@
 
 namespace NParticleEngine {
 
-struct CParticleEmitterInfo {
+class CParticleEmitterInfo { public:
     void*         Data;
     void*         Bank;
     unsigned long Index;

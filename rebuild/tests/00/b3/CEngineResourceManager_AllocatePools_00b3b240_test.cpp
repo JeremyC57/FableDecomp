@@ -9,7 +9,7 @@ __forceinline long ROUND(float value)
     return result;
 }
 static char g_names[8][32]; static int g_nameCount = 0; static long g_init[8]; static int g_initCount = 0; static long g_budgets[4]; static int g_budgetCount = 0;
-struct CCharString { void* m_pData; CCharString(const char* text, long length = -1) : m_pData((void*)text) { } ~CCharString() { } CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; } };
+class CCharString { public: void* m_pData; CCharString(const char* text, long length = -1) : m_pData((void*)text) { } ~CCharString() { } CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; } };
 struct CMemoryPool { unsigned char _pad000[0x28]; long GrowSize; unsigned char _pad02c[0x34 - 0x2c]; void* Allocator; unsigned char _pad038[0x448 - 0x38]; CCharString Name; unsigned char _pad44c[0x464 - 0x44c];
     CMemoryPool() : Name("") { } void Initialise(long bytes, bool a, bool b) { g_init[g_initCount++] = bytes; } };
 struct CPoolAllocator { unsigned char _pad[0x28]; CPoolAllocator() { } };
@@ -18,7 +18,7 @@ struct CAllocatorPointer { CPoolAllocator* m_pObject; void* m_pCount; void Reset
 struct CDeviceBudget { void Set(long bytes) { g_budgets[g_budgetCount++] = bytes; } };
 struct CRenderDeviceBudgets { unsigned char _pad000[0x174]; CDeviceBudget TextureBudget; unsigned char _pad175[0x1f0 - 0x175]; CDeviceBudget VertexBudget; unsigned char _pad1f1[0x26c - 0x1f1]; CDeviceBudget StaticBudget; unsigned char _pad26d[0x2e8 - 0x26d]; CDeviceBudget DynamicBudget; };
 struct CEngineResourcePoolSizes { unsigned char _pad00[0xc]; long TextureKB; long VertexKB; float ScratchFraction; unsigned char _pad18[4]; long DynamicKB; long StaticKB; long IndexKB; };
-struct CEngineResourceManager { unsigned char _pad000[0x1c]; CRenderDeviceBudgets* Budgets; unsigned char _pad020[0x8e0 - 0x20]; CMemoryPoolPointer GeneralPool; CAllocatorPointer GeneralAllocator; CMemoryPoolPointer StaticPool; CMemoryPoolPointer IndexPool; CMemoryPoolPointer ScratchPool; void AllocatePools(bool allocateAll, const CEngineResourcePoolSizes& sizes); };
+class CEngineResourceManager { public: unsigned char _pad000[0x1c]; CRenderDeviceBudgets* Budgets; unsigned char _pad020[0x8e0 - 0x20]; CMemoryPoolPointer GeneralPool; CAllocatorPointer GeneralAllocator; CMemoryPoolPointer StaticPool; CMemoryPoolPointer IndexPool; CMemoryPoolPointer ScratchPool; void AllocatePools(bool allocateAll, const CEngineResourcePoolSizes& sizes); };
 void CEngineResourceManager::AllocatePools(bool allocateAll, const CEngineResourcePoolSizes& sizes)
 {
     if (allocateAll) {

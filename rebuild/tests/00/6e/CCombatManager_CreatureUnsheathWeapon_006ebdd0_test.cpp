@@ -65,15 +65,15 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -218,12 +218,12 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 #include <stddef.h>
 
 
-struct CCombatManager;
-struct CDefPointeeBase;
-struct CThingCreatureBase;
+class CCombatManager;
+class CDefPointeeBase;
+class CThingCreatureBase;
 
 #pragma pack(push, 1)
-struct CTCCombat {
+class CTCCombat { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     long                obj;                                 // +0x04 retail-only long (previous header)
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -307,7 +307,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCCombat, IsInMiddleOfFlourishAction) == 0xa8);
 
 
 #pragma pack(push, 1)
-struct CCreatureAction_UnsheatheWeapons {
+class CCreatureAction_UnsheatheWeapons { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -405,10 +405,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UnsheatheWeapons, WeaponType) == 0x
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -534,11 +534,11 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -626,8 +626,8 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -635,8 +635,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -720,17 +720,17 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct CTCCombat {unsigned char _nativeBeforeWeaponType[0x6c];long UnsheathingWeaponType;};
+class CTCCombat { public:unsigned char _nativeBeforeWeaponType[0x6c];long UnsheathingWeaponType;};
 struct CInterfaceMap {
     struct Entry {long type;CTCCombat* component;};
     Entry* first;Entry* last;
     Entry* LowerBound(const long*); //0040F020
 };
-struct CThingCreatureBase;
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct CTCWeaponTrail;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CThing;
+class C3DVector { public: float x, y, z; };
+class CTCWeaponTrail;
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -803,8 +803,8 @@ struct CCreatureActionBase {
     virtual bool WaitForMeshToLoad() const;
     unsigned char nativeFields[0xa4]; // native ActionBase70 slots, size0xa8
 };
-struct CSoundPair { long first; long last; CSoundPair() : first(0), last(0) { } };
-struct CCombatActionBase : CCreatureActionBase {
+class CSoundPair { public: long first; long last; CSoundPair() : first(0), last(0) { } };
+class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();
     virtual void PerformAction();
     virtual void FinishAction();
@@ -851,14 +851,14 @@ struct CCombatActionBase : CCreatureActionBase {
     CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds); // 0x00857F30
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _nativeBeforeUsingComponents[0x20];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
     bool IsFreeToPerformAction(const CCreatureActionBase&) const; //00662210 accepts native CCreatureActionBase prefix
     bool SetCurrentAction(const CCreatureActionBase&); //006644F0
 };
-struct CCreatureAction_UnsheatheWeapons : CCombatActionBase {
+class CCreatureAction_UnsheatheWeapons : public CCombatActionBase { public:
     long WeaponType;
     CCreatureAction_UnsheatheWeapons(CThingCreatureBase&,long); //008B85D0
     virtual void PerformAction(); //008B7BA0
@@ -870,7 +870,7 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheWeapons)==0x118);
 extern bool FABLE_FASTCALL ShouldPlayUnsheatheWeaponAction(CThingCreatureBase*,long,bool*,bool*); //008B7CF0
 extern bool FABLE_FASTCALL IsIncapacitated(CThingCreatureBase*); //0085F0C0
 extern bool FABLE_FASTCALL IsKnockedDown(CThingCreatureBase*); //0085F010
-struct CCombatManager {void CreatureUnsheathWeapon(CThingCreatureBase*,long);};
+class CCombatManager { public:void CreatureUnsheathWeapon(CThingCreatureBase*,long);};
 void CCombatManager::CreatureUnsheathWeapon(CThingCreatureBase* creature,long weapon)
 {
     bool animate;
@@ -897,7 +897,7 @@ void CCombatManager::CreatureUnsheathWeapon(CThingCreatureBase* creature,long we
 
 
 
-struct CThing{};
+class CThing{ public:};
 static bool shouldPlay,animateResult,incapacitated,knockedDown,freeAction,setResult;
 static int errors,checks,incapChecks,knockChecks,lookups,ctors,dtors,freeChecks,setCalls,performs;
 static long expectedWeapon;static CThingCreatureBase* expectedOwner;static CTCCombat* activeCombat;

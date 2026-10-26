@@ -11,15 +11,15 @@
 // CGameEvent as the landed CTCWife::SendPauseEvent 0x006CEBF0 (40 bytes over an empty CMemoryBuffer).
 // Shape: the out-parameter GetInterface lookup (leaves the component in eax before `mov ecx,eax`); the event payload is an inline by-value
 // AddULONG (its value homed in the frame word below the event) written before the player number.
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -42,10 +42,10 @@ struct CThing {
 struct CTCShoppingComponent {                           // the hero's interface 0x17 component (an inventory TC)
     void SetCurrentShop(CThing* shop);                  // 0x005BC4CB (+0xb8)
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
     long GetMainPlayerNumber();                         // 0x00449700
 };
@@ -56,7 +56,7 @@ struct CGameSubsystem {
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -66,11 +66,11 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -79,7 +79,7 @@ struct CTCBase {
     CPlayerManager* GetPlayerManager() const;           // 0x00686D50
     CGameSubsystem* GetGameSubsystem();                 // 0x00686D60
 };
-struct CTCShop : CTCBase {
+class CTCShop : public CTCBase { public:
     void OpenShoppingInterface();
 };
 

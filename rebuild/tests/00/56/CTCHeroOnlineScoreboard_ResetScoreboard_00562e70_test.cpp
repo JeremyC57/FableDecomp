@@ -6,7 +6,7 @@ static int g_events[8];
 static int g_count = 0;
 
 namespace LHNetworkLib {
-struct LHHttp2 {
+class LHHttp2 { public:
     ~LHHttp2() { g_events[g_count++] = 1; }
 };
 }
@@ -23,7 +23,7 @@ struct CHttpScopedPtr {
 
 struct CComponent { int dummy; };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     virtual void v00() {}
     void*          m_pThing;
     long           m_8;

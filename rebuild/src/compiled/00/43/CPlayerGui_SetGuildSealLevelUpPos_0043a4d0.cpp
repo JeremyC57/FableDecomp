@@ -9,7 +9,7 @@
 // erase(begin(), end()) with the inlined POD copy loop of the empty tail.
 extern float g_fEpsilon;                                    // 0x0129BA3C
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
@@ -52,13 +52,13 @@ struct C2DVectorVector {                                    // STLport vector<C2
 };
 
 namespace NPlayerGui {
-struct CDrawGuildSeal {
+class CDrawGuildSeal { public:
     unsigned char   _pad00[0x50];
     C2DVectorVector LevelUpPositions;                       // +0x50
 };
 }
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char               _pad000[0x1d0];
     NPlayerGui::CDrawGuildSeal* PDrawGuildSeal;             // +0x1d0
     void SetGuildSealLevelUpPos(const C2DVector& pos);

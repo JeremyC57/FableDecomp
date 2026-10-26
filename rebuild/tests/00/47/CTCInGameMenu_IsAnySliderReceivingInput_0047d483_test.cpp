@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* Text; CCharString(const char* text, long) : Text(text) {} };
+class CCharString { public: const char* Text; CCharString(const char* text, long) : Text(text) {} };
 struct CComponent {
     const char* Name; long State; CComponent* Children[2]; int nChildren;
     CComponent* FindChild(CCharString name)
@@ -16,7 +16,7 @@ template <class T> struct CRetailVector {
     unsigned long size() const { return _M_finish - _M_start; }
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     CRetailVector<CComponent*> Components;
     bool IsAnySliderReceivingInput() const;
 };

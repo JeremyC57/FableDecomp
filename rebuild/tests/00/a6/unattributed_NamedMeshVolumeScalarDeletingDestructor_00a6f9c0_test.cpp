@@ -6,17 +6,17 @@
 static int g_stringDtors = 0, g_deleteFuncCalls = 0;
 static void* g_deletedData = 0;
 
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     ~CCharString() { ++g_stringDtors; }
 };
 static void DeleteFunc(void* data) { ++g_deleteFuncCalls; g_deletedData = data; }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              m_pData;
     CCPPointerInfo* m_pInfo;
     void ReleaseInfo()
@@ -31,8 +31,8 @@ template<class T> struct CCountedPointer {
     }
     ~CCountedPointer() { ReleaseInfo(); m_pData = 0; m_pInfo = 0; }
 };
-struct CContainmentVolume { int m_dummy; };
-struct C3DMeshVolume {
+class CContainmentVolume { public: int m_dummy; };
+class C3DMeshVolume { public:
     CCharString                         Name;
     CCountedPointer<CContainmentVolume> ConvexVolume;
 };

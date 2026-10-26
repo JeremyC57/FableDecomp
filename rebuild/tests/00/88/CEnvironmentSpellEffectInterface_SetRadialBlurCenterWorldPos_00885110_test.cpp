@@ -1,8 +1,8 @@
 // Behaviour test for 0x00885110 CEnvironmentSpellEffectInterface::SetRadialBlurCenterWorldPos
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CRadialBlurPositionParams { C3DVector AreaCenter, BlurCenter; long AreaTrackPos, BlurTrackPos; };
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     CRadialBlurPositionParams RadialBlurPositionParams, PrevFrameRadialBlurPositionParams;
     void SetRadialBlurCenterWorldPos(const C3DVector& position, bool interpolate)
     {

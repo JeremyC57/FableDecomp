@@ -13,7 +13,7 @@
 //   lights->Next`) for retail's register use, and its inner test keeps the loop-invariant `maxLights > 0`; the copy loop is
 //   `while (light && i < maxLights)` and the weight scaling an inline CRGBFloatColour::operator*= (retail's strength-reduced
 //   element pointer biased to the colour's B word).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -21,13 +21,13 @@ struct C2DVector {
     float GetLengthSquared() const { return X * X + Y * Y; }
 };
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour {
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public:
     float R, G, B, A;
     void operator*=(float f) { R *= f; G *= f; B *= f; A *= f; }
 };
 
-struct CEngineLocalLightElement {                  // 0x34 bytes
+class CEngineLocalLightElement { public:                  // 0x34 bytes
     C3DVector       WorldPos;                      // +0x00
     float           Radius;                        // +0x0c
     float           RadiusSquared;                 // +0x10
@@ -37,11 +37,11 @@ struct CEngineLocalLightElement {                  // 0x34 bytes
     float           AttenuationConstant;           // +0x2c
     unsigned long   ChannelMask;                   // +0x30
 };
-struct CEngineLocalLightArray {
+class CEngineLocalLightArray { public:
     unsigned long            LightCount;           // +0x00
     CEngineLocalLightElement Lights[8];            // +0x04
 };
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0;
     unsigned char ChannelIndex1;
     unsigned char ChannelBlendFactor;
@@ -61,16 +61,16 @@ struct CManagerLocalLight {
     float                    ThemeWeight;          // +0x40
     bool                     AlreadyFoundFlag;     // +0x44
 };
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool { public:
     void* Allocate(unsigned long size);            // 0x00A5C910
 };
-struct CEngine {
+class CEngine { public:
     unsigned char     _pad[0x130];
     CSimpleMemoryPool FrameMemoryPool;             // +0x130
 };
 extern CEngine* g_pEngine_01436ea4;                         // 0x01436EA4
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char          _pad[0x44ec];
     CEngineLocalLightArray EmptyLightArray;        // +0x44ec
     CEngineLocalLightArray* ClipLightCountAndBuildLightArray(CManagerLocalLight* lights, long lightCount, const C2DVector& position,

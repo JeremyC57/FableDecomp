@@ -20,11 +20,11 @@ public:
 extern "C" int rand();                                 // 0x00BFEB16
 extern "C" void free(void* p);                         // 0x00BFEA14
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { }
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -51,7 +51,7 @@ struct CCountedPointer {
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     CCountedPointer PImp;
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
     virtual ~CScriptThing() { }
@@ -75,7 +75,7 @@ struct ScriptThingVector {                             // STLport vector<CScript
     CScriptThing& operator[](long i) { return *(_M_start + i); }
 };
 enum ECutsceneBehaviour { CUTSCENE_BEHAVIOUR_2 = 2 };
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();

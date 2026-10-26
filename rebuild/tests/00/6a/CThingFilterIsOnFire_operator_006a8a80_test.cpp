@@ -2,7 +2,7 @@
 // component reports IsOnFire.
 #include <stdio.h>
 #include <string.h>
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;

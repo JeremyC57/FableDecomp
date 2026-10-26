@@ -10,16 +10,16 @@
 // ebp right after the lookup result is moved to bl; inside the `if` the creature is fetched twice into locals (the first unused), the
 // manager into a third (edi, `this` being dead by then), then the five arguments right to left (0, 0, the creature, its position, the def).
 // Layout: retail CCreatureActionBase is 0xa8 bytes with PCreature at +8; no engine header for this class, so `this` is modelled locally.
-struct C3DVector;
-struct CMessageEvent;
+class C3DVector;
+class CMessageEvent;
 
-struct CCharString {                        // one pointer (PStringData)
+class CCharString { public:                        // one pointer (PStringData)
     void* m_pData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CMessageEventDef {                   // CDefBase: vptr, then the reference count at +4
+class CMessageEventDef { public:                   // CDefBase: vptr, then the reference count at +4
     virtual void v00();
     virtual void Destroy();                 // slot 1 (+4)
     long m_count;                           // +4
@@ -30,19 +30,19 @@ struct CDefPointer {                        // CDefPointer<CMessageEventDef>: on
     CDefPointer() : m_p(0) { }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer& def);   // 0x007923C0
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00
 };
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(CMessageEventDef* def, const C3DVector* position, CThing* thing1, CThing* thing2, long priority);   // 0x00687730
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageEventManager;   // +0x60
 };
@@ -53,7 +53,7 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatur
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -62,7 +62,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     CWorld* GetPWorld() const;              // 0x00692940
 };
 
-struct CCreatureAction_CallSpouseHome : CCreatureActionBase {
+class CCreatureAction_CallSpouseHome : public CCreatureActionBase { public:
     virtual void PerformAction();
 };
 

@@ -1,6 +1,6 @@
-struct C3DVector { float x,y,z; };
+class C3DVector { public: float x,y,z; };
 // Leaf: IsNewDestinationGoingToResetNavigation
-struct CTCCreatureNavigation;
+class CTCCreatureNavigation;
 
 struct Sub {
     // virtual with slot7 (+0x1c) taking (CTCCreatureNavigation*, C3DVector*)
@@ -14,7 +14,7 @@ struct Sub {
     virtual bool s7(CTCCreatureNavigation* thisNav, C3DVector* dest);
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* pad0;
     Sub* sub;   // +4
 };

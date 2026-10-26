@@ -1,7 +1,7 @@
 // NParticleEngine::CPSCOrbit::DatabaseClone() -- allocate a fresh component of this class and copy this one into it (virtual slot 18 = DatabaseCopy), returning the copy
 // Leaf: ?DatabaseClone@CPSCOrbit@NParticleEngine@@
 // Renamed (fistp pass, 2026-10-24) from CThingTrackNode::DrawIsDrawable @ 00/b1/CThingTrackNode_DrawIsDrawable_00b17950.cpp: vtable slot 2 of NParticleEngine::CPSCOrbit; Ego_r.pdb lists Alloc / DatabaseClone / DatabaseCopy on every particle component class and the body is exactly alloc-then-copy-from-this; the clone target is the slot-18 virtual
-namespace NParticleEngine { struct CPSCOrbit; }
+namespace NParticleEngine { class CPSCOrbit; }
 using NParticleEngine::CPSCOrbit;
 
 struct IDrawableObj {
@@ -14,7 +14,7 @@ struct IDrawableObj {
 extern IDrawableObj* __fastcall GetDrawableObject_00af7f40(CPSCOrbit* self);
 
 namespace NParticleEngine {
-struct CPSCOrbit {
+class CPSCOrbit { public:
     IDrawableObj* DatabaseClone();
 };
 }

@@ -2,13 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A56530, length 83 bytes.
 // Leaf: ??DCMatrix3x4@@QBE?AVC3DVector@@ABV1@@Z
 // Shape: the hidden-pointer result built in a named local and returned through the memberwise copy constructor (the three sums stay on the x87 stack, `fxch st(2)` then three stores); a value constructor evaluates the rows right to left, a POD copies through the frame, `ret 8`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // the memberwise copy into the hidden result: VC7.1 has no NRVO, but the copy of a fully computed local folds into three x87 stores
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector m_row0;                              // +0x00
     C3DVector m_row1;                              // +0x0c
     C3DVector m_row2;                              // +0x18

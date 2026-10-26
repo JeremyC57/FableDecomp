@@ -19,9 +19,9 @@ static int fails = 0;
 // Shape: the def pointer is zero-initialised in the frame and loaded ONCE into edi after GetSubDef; the map is a named
 // pointer local (esi, re-used for `cmp eax,[esi]` after the find); the found value is a ternary into esi; the def is
 // released through edi with NO null test (`dec [edi+4] ; jne`), so the release is written by hand on the local.
-struct CCharString;
+class CCharString;
 
-struct CDefPointeeBase {                        // a counted definition object
+class CDefPointeeBase { public:                        // a counted definition object
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
     long m_refCount;                            // +4
@@ -32,7 +32,7 @@ struct CDefPointeeBase {                        // a counted definition object
     }
 };
 
-template<class T> struct CDefPointer {          // CDefPointer<const T>: one counted pointer to a definition
+template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
@@ -57,7 +57,7 @@ struct CTalkDef : CDefPointeeBase {
     CPhonemeMap   Phonemes;                     // +0x60
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTalkDef>& out) const;       // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -74,12 +74,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CTalkDef>& out) c
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PBaseDef;                    // +0x70
 };
 
-struct CTCTalk {
+class CTCTalk { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned long GetPhonemeAnim(const CCharString& phoneme) const;

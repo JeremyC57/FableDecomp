@@ -1,5 +1,5 @@
 #include <cstdio>
-struct COpinionPersonalityDef { int f0; };
+class COpinionPersonalityDef { public: int f0; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 static void dtor(COpinionPersonalityDef* def){ (void)def; g_dtor_called++; }

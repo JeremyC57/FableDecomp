@@ -3,17 +3,17 @@
 // is sorted and handed with the triangle's vertices and the outs to the best-hit search.
 #include <cstdio>
 
-struct CThing { int id; };
-struct C3DVector { float X, Y, Z; };
+class CThing { public: int id; };
+class C3DVector { public: float X, Y, Z; };
 struct CTriangle { C3DVector* PVertices; };
 struct CHitVolume {
     bool Hit;
     virtual bool IntersectTriangle(CThing*, const CTriangle&, C3DVector* a, C3DVector* b, long flags)
     { if (!Hit) return false; a->X = 1.0f; a->Y = 2.0f; a->Z = 3.0f; b->X = 4.0f; b->Y = 5.0f; b->Z = (float)flags; return true; }
 };
-struct CHitLocationDef { CHitVolume* PVolume; };
+class CHitLocationDef { public: CHitVolume* PVolume; };
 namespace NHitLocations {
-struct CHitLocation { CThing* POwnerThing; CHitLocationDef* PDef; void* PArmourDef; long HitResponseAction; long BlockResponseAction; bool Enabled; };
+class CHitLocation { public: CThing* POwnerThing; CHitLocationDef* PDef; void* PArmourDef; long HitResponseAction; long BlockResponseAction; bool Enabled; };
 }
 struct SHitLocationEntry { NHitLocations::CHitLocation first; long second; };
 struct THitLocationIntersectionElement { long Value; NHitLocations::CHitLocation* PHitLocation; C3DVector HitA; C3DVector HitB; };
@@ -33,7 +33,7 @@ void sort(THitLocationIntersectionElement* first, THitLocationIntersectionElemen
 static unsigned long g_count = 0; static C3DVector* g_vertices = 0; static float g_lastBZ = 0.0f;
 NHitLocations::CHitLocation* GetPBestHitLocationFromList(THitLocationIntersectionElement* elements, unsigned long count, C3DVector* vertices, C3DVector*, C3DVector*)
 { g_count = count; g_vertices = vertices; if (!count) return 0; g_lastBZ = elements[0].HitB.Z; return elements[0].PHitLocation; }
-struct CTCHitLocations {
+class CTCHitLocations { public:
     SHitLocationEntry* HitLocations_start; SHitLocationEntry* HitLocations_finish;
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithTriangle(const CTriangle& triangle, C3DVector* outA, C3DVector* outB, long flags);
 };

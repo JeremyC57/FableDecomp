@@ -1,15 +1,15 @@
 // CModeJackOfBladesFlash::ExtinguishFlames() -- put out the flames on the perceived target and on every nearby thing
 // Grade: see STATUS.tsv
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CInterfaceMap {                             // a thing's sorted {type, component} vector
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long& type);          // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                    // +0x44
@@ -29,7 +29,7 @@ struct CThing {
     }
     void RemoveTC(long interfaceType);             // 0x004C9840
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;
@@ -60,7 +60,7 @@ struct CThingFilter_NearCreature {                 // the search filter: the cre
     CThingFilter_NearCreature(CThingCreatureBase* creature) : PCreature(creature) { }
 };
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThing* FirstThing();                              // stand-in callees of the stand-in body below
     CThing* NextThing(CThing* previous);
     template <class F> bool Accepts(const F& filter, CThing* thing);
@@ -90,7 +90,7 @@ template <class F> void CThingSearchTools::GetAllThings(const F& filter, vector<
     }
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad00[0x20];
     CThingSearchTools* ThingSearchTools;           // +0x20
 };

@@ -3,17 +3,17 @@
 // Callees: 0x00A026F0 CHandleBasedMemoryPool::Lock x3
 //
 #include "rebuild_abi.h"
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void Lock(long handle);                             // 0x00A026F0
 };
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _body[0xa0];                          // 160-byte primitive record
     bool UploadBuffers();                               // 0x00A93380
 };
 // Retail C3DMesh2 (no PDB header for this class): the pool pointer at +0x04, three pool handles at
 // +0x7c/+0x80/+0x84 (the third optional, -1 when absent), the primitive count at +0x90 and the
 // primitive array at +0x94.
-struct C3DMesh2 {
+class C3DMesh2 { public:
     void*                   __vftable;                  // +0x00
     CHandleBasedMemoryPool* m_pPool;                    // +0x04
     unsigned char           _pad_0x08[0x74];            // +0x08

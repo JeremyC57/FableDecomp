@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_DragonHoverInto {
+class CCreatureAction_DragonHoverInto { public:
     void* vftable;
     int destroyed;
 };

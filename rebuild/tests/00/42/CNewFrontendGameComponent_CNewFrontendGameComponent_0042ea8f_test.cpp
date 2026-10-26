@@ -4,13 +4,13 @@
 
 static double g_clock; static int g_clockReads;
 static double GFGetTime() { ++g_clockReads; return g_clock += 1.0; }
-struct CGame { int id; };
-struct CGameComponent { bool m_bShutDown; CGame* m_pGame; CGameComponent(CGame* g) : m_bShutDown(false), m_pGame(g) {} };
+class CGame { public: int id; };
+class CGameComponent { public: bool m_bShutDown; CGame* m_pGame; CGameComponent(CGame* g) : m_bShutDown(false), m_pGame(g) {} };
 struct CCP { void* Data; void* Info; CCP() : Data(0), Info(0) {} };
 struct CVec { void* s; void* f; void* e; CVec() : s(0), f(0), e(0) {} };
 struct CWide { const char* t; CWide(const char* x) : t(x) {} CWide& operator=(const char* x) { t = x; return *this; } };
 struct CInit { CWide StartLevel, StartPosition; CInit() : StartLevel("?"), StartPosition("?") {} };
-struct CNewFrontendGameComponent : CGameComponent {
+class CNewFrontendGameComponent : public CGameComponent { public:
     CCP m_pMenuFont; long CurrentMovement; bool StartedRepeatingMovement; double TimeLastMovementHappened;
     bool m_bAllowInputs, m_bCreateGame, CreateDevFrontEnd; CInit m_bInitMainGame; void* m_pFrontEndDef;
     CCP m_pFrontEndGraphicBank, m_pMeshBank, PSampleBank, m_pEngine, m_pTextBank; CVec FileNames, FileTimes; CWide SaveGame;

@@ -5,15 +5,15 @@
 #include <new>
 
 static int g_live = 0;
-struct C2DVector { float X, Y; };
-struct CParentDefClassBase {
+class C2DVector { public: float X, Y; };
+class CParentDefClassBase { public:
     unsigned long Name;
     CParentDefClassBase() : Name(0) { ++g_live; }
     CParentDefClassBase(const CParentDefClassBase& o) : Name(o.Name) { ++g_live; }
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { Name = o.Name; return *this; }
     virtual ~CParentDefClassBase() { --g_live; }
 };
-struct CQuickAccessItemButtonGuiDef : CParentDefClassBase {
+class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:
     long ButtonGraphic; C2DVector Position; C2DVector Offset;
     CQuickAccessItemButtonGuiDef() { }
     CQuickAccessItemButtonGuiDef(const CQuickAccessItemButtonGuiDef& o) : CParentDefClassBase(o), ButtonGraphic(o.ButtonGraphic), Position(o.Position), Offset(o.Offset) { }

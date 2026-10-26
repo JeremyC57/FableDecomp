@@ -14,13 +14,13 @@
 //          reads the source through the cached &Me register instead of `this`-relative; the C3DVector argument is evaluated
 //          first (right to left) and copied from GetPos()'s reference by a memberwise USER copy ctor (the implicit one
 //          reorders the Y store); the float distances travel as dwords.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_4 = 4 };
 struct SCountInfo { long RefCount; };
-struct CBaseClass {                                 // vtable 0x01231710
+class CBaseClass { public:                                 // vtable 0x01231710
     virtual ~CBaseClass();
     CBaseClass() { }
 };
@@ -33,18 +33,18 @@ struct CCountedPointerImp {                       // CCountedPointer<CScriptThin
             ++Info->RefCount;
     }
 };
-struct CScriptThing : CBaseClass {                  // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                  // vtable 0x01238C8C, 12 bytes
     CCountedPointerImp PImp;                       // +0x04
     virtual ~CScriptThing();
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x29c];
     float AmbushScamTricksterWanderMax;            // +0x29c (PDB +0x2a0)
 };
 extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();

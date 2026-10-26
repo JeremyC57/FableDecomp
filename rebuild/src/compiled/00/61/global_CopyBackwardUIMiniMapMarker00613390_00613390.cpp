@@ -7,12 +7,12 @@
 // Element (Ego_r.pdb): CTCInventoryMap::CUIMiniMapMarker, 0x1C bytes = long Region +0, CCharString UIDefName +4,
 // C2DVector Position +8, long DefNameLength +0x10, long GraphicIndex +0x14, float Angle +0x18. The implicit operator=
 // copies Region, calls CCharString::operator= @ 0x0099EFB0 for UIDefName, then the five plain words.
-struct CCharString {                         // one-word handle
+class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 

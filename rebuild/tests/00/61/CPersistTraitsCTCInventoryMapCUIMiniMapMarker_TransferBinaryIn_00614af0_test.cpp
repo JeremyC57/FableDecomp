@@ -47,8 +47,8 @@ struct TestStream {
 };
 static void PutLong(unsigned char* p, int v) { std::memcpy(p, &v, 4); }
 static void PutFloat(unsigned char* p, float v) { std::memcpy(p, &v, 4); }
-struct CCharString { char Text[64]; CCharString(const char* s) { std::strcpy(Text, s); } };
-struct C2DVector { float X, Y; };
+class CCharString { public: char Text[64]; CCharString(const char* s) { std::strcpy(Text, s); } };
+class C2DVector { public: float X, Y; };
 struct CUIMiniMapMarker {
     int Region; CCharString UIDefName; C2DVector Position; int DefNameLength; int GraphicIndex; float Angle;
     CUIMiniMapMarker() : Region(0), UIDefName(""), DefNameLength(0), GraphicIndex(0), Angle(0.0f) { Position.X = 0.0f; Position.Y = 0.0f; }

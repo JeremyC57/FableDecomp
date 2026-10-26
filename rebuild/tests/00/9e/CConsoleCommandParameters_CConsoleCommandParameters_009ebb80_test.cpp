@@ -27,7 +27,7 @@ struct CTypeVector {
     }
 };
 
-struct CConsoleCommandParameters {
+class CConsoleCommandParameters { public:
     CTypeVector ParamTypes;
     CConsoleCommandParameters(EGenericVarType type1, EGenericVarType type2) { AddParameterType(type1); AddParameterType(type2); }
     void AddParameterType(const EGenericVarType& type) { ParamTypes.push_back(type); }

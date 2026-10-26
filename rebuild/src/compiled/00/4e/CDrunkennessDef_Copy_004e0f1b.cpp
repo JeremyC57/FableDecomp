@@ -1,9 +1,9 @@
-struct CDefClassBase {
+class CDefClassBase { public:
     char pad[0x28];
     unsigned long field28;
 };
 
-struct CDrunkennessDef : public CDefClassBase {
+class CDrunkennessDef : public CDefClassBase { public:
 };
 
 // Base-class copy — real target of the rel32 call. this in ECX, src on stack.

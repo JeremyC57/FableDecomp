@@ -20,8 +20,8 @@ struct CItemVector {
     CItem& operator[](unsigned long n) { return first[n]; }
 };
 #define FAIL { std::printf("005bdac5_TEST FAIL\n"); return 1; }
-struct CThing { long nameId; };
-struct CWideString { long id; CWideString(long i) : id(i) { } CWideString(const CWideString& o) : id(o.id) { } };
+class CThing { public: long nameId; };
+class CWideString { public: long id; CWideString(long i) : id(i) { } CWideString(const CWideString& o) : id(o.id) { } };
 CWideString g_EmptyWideString(-1);
 struct CTCInventoryBase {
     virtual ~CTCInventoryBase() { }

@@ -1,4 +1,4 @@
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned int pad0;   // +0
     unsigned int a;      // +4
     unsigned int b;      // +8

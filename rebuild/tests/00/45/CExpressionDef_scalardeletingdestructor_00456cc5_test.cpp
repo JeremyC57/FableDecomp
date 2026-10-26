@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CExpressionDef { int vt; };
+class CExpressionDef { public: int vt; };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;

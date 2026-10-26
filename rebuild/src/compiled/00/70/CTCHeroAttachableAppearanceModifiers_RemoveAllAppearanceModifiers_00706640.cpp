@@ -16,7 +16,7 @@
 // locally; engine/CTCBase.h is a flattened POD (vptr as a data member), so the polymorphic CTCBase is local too.
 // CWorld_Calls: engine/CWorld.h holds the PDB data layout of CWorld; only its member call(s) are needed here, so the
 // callee is declared on a separate call-only struct.
-struct CThing;
+class CThing;
 struct CWorld_Calls {
     static long __fastcall GetFrame();          // 0x0049D870
 };
@@ -60,7 +60,7 @@ struct CModifierVectorVector {
     CModifierVectorVector& operator=(const CModifierVectorVector& other);   // 0x00709660
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;
     bool ToBeRemoved;
@@ -70,7 +70,7 @@ struct CTCBase {
 
 typedef long EHeroAttachableAppearanceModifierType;
 
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void* __vftable_0c;                          // +0x0c secondary vptr
     unsigned long FrameLastChanged;              // +0x10
     bool Changed : 1;                            // +0x14 bit 0

@@ -1,6 +1,6 @@
 // Behaviour test for CAIStateGroup_SummonerCharge::IsRunnable (0x0096FA90): same logic over mocks.
 #include <cstdio>
-struct CThing { bool dead; float x, y, z; bool hasStealth; long runAwayTimer; bool isCreature; bool fighting; bool chargeable; };
+class CThing { public: bool dead; float x, y, z; bool hasStealth; long runAwayTimer; bool isCreature; bool fighting; bool chargeable; };
 static CThing Make(float x, float y)
 {
     CThing t; t.dead = false; t.x = x; t.y = y; t.z = 100.0f; t.hasStealth = false; t.runAwayTimer = -1;

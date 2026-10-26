@@ -5,8 +5,8 @@ struct CWorldTimeComponent { CTimeOfDay* TimeOfDay; };
 static CTimeOfDay g_tod;
 static CWorldTimeComponent g_component = { &g_tod };
 static CWorldTimeComponent* GetWorldTimeComponent() { return &g_component; }
-struct CClockDef { long HandType; };
-struct CTCClock {
+class CClockDef { public: long HandType; };
+class CTCClock { public:
     CClockDef* PDef; float LastTimeUpdated;
     float GetHandAnimationUpdateAmount()
     {

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveAttachmentManager {
+class CEnginePrimitiveAttachmentManager { public:
     unsigned long __fastcall PeekSceneFilterFlags();
 };
 

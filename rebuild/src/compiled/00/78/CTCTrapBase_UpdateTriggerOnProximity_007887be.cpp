@@ -16,13 +16,13 @@
 //        store reuses the false bool register.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     __forceinline C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing>: vptr + item (8 bytes)
@@ -37,18 +37,18 @@ struct CTriggerThingVector {                    // STLport vector<CIntelligentPo
     CBaseIntelligentPointer* begin() { return _M_start; }
     CBaseIntelligentPointer* end() { return _M_finish; }
 };
-struct CFadeInFadeOutBase {                     // 0x1c bytes
+class CFadeInFadeOutBase { public:                     // 0x1c bytes
     unsigned char _data[0x1c];
     bool IsOpen();                              // 0x0048DA30
 };
-struct CTrapDef {
+class CTrapDef { public:
     unsigned char _pad[0x34];
     long          TriggerType;                  // +0x34
     long          TrapType;                     // +0x38
     float         TriggerRadius;                // +0x3c
 };
 
-struct CTCTrapBase {
+class CTCTrapBase { public:
     void*         __vftable;                    // +0x00
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x24];

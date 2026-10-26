@@ -14,7 +14,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteFloat(float value);                   // 0x00993EE0
 };
 
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;        // +0x00
     float         AnimStep;         // +0x04
     float         RenderSizeX;      // +0x08

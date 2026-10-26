@@ -65,7 +65,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                          // +0x00
     unsigned char      ByteLength[0x3];                      // +0x04 bitfield group: ulong:28
     unsigned char      AllocationSource[0x1];                // +0x07 bitfield group: ulong:4
@@ -79,11 +79,11 @@ FABLE_STATIC_ASSERT(offsetof(CTexture, AllocationSource) == 0x7);
 
 #endif // FABLE_ENGINE_CTEXTURE_H
 
-struct C2DExtentsI { long X,Y; C2DExtentsI(); };
+class C2DExtentsI { public: long X,Y; C2DExtentsI(); };
 // Native method view: generated CTexture has the right fields but no declarations.
 struct CTextureMethods : CTexture { C2DExtentsI GetDimensions(unsigned long mip) const; }; // 0x009F9DB0
 void __cdecl operator delete(void*); // 0x00BFE9BC
-struct CCPPointerInfo { long References; void (__fastcall* Destroy)(void*); void* Object; };
+class CCPPointerInfo { public: long References; void (__fastcall* Destroy)(void*); void* Object; };
 struct CountedTexture {
  CTextureMethods* Data; CCPPointerInfo* Info;
  __forceinline void Release() { if(Info) { --Info->References; if(Info->References==0) { Info->Destroy(Info->Object); operator delete(Info); } } }
@@ -91,7 +91,7 @@ struct CountedTexture {
  __forceinline void Assign(const CountedTexture& p) { CTextureMethods* data=p.Data; CCPPointerInfo* info=p.Info; if(Info!=info) { Release(); Data=data; Info=info; if(info) ++info->References; } }
 };
 // No engine/CGraphicFrameData.h exists; PDB fields agree with all native offsets.
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
  unsigned long ReferenceCount; void* Data; CountedTexture PTexture;
  unsigned short TLX,TLY,Width,Height,Pitch;
  unsigned char Alpha:1,BooleanAlpha:1,UsesSurface:1,SectionOfTPage:1,IsInitialised:1,ScreenGraphic:1;
@@ -109,10 +109,10 @@ struct CGraphicFrameData {
 #include <stddef.h>
 
 
-struct CResourceList;
+class CResourceList;
 
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     CResourceList* ResourceList;                             // +0x08
@@ -144,7 +144,7 @@ FABLE_STATIC_ASSERT(offsetof(CResource, LastUsedFrame) == 0x18);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -176,8 +176,8 @@ struct SharedFrame {
  CGraphicFrameData* FrameData;
  __forceinline void Assign(const SharedFrame& p) { CGraphicFrameData* old=FrameData; if(old && --old->ReferenceCount==0) { old->~CGraphicFrameData(); operator delete(old); } FrameData=p.FrameData; if(FrameData) ++FrameData->ReferenceCount; }
 };
-struct CManagedTexture { void* VTable; CIVCountedPointeeBase* Data; CManagedTexture& operator=(const CManagedTexture&); bool ClearHandle() const; };
-struct CGraphicInfoFrame;
+class CManagedTexture { public: void* VTable; CIVCountedPointeeBase* Data; CManagedTexture& operator=(const CManagedTexture&); bool ClearHandle() const; };
+class CGraphicInfoFrame;
 struct CFrameData : CResource {
  SharedFrame Frame; CManagedTexture Texture; CManagedTexture SmallTexture; void* LoadInfo; void* LoadContext;
  signed char CurrentPreloadMipmap; unsigned char Unknown39; signed char RequestedMipmap; unsigned char Unknown3B; long ResourcePriority; CGraphicInfoFrame* Owner;
@@ -186,7 +186,7 @@ struct CFrameData : CResource {
 struct ResourcePointer { CFrameData* Object;
  __forceinline void Assign(CFrameData* p) { if(Object) { IVRelease((CIVCountedPointeeBase*)Object); Object=0; } Object=p; }
 };
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
  unsigned long Unknown; unsigned short FrameNum; signed char SmallMipmapLevel; unsigned char Unknown7;
  ResourcePointer Data; void* GraphicInfo;
  void InitialiseFrame(const SharedFrame&,const CManagedTexture&,signed char);

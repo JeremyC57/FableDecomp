@@ -9,7 +9,7 @@ struct CTCInventoryItemBase {
     void BaseOnDie();   // __fastcall @ 0xaa75c0
 };
 
-struct CTCInventoryItem : public CTCInventoryItemBase {
+class CTCInventoryItem : public CTCInventoryItemBase { public:
     void OnDie();
 };
 

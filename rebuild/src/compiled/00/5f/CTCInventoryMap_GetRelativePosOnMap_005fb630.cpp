@@ -12,7 +12,7 @@
 //   accessor leaves a dead `add eax,20h`); the bounds are an uninitialised C2DBoxI whose right/bottom live in ebp/ebx.
 //   `component` is unused.
 // Layout: CWorldMap map records (72 bytes, box first) at +0x20; CUIMiscThingsDef map width/height at +0xF8/+0xFC (retail).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -55,8 +55,8 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CUIMiscThingsDe
     return true;
 }
 #pragma auto_inline(on)
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI { C2DCoordI TopLeft; C2DCoordI BottomRight; };
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public: C2DCoordI TopLeft; C2DCoordI BottomRight; };
 struct CMapRecord {                                     // 72 bytes
     C2DBoxI Box;                                        // +0x00
     unsigned char _pad10[0x48 - 0x10];
@@ -69,20 +69,20 @@ struct CMapRecordVector {
     CMapRecord* begin() const { return _M_start; }
     const CMapRecord& operator[](long n) const { return *(begin() + n); }
 };
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char _pad00[0x20];
     CMapRecordVector Maps;                              // +0x20
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12();
     virtual const CWorldMap* GetWorldMap() const;       // slot 13 (+0x34)
 };
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
-namespace NUISystem { struct CComponent; }
-struct CTCInventoryMap {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+namespace NUISystem { class CComponent; }
+class CTCInventoryMap { public:
     const CWorld* GetWorld() const;                     // 0x00686A80 (CTCBase)
     void GetRelativePosOnMap(NUISystem::CComponent* component, const C3DVector& position, C2DVector& relative) const;
 };

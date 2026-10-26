@@ -1,15 +1,15 @@
 #include <cstdio>
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     void* buffer;
     int unused1;
     int unused2;
     int refCount;
 };
 
-struct CWideString
-{
+class CWideString
+{ public:
     CWideStringData* data;
 };
 

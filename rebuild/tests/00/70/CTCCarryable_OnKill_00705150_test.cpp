@@ -1,20 +1,20 @@
 // Behaviour test for 00705150 (CTCCarryable::OnKill): a carried thing asks its carrier to drop it; an uncarried one does nothing.
 #include <cstdio>
 
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 static CThing* g_removed = 0;
 static int     g_calls = 0;
 
-struct CTCCarrying {
+class CTCCarrying { public:
     void RemoveThing(CThing* thing) { g_removed = thing; ++g_calls; }
 };
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
 };
 
-struct CTCCarryable : CTCBase {
+class CTCCarryable : public CTCBase { public:
     bool          ForceFragility;
     CTCCarrying*  PCarryingTC;
     void OnKill()

@@ -2,7 +2,7 @@
 
 // Model of the particle update-parameter descriptor map (CVectorMap<K, CParticleUpdateParamDesc<K,K>>) and its Insert.
 static int g_baseLive = 0;
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { ++g_baseLive; }
     CBaseClass(const CBaseClass&) { ++g_baseLive; }
     virtual ~CBaseClass() { --g_baseLive; }

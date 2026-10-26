@@ -18,7 +18,7 @@ struct CBaseIntelligentPointer {
 
 // engine/CCreatureActionBase.h exists but is not used: it is the PDB build's flat pack(1) layout (0xb4 bytes, three
 // containers 4 bytes wider than retail's 0xa8, no vtable or methods); the retail `this` is modelled locally.
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual long GetAnimationIndex() const; // slot 7 (+0x1c)
     unsigned char _pad04[4];                // +0x04

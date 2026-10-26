@@ -48,7 +48,7 @@ struct CTCCreatureNavigation_Retail {
     unsigned char m_obstacles[4];                  // +0x40
 };
 
-struct CGroundNavigatorExternalInterface {
+class CGroundNavigatorExternalInterface { public:
     long           m_0;
     CThing_Retail* m_pThing;                       // +0x04
     void* GetPNavigatorObstacles();

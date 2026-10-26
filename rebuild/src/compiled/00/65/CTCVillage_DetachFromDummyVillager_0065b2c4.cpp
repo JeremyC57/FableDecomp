@@ -49,7 +49,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCDummyVillager {                       // the dummy's interface-214 component (class name unknown)
+class CTCDummyVillager { public:                       // the dummy's interface-214 component (class name unknown)
     unsigned char _pad_0x00[0x30];
     CBaseIntelligentPointer PVillager;          // +0x30
     void Detach();                              // 0x0065F01D
@@ -61,7 +61,7 @@ struct SThingNode {                             // STLport list node
     CBaseIntelligentPointer _M_data;
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad_0x00[0x74];
     SThingNode*   VillageDummies;               // +0x74 list head node
     void DetachFromDummyVillager(CThing* villager);

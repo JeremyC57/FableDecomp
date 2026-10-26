@@ -12,7 +12,7 @@
 // memory. The hit erases the node with STLport's inline erase (unlink, ~CCharString, free).
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 
-struct CCharStringData {                           // the shared string block
+class CCharStringData { public:                           // the shared string block
     const char*   m_pData;                         // +0x00
     unsigned long m_length;                        // +0x04
 };
@@ -35,7 +35,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
 }
 #pragma auto_inline(on)
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                  // 0x0099EAE0
     bool operator==(const CCharString& other) const
@@ -64,7 +64,7 @@ inline void Erase(CMessageNode* pos)               // STLport list::erase(iterat
     free(pos);
 }
 
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     unsigned char _pad00[0x98];
     CMessageNode* MyMessages;                      // +0x98 list<CCharString> (head node; PDB +0x9c)
     bool HasMessage(const CCharString& message);

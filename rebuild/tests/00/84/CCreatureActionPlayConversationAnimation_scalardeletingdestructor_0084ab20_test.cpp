@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_PlayConversationAnimation {
+class CCreatureAction_PlayConversationAnimation { public:
     void* vftable;
     int destroyed;
 };

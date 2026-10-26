@@ -1,22 +1,22 @@
 #include <cstdio>
 
 static int g_handled, g_events, g_lastEvent, g_messages, g_badMsg;
-struct CInputEvent {
+class CInputEvent { public:
     int button, action, type, device;
     long GetType() const { return type; }
     long GetDeviceType() const { return device; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
-struct CProcessedInput {
+class CProcessedInput { public:
     void SetHandled() { ++g_handled; }
     void AddGameEvent(const CGameEvent& e) { ++g_events; g_lastEvent = (g_handled && e.Player == -1 && e.Valid && !e.EndPos) ? e.Type : -1; }
 };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct CThing;
-struct CMessageEventManager {
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class CThing;
+class CMessageEventManager { public:
     void* AddMessage(long type, unsigned long flags, const C3DVector* p, CThing* t1, CThing* t2, float a, float b, long prio)
     {
         ++g_messages;
@@ -24,11 +24,11 @@ struct CMessageEventManager {
         return 0;
     }
 };
-struct CWorld { CMessageEventManager* PMessageEventManager; };
-struct CPlayerGui { bool CutsceneActionMode; };
+class CWorld { public: CMessageEventManager* PMessageEventManager; };
+class CPlayerGui { public: bool CutsceneActionMode; };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
 static const C3DVector* Addr(const C3DVector& v) { return &v; }
-struct CInputProcessCutScene {
+class CInputProcessCutScene { public:
     CWorld* World;
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 0x13; }
     bool IsEventGameAction(long action, const CInputEvent& e) { return e.action == action; }

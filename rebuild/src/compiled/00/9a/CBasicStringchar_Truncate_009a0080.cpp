@@ -12,7 +12,7 @@ void __cdecl operator delete[](void* p);               // 0x00BFEB1C
 // StringLength +4, DataLength:31 +8, UseFastExtend:1 +0xc. The actual packed
 // CCharStringData layout corroborates this template field placement.
 #pragma pack(push, 1)
-template<class T> struct CBasicString {
+template<class T> class CBasicString { public:
     T* PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
@@ -40,4 +40,4 @@ template<class T> void CBasicString<T>::Truncate(unsigned long length) {
         memset(PData + used, 0, end - used);
     }
 }
-template struct CBasicString<char>;
+template class CBasicString<char>;

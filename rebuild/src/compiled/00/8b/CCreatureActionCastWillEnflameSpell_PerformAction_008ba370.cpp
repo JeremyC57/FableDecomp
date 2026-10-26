@@ -4,7 +4,7 @@
 // @ 0x0040F020 (the inlined GetInterface lookup for type 0x95 = bit 21 of the bitset dword at +0x30; landed shape of 0x00849320).
 // Shape: one `push ecx` frame for the lookup key; the component rides in esi; the byte at +0xd of the component is set.
 // Retail CCreatureActionBase is 0xa8 bytes (PDB 0xb4), so `this` is modelled locally.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -13,7 +13,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThingCreatureBase {                 // engine/CThingCreatureBase.h exists but is not used: only the interface lookup is modelled
+class CThingCreatureBase { public:                 // engine/CThingCreatureBase.h exists but is not used: only the interface lookup is modelled
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -43,7 +43,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCreatureAction_CastWillEnflameSpell {   // engine/CCreatureAction_CastWillEnflameSpell.h exists but is not used: retail CCreatureActionBase is 0xa8 bytes, the PDB build's 0xb4
+class CCreatureAction_CastWillEnflameSpell { public:   // engine/CCreatureAction_CastWillEnflameSpell.h exists but is not used: retail CCreatureActionBase is 0xa8 bytes, the PDB build's 0xb4
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04

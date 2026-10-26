@@ -3,9 +3,9 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CDefClassBase;
-struct CSpecialAbilitiesDrunkennessDef;
-template<class T> struct CDefPointer {
+class CDefClassBase;
+class CSpecialAbilitiesDrunkennessDef;
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object != 0) Object->AddRef(); }
@@ -13,7 +13,7 @@ template<class T> struct CDefPointer {
     T* operator->() const { return Object; }
 };
 static int g_destroyed = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     virtual void DestroySelf() { ++g_destroyed; }
     long RefCount;
@@ -21,7 +21,7 @@ struct CDefClassBase {
     void Release() { if (--RefCount == 0) DestroySelf(); }
     bool GetSubDef(struct CDrunkennessDefPointer* out);
 };
-struct CSpecialAbilitiesDrunkennessDef {
+class CSpecialAbilitiesDrunkennessDef { public:
     virtual void v00() {}
     virtual void DestroySelf() { ++g_destroyed; }
     long          RefCount;
@@ -41,7 +41,7 @@ bool CDefClassBase::GetSubDef(CDrunkennessDefPointer* out)
     ++g_getSubDef; g_countAtGet = RefCount;
     ++g_abilityDef->RefCount; out->Object = g_abilityDef; return true;
 }
-struct CThing {
+class CThing { public:
     unsigned char             _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }
@@ -50,7 +50,7 @@ long g_FrameRate = 50;
 static float g_random = 0.25f; static int g_randomCalls = 0; static float g_randomRange = 0; static unsigned long* g_randomSeed = 0;
 float __fastcall GFFloatRandom(float range, unsigned long* seed) { ++g_randomCalls; g_randomRange = range; g_randomSeed = seed; return g_random; }
 static unsigned long g_seed = 77; static int g_baseCtor = 0; static CThing* g_baseThing = 0;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool    ToBeRemoved;
@@ -58,7 +58,7 @@ struct CTCBase {
     CTCBase(CThing* thing) : ParentThing(thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { ++g_baseCtor; g_baseThing = thing; }
     unsigned long* GetPLocalSeed() const { return &g_seed; }
 };
-struct CTCDrunkenness : CTCBase {
+class CTCDrunkenness : public CTCBase { public:
     bool  Drunk;
     float Drunkenness;
     long  FrameLastUpdatedSobering;

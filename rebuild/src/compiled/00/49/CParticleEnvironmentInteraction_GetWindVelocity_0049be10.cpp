@@ -10,7 +10,7 @@
 // result and y, z re-read it) and returns it through the memberwise user copy ctor (fxch st(2) + three fstp); both virtual
 // calls reach the wind object through an inline CWorld::GetWind() accessor (the direct member chain loads the first vtable
 // into edx instead of eax); the fallback returns WindVelocity by the user copy ctor.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -30,7 +30,7 @@ struct CWind {
     virtual const C3DVector& GetDirection() const;   // slot 2 (+0x08)
     virtual float GetSpeed() const;                  // slot 3 (+0x0c)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _world[0x18];
     CWind*        PWind;                             // +0x18
     CWind* GetWind() const { return PWind; }

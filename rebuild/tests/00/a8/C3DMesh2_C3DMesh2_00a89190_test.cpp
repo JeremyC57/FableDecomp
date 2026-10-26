@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <new>
-struct C3DMeshStats {
+class C3DMeshStats { public:
     void* MemoryPool;
     C3DMeshStats() : MemoryPool(0) {}
     virtual ~C3DMeshStats() {}
 };
-struct CMatrix3x4 { float m_row[3][4]; };
-struct C3DMesh2 : C3DMeshStats {
+class CMatrix3x4 { public: float m_row[3][4]; };
+class C3DMesh2 : public C3DMeshStats { public:
     long MemoryHandle, PrimMemoryHandle, BoneNameMemoryHandle;
     unsigned long MaterialCount; void* Materials; unsigned long PrimitiveCount; void* Primitives;
     unsigned long BoneCount; void* Bones; void* BoneKeyframes; unsigned short* BoneNameIndices;

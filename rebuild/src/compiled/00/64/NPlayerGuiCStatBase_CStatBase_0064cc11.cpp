@@ -8,8 +8,8 @@
 // #pragma optimize("s", on) every float zero is `fldz ; fstp` while the integer zeros share ecx; the vectors are member
 // objects with inline constructors zeroing their three words.
 #pragma optimize("s", on)
-struct CPlayerGuiDef;
-struct CEnginePrimitiveHandle;
+class CPlayerGuiDef;
+class CEnginePrimitiveHandle;
 struct CParticleEmitterPointer;
 
 enum EPlayerGuiMode { PLAYER_GUI_MODE_DEFAULT = 1 };

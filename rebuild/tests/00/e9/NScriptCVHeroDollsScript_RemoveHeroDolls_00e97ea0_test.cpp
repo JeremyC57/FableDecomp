@@ -1,9 +1,9 @@
 // Behaviour test for CV_HeroDollsScript::RemoveHeroDolls (0x00E97EA0): the seven doll objects taken, in order.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString(const char* t) : Text(t) {} };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) {} };
 static const char* g_taken[16]; static int g_n = 0;
-struct CGameScriptInterface { void TakeObjectFromHero(const CCharString& n) const { g_taken[g_n++] = n.Text; } };
+class CGameScriptInterface { public: void TakeObjectFromHero(const CCharString& n) const { g_taken[g_n++] = n.Text; } };
 struct CV_HeroDollsScript {
     CGameScriptInterface* Game;
     void RemoveHeroDolls()

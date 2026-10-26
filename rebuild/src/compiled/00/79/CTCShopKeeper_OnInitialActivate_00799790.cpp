@@ -15,15 +15,15 @@
 //        through an inline operator=; the HasTC filter, the lookup key and the loop's temporary share that frame word; the
 //        found shop leaves the loop by `break` and both "no shop" exits skip SetShopKeeper.
 extern "C" void free(void* p);                  // 0x00BFEA14
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointer
     virtual void v00();
     CBaseObject* m_pItem;                       // +4
@@ -32,12 +32,12 @@ struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointe
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     void operator=(const CIntelligentPointer& other) { CBaseObject* item = (CBaseObject*)other.GetPItem(); SetPItem(item); }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -56,7 +56,7 @@ struct CThing {
         return it->component;
     }
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 template <class T> struct vector {              // retail STLport vector: 12 bytes
     T* _M_start;
@@ -65,15 +65,15 @@ template <class T> struct vector {              // retail STLport vector: 12 byt
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     ~vector() { if (_M_start) free(_M_start); }
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long m_type;
     CThingFilter_HasTC(long type) : m_type(type) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThings(const CThingFilter_HasTC& filter, vector<CThing*>& out);   // 0x00799FB0
 };
 
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     CThing*                 ParentThing;        // +0x04 (CTCBase)
     bool                    ToBeRemoved;        // +0x08
@@ -83,7 +83,7 @@ struct CTCShop {
     void SetShopKeeper(CThing* keeper);         // 0x007751A0 (CThingCreatureBase*)
 };
 
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool ToBeRemoved;                           // +0x08

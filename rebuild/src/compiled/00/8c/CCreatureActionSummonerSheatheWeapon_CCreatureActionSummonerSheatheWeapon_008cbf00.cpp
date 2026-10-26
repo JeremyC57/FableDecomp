@@ -4,13 +4,13 @@
 // Shape: the byte at +0x114 is stored BEFORE the vtable store, so it belongs to an intermediate base whose inline constructor is
 // inlined here and which stores no vtable of its own (`__declspec(novtable)`); the action code 0 is pushed as an immediate and the
 // sound pair zeroed with immediate stores (no shared zero register, unlike the register-zeroed 150-code shells). `ret 4`.
-struct CThingCreatureBase;
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CThingCreatureBase;
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
@@ -26,7 +26,7 @@ struct __declspec(novtable) CCreatureAction_SheatheWeaponsBase : CCombatActionBa
     }
 };
 
-struct CCreatureAction_SummonerSheatheWeapon : CCreatureAction_SheatheWeaponsBase {   // vtable 0x0128360C
+class CCreatureAction_SummonerSheatheWeapon : public CCreatureAction_SheatheWeaponsBase { public:   // vtable 0x0128360C
     virtual void v00();
     CCreatureAction_SummonerSheatheWeapon(CThingCreatureBase* owner);
 };

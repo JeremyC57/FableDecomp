@@ -7,7 +7,7 @@
 // Shape: both directions become C3DVector locals (X/Y dword copies, Z = 0) normalised in place; the dot product is clamped
 //   to [-1, 1] in the dead `facing` slot with immediate stores (if / else-if on a named float); the angle stays on the x87
 //   stack across the side test (the dot with the facing's clockwise perpendicular) and is negated by `*= -1.0f`.
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -16,7 +16,7 @@ class C3DVector { public:
 };
 extern "C" double __cdecl acos(double x);
 #pragma intrinsic(acos)
-struct CAnimationEntry;
+class CAnimationEntry;
 struct CGetBestTurningAnim {
     float            RotationAngle;                     // +0x00
     float            BestMatchAngle;                    // +0x04

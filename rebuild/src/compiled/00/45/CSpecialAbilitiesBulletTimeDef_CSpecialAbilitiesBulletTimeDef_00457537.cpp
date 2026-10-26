@@ -7,18 +7,18 @@
 //   Retail vectors are 12-byte STLport vectors. Local model: engine/CParentDefClassBase.h is a flat generated layout
 //   without the virtual table or constructor needed here.
 #pragma optimize("s", on)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void VFunc00();                             // polymorphic root; slot contents irrelevant here
     unsigned char _base[0x38];                          // +0x04..+0x3b
     CParentDefClassBase();                              // 0x00430370
 };
-struct CDefString { long TablePos; CDefString() : TablePos(-1) {} };
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) {} };
 template<class T> struct CRetailVector {                // STLport vector: begin/end/capacity
     T* m_first; T* m_last; T* m_end;
     CRetailVector() : m_first(0), m_last(0), m_end(0) {}
 };
-struct C3DVector { float X, Y, Z; };
-struct CSpecialAbilitiesBulletTimeDef : CParentDefClassBase {
+class C3DVector { public: float X, Y, Z; };
+class CSpecialAbilitiesBulletTimeDef : public CParentDefClassBase { public:
     float SlowTimeDuration[4];                          // +0x3c
     long  BulletTimeSlowdownMultiplier[4];              // +0x4c
     float LevelUpTimings[3];                            // +0x5c

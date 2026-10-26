@@ -17,7 +17,7 @@ double __fastcall GFGetTime();                          // 0x009E1BC0
 static const unsigned short s_Empty[] = { 0 };          // L"" 0x0122D70C
 static const unsigned short s_HeroStateExt[] = { '.', 'h', 's', 0 };   // L".hs" 0x01236A74
 
-struct CWideStringData {
+class CWideStringData { public:
     unsigned short* _M_start;
     unsigned short* _M_finish;
     unsigned short* _M_end_of_storage;

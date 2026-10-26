@@ -19,18 +19,18 @@
 // Shape: the landed CCorneredGuard::Main 0x00DA7830 model (same TU and parent) plus the CDF_ShineLight handle classes; unlike
 //   CCorneredGuard the spawn argument Me goes through the out-of-line const copy 0x004ABE90 (no non-const inline copy ctor),
 //   and the hero handle's ctor is kept out of line with `inline_depth(0)`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CCPPointerInfo { long References; };
-struct CScriptThing;
+class CCPPointerInfo { public: long References; };
+class CScriptThing;
 struct CCPPointerImp {                                 // CCountedPointer<CScriptThingImp>: Data, Info
     CScriptThing*   Data;
     CCPPointerInfo* Info;
@@ -45,7 +45,7 @@ struct CCPPointerImp {                                 // CCountedPointer<CScrip
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     VPAD16(ta) VPAD4(tb) VPAD1(tc)                     // slots 0..20
     virtual bool MsgIsHitBy(const CCharString& name) const   // slot 21 (+0x54), 0x004AAB30
     {
@@ -71,10 +71,10 @@ struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                          // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }    // out of line 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
@@ -82,7 +82,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void Release();                                     // 0x00CD2770
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CCountedPointerWords PImp;                          // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectMovieBase();               // 0x006E7B60
     ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
@@ -97,7 +97,7 @@ struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(g0_0) VPAD2(g0_1) VPAD1(g0_2)   // slots 0..6
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -127,7 +127,7 @@ struct CGameScriptInterface {
     VPAD128(g12_0) VPAD32(g12_1) VPAD8(g12_2) VPAD4(g12_3) VPAD2(g12_4)   // slots 481..654
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
 };
-struct CSpawnedFuncBase {                              // retail 0x34 bytes
+class CSpawnedFuncBase { public:                              // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -144,7 +144,7 @@ template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {   // 0x48
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) {}
     virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
 };
-struct CScriptBase {                                   // retail 0x40 bytes
+class CScriptBase { public:                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };

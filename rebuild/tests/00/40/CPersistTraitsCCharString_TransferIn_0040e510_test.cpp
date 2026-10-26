@@ -5,7 +5,7 @@
 #include <cstring>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char Buf[64];
     CCharString(const char* text, long length = -1) { std::strcpy(Buf, text); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Buf, o.Buf); ++g_live; }
@@ -14,7 +14,7 @@ struct CCharString {
     bool operator!=(const char* text) const { return std::strcmp(Buf, text) != 0; }
 };
 
-struct CStringParser {
+class CStringParser { public:
     const char* Tokens[4];
     int         Next;
 };
@@ -24,7 +24,7 @@ struct CStringParserReader : CStringParser {
 };
 
 static int g_errors = 0; static char g_message[64];
-struct CPersistContext {
+class CPersistContext { public:
     void Error(const CStringParser& parser, const CCharString& message) { ++g_errors; std::strcpy(g_message, message.Buf); }
 };
 

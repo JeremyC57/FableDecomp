@@ -12,12 +12,12 @@
 //   CDarkwoodTrader::OnPredicateFail 0x00E01760); CScriptDef TE_TraderCommentDistance PDB +0xEC0 = retail +0xE10.
 // Shape: generated script code; the trader list is a function-scope vector whose destructor VC7.1 expands at three exits
 //   and calls out of line at the two under `#pragma inline_depth(0)`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
     virtual ~CScriptThing();                            // slot 0, out of line 0x004AA840
     virtual void t001() const; virtual void t002() const;
     virtual CCharString GetDataString() const;          // slot 3 (+0x0c) 0x004AA900
@@ -76,22 +76,22 @@ struct GameCalls {                                      // CGameScriptInterface,
     virtual void v100() const; virtual void v101() const; virtual void v102() const; virtual void v103() const; virtual void v104() const; virtual void v105() const; virtual void v106() const; virtual void v107() const;
     virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;   // slot 108 (+0x1b0)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xe10];
     long          TE_TraderCommentDistance;             // +0xe10 (PDB +0xec0)
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
-struct CPredicateBase {
+class CPredicateBase { public:
     virtual bool IsTrue() = 0;
 };
-struct CIsThingAlive : CPredicateBase {                 // vtable 0x012C32F0
+class CIsThingAlive : public CPredicateBase { public:                 // vtable 0x012C32F0
     CScriptThing Thing;                                 // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
     ~CIsThingAlive() { }
     virtual bool IsTrue();
 };
-struct CQ_TraderEscortScript {
+class CQ_TraderEscortScript { public:
     enum ETraderComment { TRADER_COMMENT_0, TRADER_COMMENT_1 };
     bool MakeTraderComment(const CCharString& text, const CScriptThing& trader, ETraderComment comment);   // 0x00E01900
     struct CTraderComment;

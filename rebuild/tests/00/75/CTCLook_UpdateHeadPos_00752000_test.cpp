@@ -1,28 +1,28 @@
 // Behaviour test for CTCLook::UpdateHeadPos (0x00752000).
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float MagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CWorld {
+class CWorld { public:
     C3DVector Camera;
     C3DVector GetCameraPosition() { return Camera; }
 };
-struct CThing {
+class CThing { public:
     C3DVector Pos;
     const C3DVector& GetPosition() const { return Pos; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     C3DVector Head; int Queries;
     C3DVector GetHeadPos(bool) { ++Queries; return Head; }
 };
-struct CLookDef {
+class CLookDef { public:
     bool AlwaysUpdateHeadPos;                  // +0x54
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -30,7 +30,7 @@ static float g_HeadPosCacheTolerance = 0.0316f;
 static long  g_HeadPosCacheFrames = 15;
 static CWorld g_world;
 
-struct CTCLook {
+class CTCLook { public:
     CThing*             ParentThing;            // +0x04
     CThingCreatureBase* PParentCreature;        // +0x10
     CDefPointer<const CLookDef> PDef;           // +0x14

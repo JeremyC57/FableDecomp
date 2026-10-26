@@ -18,12 +18,12 @@ public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
 
-struct C3DSkeletalBoneMorph {                 // 0x14 bytes
+class C3DSkeletalBoneMorph { public:                 // 0x14 bytes
     CCharString   BoneName;                   // +0x00
     unsigned long BoneNameCRC;                // +0x04
     C3DVector     Scaling;                    // +0x08

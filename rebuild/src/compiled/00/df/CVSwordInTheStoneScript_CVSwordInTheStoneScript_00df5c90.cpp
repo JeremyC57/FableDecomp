@@ -9,7 +9,7 @@
 // inlined `__declspec(novtable)` intermediate base; the three zero stores after it come from an embedded state member's inline constructor (plain
 // init-list zeros hoist the `xor eax,eax` above the vtable store);
 // the body registers the timer into +0x6c; `ret 8`, `this` in eax.
-struct CScriptBase {                               // 0x40 bytes, the quest-script root (landed 0x00CB8110)
+class CScriptBase { public:                               // 0x40 bytes, the quest-script root (landed 0x00CB8110)
     virtual void v00();
     unsigned char _body[0x3c];                     // +0x04..+0x3f
     CScriptBase();                                 // 0x00CB8110
@@ -21,7 +21,7 @@ struct __declspec(novtable) CScriptObject : CScriptBase {   // the argument-carr
     CScriptObject(void* data, void* iface) : CScriptBase(), m_pInterface(iface), m_pData(data) { }
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();

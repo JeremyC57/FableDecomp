@@ -7,7 +7,7 @@
 // to GFFloatRandom in ecx, the float range on the stack: `fld [def+0B0h] ; fmul [speed]` = `*speed * variation`).
 // The random float is parked in the dead `speed` argument slot across the hash call (a named float local);
 // `!(hash & 1)` negates it; the update is `delta + *speed`.
-struct CCreatureDef {
+class CCreatureDef { public:
     unsigned char _pad00[0xb0];
     float         m_speedVariation;                  // +0xb0
 };
@@ -15,7 +15,7 @@ struct CCreatureDef {
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 long  __fastcall GFROR13(unsigned long value);                      // 0x00497890
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad00[0x18];
     unsigned long m_uniqueIdLow;                     // +0x18 CThing::UniqueID (low word)
     unsigned char _pad1c[0xe0 - 0x1c];

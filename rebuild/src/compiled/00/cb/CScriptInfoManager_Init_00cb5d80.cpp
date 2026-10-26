@@ -13,7 +13,7 @@
 // comparator +0x10, Dirty +0x11), CodeSectionNames +0x14.
 // Shape: the progress texts are implicit CCharString conversions (built before the trailing constants, in the one
 // `push ecx` frame word); the table sort is CVectorMap's inline "sort if dirty".
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0

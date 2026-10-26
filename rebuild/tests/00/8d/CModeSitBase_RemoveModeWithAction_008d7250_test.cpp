@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CCreatureActionBase
-{
+class CCreatureActionBase
+{ public:
     virtual int v0() = 0;
     virtual int v1() = 0;
     virtual int v2() = 0;

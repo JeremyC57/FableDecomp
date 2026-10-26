@@ -13,7 +13,7 @@
 //   for the push); the points are written from a local copy of the control-point vector over the count read first.
 #include "engine/CDataOutputStream.h"
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteEBOOL(bool value);                        // 0x00993E30
     void WriteULong(unsigned long value);               // 0x00993EA0
@@ -27,13 +27,13 @@ struct CPointVector {
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     C3DVector& operator[](unsigned long i) { return _M_start[i]; }
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CPointVector ControlPoints;                         // +0x00 (12 bytes in retail)
     float Tension;                                      // +0x0c
     bool EndPointsConnected;                            // +0x10
 };
 struct CCountedPointerInfo;
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCountedPointerInfo* Info;
     T* operator->() const { return Data; }
 };
@@ -45,7 +45,7 @@ CPointVector::CPointVector(const CPointVector& other)   // same-TU stand-in for 
 #pragma auto_inline(on)
 namespace NParticleEngine {
 struct CParticleUpdateParamDesc { unsigned long Param; unsigned long Name; unsigned long Type; };
-struct CPSCEmitterGeneric {
+class CPSCEmitterGeneric { public:
     unsigned char _base[0xc];                           // CPSCBase
     CParticleUpdateParamDesc EmitterPosParamDesc;       // +0x0c
     CCountedPointer<CCardinalSpline> Spline;            // +0x18

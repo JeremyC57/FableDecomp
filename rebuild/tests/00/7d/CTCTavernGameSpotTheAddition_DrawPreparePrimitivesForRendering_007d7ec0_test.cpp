@@ -23,7 +23,7 @@ struct CDefPointer {
     }
 };
 static CDefObject* g_def = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer* out);
 };
 bool CDefClassBase::GetSubDef(CDefPointer* out)
@@ -32,12 +32,12 @@ bool CDefClassBase::GetSubDef(CDefPointer* out)
     if (!g_def) return false;
     ++g_def->m_refCount; out->m_p = g_def; return true;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x70];
     CDefClassBase* m_pDefinition;
 };
 static int g_baseDraw = 0; static CRenderContext* g_baseContext = 0;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void* __vftable;
     CThing* m_pParentThing;
     unsigned char _pad_0x08[0x18];

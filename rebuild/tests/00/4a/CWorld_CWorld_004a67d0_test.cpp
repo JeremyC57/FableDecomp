@@ -2,10 +2,10 @@
 // atmos list sentinel self-linked, start time stamped.
 #include <cstdio>
 #include <cstdlib>
-struct CWorldInit { void* Component; void* Reserved; void* PlayerManager; void* DefinitionManager; };
+class CWorldInit { public: void* Component; void* Reserved; void* PlayerManager; void* DefinitionManager; };
 static double GFGetTime() { return 123.5; }
 template <class T> struct scoped_ptr { T* ptr; scoped_ptr() : ptr(0) {} };
-template <class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) {} };
+template <class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) {} };
 struct SAtmosNode { SAtmosNode* next; SAtmosNode* prev; long data[3]; };
 struct CAtmosCopyList {
     SAtmosNode* node;

@@ -7,9 +7,9 @@
 // OffscreenCounter +0x14, MovementVector +0x18, Master +0x24, PCoopSpiritDef +0x28 (CDefPointer, one
 // word), PParticleEmitter +0x2c (CIntelligentPointer). Shape: both members are member objects with inline
 // constructors (their stores follow the vtable store); the pointer member is addressed once in edi.
-struct CThing;
-struct CPlayer;
-struct CCoopSpiritDef;
+class CThing;
+class CPlayer;
+class CCoopSpiritDef;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -34,9 +34,9 @@ struct CDefPointer_CoopSpiritDef {                          // CDefPointer<CCoop
     CDefPointer_CoopSpiritDef() : Object(0) { }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCCoopSpirit : CTCBase_Calls {                      // vtable 0x0125B264
+class CTCCoopSpirit : public CTCBase_Calls { public:                      // vtable 0x0125B264
     long                      NoMovementTimer;              // +0x0c
     long                      Score;                        // +0x10
     long                      OffscreenCounter;             // +0x14

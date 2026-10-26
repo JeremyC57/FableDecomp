@@ -1,8 +1,8 @@
 // CThingObject::`vector deleting destructor'
 // Retail 0x00704280. MSVC VC7.1 compiler-emitted vector-deleting-destructor thunk.
 
-struct CThingObject
-{
+class CThingObject
+{ public:
     void Destroy();   // scalar destructor body at 0x7042a0 (thiscall, this in ecx)
     void Free();      // custom deallocator at 0x4c73b0 (thiscall, this in ecx)
 };

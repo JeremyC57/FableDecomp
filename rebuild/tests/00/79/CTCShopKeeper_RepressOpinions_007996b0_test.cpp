@@ -8,14 +8,14 @@ public:
     CCharString(const char* text, long length) : PStringData(text) { }
     ~CCharString() { }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned char ThingClass;
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -28,7 +28,7 @@ struct CThing {
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct COpinionOfHeroDef {
+class COpinionOfHeroDef { public:
     long ReactionMask;
     long DeedMask;
 };
@@ -36,7 +36,7 @@ struct CBoolVector {
     bool* _M_start; bool* _M_finish; bool* _M_end_of_storage;
     bool& operator[](long i) { return *(_M_start + i); }
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     COpinionOfHeroDef* PDef;
     CBoolVector DeedMask;
     long reactionIndex, deedIndex; const char* reactionName; const char* deedName; int calls;
@@ -45,7 +45,7 @@ struct CTCCreatureOpinionOfHero {
     void SetOpinionDeedMask(long defIndex) { deedIndex = defIndex; deedName = 0; ++calls; }
     void SetOpinionDeedMask(const CCharString& defName) { deedName = defName.PStringData; deedIndex = -1; ++calls; }
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     virtual void v00() { }
     CThing* ParentThing;
     bool RepressedOpinions;

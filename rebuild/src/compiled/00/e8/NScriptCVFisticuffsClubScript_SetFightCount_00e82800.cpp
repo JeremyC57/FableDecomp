@@ -8,7 +8,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CScriptDef {                                // the global script definition block
+class CScriptDef { public:                                // the global script definition block
     unsigned char _pad000[0x5ec];
     long FisticuffsAllowedHitsBowerstone;          // +0x5ec (region 1)
     long FisticuffsAllowedHitsOakvale;             // +0x5f0 (region 2)

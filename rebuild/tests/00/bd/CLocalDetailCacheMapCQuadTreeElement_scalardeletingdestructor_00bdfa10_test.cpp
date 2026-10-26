@@ -65,11 +65,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CMovableResourceMemoryPool;
-struct CXboxBufferMemoryPool;
+class CMovableResourceMemoryPool;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _pad_0x04[0x4];              // +0x04
     CMovableResourceMemoryPool* VirtualMemPool;              // +0x08
@@ -112,11 +112,11 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMemoryManager, EnableDelayedResourc
 #include <stddef.h>
 
 
-struct CEngineLandscapeMemoryManager;
-struct CPixelShader;
+class CEngineLandscapeMemoryManager;
+class CPixelShader;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void*                          __vftable;                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                  _pad_0x04[0x4];           // +0x04
     unsigned char                  _pad_0x08[0x4];           // +0x08
@@ -223,7 +223,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MemoryManager) == 0xf58);
 
 
 #pragma pack(push, 1)
-struct CMovableResource {
+class CMovableResource { public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
 };
 #pragma pack(pop)
@@ -244,11 +244,11 @@ FABLE_STATIC_ASSERT(offsetof(CMovableResource, __vftable) == 0x0);
 #include <stddef.h>
 
 
-struct CEngineMap;
-struct CEngineStaticMapFileBlockManager;
+class CEngineMap;
+class CEngineStaticMapFileBlockManager;
 
 #pragma pack(push, 1)
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     bool                              LockedFromMemoryRelocation; // +0x00
     unsigned char                     _pad_0x01[0x3];        // +0x01
     CEngineStaticMapFileBlockManager* FileBlockManager;      // +0x04
@@ -274,7 +274,7 @@ FABLE_STATIC_ASSERT(offsetof(CLocalDetailCacheMap, CollectionTypePalette) == 0x6
 struct LandscapeMemory : CEngineLandscapeMemoryManager { void Deallocate(void*); }; //0x00bd9b90
 struct EngineGlobal { unsigned char EngineState[0x6b0]; LandscapeMemory* LandscapeMemoryManager; };
 extern EngineGlobal* gEngine; //0x01436ea8
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 // Native RTTI: QuadTreeElement -> CMovableResource; four genuine slots.
 struct MovableNative {virtual ~MovableNative(){} virtual void RelocateData(long,void*,void*,long)=0;virtual bool CanRelocateData(long)const;virtual unsigned long Verify()const;};
 struct QuadTreeElement:MovableNative {

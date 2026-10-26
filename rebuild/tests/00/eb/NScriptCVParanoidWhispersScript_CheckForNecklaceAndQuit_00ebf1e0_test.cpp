@@ -23,13 +23,13 @@ static int fails = 0;
 // Shape: the timer index lives in edi; the found test is one named bool whose possession-name temporary is built under
 //   a construction flag (zeroed at entry); the timer's inline destructor is expanded at both exits.
 // Layout: CScriptBase 0x40 bytes, interface pointer +0x40.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CScriptThing;
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CScriptThing;
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                           // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -125,14 +125,14 @@ struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slo
 };
 
 extern CGameScriptInterface* g_pGameScriptInterface;        // 0x0143E8F8
-struct CTimer {                                             // 4 bytes
+class CTimer { public:                                             // 4 bytes
     long TimerIndex;
     CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
     long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
 };
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
@@ -165,7 +165,7 @@ void CV_ParanoidWhispersScript::CheckForNecklaceAndQuit()
 }
 
 // ---- test scaffolding ----
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 CCharString::CCharString(const char* text, long length) { PStringData = (void*)text; }
 CCharString::~CCharString() { PStringData = 0; }
 static const char* S(const CCharString& s) { return (const char*)s.PStringData; }

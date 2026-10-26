@@ -16,14 +16,14 @@ struct CThingAnimatable {                  // empty here: only its member is cal
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThing : CThingAnimatable {
+class CThing : public CThingAnimatable { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                 // +0x10 creature state byte (compared with 1)
     unsigned char _pad11[0x5b];
     unsigned char m_flags6c;               // +0x6c bit 3: effects allowed
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };

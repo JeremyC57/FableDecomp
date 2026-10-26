@@ -3,7 +3,7 @@
 
 static int g_assigns = 0;
 
-struct CSubtitledMessage {                       // 68 bytes (0x44); its own assignment copies the body
+class CSubtitledMessage { public:                       // 68 bytes (0x44); its own assignment copies the body
     unsigned char _body[0x44];
     CSubtitledMessage& operator=(const CSubtitledMessage& other) { std::memcpy(_body, other._body, sizeof(_body)); ++g_assigns; return *this; }
 };

@@ -11,13 +11,13 @@
 //   `cmp dword ptr [eax+4],1`). The owner's MeshData address is formed once (`add esi,0Ch`); CIVCountedPointer::Release
 //   reads Data into a local (kept in ecx across the `dec`) and is `if (data) { if (--data->RefCount == 0)
 //   data->Destroy(); Data = 0; } Data = 0;` (retail keeps both zero stores).
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();
     virtual void Destroy();                               // slot 1
     long RefCount;                                        // +0x04
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     long GetRefCount() const { return Data ? Data->RefCount : 0; }
     void Release()

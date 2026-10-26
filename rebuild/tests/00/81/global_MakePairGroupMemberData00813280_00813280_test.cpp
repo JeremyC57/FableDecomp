@@ -5,7 +5,7 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 static int g_ctor = 0;
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { ++g_ctor; }
@@ -19,7 +19,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CGroupMemberData {
+class CGroupMemberData { public:
     CIntelligentPointer m_member;
     bool m_isLeader;
     long m_role;

@@ -1,14 +1,14 @@
 #include <cstdio>
 
-struct CResourceList;
+class CResourceList;
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     long RefCount;
     CIVCountedPointeeBase() : RefCount(1) { }
     virtual ~CIVCountedPointeeBase() { }
 };
 
-struct CResource : CIVCountedPointeeBase {
+class CResource : public CIVCountedPointeeBase { public:
     CResourceList* ResourceList; CResource* PrevResource; CResource* NextResource; unsigned long ResourceSize; unsigned long LastUsedFrame;
     CResource() : ResourceList(0), PrevResource(0), NextResource(0), ResourceSize(0), LastUsedFrame(0) { }
 };

@@ -4,12 +4,12 @@
 // Callees: CResource::CResource 0x009FBEC0, CCharString::CCharString() 0x0099E4B0 (x15). Vtable 0x012FB5C8.
 // Layout: Ego_r.pdb CScriptDef minus 4 (def bases byte packed as the landed CUIStateDef ctor 0x00630350; each STLport
 //   vector is 12 bytes in retail, so later members drift a further 4 bytes per vector).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];                     // +0x04..+0x1c
     CResource();                                   // 0x009FBEC0
@@ -24,7 +24,7 @@ struct __declspec(novtable) CDefClassBase : CResource {
     CDefClassBase() : CResource(), PDefManager(0), Setup(0), Template(0), DefaultValsApplied(0) { }
 };
 #pragma pack(pop)
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -57,12 +57,12 @@ struct __declspec(novtable) CParentDefClassBase : CDefClassBase {
     CParentDefClassBase() { }
 };
 #pragma pack(pop)
-struct CArenaRoundDef;
-struct CConversation;
-struct CFeatDef;
-struct CFireHeartPatternDef;
-struct CHeroSoulsRoundDef;
-struct CScriptDef : CParentDefClassBase {        // vtable 0x012FB5C8
+class CArenaRoundDef;
+class CConversation;
+class CFeatDef;
+class CFireHeartPatternDef;
+class CHeroSoulsRoundDef;
+class CScriptDef : public CParentDefClassBase { public:        // vtable 0x012FB5C8
     long EXPERIENCE_GRANT_SMALL;                            // +0x3c
     long EXPERIENCE_GRANT_MEDIUM;                           // +0x40
     long EXPERIENCE_GRANT_LARGE;                            // +0x44

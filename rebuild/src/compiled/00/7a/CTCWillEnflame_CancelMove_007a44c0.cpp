@@ -13,7 +13,7 @@
 //   folds to `mov al,[edi+34h] ; test al,al ; jns`; the out-pointer GetInterface leaves the component in eax; the two
 //   clears share one zero register; a running ability other than 3 returns before RemoveTC.
 // Leaf: ?CancelMove@CTCWillEnflame
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -22,7 +22,7 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long UsingComponents[9];       // +0x20 std::bitset of interface types
     CInterfaceMap Components;               // +0x44
@@ -42,13 +42,13 @@ struct CThing {
     void RemoveTC(long interfaceType);      // 0x004C9840
 };
 
-struct CTCSpecialAbilities {                // interface 0xA7
+class CTCSpecialAbilities { public:                // interface 0xA7
     unsigned char _pad00[0x0c];
     bool          AbilityMutexLock;         // +0x0c
     long          CurrentAbility;           // +0x10 EHeroAbility
 };
 
-struct CTCWillEnflame {
+class CTCWillEnflame { public:
     void*         __vftable;                // +0x00
     CThing*       ParentThing;              // +0x04 (CTCBase)
     void CancelMove();

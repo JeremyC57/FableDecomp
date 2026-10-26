@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     CCharString(const char* s, int len);
 };
@@ -10,7 +10,7 @@ __declspec(noinline) CCharString::CCharString(const char* s, int len) {
     if (len) m_data = (char*)s + 1;
 }
 
-struct C3DMeshFileXVertexDataChunk {
+class C3DMeshFileXVertexDataChunk { public:
     virtual CCharString GetChunkDescription() const;
 };
 

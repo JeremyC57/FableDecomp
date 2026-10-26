@@ -8,7 +8,7 @@
  * `jmp rel32`.
  */
 
-struct CFactionDef;
+class CFactionDef;
 
 /* Real target of the thunk (relocation-masked; extern decl is sufficient). */
 extern void __fastcall CFactionDef_Copy_impl(CFactionDef* thisptr, void* src);

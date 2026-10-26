@@ -13,19 +13,19 @@
 // name an implicit-conversion CCharString temporary re-addressed with `lea` and destroyed right after the store.
 // MaxDistanceForCreaturesToLookAt (+0x24) is not initialised here.
 // Model: local (engine/CAIStateGroup_Gaze.h flattens the base; member names from it).
-struct CAIBrain;
+class CAIBrain;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                          // 0x0099E4B0
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
@@ -45,7 +45,7 @@ struct CIntelligentPointerGameObject : CBaseIntelligentPointer {    // CIntellig
     CIntelligentPointerGameObject() { }
 };
 
-struct CAIStateGroupBase : CBase {                          // vtable 0x01288C60
+class CAIStateGroupBase : public CBase { public:                          // vtable 0x01288C60
     CAIBrain* PBrain;                                       // +0x04
     long ScriptAIPriority;                                  // +0x08
     CCharString Name;                                       // +0x0c

@@ -2,19 +2,19 @@
 // body over stubbed callees; checks the mode-manager RemoveMode(0x5a) guard, the explosion spawn and the exclusion.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
-struct CThing;
-struct CTCBase;
+class C3DVector { public: float x, y, z; };
+class CThing;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
 static unsigned long g_removed = 0; static int g_removes = 0;
-struct CTCCreatureModeManager { void RemoveMode(unsigned long m) { g_removed = m; ++g_removes; } };
+class CTCCreatureModeManager { public: void RemoveMode(unsigned long m) { g_removed = m; ++g_removes; } };
 static CThing* g_excluded = 0; static int g_excl = 0;
 struct CExplosionDriver { void AddExcludedThing(CThing* t) { g_excluded = t; ++g_excl; } };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; CExplosionDriver* m_pDriver; C3DVector m_pos;
     const C3DVector& GetPosition() const { return m_pos; }
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -32,14 +32,14 @@ struct CThing {
 static CThing g_explosion; static long g_index = 0; static const C3DVector* g_at = 0;
 CThing* CreateThing(long defIndex, const C3DVector& position) { g_index = defIndex; g_at = &position; return &g_explosion; }
 static char g_def[64];
-struct CCharString { const char* m_pData; CCharString(const char* t, long) : m_pData(t) { } ~CCharString() { } };
-struct CGameDefinitionManager {
+class CCharString { public: const char* m_pData; CCharString(const char* t, long) : m_pData(t) { } ~CCharString() { } };
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; }
     long GetDefGlobalIndexFromName(const CCharString& name) { std::strcpy(g_def, name.m_pData); return 99; }
 };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase { CBaseIntelligentPointer PCreature; };
-struct CCreatureAction_SummonerLightningOrbOutOfGroundSmash : CCombatActionBase { void PerformAction(); };
+class CCombatActionBase { public: CBaseIntelligentPointer PCreature; };
+class CCreatureAction_SummonerLightningOrbOutOfGroundSmash : public CCombatActionBase { public: void PerformAction(); };
 void CCreatureAction_SummonerLightningOrbOutOfGroundSmash::PerformAction()
 {
     CTCCreatureModeManager* modeManager;

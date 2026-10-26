@@ -2,13 +2,13 @@
 struct CLookDefPointer { const void* m_pDef; };
 struct CAppearanceDefPointer { const void* m_pDef; };
 static int g_lookDef, g_appDef;
-struct CDefClassBase {
+class CDefClassBase { public:
     int calls;
     bool GetSubDef(CLookDefPointer& out) { ++calls; out.m_pDef = &g_lookDef; return true; }
     bool GetSubDef(CAppearanceDefPointer& out) { ++calls; out.m_pDef = &g_appDef; return true; }
 };
-struct CThing { CDefClassBase* PBaseDef; };
-struct CTCLook {
+class CThing { public: CDefClassBase* PBaseDef; };
+class CTCLook { public:
     CThing* m_pThing; CLookDefPointer PDef; CAppearanceDefPointer PAppearanceDef; int centred; float ex, ey;
     void CentreHead() { ++centred; }
     void ChangeEyeAngles(float a, float b) { ex = a; ey = b; }

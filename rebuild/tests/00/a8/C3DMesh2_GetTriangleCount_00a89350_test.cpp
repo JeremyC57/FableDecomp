@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour test for C3DMesh2::GetTriangleCount (retail 0x00A89350): the sum of TriangleCount over every primitive.
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _pad_0x00[0x58];
     unsigned long VertexCount;
     unsigned long TriangleCount;
     unsigned char _pad_0x60[0x40];
 };
 
-struct C3DMesh2 {
+class C3DMesh2 { public:
     unsigned char  _pad_0x00[0x90];
     unsigned long  PrimitiveCount;
     C3DPrimitive2* Primitives;

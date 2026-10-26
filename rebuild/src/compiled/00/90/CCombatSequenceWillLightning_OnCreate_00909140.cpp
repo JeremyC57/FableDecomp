@@ -10,7 +10,7 @@
 // Reset, released inline. The engine header for the sequence only carries a flattened base blob.
 // The owner goes through an inline const accessor: a direct member read colours the AddAction
 // argument edx and the delete argument eax (retail: eax, ecx), as in TrollBurrowPursue 0x00907AE0.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -18,11 +18,11 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
 };
 
-struct CCreatureAction_CastWillLightningSpell : CCombatActionBase {
+class CCreatureAction_CastWillLightningSpell : public CCombatActionBase { public:
     unsigned char _body[0x118];             // sizeof = 0x11c
     CCreatureAction_CastWillLightningSpell(CThingCreatureBase* owner, long level, float duration);   // 0x008BC8C0
 };

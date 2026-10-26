@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
 static int g_stamps = 0;
-struct CDateAndTime { unsigned char _body[0x1c]; CDateAndTime() { std::memset(_body, 0, sizeof(_body)); ++g_stamps; } };
-struct CFileInformation { CDateAndTime m_created; CDateAndTime m_modified; CDateAndTime m_accessed; CFileInformation() : m_created(), m_modified(), m_accessed() { } };
-struct CAFile { virtual void v00() {} virtual CFileInformation GetFileInformation(); };
+class CDateAndTime { public: unsigned char _body[0x1c]; CDateAndTime() { std::memset(_body, 0, sizeof(_body)); ++g_stamps; } };
+class CFileInformation { public: CDateAndTime m_created; CDateAndTime m_modified; CDateAndTime m_accessed; CFileInformation() : m_created(), m_modified(), m_accessed() { } };
+class CAFile { public: virtual void v00() {} virtual CFileInformation GetFileInformation(); };
 CFileInformation CAFile::GetFileInformation() { return CFileInformation(); }
 int main()
 {

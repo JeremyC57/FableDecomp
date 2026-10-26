@@ -15,7 +15,7 @@
 // stays in esi through the loop and `first` in ebx across the writer call); the list end is re-read every pass.
 #include <new>
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                            // 0x0099EAE0
     CCharString& operator+=(const CCharString& other);         // 0x0099F0A0

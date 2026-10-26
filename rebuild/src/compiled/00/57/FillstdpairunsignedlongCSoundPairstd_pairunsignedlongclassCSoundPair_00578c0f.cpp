@@ -2,7 +2,7 @@
 // std::_Fill<pair<unsigned long, CSoundPair>*, pair<...> > @ 0x00578c0f
 // Fills [_First, _Last) with _Val. _Ty is a 12-byte POD.
 
-struct CSoundPair {
+class CSoundPair { public:
     unsigned long a;
     unsigned long b;
 };

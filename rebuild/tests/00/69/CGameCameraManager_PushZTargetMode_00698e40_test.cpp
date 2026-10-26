@@ -24,13 +24,13 @@ static int fails = 0;
 //   it share the name's frame word; DecRefToZero gives the short release. The PushSpecialCameraMode prelude (the constant 1 kept in bl for the two flag stores and the dead-bit test); the
 //   sound name in its own block; the mode def pointer shares the name's frame word, is passed by value (copy built in the
 //   argument slot, add-ref through a null test) and released at the end through the held register (`dec [edi+4] ; jne`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CCameraModeDef {
+class CCameraModeDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long IVRefCount;                                    // +0x04
@@ -55,13 +55,13 @@ struct CCameraDefPointer {
         return *this;
     }
 };
-struct CCameraManagerDef {
+class CCameraManagerDef { public:
     unsigned char _pad00[0x54];
     long InitialMode;                                   // +0x54
     long ZTargetMode;                                   // +0x58
     long ProjectileWeaponMode;                          // +0x5c
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     CCameraDefPointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0 (hidden result pointer)
     bool GetDef(long globalIndex, CCameraDefPointer* out);   // 0x0056D0C0
 };
@@ -80,7 +80,7 @@ bool CGameDefinitionManager::GetDef(long globalIndex, CCameraDefPointer* out)
     return false;
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x10];
     CGameDefinitionManager* DefinitionManager;          // +0x10
 };
@@ -98,7 +98,7 @@ struct CCameraScript {
     virtual bool IsFinished() const;                    // slot 2
 };
 struct CCameraScriptPointer { CCameraScript* Data; CCameraModeOwner* Info; };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Deleted;                              // +0x91 bit 0
     unsigned char GetDeleted() const { return Deleted; }
@@ -110,7 +110,7 @@ struct CCameraObservedPointer {
 };
 void __fastcall PlayCameraSoundThroughObservedThing(const CThing* thing, const CCameraManagerDef& def, const CCharString& sound);   // 0x00698A30
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char          _pad00[0x74];
     CWorld*                World;                       // +0x74
     unsigned char          CamTools[0x20];              // +0x78

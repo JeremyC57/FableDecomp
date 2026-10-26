@@ -25,19 +25,19 @@ struct CDefBase {
     long RefCount;                                      // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CHeroAbilityDef : CDefBase {
+class CHeroAbilityDef : public CDefBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long Ability;                                       // +0x3c EHeroAbility
     unsigned char _pad40[0x94 - 0x40];
     bool Aggressive;                                    // +0x94
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();        // 0x0044C6B0
     long GetNumberOfDefsOfType(const CCharString& typeName);   // 0x009AD3B0
     bool GetDef_005f89f2(const CCharString& typeName, long index, CDefPointer<CHeroAbilityDef>& out);   // 0x005F89F2
@@ -55,17 +55,17 @@ __declspec(noinline) bool CDefinitionManager::GetDef_005f89f2(const CCharString&
     return true;
 }
 #pragma auto_inline(on)
-struct CHitParameters;
-struct CCPPointerInfo;
+class CHitParameters;
+class CCPPointerInfo;
 namespace NEntityEvents {
-struct CEventHitBase {
+class CEventHitBase { public:
     virtual void v00();
     long WorldFrame;                                    // +0x04
     CHitParameters* PHitParams_Data;                    // +0x08 CCountedPointer<CHitParameters>
     CCPPointerInfo* PHitParams_Info;                    // +0x0c
     CEventHitBase(const CHitParameters& params);        // 0x00811760
 };
-struct CEventHitBySpecialAbility : CEventHitBase {      // vtable 0x012723F0
+class CEventHitBySpecialAbility : public CEventHitBase { public:      // vtable 0x012723F0
     long Ability;                                       // +0x10 EHeroAbility
     bool Aggressive;                                    // +0x14
     virtual void v00();

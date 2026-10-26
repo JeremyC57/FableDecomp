@@ -10,7 +10,7 @@ void __stdcall Sub_5b43a2(long item, long member4) {
     g_stdcall_arg2 = item;
 }
 
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     void* vtbl;
     long  member4;
     void Sub_5bdfb1(long item);

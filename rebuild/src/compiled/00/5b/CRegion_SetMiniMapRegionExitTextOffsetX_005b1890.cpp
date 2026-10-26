@@ -7,11 +7,11 @@
 
 extern "C" int __cdecl SetMiniMapRegionExitTextOffsetX_helper(int p);
 
-struct CRegion {
+class CRegion { public:
     int m0;
 };
 
-struct CCharString {
+class CCharString { public:
     int h0;
 };
 

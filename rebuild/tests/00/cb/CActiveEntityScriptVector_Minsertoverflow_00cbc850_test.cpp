@@ -11,7 +11,7 @@ static void real_free(void* p) { std::free(p); }
 #define free my_free
 struct __false_type { __false_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CActiveEntityScriptBase;
+class CActiveEntityScriptBase;
 struct SCountBlock { long RefCount; };
 struct CCountedPointer_CActiveEntityScriptBase {
     CActiveEntityScriptBase* Data; SCountBlock* Info;

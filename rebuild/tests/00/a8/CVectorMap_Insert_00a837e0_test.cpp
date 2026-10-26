@@ -65,7 +65,7 @@ private:
     TVec& operator=(const TVec&);
 };
 
-struct CANavQuadTreeNode { int id; };
+class CANavQuadTreeNode { public: int id; };
 struct SNodePair {                                      // pair<unsigned __int64, CANavQuadTreeNode*>
     u64                first;
     CANavQuadTreeNode* second;

@@ -4,12 +4,12 @@
 #include <cstring>
 
 static int g_baseCtors, g_ptrCtors;
-struct CInitBaseClass {
+class CInitBaseClass { public:
     bool m_flag04;
     CInitBaseClass() : m_flag04(false) { ++g_baseCtors; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CCamera {
+class C3DVector { public: float X, Y, Z; };
+class CCamera { public:
     C3DVector WorldPosition;
     bool HeightLocked, ViewVecZLocked;
     CCamera() : HeightLocked(false), ViewVecZLocked(false) { }
@@ -37,7 +37,7 @@ struct CPlayerModeList {
     }
 };
 struct CDefPointer { void* Object; CDefPointer() : Object(0) { } };
-struct CPlayer : CInitBaseClass {
+class CPlayer : public CInitBaseClass { public:
     CIntelligentPointer ControlledCreature, PlayerCharacter;
     CCamera CurrentFreeCamera, FreeCamera, OldFreeCamera;
     CThingRespawnInfo RespawnInfo;

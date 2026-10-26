@@ -3,7 +3,7 @@
 #include <new>
 static const void* g_log[8];
 static int g_count = 0;
-struct CAFile;
+class CAFile;
 struct CCountedPointerAFile { CAFile* Object; void* Block; };
 struct CLevelFiles {                        // CLevelLoader::CObject::CLevelFiles (28 bytes in retail)
     long LevelID;

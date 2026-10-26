@@ -1,13 +1,13 @@
 #include <cstdio>
-struct C2DCoordI { long x, y; };
-struct CWorldMap { unsigned char _pad[0x4c]; bool m_disabled; float GetGroundSizeZAtBlock(const C2DCoordI& b) { return (float)(b.x + b.y) * 0.5f; } };
-struct CWorld {
+class C2DCoordI { public: long x, y; };
+class CWorldMap { public: unsigned char _pad[0x4c]; bool m_disabled; float GetGroundSizeZAtBlock(const C2DCoordI& b) { return (float)(b.x + b.y) * 0.5f; } };
+class CWorld { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {}
     virtual CWorldMap* GetMap() { return map; }
     CWorldMap* map;
 };
-struct CGame { unsigned char _pad[0x24]; CWorld* m_pWorld; };
+class CGame { public: unsigned char _pad[0x24]; CWorld* m_pWorld; };
 CGame* g_pGame = 0;
 struct CMyAtmosMap {
     virtual long GetBlockValue(const C2DCoordI&) { return 0; }

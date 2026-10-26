@@ -5,17 +5,17 @@
 #endif
 static int g_stringCopies = 0, g_stringAssigns = 0;
 #include <new>
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString(const CCharString& other) : m_pStringData(other.m_pStringData) { ++g_stringCopies; }
 };
-struct C2DVector {
+class C2DVector { public:
     float X;                                    // +0x00
     float Y;                                    // +0x04
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}
 };
-struct CTCInventoryMap {
-    struct CUIMiniMapMarker {                   // 28 bytes
+class CTCInventoryMap { public:
+    class CUIMiniMapMarker { public:                   // 28 bytes
         long        Region;                     // +0x00
         CCharString UIDefName;                  // +0x04
         C2DVector   Position;                   // +0x08

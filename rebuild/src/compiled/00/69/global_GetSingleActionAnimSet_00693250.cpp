@@ -7,8 +7,8 @@
 // GetBoundingBoxTransform) is propagated and wrong; the body is byte-identical to 0x008F4AA0.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CAnimSet;
-struct CThingCreatureBase;
+class CAnimSet;
+class CThingCreatureBase;
 
 struct CAnimSetVector {                            // vector<CAnimSet*>: first, last, end over a malloc'd buffer
     CAnimSet** m_pFirst;

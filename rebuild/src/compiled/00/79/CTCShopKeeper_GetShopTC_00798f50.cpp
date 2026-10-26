@@ -6,15 +6,15 @@
 // CThing interface bitset +0x20 (0x53 = bit 19 of the third word, `test [+28h],80000h`), map +0x44, dead flag bit 0 of +0x91.
 // Shape: each arm of the alive test holds its own HasTC + one-ternary GetTC lookup assigned to the result (VC tail-duplicates
 // the return into both hit paths); the null result is a zero-initialised local (ebx) returned through the shared exit.
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -34,8 +34,8 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                      // +0x04
     CThing* GetPItem() const;                           // 0x00A01B50
 };
-struct CTCShop;
-struct CTCShopKeeper {
+class CTCShop;
+class CTCShopKeeper { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     bool ToBeRemoved;                                   // +0x08

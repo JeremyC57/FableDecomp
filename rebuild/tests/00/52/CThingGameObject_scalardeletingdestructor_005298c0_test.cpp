@@ -7,8 +7,8 @@
 static int g_destroyed = 0;
 static int g_freed = 0;
 
-struct CThingGameObject
-{
+class CThingGameObject
+{ public:
     int tag;
     void Destroy()  { g_destroyed++; }
     void FreeSelf() { g_freed++; }

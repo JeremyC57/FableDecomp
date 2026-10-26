@@ -15,9 +15,9 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];                       // +0x04..+0x40
     CScriptBase();                                   // 0x00CB8110
@@ -31,23 +31,23 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                         // 0x0099A2D0
     virtual ~CBase();                                // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
-struct CScriptThing;
-struct CCPPointerInfo;
+class CScriptThing;
+class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CScriptThing* Data;                              // +0
     CCPPointerInfo* Info;                            // +4
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
-struct CScriptThing : CBase {                        // vtable 0x01238C8C
+class CScriptThing : public CBase { public:                        // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;               // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                   // 0x0099E4B0
 };
-struct CBaseObject {                                 // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
+class CBaseObject { public:                                 // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
     virtual void b00();
     void* m_pIntelligentPointer;                     // +0x04
     CBaseObject();                                   // 0x0099A380
@@ -57,7 +57,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                       // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -104,7 +104,7 @@ template <int SIZE> struct CMap : CTreeBase<SIZE> {     // map<...>, 12 bytes
     }
 };
 
-struct CFireHeartPatternDef;
+class CFireHeartPatternDef;
 
 namespace NScript {
 class CQ_FireHeartScript : public CScriptObject {

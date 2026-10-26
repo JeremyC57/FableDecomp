@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #pragma intrinsic(memcpy, memset)
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass { virtual ~CBaseClassNonCopyable(); };
 struct CDataStream : CBaseClassNonCopyable {
     virtual ~CDataStream();
@@ -18,7 +18,7 @@ struct CDataStream : CBaseClassNonCopyable {
     virtual unsigned long GetPosition() const=0;
     virtual void Close()=0;
 };
-struct CDataOutputStream : CDataStream {
+class CDataOutputStream : public CDataStream { public:
     virtual ~CDataOutputStream();
     CCharString NewLine;
     virtual void Write(const void*, long)=0;

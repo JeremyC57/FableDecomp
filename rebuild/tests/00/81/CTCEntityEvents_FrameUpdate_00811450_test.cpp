@@ -13,7 +13,7 @@ struct CSubObject {
 };
 extern int helper_49d870(void);
 
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     CBaseEntityEvents base;
     char pad[0x0c - sizeof(CBaseEntityEvents)];
     CSubObject sub;

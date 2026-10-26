@@ -1,11 +1,11 @@
 #include <cstdio>
 // behaviour test: CEngineVSConstantLayoutLights ctor fills the light/spotlight/user ranges and LightSize
 static int g_ctors = 0, g_dtors = 0, g_baseLayout = 0;
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { ++g_ctors; }
     ~CBaseClass() { ++g_dtors; }
 };
-struct CShaderConstantRange : CBaseClass {
+class CShaderConstantRange : public CBaseClass { public:
     long m_firstRegister, m_registerCount;
     CShaderConstantRange() : m_firstRegister(-1), m_registerCount(-1) {}
     CShaderConstantRange(long f, long c) : m_firstRegister(f), m_registerCount(c) {}

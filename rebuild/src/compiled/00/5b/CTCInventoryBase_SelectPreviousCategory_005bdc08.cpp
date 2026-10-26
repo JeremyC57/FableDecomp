@@ -12,7 +12,7 @@
 
 namespace NInventory {
 
-struct CCategory {                                   // NInventory::CCategory, retail 0x2C bytes
+class CCategory { public:                                   // NInventory::CCategory, retail 0x2C bytes
     unsigned char _pad_0x00[0x28];
     bool          Selected;                          // +0x28
     bool          DisplayItems;                      // +0x29
@@ -28,7 +28,7 @@ template <class T> struct CRetailVector {            // STLport vector (12 bytes
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

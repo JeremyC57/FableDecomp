@@ -8,7 +8,7 @@
 // RequestActivate 0x0056A860).
 // Shape: the store of the argument is scheduled between its test and the branch; the forbidden path
 // is the `if` arm, the re-request the `else if`.
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetAutomaticCameraControl();                       // 0x00699090
 };
 

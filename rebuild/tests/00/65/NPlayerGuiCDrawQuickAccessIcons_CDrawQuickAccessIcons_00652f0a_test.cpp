@@ -6,20 +6,20 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_baseCtor = 0, g_fadeCtor = 0, g_handleCtor = 0, g_resizeE = 0, g_resizeC = 0; static long g_resizeECount = -1; static unsigned long g_resizeCCount = 0;
 static const void* g_baseGui = 0; static const void* g_baseList = 0;
-struct CPlayerGui;
+class CPlayerGui;
 namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() { ++g_handleCtor; } }; } using N_0099a2d0::CBase;
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 struct CIVCountedPointer { CIVCountedPointeeBase* Object; __forceinline CIVCountedPointer() : Object(0) { } };
-struct CEnginePrimitiveHandle : CBase { CIVCountedPointer Data; virtual void v00() {} __forceinline CEnginePrimitiveHandle() { } };
-struct C2DCoordI { long X; long Y; C2DCoordI() { } };
+class CEnginePrimitiveHandle : public CBase { public: CIVCountedPointer Data; virtual void v00() {} __forceinline CEnginePrimitiveHandle() { } };
+class C2DCoordI { public: long X; long Y; C2DCoordI() { } };
 namespace NPlayerGui {
 template <class P> struct CAllocProxy { P p; CAllocProxy(P v) : p(v) { } operator P() const { return p; } CAllocProxy& operator=(P v) { p = v; return *this; } };
 struct CRetailHandleVector { void* m_pFirst; void* m_pLast; CAllocProxy<void*> m_pEnd; CRetailHandleVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
 struct CRetailEmitterVector { void* m_pFirst; void* m_pLast; CAllocProxy<void*> m_pEnd; CRetailEmitterVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } void Resize(long count) { ++g_resizeE; g_resizeECount = count; } };
 struct CRetailCoordVector { C2DCoordI* m_pFirst; C2DCoordI* m_pLast; CAllocProxy<C2DCoordI*> m_pEnd; CRetailCoordVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } void resize(unsigned long count, const C2DCoordI& value) { ++g_resizeC; g_resizeCCount = count; } };
 struct CFadeInFadeOutBase { unsigned char _body[0x1c]; CFadeInFadeOutBase() { ++g_fadeCtor; _body[0] = 3; } };
-struct CDrawBase { virtual void v00() {} unsigned char _body[0x28 - 4]; CDrawBase(CPlayerGui* gui, void* drawList) { ++g_baseCtor; g_baseGui = gui; g_baseList = drawList; } };
-struct CDrawQuickAccessIcons : CDrawBase {
+class CDrawBase { public: virtual void v00() {} unsigned char _body[0x28 - 4]; CDrawBase(CPlayerGui* gui, void* drawList) { ++g_baseCtor; g_baseGui = gui; g_baseList = drawList; } };
+class CDrawQuickAccessIcons : public CDrawBase { public:
     virtual void v00() {}
     unsigned long ChargingSoundID; long ChargingButtonIndex; float ChargingButtonTime; bool Charging; bool FullyCharged; float FullyChargedTime; long FlashButton;
     CFadeInFadeOutBase FlashFade; CEnginePrimitiveHandle ChargeUpPrimitiveHandle; CRetailHandleVector SpecialPrimitiveHandles; CRetailHandleVector QuickAccessSpellCrossHandles;

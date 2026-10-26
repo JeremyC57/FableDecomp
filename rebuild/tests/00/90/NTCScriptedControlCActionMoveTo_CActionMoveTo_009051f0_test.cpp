@@ -1,13 +1,13 @@
 #include <cstdio>
 
-struct CThing;
-struct CScriptThing {
+class CThing;
+class CScriptThing { public:
     CThing* PImp_Data; void* PImp_Info;
     CScriptThing() : PImp_Data(0), PImp_Info(0) {}
     CScriptThing(CThing* t) : PImp_Data(t), PImp_Info(0) {}
 };
-struct CThing { CScriptThing GetScriptThing() { return CScriptThing(this); } };
-struct C3DVector { float X, Y, Z; };
+class CThing { public: CScriptThing GetScriptThing() { return CScriptThing(this); } };
+class C3DVector { public: float X, Y, Z; };
 
 struct CActionBase {
     void* PTCScript; bool Activated; bool Terminated;

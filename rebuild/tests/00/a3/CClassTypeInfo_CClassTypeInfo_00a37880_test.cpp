@@ -4,14 +4,14 @@
 #include <new>
 static int g_names = 0;
 struct CClass_Calls;
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_names; } };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_names; } };
 template<class T> struct CRetailList {
     struct node { node* next; node* prev; T value; };
     node* head;
     CRetailList() { head = 0; node* s = (node*)malloc(sizeof(node)); s->next = s; s->prev = s; head = s; }
 };
 typedef CClass_Calls* (__cdecl* ClassAllocFunc)();
-struct CClassTypeInfo {
+class CClassTypeInfo { public:
     CRetailList<CClass_Calls*> TypeList; unsigned long NoAllocated; bool Used; bool Local; ClassAllocFunc AllocFunc; CCharString Name;
     CClassTypeInfo() : TypeList(), Name() { Used = false; NoAllocated = 0; Local = false; AllocFunc = 0; }
 };

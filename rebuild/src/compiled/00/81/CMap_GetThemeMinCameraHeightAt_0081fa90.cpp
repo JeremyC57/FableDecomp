@@ -7,11 +7,11 @@
 // Tried: an inline Release() member (load/dec/store of the count), the hand `if (--def->RefCount == 0)` (this source: `dec [eax+4]` then a
 //   re-read), a copied register local for the def (worse), a CDefPointer object with an unchecked release destructor (same frame).
 // next: lane gap: multi-local homing into a dead argument slot.
-struct CWorld;
-struct C2DCoordI {
+class CWorld;
+class C2DCoordI { public:
     long X, Y;
 };
-struct CHeightMapCell {                            // PDB, 12 bytes
+class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -24,13 +24,13 @@ template <class T> struct CRetailVector {          // STLport vector: begin / en
     T* _M_end_of_storage;
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CHeightMapInit {                            // PDB, 12 bytes
+class CHeightMapInit { public:                            // PDB, 12 bytes
     long           SizeX;
     long           SizeY;
     unsigned long* WorldSeed;
 };
-struct CMap;
-struct CHeightMap {                                // retail layout (PDB CHeightMap with the 12-byte release vector)
+class CMap;
+class CHeightMap { public:                                // retail layout (PDB CHeightMap with the 12-byte release vector)
     virtual ~CHeightMap();                         // slot 0: the scalar deleting destructor
     CWorld*                        World;          // +0x04
     CMap*                          Map;            // +0x08
@@ -49,18 +49,18 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
     void reset(T* p) { T* old = ptr; ptr = p; delete old; }
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void DestroySelf();
     long RefCount;
     void Release() { --RefCount; if (RefCount == 0) DestroySelf(); }
 };
-struct CEngineThemeDef : CDefPointeeBase {
+class CEngineThemeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x80 - 8];
     float Height;
     float MinCameraHeight;
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CEngineThemeDef** out);   // 0x0063F3A0
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -76,7 +76,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CEngineThemeDef
     return true;
 }
 #pragma auto_inline(on)
-struct CMap {
+class CMap { public:
     unsigned char       _pad00[0x1c];
     CDefinitionManager* DefinitionManager;           // +0x1c
     long GetDominantEngineThemeAt(const C2DCoordI& pos, long* blend);   // 0x0081F910

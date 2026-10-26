@@ -2,19 +2,19 @@
 #include <cstdio>
 
 static int g_baseCtors = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     long m_globalIndex;
     CParentDefClassBase() : m_globalIndex(-1) { ++g_baseCtors; }
     virtual ~CParentDefClassBase() {}
 };
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     V* m_first; V* m_last; V* m_end; unsigned char m_compare; bool m_sorted;
     CVectorMap() : m_first(0), m_last(0), m_end(0), m_sorted(false) {}
 };
-struct CSoundPair { long a; };
-struct CDefString { long TablePos; CDefString() : TablePos(-1) {} };
-struct CSoundMap { CVectorMap<unsigned long, CSoundPair> SoundMap; CVectorMap<unsigned long, CDefString> CriteriaMap; };
-struct CRegionDef : CParentDefClassBase {
+class CSoundPair { public: long a; };
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) {} };
+class CSoundMap { public: CVectorMap<unsigned long, CSoundPair> SoundMap; CVectorMap<unsigned long, CDefString> CriteriaMap; };
+class CRegionDef : public CParentDefClassBase { public:
     long EnvironmentTheme, InternalEnvironmentTheme, InternalLightingChannelCount, CameraManagerSetIndex, CameraManagerSetBuildingIndex;
     CSoundMap SoundMap; bool PreventHeroWeaponUse, PreventHeroWillUse; CDefString WanderingPopulationScriptDefName;
     CRegionDef() {}

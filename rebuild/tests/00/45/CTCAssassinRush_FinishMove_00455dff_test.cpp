@@ -4,7 +4,7 @@ struct SubA { void FinishA(); };
 struct SubB { void FinishB(); };
 struct CTCMoveBase { void FinishMove(); };
 
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     char pad0[0x3c];
     void* p3c;
     char pad2[0x50 - 0x40];

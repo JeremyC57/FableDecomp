@@ -14,7 +14,7 @@ struct SKeyedRecord {                            // 12 bytes
     long m_b;                                    // +8
 };
 
-template <class T> struct CArray {               // retail CArray: begin, end, capacity
+template <class T> class CArray { public:               // retail CArray: begin, end, capacity
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;

@@ -66,7 +66,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CHeightMapCell {
+class CHeightMapCell { public:
     float         Height;                                    // +0x00
     unsigned char EngineThemePaletteIndex[3];                // +0x04
     unsigned char EngineBlend[2];                            // +0x07
@@ -82,10 +82,10 @@ FABLE_STATIC_ASSERT(offsetof(CHeightMapCell, NavPreferred) == 0x9);
 
 #endif // FABLE_ENGINE_CHEIGHTMAPCELL_H
 
-struct CWorld; struct CMap;
-struct C2DCoordI { int X,Y; C2DCoordI(int x,int y):X(x),Y(y){} };
-struct C2DBoxI { C2DCoordI Min,Max; };
-struct CHeightMap {
+class CWorld; class CMap;
+class C2DCoordI { public: int X,Y; C2DCoordI(int x,int y):X(x),Y(y){} };
+class C2DBoxI { public: C2DCoordI Min,Max; };
+class CHeightMap { public:
  virtual ~CHeightMap(); // 008f6de0
  CWorld* World; CMap* Map; unsigned int* WorldSeed;
  CHeightMapCell *CellsStart,*CellsFinish,*CellsEnd;

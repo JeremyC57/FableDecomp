@@ -39,9 +39,9 @@ static void InitState(CTrackedRenderState& s, unsigned long v) { s.m_stateId = 0
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); }
-struct CTexture { int id; };
-struct CVertexShader { int id; };
-struct CPixelShader { int id; };
+class CTexture { public: int id; };
+class CVertexShader { public: int id; };
+class CPixelShader { public: int id; };
 struct CStaticShaderManager {
     bool VertexShadersEnabled, PixelShadersEnabled;
     long CurrentVSConstantLayoutIndex;

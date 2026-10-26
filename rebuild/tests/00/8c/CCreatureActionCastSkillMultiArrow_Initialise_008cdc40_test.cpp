@@ -7,22 +7,22 @@
 // presence bit 0x88 (dword +0x30, bit 8) of a freshly fetched owner; the final lookup is an inline
 // std::lower_bound over the {type, component} vector at +0x44/+0x48 (8-byte entries) whose result is unused (the loop keeps it).
 // Layout: Level at retail +0x114 (PDB +0x12c); thing byte +0x10 = state (1: AI controlled).
-struct CTCBase;
-struct CTCParamsBase;
+class CTCBase;
+class CTCParamsBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CTCMultiArrow {
+class CTCMultiArrow { public:
     void SetAICast(long level);                 // 0x007CBF20
 };
 
 struct STCEntry { long type; CTCBase* component; };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                      // +0x10
     unsigned char _pad11[0x0f];
@@ -61,7 +61,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer Owner;              // +0x08 (the owning creature)
@@ -69,7 +69,7 @@ struct CCombatActionBase {
     virtual void Initialise();                  // 0x00857520
 };
 
-struct CCreatureAction_CastSkillMultiArrow : CCombatActionBase {
+class CCreatureAction_CastSkillMultiArrow : public CCombatActionBase { public:
     long Level;                                 // +0x114 (PDB +0x12c)
     virtual void Initialise();
 };

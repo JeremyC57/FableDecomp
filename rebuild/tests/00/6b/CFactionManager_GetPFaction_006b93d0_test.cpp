@@ -1,8 +1,8 @@
 // Behaviour test for 0x006B93D0 CFactionManager::GetPFaction(const CCharString&): CRC the name, binary-search the hash-keyed map, null when absent.
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* Text; unsigned long Length; };
-struct CCharString { CCharStringData* PStringData; };
+class CCharStringData { public: const char* Text; unsigned long Length; };
+class CCharString { public: CCharStringData* PStringData; };
 // Stand-in CRC: a simple additive hash with the retail signature (seed, data, length); the real one is CRC::Calc 0x004014A0.
 unsigned long __fastcall CRCCalc(unsigned long seed, const void* data, unsigned long length)
 {
@@ -12,7 +12,7 @@ unsigned long __fastcall CRCCalc(unsigned long seed, const void* data, unsigned 
     return h;
 }
 class CFaction { public: int Id; };
-template <class T> struct CCountedPointer { T* Data; T* Get() const { return Data; } };
+template <class T> class CCountedPointer { public: T* Data; T* Get() const { return Data; } };
 template <class A, class B> struct pair { A first; B second; };
 struct CFactionMap {
     typedef pair<unsigned long, CCountedPointer<CFaction> > value_type;

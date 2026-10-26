@@ -8,7 +8,7 @@
 // Shape: the component comes through the inline accessor that leaves its local unset when the mask bit is clear
 // (retail then reads the dead `enabled` argument slot, `mov eax,[esp+0Ch]`); the mask word test of kind 0x7f is the
 // sign test (`test ecx,ecx ; jns`).
-struct CTCHitLocations;
+class CTCHitLocations;
 struct STCEntry {                                  // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long             m_kind;
     CTCHitLocations* m_pTC;
@@ -26,7 +26,7 @@ struct CTCMap {                                    // the thing's component map 
         return it->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];
@@ -40,12 +40,12 @@ __forceinline CTCHitLocations* GetTCIfPresent(CThing* thing, long kind)
         tc = thing->m_tcs.Find(kind);
     return tc;
 }
-struct CHitLocationDef {
+class CHitLocationDef { public:
     unsigned char _pad[0x74];
     bool          Default;                         // +0x74
 };
 class CHitLocation;
-struct CTCHitLocations {
+class CTCHitLocations { public:
     unsigned char _pad[0x18];
     CHitLocation* PDefaultHitLocation;             // +0x18
 };

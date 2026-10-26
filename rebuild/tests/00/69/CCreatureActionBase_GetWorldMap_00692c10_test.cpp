@@ -24,7 +24,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     T* operator->() const { return (T*)GetPItem(); }
 };
-struct CCreatureActionBase { void* vt; void* pad; unsigned char PCreature[8]; };
+class CCreatureActionBase { public: void* vt; void* pad; unsigned char PCreature[8]; };
 struct CCreatureActionBase_Methods : CCreatureActionBase {
     CWorldMap& GetWorldMap();
 };

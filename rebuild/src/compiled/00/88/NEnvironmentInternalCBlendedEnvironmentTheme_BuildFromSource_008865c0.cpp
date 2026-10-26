@@ -7,11 +7,11 @@
 // Layout: Ego_r.pdb CEnvironmentDef / CEnvironmentThemeDef less 4 (retail CDefBase) and CEnvironmentThemeDaySetDef less 8
 //   (retail 12-byte CArray); CBlendedEnvironmentTheme as the landed Blend 0x00887B70 (texture sets at +0x1ac, 0x18 each).
 void StandInSink(void* p, unsigned long n);
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 struct __true_type {};
-template <class T> struct CArray {             // retail STLport vector, 12 bytes
+template <class T> class CArray { public:             // retail STLport vector, 12 bytes
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -39,7 +39,7 @@ struct CEnvironmentLookupTexture {
     unsigned char* Data;
     CRGBFloatColour GetColour(long column, long row) const;   // 0x008860D0
 };
-struct CEnvironmentDef {
+class CEnvironmentDef { public:
     unsigned char _pad00[0x40];
     long DiffuseLookupRow;                     // +0x40
     long AmbientLookupRow;
@@ -64,7 +64,7 @@ struct CEnvironmentDef {
     long GlowBloomColourLookupRow;             // +0x90
     long SunlightAttenuatorColourLookupRow;
 };
-struct CEnvironmentThemeDaySetDef {
+class CEnvironmentThemeDaySetDef { public:
     unsigned char _pad00[0x48];
     float SunTilt;                             // +0x48
     float SunRotate;
@@ -73,7 +73,7 @@ struct CEnvironmentThemeDaySetDef {
     float MoonRotate;
     float MoonHeight;
 };
-struct CEnvironmentThemeDef {
+class CEnvironmentThemeDef { public:
     unsigned char _pad00[0x3c];
     float TimeOfDay;                           // +0x3c
     bool  MoonLit;                             // +0x40

@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for CTCInventory::ConstructStyleCardsScreenPC (0058a729): same logic over a copy of the model.
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CComponent { int id; };
-struct CTCInventory;
+class CTCInventory;
 static CTCInventory* g_inventory = 0;
 static CThing* g_thing = 0;
 static int g_order = 0, g_invOrder = 0, g_thingOrder = 0, g_buildOrder = 0;
@@ -12,7 +12,7 @@ struct CFrontEndManager_Calls {
     virtual void SetActiveThing(CThing* thing) { g_thing = thing; g_thingOrder = ++g_order; }
     static CFrontEndManager_Calls* GetInstance() { static CFrontEndManager_Calls s; return &s; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CThing* PThing;
     CComponent* GetStyleCardsListUIComponent(long a, long b, long c, CComponent* parent) { g_buildOrder = ++g_order; g_sum = a + b + c; return parent; }
     CComponent* ConstructStyleCardsScreenPC(long a, long b, long c, CComponent* parent)

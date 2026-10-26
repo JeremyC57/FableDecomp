@@ -18,7 +18,7 @@
 // release); the concatenation is one `return name + L" - " + title;` (VC7.1 has no NRVO, so it copies into the result).
 typedef unsigned short wchar16;
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const wchar16* text);                       // 0x0099B6B0
     CWideString(const CWideString& other);                  // 0x0099B720
@@ -45,23 +45,23 @@ struct CIVCountedPointee : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     ~CIVCountedPointer() { if (Object) Object->ReleaseTemporary(); }
     T* operator->() const { return Object; }
 };
 
 namespace NGameText {
-struct CGroupEntry : CIVCountedPointee {
+class CGroupEntry : public CIVCountedPointee { public:
     CWideString GetText() const;                            // 0x009C7A40
 };
-struct CDataBank {
+class CDataBank { public:
     bool EntryExists(unsigned long index);                  // 0x009CC190
     CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
 }
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char        _pad00[0x14];
     NGameText::CDataBank* TextBank;                         // +0x14
 };
@@ -70,7 +70,7 @@ extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 extern const wchar16 g_textSpacedDash[];                    // 0x0122E070 L" - "
 extern const wchar16 g_textMissingTextTag[];                // 0x01271DA8 L"Missing text tag"
 
-struct CHasNameDef {
+class CHasNameDef { public:
     unsigned char _pad00[0x28];
     unsigned long DefaultNameTag;                           // +0x28
     unsigned long Home;                                     // +0x2c

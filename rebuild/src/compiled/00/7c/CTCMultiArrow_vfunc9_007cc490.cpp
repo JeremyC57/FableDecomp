@@ -5,7 +5,7 @@
 // Retail CTCMultiArrow (PDB): NumberOfShots +0x10, CreateAmmoEffectCount +0x24, CreateAmmoEffectDelay +0x28,
 // CreateAmmoEffectTimer +0x2c, CutSceneCancelled +0x44.
 // Shape: the timer decrement folds into `dec dword ptr [ecx+2Ch] ; jne`, the reload from the delay precedes the tail jump.
-struct CThing {
+class CThing { public:
     void RemoveTC(long type);                       // 0x004C9840
 };
 
@@ -15,7 +15,7 @@ struct CTCBase_007cc490 {
     unsigned char _pad08[4];
 };
 
-struct CTCMultiArrow : CTCBase_007cc490 {
+class CTCMultiArrow : public CTCBase_007cc490 { public:
     const void*   PDef;                             // +0x0c
     long          NumberOfShots;                    // +0x10
     long          NumberInVolley;                   // +0x14

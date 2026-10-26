@@ -1,13 +1,13 @@
 // Behaviour test for 0x00711190 std::__insertion_sort over list<CAnimSet>::const_iterator with CAnimSetItPriorityLessThan (everything inlined).
 #include <cstdio>
 
-struct CAnimSet { unsigned char _before[0x4c]; long Priority; unsigned char _after[0x0c]; };
+class CAnimSet { public: unsigned char _before[0x4c]; long Priority; unsigned char _after[0x0c]; };
 struct SAnimSetNode { SAnimSetNode* _M_next; SAnimSetNode* _M_prev; CAnimSet _M_data; };
 struct CAnimSetIterator {
     SAnimSetNode* _M_node;
     const CAnimSet& operator*() const { return _M_node->_M_data; }
 };
-struct CAnimSetItPriorityLessThan {
+class CAnimSetItPriorityLessThan { public:
     bool operator()(const CAnimSetIterator& a, const CAnimSetIterator& b) const { return (*a).Priority < (*b).Priority; }
 };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

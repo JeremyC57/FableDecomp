@@ -18,14 +18,14 @@
 // to the original compile. A for_each body and a STAND-IN search body (it only touches the vector inline; not the real
 // 0x007FDB10 code) are compiled above under `auto_inline(off)` for that knowledge -- review at landing.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() { }
 };
 C2DBoxI __fastcall GetLineThingSearchArea(const C3DVector& start, const C3DVector& end, float radius);   // 0x008F58C0
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 struct CIntelligentPointer { void* vptr; CThing* item; };
 template <class T> struct CRetailVector {               // STLport vector (12 bytes)
     T* _M_start;
@@ -36,12 +36,12 @@ template <class T> struct CRetailVector {               // STLport vector (12 by
     T* begin() const { return _M_start; }
     T* end() const { return _M_finish; }
 };
-struct CThingFilter_IsNotList {
+class CThingFilter_IsNotList { public:
     const CRetailVector<const CThing*>*        PNotList;
     const CRetailVector<CIntelligentPointer>*  PNotList2;
     CThingFilter_IsNotList(const CRetailVector<CIntelligentPointer>& list) : PNotList(0), PNotList2(&list) { }
 };
-struct CThingFilter_IsWithinArea {
+class CThingFilter_IsWithinArea { public:
     const C3DVector* StartPos;
     const C3DVector* EndPos;
     float            Radius;
@@ -53,7 +53,7 @@ struct CThingFilter_IsAffectedByObstructions {          // anonymous-namespace f
     unsigned char _empty;
     CThingFilter_IsAffectedByObstructions() : _empty(0) { }
 };
-template <class F1, class F2, class F3> struct CFilter_Bind3 {
+template <class F1, class F2, class F3> class CFilter_Bind3 { public:
     const F1* f1;
     const F2* f2;
     const F3* f3;
@@ -61,7 +61,7 @@ template <class F1, class F2, class F3> struct CFilter_Bind3 {
 };
 typedef CFilter_Bind3<CThingFilter_IsNotList, CThingFilter_IsWithinArea, CThingFilter_IsAffectedByObstructions> CObstructionFilter;
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThing* FirstThingInArea(const C2DBoxI& area);      // stand-in callees of the stand-in body below
     CThing* NextThingInArea(const C2DBoxI& area, CThing* previous);
     template <class TFilter> bool Accepts(const TFilter& filter, CThing* thing);
@@ -93,7 +93,7 @@ void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& area, const TFilt
     }
 }
 #pragma auto_inline(on)
-struct CKeepOutOffSmearedOutLine {
+class CKeepOutOffSmearedOutLine { public:
     const C3DVector* StartPos;
     const C3DVector* EndPos;
     float            Radius;
@@ -108,7 +108,7 @@ CKeepOutOffSmearedOutLine __fastcall ForEach(CThingCreatureBase** first, CThingC
     return f;
 }
 #pragma auto_inline(on)
-struct CTCDPhysicalObstruction {
+class CTCDPhysicalObstruction { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

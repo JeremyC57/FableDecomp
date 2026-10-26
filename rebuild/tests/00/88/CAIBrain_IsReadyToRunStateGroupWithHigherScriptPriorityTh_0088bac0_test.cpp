@@ -1,7 +1,7 @@
 // Behaviour test for 0x0088BAC0 CAIBrain::IsReadyToRunStateGroupWithHigherScriptPriorityThan
 #include <cstdio>
-struct CBrainOutput { int value; };
-struct CAIStateGroupBase {
+class CBrainOutput { public: int value; };
+class CAIStateGroupBase { public:
     long ScriptAIPriority; bool Terminated; bool Enabled; bool runnable; int cleaned, activated, started;
     CAIStateGroupBase(long p, bool e) : ScriptAIPriority(p), Terminated(false), Enabled(e), runnable(true), cleaned(0), activated(0), started(0) {}
     void Terminate() { Terminated = true; }
@@ -11,8 +11,8 @@ struct CAIStateGroupBase {
     void OnStart() { ++started; }
 };
 struct CStateGroupEntry { long Key; CAIStateGroupBase* Group; };
-struct CBrainUpdateZone { unsigned long UpdatePeriod; };
-struct CAIBrain {
+class CBrainUpdateZone { public: unsigned long UpdatePeriod; };
+class CAIBrain { public:
     unsigned long frame; unsigned long long offset; CBrainUpdateZone* zones;
     CStateGroupEntry* StateGroupBegin; CStateGroupEntry* StateGroupEnd;
     CAIStateGroupBase* PActiveStateGroup; CAIStateGroupBase* PPendingStateGroup;

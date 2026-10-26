@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <math.h>
 
-struct C2DCoordI { int X; int Y; };
+class C2DCoordI { public: int X; int Y; };
 
 static float GFGet2DDistance(const C2DCoordI& a, const C2DCoordI& b)
 {

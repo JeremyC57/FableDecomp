@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static void* g_cs = 0; static void* g_ns[2]; static int g_n = 0;
-struct CCharString { void* m_pData; CCharString() { g_cs = this; } };
+class CCharString { public: void* m_pData; CCharString() { g_cs = this; } };
 struct CNameString_0099aed0 { void* m_pData; CNameString_0099aed0() { g_ns[g_n++] = this; } };
 struct CFrameData_004aecf0 { unsigned char _pad[0xc]; CCharString m_name; CNameString_0099aed0 m_textA; CNameString_0099aed0 m_textB; unsigned char _pad18; bool m_flagA; bool m_flagB; unsigned char _pad1b; long m_value;
     CFrameData_004aecf0() : m_flagA(false), m_flagB(false), m_value(0) { } };

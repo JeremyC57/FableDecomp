@@ -9,9 +9,9 @@
 // Shape: the inlined capture-block push (`lea edx,[eax+2808h]` then `inc dword ptr [edx]`: the stack size through a reference, the dummy
 // state stored into the next stack slot, the bookmark mask shifted left); the current layout read into esi before the `SetVertex...(3)`
 // call; the six arguments pushed right to left; the render-state manager pointer re-read for the restore.
-struct CTexture;
+class CTexture;
 
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
 };
 
@@ -24,7 +24,7 @@ struct CStateStackElement {
     unsigned long Value;
 };
 
-struct CRenderStateManager {
+class CRenderStateManager { public:
     void*              __vftable;            // +0x00
     void*              PD3DDevice;           // +0x04
     CStateStackElement StateStack[1024];     // +0x08
@@ -47,19 +47,19 @@ struct CRenderStateManager {
 };
 extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad00[0x08];
     long          m_vertexShaderConstantLayout;      // +0x08
     void SetVertexShaderConstantLayout(long layout);  // 0x0098B5E0
 };
 extern CShaderRenderManager g_ShaderRenderManager;   // 0x013BC470
 
-struct CEngineScreenEffectColourFilter {
+class CEngineScreenEffectColourFilter { public:
     void RenderColorFilteredQuad(float x, float y, const C4DVector& colour, float width, float height, CTexture* texture);   // 0x00B5AF80
 };
 extern CEngineScreenEffectColourFilter* g_pScreenEffectColourFilter;   // 0x01436E40
 
-struct CEngine {
+class CEngine { public:
     void SetDefaultRenderStates();           // 0x00B24850
     void RenderColorFilteredQuad(float x, float y, const C4DVector& colour, float width, float height, CTexture* texture);
 };

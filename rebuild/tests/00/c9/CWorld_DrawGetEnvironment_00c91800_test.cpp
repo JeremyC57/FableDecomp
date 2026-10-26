@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CIDrawEnvironment;
-struct CWorld {
+class CIDrawEnvironment;
+class CWorld { public:
     void* pad0;
     void* pad4;
     CIDrawEnvironment* env8;

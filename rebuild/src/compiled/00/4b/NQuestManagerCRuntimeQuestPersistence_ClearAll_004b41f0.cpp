@@ -15,7 +15,7 @@
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 namespace NQuestManager {
 

@@ -1,12 +1,12 @@
 // Behaviour test for CPlayer::UninitModeQuickAccessMenu (0x00633A60): the fifteen mode processes are detached in member order.
 #include <cstdio>
-typedef long EPlayerMode; struct CProcessedInput;
+typedef long EPlayerMode; class CProcessedInput;
 static int g_order[32]; static int g_count = 0;
-struct CAInputProcess {
+class CAInputProcess { public:
     int id; void* Interface;
     void RemoveFromInterface() { if (Interface) { g_order[g_count++] = id; Interface = 0; } }   // 0x00A0D2D0 shape
 };
-struct CPlayer {
+class CPlayer { public:
     CAInputProcess *InputProcessControlCreature_ptr, *InputProcessControlCreatureActivateZTarget_ptr,
         *InputProcessControlCreatureRightStick_ptr, *InputProcessRightStickLookAround_ptr,
         *InputProcessCycleSpecialCameraModes_ptr, *InputProcessCreatureMovement_ptr, *InputProcessUseEnvironment_ptr,

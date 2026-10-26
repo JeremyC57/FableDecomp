@@ -9,7 +9,7 @@
 // `__forceinline` here (plain inline emits it out of line next to the two IsStopping calls).
 // Model: local (engine/CAIStateGroupBase.h and engine/CAIBrain.h carry the vptr as a plain word, and the brain
 // call here is virtual); PDB member names kept.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -37,11 +37,11 @@ struct CThingAICreature {
     }
 };
 
-struct CTCLook {
+class CTCLook { public:
     bool TrackNearestInterestingThing(bool onlyIfNone);   // 0x00753840
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Update();                      // slot 2 (+0x08)
     unsigned char _pad[0x14];
@@ -50,7 +50,7 @@ struct CAIBrain {
 
 enum EAIActionResult { AI_ACTION_FINISHED = 1, AI_ACTION_CONTINUE = 4 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     bool IsStopping();                          // 0x008FD010

@@ -27,7 +27,7 @@ public:
 };
 class CVertexStreamFormat : public CBaseClass {     // vtable 0x0129D578, 16 bytes
 public:
-    struct CDataElement {                           // 8 bytes
+    class CDataElement { public:                           // 8 bytes
         unsigned int Register;                      // +0x00
         int          DataType;                      // +0x04
     };

@@ -7,7 +7,7 @@ struct CLongVector {
 };
 static int g_assigns = 0;
 static CComponent* g_lastComponent = 0;
-struct CTCInventory {
+class CTCInventory { public:
     CLongVector QuickAccessItems;
     void AssignThingPC(long item, unsigned long slot, CComponent* component)
     {

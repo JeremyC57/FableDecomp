@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ScorpionPrepareTailPlunge {
+class CCreatureAction_ScorpionPrepareTailPlunge { public:
     void* vftable;
     int destroyed;
 };

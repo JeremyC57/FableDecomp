@@ -1,5 +1,5 @@
 // NScript::CQ_PrisonEscapeRescueMotherScript::Alloc(CScriptDataBase* data, CGameScriptInterface& game) -- script factory: `new CQ_PrisonEscapeRescueMotherScript(data, game)` with the constructor inlined (registered at 0x00CD71EB as "S_QPERM" / "Q_PrisonEscapeRescueMother")
-// Leaf: ?Alloc@CQ_PrisonEscapeRescueMotherScript@NScript@@SIPAUCScriptBase@@PAUCScriptDataBase@@AAUCGameScriptInterface@@@Z
+// Leaf: ?Alloc@CQ_PrisonEscapeRescueMotherScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterface@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DDACB0, 74 bytes, static __fastcall (data in ecx, game in edx). PDB:
 //   ?Alloc@CQ_PrisonEscapeRescueMotherScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z.
 // Callees: operator new 0x00BFEA1A (0x80 bytes), CScriptBase::CScriptBase 0x00CB8110, g_pGameScriptInterface (0x0143E8F8)->RegisterTimer for RunningTimer. Vtable 0x012DB86C.
@@ -8,7 +8,7 @@
 // Model: the landed quest-script Alloc (NScript::CQ_HeroSoulsArenaScript::Alloc 0x00D80BA0): CLevelScriptBase<T> is the
 //   `__declspec(novtable)` argument-carrying base (Game +0x40, MasterScriptData +0x44, stored before the class's own vtable
 //   store), the CGameScriptInterface model is the landed 88-slot one (RegisterTimer = slot 87, +0x15C).
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual ~CGameScriptInterface();                    // slot 0 (deleting destructor)
     virtual void Error();
     virtual void TraceMessage();
@@ -99,8 +99,8 @@ struct CGameScriptInterface {
     virtual long RegisterTimer();                       // slot 87 (+0x15c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CScriptDataBase;
-struct CScriptBase {                                    // 0x40 bytes, the quest-script root
+class CScriptDataBase;
+class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f
     CScriptBase();                                      // 0x00CB8110
@@ -111,12 +111,12 @@ struct __declspec(novtable) CLevelScriptBase : CScriptBase {
     TData*                MasterScriptData;             // +0x44
     CLevelScriptBase(CScriptDataBase* data, CGameScriptInterface& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
 };
-struct CTimer {                                         // a script timer: the interface's timer index
+class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
 namespace NScript {
-struct CQ_SunnyvaleMasterData;
+class CQ_SunnyvaleMasterData;
 class CQ_PrisonEscapeRescueMotherScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
     long CurrentTask;                                   // +0x48

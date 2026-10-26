@@ -21,8 +21,8 @@
 //   std::vector<CCharString> route members is 12 bytes, not 16).
 // Shape: the landed CAC_Owner::GetRandomSpeech (0x00E2E440) with two stages: an empty string, a copy of it returned on every
 //   IsDone exit, and the chosen line assigned to a third local and copied out (no NRVO).
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
     CCharString(const CCharString& other);          // 0x0099EC30
@@ -32,8 +32,8 @@ struct CCharString
 
 extern "C" int __cdecl rand();                      // 0x00BFEB16 (MSVCR71)
 
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06();
     virtual void NewScriptFrame();                  // slot 7 (+0x1c): yield one frame

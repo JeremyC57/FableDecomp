@@ -1,7 +1,7 @@
 #include "engine/CFireballSpellLevelDef.h"
 #include <cstdio>
 
-struct CDefClassBase;
+class CDefClassBase;
 struct CFireballSpellLevelDef_Methods : CFireballSpellLevelDef {
     void InheritFrom(CDefClassBase const* src);
     void Copy(CDefClassBase const* src);

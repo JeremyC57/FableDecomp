@@ -32,7 +32,7 @@ struct CRetailStringVector {                       // STLport vector<basic_strin
 namespace LHNetworkLib {
 enum LH_HTTP_SERVER_CODES { };
 
-struct LHHttpHeaders {
+class LHHttpHeaders { public:
     CRetailStringVector HdrDocumentHeader;         // +0x00
     CRetailString       HeaderString;              // +0x0c
 };

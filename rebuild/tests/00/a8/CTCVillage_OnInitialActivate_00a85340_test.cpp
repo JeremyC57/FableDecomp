@@ -15,7 +15,7 @@ void __fastcall Sub_Handle(Sub* thisp, int edxArg, unsigned char stackArg)
     g_stack = stackArg;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     Sub*          f0;
     int           ParentThing;
     char          pad8[4];

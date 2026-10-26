@@ -14,7 +14,7 @@ struct CListMember_0099eae0 {
     ~CListMember_0099eae0();            // 0x0099EAE0
 };
 
-struct CAnimFilterBase {
+class CAnimFilterBase { public:
     virtual ~CAnimFilterBase() { }
 };
 

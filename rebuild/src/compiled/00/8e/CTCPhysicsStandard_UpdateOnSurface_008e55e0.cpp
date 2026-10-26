@@ -7,12 +7,12 @@
 // Shape: the two flags are copied into bool locals (frame bytes 2/3) and the stood-on pointer zeroed (frame word 4) before the
 //   call; the write-back of both bit fields merges into one load/and/or/store; the argument is `OnGround ? 0 : standingOn`
 //   computed from the stored byte (`and al,10h ; neg ; sbb ; not ; and`).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CThingPhysicsMeshInfo;
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CThingPhysicsMeshInfo;
+class CThing;
 struct CThingVector { CThing** _M_start; CThing** _M_finish; CThing** _M_end_of_storage; };   // STLport vector<CThing*>
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual ~CTCPhysicsBase();
     void*     ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad08[0x4];

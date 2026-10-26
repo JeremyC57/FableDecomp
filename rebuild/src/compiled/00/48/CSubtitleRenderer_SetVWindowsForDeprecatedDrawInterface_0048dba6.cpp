@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 struct VWindow { float x, y, z, w; };
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     int pad0;         // +0x00
     VWindow vwin0;    // +0x04
     VWindow vwin1;    // +0x14

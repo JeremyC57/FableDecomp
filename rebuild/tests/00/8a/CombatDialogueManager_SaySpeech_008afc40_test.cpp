@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour test: SaySpeech sets the talker and pending group and speaks only when CanSaySpeech allows it.
-struct CThingCreatureBase { int id; };
+class CThingCreatureBase { public: int id; };
 struct CPtr {
     CThingCreatureBase* p;
     CPtr() : p(0) { }
     CPtr(CThingCreatureBase* q) : p(q) { }
 };
 static int g_attempts = 0;
-struct CombatDialogueManager {
+class CombatDialogueManager { public:
     CPtr PCurrentTalker;
     unsigned int CurrentTalkerTextGroupIndex;
     bool allow;

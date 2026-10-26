@@ -3,7 +3,7 @@
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -45,20 +45,20 @@ struct CDefBase {
     virtual void Destroy() const;                              // slot 1
     mutable long RefCount;                                     // +0x04
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 // Layout: retail CAppearanceModifierDef (Ego_r.pdb - 8, the two 16-byte containers are 12 in retail).
-struct CAppearanceModifierDef : CDefBase {
+class CAppearanceModifierDef : public CDefBase { public:
     unsigned char _pad08[0x44 - 0x08];
     bool IsRemoveable;                                         // +0x44
     unsigned char _pad45[0x4c - 0x45];
     long SuitPart;                                             // +0x4c
 };
-struct CHeroSuitDef : CDefBase {
+class CHeroSuitDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CSuitPartMap Parts;                                        // +0x28
 };
@@ -66,7 +66,7 @@ struct CThingDef : CDefBase {
     bool GetSubDef(CDefPointer<const CHeroSuitDef>* out) const;            // 0x005935C4
     bool GetSubDef(CDefPointer<const CAppearanceModifierDef>* out) const;  // 0x0057FF92
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<const CThingDef>* out) const;      // 0x0042AF3C
 };
 void* FindDef_43a2_0();
@@ -107,7 +107,7 @@ struct SActionParamPair {
     SActionParamPair(const SActionParamPair& other);           // 0x0042CD84
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CComponent* FindChild(CCharString name);           // slot 3 (+0x0C)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -137,7 +137,7 @@ struct CClothingEntryVector {
     SClothingEntry* erase(SClothingEntry* position);           // 0x005BAAE3
 };
 
-struct CTCHeroAttachableAppearanceModifiers {                  // interface 0x5E
+class CTCHeroAttachableAppearanceModifiers { public:                  // interface 0x5E
     void GetAppearanceModifierList(CLongList& out, long type) const;   // 0x00706800
     void RemoveAppearanceModifier(long def);                   // 0x00706370
     void RemoveAllAppearanceModifiers(long type);              // 0x00706640
@@ -150,7 +150,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);                      // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     CPresenceBits  m_present;                                  // +0x20
     unsigned char  _pad21[0x23];
@@ -169,7 +169,7 @@ struct CThing {
 };
 
 // Layout: retail CTCInventoryClothing (12-byte containers): ParentThing +0x04, the clothing menu entries vector +0x134.
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     void*   __vftable;
     CThing* ParentThing;                                       // +0x04
     unsigned char _pad08[0x134 - 0x08];

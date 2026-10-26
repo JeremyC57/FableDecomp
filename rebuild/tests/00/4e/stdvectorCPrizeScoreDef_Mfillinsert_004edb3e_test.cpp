@@ -6,7 +6,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CPrizeScoreDef {
+class CPrizeScoreDef { public:
     int Key;                                         // stands for the def's base-class body
     float Score; long Mult;
     CPrizeScoreDef() : Key(0) { ++g_live; }

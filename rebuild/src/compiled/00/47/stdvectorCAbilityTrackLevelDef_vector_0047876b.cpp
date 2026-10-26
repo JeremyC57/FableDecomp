@@ -17,7 +17,7 @@
 #pragma optimize("s", on)
 #include <new>
 
-struct CAbilityTrackLevelDef {
+class CAbilityTrackLevelDef { public:
     unsigned char _body[0x48];
     CAbilityTrackLevelDef(const CAbilityTrackLevelDef& other);              // 0x004787F6
 };

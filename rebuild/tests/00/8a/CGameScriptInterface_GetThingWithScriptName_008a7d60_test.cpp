@@ -5,14 +5,14 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_strCopies = 0, g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* s) : m_pData((void*)s) {}
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_strCopies; }
     ~CCharString() { ++g_strDtors; }
     CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
 };
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct SCountBlock;
 static int g_baseCtors = 0;
 namespace N_0099a2d0 { struct CBase {
@@ -25,7 +25,7 @@ struct CScriptThingPImp {
     SCountBlock*     Info;
     CScriptThingPImp() : Data(0), Info(0) {}
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CScriptThingPImp PImp;
     CScriptThing() {}
 };
@@ -81,9 +81,9 @@ void CThingScriptNameSearch_Retail::FindThingsWithScriptName(const CCharString& 
         *things._M_finish++ = thing;
     }
 }
-struct CWorld { unsigned char _pad00[0x20]; CThingScriptNameSearch_Retail* Things; };
-struct CMainGameComponent; struct CDisplayEngine; struct CDefinitionManager_Retail; struct CPlayerManager_Retail; struct CThingSearchTools;
-struct CGameScriptInterface {
+class CWorld { public: unsigned char _pad00[0x20]; CThingScriptNameSearch_Retail* Things; };
+class CMainGameComponent; class CDisplayEngine; struct CDefinitionManager_Retail; struct CPlayerManager_Retail; class CThingSearchTools;
+class CGameScriptInterface { public:
     virtual void v000() {}
     CWorld*                     World;
     CMainGameComponent*         Component;

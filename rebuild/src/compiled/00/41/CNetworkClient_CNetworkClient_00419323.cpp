@@ -9,7 +9,7 @@
 // Shape: base ctor, own vtable, then the members in declaration order: the embedded CNetworkServer at
 // +8 (inline ctor: base CInitBaseClass + its vtable; its body of 0x2008 bytes is not touched here) and
 // the CGameEventPackage at +0x2010 constructed out of line. Member names are descriptive.
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     CInitBaseClass();                           // 0x0099A310
 };
@@ -20,7 +20,7 @@ struct CNetworkServer : CInitBaseClass {        // vtable 0x0122ED30
     CNetworkServer() : CInitBaseClass() { }
 };
 
-struct CGameEventPackage {
+class CGameEventPackage { public:
     CGameEventPackage();                        // 0x00419220
 };
 

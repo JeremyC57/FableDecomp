@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CExplosiveTrailDef { int tag; };
+class CExplosiveTrailDef { public: int tag; };
 
 static int g_called = 0;
 static const void* g_src = 0;

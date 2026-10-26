@@ -11,12 +11,12 @@
 // member); Active = false, the vector's three words zero, Quitting/AllowedToOpen(1)/
 // ActivationRequested/ActivateLater; finally the CTCBase member at 0x00686ED0 (tests +9, the
 // "in global update list" flag) registers the component.
-struct CThing;
+class CThing;
 struct CMenuEntry;
 struct CComponent;
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       ParentThing;                      // +0x04
     bool          ToBeRemoved;                      // +0x08
@@ -62,7 +62,7 @@ struct CComponentVector {                           // STLport vector<CComponent
     CComponentVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CTCBoastUI : CTCBase {                       // vtable 0x0124DCFC
+class CTCBoastUI : public CTCBase { public:                       // vtable 0x0124DCFC
     CBoastMap        BoastGroups;                   // +0x0c
     bool             Active;                        // +0x18
     CComponentVector Components;                    // +0x1c

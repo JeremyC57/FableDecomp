@@ -20,7 +20,7 @@ extern "C" double __cdecl sqrt(double);
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(cos, sqrt, fabs)
 const float PI = 3.1415927f;
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
@@ -36,22 +36,22 @@ class CProcessedInput {
 public:
     void SetHandled();                             // 0x00A0D390
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void PushCurrentManualMode();                  // 0x006988B0
     void PushUpManualCameraList();                 // 0x00698B50
     void PushDownManualCameraList();               // 0x00698C30
     void PushLookAround();                         // 0x00699970
 };
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08();
     virtual void GetCameraManager(CGameCameraManager** ppManager);   // slot 9
 };
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad[0x34];
     CAIGameCameraBase* PCurrentGameCamera;         // +0x34
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x218];
     bool          InRangedWeaponMode;              // +0x218 (descriptive)
 };
@@ -67,7 +67,7 @@ struct CInputProcessGameBase {                     // engine/CInputProcessGameBa
     bool IsEventGameAction(long action, const CInputEvent& event);    // 0x00687CF0
     bool GetEventGameActionVector(long action, const CInputEvent& event, C2DVector* vector);   // 0x00687D00
 };
-struct CInputProcessControlCreatureRightStick : CInputProcessGameBase {   // vtable 0x01237A40
+class CInputProcessControlCreatureRightStick : public CInputProcessGameBase { public:   // vtable 0x01237A40
     bool PushingCameraModeUp;                      // +0x28
     bool PushingCameraModeDown;                    // +0x29
     bool LookingAround;                            // +0x2a

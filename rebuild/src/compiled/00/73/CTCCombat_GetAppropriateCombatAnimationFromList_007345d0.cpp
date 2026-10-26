@@ -25,19 +25,19 @@ inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 enum { COMBO_STAGE_NONE = -777, COMBO_STAGE_FINISHER = -888 };
 enum ECombatAnimationHandedness { COMBAT_ANIMATION_HANDEDNESS_EITHER = 2 };   // value 2 accepted for any previous action
 
-struct CAnimComponentCombatComboChain {
+class CAnimComponentCombatComboChain { public:
     void* m_pVtable;                                    // +0x00
     unsigned long IVRefCount;                           // +0x04
     long ComboStage;                                    // +0x08
     long ComboID;                                       // +0x0C
 };
-struct CAnimComponentCombatHandedness {
+class CAnimComponentCombatHandedness { public:
     void* m_pVtable;                                    // +0x00
     unsigned long IVRefCount;                           // +0x04
     ECombatAnimationHandedness StartHandedness;         // +0x08
     ECombatAnimationHandedness EndHandedness;           // +0x0C
 };
-struct CAnimComponentCombatMisc {
+class CAnimComponentCombatMisc { public:
     void* m_pVtable;                                    // +0x00
     unsigned long IVRefCount;                           // +0x04
     bool MeleeFlourish;                                 // +0x08
@@ -53,7 +53,7 @@ public:
     template <class T> void GetComponent(const T** out) const;   // 0x00738980 / 0x00669CB0 / 0x00738A00
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x138];
     ECombatAnimationHandedness PreviousActionHandedness;   // +0x138 (retail)
 };

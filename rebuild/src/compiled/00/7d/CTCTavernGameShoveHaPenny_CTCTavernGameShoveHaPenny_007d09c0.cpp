@@ -10,9 +10,9 @@
 //        source-level reason; VC7.1 keeps a base vtable store otherwise) -- its zero words precede the derived vtable
 //        store, Held in the init list and Arrow as a body assignment (retail stores Arrow after Held); the def pointer is released by the CDefPointer dtor's inline ReleaseTemporary() without a null test.
 class CThing;
-struct CThingObject;
+class CThingObject;
 
-struct CPrizeScoreDef { float Score; long Mult; };
+class CPrizeScoreDef { public: float Score; long Mult; };
 
 struct CRefCounted {
     long m_count;
@@ -23,7 +23,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x16c];
     CPrizeScoreDef* PrizeScoresBegin;           // +0x174
     CPrizeScoreDef* PrizeScoresEnd;             // +0x178
@@ -52,9 +52,9 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 
-struct Coin { unsigned char _data[0x3c]; };
+class Coin { public: unsigned char _data[0x3c]; };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     CTCTavernGame(CThing* owner);              // 0x005EC8A0
     virtual void v00();
     void GetTavernGameDef(CDefPointer* out);   // 0x005EA000

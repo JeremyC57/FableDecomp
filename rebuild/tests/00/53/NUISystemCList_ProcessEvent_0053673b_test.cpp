@@ -9,7 +9,7 @@ public:
 }
 namespace NUISystem {
 enum EEventType { EVENT_UP = 0, EVENT_DOWN = 1, EVENT_25 = 0x19 };
-struct CUIDef {
+class CUIDef { public:
     virtual void v00();
     virtual void DestroySelf() const;                    // slot 1 (+4)
     mutable long  RefCount;                              // +0x04

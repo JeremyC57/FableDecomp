@@ -1,4 +1,4 @@
-struct CCreatureAction_SummonerUnsheatheStrike {
+class CCreatureAction_SummonerUnsheatheStrike { public:
     void* vftable;
 };
 

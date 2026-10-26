@@ -14,18 +14,18 @@
 // Layout: retail CWorldMap with 12-byte STLport containers: World +0x08, Maps (CArray<CMapInfo>, 0x48-byte entries;
 //   Used +0x24, LoadedOnPlayerProximity +0x28 per Ego_r.pdb) at +0x20; the thing manager's flag word at +0x80.
 #include <stdlib.h>
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                    // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator+=(const CCharString& other); // 0x0099F0A0
     CCharString& operator+=(const char* text);         // 0x0099F100
-    void SaveToFile(struct CAFile* file);              // 0x0099E5F0
+    void SaveToFile(class CAFile* file);              // 0x0099E5F0
 };
 CCharString __fastcall GFIntToCharString(long value);                          // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);  // 0x0099F690
@@ -62,13 +62,13 @@ struct CThingList {                                    // STLport list<> (12-byt
     ~CThingList();                                     // 0x004AB490
 };
 
-struct CAFile;
+class CAFile;
 namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                          // 0x0099A300
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CDiskFileWin32 : CBase {                        // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                        // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                              // 0x0099A920 (slot 2)
@@ -82,17 +82,17 @@ struct CDiskFileWin32 : CBase {                        // vtable 0x0122D06C, 0x1
     ~CDiskFileWin32() { Close(); }
 };
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad[0x80];
     long SavingFlag;                                   // +0x80
     void SaveToScript(CCharString& script, long map, CCharStringVector& names);   // 0x00522600
     void DeleteAllThings();                            // 0x0051FBA0
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CThingManager* GetThingManager();          // slot 3 (+0xc)
 };
-struct CMapInfo {
+class CMapInfo { public:
     unsigned char _pad00[0x24];
     bool Used;                                         // +0x24
     bool Placed;                                       // +0x25
@@ -108,7 +108,7 @@ struct CMapInfoArray {
     unsigned long size() const { return _M_finish - _M_start; }
     CMapInfo& operator[](unsigned long i) { return _M_start[i]; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     void* __vftable;
     long f4;
     CWorld* World;                                     // +0x08

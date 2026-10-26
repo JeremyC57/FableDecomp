@@ -3,12 +3,12 @@
 #include <cstdlib>
 #include <new>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 struct GoodsPlace { C3DVector pos; CRightHandedSet rhset; };
 
 struct __false_type { __false_type() { } };

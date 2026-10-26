@@ -9,8 +9,8 @@
 //   CCombatSequence_BanditAttackNear.h is the PDB size only, so the landed sibling model is used.
 // Shape: one counted-pointer local reassigned for both actions; the sound pair is the zeroed temporary of the inline ctor.
 // Leaf: OnCreate
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -18,13 +18,13 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CSoundPair {                         // the zeroed two-dword sound argument of CCombatActionBase
+class CSoundPair { public:                         // the zeroed two-dword sound argument of CCombatActionBase
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase() { }
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
@@ -50,7 +50,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pOwner;           // +0x1c
@@ -59,14 +59,14 @@ struct CCombatSequenceBase {
     virtual void OnCreate();                // 0x008B0650
 };
 
-struct CCreatureAction_InterruptableNearAttack : CCombatActionBase {   // vtable 0x01262D94
+class CCreatureAction_InterruptableNearAttack : public CCombatActionBase { public:   // vtable 0x01262D94
     unsigned char _body[0x110];
     virtual void v00();
     CCreatureAction_InterruptableNearAttack(CThingCreatureBase* owner, CThing* thing)
         : CCombatActionBase(owner, thing, 150, CSoundPair()) { }
 };
 
-struct CCreatureAction_LeapBack : CCombatActionBase {            // vtable 0x01263024
+class CCreatureAction_LeapBack : public CCombatActionBase { public:            // vtable 0x01263024
     unsigned char _body[0x110];
     virtual void v00();
     CCreatureAction_LeapBack(CThingCreatureBase* owner, CThing* thing)

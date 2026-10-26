@@ -26,7 +26,7 @@ struct CRefVirtual {
     virtual void Destroy();                     // slot 1
 };
 namespace NGameText {
-struct CGroupEntry : CRefVirtual, CRefCounted {
+class CGroupEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                // 0x009C7A40
     void ReleaseTemporary()
     {
@@ -36,7 +36,7 @@ struct CGroupEntry : CRefVirtual, CRefCounted {
     }
 };
 }
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     ~CIVCountedPointer() { if (Data) { Data->ReleaseTemporary(); Data = 0; } }
     T* operator->() const { return Data; }
@@ -47,22 +47,22 @@ public:
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
-struct CEngine {
+class CEngine { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;    // +0x14
 };
 extern CEngine* g_pEngine;                      // 0x013B86A0
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-struct CInventoryDef : CDefPointeeBase {
+class CInventoryDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x1ec - 0x08];
     long MagicScreenNameTag;                    // +0x1ec
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++((CDefPointeeBase*)Object)->m_refCount; }
     ~CDefPointer() { if (--((CDefPointeeBase*)Object)->m_refCount == 0) ((CDefPointeeBase*)Object)->Destroy(); }
@@ -76,7 +76,7 @@ struct CTCInventoryBase_Magic {                 // retail 0x130 bytes
     unsigned char _pad6c[0x130 - 0x6c];
 };
 namespace NHeroInformationScreens {
-struct CBase {                                  // vtable 0x0123A3E0
+class CBase { public:                                  // vtable 0x0123A3E0
     virtual CWideString GetScreenName() const;  // slot 0
     virtual void v01();
     virtual void v02();

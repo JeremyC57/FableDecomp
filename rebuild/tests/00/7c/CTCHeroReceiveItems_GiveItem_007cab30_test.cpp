@@ -2,7 +2,7 @@
 // the end of the list, and the display starts at the item's position.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     C3DVector Pos;
@@ -12,7 +12,7 @@ public:
 };
 class CThingObject : public CThing { };
 
-template <class T> struct CIntelligentPointer {
+template <class T> class CIntelligentPointer { public:
     T* Item;
     CIntelligentPointer(T* item) : Item(item) { }
     CIntelligentPointer(const CIntelligentPointer& other) : Item(other.Item) { }
@@ -30,7 +30,7 @@ struct CItemList {
     void push_back(const SItemEntry& x) { items[count++] = new SItemEntry(x); }
 };
 
-struct CTCHeroReceiveItems {
+class CTCHeroReceiveItems { public:
     CItemList Items;
     C3DVector ShownAt;
     int shows;

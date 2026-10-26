@@ -13,7 +13,7 @@
 extern "C" void __cdecl free(void* block);        // 0x00BFEA14
 
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
     CCountedPointer() : Object(0), Count(0) {}
     ~CCountedPointer() { if (Count) { --Count->references; if (!Count->references) { Count->destroy(Count->object); delete Count; } } Object = 0; Count = 0; }
@@ -30,7 +30,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-template <class T> struct CArray {                 // retail STLport vector layout
+template <class T> class CArray { public:                 // retail STLport vector layout
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -39,26 +39,26 @@ template <class T> struct CArray {                 // retail STLport vector layo
     const void* GetData() const { return size() ? (const void*)_M_start : (const void*)this; }
 };
 
-struct CDataInputStream { virtual ~CDataInputStream(); };
-struct CMemoryDataInputStream : CDataInputStream {
+class CDataInputStream { public: virtual ~CDataInputStream(); };
+class CMemoryDataInputStream : public CDataInputStream { public:
     CMemoryDataInputStream(const void* data, long size);   // 0x00994930
     ~CMemoryDataInputStream();                       // 0x00993B10
     long position, sourceLength, chunkBase, chunkPosition, chunkLength;
     void* StreamSource;
 };
 
-struct CMovableResourceMemoryPool;
+class CMovableResourceMemoryPool;
 extern CMovableResourceMemoryPool* g_ParticleMemoryPool;   // 0x013D2D70
 
-struct C3DVertexBlend2 { unsigned long VertexIndex; float BlendValue; };
-struct C3DMeshFileGroupChunk;
-struct C3DGroup2 {
+class C3DVertexBlend2 { public: unsigned long VertexIndex; float BlendValue; };
+class C3DMeshFileGroupChunk;
+class C3DGroup2 { public:
     long BoneIndex;                                // +0x00
     CArray<C3DVertexBlend2> VertexBlends;          // +0x04
     C3DGroup2(const C3DMeshFileGroupChunk& chunk); // 0x00AC4150
 };
 
-struct CParticleProgram {
+class CParticleProgram { public:
     CParticleProgram();                                            // 0x00AE3550
     bool ReadFromFile(CDataInputStream* in, CMovableResourceMemoryPool* pool);   // 0x00AE3C30
     void ReserveGroups(unsigned long count);                       // 0x00AE3330
@@ -66,7 +66,7 @@ struct CParticleProgram {
     unsigned char _body[0x140];
 };
 
-struct C3DMeshFileClothChunk {
+class C3DMeshFileClothChunk { public:
     unsigned char _00[0x30];
     unsigned long MaterialIndex;                   // +0x30
     unsigned long _34;

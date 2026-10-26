@@ -9,14 +9,14 @@
 //   and `*(begin() + i)` element access (the byte offset in ebx). The rotated vertex is a NAMED local: retail reads it back
 //   from its frame slot (`fld [esp+1Ch]`); the unnamed temporary reads through the returned eax. The sum goes through the inline
 //   value-constructing operator+ and the implicit assignment (three fstp/mov pairs).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector m_row0, m_row1, m_row2, m_translation;
     C3DVector operator*(const C3DVector& v) const;     // 0x00A56530
 };
@@ -27,7 +27,7 @@ template <class T> struct vector {                     // retail STLport vector,
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
 struct CRigidBody {
-    struct CRigidBodyConfig {                          // 0xb4 bytes in retail (PDB 0xb8)
+    class CRigidBodyConfig { public:                          // 0xb4 bytes in retail (PDB 0xb8)
         C3DVector  CMPosition;                         // +0x00
         CMatrix3x4 Orientation;                        // +0x0c
         C3DVector  CMVelocity;                         // +0x3c

@@ -1,4 +1,4 @@
-struct CTCMapwho { void Cleanup(); };
+class CTCMapwho { public: void Cleanup(); };
 // Leaf: OnDie
 extern "C" void __fastcall Helper_die(CTCMapwho* self);
 void operator delete(void*);

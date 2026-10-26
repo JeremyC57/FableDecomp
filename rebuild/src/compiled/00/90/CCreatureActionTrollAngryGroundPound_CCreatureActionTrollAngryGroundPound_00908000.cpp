@@ -10,22 +10,22 @@
 // One of 11 bodies of this shape.
 #include "fable_string.h"
 
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
     void SetName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_TrollAngryGroundPound : CCombatActionBase {
+class CCreatureAction_TrollAngryGroundPound : public CCombatActionBase { public:
     virtual void v00();
     CCreatureAction_TrollAngryGroundPound(CThingCreatureBase* owner, CThing* thing);
 };

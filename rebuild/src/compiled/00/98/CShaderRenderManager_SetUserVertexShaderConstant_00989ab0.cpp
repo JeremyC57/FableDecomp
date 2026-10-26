@@ -1,6 +1,6 @@
 // CShaderRenderManager::SetUserVertexShaderConstant(long index, const C4DVector* value) -- uploads one vector (copied to the frame) at the current layout's user-constant base (+0x14) plus index
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00989AB0, length 74 bytes.
-// Leaf: ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJPBUC4DVector@@@Z
+// Leaf: ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJPBVC4DVector@@@Z
 // Layout: engine/CVertexShaderConstantLayout.h (its CShaderConstantRange members viewed as {vptr, Offset, Count}).
 // Callees: IDirect3DDevice9::SetVertexShaderConstantF (COM slot 94, vtable +0x178, `__stdcall`, `this` pushed).
 // 0x00989AB0 and 0x00989B50 are byte-identical overloads (a 4-vector and a colour of the same layout).
@@ -18,7 +18,7 @@ struct IDirect3DDevice9 { IDirect3DDevice9Vtbl* lpVtbl; };
 
 #include "engine/CVertexShaderConstantLayout.h"
 
-struct CShaderConstantRange {                   // the 12-byte ranges of engine/CVertexShaderConstantLayout.h (PDB layout)
+class CShaderConstantRange { public:                   // the 12-byte ranges of engine/CVertexShaderConstantLayout.h (PDB layout)
     void*         __vftable;                    // +0
     long          Offset;                       // +4: first constant register
     unsigned long Count;                        // +8: vector count
@@ -29,9 +29,9 @@ inline const CShaderConstantRange& ConstantRange(const unsigned char* range)
     return *reinterpret_cast<const CShaderConstantRange*>(range);
 }
 
-struct C4DVector { float x, y, z, w; };
+class C4DVector { public: float x, y, z, w; };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void*                        __vftable;                 // +0x000
     CVertexShaderConstantLayout* CurrentVSConstantLayout;   // +0x004
     unsigned char                _pad008[0x1cc];

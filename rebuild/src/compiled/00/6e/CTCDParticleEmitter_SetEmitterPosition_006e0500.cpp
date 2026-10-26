@@ -8,11 +8,11 @@
 // (CIntelligentPointer<NParticleEngine::CParticleEmitter>), PAttachedToThing +0x1C, PCreationParameters +0x3C (CCountedPointer:
 // object +0x3C, count block +0x40), flag bytes +0x44 (bit 0 WaitingForParticleToLoad, bit 3 ParticleCreationDisabled) and +0x45
 // (bit 0 AttachedToThing, bit 1 AlwaysUpdate, bit 2 Asleep). CParticleCreationParameters: ParticleCreationDisabled +1, RHSet +0x10.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
@@ -21,19 +21,19 @@ namespace N_0099a2d0 { struct CBase {                                  // polymo
     CBase();                                    // 0x0099A2D0
     ~CBase();                                   // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
-struct C3DOrientationInterpolator : CBase {     // 0x34 bytes
+class C3DOrientationInterpolator : public CBase { public:     // 0x34 bytes
     CRightHandedSet Start;                      // +0x04
     CRightHandedSet End;                        // +0x1c
     C3DOrientationInterpolator(const CRightHandedSet& start, const CRightHandedSet& end);   // 0x005508D0
 };
-struct C3DPositionInterpolator : CBase {        // 0x1c bytes, vtable 0x0123981C
+class C3DPositionInterpolator : public CBase { public:        // 0x1c bytes, vtable 0x0123981C
     C3DVector Start;                            // +0x04
     C3DVector End;                              // +0x10
     C3DPositionInterpolator(const C3DVector& start, const C3DVector& end) : Start(start), End(end) {}
     virtual void v01();
 };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void SetPosition(const C3DPositionInterpolator& position);          // 0x00AEDDC0
     void SetOrientation(const C3DOrientationInterpolator& orientation); // 0x00AEDE60
     void Kill();                                                         // 0x00AEE8C0
@@ -49,12 +49,12 @@ struct CParticleCreationParameters {
     float Interpolate;                          // +0x0c
     CRightHandedSet RHSet;                      // +0x10
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Object;
     long* PCount;
     T* operator->() const { return Object; }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -63,7 +63,7 @@ struct CTCPhysicsBase {
     virtual void v30();
     virtual void ResetPosition(const C3DVector& position);     // slot 31 (+0x7c)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     const C3DVector& GetPosition() const;       // 0x004C73D0
@@ -73,7 +73,7 @@ struct CBaseIntelligentPointer {                // sizeof 8: vptr + PData
     void* PData;                                // +0x04
     NParticleEngine::CParticleEmitter* GetPItem() const;   // 0x00A01B50
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     CThing*                 ParentThing;        // +0x04 (CTCBase)
     unsigned char           _base08[0x4];

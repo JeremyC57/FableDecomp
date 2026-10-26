@@ -7,8 +7,8 @@ struct CCharStringVector
     int marker;
 };
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void GetAllActiveQuestInfo(
         CCharStringVector& questNames,
         CCharStringVector& questInfo);

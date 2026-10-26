@@ -15,24 +15,24 @@
 //        `fld [0.0] ; fld best ; fucompp ; test ah,44h ; jnp`; the table test and the score test share one `&&` per arm
 //        so a set Oakvale name with no score falls through to the Snowspire test; the Snowspire arm reads the parent thing
 //        into a named local (retail loads `mov ecx,[esi+4]` before the literal push there).
-struct CWideString {
+class CWideString { public:
     void* m_data;
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
     static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
-struct CDefString {                             // 4-byte def-name handle (user constructor: hidden-pointer return)
+class CDefString { public:                             // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_tablePos;
     CDefString();
     bool operator==(const char* text) const;    // 0x005B3440
 };
-struct CThing {
+class CThing { public:
     CDefString GetDefName() const;              // 0x004C7CC0
 };
 
@@ -45,7 +45,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0xac];
     unsigned long BestScore;                    // +0xb4
     void ReleaseTemporary()
@@ -62,13 +62,13 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-struct CTCHeroStats {                           // retail layout (PDB - 0x18 here)
+class CTCHeroStats { public:                           // retail layout (PDB - 0x18 here)
     unsigned char _pad[0x184];
     float BestScoreCoinGolfOakVale;             // +0x184
     float BestScoreCoinGolfSnowSpire;           // +0x188
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
@@ -76,7 +76,7 @@ struct CTCTavernGame {
     CWideString GetText(unsigned long id);      // 0x005E9E70
 };
 
-struct CTCTavernGameCoinGolf : CTCTavernGame {
+class CTCTavernGameCoinGolf : public CTCTavernGame { public:
     CWideString GetBestScore();
 };
 

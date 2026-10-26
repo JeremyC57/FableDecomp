@@ -20,19 +20,19 @@
 #endif
 #include <stdio.h>
 #include <string.h>
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct CCreatureActionQueue {
     long GetCurrentActionID();                  // 0x00692620
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -50,7 +50,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad4c[0x100 - 0x4c];
     CCreatureActionQueue* PActionQueue;         // +0x100
     void UnsheatheDefaultWeapon();              // 0x00664A50
@@ -92,7 +92,7 @@ struct CCountedPointer {
         Block = 0;
     }
 };
-struct CBrainOutput {                           // 0x48 bytes
+class CBrainOutput { public:                           // 0x48 bytes
     unsigned long Flags;
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointer PAction;                    // +0x20
@@ -100,22 +100,22 @@ struct CBrainOutput {                           // 0x48 bytes
     CBaseIntelligentPointer PTarget;            // +0x40
     CBrainOutput();                             // 0x00835620
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
     void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
@@ -123,17 +123,17 @@ struct CCreatureActionBase {
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
-struct CTCExclusiveUse {
+class CTCExclusiveUse { public:
     unsigned char _pad[0xc];
     CIntelligentPointerThing User;              // +0x0c
     void SetUser(CThing* user) { User = CIntelligentPointerThing(user); }
 };
-struct CTCDiceGame {
+class CTCDiceGame { public:
     unsigned char _pad[0xc];
     long NumberOfPlayers;                       // +0x0c
     CIntelligentPointerThing CurrentPlayer;     // +0x10
@@ -150,7 +150,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
         return 0;
     return seed % range;
 }
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];

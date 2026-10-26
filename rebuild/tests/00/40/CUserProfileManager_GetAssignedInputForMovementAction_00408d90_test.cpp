@@ -3,15 +3,15 @@
 // behaviour test: CUserProfileManager::GetAssignedInputForMovementAction searches the passive or aggressive binding
 // list (resetting the bindings first when it is empty) for the action whose direction matches after truncation to whole
 // units, copies the first hit out and reports whether one was found
-struct C2DVector { float X, Y; };
-struct C2DCoordI {
+class C2DVector { public: float X, Y; };
+class C2DCoordI { public:
     long X;
     long Y;
     C2DCoordI(const C2DVector& v) : X((long)v.X), Y((long)v.Y) { }
     bool operator==(const C2DCoordI& other) const { return X == other.X && Y == other.Y; }
 };
 enum EGameAction { GAME_ACTION_NONE = 0, GAME_ACTION_MOVE = 5, GAME_ACTION_STRAFE = 6 };
-struct CActionInputControl {
+class CActionInputControl { public:
     EGameAction GameAction;
     long ControllerType;
     long KeyboardKey;

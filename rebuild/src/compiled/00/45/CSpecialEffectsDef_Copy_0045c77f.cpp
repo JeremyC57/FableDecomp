@@ -1,6 +1,6 @@
 // Byte-exact reconstruction of CSpecialEffectsDef::Copy @ 0x0045c77f
 
-struct CDefClassBase;
+class CDefClassBase;
 
 // Sub-object at this+0x28; its Copy is @0x45c79e (thiscall, src pushed).
 struct SubEffectDef {
@@ -13,7 +13,7 @@ struct CBaseEffectDef {
     char pad[0x28];
 };
 
-struct CSpecialEffectsDef : public CBaseEffectDef {
+class CSpecialEffectsDef : public CBaseEffectDef { public:
     SubEffectDef sub; // at +0x28
     void Copy(const CDefClassBase* src);
 };

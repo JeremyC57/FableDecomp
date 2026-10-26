@@ -9,7 +9,7 @@
 //   LeafNode +0xe, Blocked +0xf. Modelled locally (the header is a flat pad record).
 // Shape: std::advance over the bidirectional region iterator; the resize fill value and each neighbour index are homed in
 //   the dead `level` argument slot.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
@@ -33,13 +33,13 @@ public:
     CANavQuadTreeNode(const C2DVector& position, unsigned char level, unsigned char layer, bool leaf, bool blocked)
         : Position(position), QuadTreeLevel(level), NavLayer(layer), LeafNode(leaf), Blocked(blocked) { }
 };
-template <class T, int N> struct CSmallVector {
+template <class T, int N> class CSmallVector { public:
     T*          Data;                              // +0
     signed char Count;                             // +4
     CSmallVector() : Data(0), Count(0) { }
     void resize(unsigned long size, const T& value);   // 0x00A7DB10
 };
-struct CNavRegion { long RegionID; void* Connections; long MostRecentSearchID; };
+class CNavRegion { public: long RegionID; void* Connections; long MostRecentSearchID; };
 struct SRegionNode {                               // _List_node<CNavRegion>
     SRegionNode* _M_next;
     SRegionNode* _M_prev;

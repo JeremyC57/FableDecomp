@@ -12,10 +12,10 @@
 //   0x006E0BE0 / SetAlwaysUpdate 0x006E0590; CCharString 0x0099EBF0 / ~ 0x0099EAE0.
 // Layout (retail CTCTeleporter = Ego_r.pdb, packed): PDef +0x0c, Active +0x10, Activated +0x11, HeroInsideRadius +0x12,
 //   PParticle +0x13, WaitingForTutorialToFinish +0x1b; CTeleporterDef Radius +0x28, ParticleEffect +0x2c, flag +0x30.
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
-struct CBaseObject;
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
+class CBaseObject;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -64,7 +64,7 @@ struct CThing {
     const C3DVector& GetPosition() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
 };
-struct CThingPlayerCreature : CThing { };
+class CThingPlayerCreature : public CThing { public: };
 bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
 
 #pragma pack(push, 1)
@@ -82,27 +82,27 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer* p);   // 0x004CC340
 CThing* __fastcall CreateParticle(long effect, const C3DVector* pos, bool attach);   // 0x006E0880
 
-struct CTCDParticleEmitter {                            // interface 0x4B
+class CTCDParticleEmitter { public:                            // interface 0x4B
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
     void SetAlwaysUpdate(bool always);                  // 0x006E0590
 };
-struct CTCHero {                                        // interface 0x29
+class CTCHero { public:                                        // interface 0x29
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetHeroThing() const;         // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPlayer_00449960();                               // 0x00449960
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xa4];
     bool Paused;                                        // +0xa4 (descriptive)
     unsigned char _pada5[0xd5 - 0xa5];
     bool TeleportingEnabled;                            // +0xd5 (descriptive)
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex);         // 0x004FC190
     long GetCurrentRegion();                            // 0x004FB150
 };
@@ -111,14 +111,14 @@ struct CRegionManager {
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool IsMapLoaded(long mapIndex);            // slot 10 (+0x28)
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0xfd];
     bool TutorialShowing;                               // +0xfd (descriptive)
     void Refresh(long a);                               // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 
-struct CTeleporterDef {
+class CTeleporterDef { public:
     unsigned char _pad00[0x28];
     float Radius;                                       // +0x28
     long ParticleEffect;                                // +0x2c
@@ -131,7 +131,7 @@ struct CTeleporterDefPointer {
 };
 
 #pragma pack(push, 1)
-struct CTCTeleporter {
+class CTCTeleporter { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[4];

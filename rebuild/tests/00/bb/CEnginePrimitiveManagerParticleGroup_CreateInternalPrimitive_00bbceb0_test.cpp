@@ -6,7 +6,7 @@
 
 static int g_mallocs = 0;
 static void* Malloc(unsigned int n) { ++g_mallocs; return std::malloc(n); }
-struct CEngineInternalPrimitiveBase { unsigned int Type; unsigned int Flags; CEngineInternalPrimitiveBase(unsigned int t, unsigned int f) : Type(t), Flags(f) { } virtual ~CEngineInternalPrimitiveBase() { } };
+class CEngineInternalPrimitiveBase { public: unsigned int Type; unsigned int Flags; CEngineInternalPrimitiveBase(unsigned int t, unsigned int f) : Type(t), Flags(f) { } virtual ~CEngineInternalPrimitiveBase() { } };
 template<class T> struct CRetailList {
     struct SNode { SNode* m_pNext; SNode* m_pPrev; T m_value; };
     SNode* m_pNode;
@@ -15,8 +15,8 @@ template<class T> struct CRetailList {
     bool empty() const { return m_pNode->m_pNext == m_pNode && m_pNode->m_pPrev == m_pNode; }
 };
 struct CIteratorArray { void* m_pFirst; void* m_pLast; void* m_pEnd; CIteratorArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
-struct C3DBoundingSphere { unsigned int x, y, z, r; C3DBoundingSphere() : x(0), y(0), z(0), r(0) { } };
-struct CEnginePrimitiveHandle { void* a; void* b; };
+class C3DBoundingSphere { public: unsigned int x, y, z, r; C3DBoundingSphere() : x(0), y(0), z(0), r(0) { } };
+class CEnginePrimitiveHandle { public: void* a; void* b; };
 struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {
     CRetailList<CEnginePrimitiveHandle> Primitives; CIteratorArray PrimitiveIDToIterator; CRetailList<int> FreePrimitiveIDs; C3DBoundingSphere BSphere;
     CEngineInternalPrimitiveParticleGroup(unsigned int type, unsigned int flags) : CEngineInternalPrimitiveBase(type, flags) { }
@@ -27,7 +27,7 @@ static bool GroupEmpty(const CEngineInternalPrimitiveParticleGroup& g)
         && g.PrimitiveIDToIterator.m_pEnd == 0 && g.BSphere.x == 0 && g.BSphere.y == 0 && g.BSphere.z == 0 && g.BSphere.r == 0;
 }
 
-struct CEnginePrimitiveManagerParticleGroup {
+class CEnginePrimitiveManagerParticleGroup { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(int) { return new CEngineInternalPrimitiveParticleGroup(0x18, 0x80000); }
 };
 int main()

@@ -8,7 +8,7 @@ static int g_frame, g_terminateAt;
 static int g_spawnCheck, g_spawnFlash, g_lastPar, g_pauses;
 static bool g_lampLit[64];
 static bool g_near[64];
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct Script {
     long StageNumber; bool HeroFlashedLightsCorrectly; bool ResetLamp; float MaxFlashDistFromStables;
 };

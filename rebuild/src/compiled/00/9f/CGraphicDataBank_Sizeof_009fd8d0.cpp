@@ -5,7 +5,7 @@
 struct SEntry44_009fd8d0 { unsigned char _body[0x2c]; };
 struct SEntry16_009fd8d0 { unsigned char _body[0x10]; };
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     unsigned char      _pad[0x1e0];
     SEntry44_009fd8d0* m_pEntriesFirst;            // +0x1e0
     SEntry44_009fd8d0* m_pEntriesLast;             // +0x1e4

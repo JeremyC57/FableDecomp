@@ -18,7 +18,7 @@ extern void __fastcall CLBP_dtor(void* p);      // the class destructor proper
 extern void __cdecl operator_delete_stub(void* p);
 void operator delete(void* p);
 
-struct CStringParser {
+class CStringParser { public:
     void* vftable;
     CInner inner4;                  // parent tree node
     void* f8;

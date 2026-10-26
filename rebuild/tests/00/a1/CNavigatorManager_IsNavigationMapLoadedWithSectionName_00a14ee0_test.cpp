@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CCharStringData { const char* m_pChars; unsigned long m_length; }; struct CCharString { CCharStringData* m_pStringData; }; static long g_cmp = 0; static int Compare(const char* a, const char* b) { ++g_cmp; return std::strcmp(a, b); }
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; }; class CCharString { public: CCharStringData* m_pStringData; }; static long g_cmp = 0; static int Compare(const char* a, const char* b) { ++g_cmp; return std::strcmp(a, b); }
 static bool operator==(const CCharString& sa, const CCharString& sb) { CCharStringData* a = sa.m_pStringData; CCharStringData* b = sb.m_pStringData; if (a == b) return true; if (!a || !b) return false; if (a->m_length != b->m_length) return false; return Compare(a->m_pChars, b->m_pChars) == 0; }
 struct SNode { SNode* next; SNode* prev; unsigned char p[8]; long id; unsigned char q[0x10]; CCharString name; }; struct CMgr { unsigned char _pad[0x24]; SNode* maps; bool IsLoaded(long id, const CCharString* n) { for (SNode* x = maps->next; x != maps; x = x->next) if (x->id == id) return x->name == *n; return false; } };
 

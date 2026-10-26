@@ -10,12 +10,12 @@ struct CFakeVolume {
 };
 static int g_base;
 struct CBase { virtual ~CBase() {} CBase() { ++g_base; } };
-struct CPixelFormat {
+class CPixelFormat { public:
     long m_format;
     void Initialise(long format) { m_format = format; }
     unsigned long GetByteColourDepth() const { return m_format == 21 ? 4 : 1; }
 };
-struct CVolume : CBase {
+class CVolume : public CBase { public:
     CFakeVolume* m_pVolume;
     unsigned long GetByteLength() const
     {

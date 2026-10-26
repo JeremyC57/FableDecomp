@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CCharString { char* m_pStringData; CCharString() : m_pStringData(0) {} };
-struct C3DVector { float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
+class CCharString { public: char* m_pStringData; CCharString() : m_pStringData(0) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
 static int g_inits = 0;
 struct C3DMeshFileChunk {
     char m_type[5];
@@ -12,7 +12,7 @@ struct C3DMeshFileChunk {
     virtual C3DMeshFileChunk* InitNewInstance(C3DMeshFileChunk* chunk) const { ++g_inits; return chunk; }
 };
 template <class T>
-struct CArray {
+class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end;
     CArray() : _M_start(0), _M_finish(0), _M_end(0) {}
     ~CArray() { std::free(_M_start); }
@@ -25,7 +25,7 @@ struct CArray {
         _M_finish = _M_start + n; _M_end = _M_finish;
     }
 };
-struct C3DMeshFilePrimitiveChunk : C3DMeshFileChunk {
+class C3DMeshFilePrimitiveChunk : public C3DMeshFileChunk { public:
     CArray<long> MaterialIndices;
     C3DMeshFilePrimitiveChunk() : C3DMeshFileChunk("PRIM")
     {

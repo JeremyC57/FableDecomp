@@ -7,7 +7,7 @@ struct CCountedObject {
     CCountedObject(long c) : m_refCount(c) {}
     virtual void Destroy() { ++g_destroyed; }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     CIVCountedPointer() : m_p(0) {}
     ~CIVCountedPointer()
@@ -22,8 +22,8 @@ template <class T> struct CIVCountedPointer {
 };
 static int g_ipDtor = 0;
 struct CIntelligentPointer { void* PItem; CIntelligentPointer() : PItem(0) {} ~CIntelligentPointer() { ++g_ipDtor; } };
-struct CTCBase { virtual ~CTCBase() { ++g_baseDtor; } void* ParentThing; };
-struct CTCSummonableCreature : CTCBase {
+class CTCBase { public: virtual ~CTCBase() { ++g_baseDtor; } void* ParentThing; };
+class CTCSummonableCreature : public CTCBase { public:
     CIVCountedPointer<CCountedObject> PDef;
     CIntelligentPointer               Summoner;
     virtual ~CTCSummonableCreature() {}

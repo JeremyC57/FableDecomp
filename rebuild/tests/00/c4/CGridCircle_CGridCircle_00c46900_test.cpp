@@ -8,7 +8,7 @@ struct C2DVectorI {
     float GetLength() const { return (float)sqrt((float)(X * X + Y * Y)); }
 };
 struct CCellVisitor { virtual void Visit(const C2DVectorI& cell) = 0; virtual ~CCellVisitor() { } };
-struct CCounter : public CCellVisitor {
+class CCounter : public CCellVisitor { public:
     int m_count, m_maxX;
     CCounter() : m_count(0), m_maxX(-100) { }
     virtual void Visit(const C2DVectorI& cell) { ++m_count; if (cell.X > m_maxX) m_maxX = cell.X; }

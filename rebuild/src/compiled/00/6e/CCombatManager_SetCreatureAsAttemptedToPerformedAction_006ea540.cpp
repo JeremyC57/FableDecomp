@@ -15,14 +15,14 @@ template<class T> struct CRetailVector {        // retail std::vector: {first, l
     T& operator[](unsigned long n) const { return first[n]; }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                  // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
     bool IsCombatEligible() const;              // 0x00662410
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
@@ -45,7 +45,7 @@ struct CSequencePointer {                       // CCountedPointer<CCombatSequen
     void* Count;
 };
 
-struct CAttackingCombatantInfo {                // retail 0x30 bytes (PDB 0x34)
+class CAttackingCombatantInfo { public:                // retail 0x30 bytes (PDB 0x34)
     const CThingCreatureBase* Attacked;         // +0x00
     long AttackerNumber;                        // +0x04
     long CombatWheelRingIndex;                  // +0x08
@@ -75,7 +75,7 @@ struct CRetailRbMap_UID_CombatantInfo {         // STLport map<unsigned __int64,
     node* find(const unsigned __int64& key);    // 0x006F0250
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];              // +0x04
     CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10

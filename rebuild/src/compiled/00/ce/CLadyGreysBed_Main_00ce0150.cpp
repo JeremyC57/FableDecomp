@@ -7,19 +7,19 @@
 // Shape: two rotated `while (!X) { NewScriptFrame(); if (IsDone()) return; }` waits; the string temporary in the first loop
 //   condition dies before the branch, so the negated result is materialised (`neg ; sbb ; inc` into bl); the out bool of
 //   MsgOnHeroSlept is a byte in the frame's padding; the call on the Me member dispatches through its vtable.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual bool MsgIsUsedBy(const CCharString& user) const;   // slot 20 (+0x50) 0x004AAB10
     unsigned char _body[8];
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

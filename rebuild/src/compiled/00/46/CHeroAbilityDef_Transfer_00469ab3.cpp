@@ -6,9 +6,9 @@
 #define CHeroAbilityDef CHeroAbilityDefDonor
 #include "engine/_quarantine/CHeroAbilityDef.h"
 #undef CHeroAbilityDef
-struct C2DVector {float X,Y;};
+class C2DVector { public:float X,Y;};
 struct NativeLongVector {int* Start;int* Finish;int* End;};
-struct CPersistContext {
+class CPersistContext { public:
  void TransferAbility(int&); //00452e01
  void TransferStat(int&); //00469b8a
  void TransferLong(int&); //00431102
@@ -18,7 +18,7 @@ struct CPersistContext {
  void TransferBool(bool&); //0043314a
  void TransferDefIndex(int&); //004522f4
 };
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
  unsigned char DefinitionBase[0x3c];
  int Ability,Stat,IconGraphicIndex,IconEffectIndex,IconActiveEffectIndex;
  C2DVector IconEffectOffset; int Name,Description;

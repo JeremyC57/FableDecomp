@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[32] = "";
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     long lastHandle;
     void Unlock(long h) { lastHandle = h; std::strcat(g_seq, "U"); }
     void Free(long h) { if (h == lastHandle) std::strcat(g_seq, "F"); }
 };
-struct CScratchBuffer { bool Locked; void Unlock() { Locked = false; std::strcat(g_seq, "S"); } };
+class CScratchBuffer { public: bool Locked; void Unlock() { Locked = false; std::strcat(g_seq, "S"); } };
 namespace N_0099a300 { struct CBase { virtual ~CBase() { std::strcat(g_seq, "B"); } }; } using N_0099a300::CBase;
 struct CTemporaryBuffer : CBase {
     void* Data; CHandleBasedMemoryPool* MemoryPool; long MemoryHandle; CScratchBuffer* ScratchBuffer; int AllocateType;

@@ -90,7 +90,7 @@ public:
 };
 }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                          // 0x0099E4B0
 };
@@ -110,7 +110,7 @@ struct CRGBColour {                         // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CUIState {                           // PDB 0x24 bytes
+class CUIState { public:                           // PDB 0x24 bytes
     unsigned long StateChangeFlag;
     long          StateChangeType;
     C2DVector     Position;
@@ -140,7 +140,7 @@ public:
     virtual ~CActionParam();
     EActionParamType ActionParamType;       // +0x04
 };
-struct CDeletion {
+class CDeletion { public:
     EDeletionMethod         Method;               // +0x00
     std::list<CComponent*>  AssociatedParents;    // +0x04
 };

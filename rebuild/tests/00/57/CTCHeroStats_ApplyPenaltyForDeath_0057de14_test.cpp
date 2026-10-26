@@ -25,7 +25,7 @@ struct CHeroStatsDef_Retail {
     long          MoneyLossOnDeath;            // +0x58 (PDB +0x5c)
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     unsigned char               _pad_0x00[0xdc];
     const CHeroStatsDef_Retail* PHeroStatsDef;  // +0xdc
 };

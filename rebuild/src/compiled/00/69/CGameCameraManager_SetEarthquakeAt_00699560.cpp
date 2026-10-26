@@ -18,7 +18,7 @@ struct CQuakePodTag {CQuakePodTag(){}};
 struct CQuakeArray {CQuake* Begin;CQuake* End;CQuake* Capacity;void Insert(CQuake*,const CQuake&,const CQuakePodTag&,unsigned,bool);
  __forceinline void Push(const CQuake& quake){if(End!=Capacity){ConstructQuake(End,quake);++End;}else Insert(End,quake,CQuakePodTag(),1,true);}
 }; //69D300
-struct CGameCameraManager {
+class CGameCameraManager { public:
  unsigned char Prefix[0x10];CQuakeVector CameraAxis,CameraUp;unsigned char CameraTail[0x4c];CQuakeWorld* World;
  unsigned char BeforeQuakes[0x74];CQuakeArray EarthQuakes;
  void SetEarthquakeAt(const CQuakeVector&,float,float,bool);

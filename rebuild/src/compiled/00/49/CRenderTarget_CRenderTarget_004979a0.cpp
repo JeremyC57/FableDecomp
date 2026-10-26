@@ -10,7 +10,7 @@
 // Uninitialise(); members destroyed in reverse declaration order; the base destructor is the
 // sibling-call `jmp`.
 struct IDirect3DSurface9;
-struct CSurface {                                  // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                                  // vtable 0x0122F84C, 0x10 bytes
     IDirect3DSurface9* PD3DSurface;                // +0x04
     unsigned long      AllocationSource;           // +0x08
     void*              PAllocatedMemory;           // +0x0c

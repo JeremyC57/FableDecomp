@@ -1,7 +1,7 @@
 // Behaviour test for 0x00748C10 std::__unguarded_insertion_sort_aux(CThing**, CThing**, CThing**, CCompare_FurthestFromInitPos2D)
 #include <cstdio>
 
-struct CThing { int key; };
+class CThing { public: int key; };
 
 struct CCompare_FurthestFromInitPos2D {
     bool operator()(CThing* a, CThing* b) const { return a->key > b->key; }   // stand-in ordering: larger key first

@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CVillageMemberDef
-{
+class CVillageMemberDef
+{ public:
     void* vftable;
 };
 void* const g_CVillageMemberDef_vftable = (void*)0x12345678;

@@ -19,7 +19,7 @@ struct CTargetingRangeMap {
     }
     CRangeConstIterator end() const { return CRangeConstIterator(_M_header); }
 };
-struct CTargetingDef {
+class CTargetingDef { public:
     CTargetingRangeMap TargetingRanges;
     float GetTargetingRange(ETargetingType type) const
     {

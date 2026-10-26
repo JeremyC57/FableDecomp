@@ -5,11 +5,11 @@
 static int g_order[16];
 static int g_count = 0;
 static void Mark(int id) { g_order[g_count++] = id; }
-struct CInitBaseClass { void Uninitialise() { Mark(1); } };
+class CInitBaseClass { public: void Uninitialise() { Mark(1); } };
 struct CBankFileManager { void Close() { Mark(3); } };
-struct CSystemManager { void Uninitialise() { Mark(4); } };
-struct CThreadedFileManager { void Uninitialise() { Mark(5); } };
-struct CEnginePrimitiveManager { void Uninitialise() { Mark(7); } };
+class CSystemManager { public: void Uninitialise() { Mark(4); } };
+class CThreadedFileManager { public: void Uninitialise() { Mark(5); } };
+class CEnginePrimitiveManager { public: void Uninitialise() { Mark(7); } };
 static CInitBaseClass g_InitBase;
 static CBankFileManager g_BankFileManager;
 static CThreadedFileManager g_ThreadedFileManager;

@@ -11,23 +11,23 @@
 // -1 after the vtable (`or dword ptr [esi+3Ch],-1` = a size-optimised TU, `#pragma optimize("s", on)`),
 // then the string members in declaration order; the scalar members are left uninitialised.
 #pragma optimize("s", on)
-struct CSubDefClassBase {
+class CSubDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                     // +0x04 .. +0x28
     CSubDefClassBase();                            // 0x0044C0C0
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
 };
 
-struct CTrophyDef : CSubDefClassBase {             // vtable 0x0123AC1C
+class CTrophyDef : public CSubDefClassBase { public:             // vtable 0x0123AC1C
     float         MinigameInitialTimerSecs;        // +0x28
     float         TimeBonusPerWitness;             // +0x2c
     long          RenownGainedPerWitnessAhead;     // +0x30

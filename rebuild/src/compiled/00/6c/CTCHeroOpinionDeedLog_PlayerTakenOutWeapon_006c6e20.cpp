@@ -14,11 +14,11 @@
 // Layout: WeaponOutDeedHandle +0x28 / WeaponOutCrimeEnabled +0x2C in retail (PDB +0x34/+0x38: the deed map is
 // 12 bytes, not 16, and the witnesses list a 4-byte head, not 12); a local model.
 
-struct C3DVector { float x, y, z; };
-struct CThingAICreature;
-struct CFaction;
+class C3DVector { public: float x, y, z; };
+class CThingAICreature;
+class CFaction;
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition();           // 0x004C73D0
 };
 

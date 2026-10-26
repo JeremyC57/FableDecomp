@@ -8,7 +8,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 static long g_removedTC = 0;
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     void RemoveTC(long t) { g_removedTC = t; }
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -24,7 +24,7 @@ struct CThing {
 };
 static int g_kills = 0;
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned short Flags40 : 5; unsigned short Dead : 1; unsigned short Flags40High : 10;
     bool IsDead() const { return Dead; }
     void Kill() { ++g_kills; }
@@ -37,21 +37,21 @@ struct CBaseIntelligentPointer {
     NParticleEngine::CParticleEmitter* GetPItem() const { return m_pItem; }
     void SetPItem(NParticleEngine::CParticleEmitter* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { T* item = o.GetPItem(); SetPItem(item); return *this; }
 };
 static long g_filterMode = -1; static void* g_filterKey = 0; static void* g_slowKey = 0; static unsigned long g_stopped = 0;
 struct CEnvironmentSpellEffects { void RemoveFilter_006b83f0(long mode, void* key) { g_filterMode = mode; g_filterKey = key; } };
-struct CEnvironment { CEnvironmentSpellEffects* SpellEffects; };
-struct CBulletTimeManager { void RemoveBulletTimeSlowdown(void* key) { g_slowKey = key; } };
-struct CWorld {
+class CEnvironment { public: CEnvironmentSpellEffects* SpellEffects; };
+class CBulletTimeManager { public: void RemoveBulletTimeSlowdown(void* key) { g_slowKey = key; } };
+class CWorld { public:
     CEnvironment* PEnvironment; CBulletTimeManager* PBulletTimeManager;
     void RemoveBulletTimeSlowdown(void* key) { PBulletTimeManager->RemoveBulletTimeSlowdown(key); }
 };
 struct CTCSoundEmitter { void StopSample(unsigned long id) { g_stopped = id; } };
 static CWorld* g_world = 0;
-struct CTCBulletTime {
+class CTCBulletTime { public:
     CThing* ParentThing; CIntelligentPointer<NParticleEngine::CParticleEmitter> LoopingEffect;
     unsigned long LoopSound; void* ScreenFilterKey; bool Pausable; bool Paused; bool CutSceneCancel;
     CTCBulletTime() : LoopingEffect(0) {}

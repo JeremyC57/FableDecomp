@@ -1,4 +1,4 @@
-struct CWADFile {
+class CWADFile { public:
     void* vftable;
 };
 

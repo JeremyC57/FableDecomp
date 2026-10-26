@@ -11,12 +11,12 @@
 void __cdecl operator delete(void* block);            // 0x00BFE9BC
 
 // CCountedPointer<T>: the object and its shared count block {RefCount, __fastcall DeleteFunc(Data), Data}.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                   // +0x00
     void (__fastcall* DeleteFunc)(void* data);        // +0x04
     void* Data;                                       // +0x08
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                             // +0x00
     CCPPointerInfo* Info;                             // +0x04
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -36,7 +36,7 @@ template <class T> struct CCountedPointer {
 
 namespace NEntityEvents {
 // NEntityEvents::CEventBase (Ego_r.pdb: vptr +0, WorldFrame +4); GetType is vtable slot 1.
-struct CEventBase {
+class CEventBase { public:
     virtual ~CEventBase();
     virtual long GetType() const;                     // slot 1
     virtual void OnAdd(const CTCEntityEvents& events);
@@ -44,7 +44,7 @@ struct CEventBase {
     virtual bool IsReadyToDie() const;
     long WorldFrame;                                  // +0x04
 };
-struct CIsEventOfType {
+class CIsEventOfType { public:
     long Type;
     bool operator()(const CEventBase* event) const { return event->GetType() == Type; }
 };

@@ -21,9 +21,9 @@ struct CFontBufferArray {
  ~CFontBufferArray(){if(Begin)free(Begin);} //00bfea14 is MSVCR71 free
 };
 // Native RTTI129BA38: CFontManager -> CBaseClassNonCopyable -> CBaseClass.
-struct CBaseClass {virtual ~CBaseClass();};
+class CBaseClass { public:virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {virtual ~CBaseClassNonCopyable();}; //0099A300
-struct CFontManager:CBaseClassNonCopyable {
+class CFontManager:public CBaseClassNonCopyable { public:
  CFontManager(const CCharString&,const CCharString&); //fablewin124255,030A2F20
  CFontCountedPointer<CFontDataBank> PFontDataBank;
  CFontCountedPointer<void> PStreamingFontDataBank,PSymbols,PStreamingSymbols;

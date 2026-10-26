@@ -10,14 +10,14 @@
 // {vptr, long 0, CIntelligentPointer<CThing> Chest}: its base CEventBase zeroes the long in an inline ctor with no vtable of its own.
 // Shape: IS_THING_ALIVE on PChest; every component is a zero-preloaded `if (HasTC) GetTC` (the three `xor reg,reg`); the `new` null
 // test selects 0 for AddEvent and the two AddEvent calls are not merged (the landed CCreatureAction_ShowItemToThing 0x00845270 shape).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -55,7 +55,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCChest {
+class CTCChest { public:
     void Open();                                // 0x00750540
 };
 struct CTCInterface8 {                          // the creature's interface-8 component
@@ -75,16 +75,16 @@ struct CEventOpenedChest : CEventBase {         // 0x10 bytes, vtable 0x01274258
     CEventOpenedChest(CThing* chest) : Chest(chest) {}
 };
 }
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);           // 0x008113C0
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
 };
-struct CCreatureAction_OpenChest : CCreatureActionBase {
+class CCreatureAction_OpenChest : public CCreatureActionBase { public:
     CBaseIntelligentPointer PChest;             // +0xa8
     void PerformAction();
 };

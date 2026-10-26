@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-static long g_strings = 0; struct CCharString { void* m_pStringData; CCharString() : m_pStringData(0) { ++g_strings; } };
+static long g_strings = 0; class CCharString { public: void* m_pStringData; CCharString() : m_pStringData(0) { ++g_strings; } };
 struct CCountedBase { virtual void v00() { } long m_references; CCountedBase() : m_references(1) { } };
 struct CFilenames : CCountedBase { CCharString m_diffuse; CCharString m_normal; CCharString m_specular; CCharString m_environment; CFilenames() : CCountedBase() { } };
 

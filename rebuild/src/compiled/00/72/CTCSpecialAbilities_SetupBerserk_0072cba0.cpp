@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
@@ -44,11 +44,11 @@ public:
         return false;
     }
 };
-template <class T> struct CIntelligentPointer {
+template <class T> class CIntelligentPointer { public:
     unsigned char _d[8];
     CIntelligentPointer(T* item);                   // 0x004A96F0 (const CThing instantiation)
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();                // 0x006A1440
 };
 #pragma pack(push, 1)
@@ -69,7 +69,7 @@ public:
     ~CCreatureAction_CastStrengthBerserk();         // 0x0062E900
     void SetItem(CIntelligentPointer<const CThing> item);   // 0x0072D360
 };
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 extern const CCharString g_sheatheForAbilityName;   // 0x013BAD30
 class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase {
 public:

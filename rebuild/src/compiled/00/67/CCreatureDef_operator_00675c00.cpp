@@ -38,18 +38,18 @@ struct CExpressionMap {                     // CVectorMap<EExpressionType, CExpr
     CKeyPairCompareLess m_compare;          // +0xc
     bool m_sorted;                          // +0xd
 };
-struct CWoundMorphs { CWoundMorphMap Morphs; };
-struct CExpressionSet { CExpressionMap Expressions; };
-struct CRandomAppearanceMorph {
+class CWoundMorphs { public: CWoundMorphMap Morphs; };
+class CExpressionSet { public: CExpressionMap Expressions; };
+class CRandomAppearanceMorph { public:
     unsigned char _body[0x40];
     CRandomAppearanceMorph& operator=(const CRandomAppearanceMorph& other);   // 0x00675B60
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x28];              // vptr, resource links, PDefManager, GlobalIndex, flag bits
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
-struct CCreatureStatsDef : CDefClassBase {
+class CCreatureStatsDef : public CDefClassBase { public:
     long MoralityForKill;                   // +0x28
     long MoralityForPunch;                  // +0x2c
     long MoralityForWeaponHit;              // +0x30
@@ -60,7 +60,7 @@ struct CCreatureStatsDef : CDefClassBase {
     float StrengthDamageMultiplier;         // +0x44
 };
 
-template <class T> struct CCountedPointer {  // object pointer + shared count (8 bytes)
+template <class T> class CCountedPointer { public:  // object pointer + shared count (8 bytes)
     T* m_pObject;
     long* m_pCount;
     T& operator*() const { return *m_pObject; }
@@ -78,14 +78,14 @@ struct CDefStringVector {                   // retail std::vector<CDefString> (1
     void* m_first; void* m_last; void* m_end;
     CDefStringVector& operator=(const CDefStringVector& other);   // 0x0046078C
 };
-struct CDefString { long Index; };
-struct CHeroAbilityStatWeight {             // map<EHeroTrainableStatType,float> StatWeights (12 bytes)
+class CDefString { public: long Index; };
+class CHeroAbilityStatWeight { public:             // map<EHeroTrainableStatType,float> StatWeights (12 bytes)
     void* m_head; unsigned long m_size; unsigned long m_compare;
     CHeroAbilityStatWeight& operator=(const CHeroAbilityStatWeight& other);   // 0x0046230E
 };
-struct CFloatRange { float Min; float Max; };
+class CFloatRange { public: float Min; float Max; };
 
-struct CCreatureDef : CDefClassBase {                                // vtable 0x0125B43C
+class CCreatureDef : public CDefClassBase { public:                                // vtable 0x0125B43C
     CCountedPointer<CWoundMorphs> PWoundMorphs;                     // +0x28
     CCountedPointer<CRandomAppearanceMorph> PRandomAppearanceMorph; // +0x30
     CCountedPointer<CExpressionSet> PExpressions;                   // +0x38

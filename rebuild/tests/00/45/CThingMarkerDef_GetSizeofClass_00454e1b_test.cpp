@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingMarkerDef {};
+class CThingMarkerDef { public:};
 
 unsigned long __fastcall CThingMarkerDef_GetSizeofClass(const CThingMarkerDef* self)
 {

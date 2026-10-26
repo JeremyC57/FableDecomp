@@ -5,7 +5,7 @@ struct CTCInventoryBase_Retail {
     virtual void Close(bool immediate) { ++m_closeCalls; m_closeArg = immediate; }
     void ProcessButtonBReleased() { ++m_baseCalls; }
 };
-struct CTCInventoryMap : CTCInventoryBase_Retail {
+class CTCInventoryMap : public CTCInventoryBase_Retail { public:
     bool m_closing; long m_clears;
     void ClearMapScreenPrimitives() { ++m_clears; }
     void ProcessButtonBReleased()

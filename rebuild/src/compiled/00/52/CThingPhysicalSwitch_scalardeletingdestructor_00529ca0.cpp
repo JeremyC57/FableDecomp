@@ -2,7 +2,7 @@
 // Standard MSVC deleting destructor:
 //   push esi; mov esi,ecx; call <dtor>; test [esp+8],1; je +; mov ecx,esi; call <delete>; mov eax,esi; ret 4
 
-struct CThingPhysicalSwitch {
+class CThingPhysicalSwitch { public:
     void *vfptr;
 };
 

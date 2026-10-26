@@ -14,7 +14,7 @@
 // Model: engine/CDataOutputStream.h is data-only (its vptr is a `void*`), so the writer is the landed local polymorphic
 //   view (destructor, SetPosition, GetPosition, Close, Write) over the same {vptr, NewLine} layout; no engine header
 //   exists for CDegradableInfo / CEngineGraphic.
-struct CCharStringData;
+class CCharStringData;
 struct CDataOutputStreamWriter {
     virtual ~CDataOutputStreamWriter();                     // slot 0
     virtual void SetPosition(unsigned long position);       // slot 1

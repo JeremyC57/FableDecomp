@@ -2,9 +2,9 @@
 #include <cstring>
 #include <new>
 
-struct C2DVector { float X; float Y; }; struct C2DCoordI { long X; long Y; };
+class C2DVector { public: float X; float Y; }; class C2DCoordI { public: long X; long Y; };
 static long g_cx, g_cy; static const C2DVector* g_pos;
-struct CMap {
+class CMap { public:
     float GetThemeMaxCameraSizeZOffsetAt(C2DCoordI* cell) { g_cx = cell->X; g_cy = cell->Y; return (float)(cell->X * 10 + cell->Y); }
     float InterpolateHeightAtPosition(const C2DVector& pos) { g_pos = &pos; return 0.5f; }
     float HeightAt(const C2DVector& pos) { C2DCoordI cell; cell.X = (long)pos.X; cell.Y = (long)pos.Y;

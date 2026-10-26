@@ -2,11 +2,11 @@
 // Behaviour test for the CIsOpinionSourceWithReaction constructor (0x0095F9A0): the state group, the world's reaction manager,
 // "is following the player" (AI follower OR region follower of the hero), "aware of player" (the creature's opinion targets the
 // hero with non-zero awareness and the aware flag) and the creature's opinion component are captured.
-struct CThing;
-struct CTCFollowed { CThing* Follower; bool IsAIFollower(CThing* c) { return c == Follower; } };
-struct CTCRegionFollower { CThing* Follower; bool IsRegionFollower(CThing* c) { return c == Follower; } };
-struct CTCCreatureOpinionOfHero { CThing* Target; float Awareness; bool AwareOfPlayer; CThing* GetTargetThing() { return Target; } };
-struct CThing {
+class CThing;
+class CTCFollowed { public: CThing* Follower; bool IsAIFollower(CThing* c) { return c == Follower; } };
+class CTCRegionFollower { public: CThing* Follower; bool IsRegionFollower(CThing* c) { return c == Follower; } };
+class CTCCreatureOpinionOfHero { public: CThing* Target; float Awareness; bool AwareOfPlayer; CThing* GetTargetThing() { return Target; } };
+class CThing { public:
     CTCFollowed* Followed; CTCRegionFollower* Region; CTCCreatureOpinionOfHero* Opinion;
     template <class T> bool GetInterface(T** out, long id)
     {
@@ -16,7 +16,7 @@ struct CThing {
     }
 };
 struct CCharacter { CThing* Thing; CThing* GetThing() { return Thing; } };
-struct CPlayer { CCharacter* Character; CCharacter* GetCharacter() { return Character; } };
+class CPlayer { public: CCharacter* Character; CCharacter* GetCharacter() { return Character; } };
 struct CAIStateGroup { CPlayer* Player; CThing* Creature; CPlayer* GetPlayer() { return Player; } CThing* GetCreature() { return Creature; } };
 struct CReactionManager { int dummy; };
 static CReactionManager g_reactionManager;

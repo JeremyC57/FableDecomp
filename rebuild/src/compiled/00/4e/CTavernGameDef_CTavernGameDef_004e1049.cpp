@@ -9,25 +9,25 @@
 // and the vector's inline constructor zeroes its three pointers through `lea eax,[esi+174h]` -- the
 // size optimiser hoists the far base address into a register (`#pragma optimize("s", on)`).
 #pragma optimize("s", on)
-struct CSubDefClassBase {
+class CSubDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                              // +0x04 .. +0x28
     CSubDefClassBase();                                     // 0x0044C0C0
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
 
-struct CPrizeScoreDef;
+class CPrizeScoreDef;
 
 template<class T> struct CRetailVector {                    // retail std::vector: {first, last, end}
     T* first; T* last; T* end_of_storage;
     CRetailVector() : first(0), last(0), end_of_storage(0) { }
 };
 
-struct CTavernGameDef : CSubDefClassBase {
+class CTavernGameDef : public CSubDefClassBase { public:
     unsigned long Banter;                                   // +0x28 (26 phrase/graphic ids follow)
     unsigned char _ids_0x2c[0x64];                          // +0x2c .. +0x90
     CDefString    CameraName;                               // +0x90

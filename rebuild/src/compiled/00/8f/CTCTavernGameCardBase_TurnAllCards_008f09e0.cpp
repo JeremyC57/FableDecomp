@@ -11,13 +11,13 @@
 // Shape: the sound name is a named local (an unnamed temporary reuses the ctor's eax); `cmp cl,1 ; jne` is the explicit `== true` test of the bool; the zero and 0.5 live in ebx/ebp across the loop.
 typedef long ETavernGameStates;
 
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CCard {
+class CCard { public:
     void* Thing;                  // +0x00
     long  Name;                   // +0x04
     long  Value;                  // +0x08

@@ -1,7 +1,7 @@
 #include "engine/CTCBuyableHouse.h"
 #include <cstdio>
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     char pad0[0x28];
     int* first;
     int* last;

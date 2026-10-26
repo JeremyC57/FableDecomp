@@ -9,7 +9,7 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct CTCBase;
+class CTCBase;
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
@@ -20,7 +20,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CBitset       m_present;                    // +0x20
     unsigned char _pad24[0x20];
@@ -45,23 +45,23 @@ struct CThing {
     }
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 
-struct COpinionDeed {
+class COpinionDeed { public:
     long DeedType;                              // +0x00 EOpinionDeedType
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
 };
 
@@ -92,7 +92,7 @@ struct CCrimeSet {                              // retail STLport set<long>, 12 
     void erase(SCrimeIterator position);        // 0x00638D70
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad_0x00[0x64];
     CCrimeSet     PlayersCrimes;                // +0x64
     unsigned char _pad_0x70[0xc];

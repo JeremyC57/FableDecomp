@@ -18,12 +18,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long m_refCount;                                 // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -31,7 +31,7 @@ struct CInventoryAbilitiesDef : CDefPointeeBase {
     unsigned char _pad08[0x84 - 0x08];
     long InventoryDefIndex;                          // +0x84
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CInventoryAbilitiesDef>* out);   // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -47,26 +47,26 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CInventoryAbiliti
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;                 // +0x70
 };
 namespace NHeroInformationScreens {
-struct CBase {                                       // vtable 0x0123A3E0
+class CBase { public:                                       // vtable 0x0123A3E0
     virtual void v00();
     virtual void v01();
     virtual void v02();
 };
-struct CManager {
+class CManager { public:
     void RegisterScreen(const CBase* screen);        // 0x0066EB11
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x101];
     bool SerialisingAboutToLoadHeroState;            // +0x101 (PDB +0x10D)
 };

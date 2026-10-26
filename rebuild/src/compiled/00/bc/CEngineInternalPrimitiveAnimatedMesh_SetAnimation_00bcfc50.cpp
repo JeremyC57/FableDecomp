@@ -3,17 +3,17 @@
 // Callees: C3DAnimationInterpolator::operator= @ 0x00BD85F0 (member +0x70 from record +0), C3DOrientationInterpolator::operator= @ 0x006B0E00 (member +0xa0
 // from record +0x30). Shape: the two C3DVector assignments are the engine's memberwise operator= (three dword moves through a re-based `lea` on both
 // sides), the record pointer stays in edi. No PDB layout for the animated mesh; member names are descriptive.
-struct C3DAnimationInterpolator {
+class C3DAnimationInterpolator { public:
     unsigned char _body[0x18];
     C3DAnimationInterpolator& operator=(const C3DAnimationInterpolator& other);   // 0x00BD85F0
 };
 
-struct C3DOrientationInterpolator {
+class C3DOrientationInterpolator { public:
     unsigned char _body[0x10];
     C3DOrientationInterpolator& operator=(const C3DOrientationInterpolator& other);   // 0x006B0E00
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // the engine's memberwise copy; the assignment is the implicit one
 };
@@ -25,7 +25,7 @@ struct SAnimationState {
     C3DOrientationInterpolator m_orientation;      // +0x30
 };
 
-struct CEngineInternalPrimitiveAnimatedMesh {
+class CEngineInternalPrimitiveAnimatedMesh { public:
     unsigned char              _pad[0x70];
     C3DAnimationInterpolator   m_animation;        // +0x70
     C3DVector                  m_position;         // +0x88

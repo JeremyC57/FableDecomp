@@ -12,11 +12,11 @@
 // CPersistContext_TransferableComponent<CRGBColour> rows 0x006421C0 / 0x006421F0).
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
@@ -29,7 +29,7 @@ template <> struct CPersistTraits<C3DVector> {
     void TransferIn(CPersistContext& context, CStringParser& parser, C3DVector* value);     // 0x009E84D0
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

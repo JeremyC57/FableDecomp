@@ -1,7 +1,7 @@
 // Behaviour test for 0x00AC7B00 CVertexPairContraction::CleanUp: duplicates (same Index1 and Index2) removed, first
 // occurrence and order kept, adjacent duplicates handled by the j step-back.
 #include <cstdio>
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_first; T* m_last; T* m_end;
     T* begin() const { return m_first; }
     T* end() const { return m_last; }

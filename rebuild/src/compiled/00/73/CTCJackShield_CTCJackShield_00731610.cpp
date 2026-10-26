@@ -7,8 +7,8 @@
 // null CIntelligentPointer<CThing>(0) temporary in the body (`operator=` is SetPItem(other.GetPItem())); the temporary's class
 // has no user dtor, so only the base dtor runs (no vtable re-store).
 // Layout: Ego_r.pdb CTCJackShield (0x14 bytes): CTCBase (vptr, ParentThing, flags) then PEmitter +0x0C.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {            // 8 bytes: vptr + the pointed-to item
     virtual void v00();
     CBaseObject* m_pItem;                   // +4
@@ -17,21 +17,21 @@ struct CBaseIntelligentPointer {            // 8 bytes: vptr + the pointed-to it
     void SetPItem(CBaseObject* item);       // 0x00A01B90
     CBaseObject* GetPItem() const;          // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for T = CThing
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
     virtual void v00();
     CIntelligentPointer() {}
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       ParentThing;              // +0x04
     bool          ToBeRemoved;              // +0x08
     bool          IsInGlobalUpdateTCs;      // +0x09
     CTCBase(CThing* owner);                 // 0x00686800
 };
-struct CTCJackShield : CTCBase {            // vtable 0x01266EFC
+class CTCJackShield : public CTCBase { public:            // vtable 0x01266EFC
     CIntelligentPointer<CThing> PEmitter;   // +0x0c
     virtual void v00();
     CTCJackShield(CThing* owner);

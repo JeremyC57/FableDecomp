@@ -3,7 +3,7 @@
 static long g_aborts = 0;
 static int puts_stub(const char*) { return 0; }
 static void abort_stub() { ++g_aborts; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++destroyed; }
     long m_refCount; static long destroyed;
@@ -11,14 +11,14 @@ struct CDefPointeeBase {
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
 long CDefPointeeBase::destroyed = 0;
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* p) : Object(p) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CInventoryItemDef : CDefPointeeBase { unsigned char _pad08[0x50 - 0x08]; long InventoryType; };
+class CInventoryItemDef : public CDefPointeeBase { public: unsigned char _pad08[0x50 - 0x08]; long InventoryType; };
 struct CPresenceBits {
     unsigned long words[9];
     bool test(unsigned long position) const
@@ -32,7 +32,7 @@ struct CInterfaceMap {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present; CInterfaceMap m_interfaces;
     unsigned char _pad_0x4c[0x91 - 0x4c];
@@ -46,7 +46,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingManager { CThing* things[4]; CThing* GetThingWithUID(unsigned long long uid) { return uid < 4 ? things[(long)uid] : 0; } };
+class CThingManager { public: CThing* things[4]; CThing* GetThingWithUID(unsigned long long uid) { return uid < 4 ? things[(long)uid] : 0; } };
 struct CTCInventoryBase { long id; };
 struct CTCBase_Item {
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
@@ -54,7 +54,7 @@ struct CTCBase_Item {
     CThing* ParentThing; long field8; CThingManager* manager; long baseActivates;
     CThingManager* GetThingManager() { return manager; }
 };
-struct CTCInventoryItem : CTCBase_Item {
+class CTCInventoryItem : public CTCBase_Item { public:
     CDefPointer<CInventoryItemDef> PDef; CTCInventoryBase* PInventory; long call; unsigned long long InventoryUIDToAttachTo; bool DefaultItem;
     CTCInventoryBase* added; long adds; bool addArgs[5]; long addC;
     CTCInventoryItem(CInventoryItemDef* def) : PDef(def), adds(0), added(0), baseActivatesDummy(0) {}

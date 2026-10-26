@@ -10,9 +10,9 @@
 //          returns &node->value.second (node +0x14 = +0x10 key + 4). The not-found path constructs the static once
 //          (guard bit 0) and then clears its byte and long on EVERY call before returning it (`xor eax,eax` shared).
 // Retail layout: the maps are 12-byte STLport trees (SectionDesc at +0x1c, PDB +0x24), so `this` is modelled locally.
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                  // 0x0099E4B0
     ~CCharString();                                 // 0x0099EAE0
@@ -45,7 +45,7 @@ struct CSectionMap {                                // STLport map<unsigned long
     iterator find(const unsigned long& key);        // 0x009F0D90
 };
 
-struct CCodeSectionManager {
+class CCodeSectionManager { public:
     unsigned char _pad00[0x1c];
     CSectionMap SectionDesc;                        // +0x1c
     bool SectionLoadingEnabled;                     // +0x28

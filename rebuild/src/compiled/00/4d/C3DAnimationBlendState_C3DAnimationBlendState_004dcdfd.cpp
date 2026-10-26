@@ -14,7 +14,7 @@ struct CBaseAnimState {
     ~CBaseAnimState();   // non-inline: emitted as external call
 };
 
-struct C3DAnimationBlendState : public CBaseAnimState {
+class C3DAnimationBlendState : public CBaseAnimState { public:
     void*       pad4;    // +0x04
     void*       pad8;    // +0x08
     RefCounted* m_c;     // +0x0c

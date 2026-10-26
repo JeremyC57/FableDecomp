@@ -1,6 +1,6 @@
 // Behaviour test for CTCTavernGameCardBlackjack::GetHandValue @ 0x007DA230: visible cards summed, aces 11 -> 1 while bust.
 #include <cstdio>
-struct CCard { long Value; bool Turning; bool FaceDown; };
+class CCard { public: long Value; bool Turning; bool FaceDown; };
 struct CVector { CCard** first; CCard** last; };
 static long GetHandValue(CVector* cards, bool includeFaceDown)
 {

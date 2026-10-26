@@ -5,16 +5,16 @@
 #define __fastcall
 #define __cdecl
 #endif
-struct CGameCameraManager;
-struct CCameraModeDef;
-template<class T> struct CDefPointer { T* Object; };
+class CGameCameraManager;
+class CCameraModeDef;
+template<class T> class CDefPointer { public: T* Object; };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                                  // +0x00
     void (__fastcall* DeleteFunc)(void* data);               // +0x04
     void*         Data;                                      // +0x08
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }   // test-only
@@ -25,9 +25,9 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct C3DVector { float X, Y, Z; C3DVector() { } };
-struct CRightHandedSet { C3DVector Forward, Up; CRightHandedSet() { } };
-struct CCamera {                                             // 0x38 bytes
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
+class CRightHandedSet { public: C3DVector Forward, Up; CRightHandedSet() { } };
+class CCamera { public:                                             // 0x38 bytes
     C3DVector       WorldPosition;                           // +0x00
     CRightHandedSet RHSet;                                   // +0x0c
     bool            HeightLocked;                            // +0x24
@@ -43,7 +43,7 @@ namespace NCameraModes {
 
 class CScriptModuleBase;
 
-struct CBase {                                               // retail sizeof 0xa4
+class CBase { public:                                               // retail sizeof 0xa4
     virtual void v00();
     unsigned char _body[0xa4 - 4];
     CBase(CGameCameraManager& manager, const CDefPointer<const CCameraModeDef>& def);   // 0x0084E420

@@ -12,13 +12,13 @@
 // returning an unset local when the thing has no 0xed driver; the
 // caster is wrapped in a CIntelligentPointer temporary (the thing read before the base ctor) for the out-of-line push_back;
 // the obstruction pointer is set through a second temporary and the inline operator= (`SetPItem(other.GetPItem())`).
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float Radius;                                       // +0x34
 };
-struct CTCDPhysicalObstruction;
-struct CThing {
+class CTCDPhysicalObstruction;
+class CThing { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];                   // +0x20 interface-present bitset
     unsigned char   _pad44[0x5c - 0x44];
@@ -56,11 +56,11 @@ struct CIntelligentPointerVector {                            // STLport vector<
     CIntelligentPointer* _M_end_of_storage;
     void push_back(const CIntelligentPointer& value);   // 0x004AD520
 };
-struct CTCDPhysicalObstruction {
+class CTCDPhysicalObstruction { public:
     unsigned char _pad00[0x2c];
     CIntelligentPointerVector ThingsToIgnoreObstruction;      // +0x2c
 };
-struct CTCDivineWrath {
+class CTCDivineWrath { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0xc0 - 0x08];

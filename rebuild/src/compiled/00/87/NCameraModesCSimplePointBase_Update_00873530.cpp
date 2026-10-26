@@ -6,15 +6,15 @@
 //         LookAt +0x10, the camera manager +0x40 and GoTo (CPhysicsState, Position first) +0x54.
 // Shape: the inline CBase setters SetObservedPos then SetPosition (FableWin.pdb names), each a C3DVector copy through the
 //        memberwise copy-ctor model of the landed ctor.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct CCamera {                                     // 0x38 bytes (Ego_r.pdb CGameCameraManager::Camera/OldCamera)
+class CCamera { public:                                     // 0x38 bytes (Ego_r.pdb CGameCameraManager::Camera/OldCamera)
     unsigned long _words[0x38 / 4];
 };
-struct CGameCameraManager {                          // retail offsets (engine/CGameCameraManager.h is the PDB layout:
+class CGameCameraManager { public:                          // retail offsets (engine/CGameCameraManager.h is the PDB layout:
     void*         _vftable;                          // its STL members are wider, so +0xb0 there is AvailableCamPoints)
     CCamera       Camera;                            // +0x04
     CCamera       OldCamera;                         // +0x3c
@@ -22,11 +22,11 @@ struct CGameCameraManager {                          // retail offsets (engine/C
     bool          SingleCut;                         // +0xb0 (PDB +0xbc; the retail STLport list/vector members are narrower)
 };
 namespace NCameraModes {
-struct CPhysicsState {
+class CPhysicsState { public:
     C3DVector Position;                              // +0x00
     C3DVector Velocity;                              // +0x0c
 };
-struct CBase {
+class CBase { public:
     virtual ~CBase();                                // slot 0
     virtual void Update();                           // slot 1
     unsigned char       _pad04[0x10 - 0x04];

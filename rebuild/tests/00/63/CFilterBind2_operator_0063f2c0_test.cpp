@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test: CFilter_Bind2<CThingFilter_OverlappingCircle, CWorldMap::CThingFilterBase>::operator() -- the thing's
 // map-who position within the summed radii of the circle (2D, strictly inside), then the world-map filter.
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     C3DVector Pos; float Radius;
     C3DVector GetMapwhoPosition() const { return Pos; }
 };
-struct CThing { CTCPhysicsBase* PhysicsTC; int Tag; };
+class CThing { public: CTCPhysicsBase* PhysicsTC; int Tag; };
 class CThingFilter_OverlappingCircle {
 public:
     C3DVector SpherePos; float Radius;

@@ -57,11 +57,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 // ---- end rebuild_abi.h ----
 
-struct CAIBrain;
-struct CCharStringData;
+class CAIBrain;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CAIBrain*        PBrain;                                 // +0x04
     unsigned char    ScriptAIPriority[0x4];                  // +0x08 EScriptAIPriority
@@ -86,15 +86,15 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Enabled) == 0x12);
 
 // ---- end engine/CAIStateGroupBase.h ----
 
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
@@ -103,7 +103,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
@@ -116,7 +116,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

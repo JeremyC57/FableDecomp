@@ -6,7 +6,7 @@
 // Shape: an `&&` of two float compares written with the angle on the left -- `test ah,1 ; jne` is `!(angle <= up)`,
 // `test ah,41h ; jp` is `!(angle >= -down)` (unordered fails both); the result is a full-register 0/1 (`long`, not bool);
 // `def->x * K` loads the member first and multiplies by the pool constant.
-struct CLookDef {
+class CLookDef { public:
     unsigned char _pad_0x00[0x34];
     float         MaxHeadAngleYZUp;              // +0x34 (degrees)
     float         MaxHeadAngleYZDown;            // +0x38 (degrees)
@@ -17,7 +17,7 @@ struct CLookDefPointer {
     const CLookDef* operator->() const { return m_pDef; }
 };
 
-struct CTCLook {
+class CTCLook { public:
     unsigned char   _pad_0x00[0x14];
     CLookDefPointer PDef;                        // +0x14
     long IsWithinYZHeadRange(float angleYZ);

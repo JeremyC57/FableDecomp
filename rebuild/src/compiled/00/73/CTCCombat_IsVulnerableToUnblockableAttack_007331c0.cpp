@@ -1,7 +1,7 @@
 extern int g_someCount;
 extern float g_someFactor;
 
-struct CTCCombat {
+class CTCCombat { public:
     char pad[0x68];
     int field_68;
 };

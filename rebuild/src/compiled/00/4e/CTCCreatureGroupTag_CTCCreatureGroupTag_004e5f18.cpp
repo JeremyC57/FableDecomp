@@ -8,15 +8,15 @@
 // alignment.
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     CTCCreatureGroup(CThing* owner);        // 0x004E5C2F
     virtual void v00();
     unsigned char _body[0x28 - 4];          // CTCBase, MemberCount, ActiveMemberCount, ShutdownOnEmpty, Members map
 };
 
-struct CTCCreatureGroupTag : CTCCreatureGroup {
+class CTCCreatureGroupTag : public CTCCreatureGroup { public:
     unsigned __int64 TaggerUID;             // +0x28
     unsigned long TaggedFrame;              // +0x30
     CTCCreatureGroupTag(CThing* owner);

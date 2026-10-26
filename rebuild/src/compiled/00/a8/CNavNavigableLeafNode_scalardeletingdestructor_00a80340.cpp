@@ -1,4 +1,4 @@
-struct CNavNavigableLeafNode {
+class CNavNavigableLeafNode { public:
     void* vftable;
 };
 

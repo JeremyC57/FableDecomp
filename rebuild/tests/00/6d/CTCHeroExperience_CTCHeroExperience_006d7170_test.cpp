@@ -19,7 +19,7 @@ struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager { CDefPointer HeroStatsDef; CDefPointer GetHeroStatsDef() const { return HeroStatsDef; } };
+class CDefinitionManager { public: CDefPointer HeroStatsDef; CDefPointer GetHeroStatsDef() const { return HeroStatsDef; } };
 static CDefinitionManager g_dm;
 struct CVec {
     long* s; long* f; long* e;
@@ -27,7 +27,7 @@ struct CVec {
 };
 struct CNode { CNode* next; CNode* prev; long a, b; };
 struct CList { CNode* node; CList() : node(0) { CNode* n = (CNode*)std::malloc(sizeof(CNode)); n->next = n; n->prev = n; node = n; } };
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     void* ParentThing;
     long FishingLevel, TotalExperiencePoints, ExperiencePointsAvailableToSpend;
     CVec StatExperiencePoints, TrainableStatLevels;

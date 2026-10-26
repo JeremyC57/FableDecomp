@@ -4,14 +4,14 @@
 // Shape: the +0x93 flag byte (PDB +0xa3) holds LevelIsUnloading (bit 4) and AddingTCsPermitted (bit 6): both
 // stores merge into one load/`and 0BFh`/`or 10h`/store; the restore after the loop is `or byte ptr [..],40h`.
 // Components {type, component} pairs at retail +0x44/+0x48, last pointer re-read after each call.
-struct CTCBase;
+class CTCBase;
 
 struct SComponentPair {                              // pair<ETCInterfaceType, CTCBase*>
     long     first;
     CTCBase* second;
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -21,7 +21,7 @@ struct CTCBase {
     bool  ToBeRemoved;                               // +0x08
 };
 
-struct CThing {
+class CThing { public:
     void*           __vftable;                       // +0x00
     unsigned char   _pad04[0x44 - 0x04];
     SComponentPair* m_componentsFirst;               // +0x44 Components

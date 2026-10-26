@@ -8,9 +8,9 @@
 // CCrimeWaitingForBribe: DeedHandle (long) +0, Type (EOpinionDeedType) +4; the enum is formatted as a long. The context
 // is unused, so each GFIntToCharString temporary is built in its dead argument slot (`lea ecx,[esp+10h]`); `out` stays
 // in esi and `value` in edi.
-struct CPersistContext;
+class CPersistContext;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     ~CCharString();                                              // 0x0099EAE0
     CCharString& operator+=(const char* text);                   // 0x0099F100
@@ -19,7 +19,7 @@ struct CCharString {
 
 CCharString __fastcall GFIntToCharString(long value);            // 0x0099F830
 
-struct CCrimeWaitingForBribe {                     // 8 bytes
+class CCrimeWaitingForBribe { public:                     // 8 bytes
     long DeedHandle;                               // +0x0
     long Type;                                     // +0x4 EOpinionDeedType
 };

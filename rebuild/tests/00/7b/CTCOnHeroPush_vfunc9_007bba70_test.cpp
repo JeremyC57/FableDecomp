@@ -1,8 +1,8 @@
 // Behaviour test for CTCOnHeroPush::vfunc_9 @ 0x007BBA70: removal once frames since the push exceed 5 * fps.
 #include <cstdio>
 static long g_framesPerSecond = 2;
-struct CThing { int removed; long type; void RemoveTC(long t) { ++removed; type = t; } };
-struct CTCOnHeroPush {
+class CThing { public: int removed; long type; void RemoveTC(long t) { ++removed; type = t; } };
+class CTCOnHeroPush { public:
     CThing* ParentThing;
     long FrameSincePushed;
     void vfunc_9()

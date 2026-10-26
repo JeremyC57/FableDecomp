@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour test: IsToBePlacedInMapwho -- the layer from the thing's physics radius, the four corner cells of that layer
 // at the position; true when any corner lies in a thing map.
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
-struct C3DVector { float X, Y, Z; };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
+class C3DVector { public: float X, Y, Z; };
 struct CThingMapInfo { int Id; };
 struct CMapCellPosInfo { CThingMapInfo* PMapInfo; long LocalX, LocalY; void* PCell; };
 struct CMapCellPosInfoGroup { long Layer; CMapCellPosInfo TLPos, TRPos, BLPos, BRPos; };
-struct CTCPhysicsBase { float Radius; };
-struct CThing { CTCPhysicsBase* PhysicsTC; };
-struct CTCMapwho { CThing* ParentThing; };
+class CTCPhysicsBase { public: float Radius; };
+class CThing { public: CTCPhysicsBase* PhysicsTC; };
+class CTCMapwho { public: CThing* ParentThing; };
 static CThingMapInfo g_map = { 1 };
 static int g_corner = -1;   // which corner the stand-in places inside a map (-1: none)
 static float g_seenRadius = 0; static long g_seenLayer = -1; static float g_seenX = 0, g_seenY = 0;

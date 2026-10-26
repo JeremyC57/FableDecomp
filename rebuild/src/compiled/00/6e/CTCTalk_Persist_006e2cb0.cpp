@@ -7,14 +7,14 @@
 // Shape: no base hook call; the whole body sits under `if (flag)`. The `true` default is a one-byte temporary bound to
 // the const reference and homed in the (already tested, now dead) flag slot (`mov byte ptr [esp+1Ch],1`); the voice's
 // address is formed by advancing `this` (`add esi,38h`) because it is the last use.
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
     void Transfer(const char* name, CCharString* value);                     // 0x00411010
 };
 
-struct CTCTalk {
+class CTCTalk { public:
     virtual void v00();
     virtual void Persist(CPersistContext* context, bool flag);               // slot 1
     unsigned char _body[0x30];               // CTCBase rest + SpeechSample .. LastNarrator

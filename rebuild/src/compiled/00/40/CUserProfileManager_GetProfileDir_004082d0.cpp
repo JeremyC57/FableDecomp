@@ -16,7 +16,7 @@
 // CUserProfileManager: ProfileName (CWideString) +0x08, addressed once into esi (a member
 // reference). No NRVO in VC7.1: the named `path` is copied into the hidden result, then the two
 // locals die in reverse order. `create` is forwarded as the full argument dword.
-struct CWideStringData;
+class CWideStringData;
 
 class CWideString {
 public:

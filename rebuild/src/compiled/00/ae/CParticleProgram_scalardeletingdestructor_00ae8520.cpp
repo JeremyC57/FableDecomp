@@ -1,4 +1,4 @@
-struct CParticleProgram {
+class CParticleProgram { public:
     void* vftable;
 };
 

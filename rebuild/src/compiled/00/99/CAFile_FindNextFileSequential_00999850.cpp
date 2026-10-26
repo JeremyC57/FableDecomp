@@ -44,7 +44,7 @@ struct SFindFileState {
     long Handle;                                 // +4
 };
 
-struct CAFile {
+class CAFile { public:
     static bool __fastcall FindNextFileSequential(const CWideString& pattern, SFindFileState& state, wchar16* outPath);
 };
 

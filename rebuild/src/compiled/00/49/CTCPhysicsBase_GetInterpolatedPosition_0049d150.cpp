@@ -8,7 +8,7 @@
 // `fld b ; fsub a` x3 (the difference temporary, Z spilled), `fmul t` per component (the scaled temporary, X/Y spilled), then
 // `fld scaled ; fadd a` x3 straight into the hidden result (operator+ with the scaled vector on the LEFT: `(b - a) * t + a`).
 // engine/CTCPhysicsBase.h is a flattened POD without virtuals, so the class is modelled locally with the same offsets.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -17,7 +17,7 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00();
     void*     m_tcBase[2];                     // +0x04 CTCBase body
     C3DVector Position;                        // +0x0c

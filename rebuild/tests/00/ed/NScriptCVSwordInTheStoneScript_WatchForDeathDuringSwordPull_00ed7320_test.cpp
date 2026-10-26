@@ -3,14 +3,14 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing {
+class CScriptThing { public:
     int frame; const int* ev;
     bool MsgIsKilledBy(const char* who) const { return who[0] == 0 && ev[frame] == 1; }
     bool MsgIsHitBy(const char* who) const { return std::strcmp(who, "SCRIPT_NAME_HERO") == 0 && ev[frame] == 2; }
     bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const char* who) const { return std::strcmp(who, "SCRIPT_NAME_HERO") == 0 && ev[frame] == 3; }
 };
 struct Handle { void ClearCommands() { Log("clear"); } };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing* puller;
     void NewScriptFrame() { Log("frame"); ++puller->frame; }
     void StartScriptingEntity(const CScriptThing& t, Handle&, long pri) { Log(&t == puller && pri == 4 ? "start" : "badstart"); }

@@ -4,7 +4,7 @@
 // Behaviour test for CTCInventoryExperience::CTCInventoryExperience(CThing*) (0x0057832D): same body as src/, with the
 // base, map and list constructors stubbed and counted.
 
-struct CThing;
+class CThing;
 struct CComponent;
 struct CViewport;
 struct CYesNo;
@@ -15,7 +15,7 @@ struct CTCInventoryBase {
     CTCInventoryBase(CThing* t) : thing(t) { g_baseThing = t; ++g_calls; }
 };
 namespace NHeroInformationScreens {
-struct CBase { int built; CBase() : built(1) { ++g_calls; } };
+class CBase { public: int built; CBase() : built(1) { ++g_calls; } };
 }
 
 struct CTutorialSoundMap { int built; CTutorialSoundMap() : built(1) { ++g_calls; } };
@@ -38,7 +38,7 @@ template <class T> struct CVectorBase {                     // STLport _Vector_b
 template <class T> struct CVector : CVectorBase<T> {        // STLport vector (release: 0xc bytes)
     explicit CVector(const CAllocator<T>& a = CAllocator<T>()) : CVectorBase<T>(a) { }
 };
-struct CSliderAnimator;
+class CSliderAnimator;
 struct SAnimatorNode;
 struct CAnimatorList {                                      // STLport list<CSliderAnimator> (release: node pointer)
     SAnimatorNode* _M_node;
@@ -48,12 +48,12 @@ struct CAnimatorIterator {
     SAnimatorNode* _M_node;
     CAnimatorIterator() { }
 };
-struct CEnginePrimitiveHandle { long Handle; };
+class CEnginePrimitiveHandle { public: long Handle; };
 struct ExperienceSpendEvent { bool enable; bool initiate; long time; };
 struct ExperienceSpendInfo { long currentSpend; long initialSpend; long levelUpSpend; };
 class CCharString { void* PStringData; };
 
-struct CTCInventoryExperience : CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryExperience : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     CTutorialSoundMap TutorialSoundHandles;                                 // +0x134
     CStatUndoMap UndoableStatBuys;                                          // +0x140
     CAbilityUndoMap UndoableAbilityBuys;                                    // +0x14C

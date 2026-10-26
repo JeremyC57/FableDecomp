@@ -15,8 +15,8 @@ static const CD3DFormatInfo g_D3DFormatInfo[] = {
     { 5, 6, 16, 0, 8, 8, 0, 0, false },   // signed
     { 6, 2, 16, 0, 5, 6, 5, 0, false },   // R5G6B5
     { 0, 0, -1, 0, 0, 0, 0, 0, false } };
-struct CPixelFormat { long FormatIndex; void Initialise(long f) { FormatIndex = f; } };
-struct CDisplayManager {
+class CPixelFormat { public: long FormatIndex; void Initialise(long f) { FormatIndex = f; } };
+class CDisplayManager { public:
     IDirect3D9* D3D; long DeviceType; unsigned long AdapterOrdinal; long CurrentModeFormat;
     bool GetBestOpaqueTextureFormat(long bitDepth, CPixelFormat& out, bool renderTarget);
 };

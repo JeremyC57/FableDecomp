@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_copies = 0;
-struct CWideString {
+class CWideString { public:
     char text[8];
     CWideString() { text[0] = 0; }
     CWideString(const CWideString& other) { std::strcpy(text, other.text); ++g_copies; }

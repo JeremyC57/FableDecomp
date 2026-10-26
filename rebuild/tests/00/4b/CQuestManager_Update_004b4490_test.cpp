@@ -10,29 +10,29 @@
 static int g_live = 0;
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* t) : PStringData(t) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CThing { short MapNumber; unsigned char Dead : 1; };
+class CThing { public: short MapNumber; unsigned char Dead : 1; };
 static CThing* g_heroThing = 0;
-struct CPlayer { long PlayerID; CThing* GetHeroThing() { return g_heroThing; } };
+class CPlayer { public: long PlayerID; CThing* GetHeroThing() { return g_heroThing; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static CPlayerManager g_pm;
-struct CMainGameComponent { CPlayerManager* PlayerManager; };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; };
 static CMainGameComponent g_mgc = { &g_pm };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
-struct CGameScriptThingManager { void FrameUpdate() { Log("frame"); } };
-struct CGameScriptInterface { long MainPlayerID; };
-struct CQuestManager;
+class CGameScriptThingManager { public: void FrameUpdate() { Log("frame"); } };
+class CGameScriptInterface { public: long MainPlayerID; };
+class CQuestManager;
 static CQuestManager* g_qm;
 struct CActiveQuest;
-struct CScriptBase { const char* name; void UpdateScript(); };
+class CScriptBase { public: const char* name; void UpdateScript(); };
 struct CActiveQuest { long ID; void* PScriptInfo; CScriptBase* PScript; };
 struct CQuestRunState { long CurrentQuestID; };
-struct CWorld { CQuestRunState* QuestRunState; };
+class CWorld { public: CQuestRunState* QuestRunState; };
 template <class T> struct _List_node { _List_node* _M_next; _List_node* _M_prev; T _M_data; };
 template <class T> struct list {
     _List_node<T>* _M_node;
@@ -45,7 +45,7 @@ template <class T> struct list {
 };
 struct CPendingDeactivation { CCharString first; unsigned long second; };
 struct CActiveQuestPointer { CActiveQuest* Data; void* Info; };
-struct CQuestManager {
+class CQuestManager { public:
     CGameScriptThingManager* PGameScriptThingManager;
     list<CActiveQuestPointer> ActiveQuests;
     list<CPendingDeactivation> PendingQuestsToDeactivate;

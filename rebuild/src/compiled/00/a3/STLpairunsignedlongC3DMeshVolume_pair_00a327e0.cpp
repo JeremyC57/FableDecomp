@@ -16,7 +16,7 @@ public:
     CCharString();                                           // 0x0099E4B0
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;                                    // +0x0

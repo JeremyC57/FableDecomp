@@ -16,12 +16,12 @@
 // CThing::IsDead(), which gives retail's colouring (&PJug/jug in edi, creature in ebx). Engine header is padding only,
 // so a local model.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -41,24 +41,24 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CCharString {                            // 4 bytes: the shared string data pointer
+class CCharString { public:                            // 4 bytes: the shared string data pointer
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CCreatureActionBase {                    // the action root (vptr + body up to the pointer member)
+class CCreatureActionBase { public:                    // the action root (vptr + body up to the pointer member)
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
 
-struct CCreatureAction_PickUpThingAtTable : CCreatureActionBase {   // retail sizeof 0xb4
+class CCreatureAction_PickUpThingAtTable : public CCreatureActionBase { public:   // retail sizeof 0xb4
     CBaseIntelligentPointer PThing;             // +0xa8
     unsigned char _pad_0xb0[4];
     CCreatureAction_PickUpThingAtTable(CThingCreatureBase* owner, CThing* thing, const CCharString& animation, long mode);   // 0x008440C0
@@ -66,13 +66,13 @@ struct CCreatureAction_PickUpThingAtTable : CCreatureActionBase {   // retail si
 
 static inline CCharString PickUpJugAnimationName() { return CCharString("COLLECT_JUG_FROM_BAR", -1); }   // 0x012964BC
 
-struct CCreatureAction_PickUpJug : CCreatureAction_PickUpThingAtTable {   // vtable 0x012963A4
+class CCreatureAction_PickUpJug : public CCreatureAction_PickUpThingAtTable { public:   // vtable 0x012963A4
     virtual void v00();
     CCreatureAction_PickUpJug(CThingCreatureBase* owner, CThing* jug)
         : CCreatureAction_PickUpThingAtTable(owner, jug, PickUpJugAnimationName(), 0x29) { }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

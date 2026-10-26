@@ -10,23 +10,23 @@
 #include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
 #include "engine/C3DMeshInfo.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord;
     C3DVector MaxCoord;
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float Radius;
 };
 
-struct C4DVector {
+class C4DVector { public:
     float X;
     float Y;
     float Z;
@@ -44,7 +44,7 @@ struct CSubsectionElement {
     unsigned char Pad[4];
 };
 
-struct CEngineFadeDistance {
+class CEngineFadeDistance { public:
     float FadeBeginDistance;
     float MaxDrawDistance;
 };
@@ -71,7 +71,7 @@ struct CAddMeshDesc {
 };
 }
 
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     void* NativeVTable; // actual RTTI vtable 0x0122F598; this body only reads Data
     CEngineInternalPrimitiveRepeatedStaticMesh* Data;
 };

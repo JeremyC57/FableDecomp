@@ -24,14 +24,14 @@
 #include "engine/CWorld.h"
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_KidWanderNearKids) == sizeof(CAIStateGroupBase));
 
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
     struct SEntry { int type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const int* key);                 // 0x0040F020
     const SEntry* LowerBound(const int* key) const;     // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char pad[0x20]; unsigned int UsingComponents[9]; CInterfaceMap Interfaces;
     template<class T> __forceinline T* GetTC(int id) {
         int key=id; CInterfaceMap* m=&Interfaces; CInterfaceMap::SEntry* p=m->LowerBound(&key);
@@ -43,8 +43,8 @@ struct CThing {
     }
 };
 struct CWorld_Methods : CWorld { unsigned int* GetPRandomSeed(); };          // 0x0049D810
-struct CTCIdleScheduler : CTCBase { bool IsPreferredIdle(CAIStateGroupBase* group); };   // 0x00801BE0
-struct CTCCreatureModeManager : CTCBase { bool HasMode(unsigned long mode); };          // 0x0073A8A0
+class CTCIdleScheduler : public CTCBase { public: bool IsPreferredIdle(CAIStateGroupBase* group); };   // 0x00801BE0
+class CTCCreatureModeManager : public CTCBase { public: bool HasMode(unsigned long mode); };          // 0x0073A8A0
 struct CAIStateGroupBase_Methods : CAIStateGroupBase {
     CWorld* GetPWorld();                                // 0x008FCFA0
     CThingSearchTools* PeekThingSearchTools();          // 0x008FD000
@@ -52,16 +52,16 @@ struct CAIStateGroupBase_Methods : CAIStateGroupBase {
 struct CAIStateGroup_KidWanderNearKids_Methods : CAIStateGroup_KidWanderNearKids {
     bool IsRunnable();
 };
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     const CThing* Excluded;
     CThingFilter_IsNot(const CThing* thing):Excluded(thing){}
     bool operator()(const CThingAICreature* creature) const;
 };
-struct CThingFilter_IsChild {
+class CThingFilter_IsChild { public:
     CThingFilter_IsChild() { }
     bool operator()(const CThingAICreature*) const;
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A& First; const B& Second;
     CFilter_Bind2(const A& a,const B& b):First(a),Second(b){}
 };

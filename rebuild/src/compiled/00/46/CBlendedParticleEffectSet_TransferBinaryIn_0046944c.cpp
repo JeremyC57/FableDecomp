@@ -11,7 +11,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -31,7 +31,7 @@ struct CDataInputStream {
     __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
-struct CBlendedParticleEffectSet {
+class CBlendedParticleEffectSet { public:
     long  Particle1Index;                       // +0x00
     float Particle1Value;                       // +0x04
     long  Particle2Index;                       // +0x08

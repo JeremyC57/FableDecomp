@@ -6,15 +6,15 @@
 // Running +0x20, Percentage +0x28, Name +0x30, TreeDepth +0x34, NewNode +0x38, Visible +0x3c,
 // CallCounter +0x40, UpdatedCallCounter +0x44.
 // Shape: the copy in declaration order; doubles through fld/fstp, the name's address pushed early.
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* m_pStringData;
     CWideString(const CWideString& other);                  // 0x0099B720
 };
 
-struct CProfileManager;
+class CProfileManager;
 
-struct CProfile {
+class CProfile { public:
     CProfileManager* Manager;                               // +0x00
     double           StartTime;                             // +0x08
     double           TotalTime;                             // +0x10

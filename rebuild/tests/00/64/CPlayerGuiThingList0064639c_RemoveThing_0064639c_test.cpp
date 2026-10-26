@@ -25,8 +25,8 @@ static int fails = 0;
 // Leaf: RemoveThing
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing { long m_dummy; };
-struct CThingCreatureBase : CThing { };
+class CThing { public: long m_dummy; };
+class CThingCreatureBase : public CThing { public: };
 
 struct SThingListNode {                                     // STLport list node: next, prev, CIntelligentPointer<CThing>
     SThingListNode* m_pNext;

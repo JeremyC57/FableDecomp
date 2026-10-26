@@ -4,7 +4,7 @@ struct Member {
     void DoPump(int arg);
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned int flags;
     int          pad4;
     Member       member;

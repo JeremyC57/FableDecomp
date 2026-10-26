@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Model of CParticleUpdateParameters::GetVectorParam: sorted (key, vector) array, lower-bound lookup, no store on miss.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct Entry {
     unsigned long first;
     C3DVector second;

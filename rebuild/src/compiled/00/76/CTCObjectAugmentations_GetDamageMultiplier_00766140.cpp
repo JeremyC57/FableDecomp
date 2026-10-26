@@ -5,8 +5,8 @@
 // Type +0x2C, DamageMultiplier +0x34, ExperienceMultiplier +0x38.
 // Shape: `for (unsigned i = 0; i < size(); ++i)`, skip null defs, a zeroed CDefPointer<CAugmentationDef> per pass filled by
 // GetSubDef and released by its inline dtor without a null test; the product a float local kept in the frame.
-struct CAugmentationDef;
-struct CDefClassBase {
+class CAugmentationDef;
+class CDefClassBase { public:
     virtual void Destroy();
     virtual void Release();                     // slot 1
     long RefCount;                              // +0x04
@@ -16,7 +16,7 @@ struct CDefClassBase {
             Release();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -25,7 +25,7 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CThingBaseDef : CDefClassBase {
+class CThingBaseDef : public CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAugmentationDef>* out) const;   // 0x0042B248 (GetSubDef<CAugmentationDef>)
 };
 void* FindDef_CThingBaseDef_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -41,7 +41,7 @@ __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAugmentationDef>
     return true;
 }
 #pragma auto_inline(on)
-struct CAugmentationDef : CDefClassBase {
+class CAugmentationDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
     unsigned long Name;                         // +0x28
     long  Type;                                 // +0x2c EObjectAugmentationType (bit mask)
@@ -60,7 +60,7 @@ template<class T> struct CRetailVector {        // STLport vector<T> (12 bytes)
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CTCObjectAugmentations {
+class CTCObjectAugmentations { public:
     virtual void v00();
     void* ParentThing;                          // +0x04 (CTCBase)
     unsigned char _base08[4];

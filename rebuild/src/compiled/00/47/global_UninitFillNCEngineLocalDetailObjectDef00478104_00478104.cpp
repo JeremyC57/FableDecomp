@@ -13,7 +13,7 @@
 // unique. One of 26 bodies.
 #include <new>
 
-struct CEngineLocalDetailObjectDef {
+class CEngineLocalDetailObjectDef { public:
     unsigned char _body[0x88];
     CEngineLocalDetailObjectDef(const CEngineLocalDetailObjectDef& other);           // 0x0047756C
 };

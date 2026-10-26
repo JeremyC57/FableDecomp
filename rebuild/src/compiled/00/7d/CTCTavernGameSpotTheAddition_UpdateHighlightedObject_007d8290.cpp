@@ -14,15 +14,15 @@
 //        named string; the def was dereferenced, so its release has no null test.
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 struct KnickKnack {                             // 0x10 bytes
@@ -30,7 +30,7 @@ struct KnickKnack {                             // 0x10 bytes
     CThing*   Thing;                            // +0x0c (CThingObject*)
 };
 
-struct CTavernGameSpotTheAdditionDef {
+class CTavernGameSpotTheAdditionDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long          m_count;                      // +0x04
@@ -49,7 +49,7 @@ struct CSpotTheAdditionDefPointer {             // CDefPointer<const CTavernGame
     CTavernGameSpotTheAdditionDef* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CSpotTheAdditionDefPointer* out);   // 0x007D9A80
 };
 CTavernGameSpotTheAdditionDef* FindRef_CDefClassBase_GetSubDef_0(CDefClassBase* defClass);   // stand-in callee of the stand-in body below

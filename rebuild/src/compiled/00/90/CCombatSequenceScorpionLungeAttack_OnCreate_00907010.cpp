@@ -35,8 +35,8 @@ struct CMainGameComponent_Retail {
 
 extern CMainGameComponent_Retail* g_pMainGameComponent;        // 0x013B86A0
 extern long g_logicFramesPerSecond;                             // 0x01375550 (15)
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -44,13 +44,13 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CSoundPair {                         // the zeroed two-dword sound argument of CCombatActionBase
+class CSoundPair { public:                         // the zeroed two-dword sound argument of CCombatActionBase
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase() { }
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
@@ -76,7 +76,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pOwner;           // +0x1c

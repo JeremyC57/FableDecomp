@@ -11,8 +11,8 @@
 // Shape: the action is a temporary of a derived class with an inline ctor over the out-of-line base ctor and an implicit
 //   destructor (only the base destructor call remains); the def is read into a named local (kept in edi for both tests); the
 //   emitter is `T* p = 0; if (HasTC(k)) p = member;`; the "" helper name is an implicit conversion built before the pushes.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -43,7 +43,7 @@ public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
-struct CCombatActionBase {                             // retail sizeof 0x114
+class CCombatActionBase { public:                             // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 0x04];
     ~CCombatActionBase();                              // 0x0062E900
@@ -53,20 +53,20 @@ public:
     void FinishCurrentAction();                        // 0x00662650
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:
     unsigned char _body[4];
     CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);   // 0x00867AF0
 };
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath : CCombatAction_GenericStrikeResponseKnockdownRecoverBase {   // vtable 0x01271A64
+class CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath : public CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:   // vtable 0x01271A64
     CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath(CThingCreatureBase* owner)
         : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, false) { }
     virtual void v00();
 };
-struct CResurrectionItemDef {
+class CResurrectionItemDef { public:
     unsigned char _pad00[0x28];
     long          OnUseParticleEffect;                 // +0x28
 };
-struct CTCResurrectionItem {
+class CTCResurrectionItem { public:
     virtual void v00();
     CThing*       ParentThing;                         // +0x04 (CTCBase)
     bool          ToBeRemoved;                         // +0x08

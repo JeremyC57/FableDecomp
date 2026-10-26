@@ -2,7 +2,7 @@
 #include <cmath>
 // Behaviour test: NRumble::GetRumbleDistanceAttenuationAtPos -- exp(-0.01 * squared distance).
 #define CHECK(c) if (!(c)) { std::printf("007f1840_TEST FAIL\n"); return 1; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static float Attenuation(const C3DVector& pos, const C3DVector& source)
 {
     float dx = pos.X - source.X, dy = pos.Y - source.Y, dz = pos.Z - source.Z;

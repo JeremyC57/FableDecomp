@@ -7,8 +7,8 @@ struct SKeyLess { template <class P> bool operator()(const P& a, const P& b) con
 
 template <class K, class V> struct SPair { K first; V second; SPair(const K& k, const V& v) : first(k), second(v) { } };
 
-template <class K, class V> struct CVectorMap
-{
+template <class K, class V> class CVectorMap
+{ public:
     std::vector<SPair<K, V> > Vector;
     bool Dirty;
     CVectorMap() : Dirty(false) { }

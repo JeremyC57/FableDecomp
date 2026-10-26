@@ -21,16 +21,16 @@
 //   still made for its side effects and the global load follows it (a non-static inline hoists the global above the call);
 //   the haste and carrying components use the out-parameter GetInterface; the carried-thing vector is released with free.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
-struct CTCBase;
-struct CThing;
-struct CThingCreatureBase;
+class CTCBase;
+class CThing;
+class CThingCreatureBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10() VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6) VF10(7) VF(80) VF(81) VF(82) VF(83) VF(84) VF(85) VF(86) VF(87)
@@ -66,18 +66,18 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 struct CCreaturePointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)GetPItem(); }
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x54];
     bool          NonScriptedEntitesPauseMode;          // +0x54
     bool          AllEntitesPauseMode;                  // +0x55
 };
 extern CThingManager* g_pThingManager;                  // 0x013B8A1C
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     static CThingManager* PeekThingManager() { return g_pThingManager; }
     void SetPItemToUnsheatheAfterCutscene(CThing* item);        // 0x00662450
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
@@ -85,12 +85,12 @@ struct CThingCreatureBase : CThing {
 struct CActionKeyedMap {                    // std::map keyed by the action pointer
     unsigned long Erase(CCreatureActionBase* const& key);   // 0x0058119B
 };
-struct CTCHaste {                           // interface type 0x8C component
+class CTCHaste { public:                           // interface type 0x8C component
     unsigned char _pad00[0x18];
     CActionKeyedMap SpeedSources;           // +0x18
     void RecalculateSpeed();                // 0x00800020
 };
-struct CAnimSet {
+class CAnimSet { public:
     long UpdateMode;                        // +0x00
     unsigned char _pad04[0x51 - 0x04];
     unsigned char Looping : 1;              // +0x51
@@ -98,7 +98,7 @@ struct CAnimSet {
     void SetAsFinished(long framesToFadeOver);   // 0x00668A50
 };
 CAnimSet* __fastcall GetSingleActionAnimSet(CThingCreatureBase* creature, long action);   // 0x00693250
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                         // +0x00
 };
 struct CThingVector {                       // vector<CThing*> over a malloc'd buffer
@@ -108,12 +108,12 @@ struct CThingVector {                       // vector<CThing*> over a malloc'd b
     CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     ~CThingVector() { if (_M_start) free(_M_start); }
 };
-struct CTCCarrying {                        // interface type 0x46
+class CTCCarrying { public:                        // interface type 0x46
     void GetAllItems(CThingVector& items);  // 0x006A2220
     void RemoveThing(CThing* thing);        // 0x006A19B0
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
@@ -137,7 +137,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     void* PAnimEntry_Info;                  // +0x78
     unsigned char _pad7c[0xa8 - 0x7c];
 };
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     unsigned char _body[0x10];
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase* owner, CThing* item, CCreatureActionBase* next,
                                                long timeout);   // 0x006A0150

@@ -1,8 +1,8 @@
 // CInputProcessInventoryMagicScreen::`vector_deleting_destructor' @ 0x0048b600
 // Canonical MSVC vector deleting destructor.
 
-struct CInputProcessInventoryMagicScreen
-{
+class CInputProcessInventoryMagicScreen
+{ public:
     void scalar_destructor();   // scalar dtor at 0xa0d3d0 (external, non-inlined)
 };
 

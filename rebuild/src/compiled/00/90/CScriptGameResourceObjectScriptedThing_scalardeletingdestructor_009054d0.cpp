@@ -1,4 +1,4 @@
-struct CScriptGameResourceObjectScriptedThing {
+class CScriptGameResourceObjectScriptedThing { public:
     void* vftable;
 };
 

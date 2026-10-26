@@ -37,7 +37,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
-struct CObjectFamilyEntry {
+class CObjectFamilyEntry { public:
     long Object;                                            // +0x00 object def index
     long Probability;                                       // +0x04 relative weight
 };

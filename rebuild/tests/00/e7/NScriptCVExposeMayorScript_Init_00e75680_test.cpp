@@ -1,12 +1,12 @@
 // Behaviour test for CV_ExposeMayorScript::Init (0x00E75680).
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString& operator=(const CCharString& o) { m_text = o.m_text; return *this; }
 };
 
-struct CScriptDef { CCharString ExposeMayorEvidence; float ExposeMayorMaxFlashDistFromStables; };
+class CScriptDef { public: CCharString ExposeMayorEvidence; float ExposeMayorMaxFlashDistFromStables; };
 CScriptDef* g_pScriptDef = 0;
 
 struct CV_ExposeMayorScript {

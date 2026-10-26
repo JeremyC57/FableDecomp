@@ -6,12 +6,12 @@
 #endif
 #include <string.h>
 #include <new>
-struct CThingBaseDef { virtual void v00() { } long m_base; CThingBaseDef() : m_base(1) { } };
+class CThingBaseDef { public: virtual void v00() { } long m_base; CThingBaseDef() : m_base(1) { } };
 struct SBuildingRecord {
     long m_value; float m_levelA; float m_levelB; bool m_flagA; bool m_flagB;
     SBuildingRecord() : m_value(0), m_levelA(0.0f), m_levelB(0.0f), m_flagA(false), m_flagB(false) { }
 };
-struct CThingBuildingDef : CThingBaseDef {
+class CThingBuildingDef : public CThingBaseDef { public:
     long            m_uninit[2];
     SBuildingRecord m_record;
     virtual void v00() { }

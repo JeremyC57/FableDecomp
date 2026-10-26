@@ -5,9 +5,9 @@ struct CCountedPointerWords {
     CCountedPointerWords(const CCountedPointerWords& o) : Data(o.Data), Info(o.Info) { if (Info) ++*Info; }
     ~CCountedPointerWords() { if (Info) --*Info; }
 };
-struct CScriptThing { CCountedPointerWords PImp; };
+class CScriptThing { public: CCountedPointerWords PImp; };
 static int g_log[8]; static int g_n = 0; static float g_value = 0; static long g_countSeen = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual ~CGameScriptInterface() { }
     virtual void SetThingHealthMultiplier(const CScriptThing&, float value, long flag) { g_log[g_n++] = 265; g_value = value; }
     virtual void SetThingFlags(const CScriptThing&, long a, long b, long c) { g_log[g_n++] = 360 + a + b + c; }
@@ -19,7 +19,7 @@ CTimerManager g_tm; CTimerManager* g_pScriptTimerManager = &g_tm;
 struct CQuestGlobals { long NumHitsBetweenForcePushes; };
 CQuestGlobals g_qg; CQuestGlobals* g_pQuestGlobals = &g_qg;
 struct CQ_MinionCampScript { long m_counter; };
-struct CTimer { long TimerIndex; };
+class CTimer { public: long TimerIndex; };
 struct CBriarRose {
     CGameScriptInterface* Game; CScriptThing Me; CQ_MinionCampScript* ParentClass; long NumHitsBetweenForcePushes; CTimer SpeechTimer;
     void Init()

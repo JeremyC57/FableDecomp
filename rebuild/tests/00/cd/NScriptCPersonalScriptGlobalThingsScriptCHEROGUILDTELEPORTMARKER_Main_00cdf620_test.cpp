@@ -3,12 +3,12 @@
 
 static int g_strings, g_frames, g_doneCalls, g_doneAfter = 1000, g_regionAt = -1, g_sealAt = -1;
 static bool g_active, g_activated;
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* text, long = -1) : p(text) { ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 static CScriptThing g_hero = { 1 };
 struct CGameScriptInterface_Calls {
     void NewScriptFrame() const { ++g_frames; }

@@ -7,12 +7,12 @@
 // Shape: a switch on Stage; the next-loop count is a named local computed before the argument list (its dec runs before
 //   both GetPItem calls); the first temporary's implicit dtor is called out of line (ICF'd at 0x0057A545), the later two
 //   are inlined (two ~CCharString + ~CCreatureActionBase).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CCreatureActionBase;
-struct CThingCreatureBase {
+class CCreatureActionBase;
+class CThingCreatureBase { public:
     bool IsBusy() const;                              // 0x00661E70 (manifest: CanCollideWithLandscape)
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CThingCreatureBase* GetPItem() const;             // 0x00A01B50
 };
-struct CCreatureActionBase {                          // retail sizeof 0xa8
+class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual ~CCreatureActionBase();                   // 0x00693EF0
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -33,7 +33,7 @@ struct CCreatureActionBase {                          // retail sizeof 0xa8
     void FinishAction();                              // 0x00694430
     CThingCreatureBase* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureActionBase {
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:
     long        Stage;                                // +0xa8
     long        NumberOfTimesToLoop;                  // +0xac
     float       AmountOfTimeToLoop;                   // +0xb0

@@ -7,7 +7,7 @@
 #define __forceinline inline
 #endif
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);      // 0x0099EFB0
 };

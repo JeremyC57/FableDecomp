@@ -7,7 +7,7 @@ static const void* g_base_src = 0;
 static void* g_sub_this = 0;
 static const void* g_sub_src = 0;
 
-struct CHitLocationsDef {
+class CHitLocationsDef { public:
     unsigned char _tail[0x34];
     void BaseCopy(const CHitLocationsDef* src);
 };

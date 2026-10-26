@@ -23,7 +23,7 @@ struct CDequeIterator {
     T& operator*() const { return *_M_cur; }
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CDequeIterator<SElement30> _M_start;
     CDequeIterator<SElement30> _M_finish;
     SElement30& GetAssignedInputsPassive();

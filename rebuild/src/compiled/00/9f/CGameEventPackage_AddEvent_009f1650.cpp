@@ -5,7 +5,7 @@
 // every pass (unsigned `jb`); each event copy is the implicit 10-dword struct assignment (`rep movsd`), the match arm returns directly.
 #include "engine/CGameEvent.h"
 
-struct CGameEventPackage {
+class CGameEventPackage { public:
     long          TimeStamp;                 // +0x00
     unsigned long NoEvents;                  // +0x04
     CGameEvent    Events[40];                // +0x08

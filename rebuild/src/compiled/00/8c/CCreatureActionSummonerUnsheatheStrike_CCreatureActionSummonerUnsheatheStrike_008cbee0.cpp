@@ -8,12 +8,12 @@
 // constructor @ 0x008B8560 runs, then the compiler stores this class's vtable (0x012834C4
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct CCreatureAction_UnsheatheWeapons {
+class CCreatureAction_UnsheatheWeapons { public:
     virtual void v00();
     CCreatureAction_UnsheatheWeapons();                           // 0x008B8560
 };
 
-struct CCreatureAction_SummonerUnsheatheStrike : CCreatureAction_UnsheatheWeapons {
+class CCreatureAction_SummonerUnsheatheStrike : public CCreatureAction_UnsheatheWeapons { public:
     virtual void v00();                    // this class has its own vtable
     CCreatureAction_SummonerUnsheatheStrike();
 };

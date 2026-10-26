@@ -7,17 +7,17 @@
 //       GetModuleRollAngle (0x005ED100 false, `ret 4`), 7 ResetCameraOnEnd (CScriptModuleCameraOnAStick overrides it), 8 OnInitLeaf.
 // Layout: Ego_r.pdb CScriptModuleBase (0x4c), as the landed CScriptModuleSpline::IsFinished 0x00853260: FOVOverride +0x48.
 // Shape: `FOVOverride > 0.0f` against the literal pool zero (`fcomp ; test ah,41h ; jne`), then the float copied as a dword.
-struct CBaseObject;
-struct CGameCameraManager;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CBaseObject;
+class CGameCameraManager;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
     virtual void v00();
     void* m_pItem;
 };
 namespace NCameraModes {
-struct CBase;
-struct CScriptModuleBase {                           // vtable 0x01255F74, 0x4c bytes
+class CBase;
+class CScriptModuleBase { public:                           // vtable 0x01255F74, 0x4c bytes
     virtual ~CScriptModuleBase();                    // slot 0
     virtual void Update() = 0;                       // slot 1
     virtual bool IsFinished() const;                 // slot 2

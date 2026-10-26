@@ -12,8 +12,8 @@
 // Size TU (odd start address): `#pragma optimize("s", on)` gives the `push [esp+14h]` argument and the vtable kept in ebp.
 // Shape: all zero stores share ebx; the CDefPointer's inline ctor zero is scheduled into the PKraken argument push.
 #pragma optimize("s", on)
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* m_pData;
     CCharString();                                  // 0x0099E4B0
 };
@@ -30,20 +30,20 @@ namespace N_004a96f0 { struct CIntelligentPointerConstThing : CBaseIntelligentPo
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item);   // 0x004A96F0
 }; } using N_004a96f0::CIntelligentPointerConstThing;
-struct CKrakenTentacleDef;
-template <class T> struct CDefPointer {
+class CKrakenTentacleDef;
+template <class T> class CDefPointer { public:
     const T* Object;
     CDefPointer() : Object(0) { }
 };
-struct C3DVector { float X, Y, Z; };
-struct CTCBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
     CTCBase(CThing* thing);                         // 0x00686800
 };
-struct CTCKrakenTentacle : CTCBase {                // vtable 0x012407BC
+class CTCKrakenTentacle : public CTCBase { public:                // vtable 0x012407BC
     CDefPointer<CKrakenTentacleDef> PTentacleDef;   // +0x0c
     CIntelligentPointerConstThing   PKraken;        // +0x10
     CIntelligentPointerThing        PObstruction;   // +0x18

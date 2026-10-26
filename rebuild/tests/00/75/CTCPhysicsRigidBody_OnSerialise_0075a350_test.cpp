@@ -3,18 +3,18 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
     C3DVector() : X(0), Y(0), Z(0) {}
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 static const char* g_names[8];
 static int g_count = 0;
 static int g_baseCalls = 0;
 
-struct CPersistContext {
+class CPersistContext { public:
     bool Loading;
     void Transfer(const char* name, float& value, const float& defaultValue)
     {
@@ -25,7 +25,7 @@ struct CPersistContext {
     }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual ~CTCPhysicsBase() {}
     virtual void OnSerialise(CPersistContext&, bool) { ++g_baseCalls; }
 };

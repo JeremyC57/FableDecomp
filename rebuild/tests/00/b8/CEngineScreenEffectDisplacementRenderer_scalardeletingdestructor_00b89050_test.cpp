@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineScreenEffectDisplacementRenderer {
+class CEngineScreenEffectDisplacementRenderer { public:
     void* vftable;
     int destroyed;
 };

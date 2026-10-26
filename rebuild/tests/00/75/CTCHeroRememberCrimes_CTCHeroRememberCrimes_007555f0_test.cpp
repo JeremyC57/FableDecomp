@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CRetailLess { };
 
 struct CCrimeMap {
@@ -34,7 +34,7 @@ struct CTCBase_Calls {
     CTCBase_Calls(CThing* parent) : ParentThing(parent) { ++g_baseCalls; }
 };
 
-struct CTCHeroRememberCrimes : CTCBase_Calls {
+class CTCHeroRememberCrimes : public CTCBase_Calls { public:
     CCrimeMap RegionNamesToCrimeDurationAndFine;
     bool      HasPaidTheFine;
     CTCHeroRememberCrimes(CThing* parent);

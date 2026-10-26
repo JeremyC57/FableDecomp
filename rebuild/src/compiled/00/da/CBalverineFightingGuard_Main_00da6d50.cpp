@@ -19,17 +19,17 @@
 // Shape: the landed entity-script filter idiom; the spawned functor (0x48 bytes) takes Me by value: the argument copy
 //   is the inline CScriptThing copy, the member copy inside the inlined functor ctor is the out-of-line 0x004ABE90 (inline
 //   depth 1 around the statement); the new-expression's name temporaries are conditional (flags 7).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CCPPointerInfo { long References; };
+class CCPPointerInfo { public: long References; };
 struct CCPPointerImp {                                 // CCountedPointer<CScriptThingImp>: Data, Info
     void*           Data;
     CCPPointerInfo* Info;
@@ -57,7 +57,7 @@ struct CScriptThingView {
     void* vptr; void* Data; void* Info;
     const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD2(qe)                              // slots 8..69
@@ -83,14 +83,14 @@ struct CGameScriptInterface {
     VPAD16(wa2) VPAD8(wb2) VPAD4(wc2)                                                // slots 452..479
     virtual void SetEntityAsRegionFollowing(const CScriptThing& thing, const CScriptThing& leader, bool follow) const;   // slot 480 (+0x780)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xd44];
     long          GuardTalkDistance;                   // +0xd44
     unsigned char _pad2[0xd50 - 0xd48];
     long          GuardRescueMorality;                 // +0xd50
 };
 extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CSpawnedFuncBase {                              // retail 0x34 bytes
+class CSpawnedFuncBase { public:                              // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -107,7 +107,7 @@ template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {   // 0x48
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) {}
     virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
 };
-struct CScriptBase {                                   // retail 0x40 bytes
+class CScriptBase { public:                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };

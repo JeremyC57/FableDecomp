@@ -5,7 +5,7 @@
 // address pushed before the vtable store, `this` returned.
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(void* section);   // IAT 0x0143FEE4
 
-struct CFireEffectCreationSet {                    // vtable 0x012B8FC8
+class CFireEffectCreationSet { public:                    // vtable 0x012B8FC8
     virtual void v00();
     unsigned char m_section[0x18];                 // +0x04: CRITICAL_SECTION
     CFireEffectCreationSet();

@@ -15,7 +15,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CPixelFormat {                              // 4 bytes, non-POD (returned through the hidden pointer)
+class CPixelFormat { public:                              // 4 bytes, non-POD (returned through the hidden pointer)
     long FormatIndex;
     CPixelFormat() { }
 };

@@ -10,7 +10,7 @@
 // the bottom of the frame), assigned member-wise (user operator=, read from fixed frame offsets) into a second named local,
 // which goes to the caller's buffer as an 8-dword `rep movsd` (implicit bitwise copy constructor). Assigning the call result
 // directly copies it through the returned pointer in eax instead.
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
@@ -32,7 +32,7 @@ struct CScreenFilterParams {
     CScreenFilterParams Interpolate(const CScreenFilterParams& to, float t) const;   // 0x00882FE0
 };
 
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     unsigned char       _pad00[0x64];        // Environment, RadialBlurParams, RadialBlurPositionParams, DisplacementParams
     CScreenFilterParams ScreenFilterParams;          // +0x64
     unsigned char       _pad84[0xe4 - 0x84];        // PrevFrameRadialBlurParams, PrevFrameRadialBlurPositionParams, PrevFrameDisplacementParams

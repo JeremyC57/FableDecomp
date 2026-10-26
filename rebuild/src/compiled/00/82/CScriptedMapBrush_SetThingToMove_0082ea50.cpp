@@ -10,11 +10,11 @@
 // vector Cells before it is 16 bytes, the retail one 12), so the members are modelled locally with the
 // header's names. CThingPosAndOrientation (PDB, 24 bytes): C3DVector Position +0, C3DAngles FacingAngles +0xC.
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct C3DAngles {
+class C3DAngles { public:
     float X, Y, Z;
 };
 
@@ -30,7 +30,7 @@ struct CThingsToMoveMap {                    // std::map<unsigned __int64, CThin
     CThingPosAndOrientation& operator[](const unsigned __int64& key);   // 0x0082FB90
 };
 
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     void* __vftable;                         // +0x00
     unsigned char _pad_0x04[0x1c];           // +0x04 .. Cells, ThingsToDelete
     CThingsToMoveMap ThingsToMove;           // +0x20

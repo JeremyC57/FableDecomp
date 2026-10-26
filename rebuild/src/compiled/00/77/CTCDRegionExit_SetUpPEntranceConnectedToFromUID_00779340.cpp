@@ -12,12 +12,12 @@
 // Shape: the shape of CTCActionUseScriptedHook::ResolveEntranceConnectedTo (0x00729BC0) with the member address formed
 // AFTER the temporary's GetPItem (the intelligent-pointer operator= reads the item into a local first); the map UID is
 // the top 24 bits of the thing UID (`>> 40`); the zero register for the clear doubles as the map-number test.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
     CBaseObject* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-t
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 #pragma pack(push, 1)
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for <CThing>
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for <CThing>
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
@@ -38,7 +38,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
 #pragma pack(pop)
 inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
 };
 struct CGameSubsystem {                         // [0x013B8A1C]+0x1C, not identified (landed CTCCrateStack 0x007B6A80)
@@ -46,7 +46,7 @@ struct CGameSubsystem {                         // [0x013B8A1C]+0x1C, not identi
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsSuppressed();                // slot 9 (+0x24)
 };
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool IsMapLoaded(long mapNumber) const;   // slot 10 (+0x28) 0x004FC050

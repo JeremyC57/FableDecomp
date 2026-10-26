@@ -1,20 +1,20 @@
 // Behaviour test for CAIStateGroup_GoToPub::PlayAnims(..., float seconds) (0x00948EF0): model copy with scripted stubs.
 #include <cstdio>
 
-struct CCharString { int id; };
-struct CTCTavernGame { bool IsBeingPlayed; };
-struct CThing { CTCTavernGame* game; bool GetInterface(CTCTavernGame** o, long t) { if (t != 0xcf || !game) return false; *o = game; return true; } };
+class CCharString { public: int id; };
+class CTCTavernGame { public: bool IsBeingPlayed; };
+class CThing { public: CTCTavernGame* game; bool GetInterface(CTCTavernGame** o, long t) { if (t != 0xcf || !game) return false; *o = game; return true; } };
 struct CPointer { CThing* item; CThing* GetPItem() const { return item; } };
-struct CThingCreatureBase { int id; };
-struct CSoundPair { long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
-struct CCreatureActionBase { int anim; };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CThingCreatureBase { public: int id; };
+class CSoundPair { public: long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CCreatureActionBase { public: int anim; };
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase*, const CCharString& n, const CSoundPair&, bool, bool, bool, long, long) { anim = n.id; }
 };
-struct CAIBrain { CThingCreatureBase* PCreature; CThingCreatureBase* GetPCreature() const { return PCreature; } };
+class CAIBrain { public: CThingCreatureBase* PCreature; CThingCreatureBase* GetPCreature() const { return PCreature; } };
 static long g_framesPerSecond = 30;
 static long g_frames[32]; static int g_fi;
-struct CWorld { static long GetWorldFrame() { return g_frames[g_fi++]; } };
+class CWorld { public: static long GetWorldFrame() { return g_frames[g_fi++]; } };
 
 static int g_seq[32], g_n, g_results[32], g_waitless;
 

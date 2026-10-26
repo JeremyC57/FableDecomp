@@ -18,7 +18,7 @@ struct COwner {
     CRegistry* m_pRegistry;                // +0x70
 };
 
-struct CTCResurrectionItem {
+class CTCResurrectionItem { public:
     unsigned char _pad0[0x4];
     COwner* m_pOwner;                      // +0x4
     unsigned char _pad1[0x4];

@@ -3,19 +3,19 @@
 #include <new>
 
 struct __false_type { __false_type() { } };
-struct CCPPointerInfo { long m_references; CCPPointerInfo() : m_references(1) { } };
+class CCPPointerInfo { public: long m_references; CCPPointerInfo() : m_references(1) { } };
 struct CBase {
     CBase() { }
     virtual ~CBase() { }
 };
-struct CScriptThing;
+class CScriptThing;
 struct CCountedPointer_CScriptThing {
     CScriptThing*   Data;
     CCPPointerInfo* Info;
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
     CCountedPointer_CScriptThing(const CCountedPointer_CScriptThing& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->m_references; }
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CCountedPointer_CScriptThing PImp;
     CScriptThing() { }
     CScriptThing(const CScriptThing& other) : CBase(), PImp(other.PImp) { }

@@ -7,7 +7,7 @@
 // flag byte +0x48): ObjectCacheGroupCollections +0x04, the collection's Next at +0x04.
 // Shape: the head is tested once on entry, the rotated loop re-reads it, loads Next BEFORE delete's own null test,
 // deletes through the vtable and stores Next back (tested through eax).
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 struct CQuadTreeElement;
 
 struct CObjectCacheGroupCollection {               // polymorphic; the chain is singly linked through +4
@@ -15,11 +15,11 @@ struct CObjectCacheGroupCollection {               // polymorphic; the chain is 
     CObjectCacheGroupCollection* Next;             // +0x04
 };
 
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(long fileBlockPos);        // 0x00BE0400
 };
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CQuadTreeElement* owner);   // 0x00BD9AB0 (an empty `ret 8` in retail)
 };
 

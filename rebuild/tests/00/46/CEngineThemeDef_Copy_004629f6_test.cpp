@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CEngineThemeDef;
+class CEngineThemeDef;
 
 extern void __fastcall CEngineThemeDef_Copy(CEngineThemeDef* thisptr, CEngineThemeDef* src);
 

@@ -15,9 +15,9 @@
 // in ebx, the start re-read), then a null-tested free; back() is `end - 1`.
 extern "C" void __cdecl free(void* block);
 
-struct CThingCreatureBase;
-struct CCombatTypeDef;
-struct C3DVector { float X, Y, Z; };
+class CThingCreatureBase;
+class CCombatTypeDef;
+class C3DVector { public: float X, Y, Z; };
 
 struct CBaseIntelligentPointer {
     virtual void v00();

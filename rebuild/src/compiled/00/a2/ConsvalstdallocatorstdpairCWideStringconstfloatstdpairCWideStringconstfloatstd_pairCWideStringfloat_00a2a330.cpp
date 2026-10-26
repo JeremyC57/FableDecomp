@@ -3,7 +3,7 @@
 // MSVC7.1 STL allocator::_Cons_val: placement copy-construct a pair<CWideString const,float> at dest from src.
 // ecx = dest pair, edx = src pair. Empty allocator elided -> two register (fastcall) pointer params.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     // retail 0x99ec30 = CCharString::CCharString(const CCharString&); modeled as a this-in-ecx member
     // taking the source by pointer on the stack.

@@ -43,7 +43,7 @@ struct CGroupArray {                               // CArray<unsigned long> (ret
     unsigned long size() const { return m_last - m_first; }
     const unsigned long& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CVertexGroupBlock {                         // retail 0x18 bytes (PDB 32: debug containers)
+class CVertexGroupBlock { public:                         // retail 0x18 bytes (PDB 32: debug containers)
     CGroupArray      Groups;                       // +0x00
     CGroupToIndexMap GroupToIndexMap;              // +0x0c
     void AddGroup(unsigned long group);            // 0x00AD91F0

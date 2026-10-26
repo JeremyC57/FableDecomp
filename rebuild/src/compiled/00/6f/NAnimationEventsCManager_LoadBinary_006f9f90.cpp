@@ -26,7 +26,7 @@ extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memcpy, memset)
 void operator delete[](void* block) throw();            // 0x00BFEB1C
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
 };
@@ -36,7 +36,7 @@ struct CBase {
 };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-struct CDiskFileWin32 : CBase {                         // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                               // 0x0099A920 (slot 2)
@@ -69,7 +69,7 @@ struct CByteVector {                                    // STLport vector<unsign
     unsigned char* GetData() { return (_M_finish - _M_start) ? _M_start : (unsigned char*)this; }
 };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v00();
     unsigned long        m_position;                    // +0x04
     long                 StreamSize;                    // +0x08
@@ -102,7 +102,7 @@ struct SZeroed {
     long m_00;
     SZeroed() : m_00(0) { }
 };
-struct CMemoryDataInputStream : CDataInputStream {     // vtable 0x0123675C, 0x1c bytes
+class CMemoryDataInputStream : public CDataInputStream { public:     // vtable 0x0123675C, 0x1c bytes
     SZeroed m_source;                                   // +0x18
     virtual void v00();
     CMemoryDataInputStream() { }
@@ -111,7 +111,7 @@ struct CMemoryDataInputStream : CDataInputStream {     // vtable 0x0123675C, 0x1
 };
 
 namespace NAnimationEvents {
-struct CEvent {
+class CEvent { public:
     unsigned long Index : 30;
     unsigned long ExternallyImported : 1;
     unsigned long StopEvent : 1;

@@ -7,13 +7,13 @@
 // Shape: the presence word (+0x20) is loaded once and tested twice with the mask kept in ecx: an explicit HasTC
 // test `&&` the inline out-parameter GetInterface template (landed 0x007504E0 / 0x00849250 shape: key 16 in the
 // `push ecx` frame word, the map pointer a named local, end-or-larger-key -> the end entry).
-struct CCharString;
+class CCharString;
 
 struct CSoundComponent {
     unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c);   // 0x0066BD00
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -22,7 +22,7 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -44,7 +44,7 @@ struct CThing {
 
 extern unsigned long g_InvalidSoundHandle;  // 0x0129D25C
 
-struct CTCTrophy {
+class CTCTrophy { public:
     void*   __vftable;                      // +0x00
     CThing* Thing;                          // +0x04
     unsigned long PlaySoundW(const CCharString& name);

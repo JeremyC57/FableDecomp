@@ -11,8 +11,8 @@
 // Pragma: #pragma optimize("s", on) -- `push dword ptr [esp+8]` for the forwarded argument is the /Os shape.
 // Shape: the derived vtable store follows the base call and precedes the member constructors; the Reset call is the body.
 #pragma optimize("s", on)
-struct CThing;
-struct CAIStateGroupBase;
+class CThing;
+class CAIStateGroupBase;
 
 struct CTCBase_Calls {                             // CTCBase, 0xc bytes
     virtual void v00();
@@ -34,7 +34,7 @@ struct CIdleWeightMap {                            // map<EIdleStateGroup, long>
     CIdleWeightMap();                              // 0x004DFA89
 };
 
-struct CTCIdleScheduler : CTCBase_Calls {          // vtable 0x012426C4
+class CTCIdleScheduler : public CTCBase_Calls { public:          // vtable 0x012426C4
     CIdleStateMap  IdleStates;                     // +0x0c
     CIdleWeightMap IdleStatesWeight;               // +0x18
     long           Preferred;                      // +0x24 EIdleStateGroup

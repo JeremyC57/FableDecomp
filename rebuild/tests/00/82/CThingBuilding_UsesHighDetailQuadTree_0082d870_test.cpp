@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
@@ -14,7 +14,7 @@ struct CDefPointeeBase {
             Destroy();
     }
 };
-struct CThingBuildingDef : CDefPointeeBase {
+class CThingBuildingDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x80];
     long WallMaterial;
     long FloorMaterial;
@@ -27,12 +27,12 @@ struct CThingBuildingDef : CDefPointeeBase {
     unsigned char IsPartOfHeroGuild : 1;
     unsigned char HasWeatherMask : 1;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
 static CThingBuildingDef* g_def = 0; static long g_askedIndex = -1; static int g_getDef = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CThingBuildingDef>* out);
 };
 bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingBuildingDef>* out)
@@ -45,7 +45,7 @@ bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingBuildingDef>
     return true;
 }
 static CDefinitionManager g_manager;
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char _pad00[0x8c];
     unsigned short DefGlobalIndex;
     CDefinitionManager* GetDefinitionManager() { return &g_manager; }

@@ -1,8 +1,8 @@
 // Behaviour test for 0x00d37330 CFH_BriarRose::Main
 #include <cstdio>
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CHandle { bool scripting; int releases; bool IsScripting() { return scripting; } void Release() { scripting = false; ++releases; } };
-struct CGame {
+class CGame { public:
     int frames, removes, attempts, succeedOn;
     void NewScriptFrame() { ++frames; }
     bool StartScriptingEntity(const CScriptThing&, CHandle& h, long priority) { ++attempts; if (attempts >= succeedOn && priority == 4) { h.scripting = true; return true; } return false; }

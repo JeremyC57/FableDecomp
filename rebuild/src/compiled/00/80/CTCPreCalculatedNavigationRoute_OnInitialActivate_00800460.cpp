@@ -8,8 +8,8 @@
 // Shape: `if (uid)` on the 64-bit value (`or edx,ecx ; je`); `P = CIntelligentPointer<const CThing>(GetThingManager()->
 //   GetThingByUID(uid))` -- the UID pushes precede the manager call, the temporary is built in the frame, assigned through the
 //   inline operator= (SetPItem(GetPItem())) and destroyed.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
     CBaseObject* m_pItem;                       // +4 (after the vptr)
     CBaseIntelligentPointer();                  // 0x00A01B10
@@ -17,14 +17,14 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-t
     CBaseObject* GetPItem() const;              // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
 };
-struct CTCPreCalculatedNavigationRoute {
+class CTCPreCalculatedNavigationRoute { public:
     void*   __vftable;                          // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08

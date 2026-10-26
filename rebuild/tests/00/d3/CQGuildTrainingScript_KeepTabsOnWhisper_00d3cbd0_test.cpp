@@ -4,9 +4,9 @@
 // remove him, wait for the woods quest to end, then (unless the departure quest is active) recreate the apprentice
 static int g_frames = 0, g_endAt = 1000, g_removed = 0, g_created = 0, g_willEnds = 8;
 static bool g_departure = false;
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing { const char* name; C3DVector pos; bool IsAlive() const { return std::strcmp(name, "MeleeApprentice") == 0; } const C3DVector& GetPos() const { return pos; } };
-struct CGameScriptInterface {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public: const char* name; C3DVector pos; bool IsAlive() const { return std::strcmp(name, "MeleeApprentice") == 0; } const C3DVector& GetPos() const { return pos; } };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsLevelLoaded(const char* l) const { return std::strcmp(l, "GuildWoods") == 0 ? g_frames >= 2 : g_frames >= 4; }
     bool IsQuestActive(const char* q) const { return std::strcmp(q, "Q_GuildTrainingDeparture") == 0 ? g_departure : g_frames < g_willEnds; }

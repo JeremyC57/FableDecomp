@@ -9,9 +9,9 @@
 // member's destructor, so the class is restated with the same member names and offsets.
 // Shape: a user virtual destructor whose body calls DoStopRunning after the vtable store; the intelligent
 // pointer's generated destructor calls the base destructor directly; then the out-of-line CTCBase destructor.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase();
     virtual ~CTCBase();                                  // 0x00686830
     CThing* ParentThing;                                 // +0x04
@@ -31,7 +31,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<C
     virtual void v00();
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CTCHighlightItem : CTCBase {
     bool                StartRunning;                    // +0x0c

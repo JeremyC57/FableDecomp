@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThing; struct CSteeringAgent;
+class CThing; class CSteeringAgent;
 struct CObstacleOwner { void* m_vptr; CThing* m_pThing; };
 struct CRetailVectorAgent { const CSteeringAgent** m_first; const CSteeringAgent** m_last; const CSteeringAgent** m_end; CRetailVectorAgent() : m_first(0), m_last(0), m_end(0) { } };
-struct CObstacleNavigatorExternalInterface { virtual void v00() { } CThing* Obstacle; CRetailVectorAgent DummyAgentList;
+class CObstacleNavigatorExternalInterface { public: virtual void v00() { } CThing* Obstacle; CRetailVectorAgent DummyAgentList;
     CObstacleNavigatorExternalInterface(const CObstacleOwner& o) : Obstacle(o.m_pThing) { } };
 int main()
 {

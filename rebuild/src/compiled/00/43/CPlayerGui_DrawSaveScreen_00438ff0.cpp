@@ -51,7 +51,7 @@ struct CWorld_Retail {
     virtual CThingManager_Retail* GetThingManager();        // slot 3 (+0x0c)
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     void*            __vftable;                             // +0x000
     CWorld_Retail*   World;                                 // +0x004
     unsigned char    _pad008[0x2a8 - 0x008];

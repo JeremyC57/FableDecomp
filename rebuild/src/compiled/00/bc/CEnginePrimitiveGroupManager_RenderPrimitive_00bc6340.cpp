@@ -13,7 +13,7 @@
 // Shape: the best result lives in the dead `group` argument slot; the child vector is re-read every iteration; the info
 //   copy is the counted pointer's operator= (identity test, release, add-ref).
 class CEngineSubPrimitiveBase;
-struct CEngineSubPrimitiveChain {
+class CEngineSubPrimitiveChain { public:
     CEngineSubPrimitiveBase* LastOpaque;
     CEngineSubPrimitiveBase* LastAlpha;
 };
@@ -56,11 +56,11 @@ public:
 };
 
 class CEngineInternalPrimitiveBase;
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     void* _vptr;
     CEngineInternalPrimitiveBase* Data;            // +0x04
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;
@@ -94,7 +94,7 @@ public:
     virtual void v04(); virtual void v05(); virtual void v06();
     virtual long RenderPrimitive(CEngineInternalPrimitiveBase& primitive, long layer, CEngineSubPrimitiveChain& chain);   // slot 7
 };
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };

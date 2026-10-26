@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CTCCameraPointTrack
-{
+class CTCCameraPointTrack
+{ public:
     void* vftable;
 };
 extern void* const g_CTCCameraPointTrack_vftable;

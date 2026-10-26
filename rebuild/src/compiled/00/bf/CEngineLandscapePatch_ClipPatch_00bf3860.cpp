@@ -8,7 +8,7 @@
 // (the z term is formed first: `pz*nz + py*ny + px*nx`) and compared with d; `dot > d` returns false.
 // `this` stays in ecx (no calls); the box min sits at +0x20, the max at +0x2C (a C3DBoundingBox-style
 // pair of 3-vectors inside the patch; the patch has no PDB header, so it is modelled locally).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
@@ -16,13 +16,13 @@ struct CFrustumPlane {
     float nx, ny, nz, d;
 };
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char m_unknown[0x1c0];
     CFrustumPlane m_planes[6];                     // +0x1C0
 };
 extern CEngineCamera* g_pEngineCamera_01436ea0;    // 0x01436EA0
 
-struct CEngineLandscapePatch {
+class CEngineLandscapePatch { public:
     unsigned char _pad00[0x20];
     C3DVector     m_boxMin;                        // +0x20
     C3DVector     m_boxMax;                        // +0x2C

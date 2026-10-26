@@ -52,7 +52,7 @@ struct CThingNative {
         return (const T*)it->Component;
     }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* VTable;
     void* Info;
@@ -60,12 +60,12 @@ struct CBaseIntelligentPointer {
     CThingNative* Get() const { return (CThingNative*)GetPItem(); }
 };
 namespace NEntityEvents {
-struct CEventBase {
+class CEventBase { public:
     virtual ~CEventBase();
     virtual long GetType() const;                       // slot 1
     long WorldFrame;                                    // +0x04
 };
-struct CEventKilledCreature : CEventBase {
+class CEventKilledCreature : public CEventBase { public:
     unsigned long CreatureGroupOfKilledThing;           // +0x08
     unsigned long GetCreatureGroupOfKilledThing() const { return CreatureGroupOfKilledThing; }
 };

@@ -11,7 +11,7 @@ inline void Swap(T& a, T& b)
     b = t;
 }
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX;   // +0x00
     long TLY;   // +0x04
     long BRX;   // +0x08

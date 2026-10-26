@@ -20,7 +20,7 @@ static int fails = 0;
 // released through the short DecRefToZero form.
 class CTCBase;
 class CThing;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 enum ECollideType { ECT_NONE = 0, ECT_PHYSICS = 1, ECT_WEAPON = 3 };
 
 struct CInterfaceMap {
@@ -70,7 +70,7 @@ struct CDebrisDef : CDefObject {
     long          DebrisThingDef;                              // +0x34
 };
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && DecRefToZero(Object->m_refCount)) Object->Destroy(); }
@@ -90,15 +90,15 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CDebrisDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();

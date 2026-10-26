@@ -48,7 +48,7 @@ struct CSharedData {
     CCountedPointer SkeletalMorph;         // +0x18
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     virtual void v00();
     CSharedData* Data;                     // +4
     void MakeOwnCopyOfData();              // 0x00A3C1A0

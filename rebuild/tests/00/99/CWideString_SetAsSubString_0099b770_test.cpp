@@ -97,7 +97,7 @@ static WStr ExpandPath(const WStr& path, const WStr& base)
     return base + WStr("\\") + path;
 }
 
-struct CWideStringData {
+class CWideStringData { public:
     wchar16* Data;
     long NoRefs;
     ~CWideStringData() { std::free(Data); }

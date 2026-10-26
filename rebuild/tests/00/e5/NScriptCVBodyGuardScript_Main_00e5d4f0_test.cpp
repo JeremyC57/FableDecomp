@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* t, long = -1) : p(t) {}
     CCharString(const CCharString& o) : p(o.p) {}
@@ -9,7 +9,7 @@ struct CCharString {
 static int g_fail = 0;
 static void check(bool c, int line) { if (!c) { if (!g_fail) std::printf("check failed at line %d\n", line); g_fail = 1; } }
 #define CHECK(c) check((c), __LINE__)
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     CCharString Name; unsigned long Id;
     CSpawnedFuncBase(const CCharString& name, unsigned long id) : Name(name), Id(id) {}
     virtual ~CSpawnedFuncBase() {}
@@ -22,11 +22,11 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-struct CScriptThing;
-struct CScriptDataBase;
-struct CEntityScriptBase;
-template <class T> struct CCountedPointer { T* Data; void* Info; };
-struct CEntityScriptBindingBase {
+class CScriptThing;
+class CScriptDataBase;
+class CEntityScriptBase;
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
+class CEntityScriptBindingBase { public:
     virtual ~CEntityScriptBindingBase() {}
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
@@ -38,7 +38,7 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };
 static int g_gamePost = 0, g_post = 0, g_order = 0, g_ran = 0;
-struct CGameScriptInterface { void PostAddScriptedEntities() const { g_gamePost = ++g_order; } };
+class CGameScriptInterface { public: void PostAddScriptedEntities() const { g_gamePost = ++g_order; } };
 static const char* g_bindings[8]; static int g_nb = 0;
 static const char* g_spawned[8]; static int g_ns = 0;
 static CSpawnedFuncBase* g_funcs[8];
@@ -56,7 +56,7 @@ struct CScriptBase {
     }
     void PostAddScriptedEntities() { g_post = ++g_order; }
 };
-struct CV_BodyGuardScript : CScriptBase {
+class CV_BodyGuardScript : public CScriptBase { public:
     struct CBodyGuard { static void* Alloc(CV_BodyGuardScript&, CScriptDataBase*, const CScriptThing&) { return 0; } };
     struct CHenchmanComment { static void* Alloc(CV_BodyGuardScript&, CScriptDataBase*, const CScriptThing&) { return 0; } };
     struct CHenchmanRegionEntranceComment { static void* Alloc(CV_BodyGuardScript&, CScriptDataBase*, const CScriptThing&) { return 0; } };

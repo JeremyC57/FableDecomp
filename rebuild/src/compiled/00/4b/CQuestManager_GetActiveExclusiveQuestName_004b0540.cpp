@@ -1,7 +1,7 @@
 // CQuestManager::GetActiveExclusiveQuestName  @0x004b0540
 // module: CQuestManager  __fastcall  returns CCharString*
 
-struct CCharString;
+class CCharString;
 
 struct SubNode {
     int              key;    // +0x00

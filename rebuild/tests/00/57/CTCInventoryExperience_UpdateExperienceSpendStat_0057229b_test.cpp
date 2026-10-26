@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static int g_destroyed = 0; static long g_poolCat = -1, g_poolAmount = 0; static int g_poolCalls = 0;
-struct CInventoryDef {
+class CInventoryDef { public:
     long refCount;
     long ExperienceSpendRate;
     virtual void Destroy() { ++g_destroyed; }
@@ -22,10 +22,10 @@ struct CSpendInfoVector {
     ExperienceSpendInfo* begin() { return _M_start; }
     ExperienceSpendInfo& operator[](long n) { return *(begin() + n); }
 };
-struct CTCHeroExperience { long GetCategoryTrainableStatIsIn(long stat) { return stat == 0 ? 0 : 1; } };
+class CTCHeroExperience { public: long GetCategoryTrainableStatIsIn(long stat) { return stat == 0 ? 0 : 1; } };
 static CTCHeroExperience g_hero;
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CInventoryDefPointer PDef;
     long statIndicatorPos;
     CSpendInfoVector ExperienceSpendValuesPool;

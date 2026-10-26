@@ -1,13 +1,13 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     const char* p;
     int len;
     CCharString(const char* lit, int l) : p(lit), len(l) {}
     int dummy;
 };
 
-struct C3DMeshFileUniqueVerticesChunk {
+class C3DMeshFileUniqueVerticesChunk { public:
     CCharString GetChunkInfo() const;
 };
 

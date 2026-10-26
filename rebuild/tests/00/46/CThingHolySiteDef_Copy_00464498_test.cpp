@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for CThingHolySiteDef::Copy (0x00464498): base copy + Graphic + PlayerStart.
-struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
-struct CThingBaseDef {
+class CEngineGraphic { public: unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CThingBaseDef { public:
     long m_base;
     void CopyBase(const CThingBaseDef* src) { m_base = src->m_base; }
 };
-struct CThingHolySiteDef : CThingBaseDef {
+class CThingHolySiteDef : public CThingBaseDef { public:
     CEngineGraphic Graphic; bool PlayerStart; long m_untouched;
     void Copy(const CThingBaseDef* src)
     {

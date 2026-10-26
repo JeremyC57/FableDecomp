@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimFileHelpersChunk {
+class C3DAnimFileHelpersChunk { public:
     void* vftable;
     int destroyed;
 };

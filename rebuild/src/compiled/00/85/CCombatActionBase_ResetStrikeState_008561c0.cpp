@@ -9,7 +9,7 @@
 // MovementEventInterruptFrame +0xcc (untouched), StrikeSpeedVariationStartTime +0xd0, ...EndTime +0xd4,
 // nine flags +0xd8..+0xe0, LastAnimStage +0xe4, HitThing +0xe8, HitCreature +0xe9, FrameUpdatePauseFrames +0xec.
 // Shape: the statements follow retail's store order.
-struct CCombatActionBase {
+class CCombatActionBase { public:
     unsigned char _pad00[0xc0];                    // CCreatureActionBase (0xa8) + PTarget/PCameraPoint/PMeleeAbilityDef/StrikeEvents
     long  LastStrikeEventEndTime;                  // +0xc0
     float StrikeEventInterruptTime;                // +0xc4

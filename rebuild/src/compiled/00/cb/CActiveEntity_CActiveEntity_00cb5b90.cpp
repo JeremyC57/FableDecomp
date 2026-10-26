@@ -17,7 +17,7 @@ void* __cdecl operator_new(unsigned int size);     // 0x00BFEA1A
 void __cdecl free(void*);   // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0

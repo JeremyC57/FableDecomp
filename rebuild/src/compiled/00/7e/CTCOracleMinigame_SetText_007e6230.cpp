@@ -37,20 +37,20 @@ public:
         return false;
     }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                 // 0x0099B510
 };
-struct CTCRegionDisplay {
+class CTCRegionDisplay { public:
     void SetCurrentAreaName(const CWideString& name, float duration, bool a, bool b, bool c);   // 0x00639A90
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                         // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                       // 0x00449960
 };
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _base08[4];

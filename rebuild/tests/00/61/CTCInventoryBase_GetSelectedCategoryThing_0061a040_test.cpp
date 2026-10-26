@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CCategory { CThing* thing; unsigned char _body[0x2C - sizeof(CThing*)]; CThing* GetAssociatedThing() { return thing; } };
 struct Inv {
     CCategory* first; long SelectedCategoryIndex;

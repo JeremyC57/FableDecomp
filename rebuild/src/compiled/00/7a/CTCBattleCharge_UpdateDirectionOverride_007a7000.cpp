@@ -17,12 +17,12 @@
 #pragma intrinsic(sqrt)
 extern unsigned long g_InvSqrtMantissaTable[128];          // 0x013CE558
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     float GetLength() const { return (float)sqrt(Y * Y + X * X); }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -43,27 +43,27 @@ struct C3DVector {
     }
     void RotateAboutZ(float angle);                         // 0x00A14040
 };
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char _body[0x34];
     CInputEvent();                                          // 0x00A04410
     ~CInputEvent();                                         // 0x00A03B30
     C2DVector GetAnaloguePosition() const;                  // 0x00A043A0
 };
-struct CInputManager {
+class CInputManager { public:
     bool IsJoystickEventInQueue(long type, long a, CInputEvent* event, long player);   // 0x009F4C60
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char  _pad00[0x58];
     CInputManager* InputManager;                            // +0x58
 };
 CSystemManager* __fastcall GFGetSystemManager();            // 0x009A4EC0
-struct CPlayer {
+class CPlayer { public:
     long GetPlayerNumber() const;                           // 0x00487510
 };
-struct CThing {
+class CThing { public:
     CPlayer* GetPlayer() const;                             // 0x004C7A30
 };
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     float GetCurrentRelativeMovementAngleXY() const;        // 0x006A9640
 };
 

@@ -1,14 +1,14 @@
 // Behaviour test for CTCTargetingPlayer::UpdateNearestInterestingThing @ 0x008023E0: cleared, then the targeted thing or the base scan.
 #include <cstdio>
-struct CThing { int id; };
-struct CTCTargetingBase {
+class CThing { public: int id; };
+class CTCTargetingBase { public:
     CThing* nearest; CThing* scanResult; int sets;
     virtual ~CTCTargetingBase() {}
     virtual CThing* GetPTargetedThing() { return 0; }
     virtual void UpdateNearestInterestingThing() { SetPNearestInterestingThing(scanResult); }
     void SetPNearestInterestingThing(CThing* t) { nearest = t; ++sets; }
 };
-struct CTCTargetingPlayer : CTCTargetingBase {
+class CTCTargetingPlayer : public CTCTargetingBase { public:
     CThing* targeted;
     virtual CThing* GetPTargetedThing() { return targeted; }
     virtual void UpdateNearestInterestingThing()

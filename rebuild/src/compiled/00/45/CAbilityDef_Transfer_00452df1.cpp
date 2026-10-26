@@ -1,5 +1,5 @@
 struct CTransferData { void Accept(void* p); };
-struct CAbilityDef { char pad[0x28]; };
+class CAbilityDef { public: char pad[0x28]; };
 
 void __fastcall CAbilityDef_Transfer(CAbilityDef* self, void* edx, CTransferData* context)
 {

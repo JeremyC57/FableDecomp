@@ -4,8 +4,8 @@
 typedef unsigned int fable_u32;
 typedef signed int fable_i32;
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;

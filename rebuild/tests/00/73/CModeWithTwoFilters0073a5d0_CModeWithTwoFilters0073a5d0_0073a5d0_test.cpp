@@ -5,9 +5,9 @@ static void Log(const char* s) { int l = (int)std::strlen(s); if (g_n + l + 1 < 
 static int Check(const char* addr, const char* want) { if (std::strcmp(g_log, want) != 0) { std::printf("%s_TEST FAIL\n%s\n", addr, g_log); return 1; } std::printf("%s_TEST PASS\n", addr); return 0; }
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; ~CBaseIntelligentPointer() { Log("ptr"); } };
 struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct CCharString { char* m_pData; ~CCharString() { Log("str"); } };
-struct CAnimFilterBase { virtual void v00() {} ~CAnimFilterBase() { Log("fb"); } };
-struct CAnimFilterOfGroup : CAnimFilterBase { CCharString m_group; long m_groupIndex; };
+class CCharString { public: char* m_pData; ~CCharString() { Log("str"); } };
+class CAnimFilterBase { public: virtual void v00() {} ~CAnimFilterBase() { Log("fb"); } };
+class CAnimFilterOfGroup : public CAnimFilterBase { public: CCharString m_group; long m_groupIndex; };
 struct CModeBase { virtual void v00() {} long m_type; CAnimFilterOfGroup m_idleFilter; long m_a; long m_b; ~CModeBase() { Log("mode"); } };
 struct CModeWithTwoFilters_0073a5d0 : CModeBase { CAnimFilterOfGroup m_actionFilter; CIntelligentPointer m_pTarget; ~CModeWithTwoFilters_0073a5d0() { } };
 int main()

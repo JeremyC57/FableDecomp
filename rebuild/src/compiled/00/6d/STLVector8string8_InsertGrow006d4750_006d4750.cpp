@@ -7,7 +7,7 @@ extern "C" void __cdecl free(void*);
 inline void* operator new(unsigned int,void* p){return p;}
 struct Tag_006d4750 {Tag_006d4750(){}};
 // Layout: CCharString header absent; retail ctor0099ec30, dtor0099eae0, single pointer.
-struct CCharString {void* data;CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharString { public:void* data;CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
 struct Element_006d4750{CCharString name;int value;Element_006d4750(){}__forceinline Element_006d4750(const Element_006d4750& o):name(o.name),value(o.value){}};
 // Layout: retail STL vector object uses three contiguous pointer words at+0,+4,+8.
 template<class T> struct Vector_006d4750 {

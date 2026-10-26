@@ -13,8 +13,8 @@
 //   loads read it; delta/away vectors use the constructor-argument operator- (Z first, dead Z dropped for the 2D test);
 //   the look-at speed literal is 0.0027777f (0x3B360A13, not 1/360).
 #include <math.h>
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -31,7 +31,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978A0
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
@@ -39,11 +39,11 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(CThing* item) { SetPItem(item); }
     virtual void v01();
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x20 - 4];
     unsigned long UsingComponents[9];           // +0x20
@@ -77,25 +77,25 @@ struct CThing {
         }
     }
 };
-struct CThingCreatureBase : CThing { };
-struct CTCCreatureGroupBoastingCrowd {           // interface 0x74
+class CThingCreatureBase : public CThing { public: };
+class CTCCreatureGroupBoastingCrowd { public:           // interface 0x74
     unsigned char _pad00[0x24];
     CBaseIntelligentPointer PHero;              // +0x24
     bool CurrentStateIsOffPodiumType() const;   // 0x007841C0
 };
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread,
                                    C3DVector* out);     // 0x006CB780
     bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector* out, bool flag);   // 0x006CB6E0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingCreatureBase* Creature;               // +0x18
 };
 enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 enum EMovementType { MOVEMENT_DEFAULT, MOVEMENT_WALK = 3, MOVEMENT_RUN = 5 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsRunnable();                  // slot 5 (+0x14)
     CAIBrain* PBrain;                           // +0x04

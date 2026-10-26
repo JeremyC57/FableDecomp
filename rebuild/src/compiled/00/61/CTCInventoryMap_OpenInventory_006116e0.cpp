@@ -11,13 +11,13 @@
 //   vector _M_insert_overflow 0x00485DBC (same-TU stand-in body, as the landed CTCCreditsUI::Activate 0x007E4B60).
 // Shape: the player-GUI global is read into a named local before the screen-type call; the failed-build arm (CloseInventory)
 //   is the else of `if (screen)` so VC7.1 places it after the push_back tail as retail does.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
     V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29) V(30) V(31) V(32) V(33) V(34) V(35) V(36) V(37) V(38) V(39)
@@ -27,7 +27,7 @@ struct CComponent {
 #undef V
     virtual void ChangeState(long state);               // slot 48 (+0xc0)
 };
-struct CManager {
+class CManager { public:
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15)
     virtual void AddActiveTC(void* tc);                 // slot 16 (+0x40)
@@ -36,7 +36,7 @@ struct CManager {
 #undef V
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 }
@@ -82,17 +82,17 @@ void CRetailVector<T>::_M_insert_overflow(T* position, const T& x, const __true_
 template struct CRetailVector<NUISystem::CComponent*>;
 #pragma auto_inline(on)
 namespace NHeroInformationScreens {
-struct CBase {
+class CBase { public:
     virtual void v00(); virtual void v01();
     virtual long GetScreenType();                       // slot 2 (+0x08)
     virtual bool IsActive();                            // slot 3 (+0x0C)
 };
-struct CManager {
+class CManager { public:
     CBase* GetCurrentScreen();                          // 0x0066E7BD
     void SetCurrentScreenType(long type);               // 0x0066E799
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
@@ -115,8 +115,8 @@ struct CInputController {
 #undef V
     virtual void SetEnabled(bool enabled);              // slot 76 (+0x130)
 };
-struct CDisplayEngine { unsigned char _pad[0x2c]; CInputController* Input; };   // +0x2c
-struct CMainGameComponent { unsigned char _pad[0x28]; CDisplayEngine* Display; };   // +0x28
+class CDisplayEngine { public: unsigned char _pad[0x2c]; CInputController* Input; };   // +0x2c
+class CMainGameComponent { public: unsigned char _pad[0x28]; CDisplayEngine* Display; };   // +0x28
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 struct CTCInventoryBase {
 #define V(n) virtual void v##n();
@@ -136,7 +136,7 @@ struct CTCInventoryBase {
 // Layout: retail CTCInventoryMap (landed OnCreate 0x00602E30 / DrawPreparePrimitivesForRendering 0x005FAF50): the
 //   NHeroInformationScreens::CBase secondary base +0x130, AccumFadeTime +0x140, the teleports-found flag +0x234,
 //   PreviousScreenType +0x244.
-struct CTCInventoryMap : CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryMap : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     unsigned char _pad134[0x140 - 0x134];
     float         AccumFadeTime;                        // +0x140
     unsigned char _pad144[0x234 - 0x144];

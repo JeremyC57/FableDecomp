@@ -28,7 +28,7 @@ static int g_ok = 1;
 // Shape: the vector is the STLport `_Vector_base` model (ebx zero words); the list is `_List_base`: the proxy nulls the
 // node word, the header is malloc'd and linked to itself; NoAllocatedClasses is cleared in the body, before the resize.
 
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
@@ -71,7 +71,7 @@ struct CList : CListBase {                                  // list<CClass*>
     CList() : CListBase(CAllocator<SListNode>()) { }
 };
 
-struct CClassTypeInfo { unsigned char _body[0x14]; };   // retail 0x14 (4-byte STLport list)
+class CClassTypeInfo { public: unsigned char _body[0x14]; };   // retail 0x14 (4-byte STLport list)
 
 class CClassFactory : public CBaseClassNonCopyable {
 protected:

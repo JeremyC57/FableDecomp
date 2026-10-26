@@ -2,8 +2,8 @@
 // filter and whole-volume boxes; every level temporary is released.
 #include <cstdio>
 static int g_copies = 0, g_released = 0, g_bad = 0;
-struct C3DBoxI;
-struct CVolume {
+class C3DBoxI;
+class CVolume { public:
     long owner, level;
     CVolume(long o, long l) : owner(o), level(l) { }
     CVolume(const CVolume& v) : owner(v.owner), level(v.level) { }
@@ -15,7 +15,7 @@ struct CVolume {
     }
 };
 template <class T> inline const T& (min)(const T& a, const T& b) { return a < b ? a : b; }
-struct CVolumeTexture {
+class CVolumeTexture { public:
     long id, levelCount;
     long GetNoLevels() const { return levelCount; }
     CVolume GetVolumeLevel(long level) const { return CVolume(id, level); }

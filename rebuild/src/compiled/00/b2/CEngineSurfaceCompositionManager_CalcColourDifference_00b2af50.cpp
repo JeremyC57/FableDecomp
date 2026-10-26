@@ -11,7 +11,7 @@
 #include <math.h>
 #include "engine/CEngineSurfaceCompositionManager.h"
 
-struct CRGBColour {                                // D3DCOLOR byte order
+class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
 };
 

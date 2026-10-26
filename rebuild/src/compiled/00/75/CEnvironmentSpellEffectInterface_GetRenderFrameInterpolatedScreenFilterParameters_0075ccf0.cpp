@@ -8,7 +8,7 @@ struct SFilterParams_0075ccf0 {                     // 12 bytes: a float weight 
     long  m_b;
 };
 
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     unsigned char       _pad[0x64];
     SFilterParams_0075ccf0 m_filter;                  // +0x64
     void TransformVector(SFilterParams_0075ccf0& out, const SFilterParams_0075ccf0& in, void* view);   // 0x0075C280

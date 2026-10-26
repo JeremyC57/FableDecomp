@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { unsigned char flags91; unsigned long bits[9]; long compType; void* comp; CThing() : flags91(0), compType(-1), comp(0) { for (int i = 0; i < 9; ++i) bits[i] = 0; } };
+class CThing { public: unsigned char flags91; unsigned long bits[9]; long compType; void* comp; CThing() : flags91(0), compType(-1), comp(0) { for (int i = 0; i < 9; ++i) bits[i] = 0; } };
 struct CBaseIntelligentPointer {
     CThing* item; int sets;
     CBaseIntelligentPointer() : item(0), sets(0) { }
@@ -13,7 +13,7 @@ template<class T> bool GetInterface(CThing* t, T** out, long type)
     return false;
 }
 static void GiveTC(CThing* t, long type, void* comp) { t->bits[type >> 5] |= 1UL << (type & 31); t->compType = type; t->comp = comp; }
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 struct CThingPos { C3DVector pos; CThingPos() : pos(1.f, 2.f, 3.f) { } C3DVector* GetPosition() { return &pos; } };
 struct CGroup { CThingPos* thing; long result; float gotZ; long flags;
     CThingPos* GetPItem() const { return thing; }

@@ -10,7 +10,7 @@ struct SEventData8 {
     long m_high;
 };
 
-struct CGameEvent {
+class CGameEvent { public:
     void ReadBytes(long count, void* destination);  // 0x009F18F0
     static SEventData8 __fastcall ReadData8(CGameEvent* event);
 };

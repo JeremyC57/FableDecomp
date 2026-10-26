@@ -15,11 +15,11 @@ public:
     template<class T> T* GetTC(long) { return (T*)m_tc8; }
 };
 static int g_pickCalls = 0;
-struct CTCTargetingPlayer { void SetAsPickUpNewLockTarget() { ++g_pickCalls; } };
+class CTCTargetingPlayer { public: void SetAsPickUpNewLockTarget() { ++g_pickCalls; } };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -60,7 +60,7 @@ static SCall g_calls[8];
 static int g_nCalls = 0;
 static bool g_mainResult = true;
 
-struct CTCWillLightning {
+class CTCWillLightning { public:
     CThing* ParentThing;
     long  WeaponState;
     bool  LeftHandAnim;

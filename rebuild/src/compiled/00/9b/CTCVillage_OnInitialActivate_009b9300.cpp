@@ -1,7 +1,7 @@
 // Byte-exact reconstruction of CTCVillage::OnInitialActivate @ 0x009b9300
 // Leaf: OnInitialActivate
 
-struct CTCVillage {
+class CTCVillage { public:
     void* field0;   // +0x00
     void* ParentThing;   // +0x04
     char  pad8[4];  // +0x08

@@ -5,11 +5,11 @@
 // `if (h[0].X > range) {...} else if (-range > h[0].X) {...}` (`fcomp ; test ah,41h ; jne`, the negation is `fld ; fchs`);
 // `x += range` loads the range first (`fld range ; fadd [x]`), `x -= range` loads x first; the Y tests end in their own
 // `ret 8`. `this` has no members here, so the engine header (engine/CEngineSkyRenderer.h) is not needed.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 
-struct CEngineSkyRenderer {
+class CEngineSkyRenderer { public:
     void KeepHistoryInRange(C2DVector* history, float range);
 };
 

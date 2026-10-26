@@ -18,7 +18,7 @@ struct CDefPointer {
 struct CAction { long Type; CAction() : Type(0) {} };
 static void DestroyAction(void* a) { ++g_actionsDestroyed; delete (CAction*)a; }
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object; SCountBlock* Info;
     CCountedPointer(T* object) : Object(object) { Info = new SCountBlock; Info->m_references = 1; Info->m_pfnDestroy = DestroyAction; Info->m_pObject = object; }
     ~CCountedPointer()

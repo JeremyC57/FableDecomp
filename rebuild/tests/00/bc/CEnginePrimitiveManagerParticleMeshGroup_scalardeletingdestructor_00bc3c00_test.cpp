@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveManagerParticleMeshGroup {
+class CEnginePrimitiveManagerParticleMeshGroup { public:
     void* vftable;
     int destroyed;
 };

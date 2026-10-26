@@ -7,19 +7,19 @@
 // members sit 0x30 below their PDB offsets in retail, so Orientation +0x174, RotationAxis +0x18c,
 // RotationSpeed +0x198 (the same offsets slot 1, 0x00550070, reads).
 // Shape: `add ecx,174h` then a six-dword memberwise copy through edx (the address of the member formed once).
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
 };
 
 namespace NUISystem {
-struct CMesh {
+class CMesh { public:
     unsigned char _pad00[0x174];
     CRightHandedSet Orientation;            // +0x174
     C3DVector RotationAxis;                 // +0x18c

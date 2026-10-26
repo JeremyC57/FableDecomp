@@ -4,8 +4,8 @@
 #include <cstdio>
 #include <list>
 
-struct CTCBase { bool active; float Timer; bool IsActive() const { return active; } };
-struct CThingAICreature {
+class CTCBase { public: bool active; float Timer; bool IsActive() const { return active; } };
+class CThingAICreature { public:
     bool alive, hasTimer, hasMode, autoPlace;
     CTCBase timerTC, modeTC;
     int resets, placements;
@@ -18,7 +18,7 @@ struct CThingAICreature {
 struct CPtr { CThingAICreature* p; CThingAICreature* GetPItem() const { return p; } };
 static bool IS_THING_ALIVE(const CPtr& t) { return t.p && t.p->alive; }
 
-struct CTCVillage {
+class CTCVillage { public:
     std::list<CPtr> VillagePeople;
     int crierResets;
     void ResetCrier() { ++crierResets; }

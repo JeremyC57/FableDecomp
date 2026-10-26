@@ -5,7 +5,7 @@
 // temporaries and locals die, and that dropping the returned pointer deletes every state exactly once.
 #include <stdio.h>
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1
     unsigned long IVRefCount;              // +4
@@ -51,11 +51,11 @@ template<class T> struct CIVTypedPointer {
     }
 };
 
-struct C3DAnimationStateBase : CIVCountedPointeeBase {
+class C3DAnimationStateBase : public CIVCountedPointeeBase { public:
     C3DAnimationStateBase() { }
 };
 
-struct C3DAnimationState : C3DAnimationStateBase {     // vtable 0x01249F50
+class C3DAnimationState : public C3DAnimationStateBase { public:     // vtable 0x01249F50
     long  AnimationIndex;                  // +8
     float AnimationTime;                   // +0xc
     C3DAnimationState(long index, float time) : AnimationIndex(index), AnimationTime(time) { }
@@ -63,7 +63,7 @@ struct C3DAnimationState : C3DAnimationStateBase {     // vtable 0x01249F50
     virtual void Delete();
 };
 
-struct C3DAnimationTransitionState : C3DAnimationStateBase {
+class C3DAnimationTransitionState : public C3DAnimationStateBase { public:
     CIVCountedPointer StartState;
     CIVCountedPointer EndState;
     float Progress;
@@ -74,7 +74,7 @@ struct CShortVector {
     short* _M_start; short* _M_finish; short* _M_end_of_storage;
     unsigned int size() const { return _M_finish - _M_start; }
 };
-struct CTransitionBlendAlpha { float CurrentAlpha; float LastAlpha; };
+class CTransitionBlendAlpha { public: float CurrentAlpha; float LastAlpha; };
 struct CAlphaVector {
     CTransitionBlendAlpha* _M_start; CTransitionBlendAlpha* _M_finish; CTransitionBlendAlpha* _M_end_of_storage;
     const CTransitionBlendAlpha* begin() const { return _M_start; }

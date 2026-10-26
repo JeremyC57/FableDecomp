@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesForcePushDef {
+class CSpecialAbilitiesForcePushDef { public:
     int f0;
 };
 

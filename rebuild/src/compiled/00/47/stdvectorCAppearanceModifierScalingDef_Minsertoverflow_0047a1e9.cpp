@@ -21,7 +21,7 @@
 
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 
-struct CAppearanceModifierScalingDef {
+class CAppearanceModifierScalingDef { public:
     unsigned char _body[0x48];
     CAppearanceModifierScalingDef(const CAppearanceModifierScalingDef& other);                  // 0x004784B3
 };

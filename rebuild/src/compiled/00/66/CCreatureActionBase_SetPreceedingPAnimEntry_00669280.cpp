@@ -15,7 +15,7 @@
 // Layout: engine/CCreatureActionBase.h flattens the counted pointers into *_Data / *_Info words, so the member is modelled
 // locally as the CCountedPointer it is (offsets identical: +0x74 / +0x7C, size 0xB4).
 // Shape: /O2; the source Data / Info bound to locals first (ebx / edi loaded before the compare).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;                                         // +0x00
     void (__fastcall *Destroy)(void* item);              // +0x04
     void* Item;                                          // +0x08

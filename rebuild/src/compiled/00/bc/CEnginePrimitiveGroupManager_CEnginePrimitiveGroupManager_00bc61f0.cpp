@@ -13,7 +13,7 @@ struct CEnginePrimitiveManagerOcclusionBase {
     CEnginePrimitiveManagerOcclusionBase(void* argument);            // 0x00B90270
 };
 
-struct CEnginePrimitiveGroupManager : CEnginePrimitiveManagerOcclusionBase {
+class CEnginePrimitiveGroupManager : public CEnginePrimitiveManagerOcclusionBase { public:
     virtual void v00();
     CEnginePrimitiveGroupManager(void* argument);
 };

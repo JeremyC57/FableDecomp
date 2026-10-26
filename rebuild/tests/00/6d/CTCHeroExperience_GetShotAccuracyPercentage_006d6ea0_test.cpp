@@ -3,8 +3,8 @@
 // Model of CTCHeroExperience::GetShotAccuracyPercentage @ 0x006D6EA0: (long)((High - Low) * t + Low) with t the
 // stat weighting's parameter, through a counted copy of the combat def (count restored afterwards).
 static int g_destroyed = 0;
-struct CDefPointeeBase { long m_count; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() { } };
-template<class T> struct CDefPointer {
+class CDefPointeeBase { public: long m_count; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() { } };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_count; }
     explicit CDefPointer(T* p) : Object(p) { }
@@ -12,11 +12,11 @@ template<class T> struct CDefPointer {
     T* operator->() const { return Object; }
     bool IsValid() const { return Object != 0; }
 };
-struct CTCHeroExperience;
-struct CHeroAbilityStatWeight { float Value; float GetParameter(const CTCHeroExperience&) const { return Value; } };
-struct CFloatRange { float HighValue; float LowValue; };
-struct CHeroCombatDef : CDefPointeeBase { CFloatRange RangedAccuracyPercentWithStats; CHeroAbilityStatWeight RangedAccuracyWeighting; };
-struct CTCHeroExperience {
+class CTCHeroExperience;
+class CHeroAbilityStatWeight { public: float Value; float GetParameter(const CTCHeroExperience&) const { return Value; } };
+class CFloatRange { public: float HighValue; float LowValue; };
+class CHeroCombatDef : public CDefPointeeBase { public: CFloatRange RangedAccuracyPercentWithStats; CHeroAbilityStatWeight RangedAccuracyWeighting; };
+class CTCHeroExperience { public:
     CDefPointer<CHeroCombatDef> PHeroCombatDef;
     CTCHeroExperience(CHeroCombatDef* d) : PHeroCombatDef(d) { }
     long GetShotAccuracyPercentage() const

@@ -6,12 +6,12 @@ namespace NUISystem {
 struct CComponentRoot { virtual ~CComponentRoot() { Log(300); } };
 struct CComponentObserver { virtual void o000() {} unsigned char _data[0x10]; };
 struct CComponentListener { virtual void l000() {} };
-struct CComponent : CComponentRoot, CComponentObserver, CComponentListener {
+class CComponent : public CComponentRoot, public CComponentObserver, public CComponentListener { public:
     CComponent() {}
     virtual ~CComponent() { Log(200); }
 };
 struct CStateList { int m_tag; CStateList() : m_tag(7) {} ~CStateList() { Log(m_tag); } };
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
     long StatesBeingDone; long StatesDone; CStateList StatesToDo;
     CChangingStateComponent() {}
     virtual ~CChangingStateComponent() {}

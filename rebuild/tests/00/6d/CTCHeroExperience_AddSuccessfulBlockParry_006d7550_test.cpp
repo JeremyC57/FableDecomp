@@ -7,7 +7,7 @@ struct SubObj {
 
 int g_blockParryInt = 7;   // fild source
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     char pad[0x38];
     int field_38;
 

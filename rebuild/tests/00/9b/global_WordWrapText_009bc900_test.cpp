@@ -16,15 +16,15 @@ typedef unsigned short wchar_t;
 #define wchar_t unsigned short
 #endif
 
-struct C2DVector { float X, Y; };
-struct C2DBoxF {
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public:
     C2DVector TopLeft;                                  // +0x00
     C2DVector BottomRight;                              // +0x08
     float GetWidth() const { float left = TopLeft.X; float right = BottomRight.X; return right - left; }
 };
-struct CFontBank { };
+class CFontBank { public: };
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     CWideString(const CWideString& other);              // 0x0099B720

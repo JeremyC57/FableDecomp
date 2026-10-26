@@ -12,7 +12,7 @@
 struct CStaticBlock;
 struct CAnimatedBlock;
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     virtual void v00();
     unsigned char   _pad_0x04[0x40];       // +0x04 .. +0x44: MaterialIndex .. StaticBlockCount
     CStaticBlock*   StaticBlocks;          // +0x44

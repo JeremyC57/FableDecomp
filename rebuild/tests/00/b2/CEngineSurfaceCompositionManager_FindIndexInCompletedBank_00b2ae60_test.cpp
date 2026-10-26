@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString() { text[0] = 0; }
 };
@@ -10,12 +10,12 @@ static CCharString GFIntToCharString(long value) { CCharString s; std::sprintf(s
 static CCharString operator+(const CCharString& l, const CCharString& r) { CCharString s; std::strcpy(s.text, l.text); std::strcat(s.text, r.text); return s; }
 static CCharString operator+(const CCharString& l, const char* r) { CCharString s; std::strcpy(s.text, l.text); std::strcat(s.text, r); return s; }
 
-struct CEngineTextureMorph { long m_fromTexture; long m_toTexture; };
+class CEngineTextureMorph { public: long m_fromTexture; long m_toTexture; };
 static char g_key[64];
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     unsigned long FindIndex(const CCharString& name) { std::strcpy(g_key, name.text); return std::strcmp(name.text, "12-345") == 0 ? 7 : 0xffffffffu; }
 };
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     CGraphicDataBank m_completedBank;
     unsigned long FindIndexInCompletedBank(const CEngineTextureMorph* morph)
     {

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* m_pText;
     bool FastCompare(const CCharString& other) const { return std::strcmp(m_pText, other.m_pText) < 0; }
 };
@@ -28,7 +28,7 @@ struct CSymbolVectorMap {
     }
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     void* _padding_;
     CSymbolVectorMap SLONGMap;
     bool FindSymbol(const CCharString& name, long& value) const

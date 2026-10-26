@@ -5,14 +5,14 @@
 // WitnessesWillNotAttack +0x19, WitnessesWillOverrideFactionEnemy +0x1a.
 // Shape: `mov al ; test al,al` on the flag byte, the bool call tested with `test al,al`, `mov eax,1` / `xor eax,eax`
 // returns: a long result from `if (a && b) return 1; return 0;`.
-struct CThingAICreature;
+class CThingAICreature;
 
 struct CTCBase_008640c0 {
     virtual void v00();
     unsigned char _pad04[8];
 };
 
-struct CTCOpinionSource : CTCBase_008640c0 {
+class CTCOpinionSource : public CTCBase_008640c0 { public:
     unsigned char DefStack[0x0c];                   // +0x0c std::vector<long>
     bool          UseNavLineOfSight;                // +0x18
     bool          WitnessesWillNotAttack;           // +0x19

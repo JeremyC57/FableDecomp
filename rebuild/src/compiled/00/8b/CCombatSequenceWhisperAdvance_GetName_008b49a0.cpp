@@ -6,7 +6,7 @@
 // CCharString::CCharString(const char*, int) @ 0x0099ebf0 is a real __fastcall ctor
 // (ecx = this, args const char* and int on the stack, no edx).
 #include "engine/CCombatSequenceWhisperAdvance.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int len);
 };

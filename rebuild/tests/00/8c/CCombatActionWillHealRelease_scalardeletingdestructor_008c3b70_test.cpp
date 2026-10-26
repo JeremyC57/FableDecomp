@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_WillHealRelease {
+class CCombatAction_WillHealRelease { public:
     void* vftable;
     int destroyed;
 };

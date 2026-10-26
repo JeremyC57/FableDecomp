@@ -6,7 +6,7 @@ struct CThingManager_Calls {
     virtual CMinionRecord* GetMinionRecord(long thingId) { g_lookedUp = thingId; return &g_record; }
 };
 static CThingManager_Calls g_manager; static CThingManager_Calls* g_pThingManager_0143e8f8 = &g_manager;
-struct CScriptThing { long m_thingId; const long& GetThingId() const { return m_thingId; } };
+class CScriptThing { public: long m_thingId; const long& GetThingId() const { return m_thingId; } };
 struct CQ_DragonBossFightScript { unsigned char _pad[0x74]; long m_minionCount; unsigned char _pad2[0x94 - 0x74 - 4]; CScriptThing m_minion; };
 struct CDBMinion { unsigned char _pad[0x14]; CQ_DragonBossFightScript* ParentClass;
     void OnPredicateFail() {

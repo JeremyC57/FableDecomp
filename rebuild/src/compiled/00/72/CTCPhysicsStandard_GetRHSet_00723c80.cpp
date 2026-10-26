@@ -10,7 +10,7 @@
 //   schedules it one instruction later). The result is built by value from the two locals (user C3DVector copy ctor).
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -36,7 +36,7 @@ struct C3DVector {
         Z *= r;
     }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;           // +0x00
     C3DVector Forward;      // +0x0c
     CRightHandedSet() {}

@@ -11,7 +11,7 @@ extern long g_framesPerSecond;                  // 0x01375550
 extern float g_wanderShopsBuyDelay;             // 0x0138CE2C
 long __fastcall GFGetFrameCount();              // 0x0049D870
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
 };

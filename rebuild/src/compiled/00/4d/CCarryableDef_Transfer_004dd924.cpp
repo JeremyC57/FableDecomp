@@ -11,7 +11,7 @@
 //   straight after the three carry slots; the last member's address is the natural `add esi,48h ; push esi`).
 #pragma optimize("s", on)
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CPersistContext {
 public:

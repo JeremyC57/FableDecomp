@@ -1,7 +1,7 @@
 // Behaviour test for CStreamingFontDataBank::CloseFonts (0x00A5F2F0): loaded fonts are unloaded, every entry deleted, the table emptied and the file name cleared.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
@@ -14,7 +14,7 @@ public:
     virtual void Unload();                              // slot 3 (0x00A5F250)
 };
 
-template <class T> struct CArray {                      // retail CArray (STLport vector): first / last / end
+template <class T> class CArray { public:                      // retail CArray (STLport vector): first / last / end
     T* m_first;
     T* m_last;
     T* m_end;

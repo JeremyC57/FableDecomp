@@ -20,7 +20,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit);                   // 0x00410DE0 (std::bitset::test)
 };
@@ -52,7 +52,7 @@ struct CCountedPointer_PerItemData {
     void*         Info;
     void Reset(CPerItemData* object);      // 0x005C1946
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     unsigned char _pad[0x1c];
     long NumberOfKills;                    // +0x1c
     long TimeWielded;                      // +0x20
@@ -61,11 +61,11 @@ struct CTCWeapon {
 struct CTCAugmentations {
     void GetAugmentations(vector_long* out);   // 0x00766920
 };
-struct CTCTrophy {
+class CTCTrophy { public:
     unsigned char _pad[0x18];
     long WitnessesAhead;                   // +0x18
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;               // +0x20
     unsigned char _pad1[0x23];
@@ -82,7 +82,7 @@ struct CThing {
         return false;
     }
 };
-struct CQuestManager {
+class CQuestManager { public:
     bool IsBetweenQuestStartAndFinishScreens();  // 0x004AF290
 };
 extern CQuestManager* g_pQuestManager;     // 0x013B89FC

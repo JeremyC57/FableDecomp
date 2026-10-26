@@ -9,8 +9,8 @@
 #include <math.h>
 #pragma intrinsic(exp)
 
-struct CBaseObject;
-struct C3DVector {
+class CBaseObject;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -18,7 +18,7 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;   // 0x004C73D0
 };
 
@@ -28,7 +28,7 @@ struct CBaseIntelligentPointer {            // 8 bytes: vptr + item
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCreatureAction_BlockBase {
+class CCreatureAction_BlockBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer Owner;          // +0x08 (the owning creature)

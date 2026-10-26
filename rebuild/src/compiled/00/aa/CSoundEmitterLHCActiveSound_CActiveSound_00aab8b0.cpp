@@ -8,7 +8,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text);                 // 0x0099EC30
 };

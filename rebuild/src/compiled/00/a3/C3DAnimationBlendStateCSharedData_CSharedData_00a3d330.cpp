@@ -9,7 +9,7 @@
 // base whose vtable store this body inlines is modelled locally with the header's member name.
 // Shape: the base's implicit copy (its vtable, then IVRefCount) before the derived vtable; each pointer copied, then
 // null-tested on the stored register and add-ref'ed with `inc dword ptr [reg+N]`; `ret 4`.
-struct CIVCountedPointeeBase {                  // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                  // vtable 0x012354D0
     virtual void Destroy(int flags);
     virtual void Delete();
     unsigned long IVRefCount;                   // +0x04
@@ -17,10 +17,10 @@ struct CIVCountedPointeeBase {                  // vtable 0x012354D0
     void AddRef() { ++IVRefCount; }
 };
 
-struct C3DAnimationStateBase : CIVCountedPointeeBase {
+class C3DAnimationStateBase : public CIVCountedPointeeBase { public:
 };
 
-template <class T> struct CIVCountedPointer {   // intrusive: the pointee carries its own count
+template <class T> class CIVCountedPointer { public:   // intrusive: the pointee carries its own count
     T* m_pObject;
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject)
     {
@@ -35,7 +35,7 @@ struct SCountBlock {
     void* m_pObject;                            // +8
 };
 
-template <class T> struct CCountedPointer {     // non-intrusive: object + shared count block
+template <class T> class CCountedPointer { public:     // non-intrusive: object + shared count block
     T*           m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -45,18 +45,18 @@ template <class T> struct CCountedPointer {     // non-intrusive: object + share
     }
 };
 
-struct C3DAnimationStateAlpha;
-struct C3DSkeletalMorph;
+class C3DAnimationStateAlpha;
+class C3DSkeletalMorph;
 
-template <class T> struct CArray {              // retail CArray: first, last, end (12 bytes)
+template <class T> class CArray { public:              // retail CArray: first, last, end (12 bytes)
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
     CArray(const CArray& other);                // 0x00A3CDD0
 };
 
-struct C3DAnimationBlendState {
-    struct CSharedData : CIVCountedPointeeBase {                        // vtable 0x0129D1F8
+class C3DAnimationBlendState { public:
+    class CSharedData : public CIVCountedPointeeBase { public:                        // vtable 0x0129D1F8
         CIVCountedPointer<C3DAnimationStateBase> BaseAnimation;         // +0x08
         CArray<C3DAnimationStateAlpha>          CombinationBlends;     // +0x0c
         CCountedPointer<const C3DSkeletalMorph> SkeletalMorph;         // +0x18

@@ -10,8 +10,8 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteLong(long value);                     // 0x00993EB0
 };
 
-struct CTCInventoryMap {
-    struct CUIRegionInfo {
+class CTCInventoryMap { public:
+    class CUIRegionInfo { public:
         long Region;            // +0x00
         long Shops;             // +0x04
         long BarberShops;       // +0x08

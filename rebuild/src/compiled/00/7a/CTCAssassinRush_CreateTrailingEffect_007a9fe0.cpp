@@ -9,25 +9,25 @@
 // 0x006B8310. Literals 0x0126CFB0, 0x0126BC64, 0x0126CF9C, 0x0122D70E (""); CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Layout: Ego_r.pdb CTCAssassinRush less 4 past the 12-byte vector (PDef +0x14, AssassinTrail +0x18,
 // AssassinDisplacementTrail +0x20, SpellLevel +0x8c, RadialBlurFadeKey +0x98); retail def blur block +0x44..+0x64.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CSpecialEffectsDef {
+class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
@@ -73,7 +73,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -130,8 +130,8 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCInventoryAbilities { long GetAbilityMaximumLevel(long ability); };   // 0x005EDEA3 (interface 0x6F)
-struct CTCDParticleEmitter {                            // interface 0x4B
+class CTCInventoryAbilities { public: long GetAbilityMaximumLevel(long ability); };   // 0x005EDEA3 (interface 0x6F)
+class CTCDParticleEmitter { public:                            // interface 0x4B
     void SetAlwaysUpdate(bool on);                      // 0x006E0590
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
@@ -139,15 +139,15 @@ struct CEnvironmentSpellEffects {
     void* RadialBlurFadeTo(float strength, long mode, float a, float b, float c, float d, float e, float f);   // 0x006B8730
     void RadialBlurSetCenterWorldPos(void* key, const C3DVector& pos);   // 0x006B8310
 };
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char _pad00[0x1964];
     CEnvironmentSpellEffects* SpellEffects;             // +0x1964
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x18];
     CEnvironment* PEnvironment;                         // +0x18
 };
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     void*                    __vftable;                 // +0x00
     CThing*                  ParentThing;               // +0x04
     unsigned char            _pad08[0x14 - 0x08];

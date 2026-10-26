@@ -1,12 +1,12 @@
 // Behaviour test for 00594b59 (std::__insertion_sort over pair<long, CDefPointer<const CHeroAbilityDef> >): the range comes out ordered by key, every element moved whole, copies balanced.
 #include <cstdio>
 #include <new>
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
     long Id;
     long RefCount;                          // the def's reference count (+4 in retail)
 };
 static CHeroAbilityDef g_defs[8];
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     explicit CDefPointer(T* def) : m_pDef(def) { ++m_pDef->RefCount; }
     CDefPointer(const CDefPointer& o) : m_pDef(o.m_pDef) { ++m_pDef->RefCount; }

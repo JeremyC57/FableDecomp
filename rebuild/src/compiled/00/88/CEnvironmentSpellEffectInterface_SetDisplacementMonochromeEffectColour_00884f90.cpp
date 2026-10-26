@@ -4,7 +4,7 @@
 // after the first copy; `ret 8`.
 struct SColourF_00884f90 { float m_r, m_g, m_b, m_a; };   // 16 bytes
 
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     unsigned char     _pad[0x54];
     SColourF_00884f90 m_monochromeColour;          // +0x54
     unsigned char     _pad64[0x70];

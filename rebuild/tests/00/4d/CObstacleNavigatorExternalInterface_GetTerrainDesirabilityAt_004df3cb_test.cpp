@@ -3,7 +3,7 @@
 // Definition of the function-under-test (same lowering as retail).
 float g_terrainDesirability; // ds:0x122ded8
 
-struct CObstacleNavigatorExternalInterface {
+class CObstacleNavigatorExternalInterface { public:
     float GetTerrainDesirabilityAt(void* pos);
 };
 

@@ -15,8 +15,8 @@
 //        next-round arm returns through SetState(7) and the finish arm falls into the shared SetState(8), so the two
 //        calls tail-merge on `push 7 / push 8`; `(GameWon && best == 0.0f) || Counter < best` is the fucompp/jnp then
 //        fcomp/`test ah,5` pair; the stats pointer is zero-initialised.
-struct CCard;
-struct C2DVector { float X, Y; };
+class CCard;
+class C2DVector { public: float X, Y; };
 
 template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_start;
@@ -24,7 +24,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_end_of_storage;
     long size() const { return _M_finish - _M_start; }
 };
-struct CCardPositionsDef {
+class CCardPositionsDef { public:
     unsigned char _defbase[0x3c];               // CDefClassBase (retail 0x3c)
     CRetailVector<C2DVector> Offset;            // +0x3c
 };
@@ -37,7 +37,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameCardBaseDef : CDefVirtual, CRefCounted {
+class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x64];
     CRetailVector<CCardPositionsDef> CardOrders;   // +0x6c
     void ReleaseTemporary()
@@ -53,7 +53,7 @@ struct CDefPointer {
     CTavernGameCardBaseDef* operator->() const { return Object; }
 };
 
-struct CTCHeroStats {                           // retail layout (PDB - 0x18 here)
+class CTCHeroStats { public:                           // retail layout (PDB - 0x18 here)
     unsigned char _pad[0x178];
     float BestTimePairs;                        // +0x178
 };

@@ -39,7 +39,7 @@ struct CTargetingRangeMap {                          // STLport map<ETargetingTy
     CRangeConstIterator end() const { return CRangeConstIterator(_M_header); }
 };
 
-struct CTargetingDef {
+class CTargetingDef { public:
     unsigned char      _pad00[0x74];
     CTargetingRangeMap TargetingRanges;              // +0x74
     float GetTargetingRange(ETargetingType type) const

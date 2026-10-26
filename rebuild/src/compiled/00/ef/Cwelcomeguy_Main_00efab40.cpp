@@ -13,14 +13,14 @@
 //   inline and the post-start return calls 0x007E74D0 on its own (before the shrink-wrapped ebx push). The closeness test is an
 //   inline squared 2D distance of the two position references (the hero's fetched first, Me's copied nowhere) against 3.0f,
 //   negated (`test ah,5 ; jp`); a C2DVector-temporary form copies the hero's position to the frame first.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -51,7 +51,7 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     VPAD4(ma) VPAD1(mb)                                 // slots 1..5
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
@@ -63,12 +63,12 @@ namespace N_0099a380 { struct CBaseIntelligentPointer {                        /
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 }; } using N_0099a380::CBaseIntelligentPointer;
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
@@ -77,7 +77,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // 0x007E7300
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -86,7 +86,7 @@ struct CGameScriptInterface {
     VPAD256(ra) VPAD128(rb) VPAD16(rc) VPAD4(rd)                                     // slots 71..474
     virtual void EntitySetFacingAngleTowardsThing(const CScriptThing& thing, const CScriptThing& target, bool instant) const;   // slot 475 (+0x76c)
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

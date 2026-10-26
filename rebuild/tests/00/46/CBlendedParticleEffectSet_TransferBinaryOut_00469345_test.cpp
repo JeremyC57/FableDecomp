@@ -1,10 +1,10 @@
 #include <stdio.h>
 static char g_kind[8]; static float g_val[8]; static int g_n;
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value) { g_kind[g_n] = 'L'; g_val[g_n++] = (float)value; }
     void WriteFloat(float value) { g_kind[g_n] = 'F'; g_val[g_n++] = value; }
 };
-struct CBlendedParticleEffectSet {
+class CBlendedParticleEffectSet { public:
     long Particle1Index; float Particle1Value; long Particle2Index; float Particle2Value;
     void TransferBinaryOut(CDataOutputStream& out) const;
 };

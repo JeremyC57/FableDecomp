@@ -16,17 +16,17 @@
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 namespace std { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
-struct CThingManager {
+class CThingManager { public:
     void DeleteAllThings();                             // 0x0051FBA0
 };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     void RemoveNavigationMap(long map);                 // 0x00A155D0
 };
-struct CEngineManager {
+class CEngineManager { public:
     static CEngineManager& __fastcall Get();            // 0x00436FB0
     void RemoveMap(long map);                           // 0x006403D0
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -35,7 +35,7 @@ struct CWorld {
     CNavigatorManager* PNavigationManager;              // +0x48
 };
 struct __false_type { };
-struct CMapInfo {                                       // 0x48 bytes
+class CMapInfo { public:                                       // 0x48 bytes
     unsigned char _body[0x48];
     CMapInfo& operator=(const CMapInfo& other);         // 0x00513BF0
     void Clear();                                       // 0x004FDDE0
@@ -109,7 +109,7 @@ struct CLongArray {
         }
     }
 };
-struct CWorldMap {
+class CWorldMap { public:
     virtual ~CWorldMap();
     virtual void DeleteAllLevels();                     // slot 1
     long           f4;                                  // +0x04

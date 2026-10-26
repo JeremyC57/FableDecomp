@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngine {
+class CEngine { public:
   char pad[0x18];
   unsigned char active;
   unsigned long sceneId;

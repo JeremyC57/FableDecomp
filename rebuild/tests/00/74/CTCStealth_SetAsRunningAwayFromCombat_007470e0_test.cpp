@@ -3,11 +3,11 @@
 
 long g_FramesPerSecond = 15;
 
-struct CStealthDef {
+class CStealthDef { public:
     float RunningAwayFromCombatHangtimeSeconds;
 };
 
-struct CTCStealth {
+class CTCStealth { public:
     CStealthDef* PDef;
     long         RunningAwayFromCombatTimer;
     void SetAsRunningAwayFromCombat();

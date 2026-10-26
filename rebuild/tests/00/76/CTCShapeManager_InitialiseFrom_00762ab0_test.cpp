@@ -7,7 +7,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPointVector {
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;
     CPointVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
@@ -20,10 +20,10 @@ struct CPointVector {
     }
     ~CPointVector() { if (_M_start) free(_M_start); }
 };
-struct CTCShapeManager;
+class CTCShapeManager;
 struct CSubdivisionTriangle;
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00() { }
     CTCShapeManager* Owner;
     CPointVector Points;
@@ -43,7 +43,7 @@ struct CBasicShape : CShape {
 }
 static int g_destroyed = 0;
 void __fastcall Destroy_00763a10(void* object) { ++g_destroyed; }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long References;
     void (__fastcall* PfnDestroy)(void*);
     void* Object;
@@ -56,7 +56,7 @@ struct CShapePointer {
     CShapePointer(const CShapePointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
     ~CShapePointer() { if (Info && --Info->References == 0) Info->PfnDestroy(Info->Object); }
 };
-struct CTCShapeManager {
+class CTCShapeManager { public:
     virtual void v00() { }
     void*          ParentThing;
     bool           ToBeRemoved;

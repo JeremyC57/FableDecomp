@@ -3,7 +3,7 @@
 // Leaf: ??_GCFilteredEventContainer_007441a0@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: the member's vtable store, the out-of-line base destructor, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CAnimFilterBase {                           // vtable 0x0122FFCC
+class CAnimFilterBase { public:                           // vtable 0x0122FFCC
     virtual void v00();
     ~CAnimFilterBase() { }                         // inline: the vtable store
 };

@@ -4,7 +4,7 @@
 enum EOpinionReactionType { OPINION_REACTION_TYPE_NONE = 0, OPINION_REACTION_TYPE_FEAR = 3 };
 enum EOpinion { OPINION_NONE = 0, OPINION_MORALITY = 2 };
 
-struct CReactionMatch {
+class CReactionMatch { public:
     EOpinionReactionType ReactionType;
     CReactionMatch(EOpinionReactionType type) : ReactionType(type) {}
     virtual long GetMatchType() const { return 0; }

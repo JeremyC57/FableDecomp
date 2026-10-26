@@ -1,4 +1,4 @@
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void* vftable;
 };
 

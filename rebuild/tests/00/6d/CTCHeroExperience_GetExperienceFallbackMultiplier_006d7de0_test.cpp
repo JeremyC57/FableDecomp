@@ -2,8 +2,8 @@
 
 // Model of CTCHeroExperience::GetExperienceFallbackMultiplier @ 0x006D7DE0:
 // lookup(max(1, (long)(param / perUnit + 0.5))).
-struct CHeroExperienceDef { float ExperienceMultiplierParamPerUnitComboMultiplier; };
-struct CTCHeroExperience {
+class CHeroExperienceDef { public: float ExperienceMultiplierParamPerUnitComboMultiplier; };
+class CTCHeroExperience { public:
     float ExperienceMultiplierParam; CHeroExperienceDef* PDef; long lastLookup;
     long GetExperienceFallbackMultiplierForMultiplier(long multiplier) { lastLookup = multiplier; return multiplier * 10; }
     long GetExperiencePickUpMultiplier() const

@@ -11,23 +11,23 @@ static int g_armed, g_deletes, g_destroys;
 void __cdecl operator delete(void* p) throw() { if (g_armed) ++g_deletes; }   // test spy (never frees)
 
 
-struct CCharStringData {
+class CCharStringData { public:
     char*         m_pData;                                  // +0
     unsigned long m_length;                                 // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetPString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pData; }
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CCPPointerInfo {                                     // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                     // PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                   // +0
     CCPPointerInfo* Info;                                   // +4
     T* operator->() const { return Data; }
@@ -45,18 +45,18 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     bool HasDummyObject(unsigned long key) const;           // 0x00A2EA60
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     CCountedPointer<const C3DMeshStats> GetMeshStats() const;   // 0x00A25530
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     const C3DMeshInfo* GetMeshInfo(long index);             // 0x00A24270
 };
 extern CMeshDataBank* g_pMeshDataBank;                      // 0x013B8A04
 
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     long  m_header;
     void* Data;
 };
@@ -65,7 +65,7 @@ namespace NGraphicAppearance {
 
 enum EPrimitiveType { PRIMITIVE_TYPE_0, PRIMITIVE_TYPE_MESH_1, PRIMITIVE_TYPE_MESH_2 };
 
-struct CPrimitive {
+class CPrimitive { public:
     EPrimitiveType         Type;                            // +0x0
     CEnginePrimitiveHandle PrimitiveHandle;                 // +0x4
     long                   BankIndex;                       // +0xC
@@ -77,7 +77,7 @@ struct CPrimitiveListNode {
     CPrimitive          _M_data;
 };
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     unsigned char       _pad00[0x38];
     CPrimitiveListNode* Primitives;                         // +0x38 STLport list<CPrimitive> (sentinel)
     const CPrimitive* GetFirstPrimitiveWithDummyObject(const CCharString& name) const;

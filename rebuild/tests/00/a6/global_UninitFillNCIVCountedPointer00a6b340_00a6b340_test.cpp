@@ -2,7 +2,7 @@
 #include <new>
 
 // Model of 0x00A6B340: placement-copy `count` intrusive CIVCountedPointer handles (no allocator argument, `ret 4`).
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() { }
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : IVRefCount(1) { }

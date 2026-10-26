@@ -5,13 +5,13 @@
 // Shape: the two GetPBestThing<Filter, Compare> instantiations have same-TU out-only stand-in bodies that read the
 //   comparator's position by value, so neither the out pointer nor the comparator temporary escapes: VC7.1 then stores
 //   the out pointer's zero after loading the creature and loads the whole position before the stores (as retail).
-struct CTCBase;
+class CTCBase;
 
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 extern long g_framesPerSecond;                  // 0x01375550
 extern long g_flyingMode;                       // 0x0129CBA4 (the mode compared by BirdGroundWander too)
 
-struct CWorld {
+class CWorld { public:
     static long GetFramesPerSecond() { return g_framesPerSecond; }
 };
 
@@ -41,7 +41,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 #pragma auto_inline(on)
 
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -58,30 +58,30 @@ struct CThing {
     }
 };
 
-struct C3DVector { float X, Y, Z; };
-struct CThingPhysical : CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThingPhysical : public CThing { public:
     const C3DVector& GetPosition() const;       // 0x006A4D00
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
 };
-struct CThingFilter_None { CThingFilter_None() {} };
+class CThingFilter_None { public: CThingFilter_None() {} };
 struct CThingFilter_DefName {
     CCharString DefName;
     CThingFilter_DefName(const CCharString& name) : DefName(name) {}
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector Position;
     CThingCompare_Nearest(const C3DVector& position) : Position(position) {}
 };
-struct CThingSearchTools;
+class CThingSearchTools;
 CThingPhysical* FindBest_009142B0(CThingSearchTools* tools, float x, float y, float z);
 CThingPhysical* FindBest_00914330(CThingSearchTools* tools, const CThingFilter_DefName& filter, float x, float y, float z);
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestThing(const CThingFilter_None& filter, const CThingCompare_Nearest& compare, CThingPhysical** out);      // 0x009142B0
     bool GetPBestThing(const CThingFilter_DefName& filter, const CThingCompare_Nearest& compare, CThingPhysical** out);   // 0x00914330
 };
@@ -116,16 +116,16 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return seed % range;
 }
 
-struct CTCCreatureModeManager {                 // interface 7
+class CTCCreatureModeManager { public:                 // interface 7
     long GetCurrentModeType();                  // 0x006CB6A0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingPhysical* Creature;                   // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

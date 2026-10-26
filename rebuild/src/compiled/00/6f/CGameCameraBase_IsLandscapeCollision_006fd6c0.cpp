@@ -18,8 +18,8 @@ class C3DVector { public:
     float Length() const { return (float)sqrt(X * X + (Y * Y + Z * Z)); }
     C3DVector& AccurateNormalise();                                    // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct CWorldMap { float GetGroundSizeZAt(const C3DVector& pos) const; };   // 0x0063A300
-struct CWorld {
+class CWorldMap { public: float GetGroundSizeZAt(const C3DVector& pos) const; };   // 0x0063A300
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap() const;              // slot 12

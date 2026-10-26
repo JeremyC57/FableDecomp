@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CNavRegion;
+class CNavRegion;
 
-struct CNavSwitchableLeafNode {
+class CNavSwitchableLeafNode { public:
     int field_0;
     int field_4;
     CNavRegion* region;   // +8

@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_TavernServer::IsServingPointValid (0x00967250): copy of the model + logic.
 #include <cstdio>
 
-struct CTCBase { long seatLimit; };
+class CTCBase { public: long seatLimit; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -15,7 +15,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -33,7 +33,7 @@ struct CThing {
     }
 };
 
-struct CTCTavernTable : CTCBase {
+class CTCTavernTable : public CTCBase { public:
     bool IsSeatValid(long seatIndex) { return seatIndex >= 0 && seatIndex < seatLimit; }
 };
 

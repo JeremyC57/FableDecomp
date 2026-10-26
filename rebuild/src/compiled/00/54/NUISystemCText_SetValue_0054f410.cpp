@@ -12,7 +12,7 @@
 //   (name descriptive), which places its load after the conversion call and before Calc, as retail.
 unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
 
-struct CCharStringData {
+class CCharStringData { public:
     char* PData;                                    // +0x00
     unsigned long StringLength;                     // +0x04
 };
@@ -39,12 +39,12 @@ public:
     unsigned long GetTagFromCRC(unsigned long crc) const;   // 0x009CC410
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;        // +0x14
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char _pad00[0x60];
     NGameText::CDataBank* PGameTextDataBank;        // +0x60
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }

@@ -92,14 +92,14 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCreatureActionBase {                // engine/CCreatureActionBase.h exists but is not used: only PCreature and the base call are modelled (retail 0xa8 bytes, PDB 0xb4)
+class CCreatureActionBase { public:                // engine/CCreatureActionBase.h exists but is not used: only PCreature and the base call are modelled (retail 0xa8 bytes, PDB 0xb4)
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     long GetAnimationTransitionOutTime() const;   // 0x006924C0 (base, non-virtual call here)
 };
 
-struct CCreatureAction_FireMissileWeapon : CCreatureActionBase {
+class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:
     long GetAnimationTransitionOutTime() const;
 };
 

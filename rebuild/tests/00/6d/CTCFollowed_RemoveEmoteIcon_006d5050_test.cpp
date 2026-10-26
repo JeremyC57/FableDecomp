@@ -2,7 +2,7 @@
 // shows the global follower icon gets SetEmoteIcon(1, 0, 0.0f, 1.0f, 0xFF); any other icon, or no component, is left.
 #include <cstdio>
 
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     long EmoteIcon;
     int  calls; int lastPriority; long lastIcon; float lastTime; float lastScale; unsigned char lastAlpha;
     void SetEmoteIcon(int priority, long icon, float t, float scale, unsigned char alpha)
@@ -10,12 +10,12 @@ struct CTCEmoteIcon {
 };
 struct CGlobalGameDef { long FollowerEmoteIcon; };
 struct CDefinitions { CGlobalGameDef* PGlobalDef; };
-struct CThing {
+class CThing { public:
     CTCEmoteIcon* m_icon;
     bool HasInterface(long) const { return m_icon != 0; }
     CTCEmoteIcon* GetInterface(long) { return m_icon; }
 };
-struct CTCFollowed {
+class CTCFollowed { public:
     CDefinitions* m_defs;
     CDefinitions* GetDefinitions() { return m_defs; }
     void RemoveEmoteIcon(CThing& follower)

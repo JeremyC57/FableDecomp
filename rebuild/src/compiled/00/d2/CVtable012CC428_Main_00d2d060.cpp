@@ -7,7 +7,7 @@
 #include "engine/CGameScriptInterface.h"
 #include "engine/CBaseObject.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
-struct CCPPointerInfo {unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
+class CCPPointerInfo { public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
 extern const unsigned char ResourceBaseVTable[]; //0126008C genuine CScriptGameResourceObjectBase
 extern const unsigned char ResourceVTable[]; //0127094C
 // Generated resource header flattens CBaseObject. This field-free API binds the

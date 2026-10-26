@@ -1,6 +1,6 @@
 // _Ucopy forwarder. __fastcall, this=vector* (ecx). 3 stack params (ret 0xc).
 // Forwards to a helper subobject at this+0x90, reordering the args.
-struct CCharString;
+class CCharString;
 
 struct TreeIter { void* _Ptr; };
 

@@ -1,6 +1,6 @@
 // Behaviour test for 0x006614F0 GFWorld3DDistanceSmallerThan (model copy)
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 bool SmallerThan(const C3DVector& a, const C3DVector& b, float distance)
 {
     float dx = a.X - b.X;

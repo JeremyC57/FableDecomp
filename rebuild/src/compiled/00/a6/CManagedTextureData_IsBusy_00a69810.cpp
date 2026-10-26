@@ -10,8 +10,8 @@ struct CTextureResource
     bool CheckBusy();   // __fastcall @ 0x9f9d50
 };
 
-struct CManagedTextureData
-{
+class CManagedTextureData
+{ public:
     char pad00[0x20];
     CTextureResource* resource;   // +0x20
     char pad24[0x4a - 0x24];

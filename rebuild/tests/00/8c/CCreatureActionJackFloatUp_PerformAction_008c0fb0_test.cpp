@@ -5,12 +5,12 @@
 #include <cstring>
 #include <cmath>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 static int g_creates = 0, g_attaches = 0, g_deps = 0; static long g_types[8]; static CThing* g_dep = 0;
 static CThing* g_attachTo = 0; static long g_attachType = 0; static char g_helper[32]; static long g_animAsked = -1;
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} };
-struct CSpecialEffectsDef {
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
+class CSpecialEffectsDef { public:
     long m_refCount; int Destroyed; const char* K1; long T1; const char* K2; long T2;
     void Destroy() { ++Destroyed; }
     bool GetEffectFromString(const CCharString& n, long& type) const
@@ -20,8 +20,8 @@ struct CSpecialEffectsDef {
         return false;
     }
 };
-template <class T> struct CDefPointer { T* m_p; CDefPointer() : m_p(0) { } };
-struct CDefClassBase {
+template <class T> class CDefPointer { public: T* m_p; CDefPointer() : m_p(0) { } };
+class CDefClassBase { public:
     long m_refCount; int Destroyed; CSpecialEffectsDef* Effects;
     void Destroy() { ++Destroyed; }
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>& out) { if (!Effects) return false; ++Effects->m_refCount; out.m_p = Effects; return true; }
@@ -32,11 +32,11 @@ struct CDefClassReference {
     ~CDefClassReference() { if (m_p && --m_p->m_refCount == 0) m_p->Destroy(); }
     CDefClassBase* operator->() const { return m_p; }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* t, long type, const CCharString& h, long, float) { g_attachTo = t; g_attachType = type; std::strcpy(g_helper, h.s); ++g_attaches; }
 };
 struct CTCAD { void AddDependentThing(CThing* t) { g_dep = t; ++g_deps; } };
-struct CThing {
+class CThing { public:
     unsigned char m_flags91; CDefClassBase* m_pDef; C3DVector Pos; float Duration; CTCAD* AD; CTCDParticleEmitter* PTCDriver; bool Has4B;
     const C3DVector& GetPosition() const { return Pos; }
     float GetAnimDuration(long a) { g_animAsked = a; return Duration; }
@@ -46,12 +46,12 @@ struct CThing {
 static CThing g_effect;
 CThing* CreateEffectThing(long type, const C3DVector*, bool) { g_types[g_creates++] = type; return &g_effect; }
 struct CPtr { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CPtr PCreature; float RunningTimeSeconds; long AnimIndex;
     long GetAnimationIndex() { return AnimIndex; }
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_JackFloatUp : CCombatActionBase { float FloatHeight, FloatSpeed; bool Moving; float StartHeight; void PerformAction(); };
+class CCreatureAction_JackFloatUp : public CCombatActionBase { public: float FloatHeight, FloatSpeed; bool Moving; float StartHeight; void PerformAction(); };
 
 void CCreatureAction_JackFloatUp::PerformAction()
 {

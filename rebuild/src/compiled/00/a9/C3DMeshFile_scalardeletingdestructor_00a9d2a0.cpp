@@ -1,4 +1,4 @@
-struct C3DMeshFile {
+class C3DMeshFile { public:
     void* vftable;
 };
 

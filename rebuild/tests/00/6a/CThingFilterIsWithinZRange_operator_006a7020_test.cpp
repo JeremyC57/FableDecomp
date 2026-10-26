@@ -1,10 +1,10 @@
 // Behaviour test for 0x006A7020 CThingFilter_IsWithinZRange::operator()
 #include <cstdio>
 #include <math.h>
-struct C3DVector { float x, y, z; };
-struct CTCPhysicsBase { C3DVector m_position; };
-struct CThing { CTCPhysicsBase* PhysicsTC; };
-struct CThingFilter_IsWithinZRange {
+class C3DVector { public: float x, y, z; };
+class CTCPhysicsBase { public: C3DVector m_position; };
+class CThing { public: CTCPhysicsBase* PhysicsTC; };
+class CThingFilter_IsWithinZRange { public:
     float Z;
     float Range;
     bool operator()(CThing* thing) const

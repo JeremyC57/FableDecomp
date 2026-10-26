@@ -5,7 +5,7 @@ struct CArchive {
 struct CThingDef {
     void Transfer(CArchive* ar);
 };
-struct CThingNoiseDef : public CThingDef {
+class CThingNoiseDef : public CThingDef { public:
     char extra[0x70];
     int noise;
     void Transfer(CArchive* ar);

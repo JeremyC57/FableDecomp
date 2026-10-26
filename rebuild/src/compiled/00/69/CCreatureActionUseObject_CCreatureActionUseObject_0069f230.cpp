@@ -9,11 +9,11 @@
 // Shape: one zero register (ebx) feeds the two pushed base arguments, the sound pair and every cleared member. Proximity
 // is stored from that integer register too, so it is modelled as a dword (a float member zeroed in an initialiser is an
 // immediate store).
-struct CThing;
-struct CThingCreatureBase;
-struct CTCPhysicsBase;
+class CThing;
+class CThingCreatureBase;
+class CTCPhysicsBase;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -30,13 +30,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* creature, const CSoundPair& sounds, long a, long b);   // 0x00693C70
 };
 
-struct CCreatureAction_UseObject : CCreatureActionBase {
+class CCreatureAction_UseObject : public CCreatureActionBase { public:
     CIntelligentPointer PUsedThing;         // +0xa8
     CTCPhysicsBase* PreviousPhysicsComponent;   // +0xb0
     unsigned char Dummy[0x18];              // +0xb4 CRightHandedSet

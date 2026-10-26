@@ -2,8 +2,8 @@
 // CShopItemDefVector::resize(n): resize(n, CShopItemDef()) -- the default temporary is built, passed, then destroyed
 static long g_ctor, g_dtor, g_root, g_calls, g_n; static bool g_valueOk;
 struct CBase_009fc550 { virtual void v00() { } ~CBase_009fc550() { ++g_root; } };
-struct CDefPointeeBase : CBase_009fc550 { virtual void v00() { } ~CDefPointeeBase() { } };
-struct CShopItemDef : CDefPointeeBase {
+class CDefPointeeBase : public CBase_009fc550 { public: virtual void v00() { } ~CDefPointeeBase() { } };
+class CShopItemDef : public CDefPointeeBase { public:
     long Type; float Quantity;
     virtual void v00() { }
     CShopItemDef() : Type(0), Quantity(0.0f) { ++g_ctor; }

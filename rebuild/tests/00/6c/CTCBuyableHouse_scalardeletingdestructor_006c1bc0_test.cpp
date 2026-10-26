@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCBuyableHouse {
+class CTCBuyableHouse { public:
     void* vftable;
     int destroyed;
 };

@@ -11,7 +11,7 @@
 // overlap). The second member's address is formed in place (`add esi,0x24 ; push esi`,
 // GOTCHAS). The second argument is unused by this body. Member types follow the default's
 // store width. One of 9 bodies of this shape.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer_004045c0(const char* name, signed char& value, const signed char& defaultValue);   // 0x004045C0
     void Transfer_004106f0(const char* name, long& value, const long& defaultValue);   // 0x004106F0
 };

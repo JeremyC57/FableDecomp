@@ -25,12 +25,12 @@ struct CBase {
     virtual ~CBase();
     CBase();                                // 0x0099A2D0
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long m_format;
     void Initialise(long format);               // 0x009E3830
     unsigned long GetByteColourDepth() const;   // 0x009E3800
 };
-struct CVolume : CBase {
+class CVolume : public CBase { public:
     IDirect3DVolume9* m_pVolume;
     unsigned long GetByteLength() const;
 };

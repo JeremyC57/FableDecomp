@@ -15,9 +15,9 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CThing;
-struct CCharStringData;
-struct CCharString {
+class CThing;
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();
@@ -42,7 +42,7 @@ struct CHousePositionVector {
     SHousePosition* _M_end_of_storage;
     CHousePositionVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct CSpecialAbilitiesDrunkennessDef;
+class CSpecialAbilitiesDrunkennessDef;
 struct CDrunkennessDefPointer {
     const CSpecialAbilitiesDrunkennessDef* Object;
     CDrunkennessDefPointer() : Object(0) {}
@@ -51,7 +51,7 @@ struct CPrimitiveHandleBase {
     virtual void h00();
     CPrimitiveHandleBase();                          // 0x0099A2D0
 };
-struct CEnginePrimitiveHandle : CPrimitiveHandleBase {   // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CPrimitiveHandleBase { public:   // vtable 0x0122F598
     long Handle;                                     // +0x04
     __forceinline CEnginePrimitiveHandle() : Handle(0) {}
     virtual void h00();
@@ -65,7 +65,7 @@ struct CMarriageList {                               // STLport list<CHeroMarria
 
 struct CRenownLevelVector { long* _M_start; long* _M_finish; long* _M_end_of_storage;
     unsigned long size() const { return _M_finish - _M_start; } };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char      _pad00[0x3c];
     long               MaxStamina;                   // +0x3c
     unsigned char      _pad40[0x68 - 0x40];
@@ -77,13 +77,13 @@ struct CDefinitionHolder {
     unsigned char  _pad_0x00[0xdc];
     CHeroStatsDef* PHeroStatsDef;                    // +0xdc
 };
-struct CWorld { unsigned long* GetRandomSeed();     // 0x0049D810
+class CWorld { public: unsigned long* GetRandomSeed();     // 0x0049D810
 };
-struct CWorldMap { long GetNoMaps() const;           // 0x004FB470
+class CWorldMap { public: long GetNoMaps() const;           // 0x004FB470
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[4];
@@ -93,7 +93,7 @@ struct CTCBase {
     CDefinitionHolder* GetDefinitions() const;       // 0x006869D0
 };
 
-struct CTCHeroStats : CTCBase {
+class CTCHeroStats : public CTCBase { public:
     CCrimeMap                OutstandingCrimes;             // +0xc
     CLongVector              ExperienceSpentOn;             // +0x18
     long                     NumberOfDecapitations;

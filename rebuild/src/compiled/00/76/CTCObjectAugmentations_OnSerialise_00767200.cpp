@@ -16,8 +16,8 @@
 // MaximumNumberOfSlots +0x2c.
 // Leaf: OnSerialise
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
@@ -43,7 +43,7 @@ struct CCharStringVector {                              // STLport vector<CCharS
     CCharString* begin() { return _M_start; }
     CCharString& operator[](unsigned long n) { return *(begin() + n); }
 };
-struct CDefString {
+class CDefString { public:
     long ID;
     CDefString() { }
 };
@@ -51,7 +51,7 @@ struct CDefStringTable {
     CCharString GetString(CDefString id);               // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
@@ -64,12 +64,12 @@ struct CDefBase {
     virtual CDefString GetDefName() const;              // slot 10 (+0x28)
     mutable long m_refCount;                            // +0x04
 };
-struct CThingBaseDef : CDefBase { };
-struct CObjectAugmentationsDef : CDefBase {
+class CThingBaseDef : public CDefBase { public: };
+class CObjectAugmentationsDef : public CDefBase { public:
     unsigned char _pad08[0x2c - 0x08];
     long          MaximumNumberOfSlots;                 // +0x2c
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     T* operator->() const { return Object; }
@@ -83,13 +83,13 @@ struct CDefPointerVector {                              // STLport vector<CDefPo
     CDefPointer<const CThingBaseDef>& operator[](unsigned long n) { return *(begin() + n); }
     void resize(unsigned long n, const CDefPointer<const CThingBaseDef>& value);   // 0x0076BF80
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
     bool GetDef(const CCharString& name, CDefPointer<const CThingBaseDef>& out);   // 0x00528760
 };
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-struct CThing;
-struct CTCObjectAugmentations {
+class CThing;
+class CTCObjectAugmentations { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08

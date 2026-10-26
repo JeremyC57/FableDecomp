@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CTCCameraPointFixedDolly
-{
+class CTCCameraPointFixedDolly
+{ public:
     void* vftable;
 };
 extern void* const g_CTCCameraPointFixedDolly_vftable;

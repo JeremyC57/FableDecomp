@@ -12,7 +12,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                                  // 0x0099EAE0
     CCharString& operator=(const CCharString& other);                // 0x0099EFB0
@@ -57,7 +57,7 @@ public:
 
 class CChunkedFileLoader;
 
-struct C3DAnimFileTimingEventChunk {
+class C3DAnimFileTimingEventChunk { public:
     virtual ~C3DAnimFileTimingEventChunk();
     unsigned char _base_body[0x0C];                 // +0x04 .. +0x0F (CChunkedFileChunk: type, parent)
     CCharString Name;                               // +0x10

@@ -1,6 +1,6 @@
 // Behaviour test for 0x0095FE60: InitStateGroup resets every reaction field.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CIP { CThing* p; };
 struct CRoot { CIP ThingReactingTo; long CurrentDeedType; long CurrentDeedHandle; bool DeedIsVirtual;
     unsigned long LastUIDLo, LastUIDHi; long LastOpinionSourceVirtualDeedID; bool DeliveredReaction; bool DeliveredSpeech;

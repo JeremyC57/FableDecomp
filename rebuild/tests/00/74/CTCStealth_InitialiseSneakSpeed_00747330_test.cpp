@@ -1,8 +1,8 @@
 // Behaviour test for 0x00747330 CTCStealth::InitialiseSneakSpeed (copy of the source logic over spy callees).
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* m_pData; CCharStringData store;
     CCharString() : m_pData(0) {}
     CCharString(const char* t, long = -1) { store.m_pData = t; store.m_length = (unsigned long)std::strlen(t); m_pData = &store; }
@@ -12,12 +12,12 @@ struct CCharString {
 };
 static unsigned long Calc_004014a0(unsigned long seed, const void* data, unsigned long length)
 { const unsigned char* p = (const unsigned char*)data; for (unsigned long i = 0; i < length; ++i) seed = seed * 33 + p[i]; return seed; }
-struct CAnimFilterBase { virtual ~CAnimFilterBase() {} };
-struct CAnimFilterOfGroup : CAnimFilterBase {
+class CAnimFilterBase { public: virtual ~CAnimFilterBase() {} };
+class CAnimFilterOfGroup : public CAnimFilterBase { public:
     CCharString Group; unsigned long GroupCRC;
     CAnimFilterOfGroup(const CCharString& group) : Group() { Group = group; GroupCRC = Calc_004014a0(0, group.GetPString(), group.GetLength()); }
 };
-struct CAnimationEntry { long AnimID; };
+class CAnimationEntry { public: long AnimID; };
 static CAnimationEntry g_entry = { 17 };
 static float g_scale = 2.0f, g_length = 1.5f, g_duration = 0.5f;
 static char g_askName[32], g_askGroup[32]; static unsigned long g_askCRC = 0;
@@ -35,7 +35,7 @@ public:
     float GetAnimDuration(long anim) { return anim == 17 ? g_duration : -1.0f; }
 };
 static long g_framesPerSecond = 30;
-struct CTCStealth {
+class CTCStealth { public:
     CThingCreatureBase* ParentThing;
     float MaxSneakingSpeed;
     void InitialiseSneakSpeed();

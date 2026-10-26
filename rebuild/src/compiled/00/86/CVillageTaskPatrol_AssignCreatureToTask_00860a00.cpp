@@ -6,7 +6,7 @@
 // the temporary is built in the 8-byte frame (base ctor, then the argument push, the CIntelligentPointer vtable 0x01237F1C,
 // SetPItem), the inline operator= forwards GetPItem() to the member's SetPItem, and the temporary's base destructor runs
 // (the compiler-generated derived destructor stores no vtable). Member names from CVillageTaskPatrol.h.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -23,7 +23,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(CThing* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CVillageTaskPatrol {
+class CVillageTaskPatrol { public:
     virtual void v00();
     void*               m_pVillage;                 // +0x04
     CIntelligentPointer PatrolStart;                // +0x08

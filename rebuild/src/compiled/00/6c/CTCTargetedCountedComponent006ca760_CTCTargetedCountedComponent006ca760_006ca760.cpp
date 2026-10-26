@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                              // +4
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _pad[8];                      // +4..+0xb
     ~CTCBase();                                 // 0x00686830

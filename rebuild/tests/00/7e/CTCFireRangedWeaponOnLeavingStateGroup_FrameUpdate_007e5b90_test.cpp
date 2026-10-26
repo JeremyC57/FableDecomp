@@ -2,7 +2,7 @@
 #include <cstdio>
 
 class CTCBase;
-struct CCombatActionBase { int id; };
+class CCombatActionBase { public: int id; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -57,8 +57,8 @@ public:
     bool SetCurrentAction(CCombatActionBase* action) { if (!accepts) return false; current = action; return true; }
 };
 
-struct CTCCarrying { CThing* primary; CThing* GetThingInPrimarySlot() { return primary; } };
-struct CTCWeapon {
+class CTCCarrying { public: CThing* primary; CThing* GetThingInPrimarySlot() { return primary; } };
+class CTCWeapon { public:
     bool projectile, loaded, fire;
     bool IsProjectileWeapon() { return projectile; }
     bool IsProjectileWeaponLoaded() { return loaded; }
@@ -67,12 +67,12 @@ struct CTCWeapon {
 
 static int g_attemptCalls = 0;
 static bool g_attemptFlag = false;
-struct CCombatManager {
+class CCombatManager { public:
     CCombatActionBase* next;
     CCombatActionBase* GetNextActionForCreature(CThingCreatureBase*) { return next; }
     void SetCreatureAsAttemptedToPerformedAction(CThingCreatureBase*, bool performed) { ++g_attemptCalls; g_attemptFlag = performed; }
 };
-struct CWorld {
+class CWorld { public:
     CCombatManager* PCombatManager;
     CCombatManager* GetPCombatManager() { return PCombatManager; }
 };

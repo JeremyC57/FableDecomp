@@ -4,8 +4,8 @@
 typedef int ERendered;
 typedef int EEngineRenderLayer;
 
-struct CEngineInternalPrimitiveBase { int tag; };
-struct CEngineSubPrimitiveChain { int dummy; };
+class CEngineInternalPrimitiveBase { public: int tag; };
+class CEngineSubPrimitiveChain { public: int dummy; };
 
 
 static int g_helperCalls = 0;

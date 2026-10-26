@@ -3,7 +3,7 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void PostAddScriptedEntities() { Log("gpost"); }
     const char* GetActiveQuestName() { return "Q_EndGameBossBattle"; }
     void GiveHeroQuestCardDirectly(const char* card, const char* quest, bool b) { Log(card); Log(quest); if (b) Log("badargs"); }

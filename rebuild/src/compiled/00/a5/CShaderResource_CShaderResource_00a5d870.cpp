@@ -14,9 +14,9 @@ struct CBaseClassNonCopyable {                  // vtable 0x0129A7C4
     CBaseClassNonCopyable();                    // 0x0099A2F0
 };
 
-struct CShaderDataBank;
-struct CShaderRenderManager;
-struct CShaderBase;
+class CShaderDataBank;
+class CShaderRenderManager;
+class CShaderBase;
 struct _D3DVERTEXELEMENT9;
 
 template <class T> struct CAllocator {         // STLport allocator<T>: empty
@@ -39,16 +39,16 @@ template <class T> struct CSTLportVector : CVectorBase<T> {     // STLport vecto
     explicit CSTLportVector(const CAllocator<T>& alloc = CAllocator<T>()) : CVectorBase<T>(alloc) { }
 };
 
-template <class T> struct CArray : CSTLportVector<T> { };
+template <class T> class CArray : public CSTLportVector<T> { public: };
 
 
-struct CVertexShaderInput {                     // vtable 0x0129EA08, 0x1c bytes
+class CVertexShaderInput { public:                     // vtable 0x0129EA08, 0x1c bytes
     virtual ~CVertexShaderInput();
     unsigned char _body[0x18];
     CVertexShaderInput();                       // 0x00AB3B10
 };
 
-struct CShaderResource : CBaseClassNonCopyable {    // vtable 0x0129D580
+class CShaderResource : public CBaseClassNonCopyable { public:    // vtable 0x0129D580
     CShaderDataBank*      ShaderBank;               // +0x04
     CArray<CShaderBase*>  Shaders;                  // +0x08
     CShaderRenderManager* ShaderRenderManager;      // +0x14

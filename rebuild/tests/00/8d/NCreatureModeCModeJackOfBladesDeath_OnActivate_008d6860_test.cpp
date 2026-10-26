@@ -2,8 +2,8 @@
 #include <cstring>
 #include <cstdlib>
 
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct CThing { C3DVector pos; const C3DVector& GetPosition() { return pos; } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class CThing { public: C3DVector pos; const C3DVector& GetPosition() { return pos; } };
 struct CModeBase { virtual ~CModeBase() { } CThing* thing; };
 struct CMode : CModeBase { C3DVector start; long counter; virtual void OnActivate() { start = thing->GetPosition(); counter = 0; } };
 int main()

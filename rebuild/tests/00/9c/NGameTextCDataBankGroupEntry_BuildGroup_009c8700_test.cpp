@@ -1,13 +1,13 @@
 // Behaviour test for NGameText::CDataBankGroupEntry::BuildGroup (0x009C8700): MRU touch, wait on unfinished async
 // data, parse from a stream over the data, then release the counted file data (deleter runs on the last reference).
 #include <cstdio>
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
     CResourceList* ResourceList; CResource* PrevResource; CResource* NextResource; unsigned long LastUsedFrame;
     void ListRemove() { PrevResource->NextResource = NextResource; NextResource->PrevResource = PrevResource; }
     void ListInsert(CResource* prev, CResource* next) { PrevResource = prev; NextResource = next; prev->NextResource = this; next->PrevResource = this; }
 };
-struct CResourceList { CResource Head; unsigned long CurrentFrame; };
+class CResourceList { public: CResource Head; unsigned long CurrentFrame; };
 struct CResourceMethods : CResource {
     static CResource* GetHead(CResourceList* list) { return &list->Head; }
     void MarkAsUsed()
@@ -20,7 +20,7 @@ struct CResourceMethods : CResource {
     }
 };
 static int g_waits = 0, g_destroyed = 0, g_freed = 0;
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool finished; long DataSize; const char* data;
     long GetDataSize() const { return DataSize; }
     bool IsFinished() { return finished; }
@@ -29,7 +29,7 @@ struct CBankFileAsyncData {
 };
 static void DestroyData(void* p) { ++g_destroyed; (void)p; }
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object; SCountBlock* Info;
     T* operator->() const { return Object; }
     void Clear()
@@ -42,7 +42,7 @@ template <class T> struct CCountedPointer {
         Object = 0;
     }
 };
-struct CMemoryDataInputStream { const char* data; long size; CMemoryDataInputStream(const void* d, long s) : data((const char*)d), size(s) {} };
+class CMemoryDataInputStream { public: const char* data; long size; CMemoryDataInputStream(const void* d, long s) : data((const char*)d), size(s) {} };
 struct CGroupEntry : CResourceMethods {
     CCountedPointer<CBankFileAsyncData> PFileData; long readSize; char first;
     void ReadFromDataStream(CMemoryDataInputStream* s) { readSize = s->size; first = s->data[0]; }

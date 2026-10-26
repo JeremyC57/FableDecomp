@@ -11,7 +11,7 @@
 // temporaries in the frame (`lea eax,[esp+N] ; fld [eax]`), the weight an unnamed temporary homed in the dead argument slot (`fst` then the compare); the repeat test and the gap test share the 0.0f exit.
 #include "engine/CReactionFrequencyTraits_ControlledCount.h"
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                         // 0x0049D870
 };
 

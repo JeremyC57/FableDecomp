@@ -6,7 +6,7 @@
 #define __forceinline inline
 #endif
 static int g_frames = 0, g_doneAt = 1000, g_aliveUntil = 1000, g_removed = 0, g_impDestroyed = 0, g_infoDeleted = 0, g_lookups = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long length = -1) : PStringData(text) { (void)length; }
     ~CCharString() {}
@@ -23,7 +23,7 @@ struct SScriptThingInfo {
 struct CScriptThingImpl {
     virtual bool IsAlive() { return g_frames < g_aliveUntil; }
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CScriptThingImpl* PImp_Data;
     SScriptThingInfo* PImp_Info;
     CScriptThing() : PImp_Data(0), PImp_Info(0) {}
@@ -47,7 +47,7 @@ struct CScriptThing : CBase {
     }
 };
 static CScriptThing* g_briar = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void Update() { ++g_frames; }
     virtual CScriptThing GetThingWithScriptName(const CCharString& name) { ++g_lookups; if (std::strcmp(name.PStringData, "BriarRose") != 0) g_lookups += 100; return *g_briar; }
     virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) { ++g_removed; if (a || !b) g_removed += 100; if (thing.PImp_Data != (CScriptThingImpl*)0x1234) g_removed += 1000; }

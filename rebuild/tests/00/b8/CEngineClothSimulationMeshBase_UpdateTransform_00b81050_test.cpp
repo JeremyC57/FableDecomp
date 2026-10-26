@@ -4,7 +4,7 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 #define __forceinline inline
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E11, E12, E13;
     float E21, E22, E23;
     float E31, E32, E33;
@@ -29,7 +29,7 @@ struct CMatrix3x4 {
 };
 
 
-struct CEngineInternalPrimitiveMeshBase {
+class CEngineInternalPrimitiveMeshBase { public:
     CMatrix3x4 last, cur; int calls;
     void GetLastTransform(CMatrix3x4& out) { out = last; ++calls; }
     void GetTransform(CMatrix3x4& out) { out = cur; ++calls; }

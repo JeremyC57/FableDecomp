@@ -13,13 +13,13 @@
 // member's inline destructor (re-reads Data: release + null store again). Layout as the landed constructor @ 0x005BB32E:
 // {vptr, CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +4}. Both the destructor and the counted pointer's members
 // are `__forceinline` (GOTCHAS 24i: a `??_G` with an inlined counted release), and a `new` factory pulls in the vtable.
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual ~CBaseClass();                         // 0x0099A2E0
 };
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     virtual void v02();
@@ -56,7 +56,7 @@ struct CIVCountedPointer {
     __forceinline ~CIVCountedPointer() { Release(); }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {       // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598
     CIVCountedPointer Data;                        // +0x04
     CEnginePrimitiveHandle() { }
     __forceinline void Clear()

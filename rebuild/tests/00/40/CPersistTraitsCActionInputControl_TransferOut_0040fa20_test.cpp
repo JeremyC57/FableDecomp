@@ -3,24 +3,24 @@
 #include <cstring>
 #include <cmath>
 // Text-builder model: a fixed-buffer CCharString with operator+= and the scalar traits' TransferOut formatting.
-struct CCharString {
+class CCharString { public:
     char Text[256];
     CCharString() { Text[0] = 0; }
     CCharString(const char* s) { std::strcpy(Text, s); }
     CCharString& operator+=(const char* s) { std::strcat(Text, s); return *this; }
     bool Equals(const char* s) const { return std::strcmp(Text, s) == 0; }
 };
-struct CPersistContext { int Unused; };
+class CPersistContext { public: int Unused; };
 static void TransferOutLong(CPersistContext*, CCharString* out, const int* value) { char b[32]; std::sprintf(b, "%d", *value); *out += b; }
 static void TransferOutFloat(CPersistContext*, CCharString* out, const float* value) { char b[32]; std::sprintf(b, "%g", (double)*value); *out += b; }
 static void TransferOutString(CPersistContext*, CCharString* out, const CCharString* value) { *out += "\""; *out += value->Text; *out += "\""; }
-struct C2DVector { float X, Y; float GetLengthSquared() const { return X * X + Y * Y; } };
+class C2DVector { public: float X, Y; float GetLengthSquared() const { return X * X + Y * Y; } };
 static const float g_Epsilon = 1e-4f;
 static void TransferOutVector(CPersistContext* c, CCharString* out, const C2DVector* v)
 {
     *out += "C2DCoordF("; TransferOutFloat(c, out, &v->X); *out += ","; TransferOutFloat(c, out, &v->Y); *out += ")";
 }
-struct CActionInputControl { int GameAction; int ControllerType; int KeyboardKey; int XboxButton; int MouseButton; C2DVector ControlDirection; };
+class CActionInputControl { public: int GameAction; int ControllerType; int KeyboardKey; int XboxButton; int MouseButton; C2DVector ControlDirection; };
 static void TransferOut(CPersistContext* context, CCharString* out, const CActionInputControl* value)
 {
     *out += "CActionInputControl";

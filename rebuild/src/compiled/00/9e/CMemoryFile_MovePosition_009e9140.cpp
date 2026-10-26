@@ -8,7 +8,7 @@
 // Shape: the exception model of the landed CDiskFileWin32::Write 0x0099AA90 (CBBBFileException(CStringFileArgument by value, type) over an
 // empty CExceptionBase(const char*)); the message is `CCharString("", -1) + "..."` with the prefix temporary in the dead `delta` slot; no EH
 // frame (built without /EHsc), so the message is never destroyed.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -26,7 +26,7 @@ public:
     EFileExceptionType Type;
     CBBBFileException(CCharString text, EFileExceptionType type) : CExceptionBase(static_cast<const char*>(text)), Type(type) { }
 };
-struct CMemoryFile {
+class CMemoryFile { public:
     void*         __vftable;                    // +0x00
     unsigned char* Data;                        // +0x04
     long          Position;                     // +0x08

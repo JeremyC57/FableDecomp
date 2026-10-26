@@ -1,6 +1,6 @@
 #include <cstdio>
 struct V { float x, y, z; };
-struct CSoundPair { long a, b; CSoundPair() : a(0), b(0) {} };
+class CSoundPair { public: long a, b; CSoundPair() : a(0), b(0) {} };
 static long g_code = 0; static V g_pos = { 7, 8, 9 };
 struct Owner { const V* GetPosition() { return &g_pos; } };
 struct Base { virtual ~Base() {} unsigned char body[0x110]; Base(Owner* o, long c, const CSoundPair& s) { g_code = c; } };

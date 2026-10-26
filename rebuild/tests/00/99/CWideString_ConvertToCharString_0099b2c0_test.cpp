@@ -3,7 +3,7 @@
 #include <string.h>
 #ifndef _MSC_VER
 #define FABLE_WIDE_STRING_HOST_TYPES
-struct CCharStringData { char* text; };
+class CCharStringData { public: char* text; };
 class CCharString {
     CCharStringData* storage_;
 public:

@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
-struct CPlayer { unsigned char _pad[0x20a]; unsigned char m_autoFaceTarget; };
+class CPlayer { public: unsigned char _pad[0x20a]; unsigned char m_autoFaceTarget; };
 static CPlayer g_player;
 struct CThingCreatureBase_Calls { CPlayer* GetPlayer() { return &g_player; } };
 struct CBaseIntelligentPointer { virtual void v00() { } CThingCreatureBase_Calls* m_pItem; CThingCreatureBase_Calls* GetPItem() const { return m_pItem; } };
-struct CCreatureAction_InterruptableMidAttackAutoTurn { virtual void v00() { } unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; bool IsToFaceTarget() const; };
+class CCreatureAction_InterruptableMidAttackAutoTurn { public: virtual void v00() { } unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; bool IsToFaceTarget() const; };
 bool CCreatureAction_InterruptableMidAttackAutoTurn::IsToFaceTarget() const { return PCreature.GetPItem()->GetPlayer()->m_autoFaceTarget ? true : false; }
 int main()
 {

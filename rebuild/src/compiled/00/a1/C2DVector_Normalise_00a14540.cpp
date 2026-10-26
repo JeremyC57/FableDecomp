@@ -7,7 +7,7 @@
 // The leading `mov eax,ecx` is the `return *this` result register holding `this` all the way.
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 
-struct C2DVector {
+class C2DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     C2DVector& Normalise();

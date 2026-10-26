@@ -5,7 +5,7 @@ extern void __fastcall member_dtor(void* self);    // dtor of member at +0x44 (_
 extern void __fastcall base_dtor(void* self);      // base class dtor (tail jmp)
 extern const int g_vtbl_01233f8c;                            // 0x1233f8c vtable
 
-struct COpinionPersonalityDef {
+class COpinionPersonalityDef { public:
     void* vtbl;        // +0x00
     char pad[0x3c-4];  // +0x04 .. +0x3b
     void* ptr;         // +0x3c  freed field

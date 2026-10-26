@@ -1,4 +1,4 @@
-struct CCreatureAction_VillagerAttackKnockdown {
+class CCreatureAction_VillagerAttackKnockdown { public:
     void* vftable;
 };
 

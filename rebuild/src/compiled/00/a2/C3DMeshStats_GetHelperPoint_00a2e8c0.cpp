@@ -11,8 +11,8 @@
 // Retail layout: CPreAllocVectorMap {Compare +0, Elements +4, Size +8, Dirty +0xC} (PDB struct_layouts_egor.tsv).
 // The lower bound is checked against end() = Elements + Size and against the exact key (several helper
 // points can share a key, hence the index into the run), then the value of entry [bound + index] is returned.
-struct C3DVector { float X, Y, Z; };
-struct C3DHelperPoint { C3DVector Position; long BoneIndex; };
+class C3DVector { public: float X, Y, Z; };
+class C3DHelperPoint { public: C3DVector Position; long BoneIndex; };
 
 struct SHelperPointEntry {                 // pair<unsigned long, C3DHelperPoint>, 20 bytes
     unsigned long  first;
@@ -28,7 +28,7 @@ struct CHelperPointMap {                   // CPreAllocVectorMap<unsigned long, 
     SHelperPointEntry* End() { return Elements + Size; }
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     unsigned char   _pad_0x04[0x38 - 0x04];
     CHelperPointMap HelperPoints;          // +0x38

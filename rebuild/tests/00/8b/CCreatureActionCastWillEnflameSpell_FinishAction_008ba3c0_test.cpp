@@ -25,22 +25,22 @@
 //   accessor (its GetPItem runs before the &def push) and the item goes to PutThingInCarrySlot through the inline
 //   conversion operator (its GetPItem runs before the other pushes). LowerBound / GetSubDef are same-TU noinline bodies so
 //   the key and def words are not escaped; the def release folds its null test (DecRefToZero, landed 0x00848500 form).
-struct CTCBase;
-struct CThing;
-struct CCharString {
+class CTCBase;
+class CThing;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CCarryableDef {
+class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
     unsigned char _pad08[0x28 - 0x08];
     long CarrySlot;                                   // +0x28
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -60,10 +60,10 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CCarryableDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -111,11 +111,11 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CPlayer {
+class CPlayer { public:
     bool IsMainPlayer();                              // 0x00487520
     void SetAggressiveMode(bool aggressive);          // 0x00487EB0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -169,9 +169,9 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 struct CTCShowableItem {
     void OnShowEnded();                               // 0x005D8E50
 };
-struct CTCCarrying;
+class CTCCarrying;
 void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
-struct CTCCarrying {
+class CTCCarrying { public:
     bool IsPrimarySlotEmpty();                        // 0x006A1270
     CThing* GetThingInPrimarySlot();                  // 0x006A1440
     void RemoveThing(CThing* thing);                  // 0x006A19B0
@@ -179,13 +179,13 @@ struct CTCCarrying {
     CThing* RemoveThingFromPrimarySlot(bool unused);  // 0x006A1E00
     void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
 };
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     void RefreshSheathedWeapons();                    // 0x005C9962
 };
-struct CTCCombat {
+class CTCCombat { public:
     void SetMeleeFlourishValid(bool valid);           // 0x00733E10
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void UpdateFrontMode();                           // 0x0073A840
 };
 struct CTCEnflame {
@@ -193,7 +193,7 @@ struct CTCEnflame {
     bool Active;                                      // +0xd
     void ResetState();                                // 0x007A44C0
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();                      // slot 4: 0x00859A20
     unsigned char _pad04[4];
@@ -202,7 +202,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     CBaseIntelligentPointer PItemRemoved;             // +0x2c
     unsigned char _pad34[0x114 - 0x34];
 };
-struct CCreatureAction_CastWillEnflameSpell : CCombatActionBase {
+class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public:
     long Level;                                       // +0x114
     unsigned char _pad118[4];
     virtual void FinishAction();

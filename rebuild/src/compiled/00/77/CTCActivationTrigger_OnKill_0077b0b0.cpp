@@ -1,4 +1,4 @@
-struct CTCActivationTrigger;
+class CTCActivationTrigger;
 // Leaf: OnKill
 
 // helper at 0x7f7750: called with ecx = this->fc, one stack arg = this (__fastcall)
@@ -6,7 +6,7 @@ struct Sub {
     void destroy(CTCActivationTrigger* owner);
 };
 
-struct CTCActivationTrigger {
+class CTCActivationTrigger { public:
     char pad[0xc];
     Sub* PTCReceptor;   // +0xc
 };

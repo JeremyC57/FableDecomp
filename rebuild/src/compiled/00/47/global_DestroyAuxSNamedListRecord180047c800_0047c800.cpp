@@ -12,7 +12,7 @@
 // propagated: the body is no move at all (no destination, `ret 4`), and the element is not a pair<ulong, CDefString>.
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;                                         // +0
     ~CCharString();                                        // 0x0099EAE0
 };

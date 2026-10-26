@@ -5,15 +5,15 @@
 //        CFileFormatMapHeader::ConvertFromOld(const COldFileFormatMapHeader8*), CCountedPointer<T>::DeleteData(void*), CCPPointerInfo; sizes from Ego_r.pdb.
 #include <new>
 // Layout: the serialised header opens with its version byte at +0x04.
-struct COldFileFormatMapHeader8{char pad[4];unsigned char VersionByte;};
-struct COldFileFormatMapHeader7;
+class COldFileFormatMapHeader8{ public:char pad[4];unsigned char VersionByte;};
+class COldFileFormatMapHeader7;
 struct CFileLargeThemePalette{char storage[0x8400];CFileLargeThemePalette();};
 // Layout: exact retail allocation 0x10822; LargeThemePalette at +0x16 and AtmosThemePalette at +0x841e each span 0x8400 bytes; prefix 0x16, VersionNumber/NoSoundThemeEntries 0x08, StaticMapChecksum 0x04. CCPPointerInfo size 0x0c: refs +0x00, deleter +0x04, data +0x08.
 #pragma pack(push,1)
-struct CFileFormatMapHeader{char prefix[0x16];CFileLargeThemePalette LargeThemePalette;char gap[0x08];CFileLargeThemePalette AtmosThemePalette;char StaticMapChecksum[0x04];__forceinline CFileFormatMapHeader(){}void ConvertFromOld(const COldFileFormatMapHeader8*);};
+class CFileFormatMapHeader{ public:char prefix[0x16];CFileLargeThemePalette LargeThemePalette;char gap[0x08];CFileLargeThemePalette AtmosThemePalette;char StaticMapChecksum[0x04];__forceinline CFileFormatMapHeader(){}void ConvertFromOld(const COldFileFormatMapHeader8*);};
 #pragma pack(pop)
-struct CCPPointerInfo{unsigned refs;void(__fastcall*destroy)(void*);void*object;__forceinline CCPPointerInfo(void*p,void(__fastcall*d)(void*)):refs(1),destroy(d),object(p){}};
-template<class T> struct CCountedPointer{T*object;CCPPointerInfo*control;
+class CCPPointerInfo{ public:unsigned refs;void(__fastcall*destroy)(void*);void*object;__forceinline CCPPointerInfo(void*p,void(__fastcall*d)(void*)):refs(1),destroy(d),object(p){}};
+template<class T> class CCountedPointer{ public:T*object;CCPPointerInfo*control;
  static void __fastcall DeleteData(void*);
  __forceinline CCountedPointer(T*p):object(p),control(p?new CCPPointerInfo(p,DeleteData):0){}
  __forceinline CCountedPointer(const CCountedPointer&x):object(x.object),control(x.control){if(control)++control->refs;}

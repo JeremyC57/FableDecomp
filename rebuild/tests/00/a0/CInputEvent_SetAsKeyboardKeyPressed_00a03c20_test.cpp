@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct C2DVector { float X, Y; }; struct C3DVector { float X, Y, Z; };
-struct CInputEvent { long m_key; long m_4; bool m_8; unsigned char _pad09[3]; C3DVector m_movement; C2DVector m_position; long m_device; long m_24; long m_kind; float m_time; float m_time2;
+class C2DVector { public: float X, Y; }; class C3DVector { public: float X, Y, Z; };
+class CInputEvent { public: long m_key; long m_4; bool m_8; unsigned char _pad09[3]; C3DVector m_movement; C2DVector m_position; long m_device; long m_24; long m_kind; float m_time; float m_time2;
     void SetAsKeyboardKeyPressed(long key, double time2, double time) {
         m_time2 = (float)time2; m_device = 2; m_kind = 2; m_time = (float)time; m_key = key;
     }

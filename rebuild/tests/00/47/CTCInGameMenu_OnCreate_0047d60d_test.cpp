@@ -11,7 +11,7 @@ struct GuiObject {
 struct GuiHolder { GuiObject* obj; GuiHolder() : obj(0) {} };
 struct GuiProvider { void GetHeld(GuiHolder* out); };
 struct Sub4 { char pad[0x70]; GuiProvider* provider70; };
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     void* v0field;
     Sub4* ParentThing;
     void ApplyGuiField(int v);

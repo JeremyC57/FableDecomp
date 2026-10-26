@@ -4,7 +4,7 @@
 static int g_ipCtors, g_destroyed;
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { ++g_ipCtors; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() {} CIntelligentPointer() : CBaseIntelligentPointer() { } };
-struct CCreatureActionBase { long m_tag; };
+class CCreatureActionBase { public: long m_tag; };
 static void __fastcall DestroyAction(CCreatureActionBase* p) { ++g_destroyed; }
 struct SCountBlock { long m_references; void (__fastcall* m_pfnDestroy)(CCreatureActionBase*); CCreatureActionBase* m_pObject; };
 struct CCountedPointer_CCreatureActionBase {
@@ -16,9 +16,9 @@ struct CCountedPointer_CCreatureActionBase {
         m_pCount = 0; m_pObject = object;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CNavigationInput { long m_00, m_04, m_08, m_0c, MovementType, m_14; CNavigationInput() : m_0c(0), MovementType(0), m_14(0) { } };
-struct CBrainOutput {
+class C3DVector { public: float X, Y, Z; };
+class CNavigationInput { public: long m_00, m_04, m_08, m_0c, MovementType, m_14; CNavigationInput() : m_0c(0), MovementType(0), m_14(0) { } };
+class CBrainOutput { public:
     unsigned long Types; long LookFlags; CNavigationInput NavigationInput; CCountedPointer_CCreatureActionBase PAction; C3DVector MoveToPos; C3DVector LookAtPos; CIntelligentPointer LookAtThing;
     CBrainOutput();
 };

@@ -9,8 +9,8 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 004cbd00: the long reader parses a value that is stored, converted to short, through Object.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 static long g_parsed = 0x12345;
 static void __fastcall TransferInLong(CPersistContext*, CStringParser*, long* result) { *result = g_parsed; }
 

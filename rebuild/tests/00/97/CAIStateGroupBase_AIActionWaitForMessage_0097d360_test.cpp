@@ -53,11 +53,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CAIBrain;
-struct CCharStringData;
+class CAIBrain;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CAIBrain*        PBrain;                                 // +0x04
     unsigned char    ScriptAIPriority[0x4];                  // +0x08 EScriptAIPriority
@@ -90,17 +90,17 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Enabled) == 0x12);
 #include <stddef.h>
 
 
-struct CAIStateGroupBase;
-struct CBrainUpdateZone;
-struct CDefPointeeBase;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingAICreature;
-struct CThingManager;
-struct CWorld;
+class CAIStateGroupBase;
+class CBrainUpdateZone;
+class CDefPointeeBase;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingAICreature;
+class CThingManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CAIBrain {
+class CAIBrain { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -161,15 +161,15 @@ FABLE_STATIC_ASSERT(offsetof(CAIBrain, OnKillCalled) == 0xac);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -312,34 +312,34 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -590,7 +590,7 @@ enum EAIActionReturn {
     AI_ACTION_RETURN_THREE = 3
 };
 
-struct CMessageEvent {
+class CMessageEvent { public:
     fable_u8 _header[8];
     fable_i32 Type;                                            // +0x08
     fable_u8 _opaque_0c[0x1c];
@@ -602,11 +602,11 @@ struct SMessageNode {
     SMessageNode* prev;
     CMessageEvent Event;                                       // +0x08
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     fable_i32 Type;
     bool operator()(CMessageEvent* event) const;               // 0x006af1c0
 };
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     fable_u32 UID[2];
     CMessageEventFilter_IsOriginatedByThing(const CThingCreatureBase* thing); // 0x006af290
     bool operator()(CMessageEvent* event) const;
@@ -616,7 +616,7 @@ struct COwnMessageFilter {
     const CMessageEventFilter_IsOriginatedByThing* OriginatorFilter;
 
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CWorld* World;
     SMessageNode* Messages;                                    // +0x04 sentinel
     CMessageEvent* FindMostRecentMessage(const COwnMessageFilter& filter); // 0x008d46d0

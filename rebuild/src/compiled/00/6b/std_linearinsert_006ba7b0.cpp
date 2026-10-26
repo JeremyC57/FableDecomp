@@ -18,7 +18,7 @@
 // Label correction: the catalog `Vector_InsertOrShift` is descriptive.
 void operator delete(void* p);                          // 0x00BFE9BC
 
-struct CCPPointerInfo {                                 // 12 bytes (Ego_r.pdb)
+class CCPPointerInfo { public:                                 // 12 bytes (Ego_r.pdb)
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void*);               // +0x04
     void*         Data;                                 // +0x08
@@ -27,7 +27,7 @@ struct CCPPointerInfo {                                 // 12 bytes (Ego_r.pdb)
 class CFaction;
 
 template <class T>
-struct CCountedPointer {                                // 8 bytes
+class CCountedPointer { public:                                // 8 bytes
     T*              Data;                               // +0x00
     CCPPointerInfo* Info;                               // +0x04
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
@@ -77,7 +77,7 @@ struct pair {
 typedef std::pair<unsigned long, CCountedPointer<CFaction> > CFactionEntry;
 
 template <class K, class V>
-struct CKeyPairCompareLess {                            // empty, passed by value
+class CKeyPairCompareLess { public:                            // empty, passed by value
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

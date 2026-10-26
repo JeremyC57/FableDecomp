@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -71,10 +71,10 @@ struct CEventReceivedItemInInventory : CEventBase {  // vtable 0x01253C8C
     virtual void v00();
 };
 }
-struct CTCEntityEvents {                             // interface type 0x42
+class CTCEntityEvents { public:                             // interface type 0x42
     void AddEvent(CEventBase* event);                // 0x008113C0
 };
-struct CTCHero {                                     // interface type 0x29
+class CTCHero { public:                                     // interface type 0x29
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
 bool __fastcall IsAugmentation_005d9830(long itemDefIndex);           // 0x005D9830
@@ -82,7 +82,7 @@ bool __fastcall IsTutorialSubDefItem(long itemDefIndex);     // 0x005D98B0
 long __fastcall GetInventoryCategory_005d9b70(long itemDefIndex);     // 0x005D9B70
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     void* __vftable;
     CThing* ParentThing;                             // +0x04
     void OnItemAdded(long itemDefIndex, bool unused, bool suppressTutorials);

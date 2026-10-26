@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameJoystickManager {
+class CGameJoystickManager { public:
     int   pad0;         // +0x0
     int   deviceNumber; // +0x4
     bool  isSet;        // +0x8

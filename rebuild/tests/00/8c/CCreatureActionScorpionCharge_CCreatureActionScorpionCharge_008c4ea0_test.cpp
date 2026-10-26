@@ -3,25 +3,25 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CThing {
+class CThing { public:
     C3DVector m_pos;
     const C3DVector& GetPosition() const { return m_pos; }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
 static char g_lastName[64];
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long = -1) : m_pData(text) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -32,14 +32,14 @@ CSoundPair GetSoundPair(CThingCreatureBase*, const CCharString& name)
     std::strcpy(g_sound, name.m_pData);
     CSoundPair p; p.FirstSound = 11; p.LastSound = 22; return p;
 }
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThingCreatureBase* m_owner; CThing* m_target; long m_code; CSoundPair m_sound;
     virtual void v00() { }
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long code, const CSoundPair& s)
         : m_owner(owner), m_target(target), m_code(code), m_sound(s) { }
     void SetAnimationName(const CCharString& name) { std::strcpy(g_lastName, name.m_pData); }
 };
-struct CCreatureAction_ScorpionCharge : CCombatActionBase {
+class CCreatureAction_ScorpionCharge : public CCombatActionBase { public:
     float     ChargeDistance;
     C3DVector StartPos;
     virtual void v00() { }

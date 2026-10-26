@@ -15,14 +15,14 @@
 //          CThing UsingComponents +0x20, Components +0x44, the dead bit +0x91 bit 0.
 // Shape: the landed IS_THING_ALIVE(pointer) inline (GetPItem() null test, then the dead bit through a second GetPItem()),
 //          then a third GetPItem() for the Kill(true) call.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     void*         __vftable;
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];              // +0x20
@@ -44,7 +44,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCObjectAugmentations {                    // interface 0xBF
+class CTCObjectAugmentations { public:                    // interface 0xBF
     void StopTrailEffect();                        // 0x007664E0
 };
 struct CBaseIntelligentPointer {

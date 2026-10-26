@@ -18,7 +18,7 @@
 // model them as real member functions -- a free __fastcall signature would make
 // the compiler zero edx before each call (adds a spurious xor edx,edx).
 
-struct CThing;
+class CThing;
 
 struct CIntelligentPointer {
     void* vptr;

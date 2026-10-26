@@ -13,7 +13,7 @@
 // still in eax; the empty text is a named CCharString in its own block (destroyed before the erase) in the `push ecx`
 // frame word; the handle vector is
 // cleared through the out-of-line range erase (begin/end read as the two pushes).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -21,20 +21,20 @@ struct CCharString {
 
 enum EPlayerMode { PLAYER_MODE_FIREHEART_MINIGAME = 0x2a };
 
-struct CPlayer {
+class CPlayer { public:
     EPlayerMode GetCurrentMode();                           // 0x00633BE0
     void RemoveMode(EPlayerMode mode);                      // 0x00634190
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                               // 0x00449970
 };
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetButton2OverrideText(const CCharString& text);   // 0x0048F881
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                     // +0x18
     unsigned char     _pad19[0x330 - 0x19];
@@ -42,7 +42,7 @@ struct CPlayerGui {
 };
 extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 template <class T> struct CRetailVector {                   // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
@@ -53,9 +53,9 @@ template <class T> struct CRetailVector {                   // STLport vector (1
     void clear() { erase(begin(), end()); }
 };
 
-struct CThing;
+class CThing;
 
-struct CTCFireheartMinigame {
+class CTCFireheartMinigame { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x4c - 0x08];

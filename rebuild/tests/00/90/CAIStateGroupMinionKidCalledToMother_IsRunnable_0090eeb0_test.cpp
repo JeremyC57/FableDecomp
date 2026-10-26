@@ -1,7 +1,7 @@
 
 #include <cstdio>
 
-struct CMessageEvent;
+class CMessageEvent;
 struct CAIStateGroup_MinionKidCalledToMother
 {
     CMessageEvent* FindCallHomeEvent();

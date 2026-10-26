@@ -15,7 +15,7 @@
 extern "C" double __cdecl pow(double x, double y);
 #pragma intrinsic(pow)
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -24,7 +24,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;           // +0x44
@@ -68,7 +68,7 @@ struct CJoystickEntry {                    // 8 bytes
     long             Id;
 };
 
-struct CInputManager {
+class CInputManager { public:
     unsigned char   _pad00[0x2c];
     CJoystickEntry* Joysticks;             // +0x2c (vector begin)
     CJoystickDevice* GetJoystick(long n) const { return Joysticks[n].Device; }

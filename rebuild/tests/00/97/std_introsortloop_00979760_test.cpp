@@ -1,8 +1,8 @@
 // Behaviour test for 0x00979760 std::__introsort_loop (STLport) over CThing* with a 16-byte by-value comparator.
 #include <cstdio>
 
-struct CThing { float score; };
-struct C2DVector { float X, Y; };
+class CThing { public: float score; };
+class C2DVector { public: float X, Y; };
 struct TComp {                                 // 16 bytes like the retail comparator; ranks by descending score
     C2DVector Pos, Dir;
     bool operator()(CThing* a, CThing* b) const { return a->score * Dir.X > b->score * Dir.X; }

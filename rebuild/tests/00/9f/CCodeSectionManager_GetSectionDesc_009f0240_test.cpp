@@ -6,7 +6,7 @@ struct CSectionMap {
     SNode* nodes; int count; SNode header;
     SNode* find(unsigned long key) { for (int i = 0; i < count; ++i) if (nodes[i].Key == key) return &nodes[i]; return &header; }
 };
-struct CCodeSectionManager {
+class CCodeSectionManager { public:
     CSectionMap SectionDesc;
     const CSectionDesc& GetSectionDesc(unsigned long handle)
     {

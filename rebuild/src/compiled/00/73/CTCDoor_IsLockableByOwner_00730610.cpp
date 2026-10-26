@@ -1,5 +1,5 @@
 #include "engine/CTCDoor.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     char pad[0x3a];
     unsigned char lockedFlag;
 };

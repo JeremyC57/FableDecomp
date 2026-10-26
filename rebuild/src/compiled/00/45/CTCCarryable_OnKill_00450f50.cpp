@@ -7,7 +7,7 @@ struct Node {
     void* fieldC;    // +0xC
 };
 
-struct CTCCarryable {
+class CTCCarryable { public:
     Node* obj;       // +0x0
     int   count;     // +0x4
 };

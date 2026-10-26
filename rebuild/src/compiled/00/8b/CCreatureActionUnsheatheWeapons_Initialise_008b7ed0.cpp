@@ -12,11 +12,11 @@
 // plain arguments are pushed; only the sheathe flag is initialised (false); the literal is a ternary selected into eax before the string is
 // built; the string is block-scoped, so the interface lookup key reuses its frame word; the absent-interface path skips
 // the store.
-struct CTCBase;
-struct CThingCreatureBase;
+class CTCBase;
+class CThingCreatureBase;
 enum EUnsheatheWeaponType { UNSHEATHE_WEAPON_TYPE_DEFAULT };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -51,7 +51,7 @@ struct CThing {
 bool __fastcall ShouldPlayUnsheatheWeaponAction(CThing* creature, EUnsheatheWeaponType type, bool* pCanUnsheathe,
                                                 bool* pSheathe);   // 0x008B7CF0
 
-struct CTCCombat {
+class CTCCombat { public:
     unsigned char        _pad0[0x6c];
     EUnsheatheWeaponType m_unsheatheWeaponType; // +0x6c
 };
@@ -63,7 +63,7 @@ struct CBaseIntelligentPointer {
     operator CThing*() const { return GetPItem(); }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];
@@ -72,7 +72,7 @@ struct CCombatActionBase {
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_UnsheatheWeapons : CCombatActionBase {
+class CCreatureAction_UnsheatheWeapons : public CCombatActionBase { public:
     EUnsheatheWeaponType WeaponType;            // +0x114
     virtual void Initialise();
 };

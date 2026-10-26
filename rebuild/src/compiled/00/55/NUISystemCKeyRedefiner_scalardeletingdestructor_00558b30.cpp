@@ -23,7 +23,7 @@ struct CHoverable_00558b30 {                            // third base (vptr at +
     virtual ~CHoverable_00558b30();
 };
 
-struct CClickable : CComponentRoot_00558b30, CGuiControl_00558b30, CHoverable_00558b30 {
+class CClickable : public CComponentRoot_00558b30, public CGuiControl_00558b30, public CHoverable_00558b30 { public:
     unsigned char _body[0x180];                         // +0x01c .. +0x19b
     virtual ~CClickable();                              // 0x0055B760
 };
@@ -34,7 +34,7 @@ struct CKeyList_00558b30 {                              // VC6-era list: head no
     ~CKeyList_00558b30();                               // 0x00558AA0
 };
 
-struct CKeyRedefiner : CClickable {
+class CKeyRedefiner : public CClickable { public:
     CKeyList_00558b30     m_keys;                       // +0x19c
     static CKeyRedefiner* s_pSelected;                  // 0x013B8AC8
     virtual ~CKeyRedefiner();

@@ -15,7 +15,7 @@
 //   the vector-map's out-of-line vector dtor, then the def pointer's `if (m_p) { m_p->Release(); m_p = 0; }` with the
 //   counted release on the def (`if (--m_count == 0) Destroy();`, ecx kept for the virtual call).
 // Label correction: catalogued as `DeleteData` (right name); the class is CCountedPointer<CMusicManager>.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                  // 0x0099B510
 };
@@ -37,7 +37,7 @@ public:
 
 class CMusicManager {
 public:
-    struct CState {
+    class CState { public:
         long RegionSet;                              // +0x00
         long OverrideSet;                            // +0x04
         long UIOverrideSet;                          // +0x08
@@ -46,7 +46,7 @@ public:
         bool Paused;                                 // +0x14
         bool Danger;                                 // +0x15
     };
-    struct CRegisteredMusicEntry {
+    class CRegisteredMusicEntry { public:
         CWideString SrcFileName;                     // +0x00
         CWideString DstFileName;                     // +0x04
         float       Gain;                            // +0x08
@@ -64,7 +64,7 @@ public:
         CEntryVector Data;                           // +0x00
         char         Compare;                        // +0x0C
     };
-    struct CFadeTimes;
+    class CFadeTimes;
 
     CState                       CurrentState;       // +0x00
     CDefPointer<const CSoundDef> PSoundDef;          // +0x18

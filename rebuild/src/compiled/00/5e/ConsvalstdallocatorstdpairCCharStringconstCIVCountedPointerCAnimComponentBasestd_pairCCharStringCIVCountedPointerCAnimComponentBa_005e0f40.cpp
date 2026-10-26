@@ -13,7 +13,7 @@ struct CIVCountedPointer {
 
 // CCharString copy-ctor: this in ecx, const CCharString& src pushed (thiscall, callee-cleans).
 // Modeled as a member so VC7.1 emits a real thiscall (this in ecx, one stack arg, no edx).
-struct CCharString {
+class CCharString { public:
     char* buf;
     void CopyCtor(const CCharString& src); // extern; body elsewhere
 };

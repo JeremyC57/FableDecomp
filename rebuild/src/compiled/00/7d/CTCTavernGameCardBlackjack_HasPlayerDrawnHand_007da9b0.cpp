@@ -8,7 +8,7 @@
 // Shape: GetHandValue is an in-class inline member; here both calls are inlined (the dealer's total in ebx, the
 // player's in edx), `includeFaceDown` = true folds the visibility test away. The tie result `dealer == player` is the
 // `xor eax,eax ; cmp ; sete al` tail, the dealer-blackjack early `return false` the shared `xor al,al` exit.
-struct CCard {
+class CCard { public:
     void*         Thing;                     // +0x00 CThingObject*
     long          Name;                      // +0x04
     long          Value;                     // +0x08

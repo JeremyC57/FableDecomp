@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CThingCreatureBase { int m_id; };
+class CThingCreatureBase { public: int m_id; };
 struct TrueType {};
 
 static int g_overflowCalls = 0;

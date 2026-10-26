@@ -18,9 +18,9 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
-struct CScriptBase {                               // 0x40 bytes, the quest-script root (vtable 0x012C1648)
+class CScriptBase { public:                               // 0x40 bytes, the quest-script root (vtable 0x012C1648)
     virtual void v00();
     unsigned char _body[0x3c];                     // +0x04..+0x3f
     CScriptBase();                                 // 0x00CB8110
@@ -38,13 +38,13 @@ struct CCountedPointerWords {                      // {Data, Info}
     CCountedPointerWords() : Data(0), Info(0) { }
 };
 
-struct CBaseObject {                               // CBaseIntelligentPointer root
+class CBaseObject { public:                               // CBaseIntelligentPointer root
     virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04
     CBaseObject();                                 // 0x0099A380
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual void v00();

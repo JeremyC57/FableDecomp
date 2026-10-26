@@ -11,7 +11,7 @@
 // this overload (slot 414) is declared before the CScriptThing one (slot 413).
 // Shape: /O2 (16-aligned entry, no frame).
 class CCharString;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

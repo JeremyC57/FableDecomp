@@ -54,7 +54,7 @@ struct CMenuDef : CDefBase {
     unsigned char _pad08[0x20a - 8];
     bool          KeepTimer;                     // +0x20a (descriptive)
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     ~CDefPointer()
     {
@@ -65,7 +65,7 @@ template <class T> struct CDefPointer {
 };
 
 namespace NUISystem {
-struct CAction;
+class CAction;
 struct CActionParam_;
 }
 
@@ -87,7 +87,7 @@ struct CFrontEndManager {
 
 namespace NUISystem {
 
-struct CComponent {
+class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -123,7 +123,7 @@ struct CComponentVector {                        // STLport vector<CCountedPoint
     CCountedPointer<CComponent>& operator[](unsigned long i) { return _M_start[i]; }
 };
 
-struct CMenuEntry {
+class CMenuEntry { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

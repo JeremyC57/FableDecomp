@@ -1,7 +1,7 @@
 // Behaviour test for 0x0046BE89 GFSerialiseVectorBinaryIn<CReverbEnvironmentEntry>: count, resize(n), one raw read per element
 #include <cstdio>
 #include <cstring>
-struct CReverbEnvironmentEntry { float Params[21]; };
+class CReverbEnvironmentEntry { public: float Params[21]; };
 struct EntryVector {
     CReverbEnvironmentEntry data[4]; unsigned int count;
     void resize(unsigned int n) { for (unsigned int i = count; i < n; ++i) std::memset(&data[i], 0, sizeof(data[i])); count = n; }

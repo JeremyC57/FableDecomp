@@ -12,7 +12,7 @@ struct CTarget {
     float m_value;                         // +0xbc
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad[0xe0];
     CTarget* m_object;                     // +0xe0
     float vfunc_92();

@@ -17,7 +17,7 @@ struct Inner {
     }
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char pad[0x18];
     Inner* PEnvironment;
 };

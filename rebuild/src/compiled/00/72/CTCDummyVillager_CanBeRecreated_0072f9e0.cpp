@@ -10,14 +10,14 @@
 // Shape: interface lookups are the landed HasTC + ternary GetTC (each building: GetPItem() null test, then a named GetPItem()
 // local for HasTC and GetTC); the recreation day is `Day = max(Day, today)` through the
 // STLport reference max (`cmp ; lea ; jl`), written identically for both buildings so retail's tail-merge forms.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -30,42 +30,42 @@ struct CThing {
     }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     bool GetIsAvailableForResidency() const;    // 0x0082E0E0
 };
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad00[0xb3];
     bool          FlagB3;                       // +0xb3
 };
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetPVillage() const;            // 0x007EE540
 };
-struct CTCBuyableHouse {                        // interface 0xd5
+class CTCBuyableHouse { public:                        // interface 0xd5
     unsigned char _pad00[0x11];
     bool          OwnedByPlayer;                // +0x11
     bool          Rented;                       // +0x12
     bool IsInitiallyEmpty() const;              // 0x006BF890
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                       // +0x04
     CBaseObject* GetPItem() const;              // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 struct CGameClock {
     unsigned char _pad00[0x14];
     long Day;                                   // +0x14
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x1c];
     CGameClock* Clock;                          // +0x1c
 };
 template<class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 
-struct CTCDummyVillager {
+class CTCDummyVillager { public:
     virtual void v00();
     CThing*                             ParentThing;        // +0x04 (CTCBase)
     unsigned char                       _pad08[0x8];

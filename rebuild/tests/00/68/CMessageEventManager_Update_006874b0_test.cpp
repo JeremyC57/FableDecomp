@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 static int g_destroyed = 0, g_freed = 0; static long g_now = 100;
-struct CMessageEvent { virtual ~CMessageEvent() { ++g_destroyed; } long a; long type; unsigned char pad[0x28]; long TimeStamp; unsigned long Lifespan; unsigned char pad2[0x1c]; };
+class CMessageEvent { public: virtual ~CMessageEvent() { ++g_destroyed; } long a; long type; unsigned char pad[0x28]; long TimeStamp; unsigned long Lifespan; unsigned char pad2[0x1c]; };
 struct SNode { SNode* next; SNode* prev; CMessageEvent value; };
 static void FreeNode(void*) { ++g_freed; }
 struct CList { SNode* head;

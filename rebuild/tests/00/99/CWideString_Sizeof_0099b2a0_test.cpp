@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct WVec { long begin; long end; };
-struct CWideString { WVec* vec; };
+class CWideString { public: WVec* vec; };
 
 unsigned long __fastcall Sizeof(CWideString* self);
 

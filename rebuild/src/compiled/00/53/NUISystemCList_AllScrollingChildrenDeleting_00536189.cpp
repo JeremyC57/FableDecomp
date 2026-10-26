@@ -25,7 +25,7 @@ struct CRetailVector_00536189 {
 };
 
 namespace NUISystem {
-struct CList {
+class CList { public:
     unsigned char        _pad00[0x164];
     CRetailVector_00536189 m_children;                // +0x164
     bool AllScrollingChildrenDeleting();

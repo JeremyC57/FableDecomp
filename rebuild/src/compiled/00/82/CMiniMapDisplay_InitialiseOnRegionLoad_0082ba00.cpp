@@ -9,7 +9,7 @@
 // (map<CCharString,long>) at retail +0x94C; CRegion::MiniMapGraphic at retail +0x28 (PDB +0x30); STLport map node: key +0x10, value +0x14.
 // Shape: the two lookup keys are named CCharString locals in their own scopes (built in the frame, destroyed after each find); the flags are
 // cleared with one byte zero; only PrisonCourtyard1 and HeadsmansHillNorth are set here.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -26,19 +26,19 @@ struct CCharStringLongMap {                     // STLport map<CCharString, long
     SGraphicNode* find(const CCharString& key); // 0x0042B467
     SGraphicNode* end() const { return _M_header; }
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char      _pad00[0x94c];
     CCharStringLongMap MiniMapGraphics;         // +0x94c
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();         // 0x00438570
-struct CWorldMap;
-struct CWorld {
+class CWorldMap;
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();
     virtual CWorldMap* PeekWorldMap();          // slot 13 (+0x34)
 };
-struct CGame {
+class CGame { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsLevelPersistent();           // slot 9 (+0x24)
@@ -46,7 +46,7 @@ struct CGame {
     CWorld*       World;                        // +0x24
 };
 extern CGame* g_pGame;                          // 0x013B86A0
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x28];
     CCharString   MiniMapGraphic;               // +0x28
 };
@@ -55,7 +55,7 @@ struct CRegionMinimap {
     void Initialise();                                              // 0x0066DBB0
     void InitialiseRegionMinimapSize(CWorldMap* map, CRegion* region);   // 0x0066CC40
 };
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     void*          __vftable;                   // +0x00
     unsigned char  _pad04[0x18];
     long           MiniMapGraphic;              // +0x1c

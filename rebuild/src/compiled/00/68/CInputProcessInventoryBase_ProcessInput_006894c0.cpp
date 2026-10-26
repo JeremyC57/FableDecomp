@@ -89,7 +89,7 @@ public:
     virtual void OnNextTab();   // +0x104
 };
 enum ECurrentMovement { MOVEMENT_NONE = 0, MOVEMENT_UP = 1, MOVEMENT_DOWN = 2 };
-struct CWorld; struct CPlayer; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessInventoryBase {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

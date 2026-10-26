@@ -2,7 +2,7 @@
 
 struct MapEntry { char pad[88]; };
 
-struct CWorldMap {
+class CWorldMap { public:
     char pad0[0x2c];
     MapEntry* begin;   // +0x2c
     MapEntry* end;     // +0x30

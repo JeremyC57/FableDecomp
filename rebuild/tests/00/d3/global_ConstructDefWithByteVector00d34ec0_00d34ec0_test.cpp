@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 static int g_baseCopies = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x21];
     CDefClassBase() { for (int i = 0; i < 0x21; ++i) _body[i] = (unsigned char)i; }
     CDefClassBase(const CDefClassBase& other) { for (int i = 0; i < 0x21; ++i) _body[i] = other._body[i]; ++g_baseCopies; }

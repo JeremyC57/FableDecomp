@@ -42,7 +42,7 @@ public:
     CBBBFileException(EFileExceptionType type, const CCharString& message) : Type(type) { ReportFileError(message); }
 };
 
-struct CAFile {
+class CAFile { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

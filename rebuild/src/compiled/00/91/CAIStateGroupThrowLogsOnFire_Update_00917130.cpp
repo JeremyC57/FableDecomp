@@ -2,14 +2,14 @@
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00917130.
 #include <stdlib.h>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -38,7 +38,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntellige
     virtual void v00();
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -92,21 +92,21 @@ template <class T> template <class Tag> __declspec(noinline) void vector<T>::_M_
     _M_finish = nf;
     _M_end_of_storage = ns + len;
 }
-struct CTCCarrying {                            // interface 0x46
+class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
 };
 struct CThingCreature : CThing {
     void* GetAnimFromName(const CCharString& name, long index); // 0x00662A00
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* PCreature;                  // +0x18
 };
-struct CAIStateGroupBase {
-    struct CAIFilterBase {                      // vtable 0x0128FD20
+class CAIStateGroupBase { public:
+    class CAIFilterBase { public:                      // vtable 0x0128FD20
         virtual bool operator()(CThing* thing) const;   // 0x00916A50
     };
     virtual ~CAIStateGroupBase();

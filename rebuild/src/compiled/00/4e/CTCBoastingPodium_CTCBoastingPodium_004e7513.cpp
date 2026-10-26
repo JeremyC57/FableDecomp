@@ -9,7 +9,7 @@
 // Shape: every store follows the vtable store and shares the eax zero: the vector map and the def
 // pointer are member objects with inline constructors (Wave 24i), the scalars are initialisers.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -31,14 +31,14 @@ struct CBoastingPositionMap {                               // CVectorMap: a sor
     CBoastingPositionMap() : m_pFirst(0), m_pLast(0), m_pEnd(0), m_sorted(false) { }
 };
 
-struct CBoastingPodiumDef;
+class CBoastingPodiumDef;
 
 struct CBoastingPodiumDefPointer {                          // CDefPointer<const CBoastingPodiumDef>
     const CBoastingPodiumDef* m_pDef;
     CBoastingPodiumDefPointer() : m_pDef(0) { }
 };
 
-struct CTCBoastingPodium : CTCBase_Calls {                  // vtable 0x0124346C
+class CTCBoastingPodium : public CTCBase_Calls { public:                  // vtable 0x0124346C
     CBoastingPositionMap      BoastingPositions;            // +0x0c
     long                      LastPositionsWithBoastCount;  // +0x1c
     unsigned long             FrameBoastListFrom;           // +0x20

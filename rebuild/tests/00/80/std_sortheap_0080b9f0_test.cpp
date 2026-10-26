@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 0x0080B9F0: STLport sort_heap over 28-byte CTargetPoints with a 52-byte by-value comparator (here: nearest-to-anchor first via a heap on "farther").
-struct CThing { int id; };
-struct C3DVector {
+class CThing { public: int id; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
@@ -19,12 +19,12 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { SetPItem(o.GetPItem()); return *this; }
 };
 struct CTargetPoint { CIntelligentPointer PThing; long Index; C3DVector TargetingPosition; long FrameRejected; };
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos; C3DVector PreferredLine; float AngleCompare; float SqrDistCompare;
     float OverrideShortDistanceFactor; float OverrideShortDistanceFalloff; bool CompareInXYPlane;
 };
 static int g_compCopies = 0;
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero; CVectorCompare_BestForTargeting VectorCompare; float EnemyPreferenceFactor;
     CThingCompare_BestForTargeting2() { }
     CThingCompare_BestForTargeting2(const CThingCompare_BestForTargeting2& o) : Hero(o.Hero), VectorCompare(o.VectorCompare), EnemyPreferenceFactor(o.EnemyPreferenceFactor) { ++g_compCopies; }

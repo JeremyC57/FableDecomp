@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up; C3DVector Forward;
     void Set(const C3DVector& up, const C3DVector& forward) { Up = up; Forward = forward; }
 };

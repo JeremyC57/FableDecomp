@@ -1,13 +1,13 @@
 // Behaviour test for CEnginePrimitiveManager2DStaticMeshes::CreateInternalPrimitive @ 0x00B9E8C0.
 #include <cstdio>
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     long m_type; unsigned int m_flagsBase;
     CEngineInternalPrimitiveBase(long t, unsigned int f) : m_type(t), m_flagsBase(f) { }
     virtual int Kind() { return 0; }
     virtual ~CEngineInternalPrimitiveBase() { }
 };
-struct CBaseClass { virtual int Kind() { return 0; } virtual ~CBaseClass() { } };
-struct C3DOrientationInterpolator : CBaseClass { virtual int Kind() { return 5; } };
+class CBaseClass { public: virtual int Kind() { return 0; } virtual ~CBaseClass() { } };
+class C3DOrientationInterpolator : public CBaseClass { public: virtual int Kind() { return 5; } };
 struct SFourWords { long m_words[4]; SFourWords() { m_words[0] = m_words[1] = m_words[2] = m_words[3] = 0; } };
 struct CEngineInternalPrimitiveStaticMeshBase : CEngineInternalPrimitiveBase {
     long m_mesh, m_material, m_animation, m_frame, m_flags; bool m_visible, m_lit, m_dirty;
@@ -19,7 +19,7 @@ struct CEngineInternalPrimitive2DStaticMesh : CEngineInternalPrimitiveStaticMesh
     virtual int Kind() { return 3; }
     CEngineInternalPrimitive2DStaticMesh() : CEngineInternalPrimitiveStaticMeshBase(0x24, 0x80000000u) { }
 };
-struct CEnginePrimitiveManager2DStaticMeshes {
+class CEnginePrimitiveManager2DStaticMeshes { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type)
     {
         if (type != 0x24) return 0;

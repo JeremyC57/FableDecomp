@@ -5,7 +5,7 @@
 // Shape: `TaggerUID > 0` on the unsigned 64-bit member is the `test edx,edx ; ja` + `cmp [eax],0 ; jbe` pair; the member's
 // address (`lea eax,[ecx+28h]`) is formed once because find takes the key by reference. The node's IsActive byte
 // (+0x20) gates the GetPItem tail call on the node's PMember (+0x18).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UniqueID;              // +0x18
     unsigned char _pad20[0x71];
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CGroupMemberData {
+class CGroupMemberData { public:
     CBaseIntelligentPointer PMember;        // +0x00
     bool IsActive;                          // +0x08
     unsigned long JoinedFrame;              // +0x0c
@@ -43,7 +43,7 @@ struct CGroupMemberMap {                    // STLport map<unsigned __int64, CGr
     SGroupMemberNode* end() { return Header; }
 };
 
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     virtual void v00();
     CThing* ParentThing;                    // +0x04 (CTCBase)
     bool ToBeRemoved;                       // +0x08
@@ -59,7 +59,7 @@ struct CTCCreatureGroup {
 
 long GetWorldFrame();                       // 0x0049D870 (returns the global frame counter @ 0x013B89BC)
 
-struct CTCCreatureGroupTag : CTCCreatureGroup {
+class CTCCreatureGroupTag : public CTCCreatureGroup { public:
     unsigned __int64 TaggerUID;             // +0x28
     unsigned long TaggedFrame;              // +0x30
     bool ChooseNewTagger();                 // 0x008137E0

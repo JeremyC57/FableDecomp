@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CHairCardDef {
+class CHairCardDef { public:
     void* vptr;
 };
 static int g_dtor_called = 0;

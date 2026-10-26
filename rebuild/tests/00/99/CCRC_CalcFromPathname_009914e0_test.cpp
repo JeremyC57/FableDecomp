@@ -4,7 +4,7 @@
 #include <cstring>
 #include <cctype>
 static const char g_EmptyString[] = "";
-struct CCharString {
+class CCharString { public:
     char buf[64]; bool null;
     CCharString() : null(true) { buf[0] = 0; }
     CCharString(const char* s) : null(false) { std::strncpy(buf, s, 63); buf[63] = 0; }

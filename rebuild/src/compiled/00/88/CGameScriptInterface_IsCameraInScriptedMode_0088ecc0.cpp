@@ -15,7 +15,7 @@ struct CCamMgr {
     virtual void GetObj(CCamObj** out); // slot 9 -> vtbl offset 0x24
 };
 
-struct CWorld { char pad[0x38]; }; // CCamMgr* at +0x34
+class CWorld { public: char pad[0x38]; }; // CCamMgr* at +0x34
 // outer at +0x4
 
 bool __fastcall CGameScriptInterface_IsCameraInScriptedMode(CGameScriptInterface* self)

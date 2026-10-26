@@ -2,7 +2,7 @@
 // Behaviour test for COpinionDeedEffectsDef::COpinionDeedEffectsDef (0x00456D69): base first, the list
 // gets a self-linked sentinel, both vectors start empty.
 static int g_baseBuilt = 0;
-struct CParentDefClassBase { virtual void v00() { } CParentDefClassBase() { ++g_baseBuilt; } };
+class CParentDefClassBase { public: virtual void v00() { } CParentDefClassBase() { ++g_baseBuilt; } };
 struct SNode { SNode* next; SNode* prev; };
 template <class T> struct allocator { allocator() { } };
 template <class T> struct list {
@@ -10,7 +10,7 @@ template <class T> struct list {
     list(const allocator<T>& = allocator<T>()) { _M_node = &sentinel; sentinel.next = sentinel.prev = &sentinel; }
 };
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { } };
-struct COpinionDeedEffectsDef : CParentDefClassBase {
+class COpinionDeedEffectsDef : public CParentDefClassBase { public:
     long KnowledgeLifeInSeconds; list<int> Effects; long ReactionPriority; vector<int> Reaction; long Layer; vector<int> WarningText;
     COpinionDeedEffectsDef() { }
 };

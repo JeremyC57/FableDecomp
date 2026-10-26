@@ -1,6 +1,6 @@
 #include <cstdio>
 double g_procLoadTime = 0.0;
-struct CEngineResourceManager { char pad[0x10]; };
+class CEngineResourceManager { public: char pad[0x10]; };
 struct SubObj { void Do(int a, double d); };
 static void* g_this=0; static int g_a=-1; static double g_d=0.0;
 void SubObj::Do(int a, double d){ g_this=this; g_a=a; g_d=d; }

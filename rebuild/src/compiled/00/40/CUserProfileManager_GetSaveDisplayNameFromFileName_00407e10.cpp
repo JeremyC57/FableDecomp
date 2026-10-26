@@ -14,7 +14,7 @@
 struct StringRep { char* data; long len; };
 extern char g_EmptyCharString[1];                       // 0x0129AAF4
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
-struct CCharString {
+class CCharString { public:
     StringRep* rep;
     ~CCharString();                                     // 0x0099EAE0
     long GetLength() const
@@ -32,14 +32,14 @@ struct CCharString {
     __forceinline bool StartsWith(const CCharString& prefix) const { return strncmp(*this, prefix, prefix.GetLength()) == 0; }
 };
 int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60
-struct CWideStringData {                                // STLport basic_string<wchar_t> + NoRefs
+class CWideStringData { public:                                // STLport basic_string<wchar_t> + NoRefs
     unsigned short* _M_start;
     unsigned short* _M_finish;
     unsigned short* _M_end_of_storage;
     long            NoRefs;
     long size() const { return (long)(_M_finish - _M_start); }
 };
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     CWideString(const CWideString& other);              // 0x0099B720

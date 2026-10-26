@@ -25,7 +25,7 @@ static int fails = 0;
 // its vtable before the pushes), the CScriptThing an unnamed temporary; `new` keeps its null test.
 class CThing;
 class CTCBase;
-struct C3DVector;
+class C3DVector;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -34,8 +34,8 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CTCScriptedControl;
-struct CScriptThing {
+class CTCScriptedControl;
+class CScriptThing { public:
     unsigned char _body[12];
     ~CScriptThing();                            // 0x004AA840
 };
@@ -79,7 +79,7 @@ public:
     }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     unsigned char _body[0x10];
 };
 
@@ -92,7 +92,7 @@ public:
                                       long priority);   // slot 8 (+0x20)
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x38];
     CGameScriptInterface* PGameScriptInterface; // +0x38 (scoped_ptr<CGameScriptInterface>: its one pointer)
 };
@@ -102,7 +102,7 @@ struct CActionMoveTo {                          // 0x50 bytes
     unsigned char _body[0x50];
     CActionMoveTo(const C3DVector& position, long movementType, float distance, bool a, bool b);   // 0x007E71D0
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void AddAction(CActionBase* action);        // 0x007137D0
 };
 

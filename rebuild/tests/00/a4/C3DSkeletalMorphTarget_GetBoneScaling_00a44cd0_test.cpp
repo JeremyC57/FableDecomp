@@ -8,16 +8,16 @@
 // Shape: `lo` declared before `hi` (first pointer straight into ebp); `hi = size - 1` from the 20-byte element count
 // (`imul 66666667h ; sar 3`), `mid = (lo + hi) / 2` signed, unsigned key compares through a morph pointer; the found arm
 // assigns `scaling = morph->Scaling` and returns, the miss assigns a (1,1,1) temporary (three frame words copied out).
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
-struct C3DSkeletalBoneMorph                         // 0x14 bytes
-{
+class C3DSkeletalBoneMorph                         // 0x14 bytes
+{ public:
     CCharString BoneName;                           // +0x00
     unsigned long BoneNameCRC;                      // +0x04
     C3DVector Scaling;                              // +0x08
@@ -31,8 +31,8 @@ struct CBoneMorphArray                              // CArray<C3DSkeletalBoneMor
     long size() const { return (long)(last - first); }
 };
 
-struct C3DSkeletalMorphTarget
-{
+class C3DSkeletalMorphTarget
+{ public:
     CCharString Name;                               // +0x00
     CBoneMorphArray BoneMorphs;                     // +0x04
     void GetBoneScaling(C3DVector& scaling, unsigned long boneNameCRC) const;

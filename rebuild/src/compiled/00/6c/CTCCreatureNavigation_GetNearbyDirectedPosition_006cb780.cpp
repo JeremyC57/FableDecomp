@@ -8,11 +8,11 @@
 // into *out; the difference is an inline operator- whose named local keeps all three components on the x87 stack, and the
 // length squared is summed z first (`s = Z*Z; s += X*X; s += Y*Y`, GOTCHAS retry 8), compared against eps*eps.
 extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -33,14 +33,14 @@ struct C3DVector {
         return s;
     }
 };
-struct CNavigatorBase {
+class CNavigatorBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual C3DVector GetNearbyDirectedPosition(const C3DVector& from, float distance, const C2DVector& direction, float spread);   // slot 6 (+0x18)
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector& position) const;   // 0x004FC600
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     virtual void v00();
     unsigned char _pad04[0x0c - 0x04];
     CNavigatorBase* PNavigator;                         // +0x0c

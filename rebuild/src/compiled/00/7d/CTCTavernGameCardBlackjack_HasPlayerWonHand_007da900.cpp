@@ -8,7 +8,7 @@
 // Shape: GetHandValue is an in-class inline member. VC7.1 inlines the FIRST call (the dealer's hand; `includeFaceDown`
 // = true folds the visibility test away, and the `dealer > 21` test merges into the bust loop's exit) and emits the second
 // call out of line. The vector size() tests compile to `(last - first) & ~3 == 8`.
-struct CCard {
+class CCard { public:
     void*         Thing;                     // +0x00 CThingObject*
     long          Name;                      // +0x04
     long          Value;                     // +0x08

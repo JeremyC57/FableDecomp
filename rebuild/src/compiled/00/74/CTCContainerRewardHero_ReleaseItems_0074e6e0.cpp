@@ -12,16 +12,16 @@
 // Shape: the per-ring count is min(size, 8) written as a preset 8; the local vector is pushed inline (null-tested placement
 // store, overflow call with the tag temporary in the dead popout-return slot); the functor's return slot is the dead `speed`
 // argument slot.
-struct CCharString { void* m_pData; };
-struct C3DVector {
+class CCharString { public: void* m_pData; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
-struct CThingObject;
+class CThingObject;
 struct SContainerItem {                                 // pair<long, CCharString>
     long        first;
     CCharString second;
@@ -77,7 +77,7 @@ struct CMakeObjectsIgnoreEachOther {                    // the for_each functor:
 };
 CMakeObjectsIgnoreEachOther __fastcall for_each(CThingObject** first, CThingObject** last,
                                                 CMakeObjectsIgnoreEachOther f);   // 0x0074FBB0
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

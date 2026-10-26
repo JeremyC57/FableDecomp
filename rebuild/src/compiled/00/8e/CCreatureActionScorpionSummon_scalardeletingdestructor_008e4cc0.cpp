@@ -1,4 +1,4 @@
-struct CCreatureAction_ScorpionSummon {
+class CCreatureAction_ScorpionSummon { public:
     void* vftable;
 };
 

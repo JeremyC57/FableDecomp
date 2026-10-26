@@ -8,10 +8,10 @@
 // Shape: the CCamera result is returned straight through the caller's hidden pointer (esi, reused as
 // the callee's hidden pointer); `info` is reloaded after the call. The object behind GetDisplayEngine
 // is modelled as a descriptive camera-source interface (its class is not recovered). `ret 8`.
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(const C3DVector&); };
-struct CRightHandedSet { C3DVector Up, Forward; CRightHandedSet() {} CRightHandedSet(const CRightHandedSet&); };
-struct CInterpolationInfo;
-struct CCamera {
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector&); };
+class CRightHandedSet { public: C3DVector Up, Forward; CRightHandedSet() {} CRightHandedSet(const CRightHandedSet&); };
+class CInterpolationInfo;
+class CCamera { public:
     C3DVector WorldPosition; CRightHandedSet RHSet; bool HeightLocked, ViewVecZLocked;
     unsigned char _pad26[2]; unsigned long FOVFlags; float HorizontalFOV, VerticalFOV, Zoom;
     CCamera() {} CCamera(const CCamera&);

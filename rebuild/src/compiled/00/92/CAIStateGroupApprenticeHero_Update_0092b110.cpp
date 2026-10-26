@@ -18,7 +18,7 @@
 // Layout: engine/CAIStateGroup_ApprenticeHero.h flattens the CAIStateGroupBase vptr to a void* member, which cannot carry
 //   the virtual PracticeSkills call, so the class is modelled locally (PBrain +0x04, NextFramePractice +0x14 as in the
 //   header); CThing as in the landed 0x008337B0 (bitset +0x20, interface map +0x44).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                               // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -26,7 +26,7 @@ struct CInterfaceMap {                               // CVectorMap<ETCInterfaceT
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     void*               __vftable;                   // +0x00
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
@@ -50,10 +50,10 @@ struct CThing {
     }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     bool IsCookTime();                               // 0x00658B20
 };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage* GetPVillage();                       // 0x007EE540
 };
 
@@ -61,12 +61,12 @@ unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 long __fastcall GFGetCurrentFrame();                     // 0x0049D870
 extern long g_framesPerSecond;                           // 0x01375550
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThing*       PCreature;                         // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11();

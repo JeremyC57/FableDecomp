@@ -11,7 +11,7 @@
 // +0x14 and +0x1c are CCharString sub-objects that get destroyed, then a tail
 // call to the "first"-destroy helper on the same object.
 
-struct CCharString {
+class CCharString { public:
     char* m_ptr;   // +0x00
     int   m_len;   // +0x04
     // real retail dtor lives at 0x00a01c10; sub-objects sit 8 bytes apart

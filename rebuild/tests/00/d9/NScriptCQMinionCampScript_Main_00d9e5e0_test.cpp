@@ -3,7 +3,7 @@
 // behaviour test: CQ_MinionCampScript::Main -- switch off the Darkwood3 creature generators, bind the five scripted
 // entity kinds, post the scripted entities (script and game) and spawn the DoMission thread
 static int g_generatorsOff = 0, g_posted = 0, g_spawned = 0; static char g_bound[160];
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void SetCreatureGeneratorsEnabled(const char* r, bool on) const { if (!std::strcmp(r, "Darkwood3") && !on) ++g_generatorsOff; }
     void PostAddScriptedEntities() const { ++g_posted; }
 };

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "rebuild_abi.h"
 
-struct COpinionDeedMaskDef;
+class COpinionDeedMaskDef;
 
 extern void __fastcall COpinionDeedMaskDef_Copy(COpinionDeedMaskDef* thisptr, void* other);
 

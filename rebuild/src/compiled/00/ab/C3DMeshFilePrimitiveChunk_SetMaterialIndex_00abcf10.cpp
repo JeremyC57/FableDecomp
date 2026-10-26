@@ -12,18 +12,18 @@
 // element written through the reloaded array begin -- the else arm of the landed ReadFromFile.
 #include "engine/CChunkedFileChunk.h"
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* Begin; T* End; T* EndOfStorage;
     void Resize(unsigned long, const T&);     // material-index specialization 0x004428F0
     T& operator[](long i) { return Begin[i]; }
 };
 struct CCountedChunk { void* Object; void* Count; };
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CArray<CCountedChunk> SubChunks;
     CArray<CCountedChunk> RegisteredSubChunkTypes;
     unsigned long CurrentChunkIndex;
 };
-struct C3DMeshFilePrimitiveChunk : CChunkedFileSuperChunk {
+class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
     CArray<int> MaterialIndices;              // +0x2c
     void SetMaterialIndex(long materialIndex);
 };

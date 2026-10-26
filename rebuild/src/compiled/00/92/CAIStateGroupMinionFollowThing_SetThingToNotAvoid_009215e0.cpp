@@ -12,7 +12,7 @@
 //   before the argument push and moved to ecx at the call; the entry-returning FindEntry form folds it straight into ecx
 //   (`mov ecx,[eax+4]`). Model shared with the landed CAIStateGroup_MinionFollowThing::Cleanup 0x00921870 (the engine
 //   header flattens the base, so the class is modelled locally).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -44,16 +44,16 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
 };

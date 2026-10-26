@@ -8,25 +8,25 @@
 // (`ret 4`). Same family as the landed CEnginePrimitiveManagerSprites factory @ 0x00BACF90.
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x44];                    // +0x04 .. +0x48
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
 };
 
-struct CEngineInternalPrimitive2DSprite : CEngineInternalPrimitiveBase {        // vtable 0x012A54BC; 0x8C bytes
+class CEngineInternalPrimitive2DSprite : public CEngineInternalPrimitiveBase { public:        // vtable 0x012A54BC; 0x8C bytes
     unsigned char _rest48[0x44];                   // +0x48 .. +0x8C (not initialised here)
     virtual void v00();
     CEngineInternalPrimitive2DSprite() : CEngineInternalPrimitiveBase(0x22, 0x80000000) { }
 };
 
-struct CEngineInternalPrimitive2DClockSprite : CEngineInternalPrimitiveBase {   // vtable 0x012A5534; 0x94 bytes
+class CEngineInternalPrimitive2DClockSprite : public CEngineInternalPrimitiveBase { public:   // vtable 0x012A5534; 0x94 bytes
     unsigned char _rest48[0x4c];                   // +0x48 .. +0x94 (not initialised here)
     virtual void v00();
     CEngineInternalPrimitive2DClockSprite() : CEngineInternalPrimitiveBase(0x23, 0x80000000) { }
 };
 
-struct CEnginePrimitiveManager2DSprites {
+class CEnginePrimitiveManager2DSprites { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);
 };
 

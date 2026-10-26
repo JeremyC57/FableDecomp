@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct COracleMinigameDef
-{
+class COracleMinigameDef
+{ public:
     void* vftable;
 };
 extern void* const g_COracleMinigameDef_vftable;

@@ -19,12 +19,12 @@
 //        the address first with `add eax,92h`), the locking flag is the `xor ; and 1 ; xor` merge of the bool argument.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CBaseObject;
+class CBaseObject;
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CBitset       m_present;                    // +0x20
     unsigned char _pad21[0x71];
@@ -42,7 +42,7 @@ struct CThing {
 };
 bool __fastcall GFHasScriptThing(CThing* thing);   // 0x004C7E70
 
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     unsigned char _pad_0x93[0xd4 - 0x93];
     bool OverrideAutomaticLocking : 1;          // +0xd4 bit 0
     void LockAllDoors(bool lock, bool silent);  // 0x0082DB00
@@ -72,7 +72,7 @@ struct CBuildingList {                          // list<CIntelligentPointer<CThi
     SListNode<CIntelligentPointerBuilding>* _M_node;
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad_0x00[0x28];
     CBuildingList VillageBuildings;             // +0x28
     CPeopleList   VillagePeople;                // +0x2c

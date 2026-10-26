@@ -11,7 +11,7 @@
 // argument slot). The result is a reference (pointer in eax). `c` is loaded after the first compare, while
 // the branch on its result is pending, because both arms push it.
 // Layout from the landed CTestQuest sources (Ego_r.pdb member names).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
@@ -26,7 +26,7 @@ public:
     CCharString QuestCardDefName;                  // +0x18
 };
 
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest& a, const CTestQuest& b) const;   // 0x006238A0
 };
 

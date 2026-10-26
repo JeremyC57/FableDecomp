@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct Colour { float r; float g; float b; };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     char pad[0x380];
     Colour fogColour;
     char pad2[0x3d8 - 0x380 - 12];

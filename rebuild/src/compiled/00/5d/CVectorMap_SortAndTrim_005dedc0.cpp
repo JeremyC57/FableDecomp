@@ -14,7 +14,7 @@
 // Shape: `cmp byte [esi+0Dh],0 ; je ; mov edx,[esi+4] ; mov ecx,[esi] ; xor eax,eax ; mov al,[esi+0Ch] ; push eax ;
 // call ; mov byte [esi+0Dh],0 ; mov ecx,esi ; jmp` -- the empty comparator passed by value is a zero-extended byte
 // push; the algorithm TU is /Gr, so the free template is declared __fastcall (GOTCHAS wave 13/14).
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long m_words[4];
 };
 
@@ -23,10 +23,10 @@ template <class K, class V> struct SPair {
     V second;
 };
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
 };
 
-template <class T> struct CArray {                  // retail 12 bytes
+template <class T> class CArray { public:                  // retail 12 bytes
     T* _First;
     T* _Last;
     T* _End;
@@ -37,7 +37,7 @@ template <class T> struct CArray {                  // retail 12 bytes
 
 template <class T, class C> void __fastcall sort(T* first, T* last, C comp);   // 0x005E3CD0
 
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V, class C> class CVectorMap { public:
     CArray< SPair<K, V> > Data;                     // +0x00
     C Compare;                                      // +0x0C
     bool Dirty;                                     // +0x0D

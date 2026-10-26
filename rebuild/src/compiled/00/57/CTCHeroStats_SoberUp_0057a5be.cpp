@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CTCHeroStats {
+class CTCHeroStats { public:
     char pad[0x19c];
     float f19c;   // +0x19c
     float f1a0;   // +0x1a0

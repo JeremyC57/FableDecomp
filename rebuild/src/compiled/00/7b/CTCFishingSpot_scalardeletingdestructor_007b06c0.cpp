@@ -10,9 +10,9 @@
 // (CIntelligentPointer<CThing>, 8 bytes each: vptr + item), Enabled +0x24.
 // Shape: own vtable store first, the user destructor body (RemoveParticles) before the member
 // destructors, which run in reverse declaration order; a `new` factory pulls the `??_G` into the TU.
-struct CThing;
+class CThing;
 
-struct CTCBase {                                   // engine/CTCBase.h offsets, modelled polymorphic
+class CTCBase { public:                                   // engine/CTCBase.h offsets, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
@@ -28,7 +28,7 @@ struct CIntelligentPointer {                       // CIntelligentPointer<CThing
     ~CIntelligentPointer();                        // 0x00A01C10 (CBaseIntelligentPointer)
 };
 
-struct CTCFishingSpot : CTCBase {                  // vtable 0x0126D51C
+class CTCFishingSpot : public CTCBase { public:                  // vtable 0x0126D51C
     CIntelligentPointer PParticle1;                // +0x0c
     CIntelligentPointer PParticle2;                // +0x14
     CIntelligentPointer PParticleFish;             // +0x1c

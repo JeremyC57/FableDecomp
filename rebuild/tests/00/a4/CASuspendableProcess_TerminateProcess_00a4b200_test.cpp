@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CASuspendableProcess;
+class CASuspendableProcess;
 
 struct CASuspendableProcessVtbl {
     void (__fastcall *slot0)(CASuspendableProcess* process);
@@ -8,7 +8,7 @@ struct CASuspendableProcessVtbl {
 };
 
 #pragma pack(push,1)
-struct CASuspendableProcess {
+class CASuspendableProcess { public:
     CASuspendableProcessVtbl* vtbl;
     unsigned char active;
     unsigned char terminateRequested;

@@ -11,9 +11,9 @@
 // pointer local (edi) and its head is cached in eax for the walk (no call in the loop); the first matching element is
 // cleared and erased (the iterator passed by value through `push ecx ; mov eax,esp`, the discarded result homed in the dead
 // id slot) and the walk stops; the for_each functor result reuses the same dead slot.
-struct CRGBColour { unsigned char R, G, B, A; };
+class CRGBColour { public: unsigned char R, G, B, A; };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: id + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // 8 bytes: id + counted primitive pointer
     long  m_id;
     void* m_pPrimitive;
     void Clear();                                  // 0x0041BE70
@@ -78,7 +78,7 @@ struct CRetailElementList {                        // VC6 Dinkumware list<CCount
     iterator erase(iterator where);                // 0x00655EEA
 };
 
-struct CDrawQuestInfo {                            // PDB 116 bytes; retail members 4 lower from GuiMode on (the CDrawBase vector is 12 bytes)
+class CDrawQuestInfo { public:                            // PDB 116 bytes; retail members 4 lower from GuiMode on (the CDrawBase vector is 12 bytes)
     void*               _vtable;                   // +0x00 CDrawBase vptr
     unsigned char       _base04[0x18 - 4];         // CDrawBase: PlayerGui .. Bank
     bool                Drawing;                   // +0x18

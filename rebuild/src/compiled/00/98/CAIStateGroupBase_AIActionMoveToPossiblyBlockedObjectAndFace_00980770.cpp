@@ -7,15 +7,15 @@
 // Notes: each `bool reached` lives in its own scope (retail packs it into the dead `route` argument slot); the
 //   final branch is written inverted (`result != 2 || !filter()` first) so the route-failure return cross-jumps to
 //   the same tail retail picks; retry loops use `if (r == 4) continue; break;`.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(x + o.x, y + o.y, z + o.z); }
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,10 +41,10 @@ struct CThing {
         return (it == map->last || type < it->type ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const C3DVector& GetPosition() const;       // 0x006A4D00
 };
-struct CThingBuilding;
+class CThingBuilding;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
@@ -70,13 +70,13 @@ public:
 struct CAIFilterBase {
     virtual bool operator()() const;            // slot 0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 extern long g_framesPerSecond;                  // 0x01375550
 unsigned long GFGetCurrentFrame();              // 0x0049D870
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }

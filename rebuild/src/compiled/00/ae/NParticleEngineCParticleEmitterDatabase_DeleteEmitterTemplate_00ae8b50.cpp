@@ -70,7 +70,7 @@ public:
 };
 }
 
-template <class K, class V> struct CKeyPairCompareLess { };
+template <class K, class V> class CKeyPairCompareLess { public: };
 
 template <class K, class V, class C> class CVectorMap {
 public:

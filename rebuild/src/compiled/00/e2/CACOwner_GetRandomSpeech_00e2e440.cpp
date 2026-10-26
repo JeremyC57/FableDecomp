@@ -9,8 +9,8 @@
 // each return copy-constructs the hidden result); the line table is a CCharString array at +0x80 of the record (+0x14).
 #define SPEECH_COUNT 5
 #define SPEECH_TABLE_OFFSET 0x80
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
     CCharString(const CCharString& other);          // 0x0099EC30
@@ -20,8 +20,8 @@ struct CCharString
 
 extern "C" int __cdecl rand();                      // 0x00BFEB16 (MSVCR71)
 
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06();
     virtual void NewScriptFrame();                  // slot 7 (+0x1c): yield one frame

@@ -1,4 +1,4 @@
-struct CScriptConversation {
+class CScriptConversation { public:
     void* vftable;
 };
 

@@ -6,10 +6,10 @@ static int g_added = 0, g_emptied = 0, g_best = 0, g_first = 0;
 static long g_box[4];
 static bool g_lastAllowExisting = false;
 static float g_compareX = 0.0f;
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
-struct CThingCreatureBase { int id; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class CThingCreatureBase { public: int id; };
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
@@ -24,17 +24,17 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {
     CIntelligentPointerCreature(const CIntelligentPointerCreature& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
     void operator=(const CIntelligentPointerCreature& other) { void* item = other.GetPItem(); SetPItem(item); }
 };
-struct CTCShop { CThing* ParentThing; };
-struct CTCShopKeeper;
-struct CThingFilter_IsPotentialCustomer {
+class CTCShop { public: CThing* ParentThing; };
+class CTCShopKeeper;
+class CThingFilter_IsPotentialCustomer { public:
     CTCShopKeeper* TCShopKeeper;
     bool AllowExistingShopper;
     CThingFilter_IsPotentialCustomer(CTCShopKeeper* shopKeeper, bool allow) : TCShopKeeper(shopKeeper), AllowExistingShopper(allow) {}
 };
-struct CThingCompare_Nearest { C3DVector Pos; CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) { } };
+class CThingCompare_Nearest { public: C3DVector Pos; CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) { } };
 static CThingCreatureBase* g_bestResult = 0;
 static CThingCreatureBase* g_firstResult = 0;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestThingInRoughArea(const C2DBoxI& area, const CThingFilter_IsPotentialCustomer& filter,
                                   const CThingCompare_Nearest& compare, CThingCreatureBase** out)
     {
@@ -48,7 +48,7 @@ struct CThingSearchTools {
 static CThingSearchTools g_tools;
 static CTCShop* g_shop = 0;
 static void* g_addedItem = 0;
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     CThing* ParentThing;
     CIntelligentPointerCreature Customer;
     CTCShopKeeper(CThing* t) : ParentThing(t), Customer(0) {}

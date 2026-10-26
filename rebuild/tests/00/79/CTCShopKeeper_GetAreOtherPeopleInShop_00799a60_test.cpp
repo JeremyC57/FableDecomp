@@ -1,8 +1,8 @@
 #include <cstdio>
 static long g_time = 0;
 static int g_calcs = 0;
-struct CWorld { static long GetWorldFrame() { return g_time; } };
-struct CTCShopKeeper {
+class CWorld { public: static long GetWorldFrame() { return g_time; } };
+class CTCShopKeeper { public:
     bool m_areOtherPeopleInShop; long m_lastCheckTime; bool m_next;
     bool CalcAreOtherPeopleInShop() { ++g_calcs; return m_next; }
     bool GetAreOtherPeopleInShop(bool force)

@@ -11,10 +11,10 @@
 // Shape: the flag byte is loaded once after the predicate's `test al,al` and tested in both arms; the
 // emitter pointer is taken once into esi (`this` is not needed after it) for the two clears; the
 // argument is unused (`ret 4`).
-struct CIEngine;
+class CIEngine;
 
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void ClearAllParticles(CIEngine* engine);               // 0x00AED140
     void ClearAllDecals(CIEngine* engine);                  // 0x00AED1E0
 };
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {                            // sizeof 8: vptr + 
     NParticleEngine::CParticleEmitter* GetPItem() const;    // 0x00A01B50
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     unsigned char           _base[0x8];                     // CTCBase: ParentThing +4, flags +8/+9
     void*                   EmitterName;                    // +0x0c CCharString

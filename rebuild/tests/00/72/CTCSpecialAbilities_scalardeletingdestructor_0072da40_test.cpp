@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     void* vftable;
     int destroyed;
 };

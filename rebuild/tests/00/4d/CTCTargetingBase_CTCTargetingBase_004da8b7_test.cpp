@@ -7,8 +7,8 @@ struct CDefPointer {
     ~CDefPointer() { CDefPointee* d = Object; if (d) { if (--d->m_refCount == 0) d->Destroy(); Object = 0; } }
 };
 struct CBaseIntelligentPointer { int tag; ~CBaseIntelligentPointer() { g_log[g_n++] = tag; } };
-struct CTCBase { ~CTCBase() { g_log[g_n++] = 99; } };
-struct CTCTargetingBase : CTCBase {
+class CTCBase { public: ~CTCBase() { g_log[g_n++] = 99; } };
+class CTCTargetingBase : public CTCBase { public:
     bool ScriptOverrideIgnoreEverything; CBaseIntelligentPointer PNearestInterestingThing, PScriptOverrideInterestingThing, PScriptOverrideRangedTarget, PTargetedThing;
     CDefPointer PTargetingDef; bool LookAtCamera;
 };

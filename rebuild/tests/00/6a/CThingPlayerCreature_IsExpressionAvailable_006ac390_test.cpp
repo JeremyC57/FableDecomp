@@ -16,9 +16,9 @@
 // (edi) for every read and the release, so `out.Object` is copied into a small holder whose dtor releases it;
 // the found flag, the presence test and the inventory count form one `&&` chain; on the success path the def
 // has been dereferenced, so VC drops the dtor's null test there (`dec [edi+4] ; jne`), the fail path keeps it.
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
-struct CExpressionDef {
+class CExpressionDef { public:
     virtual void VSlot0();
     virtual void Destroy() const;                     // slot 1
     mutable long RefCount;                            // +0x04
@@ -26,7 +26,7 @@ struct CExpressionDef {
     long DummyObject;                                 // +0x70 [PDB +0x74] CDefIndex of the required item
 };
 
-template <class T> struct CDefPointer {             // the GetDef out slot (released through CDefHolder)
+template <class T> class CDefPointer { public:             // the GetDef out slot (released through CDefHolder)
     T* Object;
 };
 
@@ -41,11 +41,11 @@ template <class T> struct CDefHolder {              // owns the def taken from t
     T* operator->() const { return Object; }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out);   // 0x00593666
 };
 
-struct CTCBase;
+class CTCBase;
 struct CTCInventoryBase {
     long GetNumberOfItemsOfTypeInInventory(long defIndex);  // 0x005BDF08
 };
@@ -81,7 +81,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const unsi
 #pragma auto_inline(on)
 
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                       // +0x44
@@ -90,7 +90,7 @@ struct CThing {
     __forceinline CTCBase* GetInterface(long type) { return m_interfaces.Find(type); }
 };
 
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     bool IsExpressionAvailable(const CCharString& expressionName);
 };
 

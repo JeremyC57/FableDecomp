@@ -9,7 +9,7 @@
 //   dword + word + byte block copy through copies of both pointers (`mov eax,esi ; mov edi,ecx`), aligned loop head.
 // Label correction: the catalog `fill<C3DTriangle2*,C3DTriangle2>` is propagated; the 7-byte stride and the callers in
 //   the CGameMap vector helpers name the element.
-struct CGameMapCell {                                   // 7 bytes
+class CGameMapCell { public:                                   // 7 bytes
     unsigned char AtmosThemes[3];                       // +0
     unsigned char AtmosBlends[2];                       // +3
     signed char   SoundTheme;                           // +5

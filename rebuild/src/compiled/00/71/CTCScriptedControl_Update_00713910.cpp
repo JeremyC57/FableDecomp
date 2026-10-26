@@ -18,7 +18,7 @@ struct CActionBase {                                // CTCScriptedControl::CActi
     bool  Activated;                                // +0x08
     bool  Terminated;                               // +0x09
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct SActionNode {
     SActionNode*    _M_next;                        // +0x00
     SActionNode*    _M_prev;                        // +0x04
@@ -37,7 +37,7 @@ struct CActionList {                                // STLport list<CCountedPoin
     iterator begin() const { return iterator(_M_node->_M_next); }
     iterator erase(iterator pos);                   // 0x00719210
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     virtual void v00();
     void*         ParentThing;                      // +0x04 (CTCBase)
     bool          ToBeRemoved;                      // +0x08

@@ -26,7 +26,7 @@ struct CBasicStringChar {                     // CBasicString<char>, 13 bytes
     unsigned char UseFastExtend : 1;          // +0x0c bit 0
     CBasicStringChar(const char* text);       // 0x009A0590
 };
-struct CCharStringData {                      // 17 bytes
+class CCharStringData { public:                      // 17 bytes
     CBasicStringChar Data;                    // +0x00
     long             NoRefs;                  // +0x0d
     CCharStringData(const char* text) : Data(text), NoRefs(1) { }

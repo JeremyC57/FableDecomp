@@ -14,12 +14,12 @@
 // Shape: the parent creature is a named local read first; the clear is an inline member (release re-reads the block after the
 //   decrement, then zeroes block and object); the names are passed as `const char*` so each CCharString is built before the pushes;
 //   the animation entry is its own statement so the name temporary dies before operator new.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;
     unsigned char _rest[0xc];
 };
@@ -32,7 +32,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;                          // +0
     SCountBlock* m_pCount;                 // +4
     void Reset(T* object);                 // 0x00863090
@@ -49,7 +49,7 @@ template <class T> struct CCountedPointer {
         m_pObject = 0;
     }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();

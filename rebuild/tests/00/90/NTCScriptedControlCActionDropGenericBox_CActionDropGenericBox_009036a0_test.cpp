@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstddef>
 // Behaviour model of NTCScriptedControl::CActionDropGenericBox::CActionDropGenericBox @ 0x009036A0.
-struct CThing;
+class CThing;
 struct CBase { virtual void v00() {} CBase() {} };
 struct CActionDropGenericBox : CBase {
     CThing* m_pBox; bool m_dropped; bool m_started; long m_frame; bool m_finished;

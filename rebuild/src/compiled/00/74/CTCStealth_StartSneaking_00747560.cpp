@@ -10,7 +10,7 @@
 // (16-byte pair<CIntelligentPointer<CThing const>, CDangerStatus> elements).
 // Name and signature confirmed by ghidra_out/egor_signatures.tsv (Ego_r).
 // Shape: the flag store is shared by both arms of the interface test (it follows the inner if).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
     CInterfaceMap m_interfaces;                             // +0x44
@@ -39,7 +39,7 @@ struct CThing {
     }
 };
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);                       // 0x0073AE10
 };
 
@@ -53,12 +53,12 @@ struct CDangerThing {                                       // pair<CIntelligent
     long Timer;                                             // +0x0c
 };
 
-struct CStealthDef {
+class CStealthDef { public:
     unsigned char _pad[0x44];
     float         RunningAwayFromCombatHangtimeSeconds;     // +0x44
 };
 
-struct CTCStealth {
+class CTCStealth { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04
     bool          ToBeRemoved;                              // +0x08

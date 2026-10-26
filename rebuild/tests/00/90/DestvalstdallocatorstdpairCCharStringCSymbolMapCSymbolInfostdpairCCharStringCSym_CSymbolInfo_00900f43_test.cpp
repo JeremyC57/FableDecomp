@@ -3,7 +3,7 @@
 // Independent behaviour test. Provide local defs of the extern helpers so it
 // links standalone, and observe the destroy order + tail-call.
 
-struct CCharString {
+class CCharString { public:
     char* m_ptr;
     int   m_len;
     void Destroy();

@@ -6,8 +6,8 @@ struct Target;
 // ecx=[esi], edx=[esi+4]. Model as __fastcall(ecx, edx, arg).
 void __fastcall Callee(Target* ecxObj, void* edxArg, unsigned char arg);
 
-struct CTCVillage
-{
+class CTCVillage
+{ public:
     Target* field0;   // +0 -> ecx
     void*   ParentThing;   // +4 -> edx
     char    pad8;      // +8

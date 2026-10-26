@@ -15,9 +15,9 @@
 #pragma optimize("s", on)
 struct CRetailAllocator { CRetailAllocator() { } };
 
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       ParentThing;                   // +0x04
     bool          ToBeRemoved;                   // +0x08
@@ -25,7 +25,7 @@ struct CTCBase {
     CTCBase(CThing* parent);                     // 0x00686800
 };
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 struct CDefPointer {                             // CDefPointer<CSummonDef const>
     CDefPointeeBase* Object;
@@ -37,7 +37,7 @@ struct CRetailList_node0x10 {                   // retail std::list<CIntelligent
     CRetailList_node0x10(const CRetailAllocator& al = CRetailAllocator());   // 0x004B8920
 };
 
-struct CTCAISummon : CTCBase {
+class CTCAISummon : public CTCBase { public:
     virtual void v00();                          // own vtable (0x01241C8C)
     CDefPointer          PSummonDef;             // +0x0c
     CRetailList_node0x10 MySummonedCreatures;    // +0x10

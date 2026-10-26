@@ -8,7 +8,7 @@
 //          GetFacing (slot 70, +0x118); globals 0x013CE558 (rsqrt mantissa table), 3.0f 0x0122DED4, 0.5f 0x0122F59C, 0.0f 0x0122DEDC.
 // Layout: PEnemy +0x14 (CIntelligentPointer<const CThing>), as the landed CreatureTakeCover::IsStillRunnable 0x00979E90 model.
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer
 {
@@ -21,15 +21,15 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
+{ public:
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
@@ -47,7 +47,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -62,8 +62,8 @@ struct CPhysicsBody {
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing();              // slot 70 (+0x118)
 };
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -111,19 +111,19 @@ struct CThing
     }
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad0[0x18];
     CThing* Creature;                               // +0x18
 };
 
-struct CTCCarrying                                  // interface type 0x46 (word 2 bit 6)
-{
+class CTCCarrying                                  // interface type 0x46 (word 2 bit 6)
+{ public:
     CThing* GetThingInPrimarySlot();                // 0x006A1440
 };
 
-struct CTCWeapon                                    // interface type 0x48 (word 2 bit 8)
-{
+class CTCWeapon                                    // interface type 0x48 (word 2 bit 8)
+{ public:
     bool IsProjectileWeapon();                      // 0x005DAA40
 };
 

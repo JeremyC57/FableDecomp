@@ -1,4 +1,4 @@
-struct CScriptedMapBrush;
+class CScriptedMapBrush;
 
 // 0x82e250: thiscall-style, ecx = key, returns transformed key in eax
 struct KeyHolder {
@@ -10,7 +10,7 @@ struct MapSub {
     void** index(int k);
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     char pad[0x14];
     MapSub sub;
 };

@@ -10,7 +10,7 @@
 #include "engine/CTexture.h"
 #include "engine/CSurface.h"
 #else
-struct CEngineShadowRenderer {unsigned char DepthPackingLookupTexture[16];};struct CPixelFormat {long FormatIndex;};struct CTexture {void* Texture;long Flags;};
+class CEngineShadowRenderer { public:unsigned char DepthPackingLookupTexture[16];};class CPixelFormat { public:long FormatIndex;};class CTexture { public:void* Texture;long Flags;};
 #endif
 struct PixelMethods:CPixelFormat {PixelMethods(long r,long g,long b,long a,bool p){Initialise(r,g,b,a,p);}void Initialise(long,long,long,long,bool);}; //9e3790
 struct ExtentsNative {long X,Y;ExtentsNative(long x,long y):X(x),Y(y){}};

@@ -1,5 +1,5 @@
 #include "engine/CResurrectionItemDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CPersistContext { void Xfer(void* sub); };
+class CPersistContext { public: void Xfer(void* sub); };
 struct CResurrectionItemDef_Methods : CResurrectionItemDef {
     void Transfer(CPersistContext* ctx);
 };

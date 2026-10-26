@@ -52,7 +52,7 @@ void FABLE_FASTCALL ImeUi_FinalizeString(bool); //00CB2C60
 struct IMEUI_APPEARANCE;
 void FABLE_FASTCALL ImeUi_SetAppearance(const IMEUI_APPEARANCE*); //00CB2E20
 void FABLE_FASTCALL ImeUi_SetScreenDimension(unsigned int,unsigned int); //00CB2EE0
-struct C2DExtentsI { fable_i32 X,Y; };
+class C2DExtentsI { public: fable_i32 X,Y; };
 struct CDisplayManagerNative {
  C2DExtentsI* GetRenderTargetDimensions(C2DExtentsI&) const; //009BEDC0 explicit hidden result ABI projection
 };

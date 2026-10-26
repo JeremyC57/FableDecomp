@@ -14,14 +14,14 @@
 // (ebx, pushed/popped around its short live range); the camera out pointer reuses the dead argument slot; GetMainPlayer is called twice.
 #include "engine/CPlayer.h"
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {
     long     Type;
     CTCBase* TC;
@@ -39,7 +39,7 @@ struct CTCMap {
         return it->TC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                  // +0x20
     unsigned char _pad40[4];
@@ -59,7 +59,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                          // 0x00A01B50
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();

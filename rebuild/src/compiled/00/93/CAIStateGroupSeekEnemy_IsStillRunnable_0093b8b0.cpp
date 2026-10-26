@@ -32,7 +32,7 @@ struct CThingAICreatureComponentAccess : CThingAICreature {
     }
 };
 
-struct CTCTargetingAI : CTCBase {}; // real slot29 GetTarget (+0x74); actual shared component header
+class CTCTargetingAI : public CTCBase { public:}; // real slot29 GetTarget (+0x74); actual shared component header
 typedef CThing* (CTCTargetingAI::*TargetMethod)();
 union TargetMethodSlot { void* Code; TargetMethod Method; };
 struct TargetVTable { void* OtherSlots[29]; TargetMethodSlot GetTarget; };

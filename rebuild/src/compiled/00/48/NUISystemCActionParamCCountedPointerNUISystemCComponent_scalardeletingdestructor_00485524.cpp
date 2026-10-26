@@ -29,7 +29,7 @@
 // deleting-destructor itself takes ecx = this and pops its one flags argument
 // (ret 4) -- modeled __fastcall with a trailing stack `flags` parameter.
 
-struct CLandscapeBackgroundSubNodeSplitBranch;
+class CLandscapeBackgroundSubNodeSplitBranch;
 struct SplitBranchBaseSubObject;
 
 // base-subobject destructor at this+8 (thiscall / ecx = subobject)

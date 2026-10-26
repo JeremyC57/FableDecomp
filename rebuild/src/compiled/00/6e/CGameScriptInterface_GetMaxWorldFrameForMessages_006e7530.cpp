@@ -6,7 +6,7 @@ struct C { char pad[0x2c]; D* pD; };           // +0x2c
 struct B { char pad0[8]; C* pC; };             // +0x08
 struct A { char pad0[0x88]; B* pB; };          // +0x88
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
 A* g_singleton = 0;   // at 0x13b89fc
 

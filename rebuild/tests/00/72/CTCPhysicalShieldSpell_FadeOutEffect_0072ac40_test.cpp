@@ -3,14 +3,14 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -26,10 +26,10 @@ struct CThing {
     }
 };
 static int g_endCalls = 0; static void* g_endThis = 0;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void EnterTimelineEnd() { ++g_endCalls; g_endThis = this; }
 };
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     static void __fastcall FadeOutEffect(CThing* effect);
 };
 void __fastcall CTCPhysicalShieldSpell::FadeOutEffect(CThing* effect)

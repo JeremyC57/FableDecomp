@@ -8,7 +8,7 @@
 //   map pointer's esi is pushed only inside the lookup branch.
 // Layout: Ego_r.pdb puts SittingMode/RemoveOnPerformAction at +0x12c/+0x130 (PDB CCombatActionBase 0x12c bytes,
 //   retail 0x114): +0x114/+0x118 here; no engine header exists for this class.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -40,11 +40,11 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + it
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01();
     virtual void Initialise();              // 0x00857520
     virtual void PerformAction();
@@ -53,7 +53,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];
 };
 
-struct CCreatureAction_GetUpFromSitting : CCombatActionBase {
+class CCreatureAction_GetUpFromSitting : public CCombatActionBase { public:
     long SittingMode;                       // +0x114 (PDB +0x12c)
     bool RemoveOnPerformAction;             // +0x118 (PDB +0x130)
     virtual void PerformAction();

@@ -1,14 +1,14 @@
 // Behaviour test for 0x00A35F80 C3DMeshObject::GetBoundingCentre
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
-struct C3DBoundingSphere {
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
+class C3DBoundingSphere { public:
     C3DVector Centre; float Radius;
     C3DBoundingSphere() {}
     C3DBoundingSphere(const C3DBoundingSphere& o) : Centre(o.Centre), Radius(o.Radius) {}
 };
-struct C3DMeshInfo { C3DBoundingSphere BoundingSphere; };
-struct C3DMeshObject {
+class C3DMeshInfo { public: C3DBoundingSphere BoundingSphere; };
+class C3DMeshObject { public:
     C3DMeshInfo* MeshInfo; CMatrix3x4 PositionMatrix;
     C3DVector GetBoundingCentre() const
     {

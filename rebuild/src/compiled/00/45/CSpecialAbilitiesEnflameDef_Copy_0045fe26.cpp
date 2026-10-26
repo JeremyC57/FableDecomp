@@ -6,7 +6,7 @@
  * relocation-masked in parity, so a plausible extern forward target
  * reproduces the byte pattern exactly. */
 
-struct CSpecialAbilitiesEnflameDef;
+class CSpecialAbilitiesEnflameDef;
 
 /* Folded/forwarded target (relocation-masked). Same signature so the
  * tail call compiles to a plain jmp with no register shuffling. */

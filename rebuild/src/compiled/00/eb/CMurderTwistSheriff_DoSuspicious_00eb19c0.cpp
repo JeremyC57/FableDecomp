@@ -14,7 +14,7 @@
 // Layout: PDB CMurderTwistSheriff: ParentClass +0x14, MyEntityHandle +0x1c, NextLine +0x30, flags +0x34..+0x37.
 // Shape: talk block: first time the single line and the flag set, afterwards a cycling line (NextLine 1..2); the cycling
 //   text lives in an inner block inside its arm, left by goto on the terminate exits (text destructor before the unpause).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -25,7 +25,7 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);  /
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570 (hidden result in ecx)
 enum EHeroAbility { HERO_ABILITY_NONE };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
     virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
     virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020();
@@ -41,7 +41,7 @@ struct CScriptThing {                                  // 12 bytes, vtable 0x012
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     ~CScriptThing();                                   // 0x004AA840
 };
-struct CBaseObject {                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
+class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
     void* m_pIntelligentPointer;                        // +0x04
     CBaseObject();                                      // 0x0099A380
@@ -59,7 +59,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
 struct CMovieImpWords { void* Data; void* Info; };
-struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4; destructor-less view, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
@@ -70,7 +70,7 @@ struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4
     }
     void DestroyOutOfLine();                            // the implicit destructor's out-of-line copy 0x006E7B80
 };
-struct CScriptGameResourceObjectScriptedThingBase {    // 0x10 bytes, vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes, vtable 0x0127094C
     virtual void h000(); virtual void h001(); virtual void h002(); virtual void h003(); virtual void h004(); virtual void h005(); virtual void h006(); virtual void h007();
     virtual void h008(); virtual void h009(); virtual void h010(); virtual void h011();
     virtual CScriptThing GetScriptThing() const;   // slot 12 (+0x30) 0x007E7490
@@ -80,7 +80,7 @@ struct CScriptGameResourceObjectScriptedThingBase {    // 0x10 bytes, vtable 0x0
     virtual bool IsPerformingScriptTask() const;   // slot 26 (+0x68) 0x007E7450
     unsigned char _body[0xc];
 };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -137,7 +137,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (slo
     virtual void v371(); virtual void v372(); virtual void v373(); virtual void v374(); virtual void v375(); virtual void v376(); virtual void v377(); virtual void v378();
     virtual void PauseAllNonScriptedEntities(bool pause);   // slot 379 (+0x5ec) 0x00890AB0
 };
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
@@ -152,7 +152,7 @@ struct CV_MurderTwistFinalScript {                     // retail sits 0x14 below
     void WaitForEnflameReactionIfNecessary(const CScriptThing& thing);   // 0x00EB0700
     bool HasHeroEnflamedEntity(const CScriptThing& thing);               // 0x00EB07D0
 };
-struct CTimer { unsigned long _handle; };
+class CTimer { public: unsigned long _handle; };
 struct CMurderTwistSheriff : CEntityScriptBase {
     CV_MurderTwistFinalScript* ParentClass;            // +0x14
     void*                      PMasterData;            // +0x18

@@ -9,10 +9,10 @@
 // Shape: the two sizes are named locals written before either loop (the first loop's index lives in the dead
 // stream-argument slot); offsets go out truncated to long; the map walk inlines STLport's static _M_increment
 // (right-then-leftmost, else climb while we are the parent's right child) with end() re-read each pass.
-struct CCharString { void* PStringData; };
-struct C2DVector { float X, Y; };
+class CCharString { public: void* PStringData; };
+class C2DVector { public: float X, Y; };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);                         // 0x00993E30
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
@@ -59,7 +59,7 @@ template <class T> struct CStlVector {
     T& operator[](long i) { return Start[i]; }
 };
 
-struct CRegion {
+class CRegion { public:
     CStlVector<long>   Maps;                    // +0x00
     CStlVector<long>   VisMaps;                 // +0x0c
     CCharString        Name;                    // +0x18

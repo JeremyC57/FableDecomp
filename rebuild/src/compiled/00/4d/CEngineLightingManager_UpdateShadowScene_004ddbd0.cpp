@@ -5,7 +5,7 @@
 struct Local4 { int v; void Fill_004ddc11(void* obj24, void* arg); };
 struct Obj28 { void Draw(int v); };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad_18[0x18];
     int mode;               // +0x18  scene/shadow mode selector
     char pad_1c[0x24-0x1c];

@@ -12,7 +12,7 @@ struct CTarget {
     unsigned char m_field : 1;             // +0x98, bits 0..0
 };
 
-struct CThingObject {
+class CThingObject { public:
     unsigned char _pad[0xd0];
     CTarget* m_pTarget;                    // +0xd0
     bool vfunc_54();

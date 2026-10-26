@@ -4,11 +4,11 @@
 // Retail C3DMesh2 sits 8 bytes below the Ego_r PDB layout here: BoneNameMemoryHandle +0x84,
 // BoneCount +0x98, BoneNameIndices (unsigned short*) +0xa4, BoneNameData (char*) +0xa8. The
 // `lea edx,[eax+ecx*2]` is the short-pointer arithmetic. The argument is tested as a dword.
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void* GetPointerFromHandle(long handle);   // 0x00A026B0
 };
 
-struct C3DMesh2 {
+class C3DMesh2 { public:
     void* m_vptr;
     CHandleBasedMemoryPool* MemoryPool;    // +4
     unsigned char _pad_0x08[0x7c];

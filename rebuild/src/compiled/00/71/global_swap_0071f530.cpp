@@ -9,7 +9,7 @@
 // Shape: tmp is a frame temporary (`sub esp,0Ch`): its first two words stay in eax/esi, the third is parked in
 //   the frame; `a = b` goes through ebx, then the three tmp words are stored into b.  Element model of the landed
 //   _Adjust_heap 0x0071F650 (memberwise copy constructor, trivial assignment).
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 

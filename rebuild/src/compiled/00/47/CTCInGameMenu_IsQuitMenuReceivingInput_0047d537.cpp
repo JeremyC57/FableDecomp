@@ -11,9 +11,9 @@
 // Layout: retail CTCInGameMenu Components vector +0x58 (PDB +0x68).
 #pragma optimize("s", on)
 
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     CCharString(const CCharString& other);           // (declared: by-value arguments are built in place)
@@ -118,7 +118,7 @@ template <class T> struct CRetailVector {            // STLport vector (12 bytes
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x50];

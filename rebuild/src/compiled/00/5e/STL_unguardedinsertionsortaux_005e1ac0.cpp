@@ -11,13 +11,13 @@
 // Shape: `for (__i = __first; __i != __last; ++__i) __unguarded_linear_insert(__i, _Tp(*__i), __comp);` -- the pair's
 //   user copy constructor builds the 20-byte argument in its stack slot (four words, then the counted pointer's copy:
 //   null test + `inc [edx+4]`); the comparator stays declaration-only.
-struct CAnimComponentMap {                              // intrusively counted: vptr, count at +4
+class CAnimComponentMap { public:                              // intrusively counted: vptr, count at +4
     virtual void v00();
     virtual void Delete();                              // slot 1 (+0x04)
     long IVRefCount;                                    // +0x04
 };
 
-template <class T> struct CIVCountedPointer {           // one word: the intrusively counted object
+template <class T> class CIVCountedPointer { public:           // one word: the intrusively counted object
     T* Object;
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
     {
@@ -26,11 +26,11 @@ template <class T> struct CIVCountedPointer {           // one word: the intrusi
     }
 };
 
-struct CDefString {                                     // one word: the def string table position
+class CDefString { public:                                     // one word: the def string table position
     long TablePos;                                      // +0x00
 };
 
-struct CAnimationEntry {                                // Ego_r.pdb, 0x10 bytes
+class CAnimationEntry { public:                                // Ego_r.pdb, 0x10 bytes
     long                                 BankIndex;     // +0x00
     CDefString                           AnimName;      // +0x04
     CDefString                           GroupName;     // +0x08
@@ -56,7 +56,7 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 }
 }
 
-template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value (one stack word)
+template <class K, class V> class CKeyPairCompareLess { public:   // empty, passed by value (one stack word)
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 

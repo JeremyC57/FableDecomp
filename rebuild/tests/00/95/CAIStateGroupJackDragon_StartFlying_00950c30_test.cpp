@@ -1,6 +1,6 @@
 #include <cstdio>
 // ---- test model: a thing's interface bitset + sorted {type, component} table, intelligent pointers ----
-struct CThing;
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -55,7 +55,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 static int g_destroyed = 0, g_idles = 0, g_modes = 0;
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
@@ -76,7 +76,7 @@ struct CModeDragonFlying {
     CModeDragonFlying(void*, float s, CCountedActionPointer a) : speed(s), action(a) { }
 };
 static CModeDragonFlying* g_last = 0;
-struct CTCCreatureModeManager { bool AddMode(CModeDragonFlying* m) { ++g_modes; delete g_last; g_last = m; return true; } };
+class CTCCreatureModeManager { public: bool AddMode(CModeDragonFlying* m) { ++g_modes; delete g_last; g_last = m; return true; } };
 
 struct CAIStateGroup_JackDragon {
     CAIBrain* PBrain;

@@ -9,7 +9,7 @@
 // PActiveMeleeWeapon / PActiveRangedWeapon are PDB +0x14C / +0x159, retail +0x134 / +0x141 (unaligned in both).
 // Local model (no engine header for CTCInventoryWeapons).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CIntelligentPointer {
     unsigned char _body[8];
     CThing* GetPItem();                       // 0x00A01B50
@@ -21,9 +21,9 @@ struct CTCInventoryBase_Retail {
     void RefreshItemData(CThing* item);       // 0x005BF414
 };
 namespace NHeroInformationScreens {
-struct CBase { virtual void v00(); };
+class CBase { public: virtual void v00(); };
 }
-struct CTCInventoryWeapons : CTCInventoryBase_Retail, NHeroInformationScreens::CBase {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     CIntelligentPointer PActiveMeleeWeapon;   // +0x134
     long ActiveMeleeWeaponDefIndex;           // +0x13C
     bool MeleeWeaponCarriedOnLoad;            // +0x140

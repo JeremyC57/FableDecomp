@@ -4,11 +4,11 @@
 // left). Shape: the six words of the local box are copied one by one through edx (the record address re-based with `add eax,10h`), the matrix address is
 // `add ecx,70h`; `mov al,1` is the bool. engine/CEngineInternalPrimitive2DStaticMesh.h (PDB) has the matrix at +0x70; the mesh record pointer at +0x50 is
 // modelled locally.
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m_rows[12];
 };
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     float Min[3];
     float Max[3];
     C3DBoundingBox() { }

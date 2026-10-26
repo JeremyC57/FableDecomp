@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CGlobalDef { int dummy; };
+class CGlobalDef { public: int dummy; };
 
 // Provide the tail-call target so the test links.
 static int g_called = 0;

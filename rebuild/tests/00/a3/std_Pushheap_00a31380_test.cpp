@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for 0x00a31380: _Push_heap over a 20-byte pair<unsigned long, C3DHelperPoint> keyed max-heap.
-struct C3DVector { float X, Y, Z; };
-struct C3DHelperPoint { C3DVector Position; long BoneIndex; };
+class C3DVector { public: float X, Y, Z; };
+class C3DHelperPoint { public: C3DVector Position; long BoneIndex; };
 typedef C3DHelperPoint Payload;
 #define SETPAY(p,i) ((p).Position.X = (float)(i), (p).Position.Y = 0.5f, (p).Position.Z = -(float)(i), (p).BoneIndex = 3 * (i))
 #define CHKPAY(p,i) ((p).Position.X == (float)(i) && (p).Position.Y == 0.5f && (p).Position.Z == -(float)(i) && (p).BoneIndex == 3 * (i))
 template<class K, class V> struct pair { K first; V second; };
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 template<class _RanIt, class _Diff, class _Ty, class _Pr>

@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
-struct CCreatureActionBase;
+class CCreatureActionBase;
 static int g_baseCopies;
-struct CCombatActionBase { virtual void v00() { } unsigned char _body[0x114 - 4];
+class CCombatActionBase { public: virtual void v00() { } unsigned char _body[0x114 - 4];
     CCombatActionBase() { std::memset(_body, 0, sizeof(_body)); }
     CCombatActionBase(const CCombatActionBase& o) { ++g_baseCopies; std::memcpy(_body, o._body, sizeof(_body)); } };
-struct CCreatureAction_GetUpFromSitting : CCombatActionBase {
+class CCreatureAction_GetUpFromSitting : public CCombatActionBase { public:
     long SittingMode; unsigned char RemoveOnPerformAction;
     virtual void v00() { }
     CCreatureActionBase* Clone() const;

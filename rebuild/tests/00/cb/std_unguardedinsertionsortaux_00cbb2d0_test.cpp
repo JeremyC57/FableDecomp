@@ -3,7 +3,7 @@
 #include <new>
 static int g_live = 0;
 static const char* const g_names[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     explicit CCharString(int k) : m_pData((void*)g_names[k]) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }   // stands in for 0x0099EC30
@@ -11,14 +11,14 @@ struct CCharString {
     CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
     int Key() const { return ((const char*)m_pData)[0] - 'a'; }
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (*DeleteFunc)(void* data);
     void* Data;
 };
 struct CCountedObject { int id; };
 static CCPPointerInfo g_infos[8];
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     explicit CCountedPointer(CCPPointerInfo* info) : Data(0), Info(info) { if (Info) ++Info->RefCount; }

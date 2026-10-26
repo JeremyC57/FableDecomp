@@ -14,14 +14,14 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
     CBaseIntelligentPointer();                  // 0x00A01B10
 };
 
-struct CThing;
+class CThing;
 
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer_CThing() : CBaseIntelligentPointer() { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };

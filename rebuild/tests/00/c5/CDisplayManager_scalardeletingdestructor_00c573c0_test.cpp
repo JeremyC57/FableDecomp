@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void* vftable;
     int destroyed;
 };

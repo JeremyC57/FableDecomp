@@ -10,7 +10,7 @@
 // S: mov eax,esi; pop esi; ret 4
 
 struct Sub;                 // subobject at offset +4
-struct CBaseClass {
+class CBaseClass { public:
     int   m_vtbl;           // +0  (vtable / first dword)
     Sub*  dummy;            // placeholder so member sits at +4
 };

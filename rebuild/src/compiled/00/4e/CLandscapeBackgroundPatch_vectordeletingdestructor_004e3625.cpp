@@ -9,7 +9,7 @@
 
 typedef unsigned int uint;
 
-struct CLandscapeBackgroundPatch;
+class CLandscapeBackgroundPatch;
 
 // Subobject destructor at 0x451ac6, __fastcall (this in ecx, no args).
 // Model this-in-ecx as a __fastcall free fn with a single leading pointer arg.

@@ -11,29 +11,29 @@
 // Layout (retail, local model): CCombatActionBase is 0x114 bytes (PCreature +0x08); PDieEffect +0x114 (PDB +0x12C);
 //   the interface-9 component's flag byte +0x10.
 // Shape: the sibling 0x008C87A0 model (block-scoped effect id, implicit string conversions, named-item operator=).
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 
-struct CSpecialEffectsDef {
+class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
 };
 void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee of the stand-in body below
@@ -56,7 +56,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -100,11 +100,11 @@ struct CTCInterface9 {                                // interface 9 component
     unsigned char _pad[0x10];
     bool          m_flag10;                            // +0x10
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
 };
 
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -112,7 +112,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
 };
-struct CCreatureAction_ScreamerDie : CCombatActionBase {
+class CCreatureAction_ScreamerDie : public CCombatActionBase { public:
     CIntelligentPointerThing PDieEffect;            // +0x114
     void Initialise();
 };

@@ -7,7 +7,7 @@
 // Leaf: EntitySetAsAllowedToChangeRegionFollowingState
 #include "engine/CGameScriptInterface.h"
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x10];
     unsigned char m_thingKind;                      // +0x10 (1 = creature)
     unsigned char _pad11[0x1b8];
@@ -16,7 +16,7 @@ struct CThing {
     unsigned char m_followBit2 : 1;                 //        responds to follow-and-wait expressions
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

@@ -2,7 +2,7 @@
 // advances by one element; when full the overflow path gets (finish, value, 1, true).
 #include <cstdio>
 #include <new>
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 struct __false_type { __false_type() { } };
 static int g_overflowCalls = 0; static const C4DVector* g_overflowValue = 0; static unsigned int g_fill = 0; static bool g_atEnd = false;
 struct Vec {

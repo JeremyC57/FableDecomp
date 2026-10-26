@@ -12,7 +12,7 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
@@ -26,7 +26,7 @@ struct CThemeChannel {                             // CEngineLightingManager::CT
     float           FogTransform[4];               // +0x60
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char  _pad00[0x18];
     C3DVector      SunVector;                      // +0x18
     C3DVector      MoonVector;                     // +0x24

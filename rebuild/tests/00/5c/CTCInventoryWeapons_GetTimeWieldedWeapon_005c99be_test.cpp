@@ -15,7 +15,7 @@ struct CTCInventoryBase_Retail {
     long m_count;
     void GetAllInventoryItemsOfType(long itemType, CItemVector* items) { if (itemType == 3) { items->_First = g_items; items->_Last = g_items + m_count; } }
 };
-struct CTCInventoryWeapons : CTCInventoryBase_Retail {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail { public:
     long GetTimeWieldedWeapon(long itemType)
     {
         long timeWielded = 0;

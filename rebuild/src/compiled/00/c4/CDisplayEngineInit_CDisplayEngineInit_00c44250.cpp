@@ -4,14 +4,14 @@
 // MainGraphicBank +0x10, Width +0x14, Height +0x18, CPixelFormat PixelFormat +0x1c (long FormatIndex), MeshBank +0x20.
 // Shape: nine zero stores through one zero register, PlayerManager first (the only initialiser-list member; an
 // all-initialiser-list form stores in declaration order), then the body assignments in order.
-struct CMainGameComponent; struct CGameDefinitionManager; struct CPlayerManager; struct CWorld;
-struct CGraphicDataBank; struct CMeshDataBank;
+class CMainGameComponent; class CGameDefinitionManager; class CPlayerManager; class CWorld;
+class CGraphicDataBank; class CMeshDataBank;
 
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
 };
 
-struct CDisplayEngineInit {
+class CDisplayEngineInit { public:
     CMainGameComponent*     Component;             // +0x00
     CGameDefinitionManager* DefinitionManager;     // +0x04
     CPlayerManager*         PlayerManager;         // +0x08

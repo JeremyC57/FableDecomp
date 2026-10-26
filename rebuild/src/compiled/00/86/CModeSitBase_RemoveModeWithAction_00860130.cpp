@@ -1,6 +1,6 @@
 // Byte-exact reconstruction of CModeSitBase::RemoveModeWithAction @ 0x00860130
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     virtual void v04();
     virtual void v08();

@@ -12,17 +12,17 @@
 // Shape: the CTCVillageMember::OnSerialise UID block (0x007EE3D0) behind a version Transfer; the zero register (ebp) is the
 //   long default, the null UID, the 64-bit default and the `false` push; the version local is passed on to LoadRoute.
 #include "engine/CTCBase.h"
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned char _pad20[0x8e - 0x20];
     short m_level;                              // +0x8e
     bool IsLevelLess();                         // 0x004C7930
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }

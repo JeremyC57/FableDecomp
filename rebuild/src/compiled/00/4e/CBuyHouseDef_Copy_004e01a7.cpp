@@ -1,13 +1,13 @@
 #pragma optimize("g",on)
 // CBuyHouseDef::Copy @ 004e01a7
-struct CDefClassBase { char pad[0x40]; };
+class CDefClassBase { public: char pad[0x40]; };
 
 // Base class whose Copy is __fastcall (this=ecx, src on stack, EDX untouched).
 struct CBuyHouseBase {
     void BaseCopy(CDefClassBase const* src); // __fastcall member (relocation-masked target)
 };
 
-struct CBuyHouseDef {
+class CBuyHouseDef { public:
     char pad[0x25];
     unsigned char Main; // 0x25
     void Copy(CDefClassBase const* src);

@@ -11,9 +11,9 @@
 // Shape: the def copy is add-ref'd around GetSubDef and released; the effect sub-def is released by hand at the end. The
 // effect-type long is declared before the sub-def slot, and GetEffectFromString gets a same-TU stand-in body (writes only the
 // `long&`), so VC7.1 knows the word does not escape and stores its zero first, after the def's null test, as retail.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -27,7 +27,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                            // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Find_CSpecialEffectsDef_GetEffectFromString(const CSpecialEffectsDef* def, const CCharString& name);   // stand-in callee
@@ -43,12 +43,12 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p && DecRefToZero(m_p->m_refCount)) m_p->Destroy(); }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>& out);   // 0x00669580 GetSubDef<CSpecialEffectsDef>
 };
 
@@ -70,7 +70,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>& out)
 struct CThingAnimatable {
     void SetSuspendAnimation(bool suspend, long owner);   // 0x00833A10
 };
-struct CThing : CThingAnimatable {
+class CThing : public CThingAnimatable { public:
     unsigned char  _pad00[0x10];
     unsigned char  State;                       // +0x10
     unsigned char  _pad11[0x70 - 0x11];

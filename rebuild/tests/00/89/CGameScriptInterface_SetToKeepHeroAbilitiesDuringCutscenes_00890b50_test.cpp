@@ -1,7 +1,7 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     char pad[0x1c];
     void* PPlayerManager;
 };

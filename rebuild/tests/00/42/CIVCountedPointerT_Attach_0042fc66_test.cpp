@@ -1,7 +1,7 @@
 // behaviour test for 0x0042FC66
 #include <stdio.h>
 static int g_deleted = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() {}
     virtual void DeleteThis() { ++g_deleted; }
     unsigned long IVRefCount;                            // +0x04

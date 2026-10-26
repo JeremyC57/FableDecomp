@@ -5,7 +5,7 @@ struct SubObj {
     unsigned char flags;
 };
 
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 typedef int (__fastcall *SlotFn)(CTCPhysicsBase* physics);
 
 struct CTCPhysicsBaseVtbl {
@@ -13,7 +13,7 @@ struct CTCPhysicsBaseVtbl {
     SlotFn slot174;
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     CTCPhysicsBaseVtbl* vtbl;
     SubObj* sub;
 };

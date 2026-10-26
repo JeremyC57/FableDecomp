@@ -16,9 +16,9 @@ struct CBaseClassNonCopyable {                              // vtable 0x0129A7C4
     virtual void v00();
 };
 
-struct CThreadedFile;
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CThreadedFile;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }

@@ -22,7 +22,7 @@ public:
     long       BoneIndex;                                  // +0x30
 };
 
-template <class K, class V> struct CKeyPairCompareLess { };
+template <class K, class V> class CKeyPairCompareLess { public: };
 
 template <class K, class V, class C> class CPreAllocVectorMap {   // Ego_r.pdb, 16 bytes
 public:

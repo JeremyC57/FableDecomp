@@ -2,12 +2,12 @@
 #include <cstring>
 #include <new>
 
-struct CGameMapCell {
+class CGameMapCell { public:
     unsigned char AtmosThemes[3]; unsigned char AtmosBlends[2]; signed char SoundTheme; unsigned char Music;
     void Clear() { std::memset(AtmosThemes, 0, sizeof(AtmosThemes)); std::memset(AtmosBlends, 0, sizeof(AtmosBlends));
         AtmosThemes[0] = 0; AtmosBlends[0] = 0xff; SoundTheme = -1; Music = 0; }
 };
-struct CGameMap { void* vt; CGameMapCell* b; CGameMapCell* e; CGameMapCell* cap;
+class CGameMap { public: void* vt; CGameMapCell* b; CGameMapCell* e; CGameMapCell* cap;
     void Clear() { for (CGameMapCell* cell = b; cell != e; ++cell) cell->Clear(); } };
 int main()
 {

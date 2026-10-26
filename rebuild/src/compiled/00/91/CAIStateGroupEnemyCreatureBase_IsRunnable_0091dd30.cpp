@@ -6,7 +6,7 @@
 // a frame temporary through the inline converting constructor (vtable 0x0123E7D8, SetPItem(enemy)), the inline
 // operator= and the base destructor; nested ifs with `mov al,1` / shared `xor al,al`.
 // Model: local (engine/CAIStateGroup_EnemyCreatureBase.h flattens the base).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -23,7 +23,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

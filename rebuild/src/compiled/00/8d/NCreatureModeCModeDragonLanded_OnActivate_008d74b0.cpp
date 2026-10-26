@@ -42,7 +42,7 @@ struct CModeStandBase : CModeBase {
     void OnActivate();                             // 0x008621A0
 };
 
-struct CModeDragonLanded : CModeStandBase {
+class CModeDragonLanded : public CModeStandBase { public:
     unsigned char               _pad68[0xc];       // +0x68 .. +0x74
     CIntelligentPointer<CThing> PTarget;           // +0x74
     virtual void OnActivate();

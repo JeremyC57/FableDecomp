@@ -11,15 +11,15 @@
 // the absent arm reads the never-written local from the lookup key's frame word (the dead `reaction` slot);
 // each traits pointer is a named local (tested and used from one load);
 // `tc->GetWorld()->GetWorldFrame()` keeps the GetWorld call although GetWorldFrame is static.
-struct CThing;
-struct CWorld {
+class CThing;
+class CWorld { public:
     static long GetWorldFrame();            // 0x0049D870
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CWorld* GetWorld();                     // 0x00686A70
 };
-struct CTCCreatureOpinionOfHero : CTCBase {
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     unsigned char _pad04[8];
     long LastOpinionReactionFrame;          // +0x0c
 };
@@ -29,7 +29,7 @@ struct CInterfaceMap {                 // CVectorMap<ETCInterfaceType, CTCBase*>
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present
@@ -52,11 +52,11 @@ struct CThing {
         return tc;
     }
 };
-struct CReactionFrequencyTraits {
+class CReactionFrequencyTraits { public:
     virtual void v00();
     virtual void LogReaction(const CThing* creature, bool fromScript);   // slot 1
 };
-struct COpinionReactionManagerDef {
+class COpinionReactionManagerDef { public:
     unsigned char              _pad000[0x324];
     CReactionFrequencyTraits** FrequencyTraits;         // +0x324 (PDB +0x354)
     CReactionFrequencyTraits** FrequencyTraitsHigh;     // +0x328 (PDB +0x358)

@@ -1,10 +1,10 @@
 #pragma optimize("s",on)
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA_0045228f(int& r);
     void PersistB(int& r);
 };
 
-struct CVillagerInteractionsDef {
+class CVillagerInteractionsDef { public:
     char pad[0x3c];
     int fieldA;   // +0x3c
     int fieldB;   // +0x40

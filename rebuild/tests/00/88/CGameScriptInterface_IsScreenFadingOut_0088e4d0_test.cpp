@@ -1,7 +1,7 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
-struct CDisplayEngine { char pad0[0xbc]; unsigned char b_bc; char pad1[0xc]; unsigned char b_c9; };
+class CDisplayEngine { public: char pad0[0xbc]; unsigned char b_bc; char pad1[0xc]; unsigned char b_c9; };
 
 int __fastcall CGameScriptInterface_IsScreenFadingOut(const CGameScriptInterface* self)
 {

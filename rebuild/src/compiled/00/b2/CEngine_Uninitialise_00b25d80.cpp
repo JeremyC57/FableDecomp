@@ -62,7 +62,7 @@ public:
 };
 extern CRenderManagerCore* g_pRenderManagerCore;   // 0x01436E18
 
-struct CDeviceResetCallback {
+class CDeviceResetCallback { public:
     virtual void OnPreDeviceReset() = 0;
     virtual bool OnPostDeviceReset() = 0;
 };
@@ -74,7 +74,7 @@ extern CRenderManager* g_pRenderManager;            // 0x01436E1C
 extern void* g_pEngineComponentGlobal;              // 0x01436E78
 extern void* g_pEngineGlobal_01436eb0;              // 0x01436EB0
 
-template <class T> struct CArray {                  // STLport vector<T*> (12 bytes)
+template <class T> class CArray { public:                  // STLport vector<T*> (12 bytes)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -102,9 +102,9 @@ template <class T> struct CArray {                  // STLport vector<T*> (12 by
 };
 
 struct CDeletable { virtual ~CDeletable(); };
-struct CSurface : CDeletable { };
-struct CEngineLayerRenderer : CDeletable { };
-struct CEngineComponent : CDeletable { };
+class CSurface : public CDeletable { public: };
+class CEngineLayerRenderer : public CDeletable { public: };
+class CEngineComponent : public CDeletable { public: };
 
 class CInitBaseClass {
 public:

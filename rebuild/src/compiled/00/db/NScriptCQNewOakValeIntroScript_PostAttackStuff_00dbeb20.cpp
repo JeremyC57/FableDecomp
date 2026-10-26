@@ -11,20 +11,20 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-struct CBaseClass {                                     // vtable 0x01231710
+class CBaseClass { public:                                     // vtable 0x01231710
     virtual void v00();
     ~CBaseClass();                                      // 0x0099A2E0
 };
@@ -51,7 +51,7 @@ struct CScriptThingPImp {                               // CCountedPointer<CScri
     }
 };
 
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
     virtual void t00();
     virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05(); virtual void t06(); virtual void t07(); virtual void t08(); virtual void t09();
@@ -65,13 +65,13 @@ struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01
     virtual bool IsAlive() const;                       // slot 75 (+0x12c) (slot 0 is CBaseClass's v00)
     inline ~CScriptThing() {}                           // out of line: 0x004AA840
 };
-struct CScriptGameResourceObjectScriptedThingBase {    // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x0127094C, 0x10 bytes
     void* _body[4];
     void Construct();                                  // 0x007E72A0 (out-of-line ctor)
     void Destroy();                                    // 0x007E74D0 (out-of-line dtor)
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
-struct CScriptGameResourceObjectMovieBase {            // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase { public:            // vtable 0x01260EF4, 0x10 bytes
     void* _body[4];
     void Construct();                                  // 0x006E7B60
     void Destroy();                                    // 0x006E7B80
@@ -85,7 +85,7 @@ struct CCutsceneCastMap {                              // map<CCharString, CScri
 struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, long priority);   // slot 8 (+0x20)
@@ -184,7 +184,7 @@ struct CGameScriptInterface {
 };
 void __fastcall AddLogbookStoryEntry(long entry);       // 0x00CBE87F
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

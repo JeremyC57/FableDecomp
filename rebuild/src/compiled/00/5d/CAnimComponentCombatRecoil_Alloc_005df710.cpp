@@ -16,7 +16,7 @@ struct CAnimComponentCombatRecoil_Base {
     CAnimComponentCombatRecoil_Base() : m_count(1) { }
 };
 
-struct CAnimComponentCombatRecoil : CAnimComponentCombatRecoil_Base {
+class CAnimComponentCombatRecoil : public CAnimComponentCombatRecoil_Base { public:
     virtual void v00();
     unsigned char _tail[0x4];
     CAnimComponentCombatRecoil() : CAnimComponentCombatRecoil_Base() { }

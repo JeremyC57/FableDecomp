@@ -1,4 +1,4 @@
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     char pad[0x28];
     void* physicsMesh;
     bool HasPhysicsMesh();

@@ -17,7 +17,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);      // +4
     void* m_pObject;                             // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                      // +0
     SCountBlock* m_pCount;                       // +4
     CCountedPointer(T* object);                  // 0x0042AA29
@@ -54,7 +54,7 @@ struct CMenuEntryDef {
     long          RumbleRepeat;                  // +0x184
     void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     ~CDefPointer()
     {
@@ -65,7 +65,7 @@ template <class T> struct CDefPointer {
 };
 
 namespace NUISystem {
-struct CAction {                                 // retail 0x10 bytes
+class CAction { public:                                 // retail 0x10 bytes
     long  ActionType;                            // +0x00
     void* UIActionParams;                        // +0x04
     void* ThingActionParams;                     // +0x08
@@ -73,7 +73,7 @@ struct CAction {                                 // retail 0x10 bytes
     CAction();                                   // 0x0042BE50
 };
 
-struct CMenuEntry {
+class CMenuEntry { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();

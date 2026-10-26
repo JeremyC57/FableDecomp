@@ -9,17 +9,17 @@
 // the vtable store scheduled between the two float stores are the size-optimised TU shape.
 // The manifest label "CControllerDisconnect::CControllerDisconnect" is propagated and rejected.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 // engine/CTCBase.h (PDB): ParentThing +0x04, ToBeRemoved +0x08, IsInGlobalUpdateTCs +0x09 -- all
 // written by the base constructor @ 0x00686800 (owner stored, both flags cleared), none here.
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _body[8];                    // +0x04..+0x0c (ParentThing, the two flags, padding)
     CTCBase(CThing* owner);                    // 0x00686800
 };
 
-struct CTCWobble : CTCBase {                   // vtable 0x0123DF34
+class CTCWobble : public CTCBase { public:                   // vtable 0x0123DF34
     unsigned char _pad[0x18];                  // +0x0c..+0x24 (ParentRHSet, not initialised here)
     long  FramesOfWobbleRemaining;             // +0x24
     float DirectionLastRotated;                // +0x28

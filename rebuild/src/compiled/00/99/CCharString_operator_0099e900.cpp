@@ -8,7 +8,7 @@
 // Layout: CCharString {CCharStringData* PStringData}; data block {const char* chars +0, length +4} (the landed 0x0083CC10
 // model; Ego_r.pdb CCharStringData = CBasicString<char> Data + NoRefs).
 // Shape: /O2; the equality returns `Compare(...) == 0` (`neg ; sbb ; inc`).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                                 // +0x00
     unsigned long Length;                                // +0x04
 };

@@ -15,7 +15,7 @@
 // Layout: Ego_r.pdb CAIStateGroup_MinionReactToCriminal (PHero +0x14, PHome +0x1c, FrameLastLeftStategroup +0x24);
 // CThingAICreature HomeBuilding +0x168 / WorkBuilding +0x170 as in the landed 0x00831F80; CTCShop StockState +0x0c,
 // StallLike +0x50 (12-byte retail containers). The engine header flattens the base, so the model is local.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -62,41 +62,41 @@ struct CIntelligentPointerBuilding : CBaseIntelligentPointer {  // CIntelligentP
     CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad94[0x168 - 0x94];
     CBaseIntelligentPointer HomeBuilding;       // +0x168
     CBaseIntelligentPointer WorkBuilding;       // +0x170
 };
 bool __fastcall IsAwareOfThingImplementation(const CThingAICreature* creature, const CThing* thing, bool flag);  // 0x00864700
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     static long __fastcall GetWorldFrame();     // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 
-struct CTCShop {
+class CTCShop { public:
     unsigned char _pad0[0x0c];
     long StockState;                            // +0x0c ESTOCK_STATE
     unsigned char _pad10[0x40];
     bool StallLike;                             // +0x50
 };
-struct CTCShopKeeper {                          // interface 0x90
+class CTCShopKeeper { public:                          // interface 0x90
     CTCShop* GetShopTC() const;                 // 0x00798F50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     unsigned char _pad[0x14];
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

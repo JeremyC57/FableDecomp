@@ -13,12 +13,12 @@
 // test (`dec [ecx+4] ; jne`, one register for the read and the release).
 class CThing;
 class CThingAICreature;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
 };
 template <class T> struct CSubDefPointer {      // the GetSubDef out pointer: zeroed, released at scope end (no null test)
@@ -31,7 +31,7 @@ struct CCreatureSubDef : CDefPointeeBase {
     unsigned char _pad08[0xe4 - 0x08];
     bool IsGhost;                               // +0xe4
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CSubDefPointer<CCreatureSubDef>* out);   // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -60,17 +60,17 @@ struct CThingFilter_IsAICreatureAwareOfMoreGenerous {
     CThingAICreature* PCreature;
     CThingFilter_IsAICreatureAwareOfMoreGenerous(CThingAICreature* c) : PCreature(c) {}
 };
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     CThing* Thing;
     CThingFilter_IsNot(CThing* t) : Thing(t) {}
 };
-struct CThingFilter_IsThingAbleToBeEngagedInCombat {
+class CThingFilter_IsThingAbleToBeEngagedInCombat { public:
 };
-struct CThingFilter_EnemyCreature {
+class CThingFilter_EnemyCreature { public:
     CThing* SourceThing;
     CThingFilter_EnemyCreature(CThing* t) : SourceThing(t) {}
 };
-struct CThingFilter_IsNotList {
+class CThingFilter_IsNotList { public:
     vector<const CThing*>* PNotList;
     void*                  PNotList2;
     CThingFilter_IsNotList(vector<const CThing*>* l) : PNotList(l), PNotList2(0) {}

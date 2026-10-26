@@ -15,7 +15,7 @@
 //   path sets it only on success (all failures then share the one return-0 epilogue, ebp pushed in the prologue); the
 //   filter is a temporary passed by const reference (PDB `QBE_NABVCThingFilter_HasTC@@`), so its slot is free again for
 //   the later GetTC keys (a named filter costs a third frame slot); the list head is cached in a local (ebx).
-struct CTCBase;
+class CTCBase;
 class CTCVillage;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -65,10 +65,10 @@ public:
     unsigned char  _pad_0x00[0x28];
     SBuildingNode* VillageBuildings;            // +0x28 head node
 };
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetPVillage() const;            // 0x007EE540
 };
-struct CTCBuyableHouse {                        // interface 0xD5
+class CTCBuyableHouse { public:                        // interface 0xD5
     unsigned char _pad_0x00[0x11];
     bool          OwnedByPlayer;                // +0x11
     bool          Rented;                       // +0x12
@@ -76,15 +76,15 @@ struct CTCBuyableHouse {                        // interface 0xD5
     bool HasMultipleDressLevels() const;        // 0x006BF7F0
 };
 
-struct CThingFilter_HasTC {                     // one-long interface filter (descriptive)
+class CThingFilter_HasTC { public:                     // one-long interface filter (descriptive)
     long Type;
     CThingFilter_HasTC(long type) : Type(type) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class F, class T> bool GetPFirstThing(const F& filter, T** result) const;   // 0x006D3FB0
 };
 
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     CThingSearchTools* GetThingSearchTools() const;   // 0x00686D90 (CTCBase)

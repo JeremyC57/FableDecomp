@@ -1,5 +1,5 @@
-struct CThing;
-struct CTCWeapon;
+class CThing;
+class CTCWeapon;
 
 extern "C" bool __fastcall Helper_5dab10(CTCWeapon* self, int edx, CThing* a);
 

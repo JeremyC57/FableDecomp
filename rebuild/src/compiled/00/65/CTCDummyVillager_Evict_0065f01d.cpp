@@ -13,7 +13,7 @@
 // Shape: `Creature = 0` through the implicit converting constructor: the temporary is re-addressed with `lea` for the
 // assignment and destroyed after it (the landed NPlayerGui::CDrawHighlightingTargetingCursor::Clear 0x00646709 shape);
 // the 64-bit UID is cleared as two `and` stores.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     void* __vftable;                        // +0x00
@@ -26,7 +26,7 @@ namespace N_0050f3f0 { namespace N_0050f440 { struct CIntelligentPointerCreature
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other);   // 0x0050F440
 }; } using N_0050f440::CIntelligentPointerCreature; } using N_0050f3f0::CIntelligentPointerCreature;
 
-struct CTCDummyVillager {
+class CTCDummyVillager { public:
     void*                       __vftable;  // +0x00
     unsigned char               _pad_0x04[0x2C];   // +0x04 CTCBase, DefType, Home/WorkBuilding and their UIDs
     CIntelligentPointerCreature Creature;   // +0x30

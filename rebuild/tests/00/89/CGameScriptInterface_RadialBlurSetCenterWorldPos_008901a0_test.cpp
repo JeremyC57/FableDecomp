@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 class CEnvironmentSpellEffectInterpolator
 {

@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CCharString { void* PStringData; };
-struct CAnimFilterOfGroup {
+class CCharString { public: void* PStringData; };
+class CAnimFilterOfGroup { public:
     virtual long Accepts(const void*) { return 0; }
     virtual CAnimFilterOfGroup* Clone();
     CCharString Group; unsigned long GroupCRC;

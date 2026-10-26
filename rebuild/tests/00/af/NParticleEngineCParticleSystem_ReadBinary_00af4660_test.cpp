@@ -2,9 +2,9 @@
 // the scale, two component records and their separators, and checks the system and the components it created.
 #include <cstdio>
 #include <cstring>
-struct CCharString { int m_id; };
-struct C3DVector { float X, Y, Z; };
-struct CDataInputStream {
+class CCharString { public: int m_id; };
+class C3DVector { public: float X, Y, Z; };
+class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;
     long SourceChunkBytesRemaining;
     unsigned long StreamPos;

@@ -3,8 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065C781, 1002 bytes, plain `ret`, ebp frame (size TU, `optimize("s",on)`).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -12,8 +12,8 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CCharString {
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -31,7 +31,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -75,10 +75,10 @@ struct CBaseIntelligentPointer {
 bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& thing);   // 0x004CC340
 bool __fastcall IS_THING_ALIVE_Villager(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
 bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
-struct CASoundBank {
+class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol);   // 0x00A01920
 };
-struct CSoundInit {
+class CSoundInit { public:
     float Volume, Pitch, Pan;
     long NoPlays, PlaybackType;
     unsigned long GainFaderBits, PitchFaderBits;
@@ -91,7 +91,7 @@ public:
     unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);       // 0x00836810
 };
 bool __fastcall IS_THING_ALIVE(CThingSoundEmitter* const& thing);   // 0x0065D55F
-struct CSymbolMap {
+class CSymbolMap { public:
     CASoundBank* FindFirstSymbolWithVal(const CCharString* value);   // 0x009917E0
 };
 extern CSymbolMap* g_pSoundBankMap;             // 0x013B8394
@@ -129,33 +129,33 @@ struct CTextBank {
     bool EntryExists(long id);                  // 0x009CC190
     CGroupEntryRef GetPGroupEntry(long id, bool create);   // 0x009C9070
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CTextBank* PTextBank;                       // +0x14
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 extern bool g_RepopulateVillages;               // 0x013B86E9
-struct CGameTimeManager {
+class CGameTimeManager { public:
     bool IsDay();                               // 0x006BB2C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x1c];
     CGameTimeManager* PTimeManager;             // +0x1c
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CWorldMap {
+class CWorldMap { public:
     void PopulateRegionWithVillagers(CThing* village);   // 0x00502E90
 };
-struct CTCLight {
+class CTCLight { public:
     unsigned char _pad00[0x1c];
     bool OnDuringDay;                           // +0x1c (descriptive)
     void SetActive(bool active);                // 0x006412B0
 };
 class CThingPlayerCreature : public CThing { };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetHeroThing();       // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 template <class T> struct SNode {
@@ -163,7 +163,7 @@ template <class T> struct SNode {
     SNode* _M_prev;
     T      _M_data;
 };
-struct CVillageDef {
+class CVillageDef { public:
     unsigned char _pad00[0x28];
     long* TaskTypesStart;                       // +0x28
     long* TaskTypesFinish;                      // +0x2c
@@ -175,7 +175,7 @@ struct CVillageDef {
     CCharString CookEndText;                    // +0xf0
     CCharString CookStartText;                  // +0xf4
 };
-struct CTCVillage {
+class CTCVillage { public:
     void* _vfptr;
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x2c - 0x08];

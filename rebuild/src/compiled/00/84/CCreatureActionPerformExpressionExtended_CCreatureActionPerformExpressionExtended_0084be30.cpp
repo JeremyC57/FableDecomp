@@ -5,7 +5,7 @@
 // Shape: `ret 4`; explicit memberwise copy in declaration order. PExpressionDef is a CDefPointer whose inline copy constructor copies
 // the pointer and bumps the def's count at +4 (`inc dword ptr [eax+4]`) when non-null; PPerformToThing's inline copy constructor is the
 // base ctor, its vtable (0x01238C6C), then SetPItem(other.GetPItem()). Members = PDB names (PDB +0xb4.. sit 0xc high).
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
@@ -17,7 +17,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CExpressionDef {
+class CExpressionDef { public:
     void* __vftable;
     long  m_refCount;                       // +4 CDefPointee count
 };
@@ -30,12 +30,12 @@ struct CExpressionDefPointer {              // CDefPointer<CExpressionDef const>
     }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);   // 0x0062EBC0
 };
-struct CCreatureAction_PerformExpressionExtended : CCreatureActionBase {   // vtable 0x012744FC
+class CCreatureAction_PerformExpressionExtended : public CCreatureActionBase { public:   // vtable 0x012744FC
     CExpressionDefPointer PExpressionDef;   // +0xa8
     CIntelligentPointer   PPerformToThing;  // +0xac
     long                  ExpressionItemDefIndex;   // +0xb4

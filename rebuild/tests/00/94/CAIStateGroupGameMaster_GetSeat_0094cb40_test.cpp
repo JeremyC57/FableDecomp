@@ -19,10 +19,10 @@ static int fails = 0;
 #include <new>
 #include "engine/CAIBrain.h"
 #include "engine/CAIStateGroupBase.h"
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float M[6]; };
-struct CCharString {
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float M[6]; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -52,8 +52,8 @@ struct CThing {
         return false;
     }
 };
-struct CThingObject : CThing { };
-struct CThingAICreature : CThing { };
+class CThingObject : public CThing { public: };
+class CThingAICreature : public CThing { public: };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
@@ -62,7 +62,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v01();
     CIntelligentPointer(CThing* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
@@ -124,12 +124,12 @@ struct CTCTableList {                           // interface 0x21
     unsigned char _pad00[0x0c];
     CPointerListNode* _M_node;                  // +0x0c STLport list
 };
-struct CTCTavernTable {                         // interface 0xB8
+class CTCTavernTable { public:                         // interface 0xB8
     bool GetSeat(CThing& creature, C3DVector& pos, CRightHandedSet& set, long& actionPoint, long& seat,
                  const CCharString* actionPointName);   // 0x007B8840
     CThingObject* GetTankard(long seat);           // 0x007B8590
 };
-struct CTCTavernGameCoinGolf {                  // interface 0xCF
+class CTCTavernGameCoinGolf { public:                  // interface 0xCF
     void SetGameMaster(CThing* master);         // 0x0094D430
 };
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
@@ -200,8 +200,8 @@ CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 void CBaseIntelligentPointer::SetPItem(CThing* item) { m_pItem = item; }
 void CBaseIntelligentPointer::v00() { }
 template <class T> void CIntelligentPointer<T>::v01() { }
-template struct CIntelligentPointer<CThing>;
-template struct CIntelligentPointer<CThingObject>;
+template class CIntelligentPointer<CThing>;
+template class CIntelligentPointer<CThingObject>;
 CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 {
     SEntry* p = first;

@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <cstring>
 // behaviour test: CEngineWorldMap::AutoBuildWorldMapGrid builds a 32-aligned grid around the maps and links each map
-struct CEngineMap { unsigned short MapWidth, MapHeight, WorldPosX, WorldPosY; };
+class CEngineMap { public: unsigned short MapWidth, MapHeight, WorldPosX, WorldPosY; };
 static int g_links = 0; static long g_lastIndex = -1;
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin; T* m_pEnd; T* m_pCapacity;
     unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
     T& operator[](unsigned long i) { return m_pBegin[i]; }
 };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     short* Map; long MapArrayWidth, MapArrayHeight, MapOffsetX, MapOffsetY;
     CArray<CEngineMap*> MapList;
     void LinkMapToWorld(CEngineMap* map, long index) { ++g_links; g_lastIndex = index; }

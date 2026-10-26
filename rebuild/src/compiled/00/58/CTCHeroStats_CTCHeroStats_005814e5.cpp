@@ -19,20 +19,20 @@
 //   container destructors; ~CTCBase is a tail jump.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
-struct CBaseClass {                                 // vtable 0x01231710
+class CBaseClass { public:                                 // vtable 0x01231710
     virtual void v00();
     CBaseClass();                                   // 0x0099A2D0
     ~CBaseClass();                                  // 0x0099A2E0
 };
-struct CEnginePrimitiveHandle;
-struct CEnginePersistentPrimitiveBase {
+class CEnginePrimitiveHandle;
+class CEnginePersistentPrimitiveBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     virtual void v02();
     virtual void OnLastHandleReleased(CEnginePrimitiveHandle* handle);   // slot 3
     long m_refCount;                                // +0x04
 };
-template <class T> struct CIVCountedPointer {       // intrusive counted pointer (count at +4 of the object)
+template <class T> class CIVCountedPointer { public:       // intrusive counted pointer (count at +4 of the object)
     T* m_p;
     CIVCountedPointer() : m_p(0) { }
     __forceinline ~CIVCountedPointer() { Release(); }
@@ -49,7 +49,7 @@ template <class T> struct CIVCountedPointer {       // intrusive counted pointer
     __forceinline T* operator->() const { return m_p; }
     __forceinline long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
 };
-struct CEnginePrimitiveHandle : CBaseClass {        // vtable 0x0122F598, 8 bytes
+class CEnginePrimitiveHandle : public CBaseClass { public:        // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
     virtual void v00();
     CEnginePrimitiveHandle() { }
@@ -65,7 +65,7 @@ struct CDefPointee {
     virtual void Destroy();                         // slot 1
     long m_refCount;                                // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer()
@@ -78,7 +78,7 @@ template <class T> struct CDefPointer {
         }
     }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                 // 0x0099EAE0
 };
@@ -88,8 +88,8 @@ template <class T> struct CVectorStorage {          // STLport vector<T> (retail
     T* _M_end_of_storage;
     __forceinline ~CVectorStorage() { if (_M_start) free(_M_start); }
 };
-struct CRegion;
-struct C3DVector { float X, Y, Z; };
+class CRegion;
+class C3DVector { public: float X, Y, Z; };
 struct SHousePosition { const CRegion* Region; C3DVector Position; };   // pair<const CRegion*, C3DVector>
 struct CCriminalStatusMap {                         // map<CCharString, CTCHeroStats::MirroredCriminalStatus>
     unsigned char _body[0xc];
@@ -99,7 +99,7 @@ struct CMarriageList {                              // list<CHeroMarriageInfo>
     unsigned char _body[0x8];
     ~CMarriageList();                               // 0x0057FDBD
 };
-struct CSpecialAbilitiesDrunkennessDef : CDefPointee {};
+class CSpecialAbilitiesDrunkennessDef : public CDefPointee { public:};
 class CThing;
 class CTCBase {
 public:

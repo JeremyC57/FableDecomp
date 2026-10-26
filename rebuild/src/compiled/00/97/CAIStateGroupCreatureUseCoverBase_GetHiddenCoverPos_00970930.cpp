@@ -20,7 +20,7 @@ class C3DVector { public:
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -31,7 +31,7 @@ struct CBoundsInfo {
     unsigned char _00[0x34];
     float Radius;                               // +0x34 (descriptive)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -48,7 +48,7 @@ struct CThing {
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     bool IsAbleToNavigateFromPosToPos(const C3DVector* from, const C3DVector* to, float tolerance);   // 0x006CB620
     bool GetNearbyWanderPosition(const C3DVector* centre, float radius, C3DVector* result, bool flag); // 0x006CB6E0
 };
@@ -65,7 +65,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

@@ -3,15 +3,15 @@
 // @ 0x0051EC50 on the global thing manager @ 0x013B8A1C (tail jump, `this` stored over the argument slot).
 // Shape: ForceFrameUpdate is bit 3 of +0x92 (merge store, then the stored byte re-tested: `mov al,dl ; test al,8`);
 // Dead is bit 0 of +0x91.
-struct CThing;
+class CThing;
 
-struct CThingManager {
+class CThingManager { public:
     void AddToUpdateList(CThing* thing);             // 0x0051EC50
 };
 
 extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
-struct CThing {
+class CThing { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad04[0x91 - 0x04];
     unsigned char Dead : 1;                          // +0x91 bit 0 (PDB +0xa1)

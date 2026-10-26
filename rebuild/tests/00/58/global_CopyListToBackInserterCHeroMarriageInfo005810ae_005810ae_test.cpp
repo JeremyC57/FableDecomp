@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CHeroMarriageInfo { long m_words[6]; };
+class CHeroMarriageInfo { public: long m_words[6]; };
 
 struct CHeroMarriageInfoVector {                 // fixed-capacity stand-in for the STLport vector
     CHeroMarriageInfo m_items[8];

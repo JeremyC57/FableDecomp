@@ -30,11 +30,11 @@ struct CSweepTaskList {                     // retail std::list<CCountedPointer<
     }
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();            // 0x0049D870
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*          __vftable;               // +0x00
     unsigned char  _pad_0x04[0xC];
     long           FrameStartedSecuritySweep;   // +0x10

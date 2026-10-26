@@ -14,7 +14,7 @@
 
 class CThingCreatureBase;
 
-struct CCombatManager {
+class CCombatManager { public:
     bool IsAttacked(const CThingCreatureBase& creature) const;   // 0x006E9270
 };
 

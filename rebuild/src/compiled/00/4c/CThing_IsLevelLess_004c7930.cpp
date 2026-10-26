@@ -1,5 +1,5 @@
 struct CLevelObj { char pad[0x41]; unsigned char flags; };
-struct CThing { char pad[0x70]; CLevelObj* level; };
+class CThing { public: char pad[0x70]; CLevelObj* level; };
 
 bool __fastcall CThing_IsLevelLess(const CThing* thing)
 {

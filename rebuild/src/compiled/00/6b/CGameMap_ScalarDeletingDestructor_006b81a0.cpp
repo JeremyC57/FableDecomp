@@ -24,7 +24,7 @@ struct CMapBuffer {
     }
 };
 
-struct CGameMap : CBaseClass {
+class CGameMap : public CBaseClass { public:
     CMapBuffer m_cells;                         // +0x04
     virtual ~CGameMap() {}
 };

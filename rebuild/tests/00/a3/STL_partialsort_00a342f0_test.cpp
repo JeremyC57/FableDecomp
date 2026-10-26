@@ -1,8 +1,8 @@
 // Behaviour test for 0x00A342F0 std::__partial_sort over the 20-byte helper-point entries: the five smallest keys sorted in front, payloads intact.
 #include <cstdio>
 #include <new>
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
-struct C3DHelperPoint { C3DVector Position; int BoneIndex; };
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
+class C3DHelperPoint { public: C3DVector Position; int BoneIndex; };
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;

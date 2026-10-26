@@ -1,7 +1,7 @@
 // CLostTraderBrother::Init() -- set the state at +0x1c to 1 and clear the flag at +0x20, register the brother thing with the quest (slot 235 with (&Thing, true)) and clear its marker (slot 745 with (&Thing, false)), then clear the counter at +0x24 and the flag at +0x28
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EA50A0, length 60 bytes.
 // Callees: the quest interface's virtual slots 235 (+0x3ac) and 745 (+0xba4), both (CScriptThing*, bool). Shape: the first two stores are scheduled between the pushes of the first call, the last two after the second call; the thing's address in edi, `ret`.
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000();
     virtual void* GetInfo(long which);              // slot 1 (+0x04)
     void* PImp_Data;                               // +0x04 (CCountedPointer<CThing>::Data)

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCHeroReceiveItems {
+class CTCHeroReceiveItems { public:
     void* vftable;
     int destroyed;
 };

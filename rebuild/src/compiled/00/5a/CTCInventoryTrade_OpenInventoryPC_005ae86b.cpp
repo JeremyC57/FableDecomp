@@ -17,14 +17,14 @@
 // PMouse_Pointer +0x21c, AccumFadeTime +0x228.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 class CThing;
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -35,7 +35,7 @@ struct CComponent {
     virtual void v42();
     virtual void Reset();                       // slot 43 (+0xAC) (name descriptive)
 };
-struct CManager {                               // the front-end manager's vptr is its first word
+class CManager { public:                               // the front-end manager's vptr is its first word
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -45,7 +45,7 @@ struct CManager {                               // the front-end manager's vptr 
     virtual void OnThingInventoryOpened(CThing* thing);   // slot 26 (+0x68)
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
 };
 }
@@ -69,7 +69,7 @@ struct CWorldPart {
     unsigned char _pad_0x00[0x2c];
     CHudOwner* Hud;                             // +0x2c
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                          // +0x28
 };
@@ -93,7 +93,7 @@ struct CComponentVector {                       // vector<NUISystem::CComponent*
     void push_back(NUISystem::CComponent* const& value);   // 0x00486024
 };
 
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     void*            __vftable;                 // +0x00
     CThing*          ParentThing;               // +0x04
     unsigned char    _pad08[0x0c - 0x08];

@@ -6,7 +6,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CShopItemDef {
+class CShopItemDef { public:
     int Key;                                         // stands for the def's base-class body
     float Quantity; float PriceMultiplier;
     CShopItemDef() : Key(0) { ++g_live; }

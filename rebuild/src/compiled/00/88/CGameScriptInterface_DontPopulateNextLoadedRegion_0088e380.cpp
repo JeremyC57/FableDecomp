@@ -4,8 +4,8 @@ struct COwner
     unsigned char m_bDontPopulateNextLoadedRegion; // 0xD8
 };
 
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     void* m_Pad00;   // 0x0
     COwner* m_pOwner; // 0x4
 };

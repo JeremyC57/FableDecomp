@@ -7,7 +7,7 @@
 // the last multiply consumes it. Each `m *= s` is `fmul qword [member] ; fstp qword [member]` in declaration order.
 namespace QuadricOptimiserInternals {
 
-struct CQuadric {
+class CQuadric { public:
     double AA, AB, AC, AD;
     double BB, BC, BD;
     double CC, CD;

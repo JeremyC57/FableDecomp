@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CThingTrackNode;
+class CThingTrackNode;
 
-struct CEditControlCentre {
+class CEditControlCentre { public:
     char pad0[0xc];
     char flag;
     char pad1[0x74 - 0xd];

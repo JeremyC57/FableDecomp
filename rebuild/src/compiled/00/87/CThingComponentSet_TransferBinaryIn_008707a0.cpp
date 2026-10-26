@@ -14,7 +14,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 
 #pragma pack(push, 1)
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -27,7 +27,7 @@ struct CEntry {                         // CThingComponentSet::CEntry, 9 bytes (
 };
 #pragma pack(pop)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long m_08;
@@ -58,14 +58,14 @@ struct CMemoryDataInputStream {
     }
 };
 
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T* Start;                           // +0x00
     signed char Size;                   // +0x04
     void resize(long n, const T& fill);     // 0x00870370
     T* GetData() { return Size > 0 ? Start : (T*)this; }
 };
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVector<CEntry, 8> Entries;    // +0x00
     void TransferBinaryIn(CMemoryDataInputStream* stream);
 };

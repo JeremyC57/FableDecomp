@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_PutDownTankard {
+class CCreatureAction_PutDownTankard { public:
     void* vftable;
     int destroyed;
 };

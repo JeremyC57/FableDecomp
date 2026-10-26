@@ -7,10 +7,10 @@
 // vtable either (its out-of-line copy @ 0x004DA967 has none) -- it only runs the CDefPointer member's inline release:
 // the def pointer is read into a local (ecx) so `dec [ecx+4] ; jne ; call [eax+4]` reuses it, and the clear sits inside
 // the non-null arm. The derived destructor is non-virtual here so the TU emits only `??1`.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -48,7 +48,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     virtual void v00();
 };
 
-struct CTCActionUseBase : CTCBase {            // vtable 0x0123F09C
+class CTCActionUseBase : public CTCBase { public:            // vtable 0x0123F09C
     CDefPointer PActionUseDef;                 // +0x0c
     bool        Usable;                        // +0x10
 };

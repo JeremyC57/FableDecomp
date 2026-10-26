@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeCarryingStandBase::OnDeactivate (retail 0x008D8960): the creature's animation
 // component (interface 0x5a) drops its type-0x18 combination animations, then the stand-mode deactivation runs.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,12 +54,12 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
-struct CAnimateThing {
+class CThing : public CThingLookup { public: };
+class CAnimateThing { public:
     long removedType;
     void RemoveCombinationAnimsOfType(long type) { removedType = type; }
 };
-struct CTCAnimationComplex : CTCBase {
+class CTCAnimationComplex : public CTCBase { public:
     CAnimateThing Animate;
     CAnimateThing& GetAnimation() { return Animate; }
 };

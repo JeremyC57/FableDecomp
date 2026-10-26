@@ -1,16 +1,16 @@
 // Behaviour test for 0x0083B3B0 CThingVillage::DrawIsDrawable
 #include <cstdio>
-struct CDisplayEngine {
+class CDisplayEngine { public:
     bool m_enabled;
     virtual bool IsDrawingEnabled() { return m_enabled; }
 };
 static CDisplayEngine g_engine;
 static CDisplayEngine* GetDisplayEngine() { return &g_engine; }
-struct CThing {
+class CThing { public:
     bool m_drawable;
     bool DrawIsDrawable() { return m_drawable; }
 };
-struct CThingVillage : CThing {
+class CThingVillage : public CThing { public:
     bool DrawIsDrawable() { return GetDisplayEngine()->IsDrawingEnabled() && CThing::DrawIsDrawable(); }
 };
 int main()

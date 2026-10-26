@@ -10,14 +10,14 @@
 // bitset +0x20 (0xd7 = bit 23 of the +0x38 word), map +0x44.
 // Shape: HasTC + GetTC (const lookup) with the wife in a named local; each override names its string in its own block and
 // returns, so the two string arms and the default arm keep separate epilogues.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -32,21 +32,21 @@ struct CThing {
         return it->component;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CTCWife {
+class CTCWife { public:
     unsigned char _pad00[0x24];
     bool DivorcedHero;                                  // +0x24
     bool IsMarriedToThePlayer();                        // 0x006CEC80
 };
-struct COpinionOfHeroDef {
+class COpinionOfHeroDef { public:
     unsigned char _pad00[0x30];
     long DefaultPersonality;                            // +0x30 (personality def index; named descriptively)
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00();
     const CThing* ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x1c - 0x08];

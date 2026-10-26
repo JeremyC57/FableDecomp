@@ -48,20 +48,20 @@ public:
         return false;
     }
 };
-struct CPlayer { CThing* GetControlledCreature() const; };          // 0x00487DD0
-struct CPlayerManager { CPlayer* GetMainPlayer() const; };          // 0x00449960
-struct CEngine {
+class CPlayer { public: CThing* GetControlledCreature() const; };          // 0x00487DD0
+class CPlayerManager { public: CPlayer* GetMainPlayer() const; };          // 0x00449960
+class CEngine { public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                          // +0x1C
 };
 extern CEngine* g_pEngine;                                  // 0x013B86A0
 
 namespace NInventory {
-struct CItem {
+class CItem { public:
     long DefIndex;                                          // +0x00
     long Count;                                             // +0x04
 };
-struct CCategory {
+class CCategory { public:
     long GetUniqueItemCountInCategory() const;              // 0x005BC8AC
 };
 }
@@ -78,7 +78,7 @@ struct CItemVector {                                        // STLport vector<NI
     unsigned long size() const { return _M_finish - _M_start; }
     NInventory::CItem& operator[](unsigned long n) { return _M_start[n]; }
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     static bool __fastcall IsBuyable(long defIndex);        // 0x005D9B30
 };
 
@@ -91,7 +91,7 @@ struct CTCInventoryBase {
     NInventory::CCategory* GetSelectedCategory();           // 0x005BCACE
     long GetCategoryCount() const;                          // 0x005BCE2F
 };
-struct CTCInventoryTrade : CTCInventoryBase {
+class CTCInventoryTrade : public CTCInventoryBase { public:
     long          CategoryCount;                            // +0x160
     long          ItemSellCount;                            // +0x164
     long          ItemBuyCount;                             // +0x168

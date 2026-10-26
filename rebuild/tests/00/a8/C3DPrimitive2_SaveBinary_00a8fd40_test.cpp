@@ -1,11 +1,11 @@
 // Behaviour test for C3DPrimitive2::SaveBinary @ 0x00A8FD40: the stream records every write; check order and values.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CVertexCompressionParams { float PosScale[4]; float PosBias[4]; };
+class C3DVector { public: float X, Y, Z; };
+class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
 static unsigned long g_log[256]; static int g_n = 0;
 static void Log(unsigned long v) { if (g_n < 256) g_log[g_n++] = v; }
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteData(const void* data, unsigned long size) { Log(0xD0); Log(size); Log((unsigned long)((const float*)data)[0]); }
     void WriteBool(bool v) { Log(0xB0); Log(v ? 1 : 0); }
     void WriteUChar(unsigned char v) { Log(0xC0); Log(v); }
@@ -16,27 +16,27 @@ struct CDataOutputStream {
     void WriteBuffer(const void* data, long size) { Log(0xBF); Log((unsigned long)((const unsigned char*)data)[0]); Log((unsigned long)size); }
 };
 static int g_locks = 0;
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     unsigned long m_handle; unsigned long ByteLength; unsigned long VertexSize; unsigned char VertexType;
     CVertexCompressionParams CompressionParams; unsigned char m_data[4];
     void* Lock(unsigned long, unsigned long, unsigned long) { ++g_locks; return m_data; }
     void Unlock() { --g_locks; }
 };
-struct CIndexBuffer {
+class CIndexBuffer { public:
     unsigned char m_data[4];
     unsigned char* Lock(unsigned long, unsigned long, unsigned long) { ++g_locks; return m_data; }
     void Unlock() { --g_locks; }
 };
-struct C3DClothPrimitive { unsigned long id; void SaveBinary(CDataOutputStream&) const { Log(0xCC); Log(id); } };
-template<class T> struct CCountedPointer { T* Data; void* Info; };
-template<class T> struct CArray {
+class C3DClothPrimitive { public: unsigned long id; void SaveBinary(CDataOutputStream&) const { Log(0xCC); Log(id); } };
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long size() const { return (unsigned long)(m_end - m_begin); }
     T& operator[](unsigned long i) const { return m_begin[i]; }
 };
 struct CStaticBlock { unsigned long StartIndex; unsigned long PrimitiveCount; bool DiffuseFlag; bool BumpFlag; unsigned char TextureStage; long MaterialIndex; };
 struct CAnimatedBlock { unsigned long id; void SaveBinary(CDataOutputStream&) const { Log(0xAB); Log(id); } };
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     long MaterialIndex; long RepeatingMeshReps; C3DVector BoundingCenter; float BoundingRadius; float AverageTextureStretch;
     CArray<CCountedPointer<C3DClothPrimitive> > ClothPrimitives;
     CVertexBufferWin32* VertexBuffer; CIndexBuffer* IndexBuffer;

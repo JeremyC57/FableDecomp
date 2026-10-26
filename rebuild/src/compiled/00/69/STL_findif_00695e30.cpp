@@ -15,7 +15,7 @@
 class CThingCreatureBase;
 class CGameCameraManager;
 
-struct CCPPointerInfo {                                      // Ego_r.pdb, 12 bytes
+class CCPPointerInfo { public:                                      // Ego_r.pdb, 12 bytes
     unsigned long RefCount;                                  // +0x00
     void (__fastcall* DeleteFunc)(void*);                    // +0x04 (called with the object in ecx)
     void*         Data;                                      // +0x08

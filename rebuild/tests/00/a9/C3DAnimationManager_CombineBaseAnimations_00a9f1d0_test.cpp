@@ -21,7 +21,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object;                                     // +0
     SCountBlock* Info;                             // +4
     ~CCountedPointer()
@@ -37,14 +37,14 @@ template <class T> struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-struct C3DKeyframe {
+class C3DKeyframe { public:
     float Rotation[4];
     float Position[4];
     float Scaling[4];                              // 0x30 bytes
 };
-struct C3DMesh2;
+class C3DMesh2;
 
-struct C3DAnimation2 {
+class C3DAnimation2 { public:
     void* __vftable;                               // +0x00 (C3DAnimationStats base)
     long _04;
     unsigned long AnimType;                        // +0x08 EAnimationType
@@ -53,30 +53,30 @@ struct C3DAnimation2 {
     void CalcLocalTransformations(C3DKeyframe* keyframes, unsigned long count, float time) const;   // 0x00A4CEC0
 };
 
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     CCountedPointer<const C3DAnimation2> GetAnimation(const C3DMesh2& mesh) const;   // 0x00A26C60
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     const C3DAnimationInfo* PeekAnimation(unsigned long index) const;   // 0x00A242C0
 };
 
-struct C3DAnimationStateBase {
+class C3DAnimationStateBase { public:
     virtual void v00();
     virtual void v01();
     virtual long GetType() const;                  // slot 2 (+8)
     unsigned long IVRefCount;                      // +0x04
 };
-struct C3DAnimationState : C3DAnimationStateBase {
+class C3DAnimationState : public C3DAnimationStateBase { public:
     long AnimationIndex;                           // +0x08
     float AnimationTime;                           // +0x0c
 };
-struct C3DAnimationTransitionState : C3DAnimationStateBase {
+class C3DAnimationTransitionState : public C3DAnimationStateBase { public:
     C3DAnimationStateBase* StartState;             // +0x08 CIVCountedPointer<C3DAnimationStateBase>
     C3DAnimationStateBase* EndState;               // +0x0c CIVCountedPointer<C3DAnimationStateBase>
     float Progress;                                // +0x10
 };
 
-struct C3DAnimationManager {
+class C3DAnimationManager { public:
     virtual ~C3DAnimationManager();
     CMeshDataBank* MeshDataBank;                   // +0x04
     void BlendAnimations(C3DKeyframe* dest, const C3DKeyframe* src, unsigned long count, float alpha);   // 0x00A9EB90
@@ -111,7 +111,7 @@ void C3DAnimationManager::CombineBaseAnimations(const C3DAnimationStateBase& sta
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DMesh2 { int Dummy; };
+class C3DMesh2 { public: int Dummy; };
 static C3DAnimationInfo g_infos[4];
 static C3DAnimation2 g_anims[4];
 static unsigned long g_peekIndex = 99; static const CMeshDataBank* g_peekThis = 0;

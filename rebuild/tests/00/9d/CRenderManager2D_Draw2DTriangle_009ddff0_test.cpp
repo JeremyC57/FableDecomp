@@ -1,11 +1,11 @@
 #include <cstdio>
-struct C2DVector { float X, Y; };
-struct CRGBColour {
+class C2DVector { public: float X, Y; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     unsigned long GetARGB() const { return (((((unsigned long)A << 8) | R) << 8 | G) << 8) | B; }
 };
-struct CTexture;
-struct CTVertexRHWColSpecTex1 {
+class CTexture;
+class CTVertexRHWColSpecTex1 { public:
     float X, Y, Z, RHW;
     unsigned long Diffuse;
     unsigned long Specular;

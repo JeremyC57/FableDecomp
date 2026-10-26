@@ -11,7 +11,7 @@
 // Layout: Ego_r.pdb CCrateTeamMember (60 bytes): vptr +0, the script interface +4 (unnamed), a CScriptThing +8 (unnamed),
 // ParentClass +0x14, PMasterData +0x18, CurrentAIState +0x1c, PreviousAIState +0x20, TeamID +0x24, MemberState +0x28, MyTeam +0x2c,
 // ThingToPatrolTo +0x30; CCrateTeamManager (landed 0x00CDB360): StateCounter[6] at +0.
-struct CScriptThing {                       // 12 bytes: vptr + counted pointer
+class CScriptThing { public:                       // 12 bytes: vptr + counted pointer
     virtual void v00();
     void* PImp_Data;
     void* PImp_Info;

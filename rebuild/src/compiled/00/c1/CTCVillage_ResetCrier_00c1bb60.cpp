@@ -6,8 +6,8 @@
 // global scale constant referenced by fmul dword ptr [0x1230a08]
 static const float k_CrierScale = 0.5f;
 
-struct CTCVillage
-{
+class CTCVillage
+{ public:
     char pad0;        // +0
     char crier;       // +1  <- byte ptr [esi + 1]
 };

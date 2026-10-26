@@ -10,12 +10,12 @@
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}.
 // Shape: the handle is a function-scope local destroyed once at the merged exit; every early `return` after a frame shares it;
 //   the facing/target calls fetch the interface vtable before the inner GetHero (VC evaluates the callee first).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                           // 0x0099EAE0
 };
 
-struct CScriptThing {                          // 12 bytes, polymorphic
+class CScriptThing { public:                          // 12 bytes, polymorphic
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
@@ -30,12 +30,12 @@ struct CCountedPointerWords {                  // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CBaseObject {                           // CBaseIntelligentPointer root (polymorphic: vptr +0)
+class CBaseObject { public:                           // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;               // +0x04
     CBaseObject();                             // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                 // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -44,7 +44,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
 
-struct CGameScriptInterface {                  // vtable 0x01260F0C (slots from rtti-vtables.tsv)
+class CGameScriptInterface { public:                  // vtable 0x01260F0C (slots from rtti-vtables.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c) 0x006E7410
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)

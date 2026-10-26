@@ -2,9 +2,9 @@
 // Behaviour test for NCreatureMode::CModeDragonFireBeam::FrameUpdate (retail 0x008E0780): after the hover update the beam
 // effect starts once the dragon (state 1) has performed its current action; the beam timer counts down and the beam is
 // updated every frame; at zero the dragon starts the fire-beam-out-of action.
-struct CThing { unsigned char m_state; unsigned char m_flags91; };
-struct CCreatureActionBase { int Kind; CThing* Owner; CThing* Target; };
-struct CThingCreatureBase : CThing {
+class CThing { public: unsigned char m_state; unsigned char m_flags91; };
+class CCreatureActionBase { public: int Kind; CThing* Owner; CThing* Target; };
+class CThingCreatureBase : public CThing { public:
     int actions;
     CCreatureActionBase last;
     bool SetCurrentAction(const CCreatureActionBase& action) { ++actions; last = action; return true; }
@@ -18,7 +18,7 @@ struct CModeBase {
     CThingCreatureBase* ParentThing;
     void FrameUpdate() { ++g_baseUpdates; }
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     bool Performed;
     bool HasPerformedAction() const { return Performed; }
 };
@@ -26,7 +26,7 @@ struct CDragon : CThingCreatureBase {
     CCombatActionBase* PCurrentAction;
     CCombatActionBase* GetCurrentAction() const { return PCurrentAction; }
 };
-struct CCreatureAction_DragonFireBeamOutOf : CCreatureActionBase {
+class CCreatureAction_DragonFireBeamOutOf : public CCreatureActionBase { public:
     CCreatureAction_DragonFireBeamOutOf(CThingCreatureBase* owner) { Kind = 4; Owner = owner; Target = 0; }
 };
 struct CModeDragonHover {

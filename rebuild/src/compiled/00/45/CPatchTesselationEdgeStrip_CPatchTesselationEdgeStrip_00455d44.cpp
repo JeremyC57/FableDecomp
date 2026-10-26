@@ -8,7 +8,7 @@ extern void __fastcall CBase_dtor(CBase* self);
 
 void __cdecl free(void*);
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char pad0[0x50];
     void* p50;
     char pad54[0x8];

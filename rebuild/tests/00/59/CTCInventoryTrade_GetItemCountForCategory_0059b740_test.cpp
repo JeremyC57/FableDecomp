@@ -3,7 +3,7 @@
 struct CCategory { long m_ident; long GetCategoryIdentifier() { return m_ident; } };
 enum { CATEGORY_TRADE_BUY = 11, CATEGORY_TRADE_SELL = 12 };
 struct CTCInventoryBase_Retail { CCategory* m_selected; CCategory* GetSelectedCategory() { return m_selected; } };
-struct CTCInventoryTrade : CTCInventoryBase_Retail {
+class CTCInventoryTrade : public CTCInventoryBase_Retail { public:
     long ItemSellCount; long ItemBuyCount;
     long GetItemCountForCategory()
     {

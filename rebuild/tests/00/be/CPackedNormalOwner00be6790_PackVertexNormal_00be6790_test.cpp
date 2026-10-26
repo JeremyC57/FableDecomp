@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPackedNormalOwner_00be6790 { unsigned long PackVertexNormal(const C3DVector& normal); };
 __forceinline long ROUND(float value)
 {

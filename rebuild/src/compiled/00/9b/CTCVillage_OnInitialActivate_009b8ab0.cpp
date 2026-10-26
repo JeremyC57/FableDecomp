@@ -3,7 +3,7 @@ struct Sub;
 
 extern void __fastcall Sub_Do(Sub* self, int a, unsigned char b);
 
-struct CTCVillage {
+class CTCVillage { public:
     Sub* m0;        // +0
     int  ParentThing;        // +4
     unsigned char ToBeRemoved;

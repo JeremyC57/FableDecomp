@@ -8,7 +8,7 @@
 //          retail, as the landed PostProcessTargetedThing 0x00803B20 notes), so the positions sit 8 bytes lower: TargetedPos
 //          +0x84, OldTargetedPos +0x90, TargetedPosOffset3D +0x9c, OldTargetedPosOffset3D +0xa8; local model.
 // Shape: `(current - old) * t + old` through C3DVector's inline operators, the offset added with +=.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -17,10 +17,10 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
 };
-struct CPlayer {
+class CPlayer { public:
     bool IsFirstPersonTargeting();              // 0x004874D0
 };
-struct CWorld;
+class CWorld;
 class CThing {
 public:
     unsigned char _pad00[0x91];
@@ -28,7 +28,7 @@ public:
     CPlayer* GetPlayer();                       // 0x004C7A10
 };
 C3DVector __fastcall GetTargetFirePoint(const CWorld* world, const CThing* target, float t);   // 0x007EA2F0
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

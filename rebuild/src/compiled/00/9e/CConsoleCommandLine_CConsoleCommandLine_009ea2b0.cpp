@@ -5,12 +5,12 @@ namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);    // 0x0099EBF0
 };
 
-struct CConsoleCommandLine : CBase {               // vtable 0x0129C400
+class CConsoleCommandLine : public CBase { public:               // vtable 0x0129C400
     virtual void v00();
     CCharString m_line;                            // +0x04
     bool        UserEntry;                               // +0x08

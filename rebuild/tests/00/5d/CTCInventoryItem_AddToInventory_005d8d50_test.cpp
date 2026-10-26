@@ -1,14 +1,14 @@
 // Behaviour test for CTCInventoryItem::AddToInventory @ 0x005D8D50 (model copy, stub thing and inventory).
 #include <cstdio>
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { ++constructed; }
     ~CBaseClass() { ++destructed; }
     virtual void v00() {}
     static long constructed, destructed;
 };
 long CBaseClass::constructed = 0; long CBaseClass::destructed = 0;
-namespace NTCMessages { struct CMessageOnPickup : CBaseClass { virtual void v01() {} }; }
-struct CThing {
+namespace NTCMessages { class CMessageOnPickup : public CBaseClass { public: virtual void v01() {} }; }
+class CThing { public:
     unsigned char _pad00[0x92];
     unsigned char DeletedOnOwnerLevelOutOfScope : 1; unsigned char Drawable : 1; unsigned char Dying : 1; unsigned char ForceFrameUpdate : 1;
     unsigned char LevelPersistent : 1; unsigned char GameStatePersisted : 1; unsigned char PersistOnUnloadWhenInLimbo : 1; unsigned char PausedDuringCutscenes : 1;
@@ -22,7 +22,7 @@ struct CTCInventoryBase {
     bool accept; CThing* seenThing; bool seenA, seenB, seenD; long seenC; long adds;
     virtual bool AddItemToInventory(CThing* thing, bool a, bool b, long c, bool d) { ++adds; seenThing = thing; seenA = a; seenB = b; seenC = c; seenD = d; return accept; }
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void* __vftable; CThing* ParentThing; long field8; void* PDef_Object; CTCInventoryBase* PInventory;
     bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool levelPersistent);
 };

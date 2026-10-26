@@ -6,16 +6,16 @@ struct C3DMeshInfoBase {
     long m_4, m_8;
     C3DMeshInfoBase(long a4, long a8) : m_4(a4), m_8(a8) { }
 };
-template <class T> struct CIVCountedPointer { T* m_pObject; CIVCountedPointer() : m_pObject(0) { } };
-struct C3DVector { float x, y, z; };
-struct C3DBoundingBox { C3DVector MinCoord, MaxCoord; };
-struct C3DBoundingSphere {
+template <class T> class CIVCountedPointer { public: T* m_pObject; CIVCountedPointer() : m_pObject(0) { } };
+class C3DVector { public: float x, y, z; };
+class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };
+class C3DBoundingSphere { public:
     long m_x, m_y, m_z;
     union { long m_radiusBits; float Radius; };
     C3DBoundingSphere() : m_x(0), m_y(0), m_z(0), m_radiusBits(0) { }
 };
-struct C3DMeshInfo : C3DMeshInfoBase {
-    struct CMeshData;
+class C3DMeshInfo : public C3DMeshInfoBase { public:
+    class CMeshData;
     CIVCountedPointer<CMeshData> MeshData;
     C3DBoundingBox BoundingBox;
     C3DBoundingSphere BoundingSphere;

@@ -18,19 +18,19 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1); // 0x0099EBF0
     CCharString(const CCharString& other);           // (declared: by-value arguments are built in place)
     ~CCharString();                                  // 0x0099EAE0
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
 };
 
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 struct SComponentListNode;
 struct CComponentList {                              // STLport list<NUISystem::CComponent*>: the node pointer only
     SComponentListNode* m_pNode;
@@ -43,7 +43,7 @@ struct SActionParamPair {                            // pair<unsigned long, list
     SActionParamPair(const SActionParamPair& other); // 0x0042CD84
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer(T* object);                      // 0x00429C15
@@ -51,7 +51,7 @@ template<class T> struct CCountedPointer {
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CComponent* FindChild(CCharString name); // slot 3 (+0x0C)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
@@ -71,10 +71,10 @@ struct CComponent {
     virtual void v61();
     virtual void SetActionParameter_slot62(SActionParamPair parameter);   // slot 62 (+0xF8)
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
@@ -86,7 +86,7 @@ struct CLongVector {                                 // retail std::vector<long>
     long& operator[](unsigned long n) { return _M_start[n]; }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     void*         __vftable;                         // +0x000
     unsigned char _pad_0x004[0x144];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)

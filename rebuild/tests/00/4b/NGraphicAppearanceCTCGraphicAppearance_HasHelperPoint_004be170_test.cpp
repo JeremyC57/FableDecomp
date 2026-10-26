@@ -3,8 +3,8 @@
 #include <cstdlib>
 // behaviour test: HasHelperPoint CRCs the name, walks the gathered meshes, skips meshes without bank info and returns true on the
 // first mesh whose stats carry the helper point, releasing every counted stats temporary it created
-struct CCharStringData { char* m_pData; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: char* m_pData; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetPString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pData; }
@@ -12,7 +12,7 @@ struct CCharString {
 static unsigned long Calc(unsigned long seed, const char* data, unsigned long length)
 { unsigned long c = seed; for (unsigned long i = 0; i < length; ++i) c = c * 31 + (unsigned char)data[i]; return c; }
 static int g_liveStats = 0;
-struct C3DMeshStats { unsigned long helperKey; bool HasHelperPoint(unsigned long key) const { return key == helperKey; } };
+class C3DMeshStats { public: unsigned long helperKey; bool HasHelperPoint(unsigned long key) const { return key == helperKey; } };
 struct CStatsPtr {
     const C3DMeshStats* p;
     CStatsPtr(const C3DMeshStats* s) : p(s) { ++g_liveStats; }
@@ -20,7 +20,7 @@ struct CStatsPtr {
     ~CStatsPtr() { --g_liveStats; }
     const C3DMeshStats* operator->() const { return p; }
 };
-struct C3DMeshInfo { C3DMeshStats stats; CStatsPtr GetMeshStats() const { return CStatsPtr(&stats); } };
+class C3DMeshInfo { public: C3DMeshStats stats; CStatsPtr GetMeshStats() const { return CStatsPtr(&stats); } };
 static C3DMeshInfo g_infos[8]; static bool g_present[8];
 static int g_calls = 0;
 static const C3DMeshInfo* GetMeshInfo(long index) { ++g_calls; return g_present[index] ? &g_infos[index] : 0; }

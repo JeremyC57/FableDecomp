@@ -2,10 +2,10 @@
 // the main guild map unusable and switches off the guide's quest cards; terminating threads stop early.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString(const char* t) : Text(t) {} };
-struct CScriptThing { const char* Name; };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) {} };
+class CScriptThing { public: const char* Name; };
 static int g_frames, g_termAt, g_termCalls, g_loadedAfter, g_loadedCalls, g_usable, g_cards; static const char* g_thing;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool* Flag; int FlagAfter;
     void NewScriptFrame() const { ++g_frames; if (g_frames >= FlagAfter) *Flag = true; }
     bool IsRegionLoaded(const CCharString& r) const { return std::strcmp(r.Text, "HeroGuildComplexInside") == 0 && ++g_loadedCalls > g_loadedAfter; }

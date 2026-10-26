@@ -3,7 +3,7 @@
 // Callees: UploadFrame @ 0x009FF220 (on `this`, 0; a bool in al), CIVCountedPointeeBase virtual slot 1 (Delete) when the count reaches zero. Shape: the inlined
 // `CIVCountedPointer::operator=(0)` (GOTCHAS wave 24h: the release through a local pointee copy, its zero store inside the null test, then the assignment's
 // unconditional zero store); the pointer address `owner+8` formed with `add esi,8`.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4

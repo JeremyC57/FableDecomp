@@ -4,7 +4,7 @@
 // dword at +0x3c), then CTCKrakenTentacle::GetShouldStrike @ 0x007F1410 whose bool comes back in al unchanged.
 // Shape: `if (GetInterface(&p, 0xE3)) return p->GetShouldStrike(); return false;` -- the miss path is the
 // `xor al,al` tail after the hit path's `ret`. Base layout modelled locally (PDB names).
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound -- the same shape the landed
@@ -16,7 +16,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -37,12 +37,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18 CThingAICreature*
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -53,7 +53,7 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
 };
 
-struct CTCKrakenTentacle {                      // interface type 0xE3 component
+class CTCKrakenTentacle { public:                      // interface type 0xE3 component
     bool GetShouldStrike();                     // 0x007F1410
 };
 

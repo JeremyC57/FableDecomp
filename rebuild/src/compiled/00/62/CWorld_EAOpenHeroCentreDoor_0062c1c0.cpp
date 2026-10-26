@@ -20,7 +20,7 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -30,7 +30,7 @@ struct CGameEvent {
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -39,7 +39,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0 (the const instantiation)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];              // +0x20 bitset<274>
     CInterfaceMap Components;                      // +0x44
@@ -90,15 +90,15 @@ struct CTCInventoryBase {                          // TC 0x11
     bool          InventoryOpen;                   // +0x58 (Ego_r.pdb +0x60)
 };
 enum EHeroCentreDoorType { HERO_CENTRE_DOOR_NONE = 0 };
-struct CTCHeroCentre {                             // TC 0x6A
+class CTCHeroCentre { public:                             // TC 0x6A
     void OnHeroWalkedThroughDoor(EHeroCentreDoorType door);   // 0x0077DB90
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingWithUID(__int64 uid);          // 0x0051ED80
 };
-struct CPlayer { CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
 
-struct CWorld {
+class CWorld { public:
     virtual void _slot0();
     virtual void _slot1();
     virtual void _slot2();

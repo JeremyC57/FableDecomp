@@ -14,10 +14,10 @@
 // Layout: Ego_r.pdb NTCScriptedControl::CActionTalkBase 4 bytes high after Messages (CArray 16 vs retail 12): retail
 //          Terminated +9, UpdateCounter +0x18, GameTurnDuration +0x48, ScrollText +0x90, FinishedScroll +0x91 (as the landed
 //          ctor @ 0x00717BC0); CActionBase PTCScript +4 (CTCBase: ParentThing +4).
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                       // 0x0099AED0
     ~CWideString();                                      // 0x0099B510
@@ -33,7 +33,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -51,10 +51,10 @@ struct CThing {
         return false;
     }
 };
-struct CTCEmoteIcon {                           // interface 69
+class CTCEmoteIcon { public:                           // interface 69
     void SetEmoteText(long style, const CWideString& text, float seconds, float fade);   // 0x0071AC70
 };
-struct CTCScriptedControl {                     // a CTCBase
+class CTCScriptedControl { public:                     // a CTCBase
     virtual void v00();
     CThing* ParentThing;                        // +0x04
 };

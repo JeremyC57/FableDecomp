@@ -9,18 +9,18 @@
 // Callees: NUISystem::CSprite::GetPosition() const @ 0x0052E890 (a qualified, non-virtual call).
 // Shape: the base result lands in a named local (its own frame slot), then the result is copied out member-wise through
 //   C2DVector's user copy constructor (X via fld/fstp, Y through a GPR). Speed-optimised (default) TU.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
 
 namespace NUISystem {
-struct CSprite {
+class CSprite { public:
     virtual void v00();
     virtual C2DVector GetPosition() const;          // slot 16 in the full vtable; 0x0052E890
 };
-struct CMouseCursor : CSprite {
+class CMouseCursor : public CSprite { public:
     virtual C2DVector GetPosition() const;
 };
 

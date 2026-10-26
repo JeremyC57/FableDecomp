@@ -54,7 +54,7 @@ template<class T> struct CList { CListNode<T>* Node; };
 long g_FramesPerSecond = 30;
 static int g_frameCalls = 0;
 long GetWorldFrame() { ++g_frameCalls; return 1000; }
-struct CKrakenDef { unsigned char _pad00[0x78]; float TentacleRiseDelay; };
+class CKrakenDef { public: unsigned char _pad00[0x78]; float TentacleRiseDelay; };
 class CTCKrakenTentacle { public: unsigned char _pad00[0x34]; long TickToRise; };
 class CTCBase {
 public:

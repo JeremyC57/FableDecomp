@@ -25,13 +25,13 @@ static int fails = 0;
 // header, red, no parent, self left/right, zero count); each Reset takes a null-checked `new CSymbolMap`; the "NULL" symbol
 // is a scoped named string.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CWideString {                                   // non-POD (user ctor): the by-value operator+ result travels through a hidden pointer in ecx
+class CWideString { public:                                   // non-POD (user ctor): the by-value operator+ result travels through a hidden pointer in ecx
     void* PStringData;
     CWideString();                                     // 0x0099B4D0 (not called here)
 };
@@ -51,13 +51,13 @@ template <class T> struct CVectorBase {
 template <class T> struct CRetailVector : CVectorBase<T> {   // STLport vector (12 bytes)
     CRetailVector() : CVectorBase<T>(CAllocator<T>()) {}
 };
-template <class T> struct CVectorMap {                 // 16 bytes: the pair vector and two flags (only the second is reset)
+template <class T> class CVectorMap { public:                 // 16 bytes: the pair vector and two flags (only the second is reset)
     CRetailVector<T> Entries;
     bool Locked;                                       // +0x0c (left uninitialised)
     bool Sorted;                                       // +0x0d
     CVectorMap() : Sorted(false) {}
 };
-template <class T> struct CArray : CRetailVector<T> {  // Lionhead's vector wrapper (12 bytes retail)
+template <class T> class CArray : public CRetailVector<T> { public:  // Lionhead's vector wrapper (12 bytes retail)
 };
 struct CRecompiledDefNode {                            // 24-byte node: pair<unsigned long, CDefPointer<CDefClassBase>>
     unsigned char _M_color;
@@ -81,21 +81,21 @@ template <class Node> struct CRetailMap {              // STLport _Rb_tree (12 b
         _M_header->_M_right = _M_header;
     }
 };
-struct CSymbolMap {                                    // 0x24 bytes
+class CSymbolMap { public:                                    // 0x24 bytes
     unsigned char _body[0x24];
     CSymbolMap();                                      // 0x009E5200
     void AddSymbolDirty(const CCharString& name, long value);   // 0x009E5420
     void Finalise();                                   // 0x009E5C30
 };
 struct SCountBlock;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
     void Reset(T* object);                             // 0x009B1F50
     T* operator->() const { return m_pObject; }
 };
-struct CResourceList {                                 // the manager's base (0x40 bytes with the vptr)
+class CResourceList { public:                                 // the manager's base (0x40 bytes with the vptr)
     virtual void v00();
     unsigned char _body[0x34 - 4];
     long m_resourceCount;                              // +0x34 (name unverified)

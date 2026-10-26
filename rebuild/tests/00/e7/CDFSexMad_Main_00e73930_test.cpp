@@ -7,7 +7,7 @@ static int g_fail = 0;
 static std::string g_log;
 static void logs(const std::string& s) { g_log += s; g_log += ";"; }
 static std::string num(long v) { char b[24]; sprintf(b, "%ld", v); return b; }
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString(const char* text, long length = -1) : s(text) { (void)length; }
 };
@@ -15,7 +15,7 @@ static int g_talks = 0;          // pending "talked to by hero" messages
 static int g_taskFrames = 0;     // frames each Speak keeps the face busy
 static int g_busy = 0;
 static float g_faceHealth = 1.0f;
-struct CScriptThing {
+class CScriptThing { public:
     std::string Name;
     CScriptThing() {}
     CScriptThing(const char* n) : Name(n) {}
@@ -28,7 +28,7 @@ struct CIsThingAlive {
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 static int g_startFails = 0;     // StartScriptingEntity fails this many times first
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     bool scripting;
     CScriptGameResourceObjectScriptedThingBase() : scripting(false) { }
     bool IsScripting() { return scripting; }
@@ -38,11 +38,11 @@ struct CScriptGameResourceObjectScriptedThingBase {
     { (void)method; (void)a; (void)b; (void)c; logs("speak-" + listener.Name + "-" + text); g_busy = g_taskFrames; }
     bool IsPerformingScriptTask() const { return g_busy > 0; }
 };
-struct CScriptGameResourceObjectMovieBase {
+class CScriptGameResourceObjectMovieBase { public:
     CScriptGameResourceObjectMovieBase() { }
     ~CScriptGameResourceObjectMovieBase() { logs("movie-end"); }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     long Frames, FrameLimit, SexCount;
     CGameScriptInterface() : Hero("hero"), Frames(0), FrameLimit(100), SexCount(0) {}
@@ -65,7 +65,7 @@ static const float g_fZero = 0.0f;
 struct CV_DemonDoorsScript {
     void FadeOutFaceAndOpenDoor(const CScriptThing& face, const CCharString& doorName) { logs("open-" + face.Name + "-" + doorName.s); }
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     CGameScriptInterface* Game;
     CScriptThing          Me;
     long Checks, TerminateAtCheck;

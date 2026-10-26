@@ -5,7 +5,7 @@
 // Struct-return __fastcall member: returns CCharString("DoCreatureAction", -1) by value.
 // The 'this' pointer is unused by the body.
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString(const char* s, int n);
 };

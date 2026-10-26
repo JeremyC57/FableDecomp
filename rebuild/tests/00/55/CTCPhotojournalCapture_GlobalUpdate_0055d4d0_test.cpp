@@ -1,9 +1,9 @@
 #include <cstdio>
 static int g_opens = 0;
-struct CPlayerGui { void Open() { ++g_opens; } };
+class CPlayerGui { public: void Open() { ++g_opens; } };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CTCPhotojournalCapture {
+class CTCPhotojournalCapture { public:
     long FrameCounter;
     bool WasPlayerGuiOpen;
     long TakeScreenshotAfterFrames;

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Model of CAIStateGroup_WanderAroundShops::InitStateGroup @ 0x00946E10: reset the timer, register idle type 10.
 struct Group;
-struct CTCIdleScheduler { Group* registered; long type; void RegisterIdleStateGroup(Group* g, long t) { registered = g; type = t; } };
+class CTCIdleScheduler { public: Group* registered; long type; void RegisterIdleStateGroup(Group* g, long t) { registered = g; type = t; } };
 struct Creature {
     unsigned long bits[9]; CTCIdleScheduler* sched;
     bool GetInterface(long type, CTCIdleScheduler** out) { if (bits[type / 32] & (1 << (type % 32))) { *out = sched; return true; } return false; }

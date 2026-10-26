@@ -14,9 +14,9 @@
 // five PositionCoin floats, RestSpeed and Rounds.
 // Layout: Ego_r.pdb CTavernGameShoveHaPennyDef (0x208) over the retail CTavernGameDef (0x1A4, 12-byte vectors):
 // Regions +0x1A4 (PDB +0x1A8), the scalars 8 bytes below their PDB offsets (BoardDefIndex +0x1B0 .. Rounds +0x1FC).
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };

@@ -15,13 +15,13 @@
 //        function scope after the first terminating test (own frame words); the chased man is a by-value local whose
 //        destructor joins the handle's on the late exits; the name string is an implicit conversion temporary.
 // Leaf: Main
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void v00();
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
@@ -31,7 +31,7 @@ struct CScriptThing {                                  // 12 bytes, vtable 0x012
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CBaseObject {                                   // CBaseIntelligentPointer root
+class CBaseObject { public:                                   // CBaseIntelligentPointer root
     virtual void v00();
     void* m_pIntelligentPointer;                       // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -41,7 +41,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
@@ -53,7 +53,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -126,7 +126,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
     ~CIsThingAlive() { }
 };
 
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

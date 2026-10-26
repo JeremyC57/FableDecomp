@@ -1,8 +1,8 @@
 // CGameScriptInterface::DeactivateQuest
-struct CCharString;
+class CCharString;
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void DeactivateQuest(
         const CCharString& questName,
         unsigned long flags);

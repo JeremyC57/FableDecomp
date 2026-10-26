@@ -9,28 +9,28 @@
 //   +0x48, Conversation +0x4c, FishingRodsInGame +0x50, FishTypesInGame +0x54, FishingPrizes +0x58, RodDef +0x60, FishDef +0x6c;
 //   the script def 0x0143E90C holds the fish types +0x5a0, rods +0x5a4, prizes +0x5a8, rod defs +0x5b8, fish defs +0x5c4.
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                       // 0x0099E4B0
     ~CCharString();                                      // 0x0099EAE0
     CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
-struct CBaseClass {                                      // vtable 0x01231710
+class CBaseClass { public:                                      // vtable 0x01231710
     CBaseClass() { }
     virtual ~CBaseClass() { }
 };
-struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
 struct CCountedPointerWords {
     void* Data;
     CCPPointerInfo* Info;
     CCountedPointerWords(const CCountedPointerWords& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
 };
-struct CScriptThing : CBaseClass {                       // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // vtable 0x01238C8C
     CCountedPointerWords PImp;
     CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
     ~CScriptThing();
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();   // slot 0 (+0x0)
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();
@@ -153,7 +153,7 @@ template <class T> struct vector {
     T* begin() { return _M_start; }
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char Data[0x5a0];
     long          FishTypesInGame;                       // +0x5a0
     long          FishingRodsInGame;                     // +0x5a4

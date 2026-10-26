@@ -15,7 +15,7 @@
 // found block out before the shared copy-construct tail; handling it inside the loop moves it past the epilogue), with
 // IsDone checks before and after the history rotation.
 extern "C" int __cdecl rand();                             // 0x00BFEB16
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                         // 0x0099E4B0
     CCharString(const CCharString& other);                 // 0x0099EC30
@@ -42,11 +42,11 @@ struct CV_TalentlessBardScript {
     void ProcessSongsClothes();                            // 0x00ED9BB0
     void ProcessSongsQuestComplete();                      // 0x00ED9B40
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                   // slot 7 (+0x1c)
 };
-struct CScriptThing { unsigned char _body[12]; };
+class CScriptThing { public: unsigned char _body[12]; };
 struct CQ_SunnyvaleMasterData;
 
 class CTB_Bard {

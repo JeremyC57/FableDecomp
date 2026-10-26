@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CPersistContext {
+class CPersistContext { public:
     int calls;
     void PersistA_0045228f(int& r);
     void PersistB(int& r);
 };
 
-struct CVillagerInteractionsDef {
+class CVillagerInteractionsDef { public:
     char pad[0x3c];
     int fieldA;
     int fieldB;

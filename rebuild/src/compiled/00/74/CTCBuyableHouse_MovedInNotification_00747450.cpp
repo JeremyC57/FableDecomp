@@ -15,7 +15,7 @@
 // the call; `return find(...) != m_last;` keeps the full-register bool (`xor ecx,ecx ; setne cl ;
 // mov al,cl`).
 
-struct CThing;
+class CThing;
 
 struct SRandomAccessTag { SRandomAccessTag() {} };  // random_access_iterator_tag
 

@@ -13,10 +13,10 @@
 // Shape: `T* p = 0; GetInterface(&p, 46)` preloads the zero in edi; the CCharString argument has a declared copy ctor so
 //        it is constructed in place (`push ecx ; mov ecx,esp`).
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float m[6]; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float m[6]; };
 
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -50,12 +50,12 @@ public:
     }
 };
 
-struct CTCNamedUserActionPoints {
+class CTCNamedUserActionPoints { public:
     bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
                                  long flags, bool reserve);   // 0x007FF190
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     void OnInitialActivateBase();               // 0x005EA650 (CTCTavernGame::OnInitialActivate)

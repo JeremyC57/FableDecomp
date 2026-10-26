@@ -14,14 +14,14 @@
 //   (inline copy: object, count, addref) and released inline at the block end (count block destroy + delete);
 //   `this` is spilled to the frame because edi is reused for &PCreature; the player creature is a named local so it is
 //   fetched before SetSuspendAnimation's argument pushes.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                             // +0x10 (1: player)
     unsigned char _pad11[0x20 - 0x11];
@@ -55,7 +55,7 @@ struct SCountBlock {
     void* object;
 };
 struct CModeBase { };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* object;
     SCountBlock* count;
     CCountedPointer(T* value);                        // 0x008C3260 (CModeJackOfBladesFlash instantiation)
@@ -98,10 +98,10 @@ template <> CCountedPointer<CModeJackOfBladesFlash>::CCountedPointer(CModeJackOf
         count = 0;
 }
 #pragma auto_inline(on)
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode);    // 0x0073ACC0
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();                      // slot 4: 0x00859A20
     unsigned char _pad04[4];
@@ -110,7 +110,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     CBaseIntelligentPointer PTarget;                  // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
 };
-struct CCreatureAction_JackFlash : CCombatActionBase {
+class CCreatureAction_JackFlash : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

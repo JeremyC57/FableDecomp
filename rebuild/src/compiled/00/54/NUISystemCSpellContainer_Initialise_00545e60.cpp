@@ -14,7 +14,7 @@
 #include <stddef.h>
 inline void* operator new(size_t, void* where) { return where; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;                                   // +0x00
     void (__fastcall* Destroy)(void* item);        // +0x04
     void* Item;                                    // +0x08

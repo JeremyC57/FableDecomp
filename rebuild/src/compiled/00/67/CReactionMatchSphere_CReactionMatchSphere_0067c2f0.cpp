@@ -11,12 +11,12 @@
 // Leaf: ??0CReactionMatch_Sphere
 enum EOpinionReactionType { OPINION_REACTION_TYPE_NONE = 0 };
 
-struct COpinionSet {                                    // CArray<float> OpinionValues (retail: begin/end/capacity)
+class COpinionSet { public:                                    // CArray<float> OpinionValues (retail: begin/end/capacity)
     float* m_begin; float* m_end; float* m_capacity;
     COpinionSet(const COpinionSet& other);              // 0x00477428
 };
 
-struct CReactionMatch {
+class CReactionMatch { public:
     EOpinionReactionType ReactionType;                  // +0x04
     CReactionMatch(EOpinionReactionType type) : ReactionType(type) {}
     virtual long GetMatchType() const;

@@ -1,4 +1,4 @@
-struct CCreatureAction_MidAttackKnockdown {
+class CCreatureAction_MidAttackKnockdown { public:
     void* vftable;
 };
 

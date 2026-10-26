@@ -2,7 +2,7 @@
 // unconscious; the result is "every thing counted".
 #include <cstdio>
 
-struct CScriptThing {
+class CScriptThing { public:
     bool alive;
     bool unconscious;
     bool IsAlive() const { return alive; }

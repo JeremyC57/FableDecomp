@@ -1,7 +1,7 @@
 // Behaviour test for CSetTextInfo::CSetTextInfo(texts..., flags, time, bools) (0x0048DDF6): four string copies, then the scalars.
 #include <cstdio>
 static int g_copies = 0;
-struct CWideString {
+class CWideString { public:
     const unsigned short* m_text;
     explicit CWideString(const unsigned short* t) : m_text(t) {}
     CWideString(const CWideString& other) : m_text(other.m_text) { ++g_copies; }

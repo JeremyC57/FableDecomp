@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CThing { int id; };
-struct CTCBase {
+class CThing { public: int id; };
+class CTCBase { public:
     virtual ~CTCBase() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* owner) : ParentThing(owner), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
@@ -15,7 +15,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer_CThingAICreature : CBaseIntelligentPointer {
     virtual int Kind() const { return 2; }
 };
-struct CTCGossip : CTCBase {
+class CTCGossip : public CTCBase { public:
     CIntelligentPointer_CThingAICreature Gossipee;
     bool                                 MyTurnToSpeak;
     CTCGossip(CThing* owner) : CTCBase(owner), Gossipee(), MyTurnToSpeak(false) { }

@@ -1,7 +1,7 @@
 // behaviour test for std::__median<CThing*, CThingCompare_BestForTargeting2> (0x0080A140)
 #include <cstdio>
-struct CThing { int v; };
-struct CThingCompare_BestForTargeting2 { int calls; bool operator()(CThing* a, CThing* b) { ++calls; return a->v < b->v; } };
+class CThing { public: int v; };
+class CThingCompare_BestForTargeting2 { public: int calls; bool operator()(CThing* a, CThing* b) { ++calls; return a->v < b->v; } };
 template <class _Tp, class _Compare> _Tp median3(_Tp __a, _Tp __b, _Tp __c, _Compare __comp)
 {
     if (__comp(__a, __b)) { if (__comp(__b, __c)) return __b; else if (__comp(__a, __c)) return __c; else return __a; }

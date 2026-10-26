@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer { CBaseObject* m_pItem; CBaseObject* GetPItem() const { return m_pItem; } };
-struct CTCCrateStack {
+class CTCCrateStack { public:
     CBaseIntelligentPointer FirstCrate; CBaseIntelligentPointer SecondCrate; long CrateDefIndex;
     CBaseObject* GetNextCrate() const
     {

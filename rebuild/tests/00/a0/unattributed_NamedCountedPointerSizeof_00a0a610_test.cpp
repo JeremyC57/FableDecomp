@@ -2,7 +2,7 @@
 #include <cstdio>
 
 struct SStringData { long _a; long _b; unsigned long m_length; };
-struct CCharString {
+class CCharString { public:
     SStringData* m_pData;
     unsigned long Sizeof() const { return m_pData ? (m_pData->m_length & 0x7fffffff) + 0x15 : 4; }
 };

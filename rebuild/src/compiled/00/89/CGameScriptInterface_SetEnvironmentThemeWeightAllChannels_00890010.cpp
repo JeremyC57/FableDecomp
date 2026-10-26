@@ -1,6 +1,6 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct Inner { void Apply(int one, int count, int arg2); };
-struct CWorld { char pad[0x18]; Inner* PEnvironment; };
+class CWorld { public: char pad[0x18]; Inner* PEnvironment; };
 
 struct ThemeObj;
 extern ThemeObj* __stdcall GetTheme(int channel);

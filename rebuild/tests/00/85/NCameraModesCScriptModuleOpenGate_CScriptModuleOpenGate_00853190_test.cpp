@@ -5,7 +5,7 @@
 static long g_frame = 500;
 long GFGetCurrentFrame() { return g_frame; }
 
-struct CThing { int dummy; };
+class CThing { public: int dummy; };
 
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { }
@@ -17,7 +17,7 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {
     CIntelligentPointer_CThingConst(const CThing* thing) : CBaseIntelligentPointer() { SetPItem(thing); }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptModuleBase {
     virtual void v00() { }

@@ -70,7 +70,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -95,7 +95,7 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 
 #pragma pack(push, 1)
-struct CEnginePersistentPrimitiveBase {
+class CEnginePersistentPrimitiveBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     long          Type;                                      // +0x08
@@ -120,10 +120,10 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePersistentPrimitiveBase, Type) == 0x8);
 #include <stddef.h>
 
 
-struct CEngineSceneGridCell;
+class CEngineSceneGridCell;
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -187,11 +187,11 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveBase, RefLayerMask) == 0x44
 #include <stddef.h>
 
 
-struct C2DBoxF;
-struct CCamera;
+class C2DBoxF;
+class CCamera;
 
 #pragma pack(push, 1)
-struct CEngineCamera {
+class CEngineCamera { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -276,10 +276,10 @@ FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScriptElementStartTime) == 0x22
 #include <stddef.h>
 
 
-struct CEnginePrimitiveManager;
+class CEnginePrimitiveManager;
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     void*                    __vftable;                      // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char            _pad_0x04[0x4];                 // +0x04
     unsigned char            _pad_0x08[0x4];                 // +0x08
@@ -297,34 +297,34 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveTypeInfo, PrimitiveManagers) == 0x1
 #ifndef _MSC_VER
 #define __declspec(x)
 #endif
-struct C3DVector {float X,Y,Z;};
-struct C3DBoundingSphere {C3DVector Center;float Radius;};
-struct C3DBoundingBox {C3DVector MinCoord,MaxCoord;bool IntersectsSolid(const C3DBoundingSphere&) const;}; //00ADECC0
-struct CMatrix3x4 {float Values[12];};
-struct CEngineFadeDistance {float FadeBeginDistance,MaxDrawDistance;};
-struct C2DBoxF {float TLX,TLY,BRX,BRY;};
+class C3DVector { public:float X,Y,Z;};
+class C3DBoundingSphere { public:C3DVector Center;float Radius;};
+class C3DBoundingBox { public:C3DVector MinCoord,MaxCoord;bool IntersectsSolid(const C3DBoundingSphere&) const;}; //00ADECC0
+class CMatrix3x4 { public:float Values[12];};
+class CEngineFadeDistance { public:float FadeBeginDistance,MaxDrawDistance;};
+class C2DBoxF { public:float TLX,TLY,BRX,BRY;};
 struct CEngineCameraDesc {C2DBoxF Window;CMatrix3x4 RotationMatrix;C3DVector WorldPosition;float HorizontalFOV,VerticalFOV;bool Use2DFOV;float NearZPlane,FarZPlane,ZBufferStart,ZBufferEnd;bool StateValid;};
 struct CEngineCameraMethods:CEngineCamera {
  bool ClipWorldSpaceBoundingBox(const C3DBoundingBox&,float,bool&) const; //00B308E0
  const C3DVector& Position()const{return reinterpret_cast<const CEngineCameraDesc*>(CameraDesc)->WorldPosition;}
 };
-struct CEnginePrimitiveHandle;struct CEnginePrimitive;struct CEnginePrimitiveAnimation;struct CEnginePrimitivePosition;struct CEngineMeshEffect;struct CEngineInternalPrimitiveOcclusionBase;
-template<class T>struct CIVCountedPointer;
+class CEnginePrimitiveHandle;class CEnginePrimitive;class CEnginePrimitiveAnimation;class CEnginePrimitivePosition;class CEngineMeshEffect;class CEngineInternalPrimitiveOcclusionBase;
+template<class T>class CIVCountedPointer;
 namespace std {template<class T>struct less;template<class T>class allocator;template<class K,class V>struct pair;template<class K,class V,class C,class A>class map;}
 typedef std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > > PrimitiveStats;
 enum EEnginePrimitiveStatIndex {PrimitiveStatDefault=0};
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
  mutable unsigned long IVRefCount;
  CIVCountedPointeeBase();virtual ~CIVCountedPointeeBase();virtual void Delete()const;
 };
-struct CEnginePersistentPrimitiveBase:CIVCountedPointeeBase {
+class CEnginePersistentPrimitiveBase:public CIVCountedPointeeBase { public:
  long Type;
  CEnginePersistentPrimitiveBase(long);virtual ~CEnginePersistentPrimitiveBase();
  virtual void CollectStats(PrimitiveStats&,EEnginePrimitiveStatIndex,unsigned long)const=0;
  virtual void NotifyReleased(const CEnginePrimitiveHandle&);
  virtual bool WasRendered()const;
 };
-struct CEngineInternalPrimitiveBase:CEnginePersistentPrimitiveBase {
+class CEngineInternalPrimitiveBase:public CEnginePersistentPrimitiveBase { public:
  CEngineInternalPrimitiveBase(long,unsigned long);virtual ~CEngineInternalPrimitiveBase();
  virtual void CollectStats(PrimitiveStats&,EEnginePrimitiveStatIndex,unsigned long)const;
  virtual void NotifyReleased(const CEnginePrimitiveHandle&);virtual bool WasRendered()const;
@@ -349,14 +349,14 @@ struct CEngineInternalPrimitiveBase:CEnginePersistentPrimitiveBase {
  unsigned char Enable:1;unsigned char NonPersistent:1;unsigned char OverrideFadeDistance:1;unsigned char PostRenderEnable:1;
  unsigned short LastFrameRendered;CEngineInternalPrimitiveBase* NextPrimitive;CEngineInternalPrimitiveBase** RefPrimitive;CEngineInternalPrimitiveBase* NextLayerMask;CEngineInternalPrimitiveBase** RefLayerMask;
 };
-struct CEngineScene;template<class T>struct CArray;
-struct CEngineSubPrimitiveBase;struct CEngineSubPrimitiveChain;struct CEnginePrimitiveTypeList;
-namespace NEngineShadowRenderer {struct CShadowSceneContext;}
+class CEngineScene;template<class T>class CArray;
+class CEngineSubPrimitiveBase;class CEngineSubPrimitiveChain;class CEnginePrimitiveTypeList;
+namespace NEngineShadowRenderer {class CShadowSceneContext;}
 enum EEnginePrimitiveType{PrimitiveTypeDefault=0};enum EEngineRenderLayer{LayerDefault=0};enum ERendered{RenderedDefault=0};enum ERenderPassType{RenderPassDefault=0};enum ESubPrimitiveType{SubPrimitiveDefault=0};
-struct CBaseClass {CBaseClass();virtual ~CBaseClass();};
+class CBaseClass { public:CBaseClass();virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
 struct CEnginePrimitiveRenderUtil:CBaseClassNonCopyable {CEnginePrimitiveRenderUtil();virtual ~CEnginePrimitiveRenderUtil();};
-struct CEnginePrimitiveManager:CEnginePrimitiveRenderUtil {
+class CEnginePrimitiveManager:public CEnginePrimitiveRenderUtil { public:
  CEnginePrimitiveManager(CArray<CEngineScene*>&);virtual ~CEnginePrimitiveManager();
  virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType)=0;
  virtual void GetSupportedTypes(CEnginePrimitiveTypeList&)const=0;virtual void FrameStart();virtual void FrameEnd();
@@ -369,16 +369,16 @@ struct CEnginePrimitiveManager:CEnginePrimitiveRenderUtil {
  CArray<CEngineScene*>* Scenes;bool Enable;
 };
 extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo; //01436E84
-struct CEnginePrimitiveHandle {void* NativeVTable;CEnginePersistentPrimitiveBase* Data;};
-struct CEngineSceneGridCell {
+class CEnginePrimitiveHandle { public:void* NativeVTable;CEnginePersistentPrimitiveBase* Data;};
+class CEngineSceneGridCell { public:
  CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;C3DBoundingBox BoundingBox;float DrawDistance;
  CEnginePrimitiveHandle GroupPrimitiveHandle[2];long LocalCount;unsigned long TotalCount,RenderMask,OccludedLayers;
  unsigned char BoundingBoxValid:1;unsigned char TotalCountValid:1;unsigned char RenderMaskValid:1;unsigned char WasRendered:1;unsigned char HasOcclusionResults:1;
  unsigned char OccludedFrames,PreloadFrames;
 };
-struct CEngineSceneRenderStats {unsigned long StaticPrimitivesRendered,MovingPrimitivesRendered,StaticPrimitivesTouched,MovingPrimitivesTouched,VisibleCells,BoundingBoxTests,BoundingSphereTests;};
-struct CShadowClipVolume {bool ClipBoundingBox(const C3DBoundingBox&,bool&)const;}; //00B4CED0
-struct CEngineSceneGrid {
+class CEngineSceneRenderStats { public:unsigned long StaticPrimitivesRendered,MovingPrimitivesRendered,StaticPrimitivesTouched,MovingPrimitivesTouched,VisibleCells,BoundingBoxTests,BoundingSphereTests;};
+class CShadowClipVolume { public:bool ClipBoundingBox(const C3DBoundingBox&,bool&)const;}; //00B4CED0
+class CEngineSceneGrid { public:
  void* NativeVTable;unsigned long Level;CEngineSceneGrid* LevelUp;CEngineSceneGrid* LevelDown;unsigned long Size;
  CEngineSceneGridCell** GridCells;CEngineSceneGridCell** LastCell;CEngineSceneGridCell** EndCell;
  bool GetCellBoundingBoxAndDrawDistance(C3DBoundingBox&,float&,unsigned long,unsigned long); //00B919C0
@@ -392,9 +392,9 @@ inline TreeNodeBase* TreeNext(TreeNodeBase* node){if(node->Right){node=node->Rig
 template<class V>struct TreeNode:TreeNodeBase{int Key;V Value;};
 template<class V>struct RetailTree{TreeNodeBase* Header;unsigned long Count;unsigned char Comparator;struct iterator{TreeNodeBase* Node;iterator(TreeNodeBase*n):Node(n){}iterator&operator++(){Node=TreeNext(Node);return *this;}bool operator!=(const iterator&o)const{return Node!=o.Node;}V&value()const{return static_cast<TreeNode<V>*>(Node)->Value;}};iterator begin(){return iterator(Header->Left);}iterator end(){return iterator(Header);}};
 struct CCountedGrid{CEngineSceneGrid* Data;void* Info;};struct CGridArray{CCountedGrid* First;CCountedGrid* Last;CCountedGrid* End;};
-struct CEngineSceneMap{void* NativeVTable;C2DBoxF Area;unsigned long MaxLevels;CGridArray GridLevels;CEngineScene* Scene;};
+class CEngineSceneMap{ public:void* NativeVTable;C2DBoxF Area;unsigned long MaxLevels;CGridArray GridLevels;CEngineScene* Scene;};
 struct CCountedSceneMap{CEngineSceneMap* Data;void* Info;};
-struct CEngineScene{
+class CEngineScene{ public:
  void* NativeVTable;RetailTree<RetailTree<CCountedSceneMap> > MapList;float MapSize,OneOverMapSize;unsigned long MaxMapLevels,MapsRenderLayerMask;
  CEngineInternalPrimitiveBase* FirstMovingPrimitive;CEngineInternalPrimitiveBase* FirstNonPersistentPrimitive;
  bool PreloadPrimitives(const CEngineCamera&,unsigned long);bool PreloadPrimitives(const C3DBoundingSphere&,unsigned long);
@@ -448,7 +448,7 @@ bool CEngineInternalPrimitiveBase::GetBoundingBoxWorldSpace(C3DBoundingBox&){ret
 bool CEngineInternalPrimitiveBase::IsInsideFrustum(const CEngineCamera&,bool){return false;}bool CEngineInternalPrimitiveBase::GetObjectTransform(CMatrix3x4&)const{return false;}bool CEngineInternalPrimitiveBase::SetObjectTransform(const CMatrix3x4&){return false;}
 void CEngineInternalPrimitiveBase::SetAnimation(const CEnginePrimitiveAnimation&){}void CEngineInternalPrimitiveBase::SetPosition(const CEnginePrimitivePosition&){}void CEngineInternalPrimitiveBase::SetMeshEffect(const CIVCountedPointer<CEngineMeshEffect>&){}bool CEngineInternalPrimitiveBase::GetMeshEffect(CIVCountedPointer<CEngineMeshEffect>&)const{return false;}CEngineInternalPrimitiveOcclusionBase* CEngineInternalPrimitiveBase::GetAsOcclusionPrimitive(){return 0;}
 CBaseClass::CBaseClass(){}CBaseClass::~CBaseClass(){}CBaseClassNonCopyable::CBaseClassNonCopyable(){}CBaseClassNonCopyable::~CBaseClassNonCopyable(){}CEnginePrimitiveRenderUtil::CEnginePrimitiveRenderUtil(){}CEnginePrimitiveRenderUtil::~CEnginePrimitiveRenderUtil(){}
-template<class T>struct CArray{};
+template<class T>class CArray{ public:};
 CEnginePrimitiveManager::CEnginePrimitiveManager(CArray<CEngineScene*>&s):Scenes(&s),Enable(true){}CEnginePrimitiveManager::~CEnginePrimitiveManager(){}
 void CEnginePrimitiveManager::FrameStart(){}void CEnginePrimitiveManager::FrameEnd(){}void CEnginePrimitiveManager::RenderSubPrimitive(CEngineSubPrimitiveBase&,ERenderPassType){}void CEnginePrimitiveManager::RenderBoundingVolume(CEngineSubPrimitiveBase&){}
 ERendered CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase&){return RenderedDefault;}bool CEnginePrimitiveManager::PreloadPrimitive(CEngineInternalPrimitiveBase&,const C3DVector&,unsigned long){return false;}

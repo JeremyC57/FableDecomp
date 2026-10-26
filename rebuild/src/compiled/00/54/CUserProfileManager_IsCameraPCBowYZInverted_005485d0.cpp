@@ -1,2 +1,2 @@
-struct CUserProfileManager { char pad[0xc]; unsigned char UseNewProfileValues; char pad_lo[20-0xd]; unsigned char blo; char pad_hi[212-(20+1)]; unsigned char CameraPCBowYZInvertedNewProfile; char IsCameraPCBowYZInverted(); };
+class CUserProfileManager { public: char pad[0xc]; unsigned char UseNewProfileValues; char pad_lo[20-0xd]; unsigned char blo; char pad_hi[212-(20+1)]; unsigned char CameraPCBowYZInvertedNewProfile; char IsCameraPCBowYZInverted(); };
 char CUserProfileManager::IsCameraPCBowYZInverted(){ if(this->UseNewProfileValues) return this->CameraPCBowYZInvertedNewProfile; return this->blo; }

@@ -4,7 +4,7 @@
 #include <map>
 // Behaviour test for CQ_WaspBossScript::WaspIntro (0x00E12F20): sets StartChase, plays CS_WASPBOSS_INTRO with HERO/VICTIM
 // cast while non-scripted entities are paused, shows the quest start screen once, and always unpauses on exit.
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 struct CHandle { int Thing; CHandle() : Thing(0) {} };
 struct CGSI {
     bool Paused; int PauseCalls; int Screens; char Log[128]; int Frames; CScriptThing Hero;

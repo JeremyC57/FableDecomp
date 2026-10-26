@@ -1,7 +1,7 @@
 // CMap::IsCameraPassableAt(const C2DCoordI& pos) -- the camera-passable bit (bit 3 of the flag byte at +9) of the game map cell at pos (rows stored top-down: (maxY - y) * (width + 1) + x), after a virtual call on the engine globals (0x013B86A0, slot 9)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081F460, length 64 bytes.
 // Callees: the engine globals' virtual slot 9 (+0x24, result unused). Shape: the row count's `inc esi`, the 12-byte cell index through `lea edx,[eax+eax*2]`, the bitfield read `mov al ; shr al,3 ; and al,1`, `ret 4`.
-struct CHeightMapCell {                           // engine/CHeightMapCell.h: 12 bytes
+class CHeightMapCell { public:                           // engine/CHeightMapCell.h: 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -19,14 +19,14 @@ struct CGameMapGrid {                              // the game map's cell grid (
     long            m_width;                       // +0x204 (cells per row minus one)
     long            m_maxY;                        // +0x208 (rows are stored top-down)
 };
-struct C2DCoordI { long X; long Y; };
+class C2DCoordI { public: long X; long Y; };
 struct CEngineGlobals {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008();
     virtual void Lock();   // slot 9 (+0x24)
 };
 extern CEngineGlobals* g_pEngineGlobals_013b86a0;   // 0x013B86A0
-struct CMap {
+class CMap { public:
     unsigned char _pad[0x1a7c];
     CGameMapGrid* m_pGameMapGrid;                  // +0x1a7c
     bool IsCameraPassableAt(const C2DCoordI& pos);

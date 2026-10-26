@@ -1,4 +1,4 @@
-struct CEngine {
+class CEngine { public:
   char pad[0x18];
   unsigned char active;   // +0x18
   unsigned long sceneId;  // +0x1c

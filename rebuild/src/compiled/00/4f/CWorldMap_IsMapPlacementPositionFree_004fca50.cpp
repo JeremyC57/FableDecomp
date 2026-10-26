@@ -10,9 +10,9 @@
 // +0x20 MapUID, +0x24 Used ... +0x40 IsSea.
 // Shape: a read-only twin of SetMapPlacement 0x004FC9C0: with no stores in the loops the divided bounds are hoisted
 // and the row pointer is strength-reduced (step 2 * pitch); the first used cell returns false.
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char   _pad[0x50];
     long            Granularity;                // +0x50 (PDB +0x60)
     long            GranularityShift;           // +0x54

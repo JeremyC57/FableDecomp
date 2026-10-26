@@ -9,32 +9,32 @@
 // of +0x93 cleared around the for_each with a value-initialised functor (`mov byte ptr [esp+4],0` into the
 // `push ecx` slot). LevelIsUnloading (bit 4 of +0x93) is widened to the bool argument with
 // `xor eax,eax ; mov al ; shr al,4 ; and eax,0FFFFFF01h`.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct SComponentPair {                              // pair<ETCInterfaceType, CTCBase*>, 8 bytes
     long     first;
     CTCBase* second;
 };
 
-struct CCallOnKill {                                 // empty functor: p.second->OnKill()
+class CCallOnKill { public:                                 // empty functor: p.second->OnKill()
     void operator()(SComponentPair& p) const;
 };
 
 CCallOnKill __fastcall for_each(SComponentPair* first, SComponentPair* last, CCallOnKill f);   // 0x004CB9F0
 
-struct CQuestManager {
+class CQuestManager { public:
     void OnDeactivateEntity(CThing* thing, bool levelUnloading);   // 0x004AFB00
 };
 
-struct CThingManager {
+class CThingManager { public:
     void OnThingKill(CThing* thing);                 // 0x00520C80
 };
 
 extern CQuestManager* g_pQuestManager;              // 0x013B89FC
 extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
-struct CThing {
+class CThing { public:
     unsigned char   m_pad00[0x44];
     SComponentPair* m_componentsFirst;               // +0x44  Components (CVectorMap)
     SComponentPair* m_componentsLast;                // +0x48

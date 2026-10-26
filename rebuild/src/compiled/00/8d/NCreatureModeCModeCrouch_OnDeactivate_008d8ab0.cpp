@@ -6,7 +6,7 @@
 // Layout: CModeBase Active +0x18; the 0x36 component's flags +0x0f (raised by CModeCrouch::OnActivate 0x008D89C0) and +0x10.
 // Shape: the inline CModeBase::OnDeactivate (`Active = false`) after the lookup block; VC7.1 shares one zero register for
 //   the three stores and duplicates the short tail into both paths.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                         // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -14,7 +14,7 @@ struct CInterfaceMap {                         // CVectorMap<ETCInterfaceType, C
     SEntry* LowerBound(const long* type);              // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;               // +0x44

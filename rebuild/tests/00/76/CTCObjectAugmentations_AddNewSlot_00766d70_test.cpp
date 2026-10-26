@@ -39,9 +39,9 @@ struct CDefPointerVector {
     }
 };
 
-struct CObjectAugmentationsDef { long NumberOfSlots; long MaximumNumberOfSlots; };
+class CObjectAugmentationsDef { public: long NumberOfSlots; long MaximumNumberOfSlots; };
 
-struct CTCObjectAugmentations {
+class CTCObjectAugmentations { public:
     CObjectAugmentationsDef* PDef;
     CDefPointerVector Augmentations;
     long GetNumberOfSlots() const { return (long)Augmentations.size(); }

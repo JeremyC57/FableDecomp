@@ -29,7 +29,7 @@ struct CCountedPointer {
         return *this;
     }
 };
-struct CScriptThing { CCountedPointer PImp; };
+class CScriptThing { public: CCountedPointer PImp; };
 struct CHolder {
     bool m_flagA, m_flagB; long m_counter; CScriptThing m_thing;
     void Reset() { m_flagA = false; m_flagB = false; m_counter = 0; m_thing = CScriptThing(); }

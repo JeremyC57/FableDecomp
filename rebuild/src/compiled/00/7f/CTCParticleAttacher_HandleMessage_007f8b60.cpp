@@ -15,7 +15,7 @@ struct CTCMessage {
 
 struct CParticlePointer { void* __vftable; void* m_pItem; };   // CIntelligentPointer<CThing>, 8 bytes
 
-struct CKillParticle {                              // empty functor: kills each live particle (Kill(false) @ 0x004C9B80)
+class CKillParticle { public:                              // empty functor: kills each live particle (Kill(false) @ 0x004C9B80)
     CKillParticle() {}
 };
 
@@ -34,7 +34,7 @@ struct CTCBase_007f8b60 {
     unsigned char _pad04[8];
 };
 
-struct CTCParticleAttacher : CTCBase_007f8b60 {
+class CTCParticleAttacher : public CTCBase_007f8b60 { public:
     const void*     PDef;                           // +0x0c
     CParticleVector ParticleList;                   // +0x10
     void AttachParticles();                         // 0x007F8890

@@ -1,7 +1,7 @@
 // Behaviour test for CTCCarriedActionUseLamp::vfunc_28 (0x007ECEE0): the user's light (interface 0x27) gets the lamp
 // def and is toggled; the lamp's interface-0x1a component is notified when present; the def reference is released.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -23,7 +23,7 @@ struct CDefVirtual {
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
 };
-struct CLightDef : CDefVirtual, CRefCounted {
+class CLightDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -31,7 +31,7 @@ struct CLightDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -41,7 +41,7 @@ template <class T> struct CDefPointer {
     }
 };
 static CLightDef* g_subDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CLightDef>* out)
     {
         out->Object = g_subDef;
@@ -49,7 +49,7 @@ struct CDefClassBase {
         return false;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];
     CInterfaceMap  m_interfaces;
@@ -66,7 +66,7 @@ struct CThing {
         return it->component;
     }
 };
-struct CTCLight {
+class CTCLight { public:
     unsigned char _pad00[0x1c];
     bool Active;
     CLightDef* SetDef;
@@ -78,7 +78,7 @@ struct CTCShowableItem {
     int Calls;
     void OnShowEnded() { ++Calls; }
 };
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00() {}
     CThing* ParentThing;
     int BaseCalls;

@@ -13,7 +13,7 @@ struct Sub {
     void destroy();
 };
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     char pad[0x10];
     Sub  sub;      // at +0x10
 };

@@ -8,8 +8,8 @@ long g_framesPerSecond;
 const float g_regionNameFadeTime = 0.2f;
 static long g_frame; static int g_frameCalls;
 long __fastcall GFGetCurrentFrame() { ++g_frameCalls; return g_frame; }
-struct CWideString { void* m_pData; };
-struct CTCRegionDisplay {
+class CWideString { public: void* m_pData; };
+class CTCRegionDisplay { public:
     virtual void v00() {}
     void*       ParentThing;
     bool        ToBeRemoved;

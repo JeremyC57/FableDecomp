@@ -1,8 +1,8 @@
 #include <cstdio>
 
 static int g_render = 0;
-struct CThingBaseDef { unsigned long PersistenceFlags; };
-struct CThing { CThingBaseDef* PBaseDef; void AddToRenderList() { ++g_render; } };
+class CThingBaseDef { public: unsigned long PersistenceFlags; };
+class CThing { public: CThingBaseDef* PBaseDef; void AddToRenderList() { ++g_render; } };
 struct CTCGraphicAppearance {
     CThing* ParentThing;
     unsigned short ActivePersistenceFlags;

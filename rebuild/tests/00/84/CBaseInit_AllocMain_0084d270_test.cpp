@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CGameCameraManager;
-struct CCameraModeDef { unsigned long m_flags; float m_turnDegrees; unsigned long m_style; };
+class CGameCameraManager;
+class CCameraModeDef { public: unsigned long m_flags; float m_turnDegrees; unsigned long m_style; };
 struct CDefPointer { const CCameraModeDef* m_pDef; };
 struct CBase { float m_turnFraction; unsigned long m_style; unsigned long m_flags; };
 static CBase g_mode;

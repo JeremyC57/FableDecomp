@@ -5,18 +5,18 @@
 // CDefClassBase::CDefClassBase(): CResource base runs, the three status bits are cleared (the other
 // bits of the byte are kept), the definition manager pointer is nulled, GlobalIndex is left alone.
 static int g_resourceCtors = 0;
-struct CDefinitionManager;
+class CDefinitionManager;
 
-struct CResource {
+class CResource { public:
     virtual void v00() { }
     unsigned char _resource[0x18];
     CResource() { ++g_resourceCtors; }
 };
-struct CDefPointeeBase : CResource {
+class CDefPointeeBase : public CResource { public:
     virtual void v00() { }
     CDefPointeeBase() { }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     CDefinitionManager* PDefManager;
     unsigned long       GlobalIndex;
     unsigned char       Setup : 1;

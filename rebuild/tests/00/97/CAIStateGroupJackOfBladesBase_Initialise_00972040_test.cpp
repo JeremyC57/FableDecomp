@@ -3,7 +3,7 @@
 // and its counter at +0x10 is cleared.
 #include <cstdio>
 
-struct CTCBase { int dummy; };
+class CTCBase { public: int dummy; };
 
 // Sorted {type, component} vector map searched by LowerBound (0x0040F020 in retail).
 struct CInterfaceMap {
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -43,17 +43,17 @@ struct CThing {
     }
 };
 
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
-struct CCharString { const char* m_pData; };
+class CCharString { public: const char* m_pData; };
 enum EScriptAIPriority { PRIORITY_A, PRIORITY_B };
-struct CTCBoss : CTCBase {
+class CTCBoss : public CTCBase { public:
     long m_phaseCounter;
     long m_phase; bool m_immediate;
     void SetNextBossPhase(long phase, bool immediate) { m_phase = phase; m_immediate = immediate; }
 };
 static bool g_baseOk = false;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     virtual ~CAIStateGroupBase() {}
     virtual void Initialise(CAIBrain& brain, CThing& creature, long scriptPriority, EScriptAIPriority priority,

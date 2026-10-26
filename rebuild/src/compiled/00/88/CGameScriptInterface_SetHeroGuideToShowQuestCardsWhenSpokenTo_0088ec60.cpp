@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld { char pad[0xda]; unsigned char b_da; };
+class CWorld { public: char pad[0xda]; unsigned char b_da; };
 struct CGameScriptInterface_Methods : CGameScriptInterface {
     void Set(unsigned char v);
 };

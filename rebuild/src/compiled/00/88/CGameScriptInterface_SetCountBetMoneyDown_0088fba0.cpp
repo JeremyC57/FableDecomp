@@ -1,4 +1,4 @@
-struct CGameScriptInterface;
+class CGameScriptInterface;
 extern unsigned char g_countBetMoneyDown;
 
 void __fastcall CGameScriptInterface_SetCountBetMoneyDown(CGameScriptInterface* self, void* edx, bool count)

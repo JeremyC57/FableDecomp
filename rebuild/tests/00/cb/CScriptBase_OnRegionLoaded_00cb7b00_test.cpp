@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 static int g_compares = 0;
 static long Compare(const char* a, const char* b) { ++g_compares; return std::strcmp(a, b); }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {
@@ -15,12 +15,12 @@ struct CCharString {
 };
 static CCharStringData Block(const char* s) { CCharStringData d; d.m_pData = s; d.m_length = (unsigned long)std::strlen(s); return d; }
 // Behaviour model of the CScriptBase spawned-thread walkers (0x00CB7AA0 / 0x00CB7B00 / 0x00CB7B60).
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     bool m_terminate; unsigned long ID; CCharString Name; CCharString AssociatedRegionName; bool FuncPaused;
     void SetFuncAsPaused(bool paused) { FuncPaused = paused; }
 };
 struct SNode { SNode* next; SNode* prev; CSpawnedFuncBase* m_pData; void* m_pInfo; };
-struct CScriptBase {
+class CScriptBase { public:
     SNode* Threads;
     void KillSpawnedFunction(const CCharString& name, unsigned long id)
     {

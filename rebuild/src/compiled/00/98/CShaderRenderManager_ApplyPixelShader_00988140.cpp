@@ -20,7 +20,7 @@ struct CPixelShaderData {                        // Ego_r.pdb, 20 bytes
     long*                  ConstIndices;         // +0x10
 };
 
-struct CPixelShader {
+class CPixelShader { public:
     virtual unsigned long CountReferences();     // slot 0
     CPixelShaderData* Data;                      // +0x04
     void Assign(const CPixelShader& other)       // 0x00987E50 (inlined)
@@ -36,7 +36,7 @@ struct CPixelShader {
     }
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad_0x000[0x1e0];
     CPixelShader  CurrentPixelShader;            // +0x1E0
     unsigned char _pad_0x1e8[0x3d8 - 0x1e8];

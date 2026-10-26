@@ -16,7 +16,7 @@
 #include <new>
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                        // PDB: 14 bytes, 2-byte packed (3 dwords + a word)
+class CEngineGraphic { public:                        // PDB: 14 bytes, 2-byte packed (3 dwords + a word)
     unsigned long BankIndex;                   // +0x00
     float         AnimStep;                    // +0x04
     float         RenderSizeX;                 // +0x08

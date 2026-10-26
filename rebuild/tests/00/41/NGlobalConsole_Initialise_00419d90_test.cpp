@@ -5,20 +5,20 @@
 // and receives one CConsoleClasslessCommand named "ActivateQuest" with a single parameter of type 5 bound to
 // ConsoleActivateQuest; the argument temporaries (name string, parameter list) are destroyed afterwards.
 static int g_strings = 0, g_lists = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString(const char* text, long = -1) { std::strcpy(m_text, text); ++g_strings; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CConsoleCommandParameters {
+class CConsoleCommandParameters { public:
     long* _M_start; long* _M_finish;
     CConsoleCommandParameters(long type) { _M_start = (long*)std::malloc(sizeof(long)); *_M_start = type; _M_finish = _M_start + 1; ++g_lists; }
     CConsoleCommandParameters(const CConsoleCommandParameters& o)
     { long n = (long)(o._M_finish - o._M_start); _M_start = (long*)std::malloc(n * sizeof(long)); for (long i = 0; i < n; ++i) _M_start[i] = o._M_start[i]; _M_finish = _M_start + n; ++g_lists; }
     ~CConsoleCommandParameters() { if (_M_start) std::free(_M_start); --g_lists; }
 };
-struct CConsoleInputBase { CCharString Name; CConsoleInputBase(const CCharString& n) : Name(n) {} virtual ~CConsoleInputBase() {} };
+class CConsoleInputBase { public: CCharString Name; CConsoleInputBase(const CCharString& n) : Name(n) {} virtual ~CConsoleInputBase() {} };
 struct CConsoleCommandBase : CConsoleInputBase {
     CConsoleCommandParameters ParamTypes;
     CConsoleCommandBase(const CCharString& n, const CConsoleCommandParameters& p) : CConsoleInputBase(n), ParamTypes(p) {}
@@ -29,7 +29,7 @@ struct CConsoleClasslessCommand : CConsoleCommandBase {
     CConsoleClasslessCommand(const CCharString& n, TConsoleFunction f, const CConsoleCommandParameters& p) : CConsoleCommandBase(n, p), Function(f) {}
 };
 static int g_consolesBuilt = 0;
-struct CConsole {
+class CConsole { public:
     CConsoleInputBase* m_inputs[4]; int m_count;
     CConsole() : m_count(0) { ++g_consolesBuilt; }
     void AddInput(CConsoleInputBase* input) { m_inputs[m_count++] = input; }

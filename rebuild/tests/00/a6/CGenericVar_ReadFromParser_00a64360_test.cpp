@@ -2,13 +2,13 @@
 // 4 bool, 5 quoted string) to the matching reader and return its result; any other type reads nothing and fails.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* text; };
-struct CStringParser {
+class CCharString { public: const char* text; };
+class CStringParser { public:
     char calls[16];
     bool ok;
     bool ReadNextItemAsQuotedString(CCharString& text) { std::strcat(calls, "S"); text.text = "quoted"; return ok; }
 };
-struct CGenericVar {
+class CGenericVar { public:
     long Type;
     CCharString ValString;
     bool ReadFromParserAsSLONG(CStringParser& p) { std::strcat(p.calls, "L"); return p.ok; }

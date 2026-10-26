@@ -18,8 +18,8 @@
 // interface map +0x44; interface 0x10 = sound component, 0x23 = CTCVillageMember; village bribe frame +0xA8).
 // Shape: the random delays are a static CWorld random called through GetPWorld() (the discarded call); the in-loop sound lookup
 // inlines the vector-map lower_bound, the after-loop one calls it.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -27,7 +27,7 @@ struct C3DVector {
     C3DVector operator*(float scale) const { return C3DVector(X * scale, Y * scale, Z * scale); }
     C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -53,7 +53,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -82,7 +82,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingPlayerCreature : CThing { };
+class CThingPlayerCreature : public CThing { public: };
 struct CTCSoundInfo {                           // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
     void StopSample(unsigned long sampleID);    // 0x0066ADD0
@@ -91,7 +91,7 @@ struct CVillage {
     unsigned char _pad[0xa8];
     long BribedFrame;                           // +0xA8
 };
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillageMember { public:                       // interface 0x23
     CVillage* GetPVillage();                    // 0x007EE540
 };
 struct CBaseIntelligentPointer {
@@ -114,16 +114,16 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x34];
     CBaseIntelligentPointer PCharacter;         // +0x34
     const CBaseIntelligentPointer& GetPCharacter() const { return PCharacter; }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     const CPlayer& GetMainPlayer() const;       // 0x00449960
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
     static __forceinline unsigned long Random(unsigned long range, unsigned long* seed)
     {
@@ -137,11 +137,11 @@ extern long g_BribedWhistleFirstMin;            // 0x0138CB98
 extern long g_BribedWhistleFirstMax;            // 0x0138CB9C
 extern long g_BribedWhistleRepeatMin;           // 0x0138CBA0
 extern long g_BribedWhistleRepeatMax;           // 0x0138CBA4
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
 #define VF(n) virtual void v##n();
     VF(0) VF(1) VF(2) VF(3) VF(4) VF(5) VF(6) VF(7) VF(8) VF(9) VF(10)
     virtual bool IsStillValid();                // slot 11 (+0x2c)

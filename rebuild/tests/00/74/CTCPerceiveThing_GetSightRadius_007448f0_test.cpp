@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CGameTimeManager { int phase; bool IsDay() const { return phase == 0; } bool IsNightTime() const { return phase == 1; } };
-struct CWorld { CGameTimeManager* GameTimeManager; };
+class CGameTimeManager { public: int phase; bool IsDay() const { return phase == 0; } bool IsNightTime() const { return phase == 1; } };
+class CWorld { public: CGameTimeManager* GameTimeManager; };
 static CGameTimeManager g_time;
 static CWorld g_world;
-struct CPerceivedThingDef { float DayTimeVisibilityMultiplier; float NightTimeVisibilityMultiplier; };
-struct CTCPerceiveThing {
+class CPerceivedThingDef { public: float DayTimeVisibilityMultiplier; float NightTimeVisibilityMultiplier; };
+class CTCPerceiveThing { public:
     const CPerceivedThingDef* PDef_Object;
     float SightRadius;
     float ExtendedSightRadius;

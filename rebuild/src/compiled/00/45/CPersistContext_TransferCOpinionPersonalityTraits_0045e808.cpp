@@ -16,8 +16,8 @@
 //   keeps the traits transfers out of line (and homes the traits in the argument slot) unless they are __forceinline.
 #pragma optimize("s", on)   // the def module is size-optimised
 
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
+class CDataOutputStream;
+class CMemoryDataInputStream;
 
 class COpinionPersonalityTraits {
 public:
@@ -44,7 +44,7 @@ template <> struct CPersistTraits<COpinionPersonalityTraits*> {
     }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;                           // +0x18 (2 = binary load, 3 = binary save)
     unsigned char           _pad1c[8];

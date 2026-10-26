@@ -9,14 +9,14 @@
 // Shape: the counted-pointer assignment is the landed CCountedPointer::operator= (0x00754F10) inlined: the
 // source block read before the `this->Info != other.Info` compare, the source object between the compare and
 // its branch, the count decremented in place and re-read through the member, the block re-read for delete.
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
 void __cdecl operator delete(void* p);                   // 0x00BFE9BC
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                // +0
     CCPPointerInfo* Info;                                // +4
     CCountedPointer& operator=(const CCountedPointer& other)
@@ -40,12 +40,12 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct C3DVector  { float X, Y, Z; };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };   // 48-byte POD
-struct C3DMeshInfo;
-struct C3DMeshStats;
+class C3DVector  { public: float X, Y, Z; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };   // 48-byte POD
+class C3DMeshInfo;
+class C3DMeshStats;
 
-struct C3DMeshObject {
+class C3DMeshObject { public:
     virtual void v00();
     C3DMeshInfo*                         MeshInfo;                    // +0x04
     CCountedPointer<const C3DMeshStats>  Mesh;                        // +0x08

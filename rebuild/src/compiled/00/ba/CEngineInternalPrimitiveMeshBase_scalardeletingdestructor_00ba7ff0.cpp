@@ -1,4 +1,4 @@
-struct CEngineInternalPrimitiveMeshBase {
+class CEngineInternalPrimitiveMeshBase { public:
     void* vftable;
 };
 

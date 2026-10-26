@@ -13,8 +13,8 @@
 // (null and bit 0 of +0x91) before the emitter lookup (`p = 0; if (HasTC) p = GetTC`). The nymph is found through the out-parameter
 // GetInterface(T**, type) template (component left in eax, `mov ecx,eax` after the argument). GetSubDef and GetEffectFromString
 // get same-TU stand-in bodies (write only the out slot / the `long&`), so neither the def slot nor the effect-type word escapes.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -26,7 +26,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                            // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Find_CSpecialEffectsDef_GetEffectFromString(const CSpecialEffectsDef* def, const CCharString& name);   // stand-in callee
@@ -42,7 +42,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {      // the out-slot GetSubDef fills (counted reference handed over)
+template <class T> class CDefPointer { public:      // the out-slot GetSubDef fills (counted reference handed over)
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
@@ -51,7 +51,7 @@ template <class T> __forceinline void ReleaseDef(T* def)
     if (def && --def->m_refCount == 0)
         def->Destroy();
 }
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* FindSubDef_CDefClassBase_GetSubDef(CDefClassBase* def);   // stand-in callee of the stand-in body below
@@ -67,14 +67,14 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
     return true;
 }
 #pragma auto_inline(on)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -109,10 +109,10 @@ struct CThing {
     }
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-struct CTCNymph {
+class CTCNymph { public:
     void StartFlyingAround(long frames);        // 0x0080F5E0
 };
 struct CBaseIntelligentPointer {
@@ -120,7 +120,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
@@ -130,7 +130,7 @@ struct CCreatureActionBase {                    // retail sizeof 0xa8
     long                    FramesRunning;      // +0x1c
     unsigned char           _pad20[0xa8 - 0x20];
 };
-struct CCreatureAction_NymphGetHit : CCreatureActionBase {
+class CCreatureAction_NymphGetHit : public CCreatureActionBase { public:
     void PerformAction();
 };
 

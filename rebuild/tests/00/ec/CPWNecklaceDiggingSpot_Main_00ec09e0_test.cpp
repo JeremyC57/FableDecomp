@@ -2,7 +2,7 @@
 
 // CPW_NecklaceDiggingSpot::Main: tick while the parent keeps the spot hidden, abort out of the wait or
 // before revealing, otherwise reveal the digging spot (SetDiggingSpotAsHidden(spot, false)).
-struct CScriptThing { unsigned char _body[8]; };
+class CScriptThing { public: unsigned char _body[8]; };
 struct CV_ParanoidWhispersScript { bool HideDiggingSpot; };
 static CV_ParanoidWhispersScript* g_parent = 0;
 static int g_ticks = 0, g_hideCalls = 0, g_unhideAfterTicks = 0, g_abortAtCheck = -1, g_checks = 0;

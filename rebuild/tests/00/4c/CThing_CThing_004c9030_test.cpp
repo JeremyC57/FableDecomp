@@ -6,18 +6,18 @@
 #include <cstring>
 #include <new>
 static void* g_factory = 0; static unsigned long g_classType = 0; static bool g_registerNow = true; static int g_classCtors = 0, g_strings = 0;
-struct CClassFactory;
-struct CClass { virtual void v00() {} CClass(CClassFactory& factory, unsigned long type, bool registerNow) { ++g_classCtors; g_factory = &factory; g_classType = type; g_registerNow = registerNow; } };
-struct CThingManager { int x; };
+class CClassFactory;
+class CClass { public: virtual void v00() {} CClass(CClassFactory& factory, unsigned long type, bool registerNow) { ++g_classCtors; g_factory = &factory; g_classType = type; g_registerNow = registerNow; } };
+class CThingManager { public: int x; };
 static CThingManager g_manager; static CThingManager* g_pThingManager = &g_manager; static long g_thingCount = 5;
 class CCharString { public: void* PStringData; CCharString() : PStringData((void*)0x1234) { ++g_strings; } };
 struct CPresenceBits { unsigned long words[9]; CPresenceBits() { memset(words, 0, sizeof(words)); } };
-struct CTCBase; struct SComponentPair { long first; CTCBase* second; }; struct CKeyPairCompareLess { };
+class CTCBase; struct SComponentPair { long first; CTCBase* second; }; struct CKeyPairCompareLess { };
 struct CComponentMap { SComponentPair* m_first; SComponentPair* m_last; SComponentPair* m_end; CKeyPairCompareLess m_compare; bool m_sorted; CComponentMap() : m_first(0), m_last(0), m_end(0), m_sorted(false) { } };
 struct SListNode { SListNode* _M_next; SListNode* _M_prev; CTCBase* _M_data; };
 struct CTCList { SListNode* _M_node; CTCList() : _M_node(0) { SListNode* node = (SListNode*)malloc(sizeof(SListNode)); node->_M_next = node; node->_M_prev = node; _M_node = node; } };
-struct CThingBaseDef; struct CDefPointer { const CThingBaseDef* Object; CDefPointer() : Object(0) { } };
-struct CTCDriverBase; struct CTCPhysicsBase; struct CTCGraphicAppearance;
+class CThingBaseDef; struct CDefPointer { const CThingBaseDef* Object; CDefPointer() : Object(0) { } };
+class CTCDriverBase; class CTCPhysicsBase; struct CTCGraphicAppearance;
 class CThing : public CClass {
 public:
     unsigned char _pad04[0x18 - 0x04]; unsigned long long UniqueID; CPresenceBits UsingComponents; CComponentMap Components; CTCList UpdateComponentsList;

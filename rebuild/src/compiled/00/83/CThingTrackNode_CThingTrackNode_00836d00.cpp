@@ -6,16 +6,16 @@
 // a non-virtual destructor), `mov ecx,esi ; pop esi ; jmp` into the base.
 // Leaf: ??1CThingTrackNode
 #pragma pack(push, 4)
-struct CCharString {                                // 4 bytes
+class CCharString { public:                                // 4 bytes
     void* storage_;
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CThingGameObject {                           // retail 0xd0 bytes
+class CThingGameObject { public:                           // retail 0xd0 bytes
     virtual void v00();
     unsigned char _pad04[0xcc];                     // +0x04
     ~CThingGameObject();                            // 0x00838A00
 };
-struct CThingTrackNode : CThingGameObject {         // vtable 0x01272CE4
+class CThingTrackNode : public CThingGameObject { public:         // vtable 0x01272CE4
     virtual void v00();
     long             m_trackWordD0;                 // +0xd0 (CThingTrackNode_u_232)
     long             m_trackWordD4;                 // +0xd4 (CThingTrackNode_u_236)

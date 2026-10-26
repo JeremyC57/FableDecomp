@@ -38,20 +38,20 @@ public:
         m_interfaces.last->type = t; m_interfaces.last->component = c; ++m_interfaces.last;
     }
 };
-struct CCreatureActionBase { int kind; void* target; };
+class CCreatureActionBase { public: int kind; void* target; };
 static int g_actions = 0; static void* g_target = 0; static int g_effectsUsed = 0; static int g_base = 0;
 class CThingCreatureBase : public CThing {
 public:
     bool SetCurrentAction(CCreatureActionBase* action) { ++g_actions; g_target = action->target; return true; }
 };
 inline bool IsThingAlive(const CThing* thing) { return thing && !(thing->m_stateFlags & 1); }
-struct CTCWallMount : CTCBase { CThing* mounted; CThing* GetMountedThing() { return mounted; } };
-struct CTCWallMountEffects : CTCBase {
+class CTCWallMount : public CTCBase { public: CThing* mounted; CThing* GetMountedThing() { return mounted; } };
+class CTCWallMountEffects : public CTCBase { public:
     bool usable, handles;
     bool IsUsable() { return usable; }
     bool OnWallMountUseAction(CThingCreatureBase*) { ++g_effectsUsed; return handles; }
 };
-struct CCreatureAction_UseWallMount : CCreatureActionBase {
+class CCreatureAction_UseWallMount : public CCreatureActionBase { public:
     CCreatureAction_UseWallMount(CThingCreatureBase*, void* t) { kind = 1; target = t; }
 };
 class CTCActionUseWallMount {

@@ -27,7 +27,7 @@ struct SVector {
         else InsertOverflow(Finish, x);
     }
 };
-struct CVertexGroupBlock {
+class CVertexGroupBlock { public:
     SVector Groups; std::map<unsigned long, long> GroupToIndexMap;
     CVertexGroupBlock() { Groups.Start = Groups.Finish = Groups.End = 0; }
     // reconstructed body

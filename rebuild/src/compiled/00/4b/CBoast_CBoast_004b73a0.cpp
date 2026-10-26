@@ -4,12 +4,12 @@
 // Layout from Ego_r.pdb (CBoast, 32 bytes): ID +0, Cost +4, Reward +8, ScriptName +0xc, Text +0x10,
 // Title +0x14, Evil +0x18, Failed +0x19, Completed +0x1a, GroupIndex +0x1c. The copy constructor is
 // written out of line (an implicit one would be inlined away and the TU would carry no symbol).
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString(const CWideString& other);      // 0x0099B720
 };

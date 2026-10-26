@@ -13,14 +13,14 @@
 //   nested ifs sharing the `xor al,al` exit.
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double x);
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
     float GetLength() const { return (float)sqrt(X * X + Y * Y); }

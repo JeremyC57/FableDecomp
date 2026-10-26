@@ -98,7 +98,7 @@ struct CGameScriptInterface {                      // the quest's script interfa
     virtual long GetTimeOfDay() const;               // slot 647 (+0xa1c), HHMM
 };
 
-struct CV_TravellingHeroesScript {
+class CV_TravellingHeroesScript { public:
     struct CTH_Trigger_Bowerstone {
         void*                 __vftable;            // +0x00
         CGameScriptInterface* PQuest;               // +0x04

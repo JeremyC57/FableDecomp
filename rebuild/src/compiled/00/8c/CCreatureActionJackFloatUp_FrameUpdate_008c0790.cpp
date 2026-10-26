@@ -9,7 +9,7 @@
 // the limit `FloatHeight + StartHeight` (right operand loaded first) is a named float local, `fcomp ; test ah,41h ; jne` is
 // `Z > limit`, and the clamp copies the limit as a dword. Members from the engine header (PDB +0x12c.. sit 0x18 high: retail
 // CCombatActionBase is 0x114 bytes). The physics component is reached through an inline accessor so it loads straight into ecx.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
@@ -22,7 +22,7 @@ struct CPhysicsComponent {
     virtual void v30();
     virtual void SetPosition(const C3DVector& position);   // slot 31 (+0x7c)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsComponent* m_pPhysics;          // +0x60
     const C3DVector& GetPosition() const;   // 0x004C73D0
@@ -37,14 +37,14 @@ struct CBaseIntelligentPointer {
 
 extern long g_frameRate;                    // 0x01375550 frames per second
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
     void FrameUpdate();                     // 0x00859D80
 };
-struct CCreatureAction_JackFloatUp : CCombatActionBase {
+class CCreatureAction_JackFloatUp : public CCombatActionBase { public:
     float FloatHeight;                      // +0x114 (PDB +0x12c)
     float FloatSpeed;                       // +0x118 (PDB +0x130)
     bool  Moving;                           // +0x11c (PDB +0x134)

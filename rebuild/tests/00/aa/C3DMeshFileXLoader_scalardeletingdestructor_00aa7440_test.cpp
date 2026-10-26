@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DMeshFileXLoader {
+class C3DMeshFileXLoader { public:
     void* vftable;
     int destroyed;
 };

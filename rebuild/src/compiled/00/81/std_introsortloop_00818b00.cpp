@@ -11,7 +11,7 @@
 // last - 1 copied memberwise into __unguarded_partition's argument area (C3DVector's user copy constructor),
 // recursion on [cut, last), then last = cut.
 struct CHitLocation;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

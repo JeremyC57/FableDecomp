@@ -20,7 +20,7 @@ namespace std {
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 }
 
-struct CCPPointerInfo {                              // count block, PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                              // count block, PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;

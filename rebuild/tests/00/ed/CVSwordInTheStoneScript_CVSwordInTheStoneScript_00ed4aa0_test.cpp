@@ -3,7 +3,7 @@
 // timer index taken from the global interface's RegisterTimer.
 struct Iface { long next; long RegisterTimer() { return next++; } };
 static Iface g_iface = { 7 };
-struct CTimer { long Index; CTimer() : Index(g_iface.RegisterTimer()) {} };
+class CTimer { public: long Index; CTimer() : Index(g_iface.RegisterTimer()) {} };
 struct Words { void* Data; void* Info; Words() : Data(0), Info(0) {} };
 struct Thing { Words PImp; };
 struct Script {

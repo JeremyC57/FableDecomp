@@ -1,5 +1,5 @@
 // CSoundPosition::GetDistance(const C3DVector& listener) const -- the distance of a sound's position from the listener: the vector's own length when the position is listener-relative (flag +0xc), else the length of (position - listener); returned on the FPU stack
-// Leaf: ?GetDistance@CSoundPosition@@QBEMABUC3DVector@@@Z
+// Leaf: ?GetDistance@CSoundPosition@@QBEMABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C20340, 38 bytes, __thiscall `ret 4`, float result in st0:
 //   mov al,[ecx+0Ch] ; sub esp,0Ch ; test al,al ; jne len ; mov eax,[esp+10h] ; mov edx,ecx ; push eax ;
 //   lea ecx,[esp+4] ; call operator- ; lea ecx,[esp] ; len: call C3DVector::GetMagnitude ; add esp,0Ch ; ret 4
@@ -14,7 +14,7 @@
 // Shape: C3DVector has a user constructor (as the landed operator- row models it), so the __fastcall operator- takes the
 //   hidden result pointer in ecx and the operands in edx / on the stack; the two GetMagnitude calls are tail-merged: the relative path reaches the call with ecx still = `this`, the
 //   other with `lea ecx,[esp]` (the difference temporary in the 12-byte frame).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}   // as in the landed operator- 0x00C257B0
     float GetMagnitude() const;                 // 0x00C25970

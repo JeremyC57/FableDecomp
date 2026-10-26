@@ -12,8 +12,8 @@
 #include <math.h>
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 void operator delete(void* p);                   // 0x00BFE9BC
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     T* operator->() const { return Data; }
@@ -21,7 +21,7 @@ template <class T> struct CCountedPointer {
 struct CActionAllocator {                        // std::allocator<CCountedPointer<CAction> > (empty)
     CActionAllocator() { }
 };
-namespace NUISystem { struct CAction; }
+namespace NUISystem { class CAction; }
 void __fastcall DestroyActionRange(CCountedPointer<NUISystem::CAction>* first, CCountedPointer<NUISystem::CAction>* last,
                                    const CActionAllocator& allocator);   // 0x0054A1C0
 template <class T> struct CRetailVector {        // STLport vector (12 bytes; PDB 16)
@@ -50,7 +50,7 @@ template <class T> struct CRetailList {          // STLport list: the header-nod
 };
 extern const float g_SliderValueEpsilon;         // 0x0129BA3C
 #pragma pack(push, 1)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     bool operator==(const C2DVector& v) const
     {
@@ -75,7 +75,7 @@ struct CSprite : ISpritePrimary, CObserver, ISpriteSecondaryB {
 };
 namespace NUISystem {
 #pragma pack(push, 1)
-struct CSlider : CSprite {                       // vtables 0x01248D04 / 0x01248CE0 / 0x01248CD8
+class CSlider : public CSprite { public:                       // vtables 0x01248D04 / 0x01248CE0 / 0x01248CD8
     C2DVector     Dimensions;                    // +0x184
     C2DVector     Min;                           // +0x18c
     C2DVector     Max;                           // +0x194
@@ -102,7 +102,7 @@ struct CSliderValue { unsigned char _pad[8]; float Value; };                    
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };           // +0x08
 struct CSliderTargetRef { CSliderTarget* Target; };                             // +0x00
 namespace NUISystem {
-struct CAction {
+class CAction { public:
     virtual void v00();
     CSliderTargetRef* PTarget;                   // +0x04
 };

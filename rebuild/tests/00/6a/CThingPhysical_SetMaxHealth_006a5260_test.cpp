@@ -4,7 +4,7 @@ template <class T> inline void ClampMax(T& value, const T& maximum)
     if (value > maximum)
         value = maximum;
 }
-struct CThingPhysical {
+class CThingPhysical { public:
     float MaxHealth;
     float Health;
     void SetMaxHealth(float maxHealth, bool adjustHealth);

@@ -8,17 +8,17 @@
 // Shape: the sibling of CreateObject. A failed lookup / factory call / dead building falls through to the thing manager's
 // failure flag (+0xC8); success ends with `continue` (the `jmp` to the loop increment).
 // Layout (local model): as CreateObject, plus CThing PTCPhysics +0x60.
-struct CTCBase;
-struct CTCPhysicsBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector First; C3DVector Second; };
+class CTCBase;
+class CTCPhysicsBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -60,10 +60,10 @@ public:
     }
 };
 CThing* __fastcall CreateBuildingThing(long defIndex, const C3DVector* position, long player, const CCharString& scriptName);   // 0x0082D920
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned short m_type;                            // +0x00
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -88,20 +88,20 @@ struct CTCPhysicsBase {
     virtual void v90(); virtual void v91(); virtual void v92();
     virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo();   // slot 93 (+0x174)
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0xc8];
     bool          m_creationFailed;                   // +0xC8
 };
-struct CTCCreatedEntity {                             // interface 0x32
+class CTCCreatedEntity { public:                             // interface 0x32
     void SetPCreator(CThing* creator);                // 0x005ED440
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos);            // 0x004FC600
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CTCBase {
+class CTCBase { public:
     void*   __vftable;                                // +0x00
     CThing* ParentThing;                              // +0x04
     CWorldMap*          GetWorldMap();                // 0x00686D20

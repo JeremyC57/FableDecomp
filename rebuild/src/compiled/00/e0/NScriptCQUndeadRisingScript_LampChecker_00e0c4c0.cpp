@@ -9,19 +9,19 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImp {
     virtual void i00(); virtual void i01(); virtual void i02(); virtual void i03(); virtual void i04(); virtual void i05(); virtual void i06(); virtual void i07(); virtual void i08(); virtual void i09();
     virtual void i10(); virtual void i11(); virtual void i12(); virtual void i13(); virtual void i14(); virtual void i15(); virtual void i16(); virtual void i17(); virtual void i18(); virtual void i19();
@@ -33,10 +33,10 @@ struct CScriptThingImp {
     virtual void i70(); virtual void i71(); virtual void i72(); virtual void i73(); virtual void i74();
     virtual bool IsAlive() const;                       // slot 75 (+0x12c)
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)
     virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010();
@@ -67,7 +67,7 @@ public:
     T& operator[](unsigned int n) { return _M_start[n]; }
 };
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -112,7 +112,7 @@ struct CGameScriptInterface {
     virtual void v371(); virtual void v372(); virtual void v373(); virtual void v374(); virtual void v375();
     virtual void Pause(float seconds) const;   // slot 376 (+0x5e0)
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

@@ -8,7 +8,7 @@
 // ZoomTime is stored first as a raw dword; the TargetZoom copy is written in EACH arm so VC hoists the
 // common X store above the branch; `fcomp [0.0f] ; test ah,41h ; jne` is `time > 0.0f`. The third
 // argument (`ret 0Ch`) is never read.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };

@@ -1,7 +1,7 @@
 // behaviour test for 0x0075E3F0 CTCCameraPointScriptedSpline::EditUpdateResetSelected
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CCamera {
+class C3DVector { public: float X, Y, Z; };
+class CCamera { public:
     C3DVector WorldPosition; C3DVector Up; C3DVector Forward; float HorizontalFOV;
     C3DVector GetViewVector() const { return Forward; }
     float GetHorizontalFOV() const { return HorizontalFOV; }

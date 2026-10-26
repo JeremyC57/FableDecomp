@@ -11,7 +11,7 @@
 // Shape: the base is an empty polymorphic shell (EH state 0, its vptr store dead) and the parent is the derived class's first
 // member: a base that owns the parent hoists the argument load above the `this` spill. Each holder is a polymorphic base taking
 // the inline storage's address plus the storage member (EH states 1/3 partial, 2/4 complete); the seed pair has a trivial dtor.
-struct CThing;
+class CThing;
 struct CDiceGameSetup { long Value; };
 struct CDiceRuleSet {                                       // 0x28 bytes
     CDiceRuleSet(long n);                                   // 0x00C194F0
@@ -42,7 +42,7 @@ struct CDiceQuad {
     virtual ~CDiceQuad();
     short V[4];
 };
-struct CTCDiceGame;
+class CTCDiceGame;
 struct CDiceGameState {
     CDiceGameState(CTCDiceGame* game, long value);          // 0x00C2A8C0
     unsigned char _pad[0xd4];
@@ -55,7 +55,7 @@ struct CTCBaseShell {
     CTCBaseShell() { }
     virtual ~CTCBaseShell() { }
 };
-struct CTCDiceGame : CTCBaseShell {
+class CTCDiceGame : public CTCBaseShell { public:
     CThing* ParentThing;
     CTCDiceGame(CThing* parent, const CDiceGameSetup* setup, long seed);
     virtual ~CTCDiceGame();

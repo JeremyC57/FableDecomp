@@ -3,10 +3,10 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
-struct CThing;
-struct CWorld;
-struct CThingAICreature;
+class CTCBase;
+class CThing;
+class CWorld;
+class CThingAICreature;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -28,7 +28,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -57,9 +57,9 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* PCreature; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* PCreature; };
 static CWorld* g_world = 0; static int g_getPWorld = 0;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {}
@@ -79,7 +79,7 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
     CWorld* GetPWorld() { ++g_getPWorld; return g_world; }
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
@@ -92,9 +92,9 @@ static void MakeThing(CThing& t, CInterfaceMap::SEntry* entries, long type, CTCB
     t.m_interfaces.first = entries; t.m_interfaces.last = entries + 2;
     t.m_presentBits[type >> 5] |= 1UL << (type & 31);
 }
-struct CWorld { int dummy; };
-struct CCharString { long index; };
-struct CDefString {
+class CWorld { public: int dummy; };
+class CCharString { public: long index; };
+class CDefString { public:
     long m_index;
     bool operator==(const CCharString& other) const { return m_index == other.index; }
 };
@@ -108,7 +108,7 @@ struct CExpressionPayload {
     virtual CDefString GetExpression() const { CDefString s; s.m_index = m_expr; return s; }
     long m_expr;
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     CIVCountedPointer(T* p) : Data(p) { if (Data) ++Data->m_count; }
     CIVCountedPointer(const CIVCountedPointer& o) : Data(o.Data) { if (Data) ++Data->m_count; }

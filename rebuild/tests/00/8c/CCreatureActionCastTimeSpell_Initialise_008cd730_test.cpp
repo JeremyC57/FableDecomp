@@ -1,8 +1,8 @@
 // Behaviour test for 0x008CD730 CCreatureAction_CastTimeSpell::Initialise: add the CTCBulletTime component, set its target when alive.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CThing;
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CThing;
 struct CBaseIntelligentPointer {
     CThing* PItem;
     CBaseIntelligentPointer() : PItem(0) {}
@@ -20,13 +20,13 @@ struct TC {
     void SetAICast(long l) { AICastLevel = l; }
     void StartHealingEffect() { ++healing; }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_state, m_flags91; bool has; TC tc; const char* added;
     CThing() : m_state(0), m_flags91(0), has(false), added(0) {}
     unsigned long HasTC(long) const { return has; }
     TC* AddTC(const CCharString& n, bool, void*) { added = n.t; has = true; return &tc; }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature; CIntelligentPointerThing PItemRemoved; int baseInit;
     void Initialise() { ++baseInit; }
 };

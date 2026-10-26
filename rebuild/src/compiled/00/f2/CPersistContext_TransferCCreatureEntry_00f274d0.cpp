@@ -16,8 +16,8 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CPersistContext;
-struct CMemoryDataInputStream {
+class CPersistContext;
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -47,7 +47,7 @@ struct CMemoryDataInputStream {
         return value;
     }
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);            // 0x00993EB0
 };
 
@@ -71,7 +71,7 @@ template <class T> struct vector {
     void resize(long count, const T& x);                  // 0x00F27710 for this T
 };
 
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long GetCount();
 };
 template <class T> struct CPersistContext_TransferableVector : CPersistContext_TransferableVectorGenericType {   // vtable 0x012FB570
@@ -80,7 +80,7 @@ template <class T> struct CPersistContext_TransferableVector : CPersistContext_T
     virtual long GetCount();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

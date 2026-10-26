@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_stringDtors = 0;
-struct CCharString { void* PStringData; ~CCharString() { ++g_stringDtors; } };
-struct CAnimFilterBase { virtual void v00() { } ~CAnimFilterBase() { } };
+class CCharString { public: void* PStringData; ~CCharString() { ++g_stringDtors; } };
+class CAnimFilterBase { public: virtual void v00() { } ~CAnimFilterBase() { } };
 struct __declspec(novtable) CAnimFilterNamed : CAnimFilterBase { CCharString m_name; ~CAnimFilterNamed() { } };
 int main()
 {

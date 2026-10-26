@@ -20,7 +20,7 @@ public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -57,7 +57,7 @@ struct CGameScriptInterface {                      // retail vtable 0x01260F0C (
     virtual void AddBoast(const CCharString& description, long boastID, long cost, long reward, bool flag, const CCharString& extra, long extraValue) const;   // slot 303 (+0x4bc) 0x00893060 public: virtual void __fastcall CGameScriptInterface::AddBoast(class CCharString const &, long, long, long, bool, class CCharString const &, long) const
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad_0x000[0x88];
     long BanditCampNoDamageBoastCost;                  // +0x88
     long BanditCampNoDamageBoastReward;                // +0x8c

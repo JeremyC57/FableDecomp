@@ -8,12 +8,12 @@
 // dtor 0x0099EAE0, CTCBetting::PlaySound 0x007E51D0, CProcessedInput::SetHandled 0x00A0D390, CSubtitleRenderer::Clear
 // 0x00492BAB. Globals: betting flag 0x013BAE1D, bet placed 0x013BAE1E, bet 0x013BAE20, repeat delay/rates 0x01384040..4C.
 // Layout: CTCBetting as the landed 0x007E57C0; CBettingDef MaxBet +0x3c, MinBet +0x38, Step +0x40; hero gold TC (4) +0x3c.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C2DVector {
+class C2DVector { public:
     float x, y;
 };
 class CInputEvent {
@@ -29,15 +29,15 @@ struct CInputProcessGameBase {
     bool IsEventGameAction(long action, const CInputEvent& event);      // 0x00687CF0
     bool GetEventGameActionVector(long action, const CInputEvent& event, C2DVector* vector);   // 0x00687D00
 };
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void Clear(bool now);                               // 0x00492BAB
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                 // +0x18
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x3c];
     long          Gold;                                 // +0x3c
 };
@@ -53,20 +53,20 @@ struct CTCMap {
         return ((it == m_pLast || kind < it->type) ? m_pLast : it)->component;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                          // +0x20
     CTCMap        m_tcs;                                // +0x44
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCHeroStats* GetTC(long kind) { return m_tcs.Find(kind); }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                           // 0x00449960
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
     long GetFrame();                                    // 0x00416225
@@ -80,7 +80,7 @@ extern long g_BetRepeatSlow;                            // 0x01384044
 extern long g_BetRepeatFast;                            // 0x01384048
 extern long g_BetMultiplierRate;                        // 0x0138404C
 
-struct CBettingDef {
+class CBettingDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long          RefCount;                             // +0x04
@@ -89,13 +89,13 @@ struct CBettingDef {
     long          MaxBet;                               // +0x3c
     long          BetStep;                              // +0x40
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CBettingDef>* out);      // 0x007E5820
 };
 void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee
@@ -114,7 +114,7 @@ struct CParentThing {
     CDefClassBase* m_pDef;                              // +0x70
     CDefClassBase* GetDef() const { return m_pDef; }
 };
-struct CTCBetting {
+class CTCBetting { public:
     void*         __vftable;                            // +0x00
     CParentThing* ParentThing;                          // +0x04
     unsigned char _pad08[0x28 - 0x08];

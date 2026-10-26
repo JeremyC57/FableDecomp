@@ -4,14 +4,14 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 #define NEAR(a, b) (fabs((a) - (b)) < 1e-4)
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     void Normalise() { float l = (float)sqrt(X * X + Y * Y + Z * Z); if (l > 0) { X /= l; Y /= l; Z /= l; } }
     float Dot(const C3DVector& o) const { return o.X * X + o.Y * Y + o.Z * Z; }
 };
-struct CAnimationEntry;
+class CAnimationEntry;
 struct CGetBestTurningAnim {
     float RotationAngle;
     float BestMatchAngle;

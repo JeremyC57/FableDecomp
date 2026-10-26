@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDefClassBase;
+class CDefClassBase;
 
 static int g_base_called = 0;
 static int g_sub_called = 0;
@@ -16,7 +16,7 @@ struct CBaseDef {
     void Copy(const CDefClassBase* src){ g_base_called++; g_base_src = (const void*)src; }
 };
 
-struct CSoundAtmospheresDef {
+class CSoundAtmospheresDef { public:
     char pad[0x28];
     CSubMember sub;
     void Copy(const CDefClassBase* src);

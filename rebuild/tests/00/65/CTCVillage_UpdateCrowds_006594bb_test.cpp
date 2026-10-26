@@ -33,10 +33,10 @@
 #include <string.h>
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 class CSoundPair;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -166,7 +166,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     CBitset        m_present;                           // +0x20 (0x24 bytes)
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -178,7 +178,7 @@ struct CThing {
 };
 long __fastcall GFGetCurrentFrame();                    // 0x0049D870
 
-struct CTCVillage {
+class CTCVillage { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x18];

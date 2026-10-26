@@ -1,8 +1,8 @@
 // Behaviour test for CTCDoor::Copy(const CTCBase&) @ 0x007305A0: the other component arrives as a CTCBase reference and
 // is read as a door; the four open-state flags and LastCreatureFoundWF are copied, Jammed/UpdateID are not.
 #include <cstdio>
-struct CTCBase;
-struct CTCDoor {
+class CTCBase;
+class CTCDoor { public:
     void* __vftable; long m4; unsigned char _pad_0x08[0x4]; long Jammed;
     bool CurrentOpen; bool OldOpen; bool Opening; bool Closing;
     long LastCreatureFoundWF; long UpdateID; unsigned char TriggerType[0x4]; void* PDef_Object;

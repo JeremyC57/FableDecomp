@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_strCtor = 0, g_strDtor = 0; static const char* g_strText = 0;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length) : PStringData((void*)text) { ++g_strCtor; g_strText = text; CHECK(length == -1); }
     ~CCharString() { ++g_strDtor; }
@@ -23,11 +23,11 @@ struct CLongVector {
     unsigned long size() const { return _M_finish - _M_start; }
     const long& operator[](unsigned long n) const { return _M_start[n]; }
 };
-struct CCreatureDef : CDefBase {
+class CCreatureDef : public CDefBase { public:
     unsigned char _pad_0x08[0x4C];
     CLongVector   InitialAppearanceModifiers;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
 };
 template <class T> struct CDefHolder {
@@ -37,7 +37,7 @@ template <class T> struct CDefHolder {
     T* operator->() const { return m_p; }
 };
 static CCreatureDef* g_creatureDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CCreatureDef>* out)
     {
         ++g_getSubDef;
@@ -46,29 +46,29 @@ struct CDefClassBase {
     }
 };
 static int g_nameLookups = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { ++g_nameLookups; CHECK(strcmp((const char*)name.PStringData, "OBJECT_HERO_HORNS") == 0); return 999; }
 };
 static CDefinitionManager g_manager;
 static int g_setChanged = 0; static unsigned long g_changedFlags = 0;
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAsChanged(unsigned long flags) { ++g_setChanged; g_changedFlags = flags; }
 };
 }
 static NGraphicAppearance::CTCGraphicAppearance g_graphic;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;
     unsigned char _pad68[0x08];
     CDefClassBase* PDef;
 };
 static long g_frame = 1234;
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame() { return g_frame; }
 };
 static CWorld g_world;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool    ToBeRemoved;
@@ -77,7 +77,7 @@ struct CTCBase {
     CDefinitionManager* GetDefinitionManager() const { return &g_manager; }
 };
 static int g_added = 0; static long g_addedIndex[8]; static int g_hidMods = 0, g_hidMats = 0, g_gfx = 0;
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void*         __vftable_0c;
     unsigned long FrameLastChanged;
     bool Changed : 1;

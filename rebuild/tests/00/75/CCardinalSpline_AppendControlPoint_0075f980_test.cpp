@@ -33,9 +33,9 @@ public:
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CRetailVector<C3DVector> ControlPoints;
     long AppendControlPoint(const C3DVector& point)
     {

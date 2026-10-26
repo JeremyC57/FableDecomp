@@ -11,8 +11,8 @@
 // Layout: engine/CAIStateGroup_MinionSleep.h flattens the base (pads only); Ego_r.pdb puts CAIStateGroup_GoToBed (0x60 bytes,
 // PBed +0x14, BedPos +0x3c) under it, so the class is modelled locally with those PDB members.
 #include <math.h>
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;     // 0x004365B0 (byte twin, the const instantiation)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -72,22 +72,22 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
 
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     unsigned __int64 UID;
     CMessageEventFilter_IsOriginatedByThing(const CThing* thing);    // 0x006AF290
 };
 
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
@@ -96,33 +96,33 @@ template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, con
 
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing> COriginFilter;
 
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const COriginFilter& filter);   // 0x008D46D0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
 };
 
 struct CTCVillager;
-struct CTCVillage;
+class CTCVillage;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
 struct CMode {
     virtual void v00();
     virtual long GetModeType();                 // slot 1
 };
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     CMode* GetCurrentMode();                    // 0x0073A6E0
 };
 struct CTCModeManager42 {                       // interface 0x42
     bool IsModeActive(unsigned long type) const;    // 0x00811340
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

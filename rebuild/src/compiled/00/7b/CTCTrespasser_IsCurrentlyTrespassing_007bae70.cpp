@@ -67,13 +67,13 @@ struct CTCBuildingLocation {                    // the owner's interface-117 com
     unsigned char _pad_0x00[0xc];
     CBaseIntelligentPointer PBuilding;          // +0x0c
 };
-struct CTCTrespassable {
+class CTCTrespassable { public:
     unsigned char _pad_0x00[0xc];
     bool Trespassable;                          // +0x0c
     bool IsBeingTrespassedIn;                   // +0x0d
 };
 
-struct CTCTrespasser {
+class CTCTrespasser { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool IsCurrentlyTrespassing();

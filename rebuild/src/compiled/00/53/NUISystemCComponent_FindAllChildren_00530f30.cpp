@@ -18,7 +18,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);            // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                                      // +0x00
     unsigned long m_length;                                     // +0x04
 };

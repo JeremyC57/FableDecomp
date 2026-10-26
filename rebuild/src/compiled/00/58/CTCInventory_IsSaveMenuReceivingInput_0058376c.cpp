@@ -7,8 +7,8 @@
 // Local model: the CTCInventory screen vector sits at +0x0c (retail); no engine/ header declares these members.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);       // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -36,7 +36,7 @@ struct CScreenVector {
     unsigned long size() const { return (unsigned long)(last - first); }
     CMenuScreen*& operator[](unsigned long n) const { return first[n]; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char _pad[0x0c];
     CScreenVector Screens;
     bool IsSaveMenuReceivingInput();

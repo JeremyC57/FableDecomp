@@ -10,10 +10,10 @@
 //   CTCSolidToThing::AddThingNotSolidTo 0x00770FA0.
 // Layout: retail CCombatActionBase is 0x114 bytes (landed WhisperSommersaultForward::Initialise 0x008C0820); the flag
 //   at +0x114 is this class's first member; PTarget +0xa8; CThing interface bitset +0x20, map +0x44.
-struct CThing;
-struct CTCBase;
-struct CTCParamsBase;
-struct C3DVector {
+class CThing;
+class CTCBase;
+class CTCParamsBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -21,7 +21,7 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector operator+(const C3DVector& o) const { C3DVector r; r.X = X + o.X; r.Y = Y + o.Y; r.Z = Z + o.Z; return r; }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -39,13 +39,13 @@ struct CTCFacing {                                    // interface 2
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing() const;              // slot 70 (+0x118)
 };
-struct CTCCreatureNavigation {                        // interface 7
+class CTCCreatureNavigation { public:                        // interface 7
     bool IsPosNavLineOfSightTo(const C3DVector& pos); // 0x006CBA20
 };
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing);           // 0x00770FA0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -68,7 +68,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                  // +4
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();                        // 0x00857520
     unsigned char _pad04[4];
@@ -79,7 +79,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_LeapLong : CCombatActionBase {
+class CCreatureAction_LeapLong : public CCombatActionBase { public:
     bool NoRoom;                                      // +0x114
     virtual void Initialise();
 };

@@ -16,7 +16,7 @@ struct CPixelFormatFromD3D {
     unsigned long GetColourDepth() const { return FormatIndex == 21 ? 32 : FormatIndex == 23 ? 16 : 8; }
     unsigned long GetByteColourDepth() const { return GetColourDepth() / 8; }
 };
-struct CSurface {
+class CSurface { public:
     void* __vftable;
     IDirect3DSurface9* PD3DSurface;
     unsigned long AllocationSource;

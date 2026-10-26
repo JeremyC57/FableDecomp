@@ -5,7 +5,7 @@
 #endif
 static int g_destroyed = 0;
 static void* g_last = 0;
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString() { ++g_destroyed; g_last = m_pData; }
 };

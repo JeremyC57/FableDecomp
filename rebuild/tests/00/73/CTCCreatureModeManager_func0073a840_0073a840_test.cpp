@@ -22,7 +22,7 @@ struct CModeList_Retail {
     bool empty() const { return node->next == node; }
     CModeBase_Retail* front() const { return node->next->data; }
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     unsigned char _pad_0x00[0x0c];
     CModeList_Retail PModes;
     void func_0073a840();

@@ -1,32 +1,32 @@
 // Behaviour test for 0x00A2E9A0 C3DMeshVolume::C3DMeshVolume(const C3DMeshFileVolumeChunk&, CMovableResourceMemoryPool*)
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char m_text[16];
     CCharString() { m_text[0] = 0; }
     CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
 };
-struct CPlane { float A, B, C, D; };
-struct CMovableResourceMemoryPool { int id; };
-struct CContainmentVolume {
+class CPlane { public: float A, B, C, D; };
+class CMovableResourceMemoryPool { public: int id; };
+class CContainmentVolume { public:
     const CPlane* planes; unsigned long count; CMovableResourceMemoryPool* pool;
     CContainmentVolume() : planes(0), count(0), pool(0) {}
     bool Initialise(const CPlane* p, unsigned long n, CMovableResourceMemoryPool* m) { planes = p; count = n; pool = m; return true; }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* m_pObject; void* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
     ~CCountedPointer() { delete m_pObject; }
     void Reset(T* o) { delete m_pObject; m_pObject = o; }
     T* operator->() const { return m_pObject; }
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T* GetData() const { return Size() > 0 ? m_begin : (const T*)this; }
 };
 struct C3DMeshFileVolumeChunk { CCharString Name; CArray<CPlane> Planes; };
-struct C3DMeshVolume {
+class C3DMeshVolume { public:
     CCharString Name; CCountedPointer<CContainmentVolume> ConvexVolume;
     C3DMeshVolume(const C3DMeshFileVolumeChunk& chunk, CMovableResourceMemoryPool* pool)
     {

@@ -7,7 +7,7 @@
 // Layout: CModeBase: ParentThing +4, Active +0x18; the component's flag byte +0x50 bit 0.
 // Shape: the GetInterface result IS tested (the absent arm skips the flag store); the parent is reloaded after the
 // Active store and `this` is dead from there (esi reused).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -15,7 +15,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 struct CModeBase;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                   // +0x10 (1 = player creature)
     unsigned char _pad11[0x0f];

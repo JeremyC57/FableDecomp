@@ -6,7 +6,7 @@
 #endif
 // shared behaviour model: STLport-shaped _Rb_tree<long, pair<const long, CFileBlock>> as reconstructed for 0x00BE05D0 /
 // 0x00BE0A50 / 0x00BE0B20 (the external _Rebalance / _Rebalance_for_erase are test stand-ins: no recolouring, plain BST splice)
-struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunction)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunction)(void* data); void* Data; };
 static int g_deleted = 0;
 static void __fastcall CountDelete(void*) { ++g_deleted; }
 template <class T> class CCountedPointer {
@@ -28,8 +28,8 @@ public:
     void Reset() { DeleteData(); Info = 0; Data = 0; }
     ~CCountedPointer() { DeleteData(); Data = 0; Info = 0; }
 };
-struct CBankFileAsyncData { int dummy; };
-struct CBankFileAsyncEntry { int dummy; };
+class CBankFileAsyncData { public: int dummy; };
+class CBankFileAsyncEntry { public: int dummy; };
 struct CFileBlock { long RefCount; bool LowPriority; CCountedPointer<CBankFileAsyncData> LoadingData; };
 struct Value { long first; CFileBlock second; };
 struct NodeBase { bool color; NodeBase* parent; NodeBase* left; NodeBase* right; };

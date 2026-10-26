@@ -1,10 +1,10 @@
 // Behaviour test for 0x008D5480 CCreatureAction_ReloadMissileWeapon::FinishAction: a live ammo thing is removed from the
 // carrier, killed and cleared, and the live weapon in the primary slot is marked loaded; the base FinishAction always runs.
 #include <cstdio>
-struct CThing;
-struct CTCWeapon { int loaded; void SetProjectileWeaponLoaded(bool l, CThing*) { loaded = l ? 1 : 0; } };
-struct CTCCarrying { CThing* removed; CThing* primary; void RemoveThing(CThing* t) { removed = t; } CThing* GetThingInPrimarySlot() { return primary; } };
-struct CThing {
+class CThing;
+class CTCWeapon { public: int loaded; void SetProjectileWeaponLoaded(bool l, CThing*) { loaded = l ? 1 : 0; } };
+class CTCCarrying { public: CThing* removed; CThing* primary; void RemoveThing(CThing* t) { removed = t; } CThing* GetThingInPrimarySlot() { return primary; } };
+class CThing { public:
     bool dead; bool killed; bool hasCarrying; CTCCarrying carrying; bool hasWeapon; CTCWeapon weapon;
     void Kill(bool) { killed = true; }
     bool GetCarrying(CTCCarrying** out) { if (!hasCarrying) return false; *out = &carrying; return true; }

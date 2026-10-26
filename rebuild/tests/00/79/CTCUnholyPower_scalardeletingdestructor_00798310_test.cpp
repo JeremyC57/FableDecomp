@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCUnholyPower {
+class CTCUnholyPower { public:
     void* vftable;
     int destroyed;
 };

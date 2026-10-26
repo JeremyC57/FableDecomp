@@ -9,10 +9,10 @@
 // ParentClass +0x14 (CV_StatueMasterScript*), PMasterData +0x18.
 // Shape: both arms run the abort test (the statue-at-3 arm only tests it, so it becomes the sibling-call `jmp`);
 // `this` is moved into ecx before the branch for both calls.
-struct CScriptThing {                             // 8 bytes at +8 of the script object
+class CScriptThing { public:                             // 8 bytes at +8 of the script object
     unsigned char _body[8];
 };
-struct CGameScriptInterface {                      // the quest's script interface (slots from ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // the quest's script interface (slots from ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

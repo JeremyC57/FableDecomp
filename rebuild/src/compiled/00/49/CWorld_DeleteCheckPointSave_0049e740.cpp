@@ -14,18 +14,18 @@
 #include "engine/CWorld.h"
 
 typedef unsigned short wchar16;                    // wchar_t under the era defaults
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);         // 0x0099B720
     ~CWideString();                                // 0x0099B510
 };
 CWideString __fastcall operator+(const CWideString& left, const wchar16* right);       // 0x0099BF30
 
-struct CAFile {
+class CAFile { public:
     static bool __fastcall PathExists(const CWideString& path);                        // 0x00999230
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWideString GetAutoSaveCheckPointPathName() const;                                 // 0x00408040
 };
 
@@ -35,12 +35,12 @@ struct CTBaseSingleton {
 };
 
 enum EDriveReturn { DRIVE_OK };
-struct CDriveManager {
+class CDriveManager { public:
     EDriveReturn DeleteFile(const CWideString& path);                                  // 0x009E4BC0
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T*    Data;                                    // +0
     void* Info;                                    // +4 count block
     T* operator->() const { return Data; }

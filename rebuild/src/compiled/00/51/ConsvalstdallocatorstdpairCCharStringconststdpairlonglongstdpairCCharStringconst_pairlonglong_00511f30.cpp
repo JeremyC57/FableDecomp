@@ -12,7 +12,7 @@
 // placement-new declaration (must precede use)
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     void* p;
     // copy ctor -> engine 0x0099ec30 (declared, not defined; matched as call)
     CCharString(const CCharString& o);

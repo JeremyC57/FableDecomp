@@ -6,7 +6,7 @@
 // extern callee with a matching __fastcall(this, src) signature that we
 // tail-call produces the identical `jmp rel32` byte pattern.
 
-struct CSpecialAbilitiesHealLifeDef;
+class CSpecialAbilitiesHealLifeDef;
 
 // The forwarded-to implementation (e.g. a base-class / shared Copy).
 // Declared extern; its address is relocation-masked at compare time.

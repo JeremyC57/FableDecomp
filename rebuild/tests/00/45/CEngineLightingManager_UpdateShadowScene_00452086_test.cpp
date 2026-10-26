@@ -19,7 +19,7 @@ struct CShadowSceneTarget {
     void Apply(void* a) { g_apply++; g_apply_self = this; g_apply_a = a; }
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad[0x18];
     int mode;      // +0x18
     char pad2[0x24 - 0x1c];

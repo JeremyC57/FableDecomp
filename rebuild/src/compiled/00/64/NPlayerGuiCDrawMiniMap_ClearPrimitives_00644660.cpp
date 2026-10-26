@@ -9,7 +9,7 @@
 // Shape: /Os TU without a frame pointer (`optimize("s",on)`; the unaligned NPlayerGui module): the dropped functor result
 // lives in the one `push ecx` frame word whose address is the hidden result pointer, `pop ecx ; ret`.
 #pragma optimize("s", on)
-struct CEnginePrimitiveHandle {                    // 8 bytes: vptr + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // 8 bytes: vptr + counted primitive pointer
     void* _vtable;
     void* m_pPrimitive;
     void Clear();                                  // 0x0041BE70
@@ -40,7 +40,7 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
     CEnginePrimitiveHandle* end() { return m_pLast; }
 };
 
-struct CDrawMiniMap {
+class CDrawMiniMap { public:
     virtual void ClearPrimitivesIfNecessary();     // slot 0
     virtual void ClearPrimitives();                // slot 1
     unsigned char       _base04[0x18 - 4];         // CDrawBase: PlayerGui .. Bank

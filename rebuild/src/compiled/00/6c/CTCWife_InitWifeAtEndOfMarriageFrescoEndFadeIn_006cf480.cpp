@@ -12,19 +12,19 @@
 //        ternary (the component lands straight in ecx) into the shared key word; AddMoney gets the re-read Dowry and true.
 //        The early return on a null owner def skips the release because the sub-def is known null.
 // Layout: CTCWife ParentThing +0x04; CThing PDef +0x70; CWifeDef Dowry +0x28 (PDB 40).
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
 };
-struct CWifeDef : CDefPointeeBase {
+class CWifeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long Dowry;                                 // +0x28
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CWifeDef** out); // 0x006D3DC0
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -66,16 +66,16 @@ public:
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void AddMoney(long amount, bool showMessage);   // 0x0057B327
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing* ParentThing;                         // +0x04
     CPlayerManager* GetPlayerManager();          // 0x00686D40 (CTCBase)

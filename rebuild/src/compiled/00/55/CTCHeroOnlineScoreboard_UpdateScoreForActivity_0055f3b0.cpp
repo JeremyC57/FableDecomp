@@ -11,8 +11,8 @@
 // the number temporary first, the literal in the dead flag slot, both destroyed before the store) that dies after
 // the new best is stored.
 // Layout: retail CTCHeroOnlineScoreboard LocalScoreboard map at +0x1C (PDB +0x20; 12-byte STLport maps).
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
@@ -35,7 +35,7 @@ struct CScoreMap {                                   // std::map<EOnlineScoreboa
     float& operator[](const EOnlineScoreboardActivity& key);       // 0x005692B0
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad_0x04[0x18];
     CScoreMap     LocalScoreboard;                   // +0x1C (PDB +0x20)

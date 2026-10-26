@@ -12,7 +12,7 @@ struct SVertexBufferNode_00bdd8e0 {
 
 struct CVertexBufferChainOwner_00bdd8e0;
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void DisposeVertexBuffer(SVertexBufferNode_00bdd8e0* node, CVertexBufferChainOwner_00bdd8e0* owner);   // 0x00BD9AB0
 };
 

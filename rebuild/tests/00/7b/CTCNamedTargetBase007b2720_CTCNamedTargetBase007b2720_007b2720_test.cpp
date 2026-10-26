@@ -3,9 +3,9 @@
 static int g_order[8], g_n, g_deleted;
 struct CCountedObject { long m_refCount; void Delete() { ++g_deleted; } };
 struct CCountedPointer { CCountedObject* m_pObject; ~CCountedPointer() { CCountedObject* o = m_pObject; if (o) { if (--o->m_refCount == 0) o->Delete(); m_pObject = 0; } g_order[g_n++] = 1; } };
-struct CCharString { void* d; ~CCharString() { g_order[g_n++] = 2; } };
+class CCharString { public: void* d; ~CCharString() { g_order[g_n++] = 2; } };
 struct CBaseIntelligentPointer { void* p; ~CBaseIntelligentPointer() { g_order[g_n++] = 3; } };
-struct CTCBase { ~CTCBase() { g_order[g_n++] = 4; } };
+class CTCBase { public: ~CTCBase() { g_order[g_n++] = 4; } };
 struct X : CTCBase { CBaseIntelligentPointer m_pTarget; CCharString m_name; CCountedPointer m_pAction; ~X() {} };
 int main()
 {

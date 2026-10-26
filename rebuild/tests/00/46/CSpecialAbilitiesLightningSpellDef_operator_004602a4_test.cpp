@@ -2,15 +2,15 @@
 
 static int g_baseCopies = 0;
 static int g_vectorCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual ~CParentDefClassBase() {}
     int m_base;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { m_base = o.m_base; ++g_baseCopies; return *this; }
 };
 struct CFloatVector { int m_payload; CFloatVector& operator=(const CFloatVector& o) { m_payload = o.m_payload; ++g_vectorCopies; return *this; } };
 struct CLongVector { int m_payload; CLongVector& operator=(const CLongVector& o) { m_payload = o.m_payload; ++g_vectorCopies; return *this; } };
-struct CDefString { long m_index; };
-struct CSpecialAbilitiesLightningSpellDef : CParentDefClassBase {          // vtable 0x0123460C
+class CDefString { public: long m_index; };
+class CSpecialAbilitiesLightningSpellDef : public CParentDefClassBase { public:          // vtable 0x0123460C
     CFloatVector m_faAreaEffect;
     CFloatVector m_faDamagePerHit;
     CFloatVector m_faSubBeamDamagePerHit;

@@ -16,7 +16,7 @@
 //   and the acceleration is a named `offset * f` vector in the master position's frame words.
 extern long g_framesPerSecond;                  // 0x01375550
 extern float g_CoopSpiritAttractionDelay;       // 0x0137EA20 (3.0f)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -25,14 +25,14 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     float GetLength() const;                    // 0x00A14480
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -53,14 +53,14 @@ struct CThing {
     }
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
 class CPlayer {
 public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

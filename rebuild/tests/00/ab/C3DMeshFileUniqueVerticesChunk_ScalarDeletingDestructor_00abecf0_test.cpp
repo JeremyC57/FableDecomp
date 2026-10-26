@@ -3,7 +3,7 @@
 static int g_freed, g_base; static void* g_freedPtr;
 void MyFree(void* p) { ++g_freed; g_freedPtr = p; }
 struct CArrayULong { unsigned long* m_pData; long m_count, m_capacity; ~CArrayULong() { if (m_pData != 0) MyFree(m_pData); } };
-struct CChunkedFileChunk { virtual ~CChunkedFileChunk() { ++g_base; } };
+class CChunkedFileChunk { public: virtual ~CChunkedFileChunk() { ++g_base; } };
 struct Chunk : CChunkedFileChunk { CArrayULong UniqueVerticesList; virtual ~Chunk() {} };
 int main()
 {

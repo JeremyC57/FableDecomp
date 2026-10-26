@@ -40,12 +40,12 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const { return Compare(PData, text) ? false : true; }   // 0x004115A0 (inlined here)
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                         // 0x0099EAE0
     bool operator==(const char* text) const
@@ -56,7 +56,7 @@ struct CCharString {
     }
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
-struct CScriptThing {                                   // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                   // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();
     virtual void v01() const; virtual void v02() const;
     virtual CCharString GetDataString() const;          // slot 3 (+0x0c)
@@ -64,7 +64,7 @@ struct CScriptThing {                                   // vtable 0x01238C8C, 12
     void* PImp_Info;                                    // +0x08
 };
 float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) CGameScriptInterface::NewScriptFrame @ 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

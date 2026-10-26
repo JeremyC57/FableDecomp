@@ -11,13 +11,13 @@
 // Shape: `and esp,-8` frame for the double locals; the zeroed C3DVector movement and the two GetPos reads (member-wise integer copies
 //   into a default-constructed C2DVector) sit before the loop; the start time is read through the node (`fld [edi+3Ch]`), the rest
 //   through the event reference (esi).
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -35,7 +35,7 @@ enum EInputEventType {
     INPUT_EVENT_EXTRA_BUTTON_HELD_4
 };
 
-struct CInputEvent {                                // 0x34 bytes (PDB)
+class CInputEvent { public:                                // 0x34 bytes (PDB)
     unsigned char _body[0x28];
     long          Type;                            // +0x28
     float         CurrentTime;                     // +0x2c
@@ -47,7 +47,7 @@ struct CInputEvent {                                // 0x34 bytes (PDB)
     void SetAsMiddleMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime); // 0x00A03E70
     void SetAsExtraMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime, long button); // 0x00A03F20
 };
-struct CMaintainedEvent {
+class CMaintainedEvent { public:
     long        m_0;
     CInputEvent Event;                             // +0x04
 };

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9ECF0, length 86 bytes.
 // Callees: the quest interface's virtual slot 451 (+0x70c, (CScriptThing*, const CScriptThing*)), the count block's destroy (+4, the object at +8 in ecx), operator delete @ 0x00BFE9BC. Shape: the argument in edi, its block in ebx and its object in edi read before the compare, the object stored before the block, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CThing;
+class CThing;
 struct SCountBlock {                               // the shared count block of a CCountedPointer
     long m_references;                             // +0x00
     void (__fastcall* m_pfnDestroy)(CThing*);      // +0x04
@@ -31,7 +31,7 @@ struct CCountedPointer_CThing {                    // {object, count block}
         return *this;
     }
 };
-struct CScriptThing {                              // 12 bytes: vptr, CCountedPointer<CThing> PImp
+class CScriptThing { public:                              // 12 bytes: vptr, CCountedPointer<CThing> PImp
     virtual void v00();
     CCountedPointer_CThing PImp;                   // +0x04
 };

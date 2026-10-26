@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_gets = 0;
-struct CThing {};
+class CThing { public:};
 struct CBaseIntelligentPointer {
     void* m_a; void* m_b;
     CThing* GetPItem() const { ++g_gets; return (CThing*)m_b; }

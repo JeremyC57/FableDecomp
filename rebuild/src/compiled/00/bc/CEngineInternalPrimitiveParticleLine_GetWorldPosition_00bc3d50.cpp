@@ -3,7 +3,7 @@
 // Callees: none. Constant 0.5 (0x0122F59C). Shape: the three sums are built into a 12-byte local (Z parked at +0x14), the scaled vector is a second, named local
 // (+0 .. +0x8) copied word by word into the argument (the implicit bitwise assignment through ecx/edx), `mov al,1` is the bool. The two vectors have no PDB
 // layout for this class and are modelled locally.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

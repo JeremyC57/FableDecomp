@@ -10,7 +10,7 @@
 // placement copy; the __false_type tag temporary lands in the dead `key` argument slot.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_references;                             // +0
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8

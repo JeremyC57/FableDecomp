@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     unsigned long __fastcall PeekSceneFilterFlags();
 };
 

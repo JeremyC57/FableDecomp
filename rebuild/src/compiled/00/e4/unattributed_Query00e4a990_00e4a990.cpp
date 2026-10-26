@@ -9,7 +9,7 @@
 // polymorphic member embedded at +0x8 with it, keeps the bool result in bl across the
 // string's destructor, and on success sets the byte flag at +0x4e of the object at
 // +0x14. Unnamed in the manifest (gap scan). One of 12 bodies of this shape.
-struct CCharString {                     // one pointer; the default length makes the literal convert implicitly (re-addressed with lea, GOTCHAS)
+class CCharString { public:                     // one pointer; the default length makes the literal convert implicitly (re-addressed with lea, GOTCHAS)
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                        // 0x0099EAE0

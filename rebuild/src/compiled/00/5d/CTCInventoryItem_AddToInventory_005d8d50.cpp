@@ -9,17 +9,17 @@
 // Shape: the owner thing is read into a local that dies at the call (so it is loaded into eax before the four pass-through
 // arguments are re-pushed as dwords through ecx), later uses re-read the member; the result rides in bl (`xor bl,bl` / `mov bl,1`);
 // both arms end in their own Kill + epilogue (the persistent arm falls out of the `if`, the other arms share the tail).
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
     virtual void v00();
 };
 namespace NTCMessages {
-struct CMessageOnPickup : CBaseClass {             // vtable 0x012554E0
+class CMessageOnPickup : public CBaseClass { public:             // vtable 0x012554E0
     virtual void v01();                            // slot 1 @ 0x005D8CB0
 };
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x92];
     unsigned char DeletedOnOwnerLevelOutOfScope : 1;   // +0x92 bit 0
     unsigned char Drawable : 1;
@@ -57,7 +57,7 @@ struct CTCInventoryBase {
     virtual void v75(); virtual void v76(); virtual void v77(); virtual void v78(); virtual void v79();
     virtual bool AddItemToInventory(CThing* thing, bool a, bool b, long c, bool d);   // slot 80 (+0x140)
 };
-struct CTCInventoryItem {                              // CTCBase-derived (engine/CTCInventoryItem.h offsets)
+class CTCInventoryItem { public:                              // CTCBase-derived (engine/CTCInventoryItem.h offsets)
     void*             __vftable;                       // +0x00
     CThing*           ParentThing;                     // +0x04
     long              field8;                          // +0x08

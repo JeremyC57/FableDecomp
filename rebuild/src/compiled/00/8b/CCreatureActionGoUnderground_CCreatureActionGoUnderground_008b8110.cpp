@@ -8,15 +8,15 @@
 //   feeds the base constructor, the string dies after it; then a scoped named CCharString for the animation (its
 //   constructor pushes are scheduled above the vtable store, GOTCHAS family wave) and the setter call.
 // Layout: engine/CCreatureAction_GoUnderground.h is the PDB build; this constructor touches no member of its own.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCharString {                        // one pointer; the defaulted length makes a literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length makes a literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CSoundPair {                         // user constructor: the 8-byte result comes back through the hidden pointer
+class CSoundPair { public:                         // user constructor: the 8-byte result comes back through the hidden pointer
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -24,14 +24,14 @@ struct CSoundPair {                         // user constructor: the 8-byte resu
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);                                           // 0x008574D0
 };
 
-struct CCreatureAction_GoUnderground : CCombatActionBase {   // vtable 0x0127A894
+class CCreatureAction_GoUnderground : public CCombatActionBase { public:   // vtable 0x0127A894
     virtual void v00();
     CCreatureAction_GoUnderground(CThingCreatureBase* owner);
 };

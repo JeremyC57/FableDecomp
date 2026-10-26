@@ -19,7 +19,7 @@ public:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {};
 void __fastcall GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>* pointer);   // 0x0088AFF0
 
-struct COpinionDeed {
+class COpinionDeed { public:
     unsigned char _pad00[0x18];
     CIntelligentPointer<CThing> PThing;         // +0x18
 };
@@ -62,7 +62,7 @@ struct COpinionDeedMap {                        // STLport map<long, COpinionDee
     CDeedMapIterator begin() { return CDeedMapIterator(_M_header->_M_left); }
     CDeedMapIterator end() { return CDeedMapIterator(_M_header); }
 };
-struct CWitnessesSearchingDeed {
+class CWitnessesSearchingDeed { public:
     long Handle;                                // +0x00
     long Frame;                                 // +0x04
     CIntelligentPointer<CThing> PThing;         // +0x08

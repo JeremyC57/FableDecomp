@@ -44,7 +44,7 @@ struct CComponentListMap { void* _M_header; unsigned long _M_node_count; long _M
 struct CLongLongMap { void* _M_header; unsigned long _M_node_count; long _M_key_compare; ~CLongLongMap(); };               // 0x004DD2B1
 struct CComponentStringMap { void* _M_header; unsigned long _M_node_count; long _M_key_compare; ~CComponentStringMap(); }; // 0x005B2847
 struct CComponentMap { void* _M_header; unsigned long _M_node_count; long _M_key_compare; ~CComponentMap(); };             // 0x005B21F4
-struct CWideString { void* m_pData; ~CWideString(); };                                                         // 0x0099B510
+class CWideString { public: void* m_pData; ~CWideString(); };                                                         // 0x0099B510
 
 namespace NInventory {
 class CTCInventoryBase {                                      // retail sizeof 0x130

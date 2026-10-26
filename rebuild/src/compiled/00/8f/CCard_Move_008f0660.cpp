@@ -9,7 +9,7 @@
 // Moving; then NewLocalPos takes the target and MoveFraction restarts at 0 (an immediate dword store of 0.0f).
 // The vector copies are plain 12-byte POD assignments.
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 class CCard {

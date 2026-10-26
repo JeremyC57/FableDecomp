@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCWobble {
+class CTCWobble { public:
     unsigned char _body[0x30];       // sizeof(CTCWobble) = 0x30
     CTCWobble(long owner);                   // 0x004D61CA
 };

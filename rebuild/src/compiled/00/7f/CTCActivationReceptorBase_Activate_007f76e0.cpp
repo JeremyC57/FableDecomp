@@ -1,4 +1,4 @@
-struct CTCActivationReceptorBase {
+class CTCActivationReceptorBase { public:
     char pad0[0x0c];
     unsigned char Activated;   // +0x0c
     char pad1[0x20 - 0x0d];

@@ -19,9 +19,9 @@
 class CThing;
 class CThingObject;
 class CBaseObject;
-struct CRightHandedSet;
+class CRightHandedSet;
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CCharString {
 public:
     void* m_pData;
@@ -41,7 +41,7 @@ public:
                                            const CCharString& scriptName);   // 0x00703210
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -56,7 +56,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CThing* item);                        // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtables 0x0125A858 / 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtables 0x0125A858 / 0x01238C6C
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
@@ -97,7 +97,7 @@ struct CGiveItemVector {                                // STLport vector<pair<l
     const SGiveItem& operator[](unsigned int n) const { return _M_start[n]; }
 };
 
-struct CTCHeroReceiveItems : CTCBase {
+class CTCHeroReceiveItems : public CTCBase { public:
     CItemList Items;                                    // +0x0c
     unsigned char PickedUpItems[0xc];                   // +0x10 STLport vector<long>
     CIntelligentPointer<CThingObject> PCurrentItem;     // +0x1c

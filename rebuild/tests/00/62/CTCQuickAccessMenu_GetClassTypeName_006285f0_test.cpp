@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     int d;
     CCharString(const char* s, int n);
 };
 
 char kActionStr[] = "DoCreatureAction";
 
-struct CTCQuickAccessMenu {
+class CTCQuickAccessMenu { public:
     int x;
     CCharString GetClassTypeName();
 };

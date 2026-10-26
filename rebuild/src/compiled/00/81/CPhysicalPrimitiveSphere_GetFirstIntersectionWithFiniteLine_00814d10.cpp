@@ -10,21 +10,21 @@
 // Shape: the radius stays on the x87 stack (`fcom` without pop; the then-arm drops it with `fstp st(0)`); the thing's
 // radius reads the def radius first and replaces it by the creature's combat radius under the flag (an inline
 // GetPhysicsRadius); the CSphere temporary takes the radius then the centre; the sixth argument is unused; `ret 18h`.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 struct CThingDef_Physics {                         // the thing's definition (only the collision radius is read)
     unsigned char _pad[0x34];
     float         CollisionRadius;                 // +0x34
 };
-struct CThing {
+class CThing { public:
     unsigned char      _pad00[0x60];
     CThingDef_Physics* m_pDef;                     // +0x60
     unsigned char      _pad64[0x08];
     unsigned char      m_flags;                    // +0x6c (bit 3: a creature)
     float GetPhysicsRadius();
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     float GetCombatRadius();                       // 0x00661F90
 };
 inline float CThing::GetPhysicsRadius()
@@ -40,7 +40,7 @@ struct CSphere {
     CSphere(float radius, const C3DVector& base) : Radius(radius), Base(base) { }
     bool GetFirstIntersectionWithFiniteLine(const C3DVector& start, const C3DVector& end, C3DVector* point, C3DVector* normal) const;   // 0x00A58790
 };
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CPhysicalPrimitiveSphere {
     virtual void v00();
     CDefString BaseName;                           // +0x04

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessPhotojournalCapture {
+class CInputProcessPhotojournalCapture { public:
     void* vftable;
     int destroyed;
 };

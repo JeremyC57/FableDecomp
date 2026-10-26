@@ -9,11 +9,11 @@
 // frame and loops while the wait reports 4, otherwise terminates and returns the wait's result; any other playback
 // result maps to 2 (played, result 0) or 3 (failed): `return r == 0 ? 2 : 3` is `xor ecx,ecx ; test ; setne cl ;
 // add ecx,2`. The two arguments ride in ebp/ebx (callee-saved) across the loop. Members from the engine header.
-struct CTCTalk {
+class CTCTalk { public:
     long PlayAISpeech(unsigned long text, bool allowNonPure, long layer, bool a, bool b);   // 0x006E3B30
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
     long AIAction_DoNothing();                  // 0x0097E200 (EAIActionReturn)
@@ -21,7 +21,7 @@ struct CAIStateGroupBase {
 };
 
 #pragma pack(push, 1)
-struct CAIStateGroup_OpinionReactionRoot : CAIStateGroupBase {
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     CTCTalk* PTCTalk;                           // +0x14
     long CurrentReactionType;                   // +0x18
     bool ReactionFlags[79];                     // +0x1c

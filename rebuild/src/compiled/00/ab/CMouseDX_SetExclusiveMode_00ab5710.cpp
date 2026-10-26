@@ -43,11 +43,11 @@ struct IDirectInput8W {
     virtual void __stdcall v02();
     virtual long __stdcall CreateDevice(const GUID& guid, IDirectInputDevice8W** device, void* outer);   // slot 3 (+0x0c)
 };
-struct CInputManagerDX {
+class CInputManagerDX { public:
     unsigned char   _pad00[0x80];
     IDirectInput8W* DInput;                         // +0x80
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad00[0x94];
     void*         WindowHandle;                     // +0x94
     void* GetWindowHandle() const { return WindowHandle; }

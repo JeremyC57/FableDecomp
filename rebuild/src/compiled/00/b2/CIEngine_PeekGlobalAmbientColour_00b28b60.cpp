@@ -5,7 +5,7 @@ struct CRGBAColour_00b28b60 {
     float R, G, B, A;
     CRGBAColour_00b28b60(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 };
-struct CIEngine {
+class CIEngine { public:
     CRGBAColour_00b28b60 PeekGlobalAmbientColour();
 };
 

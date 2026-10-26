@@ -20,11 +20,11 @@ struct CBaseIntelligentPointer {
     CThing* PItem;                          // +0x04
     ~CBaseIntelligentPointer();             // 0x00A01C10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
 };
-struct CAIStateGroupBase {
-    struct CAIFilterBase {                  // vtable 0x0128FD20
+class CAIStateGroupBase { public:
+    class CAIFilterBase { public:                  // vtable 0x0128FD20
         virtual bool operator()(CThing* thing) const;   // 0x00916A50
         ~CAIFilterBase() { }
     };

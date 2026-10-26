@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-struct C3DVector {
+class C3DVector { public:
     float x;
     float y;
     float z;
 };
 
-struct CEngineInternalPrimitiveDecal {
+class CEngineInternalPrimitiveDecal { public:
     char pad[0x54];
     C3DVector m_worldPosition;
 

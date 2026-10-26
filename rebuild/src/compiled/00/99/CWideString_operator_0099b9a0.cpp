@@ -1,5 +1,5 @@
 // CWideString::operator+=(wchar_t c) -- append one wide character: copy-on-write then the inline STLport append(1, c) (length check, grow to size + max(size, 1), fill, terminate); an empty string is created from {c, 0} unless c is 0
-// Leaf: ??YCWideString@@QAEABU0@G@Z
+// Leaf: ??YCWideString@@QAEABV0@G@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0099B9A0, 208 bytes incl. padding (ret 4). Manifest "CCharString::InsertChar" is
 //          propagated: the body is CWideString's (sibling of the landed operator+=(const CWideString&) 0x0099B8D0).
 // Callees: CWideString::MakeOwnCopyOfData @ 0x0099B560, basic_string<wchar_t>::_M_throw_length_error @ 0x0099C550,
@@ -40,12 +40,12 @@ struct CWideBasicString {
     static wchar_t* __fastcall UninitFillN(wchar_t* first, size_t n, const wchar_t& value);   // 0x005123A0
 };
 
-struct CWideStringData {
+class CWideStringData { public:
     CWideBasicString Data;   // +0x00
     long NoRefs;             // +0x0C
 };
 
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;   // +0x00
     void MakeOwnCopyOfData();       // 0x0099B560
     CWideStringData* AllocStringData(const wchar_t* text, long length);   // 0x0099B3C0

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CMessageEventThingFilter::TestThing (0x00C17820): same logic over a copy of the model.
-struct CThing { int valid; };
-struct CMessageEvent {
+class CThing { public: int valid; };
+class CMessageEvent { public:
     long m_type; CThing* m_pThing;
     CMessageEvent(CThing* thing) : m_type(0), m_pThing(thing) { }
 };

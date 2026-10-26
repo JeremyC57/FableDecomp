@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CNoise::CNoise @ 0x00F36BA0: the seed is cleared before the tables are built
-struct C2DVector { float x, y; };
+class C2DVector { public: float x, y; };
 static unsigned long g_seedSeen = 0xffffffff;
 class CNoise {
 public:

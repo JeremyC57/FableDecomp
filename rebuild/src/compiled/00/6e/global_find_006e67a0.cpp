@@ -6,7 +6,7 @@
 //          comparisons (count = (last-first)>>5 for 8-byte elements) then a switch on the 0..3 remaining elements.
 //          Each compare goes through the inline operator==(pointer, CBaseObject*): the by-value object argument is
 //          read through the reference into a register before the GetPItem call. Manifest label "CBaseIntelligentPointer::Find" is the propagated algorithm name.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {                    // 8 bytes
     CBaseObject* m_pItem;                           // +0x00

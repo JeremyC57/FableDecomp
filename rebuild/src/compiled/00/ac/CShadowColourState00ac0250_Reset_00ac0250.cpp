@@ -4,7 +4,7 @@
 // Shape: one `push ecx` frame slot holds each CRGBColour(0, 0, 0, 255) temporary in turn -- the inline four-channel Set stores R, G, B, A
 // into the D3DCOLOR byte order (+2, +1, +0, +3; the landed 0x005BA48A model) and the dword is reloaded into esi/edx for the member
 // store; the byte clear and the three word clears come from the shared zero register.
-struct CRGBColour {                                 // D3DCOLOR byte order
+class CRGBColour { public:                                 // D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { Set(r, g, b, a); }

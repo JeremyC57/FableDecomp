@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CBankStateBlock {
+class CBankStateBlock { public:
     int f0;
     int f4;
     int f8;

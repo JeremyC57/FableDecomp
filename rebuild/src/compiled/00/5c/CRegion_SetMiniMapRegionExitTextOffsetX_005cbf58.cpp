@@ -13,13 +13,13 @@
 // __cdecl helper at 0x4292c0: takes one pointer, returns a pointer.
 void* Region_ExitTextOffsetX_Alloc(void* old);
 
-struct CCharString
-{
+class CCharString
+{ public:
 	void* p;
 };
 
-struct CRegion
-{
+class CRegion
+{ public:
 	void* m0;
 
 	void SetMiniMapRegionExitTextOffsetX(CCharString* out, float unused);

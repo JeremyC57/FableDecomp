@@ -14,7 +14,7 @@ struct CLightningOrbDefPointer {                   // CDefPointer<CLightningOrbD
     const void* m_pDef;
 };
 
-struct CThingBaseDef {                             // counted def (CDefClassBase): vptr, count at +4
+class CThingBaseDef { public:                             // counted def (CDefClassBase): vptr, count at +4
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long m_count;                                  // +0x04
@@ -49,14 +49,14 @@ struct CTCGraphicAppearance {
     unsigned char m_updateFlags;                   // +0x59
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;    // +0x64
     unsigned char         _pad_0x68[0x70 - 0x68];
     CThingBaseDefPointer  PBaseDef;                // +0x70
 };
 
-struct CTCLightningOrb {
+class CTCLightningOrb { public:
     void*                   __vftable;             // +0x00 (CTCBase)
     CThing*                 m_pThing;              // +0x04 (CTCBase owner)
     unsigned char           _pad_0x08[0x1c - 0x08];

@@ -11,11 +11,11 @@
 // Layout: the landed CTCBurntEffect ctor 0x007CDFE0 (PDef +0x0c, CurTime +0x10, fade times +0x14..+0x1c, Effects +0x20).
 #include "engine/CTCBase.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, int length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -26,16 +26,16 @@ struct CEffectDef {
     long RefCount;                                    // +0x04
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) {}
     ~CDefPointer() { if (Data) { if (--Data->RefCount == 0) Data->Destroy(); } }
     T* operator->() const { return Data; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CEffectDef>* out);     // 0x00669580
 };
-struct CSpecialAbilitiesBurntEffectDef : CDefClassBase {
+class CSpecialAbilitiesBurntEffectDef : public CDefClassBase { public:
     unsigned char _pad00[0x3c];
     float FadeInTime;                                 // +0x3c
     float FadeOutTimeStart;                           // +0x40
@@ -49,7 +49,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                       // 0x00A01C10
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem(item); }
     virtual void v00();
 };
@@ -60,7 +60,7 @@ template <class T> struct CRetailVector {
     void push_back(const T& value);                   // 0x004AD520
 };
 struct CTCBaseX;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CInterfaceMap {
@@ -97,7 +97,7 @@ extern long g_FramesPerSecond;                        // 0x01375550
 extern const CCharString g_BurntHelperA;              // 0x013BAC30
 extern const CCharString g_BurntHelperB;              // 0x013BAC34
 
-struct CTCBurntEffect : CTCBase {
+class CTCBurntEffect : public CTCBase { public:
     CSpecialAbilitiesBurntEffectDef* PDef;            // +0x0c
     long CurTime;                                     // +0x10
     long FadeInTime;                                  // +0x14

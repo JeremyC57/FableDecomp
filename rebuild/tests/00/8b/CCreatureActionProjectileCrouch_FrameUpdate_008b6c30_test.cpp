@@ -29,7 +29,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -54,14 +54,14 @@ __forceinline float WrapAngle(float angle)
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     FILL10(0) FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5)
     virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65();
     virtual void SetFacingAngleXY(float turns);             // slot 66 (+0x108)
     virtual void v67(); virtual void v68(); virtual void v69();
     virtual C3DVector GetFacingVector();                    // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                              // +0x60
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
@@ -74,13 +74,13 @@ struct CBaseIntelligentPointer {
 };
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void FrameUpdate();                             // 0x00859D80
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                      // +0x08
     unsigned char           _pad10[0x114 - 0x10];
 };
-struct CCreatureAction_ProjectileCrouch : CCombatActionBase {
+class CCreatureAction_ProjectileCrouch : public CCombatActionBase { public:
     bool      TurnToFaceTarget;                             // +0x114 (PDB +0x12c)
     C3DVector FacePos;                                      // +0x115 (PDB +0x12d)
     virtual void FrameUpdate();

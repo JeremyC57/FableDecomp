@@ -11,9 +11,9 @@
 // 24 bytes) lives in the `sub esp,18h` frame; COpinionTransientOffset's inline default constructor zeroes its
 // members in the order Opinion, OffsetPerFrameRunIn, FramesToRunIn, OffsetPerFrameRunOut, FramesToRunOut,
 // FramesOfCappedPeak (retail stores +0,+4,+8,+10,+14,+0C through one `xor eax,eax`).
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 typedef long EOpinion;
 class COpinionTransientOffset {
@@ -41,7 +41,7 @@ template <class T> struct CPersistTraits {
     void TransferIn(CPersistContext& context, CStringParser& parser, T* value);   // 0x00686240 for COpinionTransientOffset
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

@@ -31,8 +31,8 @@ union CHandleInfo {                                // CHandleBasedMemoryPool::CH
     CHeader* Header;
     long     NextFree;
 };
-struct CFailedAllocationHandler;
-struct CHandleBasedMemoryPool {
+class CFailedAllocationHandler;
+class CHandleBasedMemoryPool { public:
     virtual void v00();
     virtual void MoveResource(void* resource, long handle, void* from, void* to, unsigned long size);   // slot 1 (+0x04)
     CHeader*                     Buffer;                     // +0x04

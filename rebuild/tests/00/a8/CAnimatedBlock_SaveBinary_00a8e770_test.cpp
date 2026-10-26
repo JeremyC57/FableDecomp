@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     unsigned char buf[64]; int pos;
     virtual ~CDataOutputStream() {}
     virtual void Write(const void* data, long size) { std::memcpy(buf + pos, data, size); pos += size; }

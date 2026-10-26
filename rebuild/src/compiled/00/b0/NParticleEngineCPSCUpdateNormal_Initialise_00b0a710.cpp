@@ -10,11 +10,11 @@
 // CPSCBase::Initialised is bit 1 of +8.
 // Shape: two bit-field copies into the system's flag byte (the second merged into the first's register),
 // then `Initialised = true` and the flag re-read for the result (`or al,2 ; shr al,1 ; and al,1`). `ret 10h`.
-struct CIEngine;
-struct CEnginePrimitiveHandle;
+class CIEngine;
+class CEnginePrimitiveHandle;
 namespace NParticleEngine {
-template <class A, class B> struct CParticleUpdateParameters;
-struct CParticleSystem {
+template <class A, class B> class CParticleUpdateParameters;
+class CParticleSystem { public:
     unsigned char _pad00[0x50];
     bool Initialised : 1;                          // +0x50 bit 0
     bool Enabled : 1;
@@ -30,25 +30,25 @@ struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 
-struct CPSCBase : CBaseClassNonCopyable {          // vtable 0x0129F3F4
+class CPSCBase : public CBaseClassNonCopyable { public:          // vtable 0x0129F3F4
     CParticleSystem* ParticleSystem;               // +0x04
     bool             UpdateStarted : 1;            // +0x08 bit 0
     bool             Initialised : 1;              // +0x08 bit 1
 };
 
-struct CPSCUpdateNormal : CPSCBase {               // vtable 0x0129FC1C
+class CPSCUpdateNormal : public CPSCBase { public:               // vtable 0x0129FC1C
     unsigned long FadeInEndInteger : 10;           // +0x0c
     unsigned long FadeOutBeginInteger : 10;
     unsigned long UseParticleLifeSecs : 1;

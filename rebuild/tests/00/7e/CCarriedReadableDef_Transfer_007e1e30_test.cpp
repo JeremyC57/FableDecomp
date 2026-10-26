@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CMemoryDataInputStream { long values[4]; int pos; };
-struct CDataOutputStream { long written[4]; int n; void WriteLong(long v) { written[n++] = v; } };
-struct CDefString { long TablePos; void ReadBinary(CMemoryDataInputStream* s) { TablePos = s->values[s->pos++]; } };
+class CMemoryDataInputStream { public: long values[4]; int pos; };
+class CDataOutputStream { public: long written[4]; int n; void WriteLong(long v) { written[n++] = v; } };
+class CDefString { public: long TablePos; void ReadBinary(CMemoryDataInputStream* s) { TablePos = s->values[s->pos++]; } };
 static int g_crc = 0;
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; CMemoryDataInputStream* LoadStream; CDataOutputStream* SaveStream;
     void CheckCRC(const char*) { ++g_crc; }
     void Transfer(CDefString& value)
@@ -15,7 +15,7 @@ struct CPersistContext {
         }
     }
 };
-struct CCarriedReadableDef {
+class CCarriedReadableDef { public:
     long TitleTextTag_TablePos, BodyTextTag_TablePos;
     void Transfer(CPersistContext& context)
     {

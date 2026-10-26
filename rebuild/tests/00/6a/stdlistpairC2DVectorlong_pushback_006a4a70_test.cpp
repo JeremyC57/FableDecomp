@@ -28,7 +28,7 @@ public:
     int size() const { int n = 0; for (_List_node_base* p = _M_node->_M_next; p != _M_node; p = p->_M_next) ++n; return n; }
     _Tp& at(int i) { _List_node_base* p = _M_node->_M_next; while (i--) p = p->_M_next; return ((_Node*)p)->_M_data; }
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct SPulse { C2DVector first; long second; };
 int main()
 {

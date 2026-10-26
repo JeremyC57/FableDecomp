@@ -2,7 +2,7 @@
 // Behaviour model of CTCPhysicsStandard::CalculateNoStepsForStepBasedMovement (0x008E52F0)
 static float g_fStepBasedMovementStepSize = 0.15f;
 static float g_fMinMovingSpeed = 1e-4f;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static void Calc(float distance, C3DVector* step, long* noSteps, long stepsTaken)
 {
     if (distance > g_fStepBasedMovementStepSize) {

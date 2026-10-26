@@ -1,6 +1,6 @@
 // Behaviour test for CDisplacementProcess::Process (0x00880D50): current = current * (1 - w) + entry colour * w.
 #include <cstdio>
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }

@@ -1,14 +1,14 @@
 // Behaviour test for CTCCreatureOpinionOfHero::InformOfDeed(long, bool) (0x00683590): no hero -> nothing; a known deed handle
 // forwards (type, handle, the type's effects def, flag) to the full InformOfDeed and releases the def reference afterwards.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -28,9 +28,9 @@ struct CThing {
     }
 };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetHeroCreature() { return g_hero; } };
+class CPlayer { public: CThing* GetHeroCreature() { return g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static CPlayerManager g_pm;
 struct CRefCounted {
     long m_count;
@@ -42,23 +42,23 @@ struct CDefVirtual {
     virtual void v00() { }
     virtual void Destroy() { ++g_destroyed; }
 };
-struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
+class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     long ForType;
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     explicit CDefPointer(T* object) : Object(object) { if (object) ++object->m_count; }   // test-only: built in the return slot
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
 };
-struct COpinionDeed { long Type; };
+class COpinionDeed { public: long Type; };
 static COpinionDeedEffectsDef g_effects;
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed Deed; long Handle;
     COpinionDeed* GetDeedFromHandle(long handle) { return handle == Handle ? &Deed : 0; }
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType) { g_effects.ForType = deedType; return CDefPointer<COpinionDeedEffectsDef>(&g_effects); }
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00() { }
     CThing* ParentThing;
     int Calls; long LastType, LastHandle; const COpinionDeedEffectsDef* LastEffects; bool LastFlag; long CountDuringCall;

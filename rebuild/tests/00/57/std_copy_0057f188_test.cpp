@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct E { const void* first; C3DVector second; };
 static E Make(int k) { E e; std::memset(&e, 0, sizeof e); e.first = (const void*)(size_t)(k * 16); e.second.X = (float)k; e.second.Y = k * 0.5f; e.second.Z = -k; return e; }
 static bool Same(const E& x, const E& y) { return std::memcmp(&x, &y, sizeof(E)) == 0; }

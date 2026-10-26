@@ -13,7 +13,7 @@ bool CThingChecker::CanThingBeSeen(void* a, void* b, int mode)
     return mode == 2 && a != b;
 }
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool CanThingBe_NearlySeen_ByOtherThing(void* thingA, void* thingB);
 };
 

@@ -12,7 +12,7 @@
 // temporary inside the loop gives the `and esp,-8` frame.
 // Layout: CBrainOutput from Ego_r.pdb (landed 0x00835620 / 0x006D60C0 models); the state group is local (the engine
 // header flattens the base), PEnemy +0x14.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
@@ -27,7 +27,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct SCountBlock {                            // the shared count block of a CCountedPointer
     long m_references;                          // +0x00
     void (__fastcall* m_pfnDestroy)(CCreatureActionBase*);   // +0x04
@@ -62,15 +62,15 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
         m_pObject = object;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CNavigationInput {                       // 24 bytes (Ego_r.pdb): Destination is left to the caller
+class C3DVector { public: float X, Y, Z; };
+class CNavigationInput { public:                       // 24 bytes (Ego_r.pdb): Destination is left to the caller
     C3DVector Destination;                      // +0x00
     float Proximity;                            // +0x0c (float zero stores are immediates, the long uses the zero register)
     long MovementType;                          // +0x10 EMovementType
     float Speed;                                // +0x14
     CNavigationInput() : Proximity(0.0f), MovementType(0), Speed(0.0f) { }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long                       Types;            // +0x00
     long                                LookFlags;        // +0x04
     CNavigationInput                    NavigationInput;  // +0x08
@@ -101,21 +101,21 @@ inline CBrainOutput::~CBrainOutput()
 {
 }
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsRegisteredCombatant();               // 0x00662410
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void SetAttackerAsReadyToAttack(CThingCreatureBase* attacker, bool ready);   // 0x006EA450
     bool Combat_CheckRingRangeToTarget(CThingCreatureBase* creature);           // 0x006E94D0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x4c];
     CCombatManager* CombatManager;              // +0x4c
     CCombatManager* GetPCombatManager() const { return CombatManager; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                       // slot 2 (+0x08)
     unsigned char _pad04[0x14];
@@ -123,7 +123,7 @@ struct CAIBrain {
     void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

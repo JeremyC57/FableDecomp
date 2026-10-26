@@ -22,13 +22,13 @@ static bool g_badName = false;          // a callee saw an unexpected name / arg
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_termFrame; }
 static void Reset() { g_live = 0; g_iatt = 0; g_termAt = 1 << 30; g_termFrame = 1 << 30; g_frames = 0; g_badName = false; }
 
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
     ~CCharString() { }
 };
 static int g_nearFrom = 1 << 30, g_nearTo = 1 << 30, g_freeFrom = 1 << 30;
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
@@ -45,7 +45,7 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
     return g_frames >= g_nearFrom && g_frames < g_nearTo;
 }
 static int g_removed = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     CScriptThing GetThingWithScriptName(const CCharString& name) const
     {

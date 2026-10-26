@@ -1,7 +1,7 @@
 // Behaviour test for CTCTargetingAI::AddThingToNotAttack (007f61b0): a thing is appended once (through a temporary intelligent pointer), never twice.
 #include <cstdio>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_live = 0;                                      // live intelligent pointers
 
 struct CBaseIntelligentPointer {
@@ -22,7 +22,7 @@ struct CThingPointerContainer {
     void push_back(const CIntelligentPointer& value) { items[count++] = value.m_pItem; }
 };
 
-struct CTCTargetingAI {
+class CTCTargetingAI { public:
     CThingPointerContainer ThingsToNotAttack;
     bool IsThingAttackable(const CThing* thing) const
     {

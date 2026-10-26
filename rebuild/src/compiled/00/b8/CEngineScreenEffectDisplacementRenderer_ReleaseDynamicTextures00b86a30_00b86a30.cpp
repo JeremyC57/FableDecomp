@@ -12,7 +12,7 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
-struct CEngineScreenEffectDisplacementRenderer {
+class CEngineScreenEffectDisplacementRenderer { public:
     unsigned char _pad[0xc];
     void*         m_pHandle;                       // +0x0c
     long          m_textureState;                  // +0x10

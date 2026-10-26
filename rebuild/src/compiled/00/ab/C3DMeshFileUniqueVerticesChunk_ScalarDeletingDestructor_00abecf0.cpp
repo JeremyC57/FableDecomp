@@ -21,13 +21,13 @@ struct CArrayULong {
     }
 };
 
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual void v00();
     unsigned char _pad[0xc];                    // +0x04..+0x0f chunk header state
     ~CChunkedFileChunk();                       // 0x00AA75C0
 };
 
-struct C3DMeshFileUniqueVerticesChunk : CChunkedFileChunk {
+class C3DMeshFileUniqueVerticesChunk : public CChunkedFileChunk { public:
     CArrayULong UniqueVerticesList;             // +0x10
     virtual ~C3DMeshFileUniqueVerticesChunk() {}
 };

@@ -7,13 +7,13 @@ struct CResourcePool_00a23ad0 {
     void Release();                                // 0x00A23AD0
 };
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void Reload(long flags);                       // 0x009FD100
 };
 
 double __cdecl GFGetTime();                        // 0x009E1BC0
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned char           _pad0[0x10];
     CResourcePool_00a23ad0* m_pPools[3];           // +0x10 .. +0x1c
     unsigned char           _pad1c[0x938];

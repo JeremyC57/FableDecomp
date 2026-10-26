@@ -31,7 +31,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;                             // +0
     SCountBlock* Info;                             // +4
     __forceinline ~CCountedPointer()
@@ -56,7 +56,7 @@ struct SRbTreeNode {                               // 0x14 bytes
 };
 SRbTreeNode* __cdecl RebalanceForErase(SRbTreeNode* z, SRbTreeNode*& root, SRbTreeNode*& leftmost,
                                        SRbTreeNode*& rightmost);   // 0x0042A34E
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool Abort();                                  // 0x009D6350
 };
 struct CPointerSet {                               // set<CBankFileAsyncData*> (12 bytes)
@@ -103,8 +103,8 @@ public:
     virtual ~CBankFile();                          // 0x009CE180
     unsigned char _body[0x10c];                    // retail CBankFile ends at +0x110
 };
-struct CThreadedFile;
-struct CMovableResourceMemoryPool;
+class CThreadedFile;
+class CMovableResourceMemoryPool;
 class CBankFileAsync;
 class CLoadingMemoryFailureHandler {
 public:

@@ -15,7 +15,7 @@ struct CBase_00430370 {
     CBase_00430370();                           // 0x00430370
 };
 
-struct CThunderBattleDef : CBase_00430370 {
+class CThunderBattleDef : public CBase_00430370 { public:
     virtual void v00();
     CThunderBattleDef() : CBase_00430370() { }
 };

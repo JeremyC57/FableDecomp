@@ -8,8 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CTCDiceGame;
-struct CTCExclusiveUse;
+class CTCDiceGame;
+class CTCExclusiveUse;
 
 #pragma pack(push, 1)
 struct CAIStateGroup_BanditPlayDice {

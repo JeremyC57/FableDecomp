@@ -4,7 +4,7 @@ static int g_dtor_called = 0;
 static int g_free_called = 0;
 const void* CThingMultiArrowShotDef_vftable = (const void*)0x1230ba0;
 
-struct CThingMultiArrowShotDef {
+class CThingMultiArrowShotDef { public:
     const void** vft;
 };
 

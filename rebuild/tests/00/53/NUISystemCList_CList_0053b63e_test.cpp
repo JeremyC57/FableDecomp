@@ -67,7 +67,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CAction;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
 
 #pragma pack(push, 1)
@@ -258,7 +258,7 @@ FABLE_STATIC_ASSERT(offsetof(CList, PDefAlphaOffset) == 0x23c);
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CComponent {
@@ -402,21 +402,21 @@ FABLE_STATIC_ASSERT(offsetof(CComponent, DefIndex) == 0x158);
 #endif // FABLE_ENGINE_CCOMPONENT_H
 
 #undef CComponent
-struct C2DVector {float X,Y; C2DVector(){} C2DVector(float x,float y):X(x),Y(y){} }; // Genuine PDB fablewin default18B5310 / two-float1898E30; default leaves components unchanged.
+class C2DVector { public:float X,Y; C2DVector(){} C2DVector(float x,float y):X(x),Y(y){} }; // Genuine PDB fablewin default18B5310 / two-float1898E30; default leaves components unchanged.
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 #pragma pointers_to_members(full_generality,single_inheritance)
 union ComponentMethod {
  void* Address;
  void (CComponent::*ChangeVector)(const C2DVector&,float,bool);
  void (CComponent::*Refresh)();
 };
-struct CComponent {void* __vftable;};
+class CComponent { public:void* __vftable;};
 template<class T> struct Vector {T* First;T* Last;T* End; Vector():First(0),Last(0),End(0){} unsigned int size()const{return (unsigned int)(Last-First);} bool empty()const{return First==Last;} };
 extern const void* const CListPrimaryVTable[]; //012462E4
 extern const void* const CListObserverVTable[]; //012462BC
 extern const void* const CListCountedObserverVTable[]; //012462B4
-struct CChangingStateComponent {
+class CChangingStateComponent { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     const void* ObserverVTable; // native secondary vptr;                          // +0x04
     unsigned char   _pad_0x08[0x4];                          // +0x08
@@ -507,7 +507,7 @@ struct CChangingStateComponent {
  CChangingStateComponent(long); //0052CC50 genuine non-default engine ctor
 };
 struct CountedAction {void* Data;void* Info;CountedAction():Data(0),Info(0){} };
-struct CList:CChangingStateComponent {
+class CList:public CChangingStateComponent { public:
  int SelectedChild; float LastInputTime;
  Vector<CComponent*> ScrollingChildren,NonScrollingChildren;
  Vector<void*> ScrollingChildrenStates;

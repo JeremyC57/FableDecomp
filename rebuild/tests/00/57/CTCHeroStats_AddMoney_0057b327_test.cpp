@@ -2,7 +2,7 @@
 // argument, earned money reported to the scoreboard component (interface 0x10D), spent money booked.
 #include <cstdio>
 // --- test-side copy of the CThing interface lookup (std::bitset presence + sorted {type, component} map) ---
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     long bits[16];
     bool test(long bit) { return bit >= 0 && bit < 512 && ((bits[bit >> 5] >> (bit & 31)) & 1) != 0; }
@@ -13,7 +13,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry entries[4];
@@ -40,14 +40,14 @@ template <class T> inline void GFLimit(T& value, const T& lo, const T& hi)
     if (value < lo) value = lo;
     else if (value > hi) value = hi;
 }
-struct CHeroStatsDef { long MaxMoney; };
-struct CDefinitionManager { CHeroStatsDef* PHeroStatsDef; };
+class CHeroStatsDef { public: long MaxMoney; };
+class CDefinitionManager { public: CHeroStatsDef* PHeroStatsDef; };
 static long g_activity = -1; static float g_score = -1.0f; static int g_calls = 0; static bool g_flag = true;
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter) { g_activity = activity; g_score = score; g_flag = onlyIfBetter; ++g_calls; }
 };
 static CDefinitionManager g_defs;
-struct CTCHeroStats {
+class CTCHeroStats { public:
     CThing* ParentThing;
     long Money, MaxMoney, ConfiscatedMoney, TotalMoneyEarned, TotalMoneySpent;
     CDefinitionManager* GetDefinitionManager() const { return &g_defs; }

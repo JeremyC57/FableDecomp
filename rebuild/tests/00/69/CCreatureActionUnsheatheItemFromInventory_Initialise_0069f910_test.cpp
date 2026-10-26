@@ -2,9 +2,9 @@
 // with the ranged-attacks component (type 0x81) gets its aiming cancelled, projectile mode reset and player mode 0x22 removed.
 #include <cstdio>
 static int g_base = 0, g_cancel = 0, g_reset = 0, g_removedMode = -1;
-struct CPlayer { void RemoveMode(int m) { g_removedMode = m; } };
+class CPlayer { public: void RemoveMode(int m) { g_removedMode = m; } };
 struct CRanged { void CancelAimingWeapon() { ++g_cancel; } void ResetProjectileWeaponMode() { ++g_reset; } };
-struct CThing {
+class CThing { public:
     unsigned int m_bits[9];
     CRanged* m_ranged;
     CPlayer m_player;

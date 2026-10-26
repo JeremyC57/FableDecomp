@@ -1,6 +1,6 @@
 #include <cstdio>
 // CPersistContext::IsSaving: true for Mode 1 (text save) and Mode 3 (binary save)
-struct CPersistContext {
+class CPersistContext { public:
     void* PDefinitionManager; void* PSymbolMap; void* PParser; void* ErrorCallback; void* PStringToClean;
     bool UseDefaults; bool UseCRCCheck; bool SingleTransfer; bool Finished;
     long Mode; bool Binary; void* PStringToSaveTo; void* PLoadStream; void* PSaveStream;

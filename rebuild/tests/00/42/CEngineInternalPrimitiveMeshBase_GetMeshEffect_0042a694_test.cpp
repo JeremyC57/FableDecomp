@@ -5,7 +5,7 @@ struct RCObj {
     int refcount;
 };
 
-struct CEngineInternalPrimitiveMeshBase {
+class CEngineInternalPrimitiveMeshBase { public:
     RCObj* ptr;
     void GetMeshEffect(RCObj** src);
 };

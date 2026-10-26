@@ -10,7 +10,7 @@
 #include "fable_string.h"
 #include <stddef.h>
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass(); // RTTI vtable 0x01231710 slot 0; constructor 0x0099A2D0
     CBaseClass();
 };
@@ -25,7 +25,7 @@ struct CBaseClassNonCopyable : CBaseClass {
 enum EEngineRenderLayer { EEngineRenderLayer_FixtureValue = 0 };
 enum ERenderRenderLayerFlags { ERenderRenderLayerFlags_FixtureValue = 0 };
 
-struct CEngineComponentParams {
+class CEngineComponentParams { public:
     float FrameInterpolation;
     unsigned char InterpolationInfo[0x70];
     unsigned long FrameID;
@@ -34,8 +34,8 @@ struct CEngineComponentParams {
     unsigned char _pad_0x7d[3];
 };
 
-struct CEngineComponentLoadNewSceneParams;
-struct CEngineComponentRenderParams {
+class CEngineComponentLoadNewSceneParams;
+class CEngineComponentRenderParams { public:
     const CEngineComponentParams* Params;
     long RenderLayer;
     unsigned long RenderLayerFlags;
@@ -69,7 +69,7 @@ struct CEngineComponentPointerArray {
     CEngineComponent** End;
 };
 
-struct CEngineLayerRenderer : CBaseClassNonCopyable {
+class CEngineLayerRenderer : public CBaseClassNonCopyable { public:
     virtual ~CEngineLayerRenderer();
     virtual void Render(const CEngineComponentParams& params);
 

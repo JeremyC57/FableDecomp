@@ -6,22 +6,22 @@
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static void ResetLog() { g_log[0] = 0; }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long = -1) : Text(text) {}
 };
-struct CWideString {
+class CWideString { public:
     const void* Text;
     CWideString(const void* text) : Text(text) {}
 };
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     const bool* AliveFlag;
     CScriptThing() : Name(""), AliveFlag(0) {}
     CScriptThing(const char* n, const bool* a) : Name(n), AliveFlag(a) {}
     bool IsAlive() const { return AliveFlag && *AliveFlag; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     long TerminateAfter;                                 // IsActiveThreadTerminating() turns true after this many calls
     long TerminateCalls;
     CScriptBase() : TerminateAfter(1000), TerminateCalls(0) {}
@@ -39,7 +39,7 @@ struct CHero {
     bool Killed;
     bool MsgIsKilledBy(const CCharString& killer) const { Log(killer.Text[0] ? killer.Text : "<any>"); return Killed; }
 };
-struct CGameScriptInterface { CFrameEvents Ev; CHero Hero; void NewScriptFrame() { Ev.Tick(); } CHero& GetHero() { return Hero; } };
+class CGameScriptInterface { public: CFrameEvents Ev; CHero Hero; void NewScriptFrame() { Ev.Tick(); } CHero& GetHero() { return Hero; } };
 struct CQuestScriptBase : CScriptBase { CGameScriptInterface* GSI; };
 struct CQ_WizardBattleScript : CQuestScriptBase {
     bool VillagersTurnOnHero, VillagersChased, FightersStart, MissionSucceeded, MissionFailed, MissionOver;

@@ -27,14 +27,14 @@ static bool Near(float a, float b) { float d = a - b; if (d < 0) d = -d; return 
 namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b) { _Tp __tmp = __a; __a = __b; __b = __tmp; }   // STLport <stl/_algobase.h>
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
 };
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() {}
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) {}

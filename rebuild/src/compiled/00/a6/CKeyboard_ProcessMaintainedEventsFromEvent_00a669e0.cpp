@@ -9,7 +9,7 @@
 // Shape: the discarded insert result is homed in the dead `event` argument slot (`lea edx,[esp+18h]`); the by-value iterator has a user
 // copy ctor so it is built in the argument area; back() is head->prev; the erase is inlined (unlink, virtual dtor, free) with no size count.
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
-struct CInputEvent {                            // 0x34 bytes
+class CInputEvent { public:                            // 0x34 bytes
     unsigned char Data[0x20];                   // +0x00
     long          DeviceType;                   // +0x20
     long          DeviceNumber;                 // +0x24
@@ -20,7 +20,7 @@ struct CInputEvent {                            // 0x34 bytes
     long GetKey() const;                                                    // 0x00A03B70
     void SetAsKeyboardKeyHeld(long key, double startTime, double currentTime);  // 0x00A03C20
 };
-struct CMaintainedEvent {                       // CBaseClass-derived: vptr +0, Event +4
+class CMaintainedEvent { public:                       // CBaseClass-derived: vptr +0, Event +4
     virtual ~CMaintainedEvent();
     CInputEvent Event;
 };
@@ -37,8 +37,8 @@ struct CMaintainedEventList {                   // retail list<CMaintainedEvent>
     iterator insert(iterator where);            // 0x009E4A20
     Node* last() { return head->prev; }
 };
-struct CInputManager;
-struct CKeyboard {
+class CInputManager;
+class CKeyboard { public:
     void*                __vftable;             // +0x00
     CInputEvent          EventStore[256];       // +0x04
     long                 NoStoredEvents;        // +0x3404

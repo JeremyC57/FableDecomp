@@ -1,7 +1,7 @@
 #include <stdlib.h>
 // Leaf: OnDie
 
-struct CTCMapwho { int dummy; };
+class CTCMapwho { public: int dummy; };
 
 extern "C" void __fastcall Mapwho_PreDie_00850360(CTCMapwho* self);
 void operator delete(void*);

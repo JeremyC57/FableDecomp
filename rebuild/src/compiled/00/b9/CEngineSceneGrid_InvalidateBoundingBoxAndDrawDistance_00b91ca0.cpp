@@ -8,7 +8,7 @@
 // unsigned loops (y offset outer, x offset inner) keep the inner counter in esi, the row `y*2 + j` in edi, and the
 // outer counter in the dead `recurseDown` argument slot; the loop head is aligned (speed TU).
 
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell { public:
     unsigned char _pad00[0x44];
     unsigned char BoundingBoxValid : 1;                  // +0x44 bit 0
     unsigned char TotalCountValid : 1;

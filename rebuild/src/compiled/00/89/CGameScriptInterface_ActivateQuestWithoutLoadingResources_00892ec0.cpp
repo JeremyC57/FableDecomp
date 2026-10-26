@@ -1,7 +1,7 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString;
+class CCharString;
 
-struct CQuestManager {
+class CQuestManager { public:
   void Activate(CCharString* cs, int a, int b);
 };
 

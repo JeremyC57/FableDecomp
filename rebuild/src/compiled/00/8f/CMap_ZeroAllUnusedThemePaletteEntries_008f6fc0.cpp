@@ -24,7 +24,7 @@ template <class T> struct vector {                 // STLport vector, 12 bytes
     T* _M_end_of_storage;
     T& operator[](unsigned long i) { return _M_start[i]; }
 };
-struct CMap {
+class CMap { public:
     unsigned char              _pad[0x1a6c];
     vector<SThemePaletteEntry> m_ThemePalette;     // +0x1a6c
     void*                      m_pQuarterGrid;     // +0x1a78

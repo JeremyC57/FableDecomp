@@ -16,7 +16,7 @@
 // Shape: a dense switch over CurrentAbility (1..19, default merged with the four empty cases); each case reads ParentThing
 //   once into a local and runs the inline `if (HasTC(t)) GetTC(t)->Cancel();` pair, the key homed in the `push ecx` word.
 //   In a body this large VC7.1 keeps HasTC/GetInterface/GetTC out of line unless they are `__forceinline`.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -25,7 +25,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
     CInterfaceMap m_interfaces;                             // +0x44
@@ -52,23 +52,23 @@ struct CThing {
     }
 };
 
-struct CTCForcePushPower      { void CancelMove(); };       // 0x007A5420
-struct CTCBulletTime          { void CancelMove(); };       // 0x0079C640
-struct CTCWillEnflame         { void CancelMove(); };       // 0x007A44C0
-struct CTCPhysicalShieldSpell { void CancelMove(); };       // 0x0079E300
-struct CTCTurncoatSpell       { void CancelMove(); };       // 0x007C6A40
-struct CTCDrainLife           { void CancelMove(); };       // 0x007C3000
-struct CTCSummonSpell         { void CancelMove(); };       // 0x0079A820
-struct CTCWillLightning       { void CancelMove(); };       // 0x007A03B0
-struct CTCBattleCharge        { void CancelMove(); };       // 0x007A7D10
-struct CTCAssassinRush        { void CancelMove(); };       // 0x007AA480
-struct CTCHealLife            { void CancelMove(); };       // 0x007C3E90
-struct CTCGhostSword          { void CancelMove(); };       // 0x007C5710
-struct CTCFireballSpell       { void CancelMove(); };       // 0x007C8FD0
-struct CTCDivineWrath         { void CancelAbilities(); };  // 0x0078F820
-struct CTCUnholyPower         { void CancelAbilities(); };  // 0x00794D90
+class CTCForcePushPower      { public: void CancelMove(); };       // 0x007A5420
+class CTCBulletTime          { public: void CancelMove(); };       // 0x0079C640
+class CTCWillEnflame         { public: void CancelMove(); };       // 0x007A44C0
+class CTCPhysicalShieldSpell { public: void CancelMove(); };       // 0x0079E300
+class CTCTurncoatSpell       { public: void CancelMove(); };       // 0x007C6A40
+class CTCDrainLife           { public: void CancelMove(); };       // 0x007C3000
+class CTCSummonSpell         { public: void CancelMove(); };       // 0x0079A820
+class CTCWillLightning       { public: void CancelMove(); };       // 0x007A03B0
+class CTCBattleCharge        { public: void CancelMove(); };       // 0x007A7D10
+class CTCAssassinRush        { public: void CancelMove(); };       // 0x007AA480
+class CTCHealLife            { public: void CancelMove(); };       // 0x007C3E90
+class CTCGhostSword          { public: void CancelMove(); };       // 0x007C5710
+class CTCFireballSpell       { public: void CancelMove(); };       // 0x007C8FD0
+class CTCDivineWrath         { public: void CancelAbilities(); };  // 0x0078F820
+class CTCUnholyPower         { public: void CancelAbilities(); };  // 0x00794D90
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     long    _base08;                                        // +0x08 (CTCBase)

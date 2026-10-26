@@ -20,14 +20,14 @@ class CThing;
 class CThingAICreature;
 bool __fastcall IsAICreatureAwareOfMoreGenerous_00864600(CThingAICreature* creature, CThing* thing, bool flag);   // 0x00864600
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -37,11 +37,11 @@ template <class T> struct CCountedDefPointer {  // the by-value CDefPointer<T> c
     ~CCountedDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CCreatureDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xe4 - 0x08];
     bool AGhostIsWhatIBe;                       // +0xe4
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CCreatureDef>* out) const;     // 0x00485815 GetSubDef<CCreatureDef>
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -69,13 +69,13 @@ struct CThingFilter_IsAICreatureWillingToAttack { CThingAICreature* Creature;
     bool operator()(CThing* thing) const; };                    // 0x006A7570
 struct CThingFilter_IsAICreatureAwareOfMoreGenerous { CThingAICreature* Creature;
     bool operator()(CThing* thing) const { return IsAICreatureAwareOfMoreGenerous_00864600(Creature, thing, false); } };
-struct CThingFilter_IsNot { const CThing* Thing;
+class CThingFilter_IsNot { public: const CThing* Thing;
     bool operator()(const CThing* thing) const; };              // 0x006A76A0
-struct CThingFilter_IsThingAbleToBeEngagedInCombat { CThingAICreature* Creature;
+class CThingFilter_IsThingAbleToBeEngagedInCombat { public: CThingAICreature* Creature;
     bool operator()(CThing* thing) const; };                    // 0x006A7580
-struct CThingFilter_EnemyCreature { CThingAICreature* Creature;
+class CThingFilter_EnemyCreature { public: CThingAICreature* Creature;
     bool operator()(CThing* thing) const; };                    // 0x006A7550
-struct CThingFilter_IsNotList { void* Things[2];
+class CThingFilter_IsNotList { public: void* Things[2];
     bool operator()(CThing* thing) const; };                    // 0x006A7EB0
 
 struct CThingFilter_IsValidAttackTargetForCreature {

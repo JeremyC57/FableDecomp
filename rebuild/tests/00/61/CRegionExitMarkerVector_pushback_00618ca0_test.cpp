@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <new>
 static int g_copies = 0;
-struct CCharString { int id; CCharString() : id(0) {} CCharString(const CCharString& o) : id(o.id) { ++g_copies; } };
+class CCharString { public: int id; CCharString() : id(0) {} CCharString(const CCharString& o) : id(o.id) { ++g_copies; } };
 struct Rec {
     long m_00; CCharString m_name; long m_08, m_0c, m_10, m_14, m_18;
 };

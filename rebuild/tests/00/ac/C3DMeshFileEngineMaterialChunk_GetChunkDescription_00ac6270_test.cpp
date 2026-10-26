@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     CCharString(const char* s, int len);
 };
@@ -11,7 +11,7 @@ __declspec(noinline) CCharString::CCharString(const char* s, int len) {
     if (len == -2) m_data = 0;
 }
 
-struct C3DMeshFileEngineMaterialChunk {
+class C3DMeshFileEngineMaterialChunk { public:
     void* vtbl;
     CCharString GetChunkDescription() const;
 };

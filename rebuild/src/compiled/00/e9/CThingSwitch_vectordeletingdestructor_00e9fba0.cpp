@@ -9,7 +9,7 @@ struct CRecordSet_00cbd510 {                // catalog/landed name for the class
     void* _vptr;                            // (layout beyond the first word not modelled)
     ~CRecordSet_00cbd510();                 // 0x00CBD510
 };
-struct CTimer {                             // one word: the timer handle
+class CTimer { public:                             // one word: the timer handle
     long Handle;
     ~CTimer();                              // 0x00CD4470 (hands the handle back through the global at 0x0143E8F8, slot 0x160)
 };

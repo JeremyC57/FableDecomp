@@ -5,7 +5,7 @@
 
 // Model: things with positions, the nearest-to-position comparator and STLport's push / adjust heap; the heap is built
 // by repeated pushes, then sort_heap must leave the things nearest first.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -18,7 +18,7 @@ public:
     int       Id;
 };
 
-struct CThingCompare_NearestToPos {
+class CThingCompare_NearestToPos { public:
     C3DVector Pos;
     bool operator()(CThing* a, CThing* b) const
     {

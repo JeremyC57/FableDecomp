@@ -10,7 +10,7 @@
 // `d = dx*dx; d += dy*dy;` squares dx first (`fld st(1) ; fmul st(2)` twice; the `dx*dx + dy*dy` form
 // squares the top of stack first), `> 100.0f` is the
 // `test ah,41h ; jne` false branch. Separate `mov al,1` / `xor al,al` exits. No engine header exists.
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x004365B0 -- the landed out-parameter
@@ -23,7 +23,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type) const;       // 0x004365B0 (a second, byte-identical instantiation)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -64,12 +64,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -77,7 +77,7 @@ struct CTCWanderControl {                       // interface type 8 component (d
     bool IsEnabled();                           // 0x007F6150
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad2[0xe8 - sizeof(CThing)];
     float InitialPosX;                          // +0xe8 (descriptive: the wander centre)
     float InitialPosY;                          // +0xec
@@ -89,7 +89,7 @@ struct CAIBrainCreature {
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrainCreature* PBrain;                   // +0x04
     long ScriptAIPriority;                      // +0x08

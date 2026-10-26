@@ -7,7 +7,7 @@ struct CPrimitive {
     virtual void NotifyReleased() { ++g_notified; }
     void RemoveReference() { --IVRefCount; if (IVRefCount == 0) Delete(); }
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     CPrimitive* Object;
     void Clear() { if (Object && Object->IVRefCount == 1) Object->NotifyReleased(); if (Object) { Object->RemoveReference(); Object = 0; } Object = 0; }
     ~CEnginePrimitiveHandle() { Clear(); }
@@ -17,7 +17,7 @@ struct LocalDetailEngine { LandscapeMemoryMethods* LandscapeMemory; };
 static LandscapeMemoryMethods g_mm; static LocalDetailEngine g_e = { &g_mm };
 static LocalDetailEngine* g_LocalDetailEngine = &g_e;
 struct CLocalDetailPrimitiveMeshZSpriteBatch {
-    struct CObject { float Scale; ~CObject() { ++g_objDtors; } };
+    class CObject { public: float Scale; ~CObject() { ++g_objDtors; } };
     CObject* Objects; void* ZSpriteEntries; long ObjectCount; bool HasMeshPrimitiveHandles;
     CEnginePrimitiveHandle ZSpriteHandle;
     ~CLocalDetailPrimitiveMeshZSpriteBatch();

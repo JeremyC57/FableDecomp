@@ -70,7 +70,7 @@ static void SetUpFixture()
     g_engine.m_pLibrary = &g_library;
     g_system.m_pEngine = &g_engine;
 }
-struct CCharStringData {
+class CCharStringData { public:
     char* m_pData;
 };
 class CCharString {

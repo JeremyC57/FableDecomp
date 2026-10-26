@@ -3,9 +3,9 @@
 #include <math.h>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 class CMatrix3x4 {
 public:
     float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43;
@@ -29,7 +29,7 @@ public:
     }
 };
 enum EEngineEffectWaterStage { WATER_STAGE_PRE, WATER_STAGE_WATER, WATER_STAGE_POST };
-struct CEnginePrimitive { int Kind; };
+class CEnginePrimitive { public: int Kind; };
 struct CEnginePrimitiveParticleGroup : CEnginePrimitive {
     float Distance; const C3DBoundingSphere* Sphere; bool SD, RZ; EEngineEffectWaterStage Stage; bool ZW, Clip, Dith;
     CEnginePrimitiveParticleGroup(float d, const C3DBoundingSphere* s, bool sd, bool rz, EEngineEffectWaterStage st, bool zw, bool c, bool di)
@@ -40,10 +40,10 @@ struct CEnginePrimitiveParticleGroup2D : CEnginePrimitive {
     CEnginePrimitiveParticleGroup2D(long l, const CMatrix3x4& t, const C2DVector& p, bool sd, bool rz)
         : Layer(l), T(t), PX(p.X), PY(p.Y), SD(sd), RZ(rz) { Kind = 2; }
 };
-struct CEnginePrimitiveHandle { int Id; };
+class CEnginePrimitiveHandle { public: int Id; };
 static CEnginePrimitiveParticleGroup g_last3d(0, 0, 0, 0, WATER_STAGE_POST, 0, 0, 0);
 static CEnginePrimitiveParticleGroup2D g_last2d(0, CMatrix3x4(), C2DVector(0, 0), 0, 0);
-struct CIEngine {
+class CIEngine { public:
     int adds; long lastFlags;
     void AddPrimitive(CEnginePrimitiveHandle* h, const CEnginePrimitive* p, long flags)
     {
@@ -59,7 +59,7 @@ struct CParticleSystem {
 };
 struct CParticleSystemPtr { CParticleSystem* Data; void* Info; };
 template <class T> struct CVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
-struct C3DPositionInterpolator { C3DVector StartPosition; };
+class C3DPositionInterpolator { public: C3DVector StartPosition; };
 class CParticleEmitter {
 public:
     CVector<CParticleSystemPtr> ParticleSystems;

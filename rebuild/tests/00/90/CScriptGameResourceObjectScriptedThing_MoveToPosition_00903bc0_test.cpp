@@ -20,7 +20,7 @@
 
 
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -100,11 +100,11 @@ struct CActionBase {                               // vtable 0x01265504
 };
 }
 
-struct CTCScriptedControl {                        // interface 0x1f component
+class CTCScriptedControl { public:                        // interface 0x1f component
     void AddAction(NTCScriptedControl::CActionBase* action);   // 0x007137D0
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 enum EScriptEntityMoveType { SCRIPT_MOVE_TYPE_0 = 0, SCRIPT_MOVE_TYPE_1 = 1 };
 enum EMovementType { MOVEMENT_TYPE_1 = 1, MOVEMENT_TYPE_3 = 3, MOVEMENT_TYPE_5 = 5 };

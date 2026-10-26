@@ -15,10 +15,10 @@
 // `mov ecx,[esi+68h]` precedes the out address); IS_THING_ALIVE must be `__forceinline` here; the anim timer is converted
 // once into a float local and the rescale is written `max * (t / released)` (VC7.1 keeps `fdiv ; fimul`; `t / released *
 // max` is reassociated into `fild max ; fdiv ; fmul`).
-struct CTCBase;
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class CTCBase;
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -62,7 +62,7 @@ struct CThing {
     }
 };
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position);   // 0x0072AB70
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CBaseIntelligentPointer {
@@ -73,7 +73,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -91,12 +91,12 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                             // slot 0
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -124,7 +124,7 @@ struct CBerserkDef : CDefPointeeBase {
     unsigned char _pad08[0x40 - 0x08];
     long          MaxTimer;                             // +0x40
 };
-struct CDefClassBase : CBerserkDef {
+class CDefClassBase : public CBerserkDef { public:
     CDefPointeeBase* FindSubDef();
     bool GetSubDef(CDefPointer<CBerserkEffectsDef>* out);     // 0x00669580
 };

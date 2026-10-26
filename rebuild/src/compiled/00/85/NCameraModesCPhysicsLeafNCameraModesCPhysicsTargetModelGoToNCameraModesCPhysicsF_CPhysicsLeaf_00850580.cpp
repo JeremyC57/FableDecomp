@@ -18,7 +18,7 @@ void __cdecl operator delete(void* block);                // 0x00BFE9BC
 
 class CGameCameraManager;
 namespace NCameraModes {
-struct CPhysicsState { float m_values[16]; };           // 64 bytes (Ego_r.pdb)
+class CPhysicsState { public: float m_values[16]; };           // 64 bytes (Ego_r.pdb)
 
 class CBase {
 public:

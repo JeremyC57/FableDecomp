@@ -87,8 +87,8 @@ struct CTree {                                          // STLport _Rb_tree: hea
         --count;
     }
 };
-struct C2DBoxI { int TLX, TLY, BRX, BRY; };
-struct CCharString {
+class C2DBoxI { public: int TLX, TLY, BRX, BRY; };
+class CCharString { public:
     const char* text;
     CCharString() : text("") { }
     CCharString(const CCharString& o) : text(o.text) { }
@@ -110,13 +110,13 @@ struct CCellVector {
             *finish++ = zero;
     }
 };
-struct CScriptedMapBrushInit {
+class CScriptedMapBrushInit { public:
     C2DBoxI     GameArea;
     CCharString Name;
     float       CreationTimeSeconds;
     int         CreationPattern;
 };
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     CCellVector Cells;
     CTree       ThingsToDelete;
     CTree       ThingsToMove;

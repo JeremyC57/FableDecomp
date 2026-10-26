@@ -6,7 +6,7 @@ struct SubObj {
     void Set(long a);  // __fastcall member: ecx=this, arg pushed
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long flags; // +0
     long pad;            // +4
     SubObj sub;          // +8

@@ -1,12 +1,12 @@
 // Behaviour test for CEngineCameraDesc::CEngineCameraDesc(const CEngineCameraDesc&) @ 0x00B4AF50
 #include <cstdio>
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() {}
     C2DBoxF(const C2DBoxF& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
 };
-struct CMatrix3x4 { float m_elements[12]; };
-struct C3DVector {
+class CMatrix3x4 { public: float m_elements[12]; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}

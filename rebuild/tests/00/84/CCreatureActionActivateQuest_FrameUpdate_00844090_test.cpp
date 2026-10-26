@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString { char* m_pData; };
-struct CQuestManager { bool FindByName(const CCharString& name) { return std::strcmp(name.m_pData, "Q_ACTIVE") == 0; } };
+class CCharString { public: char* m_pData; };
+class CQuestManager { public: bool FindByName(const CCharString& name) { return std::strcmp(name.m_pData, "Q_ACTIVE") == 0; } };
 CQuestManager g_qm; CQuestManager* g_pQuestManager = &g_qm;
 static int g_finished = 0;
-struct CCreatureAction_ActivateQuest { virtual void FinishAction() { ++g_finished; } unsigned char _pad04[0xa8 - 4]; CCharString ScriptName; unsigned char LoadResources;
+class CCreatureAction_ActivateQuest { public: virtual void FinishAction() { ++g_finished; } unsigned char _pad04[0xa8 - 4]; CCharString ScriptName; unsigned char LoadResources;
     void FrameUpdate() { if (!g_pQuestManager->FindByName(ScriptName)) FinishAction(); } };
 int main()
 {

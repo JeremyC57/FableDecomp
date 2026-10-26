@@ -17,7 +17,7 @@ public:
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
 };
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 class CIVCountedPointer {
 public:
     CEnginePersistentPrimitiveBase* Object;
@@ -29,18 +29,18 @@ public:
     virtual void v001();
     CEnginePrimitiveHandle() { }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
 };
-struct CCPPointerInfo;
-struct CFontBank;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+class CFontBank;
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 
 namespace NUISystem {
 struct CComponentInterface {
@@ -53,11 +53,11 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-struct CDraggableInto : CComponentInterface, CDrawableInterface, CDraggableInterface {
+class CDraggableInto : public CComponentInterface, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x15c - 0x1c];
     CDraggableInto(long id);                       // 0x0052CC50
 };
-struct CText : CDraggableInto {
+class CText : public CDraggableInto { public:
     CWideString            Value;                  // +0x15c
     CCountedPointer<CFontBank> PFont;              // +0x160
     CEnginePrimitiveHandle Handle;                 // +0x168

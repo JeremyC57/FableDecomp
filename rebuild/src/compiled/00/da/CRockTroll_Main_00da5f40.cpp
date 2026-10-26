@@ -12,22 +12,22 @@
 // Shape: the quest name is the nested call's temporary (the interface vtable cached in ebp across both calls); the
 // icon is a named local in its OWN block (at function scope VC packs it into the quest-name temporary's slot); the
 // green CRGBColour's ctor assigns R, G, B, A (stores grouped by value in that order).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CScriptThing {                              // 12 bytes
+class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {                     // vtable 0x01260F0C
+class CGameScriptInterface { public:                     // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                       // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -125,7 +125,7 @@ struct CIsThingAlive {                             // vtable 0x012C32F0: a filte
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CBaseObject {                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
+class CBaseObject { public:                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
     virtual void b00();
     void* m_pIntelligentPointer;                   // +0x04
     CBaseObject();                                 // 0x0099A380
@@ -135,7 +135,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                     // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     ~CScriptGameResourceObjectScriptedThingBase(); // 0x007E74D0

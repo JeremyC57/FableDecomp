@@ -4,17 +4,17 @@ struct CTransform {
     float GetAngleXY() const { return m_angle; }
 };
 struct CEngineState { bool m_useTransform; };
-struct CCamera {
+class CCamera { public:
     virtual float GetAngleXY() { return 2.5f; }
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     virtual CTransform GetCameraTransform() { CTransform t; t.m_angle = 1.25f; return t; }
     CCamera*      m_pCamera;
     CEngineState  m_state;
     CEngineState* GetState() { return &m_state; }
 };
 static CDisplayEngine* g_engine;
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     CDisplayEngine* GetDisplayEngine() { return g_engine; }
     float GetCurrentRelativeMovementAngleXY();
 };

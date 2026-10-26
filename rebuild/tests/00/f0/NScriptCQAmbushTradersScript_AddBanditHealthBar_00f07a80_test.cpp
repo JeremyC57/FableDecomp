@@ -17,18 +17,18 @@ public:
 static CCharString GFIntToCharString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CCharString(b); }
 static int g_rand = 0;
 static int test_rand() { return g_rand; }
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     bool shown; char icon[64]; unsigned char r, g, b, a; float scale; const CScriptThing* who;
     virtual void DisplayQuestInfo(bool s) { shown = s; }
     virtual long AddQuestInfoBarHealth(const CScriptThing& t, const CRGBColour& c, const CCharString& i, float sc)
     { who = &t; r = c.R; g = c.G; b = c.B; a = c.A; std::strcpy(icon, i.Text); scale = sc; return 1000 + t.id; }
 };
-struct CScriptBase { bool term; bool IsActiveThreadTerminating() { return term; } };
+class CScriptBase { public: bool term; bool IsActiveThreadTerminating() { return term; } };
 struct CQ_AmbushTradersScript : CScriptBase {
     CGameScriptInterface* m_pInterface;
     long HiredBanditCount;

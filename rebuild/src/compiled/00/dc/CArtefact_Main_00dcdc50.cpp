@@ -10,19 +10,19 @@
 // Literals: "BanditTeamCrateDrop" 0x012DB214, "SCRIPT_NAME_HERO" 0x0125D1C8.
 // Layout: Ego_r.pdb CArtefact (28 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CQ_OrchardFarmRaidScript: master data +0x44 with a flag at +0x109, a remaining-artefact count at +0x48).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC
 
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -38,11 +38,11 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                      // 0x0099A2D0
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     __forceinline ~CScriptThing() {}
@@ -58,7 +58,7 @@ struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x012
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -94,7 +94,7 @@ struct CQ_OrchardFarmRaidScript {
     long             ArtefactsRemaining;               // +0x48
 };
 
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

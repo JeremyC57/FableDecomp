@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cstdlib>
 
-struct CThing { unsigned char pad[0x18]; unsigned int uidLo; unsigned int uidHi; };
+class CThing { public: unsigned char pad[0x18]; unsigned int uidLo; unsigned int uidHi; };
 struct CFilter { unsigned int lo, hi; CFilter(const CThing& t) : lo(t.uidLo), hi(t.uidHi) { } };
 int main()
 {

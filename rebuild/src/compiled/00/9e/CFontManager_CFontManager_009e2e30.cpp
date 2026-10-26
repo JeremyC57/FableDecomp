@@ -16,9 +16,9 @@ struct CBasicStringChar {
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
@@ -26,8 +26,8 @@ namespace N_0099a2f0 { struct CBaseObject {
     CBaseObject();                                       // 0x0099A2F0
     virtual ~CBaseObject();
 }; } using N_0099a2f0::CBaseObject;
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -35,26 +35,26 @@ template <class T> struct CCountedPointer {
     T* operator->() const { return Data; }
     T& operator*() const { return *Data; }
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     unsigned char Data[0x24];
     CSymbolMap();                                        // 0x009E5200
 };
-struct CBankFile {
+class CBankFile { public:
     virtual void v0();
     virtual void Open(const CCharString& name, long flags);   // slot 1
     void CreateSymbolMap(CSymbolMap& map, bool b) const;      // 0x009CC530
 };
-struct CFontDataBank : CBankFile {
+class CFontDataBank : public CBankFile { public:
     unsigned char Data[0x12c];
     CFontDataBank();                                     // 0x00A63630
 };
-struct CStreamingFontDataBank : CBankFile {
+class CStreamingFontDataBank : public CBankFile { public:
     unsigned char Data[0x18c];
     CStreamingFontDataBank();                            // 0x00A5F290
     void InitStreamingEntry(CSymbolMap& map);            // 0x00A5EF50
 };
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {                        // 32 bytes
+class CVertexCompressionParams { public:                        // 32 bytes
     float Scale[4];
     float Offset[4];
     CVertexCompressionParams()
@@ -72,7 +72,7 @@ struct CVertexBufferBase : CBaseObject {                 // PDB, 0x34 bytes
     CVertexBufferBase() : Length(0), Type(0) { }
     virtual ~CVertexBufferBase();
 };
-struct CVertexBufferWin32 : CVertexBufferBase {          // vtable 0x0129BA20
+class CVertexBufferWin32 : public CVertexBufferBase { public:          // vtable 0x0129BA20
     CVertexBufferWin32(long vertexType, long count, long stride, unsigned long usage, long pool)
     {
         PVertexBuffer = 0;
@@ -82,7 +82,7 @@ struct CVertexBufferWin32 : CVertexBufferBase {          // vtable 0x0129BA20
     virtual ~CVertexBufferWin32();
     bool Initialise(long vertexType, long count, long stride, unsigned long usage, long pool);   // 0x00A63150
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T*   Data;
     long Size;
     long MaxSize;
@@ -90,7 +90,7 @@ template <class T> struct CArray {
     void resize(long size, const T& value);             // 0x009E3580
     T& operator[](long i) { return Data[i]; }
 };
-struct CFontManager : CBaseObject {                      // vtable 0x0129BA38
+class CFontManager : public CBaseObject { public:                      // vtable 0x0129BA38
     CCountedPointer<CFontDataBank>          PFontDataBank;            // +0x04
     CCountedPointer<CStreamingFontDataBank> PStreamingFontDataBank;   // +0x0c
     CCountedPointer<CSymbolMap>             PSymbols;                 // +0x14

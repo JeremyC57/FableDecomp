@@ -8,24 +8,24 @@
 // size(); vertices follow at +0x3C (a retail CArray is first/last/end, 12 bytes). Member names from
 // Ego_r.pdb (TotalFaceIndices, TotalPoints, RootSegment): retail keeps the PDB order with 12-byte
 // containers, so the PDB +0x38/+0x48/+0xD0 sit at +0x30/+0x3C/+0xB4 here.
-struct C3DTriangle2 { unsigned short m_index[3]; };
-struct C3DVector { float x, y, z; };
-template <class T> struct CArray {
+class C3DTriangle2 { public: unsigned short m_index[3]; };
+class C3DVector { public: float x, y, z; };
+template <class T> class CArray { public:
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
     unsigned long size() const { return m_pLast - m_pFirst; }
 };
-struct CIPhysicsFacesSegmentBase {
+class CIPhysicsFacesSegmentBase { public:
     static CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& triangles, const CArray<C3DVector>& vertices);   // 0x00A86CD0
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     void* m_pBlock;
     void Reset(T* object);                         // 0x00A6E9A0
 };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char                     _pad00[0x30];
     CArray<C3DTriangle2>              TotalFaceIndices;   // +0x30
     CArray<C3DVector>                 TotalPoints;        // +0x3c

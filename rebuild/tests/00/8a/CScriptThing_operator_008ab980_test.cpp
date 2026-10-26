@@ -1,11 +1,11 @@
 // Behaviour test for CScriptThing::operator= (0x008AB980): release the old block (destroy at zero), adopt + count the new one, self-share is a no-op.
 #include <cstdio>
 
-struct CScriptThing;
+class CScriptThing;
 static int g_destroyed = 0;
 static void DestroyObject(void* object) { (void)object; ++g_destroyed; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_references;
     void (*m_pfnDestroy)(void*);
     void* m_pObject;
@@ -33,7 +33,7 @@ struct CCountedPointer_CScriptThing {
         return *this;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     CCountedPointer_CScriptThing PImp;
     virtual ~CScriptThing() {}
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }

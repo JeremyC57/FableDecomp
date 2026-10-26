@@ -19,14 +19,14 @@
 #pragma optimize("s", on)   // the def module is size-optimised
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x21];                                            // +0x04..+0x25
     CDefClassBase(const CDefClassBase& other);                            // 0x0046644C
 };
 #pragma pack(pop)
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -51,7 +51,7 @@ struct CSubDefInfoMap {                                                   // CVe
 };
 
 #pragma pack(push, 1)
-struct CParentDefClassBase : CDefClassBase {                              // vtable 0x01230CBC
+class CParentDefClassBase : public CDefClassBase { public:                              // vtable 0x01230CBC
     CDefString     InstantiationName;                                     // +0x25
     CSubDefInfoMap SubDefInfoMap;                                         // +0x29
     virtual void v00();

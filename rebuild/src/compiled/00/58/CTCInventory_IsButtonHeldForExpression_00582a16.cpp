@@ -17,7 +17,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharString;
+class CCharString;
 
 struct CDefBase {
     virtual void v00();
@@ -26,20 +26,20 @@ struct CDefBase {
     void Release() { if (--RefCount == 0) Destroy(); }
 };
 
-struct CExpressionDef : CDefBase {
+class CExpressionDef : public CDefBase { public:
     unsigned char _pad_0x08[0x68];
     long          DummyObject;                       // +0x70 CDefIndex (PDB +0x74)
     long GetDummyObject() const { return DummyObject; }
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CDefBase> GetPDefFromInstantiationName(const CCharString& name);   // 0x009ADA40 (hidden result pointer)
     template <class T> bool GetDef(const CCharString& name, CDefPointer<T>* out);  // 0x00593666 (CExpressionDef)
 };
@@ -67,21 +67,21 @@ template <class T> bool CDefinitionManager::GetDef(const CCharString& name, CDef
 }
 #pragma auto_inline(on)
 
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber);   // 0x00446B10
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char         _pad_0x00[0x0C];
     CGamePlayerInterface* PGamePlayerInterface;      // +0x0C
     long GetPlayerNumber();                          // 0x00487510
 };
 
-struct CThing {
+class CThing { public:
     CPlayer* GetPlayer();                            // 0x004C7A10
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     void*   __vftable;                               // +0x00
     CThing* ParentThing;                             // +0x04 CTCBase
 

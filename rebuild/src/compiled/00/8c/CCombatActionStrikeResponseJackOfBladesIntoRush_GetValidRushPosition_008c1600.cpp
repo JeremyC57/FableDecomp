@@ -17,7 +17,7 @@
 //   plain expression form; `while (!found && size)` with if/else (no break) keeps retail's top-tested loop and the
 //   `mov bl,1` / `mov bl,[found]` exits.
 #include <stdlib.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -60,9 +60,9 @@ struct CPositionVector {                                // STLport vector<C3DVec
         return pos;
     }
 };
-struct CWorldMap;
-struct CThingSearchTools;
-struct CTCShapeManager;
+class CWorldMap;
+class CThingSearchTools;
+class CTCShapeManager;
 void __fastcall GetValidPositions(CPositionVector& positions, const CWorldMap& map, const CThingSearchTools& search,
                                   const C3DVector& pos, float radius, bool flag, const CTCShapeManager* shapes);   // 0x0074A5D0
 unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
@@ -73,7 +73,7 @@ inline unsigned long GFRandom(unsigned long* seed)
     return *seed;
 }
 #define VF(n) virtual void v##n();
-struct CWorld {
+class CWorld { public:
     VF(0) VF(1) VF(2) VF(3) VF(4) VF(5) VF(6) VF(7) VF(8) VF(9) VF(10) VF(11)
     virtual const CWorldMap& GetWorldMap();             // slot 12 (+0x30)
     unsigned char      _pad04[0x20 - 0x04];
@@ -81,7 +81,7 @@ struct CWorld {
     unsigned long* GetPRandomSeed();                    // 0x0049D810
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -111,17 +111,17 @@ struct CDefBase {
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
 };
-struct CJackOfBladesBattleDef : CDefBase {
+class CJackOfBladesBattleDef : public CDefBase { public:
     unsigned char _pad08[0x7c - 0x08];
     float         RushAwayDistance;                     // +0x7c (PDB +0x80)
 };
-template<class T> struct CDefPointer {                  // released without a null test
+template<class T> class CDefPointer { public:                  // released without a null test
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefPointer<CJackOfBladesBattleDef>* out);   // 0x008C33E0
 };
 void* FindSubDef_CJackOfBladesBattleDef(CDefClassBase* defClass);
@@ -137,15 +137,15 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CJackOfBladesBatt
 #pragma auto_inline(on)
 
 #pragma pack(push, 1)
-struct CTCBoss {                                        // interface 0xAD
+class CTCBoss { public:                                        // interface 0xAD
     unsigned char _pad00[0x22];
     C3DVector     PhaseStartPos;                        // +0x22
 };
 #pragma pack(pop)
-struct CTCCreatureNavigation {                          // interface 7
+class CTCCreatureNavigation { public:                          // interface 7
     bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance);   // 0x006CB620
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                   // +0x20
     CInterfaceMap   m_interfaces;                       // +0x44

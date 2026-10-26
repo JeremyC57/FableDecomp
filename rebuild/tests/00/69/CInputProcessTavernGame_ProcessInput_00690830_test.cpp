@@ -1,21 +1,21 @@
 // Behaviour test for CInputProcessTavernGame::ProcessInput @ 0x00690830 (copy of the model with stub callees).
 #include <cstdio>
-struct C2DVector { float X, Y; };
-struct CInputEvent { int button; long action; C2DVector MouseMovementXY; };   // 1 pressed, 2 held
-struct CProcessedInput { int dummy; };
+class C2DVector { public: float X, Y; };
+class CInputEvent { public: int button; long action; C2DVector MouseMovementXY; };   // 1 pressed, 2 held
+class CProcessedInput { public: int dummy; };
 struct CFrontEndManager { long last; int sends; C2DVector MouseMovement; void SendEvent(long e) { last = e; ++sends; } };
 static CFrontEndManager g_fe;
 static CFrontEndManager* GetInstance() { return &g_fe; }
-struct CInputProcessTavernGame;
-struct CTCTavernGame { int calls; void ProcessInput(const CInputEvent&, CProcessedInput&, CInputProcessTavernGame*) { ++calls; } };
-struct CTCGamePlayer { CTCTavernGame* game; CTCTavernGame* GetGame() { return this ? game : 0; } };
-struct CThing {
+class CInputProcessTavernGame;
+class CTCTavernGame { public: int calls; void ProcessInput(const CInputEvent&, CProcessedInput&, CInputProcessTavernGame*) { ++calls; } };
+class CTCGamePlayer { public: CTCTavernGame* game; CTCTavernGame* GetGame() { return this ? game : 0; } };
+class CThing { public:
     unsigned long m_tcMask[8]; CTCGamePlayer* player;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     CTCGamePlayer* GetTC(long) { return player; }
 };
 static CThing g_hero;
-struct CInputProcessTavernGame {
+class CInputProcessTavernGame { public:
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 1; }
     bool IsEventButtonHeld(const CInputEvent& e) { return e.button == 2; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.action == a; }

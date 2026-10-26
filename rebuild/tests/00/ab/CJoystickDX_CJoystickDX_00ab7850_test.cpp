@@ -4,8 +4,8 @@
 #include <cmath>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
-struct CInputManagerDX { int id; };
-struct CJoystick { void* mgr; bool excl; CJoystick(void* m, bool e) : mgr(m), excl(e) {} };
+class CInputManagerDX { public: int id; };
+class CJoystick { public: void* mgr; bool excl; CJoystick(void* m, bool e) : mgr(m), excl(e) {} };
 struct CJoystickDX : CJoystick {
     float XAxis, YAxis, XAxis2, YAxis2; long XAxisMin, XAxisMax, YAxisMin, YAxisMax; void* DJoystick; bool Acquired; CInputManagerDX* InputManagerDX;
     int exclusiveCalls; bool lastExclusive;

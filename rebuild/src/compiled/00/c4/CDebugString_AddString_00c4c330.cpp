@@ -14,7 +14,7 @@ struct CProfileLock {                  // 8-byte scoped lock
     ~CProfileLock();                          // 0x00C0FFE0
 };
 
-struct CDebugString {
+class CDebugString { public:
     unsigned char   _pad[8];           // +0x00
     long            m_count;           // +0x08
     unsigned char   _pad2[4];          // +0x0c

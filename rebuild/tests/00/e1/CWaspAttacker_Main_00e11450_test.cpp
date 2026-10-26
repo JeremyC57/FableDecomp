@@ -7,15 +7,15 @@ static int g_fail = 0;
 static std::string g_log;
 static int g_calls = 0, g_termAt = 0, g_frames = 0;
 static void L(const char* s) { g_log += s; g_log += ";"; }
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* t, long n = -1) : S(t) { (void)n; }
 };
 static CCharString operator+(const CCharString& a, const CCharString& b) { CCharString r(""); r.S = a.S + b.S; return r; }
-struct CRGBColour { unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) {} };
+class CRGBColour { public: unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) {} };
 // a thing: Id, and how many IsAlive checks it survives
 static int g_alive[8];
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     CScriptThing() : Id(0) {}
     explicit CScriptThing(int id) : Id(id) {}
@@ -29,11 +29,11 @@ struct CScriptThingView {
 };
 
 static int g_scripted = 0;
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     CScriptGameResourceObjectScriptedThingBase() { ++g_scripted; L("handle"); }
     ~CScriptGameResourceObjectScriptedThingBase() { --g_scripted; L("~handle"); }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     CGameScriptInterface() : Hero(1) {}
     void NewScriptFrame() const { ++g_frames; L("|"); }

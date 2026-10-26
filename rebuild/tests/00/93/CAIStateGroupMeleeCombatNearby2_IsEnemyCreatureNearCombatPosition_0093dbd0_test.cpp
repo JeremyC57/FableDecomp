@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CThingCreatureBase { bool reg; bool IsRegisteredCombatant() { return reg; } };
-struct CCombatManager { bool near; CThingCreatureBase* last; bool Combat_CheckRingRangeToTarget(CThingCreatureBase* c) { last = c; return near; } };
-struct CWorld { unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; CCombatManager* GetPCombatManager() { return m_pCombatManager; } };
-struct CAIBrain { unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* w; CWorld* GetPWorld() { return w; } };
+class CThingCreatureBase { public: bool reg; bool IsRegisteredCombatant() { return reg; } };
+class CCombatManager { public: bool near; CThingCreatureBase* last; bool Combat_CheckRingRangeToTarget(CThingCreatureBase* c) { last = c; return near; } };
+class CWorld { public: unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; CCombatManager* GetPCombatManager() { return m_pCombatManager; } };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* w; CWorld* GetPWorld() { return w; } };
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase { unsigned char PEnemy[8]; bool Archer; bool IsEnemyCreatureNearCombatPosition(); };
 bool CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureNearCombatPosition()
 { if (PBrain->Creature->IsRegisteredCombatant()) { CThingCreatureBase* creature = PBrain->Creature; if (GetPWorld()->GetPCombatManager()->Combat_CheckRingRangeToTarget(creature)) return true; } return false; }

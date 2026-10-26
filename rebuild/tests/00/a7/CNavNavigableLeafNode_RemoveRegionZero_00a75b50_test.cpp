@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CNavNavigableLeafNode {
+class CNavNavigableLeafNode { public:
     virtual void v0() {}
     virtual void v1() {}
     virtual void v2() {}

@@ -16,7 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E (allocator, not emitted here)
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CGameMapCell {                                       // 7 bytes, alignment 1
+class CGameMapCell { public:                                       // 7 bytes, alignment 1
     unsigned char AtmosThemes[3];                           // +0
     unsigned char AtmosBlends[2];                           // +3
     signed char   SoundTheme;                               // +5

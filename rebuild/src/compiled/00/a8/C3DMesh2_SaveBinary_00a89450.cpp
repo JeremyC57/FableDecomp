@@ -10,7 +10,7 @@
 // Layout: retail C3DMeshStats is 0x7C bytes (the PDB view is 0x84), so every C3DMesh2 member sits 8 below its
 // Ego_r.pdb offset: MaterialCount +0x88 ... BoneSpaceTransforms +0xE0, ClothFlag +0xE4. Retail C3DPrimitive2 is
 // 0xA0 bytes (PDB 0xAC: its CArray is 12 bytes), StaticBlockCount +0x40, AnimatedBlockCount +0x48.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();                       // slot 2 (+0x08)
     virtual void v3();
@@ -21,16 +21,16 @@ struct CDataOutputStream {
     void WriteBuffer(const void* data, long size);             // 0x00996610 (compressed block)
 };
 
-struct CMatrix3x4 { float m_row[3][4]; };
-struct CMatrix4x4 { float m_row[4][4]; };
-struct C3DBone2 { unsigned char _body[0x3C]; };
-struct C3DKeyframe { unsigned char _body[0x30]; };
+class CMatrix3x4 { public: float m_row[3][4]; };
+class CMatrix4x4 { public: float m_row[4][4]; };
+class C3DBone2 { public: unsigned char _body[0x3C]; };
+class C3DKeyframe { public: unsigned char _body[0x30]; };
 
-struct C3DMeshMaterial {
+class C3DMeshMaterial { public:
     unsigned char _body[0x30];
     void SaveBinary(CDataOutputStream& out) const;             // 0x00ABF6B0
 };
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _pad0[0x40];
     unsigned long StaticBlockCount;                            // +0x40 (PDB +0x44)
     void* StaticBlocks;                                        // +0x44
@@ -39,12 +39,12 @@ struct C3DPrimitive2 {
     void SaveBinary(CDataOutputStream& out) const;             // 0x00A8FD40
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     unsigned char _body[0x7C];
     void SaveBinary(CDataOutputStream& out) const;             // 0x00A2EAA0
 };
 
-struct C3DMesh2 : C3DMeshStats {
+class C3DMesh2 : public C3DMeshStats { public:
     long MemoryHandle;                    // +0x7C
     long PrimMemoryHandle;                // +0x80
     long BoneNameMemoryHandle;            // +0x84

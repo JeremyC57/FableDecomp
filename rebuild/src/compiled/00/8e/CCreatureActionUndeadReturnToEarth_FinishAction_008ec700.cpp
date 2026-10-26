@@ -9,10 +9,10 @@
 // CCreatureAction_UndeadIdleUnderground whose constructor is inlined (base ctor with action code 50, then its vtable
 // 0x0126908C from rtti-vtables.tsv). The temporary is built before the object expression (VC evaluates the argument
 // first), so GetPItem is called twice. Retail CCombatActionBase is 0x114 bytes (the PDB build is larger): modelled locally.
-struct CThingCreatureBase;
-struct CCreatureActionBase;
+class CThingCreatureBase;
+class CCreatureActionBase;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -38,7 +38,7 @@ struct CCombatActionBase {
     void FinishAction();                        // 0x00859A20
 };
 
-struct CCreatureAction_UndeadIdleUnderground : CCombatActionBase {   // retail sizeof 0x114, vtable 0x0126908C
+class CCreatureAction_UndeadIdleUnderground : public CCombatActionBase { public:   // retail sizeof 0x114, vtable 0x0126908C
     virtual void v00();
     CCreatureAction_UndeadIdleUnderground(CThingCreatureBase* owner)
         : CCombatActionBase(owner, 50, CSoundPair())
@@ -46,11 +46,11 @@ struct CCreatureAction_UndeadIdleUnderground : CCombatActionBase {   // retail s
     }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 
-struct CCreatureAction_UndeadReturnToEarth : CCombatActionBase {
+class CCreatureAction_UndeadReturnToEarth : public CCombatActionBase { public:
     void FinishAction();
 };
 

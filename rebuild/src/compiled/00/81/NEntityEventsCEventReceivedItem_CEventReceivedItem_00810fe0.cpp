@@ -22,13 +22,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
 };
 
 namespace NEntityEvents {
-struct CEventBase {                                // vtable 0x0124F2C4
+class CEventBase { public:                                // vtable 0x0124F2C4
     virtual void v00();
     long m_eventType;                              // +0x04
     ~CEventBase() { }
 };
 
-struct CEventReceivedItem : CEventBase {                      // vtable 0x01272360
+class CEventReceivedItem : public CEventBase { public:                      // vtable 0x01272360
     CIntelligentPointer m_giver;                   // +0x08
     CIntelligentPointer m_item;                    // +0x10
     bool                m_ownsItem;                // +0x18

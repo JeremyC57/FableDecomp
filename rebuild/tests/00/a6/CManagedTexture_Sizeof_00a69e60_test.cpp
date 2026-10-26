@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CTexture { void* PD3DTexture; unsigned long ByteLength : 28; unsigned long AllocationSource : 4; };
-struct CManagedTextureData { unsigned char _pad[0x20]; CTexture* Texture_Data; unsigned char _pad24[0x1c]; unsigned long AllocSize; };
-struct CManagedTexture { void* __vftable; CManagedTextureData* m_pData;
+class CTexture { public: void* PD3DTexture; unsigned long ByteLength : 28; unsigned long AllocationSource : 4; };
+class CManagedTextureData { public: unsigned char _pad[0x20]; CTexture* Texture_Data; unsigned char _pad24[0x1c]; unsigned long AllocSize; };
+class CManagedTexture { public: void* __vftable; CManagedTextureData* m_pData;
     long Sizeof() { long size = 8; /* sizeof(CManagedTexture) in retail (32-bit) */ if (m_pData) size = m_pData->AllocSize + (m_pData->Texture_Data ? m_pData->Texture_Data->ByteLength + 0xc : 8 /* sizeof(CTexture) */) + 0x54; return size; } };
 
 int main()

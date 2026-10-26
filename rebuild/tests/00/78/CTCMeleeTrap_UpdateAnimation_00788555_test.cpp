@@ -9,7 +9,7 @@ struct CAnimFrameTime {
     CAnimFrameTime(float time) : Offset(0.0f), Blend(0.0f) { Time = time; }
 };
 static int g_frames = 0; static float g_lastTime = -1;
-struct CAnimateThing { void UpdateFrameLogic(const CAnimFrameTime& time) { ++g_frames; g_lastTime = time.Time + time.Offset + time.Blend; } };
+class CAnimateThing { public: void UpdateFrameLogic(const CAnimFrameTime& time) { ++g_frames; g_lastTime = time.Time + time.Offset + time.Blend; } };
 static CAnimateThing g_anim;
 struct CTCAnimation { CAnimateThing& GetAnimation() { return g_anim; } };
 struct CInterfaceMap {
@@ -42,9 +42,9 @@ public:
 };
 float GetUpdateTimeForThing(CThing* thing, CWorld* world) { return world == &g_world ? 0.25f : -1.0f; }
 static bool g_isOpen = false;
-struct CFadeInFadeOutBase { bool Active; bool IsOpen() { return g_isOpen; } };
+class CFadeInFadeOutBase { public: bool Active; bool IsOpen() { return g_isOpen; } };
 static int g_continuous = 0, g_resets = 0;
-struct CTCTrapBase {
+class CTCTrapBase { public:
     CThing*       ParentThing;
     CFadeInFadeOutBase TrapOpener;
     bool          Triggered;

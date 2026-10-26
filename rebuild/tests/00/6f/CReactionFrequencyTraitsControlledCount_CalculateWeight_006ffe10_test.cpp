@@ -2,9 +2,9 @@
 // the last creature weighs 0; while rising the count recharges by elapsed frames (unsigned) and capping it ends the
 // phase and forgets the creature; before the minimum gap the weight is 0; otherwise count/max clamped to [0, 1].
 #include <cstdio>
-struct CThingAICreature { int Id; };
+class CThingAICreature { public: int Id; };
 static long g_frame;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 inline const float& Clamp(const float& v, const float& lo, const float& hi)
 {
     if (v < lo) return lo;

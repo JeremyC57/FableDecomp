@@ -1,13 +1,13 @@
 // Test for 00861e00 CModeStandBase::CModeStandBase: base mode ctor, zeroed counters/speeds, empty name and anim pointers.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_baseCalls = 0;
 struct CModeBase {
     CThing* ParentThing;
     CModeBase(CThing* parent) : ParentThing(parent) { ++g_baseCalls; }
     virtual ~CModeBase() {}
 };
-struct CCharString { const char* PStringData; CCharString() : PStringData("") {} };
+class CCharString { public: const char* PStringData; CCharString() : PStringData("") {} };
 struct CAnimEntryPointer { void* Data; void* Info; CAnimEntryPointer() : Data(0), Info(0) {} };
 struct CModeStandBase : CModeBase {
     long IdleCounter; long FramesToKeepUpdatingMovement; bool ForceAddNewAnims;

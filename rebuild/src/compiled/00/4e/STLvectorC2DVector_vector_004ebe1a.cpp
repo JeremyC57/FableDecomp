@@ -17,7 +17,7 @@
 
 inline void* operator new(size_t, void* where) { return where; }
 
-struct C2DVector {                              // 8 bytes
+class C2DVector { public:                              // 8 bytes
     float X;                                    // +0x00
     float Y;                                    // +0x04
 };

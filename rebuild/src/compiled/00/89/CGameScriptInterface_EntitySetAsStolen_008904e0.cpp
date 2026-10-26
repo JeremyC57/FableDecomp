@@ -6,7 +6,7 @@
 // Leaf: EntitySetAsStolen
 #include <string.h>
 struct CThing_Retail;
-struct CScriptThing;
+class CScriptThing;
 // CCharString (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
 #pragma pack(push, 1)
 struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
@@ -16,7 +16,7 @@ struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;        // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                    // 17 bytes
+class CCharStringData { public:                    // 17 bytes
     CBasicStringChar Data;                  // +0x00
     long             NoRefs;                // +0x0d
 };
@@ -40,7 +40,7 @@ struct CBase {
     CBase();                                        // 0x0099A2D0
     virtual ~CBase();
 };
-struct CScriptThing : CBase {                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
+class CScriptThing : public CBase { public:                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
      virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010();
     virtual CThing_Retail* GetThing() const;   // slot 11 (+0x2c)
@@ -134,7 +134,7 @@ struct CRegionDef_Retail {                          // a counted def object (cou
     unsigned char _pad08[0x6c];
     long          m_wanderingPopulationScriptDef;   // +0x74
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data) { if (Data) ++Data->m_refCount; }
     ~CCountedPointer() { if (Data && --Data->m_refCount == 0) Data->DeleteThis(); }
@@ -159,14 +159,14 @@ struct CCombatManager_Retail {
     void CreatureUnsheathWeapon(CThing_Retail* creature, long mode);   // 0x006EBDD0
 };
 struct CMessageEvent_Retail;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 struct CMessageEventManager_Retail {
     CMessageEvent_Retail* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     virtual void w000(); virtual void w001(); virtual void w002(); virtual void w003(); virtual void w004(); virtual void w005(); virtual void w006(); virtual void w007();
     virtual void w008(); virtual void w009(); virtual void w010(); virtual void w011();
     virtual CWorldMap_Retail* GetWorldMap();   // slot 12 (+0x30)
@@ -178,9 +178,9 @@ struct CWorld {
     unsigned char                _pad64[0x70];
     bool                         m_creatureGeneratorsEnabled;   // +0xd4 (global switch)
 };
-struct CWorld;
+class CWorld;
 struct CDefinitionManager_Retail;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006(); virtual void g007();
     virtual void g008(); virtual void g009(); virtual void g010(); virtual void g011(); virtual void g012(); virtual void g013(); virtual void g014(); virtual void g015();
     virtual void g016(); virtual void g017(); virtual void g018(); virtual void g019(); virtual void g020(); virtual void g021(); virtual void g022(); virtual void g023();

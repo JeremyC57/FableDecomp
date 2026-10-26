@@ -1,5 +1,5 @@
 // __fastcall this=ecx, flags=stack. base /O2 /Oy (no pragma). family len30 x22 (template 00412b00)
-struct CStaticMapBankFile { void Dtor(); void* ScalarDeletingDestructor(unsigned flags); };
+class CStaticMapBankFile { public: void Dtor(); void* ScalarDeletingDestructor(unsigned flags); };
 void __cdecl operator delete(void* p);
 void* CStaticMapBankFile::ScalarDeletingDestructor(unsigned flags) {
     this->Dtor();

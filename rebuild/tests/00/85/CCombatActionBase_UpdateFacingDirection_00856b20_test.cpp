@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cmath>
 // behaviour test: CCombatActionBase::UpdateFacingDirection (0x00856B20)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static float AngleDifference(float a, float b)
 {
     float d = a - b;
@@ -16,13 +16,13 @@ struct CPhysicsBody {
     C3DVector GetFacing() { return Facing; }
     void SetFacingAngle(float f) { SetAngle = f; ++SetCount; }
 };
-struct CThing {
+class CThing { public:
     C3DVector Pos;
     CPhysicsBody* m_pPhysics;
     const C3DVector& GetPosition() const { return Pos; }
     CPhysicsBody* GetPhysics() const { return m_pPhysics; }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     float Rotation;
     void GetRotationInAnimation(float* p) const { *p = Rotation; }
 };
@@ -40,7 +40,7 @@ static float FacingFraction(float x, float y)
     }
     return fraction;
 }
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature;
     CAnimationEntry* PAnimEntry;
     CBaseIntelligentPointer PTarget;

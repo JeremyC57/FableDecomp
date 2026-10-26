@@ -10,13 +10,13 @@
 // are taken before the bone stores; the source blend is read through a reference into two named locals (the dead
 // `lea` of the element stays) and each re-indexed blend is a by-value temporary in the 8-aligned frame.
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
-struct C3DVertexBlend2 {
+class C3DVertexBlend2 { public:
     unsigned long VertexIndex;
     float         BlendValue;
     C3DVertexBlend2() {}
     C3DVertexBlend2(unsigned long index, float value) : VertexIndex(index), BlendValue(value) {}
 };
-template <class T> struct CArray {                      // retail 12 bytes
+template <class T> class CArray { public:                      // retail 12 bytes
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -25,7 +25,7 @@ template <class T> struct CArray {                      // retail 12 bytes
     T& back() { return *(_M_finish - 1); }
     void push_back(const T& x);
 };
-struct C3DGroup2 {
+class C3DGroup2 { public:
     long                    BoneIndex;                  // +0
     CArray<C3DVertexBlend2> VertexBlends;               // +4
     C3DGroup2();                                        // 0x00AC40C0
@@ -34,7 +34,7 @@ struct C3DGroup2 {
     void AddVertexBlend(const C3DVertexBlend2& blend);  // 0x00AC4110
 };
 template <> void CArray<C3DGroup2>::push_back(const C3DGroup2& x);   // 0x00AE83D0
-struct CParticleProgram {
+class CParticleProgram { public:
     unsigned char     _pad000[0xdc];
     CArray<long>      ParticleIndices;                  // +0xdc
     CArray<long>      VertexIndices;                    // +0xe8

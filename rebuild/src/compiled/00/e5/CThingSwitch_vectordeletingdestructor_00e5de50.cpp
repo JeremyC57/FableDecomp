@@ -11,12 +11,12 @@
 #undef CFrontEndScreen
 #pragma optimize("t", on)
 namespace NUISystem {
-struct CFrontEndScreen {                   // vtable 0x012C3224; label NUISystem::CFrontEndScreen::~CFrontEndScreen
+class CFrontEndScreen { public:                   // vtable 0x012C3224; label NUISystem::CFrontEndScreen::~CFrontEndScreen
     void* _vptr;
     ~CFrontEndScreen();                     // 0x00F35B40 (inlines the CScriptThing member destructor at +8)
 };
 }
-struct CTimer {                             // one word: the timer handle
+class CTimer { public:                             // one word: the timer handle
     long Handle;
     ~CTimer();                              // 0x00CD4470 (hands the handle back through the global at 0x0143E8F8, slot 0x160)
 };

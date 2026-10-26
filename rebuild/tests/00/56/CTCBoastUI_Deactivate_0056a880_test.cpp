@@ -2,7 +2,7 @@
 // but inactive UI just drops the request; an active UI restores the camera, quits and closes the GUI.
 #include <cstdio>
 static int g_cameraCalls, g_closeCalls;
-struct CGameCameraManager { void SetAutomaticCameraControl() { ++g_cameraCalls; } };
+class CGameCameraManager { public: void SetAutomaticCameraControl() { ++g_cameraCalls; } };
 struct CGameWorldCalls { CGameCameraManager* m_pCameraManager; };
 struct CEngineCalls { CGameWorldCalls* m_pWorld; };
 static CGameCameraManager g_camera;
@@ -13,7 +13,7 @@ struct CPlayerGuiCalls { void Close() { ++g_closeCalls; } };
 static CPlayerGuiCalls g_gui;
 static CPlayerGuiCalls* g_pPlayerGui = &g_gui;
 
-struct CTCBoastUI {
+class CTCBoastUI { public:
     bool Active, Quitting, AllowedToOpen, ActivationRequested, ActivateLater;
     int  m_deactivateCalls;
     void Deactivate()

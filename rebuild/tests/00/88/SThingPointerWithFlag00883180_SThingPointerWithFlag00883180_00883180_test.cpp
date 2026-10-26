@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <stddef.h>
-struct CThing { int x; };
+class CThing { public: int x; };
 static int g_set = 0; static const CThing* g_item = (const CThing*)1;
 struct CBaseIntelligentPointer { virtual void v00() { } void* PData; CBaseIntelligentPointer() : PData(0) { } void SetPItem(const CThing* p) { ++g_set; g_item = p; PData = (void*)p; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() { } CIntelligentPointer(const CThing* p) : CBaseIntelligentPointer() { SetPItem(p); } };

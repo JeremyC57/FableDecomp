@@ -7,7 +7,7 @@
 // byte at +8. Shape: both bit clears fold into `and byte ptr [esi+8],0FCh` ahead of the vtable store,
 // the pointer initialiser is an immediate zero store after it (same constructor shape as
 // CDefClassBase::CDefClassBase 0x0042D9E0).
-namespace NParticleEngine { struct CParticleSystem; }
+namespace NParticleEngine { class CParticleSystem; }
 
 struct CBase {
     virtual ~CBase();

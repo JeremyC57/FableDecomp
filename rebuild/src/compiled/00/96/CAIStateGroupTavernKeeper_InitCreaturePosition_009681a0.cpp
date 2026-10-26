@@ -8,7 +8,7 @@
 // `xor eax,eax` and the true exit is `mov eax,1` -- a long-valued override (same shape as the landed
 // IdleAtHome::InitCreaturePosition @ 0x00917330). The base is modelled locally: the generated
 // header flattens it and has no vtable.
-struct CThingBuilding;
+class CThingBuilding;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -16,16 +16,16 @@ struct CBaseIntelligentPointer {
     CThingBuilding* GetPItem();                 // 0x00A01B50
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     bool AutoPlaceNearBuilding(CThingBuilding* building, float radius);    // 0x00666EF0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

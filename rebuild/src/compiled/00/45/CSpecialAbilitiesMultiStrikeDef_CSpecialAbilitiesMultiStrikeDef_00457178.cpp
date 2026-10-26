@@ -16,7 +16,7 @@ public:
     CParentDefClassBase();                         // 0x00430370
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString();                                  // 0x0042D9D0 (TablePos = -1)
 };
@@ -25,7 +25,7 @@ template <class T> struct CRetailVector {          // retail std::vector<T> (12 
     T* m_first; T* m_last; T* m_end;
     CRetailVector() : m_first(0), m_last(0), m_end(0) {}
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 class CSpecialAbilitiesMultiStrikeDef : public CParentDefClassBase {   // vtable 0x0123412C
 public:

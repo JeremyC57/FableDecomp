@@ -17,7 +17,7 @@
 // Shape: the implicit assignment written out; CParentDefClassBase's implicit assignment inlines (the name
 //   word loaded before the map's address arithmetic, the map vector out of line, then the sorted byte).
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x21];                          // +0x04 .. +0x24 (PDefManager, GlobalIndex, Setup bits, ...)
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
     virtual void v00();
@@ -31,17 +31,17 @@ template<class T> struct CRetailVector {                // begin/end/capacity
 
 struct CKeyPairCompareLess {};
 
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     CRetailVector<V>    m_vector;                       // +0x00
     CKeyPairCompareLess m_compare;                      // +0x0c (empty)
     bool                m_sorted;                       // +0x0d
 };
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSubDefInfo;
 
 #pragma pack(push, 1)
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     CDefString                             InstantiationName;   // +0x25
     CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap;       // +0x29
 };
@@ -68,10 +68,10 @@ struct CReactionMatchList {                             // list<CReactionMatch_*
     CReactionMatchList& operator=(const CReactionMatchList& other);   // 0x0067CF40
 };
 
-struct CReactionFrequencyTraits;
-struct CReactionFrequencyTraitsArray { unsigned long m_words[0x9e]; };   // 0x278-byte POD block
+class CReactionFrequencyTraits;
+class CReactionFrequencyTraitsArray { public: unsigned long m_words[0x9e]; };   // 0x278-byte POD block
 
-struct COpinionReactionManagerDef : CParentDefClassBase {               // vtable 0x0125B7DC
+class COpinionReactionManagerDef : public CParentDefClassBase { public:               // vtable 0x0125B7DC
     CBlurredAttitudesDefVector AttitudeBlur;                            // +0x3c
     CRetailTree_0067d0f0 AttitudeCondition;                             // +0x48
     CRetailTree_0067d250 TargetingCondition;                            // +0x54

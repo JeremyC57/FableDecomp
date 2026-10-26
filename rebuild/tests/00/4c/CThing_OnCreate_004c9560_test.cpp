@@ -4,7 +4,7 @@
 #ifndef _MSC_VER
 #define __declspec(x)
 #endif
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad00[0x42];
     unsigned char IsLoadableGlobal : 1;          // +0x42 bit 0
     unsigned char GameStatePersisted : 1;        // bit 1
@@ -12,10 +12,10 @@ struct CThingBaseDef {
 struct CDefPointer {                             // CDefPointer<const CThingBaseDef>
     CThingBaseDef* Object;
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer* out);   // 0x0042AF3C
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x20];
     CDefinitionManager* DefinitionManager;       // +0x20
     unsigned char _pad24[0x54 - 0x24];
@@ -25,7 +25,7 @@ struct CThingManager {
     void OnThingCreated();                       // 0x0051E2E0 (name not recovered)
 };
 extern CThingManager* g_pThingManager;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void OnCreate();                     // slot 4 (+0x10)
     void* ParentThing;                           // +0x04
@@ -53,7 +53,7 @@ __declspec(noinline) CComponentVector::CComponentVector(const CComponentVector& 
     _M_finish = last;
     _M_end_of_storage = last;
 }
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -61,7 +61,7 @@ struct CTCDriverBase {
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual void OnThingCreated();               // slot 29 (+0x74)
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char  _pad04[0x44 - 0x04];
     CComponentVector Components;                 // +0x44 CVectorMap (0x10 with padding)

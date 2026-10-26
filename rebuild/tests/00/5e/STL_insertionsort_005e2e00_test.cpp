@@ -1,7 +1,7 @@
 // Behaviour test for 0x005E2E00 std::__insertion_sort over (priority, CDefPointer<const CContextSensitiveItemDef>) pairs.
 #include <cstdio>
 
-struct CIVCountedPointeeBase { unsigned long IVRefCount; int id; };
+class CIVCountedPointeeBase { public: unsigned long IVRefCount; int id; };
 struct CDefPointer {
     CIVCountedPointeeBase* Object;
     explicit CDefPointer(CIVCountedPointeeBase* p) : Object(p) { if (Object) ++Object->IVRefCount; }
@@ -18,7 +18,7 @@ struct SPriorityEntry {
     SPriorityEntry(long p, CIVCountedPointeeBase* d) : first(p), second(d) { }
     SPriorityEntry(const SPriorityEntry& o) : first(o.first), second(o.second) { }
 };
-struct CContextSensitivePriorityCompare {
+class CContextSensitivePriorityCompare { public:
     void* m_context;
     bool operator()(const SPriorityEntry& a, const SPriorityEntry& b) const { return a.first < b.first; }
 };

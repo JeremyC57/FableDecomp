@@ -7,7 +7,7 @@
 // pointer) by a four-trip loop the compiler unrolls, PDef re-read after every indexed store (four explicit statements
 // keep PDef in edi). Def offsets are the PDB's minus 4 (FadeInTimeSecs +0x3c,
 // FadeOutTimeSecs +0x40, Color +0x44).
-struct CSpecialAbilitiesCreatureTintDef {
+class CSpecialAbilitiesCreatureTintDef { public:
     unsigned char _pad00[0x3c];
     float FadeInTimeSecs;                   // +0x3c
     float FadeOutTimeSecs;                  // +0x40
@@ -16,16 +16,16 @@ struct CSpecialAbilitiesCreatureTintDef {
     long* ColorEnd;                         // +0x4c
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
 
 extern long g_GameFramesPerSecond;          // 0x01375550
 
-struct CThing;
+class CThing;
 
-struct CTCCreatureTintEffect {
+class CTCCreatureTintEffect { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

@@ -6,7 +6,7 @@
 // Model: the 12-byte STLport vector (CArray) of skeletal-morph entries {long, CCharString, float}.
 static int g_liveStrings = 0;
 
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* t) : PStringData(t) { ++g_liveStrings; }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_liveStrings; }
@@ -17,7 +17,7 @@ struct __false_type { __false_type() { } };
 
 static int g_overflows = 0;
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

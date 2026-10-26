@@ -5,8 +5,8 @@
 // The rel32 target is relocation-masked in parity, so any plausible extern target
 // reproduces the single jmp instruction byte-for-byte.
 
-struct CDefClassBase;
-struct CSpecialAbilitiesMultiArrowDef;
+class CDefClassBase;
+class CSpecialAbilitiesMultiArrowDef;
 
 // Shared implementation this thunk tail-jumps to.
 extern void __fastcall CSpecialAbilitiesMultiArrowDef_Copy_impl(

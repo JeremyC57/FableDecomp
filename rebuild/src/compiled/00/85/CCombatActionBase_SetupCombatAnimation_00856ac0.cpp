@@ -8,7 +8,7 @@
 // Shape: the vector address is pushed (edi) before the creature is fetched, the index call's result indexes
 // the vector's first pointer (`mov ecx,[edi] ; mov edx,[ecx+eax*4]`), then the two float immediates and the
 // entry are pushed right to left.
-struct CAnimationEntry;
+class CAnimationEntry;
 
 struct CAnimationEntryVector {                  // std::vector<const CAnimationEntry*>
     const CAnimationEntry** m_pFirst;           // +0x00
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08

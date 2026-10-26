@@ -3,8 +3,8 @@
 static int g_log[64];
 static int g_n = 0;
 static void Log(int v) { if (g_n < 64) g_log[g_n++] = v; }
-struct CThing { int id; };
-struct CCharString {
+class CThing { public: int id; };
+class CCharString { public:
     const char* p;
     CCharString() : p(0) {}
     CCharString(const char* t, long = -1) : p(t) {}
@@ -19,7 +19,7 @@ static unsigned long Calc(unsigned long seed, const void* d, unsigned long n)
     for (unsigned long i = 0; i < n; ++i) h = h * 33 + c[i];
     return h;
 }
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     CCharString   Group;
     unsigned long GroupCRC;
     CAnimFilterOfGroup() : Group(), GroupCRC(0) {}
@@ -37,8 +37,8 @@ struct CIP {
     CIP(CThing* t) : PItem(0), built(1) { PItem = t; }
 };
 template <class T> struct CVector { T* a; T* b; T* c; CVector() : a(0), b(0), c(0) {} };
-template <class T> struct CDefPointer { T* Object; CDefPointer() : Object(0) {} };
-struct C3DVector { float X, Y, Z; };
+template <class T> class CDefPointer { public: T* Object; CDefPointer() : Object(0) {} };
+class C3DVector { public: float X, Y, Z; };
 struct CModeStandBase {
     CThing* ParentThing;
     CModeStandBase(CThing* t) : ParentThing(t) { Log(1); }
@@ -46,7 +46,7 @@ struct CModeStandBase {
 // behaviour copy of NCreatureMode::CModeDrained::CModeDrained(CThing*, CThing*): the drainer's current mode type is looked up through its interface 0x31
 struct CModeBase { virtual unsigned long GetModeType() { return 7; } virtual ~CModeBase() {} };
 struct CMode9 : CModeBase { unsigned long GetModeType() { return 9; } };
-struct CTCCreatureModeManager { CModeBase* current; CModeBase* GetCurrentMode() { return current; } };
+class CTCCreatureModeManager { public: CModeBase* current; CModeBase* GetCurrentMode() { return current; } };
 struct SEntry { long type; void* component; };
 struct CDrainer : CThing {
     unsigned long m_presentBits[9]; SEntry entries[2]; SEntry* first; SEntry* last;

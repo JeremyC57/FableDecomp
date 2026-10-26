@@ -14,7 +14,7 @@
 // Shape: user-style memberwise copy constructor: base call, vtable store (scheduled after the
 // first `lea`), the long through eax, the vector out of line, the bool through dl.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                                            // +0x04..+0x28 (0x25 bytes + alignment)
     CDefClassBase(const CDefClassBase& other);                            // 0x0046644C
@@ -27,7 +27,7 @@ struct CArenaCreatureDefVector {                                          // ret
     CArenaCreatureDefVector(const CArenaCreatureDefVector& other);        // 0x00F25D20
 };
 
-struct CArenaWaveDef : CDefClassBase {                                    // vtable 0x012FB2F0 (no RTTI)
+class CArenaWaveDef : public CDefClassBase { public:                                    // vtable 0x012FB2F0 (no RTTI)
     long                    NumWaveCreatures;                             // +0x28
     CArenaCreatureDefVector Creatures;                                    // +0x2c
     bool                    ShortWave;                                    // +0x38

@@ -1,16 +1,16 @@
 // Behaviour test for CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable (0x00986510): same logic over mocks.
 #include <cstdio>
-struct CTCVillage { int id; };
+class CTCVillage { public: int id; };
 struct CTCVillager { CTCVillage* village; };
 CTCVillage* GFGetPVillageInterface(CTCVillager* v) { return v->village; }
-struct CThing;
-struct CHeroMarriageInfo { long a, b, c, d; long State; bool Flag; CHeroMarriageInfo() : a(0), b(0), c(0), d(0), State(0), Flag(false) { } };
-struct CTCHeroStats {
+class CThing;
+class CHeroMarriageInfo { public: long a, b, c, d; long State; bool Flag; CHeroMarriageInfo() : a(0), b(0), c(0), d(0), State(0), Flag(false) { } };
+class CTCHeroStats { public:
     CThing* wives[4]; int nWives; long states[4]; bool known[4];
     bool empty() const { return nWives == 0; }
     bool PeekMarriageInfo(int idx, CHeroMarriageInfo* info) const { if (!known[idx]) return false; info->State = states[idx]; return true; }
 };
-struct CThing {
+class CThing { public:
     bool dead; CTCVillager* villager; CTCHeroStats* stats; int uid;
     CThing() : dead(false), villager(0), stats(0), uid(0) { }
 };

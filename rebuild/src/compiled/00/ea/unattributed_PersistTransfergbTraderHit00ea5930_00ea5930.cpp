@@ -8,7 +8,7 @@
 // +0x4b through CPersistContext::Transfer<signed char>(name, value, default) @ 0x004045C0,
 // with a zero default built in a one-byte stack temporary. The member name is taken
 // from the persisted key. One of 44 bodies of this shape.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, signed char& value, const signed char& defaultValue);   // Transfer<signed char> @ 0x004045C0
 };
 

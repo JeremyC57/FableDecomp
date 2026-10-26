@@ -12,15 +12,15 @@
 // destroyed before SelectItemWithDefIndex, so the index is a named local (edi).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);             // 0x0099EBF0
     ~CCharString();                                              // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);     // 0x009AD410
 };
-struct CThing;
+class CThing;
 struct CTCInventoryClothing_Retail {
     void*         __vftable;                                     // +0x000
     CThing*       Owner;                                         // +0x004

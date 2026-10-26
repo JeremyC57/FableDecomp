@@ -1,6 +1,6 @@
 // behaviour test for 0x00B1B030 CPSCSpline::GetUpdateParam
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CParticleUpdateParameters { int setups; };
 static float g_frameTime = 2.0f;
 float GetParticleFrameTime_00aeaa00() { return g_frameTime; }

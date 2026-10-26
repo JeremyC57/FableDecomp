@@ -12,14 +12,14 @@
 // Shape: a user destructor (own vtable store first); the manager is read into a named local before ClearOpinionSource's pushes;
 // the count loop is `while (count > 0) { ...; --count; }` (rotated, the decrement stored then tested); the boast component is
 // a named local loaded before its argument's GetPItem; the hero pointer member has no destructor of its own.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -44,31 +44,31 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { };   // CIntelligentPointer<CThing>
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* thing, bool flag);  // 0x007008C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char            _pad00[0x74];
     COpinionReactionManager* OpinionReactionManager;    // +0x74
 };
 struct CTCBoastComponent {                              // the hero's interface-0x73 component
     void RemoveBoast(CThing* hero);                     // 0x00783240
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
     CWorld* GetWorld();                                 // 0x00686A70
 };
-struct CTCCreatureGroup : CTCBase {                     // retail 0x24 bytes
+class CTCCreatureGroup : public CTCBase { public:                     // retail 0x24 bytes
     unsigned long MemberCount;                          // +0x0c
     unsigned long ActiveMemberCount;                    // +0x10
     bool          ShutdownOnEmpty;                      // +0x14
     void*         Members[3];                           // +0x18 STLport map (12 bytes)
     virtual ~CTCCreatureGroup();                        // 0x004E5C71
 };
-struct CTCCreatureGroupBoastingCrowd : CTCCreatureGroup {   // vtable 0x0126B5DC
+class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:   // vtable 0x0126B5DC
     CIntelligentPointer PHero;                          // +0x24 (PDB +0x28)
     long CrowdState;                                    // +0x2c
     long CurrentEncouragementState;                     // +0x30

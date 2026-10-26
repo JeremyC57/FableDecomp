@@ -8,14 +8,14 @@
 // Shape: the landed GetInterface out-parameter template (0x008CB4A0 family): one `push ecx` frame word for
 // the lookup key, the interface map addressed once through esi. AddedRollMode (a bool at retail +0x12c,
 // PDB +0x144) is cleared whether or not the creature still has a mode manager.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -38,11 +38,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x00859A20
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -57,7 +57,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCombatAction_ControlledStrafeJump : CCombatActionBase {   // retail sizeof 0x130
+class CCombatAction_ControlledStrafeJump : public CCombatActionBase { public:   // retail sizeof 0x130
     float RequiredFacing_X, RequiredFacing_Y, RequiredFacing_Z;    // +0x114
     float OriginalFacing_X, OriginalFacing_Y, OriginalFacing_Z;    // +0x120
     bool AddedRollMode;                     // +0x12c

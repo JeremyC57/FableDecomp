@@ -10,10 +10,10 @@
 // read into ecx and STLport's resize(n, x) runs inline on traits.DefaultVal: size `(finish - start) >> 3`, the shrink
 // arm passes `start + n` and the cached finish, the grow arm reloads finish and passes (finish, n - size, &x); each arm
 // destroys the traits string and returns on its own (`ret 4`).
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30

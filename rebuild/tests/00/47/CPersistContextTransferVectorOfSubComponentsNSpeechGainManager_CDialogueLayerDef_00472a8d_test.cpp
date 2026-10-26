@@ -3,10 +3,10 @@
 // resizes and transfers each element; the CRC key is checked first in both modes.
 #include <cstdio>
 #include <cstring>
-struct CPersistContext;
+class CPersistContext;
 static int g_crcChecks = 0;
 static int g_transfers = 0;
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     const unsigned char* m_pData;
     long m_remaining;
     long ReadLong()
@@ -22,7 +22,7 @@ struct CMemoryDataInputStream {
         return value;
     }
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     long Written[4];
     int Count;
     void WriteLong(long value) { Written[Count++] = value; }
@@ -38,7 +38,7 @@ struct CDialogueLayerVector {
     CDialogueLayerDef& operator[](long index) { return Items[index]; }
     void resize(long count) { long i = 0; for (i = Count; i < count; ++i) Items[i].Transferred = 0; Count = count; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     CMemoryDataInputStream* PLoadStream;
     CDataOutputStream* PSaveStream;

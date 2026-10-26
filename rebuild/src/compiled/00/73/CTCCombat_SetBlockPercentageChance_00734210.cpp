@@ -17,14 +17,14 @@
 //   (long, float) order was wrong). The same name at 0x0074B7A0 is a mid-function reference, not a second body.
 enum EWeaponClass { WEAPON_CLASS_0 };
 enum ECombatAbilityDataType { COMBAT_ABILITY_DATA_0, COMBAT_ABILITY_DATA_BLOCK };
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual long GetType() const;               // slot 3 (+0x0c)
     long          BlockPercentageChance;        // +0x04
     unsigned char _pad08[0x2c - 0x08];
     EWeaponClass  BlockType;                    // +0x2c
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CCombatAbilityDataPointer {              // CCountedPointer<CCombatAbilityData>
     CCombatAbilityData* Data;
     CCPPointerInfo*     Info;
@@ -93,7 +93,7 @@ struct CCombatAbilityMap {                      // STLport multimap (12 bytes): 
         return CAbilityIterator(y);
     }
 };
-struct CTCCombat {
+class CTCCombat { public:
     virtual void v00();
     unsigned char _pad04[0x70 - 0x04];          // CTCBase .. UnsheathingWeaponType (retail offsets)
     CCombatAbilityMap CombatAbilities;          // +0x70

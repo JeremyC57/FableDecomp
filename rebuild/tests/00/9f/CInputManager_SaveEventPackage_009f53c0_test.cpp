@@ -7,10 +7,10 @@ static int g_dtors, g_saves, g_checksums;
 static long g_savedTime, g_savedC4, g_savedCount, g_firstType;
 static float g_savedMouse[2], g_savedJoy[2];
 
-struct CAFile { int id; };
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
-struct CChecksum { long Checksum1, Checksum2, Checksum3, Checksum4; };
-struct CInputEvent { long type; unsigned char _body[0x30]; ~CInputEvent() { ++g_dtors; } };
+class CAFile { public: int id; };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
+class CChecksum { public: long Checksum1, Checksum2, Checksum3, Checksum4; };
+class CInputEvent { public: long type; unsigned char _body[0x30]; ~CInputEvent() { ++g_dtors; } };
 
 template <class T> inline void _Destroy(T* first, T* last) { for (; first != last; ++first) first->~T(); }
 template <class T>
@@ -26,13 +26,13 @@ struct vector {
     }
     ~vector() { _Destroy(_M_start, _M_finish); if (_M_start) std::free(_M_start); }
 };
-struct CMouse { float x, y; void GetPosition(C2DVector& p) { p.X = x; p.Y = y; } };
-struct CJoystick { float x, y; float GetAxisX() { return x; } float GetAxisY() { return y; } };
+class CMouse { public: float x, y; void GetPosition(C2DVector& p) { p.X = x; p.Y = y; } };
+class CJoystick { public: float x, y; float GetAxisX() { return x; } float GetAxisY() { return y; } };
 struct CCountedJoystick { CJoystick* P; void* Count; CJoystick* operator->() const { return P; } CJoystick* Get() const { return P; } };
 struct CJoystickVector { CCountedJoystick* _M_start; CCountedJoystick* _M_finish; CCountedJoystick* _M_end_of_storage;
     CCountedJoystick& operator[](unsigned int n) { return *(_M_start + n); } };
 
-struct CInputEventPackage {
+class CInputEventPackage { public:
     vector<CInputEvent> Events; long TimeStamp; CChecksum Checksum; C2DVector MousePos; C2DVector JoystickPos;
     CInputEventPackage(const vector<CInputEvent>& events, long timeStamp, const CChecksum& checksum,
                        const C2DVector& mousePos, const C2DVector& joystickPos)
@@ -45,7 +45,7 @@ struct CInputEventPackage {
         g_savedMouse[0] = MousePos.X; g_savedMouse[1] = MousePos.Y; g_savedJoy[0] = JoystickPos.X; g_savedJoy[1] = JoystickPos.Y;
     }
 };
-struct CInputManager {
+class CInputManager { public:
     vector<CInputEvent> EventStore; long NoStoredEvents; CMouse* PMouse; CJoystickVector PJoysticks;
     CChecksum Checksum; long TimeStamp; CAFile PackageFile;
     long CalculateInternalChecksum() { ++g_checksums; return 1234 + NoStoredEvents; }

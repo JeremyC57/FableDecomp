@@ -3,7 +3,7 @@
 
 struct CSteeringGroup;
 
-struct CSteeringAgent {
+class CSteeringAgent { public:
     CSteeringGroup* m_pGroup;
     CSteeringAgent* m_pNextInGroup;
 };

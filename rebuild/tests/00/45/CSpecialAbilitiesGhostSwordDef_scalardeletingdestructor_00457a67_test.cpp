@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesGhostSwordDef { void* vftable; };
+class CSpecialAbilitiesGhostSwordDef { public: void* vftable; };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;

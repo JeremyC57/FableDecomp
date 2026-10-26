@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString() : p("") {}
     CCharString(const char* t, long = -1) : p(t) {}
@@ -26,13 +26,13 @@ static int FindLog(const char* s)
 }
 // Script timers: SetTime(t) at frame f reads back t - (frame - f).
 static long g_timerSet[8], g_timerAt[8]; static int g_ntimers = 0;
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() { Index = g_ntimers++; g_timerSet[Index] = 0; g_timerAt[Index] = g_frame; }
     void SetTime(long t) { g_timerSet[Index] = t; g_timerAt[Index] = g_frame; }
     long GetTime() const { return g_timerSet[Index] - (g_frame - g_timerAt[Index]); }
 };
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 static int g_near = 15;
 bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float d) { return a.id == 1 && b.id == 2 && d == 3.0f && g_frame >= g_near; }
 struct GameCalls {

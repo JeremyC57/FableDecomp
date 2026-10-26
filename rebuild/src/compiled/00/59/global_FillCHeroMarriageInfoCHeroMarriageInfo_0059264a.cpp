@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 // std::fill over CHeroMarriageInfo (POD size 0x1c = 28 bytes = 7 dwords)
-struct CHeroMarriageInfo {
+class CHeroMarriageInfo { public:
     unsigned long w[7];
 };
 

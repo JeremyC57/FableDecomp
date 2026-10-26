@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;
     unsigned long m_position;
     long StreamSize;

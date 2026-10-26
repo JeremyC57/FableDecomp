@@ -1,6 +1,6 @@
 #include <cstdio>
 static long g_mode = 0; static bool g_ex = true;
-struct CPlayer { void AddMode(long m, bool e) { g_mode = m; g_ex = e; } };
+class CPlayer { public: void AddMode(long m, bool e) { g_mode = m; g_ex = e; } };
 static CPlayer g_player;
 struct Base { virtual void PerformAction() {} CPlayer* GetPlayer() { return &g_player; } };
 struct Act : Base { void PerformAction() { GetPlayer()->AddMode(16, false); } };

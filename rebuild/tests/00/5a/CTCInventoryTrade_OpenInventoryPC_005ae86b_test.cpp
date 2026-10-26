@@ -18,7 +18,7 @@ static CSound g_sound = { 0 };
 static CSound* g_pSoundSystem = &g_sound;
 struct CHud { bool On; void SetEnabled(bool e) { On = e; Log('H'); } };
 static CHud g_hud = { true };
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     void* ParentThing; CComponent* Components[4]; int Count;
     bool InventoryTradeOpen; CComponent* PMouse_Pointer; float AccumFadeTime;
     void PrepareScreen() { Log('P'); }

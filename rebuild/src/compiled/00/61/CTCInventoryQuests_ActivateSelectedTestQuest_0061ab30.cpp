@@ -19,12 +19,12 @@
 typedef unsigned short wchar_t;                    // VC7.1 without /Zc:wchar_t
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString(const CWideString& other);
     ~CWideString();                                // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);
     ~CCharString();                                // 0x0099EAE0
@@ -34,7 +34,7 @@ struct CCharString {
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 bool __fastcall PathExists(const CWideString& path);   // 0x00999230
 
-struct CTestQuest {                                // 28 bytes (Ego_r.pdb)
+class CTestQuest { public:                                // 28 bytes (Ego_r.pdb)
     CCharString QuestName;                         // +0x00
     CCharString HSPName;                           // +0x04
     long ColourIndex;                              // +0x08
@@ -58,14 +58,14 @@ struct CTestQuestVector {                          // vector<CTestQuest> (12 byt
     }
     CTestQuest& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CQuestManager {
+class CQuestManager { public:
     void DeactivateQuest(const CCharString& name, unsigned long reason);        // 0x004B43D0
     void ClearQuestPersistScript(const CCharString& name);                     // 0x004B39B0
     bool ActivateTestQuestCard(const CCharString& name, const CCharString& cardDefName);   // 0x004B4C50
     void ActivateQuest(const CCharString& name, bool a, bool b);               // 0x004B4A10
 };
 extern CQuestManager* g_pQuestManager;             // 0x013B89FC
-struct CWorld {
+class CWorld { public:
     void LoadQuestHSP(const CCharString& hspName);  // 0x004A0940
 };
 class CConsole {
@@ -74,7 +74,7 @@ public:
     void ExecuteConfigFile(const CWideString& path);   // 0x009EC890
 };
 
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     unsigned char _pad_0x000[0x157];
     bool ActiveTestQuestMode;                      // +0x157
     long TestQuestSelectedIndex;                   // +0x158

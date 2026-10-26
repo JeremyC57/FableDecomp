@@ -21,7 +21,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_type;                           // +0x10 (2 = creature)
     unsigned char _pad11[0xf];
@@ -47,7 +47,7 @@ struct CTCRewardsHandled {                          // the interface-0xA0 compon
     bool          m_handled;                        // +0x10
 };
 
-struct CTCContainerRewardHero : CTCBase {
+class CTCContainerRewardHero : public CTCBase { public:
     unsigned char _pad0c[0xc];
     bool          Enabled;                          // +0x18 (PDB +0x1c)
     void CreateItemPickupContainer();               // 0x0074EC50

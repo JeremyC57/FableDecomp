@@ -20,7 +20,7 @@ struct SCountBlock {
     SCountBlock(void (__fastcall* destroy)(void*), void* object) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) {}
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object;                                      // +0
     SCountBlock* Count;                             // +4
     static void __fastcall DeleteData(void* object);   // 0x0098BA10
@@ -38,8 +38,8 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-struct CShaderRenderManager;
-struct CShaderResource {                            // 0x3c bytes
+class CShaderRenderManager;
+class CShaderResource { public:                            // 0x3c bytes
     CShaderResource();                              // 0x00A5D870
     void Initialise(CShaderRenderManager& manager); // 0x00A5D4D0
     unsigned char _body[0x3c];
@@ -92,7 +92,7 @@ __declspec(noinline) void CShaderResourceArray::_M_insert_overflow(CCountedPoint
 }
 #pragma auto_inline(on)
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void* __vftable;                                // +0x000
     unsigned char _pad004[0x3a4];
     CShaderResourceArray ResourceManagers;          // +0x3a8

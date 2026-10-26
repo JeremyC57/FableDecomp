@@ -15,9 +15,9 @@
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
 // Leaf: ??1CTCStealth
 #include <stdlib.h>
-struct CThing;
+class CThing;
 
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual ~CTCBase();                                 // 0x00686830
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -53,7 +53,7 @@ struct CRetailVector_SDangerThing {                     // retail std::vector: f
     }
 };
 
-struct CStealthDef {
+class CStealthDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long m_refCount;                                    // +0x04

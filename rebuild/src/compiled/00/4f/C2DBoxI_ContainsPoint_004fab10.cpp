@@ -1,7 +1,7 @@
 
 struct C2DPointI { int x; int y; };
 
-struct C2DBoxI {
+class C2DBoxI { public:
     int minX; // +0x0
     int minY; // +0x4
     int maxX; // +0x8

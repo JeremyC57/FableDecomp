@@ -9,7 +9,7 @@
 // Shape: memberwise assignment in declaration order; each float array is the compiler's element loop
 // (`fld [eax+ecx] ; fstp [ecx]` with eax = source - this, shared by all six loops).
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -23,7 +23,7 @@ struct CFloatVector {                   // retail std::vector<float> (12 bytes)
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
 };
 
-struct CSpecialAbilitiesEnflameDef : CParentDefClassBase {  // vtable 0x01234334
+class CSpecialAbilitiesEnflameDef : public CParentDefClassBase { public:  // vtable 0x01234334
     float CamDist[4];                           // +0x3c
     float CamHeight[4];                         // +0x4c
     float CamFOV[4];                            // +0x5c

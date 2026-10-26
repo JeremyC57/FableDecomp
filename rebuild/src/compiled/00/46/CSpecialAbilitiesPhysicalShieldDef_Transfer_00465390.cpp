@@ -12,17 +12,17 @@
 //   colour vectors before the three loose floats (the def's TRANSFER list order).
 #pragma optimize("s", on)
 
-struct CDefString { long m_index; };
+class CDefString { public: long m_index; };
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(float& v);                // 0x00431061
     void Transfer(bool& v);                 // 0x0043314A
     void Transfer(CDefString& v);           // 0x0045228F
     void Transfer(CStlVector<float>& v);    // 0x00464CBF
 };
 
-struct CSpecialAbilitiesPhysicalShieldDef {
+class CSpecialAbilitiesPhysicalShieldDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                       // CSpecialAbilitiesDef base fields (+0x04)
     CDefString InitSound;                            // +0x3C

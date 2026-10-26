@@ -15,7 +15,7 @@
 //   null-tested: "" @ 0x0129AAF4). The one-expression form pushes the bools before the CRC (94v93).
 unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
 
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                            // +0x00
     unsigned long StringLength;                     // +0x04
 };
@@ -33,7 +33,7 @@ public:
     unsigned long GetTagFromCRC(unsigned long crc) const;   // 0x009CC410
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;        // +0x14
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }

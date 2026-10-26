@@ -12,18 +12,18 @@
 // Strings: "DRAGON_MOUTH_DUMMY" 0x01285B4C, "BEAM_ATTACK" 0x0127203C.
 // Layout: CModeDragonFireBeam (PDB): owner creature +0x04, PBeamWeaponEffect +0x84, BeamActive +0x90; CThing graphic
 //   appearance +0x64, def +0x70 (counted: count +4, slot 1 Destroy), interface bitset +0x20, map +0x44, flags +0x91.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
         CRightHandedSet* axes, float scale);          // 0x004C08C0
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,10 +54,10 @@ struct CDefBase {
     virtual void Destroy();                           // slot 1
     long m_refCount;                                  // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p && --m_p->m_refCount == 0) m_p->Destroy(); }
@@ -76,7 +76,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580
 };
 void* FindDef_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -134,7 +134,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(void* item);                        // 0x00A01B90
     void* GetPItem() const;                           // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }

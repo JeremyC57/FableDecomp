@@ -9,9 +9,9 @@
 // CTCSoundPlayer method whose signature fits (ghidra_out/egor_signatures.tsv).
 // Shape: three GetPItem calls (the test, the flag test, the call) -- an inline "has live emitter" predicate followed by a
 // fresh GetPItem for the call.
-struct CBaseObject;
+class CBaseObject;
 
-struct CThingSoundEmitter {
+class CThingSoundEmitter { public:
     unsigned char _pad[0x91];
     unsigned char m_thingFlags;                             // +0x91, bit 0: killed
     void Kill(bool immediately);                            // CThing::Kill @ 0x004C9B80
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
 
 extern void* g_pSoundSystem;                                // 0x013B8394
 
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     void*                   __vftable;                      // +0x00
     void*                   ParentThing;                    // +0x04
     bool                    ToBeRemoved;                    // +0x08

@@ -6,15 +6,15 @@
 // Shape: the same inline FindInput wrapper as the landed CConsole::RunCommandLine 0x009EB430 (a direct
 //   RegisteredConsoleInputs.find(...) hoists `lea esi,[ecx+40h]` above the ToLower call); end() is the header pointer.
 // Layout: retail CConsole RegisteredConsoleInputs +0x40 (STLport map, 12 bytes); node value pair at +0x10.
-// Leaf: ?GetRegisteredConsoleInput@CConsole_Retail@@QAEPAUCConsoleInputBase@@ABUCCharString@@@Z
-struct CCharStringData;
-struct CCharString {
+// Leaf: ?GetRegisteredConsoleInput@CConsole_Retail@@QAEPAVCConsoleInputBase@@ABVCCharString@@@Z
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString ToLower() const;            // 0x0099ED10
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CConsoleInputBase {
+class CConsoleInputBase { public:
     virtual void v00();
 };
 struct CInputPointer {                      // CCountedPointer<CConsoleInputBase>

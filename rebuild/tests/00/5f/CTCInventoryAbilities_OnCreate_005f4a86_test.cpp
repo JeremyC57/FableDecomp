@@ -4,12 +4,12 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -18,7 +18,7 @@ struct CInventoryAbilitiesDef : CDefPointeeBase {
     long InventoryDefIndex;
 };
 static CInventoryAbilitiesDef* g_subDef = 0; static int g_getSubDef = 0; static long g_countAtGet = -1;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CInventoryAbilitiesDef>* out)
     {
         ++g_getSubDef; g_countAtGet = m_refCount;
@@ -26,27 +26,27 @@ struct CDefClassBase : CDefPointeeBase {
         ++g_subDef->m_refCount; out->Object = g_subDef; return true;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;
 };
 static int g_registered = 0; static const void* g_registeredScreen = 0;
 namespace NHeroInformationScreens {
-struct CBase {
+class CBase { public:
     virtual void v00() {}
     virtual void v01() {}
     virtual void v02() {}
 };
-struct CManager {
+class CManager { public:
     void RegisterScreen(const CBase* screen) { ++g_registered; g_registeredScreen = screen; }
 };
 }
 static NHeroInformationScreens::CManager g_manager;
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const { return &g_manager; }
 };
 static CPlayerGui g_gui; CPlayerGui* g_pPlayerGui = &g_gui;
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x101];
     bool SerialisingAboutToLoadHeroState;
 };

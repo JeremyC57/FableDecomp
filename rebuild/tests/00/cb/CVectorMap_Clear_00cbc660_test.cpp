@@ -9,7 +9,7 @@ typedef unsigned long long u64;
 #endif
 static long g_strings = 0;
 static long g_frees = 0;
-struct CCharString { long m_id; CCharString(long id) : m_id(id) { ++g_strings; } ~CCharString() { --g_strings; } };
+class CCharString { public: long m_id; CCharString(long id) : m_id(id) { ++g_strings; } ~CCharString() { --g_strings; } };
 struct CPersistInfo { u64 UID; CCharString PersistScript; CPersistInfo(u64 uid, long id) : UID(uid), PersistScript(id) {} };
 template <class K, class V> struct SPair { K first; V second; SPair(K k, const V& v) : first(k), second(v.UID, v.PersistScript.m_id) {} };
 template <class T> inline void Swap(T& left, T& right) { T tmp = left; left = right; right = tmp; }

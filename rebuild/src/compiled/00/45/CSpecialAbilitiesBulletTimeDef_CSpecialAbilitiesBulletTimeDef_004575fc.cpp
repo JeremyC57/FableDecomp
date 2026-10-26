@@ -14,7 +14,7 @@
 // in the landed 0x00459ABE the base is modelled without its vptr: the def vtable is not re-stored here.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
-struct CParentDefClassBase {                       // retail 0x3c bytes (with the CDefClassBase part)
+class CParentDefClassBase { public:                       // retail 0x3c bytes (with the CDefClassBase part)
     unsigned char m_baseData[0x3c];
     ~CParentDefClassBase();                        // 0x00430300
 };
@@ -25,8 +25,8 @@ struct CFloatVector {                              // retail std::vector<float> 
     __forceinline ~CFloatVector() { if (m_first) free(m_first); }
 };
 typedef long CDefString;                           // table position word
-struct C3DVector { float X, Y, Z; };
-struct CSpecialAbilitiesBulletTimeDef : CParentDefClassBase {   // vtable 0x01234264, retail 0x18c bytes
+class C3DVector { public: float X, Y, Z; };
+class CSpecialAbilitiesBulletTimeDef : public CParentDefClassBase { public:   // vtable 0x01234264, retail 0x18c bytes
     float        SlowTimeDuration[4];              // +0x3c
     long         BulletTimeSlowdownMultiplier[4];  // +0x4c
     float        LevelUpTimings[3];                // +0x5c

@@ -33,8 +33,8 @@ struct CRetailStringSet {
 struct CMeshStateBlock { bool EnableLOD, PreserveMaterials, GenericAnimation, UnpackedPositions; long MaxLODs, ResourcePhysicsMeshIndex, AnimationVersion; };
 struct CLODStateBlock { ~CLODStateBlock() { Log("L"); } };
 struct CAnimationStateBlock { CRetailStringSet ExcludedBones; };
-struct CBankStateBlock { virtual void v00() { } ~CBankStateBlock() { Log("B"); } };
-struct CMeshBankStateBlock : CBankStateBlock {
+class CBankStateBlock { public: virtual void v00() { } ~CBankStateBlock() { Log("B"); } };
+class CMeshBankStateBlock : public CBankStateBlock { public:
     CMeshStateBlock State; CLODStateBlock LODState; CAnimationStateBlock AnimationState;
     virtual void v00() { }
     ~CMeshBankStateBlock() { }

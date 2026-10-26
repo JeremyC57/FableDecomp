@@ -2,14 +2,14 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690360, length 48 bytes.
 // Leaf: ?ProcessInput@CInputProcessRebootGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 // The callee labels ("CWorld::DrawGetEnvironment", "GetCanItemBeQuickAssigned", "CWomanToAttract::Init") are propagated. Shape: the event in esi, `cmp eax,15h`, `ret 8`.
-struct CInputEvent {
+class CInputEvent { public:
     long GetKind() const;                          // 0x00A03B40
     void MarkAsUsed() const;                       // 0x00A03B90
 };
-struct CProcessedInput {
+class CProcessedInput { public:
     void RequestReboot();                          // 0x00A0D390
 };
-struct CInputProcessRebootGame {
+class CInputProcessRebootGame { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };

@@ -11,7 +11,7 @@ extern "C" void __cdecl free(void*);                    // 0x00BFEA14
 struct CLongFloatPair { long first; float second; };
 struct CLongFloatListNode { CLongFloatListNode* next; CLongFloatListNode* prev; CLongFloatPair value; };
 struct CLongFloatList { CLongFloatListNode* node; };    // STLport list<pair<long,float> >: the header node
-struct CTCOverheadDisplay {
+class CTCOverheadDisplay { public:
     virtual void VFunc00();
     unsigned char _base04[8];                           // CTCBase: +0x04..+0x0b
     CLongFloatList DamageValues;                        // +0x0c

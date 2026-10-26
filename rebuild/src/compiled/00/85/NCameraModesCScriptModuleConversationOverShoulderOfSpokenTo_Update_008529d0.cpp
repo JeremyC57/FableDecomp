@@ -9,13 +9,13 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector& AccurateNormalise();                                // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 class CTCGraphicAppearance {
 public:
     C3DVector GetCameraFocalPos(float height);       // 0x004C12D0
 };
-struct CBaseObject;
+class CBaseObject;
 class CThing {
 public:
     unsigned char         _pad00[0x64];
@@ -43,7 +43,7 @@ struct CCameraState {
 
 namespace NCameraModes {
 
-struct CScriptModuleBase {
+class CScriptModuleBase { public:
     virtual void v00();
     CIntelligentPointer_CThingConst PCamPoint;       // +0x04
     CIntelligentPointer_CThingConst PThingOrigin;    // +0x0c

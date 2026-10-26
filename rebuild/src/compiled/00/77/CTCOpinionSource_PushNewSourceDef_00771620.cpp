@@ -6,13 +6,13 @@
 // Shape: the DefinitionManager pointer is a named local (`mov eax,[eax+10h] ; mov ecx,eax`; reached inline as the
 // call's object it loads straight into ecx); a positive index is pushed,
 // `if (a > 0 && Push(a)) return 1; return 0;` gives the `mov eax,1` / shared `xor eax,eax` tails.
-struct CCharString;
+class CCharString;
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char       _pad00[0x10];
     CDefinitionManager* DefinitionManager;          // +0x10
 };
@@ -23,7 +23,7 @@ struct CTCBase_00771620 {
     const CWorld* GetWorld() const;                 // 0x00686A80
 };
 
-struct CTCOpinionSource : CTCBase_00771620 {
+class CTCOpinionSource : public CTCBase_00771620 { public:
     bool PushSourceDefIndex(long index);            // 0x007714B0
     long PushNewSourceDef(const CCharString& name);
 };

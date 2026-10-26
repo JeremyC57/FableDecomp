@@ -20,17 +20,17 @@
 //   invented global SetSneaking). Same bytes.
 template<class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 template<class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 __forceinline C3DVector Offset(const C3DVector& pos, const C3DVector& delta) { return C3DVector(delta.X + pos.X, delta.Y + pos.Y, delta.Z + pos.Z); }
 float __fastcall Get2DDistance(const C2DVector& a, const C2DVector& b);   // 0x009E1AD0
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -55,7 +55,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
     virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
     virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020(); virtual void t021(); virtual void t022(); virtual void t023();
@@ -104,8 +104,8 @@ struct CThing {
         return false;
     }
 };
-struct CTCStealth { char _pad[0xf]; bool Sneaking; };   // interface 0x36
-struct CNavigationInput {
+class CTCStealth { public: char _pad[0xf]; bool Sneaking; };   // interface 0x36
+class CNavigationInput { public:
     C3DVector Destination;                      // +0x00
     float Proximity;                            // +0x0c
     long  MovementType;                         // +0x10
@@ -115,19 +115,19 @@ struct CCreatureNavOutput {
     long Status;                                // 0 arrived, 1 failed, 2 moving
     C3DVector Offset;
 };
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     unsigned char _pad[0x56];
     bool Active;                                // +0x56
     void SetThingToIgnore(const CThing* thing); // 0x006CBE30
     CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool b1, bool b2, bool b3, bool b4, bool b5);   // 0x006CBAC0
     void SetNavigationTarget(const CNavigationInput& input);  // 0x006CB960 (PDB ?SetNavigationTarget@CTCCreatureNavigation@@QAEXABVCNavigationInput@@@Z)
 };
-struct CTCLook {                                // interface 0x43
+class CTCLook { public:                                // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b);   // 0x007534B0
 };
 extern float g_navEpsilon;                      // 0x0129BA3C (0.0001f)
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;   // slot 11 (+0x2c)
@@ -145,7 +145,7 @@ struct CScriptThing {
     virtual bool IsValid() const;       // slot 77 (+0x134)
     long _a, _b;
 };
-struct CTCScriptedControl { void* __vftable; CThing* ParentThing; };   // CTCBase: ParentThing +0x04
+class CTCScriptedControl { public: void* __vftable; CThing* ParentThing; };   // CTCBase: ParentThing +0x04
 namespace NTCScriptedControl {
 class CActionFollowCreature {
 public:

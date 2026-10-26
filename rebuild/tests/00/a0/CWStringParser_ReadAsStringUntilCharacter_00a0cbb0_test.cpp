@@ -14,13 +14,13 @@ static int fails = 0;
 // run that stopped on `stop` yields an empty string item; hitting NUL with nothing read fails.
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     void SetAsSubString(const wchar_t* text, long length);   // 0x0099B770
 };
 
-struct CWParsedItem {
+class CWParsedItem { public:
     long        Type;      // +0x00 EParsedItemType (2 = string)
     long        Integer;   // +0x04
     CWideString String;    // +0x08

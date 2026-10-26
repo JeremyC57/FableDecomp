@@ -15,19 +15,19 @@
 // model); the trail set and float range are small PODs with implicit assignment (dword moves); the last member's address
 // is formed with `add edi,0E0h` because nothing reads `other` after it.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x28];
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
-struct CObjectAugmentationParticleSet {                     // retail 0x2C bytes
+class CObjectAugmentationParticleSet { public:                     // retail 0x2C bytes
     unsigned char _body[0x2c];
     CObjectAugmentationParticleSet& operator=(const CObjectAugmentationParticleSet& other);   // 0x004E4D3B
 };
-struct CWeaponTrailGraphicSet {
+class CWeaponTrailGraphicSet { public:
     long Attack;
     long Knockdown;
 };
@@ -39,12 +39,12 @@ struct CArrowTrailMap {                                     // map<EObjectAugmen
     void* head; unsigned long size; unsigned long _compare;
     CArrowTrailMap& operator=(const CArrowTrailMap& other);     // 0x004E4C16
 };
-struct CFloatRange {
+class CFloatRange { public:
     float HighValue;
     float LowValue;
 };
 
-struct CWeaponDef : CDefClassBase {                         // vtable 0x0124291C
+class CWeaponDef : public CDefClassBase { public:                         // vtable 0x0124291C
     long Type;                                              // +0x28 EWeaponType
     long Class;                                             // +0x2c EWeaponClass
     unsigned long Property;                                 // +0x30

@@ -10,10 +10,10 @@
 class CWideString {
 public:
     CWideString();                           // 0x0099AED0
-    struct CWideStringData* PStringData;
+    class CWideStringData* PStringData;
 };
 
-struct CEngineMemoryInit {
+class CEngineMemoryInit { public:
     long  LandscapePoolSize;                 // +0x00
     float LandscapePhysicalMemoryRatio;      // +0x04
     long  LandscapeVirtualMemoryMinSize;     // +0x08
@@ -32,15 +32,15 @@ struct CEngineMemoryInit {
     }
 };
 
-struct CEngineInit {
-    struct CDefinitionManager* DefinitionManager;   // +0x00
-    struct CEngineDef*         EngineDef;           // +0x04
-    struct CRenderManager*     RenderManager;       // +0x08
-    struct CDebugString*       DebugString;         // +0x0c
-    struct CIDrawWorld*        World;               // +0x10
-    struct CFontBank*          Font;                // +0x14
-    struct CGraphicDataBank*   MainGraphicBank;     // +0x18
-    struct CGraphicDataBank*   TerrainGraphicBank;  // +0x1c
+class CEngineInit { public:
+    class CDefinitionManager* DefinitionManager;   // +0x00
+    class CEngineDef*         EngineDef;           // +0x04
+    class CRenderManager*     RenderManager;       // +0x08
+    class CDebugString*       DebugString;         // +0x0c
+    class CIDrawWorld*        World;               // +0x10
+    class CFontBank*          Font;                // +0x14
+    class CGraphicDataBank*   MainGraphicBank;     // +0x18
+    class CGraphicDataBank*   TerrainGraphicBank;  // +0x1c
     CWideString       MeshResourcePath;             // +0x20
     CWideString       GraphicsResourcePath;         // +0x24
     CWideString       ShaderResourcePath;           // +0x28

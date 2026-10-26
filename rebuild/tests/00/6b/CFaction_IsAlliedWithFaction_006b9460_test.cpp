@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharStringData { const char* m_pData; unsigned int m_length; };
+class CCharStringData { public: const char* m_pData; unsigned int m_length; };
 
 static int Compare(const char* a, const char* b)
 {
@@ -16,7 +16,7 @@ static int Compare(const char* a, const char* b)
     }
 }
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {
@@ -42,7 +42,7 @@ struct CCharStringSet {                                 // stand-in: a flat arra
     unsigned int count(const CCharString& k) const { return _M_find(k) == _M_header ? 0 : 1; }
 };
 
-struct CFaction {
+class CFaction { public:
     CCharString    Name;
     CCharStringSet AlliedFactions;
     bool IsAlliedWithFaction(const CFaction& faction) const

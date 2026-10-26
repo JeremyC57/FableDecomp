@@ -2,15 +2,15 @@
 // string copy constructor, the counted pointer copied and its shared count incremented.
 #include <cstdio>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;
 };
 
-struct CEntityScriptBindingBase;
+class CEntityScriptBindingBase;
 
 static int g_stringCopies = 0;
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text) : m_pData(text) { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_stringCopies; }

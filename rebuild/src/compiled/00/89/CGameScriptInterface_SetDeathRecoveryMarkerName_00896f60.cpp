@@ -1,7 +1,7 @@
 // CGameScriptInterface::SetDeathRecoveryMarkerName
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString
-{
+class CCharString
+{ public:
     CCharString& operator=(const CCharString& other);
 };
 struct DeathRecoveryMarkerNameInterface
@@ -32,8 +32,8 @@ struct DeathRecoveryMarkerNameMap
     }
 };
 
-struct CPlayerManager
-{
+class CPlayerManager
+{ public:
     void* GetTarget();
 };
 

@@ -4,9 +4,9 @@
 static char g_seq[64] = "";
 struct CDefBase { virtual void v00() { } CDefBase() { std::strcat(g_seq, "B"); } };
 static void* g_strings[8]; static long g_nStrings = 0;
-struct CCharString { void* m_pStringData; CCharString() { m_pStringData = 0; g_strings[g_nStrings++] = this; std::strcat(g_seq, "s"); } ~CCharString() { g_strings[g_nStrings++] = this; std::strcat(g_seq, "d"); } };
+class CCharString { public: void* m_pStringData; CCharString() { m_pStringData = 0; g_strings[g_nStrings++] = this; std::strcat(g_seq, "s"); } ~CCharString() { g_strings[g_nStrings++] = this; std::strcat(g_seq, "d"); } };
 struct CBase_009fc550 { virtual void v00() { } ~CBase_009fc550() { std::strcat(g_seq, "M"); } };
-struct CDefPointeeBase : CBase_009fc550 { virtual void v00() { } ~CDefPointeeBase() { std::strcat(g_seq, "P"); } };
+class CDefPointeeBase : public CBase_009fc550 { public: virtual void v00() { } ~CDefPointeeBase() { std::strcat(g_seq, "P"); } };
 struct CDerived : CDefPointeeBase { unsigned char _pad04[0x60]; CCharString m_string64; unsigned char _pad68[4]; CCharString m_string6c; unsigned char _pad70[0x1c]; CCharString m_string8c; CCharString m_string90; virtual void v00() { } ~CDerived() { } };
 
 int main() {

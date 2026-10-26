@@ -8,7 +8,7 @@
 // CDefaultEngineMemoryInit.h only carries a flattened 0x28-byte blob); modelled locally as a derived struct.
 // Shape: ten calls of an inline `ApplyIfSet(setting, custom)` helper taking the custom value BY VALUE, in member order:
 // the float value is loaded once and kept on the FPU for the store (`fcom [0.0f]`, not `fcomp` and a reload) (`test ah,1 ; jne` is `>=`; the dropped arm pops with `fstp st(0)`).
-struct CEngineMemoryInit {
+class CEngineMemoryInit { public:
     long  LandscapePoolSize;                // +0x00
     float LandscapePhysicalMemoryRatio;     // +0x04
     long  LandscapeVirtualMemoryMinSize;    // +0x08

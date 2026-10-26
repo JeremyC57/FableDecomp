@@ -5,25 +5,25 @@
 static char g_log[64]; static int g_n = 0;
 static void Log(char c) { if (g_n < 63) { g_log[g_n++] = c; g_log[g_n] = 0; } }
 
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long) : text(t) { Log('s'); }
     ~CCharString() { Log('~'); }
 };
-struct CStringParser {
+class CStringParser { public:
     const CCharString* source; const char* filename; long base;
     CStringParser(const CCharString& text, void (*)(CCharString*), const CCharString& name, long b)
         : source(&text), filename(name.text), base(b) { Log('p'); }
     ~CStringParser() { Log('d'); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     bool saving; CCharString* output; CStringParser* parser; bool report; CCharString* sourceText;
     CPersistContext(CCharString& out) : saving(true), output(&out), parser(0), report(false), sourceText(0) { Log('w'); }
     CPersistContext(CStringParser* p, void (*)(CCharString*), bool r, void*, void*, CCharString* src)
         : saving(false), output(0), parser(p), report(r), sourceText(src) { Log('r'); }
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     const CPersistContext* seen;
     void OnPersist(CPersistContext& c) { Log('P'); seen = &c; check(c); }
     bool ok; CCharString* expectedData;

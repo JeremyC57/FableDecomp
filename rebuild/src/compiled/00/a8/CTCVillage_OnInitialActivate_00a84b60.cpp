@@ -4,7 +4,7 @@
 
 struct Inner;
 
-struct CTCVillage {
+class CTCVillage { public:
     Inner *field0;   // +0x00
     int    ParentThing;   // +0x04
     char   pad8[4];  // +0x08

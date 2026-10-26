@@ -10,7 +10,7 @@
 // PEmitter +0x6d (CIntelligentPointer<CThing> at an odd offset: the class is compiled under pack(1)).
 // Shape: HasTC + a returned GetTC whose end/hit choice is one ternary (the component lands straight in ecx); ParentThing is re-read for every use; the flag clear is the component's inline ClearFlag (`if (flags & f) SetFlags(flags ^ f)`, `this` straight in ecx); IS_THING_ALIVE as in the
 // landed 0x008C92C0 (GetPItem re-called for the null test, the dead bit and the call).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -32,7 +32,7 @@ struct CThingAnimatable {                  // empty here: only its member is cal
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThing : CThingAnimatable {
+class CThing : public CThingAnimatable { public:
     unsigned char   _pad00[0x10];
     unsigned char   m_state;               // +0x10 creature state byte (compared with 1)
     unsigned char   _pad11[0x0f];

@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 #include "engine/CSmashableDef.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA(unsigned char* p);
     void PersistB(unsigned char* p);
     void PersistC(int* p);

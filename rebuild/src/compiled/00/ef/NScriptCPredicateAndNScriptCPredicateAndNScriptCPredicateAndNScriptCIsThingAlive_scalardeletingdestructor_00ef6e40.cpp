@@ -25,13 +25,13 @@ template <class T> struct CPredicate {                   // vtable 0x012C2FF4
     virtual bool operator()(const T& thing) const = 0;
 };
 
-struct CIsThingAlive : CPredicate<CScriptThing> {        // vtable 0x012C32F0, 16 bytes
+class CIsThingAlive : public CPredicate<CScriptThing> { public:        // vtable 0x012C32F0, 16 bytes
     CScriptThing m_thing;                                // +0x04
     ~CIsThingAlive();                                    // 0x00E241B0
     bool operator()(const CScriptThing& thing) const;
 };
 
-template <class A, class B> struct CPredicate_And : CPredicate<CScriptThing> {
+template <class A, class B> class CPredicate_And : public CPredicate<CScriptThing> { public:
     A m_left;                                            // +0x04
     B m_right;
     ~CPredicate_And() { }
@@ -39,5 +39,5 @@ template <class A, class B> struct CPredicate_And : CPredicate<CScriptThing> {
 };
 }
 
-template struct NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsThingAlive>,
+template class NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsThingAlive>,
     NScript::CIsThingAlive>, NScript::CIsThingAlive>;

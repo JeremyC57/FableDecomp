@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CCharString { void* m_pStringData; };
-struct C3DVector { float X, Y, Z; void Clear() { X = Y = Z = 0.0f; } };
+class CCharString { public: void* m_pStringData; };
+class C3DVector { public: float X, Y, Z; void Clear() { X = Y = Z = 0.0f; } };
 struct SRbTreeNodeBase { bool _M_color; SRbTreeNodeBase* _M_parent; SRbTreeNodeBase* _M_left; SRbTreeNodeBase* _M_right; };
 struct STimingEventNode : SRbTreeNodeBase { CCharString _M_key; float _M_value; };
 struct CTimingEventMultimap {
@@ -20,8 +20,8 @@ struct CTimingEventMultimap {
     ~CTimingEventMultimap() { std::free(_M_header); }
 };
 static int g_baseCtors = 0;
-struct CBaseObject { void* m_pFirstPointer; CBaseObject() : m_pFirstPointer(0) { ++g_baseCtors; } virtual ~CBaseObject() {} };
-struct C3DAnimationStats : CBaseObject {
+class CBaseObject { public: void* m_pFirstPointer; CBaseObject() : m_pFirstPointer(0) { ++g_baseCtors; } virtual ~CBaseObject() {} };
+class C3DAnimationStats : public CBaseObject { public:
     long AnimType; float Duration; bool LoopFlag; bool MovementFlag; C3DVector MovementVector; CTimingEventMultimap TimingEvents;
     C3DAnimationStats()
     {

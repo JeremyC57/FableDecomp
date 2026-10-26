@@ -3,7 +3,7 @@ struct Inner;
 
 void __fastcall Inner_Do(Inner* self, void* edx, unsigned char arg);
 
-struct CTCVillage {
+class CTCVillage { public:
     Inner* p0;
     void*  ParentThing;
     char   pad8[4];

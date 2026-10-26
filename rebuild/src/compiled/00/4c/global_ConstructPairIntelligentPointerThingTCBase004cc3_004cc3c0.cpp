@@ -11,8 +11,8 @@
 // _Construct (no allocator `this`).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +0x04

@@ -12,13 +12,13 @@
 // load uses the empty traits temporary in the dead argument slot (`lea ecx,[esp+18h]`).
 // Layout: Ego_r.pdb RandomEffects +0x28 (a 16-byte PDB vector; retail 12), RandomSoundCriteria +0x38, SecondsBetweenEffects
 // +0x3c, SecondsBetweenSoundEffects +0x40; retail +0x28 / +0x34 / +0x38 / +0x3c (no engine header for this class).
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                         // 0x00993EB0
 };
 
-struct CDefString {                                     // a name stored as its def-string table position
+class CDefString { public:                                     // a name stored as its def-string table position
     long TablePos;
     void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x0044FC00
 };
@@ -43,7 +43,7 @@ template<> struct CPersistTraits<CDefString> {
     static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteLong(value.TablePos); }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1c[0x08];
@@ -76,7 +76,7 @@ struct CPersistContext {
     }
 };
 
-struct CCreatureGeneratorDef {
+class CCreatureGeneratorDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _pad04[0x28 - 4];
     CLongVector   RandomEffects;                        // +0x28

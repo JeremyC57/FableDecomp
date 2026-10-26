@@ -29,7 +29,7 @@
 // destroy through one extern __fastcall(this) shim (call/jmp rel32 are
 // relocation-masked in parity).
 
-struct CMacro { char pad[4]; };   // 4-byte element (stride matches +0x4 spacing)
+class CMacro { public: char pad[4]; };   // 4-byte element (stride matches +0x4 spacing)
 
 // Single element destructor at 0x0055b060, __fastcall (this in ecx).
 extern "C" void __fastcall CMacro_dtor(CMacro* self);

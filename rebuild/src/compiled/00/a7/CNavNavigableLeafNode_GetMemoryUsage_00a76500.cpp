@@ -1,7 +1,7 @@
 // CNavNavigableLeafNode::GetMemoryUsage  retail 0x00a76500
 // __fastcall ulong (this, ulong& a, ulong& b, ulong& c, ulong& d)
 
-struct CNavNavigableLeafNode {
+class CNavNavigableLeafNode { public:
     char pad[0x18];
     signed char m_kind; // offset 0x18
 

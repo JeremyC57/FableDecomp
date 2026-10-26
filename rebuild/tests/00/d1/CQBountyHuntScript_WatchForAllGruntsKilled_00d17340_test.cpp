@@ -13,8 +13,8 @@ public:
     CCharString(const char* text, long = -1) : PStringData(text) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CBaseClass { CBaseClass() {} virtual ~CBaseClass() { ++g_thingDtors; } };
-struct CScriptThing : CBaseClass { void* PImp_Data; void* PImp_Info; };
+class CBaseClass { public: CBaseClass() {} virtual ~CBaseClass() { ++g_thingDtors; } };
+class CScriptThing : public CBaseClass { public: void* PImp_Data; void* PImp_Info; };
 template <class T> void _Destroy(T* first, T* last) { for (; first != last; ++first) first->~T(); }
 template <class T> struct vector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -25,7 +25,7 @@ static const char* g_dead;     // per AreAllThingsInVectorDead call
 static const char* g_term;     // per IsActiveThreadTerminating call
 static int g_frames = 0;
 static bool AreAllThingsInVectorDead(vector<CScriptThing>* v) { char c = *g_dead; if (c) ++g_dead; return v->_M_finish - v->_M_start == 2 && c == '1'; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     const char* lastName;
     virtual void NewScriptFrame() { ++g_frames; }
     virtual long GetAllThingsWithScriptName(const CCharString& n, vector<CScriptThing>& v)
@@ -37,7 +37,7 @@ struct CGameScriptInterface {
         return 2;
     }
 };
-struct CScriptBase { bool IsActiveThreadTerminating() { char c = *g_term; if (c) ++g_term; return c != '0'; } };
+class CScriptBase { public: bool IsActiveThreadTerminating() { char c = *g_term; if (c) ++g_term; return c != '0'; } };
 struct CQ_BountyHuntScript : CScriptBase {
     CGameScriptInterface* m_pInterface;
     bool AllGruntsKilled;

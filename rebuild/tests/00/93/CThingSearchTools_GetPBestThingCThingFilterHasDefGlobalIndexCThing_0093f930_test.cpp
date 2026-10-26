@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThingSearchTools { void* WorldMap; void* PThingMapManager; void* ThingManager; };
+class CThingSearchTools { public: void* WorldMap; void* PThingMapManager; void* ThingManager; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components
@@ -47,7 +47,7 @@ namespace N_006a76b0 { struct CThingFilter_HasDefGlobalIndex {
     unsigned short DefGlobalIndex;
     bool operator()(const CThing* thing) const;      // 0x006A76B0 (manifest: CThingFilter_In2DRange)
 }; } using N_006a76b0::CThingFilter_HasDefGlobalIndex;
-struct CThingCompare_Nearest {                       // out-of-line member template per thing type
+class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     float X, Y, Z;
     template <class T> T* operator()(T* best, T* candidate) const;
 };

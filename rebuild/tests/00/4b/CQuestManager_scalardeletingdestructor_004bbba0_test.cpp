@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CQuestManager {
+class CQuestManager { public:
     void* vftable;
     int destroyed;
 };

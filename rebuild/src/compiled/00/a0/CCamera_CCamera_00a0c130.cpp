@@ -10,11 +10,11 @@
 // order. Both lock bytes share one `xor al,al`. FOVFlags(1) sits in the init list (a body store schedules
 // the +0x2c store before the `test ah`) and is overwritten with 3 when the
 // vertical field of view is positive (`fcomp [0.0f] ; test ah,41h ; jne` = skip when vfov <= 0).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                             // +0x00
     C3DVector Forward;                        // +0x0c
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) { }

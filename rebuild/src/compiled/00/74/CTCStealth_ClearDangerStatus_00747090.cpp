@@ -13,26 +13,26 @@
 // Name and signature confirmed by ghidra_out/egor_signatures.tsv (Ego_r).
 // Shape: GetWorld() is re-called for each chained member call (an out-of-line getter); each result goes through a named
 // local so the call precedes the argument push (the bare chain pushes the argument first).
-struct CPlayer {
+class CPlayer { public:
     bool IsMainPlayer() const;                              // 0x00487520
 };
 
-struct CMusicManager {
+class CMusicManager { public:
     void EnableDangerMusic(bool enable);                    // 0x006BDE50
 };
 
-struct CEnvironment {
+class CEnvironment { public:
     void SetRainEnabled(bool enabled);                      // 0x006B32B0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char  _pad00[0x18];
     CEnvironment*  PEnvironment;                            // +0x18 scoped_ptr<CEnvironment>
     unsigned char  _pad1c[0x6c - 0x1c];
     CMusicManager* PMusicManager;                           // +0x6c CCountedPointer<CMusicManager> (object word)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x10];
     unsigned char m_thingType;                              // +0x10 (2 = creature)
     CPlayer* GetPlayer() const;                             // 0x004C7A30
@@ -48,12 +48,12 @@ struct CDangerThing {                                       // pair<CIntelligent
     long Timer;                                             // +0x0c
 };
 
-struct CStealthDef {
+class CStealthDef { public:
     unsigned char _pad[0x44];
     float         RunningAwayFromCombatHangtimeSeconds;     // +0x44
 };
 
-struct CTCStealth {
+class CTCStealth { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04
     bool          ToBeRemoved;                              // +0x08

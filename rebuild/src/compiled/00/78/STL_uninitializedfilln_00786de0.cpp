@@ -10,7 +10,7 @@
 //   entry memberwise (long through eax, the string's copy constructor, the float as a dword).
 // Label correction: catalogued as `_Fill_n<unsigned_long*,unsigned_int,unsigned_long>` (propagated); the body is
 //   STLport `__uninitialized_fill_n`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);               // 0x0099EC30
 };

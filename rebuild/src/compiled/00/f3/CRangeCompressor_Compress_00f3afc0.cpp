@@ -9,7 +9,7 @@
 // inline accessor that yields the array object itself when empty. The bound is written out at both uses (a
 // `size` local moves the values into other registers).
 // Leaf: Compress@CRangeCompressor
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_first;                                                 // +0
     T* m_last;                                                  // +4
     T* m_end;                                                   // +8

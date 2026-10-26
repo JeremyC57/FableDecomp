@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstddef>
 static int g_destroyed = 0;
-struct CIVCountedPointeeBase { virtual void v0() { } virtual void Destroy() { ++g_destroyed; } long m_refCount; };
-template<class T> struct CIVCountedPointer {
+class CIVCountedPointeeBase { public: virtual void v0() { } virtual void Destroy() { ++g_destroyed; } long m_refCount; };
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     void Release() { T* p = m_pObject; if (p) { if (--p->m_refCount == 0) p->Destroy(); m_pObject = 0; } }
     CIVCountedPointer& operator=(T* object) { Release(); m_pObject = object; return *this; }

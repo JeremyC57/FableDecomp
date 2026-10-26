@@ -11,7 +11,7 @@
 // +0x2CC/+0x2D4/+0x2DC/+0x2E4/+0x2EC (each bar's Active flag at +8; UpdateMorality/UpdateCrime read +0x2DC/+0x2EC).
 // Shape: the lazily loaded def through the landed inline helper; each resize's `1.0f` reference temporary is stored
 // before the def test (right-to-left argument evaluation) and the count is the signed `/0x5c` of the def's table.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -21,7 +21,7 @@ struct SAbilityButtonEntry {                                // one 0x5c-byte ent
     unsigned char _body[0x5c];
 };
 
-struct CPlayerGuiDef {                                      // the "PLAYER_GUI_PC" definition (descriptive)
+class CPlayerGuiDef { public:                                      // the "PLAYER_GUI_PC" definition (descriptive)
     unsigned char        _pad000[0x7fc];
     SAbilityButtonEntry* AbilityButtons_start;              // +0x7fc  vector<SAbilityButtonEntry>
     SAbilityButtonEntry* AbilityButtons_finish;             // +0x800
@@ -34,11 +34,11 @@ struct CPlayerGuiDefPointer {                               // CDefPointer<CPlay
 };
 extern CPlayerGuiDefPointer g_PlayerGuiDef;                 // 0x013B878C (filled on first use)
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CPlayerGuiDefPointer* out);   // 0x0043FF30 (GetDef<T> instantiation)
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
@@ -58,24 +58,24 @@ struct CFloatVector {                                       // STLport vector<fl
     void resize(unsigned long n, const float& value);       // 0x00442770
 };
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void Clear(bool immediately);                           // 0x00492BAB
 };
 namespace NPlayerGui {
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     void Clear();                                           // 0x00647319
 };
-struct CDrawStatUpdates {
+class CDrawStatUpdates { public:
     unsigned char _pad00[0x30];
     bool          Updating;                                 // +0x30 (descriptive)
 };
-struct CStatBar {
+class CStatBar { public:
     unsigned char _pad00[8];
     bool          Active;                                   // +0x08
 };
 }
 
-struct CPlayerGui {                                         // retail-offset view (see Layout)
+class CPlayerGui { public:                                         // retail-offset view (see Layout)
     unsigned char                   _pad000[0x18];
     CSubtitleRenderer               SubtitleRenderer;       // +0x18
     unsigned char                   _pad019[0x1a8 - 0x19];

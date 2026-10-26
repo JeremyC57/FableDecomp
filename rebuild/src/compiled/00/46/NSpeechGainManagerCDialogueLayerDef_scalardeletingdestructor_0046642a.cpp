@@ -4,7 +4,7 @@
 // vector deleting destructor @ 0x0046642a (CLandscapeBackgroundPatch)
 // this in ecx, flags on stack; sets vftable, calls dtor, conditionally frees, returns this; ret 4
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void** vftable;
 };
 

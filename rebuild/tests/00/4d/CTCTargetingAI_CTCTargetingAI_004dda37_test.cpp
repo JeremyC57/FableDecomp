@@ -3,15 +3,15 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 static int g_baseCtor;
 static CThing* g_baseThing;
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     virtual void v00() { }
     unsigned char _pad04[0x30];
     CTCTargetingBase(CThing* thing) { ++g_baseCtor; g_baseThing = thing; }
 };
-struct CBaseObject;
+class CBaseObject;
 static int g_ipCtor;
 struct CBaseIntelligentPointer {
     virtual void v00() { }
@@ -25,7 +25,7 @@ struct CRetailList_node0x10 {
     void* head;
     CRetailList_node0x10(const CRetailAllocator& al = CRetailAllocator()) : head(0) { (void)al; ++g_listCtor; }
 };
-struct CTCTargetingAI : CTCTargetingBase {
+class CTCTargetingAI : public CTCTargetingBase { public:
     CCreatureIntelligentPointer PBestEnemyCreatureForAttack;
     CCreatureIntelligentPointer PScriptTargetOverride;
     CRetailList_node0x10        ThingsToNotAttack;

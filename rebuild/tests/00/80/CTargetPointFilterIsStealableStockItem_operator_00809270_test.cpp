@@ -1,12 +1,12 @@
 // Behaviour test for 0x00809270 CTargetPointFilter_IsStealableStockItem::operator(): stock-item component present, owned by a shop, stealable.
 #include <cstdio>
-struct CTCShop { int id; };
-struct CTCStockItem {
+class CTCShop { public: int id; };
+class CTCStockItem { public:
     bool ForSale; bool Stealable; CTCShop* Shop;
     CTCShop* GetShopTC() const { return Shop; }
 };
 struct SEntry { long Type; void* Component; };
-struct CThing {
+class CThing { public:
     unsigned int UsingComponents[9];
     SEntry Entries[4]; int Count;
     bool HasTC(long type) const

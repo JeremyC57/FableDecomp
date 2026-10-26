@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour of CTCHeroStats::GetNumberOfAvailableAbilities (0x0057B3E2): finds the parent thing's abilities inventory
 // (interface 0x6F: presence bit, then the sorted interface map) and counts abilities 1..19 whose level is not -1.
-struct CTCBase { int id; };
-struct CTCInventoryAbilities : CTCBase {
+class CTCBase { public: int id; };
+class CTCInventoryAbilities : public CTCBase { public:
     long levels[20];
     long GetAbilityLevel(long ability) const { return levels[ability]; }
 };
@@ -21,7 +21,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits UsingComponents;
     CInterfaceMap Components;
     template <class T> bool GetInterface(T** out, long type)

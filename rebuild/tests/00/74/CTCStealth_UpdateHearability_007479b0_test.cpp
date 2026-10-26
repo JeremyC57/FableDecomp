@@ -2,22 +2,22 @@
 #include <cstring>
 // Behaviour test for CTCStealth::UpdateHearability (0x007479B0): the body of src/ over stand-ins -- silent when sneaking or
 // still, the pace multiplier picked against run/walk speeds, the modifier applied and a SIMPLE_NOISE handed the owner.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 static const float g_epsilon_0129ba3c = 1e-4f;
-struct CCharString {
+class CCharString { public:
     char text[16];
     CCharString(const char* t, long length = -1) { strcpy(text, t); }
 };
 static char g_lookedUp[16];
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { strcpy(g_lookedUp, name.text); return 77; }
 };
 static CDefinitionManager g_defs;
-struct CTCPhysicsBase { C3DVector Position; C3DVector OldPosition; };
+class CTCPhysicsBase { public: C3DVector Position; C3DVector OldPosition; };
 class CThing {
 public:
     float walk, run;
@@ -30,7 +30,7 @@ public:
     const C3DVector& GetPosition() const { return pos; }
 };
 static long g_noiseDef; static float g_noiseRadius; static C3DVector g_noisePos; static int g_noises;
-struct CThingNoise : CThing {
+class CThingNoise : public CThing { public:
     static CThingNoise* Create(long defIndex, const C3DVector& p, float radius);
     void PassToNoiseComponent(CThing* thing) { passedTo = thing; }
 };
@@ -39,8 +39,8 @@ CThingNoise* CThingNoise::Create(long defIndex, const C3DVector& p, float radius
 {
     g_noiseDef = defIndex; g_noisePos = p; g_noiseRadius = radius; ++g_noises; return &g_noise;
 }
-struct CStealthDef { float BaseHearingDistance, RunningMultiplier, WalkingMultiplier, CreepingMultiplier; };
-struct CTCStealth {
+class CStealthDef { public: float BaseHearingDistance, RunningMultiplier, WalkingMultiplier, CreepingMultiplier; };
+class CTCStealth { public:
     CThing* ParentThing;
     bool Sneaking;
     float DistanceCanBeHeardFrom;

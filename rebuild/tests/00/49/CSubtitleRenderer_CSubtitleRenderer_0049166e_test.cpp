@@ -1,12 +1,12 @@
 // Behaviour test for CSubtitleRenderer::CSubtitleRenderer(CGraphicDataBank*) (0x0049166E): the member defaults.
 #include <cstdio>
-struct CGraphicDataBank { int dummy; };
+class CGraphicDataBank { public: int dummy; };
 static int g_vecCounts[4]; static int g_nVec = 0; static int g_nFade = 0; static int g_nStr = 0;
-struct CWideString { void* PStringData; CWideString() : PStringData(0) { ++g_nStr; } };
+class CWideString { public: void* PStringData; CWideString() : PStringData(0) { ++g_nStr; } };
 struct CHandleVector { void* f; void* l; void* e; CHandleVector(unsigned long n) : f(0), l(0), e(0) { g_vecCounts[g_nVec++] = (int)n; } };
 struct CVec { void* f; void* l; void* e; CVec() : f(0), l(0), e(0) {} };
 struct CFadeTimer { int x; CFadeTimer() : x(0) { ++g_nFade; } };
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     long TextCharactersShowing; bool TextGroupHasEntriesRemaining; long TextGroupIndex; CWideString TextGroupTag;
     CWideString Text, NameText, Button1Text, Button2Text, Button3Text, Button1OverrideText, Button2OverrideText;
     unsigned char Button1Alpha, Button2Alpha; unsigned long DisplayFlags; void* PFont; CGraphicDataBank* Graphics;

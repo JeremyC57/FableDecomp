@@ -165,7 +165,7 @@ struct CChangingStateComponent {                   // the polymorphic root: the 
 };
 
 namespace NUISystem {
-struct CMorphingSprite : CChangingStateComponent {
+class CMorphingSprite : public CChangingStateComponent { public:
     unsigned char          _pad04[0x144];          // +0x04 .. +0x148
     long                   m_currentState;         // +0x148
     long                   m_14c;

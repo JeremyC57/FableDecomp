@@ -2,7 +2,7 @@
 // sets block ignoring; a one/two-anim main set with matching alphas and the flag blocks it too.
 #include <cstdio>
 
-struct CAnimSet {
+class CAnimSet { public:
     short anims[2]; long animCount; long alphaCount; unsigned long Flags;
 };
 struct SNode { SNode* next; CAnimSet value; };

@@ -14,7 +14,7 @@ struct CTCBase_Calls {
     void RemoveFromGlobalTCs() { IsInGlobalUpdateTCs = false; Log('R'); }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long m_refCount;
     CDefPointeeBase() : m_refCount(1) {}
     virtual ~CDefPointeeBase() {}
@@ -22,7 +22,7 @@ struct CDefPointeeBase {
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) {}
     ~CDefPointer()
@@ -36,7 +36,7 @@ struct CDefPointer {
     }
 };
 
-struct CTCActionUseBase : CTCBase_Calls {
+class CTCActionUseBase : public CTCBase_Calls { public:
     CDefPointer<CDefPointeeBase> PActionUseDef;
 };
 
@@ -46,7 +46,7 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { Log(m_tag); }
 };
 
-struct CTCActionUseBed : CTCActionUseBase {
+class CTCActionUseBed : public CTCActionUseBase { public:
     CBaseIntelligentPointer PBuilding;
     CBaseIntelligentPointer PThingUser;
     virtual ~CTCActionUseBed() { RemoveFromGlobalTCs(); }

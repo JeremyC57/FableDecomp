@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesDivineWrathDef { char pad[4]; };
+class CSpecialAbilitiesDivineWrathDef { public: char pad[4]; };
 
 unsigned long __fastcall CSpecialAbilitiesDivineWrathDef_GetSizeofClass(const CSpecialAbilitiesDivineWrathDef* self)
 {

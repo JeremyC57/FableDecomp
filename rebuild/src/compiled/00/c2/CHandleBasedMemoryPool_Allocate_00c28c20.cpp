@@ -11,11 +11,11 @@
 // Shape: the handler waits are written as in the landed 0x00A03180 (`while (largest < size) { if (a) break; if (!b) break; }`,
 //   rotated with the tests duplicated at the loop exits); the result of InternalAllocate is returned directly.
 struct CHeader;
-struct CFailedAllocationHandler {
+class CFailedAllocationHandler { public:
     virtual void v00();
     virtual int  HandleFailure(long size);  // slot 1 (+0x04)
 };
-struct CHandleBasedMemoryPool {             // retail view of the 0x00C27xxx build (vtable 0x012B4098)
+class CHandleBasedMemoryPool { public:             // retail view of the 0x00C27xxx build (vtable 0x012B4098)
     void*          __vftable;               // +0x00
     void*          Buffer;                  // +0x04
     void*          UnalignedBuffer;         // +0x08

@@ -7,8 +7,8 @@ static void*   g_edx;
 static int     g_arg;
 static int     g_callCount;
 
-struct CTCVillage
-{
+class CTCVillage
+{ public:
     Target* field0;
     void*   ParentThing;
     char    pad8;

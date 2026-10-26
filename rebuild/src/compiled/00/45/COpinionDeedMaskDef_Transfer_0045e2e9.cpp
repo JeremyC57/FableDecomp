@@ -6,12 +6,12 @@ struct SubB;   // object at self+0x3c
 
 // CPersistContext exposes two transfer helpers; each is a default __fastcall
 // member (ctx in ecx, object pushed on the stack).
-struct CPersistContext {
+class CPersistContext { public:
     void XferA(SubA* o);   // 0x43314a
     void XferB(SubB* o);   // 0x45e30a
 };
 
-struct COpinionDeedMaskDef {
+class COpinionDeedMaskDef { public:
     void Transfer(CPersistContext* ctx);
 };
 

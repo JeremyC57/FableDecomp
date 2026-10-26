@@ -9,7 +9,7 @@
 // model the bool as the THIRD fastcall parameter (ecx=self, edx=dummy, stack=value)
 // so it lands at [esp+4] and forces `ret 4` (no tail-call).
 
-struct CThing;
+class CThing;
 void __fastcall CThing_notify(CThing *self);
 
 struct CThingBits {

@@ -6,19 +6,19 @@
 #include <vector>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CCharString { std::string S; CCharString(const char* t) : S(t) {} };
-struct CThing { std::string ScriptName; };
-struct CThingFilter_HasScriptName { CCharString Name; CThingFilter_HasScriptName(const CCharString& n) : Name(n) {} };
-struct CThingSearchTools {
+class CCharString { public: std::string S; CCharString(const char* t) : S(t) {} };
+class CThing { public: std::string ScriptName; };
+class CThingFilter_HasScriptName { public: CCharString Name; CThingFilter_HasScriptName(const CCharString& n) : Name(n) {} };
+class CThingSearchTools { public:
     std::vector<CThing*> Things;
     bool GetPFirstThing(const CThingFilter_HasScriptName& f, CThing** out) const
     { for (size_t i = 0; i < Things.size(); ++i) if (Things[i]->ScriptName == f.Name.S) { *out = Things[i]; return true; } return false; }
 };
-struct CCameraModeDef { long Refs; };
-template <class T> struct CDefPointer { T* Data; CDefPointer() : Data(0) {} ~CDefPointer() { if (Data) --Data->Refs; } };
+class CCameraModeDef { public: long Refs; };
+template <class T> class CDefPointer { public: T* Data; CDefPointer() : Data(0) {} ~CDefPointer() { if (Data) --Data->Refs; } };
 static CCameraModeDef g_nullDef = { 0 };
 static std::string g_lastDefName;
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; }
     long GetDefGlobalIndexFromName(const CCharString& n) { g_lastDefName = n.S; return 77; }
     bool GetDef(long index, CDefPointer<CCameraModeDef>* out) { if (index != 77) return false; out->Data = &g_nullDef; ++g_nullDef.Refs; return true; }
@@ -26,15 +26,15 @@ struct CGameDefinitionManager {
 struct SCountInfo { long Count; };
 static int g_liveModes = 0;
 namespace NCameraModes {
-    struct CBase { virtual ~CBase() { --g_liveModes; } virtual long GetModeType() = 0; };
+    class CBase { public: virtual ~CBase() { --g_liveModes; } virtual long GetModeType() = 0; };
 }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; SCountInfo* Info;
     CCountedPointer(T* d) : Data(d), Info(new SCountInfo) { Info->Count = 1; }
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->Count; }
     ~CCountedPointer() { if (Info && --Info->Count == 0) { delete Data; delete Info; } }
 };
-struct CGameCameraManager;
+class CGameCameraManager;
 namespace NCameraModes {
     struct CFixed : CBase { long Type; CFixed(long t) : Type(t) { ++g_liveModes; } long GetModeType() { return Type; } };
     struct CSnapToPoint : CBase {
@@ -43,13 +43,13 @@ namespace NCameraModes {
         long GetModeType() { return 7; }
     };
 }
-struct CGameCameraManager {
+class CGameCameraManager { public:
     NCameraModes::CBase* CurrentMode;
     std::vector<CCountedPointer<NCameraModes::CBase> > Stack;
     void PushCameraMode(CCountedPointer<NCameraModes::CBase> mode) { Stack.push_back(mode); }
 };
-struct CWorld { CThingSearchTools* PThingSearchTools; CGameCameraManager* CameraManager; CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools; } };
-struct CEngine { CWorld* World; };
+class CWorld { public: CThingSearchTools* PThingSearchTools; CGameCameraManager* CameraManager; CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools; } };
+class CEngine { public: CWorld* World; };
 CEngine* g_pEngine;
 static int g_closed, g_cleared, g_reset;
 struct CFrontEndManager {
@@ -61,11 +61,11 @@ SListNode* g_BoastList;
 static int g_compDeleted;
 struct CComponent { virtual ~CComponent() { ++g_compDeleted; } };
 static long g_removedMode;
-struct CPlayer { void RemoveMode(long m) { g_removedMode = m; } };
-struct CPlayerManager { CPlayer P; CPlayer* GetMainPlayer() { return &P; } };
+class CPlayer { public: void RemoveMode(long m) { g_removedMode = m; } };
+class CPlayerManager { public: CPlayer P; CPlayer* GetMainPlayer() { return &P; } };
 static CPlayerManager g_pm;
 static int g_activated;
-struct CTCBoastUI {
+class CTCBoastUI { public:
     bool Active;
     std::vector<CComponent*> Components;
     bool Quitting, AllowedToOpen, ActivationRequested, ActivateLater;

@@ -12,10 +12,10 @@
 // store at +0x1c is scheduled between the argument pushes. No engine header; layout local, names descriptive.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
-struct CAIBrain;
-struct CThingAICreature;
-struct CCharString;
+class CThing;
+class CAIBrain;
+class CThingAICreature;
+class CCharString;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -32,7 +32,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {    // vtable 0x01237F14
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13
     void Initialise(CAIBrain& brain, CThingAICreature& creature, long id, long priority, const CCharString& name);  // 0x008FCEC0

@@ -1,9 +1,9 @@
 // CInputEvent::SetAsExtraMouseButtonHeld(const C2DVector& position, const C3DVector& movement, double time2, double time, long button) -- a mouse (device 3) event of kind 0x1b + button: the position at +0x18, the two times (+0x30 from the first double, +0x2c from the second), the movement copied into +0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A03F20, length 80 bytes.
 // Shape: the doubles narrowed with `fst`/`fstp`, no frame.
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
-struct CInputEvent {                               // 0x34 bytes: a payload union, the device (+0x20), the kind (+0x28), two times
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class CInputEvent { public:                               // 0x34 bytes: a payload union, the device (+0x20), the kind (+0x28), two times
     long      m_key;                               // +0x00 (also a C2DVector at +0)
     long      m_4;                                 // +0x04
     bool      m_8;                                 // +0x08

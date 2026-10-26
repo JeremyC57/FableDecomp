@@ -25,7 +25,7 @@ struct CCountedPointer_009fcba0 {                  // 8 bytes: the object and it
     }
 };
 
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned char           _pad[8];
     CCountedPointer_009fcba0 m_texture;            // +0x08
     unsigned char           _pad10[0xa];

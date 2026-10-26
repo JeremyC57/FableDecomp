@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct Clothing {
     CThing* PMannequin; bool UseMannequin; int setups; CThing* dressed;
     void SetUpSelectedClothes() { ++setups; }

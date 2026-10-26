@@ -2,7 +2,7 @@
 // move (interface 0x93) cancels the move and returns true.
 #include <cstdio>
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template <class T>
@@ -38,13 +38,13 @@ struct CThing {
 
 static int g_cancels = 0;
 
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     bool m_active;
     bool IsMoveActive() { return m_active; }
     void CancelMove() { ++g_cancels; m_active = false; }
 };
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     CThing* ParentThing;
     bool ToggleUsingAbility(long ability);
 };

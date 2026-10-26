@@ -16,7 +16,7 @@ struct CThingCreatureBase_Retail {
     unsigned __int64 GetUID() const { return UniqueID; }
 };
 
-struct CAttackingCombatantInfo {                // retail 0x30 bytes
+class CAttackingCombatantInfo { public:                // retail 0x30 bytes
     CThingCreatureBase_Retail* Attacked;        // +0x00
     unsigned char _rest[0x30 - 4];
 };

@@ -9,14 +9,14 @@
 // lands between the two pushes.
 #include "engine/CTCMapwho.h"
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct CThingMapManager {
     void DestroyMapwhoNode(CTCMapwho* mapwho);                          // 0x00637A10
     void PlaceThing(CTCMapwho* mapwho, const C3DVector& pos);           // 0x00637FC0
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char     _pad_0x00[0x10];
     CThingMapManager* m_pThingMapManager;                               // +0x10
 };

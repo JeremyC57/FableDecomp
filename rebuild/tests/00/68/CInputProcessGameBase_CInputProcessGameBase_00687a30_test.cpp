@@ -2,9 +2,9 @@
 #include <cstring>
 static const bool g_is32 = sizeof(void*) == 4 && sizeof(long) == 4;   // the layout checks hold for the 32-bit VC7.1 build
 static char g_seq[32] = "";
-struct CWorld; struct CPlayer; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
-struct CInputProcessGameBaseInit { CWorld* World; CPlayer* MyPlayer; CGameDefinitionManager* DefinitionManager; CMainGameComponent* Component; };
-struct CAInputProcess { virtual void v00() { } void* PPlayerInterface; void* InputProcessListPos_Data; void* InputProcessListPos_Next; void* InputProcessListPos_Previous; CAInputProcess() { std::strcat(g_seq, "A"); PPlayerInterface = 0; } };
+class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+class CInputProcessGameBaseInit { public: CWorld* World; CPlayer* MyPlayer; CGameDefinitionManager* DefinitionManager; CMainGameComponent* Component; };
+class CAInputProcess { public: virtual void v00() { } void* PPlayerInterface; void* InputProcessListPos_Data; void* InputProcessListPos_Next; void* InputProcessListPos_Previous; CAInputProcess() { std::strcat(g_seq, "A"); PPlayerInterface = 0; } };
 struct CInputProcessGameBase : CAInputProcess { virtual void v00() { } CWorld* World; CPlayer* MyPlayer; CGameDefinitionManager* DefinitionManager; CMainGameComponent* Component; CGamePlayerInterface* PGamePlayerInterface;
     CInputProcessGameBase(const CInputProcessGameBaseInit& init) : CAInputProcess() { World = init.World; MyPlayer = init.MyPlayer; DefinitionManager = init.DefinitionManager; Component = init.Component; PGamePlayerInterface = 0; } };
 int main()

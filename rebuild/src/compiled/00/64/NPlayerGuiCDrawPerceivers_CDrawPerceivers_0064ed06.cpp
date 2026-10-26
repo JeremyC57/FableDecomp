@@ -7,7 +7,7 @@
 // Vtable 0x0125A670 is not in rtti-vtables.tsv (a CDrawBase-derived drawer with counters, two floats and a list); the chunk label
 // "CDrawMeleeActionButtonEffects::CDrawMeleeActionButtonEffects" belongs to the sibling @ 0x00654258 (vtable 0x0125A714). Frame-pointer size TU.
 // Shape: the float zero/one go through `fldz`/`fld1`, the longs share `xor eax,eax`; the vtable store sits between the tag's lea and the list call.
-struct CPlayerGui;
+class CPlayerGui;
 
 struct CRetailAllocator { CRetailAllocator() { } };
 
@@ -25,14 +25,14 @@ struct CRetailHandleVector {
     void Reserve(long count);                      // 0x00443F90
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
     CRetailHandleVector PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawPerceivers : CDrawBase {               // vtable 0x0125A670
+class CDrawPerceivers : public CDrawBase { public:               // vtable 0x0125A670
     virtual void v00();
     long  m_counterA;                              // +0x28
     long  m_counterB;                              // +0x2c

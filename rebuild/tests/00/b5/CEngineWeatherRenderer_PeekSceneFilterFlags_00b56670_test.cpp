@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineWeatherRenderer { int dummy; };
+class CEngineWeatherRenderer { public: int dummy; };
 
 unsigned long __fastcall PeekSceneFilterFlags(CEngineWeatherRenderer* renderer)
 {

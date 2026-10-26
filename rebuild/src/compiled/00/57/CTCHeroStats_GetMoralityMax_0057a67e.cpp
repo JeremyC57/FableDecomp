@@ -15,7 +15,7 @@
 // Engine callee is relocation-masked; declared extern so it need not resolve.
 
 // Forward object type. Only used as an opaque "this".
-struct CTCHeroStats;
+class CTCHeroStats;
 
 // The this-only helper the accessor calls (e.g. returns some owned sub-object pointer).
 // __fastcall with the object in ecx == thiscall for a this-only member.

@@ -1,6 +1,6 @@
 #include <cstdio>
 struct SrcMat { unsigned int m[12]; };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     char pad[0x230];
     unsigned int dst[12];
     unsigned int f260, f264, f268, f26c;

@@ -1,6 +1,6 @@
 // Behaviour test for CThing::vfunc_29 @ 0x004C77B0: Drawable && Activated && !Dead over all 8 combinations.
 #include <cstdio>
-struct CThing {
+class CThing { public:
     unsigned char Dead : 1;
     unsigned char CreatedByOwnerThingCreation : 1;
     unsigned char IncludeInThingScans : 1;

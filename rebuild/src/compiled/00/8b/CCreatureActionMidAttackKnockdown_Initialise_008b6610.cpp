@@ -12,13 +12,13 @@
 // CCombatActionBase::Initialise @ 0x00857520 directly (non-virtual call).
 #include "fable_string.h"
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                        // 0x00857520
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_MidAttackKnockdown : CCombatActionBase {
+class CCreatureAction_MidAttackKnockdown : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

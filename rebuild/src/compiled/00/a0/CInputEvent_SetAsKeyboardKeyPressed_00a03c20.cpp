@@ -1,9 +1,9 @@
 // CInputEvent::SetAsKeyboardKeyPressed(long key, double time2, double time) -- a keyboard (device 2) event of kind 2 with two separate times (+0x30 from the first double, +0x2c from the second) and the key at +0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A03C20, length 48 bytes.
 // Shape: the doubles narrowed with `fst`/`fstp`, no frame.
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
-struct CInputEvent {                               // 0x34 bytes: a payload union, the device (+0x20), the kind (+0x28), two times
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class CInputEvent { public:                               // 0x34 bytes: a payload union, the device (+0x20), the kind (+0x28), two times
     long      m_key;                               // +0x00 (also a C2DVector at +0)
     long      m_4;                                 // +0x04
     bool      m_8;                                 // +0x08

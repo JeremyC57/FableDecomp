@@ -8,18 +8,18 @@
 // +0x14, CoordAxis +0x20, POwner +0x38, PCameraManager +0x3c, flags +0x40/+0x41, CutOutOverride +0x44,
 // FOVOverride +0x48 (the landed spline/camera-module constructors use the same 0x4c-byte base).
 // No engine header exists for NCameraModes::CScriptModuleBase.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CRightHandedSet {                       // 24 bytes, plain record
+class CRightHandedSet { public:                       // 24 bytes, plain record
     C3DVector Up;                              // +0x00
     C3DVector Forward;                         // +0x0c
 };
 
 namespace NCameraModes {
 
-struct CScriptModuleBase {
+class CScriptModuleBase { public:
     virtual void v00();
     unsigned char   _pad04[0x1c];              // +0x04 PCamPoint, PThingOrigin, CoordOrigin
     CRightHandedSet CoordAxis;                 // +0x20

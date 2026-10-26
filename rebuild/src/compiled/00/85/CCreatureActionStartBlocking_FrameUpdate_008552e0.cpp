@@ -1,5 +1,5 @@
-struct CCombatActionBase
-{
+class CCombatActionBase
+{ public:
     int vtbl;
     int IntelligentPointer;
     int field_8;
@@ -9,8 +9,8 @@ struct CCombatActionBase
 
 extern "C" void __fastcall FrameUpdate_CCombatActionBase(CCombatActionBase* self);
 
-struct CCreatureAction_StartBlocking : CCombatActionBase
-{
+class CCreatureAction_StartBlocking : public CCombatActionBase
+{ public:
     void __fastcall FrameUpdate();
 };
 

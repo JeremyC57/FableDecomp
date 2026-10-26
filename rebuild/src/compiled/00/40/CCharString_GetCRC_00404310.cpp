@@ -13,7 +13,7 @@ class CCRC {
 public:
     static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                                 // +0x00 CBasicString<char>::PData
     unsigned long StringLength;                          // +0x04
 };

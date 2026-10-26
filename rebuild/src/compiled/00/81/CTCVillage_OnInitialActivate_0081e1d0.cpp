@@ -2,7 +2,7 @@
 // Leaf: OnInitialActivate
 struct Target;
 
-struct CTCVillage {
+class CTCVillage { public:
     Target* obj;       // +0
     int     arg2;      // +4
     char    pad8[4];   // +8

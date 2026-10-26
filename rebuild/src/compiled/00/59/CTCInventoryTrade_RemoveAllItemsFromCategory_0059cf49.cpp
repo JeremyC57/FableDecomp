@@ -26,12 +26,12 @@ struct CItemCountVector {                                      // STLport vector
     CItemCount& operator[](unsigned long n) { return *(begin() + n); }
 };
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     void GetAllItemsInCategory(CItemCountVector& items);       // 0x005BF2C6
 };
 }
 
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

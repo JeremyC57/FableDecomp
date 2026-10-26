@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static const wchar_t* g_words[16];
-struct CWideString {
+class CWideString { public:
     const wchar_t* m_pData;
     CWideString() : m_pData(0) { }
     CWideString(const CWideString& other) : m_pData(other.m_pData) { }

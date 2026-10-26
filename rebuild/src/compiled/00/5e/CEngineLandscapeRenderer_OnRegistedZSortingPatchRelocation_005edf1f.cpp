@@ -5,7 +5,7 @@
 // __fastcall (this=ecx), two stack args: (index, value).
 // this->m_zSortingPatchArray[index] = value;
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     char pad[0x148];
     int* m_zSortingPatchArray; // +0x148
 };

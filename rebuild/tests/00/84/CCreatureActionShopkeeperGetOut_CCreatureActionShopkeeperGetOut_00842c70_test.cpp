@@ -2,27 +2,27 @@
 // callees; checks the base arguments (GET_OUT lookup) and the copied TCShop / Goods / Pos / RHSet members.
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CTCShop { int id; };
-struct CAnimationEntry { int id; };
+class CThingCreatureBase { public: int id; };
+class CTCShop { public: int id; };
+class CAnimationEntry { public: int id; };
 static int g_strings = 0;
-struct CCharString { const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) { ++g_strings; } ~CCharString() { --g_strings; } };
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CCharString { public: const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) { ++g_strings; } ~CCharString() { --g_strings; } };
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 static CAnimationEntry g_anim; static char g_name[32];
 const CAnimationEntry& GetAnimationFromName(CThingCreatureBase*, const CCharString& name) { std::strcpy(g_name, name.m_pData); return g_anim; }
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThingCreatureBase* o; float a, b; const CAnimationEntry* an; long c, d;
     virtual void v00() { }
     CCreatureActionBase(CThingCreatureBase* owner, float a_, float b_, const CAnimationEntry& anim, const CSoundPair&, long c_, long d_)
         : o(owner), a(a_), b(b_), an(&anim), c(c_), d(d_) { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; CRightHandedSet(const C3DVector& u, const C3DVector& f) : Up(u), Forward(f) { } };
-struct CCreatureAction_ShopkeeperGetOut : CCreatureActionBase {
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; CRightHandedSet(const C3DVector& u, const C3DVector& f) : Up(u), Forward(f) { } };
+class CCreatureAction_ShopkeeperGetOut : public CCreatureActionBase { public:
     CTCShop* TCShop; long Goods; C3DVector Pos; CRightHandedSet RHSet;
     CCreatureAction_ShopkeeperGetOut(CThingCreatureBase* owner, CTCShop* shop, const C3DVector& pos, const CRightHandedSet& rhSet, long goods);
 };

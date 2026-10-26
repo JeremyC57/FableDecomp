@@ -5,7 +5,7 @@ struct IDirect3DTexture9 {
     long GetLevelDesc(unsigned long level, SDesc* d)
     { d->Format = format; d->Width = 256 >> level; d->Height = 128 >> level; return 0; }
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat(unsigned long d3dFormat) : FormatIndex((long)d3dFormat) { }
     unsigned long GetColourDepth() const { return FormatIndex == 21 ? 32 : 4; }   // A8R8G8B8 = 32 bpp, DXT1 = 4 bpp

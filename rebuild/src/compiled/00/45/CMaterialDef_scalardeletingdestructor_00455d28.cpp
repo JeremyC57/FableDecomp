@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CMaterialDef { int f0; };
+class CMaterialDef { public: int f0; };
 extern void __fastcall CMaterialDef_dtor(CMaterialDef* def);
 extern void __cdecl engine_operator_delete(void* p);
 

@@ -3,12 +3,12 @@
 // Behaviour test for CTCJackShield::EnableShield (0x00731680): same body as src/, with the owner's graphic object, the
 // navigation component, the emitter factory, the intelligent pointer and Kill stubbed and recorded.
 static int g_names = 0;
-struct CCharString {
+class CCharString { public:
     const char* s;
     CCharString(const char* text, long length = -1) : s(text) { (void)length; ++g_names; }
     ~CCharString() { --g_names; }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CTCBaseComponent { };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBaseComponent* component; };
@@ -26,7 +26,7 @@ struct CThingGraphic {
     void Slot43(long v) { ++slot43; last43 = v; slotAt = ++g_order; }
     void Slot44() { ++slot44; slotAt = ++g_order; }
 };
-struct CThing {
+class CThing { public:
     CInterfaceBits present;
     CInterfaceMap m_interfaces;
     CThingGraphic* PGraphic;
@@ -47,13 +47,13 @@ struct CThing {
     const C3DVector& GetPosition() const { return pos; }
     void Kill(bool silent) { ++kills; killSilent = silent; Flags91 |= 1; }
 };
-struct CTCSwitchableNavigation : CTCBaseComponent {
+class CTCSwitchableNavigation : public CTCBaseComponent { public:
     int calls; bool on;
     void SetSwitchedOn(bool o) { ++calls; on = o; }
 };
 static CThing g_fxThings[4]; static int g_fxCount = 0; static bool g_failCreate = false;
 static const C3DVector* g_createdAt = 0; static const char* g_createdName = 0; static bool g_createdAttached = true;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     static CThing* Create(const CCharString& name, const C3DVector& position, bool attached)
     {
         g_createdName = name.s; g_createdAt = &position; g_createdAttached = attached;
@@ -69,14 +69,14 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
     bool IsAlive() const { return GetPItem() && !(GetPItem()->Flags91 & 1); }
 };
-struct CTCBase { void* vt; CThing* ParentThing; };
-struct CTCJackShield : CTCBase {
+class CTCBase { public: void* vt; CThing* ParentThing; };
+class CTCJackShield : public CTCBase { public:
     CIntelligentPointer<CThing> PEmitter;
     void EnableShield(bool enable);
 };

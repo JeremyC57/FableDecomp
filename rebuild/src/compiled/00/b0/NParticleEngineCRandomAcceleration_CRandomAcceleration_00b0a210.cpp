@@ -9,7 +9,7 @@
 // Shape: each draw is the engine's linear-congruential step written back to the seed before and after the rotate
 // (seed = seed * 0x24A1 + 0x24DF; seed = GFROR13(seed)), the low byte stored; the indices are drawn before the time
 // offsets; OldOffset is assigned a zero C3DVector temporary (three frame words copied through registers).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

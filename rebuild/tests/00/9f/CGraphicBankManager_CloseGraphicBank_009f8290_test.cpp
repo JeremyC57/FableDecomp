@@ -10,13 +10,13 @@
 #define __declspec(x)
 #endif
 static int g_compares = 0, g_dtors = 0, g_erases = 0, g_destroyed = 0;
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                         // +0x00
     unsigned long m_length;                        // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b) { ++g_compares; return strcmp(a, b); }
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString() { ++g_dtors; }
     bool SameText(const CCharString& other) const
@@ -35,13 +35,13 @@ struct CCharString {
     }
 };
 
-struct CBankFile {
+class CBankFile { public:
     CCharStringData* m_handle;
     CCharString GetBankHandle() { CCharString s; s.PStringData = m_handle; return s; }
 };
-struct CGraphicDataBank : CBankFile { };
+class CGraphicDataBank : public CBankFile { public: };
 
-template <class T> struct CCountedPointer {        // {Data, Info}; Info = {count, destroy(object in ecx), object}
+template <class T> class CCountedPointer { public:        // {Data, Info}; Info = {count, destroy(object in ecx), object}
     struct SInfo {
         long m_references;
         void (__fastcall* m_pfnDestroy)(T*);
@@ -89,7 +89,7 @@ struct CGraphicDataBankInfoList {                  // retail list<CGraphicDataBa
     { ++g_erases; where._M_node->_M_prev->_M_next = where._M_node->_M_next; where._M_node->_M_next->_M_prev = where._M_node->_M_prev; return CListIterator<CGraphicDataBankInfo>(where._M_node->_M_next); }   // 0x009F8920
 };
 
-struct CGraphicBankManager {
+class CGraphicBankManager { public:
     virtual void v00() {}
     CGraphicDataBankInfoList GraphicDataBanks;     // +0x04
     void CloseGraphicBank(CCountedPointer<CGraphicDataBank> bank);

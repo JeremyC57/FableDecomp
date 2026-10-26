@@ -13,7 +13,7 @@
 //          PBrain is the first dword at +0x04; the deed's +0x00 type / +0x04 / +0x24 handle are descriptive.
 #include "engine/CAIStateGroup_MinionReactToCrime.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -50,37 +50,37 @@ struct CThing {
         return false;
     }
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long Type;                                  // +0x00 (descriptive)
     long Data;                                  // +0x04 (descriptive)
     unsigned char _pad08[0x24 - 0x08];
     long Handle;                                // +0x24 (descriptive)
 };
-struct COpinionDeedFilter_IsCrimeToRunAndFindAGuard {
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:
     COpinionDeedFilter_IsCrimeToRunAndFindAGuard() { }
 };
-struct CTCCreatureOpinionOfHero {               // interface 0x4f
+class CTCCreatureOpinionOfHero { public:               // interface 0x4f
     COpinionDeed* FindMostRecentDeed(const COpinionDeedFilter_IsCrimeToRunAndFindAGuard& filter, long* handle,
                                      bool flag);   // 0x006610C7
 };
-struct CTCHeroOpinionDeedLog {                  // interface 0x51
+class CTCHeroOpinionDeedLog { public:                  // interface 0x51
     COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
     void RemoveDeed(long data);                 // 0x006C59E0 (descriptive)
 };
 struct CVillage {
     bool IsDeedHandled(long handle);            // 0x0065914B (descriptive)
 };
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillageMember { public:                       // interface 0x23
     CVillage* GetPVillage() const;              // 0x007EE540
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPCharacter();                    // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CMessageEvent;
-struct CAIBrain {
+class CMessageEvent;
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

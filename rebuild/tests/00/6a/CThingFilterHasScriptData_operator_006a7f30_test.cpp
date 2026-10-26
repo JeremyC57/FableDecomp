@@ -1,8 +1,8 @@
 // Behaviour test for 0x006A7F30 CThingFilter_HasScriptData::operator()
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pChars; unsigned long m_length; };
-struct CCharString { CCharStringData* m_pStringData; };
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
+class CCharString { public: CCharStringData* m_pStringData; };
 static int Compare_00411570(const char* a, const char* b) { return std::strcmp(a, b); }
 static bool operator==(const CCharString& sa, const CCharString& sb)
 {
@@ -13,8 +13,8 @@ static bool operator==(const CCharString& sa, const CCharString& sb)
     if (a->m_length != b->m_length) return false;
     return Compare_00411570(a->m_pChars, b->m_pChars) == 0;
 }
-struct CThing { CCharString m_scriptData; };
-struct CThingFilter_HasScriptData {
+class CThing { public: CCharString m_scriptData; };
+class CThingFilter_HasScriptData { public:
     CCharString Data;
     bool operator()(CThing* thing) const { return thing->m_scriptData == Data; }
 };

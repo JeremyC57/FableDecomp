@@ -9,8 +9,8 @@ struct CAnimManager {
 static CAnimManager g_manager;
 CAnimManager* GetAnimManager() { return &g_manager; }
 struct CCreature { float duration; long lastAnim; float GetAnimDuration(long id) { lastAnim = id; return duration; } };
-struct CAnimationEntry { long AnimID; };
-struct CCombatActionBase {
+class CAnimationEntry { public: long AnimID; };
+class CCombatActionBase { public:
     CCreature* creature; long TotalTime; long ActionTime; CAnimationEntry* PAnimEntry; bool HasPerformAction; long delay;
     long GetAnimDelayTime() { return delay; }
     void InitialiseActionTimes()

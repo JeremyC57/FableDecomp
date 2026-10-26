@@ -2,15 +2,15 @@
 // defs without a sub-def table are skipped.
 #include <cstdio>
 static int g_shrinks = 0, g_symbolShrinks = 0;
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First; T* Last; T* End; int shrunk;
     unsigned long size() const { return (unsigned long)(Last - First); }
     T& operator[](unsigned long i) { return First[i]; }
     void DeallocateUnusedMemory() { ++shrunk; ++g_shrinks; End = Last; }
 };
-struct CSymbolMap { void RemoveUnusedMemory() { ++g_symbolShrinks; } };
+class CSymbolMap { public: void RemoveUnusedMemory() { ++g_symbolShrinks; } };
 struct SSubDefEntry { unsigned long Key; unsigned long a, b; };
-struct CDefClassBase {
+class CDefClassBase { public:
     CArray<SSubDefEntry>* sub;
     virtual CArray<SSubDefEntry>* GetSubDefInfo() { return sub; }
 };

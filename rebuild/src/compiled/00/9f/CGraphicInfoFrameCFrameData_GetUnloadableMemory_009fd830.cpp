@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FD830, length 64 bytes.
 // Callees: CBankFileAsyncData::IsFinished @ 0x009D54E0 (a bool in al), CTexture::GetLevelByteLength @ 0x009F9E80 (on the texture, level 0). Shape: three
 // `xor eax,eax` returns folded into one tail, the frame pointer walked through esi.
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     unsigned char _pad[0x10];
     long          m_byteCount;                     // +0x10
     bool IsFinished();                             // 0x009D54E0

@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 static int g_deleted = 0;
-struct CSurface { virtual ~CSurface() { ++g_deleted; } };
-struct CEngineLayerRenderer { int m_resets; virtual void OnPreDeviceReset() { ++m_resets; } };
+class CSurface { public: virtual ~CSurface() { ++g_deleted; } };
+class CEngineLayerRenderer { public: int m_resets; virtual void OnPreDeviceReset() { ++m_resets; } };
 static void* CopyTrivial(const void* first, const void* last, void* result)
 {
     if (first == last) return result;
@@ -19,7 +19,7 @@ template <class T> struct CRetailVector {
     T* erase(T* first, T* last) { T* i = (T*)CopyTrivial(last, m_finish, first); m_finish = i; return first; }
     void clear() { erase(begin(), end()); }
 };
-struct CEngine {
+class CEngine { public:
     CRetailVector<CSurface*> ScratchZBuffersD24S8;
     CRetailVector<CEngineLayerRenderer*> RenderLayers;
     void OnPreDeviceReset()

@@ -5,7 +5,7 @@
 #include <new>
 
 
-struct C3DVector {                              // retail C3DVector, 12 bytes
+class C3DVector { public:                              // retail C3DVector, 12 bytes
     float X, Y, Z;
 };
 

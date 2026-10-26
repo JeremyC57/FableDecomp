@@ -10,12 +10,12 @@ struct CBase {
     CBase();                           // 0x0099A2F0
 };
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;                 // +0
     CWideString();                     // 0x0099AED0
 };
 
-struct CDiskFileWin32 : CBase {        // vtable 0x0122D06C
+class CDiskFileWin32 : public CBase { public:        // vtable 0x0122D06C
     virtual void v00();
     long        AccessType;            // +0x04 FileAccessType
     long        Position;              // +0x08

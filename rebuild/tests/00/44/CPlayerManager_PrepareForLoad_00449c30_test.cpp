@@ -1,13 +1,13 @@
 // Behaviour test for CPlayerManager::PrepareForLoad (0x00449C30): every player in the vector is prepared once, in order.
 #include <cstdio>
 static int g_order[8]; static int g_count = 0;
-struct CPlayer { int id; void PrepareForLoad() { g_order[g_count++] = id; } };
+class CPlayer { public: int id; void PrepareForLoad() { g_order[g_count++] = id; } };
 struct CPlayerVector {
     CPlayer** m_pFirst; CPlayer** m_pLast; CPlayer** m_pEnd;
     unsigned int size() const { return (unsigned int)(m_pLast - m_pFirst); }
     CPlayer*& operator[](unsigned int i) { return m_pFirst[i]; }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayerVector Players;
     void PrepareForLoad() { for (unsigned int i = 0; i < Players.size(); ++i) Players[i]->PrepareForLoad(); }
 };

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 struct Inventory { long phials; long GetNumberOfItemsOfTypeInInventory(long idx) { return idx == 42 ? phials : 0; } };
-struct CThing {
+class CThing { public:
     unsigned int bits[9]; Inventory* inv; unsigned char flags91;
     unsigned int HasInterface(long t) const { return bits[t >> 5] & (1u << (t & 31)); }
     Inventory* GetInterface(long) { return inv; }

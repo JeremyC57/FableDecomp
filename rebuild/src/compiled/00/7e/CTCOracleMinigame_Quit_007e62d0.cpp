@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -42,39 +42,39 @@ struct CThing {
         return false;
     }
 };
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
-struct CPlayer {
+class CPlayer { public:
     long GetCurrentMode();                      // 0x00633BE0
     void RemoveMode(long mode);                 // 0x00634190
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
     CPlayer* GetMainPlayer() const;             // 0x00449960 (byte twin)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
     const CPlayerManager* PlayerManager;        // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetButton2OverrideText(const CCharString& text);   // 0x0048F881
 };
 struct CDrawQuestInfo {
     void DisplayMiniGameInfo(long a, long b, long c);       // 0x00654593
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad_0x00[0x18];
     CSubtitleRenderer Subtitles;                // +0x18
     unsigned char     _pad_0x19[0xf8 - 0x19];
@@ -83,7 +83,7 @@ struct CPlayerGui {
     CDrawQuestInfo*   QuestInfo;                // +0x1c8
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
-struct COracleMinigameDef {
+class COracleMinigameDef { public:
     unsigned char _pad00[0x28];
     float QuitWaitTime;                         // +0x28 (seconds)
     unsigned char _pad2c[0x44 - 0x2c];
@@ -105,7 +105,7 @@ struct CInputList {                             // std::list<EOracleMinigameInpu
         head->prev = head;
     }
 };
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];

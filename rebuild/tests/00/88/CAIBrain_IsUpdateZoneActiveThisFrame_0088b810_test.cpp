@@ -1,10 +1,10 @@
 #include <cstdio>
 static unsigned long g_frame = 0; static bool g_critical = false;
-struct CBrainUpdateZone { unsigned char _pad[4]; unsigned long m_updatePeriod; };
-struct CMainGameComponent { unsigned long GetFrameNumber() { return g_frame; } };
+class CBrainUpdateZone { public: unsigned char _pad[4]; unsigned long m_updatePeriod; };
+class CMainGameComponent { public: unsigned long GetFrameNumber() { return g_frame; } };
 struct CThingAICreatureCalls { unsigned char _pad[0x18]; unsigned __int64 m_updateOffset; };
 struct CAIStateGroupBaseCalls { virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual bool IsTimingCritical() { return g_critical; } };
-struct CAIBrain { void* __vftable; unsigned char _pad0[0x10]; CMainGameComponent* Component; CThingAICreatureCalls* Creature; unsigned char _pad1[0x1c]; CAIStateGroupBaseCalls* PActiveStateGroup; unsigned char _pad2[0x64]; CBrainUpdateZone* PCurrentUpdateZone; bool IsUpdateZoneActiveThisFrame(); };
+class CAIBrain { public: void* __vftable; unsigned char _pad0[0x10]; CMainGameComponent* Component; CThingAICreatureCalls* Creature; unsigned char _pad1[0x1c]; CAIStateGroupBaseCalls* PActiveStateGroup; unsigned char _pad2[0x64]; CBrainUpdateZone* PCurrentUpdateZone; bool IsUpdateZoneActiveThisFrame(); };
 bool CAIBrain::IsUpdateZoneActiveThisFrame()
 {
     if (PCurrentUpdateZone == 0) return false;

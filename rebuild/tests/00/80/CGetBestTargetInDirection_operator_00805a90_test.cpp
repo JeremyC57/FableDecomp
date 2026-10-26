@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     void Normalise() { float l = (float)std::sqrt(X * X + Y * Y + Z * Z); X /= l; Y /= l; Z /= l; }

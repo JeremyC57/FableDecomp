@@ -30,7 +30,7 @@ static void __iter_swap_aux(_Tp* __a, _Tp* __b)
     *__b = __tmp;
 }
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* s) : PStringData(s) { ++g_live; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_live; }

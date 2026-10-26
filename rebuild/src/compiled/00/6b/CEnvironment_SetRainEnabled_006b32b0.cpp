@@ -36,7 +36,7 @@ static inline IWeatherOverride_006b32b0* GetWeatherOverride_006b32b0()
     return g_pEngineGlobals_013b86a0->m_pRenderers->m_pWeather;
 }
 
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char _pad0[0x45];
     bool          RainEnabled;                     // +0x45
     void SetRainEnabled(bool enabled);

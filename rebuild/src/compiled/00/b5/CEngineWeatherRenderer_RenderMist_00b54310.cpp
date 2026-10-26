@@ -20,11 +20,11 @@
 // with the global spelled at each use VC loads it first and swaps the fld/fmul of `height * scale`.
 #include "engine/CEngineWeatherRenderer.h"
 
-struct C3DVector { float X, Y, Z; };
-struct C4DVector { float X, Y, Z, W; };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
+class C3DVector { public: float X, Y, Z; };
+class C4DVector { public: float X, Y, Z, W; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -32,21 +32,21 @@ template <class T> struct CArray {
     const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;
     long Offset;
     unsigned long Count;
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10
     CArray<C4DVector> ReservedPresets;                  // +0x140
 };
 
-struct CVertexShader;
-struct CPixelShader;
+class CVertexShader;
+class CPixelShader;
 
 class CShaderRenderManager {
 public:
@@ -332,7 +332,7 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
 }
 
 struct SCaptureEntry { void* Block; unsigned long State; };
-struct CRenderStateManager {                       // @ 0x013CB508
+class CRenderStateManager { public:                       // @ 0x013CB508
     void RestoreCaptureBlock();                    // 0x00A05840
     unsigned char _pad000[8];
     SCaptureEntry CaptureStack[0x500];             // +0x008
@@ -362,7 +362,7 @@ struct CMistParamsView {                           // @ 0x01436E9C
 };
 extern CMistParamsView* g_pMistParams;             // 0x01436E9C
 
-struct CEngineComponentRenderParams;
+class CEngineComponentRenderParams;
 
 struct CEngineWeatherSettingsView {                // CEngineWeatherSettings at this+0x114
     unsigned char _pad00[0x74];

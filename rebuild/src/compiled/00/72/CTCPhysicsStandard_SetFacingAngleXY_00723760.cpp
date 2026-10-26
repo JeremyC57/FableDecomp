@@ -9,15 +9,15 @@
 // Layout: CTCPhysicsStandard RHSet +0x50 (PDB, as the landed SetFacingAnglesFromRHSet 0x007238E0).
 // Shape: the angle vector is filled member by member in retail store order (here Y, X, Z: the argument is an integer copy);
 //   `RHSet = CRightHandedSet(angles)` copies the 24-byte temporary from eax through a `lea ecx,[esi+50h]` base.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() {}
     CRightHandedSet(const C3DVector& eulerAngles);   // 0x00A229E0
 };
-struct CThingPhysicsMeshInfo;
-struct CTCPhysicsBase {
+class CThingPhysicsMeshInfo;
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

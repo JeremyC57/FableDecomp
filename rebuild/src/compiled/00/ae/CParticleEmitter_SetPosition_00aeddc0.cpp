@@ -9,15 +9,15 @@
 // the raw bit-field gives `test byte ptr [ecx+41h],8`); the interpolator copied by its IMPLICIT operator= (vptr kept, both
 // C3DVectors through lea'd pointers), then the matrix translations set by an inline three-float setter that re-reads the
 // members straight off ecx (assigning the two vectors one by one keeps the lea'd pointers alive instead).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct C3DPositionInterpolator {
+class C3DPositionInterpolator { public:
     virtual void v00();
     C3DVector StartPosition;                // +0x04
     C3DVector EndPosition;                  // +0x10
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Right;                        // +0x00
     C3DVector Up;                           // +0x0c
     C3DVector Forward;                      // +0x18

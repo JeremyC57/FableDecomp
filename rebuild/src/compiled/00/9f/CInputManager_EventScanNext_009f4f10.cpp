@@ -5,16 +5,16 @@
 // Shape: the index starts at scan.Index + 1 (edi); the element pointer is a named local (esi = first + i*0x34, the offset
 // strength-reduced in ebx, the loop head padded with `lea ebx,[ebx]`) reused by the 13-dword copy on the found path; the
 // count is re-read after each call; `xor al,al` / `mov al,1` tails.
-struct CInputEvent {                                // 0x34 bytes
+class CInputEvent { public:                                // 0x34 bytes
     unsigned char _body[0x34];
     long GetType() const;                           // 0x00A03B40
 };
-struct CInputEventScanInfo {
+class CInputEventScanInfo { public:
     bool Started;                                   // +0x00
     long Index;                                     // +0x04
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char _pad04[0x0c];                     // +0x04 ProcessedEvents
     CInputEvent*  m_pEventStoreFirst;               // +0x10 EventStore.first

@@ -1,4 +1,4 @@
-struct CTCUnholyPower {
+class CTCUnholyPower { public:
     void* vftable;
 };
 

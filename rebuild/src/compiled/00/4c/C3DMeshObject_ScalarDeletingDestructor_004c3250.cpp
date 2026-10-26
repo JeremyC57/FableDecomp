@@ -41,9 +41,9 @@ struct CBase {
     virtual ~CBase();                      // 0x0099A2E0
 };
 
-struct C3DMeshInfo;
+class C3DMeshInfo;
 
-struct C3DMeshObject : CBase {
+class C3DMeshObject : public CBase { public:
     C3DMeshInfo*    MeshInfo;              // +0x4
     CCountedPointer Mesh;                  // +0x8  CCountedPointer<C3DMeshStats const>
     unsigned char   _rest[0x78 - 0x10];    // +0x10 PositionMatrix .. Scale (not touched here)

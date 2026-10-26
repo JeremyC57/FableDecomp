@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
 static const void* g_copied;
-struct CCombatActionBase { virtual void v00() {} unsigned char _body[0x114 - 4];
+class CCombatActionBase { public: virtual void v00() {} unsigned char _body[0x114 - 4];
     CCombatActionBase() { std::memset(_body, 0, sizeof(_body)); }
     CCombatActionBase(const CCombatActionBase& o) { g_copied = &o; std::memcpy(_body, o._body, sizeof(_body)); } };
-struct CCreatureAction_CastWillDrainLifeSpell : CCombatActionBase { long m_level; long m_defIndex; virtual void v00() {} };
-struct CCreatureAction_BriarRoseConcentrateOutof : CCreatureAction_CastWillDrainLifeSpell { virtual void v00() {} CCombatActionBase* Clone(); };
+class CCreatureAction_CastWillDrainLifeSpell : public CCombatActionBase { public: long m_level; long m_defIndex; virtual void v00() {} };
+class CCreatureAction_BriarRoseConcentrateOutof : public CCreatureAction_CastWillDrainLifeSpell { public: virtual void v00() {} CCombatActionBase* Clone(); };
 CCombatActionBase* CCreatureAction_BriarRoseConcentrateOutof::Clone() { return new CCreatureAction_BriarRoseConcentrateOutof(*this); }
 int main()
 {

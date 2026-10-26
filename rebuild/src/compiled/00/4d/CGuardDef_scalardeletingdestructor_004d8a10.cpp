@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CGuardDef
-{
+class CGuardDef
+{ public:
     void* vftable;
 };
 extern void* const g_CGuardDef_vftable;

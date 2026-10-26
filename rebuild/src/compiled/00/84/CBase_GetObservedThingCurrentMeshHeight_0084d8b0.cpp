@@ -13,7 +13,7 @@
 // is fetched once for the liveness test (null or dead bit 0 of +0x91), again for the "has a mesh"
 // bit (bit 3 of +0x6c) and a third time for the call, whose float result is a named local so the
 // call is not turned into a tail jump.  The fallback is the float literal 1.0.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x6c];
     unsigned char m_meshFlags;        // +0x6c bit 3: has a current mesh
     unsigned char _pad2[0x91 - 0x6d];

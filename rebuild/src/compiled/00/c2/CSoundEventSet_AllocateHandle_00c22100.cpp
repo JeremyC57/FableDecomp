@@ -24,7 +24,7 @@
 
 struct CSoundEventManager;
 
-struct CFailedAllocationHandler {               // the pool's failure callback interface
+class CFailedAllocationHandler { public:               // the pool's failure callback interface
     virtual ~CFailedAllocationHandler() {}      // slot 0
     virtual long OnAllocationFailed(long size) = 0;   // slot 1
 };
@@ -40,7 +40,7 @@ struct CDefaultFailedAllocationHandler : CFailedAllocationHandler {
     virtual long OnAllocationFailed(long size);
 };
 
-struct CHandleBasedMemoryPool {                 // this library's pool variant (see Layout)
+class CHandleBasedMemoryPool { public:                 // this library's pool variant (see Layout)
     unsigned char                   _pad00[0x34];
     CDefaultFailedAllocationHandler m_defaultHandler;    // +0x34
     CFailedAllocationHandler*       m_pFailureHandler;   // +0x38

@@ -11,24 +11,24 @@
 // Shape: the out-parameter GetInterface keeps the player in esi; the sample bank is read into a named local before the
 //   symbol push (the chained form pushes first and loads the bank after); both play arguments are constructor temporaries
 //   built during the right-to-left argument evaluation.
-struct CTCBase;
-struct CCharString { void* PStringData; };
+class CTCBase;
+class CCharString { public: void* PStringData; };
 extern unsigned long g_InvalidSoundHandle;              // 0x0129D25C
-struct CASoundBank {
+class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol) const;   // 0x00A01920
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x10];
     CASoundBank*  PSampleBank;                          // +0x10
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;                                    // +0x00
     long LastSound;                                     // +0x04
     CSoundPair(long first, long last) : FirstSound(first), LastSound(last) { }
 };
 enum ESoundPlaybackType { SOUND_PLAYBACK_1 = 1 };
-struct CSoundInit {                                     // 0x20
+class CSoundInit { public:                                     // 0x20
     float              Volume;                          // +0x00
     float              Pitch;                           // +0x04
     float              Pan;                             // +0x08
@@ -40,7 +40,7 @@ struct CSoundInit {                                     // 0x20
     CSoundInit() : Volume(1.0f), Pitch(1.0f), Pan(0.0f), NoPlays(1), PlaybackType(SOUND_PLAYBACK_1), GainFaderBits(0),
                    PitchFaderBits(0), OverrideID(-1) { }
 };
-struct CTCSoundPlayer {                                 // interface 0x10
+class CTCSoundPlayer { public:                                 // interface 0x10
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool a, bool b, bool c);   // 0x0066B280
 };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
@@ -49,7 +49,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                         // +0x44
@@ -67,7 +67,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned long PlaySoundW(const CCharString& sound);

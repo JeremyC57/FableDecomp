@@ -26,7 +26,7 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;        // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -42,12 +42,12 @@ public:
     }
 };
 
-struct CDefString {
+class CDefString { public:
     long Index;
     bool operator==(const CCharString& name) const; // 0x004B7980
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                    // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -55,12 +55,12 @@ struct CInterfaceMap {                    // CVectorMap<ETCInterfaceType, CTCBas
     SEntry* LowerBound(const long* type) const;           // 0x004365B0 (this TU's copy of the 0x0040F020 body)
 };
 
-struct CThing;
-struct CTCCarrying {
+class CThing;
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();                // 0x006A1440
 };
 
-struct CThing {
+class CThing { public:
     virtual void v000();
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];       // +0x20 std::bitset of the interface types present
@@ -85,11 +85,11 @@ class CPlayer {
 public:
     CThing* GetHeroThing();               // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer& GetMainPlayer();             // 0x00449970 (the non-const overload; 0x00449960 is the const one)
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     void* World;                          // +0x04
     void* Component;                      // +0x08

@@ -3,19 +3,19 @@
 // animation's rotation less the turn (in revolutions) and set the creature's orientation to (up, rotated facing)
 // Leaf: ?Initialise@CCreatureActionHero180RunningTurn
 #include <math.h>
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
     void Rotate(const C3DVector& axis, float angle);  // 0x00A13C60
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet(const C3DVector& forward) : Up(0.0f, 0.0f, 1.0f), Forward(forward) {}
@@ -28,12 +28,12 @@ struct CPhysicsBody {                                 // the thing's physics bod
     VF(71) VF(72) VF(73) VF(74)
     virtual void SetOrientation(const CRightHandedSet& set);   // slot 75 (+0x12c)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* PhysicsBody;                        // +0x60
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     void GetRotationInAnimation(float* pRotation) const;   // 0x005DBFD0
 };
 struct CBaseIntelligentPointer {
@@ -41,7 +41,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -51,7 +51,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
 };
-struct CCreatureActionHero180RunningTurn : CCombatActionBase {
+class CCreatureActionHero180RunningTurn : public CCombatActionBase { public:
     C3DVector RequiredFacing;                         // +0x114 (PDB +0x12C)
     void Initialise();
 };

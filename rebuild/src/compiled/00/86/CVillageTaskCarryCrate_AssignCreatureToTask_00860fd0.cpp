@@ -9,7 +9,7 @@
 // with SetPItem @ 0x00A01B90, read back with GetPItem @ 0x00A01B50 into the member pointer at
 // +0x8, and destroyed @ 0x00A01C10. The class comes from the manifest label when unique.
 // One of 27 bodies of this shape.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -25,7 +25,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CVillageTaskCarryCrate {
+class CVillageTaskCarryCrate { public:
     unsigned char _pad[0x8];
     CBaseIntelligentPointer m_target;      // +0x8
     void AssignCreatureToTask(CBaseObject* thing);

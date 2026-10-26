@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessControlCreatureRightStick {
+class CInputProcessControlCreatureRightStick { public:
     void* vftable;
     int destroyed;
 };

@@ -2,9 +2,9 @@
 #include <cstdio>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-struct CPlayer { int m_removed; void RemoveMode(int mode) { m_removed = mode; Log(4); } };
-struct CTCHeroRangedAttacks { void CancelAimingWeapon() { Log(2); } void ResetProjectileWeaponMode() { Log(3); } };
-struct CThing {
+class CPlayer { public: int m_removed; void RemoveMode(int mode) { m_removed = mode; Log(4); } };
+class CTCHeroRangedAttacks { public: void CancelAimingWeapon() { Log(2); } void ResetProjectileWeaponMode() { Log(3); } };
+class CThing { public:
     unsigned int m_presentBits[9];
     CTCHeroRangedAttacks* m_ranged;
     CPlayer* m_player;

@@ -8,26 +8,26 @@
 //   379, 601.
 // Shape: cast/movie model of the landed CQ_HeroSoulsBriarScript::PlayCutscene 0x00D823A0 (one named copy of Game for the
 //   pause pair); scripted-thing handle as the landed CHobbeLeader::Main 0x00D8FA30 (`if (IsScripting()) Release();`).
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CScriptThing {                                   // vtable 0x01238C8C, 12 bytes {vptr, PImp.Data, PImp.Info}
+class CScriptThing { public:                                   // vtable 0x01238C8C, 12 bytes {vptr, PImp.Data, PImp.Info}
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980
     void* PImpData;
     void* PImpInfo;
     ~CScriptThing();                                    // 0x004AA840
 };
-struct CBaseObject {                                    // vtable 0x0129A7D8
+class CBaseObject { public:                                    // vtable 0x0129A7D8
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     void* PImpData;                                     // +0x08
     void* PImpInfo;                                     // +0x0c
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImpData(0), PImpInfo(0) { }   // out of line 0x007E72A0
@@ -36,7 +36,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
-struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4, 16 bytes
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4, 16 bytes
     void* PImpData;
     void* PImpInfo;
     CScriptGameResourceObjectMovieBase();               // 0x006E7B60
@@ -51,7 +51,7 @@ struct CCutsceneCastMap {                               // map<CCharString, CScr
 struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20) StartScriptingEntity
@@ -147,7 +147,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
-struct CQ_GuildTrainingScript : CScriptBase {
+class CQ_GuildTrainingScript : public CScriptBase { public:
     CGameScriptInterface* Game;                         // +0x40
     void*                 Data;                         // +0x44
     long                  GameState;                    // +0x48

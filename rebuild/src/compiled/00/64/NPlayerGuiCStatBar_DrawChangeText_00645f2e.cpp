@@ -11,11 +11,11 @@
 // in its BODY (an init list stores in declaration order B, G, R, A; retail stores +2, +1, then A and B).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class CWideString;
 class CFontBank;
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -32,7 +32,7 @@ extern CGameUI* g_pGameUI;                         // 0x013B8790
 
 namespace NPlayerGui {
 
-struct CStatBar {
+class CStatBar { public:
     unsigned char _pad00[0x60];
     CFontBank*    m_pFont;                         // +0x60
     void DrawChangeText(const C2DVector& pos, const CWideString& text, const CRGBColour& colour);

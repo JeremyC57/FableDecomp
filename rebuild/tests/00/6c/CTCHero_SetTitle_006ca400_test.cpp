@@ -9,7 +9,7 @@
 #include <cstring>
 class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -39,7 +39,7 @@ struct CDefBase : CDefVirtual, CRefCounted {        // CDefClassBase
     }
     template<class T> bool GetSubDef(CDefPointerT<const T>* out) const;   // 0x005B1E5A for CHeroTitleDef
 };
-struct CHeroTitleDef : CDefBase {
+class CHeroTitleDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long Title;                                     // +0x28 EHeroTitle
 };
@@ -69,16 +69,16 @@ struct CDefPointer {                                // CDefPointer<CDefClassBase
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer GetPDefFromGlobalIndex(long index); // 0x009AD9E0 (hidden result pointer)
 };
 struct CDefinitionHolder : CDefinitionManager { };
 
-struct CTCOpinionSource;
-struct COpinionReactionManager {
+class CTCOpinionSource;
+class COpinionReactionManager { public:
     bool AttachOpinionSource(CThing* thing, const CCharString& name, CTCOpinionSource** ppSource);   // 0x00700780
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* OpinionReactionManager;   // +0x74
 };

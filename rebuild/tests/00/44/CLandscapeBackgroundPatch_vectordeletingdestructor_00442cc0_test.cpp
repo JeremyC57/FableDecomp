@@ -4,7 +4,7 @@ static int g_dtor = 0;
 static int g_del = 0;
 static void __cdecl eng_operator_delete(void* p) { g_del++; (void)p; }
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void* vftable;
     int dtor_called;
     void base_dtor() { g_dtor++; dtor_called = 1; }

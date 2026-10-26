@@ -3,8 +3,8 @@
 
 static int g_bases, g_components, g_seed = -1, g_nodes;
 struct CBase { virtual void v00() {} CBase() { ++g_bases; } };
-struct CEngineComponent { virtual void v01() {} void* m_pOwner; long m_8; CEngineComponent() : m_pOwner(0), m_8(0) { ++g_components; } };
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class CEngineComponent { public: virtual void v01() {} void* m_pOwner; long m_8; CEngineComponent() : m_pOwner(0), m_8(0) { ++g_components; } };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 struct CPerlinNoise { unsigned long IndexTable[256]; C3DVector VectorTable[256]; CPerlinNoise(unsigned long seed) { g_seed = (int)seed; } };
 template <class T> struct CRetailList {
     struct node { node* _M_next; node* _M_prev; T _M_data; };
@@ -16,7 +16,7 @@ template <class T> struct CRetailList {
     }
     ~CRetailList() { std::free(_M_node); }
 };
-struct CEngineSimulationManager : CBase, CEngineComponent {
+class CEngineSimulationManager : public CBase, public CEngineComponent { public:
     CRetailList<void*> FullUpdateOnlySimulationInfoList, AlwaysUpdateSimulationInfoList, PausedSimulationInfoList;
     unsigned char NextSimStepOffset, CurrentSimStep; long MaxIterations; float MaxDistanceError;
     CPerlinNoise PerlinNoise;

@@ -16,7 +16,7 @@ struct SCountBlock {
     void* m_pObject;                                    // +8
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* Data;                                            // +0
     SCountBlock* m_pCount;                              // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), m_pCount(other.m_pCount)
@@ -48,11 +48,11 @@ struct CCountedPointer {
     }
     T* operator->() const { return Data; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CCardinalSpline {
+class C3DVector { public: float X, Y, Z; };
+class CCardinalSpline { public:
     void GetSplinePosition(C3DVector* position, float progress);    // 0x00A567A0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -61,12 +61,12 @@ struct CTCPhysicsBase {
     virtual void v30();
     virtual void ResetPosition(const C3DVector& position);         // slot 31 (+0x7c)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
 };
-struct CEnginePrimitiveHandle;
-struct CTCCreatureFlyOnSpline {
+class CEnginePrimitiveHandle;
+class CTCCreatureFlyOnSpline { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     bool    ToBeRemoved;                                // +0x08

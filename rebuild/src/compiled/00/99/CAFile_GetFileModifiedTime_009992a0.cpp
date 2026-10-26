@@ -38,7 +38,7 @@ public:
     CDateAndTime(const _FILETIME& fileTime);            // 0x009E9DB0
 };
 
-struct CWideStringData;
+class CWideStringData;
 class CWideString
 {
 public:

@@ -2,7 +2,7 @@
 
 // Model of 0x00405D60 CActionInputControl::TransferBinaryOut: write the five enum fields as SLONGs then the 2D
 // control direction (the stream records what it is given).
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };

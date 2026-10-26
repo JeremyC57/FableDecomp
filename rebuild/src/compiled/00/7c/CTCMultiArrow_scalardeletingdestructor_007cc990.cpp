@@ -1,4 +1,4 @@
-struct CTCMultiArrow {
+class CTCMultiArrow { public:
     void* vftable;
 };
 

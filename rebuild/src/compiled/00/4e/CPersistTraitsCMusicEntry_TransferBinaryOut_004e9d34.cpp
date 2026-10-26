@@ -16,7 +16,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteFloat(float value);                   // 0x00993EE0
 };
 
-struct CMusicEntry {
+class CMusicEntry { public:
     long          ID;               // +0x00
     long          Filename;         // +0x04 CDefString index
     float         Gain;             // +0x08

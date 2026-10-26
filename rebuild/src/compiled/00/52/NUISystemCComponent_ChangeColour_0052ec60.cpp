@@ -7,7 +7,7 @@
 // Colour sits at +0x84 (PDB +0x8c), TargetColour +0x88, InitialColour +0x8c, ColourTimeElapsed +0xa8,
 // ColourTime +0xac. ColourTime is stored first as a raw dword; `fcomp [0.0f] ; test ah,41h ; jne` is
 // `time > 0.0f`. The third argument (`ret 0Ch`) is never read.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
 

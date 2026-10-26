@@ -2,7 +2,7 @@
 // returns CCharString by value; hidden return buffer ptr is a stack arg.
 
 #include "engine/CCombatSequence_VillagerComboUnblockable.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString {
+class CCharString { public:
     char* p;
     // CCharString::CCharString(char const*, int)  @ 0x99ebf0  (__fastcall)
     void ctor(const char* s, int n);

@@ -9,7 +9,7 @@
 // again (`p - old + new`); the second pointer is tried only when the first was not in range. The block argument
 // is unused.
 struct CAddPrimitiveDesc { unsigned char _body[0x50]; };
-struct CEnginePrimitiveHandle { void* __vftable; void* Data; };
+class CEnginePrimitiveHandle { public: void* __vftable; void* Data; };
 struct CEngine_01436e80 {
     void UpdatePrimitive(CEnginePrimitiveHandle* handle, const CAddPrimitiveDesc& desc);   // 0x00B32000
 };

@@ -4,7 +4,7 @@ struct IThing {
     virtual void slot0(int a) = 0;
 };
 
-struct CGuiWindow {
+class CGuiWindow { public:
     char pad[0xe4];
     IThing* thing;   // +0xe4
 };

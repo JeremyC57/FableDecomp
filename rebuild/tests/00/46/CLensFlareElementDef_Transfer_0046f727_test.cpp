@@ -1,7 +1,7 @@
 // Behaviour test for CLensFlareElementDef::Transfer (0x0046F727): Radius, Texture, Position, Colour, each once.
 #include <cstdio>
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
 class CPersistContext {
 public:

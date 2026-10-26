@@ -6,13 +6,13 @@
 static int g_allocs = 0;
 static void* Alloc(unsigned n) { ++g_allocs; return std::malloc(n); }
 static void Free(void* p) { --g_allocs; std::free(p); }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char m_flags91; CInterfaceMap::SEntry e[2];
     void Init() { for (int i = 0; i < 9; ++i) m_presentBits[i] = 0; m_interfaces.first = m_interfaces.last = e; m_flags91 = 0; }
     void Add(long type, void* c) { m_presentBits[type >> 5] |= 1UL << (type & 31); m_interfaces.last->type = type; m_interfaces.last->component = (CTCBase*)c; ++m_interfaces.last; }
@@ -35,10 +35,10 @@ namespace N_004ab4f0 { struct CThingList {
         _M_node->_M_next = _M_node; _M_node->_M_prev = _M_node; Free(_M_node);
     }
 }; } using N_004ab4f0::CThingList;
-struct CThingFilter_None {};
-struct CThingFilter_HasTC { long Type; };
-template <class A, class B> struct CFilter_Bind2 : A { B Second; };
-struct CThingSearchTools {
+class CThingFilter_None { public:};
+class CThingFilter_HasTC { public: long Type; };
+template <class A, class B> class CFilter_Bind2 : public A { public: B Second; };
+class CThingSearchTools { public:
     CThing** m_pFirst; CThing** m_pLast;
     template <class T, class C, class F> void GetAllThings(const F& filter, C& found)
     {
@@ -53,9 +53,9 @@ struct CThingSearchTools {
     }
 };
 static long g_asked = 0;
-struct CTCCreatureOpinionOfHero { long Knows; bool KnowsOfDeed(long deed, bool) { ++g_asked; return deed == Knows; } };
+class CTCCreatureOpinionOfHero { public: long Knows; bool KnowsOfDeed(long deed, bool) { ++g_asked; return deed == Knows; } };
 static CThingSearchTools g_tools;
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     CThingSearchTools* GetThingSearchTools() const { return &g_tools; }
     bool IsDeedWitnessed(long deed, bool flag);
 };

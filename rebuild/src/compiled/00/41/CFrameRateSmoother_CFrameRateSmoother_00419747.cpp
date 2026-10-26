@@ -10,7 +10,7 @@
 // members belong to an embedded member object whose inline constructor is inlined here (a plain
 // init list or body assignment sinks the vtable store below them). Member types are not recoverable from the
 // body (any 4-byte scalar or pointer); `long` models them. One of 27 bodies.
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     CInitBaseClass();                           // 0x0099A310
 };

@@ -1,7 +1,7 @@
 // Behaviour test for 0x0097E270 CAIStateGroupBase::SetThingToNotAvoid: the creature's navigation component (interface 7,
 // found through the sorted interface map) receives the thing.
 #include <cstdio>
-struct CTCBase { int id; };
+class CTCBase { public: int id; };
 class CThing { public: int id; };
 
 struct CInterfaceMap {
@@ -18,12 +18,12 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 static const void* g_navThis = 0;
 static const CThing* g_navThing = 0;
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     CTCBase base;
     void SetThingToIgnore(const CThing* thing);
 };
 void CTCCreatureNavigation::SetThingToIgnore(const CThing* thing) { g_navThis = this; g_navThing = thing; }
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -41,7 +41,7 @@ struct CThingCreatureBase {
         return false;
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     void* __vftable;
     unsigned char _pad04[0x14];
     CThingCreatureBase* Creature;

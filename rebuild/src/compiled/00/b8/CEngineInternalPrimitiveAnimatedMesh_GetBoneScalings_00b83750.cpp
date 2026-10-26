@@ -10,9 +10,9 @@
 // (c) user copy/assignment on the iterator (same as a); (d) a long key converted at the call (same temporaries).
 // Next: lane gap candidate (RTM coalescing of the call-result temporary with the dead iterator); try a `CBoneScalingArray*` result
 // helper or a `goto`-shaped single lookup if Fable 5.1 has another idea.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct C3DMesh2 {
+class C3DMesh2 { public:
     unsigned char _pad[0xe8];
     unsigned long m_meshID;                        // +0xe8 (the bone-scaling cache key)
 };

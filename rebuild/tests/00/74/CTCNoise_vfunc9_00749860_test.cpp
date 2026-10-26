@@ -1,7 +1,7 @@
 // Behaviour test for CTCNoise::vfunc_9 @ 0x00749860: timer counts down, kill exactly when it reaches zero.
 #include <cstdio>
-struct CThing { int kills; bool arg; void Kill(bool removeNow) { ++kills; arg = removeNow; } };
-struct CTCNoise {
+class CThing { public: int kills; bool arg; void Kill(bool removeNow) { ++kills; arg = removeNow; } };
+class CTCNoise { public:
     CThing* ParentThing;
     long LifeTimer;
     void vfunc_9() { if (LifeTimer > 0) --LifeTimer; if (LifeTimer == 0) ParentThing->Kill(true); }

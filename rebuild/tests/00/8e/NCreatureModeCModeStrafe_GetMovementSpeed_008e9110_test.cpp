@@ -2,9 +2,9 @@
 #include <cstring>
 // Behaviour test for NCreatureMode::CModeStrafe::GetMovementSpeed (retail 0x008E9110): the strafe animation chosen for the
 // direction is looked up by name; its movement distance over its duration, divided by the frame rate, is the speed.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 enum EMovementType { MOVEMENT_WALK, MOVEMENT_RUN };
-struct CCharString { char Text[32]; };
+class CCharString { public: char Text[32]; };
 CCharString GetStrafeAnimationName(const C3DVector& a, const C3DVector& b, EMovementType type)
 {
     CCharString s;
@@ -12,19 +12,19 @@ CCharString GetStrafeAnimationName(const C3DVector& a, const C3DVector& b, EMove
     (void)type;
     return s;
 }
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     float Duration;
     float GetDuration() const { return Duration; }
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     C3DAnimationInfo Infos[4];
     const C3DAnimationInfo* PeekAnimation(unsigned long index) const { return &Infos[index]; }
 };
-struct CWorld { CMeshDataBank* PMainMeshBank; };
+class CWorld { public: CMeshDataBank* PMainMeshBank; };
 static CWorld g_world;
 static long g_FramesPerSecond = 4;
-struct CAnimationEntry { long BankIndex; };
-struct CThingCreatureBase {
+class CAnimationEntry { public: long BankIndex; };
+class CThingCreatureBase { public:
     CAnimationEntry Forward;
     CAnimationEntry Back;
     float Distances[4];

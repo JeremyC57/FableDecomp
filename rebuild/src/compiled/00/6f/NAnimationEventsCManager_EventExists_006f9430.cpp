@@ -6,7 +6,7 @@
 #include "engine/CMeshDataBank.h"
 #include "fable_string.h"
 namespace NAnimationEvents {
-struct CEvent { CEvent(); // FableWin PDB023f9630, fixture stub uses same signature
+class CEvent { public: CEvent(); // FableWin PDB023f9630, fixture stub uses same signature
  unsigned int Index:30; unsigned int ExternallyImported:1; unsigned int StopEvent:1; float Time;
  bool operator==(const CEvent& b) const { return Index==b.Index && StopEvent==b.StopEvent && fabs(Time-b.Time)<0.0001f; }
 };
@@ -17,7 +17,7 @@ struct EventMap {
  const_iterator LowerBound(const unsigned long&) const; // 0x006faf80
  const_iterator Find(unsigned long key) const { unsigned long lookupKey=key; const_iterator i=LowerBound(lookupKey); if(i==Last || key<i->Key) i=Last; return i; }
 };
-struct CManager {
+class CManager { public:
  CManager(const CMeshDataBank&,const CWideString&,bool); // FableWin023fa5c0
  unsigned char EventSymbolMapAndBank[0x2c]; EventMap AnimToExtraEventsMap; bool DifferentToSavedCopy,UseEmbeddedEvents;
  bool EventExists(long,const CEvent&) const;

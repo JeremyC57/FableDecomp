@@ -1,13 +1,13 @@
 // Behaviour test for 0x00A13C60 C3DVector::Rotate
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
     void Rotate(const C3DVector& axis, float angle);
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4(const C3DVector& a, float angle)      // Rodrigues rotation; the axes are the matrix columns
     {

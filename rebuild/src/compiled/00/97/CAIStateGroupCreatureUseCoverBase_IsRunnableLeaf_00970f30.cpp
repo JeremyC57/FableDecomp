@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 inline void* operator new(size_t,void* p){return p;}
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -16,7 +16,7 @@ struct C3DVector {
 };
 struct CThingRetail { const C3DVector& GetPosition() const; };   // 0x004C73D0
 struct CAIBrainRetail { unsigned char _pad[0x18]; CThingRetail* Creature; };   // +0x18
-struct CWorld { static long GetFramesPerSecond(); };
+class CWorld { public: static long GetFramesPerSecond(); };
 extern long g_framesPerSecond;                  // 0x01375550
 inline long CWorld::GetFramesPerSecond() { return g_framesPerSecond; }
 long __fastcall GFGetCurrentFrame();            // 0x0049D870

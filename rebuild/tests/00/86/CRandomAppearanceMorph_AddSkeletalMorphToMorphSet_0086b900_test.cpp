@@ -14,7 +14,7 @@ static float GFFloatRandom(float range, unsigned int* seed)
     return range * (float)(*seed % 1000u) / 1000.0f;
 }
 
-struct CDefString { int TablePos; };
+class CDefString { public: int TablePos; };
 struct CSkeletalMorph { int GroupID; CDefString Name; bool AllowVariation; };
 struct CMorphSetSkeletalMorph { std::string Name; float Strength; };
 struct CMorphSet { std::vector<CMorphSetSkeletalMorph> SkeletalMorphs; };

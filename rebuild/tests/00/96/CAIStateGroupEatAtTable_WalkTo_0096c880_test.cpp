@@ -1,8 +1,8 @@
 // Behaviour test for 0x0096C880 CAIStateGroup_EatAtTable::WalkTo (model copy over stub actions).
 #include <cstdio>
 #include <math.h>
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -12,20 +12,20 @@ struct C3DVector {
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     long mode; C3DVector pos;
     long GetMovementMode() { return mode; }
     const C3DVector& GetPosition_004c73d0() const { return pos; }
 };
-struct CAIBrain { CThingCreatureBase* PCreature; };
+class CAIBrain { public: CThingCreatureBase* PCreature; };
 static long g_moveType = -1; static int g_moveCalls = 0, g_lookCalls = 0; static int g_moveBusy = 0, g_lookBusy = 0;
 static long g_moveResult = 2, g_lookResult = 2; static C3DVector g_lookAt(0, 0, 0); static float g_turn = 0;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     long AIAction_MoveToPos(long, C3DVector, bool*, long movementType, bool, bool, CThing*, bool, float)
     { ++g_moveCalls; g_moveType = movementType; return g_moveBusy-- > 0 ? 4 : g_moveResult; }

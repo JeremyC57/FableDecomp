@@ -14,35 +14,35 @@
 // Layout: Ego_r.pdb CAS_Buddy (44 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14,
 //          PMasterData +0x18, BuddyHeroApproachComplete +0x1c, BuddyHeroApproachSpeechComplete +0x1d,
 //          BuddyFollowSpeechComplete +0x1e, BuddyStartPos +0x1f (unaligned C3DVector: pack(1) on the script only).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
 };
 
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-struct CScriptThing;
+class CScriptThing;
 struct CountedScriptImp {                                // CCountedPointer<CScriptThing>
     CScriptThing*   Data;
     CCPPointerInfo* Info;
     CountedScriptImp(const CountedScriptImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
-struct CBaseClass {                                      // vtable 0x01231710
+class CBaseClass { public:                                      // vtable 0x01231710
     CBaseClass() { }
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CountedScriptImp PImp;                               // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
     virtual const C3DVector& GetPos() const;             // slot 6 (+0x18) 0x004AA980
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -154,7 +154,7 @@ struct CGameScriptInterface {
     virtual void SetScriptingStateGroup(CScriptThing thing, long group);   // slot 784 (+0xc40)
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x298];
     float AS_BuddyWanderDistance;                        // +0x298
 };

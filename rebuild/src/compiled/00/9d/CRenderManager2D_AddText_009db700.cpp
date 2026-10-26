@@ -15,9 +15,9 @@
 // X/Y, Z, the text assignment, then font / colour / flags / scale in that statement order (the only one of the 24 orders
 // that copies the colour through eax->ecx and loads the flags last, inside the push_back compare); the inline STLport push_back (null-checked placement copy, else
 // _M_insert_overflow with the `__true_type` tag in the dead `position` slot), then the record's destructors.
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CFontBank;
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CFontBank;
 struct __true_type { __true_type() { } };
 
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -25,11 +25,11 @@ inline void* operator new(unsigned int, void* where) { return where; }
 float __fastcall GFAXToVX_009e1e10(float x);                     // 0x009E1E10
 float __fastcall GFAYToVY(float y);                     // 0x009E1E40
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
@@ -37,7 +37,7 @@ struct CWideString {
 };
 
 struct IDirect3DTexture9;
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                     // +0x00
     unsigned long      ByteLength : 28;                 // +0x04
     unsigned long      AllocationSource : 4;
@@ -46,7 +46,7 @@ struct CTexture {
     void Uninitialise();                                // 0x009F9F70
 };
 
-struct CQuickDrawTriInfo {
+class CQuickDrawTriInfo { public:
     unsigned char Line   : 1;                           // +0x00 bit 0
     unsigned char IsText : 1;                           // +0x00 bit 1
     C2DBoxF     Window;                                 // +0x04
@@ -80,7 +80,7 @@ struct CQuickDrawTriInfoVector {                        // STLport vector<CQuick
     }
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[0x1d8];
     bool          ViewportOffscreen;                    // +0x1d8
     unsigned char _pad1d9[0x2b];

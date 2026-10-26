@@ -4,12 +4,12 @@
 // PackageFile is the embedded CDiskFileWin32 at +0x60 (PDB CInputManager with 12-byte vectors), CurrentFilePackageIndex at +0x58.
 // Shape: the file object's address is held in esi for both virtual calls; the file name is loaded before the Open pushes, the
 // version address before the Write pushes (right to left), the index cleared last, `ret 8`.
-struct CWideString;
-struct CVersion;                                    // 12 bytes written as the file header
-struct CASuspendableProcess;
+class CWideString;
+class CVersion;                                    // 12 bytes written as the file header
+class CASuspendableProcess;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-struct CDiskFileWin32 {                             // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 { public:                             // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0 (slot 1)
     virtual void Close();                           // 0x0099A920 (slot 2)
@@ -18,7 +18,7 @@ struct CDiskFileWin32 {                             // vtable 0x0122D06C, 0x1c b
     unsigned char _body[0x18];                      // +0x04 AccessType, Position, Length, WinFileHandle, Opened, Pathname
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char  _pad04[0x54];                    // +0x04 vectors, counters, devices, checksum
     long           CurrentFilePackageIndex;         // +0x58

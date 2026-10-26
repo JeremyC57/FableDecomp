@@ -20,7 +20,7 @@ struct CTools_00697f50 {
     bool IsPosInViewingFrustrum(const C3DVector& pos, const void* matrix, const void* planes, float fieldOfView);   // 0x00875120
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00();
     CCamera                Camera;                 // +0x04 (Ego_r CGameCameraManager)
     CCamera                OldCamera;              // +0x3C

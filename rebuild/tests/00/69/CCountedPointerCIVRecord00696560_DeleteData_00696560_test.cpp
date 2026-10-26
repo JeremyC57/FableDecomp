@@ -1,10 +1,10 @@
 // Behaviour test for CCountedPointer<T>::DeleteData (0x00696560): null is ignored; a record is destroyed (shared member released) and freed.
 #include <cstdio>
 static int g_released = 0; static int g_freed = 0;
-struct CIVCountedPointeeBase { virtual ~CIVCountedPointeeBase() {} virtual void DeleteThis() { ++g_released; } unsigned long IVRefCount; };
+class CIVCountedPointeeBase { public: virtual ~CIVCountedPointeeBase() {} virtual void DeleteThis() { ++g_released; } unsigned long IVRefCount; };
 template<class T> class CIVCountedPointer { public: T* Object; ~CIVCountedPointer() { T* o = Object; if (o) { if (--o->IVRefCount == 0) o->DeleteThis(); Object = 0; } } };
 struct CRecord { long a, b, c; CIVCountedPointer<CIVCountedPointeeBase> m_pShared; ~CRecord() { ++g_freed; } };
-template<class T> struct CCountedPointer { static void DeleteData(void* data) { delete static_cast<T*>(data); } };
+template<class T> class CCountedPointer { public: static void DeleteData(void* data) { delete static_cast<T*>(data); } };
 int main()
 {
     CCountedPointer<CRecord>::DeleteData(0);

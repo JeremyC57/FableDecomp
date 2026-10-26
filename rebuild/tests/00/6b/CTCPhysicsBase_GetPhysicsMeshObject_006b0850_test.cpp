@@ -1,15 +1,15 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicsBase::GetPhysicsMeshObject (0x006B0850)
-struct C3DVector { float X, Y, Z; };
-struct CPhysicsMesh { long refs; int destroyed; };
+class C3DVector { public: float X, Y, Z; };
+class CPhysicsMesh { public: long refs; int destroyed; };
 struct CMeshPtr { CPhysicsMesh* Data; CMeshPtr(CPhysicsMesh* d) : Data(d) { if (d) ++d->refs; }
     ~CMeshPtr() { if (Data && --Data->refs == 0) ++Data->destroyed; } };
-struct CPhysicsMeshInfo { CPhysicsMesh* mesh; CMeshPtr GetMesh() const { return CMeshPtr(mesh); } };
+class CPhysicsMeshInfo { public: CPhysicsMesh* mesh; CMeshPtr GetMesh() const { return CMeshPtr(mesh); } };
 struct CMeshBank { CPhysicsMeshInfo* infos; CPhysicsMeshInfo* GetPhysicsMeshInfo(long i) { return &infos[i]; } };
-struct CThingPhysicsMeshInfo { unsigned short BankIndex; float RenderSizeX; };
-struct CPhysicsMeshObject { CPhysicsMesh* mesh; C3DVector pos; int rhs; float scale;
+class CThingPhysicsMeshInfo { public: unsigned short BankIndex; float RenderSizeX; };
+class CPhysicsMeshObject { public: CPhysicsMesh* mesh; C3DVector pos; int rhs; float scale;
     CPhysicsMeshObject(const CMeshPtr& m, const C3DVector& p, const int& r, float s) : mesh(m.Data), pos(p), rhs(r), scale(s) {} };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     const CThingPhysicsMeshInfo* info; CMeshBank* bank; C3DVector Position; int rhs;
     const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() { return info; } const int& GetRightHandedSet() { return rhs; }
     CPhysicsMeshObject GetPhysicsMeshObject() {

@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeDazed::Recover (retail 0x008DE620): the dazed creature starts the
 // recover-from-dazed combat action.
-struct CThing { unsigned char m_state; unsigned char m_flags91; };
-struct CCreatureActionBase { int Kind; CThing* Owner; CThing* Target; };
-struct CThingCreatureBase : CThing {
+class CThing { public: unsigned char m_state; unsigned char m_flags91; };
+class CCreatureActionBase { public: int Kind; CThing* Owner; CThing* Target; };
+class CThingCreatureBase : public CThing { public:
     int actions;
     CCreatureActionBase last;
     bool SetCurrentAction(const CCreatureActionBase& action) { ++actions; last = action; return true; }
@@ -17,7 +17,7 @@ struct CModeBase {
     CThingCreatureBase* ParentThing;
     void FrameUpdate() { ++g_baseUpdates; }
 };
-struct CCombatAction_RecoverFromDazed : CCreatureActionBase {
+class CCombatAction_RecoverFromDazed : public CCreatureActionBase { public:
     CCombatAction_RecoverFromDazed(CThingCreatureBase* owner) { Kind = 1; Owner = owner; Target = 0; }
 };
 struct CModeDazed : CModeBase {

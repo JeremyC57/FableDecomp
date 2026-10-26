@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPersistContext;
+class CPersistContext;
 
 static int g_baseCalled = 0;
 static void* g_subArg = 0;

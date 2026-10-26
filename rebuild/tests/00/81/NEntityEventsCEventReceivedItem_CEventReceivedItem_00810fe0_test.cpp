@@ -5,8 +5,8 @@ static int g_killed = 0; static long g_reason = -1; static int g_baseDtor = 0;
 struct CThing_00810fe0 { unsigned char _pad[0x91]; unsigned char m_flags; void Kill(long reason) { ++g_killed; g_reason = reason; } };
 struct CBaseIntelligentPointer { virtual void v00() { } void* m_pItem; CThing_00810fe0* GetPItem() { return (CThing_00810fe0*)m_pItem; } ~CBaseIntelligentPointer() { ++g_baseDtor; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() { } };
-namespace NEntityEvents { struct CEventBase { virtual void v00() { } long m_eventType; ~CEventBase() { } };
-struct CEventReceivedItem : CEventBase { CIntelligentPointer m_giver; CIntelligentPointer m_item; bool m_ownsItem; virtual void v00() { }
+namespace NEntityEvents { class CEventBase { public: virtual void v00() { } long m_eventType; ~CEventBase() { } };
+class CEventReceivedItem : public CEventBase { public: CIntelligentPointer m_giver; CIntelligentPointer m_item; bool m_ownsItem; virtual void v00() { }
     ~CEventReceivedItem() { if (m_ownsItem) { if (m_item.GetPItem()) { if (!(m_item.GetPItem()->m_flags & 1)) m_item.GetPItem()->Kill(0); } } } }; }
 int main() {
     CThing_00810fe0 t; t.m_flags = 0; { NEntityEvents::CEventReceivedItem e; e.m_ownsItem = true; e.m_item.m_pItem = &t; e.m_giver.m_pItem = 0; } if (g_killed != 1 || g_reason != 0 || g_baseDtor != 2) { std::printf("00810fe0_TEST FAIL\n"); return 1; }

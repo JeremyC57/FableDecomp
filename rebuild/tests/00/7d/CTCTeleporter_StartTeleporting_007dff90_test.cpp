@@ -3,8 +3,8 @@
 // InventoryScreen back on
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
-struct CTCInventoryMap {
+class CTCBase;
+class CTCInventoryMap { public:
     bool InventoryScreen;
     bool OpenedViaGuildSeal;
     bool m_build;
@@ -35,12 +35,12 @@ public:
         return false;
     }
 };
-struct CPlayerGui { bool m_blockingFD; };
+class CPlayerGui { public: bool m_blockingFD; };
 static CPlayerGui g_gui; CPlayerGui* g_pPlayerGui = &g_gui;
 float g_epsilon_0129ba3c = 1e-4f;
 static unsigned long g_payload = 0; static int g_events = 0; static long g_eventType = 0; static int g_eventPlayer = 0;
 struct CMemoryBuffer { void Copy(unsigned long length, const void* data) { if (length == 4) std::memcpy(&g_payload, data, 4); } };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;
     signed char   Player;
     unsigned char Data[32];
@@ -50,11 +50,11 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-struct CMainGameComponent { void AddGameEvent(const CGameEvent& e) { ++g_events; g_eventType = e.Type; g_eventPlayer = e.Player; } };
+class CMainGameComponent { public: void AddGameEvent(const CGameEvent& e) { ++g_events; g_eventType = e.Type; g_eventPlayer = e.Player; } };
 static CMainGameComponent g_main; CMainGameComponent* g_pMainGameComponent = &g_main;
-struct CWorld { long m_mode; };
+class CWorld { public: long m_mode; };
 static CWorld g_world;
-struct CPlayerManager { long GetMainPlayerNumber() { return 1; } };
+class CPlayerManager { public: long GetMainPlayerNumber() { return 1; } };
 static CPlayerManager g_players;
 struct CTCBaseModel {
     virtual void v00() {}
@@ -62,7 +62,7 @@ struct CTCBaseModel {
     const CWorld* GetWorld() const { return &g_world; }
     CPlayerManager* GetPlayerManager() const { return &g_players; }
 };
-struct CTCTeleporter : CTCBaseModel {
+class CTCTeleporter : public CTCBaseModel { public:
     void StartTeleporting(CThing* hero);
 };
 void CTCTeleporter::StartTeleporting(CThing* hero)

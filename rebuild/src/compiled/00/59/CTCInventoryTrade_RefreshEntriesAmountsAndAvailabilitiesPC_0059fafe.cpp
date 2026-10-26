@@ -24,7 +24,7 @@ template <class A, class B> struct pair {
 };
 }
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 struct SChildPointer {                          // CCountedPointer<NUISystem::CComponent>
     CComponent* m_pObject;
     void*       m_pCount;
@@ -37,7 +37,7 @@ struct CChildVector {                           // vector<CCountedPointer<CCompo
     unsigned long size() const { return _M_finish - _M_start; }
     const SChildPointer& operator[](unsigned long i) const { return _M_start[i]; }
 };
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -54,7 +54,7 @@ struct CComponent {
     virtual void v64();
     virtual long GetType();                     // slot 65 (+0x104)
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
 };
 }
 struct SListMapNode {                           // STLport _Rb_tree_node<pair<CComponent* const, CList*> >
@@ -86,7 +86,7 @@ __declspec(noinline) SListMapNode* CListMap::find(NUISystem::CComponent* const& 
 }
 #pragma auto_inline(on)
 
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     std::pair<unsigned long, unsigned long> RecurseRefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* component, CListMap& lists);   // 0x0059E6BD
     std::pair<unsigned long, unsigned long> RefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* component, CListMap& lists);
 };

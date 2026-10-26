@@ -5,16 +5,16 @@
 // direct member copies become integer moves. `<` gives `test ah,5 ; jp`, `>` gives `test ah,41h ; jne`; the end
 // pointer is re-read every pass (the box stores may alias it). The first point is used unconditionally.
 // Leaf: GetBounds
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxF { float MinX, MinY, MaxX, MaxY; };
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxF { public: float MinX, MinY, MaxX, MaxY; };
 template <class T> struct CRetailVector {
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     T* begin() const { return m_pFirst; }
     T* end() const { return m_pLast; }
 };
-struct CTCShapeManager;
+class CTCShapeManager;
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00();
     CTCShapeManager*          Owner;
     CRetailVector<C3DVector>  Points;

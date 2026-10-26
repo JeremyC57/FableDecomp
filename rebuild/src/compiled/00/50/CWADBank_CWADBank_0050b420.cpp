@@ -13,7 +13,7 @@ struct CBase_009d5f80 {
     CBase_009d5f80();                           // 0x009D5F80
 };
 
-struct CWADBank : CBase_009d5f80 {
+class CWADBank : public CBase_009d5f80 { public:
     virtual void v00();                    // this class has its own vtable
     CWADBank();
 };

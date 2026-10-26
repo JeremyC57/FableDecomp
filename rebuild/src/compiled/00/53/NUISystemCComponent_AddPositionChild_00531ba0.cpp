@@ -13,7 +13,7 @@
 //   in-place `+=`; the two screen-converted results without an offset are named locals (that is what gives the
 //   `and esp,-8` frame and the one shared temporary slot); the unscaled offsets use the member operator+ and an explicit
 //   ctor, whose operand order reproduces the retail fadd order.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}

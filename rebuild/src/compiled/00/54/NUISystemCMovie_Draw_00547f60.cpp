@@ -18,22 +18,22 @@ extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObjectEx(v
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION_18* cs);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CRITICAL_SECTION_18* cs);   // IAT 0x0143FE10
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float Left, Top, Right, Bottom;
     C2DBoxF(float l, float t, float r, float b) : Left(l), Top(t), Right(r), Bottom(b) {}
     void Move(const C2DVector& pos);                 // 0x0041A810
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(const CRGBColour& c) { R = c.R; G = c.G; B = c.B; A = c.A; }
 };
-struct CTexture {
+class CTexture { public:
     void CopyFromTexture(CTexture* source, unsigned long mip);   // 0x009FA4E0
 };
 struct CEnginePrimitive2DSprite {
@@ -85,7 +85,7 @@ public:
     }
 };
 
-struct CIEngine {
+class CIEngine { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -170,7 +170,7 @@ public:
     virtual long GetLayer(long depth);             // slot 36 (+0x90)
 };
 
-struct CComponent {
+class CComponent { public:
     virtual void v000();
     virtual void v001();
     virtual void Draw(CIEngine& engine, CEnginePrimitiveHandle* primitives, long layer, long* count, CComponent* drawer);   // slot 2
@@ -294,10 +294,10 @@ struct CComponent {
     unsigned long CurrentState;                    // +0x144
     unsigned char _pad148[0x15c - 0x148];
 };
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
 };
 
-struct CMovie : CChangingStateComponent {
+class CMovie : public CChangingStateComponent { public:
     bool                   Playing;                // +0x15c
     CEnginePrimitiveHandle Handle;                 // +0x160
     unsigned long          Width;                  // +0x168

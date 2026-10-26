@@ -6,7 +6,7 @@ CQuestMgr* g_questMgr = &g_mgr;
 
 void __fastcall QuestMgr_FailAll(CQuestMgr* self) { self->failed = 1; }
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
 void __fastcall CGameScriptInterface_FailAllActiveQuests(CGameScriptInterface* self)
 {

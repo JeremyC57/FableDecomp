@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstdlib>
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct SStringPair8 { CCharString first; long second; };
 struct SAllocator { SAllocator() { } };
 static int g_erase = 0, g_destroy = 0;
 void __fastcall DestroyRange(SStringPair8* f, SStringPair8* l, const SAllocator&) { g_destroy += (int)(l - f); }
 template<class P> P Exchange(P& slot, P value) { P old = slot; slot = value; return old; }
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* first; T* last; T* end_of_storage;
     unsigned long capacity() const { return (unsigned long)(end_of_storage - first); }
     void Erase(T* f, T* l) { if (f == first && l == last) ++g_erase; }

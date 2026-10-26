@@ -4,7 +4,7 @@
 
 static int g_stringCopies = 0;
 
-struct CCharString {
+class CCharString { public:
     int id;
     CCharString(int i) : id(i) {}
     CCharString(const CCharString& other) : id(other.id) { ++g_stringCopies; }

@@ -66,12 +66,12 @@ __declspec(noinline) void vector<T>::_M_insert_overflow(T* pos, const T& x, cons
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-template <class K, class V> struct CKeyPairCompareLess { };
+template <class K, class V> class CKeyPairCompareLess { public: };
 
 void __fastcall sort(pair<EReactionSpeechType, long>* first, pair<EReactionSpeechType, long>* last,
                      CKeyPairCompareLess<EReactionSpeechType, long> comp);   // 0x006813A0
 
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V, class C> class CVectorMap { public:
     vector< pair<K, V> > Data;                          // +0x00
     C                    Compare;                       // +0x0c
     bool                 Dirty;                         // +0x0d
@@ -85,7 +85,7 @@ template <class K, class V, class C> struct CVectorMap {
     }
 };
 
-struct CSimVoice {
+class CSimVoice { public:
     long _padding_[2];                                  // +0x00
     CVectorMap<EReactionSpeechType, long, CKeyPairCompareLess<EReactionSpeechType, long> > Voices;   // +0x08
     void Add(EReactionSpeechType type, vector<long>& samples);

@@ -27,7 +27,7 @@ static void* g_lastVfnThis;
 const char GHO_ItemName[] = "SILVER_KEY";
 void* GHO_RefreshGate;
 
-struct CCharString { void* rep; };
+class CCharString { public: void* rep; };
 
 struct ObjContainer {
     int CountObjects(int objDefId) {

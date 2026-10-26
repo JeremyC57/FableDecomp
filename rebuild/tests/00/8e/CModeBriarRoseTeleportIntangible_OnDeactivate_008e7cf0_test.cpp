@@ -69,14 +69,14 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -150,8 +150,8 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 
 struct CAnimEntryLite;
-struct CCPPointerInfo;
-struct CCharStringData;
+class CCPPointerInfo;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CModeStandBase {
@@ -220,7 +220,7 @@ FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PSprintAnimation_Info) == 0x64);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -242,10 +242,10 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 #include <stddef.h>
 
 
-struct CDefinitionManager;
+class CDefinitionManager;
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _base_0x04[0x18];                    // +0x04 flattened base-class subobject(s)
     CDefinitionManager* PDefManager;                         // +0x1c
@@ -273,7 +273,7 @@ FABLE_STATIC_ASSERT(offsetof(CDefClassBase, DefaultValsApplied) == 0x24);
 
 
 #pragma pack(push, 1)
-struct CSpecialEffectsDef {
+class CSpecialEffectsDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -304,15 +304,15 @@ FABLE_STATIC_ASSERT(offsetof(CSpecialEffectsDef, SpecialEffectsMap) == 0x28);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -455,10 +455,10 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCWeapon {
+class CTCWeapon { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -497,34 +497,34 @@ FABLE_STATIC_ASSERT(offsetof(CTCWeapon, Wielded) == 0x24);
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -763,16 +763,16 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x1b0);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CLevelLoader;
-struct CMainGameComponent;
-struct CRegionConnectionGraph;
+class CCPPointerInfo;
+class CLevelLoader;
+class CMainGameComponent;
+class CRegionConnectionGraph;
 struct CThingMapManager;
-struct CWADBank;
-struct CWorld;
+class CWADBank;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CWorldMap {
+class CWorldMap { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     long                    f4;                              // +0x04 retail-only long (previous header)
     CWorld*                 World;                           // +0x08
@@ -863,12 +863,12 @@ FABLE_STATIC_ASSERT(offsetof(CWorldMap, PassabilityBeingShown) == 0xf9);
 #include <stddef.h>
 
 
-struct CThingManager;
+class CThingManager;
 struct CThingMapManager;
-struct CWorldMap;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CWorldMap*        WorldMap;                              // +0x00
     CThingMapManager* PThingMapManager;                      // +0x04
     CThingManager*    ThingManager;                          // +0x08
@@ -894,15 +894,15 @@ FABLE_STATIC_ASSERT(offsetof(CThingSearchTools, AreaMaps) == 0xc);
 #include <stddef.h>
 
 
-struct CAIBrain;
-struct CBrainOutput;
-struct CCPPointerInfo;
-struct CCharStringData;
+class CAIBrain;
+class CBrainOutput;
+class CCPPointerInfo;
+class CCharStringData;
 struct CRelationshipsInit;
 struct CVillageTask;
 
 #pragma pack(push, 1)
-struct CThingAICreature {
+class CThingAICreature { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -1069,7 +1069,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingAICreature, Suspenders) == 0x1fc);
 
 
 #pragma pack(push, 1)
-struct CBriarRoseDef {
+class CBriarRoseDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -1120,12 +1120,12 @@ FABLE_STATIC_ASSERT(offsetof(CBriarRoseDef, DistanceForcePushThreshold) == 0x50)
 #include <stddef.h>
 
 
-struct CEnvironmentSpellEffectInterface;
-struct CEnvironmentSpellEffectInterpolator;
-struct CGameDefinitionManager;
+class CEnvironmentSpellEffectInterface;
+class CEnvironmentSpellEffectInterpolator;
+class CGameDefinitionManager;
 
 #pragma pack(push, 1)
-struct CEnvironment {
+class CEnvironment { public:
     void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
     CGameDefinitionManager*              DefinitionManager;  // +0x04
     float                                SunlightAttenuatorAngleFadeStart; // +0x08
@@ -1204,7 +1204,7 @@ struct CMapwhoNode;
 struct CThingMapCell;
 
 #pragma pack(push, 1)
-struct CTCMapwho {
+class CTCMapwho { public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     unsigned char  _pad_0x08[0x4];                           // +0x08
@@ -1262,10 +1262,10 @@ FABLE_STATIC_ASSERT(offsetof(CTCMapwho, InMapwho) == 0x50);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCTargeted {
+class CTCTargeted { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             obj;                                    // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -1295,8 +1295,8 @@ FABLE_STATIC_ASSERT(offsetof(CTCTargeted, PTargetingDef_Object) == 0x14);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -1304,8 +1304,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -1390,7 +1390,7 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 // Generated Thing offsets differ after bitset/vector shrink. Native presence bits20..43, map44..4F, CurrentMap8E,life91.
-struct C3DVector{float X,Y,Z;};struct NativeDefinition;struct EmitterMethods;
+class C3DVector{ public:float X,Y,Z;};struct NativeDefinition;struct EmitterMethods;
 struct ThingNative;
 struct ComponentEntry{int Type;void* Component;};
 struct ComponentMap{ComponentEntry*First,*Last,*Limit;ComponentEntry*LowerBound(const int*);}; //40F020

@@ -5,7 +5,7 @@
 #define __forceinline inline
 #endif
 static int g_sets = 0, g_dtors = 0;
-struct CThing {};
+class CThing { public:};
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { ++g_dtors; m_pItem = 0; }
     void* m_pItem;
@@ -39,7 +39,7 @@ struct CCoverThingVector {
         return pos;
     }
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     void* PBrain;
     long ScriptAIPriority;

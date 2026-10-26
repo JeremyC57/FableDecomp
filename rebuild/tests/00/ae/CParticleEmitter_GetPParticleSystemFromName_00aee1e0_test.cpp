@@ -3,14 +3,14 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;
     unsigned long m_length;
 };
 
 static long Compare_00411570(const char* a, const char* b) { return std::strcmp(a, b); }
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
 };
 

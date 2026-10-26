@@ -9,7 +9,7 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 inline float sqrtf(float value) { return (float)sqrt((double)value); }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

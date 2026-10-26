@@ -3,7 +3,7 @@
 extern void __fastcall Sub_Dtor(void* p);
 extern void __cdecl Op_Delete(void* p);
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     int f0;
     int Parent;
     void* f8;

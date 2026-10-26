@@ -6,7 +6,7 @@
 // and the bool FacingThunder +0x1c (the byte stored here).
 // Shape: `this` in esi, &Thing kept in edi for both calls, the interface re-read from +4 for the second call
 // (the first virtual call may change it), the flag store scheduled between the first push and the call; `ret`.
-struct CScriptThing { unsigned char m_body[0xc]; };
+class CScriptThing { public: unsigned char m_body[0xc]; };
 struct CV_HeroDuelScript;
 struct CQ_SunnyvaleMasterData;
 

@@ -4,8 +4,8 @@
 // zero, then script the hero, play CS_KRAKEN_OUTRO with the world paused and idle until the script is done
 static int g_frames = 0, g_doneAt = 1000, g_filters = 0, g_paused = 0, g_scripted = 0, g_deadAt = 4;
 static const char* g_played = 0; static int g_playedFrame = -1;
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     float GetHealth(const CScriptThing& t) const { return (t.id == 8 && g_frames >= g_deadAt) ? 0.0f : 100.0f; }
     CScriptThing GetHero() const { CScriptThing t; t.id = 1; return t; }

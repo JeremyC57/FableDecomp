@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMap {
+class CMap { public:
     char pad0[8];
     long CachedVolumes;
     long BaseFootprintA();

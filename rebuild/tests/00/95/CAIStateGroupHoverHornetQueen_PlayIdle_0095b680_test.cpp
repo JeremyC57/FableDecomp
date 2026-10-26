@@ -7,15 +7,15 @@
 static int g_stringDtors = 0, g_actionDtors = 0, g_terminated = 0, g_waits = 0;
 static bool g_runnable = true, g_okArgs = false, g_orderOk = true;
 
-struct CThingCreatureBase { int dummy; };
-struct CCharString {
+class CThingCreatureBase { public: int dummy; };
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long) : m_pData(text) {}
     ~CCharString() { ++g_stringDtors; }
 };
-struct CCreatureActionBase { virtual ~CCreatureActionBase() {} };
+class CCreatureActionBase { public: virtual ~CCreatureActionBase() {} };
 static CThingCreatureBase* g_creature = 0;
-struct CCreatureAction_PlayCombatAnimation : CCreatureActionBase {
+class CCreatureAction_PlayCombatAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop)
     {
         g_okArgs = creature == g_creature && std::strcmp(animation.m_pData, "SPECIAL_BOAST") == 0 && loop;
@@ -23,8 +23,8 @@ struct CCreatureAction_PlayCombatAnimation : CCreatureActionBase {
     ~CCreatureAction_PlayCombatAnimation() { ++g_actionDtors; }
 };
 template<class T> T* Tmp(const T& t) { return const_cast<T*>(&t); }
-struct CAIBrain { CThingCreatureBase* PCreature; };
-struct CAIStateGroupBase {
+class CAIBrain { public: CThingCreatureBase* PCreature; };
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     long AIAction_PerformActionAndWait(CCreatureActionBase*, bool wait) { if (!wait) ++g_waits; return 2; }

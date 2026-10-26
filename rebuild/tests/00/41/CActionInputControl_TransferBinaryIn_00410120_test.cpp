@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
-struct C2DVector { float X, Y; C2DVector() {} };
-struct CMemoryDataInputStream {
+class C2DVector { public: float X, Y; C2DVector() {} };
+class CMemoryDataInputStream { public:
     void* m_pVtable;
     unsigned int m_position;
     int StreamSize;
@@ -33,7 +33,7 @@ struct CMemoryDataInputStream {
     int ReadLong() { int v; Read(&v, sizeof(v)); return v; }
     C2DVector ReadC2DVector() { C2DVector v; Read(&v.X, 4); Read(&v.Y, 4); return v; }
 };
-struct CActionInputControl {
+class CActionInputControl { public:
     int GameAction, ControllerType, KeyboardKey, XboxButton, MouseButton;
     C2DVector ControlDirection;
     void TransferBinaryIn(CMemoryDataInputStream& stream)

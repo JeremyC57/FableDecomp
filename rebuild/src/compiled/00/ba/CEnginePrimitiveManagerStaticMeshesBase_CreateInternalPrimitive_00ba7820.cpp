@@ -14,20 +14,20 @@
 // `sub eax,8 / sub eax,2 / sub eax,2` chain with the case-12 body first.
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x44];                    // +0x04 .. +0x48
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
 };
 
-template <class T> struct CIVCountedPointer {     // intrusive counted pointer (one word)
+template <class T> class CIVCountedPointer { public:     // intrusive counted pointer (one word)
     T* m_p;
     __forceinline CIVCountedPointer() : m_p(0) { }
 };
-struct CEnginePrimitiveSimulationInfo;
-struct CEngineMeshEffect;
+class CEnginePrimitiveSimulationInfo;
+class CEngineMeshEffect;
 
-struct CEnginePrimitiveThemeChannelDesc {          // three flag bytes
+class CEnginePrimitiveThemeChannelDesc { public:          // three flag bytes
     bool m_a, m_b, m_c;
     __forceinline CEnginePrimitiveThemeChannelDesc() : m_a(false), m_b(false), m_c(false) { }
 };
@@ -45,12 +45,12 @@ struct __declspec(novtable) CEngineInternalPrimitiveStaticMeshBase : CEngineInte
         : CEngineInternalPrimitiveBase(type, flags), m_mesh(0), m_material(0), m_animation(0) { }
 };
 
-struct CEngineInternalPrimitiveStaticMesh : CEngineInternalPrimitiveStaticMeshBase {   // vtable 0x012A425C, 0xac bytes
+class CEngineInternalPrimitiveStaticMesh : public CEngineInternalPrimitiveStaticMeshBase { public:   // vtable 0x012A425C, 0xac bytes
     virtual void v00();
     __forceinline CEngineInternalPrimitiveStaticMesh() : CEngineInternalPrimitiveStaticMeshBase(8, 0xa) { }
 };
 
-struct CEngineInternalPrimitiveMorphInfo {
+class CEngineInternalPrimitiveMorphInfo { public:
     unsigned char _body[0x38];
     CEngineInternalPrimitiveMorphInfo();           // 0x00BAA250
 };

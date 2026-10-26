@@ -6,9 +6,9 @@
 // Shape: the script-thing address is formed once (`lea esi,[edi+0x14]`) and reused for the three
 // virtual calls; the second condition is an `||` (slot 76 true, or a null target) whose true paths
 // both reach the flag store.
-struct CBaseObject;
+class CBaseObject;
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

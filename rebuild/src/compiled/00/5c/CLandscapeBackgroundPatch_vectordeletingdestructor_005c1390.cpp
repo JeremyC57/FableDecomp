@@ -3,7 +3,7 @@
 typedef unsigned int uint;
 
 struct Sub;
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     char pad[8];
     Sub* sub;
 };

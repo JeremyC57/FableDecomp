@@ -136,11 +136,11 @@ static int GetFileAttributesExW(const WStr& fullPath, int, WIN32_FILE_ATTRIBUTE_
     data->ftLastWriteTime.dwHighDateTime = f->writeHigh;
     return 1;
 }
-struct CDateAndTime {
+class CDateAndTime { public:
     unsigned long Low, High;
     CDateAndTime(const FILETIME& t) : Low(t.dwLowDateTime), High(t.dwHighDateTime) { }   // stand-in for 0x009E9DB0
 };
-struct CAFile {
+class CAFile { public:
     static CDateAndTime GetFileModifiedTime(const WStr& path)
     {
         WStr fullPath;

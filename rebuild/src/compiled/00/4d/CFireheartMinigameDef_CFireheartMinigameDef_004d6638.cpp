@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D6638, length 34 bytes.
 // Callees: the def base constructor @ 0x0044C0C0 (labelled CShoveHaPennyRegionDef::CShoveHaPennyRegionDef, propagated), CCharString::CCharString @ 0x0099E4B0 twice (+0x28, +0x2c). Vtable 0x0123E584 = CFireheartMinigameDef (rtti-vtables.tsv). Shape: the size-optimised module, the first member address formed before the vtable store; `this` is returned.
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
 };
@@ -12,7 +12,7 @@ struct CShoveHaPennyRegionDef_Base {               // the def base whose constru
     CShoveHaPennyRegionDef_Base();                 // 0x0044C0C0
 };
 
-struct CFireheartMinigameDef : CShoveHaPennyRegionDef_Base {
+class CFireheartMinigameDef : public CShoveHaPennyRegionDef_Base { public:
     CCharString            m_name;                        // +0x28
     CCharString            m_text;                        // +0x2c
     virtual void v00();

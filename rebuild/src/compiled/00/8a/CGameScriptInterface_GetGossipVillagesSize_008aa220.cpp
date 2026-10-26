@@ -1,7 +1,7 @@
 // CGameScriptInterface::GetGossipVillagesSize @ 008aa220
 // __fastcall int GetGossipVillagesSize(CCharString name) ; name by value
 
-struct CCharString {
+class CCharString { public:
     void* p;
     CCharString(const CCharString& o);
     ~CCharString();

@@ -19,7 +19,7 @@
 //   the second to `and 0E4h ; or 4` with its load hoisted above the speed stores (body assignments land after the set).
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void v00();
     unsigned char _body[0x15c];
     CThingCreatureBase(long type);               // 0x00666090
@@ -37,18 +37,18 @@ struct CAICreaturePointer : CBaseIntelligentPointer {        // CIntelligentPoin
     virtual void v00();
     CAICreaturePointer() { }
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PData;
     CCharString();                              // 0x0099E4B0
 };
-struct CEnginePrimitiveHandle { unsigned long m_words[2]; };
+class CEnginePrimitiveHandle { public: unsigned long m_words[2]; };
 struct SHandleListNode { SHandleListNode* _M_next; SHandleListNode* _M_prev; CEnginePrimitiveHandle _M_data; };
 struct CHandleList {                            // list<CEnginePrimitiveHandle>: the header-node pointer
     SHandleListNode* _M_node;
@@ -81,11 +81,11 @@ struct CSuspenderSet {                          // set<void*>
     }
 };
 struct CRelationshipsInit;
-struct CBrainOutput;
-struct CAIBrain;
+class CBrainOutput;
+class CAIBrain;
 struct CVillageTask;
 
-struct CThingAICreature : CThingCreatureBase {  // vtable 0x0127293C
+class CThingAICreature : public CThingCreatureBase { public:  // vtable 0x0127293C
     CCountedPointer<CRelationshipsInit> RelationshipsInit;  // +0x160
     CBuildingPointer   HomeBuilding;            // +0x168
     CBuildingPointer   WorkBuilding;            // +0x170

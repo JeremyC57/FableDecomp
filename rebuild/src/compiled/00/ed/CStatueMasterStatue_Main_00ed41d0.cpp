@@ -16,7 +16,7 @@
 //   delete pushes) and the previous position is read before the call and overwritten before the compare.
 #include <math.h>
 #pragma intrinsic(fmod)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                          // 0x0099E4B0
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
@@ -30,7 +30,7 @@ struct SScriptThingInfo {                                   // the counted block
     void (__fastcall* m_pfnDestroy)(void*);                 // +4
     void* m_pObject;                                        // +8
 };
-struct CScriptThing : CBase {                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
@@ -62,7 +62,7 @@ struct CScriptThing : CBase {                               // vtable 0x01238C8C
         PImp_Info = 0;
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

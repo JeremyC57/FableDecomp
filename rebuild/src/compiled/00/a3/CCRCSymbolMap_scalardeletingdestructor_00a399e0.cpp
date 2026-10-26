@@ -1,4 +1,4 @@
-struct CCRCSymbolMap {
+class CCRCSymbolMap { public:
     void* vftable;
 };
 

@@ -10,20 +10,20 @@
 #include "engine/_quarantine/CGraphicDataBank.h"
 #undef CGraphicDataBank
 // Donor bank has opaque inherited bytes: native ResourceBank+164 and CurrentFrame+194 are verified by009fe380 and CResourceList+2c; donor derived fields start254 and disagree.
-struct CGraphicFrameData {long Sizeof();}; //009fcbf0
+class CGraphicFrameData { public:long Sizeof();}; //009fcbf0
 extern void* g_FrameDataVtable[]; //0129c89c CGraphicInfoFrame::CFrameData
 extern void* g_ManagedTextureVtable[]; //0129c880 CManagedTexture
 struct CBaseNative {void* Vtable;CBaseNative();}; //0099a2d0
-struct CManagedTexture : CBaseNative {
+class CManagedTexture : public CBaseNative { public:
  void* Data;
  CManagedTexture(){Vtable=g_ManagedTextureVtable;Data=0;}
  long Sizeof(); //00a69e60
 };
 struct CResourceNative : CResource {CResourceNative();void SetResourceSize(unsigned long);}; //009fbec0,009fbf20
-struct CResourceBank {void* Vtable;CResourceList ResourceList;void AddResource_009fc380(CResource*);}; //009fc380
-struct CGraphicDataBank {unsigned char Base[0x164];CResourceBank Resources;};
+class CResourceBank { public:void* Vtable;CResourceList ResourceList;void AddResource_009fc380(CResource*);}; //009fc380
+class CGraphicDataBank { public:unsigned char Base[0x164];CResourceBank Resources;};
 struct CGraphicHeader {unsigned char Data[0x1c];};
-struct CGraphicInfo {CGraphicHeader Header;long TextureType;CGraphicDataBank* Bank;long Index;void* Frames;};
+class CGraphicInfo { public:CGraphicHeader Header;long TextureType;CGraphicDataBank* Bank;long Index;void* Frames;};
 class CGraphicInfoFrame {public:long Reserved;unsigned short FrameNum;signed char SmallMipmapLevel;void* Data;CGraphicInfo* GraphicInfo;class CFrameData;};
 // CGraphicInfoFrame::CFrameData (RTTI .?AVCFrameData@CGraphicInfoFrame@@ at vtable 0x0129C89C; Ego_r/FableWin.pdb
 // ??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z, i.e. the ctor takes a const CGraphicInfoFrame*).

@@ -15,7 +15,7 @@ class CModeBase; class CThing;
 struct CRegisteredModeInfo {       // CTCCreatureModeManager::CRegisteredModeInfo, Ego_r.pdb 4 bytes
     CModeBase* (__cdecl* AllocFunc)(CThing*);
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const pair<K, V>& entry) const { return key < entry.first; }
 };

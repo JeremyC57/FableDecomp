@@ -16,7 +16,7 @@
 // absent the out variable is never written, and VC7.1 gave it the same frame slot as the lookup key (`mov eax,
 // [ebp-4]` on the absent path). 0x10D does not fit a byte immediate, so it lives in edi for the push, the key
 // store and the compare. A size TU only inlines the lookup when it is `__forceinline`.
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -53,7 +53,7 @@ struct CTCPCScoreboard {
     void Close();                                    // 0x00562E70
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     virtual void v00();
     CThing* ParentThing;                             // +0x04
     void ClosePCScoreboard();

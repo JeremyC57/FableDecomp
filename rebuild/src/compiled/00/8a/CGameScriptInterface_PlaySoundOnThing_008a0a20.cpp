@@ -7,7 +7,7 @@
 #undef CThing
 // Native bitset has9words/map44/life91 versus donor10words/map48/lifeA1; retain named native view below.
 #include "fable_string.h"
-struct C3DVector{float X,Y,Z;};
+class C3DVector{ public:float X,Y,Z;};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char AfterComponents[0x45];unsigned char Dead:1;unsigned char OtherLifeFlags:7;const C3DVector& GetPosition()const;ScriptMethods GetScriptThing()const;}; //004C73D0,004C7E50
@@ -16,7 +16,7 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-struct CCPPointerInfo{unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
@@ -105,11 +105,11 @@ virtual bool IsEqualTo(const ScriptMethods&) const; //slot78 0x004AA8A0
 FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
-struct CASoundBank{long GetSoundIndexFromSymbol(const CCharString&)const;}; //00A01920
+class CASoundBank{ public:long GetSoundIndexFromSymbol(const CCharString&)const;}; //00A01920
 struct MainGameSoundView{unsigned char BeforeSampleBank[16];CASoundBank* PSampleBank;};extern MainGameSoundView* g_MainGameComponent; //013B86A0
 extern unsigned long g_InvalidSoundHandle; //0129D25C
-struct CSoundPair{long FirstSound,LastSound;CSoundPair(long n):FirstSound(n),LastSound(n){}};
-struct CSoundInit{float Volume,Pitch,Pan;long NoPlays,PlaybackType;unsigned long GainFaderBits,PitchFaderBits;long OverrideID;CSoundInit():Volume(1.0f),Pitch(1.0f),Pan(0.0f),NoPlays(1),PlaybackType(1),GainFaderBits(0),PitchFaderBits(0),OverrideID(-1){}};
+class CSoundPair{ public:long FirstSound,LastSound;CSoundPair(long n):FirstSound(n),LastSound(n){}};
+class CSoundInit{ public:float Volume,Pitch,Pan;long NoPlays,PlaybackType;unsigned long GainFaderBits,PitchFaderBits;long OverrideID;CSoundInit():Volume(1.0f),Pitch(1.0f),Pan(0.0f),NoPlays(1),PlaybackType(1),GainFaderBits(0),PitchFaderBits(0),OverrideID(-1){}};
 struct SoundPlayerMethods{unsigned long PlayAttachedSample(const CSoundPair&,const CSoundInit&,bool,bool,bool);}; //0066B280, donor PlayAttachedSample without explicit bank
 struct CGameScriptInterfaceMethods:CGameScriptInterface{unsigned long PlaySoundOnThing(const ScriptMethods&,const CCharString&)const;};
 unsigned long CGameScriptInterfaceMethods::PlaySoundOnThing(const ScriptMethods& thing,const CCharString& symbol)const{

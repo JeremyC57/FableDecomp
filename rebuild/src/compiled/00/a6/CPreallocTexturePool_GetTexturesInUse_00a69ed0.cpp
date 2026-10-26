@@ -11,12 +11,12 @@ struct CManagedTextureData_Calls : CManagedTextureData {
     unsigned long GetUnusedFrames() const;                  // CResource::GetUnusedFrames 0x009FBF70
 };
 
-template <class T> struct CIVCountedPointer {               // intrusive counted pointer: one word
+template <class T> class CIVCountedPointer { public:               // intrusive counted pointer: one word
     T* Data;
     T* operator->() const { return Data; }
 };
 
-template <class T> struct CArray {                          // retail CArray: three pointers (12 bytes)
+template <class T> class CArray { public:                          // retail CArray: three pointers (12 bytes)
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

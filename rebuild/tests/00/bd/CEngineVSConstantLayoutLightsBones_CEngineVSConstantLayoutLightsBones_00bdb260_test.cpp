@@ -2,8 +2,8 @@
 #include <cstdio>
 
 static int g_live = 0;
-struct CBaseClass { CBaseClass() { ++g_live; } CBaseClass(const CBaseClass&) { ++g_live; } ~CBaseClass() { --g_live; } virtual void v00() {} };
-struct CShaderConstantRange : CBaseClass {
+class CBaseClass { public: CBaseClass() { ++g_live; } CBaseClass(const CBaseClass&) { ++g_live; } ~CBaseClass() { --g_live; } virtual void v00() {} };
+class CShaderConstantRange : public CBaseClass { public:
     long m_firstRegister, m_registerCount;
     CShaderConstantRange() : m_firstRegister(0), m_registerCount(0) {}
     CShaderConstantRange(long f, long c) : CBaseClass(), m_firstRegister(f), m_registerCount(c) {}
@@ -13,7 +13,7 @@ struct CEngineVSConstantLayoutLights {
     CShaderConstantRange BoneRange;
     virtual ~CEngineVSConstantLayoutLights() {}
 };
-struct CEngineVSConstantLayoutLightsBones : CEngineVSConstantLayoutLights {
+class CEngineVSConstantLayoutLightsBones : public CEngineVSConstantLayoutLights { public:
     CEngineVSConstantLayoutLightsBones()
     {
         BoneRange = CShaderConstantRange(0x26, 0x36);

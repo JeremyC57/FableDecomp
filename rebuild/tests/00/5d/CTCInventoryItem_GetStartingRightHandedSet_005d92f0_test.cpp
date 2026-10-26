@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for 0x005D92F0: the def is held across the conversion of its Orientation, then released.
 static int g_destroyed = 0; static long g_refDuring = -1;
-struct CRightHandedSet { float m_v[6]; };
-struct CInventoryItemDef {
+class CRightHandedSet { public: float m_v[6]; };
+class CInventoryItemDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long refCount;
@@ -23,8 +23,8 @@ struct CInventoryItemDefPointer {
     ~CInventoryItemDefPointer() { Object->Release(); }
     CInventoryItemDef* operator->() const { return Object; }
 };
-struct CTCBase { virtual void v00() {} void* ParentThing; };
-struct CTCInventoryItem : CTCBase {
+class CTCBase { public: virtual void v00() {} void* ParentThing; };
+class CTCInventoryItem : public CTCBase { public:
     CInventoryItemDefPointer PDef;
     CTCInventoryItem(CInventoryItemDef* d) : PDef(d) {}
     CRightHandedSet GetStartingRightHandedSet();

@@ -4,11 +4,11 @@
 #ifdef _MSC_VER
 #include "engine/CEngineWeatherRenderer.h"
 #else
-struct CEngineWeatherRenderer { unsigned char Settings[0x558],WeatherMaskList[0x114]; };
+class CEngineWeatherRenderer { public: unsigned char Settings[0x558],WeatherMaskList[0x114]; };
 #endif
-struct C3DVector { float X,Y,Z; };
-struct CWeatherMask { C3DVector Center; float Radius; C3DVector MinCoord,MaxCoord; float InvTransform[4][3]; float Scale; };
-struct CShaderRenderManager {
+class C3DVector { public: float X,Y,Z; };
+class CWeatherMask { public: C3DVector Center; float Radius; C3DVector MinCoord,MaxCoord; float InvTransform[4][3]; float Scale; };
+class CShaderRenderManager { public:
  void SetVertexShaderConstant(long,float,float,float,float); // 0x00989b00
  void SetVertexShaderConstant(long,const C3DVector&,float); // 0x00989a60
 };

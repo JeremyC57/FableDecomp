@@ -9,11 +9,11 @@
 // Leaf: ??0CTCInventoryItem
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 struct CTCInventoryBase;
-struct CInventoryItemDef;
+class CInventoryItemDef;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
@@ -26,7 +26,7 @@ struct CInventoryItemDefPointer {                  // CDefPointer<const CInvento
     CInventoryItemDefPointer() : Object(0) { }
 };
 
-struct CTCInventoryItem : CTCBase {                // vtable 0x01240004
+class CTCInventoryItem : public CTCBase { public:                // vtable 0x01240004
     CInventoryItemDefPointer PDef;                 // +0x0C
     CTCInventoryBase* PInventory;                  // +0x10
     unsigned __int64 InventoryUIDToAttachTo;       // +0x18

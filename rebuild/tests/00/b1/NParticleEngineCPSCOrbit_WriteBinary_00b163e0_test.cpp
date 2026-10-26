@@ -6,7 +6,7 @@ static unsigned long g_ulong = 0;
 static const void* g_dataPtr = 0;
 static unsigned long g_dataSize = 0;
 static int g_order = 0, g_ulongOrder = 0, g_dataOrder = 0;
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void WriteData(const void* data, unsigned long size) { g_dataPtr = data; g_dataSize = size; g_dataOrder = ++g_order; }
     void WriteULong(unsigned long value) { g_ulong = value; g_ulongOrder = ++g_order; }
 };

@@ -9,7 +9,7 @@ static const long kKeys[9] = { 5, -3, 12, 7, 7, 0, 99, -40, 2 };
 
 template<class T, class C> void AdjustHeap(T* first, long hole, long bottom, T value, C pred);
 
-template <class U> struct CArray {
+template <class U> class CArray { public:
     U* m_pFirst;
     U* m_pLast;
     U* m_pEnd;

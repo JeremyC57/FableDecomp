@@ -9,7 +9,7 @@
 // landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor
 // (which returns `this`). The class is named from the constructor's manifest label when that label
 // is unique. One of 12 bodies of this shape.
-struct CVillagePeopleDef {
+class CVillagePeopleDef { public:
     unsigned char _body[0xc4];       // sizeof(CVillagePeopleDef) = 0xc4
     CVillagePeopleDef();                               // 0x004525B3
 };

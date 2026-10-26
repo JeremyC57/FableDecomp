@@ -3,7 +3,7 @@
 // Standalone behaviour model: GetActionName forwards to a lookup with a fixed
 // name key and index -1, returning the same object pointer (this) it received.
 
-struct CCharString { void* p; };
+class CCharString { public: void* p; };
 struct Action { int dummy; };
 
 static const char* g_seenKey = 0;

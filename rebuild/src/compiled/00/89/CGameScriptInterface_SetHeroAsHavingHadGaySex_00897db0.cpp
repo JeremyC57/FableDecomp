@@ -10,7 +10,7 @@
 //   CGameScriptInterface +0x14 PlayerManager; CThing retail UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0;
 //   CTCHeroStats::HadScriptedGaySex retail +0x159 (Ego_r.pdb CTCHeroStats HadScriptedGaySex +0x16d; retail is 0x14 lower before HousePositions (retail +0x160, 12-byte vector) and 0x18 lower after it, as the landed CTCHeroStats models (HadScriptedSex +0x158, FailQuestOnDeath +0x174) pin).
 // Setter: CTCHeroStats::SetAsHavingScriptedGaySex(bool) (FableWin.pdb ?SetAsHavingScriptedGaySex@CTCHeroStats@@QAEX_N@Z), inline.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

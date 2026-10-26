@@ -11,14 +11,14 @@
 // inline operator= (release of the old block through the re-read member, adopt, add-ref) and the temporary's inline dtor; the
 // AddMode argument is the converting copy built in the argument area. The mode manager is spilled to the lookup key slot.
 void __fastcall Destroy_008c2d60(void* object);   // 0x008C2D60
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -45,7 +45,7 @@ struct SCountBlock {
     void* m_pObject;                            // +8
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_008c2d60), m_pObject(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                     // +0
     SCountBlock* m_pCount;                      // +4
     CCountedPointer(T* object) : m_pObject(object)
@@ -101,22 +101,22 @@ struct CModeJackOfBladesScream : CModeBase {    // retail sizeof 0xbc
     CModeJackOfBladesScream(CThing* owner);     // 0x00740450
     void SetSwordObject(CThing* sword);         // 0x008D7370
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool HasMode(long mode);                    // 0x0073A8A0
     void RemoveMode(long mode);                 // 0x0073ABA0
     bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char _pad10[0x114 - 0x10];
 };
-struct CCreatureAction_JackScream : CCombatActionBase {
+class CCreatureAction_JackScream : public CCombatActionBase { public:
     CCountedPointer<CModeJackOfBladesScream> PMode;   // +0x114
     virtual void Initialise();
 };

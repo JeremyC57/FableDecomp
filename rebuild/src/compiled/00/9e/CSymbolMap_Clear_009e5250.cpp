@@ -18,7 +18,7 @@ struct CBase {
     virtual ~CBase();
 };
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
@@ -82,16 +82,16 @@ template <class T> struct CVector {                      // STLport vector, 12 b
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
 };
 template <class K, class V> struct CKeyValuePair { K first; V second; };
-template <class K, class V, class C> struct CVectorMap { // retail 16 bytes
+template <class K, class V, class C> class CVectorMap { public: // retail 16 bytes
     CVector<CKeyValuePair<K, V> > Data;                  // +0x00
     C                             Compare;               // +0x0c empty comparator
     bool                          Dirty;                 // +0x0d
     void Clear();                                        // out of line
 };
-template <class T> struct CCompareString { };
+template <class T> class CCompareString { public: };
 
-struct CSymbolMap : CBase {
-    struct CSymbolInfo { CCharString GroupName; CCharString EntryName; long Val; };   // PDB, 12 bytes
+class CSymbolMap : public CBase { public:
+    class CSymbolInfo { public: CCharString GroupName; CCharString EntryName; long Val; };   // PDB, 12 bytes
     CVectorMap<CCharString, CSymbolInfo, CCompareString<CSymbolInfo> > SLONGMap;   // +0x04
     std::set<CCharString>                                             NamesUsed;  // +0x14
     bool                                                               CheckForDuplicateSymbols;   // +0x20

@@ -11,13 +11,13 @@
 // Shape: the list head is a named local (cached in ebx, spilled once) and the prefix a named CCharString local for the walk; CCharString's inline GetPString/Length (null data =
 // "" / 0) feed _strnicmp and GetSubString; the digit scan is an index loop re-testing Length() each pass.
 extern "C" int __cdecl _strnicmp(const char* a, const char* b, unsigned int n);   // 0x00F3FB90
-struct CTCBase;
-struct CBaseObject;
-struct CCharStringData {
+class CTCBase;
+class CBaseObject;
+class CCharStringData { public:
     char* m_pData;                                      // +0x00
     long  m_length;                                     // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -31,8 +31,8 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;                               // +0x04
     CBaseObject* GetPItem() const;                      // 0x00A01B50
 };
-struct CThing;
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 struct CInterfaceMap {
@@ -50,7 +50,7 @@ struct CTCThingList_0x21 {
     unsigned char _pad_0x00[0xc];
     SThingNode*   m_head;                               // +0x0c
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44

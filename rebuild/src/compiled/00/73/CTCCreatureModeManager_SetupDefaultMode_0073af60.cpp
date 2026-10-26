@@ -9,14 +9,14 @@
 // on. The sub-def release is `dec [edi+4] ; jne ; call [vt+4]`; the base-def release sits inside the non-null arm with no
 // second null test (the null path skips both destructors by constant propagation).
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long RefCount;                          // +0x04
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object)
@@ -34,14 +34,14 @@ struct CDefPointer {
     T* operator->() const { return Object; }
 };
 
-struct CCreatureModeDef : CDefPointeeBase {
+class CCreatureModeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 8];
     long DefaultCreatureMode;               // +0x28
     long InitialCreatureMode;               // +0x2c
     long DefaultWeaponCreatureMode;         // +0x30
 };
 
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>* out) const;   // 0x0073DBE0 for T = CCreatureModeDef
 };
 void* FindDef_s7r_0();
@@ -63,12 +63,12 @@ template <class T> __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointe
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CThingBaseDef> PBaseDef;    // +0x70
 };
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

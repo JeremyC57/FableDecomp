@@ -8,13 +8,13 @@
 // Shape: byte member tested with `mov al ; test al,al` (a bool member).
 struct CRenderContext;
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned char _pad[0x20];
     bool IsBeingPlayed;                                                 // +0x20
     void DrawPreparePrimitivesForRendering(CRenderContext* context);    // 0x005ECA50
 };
 
-struct CTCTavernGameCoinGolf : CTCTavernGame {
+class CTCTavernGameCoinGolf : public CTCTavernGame { public:
     void FadeOutTableOccupants(bool fadeOut);                           // 0x007D46D0
     void vfunc_11(CRenderContext* context);
 };

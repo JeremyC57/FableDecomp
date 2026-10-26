@@ -13,8 +13,8 @@
 // `push ecx` frame slot (`fild`), `* 0.1f`, then `fiadd` of the rent; one __ftol2; the def is then
 // reached again through `PDef->MaxRentBags` (AddRef/Release pair) and multiplied (`imul esi,eax`).
 
-struct CBuyableHouseDef
-{
+class CBuyableHouseDef
+{ public:
     virtual void v00();
     virtual void Destroy();                         // slot 1 (+0x04)
     long          m_refCount;                       // +0x04
@@ -44,8 +44,8 @@ struct CDefPointer
 };
 
 #pragma pack(push, 1)
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     void*         ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

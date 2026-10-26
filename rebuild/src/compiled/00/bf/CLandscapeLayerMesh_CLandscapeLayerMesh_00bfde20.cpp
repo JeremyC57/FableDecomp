@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFDE20, length 96 bytes.
 // Leaf: ??1CLandscapeLayerMesh@@QAE@XZ
 // Shape: a non-virtual destructor in a polymorphic class (the lander would otherwise pick the deleting `??_G`), `this` in esi, `ret`.
-struct CMovableResource;
-struct CEngineLandscapeMemoryManager {
+class CMovableResource;
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner);   // 0x00BD9AB0 (an empty `ret 8` in retail; the landed 0x00BDD8E0 model calls it too)
     void AppendFreeEdgeNode(void* block);          // 0x00BDA090
     void FreeBlock(void* block);                   // 0x00BDA0D0
@@ -14,7 +14,7 @@ struct SEngine_01436ea8 {
     CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
 };
 extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     CMovableResource() { }
     ~CMovableResource() { }                        // inline: the vtable store
@@ -22,7 +22,7 @@ struct CMovableResource {                          // vtable 0x0129B860
 struct CLandscapeLayerMeshOwned_00bfde20 {         // the object at +0x3c: deleted through its virtual destructor (slot 0 with 1)
     virtual ~CLandscapeLayerMeshOwned_00bfde20();
 };
-struct CLandscapeLayerMesh : CMovableResource {    // vtable 0x012A835C
+class CLandscapeLayerMesh : public CMovableResource { public:    // vtable 0x012A835C
     unsigned char                      _pad04[0x30];
     void*                              m_pVertexBlock;   // +0x34: a landscape-memory block (an edge-list node when +0x48 is clear)
     void*                              m_pIndexBlock;    // +0x38: a landscape-memory block

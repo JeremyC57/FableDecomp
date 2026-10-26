@@ -13,16 +13,16 @@
 //   before the other arguments.
 // Layout (Ego_r.pdb, entity scripts match): interface +4, Me +8, ParentClass +0x14, PMasterData +0x18, GivenObject +0x1c;
 //   CV_SickChildScript LaughingWomanKilled retail +0x71 (PDB 133 - 0x14).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefString {
+class CDefString { public:
     long Index;
     operator CCharString() const;                  // 0x00415D70
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x738];
     CDefString IngredientObject;                   // +0x738
     unsigned char _pad73c[0x768 - 0x73c];
@@ -34,7 +34,7 @@ struct CScriptThingMethods {
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
     virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -55,12 +55,12 @@ struct CGameScriptInterface {
     virtual void v152(); virtual void v153(); virtual void v154(); virtual void v155();
     virtual void GiveHeroMorality(float amount);   // slot 156 (+0x270)
 };
-struct CScriptThing : CScriptThingMethods {        // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CScriptThingMethods { public:        // 12 bytes, vtable 0x01238C8C
     void* PImp_Data;
     void* PImp_Info;
 };
 namespace NScript {
-struct CV_SickChildScript {
+class CV_SickChildScript { public:
     unsigned char _pad[0x71];
     bool LaughingWomanKilled;                      // +0x71
     struct CWomanToAttract {

@@ -27,7 +27,7 @@
 //   pointer is assigned straight from the thing (the implicit CIntelligentPointer temporary's address is re-taken).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing;
 struct CBaseIntelligentPointer {
     void*   __vftable;                                  // +0x00
@@ -111,7 +111,7 @@ __declspec(noinline) bool CThing::GetTCDriver(CTCDPhysicalObstruction** out)    
     return false;
 }
 #pragma auto_inline(on)
-struct CTrapDef {
+class CTrapDef { public:
     unsigned char _pad00[0x50];
     long          ExplosionDefIndex;                    // +0x50
     long          PhysicalObstructionDefIndex;          // +0x54

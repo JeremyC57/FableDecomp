@@ -1,12 +1,12 @@
 // Behaviour test for CMouseDX::UpdateCurrentStatusFromEvent @ 0x00AB5190: button flags, clamped relative motion, absolute set.
 #include <cstdio>
 
-struct C2DVector { float X, Y; };
-struct C2DExtentsI { long Width, Height; };
+class C2DVector { public: float X, Y; };
+class C2DExtentsI { public: long Width, Height; };
 static C2DExtentsI GetBackBufferDimensions() { C2DExtentsI e; e.Width = 640; e.Height = 480; return e; }
 
 enum EMouseEventType { LMB_DOWN = 1, RMB_DOWN, MMB_DOWN, LMB_UP, RMB_UP, MMB_UP, MOVE_X, MOVE_Y, WHEEL_UP, WHEEL_DOWN, SET_POSITION };
-struct CMouseEvent { double Time; EMouseEventType Type; float Movement; float PosX; float PosY; };
+class CMouseEvent { public: double Time; EMouseEventType Type; float Movement; float PosX; float PosY; };
 
 struct CMouseDX {
     C2DVector Pos; bool LMBOn, MMBOn, RMBOn;

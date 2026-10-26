@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 enum ESaveType { SAVE_TYPE_DEFAULT = 0, SAVE_TYPE_AUTO = 3 };
-struct CPersistContext {
+class CPersistContext { public:
     const char* seenName; ESaveType* seenValue; long seenDefault;
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue) { seenName = name; seenValue = &value; seenDefault = (long)defaultValue; }
     template <class T> void Transfer(const char* name, T& value) { Transfer(name, value, T()); }

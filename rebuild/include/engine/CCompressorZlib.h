@@ -13,7 +13,8 @@ struct _func___cdecl_void_void_ptr_void_ptr;
 struct internal_state;
 
 #pragma pack(push, 1)
-struct CCompressorZlib {
+class CCompressorZlib {
+public:
     void*                                      __vftable;    // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                              _pad_0x04[0x4]; // +0x04
     unsigned char                              _pad_0x08[0x4]; // +0x08

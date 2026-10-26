@@ -23,7 +23,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual ~CComponent();
 };
 }
@@ -100,7 +100,7 @@ struct CWorldPart {
     unsigned char _pad_0x00[0x2c];
     CHudOwner* Hud;                                  // +0x2c
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                               // +0x28
 };
@@ -117,7 +117,7 @@ struct CSoundSystem {
     virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xB8)
 };
 extern CSoundSystem* g_pSoundSystem;                 // 0x013B8394
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[0x0c];
     bool  UseCustomVolumes;                          // +0x0c
     unsigned char _pad0d[0x24 - 0x0d];
@@ -132,12 +132,12 @@ struct CUserProfileManager {
     float GetMusicVolume() const { return UseCustomVolumes ? CustomMusicVolume : MusicVolume; }
     static CUserProfileManager& __fastcall Get();    // 0x0040D2A0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x8c];
     long InventoryClosedFrame;                       // +0x8c
 };
 long __fastcall GetWorldFrame();                     // 0x0049D870
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     void CheckForSoldWieldedWeapons();               // 0x005CB780
 };
 struct CPresenceBits {
@@ -171,17 +171,17 @@ public:
 };
 
 namespace NHeroInformationScreens {
-struct CManager {
+class CManager { public:
     void SetCurrentScreenType(long type);            // 0x0066E799 (stores +0x28)
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 void __fastcall OnCloseMenus();                      // 0x0041D165 (NUISystem::CManager, static)
 
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     void*            __vftable;                      // +0x00
     CThing*          ParentThing;                    // +0x04
     unsigned char    _pad08[0x0c - 0x08];

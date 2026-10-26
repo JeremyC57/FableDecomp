@@ -129,7 +129,7 @@ public:
     unsigned long PlayAttachedCriteria(const CCharString& name, bool attach, bool loop, bool b3, long d);   // 0x0066BD00
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };

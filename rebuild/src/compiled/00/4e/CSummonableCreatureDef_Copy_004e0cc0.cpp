@@ -1,11 +1,11 @@
 #pragma optimize("s",on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     char pad[0x28];
     void Copy(const CDefClassBase* src);  // __fastcall -> ecx=this, [esp]=src
 };
 
-struct CSummonableCreatureDef : CDefClassBase {
+class CSummonableCreatureDef : public CDefClassBase { public:
     unsigned int f28;  // at offset 0x28
     unsigned int f2c;  // at offset 0x2c
 };

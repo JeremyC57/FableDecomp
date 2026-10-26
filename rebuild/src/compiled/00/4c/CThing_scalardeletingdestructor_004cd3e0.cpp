@@ -1,4 +1,4 @@
-struct CThing {
+class CThing { public:
     void* vftable;
 };
 

@@ -3,7 +3,7 @@ struct CTCBData {
     char pad[0xC4];
     int lifeStage;
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     char pad[0xE0];
     CTCBData* data;
 };

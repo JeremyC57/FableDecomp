@@ -102,7 +102,7 @@ struct CFileScanInfo { bool Stopped; long SearchHandle; };
 static const char* g_listing[] = { "a.txt", "b.txt" };
 static void CopyAsciiW(wchar16* out, const char* s) { unsigned i = 0; for (; s[i]; ++i) out[i] = (unsigned char)s[i]; out[i] = 0; }
 static unsigned g_next = 1;
-struct CAFile {
+class CAFile { public:
     static bool ScanNextFile(const WStr&, CFileScanInfo& info, wchar16* nextFile)   // stand-in 0x00999850
     {
         if (info.Stopped || g_next >= sizeof(g_listing) / sizeof(g_listing[0])) { info.Stopped = true; return false; }

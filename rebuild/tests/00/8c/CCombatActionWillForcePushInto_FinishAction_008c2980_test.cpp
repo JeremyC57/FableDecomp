@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <cstring>
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long) : text(t) { ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
 };
-struct CCreatureActionBase { long level; bool release; char anim[32]; };
+class CCreatureActionBase { public: long level; bool release; char anim[32]; };
 struct CThingCreatureBase_Calls {
     CCreatureActionBase last; int sets;
     CThingCreatureBase_Calls() : sets(0) { }
@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const { return m_pItem; }
 };
 static int g_baseFinish = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature;
     void FinishAction() { ++g_baseFinish; PCreature.m_pItem = 0; }   // the base drops the pointer: the local copy must survive
 };

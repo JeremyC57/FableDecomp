@@ -1,18 +1,18 @@
 #include <cstdio>
 #include <cstring>
 // behaviour test: CStopDrawing::Main hides Me when touched by the hero, then keeps framing until done
-struct CCharString { const char* text; CCharString(const char* t, long = -1) : text(t) {} };
+class CCharString { public: const char* text; CCharString(const char* t, long = -1) : text(t) {} };
 static int g_frames = 0, g_doneAfter = 0;
 static bool g_talk = false, g_hit = false, g_any = false, g_special14 = false;
 static bool isHero(const CCharString& s) { return std::strcmp(s.text, "SCRIPT_NAME_HERO") == 0; }
-struct CScriptThing {
+class CScriptThing { public:
     bool MsgIsHitBy(const CCharString& h) const { return isHero(h) && g_hit; }
     bool MsgIsTalkedToBy(const CCharString& t) const { return isHero(t) && g_talk; }
     bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& f) const { return ability == 0xe && isHero(f) && g_special14; }
     bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& f) const { return isHero(f) && g_any; }
 };
 static int g_hidden = 0, g_filters = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     void EntitySetAsDrawable(const CScriptThing&, bool drawable) const { if (!drawable) ++g_hidden; }
 };

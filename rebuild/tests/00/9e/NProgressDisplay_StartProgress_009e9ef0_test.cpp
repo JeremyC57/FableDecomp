@@ -18,7 +18,7 @@ public:
         Mask = (a ? 1 : 0) | (b ? 2 : 0) | (c ? 4 : 0) | (d ? 8 : 0) | (e ? 16 : 0) | (f ? 32 : 0);
     }
 };
-template <class T> struct CCountedPointer { T* Data; void* Info; T* operator->() const { return Data; } };
+template <class T> class CCountedPointer { public: T* Data; void* Info; T* operator->() const { return Data; } };
 static CCountedPointer<CAProgressDisplay> g_ProgressDisplay = { 0, 0 };
 
 static void StartProgress(bool a, bool b, bool c, bool d, bool e, bool f)

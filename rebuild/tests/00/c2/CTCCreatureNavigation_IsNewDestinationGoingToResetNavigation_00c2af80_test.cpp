@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 static void* g_this;
 static C3DVector* g_p;
@@ -16,7 +16,7 @@ struct Sub {
     virtual bool Check(void* origThis, C3DVector* pos) { g_this=origThis; g_p=pos; return g_ret; }
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* f0;
     Sub*  ParentThing;
 };

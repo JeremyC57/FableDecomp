@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour model of CSplinePosParamData::ReadBinary @ 0x00B21C90 (copy of the source's logic).
 static int g_overflow = 0;
-struct CDataInputStream {
+class CDataInputStream { public:
     void* m_pVtable;
     unsigned long m_position;
     long StreamSize;
@@ -28,7 +28,7 @@ struct CDataInputStream {
     unsigned int ReadULong() { unsigned int value; Read(&value, 4); return value; }
     bool ReadBool() { unsigned char value; Read(&value, 1); return value != 0; }
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     T storage[16];
     T* begin() { return m_begin; }

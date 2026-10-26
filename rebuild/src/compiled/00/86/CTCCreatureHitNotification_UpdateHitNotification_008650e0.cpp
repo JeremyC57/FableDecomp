@@ -41,7 +41,7 @@ struct CWeaponTrailList {                                // STLport list<CWeapon
 
 namespace NCreatureHitNotification
 {
-    struct CFlash {
+    class CFlash { public:
         CWeaponTrailList FlashGeometry;                  // +0x00
         long             CreationFrame;                  // +0x04
     };
@@ -78,11 +78,11 @@ struct CFlashVector {                                    // STLport vector<CFlas
     }
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                         // 0x0049D870
 };
 
-struct CTCCreatureHitNotification : CTCBase {
+class CTCCreatureHitNotification : public CTCBase { public:
     CFlashVector Flashes;                                // +0x0c
     CWorld* GetWorld();                                  // 0x00686A70 (CTCBase)
     void UpdateHitNotification();

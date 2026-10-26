@@ -1,17 +1,17 @@
 #include <cstdio>
 static int g_stringCopies = 0;
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* t) : Text(t) {}
     CCharString(const CCharString& other) : Text(other.Text) { ++g_stringCopies; }
 };
 struct SCountBlock { long Count; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; SCountBlock* Info;
     CCountedPointer(T* d, SCountBlock* i) : Data(d), Info(i) {}
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->Count; }
 };
-struct CThing { long Id; };
+class CThing { public: long Id; };
 // The candidate logic: the record's memberwise copy constructor.
 struct SRecord {
     CCountedPointer<CThing> A; CCountedPointer<CThing> B;

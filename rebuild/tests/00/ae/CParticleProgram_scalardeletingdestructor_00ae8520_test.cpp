@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CParticleProgram {
+class CParticleProgram { public:
     void* vftable;
     int destroyed;
 };

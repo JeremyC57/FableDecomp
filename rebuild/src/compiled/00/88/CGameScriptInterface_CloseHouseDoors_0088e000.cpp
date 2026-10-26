@@ -6,13 +6,13 @@
 // Leaf: CloseHouseDoors
 #include "engine/CGameScriptInterface.h"
 
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char _pad[0x6c];
     unsigned char m_typeFlags;                      // +0x6c (bit 6 = building)
     void LockAllDoors(bool lock, bool silent);      // 0x0082DB00
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

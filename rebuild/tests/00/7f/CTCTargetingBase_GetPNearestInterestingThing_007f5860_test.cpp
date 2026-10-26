@@ -1,8 +1,8 @@
 // Behaviour test for CTCTargetingBase::GetPNearestInterestingThing @ 0x007F5860: none when ignoring, else override, else nearest.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CIntelligentPointer { CThing* p; CThing* Get() const { return p; } };
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     bool ScriptOverrideIgnoreEverything; CIntelligentPointer PNearestInterestingThing, PScriptOverrideInterestingThing;
     CThing* GetPNearestInterestingThing()
     {

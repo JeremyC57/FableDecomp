@@ -1,13 +1,13 @@
 // behaviour test for CThingCreatureBase::IsFreeToPerformAction (0x00662210)
 #include <cstdio>
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     bool overrideable, ready;
     int InterruptionGroupID, InterruptionPriority;
     bool Finished;
     virtual bool IsOverrideableByActionOfSamePriority() { return overrideable; }
     virtual bool IsActionReadyForInterruption() { return ready; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool Dead; CCreatureActionBase* cur;
     bool IsFreeToPerformAction(CCreatureActionBase* action)
     {

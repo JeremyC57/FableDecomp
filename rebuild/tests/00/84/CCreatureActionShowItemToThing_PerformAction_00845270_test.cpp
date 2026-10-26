@@ -3,14 +3,14 @@
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,13 +40,13 @@ struct CBaseIntelligentPointer {
 
 struct CEventBase { };
 namespace NEntityEvents {
-struct CEventShownItem : CEventBase {           // 0x18 bytes
+class CEventShownItem : public CEventBase { public:           // 0x18 bytes
     unsigned char _pad[0x18];
     CEventShownItem(CThing* shower, CThing* item);   // 0x0084AEE0
 };
 }
 using NEntityEvents::CEventShownItem;
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);           // 0x008113C0
 };
 

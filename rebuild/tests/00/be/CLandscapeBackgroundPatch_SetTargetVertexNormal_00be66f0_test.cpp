@@ -1,6 +1,6 @@
 #include <cstdio>
 // behaviour copy of SetTargetVertexNormal @ 0x00be66f0 (int instead of long: 64-bit host)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };

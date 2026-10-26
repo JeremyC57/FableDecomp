@@ -4,7 +4,7 @@
 // type below must match the source exactly or the mangled names will not link.
 class CCharString { public: int m_Dummy; };
 class CThing      { public: int m_Dummy; };
-struct CScriptThing;
+class CScriptThing;
 
 struct CScriptThingVTable
 {
@@ -14,8 +14,8 @@ struct CScriptThingVTable
     bool (__fastcall* m_IsAvailable)(const CScriptThing* self);
 };
 
-struct CScriptThing
-{
+class CScriptThing
+{ public:
     CScriptThingVTable* m_pVTable;
 };
 
@@ -36,8 +36,8 @@ struct CGSIAddLineToConversationWorld
     CScriptConversationManager* m_pConversationManager;
 };
 
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     unsigned char                    m_Pad0000[0x04];
     CGSIAddLineToConversationWorld*  m_pWorld;
 

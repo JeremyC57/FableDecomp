@@ -2,8 +2,8 @@
 static int g_log[16]; static int g_n = 0;
 static void Log(int v) { if (g_n < 16) g_log[g_n++] = v; }
 static bool Expect(const int* want, int n) { int i; if (g_n != n) return false; for (i = 0; i < n; ++i) if (g_log[i] != want[i]) return false; return true; }
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     CTCBase() : ParentThing(0), ToBeRemoved(false), IsInGlobalUpdateTCs(true) {}
     virtual ~CTCBase() { Log(100); }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
@@ -21,8 +21,8 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CCharString { int m_tag; CCharString() : m_tag(0) {} ~CCharString() { Log(m_tag); } };
-struct CTCActionUseScriptedHook : CTCBase {
+class CCharString { public: int m_tag; CCharString() : m_tag(0) {} ~CCharString() { Log(m_tag); } };
+class CTCActionUseScriptedHook : public CTCBase { public:
     bool Usable, ForceConfirmation, WaitingForConfirmation, PerformAction, TeleportToRegionEntrance;
     u64 EntranceConnectedToUID; CIntelligentPointer PEntranceConnectedTo; bool EntranceLocked;
     u64 CameraTrackUID; CIntelligentPointer PCameraTrack;

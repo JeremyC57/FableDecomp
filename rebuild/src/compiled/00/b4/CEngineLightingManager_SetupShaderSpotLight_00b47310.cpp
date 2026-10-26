@@ -10,12 +10,12 @@
 // SpotLightFalloffMatrix (+0xC0), scale, -scale and the spot light's colour.
 // Layout: the spotlight parameter block (PDB CEngineLightingManagerSpotlightParams, byte-packed) starts at +0x4698 in the TLC
 // object (the landed UpdateShadowScene @ 0x00B444F0 passes it), so Radius / SpotRadius / Colour are +0x46B4 / +0x46B8 / +0x46C0.
-struct CMatrix3x4 { float m[12]; };
-struct CMatrix4x4 { float m[16]; };
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour { float R, G, B, A; };
+class CMatrix3x4 { public: float m[12]; };
+class CMatrix4x4 { public: float m[16]; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public: float R, G, B, A; };
 
-struct CShadowRendererSceneData {                  // 0x240 bytes
+class CShadowRendererSceneData { public:                  // 0x240 bytes
     CMatrix4x4    WorldToShadowBufferMatrix;       // +0x000
     CMatrix4x4    WorldToShadowBufferMatrixHomogenousScreenSpace;   // +0x040
     CMatrix4x4    WorldToShadowBufferMatrixTextureSpace;            // +0x080
@@ -29,13 +29,13 @@ struct CShadowRendererSceneData {                  // 0x240 bytes
     CShadowRendererSceneData(const CShadowRendererSceneData& other);   // 0x00B38600
 };
 
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     unsigned char            _pad00[0xc];
     CShadowRendererSceneData SceneData;            // +0x0C
 };
 extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;   // 0x01436E60
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void SetShadowSpotLightFalloffParameters(const CMatrix3x4* falloff, float scale, float offset,
                                              const CRGBFloatColour* colour);   // 0x009899B0
 };
@@ -54,7 +54,7 @@ struct CEngineLightingManagerSpotlightParams {     // 0x38 bytes, byte-packed (P
 };
 #pragma pack(pop)
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char                         _pad0000[0x4698];
     CEngineLightingManagerSpotlightParams SpotLightParams;   // +0x4698
     void SetupShaderSpotLight();

@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Model of CCombatRing::GetAttackerProng @ 0x006E8790
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 struct CProng { unsigned char _pad[0x14]; CBaseIntelligentPointer PAttacker; };
 struct CProngVector { CProng* m_pFirst; CProng* m_pLast; CProng* m_pEnd; };

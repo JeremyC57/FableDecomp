@@ -17,16 +17,16 @@
 
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
 };
 extern CCharString g_AugmentationsLeftDescriptionM;         // 0x013B8BB8
 extern CCharString g_AugmentationsLeftDescriptionR;         // 0x013B8BBC
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                          // 0x0099AED0
     ~CWideString();                                         // 0x0099B510
@@ -51,11 +51,11 @@ struct CItemVector {                                        // STLport vector<pa
     CItem& operator[](unsigned long n) { return _M_start[n]; }
     void push_back(const CItem& x);                         // 0x005947B6
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     static bool __fastcall IsAugmentation(long defIndex);   // 0x005D9870
 };
 
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 template <class T> struct CAllocator { CAllocator() { } };
 struct SComponentNode {
     SComponentNode* _M_next;
@@ -68,7 +68,7 @@ struct CComponentList {                                     // STLport list<CCom
     ~CComponentList();                                      // 0x0042ABCA
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void FindChildren(CCharString name, CComponentList& out);   // slot 5 (+0x14)
     virtual void v006(); virtual void v007(); 
@@ -96,7 +96,7 @@ struct CComponent {
 
 class CThing;
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04 CTCBase
     unsigned char _pad08[0x17c - 0x08];
@@ -104,7 +104,7 @@ struct CTCInventoryBase {
 };
 }
 
-struct CTCInventoryWeapons : NInventory::CTCInventoryBase {
+class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     NUISystem::CComponent* WeaponsList;                     // +0x17C
     void ConstructAugmentationsLeftDescription(CWideString& text, CItemVector& augmentations, bool melee);   // 0x005C4F42
     void RefreshAugmentationsLeftDescriptions();

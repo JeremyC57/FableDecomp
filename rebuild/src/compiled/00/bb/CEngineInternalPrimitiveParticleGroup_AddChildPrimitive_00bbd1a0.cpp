@@ -7,7 +7,7 @@
 // are wider); modelled locally with the retail offsets.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CEnginePrimitive;
+class CEnginePrimitive;
 
 struct SIdListNode {                               // STLport list node: next, prev, value
     SIdListNode*  m_pNext;

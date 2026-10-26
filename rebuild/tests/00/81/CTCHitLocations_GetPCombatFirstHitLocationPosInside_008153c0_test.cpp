@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for CTCHitLocations::GetPCombatFirstHitLocationPosInside (retail 0x008153C0).
-struct CThing { int id; };
-struct C3DVector { float X, Y, Z; };
+class CThing { public: int id; };
+class C3DVector { public: float X, Y, Z; };
 
 namespace NHitLocations {
-struct CPhysicalPrimitiveBase {
+class CPhysicalPrimitiveBase { public:
     float m_minX, m_maxX;                               // a slab test along X stands in for the shape
     virtual bool IsPosInside(const CThing& owner, const C3DVector& pos) const
     {
@@ -14,7 +14,7 @@ struct CPhysicalPrimitiveBase {
     virtual ~CPhysicalPrimitiveBase() { }
 };
 struct CHitLocationDef { CPhysicalPrimitiveBase* PhysicalPrimitive; };
-struct CHitLocation {
+class CHitLocation { public:
     CThing*                POwnerThing;
     const CHitLocationDef* PDef;
     void*                  PArmourDef;
@@ -26,7 +26,7 @@ struct CHitLocation {
 
 struct SHitLocationEntry { NHitLocations::CHitLocation first; long second; };
 
-struct CTCHitLocations {
+class CTCHitLocations { public:
     SHitLocationEntry* HitLocations_First;
     SHitLocationEntry* HitLocations_Last;
     SHitLocationEntry* HitLocations_End;

@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <new>
 static int g_live = 0;
-struct CCharString {                            // stands in for the engine string (copy 0x0099EC30, dtor 0x0099EAE0)
+class CCharString { public:                            // stands in for the engine string (copy 0x0099EC30, dtor 0x0099EAE0)
     const char* m_pData;
     explicit CCharString(const char* s) : m_pData(s) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }

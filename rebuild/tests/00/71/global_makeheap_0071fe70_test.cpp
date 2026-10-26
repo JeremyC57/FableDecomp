@@ -1,7 +1,7 @@
 // Behaviour test for 0x0071FE70 __make_heap over pair<CSkeletalMorphs::CEntry,float> (with the SGI
 // __adjust_heap / __push_heap of 0x0071F650 / 0x0071ECF0 modelled here).
 #include <cstdio>
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSkeletalMorphsEntry { CDefString MorphName; short Priority; bool SupressesLowerMorphs; };
 struct SMorphWeight {
     CSkeletalMorphsEntry first;
@@ -9,7 +9,7 @@ struct SMorphWeight {
     SMorphWeight() { }
     SMorphWeight(const SMorphWeight& other) : first(other.first), second(other.second) { }
 };
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

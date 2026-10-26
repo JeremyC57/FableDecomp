@@ -12,12 +12,12 @@
 void __cdecl operator delete(void* block);            // 0x00BFE9BC
 
 // CCountedPointer<T>: the object and its shared count block {RefCount, __fastcall DeleteFunc(Data), Data}.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                   // +0x00
     void (__fastcall* DeleteFunc)(void* data);        // +0x04
     void* Data;                                       // +0x08
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                             // +0x00
     CCPPointerInfo* Info;                             // +0x04
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -37,7 +37,7 @@ template <class T> struct CCountedPointer {
 
 // Retail CThing (local model: retail sits 0x10 below Ego_r.pdb from ThingTypeFlags on):
 // DefGlobalIndex +0x8c [PDB +0x9c], the state bit byte +0x91 [PDB +0xa1] (Dead = 0x01).
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x8c];
     unsigned short DefGlobalIndex;                    // +0x8c
     unsigned char  _pad_0x8e[0x91 - 0x8e];
@@ -46,7 +46,7 @@ struct CThing {
 
 namespace NEntityEvents {
 // NEntityEvents::CEventBase (Ego_r.pdb: vptr +0, WorldFrame +4); GetType is vtable slot 1.
-struct CEventBase {
+class CEventBase { public:
     virtual ~CEventBase();
     virtual long GetType() const;                     // slot 1
     virtual void OnAdd(const CTCEntityEvents& events);
@@ -57,7 +57,7 @@ struct CEventBase {
 struct CHitParameters;
 // CEventHitBase (Ego_r.pdb): PHitParams CCountedPointer<CHitParameters> at +8; IsFlourish is slot 5.
 // The accessors read retail CHitParameters (STLport map/vector 12 bytes: PThingHitting +0x50, PWeapon +0x58).
-struct CEventHitBase : CEventBase {
+class CEventHitBase : public CEventBase { public:
     virtual bool IsFlourish() const;                  // slot 5: PHitParams->Flourish (+0x1d)
     CCountedPointer<CHitParameters> PHitParams;       // +0x08
     CThing* GetPThingHitting() const;                 // 0x00810FC0: PHitParams->PThingHitting.GetPItem()
@@ -66,16 +66,16 @@ struct CEventHitBase : CEventBase {
     bool IsDecapitate() const;                        // 0x00810F10: PHitParams->Decapitate (+0x1b)
 };
 
-struct CEventHitBy : CEventHitBase { enum { EventType = 0x1 }; };              // GetType 0x0083AF50
-struct CIsEventCreatedAfter {
+class CEventHitBy : public CEventHitBase { public: enum { EventType = 0x1 }; };              // GetType 0x0083AF50
+class CIsEventCreatedAfter { public:
     long WorldFrame;
     bool operator()(const CEventBase* event) const { return event->WorldFrame > WorldFrame; }
 };
-struct CIsEventCreatedBeforeOrOn {
+class CIsEventCreatedBeforeOrOn { public:
     long WorldFrame;
     bool operator()(const CEventBase* event) const { return event->WorldFrame <= WorldFrame; }
 };
-struct CIsHitEventHitByThingWithScriptName {
+class CIsHitEventHitByThingWithScriptName { public:
     const char* ScriptName;                           // +0x00 (a CCharString in the PDB)
     bool operator()(const CEventHitBase* event) const;   // 0x00811100
 };
@@ -90,7 +90,7 @@ struct CEventFilter_HitEventWithWeapon {           // a live weapon of the held 
     }
 };
 }
-template <class A, class B, class C, class D> struct CFilter_Bind4 {     // every filter, held by reference
+template <class A, class B, class C, class D> class CFilter_Bind4 { public:     // every filter, held by reference
     const A& First;
     const B& Second;
     const C& Third;

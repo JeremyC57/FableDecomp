@@ -21,7 +21,7 @@ class CThing;
 class CTCBase;
 class CBaseObject;
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -77,13 +77,13 @@ inline CBackInserter copy(CThing** first, CThing** last, CBackInserter result)
 {
     return __copy(first, last, result, random_access_iterator_tag(), (int*)0);
 }
-struct CDefPointeeBase;
-template<class T> struct CDefPointer {
+class CDefPointeeBase;
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CSpecialAbilitiesElectrocutedEffectDef;
-struct CDefinitionManager {
+class CSpecialAbilitiesElectrocutedEffectDef;
+class CDefinitionManager { public:
     long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
     bool GetDef(long index, CDefPointer<const CSpecialAbilitiesElectrocutedEffectDef>* out) const;   // 0x007CEC90
 };
@@ -115,7 +115,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long p0, CDefPointer<const 
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
 };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
@@ -142,7 +142,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CTCCarrying {                                    // interface 0x46
+class CTCCarrying { public:                                    // interface 0x46
     void GetCarriedThings(CThingVector& things);        // 0x006A2220
 };
 class CThing {

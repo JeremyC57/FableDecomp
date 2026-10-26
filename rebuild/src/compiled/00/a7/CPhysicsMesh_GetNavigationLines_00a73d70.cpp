@@ -7,8 +7,8 @@
 // vector's iterator OBJECT (`*(begin() + n)`, `*begin()`), which VC7.1 does not CSE with the size()
 // loads (a raw `first[n]` keeps `first` in esi: 49 v 52). Retail CArray / std::vector are
 // first/last/end (12 bytes).
-struct C2DLineF { float m_x0, m_y0, m_x1, m_y1; };
-template <class T> struct CArray {
+class C2DLineF { public: float m_x0, m_y0, m_x1, m_y1; };
+template <class T> class CArray { public:
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -29,7 +29,7 @@ template <class T> struct CRetailVector {         // retail std::vector: first/l
     T& operator[](long n) const { return *(begin() + n); }
 };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char                     _pad00[0x48];
     CRetailVector< CArray<C2DLineF> > NavigationLines;   // +0x48 (PDB +0x58, 16-byte containers)
     const CArray<C2DLineF>* GetNavigationLines(long level) const;

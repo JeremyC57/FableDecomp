@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour of CTCInventoryQuests::vfunc_0 (0x0061A220): the def's title index goes through GetInventoryText; the def
 // pointer copy adds a reference and drops it again (Destroy on the last reference).
-struct CWideString { long m_value; CWideString(long v) : m_value(v) {} CWideString(const CWideString& o) : m_value(o.m_value) {} ~CWideString() {} };
-struct CInventoryDef {
+class CWideString { public: long m_value; CWideString(long v) : m_value(v) {} CWideString(const CWideString& o) : m_value(o.m_value) {} ~CWideString() {} };
+class CInventoryDef { public:
     long m_destroyed; long m_refCount; long m_titleTextIndex;
     virtual void Destroy() { ++m_destroyed; }
     void AddRef() { ++m_refCount; }
@@ -21,7 +21,7 @@ struct CTCInventoryBase_Retail {
     CWideString GetInventoryText(long index) { g_peakRef = PDef.m_pDef->m_refCount; return CWideString(index * 3); }
 };
 struct CBase { virtual CWideString vfunc_0() { return CWideString(-1); } };
-struct CTCInventoryQuests : CTCInventoryBase_Retail, CBase {
+class CTCInventoryQuests : public CTCInventoryBase_Retail, public CBase { public:
     CTCInventoryQuests(CInventoryDef* d) : CTCInventoryBase_Retail(d) {}
     virtual CWideString vfunc_0()
     {

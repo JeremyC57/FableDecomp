@@ -72,7 +72,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CSpecialAbilitiesLightningSpellDef {
+class CSpecialAbilitiesLightningSpellDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -164,7 +164,7 @@ FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, LightningThemeT
 
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x21];                          // +0x04 flattened base-class subobject(s)
     long          InstantiationName_TablePos;                // +0x25 CDefString::TablePos
@@ -191,10 +191,10 @@ FABLE_STATIC_ASSERT(offsetof(CParentDefClassBase, SubDefInfoMap) == 0x29);
 #include <stddef.h>
 
 
-struct CDefinitionManager;
+class CDefinitionManager;
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _base_0x04[0x18];                    // +0x04 flattened base-class subobject(s)
     CDefinitionManager* PDefManager;                         // +0x1c
@@ -223,10 +223,10 @@ FABLE_STATIC_ASSERT(offsetof(CDefClassBase, DefaultValsApplied) == 0x24);
 #include <stddef.h>
 
 
-struct CResourceList;
+class CResourceList;
 
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     CResourceList* ResourceList;                             // +0x08
@@ -260,7 +260,7 @@ FABLE_STATIC_ASSERT(offsetof(CResource, LastUsedFrame) == 0x18);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -282,15 +282,15 @@ typedef int S32;
 #endif
 // RTTI: derived -> CParentDefClassBase -> CDefClassBase -> CDefPointeeBase
 // -> CResource -> CIVCountedPointeeBase; all 25 slots audited at 012341FC/0123460C.
-struct CCharString;struct CPersistContext;struct CDataInputStream;struct CDataOutputStream;struct CValidateDefinitionInitBase;struct CDefinitionManager;struct CResourceList;
-struct CDefString {S32 TablePos;};
+class CCharString;class CPersistContext;class CDataInputStream;class CDataOutputStream;class CValidateDefinitionInitBase;class CDefinitionManager;class CResourceList;
+class CDefString { public:S32 TablePos;};
 #ifdef _MSC_VER
 typedef unsigned long U32;
 #else
 typedef unsigned int U32;
 #endif
-template<class K,class V>struct CKeyPairCompareLess{};
-template<class K,class V,class Compare>struct CVectorMap {void* Start;void* Finish;void* End;Compare CompareKeys;unsigned char Dirty;};
+template<class K,class V>class CKeyPairCompareLess{ public:};
+template<class K,class V,class Compare>class CVectorMap { public:void* Start;void* Finish;void* End;Compare CompareKeys;unsigned char Dirty;};
 #pragma pack(push,1)
 struct __declspec(novtable) CIVCountedPointeeBase {
  CIVCountedPointeeBase();virtual ~CIVCountedPointeeBase();virtual void Delete() const;
@@ -306,8 +306,8 @@ struct __declspec(novtable) CResource:CIVCountedPointeeBase {
 };
 struct __declspec(novtable) CDefPointeeBase:CResource {CDefPointeeBase();};
 struct __declspec(novtable) CDefClassBase:CDefPointeeBase {
- private:CDefClassBase();friend struct CParentDefClassBase;
- public:struct CSubDefInfo;
+ private:CDefClassBase();friend class CParentDefClassBase;
+ public:class CSubDefInfo;
  typedef CVectorMap<U32,CSubDefInfo,CKeyPairCompareLess<U32,CSubDefInfo> > SubDefMap;
  virtual ~CDefClassBase();virtual bool UnloadResource();
  virtual CDefString GetInstantiationName() const;virtual void SetInstantiationName(CDefString);

@@ -8,17 +8,17 @@
 #define CDefinitionManager CDefinitionManagerPdb
 #include "engine/CDefinitionManager.h"
 #undef CDefinitionManager
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);           // 0x0099EFB0
 };
 struct CDefPointer { void* PDef; };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static CDefinitionManager* __fastcall Get();                 // 0x0044C6B0 (reads the singleton at 0x013B879C)
     long GetDefGlobalIndexFromName(const CCharString& name);     // 0x009AD410
     bool GetDef(long index, CDefPointer& out);                   // 0x006BD060
 };
-struct CRegion {
+class CRegion { public:
     char pad0[0x20];
     CCharString DefName;     // at +0x20
     CDefPointer PDef;        // at +0x24

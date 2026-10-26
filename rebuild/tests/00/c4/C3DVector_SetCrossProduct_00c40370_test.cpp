@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour model of 0x00C40370: this = b x a, component by component.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void SetCrossProduct(const C3DVector& a, const C3DVector& pos)
     {

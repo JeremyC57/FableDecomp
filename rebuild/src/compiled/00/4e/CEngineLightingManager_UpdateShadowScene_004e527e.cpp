@@ -5,7 +5,7 @@ extern "C" void __stdcall Profile_Enter(int marker);
 extern void __fastcall LM_ShadowApply24_004e52f0(void* self24, void* arg);
 extern void __fastcall LM_ShadowApply28_004e52b3(void* self28, void* arg);
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad[0x18];
     int mode;                  /* +0x18 */
     char pad2[0x24 - 0x1c];

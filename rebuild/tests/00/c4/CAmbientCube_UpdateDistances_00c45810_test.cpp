@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <math.h>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 };

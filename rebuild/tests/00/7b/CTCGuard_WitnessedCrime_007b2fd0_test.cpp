@@ -4,13 +4,13 @@
 #endif
 #include <stdio.h>
 
-struct CTCVillage;
-struct CTCVillageMember;
-struct CTCHeroOpinionDeedLog;
+class CTCVillage;
+class CTCVillageMember;
+class CTCHeroOpinionDeedLog;
 static CTCVillageMember* g_member;
 static CTCHeroOpinionDeedLog* g_log;
 
-struct CThing {
+class CThing { public:
     bool hasMember, hasLog;
     __forceinline unsigned long HasTC(long type) const { return type == 0x23 ? hasMember : (type == 0x51 ? hasLog : 0); }
     template<class T> __forceinline T* GetTC(long wanted) { return wanted == 0x23 ? (T*)g_member : (T*)g_log; }
@@ -24,10 +24,10 @@ struct CThing {
     }
 };
 static CThing* g_hero;
-struct CPlayer { CThing* GetHeroCreature() { return g_hero; } };
+class CPlayer { public: CThing* GetHeroCreature() { return g_hero; } };
 static CPlayer g_player;
-struct CWorld { CPlayer* PeekMyPlayer() const { return &g_player; } };
-struct CMainGameComponent { CWorld* World; };
+class CWorld { public: CPlayer* PeekMyPlayer() const { return &g_player; } };
+class CMainGameComponent { public: CWorld* World; };
 static CWorld g_world;
 static CMainGameComponent g_game = { &g_world };
 static CMainGameComponent* g_pMainGameComponent = &g_game;
@@ -40,7 +40,7 @@ struct CRefCounted {
     void DecRef() { --m_count; }
     long GetRefCount() const { return m_count; }
 };
-struct COpinionDeedEffectsDef : CRefCounted {
+class COpinionDeedEffectsDef : public CRefCounted { public:
     long Severity;
     void Destroy() { ++g_destroys; }
     void ReleaseTemporary()
@@ -50,7 +50,7 @@ struct COpinionDeedEffectsDef : CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* o) : Object(o) { }
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_count; }
@@ -65,13 +65,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long Type;
     CBaseIntelligentPointer Perpetrator;
 };
 static COpinionDeedEffectsDef g_effects;
 static long g_effectsType;
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     long severityByType[8];
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType)
     {
@@ -81,16 +81,16 @@ struct CTCHeroOpinionDeedLog {
 };
 static long g_handled;
 static int g_sweeps; static long g_sweepFlags;
-struct CTCVillage {
+class CTCVillage { public:
     bool IsDeedHandled(long handle) { return handle == g_handled; }
     void RecalculateSecuritySweep(long flags) { ++g_sweeps; g_sweepFlags = flags; }
 };
 static CTCVillage* g_village;
-struct CTCVillageMember { CTCVillage* GetPVillage() const { return g_village; } };
+class CTCVillageMember { public: CTCVillage* GetPVillage() const { return g_village; } };
 
 static int g_reports;
 static CTCVillage* g_rVillage; static long g_rHandle, g_rType; static bool g_rSelf;
-struct CTCGuard {
+class CTCGuard { public:
     CThing* ParentThing;
     long    LastCrimeSeenSeverity;
     long    FrameLastCrimeSeen;

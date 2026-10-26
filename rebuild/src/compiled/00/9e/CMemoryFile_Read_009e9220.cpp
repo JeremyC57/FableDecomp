@@ -9,7 +9,7 @@
 // Shape: the MovePosition exception model (no EH frame); the copy loop advances the buffer PARAMETER itself and reads through
 //   an inline CArray operator[] -- `DataBuffer[Position++]` evaluates the index (load, +1, store) before the element block and
 //   keeps the buffer in edx / the count in esi (`dec ; jne`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -28,7 +28,7 @@ public:
     CBBBFileException(CCharString text, EFileExceptionType type) : CExceptionBase(static_cast<const char*>(text)), Type(type) { }
 };
 class CASuspendableProcess;
-template <class T> struct CArray {                     // CArray<T>: the element block first
+template <class T> class CArray { public:                     // CArray<T>: the element block first
     T*   Data;
     long Count;
     long Capacity;
@@ -36,7 +36,7 @@ template <class T> struct CArray {                     // CArray<T>: the element
     void SetSize(long size);                           // 0x004897F0
     T& operator[](long index) { return Data[index]; }
 };
-struct CMemoryFile {
+class CMemoryFile { public:
     // vptr at +0x00
     long                   AccessType;                  // +0x04 FileAccessType (1: read only)
     long                   Position;                    // +0x08

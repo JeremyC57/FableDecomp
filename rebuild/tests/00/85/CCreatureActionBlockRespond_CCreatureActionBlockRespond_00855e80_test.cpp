@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; C3DVector() : X(0), Y(0), Z(0) { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector() : X(0), Y(0), Z(0) { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
 static const void* g_copied;
-struct CCreatureAction_BlockBase { virtual void v00() {} unsigned char _body[0x124 - 4];
+class CCreatureAction_BlockBase { public: virtual void v00() {} unsigned char _body[0x124 - 4];
     CCreatureAction_BlockBase() { std::memset(_body, 0, sizeof(_body)); }
     CCreatureAction_BlockBase(const CCreatureAction_BlockBase& o) { g_copied = &o; std::memcpy(_body, o._body, sizeof(_body)); } };
 #pragma pack(push, 1)
-struct CCreatureAction_BlockRespond : CCreatureAction_BlockBase { unsigned char UseHitPos; C3DVector HitPos; unsigned char FaceTargetAtStart; virtual void v00() {}
+class CCreatureAction_BlockRespond : public CCreatureAction_BlockBase { public: unsigned char UseHitPos; C3DVector HitPos; unsigned char FaceTargetAtStart; virtual void v00() {}
     CCreatureAction_BlockRespond() : UseHitPos(0), HitPos(), FaceTargetAtStart(0) { }
     CCreatureAction_BlockRespond(const CCreatureAction_BlockRespond& other) : CCreatureAction_BlockBase(other), UseHitPos(other.UseHitPos), HitPos(other.HitPos), FaceTargetAtStart(other.FaceTargetAtStart) { } };
 #pragma pack(pop)

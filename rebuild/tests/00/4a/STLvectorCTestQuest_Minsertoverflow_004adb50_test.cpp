@@ -7,7 +7,7 @@
 // block, adopt the new one.
 static int g_alive = 0;
 struct __false_type { __false_type() { } };
-struct CTestQuest {
+class CTestQuest { public:
     int id;
     CTestQuest(int i) : id(i) { ++g_alive; }
     CTestQuest(const CTestQuest& o) : id(o.id) { ++g_alive; }

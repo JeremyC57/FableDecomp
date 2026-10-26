@@ -10,7 +10,7 @@
 // Shape: the default comes from an inline by-value getter whose named local (esp+4) VC7.1 copies (no NRVO) member by
 // member through the record's implicit copy constructor into the caller's local (esp+0x20); the getter's local dies
 // before the call, the caller's after it (`T def = T();` is elided into one construction); `ret 8`.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();

@@ -53,11 +53,11 @@ struct CRbTree : CRbTreeBase {
         m_pHeader->m_pRight = m_pHeader;
     }
 };
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     unsigned char _body[0x18];
     CMemoryDataOutputStream();                     // 0x00996AF0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
 };

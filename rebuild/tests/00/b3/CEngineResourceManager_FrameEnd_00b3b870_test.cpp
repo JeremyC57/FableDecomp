@@ -3,9 +3,9 @@
 #include <cstring>
 static long g_flag = 0; static double g_until = 0; static int g_released = 0; static long g_reload = 0;
 struct CResourcePool_00a23ad0 { void Release() { ++g_released; } };
-struct CGraphicDataBank { void Reload(long f) { g_reload = f; } };
+class CGraphicDataBank { public: void Reload(long f) { g_reload = f; } };
 static double GFGetTime() { return 10.0; }
-struct CEngineResourceManager { unsigned char _pad0[0x10]; CResourcePool_00a23ad0* m_pPools[3]; unsigned char _pad1c[0x938]; CGraphicDataBank* m_pDataBank; unsigned char _pad958[0x2148]; double m_loadBudget;
+class CEngineResourceManager { public: unsigned char _pad0[0x10]; CResourcePool_00a23ad0* m_pPools[3]; unsigned char _pad1c[0x938]; CGraphicDataBank* m_pDataBank; unsigned char _pad958[0x2148]; double m_loadBudget;
     void ProcessLoading(long flag, double until) { g_flag = flag; g_until = until; }
     void FrameEnd() { ProcessLoading(1, GFGetTime() + m_loadBudget); for (long i = 0; i < 3; ++i) { if (m_pPools[i]) m_pPools[i]->Release(); } m_pDataBank->Reload(3); } };
 int main() {

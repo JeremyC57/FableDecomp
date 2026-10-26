@@ -9,12 +9,12 @@ static const long kKeys[9] = { 5, -3, 12, 7, 7, 0, 99, -40, 2 };
 
 template<class T, class C> void AdjustHeap(T* first, long hole, long bottom, T value, C pred);
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct C3DHelperPoint {
+class C3DHelperPoint { public:
     C3DVector Position;
     long BoneIndex;
 };

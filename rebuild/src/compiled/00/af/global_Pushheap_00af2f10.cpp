@@ -15,7 +15,7 @@ struct CBasicStringChar {
     bool operator<(const CBasicStringChar& other) const;   // 0x00429950
 };
 
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
@@ -36,7 +36,7 @@ class CPSCBase;
 enum EPSCType { PSC_TYPE_NONE };
 
 namespace NParticleEngine {
-struct CRegisteredPSCInfo {
+class CRegisteredPSCInfo { public:
     CPSCBase* (__cdecl* AllocFunc)();                      // +0x00
     EPSCType ComponentType;                                // +0x04
     CCharString GUIName;                                   // +0x08
@@ -49,7 +49,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<CCharString, NParticleEngine::CRegisteredPSCInfo> TEntry;
 
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };

@@ -16,15 +16,15 @@
 // `float r; if (override) r = (v / display) * virtual; else r = v; return r;` reading the copy (X's load forwards to the
 // member, Y's comes from the copied word). The if/else keeps a real store in the untaken arm, so VC7.1 re-tests the flag
 // for Y and shares one fstp per axis; a `?:` helper lets it drop Y's self-assignment and jump-thread the second test.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CRightHandedSet {                           // PDB: Up then Forward; the default set is Z up, Y forward
+class CRightHandedSet { public:                           // PDB: Up then Forward; the default set is Z up, Y forward
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(0.0f, 1.0f, 0.0f) { }

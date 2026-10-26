@@ -482,7 +482,7 @@ def main():
         # engine header, or models `this` with a throwaway struct name. LANDVERIFY_STRICT_HEADERS=1
         # turns the warnings into rejections.
         hdr_warn=[]
-        for sm in re.finditer(r"\bstruct\s+([A-Za-z_]\w*)\s*\{", src0):
+        for sm in re.finditer(r"\b(?:struct|class)\s+([A-Za-z_]\w*)\s*\{", src0):
             sn=sm.group(1)
             if (ROOT/"rebuild"/"include"/"engine"/f"{sn}.h").exists() and f'engine/{sn}.h' not in src0:
                 hdr_warn.append(f"SHARED_HEADER_AVAILABLE {sn}")

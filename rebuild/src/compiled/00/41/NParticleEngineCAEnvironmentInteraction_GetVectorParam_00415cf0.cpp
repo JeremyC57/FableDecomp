@@ -9,14 +9,14 @@
 // constructor's three 0.0f stores share one zeroed register (`xor ecx,ecx`); `name` is unused. `ret 8`.
 class CCharString;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 
 namespace NParticleEngine {
 
-struct CAEnvironmentInteraction {
+class CAEnvironmentInteraction { public:
     virtual void v00();
     C3DVector GetVectorParam(const CCharString& name) const;
 };

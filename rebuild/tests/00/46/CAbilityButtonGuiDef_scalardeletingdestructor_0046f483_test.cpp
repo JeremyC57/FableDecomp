@@ -1,8 +1,8 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch
-{
+class CLandscapeBackgroundPatch
+{ public:
     fable_u32 vtbl;
 };
 

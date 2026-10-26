@@ -1,4 +1,4 @@
-struct CInputProcessCreatureMovementWatchForControlAngleChange {
+class CInputProcessCreatureMovementWatchForControlAngleChange { public:
     void* vftable;
 };
 

@@ -7,7 +7,7 @@
 // Shape: `mov eax,ecx ; xor ecx,ecx` then the vptr and the three zero stores in member order; the remaining members
 //   are left to the owner.
 struct CPanel;
-struct C3DVector;
+class C3DVector;
 struct CODASource;
 
 struct CCodaPlayback {                          // vtable 0x012B4034

@@ -1,12 +1,12 @@
 // Behaviour test for 0x00714CC0 NTCScriptedControl::CActionTurnToFacePosition::Update
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CTCLook {
+class C3DVector { public: float X, Y, Z; };
+class CTCLook { public:
     const C3DVector* lookedAt; long priority; bool inView; float angleSeen;
     void LookAtPos(const C3DVector* p, long pri) { lookedAt = p; priority = pri; }
     bool IsPosInViewRange(const C3DVector&, float angle, bool, bool) { angleSeen = angle; return inView; }
 };
-struct CThing {
+class CThing { public:
     unsigned long UsingComponents[9]; CTCLook* look;
     bool GetInterface(CTCLook** out, long type)
     {

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* p; };
+class CCharString { public: const char* p; };
 struct Stream {
     char buf[256]; int len;
     void WriteSLONG(long v) { int x = (int)v; std::memcpy(buf + len, &x, 4); len += 4; }

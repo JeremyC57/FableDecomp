@@ -2,7 +2,7 @@
 #include <new>
 struct __false_type { __false_type() { } };
 static int g_baseCtors = 0;
-struct CBaseObject { int m_id; };
+class CBaseObject { public: int m_id; };
 class CThing;
 struct CBaseIntelligentPointer {
     CBaseObject* PData;
@@ -13,7 +13,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { PData = item; }
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
     virtual int Kind() const { return 1; }

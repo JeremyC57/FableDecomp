@@ -6,7 +6,7 @@ static int g_guard=0, g_case2=0, g_case3=0, g_case3arg=0;
 struct LM_Local { void build(void* obj24, void* arg){ g_case2=1; } };
 struct LM_Obj28 { void apply(int arg){ g_case3=1; g_case3arg=arg; } };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad0[0x18];
     int mode;
     char pad1c[0x24-0x1c];

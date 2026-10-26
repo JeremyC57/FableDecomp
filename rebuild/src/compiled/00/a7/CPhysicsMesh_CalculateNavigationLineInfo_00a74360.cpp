@@ -9,7 +9,7 @@
 // Shape: one zero register (edi) for the empty-array temporary's three words and the loop index; the element count is
 // the signed `/12` re-derived every pass (`jl`), the element reached as `*(begin() + i)` and cleared through its inline
 // clear(); `ret`.
-struct C2DLineF { float m[4]; };
+class C2DLineF { public: float m[4]; };
 
 struct CLineArray {                                // retail CArray<C2DLineF>: first / last / end (no destructor here)
     C2DLineF* m_pFirst;
@@ -29,7 +29,7 @@ struct CLineArrayVector {                          // vector<CArray<C2DLineF>>
     void resize(unsigned long count, const CLineArray& value);   // 0x00A75230
 };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char    _pad00[0x0c];
     bool             NavigationLineListInfo;       // +0x0c
     unsigned char    _pad0d[0x48 - 0x0d];

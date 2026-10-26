@@ -67,7 +67,7 @@ struct CCountedPointer {                           // CCountedPointer<CComposite
     }
     ~CCountedPointer() { Release(); Object = 0; Info = 0; }
 };
-struct CCompositeSurfaceInfo : CBase {             // vtable 0x012A8154 (implicit virtual dtor)
+class CCompositeSurfaceInfo : public CBase { public:             // vtable 0x012A8154 (implicit virtual dtor)
     CCountedPointer Ptr;
 };
 struct CDescVector { CCompositeSurfaceDesc* _M_start; CCompositeSurfaceDesc* _M_finish; CCompositeSurfaceDesc* _M_end_of_storage; };
@@ -193,12 +193,12 @@ __declspec(noinline) CSurfacePair* CCompositeSurfaceMap::LowerBound(const long& 
     }
     return first;
 }
-struct CResourceBank {
+class CResourceBank { public:
     void InitialiseCompositeSurface(CCompositeSurfaceInfo* info);   // 0x00B2C460
 };
 extern CResourceBank* g_pResourceBank_01436eac;    // 0x01436EAC
 
-struct CEngineInternalPrimitiveMorphInfo {
+class CEngineInternalPrimitiveMorphInfo { public:
     unsigned char        _pad00[0x10];
     CCompositeSurfaceMap CompositeSurfaces;        // +0x10
     void InitialiseCompositeSurfaces(const CDescVector& descs);

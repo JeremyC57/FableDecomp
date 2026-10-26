@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float X; float Y; float Z; };
+class C3DVector { public: float X; float Y; float Z; };
 struct CTrackedVector {
     C3DVector Value;
     CTrackedVector(const C3DVector& value) : Value(value) { }

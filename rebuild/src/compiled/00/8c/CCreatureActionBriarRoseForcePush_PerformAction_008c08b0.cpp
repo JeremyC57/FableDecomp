@@ -8,21 +8,21 @@
 // with `lea` for the argument and the destructor: GOTCHAS wave 11), the arguments 0 and true pushed after it, the
 // creature fetched last (object expression after the arguments); the returned component rides in esi across the
 // temporary's destructor and its level (+0x10) and active flag (+0x24) are then set.
-struct CTCParamsBase;
+class CTCParamsBase;
 
-struct CCharString {                        // retail CCharString is one pointer (fable_string.h)
+class CCharString { public:                        // retail CCharString is one pointer (fable_string.h)
     char* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CTCBase;
+class CTCBase;
 
-struct CThing {
+class CThing { public:
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
 };
 
-struct CTCForcePushPower {                  // the component just added
+class CTCForcePushPower { public:                  // the component just added
     unsigned char _pad[0x10];
     long          m_level;                  // +0x10
     unsigned char _pad14[0x10];
@@ -35,7 +35,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCreatureAction_BriarRoseForcePush {
+class CCreatureAction_BriarRoseForcePush { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04

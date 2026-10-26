@@ -25,7 +25,7 @@ struct CBaseIntelligentPointer {
 
 #include "fable_string.h"
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00857520
@@ -35,7 +35,7 @@ struct CCombatActionBase {
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_JackFloatUp : CCombatActionBase {   // vtable 0x01280214
+class CCreatureAction_JackFloatUp : public CCombatActionBase { public:   // vtable 0x01280214
     long          FloatHeight;              // +0x114 (PDB +0x12c, float; untouched here)
     long          FloatSpeed;               // +0x118 (PDB +0x130, float; cleared through the zero register)
     unsigned char Moving;                   // +0x11c (PDB +0x134, bool)

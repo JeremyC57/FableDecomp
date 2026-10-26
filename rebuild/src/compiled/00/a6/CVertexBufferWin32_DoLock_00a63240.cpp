@@ -21,20 +21,20 @@ struct CRenderManagerCore {
     void VertexBufferLocked(IDirect3DVertexBuffer* buffer, float weight);   // 0x00A0AA70
 };
 
-struct CDisplayManager {                       // PDB: +4 SystemManager, +8 PRenderManager
+class CDisplayManager { public:                       // PDB: +4 SystemManager, +8 PRenderManager
     void*               __vftable;             // +0x00
     void*               SystemManager;         // +0x04
     CRenderManagerCore* PRenderManager;        // +0x08
 };
 
-struct CSystemManager {                        // PDB: +0x60 CCountedPointer<CDisplayManager> PDisplayManager
+class CSystemManager { public:                        // PDB: +0x60 CCountedPointer<CDisplayManager> PDisplayManager
     unsigned char    _pad00[0x60];
     CDisplayManager* PDisplayManager;          // +0x60
     void*            PDisplayManagerCount;     // +0x64
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     virtual void v00();
     IDirect3DVertexBuffer* m_pBuffer;          // +0x04
     unsigned long          m_size;             // +0x08

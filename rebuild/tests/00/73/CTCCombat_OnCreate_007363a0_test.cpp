@@ -26,7 +26,7 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 //          the out slot's lea ecx (`mov eax,[ebp] ; lea ecx,[esp+14h] ; push ecx ; push eax`), where `GetDef(*it, &ability)` colours
 //          them the other way round. A by-reference out parameter does not change it; a forceinline (out, key) wrapper also matches.
 // Leaf: OnCreate
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -54,7 +54,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     CDefPointer(const CDefPointer& other) : m_p(other.m_p) { if (m_p) ++m_p->m_count; }
@@ -94,17 +94,17 @@ struct CLongVector {
     const long* begin() const { return _M_start; }
     const long* end() const { return _M_finish; }
 };
-struct CHeroCombatDef : CDefBase {
+class CHeroCombatDef : public CDefBase { public:
     unsigned char _pad08[0x11c - 0x08];
     CLongVector   DefaultCombatAbilities;               // +0x11c
 };
-struct CCombatTypeDef : CDefBase {
+class CCombatTypeDef : public CDefBase { public:
     unsigned char _pad08[0xa8 - 0x08];
     bool          StartsAsReadyForMelee;                // +0xa8
 };
-struct CMeleeCombatAbilityDef : CDefBase { };
+class CMeleeCombatAbilityDef : public CDefBase { public: };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CMeleeCombatAbilityDef>* out) const;     // 0x00737F80
     bool GetDef(const CCharString& name, CDefPointer<CMeleeCombatAbilityDef>& out);   // 0x00737FF0
     bool GetDef(long index, CDefPointer<CCombatTypeDef>& out);                   // 0x00669640
@@ -112,16 +112,16 @@ struct CDefinitionManager {
 
 
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char ThingClass;                           // +0x10 (2: creature)
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long GetCombatTypeIndex() const;                    // 0x00662170
     CDefPointer<CHeroCombatDef> GetPHeroCombatDef() const;  // 0x00663340
 };
 
-struct CTCCombat {
+class CTCCombat { public:
     void*               __vftable;                      // +0x00
     CThing*             ParentThing;                    // +0x04 (CTCBase)
     unsigned char       _pad08[0x24 - 0x08];

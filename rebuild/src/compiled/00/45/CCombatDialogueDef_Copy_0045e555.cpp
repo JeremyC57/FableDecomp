@@ -4,7 +4,7 @@
 // The rel32 target is relocation-masked; a tail call to any matching-signature
 // extern reproduces the single `jmp` instruction byte-for-byte.
 
-struct CCombatDialogueDef;
+class CCombatDialogueDef;
 
 // The real copy implementation this thunk tail-jumps to.
 extern void __fastcall CCombatDialogueDef_Copy_impl(CCombatDialogueDef* thisptr, void* src);

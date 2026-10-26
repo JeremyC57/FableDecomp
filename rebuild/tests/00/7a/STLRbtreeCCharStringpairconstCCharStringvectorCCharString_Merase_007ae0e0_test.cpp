@@ -4,7 +4,7 @@
 
 static int g_strDtors = 0, g_frees = 0;
 static void Free(void* p) { ++g_frees; std::free(p); }
-struct CCharString { int id; void Destroy() { ++g_strDtors; } };
+class CCharString { public: int id; void Destroy() { ++g_strDtors; } };
 struct StrVec { CCharString* start; CCharString* finish; CCharString* eos; };
 struct Node { Node* parent; Node* left; Node* right; CCharString key; StrVec vec; };
 

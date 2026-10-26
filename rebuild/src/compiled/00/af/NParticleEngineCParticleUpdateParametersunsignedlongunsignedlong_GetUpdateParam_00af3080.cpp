@@ -15,7 +15,7 @@
 // declaration-only, the key is re-read through the reference after the call: 98v97); the inline find is
 // `i = LowerBound(k); (i == end || k < i->first) ? end : i` with end re-read for the final compare; the depth
 // limit is tested only after a hit; the desc forwards to the callback with `depth + 1` and `*this`.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 namespace std {
 template <class T1, class T2> struct pair { T1 first; T2 second; };
@@ -25,7 +25,7 @@ template <class T> struct CAllocProxy { T* _M_data; };
 template <class T> struct CVector {                    // STLport vector, 12 bytes
     T* _M_start; T* _M_finish; CAllocProxy<T> _M_end_of_storage;
 };
-template <class K, class V, class C> struct CVectorMap {   // retail 16 bytes
+template <class K, class V, class C> class CVectorMap { public:   // retail 16 bytes
     typedef std::pair<K, V> value_type;
     typedef const value_type* const_iterator;
     CVector<value_type> Data;                          // +0x00
@@ -61,15 +61,15 @@ typename CVectorMap<K, V, C>::const_iterator CVectorMap<K, V, C>::LowerBound(con
 #pragma auto_inline(on)
 
 namespace NParticleEngine {
-template <class A, class B> struct CParticleUpdateParameters;
+template <class A, class B> class CParticleUpdateParameters;
 
-template <class A, class B> struct CParticleUpdateParamCallback {
+template <class A, class B> class CParticleUpdateParamCallback { public:
     virtual ~CParticleUpdateParamCallback();
     virtual bool GetUpdateParam(C3DVector& result, unsigned long index, float timeScale, bool flag,
                                 const CParticleUpdateParameters<A, B>& params, unsigned long depth);   // slot 1
 };
 
-template <class A, class B> struct CParticleUpdateParamDesc {
+template <class A, class B> class CParticleUpdateParamDesc { public:
     virtual ~CParticleUpdateParamDesc();
     CParticleUpdateParamCallback<A, B>* Callback;      // +0x04
     unsigned long                       Index;         // +0x08
@@ -80,7 +80,7 @@ template <class A, class B> struct CParticleUpdateParamDesc {
     }
 };
 
-template <class A, class B> struct CParticleUpdateParameters {        // vtable 0x0125FFDC (CBase-derived)
+template <class A, class B> class CParticleUpdateParameters { public:        // vtable 0x0125FFDC (CBase-derived)
     template <class K> struct CParticleUpdateCCompareVector { };
     template <class K> struct CParticleUpdateCCompareParamDesc { };
     void* __vftable;                                                                            // +0x00

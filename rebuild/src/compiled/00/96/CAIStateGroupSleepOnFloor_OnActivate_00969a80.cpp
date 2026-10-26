@@ -9,9 +9,9 @@
 // the end entry) with its bool result IGNORED, so when the bit is clear the uninitialised `task`
 // slot ([esp+4]) is what gets used (retail bug reproduced). Then PBrain->Creature is assigned to
 // the task and the flag at +0x1c is cleared. The result slot shares the frame with the key.
-struct CThing;
+class CThing;
 
-struct CVillageTaskBase {
+class CVillageTaskBase { public:
     void AssignCreatureToTask(CThing* creature);    // 0x0087C390
 };
 
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -47,12 +47,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                         // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

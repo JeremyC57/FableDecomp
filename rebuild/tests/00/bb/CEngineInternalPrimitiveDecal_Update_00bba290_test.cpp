@@ -1,8 +1,8 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 struct CDesc {
     bool LandscapeOnlyDecal; long DecalIndex; long DecalFrame; C3DVector WorldPos; C2DVector Size; CRGBColour Colour;
     CRightHandedSet RHSet; long BlendMode; long BlendOp; float StencilCubeHeight;

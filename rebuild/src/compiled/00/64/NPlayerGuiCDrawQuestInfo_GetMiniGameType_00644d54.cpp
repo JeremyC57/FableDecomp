@@ -9,7 +9,7 @@
 // GetType() in slot 3. Derived layouts (PDB, retail 4 lower after the base's handle vector): Bar Colour/FadeColour +0x28/+0x2c, ThingValid +0x38,
 // PThing +0x39; Counter Value/MaxValue +0x24/+0x28; CounterList Value/MaxValue +0x20/+0x24; Tick Ticked +0x24; MiniGameBar Type +0x1c, Colour +0x24, Updatable +0x2c.
 // Shape: the index test guards the whole walk; the node is compared with the head register on entry and re-read from the member after the virtual call; `e->ID == MiniGameElementIndex` reads the ID first (source operand order); the type is returned from the derived member at +0x1c through a shared `pop` tail.
-struct CRGBColour { unsigned char R, G, B, A; };
+class CRGBColour { public: unsigned char R, G, B, A; };
 
 namespace NPlayerGui {
 
@@ -53,7 +53,7 @@ struct CRetailElementList {                        // VC6 Dinkumware list<CCount
     iterator erase(iterator where);                // 0x00655EEA
 };
 
-struct CDrawQuestInfo {                            // PDB 116 bytes; retail members 4 lower from GuiMode on (the CDrawBase vector is 12 bytes), see the header comment
+class CDrawQuestInfo { public:                            // PDB 116 bytes; retail members 4 lower from GuiMode on (the CDrawBase vector is 12 bytes), see the header comment
     unsigned char       _pad[0x28];                // CDrawBase
     long                GuiMode;                   // +0x28 (EPlayerGuiMode)
     float               FadeInTimer;               // +0x2c

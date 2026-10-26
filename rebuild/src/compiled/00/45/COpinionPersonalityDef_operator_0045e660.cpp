@@ -14,14 +14,14 @@
 // PDB record is nine floats), one per opinion attitude.
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes); the retail base is 0x39 bytes.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct COpinionPersonalityTraits {          // PDB: nine floats (36 bytes)
+class COpinionPersonalityTraits { public:          // PDB: nine floats (36 bytes)
     float BaseOffset;
     float HeroStatScaling;
     float VillageOpinionScaling;
@@ -44,7 +44,7 @@ struct CAttitudeEnabledMap {                // retail map<EOpinionAttitudeType,b
     CAttitudeEnabledMap& operator=(const CAttitudeEnabledMap& other);   // 0x0045E694
 };
 
-struct COpinionPersonalityDef : CParentDefClassBase {   // vtable 0x01233F8C
+class COpinionPersonalityDef : public CParentDefClassBase { public:   // vtable 0x01233F8C
     CPersonalityTraitTable* PersonalityTraits;          // +0x3c owned
     bool                    AttitudeEnabledDefaultForNotNone;   // +0x40
     CAttitudeEnabledMap     AttitudeEnabled;            // +0x44

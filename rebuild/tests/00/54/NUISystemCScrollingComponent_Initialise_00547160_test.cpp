@@ -11,7 +11,7 @@
 #include "engine/CScrollingComponent.h"
 namespace NUISystem {
 struct C2DVector { float X,Y; C2DVector() {} C2DVector(const C2DVector& v):X(v.X),Y(v.Y) {} };
-struct CUIState { unsigned long StateChangeFlag,StateChangeType; C2DVector Position,Zoom; unsigned long Colour; float UpdateTime; bool LinearChange; };
+class CUIState { public: unsigned long StateChangeFlag,StateChangeType; C2DVector Position,Zoom; unsigned long Colour; float UpdateTime; bool LinearChange; };
 struct CStateMap { void* Head; unsigned long Count; unsigned char Comparator; CUIState& operator[](const unsigned long&); }; //0042D5B1
 struct CComponentCalls {
     virtual ~CComponentCalls() {}

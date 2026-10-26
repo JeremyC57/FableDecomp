@@ -3,20 +3,20 @@
 #include <cstdio>
 
 static const void* g_copiedFrom = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* s) : PStringData(s) {}
     CCharString(const CCharString& other) : PStringData(other.PStringData) { g_copiedFrom = &other; }
 };
 
-struct CScriptDataBase;
-struct CScriptThing;
-struct CEntityScriptBase;
-template<class T> struct CCountedPointer { T* Data; void* Info; };
+class CScriptDataBase;
+class CScriptThing;
+class CEntityScriptBase;
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
 
-namespace NScript { struct CQ_EndGameFocalSitesScript { int Dummy; void Run(CScriptThing*) {} }; }
+namespace NScript { class CQ_EndGameFocalSitesScript { public: int Dummy; void Run(CScriptThing*) {} }; }
 
-struct CEntityScriptBindingBase {
+class CEntityScriptBindingBase { public:
     virtual ~CEntityScriptBindingBase() {}
 };
 

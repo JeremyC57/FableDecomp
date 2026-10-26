@@ -9,7 +9,7 @@
 #endif
 
 static int g_strings = 0;
-struct CCharString { void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
+class CCharString { public: void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
 struct CRetailByteArray { unsigned char* m_pBegin; unsigned char* m_pEnd; unsigned char* m_pCapacity; CRetailByteArray() : m_pBegin(0), m_pEnd(0), m_pCapacity(0) { } };
 struct CEntityScriptInfo { CCharString Script; CRetailByteArray SaveData; long UncompressedSize; bool Valid; CEntityScriptInfo() : Script(), SaveData(), UncompressedSize(0), Valid(false) { } };
 int main()

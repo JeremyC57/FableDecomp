@@ -1,19 +1,19 @@
 // Behaviour test for CAIStateGroupBase::AIAction_FleeToThingProximity @ 0x009804A0: proximity loop, started-moving latch, look+move or perform.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct CThing { C3DVector pos; bool dead; };
+class CThing { public: C3DVector pos; bool dead; };
 static int g_directedOk = 0; static C3DVector g_dest;
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     bool GetNearbyDirectedPosition(const C3DVector& from, float radius, const C3DVector& dir, float spread, C3DVector* out)
     { (void)from; (void)radius; (void)dir; (void)spread; if (!g_directedOk) return false; *out = g_dest; return true; }
 };
 static int g_busy = 0;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CTCCreatureNavigation nav;
     const C3DVector& GetPosition() const { return pos; }
     bool IsPerformingAnyAction() const { return g_busy != 0; }
@@ -36,15 +36,15 @@ static const CThing* GetPBestTargetToFaceForCreature(CThingCreatureBase* c) { (v
 static const float EPSILON = 0.01f;
 static int g_filterLeft = 100;
 struct CAIFilterBase { bool Check() const { return g_filterLeft-- > 0; } };
-struct CCreatureActionBase { int performed; };
-struct CAIBrain { CThingCreatureBase* Creature; };
+class CCreatureActionBase { public: int performed; };
+class CAIBrain { public: CThingCreatureBase* Creature; };
 enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 enum EMovementType { MOVEMENT_DEFAULT, MOVEMENT_RUN = 5 };
 static int g_prox[8]; static bool g_proxMoving[8]; static int g_proxN = 0;
 static int g_moves = 0; static int g_moveResult = 2; static bool g_lastNotLooking = false;
 static int g_looks = 0; static int g_lookResult = 4;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& moving, EMovementType anim, bool b1,

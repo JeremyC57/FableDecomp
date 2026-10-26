@@ -19,7 +19,7 @@
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CParentDefClassBase {                                // retail 0x3C (engine/CParentDefClassBase.h is the Ego_r 0x40 layout)
+class CParentDefClassBase { public:                                // retail 0x3C (engine/CParentDefClassBase.h is the Ego_r 0x40 layout)
     unsigned char _body[0x3c - 4];                           // +0x04
     virtual ~CParentDefClassBase();
 };

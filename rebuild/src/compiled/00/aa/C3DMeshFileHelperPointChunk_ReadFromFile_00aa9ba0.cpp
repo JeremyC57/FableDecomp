@@ -12,14 +12,14 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
-struct CCharString {
+class CChunkedFileLoader;
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                       // 0x0099EAE0
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();                  // slot 2 (+0x08)
     virtual void v3(); virtual void v4(); virtual void v5();
@@ -49,14 +49,14 @@ struct CDataInputStream {
     __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0();
     unsigned char _base_body[0x28];        // +0x04 .. +0x2b (retail C3DMeshFileChunk size 0x2c)
     void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // 0x00AA8830
 };
 
-struct C3DVector { float X, Y, Z; };
-struct C3DMeshFileHelperPointChunk : CChunkedFileSuperChunk {
+class C3DVector { public: float X, Y, Z; };
+class C3DMeshFileHelperPointChunk : public CChunkedFileSuperChunk { public:
     C3DVector Position;                    // +0x2c (PDB +0x34)
     long SubMeshIndex;                     // +0x38
     long BoneIndex;                        // +0x3c

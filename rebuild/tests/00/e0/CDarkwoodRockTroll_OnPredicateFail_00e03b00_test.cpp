@@ -2,7 +2,7 @@
 // troll was killed AND the parent's flag is set; the flag is then cleared.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString(const char* t, long = -1) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }
@@ -10,7 +10,7 @@ struct CCharString {
 };
 static int g_objectiveCalls = 0;
 static char g_args[4][64];
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void SetQuestCardObjective(const CCharString& q, const CCharString& t, const CCharString& r, const CCharString& r2) const
     {
         ++g_objectiveCalls;
@@ -18,7 +18,7 @@ struct CGameScriptInterface {
     }
     virtual CCharString GetActiveQuestName() const { return CCharString("Q_ESCORT"); }
 };
-struct CScriptThing {
+class CScriptThing { public:
     bool killed;
     virtual bool MsgIsKilledBy(const CCharString& killer) const { return killed && killer.text[0] == 0; }
 };

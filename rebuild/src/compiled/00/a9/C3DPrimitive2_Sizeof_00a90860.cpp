@@ -11,17 +11,17 @@
 // pointer walk against the end held in ecx); the partition tree's size is added in the return (a single
 // sum expression evaluates every term before adding and spills them).
 // Leaf: ?Sizeof@C3DPrimitive2
-struct CVertexBufferWin32 { unsigned long Sizeof() const; };        // 0x00AC20D0
-struct CIndexBuffer       { unsigned long Sizeof() const; };        // 0x00AC1F30
-struct C3DMeshPartitionElement { unsigned long Sizeof() const; };   // 0x00AC2930
-namespace N3DPrimitive { struct CDeviceIndependent { unsigned long Sizeof() const; }; }   // 0x00A90450
+class CVertexBufferWin32 { public: unsigned long Sizeof() const; };        // 0x00AC20D0
+class CIndexBuffer       { public: unsigned long Sizeof() const; };        // 0x00AC1F30
+class C3DMeshPartitionElement { public: unsigned long Sizeof() const; };   // 0x00AC2930
+namespace N3DPrimitive { class CDeviceIndependent { public: unsigned long Sizeof() const; }; }   // 0x00A90450
 
-template<class T> struct CArray {                    // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                    // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
 };
 template<class T> struct scoped_ptr { T* m_p; };
-template<class T> struct CCountedPointer { T* Data; void* Info; };
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
 
 inline unsigned long GetSizeof(const unsigned short&) { return sizeof(unsigned short); }
 template<class T> inline unsigned long GetSizeof(const scoped_ptr<T>& p)
@@ -40,7 +40,7 @@ template<class T> inline unsigned long GetSizeof(const CArray<T>& a)
     return total;
 }
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     virtual void v00();
     unsigned char                                 _pad04[0x28];
     scoped_ptr<N3DPrimitive::CDeviceIndependent>  Data;                               // +0x2c

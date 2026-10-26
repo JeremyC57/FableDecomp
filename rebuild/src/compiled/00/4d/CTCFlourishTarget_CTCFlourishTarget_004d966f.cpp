@@ -11,9 +11,9 @@
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
 // Leaf: ??0CTCFlourishTarget
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -32,7 +32,7 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
     CIntelligentPointer_CThingConst() : CBaseIntelligentPointer() { }
 };
 
-struct CTCFlourishTarget : CTCBase {
+class CTCFlourishTarget : public CTCBase { public:
     CIntelligentPointer_CThingConst PAttacker;          // +0x0c
     bool CullNegativeXAxisMovement;                     // +0x14
     bool CullAllYAxisMovement;                          // +0x15

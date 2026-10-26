@@ -1,11 +1,11 @@
 #include <cstdio>
 // behaviour test: CEngineVSConstantLayoutRepeatedMesh ctor zero-builds four ranges then assigns them and the user range
 static int g_ctors = 0, g_dtors = 0;
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { ++g_ctors; }
     ~CBaseClass() { ++g_dtors; }
 };
-struct CShaderConstantRange : CBaseClass {
+class CShaderConstantRange : public CBaseClass { public:
     long m_firstRegister, m_registerCount;
     CShaderConstantRange() : m_firstRegister(0), m_registerCount(0) {}
     CShaderConstantRange(long f, long c) : m_firstRegister(f), m_registerCount(c) {}
@@ -14,7 +14,7 @@ namespace N_00bdbb70 { struct CVertexShaderConstantLayout {
     CShaderConstantRange User;
     CVertexShaderConstantLayout() {}
 }; } using N_00bdbb70::CVertexShaderConstantLayout;
-struct CEngineVSConstantLayoutRepeatedMesh : CVertexShaderConstantLayout {
+class CEngineVSConstantLayoutRepeatedMesh : public CVertexShaderConstantLayout { public:
     CShaderConstantRange LightingResults, MainLightLightingResults, ObjectMatricies, ObjectOffsets;
     CEngineVSConstantLayoutRepeatedMesh();
 };

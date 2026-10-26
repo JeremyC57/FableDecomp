@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CEntitySoundDef;
+class CEntitySoundDef;
 unsigned long __fastcall CEntitySoundDef_GetSizeofClass(const CEntitySoundDef* self)
 {
     (void)self;

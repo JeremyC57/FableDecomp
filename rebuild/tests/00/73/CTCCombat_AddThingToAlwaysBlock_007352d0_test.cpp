@@ -1,6 +1,6 @@
 // Behaviour test for 0x007352D0 CTCCombat::AddThingToAlwaysBlock(const CThing*).
 #include <stdio.h>
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 class CThing : public CBaseObject {};
 static int g_live = 0;
 class CBaseIntelligentPointer {

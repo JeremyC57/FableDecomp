@@ -8,7 +8,7 @@
 // Matching: the null test is written as an early return so the zero path is the fall-through.
 // Representation block: character storage and the cached length.
 struct StringRep { char* data; long len; };
-struct CCharString { StringRep* rep; };     // null rep == empty string
+class CCharString { public: StringRep* rep; };     // null rep == empty string
 long __fastcall CCharString_GetLength(const CCharString* self) {
     StringRep* r = self->rep;
     if (r == 0) return 0;

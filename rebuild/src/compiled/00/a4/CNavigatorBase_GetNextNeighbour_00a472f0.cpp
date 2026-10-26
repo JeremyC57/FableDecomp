@@ -10,24 +10,24 @@
 #define CANavQuadTreeNode CANavQuadTreeNodeLayout
 #include "engine/CANavQuadTreeNode.h"
 #undef CANavQuadTreeNode
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector& operator+=(const C2DVector& v) { X += v.X; Y += v.Y; return *this; }
 };
-struct CANavQuadTreeNode : CANavQuadTreeNodeLayout {
+class CANavQuadTreeNode : public CANavQuadTreeNodeLayout { public:
     const C2DVector& GetPosition() const { return *(const C2DVector*)&Position_X; }
     float GetSize() const;                                                   // 0x00A75B30
 };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer);   // 0x00A14F70
 };
 float GetSmallestNodeSize();                                                 // 0x00A76320
 void __fastcall SetBlockedNode(long layer, long level, C2DVector position);   // 0x00A76340
 extern CANavQuadTreeNode g_BlockedNode;                                      // 0x013D2D2C
 extern const float g_epsilon_0129ba3c;                                       // 0x0129BA3C
-struct CNavigatorBase : CNavigatorBaseLayout {
+class CNavigatorBase : public CNavigatorBaseLayout { public:
     CANavQuadTreeNode* GetNextNeighbour(const CANavQuadTreeNode* node, const CANavQuadTreeNode* prev, const C2DVector& start);
 };
 

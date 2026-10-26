@@ -10,7 +10,7 @@
 // Shape: the bool first, then the four bounds from MaxY down to MinX, all from the eax zero; `push 12h` hoisted.
 typedef long ETavernGameStates;
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _pad_0x04[0xec];
     virtual void NewRound();                 // 0x005E9A90

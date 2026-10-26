@@ -8,7 +8,7 @@
 // IsInGlobalUpdateTCs +9}, health +0xc, rechargeCounter +0x10. The base constructor runs first, then
 // the vtable is installed and the two init-list scalars are stored (a shield of 5 hits, no recharge
 // in progress). engine/CTCBase.h holds the layout only, so the base is modelled as `CTCBase_Calls`.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();

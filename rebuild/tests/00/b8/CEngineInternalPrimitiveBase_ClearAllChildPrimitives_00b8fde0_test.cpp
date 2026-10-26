@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineInternalPrimitiveBase { void* vtbl; };
+class CEngineInternalPrimitiveBase { public: void* vtbl; };
 
 void __fastcall CEngineInternalPrimitiveBase_ClearAllChildPrimitives(CEngineInternalPrimitiveBase* primitive)
 {

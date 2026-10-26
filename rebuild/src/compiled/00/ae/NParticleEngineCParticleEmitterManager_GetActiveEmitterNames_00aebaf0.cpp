@@ -14,7 +14,7 @@
 //   keeps `last` in esi), and the visible grow bodies give retail's 0x14 frame (this and the list iterator spilled).
 //   find/end/begin are read straight from the vector (no first/last locals) and names[i] is STLport's *(begin() + i).
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
@@ -119,7 +119,7 @@ __declspec(noinline) void CCharStringVector::_M_insert_overflow(CCharString* pos
 }
 #pragma auto_inline(on)
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad00[0x40];
     unsigned short Priority : 3;                        // +0x40
     unsigned short IsScreenDisplacement : 1;
@@ -134,7 +134,7 @@ struct SEmitterNode {
     SEmitterNode*     _M_prev;
     CParticleEmitter* _M_data;
 };
-struct CParticleEmitterManager {
+class CParticleEmitterManager { public:
     SEmitterNode* Emitters;                             // +0x00 list<CParticleEmitter*> node
     long GetActiveEmitterNames(CCharStringVector& names);
 };

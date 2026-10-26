@@ -6,7 +6,7 @@ struct Tex;
 // imported free-like callee via IAT [0x143fe30]; single arg, callee cleans stack
 extern void (__stdcall *g_freeTex)(Tex*);
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void* vtbl;   // +0
     Tex*  tex;    // +4
 };

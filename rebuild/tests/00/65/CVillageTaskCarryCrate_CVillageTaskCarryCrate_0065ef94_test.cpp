@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_sets, g_live;
 struct CBaseIntelligentPointer {
     virtual long Kind() { return 0; }
@@ -17,7 +17,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 struct CVillageTask { virtual long TaskType() { return 0; } void* m_pVillage; CVillageTask() : m_pVillage(0) {} };
-struct CVillageTaskCarryCrate : CVillageTask {
+class CVillageTaskCarryCrate : public CVillageTask { public:
     CIntelligentPointer CreatureAssignedToTask; CIntelligentPointer PCrateStack; bool Pickup; long Priority;
     virtual long TaskType() { return 5; }
     CVillageTaskCarryCrate(CThing* crateStack, bool pickup, long priority) : PCrateStack(crateStack), Pickup(pickup), Priority(priority) {}

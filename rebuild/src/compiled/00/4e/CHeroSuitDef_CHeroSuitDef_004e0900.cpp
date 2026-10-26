@@ -17,7 +17,7 @@ struct CMember_004df7ff {
     CMember_004df7ff();                              // 0x004DF7FF
 };
 
-struct CHeroSuitDef : CBase_0044c0c0 {
+class CHeroSuitDef : public CBase_0044c0c0 { public:
     unsigned char _pad[0x24];
     CMember_004df7ff m_member;                       // +0x28
     virtual void v00();

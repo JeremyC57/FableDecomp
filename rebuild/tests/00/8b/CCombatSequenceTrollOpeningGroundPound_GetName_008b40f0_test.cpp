@@ -3,7 +3,7 @@
 static const char* g_lastS;
 static int g_lastLen;
 
-struct CCharString {
+class CCharString { public:
     void* p;
     CCharString(const char* s, int len);
 };

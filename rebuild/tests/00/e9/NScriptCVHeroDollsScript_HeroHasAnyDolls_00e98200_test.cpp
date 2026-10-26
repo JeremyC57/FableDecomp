@@ -1,12 +1,12 @@
 // Behaviour test for CV_HeroDollsScript::HeroHasAnyDolls (0x00e98200): the short-circuit chain over the seven dolls.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text) : m_pData(text) {}
 };
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     CScriptThing hero;
     unsigned int owned;          // bit i set: doll i is in the hero's inventory
     int queries;

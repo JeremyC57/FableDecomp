@@ -9,21 +9,21 @@
 // Shape: the whole search sits inside `if (ClosedShapeBounds.Contains(pos)) { ... } return false;` so the miss paths
 // share one epilogue (all four registers pushed up front); Contains takes the C2DVector BY VALUE with a user copy ctor
 // (Y copied into the 8-byte frame, X forwarded on the FPU stack); the loop re-reads the vector end each pass.
-struct C2DVector { float X, Y; C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
+class C2DVector { public: float X, Y; C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00();
     virtual long GetShapeType() const;                  // slot 1 (+0x04)
     virtual void v02(); virtual void v03();
     virtual bool IsPosInShape(const C2DVector& pos) const;   // slot 4 (+0x10)
 };
 }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CShapePointer {                                  // CCountedPointer<NShape::CShape>
     NShape::CShape* Data;
     CCPPointerInfo* Info;
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     C2DVector TopLeft;
     C2DVector BottomRight;
     bool Contains(C2DVector p) const
@@ -31,7 +31,7 @@ struct C2DBoxF {
         return p.X >= TopLeft.X && p.X < BottomRight.X && p.Y >= TopLeft.Y && p.Y < BottomRight.Y;
     }
 };
-struct CTCShapeManager {
+class CTCShapeManager { public:
     virtual void v00();
     void*          ParentThing;                         // +0x04 (CTCBase)
     bool           ToBeRemoved;                         // +0x08

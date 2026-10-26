@@ -5,7 +5,7 @@
 
 #pragma optimize("s", on)
 
-struct C3DClothQuad {
+class C3DClothQuad { public:
     unsigned int a, b, c, d; // 16 bytes
 };
 

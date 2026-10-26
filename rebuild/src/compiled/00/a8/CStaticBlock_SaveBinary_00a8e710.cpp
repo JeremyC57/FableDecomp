@@ -16,7 +16,7 @@ public:
     void WriteLong(long value);                 // 0x00993EB0
 };
 
-struct CTexture;
+class CTexture;
 
 struct CStaticBlock {
     unsigned long m_firstIndex;                 // +0x00 (base block)

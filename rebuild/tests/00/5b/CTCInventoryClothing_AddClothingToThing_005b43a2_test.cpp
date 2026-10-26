@@ -20,10 +20,10 @@ struct CModifiers {
     void RemoveAllAppearanceModifiers(long) { Log.push_back(1000); }
     void AddAppearanceModifierWithReplace(long def) { Log.push_back(def); }
 };
-struct CThing { CModifiers* Modifiers; };
+class CThing { public: CModifiers* Modifiers; };
 struct SEntry { long SuitPart; int Slot93Calls; int ArrowParam; };
 
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     CThing* ParentThing;
     std::vector<SEntry> ClothingEntries;
     std::vector<SEntry> Closed;

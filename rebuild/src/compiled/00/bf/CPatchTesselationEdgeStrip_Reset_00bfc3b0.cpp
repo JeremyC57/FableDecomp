@@ -8,16 +8,16 @@
 // Shape: `size + 1` computed once into edi and the resource kept in ebx for the four calls (Verts, WaterVerts,
 // FanBaseVerts, WaterFanBaseVerts -- the source order); the size is a long argument stored as a word (`mov [esi+6],bp`),
 // the start position loaded as a word, the vertical flag as a byte; `ret 10h`.
-struct CMovableResource;
+class CMovableResource;
 
 template <class T>
-struct CEdgeStipVertexArray {
+class CEdgeStipVertexArray { public:
     T*   Data;                                     // +0x00
     long Count;                                    // +0x04
     bool Resize(long count, CMovableResource* resource);
 };
 
-struct CPatchTesselationEdgeStrip {                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
+class CPatchTesselationEdgeStrip { public:                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
     struct CVertex;
     struct CFanBaseVertex;
     struct CWaterVertex;

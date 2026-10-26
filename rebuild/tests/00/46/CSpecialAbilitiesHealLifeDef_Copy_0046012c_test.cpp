@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesHealLifeDef;
+class CSpecialAbilitiesHealLifeDef;
 
 // Provide the extern the source tail-calls, so the test links standalone.
 static int g_called = 0;

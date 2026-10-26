@@ -1,7 +1,7 @@
 // Behaviour test for 0x005CD433 CTCInventoryStats::BuildRenownString
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char buf[64];
     CCharString(const char* t) { std::strcpy(buf, t); }
     CCharString& operator+=(const CCharString& o) { std::strcat(buf, o.buf); return *this; }

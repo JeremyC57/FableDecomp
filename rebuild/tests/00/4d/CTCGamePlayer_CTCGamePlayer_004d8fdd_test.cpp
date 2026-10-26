@@ -1,9 +1,9 @@
 #include <cstdio>
 
-struct CThing { int id; };
-struct CTCTavernGame { int id; };
+class CThing { public: int id; };
+class CTCTavernGame { public: int id; };
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* owner) : ParentThing(owner), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
@@ -21,7 +21,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     CIntelligentPointer_CThing() : CBaseIntelligentPointer() { }
 };
 
-struct CTCGamePlayer : CTCBase {
+class CTCGamePlayer : public CTCBase { public:
     CTCTavernGame*             Game;
     CIntelligentPointer_CThing GameTable;
     CTCGamePlayer(CThing* owner) : CTCBase(owner), Game(0), GameTable() { }

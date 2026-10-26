@@ -2,12 +2,12 @@
 struct CFieldA { int a; };
 struct CFieldB { int b; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void TransferA(CFieldA* p);
     void TransferB(CFieldB* p);
 };
 
-struct CCombatAbilityStrafeDef {
+class CCombatAbilityStrafeDef { public:
     unsigned char _pad28[0x28];
     CFieldB f28;
     unsigned char _pad40[0x40 - 0x28 - sizeof(CFieldB)];

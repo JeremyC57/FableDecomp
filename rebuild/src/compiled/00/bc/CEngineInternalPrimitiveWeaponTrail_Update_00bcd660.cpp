@@ -6,7 +6,7 @@
 
 #include "engine/CEngineInternalPrimitiveBase.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -29,7 +29,7 @@ struct CWeaponTrailListHead {
     CWeaponTrailListNode* Head;
 };
 
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     unsigned long Type;
     unsigned long InterpolationSet;
     unsigned long ThemeChannelDesc;
@@ -59,7 +59,7 @@ struct CNativeVector12 {
     T& operator[](unsigned long index) { return _M_start[index]; }
 };
 
-struct CEngineInternalPrimitiveWeaponTrail : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveWeaponTrail : public CEngineInternalPrimitiveBase { public:
     unsigned long TrailType;
     unsigned long GraphicIndex;
     unsigned long GraphicFrame;

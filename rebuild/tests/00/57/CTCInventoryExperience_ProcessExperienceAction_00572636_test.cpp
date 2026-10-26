@@ -2,7 +2,7 @@
 // Behaviour test for 0x00572636: category 1..2 -> stat; 3..5 -> ability if indicator moved else stat; others nothing.
 static int g_stat = 0, g_ability = 0;
 struct CCategory { long Id; long GetCategoryIdentifier() { return Id; } };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     long statIndicatorPos;
     CCategory* Selected;
     CCategory* GetSelectedCategory() { return Selected; }

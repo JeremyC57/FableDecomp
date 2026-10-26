@@ -34,7 +34,7 @@ template <class T> struct CRetailVector {            // STLport vector (12 bytes
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x4];

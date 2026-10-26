@@ -7,10 +7,10 @@
 #define FABLE_ENGINE_CTHINGAICREATURE_H
 #define FABLE_ENGINE_CTCVILLAGE_H
 #define FABLE_ENGINE_CAISTATEGROUP_AVOIDREGIONEXIT_H
-struct CThingAICreature;
-struct CTCVillage;
-struct CAIBrain { CThingAICreature* Creature; };
-struct CAIStateGroupBase { CAIBrain* PBrain; };
+class CThingAICreature;
+class CTCVillage;
+class CAIBrain { public: CThingAICreature* Creature; };
+class CAIStateGroupBase { public: CAIBrain* PBrain; };
 #endif
 // CAIStateGroup_AvoidRegionExit::IsRunnable() -- recover the live entrance position unless walk-to-marker disallows it.
 // Grade: RELOCATION_MATCH -- compiler-generated vector assignment preserves the retail shared destination-address adjustment (207 bytes).
@@ -73,7 +73,7 @@ inline CRetailThingView* ThingView(CThingAICreature* p) { return (CRetailThingVi
 
 
 #include "engine/CAIStateGroup_AvoidRegionExit.h"
-struct C3DVector {
+class C3DVector { public:
  float X,Y,Z;
  C3DVector() {}
  C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z) {}

@@ -1,22 +1,22 @@
 // Behaviour test for 00787750 CTCBob::CTCBob(CThing*): the owner is stored and told to use cutscene behaviour 2.
 #include <cstdio>
 
-struct CThing
-{
+class CThing
+{ public:
     long behaviour;
     void SetCutscenePauseBehaviour(long b) { behaviour = b; }
 };
 
-struct CTCBase
-{
+class CTCBase
+{ public:
     virtual void v00() {}
     CThing* ParentThing;
     CTCBase(CThing* owner) : ParentThing(owner) {}
     virtual ~CTCBase() {}
 };
 
-struct CTCBob : CTCBase
-{
+class CTCBob : public CTCBase
+{ public:
     float Rhset[6];
     float Pos[3];
     bool  ForceVisible;

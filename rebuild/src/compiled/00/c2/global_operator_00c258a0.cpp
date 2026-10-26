@@ -7,7 +7,7 @@
 //   vector in edx, the scalar on the stack. C3DVector has a user constructor, so it returns through the hidden pointer;
 //   the constructor's arguments are evaluated right to left (Z, Y, X products, each `fld s ; fmul [v.c]`, i.e.
 //   `v.c * s` with the right operand loaded first) and stored X, Y, Z as the three `fstp` pop the stack.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

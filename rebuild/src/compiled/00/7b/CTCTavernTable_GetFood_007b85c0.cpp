@@ -29,7 +29,7 @@ template<class T> struct CRetailVector {
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CTCTavernTable {
+class CTCTavernTable { public:
     void* __vftable;                                    // +0x00
     unsigned char _pad_0x04[0x8];                       // +0x04 CTCBase
     bool BeingServed;                                   // +0x0c

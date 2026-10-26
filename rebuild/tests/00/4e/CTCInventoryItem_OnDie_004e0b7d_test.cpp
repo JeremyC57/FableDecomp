@@ -1,7 +1,7 @@
 #include <cstdio>
 typedef unsigned long DWORD;
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     DWORD vtbl;
     char pad[0x30];
     void* p34;

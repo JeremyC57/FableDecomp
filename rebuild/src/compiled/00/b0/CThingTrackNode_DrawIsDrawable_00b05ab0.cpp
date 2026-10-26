@@ -1,6 +1,6 @@
 // CThingTrackNode::DrawIsDrawable @ 00b05ab0
 // Leaf: DrawIsDrawable
-struct CThingTrackNode;
+class CThingTrackNode;
 
 struct Obj {
     // vtable: slot index 18 (byte offset 0x48) is the called virtual

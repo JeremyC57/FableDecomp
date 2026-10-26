@@ -1,7 +1,7 @@
 // behaviour test for 0x00994570
 #include <stdio.h>
 #include <string.h>
-struct CMemoryDataInputStream { void* __vftable; long position; long sourceLength; long chunkBase; long chunkPosition; long chunkLength; void* StreamSource; };
+class CMemoryDataInputStream { public: void* __vftable; long position; long sourceLength; long chunkBase; long chunkPosition; long chunkLength; void* StreamSource; };
 struct CMemoryDataInputStream_Methods : CMemoryDataInputStream {
     void OpenMemorySource(const void* source, unsigned long size);
 };

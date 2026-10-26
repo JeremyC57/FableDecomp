@@ -9,7 +9,7 @@
 // Shape: /Os pass-through base argument; `xor al,al` and the three byte stores are plain init-list
 // initialisers, scheduled BEFORE the derived vtable store.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CTCCameraPointDefinitionBase_Calls {
     virtual void v00();

@@ -1,8 +1,8 @@
 // Behaviour test for 0x00842D40 CCreatureAction_ShopkeeperGetOut::PerformAction: the goods place handed to the shop.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CTCShop {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CTCShop { public:
     struct GoodsPlace { C3DVector pos; CRightHandedSet rhset; };
     int m_goods; GoodsPlace m_place;
     void AddSaleItem(int goods, const GoodsPlace& place) { m_goods = goods; m_place = place; }

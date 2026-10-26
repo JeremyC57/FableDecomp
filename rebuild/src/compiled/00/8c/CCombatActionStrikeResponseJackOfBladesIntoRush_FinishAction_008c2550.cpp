@@ -32,7 +32,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
 }
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -42,14 +42,14 @@ __forceinline C3DVector operator*(const C3DVector& v, const float& s) { return C
 __forceinline C3DVector Normalise(const C3DVector& v) { return v * FastInvSqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z); }
 __forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void __cdecl operator delete(void* block);            // 0x00BFE9BC
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -73,7 +73,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CJackOfBladesBattleDef {
+class CJackOfBladesBattleDef { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1
     long RefCount;                                     // +0x04
@@ -90,7 +90,7 @@ struct CDefPointer_CJackOfBladesBattleDef {          // CDefPointer<const CJackO
     }
     CJackOfBladesBattleDef* operator->() const { return Data; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer_CJackOfBladesBattleDef* out) const;   // 0x008C33E0
 };
 void* FindSubDef_CJackOfBladesBattleDef(const CDefClassBase* def);
@@ -110,8 +110,8 @@ struct CTCRushCounter {                                // interface 0xad
     long RushCount;                                    // +0x10
 };
 
-struct CCreatureActionBase;
-struct CThing {
+class CCreatureActionBase;
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
@@ -131,7 +131,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
 
@@ -142,7 +142,7 @@ struct CBaseIntelligentPointer {
 };
 
 struct CCountedItem { };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;
     void (CCountedItem::*m_pfnDestroy)();
     CCountedItem* m_pItem;
@@ -167,32 +167,32 @@ struct CCountedPointer_CCreatureActionBase {           // CCountedPointer<CCreat
     }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                 // +0x08
     unsigned char _pad10[0xa8 - 0x10];
     CThingCreatureBase* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCombatActionBase : CCreatureActionBase {       // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:       // retail sizeof 0x114
     unsigned char _combat[0x114 - 0xa8];
 };
-struct CCreatureAction_PlayCombatAnimation : CCombatActionBase {
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     unsigned char _pad114[0x118 - 0x114];
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
-struct CCreatureAction_CastAssassinRush : CCombatActionBase {   // retail sizeof 0x138
+class CCreatureAction_CastAssassinRush : public CCombatActionBase { public:   // retail sizeof 0x138
     unsigned char _pad114[0x138 - 0x114];
     CCreatureAction_CastAssassinRush(CThingCreatureBase* owner, const C3DVector& dir, float distance, bool useCollision, long level,
                                      CCountedPointer_CCreatureActionBase finalAction);   // 0x008CE1B0
     ~CCreatureAction_CastAssassinRush();               // 0x0072D990
 };
 
-struct CCombatAction_GenericStrikeResponseBase : CCombatActionBase {   // retail sizeof 0x148
+class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:   // retail sizeof 0x148
     unsigned char _pad114[0x148 - 0x114];
     virtual void FinishAction();                       // 0x008663D0
 };
-struct CCombatAction_StrikeResponseJackOfBladesIntoRush : CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_StrikeResponseJackOfBladesIntoRush : public CCombatAction_GenericStrikeResponseBase { public:
     bool CauseRush;                                    // +0x148 (PDB +0x160)
     bool GetValidRushPosition(C3DVector& position);    // 0x008C1600
     virtual void FinishAction();

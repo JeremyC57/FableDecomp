@@ -1,14 +1,14 @@
 // behaviour test for CGameflowAssistanceScript::Tutorial_RenownLevelIncrease (0x00CF02A0): level-up announcements and quest-card removal
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString() : Text("") {}
     CCharString(const char* t) : Text(t) {}
 };
 struct CGameflowMasterData { bool StopAssistance; };
 static int g_frame, g_renown[32], g_limit, g_removed, g_msgs; static const char* g_msg[16]; static CGameflowMasterData* g_data;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frame; if (g_frame >= g_limit) g_data->StopAssistance = true; }
     long GetHeroRenownLevel() const { return g_renown[g_frame]; }
     void HeroReceiveMessageFromGuildMaster(const CCharString& text, const CCharString&, bool, bool) const { g_msg[g_msgs++] = text.Text; }

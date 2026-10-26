@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct CMovableResource;
+class CMovableResource;
 struct CMemoryManagerSpy {
     int id;
     void* AllocVirtual(int bytes, CMovableResource* owner);

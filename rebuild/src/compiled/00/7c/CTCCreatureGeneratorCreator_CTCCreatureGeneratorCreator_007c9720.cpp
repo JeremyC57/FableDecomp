@@ -8,7 +8,7 @@
 // (an 8-aligned unsigned __int64).
 // Shape: plain initialisers in declaration order sharing the ebx zero register; the pointer member
 // addressed once in edi; the UID halves stored after its constructor.
-struct CThing;
+class CThing;
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer

@@ -14,7 +14,7 @@ float GetParticleUpdatePeriod();                                          // 0x0
 
 namespace NParticleEngine {
 
-struct CParticle {
+class CParticle { public:
     virtual void v00();
     unsigned char _state[0x6e];                                           // +0x04 Orientation .. Acceleration
     short         Lifetimer;                                              // +0x72

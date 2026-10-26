@@ -9,9 +9,9 @@
 // 8-byte alignment of +0x18/+0x30). CTCBase restated as in the landed 0x007A62D0 (the header's vptr is a data word).
 // Shape: a `__forceinline` user virtual destructor (a plain inline one stays out of line: 30v75) whose body calls RemoveFromGlobalTCs after the vtable store; members die in
 // reverse order (the intelligent pointers' generated destructors call the base destructor directly).
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase();
     virtual ~CTCBase();                                  // 0x00686830
     CThing* ParentThing;                                 // +0x04
@@ -31,13 +31,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<C
     virtual void v00();
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();
     ~CCharString();                                      // 0x0099EAE0
 };
 
-struct CTCActionUseScriptedHook : CTCBase {
+class CTCActionUseScriptedHook : public CTCBase { public:
     bool                Usable;                          // +0x0c
     bool                ForceConfirmation;               // +0x0d
     bool                WaitingForConfirmation;          // +0x0e

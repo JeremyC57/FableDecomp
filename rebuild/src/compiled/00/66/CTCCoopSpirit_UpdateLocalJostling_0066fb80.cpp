@@ -12,7 +12,7 @@
 //   `offset * 0.4f` vector; the spirit thing is a named local for the subtraction (held in ebp across the hero call;
 //   reading ParentThing inline gives up ebp and moves the loop counter into it), ParentThing is re-read for the physics TC.
 extern float g_epsilon_0129ba3c;                // 0x0129BA3C (1e-4f)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -20,10 +20,10 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     float GetLength() const;                    // 0x00A14480
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     unsigned char   _pad64[0x90 - 0x64];
@@ -36,11 +36,11 @@ class CPlayer {
 public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                 // 0x00449700
     CPlayer* GetPlayer(long number);            // 0x004498C0
 };
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)

@@ -12,7 +12,7 @@ static long SHGetFolderPathW(void*, int folder, void*, unsigned long, wchar_t* p
     path[i] = 0;
     return 0;
 }
-struct CWideString {
+class CWideString { public:
     wchar_t m_text[300];
     explicit CWideString(const wchar_t* text) { int i = 0; for (; text[i]; ++i) m_text[i] = text[i]; m_text[i] = 0; }
 };

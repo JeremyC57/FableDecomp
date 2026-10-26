@@ -1,15 +1,15 @@
 #include <stdio.h>
 
-struct C2DBoxI
-{
+class C2DBoxI
+{ public:
     int left;
     int top;
     int right;
     int bottom;
 };
 
-struct CDisplayManager
-{
+class CDisplayManager
+{ public:
     void SetViewport(const C2DBoxI& viewport);
 };
 

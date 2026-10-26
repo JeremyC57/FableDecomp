@@ -3,14 +3,14 @@
 #include <cstring>
 
 static int g_stringCopies = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* s) : m_pData(s) { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_stringCopies; }
     bool operator<(const CCharString& o) const { return std::strcmp(m_pData, o.m_pData) < 0; }
 };
-struct CScriptBase; struct CScriptDataBase; struct CGameScriptInterfaceBase;
-struct CScriptInfo {
+class CScriptBase; class CScriptDataBase; class CGameScriptInterfaceBase;
+class CScriptInfo { public:
     CScriptBase*     (*AllocFunc)(CScriptDataBase*, CGameScriptInterfaceBase*);
     CScriptDataBase* (*MasterScriptDataAlloc)();
     CCharString      Name;

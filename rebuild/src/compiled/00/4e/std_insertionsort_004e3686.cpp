@@ -12,7 +12,7 @@
 // Pragma: optimize("s") -- the size TU's `push dword ptr [esp+10h]` for the comparator and the loop entered by a jump
 // to its bottom test (under /O2 the test is duplicated in front of the loop, 58 v 53 bytes).
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };

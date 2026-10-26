@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch { int m_vtbl; void* member; };
+class CLandscapeBackgroundPatch { public: int m_vtbl; void* member; };
 
 static int g_innerCalls = 0;
 static int g_deleteCalls = 0;

@@ -11,18 +11,18 @@
 //   float; /Os never unrolls a loop, so the TRANSFER list names every element), camera arrays first.
 #pragma optimize("s", on)
 
-struct CDefString { long m_index; };
-struct C3DVector { float X, Y, Z; };
+class CDefString { public: long m_index; };
+class C3DVector { public: float X, Y, Z; };
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(float& v);                // 0x00431061
     void Transfer(long& v);                 // 0x00431102
     void Transfer(CDefString& v);           // 0x0045228F
     void Transfer(CStlVector<float>& v);    // 0x00464CBF
 };
 
-struct CSpecialAbilitiesBulletTimeDef {
+class CSpecialAbilitiesBulletTimeDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                       // CSpecialAbilitiesDef base fields (+0x04)
     float SlowTimeDuration[4];                       // +0x3C

@@ -4,9 +4,9 @@
 // Model of CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation(owner, animation, usePhysics)
 // @ 0x008B8050: base CCombatActionBase(&owner, 50, CSoundPair()), the three flags, then the animation pushed onto
 // CombatAnimations.
-struct CThingCreatureBase { int Id; };
-struct CAnimationEntry { int Id; };
-struct CSoundPair {
+class CThingCreatureBase { public: int Id; };
+class CAnimationEntry { public: int Id; };
+class CSoundPair { public:
     int FirstSound;
     int LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }

@@ -10,7 +10,7 @@
 // UpdateMinMultiplier @ 0x004C5F10.
 // Shape: the key is passed by reference to the by-value parameter's slot (`lea eax,[esp+8] ; push eax`); the count is read through
 // an inline size() (`mov eax,[esi+4] ; test eax,eax`).
-struct CThing;
+class CThing;
 struct CMultiplierRequestMap {                                   // retail std::map<CThing*, float> header + count
     void*         m_header;                                      // +0x00
     unsigned long m_count;                                       // +0x04

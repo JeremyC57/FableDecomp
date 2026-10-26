@@ -3,15 +3,15 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThingCreatureDef { float Health; };
-struct CThingPhysical { int Id; };
-struct CThingPlayerCreatureInit { CThingPhysical* OriginalThing; CThingPhysical* PreviousThing; bool PlaceAtEndOfList; };
+class CThingCreatureDef { public: float Health; };
+class CThingPhysical { public: int Id; };
+class CThingPlayerCreatureInit { public: CThingPhysical* OriginalThing; CThingPhysical* PreviousThing; bool PlaceAtEndOfList; };
 static int g_progress; static char g_added[32]; static int g_released;
 static void DisplayProgress(const char*, float, bool, bool) { ++g_progress; }
 struct CDef { long m_refCount; void Release() { if (--m_refCount == 0) ++g_released; } };
 struct CDefPointer { CDef* Object; CDefPointer() : Object(0) { } ~CDefPointer() { if (Object) Object->Release(); } };
 static CDef g_subDef;
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     float MaxHealth, Health; CThingCreatureDef* PDef; bool BaseResult;
     CThingPhysical* SeenOriginal; CThingPhysical* SeenPrevious; bool SeenPlace;
     bool GetSubDef(CDefPointer* out) { out->Object = &g_subDef; ++g_subDef.m_refCount; return true; }

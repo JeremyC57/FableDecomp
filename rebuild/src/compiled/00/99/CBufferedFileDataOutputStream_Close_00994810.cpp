@@ -9,7 +9,7 @@
 // Buffer value is loaded into ecx and pushed before the DataStartFilePtr store, and Buffer is
 // nulled after the free.
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
-struct CAFile {
+class CAFile { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

@@ -1,6 +1,6 @@
 #include <cstdio>
 struct SNode { SNode* next; };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     SNode* m_pTasks;
     unsigned char m_locked;
     bool AreTasksEmpty() { return m_pTasks->next == m_pTasks; }

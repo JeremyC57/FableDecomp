@@ -17,12 +17,12 @@
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()

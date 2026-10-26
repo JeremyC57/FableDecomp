@@ -7,7 +7,7 @@
 #include <string.h>
 #include <new>
 static int g_strings = 0;
-struct CCharString { const char* m_pData; CCharString() : m_pData("") { ++g_strings; } };
+class CCharString { public: const char* m_pData; CCharString() : m_pData("") { ++g_strings; } };
 template <class T> struct CAllocator { CAllocator() { } };
 template <class T> struct CAllocProxy : CAllocator<T> {
     T* m_data;

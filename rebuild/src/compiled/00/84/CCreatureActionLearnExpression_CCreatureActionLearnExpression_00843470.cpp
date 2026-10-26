@@ -11,19 +11,19 @@
 //          (vtables CIntelligentPointer<CThingPlayerCreature> 0x01231C4C, CIntelligentPointer<CThing> 0x01238C6C).
 // Shape: the Drink shape (0x00843510) with the player kept in ebx for the first pointer member: edi is then free and
 //   holds the zero for the two long pushes, the CSoundPair constructor and the 0.0f speed (`push edi`).
-struct CThingCreatureBase { };
-struct CThingPlayerCreature : CThingCreatureBase { };
-struct CThing;
-struct CAnimationEntry;
-struct CBaseObject;
+class CThingCreatureBase { public: };
+class CThingPlayerCreature : public CThingCreatureBase { public: };
+class CThing;
+class CAnimationEntry;
+class CBaseObject;
 
-struct CCharString {                        // one pointer; the defaulted length makes a literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length makes a literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -39,19 +39,19 @@ struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // one vtable per instantiation
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // one vtable per instantiation
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation,
                         const CSoundPair& sound, long c, long d);                 // 0x00693B30
 };
 
-struct CCreatureAction_LearnExpression : CCreatureActionBase {   // vtable 0x0127461C
+class CCreatureAction_LearnExpression : public CCreatureActionBase { public:   // vtable 0x0127461C
     CIntelligentPointer<CThingPlayerCreature> PPlayerCreature;  // +0xa8 (PDB +0xb4), vtable 0x01231C4C
     CIntelligentPointer<CThing> PLearnFromThing;                // +0xb0 (PDB +0xbc), vtable 0x01238C6C
     virtual void v00();

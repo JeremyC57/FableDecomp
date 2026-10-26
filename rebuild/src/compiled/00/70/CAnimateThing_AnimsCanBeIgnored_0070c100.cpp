@@ -16,12 +16,12 @@ template<class T> struct CRetailVector {
     const T& operator[](long n) const { return first[n]; }
 };
 
-struct CTransitionBlendAlpha {
+class CTransitionBlendAlpha { public:
     float Current;
     float Last;
 };
 
-struct CAnimSet {
+class CAnimSet { public:
     long UpdateMode;                                     // +0x00
     CRetailVector<short> Anims;                          // +0x04
     CRetailVector<CTransitionBlendAlpha> InternalAlphas; // +0x10
@@ -62,7 +62,7 @@ struct CCompleteAnimation {
     bool MainAnimCanTransitionOut;                       // +0x6c
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     CCompleteAnimation CurrentAnim;                      // +0x00
     bool AnimsCanBeIgnored();
 };

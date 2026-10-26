@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 extern "C" void operator_delete_stub(void*);
-struct COpinionSourceDef {
+class COpinionSourceDef { public:
     void dtor();
     void* scalar_deleting_destructor(unsigned int flags);
 };

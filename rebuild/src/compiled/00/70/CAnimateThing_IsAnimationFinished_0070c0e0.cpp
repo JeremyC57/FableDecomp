@@ -23,7 +23,7 @@ struct SAnimFrameEntry {
     short m_pad;
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     long m_value0;                              // +0x00
     CRetailVector<SAnimFrameEntry> m_entries;   // +0x04 .. +0x0f
     unsigned char _pad[0x41];                   // +0x10 .. +0x50

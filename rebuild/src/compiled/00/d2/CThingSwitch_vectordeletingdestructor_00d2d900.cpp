@@ -11,7 +11,7 @@
 #undef CFrontEndScreen
 #pragma optimize("t", on)
 namespace NUISystem {
-struct CFrontEndScreen {                   // vtable 0x012C3224; label NUISystem::CFrontEndScreen::~CFrontEndScreen
+class CFrontEndScreen { public:                   // vtable 0x012C3224; label NUISystem::CFrontEndScreen::~CFrontEndScreen
     void* _vptr;
     ~CFrontEndScreen();                     // 0x00F35B40 (inlines the CScriptThing member destructor at +8)
 };

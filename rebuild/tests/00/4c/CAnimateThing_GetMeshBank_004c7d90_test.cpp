@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
-struct CMeshDataBank { int tag; };
+class CMeshDataBank { public: int tag; };
 char g_subbuf[0x161c8 + 16];
 char g_rootbuf[0x1c + 16];
 char* g_root;
-struct CAnimateThing;
+class CAnimateThing;
 CMeshDataBank* __fastcall CAnimateThing_GetMeshBank(CAnimateThing* self)
 {
     char* r = *(char**)(g_root + 0x1c);

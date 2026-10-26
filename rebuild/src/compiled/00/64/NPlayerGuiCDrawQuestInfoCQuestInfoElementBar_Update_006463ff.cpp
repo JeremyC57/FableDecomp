@@ -13,8 +13,8 @@
 // auto_inline(off) body of the raw IS_THING_ALIVE tells VC the address-taken `thing` does not escape, so it shares
 // its frame word with the region compare's spill (0xC frame instead of 0x10).
 #pragma optimize("s", on)
-struct CThing;
-struct CThingPhysical {
+class CThing;
+class CThingPhysical { public:
     unsigned char _pad00[0x8e];
     short         MapNumber;                       // +0x8e
     unsigned char _pad90;
@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {
     CThingPhysical* GetPItem() const;              // 0x00A01B50
     ~CBaseIntelligentPointer();                    // 0x00A01C10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(CThing* thing);            // 0x00655145
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x00655180
 };
@@ -41,23 +41,23 @@ bool __fastcall IS_THING_ALIVE_RAW(CThing* const* p)                            
     return thing && !(thing->Flags91 & 1);
 }
 #pragma auto_inline(on)
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingWithUID(unsigned __int64 uid);  // 0x0051ED80
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetRegionNumberMapIsIn(long map);          // 0x004FC190
     long GetCurrentRegionNumber();                  // 0x004FB150
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CThingManager* GetThingManager();      // slot 3 (+0x0c)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();              // slot 13 (+0x34)
 };
-struct CGame { unsigned char _pad[0x24]; CWorld* World; };   // +0x24
+class CGame { public: unsigned char _pad[0x24]; CWorld* World; };   // +0x24
 extern CGame* g_pGame;                             // 0x013B86A0
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 #pragma pack(push, 1)
 struct CQuestInfoElementBar {
     void*         __vftable;                       // +0x00

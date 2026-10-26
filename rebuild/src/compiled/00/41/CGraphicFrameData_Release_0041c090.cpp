@@ -15,7 +15,7 @@
 // the vptr and counted pointers are flattened into raw words); the inlined release needs CTexture's virtual slots, so it is
 // local.
 void __cdecl operator delete(void* block);               // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                      // +0x00
     void  (__fastcall* DeleteFunc)(void* data);          // +0x04
     void* Data;                                          // +0x08

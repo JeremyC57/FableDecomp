@@ -13,7 +13,7 @@
 // across the unlock, the element store re-reads BufferChunks' first pointer; the unsigned count loop (`jbe`/`jb`).
 extern "C" __declspec(dllimport) void* __stdcall GlobalAlloc(unsigned int flags, unsigned long bytes);   // IAT 0x0143FDD4
 
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void* InternalAllocate(long size, unsigned long alignment, bool flag);   // 0x009F2A40
 };
 
@@ -48,7 +48,7 @@ struct CBufferChunkArray {                         // retail CArray<CFileInstall
 
 struct CRITICAL_SECTION_Fable { unsigned char _body[0x18]; };
 
-struct CFileInstaller {
+class CFileInstaller { public:
     virtual void v00();
     CRITICAL_SECTION_Fable CriticalSection;        // +0x04
     CBufferChunkArray      BufferChunks;           // +0x1c

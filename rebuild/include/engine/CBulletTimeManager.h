@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CPlayerManager;
-struct CWorld;
+class CPlayerManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CBulletTimeManager {
+class CBulletTimeManager {
+public:
     unsigned char   BulletTimeInfoMap[0x10];                 // +0x00 map<void_*,CBulletTimeManager::CBulletTimeInfo,std::less<void_*>,std::allocator<std::pair<void_*_const,CBulletTimeManager::CBulletTimeInfo>_>_>
     bool            Override;                                // +0x10
     bool            UseDefaultMultiplier;                    // +0x11

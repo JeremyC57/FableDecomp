@@ -3,11 +3,11 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char Text[128];
     CCharString(const char* t, long length = -1) { (void)length; std::strcpy(Text, t); }
 };
-struct CStringParser {
+class CStringParser { public:
     const char* Cursor;
     CStringParser(const char* text) : Cursor(text) { }
     CStringParser(const CCharString& text, void (*)(CCharString*), const CCharString&, long) : Cursor(text.Text) { }
@@ -27,13 +27,13 @@ struct CStringParser {
     }
     long SkipWhitespace() { while (*Cursor == ' ') ++Cursor; return 0; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     CStringParser* Parser;
     CPersistContext(CStringParser* p, void (*)(CCharString*), bool, void*, void*, CCharString*) : Parser(p) { }
 };
 static char g_loaded[128];
 static long g_mode;
-struct CThingManager {
+class CThingManager { public:
     void LoadSingleThing(CPersistContext& c, long mode) { std::strcpy(g_loaded, c.Parser->Cursor); g_mode = mode; }
     void LoadHeroStateScript(CStringParser& parser)
     {

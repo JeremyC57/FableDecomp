@@ -1,8 +1,8 @@
 #include <stdio.h>
 // Behaviour test for CEngineLightingManager::SetupShaderPointLights (0x00B44F20).
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour { float R, G, B, A; };
-struct CShaderLightAttenuation {
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public: float R, G, B, A; };
+class CShaderLightAttenuation { public:
     float Attenuation0;                                // +0x00
     float Attenuation1;                                // +0x04
     float Attenuation2;                                // +0x08
@@ -13,7 +13,7 @@ struct CBaseClassNonCopyable {
     virtual void v00() {}
     ~CBaseClassNonCopyable() {}
 };
-struct CShaderLight : CBaseClassNonCopyable {
+class CShaderLight : public CBaseClassNonCopyable { public:
 };
 struct CShaderPointLight : CShaderLight {
     CShaderPointLight() {}              // vtable 0x012A2114, 0x40 bytes
@@ -27,7 +27,7 @@ struct CShaderPointLight : CShaderLight {
         : Position(position), Colour(colour), Intensity(intensity), Attenuation(attenuation) { }
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void InitialiseLight(unsigned long index, CShaderLight* light) { CShaderPointLight* p = (CShaderPointLight*)light; inits[index] = *p; ++nInit; }
     void ResetLight(unsigned long index) { resets[nReset++] = index; }
     CShaderPointLight inits[10]; long nInit; unsigned long resets[10]; long nReset;
@@ -35,7 +35,7 @@ struct CShaderRenderManager {
 };
 CShaderRenderManager* g_pShaderRenderManager;
 
-struct CEngineLocalLightElement {                      // 0x34 bytes
+class CEngineLocalLightElement { public:                      // 0x34 bytes
     C3DVector       WorldPos;                          // +0x00
     float           Radius;                            // +0x0c
     float           RadiusSquared;                     // +0x10
@@ -45,12 +45,12 @@ struct CEngineLocalLightElement {                      // 0x34 bytes
     float           AttenuationConstant;               // +0x2c
     unsigned long   ChannelMask;                       // +0x30
 };
-struct CEngineLocalLightArray {
+class CEngineLocalLightArray { public:
     long                     LightCount;               // +0x00
     CEngineLocalLightElement Lights[8];                // +0x04
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char                 _pad00[0xa0];
     long                          ShaderPointLightsEnabledCount;   // +0xa0 (retail)
     unsigned char                 _pada4[4];

@@ -4,7 +4,7 @@
 // The chunk label "CInputProcessManager::~CInputProcessManager" is propagated. Shape: the zero store is scheduled after the first
 // member's address is formed (`lea ecx,[esi+4] ; mov dword ptr [esi],0`), the two constructor calls follow in declaration order.
 // Leaf: ??0CNamedValue_00751590
-struct CCharString {                                // 4 bytes: the shared string data pointer
+class CCharString { public:                                // 4 bytes: the shared string data pointer
     void* storage_;
     CCharString();                                  // 0x0099E4B0
 };

@@ -3,8 +3,8 @@
 
 // CDisplayManagerInit copy constructor: every member copied, the shader path through the string's own copy constructor.
 static int g_stringCopies = 0;
-struct CWideString { const char* m_pData; CWideString(const char* s) : m_pData(s) { } CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_stringCopies; } };
-struct CDisplayManagerInit {
+class CWideString { public: const char* m_pData; CWideString(const char* s) : m_pData(s) { } CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_stringCopies; } };
+class CDisplayManagerInit { public:
     long Width, Height, Depth, RefreshRate; bool UseRenderManager, UseShaderRenderManager; void* WindowHandle;
     unsigned char ZBufferDepth, NoBackBuffers; long MultisampleType, PushBufferSize, KickOffSize; bool PresentImmediate,
     PresentImmediatelyIfMissedVSync; long PresentationIntevalVSyncCount; bool SkipConfigDetection; unsigned int RenderManagerInitFlags;

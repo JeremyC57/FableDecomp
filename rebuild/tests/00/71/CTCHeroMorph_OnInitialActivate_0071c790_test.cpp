@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour of CTCHeroMorph::OnInitialActivate (0x0071C790): Changed set, tattoos initialised, then the texture morphs
 // uploaded to the application's engine with (null set, false, 0.0f).
-struct CIEngine { int id; };
+class CIEngine { public: int id; };
 struct CLongSet;
 struct CDisplay_Retail { CIEngine* m_pEngine; };
 struct CApplication_Retail { CDisplay_Retail* m_pDisplay; };

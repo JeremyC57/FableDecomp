@@ -3,14 +3,14 @@
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct C2DVector { float X, Y; C2DVector(float x, float y) { X = x; Y = y; } };
-struct CScriptThing { const char* name; bool alive; bool IsAlive() const { return alive; } };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) { X = x; Y = y; } };
+class CScriptThing { public: const char* name; bool alive; bool IsAlive() const { return alive; } };
 struct CV_HeroDuelScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CV_HeroDuelScript* script;
     int frame;
     float health;

@@ -14,12 +14,12 @@ struct CBasicStringW {
     CBasicStringW(const unsigned short* s) : _M_start(0), _M_finish(0), _M_end_of_storage(0) { _M_range_initialize(s, s + length(s), forward_iterator_tag()); }
     CBasicStringW(const unsigned short* s, unsigned long n) : _M_start(0), _M_finish(0), _M_end_of_storage(0) { _M_range_initialize(s, s + n, forward_iterator_tag()); }
 };
-struct CWideStringData {
+class CWideStringData { public:
     CBasicStringW Data; long NoRefs;
     CWideStringData(const unsigned short* t) : Data(t), NoRefs(1) { }
     CWideStringData(const unsigned short* t, unsigned long n) : Data(t, n), NoRefs(1) { }
 };
-struct CWideString {
+class CWideString { public:
     CWideStringData* AllocStringData(const unsigned short* text, long length)
     {
         return length == -1 ? new CWideStringData(text) : new CWideStringData(text, length);

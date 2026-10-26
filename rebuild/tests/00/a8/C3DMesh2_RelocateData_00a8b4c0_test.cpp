@@ -4,23 +4,23 @@ static long got_handle=0, got_size=0;
 static void* got_old=0;
 static void* got_new=0;
 // C3DMesh2::RelocateData(long handle, void* oldBase, void* newBase, long size) -- rebase mesh blocks or dispatch primitive relocation. Retail Fable.exe @ 0x00A8B4C0, 304 bytes; base fallback C3DMeshStats::RelocateData @ 0x00A2E820 and virtual primitive RelocateData slot +4. No C3DMesh2 header exists: member offsets/element sizes follow landed C3DMesh2::Sizeof and InitialisePointers sources; C3DPrimitive2 slot and size follow landed C3DPrimitive2::RelocateData.
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     void* MemoryPool;            // +0x04
     long StatsMemoryHandle;       // +0x08
     unsigned char _base[0x70];    // through +0x7b
     virtual void RelocateData(long,void*,void*,long); // 0x00A2E820
 };
-struct C3DMeshMaterial { unsigned char _body[0x30]; };
-struct C3DBone2 { unsigned char _body[0x3c]; };
-struct C3DKeyframe { unsigned char _body[0x30]; };
-struct CMatrix4x4 { float m[16]; };
-struct C3DPrimitive2 {
+class C3DMeshMaterial { public: unsigned char _body[0x30]; };
+class C3DBone2 { public: unsigned char _body[0x3c]; };
+class C3DKeyframe { public: unsigned char _body[0x30]; };
+class CMatrix4x4 { public: float m[16]; };
+class C3DPrimitive2 { public:
     virtual void v00();
     unsigned char _body[0x9c];
     virtual void RelocateData(long,void*,void*,long);
 };
-struct C3DMesh2 : C3DMeshStats {
+class C3DMesh2 : public C3DMeshStats { public:
     long MemoryHandle;                 // +0x7c
     long PrimMemoryHandle;             // +0x80
     long BoneNameMemoryHandle;         // +0x84

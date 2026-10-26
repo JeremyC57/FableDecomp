@@ -7,7 +7,7 @@ struct RefObj {
     float  speed;
 };
 
-struct CTCWeapon {
+class CTCWeapon { public:
     char    pad[0x70];
     RefObj* obj;
 };

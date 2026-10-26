@@ -13,12 +13,12 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     virtual void v00();
     long PercentageChance;              // +0x04
     float SecondsDuration;              // +0x08
@@ -28,7 +28,7 @@ struct CCombatAbilityData {
     CCombatAbilityData& operator=(const CCombatAbilityData& other);   // 0x00453F18
 };
 
-struct CCombatAbilityStrafingData : CCombatAbilityData {
+class CCombatAbilityStrafingData : public CCombatAbilityData { public:
     float RotationSpeed;                // +0x18
     __forceinline CCombatAbilityStrafingData& operator=(const CCombatAbilityStrafingData& other)
     {
@@ -38,7 +38,7 @@ struct CCombatAbilityStrafingData : CCombatAbilityData {
     }
 };
 
-struct CCombatAbilityStrafeDef : CDefClassBase {
+class CCombatAbilityStrafeDef : public CDefClassBase { public:
     CCombatAbilityStrafingData CombatAbility;   // +0x28
     CCombatAbilityStrafeDef& operator=(const CCombatAbilityStrafeDef& other);
 };

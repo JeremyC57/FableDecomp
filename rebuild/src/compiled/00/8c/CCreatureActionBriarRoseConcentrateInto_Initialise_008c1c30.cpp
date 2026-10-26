@@ -8,8 +8,8 @@
 //   0x008C4B80 idiom); the counted def reference and the effect name are conditional temporaries of one && expression;
 //   both mode-ctor pointers come through inline accessors (GetCreature, PEnemy.GetCreature) so the two GetPItem calls run
 //   before any push (enemy first) and the Imposter byte is loaded last.
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -33,7 +33,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -45,7 +45,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                                  // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
@@ -59,7 +59,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -68,7 +68,7 @@ template <class T> struct CDefPointer {
             m_p->Destroy();
     }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -128,7 +128,7 @@ struct CModeBriarRoseConcentrate : CModeBase {
     unsigned char _body[0xa0];                        // sizeof = 0xa4
     CModeBriarRoseConcentrate(CThing* creature, CThing* enemy, bool imposter);   // 0x008E78C0
 };
-struct CTCCreatureModeManager {                       // interface 0x31
+class CTCCreatureModeManager { public:                       // interface 0x31
     bool AddMode(CCountedModePointer mode);           // 0x0073ACC0
 };
 struct CBaseIntelligentPointer {
@@ -147,7 +147,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -157,7 +157,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
 #pragma pack(push, 1)
-struct CCreatureAction_BriarRoseConcentrateInto : CCombatActionBase {
+class CCreatureAction_BriarRoseConcentrateInto : public CCombatActionBase { public:
     bool                    Imposter;                 // +0x114
     CIntelligentPointerCreature PEnemy;               // +0x115
     void Initialise();

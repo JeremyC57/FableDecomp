@@ -9,7 +9,7 @@
 //   flattens the base (no base operator= to call), so the classes are modelled locally like the landed 0x00463BA2.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -18,7 +18,7 @@ struct CLongVector {                       // retail std::vector<long> (retail 0
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct CKrakenDef : CDefClassBase {
+class CKrakenDef : public CDefClassBase { public:
     float                    HeightOffset;                // +0x28
     float                    PoolRadius;                  // +0x2c
     float                    HeadRiseDelay;               // +0x30

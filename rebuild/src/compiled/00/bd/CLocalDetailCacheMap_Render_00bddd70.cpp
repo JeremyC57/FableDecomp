@@ -10,7 +10,7 @@
 //
 // Lane feedback: a named local for the embedded quad-tree pointer hoists the `add ecx,0Ch` above the flag
 // test (30 bytes); re-deriving it at each use matches retail. RELOCATION_MATCH.
-struct CEngineCamera;
+class CEngineCamera;
 
 // Call-surface view of CQuadTreeElement (engine/CLocalDetailCacheMap.h embeds it opaquely at +0x0C).
 struct CQuadTreeElementCalls {

@@ -7,7 +7,7 @@
 // nothing at +0x20..+0x50, so a local CThing model is used.
 // Shape: Ego_r.pdb `?IsBlocking@CThingCreatureBase@@QBE_NXZ`. `if (HasTC(k)) return GetTC(k)->f(); return false;` with
 // the pointer-returning inline find (component straight into ecx), kind 0x30 = `test dword ptr [ecx+24h],10000h`.
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -28,7 +28,7 @@ struct CTCMap {                                 // the thing's component map at 
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -41,7 +41,7 @@ struct CTCCombatBlocking {                      // component kind 0x30
     bool IsBlocking() const;                    // 0x007331E0
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsBlocking() const;
 };
 

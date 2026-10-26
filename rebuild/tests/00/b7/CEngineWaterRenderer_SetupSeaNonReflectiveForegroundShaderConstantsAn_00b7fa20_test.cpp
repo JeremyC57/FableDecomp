@@ -1,21 +1,21 @@
 // Behaviour test for 0x00B7FA20: the shader constants, bone matrices and PrepareForRender flags it sets.
 #include <cstdio>
 #include <cmath>
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 };
 inline CRGBFloatColour operator*(const CRGBFloatColour& a, const CRGBFloatColour& b) { return CRGBFloatColour(a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A); }
 inline C4DVector ToVector(const CRGBFloatColour& c) { return C4DVector(c.R, c.G, c.B, c.A); }
-struct CMatrix3x4 { float M[12]; };
+class CMatrix3x4 { public: float M[12]; };
 inline float Clamp(float value, float lo, float hi) { if (value < lo) return lo; if (value > hi) return hi; return value; }
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     C4DVector vs[8]; int vsSet[8];
     const CMatrix3x4* bones[4]; int resized;
     C4DVector ps[8]; unsigned long UpdateFlags; unsigned long lastPrepare;
@@ -28,7 +28,7 @@ struct CShaderRenderManager {
 };
 static CShaderRenderManager g_mgr;
 static CShaderRenderManager* g_pShaderRenderManager = &g_mgr;
-struct CEngineWaterSettings {
+class CEngineWaterSettings { public:
     bool EnableBumpMap, EnableSwell, EnableFresnel;
     float FresnelFactor, SwellFactor, ShoreSwellFactor;
     CRGBFloatColour Colour;
@@ -37,7 +37,7 @@ struct CEngineWaterSettings {
 };
 static int Near(float a, float b) { return std::fabs(a - b) < 1e-5f; }
 static int VecIs(const C4DVector& v, float x, float y, float z, float w) { return Near(v.X, x) && Near(v.Y, y) && Near(v.Z, z) && Near(v.W, w); }
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     CEngineWaterSettings Settings;
     float WaterBumpFactor;
     float themeAlpha;

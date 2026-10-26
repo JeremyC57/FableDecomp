@@ -12,13 +12,13 @@
 // Shape: the frame loop is `for (;;)` entered through a termination return and closed by one; its only other exit
 // is the `break` after the removal, which falls into the function's closing discarded IsActiveThreadTerminating()
 // (the tail `jmp` shared with the inactive-boast path); the quest-started wait is the rotated script idiom.
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
 };
 
 namespace NScript {
-struct CQ_SunnyvaleMasterData {
+class CQ_SunnyvaleMasterData { public:
     unsigned char _pad000[0xda];
     bool          BountyHuntTimeLimitExceeded;          // +0xda
 };
@@ -29,7 +29,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
 
-struct CQ_BountyHuntScript : CScriptBase {
+class CQ_BountyHuntScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                        // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44
     bool QuestFailed;                                   // +0x48

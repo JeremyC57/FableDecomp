@@ -17,10 +17,10 @@
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
-struct CProcessedInput;
-struct CTCBase;
+class CProcessedInput;
+class CTCBase;
 
-struct CAInputProcess {
+class CAInputProcess { public:
     void RemoveFromInterface();                         // 0x00A0D2D0
 };
 
@@ -31,7 +31,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -55,11 +55,11 @@ inline bool IsThingAlive(const CThing* thing)
     return thing && !(thing->m_stateFlags & 1);
 }
 
-struct CTCCreatureModeManager {                         // interface 0x31
+class CTCCreatureModeManager { public:                         // interface 0x31
     void RemoveMode(unsigned long mode);                // 0x0073ABA0
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void PushCurrentManualMode();                       // 0x006988B0
 };
 struct CCameraManagerSource {
@@ -67,7 +67,7 @@ struct CCameraManagerSource {
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** camera);   // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x34];
     CCameraManagerSource* CameraSource;                 // +0x34
 };

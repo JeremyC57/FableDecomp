@@ -10,7 +10,7 @@
 // as one 12-byte block through its own address (`lea edx,[esi+4]`: the morph's copy constructor is written as an
 // assignment, `*this = other`); `*_Dest = *_First` is the implicit assignment (four dword moves through ebp), and
 // the value argument gets the key, then the morph block through `add eax,4`.
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -27,7 +27,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<long, CSkeletalMorph> TEntry;
 
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };

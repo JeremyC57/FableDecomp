@@ -22,13 +22,13 @@ struct IDirect3DDevice9Vtbl {
 };
 struct IDirect3DDevice9 { IDirect3DDevice9Vtbl* lpVtbl; };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
 };
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* first; T* last; T* end_of_storage;
     unsigned long Size() const { return (unsigned long)(last - first); }
     const T& operator[](unsigned long i) const { return first[i]; }
@@ -113,11 +113,11 @@ struct CPixelShaderData {
     }
 };
 
-struct CShaderBase {                            // vtable 0x0129A030
+class CShaderBase { public:                            // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
 
-struct CPixelShader : CShaderBase {             // vtable 0x0129A054
+class CPixelShader : public CShaderBase { public:             // vtable 0x0129A054
     CPixelShaderData* Data;
     CPixelShader(IDirect3DPixelShader9* shader, const CLongArray& constIndices, const CCharString& name);   // 0x00A5ECB0
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -128,7 +128,7 @@ struct CPixelShader : CShaderBase {             // vtable 0x0129A054
     }
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char     _pad000[0x1d4];
     IDirect3DDevice9* D3DDevice;                // +0x1d4
     unsigned char     _pad1d8[0x1e8];

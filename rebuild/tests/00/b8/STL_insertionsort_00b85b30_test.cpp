@@ -1,7 +1,7 @@
 // Behaviour test for 0x00B85B30 std::__insertion_sort over CEngineSubPrimitiveRenderer::CSortElement (unsigned key).
 #include <cstdio>
 
-struct CEngineSubPrimitiveBase { int id; };
+class CEngineSubPrimitiveBase { public: int id; };
 struct CSortElement { unsigned long SortValue; CEngineSubPrimitiveBase* SubPrimitive; };
 struct CSortLess {
     void* m_context;

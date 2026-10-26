@@ -11,7 +11,7 @@ struct CHandleVector_00c28a80 {                     // +0x43c: a 16-byte vector 
     __forceinline long Size() { if (m_pFirst == 0) return 0; return m_pLast - m_pFirst; }
     __forceinline SFreeArea_00c28a80*& At(long index) { return m_pFirst[index]; }
 };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     unsigned char          _pad[0x43c];
     CHandleVector_00c28a80 m_handles;              // +0x43c
     long                   m_firstFreeHandle;      // +0x44c (-1 = none)

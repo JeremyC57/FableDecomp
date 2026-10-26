@@ -10,22 +10,22 @@
 //   BoundingSphere +0x84, ClipToSphere +0x94. No engine header carries these as typed members.
 // Shape: the sphere is one function-scope local cleared member by member each iteration (a loop-scoped zeroing ctor lets
 //   VC7.1 sink the four stores below the vptr load and push); the grid pointer is named before the call's arguments.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DBoundingSphere() {}
 };
 
-struct CPlane {
+class CPlane { public:
     C3DVector Normal;
     float     D;
 };
 
-struct CShadowClipVolume {
+class CShadowClipVolume { public:
     CPlane            ClipPlanes[8];               // +0x00
     long              ClipPlaneCount;              // +0x80
     C3DBoundingSphere BoundingSphere;              // +0x84
@@ -52,12 +52,12 @@ struct CShadowClipVolume {
 
 class CEngineInternalPrimitiveBase;
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool PreloadPrimitive(CEngineInternalPrimitiveBase& primitive, const C3DVector& position, unsigned long flags);   // slot 9
 };
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };
@@ -75,12 +75,12 @@ public:
     CEngineInternalPrimitiveBase* NextPrimitive;    // +0x38
 };
 
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     bool PreloadPrimitives(unsigned long x, unsigned long y, const CShadowClipVolume& volume,
                            const C3DVector& position, unsigned long flags);   // 0x00B92070
 };
 struct CGridPointer { CEngineSceneGrid* m_pObject; long* m_pCount; };
-struct CEngineSceneMap {
+class CEngineSceneMap { public:
     unsigned char  _pad[0x18];
     CGridPointer*  GridLevelsFirst;               // +0x18 (GridLevels.first)
 };
@@ -95,7 +95,7 @@ template <class T> static T* Next(T* node)
     return node;
 }
 
-struct CEngineScene {
+class CEngineScene { public:
     unsigned long                 Base;           // +0x00
     COuterNode*                   MapListHead;    // +0x04
     unsigned long                 MapListCount;   // +0x08

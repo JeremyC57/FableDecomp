@@ -1,5 +1,5 @@
 #include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CThingManager;
+class CThingManager;
 struct CWorld_Methods : CWorld {
     CThingManager& G();
 };

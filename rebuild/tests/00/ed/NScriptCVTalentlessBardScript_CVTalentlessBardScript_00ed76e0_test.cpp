@@ -10,8 +10,8 @@ typedef unsigned char fable_u8;
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -19,8 +19,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -105,10 +105,10 @@ extern wchar_t g_FableEmptyWideString_0129A8E0[1];
 #define __declspec(x)
 #define __fastcall
 #define FABLE_ENGINE_CSCRIPTTHING_H
-struct CCPPointerInfo;
-struct CScriptThing { void* __vftable; CScriptThing* PImp_Data; CCPPointerInfo* PImp_Info; };
+class CCPPointerInfo;
+class CScriptThing { public: void* __vftable; CScriptThing* PImp_Data; CCPPointerInfo* PImp_Info; };
 #define FABLE_ENGINE_CGAMESCRIPTINTERFACE_H
-struct CGameScriptInterface { void* __vftable; };
+class CGameScriptInterface { public: void* __vftable; };
 #endif
 // CV_TalentlessBardScript::CV_TalentlessBardScript(CScriptDataBase*,CGameScriptInterface*) -- construct bard script state, strings and timers
 // Retail0x00ED76E0,164 bytes. Historical grade count uncertain: reserve5, leaving at most5 new grades.
@@ -117,7 +117,7 @@ struct CGameScriptInterface { void* __vftable; };
 // Donor script base84 bytes is64 in retail; SongItems16->12 and SongThingAvailable20->12 explain total260->228.
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
-struct CScriptDataBase;
+class CScriptDataBase;
 struct CGameScriptTimerMethods {
     void* BeforeRegisterTimer[87];
     long (__fastcall *RegisterTimer)(CGameScriptInterface*); // slot87,0x006E79E0
@@ -134,7 +134,7 @@ struct __declspec(novtable) CQuestScriptObjectNative : CScriptBaseNative {
     CQuestScriptObjectNative(CScriptDataBase* data,CGameScriptInterface* game)
         : CScriptBaseNative(),Game(game),Data(data) {}
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass(); // RTTI1231710 slot0, deleting destructor004371F0
     CBaseClass(); // 0x0099A2D0
 };
@@ -180,7 +180,7 @@ struct CV_TalentlessBardScript : CQuestScriptObjectNative {
 CV_TalentlessBardScript::CV_TalentlessBardScript(CScriptDataBase* data,CGameScriptInterface* game)
     : CQuestScriptObjectNative(data,game),stBard() {}
 
-struct CScriptDataBase { int Token; };
+class CScriptDataBase { public: int Token; };
 CGameScriptInterface* g_Game;
 static int bad,scriptBaseCalls,thingBaseCalls,stringCalls,timerCalls,eventCount;
 static char events[32];

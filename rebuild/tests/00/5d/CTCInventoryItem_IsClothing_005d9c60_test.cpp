@@ -1,6 +1,6 @@
 // behaviour test for 005d9c60: CTCInventoryItem::IsClothing(long) -- true only for a cached def whose inventory type is 0x12
 #include <cstdio>
-struct CInventoryItemDef { int InventoryType; };
+class CInventoryItemDef { public: int InventoryType; };
 static CInventoryItemDef g_defs[3];
 static const CInventoryItemDef* s_CachedItemDef = 0;
 static bool CacheDef(long defIndex)

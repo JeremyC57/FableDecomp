@@ -4,7 +4,7 @@
 #ifdef _MSC_VER
 #include "engine/CEngineSimulationManager.h"
 #endif
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -18,7 +18,7 @@ struct SWindRecord {
     float         Strength;                        // +0x20
 };
 
-struct CEnvironment {
+class CEnvironment { public:
     virtual void v00();
     virtual SWindRecord* GetWind();                // slot 1
 };

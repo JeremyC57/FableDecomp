@@ -2,10 +2,10 @@
 #include <cstdio>
 #include <cstring>
 
-struct CGameScriptInterface { int tag; };
-struct CTCBase { int tag; };
+class CGameScriptInterface { public: int tag; };
+class CTCBase { public: int tag; };
 
-struct CBaseObject {
+class CBaseObject { public:
     void* IntelligentPointer;
     CBaseObject() : IntelligentPointer(0) {}
 };
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     unsigned long  m_presentBits[9];
     CInterfaceMap  m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -62,15 +62,15 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CThing* GetPItem() const { return (CThing*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:
     void* PImpData; void* PImpInfo;
     CScriptGameResourceObjectScriptedThingBase() : PImpData(0), PImpInfo(0) {}
 };
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_0 = 0, SCRIPT_AI_PRIORITY_2 = 2 };
 
-struct CScriptGameResourceObjectScriptedThing;
-struct CTCScriptedControl {
+class CScriptGameResourceObjectScriptedThing;
+class CTCScriptedControl { public:
     CTCBase base;
     CScriptGameResourceObjectScriptedThing* owner; EScriptAIPriority priority; int calls;
     void SetLocked(CScriptGameResourceObjectScriptedThing& o, EScriptAIPriority p) { owner = &o; priority = p; ++calls; }
@@ -81,14 +81,14 @@ struct CCreatureMode {
     virtual unsigned long GetModeType() { return type; }
     virtual ~CCreatureMode() {}
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     CTCBase base;
     CCreatureMode* current; unsigned long removed; int removes;
     CCreatureMode* GetCurrentMode() { return current; }
     void RemoveMode(unsigned long mode) { removed = mode; ++removes; }
 };
 
-struct CScriptGameResourceObjectScriptedThing : CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThing : public CScriptGameResourceObjectScriptedThingBase { public:
     CGameScriptInterface* ScriptInterface;
     CIntelligentPointer   PThing;
     long                  ScriptID;

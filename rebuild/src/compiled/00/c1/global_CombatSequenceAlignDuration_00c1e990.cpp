@@ -7,7 +7,7 @@
 //   value)` returning value % period; edx is passed straight through), the sequence's virtual slot 2 (period).
 // Shape: t = phase + extra lands in esi (named local), the period in ecx; `lea eax,[ecx+esi-1] ; div ; imul ; sub`
 //   is (t + period - 1) / period * period - t on unsigned values.
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual unsigned long v0();
     virtual unsigned long v1();
     virtual unsigned long GetPeriod();          // slot 2 (+8)

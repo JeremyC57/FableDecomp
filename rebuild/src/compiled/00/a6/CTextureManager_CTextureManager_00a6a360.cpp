@@ -17,7 +17,7 @@ struct CBaseClassNonCopyable {
     virtual void v00();
     CBaseClassNonCopyable();                   // 0x0099A2F0
 };
-struct CResourceList {                         // vtable 0x0129C808, 0x3c bytes
+class CResourceList { public:                         // vtable 0x0129C808, 0x3c bytes
     virtual void v00();
     unsigned char _body[0x3c - 4];
     CResourceList();                           // 0x009FC570
@@ -43,10 +43,10 @@ template <class T> struct CVectorBase {        // STLport _Vector_base<T, alloca
         _M_end_of_storage.m_data = _M_start + count;
     }
 };
-template <class T> struct CArray : CVectorBase<T> {   // retail CArray<T> = STLport vector<T> (12 bytes): vector(n) with n = 0
+template <class T> class CArray : public CVectorBase<T> { public:   // retail CArray<T> = STLport vector<T> (12 bytes): vector(n) with n = 0
     explicit CArray(unsigned long count) : CVectorBase<T>(count, CAllocator<T>()) { this->_M_finish = this->_M_start; }
 };
-struct CManagedTextureData;
+class CManagedTextureData;
 struct CIVCountedPointer { CManagedTextureData* Object; };
 struct CPreallocTexturePool : CResourceList {  // vtable 0x0129DC50, retail 0x54 bytes
     unsigned long                 Count;        // +0x3c
@@ -56,7 +56,7 @@ struct CPreallocTexturePool : CResourceList {  // vtable 0x0129DC50, retail 0x54
     virtual void v00();
     CPreallocTexturePool() : CResourceList(), Count(0), MaxSize(0), PoolIndex(-1), Textures(0) { }
 };
-struct CTextureManager : CBaseClassNonCopyable {   // vtable 0x0129DC5C
+class CTextureManager : public CBaseClassNonCopyable { public:   // vtable 0x0129DC5C
     bool                 Initialised;           // +0x04
     unsigned long        PoolCount;             // +0x08
     unsigned long        PreallocSizes[16];     // +0x0c

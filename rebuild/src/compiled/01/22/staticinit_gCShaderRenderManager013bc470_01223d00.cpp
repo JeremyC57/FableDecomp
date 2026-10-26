@@ -10,7 +10,7 @@
 // with _atexit @ 0x004012BC. Reconstructing the global definition below makes VC7.1 emit this
 // exact function (and the thunk) from the .CRT$XCU table; the object's name is descriptive, its
 // real identifier is not recoverable. One of 36 bodies of this shape.
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CShaderRenderManager();             // 0x0098AB00
     ~CShaderRenderManager();            // 0x0098ABF0, reached through the atexit thunk
 };

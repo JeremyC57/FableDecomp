@@ -2,17 +2,17 @@
 // ---- source under test (pasted) ----
 // NCreatureMode::CModeThunderLightningStorm::OnDeactivate, retail 0x008DF680.
 // PDB identity: egor 200?? / debug address pending; assigned RTTI slot 6.
-struct CThing;
-struct CThingCreatureBase;
-struct CTCSoundPlayer;
-struct CBaseObject { virtual ~CBaseObject() {} };
+class CThing;
+class CThingCreatureBase;
+class CTCSoundPlayer;
+class CBaseObject { public: virtual ~CBaseObject() {} };
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     CBaseObject* GetPItem() const;
     void SetPItem(CBaseObject*); // 0x00A01B90
     void* PData;
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) {
         SetPItem(other.GetPItem());
@@ -52,7 +52,7 @@ struct CTCMap {
     Entry *First,*Last;
     Entry* LowerBound(const long*); // original 0040f020
 };
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     virtual ~CThing() {}
     unsigned char pad00[0x20 - sizeof(CBaseObject)];
     unsigned long UsingComponents[9]; // component membership bitmap at +0x20
@@ -79,17 +79,17 @@ struct CThing : CBaseObject {
     void SetSuspendAnimation(bool, long); // 0x00833A10
 };
 struct CEffect : CThing {};
-struct CCreatureActionBase { virtual ~CCreatureActionBase() {} };
-struct CCombatActionBase : CCreatureActionBase { char body[0x110]; virtual ~CCombatActionBase(); };
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase { public: virtual ~CCreatureActionBase() {} };
+class CCombatActionBase : public CCreatureActionBase { public: char body[0x110]; virtual ~CCombatActionBase(); };
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase&); // 0x006644F0
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char*, long); // 0x0099EBF0
     ~CCharString();                 // 0x0099EAE0
 };
-struct CCreatureAction_PlayCombatAnimation : CCombatActionBase {
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     bool FaceTarget,UsePhysics,AlwaysUseMovementInAnim; // PDB94325/94401-3; retail114/115/116
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase&, const CCharString&, bool);
 };
@@ -111,7 +111,7 @@ struct CModeStandBase {
 struct CModeThunderLightningStorm : CModeStandBase {
     void OnDeactivate();
 };
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     void StopAttachedSound(unsigned long); // 0x0066ADD0
 };
 extern long g_InvalidSoundHandle_0129D25C;

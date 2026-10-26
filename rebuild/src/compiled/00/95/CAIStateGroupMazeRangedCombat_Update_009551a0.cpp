@@ -12,28 +12,28 @@
 #else
 // Host-test adapters: VC7.1 compiles against the shared donor headers above;
 // the retail offsets below are explicit so the same body can run on a 64-bit host.
-struct CAIBrain { unsigned char pad[0x18]; void* Creature; };
-struct CAIStateGroupBase {
+class CAIBrain { public: unsigned char pad[0x18]; void* Creature; };
+class CAIStateGroupBase { public:
     void* __vftable;
     CAIBrain* PBrain;
     char _tail[12];
 };
 struct CAIStateGroup_MazeRangedCombat { unsigned char raw[0x24]; };
-struct CCreatureActionBase { };
-struct CCreatureAction_ThrowShotObject { };
-struct CCreatureAction_PlayCombatAnimation { };
+class CCreatureActionBase { public: };
+class CCreatureAction_ThrowShotObject { public: };
+class CCreatureAction_PlayCombatAnimation { public: };
 #endif
 
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 #ifndef _MSC_VER
-struct CCharString {
+class CCharString { public:
     void* data;
     CCharString(const char*, long);
     ~CCharString();
 };
 #endif
-struct CSoundPair {
+class CSoundPair { public:
     long first, last;
     CSoundPair() : first(0), last(0) {}
 };

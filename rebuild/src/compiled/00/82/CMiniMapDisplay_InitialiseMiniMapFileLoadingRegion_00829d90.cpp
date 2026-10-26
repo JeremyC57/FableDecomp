@@ -21,7 +21,7 @@
 // Shape: the TGA name goes through an inline helper taking the CCharString by value (the GetName copy and the appended
 //   string die right after ToWideString, whose result pointer is pushed after the append); the two time locals are
 //   declared cache-first and assigned from GetFileModifiedTime temporaries (rep movsd), the .wld time is initialised directly.
-struct CWideString {
+class CWideString { public:
     void* Data;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
@@ -29,7 +29,7 @@ struct CWideString {
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);      // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);   // 0x0099BF30
 
-struct CCharString {
+class CCharString { public:
     void* Data;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
@@ -40,7 +40,7 @@ CCharString __fastcall operator+(const CCharString& a, const char* b);   // 0x00
 bool __fastcall PathExists(const CWideString& path);                     // 0x00999230
 void __fastcall CreateDirectory(const CWideString& path);                // 0x009994A0
 
-struct CDateAndTime {
+class CDateAndTime { public:
     long Fields[7];
     CDateAndTime(long year = 0, long month = 0, long day = 0, long hour = 0, long minute = 0, long second = 0,
                  long millisecond = 0);                 // 0x009E9A70
@@ -51,14 +51,14 @@ CDateAndTime __fastcall GetFileModifiedTime(const CWideString& path);    // 0x00
 extern CWideString g_MiniMapDataDirectory;              // 0x013BAF38
 extern CWideString g_MiniMapCacheDirectory;             // 0x013BAF3C
 
-struct CWorldMap;
-struct CWorld {
+class CWorldMap;
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();                   // slot 13
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld* World;                                      // +0x24
 };
@@ -75,7 +75,7 @@ struct CWorldRegion {
     CCharString GetName() const { return Name; }
 };
 
-struct CTexture;
+class CTexture;
 struct CRegionMinimap {
     void Initialise();                                                      // 0x0066DBB0
     void InitialiseRegionMinimapSize(CWorldMap* map, const CWorldRegion* region);   // 0x0066CC40
@@ -87,7 +87,7 @@ struct CRegionMinimap {
     void FreeData();                                                        // 0x0066C7A0
 };
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     unsigned char _pad[0x50];
     CTexture* RegionTexture;                            // +0x50
     CRegionMinimap RegionMinimap;                       // +0x54

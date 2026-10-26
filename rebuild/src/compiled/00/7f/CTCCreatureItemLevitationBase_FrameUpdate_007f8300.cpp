@@ -9,12 +9,12 @@
 // component pointer at +0x60.
 // Shape: the list end is re-read from the member each pass (the calls may alias it); the position sum is built X first
 // (`fld g ; fadd [pos]`) component by component into the named local.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 extern C3DVector g_levitationOffset;            // 0x01384494
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -25,7 +25,7 @@ struct CTCPhysicsBase {
     virtual void SetSlot36(bool on);            // slot 36 (+0x90; empty in CTCPhysicsBase)
     void SetAsMoving(bool moving);              // 0x006B0130
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -40,7 +40,7 @@ struct SThingListNode { SThingListNode* next; SThingListNode* prev; CThing* valu
 struct CThingList {                             // list<CThing*> (retail: one sentinel pointer)
     SThingListNode* head;
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual void FrameUpdate();                 // slot 9
@@ -48,7 +48,7 @@ struct CTCBase {
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
 };
-struct CTCCreatureItemLevitationBase : CTCBase {
+class CTCCreatureItemLevitationBase : public CTCBase { public:
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21();
     virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();

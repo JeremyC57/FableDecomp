@@ -7,12 +7,12 @@
 // Shape: four `if (flag && compare) return false;` tests; `>` gives `test ah,41h ; je`, `<=` gives `test ah,41h ; jnp`;
 // the shared `xor al,al` exit sits after the fourth test, `mov al,1` last.
 // Leaf: ?IsPositionInsideClipEdges@CTCInventoryMap@@
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 extern const float g_mapEdgeZ;                     // 0x01253D40
 extern const float g_mapEdgeY;                     // 0x01257088
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     unsigned char _pad000[0x184];
     bool          m_clipAboveZ;                    // +0x184
     bool          m_clipBelowZ;                    // +0x185

@@ -1,19 +1,19 @@
 // Behaviour test for CEngineLocalDetailGenerator::LoadNewScene @ 0x00B599C0.
 #include <cstdio>
-struct CEngineCamera { int id; };
+class CEngineCamera { public: int id; };
 static int g_seq = 0;
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     int updated, rendered; double time; CEngineCamera* cam; float alpha;
     bool Update(double t) { updated = ++g_seq; time = t; return true; }
     void Render(CEngineCamera* c, float a) { rendered = ++g_seq; cam = c; alpha = a; }
 };
-struct CEngineMap { void* u; CLocalDetailCacheMap* m_pLocalDetailCache; };
+class CEngineMap { public: void* u; CLocalDetailCacheMap* m_pLocalDetailCache; };
 struct SMapListNode { SMapListNode* m_pNext; SMapListNode* m_pPrev; CEngineMap* m_pMap; };
 struct CMapList { SMapListNode* m_pHead; unsigned int m_size; };
 struct SEngineState { CMapList m_loadedMaps; };
 static SEngineState g_state; static SEngineState* g_pState = &g_state;
 static CEngineCamera g_cam; static CEngineCamera* g_pCamera = &g_cam;
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     bool LoadNewScene(int)
     {
         CMapList* maps = &g_pState->m_loadedMaps; SMapListNode* node;

@@ -1,18 +1,18 @@
 // Behaviour test for 0x0049DBE0 CWorld::GetGameLODCentre: per-frame cache, free camera vs game camera source.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
                    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct CCamera { C3DVector WorldPosition; float rest[11]; };
+class CCamera { public: C3DVector WorldPosition; float rest[11]; };
 static int g_cameraCalls = 0;
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     C3DVector pos;
     virtual ~CAIGameCameraBase() { }
     virtual CCamera GetRenderCamera(float) const { ++g_cameraCalls; CCamera c; c.WorldPosition = pos; return c; }
 };
-struct CPlayer { CCamera CurrentFreeCamera; bool UsingFreeCamera; };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
-struct CMainGameComponent { long frame; long GetFrame() { return frame; } };
-struct CWorld {
+class CPlayer { public: CCamera CurrentFreeCamera; bool UsingFreeCamera; };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CMainGameComponent { public: long frame; long GetFrame() { return frame; } };
+class CWorld { public:
     CMainGameComponent* Component; CPlayerManager* PlayerManager; CAIGameCameraBase* PCurrentGameCamera;
     mutable long FrameCachedLODCentre; mutable C3DVector CachedLODCentre;
     C3DVector GetGameLODCentre() const

@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct CCard { int v; };
+class CCard { public: int v; };
 
 struct CardVec {
     CCard** _M_start;

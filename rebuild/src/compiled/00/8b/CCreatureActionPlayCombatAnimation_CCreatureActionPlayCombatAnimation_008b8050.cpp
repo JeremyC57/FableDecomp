@@ -18,7 +18,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 class CThingCreatureBase;
 class CAnimationEntry;
 
-struct CSoundPair {                                     // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                                     // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }

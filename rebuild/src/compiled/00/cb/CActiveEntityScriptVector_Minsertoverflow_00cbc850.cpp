@@ -16,7 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 struct __false_type { __false_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CActiveEntityScriptBase;
+class CActiveEntityScriptBase;
 struct SCountBlock { long RefCount; };
 struct CCountedPointer_CActiveEntityScriptBase {
     CActiveEntityScriptBase* Data;                     // +0

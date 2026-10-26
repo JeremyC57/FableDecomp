@@ -1,5 +1,5 @@
 
-struct CTCKraken {
+class CTCKraken { public:
     char pad[0x1a8];
     int  m_phase;      // +0x1a8
     int  m_remaining;  // +0x1ac

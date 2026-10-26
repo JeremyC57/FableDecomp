@@ -12,12 +12,12 @@
 // Strength +0x40, Berserk +0x44, Will +0x48, Skill +0x4c, Age +0x50, Morality +0x54, Fatness +0x58, Tan +0x5c, Teenager +0x60.
 void __cdecl operator delete(void* block);      // 0x00BFE9BC
 
-struct CCPPointerInfo {                         // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                         // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void ReleaseInfo()
@@ -44,9 +44,9 @@ template <class T> struct CCountedPointer {
         return *this;
     }
 };
-struct CDefPointeeBase;
-template <class T> struct CDefPointer { CDefPointeeBase* Object; };
-struct CThingBaseDef;
+class CDefPointeeBase;
+template <class T> class CDefPointer { public: CDefPointeeBase* Object; };
+class CThingBaseDef;
 struct CDefPointerVector {                      // STLport vector<CDefPointer<const CThingBaseDef>>
     CDefPointer<const CThingBaseDef>* _M_start;
     CDefPointer<const CThingBaseDef>* _M_finish;

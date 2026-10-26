@@ -8,7 +8,7 @@
 extern unsigned long g_AllocatorAlignmentShift;   // 0x013D28D8
 extern unsigned long g_AllocatorAlignment;        // 0x013D28D4
 
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     virtual void Allocate(); virtual void Deallocate(); virtual void v02(); virtual void GetAllocationSize(); virtual void GetAllocationSizeIncludingHeader();   // slots 0-4
     virtual void GetLargestFreeAreaSize(); virtual void GetTotalMemoryControlledByAllocator(); virtual void GetTotalMemoryAllocated();
     virtual unsigned long GetNoFreeAreas();        // slot 8

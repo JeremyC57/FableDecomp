@@ -7,7 +7,7 @@
 // trivially destructible). The element class is not identified (its only caller, 0x00A4A5EB, is itself propagated).
 // Callees: CCharString::~CCharString @ 0x0099EAE0.
 // Shape: guarded do-while, `last` in edi, the element address straight into ecx (`mov ecx,esi`).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };

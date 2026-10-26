@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
 
-struct Mass {
+class Mass { public:
     C2DVector Pos; C2DVector Vel; float IMass; float APos; float AVel; float AIMass;
     Mass()
     {

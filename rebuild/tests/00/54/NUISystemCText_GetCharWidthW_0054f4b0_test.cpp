@@ -37,7 +37,7 @@ public:
     const char* PData;
     CCharString(const char* s) : PData(s) { }
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long References;
     void* Object;
     void (*Destroy)(void*);

@@ -10,7 +10,7 @@ static BigObj g_big;
 
 BigObj* GetBigObj() { g_big.sub = &g_sub; return &g_big; }
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     char pad[0x64];
     int successfulBlockParry;
 };

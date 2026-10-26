@@ -18,7 +18,7 @@ class CThing;
 class CBaseObject;
 class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -57,7 +57,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                      // 0x00A01B10
     void SetPItem(CBaseObject* item);               // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
@@ -97,10 +97,10 @@ public:
     bool UsingBed;                                  // +0x0D
     long CurrentAbility;                            // +0x10 EHeroAbility
 };
-struct CTCSoundPlayer {                             // interface 0x10
+class CTCSoundPlayer { public:                             // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
-struct CTCHeroStats {                               // interface 4
+class CTCHeroStats { public:                               // interface 4
     unsigned char _pad00[0x58];
     long Stamina;                                   // +0x58 (name inferred)
 };

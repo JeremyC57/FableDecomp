@@ -3,8 +3,8 @@
 #include <cstring>
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     unsigned int unknown04;
     unsigned int unknown08;
@@ -13,8 +13,8 @@ struct CCharStringData
 };
 #pragma pack(pop)
 
-struct CCharString
-{
+class CCharString
+{ public:
     CCharStringData* storage_;
 
     void __fastcall UnassignString();

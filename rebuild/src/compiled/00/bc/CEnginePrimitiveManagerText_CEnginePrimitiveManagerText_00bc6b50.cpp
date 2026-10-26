@@ -1,7 +1,7 @@
 // CEnginePrimitiveManagerText::CEnginePrimitiveManagerText(CEngineSceneArray* scenes) -- constructs the text primitive manager: looks up its two vertex shaders and two pixel shaders by name
 // Leaf: ??0CEnginePrimitiveManagerText
 // Layout: local model reused from the landed 2DSprites ctor 0x00BAD040; vertex shader resource at engine data +0x2A90 here, pixel at +0x2A98.
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -24,10 +24,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -40,7 +40,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -54,7 +54,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
@@ -69,7 +69,7 @@ struct CEngineData {
 extern CEngineData* g_pEngineData;                 // 0x01436E98
 
 struct CEngineSceneArray;
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual ~CEnginePrimitiveManager();
     CEngineSceneArray* SceneList;                  // +0x04
     bool               Enable;                     // +0x08
@@ -77,7 +77,7 @@ struct CEnginePrimitiveManager {
     void RegisterEnable(const CCharString& name);  // 0x00BACD80
 };
 
-struct CEnginePrimitiveManagerText : CEnginePrimitiveManager {   // vtable 0x012A68B0
+class CEnginePrimitiveManagerText : public CEnginePrimitiveManager { public:   // vtable 0x012A68B0
     CVertexShader  VertexShaderText;               // +0x0C
     CVertexShader  VertexShaderTextShadow;         // +0x14
     CPixelShader   PixelShaderText;                // +0x1C

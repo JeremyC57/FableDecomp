@@ -12,21 +12,21 @@
 //   viewport fields U/H/V, then position and matrix); the unused dimensions result is a named local (a discarded temporary shares
 //   the chain's frame words, 8 bytes short); the fog disable is a __forceinline manager member (a direct SetState swaps eax/ecx and the
 //   capture-block store order); the child entry is a `const&` local (an indexed member read folds the lea into the load).
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF(const C2DBoxF& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
     float GetWidth() const { return BRX - TLX; }
     float GetHeight() const { return BRY - TLY; }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(const C2DBoxI& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
 };
-struct C2DExtentsI { long Width, Height; };
-struct CMatrix3x4 {
+class C2DExtentsI { public: long Width, Height; };
+class CMatrix3x4 { public:
     float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43;
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
@@ -53,7 +53,7 @@ public:
 };
 extern CEngineCamera* g_pEngineCamera_01436ea0;   // 0x01436EA0
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[0x1f4];
     C2DBoxI       Viewport;                           // +0x1f4
     C2DExtentsI GetRenderTargetDimensions();          // 0x009BEDC0
@@ -91,7 +91,7 @@ struct SCapturedRenderState {
     CTrackedRenderState* m_pState;
     unsigned long        m_priorValue;
 };
-struct CRenderStateManager {
+class CRenderStateManager { public:
     unsigned char        _pad0000[0x8];
     SCapturedRenderState m_captured[0x400];        // +0x0008
     CTrackedRenderState* m_dirty[0x200];           // +0x2008
@@ -123,7 +123,7 @@ struct CRenderStateManager {
 extern CRenderStateManager* g_pRenderStateManager_01436e18;   // 0x01436E18
 
 class CEngineInternalPrimitiveBase;
-struct CEngineSubPrimitiveChain {
+class CEngineSubPrimitiveChain { public:
     void* First;
     void* Last;
     CEngineSubPrimitiveChain() : First(0), Last(0) {}
@@ -140,7 +140,7 @@ struct CEnginePrimitiveManagerTable {
 };
 extern CEnginePrimitiveManagerTable* g_pPrimitiveManagers;   // 0x01436E84
 
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
     void RenderType(long type, bool flag);         // 0x00B849F0
 };
 extern CEngineSubPrimitiveRenderer* g_pPrimitiveRenderer_01436e74;   // 0x01436E74
@@ -151,7 +151,7 @@ public:
     unsigned char _pad04[4];
     long          Type;                            // +0x08
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     long                          m_id;
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };

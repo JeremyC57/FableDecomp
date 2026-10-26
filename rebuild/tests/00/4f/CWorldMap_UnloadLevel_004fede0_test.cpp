@@ -2,10 +2,10 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCPPointerInfo { long Count; void (*Destroy)(void* data); void* Data; };
+class CCPPointerInfo { public: long Count; void (*Destroy)(void* data); void* Data; };
 static int g_destroyed = 0;
 static void DestroyMap(void*) { ++g_destroyed; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     void Clear()
     {
@@ -29,20 +29,20 @@ struct CLongArray {
         return position;
     }
 };
-struct CMap { int dummy; };
-struct CMapInfo { CCountedPointer<CMap> PMap; bool Activated; };
+class CMap { public: int dummy; };
+class CMapInfo { public: CCountedPointer<CMap> PMap; bool Activated; };
 static long g_engineRemoved = -1, g_thingUnload = -1, g_thingMapRemoved = -1, g_navRemoved = -1; static bool g_unloadFlag = false;
 static bool g_navLoaded = false;
-struct CEngineManager { static CEngineManager& Get() { static CEngineManager m; return m; } void RemoveMap(long m) { g_engineRemoved = m; } };
-struct CThingManager { void OnLevelUnload(long m, bool b) { g_thingUnload = m; g_unloadFlag = b; } };
+class CEngineManager { public: static CEngineManager& Get() { static CEngineManager m; return m; } void RemoveMap(long m) { g_engineRemoved = m; } };
+class CThingManager { public: void OnLevelUnload(long m, bool b) { g_thingUnload = m; g_unloadFlag = b; } };
 struct CThingMapManager { void RemoveGameMap(long m) { g_thingMapRemoved = m; } };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     bool IsNavigationMapLoaded(long) const { return g_navLoaded; }
     void RemoveNavigationMap(long m) { g_navRemoved = m; }
 };
 static CThingManager g_tm;
-struct CWorld { CNavigatorManager* NavigatorManager; virtual CThingManager* GetThingManager() { return &g_tm; } virtual ~CWorld() {} };
-struct CWorldMap {
+class CWorld { public: CNavigatorManager* NavigatorManager; virtual CThingManager* GetThingManager() { return &g_tm; } virtual ~CWorld() {} };
+class CWorldMap { public:
     CWorld* World; CThingMapManager* PThingMapManager; CMapInfo* Maps; CLongArray LoadedMaps;
     void UnloadLevel(long map);
 };

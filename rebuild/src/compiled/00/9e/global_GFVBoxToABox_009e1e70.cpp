@@ -7,8 +7,8 @@
 // Shape: width and height (BR - TL) are converted FIRST into two float locals (frame words [esp+0Ch] / [esp+10h], the
 // second one reusing the dead dimension temporary), then the corner; the bottom-right adds the stored corner
 // (`fld size ; fadd [esi]` = `a.TLX + width`). Each inlined argument is homed in the frame word [esp+8].
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     long X;
     long Y;
 };

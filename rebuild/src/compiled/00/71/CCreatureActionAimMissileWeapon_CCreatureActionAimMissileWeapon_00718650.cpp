@@ -10,17 +10,17 @@
 // the base constructor, then the vtable and the CIntelligentPointer member at +0xa8 (base ctor + its vtable 0x0125A858).
 // Layout: retail CCreatureActionBase is 0xa8 bytes (engine/CCreatureAction_AimMissileWeapon.h has PAmmo at the PDB's +0xb4),
 // so `this` is modelled locally with PAmmo at +0xa8.
-struct CThingCreatureBase;
-struct CAnimationEntry;
-struct CBaseObject;
+class CThingCreatureBase;
+class CAnimationEntry;
+class CBaseObject;
 
-struct CCharString {                        // one pointer; the defaulted length lets the literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (frame stores before the base call)
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (frame stores before the base call)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -38,13 +38,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
 
-struct CCreatureAction_AimMissileWeapon : CCreatureActionBase {   // vtable 0x0126556C
+class CCreatureAction_AimMissileWeapon : public CCreatureActionBase { public:   // vtable 0x0126556C
     CIntelligentPointer PAmmo;              // +0xa8 (PDB +0xb4)
     virtual void v00();
     CCreatureAction_AimMissileWeapon(CThingCreatureBase* owner);

@@ -11,7 +11,7 @@
 // the `add eax,4 ; test edx,edx` form, 66v60), and the explicit count local below (62v60). Next: the
 // count-local release written as a member of the pointee (so `this` is allocated to ecx), else lane gap
 // (register choice).
-struct CCarrySlotDef {
+class CCarrySlotDef { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long          m_refCount;                       // +0x04
@@ -19,7 +19,7 @@ struct CCarrySlotDef {
     bool          IsPrimary;                        // +0x30
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -33,7 +33,7 @@ template <class T> struct CDefPointer {
     T* operator->() const { return m_p; }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     void GetDef(long index, CDefPointer<CCarrySlotDef>* out);   // 0x006A3060
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -50,11 +50,11 @@ __declspec(noinline) void CDefinitionManager::GetDef(long index, CDefPointer<CCa
 }
 #pragma auto_inline(on)
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager* Get();               // 0x0044C6B0
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     bool IsSlotPrimarySlot(long slot);
 };

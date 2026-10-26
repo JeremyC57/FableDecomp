@@ -2,13 +2,13 @@
 #include <cstring>
 #include <new>
 static int g_baseCalls = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() { }
     unsigned char _base[0x38];
     CParentDefClassBase() { ++g_baseCalls; std::memset(_base, 0x22, sizeof(_base)); }
 };
 template <class T> struct CRetailVector { T* first; T* last; T* end; CRetailVector() : first(0), last(0), end(0) { } };
-struct CSpecialAbilitiesTurncoatSpellDef : CParentDefClassBase {
+class CSpecialAbilitiesTurncoatSpellDef : public CParentDefClassBase { public:
     CRetailVector<float> StaminaCostPerSec, ResistanceDamagePerSec, TurncoatTime, TurncoatRange, TurncoatXPUpEveryNSecs;
     virtual void v00() { }
     CSpecialAbilitiesTurncoatSpellDef() : CParentDefClassBase() { }

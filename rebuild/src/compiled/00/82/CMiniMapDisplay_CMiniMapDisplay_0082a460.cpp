@@ -27,8 +27,8 @@ template <class T> struct CRetailVector {          // retail vector: first / las
     T* m_first; T* m_last; T* m_end;
     CRetailVector() : m_first(0), m_last(0), m_end(0) {}
 };
-struct CEnginePrimitiveHandle;
-struct CMinimapData;
+class CEnginePrimitiveHandle;
+class CMinimapData;
 struct SMarkerNode {                               // list<CMarkerInfo> node: next, prev, 16-byte value
     SMarkerNode* m_next;
     SMarkerNode* m_prev;
@@ -44,12 +44,12 @@ struct CMarkerList {                               // retail list<CMiniMapDispla
         m_head = node;
     }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool       Active;                             // +0x00
     float      FadeInTime;                         // +0x04
     float      FadeOutTime;                        // +0x08
@@ -72,10 +72,10 @@ struct CRegionMinimap {
     unsigned char _body[0x64];
     CRegionMinimap();                              // 0x0066CCC0
 };
-struct CTexture;
-struct CRegion;
+class CTexture;
+class CRegion;
 
-struct CMiniMapDisplay : CBase {
+class CMiniMapDisplay : public CBase { public:
     CEnginePrimitiveHandleVector         MapPrimitiveHandles;      // +0x04
     CRetailVector<CEnginePrimitiveHandle> MarkerPrimitiveHandles;  // +0x10
     long                                 MiniMapGraphic;           // +0x1c

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeCrouch::OnDeactivate (retail 0x008D8AB0): the interface-0x36 component's crouch
 // flags are both cleared, and the mode goes inactive.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,7 +54,7 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
+class CThing : public CThingLookup { public: };
 struct CTCInterface36 : CTCBase {
     bool m_crouching;
     bool m_flag10;

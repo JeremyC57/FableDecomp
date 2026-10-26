@@ -11,7 +11,7 @@ struct CComponentPointer { int Releases; void ReleaseData() { ++Releases; } };
 struct CNode { CNode* Next; CComponentPointer Value; };
 static CNode* Rb_tree_increment(CNode* n) { return n->Next; }
 struct CIter { CNode* Node; CIter(CNode* n) : Node(n) {} bool operator!=(const CIter& o) const { return Node != o.Node; } void operator++() { Node = Rb_tree_increment(Node); } CNode* operator->() const { return Node; } };
-struct CMap { CNode* Header; CNode* Leftmost; int Cleared; CIter begin() const { return CIter(Leftmost); } CIter end() const { return CIter(Header); } void clear() { ++Cleared; Leftmost = Header; } };
+class CMap { public: CNode* Header; CNode* Leftmost; int Cleared; CIter begin() const { return CIter(Leftmost); } CIter end() const { return CIter(Header); } void clear() { ++Cleared; Leftmost = Header; } };
 struct CManager {
  CComponentPointer BastardChild; CMap BastardChildren;
  void ClearBastardChild()

@@ -8,13 +8,13 @@
 // (sizeof 0x148) places the same members 0x18 bytes higher because the retail CCombatActionBase is
 // 0x18 bytes narrower, so a local model is used. The vectors copy word by word through eax/ecx/edx,
 // the shape of separate scalar members (a struct member would copy through `lea` base registers).
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);   // 0x0062F3B0
 };
 
-struct CCombatAction_KickThingOnGround : CCombatActionBase {   // vtable 0x01277D3C; sizeof 0x130
+class CCombatAction_KickThingOnGround : public CCombatActionBase { public:   // vtable 0x01277D3C; sizeof 0x130
     float MoveToPos_X;                      // +0x114 C3DVector MoveToPos
     float MoveToPos_Y;                      // +0x118
     float MoveToPos_Z;                      // +0x11c

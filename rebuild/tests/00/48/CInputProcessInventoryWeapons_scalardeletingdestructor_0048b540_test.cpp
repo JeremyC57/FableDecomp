@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 // Mirror of the source declarations.
-struct CInputProcessInventoryWeapons
-{
+class CInputProcessInventoryWeapons
+{ public:
     int marker;
     void destroy();
     void* deleting(unsigned int flags);

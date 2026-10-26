@@ -7,7 +7,7 @@
 // Layout: CThing as the matched 0x0089B0B0 / 0x0089D8B0 rows. The interface-0x30 component class and the callee name
 // (0x00734210, walks a std::map at +0x70) are not confirmed.
 // Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

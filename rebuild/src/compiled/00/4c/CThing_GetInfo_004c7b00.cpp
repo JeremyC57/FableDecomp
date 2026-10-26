@@ -12,14 +12,14 @@
 //        by value, and the string table's result -- a NAMED CCharString local (`lea eax,[esp] ; push eax`) -- is assigned
 //        to SubTypeName and destroyed.
 // Layout: retail CThing = Ego_r.pdb - 0x10 here: DefGlobalIndex +0x8C (PDB +0x9C).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* text);           // 0x0099EFE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefString { long Handle; };
-struct CDefinitionManager {
+class CDefString { public: long Handle; };
+class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0
 };
 struct CDefStringTable {
@@ -31,7 +31,7 @@ struct CGlobalSystems {
     CDefinitionManager* DefinitionManager;                   // +0x20
 };
 extern CGlobalSystems* g_pGlobalSystems;                    // 0x013B8A1C
-struct CThingInfo {
+class CThingInfo { public:
     CCharString TypeName;                        // +0x00
     CCharString SubTypeName;                     // +0x04
     CCharString ScriptName;                      // +0x08

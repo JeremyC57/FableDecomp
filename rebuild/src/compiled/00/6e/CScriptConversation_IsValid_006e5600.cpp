@@ -13,7 +13,7 @@
 // Shape: size() and the element address are re-derived from the members on every iteration (unsigned index, `jb`).
 #include "engine/CScriptConversation.h"
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                   // +0x91 bit 0: dead
 };

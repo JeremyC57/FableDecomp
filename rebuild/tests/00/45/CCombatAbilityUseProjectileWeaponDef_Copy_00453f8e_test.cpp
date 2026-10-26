@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAbilityUseProjectileWeaponDef { int calls; };
+class CCombatAbilityUseProjectileWeaponDef { public: int calls; };
 
 static int g_called = 0;
 

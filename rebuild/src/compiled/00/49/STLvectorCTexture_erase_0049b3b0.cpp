@@ -15,7 +15,7 @@
 // Label correction: catalogued as `Vector_EraseRange` (right idea); the element is CTexture.
 struct IDirect3DTexture9;
 
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                     // +0x00
     unsigned long      ByteLength : 28;                 // +0x04
     unsigned long      AllocationSource : 4;

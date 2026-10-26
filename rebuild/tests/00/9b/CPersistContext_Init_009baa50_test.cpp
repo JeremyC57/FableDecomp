@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CCharString { int dummy; };
-struct CMemoryDataInputStream { int dummy; };
-struct CDataOutputStream { int dummy; };
-struct CDefinitionManager { int dummy; };
-struct CPersistContext {
+class CCharString { public: int dummy; };
+class CMemoryDataInputStream { public: int dummy; };
+class CDataOutputStream { public: int dummy; };
+class CDefinitionManager { public: int dummy; };
+class CPersistContext { public:
     CDefinitionManager* PDefinitionManager; void* PSymbolMap; void* PParser; void* ErrorCallback; void* PStringToClean;
     bool UseDefaults; bool UseCRCCheck; bool SingleTransfer; bool Finished;
     long Mode; bool Binary; CCharString* PStringToSaveTo; CMemoryDataInputStream* PLoadStream; CDataOutputStream* PSaveStream;

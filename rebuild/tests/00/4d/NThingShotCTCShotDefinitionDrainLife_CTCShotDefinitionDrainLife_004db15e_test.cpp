@@ -2,7 +2,7 @@
 // AmountToHeal 0.0f and the soul-effect pointer built from a null thing; the other floats are left alone.
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseParent = 0;
 static int g_ptrCtors = 0;
 static CThing* g_ptrArg = (CThing*)1;
@@ -17,7 +17,7 @@ struct CIntelligentPointer_CThing {
     void* PData;
     CIntelligentPointer_CThing(CThing* thing) : __vftable(0), PData(thing) { ++g_ptrCtors; g_ptrArg = thing; }
 };
-struct CTCShotDefinitionDrainLife : CTCShotDefinitionBase_Calls {
+class CTCShotDefinitionDrainLife : public CTCShotDefinitionBase_Calls { public:
     float MaxCosAngleToTurn;
     float MaxAngleToTurn;
     float AmountToHeal;

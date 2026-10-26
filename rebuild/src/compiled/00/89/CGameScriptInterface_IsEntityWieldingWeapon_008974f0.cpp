@@ -10,7 +10,7 @@
 // interface 0x48 as a weapon role is not confirmed.
 // Shape: /O2 (16-aligned entry); the PeekTC out-pointer form. The early-return form (`if (!t || dead) return false;
 // if (!PeekTC) return false;`) keeps the component in eax and moves `pop esi` before the call; nesting the positive branch matches.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

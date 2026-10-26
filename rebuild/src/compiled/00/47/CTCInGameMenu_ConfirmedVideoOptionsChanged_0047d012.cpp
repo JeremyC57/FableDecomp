@@ -15,8 +15,8 @@
 // PVideoOptionsChangedDialog +0xB4 (PDB +0xD4), VideoChangesTimer +0xC0 (PDB +0xE0), PMousePointer +0xEC (PDB +0x110).
 #pragma optimize("s", on)
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     CCharString(const CCharString& other);           // (declared: by-value arguments are built in place)
@@ -24,13 +24,13 @@ struct CCharString {
 };
 
 namespace NUISystem {
-struct CObserver {                                   // the observer interface at +4 of every component
+class CObserver { public:                                   // the observer interface at +4 of every component
     virtual void o00(); virtual void o01(); virtual void o02();
     virtual void ObserveEvent(long eventType);       // slot 3 (+0x0C)
 };
 struct CComponentBase {                              // the primary vtable
     virtual void v00(); virtual void v01(); virtual void v02();
-    virtual struct CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
+    virtual class CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
@@ -42,11 +42,11 @@ struct CComponentBase {                              // the primary vtable
     virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
     virtual void SetActive_slot48(bool active);      // slot 48 (+0xC0)
 };
-struct CComponent : CComponentBase, CObserver {
+class CComponent : public CComponentBase, public CObserver { public:
 };
-struct CYesNo : CComponent {
+class CYesNo : public CComponent { public:
 };
-struct CManager {                                    // NUISystem::CManager (CObservable vtable part)
+class CManager { public:                                    // NUISystem::CManager (CObservable vtable part)
     virtual void m00(); virtual void m01();
     virtual void AddObserver(CObserver* observer);   // slot 2 (+0x08)
     virtual void m03(); virtual void m04(); virtual void m05(); virtual void m06(); virtual void m07(); virtual void m08();
@@ -56,7 +56,7 @@ struct CManager {                                    // NUISystem::CManager (COb
 };
 }
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     void*                 __vftable;                 // +0x00
     unsigned char         _pad_0x04[0xB0];
     NUISystem::CYesNo*    PVideoOptionsChangedDialog;   // +0xB4 (PDB +0xD4)

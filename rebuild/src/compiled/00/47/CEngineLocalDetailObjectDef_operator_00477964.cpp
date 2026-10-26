@@ -23,13 +23,13 @@
 #define FABLE_STATIC_ASSERT(expression) typedef char FABLE_JOIN(fable_native_projection_assert_, __LINE__)[(expression) ? 1 : -1]
 #endif
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void* __nativeVftable;
     unsigned char _nativeBaseTail[0x38];
     CParentDefClassBase* operator=(CParentDefClassBase& other); // 0x00431ED0
 };
 
-struct CEngineLocalDetailObjectDef : CParentDefClassBase {
+class CEngineLocalDetailObjectDef : public CParentDefClassBase { public:
     unsigned long Mesh;
     unsigned long ShadowMesh;
     float Probability;

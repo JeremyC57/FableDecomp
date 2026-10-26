@@ -2,7 +2,7 @@
 // any shared (count > 1) animation blocks the unload.
 #include <cstdio>
 
-struct CBankFileAsyncData { bool finished; unsigned char IsFinished() { return finished ? 1 : 0; } };
+class CBankFileAsyncData { public: bool finished; unsigned char IsFinished() { return finished ? 1 : 0; } };
 struct CPtr { void* obj; unsigned int* count; bool IsShared() const { return count && *count > 1; } };
 
 static bool CanUnload(CBankFileAsyncData* file, const CPtr& shared, const CPtr* anims, int n)

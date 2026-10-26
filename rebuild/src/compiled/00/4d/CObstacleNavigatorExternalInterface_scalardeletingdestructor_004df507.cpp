@@ -8,12 +8,12 @@ struct CMember_004df54f {
     unsigned char _body[4];
     ~CMember_004df54f();                           // 0x004DF54F
 };
-struct CNavigatorExternalInterface {               // vtable 0x01241D74
+class CNavigatorExternalInterface { public:               // vtable 0x01241D74
     virtual void v00();
     long m_4;
     ~CNavigatorExternalInterface() { }             // inline: the vtable store
 };
-struct CObstacleNavigatorExternalInterface : CNavigatorExternalInterface {              // vtable 0x01241D04
+class CObstacleNavigatorExternalInterface : public CNavigatorExternalInterface { public:              // vtable 0x01241D04
     CMember_004df54f m_member8;                    // +0x08
     __forceinline virtual ~CObstacleNavigatorExternalInterface() { }
 };

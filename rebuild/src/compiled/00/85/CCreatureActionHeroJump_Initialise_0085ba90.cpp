@@ -7,9 +7,9 @@
 // (the base virtual, called non-virtually; slot 12 as well).
 // Shape: a scoped named CCharString in the one-dword frame (re-addressed with `lea` for the setter and the destructor);
 // `this` in esi across the three calls; no tail jump because the frame slot must be released after the last call.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCharString {                        // retail CCharString is one pointer (fable_string.h)
+class CCharString { public:                        // retail CCharString is one pointer (fable_string.h)
     char* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -21,7 +21,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12 (+0x30), 0x00857520
@@ -30,7 +30,7 @@ struct CCombatActionBase {
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureActionHeroJump : CCombatActionBase {
+class CCreatureActionHeroJump : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

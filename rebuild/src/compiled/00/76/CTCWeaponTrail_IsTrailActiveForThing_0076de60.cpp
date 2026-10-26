@@ -8,10 +8,10 @@
 // Shape: the out-parameter local is homed in the dead `thing` argument slot (`lea edx,[esp+0Ch]`, known null on that
 // path); `trail == this` compares the call result with esi, then `index == trailIndex`; shared `mov al,1` /
 // `xor al,al` tails with `ret 0Ch`.
-struct CThing;
-struct CTCWeaponTrail;
+class CThing;
+class CTCWeaponTrail;
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -23,12 +23,12 @@ struct CCreatureActionBase {
     virtual CTCWeaponTrail* GetWeaponTrailUsedInStrikeAction(long& trailIndex) const;   // slot 43 (+0xac)
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char        _pad_00[0x100];
     CCreatureActionBase* PCurrentAction;                    // +0x100 CCountedPointer<CCreatureActionBase> (object)
 };
 
-struct CTCWeaponTrail {
+class CTCWeaponTrail { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     bool IsTrailActiveForThing(long trailIndex, const CThing* thing, const CThingCreatureBase* creature) const;

@@ -2,7 +2,7 @@
 #include <cstdio>
 typedef unsigned short wchar16;
 static long g_strings = 0;
-struct CWideString {
+class CWideString { public:
     wchar16 m_text[128];
     long m_len;
     CWideString() : m_len(0) { m_text[0] = 0; ++g_strings; }

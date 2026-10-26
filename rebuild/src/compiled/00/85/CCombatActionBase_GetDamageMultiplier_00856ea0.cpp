@@ -7,7 +7,7 @@
 // (`setne bl`) is taken on the raw pointer while the copy is alive, and the multiplier (+0x44) is parked in the
 // one-dword frame before the second copy is released (`fld [esp+4]` returns it). 1.0f is the pool constant
 // @ 0x0122DED8. Retail's CCombatActionBase is 0x114 bytes (PDB 0x12c), so the layout is modelled locally.
-struct CMeleeCombatAbilityDef {
+class CMeleeCombatAbilityDef { public:
     virtual void v00();
     virtual void Delete();                      // slot 1 (+4)
     long m_references;                          // +0x04
@@ -23,7 +23,7 @@ struct CCountedAbilityPointer {                 // CCountedPointer<CMeleeCombatA
     CMeleeCombatAbilityDef* operator->() const { return m_pItem; }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[0xb8 - 4];             // +0x04
     CCountedAbilityPointer PMeleeAbilityDef;    // +0xb8

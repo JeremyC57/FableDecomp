@@ -7,7 +7,7 @@
 // Shape: the result is a C3DVector with a user constructor (hidden-pointer return); the constructor's three
 // arguments are evaluated right to left (Z first) and stay on the x87 stack until the three stores. The lane canonicalises the
 // operand order of each product (both spellings give the same code).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

@@ -3,7 +3,7 @@
 #include <cstring>
 class CThing;
 struct CTCBaseC { virtual ~CTCBaseC() {} };
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long) : text(t) {}
     CCharString(const CCharString& o) : text(o.text) {}
@@ -39,7 +39,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) {}
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() : CBaseIntelligentPointer() {}
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
 };

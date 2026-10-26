@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     virtual void v0() {}
     virtual void release() {}
 };

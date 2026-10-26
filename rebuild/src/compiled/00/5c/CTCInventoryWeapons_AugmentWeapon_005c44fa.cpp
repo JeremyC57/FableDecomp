@@ -49,23 +49,23 @@ struct CBaseIntelligentPointer {                            // 8 bytes, 1-aligne
     void* m_pItem;                                          // +0x04
     CThing* GetPItem() const;                               // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 #pragma pack(pop)
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x004CC340
 
-struct CTCObjectAugmentations {
+class CTCObjectAugmentations { public:
     long GetFreeSlot() const;                               // 0x00765D50
     void AttachAugmentationToSlot(long augmentation, long slot);   // 0x00768120
 };
 struct CTCShowableItem {
     void OnShowEnded();                                     // 0x005D8E50
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     static long __fastcall GetInventoryCategory(long defIndex);    // 0x005D99D0
 };
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); 
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); 
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); 
@@ -83,7 +83,7 @@ struct CTCInventoryBase {
 };
 }
 
-struct CTCInventoryWeapons : NInventory::CTCInventoryBase {
+class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     CIntelligentPointer<CThing> PActiveMeleeWeapon;         // +0x134
     long          ActiveMeleeWeaponDefIndex;                // +0x13C
     bool          MeleeWeaponCarriedOnLoad;                 // +0x140

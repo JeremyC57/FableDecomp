@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 // Leaf: OnDie
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     unsigned char _pad_0x0[0x8];
     void* ptr8;
     unsigned char _pad_0xc[0x4];

@@ -11,9 +11,9 @@
 // returned pointer temporary shares the lookup-key slot; `PJug = bar->GetJug(JugIndex)` is the inline
 // operator= (`SetPItem(other.GetPItem())`). Engine header is padding only (PDB names from it), so a local model.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -61,12 +61,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -110,12 +110,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
     return false;
 }
 
-struct CRightHandedSet { float m[6]; };         // 0x18 bytes
-struct C3DVector { float X, Y, Z; };
+class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
+class C3DVector { public: float X, Y, Z; };
 
 struct CIntelligentPointerObject : CBaseIntelligentPointerCtor { };   // CIntelligentPointer<CThingObject>
 
-struct CTCTavernBar {                           // interface 0xB9
+class CTCTavernBar { public:                           // interface 0xB9
     bool GetFreeJugPoint(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, long* actionPointIndex,
                          long* jugIndex, bool reserve);              // 0x007BA000
     CIntelligentPointerObject GetJug(long index);                    // 0x007B9F60

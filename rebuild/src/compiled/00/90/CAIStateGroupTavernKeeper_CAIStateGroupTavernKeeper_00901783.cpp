@@ -10,12 +10,12 @@
 // Pragma: optimize("s") -- the size TU loads a vtable constant used twice or more into a callee-saved register.
 #pragma optimize("s", on)
 
-struct CThingObject;
-struct CThingBuilding;
-struct CThingAICreature;
-struct CMessageEvent;
+class CThingObject;
+class CThingBuilding;
+class CThingAICreature;
+class CMessageEvent;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     unsigned char _base[0x10];                  // +0x04 PBrain, ScriptAIPriority, Name, Terminated/Priority/Enabled
     CAIStateGroupBase();                        // 0x008FD255
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };

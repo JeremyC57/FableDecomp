@@ -38,7 +38,7 @@ struct CTCInventoryAbilities_Calls {
     EHeroExperienceStatCategory GetAbilityStatType(EHeroAbility ability);                // 0x005EDEEB
     void UpgradeAbility(EHeroAbility ability);                                           // 0x005EEEE6
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1E0];
     SSpendInfoVector ExperienceSpendValuesPool;     // +0x1E0
     SSpendInfoVector ExperienceSpendValuesStats;    // +0x1EC

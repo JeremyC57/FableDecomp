@@ -25,13 +25,13 @@ static int fails = 0;
 // Retry 10b: the same-TU GetDef<CPlayerDef> body (operator=-shaped out assignment) plus the definition manager read through
 //   an inline GetDefinitionManager() accessor give retail's register use and frame packing.
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CDefString {                                     // a definition-string handle: one table index
+class CDefString { public:                                     // a definition-string handle: one table index
     long m_index;
 };
 struct CDefStringTable {
@@ -39,17 +39,17 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                       // slot 1
     mutable long RefCount;                              // +0x04
     void Release() const { if (--RefCount == 0) Destroy(); }
 };
-struct CPlayerDef : CDefPointeeBase {
+class CPlayerDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long          CharacterDef;                         // +0x3c
 };
-template <class T> struct CDefPointer {                 // the out slot GetDef fills
+template <class T> class CDefPointer { public:                 // the out slot GetDef fills
     T* Object;
 };
 template <class T> struct CDefHolder {                  // owns one reference taken from an out slot
@@ -59,7 +59,7 @@ template <class T> struct CDefHolder {                  // owns one reference ta
     T* operator->() const { return Object; }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);         // 0x009AD410
     CDefString GetDefNameFromGlobalIndex(long index);                // 0x009ACCC0
     template <class T> bool GetDef(long index, CDefPointer<const T>* def);   // 0x0044BA90 (CPlayerDef)
@@ -82,15 +82,15 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0,
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager : CDefinitionManager { };
+class CGameDefinitionManager : public CDefinitionManager { public: };
 
-struct CPlayer {
+class CPlayer { public:
     void InitCharacterAs(const CCharString& name);      // 0x0048A070
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void*                   __vftable;
-    struct CMainGameComponent* Component;               // +0x04
+    class CMainGameComponent* Component;               // +0x04
     CGameDefinitionManager* DefinitionManager;          // +0x08
     CGameDefinitionManager* GetDefinitionManager() const { return DefinitionManager; }
     unsigned char           Players[0x0c];              // +0x0c vector<CPlayer*>

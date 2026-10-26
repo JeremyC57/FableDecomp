@@ -74,8 +74,8 @@ struct CGSIStopMusicEmitter
     virtual void Stop(unsigned long command, float value, float fade);
 };
 
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     unsigned char pad00[4];
     CGSIStopMusicInner* inner;
 

@@ -14,11 +14,11 @@ struct CMods {
     void RemoveAllAppearanceModifiers(long type) { if (type == 2) { count = 0; ++clears; } }
     void AddAppearanceModifierWithReplace(long def) { worn[count++] = def; }
 };
-struct CThing {
+class CThing { public:
     CMods* mods;      /* 0 = the thing does not use interface 0x5E */
     bool GetInterface(CMods** out, long wanted) { if (wanted != 0x5e || !mods) return false; *out = mods; return true; }
 };
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     CThing* ParentThing; CThing* PMannequin;
     void ResetMannequin()
     {

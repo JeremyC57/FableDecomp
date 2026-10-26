@@ -21,7 +21,7 @@ struct CSoundSystem {
 };
 extern CSoundSystem* g_pSoundSystem;                     // 0x013B8394
 
-struct CThing {
+class CThing { public:
     virtual ~CThing();                                   // 0x004C8310
     unsigned char _pad04[0x94];
 };
@@ -42,9 +42,9 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct CThingSoundEmitter : CThing {
+class CThingSoundEmitter : public CThing { public:
     CSoundObject*            m_pSoundObject;             // +0x98
     bool                     AttachedToThing;            // +0x9c
     CIntelligentPointerThing PAttachedThing;             // +0x9d

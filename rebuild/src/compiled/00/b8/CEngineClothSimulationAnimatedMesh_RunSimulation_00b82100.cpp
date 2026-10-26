@@ -19,16 +19,16 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);             // +4
     void* m_pObject;                                    // +8
 };
-struct C3DVector;
-struct C3DAnimationBlendState;
-struct C3DAnimationManager;
-struct CMovableResourceMemoryPool;
-struct CParticleContext;
-struct CParticleSimulation {
+class C3DVector;
+class C3DAnimationBlendState;
+class C3DAnimationManager;
+class CMovableResourceMemoryPool;
+class CParticleContext;
+class CParticleSimulation { public:
     CParticleSimulation();                              // 0x00AE0600
     unsigned char _body[0x80];
 };
-struct C3DMesh2;
+class C3DMesh2;
 struct CMeshPointer {                                   // CCountedPointer<const C3DMesh2>
     C3DMesh2* Object;
     SCountBlock* Info;
@@ -44,7 +44,7 @@ struct CMeshPointer {                                   // CCountedPointer<const
         }
     }
 };
-struct CParticleProgram {
+class CParticleProgram { public:
     void SavePositions(CParticleSimulation* sim);       // 0x00ADF5B0
     bool SetupSimulation(CParticleSimulation* sim, C3DAnimationBlendState* blend, C3DAnimationManager* manager, C3DVector* boneScalings,
                          C3DMesh2* mesh, CMovableResourceMemoryPool* pool, CParticleContext* context);   // 0x00AE29D0
@@ -62,11 +62,11 @@ struct C3DMeshPrimitive {
     CParticleSystemPointer* ParticleSystemsFinish;      // +0x24
     unsigned char _pad28[0xa0 - 0x28];
 };
-struct C3DMesh2 {
+class C3DMesh2 { public:
     unsigned char _pad00[0x94];
     C3DMeshPrimitive* Primitives;                       // +0x94
 };
-struct C3DMeshLODInfo;
+class C3DMeshLODInfo;
 struct CMeshData {
     void* __vftable;
     unsigned long IVRefCount;                           // +4

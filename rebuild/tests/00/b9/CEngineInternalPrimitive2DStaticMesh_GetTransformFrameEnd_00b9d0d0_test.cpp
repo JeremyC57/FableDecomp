@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];
 };
 

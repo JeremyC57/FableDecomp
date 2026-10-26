@@ -49,7 +49,7 @@ struct pair {
 typedef std::pair<long, CMusicManager::CRegisteredMusicEntry> CMusicEntryPair;
 
 template <class K, class V>
-struct CKeyPairCompareLess {                            // empty, passed by value
+class CKeyPairCompareLess { public:                            // empty, passed by value
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

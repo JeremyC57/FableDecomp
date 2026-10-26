@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-struct C2DBoxI { int x0, y0, x1, y1; };
+class C2DBoxI { public: int x0, y0, x1, y1; };
 
-struct CWorldMap {
+class CWorldMap { public:
     char pad[0x5c];
     C2DBoxI dimensions;
 };

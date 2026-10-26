@@ -10,9 +10,9 @@
 // EBP frame (`optimize("y", off)`) and is size-optimised.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 void __fastcall TransferEnumIn_009e2590(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
 

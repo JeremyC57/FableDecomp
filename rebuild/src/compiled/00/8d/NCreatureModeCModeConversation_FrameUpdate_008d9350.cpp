@@ -9,8 +9,8 @@
 //   ResetIdleAnim +0x30.
 // Shape: the landed ctor 0x008D9220 attitude block (out-parameter GetInterface, named attitude local); the presence test of
 //   bit 15 is `mov ecx,[eax+20h] ; test ch,ch ; jns`.
-struct CCharString;
-struct CTCBase;
+class CCharString;
+class CTCBase;
 
 typedef long EConversationAttitude;
 
@@ -23,7 +23,7 @@ struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTC
     SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
@@ -42,11 +42,11 @@ struct CThing {
     }
 };
 
-struct CTCTalk {                             // interface 15
+class CTCTalk { public:                             // interface 15
     EConversationAttitude GetAttitude();     // 0x006E3180
 };
 
-struct CAnimFilterOfGroup {                  // vtable 0x01267568
+class CAnimFilterOfGroup { public:                  // vtable 0x01267568
     virtual void v00();
     void* Group;                             // +4 CCharString
     unsigned long GroupCRC;                  // +8

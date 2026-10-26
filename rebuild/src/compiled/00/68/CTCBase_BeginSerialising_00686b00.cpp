@@ -54,7 +54,7 @@ public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _body[0x2c];
     void Init(CCharString& data, CDefinitionManager* defs);                                                       // 0x009BAA10
     void Init(CStringParser* parser, TStringParserErrorCallback callback, bool loading, CDefinitionManager* defs,

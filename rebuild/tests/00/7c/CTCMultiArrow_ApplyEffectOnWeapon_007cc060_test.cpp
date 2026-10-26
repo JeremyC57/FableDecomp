@@ -33,14 +33,14 @@ template <class T> struct vector {
     T* begin() const { return _M_start; }
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 static int g_high = 0, g_tint = 0; static float g_width = 0; static unsigned char g_rgba[4]; static const void* g_owner = 0; static int g_args = 0;
 namespace NGraphicAppearance {
     enum EAppearanceMeshEffectPriority { PRIORITY_1 = 1 };
-    struct CTCGraphicAppearance {
+    class CTCGraphicAppearance { public:
         void SetAsHighlighted(float start, float width, const CRGBColour& colour, bool includeCarried, bool flag,
                               EAppearanceMeshEffectPriority priority, void* owner)
         { ++g_high; g_width = width; g_owner = owner; g_args = (start == 0.0f) && !includeCarried && flag && priority == 1; }
@@ -48,8 +48,8 @@ namespace NGraphicAppearance {
         { ++g_tint; g_rgba[0] = colour.R; g_rgba[1] = colour.G; g_rgba[2] = colour.B; g_rgba[3] = colour.A; if (owner != g_owner) g_args = 0; }
     };
 }
-struct CSpecialAbilitiesMultiArrowDef { float BowHighlightWidth; vector<long> BowHighlightColor; };
-struct CTCMultiArrow {
+class CSpecialAbilitiesMultiArrowDef { public: float BowHighlightWidth; vector<long> BowHighlightColor; };
+class CTCMultiArrow { public:
     const CSpecialAbilitiesMultiArrowDef* PDef;
     bool RemovedEffect;
     void ApplyEffectOnWeapon(CThing* weapon);

@@ -4,7 +4,7 @@
 static double g_time; static int g_enter, g_leave, g_sleeps, g_freed, g_destroyed;
 static double GFGetTime() { return g_time; }
 static void Sleep(unsigned long ms) { g_time += ms / 1000.0; ++g_sleeps; }
-struct CMemoryAllocator { long count; };
+class CMemoryAllocator { public: long count; };
 static CMemoryAllocator g_alloc; static CMemoryAllocator* g_pGlobalAllocator; static bool g_bDestroyWhenEmpty;
 static void GFFreeFromGlobalAllocator(void* block)
 {
@@ -13,8 +13,8 @@ static void GFFreeFromGlobalAllocator(void* block)
         if (g_bDestroyWhenEmpty && g_pGlobalAllocator->count == 0) { ++g_destroyed; g_pGlobalAllocator = 0; }
     }
 }
-struct CFailedAllocationHandler { long freePerCall; bool HandleFailure(unsigned long); struct CHandleBasedMemoryPool* pool; };
-struct CHandleBasedMemoryPool {
+class CFailedAllocationHandler { public: long freePerCall; bool HandleFailure(unsigned long); class CHandleBasedMemoryPool* pool; };
+class CHandleBasedMemoryPool { public:
     void* Buffer; void* UnalignedBuffer; long AllocatedSize; bool MultiThreaded, ShutdownFlag;
     CFailedAllocationHandler* FailureHandler; void* FreeLists[256];
     void BeginCritical(bool) { if (MultiThreaded) ++g_enter; }

@@ -7,9 +7,9 @@
 // All of it is scheduled after the three argument pushes; `this` stays in ecx for the forwarded call (`ret 8`).
 // (An aggregate initialiser stores ascending, a memset becomes `rep stosd`, C3DVector row constructors copy through
 // temporaries.) The engine header (engine/CEngineShadowRenderer.h) has no member this body touches, so `this` is a bare declaration.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Right, Up, Look, Pos;
     void SetIdentity()
     {
@@ -20,7 +20,7 @@ struct CMatrix3x4 {
 
 struct CColorBufferDepthPackParameters;
 
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     void SetupShadowFuncRenderStates(long stage, CMatrix3x4* textureTransform, CColorBufferDepthPackParameters* pack);   // 0x00B4FC40
     void SetupShadowFuncRenderStates(long stage, CColorBufferDepthPackParameters* pack);
 };

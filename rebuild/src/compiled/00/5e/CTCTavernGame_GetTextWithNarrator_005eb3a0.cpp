@@ -22,7 +22,7 @@ public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CTextEntry {
 struct CDataBank {
     CTextEntry* GetTextEntryFromGroup(unsigned long entryID, const CCharString& group, bool* found, long* index, bool flag);   // 0x009C9280
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    PDataBank;                            // +0x14
 };
@@ -69,13 +69,13 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
 };
 enum EDialogueLayer { DIALOGUE_LAYER_0 = 0 };
-struct CTCTalk {
+class CTCTalk { public:
     unsigned char _base[0x38];
     CCharString   DialogueVoice;                        // +0x38
     long PlaySpeech(unsigned long textId, EDialogueLayer layer, bool a, bool b);   // 0x006E3B10
     CCharString GetDialogueVoice() const { return DialogueVoice; }
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void*         __vftable;
     unsigned char _pad04[0xd0 - 0x04];
     CBaseIntelligentPointer PGameMaster;                // +0xd0

@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CPerceivedThingDef
-{
+class CPerceivedThingDef
+{ public:
     void* vftable;
 };
 void* const g_CPerceivedThingDef_vftable = (void*)0x12345678;

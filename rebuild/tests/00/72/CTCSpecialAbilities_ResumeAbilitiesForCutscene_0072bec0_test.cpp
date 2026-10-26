@@ -1,7 +1,7 @@
 // Behaviour test for 0x0072BEC0 CTCSpecialAbilities::ResumeAbilitiesForCutscene (copy of the source logic over spy components).
 #include <cstdio>
 #include <cstring>
-struct CTCBase { virtual ~CTCBase() {} };
+class CTCBase { public: virtual ~CTCBase() {} };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -22,11 +22,11 @@ public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CTCPhysicalShieldSpell : CTCBase { int resumed; CTCPhysicalShieldSpell() : resumed(0) {} void ResumeForCutscene() { ++resumed; } };
-struct CTCSummonSpell : CTCBase { int resumed; CTCSummonSpell() : resumed(0) {} void ResumeForCutscene() { ++resumed; } };
-struct CTCGhostSword : CTCBase { int resumed; CTCGhostSword() : resumed(0) {} void ResumeForCutscene() { ++resumed; } };
-struct CTCMultiArrow : CTCBase { int resumed; CTCMultiArrow() : resumed(0) {} void ResumeForCutscene() { ++resumed; } };
-struct CTCSpecialAbilities {
+class CTCPhysicalShieldSpell : public CTCBase { public: int resumed; CTCPhysicalShieldSpell() : resumed(0) {} void ResumeForCutscene() { ++resumed; } };
+class CTCSummonSpell : public CTCBase { public: int resumed; CTCSummonSpell() : resumed(0) {} void ResumeForCutscene() { ++resumed; } };
+class CTCGhostSword : public CTCBase { public: int resumed; CTCGhostSword() : resumed(0) {} void ResumeForCutscene() { ++resumed; } };
+class CTCMultiArrow : public CTCBase { public: int resumed; CTCMultiArrow() : resumed(0) {} void ResumeForCutscene() { ++resumed; } };
+class CTCSpecialAbilities { public:
     CThing* ParentThing;
     void ResumeAbilitiesForCutscene();
 };

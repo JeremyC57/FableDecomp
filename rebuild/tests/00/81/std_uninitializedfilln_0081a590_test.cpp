@@ -1,7 +1,7 @@
 // Behaviour test for 0x0081A590 uninitialized_fill_n<pair<unsigned long,CSoundPair>> (model copy).
 #include <cstdio>
 #include <new>
-struct CSoundPair { int FirstSound; int LastSound; };
+class CSoundPair { public: int FirstSound; int LastSound; };
 struct E {
     unsigned int first; CSoundPair second;
     E(const E& o) : first(o.first), second(o.second) { }

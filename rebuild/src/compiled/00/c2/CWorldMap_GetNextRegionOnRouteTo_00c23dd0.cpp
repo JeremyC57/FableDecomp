@@ -1,7 +1,7 @@
 #pragma optimize("g",on)
 // Leaf: GetNextRegionOnRouteTo
 // Byte-exact reconstruction of CWorldMap::GetNextRegionOnRouteTo @ 0x00c23dd0
-struct CWorldMap {
+class CWorldMap { public:
     char pad0[8];
     long count;   // +0x08
     char pad2[8];

@@ -15,11 +15,11 @@
 // virtual deleting destructor, then CShaderBase's vtable) and the name's destructor.
 void* __cdecl operator new(unsigned int size);       // 0x00BFEA1A
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                  // 0x0099EAE0
 };
-template<class T> struct CArray { T* m_pFirst; T* m_pLast; T* m_pEnd; };
+template<class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; };
 
 struct CRefCount {
     long m_count;
@@ -40,10 +40,10 @@ struct CShaderData : CShaderDataRoot, CRefCount {    // count at +8
     }
 };
 
-struct CShaderBase {                                 // vtable 0x0129A030
+class CShaderBase { public:                                 // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CPixelShader : CShaderBase {                  // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                  // vtable 0x0129A054, 8 bytes
     CShaderData* Data;                               // +0x04
     CPixelShader(const CPixelShader& other) : Data(other.Data)
     {
@@ -62,16 +62,16 @@ struct CPixelShaderData {                            // the bank's per-shader da
     CArray<unsigned long>     Code;                  // +0x08
     CArray<CCharString>       Constants;             // +0x14
 };
-struct CShaderDataBank {
+class CShaderDataBank { public:
     CPixelShaderData* GetShaderData(unsigned long index);   // 0x00A61FB0
     CCharString GetEntrySymbol(unsigned long index);         // 0x009CC1D0 (CBankFile)
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CPixelShader CreatePixelShader(const CArray<unsigned long>& code, const CArray<CCharString>& constants,
                                    const CCharString& name);   // 0x0098A9A0
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     void*                  __vftable;                // +0x00
     CShaderDataBank*       ShaderBank;               // +0x04
     CArray<CShaderBase*>   Shaders;                  // +0x08

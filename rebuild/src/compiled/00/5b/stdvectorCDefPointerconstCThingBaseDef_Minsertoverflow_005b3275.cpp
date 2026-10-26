@@ -1,5 +1,5 @@
 // std::vector<CDefPointer<const CThingBaseDef> >::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, unsigned int fill_len, bool atend) -- grow the thing-def pointer vector and insert fill_len add-ref'd copies of x
-// Leaf: ?_M_insert_overflow@?$vector@V?$CDefPointer@$$CBUCThingBaseDef@@@@@std@@
+// Leaf: ?_M_insert_overflow@?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005B3275, 176 bytes, `ret 14h`.
 // Element: CDefPointer<const CThingBaseDef> (4 bytes, Ego_r.pdb `CDefPointeeBase* Object`; the copy ctor adds a reference
 // at pointee + 4 inline, the destructor is out of line).
@@ -27,13 +27,13 @@
 
 extern "C" void* __cdecl malloc(size_t size);       // 0x00BFEA0E
 
-struct CDefPointeeBase {                             // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                             // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long m_refCount;                                 // +0x04
 };
 
-struct CThingBaseDef;                                // a class in Ego_r.pdb; the repo's engine headers spell defs `struct`
+class CThingBaseDef;                                // a class in Ego_r.pdb; the repo's engine headers spell defs `struct`
 
 template <class T> class CDefPointer {
 public:

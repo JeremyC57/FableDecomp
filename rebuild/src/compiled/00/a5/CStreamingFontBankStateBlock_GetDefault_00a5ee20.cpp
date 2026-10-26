@@ -1,5 +1,5 @@
 #include "engine/CStreamingFontBankStateBlock.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CBankStateBlock {
+class CBankStateBlock { public:
     int f0;
     int f4;
     int f8;

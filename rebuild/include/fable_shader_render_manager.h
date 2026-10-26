@@ -25,8 +25,8 @@ struct CShaderRenderManagerUpdatePixelShaderView
     void UpdatePixelShader();
 };
 
-struct CShaderRenderManager
-{
+class CShaderRenderManager
+{ public:
     fable_u8 unknown000[0x3D8];
     fable_u32 updateFlags3D8;
 

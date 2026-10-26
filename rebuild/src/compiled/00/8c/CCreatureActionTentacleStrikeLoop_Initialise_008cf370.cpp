@@ -9,7 +9,7 @@
 
 long GetWorldFrame_0049d870();              // 0x0049D870 (returns the global @ 0x013B89BC)
 
-struct CThingCreatureBase {                 // only the dword at +0xb4 is modelled
+class CThingCreatureBase { public:                 // only the dword at +0xb4 is modelled
     unsigned char _pad[0xb4];
     long m_targetId;                        // +0xb4
 };
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];
@@ -28,7 +28,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_TentacleStrikeLoop : CCombatActionBase {
+class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:
     long m_startFrame;                      // +0x114 (-1 until the first Initialise)
     long m_118;                             // +0x118 untouched here
     long m_targetId;                        // +0x11c

@@ -2,7 +2,7 @@
 // Virtual method returning CCharString by value from a fixed string literal.
 
 #include "engine/CCombatSequenceWhisperStrafeAround.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString {
+class CCharString { public:
     char* m_buf;
     // CCharString::CCharString(char const*, int)  @ 0x0099ebf0  (__fastcall)
     CCharString(const char* s, int n);

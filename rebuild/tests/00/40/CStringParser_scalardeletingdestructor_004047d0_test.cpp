@@ -9,7 +9,7 @@ void Inner14_dtor(void* p){ g_calls[0]++; }
 void Inner_dtor(void* p){ g_calls[1]++; }
 void CLBP_dtor(void* p){ g_calls[2]++; }
 
-struct CStringParser {
+class CStringParser { public:
     void* vftable;
     CInner inner4;
     void* f8;

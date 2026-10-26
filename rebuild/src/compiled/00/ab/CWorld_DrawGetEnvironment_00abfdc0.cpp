@@ -1,6 +1,6 @@
-struct CIDrawEnvironment;
+class CIDrawEnvironment;
 
-struct CWorld {
+class CWorld { public:
 	char pad0[0x10];
 	CIDrawEnvironment* m_pDrawEnvironment;
 	CIDrawEnvironment* DrawGetEnvironment();

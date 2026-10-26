@@ -12,10 +12,10 @@
 // place (`lea ecx,[esp+10h]` = traits+4) and then zeroes Position..Angle with immediates; `this` is parked in esi
 // across the string constructor. The implicit traits destructor destroys only the string (traits+4).
 // The module is built without C++ exceptions (no EH frame around the string).
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0

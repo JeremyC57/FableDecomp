@@ -1,23 +1,23 @@
 // Behaviour test for CInputProcessQuickAccessMenu::ProcessInput @ 0x00690FD0 (copy of the model with stub callees).
 #include <cstdio>
-struct CInputEvent { int button; long action; };   // 1 pressed, 3 released
-struct CProcessedInput { bool handled; void SetHandled() { handled = true; } };
+class CInputEvent { public: int button; long action; };   // 1 pressed, 3 released
+class CProcessedInput { public: bool handled; void SetHandled() { handled = true; } };
 struct CFrontEndManager { long last; int sends; void SendEvent(long e) { last = e; ++sends; } };
 static CFrontEndManager g_fe;
 static CFrontEndManager* GetInstance() { return &g_fe; }
-struct CTCQuickAccessMenu {
+class CTCQuickAccessMenu { public:
     bool active, closing;
     bool IsActive() const { return active; }
     bool IsClosing() const { return closing; }
     void RequestClose() { if (active) closing = true; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_tcMask[8]; CTCQuickAccessMenu* menu; unsigned char m_dead : 1;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     CTCQuickAccessMenu* GetTC(long) { return menu; }
 };
 static CThing* g_hero;
-struct CInputProcessQuickAccessMenu {
+class CInputProcessQuickAccessMenu { public:
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 1; }
     bool IsEventButtonReleased(const CInputEvent& e) { return e.button == 3; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.action == a; }

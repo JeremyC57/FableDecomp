@@ -1,4 +1,4 @@
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     void* vftable;
 };
 

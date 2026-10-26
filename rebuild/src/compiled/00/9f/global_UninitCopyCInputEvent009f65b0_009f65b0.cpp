@@ -11,7 +11,7 @@
 // type is named from the copy constructor's label when unique. One of 12 bodies.
 #include <new>
 
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char _body[0x34];
     CInputEvent(const CInputEvent& other);           // 0x009E4850
 };

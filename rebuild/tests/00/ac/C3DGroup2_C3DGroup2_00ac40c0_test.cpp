@@ -1,6 +1,6 @@
 #include <cstdio>
 struct CArrayVB { void* m_pData; unsigned long m_count; unsigned long m_capacity; CArrayVB() : m_pData(0), m_count(0), m_capacity(0) { } };
-struct C3DGroup2 { long BoneIndex; CArrayVB VertexBlends; C3DGroup2() : BoneIndex(-1) { } };
+class C3DGroup2 { public: long BoneIndex; CArrayVB VertexBlends; C3DGroup2() : BoneIndex(-1) { } };
 int main()
 {
     C3DGroup2 g;

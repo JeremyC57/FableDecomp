@@ -10,10 +10,10 @@
 // layout is modelled locally): PEnemy at +0x18, PLastTeleportMarker at +0x20, and the TeleportMarkers
 // vector at +0x28 whose three pointers (first/last/end) are zeroed by its inline constructor. AttackNum
 // (+0x14) and the two frame counters after the vector are not initialised by the constructor.
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIStateGroupBase();                        // 0x008FD255
 };
@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }      // inlined: base ctor + vtable
 };

@@ -16,7 +16,7 @@
 struct CSequenceTime {                          // 8-byte time stamp (8-aligned)
     __int64 Ticks;
 };
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CSequenceItem;
 struct CSequenceKey {                           // the (time, item) key built per step
     __int64 Packed;

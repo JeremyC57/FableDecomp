@@ -2,7 +2,7 @@
 #include <cstring>
 #include <new>
 static int g_baseCalls = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _base[0x38];
     CParentDefClassBase() { ++g_baseCalls; }
@@ -20,7 +20,7 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CSpecialAbilitiesBerserkDef : CParentDefClassBase {
+class CSpecialAbilitiesBerserkDef : public CParentDefClassBase { public:
     float SpeedMultiplier;                              // +0x3c
     long  FramesToFadeOut;                              // +0x40
     float LowerBerserkPercent;                          // +0x44

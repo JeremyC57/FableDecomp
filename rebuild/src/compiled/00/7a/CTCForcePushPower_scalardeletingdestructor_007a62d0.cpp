@@ -11,7 +11,7 @@
 // reverse order: the CIntelligentPointer (compiler-generated destructor: no vtable reset, the base destructor out of
 // line), then the def pointer's `__forceinline` release (`dec dword ptr [ecx+4] ; jne`, the clear inside the null
 // test), then the out-of-line CTCBase destructor; a `new` factory pulls the vtable and the ??_G into the TU.
-struct CThing;
+class CThing;
 
 struct CRefCountedDef {
     virtual void v00();
@@ -19,7 +19,7 @@ struct CRefCountedDef {
     long m_refCount;                                // +0x04
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) {}
     __forceinline ~CDefPointer()
@@ -44,7 +44,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     virtual void v00();
 };
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase();
     virtual ~CTCBase();                             // 0x00686830
     CThing* ParentThing;                            // +0x04
@@ -52,7 +52,7 @@ struct CTCBase {
     bool    IsInGlobalUpdateTCs;                    // +0x09
 };
 
-struct CTCForcePushPower : CTCBase {
+class CTCForcePushPower : public CTCBase { public:
     CDefPointer<CRefCountedDef> PDef;               // +0x0c CDefPointer<CSpecialAbilitiesForcePushDef const>
     long                        SpellLevel;         // +0x10
     CIntelligentPointer         PItemRemoved;       // +0x14 CIntelligentPointer<CThing>

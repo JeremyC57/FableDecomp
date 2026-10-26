@@ -2,7 +2,7 @@
 #include <cstdlib>
 static int g_disposal = 0; static bool g_fail = false; static unsigned int g_lastSize = 0;
 static void* AllocFromGlobalAllocator(unsigned int size) { g_lastSize = size; return g_fail ? 0 : std::malloc(size); }
-struct CIndexBuffer {
+class CIndexBuffer { public:
     unsigned int Count, Flags; long Format, Pool, Prim;
     CIndexBuffer() : Count(0), Flags(0), Format(0), Pool(0), Prim(0) { }
     void Initialise(unsigned int c, unsigned int f, long fmt, long pool, long prim) { Count = c; Flags = f; Format = fmt; Pool = pool; Prim = prim; }

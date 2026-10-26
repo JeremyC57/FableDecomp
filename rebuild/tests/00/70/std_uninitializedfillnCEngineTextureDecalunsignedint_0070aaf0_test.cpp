@@ -4,7 +4,7 @@
 #include <cstring>
 #include <new>
 
-struct CCompositeBlendDesc { unsigned int TextureIndex; int BlendType; unsigned int Diffuse; unsigned int Specular; };
+class CCompositeBlendDesc { public: unsigned int TextureIndex; int BlendType; unsigned int Diffuse; unsigned int Specular; };
 struct CBlendVector {
     CCompositeBlendDesc* _M_start; CCompositeBlendDesc* _M_finish; CCompositeBlendDesc* _M_end_of_storage;
     CBlendVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
@@ -17,7 +17,7 @@ struct CBlendVector {
         for (const CCompositeBlendDesc* p = x._M_start; p != x._M_finish; ++p, ++_M_finish) new (_M_finish) CCompositeBlendDesc(*p);
     }
 };
-struct CEngineTextureDecal { int OriginalTextureIndex; int DecalID; CBlendVector OverlaidBlends; };
+class CEngineTextureDecal { public: int OriginalTextureIndex; int DecalID; CBlendVector OverlaidBlends; };
 
 static CEngineTextureDecal* UninitializedFillN(CEngineTextureDecal* first, unsigned int n, const CEngineTextureDecal& x)
 {

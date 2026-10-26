@@ -8,7 +8,7 @@
 // Shape: the same inline map Find as Lookup (0x009E5120: end() read once after LowerBound, kept as the default
 // result), then the member end() re-read into ecx and `xor eax,eax ; cmp esi,ecx ; setne al`: VC7.1 emits the xor for the
 // plain `return a != b;` bool return too (the `?:` and named-local forms drop it).
-struct CCharStringData;
+class CCharStringData;
 class CCharString {                               // a class, as Ego_r.pdb mangles it (V)
 public:
     CCharStringData* m_pStringData;
@@ -41,7 +41,7 @@ struct CSymbolVectorMap {
     }
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     void*            _padding_;                    // +0x00
     CSymbolVectorMap SLONGMap;                     // +0x04
     bool SymbolExists(const CCharString& name) const;

@@ -10,20 +10,20 @@
 // PossibleNavigators vector before it being 12 bytes in retail (16 in the PDB). No engine header exists.
 // The manifest label "CScriptModuleBase::SetCoordAxis" is propagated (byte-identical to 0x00851D30 apart
 // from the member offset).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
 enum EMovementType { MOVEMENT_TYPE_DEFAULT };
 
-struct CNavigationInput {                      // 24 bytes, plain record
+class CNavigationInput { public:                      // 24 bytes, plain record
     C3DVector     Destination;                 // +0x00
     float         Proximity;                   // +0x0c
     EMovementType MovementType;                // +0x10
     float         Speed;                       // +0x14
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     unsigned char    _pad00[0x1c];
     CNavigationInput NavigationTarget;         // +0x1c
     void SetNavigationTarget(const CNavigationInput& target);

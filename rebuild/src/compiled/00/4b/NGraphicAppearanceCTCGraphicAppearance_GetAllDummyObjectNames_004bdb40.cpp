@@ -50,8 +50,8 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                                       // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
 
-struct C3DMeshInfo;
-struct C3DMeshObject : CBase {                              // vtable 0x01239860, 0x78 bytes
+class C3DMeshInfo;
+class C3DMeshObject : public CBase { public:                              // vtable 0x01239860, 0x78 bytes
     const C3DMeshInfo* MeshInfo;                            // +0x04
     CCountedPointer    Mesh;                                // +0x08 CCountedPointer<const C3DMeshStats>
     unsigned char      PositionMatrix[0x30];                // +0x10 CMatrix3x4
@@ -65,7 +65,7 @@ struct C3DMeshObject : CBase {                              // vtable 0x01239860
 
 namespace NGraphicAppearance {
 
-struct CMeshInfo {                                          // Ego_r.pdb, 0xc bytes
+class CMeshInfo { public:                                          // Ego_r.pdb, 0xc bytes
     long          Index;                                    // +0x0
     float         SizeX;                                    // +0x4
     unsigned char PrimaryMesh : 1;                          // +0x8
@@ -95,7 +95,7 @@ typedef CRetailVector<NGraphicAppearance::CMeshInfo> CMeshVector;
 
 namespace NGraphicAppearance {
 
-struct CAGraphicAppearanceComponent {
+class CAGraphicAppearanceComponent { public:
     virtual void v00(); virtual void v01();
     virtual void GetAllMeshes(CMeshVector& meshes) const;   // slot 2 (+0x08)
 };
@@ -113,7 +113,7 @@ struct CComponentList {                                     // STLport list<CAGr
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void*          __vftable;                               // +0x00 (CTCBase)
     void*          ParentThing;                             // +0x04
     unsigned char  _pad08[0x3c - 0x08];

@@ -1,7 +1,7 @@
 // Behaviour test for CTCTavernGameCoinBase::UpdateMeshes (0x008EF2F0): only live, owned coins are positioned, at (x, y, 0)
 // with the angle in revolutions (angle / 2pi).
 #include <cstdio>
-struct Coin { float X, Y, Angle; bool Owned; bool HasThing; bool Dead; };
+class Coin { public: float X, Y, Angle; bool Owned; bool HasThing; bool Dead; };
 static int g_calls; static float g_lastX, g_lastY, g_lastTurn;
 int main()
 {

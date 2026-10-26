@@ -30,7 +30,7 @@ class CDefinitionManager;
 #pragma pack(push, 1)
 class CDefClassBase : public CDefPointeeBase {
 public:
-    struct CSubDefInfo {
+    class CSubDefInfo { public:
         long DefIndex;
         long OriginalParentDefIndex;
     };

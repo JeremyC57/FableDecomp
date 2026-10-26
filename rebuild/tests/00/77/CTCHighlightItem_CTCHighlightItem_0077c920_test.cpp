@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
-struct CTCBase { CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
 struct CIntelligentPointer { void* m_pItem; CIntelligentPointer() : m_pItem(0) { } virtual ~CIntelligentPointer() { } };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCHighlightItem : CTCBase {
     bool StartRunning, Running; long LifeTimer; C3DVector StartPos; CIntelligentPointer PParticleEmitter;
     CTCHighlightItem(CThing* thing) : CTCBase(thing) { Running = false; StartRunning = false; LifeTimer = 0; }

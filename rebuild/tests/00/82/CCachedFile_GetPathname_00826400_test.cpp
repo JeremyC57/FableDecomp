@@ -1,7 +1,7 @@
 
 #include <stdio.h>
-struct CCharString { char* got; };
-struct CCachedFile { char pad[0x18]; char m_pathname[8]; };
+class CCharString { public: char* got; };
+class CCachedFile { public: char pad[0x18]; char m_pathname[8]; };
 static void* modelCopy(CCharString* d, char* s){ d->got = s; return d; }
 static void* GetPathnameModel(CCachedFile* file, CCharString* dst){
     modelCopy(dst, file->m_pathname);

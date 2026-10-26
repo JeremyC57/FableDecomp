@@ -11,7 +11,7 @@
 // (`mov ecx,eax` then three load/store pairs): a POD return copies through the frame. A user
 // (memberwise) copy constructor instead folds everything into three x87 stores straight into the
 // result (25 bytes), and dword members with constructors elide the frame.
-struct C3DVector {
+class C3DVector { public:
     float x;
     float y;
     float z;

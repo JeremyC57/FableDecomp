@@ -15,8 +15,8 @@
 // Shape: `insert(make_pair(index, conversation))`: the conversation local (inline ctor), the make_pair temporary (key, inline
 // copy), the converted pair<const long, CScriptConversation> temporary (key, out-of-line copy ctor: VC inlines the implicit copy
 // at its first use only), the insert result, then the three destructors in reverse order.
-struct CThing;
-struct CScriptConversationManager;
+class CThing;
+class CScriptConversationManager;
 
 template<class T> struct CRetailVector {        // retail STLport vector: first, last, end of storage
     T* m_pFirst;
@@ -29,7 +29,7 @@ template<class T> struct CRetailVector {        // retail STLport vector: first,
 struct CIntelligentPointer_Thing { void* __vftable; CThing* m_pItem; };
 struct CConversationLine;
 
-struct CScriptConversation {
+class CScriptConversation { public:
     CScriptConversationManager*              Manager;                  // +0x00
     long                                     ConversationIndex;        // +0x04
     CRetailVector<CIntelligentPointer_Thing> PeopleInConversation;     // +0x08
@@ -68,7 +68,7 @@ struct CConversationMap {                       // STLport map<long, CScriptConv
     std::pair<iterator, bool> insert(const std::pair<const long, CScriptConversation>& value);   // 0x006E6F70
 };
 
-struct CScriptConversationManager {
+class CScriptConversationManager { public:
     CConversationMap Conversations;             // +0x00
     long             NextConversationIndex;     // +0x0c
     bool             AlwaysShowText;            // +0x10

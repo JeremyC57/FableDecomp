@@ -1,6 +1,6 @@
 // CThing::IsIncludedInThingScans @ 0x0048bc40
 // Reads flags byte at this+0x91. Returns 1 iff bits: 0x04 set, 0x08 set, 0x01 clear, 0x20 clear.
-struct CThing {
+class CThing { public:
     char pad[0x91];
     unsigned char flags;
 };

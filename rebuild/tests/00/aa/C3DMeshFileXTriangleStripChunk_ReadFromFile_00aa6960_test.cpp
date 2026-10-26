@@ -6,12 +6,12 @@
 #define __int64 long long
 // Host storage adapters only. VC7.1 compiles the real shared headers included below.
 #define FABLE_ENGINE_CDATAINPUTSTREAM_H
-struct CDataInputStream {
+class CDataInputStream { public:
  void* __vftable; unsigned long StreamPos; long StreamSize; void* CurrentSourcePtr;
  unsigned long SourceChunkStreamPos;long SourceChunkBytesRemaining;
 };
 #define FABLE_ENGINE_C3DMESHFILEXTRIANGLESTRIPCHUNK_H
-struct C3DMeshFileXTriangleStripChunk {
+class C3DMeshFileXTriangleStripChunk { public:
  void* __vftable; unsigned char prefix[12];
  union {void* align; unsigned char StripVertices[3*sizeof(void*)];};
 };
@@ -45,13 +45,13 @@ struct CInputStreamAccess : CDataInputStream {
 };
 
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
  T* Begin;T* End;T* Capacity;
  unsigned long Size()const{return (unsigned long)(End-Begin);}
  T* GetData(){return Size()>0?Begin:(T*)this;}
  void Resize(unsigned long,const T&); // 0x00517900
 };
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 struct C3DMeshFileXTriangleStripChunkMethods : C3DMeshFileXTriangleStripChunk {
  CArray<unsigned short>& Indices(){return *(CArray<unsigned short>*)StripVertices;}
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
@@ -64,7 +64,7 @@ void C3DMeshFileXTriangleStripChunkMethods::ReadFromFile(CDataInputStream& input
 }
 
 
-struct CChunkedFileLoader {};
+class CChunkedFileLoader { public:};
 static int errors,slowCalls,resizeCalls;
 static CInputStreamAccess* expectedStream;
 static CArray<unsigned short>* expectedArray;

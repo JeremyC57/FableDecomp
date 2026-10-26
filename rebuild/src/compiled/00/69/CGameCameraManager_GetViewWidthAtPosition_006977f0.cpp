@@ -22,7 +22,7 @@ public:
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CCamera {                                   // PDB 56 bytes
+class CCamera { public:                                   // PDB 56 bytes
     C3DVector WorldPosition;                       // +0x00
     unsigned char _rest[0x2c - 0xc];               // RHSet, locks, FOVFlags
     float     HorizontalFOV;                       // +0x2c

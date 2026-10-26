@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDriveManager {
+class CDriveManager { public:
     void* vftable;
     int destroyed;
 };

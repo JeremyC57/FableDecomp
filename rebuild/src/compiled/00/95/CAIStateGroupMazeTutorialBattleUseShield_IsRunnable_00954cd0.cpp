@@ -13,7 +13,7 @@
 //          at +0x14 as in the landed sibling 0x00954B50; PBrain is the first dword at +0x04.
 #include "engine/CAIStateGroup_MazeTutorialBattleUseShield.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -28,12 +28,12 @@ struct CDefPointee {
     long m_refCount;                            // +0x04
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-struct CWhisperBattleDef : CDefPointee { };
-template <class T> struct CDefPointer {
+class CWhisperBattleDef : public CDefPointee { public: };
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CWhisperBattleDef>* out);   // 0x00956590 (GetSubDef<CWhisperBattleDef>)
 };
 
@@ -53,7 +53,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CWhisperBattleDef
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -90,10 +90,10 @@ struct CTCEnemyTracker {                        // interface 8
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual CThing* GetTarget();                // slot 29 (+0x74)
 };
-struct CTCBoss {                                // interface 0xad
+class CTCBoss { public:                                // interface 0xad
     long GetBossPhase();                        // 0x007AED10
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 extern long FramesPerSecond;                    // 0x01375550
@@ -111,7 +111,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

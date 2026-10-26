@@ -25,7 +25,7 @@ public:
     CWideString ToWideString() const { return CWideString(m_text); }
 };
 static const unsigned short g_caption_lit[] = { 'A','p','p','l','i','c','a','t','i','o','n',' ','E','r','r','o','r',0 };
-struct CSystemManager {
+class CSystemManager { public:
     void DisplayCriticalMessage(const char* message)
     {
         CCharString text(message);

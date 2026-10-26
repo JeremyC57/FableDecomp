@@ -7,19 +7,19 @@
 //   GetPosition), then `distA < distB ? a : b` (A summed first) (`fcompp ; test ah,41h ; je`).
 #pragma optimize("s", on)
 #pragma optimize("y", off)   // ebp frame
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     __forceinline float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingAICreature : CThing { };
+class CThingAICreature : public CThing { public: };
 
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector Pos;                              // +0x00
     template<class T> T* operator()(T* a, T* b) const
     {

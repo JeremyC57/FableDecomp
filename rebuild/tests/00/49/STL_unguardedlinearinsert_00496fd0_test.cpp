@@ -12,7 +12,7 @@ static int icmp(const wchar_t* a, const wchar_t* b)   // test stand-in for _wcsi
         if (!x) return 0;
     }
 }
-struct CWideString {
+class CWideString { public:
     const wchar_t* PStringData;
     CWideString(const wchar_t* s) : PStringData(s) { }
     CWideString(const CWideString& other) : PStringData(other.PStringData) { }

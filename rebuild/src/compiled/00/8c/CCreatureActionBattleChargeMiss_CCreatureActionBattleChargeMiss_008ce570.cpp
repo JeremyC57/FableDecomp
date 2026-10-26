@@ -8,16 +8,16 @@
 // Shape: the two members are copy-constructed from the by-value parameters (inline copy ctor: base ctor, derived vtable, the
 // source's GetPItem, SetPItem); the scoped named animation string; the by-value parameters are destroyed by the callee at the end.
 // Layout: retail CCombatActionBase is 0x114 bytes (the PDB one is 0xc larger), so the two pointers sit at +0x114 / +0x11c.
-struct CThingCreatureBase;
-struct CBaseObject;
+class CThingCreatureBase;
+class CBaseObject;
 
-struct CCharString {                        // engine string (4 bytes: data pointer)
+class CCharString { public:                        // engine string (4 bytes: data pointer)
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -37,14 +37,14 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);                                           // 0x008574D0
 };
 
-struct CCreatureAction_BattleChargeMiss : CCombatActionBase {   // vtable 0x012847c4
+class CCreatureAction_BattleChargeMiss : public CCombatActionBase { public:   // vtable 0x012847c4
     CIntelligentPointerThing Left;    // +0x114 (PDB +0x12c)
     CIntelligentPointerThing Right;   // +0x11c (PDB +0x134)
     virtual void v00();

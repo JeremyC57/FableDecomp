@@ -15,7 +15,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -23,13 +23,13 @@ struct C3DVector {
     __forceinline void Normalise() { *this *= FastInvSqrt(Z * Z + Y * Y + X * X); }
 };
 __forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-struct CThing;
+class CThing;
 __forceinline C3DVector Direction(const CThing* to, const CThing* from);
 __forceinline float Dot(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.Y * b.Y + a.X * b.X; }
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 __forceinline C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPosition() - from->GetPosition(); }
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -42,11 +42,11 @@ template <class T> struct CVec {
     T* begin() { return _M_start; }
     T& operator[](long i) { return *(begin() + i); }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

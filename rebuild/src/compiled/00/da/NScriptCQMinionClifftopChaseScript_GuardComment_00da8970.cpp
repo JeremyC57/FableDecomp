@@ -12,7 +12,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -25,7 +25,7 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -42,12 +42,12 @@ struct CCountedPointerImp {
     CCountedPointerImp(const CCountedPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
 
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C; implicit copy constructor
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C; implicit copy constructor
     CCountedPointerImp PImp;                            // +0x04
     virtual ~CScriptThing();                            // 0x004AA840
     virtual CCharString GetDataString() const           // 0x004AA900
@@ -77,7 +77,7 @@ struct CScriptThingVector {                             // vector<CScriptThing> 
     CScriptThing& operator[](unsigned int i) { return *(_M_start + i); }
 };
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

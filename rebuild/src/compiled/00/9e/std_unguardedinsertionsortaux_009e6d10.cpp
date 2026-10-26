@@ -12,13 +12,13 @@
 // Shape: the value is built in the argument slot by the STLport memberwise pair copy constructor, CSymbolInfo's
 // implicit copy constructor at `edi+4` (the Val dword copied last, after the source pointer reload); the comparator is
 // loaded once into ebp before the loop.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
     ~CCharString();                         // 0x0099EAE0
 };
-struct CSymbolMap {
-    struct CSymbolInfo {                    // Ego_r.pdb, 12 bytes
+class CSymbolMap { public:
+    class CSymbolInfo { public:                    // Ego_r.pdb, 12 bytes
         CCharString GroupName;              // +0x00
         CCharString EntryName;              // +0x04
         long        Val;                    // +0x08

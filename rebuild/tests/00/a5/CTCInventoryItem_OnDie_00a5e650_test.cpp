@@ -2,8 +2,8 @@
 
 void __cdecl FreeThing(void* p);
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     void* m_field0;
     void* m_thing;
     void OnDie();

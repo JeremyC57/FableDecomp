@@ -16,7 +16,7 @@ extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 
 namespace LHNetworkLib {
 
-struct LHHttp2 {
+class LHHttp2 { public:
     unsigned char _pad0[0x70];                     // +0x00 Host, Hostname, Port, PreparedRequest, headers, timers
     char          CurrentHeaderPart[2048];         // +0x70
     unsigned long CurrentHeaderPos;                // +0x870

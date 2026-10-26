@@ -4,7 +4,7 @@
 #include <new>
 static int g_live = 0;
 static const char* const g_names[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
-struct CCharString {                            // stands in for the engine string (copy 0x0099EC30, dtor 0x0099EAE0)
+class CCharString { public:                            // stands in for the engine string (copy 0x0099EC30, dtor 0x0099EAE0)
     const char* m_pData;
     explicit CCharString(int k) : m_pData(g_names[k]) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }
@@ -12,7 +12,7 @@ struct CCharString {                            // stands in for the engine stri
     CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
     int Key() const { return m_pData[0] - 'a'; }
 };
-struct C3DVector {                              // memberwise user copy constructor, as retail
+class C3DVector { public:                              // memberwise user copy constructor, as retail
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
@@ -23,7 +23,7 @@ template <class T1, class T2> struct pair {
     pair(const T1& a, const T2& b) : first(a), second(b) { }
     pair(const pair& o) : first(o.first), second(o.second) { }
 };
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing g_things[8];
 struct CBaseIntelligentPointer {                // stands in for the engine pointer (ctor 0x00A01B10, GetPItem 0x00A01B50, SetPItem 0x00A01B90)
     CThing* PData;
@@ -45,7 +45,7 @@ struct CTargetPoint {
     explicit CTargetPoint(int k) : PThing(&g_things[k]), Index(k), TargetingPosition(10.0f + (float)k, 0.0f, 1.0f), FrameRejected(-k) { }
 };
 typedef CTargetPoint T;
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;
     C3DVector PreferredLine;
     float     AngleCompare;

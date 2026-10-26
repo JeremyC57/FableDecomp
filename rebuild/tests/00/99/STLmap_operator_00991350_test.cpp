@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThreadedFile { unsigned int PhysicalSortKey; };
+class CThreadedFile { public: unsigned int PhysicalSortKey; };
 struct CFileObject { unsigned int FilePos; CThreadedFile* PFile; };
 struct K {
     CFileObject* Object;

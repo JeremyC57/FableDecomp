@@ -1,16 +1,16 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CTCMapwho;
+class C3DVector { public: float x, y, z; };
+class CTCMapwho;
 struct CThingMapManager {
     bool m_overlap; CTCMapwho* m_last;
     bool IsOverlappingCells(CTCMapwho* m, const C3DVector&) { m_last = m; return m_overlap; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     CThingMapManager* m_pThingMapManager; float m_size;
     bool IsPosInMap(const C3DVector& p) { return p.x >= 0 && p.x < m_size && p.y >= 0 && p.y < m_size; }
 };
 static CWorldMap* g_map;
-struct CTCMapwho {
+class CTCMapwho { public:
     CWorldMap* GetWorldMap() { return g_map; }
     bool IsToBePlacedInMapwho(const C3DVector& pos)
     {

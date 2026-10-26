@@ -15,7 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX;   // +0x00
     long TLY;   // +0x04
     long BRX;   // +0x08

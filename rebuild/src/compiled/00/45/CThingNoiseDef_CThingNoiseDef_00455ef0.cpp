@@ -9,7 +9,7 @@
 // own constructor inlined: its base CMemberBase_0044c0c0() @ 0x0044C0C0 and its vtable (0x01231E9C).
 // Class names come from rtti-vtables.tsv; base-constructor names from unique manifest labels.
 // One of 73 bodies of this shape.
-struct CThingBaseDef {
+class CThingBaseDef { public:
     virtual void v00();
     CThingBaseDef();                           // 0x006772D0
 };
@@ -19,12 +19,12 @@ struct CMemberBase_0044c0c0 {
     CMemberBase_0044c0c0();                          // 0x0044C0C0
 };
 
-struct CTCNoiseDef : CMemberBase_0044c0c0 {
+class CTCNoiseDef : public CMemberBase_0044c0c0 { public:
     virtual void v00();
     CTCNoiseDef() : CMemberBase_0044c0c0() { }            // inlined into every constructor that embeds it
 };
 
-struct CThingNoiseDef : CThingBaseDef {
+class CThingNoiseDef : public CThingBaseDef { public:
     unsigned char _pad[0x6c];        // base members / earlier members, not touched here
     CTCNoiseDef m_member;                       // +0x70
     virtual void v00();

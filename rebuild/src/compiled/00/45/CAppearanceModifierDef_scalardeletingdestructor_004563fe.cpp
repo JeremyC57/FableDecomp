@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CAppearanceModifierDef {
+class CAppearanceModifierDef { public:
     int f0;
     int Parent;
     void* f8;

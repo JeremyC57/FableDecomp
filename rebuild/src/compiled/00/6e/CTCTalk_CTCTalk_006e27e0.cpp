@@ -9,9 +9,9 @@
 // Shape: an initialiser list in declaration order; the scalars before LastNarrator are stored right after the vtable
 // (sharing the ebx zero register) while LastNarrator's constructor arguments are already pushed; the bools between the
 // two strings are stored before DialogueVoice's default constructor.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08
@@ -19,16 +19,16 @@ struct CTCBase {
     CTCBase(CThing* owner);                  // 0x00686800
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                           // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
 };
 
-struct CASoundBank;
+class CASoundBank;
 typedef long EConversationAttitude;
 
-struct CTCTalk : CTCBase {                   // vtable 0x0125FFEC
+class CTCTalk : public CTCBase { public:                   // vtable 0x0125FFEC
     long                  SpeechSample;          // +0x0c
     long                  SampleStartedFrame;    // +0x10
     long                  SampleDurationFrames;  // +0x14

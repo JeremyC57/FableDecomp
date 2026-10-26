@@ -19,7 +19,7 @@
 //          C3DVector's operator-/GetLengthSquared are __forceinline (VC out-lines them in this body otherwise); the
 //          LowerBound, list copy ctor and clear get same-TU noinline stand-ins so VC knows neither the key nor the list
 //          escapes (shared key/bestDistance frame word, sentinel kept in ebp across clear() for the free).
-struct CTCBase;
+class CTCBase;
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -44,14 +44,14 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     __forceinline C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(x - o.x, y - o.y, z - o.z); }
     __forceinline float GetLengthSquared() const { return x * x + y * y + z * z; }
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x10 - 0x04];
     unsigned char ThingClass;                   // +0x10 (5: object)
@@ -129,19 +129,19 @@ void CThingList::clear()
     m_pHead->m_pPrev = m_pHead;
 }
 #pragma auto_inline(on)
-struct CTCThingOwner {                          // interface 0x21
+class CTCThingOwner { public:                          // interface 0x21
     unsigned char _pad[0x0c];
     CThingList ObjectList;                      // +0x0c
 };
 struct CTCUserActionPointBase {                 // interface 0x2D
     bool IsActionPointFree();                   // 0x007FEBF0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

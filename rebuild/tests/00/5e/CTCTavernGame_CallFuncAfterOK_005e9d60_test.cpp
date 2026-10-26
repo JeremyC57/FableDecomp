@@ -25,7 +25,7 @@ public:
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2)
     { g_font = font; g_text = text.text; g_name = name.text; g_b1 = button1.text; g_b2 = button2.text; g_flags = flags; g_time = time; g_bb1 = b1; g_bb2 = b2; }
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                 // +0x18
 };
@@ -34,7 +34,7 @@ struct CMemoryBuffer {
     unsigned long copied; unsigned char last;
     void Copy(unsigned long length, const void* data) { copied = length; last = *(const unsigned char*)data; }
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -45,14 +45,14 @@ struct CGameEvent : CMemoryBuffer {
     void AddBOOL(bool value) { Copy(1, &value); }
 };
 static int g_events = 0; static long g_eventType = 0; static unsigned char g_eventByte = 0xff;
-struct CMainGameComponent {
+class CMainGameComponent { public:
     CFontBank* Font;                                    // +0x1614c
     void AddGameEvent(const CGameEvent& event) { g_events++; g_eventType = event.Type; g_eventByte = event.last; }
 };
 static CMainGameComponent g_mgcObj; static CMainGameComponent* g_pMainGameComponent = &g_mgcObj;
 typedef void (__fastcall *TTavernGameFunc)();
 static int g_left = 0;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void LeaveGame() { ++g_left; }
     ETavernGameStates YesState;                         // +0xa8
     ETavernGameStates NoState;                          // +0xac

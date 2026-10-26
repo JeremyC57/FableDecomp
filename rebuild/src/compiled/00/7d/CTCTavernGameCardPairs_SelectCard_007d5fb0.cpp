@@ -12,13 +12,13 @@
 // Shape: the zero lives in ebx for every test and clear; each selection test re-reads SelectedCard; the sound names
 //        are block-scoped named strings; the match/mismatch arms share the hoisted `push -1 ; lea ecx` and cross-jump
 //        into one PlaySound + destructor.
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CCard {
+class CCard { public:
     void*         Thing;                        // +0x00 CThingObject*
     long          Name;                         // +0x04
     long          Value;                        // +0x08

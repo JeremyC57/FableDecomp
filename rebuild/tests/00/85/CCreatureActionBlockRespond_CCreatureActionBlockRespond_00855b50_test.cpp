@@ -2,13 +2,13 @@
 #include <cstring>
 #include <new>
 
-struct CThingCreatureBase { int x; };
+class CThingCreatureBase { public: int x; };
 static CThingCreatureBase* g_c = 0; static CThingCreatureBase* g_t = 0; static long g_id = 0; static long g_p = 0;
-struct CCreatureAction_BlockBase {
+class CCreatureAction_BlockBase { public:
     virtual ~CCreatureAction_BlockBase() {}
     CCreatureAction_BlockBase(CThingCreatureBase* c, CThingCreatureBase* t, long id, long p) { g_c = c; g_t = t; g_id = id; g_p = p; }
 };
-struct CCreatureAction_BlockRespond : CCreatureAction_BlockBase {
+class CCreatureAction_BlockRespond : public CCreatureAction_BlockBase { public:
     bool m_useHitPos; unsigned char m_hitPos[0xc]; bool m_faceTargetAtStart;
     CCreatureAction_BlockRespond(CThingCreatureBase* c, CThingCreatureBase* t, long p)
         : CCreatureAction_BlockBase(c, t, 0x96, p), m_useHitPos(false), m_faceTargetAtStart(false) {}

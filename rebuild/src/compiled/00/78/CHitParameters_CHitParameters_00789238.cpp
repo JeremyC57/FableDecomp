@@ -13,12 +13,12 @@
 // Pragma: frame-pointer size TU (`push dword ptr [ebp+0Ch]`, fldz zero): `optimize("y", off)` + `optimize("s", on)`.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CHitLocation;
-struct CMaterialDef;
+class CMaterialDef;
 
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
@@ -58,7 +58,7 @@ struct CIntelligentPointer {                       // CIntelligentPointer<CThing
 };
 
 #pragma pack(push, 1)
-struct CHitParameters {
+class CHitParameters { public:
     bool          Localised;                       // +0x00
     bool          Directional;                     // +0x01
     C3DVector     Position;                        // +0x02

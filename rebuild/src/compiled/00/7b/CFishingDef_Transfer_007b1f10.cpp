@@ -10,9 +10,9 @@
 // save arm inline and the load through the traits temporary in the dead argument slot (`lea ecx,[esp+18h]`).
 // Layout: Ego_r.pdb CFishingDef (0x80) with a 16-byte FishTypes vector; retail STLport vectors are 12 bytes, so every member after
 // it sits 4 below the PDB: FishTypes +0x28, FishingSpotProximity +0x34 ... StrainIncreasePerPress +0x78 (no engine header).
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };
@@ -37,7 +37,7 @@ template<> struct CPersistTraits<float> {
     static void TransferBinaryOut(CDataOutputStream* stream, const float& value) { stream->WriteFloat(value); }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1c[0x08];
@@ -70,7 +70,7 @@ struct CPersistContext {
     }
 };
 
-struct CFishingDef {
+class CFishingDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _pad04[0x28 - 4];
     CLongVector FishTypes;                              // +0x28

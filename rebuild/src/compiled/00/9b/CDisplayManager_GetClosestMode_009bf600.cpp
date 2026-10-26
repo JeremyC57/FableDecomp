@@ -42,7 +42,7 @@ struct IDirect3DDevice9 {
     virtual long __stdcall GetDisplayMode(unsigned long swapChain, _D3DDISPLAYMODE* mode);                                 // slot 8
 };
 
-struct C2DExtentsI { long X; long Y; };
+class C2DExtentsI { public: long X; long Y; };
 
 struct SPixelFormatInfo {              // 36-byte format table entry
     unsigned long m_d3dFormat;         // +0 D3DFORMAT
@@ -50,7 +50,7 @@ struct SPixelFormatInfo {              // 36-byte format table entry
 };
 extern SPixelFormatInfo g_PixelFormatTable[];   // 0x0129BA40
 
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     void Initialise(unsigned long format);         // 0x009E3830
     unsigned long GetColourDepth();                // 0x009E3820
@@ -65,7 +65,7 @@ struct CPixelFormatArray {                         // STLport vector<CPixelForma
     const CPixelFormat& operator[](unsigned int n) const { return *(_M_start + n); }
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char     _pad0[0x54];
     IDirect3D9*       D3D;                         // +0x54
     IDirect3DDevice9* D3DDevice;                   // +0x58

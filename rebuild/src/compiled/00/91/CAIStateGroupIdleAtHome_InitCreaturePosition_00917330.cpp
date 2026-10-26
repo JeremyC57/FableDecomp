@@ -11,7 +11,7 @@
 // placer; the radius is pushed before the inner GetPItem (right-to-left arguments). The result is a
 // full register (`mov eax,1` / `xor eax,eax`), i.e. this override returns a long, not a bool. The engine
 // header flattens everything, so the base layout is modelled locally.
-struct CThingBuilding;
+class CThingBuilding;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -19,19 +19,19 @@ struct CBaseIntelligentPointer {
     CThingBuilding* GetPItem();                 // 0x00A01B50
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad[0x168];
     CBaseIntelligentPointer PHome;              // +0x168 CIntelligentPointer<CThingBuilding>
     CThingBuilding* GetPHome() { return PHome.GetPItem(); }
     bool AutoPlaceNearBuilding(CThingBuilding* pBuilding, float radius);   // 0x00666EF0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

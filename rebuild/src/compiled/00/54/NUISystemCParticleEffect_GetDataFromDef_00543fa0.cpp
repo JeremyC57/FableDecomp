@@ -52,7 +52,7 @@ struct CDefPointer {
     CUIDef* operator->() const { return m_p; }
 };
 namespace NUISystem {
-struct CParticleEffect {
+class CParticleEffect { public:
     virtual void v00();
     unsigned char _component[0x15c];        // +0x004
     long          m_defValue;               // +0x160

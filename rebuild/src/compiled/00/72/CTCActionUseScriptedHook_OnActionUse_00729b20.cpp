@@ -11,7 +11,7 @@
 // Layout: PDB CTCActionUseScriptedHook (ForceConfirmation +0xD, WaitingForConfirmation +0xE, PerformAction +0xF); retail CThing
 // ScriptData at +0x78 (PDB +0x88, 16 bytes of narrower containers before it).
 class CThing;
-struct CCharString {
+class CCharString { public:
     void* PString;
     bool operator!=(const char* text) const;    // 0x0099E960
 };
@@ -20,13 +20,13 @@ public:
     unsigned char _pad00[0x78];
     CCharString ScriptData;                     // +0x78
 };
-struct CFontBank;
-struct CMainGameComponent {
+class CFontBank;
+class CMainGameComponent { public:
     unsigned char _pad[0x1614c];
     CFontBank* PFontBank;                       // +0x1614c
     CFontBank* GetFontBank() const { return PFontBank; }
 };
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
 struct CGameUI {

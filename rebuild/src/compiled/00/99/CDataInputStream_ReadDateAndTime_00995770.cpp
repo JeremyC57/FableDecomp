@@ -11,7 +11,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CDateAndTime {
+class CDateAndTime { public:
     unsigned char _data[0x1c];
     CDateAndTime(long year, unsigned long month, unsigned long day, unsigned long hour, unsigned long minute,
                  unsigned long second, unsigned long milliseconds);   // 0x009E9A70

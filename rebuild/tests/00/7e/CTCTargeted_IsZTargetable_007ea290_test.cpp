@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTargeted {
+class CTCTargeted { public:
     char pad0[0x0c];
     unsigned int f0c;   // +0x0c
     unsigned char f10;  // +0x10

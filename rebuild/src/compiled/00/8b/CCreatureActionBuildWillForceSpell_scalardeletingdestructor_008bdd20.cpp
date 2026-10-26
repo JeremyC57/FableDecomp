@@ -1,4 +1,4 @@
-struct CCreatureAction_BuildWillForceSpell {
+class CCreatureAction_BuildWillForceSpell { public:
     void* vftable;
 };
 

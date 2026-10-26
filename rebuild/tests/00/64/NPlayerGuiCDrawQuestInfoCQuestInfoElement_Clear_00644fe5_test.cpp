@@ -9,7 +9,7 @@ struct CPrimitive {
     void Destroy() { ++g_destroyed; }
     void OnLastHandleCleared() { ++g_lastNotified; }
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     CPrimitive* m_p;
     void Clear()
     {

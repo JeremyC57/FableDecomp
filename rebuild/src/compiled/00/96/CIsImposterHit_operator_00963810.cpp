@@ -8,7 +8,7 @@
 // component stays in eax: `mov eax,[eax+4] ; push ; mov ecx,eax`); kind 0x42 is bit 2 of the presence word at +0x28.
 // Shape: `P.GetPItem() && !P.GetPItem()->Dead` re-calls the getter; the third call's thing serves both the presence test
 // and the lookup; the two-exit `mov al,1` / `xor al,al` tail.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                             // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -16,7 +16,7 @@ struct CInterfaceMap {                             // a thing's sorted {type, co
     SEntry* end;
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                    // +0x44
@@ -42,7 +42,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                               // +4
     CThing* GetPItem() const;                      // 0x00A01B50
 };
-struct CTCCreatureModeManager {                    // component kind 0x42 here
+class CTCCreatureModeManager { public:                    // component kind 0x42 here
     bool IsModeActive(long mode) const;            // 0x00811340 (landed)
 };
 struct CIsImposterHit {

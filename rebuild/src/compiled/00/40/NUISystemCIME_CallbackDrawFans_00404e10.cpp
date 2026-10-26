@@ -16,11 +16,11 @@
 //   copies one Y through the FPU); the colour bytes come from successive `>>= 8` of a dword local (retail's
 //   shr/shr chain, the same as the uncovered dword-to-colour helper 0x00404CF0 and CIMEFont::SetColor 0x00404D20);
 //   the display manager is a named local, so +0x60 loads before the pushes and +8 between them.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -28,11 +28,11 @@ struct CRenderManager2D {
     bool Draw2DTriangle(const C2DVector& p0, const C2DVector& p1, const C2DVector& p2, const CRGBColour& colour,
                         unsigned long flags);   // 0x009DDFF0
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char     _pad00[8];
     CRenderManager2D* RenderManager2D;          // +8
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CDisplayManager* DisplayManager;            // +0x60
 };

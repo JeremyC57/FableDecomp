@@ -12,7 +12,7 @@
 // jne`); the release tail tests only the first texture, frees both handles through one pool local, then clears both.
 #include "engine/CEngineScreenEffectRadialBlurRenderer.h"
 
-struct CEngineComponentRenderParams;
+class CEngineComponentRenderParams;
 
 struct CTexturePool_00f36f00 {
     void Release(long texture);                    // 0x00F36F00

@@ -18,7 +18,7 @@ struct CRGBColour {
     CRGBColour() { }
 };
 
-struct CUIState {
+class CUIState { public:
     unsigned long StateChangeFlag;  // +0x00
     long StateChangeType;           // +0x04 (EStateChangeType)
     C2DVector Position;             // +0x08

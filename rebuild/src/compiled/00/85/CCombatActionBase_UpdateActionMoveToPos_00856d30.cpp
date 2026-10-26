@@ -12,7 +12,7 @@
 //          fetched BEFORE the slot-7 call (`mov edi,eax`); `> 0.0001f` is `test ah,41h ; je` into the shared
 //          GetNextPos assignment; the 24-byte frame holds the local and GetNextPos' result temporary.
 // Members (retail layout, Ego_r.pdb names): PreferredFinalPosSet +0xdd (PDB +0xf1), so `this` is modelled locally.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const; // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual long GetAnimationIndex();           // slot 7 (+0x1c): 0x008565B0

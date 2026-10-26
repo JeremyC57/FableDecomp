@@ -24,7 +24,7 @@ static int fails = 0;
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CHeroDef {
+class CHeroDef { public:
     virtual void v00();
     virtual void Destroy();                    // slot 1 (+0x04)
     long          RefCount;                    // +0x04 CDefPointeeBase
@@ -44,7 +44,7 @@ struct CHeroDefPointer {                       // CDefPointer<const CHeroDef>
     CHeroDef* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CHeroDefPointer* subDef) const;   // GetSubDef<CHeroDef> @ 0x00580034
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -61,7 +61,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CHeroDefPointer* out) const
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PBaseDef;                   // +0x70 CDefPointer<const CThingBaseDef>::Object (PDB +0x80)
 };

@@ -14,19 +14,19 @@
 // Layout: CThing PTCGraphicAppearance +0x64, DefGlobalIndex +0x8C; CThingPhysical Scale +0x9C, MaxHealth +0xB0, Health +0xB4
 //         (Ego_r.pdb +0xC8/+0xCC); the +0xD4 flag byte (descriptive); CTCGraphicAppearance::Graphic +0x44; CThingBuildingDef
 //         MaxHealth +0x50 and Graphic +0x78 (PDB +0x7C, def classes pack to 1).
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Delete();                           // slot 1 (+0x04)
     long RefCount;                                   // +0x04
 };
 #pragma pack(push, 1)
-struct CEngineGraphic {                              // 14 bytes
+class CEngineGraphic { public:                              // 14 bytes
     long  Bank;
     long  Index;
     long  Flags;
     short Lod;
 };
-struct CThingBuildingDef : CDefClassBase {
+class CThingBuildingDef : public CDefClassBase { public:
     unsigned char  _pad08[0x50 - 0x08];
     float          MaxHealth;                        // +0x50 (CThingPhysicalDef)
     unsigned char  _pad54[0x78 - 0x54];
@@ -45,7 +45,7 @@ struct CDefPointer {                                 // CDefPointer<const CThing
         }
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef_004ab840(long index, CDefPointer* out);       // 0x004AB840
 };
 void* FindDef_CDefinitionManager_GetDef(long index);   // stand-in callee of the stand-in body below
@@ -66,7 +66,7 @@ struct CTCGraphicAppearance {
     CEngineGraphic Graphic;                          // +0x44
     void SetScale(float scale);                      // 0x004BFA50
 };
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64
     unsigned char         _pad68[0x8c - 0x68];

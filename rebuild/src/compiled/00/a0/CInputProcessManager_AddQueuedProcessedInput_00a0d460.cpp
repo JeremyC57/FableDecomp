@@ -4,7 +4,7 @@
 // (CProcessedInput[10], 0xb0 each: Player, Type, CGameEvent[4], NoGameEvents, Priority), NoQueuedProcessedInputs +0x6f4.
 // Shape: the count is read once for the signed range test (`jl` / `cmp eax,0Ah ; jge`), the slot address is `imul eax,0B0h` plus
 // `this`+0x14, the record copied with a 0x2c-dword `rep movsd`, and the count re-read for the increment (the copy may alias), `ret 4`.
-struct CProcessedInput {                            // 0xb0 bytes (engine/CProcessedInput.h)
+class CProcessedInput { public:                            // 0xb0 bytes (engine/CProcessedInput.h)
     long          Player;                           // +0x00
     long          Type;                             // +0x04 EProcessedEventType
     unsigned char GameEvents[0xa0];                 // +0x08 CGameEvent[4]
@@ -12,7 +12,7 @@ struct CProcessedInput {                            // 0xb0 bytes (engine/CProce
     unsigned char _pad_0xa9[3];
     long          Priority;                         // +0xac EGameEventPriority
 };
-struct CInputProcessManager {
+class CInputProcessManager { public:
     virtual void v00();
     unsigned char   InputProcessList[0x10];         // +0x04 CLinkedList<CAInputProcess>
     CProcessedInput QueuedProcessedInputs[10];      // +0x14

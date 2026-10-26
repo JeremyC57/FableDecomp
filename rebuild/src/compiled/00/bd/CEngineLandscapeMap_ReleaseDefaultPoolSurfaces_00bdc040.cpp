@@ -6,7 +6,7 @@ struct ISurface {
     virtual void Slot0(int a) = 0;
 };
 
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     char pad0[4];
     ISurface* surface;   // +0x04
     char pad1[0x5d - 0x08];

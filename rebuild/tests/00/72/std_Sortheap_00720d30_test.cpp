@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSkeletalMorphsEntry {
     CDefString MorphName;
     short      Priority;
@@ -14,7 +14,7 @@ struct SMorphWeight {
     SMorphWeight() : second(0) { first.MorphName.TablePos = 0; first.Priority = 0; first.SupressesLowerMorphs = false; }
     SMorphWeight(const SMorphWeight& other) : first(other.first), second(other.second) { }
 };
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

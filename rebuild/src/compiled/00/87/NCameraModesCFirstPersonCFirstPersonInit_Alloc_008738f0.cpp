@@ -6,11 +6,11 @@
 //          const CDefPointer<const CCameraModeDef>&) @ 0x0084E420 (as the landed CSACCombat ctor 0x008733D0 declares it).
 // Shape: `new` null-tests the block; CFirstPerson's constructor is inline and only stores its vtable 0x012776AC after the root ctor
 //        (no members of its own are initialised); a null block returns 0.
-struct CGameCameraManager;
-struct CCameraModeDef;
-template <class T> struct CDefPointer;
+class CGameCameraManager;
+class CCameraModeDef;
+template <class T> class CDefPointer;
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     float         DefaultFOV;                      // +0x04
     unsigned char _body[0x9c];                     // +0x08..+0xa3 (retail)

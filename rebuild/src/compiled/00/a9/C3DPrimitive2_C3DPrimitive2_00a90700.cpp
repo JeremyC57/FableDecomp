@@ -9,19 +9,19 @@
 // Retail C3DPrimitive2 (0xa0 bytes): the PDB layout (Ego_r 0xac) with retail's 12-byte CArrays, which puts every
 // member after ClothPrimitives 4 bytes lower and every member after PartitionedMeshSourceIndexBuffer 8 bytes lower
 // (as the landed 0x00A93380 / 0x00A89380 models found). Vtable 0x0129DF94 (rtti-vtables.tsv).
-struct CVertexBufferWin32;
-struct CIndexBuffer;
+class CVertexBufferWin32;
+class CIndexBuffer;
 struct CStaticBlock;
 struct CAnimatedBlock;
-struct C3DClothPrimitive;
-struct C3DMeshPartitionElement;
-namespace N3DPrimitive { struct CDeviceIndependent; }
+class C3DClothPrimitive;
+class C3DMeshPartitionElement;
+namespace N3DPrimitive { class CDeviceIndependent; }
 
-struct C3DBoundingSphere {                           // centre + radius, zeroed as dwords (landed 0x00A98100 model)
+class C3DBoundingSphere { public:                           // centre + radius, zeroed as dwords (landed 0x00A98100 model)
     long m_x, m_y, m_z, m_radiusBits;
     C3DBoundingSphere() : m_x(0), m_y(0), m_z(0), m_radiusBits(0) { }
 };
-template<class T> struct CArray {                    // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                    // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     CArray() : m_begin(0), m_end(0), m_capacity(0) { }
 };
@@ -29,19 +29,19 @@ template<class T> struct scoped_ptr {
     T* m_p;
     scoped_ptr() : m_p(0) { }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
-struct C3DTextureStages {                            // 12 bytes (PDB)
+class C3DTextureStages { public:                            // 12 bytes (PDB)
     long DiffuseTextureStage;                        // +0
     long BumpTextureStage;                           // +4
     bool UseBlankTextures;                           // +8
     C3DTextureStages() : DiffuseTextureStage(-1), BumpTextureStage(-1), UseBlankTextures(false) { }
 };
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     virtual void v00();
     long                                     MaterialIndex;               // +0x04
     long                                     RepeatingMeshReps;           // +0x08

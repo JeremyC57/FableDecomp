@@ -14,7 +14,7 @@ struct CEngineStateBlockAlpha2XTFactor : CEngineStateBlock { CEngineStateBlockAl
 struct CEngineStateBlockDiffuseOnly : CEngineStateBlock { CEngineStateBlockDiffuseOnly() { } };
 struct CEngineStateBlockDiffuse2X : CEngineStateBlock { CEngineStateBlockDiffuse2X() { } };
 struct CEngineStateBlockDiffuseEnv2X : CEngineStateBlock { CEngineStateBlockDiffuseEnv2X() { } };
-struct CEngineStateBlocks : CStateBlocksBase_00b59710 { CEngineStateBlockSolid m_00; CEngineStateBlockSolid2X m_01; CEngineStateBlockAlpha m_02; CEngineStateBlockAlpha2X m_03; CEngineStateBlockAdditiveAlpha m_04; CEngineStateBlockAddSmoothAlpha m_05; CEngineStateBlockAlpha2XTFactor m_06; CEngineStateBlockDiffuseOnly m_07; CEngineStateBlockDiffuse2X m_08; CEngineStateBlockDiffuseEnv2X m_09;
+class CEngineStateBlocks : public CStateBlocksBase_00b59710 { public: CEngineStateBlockSolid m_00; CEngineStateBlockSolid2X m_01; CEngineStateBlockAlpha m_02; CEngineStateBlockAlpha2X m_03; CEngineStateBlockAdditiveAlpha m_04; CEngineStateBlockAddSmoothAlpha m_05; CEngineStateBlockAlpha2XTFactor m_06; CEngineStateBlockDiffuseOnly m_07; CEngineStateBlockDiffuse2X m_08; CEngineStateBlockDiffuseEnv2X m_09;
     CEngineStateBlocks() : CStateBlocksBase_00b59710(), m_00(), m_01(), m_02(), m_03(), m_04(), m_05(), m_06(), m_07(), m_08(), m_09() { } };
 int main() {
     CEngineStateBlocks s; if (g_base != 1 || g_blocks != 10 || (char*)&s.m_09 - (char*)&s.m_00 != 9 * sizeof(void*)) { std::printf("00b28bc0_TEST FAIL\n"); return 1; }

@@ -8,13 +8,13 @@
 // (ECameraPointType). The context's mode word sits at +0x18.
 // Shape: each `false` / `0` default is a fresh temporary bound to the const reference and homed in the dead first-argument
 // slot (the context is already in edi); the enum goes through a long local transferred and then stored.
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
     void Transfer(const char* name, long& value, const long& defaultValue);     // 0x00410BE0
 };
-struct CTCDCameraPoint {
+class CTCDCameraPoint { public:
     virtual void v00();
     virtual void Persist(CPersistContext* context, bool flag);  // slot 1
     void* Owner;                                // +0x04

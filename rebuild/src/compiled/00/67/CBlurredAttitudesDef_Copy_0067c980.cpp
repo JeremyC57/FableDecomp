@@ -38,9 +38,9 @@ struct CSubObject_00471e44 {
     CSubObject_00471e44& operator=(const CSubObject_00471e44& other);   // 0x00471E44
 };
 
-struct CDefClassBase;
+class CDefClassBase;
 
-struct CBlurredAttitudesDef : CBase_00431f10 {
+class CBlurredAttitudesDef : public CBase_00431f10 { public:
     long                m_id;                   // +0x25
     SAttitudeBlock      m_block;                // +0x29 (vector + flag)
     unsigned char       m_pad37[5];             // +0x37..+0x3b

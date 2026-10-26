@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 template <class P> struct CAllocProxy {
     P _M_data;
     CAllocProxy(P p) : _M_data(p) { }
@@ -16,7 +16,7 @@ template <class T> struct vector {
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 struct SRbTreeNodeBase { bool _M_color; SRbTreeNodeBase* _M_parent; SRbTreeNodeBase* _M_left; SRbTreeNodeBase* _M_right; };
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 struct SQuestComponentNode : SRbTreeNodeBase { CThing* first; NUISystem::CComponent* second; };
 template <class N> struct CNodeAllocProxy {
     N* _M_data;
@@ -39,23 +39,23 @@ struct CQuestComponentMap : CQuestComponentTreeBase {
         _M_header._M_data->_M_right = _M_header._M_data;
     }
 };
-struct CEnginePrimitiveHandle;
-struct CQuestCardItem;
+class CEnginePrimitiveHandle;
+class CQuestCardItem;
 struct CIntelligentPointerThing;
 static CThing* g_baseThing = 0; static int g_secondary = 0;
 namespace NInventory {
-    struct CTCInventoryBase {
+    class CTCInventoryBase { public:
         CTCInventoryBase(CThing& thing) { g_baseThing = &thing; }
         virtual ~CTCInventoryBase() { }
     };
 }
 namespace NHeroInformationScreens {
-    struct CBase {
+    class CBase { public:
         CBase() { ++g_secondary; }
         virtual void v00() { }
     };
 }
-struct CTCInventoryQuests : NInventory::CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryQuests : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     vector<CEnginePrimitiveHandle> InventoryQuestCardSelectPrimitiveHandles;
     vector<CQuestCardItem> QuestCardItemList;
     bool          IsGuildValid;

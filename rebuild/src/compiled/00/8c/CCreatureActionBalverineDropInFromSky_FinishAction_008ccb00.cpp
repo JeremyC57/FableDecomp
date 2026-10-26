@@ -6,16 +6,16 @@
 // ecx thing, dl flag, `xor dl,dl`), CCombatActionBase::FinishAction @ 0x00859A20 (direct base call, last).
 // Shape: `this` rides in ebx and the PCreature address in edi; esi is pushed only inside the lookup block. Retail CCombatActionBase is
 // 0x114 bytes (the engine header is the PDB's 0x12c-byte layout), so `this` is modelled locally.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 struct CTCGraphicAppearance;
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -52,7 +52,7 @@ struct CTCCreatureFlags9 {                  // the interface-9 component: one by
 };
 void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x00859A20
     unsigned char _pad04[4];                // +0x04
@@ -60,7 +60,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_BalverineDropInFromSky : CCombatActionBase {
+class CCreatureAction_BalverineDropInFromSky : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

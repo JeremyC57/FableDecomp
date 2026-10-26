@@ -71,7 +71,7 @@ struct CDefPointer {
     CRedefinerListDef* operator->() const { return m_p; }
 };
 
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -183,20 +183,20 @@ struct CComponent {
     virtual CDefPointer GetDef();                               // slot 108 (+0x1B0)
 };
 
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(long definition);       // 0x0041D21B
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 
-struct CScrollableList : CComponent {
+class CScrollableList : public CComponent { public:
     unsigned char _pad004[0x178];
     void Initialise();                                  // 0x00555EB0
     void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440
 };
 
-struct CRedefinerList : CScrollableList {
+class CRedefinerList : public CScrollableList { public:
     bool          IsActivated;                          // +0x17c
     bool          RefreshAfterFade;                     // +0x17d
     float         FadeOutTime;                          // +0x180

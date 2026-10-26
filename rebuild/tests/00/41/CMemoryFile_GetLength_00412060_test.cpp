@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMemoryFile {
+class CMemoryFile { public:
     int _pad0;
     int _pad4;
     int _pad8;

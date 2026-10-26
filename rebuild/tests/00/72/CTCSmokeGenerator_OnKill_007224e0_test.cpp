@@ -4,7 +4,7 @@
 
 static int g_killCalls = 0;
 
-struct CThing {
+class CThing { public:
     unsigned char m_flags;
     bool          m_lastImmediate;
     void Kill(bool immediately) { ++g_killCalls; m_lastImmediate = immediately; m_flags |= 1; }
@@ -20,7 +20,7 @@ struct CGenerationPos {
     CBaseIntelligentPointer PThing;
 };
 
-struct CTCSmokeGenerator {
+class CTCSmokeGenerator { public:
     float           GenerationDistance;
     CGenerationPos* m_pFirst;
     CGenerationPos* m_pLast;

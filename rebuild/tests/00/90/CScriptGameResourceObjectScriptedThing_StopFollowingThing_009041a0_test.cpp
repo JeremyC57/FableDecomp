@@ -1,30 +1,30 @@
 #include <cstdio>
 #include <cstring>
 // behaviour test: StopFollowingThing terminates a running follow action, otherwise queues an EXPRESSION_WAIT event at the target
-struct CCharString { const char* t; CCharString(const char* s, long) : t(s) {} };
+class CCharString { public: const char* t; CCharString(const char* s, long) : t(s) {} };
 struct CThing_Retail;
 static const char* g_terminated = 0; static int g_events = 0; static CThing_Retail* g_eventTarget = 0; static long g_refs = 0;
-struct CTCScriptedControl { long CurrentActionType; bool TerminateActionByName(const CCharString& n) { g_terminated = n.t; return true; } };
-struct CTCEntityEvents { void AddEvent(void*) { ++g_events; } };
+class CTCScriptedControl { public: long CurrentActionType; bool TerminateActionByName(const CCharString& n) { g_terminated = n.t; return true; } };
+class CTCEntityEvents { public: void AddEvent(void*) { ++g_events; } };
 struct CThing_Retail {
     bool m_dead; CTCScriptedControl* control; CTCEntityEvents* events;
     bool GetInterface(CTCScriptedControl** out, long) { *out = control; return true; }
     bool GetInterface(CTCEntityEvents** out, long) { if (!events) return false; *out = events; return true; }
 };
-struct CScriptThing { CThing_Retail* t; bool alive; bool IsAlive() const { return alive; } CThing_Retail* GetPThing() const { return t; } };
-struct CExpressionDef { long RefCount; };
-template<class T> struct CDefPointer {
+class CScriptThing { public: CThing_Retail* t; bool alive; bool IsAlive() const { return alive; } CThing_Retail* GetPThing() const { return t; } };
+class CExpressionDef { public: long RefCount; };
+template<class T> class CDefPointer { public:
     T* Object; CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object = 0; } }
 };
 static CExpressionDef g_wait;
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; }
     bool GetDef(const CCharString& name, CDefPointer<CExpressionDef>* out)
     { if (std::strcmp(name.t, "EXPRESSION_WAIT")) return false; out->Object = &g_wait; ++g_wait.RefCount; return true; }
 };
 namespace NEntityEvents {
-struct CEventExpressionPerformedTo {
+class CEventExpressionPerformedTo { public:
     CEventExpressionPerformedTo(void* target, long, const CDefPointer<CExpressionDef>& def, long, long)
     { g_eventTarget = (CThing_Retail*)target; g_refs = def.Object ? def.Object->RefCount : -1; }
 };

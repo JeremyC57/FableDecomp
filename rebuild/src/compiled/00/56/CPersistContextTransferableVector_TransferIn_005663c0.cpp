@@ -8,8 +8,8 @@
 // `push ecx` frame slot; its constructor value-initialises DefaultVal (`mov dword ptr [esp],0`,
 // scheduled early because the object's address escapes) and the traits reader parses into
 // &TransVector->first[index] (`lea eax,[ecx+edx*4]`). Retail std::vector is three pointers.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
 template <class T> struct CRetailVector {
     T* m_pFirst;
@@ -27,7 +27,7 @@ template <class T> struct CPersistTraits {
 struct CPersistContext_TransferableVector {
     virtual long GetCount();
     virtual void Resize(long count);
-    virtual void TransferOut(CPersistContext* context, struct CCharString* out, long index);
+    virtual void TransferOut(CPersistContext* context, class CCharString* out, long index);
     virtual void TransferIn(CPersistContext* context, CStringParser* parser, long index);
     CRetailVector<float>* TransVector;     // +0x4
 };

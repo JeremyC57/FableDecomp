@@ -8,21 +8,21 @@
 // LockedFromMemoryRelocation +0xE5, MeshID +0xE8. All stores precede the vtable store; the handles are an
 // init list (declaration order, `or eax,-1`), the zeroes too, and the two flags are body assignments in
 // the retail order (+0xE5 before +0xE4). InverseTransform, BoneSpaceTransforms and MeshID are left alone.
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual ~C3DMeshStats();
     void* MemoryPool;                       // +0x04 CHandleBasedMemoryPool*
     unsigned char _stats[0x74];             // +0x08 .. +0x7B
     C3DMeshStats();                         // 0x00A2F210
 };
 
-struct C3DMeshMaterial;
-struct C3DPrimitive2;
-struct C3DBone2;
-struct C3DKeyframe;
-struct CMatrix4x4;
-struct CMatrix3x4 { float m_row[3][4]; };
+class C3DMeshMaterial;
+class C3DPrimitive2;
+class C3DBone2;
+class C3DKeyframe;
+class CMatrix4x4;
+class CMatrix3x4 { public: float m_row[3][4]; };
 
-struct C3DMesh2 : C3DMeshStats {
+class C3DMesh2 : public C3DMeshStats { public:
     long MemoryHandle;                      // +0x7C
     long PrimMemoryHandle;                  // +0x80
     long BoneNameMemoryHandle;              // +0x84

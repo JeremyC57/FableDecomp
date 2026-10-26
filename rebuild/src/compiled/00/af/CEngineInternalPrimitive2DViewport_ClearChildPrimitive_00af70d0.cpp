@@ -89,7 +89,7 @@ struct CVectorArray {
     CPODVector& operator[](unsigned long n) { return m_start[n]; }
 };
 
-struct CEngineInternalPrimitive2DViewport {
+class CEngineInternalPrimitive2DViewport { public:
     unsigned char _pad00[0x84];
     CVectorArray  m_childData;                     // +0x84
     CHandleVector m_childHandles;                  // +0x90

@@ -11,7 +11,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CItem.h"
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);         // 0x0099B720
 };
@@ -25,7 +25,7 @@ struct CIVRefCounted {                             // second base: the count at 
     __forceinline void DecRef() { --IVRefCount; }
     __forceinline unsigned long GetRefCount() const { return IVRefCount; }
 };
-struct CIVCountedPointeeBase : CIVCountedPointeeVirtual, CIVRefCounted {
+class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public:
     __forceinline void ReleaseTemporary()
     {
         DecRef();
@@ -33,7 +33,7 @@ struct CIVCountedPointeeBase : CIVCountedPointeeVirtual, CIVRefCounted {
             Delete();
     }
 };
-template <class T> struct CIVCountedPointer {      // 4 bytes
+template <class T> class CIVCountedPointer { public:      // 4 bytes
     T* Object;
     __forceinline ~CIVCountedPointer()
     {
@@ -51,7 +51,7 @@ struct CGroupEntry : CIVCountedPointeeBase {       // NGameText::CGroupEntry
 struct CDataBank {                                 // NGameText::CDataBank
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
 };

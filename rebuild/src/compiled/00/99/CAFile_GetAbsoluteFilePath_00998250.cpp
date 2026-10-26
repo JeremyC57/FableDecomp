@@ -26,7 +26,7 @@ struct CBasicStringChar {                               // CBasicString<char>
     long          StringLength;                         // +0x04
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;                              // +0x00
 };
 

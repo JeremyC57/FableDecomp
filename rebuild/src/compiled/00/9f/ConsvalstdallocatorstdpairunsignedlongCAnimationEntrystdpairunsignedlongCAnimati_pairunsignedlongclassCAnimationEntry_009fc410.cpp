@@ -7,7 +7,7 @@
 // through the x87 stack (fld/fstp) -- VC7.1 models this 8-byte-by-value copy as a
 // double, so the value parameter is typed accordingly to reproduce that codegen.
 
-struct CAnimationEntry { unsigned long id; };
+class CAnimationEntry { public: unsigned long id; };
 struct APair { unsigned long first; CAnimationEntry second; };
 
 struct ConsAlloc {

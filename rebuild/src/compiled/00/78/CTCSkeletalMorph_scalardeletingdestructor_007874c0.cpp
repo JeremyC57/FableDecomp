@@ -11,9 +11,9 @@
 // CArray is 0x0c bytes (wave 23 rule), so the counted pointer sits at +0x1c (the `lea ecx,[esi+1Ch]`).
 // Shape: own vtable store, member destructors in reverse declaration order, then the base destructor;
 // a `new` factory pulls the vtable (and so the `??_G`) into the TU, the virtual destructor is inline.
-struct CThing;
+class CThing;
 
-struct CTCBase {                                   // engine/CTCBase.h offsets, modelled polymorphic
+class CTCBase { public:                                   // engine/CTCBase.h offsets, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
@@ -37,7 +37,7 @@ struct CCountedPointerSkeletalMorph {              // CCountedPointer<C3DSkeleta
     ~CCountedPointerSkeletalMorph();               // 0x005BA4F1
 };
 
-struct CTCSkeletalMorph : CTCBase {                // vtable 0x0126B6F4
+class CTCSkeletalMorph : public CTCBase { public:                // vtable 0x0126B6F4
     bool                         Changed;          // +0x0c
     CSkeletalMorphArray          Morphs;           // +0x10
     CCountedPointerSkeletalMorph PSkeletalMorph;   // +0x1c

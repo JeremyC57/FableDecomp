@@ -6,8 +6,8 @@
 struct CEntry { int NameTablePos; unsigned int DriverType; bool Override; };
 static const char* g_Names[4] = { "Physics", "Driver", "Health", "Other" };
 
-struct CThingComponentSet
-{
+class CThingComponentSet
+{ public:
     CEntry Storage[8];
     CEntry* Start;
     signed char Size;

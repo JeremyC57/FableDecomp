@@ -1,4 +1,4 @@
-struct CCombatAction_GenericStrikeResponse {
+class CCombatAction_GenericStrikeResponse { public:
     void* vftable;
 };
 

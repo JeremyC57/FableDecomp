@@ -36,7 +36,7 @@ public:
         return false;
     }
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid);    // 0x0051ED80
 };
 class CTCActivationTrigger;

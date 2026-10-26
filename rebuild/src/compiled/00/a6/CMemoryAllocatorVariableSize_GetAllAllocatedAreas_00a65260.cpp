@@ -6,7 +6,7 @@
 // from the globals, which are re-read after every array store (the store may alias them). The
 // capacity argument is not checked by this build.
 struct CMemoryAreaChunk;
-struct CMemoryAllocatorVariableSize;
+class CMemoryAllocatorVariableSize;
 
 // Process-wide copies of the active allocator's alignment, refreshed on entry to the allocator's
 // public methods (0x013D28D4 alignment, 0x013D28D8 alignment shift).
@@ -52,7 +52,7 @@ struct CMemoryAllocatorBase {                   // PDB: 3100 bytes
     unsigned long     AlignmentShift;           // +0xc18
 };
 
-struct CMemoryAllocatorVariableSize : CMemoryAllocatorBase {   // PDB: 3128 bytes, vtable 0x0129DB1C
+class CMemoryAllocatorVariableSize : public CMemoryAllocatorBase { public:   // PDB: 3128 bytes, vtable 0x0129DB1C
     CMemoryAreaChunk* PFirstChunk;              // +0xc1c
     long              MinChunkSize;             // +0xc20
     long              NoFreesSinceConsolidation;// +0xc24

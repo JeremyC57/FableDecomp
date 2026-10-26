@@ -3,7 +3,7 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { const char* name; };
+class CScriptThing { public: const char* name; };
 struct CHandle { const char* who; CHandle() : who("") {} bool IsScripting() { return false; } void Release() {} };
 struct CCutsceneCastMap {
     CHandle slots[2];
@@ -11,7 +11,7 @@ struct CCutsceneCastMap {
 };
 static void RunCutsceneMacro(const char* name, CCutsceneCastMap& cast, void*, void*, bool, bool) { Log(name); Log(cast["THUNDER"].who); Log(cast["HERO"].who); }
 struct CV_HeroDuelScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CV_HeroDuelScript* script;
     int frame, heroControlFrame;
     bool levelLoaded;

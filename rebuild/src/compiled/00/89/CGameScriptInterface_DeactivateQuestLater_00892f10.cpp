@@ -4,10 +4,10 @@
 // Retail ignores the script-interface object, loads the global quest manager,
 // and tail-dispatches the existing two stack arguments unchanged.
 
-struct CCharString;
+class CCharString;
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void DeactivateQuestLater(
         const CCharString& questName,
         unsigned long delay);

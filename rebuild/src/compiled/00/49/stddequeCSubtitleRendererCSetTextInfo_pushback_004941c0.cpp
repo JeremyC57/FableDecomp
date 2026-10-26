@@ -22,7 +22,7 @@
 #include <stdlib.h>                                     // malloc @ 0x00BFEA0E, free @ 0x00BFEA14
 #include <new>
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;                                  // +0x00
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510

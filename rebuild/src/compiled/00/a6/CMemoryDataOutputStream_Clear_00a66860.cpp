@@ -6,7 +6,7 @@ struct MemberBuffer {
     void Clear();   // non-virtual, __fastcall  -> direct call
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     char   pad0[0x3404];   // 0x0000 .. 0x3403
     int    m_size;         // 0x3404
     char   pad1[4];        // 0x3408 .. 0x340b

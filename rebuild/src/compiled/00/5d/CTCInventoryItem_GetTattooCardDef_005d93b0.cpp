@@ -24,7 +24,7 @@ struct CDefBase {
 };
 
 class CTattooDef;
-template <class T> struct CDefPointer {        // CDefPointer<const CTattooDef>; the def is reached through CDefBase
+template <class T> class CDefPointer { public:        // CDefPointer<const CTattooDef>; the def is reached through CDefBase
     CDefBase* m_p;
     CDefPointer() : m_p(0) { }
     CDefPointer(CDefBase* p) : m_p(p) { if (m_p) ++m_p->m_count; }
@@ -37,16 +37,16 @@ template <class T> struct CDefPointer {        // CDefPointer<const CTattooDef>;
     operator bool() const { return m_p != 0; }
 };
 
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDefTattoo(CDefPointer<const CTattooDef>& out);      // 0x005B1EFC (GetSubDef<CTattooDef>)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* m_pDef;                 // +0x70 (retail; CDefPointer<CThingDef>)
 };
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void*   __vftable;                     // +0x00
     CThing* m_pThing;                      // +0x04
     CDefPointer<const CTattooDef> GetTattooCardDef() const;

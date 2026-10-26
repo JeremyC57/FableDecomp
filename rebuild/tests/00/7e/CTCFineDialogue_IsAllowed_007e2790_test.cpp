@@ -1,11 +1,11 @@
 #include <cstdio>
 struct CPlayerRecord { bool m_busy; };
-struct CPlayerManager { CPlayerRecord* m_pMainPlayer; };
+class CPlayerManager { public: CPlayerRecord* m_pMainPlayer; };
 struct CGameUI { bool m_blockingF6; bool m_blockingFD; };
-struct CWorld { long m_mode; };
+class CWorld { public: long m_mode; };
 static CPlayerRecord g_player; static CPlayerManager g_manager; static CGameUI g_ui; static CWorld g_world;
 static CGameUI* g_pGameUI = &g_ui;
-struct CTCFineDialogue {
+class CTCFineDialogue { public:
     void* vptrSlot; void* ParentThing; long Fine; long Money; bool GivePlayerChanceToPayFine; bool WaitingForConfirmation;
     CPlayerManager* GetGameSubsystem1C() { return &g_manager; }
     CWorld* GetWorld() { return &g_world; }

@@ -14,7 +14,7 @@
 //   CReverbEnvironmentEntry is local (no engine header); the vector is STLport's three words.
 #pragma optimize("s", on)
 
-struct CCharStringData;
+class CCharStringData;
 struct CDataOutputStreamWriter {
     virtual ~CDataOutputStreamWriter();                     // slot 0
     virtual void SetPosition(unsigned long position);       // slot 1
@@ -24,7 +24,7 @@ struct CDataOutputStreamWriter {
     CCharStringData* NewLine_PStringData;                   // +0x04
     void WriteSLONG(long value);                            // 0x00993EB0
 };
-struct CReverbEnvironmentEntry {
+class CReverbEnvironmentEntry { public:
     float Params[21];                                       // +0x00
 };
 namespace std {

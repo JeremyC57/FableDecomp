@@ -4,8 +4,8 @@
 // the hero leaves and re-enters HeroGuildComplex the secret bookcase's exit point is switched off again
 static int g_frames = 0, g_endAt = 1000, g_disabled = 0, g_stateAt = 100;
 static const char g_loaded[] = "110011100110000000000";
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsLevelLoaded(const char* n) const { return std::strcmp(n, "HeroGuildComplex") == 0 && g_loaded[g_frames] == '1'; }
     CScriptThing GetThingWithScriptName(const char* n) const { CScriptThing t; t.id = std::strcmp(n, "SecretBookcase") == 0 ? 3 : 0; return t; }

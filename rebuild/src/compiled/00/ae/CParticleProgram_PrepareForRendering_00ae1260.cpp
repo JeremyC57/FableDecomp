@@ -1,22 +1,22 @@
 // CParticleProgram::PrepareForRendering(C4DVector*, CParticleSimulation*, float, float, ..., CMatrix4x4*, C3DMesh2*) -- the skinned variant: transform the fixed positions by the matrix into the render vertices, interpolate the simulated ones, and when the blend is significant blend them towards the transformed initial simulation (built in the group vector buffer)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE1260, length 192 bytes (`ret 2Ch`; the 11-argument overload).
-// Leaf: ?PrepareForRendering@CParticleProgram@@QAEXPAUC4DVector@@PAUCParticleSimulation@@MMPAUC3DAnimationBlendState
+// Leaf: ?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MMPAVC3DAnimationBlendState
 // Callees: CParticleProgram::TransformVertices(C4DVector*, const C4DVector*, ulong, const CMatrix4x4*, const
 //          CArray<C3DGroup2>*) @ 0x00AE0E60 (x2), GetGroupVectorBuffer(ulong) @ 0x00AE0540 (__fastcall), the 8-argument
 //          vector interpolation @ 0x00A5BBA0 and GFInterpolateVectors @ 0x00A5B870. Global: 1e-4f @ 0x0129BA3C.
 // Layout: as the 4-argument overload 0x00AE1600 (retail 12-byte containers); only the matrix of the animation
 // arguments is used.
 // Shape: the buffer pointer from GetGroupVectorBuffer stays in ebx for the transform and the blend.
-struct C4DVector { float X, Y, Z, W; };
-struct CMatrix4x4;
-struct C3DGroup2;
-struct C3DAnimationBlendState;
-struct C3DAnimationManager;
-struct C3DVector;
-struct C3DMesh2;
-struct CMovableResourceMemoryPool;
+class C4DVector { public: float X, Y, Z, W; };
+class CMatrix4x4;
+class C3DGroup2;
+class C3DAnimationBlendState;
+class C3DAnimationManager;
+class C3DVector;
+class C3DMesh2;
+class CMovableResourceMemoryPool;
 
-template<class T> struct CArray {                  // retail CArray<T>: three pointers
+template<class T> class CArray { public:                  // retail CArray<T>: three pointers
     T* m_pData;
     T* m_pLast;
     T* m_pEnd;
@@ -31,7 +31,7 @@ void __cdecl GFInterpolateVectors(C4DVector* out, unsigned long outStride, const
 
 extern const float g_MinimumMorphBlend;            // 0x0129BA3C (1e-4f)
 
-struct CParticleSimulation {                       // Ego_r.pdb, retail 0x80 bytes
+class CParticleSimulation { public:                       // Ego_r.pdb, retail 0x80 bytes
     void*         __vftable;                       // +0x00
     unsigned char RenderData[8];                   // +0x04 CCountedPointer<CParticleSimulationRenderData>
     float         Timestep;                        // +0x0c

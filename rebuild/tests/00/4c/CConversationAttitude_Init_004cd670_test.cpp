@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* text;
     int assigns;
     CCharString() : text(""), assigns(0) {}

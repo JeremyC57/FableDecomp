@@ -25,7 +25,7 @@ struct _WIN32_FILE_ATTRIBUTE_DATA {
 };
 extern "C" __declspec(dllimport) int __stdcall GetFileAttributesExW(const wchar16* fileName, int infoLevelId, void* fileInformation);   // IAT 0x0143FDB8
 
-struct CWideStringData;
+class CWideStringData;
 class CWideString
 {
 public:

@@ -1,10 +1,10 @@
-struct CAIBrain;
-struct CThingAICreature;
-struct CCharString;
+class CAIBrain;
+class CThingAICreature;
+class CCharString;
 enum EScriptAIPriority { EScriptAIPriority_Dummy = 0 };
 
-struct CAIStateGroupBase
-{
+class CAIStateGroupBase
+{ public:
     virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long param, EScriptAIPriority priority, const CCharString& name);
     long baseField_0x04;
     long baseField_0x08;

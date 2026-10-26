@@ -7,7 +7,7 @@
 // Layout: engine/CEnginePrimitiveManagerParticleSpriteTrailGroup.h has the PDB 16-byte CArray at +0x0c; retail's STLport vector is
 //   12 bytes, so every later member sits 4 lower (VertexShaderDisplacement +0x18 ... PTrailManager +0x38 {Data, RefCount}).
 // Shape: as the landed line-group constructor 0x00BC4D90; the counted pointer is copied in the mem-initialiser list.
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -30,10 +30,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -46,7 +46,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -60,7 +60,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
@@ -91,19 +91,19 @@ struct CVertexShaderArray : _Vector_base<CVertexShader> {   // retail 12-byte ST
     CVertexShader* begin() { return _M_start; }
     CVertexShader& operator[](long index) { return *(begin() + index); }
 };
-struct CEnginePrimitiveManager {                   // 0x0c bytes
+class CEnginePrimitiveManager { public:                   // 0x0c bytes
     virtual ~CEnginePrimitiveManager();
     unsigned char _body[0x8];
     CEnginePrimitiveManager(CEngineSceneArray* scenes);   // 0x00BACDB0
 };
-struct CEnginePrimitiveManagerSpriteTrails;
-template <class T> struct CCountedPointer {
+class CEnginePrimitiveManagerSpriteTrails;
+template <class T> class CCountedPointer { public:
     T*    Data;
     long* RefCount;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), RefCount(other.RefCount) { if (RefCount) ++*RefCount; }
 };
 
-struct CEnginePrimitiveManagerParticleSpriteTrailGroup : CEnginePrimitiveManager {   // vtable 0x012A5D94
+class CEnginePrimitiveManagerParticleSpriteTrailGroup : public CEnginePrimitiveManager { public:   // vtable 0x012A5D94
     CVertexShaderArray VertexShadersSpriteTrailPointLights;   // +0x0c
     CVertexShader      VertexShaderDisplacement;   // +0x18
     CPixelShader       PixelShader;                // +0x20

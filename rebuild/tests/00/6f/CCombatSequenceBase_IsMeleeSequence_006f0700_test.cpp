@@ -1,4 +1,4 @@
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     struct VTable {
         void* slot0;
         void* slot4;

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CLandscapeBackgroundTreeNode::Render (0x00BF71D0): frustum cull by the normal-signed box corner,
 // patch render, branch recursion and the visible / visible-updated bookkeeping.
-struct CPlane { float X, Y, Z, D; };
+class CPlane { public: float X, Y, Z, D; };
 static CPlane g_planes[4];
 struct CNode;
 struct CBranch;

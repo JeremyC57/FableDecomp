@@ -13,13 +13,13 @@ extern "C" void __cdecl free(void* p);                // 0x00BFEA14
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memcpy, memset)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
@@ -44,7 +44,7 @@ struct CByteVector {                                   // CArray<char> (STLport 
     long GetCount() const { return _M_finish - _M_start; }
     char* GetData() { return _M_finish - _M_start != 0 ? _M_start : (char*)this; }
 };
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     unsigned long StateBlockCRC;                       // +0x00
     unsigned long InfoSize;                            // +0x04
     char*         InfoBuffer;                          // +0x08
@@ -75,7 +75,7 @@ struct CPackedUIntArray {
     unsigned long operator[](unsigned long index) const;   // 0x00A629F0
     bool IsPacked() const { return m_pData != 0; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

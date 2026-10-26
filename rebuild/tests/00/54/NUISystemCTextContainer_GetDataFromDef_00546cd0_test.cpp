@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_destroyed = 0;
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 struct CUIDef {
     long m_count; C2DBoxF TextWindow; float ScrollingSpeed; float InputDelay;
     virtual void Destroy() { ++g_destroyed; }

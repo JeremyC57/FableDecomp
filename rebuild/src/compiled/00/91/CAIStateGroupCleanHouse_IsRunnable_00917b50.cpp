@@ -8,9 +8,9 @@
 // +0x20 tested as a branch (`test dword ptr [eax+38h],80000h`), then the sorted map's lower bound
 // with the key copied to a frame slot (`push ecx`) and compared as an immediate. If a scheduler
 // exists and does not prefer this idle, the group is not runnable; otherwise the base decides.
-struct CAIStateGroupBase;
+class CAIStateGroupBase;
 
-struct CTCIdleScheduler {
+class CTCIdleScheduler { public:
     bool IsPreferredIdle(CAIStateGroupBase* group);     // 0x00801BE0
 };
 
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -40,12 +40,12 @@ struct CThingAICreature {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;             // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

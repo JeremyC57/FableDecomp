@@ -6,9 +6,9 @@
 static int g_frames = 0, g_endAt = 1000, g_bindings = 0, g_post = 0, g_teleport = 0, g_created = 0, g_scripted = 0, g_faction = 0;
 static int g_friends = 0, g_boss = 0, g_played = 0, g_paused = 0, g_objective = 0, g_story = 0, g_tutorialShown = 0, g_clicked = 0;
 static bool g_tutorial = true;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CThingImpl { bool friends; CThingImpl() : friends(false) {} void SetFriendsWithEverythingFlag(bool on) { friends = on; ++g_friends; } };
-struct CScriptThing {
+class CScriptThing { public:
     const char* name; C3DVector pos; CThingImpl* data;
     CScriptThing() : name(""), data(0) { pos.X = pos.Y = pos.Z = 0; }
     const C3DVector& GetPos() const { return pos; }
@@ -18,7 +18,7 @@ static CThingImpl g_whisperImpl;
 struct CHandle { const CScriptThing* thing; CHandle() : thing(0) {} bool IsScripting() { return thing != 0; } void Release() { thing = 0; } };
 struct CCastMap { const char* keys[2]; const CScriptThing* things[2]; int n; CCastMap() : n(0) {}
     void Set(const char* k, const CHandle& h) { keys[n] = k; things[n] = h.thing; ++n; } };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frames; }
     bool StartScriptingEntity(const CScriptThing& t, CHandle& h, int priority) { if (g_frames < 2 || priority != 4) return false; h.thing = &t; ++g_scripted; return true; }

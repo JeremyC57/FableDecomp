@@ -19,8 +19,8 @@ public:
     ~CWideString();                                     // 0x0099B510
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
-struct CMusicManager {
-    struct CRegisteredMusicEntry {                      // Ego_r.pdb, 20 bytes
+class CMusicManager { public:
+    class CRegisteredMusicEntry { public:                      // Ego_r.pdb, 20 bytes
         CWideString SrcFileName;                        // +0x00
         CWideString DstFileName;                        // +0x04
         float       Gain;                               // +0x08

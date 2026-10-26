@@ -13,11 +13,11 @@ struct CObjectCacheGroupCollection {
     virtual ~CObjectCacheGroupCollection() { ++g_collectionsDeleted; }
 };
 
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(long fileBlockPos) { g_releasedPos = fileBlockPos; }
 };
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, void* owner) { (void)owner; if (g_rebinds < 16) g_rebindBlocks[g_rebinds] = block; ++g_rebinds; }
 };
 static CEngineLandscapeMemoryManager g_landscapeMemory;

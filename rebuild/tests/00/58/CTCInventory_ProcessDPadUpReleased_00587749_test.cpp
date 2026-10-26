@@ -5,7 +5,7 @@ struct CLongVector {
     long* first; long* last; long* end_of_storage;
     long& operator[](unsigned long n) { return first[n]; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CLongVector QuickAccessItems;
     bool EnableQuickAccessAssign;
     bool EnableQuickAccessRemove;

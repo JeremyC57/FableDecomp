@@ -7,14 +7,14 @@
 #include <string.h>
 #include <new>
 static int g_instances = 0;
-struct CInitBaseClass { virtual ~CInitBaseClass() { } bool m_initialised; CInitBaseClass() : m_initialised(false) { ++g_instances; } };
+class CInitBaseClass { public: virtual ~CInitBaseClass() { } bool m_initialised; CInitBaseClass() : m_initialised(false) { ++g_instances; } };
 struct SVoiceEntry { long first; long second; };
 struct CKeyPairCompareLess { };
 struct CVoiceMap {
     SVoiceEntry* m_pFirst; SVoiceEntry* m_pLast; SVoiceEntry* m_pEnd; CKeyPairCompareLess m_compare; bool m_dirty;
     CVoiceMap() : m_pFirst(0), m_pLast(0), m_pEnd(0), m_dirty(false) { }
 };
-struct CSimVoice : CInitBaseClass { CVoiceMap Voices; CSimVoice() { } };
+class CSimVoice : public CInitBaseClass { public: CVoiceMap Voices; CSimVoice() { } };
 int main()
 {
     unsigned char raw[sizeof(CSimVoice)]; memset(raw, 0xcd, sizeof(raw));

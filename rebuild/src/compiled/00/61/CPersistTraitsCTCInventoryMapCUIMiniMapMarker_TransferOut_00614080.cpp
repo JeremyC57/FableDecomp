@@ -13,10 +13,10 @@
 //   (copy into the dead `out` argument slot), each float through an inline CPersistTraits<float>::TransferOut (the
 //   formatted temporary built in that slot after the 8-byte push), the name copied into a function-scope local that is
 //   destroyed at the end before the traits. No EH frame (the TU has no /EHsc). Speed-optimised (default) TU.
-struct CPersistContext;
+class CPersistContext;
 class CCharString {
 public:
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0

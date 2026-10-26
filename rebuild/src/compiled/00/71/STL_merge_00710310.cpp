@@ -10,7 +10,7 @@
 // `__copy(first, last, result, random_access_iterator_tag, Distance*)`, both inlined; last2 is re-read from its argument
 // slot each iteration (VC7.1 runs out of registers with ebp holding the priority).
 // Label: catalogued as Dinkumware `_Merge<_List_const_iterator<_List_val<CAnimSet> >*, ..., CAnimSetItPriorityLessThan>`.
-struct CAnimSet {                                 // retail layout (12-byte vectors)
+class CAnimSet { public:                                 // retail layout (12-byte vectors)
     unsigned char _before[0x4c];                  // UpdateMode, Anims, InternalAlphas, ... AnimDelay
     long Priority;                                // +0x4C
     unsigned char _after[0x0c];                   // Type, the flag bits, ...
@@ -27,7 +27,7 @@ struct CAnimSetIterator {                         // list<CAnimSet>::const_itera
     const CAnimSet& operator*() const { return _M_node->_M_data; }
 };
 
-struct CAnimSetItPriorityLessThan {               // empty functor, passed in a 4-byte slot
+class CAnimSetItPriorityLessThan { public:               // empty functor, passed in a 4-byte slot
     bool operator()(const CAnimSetIterator& a, const CAnimSetIterator& b) const { return (*a).Priority < (*b).Priority; }
 };
 

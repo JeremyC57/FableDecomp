@@ -12,9 +12,9 @@
 // Layout: Ego_r.pdb CSP_ScreamerTrigger: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18.
 // Shape: the landed CHTG_AmbushPointBackup::Main 0x00D73C70 (CScriptThing with the inline CCountedPointer copy-assign and
 // inline GetPos); the loop counter starts at 0 and doubles as the zero source of the two default constructions.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -25,7 +25,7 @@ struct CScriptThingImp {
     virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();
     virtual const C3DVector& GetPosition() const;   // slot 6 (+0x18)
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -54,11 +54,11 @@ struct CCountedPointer {
         return *this;
     }
 };
-struct CBaseClass {                                 // polymorphic root (vptr at +0)
+class CBaseClass { public:                                 // polymorphic root (vptr at +0)
     virtual void b0();                              // slot 0 (the scalar deleting destructor)
     CBaseClass();                                   // 0x0099A2D0
 };
-struct CScriptThing : CBaseClass {                  // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                  // vtable 0x01238C8C
     CCountedPointer PImp;
     CScriptThing() { }
     ~CScriptThing();                                // 0x004AA840
@@ -86,7 +86,7 @@ bool __fastcall AreAllThingsInVectorDead(const CScriptThingVector& things);   //
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD2(qe)                              // slots 8..69

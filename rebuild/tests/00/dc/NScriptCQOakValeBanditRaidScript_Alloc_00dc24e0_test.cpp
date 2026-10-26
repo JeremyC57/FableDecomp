@@ -20,7 +20,7 @@ public:
     CScriptThing() { }
     CCountedPointer<CScriptThing> PImp;
 };
-struct CScriptBase { virtual ~CScriptBase() { } };
+class CScriptBase { public: virtual ~CScriptBase() { } };
 template <class TData> struct CLevelScriptBase : CScriptBase {
     CGameScriptInterfaceBase* Game;
     TData* MasterScriptData;

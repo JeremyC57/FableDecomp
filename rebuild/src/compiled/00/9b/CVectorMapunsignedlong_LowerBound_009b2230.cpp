@@ -14,7 +14,7 @@ template <class A, class B> struct pair {
 struct SValue20 {                 // 20-byte mapped value (the propagated CCountedPointer<CFaction> label is 4 bytes and does not fit the 24-byte stride)
     long m_a[5];
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const pair<K, V>& entry) const { return key < entry.first; }
 };

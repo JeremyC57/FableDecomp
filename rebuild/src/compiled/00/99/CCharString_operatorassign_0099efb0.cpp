@@ -2,15 +2,15 @@ typedef unsigned char uint8;
 typedef int int32;
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     uint8 pad[0xd];
     int32 refcount;
 };
 #pragma pack(pop)
 
-struct CCharString
-{
+class CCharString
+{ public:
     CCharStringData* data;
 
     void UnassignString();

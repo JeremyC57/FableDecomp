@@ -1,19 +1,19 @@
 #include <cstdio>
 struct CAddMeshDesc { long MeshId; };
 static int g_handles = 0;
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     long PrimitiveId;
     CEnginePrimitiveHandle(long id) : PrimitiveId(id) { ++g_handles; }
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& other) : PrimitiveId(other.PrimitiveId) { ++g_handles; }
     ~CEnginePrimitiveHandle() { --g_handles; }
 };
-struct CEnginePrimitiveManagerRepeatedStaticMeshes {
+class CEnginePrimitiveManagerRepeatedStaticMeshes { public:
     long Created;
     CEnginePrimitiveManagerRepeatedStaticMeshes() : Created(0) {}
     CEnginePrimitiveHandle CreatePrimitive(const CAddMeshDesc& desc) { ++Created; return CEnginePrimitiveHandle(desc.MeshId * 10); }
 };
 // The candidate logic: forward to the repeated-static-mesh manager.
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     CEnginePrimitiveManagerRepeatedStaticMeshes* RepeatedStaticMeshManager;
     CEnginePrimitiveHandle AddRepeatedStaticMesh(const CAddMeshDesc& desc) { return RepeatedStaticMeshManager->CreatePrimitive(desc); }
 };

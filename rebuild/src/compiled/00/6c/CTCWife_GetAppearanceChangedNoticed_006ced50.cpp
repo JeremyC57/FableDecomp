@@ -15,12 +15,12 @@ long __fastcall GFGetCurrentFrame();                        // 0x0049D870
 extern long g_FramesPerSecond;                              // 0x01375550
 extern const long g_AppearanceCategoryPriority[16];         // 0x0125ED00
 
-struct CHeroMarriageDef {
+class CHeroMarriageDef { public:
     unsigned char _pad00[0x40];
     long AppearanceChangeNoticeSeconds;                     // +0x40
 };
 
-struct CTCWife {
+class CTCWife { public:
     void*             __vftable;                            // +0x00
     void*             ParentThing;                          // +0x04
     unsigned char     _pad_0x08[0x4];

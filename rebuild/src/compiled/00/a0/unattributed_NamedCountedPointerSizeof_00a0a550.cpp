@@ -13,7 +13,7 @@
 // tail-duplicated into both arms: `return Pointer.Sizeof() + Name.Sizeof();`.
 // Leaf: NamedCountedPointerSizeof
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;                               // +0x00
     unsigned long Sizeof() const;                // 0x0099E500
 };
@@ -26,7 +26,7 @@ struct CSizedObject {
     virtual unsigned long Sizeof() const;        // slot 20 (+0x50)
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 struct CCountedPointer_CSizedObject {
     CSizedObject* Data;                          // +0x00

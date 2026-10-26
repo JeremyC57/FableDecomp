@@ -1,6 +1,6 @@
 // Clear the two byte flags at this+0x24 / this+0x25. __fastcall this=ecx.
 #pragma pack(push,1)
-struct CCachedFile {
+class CCachedFile { public:
     char pad_0[0x24];
     bool flag_a;
     bool flag_b;

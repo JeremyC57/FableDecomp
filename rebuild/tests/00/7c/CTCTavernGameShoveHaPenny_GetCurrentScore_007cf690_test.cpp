@@ -9,11 +9,11 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
@@ -30,7 +30,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0xb0];
     unsigned long CurrentScore;                 // +0xb8
     unsigned long RequiredScore;                // +0xbc
@@ -48,7 +48,7 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
     CWideString GetText(unsigned long id);      // 0x005E9E70

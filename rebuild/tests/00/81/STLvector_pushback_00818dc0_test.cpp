@@ -3,15 +3,15 @@
 // (end(), x, fill length 1, at-end true).
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
-struct CDefClassBase {
+class CThing { public: int id; };
+class CDefClassBase { public:
     virtual ~CDefClassBase() { }
     long RefCount;
     CDefClassBase() : RefCount(0) { }
 };
-struct CHitLocationDef : public CDefClassBase { };
-struct CArmourDef : public CDefClassBase { };
-template <class T> struct CDefPointer {
+class CHitLocationDef : public CDefClassBase { public: };
+class CArmourDef : public CDefClassBase { public: };
+template <class T> class CDefPointer { public:
     T* Object;
     explicit CDefPointer(T* o) : Object(o) { if (Object) ++Object->RefCount; }
     CDefPointer(const CDefPointer<T>& other) : Object(other.Object)

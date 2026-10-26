@@ -11,14 +11,14 @@
 //   `xor ; and mask ; xor` merge, and a field ending at the top bit of its unit uses the `& ~mask ^ src` form.
 namespace NParticleEngine {
 struct CRGBColour { unsigned long Colour; };
-struct CParticleSystem;
-struct CPSCBase {
+class CParticleSystem;
+class CPSCBase { public:
     virtual void v00();
     CParticleSystem* ParticleSystem;                    // +0x04
     bool UpdateStarted : 1;                             // +0x08
     bool Initialised : 1;
 };
-struct CPSCDecalRenderer : CPSCBase {
+class CPSCDecalRenderer : public CPSCBase { public:
     float         DecalLifeSecs;                        // +0x0c
     long          DecalBankIndex;                       // +0x10
     CRGBColour    StartColour;                          // +0x14

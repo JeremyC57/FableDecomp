@@ -12,7 +12,7 @@ struct IComponentB {                               // the interface base at +0x1
 struct CComponentRoot {                            // the primary base: vptr at +0
     virtual void v00();
 };
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];             // +0x1c .. +0x15c: the base's state
     CChangingStateComponent(long owner);           // 0x0052CC50 (labelled "CDraggableInto")
 };
@@ -21,7 +21,7 @@ struct CFrontEndManager_Calls {
     virtual void RegisterHoverable(IComponentA* component);   // slot 2 (+0x08)
     static CFrontEndManager_Calls* __fastcall GetInstance();   // 0x0041E5F2
 };
-struct CHoverable : CChangingStateComponent {      // vtables 0x0124BFB4 / 0x0124BF90 / 0x0124BF88
+class CHoverable : public CChangingStateComponent { public:      // vtables 0x0124BFB4 / 0x0124BF90 / 0x0124BF88
     virtual void v00();
     virtual void va00();
     virtual void vb00();

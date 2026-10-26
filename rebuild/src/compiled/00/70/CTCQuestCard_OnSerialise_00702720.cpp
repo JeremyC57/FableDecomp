@@ -8,23 +8,23 @@
 //   virtuals, so the class is modelled locally with the same offsets; CQuestCardDef RenownReward +0x44, GoldReward +0x48.
 // Shape: the literal defaults are const-ref temporaries homed in the dead `flag` parameter slot (`lea eax,[esp+10h]`); the
 //   reward defaults pass the def fields' addresses (`mov edx,[esi+0Ch] ; add edx,48h`).
-struct CCharString { void* PStringData; };
-struct CPersistContext {
+class CCharString { public: void* PStringData; };
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0 Transfer<bool>
     void Transfer(const char* name, long& value, const long& defaultValue);     // 0x00410BE0 Transfer<long>
     void Transfer(const char* name, CCharString* value);                        // 0x00411010
 };
-struct CQuestCardDef {
+class CQuestCardDef { public:
     unsigned char _pad00[0x44];
     long RenownReward;                                  // +0x44
     long GoldReward;                                    // +0x48
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     const T* Object;
     const T* operator->() const { return Object; }
 };
-struct CThing;
-struct CTCQuestCard {
+class CThing;
+class CTCQuestCard { public:
     virtual void v00();
     virtual void OnSerialise(CPersistContext& context, bool flag);   // slot 1
     CThing*       ParentThing;                          // +0x04 (CTCBase)

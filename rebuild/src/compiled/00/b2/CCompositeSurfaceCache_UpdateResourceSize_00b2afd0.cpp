@@ -7,7 +7,7 @@
 // The size is the handle's own 4 bytes plus the referenced block.
 #include "engine/CResource.h"
 
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned long Sizeof();                                     // 0x009FCBF0
 };
 

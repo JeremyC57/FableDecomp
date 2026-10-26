@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     bool m_scan; int m_def; int m_script; int m_tc;
     bool IsIncludedInThingScans() { return m_scan; }
 };
@@ -32,11 +32,11 @@ static void BuildList()
     }
     g_list.m_pHead = &g_head;
 }
-struct CThingSearchTools { void* WorldMap; };
-struct CThingMarker { enum { ThingListType = 0x0b }; };
-struct CThingFilter_HasDefName { bool operator()(CThing* thing) const { return thing->m_def != 0; } };
-struct CThingFilter_HasScriptData { bool operator()(CThing* thing) const { return thing->m_script != 0; } };
-template <class A, class B> struct CFilter_Bind2 {
+class CThingSearchTools { public: void* WorldMap; };
+class CThingMarker { public: enum { ThingListType = 0x0b }; };
+class CThingFilter_HasDefName { public: bool operator()(CThing* thing) const { return thing->m_def != 0; } };
+class CThingFilter_HasScriptData { public: bool operator()(CThing* thing) const { return thing->m_script != 0; } };
+template <class A, class B> class CFilter_Bind2 { public:
     const A& m_first;
     const B& m_second;
     CFilter_Bind2(const A& a, const B& b) : m_first(a), m_second(b) {}

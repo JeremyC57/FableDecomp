@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesPhysicalShieldDef {
+class CSpecialAbilitiesPhysicalShieldDef { public:
     void* vftable;
 };
 

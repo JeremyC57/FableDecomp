@@ -1,7 +1,7 @@
 typedef unsigned char  u8;
 typedef unsigned long  u32;
 struct BlockSet { void* _node; void* _end; };
-struct CThing { char _p0[0x24]; u32 flags; char _p1[0x44-0x28]; BlockSet blockSet; char _p2[0x91-0x4C]; u8 guardFlag; };
+class CThing { public: char _p0[0x24]; u32 flags; char _p1[0x44-0x28]; BlockSet blockSet; char _p2[0x91-0x4C]; u8 guardFlag; };
 struct CEntityWrap;
 typedef CThing* (__fastcall *ResolveFn)(CEntityWrap*);
 struct BlockSet2 { void* _node; void* _end; void* LowerBound(const int* key); };

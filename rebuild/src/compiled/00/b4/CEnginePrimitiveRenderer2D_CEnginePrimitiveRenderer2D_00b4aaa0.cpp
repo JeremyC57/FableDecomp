@@ -14,15 +14,15 @@
 
 #include "engine/CEngineInternalPrimitiveBase.h"
 
-struct CEnginePrimitiveManager;
-struct CEngineComponent;
-struct CEnginePrimitiveManager2DStaticMeshes;
-struct CEnginePrimitiveManager2DAnimatedMeshes;
-struct CEnginePrimitiveManager2DSprites;
-struct CEnginePrimitive2DViewportManager;
-struct CEnginePrimitiveManager2DParticleGroup;
+class CEnginePrimitiveManager;
+class CEngineComponent;
+class CEnginePrimitiveManager2DStaticMeshes;
+class CEnginePrimitiveManager2DAnimatedMeshes;
+class CEnginePrimitiveManager2DSprites;
+class CEnginePrimitive2DViewportManager;
+class CEnginePrimitiveManager2DParticleGroup;
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (FABLE_FASTCALL *DeleteFunc)(void*);
     void* Data;
@@ -31,7 +31,7 @@ struct CCPPointerInfo {
 extern void FABLE_CDECL FableOperatorDelete(void* pointer); // 0x00BFE9BC
 extern void FABLE_CDECL FableFree(void* pointer);           // 0x00BFEA14
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
 
@@ -71,7 +71,7 @@ struct CManagerPointerArray {
     }
 };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual ~CEngineComponent();
     void** GlobalPointerAddress;
     bool RenderEnabled;
@@ -79,7 +79,7 @@ struct CEngineComponent {
     unsigned char Padding[2];
 };
 
-struct CEnginePrimitiveRenderer2D : CEngineComponent {
+class CEnginePrimitiveRenderer2D : public CEngineComponent { public:
     CManagerPointerArray PrimitiveManagers;                     // native +0x0c, extent 0x0c
     CCountedPointer<CEnginePrimitiveManager2DStaticMeshes> StaticMesh2DManager; // +0x18
     CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes> AnimatedMesh2DManager; // +0x20

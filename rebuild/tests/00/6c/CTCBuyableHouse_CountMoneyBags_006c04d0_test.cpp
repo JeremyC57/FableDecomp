@@ -1,10 +1,10 @@
 // Behaviour test for CTCBuyableHouse::CountMoneyBags (0x006C04D0).
 #include <cstdio>
 
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { T* Get() const { return (T*)GetPItem(); } };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: T* Get() const { return (T*)GetPItem(); } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
 };
 struct SThingNode { SThingNode* next; SThingNode* prev; CIntelligentPointer<CThing> thing; };
 struct CTCThingList_0x21 { SThingNode* m_head; };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char m_stateFlags;
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template<class T> bool GetInterface(T** ppOut, long interfaceType)

@@ -1,6 +1,6 @@
 // Behaviour test for 0x007FF7D0 CTCDHeroSuit::Create: activate a thing that has the hero-suit driver bit, kill one without it.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CTCDHeroSuit;
 static int g_activations = 0, g_kills = 0, g_lastPlayer = -1, g_lastMap = -1; static bool g_lastPersistent = false;
 class CThing {

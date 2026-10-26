@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CThingMarker::DrawIsDrawable (0x0083D100): base && (engine flag || has appearance).
-struct CDisplayEngine { bool enabled; bool IsDrawingEnabled() { return enabled; } };
-struct CThingMarker {
+class CDisplayEngine { public: bool enabled; bool IsDrawingEnabled() { return enabled; } };
+class CThingMarker { public:
     CDisplayEngine* engine; void* PTCGraphicAppearance; bool base; int engineCalls;
     CDisplayEngine* GetDisplayEngine() { ++engineCalls; return engine; }
     bool BaseDrawIsDrawable() { return base; }

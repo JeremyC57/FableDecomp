@@ -18,11 +18,11 @@
 // register; ParentThing pushed before the GetWorld call.
 // Shape: the opinion manager is reached by naming the GetWorld() CALL result (`CWorld* world = GetWorld(); world->POpinionReactionManager->Clear...`):
 //   the member read stays in the call expression and lands in ecx (a named manager local goes through eax + mov ecx,eax).
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 namespace NFire {
-struct CFirePoint {
+class CFirePoint { public:
     unsigned char _data[0x2c];
     void Reset();                                           // 0x00780700
 };
@@ -56,7 +56,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -72,21 +72,21 @@ struct CThing {
     }
 };
 
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* source, bool immediately);   // 0x007008C0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char            _pad00[0x74];
     COpinionReactionManager* POpinionReactionManager;       // +0x74
 };
 
-struct CFlammableDef {
+class CFlammableDef { public:
     unsigned char _pad[0x28];
     long FireResistance;                                    // +0x28
 };
 
-struct CTCFlammable {
+class CTCFlammable { public:
     virtual void v00();
     CThing*        ParentThing;                             // +0x04 (CTCBase)
     bool           ToBeRemoved;                             // +0x08

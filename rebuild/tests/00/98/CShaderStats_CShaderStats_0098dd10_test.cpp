@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char text[8];
     CCharString(const char* s) { std::strncpy(text, s, 7); text[7] = 0; }
     CCharString(const CCharString& o) { std::memcpy(text, o.text, 8); }
 };
 static int g_baseCtors = 0;
-struct CBaseClass { CBaseClass() { ++g_baseCtors; } };
+class CBaseClass { public: CBaseClass() { ++g_baseCtors; } };
 struct NodeBase { bool color; NodeBase* parent; NodeBase* left; NodeBase* right; };
 struct Tree {
     NodeBase* header; unsigned int count; char compare;

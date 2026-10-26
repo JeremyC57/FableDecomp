@@ -27,16 +27,16 @@ struct CStrikeQuery {                          // the creature's object at +0x10
     virtual void v014();
     virtual bool IsStriking();                // slot 15 (+0x3c)
 };
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     unsigned char _pad[0x100];
     CStrikeQuery* m_pStrikeQuery;             // +0x100
     bool IsPerformingAnyAction();             // 0x006622A0
 };
-struct CPlayer {
+class CPlayer { public:
     bool IsInitialised();                     // 0x0099A330
     CThingPlayerCreature* GetPlayerCreature();// 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                 // 0x00449970
 };
 extern long g_BulletTimeStrikeSeconds;        // 0x01375550

@@ -1,7 +1,7 @@
 // behaviour test for COptimisedFace's copy constructor (0x00AD0100)
 #include <cstdio>
 #include <new>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
 struct COptimisedFace {
     unsigned int VertexIndices[3]; unsigned int UniqueVertexIndices[3]; int Edges[3];
     C3DVector UTangent, VTangent; bool Exists; unsigned int OutputIndex; int Segment;

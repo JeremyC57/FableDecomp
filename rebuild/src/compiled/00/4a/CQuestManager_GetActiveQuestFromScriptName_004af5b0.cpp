@@ -17,7 +17,7 @@
 // quest is returned from ebx.
 #include "engine/CQuestManager.h"             // PDB layout: ActiveQuests at +0x44 (debug containers); retail +0x38, see above
 
-struct CCharStringData {                       // the shared string block
+class CCharStringData { public:                       // the shared string block
     const char*   m_pData;                     // +0x00
     unsigned long m_length;                    // +0x04
 };
@@ -34,7 +34,7 @@ inline bool SameString(CCharStringData* a, CCharStringData* b)
     return false;
 }
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
 };
 
@@ -50,7 +50,7 @@ struct CActiveQuest {                          // CQuestManager::CActiveQuest, r
     CCharString   QuestName;                   // +0x30
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct SActiveQuestNode {                      // STLport list node of CCountedPointer<CActiveQuest>
     SActiveQuestNode* next;                    // +0x00
     SActiveQuestNode* prev;                    // +0x04

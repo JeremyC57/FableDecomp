@@ -20,8 +20,8 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CCreatureActionBase;
-struct CThingPlayerCreature;
+class CCreatureActionBase;
+class CThingPlayerCreature;
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -51,10 +51,10 @@ inline bool IsThingAlive(const CThing* thing)
 {
     return thing && !(thing->m_stateFlags & 1);
 }
-struct CTCWallMount {                           // interface 0xDA
+class CTCWallMount { public:                           // interface 0xDA
     CThing* GetMountedThing();                  // 0x007DE4E0
 };
-struct CTCWallMountEffects {                    // interface 0xDB
+class CTCWallMountEffects { public:                    // interface 0xDB
     bool IsUsable();                            // 0x007DF3D0
     bool OnWallMountUseAction(CThingCreatureBase* user);   // 0x007DF4B0
 };
@@ -63,13 +63,13 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                              // +0x04
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_UseWallMount : CCreatureActionBase {   // vtable 0x0127498C
+class CCreatureAction_UseWallMount : public CCreatureActionBase { public:   // vtable 0x0127498C
     CIntelligentPointer<CThing> PWallMount;     // +0xa8
     CCreatureAction_UseWallMount(CThingCreatureBase* owner, CThingPlayerCreature* target);   // 0x00843610
 };

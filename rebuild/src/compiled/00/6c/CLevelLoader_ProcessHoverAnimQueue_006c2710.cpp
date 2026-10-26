@@ -16,7 +16,7 @@ private:
     void* m_pData;
 };
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
-struct CASuspendableProcess { virtual void v00(); };
+class CASuspendableProcess { public: virtual void v00(); };
 struct SCountBlock;
 struct CLevelLoaderObject {
     void Load(CASuspendableProcess* process);      // 0x006C2170
@@ -39,7 +39,7 @@ struct CObjectList {                               // retail list: one sentinel-
     CCountedPointer_CObject& front() { return head->next->value; }
     iterator erase(iterator where);                // 0x006C2BA0
 };
-struct CLevelLoader : CASuspendableProcess {
+class CLevelLoader : public CASuspendableProcess { public:
     unsigned char _pad04[0x10];
     CObjectList   ObjectList;                      // +0x14
     void ProcessHoverAnimQueue();

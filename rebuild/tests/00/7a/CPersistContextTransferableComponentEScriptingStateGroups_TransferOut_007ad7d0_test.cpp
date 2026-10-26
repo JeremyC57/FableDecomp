@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for 007ad7d0: TransferableComponent<EScriptingStateGroups>::TransferOut widens the target into a long for the writer.
 enum EScriptingStateGroups { GROUP_A, GROUP_B, GROUP_C };
-struct CPersistContext { int calls; };
-struct CCharString { long written; };
+class CPersistContext { public: int calls; };
+class CCharString { public: long written; };
 static void TransferOutLong(CPersistContext& context, CCharString& out, long* value) { out.written = *value; ++context.calls; }
 template <class T> struct Traits {
     T DefaultVal;

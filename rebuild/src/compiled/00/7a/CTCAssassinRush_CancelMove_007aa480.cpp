@@ -9,23 +9,23 @@
 // Shape: the parent pointer is read into a local BEFORE the accessor call (edi), the two flag stores
 // are tail-duplicated into both exits; the unlocked path is the `if` arm (the early-return form
 // places the locked exit first).
-struct CThing {
+class CThing { public:
     void RemoveTC(long interfaceType);                      // 0x004C9840
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x215];
     bool          m_bCancelLocked;                          // +0x215
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                               // 0x00449970
 };
 
 CPlayerManager* GetPlayerManager();                         // 0x00686D40
 
 #pragma pack(push, 1)
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x9e - 0x08];

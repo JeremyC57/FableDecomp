@@ -9,7 +9,7 @@
 // Layout: Ego_r.pdb CEditBox members sit 0x40 lower in retail (Text +0x164 for the PDB's +0x1a4; CursorPos +0x168,
 // DisallowSpaceAsFirstChar +0x17b, DeleteAllOnKeyPress +0x17c, MaxLength +0x180, AllowedCharacters +0x184,
 // ForbiddenCharacters +0x188) -- modelled locally.
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                          // 0x0099AED0
     CWideString(const unsigned short* text);                       // 0x0099B6B0

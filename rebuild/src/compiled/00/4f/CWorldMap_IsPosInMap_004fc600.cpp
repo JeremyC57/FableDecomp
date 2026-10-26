@@ -1,5 +1,5 @@
 // CWorldMap::IsPosInMap(const C3DVector&) const -- is the world position inside the world area and on a map that is loaded?
-// Leaf: ?IsPosInMap@CWorldMap@@QBE_NABUC3DVector@@@Z
+// Leaf: ?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z
 // Retail: Fable.exe @ 0x004FC600, 128 bytes. PDB ?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z
 // Callees: _ftol2 0x00BFEA70, virtual slot 17 GetMapNumberAt(const C2DCoordI&) 0x004FC080 (+0x44; rtti-vtables.tsv).
 // Retail CWorldMap (the engine header engine/CWorldMap.h is the PDB layout with 16-byte containers; retail STLport
@@ -12,26 +12,26 @@
 // +0x20 MapUID, +0x24 Used ... +0x40 IsSea.
 // Shape: the same half-open area test as GetMapNumberAt(const C3DVector&) 0x004FC0C0; the truncated coordinate is a
 // frame C2DCoordI passed by reference; a map whose PMap.Data (+0x10) is set counts as present.
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
-struct CMap;
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class CMap;
 
-struct CMapInfo {
+class CMapInfo { public:
     C2DBoxI       Area;                         // +0x00
     CMap*         PMap;                         // +0x10 CCountedPointer<CMap>::Data
     void*         PMapInfo;                     // +0x14 CCountedPointer<CMap>::Info
     unsigned char _rest[0x30];                  // +0x18 .. +0x48
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;                                   // +0x00
     T* Finish;                                  // +0x04
     T* EndOfStorage;                            // +0x08
     const T& operator[](unsigned long i) const { return Start[i]; }
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16();

@@ -26,7 +26,7 @@ class CThingObject;
 class CThingTrackNode;
 class CThingMarker;
 
-template <class T> struct CIntelligentPointer {
+template <class T> class CIntelligentPointer { public:
     void* _vfptr;
     T*    m_pItem;
 };
@@ -61,7 +61,7 @@ template <class It, class T> __declspec(noinline) It __fastcall find(It first, I
 }
 #pragma auto_inline(on)
 
-struct CTCVillage {
+class CTCVillage { public:
     void*                                 __vftable;          // +0x00
     unsigned char                         _pad_0x04[0x24];
     SList<CIntelligentPointer<CThingBuilding> >   VillageBuildings;   // +0x28

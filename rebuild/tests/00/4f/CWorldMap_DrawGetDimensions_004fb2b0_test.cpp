@@ -2,7 +2,7 @@
 
 struct SDimensions { int a; int b; int c; int d; };
 
-struct CWorldMap {
+class CWorldMap { public:
     char pad[0x58];
     int f58; int f5c; int f60; int f64;
 };

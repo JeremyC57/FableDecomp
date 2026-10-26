@@ -1,16 +1,16 @@
 // Behaviour test for CVillageTaskCarryCrate::IsCreatureMoreAppropriateForTask (0x00861530): only pickup tasks with a
 // valid candidate qualify, and the candidate must be more than 1.5x nearer (squared factor 2.25) to the crate stack.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { C3DVector r; r.X = X - o.X; r.Y = Y - o.Y; r.Z = Z - o.Z; return r; }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing { C3DVector Pos; bool Valid; const C3DVector& GetPosition() const { return Pos; } };
+class CThing { public: C3DVector Pos; bool Valid; const C3DVector& GetPosition() const { return Pos; } };
 struct CIntelligentPointer { CThing* Item; CThing* GetPItem() const { return Item; } };
-struct CVillageTaskCarryCrate {
+class CVillageTaskCarryCrate { public:
     CIntelligentPointer CreatureAssignedToTask, PCrateStack; bool Pickup;
     bool IsCreatureValidForTask(const CThing& c) const { return c.Valid; }
     bool IsCreatureMoreAppropriateForTask(const CThing& creature) const

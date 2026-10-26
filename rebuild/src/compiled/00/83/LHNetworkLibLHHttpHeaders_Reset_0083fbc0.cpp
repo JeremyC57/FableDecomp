@@ -30,7 +30,7 @@ struct CRetailStringVector {                       // STLport vector<basic_strin
 
 namespace LHNetworkLib {
 
-struct LHHttpHeaders {
+class LHHttpHeaders { public:
     CRetailStringVector HdrDocumentHeader;         // +0x00
     CRetailString       HeaderString;              // +0x0c
     void Reset();

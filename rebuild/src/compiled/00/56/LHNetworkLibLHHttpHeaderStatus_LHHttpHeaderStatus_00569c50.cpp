@@ -80,7 +80,7 @@ namespace LHNetworkLib {
 
 enum LH_HTTP_SERVER_CODES { LH_HTTP_SERVER_CODE_NONE = -1 };
 
-struct LHHttpHeaders {                                      // 0x18 in retail
+class LHHttpHeaders { public:                                      // 0x18 in retail
     std::vector<std::string> HdrDocumentHeader;             // +0x00
     std::string              HeaderString;                  // +0x0C
 };

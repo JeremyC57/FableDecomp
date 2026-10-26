@@ -13,7 +13,7 @@ struct CMemoryArea {
     unsigned char     Colour;                   // +0x1c
     unsigned char     ID;                       // +0x1d
 };
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     CMemoryArea* _unused;
     CMemoryArea*  PTreeRoot;                    // +0xc34
 

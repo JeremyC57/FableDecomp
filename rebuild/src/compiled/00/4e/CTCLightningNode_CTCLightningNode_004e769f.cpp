@@ -13,10 +13,10 @@
 // `??1` is emitted through a `new CTCLightningNode` factory (the `??_G` calls it out of line). Size-optimised TU (the
 // `and` zero store); the def pointer's destructor and Release are `__forceinline` (the size TU would call them).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CLightningBranchPointer;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
     CThing* m_pThing;                              // +0x04
@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                 // +0x04
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     virtual void v00();
 };
@@ -66,7 +66,7 @@ struct CLightningBranchVector {                    // STLport vector<CCountedPoi
     ~CLightningBranchVector();                     // 0x004E40A0
 };
 
-struct CTCLightningNode : CTCBase {
+class CTCLightningNode : public CTCBase { public:
     CIntelligentPointer<CThing>       PParent;            // +0x0c
     CIntelligentPointer<const CThing> PSourceOfFaction;   // +0x14
     CIntelligentPointer<CThing>       PSourceOfHit;       // +0x1c

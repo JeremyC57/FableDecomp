@@ -15,7 +15,7 @@ struct CArea {
     CArea*        NextFreeArea;
     long          Status;
 };
-struct CSimpleMemoryPool : CBaseClassNonCopyable {
+class CSimpleMemoryPool : public CBaseClassNonCopyable { public:
     CMemoryBlock* FirstMemoryBlock;
     unsigned long Capacity;
     unsigned long GrowthGranularity;

@@ -2,14 +2,14 @@
 #include <cstring>
 #include <new>
 static int g_baseCalls = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() { }
     unsigned char _base[0x38];
     CParentDefClassBase() { ++g_baseCalls; std::memset(_base, 0x11, sizeof(_base)); }
 };
 template <class T> struct CRetailVector { T* first; T* last; T* end; CRetailVector() : first(0), last(0), end(0) { } };
-struct CSoundBankEntry; struct CAtmosBankEntry; struct CMusicEntry; struct CMusicSetEntry; struct CReverbEnvironmentEntry;
-struct CSoundDef : CParentDefClassBase {
+class CSoundBankEntry; class CAtmosBankEntry; class CMusicEntry; class CMusicSetEntry; class CReverbEnvironmentEntry;
+class CSoundDef : public CParentDefClassBase { public:
     CRetailVector<CSoundBankEntry> SoundBankEntries;
     CRetailVector<CAtmosBankEntry> AtmosBankEntries;
     CRetailVector<CMusicEntry> MusicEntries;

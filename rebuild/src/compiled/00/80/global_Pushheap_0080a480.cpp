@@ -13,8 +13,8 @@
 // Index, the C3DVector through `lea` (implicit C3DVector assignment) and FrameRejected; the final
 // drop is the same assignment from the value slot, after which the by-value target point is
 // destroyed (`lea ecx,[esp+14h] ; call 0x00A01C10`, the comparator's destructor is trivial).
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     void* PData;                                 // +0x04
@@ -25,18 +25,18 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
 namespace NPlayerTargeting {
-struct CTargetPoint {
+class CTargetPoint { public:
     CIntelligentPointer<CThing> PThing;          // +0x00
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
@@ -56,7 +56,7 @@ struct CTargetPoint {
 }
 using NPlayerTargeting::CTargetPoint;
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                         // +0x00
     C3DVector PreferredLine;                     // +0x0C
     float     AngleCompare;                      // +0x18
@@ -66,7 +66,7 @@ struct CVectorCompare_BestForTargeting {
     bool      CompareInXYPlane;                  // +0x28
 };
 
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing*                         Hero;                  // +0x00
     CVectorCompare_BestForTargeting VectorCompare;         // +0x04
     float                           EnemyPreferenceFactor; // +0x30

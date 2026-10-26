@@ -11,7 +11,7 @@
 // Shape: STLport `__adjust_heap`: topIndex is homed in the `push ecx` word; the predicate runs on the comparator
 //   argument slot (`lea ecx,[esp+28h]`) with the two child pointers pushed right to left; `dec esi` picks the left child;
 //   the tail passes the value and the comparator dword straight from their argument slots to __push_heap.
-struct CThing;
+class CThing;
 
 struct CCompare_FurthestFromInitPos2D {
     bool operator()(CThing* a, CThing* b) const;              // 0x007483E0

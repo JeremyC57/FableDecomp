@@ -1,15 +1,15 @@
 #include <cstdio>
-struct CTCMapwho;
+class CTCMapwho;
 static int g_destroyed, g_baseDtors;
 struct CThingMapManager { void DestroyMapwhoNode(CTCMapwho*) { ++g_destroyed; } };
-struct CWorldMap { CThingMapManager* m_pThingMapManager; };
+class CWorldMap { public: CThingMapManager* m_pThingMapManager; };
 static CWorldMap* g_map;
-struct CTCBase {
+class CTCBase { public:
     CTCBase() { }
     virtual ~CTCBase() { ++g_baseDtors; }
     CWorldMap* GetWorldMap_00686d30() { return g_map; }
 };
-struct CTCMapwho : CTCBase {
+class CTCMapwho : public CTCBase { public:
     unsigned char InMapwho : 1;
     CTCMapwho(bool in) { InMapwho = in ? 1 : 0; }
     void RemoveFromMapwho() { if (InMapwho) { CWorldMap* map = GetWorldMap_00686d30(); map->m_pThingMapManager->DestroyMapwhoNode(this); } }

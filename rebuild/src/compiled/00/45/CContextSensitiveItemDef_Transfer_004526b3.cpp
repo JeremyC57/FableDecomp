@@ -1,10 +1,10 @@
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA_004526f7(void* p);
     void PersistB(void* p);
 };
-struct CContextSensitiveItemDef {
+class CContextSensitiveItemDef { public:
     unsigned char _pad[0x28];
     Field f0; // 0x28
     Field f1; // 0x2c

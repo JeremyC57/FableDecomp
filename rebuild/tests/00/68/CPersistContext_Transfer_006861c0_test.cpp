@@ -3,7 +3,7 @@
 
 enum EOpinion { OPINION_NULL = 0, OPINION_FEAR = 3 };
 
-struct COpinionTransientOffset {
+class COpinionTransientOffset { public:
     EOpinion Opinion;
     float    OffsetPerFrameRunIn;
     long     FramesToRunIn;
@@ -20,7 +20,7 @@ static COpinionTransientOffset* g_value = 0;
 static bool g_defaultZero = false;
 static int g_calls = 0;
 
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     void Transfer(const char* name, COpinionTransientOffset& value, const COpinionTransientOffset& defaultValue)   // retail 0x00685F80 (stub: record)
     {

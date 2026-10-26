@@ -8,12 +8,12 @@
 // arguments are evaluated first, right to left (the summoner's placement +0x60 into ebx, the summoner twice into ebp/esi); inside it the width
 // `radius * 2.0f` (`fadd st(0),st(0)`) is pushed, then the two positions.
 // No engine header for this class matches retail (CCombatActionBase is 0x114 bytes); modelled locally.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCPlacement {
     unsigned char _pad0[0x34];
     float m_radius;                         // +0x34
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     unsigned char _pad44[0x5c - 0x44];
@@ -47,14 +47,14 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void FrameUpdate();             // 0x00859D80
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
-struct CCreatureAction_SummonerFlameSlice : CCombatActionBase {
+class CCreatureAction_SummonerFlameSlice : public CCombatActionBase { public:
     CBaseIntelligentPointer PFlameSlice;    // +0x114 CIntelligentPointer<CThing>
     virtual void FrameUpdate();
 };

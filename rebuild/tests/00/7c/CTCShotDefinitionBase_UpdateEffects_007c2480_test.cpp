@@ -1,7 +1,7 @@
 // Behaviour test for 0x007C2480 CTCShotDefinitionBase::UpdateEffects (copy of the source logic over spy callees).
 #include <cstdio>
 #include <cstring>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -13,7 +13,7 @@ static unsigned long Calc_004014a0(unsigned long seed, const void* data, unsigne
     return h;
 }
 static const float g_epsilon_0129ba3c = 1e-4f;
-struct CBaseClass { virtual ~CBaseClass() {} };
+class CBaseClass { public: virtual ~CBaseClass() {} };
 struct SVectorParam {
     unsigned long m_key; C3DVector m_value;
     SVectorParam(const unsigned long& key, const C3DVector& value) : m_key(key), m_value(value) {}
@@ -30,10 +30,10 @@ struct CParticleUpdateParameters : CBaseClass {
     CParticleUpdateParameters() {}
 };
 static const CParticleUpdateParameters* g_setWith = 0; static int g_sets = 0;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void SetEmitterUpdateParameters(const CParticleUpdateParameters& p) { g_setWith = &p; ++g_sets; }
 };
-struct CTCPhysicsBase { C3DVector Position; C3DVector OldPosition; };
+class CTCPhysicsBase { public: C3DVector Position; C3DVector OldPosition; };
 class CThing {
 public:
     unsigned long   m_presentBits[9];

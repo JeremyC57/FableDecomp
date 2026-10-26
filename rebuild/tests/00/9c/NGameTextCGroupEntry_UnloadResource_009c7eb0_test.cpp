@@ -3,7 +3,7 @@
 #include <cstring>
 // behaviour test for 0x009C7EB0: exercises the same logic through a copy of the model (compiled separately from the source)
 static int g_destroyed = 0;
-struct CBankFileAsyncData { bool m_finished; bool IsFinished() const { return m_finished; } };
+class CBankFileAsyncData { public: bool m_finished; bool IsFinished() const { return m_finished; } };
 struct CResourceObject_Retail {
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }

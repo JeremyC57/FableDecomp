@@ -5,7 +5,7 @@
 // on stack ([esp+4] before push esi -> [esp+8] after). Constructs a CCharString
 // from a string literal at abs 0x123b4b4 with length -1, into the return slot.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int len);
 };

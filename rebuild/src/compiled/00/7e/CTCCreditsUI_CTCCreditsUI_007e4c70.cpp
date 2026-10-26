@@ -14,9 +14,9 @@
 // Leaf: ??1CTCCreditsUI
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                         // 0x0099EAE0
 };

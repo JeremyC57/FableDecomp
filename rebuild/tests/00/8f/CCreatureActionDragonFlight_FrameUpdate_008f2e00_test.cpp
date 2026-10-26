@@ -65,7 +65,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CCreatureAction_DragonFlight {
+class CCreatureAction_DragonFlight { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -168,10 +168,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFlight, TurnRate) == 0x130);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -297,14 +297,14 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -377,10 +377,10 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             sub;                                    // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -419,14 +419,14 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldMoving) == 0x3c);
 
 #endif // FABLE_ENGINE_CTCPHYSICSBASE_H
 
-struct C3DVector {
+class C3DVector { public:
  float X,Y,Z;
  C3DVector(){}
  C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
  void RotateXY(float turns); //00A14040 adds turns to atan2(X,Y), preserves inclination
  C3DVector Cross(const C3DVector& v) const {return C3DVector(Y*v.Z-Z*v.Y,Z*v.X-X*v.Z,X*v.Y-Y*v.X);}
 };
-struct CRightHandedSet {C3DVector Up,Forward;CRightHandedSet(const C3DVector& u,const C3DVector& f):Up(u),Forward(f){}};
+class CRightHandedSet { public:C3DVector Up,Forward;CRightHandedSet(const C3DVector& u,const C3DVector& f):Up(u),Forward(f){}};
 struct CPhysicsMethods : CTCPhysicsBase {
  const C3DVector& GetFacingVectorInto(C3DVector&) const;
  void SetRHSet(const CRightHandedSet&);
@@ -440,7 +440,7 @@ inline const C3DVector& CPhysicsMethods::GetFacingVectorInto(C3DVector& out) con
 inline void CPhysicsMethods::SetRHSet(const CRightHandedSet& value){(this->*reinterpret_cast<CPhysicsSlot*>(__vftable)[75].SetRHSet)(value);}
 FABLE_STATIC_ASSERT(sizeof(CPhysicsSlot)==4);
 FABLE_STATIC_ASSERT(sizeof(CPhysicsMethods)==sizeof(CTCPhysicsBase));
-struct CThing {
+class CThing { public:
  unsigned char _nativeBeforePhysics[0x60];
  CPhysicsMethods* PPhysics;
  __forceinline CPhysicsMethods* GetPhysics() const {return PPhysics;}
@@ -450,7 +450,7 @@ struct CBaseIntelligentPointer {
  void* PData;
  CThing* GetPItem() const; //00A01B50
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;
  CBaseIntelligentPointer PCreature;
  long TotalTime;
@@ -458,7 +458,7 @@ struct CCombatActionBase {
  long GetTotalTime() const; //006925B0 loads action+10; propagated CWorld label is unrelated
  void FrameUpdate(); //00859D80
 };
-struct CCreatureAction_DragonFlight : CCombatActionBase {
+class CCreatureAction_DragonFlight : public CCombatActionBase { public:
  bool FaceTarget;float TurnRate;
  void FrameUpdate();
 };

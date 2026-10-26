@@ -16,9 +16,9 @@
 #undef CThing
 #include "engine/CBaseObject.h"
 #include "fable_string.h"
-struct CThing;struct CThingCreatureBase;struct CCreatureActionBase;struct CTCWeaponTrail;
-struct C3DVector {float x,y,z;};
-struct CSoundPair {long first,last;CSoundPair():first(0),last(0){}};
+class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
+class C3DVector { public:float x,y,z;};
+class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer();
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
  CBaseObject* GetPItem()const;
  void SetPItem(CBaseObject*);
 };
-template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
+template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { public:
  virtual ~CIntelligentPointer();
  CIntelligentPointer():CBaseIntelligentPointer(){}
  explicit CIntelligentPointer(T* p):CBaseIntelligentPointer(){SetPItem(p);}
@@ -38,14 +38,14 @@ template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
 };
 // Retail DeadFlags91 vs donor ThingStateA1: actual PDB containers add16 bytes before this flag.
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
-struct CTCPhysicsBase;struct CDefLookup;
+class CTCPhysicsBase;struct CDefLookup;
 struct CInterfaceMap {
     struct Entry { long type; void* component; };
     Entry *Start,*Finish,*End;
     Entry* LowerBound(const long*); //40F020
     Entry* LowerBound(const long*)const; //4365B0
 };
-struct CThing:CBaseObject {
+class CThing:public CBaseObject { public:
     unsigned char BaseState[0x18];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
@@ -82,7 +82,7 @@ struct CThing:CBaseObject {
         return false;
     }
 };
-struct CThingCreatureBase:CThing {void MakeNoise(const CCharString&); /*00662110*/ long GetShotAccuracyPercentage()const; /*00663B10*/ CThing* GetPrimaryHeldThing()const; bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
+class CThingCreatureBase:public CThing { public:void MakeNoise(const CCharString&); /*00662110*/ long GetShotAccuracyPercentage()const; /*00663B10*/ CThing* GetPrimaryHeldThing()const; bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
 struct __declspec(novtable) CCreatureActionBase {
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
@@ -212,13 +212,13 @@ template<class T>struct DefPointer {
  T* operator->()const{return Object;}
 };
 
-struct CMeleeCombatAbilityDef:NativeCountedDef {}; // borrowed native lifetime view, no definition fields accessed
+class CMeleeCombatAbilityDef:public NativeCountedDef { public:}; // borrowed native lifetime view, no definition fields accessed
 
-struct CTCCarrying {CThing* GetThingInPrimarySlot();}; //006A1440
+class CTCCarrying { public:CThing* GetThingInPrimarySlot();}; //006A1440
 __forceinline CThing* CThingCreatureBase::GetPrimaryHeldThing()const {CThing* held=0;CTCCarrying* carrying;if(GetInterface(&carrying,70))held=carrying->GetThingInPrimarySlot();return held;}
-struct CRightHandedSet;
+class CRightHandedSet;
 CThing* __fastcall CreateShot(long,CThing*,CThing*,const CThing*,float,float,float,const DefPointer<CMeleeCombatAbilityDef>&,const C3DVector*,const CRightHandedSet*); //007C0AD0
-struct CCreatureAction_FireMissileTest:CCreatureActionBase {
+class CCreatureAction_FireMissileTest:public CCreatureActionBase { public:
     virtual ~CCreatureAction_FireMissileTest();
     virtual CCreatureActionBase* Clone()const;
     virtual void PerformAction();

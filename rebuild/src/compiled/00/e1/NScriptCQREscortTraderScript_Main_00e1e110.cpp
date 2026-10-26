@@ -10,13 +10,13 @@
 // Layout: as the landed CV_KnotholeGladeGatesScript::Main 0x00E9FCD0 (binding 0x1c bytes with Flags 0 here; spawned
 // func 0x3c); Game at +0x40.
 // Shape: every new-expression's name string is a conditional temporary with its own ebx flag bit.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -32,10 +32,10 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-struct CScriptThing;
-struct CScriptDataBase;
-struct CEntityScriptBase;
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+class CScriptThing;
+class CScriptDataBase;
+class CEntityScriptBase;
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
 struct __declspec(novtable) CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
@@ -51,7 +51,7 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
         : EntityScriptName(name), PParentScript(parent), ClassAllocFunc(alloc), ClassAllocValid(true), Flags(flags) {}
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410 public: virtual void __fastcall CGameScriptInterface::NewScriptFrame(void) const
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -134,7 +134,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     void PostAddScriptedEntities();                                                   // 0x00CB8930
     __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
-struct CQR_EscortTraderScript : CScriptBase {
+class CQR_EscortTraderScript : public CScriptBase { public:
     struct CM_BanditTrigger {
         static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQR_EscortTraderScript& parent, CScriptDataBase* data, const CScriptThing& thing);   // 0x00E1E880
     };

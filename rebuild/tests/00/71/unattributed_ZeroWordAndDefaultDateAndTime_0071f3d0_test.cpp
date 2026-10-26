@@ -2,7 +2,7 @@
 // default-constructed (seven zero words) and the argument is ignored.
 #include <cstdio>
 static int g_dateCtors = 0;
-struct CDateAndTime { unsigned long m_words[7]; CDateAndTime() { for (int i = 0; i < 7; ++i) m_words[i] = 0; ++g_dateCtors; } };
+class CDateAndTime { public: unsigned long m_words[7]; CDateAndTime() { for (int i = 0; i < 7; ++i) m_words[i] = 0; ++g_dateCtors; } };
 struct CRecord { long m_first; CDateAndTime m_second; CRecord(long) : m_first(0), m_second() { } };
 int main()
 {

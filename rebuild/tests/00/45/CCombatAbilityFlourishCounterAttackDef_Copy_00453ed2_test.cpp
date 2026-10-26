@@ -12,7 +12,7 @@ struct CBaseState {
     void __fastcall Copy(const CBaseState* other) { calls++; last = other; }
 };
 
-struct CCombatAbilityFlourishCounterAttackDef {
+class CCombatAbilityFlourishCounterAttackDef { public:
     CBaseState base;      // base region (offset 0)
     unsigned char pad[0x28 - sizeof(CBaseState)];
     CMemberDef m_member;  // at +0x28

@@ -34,7 +34,7 @@ struct CSpeechGroupInfoMap {                // STLport map<unsigned long, TSpeec
     CSpeechGroupMapIterator find(const unsigned long& key) const;   // 0x008AEF20
 };
 
-struct CWorld {
+class CWorld { public:
     long GetFrameNumber();                  // 0x004167C8 (manifest label "GFGetPreMainMemoryUsed" is propagated)
 };
 extern CWorld* g_pWorld;                    // 0x013B86A0
@@ -91,7 +91,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item);       // 0x00A01B90
 };
 #pragma pack(pop)
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
@@ -109,7 +109,7 @@ public:
     ESpeechPlaybackResult PlayAISpeech(unsigned long textGroup, bool queue, EDialogueLayer layer, bool b1, bool b2);   // 0x006E3B60
 };
 
-struct CCombatDialogueDef {                 // retail offsets (Ego_r.pdb minus 4)
+class CCombatDialogueDef { public:                 // retail offsets (Ego_r.pdb minus 4)
     unsigned char _pad00[0x3c];
     float MinTimeBetweenSpeech;             // +0x3C
     float MinTimeBetweenSpeechRepeat;       // +0x40

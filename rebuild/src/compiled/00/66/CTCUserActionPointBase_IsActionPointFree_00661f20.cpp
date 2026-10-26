@@ -6,7 +6,7 @@
 // Retail bytes:  mov eax,[ecx+108h] ; mov edx,[eax] ; xor ecx,ecx ; cmp edx,eax ; setne cl ; mov al,cl ; ret
 // True when the std::list at +0x108 has at least one node (sentinel->next != sentinel). The
 // register-width `setne cl ; mov al,cl` is the plain `return a != b;` bool form.
-struct CThing;
+class CThing;
 // Retail std::list (4 bytes: sentinel pointer) with an iterator OBJECT; begin()/end() are
 // re-read from `this` on every use (see docs/pipeline/GOTCHAS.md).
 template<class T> struct CRetailList {

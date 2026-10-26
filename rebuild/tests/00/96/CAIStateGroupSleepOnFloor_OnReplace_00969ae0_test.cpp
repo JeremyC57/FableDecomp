@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_SleepOnFloor::OnReplace (0x00969AE0): same logic over mocks.
 #include <cstdio>
 #include <cstring>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPoint { CThing* occupant; };
 struct CState {
     CThing* creature; CPoint* point; CThing* PSleepPoint; bool Asleep; bool freeToAct;

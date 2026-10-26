@@ -7,16 +7,16 @@
 // Shape: the position is taken into a by-value C2DVector (x stays on the FPU, y goes through the 8-byte frame
 // local) and tested by an inline C2DBoxF::Contains; `x >= TLX` gives `fcom ; test ah,1 ; jne`, `x < BRX` gives
 // `fcomp ; test ah,5 ; jp`; the && chain materialises an int, the absent component the byte `xor al,al`.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     C2DVector(float ax, float ay) : x(ax), y(ay) {}
 };
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     bool Contains(const C2DVector& p) const
     {
@@ -24,18 +24,18 @@ struct C2DBoxF {
     }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*         __vftable;
     unsigned char _pad04[8];
     C3DVector     m_position;                       // +0x0c
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
 };
 
-struct CThingFilter_InArea {
+class CThingFilter_InArea { public:
     C2DBoxF Area;                                   // +0x00
     bool operator()(CThing* thing) const;
 };

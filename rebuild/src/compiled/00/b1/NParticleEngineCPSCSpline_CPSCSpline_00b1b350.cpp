@@ -6,13 +6,13 @@
 // initialiser list (which VC emits in declaration order); all of them precede the vtable store.
 // Leaf: ??0CPSCSpline
 namespace NParticleEngine {
-struct CPSCSplineBase {
+class CPSCSplineBase { public:
     virtual ~CPSCSplineBase();
     unsigned char _body[0x30];                      // +0x04 .. +0x34
     CPSCSplineBase();                               // 0x00B21530
 };
 
-struct CPSCSpline : CPSCSplineBase {
+class CPSCSpline : public CPSCSplineBase { public:
     long m_pointCount;                              // +0x34
     bool m_looped;                                  // +0x38
     bool m_dirty;                                   // +0x39

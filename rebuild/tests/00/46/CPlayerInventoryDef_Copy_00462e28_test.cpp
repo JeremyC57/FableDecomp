@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPlayerInventoryDef;
+class CPlayerInventoryDef;
 
 /* Provide the tail-call target so the test links standalone. */
 static int g_called = 0;

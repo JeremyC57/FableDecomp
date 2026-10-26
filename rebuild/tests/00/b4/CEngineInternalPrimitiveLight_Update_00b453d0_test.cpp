@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CRGBFloatColour { float R, G, B, A; void Set(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; } };
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CRGBFloatColour { public: float R, G, B, A; void Set(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; } };
 struct CLightDesc { C3DVector WorldPos; CRGBColour Colour; float Radius; float SpotRadius; unsigned int LightingChannelMask; };
 struct CLight {
     unsigned int EnginePrimitiveFlags; C3DVector WorldPos; CRGBFloatColour Colour; float Radius; float SpotRadius; unsigned int ChannelMask;

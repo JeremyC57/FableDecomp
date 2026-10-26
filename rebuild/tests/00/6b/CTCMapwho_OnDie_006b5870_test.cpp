@@ -6,7 +6,7 @@ struct SubObjAt90 {
 
 void operator delete(void*);
 
-struct CTCMapwho {
+class CTCMapwho { public:
     char pad[0x90];
     SubObjAt90 sub;
     void OnDie();

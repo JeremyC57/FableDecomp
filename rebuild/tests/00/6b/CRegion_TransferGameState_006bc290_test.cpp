@@ -3,8 +3,8 @@
 
 static int g_crc = 0;
 
-struct CMemoryDataInputStream { const bool* src; int pos; };
-struct CDataOutputStream { bool out[8]; int n; void WriteBool(bool v) { out[n++] = v; } };
+class CMemoryDataInputStream { public: const bool* src; int pos; };
+class CDataOutputStream { public: bool out[8]; int n; void WriteBool(bool v) { out[n++] = v; } };
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<bool> {
@@ -12,7 +12,7 @@ template <> struct CPersistTraits<bool> {
     static void TransferBinaryOut(CDataOutputStream* s, const bool& v) { s->WriteBool(v); }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     long m_mode;
     CMemoryDataInputStream* m_pLoadStream;
     CDataOutputStream* m_pSaveStream;
@@ -27,7 +27,7 @@ struct CPersistContext {
     }
 };
 
-struct CRegion {
+class CRegion { public:
     bool AppearOnWorldMap;
     bool CreatureGenerationEnabled;
     bool SoundThemesEnabled;

@@ -24,7 +24,7 @@ static int fails = 0;
 //   point is a second uninitialised local in the same frame word.
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -52,7 +52,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 #pragma auto_inline(on)
 
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20
     CInterfaceMap m_interfaces;                     // +0x44
@@ -81,7 +81,7 @@ struct CTCCameraPoint {                             // interface 0x3F component
     float m_speed;                                  // +0xbc
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     bool IsUsingScriptedCameraMode();               // 0x00697AE0
 };
 
@@ -91,17 +91,17 @@ struct CGameCamera {
     virtual bool GetCameraManager(CGameCameraManager** out);   // slot 9 (+0x24)
 };
 
-struct CBulletTimeManager {
+class CBulletTimeManager { public:
     unsigned char _pad0[4];
     long m_active;                                  // +0x04
     unsigned char _pad8[4];
     bool m_slowing;                                 // +0x0c
     __forceinline bool IsRunning() const { return m_slowing || m_active != 0; }
     bool IsTimeForFullUpdate();                     // 0x004C6060
-    void SetBulletTimeSlowdownMultiplier(long frames, struct CCombatActionBase* source, float multiplier);   // 0x004C6170
+    void SetBulletTimeSlowdownMultiplier(long frames, class CCombatActionBase* source, float multiplier);   // 0x004C6170
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x34];
     CGameCamera* PCurrentGameCamera;                // +0x34
     unsigned char _pad38[0x68 - 0x38];
@@ -110,7 +110,7 @@ struct CWorld {
     CBulletTimeManager* GetBulletTime() const { return PBulletTime; }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     float GetAnimDuration(long animIndex);          // 0x006627F0
 };
 
@@ -127,7 +127,7 @@ struct CCreaturePointer {
 
 extern long g_framesPerSecond;                      // 0x01375550
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual long GetAnimDelayTime();                // slot 6 (+0x18)
     virtual long GetAnimIndex();                    // slot 7 (+0x1c)
@@ -141,7 +141,7 @@ struct CCreatureActionBase {
     void UpdateActionRunningTime();                 // 0x00692480
 };
 
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _pada8[8];
     CBaseIntelligentPointer PCameraPoint;           // +0xb0
     unsigned char _padb8[0xc4 - 0xb8];

@@ -52,7 +52,7 @@ public:
     CCursorPos                 CursorPos;          // +0x1C
     CStringParser() { String = 0; }
 };
-struct CPersistContext {                           // Ego_r.pdb, 0x2C bytes (filled by BeginSerialising)
+class CPersistContext { public:                           // Ego_r.pdb, 0x2C bytes (filled by BeginSerialising)
     unsigned char _body[0x2c];
 };
 

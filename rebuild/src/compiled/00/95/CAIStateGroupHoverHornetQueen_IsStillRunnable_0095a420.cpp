@@ -14,9 +14,9 @@
 // The engine header CAIStateGroup_HoverHornetQueen.h is flattened data-only: local model with the retail offsets.
 class CThingCreatureBase;
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
@@ -44,7 +44,7 @@ struct CThingPointerVector {
     CBaseIntelligentPointer& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

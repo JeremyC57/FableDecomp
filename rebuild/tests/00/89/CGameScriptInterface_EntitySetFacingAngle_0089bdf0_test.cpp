@@ -18,7 +18,7 @@ static int fails = 0;
 //   in memory (0x0122ED70, not folded), X = sin(yaw)*cos(pitch), Y = cos(yaw)*cos(pitch), Z = sin(pitch).
 #include <math.h>
 #pragma intrinsic(sin, cos)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -62,12 +62,12 @@ struct CThing_Retail {
     }
 };
 struct CTCType7 { void Reset(); };                          // 0x006CB6B0
-struct CTCLook {
+class CTCLook { public:
     void StopLooking(long reason);                          // 0x00751B80
     void LookAtPos(const C3DVector& pos, long priority);    // 0x00753E90
 };
-struct CTCPerceiveThing { void ResetPerceptionVariables(); };   // 0x00744DB0
-struct CScriptThing {
+class CTCPerceiveThing { public: void ResetPerceptionVariables(); };   // 0x00744DB0
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual const C3DVector& GetPosition() const;   // slot 6 (+0x18)
     virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
@@ -82,7 +82,7 @@ struct CScriptThing {
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void EntitySetFacingAngle(const CScriptThing& entity, float angle, bool immediate) const;
 };
 

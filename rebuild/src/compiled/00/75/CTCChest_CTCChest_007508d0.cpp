@@ -11,7 +11,7 @@
 // Shape: COpenCloseHelper is a member object with an inline constructor (all its stores follow the
 // vtable store; the two 1.0f floats share ecx, the zeroes share eax); the pointer member is addressed
 // once in edi; the cutscene call is the constructor body.
-struct CThing {
+class CThing { public:
     void SetCutscenePauseBehaviour(long behaviour);         // 0x004C78A0
 };
 
@@ -64,7 +64,7 @@ struct COpenCloseHelper {                                   // 0x14 bytes
     }
 };
 
-struct CTCChest : CTCContainerRewardHero_Calls {            // vtable 0x0126957C
+class CTCChest : public CTCContainerRewardHero_Calls { public:            // vtable 0x0126957C
     COpenCloseHelper    ChestOpener;                        // +0x1c
     bool                ChestOpen;                          // +0x30
     CIntelligentPointer POpenParticle;                      // +0x31

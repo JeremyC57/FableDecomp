@@ -6,11 +6,11 @@
 // Layout from Ego_r.pdb (CTCGatherPointBase, 32 bytes; retail vector 12 bytes): CTCBase +0x00..+0x0b,
 // Users (vector<CIntelligentPointer<CThing const> >) +0x0c..+0x17, MaxOccupation (long) +0x18.
 // Shape: the zero default lives in the `push ecx` frame slot; the context is kept in edi for the virtual call.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
 };
 
-struct CTCGatherPointBase {
+class CTCGatherPointBase { public:
     unsigned char _pad_0x04[0x14];                      // +0x04 ParentThing, flags, Users (vector)
     long          MaxOccupation;                        // +0x18
     virtual void v00();

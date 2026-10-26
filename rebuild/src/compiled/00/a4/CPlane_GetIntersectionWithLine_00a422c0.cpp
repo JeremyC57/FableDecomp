@@ -6,7 +6,7 @@
 //   (`fucompp ; test ah,44h ; jnp` to the false exit at the end, which pops the denominator); t = (Distance - Normal . point) / denominator; the result is built as C3DVector temporaries
 //   (`direction * t`, then `+ point`) and copied into `intersection` dword by dword (the 0x18-byte frame holds the
 //   two spilled scaled components and the sum).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
@@ -17,7 +17,7 @@ struct C3DVector {
 inline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 inline float DotProductByValue(C3DVector a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
-struct CPlane {
+class CPlane { public:
     C3DVector Normal;                              // +0x00
     float     Distance;                            // +0x0c
     bool GetIntersectionWithLine(const C3DVector& point, const C3DVector& direction, C3DVector& intersection) const;

@@ -13,7 +13,7 @@
 //   middle - first, value, comp)`.  The by-value `_Tp(*i)` goes through the pair's memberwise copy constructor:
 //   the float weight rides on the x87 stack across the `*i = *first` store and is `fstp`ed into the argument
 //   area (element model of the landed _Adjust_heap 0x0071F650).
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -29,7 +29,7 @@ struct SMorphWeight {                           // std::pair<CSkeletalMorphs::CE
     SMorphWeight(const SMorphWeight& other) : first(other.first), second(other.second) { }
 };
 
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

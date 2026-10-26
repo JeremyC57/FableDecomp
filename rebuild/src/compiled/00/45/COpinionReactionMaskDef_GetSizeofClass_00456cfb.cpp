@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct COpinionReactionMaskDef { int _pad; };
+class COpinionReactionMaskDef { public: int _pad; };
 unsigned long __fastcall COpinionReactionMaskDef_GetSizeofClass(const COpinionReactionMaskDef* self)
 {
     (void)self;

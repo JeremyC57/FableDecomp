@@ -8,7 +8,7 @@
 //        defined inline in the TU (the `immediately` arms fold away).
 // Layout: as Kill 0x004C9B80.
 class CThing;
-struct CThingManager {
+class CThingManager { public:
     void OnThingKilled(CThing* thing);           // 0x005202B0 (catalog "CTCCameraPointScriptedSpline::EditCyclePreviousKeyCamera"
                                                  //   is a byte-twin label; descriptive name)
     void RemoveFromRenderList(CThing* thing);    // 0x0051E000

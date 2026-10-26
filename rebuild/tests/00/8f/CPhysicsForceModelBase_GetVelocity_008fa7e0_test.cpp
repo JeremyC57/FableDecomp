@@ -9,7 +9,7 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 008fa7e0: GetVelocity returns a copy of LinkedState->Velocity (not Position or Acceleration).
-struct C3DVector {
+class C3DVector { public:
     float x; float y; float z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}

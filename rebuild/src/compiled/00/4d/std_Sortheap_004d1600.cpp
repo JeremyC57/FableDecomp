@@ -11,14 +11,14 @@
 // `*_Dest = *_First` is the float store + CCharString::operator=, the by-value argument is built in the
 // argument area (float + CCharString copy ctor) and the local's string is destroyed after the call. The 8-byte
 // pair local gives VC7.1's `and esp,-8` frame.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;                         // +0x0
     CCharString(const CCharString& other);                // 0x0099EC30
     ~CCharString();                                       // 0x0099EAE0
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
-template <class K, class V> struct CKeyPairCompareLess { };
+template <class K, class V> class CKeyPairCompareLess { public: };
 namespace std {
 template <class _Ty1, class _Ty2> struct pair {
     _Ty1 first;

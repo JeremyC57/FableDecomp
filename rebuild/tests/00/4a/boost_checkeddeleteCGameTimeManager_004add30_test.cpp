@@ -12,7 +12,7 @@ struct LongSet {
     void clear() { if (count != 0) { Erase(header->parent); header->left = header; header->parent = 0; header->right = header; count = 0; } }
     ~LongSet() { clear(); if (header) { std::free(header); ++g_freedHeaders; } }
 };
-struct CGameTimeManager {
+class CGameTimeManager { public:
     void* World; float Time; LongSet StopTimeIndexes; long NextStopTimeIndex;
     static void operator delete(void* p) { ++g_deleted; ::operator delete(p); }
 };

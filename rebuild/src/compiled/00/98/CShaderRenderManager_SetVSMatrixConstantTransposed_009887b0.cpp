@@ -107,7 +107,7 @@ struct IDirect3DDevice9 {
     virtual long __stdcall SetVertexShaderConstantF(unsigned int startRegister, const float* data, unsigned int vector4fCount);   // slot 94 (+0x178)
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char     _pad000[0x1d4];
     IDirect3DDevice9* D3DDevice;                 // +0x1d4
     void SetVSMatrixConstantTransposed(unsigned long startRegister, const CMatrix* matrix, unsigned long rows);

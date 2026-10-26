@@ -8,13 +8,14 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CPhonemeDataBank;
-struct CResourceBank;
-struct CSpeechAnalyser;
+class CCPPointerInfo;
+class CPhonemeDataBank;
+class CResourceBank;
+class CSpeechAnalyser;
 
 #pragma pack(push, 1)
-struct CLipSyncDataBank {
+class CLipSyncDataBank {
+public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     long              object;                                // +0x04 retail-only long (previous header)
     unsigned char     _pad_0x08[0x4];                        // +0x08

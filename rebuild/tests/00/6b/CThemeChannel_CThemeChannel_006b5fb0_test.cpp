@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-template <class T> struct CArray { T* m_pFirst; T* m_pLast; T* m_pEnd; CArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
-struct CRGBFloatColour { float R, G, B, A; };
+template <class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; CArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CIDrawEnvironmentTextureSet { CArray<long> Textures; CArray<float> Blends; };
 struct CThemeChannel {
     CRGBFloatColour Colours[19]; float Scalers[30]; CIDrawEnvironmentTextureSet TextureSets[3];

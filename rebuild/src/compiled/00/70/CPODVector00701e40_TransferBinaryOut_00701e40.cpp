@@ -10,7 +10,7 @@
 //   `size() > 0 ? first : (void*)this` (unsigned `ja`), byte count size() * sizeof; both accessors __forceinline, the
 //   second size() shared by both arguments. Speed-optimised (default) TU (`sar 2` / `shl 2`).
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

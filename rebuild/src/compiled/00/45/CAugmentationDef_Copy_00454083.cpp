@@ -1,4 +1,4 @@
-struct CAugmentationDef;
+class CAugmentationDef;
 
 extern void __fastcall AugmentationDef_CopyImpl(CAugmentationDef* self, const CAugmentationDef* src);
 

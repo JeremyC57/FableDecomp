@@ -22,7 +22,7 @@
 #include "engine/CBriarRoseDef.h"
 #include "fable_string.h"
 // Generated Thing offsets differ after bitset/vector shrink. Native presence bits20..43, map44..4F, CurrentMap8E,life91.
-struct C3DVector{float X,Y,Z;};struct NativeDefinition;struct EmitterMethods;
+class C3DVector{ public:float X,Y,Z;};struct NativeDefinition;struct EmitterMethods;
 struct ThingNative;
 struct ComponentEntry{int Type;void* Component;};
 struct ComponentMap{ComponentEntry*First,*Last,*Limit;ComponentEntry*LowerBound(const int*);}; //40F020

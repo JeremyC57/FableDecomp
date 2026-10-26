@@ -11,7 +11,7 @@
 // deletes the block and clears both words; the string destructor runs last.
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();                                  // 0x0099EAE0
@@ -25,7 +25,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                                    // +0x00
     SCountBlock* m_pBlock;                           // +0x04
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pBlock(other.m_pBlock)
@@ -46,7 +46,7 @@ struct CCountedPointer {
     }
 };
 
-struct C3DAnimFileRootChunk;
+class C3DAnimFileRootChunk;
 
 struct SNamedChunk {
     CCharString Name;                                // +0x00
@@ -61,7 +61,7 @@ struct CNamedChunkVector {
     void push_back(const SNamedChunk& record);       // 0x00CBD310
 };
 
-struct C3DAnimFile {
+class C3DAnimFile { public:
     CNamedChunkVector m_Chunks;                      // +0x00
     unsigned char m_flag0C;                          // +0x0C
     bool m_Changed;                                  // +0x0D

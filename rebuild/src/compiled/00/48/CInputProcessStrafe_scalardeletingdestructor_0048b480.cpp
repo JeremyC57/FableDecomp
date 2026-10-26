@@ -3,8 +3,8 @@
 //   push esi; mov esi,ecx; call <scalar dtor @0xa0d3d0>; test [esp+8],1
 //   jz skip; push esi; call <op delete @0xbfe9bc>; add esp,4; skip: mov eax,esi; ret 4
 
-struct CInputProcessStrafe
-{
+class CInputProcessStrafe
+{ public:
     void *vfptr;
 };
 

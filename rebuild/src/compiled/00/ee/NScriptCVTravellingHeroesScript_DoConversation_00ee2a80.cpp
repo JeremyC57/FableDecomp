@@ -40,12 +40,12 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     __forceinline bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
@@ -61,17 +61,17 @@ struct CCharString {
     }
 };
 extern CCharString g_EmptyCharString;                       // 0x0143E8EC
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass();                                           // 0x0099A2D0
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -107,7 +107,7 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThing> PImp;                     // +0x04 Data, +0x08 Info
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
@@ -205,7 +205,7 @@ struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C
         return PImp.Data->IsNull();
     }
 };
-struct CGameScriptInterface {                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame(void) const;   // slot 7 (+0x1c) 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -256,14 +256,14 @@ struct CGameScriptInterface {                       // retail vtable 0x01260F0C 
     virtual void v369(); virtual void v370(); virtual void v371(); virtual void v372(); virtual void v373(); virtual void v374(); virtual void v375();
     virtual void Pause(float) const;   // slot 376 (+0x5e0) 0x0088E4F0
 };
-struct CScriptGameResourceObjectScriptedThingBase {        // 0x10 bytes, vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase { public:        // 0x10 bytes, vtable 0x0127094C
     virtual void h00(); virtual void h01(); virtual void h02(); virtual void h03(); virtual void h04(); virtual void h05();
     virtual void h06(); virtual void h07(); virtual void h08(); virtual void h09(); virtual void h10(); virtual void h11();
     virtual void h12(); virtual void h13(); virtual void h14(); virtual void h15(); virtual void h16(); virtual void h17();
     virtual void PlayAnimation(const CCharString& animation, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // slot 18 (+0x48), descriptive name
     unsigned char _body[0xc];
 };
-struct CScriptDef {                                         // retail layout (STLport 12-byte vectors; only _M_start used)
+class CScriptDef { public:                                         // retail layout (STLport 12-byte vectors; only _M_start used)
     unsigned char _pad0[0x92c];
     CCharString* TH_ThunderConv_Speaker;   unsigned char _pad930[8];   // +0x92c
     CCharString* TH_ThunderConv_Dialogue;  unsigned char _pad93c[8];   // +0x938
@@ -272,7 +272,7 @@ struct CScriptDef {                                         // retail layout (ST
     float*       TH_ThunderConv_AnimDelay;                             // +0x95c
 };
 extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940

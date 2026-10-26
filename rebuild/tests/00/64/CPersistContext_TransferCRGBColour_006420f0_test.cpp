@@ -6,12 +6,12 @@
 #endif
 static char g_log[512];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CRGBColour { unsigned long m_argb; CRGBColour() : m_argb(0) {} CRGBColour(unsigned long c) : m_argb(c) {} };
+class CRGBColour { public: unsigned long m_argb; CRGBColour() : m_argb(0) {} CRGBColour(unsigned long c) : m_argb(c) {} };
 typedef CRGBColour T;
 static T MK(long n) { return CRGBColour((unsigned long)n); }
 static long VAL(const T& v) { return (long)v.m_argb; }
-struct CMemoryDataInputStream { int id; CRGBColour ReadColour() { LOG("binin"); return CRGBColour(7); } };
-struct CDataOutputStream { int id; long written; void WriteColour(const CRGBColour& c) { LOG("write"); written = (long)c.m_argb; } };
+class CMemoryDataInputStream { public: int id; CRGBColour ReadColour() { LOG("binin"); return CRGBColour(7); } };
+class CDataOutputStream { public: int id; long written; void WriteColour(const CRGBColour& c) { LOG("write"); written = (long)c.m_argb; } };
 
 struct CPersistContext_TransferableObjectBase { virtual long Peek() { return -1; } virtual ~CPersistContext_TransferableObjectBase() {} };
 template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableObjectBase {
@@ -19,7 +19,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual long Peek() { return VAL(*Value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     bool UseDefaults;
     long Mode;
     CMemoryDataInputStream* PLoadStream;

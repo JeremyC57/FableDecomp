@@ -1,7 +1,7 @@
 // Behaviour test for 004d4f94 (CTCStealableItemLocation::CTCStealableItemLocation): the base takes the thing, RadiusToBeWithin starts at 1.0 and RadiusToTakeItemsBackTo at 0.0.
 #include <cstdio>
 
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 struct CTCBase_Calls {
     CThing* ParentThing;
@@ -11,7 +11,7 @@ struct CTCBase_Calls {
     virtual ~CTCBase_Calls() { }
 };
 
-struct CTCStealableItemLocation : CTCBase_Calls {
+class CTCStealableItemLocation : public CTCBase_Calls { public:
     float RadiusToBeWithin;
     float RadiusToTakeItemsBackTo;
     CTCStealableItemLocation(CThing* thing)

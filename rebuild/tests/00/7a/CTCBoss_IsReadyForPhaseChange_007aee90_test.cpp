@@ -1,11 +1,11 @@
 // Behaviour test for 007aee90 CTCBoss::IsReadyForPhaseChange: enabled + physical parent + Health below the phase threshold.
 #include <cstdio>
 
-struct CThing { unsigned long ThingTypeFlags; };
-struct CThingPhysical : CThing { float MaxHealth; float Health; };
+class CThing { public: unsigned long ThingTypeFlags; };
+class CThingPhysical : public CThing { public: float MaxHealth; float Health; };
 
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     CThing* ParentThing;
     long    currentBossPhase;
     bool    EnablePhaseChanges;

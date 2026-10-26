@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <map>
 
-struct CArmourDef { std::map<int, float> AugmentationResponse; };
+class CArmourDef { public: std::map<int, float> AugmentationResponse; };
 typedef std::multimap<const CArmourDef*, float> TArmourWeights;
 
 static bool GetMultiplier(int attribute, const TArmourWeights& weights, float totalWeight, float& multiplier)

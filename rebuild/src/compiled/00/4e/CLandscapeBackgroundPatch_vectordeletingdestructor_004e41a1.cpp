@@ -11,7 +11,7 @@ extern "C" void __fastcall Sub_dtor_004e25f1(Sub* self);
 // operator delete (retail 0xbfe9bc)
 void __cdecl operator delete(void* p);
 
-struct CLandscapeBackgroundPatch { char raw[8]; };
+class CLandscapeBackgroundPatch { public: char raw[8]; };
 
 // Model retail __fastcall(this in ecx, flags on stack) as __fastcall with an
 // unused edx placeholder so that `flags` lands as the first STACK argument

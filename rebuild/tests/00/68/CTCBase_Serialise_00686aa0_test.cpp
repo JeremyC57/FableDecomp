@@ -2,7 +2,7 @@
 // component wants to be saved; in every other mode it always runs, with both arguments forwarded.
 #include <cstdio>
 
-struct CPersistContext { long Mode; };
+class CPersistContext { public: long Mode; };
 struct CTCBase_Calls {
     virtual void Transfer(CPersistContext* context, long arg) = 0;
     virtual bool ShouldBeSaved() = 0;

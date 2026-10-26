@@ -8,20 +8,20 @@
 // after the manager load); its vtable store is scheduled between the bit test and the branch; the `??_G` is pulled into
 // the TU by a `new CTCMapwho` factory with the constructor inline; the destructor and RemoveFromMapwho are `__forceinline`
 // (otherwise the `??_G` collapses to `call ??1CTCMapwho ; delete`).
-struct CThing;
+class CThing;
 struct CThingMapCell;
-struct CTCMapwho;
+class CTCMapwho;
 
 struct CThingMapManager {
     void DestroyMapwhoNode(CTCMapwho* mapwho);     // 0x00637A10
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char     _pad_0x00[0x10];
     CThingMapManager* m_pThingMapManager;          // +0x10
 };
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
     CWorldMap* GetWorldMap_00686d30();                      // 0x00686D30
@@ -37,7 +37,7 @@ struct CMapwhoNode {
     CMapwhoNode() : PMapwho(0), PNext(0), PPrevious(0), PCell(0) { }
 };
 
-struct CTCMapwho : CTCBase {
+class CTCMapwho : public CTCBase { public:
     CMapwhoNode   TLNode;                          // +0x0c
     CMapwhoNode   TRNode;                          // +0x1c
     CMapwhoNode   BLNode;                          // +0x2c

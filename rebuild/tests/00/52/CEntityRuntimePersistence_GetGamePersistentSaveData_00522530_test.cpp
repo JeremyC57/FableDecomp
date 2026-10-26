@@ -5,11 +5,11 @@
 #include "fable_string.h"
 #else
 // Pointer-size host view of the PDB string; native uses fable_string.h.
-struct CCharString {void* storage; CCharString(); ~CCharString();};
+class CCharString { public:void* storage; CCharString(); ~CCharString();};
 #endif
 // Native compressor is 0x58 rather than donor 0x5c: STL vector owns 12 rather than 16 bytes.
 // Include the donor header for provenance; use the native ABI view below because its stream is +1c and flags +54.
-template<class T> struct CArray {
+template<class T> class CArray { public:
  T* first; T* last; T* end;
  unsigned long size() const { return (unsigned long)(last-first); }
  T* data() { return size()?first:(T*)this; }
@@ -43,7 +43,7 @@ struct CCompressorZlibNative: CACompressorNative {
  unsigned long InternalDecompress(const void*,unsigned long,void*,unsigned long); //00a3ab00
 };
 namespace NThingManager {
-struct CEntityRuntimePersistence {
+class CEntityRuntimePersistence { public:
  CArray<CEntityScriptInfo> LevelPersistentEntityScripts;
  CEntityScriptArray GamePersistentEntityScripts;
  bool GetGamePersistentSaveData(long,CArray<unsigned char>&) const;

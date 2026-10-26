@@ -5,7 +5,7 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
 struct CModes { long active; bool IsModeActive(long m) const { return active == m; } };
-struct CThing { unsigned int mask[9]; bool Dead; CModes* modes;
+class CThing { public: unsigned int mask[9]; bool Dead; CModes* modes;
     template <class T> bool GetInterface(T** out, long k) { if (mask[k >> 5] & (1u << (k & 31))) { *out = (T*)modes; return true; } return false; } };
 struct CPtr { CThing* item; int gets; CThing* GetPItem() { ++gets; return item; } };
 struct CIsImposterHit {

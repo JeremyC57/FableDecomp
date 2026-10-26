@@ -1,20 +1,20 @@
 // Behaviour test for CTCHeroOnlineScoreboard::OnPlayerSelectedClan (retail 0x005625F0): model copy + stub callees.
 #include <cstdio>
 
-struct CTCBase;
-struct CWideString {
+class CTCBase;
+class CWideString { public:
     int id;
     CWideString(int i) : id(i) {}
     CWideString(const CWideString& o) : id(o.id) {}
     ~CWideString() {}
     CWideString& operator=(const CWideString& o) { id = o.id; return *this; }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     bool active; int stopped; long lastStopped; unsigned char fadeR, fadeA; float fadeTime;
     CComponent* first; CComponent* second;
     void StopObservingEvent(long e) { ++stopped; lastStopped = e; }
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     bool HasTC(long wanted) { return (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) != 0; }
@@ -43,7 +43,7 @@ struct CThing {
         return (T*)it->component;
     }
 };
-struct CTCInventory { NUISystem::CComponent* PMouse_Pointer; };
+class CTCInventory { public: NUISystem::CComponent* PMouse_Pointer; };
 static int g_erased = 0;
 struct SScoreboardNode;
 struct CClanScoreboardMap {
@@ -61,7 +61,7 @@ struct CClanScoreboardMap {
         }
     }
 };
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     CThing* ParentThing;
     CWideString SelectedClan;
     CClanScoreboardMap DownloadedClanScoreboard;

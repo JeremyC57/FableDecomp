@@ -15,7 +15,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -24,13 +24,13 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-struct CCPPointerInfo {                                 // counted-pointer block (Ego_r.pdb)
+class CCPPointerInfo { public:                                 // counted-pointer block (Ego_r.pdb)
     long RefCount;                                      // +0x00
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
     void* Data;                                         // +0x08
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -65,20 +65,20 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CScriptThing;
-struct CBaseObject {                                    // vtable 0x0129A7D8
+class CScriptThing;
+class CBaseObject { public:                                    // vtable 0x0129A7D8
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();                             // 0x0099A430
     CBaseObject& operator=(const CBaseObject& other);   // 0x0099A3B0
     void* IntelligentPointer;                           // +0x04
 };
 
-struct CScriptGameResourceObjectBase : CBaseObject {    // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     virtual __forceinline ~CScriptGameResourceObjectBase() {}
 };
 
 struct CScriptThingImp;
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // 16 bytes, vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x0127094C
     CCountedPointer<CScriptThingImp> PImp;              // +0x08
     CScriptGameResourceObjectScriptedThingBase() {}
     __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
@@ -97,7 +97,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
 
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // 16 bytes, vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x01260EF4
     CMovieImpPointer PImp;                              // +0x08
     CScriptGameResourceObjectMovieBase() {}
     // implicit destructor
@@ -153,7 +153,7 @@ struct CCutsceneArgMap {                                // map<CCharString, CCha
 };
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 
-struct CGameScriptInterface {                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual bool StartScriptingEntity(CScriptThing const &, CScriptGameResourceObjectScriptedThingBase &, long);   // slot 8 (+0x20) 0x0089B5B0
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018();
@@ -200,7 +200,7 @@ struct CGameScriptInterface {                       // retail vtable 0x01260F0C 
     virtual void PauseAllNonScriptedEntities(bool);   // slot 379 (+0x5ec) 0x00890AB0
 };
 
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
 };

@@ -9,10 +9,10 @@
 //   TransferOutLong @ 0x009E2560 (`__fastcall` context, out, &copy).
 // Shape: the landed 0x00614080 / 0x0040FA20 text writers: each long through an inline CPersistTraits<long>::TransferOut
 //   (copy into the dead `out` argument slot, no frame). Speed-optimised (default) TU.
-struct CPersistContext;
+class CPersistContext;
 class CCharString {
 public:
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
     CCharString& operator+=(const char* text);         // 0x0099F100
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560

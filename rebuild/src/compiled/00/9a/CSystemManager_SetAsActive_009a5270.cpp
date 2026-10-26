@@ -9,7 +9,7 @@
 // register colouring (57 v 60).
 // Model: PDB CSystemManager names (ApplicationActive +9, EverBeenActive, Restore). The retail layout runs 8
 // bytes past the PDB's between +0x60 and EverBeenActive (PDB 0xd4/0xe2 -> retail 0xdc/0xea); no engine header.
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad00[9];
     bool          ApplicationActive;               // +0x09
     unsigned char _pad0a[0xdc - 0x0a];

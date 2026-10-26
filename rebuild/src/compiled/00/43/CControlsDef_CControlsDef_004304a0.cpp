@@ -29,7 +29,7 @@ class CDefinitionManager;
 #pragma pack(push, 1)
 class CDefClassBase : public CDefPointeeBase {
 public:
-    struct CSubDefInfo {
+    class CSubDefInfo { public:
         long DefIndex;
         long OriginalParentDefIndex;
     };
@@ -54,7 +54,7 @@ public:
     ~vector() { if (_M_start) free(_M_start); }
 };
 }
-template <class K, class V> struct CKeyPairCompareLess {};
+template <class K, class V> class CKeyPairCompareLess { public:};
 template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:
     C    Compare;                                        // +0x0c

@@ -15,7 +15,7 @@
 // a CIntelligentPointer<CThingPhysical>(T*) temporary (inline ctor: base ctor, vtable, SetPItem) and the inline
 // `operator=` (SetPItem(other.GetPItem())), destroyed by the base dtor; `if (base) {...; return true;} return false;`
 // keeps the false exit last.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CWorldMap {
 public:
@@ -31,7 +31,7 @@ public:
 };
 extern CThingManager* g_pThingManager;                         // 0x013B8A1C
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad00[0x42];
     unsigned char AvailableInEditor_42 : 6;                    // +0x42 bits 0..5 (IsLoadableGlobal .. DrawProjectileWeaponTrails, IsVulnerableToMelee)
     unsigned char Damageable : 1;                              // +0x42 bit 6

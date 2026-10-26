@@ -47,7 +47,7 @@ struct CInner {
     virtual bool m45(); /* slot 45 = 0xb4 */
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     void* pad0;
     CInner* m_inner; /* +0x4 */
 };

@@ -3,7 +3,7 @@ namespace NUISystem {
 struct CComponentRoot_Retail { virtual void v00() { } };
 struct CComponentBase2_Retail { virtual void v00() { } unsigned char _body[0x10]; };
 struct CComponentBase3_Retail { virtual void v00() { } };
-struct CChangingStateComponent : CComponentRoot_Retail, CComponentBase2_Retail, CComponentBase3_Retail {
+class CChangingStateComponent : public CComponentRoot_Retail, public CComponentBase2_Retail, public CComponentBase3_Retail { public:
     unsigned char _body[0x15c - 0x1c];
     long m_state;
     CChangingStateComponent(long state) : m_state(state) { }

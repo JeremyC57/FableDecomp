@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 enum ESex { SEX_NONE = 0, SEX_MALE = 1, SEX_FEMALE = 2 };
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString& operator=(const char* text) { m_pData = text; return *this; }
 };

@@ -4,11 +4,11 @@
 // Shape: WriteFloat(float) is inlined: its by-value parameter becomes a dword local that VC homes in the dead
 // argument slot (`mov [esp+0Ch],eax` before the first push, `[esp+10h]` after `push 4`), and the vector pointer
 // stays in edi across the first call for the Y read. The 3D sibling @ 0x00993FD0 adds a third component.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 
-struct CDataOutputStream {                     // engine/CDataOutputStream.h: vptr +0, NewLine +4
+class CDataOutputStream { public:                     // engine/CDataOutputStream.h: vptr +0, NewLine +4
     virtual void v00();
     virtual void v01();
     virtual void v02();

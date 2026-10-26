@@ -9,12 +9,12 @@
 // names are descriptive.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;                               // +0x00
     CCharString(const CCharString& other);       // 0x0099EC30
 };
 namespace NProfileTimer {
-struct CProfilingInfo {                          // 12 bytes
+class CProfilingInfo { public:                          // 12 bytes
     bool m_enabled;                              // +0x00
     CCharString m_name;                          // +0x04
     long m_time;                                 // +0x08

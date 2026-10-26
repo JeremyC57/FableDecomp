@@ -6,19 +6,19 @@
 // window), GetPCookingPot @ 0x00945A90 (CThing* or null).
 // Shape: three tests in a row with one shared `xor al,al` false tail; the day comparison is
 // against DayLastAte at +0x44 (local model, this class has no PDB layout). Bool result (`mov al,1`).
-struct CThing;
+class CThing;
 
 struct CWorldClock {
     unsigned char _pad[0x14];
     long m_day;                                 // +0x14
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x1c];
     CWorldClock* m_pClock;                      // +0x1c
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
     CWorld* GetPWorld();                        // 0x008FCFC0

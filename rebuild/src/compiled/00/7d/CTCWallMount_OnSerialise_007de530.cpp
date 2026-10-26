@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad_0x00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
@@ -32,12 +32,12 @@ struct CPersistContext {
     void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);  // 0x0044BB00
 };
 
-struct CTCBase {                                // 0x0c bytes (a real base keeps the vptr from padding to 8)
+class CTCBase { public:                                // 0x0c bytes (a real base keeps the vptr from padding to 8)
     virtual void v00();
     CThing*          ParentThing;               // +0x04
     unsigned char    _pad_0x08[0x4];
 };
-struct CTCWallMount : CTCBase {
+class CTCWallMount : public CTCBase { public:
     long             BoughtForAmount;           // +0x0c
     CBaseIntelligentPointer Trophy;             // +0x10
     unsigned __int64 TrophyID;                  // +0x18

@@ -31,7 +31,7 @@ struct CDefPointer {
     CThingGameObjectDef* operator->() const { return m_p; }
 };
 
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned char _pad00[0x70];
     CDefPointer   PBaseDef;                         // +0x70
     unsigned char _pad74[0x54];

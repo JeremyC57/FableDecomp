@@ -9,7 +9,7 @@
 // this. Frame pointer is kept (retail uses ebp) via optimize("y",off).
 #pragma optimize("y", off)
 
-struct CWideString;
+class CWideString;
 
 // Callee @ 0x6611f7: __fastcall (ecx=this, edx=&byte), stack args a,b,c,0.
 extern "C" void __fastcall ConstructString_helper(

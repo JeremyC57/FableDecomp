@@ -14,20 +14,20 @@
 // Shape: C3DVector has a user copy ctor so GetPhysPos builds straight into the by-value argument (`sub esp,0Ch ;
 //   push esp`); the pub pointer (IsPointInside) and the pub thing for GetPhysPos are named locals fetched before the
 //   argument pushes; the random idle is the landed inline seed step with `switch (r % 2)`.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet { float m[6]; };
+class CRightHandedSet { public: float m[6]; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -54,32 +54,32 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-struct CThingCreatureBase;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureActionBase {
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x14];
     CCharString LoopAnimName;                   // +0xbc
     CCharString OutOfAnimName;                  // +0xc0
     CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
         const CCharString& loop, const CCharString& outOf, float loopTime, bool b, long c, long d);   // 0x008427E0
 };
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void WaitForNextUpdate();           // slot 2 (+0x08)
     unsigned char _pad[0x18 - 4];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -100,10 +100,10 @@ struct CAIStateGroupBase {
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-struct CTCShop {
+class CTCShop { public:
     void SetStockState(long state);             // 0x00773C00
 };
-struct CTCShopKeeper {                          // interface 0x90
+class CTCShopKeeper { public:                          // interface 0x90
     CTCShop* GetShopTC();                       // 0x00798F50
 };
 struct CTCScratch23 {                           // interface 0x23
@@ -125,7 +125,7 @@ struct CThingPos {
 struct CIntelligentPointerObject : CBaseIntelligentPointer {     // CIntelligentPointer<CThingObject>
     virtual void v00();
 };
-struct CTCTavernBar {                           // interface 0xb9
+class CTCTavernBar { public:                           // interface 0xb9
     bool GetEmptyJugSlot(CThing* creature, C3DVector* pos, CRightHandedSet* rh, long* actionPoint, long* slot);   // 0x007BA1D0
     CIntelligentPointerObject GetJug(long slot);   // 0x007B9F60
 };

@@ -14,15 +14,15 @@ public:
 };
 static CCharString operator+(const CCharString& l, const CCharString& r) { char b[64]; std::strcpy(b, l.Text); std::strcat(b, r.Text); return CCharString(b); }
 static CCharString operator+(const CCharString& l, const char* r) { char b[64]; std::strcpy(b, l.Text); std::strcat(b, r); return CCharString(b); }
-struct CBaseClass { virtual ~CBaseClass() {} };
-struct CScriptThing : CBaseClass {
+class CBaseClass { public: virtual ~CBaseClass() {} };
+class CScriptThing : public CBaseClass { public:
     const char* data;
     virtual CCharString GetDataString() const { return CCharString(data); }
 };
 static CScriptThing g_hero;
 static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long timerValue, setTimer, setSecs; char text[64]; const CScriptThing* speaker;
     virtual CScriptThing& GetHero() { return g_hero; }
     virtual void SetTimer(long t, long s) { Log("set"); setTimer = t; setSecs = s; }
@@ -34,8 +34,8 @@ struct CGameScriptInterface {
 };
 static CGameScriptInterface g_global;
 static CGameScriptInterface* g_pGameScriptInterface = &g_global;
-struct CTimer { long Index; };
-struct CScriptBase { int polls; bool IsActiveThreadTerminating() { ++polls; return false; } };
+class CTimer { public: long Index; };
+class CScriptBase { public: int polls; bool IsActiveThreadTerminating() { ++polls; return false; } };
 struct CQ_OrchardFarmRaidScript : CScriptBase {
     CGameScriptInterface* m_pInterface;
     CTimer CommentTimer;

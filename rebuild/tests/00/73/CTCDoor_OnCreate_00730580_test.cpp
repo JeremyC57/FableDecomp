@@ -1,7 +1,7 @@
 // Behaviour test for CTCDoor::OnCreate() @ 0x00730580: Opening and Closing take CurrentOpen, OldOpen is untouched and
 // LastCreatureFoundWF is cleared.
 #include <cstdio>
-struct CTCDoor {
+class CTCDoor { public:
     void* __vftable; long m4; unsigned char _pad_0x08[0x4]; long Jammed;
     bool CurrentOpen; bool OldOpen; bool Opening; bool Closing;
     long LastCreatureFoundWF; long UpdateID; unsigned char TriggerType[0x4]; void* PDef_Object;

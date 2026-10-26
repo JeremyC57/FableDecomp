@@ -11,7 +11,7 @@
 // itself in its inline constructor; the string array is built by an inline `dec ebx ; jne` loop (no EH module).
 #include "fable_string.h"
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -103,12 +103,12 @@ struct CGameScriptInterface {
 };
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];                       // +0x04..+0x40
     CScriptBase();                                   // 0x00CB8110

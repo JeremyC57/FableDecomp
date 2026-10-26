@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <string.h>
 
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_text;
     bool operator<(const CCharStringData& other) const { return strcmp(m_text, other.m_text) < 0; }
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator<(const CCharString& other) const
     {

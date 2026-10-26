@@ -4,13 +4,13 @@
 // at +0x4; the index out-parameter is the `push ecx` frame slot, pushed first = last argument).
 // Shape: `index = 0` is stored from the zeroed eax before the null test of the table; the
 // out-parameter is re-read for the result (`ret 4`).
-struct CCharString;
+class CCharString;
 
 struct CSoundSymbolTable {
     void Lookup(const CCharString& symbol, long* index);    // 0x00A38420
 };
 
-struct CASoundBank {
+class CASoundBank { public:
     void* __vftable;                            // +0x00
     CSoundSymbolTable* m_pSymbolTable;          // +0x04
     long GetSoundIndexFromSymbol(const CCharString& symbol);

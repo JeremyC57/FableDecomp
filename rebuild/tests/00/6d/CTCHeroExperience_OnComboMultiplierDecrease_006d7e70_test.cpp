@@ -2,9 +2,9 @@
 
 // Model of CTCHeroExperience::OnComboMultiplierDecrease @ 0x006D7E70: fetch the combat TC (interface 0x30) from the
 // owner's interface map and clear its melee-flourish flag.
-struct CTCCombat { bool MeleeFlourishValid; void SetMeleeFlourishValid(bool v) { MeleeFlourishValid = v; } };
+class CTCCombat { public: bool MeleeFlourishValid; void SetMeleeFlourishValid(bool v) { MeleeFlourishValid = v; } };
 struct SEntry { long type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; SEntry* first; SEntry* last;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -17,7 +17,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     CThing* ParentThing;
     void OnComboMultiplierDecrease()
     {

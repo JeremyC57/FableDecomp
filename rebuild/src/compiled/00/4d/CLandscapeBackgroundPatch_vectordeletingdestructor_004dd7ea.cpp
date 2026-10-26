@@ -16,8 +16,8 @@ typedef unsigned int uint;
 // operator delete @ 0xbfe9bc
 extern void __cdecl operator_delete(void* p);
 
-struct CLandscapeBackgroundPatch
-{
+class CLandscapeBackgroundPatch
+{ public:
     // inner scalar destructor @ 0x4da6c8
     void ScalarDtor();
     // the vector deleting destructor itself (real member -> native __fastcall:

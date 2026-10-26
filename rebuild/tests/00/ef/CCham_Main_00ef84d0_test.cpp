@@ -22,12 +22,12 @@ static bool g_badName = false;          // a callee saw an unexpected name / arg
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_termFrame; }
 static void Reset() { g_live = 0; g_iatt = 0; g_termAt = 1 << 30; g_termFrame = 1 << 30; g_frames = 0; g_badName = false; }
 
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
     ~CCharString() { }
 };
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
@@ -35,7 +35,7 @@ struct CScriptThing {
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 static int g_startFailures = 0, g_movingPolls = 0, g_moveAlongs = 0, g_releases = 0, g_scriptedLive = 0;
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     bool Scripting;
     CScriptGameResourceObjectScriptedThingBase() : Scripting(false) { ++g_scriptedLive; }
     ~CScriptGameResourceObjectScriptedThingBase() { --g_scriptedLive; }
@@ -44,7 +44,7 @@ struct CScriptGameResourceObjectScriptedThingBase {
     void MoveAlong(const CScriptThing& thing, float distance, bool flag) { if (thing.Id != 5 || distance != 1.0f || !flag) g_badName = true; ++g_moveAlongs; }
     bool IsMoving() { return g_movingPolls-- > 0; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     CScriptThing GetThingWithScriptName(const CCharString& name) const { if (strcmp(name.Text, "Leader") != 0) g_badName = true; return CScriptThing(5); }
     bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority)

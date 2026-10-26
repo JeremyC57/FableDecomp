@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour model of CShaderResource::GetPixelShader @ 0x00A5D620 (copy of the source logic, stand-in callees).
 static int g_dataDeleted = 0, g_creates = 0;
-struct CCharString { const char* text; };
-template<class T> struct CArray { T* m_pFirst; T* m_pLast; T* m_pEnd; };
+class CCharString { public: const char* text; };
+template<class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; };
 struct CRefCount { long m_count; void AddRef() { ++m_count; } void DecRef() { --m_count; } long GetRefCount() const { return m_count; } };
 struct CShaderDataRoot { virtual ~CShaderDataRoot() { ++g_dataDeleted; } };
 struct CShaderData : CShaderDataRoot, CRefCount { void Release() { DecRef(); if (GetRefCount() == 0) delete this; } };
-struct CShaderBase { virtual ~CShaderBase() {} };
-struct CPixelShader : CShaderBase {
+class CShaderBase { public: virtual ~CShaderBase() {} };
+class CPixelShader : public CShaderBase { public:
     CShaderData* Data;
     explicit CPixelShader(CShaderData* d) : Data(d) {}
     CPixelShader(const CPixelShader& o) : Data(o.Data) { if (Data) Data->AddRef(); }
@@ -15,17 +15,17 @@ struct CPixelShader : CShaderBase {
 };
 struct CPixelShaderData { CArray<unsigned long> Code; CArray<CCharString> Constants; };
 static CPixelShaderData g_bankData;
-struct CShaderDataBank {
+class CShaderDataBank { public:
     CPixelShaderData* GetShaderData(unsigned long) { return &g_bankData; }
     CCharString GetEntrySymbol(unsigned long) { CCharString s = { "PS_WATER" }; return s; }
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CPixelShader CreatePixelShader(const CArray<unsigned long>&, const CArray<CCharString>&, const CCharString&)
     {
         ++g_creates; CShaderData* d = new CShaderData; d->m_count = 1; return CPixelShader(d);
     }
 };
-struct CShaderResource {
+class CShaderResource { public:
     CShaderDataBank* ShaderBank; CArray<CShaderBase*> Shaders; CShaderRenderManager* ShaderRenderManager;
     CPixelShader GetPixelShader(unsigned long index)
     {

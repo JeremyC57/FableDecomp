@@ -1,6 +1,6 @@
 #include "engine/CCameraCollisionDef.h"
 #include <cstdio>
-struct CDefClassBase;
+class CDefClassBase;
 
 
 static int g_called = 0;

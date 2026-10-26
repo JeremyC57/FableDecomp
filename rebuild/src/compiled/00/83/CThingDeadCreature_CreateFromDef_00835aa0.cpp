@@ -9,14 +9,14 @@
 // model; bit 6 written here) and the definition's flag byte at +0x41 (bit 2 read here); the bit names are descriptive.
 // Shape: a one-bit `unsigned char` bitfield assignment between two bitfields: `mov dl,[def+41h] ; shl dl,4 ; xor dl,al ;
 // and dl,40h ; xor al,dl` (VC's merge of the shifted source bit into the destination byte).
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad00[0x41];
     unsigned char m_41_0 : 2;                   // +0x41
     unsigned char m_inheritedFlag : 1;          // +0x41 bit 2
     unsigned char m_41_3 : 5;
 };
 
-struct CThingDeadCreature {
+class CThingDeadCreature { public:
     unsigned char _pad00[0x91];
     unsigned char m_91_0 : 6;                   // +0x91 (bit 0 = dead)
     unsigned char m_inheritedFlag : 1;          // +0x91 bit 6

@@ -8,8 +8,8 @@
 // member.SetPItem(pointer.GetPItem());`) but in a speed TU, so the pointer's converting constructor is INLINE here
 // (base constructor, vtable store, SetPItem) in the `sub esp,8` frame; it has no destructor of its own, so the base
 // destructor is called directly. The early-out compares the parent with the argument (`cmp eax,edi ; je`).
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -27,7 +27,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(CThing* thing) { SetPItem((CBaseObject*)thing); }
 };
 
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     void*         __vftable;                 // +0x00
     CThing*       ParentThing;               // +0x04
     unsigned char _pad_0x08[4];              // CTCBase flags

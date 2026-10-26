@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour of CTCInventoryMap::vfunc_77 (0x006116C0): forwards the argument with both options false.
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     long m_screen; int m_force; int m_keep; long m_calls;
     void BuildMapTeleportUI(long screen, bool forceRebuild, bool keepSelection) { ++m_calls; m_screen = screen; m_force = forceRebuild; m_keep = keepSelection; }
     void ConstructScreen(long screen) { BuildMapTeleportUI(screen, false, false); }

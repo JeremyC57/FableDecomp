@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCPhysicsBase { void SetRHSetAsFlushOnGround(); };
+class CTCPhysicsBase { public: void SetRHSetAsFlushOnGround(); };
 void CTCPhysicsBase::SetRHSetAsFlushOnGround() {}

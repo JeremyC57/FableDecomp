@@ -4,7 +4,7 @@
 static int g_order[4];
 static int g_calls = 0;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x24];
     CDefClassBase& operator=(const CDefClassBase& other)
@@ -25,7 +25,7 @@ struct CArenaCreatureDefVector {
     }
 };
 
-struct CArenaWaveDef : CDefClassBase {
+class CArenaWaveDef : public CDefClassBase { public:
     long                    NumWaveCreatures;
     CArenaCreatureDefVector Creatures;
     bool                    ShortWave;

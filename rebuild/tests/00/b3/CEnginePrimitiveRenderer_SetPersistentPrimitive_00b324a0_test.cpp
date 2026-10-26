@@ -12,7 +12,7 @@
 // Layout: CEnginePrimitive: Type +0; CEngineInternalPrimitiveBase: RefCount +4, Type +8, GridPos.Level +0x24, Enable
 //   (bit 0) / NonPersistent (bit 1) of +0x34; CEnginePrimitiveHandle {vptr, Data}.
 // Shape: the handle helpers as the counted-pointer model above; `Enable = !(flags & 0x20)` through the 8-bit `not ; and 1` form.
-struct CEnginePrimitive { long Type; };
+class CEnginePrimitive { public: long Type; };
 
 class CEnginePrimitiveHandle;
 class CEngineInternalPrimitiveBase {
@@ -78,7 +78,7 @@ public:
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);   // slot 1
     void RegisterPrimitive(CEngineInternalPrimitiveBase* primitive, unsigned long flags);   // 0x00BACDD0
 };
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };

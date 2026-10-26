@@ -11,16 +11,16 @@
 // Shape: the overload of 0x00743990 for a scripted path: Timer and LastExplodeFrame are left alone; the C3DVector
 // copies are POD memberwise copies; the body hands the literal's implicit CCharString conversion to the inherited
 // filter's inline SetGroup (the CRC's null arm is laid out after the return).
-struct CThing;
-struct CThingCreatureBase;
-struct CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -32,7 +32,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -84,12 +84,12 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& operator=(const C3DVector& other) { X = other.X; Y = other.Y; Z = other.Z; return *this; }
 };
 
-template <class T> struct CCountedPointer {   // 8 bytes: object + shared count block
+template <class T> class CCountedPointer { public:   // 8 bytes: object + shared count block
     T*    Object;
     void* Count;
     CCountedPointer() : Object(0), Count(0) { }
@@ -98,7 +98,7 @@ template <class T> struct CCountedPointer {   // 8 bytes: object + shared count 
 };
 
 template <class T> struct vector;          // STLport vector (only passed by reference)
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
 namespace NCreatureMode {
 

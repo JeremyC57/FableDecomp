@@ -11,7 +11,7 @@ struct CTarget {
     void* m_pFirst;                        // +0
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     unsigned char _pad[0x74];
     CTarget* m_pTarget;                    // +0x74
     void* GetAnimationIndex();

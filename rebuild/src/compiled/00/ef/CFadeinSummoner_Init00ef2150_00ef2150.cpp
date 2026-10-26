@@ -73,7 +73,7 @@ struct CThingVtable_00ef2150 {
     virtual void v512(); virtual void v513(); virtual void v514(); virtual void v515(); virtual void v516();
     virtual void AttachEffect(void* handle, long a, long flag);   // slot 517 (+0x814)
 };
-struct CScriptThing {                              // 12 bytes (the landed model: vptr, thing, count block)
+class CScriptThing { public:                              // 12 bytes (the landed model: vptr, thing, count block)
     unsigned char _body[12];
     CScriptThing(void* thing);                     // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840

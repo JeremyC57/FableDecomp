@@ -12,8 +12,8 @@
 //   outgoing slot (8 dwords and the AngleTest3D byte: C3DVector's user copy constructor makes the copy non-trivial);
 //   `last` stays in edx. As in the landed 0x0080E2A0, the tag only overlays that slot when the callee's body is in
 //   the TU (`__declspec(noinline)`); the leaf is `??$find_if@` because `find_if` also matches `__find_if`.
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor (the predicate copy is memberwise)
 };

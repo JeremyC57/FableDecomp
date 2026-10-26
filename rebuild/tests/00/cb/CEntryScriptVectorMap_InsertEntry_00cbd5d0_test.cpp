@@ -20,7 +20,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 #else
 inline void* operator new(__SIZE_TYPE__, void* where) { return where; }
 #endif
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_references;                             // +0
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8

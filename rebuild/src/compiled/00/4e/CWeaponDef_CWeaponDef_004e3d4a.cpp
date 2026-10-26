@@ -14,7 +14,7 @@
 // +0x98, ProjectileWeaponHelperNameBase +0x9c, Shot/Ammo/TargetingRange/TargetingFOV +0xa0..+0xac, ArrowTrails +0xb0,
 // ReloadSpeedRange +0xbc, flags +0xc4, NextWeaponForBoss +0xc8, MeleeTargetingArc +0xcc, NeedsLoading +0xd0,
 // UnsheatheToCombatAnim +0xd4, UnsheatheToNormalAnim +0xd8, SheatheFromCombatAnim +0xdc, SheatheFromNormalAnim +0xe0.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
@@ -22,15 +22,15 @@ struct CBase_009fc550 {
     virtual void v00();
     ~CBase_009fc550();                             // 0x009FC550
 };
-struct CDefPointeeBase : CBase_009fc550 {          // vtable 0x01230BA0
+class CDefPointeeBase : public CBase_009fc550 { public:          // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };
-struct CObjectAugmentationParticleSet {            // 0x2c bytes in retail
+class CObjectAugmentationParticleSet { public:            // 0x2c bytes in retail
     unsigned char _body[0x2c];
     ~CObjectAugmentationParticleSet();             // 0x004E25F1
 };
-struct CWeaponTrailGraphicSet { long m_a, m_b; };
+class CWeaponTrailGraphicSet { public: long m_a, m_b; };
 struct CWeaponTrailMap {                           // map<EObjectAugmentationType, CWeaponTrailGraphicSet> (retail 12 bytes)
     unsigned char _body[0x0c];
     ~CWeaponTrailMap();                            // 0x004DD36C

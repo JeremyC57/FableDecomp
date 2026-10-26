@@ -5,7 +5,7 @@
 // to the real copy implementation. rel32 target is relocation-masked
 // in parity, so any extern tail-call target reproduces the bytes.
 
-struct CGlobalDef;
+class CGlobalDef;
 
 // The real copy implementation this thunk tail-calls into.
 extern void __fastcall CGlobalDef_Copy_impl(CGlobalDef* thisptr, CGlobalDef* other);

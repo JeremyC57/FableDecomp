@@ -6,17 +6,17 @@
 //   0x00CBE2FF (__fastcall), CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0. Entity interface (+4) slots 6 IsXbox,
 //   7 NewScriptFrame, 40 MsgIsGameInfoClickedPast, 70 GetHero, 115 DisplayGameInfo (cgsi_slots_aligned.tsv).
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 whose game-info-shown bool is at +0x82.
-struct CScriptThing {                              // 12 bytes
+class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CCharString {
+class CCharString { public:
     void* Data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual bool IsXbox() const;   // slot 6 (+0x18)
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)

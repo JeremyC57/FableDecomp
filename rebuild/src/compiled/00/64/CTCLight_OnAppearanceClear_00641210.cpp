@@ -29,10 +29,10 @@ struct CPrimitiveVector {                           // STLport vector<NGraphicAp
     }
 };
 
-struct CThing;
-struct CLightDef;
+class CThing;
+class CLightDef;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* m_pThing;                              // +0x04
     long    m_baseWord;                            // +0x08
@@ -48,7 +48,7 @@ struct CLightInfoPointer {                         // CCountedPointer<CTCLight::
     void* m_pBlock;
 };
 
-struct CTCLight : CTCBase, CAppearanceListener {
+class CTCLight : public CTCBase, public CAppearanceListener { public:
     CLightInfoPointer PLightInfo;                  // +0x10
     const CLightDef*  PLightDef;                   // +0x18
     bool              Active;                      // +0x1c

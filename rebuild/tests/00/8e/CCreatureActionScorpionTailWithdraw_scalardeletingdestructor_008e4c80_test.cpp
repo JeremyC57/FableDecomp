@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ScorpionTailWithdraw {
+class CCreatureAction_ScorpionTailWithdraw { public:
     void* vftable;
     int destroyed;
 };

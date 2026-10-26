@@ -2,7 +2,7 @@
 
 struct C2DCoordsI { long X; long Y; };
 static long g_x = 0, g_y = 0;
-struct CGameMap {
+class CGameMap { public:
     virtual ~CGameMap() { }
     virtual float GetHeightAt(const C2DCoordsI* pos) { g_x = pos->X; g_y = pos->Y; return (float)(pos->X * 100 + pos->Y); }
 };

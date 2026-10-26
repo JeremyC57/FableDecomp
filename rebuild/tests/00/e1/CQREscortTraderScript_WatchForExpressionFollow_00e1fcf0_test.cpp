@@ -21,7 +21,7 @@ static bool g_badName = false;          // a callee saw an unexpected name / arg
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_termFrame; }
 static void Reset() { g_live = 0; g_iatt = 0; g_termAt = 1 << 30; g_termFrame = 1 << 30; g_frames = 0; g_badName = false; }
 
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData(0) { }
     ~CCharString() { }
@@ -37,7 +37,7 @@ struct CCharString {
 };
 static int g_dieAt = 1 << 30;
 static int g_exprAt = -1; static const char* g_exprName = 0;
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
@@ -50,7 +50,7 @@ struct CScriptThing {
         return true;
     }
 };
-struct CGameScriptInterface { void NewScriptFrame() const { ++g_frames; } };
+class CGameScriptInterface { public: void NewScriptFrame() const { ++g_frames; } };
 static int g_restarts = 0;
 struct CQR_EscortTraderScript {
     CGameScriptInterface* Game;

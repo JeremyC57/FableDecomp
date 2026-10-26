@@ -23,7 +23,7 @@ template<class T> struct CRetailVector {
     T* first; T* last; T* end_of_storage;
 };
 
-struct CTransitionBlendAlpha {
+class CTransitionBlendAlpha { public:
     float Current;
     float Last;
 };
@@ -36,7 +36,7 @@ enum EAnimUpdateMode {
     ANIM_UPDATE_PERCENTAGE_2 = 4
 };
 
-struct CAnimSet {
+class CAnimSet { public:
     EAnimUpdateMode UpdateMode;                          // +0
     CRetailVector<short> Anims;                          // +4
     CRetailVector<CTransitionBlendAlpha> InternalAlphas; // +0x10

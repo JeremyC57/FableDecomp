@@ -13,19 +13,19 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
-struct CCharString {
+class CChunkedFileLoader;
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                       // 0x0099EAE0
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned long m_value;                 // packed B, G, R, A bytes (dword aligned: Ambient sits at +0x34)
     CRGBColour() {}
     CRGBColour(const CRGBColour& other) : m_value(other.m_value) {}
 };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();                  // slot 2 (+0x08)
     virtual void v3(); virtual void v4(); virtual void v5();
@@ -57,12 +57,12 @@ struct CDataInputStream {
     __forceinline bool ReadBool() { char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0();
     unsigned char _base_body[0x28];        // +0x04 .. +0x2b (retail C3DMeshFileChunk size 0x2c)
     void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // 0x00AA8830
 };
-struct C3DMeshFileMaterialChunk : CChunkedFileSuperChunk {
+class C3DMeshFileMaterialChunk : public CChunkedFileSuperChunk { public:
     long MaterialIndex;                    // +0x2c (PDB +0x34)
     bool TwoSided;                         // +0x30
     CRGBColour Ambient;                    // +0x34

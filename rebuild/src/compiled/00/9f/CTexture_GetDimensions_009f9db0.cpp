@@ -22,7 +22,7 @@ struct D3DSURFACE_DESC_Local {
 };
 
 // C2DExtentsI is returned through a hidden pointer (it has a constructor).
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;
     long Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) {}

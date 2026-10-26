@@ -1,11 +1,11 @@
 #pragma optimize("s",on)
-struct CPersistContext {
+class CPersistContext { public:
     void PersistFloat(void* p);
     void PersistOther(void* p);
     void PersistSub(void* p);
 };
 
-struct CPhysicsDef {
+class CPhysicsDef { public:
     unsigned char _pad[0x28];
     float Diameter;
     float Friction;

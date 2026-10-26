@@ -63,11 +63,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -160,34 +160,34 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -428,15 +428,15 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x1b0);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -581,10 +581,10 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 #include <stddef.h>
 
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char          _pad_0x04[0x4];                   // +0x04
     unsigned char          _pad_0x08[0x4];                   // +0x08
@@ -622,20 +622,20 @@ FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, Rotation) == 0x24);
 #include <stddef.h>
 
 
-struct C3DAnimFileXLoader;
-struct C3DAnimationManager;
-struct C3DMeshFileXLoader;
-struct C3DMeshStripifier;
-struct C3DQuadricBasedMeshOptimiser;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGraphicDataBank;
-struct CMovableResourceMemoryPool;
-struct CPushBufferBuildInfo;
-struct CXboxBufferMemoryPool;
+class C3DAnimFileXLoader;
+class C3DAnimationManager;
+class C3DMeshFileXLoader;
+class C3DMeshStripifier;
+class C3DQuadricBasedMeshOptimiser;
+class CCPPointerInfo;
+class CCharStringData;
+class CGraphicDataBank;
+class CMovableResourceMemoryPool;
+class CPushBufferBuildInfo;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CMeshDataBank {
+class CMeshDataBank { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -860,7 +860,7 @@ FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, StateBlock) == 0x4bc);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -872,10 +872,10 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 #endif // FABLE_ENGINE_CIVCOUNTEDPOINTEEBASE_H
 
-struct C3DAnimationInfo:C3DAnimationInfo_PDB {void BeginLoading(bool)const;}; //A26730 donorB65BA0 QBEX_N
-struct CMeshDataBank:CMeshDataBank_PDB {const C3DAnimationInfo* PeekAnimation(unsigned long)const;}; //A242C0 donorB60570
-struct CWorld {unsigned char _beforeMainMeshBank[0x3c];CMeshDataBank* PMainMeshBank;};
-struct CThingCreatureBase {
+class C3DAnimationInfo:public C3DAnimationInfo_PDB { public:void BeginLoading(bool)const;}; //A26730 donorB65BA0 QBEX_N
+class CMeshDataBank:public CMeshDataBank_PDB { public:const C3DAnimationInfo* PeekAnimation(unsigned long)const;}; //A242C0 donorB60570
+class CWorld { public:unsigned char _beforeMainMeshBank[0x3c];CMeshDataBank* PMainMeshBank;};
+class CThingCreatureBase { public:
     float GetAnimDuration(long); //0x006627F0
     CWorld* GetWorld(); //0x004C7AB0
 };
@@ -884,9 +884,9 @@ struct CBaseIntelligentPointer {
     void* PData;
     CThingCreatureBase* GetPItem() const; //0x00A01B50
 };
-struct CAnimComponentMap:CIVCountedPointeeBase {};
+class CAnimComponentMap:public CIVCountedPointeeBase { public:};
 struct CAnimComponentPointer {CAnimComponentMap* Object;CAnimComponentPointer():Object(0){}CAnimComponentPointer(const CAnimComponentPointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}};
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;
     unsigned long AnimName;
     unsigned long GroupName;
@@ -903,7 +903,7 @@ struct CAnimationEntryPointer {
     void Reset(CAnimationEntry*); //0x00696830
 };
 extern long g_GameFramesPerSecond; //0x01375550
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase(); //0x0062ED20 deleting
     virtual void Validate()const; //0x0099A400
     virtual void EditUpdate(float); //0x00692DB0

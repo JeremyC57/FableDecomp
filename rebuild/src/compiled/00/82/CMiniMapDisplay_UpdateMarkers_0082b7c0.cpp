@@ -1,4 +1,4 @@
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     char pad[0xbc];
     unsigned char dirtyFlag;
     void RefreshMarkers();

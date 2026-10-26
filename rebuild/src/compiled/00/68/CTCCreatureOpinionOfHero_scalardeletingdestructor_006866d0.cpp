@@ -1,4 +1,4 @@
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     void* vftable;
 };
 

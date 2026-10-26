@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static long g_morality = 0, g_renown = 0;
-struct CTCHeroStats { unsigned char _pad[0x28]; long Morality; void SetMorality(long m) { g_morality = m; } void AddRenown(long r) { g_renown += r; } };
+class CTCHeroStats { public: unsigned char _pad[0x28]; long Morality; void SetMorality(long m) { g_morality = m; } void AddRenown(long r) { g_renown += r; } };
 struct SDef { unsigned char _pad[0x28]; long MoralityChange; unsigned char _pad2c[0xc]; long RenownChange; };
 struct CKilledThing { unsigned char _pad[4]; SDef* m_pDef; void ModifyHeroStats(CTCHeroStats* s) { s->SetMorality(s->Morality + m_pDef->MoralityChange); s->AddRenown(m_pDef->RenownChange); } };
 

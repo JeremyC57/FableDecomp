@@ -11,14 +11,14 @@
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes, 16-byte SubDefInfoMap); the retail
 // base is modelled locally as a packed polymorphic base whose operator= is out of line.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CPlayerMovementDef : CParentDefClassBase {  // vtable 0x0123505C
+class CPlayerMovementDef : public CParentDefClassBase { public:  // vtable 0x0123505C
     float JoystickMovementStationaryBand;          // +0x3c
     float JoystickMovementSlowBand;                // +0x40
     float JoystickMovementWalkingBand;             // +0x44

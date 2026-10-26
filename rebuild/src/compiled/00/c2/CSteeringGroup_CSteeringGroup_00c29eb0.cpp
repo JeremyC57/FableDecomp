@@ -7,7 +7,7 @@
 //   landed constructor 0x00C29F50 (`push 0x00C29EB0 ; push 0x00C29F50 ; push count ; push 0Ch`); its other references are
 //   0x00C22D22 / 0x00C22D4A / 0x00C24261 (the array's delete[] paths). Model: agent436's CSteeringGroup (vtable
 //   0x012B40A4: slot 0 GetIndexSlot 0x00C29FA0, slot 1 ForEachMember 0x00C29D00).
-struct CSteeringAgent;
+class CSteeringAgent;
 
 class CSteeringGroup {
 public:

@@ -6,8 +6,8 @@
 // Layout: retail CTCShop (Ego_r.pdb less 4 bytes per debug vector): StockState +0x0C, PShopKeeper +0x10, Shoppers
 // (vector<CIntelligentPointer<CThingCreatureBase>>, 8-byte elements) +0x18, ShopKeeperAvailable +0x24.
 // Shape: unsigned index against size() recomputed each pass; `v[i] = v[size() - 1]` (begin + n*8 - 8) then pop_back.
-struct CBaseObject;
-struct CThingCreatureBase;
+class CBaseObject;
+class CThingCreatureBase;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();             // slot 0
     CBaseObject* m_pItem;                           // +4
@@ -26,7 +26,7 @@ struct CShopperVector {                             // STLport vector<CIntellige
     CIntelligentPointer& operator[](unsigned long n) { return *(begin() + n); }
     void pop_back() { --_M_finish; _M_finish->~CIntelligentPointer(); }
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     void*               ParentThing;                // +0x04 (CTCBase)
     bool                ToBeRemoved;                // +0x08

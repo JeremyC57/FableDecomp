@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct C2DVector { float X; float Y; };
-struct C2DLineF { C2DVector Point1; C2DVector Point2; };
+class C2DVector { public: float X; float Y; };
+class C2DLineF { public: C2DVector Point1; C2DVector Point2; };
 
 // Host model of STLport list<T>::operator=: overwrite the common prefix element by element, then erase this list's
 // surplus [first1, last1) or insert the rest of x [first2, last2) before end(); self-assignment is a no-op.

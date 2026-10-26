@@ -23,7 +23,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit) const;                       // 0x00410DE0 (std::bitset::test)
@@ -37,7 +37,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -98,7 +98,7 @@ struct CIntelligentPointer {
 };
 
 #pragma pack(push, 1)
-struct CTCInventoryWeapons {                         // interface 0x13
+class CTCInventoryWeapons { public:                         // interface 0x13
     unsigned char       _pad_0x00[0x134];
     CIntelligentPointer PActiveMeleeWeapon;          // +0x134
     long                ActiveMeleeWeaponDefIndex;   // +0x13C
@@ -107,7 +107,7 @@ struct CTCInventoryWeapons {                         // interface 0x13
 };
 #pragma pack(pop)
 
-struct CTCObjectAugmentations {                      // interface 0xBF
+class CTCObjectAugmentations { public:                      // interface 0xBF
     long GetHealthToAddThisFrame();                  // 0x00766260
     long GetStaminaToAddThisFrame();                 // 0x00766330
 };
@@ -117,12 +117,12 @@ struct CStaminaRefillBlocker {                       // interface 0xA7
     bool          BlockStaminaRefill;                // +0x0C
 };
 
-struct CTCHeroStats;
-struct CTCHaste {                                    // interface 0x8C
+class CTCHeroStats;
+class CTCHaste { public:                                    // interface 0x8C
     void RemoveMultiplier(CTCHeroStats* stats);      // 0x0058148D
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     long GetCurrentRegionNumber();                   // 0x004FB150
 };
 
@@ -134,7 +134,7 @@ struct CLongVector {                                 // std::vector<long> (retai
     long& operator[](unsigned int n) { return _M_start[n]; }
 };
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad_0x00[0x48];
     float         SecondsBetweenHealthRefills;       // +0x48
     long          StaminaRefillAmount;               // +0x4C
@@ -151,7 +151,7 @@ struct CDefinitionHolder {
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 extern long g_framesPerSecond;                       // 0x01375550
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x000
     CThing*       ParentThing;                       // +0x004 CTCBase
     unsigned char _pad_0x008[0x30];

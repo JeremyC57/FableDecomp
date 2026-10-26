@@ -3,10 +3,10 @@
 #include <list>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CThing;
+class CThing;
 struct CTCUserActionPointBase { bool Free; bool IsActionPointFree() { return Free; } };
-struct CTCThingOwner { std::list<CThing*> ObjectList; };
-struct CThing {
+class CTCThingOwner { public: std::list<CThing*> ObjectList; };
+class CThing { public:
     unsigned char m_flags91; int ThingClass; unsigned Properties; float X, Y;
     CTCUserActionPointBase* Point; CTCThingOwner* Owner; int Mode; CThing* Workplace;
     unsigned GetProperties() { return Properties; }

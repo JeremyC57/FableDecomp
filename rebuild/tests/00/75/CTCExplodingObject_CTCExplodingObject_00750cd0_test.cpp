@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_kills = 0, g_lastKillImmediate = 0, g_ptrDtors = 0, g_baseDtors = 0, g_defDestroyed = 0;
-struct CThing {
+class CThing { public:
     unsigned char m_flags;
     bool IsDead() const { return (m_flags & 1) != 0; }
     void Kill(bool immediately) { ++g_kills; g_lastKillImmediate = immediately; m_flags |= 1; }

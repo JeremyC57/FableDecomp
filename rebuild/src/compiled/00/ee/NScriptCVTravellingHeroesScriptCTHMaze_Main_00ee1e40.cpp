@@ -15,24 +15,24 @@
 //   CV_TravellingHeroesScript sits 0x14 below the Ego_r.pdb offsets: MazeCutsceneDone +0x7b.
 // Shape: the CTH_ThunderBoy row 0x00EDF3A0 (same TU) with a local scripted-thing handle (its virtual calls devirtualised);
 //   the talk and hit blocks each run a paused movie sequence (VC7.1 expands the movie ctor/dtor inline only in the first).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-struct C3DVector;
-struct CCPPointerInfo {
+class C3DVector;
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
 struct CScriptThingImpl;
-struct CBaseClass {                                    // vtable 0x01231710
+class CBaseClass { public:                                    // vtable 0x01231710
     CBaseClass() { }
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
-template <class T> struct CCountedPointer {             // {Data, Info}
+template <class T> class CCountedPointer { public:             // {Data, Info}
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -53,7 +53,7 @@ template <class T> struct CCountedPointer {             // {Data, Info}
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007(); virtual void s008();
     virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016();
     virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
@@ -95,7 +95,7 @@ struct CBaseIntelligentPointer {                       // vtable 0x0129A7D8
     CBaseIntelligentPointer();                         // 0x0099A380
     virtual ~CBaseIntelligentPointer();                // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -105,7 +105,7 @@ struct CResourcePImp {                                 // the handles' counted i
     CResourcePImp() : Data(0), Info(0) { }
     ~CResourcePImp();                                  // 0x006E7AB0
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     virtual void h001(); virtual void h002(); virtual void h003(); virtual void h004();
     virtual void MoveToThing(const CScriptThing& thing, float speed, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // slot 5 (+0x14)
     virtual void h006(); virtual void h007(); virtual void h008(); virtual void h009(); virtual void h010(); virtual void h011();
@@ -120,7 +120,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CResourcePImp PImp;                                // +0x08
     CScriptGameResourceObjectMovieBase() { }
     // implicit destructor; out-of-line copies: ctor 0x006E7B60, dtor 0x006E7B80
@@ -210,8 +210,8 @@ struct CEntityScriptBase {                             // retail 0x14 bytes
     void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
 };
-struct CQ_SunnyvaleMasterData;
-struct CV_TravellingHeroesScript {
+class CQ_SunnyvaleMasterData;
+class CV_TravellingHeroesScript { public:
     unsigned char _pad[0x78];
     bool ThunderKidsTalking;                           // +0x78
     bool ThunderSceneStarted;                          // +0x79

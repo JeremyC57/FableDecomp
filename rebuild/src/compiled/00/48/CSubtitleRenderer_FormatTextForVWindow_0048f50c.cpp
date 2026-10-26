@@ -13,8 +13,8 @@ public:
     bool operator!=(const wchar* text) const;                // 0x0099B150
 };
 
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct C2DExtentsI { long X, Y; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class C2DExtentsI { public: long X, Y; };
 class C2DExtentsF {
 public:
     float Width;
@@ -54,12 +54,12 @@ struct CWStringParser : CBase_0099a2d0 {
     CWideString ReadAsStringUntilCharacter(wchar stop);      // 0x00A0CCD0
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     C2DExtentsI GetRenderTargetDimensions() const;           // 0x009BEDC0
 };
 extern CDisplayManager* g_pDisplayManager;                   // 0x013B8390
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x2ac];
     float TextBoxMaxWidth;                                   // +0x2AC (PDB +0x2C0)
     float TextBoxMinWidth;                                   // +0x2B0 (PDB +0x2C4)

@@ -45,12 +45,12 @@ struct CFrontEndManager {
 
 namespace NUISystem {
 
-struct CComponent;
-struct CScrollingViewport;
+class CComponent;
+class CScrollingViewport;
 
 extern CScrollingViewport* g_pActiveScrollingViewport;  // 0x013B8AAC
 
-struct CScrollingViewport : CViewport {          // vtables 0x012468D4 / 0x012468AC / 0x012468A4
+class CScrollingViewport : public CViewport { public:          // vtables 0x012468D4 / 0x012468AC / 0x012468A4
     virtual void v00();
     virtual void a00();
     virtual void b00();

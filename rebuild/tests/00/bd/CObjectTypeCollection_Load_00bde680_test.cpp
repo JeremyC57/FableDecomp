@@ -20,7 +20,7 @@ static int fails = 0;
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -46,7 +46,7 @@ struct CMemoryDataInputStream {
     __forceinline long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
 };
 
-struct CLocalDetailObjectCollectionType;
+class CLocalDetailObjectCollectionType;
 struct CLocalDetailObjectCollectionTypeVector {     // STLport vector<CLocalDetailObjectCollectionType*>
     CLocalDetailObjectCollectionType** _M_start;
     CLocalDetailObjectCollectionType** _M_finish;
@@ -54,7 +54,7 @@ struct CLocalDetailObjectCollectionTypeVector {     // STLport vector<CLocalDeta
     CLocalDetailObjectCollectionType* operator[](long i) const { return _M_start[i]; }
 };
 
-struct CLocalDetailPrimitiveBase {
+class CLocalDetailPrimitiveBase { public:
     virtual ~CLocalDetailPrimitiveBase();                           // slot 0
     virtual void v01();
     virtual void v02();

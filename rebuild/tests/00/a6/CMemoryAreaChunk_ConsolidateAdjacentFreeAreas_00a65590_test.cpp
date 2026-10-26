@@ -58,7 +58,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 struct CMemoryAreaChunk;
-struct CMemoryAllocatorVariableSize;
+class CMemoryAllocatorVariableSize;
 
 // Process-wide copies of the active allocator's alignment, refreshed on entry to the allocator's
 // public methods (0x013D28D4 alignment, 0x013D28D8 alignment shift).

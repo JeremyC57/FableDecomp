@@ -60,7 +60,7 @@ struct CThingFilter_IsThrownByExplosion {
 };
 }
 static int g_hits = 0; static CThing* g_last = 0;
-struct CApplyAdditionalExplosiveImpulseIfInsideRing {
+class CApplyAdditionalExplosiveImpulseIfInsideRing { public:
     float m_data[7];
     void operator()(CThing* thing) const { ++g_hits; g_last = thing; }
 };

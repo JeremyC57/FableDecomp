@@ -9,10 +9,10 @@
 // +0x40, OffsetVector3D +0x44, RHSet +0x50, OldRHSet +0x68, RHSetLastFrameSet +0x80, sixteen `bool : 1` flags in +0x84/+0x85).
 // engine/CTCPhysicsBase.h / CTCPhysicsStandard.h are flattened PODs without virtuals (RHSet as opaque bytes), so the
 // polymorphic hierarchy is modelled locally with the same offsets (as the landed constructor 0x00723FD0 does).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct CTCPhysicsBase {                        // 0x40 bytes
+class CTCPhysicsBase { public:                        // 0x40 bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();

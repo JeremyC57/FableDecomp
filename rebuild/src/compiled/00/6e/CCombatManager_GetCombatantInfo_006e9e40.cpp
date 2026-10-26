@@ -19,7 +19,7 @@ public:
     unsigned __int64 GetUID() const { return UniqueID; }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual bool IsMeleeSequence();             // slot 7 (+0x1c): 0x006F0700
@@ -39,8 +39,8 @@ template<class T> struct CRetailVector {        // retail std::vector: {first, l
     T* end_of_storage;
 };
 
-struct CWorld;
-struct C3DVector;
+class CWorld;
+class C3DVector;
 struct CCombatantInfo;
 
 class CAttackingCombatantInfo;

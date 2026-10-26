@@ -6,7 +6,7 @@
 //   lea ecx,[esi+0x0c]; call 0x99eae0   (dtor of sub-object at +0x0c)
 //   mov ecx,esi; pop esi; jmp 0x99a2e0  (tail dtor of first CCharString at +0x0)
 
-struct CCharString {
+class CCharString { public:
     char* buf;      // +0
     int   a;        // +4
     int   b;        // +8

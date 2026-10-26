@@ -6,7 +6,7 @@
 // Shape: same guard as OnGreet; the player manager is read from the main game component's +0x1C (not through CTCBase);
 //        interface 4 is CTCHeroStats (bitset byte +0x20 bit 4), called through the out-parameter lookup form.
 // Layout: CTCWife ParentThing +0x04, FrameGotMarriedToThePlayer +0x20; CMainGameComponent PlayerManager +0x1C.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -40,25 +40,25 @@ public:
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;               // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void SetMarriageState(CThing* spouse, long state);   // 0x0057BC6E
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[0x20 - 0x08];

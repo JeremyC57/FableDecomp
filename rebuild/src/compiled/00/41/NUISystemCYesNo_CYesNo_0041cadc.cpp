@@ -26,12 +26,12 @@ struct CComponentBase3_Retail {                // base at +0x18
     virtual void v00();
 };
 
-struct CChangingStateComponent : CComponentRoot_Retail, CComponentBase2_Retail, CComponentBase3_Retail {
+class CChangingStateComponent : public CComponentRoot_Retail, public CComponentBase2_Retail, public CComponentBase3_Retail { public:
     unsigned char _body[0x15c - 0x1c];         // +0x1c..+0x15c
     CChangingStateComponent(long state);       // 0x0052CC50
 };
 
-struct CYesNo : CChangingStateComponent {      // vtables 0x0122F884 / 0x0122F85C / 0x0122F854
+class CYesNo : public CChangingStateComponent { public:      // vtables 0x0122F884 / 0x0122F85C / 0x0122F854
     long m_result;                             // +0x15C
     long m_selection;                          // +0x160
     virtual void v00();

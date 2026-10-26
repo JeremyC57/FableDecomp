@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up; C3DVector Forward;
     void SetDefault() { Up = C3DVector(0.0f, 0.0f, 1.0f); Forward = C3DVector(0.0f, 1.0f, 0.0f); }
 };

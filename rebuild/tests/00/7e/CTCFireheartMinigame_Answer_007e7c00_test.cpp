@@ -11,7 +11,7 @@ struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
 
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                           // +0x00
     signed char   Player;                         // +0x04
     unsigned char Data[32];                       // +0x05
@@ -22,15 +22,15 @@ struct CGameEvent : CMemoryBuffer {
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void Clear(bool immediately);                 // 0x00492BAB
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;           // +0x18
 };
@@ -38,9 +38,9 @@ extern CPlayerGui* g_pPlayerGui;                  // 0x013B8790
 
 enum { GAME_EVENT_FIREHEART_ANSWERED = 9 };
 
-struct CThing;
+class CThing;
 
-struct CTCFireheartMinigame {
+class CTCFireheartMinigame { public:
     virtual void v00();
     CThing*       ParentThing;                    // +0x04 (CTCBase)
     unsigned char _pad08[0x4c - 0x08];

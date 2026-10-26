@@ -1,6 +1,6 @@
 #include "rebuild_abi.h"
 #include <cstdio>
-struct CLipSyncDataBank { bool IsDiskFile(unsigned long a, unsigned long b); };
+class CLipSyncDataBank { public: bool IsDiskFile(unsigned long a, unsigned long b); };
 bool CLipSyncDataBank::IsDiskFile(unsigned long a, unsigned long b){ return false; }
 int main(){
     CLipSyncDataBank d;

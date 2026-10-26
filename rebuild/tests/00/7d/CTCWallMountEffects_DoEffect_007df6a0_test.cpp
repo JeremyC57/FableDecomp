@@ -10,7 +10,7 @@
 #define __declspec(x)
 #define __int64 long long
 #endif
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
@@ -35,8 +35,8 @@ struct CThing {
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CThingPlayerCreature;
-struct CThingPhysical : CThing {          // CThingCreatureBase derives from it
+class CThingPlayerCreature;
+class CThingPhysical : public CThing { public:          // CThingCreatureBase derives from it
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
@@ -50,7 +50,7 @@ struct CThingPhysical : CThing {          // CThingCreatureBase derives from it
     virtual void ModifyHealth(float amount, bool showEffect);   // slot 59 (+0xec) 0x006A68F0 (CThingPhysical)
 };
 
-struct CTCTeleporter {                          // interface 0xdd
+class CTCTeleporter { public:                          // interface 0xdd
     void StartTeleporting(CThingPlayerCreature* hero);   // 0x007DFF90
 };
 
@@ -69,31 +69,31 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer& GetMainPlayer();                   // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 
 enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT = 1, WALL_MOUNT_EFFECT_HEAL = 2 };
-struct CWallMountEffectsDef {
+class CWallMountEffectsDef { public:
     unsigned char     _pad_00[0x28];
     EWallMountEffects Effect;                   // +0x28
     float             HealingAmount;            // +0x2c
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[4];
     CPlayerManager* GetPlayerManager();         // 0x00686D40
 };
 
-struct CTCWallMountEffects : CTCBase {
+class CTCWallMountEffects : public CTCBase { public:
     const CWallMountEffectsDef* PDef;           // +0x0c CDefPointer<CWallMountEffectsDef const>
     long                    WaitingForConfirmation;     // +0x10
     CBaseIntelligentPointer CreaturePerformingAction;   // +0x14 CIntelligentPointer<CThingCreatureBase>

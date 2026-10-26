@@ -1,4 +1,4 @@
-struct CCreatureAction_BeetleTakeOff {
+class CCreatureAction_BeetleTakeOff { public:
     void* vftable;
 };
 

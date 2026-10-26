@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CRegionDef {};
+class CRegionDef { public:};
 
 unsigned long __fastcall CRegionDef_GetSizeofClass(CRegionDef* def)
 {

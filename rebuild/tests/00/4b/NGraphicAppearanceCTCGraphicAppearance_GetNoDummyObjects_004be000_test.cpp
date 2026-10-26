@@ -3,10 +3,10 @@
 #include <cstdlib>
 // behaviour test: GetNoDummyObjects gathers the components' meshes, skips index-0 meshes, builds each mesh object at the given
 // scale and returns the first non-zero dummy-object count for the name (0 when none), releasing every object it built
-struct CCharString { const char* s; };
+class CCharString { public: const char* s; };
 struct CMeshInfo { long Index; float SizeX; unsigned char PrimaryMesh; };
 static int g_live = 0, g_built = 0; static float g_lastScale = 0;
-struct C3DMeshObject {
+class C3DMeshObject { public:
     long index;
     C3DMeshObject() : index(0) { ++g_live; }
     ~C3DMeshObject() { --g_live; }

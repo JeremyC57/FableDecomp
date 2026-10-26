@@ -7,7 +7,7 @@
 // base into pads and has no vtable, so the class is modelled locally with the same offsets.
 long __fastcall GFGetCurrentFrame();        // 0x0049D870
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13
 };

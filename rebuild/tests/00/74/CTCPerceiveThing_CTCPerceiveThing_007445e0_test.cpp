@@ -5,11 +5,11 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_baseCtor = 0, g_ipCtor = 0, g_setPItem = 0; static void* g_lastItem = (void*)1;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned long m_uidLow;
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00() {}
     CBaseObject* m_pItem;
@@ -20,20 +20,20 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     virtual void v00() {}
     CIntelligentPointer() : CBaseIntelligentPointer() { SetPItem(0); }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase() {}
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
     CTCBase(CThing* parent) : ParentThing(parent), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { ++g_baseCtor; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CPerceivedThingDef;
-template <class T> struct CDefPointer {
+class C3DVector { public: float X, Y, Z; };
+class CPerceivedThingDef;
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CTCPerceiveThing : CTCBase {
+class CTCPerceiveThing : public CTCBase { public:
     CIntelligentPointer PerceivedThing;
     float     DistanceFromPerceivedThingSquared;
     float     AwarenessTimer;

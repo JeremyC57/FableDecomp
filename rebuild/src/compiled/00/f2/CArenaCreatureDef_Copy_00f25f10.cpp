@@ -5,7 +5,7 @@
 //          CCharString::operator= 0x0099EFB0 (twice).
 // Layout (PDB CArenaCreatureDef, 0x38 bytes): base 0x28, CreatureType +0x28, NumCreatures +0x2c, HUDType +0x30,
 // DeathScore +0x34 -- the members are copied in declaration order, exactly as the compiler-generated assignment would.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& o);        // 0x0099EFB0
 };
@@ -15,7 +15,7 @@ struct CDefBase {
     CDefBase& Copy(const CDefBase& o);                   // 0x00431F10
 };
 
-struct CArenaCreatureDef : CDefBase {
+class CArenaCreatureDef : public CDefBase { public:
     CCharString CreatureType;                            // +0x28
     long NumCreatures;                                   // +0x2c
     CCharString HUDType;                                 // +0x30

@@ -1,6 +1,6 @@
 #include <cstdio>
 #include "engine/CPlayer.h"
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };
@@ -61,7 +61,7 @@ class CThingPlayerCreature : public CThing { };
 struct CPlayer_Methods : CPlayer {
     CThingPlayerCreature* GetPControlledCreature() const; // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager {
 public:
     CPlayer_Methods& GetMainPlayer();                    // 0x00449970
 };

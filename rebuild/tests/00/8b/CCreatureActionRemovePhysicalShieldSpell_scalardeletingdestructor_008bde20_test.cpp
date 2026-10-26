@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_RemovePhysicalShieldSpell {
+class CCreatureAction_RemovePhysicalShieldSpell { public:
     void* vftable;
     int destroyed;
 };

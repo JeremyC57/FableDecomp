@@ -14,9 +14,9 @@
 // `if (category && AddItem(...)) return true; return false;` gives the retail `test al,al ; je ; mov al,1 ; jmp` exits.
 // The local view is named CTCInventoryTrade_Retail so it does not shadow the PDB header engine/CTCInventoryTrade.h.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     bool AddItem(long itemType, bool silent, long price, long count);   // 0x005BF060
 };
 }

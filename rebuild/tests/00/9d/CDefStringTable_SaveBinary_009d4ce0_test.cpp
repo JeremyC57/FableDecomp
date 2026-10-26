@@ -1,10 +1,10 @@
 // Behaviour test for CDefStringTable::SaveBinary (0x009D4CE0): a locked table is not written; otherwise it is written
 // (write access, flags 4) and, when locking, the map is cleared (erase called on the root, header reset) and locked.
 #include <cstdio>
-struct CWideString { const char* path; };
+class CWideString { public: const char* path; };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 static int g_opens = 0, g_closes = 0, g_writes = 0, g_erases = 0, g_access = 0; static unsigned long g_flags = 0;
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     bool Opened;
     CDiskFileWin32() { Opened = false; }
     ~CDiskFileWin32() { Close(); }

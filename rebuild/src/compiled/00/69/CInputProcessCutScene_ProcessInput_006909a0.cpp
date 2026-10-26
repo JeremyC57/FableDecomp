@@ -18,7 +18,7 @@ public:
 };
 struct CMemoryBuffer {
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -32,26 +32,26 @@ public:
     void SetHandled();                             // 0x00A0D390
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 class CThing;
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* PMessageEventManager;    // +0x60
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0xfa];
     bool          CutsceneActionMode;              // +0xfa (SubtitleRenderer +0xe2)
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 class CPlayer;
-struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

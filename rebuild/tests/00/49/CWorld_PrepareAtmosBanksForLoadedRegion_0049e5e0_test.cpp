@@ -1,24 +1,24 @@
 // Behaviour test (0x0049e5e0): CWorld::PrepareAtmosBanksForLoadedRegion mutes atmos sounds when the loaded region has sound themes off
 #include <cstdio>
 #include <cmath>
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x56];
     bool          SoundThemesEnabled;
     unsigned char _pad57;
 };
-struct CWorldMap {
+class CWorldMap { public:
     CRegion Regions[3];
     long    Loaded;
     long GetLoadedRegion() const { return Loaded; }
     const CRegion& GetRegion(long region) const { return Regions[region]; }
 };
-struct CAtmosProcess {
+class CAtmosProcess { public:
     int   Calls;
     bool  Muted;
     float Fade;
     void SetAtmosSoundsAsMuted(bool muted, float fadeTime) { ++Calls; Muted = muted; Fade = fadeTime; }
 };
-struct CWorld {
+class CWorld { public:
     CWorldMap      Map;
     CAtmosProcess* PAtmosProcessor;
     virtual const CWorldMap& PeekWorldMap() const { return Map; }

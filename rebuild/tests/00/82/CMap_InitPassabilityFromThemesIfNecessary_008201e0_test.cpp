@@ -8,14 +8,14 @@
 //   false;` -- retail keeps the cell passable for Passability <= 0); the cell pointer steps before x.
 // Callees: CMap theme lookup 0x0081F910 (labelled CopyPos), CGameDefinitionManager::Get 0x0044C6B0 (__fastcall), CDefinitionManager::GetDef<T> 0x0063F3A0, CMap::GetGroundFaceNormalAt 0x0081F6C0; constants 0.0f @ 0x0122DEDC, 0.7f @ 0x01255318.
 // Layout: no CMap engine header; local model (height field +0x1A7C: cells +0x10 of 12 bytes, width +0x204, height +0x208; passability flag +0x1D38; theme def flags +0xA0 bit 0, passability +0x80).
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     C2DCoordI Min;
     C2DCoordI Max;
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -44,13 +44,13 @@ struct CThemeDef {
     unsigned char _pad84[0x1c];
     unsigned char Flags;                        // +0xa0 bit 0: passable
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (--Object->m_refCount == 0) Object->Delete(); }
     T* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThemeDef>* out);   // 0x0063F3A0
 };
 void* FindDef_CDefinitionManager_GetDef(CDefinitionManager* manager, long index);   // stand-in callee
@@ -66,10 +66,10 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CTh
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager* __fastcall Get();            // 0x0044C6B0
 };
-struct CMap {
+class CMap { public:
     virtual void v00();
     unsigned char _pad04[0x1a78];
     CHeightField* HeightField;                  // +0x1a7c

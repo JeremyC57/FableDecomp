@@ -15,7 +15,7 @@ struct CBase_0044c0c0 {
     CBase_0044c0c0();                           // 0x0044C0C0
 };
 
-struct CCameraCollisionDef : CBase_0044c0c0 {
+class CCameraCollisionDef : public CBase_0044c0c0 { public:
     virtual void v00();
     CCameraCollisionDef() : CBase_0044c0c0() { }
 };

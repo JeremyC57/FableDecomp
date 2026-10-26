@@ -15,7 +15,7 @@ public:
 
 enum EGenericVarType { GENERIC_VAR_TYPE_NONE, GENERIC_VAR_TYPE_STRING = 5 };
 
-struct CGenericVar {
+class CGenericVar { public:
     virtual long Kind() const { return 3; }
     EGenericVarType Type;
     CCharString     ValString;

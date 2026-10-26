@@ -9,20 +9,20 @@
 // its frame word is reused for the lookup key. The GetInterface result is NOT tested: RemoveMode runs on both
 // paths (on the absent path with the uninitialised out pointer read from the frame -- the landed out-parameter
 // template reproduces that garbage read), so the RemoveMode + base Initialise tail is duplicated per branch.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -45,11 +45,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // slot 12: 0x00857520
     unsigned char _pad04[4];                // +0x04
@@ -58,7 +58,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
-struct CCombatAction_GenericBreakOffDrain : CCombatActionBase {
+class CCombatAction_GenericBreakOffDrain : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

@@ -15,7 +15,7 @@ extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     ~CCharString();                             // 0x0099EAE0
 };

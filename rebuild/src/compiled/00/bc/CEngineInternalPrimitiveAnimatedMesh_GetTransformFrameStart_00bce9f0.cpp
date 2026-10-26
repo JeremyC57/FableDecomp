@@ -1,6 +1,6 @@
-struct CMatrix3x4 { char pad[64]; };
+class CMatrix3x4 { public: char pad[64]; };
 
-struct CEngineInternalPrimitiveAnimatedMesh {
+class CEngineInternalPrimitiveAnimatedMesh { public:
     char pad[0x58];
     int  m58;        // +0x58
     char pad2[0x88 - 0x5c];

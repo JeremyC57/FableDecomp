@@ -15,9 +15,9 @@
 // smaller each in retail -- 0x14 lower here); record = pair<const CRegion*, C3DVector> (0x10 bytes).
 #pragma optimize("s", on)
 
-struct CRegion;
+class CRegion;
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 

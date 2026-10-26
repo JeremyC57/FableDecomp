@@ -65,7 +65,7 @@ public:
     }
 };
 
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v000();
     ~CMovableResource() { }
 };

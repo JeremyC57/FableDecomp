@@ -7,7 +7,7 @@
 // @ 0x00933A40 (own member, bool result dropped), CAIStateGroupBase::Terminate @ 0x008FCF40.
 // Shape: uninitialised component local, untested lookup, both paths merge (`jmp`) into the call. Base layout
 // modelled locally (PDB names); no engine header for CAIStateGroup_MinionCuriosity.
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound -- the same shape the landed
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;      // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,12 +40,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18 CThingAICreature*
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -56,7 +56,7 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
 };
 
-struct CTCPerceiveThing {                       // interface type 0x34 component
+class CTCPerceiveThing { public:                       // interface type 0x34 component
     float GetExtendedSightRadius();             // 0x007448F0
 };
 

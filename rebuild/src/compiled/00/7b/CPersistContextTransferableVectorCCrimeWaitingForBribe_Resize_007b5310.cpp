@@ -10,7 +10,7 @@
 // before the size computation). The default record (Ego_r.pdb CCrimeWaitingForBribe, 8 bytes: DeedHandle,
 // EOpinionDeedType Type) is the `sub esp,8` temporary, zeroed through eax by its inline constructor; the size is `(finish - start) >> 3`; the shrink arm passes `start + n` and the cached finish, the grow arm
 // reloads finish and passes (finish, n - size, &x); no destructor, both arms return separately (`ret 4`).
-struct CCrimeWaitingForBribe {                     // 8 bytes
+class CCrimeWaitingForBribe { public:                     // 8 bytes
     long DeedHandle;                               // +0x0
     long Type;                                     // +0x4 EOpinionDeedType
     CCrimeWaitingForBribe() : DeedHandle(0), Type(0) { }

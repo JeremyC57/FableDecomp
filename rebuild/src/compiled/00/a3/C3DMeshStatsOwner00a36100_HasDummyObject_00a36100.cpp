@@ -2,19 +2,19 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36100, length 64 bytes.
 // Leaf: HasDummyObject
 // Callees: Calc @ 0x004014A0, C3DMeshStats::HasDummyObject @ 0x00A2EA20. The chunk label (CMemoryDataInputStream::OpenStringSource) is propagated; named by address. Shape: the string accessors inlined before `push esi`, the statistics object in esi, `ret 4`.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     long HasDummyObject(unsigned long nameHash);   // 0x00A2EA20
 };
 

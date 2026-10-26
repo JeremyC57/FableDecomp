@@ -1,19 +1,19 @@
 // Behaviour test for 0x00738D10 multimap<ECombatAbilityDataType, ...>::lower_bound(const key&).
 #include <stdio.h>
 // ---- test model: STLport-shaped tree of combat abilities ----
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     virtual ~CCombatAbilityData() {}
     virtual long GetDataType() const { return DataType; }
     long DataType;
     long InterfaceType;
     long WeaponClass;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Object;
     long* Count;
     T* operator->() const { return Object; }
 };
-struct CCombatAbility {
+class CCombatAbility { public:
     long RepeatTimer;
     long ActiveTimer;
     void Reset()

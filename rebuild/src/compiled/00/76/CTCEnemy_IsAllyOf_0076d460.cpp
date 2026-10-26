@@ -12,7 +12,7 @@
 // interface is absent (`CTCEnemy* tc; if (Has) tc = Get; return tc;`): its slot is the dead argument
 // slot that also holds the lookup key, so the absent path reads it back (`mov eax,[esp+10h]`); every
 // return keeps its own exit (`mov al,1` / `xor al,al` / the ally test's al).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type) const;             // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -45,11 +45,11 @@ __forceinline CTCBase* GetTCIfPresent(const CThing& thing, long kind)
     return tc;
 }
 
-struct CFaction {
+class CFaction { public:
     bool IsAlliedWith(const CFaction* other) const;         // 0x006B9460
 };
 
-struct CTCEnemy {
+class CTCEnemy { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     bool          ToBeRemoved;                              // +0x08

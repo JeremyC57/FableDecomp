@@ -4,7 +4,7 @@
 // The chunk label "CInputProcessGameBase::AddToInterface" is propagated (the callees are the shadow renderer's own members).
 // Shape: the first argument is loaded before `push esi`, the second after; the compiler stores the height word first although the
 // source assigns width then height (the loads follow the source order, the stores are swapped), `ret 8`.
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     unsigned char _pad[0x338];
     long m_shadowMapWidth;                          // +0x338
     long m_shadowMapHeight;                         // +0x33c

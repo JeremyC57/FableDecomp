@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad0[0xc];
     char m_flag;
     char m_reset;

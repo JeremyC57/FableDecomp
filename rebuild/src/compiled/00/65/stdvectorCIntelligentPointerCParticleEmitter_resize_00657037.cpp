@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                               // 0x00A01B10
     ~CBaseIntelligentPointer();                              // 0x00A01C10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A26C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A26C
     CIntelligentPointer() {}
     virtual void v000();
 };

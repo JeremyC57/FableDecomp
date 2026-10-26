@@ -4,7 +4,7 @@
 // objective and guild-master message, wait for PicnicArea, override the music and spawn three threads
 static int g_frames, g_endAt, g_lookoutAt, g_picnicAt, g_timerSet, g_tutorial, g_bound, g_obj, g_msg, g_music;
 static char g_spawned[256];
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsLevelLoaded(const char* n) const { return !std::strcmp(n, "PicnicArea") && g_frames >= g_picnicAt; }
     bool IsRegionLoaded(const char* n) const { return !std::strcmp(n, "LookoutPoint") && g_frames >= g_lookoutAt; }
@@ -22,7 +22,7 @@ struct CGameScriptInterface {
 };
 static CGameScriptInterface g_game;
 static CGameScriptInterface* g_pGameScriptInterface = &g_game;
-struct CTimer { long TimerIndex; void SetTime(long t) { g_pGameScriptInterface->SetTimer(TimerIndex, t); } };
+class CTimer { public: long TimerIndex; void SetTime(long t) { g_pGameScriptInterface->SetTimer(TimerIndex, t); } };
 struct CQ_WaspBossScript {
     CGameScriptInterface* Game; CTimer ReachedWaspHelper;
     bool IsActiveThreadTerminating() { return g_frames >= g_endAt; }

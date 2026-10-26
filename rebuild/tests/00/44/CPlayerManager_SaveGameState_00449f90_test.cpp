@@ -10,8 +10,8 @@
 #define __int64 long long
 #endif
 template <class T> T* AddressOfTemporary(const T& t) { return const_cast<T*>(&t); }
-struct C3DVector;
-struct CCharString {
+class C3DVector;
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -24,17 +24,17 @@ inline CCharString EmptyString()
     return empty;
 }
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
     void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);             // 0x004109A0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                          // +0x18
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
-struct CBaseObject;
+class CBaseObject;
 class CBaseIntelligentPointer {
 public:
     virtual void v00();
@@ -45,13 +45,13 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
-struct CThingPlayerCreature : CThing { };
+class CThingPlayerCreature : public CThing { public: };
 
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x18];
     CCharString   Name;                                 // +0x18
 };
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -60,31 +60,31 @@ struct CWorldMap {
     long GetRegionNumberMapIsIn(long mapNumber) const;  // 0x004FC190
     CRegion& GetRegion(long region);                    // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* PeekWorldMap();                  // slot 13 (+0x34)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                               // +0x24 scoped_ptr<CWorld>
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x34];
     CIntelligentPointer<CThingPlayerCreature> PlayerCharacter;   // +0x34
     CThingPlayerCreature* GetPlayerCharacter() const { return PlayerCharacter.GetPItem(); }
 };
 
 namespace NPlayerManager {
-struct CPlayerSave {
+class CPlayerSave { public:
     unsigned __int64 CharacterUID;                      // +0x00
     CCharString      RegionName;                        // +0x08
 };
 }
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void*               __vftable;
     CMainGameComponent* Component;                      // +0x04
     void*               DefinitionManager;              // +0x08
@@ -114,7 +114,7 @@ CCharString::CCharString() : PStringData((void*)"") { ++g_live; }
 CCharString::CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_live; }
 CCharString::~CCharString() { --g_live; }
 CCharString& CCharString::operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static const char* g_names[2]; static unsigned __int64 g_uid = 0; static unsigned __int64 g_uidDefault = 1; static const char* g_region = 0;
 static int g_regionDefaultEmpty = 0; static int g_transfers = 0;
 void CPersistContext::Transfer(const char* name, unsigned __int64& v, const unsigned __int64& d) { g_names[0] = name; g_uid = v; g_uidDefault = d; ++g_transfers; }
@@ -124,7 +124,7 @@ const C3DVector& CThing::GetPosition() const { return g_pos; }
 CBaseObject* CBaseIntelligentPointer::GetPItem() const { return PItem; }
 void CBaseIntelligentPointer::v00() {}
 static CRegion g_regionObj;
-struct CMap : CWorldMap { long GetMapNumberAt(const C3DVector& p) const { g_seenPos = &p; return 7; } };
+class CMap : public CWorldMap { public: long GetMapNumberAt(const C3DVector& p) const { g_seenPos = &p; return 7; } };
 long CWorldMap::GetMapNumberAt(const C3DVector&) const { return -1; }
 long CWorldMap::GetRegionNumberMapIsIn(long m) const { g_seenMap = m; return 4; }
 CRegion& CWorldMap::GetRegion(long r) { g_seenRegion = r; return g_regionObj; }

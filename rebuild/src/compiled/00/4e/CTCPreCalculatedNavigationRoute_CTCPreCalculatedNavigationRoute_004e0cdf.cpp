@@ -12,7 +12,7 @@
 // addressed once); the UID's two words and the vector's three pointers follow as five stores of one `xor eax,eax` register
 // (init-list scalar + member object with an inline zeroing constructor, all after the derived vtable store).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -42,7 +42,7 @@ struct CRetailVector_RouteNode {                            // retail std::vecto
     CRetailVector_RouteNode() : _Myfirst(0), _Mylast(0), _Myend(0) { }
 };
 
-struct CTCPreCalculatedNavigationRoute : CTCBase_Calls {    // vtable 0x01242444
+class CTCPreCalculatedNavigationRoute : public CTCBase_Calls { public:    // vtable 0x01242444
     CIntelligentPointer     PThingToCalculateRouteTo;       // +0x0c
     unsigned __int64        ThingToCalculateRouteToUID;     // +0x18
     CRetailVector_RouteNode Route;                          // +0x20

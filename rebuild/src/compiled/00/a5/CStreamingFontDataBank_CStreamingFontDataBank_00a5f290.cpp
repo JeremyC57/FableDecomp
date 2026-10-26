@@ -36,7 +36,7 @@ template<class T> struct CArrayAllocProxy {   // STLport _STLP_alloc_proxy: the 
     T* p;
     CArrayAllocProxy(T* v) : p(v) { }
 };
-template<class T> struct CArray {                    // retail CArray is 0x0c with the STLport _Vector_base shape (start, finish, alloc-proxy end)
+template<class T> class CArray { public:                    // retail CArray is 0x0c with the STLport _Vector_base shape (start, finish, alloc-proxy end)
     T*                  _M_start;
     T*                  _M_finish;
     CArrayAllocProxy<T> _M_end_of_storage;
@@ -50,15 +50,15 @@ public:
     void* m_pStringData;
 };
 
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
 };
 
-struct CStreamingFontDataBankEntry;
-struct CBankFileAsyncEntry;
+class CStreamingFontDataBankEntry;
+class CBankFileAsyncEntry;
 
 class CStreamingFontDataBank : public CBankFile {
 public:

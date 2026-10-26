@@ -14,25 +14,25 @@
 //   stores; member copies of the vectors store temporaries first), passed through a named physics-TC local (the TC
 //   load and the `lea` of the set land above the stores, the vtable load below them; a temporary argument sinks the
 //   TC load under the stores, a temporary with the named TC hoists the vtable load and the push above them).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward)
         : Up(up.X, up.Y, up.Z), Forward(forward.X, forward.Y, forward.Z) { }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCPhysicsBase {                         // the thing's physics TC; only slots 31 and 75 are modelled
+class CTCPhysicsBase { public:                         // the thing's physics TC; only slots 31 and 75 are modelled
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -54,7 +54,7 @@ struct CTCInterface3A {                         // interface type 0x3a component
     unsigned char _pad00[0x50];
     unsigned char m_onMap : 1;                  // +0x50 bit 0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;               // +0x44
@@ -69,7 +69,7 @@ struct CThingCreatureBase {
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos) const;   // 0x004FC600
 };
 struct CTCCreatureFlyInCircles {

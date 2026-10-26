@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CGameMapCell {
+class CGameMapCell { public:
     unsigned char AtmosThemes[3];
     unsigned char AtmosBlends[2];
     signed char   SoundTheme;

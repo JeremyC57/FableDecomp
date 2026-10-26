@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPersistContext { int marker; };
+class CPersistContext { public: int marker; };
 
 // Model: transfer writes back into *pValue (deserialize direction).
 void __fastcall PC_Transfer(CPersistContext* pc, int /*value*/, int* pValue)

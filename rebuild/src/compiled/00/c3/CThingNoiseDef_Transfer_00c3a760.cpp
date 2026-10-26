@@ -1,4 +1,4 @@
-struct CPersistContext;
+class CPersistContext;
 
 struct CThingNoiseDef_Base
 {
@@ -11,8 +11,8 @@ struct CThingNoiseMember
     void DoIt(void* owner, int flag);
 };
 
-struct CThingNoiseDef : public CThingNoiseDef_Base
-{
+class CThingNoiseDef : public CThingNoiseDef_Base
+{ public:
     CThingNoiseMember m18;
     CThingNoiseDef* __fastcall Transfer(CPersistContext* ctx);
 };

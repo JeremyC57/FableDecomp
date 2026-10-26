@@ -2,12 +2,12 @@
 #include <cstdio>
 
 static float g_amount = -1.0f; static int g_setCalls = 0;
-struct CTCHeroMorph { void SetWillMorphAmount(float a) { g_amount = a; ++g_setCalls; } };
-struct CTCHeroExperience {
+class CTCHeroMorph { public: void SetWillMorphAmount(float a) { g_amount = a; ++g_setCalls; } };
+class CTCHeroExperience { public:
     long GetTrainableStatMaxLevel(long stat) { return stat == 9 ? 4 : 0; }
     long GetTrainableStatLevel(long stat) { return stat == 9 ? 1 : 0; }
 };
-struct CThing {
+class CThing { public:
     CTCHeroMorph* morph; CTCHeroExperience* experience;
     template<class T> bool GetInterface(T** out, long wanted)
     {
@@ -22,7 +22,7 @@ struct CAbilityEntryVector {
     unsigned long size() const { return (unsigned long)(last - first); }
     SAbilityEntry& operator[](unsigned long n) { return *(first + n); }
 };
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     CThing* ParentThing;
     bool Initialised;
     CAbilityEntryVector Abilities;

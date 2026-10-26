@@ -4,7 +4,7 @@
 static int g_helper_called = 0;
 static int g_freed = 0;
 
-struct CTCMapwho {
+class CTCMapwho { public:
     int marker;
 };
 

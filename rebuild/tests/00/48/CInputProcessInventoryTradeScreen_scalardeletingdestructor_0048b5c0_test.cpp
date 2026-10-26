@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CInputProcessInventoryTradeScreen
-{
+class CInputProcessInventoryTradeScreen
+{ public:
     int tag;
     void Destroy();
 };

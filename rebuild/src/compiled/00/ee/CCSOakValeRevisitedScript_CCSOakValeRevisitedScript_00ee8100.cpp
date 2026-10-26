@@ -11,7 +11,7 @@
 // vectors are STLport `_Vector_base` + `_STLP_alloc_proxy` (six zero words from the one ebx), the map header is
 // zeroed, malloc'd and self-linked by `_M_empty_initialize`.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CGameScriptInterface {                      // retail vtable @ 0x01260F0C
+class CGameScriptInterface { public:                      // retail vtable @ 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -24,11 +24,11 @@ struct CGameScriptInterface {                      // retail vtable @ 0x01260F0C
     virtual long RegisterTimer();   // slot 87 (+0x15c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
-struct CTimer {                                    // a script timer: the interface's timer index
+class CTimer { public:                                    // a script timer: the interface's timer index
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
-struct CScriptBase {                               // 0x40 bytes, the quest-script root (vtable 0x012C1648)
+class CScriptBase { public:                               // 0x40 bytes, the quest-script root (vtable 0x012C1648)
     virtual void v00();
     unsigned char _body[0x3c];                     // +0x04..+0x3f
     CScriptBase();                                 // 0x00CB8110
@@ -43,12 +43,12 @@ struct CCountedPointerWords {                     // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CBaseObject {                               // CBaseIntelligentPointer root
+class CBaseObject { public:                               // CBaseIntelligentPointer root
     virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04
     CBaseObject();                                 // 0x0099A380
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual void v00();
@@ -89,7 +89,7 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
         this->_M_header->_M_right = this->_M_header;
     }
 };
-struct CScriptThing;
+class CScriptThing;
 struct CMapNodeCharStringBool;
 struct CCS_OakValeRevisitedScript : CQuestScriptObject {   // vtable 0x012F53C0
     CRetailVector<CScriptThing*> FirePoint;        // +0x48 (vector<CScriptThing>, 12 bytes)

@@ -4,13 +4,13 @@
 // calls with their exact arguments in order, home position copied into the packed parent, sight radius 10.
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:
     int id;
     C3DVector home;
     C3DVector GetHomePos() const { Log("Home"); return home; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void SetTimer(long timer, long time) { char b[32]; std::sprintf(b, "T%ld,%ld", timer, time); Log(b); }
     virtual void SetThingHasInformation(const CScriptThing& t, bool a, bool b, bool c) const { Log(t.id == 5 && !a && b && !c ? "Info" : "InfoBAD"); }
     virtual void EntitySetAsDamageable(const CScriptThing& t, bool d) const { Log(t.id == 5 && !d ? "Dmg" : "DmgBAD"); }

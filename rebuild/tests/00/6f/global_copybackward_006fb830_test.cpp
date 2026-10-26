@@ -5,7 +5,7 @@
 
 static int g_copies = 0;
 namespace NAnimationEvents {
-struct CEvent { long a; long b; };
+class CEvent { public: long a; long b; };
 }
 template <class T, int N> class CSmallVector {
 public:

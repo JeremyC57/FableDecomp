@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CShopItem { float Quantity, PriceMultiplier, MaxStock; long RestockPeriod; float A, B, C; };
+class CShopItem { public: float Quantity, PriceMultiplier, MaxStock; long RestockPeriod; float A, B, C; };
 struct Value { long first; CShopItem second; };
 struct NodeBase { long Color; NodeBase* Parent; NodeBase* Left; NodeBase* Right; };
 struct Node : NodeBase { Value V; };

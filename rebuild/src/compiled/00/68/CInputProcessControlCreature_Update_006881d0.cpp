@@ -21,7 +21,7 @@ public:
     bool IsExpressionShiftModeForced() const;      // 0x00445BB0
     bool IsGameActionEventInQueue(long action, long buttonEventType, long player);   // 0x00446B10
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

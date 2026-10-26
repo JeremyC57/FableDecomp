@@ -1,11 +1,11 @@
 // Behaviour test for 0x005D9BF0 CTCInventoryItem::Persist
 #include <cstdio>
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; unsigned long long stored; bool loaded;
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer(const char*, unsigned long long& v, const unsigned long long&) { if (IsSaving()) stored = v; else v = stored; }
 };
-struct CThing { unsigned long long UID; };
+class CThing { public: unsigned long long UID; };
 struct CInvBase { CThing* ParentThing; };
 struct CItem {
     CInvBase* PInventory; unsigned long long InventoryUIDToAttachTo;

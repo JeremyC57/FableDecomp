@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     int dummy;
     const char* seen_lit;
     int seen_len;

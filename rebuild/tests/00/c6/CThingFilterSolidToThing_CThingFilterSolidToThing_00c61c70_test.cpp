@@ -1,8 +1,8 @@
 // Behaviour test for 0x00C61C70 CThingFilter_SolidToThing::CThingFilter_SolidToThing
 #include <cstdio>
-struct CThing { int x; };
-struct CTCSolidToThing;
-struct CThingFilter_SolidToThing {
+class CThing { public: int x; };
+class CTCSolidToThing;
+class CThingFilter_SolidToThing { public:
     CThing*          SourceThing;
     CTCSolidToThing* PTCSolidToThing;
     bool             m_flag;

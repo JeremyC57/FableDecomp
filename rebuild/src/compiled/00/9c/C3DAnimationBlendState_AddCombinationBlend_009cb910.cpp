@@ -5,7 +5,7 @@
 //   mov eax,[esp+8]; push eax; lea ecx,[esi+4]; call 0x99ec30 (thiscall on this+4, arg=alpha)
 //   mov eax,esi; pop esi; ret 4
 
-struct C3DAnimationStateAlpha;
+class C3DAnimationStateAlpha;
 
 struct SubMember
 {
@@ -13,8 +13,8 @@ struct SubMember
     void AddAlpha(C3DAnimationStateAlpha* alpha);
 };
 
-struct C3DAnimationBlendState
-{
+class C3DAnimationBlendState
+{ public:
     void* m_head;      // offset +0 (this-relative helper target uses this directly)
     SubMember m_sub;   // offset +4
 

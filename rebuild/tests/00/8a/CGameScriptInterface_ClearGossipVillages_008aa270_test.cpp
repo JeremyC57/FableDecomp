@@ -29,7 +29,7 @@ struct Target {
 
 Registry g_registry;
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
 void __fastcall CGameScriptInterface_ClearGossipVillages(CGameScriptInterface* self, StrKey key)
 {

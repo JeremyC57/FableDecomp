@@ -7,7 +7,7 @@
 // @ 0x00B51EA0 (manifest "StartRaining") uses the previous byte/float pair, so this body is the snow variant. The engine header puts
 // OverridenSnowStrength/SnowOverriden at +0x12f0/+0x12f4 (Ego PDB); retail has the float at +0x5cc and the flag at +0x5d1 while
 // MaximumWeatherParticlePercentage stays at +0x12f8, so the retail layout is modelled locally.
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     unsigned char _pad0[0x5c8];
     float         OverridenRainStrength;           // +0x5c8
     float         OverridenSnowStrength;           // +0x5cc

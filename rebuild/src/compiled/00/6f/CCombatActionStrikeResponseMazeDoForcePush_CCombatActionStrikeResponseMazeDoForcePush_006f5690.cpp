@@ -8,12 +8,12 @@
 // constructor @ 0x00867950 runs, then the compiler stores this class's vtable (0x012625E4
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_GenericStrikeResponseBase { public:
     virtual void v00();
     CCombatAction_GenericStrikeResponseBase();                           // 0x00867950
 };
 
-struct CCombatAction_StrikeResponseMazeDoForcePush : CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_StrikeResponseMazeDoForcePush : public CCombatAction_GenericStrikeResponseBase { public:
     virtual void v00();                    // this class has its own vtable
     CCombatAction_StrikeResponseMazeDoForcePush();
 };

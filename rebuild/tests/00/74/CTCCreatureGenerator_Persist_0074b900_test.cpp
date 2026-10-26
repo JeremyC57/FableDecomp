@@ -3,11 +3,11 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* text; CCharString() : text("") {} CCharString(const CCharString& o) : text(o.text) {} ~CCharString() {} };
+class CCharString { public: const char* text; CCharString() : text("") {} CCharString(const CCharString& o) : text(o.text) {} ~CCharString() {} };
 inline CCharString EmptyName() { CCharString name; return name; }
 struct CDefIndexArray { int n; };
 
-struct CPersistContext {
+class CPersistContext { public:
     int count; char names[32][48]; long defs[32];
     CPersistContext() : count(0) {}
     void Note(const char* n, long d) { std::strcpy(names[count], n); defs[count] = d; ++count; }
@@ -21,7 +21,7 @@ struct TGenerationParameters {
     float GenerationRadius, SelfTriggerRadius; bool SelfTrigger; long SelfTriggerResetInterval; bool TriggerOnActivate;
     long ActiveCreatureLimit, TotalGenerationLimit, NumTriggers; CCharString ScriptNameOfAllGeneratedCreatures;
 };
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     CDefIndexArray CreatureFamilies; TGenerationParameters GenParams;
     bool Active, ReadyToInitialise; long NumTriggersLeft; bool Destroyed;
     void Persist(CPersistContext* context, bool flag)

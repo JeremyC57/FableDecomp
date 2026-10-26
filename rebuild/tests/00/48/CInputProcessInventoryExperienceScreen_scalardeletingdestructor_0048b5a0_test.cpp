@@ -4,7 +4,7 @@
 static int g_dtor_calls = 0;
 static void* g_last_deleted = 0;
 
-struct CInputProcessInventoryExperienceScreen {
+class CInputProcessInventoryExperienceScreen { public:
     int a, b, c;
     void* deleting_destructor(unsigned int flags);
 };

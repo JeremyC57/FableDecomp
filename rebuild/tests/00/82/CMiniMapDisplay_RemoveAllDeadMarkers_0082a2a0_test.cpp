@@ -19,7 +19,7 @@ static QueryResult* __fastcall Marker_Query(Marker* self) {
 static void __fastcall Marker_Destroy(Marker* self) { (void)self; }
 static void fable_free(void* p) { g_freed++; free(p); }
 
-struct CMiniMapDisplay { char pad[0x20]; Node* head; };
+class CMiniMapDisplay { public: char pad[0x20]; Node* head; };
 
 static void __fastcall RemoveAllDeadMarkers(CMiniMapDisplay* self) {
     Node* head = self->head;

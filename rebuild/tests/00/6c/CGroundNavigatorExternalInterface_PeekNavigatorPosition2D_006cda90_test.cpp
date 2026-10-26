@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C2DVector {
+class C2DVector { public:
     float x;
     float y;
     C2DVector() {}
@@ -17,7 +17,7 @@ struct NavHolder {
     Navigator* nav;
 };
 
-struct CGroundNavigatorExternalInterface {
+class CGroundNavigatorExternalInterface { public:
     char pad0[4];
     NavHolder* holder;
     C2DVector PeekNavigatorPosition2D();

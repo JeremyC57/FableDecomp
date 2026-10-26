@@ -22,7 +22,7 @@ struct CLibScopeGuard {
 
 bool __stdcall LibNotifyWorldState(long state, long arg);   // 0x00C335C0
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x18];
     bool          Paused;                       // +0x18
     void Refresh();                             // 0x00C1C460

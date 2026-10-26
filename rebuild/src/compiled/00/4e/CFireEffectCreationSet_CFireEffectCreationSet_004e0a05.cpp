@@ -8,7 +8,7 @@
 // through rtti-vtables.tsv), then the member object at +0x8 is constructed out of line
 // @ 0x004DF974. Base and member class names come from unique manifest labels, else from the
 // callee address. One of 16 bodies of this shape.
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     CInitBaseClass();                           // 0x0099A310
 };
@@ -17,7 +17,7 @@ struct CMember_004df974 {
     CMember_004df974();                              // 0x004DF974
 };
 
-struct CFireEffectCreationSet : CInitBaseClass {
+class CFireEffectCreationSet : public CInitBaseClass { public:
     unsigned char _pad[0x4];
     CMember_004df974 m_member;                       // +0x8
     virtual void v00();

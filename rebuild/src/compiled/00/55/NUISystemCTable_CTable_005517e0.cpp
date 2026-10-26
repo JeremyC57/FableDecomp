@@ -20,7 +20,7 @@ struct CObserver_Retail {                          // vtable at +4, then its 0x1
 struct CEventSinkInterface {                       // vtable at +0x18
     virtual void v0();
 };
-struct CChangingStateComponent : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x15C bytes
+class CChangingStateComponent : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:   // retail 0x15C bytes
     unsigned char _body[0x15c - 0x1c];
     CChangingStateComponent(long owner);           // 0x0052CC50
 };
@@ -47,7 +47,7 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
     }
 };
 struct CULongVector;
-struct CTable : CChangingStateComponent {          // vtables 0x0124A224 / 0x0124A1FC / 0x0124A1F4
+class CTable : public CChangingStateComponent { public:          // vtables 0x0124A224 / 0x0124A1FC / 0x0124A1F4
     virtual void v000();
     virtual void ProcessEvent();
     virtual void v0();

@@ -33,7 +33,7 @@ template <class T> __forceinline T** CopyRange(T** first, T** last, T** result)
                          : (T**)((char*)memmove(result, first, (char*)last - (char*)first) + ((char*)last - (char*)first));
 }
 
-template <class T> struct CArray {                           // retail STLport vector: first, last, end_of_storage
+template <class T> class CArray { public:                           // retail STLport vector: first, last, end_of_storage
     T* first; T* last; T* end_of_storage;
     unsigned long capacity() const { return (unsigned long)(end_of_storage - first); }
     __forceinline void DeallocateMemory()
@@ -48,14 +48,14 @@ template <class T> struct CArray {                           // retail STLport v
         }
     }
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 template <> void CArray<CCharString>::DeallocateMemory();    // 0x009D3FB0 (out of line: the strings are destroyed)
 
 struct CSmallFilenameVector {                                // CSmallVector<CCharString, 8>
     unsigned char _body[8];
     ~CSmallFilenameVector();                                 // 0x009D2110
 };
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     unsigned long        StateBlockCRC;                      // +0x00
     unsigned long        InfoSize;                           // +0x04
     char*                InfoBuffer;                         // +0x08
@@ -79,12 +79,12 @@ struct CPackedUIntArray {
     void DeallocateMemory();                                 // 0x00A629D0
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long Count;                                              // +0
     void (__fastcall* Destroy)(void*);                       // +4
     void* Object;                                            // +8
 };
-struct CDiskFileWin32;
+class CDiskFileWin32;
 struct CDiskFilePointer {                                    // CCountedPointer<CDiskFileWin32>
     CDiskFileWin32* Data;
     CCPPointerInfo* Info;

@@ -21,7 +21,7 @@
 // Shape: the graphic is reached through an inline accessor (retail loads it into ecx before the pushes), the flag
 //   default is `0` then `if (!recalculate) flags = 0x21`, and C3DVector has a declared memberwise copy ctor (the
 //   returned `pos` is copied X through the FPU, Y/Z as dwords).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -30,8 +30,8 @@ struct C3DVector {
 __forceinline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 __forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CCharString { void* PStringData; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CCharString { public: void* PStringData; };
 extern CCharString g_CCharString_013bac54;              // "EYE_SET_L"
 extern CCharString g_CCharString_013bac48;              // "focus_eye_01"
 extern CCharString g_CCharString_013bac50;              // "TARGET_CURSOR_POINT"
@@ -41,14 +41,14 @@ struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* pos, CRightHandedSet* set, float scale);   // 0x004C08C0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
     const C3DVector& GetPosition() const;               // 0x004C73D0
     CTCGraphicAppearance* GetGraphicAppearance() const { return PTCGraphicAppearance; }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad68[0x118 - 0x68];
     mutable C3DVector HeadPosOffset;                    // +0x118
     unsigned char _pad124[0x15c - 0x124];

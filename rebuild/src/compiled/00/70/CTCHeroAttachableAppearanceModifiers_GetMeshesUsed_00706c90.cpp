@@ -15,7 +15,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 struct __true_type { __true_type() {} };
 namespace NGraphicAppearance {
-struct CMeshInfo {
+class CMeshInfo { public:
     long          Index;
     float         SizeX;
     unsigned char PrimaryMesh : 1;

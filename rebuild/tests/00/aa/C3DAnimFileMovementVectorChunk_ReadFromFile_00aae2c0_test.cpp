@@ -5,8 +5,8 @@
 typedef long long __int64;
 #endif
 
-struct CChunkedFileLoader { int dummy; };
-struct CDataInputStream {
+class CChunkedFileLoader { public: int dummy; };
+class CDataInputStream { public:
     virtual void v0() {}
     virtual void v1() {}
     virtual unsigned long GetPosition() { return m_position; }
@@ -38,10 +38,10 @@ struct CDataInputStream {
     float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
-struct C3DVector { float X; float Y; float Z; };
+class C3DVector { public: float X; float Y; float Z; };
 
 static unsigned long g_baseSize = 0; static CDataInputStream* g_baseIn = 0; static CChunkedFileLoader* g_baseLoader = 0;
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0() {}
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader)
     {
@@ -49,7 +49,7 @@ struct CChunkedFileSuperChunk {
     }
 };
 
-struct C3DAnimFileMovementVectorChunk : CChunkedFileSuperChunk {
+class C3DAnimFileMovementVectorChunk : public CChunkedFileSuperChunk { public:
     C3DVector Vector;
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);
 };

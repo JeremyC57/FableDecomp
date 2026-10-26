@@ -6,7 +6,7 @@
 #endif
 // Model of the STLport __linear_insert @ 0x0087E250: a value that sorts before the first entry moves the whole range up
 // one slot (memmove copy_backward) and goes first; otherwise the unguarded insert finds its place.
-struct CAnimationEntry { float Rotation; };
+class CAnimationEntry { public: float Rotation; };
 class CCloserTo {
 public:
     float RotationAngle;

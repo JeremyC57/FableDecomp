@@ -1,4 +1,4 @@
-struct C3DAnimFileHelpersChunk {
+class C3DAnimFileHelpersChunk { public:
     void* vftable;
 };
 

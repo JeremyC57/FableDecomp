@@ -9,7 +9,7 @@
 // Entrance +0x1C, Exit +0x28.
 // Shape: the landed CDarkwoodTrader constructor (0x00E01670): Game is a plain initialiser stored before the base vtable, the
 // Me copy follows, the derived vtable precedes ParentClass, the two default CScriptThings, PMasterData a body assignment stored last.
-struct CBaseClass {                           // vtable 0x01231710
+class CBaseClass { public:                           // vtable 0x01231710
     virtual void v00();
     CBaseClass();                             // 0x0099A2D0
 };
@@ -18,7 +18,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptThing : CBaseClass {            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
+class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
     CCountedPointerWords PImp;                // +0x04
     virtual void v00();
     CScriptThing() { }
@@ -28,7 +28,7 @@ struct CScriptOwner {                         // the quest script that owns this
     unsigned char _pad00[0x40];
     void*         m_pInterface;               // +0x40 CGameScriptInterfaceBase*
 };
-struct CEntityScriptBase {                    // vtable 0x012C3224, 0x14 bytes
+class CEntityScriptBase { public:                    // vtable 0x012C3224, 0x14 bytes
     virtual void v00();
     void*        Game;                        // +0x04
     CScriptThing Me;                          // +0x08

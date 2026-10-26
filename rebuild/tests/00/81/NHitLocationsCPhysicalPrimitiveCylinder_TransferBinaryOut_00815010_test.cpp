@@ -12,11 +12,11 @@ typedef unsigned __int64 UInt64;
 static long g_longs[4]; static int g_nLongs = 0;
 static float g_floats[4]; static int g_nFloats = 0;
 static int g_seq[4]; static int g_nSeq = 0;
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value) { g_longs[g_nLongs++] = value; g_seq[g_nSeq++] = 1; }
     void WriteFloat(float value) { g_floats[g_nFloats++] = value; g_seq[g_nSeq++] = 2; }
 };
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CPhysicalPrimitiveCylinder {
     virtual void TransferBinaryOut(CDataOutputStream* stream);
     CDefString BaseName;

@@ -1,6 +1,6 @@
 #include "engine/CEngineScreenEffectRadialBlurRenderer.h"
 
-struct CCharString { char* p; CCharString(const char*, long); };
+class CCharString { public: char* p; CCharString(const char*, long); };
 struct CEngineScreenEffectRadialBlurRenderer_Methods : CEngineScreenEffectRadialBlurRenderer {
     CCharString GetConsoleEnableFunctionName();
 };

@@ -12,7 +12,7 @@
 // ebx,esp`): the key's copy constructor, then CSymbolInfo's IMPLICIT memberwise copy inlined with its `this` stepped
 // into ebx (`add ebx,4`) -- two string copies and the long, the sources read through a second induction pointer
 // (`lea edi,[esi+0Ch]`). The `push ecx` frame word keeps `first`.
-struct CCharString {
+class CCharString { public:
     void* m_pData;                                      // shared string block
     CCharString(const CCharString& other);              // 0x0099EC30
 };

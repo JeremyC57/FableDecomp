@@ -18,19 +18,19 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
-struct CThing {                                    // 0xc0 bytes
+class CThing { public:                                    // 0xc0 bytes
     virtual void v00();
     unsigned char _body[0xbc];
     CThing(long type);                             // 0x005296B0
 };
-struct CThingGameObject : CThing {                 // vtable 0x01244F7C
+class CThingGameObject : public CThing { public:                 // vtable 0x01244F7C
     virtual void v00();
     CIntelligentPointer m_owner;                   // +0xc0
     unsigned char       _padc8[0x8];               // +0xc8
     CThingGameObject(long type) : CThing(type), m_owner() { }
 };
 #pragma pack(push, 2)
-struct CEngineGraphic {                            // 14 bytes (PDB size 14)
+class CEngineGraphic { public:                            // 14 bytes (PDB size 14)
     unsigned long BankIndex;                       // +0x00
     float         AnimStep;                        // +0x04
     float         RenderSizeX;                     // +0x08
@@ -39,7 +39,7 @@ struct CEngineGraphic {                            // 14 bytes (PDB size 14)
     CEngineGraphic() : BankIndex(0), AnimStep(0), RenderSizeX(0), AdditiveAlpha(false), Type(0) { }
 };
 #pragma pack(pop)
-struct CThingVillage : CThingGameObject {          // vtable 0x012451BC
+class CThingVillage : public CThingGameObject { public:          // vtable 0x012451BC
     virtual void v00();
     CEngineGraphic CurrentGraphic;                 // +0xd0
     CThingVillage();

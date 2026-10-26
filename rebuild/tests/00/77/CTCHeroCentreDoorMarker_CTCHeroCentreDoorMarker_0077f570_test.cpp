@@ -2,8 +2,8 @@
 
 // Model of CTCHeroCentreDoorMarker::CTCHeroCentreDoorMarker(CThing*) @ 0x0077F570: radius 1.0, door type 0,
 // hero-inside flag true, both intelligent pointers empty.
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) { } virtual ~CTCBase() { } };
 struct CIntelligentPointer { void* m_pItem; CIntelligentPointer() : m_pItem(0) { } };
 struct CTCHeroCentreDoorMarker : CTCBase {
     float Radius; long DoorType; bool HeroInsideRadius; CIntelligentPointer PParticle; CIntelligentPointer PHeroCentre;

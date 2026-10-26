@@ -4,14 +4,14 @@
 // is formed first (dx then dy), its left normal (-dy, dx) costs one `fchs`, the point is made
 // relative to Point1 and the dot product is compared with 0.0f (`test ah,41h ; jne` = ordered `> 0`).
 // The x87 stack order (dx below -dy) is what makes VC multiply the X pair first.
-struct C2DVector {
+class C2DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     C2DVector(float x, float y) : X(x), Y(y) {}
     float Dot(const C2DVector& o) const { return X * o.X + Y * o.Y; }
 };
 
-struct C2DLineF {
+class C2DLineF { public:
     C2DVector Point1;   // +0x00
     C2DVector Point2;   // +0x08
     bool OnLeft(const C2DVector& pos) const;

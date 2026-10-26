@@ -7,11 +7,11 @@
 // Virtual clone: allocates sizeof(CCreatureAction_InterruptableMidAttackAutoTurn) = 0x12c, null-checks and copy-constructs from
 // `*this` through the out-of-line copy constructor @ 0x0087E690; the constructor's `this` return
 // is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
 };
 
-struct CCreatureAction_InterruptableMidAttackAutoTurn : CCreatureActionBase {
+class CCreatureAction_InterruptableMidAttackAutoTurn : public CCreatureActionBase { public:
     unsigned char _body[0x12c - 4];    // sizeof(CCreatureAction_InterruptableMidAttackAutoTurn) = 0x12c
     CCreatureAction_InterruptableMidAttackAutoTurn(const CCreatureAction_InterruptableMidAttackAutoTurn& other);             // 0x0087E690
     CCreatureActionBase* Clone();

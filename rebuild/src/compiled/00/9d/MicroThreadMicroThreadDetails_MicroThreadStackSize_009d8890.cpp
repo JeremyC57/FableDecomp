@@ -8,7 +8,7 @@
 // 0x009D8818 stores it). The active thread's stack is the live one, so it holds no saved copy (`xor eax,eax`);
 // otherwise Stack.size() = _M_finish - _M_start (+0x0c minus +0x08).
 namespace MicroThread {
-struct MicroThreadInfo {
+class MicroThreadInfo { public:
     virtual void MarkAsDead();
     virtual unsigned int MicroThreadStackSize() const;
     virtual ~MicroThreadInfo();

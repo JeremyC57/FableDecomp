@@ -2,8 +2,8 @@
 #include <cstring>
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     unsigned char pad[9];
     unsigned int refCount;
@@ -14,8 +14,8 @@ struct CCharStringData
 
 char g_emptyCharStringBuf = 0;
 
-struct CCharString
-{
+class CCharString
+{ public:
     CCharStringData* data;
 
     void MakeOwnCopyOfData();

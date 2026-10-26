@@ -1,5 +1,5 @@
 // CSteeringGroup::AddAgent(CSteeringAgent* agent) -- link an agent in at the head of the group's member list: the agent's group word (+0x30) = this, its next word (+0x34) = the old head (+0x08), the head = the agent
-// Leaf: ?AddAgent@CSteeringGroup@@QAEXPAUCSteeringAgent@@@Z
+// Leaf: ?AddAgent@CSteeringGroup@@QAEXPAVCSteeringAgent@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C29EC0, 19 bytes, __thiscall, `ret 4`:
 //   mov eax,[esp+4] ; mov [eax+30h],ecx ; mov edx,[ecx+8] ; mov [eax+34h],edx ; mov [ecx+8],eax ; ret 4
 // Naming (sweep1, 2026-10-25): was landed as CEngineInternalPrimitive::Update (a propagated manifest label);
@@ -8,7 +8,7 @@
 //   through the agent's +0x34, the agent's group word +0x30); callers 0x00C13285 and 0x00C29F91.
 struct CSteeringGroup;
 
-struct CSteeringAgent {
+class CSteeringAgent { public:
     unsigned char      _pad_0x00[0x30];
     CSteeringGroup*    m_pGroup;                // +0x30 the group this agent belongs to
     CSteeringAgent*    m_pNextInGroup;          // +0x34 next member of the group

@@ -12,7 +12,7 @@ struct Base {
     ~Base();   // extern; defined as 0x00686830
 };
 
-struct C3DAnimationBlendState : public Base {
+class C3DAnimationBlendState : public Base { public:
     // Base occupies +0x00 (vtbl). rc at +0x10.
     char pad[0x0C];
     RefCounted* rc;   // +0x10

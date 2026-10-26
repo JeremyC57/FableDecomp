@@ -1,6 +1,6 @@
 
-struct C3DVector { float x,y,z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x,y,z; };
+class CTCCreatureNavigation;
 
 struct INavHelper {
     virtual bool m00();
@@ -12,7 +12,7 @@ struct INavHelper {
     virtual bool slot6(CTCCreatureNavigation* nav, C3DVector* dest);
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* pad0;
     INavHelper* helper; // +4
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);

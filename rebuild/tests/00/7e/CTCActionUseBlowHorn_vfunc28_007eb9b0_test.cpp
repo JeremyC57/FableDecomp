@@ -3,17 +3,17 @@
 // action is destroyed afterwards.
 #include <cstdio>
 
-struct CThing { unsigned char m_flags91; };
-struct CCreatureActionBase;
+class CThing { public: unsigned char m_flags91; };
+class CCreatureActionBase;
 static int g_baseCalls = 0, g_actionsAlive = 0;
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThing* m_target;
     CCreatureActionBase() : m_target(0) { ++g_actionsAlive; }
     virtual ~CCreatureActionBase() { --g_actionsAlive; }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CThing* lastTarget; int actions;
     bool SetCurrentAction(CCreatureActionBase* action) { lastTarget = action->m_target; ++actions; return true; }
 };
@@ -24,12 +24,12 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer() {}
 };
 
-struct CCreatureAction_BlowHorn : CCreatureActionBase {
+class CCreatureAction_BlowHorn : public CCreatureActionBase { public:
     CBaseIntelligentPointer PObjectToUse;
     CCreatureAction_BlowHorn(CThingCreatureBase*, CThing* horn) { m_target = horn; PObjectToUse.m_pItem = horn; }
 };
 
-struct CTCActionUseBase {
+class CTCActionUseBase { public:
     CThing* ParentThing;
     void vfunc_28(CThingCreatureBase*) { ++g_baseCalls; }
 };

@@ -7,8 +7,8 @@
 static int g_texturesFreed = 0;
 static int g_surfacesFreed = 0;
 
-struct CTexture { int id; void Uninitialise() { ++g_texturesFreed; } ~CTexture() { Uninitialise(); } };
-struct CSurface { virtual ~CSurface() { ++g_surfacesFreed; } };
+class CTexture { public: int id; void Uninitialise() { ++g_texturesFreed; } ~CTexture() { Uninitialise(); } };
+class CSurface { public: virtual ~CSurface() { ++g_surfacesFreed; } };
 
 struct LongVec {
     long items[16];

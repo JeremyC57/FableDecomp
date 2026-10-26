@@ -41,7 +41,7 @@ struct CBase {
     virtual ~CBase();                      // 0x0099A2E0
 };
 
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CCountedPointer PImp;                  // +0x4
     virtual ~CScriptThing();
 };

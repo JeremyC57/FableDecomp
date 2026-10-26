@@ -1,12 +1,12 @@
 // Byte-exact reconstruction of CCombatManager::DeregisterCombatant @ 0x006ea430
-struct CThingCreatureBase
-{
+class CThingCreatureBase
+{ public:
     // 0x662410 : bool __fastcall (membership / in-combat predicate)
     char IsCombatant();
 };
 
-struct CCombatManager
-{
+class CCombatManager
+{ public:
     // 0x6ea2c0 : void __fastcall CCombatManager::RemoveCombatant(CThingCreatureBase*)
     void RemoveCombatant(CThingCreatureBase* creature);
 };

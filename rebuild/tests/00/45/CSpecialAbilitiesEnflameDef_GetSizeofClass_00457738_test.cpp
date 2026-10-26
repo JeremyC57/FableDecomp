@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesEnflameDef { char pad[0xa8]; };
+class CSpecialAbilitiesEnflameDef { public: char pad[0xa8]; };
 
 unsigned long __fastcall CSpecialAbilitiesEnflameDef_GetSizeofClass(const CSpecialAbilitiesEnflameDef* self)
 {

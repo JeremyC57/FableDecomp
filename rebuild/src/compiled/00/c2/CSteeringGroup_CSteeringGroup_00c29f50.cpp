@@ -9,7 +9,7 @@
 //   (this chunk) maintain the same list. No PDB covers the AI steering library: the names are descriptive.
 // Shape: the vptr store first, then the members in declaration order through eax (= this, the return value).
 // Label correction: the catalog's `Ctor_Init_012b40a4` is descriptive.
-struct CSteeringAgent;
+class CSteeringAgent;
 
 class CSteeringGroup {
 public:

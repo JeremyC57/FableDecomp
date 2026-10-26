@@ -22,13 +22,13 @@ void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement
 #pragma optimize("s", on)
 
 class CThing;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long RefCount;                                   // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other);
@@ -37,8 +37,8 @@ template <class T> struct CDefPointer {
 template <class T> struct CDefPointerSlot {         // the out-parameter view of a CDefPointer (released by hand)
     T* Object;
 };
-struct CHeroSuitDef : CDefPointeeBase {};
-struct CAppearanceModifierDef : CDefPointeeBase {
+class CHeroSuitDef : public CDefPointeeBase { public:};
+class CAppearanceModifierDef : public CDefPointeeBase { public:
     unsigned char _pad_0x08[0x4c - 0x08];
     long SuitPart;                                   // +0x4c EClothingSuitPart
 };
@@ -102,7 +102,7 @@ __declspec(noinline) bool CThingDef::GetSubDef(CDefPointerSlot<CAppearanceModifi
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointerSlot<CThingDef>* out);       // 0x0042AF3C
 };
 void* FindDef_s7r_2();
@@ -138,7 +138,7 @@ struct CSuitPartMap {                                // map<EClothingSuitPart, l
     long& operator[](const long& part);              // 0x005BBBF3
 };
 
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     unsigned char _pad_0x000[0x58];
     bool InventoryOpen;                              // +0x58
     unsigned char _pad_0x059[0x140 - 0x59];

@@ -5,7 +5,7 @@
 // and +0x44; the manifest label "CTCHeroStats::SoberUp" is propagated -- the body zeroes the 0x1c-byte fade record and stores an opaque black
 // colour). Vtable 0x0125A5DC (chunk label CDrawTargetInfo; the PDB layout fits: AttackAlphaFade +0x2c, BlockAlphaFade +0x48 -- retail 4 lower, the
 // CDrawBase vector is 12 bytes in the shipped build). Shape: the vtable store sits between the first member's `lea ecx` and its constructor call.
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace NPlayerGui {
 
@@ -20,14 +20,14 @@ struct CFadeInFadeOutBase {
     CFadeInFadeOutBase();                          // 0x00436560
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
     CRetailHandleVector PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawTargetInfo : CDrawBase {               // vtable 0x0125A5DC
+class CDrawTargetInfo : public CDrawBase { public:               // vtable 0x0125A5DC
     virtual void v00();
     CFadeInFadeOutBase AttackAlphaFade;            // +0x28
     CFadeInFadeOutBase BlockAlphaFade;             // +0x44

@@ -20,12 +20,12 @@ struct CComponentRoot {                          // the primary base: vptr at +0
     virtual void v00();
 };
 
-struct CHoverable : CComponentRoot, IComponentA, IComponentB {
+class CHoverable : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x16c - 0x1c];      // +0x1c .. +0x16c: the base's state
     CHoverable(long owner);                            // 0x0055BA20
 };
 
-struct CDraggableInto : CHoverable {                        // vtables 0x0124B2D4 / 0x0124B2B0 / 0x0124B2A8
+class CDraggableInto : public CHoverable { public:                        // vtables 0x0124B2D4 / 0x0124B2B0 / 0x0124B2A8
     virtual void v00();
     virtual void va00();
     virtual void vb00();

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineClothRenderer {
+class CEngineClothRenderer { public:
     void* vftable;
     int destroyed;
 };

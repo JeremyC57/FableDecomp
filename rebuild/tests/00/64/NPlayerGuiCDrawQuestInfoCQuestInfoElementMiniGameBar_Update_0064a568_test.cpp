@@ -3,16 +3,16 @@
 // EXPRESSION_PICKLOCK (type 4), and stops updating once the button is no longer held; other types are ignored.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* t, long = -1) : Text(t) {}
 };
 static const char* g_asked;
 static bool g_held;
-struct CTCInventory {
+class CTCInventory { public:
     bool IsButtonHeldForExpression(const CCharString& e) { g_asked = e.Text; return g_held; }
 };
-struct CThing {
+class CThing { public:
     bool Dead; CTCInventory* Inventory;
     template<class T> bool GetInterface(T** out, long type) const
     {
@@ -22,10 +22,10 @@ struct CThing {
 };
 template<class T> bool IS_THING_ALIVE(const T& thing) { return thing && !thing->Dead; }
 static CThing* g_hero;
-struct CPlayer { CThing* GetHeroThing() const { return g_hero; } };
+class CPlayer { public: CThing* GetHeroThing() const { return g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
-struct CMainGameComponent { CPlayerManager* PlayerManager; };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; };
 static CPlayerManager g_pm;
 static CMainGameComponent g_mgc = { &g_pm };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;

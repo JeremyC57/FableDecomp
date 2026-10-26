@@ -27,7 +27,7 @@ struct CChunkedFileChunkBase {
     ~CChunkedFileChunkBase();                       // 0x00686830
 };
 
-struct CPatchTesselationEdgeStrip : CChunkedFileChunkBase {
+class CPatchTesselationEdgeStrip : public CChunkedFileChunkBase { public:
     CHeapArray              m_arrayA;               // +0x0c
     CHeapArray              m_arrayB;               // +0x18
     unsigned char           m_pad24[0x08];

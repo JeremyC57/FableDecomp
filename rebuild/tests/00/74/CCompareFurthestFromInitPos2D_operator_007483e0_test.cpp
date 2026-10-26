@@ -3,16 +3,16 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y, Z;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float GetLengthSquared() const { float r = Y * Y; r += X * X; return r; }
 };
 static int g_posCalls;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x6c];
     unsigned char m_flags6c;
     unsigned char _pad6d[0x91 - 0x6d];
@@ -20,7 +20,7 @@ struct CThing {
     C3DVector     m_position;
     const C3DVector& GetPosition() const { ++g_posCalls; return m_position; }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad92[0xe8 - 0x91 - 1 - sizeof(C3DVector)];
     float InitialPosX;
     float InitialPosY;

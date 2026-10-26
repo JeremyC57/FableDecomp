@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_WhisperSommersaultForward {
+class CCreatureAction_WhisperSommersaultForward { public:
     void* vftable;
     int destroyed;
 };

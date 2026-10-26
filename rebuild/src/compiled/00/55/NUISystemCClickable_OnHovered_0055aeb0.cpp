@@ -167,7 +167,7 @@ struct CEventSinkInterface {                                 // vtable at +0x18 
 
 struct CActionList;                                          // std::list<CCountedPointer<NUISystem::CAction>>
 
-struct CHoverable : CComponentInterface, CObserver_Retail, CEventSinkInterface {
+class CHoverable : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:
     unsigned char _component[0x15c - 0x1c];                  // CComponent .. CChangingStateComponent state (+0x14c)
     long         StateBeforeHovered;                         // +0x15c
     bool         WasHovered;                                 // +0x160
@@ -181,7 +181,7 @@ public:
     void OnDeactivate();                                     // 0x0055BDE0
 };
 
-struct CClickable : CHoverable {               // retail 0x194 bytes (PDB 0x1c4)
+class CClickable : public CHoverable { public:               // retail 0x194 bytes (PDB 0x1c4)
     long         StateBeforeLeftClicked;                     // +0x16c
     bool         WasLeftClicked;                             // +0x170
     CActionList* PActionsOnLeftClicked;                      // +0x174

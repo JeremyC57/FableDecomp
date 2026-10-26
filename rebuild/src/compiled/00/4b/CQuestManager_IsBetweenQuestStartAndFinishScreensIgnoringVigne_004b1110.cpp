@@ -37,7 +37,7 @@ struct CThing_Retail {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 __forceinline CTCBase_Retail* GetTC(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
 };
 template <class T> struct CRetailVector {          // STLport vector (12 bytes)
@@ -48,10 +48,10 @@ template <class T> struct CRetailVector {          // STLport vector (12 bytes)
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
-struct CTCQuestCard {
+class CTCQuestCard { public:
     bool IsVignette() const;                       // 0x007022E0
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char             _pad_0x00[0x4c];
     CRetailVector<CCharString> BetweenStartAndEndScreenQuests;   // +0x4c
     CThing_Retail* GetActiveQuestCardFromScriptName(const CCharString& name);   // 0x004B0C80

@@ -87,11 +87,11 @@ FABLE_STATIC_ASSERT(offsetof(CCombatSequence_VillagerComboUnblockable, __vftable
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -184,10 +184,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -314,7 +314,7 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 
 
 #pragma pack(push, 1)
-struct CCreatureAction_InterruptableMidAttack {
+class CCreatureAction_InterruptableMidAttack { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -413,7 +413,7 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttack, InterruptTi
 
 
 #pragma pack(push, 1)
-struct CCreatureAction_VillagerAttackKnockdown {
+class CCreatureAction_VillagerAttackKnockdown { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -514,15 +514,15 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_VillagerAttackKnockdown, Blockable)
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -667,14 +667,14 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -743,8 +743,8 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -752,8 +752,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -838,11 +838,11 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 
-struct CThingCreatureBase;
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct CTCWeaponTrail;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CThing;
+class C3DVector { public: float x, y, z; };
+class CTCWeaponTrail;
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -915,8 +915,8 @@ struct CCreatureActionBase {
     virtual bool WaitForMeshToLoad() const;
     unsigned char nativeFields[0xa4]; // native ActionBase70 slots, size0xa8
 };
-struct CSoundPair { long first; long last; CSoundPair() : first(0), last(0) { } };
-struct CCombatActionBase : CCreatureActionBase {
+class CSoundPair { public: long first; long last; CSoundPair() : first(0), last(0) { } };
+class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();
     virtual void PerformAction();
     virtual void FinishAction();
@@ -962,12 +962,12 @@ struct CCombatActionBase : CCreatureActionBase {
     unsigned char nativeCombatFields[0x6c]; // retail extends the native 0xa8 action base to 0x114
     CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds); // 0x00857F30
 };
-struct CCreatureAction_VillagerAttackKnockdown : CCombatActionBase {
+class CCreatureAction_VillagerAttackKnockdown : public CCombatActionBase { public:
     bool Blockable;                   // native +0x114; PDB donor offset +0x12c
     unsigned char nativePadding[3];
     CCreatureAction_VillagerAttackKnockdown(CThingCreatureBase& owner, CThingCreatureBase& target, bool blockable); // 0x0097CF90
 };
-struct CCreatureAction_InterruptableMidAttack : CCombatActionBase {
+class CCreatureAction_InterruptableMidAttack : public CCombatActionBase { public:
     long InterruptTime; // +0x114 native; intentionally untouched by this ctor
     virtual ~CCreatureAction_InterruptableMidAttack();
     virtual CCreatureActionBase* Clone() const;
@@ -1009,7 +1009,7 @@ struct CCountedPointer {
         }
     }
 };
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     void* nativeVptr; // data-only vptr; no sequence vtable is emitted by this caller
     unsigned char nativePrefix[0x18];
     CThingCreatureBase* Creature; // native +0x1c (donor base header has a 4-byte difference)
@@ -1041,8 +1041,8 @@ void CCombatSequence_VillagerComboUnblockable::OnCreate()
 
 
 
-struct CThing { int identity; };
-struct CThingCreatureBase : CThing { };
+class CThing { public: int identity; };
+class CThingCreatureBase : public CThing { public: };
 static int adds,ctors,zeroSounds,code150,baseCalls,destroyed,interruptDtors,query,retain,saved,errors,knockdowns;
 static CThingCreatureBase* owners[6]; static CThing* targets[6];
 static SCountBlock* counts[3]; static CThingCreatureBase *nextOwner,*nextTarget;

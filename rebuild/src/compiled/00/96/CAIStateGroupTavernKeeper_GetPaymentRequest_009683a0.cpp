@@ -14,7 +14,7 @@
 // store is scheduled ahead of the IsOriginatedByThing constructor call, as in retail). Engine header is padding only
 // (PDB names PPayee +0x2c, JugSlot +0x5c, PaymentRequestMessage +0x64), so a local model is used.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned char _pad1[0x6c - 0x20];
@@ -38,12 +38,12 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -55,7 +55,7 @@ struct CAIStateGroupBase {
 };
 
 // CMessageEvent (PDB): Type +8, OriginatorUID +0x20, ExtraData +0x3c, MessageID +0x40, POriginator +0x48
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad0[0x3c];
     long ExtraData;                             // +0x3c
     long MessageID;                             // +0x40
@@ -73,24 +73,24 @@ struct CMessageEvent {
     }
 };
 
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
 
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     unsigned __int64 UID;                       // the originator's 64-bit UID (PDB)
     CMessageEventFilter_IsOriginatedByThing(const CThing* thing);    // 0x006AF290 (pointer) -- twin 0x006AF2B0 takes a reference
     CMessageEventFilter_IsOriginatedByThing(const CThing& thing);    // 0x006AF2B0
 };
 
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 
-template<class A, class B, class C> struct CFilter_Bind3 {
+template<class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;

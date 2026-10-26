@@ -3,7 +3,7 @@
 // Callees: CGraphicDataBank::ChangeScene @ 0x009FD0C0 (on the bank at +0x954 of the engine data record @ 0x01436E98), the surface-composition manager's
 // UpdateTextureMorphCache @ 0x00B2D9F0 (on the manager @ 0x01436EAC; a `jmp` because it is the last call and takes no arguments). A static member: no
 // `this`, the two objects come from the engine's static singletons.
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void ChangeScene();                            // 0x009FD0C0
 };
 
@@ -12,14 +12,14 @@ struct CEngineData_01436e98 {
     CGraphicDataBank*  m_pGraphicBank;             // +0x954
 };
 
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     void UpdateTextureMorphCache();                // 0x00B2D9F0
 };
 
 extern CEngineData_01436e98*               g_pEngineData_01436e98;           // 0x01436E98
 extern CEngineSurfaceCompositionManager*   g_pSurfaceComposition_01436eac;   // 0x01436EAC
 
-struct CEngine {
+class CEngine { public:
     static void UpdateTextureMorphCache();
 };
 

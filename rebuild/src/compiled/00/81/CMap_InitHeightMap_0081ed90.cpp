@@ -6,11 +6,11 @@
 //   HeightMapSizeX +0x1d14, HeightMapSizeY +0x1d18; CHeightMapInit (PDB) SizeX, SizeY, WorldSeed as a 12-byte frame local.
 // Shape: the init record is filled before `new` (its three stores interleave with the size push); scoped_ptr::reset stores the new pointer
 //   and then deletes the old one (`delete` of a polymorphic object = null test + virtual scalar deleting destructor).
-struct CWorld;
-struct C2DCoordI {
+class CWorld;
+class C2DCoordI { public:
     long X, Y;
 };
-struct CHeightMapCell {                            // PDB, 12 bytes
+class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -23,13 +23,13 @@ template <class T> struct CRetailVector {          // STLport vector: begin / en
     T* _M_end_of_storage;
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CHeightMapInit {                            // PDB, 12 bytes
+class CHeightMapInit { public:                            // PDB, 12 bytes
     long           SizeX;
     long           SizeY;
     unsigned long* WorldSeed;
 };
-struct CMap;
-struct CHeightMap {                                // retail layout (PDB CHeightMap with the 12-byte release vector)
+class CMap;
+class CHeightMap { public:                                // retail layout (PDB CHeightMap with the 12-byte release vector)
     virtual ~CHeightMap();                         // slot 0: the scalar deleting destructor
     CWorld*                        World;          // +0x04
     CMap*                          Map;            // +0x08
@@ -48,7 +48,7 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
     void reset(T* p) { T* old = ptr; ptr = p; delete old; }
 };
-struct CMap {
+class CMap { public:
     unsigned char           _pad00[0x20];
     CWorld*                 World;                 // +0x20
     unsigned long*          WorldSeed;             // +0x24

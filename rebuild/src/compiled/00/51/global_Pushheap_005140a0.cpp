@@ -11,7 +11,7 @@
 // "hole <= top" early exit (value reloaded from its slot) and the loop exit (value kept in ebp).
 class CThingBuilding;
 
-struct CIsHouseLargerThan {
+class CIsHouseLargerThan { public:
     char m_tag;
     bool operator()(CThingBuilding* a, CThingBuilding* b) const;   // 0x00512410
 };

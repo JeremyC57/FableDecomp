@@ -1,11 +1,11 @@
 extern const char kEmptyDisplayNameTag[];
 
-struct CCharString {
+class CCharString { public:
     char* data;
     bool Compare(const char* s) const;
 };
 
-struct CRegion {
+class CRegion { public:
     char pad[0x18];
     CCharString nameA;
     CCharString nameB;

@@ -12,14 +12,14 @@
 // the scalar floats copy as dword moves.
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes); the retail base is 0x39 bytes.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CSpecialAbilitiesGhostSwordDef : CParentDefClassBase {   // vtable 0x012344D4
+class CSpecialAbilitiesGhostSwordDef : public CParentDefClassBase { public:   // vtable 0x012344D4
     float TimeOfSummon[4];                  // +0x3c one per ability level
     float FadeInTime;                       // +0x4c
     float FadeOutTime;                      // +0x50

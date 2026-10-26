@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCTavernJug {
+class CTCTavernJug { public:
     unsigned char _body[0x38];       // sizeof(CTCTavernJug) = 0x38
     CTCTavernJug(void* owner);                   // 0x004D51C8
 };

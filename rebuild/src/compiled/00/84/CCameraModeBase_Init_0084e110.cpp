@@ -10,10 +10,10 @@
 // Shape: the float results are stored straight from x87 (`fstp`); the type test and the validity re-test share
 // the FrameUpdate call; the camera roll is an inline helper on the tracking block (valid flag re-read after the
 // call, a POD CCamera assignment -> `rep movsd` of 14 dwords with edi saved inside the branch, the flag set).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward, Up; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward, Up; };
 
-struct CCamera {                                    // 0x38 bytes, POD
+class CCamera { public:                                    // 0x38 bytes, POD
     C3DVector WorldPosition;
     CRightHandedSet RHSet;
     bool HeightLocked;

@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <stddef.h>
-class CEngineLightingManager { public: class CManagerShadowedSpotLight; };
+class CEngineLightingManager { public: struct CManagerShadowedSpotLight; };
 namespace stlp_test {
 struct __true_type { };
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }

@@ -2,7 +2,7 @@
 
 static int g_uninit = 0, g_assign = 0;
 
-struct CSurface {
+class CSurface { public:
     void* m_pSurface; void* m_pTexture; long m_format;
     CSurface() : m_pSurface(0), m_pTexture(0), m_format(0) { }
     bool IsInitialised() const { return m_pSurface != 0; }
@@ -10,7 +10,7 @@ struct CSurface {
     CSurface& operator=(const CSurface& o) { ++g_assign; m_pSurface = o.m_pSurface; m_pTexture = o.m_pTexture; m_format = o.m_format; return *this; }
 };
 
-struct CRenderTarget {
+class CRenderTarget { public:
     CSurface m_colour;
     CSurface m_depth;
     void Uninitialise()

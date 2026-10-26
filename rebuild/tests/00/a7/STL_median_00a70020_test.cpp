@@ -19,7 +19,7 @@ public:
     }
 };
 template <class T1, class T2> struct pair { T1 first; T2 second; };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef pair<CCharString, CCharString> P;

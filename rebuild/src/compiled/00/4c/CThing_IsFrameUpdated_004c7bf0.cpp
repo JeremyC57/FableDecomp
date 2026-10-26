@@ -18,13 +18,13 @@ struct CTCGraphicAppearance {
     }
 };
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad00[0x41];
     unsigned char AvailableInEditor : 1;             // +0x41 bit 0
     unsigned char AlwaysFrameUpdate : 1;             // bit 1
 };
 
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CWideString {
+class CWideString { public:
     unsigned short* m_pData;
     ~CWideString();
 };

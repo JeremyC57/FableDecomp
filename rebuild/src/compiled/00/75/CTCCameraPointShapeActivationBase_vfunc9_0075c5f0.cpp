@@ -14,7 +14,7 @@
 // the else arm, and `Activated = false` stores the known-zero bl.
 // Shape: the camera source is reached by naming the GetWorld() CALL result and chaining the member in the call expression
 //   (`CWorld* world = GetWorld(); world->m_pCameraSource->GetCameraManager(&manager)`, retail `mov ecx,[eax+34h]`).
-struct CThing;
+class CThing;
 
 struct CCameraPointManager {
     void RemoveCameraPoint(CThing* thing);          // 0x006984A0
@@ -27,7 +27,7 @@ struct CCameraManagerSource {                       // the world's +0x34 object
     virtual bool GetCameraManager(CCameraPointManager** out);   // slot 9 (+0x24)
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x34];
     CCameraManagerSource* m_pCameraSource;          // +0x34
 };

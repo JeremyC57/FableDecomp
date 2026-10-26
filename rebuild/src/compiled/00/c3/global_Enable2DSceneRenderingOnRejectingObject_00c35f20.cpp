@@ -3,7 +3,7 @@
 // free two-argument `__stdcall` function (`ret 8`, ecx never read) in the 0x00C3xxxx module, the negated twin of 0x00C34050.
 // Callees: the object's virtual slot 1 (bool), the setter @ 0x00C445C0 (manifest "CEngine::Enable2DSceneRendering(bool)").
 // Shape: the bool is widened to a mask and INVERTED (`neg al ; sbb eax,eax ; not eax ; and eax,esi`): the conditional is `accepts ? 0 : object`.
-struct CRenderTarget {
+class CRenderTarget { public:
     virtual void v00();
     virtual bool Accepts();                        // slot 1
     void Enable2DSceneRendering_00c445c0(bool enable);      // 0x00C445C0

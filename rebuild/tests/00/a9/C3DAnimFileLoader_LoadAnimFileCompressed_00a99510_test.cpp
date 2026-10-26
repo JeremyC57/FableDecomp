@@ -13,7 +13,7 @@ struct SCountBlock {
 static int g_destroyed = 0;
 static void __fastcall DestroyFile(void*) { ++g_destroyed; }
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object;
     SCountBlock* Count;
     CCountedPointer(T* o, SCountBlock* c) : Object(o), Count(c) {}
@@ -29,16 +29,16 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct CDataInputStream { };
+class CDataInputStream { public: };
 static int g_streamsAlive = 0;
-struct CMemoryDataInputStream : CDataInputStream {
+class CMemoryDataInputStream : public CDataInputStream { public:
     const void* StreamSource; long sourceLength;
     CMemoryDataInputStream(const void* data, long size) : StreamSource(data), sourceLength(size) { ++g_streamsAlive; }
     ~CMemoryDataInputStream() { --g_streamsAlive; }
 };
 
-struct CHandleBasedMemoryPool { int dummy; };
-struct CScratchBuffer { int dummy; };
+class CHandleBasedMemoryPool { public: int dummy; };
+class CScratchBuffer { public: int dummy; };
 CScratchBuffer g_ScratchBuffer;
 
 static unsigned char g_bufferBytes[64];
@@ -57,7 +57,7 @@ int lzo1x_decompress_safe(const unsigned char* src, unsigned long src_len, unsig
     g_lzSrc = src; g_lzLen = src_len; g_lzDst = dst; g_lzOut = *dst_len; return 0;
 }
 
-struct C3DAnimFile { int dummy; };
+class C3DAnimFile { public: int dummy; };
 static C3DAnimFile g_file;
 static const void* g_loadedFrom = 0; static long g_loadedLength = 0; static int g_streamsAtLoad = 0;
 struct C3DAnimFileLoader {

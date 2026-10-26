@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CPlane {
+class C3DVector { public: float X, Y, Z; };
+class CPlane { public:
     C3DVector Normal; float Distance;
     bool Initialise(const C3DVector& normal, float distance) { Normal = normal; Distance = distance; return true; }
 };

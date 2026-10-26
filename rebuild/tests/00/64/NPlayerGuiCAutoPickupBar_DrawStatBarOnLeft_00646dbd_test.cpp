@@ -22,25 +22,25 @@ static int fails = 0;
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CRGBColour { unsigned char B, G, R, A; };
-struct C2DVector { float X, Y; };
-struct CGraphicDataBank;
-struct CEnginePrimitivePrepareInfo {
+class CRGBColour { public: unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class CGraphicDataBank;
+class CEnginePrimitivePrepareInfo { public:
     float FrameTime;                                        // +0x00
 };
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);                        // slot 0
     virtual void Delete();                                  // slot 1
     unsigned long IVRefCount;                               // +4
 };
 #pragma pack(push, 1)
-struct CInventoryItemDef : CIVCountedPointeeBase {
+class CInventoryItemDef : public CIVCountedPointeeBase { public:
     unsigned char _pad08[0x25 - 0x08];
     long          Graphic;                                  // +0x25 (CEngineGraphic)
 };
 #pragma pack(pop)
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer() : Object(0) {}
     __forceinline ~CDefPointer()
@@ -63,7 +63,7 @@ __declspec(noinline) void CObjectDef::GetSubDef(CDefPointer<CInventoryItemDef>* 
     *(void**)out = def;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CObjectDef>* out) const;   // 0x0042B040
 };
 void* FindDef_CDefinitionManager_GetDef();   // stand-in callee of the stand-in body below
@@ -82,7 +82,7 @@ struct CGameState {
     unsigned char _pad00[0xa4];
     bool          Paused;                                   // +0xa4
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CGameState*   GameState;                                // +0x24
     const CDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
@@ -115,7 +115,7 @@ struct CRetailList_AutoPickup {                             // retail list<CAuto
     void pop_front();                                       // 0x00655AA4
 };
 
-struct CStatBar {                                           // vtable pointer +0x00
+class CStatBar { public:                                           // vtable pointer +0x00
     CStatBarInfo* m_pInfo;                                  // +0x04
     unsigned char _pad_0x08[0x10 - 0x08];
     float         Value;                                    // +0x10 (the amount the bar shows)
@@ -128,7 +128,7 @@ struct CStatBar {                                           // vtable pointer +0
                                    const C2DVector& size, const CRGBColour& colour, unsigned char alpha, bool flash);   // 0x00646762
 };
 
-struct CAutoPickupBar : CStatBar {
+class CAutoPickupBar : public CStatBar { public:
     CRetailList_AutoPickup Pickups;                         // +0x68
     long  CurrentDefIndex;                                  // +0x6C
     long  CurrentCount;                                     // +0x70

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CDateAndTime {
+class CDateAndTime { public:
     long Year; unsigned long Month, Day, Hour, Minute, Second, Millisecond;
     bool operator>(const CDateAndTime& o) const {
         if (Year != o.Year) return Year > o.Year; if (Month != o.Month) return Month > o.Month; if (Day != o.Day) return Day > o.Day;

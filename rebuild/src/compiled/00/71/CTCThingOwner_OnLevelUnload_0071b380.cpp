@@ -14,8 +14,8 @@
 //        (`count / 2` halving) with the out-parameter end/hit choice, the pointer declared before the loop (retail
 //        keeps the uninitialised frame word when the bit is clear).
 class CThing;
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -109,11 +109,11 @@ struct CThingPtrList {
     }
 };
 
-struct CTCOwnedEntity {
+class CTCOwnedEntity { public:
     void SetPOwner(CThing* owner);              // 0x007E8590
 };
 
-struct CTCThingOwner {
+class CTCThingOwner { public:
     virtual void v00();
     unsigned char   _pad_0x04[0x8];
     SOwnedListNode* ObjectList;                 // +0x0c (sentinel)

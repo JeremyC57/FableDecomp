@@ -2,16 +2,16 @@
 // BedSleepAnim -1, null def.
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
-struct CBedDef;
+class CThing { public: int id; };
+class CBedDef;
 static CThing* g_baseParent = 0;
 struct CTCBase_Calls {
     virtual void v00() { }
     unsigned char _body[0x8];
     CTCBase_Calls(CThing* parent) { g_baseParent = parent; }
 };
-template<class T> struct CDefPointer { T* m_pDef; CDefPointer() : m_pDef(0) { } };
-struct CTCBed : CTCBase_Calls {
+template<class T> class CDefPointer { public: T* m_pDef; CDefPointer() : m_pDef(0) { } };
+class CTCBed : public CTCBase_Calls { public:
     bool Empty; bool GettingIn; bool GettingOut; bool Animating;
     long BedSleepAnim;
     CDefPointer<const CBedDef> PDef;

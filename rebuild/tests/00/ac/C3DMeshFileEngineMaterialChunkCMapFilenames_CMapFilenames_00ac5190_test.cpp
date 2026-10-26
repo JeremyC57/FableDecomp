@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-struct CCharString { void* m_p; CCharString() : m_p(0) { std::strcat(g_seq, "s"); } };
+class CCharString { public: void* m_p; CCharString() : m_p(0) { std::strcat(g_seq, "s"); } };
 struct SRec { virtual void v00() { } long m_count; SRec() : m_count(1) { } }; struct CMapFilenames : SRec { CCharString m_diffuse, m_bump, m_specular, m_detail; CMapFilenames() : SRec(), m_diffuse(), m_bump(), m_specular(), m_detail() { } };
 
 int main() {

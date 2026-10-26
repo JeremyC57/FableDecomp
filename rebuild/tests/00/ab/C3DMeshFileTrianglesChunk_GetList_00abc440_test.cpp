@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test: GetList returns the first triangle when the list holds any, else the container's own address.
-struct C3DTriangle2 { unsigned short VertexIndex[3]; };
-template <class T> struct CArray {
+class C3DTriangle2 { public: unsigned short VertexIndex[3]; };
+template <class T> class CArray { public:
     T* m_first; T* m_last; T* m_end;
     long size() const { return (long)(m_last - m_first); }
 };
-struct C3DMeshFileTrianglesChunk {
+class C3DMeshFileTrianglesChunk { public:
     void* __vftable;
     unsigned char _chunkBase[0x28];
     CArray<C3DTriangle2> TriangleList;

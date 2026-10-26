@@ -3,13 +3,13 @@
 
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char m_flags91; float m_health;
     CInterfaceMap::SEntry m_entries[4]; int m_count;
     CThing() : m_flags91(0), m_health(0), m_count(0)
@@ -35,20 +35,20 @@ struct CThing {
     }
 };
 static unsigned long g_modeArg = 0; static int g_modeCalls = 0;
-struct CTCCreatureModeManager { void RemoveMode(unsigned long m) { g_modeArg = m; ++g_modeCalls; } };
+class CTCCreatureModeManager { public: void RemoveMode(unsigned long m) { g_modeArg = m; ++g_modeCalls; } };
 static int g_strings = 0;
-struct CCharString { const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) { ++g_strings; } ~CCharString() { --g_strings; } };
+class CCharString { public: const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) { ++g_strings; } ~CCharString() { --g_strings; } };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 static int g_removed = 0; static int g_striking = -1;
-struct CTCKrakenTentacle { void RemoveObstruction() { ++g_removed; } void SetIsStriking(bool s) { g_striking = s; } };
+class CTCKrakenTentacle { public: void RemoveObstruction() { ++g_removed; } void SetIsStriking(bool s) { g_striking = s; } };
 static char g_anim[32]; static int g_init = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void Initialise() { ++g_init; }
     CBaseIntelligentPointer PCreature;
     void SetAnimationName(const CCharString& n) { std::strcpy(g_anim, n.m_pData); }
     CTCKrakenTentacle* GetTentacle() const { CTCKrakenTentacle* t = 0; PCreature.GetPItem()->GetInterface(&t, 0xe3); return t; }
 };
-struct CCreatureAction_TentacleStrikeOutOf : CCombatActionBase { virtual void Initialise(); };
+class CCreatureAction_TentacleStrikeOutOf : public CCombatActionBase { public: virtual void Initialise(); };
 void CCreatureAction_TentacleStrikeOutOf::Initialise()
 {
     CTCCreatureModeManager* modeManager;

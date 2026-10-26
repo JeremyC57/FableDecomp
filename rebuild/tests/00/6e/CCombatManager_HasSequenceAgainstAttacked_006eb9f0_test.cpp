@@ -5,15 +5,15 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThing { u64 UniqueID; u64 GetUID() const { return UniqueID; } };
-struct CAttackingCombatantInfo { CThing* Attacked; };
+class CThing { public: u64 UniqueID; u64 GetUID() const { return UniqueID; } };
+class CAttackingCombatantInfo { public: CThing* Attacked; };
 struct CCombatantInfo { CThing* Parent; CAttackingCombatantInfo AttackerInfo; long bestSequence; };
-struct CMap {
+class CMap { public:
     struct node { u64 key; CCombatantInfo value; };
     node* nodes; int count;
     node* find(const u64& key) { for (int i = 0; i < count; ++i) if (nodes[i].key == key) return &nodes[i]; return 0; }
 };
-struct CCombatManager {
+class CCombatManager { public:
     CMap Combatants;
     CCombatantInfo& GetCombatantInfo(u64 uid) { return Combatants.find(uid)->value; }
     long GetBestSequenceIndexAttackerOnDefender(CCombatantInfo& attacker, CCombatantInfo& defender)

@@ -12,7 +12,7 @@ struct IDirectInputDevice8_Retail {              // COM: __stdcall methods, `thi
     virtual long __stdcall Acquire();                               // slot 7 (+0x1c)
     virtual long __stdcall Unacquire();                             // slot 8 (+0x20)
 };
-struct CInputManagerDX;
+class CInputManagerDX;
 struct CJoystickDX {                               // retail layout: the device at +0xd38, the acquired flag at +0xd3c, the DX manager at +0xd40 (the engine header, from Ego_r, is 8 bytes longer)
     virtual void v000();
     virtual void v001();

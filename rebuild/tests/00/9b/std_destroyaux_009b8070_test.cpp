@@ -40,15 +40,15 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 }
-template <class T> struct CArray : std2::vector<T> { };
-struct CCharString {
+template <class T> class CArray : public std2::vector<T> { public: };
+class CCharString { public:
     void* m_pData;
     CCharString() : m_pData(0) { }
     ~CCharString() { g_order[g_events++] = 1; }    // stands in for 0x0099EAE0
 };
-struct CDefClassBase;
-struct CDefinitionManager {
-    struct CDefClassInfo {
+class CDefClassBase;
+class CDefinitionManager { public:
+    class CDefClassInfo { public:
         CCharString Name;
         CDefClassBase* (*AllocFunc)();
         CArray<unsigned long> GlobalIndices;

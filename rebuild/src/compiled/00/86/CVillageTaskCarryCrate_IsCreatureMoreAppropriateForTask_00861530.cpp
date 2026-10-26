@@ -10,8 +10,8 @@
 // Shape: the Torch/Horn twins' distance code with the assigned distance a named float (stored into the dead `creature`
 //   slot) and the candidate distance kept on the x87 stack; Pickup is re-read after the validity call, so both arms of
 //   the final comparison survive (`2.25 * c < a` via `test ah,5 ; jnp`, `c > a * 2.25` via `test ah,41h ; jne`).
-struct CBaseObject { };
-struct C3DVector {
+class CBaseObject { public: };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -25,7 +25,7 @@ struct C3DVector {
     }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     const C3DVector& GetPosition() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vptr + item
@@ -33,7 +33,7 @@ struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vp
     CBaseObject* m_pItem;                          // +0x04
     CBaseObject* GetPItem() const;                 // 0x00A01B50
 };
-struct CVillageTaskCarryCrate {                    // vtable 0x0125A950
+class CVillageTaskCarryCrate { public:                    // vtable 0x0125A950
     virtual ~CVillageTaskCarryCrate();
     void* m_pVillage;                              // +0x04 (CVillageTaskBase)
     CBaseIntelligentPointer CreatureAssignedToTask;   // +0x08 CIntelligentPointer<const CThing>

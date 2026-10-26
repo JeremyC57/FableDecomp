@@ -15,11 +15,11 @@
 //   CCombatActionBase is 0x114 bytes (PCreature +0x08, PItemRemoved +0x2C), so Left / Right sit at +0x114 / +0x11C.
 //   CThing component bits +0x20, interface map +0x44, dead flag +0x91 bit 0; CTCSpecialAbilities AbilityMutexLock +0x0C,
 //   CurrentAbility +0x10.
-struct CTCBase;
-struct CThing;
-struct CBaseObject;
+class CTCBase;
+class CThing;
+class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -32,19 +32,19 @@ struct CInterfaceMap {                                // CVectorMap<ETCInterface
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
 
-struct CThingCreatureBase;
-struct CCreatureActionBase {                          // retail sizeof 0xa8
+class CThingCreatureBase;
+class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
 };
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {   // retail sizeof 0xb8
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:   // retail sizeof 0xb8
     unsigned char _body[0x10];
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& owner, const CCharString& animation, CThing& item,
                                                long priority, long timeout, CCreatureActionBase* next);   // 0x0069F0F0
     ~CCreatureAction_UnsheatheItemFromInventory();    // 0x005CC091
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 component bitset
     CInterfaceMap Components;                         // +0x44
@@ -63,7 +63,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
@@ -72,7 +72,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* PData;                               // +0x04
     CBaseObject* GetPItem() const;                    // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* operator->() const { return (T*)GetPItem(); }
     T& operator*() const { return *(T*)GetPItem(); }
 };
@@ -85,16 +85,16 @@ template<class T> inline bool IS_THING_ALIVE(const T& p)
     return false;
 }
 
-struct CTCSpecialAbilities {                          // interface 0xA7
+class CTCSpecialAbilities { public:                          // interface 0xA7
     unsigned char _pad00[0x0c];
     bool          AbilityMutexLock;                   // +0x0c
     long          CurrentAbility;                     // +0x10 EHeroAbility
 };
-struct CTCDParticleEmitter {                          // interface 0x4B
+class CTCDParticleEmitter { public:                          // interface 0x4B
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 
-struct CCombatActionBase {                            // retail sizeof 0x114 (CCreatureActionBase prefix)
+class CCombatActionBase { public:                            // retail sizeof 0x114 (CCreatureActionBase prefix)
     virtual void v00();
     unsigned char _pad04[4];
     CIntelligentPointer<CThingCreatureBase> PCreature;  // +0x08
@@ -103,7 +103,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114 (CC
     unsigned char _pad34[0x114 - 0x34];
     void FinishAction();                              // 0x00859A20
 };
-struct CCreatureAction_BattleChargeImpact : CCombatActionBase {
+class CCreatureAction_BattleChargeImpact : public CCombatActionBase { public:
     CIntelligentPointer<CThing> Left;                 // +0x114 left feet effect
     CIntelligentPointer<CThing> Right;                // +0x11c right feet effect
     void FinishAction();

@@ -37,8 +37,8 @@ struct CDataInputStreamReader : CDataInputStream {
     __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
 };
 
-struct CMovableResource;
-struct C2DCoordI {
+class CMovableResource;
+class C2DCoordI { public:
     long X;     // +0
     long Y;     // +4
 };

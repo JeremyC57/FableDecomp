@@ -11,11 +11,11 @@ static long g_owner = 0; static int g_baseCtor = 0, g_cbase = 0, g_init = 0;
 struct IComponentA { virtual void va00() { } unsigned char _state[0x10]; };
 struct IComponentB { virtual void vb00() { } };
 struct CComponentRoot { virtual void v00() { } };
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB { unsigned char _body[0x15c - 0x1c]; CChangingStateComponent(long owner) { g_owner = owner; ++g_baseCtor; } };
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public: unsigned char _body[0x15c - 0x1c]; CChangingStateComponent(long owner) { g_owner = owner; ++g_baseCtor; } };
 struct CBase { virtual void v00() { } CBase() { ++g_cbase; } };
 struct CEnginePrimitiveHandle : CBase { void* m_pPrimitive; virtual void v00() { } CEnginePrimitiveHandle() : CBase(), m_pPrimitive(0) { } };
 struct CComponentVector { void* m_pFirst; void* m_pLast; void* m_pEnd; CComponentVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
-struct CViewport : CChangingStateComponent {
+class CViewport : public CChangingStateComponent { public:
     virtual void v00() { } virtual void va00() { } virtual void vb00() { }
     CEnginePrimitiveHandle m_primitive; CComponentVector m_fakeChildren; void* m_pView;
     void InitialiseFromDef() { ++g_init; }

@@ -8,15 +8,15 @@ static long g_frame = 0;
 static int g_baseFinish = 0, g_queued = 0, g_lastKind = 0;
 static long g_lastLoops = 0; static float g_lastTime = 0; static const char* g_lastName = 0;
 long GetWorldFrame() { return g_frame; }
-struct CCharString { const char* s; };
-struct CThingCreatureBase { int Busy; bool IsBusy() const { return Busy != 0; } };
+class CCharString { public: const char* s; };
+class CThingCreatureBase { public: int Busy; bool IsBusy() const { return Busy != 0; } };
 struct CPtr { CThingCreatureBase* p; CThingCreatureBase* GetPItem() const { return p; } };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CPtr PCreature; long InterruptionGroupID, InterruptionPriority;
     void FinishAction() { ++g_baseFinish; }
     CThingCreatureBase* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureActionBase {
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:
     long Stage, NumberOfTimesToLoop; float AmountOfTimeToLoop; long FrameToFinish; bool UseAnimationMovement;
     CCharString LoopAnimName, OutOfAnimName;
     void FinishAction();

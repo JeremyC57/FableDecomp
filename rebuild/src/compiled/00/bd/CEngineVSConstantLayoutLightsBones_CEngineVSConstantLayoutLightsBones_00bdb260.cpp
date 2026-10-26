@@ -8,13 +8,13 @@
 // CBaseClass-derived {first register, register count} range whose implicit assignment copies the two words interleaved
 // with the temporary's own stores, then the temporary's destructor. The ranges live in the base layout at +0xd4 and +0x10;
 // the engine header (engine/CEngineVSConstantLayoutLightsBones.h) is a flattened 0x150-byte pad, so they are modelled locally.
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
 };
 
-struct CShaderConstantRange : CBaseClass {         // vtable 0x0129A04C
+class CShaderConstantRange : public CBaseClass { public:         // vtable 0x0129A04C
     long m_firstRegister;                          // +0x04
     long m_registerCount;                          // +0x08
     virtual void v00();
@@ -31,7 +31,7 @@ struct CEngineVSConstantLayoutLights {             // 0x150 bytes
     CEngineVSConstantLayoutLights();               // 0x00BDB400
 };
 
-struct CEngineVSConstantLayoutLightsBones : CEngineVSConstantLayoutLights {   // vtable 0x012A7D04
+class CEngineVSConstantLayoutLightsBones : public CEngineVSConstantLayoutLights { public:   // vtable 0x012A7D04
     virtual void v00();
     CEngineVSConstantLayoutLightsBones();
 };

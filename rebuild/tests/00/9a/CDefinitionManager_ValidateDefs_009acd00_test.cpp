@@ -18,7 +18,7 @@ static char g_msg[128];
 // (unsigned compares); the name is a block-scoped CCharString.
 #include "fable_string.h"
 
-struct CValidateDefinitionInitBase;
+class CValidateDefinitionInitBase;
 
 class CDefClassBase {
 public:
@@ -118,7 +118,7 @@ void CDefClassBase::Validate(const CValidateDefinitionInitBase& init, const CCha
     if (g_validates < 8) { g_validated[g_validates] = this; g_validInit[g_validates] = &init; }
     ++g_validates;
 }
-struct CValidateDefinitionInitBase { long dummy; };
+class CValidateDefinitionInitBase { public: long dummy; };
 int main()
 {
     static CDefClassBase defs[4];

@@ -5,14 +5,14 @@
 //   0x20-byte record {CCountedPointer A, B; CCharString S0..S3} (callers: RegisterSoundBanks, ~CEditFractal, a vector insert).
 // Callees: CCharString copy constructor 0x0099EC30 (four times).
 // Shape: CCountedPointer's copy is `Data(o.Data), Info(o.Info) { if (Info) ++Info->Count; }`; the constructor is defined out of class.
-struct CCharStringData;
-struct CCharString { CCharStringData* PStringData; CCharString(const CCharString& other); };   // 0x0099EC30
+class CCharStringData;
+class CCharString { public: CCharStringData* PStringData; CCharString(const CCharString& other); };   // 0x0099EC30
 struct SCountBlock { long Count; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; SCountBlock* Info;
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->Count; }
 };
-struct CThing;
+class CThing;
 struct SRecord {
     CCountedPointer<CThing> A; CCountedPointer<CThing> B;
     CCharString S0, S1, S2, S3;

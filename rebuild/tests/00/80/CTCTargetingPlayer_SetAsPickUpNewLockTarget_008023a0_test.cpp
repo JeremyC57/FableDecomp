@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     char pad[0x3c];
     unsigned char f3c;
     char pad2[3];

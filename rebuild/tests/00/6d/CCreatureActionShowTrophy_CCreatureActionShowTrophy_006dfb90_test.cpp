@@ -1,6 +1,6 @@
 // Behaviour test for 0x006DFB90 CCreatureAction_ShowTrophy copy constructor.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -11,8 +11,8 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CCreatureActionBase { int m_base; CCreatureActionBase() : m_base(4) { } CCreatureActionBase(const CCreatureActionBase& o) : m_base(o.m_base) { } };
-struct CCreatureAction_ShowTrophy : CCreatureActionBase {
+class CCreatureActionBase { public: int m_base; CCreatureActionBase() : m_base(4) { } CCreatureActionBase(const CCreatureActionBase& o) : m_base(o.m_base) { } };
+class CCreatureAction_ShowTrophy : public CCreatureActionBase { public:
     CIntelligentPointer PTrophy; int TrophyState; unsigned char Shown; CIntelligentPointer PTrophyObject;
     CCreatureAction_ShowTrophy() : TrophyState(0), Shown(0) { }
     CCreatureAction_ShowTrophy(const CCreatureAction_ShowTrophy& other)

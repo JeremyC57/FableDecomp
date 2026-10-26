@@ -13,24 +13,24 @@
 // Shape: the by-value CScriptThing arguments are copy-built in their stack slots (inline CBaseClass ctor: both vtable
 //   stores; null-tested add-ref); the marker temporary dies after the centre-point call (vtable store, inline release,
 //   cleared words, ~CBaseClass); the 0.0f minimum is pushed from the zero register.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -52,13 +52,13 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CBaseClass {                                      // vtable 0x01231710
+class CBaseClass { public:                                      // vtable 0x01231710
     CBaseClass() {}
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
 
 struct CScriptThingImpl;
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImpl> PImp;              // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) {}
     ~CScriptThing() {}
@@ -66,7 +66,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual const C3DVector& GetPos() const;             // slot 6 (+0x18) 0x004AA980
 };
 
-struct CGameScriptInterface {                 // vtable slots per ghidra_out/cgsi_slots_aligned.tsv
+class CGameScriptInterface { public:                 // vtable slots per ghidra_out/cgsi_slots_aligned.tsv
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -172,7 +172,7 @@ struct CGameScriptInterface {                 // vtable slots per ghidra_out/cgs
     virtual void SetWanderMaxDistance(CScriptThing thing, float distance); // slot 769 (+0xc04)
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0x428];
     long BanditTollBanditWanderDistance;                 // +0x428 (PDB +0x45C)
 };

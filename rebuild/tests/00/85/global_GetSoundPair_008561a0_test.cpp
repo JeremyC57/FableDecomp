@@ -2,7 +2,7 @@
 
 class CCharString;
 
-struct CSoundPair {
+class CSoundPair { public:
     unsigned int a;
     unsigned int b;
     unsigned int c;
@@ -11,7 +11,7 @@ struct CSoundPair {
 // Local, fully-defined stand-in for CThingCreatureBase: every virtual has an
 // inline body so the vtable links standalone. Layout matches s.cpp (slot 89 =
 // GetSoundPairVirtual), which is all the tested forwarder cares about.
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void s0(CSoundPair*, CCharString*) {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {}
     virtual void v05() {} virtual void v06() {} virtual void v07() {} virtual void v08() {}

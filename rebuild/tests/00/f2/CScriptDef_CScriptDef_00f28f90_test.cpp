@@ -4,16 +4,16 @@
 // behaviour test: CScriptDef::CScriptDef -- every CDefString member starts at -1, every CCharString is built empty and
 // every vector is empty; the retail offsets (PDB - 4, 12-byte vectors) of the class-typed members line up
 static int g_strings = 0, g_defstrings = 0, g_vectors = 0;
-struct CDefString { int TablePos; CDefString() : TablePos(-1) { ++g_defstrings; } };
-struct CCharString { int PStringData; CCharString() : PStringData(0) { ++g_strings; } };
+class CDefString { public: int TablePos; CDefString() : TablePos(-1) { ++g_defstrings; } };
+class CCharString { public: int PStringData; CCharString() : PStringData(0) { ++g_strings; } };
 template <class T> struct CRetailVector { int Start, Finish, End; CRetailVector() : Start(0), Finish(0), End(0) { ++g_vectors; } };
-struct CParentDefClassBase { int PDefManager; unsigned char raw[0x3c - 4]; CParentDefClassBase() : PDefManager(0) { std::memset(raw, 0xcd, sizeof raw); } };
-struct CArenaRoundDef { };
-struct CConversation { };
-struct CFeatDef { };
-struct CFireHeartPatternDef { };
-struct CHeroSoulsRoundDef { };
-struct CScriptDef : CParentDefClassBase {
+class CParentDefClassBase { public: int PDefManager; unsigned char raw[0x3c - 4]; CParentDefClassBase() : PDefManager(0) { std::memset(raw, 0xcd, sizeof raw); } };
+class CArenaRoundDef { public: };
+class CConversation { public: };
+class CFeatDef { public: };
+class CFireHeartPatternDef { public: };
+class CHeroSoulsRoundDef { public: };
+class CScriptDef : public CParentDefClassBase { public:
     int EXPERIENCE_GRANT_SMALL;                            // +0x3c
     int EXPERIENCE_GRANT_MEDIUM;                           // +0x40
     int EXPERIENCE_GRANT_LARGE;                            // +0x44

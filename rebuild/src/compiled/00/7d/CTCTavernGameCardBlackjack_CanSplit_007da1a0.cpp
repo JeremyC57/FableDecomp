@@ -9,7 +9,7 @@
 // pushes esi at entry and re-reads `[eax]` after the size test. `size() == 2` on a pointer vector is
 // `(last - first) & ~3 == 8`; elements through the retail vector's iterator object (landed 0x004AF3C0 model); the second
 // card's rank is computed first (`cdq ; idiv` by 13 into esi), `rank0 == rank1` keeps the first card's remainder on the left.
-struct CCard {
+class CCard { public:
     unsigned char _pad_0x00[0x54];
     long          Index;                     // +0x54
 };

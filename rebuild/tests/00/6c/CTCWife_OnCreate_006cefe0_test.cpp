@@ -7,13 +7,13 @@ static unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     if (range != 0) return seed % range;
     return 0;
 }
-struct CHeroMarriageDef { long FramesBetweenCullingOldGifts; };
+class CHeroMarriageDef { public: long FramesBetweenCullingOldGifts; };
 static CHeroMarriageDef g_def;
 struct CDefPointer_CHeroMarriageDef { const CHeroMarriageDef* Object; };
-struct CDefClassBase { bool GetSubDef(CDefPointer_CHeroMarriageDef* out) { out->Object = &g_def; return true; } };
+class CDefClassBase { public: bool GetSubDef(CDefPointer_CHeroMarriageDef* out) { out->Object = &g_def; return true; } };
 struct CDefinitions { CDefClassBase* m_pMarriageDefs; };
 static CDefClassBase g_defs; static CDefinitions g_definitions; static unsigned long g_seed;
-struct CTCWife {
+class CTCWife { public:
     CDefPointer_CHeroMarriageDef PHeroMarriageDef; unsigned long FrameLastCulledGiftsReceived;
     CDefinitions* GetDefinitions() { return &g_definitions; }
     unsigned long* GetPRandomSeed() { return &g_seed; }

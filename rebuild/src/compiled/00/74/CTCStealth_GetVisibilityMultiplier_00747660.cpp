@@ -47,15 +47,15 @@ public:
         return false;
     }
 };
-struct CGameTimeManager {
+class CGameTimeManager { public:
     bool IsDay() const;                                 // 0x006BB2C0
     bool IsNightTime() const;                           // 0x006BB210
 };
-struct CWorld {
+class CWorld { public:
     unsigned char     _pad00[0x1c];
     CGameTimeManager* GameTimeManager;                  // +0x1c
 };
-struct CStealthDef {
+class CStealthDef { public:
     unsigned char _pad00[0x38];
     float DayTimeLampVisibilityMultiplier;                  // +0x38
     float NightTimeLampVisibilityMultiplier;                // +0x3c
@@ -71,7 +71,7 @@ struct CTCVisibility4 {                                 // interface 4
     unsigned char _pad00[0xac];
     float         VisibilityFactor;                     // +0xac
 };
-struct CTCStealth {
+class CTCStealth { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x1c - 0x08];

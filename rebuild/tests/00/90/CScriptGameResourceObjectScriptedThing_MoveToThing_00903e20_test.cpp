@@ -1,7 +1,7 @@
 // Behaviour model of CScriptGameResourceObjectScriptedThing::MoveToThing @ 0x00903E20 (copy of the source's logic).
 #include <cstdio>
 #include <new>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
@@ -27,13 +27,13 @@ struct CThing_Retail {
     }
 };
 struct CIntelligentPointer_Retail { CThing_Retail* m_pItem; CThing_Retail* GetPItem() { return m_pItem; } };
-struct CScriptThing {
+class CScriptThing { public:
     CThing_Retail* thing; bool alive;
     CThing_Retail* GetPThing() const { return thing; }
     bool IsAlive() const { return alive; }
 };
 struct CActionBase { virtual ~CActionBase() {} };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     CActionBase* actions[8]; int n;
     void AddAction(CActionBase* a) { actions[n++] = a; }
 };
@@ -44,7 +44,7 @@ struct CActionMoveTo : CActionBase {
 };
 enum EScriptEntityMoveType { SCRIPT_MOVE_WALK = 0, SCRIPT_MOVE_RUN = 1 };
 static int g_waits = 0;
-struct CScriptGameResourceObjectScriptedThing {
+class CScriptGameResourceObjectScriptedThing { public:
     CIntelligentPointer_Retail PThing;
     void WaitWhilePerformingTasks() { ++g_waits; }
     void MoveToThing(const CScriptThing& target, float proximity, EScriptEntityMoveType moveType, bool wait,

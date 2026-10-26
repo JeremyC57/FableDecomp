@@ -11,14 +11,14 @@ struct CCriticalSectionLock {
     ~CCriticalSectionLock() { if (m_locked) g_log += "U"; g_log += "~"; }
 };
 static void Sleep(unsigned int ms) { char b[16]; std::sprintf(b, "S%u", ms); g_log += b; }
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     int Id;
     int TriesLeft;          // Abort fails this many times first
     bool Abort() { if (TriesLeft > 0) { --TriesLeft; return false; } char b[8]; std::sprintf(b, "A%d", Id); g_log += b; return true; }
 };
 struct ById { bool operator()(const CBankFileAsyncData* a, const CBankFileAsyncData* b) const { return a->Id < b->Id; } };
 struct CHandler { int Removed; void RemoveBank(void*) { ++Removed; g_log += "R"; } };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     std::set<CBankFileAsyncData*, ById> AsyncDataInstances;
     CHandler* MemoryFailureHandler;
     bool Deleted;

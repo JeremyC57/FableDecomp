@@ -16,8 +16,8 @@
 // NewScriptFrame + terminate test); the spawned threads are the landed CFishCompOrganiser::OnPredicateFail
 // (0x00E7F030) model: the thread name temporaries exist only when the new succeeded, so VC guards them with flag
 // masks (7, then 0x38) in ebx.
-struct CScriptThing;
-struct CGameScriptInterface {                          // GameCalls vtable 0x01260F0C (slots used here named)
+class CScriptThing;
+class CGameScriptInterface { public:                          // GameCalls vtable 0x01260F0C (slots used here named)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -71,7 +71,7 @@ struct CGameScriptInterface {                          // GameCalls vtable 0x012
     virtual void v370(); virtual void v371(); virtual void v372(); virtual void v373(); virtual void v374(); virtual void v375();
     virtual void Pause(float seconds) const;   // slot 376 (+0x5e0) 0x0088E4F0
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -79,14 +79,14 @@ struct CCharString {
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 
-struct CScriptThing {                                   // 12 bytes {vptr, PImp_Data, PImp_Info}
+class CScriptThing { public:                                   // 12 bytes {vptr, PImp_Data, PImp_Info}
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -116,7 +116,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };
-struct CV_ExposeMayorScript : CScriptBase {
+class CV_ExposeMayorScript : public CScriptBase { public:
     unsigned char _pad40[0x48 - 0x40];
     long  Path;                                         // +0x48 PATH_ID
     long  StageNumber;                                  // +0x4c STAGE_IN_PATH

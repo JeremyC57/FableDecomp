@@ -15,15 +15,15 @@ struct CSuspenderSet {
     bool empty() const { return m_size == 0; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     void OnLevelUnload() { ++g_brainCalls; }
 };
 
-struct CThing {
+class CThing { public:
     void OnLevelUnload() { ++g_baseCalls; }
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     CAIBrain*     PBrain_Data;
     bool          PerformingVillageTaskFlag : 1;
     bool          AISuspended : 1;

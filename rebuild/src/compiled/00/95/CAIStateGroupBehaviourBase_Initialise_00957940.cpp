@@ -7,9 +7,9 @@
 // Shape: no named locals, so every lookup key lives in the dead `name` parameter slot; PBrain is cached in ebx while the
 // creature is re-read after each member store. Layout: Ego_r.pdb CAIStateGroupBehaviourBase = retail
 // (PTCPerception +0x1c, PTCOpinion +0x20, PTCCreatureMode +0x24).
-struct CTCBase;
-struct CCharString;
-struct CThingAICreature;
+class CTCBase;
+class CCharString;
+class CThingAICreature;
 
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
@@ -20,8 +20,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -52,18 +52,18 @@ struct CThing
     }
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad[0x18];
     CThing* Creature;                               // +0x18
 };
 
-struct CTCPerceiveThing;
-struct CTCCreatureOpinionOfHero;
-struct CTCCreatureModeManager;
+class CTCPerceiveThing;
+class CTCCreatureOpinionOfHero;
+class CTCCreatureModeManager;
 
-struct CAIStateGroupBase
-{
+class CAIStateGroupBase
+{ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();

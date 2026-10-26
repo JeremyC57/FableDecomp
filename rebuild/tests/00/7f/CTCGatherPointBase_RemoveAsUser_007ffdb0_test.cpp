@@ -1,6 +1,6 @@
 // Behaviour test for 0x007FFDB0 CTCGatherPointBase::RemoveAsUser: remove(user) then the single-position erase at the new end.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPtr { const CThing* PItem; };
 static CPtr* Find(CPtr* first, CPtr* last, const CPtr& value)
 {

@@ -1,9 +1,9 @@
 #include <cstdio>
 static int g_base = 0, g_str = 0; static const void* g_openPath = 0; static long g_openAccess = -1; static unsigned long g_openFlags = 0;
 struct CBase { virtual void v00() { } CBase() { ++g_base; } };
-struct CWideString { void* PStringData; CWideString() : PStringData(0) { ++g_str; } };
+class CWideString { public: void* PStringData; CWideString() : PStringData(0) { ++g_str; } };
 enum FileAccessType { FILE_ACCESS_READ = 1 };
-struct CDiskFileWin32 : CBase {
+class CDiskFileWin32 : public CBase { public:
     virtual void v00() { }
     long AccessType; long Position; long Length; void* WinFileHandle; bool Opened; CWideString Pathname;
     CDiskFileWin32(const CWideString& p, FileAccessType a, unsigned long fl) { Open(p, a, fl); }

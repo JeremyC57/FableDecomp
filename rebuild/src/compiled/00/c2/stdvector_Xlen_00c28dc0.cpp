@@ -75,8 +75,8 @@ template<class _Ty, class _Ax> void vector<_Ty, _Ax>::_Xlen() const
 
 class CHandleBasedMemoryPool {
 public:
-    struct CHeader;
-    struct CHandleInfo {                        // Ego_r.pdb: 4 bytes, a union of the block header and the free-handle link
+    class CHeader;
+    class CHandleInfo { public:                        // Ego_r.pdb: 4 bytes, a union of the block header and the free-handle link
         union { CHeader* Header; long NextFreeHandle; };
     };
 };

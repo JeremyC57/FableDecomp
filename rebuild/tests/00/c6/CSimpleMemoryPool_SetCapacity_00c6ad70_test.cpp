@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-struct CSimpleMemoryPool { void* vtbl; char pad[0x21c-4]; unsigned long capacity; };
+class CSimpleMemoryPool { public: void* vtbl; char pad[0x21c-4]; unsigned long capacity; };
 static void* dummy_vtbl;
 static CSimpleMemoryPool* SetCapacity_model(CSimpleMemoryPool* self){
     self->vtbl=&dummy_vtbl;

@@ -1,18 +1,18 @@
 // Behaviour test for CEndGameScarletRobe::Main (0x00EFE700): filter, no-information flags, then repeated
 // StartScriptingEntity attempts on a fresh local handle until it succeeds or the script is done.
 #include <cstdio>
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 static int g_frames = 0, g_filters = 0, g_infoCalls = 0, g_starts = 0, g_handleDtors = 0, g_isDone = 0;
 static bool g_info[3]; static int g_priority = 0, g_succeedOn = 0;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     void* Data; void* Info;
     CScriptGameResourceObjectScriptedThingBase() : Data(0), Info(0) {}
     ~CScriptGameResourceObjectScriptedThingBase() { ++g_handleDtors; }
     bool IsScripting() { return Data != 0; }
     void Release() { Data = 0; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void NewScriptFrame() const { ++g_frames; }
     virtual bool StartScriptingEntity(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase& h, EScriptAIPriority p)
     { ++g_starts; g_priority = p; if (g_starts == g_succeedOn) { h.Data = &h; return true; } return false; }

@@ -29,17 +29,17 @@ struct COpenCloseHelper {
         return !Opening && !Closing && !(LastOpenCloseTransitionAmount != OpenCloseTransitionAmount);
     }
 };
-struct CThing {
+class CThing { public:
     void SetForceFrameUpdate(bool force);               // 0x004C7C60
 };
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x1c - 0x08];
     bool RewardHeroWithItems();                         // 0x0074EE90
     CFrameSource* GetFrameSource();                     // 0x00686D60 (CTCBase accessor: [0x013B8A1C]+0x1c)
 };
-struct CTCChest : CTCContainerRewardHero {
+class CTCChest : public CTCContainerRewardHero { public:
     COpenCloseHelper ChestOpener;                       // +0x1c
     void UpdateAnimation(float time);                   // 0x00750470
     void InitClosed();                                  // 0x007502D0

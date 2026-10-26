@@ -6,7 +6,7 @@
 // into the hidden result, CCharString::~CCharString @ 0x0099EAE0 on the temporary.
 // Vtable 0x01261D74 slot 2. The 8-byte frame holds the id (high dword) and the temporary string (low
 // dword); VC7.1 has no NRVO, so the named local is copied into the result and destroyed.
-struct CCharString {
+class CCharString { public:
     void* PStringData;                     // +0 the shared string block
     CCharString(const CCharString& other); // 0x0099EC30
     ~CCharString();                        // 0x0099EAE0

@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing { unsigned char m_flags91; C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: unsigned char m_flags91; C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
 struct CPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } CPointer& operator=(CThing* t) { m_pItem = t; return *this; } };
-struct CTCTargetingAI { CPointer PEnemy; };
-struct CTCBoss { long phase; long GetCurrentPhase() { return phase; } };
+class CTCTargetingAI { public: CPointer PEnemy; };
+class CTCBoss { public: long phase; long GetCurrentPhase() { return phase; } };
 struct CCreature { CThing thing; CTCBoss* boss; CTCTargetingAI* targeting; };
 static CThing* g_hero;
-struct CAIBrain { CCreature* PCreature; };
+class CAIBrain { public: CCreature* PCreature; };
 
 struct CAIStateGroup_MazeRangedCombat {
     CAIBrain* PBrain; CPointer PTarget; long LastCompletedPhase;

@@ -1,6 +1,6 @@
 #include <cstdio>
 // Model of CAIStateGroup_VillageTaskSecuritySweep::IsStillValid @ 0x0093FAD0.
-struct CThing { int id; };
+class CThing { public: int id; };
 struct Task { bool enabled, active, valid; bool IsEnabled() { return enabled; } bool IsActive() { return active; } bool IsValidFor(CThing* c) { return valid && c->id == 9; } };
 static Task* g_task;
 struct Group {

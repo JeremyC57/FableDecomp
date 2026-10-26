@@ -17,8 +17,8 @@ typedef unsigned int fable_u32;typedef int fable_i32;typedef unsigned char fable
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -26,8 +26,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -108,15 +108,15 @@ extern wchar_t g_FableEmptyWideString_0129A8E0[1];
 
 #undef CWideString
 #undef CCharString
-struct CWideString;
-struct CCharString:CCharStringCore {CCharString();CCharString(const char*,long);~CCharString();CCharString ToLower() const;CWideString ToWideString() const;};
-struct CWideString:CWideStringCore {CWideString();~CWideString();CCharString ConvertToCharString() const;CWideString& operator=(const CWideString&);};
+class CWideString;
+class CCharString:public CCharStringCore { public:CCharString();CCharString(const char*,long);~CCharString();CCharString ToLower() const;CWideString ToWideString() const;};
+class CWideString:public CWideStringCore { public:CWideString();~CWideString();CCharString ConvertToCharString() const;CWideString& operator=(const CWideString&);};
 CWideString __fastcall operator+(const CWideString&,const CWideString&);
 struct CExtensionNode {unsigned char TreeLinks[0x10];CCharString first,second;};
 struct CExtensionTree { CExtensionNode* Head;CExtensionNode* Find(const CCharString&); };
 struct CExtensionMap:CExtensionTree { CExtensionNode* find(const CCharString& key){return Find(key);} };
-struct CAFile {static void __fastcall SplitPath(const CWideString&,CWideString*,CWideString*,CWideString*,CWideString*);};
-struct CFileInstaller {unsigned char EarlierState[0x94];CExtensionMap CompressedFileTypes;bool IsCompressedFilename(const CWideString&,CWideString&);};
+class CAFile { public:static void __fastcall SplitPath(const CWideString&,CWideString*,CWideString*,CWideString*,CWideString*);};
+class CFileInstaller { public:unsigned char EarlierState[0x94];CExtensionMap CompressedFileTypes;bool IsCompressedFilename(const CWideString&,CWideString&);};
 bool CFileInstaller::IsCompressedFilename(const CWideString& filename,CWideString& output){
  bool result;
  { CWideString stem,extension;

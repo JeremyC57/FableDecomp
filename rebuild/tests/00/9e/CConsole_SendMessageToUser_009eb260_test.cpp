@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <stddef.h>
-struct CCharStringData { const char* PData; unsigned long StringLength; };
+class CCharStringData { public: const char* PData; unsigned long StringLength; };
 static int g_copies = 0, g_stringDtors = 0, g_baseCtors = 0, g_baseDtors = 0, g_adds = 0; static const char* g_addedText = 0; static bool g_addedUser = true; static long g_addedCursor = -1;
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(CCharStringData* d) : PStringData(d) { }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }
     ~CCharString() { ++g_stringDtors; }
     long GetLength() const { if (PStringData == 0) return 0; return PStringData->StringLength; }
 };
-struct CBaseClass { virtual void v00() { } CBaseClass() { ++g_baseCtors; } ~CBaseClass() { ++g_baseDtors; } };
-struct CConsoleCommandLine : CBaseClass { CCharString CurrentEntry; bool UserEntry; long CursorPosition; virtual void v00() { }
+class CBaseClass { public: virtual void v00() { } CBaseClass() { ++g_baseCtors; } ~CBaseClass() { ++g_baseDtors; } };
+class CConsoleCommandLine : public CBaseClass { public: CCharString CurrentEntry; bool UserEntry; long CursorPosition; virtual void v00() { }
     CConsoleCommandLine(const CCharString& text) : CBaseClass(), CurrentEntry(text), UserEntry(false), CursorPosition(text.GetLength()) { } };
 struct CConsole_Retail {
     virtual void v00() { }

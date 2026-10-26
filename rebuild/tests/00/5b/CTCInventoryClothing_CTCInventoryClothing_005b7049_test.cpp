@@ -3,7 +3,7 @@
 #include <cstdlib>
 static int g_order[16], g_n = 0;
 static void Log(int v) { g_order[g_n++] = v; }
-struct CThing { void Kill(bool) { Log(1); } };
+class CThing { public: void Kill(bool) { Log(1); } };
 struct CVec { void* _M_start; ~CVec() { if (_M_start) { std::free(_M_start); Log(6); } } };
 struct CMapA { ~CMapA() { Log(5); } };
 struct CMapB { ~CMapB() { Log(4); } };

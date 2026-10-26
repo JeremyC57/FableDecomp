@@ -12,7 +12,7 @@
 // CStringParser uses engine/CStringParser.h; CPersistContext (no engine header) is modelled from the PDB layout.
 #include "engine/CStringParser.h"
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                            // 0x0099EAE0
 };
@@ -25,11 +25,11 @@ struct CStringParserMethods : CStringParser {
     float ReadAsFloat();                                       // 0x009BA650
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     bool Lookup(const CCharString& name, long* value) const;   // 0x009E5170
 };
 
-struct CPersistContext {                                       // Ego_r.pdb, 0x2C bytes
+class CPersistContext { public:                                       // Ego_r.pdb, 0x2C bytes
     void* PDefinitionManager;                                  // +0x00
     CSymbolMap* PSymbolMap;                                    // +0x04
     void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90

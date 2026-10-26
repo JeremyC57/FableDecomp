@@ -3,7 +3,7 @@
 // Behaviour test for NCreatureMode::CModeConversation::FrameUpdate (retail 0x008D9350): when the talk component's
 // (interface 15) attitude changes, the mode records it, switches its filter group to the attitude's animation group and
 // asks for the idle animation to be reset; then the base update.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -56,17 +56,17 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
+class CThing : public CThingLookup { public: };
 enum EConversationAttitude { ATTITUDE_NEUTRAL, ATTITUDE_HAPPY, ATTITUDE_ANGRY };
 const char* GetAnimGroupName(EConversationAttitude attitude)
 {
     return attitude == ATTITUDE_HAPPY ? "HAPPY" : attitude == ATTITUDE_ANGRY ? "ANGRY" : "NEUTRAL";
 }
-struct CTCTalk : CTCBase {
+class CTCTalk : public CTCBase { public:
     EConversationAttitude Attitude;
     EConversationAttitude GetAttitude() { return Attitude; }
 };
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     char Group[16];
     void SetGroup(const char* name) { std::strcpy(Group, name); }
 };

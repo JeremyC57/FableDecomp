@@ -12,7 +12,7 @@ struct SUidNode_00704790 {
     __int64            m_uid;                      // +0x08
 };
 
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     SUidNode_00704790* m_pHead;                    // +0x00 (the sentinel)
     bool HasScriptThing(const CScriptThingRecord_00704790& record);
 };

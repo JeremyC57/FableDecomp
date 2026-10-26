@@ -5,7 +5,7 @@
 // Decapitated +0xc, PDef (CDefPointer<const CDecapitationDef>, one pointer) +0x10. The def pointer
 // is nulled with `and dword ptr [esi+10h],0`, the size-optimised zero store, so the TU is /Os.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CDecapitationDef_Calls;
 
 struct CTCBase_Calls {
@@ -14,12 +14,12 @@ struct CTCBase_Calls {
     CTCBase_Calls(CThing* parent);                          // 0x00686800
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };
 
-struct CTCDecapitation : CTCBase_Calls {
+class CTCDecapitation : public CTCBase_Calls { public:
     bool Decapitated;                                       // +0x0c
     CDefPointer<const CDecapitationDef_Calls> PDef;         // +0x10
     virtual void v00();                                     // own vtable 0x01240534

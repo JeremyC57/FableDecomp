@@ -10,18 +10,18 @@
 // Shape: C2DVector has a user constructor (an 8-byte POD would return in edx:eax) and the implicit copy (two integer
 // moves); the null arm stores the two float zeros as immediates.
 // Leaf: GetWorldMapOffset
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
 
-struct CRegionDef {
+class CRegionDef { public:
     unsigned char _pad00[0xac];
     C2DVector     WorldMapOffset;                       // +0xac
     C2DVector     NameGraphicOffset;                    // +0xb4
 };
 
-struct CRegion {
+class CRegion { public:
     unsigned char     _pad00[0x24];                     // Maps, VisMaps (retail vectors), Name, DisplayName, RegionDefName
     const CRegionDef* PDef;                             // +0x24 CDefPointer<const CRegionDef>::Object
     C2DVector GetWorldMapOffset() const;

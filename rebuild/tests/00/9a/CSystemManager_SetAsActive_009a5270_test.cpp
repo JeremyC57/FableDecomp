@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSystemManager {
+class CSystemManager { public:
     bool ApplicationActive, EverBeenActive, Restore;
     void SetAsActive(bool active)
     {

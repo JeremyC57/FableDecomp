@@ -16,7 +16,7 @@
 // _M_empty_initialize); the list sentinel is linked to itself before it is stored.
 extern "C" void* malloc(unsigned int size);         // 0x00BFEA0E
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
     CCharString(const char* text, long length);     // 0x0099EBF0
@@ -25,14 +25,14 @@ namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                        // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
-struct CConsoleCommandLine : CBase {                // vtable 0x0129C400
+class CConsoleCommandLine : public CBase { public:                // vtable 0x0129C400
     virtual void v00();
     CCharString CurrentEntry;                       // +0x04
     bool        UserEntry;                          // +0x08
     long        CursorPosition;                     // +0x0c
     CConsoleCommandLine() : CBase(), CurrentEntry("", -1), UserEntry(false), CursorPosition(0) { }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -74,9 +74,9 @@ struct CHistoryList {
     iterator begin() { return iterator(Sentinel->Next); }
 };
 struct CTreeIterator { void* Node; CTreeIterator(void* n) : Node(n) { } };
-struct CFontBank;
+class CFontBank;
 
-struct CConsole {
+class CConsole { public:
     virtual void v00();
     CRbTree<8>             KeyBindingMap;           // +0x04 map<char, CCharString>
     CRbTree<8>             StringBindingMap;        // +0x10 map<CCharString, CCharString>

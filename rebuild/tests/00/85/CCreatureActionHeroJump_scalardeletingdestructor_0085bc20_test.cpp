@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureActionHeroJump {
+class CCreatureActionHeroJump { public:
     void* vftable;
     int destroyed;
 };

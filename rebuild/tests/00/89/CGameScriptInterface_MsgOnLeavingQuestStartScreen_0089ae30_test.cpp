@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 static long Compare_00411570(const char* a, const char* b) { int r = std::strcmp(a, b); return r < 0 ? -1 : (r > 0 ? 1 : 0); }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {
@@ -13,7 +13,7 @@ struct CCharString {
         return false;
     }
 };
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned long m_presentBits[9];
     struct CInterfaceMap_Retail {
@@ -37,9 +37,9 @@ struct CThing {
     }
 };
 struct CTarget { CThing* p; CThing* GetPTypedItem() const { return p; } };
-struct CMessageEvent { long type; long frame; CTarget PTarget; };
+class CMessageEvent { public: long type; long frame; CTarget PTarget; };
 static CMessageEvent* g_messages[4]; static int g_count; static long g_seenFrame, g_seenMax;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(long type, long frame, long maxFrame)
     {
         g_seenFrame = frame; g_seenMax = maxFrame;
@@ -49,7 +49,7 @@ struct CMessageEventManager {
     }
 };
 struct CTCQuestStartTarget { CCharString QuestName; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CMessageEventManager* Manager; long Frame;
     long GetCurrentWorldFrameForMessages() const { return Frame; }
     long GetMaxWorldFrameForMessages() const { return Frame + 2; }

@@ -7,7 +7,7 @@ struct CCountedObject {
     CCountedObject(long c) : m_refCount(c) {}
     virtual void Destroy() { ++g_destroyed; }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     CIVCountedPointer() : m_p(0) {}
     ~CIVCountedPointer()
@@ -21,9 +21,9 @@ template <class T> struct CIVCountedPointer {
     }
 };
 static int g_meshFreed = 0;
-struct CThingPhysicsMeshInfo { long m_data; };
-struct CTCBase { virtual ~CTCBase() { ++g_baseDtor; } };
-struct CTCPhysicsBase : CTCBase {
+class CThingPhysicsMeshInfo { public: long m_data; };
+class CTCBase { public: virtual ~CTCBase() { ++g_baseDtor; } };
+class CTCPhysicsBase : public CTCBase { public:
     float Radius;
     CIVCountedPointer<CCountedObject> PhysicsDef;
 };

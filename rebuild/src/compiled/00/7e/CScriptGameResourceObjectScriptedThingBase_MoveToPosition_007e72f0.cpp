@@ -1,3 +1,3 @@
 struct Inner { virtual void d0();virtual void d1();virtual void d2();virtual void d3(); virtual void V(int pos,int a1,int a2,int a3,int a4); };
-struct CScriptGameResourceObjectScriptedThingBase { char pad[8]; Inner* f8; void MoveToPosition(int pos,int a1,int a2,int a3,int a4); };
+class CScriptGameResourceObjectScriptedThingBase { public: char pad[8]; Inner* f8; void MoveToPosition(int pos,int a1,int a2,int a3,int a4); };
 void CScriptGameResourceObjectScriptedThingBase::MoveToPosition(int pos,int a1,int a2,int a3,int a4){ Inner* p = this->f8; if(p) p->V(pos,a1,a2,a3,a4); }

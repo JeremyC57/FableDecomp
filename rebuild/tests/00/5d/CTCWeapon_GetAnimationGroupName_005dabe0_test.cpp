@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThing { bool dead; bool usable; };
-struct CCharString { const char* t; };
+class CThing { public: bool dead; bool usable; };
+class CCharString { public: const char* t; };
 static CCharString g_empty = { "" };
-struct CTCWeapon {
+class CTCWeapon { public:
     bool carried; CThing* carrier; CCharString name;
     bool IsUsableBy(CThing* t) const { return t->usable; }
     const CCharString& Get() const { if (carried) { CThing* c = carrier; if (c && !c->dead && !IsUsableBy(c)) return g_empty; } return name; }

@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
 // CPersistContext::Transfer(name, C2DVector&): forwards with a C2DVector(0, 0) default
-struct C2DVector { float X; float Y; C2DVector(float x, float y) : X(x), Y(y) { } };
+class C2DVector { public: float X; float Y; C2DVector(float x, float y) : X(x), Y(y) { } };
 static const char* g_name; static C2DVector* g_value; static float g_dx = 1.0f, g_dy = 1.0f; static long g_calls;
-struct CPersistContext {
+class CPersistContext { public:
     long pad[11];
     void Transfer(const char* name, C2DVector& value, const C2DVector& def) { g_name = name; g_value = &value; g_dx = def.X; g_dy = def.Y; ++g_calls; }
     void Transfer(const char* name, C2DVector& value) { Transfer(name, value, C2DVector(0.0f, 0.0f)); }

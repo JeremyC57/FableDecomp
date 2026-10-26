@@ -13,11 +13,11 @@
 // tracked); CThingManager EntityRuntimePersistence at retail +0xa0 (PDB +0xbc).
 // Shape: named locals in retail load order: the section-name length and text (inline CCharString GetLength() / GetString()),
 // then the UID, then the CRC call; the second IsGameStatePersisted call is the bool argument.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                     // +0x00
     unsigned long m_length;                     // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { if (!m_pStringData) return 0; return m_pStringData->m_length; }
     const char* GetString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pChars; }   // "" = 0x0129AAF4
@@ -37,7 +37,7 @@ public:
 struct CEntityRuntimePersistence {
     void AddPersistedDeadEntity(unsigned __int64 uid, bool gameState, unsigned long sectionCRC);   // 0x00520330
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char             _pad00[0xa0];
     CEntityRuntimePersistence EntityRuntimePersistence;   // +0xa0
     void OnThingKill(CThing* thing);

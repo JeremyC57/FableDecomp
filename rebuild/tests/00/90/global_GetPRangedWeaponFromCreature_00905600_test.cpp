@@ -3,7 +3,7 @@
 #include <cstdio>
 
 enum ETCInterfaceType { TC_CARRYING = 0x46, TC_WEAPON = 0x48 };
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {
     struct SEntry { ETCInterfaceType type; CTCBase* component; };
     SEntry* first;

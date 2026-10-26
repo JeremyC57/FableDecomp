@@ -9,9 +9,9 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 0044b7e0: the 64-bit component stores the parser's ReadInt64 result through Object.
-struct CPersistContext;
+class CPersistContext;
 static Int64 g_next = 0;
-struct CStringParser {
+class CStringParser { public:
     Int64 ReadInt64() { return g_next; }
 };
 struct CPersistContext_TransferableComponent {

@@ -5,7 +5,7 @@
 // @ 0x0044C4D5. PDB: CCombatAbilityUseProjectileWeaponDef = 0x48 bytes, `CombatAbility`
 // (CCombatAbilityProjectileAttackData, 0x20 bytes) at +0x28. The by-value enum is a plain long.
 // Vtable 0x012326DC from rtti-vtables.tsv.
-struct CSubDefClassBase {
+class CSubDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                              // +0x04 .. +0x28
     CSubDefClassBase();                                     // 0x0044C0C0
@@ -17,7 +17,7 @@ struct CCombatAbilityProjectileAttackData_Calls {           // engine/CCombatAbi
     CCombatAbilityProjectileAttackData_Calls(long interfaceType);   // 0x0044C4D5
 };
 
-struct CCombatAbilityUseProjectileWeaponDef : CSubDefClassBase {
+class CCombatAbilityUseProjectileWeaponDef : public CSubDefClassBase { public:
     CCombatAbilityProjectileAttackData_Calls CombatAbility; // +0x28
     virtual void v00();                                     // own vtable 0x012326DC
     CCombatAbilityUseProjectileWeaponDef();

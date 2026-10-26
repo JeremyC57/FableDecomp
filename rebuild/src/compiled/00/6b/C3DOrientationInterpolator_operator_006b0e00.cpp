@@ -7,14 +7,14 @@
 // PDB layout (struct_layouts_egor.tsv, 52 bytes): +4 StartOrientation, +0x1C EndOrientation, both CRightHandedSet
 // {C3DVector Up, Forward} = 24 bytes. The copy assignment copies each 24-byte set as six dword moves
 // (VC7.1's inline struct copy below the rep-movsd threshold), leaves the vtable alone and returns *this.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 
 struct CBase {
     virtual void v00();
 };
 
-struct C3DOrientationInterpolator : CBase {
+class C3DOrientationInterpolator : public CBase { public:
     CRightHandedSet StartOrientation;      // +0x4
     CRightHandedSet EndOrientation;        // +0x1C
     C3DOrientationInterpolator& operator=(const C3DOrientationInterpolator& other);

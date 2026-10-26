@@ -4,15 +4,15 @@
 // Shape: layout as the PDB (0x1c bytes): OriginalThing +0, PreviousThing +4, ScriptName +8, OverridingBrainName +0xc,
 // PlayerCharacter +0x10, Drawable +0x11, PlaceAtEndOfList +0x12, EnableCreatureAutoPlacing +0x13, HomeBuilding +0x14,
 // WorkBuilding +0x18. `ret 18h` = six arguments.
-struct CThingPhysical;
-struct CThingBuilding;
+class CThingPhysical;
+class CThingBuilding;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);           // 0x0099EC30
 };
 
-struct CThingAICreatureInit {
+class CThingAICreatureInit { public:
     CThingPhysical* OriginalThing;                   // +0x00
     CThingPhysical* PreviousThing;                   // +0x04
     CCharString     ScriptName;                      // +0x08

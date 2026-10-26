@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static unsigned long g_defaultFramesToDeactivate = 150;
-struct CTCBase { CThing* ParentThing; bool ToBeRemoved, IsInGlobalUpdateTCs; CTCBase(CThing& o) : ParentThing(&o), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { } };
+class CTCBase { public: CThing* ParentThing; bool ToBeRemoved, IsInGlobalUpdateTCs; CTCBase(CThing& o) : ParentThing(&o), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { } };
 struct CThingPtrVector { CThing** m_first; CThing** m_last; CThing** m_end; CThingPtrVector() : m_first(0), m_last(0), m_end(0) { } };
-struct CTCActivationReceptorBase : CTCBase {
+class CTCActivationReceptorBase : public CTCBase { public:
     bool Activated; CThingPtrVector Triggers; long LogicType; bool DeactivateAfterSetTime;
     unsigned long FramesAfterActivationToDeactivate, FrameAtLastActivation;
     CTCActivationReceptorBase(CThing& owner)

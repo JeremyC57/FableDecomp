@@ -13,7 +13,7 @@
 // stores its own vtable -- which is why the derived vtable store is scheduled before that call and the
 // CIntelligentPointer vtable store after it. The two C3DVector members at +0x54 and +0x60 are copied
 // as three dword moves each. No PDB layout for the camera module classes; member names are descriptive.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };

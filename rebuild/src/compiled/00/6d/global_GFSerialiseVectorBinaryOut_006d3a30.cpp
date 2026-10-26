@@ -6,7 +6,7 @@
 // Shape: the traits specialisation's DefaultVal is built by IMPLICIT conversion (`DefaultVal("", 0)`), which gives retail's `lea`
 //   re-address of the temporary; an explicit CCharString("") reuses eax and swaps a register.
 #include "engine/CDataOutputStream.h"
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     CCharString(const CCharString& other);                  // 0x0099EC30

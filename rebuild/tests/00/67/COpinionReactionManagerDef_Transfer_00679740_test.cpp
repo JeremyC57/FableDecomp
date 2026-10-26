@@ -3,12 +3,12 @@
 // mode switch (2 = load from +0x24 stream, 3 = save to +0x28 stream) in declaration order.
 struct Log { int ids[64]; int n; Log() : n(0) {} void Put(int v) { ids[n++] = v; } };
 static Log g_log;
-struct CMemoryDataInputStream { int tag; };
-struct CDataOutputStream { int tag; };
+class CMemoryDataInputStream { public: int tag; };
+class CDataOutputStream { public: int tag; };
 struct Map { int id; };
 static void MapOut(CDataOutputStream* s, Map* m) { g_log.Put(1000 + s->tag + m->id); }
 static void MapIn(CMemoryDataInputStream* s, Map* m) { g_log.Put(2000 + s->tag + m->id); }
-struct CPersistContext {
+class CPersistContext { public:
     long m_mode;
     CMemoryDataInputStream* m_pLoadStream;
     CDataOutputStream* m_pSaveStream;
@@ -26,7 +26,7 @@ struct CPersistContext {
         }
     }
 };
-struct COpinionReactionManagerDef {
+class COpinionReactionManagerDef { public:
     Map m[11];
     void Transfer(CPersistContext& context)
     {

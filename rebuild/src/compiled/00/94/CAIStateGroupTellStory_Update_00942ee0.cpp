@@ -17,7 +17,7 @@
 //   start pointer stays in ebp for the free); the vector is declared first in the loop body (its zero register is
 //   scheduled before the filter stores); `start` is a named copy of _M_start.
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
@@ -45,7 +45,7 @@ struct CThingBody {                             // the physics body's vtable vie
     unsigned char _pad04[0x0c - 0x04];
     C3DVector Pos;                              // +0x0c
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -71,24 +71,24 @@ struct CThing {
     }
 };
 struct CTCVillager;
-struct CTCVillage {
+class CTCVillage { public:
     bool IsCookTime();                          // 0x00658A80
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                 // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);        // 0x009AD410
 };
-struct CThingFilter_HasDefGlobalIndex {
+class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
     CThingFilter_HasDefGlobalIndex(long index) : DefGlobalIndex(index) {}
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector Pos;
     CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) {}
 };
@@ -116,7 +116,7 @@ struct CThingPtrVector {                        // std::vector<CThing*> (STLport
     CThingPtrVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     ~CThingPtrVector() { if (_M_start) free(_M_start); }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out);   // 0x009107B0
     void FindThings(const CThingFilter_And3& filter, CThingPtrVector& out);   // 0x00943830
 };
@@ -138,11 +138,11 @@ __declspec(noinline) void CThingSearchTools::FindThings(const CThingFilter_And3&
 }
 #pragma auto_inline(on)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

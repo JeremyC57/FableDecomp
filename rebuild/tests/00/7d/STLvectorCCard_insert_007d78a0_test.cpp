@@ -5,7 +5,7 @@
 #include <cstring>
 #include <new>
 
-struct CCard { int id; };
+class CCard { public: int id; };
 struct __true_type { };
 
 template <class T> class vector {

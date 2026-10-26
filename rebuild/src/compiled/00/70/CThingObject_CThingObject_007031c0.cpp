@@ -19,23 +19,23 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
-struct CThing {                                    // 0xc0 bytes
+class CThing { public:                                    // 0xc0 bytes
     virtual void v00();
     unsigned char _body[0xbc];
     CThing(long type);                             // 0x005296B0
 };
-struct CThingGameObject : CThing {                 // vtable 0x01244F7C
+class CThingGameObject : public CThing { public:                 // vtable 0x01244F7C
     virtual void v00();
     CIntelligentPointer m_owner;                   // +0xc0
     unsigned char       _padc8[0x8];               // +0xc8
     CThingGameObject(long type) : CThing(type), m_owner() { }
 };
-struct CThingObjectDef;
+class CThingObjectDef;
 struct CDefPointerThingObjectDef {                 // CDefPointer<const CThingObjectDef>
     const CThingObjectDef* m_pDef;
     CDefPointerThingObjectDef() : m_pDef(0) { }
 };
-struct CThingObject : CThingGameObject {           // vtable 0x01264DCC
+class CThingObject : public CThingGameObject { public:           // vtable 0x01264DCC
     virtual void v00();
     CDefPointerThingObjectDef PDef;                // +0xd0
     long                   DieOffTimer;            // +0xd4

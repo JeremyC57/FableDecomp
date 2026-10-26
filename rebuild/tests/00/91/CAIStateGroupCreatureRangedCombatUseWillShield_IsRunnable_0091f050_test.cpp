@@ -3,15 +3,15 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThingCreatureBase;
-struct CThing {
+class CThingCreatureBase;
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -37,8 +37,8 @@ struct CTCTargeting {
     virtual void v25() {} virtual void v26() {} virtual void v27() {} virtual void v28() {}
     virtual CThingCreatureBase* GetTarget() { return g_target; }
 };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* Creature; };
-struct CAIStateGroupBase {
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* Creature; };
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     CAIBrain* PBrain; long ScriptAIPriority; void* Name_PStringData; unsigned char Terminated; unsigned char Priority; unsigned char Enabled; unsigned char _pad_0x13;
 };

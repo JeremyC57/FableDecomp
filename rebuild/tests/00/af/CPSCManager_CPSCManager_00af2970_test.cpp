@@ -29,7 +29,7 @@ struct CRegisteredPSCMap {
         }
     }
 };
-struct CPSCManager {
+class CPSCManager { public:
     CRegisteredPSCMap RegisteredPSCs;
     void RegisterPSCs()
     {

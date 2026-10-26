@@ -6,14 +6,14 @@
 // CurrentFilePackageIndex +0x58, TimeStamp +0x5c, PackageFile +0x60 (CDiskFileWin32, 0x1c bytes), NoUpdates +0x7c.
 // The record is the SECOND argument ([esp+8] before the push, the stamp [esp+8] after it).
 // Shape: the 16-byte POD record is copied word by word through esi from `lea eax,[ecx+3Ch]`, then the word store, `ret 8`.
-struct CChecksum {
+class CChecksum { public:
     long Checksum1;                                 // +0x00
     long Checksum2;                                 // +0x04
     long Checksum3;                                 // +0x08
     long Checksum4;                                 // +0x0c
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char _pad04[0x38];                     // +0x04 the event vectors, counters, devices, joysticks, flags
     CChecksum     Checksum;                         // +0x3c

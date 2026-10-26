@@ -10,7 +10,7 @@ static int my_wcsicmp(const wch* a, const wch* b)
         if (!x) return 0;
     }
 }
-struct CWideString {
+class CWideString { public:
     wch text[16];
     CWideString() { text[0] = 0; }
     CWideString(const char* s) { int i = 0; for (; s[i]; ++i) text[i] = (wch)s[i]; text[i] = 0; }

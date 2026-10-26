@@ -1,11 +1,11 @@
 #include <cstdio>
 struct CComboDef { long Stage; long ChainID; };
-struct CDefClassBase {
+class CDefClassBase { public:
     const CComboDef* m_combo; bool m_hasFollowing;
     void GetComboDef(const CComboDef** out) { *out = m_combo; }
 };
-struct CMeleeCombatAbilityDef { CDefClassBase* DefClass; };
-struct CTCCombat {
+class CMeleeCombatAbilityDef { public: CDefClassBase* DefClass; };
+class CTCCombat { public:
     long ComboChainPos; long ComboChainID;
     bool HasAppropriateFollowingCombo(CDefClassBase* defClass) { return defClass->m_hasFollowing; }
     void SetNextComboChainPos(const CMeleeCombatAbilityDef* ability)

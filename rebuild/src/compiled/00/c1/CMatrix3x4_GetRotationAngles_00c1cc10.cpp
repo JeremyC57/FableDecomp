@@ -10,9 +10,9 @@
 // on the FPU stack for the store and the negated rotate argument.
 float __stdcall Atan2(float x, float y);         // 0x00C1CAB0
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Right;        // +0x00
     C3DVector Up;           // +0x0C
     C3DVector Forward;      // +0x18

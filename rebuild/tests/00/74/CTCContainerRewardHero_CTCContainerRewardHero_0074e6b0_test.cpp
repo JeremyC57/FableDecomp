@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 struct SContainerItem;
-struct CTCBase { CThing* ParentThing; CTCBase(CThing& o) : ParentThing(&o) { } };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing& o) : ParentThing(&o) { } };
 struct CContainerItemVector { SContainerItem* m_first; SContainerItem* m_last; SContainerItem* m_end; CContainerItemVector() : m_first(0), m_last(0), m_end(0) { } };
-struct CTCContainer : CTCBase { CContainerItemVector ContainerItems; CTCContainer(CThing& o) : CTCBase(o) { } };
-struct CTCContainerRewardHero : CTCContainer {
+class CTCContainer : public CTCBase { public: CContainerItemVector ContainerItems; CTCContainer(CThing& o) : CTCBase(o) { } };
+class CTCContainerRewardHero : public CTCContainer { public:
     bool Enabled, CreateObjectsThatTimeOut;
     CTCContainerRewardHero(CThing& o) : CTCContainer(o), Enabled(true), CreateObjectsThatTimeOut(true) { }
 };

@@ -55,8 +55,8 @@ struct CListDefPointer {
     __forceinline ~CListDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CListDef* operator->() const { return Object; }
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              m_pObject;
     CCPPointerInfo* m_pInfo;
     CCountedPointer(const CCountedPointer& other);   // 0x00428928
@@ -108,12 +108,12 @@ struct CStateHolder {                                // the component's second b
     virtual void s00(); virtual void s01(); virtual void s02();
     virtual void AddState(long state);               // slot 3 (+0x0C)
 };
-struct CManager {
+class CManager { public:
     virtual void m000(); virtual void m001();
     virtual void AddInputListener(CStateHolder* listener);   // slot 2 (+0x08)
     static CManager* __fastcall GetInstance();       // 0x0041E5F2
 };
-struct CComponent;
+class CComponent;
 struct CComponentBase {
     V32(a) V16(b)                                    // slots 0..47
     virtual void ChangeState(long state);            // slot 48 (+0xC0)
@@ -130,9 +130,9 @@ struct CComponentBase {
     V8(q) V4(r) V2(s) V1(t)                          // slots 166..180
     virtual void RecomputeOffsets(bool now);         // slot 181 (+0x2D4)
 };
-struct CComponent : CComponentBase, CStateHolder {
+class CComponent : public CComponentBase, public CStateHolder { public:
 };
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
     unsigned char _pad08[0xb0 - 0x08];
     vector<CCountedPointer<CComponent> > Children;   // +0xb0
     void RemoveChild(long index);                    // 0x00533BC0

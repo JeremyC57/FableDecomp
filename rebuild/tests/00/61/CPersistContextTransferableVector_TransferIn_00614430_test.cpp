@@ -9,10 +9,10 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 00614430: the parser's ReadInt64 result is stored into element [index] of the 64-bit vector.
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 static Int64 g_next = 0;
-struct CStringParser { Int64 ReadInt64() { return g_next; } };
+class CStringParser { public: Int64 ReadInt64() { return g_next; } };
 template <class T> struct CRetailVector { T* m_pFirst; T* m_pLast; T* m_pEnd; };
 struct CPersistContext_TransferableVector {
     virtual void TransferIn(CPersistContext* context, CStringParser* parser, long index);

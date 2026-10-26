@@ -3,12 +3,12 @@
 // camera (position, forward, up) only while both camera axes are longer than the 0.0001 epsilon; Update runs every time.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CCamera {
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CCamera { public:
     C3DVector WorldPosition;
     CRightHandedSet RHSet;
     bool HeightLocked, ViewVecZLocked;
@@ -16,13 +16,13 @@ struct CCamera {
     float HorizontalFOV, VerticalFOV, Zoom;
 };
 struct CInterpolationInfoSet { float GTPredictedTimeSinceLastRenderFrame; float WFInterpolate; };
-struct CInterpolationInfo { CInterpolationInfoSet Current; CInterpolationInfoSet Last; };
+class CInterpolationInfo { public: CInterpolationInfoSet Current; CInterpolationInfoSet Last; };
 
 static int g_currentSets = 0, g_thingUpdates = 0, g_listenerSets = 0, g_updates = 0;
 static float g_envInterpolate = -1.0f;
 static C3DVector g_lastPosition, g_lastForward, g_lastUp;
-struct CThingManager { void RenderUpdateThings(const CInterpolationInfo*) { ++g_thingUpdates; } };
-struct CEnvironment { void RenderUpdate(float t) { g_envInterpolate = t; } };
+class CThingManager { public: void RenderUpdateThings(const CInterpolationInfo*) { ++g_thingUpdates; } };
+class CEnvironment { public: void RenderUpdate(float t) { g_envInterpolate = t; } };
 struct CSoundListener {
     void SetPosition(const C3DVector& p) { g_lastPosition = p; }
     void SetOrientation(const C3DVector& f, const C3DVector& u) { g_lastForward = f; g_lastUp = u; ++g_listenerSets; }
@@ -37,7 +37,7 @@ static const float g_Epsilon = 0.0001f;
 static CThingManager* g_currentManager = 0;
 static void SetCurrentThingManager(CThingManager* m) { g_currentManager = m; ++g_currentSets; }
 
-struct CWorld {
+class CWorld { public:
     CEnvironment* PEnvironment_ptr;
     CThingManager* PThingManager_ptr;
     CCamera soundCamera;

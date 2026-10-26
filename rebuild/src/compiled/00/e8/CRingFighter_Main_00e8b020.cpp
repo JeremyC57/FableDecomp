@@ -13,39 +13,39 @@
 // Layout: entity-script base {vptr, Game +4, CScriptThing Me +8}; Ego_r.pdb CRingFighter ParentClass +0x14; parent
 //   CV_FisticuffsClubScript (PDB - 0x14) TylerInFight +0x54, TimeOut +0x56, RingCleared +0x57, RoundStarted +0x58,
 //   EverybodyAttack +0x8c, CheerNumber +0xac, BooNumber +0xb0.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
 void operator delete(void* p);                          // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImpl {
     virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003(); virtual void i004(); virtual void i005();
     virtual const C3DVector& GetPos() const;            // imp slot 6 (+0x18)
 };
 extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     __forceinline virtual const C3DVector& GetPos() const   // slot 6 (+0x18) 0x004AA980
     {
@@ -88,17 +88,17 @@ struct CAndPredicate : CScriptPredicate {               // vtable 0x012EA430
     virtual bool Evaluate() const;
     virtual CScriptPredicate* Clone() const;
 };
-struct CBaseObject {                                    // vtable 0x0129A7D8
+class CBaseObject { public:                                    // vtable 0x0129A7D8
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
 };
-struct CScriptGameResourceObjectBase : CBaseObject {    // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 enum EScriptEntityMoveType { MOVE_TYPE_WALK };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
     bool IsScripting();                                 // 0x00CD23B9
@@ -109,7 +109,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     virtual void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType type, bool a, bool b, bool c, bool d);   // 0x007E7300
     virtual void MoveToPosition(const C3DVector& pos, float distance, EScriptEntityMoveType type, bool a, bool b);   // 0x007E72F0
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CCountedPointerWords PImp;
     ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
@@ -123,7 +123,7 @@ struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, long priority);   // slot 8 (+0x20)
@@ -184,7 +184,7 @@ struct CGameScriptInterface {
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
     virtual void ClearThingBestEnemyTarget(const CScriptThing& thing) const;   // slot 452 (+0x710)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x5e0];
     long FisticuffsLosingHealth;                        // +0x5e0
 };
@@ -203,7 +203,7 @@ struct CV_FisticuffsClubScript {
     float BooNumber;                                    // +0xb0
     CCharString GetCutsceneName(CCharString name);      // 0x00E8A1D0
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void Main() = 0;
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

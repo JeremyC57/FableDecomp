@@ -10,7 +10,7 @@ struct CBase {
     CBase();                                   // 0x0099A2F0
 };
 
-struct CDataInputStream : CBase {              // vtable 0x0129A6B0; same layout as engine/CDataInputStream.h
+class CDataInputStream : public CBase { public:              // vtable 0x0129A6B0; same layout as engine/CDataInputStream.h
     virtual void v00();
     unsigned long StreamPos;                   // +0x04
     long          StreamSize;                  // +0x08

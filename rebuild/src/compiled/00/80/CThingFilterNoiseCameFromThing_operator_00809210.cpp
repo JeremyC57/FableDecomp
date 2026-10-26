@@ -5,7 +5,7 @@
 // Layout: PDB CThingFilter_NoiseCameFromThing { CThing* Thing; } (+0); interface 0x77 -> bitset word 3 (+0x2C) bit 23
 // (`test dword ptr [eax+2Ch],800000h`); the component holds a CIntelligentPointer at +0x28 (`lea ecx,[eax+28h]`).
 // A second instantiation of the same filter shape as 0x006A81F0 (different component type).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -14,7 +14,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -44,7 +44,7 @@ struct CTCInterface77 {                             // interface 0x77 component 
     CBaseIntelligentPointer m_source;               // +0x28
 };
 
-struct CThingFilter_NoiseCameFromThing {
+class CThingFilter_NoiseCameFromThing { public:
     CThing* Thing;                                  // +0x00
     bool operator()(CThing* thing) const;
 };

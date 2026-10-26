@@ -1,7 +1,7 @@
 // Behaviour test (0x00a3f900): CGameMapInterface::GetFlagsAt truncates the float position and asks the game map, 0 without a map
 #include <cstdio>
 struct C2DCoordsI { long X; long Y; };
-struct CGameMap {
+class CGameMap { public:
     virtual long GetFlagsAt(const C2DCoordsI* pos) { return pos->X * 1000 + pos->Y; }
     virtual ~CGameMap() { }
 };

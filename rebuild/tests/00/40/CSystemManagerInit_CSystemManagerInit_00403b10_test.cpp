@@ -5,7 +5,7 @@
 
 static int g_wideCtors = 0, g_charCtors = 0, g_displayCtors = 0;
 
-struct CWideString {
+class CWideString { public:
     char m_text[32];
     CWideString() { m_text[0] = 0; ++g_wideCtors; }
     const CWideString& operator=(const wchar_t* text)
@@ -16,12 +16,12 @@ struct CWideString {
         return *this;
     }
 };
-struct CCharString { void* m_pStringData; CCharString() : m_pStringData(0) { ++g_charCtors; } };
-struct CInputManagerInit {
+class CCharString { public: void* m_pStringData; CCharString() : m_pStringData(0) { ++g_charCtors; } };
+class CInputManagerInit { public:
     bool UseMouse, UseJoystick, UseKeyboard;
     CInputManagerInit() : UseMouse(false), UseJoystick(false), UseKeyboard(false) {}
 };
-struct CDisplayManagerInit { long Width; CDisplayManagerInit() : Width(0) { ++g_displayCtors; } };
+class CDisplayManagerInit { public: long Width; CDisplayManagerInit() : Width(0) { ++g_displayCtors; } };
 struct SStartupSizes {
     long m_secondarySize, m_primarySize; float m_scaleA, m_scaleB, m_scaleC; long m_reservedA, m_reservedB, m_bufferSize;
     SStartupSizes()
@@ -30,7 +30,7 @@ struct SStartupSizes {
         m_reservedB = 0; m_reservedA = 0; m_bufferSize = 0x40000;
     }
 };
-struct CSystemManagerInit {
+class CSystemManagerInit { public:
     void* InstanceHandle; char* CommandLine; long WindowsShow; CWideString AppName;
     bool ExclusiveMode, PreferPrimaryDisplayDevice; unsigned long Flags;
     bool PreventHardwareAcceleration, AttachToExternalWindow; void* ApplicationWindowHandle;

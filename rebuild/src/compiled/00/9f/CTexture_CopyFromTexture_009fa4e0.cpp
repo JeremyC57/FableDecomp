@@ -11,7 +11,7 @@
 // Shape: the level count is a min() by reference over the two counts (`lea eax,[src] ; jl ; lea eax,[dst] ; mov eax,[eax]`);
 //   GetSurfaceLevel is inlined from its class definition (local CSurface, InitialiseFromTextureMipmap, copy into the named
 //   per-level surface, local destroyed), source first; the two named surfaces die at the end of each iteration.
-struct C2DBoxI { long left, top, right, bottom; };
+class C2DBoxI { public: long left, top, right, bottom; };
 struct IDirect3DSurface9;
 
 struct IDirect3DTexture9 {                         // IUnknown + IDirect3DResource9 + IDirect3DBaseTexture9 + texture slots

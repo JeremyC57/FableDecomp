@@ -1,9 +1,9 @@
 // Behaviour test for 0x006C4270 STLport __find_if (random access, 4x unrolled) with CIsThingDead (model copy).
 #include <cstdio>
 
-struct CThing { unsigned char StateBits; bool IsDead() const { return (StateBits & 1) != 0; } };
+class CThing { public: unsigned char StateBits; bool IsDead() const { return (StateBits & 1) != 0; } };
 struct Ptr { CThing* item; CThing* GetPItem() const { return item; } };
-struct CIsThingDead { bool operator()(const Ptr& t) const { return t.GetPItem() == 0 || t.GetPItem()->IsDead(); } };
+class CIsThingDead { public: bool operator()(const Ptr& t) const { return t.GetPItem() == 0 || t.GetPItem()->IsDead(); } };
 
 static Ptr* find_if(Ptr* first, Ptr* last, CIsThingDead pred)
 {

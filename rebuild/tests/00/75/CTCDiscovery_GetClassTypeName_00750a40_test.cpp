@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     int d;
     CCharString(const char* s, int n);
 };
@@ -14,7 +14,7 @@ CCharString::CCharString(const char* s, int n) {
     this->d = (int)s;
 }
 
-struct CTCDiscovery {
+class CTCDiscovery { public:
     CCharString GetClassTypeName();
 };
 

@@ -26,7 +26,7 @@ public:
     virtual ~CBase();                              // 0x0099A2E0
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: "" (the string library's shared empty literal; this TU's own "" is 0x0122D70E)
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                           // +0x0
     unsigned long Length;                          // +0x4
 };
@@ -57,7 +57,7 @@ struct CCursorPos {
     unsigned long StringPos;                       // +0x4
     unsigned long Line;                            // +0x8
 };
-struct CParsedItem {                               // 12 bytes
+class CParsedItem { public:                               // 12 bytes
     long        Type;                              // +0x00
     long        Integer;                           // +0x04
     CCharString String;                            // +0x08

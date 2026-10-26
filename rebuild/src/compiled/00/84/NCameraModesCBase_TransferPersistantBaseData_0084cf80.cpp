@@ -6,12 +6,12 @@
 // plain offsets. GoTo is copied before LookAt and the stick vectors before the three floats.
 // Layout (retail, see the landed dtor 0x0056E0E0): LookAt +0x10, GoTo +0x54 (CPhysicsState 0x30: Position +0, Velocity +0xc,
 // CullPhysics +0x2c), CameraFOV +0x84, RollAngle +0x88, ObservedPositionZOffset +0x8c, RightStickVector +0x90, LeftStickVector +0x98.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CAttractorList { void* _M_node; };          // list<pair<C3DVector,float>> (STLport, 4 bytes)
 struct CPhysicsState {                             // retail 0x30 bytes
     C3DVector Position;                            // +0x00
@@ -27,11 +27,11 @@ struct CPhysicsState {                             // retail 0x30 bytes
         CullPhysics = s.CullPhysics;
     }
 };
-struct CGameCameraManager;
+class CGameCameraManager;
 struct CSubComponentVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
 
 namespace NCameraModes {
-struct CBase {                                     // vtable 0x0124DD74
+class CBase { public:                                     // vtable 0x0124DD74
     void* vfptr;                                   // +0x00
     float DefaultFOV;                              // +0x04
     float DefaultRollAngle;                        // +0x08

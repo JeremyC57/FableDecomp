@@ -13,14 +13,14 @@
 // member with a call and an import call stays out of line in the deleting destructor.
 extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);   // IAT 0x0143FE30
 
-struct CThreadedFile;
+class CThreadedFile;
 
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     void RemovePendingRequests(CThreadedFile* file);   // 0x0098E7D0
 };
 extern CThreadedFileManager g_ThreadedFileManager;    // 0x013BC870
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();
     ~CWideString();                                // 0x0099B510
@@ -31,7 +31,7 @@ namespace N_0099a300 { struct CBase {                                     // roo
     virtual ~CBase();                              // 0x0099A300
 }; } using N_0099a300::CBase;
 
-struct CThreadedFile : CBase {                     // vtable 0x0129A158
+class CThreadedFile : public CBase { public:                     // vtable 0x0129A158
     long          DeviceID;                        // +0x04 EThreadedFileDeviceID
     void*         FileHandle;                      // +0x08
     CWideString   Filename;                        // +0x0c

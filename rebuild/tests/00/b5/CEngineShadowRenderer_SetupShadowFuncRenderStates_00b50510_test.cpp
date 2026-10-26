@@ -1,8 +1,8 @@
 // Behaviour test for 0x00B50510 CEngineShadowRenderer::SetupShadowFuncRenderStates(long, pack): the forwarded matrix is identity.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector Right, Up, Look, Pos;
     void SetIdentity()
     {
@@ -16,7 +16,7 @@ static long g_stage = -1;
 static CMatrix3x4 g_seen;
 static CColorBufferDepthPackParameters* g_pack = 0;
 
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     void SetupShadowFuncRenderStates(long stage, CMatrix3x4* textureTransform, CColorBufferDepthPackParameters* pack)
     {
         g_stage = stage; g_seen = *textureTransform; g_pack = pack;

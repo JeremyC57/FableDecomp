@@ -29,13 +29,13 @@ inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 }
 inline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                    // +0x00
     C3DVector Forward;                               // +0x0c
 };
 
-struct CBaseObject;
-struct CThing {
+class CBaseObject;
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                        // +0x91 bit 0
     unsigned char m_91_1 : 7;
@@ -52,7 +52,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
 
 namespace NCameraModes {
 
-struct CScriptModuleBase {                           // vtable 0x01255F74
+class CScriptModuleBase { public:                           // vtable 0x01255F74
     virtual void v00();
     CIntelligentPointer_CThing PCamPoint;            // +0x04
     CIntelligentPointer_CThing PThingOrigin;         // +0x0c

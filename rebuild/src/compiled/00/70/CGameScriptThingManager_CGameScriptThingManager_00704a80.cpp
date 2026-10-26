@@ -18,15 +18,15 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
-struct CWorld;
-struct CMainGameComponent {
+class CWorld;
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                          // +0x24 scoped_ptr<CWorld>
     CWorld* GetWorld() const { return PWorld; }
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     unsigned char _body[0x48];
     CGameScriptThing(CWorld* world);               // 0x008CFF60
 };
@@ -65,7 +65,7 @@ struct CCountedPointer {                           // CCountedPointer<CGameScrip
     }
 };
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
     CBaseClass();                                  // 0x0099A2D0
 };
@@ -74,7 +74,7 @@ struct CCountedPointerWords {                      // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptThing : CBaseClass {                 // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                 // vtable 0x01238C8C, 12 bytes
     CCountedPointerWords PImp;                     // +0x04
     virtual void v00();
     CScriptThing() : CBaseClass(), PImp() { }
@@ -98,7 +98,7 @@ struct CScriptThingInfoList {                      // retail: the sentinel point
     }
 };
 
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     CScriptThingInfoList ScriptThings;             // +0x00
     CScriptThing         NullThing;                // +0x04
     CGameScriptThingManager();

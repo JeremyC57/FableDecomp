@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CGraphicDataBank { int x; }; struct CCPPointerInfo { long m_references; };
+class CGraphicDataBank { public: int x; }; class CCPPointerInfo { public: long m_references; };
 struct CCountedPointer {
     CGraphicDataBank* m_pObject; CCPPointerInfo* m_pInfo;
     CCountedPointer() : m_pObject(0), m_pInfo(0) { }

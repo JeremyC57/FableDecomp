@@ -20,7 +20,7 @@ struct CSectionHolder_00c5d790 {           // +0x1c: vtable 0x012B8FC8
     ~CSectionHolder_00c5d790() { DeleteCriticalSection((CRITICAL_SECTION_00c5d790*)m_section); }
 };
 
-struct CCreatureAction_SummonerFlameSlice : CActionBase_00c5d790 {   // vtable 0x012B8FCC
+class CCreatureAction_SummonerFlameSlice : public CActionBase_00c5d790 { public:   // vtable 0x012B8FCC
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void Release();                // slot 5
     __forceinline void DoRelease() { Release(); }

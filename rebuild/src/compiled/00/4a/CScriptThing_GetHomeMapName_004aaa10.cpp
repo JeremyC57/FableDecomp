@@ -1,5 +1,5 @@
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s);
 };
@@ -17,7 +17,7 @@ struct CInner {
     virtual CCharString GetName();
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _pad_0x0[0x4];
     CInner* inner;
     CCharString GetHomeMapName();

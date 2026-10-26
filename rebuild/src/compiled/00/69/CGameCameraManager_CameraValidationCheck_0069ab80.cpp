@@ -4,11 +4,11 @@
 #define CGameCameraManager CGameCameraManagerDonor
 #include "engine/CGameCameraManager.h"
 #undef CGameCameraManager
-struct C3DVector { float X,Y,Z; };
-struct CRightHandedSet { C3DVector Up,Forward; };
-struct CCamera { C3DVector WorldPosition; CRightHandedSet RHSet; bool HeightLocked,ViewVecZLocked; unsigned int FOVFlags; float HorizontalFOV,VerticalFOV,Zoom; };
+class C3DVector { public: float X,Y,Z; };
+class CRightHandedSet { public: C3DVector Up,Forward; };
+class CCamera { public: C3DVector WorldPosition; CRightHandedSet RHSet; bool HeightLocked,ViewVecZLocked; unsigned int FOVFlags; float HorizontalFOV,VerticalFOV,Zoom; };
 extern "C" int _isnan(double); // 00BFEC26 import thunk
-struct CGameCameraManager {
+class CGameCameraManager { public:
  void* VTable; CCamera Camera,OldCamera;
  void Reset(); //0069A990
  void CameraValidationCheck();

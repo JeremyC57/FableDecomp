@@ -3,7 +3,7 @@
 #include <cstdlib>
 class CAction { public: int id; };
 struct SCountBlock { long RefCount; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;
     SCountBlock* Info;
     void Construct(const CCountedPointer& other)

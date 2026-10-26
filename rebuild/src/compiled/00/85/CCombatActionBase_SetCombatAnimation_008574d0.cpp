@@ -17,11 +17,11 @@
 // (the inlined members run on it); the call's arguments are pushed before the GetPItem object fetch.
 #include <string.h>
 
-struct CCharString;
-struct CAnimationEntry;
+class CCharString;
+class CAnimationEntry;
 struct CAnimationEntryVector;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool GetPossibleCombatAnimations(const CCharString& name, CAnimationEntryVector& anims) const;   // 0x006668A0
 };
 
@@ -51,7 +51,7 @@ struct CAnimationEntryVector {                  // retail vector<const CAnimatio
     void clear() { Erase(m_pFirst, m_pLast); }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     unsigned char         _pad_0x00[0x08];
     CCreaturePointer      PCreature;            // +0x08
     unsigned char         _pad_0x10[0xe0];

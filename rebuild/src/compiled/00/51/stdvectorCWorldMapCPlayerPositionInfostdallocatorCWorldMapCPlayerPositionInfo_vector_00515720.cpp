@@ -15,7 +15,7 @@
 //   (`lea edx,[esp+1Ch]`), the 13-byte default record at the top of the frame. Base null initialisers as immediates.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };

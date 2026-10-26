@@ -1,8 +1,8 @@
 #include <stdio.h>
 typedef int EInputKey;
 
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 struct CPersistTraits;
 
 // Model: the read routine writes a parsed key into *slot.

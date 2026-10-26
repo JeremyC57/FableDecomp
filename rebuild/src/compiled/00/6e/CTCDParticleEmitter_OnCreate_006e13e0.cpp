@@ -15,12 +15,12 @@
 //   named identity CRightHandedSet (six immediate stores interleaved with the argument
 //   pushes); CreateEmitter's arguments evaluate right to left (the set, the force bit, GetPosition, the type) before
 //   the static manager getter; the new creation record is `p = new T(..)` handed to Reset (the null arm pushes eax=0).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward)
@@ -29,12 +29,12 @@ struct CRightHandedSet {
 extern long g_framesPerSecond;                  // 0x01375550
 extern bool g_bParticlesEnabled;                // 0x01375754
 extern const CRightHandedSet g_IdentityRHSet;   // 0x01380104
-struct CThing {
+class CThing { public:
     void SetAsGameStatePersisted_004c9c10(bool persisted);   // 0x004C9C10
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 namespace NParticleEngine {
-struct CParticleEmitter;
+class CParticleEmitter;
 }
 struct CParticleEmitterManager {
     static CParticleEmitterManager* __fastcall Get();   // 0x00AEAAF0
@@ -50,7 +50,7 @@ struct CCreationParametersPointer {             // CCountedPointer<CTCDParticleE
     void* Info;
     void Reset(CParticleCreationParameters* object);   // 0x006E2710
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];          // CTCBase tail, EmitterName

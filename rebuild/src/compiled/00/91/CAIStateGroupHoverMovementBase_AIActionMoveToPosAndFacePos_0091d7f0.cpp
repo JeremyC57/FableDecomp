@@ -6,7 +6,7 @@
 // Shape: a forwarder that inserts a 0.0f proximity (`push 0`) as the third argument and passes `this` and the
 // five stack arguments through; the callee pops six arguments, so it cannot be tail-jumped (`call ; ret 14h`),
 // and the result rides through in eax. The stack arguments are read into eax/edx alternately as they are pushed.
-struct C3DVector;
+class C3DVector;
 typedef long EAIActionRepeat;
 typedef long EMovementType;
 typedef long EAIActionReturn;

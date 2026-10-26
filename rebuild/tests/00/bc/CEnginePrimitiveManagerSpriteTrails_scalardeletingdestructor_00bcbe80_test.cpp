@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveManagerSpriteTrails {
+class CEnginePrimitiveManagerSpriteTrails { public:
     void* vftable;
     int destroyed;
 };

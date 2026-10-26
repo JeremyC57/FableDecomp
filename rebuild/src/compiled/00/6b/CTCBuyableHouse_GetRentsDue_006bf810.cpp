@@ -24,15 +24,15 @@ struct CWorldSub
     CGameTime*    GameTime;                         // +0x1c
 };
 
-struct CBuyableHouseDef
-{
+class CBuyableHouseDef
+{ public:
     unsigned char _pad_0x00[0x40];
     long          DaysBetweenRentPayments;          // +0x40
 };
 
 #pragma pack(push, 1)
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     void*         ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

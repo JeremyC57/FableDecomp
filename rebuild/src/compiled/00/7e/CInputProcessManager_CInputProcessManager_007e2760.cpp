@@ -2,7 +2,7 @@ extern "C" void __fastcall MemberDtor_686df0(void* self);
 // Leaf: ??1CInputProcessManager@
 extern "C" void __fastcall BaseDtor_686830_00686830(void* self);
 
-struct CInputProcessManager {
+class CInputProcessManager { public:
     void** vtbl;
 };
 

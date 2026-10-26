@@ -4,7 +4,7 @@
 #include <map>
 // Behaviour test for CQ_SecretPassageScript::MotherTortureThread (0x00DF0750): waits for the torture chamber level,
 // then for the hero to come within 3 units of the kick-off marker, casts hero and mother and runs the rescue cut-scene.
-struct CScriptThing { int Id; float X; };
+class CScriptThing { public: int Id; float X; };
 struct CHandle { int Thing; CHandle() : Thing(0) {} };
 struct CGSI {
     int Frames; int LoadFrame; int Started; char Movie[32]; char Macro[64]; int CastHero; int CastMother;

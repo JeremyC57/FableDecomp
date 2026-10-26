@@ -6,7 +6,7 @@
 // Shape: the implicit C2DBoxF assignment (a four-float POD) copies four dwords through edx/eax after one
 //   `add ecx,178h` destination adjustment.
 // Layout: retail CText Window at +0x178 (Ego_r.pdb +0x1a8; NUISystem::CSprite-derived members sit PDB-0x30 in retail).
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 };
 

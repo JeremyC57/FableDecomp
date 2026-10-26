@@ -45,7 +45,7 @@ struct CPixelFormatFromD3D {
 };
 
 // CVolumeTexture (PDB, 16 bytes). No engine header exists; the vptr is never touched here.
-struct CVolumeTexture {
+class CVolumeTexture { public:
     void*                    __vftable;            // +0x00
     IDirect3DVolumeTexture9* PD3DVolumeTexture;    // +0x04
     long                     ByteLength;           // +0x08

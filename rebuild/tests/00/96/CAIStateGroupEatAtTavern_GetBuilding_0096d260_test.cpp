@@ -1,8 +1,8 @@
 // Behaviour test for 0x0096D260: EatAtTavern::GetBuilding asks the creature's village for the nearest property-0x20 building.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CBuilding { int id; };
-struct CTCVillage { CBuilding* tavern; const C3DVector* asked; unsigned long prop;
+class CTCVillage { public: CBuilding* tavern; const C3DVector* asked; unsigned long prop;
     CBuilding* FindNearest(const C3DVector& p, unsigned long property) { asked = &p; prop = property; return tavern; } };
 struct CTCVillager { CTCVillage* village; };
 struct CCreature { C3DVector pos; CTCVillager* villager; };

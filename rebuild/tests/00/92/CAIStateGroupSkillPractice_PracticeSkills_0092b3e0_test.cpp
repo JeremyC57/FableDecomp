@@ -20,8 +20,8 @@
 // CCreatureActionBase 0xa8 bytes (aim 0xb0, fire 0xc8), CCombatActionBase 0x114 (play-combat-animation 0x118).
 // Shape: each practice step is `failed = name != "" && PerformActionAndWait(&Action(...), false) != 2;` (conditional
 // temporaries, ebx flag bits 1/2/4/8, the bool in a frame byte); the failure exits are gotos to one `success = false`.
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
@@ -40,41 +40,41 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntellig
     virtual void v00();
     __forceinline CIntelligentPointerConstThing(const CThing* item) { SetPItem(item); }
 };
-struct CThingCreatureBase;
-struct CCombatManager {
+class CThingCreatureBase;
+class CCombatManager { public:
     void CreatureUnsheathWeapon(CThingCreatureBase* creature, long mode);   // 0x006EBDD0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CCombatManager* GetCombatManager();         // 0x00661ED0
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_AimMissileWeapon : CCreatureActionBase {    // retail sizeof 0xb0
+class CCreatureAction_AimMissileWeapon : public CCreatureActionBase { public:    // retail sizeof 0xb0
     CBaseIntelligentPointer PTarget;            // +0xa8
     CCreatureAction_AimMissileWeapon(CThingCreatureBase* creature);   // 0x00718710
 };
-struct CCreatureAction_FireMissileWeapon : CCreatureActionBase {   // retail sizeof 0xc8
+class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:   // retail sizeof 0xc8
     unsigned char _fire[0xc8 - 0xa8];
     CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);   // 0x008D5110
     ~CCreatureAction_FireMissileWeapon();       // 0x0078ADF0
 };
-struct CCombatActionBase : CCreatureActionBase {    // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:    // retail sizeof 0x114
     unsigned char _combat[0x114 - 0xa8];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_PlayCombatAnimation : CCombatActionBase {   // retail sizeof 0x118
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:   // retail sizeof 0x118
     long Loop;                                  // +0x114
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

@@ -11,12 +11,12 @@
 // its used slots at 4 bytes plus each list (`sizeof + capacities`, folded to `((c1 + 10) * 3 + c2) * 2`); one
 // the vertex part is a named local computed first (kept in edi across the list loop, the list total spilled) and
 // the return sums the rest (VC folds the constants 12 + 12 + 16 into the final `lea ... + 28h`).
-struct C3DVertex2 { unsigned char _data[0x20]; };
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere { float X, Y, Z, Radius; };
+class C3DVertex2 { public: unsigned char _data[0x20]; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public: float X, Y, Z, Radius; };
 struct STriangle { unsigned short m_index[3]; };
 
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -26,7 +26,7 @@ template <class T> struct CArray {                 // retail CArray: 12 bytes
 };
 
 namespace N3DPrimitive {
-struct CTriangleList {                             // 0x3c bytes
+class CTriangleList { public:                             // 0x3c bytes
     void*                   __vftable;             // +0x00
     long                    m_refCount;            // +0x04
     CArray<STriangle>       m_triangles;           // +0x08
@@ -54,7 +54,7 @@ struct CTriangleListArray : CArray<CTriangleListPointer> {
 };
 
 namespace N3DPrimitive {
-struct CDeviceIndependent {
+class CDeviceIndependent { public:
     void*               __vftable;                 // +0x00
     CArray<C3DVertex2>  Vertices;                  // +0x04
     CTriangleListArray  TriangleLists;             // +0x10

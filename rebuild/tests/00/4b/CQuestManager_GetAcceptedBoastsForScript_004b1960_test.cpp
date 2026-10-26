@@ -17,7 +17,7 @@ static int fails = 0;
 // link stores; `this` is spilled to the push-ecx frame word because esi carries the new node.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) throw() { return where; }
-struct CCharStringData {                           // the shared string block
+class CCharStringData { public:                           // the shared string block
     const char*   m_pData;                         // +0x00
     unsigned long m_length;                        // +0x04
 };
@@ -30,7 +30,7 @@ inline bool SameString(CCharStringData* a, CCharStringData* b)
         return Compare_00411570(a->m_pData, b->m_pData) == 0;
     return false;
 }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {
@@ -43,7 +43,7 @@ struct CCharString {
         return false;
     }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
 };
 struct CBoast {                                    // CQuestManager::CBoast (PDB, 32 bytes)
@@ -91,7 +91,7 @@ struct CBoastList {                                // STLport list<CBoast>
     }
     void push_back(const CBoast& x) { insert(end(), x); }
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x6c];
     CBoastNode*   AcceptedBoasts;                  // +0x6c list<CBoast> (head node; PDB +0xb0)
     void GetAcceptedBoastsForScript(const CCharString& scriptName, CBoastList& out) const;

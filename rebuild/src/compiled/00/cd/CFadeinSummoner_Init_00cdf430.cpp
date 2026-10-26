@@ -64,7 +64,7 @@ struct CThingVtable_00cdf430 {
     virtual void v440(); virtual void v441(); virtual void v442(); virtual void v443(); virtual void v444(); virtual void v445(); virtual void v446();
     virtual void StartFade(void* handle, long flag);   // slot 447 (+0x6fc)
 };
-struct CScriptThing {                              // 12 bytes (the landed model: vptr, thing, count block)
+class CScriptThing { public:                              // 12 bytes (the landed model: vptr, thing, count block)
     unsigned char _body[12];
     CScriptThing(void* thing);                     // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840

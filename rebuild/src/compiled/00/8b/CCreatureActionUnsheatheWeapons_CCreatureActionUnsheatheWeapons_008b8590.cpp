@@ -3,19 +3,19 @@
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030.
 // Shape: the owner is loaded into edx before the frame; the action code 0 shares the zero register that also builds the sound
 // pair (inline constructor, register-zeroed stack stores); the long member is stored after the vtable. `ret 4`.
-struct CThingCreatureBase;
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
+class CThingCreatureBase;
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
-struct CCreatureAction_UnsheatheWeapons : CCombatActionBase {   // vtable 0x0127B1B4
+class CCreatureAction_UnsheatheWeapons : public CCombatActionBase { public:   // vtable 0x0127B1B4
     long m_unsheatheMode;                   // +0x114
     virtual void v00();
     CCreatureAction_UnsheatheWeapons(CThingCreatureBase* owner);

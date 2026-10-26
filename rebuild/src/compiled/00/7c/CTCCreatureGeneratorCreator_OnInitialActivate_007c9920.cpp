@@ -8,10 +8,10 @@
 // Shape: `GeneratorUID > 0` on the unsigned 64-bit value (high word `ja`, low word `jbe`), both halves reused as the call's
 // pushes; each assignment builds a CIntelligentPointer temporary (base ctor, vtable, SetPItem) copied in by the inline
 // operator= (GetPItem() into a local first, so the member address is formed after it) and destroyed through the base dtor; Kill's argument is pushed before GetPItem.
-struct CThing {
+class CThing { public:
     void Kill(bool immediately);                        // 0x004C9B80
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingWithUID(__int64 uid);               // 0x0051ED80
 };
 #pragma pack(push, 1)
@@ -29,7 +29,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<C
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 #pragma pack(pop)
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08

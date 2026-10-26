@@ -10,7 +10,7 @@
 // right after the concatenation, the symbol a named local destroyed after the lookup.
 // Layout: retail DrinkAffectMultiplier +0x1a4 (PDB +0x1bc; see 0x0057A82A).
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
     void* m_pStringData;
 };
@@ -23,7 +23,7 @@ public:
     CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
-struct CEngine {
+class CEngine { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;    // +0x14
 };

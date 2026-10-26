@@ -1,7 +1,7 @@
 // CEnginePrimitiveRenderer2D::AddPrimitive @ 0x00655fe9
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
-struct CEnginePrimitiveRenderer2D {
+class CEnginePrimitiveRenderer2D { public:
     char *cur;    // +0
     char *pad4;   // +4
     char *end;    // +8

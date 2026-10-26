@@ -12,7 +12,7 @@
 // Shape: the compiler-generated memberwise assignment (address-of below emits it out of line); the CVectorMap's implicit
 //   assignment is inlined on its own `this` (ebx): data vector assigned out of line, empty comparator free, Dirty via cl.
 class CANavQuadTreeNode;
-struct C2DLineF { float X0, Y0, X1, Y1; };
+class C2DLineF { public: float X0, Y0, X1, Y1; };
 
 namespace std {
 template <class _Tp> class allocator {};

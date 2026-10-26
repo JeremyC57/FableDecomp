@@ -17,7 +17,7 @@ struct SVarChunk_00a65a50 {
 extern unsigned long g_LastAllocatorChunkCounter_013d28d8;   // 0x013D28D8
 extern unsigned long g_LastAllocatorUsage_013d28d4;          // 0x013D28D4
 
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     virtual void v000();
     unsigned char _pad04[0xc14 - 4];
     unsigned long m_usage;                         // +0xc14: the header size

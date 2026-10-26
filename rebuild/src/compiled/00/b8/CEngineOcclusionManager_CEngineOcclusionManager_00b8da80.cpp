@@ -32,10 +32,10 @@ struct CVertexShaderData {
     long  m_refCount;                              // +0x10
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
     __forceinline virtual ~CPixelShader()
     {
@@ -46,7 +46,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054
         }
     }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* Data;                       // +0x04
     __forceinline void Release()
     {
@@ -67,18 +67,18 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0
     }
 };
 
-struct CVertexBufferWin32 : CBaseClassNonCopyable {   // vtable 0x0129BA20, 0x34 bytes
+class CVertexBufferWin32 : public CBaseClassNonCopyable { public:   // vtable 0x0129BA20, 0x34 bytes
     unsigned char _body[0x30];
     void Uninitialise();                           // 0x00A63200
     __forceinline virtual ~CVertexBufferWin32() { Uninitialise(); }
 };
 
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     ~CMovableResource() { }                        // inline: the vtable store
 };
 struct IDirect3DIndexBuffer9;
-struct CIndexBuffer : CMovableResource {           // vtable 0x0129EF2C, 0x14 bytes
+class CIndexBuffer : public CMovableResource { public:           // vtable 0x0129EF2C, 0x14 bytes
     IDirect3DIndexBuffer9* PD3DIndexBuffer;        // +0x04
     unsigned long          ByteLength;             // +0x08
     long                   PrimitiveType;          // +0x0c
@@ -97,7 +97,7 @@ template <class T> struct CPODArray {              // CArray<T> / vector<T> of a
 template <class T> struct allocator { allocator() {} };
 template <class T> void __fastcall _Destroy_range(T* first, T* last, const allocator<T>& alloc);   // 0x00B8F470 for this T
 
-template <class T> struct CArray {                 // vector<T> of a non-trivial T, 12 bytes
+template <class T> class CArray { public:                 // vector<T> of a non-trivial T, 12 bytes
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -109,10 +109,10 @@ template <class T> struct CArray {                 // vector<T> of a non-trivial
     }
 };
 
-template <class T> struct CCountedPointer { T* Object; void* Info; };
+template <class T> class CCountedPointer { public: T* Object; void* Info; };
 template <class A, class B> struct pair { A first; B second; };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual void v00();
     void** m_ppOwnerLink;                          // +0x04
     ~CEngineComponent();                           // 0x00B59730
@@ -120,7 +120,7 @@ struct CEngineComponent {
 
 struct COccluderFlareEntry { unsigned long Handle; unsigned long Result; };
 
-struct CEngineOcclusionManager : CEngineComponent {   // vtable 0x012A3CD0
+class CEngineOcclusionManager : public CEngineComponent { public:   // vtable 0x012A3CD0
     unsigned char                    _pad_0x08[0x24024 - 0x08];   // occluder slots, entry buffers
     CPODArray<COccluderFlareEntry>   FlareTests;                  // +0x24024
     CPODArray<COccluderFlareEntry>   PrevFrameFlareTests;         // +0x24030

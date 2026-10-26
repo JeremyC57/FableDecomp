@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CAppearanceModifierScalingDef { unsigned char _base[0x3c]; float Attractiveness; float Scariness; float Goodstrength; };
+class CAppearanceModifierScalingDef { public: unsigned char _base[0x3c]; float Attractiveness; float Scariness; float Goodstrength; };
 template <class T> struct CRetailVector {
     T* _First; T* _Last; T* _End;
     unsigned long size() const { return (unsigned long)(_Last - _First); }
     const T& operator[](unsigned long i) const { return _First[i]; }
 };
-struct CTattooDef {
+class CTattooDef { public:
     float Attractiveness, Scariness, Goodstrength;
     float GetTypeBalancedGoodstrength(const CRetailVector<CAppearanceModifierScalingDef>& scalings) const
     {

@@ -1,13 +1,13 @@
 // behaviour test for 0x0080A480 _Push_heap<CTargetPoint, CThingCompare_BestForTargeting2>
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct ThingPointer {
     CThing* item;
     CThing* GetPItem() const { return item; }
     void SetPItem(CThing* p) { item = p; }
     ThingPointer& operator=(const ThingPointer& o) { SetPItem(o.GetPItem()); return *this; }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTargetPoint {
     ThingPointer PThing;
     int Index;
@@ -20,7 +20,7 @@ struct CTargetPoint {
     }
 };
 // stand-in for the out-of-line comparator: prefers the point nearest the hero's X (larger distance = "less")
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     float HeroX;
     float pad[12];
     bool operator()(const CTargetPoint& a, const CTargetPoint& b) const

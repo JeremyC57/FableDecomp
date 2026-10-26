@@ -1,7 +1,7 @@
 // CCharString::SetChar @ 0x0099f390  __fastcall void(long index, char ch)
 struct CharStringData { char* buffer; };  // *data == buffer base pointer
 
-struct CCharString {
+class CCharString { public:
     CharStringData* data;  // [this+0] : 0 means empty
 };
 

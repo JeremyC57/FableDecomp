@@ -13,11 +13,11 @@
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
-struct CCharStringData {
+class CCharStringData { public:
     char*         m_pData;                                  // +0
     unsigned long m_length;                                 // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetPString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pData; }
@@ -30,7 +30,7 @@ struct SCountBlock {
     void* m_pObject;                                        // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;                                           // +0
     SCountBlock* m_pCount;                                  // +4
     T* operator->() const { return m_pObject; }
@@ -48,20 +48,20 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     bool HasHelperPoint(unsigned long key) const;           // 0x00A2EA20
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     CCountedPointer<const C3DMeshStats> GetMeshStats() const;   // 0x00A25530
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     const C3DMeshInfo* GetMeshInfo(long index);             // 0x00A24270
 };
 extern CMeshDataBank* g_pMeshDataBank;                      // 0x013B8A04
 
 namespace NGraphicAppearance {
 
-struct CMeshInfo {                                          // Ego_r.pdb, 0xc bytes
+class CMeshInfo { public:                                          // Ego_r.pdb, 0xc bytes
     long          Index;                                    // +0x0
     float         SizeX;                                    // +0x4
     unsigned char PrimaryMesh : 1;                          // +0x8
@@ -91,7 +91,7 @@ typedef CRetailVector<NGraphicAppearance::CMeshInfo> CMeshVector;
 
 namespace NGraphicAppearance {
 
-struct CAGraphicAppearanceComponent {
+class CAGraphicAppearanceComponent { public:
     virtual void v00(); virtual void v01();
     virtual void GetAllMeshes(CMeshVector& meshes) const;   // slot 2 (+0x08)
 };
@@ -109,7 +109,7 @@ struct CComponentList {                                     // STLport list<CAGr
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void*          __vftable;                               // +0x00 (CTCBase)
     void*          ParentThing;                             // +0x04
     unsigned char  _pad08[0x3c - 0x08];

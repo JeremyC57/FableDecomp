@@ -4,7 +4,7 @@
 static int g_baseCalls = 0, g_updates = 0, g_slot87 = 0, g_slot90 = 0, g_saves = 0, g_restores = 0, g_order = 0;
 static int g_saveAt = 0, g_slot90At = 0, g_slot87At = 0, g_restoreAt = 0;
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
 };
@@ -14,7 +14,7 @@ struct CComponent {
     void SetColour(const CRGBColour& c) { colour = c; ++sets; }
     CRGBColour GetColour() const { return colour; }
 };
-struct CSliderAnimator {
+class CSliderAnimator { public:
     CComponent* pSlider;
     float StartValue;
     float EndValue;
@@ -55,7 +55,7 @@ struct CScreenObject {
 struct CScreenHolder { CScreenObject* Screen; };
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     CScreenHolder* PScreen;
     bool InventoryOpen;
     void GlobalUpdate(bool) { ++g_baseCalls; }
@@ -64,7 +64,7 @@ struct CTCInventoryBase {
 };
 }
 
-struct CTCInventoryExperience : NInventory::CTCInventoryBase {
+class CTCInventoryExperience : public NInventory::CTCInventoryBase { public:
     CAnimatorList     Animators;
     CAnimatorIterator AnimIt;
     ExperienceSpendEvent ExperienceSpendAdd;

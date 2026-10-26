@@ -10,16 +10,16 @@
 // -1/0 when unset). ConfiscatedActive{Melee,Ranged}WeaponDefIndex are PDB +0x17C/+0x180, retail +0x160/+0x164.
 // Local model (no engine header for CTCInventoryWeapons).
 #pragma optimize("s", on)
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 struct CTCInventoryBase_Retail {
     virtual void v00();
     unsigned char _pad_0x04[0x130 - 4];
     void ReturnAllConfiscatedItems();         // 0x005BF91A
 };
 namespace NHeroInformationScreens {
-struct CBase { virtual void v00(); };
+class CBase { public: virtual void v00(); };
 }
-struct CTCInventoryWeapons : CTCInventoryBase_Retail, NHeroInformationScreens::CBase {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     unsigned char _pad_0x134[0x160 - 0x134];
     long ConfiscatedActiveMeleeWeaponDefIndex;    // +0x160
     long ConfiscatedActiveRangedWeaponDefIndex;   // +0x164

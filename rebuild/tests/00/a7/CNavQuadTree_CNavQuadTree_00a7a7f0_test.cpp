@@ -21,7 +21,7 @@ template <class T> struct pod_vector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     ~pod_vector() { if (_M_start) spy_free(_M_start); }
 };
-template <class V> struct CVectorMap { V Data; long Compare; };
+template <class V> class CVectorMap { public: V Data; long Compare; };
 struct CRetailList_ListOfCountedPointer {
     void* head;
     void clear() { LOG("regions"); }

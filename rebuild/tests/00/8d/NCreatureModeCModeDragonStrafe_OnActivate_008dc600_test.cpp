@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeDragonStrafe::OnActivate (retail 0x008DC600): base activation; a state-1 dragon has
 // its animation suspended by this mode; the interface-0x3a component's flag bit is cleared.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,7 +54,7 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup {
+class CThing : public CThingLookup { public:
     unsigned char m_type;
     int suspends;
     bool lastSuspend;

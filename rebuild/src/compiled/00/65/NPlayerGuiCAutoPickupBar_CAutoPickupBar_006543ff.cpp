@@ -20,7 +20,7 @@ namespace NPlayerGui {
 
 struct CRetailAllocator { CRetailAllocator() { } };
 
-struct CStatBase {
+class CStatBase { public:
     virtual void v00();
     unsigned char _body[0x68 - 4];                          // +0x04 .. +0x68: the stat-bar base state
     CStatBase(CStatBarInfo* info);                          // 0x0065431D
@@ -31,7 +31,7 @@ struct CRetailList_AutoPickup {                             // retail list<CAuto
     CRetailList_AutoPickup(const CRetailAllocator& al = CRetailAllocator());   // 0x00655BE9
 };
 
-struct CAutoPickupBar : CStatBase {                         // vtable 0x0125A768
+class CAutoPickupBar : public CStatBase { public:                         // vtable 0x0125A768
     virtual void v00();
     CRetailList_AutoPickup Pickups;                         // +0x68
     long                   CurrentDefIndex;                 // +0x6c

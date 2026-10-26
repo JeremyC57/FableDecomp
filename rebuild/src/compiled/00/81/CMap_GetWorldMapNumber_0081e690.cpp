@@ -7,13 +7,13 @@ struct CWorldMapTable {
     virtual void v016();
     virtual long GetWorldMapNumber(const void* position);   // slot 17 (+0x44)
 };
-struct CWorld {
+class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012();
     virtual CWorldMapTable* GetWorldMapTable();   // slot 13 (+0x34)
 };
 
-struct CMap {
+class CMap { public:
     unsigned char _pad[0x20];
     CWorld*       m_pWorld;                        // +0x20
     unsigned char _pad24[0x1d00];

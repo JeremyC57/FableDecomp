@@ -2,14 +2,14 @@
 #include <cstdio>
 
 static int g_baseLive = 0, g_notified = 0, g_destroyed = 0;
-struct CBaseClass { CBaseClass() { ++g_baseLive; } ~CBaseClass() { --g_baseLive; } virtual void v00() {} };
-struct CEnginePrimitiveHandle;
-struct CEnginePersistentPrimitiveBase {
+class CBaseClass { public: CBaseClass() { ++g_baseLive; } ~CBaseClass() { --g_baseLive; } virtual void v00() {} };
+class CEnginePrimitiveHandle;
+class CEnginePersistentPrimitiveBase { public:
     long m_refCount;
     virtual void Destroy() { ++g_destroyed; }
     virtual void OnLastHandleReleased(CEnginePrimitiveHandle*) { ++g_notified; }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     CIVCountedPointer() : m_p(0) {}
     ~CIVCountedPointer() { Release(); }
@@ -18,7 +18,7 @@ template <class T> struct CIVCountedPointer {
     T* operator->() const { return m_p; }
     long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
 };
-struct CEnginePrimitiveHandle : CBaseClass {
+class CEnginePrimitiveHandle : public CBaseClass { public:
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;
     ~CEnginePrimitiveHandle()
     {
@@ -40,7 +40,7 @@ struct CRandomSeed {
     }
 };
 static CRandomSeed g_randomSeed; static unsigned int g_preloadFrameRange = 0;
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell { public:
     CEngineSceneGridCell* Parent; CPrim* FirstPrimitive;
     CEnginePrimitiveHandle GroupPrimitiveHandle[2];
     long LocalCount; unsigned int TotalCount, RenderMask, OccludedLayers;

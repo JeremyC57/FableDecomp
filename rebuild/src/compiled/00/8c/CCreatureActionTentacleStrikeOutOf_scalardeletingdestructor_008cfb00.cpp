@@ -1,4 +1,4 @@
-struct CCreatureAction_TentacleStrikeOutOf {
+class CCreatureAction_TentacleStrikeOutOf { public:
     void* vftable;
 };
 

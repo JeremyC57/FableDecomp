@@ -64,15 +64,15 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CEngineWaterBackgroundSubPatch;
-struct CIndexBuffer;
-struct CLandscapeBackgroundTreeNode;
-struct CSubPatchTreeLODLockElement;
-struct CTexture;
-struct CVertexBufferWin32;
+class CEngineWaterBackgroundSubPatch;
+class CIndexBuffer;
+class CLandscapeBackgroundTreeNode;
+class CSubPatchTreeLODLockElement;
+class CTexture;
+class CVertexBufferWin32;
 
 #pragma pack(push, 1)
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void*                           __vftable;               // +0x00 vptr, or first dword of a flattened base subobject
     CLandscapeBackgroundTreeNode*   Parent;                  // +0x04
     unsigned char                   EdgeStrips[0xb0];        // +0x08 CPatchTesselationEdgeStrip[4]
@@ -149,7 +149,7 @@ FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x1
 
 
 #pragma pack(push, 1)
-struct CMovableResource {
+class CMovableResource { public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
 };
 #pragma pack(pop)
@@ -190,11 +190,11 @@ FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundSubNodeBase, __vftable) == 0x0)
 #include <stddef.h>
 
 
-struct CMovableResourceMemoryPool;
-struct CXboxBufferMemoryPool;
+class CMovableResourceMemoryPool;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _pad_0x04[0x4];              // +0x04
     CMovableResourceMemoryPool* VirtualMemPool;              // +0x08
@@ -237,11 +237,11 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMemoryManager, EnableDelayedResourc
 #include <stddef.h>
 
 
-struct CEngineLandscapeMemoryManager;
-struct CPixelShader;
+class CEngineLandscapeMemoryManager;
+class CPixelShader;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void*                          __vftable;                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                  _pad_0x04[0x4];           // +0x04
     unsigned char                  _pad_0x08[0x4];           // +0x08
@@ -347,12 +347,12 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MemoryManager) == 0xf58);
 #include <stddef.h>
 
 
-struct CEngineLandscapeMap;
-struct CIndexBuffer;
-struct CVertexBufferWin32;
+class CEngineLandscapeMap;
+class CIndexBuffer;
+class CVertexBufferWin32;
 
 #pragma pack(push, 1)
-struct CEngineWaterBackgroundSubPatch {
+class CEngineWaterBackgroundSubPatch { public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     CEngineLandscapeMap* Map;                                // +0x04
     CIndexBuffer*        IndexBuffer;                        // +0x08

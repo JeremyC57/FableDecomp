@@ -7,7 +7,7 @@ static int g_copies = 0, g_grows = 0;
 static const void* g_growValue = 0;
 static unsigned int g_growCount = 0;
 static bool g_growAtEnd = false;
-struct CCamera {
+class CCamera { public:
     float WorldPosition[3];
     float RHSet[6];
     bool HeightLocked, ViewVecZLocked;

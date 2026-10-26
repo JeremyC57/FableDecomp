@@ -6,11 +6,11 @@
 // Leaf: HasCollidedWithThingAt
 #include "engine/CTCPhysicsBase.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CThingPhysicsMeshInfo;
+class CThingPhysicsMeshInfo;
 
 struct CTCPhysicsBaseVirtuals {                    // vtable-shaped view of `this` (slot = offset / 4)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();

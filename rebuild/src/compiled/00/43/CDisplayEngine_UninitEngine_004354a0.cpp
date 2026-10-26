@@ -9,7 +9,7 @@
 // are declared locally (the display header only forward-declares it).
 #include "engine/CDisplayEngine.h"
 class CEngineInit;
-struct CIEngine {
+class CIEngine { public:
     virtual ~CIEngine();                                 // slot 0
     virtual void Validate() const;                       // slot 1 (CInitBaseClass)
     virtual bool Initialise(const CEngineInit& init);    // slot 2

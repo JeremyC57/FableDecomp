@@ -25,7 +25,7 @@ struct CRetailVector {
     }
 };
 static int g_stringDtors = 0, g_pointerDtors = 0;
-struct CCharString { const char* m_pData; CCharString() : m_pData(0) { } ~CCharString() { ++g_stringDtors; } };
+class CCharString { public: const char* m_pData; CCharString() : m_pData(0) { } ~CCharString() { ++g_stringDtors; } };
 struct CBaseIntelligentPointer { void* PItem; CBaseIntelligentPointer() : PItem(0) { } virtual ~CBaseIntelligentPointer() { ++g_pointerDtors; } };
 struct AttackParticleAndEndPoints { CCharString StartDummy, EndDummy; long ParticleType, Unknown0c; CBaseIntelligentPointer ParticleEffect; AttackParticleAndEndPoints() : ParticleType(0), Unknown0c(0) { } };
 typedef CRetailVector<AttackParticleAndEndPoints> TElem;

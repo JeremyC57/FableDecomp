@@ -7,8 +7,8 @@ static int g_allocs = 0, g_frees = 0;
 static void* CountedMalloc(unsigned int size) { ++g_allocs; return std::malloc(size); }
 static void CountedFree(void* p) { if (p) ++g_frees; std::free(p); }
 
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) { }
 };
@@ -70,8 +70,8 @@ struct Creature {
     void AddToCreatureInteraction(const int& interaction) { ++g_addCalls; Interaction = interaction; }
 };
 
-struct CThingFilter_HasTC { long TCType; CThingFilter_HasTC(long t) : TCType(t) { } };
-struct CThingFilter_In2DRange {
+class CThingFilter_HasTC { public: long TCType; CThingFilter_HasTC(long t) : TCType(t) { } };
+class CThingFilter_In2DRange { public:
     C3DVector Pos; float Range;
     CThingFilter_In2DRange(const C3DVector& p, float r) : Pos(p), Range(r) { }
 };

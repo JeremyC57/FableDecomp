@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     char pad[0xa4];
     unsigned int flags;   // +0xa4
 };

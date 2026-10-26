@@ -10,7 +10,7 @@
 //   AttractorUserPointsArray (CArray<C3DVector>: begin/end/capacity) +0x24. Local model: engine/CDataOutputStream.h is
 //   data-only; CDataOutputStream_Methods is the lane's method carrier.
 #include "engine/CDataOutputStream.h"
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteEBOOL(bool value);                        // 0x00993E30
     void WriteLong(long value);                         // 0x00993EB0
@@ -18,12 +18,12 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteFloat(float value);                       // 0x00993EE0
     void Write3DVector(const C3DVector& value);         // 0x00993FD0
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
 };
 namespace NParticleEngine {
-struct CPSCAttractor {
+class CPSCAttractor { public:
     unsigned char _base[0xc];                           // CPSCBase
     bool AttractorEnabled : 1;                          // +0x0c
     bool AttractorUseParamPosition : 1;

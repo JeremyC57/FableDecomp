@@ -1,4 +1,4 @@
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     void* vftable;
 };
 

@@ -3,13 +3,13 @@
 // Behaviour test for CHandleBasedMemoryPool scalar deleting destructor (0x00A03AA0): Uninitialise runs first,
 // then the name string, then the handle array's block is freed only when allocated, then the CBase root.
 static int g_order[8]; static int g_n = 0; static int g_freed = 0;
-struct CCharString { void* m_pData; ~CCharString() { g_order[g_n++] = 3; } };
+class CCharString { public: void* m_pData; ~CCharString() { g_order[g_n++] = 3; } };
 namespace N_0099a300 { struct CBase { virtual ~CBase() { g_order[g_n++] = 1; } }; } using N_0099a300::CBase;
 struct CHandleInfoArray {
     void* m_pData; long m_size; long m_capacity;
     ~CHandleInfoArray() { g_order[g_n++] = 2; if (m_pData) { std::free(m_pData); ++g_freed; } }
 };
-struct CHandleBasedMemoryPool : CBase {
+class CHandleBasedMemoryPool : public CBase { public:
     CHandleInfoArray Handles; long FirstUnusedHandle; CCharString Name;
     void Uninitialise() { g_order[g_n++] = 4; }
     virtual ~CHandleBasedMemoryPool() { Uninitialise(); }

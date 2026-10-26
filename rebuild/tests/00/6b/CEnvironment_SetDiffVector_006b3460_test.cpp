@@ -1,16 +1,16 @@
 // Behaviour test for 006b3460: CEnvironment::SetDiffVector normalises (x, y, z) from the console args into both game-tick states (model copy).
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     void Normalise() { float inv = 1.0f / std::sqrt(X * X + Y * Y + Z * Z); X *= inv; Y *= inv; Z *= inv; }   // 0x00A14440
 };
-struct CGenericVar { void* vt; long Type; void* ValString; long ValSLONG; unsigned long ValULONG; bool ValBool; float ValFloat; };
+class CGenericVar { public: void* vt; long Type; void* ValString; long ValSLONG; unsigned long ValULONG; bool ValBool; float ValFloat; };
 struct CVarVector { CGenericVar* first; CGenericVar* last; CGenericVar* end; const CGenericVar& operator[](unsigned int n) const { return first[n]; } };
 struct CState { C3DVector DiffuseVector; float other; };
-struct CEnvironment {
+class CEnvironment { public:
     CState GameTickState, PrevGameTickState;
     static void SetDiffVector(CEnvironment& env, const CVarVector& args)
     {

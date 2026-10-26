@@ -1,10 +1,10 @@
 // behaviour test for CThingCompare_BestForTargeting2::GetThingCompareMultiplier (0x007F9E70)
 #include <cstdio>
 struct CTCInterface9 { unsigned int m_flags; };
-struct CThing { bool Dead; bool has9; CTCInterface9* tc9; bool enemy;
+class CThing { public: bool Dead; bool has9; CTCInterface9* tc9; bool enemy;
     bool GetInterface(CTCInterface9** out, int) { if (has9) { *out = tc9; return true; } return false; } };
 static bool AreThingsEnemies(CThing*, CThing* b) { return b->enemy; }
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero; float EnemyPreferenceFactor;
     float GetThingCompareMultiplier(CThing* thing) const
     {

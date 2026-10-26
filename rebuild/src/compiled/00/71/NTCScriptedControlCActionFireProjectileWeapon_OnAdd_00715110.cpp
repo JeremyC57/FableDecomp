@@ -3,12 +3,12 @@
 // Layout: owning control at +4 (its +4 is the creature, as in the landed 0x007122D0); target CScriptThing at +0xC; the creature-action queue at +0x18.
 // Callees: CVectorMap LowerBound copy @ 0x004365B0, ReloadMissileWeapon ctor 0x00718710, aim ctor 0x00718650, fire ctor 0x008D5110,
 // CCountedPointer(T*) 0x00695880 (out of line), ~CCountedPointer 0x0048C5C0, queue add 0x00719360.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CCreatureAction { };
-struct CCreatureAction_ReloadMissileWeapon : CCreatureAction { char _d[0xb0]; CCreatureAction_ReloadMissileWeapon(CThing* creature); };   // 0x00718710
-struct CCreatureAction_AimMissileWeapon : CCreatureAction { char _d[0xb0]; CCreatureAction_AimMissileWeapon(CThing* creature); };         // 0x00718650
-struct CCreatureAction_FireMissileWeapon : CCreatureAction { char _d[0xc8]; CCreatureAction_FireMissileWeapon(CThing* creature, CThing* target); };   // 0x008D5110
+class CCreatureAction_ReloadMissileWeapon : public CCreatureAction { public: char _d[0xb0]; CCreatureAction_ReloadMissileWeapon(CThing* creature); };   // 0x00718710
+class CCreatureAction_AimMissileWeapon : public CCreatureAction { public: char _d[0xb0]; CCreatureAction_AimMissileWeapon(CThing* creature); };         // 0x00718650
+class CCreatureAction_FireMissileWeapon : public CCreatureAction { public: char _d[0xc8]; CCreatureAction_FireMissileWeapon(CThing* creature, CThing* target); };   // 0x008D5110
 
 struct SCountBlock {
     long m_references;
@@ -32,8 +32,8 @@ struct CCountedPointer {
 };
 struct CCreatureActionQueue { void Add(const CCountedPointer& action); };   // 0x00719360
 
-struct CTCInventoryAbilities { CThing* GetWeaponInHand(); };    // 0x006A1440
-struct CTCWeapon { bool IsMissileWeapon(); bool IsLoaded(); };  // 0x005DAA40 / 0x005DA980
+class CTCInventoryAbilities { public: CThing* GetWeaponInHand(); };    // 0x006A1440
+class CTCWeapon { public: bool IsMissileWeapon(); bool IsLoaded(); };  // 0x005DAA40 / 0x005DA980
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -42,7 +42,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;            // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     void*               __vftable;                   // +0x00
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
@@ -64,7 +64,7 @@ struct CThing {
     }
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;   // slot 11 (+0x2c)

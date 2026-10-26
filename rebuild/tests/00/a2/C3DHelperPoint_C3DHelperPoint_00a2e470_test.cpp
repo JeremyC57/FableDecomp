@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct C3DHelperPoint { C3DVector Position; long BoneIndex; C3DHelperPoint(const C3DVector& p, long b) : Position(p), BoneIndex(b) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class C3DHelperPoint { public: C3DVector Position; long BoneIndex; C3DHelperPoint(const C3DVector& p, long b) : Position(p), BoneIndex(b) { } };
 int main()
 {
     C3DVector v(1.5f, -2.5f, 3.5f); C3DHelperPoint h(v, 11);

@@ -3,7 +3,7 @@
 // Behaviour test for NCameraModes::CProjectileWeapon::SetUpParams (0x00878CE0): height/phi come from the def (phi in
 // turns), the six deltas are cleared, and the axes are built from the observed thing's flattened, normalised facing.
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -12,22 +12,22 @@ struct C3DVector {
     void Set(float x, float y, float z) { X = x; Y = y; Z = z; }
 };
 #pragma pack(pop)
-struct CTCPhysicsBase { C3DVector Facing; virtual C3DVector GetFacing() { return Facing; } };
-struct CThingGameObject {
+class CTCPhysicsBase { public: C3DVector Facing; virtual C3DVector GetFacing() { return Facing; } };
+class CThingGameObject { public:
     unsigned char _pad00[0x60]; CTCPhysicsBase* PhysicsTC;
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
 };
-struct CCameraModeDef { unsigned char _pad00[0xa0]; float ProjectileCameraInitialPhiOffsetForCamera; float ProjectileCameraInitialHeightParamForCamera; };
-template <class T> struct CDefPointer { T* Object; };
+class CCameraModeDef { public: unsigned char _pad00[0xa0]; float ProjectileCameraInitialPhiOffsetForCamera; float ProjectileCameraInitialHeightParamForCamera; };
+template <class T> class CDefPointer { public: T* Object; };
 namespace NCameraModes {
 #pragma pack(push, 1)
-struct CBase {
+class CBase { public:
     unsigned char _pad04[0x44 - 0x04];
     CDefPointer<const CCameraModeDef> PCameraModeDef;
     const CThingGameObject* Observed;
     const CThingGameObject* GetObservedThing() const { return Observed; }
 };
-struct CProjectileWeapon : CBase {
+class CProjectileWeapon : public CBase { public:
     unsigned char _pad48[0xa9 - 0x4c];
     C3DVector XAxis; C3DVector YAxis; C3DVector ZAxis;
     unsigned char _padcd[0xd0 - 0xcd];

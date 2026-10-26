@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CPersistContext {
+class CPersistContext { public:
     const char* m_lastName; long m_loadValue; bool m_loading; int m_baseCalls;
     void Transfer(const char* name, long& value, const long& defaultValue)
     {
@@ -8,11 +8,11 @@ struct CPersistContext {
         if (m_loading) value = m_loadValue; else if (value == defaultValue) m_lastName = "default";
     }
 };
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     virtual ~CTCContainerRewardHero() { }
     virtual void OnSerialise(CPersistContext* context, bool loading) { ++context->m_baseCalls; }
 };
-struct CTCSearchableContainer : CTCContainerRewardHero {
+class CTCSearchableContainer : public CTCContainerRewardHero { public:
     long NumberOfSearchesRemaining;
     virtual void OnSerialise(CPersistContext* context, bool loading)
     {

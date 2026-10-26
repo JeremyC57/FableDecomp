@@ -6,7 +6,7 @@
 // Shape: the emitter's inline by-value getter returns `C3DVector(t.X, t.Y, t.Z)` (arguments evaluated right to left: Z and Y on
 // the x87 stack, X through ecx; the dead `add eax,0B0h` is the matrix address); the absent arm copies the parent position through
 // C3DVector's user copy ctor (the implicit copy routes the result pointer through edx).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
@@ -19,13 +19,13 @@ struct CMatrix34 {                              // 48 bytes
     C3DVector GetTranslation() const { return C3DVector(Translation[0], Translation[1], Translation[2]); }
 };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad00[0xb0];
     CMatrix34 Transform;                        // +0xb0
     C3DVector GetPosition() const { return Transform.GetTranslation(); }
 };
 }
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                // sizeof 8: vptr + PData
@@ -33,7 +33,7 @@ struct CBaseIntelligentPointer {                // sizeof 8: vptr + PData
     void* PData;                                // +0x04
     NParticleEngine::CParticleEmitter* GetPItem() const;   // 0x00A01B50
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     CThing*                 ParentThing;        // +0x04 (CTCBase)
     unsigned char           _base08[0x4];

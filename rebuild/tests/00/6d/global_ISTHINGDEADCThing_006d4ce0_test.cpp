@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for 006d4ce0: IS_THING_DEAD -- null pointer or dead flag (bit 0 of +0x91) set.
-struct CThing { unsigned char pad[0x91]; unsigned char m_flags; };
+class CThing { public: unsigned char pad[0x91]; unsigned char m_flags; };
 template <class T> bool IS_THING_DEAD(T const& thing)
 {
     if (thing != 0 && !(thing->m_flags & 1)) return false;

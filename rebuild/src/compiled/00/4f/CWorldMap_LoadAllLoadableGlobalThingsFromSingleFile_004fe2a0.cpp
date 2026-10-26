@@ -17,16 +17,16 @@
 // Shape: the stream's OwnsData flag is a member with its own inline ctor (puts the Name lea after the word stores, as
 //   retail); the counted-pointer info comes from `p ? new CCPPointerInfo(deleter, p) : 0`; c_str()/length() are
 //   if-return accessors (retail tests the null data block once, non-null arm first).
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                     // 0x0099AED0
     ~CWideString();                                    // 0x0099B510
 };
-struct CAFile;
-struct CASuspendableProcess;
-struct CCharStringData { const char* Data; long Length; };
+class CAFile;
+class CASuspendableProcess;
+class CCharStringData { public: const char* Data; long Length; };
 extern const char g_EmptyText[];                       // 0x0129AAF4
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -37,7 +37,7 @@ struct CCharString {
 };
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
 
-struct CBaseClass {                                    // the CStringParser root (polymorphic)
+class CBaseClass { public:                                    // the CStringParser root (polymorphic)
     virtual void v00();
     ~CBaseClass();                                     // 0x0099A2E0
 };
@@ -45,7 +45,7 @@ struct CStringParserCommentList {                      // retail std::list<CStri
     void* m_pHead;
     ~CStringParserCommentList();                       // 0x004046B0
 };
-struct CStringParser : CBaseClass {                    // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                    // retail 0x28 bytes
     char*                    String;                   // +0x04
     unsigned long            BaseLineOffset;           // +0x08
     CCharString              Filename;                 // +0x0c
@@ -65,7 +65,7 @@ namespace N_0099a300 { struct CBase {
     ~CBase();                                          // 0x0099A300
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CDiskFileWin32 : CBase {                        // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                        // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                              // 0x0099A920 (slot 2)
@@ -83,10 +83,10 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                           // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
-struct CDataInputStream : CBaseClassNonCopyable {
+class CDataInputStream : public CBaseClassNonCopyable { public:
     long f4, f8, fc;
 };
-struct CMemoryDataInputStream : CDataInputStream {     // vtable 0x0122E0FC, 0x24 bytes
+class CMemoryDataInputStream : public CDataInputStream { public:     // vtable 0x0122E0FC, 0x24 bytes
     const char* Data;                                  // +0x10
     long        Size;                                  // +0x14
     long        Position;                              // +0x18
@@ -96,7 +96,7 @@ struct CMemoryDataInputStream : CDataInputStream {     // vtable 0x0122E0FC, 0x2
     virtual ~CMemoryDataInputStream();
     void Init(const char* data, long length);          // 0x009E93C0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* Deleter)(void* object);
     void* Object;
@@ -123,14 +123,14 @@ struct CDataInputStreamPointer {                       // CCountedPointer<CDataI
         }
     }
 };
-struct CThingManager {
+class CThingManager { public:
     void LoadGlobalThingBatch(CDataInputStreamPointer stream, long map);   // 0x005223F0
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CThingManager* GetThingManager();          // slot 3 (+0xc)
 };
-struct CWorldMap {
+class CWorldMap { public:
     void* __vftable;
     long f4;
     CWorld* World;                                     // +0x08

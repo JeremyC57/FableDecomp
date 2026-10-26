@@ -1,9 +1,9 @@
 // Behaviour test for 0x0066A5B0 CCombatAction_GenericResponseToExplosion(owner, explosion, pointOfHit, hitDir).
 #include <cstdio>
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct C3DVector { float X, Y, Z; };
-struct CSoundPair { long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class C3DVector { public: float X, Y, Z; };
+class CSoundPair { public: long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 struct CBaseIntelligentPointer {
     void* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -13,11 +13,11 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     CIntelligentPointer_CThing(CThing* item) { SetPItem(item); }
 };
 static CThingCreatureBase* g_owner = 0; static long g_code = 0; static long g_sound = -1;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound)
     { g_owner = owner; g_code = actionCode; g_sound = sound.FirstSound + sound.LastSound; }
 };
-struct CCombatAction_GenericResponseToExplosion : CCombatActionBase {
+class CCombatAction_GenericResponseToExplosion : public CCombatActionBase { public:
     CIntelligentPointer_CThing PExplosion;
     float PointOfHit_X, PointOfHit_Y, PointOfHit_Z, HitDir_X, HitDir_Y, HitDir_Z;
     bool FlipFacing;

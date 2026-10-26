@@ -11,7 +11,7 @@ struct CInputProcessBase {
     unsigned char         _pad[8];
     SProcessNode_00a0d4f0 m_node;                  // +0x08
 };
-struct CInputProcessManager {
+class CInputProcessManager { public:
     virtual void v00();
     SProcessNode_00a0d4f0* m_pFirst;               // +0x04
     SProcessNode_00a0d4f0* m_pLast;                // +0x08

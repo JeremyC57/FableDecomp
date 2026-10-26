@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 extern void __cdecl operator_delete(void* p);
 
-struct CCameraManagerDef {
+class CCameraManagerDef { public:
     int f0;
     void __fastcall scalar_dtor();
     void* scalar_deleting_destructor(unsigned int flags);

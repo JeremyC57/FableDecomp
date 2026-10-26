@@ -21,7 +21,7 @@ struct SVertexShaderInputState {                // embedded block with an inline
     SVertexShaderInputState() : m_pDeclaration(0), m_pStreams(0), m_streamCount(0), m_elementCount(0), m_stride(0), m_flags(0) { }
 };
 
-struct CVertexShaderInput : CBase {
+class CVertexShaderInput : public CBase { public:
     SVertexShaderInputState m_state;            // +0x04
     virtual void v00();
     CVertexShaderInput();

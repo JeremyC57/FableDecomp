@@ -16,7 +16,7 @@ struct CCountedResourcePointer {
     }
 };
 enum { VT_PATCH = 0x12a8200, VT_MOVABLE = 0x129b860 };
-struct CEngineLandscapePatch {
+class CEngineLandscapePatch { public:
     unsigned int vt; unsigned char pad[0x3c]; CCountedResourcePointer m_resource;
     void Clear() { ++g_cleared; }
 };

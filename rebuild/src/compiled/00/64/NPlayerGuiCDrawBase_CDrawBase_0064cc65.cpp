@@ -8,12 +8,12 @@
 // Drawing +0x18, PrimitiveHandles +0x1c (retail VC6 vector: three words). Shape: PlayerGui is stored before the vtable (hoisted next to its
 // load), the four cached pointers come from the GUI record (+8, +4, +0x10, +0x14), the zero stores share eax, and push_back's by-reference
 // temporary (`this`) is homed in the dead first argument slot (`mov [ebp+8],esi ; lea eax,[ebp+8]`).
-struct CPlayerManager;
-struct CWorld;
-struct CMainGameComponent;
-struct CGraphicDataBank;
+class CPlayerManager;
+class CWorld;
+class CMainGameComponent;
+class CGraphicDataBank;
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char       _pad00[4];
     CWorld*             m_pWorld;                  // +0x04
     CPlayerManager*     m_pPlayerManager;          // +0x08
@@ -24,7 +24,7 @@ struct CPlayerGui {
 
 namespace NPlayerGui {
 
-struct CDrawBase;
+class CDrawBase;
 
 struct CRetailDrawList {                           // VC6 Dinkumware vector<CDrawBase*>
     CDrawBase** m_pFirst;
@@ -39,7 +39,7 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
     void* m_pEnd;
 };
 
-struct CDrawBase {                                 // vtable 0x0125A52C
+class CDrawBase { public:                                 // vtable 0x0125A52C
     virtual void v00();
     CPlayerGui*         PlayerGui;                 // +0x04
     CPlayerManager*     PlayerManager;             // +0x08

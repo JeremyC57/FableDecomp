@@ -7,8 +7,8 @@
 static int g_frames, g_endAt, g_oakBayAt, g_gardenAt, g_nearAt, g_soulAt;
 static bool g_convActive, g_briarDead;
 static int g_bound, g_lines, g_convs, g_cutStart, g_cutSuccess, g_card, g_screen, g_obj9, g_obj10, g_spawned, g_fades, g_completed, g_log;
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frames; }
     bool IsRegionLoaded(const char* n) const

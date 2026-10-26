@@ -13,8 +13,8 @@
 // Shape: a rotated `while (IsStillRunnable(p))` loop with &perceive->Position hoisted (ebp); DetectedPos copied
 // dword by dword (the memberwise C3DVector assignment). Engine header names (flattened base, modelled locally).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -61,7 +61,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -204,7 +204,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -212,7 +212,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -249,8 +249,8 @@ struct CAIStateGroupBase {
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct C3DVector { float x, y, z; };
-struct CTCPerceiveThing {                       // interface 0x34
+class C3DVector { public: float x, y, z; };
+class CTCPerceiveThing { public:                       // interface 0x34
     unsigned char _pad[0x18];
     float m_awareness;                          // +0x18
     unsigned char _pad1c[0x20 - 0x1c];
@@ -258,10 +258,10 @@ struct CTCPerceiveThing {                       // interface 0x34
     unsigned char _pad2c[2];
     bool m_heardSound;                          // +0x2e
 };
-struct CTCStealth {                             // interface 0x36
+class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* source, long status);   // 0x00747B80
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsFreeToFinishAction();                // 0x006621C0
     void FinishCurrentAction();                 // 0x00662650
 };

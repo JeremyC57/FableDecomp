@@ -14,15 +14,15 @@
 // Shape: the CSoundInit default ctor of the landed PlaySoundAtPos (list + body stores) with GainFaderBits = 0x8010; the
 //   sound player's vtable is spilled across the GetSampleBank() call that supplies the first argument; the message
 //   position is a zero C3DVector temporary.
-struct CCharString { void* PStringData; };
-struct C3DVector {
+class CCharString { public: void* PStringData; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CThing;
-struct CGameEvent;
-struct CASoundBank;
-struct CSoundInit {
+class CThing;
+class CGameEvent;
+class CASoundBank;
+class CSoundInit { public:
     float Volume, Pitch, Pan;
     long NoPlays, PlaybackType;
     unsigned long GainFaderBits, PitchFaderBits;
@@ -43,12 +43,12 @@ struct CSoundSystem {
     virtual CSoundPlayer* GetSoundPlayer();       // slot 9 (+0x24)
 };
 extern CSoundSystem* g_pSoundSystem;               // 0x013B8394
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x5ec];
     CCharString   TextBoxButtonBSoundCriteria;    // +0x5EC
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     unsigned char _pad[0xde];
     bool          InCutscene;                      // +0xDE
     bool          CutsceneSkipped;                 // +0xDF
@@ -56,16 +56,16 @@ struct CSubtitleRenderer {
     bool IsCutsceneSkippable() const;              // 0x0048DE44
     void Clear(bool all);                          // 0x00492BAB
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad[0x18];
     CSubtitleRenderer SubtitleRenderer;            // +0x18
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 extern unsigned long g_framesPerSecond;            // 0x01375550
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* PMessageEventManager;    // +0x60 (CCountedPointer data word)
     CASoundBank& GetSampleBank() const;            // 0x0049D9B0

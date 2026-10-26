@@ -11,7 +11,7 @@
 // before the branch); the `this` owner argument is pushed once above the branch for both appearance
 // calls; the red tint is a CRGBColour(255, 0, 0, 255) temporary whose ctor assigns R,G,B,A in its body
 // (byte stores +2/+1/+0/+3).
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B;                                        // +0
     unsigned char G;                                        // +1
     unsigned char R;                                        // +2
@@ -25,13 +25,13 @@ struct CTCGraphicAppearance {
     void SetTintColour(const CRGBColour& colour, void* owner);   // 0x004C00B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;               // +0x64
     void RemoveTC(long type);                               // 0x004C9840
 };
 
-struct CTCFlashOnHit {
+class CTCFlashOnHit { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     bool    ToBeRemoved;                                    // +0x08

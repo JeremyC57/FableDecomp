@@ -22,10 +22,10 @@ public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];
 };
-struct C3DDummyObject {                       // 0x34 bytes, POD
+class C3DDummyObject { public:                       // 0x34 bytes, POD
     CMatrix3x4 Transform;                     // +0x00
     long       BoneIndex;                     // +0x30
 };

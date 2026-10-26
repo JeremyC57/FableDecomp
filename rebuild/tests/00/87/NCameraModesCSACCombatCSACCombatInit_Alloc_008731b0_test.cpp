@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CGameCameraManager { int id; };
-struct CCameraModeDef { float StringLengthXY; float CageRadius; float HeightOffsetZ; float LookOffsetZ; float FOV; };
-template <class T> struct CDefPointer { T* Def; T* operator->() const { return Def; } };
+class CGameCameraManager { public: int id; };
+class CCameraModeDef { public: float StringLengthXY; float CageRadius; float HeightOffsetZ; float LookOffsetZ; float FOV; };
+template <class T> class CDefPointer { public: T* Def; T* operator->() const { return Def; } };
 struct CBase { virtual ~CBase() { } };
 struct CSACCombat : CBase {
     CGameCameraManager* mgr; float sl, cr, ho, agbt, fov; bool agb;

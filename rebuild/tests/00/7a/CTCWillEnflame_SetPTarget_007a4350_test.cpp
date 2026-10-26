@@ -2,8 +2,8 @@
 // target, read back into PTarget, destroyed before IsZTargetting is stored.
 #include <cstdio>
 
-struct CThing { long m_id; };
-struct CBaseObject;
+class CThing { public: long m_id; };
+class CBaseObject;
 
 static int g_ctor, g_dtor;
 static bool g_flagAtDtor;
@@ -18,7 +18,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() : CBaseIntelligentPointer() { } };
 
-struct CTCWillEnflame {
+class CTCWillEnflame { public:
     bool                    IsZTargetting;
     CBaseIntelligentPointer PTarget;
     void SetPTarget(CThing* target, bool isZTargetting);

@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CTrapDef { long TrapType; long OwnerValue; };
+class CTrapDef { public: long TrapType; long OwnerValue; };
 struct CDefPointerTrapDef { CTrapDef* Object; };
 static CTrapDef g_def;
-struct CDefClassBase { bool GetSubDef(CDefPointerTrapDef* out) { out->Object = &g_def; return true; } };
+class CDefClassBase { public: bool GetSubDef(CDefPointerTrapDef* out) { out->Object = &g_def; return true; } };
 struct COwnerObject60 { long received; int calls; virtual ~COwnerObject60() {} virtual void Receive(long v) { received = v; ++calls; } };
 struct CComponentFlags { unsigned char Flag0 : 1; unsigned char Flag1 : 1; };
-struct CThing { COwnerObject60* m_p60; CComponentFlags* m_p64; CDefClassBase* Def; };
-struct CTCTrapBase {
+class CThing { public: COwnerObject60* m_p60; CComponentFlags* m_p64; CDefClassBase* Def; };
+class CTCTrapBase { public:
     int initCalls;
     CThing* Thing;
     CDefPointerTrapDef PTrapDef;

@@ -4,7 +4,7 @@
 // frame check whether the hero is within 8 of any of them while more than 3 from the prisoner; the first time, the
 // guard leader tells him not to leave and the watch ends
 static int g_frames = 0, g_endAt = 1000, g_lines = 0, g_heroAt = 4;   // frame at which the hero reaches exit #1
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CThings {
     CScriptThing Items[4]; unsigned int Count;
     CThings() : Count(0) { }
@@ -15,7 +15,7 @@ struct CThings {
 static bool g_farFromPrisoner = true;
 static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float d) { return a.id == 0 && b.id == 21 && d == 8.0f && g_frames >= g_heroAt; }
 static bool IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float d) { return a.id == 0 && b.id == 5 && d == 3.0f && g_farFromPrisoner; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     CScriptThing GetHero() const { CScriptThing t; t.id = 0; return t; }
     void GetAllThingsWithDefName(const char* n, CThings& v) const { if (!std::strcmp(n, "REGION_EXIT_POINT")) { v.push_back(20); v.push_back(21); } }

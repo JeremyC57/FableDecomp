@@ -9,7 +9,7 @@ struct CWriteLog {
     CWriteLog() : Count(0) {}
     void Add(char kind, long value, const char* text) { Kind[Count] = kind; Value[Count] = value; Text[Count] = text; ++Count; }
 };
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString() : Text("") {}
     CCharString(const char* text, long) : Text(text) {}
@@ -68,7 +68,7 @@ template <class T> void SerialiseVectorBinaryOut(CDataOutputStreamWriter& stream
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CUIMiniMapMarker {
     long Region;
     CCharString UIDefName;

@@ -1,7 +1,7 @@
 // CEnginePrimitiveRenderer2D::AddPrimitive @ 0x006724b0
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
-struct CEnginePrimitiveRenderer2D {
+class CEnginePrimitiveRenderer2D { public:
     char pad00[0x18];
     int  mode;      // +0x18
     char pad1c[0x24 - 0x1c];

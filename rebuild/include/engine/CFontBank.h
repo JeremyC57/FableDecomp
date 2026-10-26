@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
-struct CFontManager;
+class CCharStringData;
+class CFontManager;
 
 #pragma pack(push, 1)
-struct CFontBank {
+class CFontBank {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long    FontHeight;                             // +0x04
     CCharStringData* Name_PStringData;                       // +0x08 CCharString::PStringData

@@ -17,7 +17,7 @@
 // Layout (Ego_r.pdb, matches retail): HomeBuilding +0x10 / UID +0x18, WorkBuilding +0x20 / UID +0x28, Creature +0x30 /
 //         UID +0x38, DayToBeRecreated +0x40, Respawnable +0x48; CThing type byte +0x10 (1 creature, 3 building);
 //         CThingAICreature HomeBuilding +0x168, WorkBuilding +0x170.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -110,7 +110,7 @@ public:
     CThing* FindThingByUID(unsigned __int64 uid);   // 0x0051ED80
 };
 struct CGameClock { unsigned char _pad[0x14]; long Day; };
-struct CWorld { unsigned char _pad[0x1c]; CGameClock* PClock; };
+class CWorld { public: unsigned char _pad[0x1c]; CGameClock* PClock; };
 
 class CTCDummyVillagerBase : public CTCBase {
 public:

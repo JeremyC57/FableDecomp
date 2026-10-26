@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTrophy {
+class CTCTrophy { public:
     void* vftable;
     int destroyed;
 };

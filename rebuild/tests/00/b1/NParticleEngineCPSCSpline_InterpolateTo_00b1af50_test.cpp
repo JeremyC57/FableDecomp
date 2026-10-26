@@ -27,21 +27,21 @@ static int g_ok = 1;
 // tail-duplicated into both exits. `ret 8`.
 namespace NParticleEngine {
 
-struct CParticleSystem;
+class CParticleSystem;
 
-struct CPSCBase {
+class CPSCBase { public:
     virtual void v00();
     CParticleSystem* ParticleSystem;        // +0x04
     bool UpdateStarted : 1;                 // +0x08
     bool Initialised : 1;
 };
 
-struct CPSCSplineBase : CPSCBase {
+class CPSCSplineBase : public CPSCBase { public:
     unsigned char _body[0x34 - 0x0c];       // +0x0c SplineAnimSpeed, Spline, the two counted data pointers
     void InterpolateTo(const CPSCBase* other, float t);   // 0x00B22310
 };
 
-struct CPSCSpline : CPSCSplineBase {        // vtable 0x012A0934
+class CPSCSpline : public CPSCSplineBase { public:        // vtable 0x012A0934
     float SplineCurrentPosition;            // +0x34
     bool  ReverseSpline;                    // +0x38
     bool  SplineBounce;                     // +0x39

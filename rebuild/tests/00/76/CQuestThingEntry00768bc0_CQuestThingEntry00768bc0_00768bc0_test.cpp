@@ -3,7 +3,7 @@
 static int g_n = 0;
 class CCharString { public: int order; CCharString() { order = g_n++; } };
 struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer() {} void* PItem; int order; CBaseIntelligentPointer() : PItem(0) { order = g_n++; } };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() {} };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer() {} };
 class CThing;
 struct CEntry { CCharString m_name; CCharString m_tag; long m_value08; long m_value0c; CIntelligentPointer<CThing> m_thing; CEntry() {} };
 int main()

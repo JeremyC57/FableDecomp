@@ -1,11 +1,11 @@
 // Behaviour test for 0x006A7A80 CThingFilter_IsInBuilding::operator()
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CThing {
+class C3DVector { public: float x, y, z; };
+class CThing { public:
     C3DVector m_pos;
     const C3DVector& GetPosition() const { return m_pos; }
 };
-struct CThingBuilding {
+class CThingBuilding { public:
     float minX, maxX;
     bool IsPointInside(const C3DVector& pos) { return pos.x >= minX && pos.x <= maxX; }
 };

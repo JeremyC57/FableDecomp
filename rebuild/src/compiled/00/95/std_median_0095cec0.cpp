@@ -1,5 +1,5 @@
 // std::__median(CThing* const& a, CThing* const& b, CThing* const& c, CThingCompare_Nearest comp) -- STLport median-of-three pivot choice of the preferred fire points (nearest first)
-// Leaf: ??$__median@PAUCThing@@VCThingCompare_Nearest@@@std@@YIABQAUCThing@@ABQAU1@00VCThingCompare_Nearest@@@Z
+// Leaf: ??$__median@PAVCThing@@VCThingCompare_Nearest@@@std@@YIABQAVCThing@@ABQAV1@00VCThingCompare_Nearest@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095CEC0, 132 bytes (+int3 pad to 144), `__fastcall` `ret 10h` (&a in ecx, &b in
 //   edx; &c and the 12-byte comparator by value on the stack); returns the chosen reference in eax.
 // Callee: CThingCompare_Nearest::operator()<CThing>(CThing*, CThing*) const 0x004A8D80 (landed; returns the nearer pointer, tested as a bool with `test eax,eax`).
@@ -9,7 +9,7 @@
 //   one instantiation. The manifest label "Sort_Partition_MedianOfThree_CThingComparator" is descriptive.
 // Shape: STLport 4.6 _algo.c __median verbatim (nested if/else returning a, b or c); each compare pushes the two element
 //   values and calls the comparator out of line on `lea ecx,[esp+..]`, its own argument slot.
-struct CThing;                                      // `struct`: the catalog binds 0x004A8D80 as ??$?RUCThing@@@CThingCompare_Nearest@@...
+class CThing;                                      // retail key: class (PDB VCThing)
 #pragma pack(push, 1)
 class C3DVector {                                   // retail: byte-packed
 public:

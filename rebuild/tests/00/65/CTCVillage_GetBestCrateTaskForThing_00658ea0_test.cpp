@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThing { int x; };
+class CThing { public: int x; };
 struct Task { int y; };
 static Task g_task; static void** g_list = 0;
 struct V { unsigned char pad[0x60]; void* Head; bool any;

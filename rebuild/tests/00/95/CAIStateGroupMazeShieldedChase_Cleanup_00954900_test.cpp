@@ -2,7 +2,7 @@
 // pointer is cleared through a temporary intelligent pointer.
 #include <cstdio>
 
-struct CTCBase { int dummy; };
+class CTCBase { public: int dummy; };
 
 // Sorted {type, component} vector map searched by LowerBound (0x0040F020 in retail).
 struct CInterfaceMap {
@@ -17,7 +17,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -42,7 +42,7 @@ struct CThing {
     }
 };
 
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 struct CBaseIntelligentPointer {
     void* m_pItem;
@@ -51,11 +51,11 @@ struct CBaseIntelligentPointer {
     void* GetPItem() const { return m_pItem; }
     void SetPItem(void* item) { m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { SetPItem(o.GetPItem()); return *this; }
 };
-struct CThingCreatureBase { int dummy; };
+class CThingCreatureBase { public: int dummy; };
 struct CTCTargeting : CTCBase {
     CTCTargeting() : m_target(0) {}
     CIntelligentPointer<CThingCreatureBase> m_target;

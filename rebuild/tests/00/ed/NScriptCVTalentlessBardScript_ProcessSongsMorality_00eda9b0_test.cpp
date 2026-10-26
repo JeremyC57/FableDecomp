@@ -1,7 +1,7 @@
 // Behaviour test for CV_TalentlessBardScript::ProcessSongsMorality (0x00EDA9B0): category -> verse tag, none out of range.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* t) : Text(t) {}
 };
@@ -9,7 +9,7 @@ struct CCharStringVector {
     const char* Items[8]; int Count;
     void push_back(const CCharString& x) { Items[Count++] = x.Text; }
 };
-struct CGameScriptInterface { long Morality; long GetHeroMoralityCategory() const { return Morality; } };
+class CGameScriptInterface { public: long Morality; long GetHeroMoralityCategory() const { return Morality; } };
 struct CV_TalentlessBardScript {
     CGameScriptInterface* Game;
     CCharStringVector SongItems;

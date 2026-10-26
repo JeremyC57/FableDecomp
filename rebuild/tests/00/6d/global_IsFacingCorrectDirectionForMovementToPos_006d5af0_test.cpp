@@ -4,13 +4,13 @@
 
 struct CTurnState { unsigned char m_kind; };
 struct CTCTurnSource { CTurnState* m_pState; CTurnState* GetState() { return m_pState; } };
-struct CThingAICreature {
+class CThingAICreature { public:
     CTCTurnSource* m_source;
     bool GetInterface(long, CTCTurnSource** out) const { if (!m_source) return false; *out = m_source; return true; }
 };
-struct CBrainOutput { int x; };
-struct CTCLook { int y; };
-struct C3DVector { float X, Y, Z; };
+class CBrainOutput { public: int x; };
+class CTCLook { public: int y; };
+class C3DVector { public: float X, Y, Z; };
 
 static bool IsFacingCorrectDirectionForMovementToPos(const CThingAICreature& creature, const CBrainOutput&, const CTCLook&, const C3DVector&)
 {

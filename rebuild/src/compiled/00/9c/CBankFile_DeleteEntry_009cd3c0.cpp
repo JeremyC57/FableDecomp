@@ -27,7 +27,7 @@ struct CFilenameVector {                           // CSmallVector<CCharString,8
     void Clear();                                  // 0x009D2110
     ~CFilenameVector() { Clear(); }
 };
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     unsigned long StateBlockCRC;                   // +0x00
     unsigned long InfoSize;                        // +0x04
     char* InfoBuffer;                              // +0x08
@@ -43,7 +43,7 @@ struct CBankFileEntryUpdateData {
         InfoSize = 0;
     }
 };
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

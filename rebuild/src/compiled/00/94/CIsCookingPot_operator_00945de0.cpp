@@ -15,8 +15,8 @@
 //   whose key reuses the dead `item` argument slot; `if (m_onlyWithFreePoint) return points->IsActionPointFree(); return
 //   true;` -- the member test is scheduled between the end/hit select and the component load, the call's al is returned
 //   as is, and the miss paths share one `xor al,al` exit.
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };

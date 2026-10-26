@@ -2,7 +2,7 @@
 // its operator= (counted pointer swap), n = last - first elements, returns result + n
 #include <cstdio>
 struct Counted { int refs; };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     unsigned int BankIndex; int AnimName; int GroupName; Counted* Components; static int assigns;
     CAnimationEntry& operator=(const CAnimationEntry& o)
     {

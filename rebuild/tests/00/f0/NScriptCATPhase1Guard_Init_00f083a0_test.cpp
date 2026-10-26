@@ -3,8 +3,8 @@
 // Behaviour model of CAT_Phase1Guard::Init: hero/guard enmity both ways, then each living bandit both ways
 // (an early return when the thread is done), then one spawned WatchForEnemyDeath thread.
 static std::string g_log;
-struct CScriptThing { int id; bool alive; };
-struct CGame {
+class CScriptThing { public: int id; bool alive; };
+class CGame { public:
     CScriptThing hero;
     const CScriptThing& GetHero() const { return hero; }
     void EntitySetThingAsEnemyOfThing(const CScriptThing& a, const CScriptThing& b) const

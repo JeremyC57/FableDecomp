@@ -2,7 +2,7 @@
 
 typedef unsigned long ulong;
 
-struct CMaterialDef;
+class CMaterialDef;
 
 ulong __fastcall CMaterialDef_GetSizeofClass(const CMaterialDef* self)
 {

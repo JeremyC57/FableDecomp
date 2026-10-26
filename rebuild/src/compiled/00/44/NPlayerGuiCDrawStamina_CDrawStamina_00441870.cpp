@@ -15,7 +15,7 @@
 #include <stddef.h>
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace std {
 template <class T> inline void _Destroy(T* p) { p->~T(); }
@@ -35,12 +35,12 @@ template <class T> struct vector : _Vector_base<T> {
 };
 }
 
-struct CEnginePrimitiveHandle {                    // vptr + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // vptr + counted primitive pointer
     virtual ~CEnginePrimitiveHandle();
     void* Data;
 };
 struct CParticleEmitter;
-template <class T> struct CIntelligentPointer {    // vptr + item
+template <class T> class CIntelligentPointer { public:    // vptr + item
     virtual ~CIntelligentPointer();
     void* m_pItem;
 };
@@ -50,13 +50,13 @@ struct CFadeInFadeOutBase {
     unsigned char _body[0x1c];
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char                        _body[0x1c - 4];   // +0x04 .. +0x1c
     std::vector<CEnginePrimitiveHandle>  PrimitiveHandles;  // +0x1c
 };
 
-struct CDrawStamina : CDrawBase {                  // vtable 0x0125A618
+class CDrawStamina : public CDrawBase { public:                  // vtable 0x0125A618
     virtual void v00();
     std::vector<CIntelligentPointer<CParticleEmitter> > Effects;           // +0x28
     std::vector<CIntelligentPointer<CParticleEmitter> > IncreaseEffects;   // +0x34

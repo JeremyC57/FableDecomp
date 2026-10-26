@@ -14,7 +14,7 @@
 // ComboChainID inside that block (the for_each result temporary then shares the frame with the
 // 12-byte predicate), -777 and a missing chain both giving the shared `xor eax,eax`; the predicate
 // {combo, chain pos, max stage} is a temporary passed by reference.
-struct CAnimComponentCombatComboChain {
+class CAnimComponentCombatComboChain { public:
     void*         m_pVtable;               // +0x00
     unsigned long IVRefCount;              // +0x04
     long          ComboStage;              // +0x08
@@ -23,7 +23,7 @@ struct CAnimComponentCombatComboChain {
 
 enum { COMBO_ID_NONE = -999, COMBO_STAGE_NONE = -777 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long  BankIndex;                       // +0x00
     long  AnimName;                        // +0x04 CDefString
     long  GroupName;                       // +0x08 CDefString
@@ -43,7 +43,7 @@ struct CAnimationSetEntry {                // pair<unsigned long, CAnimationEntr
     CAnimationEntry second;
 };
 
-struct CGetMaxComboStage {
+class CGetMaxComboStage { public:
     long MaxComboStage;                    // +0
     long ComboID;                          // +4
     CGetMaxComboStage(long comboID) : MaxComboStage(COMBO_STAGE_NONE), ComboID(comboID) {}
@@ -51,7 +51,7 @@ struct CGetMaxComboStage {
 
 CGetMaxComboStage __fastcall for_each(const CAnimationSetEntry* first, const CAnimationSetEntry* last, CGetMaxComboStage f);   // 0x00738F30
 
-struct CIsCombatAnimAppropriateFollowingCombo {
+class CIsCombatAnimAppropriateFollowingCombo { public:
     CAnimComponentCombatComboChain* CombatAnimCombo;   // +0
     long CurrentChainPos;                               // +4
     long MaxComboStage;                                 // +8
@@ -59,18 +59,18 @@ struct CIsCombatAnimAppropriateFollowingCombo {
         : CombatAnimCombo(combo), CurrentChainPos(pos), MaxComboStage(maxStage) {}
 };
 
-struct CAnimationSet {
+class CAnimationSet { public:
     CAnimationSetEntry* m_pFirst;          // +0x00 Anims (CVectorMap)
     CAnimationSetEntry* m_pLast;           // +0x04
     CAnimationSetEntry* m_pEnd;            // +0x08
     bool IsAppropriateEntryExisting(const CIsCombatAnimAppropriateFollowingCombo& predicate) const;   // 0x00738F90
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CAnimationSet* GetCombatAnimationSet();     // 0x00663260
 };
 
-struct CTCCombat {
+class CTCCombat { public:
     virtual void v00();
     long                obj;                    // +0x04
     unsigned char       _pad_0x08[0x4];         // +0x08

@@ -60,7 +60,7 @@ struct CTCInventoryBase {
     virtual void OnItemSelected(long itemType, const CEmptyContext& context);   // slot 33 (+0x84)
 };
 
-struct CThing {                               // only the item-type word is read here
+class CThing { public:                               // only the item-type word is read here
     unsigned char  _pad_0x00[0x8c];
     unsigned short m_itemType;                // +0x8c
 };

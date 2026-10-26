@@ -9,7 +9,7 @@ static void* g_freed = 0;
 
 static void FreeBlock(void* p) { g_freed = p; g_events[g_count++] = 1; std::free(p); }
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString() { g_events[g_count++] = 2; }
 };

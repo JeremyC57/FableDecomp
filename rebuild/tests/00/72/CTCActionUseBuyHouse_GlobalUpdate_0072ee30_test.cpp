@@ -39,17 +39,17 @@ public:
     }
 };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CTCOwnedEntity : CTCBase { CBaseIntelligentPointer POwner; };
-struct CTCBuyableHouse : CTCBase { bool m_rentable; };
-struct CMessageEvent { long m_answer; };
-struct CMessageEventFilter_IsOfType { long Type; CMessageEventFilter_IsOfType(long t) : Type(t) {} };
+class CTCOwnedEntity : public CTCBase { public: CBaseIntelligentPointer POwner; };
+class CTCBuyableHouse : public CTCBase { public: bool m_rentable; };
+class CMessageEvent { public: long m_answer; };
+class CMessageEventFilter_IsOfType { public: long Type; CMessageEventFilter_IsOfType(long t) : Type(t) {} };
 static int g_removed = 0; static long g_filterType = 0;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* pending;
     CMessageEvent* FindMostRecentMessage(const CMessageEventFilter_IsOfType& f) { g_filterType = f.Type; return pending; }
     void RemoveMessage(const CMessageEvent* m) { if (m == pending) { pending = 0; ++g_removed; } }
 };
-struct CWorld { CMessageEventManager* PMessageEventManager; };
+class CWorld { public: CMessageEventManager* PMessageEventManager; };
 static int g_confirmed = 0, g_rent = 0;
 class CTCActionUseBase {
 public:

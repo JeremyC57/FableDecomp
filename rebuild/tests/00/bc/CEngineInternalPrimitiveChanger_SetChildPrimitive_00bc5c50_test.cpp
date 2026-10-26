@@ -147,7 +147,7 @@ public:
     void SetChildPrimitive(unsigned long index, const CEnginePrimitive& primitive, unsigned long flags);
 };
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00();
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);   // slot 1 (+0x04)
 };

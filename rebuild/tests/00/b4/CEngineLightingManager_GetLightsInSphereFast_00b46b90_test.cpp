@@ -1,12 +1,12 @@
 // Behaviour test for CEngineLightingManager::GetLightsInSphereFast @ 0x00B46B90.
 #include <cstdio>
-struct CEngineLocalLightArray { int id; };
-struct C3DBoundingSphere { float X, Y, Z, Radius; };
-struct CEnginePrimitiveThemeChannelDesc { unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad; };
+class CEngineLocalLightArray { public: int id; };
+class C3DBoundingSphere { public: float X, Y, Z, Radius; };
+class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad; };
 static const float g_limit = 4.0f;
 static CEngineLocalLightArray g_cached = { 1 }, g_full = { 2 };
 static int g_cacheCalls = 0, g_fullCalls = 0, g_cacheHit = 1; static float g_minX, g_minY; static long g_mask;
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     bool EnableLightCache;
     CEngineLocalLightArray* LookupSmallObjectLightCache(float x, float y, long m) { ++g_cacheCalls; g_minX = x; g_minY = y; g_mask = m; return g_cacheHit ? &g_cached : 0; }
     CEngineLocalLightArray* GetLightsInSphere(const C3DBoundingSphere&, long, const CEnginePrimitiveThemeChannelDesc&) { ++g_fullCalls; return &g_full; }

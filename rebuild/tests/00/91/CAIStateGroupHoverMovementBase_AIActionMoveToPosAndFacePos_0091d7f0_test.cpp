@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour model of CAIStateGroup_HoverMovementBase::AIAction_MoveToPosAndFacePos @ 0x0091D7F0: forwards with proximity 0.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static long g_repeat; static C3DVector* g_pos; static float g_prox = -1; static C3DVector* g_face; static bool* g_arrived; static long g_move;
 struct CAIStateGroup_HoverMovementBase { virtual void v00() {}
     long AIAction_MoveToPosProximityAndFacePos(long r, C3DVector* p, float prox, C3DVector* f, bool* a, long m) { g_repeat = r; g_pos = p; g_prox = prox; g_face = f; g_arrived = a; g_move = m; return 4; }

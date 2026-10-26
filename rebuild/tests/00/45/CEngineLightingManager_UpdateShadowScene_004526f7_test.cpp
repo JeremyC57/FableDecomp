@@ -7,7 +7,7 @@ void __stdcall Setup(const void* p){ g_setup=1; }
 struct CObjA { void DoA(void* arg){ g_a=1; g_a_arg=arg; } };
 struct TLocal { int v; void DoB(void* a, void** b){ g_b=1; g_local=v; g_b_a=a; g_b_b=b; } };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad[0x18];
     int field_18;
     char pad2[0x24-0x1c];

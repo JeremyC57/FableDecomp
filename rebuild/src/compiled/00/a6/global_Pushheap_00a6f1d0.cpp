@@ -10,7 +10,7 @@
 // plus `rep movsd` x13.
 // CCompareString<T>: `a.first.FastCompare(b.first)` (CCharString::FastCompare @ 0x009E6530, out of line).
 // Shape: SGI/STLport `__push_heap` (`parent = (hole - 1) / 2; while (hole > top && comp(first[parent], value))`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
@@ -18,11 +18,11 @@ struct CCharString {
     bool FastCompare(const CCharString& other) const;      // 0x009E6530
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float M[3][4];
 };
 
-struct C3DDummyObject {
+class C3DDummyObject { public:
     CMatrix3x4 Transform;                                  // +0x00
     long BoneIndex;                                        // +0x30
 };
@@ -33,7 +33,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<CCharString, C3DDummyObject> TEntry;
 
-template<class T> struct CCompareString {
+template<class T> class CCompareString { public:
     char m_tag;
     bool operator()(const pair<CCharString, T>& a, const pair<CCharString, T>& b) const { return a.first.FastCompare(b.first); }
 };

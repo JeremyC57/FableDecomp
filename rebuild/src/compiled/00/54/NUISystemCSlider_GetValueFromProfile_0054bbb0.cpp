@@ -7,7 +7,7 @@
 //   ChangePositionDelta (slot 32, +0x80), STLport map<unsigned long, CUIState>::operator[] 0x0042D5B1. Pool 0.0f 0x0122DEDC.
 // Model: the landed CSlider::Update 0x0054BA20 and AdjustValueToProfile 0x0054A6F0.
 #include <math.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector& operator+=(const C2DVector& v) { X += v.X; Y += v.Y; return *this; }
 };
@@ -53,7 +53,7 @@ struct CSlider : CChangingStateComponent {
 };
 #pragma pack(pop)
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[0xc];
     bool  UseNewProfileValues;                   // +0x0c
     unsigned char _pad0d[0x40 - 0xd];

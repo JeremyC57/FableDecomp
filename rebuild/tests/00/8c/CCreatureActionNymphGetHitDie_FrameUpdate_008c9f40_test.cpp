@@ -4,7 +4,7 @@
 
 // Interface table model shared by the GetInterface-based rows: presence bits + sorted {type, component} entries.
 struct CEntry { int type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned int presentBits[9];
     CEntry entries[4];
     int count;
@@ -36,8 +36,8 @@ static void Reset() { g_n = 0; }
 
 #define CHECK(c) do { if (!(c)) { std::printf("008c9f40_TEST FAIL\n"); return 1; } } while (0)
 
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct CWorldMap { float ground; float GetHeightZBelowPos(const C3DVector* p) { return ground + p->X * 0.0f; } };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class CWorldMap { public: float ground; float GetHeightZBelowPos(const C3DVector* p) { return ground + p->X * 0.0f; } };
 struct CAction { C3DVector pos; float progress; float HeightOnInit; CWorldMap map;
     CAction() : pos(4.0f, 5.0f, 9.0f) {}
     void BaseFrameUpdate() { Log(1); }

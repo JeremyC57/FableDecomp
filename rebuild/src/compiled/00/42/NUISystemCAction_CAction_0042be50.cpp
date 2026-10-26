@@ -16,7 +16,7 @@
 #pragma optimize("s", on)
 namespace NUISystem {
 
-struct CActionParam;
+class CActionParam;
 
 struct SRetailAllocator {                      // std::allocator<T>: empty, user constructor keeps it uninitialised
     SRetailAllocator() { }
@@ -34,7 +34,7 @@ struct CLongList {                             // STLport list<long>, 4 bytes
 
 enum EActionType { ACTION_NONE = 0 };
 
-struct CAction {                               // retail 0x10 bytes
+class CAction { public:                               // retail 0x10 bytes
     EActionType      ActionType;               // +0x00
     CActionParamList UIActionParams;           // +0x04
     CLongList        ThingActionParams;        // +0x08

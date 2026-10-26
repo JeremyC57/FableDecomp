@@ -1,7 +1,7 @@
 #include "engine/CThingSearchTools.h"  // retyped onto the PDB layout; byte parity re-verified
 struct TypeList { char data[20]; }; // sizeof 20
 
-struct CThingManager {
+class CThingManager { public:
     TypeList* base;  // +0x0
     TypeList* lists; // +0x4
 };

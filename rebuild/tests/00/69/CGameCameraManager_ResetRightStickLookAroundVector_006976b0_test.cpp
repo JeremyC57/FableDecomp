@@ -1,7 +1,7 @@
 // Behaviour test for CGameCameraManager::ResetRightStickLookAroundVector (0x006976B0): both look-around angle pairs zeroed.
 #include <cstdio>
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } };
-struct CGameCameraManager {
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } };
+class CGameCameraManager { public:
     C2DVector RightStickLookAroundAngles; C2DVector RightStickTargetLookAroundAngles;
     CGameCameraManager() : RightStickLookAroundAngles(1.0f, 2.0f), RightStickTargetLookAroundAngles(3.0f, 4.0f) { }
     void ResetRightStickLookAroundVector() { RightStickLookAroundAngles = RightStickTargetLookAroundAngles = C2DVector(0.0f, 0.0f); }

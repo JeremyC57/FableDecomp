@@ -12,7 +12,7 @@
 //         pairs), TriggerThings +0x2c, TrapOpener (CFadeInFadeOutBase) +0x38.
 // Shape: the owner is a named local read before the GetWorld call (kept in edi); the erase loop advances only on the kept branch; the trailing virtual call is a tail jump.
 class CThing;
-struct CWorld;
+class CWorld;
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
@@ -37,11 +37,11 @@ struct CHitThingVector {
     SHitThing* erase(SHitThing* position);              // 0x00789085
 };
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     void Update(float dt);                              // 0x00434870
 };
 
-struct CTCTrapBase {
+class CTCTrapBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();

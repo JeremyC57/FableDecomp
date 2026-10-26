@@ -16,7 +16,7 @@
 #include <new>
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                        // PDB: 14 bytes, 2-byte packed
+class CEngineGraphic { public:                        // PDB: 14 bytes, 2-byte packed
     unsigned long BankIndex;                   // +0x00
     float         AnimStep;                    // +0x04
     float         RenderSizeX;                 // +0x08
@@ -25,7 +25,7 @@ struct CEngineGraphic {                        // PDB: 14 bytes, 2-byte packed
 };
 #pragma pack(pop)
 
-struct CDegradableInfo {                       // PDB: 28 bytes, a POD block-copied as 7 dwords
+class CDegradableInfo { public:                       // PDB: 28 bytes, a POD block-copied as 7 dwords
     float          HealthPercentage;           // +0x00
     CEngineGraphic EngineGraphic;              // +0x04
     long           SmashParticleEmitter;       // +0x14

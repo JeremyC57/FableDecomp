@@ -1,8 +1,8 @@
 // Behaviour test for 0x00A44D80 C3DSkeletalMorphParameter copy constructor
 #include <cstdio>
 #include <cstdlib>
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
-template<class T> struct CCountedPointer {
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer& operator=(const CCountedPointer& o)
@@ -18,7 +18,7 @@ template<class T> struct CCountedPointer {
 };
 static int g_base = 0;
 struct CBase { CBase() { ++g_base; } virtual ~CBase() {} };
-struct C3DSkeletalMorphParameter : CBase {
+class C3DSkeletalMorphParameter : public CBase { public:
     float CurrentValue; void* SkeletalMorph; CCountedPointer<int> SharedData;
     C3DSkeletalMorphParameter() {}
     C3DSkeletalMorphParameter(const C3DSkeletalMorphParameter& o) : CBase() { SharedData = o.SharedData; CurrentValue = o.CurrentValue; SkeletalMorph = 0; }

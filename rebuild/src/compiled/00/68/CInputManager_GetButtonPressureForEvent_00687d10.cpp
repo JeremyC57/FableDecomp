@@ -8,7 +8,7 @@
 // Retail bytes:  mov eax,[esp+4] ; mov ecx,[ecx+24h] ; push eax ; call CGamePlayerInterface::GetButtonPressureForEvent ; ret 4
 // Forwards the event to the player interface held at +0x24 and returns its float result (the
 // callee @ 0x00445800 is a manifest-named __fastcall returning float; its label is untrusted).
-struct CInputEvent;
+class CInputEvent;
 
 struct CGamePlayerInterfaceCalls {
     float GetButtonPressureForEvent(CInputEvent* event);   // 0x00445800

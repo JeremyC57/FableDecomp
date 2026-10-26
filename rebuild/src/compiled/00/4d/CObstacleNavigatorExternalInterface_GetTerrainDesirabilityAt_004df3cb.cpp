@@ -9,7 +9,7 @@
 
 extern float g_terrainDesirability; // ds:0x122ded8 (reloc-masked)
 
-struct CObstacleNavigatorExternalInterface {
+class CObstacleNavigatorExternalInterface { public:
     float GetTerrainDesirabilityAt(void* pos);
 };
 

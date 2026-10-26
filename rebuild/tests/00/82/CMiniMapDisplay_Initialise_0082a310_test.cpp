@@ -7,7 +7,7 @@
 
 struct Sub { int resetCalled; };
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     char pad[0x20];
     // Sub lives AT offset 0x20 (inline)
 };

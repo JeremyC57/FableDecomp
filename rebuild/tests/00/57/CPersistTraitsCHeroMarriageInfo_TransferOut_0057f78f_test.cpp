@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CHeroMarriageInfo { unsigned long long WifeUID; unsigned long long MaritalHomeUID; int State; bool GayMarriage; };
+class CHeroMarriageInfo { public: unsigned long long WifeUID; unsigned long long MaritalHomeUID; int State; bool GayMarriage; };
 struct Out {
     char text[256];
     Out& operator+=(const char* s) { std::strcat(text, s); return *this; }

@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
 
-struct C2DVector;
+class C2DVector;
 
 struct VecRange {
     C2DVector* first;   // +0x00

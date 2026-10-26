@@ -1,7 +1,7 @@
 // Behaviour test for 00c20340: CSoundPosition::GetDistance -- own length when listener-relative, else |position - listener|
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float GetMagnitude() const { return (float)std::sqrt(X * X + Y * Y + Z * Z); }
 };

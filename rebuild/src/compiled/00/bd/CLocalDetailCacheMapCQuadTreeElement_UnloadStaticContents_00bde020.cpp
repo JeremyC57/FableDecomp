@@ -8,7 +8,7 @@
 // Loading 3), FileBlockPos +0x34, Children[4] +0x08.
 // Shape: `test byte [+48h],8` / `and byte [+48h],0F7h` for Loading; the children are a counted loop (ebx = 4) that
 // deletes through the vtable (null-tested) and zeroes each slot; StaticContentsLoaded is cleared through al.
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 struct CQuadTreeElement;
 
 struct CObjectCacheGroupCollection {               // polymorphic; the chain is singly linked through +4
@@ -16,11 +16,11 @@ struct CObjectCacheGroupCollection {               // polymorphic; the chain is 
     CObjectCacheGroupCollection* Next;             // +0x04
 };
 
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(long fileBlockPos);        // 0x00BE0400
 };
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CQuadTreeElement* owner);   // 0x00BD9AB0 (an empty `ret 8` in retail)
 };
 

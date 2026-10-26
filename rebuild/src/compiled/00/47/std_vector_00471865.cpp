@@ -5,7 +5,7 @@
 // _Destroy_range @ 0x00454404 (__fastcall, iterator tag by reference), CAnimationEntry::CAnimationEntry(const CAnimationEntry&) @ 0x00471954.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex; long AnimName; long GroupName; void* Components;
     CAnimationEntry(const CAnimationEntry& other);              // 0x00471954
     CAnimationEntry& operator=(const CAnimationEntry& other);

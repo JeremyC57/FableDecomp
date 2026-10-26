@@ -5,7 +5,7 @@
 struct __false_type { __false_type() { } };
 enum EHeroMorphType { HERO_MORPH_TYPE_NONE, HERO_MORPH_TYPE_A, HERO_MORPH_TYPE_B };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE, COMPOSITE_BLEND_ADD };
-struct CTextureMorphEntry {
+class CTextureMorphEntry { public:
     EHeroMorphType      MorphType;
     long                TextureLayer;
     long                ReplacingTextureIndex;

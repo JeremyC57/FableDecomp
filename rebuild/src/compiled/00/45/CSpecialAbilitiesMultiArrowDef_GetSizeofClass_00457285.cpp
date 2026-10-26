@@ -1,4 +1,4 @@
-struct CSpecialAbilitiesMultiArrowDef {};
+class CSpecialAbilitiesMultiArrowDef { public:};
 
 unsigned long __fastcall CSpecialAbilitiesMultiArrowDef_GetSizeofClass(const CSpecialAbilitiesMultiArrowDef* self)
 {

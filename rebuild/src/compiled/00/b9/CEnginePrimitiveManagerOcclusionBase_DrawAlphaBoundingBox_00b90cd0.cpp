@@ -93,7 +93,7 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
     }
 }
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad000[0x391];
     bool          PixelShadersEnabled;             // +0x391
     void EnablePixelShaders();                     // 0x00988110
@@ -110,7 +110,7 @@ struct CShaderRenderManager {
 };
 extern CShaderRenderManager* g_pShaderRenderManager;   // 0x01436E14
 
-struct CMatrix3x4 { float M[12]; };
+class CMatrix3x4 { public: float M[12]; };
 
 struct COcclusionData {
     unsigned char _pad[0x94];

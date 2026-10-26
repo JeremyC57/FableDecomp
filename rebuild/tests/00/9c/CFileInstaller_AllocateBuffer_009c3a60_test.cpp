@@ -7,7 +7,7 @@ struct CBufferChunkArray {
     unsigned int size() { return (unsigned int)(_M_finish - _M_start); }
     CBufferChunk& operator[](unsigned int n) { return *(begin() + n); }
 };
-struct CFileInstaller {
+class CFileInstaller { public:
     CBufferChunkArray BufferChunks; int AvailableBuffers; int AllocatedInputBuffers;
     CBufferChunk* AllocateBuffer(bool pending)
     {

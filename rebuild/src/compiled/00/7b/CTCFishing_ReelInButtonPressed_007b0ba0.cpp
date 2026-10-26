@@ -63,17 +63,17 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                        // +0x04
     CThing* GetPItem() const;                               // 0x00A01B50
 };
-struct CTCFish {
+class CTCFish { public:
     unsigned char _pad00[0x14];
     float Weight;                                           // +0x14
 };
-struct CFishingRodDef {
+class CFishingRodDef { public:
     unsigned char _pad00[0x2c];
     float DistanceDecreasePerPress;                         // +0x2c
     float PullingDistanceDecreasePerPress;                  // +0x30
     float MaxStrain;                                        // +0x34
 };
-struct CFishingDef {
+class CFishingDef { public:
     unsigned char _pad00[0x78];
     float StrainIncreasePerPress;                           // +0x78
 };

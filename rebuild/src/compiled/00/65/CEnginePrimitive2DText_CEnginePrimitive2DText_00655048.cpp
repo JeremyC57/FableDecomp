@@ -10,11 +10,11 @@
 // out of line otherwise).
 #pragma optimize("s", on)
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
@@ -26,12 +26,12 @@ struct CRGBColour {
     __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);         // 0x0099B720
 };
 
-struct CFontBank;
+class CFontBank;
 
 struct SEnginePrimitive2DHeader {                  // 12 bytes, plain record
     long          m_type;                          // +0x00
@@ -41,7 +41,7 @@ struct SEnginePrimitive2DHeader {                  // 12 bytes, plain record
     bool          m_flagA;                         // +0x0A
 };
 
-struct CEnginePrimitive2DText {
+class CEnginePrimitive2DText { public:
     SEnginePrimitive2DHeader m_header;             // +0x00
     C2DVector                m_position;           // +0x0C
     unsigned long            m_userData;           // +0x14

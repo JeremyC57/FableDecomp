@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_live = 0;
 struct CIntelligentPointer {
     CThing* m_pItem;
@@ -11,7 +11,7 @@ struct CIntelligentPointerVector {
     CThing* items[8]; int count;
     void push_back(const CIntelligentPointer& v) { items[count++] = v.m_pItem; }
 };
-struct CTCTrapBase {
+class CTCTrapBase { public:
     CIntelligentPointerVector ImmuneThings;
     void SetThingAsImmune(CThing& thing) { ImmuneThings.push_back(CIntelligentPointer(&thing)); }
 };

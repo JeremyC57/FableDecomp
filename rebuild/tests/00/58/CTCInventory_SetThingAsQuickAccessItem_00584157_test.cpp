@@ -2,7 +2,7 @@
 // known item are stored; the tutorial is given only when asked and the hero component exists.
 #include <cstdio>
 // --- test-side copy of the CThing interface lookup (std::bitset presence + sorted {type, component} map) ---
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     long bits[16];
     bool test(long bit) { return bit >= 0 && bit < 512 && ((bits[bit >> 5] >> (bit & 31)) & 1) != 0; }
@@ -13,7 +13,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry entries[4];
@@ -44,7 +44,7 @@ struct CThing {
 // --- end lookup copy ---
 enum ETutorialCategory { TUTORIAL_CATEGORY_NULL, TUTORIAL_CATEGORY_QUICK_ACCESS = 0x17 };
 static int g_tutorials = 0; static long g_cat = 0;
-struct CTCHero { bool GiveTutorialForCategory(ETutorialCategory category, bool) { g_cat = category; ++g_tutorials; return true; } };
+class CTCHero { public: bool GiveTutorialForCategory(ETutorialCategory category, bool) { g_cat = category; ++g_tutorials; return true; } };
 long LookUpInventoryItemDef(long defIndex) { return defIndex == 99 ? 0 : 1; }
 struct CLongVector {
     long* _M_start; long* _M_finish; long* _M_end_of_storage;
@@ -52,7 +52,7 @@ struct CLongVector {
     long* begin() { return _M_start; }
     long& operator[](unsigned long n) { return *(begin() + n); }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CThing* ParentThing;
     CLongVector QuickAccessItems;
     long owned;

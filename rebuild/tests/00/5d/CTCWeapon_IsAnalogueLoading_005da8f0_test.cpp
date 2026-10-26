@@ -1,18 +1,18 @@
 // test for 005da8f0 CTCWeapon::IsAnalogueLoading
 #include <stdio.h>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04
     __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
     __forceinline ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CWeaponDef : CDefPointeeBase {
+class CWeaponDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x1c];                          // +0x08
     unsigned char _pad24[0x6c];                          // +0x24
     bool          UseAnalogueLoading;                    // +0x90

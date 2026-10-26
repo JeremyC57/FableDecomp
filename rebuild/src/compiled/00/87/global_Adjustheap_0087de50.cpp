@@ -13,7 +13,7 @@
 // Shape: VC7.1 <algorithm> `_Adjust_heap`; `top` and the two rotations are the three frame slots.
 #include <math.h>
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                             // +0x00
     void GetRotationInAnimation(float* pRotation) const;   // 0x005DBFD0
 };

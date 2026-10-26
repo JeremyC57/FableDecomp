@@ -13,7 +13,7 @@
 #if !defined(_MSC_VER)
 #define __fastcall
 #endif
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -24,21 +24,21 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 CCharString __fastcall operator+(const CCharString& left, const char* right);        // 0x0099F600
 CCharString __fastcall GFIntToCharString(long value);                                 // 0x0099F830
 
-struct CDataInputStream; struct CDataOutputStream; struct CChunkedFileLoader; struct CChunkedFileSaver;
-struct CChunkedFileChunk {
+class CDataInputStream; class CDataOutputStream; class CChunkedFileLoader; class CChunkedFileSaver;
+class CChunkedFileChunk { public:
     virtual void v00(); virtual void v01(); virtual CCharString GetChunkInfo() const;
     virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&);
     virtual void WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const;
     char ChunkType[5]; unsigned char _pad[3]; void* Parent;
 };
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     struct CArrayPair { void* begin; void* end; void* capacity; };
     CArrayPair SubChunks; CArrayPair RegisteredSubChunkTypes; unsigned long CurrentChunkIndex;
 };
 struct C3DMeshFileChunk : CChunkedFileSuperChunk {};
-struct C3DVector { float X, Y, Z; };
-struct C3DMeshFileHelperPointChunk : C3DMeshFileChunk {
+class C3DVector { public: float X, Y, Z; };
+class C3DMeshFileHelperPointChunk : public C3DMeshFileChunk { public:
     C3DVector Position;      // +0x2c
     long SubMeshIndex;       // +0x38
     long BoneIndex;          // +0x3c

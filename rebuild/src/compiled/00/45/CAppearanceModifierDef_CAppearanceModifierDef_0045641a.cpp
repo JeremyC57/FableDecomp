@@ -12,7 +12,7 @@
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
 };
 
@@ -23,7 +23,7 @@ struct SCharStringVector {
     ~SCharStringVector();                          // 0x00414EA0
 };
 
-struct CAppearanceModifierGraphics {
+class CAppearanceModifierGraphics { public:
     struct CEntry;
     CEntry* m_pData;                               // +0x0 (CArray<CEntry> Graphics)
     long m_count;                                  // +0x4
@@ -35,7 +35,7 @@ struct CBase_009fc550 {
     virtual void v00();
     ~CBase_009fc550();                             // 0x009FC550
 };
-struct CDefPointeeBase : CBase_009fc550 {          // vtable 0x01230BA0
+class CDefPointeeBase : public CBase_009fc550 { public:          // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };

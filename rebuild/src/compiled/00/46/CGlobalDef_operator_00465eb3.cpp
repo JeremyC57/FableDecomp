@@ -12,20 +12,20 @@
 #pragma optimize("s", on)
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x38];      // +0x04 CDefClassBase part, InstantiationName, SubDefInfoMap
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CCharString {                    // 4-byte string handle
+class CCharString { public:                    // 4-byte string handle
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                 // 14 bytes, copied as 3 dwords + a word
+class CEngineGraphic { public:                 // 14 bytes, copied as 3 dwords + a word
     unsigned long BankIndex;
     float         AnimStep;
     float         RenderSizeX;
@@ -55,7 +55,7 @@ struct CDialogueLayerVector {           // retail std::vector<NSpeechGainManager
     CDialogueLayerVector& operator=(const CDialogueLayerVector& other);   // 0x00466281
 };
 
-struct CGlobalDef : CParentDefClassBase {// vtable 0x01234C8C
+class CGlobalDef : public CParentDefClassBase { public:// vtable 0x01234C8C
     long                   ControlSchemePC;                                     // +0x3c
     long                   ControlSchemePCAggressive;                           // +0x40
     long                   ControlSchemeXBOX;                                   // +0x44

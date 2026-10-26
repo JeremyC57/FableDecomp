@@ -3,8 +3,8 @@
 //   game-map grid +0x1a7c (cells +0x10, width-1 +0x204, max Y +0x208); cell 12 bytes (palette indices +4, blends +7).
 // Shape: the weight is 3 - blend0 - blend1 for the third theme; the two blend reads take pos by reference, the final
 //   theme lookup is an inline helper taking pos BY VALUE (the copy loads X then Y before the grid pointer).
-struct C2DCoordI { long X; long Y; };
-struct CHeightMapCell {                           // engine/CHeightMapCell.h: 12 bytes
+class C2DCoordI { public: long X; long Y; };
+class CHeightMapCell { public:                           // engine/CHeightMapCell.h: 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -23,7 +23,7 @@ struct SThemePaletteEntry {                        // 8 bytes
     unsigned long ThemeId;
     bool          Used;
 };
-struct CMap {
+class CMap { public:
     unsigned char       _pad[0x1a6c];
     SThemePaletteEntry* m_pThemePalette;           // +0x1a6c (vector begin)
     SThemePaletteEntry* m_pThemePaletteEnd;        // +0x1a70

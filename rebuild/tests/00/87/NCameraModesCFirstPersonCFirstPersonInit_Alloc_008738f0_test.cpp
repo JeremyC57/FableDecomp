@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CGameCameraManager { int id; };
-struct CCameraModeDef { float FOV; };
-template <class T> struct CDefPointer { T* Def; };
+class CGameCameraManager { public: int id; };
+class CCameraModeDef { public: float FOV; };
+template <class T> class CDefPointer { public: T* Def; };
 static int g_ctor = 0;
 struct CBase {
     CGameCameraManager* mgr; const CCameraModeDef* def;

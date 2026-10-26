@@ -6,7 +6,7 @@ static int fails = 0;
 static bool feq(float a, float b) { float d = a - b; if (d < 0) d = -d; return d < 1e-5f; }
 static long g_frame = 0; static int g_frameCalls = 0;
 long __fastcall GFGetCurrentFrame() { ++g_frameCalls; return g_frame; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CPhysicsDebugInfo { int visits; };
+class CPhysicsDebugInfo { public: int visits; };
 struct CThingPhysics {
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {}
     virtual void v005() {} virtual void v006() {} virtual void v007() {} virtual void v008() {} virtual void v009() {}
@@ -26,7 +26,7 @@ struct CThingPhysics {
     virtual void GetPhysicsDebugInfo(CPhysicsDebugInfo* info) { ++info->visits; ++calls; }
     int calls; CThingPhysics() : calls(0) {}
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x60];
     CThingPhysics* PPhysics;
 };
@@ -40,7 +40,7 @@ struct CThingList {
     SThingListNode* begin() const { return PHead->PNext; }
     SThingListNode* end() const { return PHead; }
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x14];
     unsigned char _alloc14[4];
     CThingList    Things;

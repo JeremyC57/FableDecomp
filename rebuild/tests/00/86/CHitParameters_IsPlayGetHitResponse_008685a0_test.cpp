@@ -2,9 +2,9 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-static bool g_melee = true, g_play = false; struct CThing { unsigned char _pad[0x91]; unsigned char m_91_0 : 1; unsigned char m_91_1 : 7; };
+static bool g_melee = true, g_play = false; class CThing { public: unsigned char _pad[0x91]; unsigned char m_91_0 : 1; unsigned char m_91_1 : 7; };
 struct CShotDef { bool CanBeHitByMeleeStrike() { std::strcat(g_seq, "M"); return g_melee; } }; static bool IsPlayHitResponse(CThing*) { std::strcat(g_seq, "P"); return g_play; }
-struct CHitParameters { unsigned char _pad[0x20]; bool m_playGetHitResponse; bool m_overrideGetHitResponse; unsigned char _pad22[0x26]; CShotDef* m_pShotDef;
+class CHitParameters { public: unsigned char _pad[0x20]; bool m_playGetHitResponse; bool m_overrideGetHitResponse; unsigned char _pad22[0x26]; CShotDef* m_pShotDef;
     bool IsPlayGetHitResponse(CThing* target) { if (m_overrideGetHitResponse) return m_playGetHitResponse; if (m_pShotDef && !m_pShotDef->CanBeHitByMeleeStrike()) return false; if (!target || target->m_91_0 || IsPlayHitResponse(target)) return true; return false; } };
 
 int main() {

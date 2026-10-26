@@ -9,18 +9,18 @@
 // Shape: the gate is a named CScriptThing local built in place from the by-value result and destroyed at the end; both
 //   names are implicit conversion temporaries sharing one frame word; one zero register (esi) serves the `false`
 //   pushes and the destructor.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 void operator delete(void* p);                     // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                            // CCountedPointer's shared block
+class CCPPointerInfo { public:                            // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -36,15 +36,15 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {                                // polymorphic root of the script handles
+class CBaseClass { public:                                // polymorphic root of the script handles
     CBaseClass();                                  // 0x0099A2D0
     virtual ~CBaseClass();                         // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                 // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                 // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;            // +0x04 Data, +0x08 Info
     ~CScriptThing() { }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -121,7 +121,7 @@ struct CGameScriptInterface {
     virtual void OverrideMusic(long musicSet, bool a, bool b);   // slot 696 (+0xae0)
 };
 namespace NScript {
-struct CQ_WhiteBalverineKnotholeGladeScript {
+class CQ_WhiteBalverineKnotholeGladeScript { public:
     struct CWB_WhiteBalverine {
         virtual void v00();
         CGameScriptInterface* Game;                // +0x04

@@ -10,8 +10,8 @@ enum EScriptingStateGroups { GROUP_0, GROUP_1, GROUP_2, GROUP_7 = 7 };
 typedef EScriptingStateGroups T;
 static T MK(long n) { return (T)n; }
 static long VAL(const T& v) { return (long)v; }
-struct CMemoryDataInputStream { int id;  };
-struct CDataOutputStream { int id; long written; void WriteLong(long v) { LOG("write"); written = v; } };
+class CMemoryDataInputStream { public: int id;  };
+class CDataOutputStream { public: int id; long written; void WriteLong(long v) { LOG("write"); written = v; } };
 template <class U> struct CPersistTraits {
     U DefaultVal;
     CPersistTraits() : DefaultVal() {}
@@ -23,7 +23,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual long Peek() { return VAL(*Value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     bool UseDefaults;
     long Mode;
     CMemoryDataInputStream* PLoadStream;

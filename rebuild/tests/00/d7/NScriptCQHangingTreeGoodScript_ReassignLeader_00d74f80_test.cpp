@@ -6,22 +6,22 @@
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static void ResetLog() { g_log[0] = 0; }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long = -1) : Text(text) {}
 };
-struct CWideString {
+class CWideString { public:
     const void* Text;
     CWideString(const void* text) : Text(text) {}
 };
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     const bool* AliveFlag;
     CScriptThing() : Name(""), AliveFlag(0) {}
     CScriptThing(const char* n, const bool* a) : Name(n), AliveFlag(a) {}
     bool IsAlive() const { return AliveFlag && *AliveFlag; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     long TerminateAfter;                                 // IsActiveThreadTerminating() turns true after this many calls
     long TerminateCalls;
     CScriptBase() : TerminateAfter(1000), TerminateCalls(0) {}
@@ -45,7 +45,7 @@ template <class T> struct vector {
     void pop_back() { --_M_finish; _M_finish->~T(); }
     void push(const T& v) { *_M_finish++ = v; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool FirstGuardAlive;
     CScriptThing Hero;
     CScriptThing& GetHero() { Log("GetHero"); return Hero; }

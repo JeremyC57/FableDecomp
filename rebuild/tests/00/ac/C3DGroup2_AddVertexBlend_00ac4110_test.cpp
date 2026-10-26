@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct C3DVertexBlend2 { unsigned int VertexIndex; float Blend; };
+class C3DVertexBlend2 { public: unsigned int VertexIndex; float Blend; };
 
 struct CBlendList {
     C3DVertexBlend2* start;

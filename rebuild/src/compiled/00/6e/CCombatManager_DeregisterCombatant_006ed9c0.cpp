@@ -1,8 +1,8 @@
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsCombatant_00662410();
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void RemoveCombatant_006ed510(CThingCreatureBase* c);
     void DeregisterCombatant(CThingCreatureBase* c);
 };

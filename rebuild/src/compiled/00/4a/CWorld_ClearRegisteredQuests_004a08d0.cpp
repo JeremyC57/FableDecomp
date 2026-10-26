@@ -17,14 +17,14 @@
 //   vectors call their out-of-line erase, the CTestQuest vector's STLport erase is inlined (`pointer i =
 //   __copy(last, _M_finish, first, random_access_iterator_tag(), (int*)0); _Destroy(i, _M_finish); _M_finish = i;`
 //   with `_Destroy` = `__destroy_aux(first, last, __false_type())`); the empty tags need user constructors.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
-struct CTestQuest {
+class CTestQuest { public:
     CCharString QuestName;                          // +0x00
     CCharString HSPName;                            // +0x04
     long        ColourIndex;                        // +0x08
@@ -46,7 +46,7 @@ struct CCharStringVector {
     void clear() { erase(_M_start, _M_finish); }
 };
 
-template <class T> struct CArray : CCharStringVector { };
+template <class T> class CArray : public CCharStringVector { public: };
 
 struct CTestQuestVector {
     CTestQuest* _M_start;

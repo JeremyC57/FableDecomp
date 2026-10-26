@@ -17,7 +17,7 @@ struct CViewport : IViewportPrimary_0053f120, IViewportSecondaryA_0053f120, IVie
 };
 
 namespace NUISystem {
-struct CScrollingViewport : CViewport {           // vtables 0x012468D4 / 0x012468AC / 0x012468A4
+class CScrollingViewport : public CViewport { public:           // vtables 0x012468D4 / 0x012468AC / 0x012468A4
     virtual void v00();
     virtual void a00();
     virtual void b00();

@@ -16,7 +16,7 @@
 //   1, true)` with the empty tag homed in the dead `symbols` argument slot (the array pointer lives in ebp).
 #include <new>
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                                 // +0x00
     unsigned long Length;                                // +0x04
 };

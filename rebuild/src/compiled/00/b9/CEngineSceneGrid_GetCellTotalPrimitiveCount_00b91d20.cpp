@@ -8,9 +8,9 @@
 // cell and the outer index live in frame words (`sub esp,8`), the inner index in esi, the running total in ebx; the
 // child row `y*2 + i` is formed once per outer iteration (edi), the column `x*2 + j` per call; the cache update stores
 // TotalCount between the load and the store of the bit-field byte, and the result is re-read from the cell.
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
-struct CEngineSceneGridCell {                      // 0x48 bytes (PDB layout, matches retail)
+class CEngineSceneGridCell { public:                      // 0x48 bytes (PDB layout, matches retail)
     CEngineSceneGridCell*         Parent;          // +0x00
     CEngineInternalPrimitiveBase* FirstPrimitive;  // +0x04
     float                         BoundingBox[6];  // +0x08 C3DBoundingBox
@@ -29,13 +29,13 @@ struct CEngineSceneGridCell {                      // 0x48 bytes (PDB layout, ma
     unsigned char                 PreloadFrames;   // +0x46
 };
 
-template <class T> struct CArray {                 // retail CArray: data pointer first
+template <class T> class CArray { public:                 // retail CArray: data pointer first
     T*   m_pData;
     long m_size;
     long m_capacity;
 };
 
-struct CEngineSceneGrid {                          // 0x24 bytes (PDB layout, matches retail)
+class CEngineSceneGrid { public:                          // 0x24 bytes (PDB layout, matches retail)
     unsigned long                 _vfptr_or_pad;   // +0x00
     unsigned long                 Level;           // +0x04
     CEngineSceneGrid*             LevelUp;         // +0x08

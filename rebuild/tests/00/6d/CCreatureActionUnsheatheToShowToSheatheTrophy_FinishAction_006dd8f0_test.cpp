@@ -4,14 +4,14 @@
 #include <cstdio>
 static int g_baseFinish = 0, g_set = 0, g_dtor = 0, g_code = 0;
 static void* g_creatureSeen = 0; static void* g_trophySeen = 0; static const char* g_animSeen = 0;
-struct CThing;
+class CThing;
 struct CAction {
     CThing* m_creature; CThing* m_trophy; const char* m_anim; int m_code;
     CAction(CThing* c, CThing* t, const char* a, int code) : m_creature(c), m_trophy(t), m_anim(a), m_code(code) {}
     ~CAction() { ++g_dtor; }
 };
 struct CShowToSheathe : CAction { CShowToSheathe(CThing* c, CThing* t, const char* a) : CAction(c, t, a, 1001) {} };
-struct CThing {
+class CThing { public:
     bool SetCurrentAction(const CAction& a)
     {
         ++g_set; g_code = a.m_code; g_creatureSeen = a.m_creature; g_trophySeen = a.m_trophy; g_animSeen = a.m_anim;

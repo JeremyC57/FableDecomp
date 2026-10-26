@@ -1,7 +1,7 @@
 // Behaviour test for CTCForcePushed::OnRemove (0x00798540): links the reconstructed object; the creature call is a stub.
 #include <cstdio>
 static int g_calls = 0; static bool g_suspend = true; static void* g_suspender = (void*)1;
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x10];
     unsigned char m_type;
     unsigned char _pad_0x11[0x80];

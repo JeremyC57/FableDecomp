@@ -3,14 +3,14 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0x31 = bit 17 of the
 // bitset dword at +0x24), CTCCreatureModeManager::RemoveMode(unsigned long) @ 0x0073ABA0 (landed naming), the game UI singleton at 0x013B8790: GetMiniMapDisplay(0) @ 0x00437CE0
 // then CMiniMapDisplay::Refresh @ 0x0082B7C0 (the manifest's labels of those two are propagated). Shape: the mode manager is read from the frame slot even when absent (as 0x00849250).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -33,10 +33,10 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     void Refresh();                         // 0x0082B7C0
 };
 struct CGameUI {
@@ -44,7 +44,7 @@ struct CGameUI {
 };
 extern CGameUI* g_pGameUI_013b8790;         // 0x013B8790
 
-struct CCreatureAction_RiseUp {
+class CCreatureAction_RiseUp { public:
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;      // +0x08

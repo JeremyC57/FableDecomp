@@ -14,14 +14,14 @@
 // Shape: frame-pointer size TU; ebx is the shared zero; the two lists take their default allocator by const reference, a 1-byte
 // temporary homed in the dead argument slot ([ebp+0Fh]); the handle vector's inline constructor zeroes through edi, which the body
 // reuses for clear() = erase(begin(), end()) after the base vector's Resize.
-struct CPlayerGui;
-struct CEnginePrimitiveHandle;
+class CPlayerGui;
+class CEnginePrimitiveHandle;
 
 struct SAllocator {                                // empty std::allocator stand-in
     SAllocator() { }
 };
 
-struct CWideString {
+class CWideString { public:
     unsigned short* m_pData;
     CWideString();                                 // 0x0099AED0
 };
@@ -56,14 +56,14 @@ struct CRetailElementList {                        // VC6 Dinkumware list<CCount
     explicit CRetailElementList(const SAllocator& allocator = SAllocator());   // 0x00655B33
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
     CRetailHandleVector PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawQuestInfo : CDrawBase {                // vtable 0x0125A688
+class CDrawQuestInfo : public CDrawBase { public:                // vtable 0x0125A688
     virtual void v00();
     long                GuiMode;                   // +0x28 (EPlayerGuiMode)
     float               FadeInTimer;               // +0x2c

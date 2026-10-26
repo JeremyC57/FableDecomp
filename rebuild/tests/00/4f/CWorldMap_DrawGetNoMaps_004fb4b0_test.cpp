@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CWorldMap {
+class CWorldMap { public:
     char  pad_0[0x1c];
     char* mapsBegin;
     char* mapsEnd;

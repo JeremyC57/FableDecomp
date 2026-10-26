@@ -17,12 +17,12 @@ struct CBase {                       // the 4-slot root at 0x0099A2F0, stores vt
     CBase();                         // 0x0099A2F0
 };
 
-struct CBankFileAsync {
+class CBankFileAsync { public:
     unsigned long GetEntryDataSize(unsigned long index) const;   // 0x009CC240 (CBankFile)
     unsigned long Align(unsigned long size) const;               // 0x009CBB90 (CBankFile)
 };
 
-struct CBankFileAsyncEntry : CBase {
+class CBankFileAsyncEntry : public CBase { public:
     CBankFileAsync* m_pBank;         // +0x04
     unsigned long   m_index;         // +0x08
     unsigned long   m_alignedSize;   // +0x0c

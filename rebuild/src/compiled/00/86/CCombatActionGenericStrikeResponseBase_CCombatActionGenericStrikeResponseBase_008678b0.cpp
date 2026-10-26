@@ -10,15 +10,15 @@
 // built inline with SetPItem(thing); PointOfHit / DirectionOfHit copied word by word from the references;
 // MoveOnHitOverride and CreateDustEffect both set from one `mov al,1`. FrameForDust / DustTravelDirection
 // are left alone. Retail offsets = PDB offsets - 0x18 (retail CCombatActionBase is 0x114 bytes).
-struct CThingCreatureBase;
-struct CThing;
-struct CBaseObject;
+class CThingCreatureBase;
+class CThing;
+class CBaseObject;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -36,13 +36,13 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // CIntelli
     CIntelligentPointer_CThingConst(const CThing* item) { SetPItem((CBaseObject*)item); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
-struct CCombatAction_GenericStrikeResponseBase : CCombatActionBase {   // vtable 0x01264734
+class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:   // vtable 0x01264734
     CIntelligentPointer_CThingConst PThingThatHit;  // +0x114
     float PointOfHit_X;                     // +0x11c
     float PointOfHit_Y;                     // +0x120

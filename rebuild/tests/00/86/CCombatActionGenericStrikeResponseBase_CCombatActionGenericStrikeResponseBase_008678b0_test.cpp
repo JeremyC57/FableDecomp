@@ -1,9 +1,9 @@
 // Behaviour test for 0x008678B0 CCombatAction_GenericStrikeResponseBase(owner, thingThatHit, pointOfHit, directionOfHit).
 #include <cstdio>
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct C3DVector { float X, Y, Z; };
-struct CSoundPair { long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class C3DVector { public: float X, Y, Z; };
+class CSoundPair { public: long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 struct CBaseIntelligentPointer {
     const void* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -13,10 +13,10 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {
     CIntelligentPointer_CThingConst(const CThing* item) { SetPItem(item); }
 };
 static long g_code = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CCombatActionBase(CThingCreatureBase*, long actionCode, const CSoundPair&) { g_code = actionCode; }
 };
-struct CCombatAction_GenericStrikeResponseBase : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:
     CIntelligentPointer_CThingConst PThingThatHit;
     float PointOfHit_X, PointOfHit_Y, PointOfHit_Z, DirectionOfHit_X, DirectionOfHit_Y, DirectionOfHit_Z;
     bool MoveOnHitOverride, CreateDustEffect;

@@ -10,7 +10,7 @@
 // +0x28. The flag clear is a read/and/write of the byte through al (a 3-bit bitfield set to 0).
 #include "fable_string.h"
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];              // +0x04..+0x1c
     CResource();                            // 0x009FBEC0
@@ -23,7 +23,7 @@ struct __declspec(novtable) CDefinitionBase : CResource {   // abstract: no vtab
     CDefinitionBase() : CResource(), m_defIndex(0), m_flags(0) { }
 };
 
-struct CAIScratchpadDef : CDefinitionBase {  // vtable 0x0126D014
+class CAIScratchpadDef : public CDefinitionBase { public:  // vtable 0x0126D014
     unsigned char _pad0[0x3c];              // +0x28..+0x64 (phrases, wander centre, counters ...)
     CCharString   Action;                   // +0x64
     bool          FaceHeroForAction;        // +0x68

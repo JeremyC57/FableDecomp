@@ -2,10 +2,10 @@
 #include <cstdio>
 static char g_log[32]; static int g_n = 0;
 static void Log(char c) { if (g_n < 31) g_log[g_n++] = c; g_log[g_n] = 0; }
-struct CDefClassBase { int m_body[10]; CDefClassBase& operator=(const CDefClassBase& o) { Log('B'); for (int i = 0; i < 10; ++i) m_body[i] = o.m_body[i]; return *this; } };
+class CDefClassBase { public: int m_body[10]; CDefClassBase& operator=(const CDefClassBase& o) { Log('B'); for (int i = 0; i < 10; ++i) m_body[i] = o.m_body[i]; return *this; } };
 template<char K> struct CCopy { int a, b, c; CCopy& operator=(const CCopy& o) { Log(K); a = o.a; b = o.b; c = o.c; return *this; } };
 typedef CCopy<'v'> CLongVector; typedef CCopy<'m'> CStringMap; typedef CCopy<'c'> CComboMap; typedef CCopy<'s'> CStatMap; typedef CCopy<'h'> CHistoryVector;
-struct CHeroExperienceDef : CDefClassBase {
+class CHeroExperienceDef : public CDefClassBase { public:
     CLongVector ExperienceLevelThresholds, HeroLevelTitles, FallbackMultipliers;
     CStringMap SoundIntensityThresholds; CComboMap ComboMultiplierMap;
     float ExperienceMultiplierParamPerUnitComboMultiplier, ExperienceMultiplierRegionChangeMultiplier;

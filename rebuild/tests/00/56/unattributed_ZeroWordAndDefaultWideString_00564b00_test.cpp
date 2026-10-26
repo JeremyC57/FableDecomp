@@ -2,7 +2,7 @@
 // default-constructed (null string, constructor called once).
 #include <cstdio>
 static int g_wideCtors = 0;
-struct CWideString { unsigned short* m_pString; CWideString() : m_pString(0) { ++g_wideCtors; } };
+class CWideString { public: unsigned short* m_pString; CWideString() : m_pString(0) { ++g_wideCtors; } };
 struct CRecord { long m_first; CWideString m_second; CRecord() : m_first(0), m_second() { } };
 int main()
 {

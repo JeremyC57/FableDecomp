@@ -43,7 +43,7 @@ template<class T> struct RetailVector {
  __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
 };
@@ -69,9 +69,9 @@ void ThingVector::_M_insert_overflow(CThing** position,CThing* const& value,cons
  Start=storage;Finish=out;End=storage+capacity;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase:CThing {};
-struct CThingAICreature:CThingCreatureBase {};
-struct C2DBoxI {
+class CThingCreatureBase:public CThing { public:};
+class CThingAICreature:public CThingCreatureBase { public:};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -80,10 +80,10 @@ struct C2DBoxI {
 };
 struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious;CThingMapCell* PCell;};
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
-struct C2DExtentsI {long X,Y;};
+class C2DExtentsI { public:long X,Y;};
 namespace NThingMap {
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -100,9 +100,9 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct CThingFilter_IsNotList {RetailVector<const CThing*>* PNotList;void* PNotList2;bool operator()(const CThing&)const;}; // 0x006a7eb0
-struct CThingFilter_IsTargetable {bool ZTargeting,UsingLightning;bool operator()(const CThing&)const;}; // 0x006a84f0
-struct CThingFilter_In3DRange {float Pos[3];float Range;bool operator()(const CThing&)const;}; // 0x006a7780
+class CThingFilter_IsNotList { public:RetailVector<const CThing*>* PNotList;void* PNotList2;bool operator()(const CThing&)const;}; // 0x006a7eb0
+class CThingFilter_IsTargetable { public:bool ZTargeting,UsingLightning;bool operator()(const CThing&)const;}; // 0x006a84f0
+class CThingFilter_In3DRange { public:float Pos[3];float Range;bool operator()(const CThing&)const;}; // 0x006a7780
 struct Filters {
  CThingFilter_IsNotList* F1;
  CThingFilter_IsTargetable* F2;

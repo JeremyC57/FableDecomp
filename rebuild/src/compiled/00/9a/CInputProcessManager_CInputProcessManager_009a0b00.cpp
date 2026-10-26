@@ -10,7 +10,7 @@ struct BaseInput {
     void baseDtor();  // external non-inline (stands for 0x99a300)
 };
 
-struct CInputProcessManager {
+class CInputProcessManager { public:
     void* vtbl;       // +0
     int   pad;        // +4
     MemberAt8 member; // +8

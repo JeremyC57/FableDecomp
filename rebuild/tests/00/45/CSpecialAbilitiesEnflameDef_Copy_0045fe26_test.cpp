@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesEnflameDef;
+class CSpecialAbilitiesEnflameDef;
 
 extern "C" int printf(const char*, ...);
 

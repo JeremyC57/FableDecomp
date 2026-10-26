@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCChest {
+class CTCChest { public:
     void* vftable;
     int destroyed;
 };

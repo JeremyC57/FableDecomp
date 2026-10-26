@@ -1,6 +1,6 @@
 // CGuiVarTransferBool::TransferToGui @ 006a3f80
 // Leaf: TransferToGui
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     void* f0;    // +0x00 -> ecx
     void* f4;    // +0x04 -> edx
     unsigned char f8;

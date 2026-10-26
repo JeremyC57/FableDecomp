@@ -11,7 +11,7 @@ extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 struct CCardinalSpline;
 
 template<class T> struct CArray {                    // retail CArray<T>: three pointers

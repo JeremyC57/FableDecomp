@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for 007b5590: the in-place constructed class name is "CActivateQuestDef" (length -1 = strlen).
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString(const char* s, long length) { if (length < 0) length = (long)std::strlen(s); std::memcpy(text, s, length); text[length] = 0; }
 };

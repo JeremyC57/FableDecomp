@@ -18,20 +18,20 @@
 // Shape: the movie handle is a destructor-less view destroyed by hand (Bowerstone idiom): retail expands its destructor
 //   without the 0x01260EF4 vptr store (PImp dtor 0x006E7AB0, then the base vptr 0x0126008C and 0x0099A430), and VC7.1
 //   stores that vptr in a user-written destructor and calls the implicit one out of line here.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 int __cdecl rand();                                     // 0x00BFEB16
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -53,14 +53,14 @@ struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
 };
-struct CBaseObject {                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
+class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
     void* m_pIntelligentPointer;                        // +0x04
     CBaseObject();                                      // 0x0099A380
@@ -78,7 +78,7 @@ struct CHandlePImp {
     CCPPointerInfo* Info;
     CHandlePImp& operator=(const CHandlePImp& other);   // 0x008AB1E0
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
@@ -97,7 +97,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
 struct CMovieImpWords { void* Data; void* Info; };
-struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4; destructor-less view, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
@@ -119,7 +119,7 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast
 void __fastcall AddLogbookStoryEntry(long entry);       // 0x00CBE87F
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                           // vtable 0x01260F0C
+class CGameScriptInterface { public:                           // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -243,7 +243,7 @@ struct CGameScriptInterface {                           // vtable 0x01260F0C
     virtual void v650(); virtual void v651(); virtual void v652(); virtual void v653(); virtual void v654();
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
 };
-struct CEntityScriptBase {                              // retail 0x14 bytes
+class CEntityScriptBase { public:                              // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

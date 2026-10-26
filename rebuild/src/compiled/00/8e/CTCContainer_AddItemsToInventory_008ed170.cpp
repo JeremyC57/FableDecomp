@@ -12,15 +12,15 @@
 // (`sar ecx,3`, recomputed) over `*(begin() + i)` (element address in esi); Create's arguments are
 // evaluated right to left, so GetPosition runs after the constant pushes; the inline clear() is
 // erase(begin(), end()) with the vector's address formed once in edi.
-struct C3DVector;
-struct CRightHandedSet;
-struct CCharString { void* PStringData; };
+class C3DVector;
+class CRightHandedSet;
+class CCharString { public: void* PStringData; };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
 
-struct CThingObject;
+class CThingObject;
 CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long createFlags,
                                 const CRightHandedSet* orientation, unsigned long uid,
                                 const CCharString& scriptName);   // 0x00703210
@@ -43,7 +43,7 @@ struct CContainerItemVector {                       // STLport vector<pair<long,
     void clear() { erase(begin(), end()); }
 };
 
-struct CTCContainer {
+class CTCContainer { public:
     virtual void v00();
     CThing*              ParentThing;               // +0x04 (CTCBase)
     CThing* GetParentThing() const { return ParentThing; }

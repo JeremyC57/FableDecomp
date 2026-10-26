@@ -3,7 +3,7 @@ struct AbilityEntry {
     int pad;
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     char pad[0x160];
     AbilityEntry* abilities; // at +0x160
     int GetAbilityLevel(int index);

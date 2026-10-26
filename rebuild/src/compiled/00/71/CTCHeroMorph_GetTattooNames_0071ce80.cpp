@@ -14,7 +14,7 @@
 // def is released without a null test.
 // Layout: retail CTCHeroMorph Tattoos vector<CDefPointer<const CThingBaseDef>> at +0x1C (PDB +0x2C); CInventoryItemDef
 // ItemDescription +0x34.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
@@ -38,7 +38,7 @@ struct CDefPointerBase {                             // CDefPointer<CDefBase>: t
     CDefPointerBase() { }
     ~CDefPointerBase() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } }
 };
-struct CInventoryItemDef : CDefBase {
+class CInventoryItemDef : public CDefBase { public:
     unsigned char _pad_0x08[0x2C];
     unsigned long ItemDescription;                   // +0x34
 };
@@ -58,10 +58,10 @@ struct CItemDefPointer {                             // CDefPointer<const CInven
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointerBase GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
@@ -89,7 +89,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CItemDefPointer& out)
 #pragma auto_inline(off)
 #pragma auto_inline(on)
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);           // 0x0099B720
     ~CWideString();                                  // 0x0099B510
@@ -129,12 +129,12 @@ __declspec(noinline) void CWideStringVector::_M_insert_overflow(CWideString* pos
 #pragma auto_inline(on)
 
 namespace NGameText {
-struct CGroupEntry : CDefVirtual, CRefCounted {
+class CGroupEntry : public CDefVirtual, public CRefCounted { public:
     CWideString GetText() const;                     // 0x009C7A40
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 }
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     ~CIVCountedPointer() { if (Data) { Data->ReleaseTemporary(); Data = 0; } }
     T* operator->() const { return Data; }
@@ -145,7 +145,7 @@ public:
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool load) const;   // 0x009C9070
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;         // +0x14
 };
@@ -163,7 +163,7 @@ struct CTattooVector {                               // retail STLport vector (1
     const CThingBaseDefPointer& operator[](unsigned long n) const { return _M_start[n]; }
 };
 
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad_0x04[0x18];
     CTattooVector Tattoos;                           // +0x1C (PDB +0x2C)

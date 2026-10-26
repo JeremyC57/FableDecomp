@@ -4,7 +4,7 @@ struct Writer {
     int log[32]; int n;
     void WriteLong(int v) { log[n++] = v; }
 };
-struct CBlendedParticleEffectSet {
+class CBlendedParticleEffectSet { public:
     int Particle1Index; float Particle1Value; int Particle2Index; float Particle2Value;
     void TransferBinaryOut(Writer& w) const { w.WriteLong(Particle1Index); w.WriteLong(Particle2Index); w.WriteLong(1000); w.WriteLong(1001); }
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CTools::GetWorld (0x00C62150): follows [ref] -> +4 -> +0 -> +4 -> +0x38.
-struct CWorld { int id; };
+class CWorld { public: int id; };
 struct CWorldRecord { int pad; CWorld* m_pWorld; };
 struct CWorldLink { void* m_first; CWorldRecord* m_pRecord; };
 struct CWorldLinkHolder { CWorldLink* m_pLink; };

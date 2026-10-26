@@ -14,7 +14,7 @@
 // {Data, Info} member object's inline constructor, else the name's `lea` hoists above the handle's vtable store); the index at +0x18 is stored LAST, after
 // the name's constructor, i.e. a body assignment; `ret 0Ch`, `this` in eax. The name sits at +0x34 (8 bytes
 // after the 16-byte handle: padding of unknown use).
-struct CScriptThing {                              // 12 bytes: vptr, PImp_Data, PImp_Info
+class CScriptThing { public:                              // 12 bytes: vptr, PImp_Data, PImp_Info
     unsigned char _body[0xc];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
 };
@@ -31,7 +31,7 @@ struct CVtable_012c3224 {                          // vtable 0x012C3224
     CVtable_012c3224(const CScriptThing& thing, void* iface) : m_pInterface(iface), m_thing(thing) { }   // (thing, iface): the interface argument is evaluated first (right to left)
 };
 
-struct CBaseObject {                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
+class CBaseObject { public:                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
     virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04
     CBaseObject();                                 // 0x0099A380
@@ -43,13 +43,13 @@ struct CCountedPointerWords {                     // {Data, Info}: a member obje
     CCountedPointerWords() : Data(0), Info(0) { }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
 };

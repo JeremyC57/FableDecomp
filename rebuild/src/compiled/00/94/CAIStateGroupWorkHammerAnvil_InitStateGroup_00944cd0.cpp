@@ -1,5 +1,5 @@
 #include "engine/CAIStateGroup_WorkHammerAnvil.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld; struct CThingAICreature;
+class CWorld; class CThingAICreature;
 struct CAIStateGroup_WorkHammerAnvil_Methods : CAIStateGroup_WorkHammerAnvil {
     void Init(const CWorld&, CThingAICreature&);
 };

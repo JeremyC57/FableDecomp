@@ -83,8 +83,8 @@ public:
     void SetMainPlayerJoystickDeviceNumber(long device);  // 0x0049BB30
 };
 
-struct CNewFrontendGameComponent
-{
+class CNewFrontendGameComponent
+{ public:
     unsigned char _pad[0x140];
     long LastActiveJoystickDeviceNumber;                  // +0x140
 };

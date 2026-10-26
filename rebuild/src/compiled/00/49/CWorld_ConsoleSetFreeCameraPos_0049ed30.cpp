@@ -26,9 +26,9 @@ public:
     void MoveTo(const C3DVector& pos) { WorldPosition = pos; }
 };
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
-struct CGenericVar {
+class CGenericVar { public:
     int         _padding_;                         // +0x00
     long        Type;                              // +0x04 EGenericVarType
     CCharString ValString;                         // +0x08

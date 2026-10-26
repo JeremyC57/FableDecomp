@@ -1,13 +1,13 @@
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float x;
     float y;
     float z;
     C3DVector(float ix, float iy, float iz) : x(ix), y(iy), z(iz) {}
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     C3DVector GetActionMovementVector();
 };
 

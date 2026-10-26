@@ -7,7 +7,7 @@ struct SubObj {
 
 extern int g_blockParryInt;  // fild dword ptr [0x1375550]
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     char pad[0x38];
     int field_38;    // [esi+0x38]
 

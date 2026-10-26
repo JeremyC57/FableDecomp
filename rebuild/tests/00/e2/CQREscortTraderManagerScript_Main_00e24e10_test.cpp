@@ -5,12 +5,12 @@
 // and in the repeat phase re-activate whenever the hero is away from LookoutPoint on a quest day after the start time
 static int g_frames, g_endAt, g_activates, g_barricade, g_escortEndsAfter, g_lastActivate;
 static int g_lookoutUntil;
-struct CScriptDef { long EscortTraderQuestDayInterval; long EscortTraderQuestStartTime; };
+class CScriptDef { public: long EscortTraderQuestDayInterval; long EscortTraderQuestStartTime; };
 static CScriptDef g_def;
 static CScriptDef* g_pScriptDef = &g_def;
 static __inline long DayModInterval(long day, const CScriptDef* def) { return day % def->EscortTraderQuestDayInterval; }
 static __inline bool NotPastStartTime(long time, const CScriptDef* def) { return time <= def->EscortTraderQuestStartTime; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsRegionLoaded(const char* n) const { return !std::strcmp(n, "LookoutPoint") && g_frames < g_lookoutUntil; }
     bool IsQuestActive(const char* q) const { return !std::strcmp(q, "QR_EscortTrader") && g_frames < g_lastActivate + g_escortEndsAfter; }

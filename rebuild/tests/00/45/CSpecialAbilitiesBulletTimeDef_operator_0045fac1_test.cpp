@@ -3,19 +3,19 @@
 
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _defClassBase[0x35];
     CParentDefClassBase& operator=(const CParentDefClassBase& other) { for (int i = 0; i < 0x35; ++i) _defClassBase[i] = other._defClassBase[i]; return *this; }
 };
 #pragma pack(pop)
-struct CDefString { long m_index; };
-struct C3DVector { float X, Y, Z; };
+class CDefString { public: long m_index; };
+class C3DVector { public: float X, Y, Z; };
 struct CFloatVector {
     float* m_first; float* m_last; float* m_end;
     CFloatVector& operator=(const CFloatVector& other) { m_first = other.m_first; m_last = other.m_last; m_end = other.m_end; return *this; }
 };
-struct CSpecialAbilitiesBulletTimeDef : CParentDefClassBase {
+class CSpecialAbilitiesBulletTimeDef : public CParentDefClassBase { public:
     float SlowTimeDuration[4];                       // +0x3C
     long BulletTimeSlowdownMultiplier[4];            // +0x4C
     float LevelUpTimings[3];                         // +0x5C

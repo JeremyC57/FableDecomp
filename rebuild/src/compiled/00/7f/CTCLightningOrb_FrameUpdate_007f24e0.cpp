@@ -3,14 +3,14 @@
 //   the two Kill calls; the early-out joins the final SetAsMoving epilogue as retail); ONE function-scope C3DVector serves as
 //   the hit-test sphere centre and the new spline position (same frame slot as retail), and the CVectorMap LowerBound
 //   instantiation is defined in this TU (noinline).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -36,7 +36,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -76,7 +76,7 @@ public:
         return false;
     }
 };
-struct CTCHitLocations {                                // interface 0x7F
+class CTCHitLocations { public:                                // interface 0x7F
     void GetBoundingSphere(C3DVector* centre, float* radius, bool flag);   // 0x00815420
 };
 CThing* __fastcall CreateExplosion(long defIndex, const C3DVector* position);   // 0x0080C460
@@ -95,11 +95,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 namespace NBBBMaths {
-struct CLinearSpline {
+class CLinearSpline { public:
     C3DVector GetPointWithParam(float t);               // 0x00A57F70
 };
 }
-struct CLightningOrbDef {
+class CLightningOrbDef { public:
     unsigned char _pad00[0x28];
     long  LightningDefIndex;                            // +0x28
     float LifeTime;                                     // +0x2c
@@ -107,7 +107,7 @@ struct CLightningOrbDef {
     float ExplosionRange;                               // +0x34
     long  ExplosionDefIndex;                            // +0x38
 };
-struct CTCLightningOrb {
+class CTCLightningOrb { public:
     void*                    __vftable;                 // +0x00
     CThing*                  ParentThing;               // +0x04
     unsigned char            _pad08[0x0c - 0x08];

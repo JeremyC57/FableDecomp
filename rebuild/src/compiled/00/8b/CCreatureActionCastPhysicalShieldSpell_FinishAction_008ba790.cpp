@@ -6,7 +6,7 @@
 // Shape: one `push ecx` frame for the lookup key; the component rides in esi; its byte at +0xc and dword at +0x10 are
 // cleared through the shared zero register. No engine header matches the retail layout (CCreatureActionBase is 0xa8
 // bytes in retail, 0xb4 in the PDB), so `this` is modelled locally.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -15,7 +15,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThingCreatureBase {                 // engine/CThingCreatureBase.h exists but is not used: only the interface lookup is modelled
+class CThingCreatureBase { public:                 // engine/CThingCreatureBase.h exists but is not used: only the interface lookup is modelled
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -46,7 +46,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();
@@ -56,7 +56,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase {   // vtable 0x0127BDCC
+class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public:   // vtable 0x0127BDCC
     virtual void FinishAction();
 };
 

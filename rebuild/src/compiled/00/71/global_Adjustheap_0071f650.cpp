@@ -10,7 +10,7 @@
 // copy (trivial operator=), while the by-value pair is built in the _Push_heap slot word by word
 // through `mov eax,esp`: the copy constructor is user-provided (modelled on the pair).
 // Shape: VC7.1 <algorithm> `_Adjust_heap`; the bottom case reuses idx (`first[idx - 1]`).
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -26,7 +26,7 @@ struct SMorphWeight {                           // std::pair<CSkeletalMorphs::CE
     SMorphWeight(const SMorphWeight& other) : first(other.first), second(other.second) { }
 };
 
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

@@ -10,7 +10,7 @@ struct CBase {
     CBase();                                    // 0x0099A2F0
     ~CBase();                                   // 0x0099A300
 };
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 struct SCountBlock {                            // CCPPointerInfo: {references, destroy function, object}
     long m_references;                          // +0
     void (__fastcall* m_pfnDestroy)(void*);     // +4
@@ -43,7 +43,7 @@ public:
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CChunkedFile : CBase {                   // PDB layout: RootChunk +4, Version +0xc, FileComment +0x10
+class CChunkedFile : public CBase { public:                   // PDB layout: RootChunk +4, Version +0xc, FileComment +0x10
     CCountedSuperChunkPointer RootChunk;        // +0x04
     unsigned long             Version;          // +0x0c
     CCharString               FileComment;      // +0x10

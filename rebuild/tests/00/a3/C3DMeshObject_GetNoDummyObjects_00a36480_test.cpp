@@ -1,9 +1,9 @@
 // Behaviour test for 0x00A36140 C3DMeshObject::GetNoDummyObjects: End - Begin of the 56-byte entries under the name's CRC.
 #include <cstdio>
 
-struct CCharStringData { const char* m_pChars; unsigned long m_length; };
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
 static const char g_empty[] = "";
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_empty : m_pStringData->m_pChars; }
@@ -14,10 +14,10 @@ static unsigned long Calc(unsigned long seed, const char* data, unsigned long le
     for (unsigned long i = 0; i < length; ++i) h = h * 31 + (unsigned char)data[i];
     return h;
 }
-struct CMatrix3x4 { float E[12]; };
-struct C3DDummyObject { CMatrix3x4 Transform; int BoneIndex; };
+class CMatrix3x4 { public: float E[12]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; int BoneIndex; };
 struct TEntry { unsigned int first; C3DDummyObject second; };
-struct C3DMeshStats {
+class C3DMeshStats { public:
     TEntry m_entries[6];
     int m_size;
     const TEntry* FindDummyObjectsBegin(unsigned long key) const
@@ -37,7 +37,7 @@ struct CCountedPointer {
     const C3DMeshStats* Data; void* Info;
     const C3DMeshStats* operator->() const { return Data; }
 };
-struct C3DMeshObject {
+class C3DMeshObject { public:
     void* MeshInfo;
     CCountedPointer Mesh;
     long GetNoDummyObjects(const CCharString& name) const

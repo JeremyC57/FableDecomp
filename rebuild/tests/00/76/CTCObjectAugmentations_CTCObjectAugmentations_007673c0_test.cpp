@@ -3,20 +3,20 @@
 // definition and the slot vector resized to NumberOfSlots with null def pointers.
 #include <cstdio>
 #include <cstdlib>
-struct CThing;
+class CThing;
 struct CDefBase { virtual void v00() { } long m_refCount; };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     const T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CObjectAugmentationsDef : CDefBase { long NumberOfSlots; };
-struct CThingBaseDef : CDefBase { };
+class CObjectAugmentationsDef : public CDefBase { public: long NumberOfSlots; };
+class CThingBaseDef : public CDefBase { public: };
 static CObjectAugmentationsDef g_def;
 static int g_subDefCalls = 0;
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out) const { ++g_subDefCalls; out.Object = &g_def; return true; }
 };
-struct CThing { CDefClassBase* PDef; };
+class CThing { public: CDefClassBase* PDef; };
 template <class P> struct CAllocProxy {
     P _M_data;
     CAllocProxy(P p) : _M_data(p) { }
@@ -30,8 +30,8 @@ template <class T> struct vector {
     void resize(unsigned long count, const T& value) { g_resizeCount = count; g_resizeValue = &value; g_resizeNull = value.Object == 0 ? 1 : 0; }
     void resize(unsigned long count) { resize(count, T()); }
 };
-struct CCharString { void* PStringData; };
-struct CObjectAugmentationSoundSet { bool Played; CCharString Sound; unsigned long Handle; };
+class CCharString { public: void* PStringData; };
+class CObjectAugmentationSoundSet { public: bool Played; CCharString Sound; unsigned long Handle; };
 struct SRbTreeNodeBase { bool _M_color; SRbTreeNodeBase* _M_parent; SRbTreeNodeBase* _M_left; SRbTreeNodeBase* _M_right; };
 struct SSoundSetNode : SRbTreeNodeBase { long first; CObjectAugmentationSoundSet second; };
 template <class N> struct CNodeAllocProxy {
@@ -70,14 +70,14 @@ public:
 };
 struct ParticleAndEndPoints;
 struct AttackParticleAndEndPoints;
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* thing) : ParentThing(thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
     virtual ~CTCBase() { }
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
 };
-struct CTCObjectAugmentations : CTCBase {
+class CTCObjectAugmentations : public CTCBase { public:
     CDefPointer<CObjectAugmentationsDef> PDef;
     bool          LoadedFromSaveGame;
     vector< CDefPointer<CThingBaseDef> > Augmentations;

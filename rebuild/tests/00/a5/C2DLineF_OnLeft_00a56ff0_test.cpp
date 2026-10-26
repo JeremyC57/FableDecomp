@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C2DVector {
+class C2DVector { public:
     float X; float Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
     float Dot(const C2DVector& o) const { return X * o.X + Y * o.Y; }
 };
-struct C2DLineF {
+class C2DLineF { public:
     C2DVector Point1; C2DVector Point2;
     C2DLineF(float x1, float y1, float x2, float y2) : Point1(x1, y1), Point2(x2, y2) {}
     bool OnLeft(const C2DVector& pos) const

@@ -1,4 +1,4 @@
-struct CCreatureAction_SnapDragonFast {
+class CCreatureAction_SnapDragonFast { public:
     void* vftable;
 };
 

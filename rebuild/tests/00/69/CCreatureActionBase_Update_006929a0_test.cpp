@@ -2,7 +2,7 @@
 
 struct Sub { int ran; };
 struct VT { void (__fastcall *m[64])(void*); };
-struct CCreatureActionBase { VT* vtbl; char pad[0x5D]; char flag; };
+class CCreatureActionBase { public: VT* vtbl; char pad[0x5D]; char flag; };
 
 static Sub g_sub;
 static int g_virt_called = 0;

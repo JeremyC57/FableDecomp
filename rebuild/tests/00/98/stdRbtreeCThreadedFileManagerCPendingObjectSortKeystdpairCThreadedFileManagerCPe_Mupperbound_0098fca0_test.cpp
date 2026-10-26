@@ -1,7 +1,7 @@
 // Behaviour test for 0098fca0: STLport _Rb_tree::_M_upper_bound -- the first node whose key sorts after k, under CThreadedFileManager's pending-object order (physical sort key, then file position, then object address)
 #include <cstdio>
 
-struct CThreadedFile { unsigned int PhysicalSortKey; };
+class CThreadedFile { public: unsigned int PhysicalSortKey; };
 struct CFileObject {
     unsigned int   FilePos;
     CThreadedFile* PFile;

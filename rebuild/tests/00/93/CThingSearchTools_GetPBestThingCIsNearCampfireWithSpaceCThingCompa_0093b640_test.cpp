@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThingSearchTools { void* WorldMap; void* PThingMapManager; void* ThingManager; };
+class CThingSearchTools { public: void* WorldMap; void* PThingMapManager; void* ThingManager; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components
@@ -42,18 +42,18 @@ struct CThingList {
     iterator end() { return iterator(m_pHead); }
 };
 
-struct CThingGameObject : CThing {
+class CThingGameObject : public CThing { public:
     enum { ThingTypeMask = 0x7 };
 };
-struct CThingObject : CThingGameObject {
+class CThingObject : public CThingGameObject { public:
     enum { ThingTypeMask = 0x807 };
 };
 
-struct CIsNearCampfireWithSpace {
+class CIsNearCampfireWithSpace { public:
     float DistanceSq; float FromX, FromY, FromZ;
     bool operator()(const CThing* thing) const;      // 0x00939A50
 };
-struct CThingCompare_Nearest {                       // out-of-line member template per thing type
+class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     float X, Y, Z;
     template <class T> T* operator()(T* best, T* candidate) const;
 };

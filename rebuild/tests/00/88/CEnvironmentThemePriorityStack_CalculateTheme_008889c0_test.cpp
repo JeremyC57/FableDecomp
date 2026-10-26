@@ -8,7 +8,7 @@ struct CEntry {
     void BlendInLevel(CBlendedEnvironmentTheme* out, const CBlendedEnvironmentTheme* in, float time, CPallette* p)
     { out->m_value = in->m_value + m_level; out->m_blends = in->m_blends + 1; }
 };
-template <class T> struct CArray { T* m_pBegin; T* m_pEnd; T* m_pCapacity;
+template <class T> class CArray { public: T* m_pBegin; T* m_pEnd; T* m_pCapacity;
     unsigned long Size() const { return m_pEnd - m_pBegin; } T& operator[](unsigned long i) { return m_pBegin[i]; } };
 struct CStack {
     CArray<CEntry> Ents;

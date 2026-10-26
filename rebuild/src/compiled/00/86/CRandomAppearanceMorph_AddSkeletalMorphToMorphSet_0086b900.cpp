@@ -17,7 +17,7 @@
 // the strength is `AllowVariation ? GFFloatRandom(1.0f, &seed) : 1.0f` as an if/else; then the inline STLport push_back.
 // Manifest label "CreateRandomMorphEntry" is a descriptive auto label.
 
-struct CCharStringData;
+class CCharStringData;
 
 class CCharString
 {

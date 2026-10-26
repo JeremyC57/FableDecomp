@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CDefStringTable { unsigned long GetStringCRC(long i) { return (unsigned long)i * 7u; } };
 CDefStringTable g_defStringTable;
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct CAnimInfo { unsigned char _pad[8]; long GroupName; };
 struct CAnimFilterOf2Groups {
     virtual long Accepts(const CAnimInfo& anim);

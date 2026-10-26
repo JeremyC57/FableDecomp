@@ -1,4 +1,4 @@
-struct CTCFamilyMember {
+class CTCFamilyMember { public:
     void* vftable;
 };
 

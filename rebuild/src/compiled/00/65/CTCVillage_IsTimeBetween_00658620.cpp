@@ -11,12 +11,12 @@
 //        statements in retail's order, the wrapped end `end - (long)end` stored in the dead parameter slot.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CGameTimeManager {
+class CGameTimeManager { public:
     void*  World;                               // +0x00
     void*  GameComponent;                       // +0x04
     float  Time;                                // +0x08
 };
-struct CWorld {
+class CWorld { public:
     unsigned char     _pad_0x00[0x1c];
     CGameTimeManager* PGameTimeManager;         // +0x1c
 };
@@ -28,7 +28,7 @@ struct CLongVector {                            // STLport vector<long> (12 byte
     const long* end() const { return _M_finish; }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00();
     const CWorld* GetWorld() const;             // 0x00686A80 (CTCBase)
     bool IsTimeBetween(const CLongVector& startTimes, long duration) const;

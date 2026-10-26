@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_JackShotNear {
+class CCreatureAction_JackShotNear { public:
     void* vftable;
     int destroyed;
 };

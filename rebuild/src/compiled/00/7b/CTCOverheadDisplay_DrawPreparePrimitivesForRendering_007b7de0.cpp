@@ -3,7 +3,7 @@
 // Callees: vector<T>::erase(first, last) @ 0x00440D70 (Vector_EraseRange, a __fastcall taking two element pointers).
 // Shape: the inlined clear() pushes m_pLast then m_pFirst (right to left) and forms `this` of the vector with
 // `add ecx,1Ch`; the erase result is dropped and the `ret 4` of the unused argument blocks a tail jump.
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
 struct CRetailHandleVector {                         // VC6 Dinkumware vector: three words
     CEnginePrimitiveHandle* m_pFirst;
@@ -18,7 +18,7 @@ struct CTCBase_007b7de0 {
     unsigned char _pad04[8];                        // +0x04 ParentThing, +0x08 flags
 };
 
-struct CTCOverheadDisplay : CTCBase_007b7de0 {
+class CTCOverheadDisplay : public CTCBase_007b7de0 { public:
     unsigned char       _pad0c[0x1c - 0x0c];       // DamageValues/RepairValues/RenownValues (4-byte retail lists), PDef
     CRetailHandleVector PrimitiveHandles;                   // +0x1c
     virtual void DrawPreparePrimitivesForRendering(long unused);

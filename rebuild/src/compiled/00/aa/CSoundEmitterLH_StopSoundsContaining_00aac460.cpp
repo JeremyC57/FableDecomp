@@ -28,8 +28,8 @@ struct CSoundManagerLH {
     CSoundSystem* m_pSystem;                // +0x40
 };
 
-struct CCharStringData { const char* m_pText; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pText; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* m_pData;
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pText; }   // "" = 0x0129AAF4
 };

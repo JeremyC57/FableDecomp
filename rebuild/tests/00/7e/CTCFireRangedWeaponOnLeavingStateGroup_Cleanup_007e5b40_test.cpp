@@ -2,10 +2,10 @@
 #include <cmath>
 // Behaviour test: CTCFireRangedWeaponOnLeavingStateGroup::Cleanup -- deregisters the creature from its combat manager, then removes creature mode 0x19 when it has a mode manager.
 #define CHECK(c) if (!(c)) { std::printf("007e5b40_TEST FAIL\n"); return 1; }
-struct CThingCreatureBase;
-struct CCombatManager { CThingCreatureBase* last; int count; void DeregisterCombatant(CThingCreatureBase* c) { last = c; ++count; } };
-struct CTCCreatureModeManager { int removed; void RemoveMode(int mode) { removed = mode; } };
-struct CThingCreatureBase {
+class CThingCreatureBase;
+class CCombatManager { public: CThingCreatureBase* last; int count; void DeregisterCombatant(CThingCreatureBase* c) { last = c; ++count; } };
+class CTCCreatureModeManager { public: int removed; void RemoveMode(int mode) { removed = mode; } };
+class CThingCreatureBase { public:
     CCombatManager* Combat;
     CTCCreatureModeManager* Modes;
     CCombatManager* GetCombatManager() { return Combat; }

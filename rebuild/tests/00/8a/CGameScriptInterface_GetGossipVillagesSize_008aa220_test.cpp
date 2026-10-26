@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     void* p;
     CCharString() { p = 0; }
     CCharString(const CCharString& o) { p = o.p; }

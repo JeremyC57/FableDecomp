@@ -13,20 +13,20 @@
 // Shape: plain initialisers with one zero register (ebx); ScriptData addressed once in edi (root ctor,
 // vtable store, the PImp words from an embedded zeroing member, the landed 0x00D80C30 model); the body
 // passes the PDef address formed for its zero store.
-struct CThing;
-struct CFireheartMinigameDef;
+class CThing;
+class CFireheartMinigameDef;
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     T* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CFireheartMinigameDef>* out);   // 0x007E7D80
 };
 
-struct CThing {
+class CThing { public:
     unsigned char              _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;                        // +0x70
 };
@@ -36,12 +36,12 @@ struct CCountedPointerWords {                               // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CBaseObject {                                        // root: vtable + intelligent-pointer list
+class CBaseObject { public:                                        // root: vtable + intelligent-pointer list
     virtual void v00();
     void* m_pIntelligentPointer;                            // +0x04
     CBaseObject();                                          // 0x0099A380
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                              // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual void v00();
@@ -57,9 +57,9 @@ template <class T> struct CRetailVector {                   // STLport vector (1
     SRetailAllocProxy<T> _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -67,7 +67,7 @@ struct CTCBase {
     CTCBase(CThing* thing);                                 // 0x00686800
 };
 
-struct CTCFireheartMinigame : CTCBase {                     // vtable 0x012709CC
+class CTCFireheartMinigame : public CTCBase { public:                     // vtable 0x012709CC
     CThing*  Markers[4][4];                                 // +0x0c
     bool     InSession;                                     // +0x4c
     bool     ForceQuit;                                     // +0x4d

@@ -20,13 +20,13 @@ public:
     float R, G, B, A;
 };
 
-class CIDrawEnvironmentTextureSet {           // retail 24 bytes
+struct CIDrawEnvironmentTextureSet {           // retail 24 bytes
 public:
     long* Textures[3];                        // +0x00  CArray<long> (STLport vector)
     float* Blends[3];                         // +0x0C  CArray<float>
 };
 
-class CIDrawEnvironmentParams {
+struct CIDrawEnvironmentParams {
 public:
     struct CThemeChannel {                    // retail 496 bytes
         CRGBFloatColour Colours[19];          // +0x000

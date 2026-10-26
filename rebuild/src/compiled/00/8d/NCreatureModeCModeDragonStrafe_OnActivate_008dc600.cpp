@@ -7,7 +7,7 @@
 // Name: FableWin.pdb `?OnActivate@CModeDragonStrafe@NCreatureMode@@UAEXXZ` (slot 5).
 // Shape: as the landed CModeBriarRoseTeleportIntangible::OnActivate @ 0x008E7B90 (same type-0x3a flag clear through a one-bit
 //   bitfield: `and byte ptr [eax+50h],0FEh`); ParentThing is re-read for each use.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -20,7 +20,7 @@ struct CThingAnimatable {
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThing : CThingAnimatable {
+class CThing : public CThingAnimatable { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                  // +0x10 (1 = player creature)
     unsigned char _pad11[0x0f];

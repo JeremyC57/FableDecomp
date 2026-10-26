@@ -11,9 +11,9 @@
 #include <string.h>
 #pragma intrinsic(strcmp)
 
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual long IsUnknownType() const;             // slot 4
     char ChunkType[5];                              // +0x04 four-character code + terminator
@@ -40,7 +40,7 @@ struct CChunkArray {                                // STLport vector, 12 bytes
     CChunkPointer& operator[](unsigned long i) const { return m_pFirst[i]; }
 };
 
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CChunkArray SubChunks;                          // +0x10
     CChunkArray RegisteredSubChunkTypes;            // +0x1c
     unsigned long CurrentChunkIndex;                // +0x28

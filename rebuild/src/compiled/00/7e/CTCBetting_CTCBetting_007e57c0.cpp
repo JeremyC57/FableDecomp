@@ -9,7 +9,7 @@
 // Shape: the vtable store precedes the vector zeroing (inline member constructors through each
 // vector's address register, all sharing the ebx zero); Active is the first BODY assignment (an
 // initialiser stores it before the vectors), then the Resize calls and the three counter zeroes (Mult and FrameToStart are left untouched).
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -19,7 +19,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     CTCBase_Calls(CThing* thing);                           // 0x00686800
 };
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
 struct CRetailHandleVector {                                // VC6 Dinkumware vector<CEnginePrimitiveHandle>: three words
     CEnginePrimitiveHandle* m_pFirst;
@@ -29,7 +29,7 @@ struct CRetailHandleVector {                                // VC6 Dinkumware ve
     void Resize(long count);                                // 0x00443F90
 };
 
-struct CTCBetting : CTCBase_Calls {                         // vtable 0x01270624
+class CTCBetting : public CTCBase_Calls { public:                         // vtable 0x01270624
     bool                Active;                             // +0x0c
     CRetailHandleVector BetHandles;                         // +0x10
     CRetailHandleVector MoneyHandles;                       // +0x1c

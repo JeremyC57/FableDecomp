@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <cstddef>
 static int g_base = 0;
-struct CEngineMap { int dummy; };
+class CEngineMap { public: int dummy; };
 namespace N_0099a2d0 { struct CBase { virtual void v0() { } CBase() { ++g_base; } }; } using N_0099a2d0::CBase;
-struct CTesselationData : CBase {
+class CTesselationData : public CBase { public:
     long PatchWorldX; long PatchWorldY; long Width; long Height; CEngineMap* EngineMap;
     CTesselationData(CEngineMap* map, long worldX, long worldY, unsigned short width, unsigned short height)
         : PatchWorldX(worldX), PatchWorldY(worldY), Width(width), Height(height), EngineMap(map) { }

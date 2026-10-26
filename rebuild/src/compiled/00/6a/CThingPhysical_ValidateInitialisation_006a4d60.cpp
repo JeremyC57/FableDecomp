@@ -6,17 +6,17 @@
 // Shape: the position argument is pushed before the world-map fetch; the failing test returns the
 // callee's own zero `al` (`if (!x) return false;` lets VC reuse it), the shared `mov al,1` tail
 // serves both skipped tests.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                                  // +0x0c
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector& position);              // 0x004FC600
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

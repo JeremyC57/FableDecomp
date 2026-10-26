@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <stddef.h>
-struct CThing { int x; };
+class CThing { public: int x; };
 struct CTCBase_Calls { virtual void v00() { } CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; CTCBase_Calls(CThing* p) : ParentThing(p), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { } };
-struct C3DVector { float X, Y, Z; };
-struct CTCSleep : CTCBase_Calls {
+class C3DVector { public: float X, Y, Z; };
+class CTCSleep : public CTCBase_Calls { public:
     bool IsReadyToSleep; bool FastTrack; long LastFrameWokeUp; C3DVector PosAtFastTrackSetting; virtual void v00() { }
     CTCSleep(CThing* p) : CTCBase_Calls(p), IsReadyToSleep(false), FastTrack(false), LastFrameWokeUp(-1000000) { }
 };

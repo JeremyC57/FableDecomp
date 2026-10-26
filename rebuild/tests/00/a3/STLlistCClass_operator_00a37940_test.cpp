@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CClass { int id; };
+class CClass { public: int id; };
 struct Node { Node* next; Node* prev; CClass* data; };
 struct List {
     Node* head;

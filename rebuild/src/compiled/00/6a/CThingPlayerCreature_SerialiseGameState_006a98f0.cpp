@@ -10,17 +10,17 @@
 // Shape: the body under `if (base call)` with a shared `mov al,1` exit (as 0x006628E0); the def value is
 // loaded once and stored with `fst` into MaxHealth, kept on the x87 stack for the conditional Health store;
 // the bit set is a 1-bit bitfield assignment (`or byte ptr [esi+92h],2`).
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad_0x00[0x50];
     float DefaultMaxHealth;                           // +0x50
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          m_mode;                             // +0x18
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad_0x00[0x92];
     unsigned char DeletedOnOwnerLevelOutOfScope : 1;  // +0x92 bit 0
     unsigned char Drawable : 1;                       // +0x92 bit 1
@@ -35,7 +35,7 @@ struct CThingCreatureBase {
 
 static const float HEALTH_UNSET = 0.0f;               // 0x0122DEDC (0.0f)
 
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     bool SerialiseGameState(CPersistContext& context);
 };
 

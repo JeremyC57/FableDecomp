@@ -13,8 +13,8 @@
 // absent path tests whatever that slot holds (`mov eax,[esp+4]`) -- the out pointer is not initialised.
 #include "engine/CTCQuestCard.h"
 
-struct CTCBase;
-struct CCharString {
+class CTCBase;
+class CCharString { public:
     void* PStringData;
 };
 
@@ -26,7 +26,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -48,7 +48,7 @@ struct CThing {
     }
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     CThing* GetActiveQuestCardFromScriptName(const CCharString& scriptName);   // 0x004B0C80
     void SetQuestCardRenownReward(const CCharString& scriptName, long reward);
 };

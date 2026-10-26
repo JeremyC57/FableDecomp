@@ -6,7 +6,7 @@ struct CResourceList_009fd0c0 {
     void SetScene(long scene);                     // 0x009FC160
 };
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     unsigned char          _pad[0x168];
     CResourceList_009fd0c0 m_textures;             // +0x168
     CResourceList_009fd0c0 m_frames;               // +0x1a4

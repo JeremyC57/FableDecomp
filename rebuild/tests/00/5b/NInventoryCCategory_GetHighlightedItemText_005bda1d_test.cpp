@@ -2,7 +2,7 @@
 // empty, including a string with no data block) the TXT_OBJT_EMPTY text through the inventory when its tag exists
 #include <cstdio>
 #include <cstring>
-struct CWideString {
+class CWideString { public:
     const char* PStringData;               /* 0 = no data block */
     bool IsEmptyText() const
     {

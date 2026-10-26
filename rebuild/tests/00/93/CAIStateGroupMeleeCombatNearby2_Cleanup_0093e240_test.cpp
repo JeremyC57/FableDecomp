@@ -11,7 +11,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 static bool g_registered = false, g_usesModes = false; static int g_isReg = 0, g_uses = 0;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -32,16 +32,16 @@ struct CThingCreatureBase {
     }
 };
 static int g_removeMode = 0; static unsigned long g_removedMode = 0; static void* g_modesThis = 0; static int g_hasModeCalls = 0; static bool g_hasMode = false;
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool HasMode(unsigned long mode) { ++g_hasModeCalls; return g_hasMode; }
     void RemoveMode(unsigned long mode) { ++g_removeMode; g_removedMode = mode; g_modesThis = this; }
 };
 static int g_dereg = 0; static CThingCreatureBase* g_deregCreature = 0; static void* g_deregThis = 0;
-struct CCombatManager { void DeregisterCombatant(CThingCreatureBase* creature) { ++g_dereg; g_deregCreature = creature; g_deregThis = this; } };
-struct CWorld { unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; };
-struct CAIBrain { unsigned char _pad[0x18]; CThingCreatureBase* PCreature; };
+class CCombatManager { public: void DeregisterCombatant(CThingCreatureBase* creature) { ++g_dereg; g_deregCreature = creature; g_deregThis = this; } };
+class CWorld { public: unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingCreatureBase* PCreature; };
 static CWorld* g_world = 0; static int g_getWorld = 0;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {}

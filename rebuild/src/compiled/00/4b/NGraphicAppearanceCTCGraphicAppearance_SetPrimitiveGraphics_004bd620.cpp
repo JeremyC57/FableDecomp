@@ -11,8 +11,8 @@
 // CPrimitive's engine handle at +4.
 // Shape: the flags are an `unsigned short` local (`xor esi,esi ; mov si ; or si`, the 32-bit `or`s, the
 // `movzx` for the unsigned long parameter); each arm keeps its own `ret 0Ch`.
-struct CEnginePrimitive;
-struct CEnginePrimitiveHandle {                             // 8 bytes: vtable + counted data pointer
+class CEnginePrimitive;
+class CEnginePrimitiveHandle { public:                             // 8 bytes: vtable + counted data pointer
     void* _vtable;
     void* Data;
 };
@@ -36,12 +36,12 @@ extern CEngineGlobals* g_pEngineGlobals_013b8a18;                    // 0x013B8A
 
 namespace NGraphicAppearance {
 
-struct CPrimitive {
+class CPrimitive { public:
     void*                  _vtable;                         // +0
     CEnginePrimitiveHandle Handle;                          // +4
 };
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     unsigned char  _pad00[0x52];
     unsigned short ActivePersistenceFlags;                  // +0x52
     unsigned char  _pad54[0x59 - 0x54];

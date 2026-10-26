@@ -3,11 +3,11 @@
 
 static int g_updates = 0;
 
-struct CThing {
+class CThing { public:
     unsigned long m_tcBits28;
 };
 
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     CThing* ParentThing;
     void UpdateSounds() { ++g_updates; }
     void FrameUpdate();

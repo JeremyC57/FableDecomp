@@ -10,7 +10,7 @@
 // components sit on the x87 stack and are stored x, y, z. The x87 load order of each product follows the helper's
 // reference parameters: the same products written directly on the members load Up.Y before Forward.X in the first
 // product (VC7.1 does not keep the source operand order of a `*` there).
-struct C3DVector {
+class C3DVector { public:
     float X;                                 // +0x00
     float Y;                                 // +0x04
     float Z;                                 // +0x08
@@ -18,7 +18,7 @@ struct C3DVector {
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                            // +0x00
     C3DVector Forward;                       // +0x0C
     C3DVector GetRight() const;

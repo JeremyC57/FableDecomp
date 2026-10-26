@@ -14,7 +14,7 @@
 // TransferableComponent wrapper {vtable, value*}; `ret 0Ch`.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CDefIndex { long Index; };
+class CDefIndex { public: long Index; };
 class CDataInputStream;
 class CDataOutputStream {
 public:

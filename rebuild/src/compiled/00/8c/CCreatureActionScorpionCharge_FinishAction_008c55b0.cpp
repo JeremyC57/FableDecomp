@@ -9,15 +9,15 @@
 //   GetPItem runs first; IS_THING_ALIVE-style inline twice (bl = 1 reused for the dead-bit test); both temporaries are
 //   destroyed through ~CCombatActionBase on one merged tail.
 #include <math.h>
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -39,12 +39,12 @@ struct CThing {
         return false;
     }
 };
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     bool IsCollidingWithLandscape() const;            // 0x00661E70 (manifest: CanCollideWithLandscape)
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     void AllowReactionsOnHitFromAttacker(CThing* attacker, bool allow);   // 0x0079E580
 };
 struct CBaseIntelligentPointer {
@@ -52,13 +52,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;                  // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
@@ -67,13 +67,13 @@ struct CCombatActionBase : CCreatureActionBase {
     CThing* GetTarget() const { return PTarget.GetPItem(); }
     bool IsTargetAlive() const { return PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1); }
 };
-struct CCreatureAction_ScorpionCharge : CCombatActionBase {
+class CCreatureAction_ScorpionCharge : public CCombatActionBase { public:
     float     ChargeDistance;                         // +0x114
     C3DVector StartPos;                               // +0x118
     CCreatureAction_ScorpionCharge(CThingCreatureBase& owner, CThing& target, float distance);   // 0x008C4EA0
     void FinishAction();
 };
-struct CCreatureAction_ScorpionChargeStrike : CCombatActionBase {
+class CCreatureAction_ScorpionChargeStrike : public CCombatActionBase { public:
     unsigned char _pad114[0x10];
     CCreatureAction_ScorpionChargeStrike(CThingCreatureBase* owner, CThing* target);   // 0x008C4F50
 };

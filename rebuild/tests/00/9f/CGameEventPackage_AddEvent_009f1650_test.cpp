@@ -1,8 +1,8 @@
 // Behaviour test for 0x009F1650 CGameEventPackage::AddEvent.
 #include <cstdio>
 #include <cstring>
-struct CGameEvent { int Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement; };
-struct CGameEventPackage {
+class CGameEvent { public: int Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement; };
+class CGameEventPackage { public:
     int TimeStamp; unsigned int NoEvents; CGameEvent Events[40];
     void AddEvent(const CGameEvent& event)
     {

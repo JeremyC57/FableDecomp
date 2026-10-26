@@ -61,7 +61,7 @@ struct CScriptThingInner {
   virtual bool m57(int a0){ return true; }
   virtual bool m58(int a0){ return true; }
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgOnMoralityChanged(int a0); };
+class CScriptThing { public: void *pad0; CScriptThingInner *m_impl; bool MsgOnMoralityChanged(int a0); };
 bool CScriptThing::MsgOnMoralityChanged(int a0){ CScriptThingInner *p=m_impl; if(!p) return false; return p->m58(a0); }
 int main(){
     CScriptThing t; t.m_impl=0;

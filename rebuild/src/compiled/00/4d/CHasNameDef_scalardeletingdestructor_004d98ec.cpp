@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CHasNameDef
-{
+class CHasNameDef
+{ public:
     void* vftable;
 };
 extern void* const g_CHasNameDef_vftable;

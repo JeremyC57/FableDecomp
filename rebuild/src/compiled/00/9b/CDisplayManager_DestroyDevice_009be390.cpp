@@ -9,12 +9,12 @@ struct IDirect3DDevice9 {
     virtual unsigned long __stdcall Release();
 };
 
-struct CSurface {
+class CSurface { public:
     unsigned char _body[0x10];         // vptr-less 16-byte surface record
     void Uninitialise();               // 0x009F2E20
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char     _pad[0x2c];      // +0x00 vptr, SystemManager, PRenderManager, render-target surfaces
     CSurface          BackBufferSurface;       // +0x2c
     CSurface          DepthBufferSurface;      // +0x3c

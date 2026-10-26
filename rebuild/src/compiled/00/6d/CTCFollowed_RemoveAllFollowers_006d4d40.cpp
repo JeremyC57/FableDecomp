@@ -25,7 +25,7 @@ struct CPlayerGui_006d4d40 {
 };
 extern CPlayerGui_006d4d40* g_pPlayerGui_013b8790;   // 0x013B8790
 
-struct CTCFollowed : CTCBase {
+class CTCFollowed : public CTCBase { public:
     CFollowerList   Followers;                   // +0x0c
     CAIFollowerList AIFollowers;                 // +0x10
     void RemoveAllFollowers();

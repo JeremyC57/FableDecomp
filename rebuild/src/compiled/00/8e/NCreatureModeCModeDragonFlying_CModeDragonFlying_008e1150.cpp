@@ -11,12 +11,12 @@
 //   StartSpeed +0x70, MovementDuringAnimationLoop +0x74, Acceleration +0x78, AnimLength +0x7c, PEndAction +0x80,
 //   NumAnimLoops +0x88, NumAnimLoopsToDo +0x8c, FirstFrame +0x90, UsePreviousPos +0x91. The filter model is the landed
 //   CModeSummonerLightningOrb ctor 0x008CC180.
-struct CThing;
-struct CCharStringData {
+class CThing;
+class CCharStringData { public:
     const char*   m_pData;
     unsigned long m_length;
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -26,7 +26,7 @@ struct CCharString {
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -38,12 +38,12 @@ struct CAnimFilterOfGroup {                // vtable 0x01267568
     }
 };
 void operator delete(void* p);             // 0x00BFE9BC
-struct CCPPointerInfo {                    // CCountedPointer's shared block
+class CCPPointerInfo { public:                    // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -77,8 +77,8 @@ template <class T> struct CCountedPointer {
         return *this;
     }
 };
-struct CCreatureActionBase;
-struct C3DVector {
+class CCreatureActionBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
@@ -102,7 +102,7 @@ struct C3DVectorVector : CVectorBase<C3DVector> {   // STLport vector<C3DVector>
     C3DVector& operator[](unsigned long n) { return *(begin() + n); }
     void resize(unsigned long n, const C3DVector& x);   // 0x0075C040
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     C3DVectorVector ControlPoints;         // +0x00
     float           Tension;               // +0x0c
     bool            EndPointsConnected;    // +0x10

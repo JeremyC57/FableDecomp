@@ -1,10 +1,10 @@
 // Behaviour test for CWorld::EASkipCutScene (0x00629F50): only a skippable cutscene is skipped: button sound
 // played once with the 0x8010 fader init, the skip message posted, subtitles cleared and the flags flipped.
 #include <cstdio>
-struct CCharString { const char* Text; };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct CThing; struct CGameEvent; struct CASoundBank { int id; };
-struct CSoundInit {
+class CCharString { public: const char* Text; };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class CThing; class CGameEvent; class CASoundBank { public: int id; };
+class CSoundInit { public:
     float Volume, Pitch, Pan; long NoPlays, PlaybackType; unsigned long GainFaderBits, PitchFaderBits; long OverrideID;
     CSoundInit() : Volume(1.0f), Pitch(1.0f), Pan(0.0f), NoPlays(1), PitchFaderBits(0), OverrideID(-1) { PlaybackType = 1; GainFaderBits = 0; }
 };
@@ -16,25 +16,25 @@ struct CSoundPlayer {
 static CSoundPlayer g_player;
 struct CSoundSystem { CSoundPlayer* GetSoundPlayer() { return &g_player; } };
 static CSoundSystem g_sys; static CSoundSystem* g_pSoundSystem = &g_sys;
-struct CPlayerGuiDef { CCharString TextBoxButtonBSoundCriteria; };
+class CPlayerGuiDef { public: CCharString TextBoxButtonBSoundCriteria; };
 static CPlayerGuiDef g_def = { { "SOUND_BUTTON_A" } };
 static CPlayerGuiDef* PeekGuiDef() { return &g_def; }
 static int g_clears;
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     bool InCutscene, CutsceneSkipped, CutsceneSkippable;
     bool IsCutsceneSkippable() const { return CutsceneSkippable; }
     void Clear(bool all) { if (!all) ++g_clears; }
 };
-struct CPlayerGui { CSubtitleRenderer SubtitleRenderer; };
+class CPlayerGui { public: CSubtitleRenderer SubtitleRenderer; };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
 static unsigned long g_framesPerSecond = 30;
 static long g_msgType; static unsigned long g_msgDelay; static int g_msgs;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void* AddMessage(long t, unsigned long d, const C3DVector& p, CThing*, CThing*, float, float, long)
     { ++g_msgs; g_msgType = t; g_msgDelay = d; return p.X == 0.0f && p.Y == 0.0f && p.Z == 0.0f ? this : 0; }
 };
 static CASoundBank g_bank;
-struct CWorld {
+class CWorld { public:
     CMessageEventManager* PMessageEventManager;
     CASoundBank& GetSampleBank() const { return g_bank; }
     void EASkipCutScene(const CGameEvent*)

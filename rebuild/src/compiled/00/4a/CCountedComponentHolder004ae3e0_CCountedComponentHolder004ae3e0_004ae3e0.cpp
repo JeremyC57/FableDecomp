@@ -7,12 +7,12 @@
 // (its body: walk [start,finish) destroying both strings, then free(start)); the pointee's virtual slot 1 on zero count.
 // Shape: members in reverse order -- the +0x1c vector first, then ~CIVCountedPointer inlined with the zero store inside
 // the non-null arm. Bytes +0x00..+0x17 are trivially destructible.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();
     virtual void DeleteThis();                               // slot 1 (+4)
     unsigned long IVRefCount;                                // +0x04
 };
-struct CAnimComponentBase : CIVCountedPointeeBase { };
+class CAnimComponentBase : public CIVCountedPointeeBase { public: };
 
 template<class T> class CIVCountedPointer {
 public:

@@ -13,9 +13,9 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     CCharString(const CCharString& other);           // (declared: by-value arguments are built in place)
@@ -27,7 +27,7 @@ struct CComponent {                                  // NUISystem::CComponent
     virtual CComponent* FindChild(CCharString name); // slot 3 (+0x0C)
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad_0x000[0x2BE];
     bool          LiveGuiMode;                 // +0x2BE
 };
@@ -40,7 +40,7 @@ enum EUISpellCategory {
     UI_SPELL_CATEGORY_PHYSICAL = 2
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void* __vftable;                                 // +0x00
     void* ParentThing;                               // +0x04 CTCBase
 

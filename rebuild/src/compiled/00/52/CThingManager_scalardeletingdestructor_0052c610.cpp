@@ -1,4 +1,4 @@
-struct CThingManager {
+class CThingManager { public:
     void* vftable;
 };
 

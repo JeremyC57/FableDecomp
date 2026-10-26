@@ -17,7 +17,7 @@
 //   `fmul dword [-1.0f]` and the constant Z folds to -0.0f (0x80000000). Returning the product directly drops both
 //   frame vectors (85 bytes).
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -26,24 +26,24 @@ struct C3DVector {
 };
 #pragma pack(pop)
 
-struct CCameraModeDef {
+class CCameraModeDef { public:
     unsigned char _pad00[0xa0];
     float         ProjectileCameraInitialPhiOffsetForCamera;    // +0xa0
     float         ProjectileCameraInitialHeightParamForCamera;  // +0xa4
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
 
 namespace NCameraModes {
 #pragma pack(push, 1)
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _pad04[0x44 - 0x04];
     CDefPointer<const CCameraModeDef> PCameraModeDef;   // +0x44
 };
-struct CProjectileWeapon : CBase {                      // vtable 0x01277804
+class CProjectileWeapon : public CBase { public:                      // vtable 0x01277804
     C3DVector GetCamPosOffsetXY(float phi) const;       // 0x00878A80
     C3DVector GetLookDirectionXYFromParams(float phi, float heightParam) const;
 };

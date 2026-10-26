@@ -1,7 +1,7 @@
 // Behaviour test for NHitLocations::CPhysicalPrimitiveMesh::GetFirstIntersectionWithTriangle (0x00815770).
 #include <cstdio>
-struct CThing { int id; };
-struct C3DVector { float X, Y, Z; };
+class CThing { public: int id; };
+class C3DVector { public: float X, Y, Z; };
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; const T& operator[](long i) const { return _M_start[i]; } };
 class CPhysicalPrimitiveMesh {
 public:

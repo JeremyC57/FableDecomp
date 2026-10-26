@@ -2,11 +2,11 @@
 // owner/target, each held once by the queue after the local counted pointer is released.
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
 static int g_live = 0;
 struct CActionBase { virtual ~CActionBase() { --g_live; } const char* kind; CThingCreatureBase* owner; CThing* target; char anim[32]; CActionBase() { ++g_live; anim[0] = 0; } };
-struct CCreatureAction_TrollProjectileAttack : CActionBase { CCreatureAction_TrollProjectileAttack(CThingCreatureBase* o, CThing* t, const char* s = "") { kind = "CCreatureAction_TrollProjectileAttack"; owner = o; target = t; std::strcpy(anim, s); } };
+class CCreatureAction_TrollProjectileAttack : public CActionBase { public: CCreatureAction_TrollProjectileAttack(CThingCreatureBase* o, CThing* t, const char* s = "") { kind = "CCreatureAction_TrollProjectileAttack"; owner = o; target = t; std::strcpy(anim, s); } };
 struct CCreatureAction_TrollProjectileAttack2 : CActionBase { CCreatureAction_TrollProjectileAttack2(CThingCreatureBase* o, CThing* t, const char* s = "") { kind = "CCreatureAction_TrollProjectileAttack2"; owner = o; target = t; std::strcpy(anim, s); } };
 struct SCountBlock { long references; void (*destroy)(void*); void* object; };
 static void DestroyAction(void* p) { delete static_cast<CActionBase*>(p); }

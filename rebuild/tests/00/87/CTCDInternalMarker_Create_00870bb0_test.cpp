@@ -2,7 +2,7 @@
 // driver (type 0xA2) and activates; the driver is constructed at the position.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CWorldMap {
 public:

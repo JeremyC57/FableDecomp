@@ -13,20 +13,20 @@
 // local assigned from a default-constructed temporary (three zero bytes into the shared slot, then the whole-dword
 // self copy `mov eax,[esp+4] ; mov [esp+4],eax`); the count is returned sign-extended (`movsx`).
 
-struct C3DVector {                                       // memberwise user copy constructor: direct dword moves
+class C3DVector { public:                                       // memberwise user copy constructor: direct dword moves
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DBoundingSphere(const C3DVector& center, float radius) : Center(center), Radius(radius) { }
 };
-struct CEnginePrimitiveThemeChannelDesc {                // 4 bytes (PDB)
+class CEnginePrimitiveThemeChannelDesc { public:                // 4 bytes (PDB)
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
 };
-struct CEngineLocalLightArray { signed char Count; };
+class CEngineLocalLightArray { public: signed char Count; };
 class CEngineLightingManager {
 public:
     CEngineLocalLightArray* GetLightsInSphereFast(const C3DBoundingSphere& sphere, long maxLights,

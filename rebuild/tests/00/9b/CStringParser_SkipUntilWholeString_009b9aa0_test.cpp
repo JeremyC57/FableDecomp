@@ -3,14 +3,14 @@
 #include <cstring>
 #include <cctype>
 
-struct CCharStringData { const char* Chars; unsigned long Length; };
-struct CCharString {
+class CCharStringData { public: const char* Chars; unsigned long Length; };
+class CCharString { public:
     CCharStringData* PStringData;
     operator const char*() const { return PStringData ? PStringData->Chars : ""; }
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
 };
 struct CCursorPos { bool InQuotes; unsigned long StringPos; unsigned long Line; };
-struct CStringParser {
+class CStringParser { public:
     char* String;
     CCursorPos CursorPos;
     bool CalcInQuotes(bool inQuotes, const char* from, const char* to) const

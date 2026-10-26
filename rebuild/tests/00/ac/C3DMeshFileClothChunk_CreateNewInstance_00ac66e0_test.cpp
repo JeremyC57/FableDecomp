@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CCharString { char* m_pStringData; CCharString() : m_pStringData(0) {} };
-struct C3DVector { float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
+class CCharString { public: char* m_pStringData; CCharString() : m_pStringData(0) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
 static int g_inits = 0;
 struct C3DMeshFileChunk {
     char m_type[5];
@@ -11,8 +11,8 @@ struct C3DMeshFileChunk {
     virtual C3DMeshFileChunk* CreateNewInstance() const = 0;
     virtual C3DMeshFileChunk* InitNewInstance(C3DMeshFileChunk* chunk) const { ++g_inits; return chunk; }
 };
-template<class T> struct CArray { T* m_begin; T* m_end; T* m_capacity; CArray() : m_begin(0), m_end(0), m_capacity(0) {} };
-struct C3DMeshFileClothChunk : C3DMeshFileChunk {
+template<class T> class CArray { public: T* m_begin; T* m_end; T* m_capacity; CArray() : m_begin(0), m_end(0), m_capacity(0) {} };
+class C3DMeshFileClothChunk : public C3DMeshFileChunk { public:
     CCharString Name; long MaterialIndex; CCharString ParticleCode; CArray<char> CompiledCode;
     C3DMeshFileClothChunk() : C3DMeshFileChunk("CLTH") {}
     C3DMeshFileChunk* CreateNewInstance() const { return InitNewInstance(new C3DMeshFileClothChunk); }

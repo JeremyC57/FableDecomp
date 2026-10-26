@@ -7,7 +7,7 @@ static int g_destroyed = 0;
 static int g_freed = 0;
 static void FreeBlock(void* p) { if (p) { ++g_freed; free(p); } }
 class CParticleSimulation;
-struct CCPPointerInfo { long RefCount; };
+class CCPPointerInfo { public: long RefCount; };
 template <class T> class CCountedPointer {
 public:
     T*              Data;

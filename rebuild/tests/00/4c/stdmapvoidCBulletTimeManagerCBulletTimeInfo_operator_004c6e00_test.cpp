@@ -28,7 +28,7 @@ struct SValue {
 static SNode g_pool[16];
 static int g_used = 0;
 static int g_inserts = 0;
-struct CMap {
+class CMap { public:
     SNode* _M_header;
     unsigned long _M_node_count;
     SIterator insert_unique(SIterator, const SValue& value)

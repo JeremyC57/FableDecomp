@@ -12,13 +12,13 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod, fabs)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 __forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -30,14 +30,14 @@ struct CInterfaceMap {
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     FILL10(0) FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5) FILL10(6)
     virtual C3DVector GetFacingDirection();     // slot 70 (+0x118)
 };
 struct CTCFieldOfView {
     float GetFieldOfView();                     // 0x007445D0
 };
-struct CTCLook {
+class CTCLook { public:
     float GetHeadAngleOffset();                 // 0x00751A80
 };
 

@@ -19,7 +19,7 @@ struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
 namespace NInventory { class CPerItemData; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;                                            // +0x00
     void* Info;                                            // +0x04 CCPPointerInfo*
     ~CCountedPointer();                                    // 0x005C04BF

@@ -11,7 +11,7 @@
 static int g_calls = 0; static void* g_entries[8]; static float g_duration = 0;
 struct CEnvironmentThemePriorityStackEntry { unsigned char _body[0x30]; void TransitionToDefaultTheme(float duration) { g_entries[g_calls++] = this; g_duration = duration; } };
 struct CEnvironmentThemePriorityStack { CEnvironmentThemePriorityStackEntry* m_pBegin; CEnvironmentThemePriorityStackEntry* m_pEnd; CEnvironmentThemePriorityStackEntry* m_pCapacity; };
-struct CEnvironment { unsigned char _pad0[0x3e]; bool ForcedEnvironmentTheme; unsigned char _pad1[0x48 - 0x3f]; CEnvironmentThemePriorityStack* PriorityStackChannels;
+class CEnvironment { public: unsigned char _pad0[0x3e]; bool ForcedEnvironmentTheme; unsigned char _pad1[0x48 - 0x3f]; CEnvironmentThemePriorityStack* PriorityStackChannels;
     void TransitionToDefaultThemeAllChannels(long priority, float duration) {
         if (ForcedEnvironmentTheme) return;
         if (priority < 1 || priority >= 5) return;

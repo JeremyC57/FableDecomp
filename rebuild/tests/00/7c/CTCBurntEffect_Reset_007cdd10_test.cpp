@@ -6,12 +6,12 @@
 #include <stdio.h>
 #include <string.h>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, int length = -1) : Text(text) { (void)length; }
 };
@@ -31,7 +31,7 @@ struct CEffectDef {
         return true;
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) {}
     ~CDefPointer() { if (Data) { if (--Data->RefCount == 0) Data->Destroy(); } }
@@ -39,7 +39,7 @@ template <class T> struct CDefPointer {
 };
 static CEffectDef g_effectDef;
 static bool g_hasSubDef;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CEffectDef>* out)
     {
         if (!g_hasSubDef)
@@ -49,13 +49,13 @@ struct CDefClassBase {
         return true;
     }
 };
-struct CSpecialAbilitiesBurntEffectDef : CDefClassBase {
+class CSpecialAbilitiesBurntEffectDef : public CDefClassBase { public:
     float FadeInTime;
     float FadeOutTimeStart;
     float FadeOutTime;
 };
-struct CThing;
-template <class T> struct CIntelligentPointer {
+class CThing;
+template <class T> class CIntelligentPointer { public:
     T* m_pItem;
     CIntelligentPointer(T* item) : m_pItem(item) {}
 };
@@ -67,7 +67,7 @@ template <class T> struct CRetailVector {
 struct CTCBaseX { int _x; };
 static int g_attaches;
 static CThing* g_attachThing[3]; static long g_attachType[3]; static const char* g_attachHelper[3]; static void* g_attachEmitter[3];
-struct CTCDParticleEmitter : CTCBaseX {
+class CTCDParticleEmitter : public CTCBaseX { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset)
     {
         g_attachThing[g_attaches] = thing; g_attachType[g_attaches] = attachType; g_attachHelper[g_attaches] = helperName.Text;
@@ -126,10 +126,10 @@ static long g_FramesPerSecond;
 static const CCharString g_BurntHelperA("HELPER_A");
 static const CCharString g_BurntHelperB("HELPER_B");
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
 };
-struct CTCBurntEffect : CTCBase {
+class CTCBurntEffect : public CTCBase { public:
     CSpecialAbilitiesBurntEffectDef* PDef;
     long CurTime;
     long FadeInTime;

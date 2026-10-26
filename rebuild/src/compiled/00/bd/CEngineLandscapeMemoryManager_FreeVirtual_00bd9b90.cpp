@@ -6,7 +6,7 @@
 // Globals: the global allocator pointer @ 0x013CAA90 (as the landed AllocVirtual 0x00BD9AF0) and the byte flag @ 0x013CAA94.
 // Shape: `delete g` through a class `static void __fastcall operator delete(void*)` (GOTCHAS 24h: `mov ecx,[g] ; test ; mov esi,ecx ;
 // call dtor ; mov ecx,esi ; call`), the global re-read after each call, then the explicit null store.
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void InternalDeallocate(void* block);          // 0x009F2920
     long GetAllocationCount();                     // 0x009F1F10 (manifest "CWorld::DrawGetEnvironment", propagated)
     ~CMemoryAllocator();                           // 0x009F2310
@@ -19,7 +19,7 @@ void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
 extern bool g_bFreeGlobalAllocatorWhenEmpty_013caa94;   // 0x013CAA94
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);
 };
 

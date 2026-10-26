@@ -11,7 +11,7 @@
 // -- the models of the landed TU neighbour 0x008074A0 and of 0x00809590.
 // Shape: arguments right to left: the comparator's implicit memberwise copy is built in the argument area (`sub esp,2Ch
 // ; mov eax,esp`, ten dword moves and the bool byte), then the null value-type pointer is pushed (`push 0`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
@@ -22,7 +22,7 @@ struct PairVectorLong {                                // std::pair<C3DVector, l
     PairVectorLong(const PairVectorLong& o) : first(o.first), second(o.second) { }
 };
 
-struct CVectorCompare_BestForTargeting {               // Ego_r.pdb, 0x2C bytes (implicit memberwise copy)
+class CVectorCompare_BestForTargeting { public:               // Ego_r.pdb, 0x2C bytes (implicit memberwise copy)
     C3DVector AnchorPos;                               // +0x00
     C3DVector PreferredLine;                           // +0x0C
     float     AngleCompare;                            // +0x18

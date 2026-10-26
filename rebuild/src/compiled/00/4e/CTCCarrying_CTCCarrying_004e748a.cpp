@@ -15,9 +15,9 @@
 // Leaf: ??0CTCCarrying
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -50,7 +50,7 @@ struct CRetailList_CIntelligentPointer {                // retail std::list<CInt
     CRetailList_CIntelligentPointer(const CRetailAllocator& al = CRetailAllocator());   // 0x004B8920
 };
 
-struct CTCCarrying : CTCBase {
+class CTCCarrying : public CTCBase { public:
     CVectorMap_CarrySlots           CarrySlots;         // +0x0c
     bool                            BypassFilters;      // +0x1c
     void*                           Key;                // +0x20

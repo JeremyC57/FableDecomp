@@ -8,7 +8,7 @@
 //                je R ; push esi ; call operator delete ; add esp,4 ; R: mov eax,esi ; pop esi ; ret 4
 // Vtable slot 0 of 0x0129C95C (rtti-vtables.tsv): the compiler-generated `??_G` of a class with a
 // virtual destructor; the destructor body (0x00A01C10) is inlined into it.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseObjectPointer {
     CBaseObject* PItem;        // +0x00

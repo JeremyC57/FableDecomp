@@ -24,7 +24,7 @@ class CThing;
 class CBaseObject;
 class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -73,7 +73,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
 };
 
 struct random_access_iterator_tag {

@@ -1,4 +1,4 @@
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     char pad[0xc];
     char m_field0c;
 };

@@ -22,7 +22,7 @@ struct CCountedObject {                            // counted object: vptr, then
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) { }
     ~CIVCountedPointer() { Release(); }
@@ -43,17 +43,17 @@ struct CIVCountedPointer {
     }
 };
 
-struct C3DMeshLODInfo : CCountedObject { };
+class C3DMeshLODInfo : public CCountedObject { public: };
 
-struct CMeshDataBankEntry {                        // the 12-byte root: vptr + two words
+class CMeshDataBankEntry { public:                        // the 12-byte root: vptr + two words
     virtual void v00();
     long Bank;                                      // +0x04
     long Index;                                      // +0x08
     ~CMeshDataBankEntry() { }
 };
 
-struct C3DMeshInfo : CMeshDataBankEntry {
-    struct CMeshData : CCountedObject {            // PDB C3DMeshInfo::CMeshData (32 bytes)
+class C3DMeshInfo : public CMeshDataBankEntry { public:
+    class CMeshData : public CCountedObject { public:            // PDB C3DMeshInfo::CMeshData (32 bytes)
         CIVCountedPointer<C3DMeshLODInfo> LODMeshes[4];   // +0x08
         CIVCountedPointer<C3DMeshLODInfo> MeshStats;      // +0x18
         unsigned long                     MeshID;         // +0x1c

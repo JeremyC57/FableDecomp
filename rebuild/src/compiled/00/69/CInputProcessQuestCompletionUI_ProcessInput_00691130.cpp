@@ -38,7 +38,7 @@ public:
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     unsigned char _pad00[0x0c];
     bool          Active;                          // +0x0C
     unsigned char _pad0d[0x0f];
@@ -62,7 +62,7 @@ struct CTCMap {                                    // the thing's component map 
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20: which component kinds the thing holds
     CTCMap        m_tcs;                           // +0x44

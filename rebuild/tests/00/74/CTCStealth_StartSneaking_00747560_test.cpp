@@ -1,7 +1,7 @@
 // Behaviour test for CTCStealth::StartSneaking (0x00747560): once only, mode 7 when the mode manager exists.
 #include <cstdio>
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -14,7 +14,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template <class T>
@@ -35,11 +35,11 @@ struct CThing {
 
 static int g_addMode = 0;
 static unsigned long g_mode = 0;
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode) { ++g_addMode; g_mode = mode; return true; }
 };
 
-struct CTCStealth {
+class CTCStealth { public:
     CThing* ParentThing;
     bool    Sneaking;
     void StartSneaking();

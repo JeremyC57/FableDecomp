@@ -19,7 +19,7 @@ struct CInterfaceMap {                          // a thing's sorted {type, compo
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
@@ -42,7 +42,7 @@ struct CBlendPair {                             // the two floats at CAnimInit +
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                              // 0x2c bytes
+class CAnimInit { public:                              // 0x2c bytes
     long          Mode;                         // +0x00
     unsigned char AnimType;                     // +0x04
     bool          Flag05;                       // +0x05
@@ -58,7 +58,7 @@ struct CAnimInit {                              // 0x2c bytes
         Set(animType, arg24, animIndex, mode, flag05, flags, percent);
     }
 };
-struct CAnimateThing {                          // the thing's animation player
+class CAnimateThing { public:                          // the thing's animation player
     unsigned char _pad00[0x04];
     void*         m_pCurrent;                   // +0x04
     void*         m_pEnd;                       // +0x08
@@ -69,10 +69,10 @@ struct CAnimateThing {                          // the thing's animation player
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
     bool IsFinished() const { return m_pCurrent == m_pEnd || (m_stateFlags & 2); }
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();              // 0x0070B460
 };
-struct CBedDef {
+class CBedDef { public:
     unsigned char _pad00[0x28];
     long GetInBedAnimName;                      // +0x28 CDefString
     long SleepInBedAnimName;                    // +0x2c

@@ -9,7 +9,7 @@
 // the global zero vector 0x012B95E4, and a parameter mask 0x1FFFFF at +0 (21 flag bits).
 // Shape: plain body assignments in retail's store order; the 1.0f and 0 constants VC shares in eax/edx.
 // Leaf: SetDefaults
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern const C3DVector C3DVector_Zero;                 // 0x012B95E4
 
 struct CReverbSettings00c6adb0 {

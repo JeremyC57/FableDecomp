@@ -3,11 +3,11 @@
 // Callees: none. Constant 1.0 (0x0122DED8). Shape: pure x87 per component -- `fsub origin ; fdiv size ; fadd st,st(0)` (the `* 2` is a self-add) `; fsub 1.0`;
 // the Y result is negated with `fchs` before its store. PDB CEngineCamera: CameraDesc at +0x14 (0x6c bytes) holds the screen origin (+0x14/+0x18) and the
 // viewport scale lives at +0xb0/+0xb4 (beyond the PDB layout in the shipped build), so the members are modelled locally.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad[0x14];
     float m_screenOriginX;                         // +0x14
     float m_screenOriginY;                         // +0x18

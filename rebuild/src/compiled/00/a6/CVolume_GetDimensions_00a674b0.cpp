@@ -28,7 +28,7 @@ struct C3DVectorI {
     long X, Y, Z;
     C3DVectorI(long x, long y, long z) : X(x), Y(y), Z(z) {}
 };
-struct CVolume : CBase {
+class CVolume : public CBase { public:
     IDirect3DVolume9* m_pVolume;
     C3DVectorI GetDimensions() const;
 };

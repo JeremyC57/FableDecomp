@@ -8,7 +8,7 @@
 // Shape: the iterator is a named local returned into the `push ecx` frame slot and re-read from it
 // (`mov edx,[esp+4]`; comparing the call's returned pointer loads `[eax]` instead); the key is the
 // argument's own slot; the nested `if` gives the shared `xor al,al` tail.
-struct CThing;
+class CThing;
 struct SAnimNode;
 
 struct CAnimSetIterator {
@@ -16,13 +16,13 @@ struct CAnimSetIterator {
     CAnimSetIterator() { }
 };
 
-struct CAnimSet {                                   // VC6 Dinkumware set<long>: {head, size}
+class CAnimSet { public:                                   // VC6 Dinkumware set<long>: {head, size}
     SAnimNode*    m_head;
     unsigned long m_size;
     CAnimSetIterator find(const long& key);         // 0x00616580
 };
 
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     unsigned char _pad00[0xc0];
     CAnimSet      ValidAnimList;                    // +0xc0 (PDB +0xcc)
     bool IsCombatSpline();                          // 0x0075C4F0

@@ -2,7 +2,7 @@
 // interface with the caller's fade flag and `true`; dead things are skipped.
 #include <cstdio>
 
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     bool alive;
     bool IsAlive() const { return alive; }
@@ -13,7 +13,7 @@ struct CThingVector {
     const CScriptThing* begin() const { return _M_start; }
     const CScriptThing* end() const { return _M_finish; }
 };
-struct CGameScriptInterfaceBase {
+class CGameScriptInterfaceBase { public:
     int removed[8];
     int count;
     int badFlags;

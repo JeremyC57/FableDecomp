@@ -11,18 +11,18 @@
 
 struct CBlankTextureSlot { unsigned char _slot[8]; };   // 8-byte per-type slot (manifest return type: CTexture*)
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     unsigned char _pad_0x000[0x2B4];
     CBlankTextureSlot BlankTextures[1];           // +0x2B4 indexed by ETextureType
 };
 
-struct CGraphicInfo {
+class CGraphicInfo { public:
     unsigned char     Header[0x1C];               // +0x00 CGraphicHeader (PDB)
     long              TextureType;                // +0x1C ETextureType (PDB)
     CGraphicDataBank* Bank;                       // +0x20 (PDB)
 };
 
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     void*          __vftable;                     // +0x00
     unsigned short FrameNum;                      // +0x04 (PDB)
     signed char    SmallMipmapLevel;              // +0x06 (PDB)

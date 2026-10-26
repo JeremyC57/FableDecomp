@@ -11,9 +11,9 @@
 //   CQ_TraderConflictEvilScript retail = Ego_r.pdb - 0x18 after AllCreatures (as the landed WatchTimeLimit 0x00DF7980):
 //   AllCreatures +0x48, NumberSpawned +0x58, InitialNumberInRegion +0x5c, QuestStartScreened +0x60,
 //   NextTimeToSpawnGuards +0x64.
-struct CCharString;
-struct C3DVector;
-struct CBaseClass {                                     // vtable 0x01231710
+class CCharString;
+class C3DVector;
+class CBaseClass { public:                                     // vtable 0x01231710
  virtual void v00();
  CBaseClass() { }
 };
@@ -23,7 +23,7 @@ struct CCountedPointer {                                // CCountedPointer<CScri
  CCountBlock* Info;
  CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
 };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
  virtual void v00();
  virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
  virtual const C3DVector& GetPos() const;               // slot 6 (+0x18) 0x004AA980
@@ -40,31 +40,31 @@ struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01
 };
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
-struct CPredicateBase {virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-struct CIsThingAlive:CPredicateBase {
+class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
+class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };
 }
-struct C2DCoordI;
-struct C2DVector;
-struct C3DVector;
-struct CCharString;
-struct CRGBColour;
-struct CRGBFloatColour;
-struct CRightHandedSet;
+class C2DCoordI;
+class C2DVector;
+class C3DVector;
+class CCharString;
+class CRGBColour;
+class CRGBFloatColour;
+class CRightHandedSet;
 struct CScreenFilterSThingByPass;
-struct CScriptGameResourceObjectMovieBase;
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CThing;
-struct CTimer;
-struct CWideString;
-template<class T> struct CArray;
-struct CCounter;
+class CScriptGameResourceObjectMovieBase;
+class CScriptGameResourceObjectScriptedThingBase;
+class CThing;
+class CTimer;
+class CWideString;
+template<class T> class CArray;
+class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
-struct CHeroLogBook { struct CHeroLogBookEntry { typedef long ECategory; }; };
+class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
 typedef long ECameraOp;
 typedef long EClothingCoversArea;
 typedef long ECreatureGroup;
@@ -937,7 +937,7 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-struct CCharString {
+class CCharString { public:
  void* PStringData;
  CCharString();                                     // 0x0099E4B0
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -945,12 +945,12 @@ struct CCharString {
  ~CCharString();                                    // 0x0099EAE0
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CBaseObject {
+class CBaseObject { public:
  void* m_pIntelligentPointer;
  CBaseObject();                                     // 0x0099A380
  virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -963,14 +963,14 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
 };
 extern bool g_bScriptAnimationFlag;                 // 0x01375748 (a global bool the script headers pass as an animation default)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                       // 0x0143E8E0
 struct CScriptThingImp {
  virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();
  virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)
 };
 extern "C" int __cdecl rand();                         // 0x00BFEB16
-struct CScriptDef {
+class CScriptDef { public:
  unsigned char _pad[0xf88];
  long GuardBlueThreshold;                            // +0xf88 (descriptive)
  long GuardCrossbowThreshold;                        // +0xf8c

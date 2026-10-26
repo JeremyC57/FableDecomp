@@ -1,10 +1,10 @@
 #include <cstdio>
 static int g_order[8]; static int g_n = 0;
-struct CCharString {
+class CCharString { public:
     int m_tag;
     ~CCharString() { if (g_n < 8) g_order[g_n++] = m_tag; }
 };
-struct CWideString {
+class CWideString { public:
     int m_tag;
     ~CWideString() { if (g_n < 8) g_order[g_n++] = m_tag; }
 };

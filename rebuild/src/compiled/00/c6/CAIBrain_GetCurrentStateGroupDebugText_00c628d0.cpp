@@ -5,7 +5,7 @@
 struct CStateGroup {
     virtual int v0(); virtual int v1(); virtual int v2(); virtual int v3(); virtual int v4();
 };
-struct CAIBrain { void *pad0; CStateGroup *m_group; int GetCurrentStateGroupDebugText(); };
+class CAIBrain { public: void *pad0; CStateGroup *m_group; int GetCurrentStateGroupDebugText(); };
 int CAIBrain::GetCurrentStateGroupDebugText()
 {
     if (m_group == 0) return -1;

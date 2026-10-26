@@ -9,7 +9,7 @@
 // into a local that the body never reads -- the out-of-line call survives); the global and the def pointer are named
 // locals read BEFORE the frame call (the int is parked in the `push ecx` frame slot for `fild`, the def in edi), the frame
 // number rides in ebx across `__ftol2`.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -17,16 +17,16 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x91];
     unsigned char Dead : 1;                         // +0x91 bit 0
 };
 
-struct CKrakenTentacleDef {
+class CKrakenTentacleDef { public:
     unsigned char _pad_0x00[0x40];
     float         StrikeDelaySeconds;               // +0x40
 };
@@ -34,7 +34,7 @@ struct CKrakenTentacleDef {
 extern long g_framesPerSecond;                      // 0x01375550
 long GetCurrentFrame();                             // 0x0049D870
 
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     unsigned char               _pad_0x00[0x0c];
     const CKrakenTentacleDef*   PTentacleDef;       // +0x0c
     CIntelligentPointer<CThing> PKraken;            // +0x10

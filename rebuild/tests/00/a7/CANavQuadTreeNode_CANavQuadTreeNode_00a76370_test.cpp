@@ -1,6 +1,6 @@
 #include <cstdio>
 // Model of CANavQuadTreeNode::CANavQuadTreeNode @ 0x00A76370: position, level, layer, leaf = true, blocked = false.
-struct C2DVector { float X, Y; C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {} C2DVector(float x, float y) : X(x), Y(y) {} };
+class C2DVector { public: float X, Y; C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {} C2DVector(float x, float y) : X(x), Y(y) {} };
 static int g_base;
 struct CBaseClassNonCopyable { virtual ~CBaseClassNonCopyable() {} CBaseClassNonCopyable() { ++g_base; } };
 struct Node : CBaseClassNonCopyable {

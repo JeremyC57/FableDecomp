@@ -10,22 +10,22 @@
 // Shape: the search rectangle is a function-scope local written member by member (Left/Top/Right/Bottom); a ctor or a
 // block-scoped rectangle shares the look-at vector's frame words (frame 0x54) and schedules x+60 first.
 #include <stdio.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CCharString {
+class CCharString { public:
     void* PData;
     CCharString(const char* text, long length);  // 0x0099EBF0
     CCharString(const CCharString& other);       // 0x0099EC30
     ~CCharString();                              // 0x0099EAE0
 };
-struct CThingFilter_HasDefGlobalIndex {
+class CThingFilter_HasDefGlobalIndex { public:
     CCharString Name;
     CThingFilter_HasDefGlobalIndex(const CCharString& name) : Name(name) { }
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
@@ -34,14 +34,14 @@ struct CRectI {
     CRectI() { }
 };
 unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -49,16 +49,16 @@ struct CThing {
     C3DVector StartPos;                         // +0xe8
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingCreatureBase : CThing { };
-struct CTCCreatureNavigation {
+class CThingCreatureBase : public CThing { public: };
+class CTCCreatureNavigation { public:
     void SetNavigatorToType(long type);         // 0x006CBA80
 };
 extern long g_NavigatorTypeHover;               // 0x0129CB44
 extern long g_NavigatorTypeDefault;             // 0x0129CBA4
-struct CWorld {
+class CWorld { public:
     unsigned long& GetRandomSeed();             // 0x0049D810
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThing* GetPFirstThingInRoughArea(const CRectI& area, const CThingFilter_HasDefGlobalIndex& filter, CThing** found);   // 0x007FD110
 };
 struct CBaseIntelligentPointer {
@@ -66,13 +66,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

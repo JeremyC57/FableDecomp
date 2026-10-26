@@ -5,7 +5,7 @@
 
 int g_lightningCastTicks; // global int at 0x1375550, loaded via fild
 
-struct CTCWillLightning {
+class CTCWillLightning { public:
     char pad00[0x1c];
     int   m_timeToCast;   // +0x1c
     char pad20[0x5b - 0x20];

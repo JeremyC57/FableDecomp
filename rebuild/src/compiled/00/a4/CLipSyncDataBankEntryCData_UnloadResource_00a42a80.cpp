@@ -13,7 +13,7 @@
 // `Info->RefCount == 1` folds into `cmp dword ptr [eax],1`); the inlined
 // CIVCountedPointer::operator=(0) as in the landed CFrameData::OnResourceLoaded (0x009FF860): the release through
 // a local pointee copy with its zero store inside the null test, then the assignment's unconditional zero store.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4
@@ -40,24 +40,24 @@ struct CIVCountedPointer {
     }
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                // +0
     void (__fastcall* DeleteFunc)(void*);          // +4
     void* Data;                                    // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                          // +0
     CCPPointerInfo* Info;                          // +4
     bool IsValid() const { return Data != 0; }
     long GetRefCount() const { return Info ? Info->RefCount : 0; }
 };
 
-struct CLipSyncSampleData;
-struct CBankFileAsyncData;
-struct CLipSyncDataBank;
+class CLipSyncSampleData;
+class CBankFileAsyncData;
+class CLipSyncDataBank;
 
-struct CLipSyncDataBankEntry {
+class CLipSyncDataBankEntry { public:
     CIVCountedPointer Data;                        // +0x00 CIVCountedPointer<CData>
 };
 

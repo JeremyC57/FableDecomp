@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing;
-struct CBaseObject { int id; };
+class CThing;
+class CBaseObject { public: int id; };
 static int g_registered = 0, g_unregistered = 0, g_tcBaseDtors = 0;
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase() { ++g_tcBaseDtors; }
     CThing* ParentThing;
     bool ToBeRemoved, IsInGlobalUpdateTCs;
@@ -28,11 +28,11 @@ struct CIntelligentPointer {
     void SetPItem(CBaseObject* item) { m_pItem = item; }
     CBaseObject* GetPItem() const { return m_pItem; }
 };
-struct CThing { int id; };
+class CThing { public: int id; };
 
 static char g_log[64]; static int g_logLen = 0;
 static void Log(char c) { g_log[g_logLen++] = c; g_log[g_logLen] = 0; }
-struct CTCActionUseBase : CTCBase {
+class CTCActionUseBase : public CTCBase { public:
     CDefPointer PActionUseDef; bool Usable;
     CTCActionUseBase(CThing& owner) : CTCBase(owner), Usable(true) { }
     ~CTCActionUseBase() { Log('D'); }        /* the def release runs after this body */

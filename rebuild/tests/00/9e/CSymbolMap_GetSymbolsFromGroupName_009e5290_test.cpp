@@ -4,9 +4,9 @@
 #include <cstdlib>
 #include <new>
 
-struct CCharStringData { const char* Chars; unsigned int Length; };
+class CCharStringData { public: const char* Chars; unsigned int Length; };
 static long Compare(const char* a, const char* b) { int r = std::strcmp(a, b); return r < 0 ? -1 : (r > 0 ? 1 : 0); }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {
@@ -41,7 +41,7 @@ struct CArray {
 };
 
 struct SSymbolPair { CCharString first; CSymbolInfo second; };
-struct CSymbolMap {
+class CSymbolMap { public:
     int _padding_;
     SSymbolPair* m_pFirst; SSymbolPair* m_pLast; SSymbolPair* m_pEnd;
     bool GetSymbolsFromGroupName(const CCharString& group, CArray& symbols) const

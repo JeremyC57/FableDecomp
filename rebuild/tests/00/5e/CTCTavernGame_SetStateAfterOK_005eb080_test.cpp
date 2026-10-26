@@ -2,7 +2,7 @@
 
 static bool g_quit;
 static int g_sounds, g_texts;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     long YesState, NoState, AltState, TavernGameState, PreviousTavernGameState; int leaves;
     CTCTavernGame() : YesState(9), NoState(9), AltState(9), TavernGameState(30), PreviousTavernGameState(0), leaves(0) {}
     void LeaveGame() { ++leaves; }

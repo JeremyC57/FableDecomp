@@ -26,29 +26,29 @@ public:
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0 dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* Info;
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     mutable long m_refCount;
     void AddRef() const { ++m_refCount; }
 };
-struct CCameraModeDef : CDefPointeeBase {};
-struct CCameraManagerDef : CDefPointeeBase {};
-template<class T> struct CDefPointer {
+class CCameraModeDef : public CDefPointeeBase { public:};
+class CCameraManagerDef : public CDefPointeeBase { public:};
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
 };
@@ -60,7 +60,7 @@ extern CDefPointer<const CCameraModeDef> g_CameraModeDef;   // 0x013BA8D8
 
 class CGameCameraManager;
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     CBase(CGameCameraManager& manager, const CDefPointer<const CCameraModeDef>& def);   // 0x0084E420
     virtual ~CBase();
     unsigned char _body[0xb8];
@@ -71,7 +71,7 @@ struct COrbitGame : CBase {                         // vtable 0x0125C6DC
 };
 }
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     CCountedPointer(T* data);                       // 0x0056C880

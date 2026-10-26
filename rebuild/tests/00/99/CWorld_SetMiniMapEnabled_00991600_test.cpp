@@ -1,11 +1,11 @@
 #include <cstdio>
 
-struct CWorld;
+class CWorld;
 struct CWorldVtbl {
     void (__fastcall *slots[0x10])(CWorld*);
     void (__fastcall *onDisable)(CWorld*);
 };
-struct CWorld {
+class CWorld { public:
     CWorldVtbl* vtbl;
     char pad[0x24 - 4];
     bool f24;

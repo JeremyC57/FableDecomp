@@ -10,8 +10,8 @@
 // Shape: `x < k` early returns (`test ah,5 ; jnp`); the class operator new is the inlined heap Alloc (null when the heap may not
 // grow) merged with new's null test; STLport push_back with the __true_type tag homed in the dead argument slot (the pushed
 // pointer lives there too).
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public: float R, G, B, A; };
 
 struct CObjectEntry { CObjectEntry* Next; };
 
@@ -53,7 +53,7 @@ struct CManagerShadowedSpotLight {
     static void operator delete(void*) { }
 };
 
-struct CEngineInternalPrimitiveShadowedSpotLight {
+class CEngineInternalPrimitiveShadowedSpotLight { public:
     unsigned char   _base[0x48];
     C3DVector       WorldPos;                      // +0x48
     C3DVector       Direction;                     // +0x54
@@ -94,7 +94,7 @@ __declspec(noinline) void CPointerVector<T>::_M_insert_overflow(T** position, T*
 }
 #pragma auto_inline(on)
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char                             _pad[0xb8];
     CPointerVector<CManagerShadowedSpotLight> ShadowedSpotLightList;   // +0xb8
     void AddLightPrimitive(const CEngineInternalPrimitiveShadowedSpotLight& light);

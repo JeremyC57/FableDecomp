@@ -15,15 +15,15 @@
 // Shape: the creature is read DIRECTLY as `PBrain->PCreature` at the loop head and in the reached block (parse-time field
 //        chains take distinct scratch registers: PBrain ecx, creature eax, PBody edx), but through the inline GetCreature()
 //        accessor at the SetCurrentAction call (the inline-expanded chain leaves eax for the action temp's lea).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct C3DVector { float x, y, z; };
-struct C2DVector {
+class C3DVector { public: float x, y, z; };
+class C2DVector { public:
     float x, y;
     C2DVector(float ax, float ay) : x(ax), y(ay) {}
     float GetLengthSquared() const { return x * x + y * y; }
@@ -32,7 +32,7 @@ struct CThingPhysicsBody {
     unsigned char _pad[0x34];
     float Radius;                               // +0x34
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -53,13 +53,13 @@ struct CThing {
         return false;
     }
 };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct CCurrentAction {
     unsigned char _pad[0x61];
     unsigned char Finished;                     // +0x61
     long GetActionCode();                       // 0x00692620 (manifest "DrawGetEnvironment" label is propagated)
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad94[0x100 - 0x94];
     CCurrentAction* PCurrentAction;             // +0x100
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
@@ -81,19 +81,19 @@ inline bool IsTargetAlive(const CIntelligentPointerThing& p)
     }
     return false;
 }
-struct CTCStealth {                             // interface 0x36
+class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* source, long status);   // 0x00747B80
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
     ~CCombatActionBase();                       // 0x0062E900
@@ -107,20 +107,20 @@ struct CCreatureAction_SummonerChargeOutOf : CCombatActionBase {
     CCreatureAction_SummonerChargeOutOf(CThingCreatureBase* owner, CThing* thing);   // 0x00970420
     CCreatureAction_SummonerChargeOutOf(CThingCreatureBase* owner);   // 0x00970370
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 extern long g_FramesPerSecond;                  // 0x01375550
-struct CSummonerDef {
+class CSummonerDef { public:
     unsigned char _pad[0x44];
     float ChargeReach;                          // +0x44
     float ChargeDelay;                          // +0x48
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

@@ -12,14 +12,14 @@
 // operator=, which copies each as one `lea` block; the floats/arrays after them are plain dword moves.
 // rebuild/include/engine/C3DMeshInfo.h flattens the box/sphere into byte arrays, which cannot reproduce the block copies,
 // so this TU uses a local model with the same offsets.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     unsigned long IVRefCount;                      // +0x04
     void AddRef() { ++IVRefCount; }
     void Release() { if (--IVRefCount == 0) DeleteThis(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer& operator=(const CIVCountedPointer& o)
     {
@@ -35,14 +35,14 @@ template <class T> struct CIVCountedPointer {
         return *this;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox {
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public:
     C3DVector MinCoord;                            // +0x00
     C3DVector MaxCoord;                            // +0x0c
     C3DBoundingBox() {}
     C3DBoundingBox(const C3DBoundingBox& o) : MinCoord(o.MinCoord), MaxCoord(o.MaxCoord) {}
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;                              // +0x00
     float Radius;                                  // +0x0c
     C3DBoundingSphere() {}
@@ -55,7 +55,7 @@ struct CMeshInfoBase {                             // retail base: vptr +0, two 
 };
 struct CMeshData : CIVCountedPointeeBase { };
 
-struct C3DMeshInfo : CMeshInfoBase {
+class C3DMeshInfo : public CMeshInfoBase { public:
     CIVCountedPointer<CMeshData> MeshData;         // +0x0c
     C3DBoundingBox BoundingBox;                    // +0x10
     C3DBoundingSphere BoundingSphere;              // +0x28

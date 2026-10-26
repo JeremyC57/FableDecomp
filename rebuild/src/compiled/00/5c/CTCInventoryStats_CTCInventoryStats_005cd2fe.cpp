@@ -13,7 +13,7 @@
 // GOTCHAS wave 25); finally the primary base destructor as a tail jump. CBase is a bare vptr (its vtable has no
 // destructor slot: slot 0 is the CWideString getter, slots 1/2 return the screen ids 10/9 for Stats, slot 3 a bool).
 // Local model (no engine header for CTCInventoryStats / CTCInventoryBase).
-struct CThing {
+class CThing { public:
     void Kill(bool immediate);                // 0x004C9B80
 };
 
@@ -23,7 +23,7 @@ struct CTCInventoryBase_Retail {              // primary base, retail size 0x130
 };
 
 namespace NHeroInformationScreens {
-struct CBase {                                // secondary base at +0x130, vptr only
+class CBase { public:                                // secondary base at +0x130, vptr only
     virtual long vfunc_0();
     virtual long vfunc_1();
     virtual long vfunc_2();
@@ -37,7 +37,7 @@ struct CCreatureKillMap {                     // map<unsigned long, long>, retai
     ~CCreatureKillMap();                      // 0x004518E1
 };
 
-struct CTCInventoryStats : CTCInventoryBase_Retail, NHeroInformationScreens::CBase {
+class CTCInventoryStats : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     CCreatureKillMap CreaturesKilled;         // +0x134
     CThing* pMannequin;                       // +0x140
     bool UseMannequin;                        // +0x144

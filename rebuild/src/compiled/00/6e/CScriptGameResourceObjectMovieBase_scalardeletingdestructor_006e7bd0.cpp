@@ -22,7 +22,7 @@ struct SCountBlock {                           // the shared count block of a CC
     void* m_pObject;                           // +0x08
 };
 
-template<class T> struct CCountedPointer {     // {object, count block}
+template<class T> class CCountedPointer { public:     // {object, count block}
     T*           m_pObject;                    // +0x00
     SCountBlock* m_pCount;                     // +0x04
     __forceinline ~CCountedPointer()
@@ -45,11 +45,11 @@ namespace N_0099a430 { struct CBaseIntelligentPointer {               // the int
     ~CBaseIntelligentPointer();                // 0x0099A430
 }; } using N_0099a430::CBaseIntelligentPointer;
 
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     __forceinline virtual ~CScriptGameResourceObjectBase() {}
 };
 
-struct CScriptGameResourceObjectMovieBase {   // retail: derives from CScriptGameResourceObjectBase (vtable 0x01260EF4)
+class CScriptGameResourceObjectMovieBase { public:   // retail: derives from CScriptGameResourceObjectBase (vtable 0x01260EF4)
     CScriptGameResourceObjectBase  m_base;     // +0x00 vptr + root
     CCountedPointer<CScriptGameResourceObjectMovieBase> PImp;   // +0x08
     __forceinline ~CScriptGameResourceObjectMovieBase() {}

@@ -2,7 +2,7 @@
 #include <cstring>
 struct CComponent { int id; };
 struct CEditBox;
-struct CWideString { void* PStringData; CWideString() : PStringData(0) {} };
+class CWideString { public: void* PStringData; CWideString() : PStringData(0) {} };
 struct CVirtualKeyboard {
     CWideString ProfileName; bool Canceled; bool Done; CComponent* PEntryScreen; CEditBox* PEntryBox;
     CVirtualKeyboard(CComponent* entryScreen) : Canceled(false), Done(false), PEntryScreen(entryScreen), PEntryBox(0) {}

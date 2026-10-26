@@ -8,13 +8,13 @@
 // Time on sits 8 bytes below its PDB offset, so Zoom +0x5c (PDB +0x64), TargetZoom +0x64, InitialZoom +0x6c.
 // Shape: three memberwise C2DVector copies through edx, the source re-read for each one (the reference may alias
 // the members), target first, then initial, then the current zoom.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     unsigned char _pad00[0x5c];
     C2DVector Zoom;                         // +0x5c
     C2DVector TargetZoom;                   // +0x64

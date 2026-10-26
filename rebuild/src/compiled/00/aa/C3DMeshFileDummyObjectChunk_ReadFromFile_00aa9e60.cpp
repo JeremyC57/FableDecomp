@@ -14,9 +14,9 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class CChunkedFileLoader;
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     void SetIdentity()
     {
@@ -24,9 +24,9 @@ struct CMatrix3x4 {
         XAxis.X = YAxis.Y = ZAxis.Z = 1.0f;
     }
 };
-struct CCharString { void* m_pStringData; };
+class CCharString { public: void* m_pStringData; };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();                  // slot 2 (+0x08)
     CMatrix3x4 ReadMatrix3x4();                           // 0x00995340 (by value through the hidden pointer)
@@ -56,18 +56,18 @@ struct CDataInputStream {
     __forceinline bool ReadBool() { char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0();
     unsigned char _base_body[0x28];        // +0x04 .. +0x2b (retail C3DMeshFileChunk size 0x2c)
 };
-struct C3DMeshFileHelperPointChunk : CChunkedFileSuperChunk {
+class C3DMeshFileHelperPointChunk : public CChunkedFileSuperChunk { public:
     C3DVector Position;                    // +0x2c
     long SubMeshIndex;                     // +0x38
     long BoneIndex;                        // +0x3c
     CCharString Name;                      // +0x40
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);  // 0x00AA9BA0
 };
-struct C3DMeshFileDummyObjectChunk : C3DMeshFileHelperPointChunk {
+class C3DMeshFileDummyObjectChunk : public C3DMeshFileHelperPointChunk { public:
     C3DVector Direction;                   // +0x44 (PDB +0x4c)
     CMatrix3x4 Transform;                  // +0x50
     bool UseLocalOrigin;                   // +0x80

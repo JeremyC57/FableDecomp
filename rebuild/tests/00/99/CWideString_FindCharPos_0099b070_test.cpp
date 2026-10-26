@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cwchar>
-struct CWideStringData { wchar_t* Start; wchar_t* Finish; wchar_t* EndOfStorage; long NoRefs; };
+class CWideStringData { public: wchar_t* Start; wchar_t* Finish; wchar_t* EndOfStorage; long NoRefs; };
 static wchar_t g_emptyWideString[1] = { 0 };
 class CWideString {
 public:

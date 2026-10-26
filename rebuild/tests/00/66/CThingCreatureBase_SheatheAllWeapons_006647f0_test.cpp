@@ -1,7 +1,7 @@
 // behaviour test for CThingCreatureBase::SheatheAllWeapons (0x006647F0): gates (player, carrying a weapon, TC 0x46), kill each live weapon not held
 #include <cstdio>
 #include <cstdlib>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
@@ -15,7 +15,7 @@ struct CThingVector {
     CThing** begin() { return _M_start; } CThing** end() { return _M_finish; }
 };
 static CThing* g_weapons[3]; static int g_numWeapons = 0; static CThing* g_held = 0;
-struct CTCCarrying {
+class CTCCarrying { public:
     int m_calls;
     void GetWeapons_006a22d0(CThingVector* v, bool) { ++m_calls; v->_M_start = (CThing**)std::malloc(sizeof(CThing*) * 3);
         for (int i = 0; i < g_numWeapons; ++i) v->_M_start[i] = g_weapons[i]; v->_M_finish = v->_M_start + g_numWeapons; v->_M_end_of_storage = v->_M_start + 3; }

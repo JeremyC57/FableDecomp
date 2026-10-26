@@ -16,15 +16,15 @@ static int fails = 0;
 // the value constructor, so VC7.1 keeps X/Y in the 0xC frame and homes Z in the dead pos.X argument slot as retail (an
 // operator+ through the value constructor evaluates z first; a field-by-field sum needs a 0x10 frame);
 // `return result == 2;` (`sete cl`). No engine header for this class.
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x04..+0x13
     long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580

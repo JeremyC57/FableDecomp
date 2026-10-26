@@ -1,4 +1,4 @@
-struct CCreatureAction_GoUnderground {
+class CCreatureAction_GoUnderground { public:
     void* vftable;
 };
 

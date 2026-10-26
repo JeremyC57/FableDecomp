@@ -5,11 +5,11 @@
 // `xor al,al ; ret 4`; the label "CThingFilter_IsUnconscious::operator()" is propagated), CProcessedInput::SetHandled @ 0x00A0D390
 // (NoGameEvents = 0, Type = 2; labelled "CWomanToAttract::Init"). Shape: the global's object word is tested, the `new` result
 // null-tested around the constructor, then `Reset`; the console pointer is re-read into ecx after the event is loaded.
-struct CInputEvent;
-struct CProcessedInput {
+class CInputEvent;
+class CProcessedInput { public:
     void SetHandled();                              // 0x00A0D390
 };
-struct CConsole {                                   // vtable 0x0129C600, 0x9c bytes
+class CConsole { public:                                   // vtable 0x0129C600, 0x9c bytes
     virtual void v00();
     unsigned char _body[0x98];
     CConsole();                                     // 0x009ECD80
@@ -22,7 +22,7 @@ struct CCountedPointer_CConsole {                   // {object, count block}
 };
 extern CCountedPointer_CConsole g_pConsole;         // 0x013CAA40
 
-struct CInputProcessConsole {
+class CInputProcessConsole { public:
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

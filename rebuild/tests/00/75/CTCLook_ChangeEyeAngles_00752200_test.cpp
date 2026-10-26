@@ -1,7 +1,7 @@
 // Behaviour test for CTCLook::ChangeEyeAngles (0x00752200).
 #include <cstdio>
 #include <math.h>
-struct CLookDef {
+class CLookDef { public:
     unsigned char _pad00[0x28];
     float EyesTurnRangeXY;                      // +0x28 (degrees)
     float EyesTurnRangeYZ;                      // +0x2c
@@ -10,17 +10,17 @@ struct CLookDef {
     float HeadTurnRangeYZDown;                  // +0x38
     float MaxTurnSpeed;                         // +0x3c
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CThing {
+class CThing { public:
     int Pokes; long LastReason;
     void UpdateGraphicAppearance(long reason) { ++Pokes; LastReason = reason; }
 };
-struct CThingCreatureBase;
-struct C3DVector { float X, Y, Z; };
-struct CTCLook {
+class CThingCreatureBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCLook { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[0x10 - 0x08];
     CThingCreatureBase* PParentCreature;        // +0x10

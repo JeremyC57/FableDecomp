@@ -1,9 +1,9 @@
 // Behaviour test for 0x00A90860 C3DPrimitive2::Sizeof
 #include <cstdio>
 struct CSized { unsigned long n; unsigned long Sizeof() const { return n; } };
-template<class T> struct CArray { T* m_begin; T* m_end; T* m_capacity; unsigned long Size() const { return (unsigned long)(m_end - m_begin); } };
+template<class T> class CArray { public: T* m_begin; T* m_end; T* m_capacity; unsigned long Size() const { return (unsigned long)(m_end - m_begin); } };
 template<class T> struct scoped_ptr { T* m_p; };
-template<class T> struct CCountedPointer { T* Data; void* Info; };
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
 inline unsigned long GetSizeof(const unsigned short&) { return 2; }
 template<class T> inline unsigned long GetSizeof(const scoped_ptr<T>& p) { return p.m_p ? p.m_p->Sizeof() + 4 : 4; }
 template<class T> inline unsigned long GetSizeof(const CCountedPointer<T>& p) { return p.Data ? p.Data->Sizeof() + 8 : 8; }
@@ -13,7 +13,7 @@ template<class T> inline unsigned long GetSizeof(const CArray<T>& a)
     for (const T* p = a.m_begin; p != a.m_end; ++p) total += GetSizeof(*p);
     return total;
 }
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     scoped_ptr<CSized> Data, VertexBuffer, IndexBuffer; CArray<unsigned short> Partitioned; CCountedPointer<CSized> PartitionTree;
     unsigned long Sizeof() const
     {

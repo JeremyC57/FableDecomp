@@ -9,7 +9,7 @@
 // Shape: a `changed` flag in bl; the boss lookup is the one-ternary HasTC + GetTC on the const map (component straight into
 //   ecx); the remove test is `(Timer > 0 && --Timer == 0) || changed`; the mode-manager lookup result is not tested, so the
 //   absent path calls through the never-written out variable (VC7.1 duplicates that call tail).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0 (the const instantiation)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -49,10 +49,10 @@ struct CThing {
     }
 };
 
-struct CTCBoss {                           // interface type 0xad
+class CTCBoss { public:                           // interface type 0xad
     long GetBossPhase();                   // 0x007AED10
 };
-struct CTCCreatureModeManager {            // interface 0x31
+class CTCCreatureModeManager { public:            // interface 0x31
     void RemoveMode(unsigned long mode);   // 0x0073ABA0
 };
 

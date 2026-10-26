@@ -9,12 +9,12 @@
 // manifest label is kept only when unique) and frees the object when bit 0 of the flag is set
 // (operator delete @ 0x00BFE9BC, landed-trusted). Re-emitted per translation unit; this file is the
 // copy at this address. One of 12 bodies of this shape.
-struct CEngineInternalPrimitiveOcclusionBase {
+class CEngineInternalPrimitiveOcclusionBase { public:
     virtual void v00();
     ~CEngineInternalPrimitiveOcclusionBase();                          // 0x00B9C660
 };
 
-struct CEngineInternalPrimitiveOcclusionGroup : CEngineInternalPrimitiveOcclusionBase {
+class CEngineInternalPrimitiveOcclusionGroup : public CEngineInternalPrimitiveOcclusionBase { public:
     virtual ~CEngineInternalPrimitiveOcclusionGroup() { }
 };
 

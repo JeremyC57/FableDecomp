@@ -1,6 +1,6 @@
-struct C2DExtentsI { int a; int b; };
+class C2DExtentsI { public: int a; int b; };
 
-struct CMap {
+class CMap { public:
     char pad[0x1d14];
     int f1d14; // +0x1d14
     int f1d18; // +0x1d18

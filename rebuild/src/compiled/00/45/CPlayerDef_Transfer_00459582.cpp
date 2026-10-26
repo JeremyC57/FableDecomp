@@ -2,12 +2,12 @@
 struct CSubA { char b[4]; };
 struct CSubB { char b[4]; };
 
-struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     void TransferLong(CSubA* value);                // 0x00431102 Transfer(long&)
     void TransferRGBColour(CSubA* value);           // 0x004595A3 Transfer(CRGBColour&)
 };
 
-struct CPlayerDef {
+class CPlayerDef { public:
     char pad3c[0x3c];
     CSubA m3c;   // sub-object at +0x3c
     CSubB m40;   // sub-object at +0x40

@@ -2,8 +2,8 @@
 
 // Model of CScrollableList::HideComponent: every one of the eight UI states gets the parking position and the alpha,
 // then the component slides to state 6's position, fades to state 6's colour and refreshes its states.
-struct C2DVector { float X, Y; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CUIState { unsigned long StateChangeFlag; long StateChangeType; C2DVector Position; unsigned char pad[8]; CRGBColour Colour; };
 
 struct CComponent {

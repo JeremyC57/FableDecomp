@@ -6,12 +6,12 @@
 // fall-out return build the same string and VC merges them into one arm placed last, so the arm order in the bytes is
 // ONE, THREE, FOUR, TWO; reading the cases off that order (as an earlier version did) gets slots 1-3 wrong. `this` is
 // unused (`ret 8`: result + index).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CCharString GetSpiritDefName(long player);
 };
 

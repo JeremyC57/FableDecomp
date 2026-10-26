@@ -6,10 +6,10 @@
 // CScriptInfo (PDB, 20 bytes): AllocFunc +0, MasterScriptDataAlloc +4, Name +8, ID +0xc, MasterScript +0x10.
 // Shape: no calls in the loop, so the head stays in esi; the three tests (a running script, a master script,
 // the same allocator) are one `&&` chain; the data pointer is returned straight from the quest.
-struct CScriptBase;
-struct CScriptDataBase;
+class CScriptBase;
+class CScriptDataBase;
 
-struct CScriptInfo {
+class CScriptInfo { public:
     void*         AllocFunc;                       // +0x00
     void*         MasterScriptDataAlloc;           // +0x04
     void*         Name;                            // +0x08 CCharString
@@ -33,7 +33,7 @@ struct CActiveQuestNode {
     void*             questInfo;                   // +0x0c
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad_0x00[0x38];
     CActiveQuestNode* ActiveQuests;                // +0x38 (head node)
     CScriptDataBase* GetMasterScriptDataForScript(const CScriptInfo& info);

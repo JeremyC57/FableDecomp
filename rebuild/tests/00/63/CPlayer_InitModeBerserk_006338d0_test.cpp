@@ -7,8 +7,8 @@
 // Layout: engine/CPlayer.h (the scoped_ptr<CInputProcess*> members, PlayerInterface +0x0C); CPlayer_Methods is the lane's
 // method-carrier convention for generated data-only headers (see the landed CPlayer::InitModeControlFreeCamera 0x006335E0).
 #include "engine/CPlayer.h"
-typedef long EPlayerMode; struct CProcessedInput;
-struct CAInputProcess { virtual void VFunc00(); virtual bool AddToInterface(CGamePlayerInterface*); };   // slot 1 (+0x04)
+typedef long EPlayerMode; class CProcessedInput;
+class CAInputProcess { public: virtual void VFunc00(); virtual bool AddToInterface(CGamePlayerInterface*); };   // slot 1 (+0x04)
 struct CPlayer_Methods : CPlayer { void InitModeBerserk(EPlayerMode, CProcessedInput*); };
 void CPlayer_Methods::InitModeBerserk(EPlayerMode mode, CProcessedInput* input)
 {

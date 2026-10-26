@@ -4,9 +4,9 @@
 #include <cstdio>
 #include <vector>
 
-struct CAnimSet { std::vector<short> Anims; unsigned char Type;
+class CAnimSet { public: std::vector<short> Anims; unsigned char Type;
     long GetAnimIndex() const { return Anims[0]; } long GetType() const { return Type; } };
-struct CAnimateThing {
+class CAnimateThing { public:
     CAnimSet MainAnimSet;
     std::vector<CAnimSet> Combination;
     void GetAllCombinationAnimsFromType(long type, std::vector<CAnimSet*>& out)

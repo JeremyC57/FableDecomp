@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_CastStrengthMultiStrikeProper {
+class CCreatureAction_CastStrengthMultiStrikeProper { public:
     void* vftable;
     int destroyed;
 };

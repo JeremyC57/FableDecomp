@@ -13,7 +13,7 @@
 // duplicates the shared tail (Reset + reload + ret) into both arms. The result is re-read from
 // the global after the assignment. An earlier lane landed this body as
 // CFileInstallerSingleton_Get_00404440.cpp (fable_file_installer.h); this TU is self-contained.
-struct CFileInstaller {
+class CFileInstaller { public:
     unsigned char m_body[0xA0];
     CFileInstaller();                             // 0x009C5890
 };

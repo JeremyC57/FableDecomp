@@ -9,7 +9,7 @@
 //   scalar dtor  = __fastcall (this in ecx, no caller cleanup)
 //   operator delete stub = __cdecl (pushed arg, caller cleans -> add esp,4)
 
-struct CMemoryDataInputStream { int dummy; };
+class CMemoryDataInputStream { public: int dummy; };
 
 static int   g_dtor_calls   = 0;
 static int   g_delete_calls = 0;

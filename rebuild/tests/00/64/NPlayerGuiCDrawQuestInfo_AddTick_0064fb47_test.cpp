@@ -1,15 +1,15 @@
 // Behaviour test for NPlayerGui::CDrawQuestInfo::AddTick (0x0064FB47): primary then secondary binding, then the name;
 // -1 when unbound or unnamed, else the new tick element's ID.
 #include <cstdio>
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 enum EGameAction { GAME_ACTION_NONE = 0, GAME_ACTION_JUMP = 3, GAME_ACTION_ROLL = 4, GAME_ACTION_SECRET = 5 };
-struct CActionInputControl {
+class CActionInputControl { public:
     long GameAction, ControllerType, KeyboardKey, XboxButton, MouseButton; C2DVector ControlDirection;
     CActionInputControl() : GameAction(0), ControllerType(0), KeyboardKey(0), XboxButton(0), MouseButton(0) { ControlDirection.X = 0.0f; ControlDirection.Y = 0.0f; }
 };
-struct CWideString { int length; CWideString() : length(0) {} ~CWideString() {} };
+class CWideString { public: int length; CWideString() : length(0) {} ~CWideString() {} };
 static int g_lookups = 0;
-struct CUserProfileManager {
+class CUserProfileManager { public:
     bool GetAssignedInputForAction(EGameAction action, bool primary, CActionInputControl* c)
     {
         ++g_lookups;
@@ -25,7 +25,7 @@ static long g_nextID = 10;
 struct CQuestInfoElement { long ID; CQuestInfoElement() : ID(g_nextID++) {} };
 struct CQuestInfoElementTick : CQuestInfoElement { int nameLength; bool ticked; float scale;
     CQuestInfoElementTick(const CWideString& n, bool t, float s) : nameLength(n.length), ticked(t), scale(s) {} };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     explicit CCountedPointer(T* o) : m_pObject(o) {}
     template <class U> CCountedPointer(const CCountedPointer<U>& o) : m_pObject(o.m_pObject) {}

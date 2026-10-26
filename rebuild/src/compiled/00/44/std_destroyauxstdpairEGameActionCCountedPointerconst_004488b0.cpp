@@ -7,7 +7,7 @@
 // 0x00BFE9BC; Data = Info = 0). The catalog label pair<long, CCountedPointer<CRegionConnectionNode>> names a byte-identical (folded) twin; the element type here follows the CGamePlayerInterface destructor.
 // Layout: pair {EGameAction first +0, CCountedPointer second +4/+8}.
 // Shape: /O2 (16-aligned entry, loop-head pad).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

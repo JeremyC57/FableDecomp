@@ -9,14 +9,14 @@
 // bool-returning function makes VC7.1 materialise the result (`mov dl,[ecx+91h] ; mov al,1 ;
 // test al,dl`), the bool accessor keeps retail's `test byte ptr [eax+91h],1 ; jne`.
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad_0x00[0x91];
     unsigned char Dead : 1;                         // +0x91 bit 0
     bool IsDead() const { return Dead; }
 };
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer
 {
@@ -26,14 +26,14 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
 #pragma pack(push, 1)
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     void*         ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

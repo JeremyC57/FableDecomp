@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessRebootGame {
+class CInputProcessRebootGame { public:
     void* vftable;
     int destroyed;
 };

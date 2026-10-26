@@ -1,7 +1,7 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum ETCInterfaceType { ETC_DUMMY = 0 };
 
-struct CScriptThing;
+class CScriptThing;
 struct CThingOverlay;
 
 struct CScriptThingVTable
@@ -12,8 +12,8 @@ struct CScriptThingVTable
     bool (__fastcall* m_IsAvailable)(CScriptThing* self); // 0x12c
 };
 
-struct CScriptThing
-{
+class CScriptThing
+{ public:
     CScriptThingVTable* m_pVTable;
 };
 

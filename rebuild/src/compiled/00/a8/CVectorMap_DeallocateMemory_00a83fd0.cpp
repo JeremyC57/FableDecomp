@@ -15,7 +15,7 @@
 //   allocator's `if (p) free(p)`). Every empty tag shares one byte of the `push ecx` frame word.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
     void*         Data;                                 // +0x08

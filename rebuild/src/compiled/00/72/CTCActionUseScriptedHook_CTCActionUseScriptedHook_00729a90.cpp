@@ -11,7 +11,7 @@
 // EntranceConnectedToUID +0x18, PEntranceConnectedTo +0x20, EntranceLocked +0x28, CameraTrackUID +0x30, PCameraTrack +0x38,
 // SoundName +0x40, AnimationName +0x44, ReplacementObject +0x48, ReversedOnMiniMap +0x4C, HiddenOnMiniMap +0x4D.
 class CThing;
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -23,7 +23,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {     // CIntelligentPointe
     virtual void v00();
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
-struct CCharString {
+class CCharString { public:
     void* PString;
     CCharString();                              // 0x0099E4B0
 };

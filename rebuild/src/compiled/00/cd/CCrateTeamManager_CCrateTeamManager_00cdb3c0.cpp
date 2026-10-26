@@ -38,7 +38,7 @@ struct CBase {
     virtual ~CBase();                      // 0x0099A2E0
 };
 
-struct CScriptThing : CBase {              // vtable 0x01238C8C
+class CScriptThing : public CBase { public:              // vtable 0x01238C8C
     CCountedPointer PImp;                  // +0x04
     virtual ~CScriptThing() { }
 };
@@ -136,7 +136,7 @@ struct CThingManager_Calls {
 };
 extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
 
-struct CTimer {
+class CTimer { public:
     long TimerIndex;
     ~CTimer() { g_pThingManager_0143e8f8->ReleaseTimer(TimerIndex); }
 };

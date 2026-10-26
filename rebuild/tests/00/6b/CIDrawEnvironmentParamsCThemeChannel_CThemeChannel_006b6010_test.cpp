@@ -24,7 +24,7 @@ template <class T> struct Vec {                       // STLport vector<T> of PO
         _M_finish = _M_end_of_storage = _M_start + n;
     }
 };
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CIDrawEnvironmentTextureSet { Vec<long> Textures; Vec<float> Blends; };
 struct CThemeChannel {
     CRGBFloatColour Colours[19];

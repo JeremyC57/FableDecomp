@@ -7,7 +7,7 @@
 // Shape: straight-line; the six flag stores are in declaration order of the source (ForcedClosed, ShowTime,
 // ShowMoneyBag, ScreenMessagingEnabled, ForceAllowSubtitleToRender, DisplayBottomHalfGUI).
 namespace NPlayerGui {
-struct CDrawBase {                                          // PDB NPlayerGui::CDrawBase
+class CDrawBase { public:                                          // PDB NPlayerGui::CDrawBase
     virtual void Clear();                                   // slot 0 (the vcall thunk 0x0043E420 jumps through [vtbl+0])
     virtual void PrepareForLoad();                          // slot 1 (the vcall thunk 0x0043E430)
     void*         PlayerGui;                                // +0x04
@@ -17,14 +17,14 @@ struct CDrawBase {                                          // PDB NPlayerGui::C
     void*         Bank;                                     // +0x14
     bool          Drawing;                                  // +0x18
 };
-struct CDrawHealth            { void ClearDisplay(); };     // 0x00644644
-struct CDrawStamina           { void ClearDisplay(); };     // 0x0064464C
-struct CDrawAbilityButtons    { void ClearDisplay(); };     // 0x0064528A
-struct CDrawQuickAccessIcons  { void ClearDisplay(); };     // 0x00645605
-struct CDrawMeleeActionButtonEffects { void ClearDisplay(); };   // 0x00645821
-struct CDrawMiniMap           { void SetAsActive(bool active); };   // 0x00643E2E
-struct CDrawQuestInfo         { void Clear(); };            // 0x00647319
-struct CDrawGuildSeal         { void PrepareForLoad(); };   // 0x0064AE66 (manifest: CQuestInfoElement::Clear)
+class CDrawHealth            { public: void ClearDisplay(); };     // 0x00644644
+class CDrawStamina           { public: void ClearDisplay(); };     // 0x0064464C
+class CDrawAbilityButtons    { public: void ClearDisplay(); };     // 0x0064528A
+class CDrawQuickAccessIcons  { public: void ClearDisplay(); };     // 0x00645605
+class CDrawMeleeActionButtonEffects { public: void ClearDisplay(); };   // 0x00645821
+class CDrawMiniMap           { public: void SetAsActive(bool active); };   // 0x00643E2E
+class CDrawQuestInfo         { public: void Clear(); };            // 0x00647319
+class CDrawGuildSeal         { public: void PrepareForLoad(); };   // 0x0064AE66 (manifest: CQuestInfoElement::Clear)
 }
 
 template <class R, class T> class mem_fun_t {               // SGI functor holding a 4-byte pointer-to-member
@@ -37,7 +37,7 @@ private:
 template <class R, class T> inline mem_fun_t<R, T> mem_fun(R (T::*pfn)()) { return mem_fun_t<R, T>(pfn); }
 template <class It, class F> F __fastcall for_each(It first, It last, F f);   // 0x0043F310 (SGI, /Gr)
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void Clear(bool flag);                                  // 0x00492BAB
     void PrepareForLoad();                                  // 0x004933E6 (manifest label propagated)
 };
@@ -51,7 +51,7 @@ struct CIllustratorVector {                                 // STLport vector<NP
 // CPlayerGui in retail layout: the counted draw pointers sit 8 below the Ego_r.pdb offsets (engine/CPlayerGui.h),
 // the three ability vectors are 12 bytes, so the flags from DrawGui on sit 0x14 lower, and 0x10 lower from
 // HeroCentreUID (8-aligned) on.
-struct CPlayerGui {
+class CPlayerGui { public:
     void*                       __vftable;                  // +0x000
     unsigned char               _pad004[0x18 - 0x04];       // World, PlayerManager, InputInterface, Component, Graphics
     CSubtitleRenderer           SubtitleRenderer;           // +0x018

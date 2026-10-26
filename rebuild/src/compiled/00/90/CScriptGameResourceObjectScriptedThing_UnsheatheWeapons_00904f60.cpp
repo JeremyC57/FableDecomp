@@ -19,7 +19,7 @@
 
 void* __cdecl operator new(size_t size);           // 0x00BFEA1A
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -85,11 +85,11 @@ struct CActionBase {                               // vtable 0x01265504
 };
 }
 
-struct CTCScriptedControl {                        // interface 0x1f component
+class CTCScriptedControl { public:                        // interface 0x1f component
     void AddAction(NTCScriptedControl::CActionBase* action);   // 0x007137D0
 };
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 class CCreatureActionBase {                        // retail 0xa8 bytes
 public:

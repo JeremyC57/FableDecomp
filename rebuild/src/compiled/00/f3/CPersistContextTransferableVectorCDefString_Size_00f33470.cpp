@@ -7,9 +7,9 @@
 // text-load (0x009BB110) and text-save (0x009BAC80) arms. CDefString is one long (4-byte elements, `lea eax,[ecx+edx*4]`).
 // The manifest label `CPersistContext_TransferableVector::vfunc_N` is propagated.
 // Shape: `mov ecx,[ecx+4] ; mov eax,[ecx+4] ; sub eax,[ecx] ; sar eax,2`.
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 class CDefString {
 public:
@@ -30,7 +30,7 @@ template <class T> struct vector {                   // STLport, 12 bytes in ret
     T& operator[](long index) { return _M_start[index]; }
 };
 
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long Size() = 0;
     virtual void Resize(long count) = 0;
     virtual void TransferOut(CPersistContext& context, CCharString& out, long index) = 0;

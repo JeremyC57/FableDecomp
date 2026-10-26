@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for 0x0056EA4E: "" for a zero count, else GetXString() + the count as text.
-struct CWideString {
+class CWideString { public:
     char m_text[32];
     CWideString(const char* text) { std::strcpy(m_text, text); }
     CWideString(const CWideString& other) { std::strcpy(m_text, other.m_text); }
@@ -13,7 +13,7 @@ static CWideString operator+(const CWideString& left, const CWideString& right)
 {
     CWideString r(left); std::strcat(r.m_text, right.m_text); return r;
 }
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CWideString GetXString(long count);
 };
 CWideString CTCInventoryExperience::GetXString(long count)

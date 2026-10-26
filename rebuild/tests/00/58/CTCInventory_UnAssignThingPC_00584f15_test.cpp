@@ -5,13 +5,13 @@
 #include <cstring>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; ++g_live; }
     CCharString(const CCharString& o) : Text(o.Text) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CRGBColour { unsigned char B, G, R, A; CRGBColour() {} };
+class CRGBColour { public: unsigned char B, G, R, A; CRGBColour() {} };
 struct CComponentList { int n; ~CComponentList() {} };
 struct SActionParamPair {
     unsigned long first; CComponentList second;
@@ -19,13 +19,13 @@ struct SActionParamPair {
     SActionParamPair(const SActionParamPair& o) : first(o.first) { second.n = o.second.n; ++g_live; }
     ~SActionParamPair() { --g_live; }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* m_pObject;
     CCountedPointer(T* object) : m_pObject(object) { ++g_live; }
     ~CCountedPointer() { --g_live; }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     const char* ChildName; CComponent* Child; CRGBColour Colour; unsigned long Param; int ParamCount; CComponent* Contents;
     CComponent() : ChildName(""), Child(0), Param(0), ParamCount(0), Contents(0) { Colour.B = 1; Colour.G = 2; Colour.R = 3; Colour.A = 255; }
     virtual CComponent* FindChild(CCharString name) { return std::strcmp(name.Text, ChildName) == 0 ? Child : 0; }
@@ -35,11 +35,11 @@ struct CComponent {
     virtual void SetActionParameter_slot62(SActionParamPair p) { Param = p.first; ParamCount = p.second.n; }
 };
 static CComponent g_created; static const char* g_createdName = 0;
-struct CManager { CComponent* CreateComponent(const CCharString& d, bool) { g_createdName = d.Text; return &g_created; } };
-struct CFrontEndManager : CManager { static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; } };
+class CManager { public: CComponent* CreateComponent(const CCharString& d, bool) { g_createdName = d.Text; return &g_created; } };
+class CFrontEndManager : public CManager { public: static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; } };
 }
 struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; long& operator[](unsigned long n) { return _M_start[n]; } };
-struct CTCInventory {
+class CTCInventory { public:
     CLongVector QuickAccessItems;
     void UnAssignThingPC(unsigned long slot, NUISystem::CComponent* container);
 };

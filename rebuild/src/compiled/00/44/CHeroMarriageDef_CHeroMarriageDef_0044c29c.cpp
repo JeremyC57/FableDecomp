@@ -5,12 +5,12 @@ struct CDefBase_0044c0c0 {                        // the def base (its construct
     virtual void v00();
     CDefBase_0044c0c0();
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
 };
 
-struct CHeroMarriageDef : CDefBase_0044c0c0 {      // vtable 0x01232074
+class CHeroMarriageDef : public CDefBase_0044c0c0 { public:      // vtable 0x01232074
     unsigned char _pad04[0x78];
     CCharString   m_string7c;                      // +0x7c
     unsigned char _pad80[0x24];

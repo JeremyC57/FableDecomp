@@ -10,7 +10,7 @@
 // Layout: CModeBase ParentThing +0x04; CAnimateThing's main CAnimSet type byte +0x50.
 // Shape: the CAnimInit record (inline member zeroing + Set) as in CModeBlock::AnimUpdate 0x008D8DD0; the zero words reuse the
 // null result of FindCombinationAnim in eax.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -44,7 +44,7 @@ struct CBlendPair {                        // the two floats at CAnimInit +0x18,
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
 
-struct CAnimInit {                         // 0x2c bytes
+class CAnimInit { public:                         // 0x2c bytes
     long          Mode;                    // +0x00
     unsigned char AnimType;                // +0x04
     bool          Flag05;                  // +0x05
@@ -61,9 +61,9 @@ struct CAnimInit {                         // 0x2c bytes
     }
 };
 
-struct CAnimSet;
+class CAnimSet;
 
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad00[0x50];
     unsigned char CurrentAnimType;         // +0x50 (main CAnimSet)
     CAnimSet* FindCombinationAnim(long type);   // 0x0070C4E0
@@ -71,7 +71,7 @@ struct CAnimateThing {
     void RemoveCombinationAnimsOfType(long type);   // 0x0070D8C0
 };
 
-struct CTCAnimationComplex {               // interface type 0x5a
+class CTCAnimationComplex { public:               // interface type 0x5a
     CAnimateThing& GetAnimation();         // 0x0070B460
 };
 

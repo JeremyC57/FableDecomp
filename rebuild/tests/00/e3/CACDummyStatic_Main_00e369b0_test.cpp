@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <string>
-struct CCharString {
+class CCharString { public:
     std::string text;
     CCharString(const char* t) : text(t) { }
 };
@@ -19,7 +19,7 @@ struct CV_ArcheryCompetitionScript {
     float lastDistance;
     void CalculateScoreForHit(long points, float distance) { score += points; ++hits; lastDistance = distance; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     float angle;
     int framesSinceHit;
     float GetAngleXY() const { return angle; }
@@ -31,7 +31,7 @@ struct CScriptThing {
         return false;
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     float lastAngle; int facings, sounds, anims; float paused; int pauses;
     std::string lastSound, lastAnim;

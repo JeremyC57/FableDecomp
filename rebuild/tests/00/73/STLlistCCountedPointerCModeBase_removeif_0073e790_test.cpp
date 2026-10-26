@@ -11,7 +11,7 @@
 // Model of list<CCountedPointer<CModeBase> >::remove_if<CModeBase::CIsType> @ 0x0073E790: erase every mode of the
 // predicate type, releasing the list's counted reference (the mode is deleted when it was the last one).
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

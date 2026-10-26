@@ -2,7 +2,7 @@
 
 extern "C" int __cdecl EndDeflateStream(void* strm);
 
-struct CCompressorZlib {
+class CCompressorZlib { public:
     char pad[0x1c];
     char zstream[0x38];
     char active;

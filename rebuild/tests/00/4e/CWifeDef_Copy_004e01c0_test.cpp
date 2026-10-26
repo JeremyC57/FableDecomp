@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CDefClassBase;
+class CDefClassBase;
 
-struct CWifeDef {
+class CWifeDef { public:
     char pad[0x28];
     int f28;
     void base_clone(const CDefClassBase* src);

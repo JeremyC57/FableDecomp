@@ -16,7 +16,7 @@ struct CRetailVector_00a243b0 {
 };
 struct CArray_char;
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

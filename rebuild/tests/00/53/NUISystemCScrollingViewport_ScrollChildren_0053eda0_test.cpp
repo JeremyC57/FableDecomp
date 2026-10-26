@@ -5,8 +5,8 @@
 // up) or the viewport speed; every active child (scroll bars excluded) and every scroll-list child reports how far it
 // can scroll inside the scaled window, the largest magnitude wins, it is clamped to the step unless the front end says
 // unclamped, and the same children are then moved by (0, scroll) over 0.2 s.
-struct C2DVector { float X, Y; };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 struct CFrontEnd { float offset; C2DVector scale; bool unclamped; };
 static CFrontEnd g_fe;
 

@@ -14,7 +14,7 @@
 #pragma optimize("s", on)
 #include "engine/CExplosiveTrailDef.h"
 
-struct CPersistContext {
+class CPersistContext { public:
     void TransferLong(long* value);              // 0x00431102
     void TransferFloat(float* value);            // 0x00431061
 };

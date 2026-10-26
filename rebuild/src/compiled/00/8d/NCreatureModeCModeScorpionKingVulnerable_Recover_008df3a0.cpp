@@ -105,7 +105,7 @@ struct CModeBase {
     CThing* ParentThing;                        // +0x04
 };
 #pragma pack(push, 1)
-struct CModeScorpionKingVulnerable : CModeBase {
+class CModeScorpionKingVulnerable : public CModeBase { public:
     unsigned char _pad08[0x78 - 0x08];
     CThingCreatureBase* PCreature;              // +0x78
     bool bRecovering;                           // +0x7c

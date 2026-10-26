@@ -1,4 +1,4 @@
-struct CCreatureAction_SnapDragonOutOf {
+class CCreatureAction_SnapDragonOutOf { public:
     void* vftable;
 };
 

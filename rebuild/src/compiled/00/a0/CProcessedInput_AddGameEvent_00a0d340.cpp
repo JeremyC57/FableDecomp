@@ -1,5 +1,5 @@
-struct CGameEvent
-{
+class CGameEvent
+{ public:
     long type;
     unsigned char player;
     unsigned char data[0x23];

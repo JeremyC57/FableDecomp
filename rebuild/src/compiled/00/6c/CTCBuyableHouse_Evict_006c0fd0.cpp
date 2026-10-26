@@ -15,9 +15,9 @@
 // the walk caches the end pointer in a frame local.
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
-struct CTCBase;
-struct CBaseObject;
-struct CThing;
+class CTCBase;
+class CBaseObject;
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* PData;
     CThing* GetPItem() const;                           // 0x00A01B50
 };
-struct CThing {
+class CThing { public:
     unsigned char m_pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -43,7 +43,7 @@ struct CThing {
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char           _pad4c[0x92 - 0x4c];
     unsigned char           m_flags92;                  // +0x92 (bit 4)
     unsigned char           _pad93[0x168 - 0x93];
@@ -82,20 +82,20 @@ struct CBackInserter {                                  // back_insert_iterator:
     explicit CBackInserter(CCreatureList& list) : Container(&list) { }
 };
 inline CBackInserter back_inserter(CCreatureList& list) { return CBackInserter(list); }
-struct HasBuildingAsHomeOrWork {
+class HasBuildingAsHomeOrWork { public:
     CThing* Building;
 };
 CBackInserter __fastcall copy_if(CCreatureListIterator first, CCreatureListIterator last, CBackInserter out,
                                  HasBuildingAsHomeOrWork pred);   // 0x006C1ED0
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad00[0x2c];
     CCreatureList Residents;                            // +0x2c
     void DetachFromDummyVillager(CThing* villager);     // 0x0065B2C4
 };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage* GetVillage();                           // 0x007EE540
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     void DetachFromShop();                              // 0x00799000
 };
 class CTCBuyableHouse {

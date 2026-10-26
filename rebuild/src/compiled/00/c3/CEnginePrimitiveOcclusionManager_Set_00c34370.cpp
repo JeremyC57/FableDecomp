@@ -34,7 +34,7 @@ struct SOcclusionSetup {
     long           extra;               // +0x24
 };
 
-struct CEnginePrimitiveOcclusionManager {
+class CEnginePrimitiveOcclusionManager { public:
     SOcclusionHead m_head;              // +0x00
     long           m_mode;              // +0x10
     SRange         m_range;             // +0x14

@@ -10,7 +10,7 @@
 //   last, (_Tp*)0, comp) @ 0x009D4620 (this chunk), itself.
 // Shape: the shape of the turning-animation loop 0x0087E530: `while (last - first > 16)`, the comparator push hoisted
 //   above the depth test, `--depth_limit` written back to its argument slot, `last = cut`.
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

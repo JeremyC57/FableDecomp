@@ -6,7 +6,7 @@
 // Model the this-only member as a FREE __fastcall(objptr, src) so the
 // compiler emits a plain tail-call jmp.
 
-struct CSpecialAbilitiesBurntEffectDef;
+class CSpecialAbilitiesBurntEffectDef;
 
 // The real Copy implementation (relocation-masked call/jmp target).
 extern void __fastcall CSpecialAbilitiesBurntEffectDef_Copy_impl(

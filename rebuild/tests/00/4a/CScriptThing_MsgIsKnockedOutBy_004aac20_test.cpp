@@ -35,7 +35,7 @@ struct CScriptThingInner {
   virtual bool m31(int name){ return true; }
   virtual bool m32(int name){ return true; }
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgIsKnockedOutBy(int name); };
+class CScriptThing { public: void *pad0; CScriptThingInner *m_impl; bool MsgIsKnockedOutBy(int name); };
 bool CScriptThing::MsgIsKnockedOutBy(int name){ CScriptThingInner *p=m_impl; if(!p) return false; return p->m32(name); }
 int main(){
     CScriptThing t; t.m_impl=0;

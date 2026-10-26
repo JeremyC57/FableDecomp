@@ -8,19 +8,19 @@
 // homed in that pointer's dead argument slot (`lea edx,[esp+10h]`) and destroyed after the conversion.
 #include "engine/CWADFile.h"
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);
     ~CWideString();
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
     CWideString ToWideString() const;       // 0x0099E480
 };
 
-struct CBankFileAsync {
+class CBankFileAsync { public:
     CCharString GetEntrySymbol(unsigned long index);   // 0x009CC1D0
 };
 

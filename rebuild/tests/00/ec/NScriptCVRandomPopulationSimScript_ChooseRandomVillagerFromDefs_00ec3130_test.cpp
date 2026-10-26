@@ -2,7 +2,7 @@
 // pick the category (value % 10) and the entry (value % n); the generator index is bumped every call.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString() : Text("") {}
     CCharString(const CCharString& o) : Text(o.Text) {}

@@ -1,15 +1,15 @@
 // Test for 007e4a50 CTCCreditsUI::CTCCreditsUI: CTCBase(parent), inactive, no components, empty credit part, zero time.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_baseCalls = 0;
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     CTCBase(CThing* parent) : ParentThing(parent) { ++g_baseCalls; }
     virtual ~CTCBase() {}
 };
-struct CCharString { const char* PStringData; CCharString() : PStringData("") {} };
+class CCharString { public: const char* PStringData; CCharString() : PStringData("") {} };
 struct CComponentVector { void* First; void* Last; void* End; CComponentVector() : First(0), Last(0), End(0) {} };
-struct CTCCreditsUI : CTCBase {
+class CTCCreditsUI : public CTCBase { public:
     bool Active; CComponentVector Components; bool Quitting; CCharString CreditPart; double LastRenderTime;
     CTCCreditsUI(CThing* parent) : CTCBase(parent), Active(false), Quitting(false), LastRenderTime(0.0) {}
 };

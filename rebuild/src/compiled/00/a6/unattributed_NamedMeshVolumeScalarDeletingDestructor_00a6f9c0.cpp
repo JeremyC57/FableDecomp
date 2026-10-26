@@ -15,18 +15,18 @@
 
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CCPPointerInfo {                                 // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                 // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);          // called with Data in ecx and nothing on the stack
     void* Data;
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              m_pData;                            // PDB: Data
     CCPPointerInfo* m_pInfo;                            // PDB: Info
     void ReleaseInfo()
@@ -42,9 +42,9 @@ template<class T> struct CCountedPointer {
     ~CCountedPointer() { ReleaseInfo(); m_pData = 0; m_pInfo = 0; }
 };
 
-struct CContainmentVolume;
+class CContainmentVolume;
 
-struct C3DMeshVolume {                                  // 12 bytes
+class C3DMeshVolume { public:                                  // 12 bytes
     CCharString                         Name;           // +0x00
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x04
 };

@@ -6,16 +6,16 @@
 #endif
 #include <string.h>
 #include <stdlib.h>
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() {}
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
 };
 // Retail CThing: ThingTypeFlags at +0x6c (THING_TYPE_* inheritance bits); TypeMask selects the searched class.
-struct CThing {
+class CThing { public:
     enum { TypeMask = 0 };
     unsigned char _pad00[0x60];
-    struct CTCPhysicsBase* PhysicsTC;                      // +0x60
+    class CTCPhysicsBase* PhysicsTC;                      // +0x60
     unsigned char _pad64[0x6c - 0x64];
     unsigned long ThingTypeFlags;                          // +0x6c
 };
@@ -27,7 +27,7 @@ template <class T> inline bool IsThingOfType(const CThing* thing)
     return (thing->ThingTypeFlags & mask) == mask;
 }
 struct __true_type { __true_type() {} };
-struct CThingCreatureBase : CThing { enum { TypeMask = 0xf }; };
+class CThingCreatureBase : public CThing { public: enum { TypeMask = 0xf }; };
 // The bird-scaring test (inline): skip things whose byte at +0x10 is 13 and things sharing the filter thing's def.
 // Layout: retail CThing sits 0x10 below Ego_r.pdb from UniqueID on (PhysicsTC +0x60 / PDB +0x70, ThingTypeFlags +0x6c /
 //   PDB +0x7c), so +0x8c is DefGlobalIndex (PDB +0x9c); the +0x10 byte (PDB +0x20, the head of UsingComponents) is named
@@ -38,7 +38,7 @@ struct CThingDefView {
     unsigned char  _pad11[0x8c - 0x11];
     unsigned short DefGlobalIndex;                  // +0x8c
 };
-struct CThingFilter_ScaresBirds {
+class CThingFilter_ScaresBirds { public:
     const CThing* Self;                             // +0x00
     bool operator()(const CThing* thing) const
     {
@@ -51,7 +51,7 @@ struct CThingFilter_ScaresBirds {
         return true;
     }
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     CThingCreatureBase* operator()(CThingCreatureBase* best, CThingCreatureBase* candidate) const;   // 0x00782560
 };
 // One mapwho cell list node: {entry, next}; the entry holds the thing (+4) and its search stamp (+0x4c).
@@ -104,7 +104,7 @@ struct CMapVector {
 };
 // CThingSearchTools: engine/CThingSearchTools.h names +0x0c "AreaMaps" (vector<NThingMap::CThingMap*>, 16 bytes in
 // the PDB); retail's STLport vector is 12 bytes and only the scratch-vector role matters here, so a local model.
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void*      WorldMap;                                   // +0x00
     void*      PThingMapManager;                           // +0x04
     void*      ThingManager;                               // +0x08

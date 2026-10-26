@@ -13,7 +13,7 @@ Function __fastcall for_each(InputIter first, InputIter last, Function f)
 }
 }
 namespace NPlayerTargeting {
-struct CTargetPoint { long m_words[7]; };
+class CTargetPoint { public: long m_words[7]; };
 }
 class CGetBestTargetInDirection {
 public:

@@ -1,6 +1,6 @@
 #include "engine/CTavernDef.h"
 #include <cstdio>
-struct CDefClassBase;
+class CDefClassBase;
 struct CTavernDef_Methods : CTavernDef { void base_clone(const CDefClassBase* src); };
 static void* g_self; static const void* g_src;
 void CTavernDef_Methods::base_clone(const CDefClassBase* src) { g_self = this; g_src = src; }

@@ -175,14 +175,14 @@ struct CAugmentationArray {                                    // vector<EObject
     EObjectAugmentationType* _M_end_of_storage;
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;          // 0x004365B0
 };
-struct CTCWeapon {                                             // interface 0x77 (descriptive)
+class CTCWeapon { public:                                             // interface 0x77 (descriptive)
     bool IsRanged() const;                                     // 0x007BED60 (descriptive)
 };
 class CThing {

@@ -5,17 +5,17 @@
 
 static int g_log[8]; static int g_n; static float g_morality; static long g_renown; static const char* g_object; static long g_count; static bool g_show;
 static const char* g_obj[4];
-struct CScriptDef { float MurderTwistMorality; long MurderTwistRenown; const char* MurderTwistReward; };
+class CScriptDef { public: float MurderTwistMorality; long MurderTwistRenown; const char* MurderTwistReward; };
 static CScriptDef g_def = { -25.0f, 40, "OBJECT_REWARD" };
 static CScriptDef* g_pScriptDef = &g_def;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void GiveHeroMorality(float m) { g_log[g_n++] = 156; g_morality = m; }
     void GiveHeroRenownPoints(long r) { g_log[g_n++] = 161; g_renown = r; }
     void GiveHeroObject(const char* o, long c, bool s) { g_log[g_n++] = 121; g_object = o; g_count = c; g_show = s; }
     const char* GetActiveQuestName() const { return "Q_MURDER_TWIST"; }
     void SetQuestCardObjective(const char* q, const char* a, const char* b, const char* c) { g_log[g_n++] = 296; g_obj[0] = q; g_obj[1] = a; g_obj[2] = b; g_obj[3] = c; }
 };
-struct CScriptThing { bool killed; bool MsgIsKilledBy(const char* who) const { return killed && !std::strcmp(who, ""); } };
+class CScriptThing { public: bool killed; bool MsgIsKilledBy(const char* who) const { return killed && !std::strcmp(who, ""); } };
 struct CScript { long State; };
 struct CMurderTwistAssassin {
     CGameScriptInterface* Game; CScriptThing Me; CScript* ParentClass;

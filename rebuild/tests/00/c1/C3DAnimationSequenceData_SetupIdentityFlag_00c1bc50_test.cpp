@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct C3DAnimationSequenceData {
+class C3DAnimationSequenceData { public:
     char pad0;
     char pad1;
     unsigned char flags; // +2

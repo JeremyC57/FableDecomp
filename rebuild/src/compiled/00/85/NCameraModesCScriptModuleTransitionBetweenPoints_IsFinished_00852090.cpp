@@ -8,11 +8,11 @@
 // Layout: NCameraModes::CScriptModuleBase members from the PDB (0x4c bytes) and the derived members of
 // CScriptModuleTransitionBetweenPoints (PDB, 0x90 bytes). No engine header exists for these classes.
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
-struct CBaseObject;
+class CBaseObject;
 struct CBase;
-struct CGameCameraManager;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CGameCameraManager;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CThing_Retail {
     unsigned char  _pad00[0x91];

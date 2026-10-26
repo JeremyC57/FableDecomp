@@ -9,7 +9,7 @@
 // return false;` -- Find/GetBerserkInterface need __forceinline here (VC leaves the plain inline out of line
 // in this body, unlike 0x00866FB0); the one-dword frame holds the enum->long conversion temporary for LowerBound's reference.
 // Layout modelled locally (retail CCombatActionBase sizeof 0x114, PDB 0x12c).
-struct CTCBase;
+class CTCBase;
 enum ETCInterfaceType { TC_INTERFACE_BERSERK = 0x84 };
 
 struct CInterfacePair {
@@ -42,7 +42,7 @@ struct CThingCreatureBase_Retail {              // engine/CThingCreatureBase.h e
     __forceinline CTCBerserk_Calls* GetBerserkInterface() { return reinterpret_cast<CTCBerserk_Calls*>(Interfaces.Find(TC_INTERFACE_BERSERK)->second); }
 };
 
-struct CMeleeCombatAbilityDef {
+class CMeleeCombatAbilityDef { public:
     unsigned char _pad[0x5c];
     bool CanDecapitate;                         // +0x5c
 };
@@ -53,7 +53,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Retail* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08

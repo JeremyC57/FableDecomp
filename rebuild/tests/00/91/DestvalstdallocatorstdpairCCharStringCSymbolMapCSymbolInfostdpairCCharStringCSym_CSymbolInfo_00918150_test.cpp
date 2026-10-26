@@ -3,7 +3,7 @@
 static int g_seq = 0;
 static int g_order[3] = { 0, 0, 0 };
 
-struct CCharString {
+class CCharString { public:
     char* buf;
     int   a;
     int   b;

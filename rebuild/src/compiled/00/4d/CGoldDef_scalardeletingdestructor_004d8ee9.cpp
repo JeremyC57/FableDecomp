@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CGoldDef
-{
+class CGoldDef
+{ public:
     void* vftable;
 };
 extern void* const g_CGoldDef_vftable;

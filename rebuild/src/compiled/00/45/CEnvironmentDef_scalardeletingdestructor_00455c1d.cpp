@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 struct CSubObj { ~CSubObj(); };
-struct CEnvironmentDef {
+class CEnvironmentDef { public:
     char pad[0x3c];
     CSubObj sub;
     ~CEnvironmentDef();

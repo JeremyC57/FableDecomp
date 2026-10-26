@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 // Recording output stream: every write appends "<tag><value>;" to a log and advances the position.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     char log[4096]; unsigned long pos;
     CDataOutputStream() : pos(0) { log[0] = 0; }
     void Add(const char* tag, double v, unsigned long bytes) { char b[64]; std::sprintf(b, "%s%g;", tag, v); std::strcat(log, b); pos += bytes; }

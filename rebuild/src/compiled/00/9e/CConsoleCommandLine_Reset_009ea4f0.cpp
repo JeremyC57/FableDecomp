@@ -4,12 +4,12 @@
 // Layout from the PDB (CConsoleCommandLine, 16 bytes): vptr, CCharString CurrentEntry +0x04,
 // bool UserEntry +0x08, long CursorPosition +0x0c. The flag and the cursor are both cleared from
 // the same zero register (xor eax ; mov [+8],al ; mov [+0xc],eax).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     const CCharString& operator=(const char* text);   // 0x0099EFE0
 };
 
-struct CConsoleCommandLine {
+class CConsoleCommandLine { public:
     virtual void v00();
     CCharString CurrentEntry;       // +0x04
     bool        UserEntry;          // +0x08

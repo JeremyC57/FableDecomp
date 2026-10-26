@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_FinishFireballSpell {
+class CCreatureAction_FinishFireballSpell { public:
     void* vftable;
     int destroyed;
 };

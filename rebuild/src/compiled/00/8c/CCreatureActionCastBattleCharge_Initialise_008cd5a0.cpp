@@ -10,16 +10,16 @@
 // IsZTargetting +0x144 (PDB); retail is PDB - 0x18 (+0x114/+0x115/+0x124/+0x128/+0x12c), as in the landed CastAssassinRush.
 // The component's fields (distance +0x3c, level +0x40, target pointer +0x44) are descriptive.
 #include <string.h>
-struct CTCParamsBase;
-struct CBaseObject;
-struct CTCBase;
+class CTCParamsBase;
+class CBaseObject;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     virtual void v00();
     CThing* PItem;                              // +4
@@ -33,8 +33,8 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
     __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 struct CPhysics {
     virtual void v00();
     void SetFacingAnglesFromRHSet(const CRightHandedSet& set);
@@ -45,14 +45,14 @@ inline void CPhysics::SetFacingAnglesFromRHSet(const CRightHandedSet& set)
 {
     (this->*((*(CPhysicsSlot**)this)[74].Fn))(set);
 }
-struct CTCBattleCharge {
+class CTCBattleCharge { public:
     unsigned char _pad00[0x3c];
     float Distance;                             // +0x3c
     long  Level;                                // +0x40
     CIntelligentPointerThing PTarget;           // +0x44
     void SetPTarget(CThing* target, bool zTargetting);   // 0x007A7150
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                      // +0x10
     unsigned char _pad11[0x60 - 0x11];
@@ -62,7 +62,7 @@ struct CThing {
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     CTCBattleCharge* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer PCreature;          // +0x08
@@ -75,7 +75,7 @@ struct CCombatActionBase {
     virtual void Initialise();                  // 0x00857520
 };
 #pragma pack(push, 1)
-struct CCreatureAction_CastBattleCharge : CCombatActionBase {
+class CCreatureAction_CastBattleCharge : public CCombatActionBase { public:
     bool          Override;                     // +0x114
     unsigned char Dir[12];                      // +0x115 C3DVector (packed)
     unsigned char _pad121[3];

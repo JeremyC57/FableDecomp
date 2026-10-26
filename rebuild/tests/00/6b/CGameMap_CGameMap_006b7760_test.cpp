@@ -1,14 +1,14 @@
 // Behaviour test for 0x006B7760 CGameMap constructor.
 #include <cstdio>
-struct CGameMapCell { unsigned char AtmosThemes[3]; unsigned char AtmosBlends[2]; signed char SoundTheme; unsigned char Music; };
+class CGameMapCell { public: unsigned char AtmosThemes[3]; unsigned char AtmosBlends[2]; signed char SoundTheme; unsigned char Music; };
 static int g_resized = -1, g_cleared = 0;
 struct CGameMapCellVector {
     CGameMapCell* a; CGameMapCell* b; CGameMapCell* c;
     CGameMapCellVector() : a(0), b(0), c(0) {}
     void resize(unsigned int n, const CGameMapCell&) { g_resized = (int)n; }
 };
-struct C2DCoordI { int X, Y; };
-struct CGameMap {
+class C2DCoordI { public: int X, Y; };
+class CGameMap { public:
     CGameMapCellVector Cells; void* Map; void* World; unsigned int* WorldSeed; int SizeX, SizeY;
     void Clear() { ++g_cleared; }
     CGameMap(void* world, void* map, const C2DCoordI& size) : Map(map), World(world), SizeX(size.X), SizeY(size.Y)

@@ -9,7 +9,7 @@
 // number (short) +0x8e, dead flag +0x91 bit 0, flag byte +0x93 (bits 2|3 block activation).
 // Shape: the progress text is a named CCharString local in its own block (built before the other argument pushes, in the
 // dead level argument slot, destroyed right after the call); the thing is a named local tested for null, the dead bit, the flags and the level.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -26,7 +26,7 @@ public:
     unsigned char m_flags93;                    // +0x93
     void SetInLimbo(bool inLimbo);              // 0x004C8CF0
 };
-struct CQuestManager {
+class CQuestManager { public:
     void OnActivateEntity(CThing* thing);       // 0x004AFA60
 };
 extern CQuestManager* g_pQuestManager;          // 0x013B89FC
@@ -35,7 +35,7 @@ struct SThingListNode {                         // STLport list<CThing*> node
     SThingListNode* _M_prev;
     CThing*         _M_data;                    // +0x08
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char   _pad00[0x18];
     SThingListNode* Things;                     // +0x18
     void ActivateAfterLoading(long level);

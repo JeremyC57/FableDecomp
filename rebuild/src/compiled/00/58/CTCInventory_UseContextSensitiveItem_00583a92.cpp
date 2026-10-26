@@ -45,16 +45,16 @@ public:
 };
 bool __fastcall IS_THING_ALIVE(CThing* const& thing);      // 0x0040DCE0
 
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();                        // 0x006A1440
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                                 // slot 1
     long RefCount;                                          // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
     __forceinline ~CDefPointer()
@@ -64,7 +64,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CContextSensitiveItemDef : CDefClassBase {
+class CContextSensitiveItemDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long ItemType;                                          // +0x28
     unsigned char _pad2c[0x34 - 0x2c];
@@ -73,7 +73,7 @@ struct CContextSensitiveItemDef : CDefClassBase {
 struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CContextSensitiveItemDef>* out);   // 0x005933C8
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out);   // 0x0042AF3C
 };
 
@@ -123,7 +123,7 @@ bool __fastcall IS_THING_ALIVE(CThing* const& thing)
 }
 #pragma auto_inline(on)
 
-struct CTCInventory {
+class CTCInventory { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();

@@ -5,9 +5,9 @@
 // chained through +0x38 from the cell's FirstPrimitive (+0x04); no engine header exists for these classes.
 // Shape: a missing cell skips everything; the primitive walk is a top-tested while (esi); the enumerator stays in ebp, so
 // VC7.1 reuses its dead stack slot for the outer index; the row `y*2 + i` is formed once per outer iteration (edi).
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
-struct CEngineSceneGridCell {                      // 0x48 bytes (PDB layout, matches retail)
+class CEngineSceneGridCell { public:                      // 0x48 bytes (PDB layout, matches retail)
     CEngineSceneGridCell*         Parent;          // +0x00
     CEngineInternalPrimitiveBase* FirstPrimitive;  // +0x04
     float                         BoundingBox[6];  // +0x08 C3DBoundingBox
@@ -26,13 +26,13 @@ struct CEngineSceneGridCell {                      // 0x48 bytes (PDB layout, ma
     unsigned char                 PreloadFrames;   // +0x46
 };
 
-template <class T> struct CArray {                 // retail CArray: data pointer first
+template <class T> class CArray { public:                 // retail CArray: data pointer first
     T*   m_pData;
     long m_size;
     long m_capacity;
 };
 
-struct CEngineSceneGrid {                          // 0x24 bytes (PDB layout, matches retail)
+class CEngineSceneGrid { public:                          // 0x24 bytes (PDB layout, matches retail)
     unsigned long                 _vfptr_or_pad;   // +0x00
     unsigned long                 Level;           // +0x04
     CEngineSceneGrid*             LevelUp;         // +0x08
@@ -42,7 +42,7 @@ struct CEngineSceneGrid {                          // 0x24 bytes (PDB layout, ma
     void EnumeratePrimitives(unsigned long x, unsigned long y, struct CEnginePrimitiveEnumerator* enumerator);
 };
 
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     unsigned char                 _pad[0x38];
     CEngineInternalPrimitiveBase* m_pNextInCell;   // +0x38
 };

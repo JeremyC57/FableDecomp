@@ -1,9 +1,9 @@
 #include <cstdio>
 static int g_strings = 0;
-struct CCharString { void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
-struct CFontManager;
+class CCharString { public: void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
+class CFontManager;
 struct CBaseClassNonCopyable { virtual void v00() {} CBaseClassNonCopyable() {} };
-struct CFontBank : CBaseClassNonCopyable { unsigned long FontHeight; CCharString Name; CFontManager* PManager; virtual void v00() {} CFontBank(); };
+class CFontBank : public CBaseClassNonCopyable { public: unsigned long FontHeight; CCharString Name; CFontManager* PManager; virtual void v00() {} CFontBank(); };
 CFontBank::CFontBank() : CBaseClassNonCopyable(), Name() { }
 int main()
 {

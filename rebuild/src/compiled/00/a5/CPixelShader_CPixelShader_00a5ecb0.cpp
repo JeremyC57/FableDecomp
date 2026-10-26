@@ -10,8 +10,8 @@
 // PDB: CPixelShader = vptr, Data +4; CPixelShaderData is 0x14 bytes (vptr, PixelShader,
 // ReferenceCount, ConstCount, ConstIndices).
 struct IDirect3DPixelShader9;
-struct CCharString { void* m_pData; };
-template <class T> struct CArray { T* m_pFirst; T* m_pLast; T* m_pEnd; };
+class CCharString { public: void* m_pData; };
+template <class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; };
 
 struct CPixelShaderData {                          // 0x14 bytes, vtable 0x0129D58C
     virtual ~CPixelShaderData();                   // +0x00 vptr
@@ -22,12 +22,12 @@ struct CPixelShaderData {                          // 0x14 bytes, vtable 0x0129D
     CPixelShaderData(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name);   // 0x00A5EC40
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual void v00();
     CShaderBase() { }
 };
 
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
     virtual void v00();
     CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name);

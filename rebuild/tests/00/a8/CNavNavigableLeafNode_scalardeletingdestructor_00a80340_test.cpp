@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CNavNavigableLeafNode {
+class CNavNavigableLeafNode { public:
     void* vftable;
     int destroyed;
 };

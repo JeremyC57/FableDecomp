@@ -11,7 +11,7 @@
 // Shape: the scoped filter object (both vtable stores through ebx), then the handle as a local destroyed out of line on
 // every exit after it; `while (!StartScriptingEntity(...)) { frame; if (done) return; }`; the target call reads the
 // interface's vtable before GetHero(); the state wait compares against 2 held in ebx.
-struct CScriptThing {                                    // 12 bytes
+class CScriptThing { public:                                    // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     ~CScriptThing();                                     // 0x004AA840
@@ -27,12 +27,12 @@ struct CCountedPointerWords {                            // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CBaseObject {                                     // CBaseIntelligentPointer root (polymorphic: vptr +0)
+class CBaseObject { public:                                     // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;                         // +0x04
     CBaseObject();                                       // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                           // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -40,7 +40,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     void Release();                                      // 0x00CD2770
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_3 = 3 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const;
     virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)

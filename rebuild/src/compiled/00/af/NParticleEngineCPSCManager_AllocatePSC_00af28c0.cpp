@@ -64,14 +64,14 @@ template <class A, class B> struct pair {
 enum EPSCType { PSC_TYPE_NONE = 0 };
 
 namespace NParticleEngine {
-struct CRegisteredPSCInfo {
+class CRegisteredPSCInfo { public:
     CPSCBase* (__cdecl* AllocFunc)();                    // +0x0
     EPSCType ComponentType;                              // +0x4
     CCharString GUIName;                                 // +0x8
 };
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
 };

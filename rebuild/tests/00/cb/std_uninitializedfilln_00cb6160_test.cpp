@@ -6,14 +6,14 @@
 #endif
 static int g_stringCopies = 0, g_stringAssigns = 0;
 #include <new>
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString(const CCharString& other) : m_pStringData(other.m_pStringData) { ++g_stringCopies; }
 };
 class CScriptBase;
 class CScriptDataBase;
 class CGameScriptInterfaceBase;
-struct CScriptInfo {                            // 20 bytes
+class CScriptInfo { public:                            // 20 bytes
     CScriptBase*     (__cdecl* AllocFunc)(CScriptDataBase*, CGameScriptInterfaceBase*);   // +0x00
     CScriptDataBase* (__cdecl* MasterScriptDataAlloc)();                                  // +0x04
     CCharString      Name;                      // +0x08

@@ -43,9 +43,9 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
-struct CIEngine;
+class CIEngine;
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void ClearAllParticles(CIEngine* engine);   // 0x00AED140
     void ClearAllDecals(CIEngine* engine);      // 0x00AED1E0
 };
@@ -53,7 +53,7 @@ struct CParticleEmitter {
 struct CIntelligentPointerEmitter : CBaseIntelligentPointer {
     NParticleEngine::CParticleEmitter* GetPItem() const { return (NParticleEngine::CParticleEmitter*)CBaseIntelligentPointer::GetPItem(); }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];

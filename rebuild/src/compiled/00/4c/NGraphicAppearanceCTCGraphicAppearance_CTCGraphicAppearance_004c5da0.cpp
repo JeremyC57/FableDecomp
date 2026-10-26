@@ -12,7 +12,7 @@
 // header's links through the re-read header pointer, zero the size, free the header; the zero lives in ebx.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CThing;
+class CThing;
 
 class CTCBase {                                    // engine/CTCBase.h offsets
 public:
@@ -80,8 +80,8 @@ struct CComponentListObject {                      // STLport list<CAGraphicAppe
     ~CComponentListObject();                       // 0x004C3550
 };
 
-struct C3DVector { float X, Y, Z; };
-struct CTCAnimationBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCAnimationBase;
 
 namespace NGraphicAppearance {
 

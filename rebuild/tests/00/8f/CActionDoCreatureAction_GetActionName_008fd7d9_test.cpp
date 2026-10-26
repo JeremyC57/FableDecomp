@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     unsigned int unknown04;
     unsigned int unknown08;

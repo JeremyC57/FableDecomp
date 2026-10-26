@@ -12,19 +12,19 @@
 // Shape: the sibling of CModeBlock::AnimUpdate 0x008D8DD0; the animation name is a named CCharString local in its own block
 // (`lea ecx ; push ecx`, built in the dead argument slot and destroyed right after the lookup); the blend-in time is a
 // local clamped before the CAnimInit record is built.
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x50];
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                        // 0x0099EAE0
 };
 
-struct CAnimationEntry;
+class CAnimationEntry;
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction();          // 0x006622A0
     CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool loadedOnly);   // 0x00662FA0
 };
@@ -35,7 +35,7 @@ struct CBlendPair {                        // the two floats at CAnimInit +0x18,
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
 
-struct CAnimInit {                         // 0x2c bytes
+class CAnimInit { public:                         // 0x2c bytes
     long          Mode;                    // +0x00
     unsigned char AnimType;                // +0x04
     bool          Flag05;                  // +0x05
@@ -52,14 +52,14 @@ struct CAnimInit {                         // 0x2c bytes
     }
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                        // +0x00
     unsigned long GetAnimateThingFlags();  // 0x005DC390
     long GetAnimationTransitionInTime();   // 0x005DC1F0
     long GetTimeToBlendIn(CThing* thing);  // 0x005DC230
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     long          UpdateMode;              // +0x00
     void*         AnimsBegin;              // +0x04
     void*         AnimsEnd;                // +0x08
@@ -75,7 +75,7 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase,
     unsigned char       _body[0x14];
 };
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8

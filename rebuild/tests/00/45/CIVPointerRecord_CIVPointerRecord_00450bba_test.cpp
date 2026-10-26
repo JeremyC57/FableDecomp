@@ -1,13 +1,13 @@
 // behaviour test for 0x00450BBA
 #include <stdio.h>
 static int g_deleted = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() {}
     virtual void DeleteThis() { ++g_deleted; }
     unsigned long IVRefCount;
     __forceinline void Release() { if (--IVRefCount == 0) DeleteThis(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     __forceinline ~CIVCountedPointer()
     {

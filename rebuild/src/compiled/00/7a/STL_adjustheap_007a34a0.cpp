@@ -1,6 +1,6 @@
 // std::__adjust_heap(CThing** first, int holeIndex, int len, CThing* val, CThingCompare_NearestToPos comp) -- STLport heap sift-down for the lightning target sort: move the nearer child up until the hole reaches the bottom, then push `val` back up from there
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the landed 0x0095CFE0 shape with the bool comparator: its real template body (0x007A2F90) noinline in the TU, member-init C3DVector copy ctor, template __adjust_heap
-// Leaf: ??$__adjust_heap@PAPAVCThing@@HPAV1@UCThingCompare_NearestToPos@@@std@@YIXPAPAVCThing@@HHPAV1@UCThingCompare_NearestToPos@@@Z
+// Leaf: ??$__adjust_heap@PAPAVCThing@@HPAV1@VCThingCompare_NearestToPos@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_NearestToPos@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A34A0, 135 bytes, __fastcall (/Gr algorithm TU: first in ecx, holeIndex
 //   in edx; len, val and the 12-byte comparator on the stack), `ret 14h`.
 // Instantiation: sort / partial_sort<CThing**, CThingCompare_NearestToPos> of CTCWillLightning.cpp -- Ego_r.pdb places
@@ -23,7 +23,7 @@ class CThing;
 
 // C3DVector with the engine's constructors (Ego_r.pdb: X, Y, Z): the user copy constructor makes the 12-byte
 // comparator copy memberwise into the argument area; operator- / GetLengthSquared serve the stand-in below.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
@@ -39,7 +39,7 @@ public:
 // Ego_r.pdb CThingCompare_Nearest: 12 bytes, Pos (C3DVector) +0x00. Its operator() returns the NEARER of the two
 // things (T*, not bool); this TU hands the functor to the STL directly (no CAdaptThingCompareToSTLComparitor),
 // so every comparison is `test eax,eax` on the returned pointer.
-struct CThingCompare_NearestToPos {                      // 12 bytes, passed by value
+class CThingCompare_NearestToPos { public:                      // 12 bytes, passed by value
     C3DVector Pos;                                       // +0x00
     template <class T> __declspec(noinline) bool operator()(T* a, T* b) const;   // 0x007A2F90 (same-TU body)
 };

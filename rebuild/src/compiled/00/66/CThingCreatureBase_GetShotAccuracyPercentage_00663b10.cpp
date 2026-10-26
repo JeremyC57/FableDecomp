@@ -12,33 +12,33 @@
 // Shape: the agent160 GetInterface model (__forceinline: bit test, key in a frame slot, LowerBound, `it == last ||
 //   key < it->type` -> last), the map pointer replacing `this` in esi on that arm. Each combat-manager read is a named
 //   local (`mov eax,[eax+4ch] ; push esi ; mov ecx,eax`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     long GetShotAccuracyPercentage();           // 0x006D6EA0
 };
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 struct CCombatantInfo {
     long Parent;
     CThing* Attacked;                           // +0x04
 };
-struct CCombatManager {
+class CCombatManager { public:
     bool IsCreatureAttacking(const CThingCreatureBase& creature);       // 0x006E92C0
     CCombatantInfo* GetCombatantInfo(const CThing& thing);              // 0x006E9360
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
 bool __fastcall IsThingRunningAwayFromCombat(CThing* thing);            // 0x00864CB0
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -62,7 +62,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad70[0xe4 - 0x70];
     long ShotAccuracyPercentage;                // +0xe4
     long GetShotAccuracyPercentage();

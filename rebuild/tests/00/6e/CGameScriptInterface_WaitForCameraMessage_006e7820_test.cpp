@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* p; };
-struct CThing {
+class CCharString { public: const char* p; };
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned long m_presentBits[9];
     struct CInterfaceMap_Retail {
@@ -31,15 +31,15 @@ struct CIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     CThing* GetPTypedItem() const { return (GetPItem() != 0 && IsThingOfType<CThing>(GetPItem())) ? GetPItem() : 0; }
 };
-struct CMessageEvent { long Type; CIntelligentPointer PTarget; };
-struct CMessageEventFilter_IsOfType {
+class CMessageEvent { public: long Type; CIntelligentPointer PTarget; };
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) {}
     bool operator()(CMessageEvent* event) const { return event->Type == m_type; }
 };
 struct SMessageNode { SMessageNode* m_pNext; SMessageNode* m_pPrev; CMessageEvent m_value; };
 static int g_removed;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     SMessageNode* m_pHead;
     template<class TFilter> CMessageEvent* FindMostRecentMessage(const TFilter& filter)
     {
@@ -55,8 +55,8 @@ struct CMessageEventManager {
             if (&node->m_value == message) { node->m_pPrev->m_pNext = node->m_pNext; node->m_pNext->m_pPrev = node->m_pPrev; ++g_removed; return; }
     }
 };
-struct CWorld { CMessageEventManager* PMessageEventManager; };
-struct CTCCameraPointScriptedSpline {
+class CWorld { public: CMessageEventManager* PMessageEventManager; };
+class CTCCameraPointScriptedSpline { public:
     const char* msg;
     bool HasMessage(const CCharString& message) { return std::strcmp(msg, message.p) == 0; }
 };
@@ -76,7 +76,7 @@ struct CScriptRunner {
 };
 static CScriptRunner g_runner;
 static CScriptRunner* g_pScriptRunner = &g_runner;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CWorld* World;
     void WaitForCameraMessage(const CCharString& message) const
     {

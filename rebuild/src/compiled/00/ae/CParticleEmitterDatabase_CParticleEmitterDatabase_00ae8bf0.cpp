@@ -8,20 +8,20 @@
 // +0x38 (counted pointer: object and block zeroed), CurrentHandle +0x40, ParFilename +0x44, HeaderFilename +0x48.
 // The member objects' inline constructors share one zero register; CurrentHandle = 1 is stored after the string
 // constructors, so it is a body assignment (an initialiser would be scheduled before them).
-struct CSymbolMap {
+class CSymbolMap { public:
     unsigned char m_data[0x24];
     CSymbolMap();                                    // 0x009E5200
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                   // 0x0099E4B0
 };
 
-namespace NParticleEngine { struct CParticleEmitter; struct CParticleDataBank; }
+namespace NParticleEngine { class CParticleEmitter; class CParticleDataBank; }
 
 struct SCountBlock;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Object;
     SCountBlock* Block;
     CCountedPointer() : Object(0), Block(0) {}

@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CNymphDef
-{
+class CNymphDef
+{ public:
     void* vftable;
 };
 void* const g_CNymphDef_vftable = (void*)0x12345678;

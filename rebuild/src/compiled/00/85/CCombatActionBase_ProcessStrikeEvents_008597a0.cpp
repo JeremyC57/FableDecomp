@@ -21,7 +21,7 @@
 //   StrikeEventIndex (PDB).
 extern long g_FramesPerSecond;                         // 0x01375550
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -29,15 +29,15 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);              // 0x0040F020
 };
 
-struct CTCObjectAugmentations {                        // interface 0xbf
+class CTCObjectAugmentations { public:                        // interface 0xbf
     void FireCombatAugEffect();                        // 0x00766A60
     void EndStrikeAction();                            // 0x00765D40 (`mov byte [ecx+64h],0`: InStrikeAction = false)
 };
-struct CTCCombat {                                     // interface 0x30
+class CTCCombat { public:                                     // interface 0x30
     void ResetComboChainPos();                         // 0x00733210
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
@@ -84,7 +84,7 @@ struct CStrikeEventList {                              // std::list<CCountedPoin
 };
 
 struct CAnimationOwner;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float);
@@ -107,7 +107,7 @@ struct CCreatureActionBase {
     unsigned char           _pad20[0xa8 - 0x20];
     CAnimationOwner* GetPCreatureAnimationOwner() const;   // 0x00692950
 };
-struct CCombatActionBase : CCreatureActionBase {      // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:      // retail sizeof 0x114
     CBaseIntelligentPointer PTarget;                   // +0xa8
     CBaseIntelligentPointer PCameraPoint;              // +0xb0
     void*            PMeleeAbilityDef;                 // +0xb8

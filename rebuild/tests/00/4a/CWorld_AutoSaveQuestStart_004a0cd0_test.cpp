@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString {
+class CWideString { public:
     char text[32];
     CWideString(const char* t) { std::strcpy(text, t); }
     ~CWideString() {}
@@ -12,14 +12,14 @@ static int g_copies = 0, g_starts = 0, g_stops = 0, g_deletes = 0, g_internalCal
 static char g_lastInternal[32];
 static bool g_lastInternalFlag = true;
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& Get() { static CUserProfileManager m; return m; }
     CWideString GetAutoSaveQuestStartFileName() const { return CWideString("AutoSave.qs"); }
     CWideString GetAutoSavePathName() const { return CWideString("dir/AutoSave"); }
     CWideString GetAutoSaveQuestStartPathName() const { return CWideString("dir/AutoSave.qs"); }
 };
 
-struct CWorld {
+class CWorld { public:
     long MostRecentSaveType;
     long MostRecentSaveTypeBeforeManualSave;
     bool AutoSaveCheckPointExists;

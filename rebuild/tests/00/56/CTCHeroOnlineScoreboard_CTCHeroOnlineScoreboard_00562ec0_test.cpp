@@ -4,7 +4,7 @@
 #include <cstring>
 
 struct SNode { bool color; SNode *parent, *left, *right; };
-struct CMap { SNode* header; unsigned long count;
+class CMap { public: SNode* header; unsigned long count;
     CMap() : header((SNode*)std::malloc(32)), count(0) { header->color = false; header->parent = 0; header->left = header; header->right = header; } };
 struct LNode { LNode *next, *prev; };
 struct CList { LNode* node; CList() { LNode* n = (LNode*)std::malloc(28); n->next = n; n->prev = n; node = n; } };

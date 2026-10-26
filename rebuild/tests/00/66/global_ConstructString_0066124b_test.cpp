@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CWideString;
+class CWideString;
 static int g_calls = 0;
 static void* g_self = 0;
 static long g_a=0,g_b=0,g_c=0,g_zero=99;

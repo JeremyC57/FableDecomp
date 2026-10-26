@@ -3,21 +3,21 @@
 #include <cstdio>
 #include <cmath>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static float g_Epsilon = 1e-4f;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Normalise() { float l = std::sqrt(X * X + Y * Y + Z * Z); X /= l; Y /= l; Z /= l; }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CSoundPair { long m_first, m_second; CSoundPair() : m_first(0), m_second(0) {} };
+class CSoundPair { public: long m_first, m_second; CSoundPair() : m_first(0), m_second(0) {} };
 struct CPhysicsBody { C3DVector Facing; C3DVector GetFacing() { return Facing; } };
-struct CThingCreatureBase : CThing { CPhysicsBody* PhysicsBody; };
-struct CCombatActionBase {
+class CThingCreatureBase : public CThing { public: CPhysicsBody* PhysicsBody; };
+class CCombatActionBase { public:
     long Code;
     CCombatActionBase(CThingCreatureBase*, CThing*, long code, const CSoundPair&) : Code(code) {}
 };
-struct CCombatAction_ControlledStrafeJump : CCombatActionBase {
+class CCombatAction_ControlledStrafeJump : public CCombatActionBase { public:
     C3DVector RequiredFacing, OriginalFacing; bool AddedRollMode;
     CCombatAction_ControlledStrafeJump(CThingCreatureBase* owner, CThing* target, const C3DVector& requiredFacing, const C3DVector& originalFacing);
 };

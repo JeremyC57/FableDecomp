@@ -13,7 +13,7 @@ struct CBase {
 #include <string.h>
 #include "engine/CChunkedFileChunk.h"      // PDB layout (ChunkType[5] +4, Parent +0xc) agrees with the bytes; the
                                           // header is a flat POD, so the constructor needs this polymorphic twin
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 struct CChunkedFileChunk_Retail : CBase {
     char                    ChunkType[5];       // +0x04
     CChunkedFileSuperChunk* Parent;             // +0x0c

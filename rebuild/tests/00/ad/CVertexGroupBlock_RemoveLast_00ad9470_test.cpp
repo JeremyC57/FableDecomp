@@ -5,7 +5,7 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 typedef std::multimap<void*, int> CVertexGroupTree;
-struct CVertexGroupBlock {
+class CVertexGroupBlock { public:
     std::vector<void*> Entries;
     CVertexGroupTree m_groups;
     void*& back() { return Entries.back(); }

@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThingCreatureDef { float DefaultMaxHealth; };
-struct CPersistContext { long m_mode; };
+class CThingCreatureDef { public: float DefaultMaxHealth; };
+class CPersistContext { public: long m_mode; };
 static bool g_baseResult = true;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char DeletedOnOwnerLevelOutOfScope : 1;
     unsigned char Drawable : 1;
     unsigned char _bits : 6;
@@ -12,7 +12,7 @@ struct CThingCreatureBase {
     bool SerialiseGameState(CPersistContext&) { return g_baseResult; }
 };
 static const float HEALTH_UNSET = 0.0f;
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     bool SerialiseGameState(CPersistContext& context);
 };
 bool CThingPlayerCreature::SerialiseGameState(CPersistContext& context)

@@ -10,14 +10,14 @@ typedef long long __int64;
 // behaviour test: CSpeakingMarker::Main waits for the hero, plays the selected warning, warning 4 spawns ambush lieutenants
 
 
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
@@ -26,7 +26,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     virtual void s001() const {} virtual void s002() const {}
     virtual CCharString GetDataString() const;                          // slot 3 (+0xc)
     virtual void s004() const {} virtual void s005() const {}
@@ -49,7 +49,7 @@ template <class T> struct CScriptThingVector {          // STLport vector<CScrip
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const {} virtual void v001() const {} virtual void v002() const {} virtual void v003() const {} virtual void v004() const {} virtual void v005() const {}
     virtual void v006() const {}
     virtual void NewScriptFrame() const;                                // slot 7 (+0x1c)
@@ -141,7 +141,7 @@ struct CQ_OpeningGraveyardSecretPassageScript {
     bool          LieutenantAround;                     // +0x68
 };
 struct CQ_SunnyvaleMasterData;
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00() {}
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

@@ -10,7 +10,7 @@ inline void* operator new(std::size_t, void* where) { return where; }
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };
 
-template <class T> struct CArray {                  // retail 12 bytes: STLport _Vector_base layout
+template <class T> class CArray { public:                  // retail 12 bytes: STLport _Vector_base layout
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -19,28 +19,28 @@ template <class T> struct CArray {                  // retail 12 bytes: STLport 
     T& back() { return *(_M_finish - 1); }
 };
 
-struct CMeshDataBank;
-struct CCPPointerInfo;
+class CMeshDataBank;
+class CCPPointerInfo;
 
-struct CMeshDataBankEntry {
+class CMeshDataBankEntry { public:
     virtual void Release();
     CMeshDataBank* Bank;                            // +0x04
     unsigned long Index;                            // +0x08
     CMeshDataBankEntry(CMeshDataBank* bank, unsigned long index) : Bank(bank), Index(index) { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float Radius;
     C3DBoundingSphere() : Center(0.0f, 0.0f, 0.0f), Radius(0.0f) { }
 };
 
-struct C3DMeshInfo : CMeshDataBankEntry {           // 0x60 bytes, vtable 0x0129CD3C
+class C3DMeshInfo : public CMeshDataBankEntry { public:           // 0x60 bytes, vtable 0x0129CD3C
     void* MeshData;                                 // +0x0c
     unsigned char BoundingBox[0x18];                // +0x10
     C3DBoundingSphere BoundingSphere;               // +0x28
@@ -58,7 +58,7 @@ struct C3DMeshInfo : CMeshDataBankEntry {           // 0x60 bytes, vtable 0x0129
     ~C3DMeshInfo();                                 // 0x00A24930
 };
 
-struct CPhysicsMeshInfo : CMeshDataBankEntry {      // 0x10 bytes, vtable 0x0129CD50
+class CPhysicsMeshInfo : public CMeshDataBankEntry { public:      // 0x10 bytes, vtable 0x0129CD50
     void* MeshData;                                 // +0x0c
     CPhysicsMeshInfo(unsigned long type, unsigned long index, CMeshDataBank* bank)
         : CMeshDataBankEntry(bank, index), MeshData(0)
@@ -66,7 +66,7 @@ struct CPhysicsMeshInfo : CMeshDataBankEntry {      // 0x10 bytes, vtable 0x0129
     }
 };
 
-struct C3DAnimationInfo : CMeshDataBankEntry {      // 0x28 bytes, vtable 0x0129CD64
+class C3DAnimationInfo : public CMeshDataBankEntry { public:      // 0x28 bytes, vtable 0x0129CD64
     void* Data;                                     // +0x0c
     float Duration;                                 // +0x10
     float NonLoopingDuration;                       // +0x14
@@ -138,7 +138,7 @@ inline bool IsAnimationType(unsigned long type) { return type == 6 || type == 10
 
 template <class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 
-struct CBankFile {
+class CBankFile { public:
     virtual void v00();
     unsigned char _pad_0x04[0x88];
     bool RetailMode;                                // +0x8c
@@ -148,7 +148,7 @@ struct CBankFile {
     bool IsReadOnly() const { return ReadOnly; }
 };
 
-struct CMeshDataBank : CBankFile {
+class CMeshDataBank : public CBankFile { public:
     unsigned char _pad_0x164[0x21c];
     CEntryPointerArray MeshesAndAnimations;         // +0x380
     CMeshInfoArray MeshInfoBuffer;                  // +0x38c

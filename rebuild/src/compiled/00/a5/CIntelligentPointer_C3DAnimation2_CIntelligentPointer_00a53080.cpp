@@ -3,17 +3,17 @@
 // Renamed (fistp2, 2026-10-24) from CIntelligentPointer::CIntelligentPointer @ 00/a5/CIntelligentPointer_CIntelligentPointer_00a53080.cpp: the constructor stores vtable 0x0129D50C, whose RTTI type descriptor (read from the exe) is `.?AV?$CIntelligentPointer@VC3DAnimation2@@@@` = CIntelligentPointer<C3DAnimation2>; body = CBaseIntelligentPointer() @ 0x00A01B10 then the vtable then SetPItem(argument) @ 0x00A01B90; the manifest's rtti-vtables.tsv lists the vtable as CIntelligentPointer without the template argument
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A53080, 32 bytes.
 #include <stddef.h>
-struct CBaseObject;
-struct C3DAnimation2;
+class CBaseObject;
+class C3DAnimation2;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseIntelligentPointer();                           // 0x00A01B10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CBaseObject* item);                    // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();                                  // this instantiation's own vtable
     CIntelligentPointer(T* item);
 };
 template <class T> CIntelligentPointer<T>::CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-template struct CIntelligentPointer<C3DAnimation2>;
+template class CIntelligentPointer<C3DAnimation2>;

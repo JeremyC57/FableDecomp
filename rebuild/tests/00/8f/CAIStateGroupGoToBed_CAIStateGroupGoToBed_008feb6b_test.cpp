@@ -3,11 +3,11 @@
 // Behaviour model of CAIStateGroup_GoToBed::CAIStateGroup_GoToBed @ 0x008FEB6B: the base and member
 // constructors run in declaration order and the member offsets match the retail layout.
 static int g_order[4]; static int g_n = 0;
-struct CAIStateGroupBase { virtual void v00() {} CAIStateGroupBase() { g_order[g_n++] = 1; } };
+class CAIStateGroupBase { public: virtual void v00() {} CAIStateGroupBase() { g_order[g_n++] = 1; } };
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { g_order[g_n++] = 2; } };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() {} CIntelligentPointer() : CBaseIntelligentPointer() {} };
-struct CCharString { void* m_pData; CCharString() : m_pData(0) { g_order[g_n++] = 3; } };
-struct CThing;
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: virtual void v00() {} CIntelligentPointer() : CBaseIntelligentPointer() {} };
+class CCharString { public: void* m_pData; CCharString() : m_pData(0) { g_order[g_n++] = 3; } };
+class CThing;
 struct CAIStateGroup_GoToBed : CAIStateGroupBase {
     unsigned char _base[0x10];
     CIntelligentPointer<CThing> PBed;

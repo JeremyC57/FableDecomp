@@ -24,7 +24,7 @@ public:
     CCharStringData* PStringData;
 };
 
-struct CStringParserCommentBoundaries {
+class CStringParserCommentBoundaries { public:
     long Start;
     long End;
 };

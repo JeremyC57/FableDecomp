@@ -11,7 +11,7 @@
 
 inline float Magnitude(float x, float y, float z) { return (float)sqrt(x * x + y * y + z * z); }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float Length() const { return Magnitude(X, Y, Z); }
     void operator*=(float s) { X *= s; Y *= s; Z *= s; }

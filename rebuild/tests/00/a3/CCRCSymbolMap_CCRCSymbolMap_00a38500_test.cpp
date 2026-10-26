@@ -32,13 +32,13 @@ template <class T> struct CVector {
     CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 template <class K, class V> struct CKeyValuePair { K first; V second; };
-template <class K, class V> struct CVectorMap {
+template <class K, class V> class CVectorMap { public:
     CVector<CKeyValuePair<K, V> > Data;
     char                          Compare;
     bool                          Dirty;
     CVectorMap() : Dirty(false) {}
 };
-struct CCRCSymbolMap : CBase {
+class CCRCSymbolMap : public CBase { public:
     CVectorMap<unsigned long, long> SLONGMap;
     set<unsigned long>              NamesUsed;
     bool                            CheckForDuplicateSymbols;

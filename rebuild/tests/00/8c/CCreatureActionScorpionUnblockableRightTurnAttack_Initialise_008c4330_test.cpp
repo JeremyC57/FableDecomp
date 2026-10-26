@@ -2,12 +2,12 @@
 #include <cstdio>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-struct CThing;
-struct CTCPhysicalShieldSpell {
+class CThing;
+class CTCPhysicalShieldSpell { public:
     CThing* m_attacker; int m_starting;
     void NotifyUnblockableAttack(CThing* attacker, bool starting) { m_attacker = attacker; m_starting = starting ? 1 : 0; Log(10 + m_starting); }
 };
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     CTCPhysicalShieldSpell* m_shield;
     unsigned char m_flags91;

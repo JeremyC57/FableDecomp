@@ -1,6 +1,6 @@
 #include "rebuild_abi.h"
 #include <cstdio>
-struct CWADFile { char pad00[0xc]; long f0c; long f10; void Close(); };
+class CWADFile { public: char pad00[0xc]; long f0c; long f10; void Close(); };
 void CWADFile::Close(){ f0c=(long)0xfffffcf7; f10=(long)0xfffffc19; }
 int main(){
     CWADFile w; w.f0c=0; w.f10=0; w.Close();

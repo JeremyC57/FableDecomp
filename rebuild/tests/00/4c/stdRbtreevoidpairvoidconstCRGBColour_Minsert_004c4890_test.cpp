@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct Value { void* first; CRGBColour second; };
 struct Node { bool color; Node* parent; Node* left; Node* right; Value v; };
 static int g_rebalances = 0;

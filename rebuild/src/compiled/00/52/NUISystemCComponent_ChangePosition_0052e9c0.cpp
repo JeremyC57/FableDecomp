@@ -11,7 +11,7 @@
 // initial position and the elapsed time restarts at 0; without one, initial and current position
 // both snap to the argument. C2DVector is a plain two-float POD (integer moves). The third argument
 // (`ret 0Ch`) is never read.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };

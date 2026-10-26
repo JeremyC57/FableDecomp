@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_frame, g_doneAt, g_failed, g_completed, g_infos, g_clickAt, g_questFailAt, g_questDoneAt, g_potionAt;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frame; }
     bool MsgOnQuestCompletedBeforeScreenShown(const char* q) const { return !std::strcmp(q, "Q") && g_frame >= g_questDoneAt; }
     bool MsgOnQuestFailedBeforeScreenShown(const char* q) const { return !std::strcmp(q, "Q") && g_frame >= g_questFailAt; }

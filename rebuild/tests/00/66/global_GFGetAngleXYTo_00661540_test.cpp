@@ -1,7 +1,7 @@
 // Behaviour test for 0x00661540 GFGetAngleXYTo (model copy)
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {

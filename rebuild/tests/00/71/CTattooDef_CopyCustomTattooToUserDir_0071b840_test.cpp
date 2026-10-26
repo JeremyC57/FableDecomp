@@ -23,8 +23,8 @@
 // Shape: the singleton pointer is a named local; the two path strings share the outer scope (their frame words stay apart from the
 //   first expression's five temporaries); the copy is the one nested block, with `return true` inside it and `return false` after.
 #include <stddef.h>
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                         // 0x0099B510
 };
@@ -37,12 +37,12 @@ namespace NResourceDirectoryNames {
 CWideString __fastcall GetSaveDir_0041a650();                        // 0x0041A650
 CWideString __fastcall GetCustomTattooDir();                // 0x0041A6A0
 }
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CWideString ToWideString() const;                       // 0x0099E480
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[8];
     CWideString ProfileName;                                // +0x08
     static CUserProfileManager* Get();                      // 0x0040D2A0
@@ -52,7 +52,7 @@ namespace N_0099a300 { struct CBase {
     ~CBase();                                               // 0x0099A300
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CDiskFileWin32 : CBase {                             // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                             // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                                   // 0x0099A920 (slot 2)
@@ -66,7 +66,7 @@ struct CDiskFileWin32 : CBase {                             // vtable 0x0122D06C
     ~CDiskFileWin32() { Close(); }
 };
 void __fastcall CopyFileW(CDiskFileWin32& from, CDiskFileWin32& to);   // 0x00998E70
-struct CTattooDef {
+class CTattooDef { public:
     void* __vftable;
     unsigned char _pad04[0x30];
     long BankIndex;                                         // +0x34
@@ -94,7 +94,7 @@ bool CTattooDef::CopyCustomTattooToUserDir() const
     return false;
 }
 
-struct CWideStringData { int tag; };
+class CWideStringData { public: int tag; };
 static CWideStringData g_tags[8];
 static int g_pathCalls = 0, g_opens = 0, g_closes = 0, g_copies = 0, g_lastAccess = 0;
 static bool g_exists[2], g_room;

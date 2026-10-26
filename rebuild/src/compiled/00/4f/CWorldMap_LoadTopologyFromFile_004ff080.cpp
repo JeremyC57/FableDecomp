@@ -18,12 +18,12 @@
 // Shape: the vector's operator[] is STLport's `*(begin() + n)` through an inline begin() accessor (`_SweepBegin1()`): the element
 //   address is formed from the accessor's returned pointer plus the scaled index as retail; `first[n]` folds the index into the
 //   load and recolours the registers (the GOTCHAS wave-25 rule, confirmed on the RTM compiler).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;                                             // +0
     void (__fastcall* Destroy)(void* data);                  // +4
     void* Data;                                              // +8
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
@@ -91,30 +91,30 @@ void CLongVector::_M_insert_overflow(long* position, const long& x, const __true
 }
 #pragma auto_inline(on)
 
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CAFile { };
-struct CASuspendableProcess {                                // vtable 0x0129D428 (slots 1-3 are _purecall)
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CAFile { public: };
+class CASuspendableProcess { public:                                // vtable 0x0129D428 (slots 1-3 are _purecall)
     virtual ~CASuspendableProcess();                         // slot 0 (0x00A44A20)
     virtual void v01() = 0;
     virtual void Update() = 0;                               // slot 2 (+0x08; name unknown, descriptive)
 };
-struct CGameDefinitionManager;
-struct CWorld {
+class CGameDefinitionManager;
+class CWorld { public:
     unsigned char                 _pad00[0x10];
     const CGameDefinitionManager* DefinitionManager;         // +0x10
     unsigned long* GetWorldSeed() const;                     // 0x0049D810
 };
-struct CMap {
+class CMap { public:
     CMap(const CGameDefinitionManager& definitions, CWorld& world, unsigned long* seed, long map,
          const C2DBoxI& area, CAFile& file, CASuspendableProcess* process);   // 0x008224E0
     unsigned char _body[0x1d40];
 };
-struct CMapInfo {                                            // 0x48 bytes
+class CMapInfo { public:                                            // 0x48 bytes
     C2DBoxI               Area;                              // +0x00
     CCountedPointer<CMap> PMap;                              // +0x10
     unsigned char         _rest[0x30];                       // +0x18 .. +0x48
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;                                                // +0x00
     T* Finish;                                               // +0x04
     T* EndOfStorage;                                         // +0x08
@@ -122,7 +122,7 @@ template <class T> struct CArray {
     T& operator[](unsigned long i) { return *(_SweepBegin1() + i); }
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     void*            _vptr;                                  // +0x00
     long             f4;                                     // +0x04
     CWorld*          World;                                  // +0x08

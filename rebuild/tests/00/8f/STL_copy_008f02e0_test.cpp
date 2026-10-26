@@ -11,7 +11,7 @@ struct CIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { SetPItem(o.GetPItem()); return *this; }
 };
 
-struct Coin {
+class Coin { public:
     float Pos[2], Vel[2], IMass, APos, AVel, AIMass;
     bool  Owned;
     CIntelligentPointer Thing;

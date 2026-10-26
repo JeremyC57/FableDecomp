@@ -12,7 +12,7 @@
 #pragma intrinsic(memcpy, memset)
 
 #pragma pack(push, 1)
-template<class T> struct CBasicString {
+template<class T> class CBasicString { public:
     T* PData;                                   // +0x00
     unsigned long StringLength;                 // +0x04
     unsigned long DataLength : 31;              // +0x08

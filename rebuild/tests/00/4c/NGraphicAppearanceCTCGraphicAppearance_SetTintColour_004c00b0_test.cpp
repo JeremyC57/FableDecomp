@@ -1,8 +1,8 @@
 #include <cstdio>
 
 static int g_render = 0;
-struct CThing { void AddToRenderList() { ++g_render; } };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CThing { public: void AddToRenderList() { ++g_render; } };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CTintColourMap {
     void* m_keys[4]; CRGBColour m_values[4]; int m_count;
     CRGBColour& operator[](void* const& key)

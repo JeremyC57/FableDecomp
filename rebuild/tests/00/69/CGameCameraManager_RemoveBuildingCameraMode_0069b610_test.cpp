@@ -3,11 +3,11 @@
 #include <new>
 
 static bool g_hasMode; static long g_modeAsked; static int g_setUp, g_added; static bool g_inMelee;
-struct CPlayer { bool HasMode(long mode) { g_modeAsked = mode; return g_hasMode; } };
-struct CPlayerManager { CPlayer m_player; CPlayer* GetMainPlayer() { return &m_player; } };
-struct CEngine { unsigned char _pad[0x1c]; CPlayerManager* m_pPlayerManager; };
+class CPlayer { public: bool HasMode(long mode) { g_modeAsked = mode; return g_hasMode; } };
+class CPlayerManager { public: CPlayer m_player; CPlayer* GetMainPlayer() { return &m_player; } };
+class CEngine { public: unsigned char _pad[0x1c]; CPlayerManager* m_pPlayerManager; };
 static CEngine* g_pEngine;
-struct CGameCameraManager {
+class CGameCameraManager { public:
     bool ObservedThingInBuilding;
     void SetUpMainCameraManagerSetDef() { ++g_setUp; }
     bool IsObservedThingInMelee() { return g_inMelee; }

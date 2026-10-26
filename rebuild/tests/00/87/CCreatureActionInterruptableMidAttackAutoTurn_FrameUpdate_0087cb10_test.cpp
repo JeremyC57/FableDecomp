@@ -5,25 +5,25 @@ static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 struct CEventBase { virtual ~CEventBase() {} virtual int IsMissedStrike() const { return 0; } };
 struct CEventMissedStrike : CEventBase { int IsMissedStrike() const { return 1; } };
-struct CTCEntityEvents { int Missed; void AddEvent(CEventBase* e) { if (e->IsMissedStrike()) ++Missed; delete e; } };
-struct CTCStealth { bool Able; bool IsAbleToFlourishDangerThings() { return Able; } };
-struct CTCCombat { int SetValidCalls; bool LastValid; bool Flag94; void SetMeleeFlourishValid(bool v) { ++SetValidCalls; LastValid = v; } };
-struct CWeaponDef { bool AllowsFlourish; };
-template <class T> struct CDefPointer { T* Data; T* operator->() const { return Data; } bool IsValid() const { return Data != 0; } };
+class CTCEntityEvents { public: int Missed; void AddEvent(CEventBase* e) { if (e->IsMissedStrike()) ++Missed; delete e; } };
+class CTCStealth { public: bool Able; bool IsAbleToFlourishDangerThings() { return Able; } };
+class CTCCombat { public: int SetValidCalls; bool LastValid; bool Flag94; void SetMeleeFlourishValid(bool v) { ++SetValidCalls; LastValid = v; } };
+class CWeaponDef { public: bool AllowsFlourish; };
+template <class T> class CDefPointer { public: T* Data; T* operator->() const { return Data; } bool IsValid() const { return Data != 0; } };
 struct CTC68 { CDefPointer<CWeaponDef> PDef; CDefPointer<CWeaponDef> GetDef() const { return PDef; } };
-struct CThing {
+class CThing { public:
     std::map<long, void*> TCs;
     template <class T> bool GetInterface(T** pp, long type) { std::map<long, void*>::iterator i = TCs.find(type); if (i == TCs.end()) return false; *pp = (T*)i->second; return true; }
 };
 static int g_baseUpdates;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     bool R19, R17; CThing* Creature; CDefPointer<CWeaponDef> PMeleeAbilityDef; bool HitCreature;
     bool v17() { return R17; } bool v19() { return R19; }
     void FrameUpdate() { ++g_baseUpdates; }
     CThing* GetCreature() const { return Creature; }
     bool HasMeleeAbilityDef() const { return PMeleeAbilityDef.IsValid(); }
 };
-struct CCreatureAction_InterruptableMidAttackAutoTurn : CCombatActionBase { bool PerformedStrikeEnd; void FrameUpdate(); };
+class CCreatureAction_InterruptableMidAttackAutoTurn : public CCombatActionBase { public: bool PerformedStrikeEnd; void FrameUpdate(); };
 void CCreatureAction_InterruptableMidAttackAutoTurn::FrameUpdate()
 {
     if (v19() && v17() && !PerformedStrikeEnd) {

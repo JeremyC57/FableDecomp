@@ -4,7 +4,7 @@
 #include <new>
 
 static int g_copies = 0;
-struct CCharString {
+class CCharString { public:
     int Key;
     CCharString(int k) : Key(k) {}
     CCharString(const CCharString& other) : Key(other.Key) { ++g_copies; }

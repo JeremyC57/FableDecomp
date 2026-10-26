@@ -2,19 +2,19 @@
 #include <cstdio>
 static int g_log[16]; static long g_args[16]; static int g_n = 0;
 static void Log(int what, long arg) { g_log[g_n] = what; g_args[g_n] = arg; ++g_n; }
-struct CEngineSubPrimitiveBase;
+class CEngineSubPrimitiveBase;
 struct CEngineClothSimulationStaticMesh { void Render(void*, CEngineSubPrimitiveBase&, long pass) { Log(3, pass); } };
 static CEngineClothSimulationStaticMesh g_sim; static long g_wantIndex = 7;
-struct CEnginePrimitiveSimulationInfo { CEngineClothSimulationStaticMesh* FindSimulation(long i) { Log(2, i); return i == g_wantIndex ? &g_sim : 0; } };
-struct CEngineInternalPrimitiveStaticMesh { CEnginePrimitiveSimulationInfo* m_pSimulationInfo; };
+class CEnginePrimitiveSimulationInfo { public: CEngineClothSimulationStaticMesh* FindSimulation(long i) { Log(2, i); return i == g_wantIndex ? &g_sim : 0; } };
+class CEngineInternalPrimitiveStaticMesh { public: CEnginePrimitiveSimulationInfo* m_pSimulationInfo; };
 struct SMeshSlot { long m_index; };
 struct CMeshRenderer { SMeshSlot** m_ppCurrent; long GetCurrentMeshIndex() const { return (*m_ppCurrent)->m_index; } };
-struct CEngineSubPrimitiveBase { unsigned char m_flags; CEngineInternalPrimitiveStaticMesh* m_pPrimitive; CMeshRenderer* m_pRenderer; bool m_cloth; };
+class CEngineSubPrimitiveBase { public: unsigned char m_flags; CEngineInternalPrimitiveStaticMesh* m_pPrimitive; CMeshRenderer* m_pRenderer; bool m_cloth; };
 struct CEnginePrimitiveManagerStaticMeshesBase {
     void RenderMeshPrimitive(CEngineSubPrimitiveBase&, long pass) { Log(4, pass); }
     void RenderSubPrimitive(CEngineSubPrimitiveBase&, long pass) { Log(1, pass); }
 };
-struct CEnginePrimitiveManager2DStaticMeshes : CEnginePrimitiveManagerStaticMeshesBase {
+class CEnginePrimitiveManager2DStaticMeshes : public CEnginePrimitiveManagerStaticMeshesBase { public:
     void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, long pass)
     {
         if (sub.m_flags & 1) CEnginePrimitiveManagerStaticMeshesBase::RenderSubPrimitive(sub, 1);

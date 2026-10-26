@@ -2,10 +2,10 @@
 
 // Model of CTCCameraPointScripted::CTCCameraPointScripted(CThing*) @ 0x0075CC60: StartPos zeroed, the other vectors
 // left as they were, UID / acquisition type / transition time zeroed, the three flags cleared.
-struct CThing { int id; };
-struct CTCCameraPointDefinitionBase { CThing* Owner; CTCCameraPointDefinitionBase(CThing* t) : Owner(t) { } virtual ~CTCCameraPointDefinitionBase() { } };
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
-struct CTCCameraPointScripted : CTCCameraPointDefinitionBase {
+class CThing { public: int id; };
+class CTCCameraPointDefinitionBase { public: CThing* Owner; CTCCameraPointDefinitionBase(CThing* t) : Owner(t) { } virtual ~CTCCameraPointDefinitionBase() { } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+class CTCCameraPointScripted : public CTCCameraPointDefinitionBase { public:
     C3DVector StartPos, EndPos, LookPos, LookPosEnd; unsigned long long ThingUID; long PAT; float TransitionTime;
     bool LookDirSet, StartPosSet, EndPosSet;
     CTCCameraPointScripted(CThing* thing)

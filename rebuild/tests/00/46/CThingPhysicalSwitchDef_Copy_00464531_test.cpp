@@ -5,7 +5,7 @@
  * We can't exercise the masked callee, so we validate that the thunk
  * forwards to a stub with the same signature (tail-call semantics). */
 
-struct CThingPhysicalSwitchDef { int tag; };
+class CThingPhysicalSwitchDef { public: int tag; };
 
 static int g_called = 0;
 static CThingPhysicalSwitchDef* g_this = 0;

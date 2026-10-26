@@ -16,12 +16,12 @@
 // hands the extern only the bounds and writes them back, which keeps the loop's start/count in ebx/edi across the
 // SetHelperCreature calls while the boss is re-read from its frame word.
 // Leaf: FindAndStoreBodyguards@CAIStateGroup_Guildmaster
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
-struct CThingAICreature;
+class CTCBase;
+class CThing;
+class CWorld;
+class CThingAICreature;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
@@ -33,7 +33,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -68,7 +68,7 @@ struct CThing {
         else sel = map->last;
         return sel;
     }
-    const struct C3DVector& GetPosition() const;   // 0x004C73D0
+    const class C3DVector& GetPosition() const;   // 0x004C73D0
 };
 
 struct CBaseIntelligentPointer {
@@ -96,12 +96,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -125,33 +125,33 @@ struct CAIStateGroupBase {
 
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
 };
 
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) {}
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) {}
 };
 
-struct CThingFilter_HasDefGlobalIndex {
+class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
     CThingFilter_HasDefGlobalIndex(long index) : DefGlobalIndex(index) {}
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
 };
 
 struct CCreatureVector {                        // STLport vector<CThingAICreature*> {start, finish, end_of_storage}
@@ -164,7 +164,7 @@ struct CCreatureVector {                        // STLport vector<CThingAICreatu
     CThingAICreature* operator[](unsigned long i) const { return _M_start[i]; }
 };
 
-struct CThingSearchTools {
+class CThingSearchTools { public:
     // GetAllThingsInRoughArea<CThingAICreature, vector<CThingAICreature*>, CThingFilter_HasDefGlobalIndex> @ 0x008E3EB0
     void GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_HasDefGlobalIndex& filter, CCreatureVector& out) const;
 };
@@ -184,7 +184,7 @@ __declspec(noinline) void CThingSearchTools::GetAllThingsInRoughArea(const C2DBo
 }
 #pragma auto_inline(on)
 
-struct CTCBoss {                                // the interface-0xad component
+class CTCBoss { public:                                // the interface-0xad component
     void SetHelperCreature(CThingAICreature& creature);   // 0x007AF310
 };
 

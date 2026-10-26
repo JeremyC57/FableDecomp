@@ -10,7 +10,7 @@
 // Shape: the end position kept in ebx, the length (end - start) in edi computed before the seek to start-4; the save
 // stream re-read from +0x28 for every call; the text temporaries live in the `push ecx` frame word and the dead section
 // argument slot; `ret 4` on both exits.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator+=(const CCharString& other);      // 0x0099F0A0
     ~CCharString();                                         // 0x0099EAE0
@@ -18,20 +18,20 @@ struct CCharString {
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void Seek(long position);                       // slot 1
     virtual long GetPosition();                             // slot 2
     void WriteLong(long value);                             // 0x00993EB0
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
-struct CPersistContextWriteSection {
+class CPersistContextWriteSection { public:
     CCharString Name;                                       // +0x00
     long        StartPosition;                              // +0x04
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void*                   PDefinitionManager;             // +0x00
     void*                   PSymbolMap;                     // +0x04
     void*                   PParser;                        // +0x08

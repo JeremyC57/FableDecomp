@@ -6,12 +6,12 @@
 // argument slot); every edge passes C2DVector temporaries rebuilt from the longs; the four calls sit in one `&&`
 // chain compared `== true` (`cmp al,1 ; jne`) with `return true; return false;` (separate `if (...) return false;`
 // statements fold the last test into a `dec/neg/sbb/inc` bool and put `this` in edi instead of esi).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 float __stdcall GFVXToAX(float x);                 // 0x009E1DA0
 float __stdcall GFVYToAY(float y);                 // 0x009E1DD0
 

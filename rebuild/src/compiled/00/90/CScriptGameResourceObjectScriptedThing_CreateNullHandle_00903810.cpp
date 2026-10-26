@@ -14,7 +14,7 @@
 // Shape: no NRVO in VC7.1, so local + copy ctor + local dtor. CCountedPointer has a user copy ctor (null-tested AddRef)
 //   and an inline dtor whose release is null-tested, then zeroes Data and Info; the intermediate
 //   CScriptGameResourceObjectBase vptr store of the constructors is dead and dropped, the one in its user dtor stays.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                              // +0x00
     void (__fastcall* DeleteFunc)(void* data);           // +0x04
     void*         Data;                                  // +0x08

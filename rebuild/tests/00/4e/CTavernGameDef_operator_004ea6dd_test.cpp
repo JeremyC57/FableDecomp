@@ -13,12 +13,12 @@
 // Shape: compiler-style memberwise assignment in declaration order; dword members (ulong, long,
 // float, the 4-byte CDefString index) copy through eax, the two bools through al.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x28];          // vptr, resource links, PDefManager, GlobalIndex, flag bits
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
-struct CDefString {                     // a def-string table index (4 bytes, trivially copied)
+class CDefString { public:                     // a def-string table index (4 bytes, trivially copied)
     long Index;
 };
 
@@ -29,7 +29,7 @@ struct CPrizeScoreDefVector {           // retail std::vector<CPrizeScoreDef> (1
     CPrizeScoreDefVector& operator=(const CPrizeScoreDefVector& other);   // 0x004EAAD0
 };
 
-struct CTavernGameDef : CDefClassBase {                             // vtable 0x012424BC
+class CTavernGameDef : public CDefClassBase { public:                             // vtable 0x012424BC
     unsigned long    Banter;                              // +0x28
     unsigned long    Greeting;                            // +0x2c
     unsigned long    OptionsInitial;                      // +0x30

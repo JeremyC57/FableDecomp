@@ -12,8 +12,8 @@
 // Shape: the sub-def pointer is a named local zeroed up front; the parent def is an inline by-value
 // getter (null-tested add-ref into esi) whose release follows the `GetSubDef && index > 0` test kept
 // in bl; the sub-def object stays in edi for the index push and its own null-tested release.
-struct CDefClassBase;
-struct CExpressionDef;
+class CDefClassBase;
+class CExpressionDef;
 
 struct CRefCountedDef {
     virtual void v00();
@@ -28,7 +28,7 @@ template<class T> struct CDefPointerOut {                   // the out-parameter
     CDefPointerOut() : Object(0) { }
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object != 0) Object->AddRef(); }
@@ -41,7 +41,7 @@ struct CExpressionUserDef : CRefCountedDef {                // the parent def's 
     long          ExpressionDefIndex;                       // +0x28
 };
 
-struct CDefClassBase : CRefCountedDef {
+class CDefClassBase : public CRefCountedDef { public:
     bool GetSubDef(CDefPointerOut<CExpressionUserDef>* out);   // 0x005DA240
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
@@ -58,10 +58,10 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointerOut<CExpressionUse
 }
 #pragma auto_inline(on)
 
-struct CExpressionDef : CRefCountedDef {
+class CExpressionDef : public CRefCountedDef { public:
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CExpressionDef>* out);  // 0x005F81BE
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -78,13 +78,13 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CEx
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char              _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;                        // +0x70
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }
 };
 
-struct CTCExpression {
+class CTCExpression { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     bool    ToBeRemoved;                                    // +0x08

@@ -11,9 +11,9 @@
 //   order. The 8-byte frame is the {vtable, vector*} wrapper shared by the two text arms; the key stays in edi from the
 //   CheckCRC push. CPersistContext layout from Ego_r.pdb (0x2C bytes): UseDefaults +0x14, Mode +0x18, PLoadStream +0x24,
 //   PSaveStream +0x28. The element type comes from the PDB member that owns the key where one exists.
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
-struct CCharString { struct SBlock* m_pBlock; };
+class CDataOutputStream;
+class CMemoryDataInputStream;
+class CCharString { public: struct SBlock* m_pBlock; };
 
 template <class T> struct vector {
     T* _M_start;
@@ -28,7 +28,7 @@ template <class T> struct vector {
 void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream* stream, vector<CCharString>& value);   // 0x00433273
 void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream* stream, vector<CCharString>& value);       // 0x00433227
 
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long GetCount();
 };
 template <class T> struct CPersistContext_TransferableVector : CPersistContext_TransferableVectorGenericType {   // vtable 0x012387E4
@@ -37,7 +37,7 @@ template <class T> struct CPersistContext_TransferableVector : CPersistContext_T
     virtual long GetCount();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

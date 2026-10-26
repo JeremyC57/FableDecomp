@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CDefString { long m_index; };
+class CDefString { public: long m_index; };
 class CPrizeScoreDef;
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };   // retail 12-byte STLport vector
 

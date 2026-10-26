@@ -19,7 +19,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);     // +4 per-type deleter, object in ecx
     void* m_pObject;                            // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* m_pCount;
     CCountedPointer() : Data(0), m_pCount(0) { }

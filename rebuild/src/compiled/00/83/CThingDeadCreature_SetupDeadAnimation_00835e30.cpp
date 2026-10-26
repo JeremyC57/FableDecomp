@@ -16,15 +16,15 @@
 //   Animation +0x34; CAnimInit 0x2c bytes (the landed CTCBed model).
 // Shape: the filter is reached through the counted pointer's inline operator* (a raw pointer member rotates eax/edx);
 //   the zero frame time is three floats (immediate stores after the push); the entry's index is read before the reset.
-struct CTCBase;
-struct CCharString { void* PStringData; };
+class CTCBase;
+class CCharString { public: void* PStringData; };
 extern CCharString g_CCharString_013baf40;              // "STANDARD_DEAD"
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                                     // +0x00
     unsigned long GetAnimateThingFlags() const;         // 0x005DC390
 };
-struct CAnimFilterBase {                                // vtable 0x0122FFCC
+class CAnimFilterBase { public:                                // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -33,13 +33,13 @@ struct CAnimFilterNoGroup : CAnimFilterBase {           // vtable 0x0122FFDC
     virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
     CAnimationEntry* GetRandomAnimation(const CCharString& name, unsigned long* seed, const CAnimFilterBase& filter,
                                         long exclude) const;                             // 0x005DCC00
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v000();
     virtual void DestroyDef();                          // slot 1 (+4)
     long m_refCount;                                    // +4
@@ -49,16 +49,16 @@ struct CDefPointeeBase {
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer() { if (m_pObject) m_pObject->ReleaseDef(); }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c];
     CAnimationSet Animation;                            // +0x34
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     CAppearanceDef* FindAppearanceDef();                // stand-in callee of the stand-in body below
     bool GetSubDef(CDefPointer<CAppearanceDef>& out);   // 0x0042B0A2
 };
@@ -81,7 +81,7 @@ struct CBlendPair {
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                                      // 0x2c bytes
+class CAnimInit { public:                                      // 0x2c bytes
     long          Mode;                                 // +0x00
     unsigned char AnimType;                             // +0x04
     bool          Flag05;                               // +0x05
@@ -103,13 +103,13 @@ struct CAnimFrameTime {
     float Extra;
     CAnimFrameTime() : Frame(0.0f), SubFrame(0.0f), Extra(0.0f) { }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void SetAsFinished();                               // 0x0070BE80
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
     void UpdateFrameLogic(const CAnimFrameTime& time);  // 0x0070E8B0
     void Reset();                                       // 0x0070EC30
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();                      // 0x0070B460
 };
 
@@ -120,7 +120,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -151,12 +151,12 @@ struct CThing {
     }
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     T& operator*() const { return *m_pObject; }
 };
-struct CThingDeadCreature : CThing {
+class CThingDeadCreature : public CThing { public:
     unsigned char    _pad74[0xd0 - 0x74];
     CCountedPointer<CAnimFilterBase> PAnimFilter;       // +0xd0
     void SetupDeadAnimation();

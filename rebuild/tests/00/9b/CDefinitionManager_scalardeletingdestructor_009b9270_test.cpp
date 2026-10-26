@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     void* vftable;
     int destroyed;
 };

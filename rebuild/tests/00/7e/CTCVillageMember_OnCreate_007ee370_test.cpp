@@ -18,13 +18,13 @@ static int fails = 0;
 // a CDefPointer destructor re-reads the escaped local after the call, so the holder is modelled as a plain record
 // whose object is copied to a pointer local and released through it.
 // Layout: Ego_r.pdb CTCVillageMember (retail = PDB): PDef +0x0C.
-struct CVillageMemberDef;
+class CVillageMemberDef;
 
 struct CDefPointerVillageMemberDef {
     const CVillageMemberDef* Object;
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long RefCount;                          // +0x04
@@ -44,7 +44,7 @@ inline void ReleaseDef(CDefClassBase* def)
     }
 }
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalDefIndex, CDefPointerClassBase* out) const;   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -61,12 +61,12 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalDefIndex, CDefPo
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad[0x8C];
     unsigned short DefIndex;                // +0x8C
 };
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     void*                       __vftable;  // +0x00
     CThing*                     Thing;      // +0x04
     unsigned char               _pad_0x08[0x4];

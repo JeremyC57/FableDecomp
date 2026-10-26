@@ -13,7 +13,7 @@ struct CStateBlock {
     unsigned char Flag;       // +0x04 (valid / captured flag)
 };
 
-struct CBankStateBlock {
+class CBankStateBlock { public:
     void*       __vftable;    // +0x00
     CStateBlock State;        // +0x04
 };

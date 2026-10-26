@@ -18,13 +18,13 @@
 
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();                                  // 0x0099EAE0
 };
 
-struct CTestQuest {
+class CTestQuest { public:
     CCharString QuestName;                           // +0x00
     CCharString HSPName;                             // +0x04
     long        ColourIndex;                         // +0x08

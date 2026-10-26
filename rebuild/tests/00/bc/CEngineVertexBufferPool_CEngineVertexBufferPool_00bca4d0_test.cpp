@@ -10,7 +10,7 @@ public:
     void Initialise(long keySize) { KeySize = keySize; }
 };
 template <class T> class CEngineTreeFiler : public CEngineTreeFilerBase { };
-template <class TResource> class CEngineDynamic3DResourceManager {
+template <class TResource> struct CEngineDynamic3DResourceManager {
 public:
     struct CListHeader { };
     long AllocCount;

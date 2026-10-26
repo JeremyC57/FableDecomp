@@ -14,18 +14,18 @@
 // Shape: ~CScriptThing and operator= are plain inline bodies (expanded in the attacker-search loop); inline_depth(0) on the hint
 //   line sends the later temporaries and every exit out of line; the __forceinline CSpawnedFunc1 constructor is defined under
 //   inline_depth(0) so it still expands while its by-value CScriptThing is destroyed out of line.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -79,7 +79,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 namespace N_006e7b40 { struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
@@ -109,7 +109,7 @@ namespace N_0099a380 { struct CBaseIntelligentPointer {                        /
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 }; } using N_0099a380::CBaseIntelligentPointer;
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -128,18 +128,18 @@ struct CIsThingAlive {                                  // vtable 0x012C32F0
 #pragma inline_depth(0)
 inline CIsThingAlive::~CIsThingAlive() { }
 #pragma inline_depth()
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
-struct CRGBColour {                                     // B,G,R,A bytes
+class CRGBColour { public:                                     // B,G,R,A bytes
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -243,7 +243,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (slo
     virtual void v649() const; virtual void v650() const; virtual void v651() const; virtual void v652() const; virtual void v653() const; virtual void v654() const;
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) 0x00891880
 };
-struct CSpawnedFuncBase {                               // 0x34 bytes
+class CSpawnedFuncBase { public:                               // 0x34 bytes
     virtual ~CSpawnedFuncBase();
     unsigned char _body[0x30];
     CSpawnedFuncBase(const CCharString& name, unsigned long id);   // 0x00CDD450
@@ -269,7 +269,7 @@ struct CSpawnedFunc1 : CSpawnedFuncBase {               // CSpawnedFunc1<CQ_Mini
 __forceinline CSpawnedFunc1::CSpawnedFunc1(const CCharString& name, unsigned long id, SpawnedThingCallback func, CQ_MinionClifftopChaseScript* owner, CScriptThing par1)
     : CSpawnedFuncBase(name, id), Func(func), PClass(owner), Par1(par1) { }
 #pragma inline_depth()
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

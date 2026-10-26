@@ -18,7 +18,7 @@ struct CMemoryAllocator_00a65330 {
 };
 extern CMemoryAllocator_00a65330* g_pGlobalAllocator_013caa90;   // 0x013CAA90
 
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     unsigned char       _pad00[0xc14];
     unsigned long       m_usage;                   // +0xc14: the header size
     unsigned long       m_alignmentShift;          // +0xc18

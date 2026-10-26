@@ -46,12 +46,12 @@ struct CHoverableBase {                                   // third base (vptr at
     virtual ~CHoverableBase();
 };
 
-struct CClickable : CComponentRoot, CGuiControl, CHoverableBase {
+class CClickable : public CComponentRoot, public CGuiControl, public CHoverableBase { public:
     unsigned char _body[0x194 - 0x1c];                    // +0x01c .. +0x193 (retail)
     virtual ~CClickable();                                // 0x0055B760
 };
 
-struct CDraggable : CClickable {                          // vtables 0x0124BA94 / 0x0124BA70 / 0x0124BA68
+class CDraggable : public CClickable { public:                          // vtables 0x0124BA94 / 0x0124BA70 / 0x0124BA68
     C2DVector    PositionBeforeDrag;                      // +0x194
     bool         WasDragged;                              // +0x19c
     CActionList* PActionsOnDropped;                       // +0x1a0

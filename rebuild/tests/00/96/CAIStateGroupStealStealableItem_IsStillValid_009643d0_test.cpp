@@ -5,9 +5,9 @@
 #define FABLE_ENGINE_CAIBRAIN_H
 #define FABLE_ENGINE_CTCENTITYEVENTS_H
 struct CAIStateGroup_StealStealableItem { unsigned char _pad_0x04[sizeof(void*)]; bool NeedsCleanup; };
-struct CThingAICreature;
-struct CAIBrain { CThingAICreature* Creature; };
-struct CTCEntityEvents { unsigned char Events[sizeof(void*)]; };
+class CThingAICreature;
+class CAIBrain { public: CThingAICreature* Creature; };
+class CTCEntityEvents { public: unsigned char Events[sizeof(void*)]; };
 #endif
 // BEGIN EXACT CANDIDATE
 // CAIStateGroup_StealStealableItem::IsStillValid() -- invalidate stealy when disabled or interrupted by hostile events
@@ -15,10 +15,10 @@ struct CTCEntityEvents { unsigned char Events[sizeof(void*)]; };
 #include "engine/CAIStateGroup_StealStealableItem.h"
 #include "engine/CAIBrain.h"
 // No shared CTCAIScratchpad header; PDB flags at104/105.
-struct CTCAIScratchpad { unsigned char prefix[104]; bool StealStealableItems, RecoverStealableItems; };
+class CTCAIScratchpad { public: unsigned char prefix[104]; bool StealStealableItems, RecoverStealableItems; };
 #include "engine/CTCEntityEvents.h"
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*); };
-struct CThing {
+class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
     template<class T> __forceinline bool GetInterface(T** out,long type) {

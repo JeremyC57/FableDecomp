@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <new>
 static int g_base = 0;
-struct CBaseClass { virtual void v00() { } CBaseClass() { ++g_base; } };
+class CBaseClass { public: virtual void v00() { } CBaseClass() { ++g_base; } };
 struct CIVCountedPointer { void* Object; CIVCountedPointer() : Object(0) { } };
-struct CEnginePrimitiveHandle : CBaseClass { CIVCountedPointer Data; CEnginePrimitiveHandle(long) { } };
+class CEnginePrimitiveHandle : public CBaseClass { public: CIVCountedPointer Data; CEnginePrimitiveHandle(long) { } };
 int main()
 {
     unsigned char raw[sizeof(CEnginePrimitiveHandle)]; for (int k = 0; k < (int)sizeof(raw); ++k) raw[k] = 0xAA;

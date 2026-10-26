@@ -20,27 +20,27 @@ public:
     T* Object;
     CIVCountedPointer() : Object(0) { }
 };
-struct C3DVector { float X, Y, Z; C3DVector() { } };
-struct CRightHandedSet { C3DVector Right, Up; CRightHandedSet() { } };
-struct C3DAnimationBlendState : CBaseClass {           // vtable 0x01239838
-    struct CSharedData;
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
+class CRightHandedSet { public: C3DVector Right, Up; CRightHandedSet() { } };
+class C3DAnimationBlendState : public CBaseClass { public:           // vtable 0x01239838
+    class CSharedData;
     CIVCountedPointer<CSharedData> Data;                // +0x04
     virtual void v001();
     C3DAnimationBlendState() { }
 };
-struct C3DAnimationInterpolator : CBaseClass {         // vtable 0x01239840
+class C3DAnimationInterpolator : public CBaseClass { public:         // vtable 0x01239840
     C3DAnimationBlendState StartState;                  // +0x04
     C3DAnimationBlendState EndState;                    // +0x0c
     virtual void v001();
     C3DAnimationInterpolator() { }
 };
-struct C3DPositionInterpolator : CBaseClass {          // vtable 0x0123981C
+class C3DPositionInterpolator : public CBaseClass { public:          // vtable 0x0123981C
     C3DVector StartPosition;                            // +0x04
     C3DVector EndPosition;                              // +0x10
     virtual void v001();
     C3DPositionInterpolator() { }
 };
-struct C3DOrientationInterpolator : CBaseClass {       // vtable 0x01239824
+class C3DOrientationInterpolator : public CBaseClass { public:       // vtable 0x01239824
     CRightHandedSet StartOrientation;                   // +0x04
     CRightHandedSet EndOrientation;                     // +0x1c
     virtual void v001();
@@ -82,30 +82,30 @@ struct CCacheTree : CCacheTreeBase {                    // STLport _Rb_tree (map
 struct CCache {
     CCacheTree Cache;                                   // map<unsigned long, CArray<C3DVector> >
 };
-struct CEngineRenderInfoMeshBase {
-    struct CEngineLocalLightArray* Lights;              // +0x00
-    struct C3DMesh2* Mesh;                              // +0x04
+class CEngineRenderInfoMeshBase { public:
+    class CEngineLocalLightArray* Lights;              // +0x00
+    class C3DMesh2* Mesh;                              // +0x04
     unsigned long LOD;                                  // +0x08
 };
-struct CMatrix3x4 { float M[12]; };
-struct CMatrix4x4;
-struct CEngineRenderInfoAnimatedMesh : CEngineRenderInfoMeshBase {
+class CMatrix3x4 { public: float M[12]; };
+class CMatrix4x4;
+class CEngineRenderInfoAnimatedMesh : public CEngineRenderInfoMeshBase { public:
     CMatrix3x4 ObjectTransform;                         // +0x0c
     float Distance;                                     // +0x3c
     CMatrix4x4* BoneTransforms;                         // +0x40
     long RenderFrame;                                   // +0x44
     CEngineRenderInfoAnimatedMesh() : BoneTransforms(0), RenderFrame(-1) { }
 };
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     virtual void v00();
     unsigned char _body[0x44];                          // +0x04 (Ego_r.pdb: flags, fade, grid, alpha, render layer, links)
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
 };
-struct C3DMeshInfo;
-struct CEnginePrimitiveSimulationInfo;
-struct CEngineMeshEffect;
-struct CRGBColour { unsigned char B, G, R, A; CRGBColour() { } };
-struct CEnginePrimitiveThemeChannelDesc {
+class C3DMeshInfo;
+class CEnginePrimitiveSimulationInfo;
+class CEngineMeshEffect;
+class CRGBColour { public: unsigned char B, G, R, A; CRGBColour() { } };
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0;                        // +0x00
     unsigned char ChannelIndex1;                        // +0x01
     unsigned char ChannelBlendFactor;                   // +0x02
@@ -126,7 +126,7 @@ struct __declspec(novtable) CEngineInternalPrimitiveMeshBase : CEngineInternalPr
     CEngineInternalPrimitiveMeshBase(long type, unsigned long flags)
         : CEngineInternalPrimitiveBase(type, flags), m_unnamed48(0), m_unnamed4c(0), MeshInfo(0) { }
 };
-struct CEngineInternalPrimitiveAnimatedMesh : CEngineInternalPrimitiveMeshBase {   // vtable 0x012A79B4
+class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMeshBase { public:   // vtable 0x012A79B4
     C3DAnimationInterpolator Anim;                      // +0x70
     C3DPositionInterpolator WorldPos;                   // +0x84
     C3DOrientationInterpolator Orientation;             // +0xa0
@@ -136,13 +136,13 @@ struct CEngineInternalPrimitiveAnimatedMesh : CEngineInternalPrimitiveMeshBase {
     __forceinline CEngineInternalPrimitiveAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 struct C2DVectorF { float X, Y; C2DVectorF() { } };
-struct C2DBoxF { C2DVectorF TopLeft, BottomRight; C2DBoxF() { } };
-struct C3DBoundingSphere {                              // 16 bytes, zeroed by its inline constructor
+class C2DBoxF { public: C2DVectorF TopLeft, BottomRight; C2DBoxF() { } };
+class C3DBoundingSphere { public:                              // 16 bytes, zeroed by its inline constructor
     long Centre[3];                                     // C3DVector (zero words)
     long Radius;
     C3DBoundingSphere() { Centre[0] = 0; Centre[1] = 0; Centre[2] = 0; Radius = 0; }
 };
-struct CEngineInternalPrimitive2DAnimatedMesh : CEngineInternalPrimitiveAnimatedMesh {   // vtable 0x012A7A44
+class CEngineInternalPrimitive2DAnimatedMesh : public CEngineInternalPrimitiveAnimatedMesh { public:   // vtable 0x012A7A44
     bool          Initialised;                          // +0x128 (PDB 0x12C)
     long          Layer;                                // +0x12c EEngine2DLayer
     C2DBoxF       ClipBox;                              // +0x130
@@ -151,7 +151,7 @@ struct CEngineInternalPrimitive2DAnimatedMesh : CEngineInternalPrimitiveAnimated
     CEngineInternalPrimitive2DAnimatedMesh();
     __forceinline CEngineInternalPrimitive2DAnimatedMesh(long type, unsigned long flags) : CEngineInternalPrimitiveAnimatedMesh(type, flags) { }
 };
-struct CEngineInternalPrimitiveMorphInfo {
+class CEngineInternalPrimitiveMorphInfo { public:
     unsigned char _body[0x48];
     CEngineInternalPrimitiveMorphInfo();                // 0x00BAA250
 };

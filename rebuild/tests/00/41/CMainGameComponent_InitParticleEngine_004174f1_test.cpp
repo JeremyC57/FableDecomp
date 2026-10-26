@@ -4,7 +4,7 @@
 struct World { int id; };
 struct Interaction { World* world; Interaction(World* w) : world(w) { } };
 static int g_inited = 0; static Interaction* g_interaction = 0; static char g_bank[32];
-struct CMainGameComponent {
+class CMainGameComponent { public:
     World* m_pWorld;
     void InitParticleEngine()
     {

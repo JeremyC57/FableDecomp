@@ -1,4 +1,4 @@
-struct CTCTavernGame {
+class CTCTavernGame { public:
 // Leaf: NewGame
     char pad0[0x34];
     int  field_34;   // 0x34

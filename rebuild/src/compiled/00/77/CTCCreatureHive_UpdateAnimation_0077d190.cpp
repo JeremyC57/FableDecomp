@@ -15,7 +15,7 @@ struct CInterfaceMap {                         // a thing's sorted {type, compon
     SEntry* last;
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];            // +0x20 std::bitset<274> UsingComponents
     CInterfaceMap m_interfaces;                // +0x44 Components
@@ -33,7 +33,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -47,7 +47,7 @@ struct CAnimFrameTime {                        // 12-byte UpdateFrameLogic argum
     long  Reserved2;
     CAnimFrameTime(float seconds) : Seconds(seconds), Reserved1(0), Reserved2(0) {}
 };
-struct CAnimateThing {                         // CurrentAnim.MainAnimSet first (retail CAnimSet layout)
+class CAnimateThing { public:                         // CurrentAnim.MainAnimSet first (retail CAnimSet layout)
     long   UpdateMode;                         // +0x00
     short* AnimsFirst;                         // +0x04 vector<short> Anims
     short* AnimsLast;                          // +0x08
@@ -57,10 +57,10 @@ struct CAnimateThing {                         // CurrentAnim.MainAnimSet first 
     unsigned char Finished : 1;                // +0x51 bit 1
     void UpdateFrameLogic(const CAnimFrameTime& time);   // 0x0070E8B0
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();             // 0x0070B460
 };
-struct CTCCreatureHive : CTCBase {
+class CTCCreatureHive : public CTCBase { public:
     bool Animating;                            // +0x0c
     void UpdateAnimation();
 };

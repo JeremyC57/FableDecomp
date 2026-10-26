@@ -9,11 +9,11 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 00614450: element [index] of the unsigned 64-bit vector is formatted by the CCharString constructor and appended.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 static UInt64 g_formatted = 0;
 static int g_destroyed = 0;
-struct CCharString {
+class CCharString { public:
     long m_tag;
     CCharString() : m_tag(0) {}
     explicit CCharString(UInt64 value) : m_tag(4) { g_formatted = value; }

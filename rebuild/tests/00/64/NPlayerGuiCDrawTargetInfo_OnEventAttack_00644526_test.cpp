@@ -1,14 +1,14 @@
 // Behaviour test for NPlayerGui::CDrawTargetInfo::OnEventAttack @ 0x00644526
 #include <cstdio>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) {}
 };
-struct CPlayerGuiDef { float ABXYButtonFadeDurationSeconds; };
+class CPlayerGuiDef { public: float ABXYButtonFadeDurationSeconds; };
 static CPlayerGuiDef g_def; static int g_peeks = 0;
 static CPlayerGuiDef* PeekGuiDef() { ++g_peeks; return &g_def; }
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool Active; float FadeInTime, FadeOutTime; bool Closing, Opening; float OpenTimer, CloseTimer; unsigned char ToR, ToG, ToB, ToA;
     void Start(float fadeInTime, float fadeOutTime, CRGBColour toColour)
     { Active = true; Opening = true; Closing = false; FadeInTime = fadeInTime; FadeOutTime = fadeOutTime; ToR = toColour.R; ToG = toColour.G; ToB = toColour.B; ToA = toColour.A; }

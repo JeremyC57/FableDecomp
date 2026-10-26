@@ -1,8 +1,8 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; } };
-struct CCamera { C3DVector WorldPosition; C3DVector Up; C3DVector Forward; bool HeightLocked; bool ViewVecZLocked; unsigned long FOVFlags; float HorizontalFOV; float VerticalFOV; float Zoom;
+class CCamera { public: C3DVector WorldPosition; C3DVector Up; C3DVector Forward; bool HeightLocked; bool ViewVecZLocked; unsigned long FOVFlags; float HorizontalFOV; float VerticalFOV; float Zoom;
     void MoveForward(float distance) { if (HeightLocked) { WorldPosition.X += Forward.X * distance; WorldPosition.Y += Forward.Y * distance; } else { WorldPosition += Forward * distance; } } };
 
 int main()

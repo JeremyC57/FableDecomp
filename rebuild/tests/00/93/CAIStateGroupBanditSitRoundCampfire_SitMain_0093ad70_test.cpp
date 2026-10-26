@@ -1,6 +1,6 @@
 // Behaviour test for 0x0093AD70 CAIStateGroup_BanditSitRoundCampfire::SitMain (model copy; activities and RNG are stubs).
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInlineInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -35,8 +35,8 @@ struct CThingI {
 };
 
 struct CTCCampfireSitter { bool AtCampfire; };
-struct CThing;
-struct CAIBrain { CThing* PCreature; };
+class CThing;
+class CAIBrain { public: CThing* PCreature; };
 static float g_rolls[8]; static float g_ranges[8]; static int g_roll = 0;
 float GFFloatRandom(float range, unsigned long*) { g_ranges[g_roll] = range; return g_rolls[g_roll++]; }
 static char g_log[16]; static int g_logn = 0; static int g_budget = 0;

@@ -13,13 +13,13 @@
 void* operator new(size_t size);                        // 0x00BFEA1A
 void operator delete(void* p);                          // 0x00BFE9BC
 void __fastcall Destroy_00786a30(void* object);         // 0x00786A30: the per-type deleter stored in the count block
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long References;                                    // +0
     void (__fastcall* PfnDestroy)(void*);               // +4
     void* Object;                                       // +8
     CCPPointerInfo(void* object) : References(1), PfnDestroy(Destroy_00786a30), Object(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer(T* p) : Data(p) { if (Data) Info = new CCPPointerInfo(Data); else Info = 0; }
@@ -35,18 +35,18 @@ template <class T> struct CCountedPointer {
     }
     T* operator->() const { return Data; }
 };
-struct C3DSkeletalMorphTarget;
-struct C3DSkeletalMorphParameter {
+class C3DSkeletalMorphTarget;
+class C3DSkeletalMorphParameter { public:
     unsigned char _data[0x14];
     C3DSkeletalMorphParameter(C3DSkeletalMorphTarget* target);   // 0x00A455A0
     void SetCurrentValue(float value);                  // 0x00A45370
 };
-struct C3DSkeletalMorph {
+class C3DSkeletalMorph { public:
     void ClearParameters();                             // 0x00A45410
     void AddParameter(const CCountedPointer<C3DSkeletalMorphParameter>& parameter);   // 0x00A45470
     void ApplyParameters();                             // 0x00A45330
 };
-struct CTCSkeletalMorph {
+class CTCSkeletalMorph { public:
     virtual void v00();
     void* ParentThing;                                  // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

@@ -12,7 +12,7 @@
 // clear() zeroes parent and count from one `xor esi,esi` register.
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14
 
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     ~CCharString();                          // 0x0099EAE0

@@ -7,15 +7,15 @@ static int fails = 0;
 static int g_base = 0, g_scriptBase = 0;
 struct CBase { virtual void v00() {} CBase() { ++g_base; } };
 namespace N_0099a2d0 { struct CScriptBase { virtual void v00() {} CScriptBase() { ++g_scriptBase; } }; } using N_0099a2d0::CScriptBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 typedef long EMovementType;
-struct CTCBase;
-template <class T> struct CCountedPointer { T* Object; void* Count; CCountedPointer() : Object(0), Count(0) { } };
-struct CScriptThing : CScriptBase {
+class CTCBase;
+template <class T> class CCountedPointer { public: T* Object; void* Count; CCountedPointer() : Object(0), Count(0) { } };
+class CScriptThing : public CScriptBase { public:
     virtual void v00() {}
     CCountedPointer<CScriptThing> PImp;
     CScriptThing() : CScriptBase(), PImp() { }

@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static const float g_fadeEpsilon_0129ba3c = 1e-4f;
-struct CFadeInFadeOutBase { bool m_active; unsigned char _pad01[3]; float m_fadeOutDuration; float m_fadeInDuration; bool m_fadingIn; bool m_fadingOut; unsigned char _pad0e[2]; float m_fadeOutElapsed; float m_fadeInElapsed;
+class CFadeInFadeOutBase { public: bool m_active; unsigned char _pad01[3]; float m_fadeOutDuration; float m_fadeInDuration; bool m_fadingIn; bool m_fadingOut; unsigned char _pad0e[2]; float m_fadeOutElapsed; float m_fadeInElapsed;
     float GetFadeInOutAlpha() { if (m_fadingOut) { if (m_fadeOutDuration < g_fadeEpsilon_0129ba3c) return 1.0f; return m_fadeOutElapsed / m_fadeOutDuration; }
         if (m_fadingIn) { if (m_fadeInDuration < g_fadeEpsilon_0129ba3c) return 1.0f; return m_fadeInElapsed / m_fadeInDuration; } if (m_active) return 1.0f; return 0.0f; } };
 int main() {

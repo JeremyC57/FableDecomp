@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 static float g_baseDt = 0.0f;
 struct CChangingStateComponent {
     C2DVector Position;

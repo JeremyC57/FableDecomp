@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <math.h>
 
-struct C3DVector {
+class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     float Z;    // +0x08
@@ -24,7 +24,7 @@ struct C3DVector {
 inline C3DVector operator*(float s, const C3DVector& v) { return C3DVector(s * v.X, s * v.Y, s * v.Z); }
 static const float TWO_PI = 6.2831855f;
 
-struct CThingFilter_IsInFOV {
+class CThingFilter_IsInFOV { public:
     C3DVector FromPos;                              // +0x00
     C3DVector Direction;                            // +0x0c
     float     CosFOV;                               // +0x18

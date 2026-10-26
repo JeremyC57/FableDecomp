@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesTurncoatSpellDef { void* vftable; };
+class CSpecialAbilitiesTurncoatSpellDef { public: void* vftable; };
 
 extern void __fastcall CSpecialAbilitiesTurncoatSpellDef_dtor(CSpecialAbilitiesTurncoatSpellDef* def);
 extern void __cdecl eng_operator_delete(void* p);

@@ -8,7 +8,7 @@ struct SDebugTrailer_009f28d0 {
     long          m_size;
 };
 
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     long          m_bytesByIndex[0x104];           // +0x000: per-allocator-index byte counters
     unsigned long m_noSubAllocators;               // +0x410
     unsigned char m_currentIndex;                  // +0x414

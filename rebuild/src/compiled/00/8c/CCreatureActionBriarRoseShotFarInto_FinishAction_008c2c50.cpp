@@ -11,7 +11,7 @@
 // Shape: the implicit destructor of the temporary is inlined as member destructor + base destructor with NO vtable
 // stores: both the temporary's class and its CIntelligentPointer member are modelled `__declspec(novtable)` (their own
 // constructors are out of line, so only the destructor's dead vtable stores are affected).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -24,7 +24,7 @@ struct __declspec(novtable) CIntelligentPointer : CBaseIntelligentPointer {   //
     virtual void v00();
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4, 0x00859A20
     unsigned char _pad04[4];                // +0x04
@@ -45,7 +45,7 @@ struct __declspec(novtable) CCreatureAction_BriarRoseShotFarOutof : CCombatActio
     CCreatureAction_BriarRoseShotFarOutof(CThingCreatureBase* creature, CThingCreatureBase* target);   // 0x008C39A0
 };
 
-struct CCreatureAction_BriarRoseShotFarInto : CCombatActionBase {
+class CCreatureAction_BriarRoseShotFarInto : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

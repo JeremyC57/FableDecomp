@@ -10,7 +10,7 @@
 #endif
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570 (strcmp-style, 0 = equal)
 
-struct CCharStringData {
+class CCharStringData { public:
     char*         m_pData;                      // +0x0
     unsigned long m_length;                     // +0x4
 };

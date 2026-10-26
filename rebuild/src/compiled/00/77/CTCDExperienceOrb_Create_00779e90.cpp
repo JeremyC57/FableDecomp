@@ -15,7 +15,7 @@
 //   inlined bit test with no null test of the driver. A `result` local (null, set to the thing on success) is what keeps
 //   the null in ebx across the calls (`xor ebx,ebx` ... `mov eax,ebx`); `return thing` / `return 0` arms give `xor eax,eax`
 //   and early returns give a `neg al ; sbb ; and` select.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CWorldMap {
 public:

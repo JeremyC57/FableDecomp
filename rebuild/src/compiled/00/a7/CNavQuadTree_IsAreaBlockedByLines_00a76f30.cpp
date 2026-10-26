@@ -24,18 +24,18 @@ inline const T& Min(const T& left, const T& right)
     return right < left ? right : left;
 }
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX;
     float TLY;
     float BRX;
     float BRY;
     bool ContainsPoint(const C2DVector& point) const;          // 0x00535CD0
 };
-struct C2DLineF {
+class C2DLineF { public:
     C2DVector Point1;                                         // +0x00
     C2DVector Point2;                                         // +0x08
     float GetLowestX() const { return (float)Min<double>(Point1.X, Point2.X); }

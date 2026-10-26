@@ -9,7 +9,7 @@
 // retail CThing ScriptName at +0x74 (PDB +0x84; see the landed CThingGameObject::ConstructFromParams 0x008388D0).
 // Shape: one full expression `Fullname = CCharString("") + "Marker - " + ScriptName;` (temporaries in the dead argument slots,
 // destroyed in reverse); the colour is the inline (r, g, b, a) setter as in the landed CThing::DrawGetEditDrawInfo 0x004C74B0.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -17,7 +17,7 @@ struct CCharString {
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B;                            // +0
     unsigned char G;                            // +1
     unsigned char R;                            // +2
@@ -30,21 +30,21 @@ struct CRGBColour {
         A = a;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CEditEngineDrawInfo {
+class C3DVector { public: float X, Y, Z; };
+class CEditEngineDrawInfo { public:
     C3DVector   Pos;                            // +0x00
     float       Radius;                         // +0x0c
     CCharString Fullname;                       // +0x10
     CRGBColour  Colour;                         // +0x14
     long        PlayerOwner;                    // +0x18
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     void*         __vftable;
     unsigned char _pad04[0x74 - 0x04];
     CCharString   ScriptName;                   // +0x74 (retail)
     bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;   // 0x006A4E90
 };
-struct CThingMarker : CThingPhysical {
+class CThingMarker : public CThingPhysical { public:
     bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;
 };
 

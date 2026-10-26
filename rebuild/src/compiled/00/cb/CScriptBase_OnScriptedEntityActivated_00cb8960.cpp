@@ -16,11 +16,11 @@
 // Shape: CVectorMap::Add and the STLport push_back must be __forceinline (else VC emits Add out of line); the
 // pair temporary forwards its four words from registers into the in-place copy, the growth call homes the
 // __false_type tag in the entity argument slot; the inline Sort re-reads Dirty right after the store.
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     bool FastCompare(const CCharString& other) const;   // 0x009E6530
 };
-struct CScriptThing {                                // vtable 0x01238C8C
+class CScriptThing { public:                                // vtable 0x01238C8C
     virtual void v00();
     virtual const CCharString& GetName() const;      // slot 1 (0x004AA8B0)
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -39,7 +39,7 @@ struct CScriptThing {                                // vtable 0x01238C8C
     virtual void v71();
     virtual void IncrementScriptCounter();           // slot 72 (0x004AB0F0)
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void v00(); virtual void v01();
     virtual void Restart();                          // slot 2
 };
@@ -58,7 +58,7 @@ template <class T> struct SCountBlock {
     void (T::*m_pfnDestroy)();
     T*   m_pItem;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock<T>* Info;
     CCountedPointer() {}

@@ -4,7 +4,7 @@
 #include <new>
 
 static int g_copies = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* s) : PStringData(s) { }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_copies; }

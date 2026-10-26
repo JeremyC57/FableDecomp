@@ -11,13 +11,13 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CRGBColour {                                             // the union's channel view: D3DCOLOR byte order
+class CRGBColour { public:                                             // the union's channel view: D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }   // forced: the size optimiser would call it out of line
 };
 
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long TextureIndex;                                 // +0x00
     long          BlendType;                                    // +0x04 (ECompositeBlendType)
     CRGBColour    DiffuseColour;                                // +0x08

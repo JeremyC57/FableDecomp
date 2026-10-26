@@ -1,6 +1,6 @@
 // behaviour test for 0x006A0FF0 CTCCarrying::OnKill
 #include <cstdio>
-struct CThing { int kills; bool lastFlag; void Kill(bool b) { ++kills; lastFlag = b; } };
+class CThing { public: int kills; bool lastFlag; void Kill(bool b) { ++kills; lastFlag = b; } };
 struct Ptr { CThing* p; CThing* GetPItem() const { return p; } };
 struct Entry { long first; Ptr second; };
 struct Carrying {

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 0x0067F040: STLport sort_heap over 28-byte CDegradableInfo with CIsHealth1GTHealth2 (descending health).
-struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
-struct CDegradableInfo { float HealthPercentage; CEngineGraphic EngineGraphic; long SmashParticleEmitter; bool BlocksNavigation; };
+class CEngineGraphic { public: unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CDegradableInfo { public: float HealthPercentage; CEngineGraphic EngineGraphic; long SmashParticleEmitter; bool BlocksNavigation; };
 struct CIsHealth1GTHealth2 { bool operator()(const CDegradableInfo& a, const CDegradableInfo& b) const { return a.HealthPercentage > b.HealthPercentage; } };
 
 // STLport heap chain (behaviour model of the retail row and its out-of-line callees)

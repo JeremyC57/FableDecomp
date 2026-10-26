@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static int g_destroyed = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString(const char* t) : m_text(t) { }
     CCharString(const CCharString& o) : m_text(o.m_text) { }

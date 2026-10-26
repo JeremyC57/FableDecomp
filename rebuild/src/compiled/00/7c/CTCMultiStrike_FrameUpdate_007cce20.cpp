@@ -109,7 +109,7 @@ public:
     T* _M_end_of_storage;
     T& operator[](long i) const { return _M_start[i]; }
 };
-struct CSpecialAbilitiesMultiStrikeDef {
+class CSpecialAbilitiesMultiStrikeDef { public:
     unsigned char      _pad00[0x6c];
     CStdVector<float>  DelayTimeSecs;               // +0x6c
     CStdVector<long>   NumHits;                     // +0x78

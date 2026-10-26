@@ -9,7 +9,7 @@
 // Callees: CWideString copy ctor @ 0x0099B720 (x2), the pair vector's push_back @ 0x006BF410 (manifest
 // "Vector_PushBackMusicEntry"), ~CWideString @ 0x0099B510 (x2).
 // Shape: the pair temporary copies the key word, then the value memberwise (two string copies out of line).
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);          // 0x0099B720
     ~CWideString();                                 // 0x0099B510

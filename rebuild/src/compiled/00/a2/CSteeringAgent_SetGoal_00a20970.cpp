@@ -8,20 +8,20 @@
 extern "C" double __cdecl fabs(double);
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(fabs, sqrt)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector operator-(const C2DVector& o) const { return C2DVector(X - o.X, Y - o.Y); }
     float GetLength() const { return (float)sqrt(X * X + Y * Y); }
 };
-struct CNavigatorExternalInterface {
+class CNavigatorExternalInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual C2DVector GetPosition2D() const;       // slot 8 (+0x20)
 };
 struct CRetailList { void* m_pHead; };            // retail list: one word
-struct CSteeringAgent {
+class CSteeringAgent { public:
     CNavigatorExternalInterface* NavigatorInterface;          // +0x00
     bool                         DummyObstacle;               // +0x04
     float                        RepulsionMultiplier;         // +0x08

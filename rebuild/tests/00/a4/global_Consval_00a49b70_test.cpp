@@ -13,22 +13,22 @@ public:
     ~CCharString() { std::free(PStringData); }
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (*DeleteFunc)(void*);
     void* Data;
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
     CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
 };
 
-struct CSpeechFrame { long m_id; };
+class CSpeechFrame { public: long m_id; };
 
-struct CLipSyncPhonemeSample {
+class CLipSyncPhonemeSample { public:
     CCharString                   Symbol;
     unsigned long                 ID;
     CCountedPointer<CSpeechFrame> SampleFrame;

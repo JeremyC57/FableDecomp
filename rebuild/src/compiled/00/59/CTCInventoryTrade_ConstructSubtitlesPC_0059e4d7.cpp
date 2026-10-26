@@ -11,19 +11,19 @@
 //   (0x01252E34 .. 0x01252D38, read from the exe).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CComponent* FindChild(CCharString name);    // slot 3 (+0x0c)
 };
 }
 struct CSubtitleMap;
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     void FinalConstructSubtitlesPC(NUISystem::CComponent* component, CSubtitleMap& subtitles, NUISystem::CComponent* list);   // 0x0059D65A
     void ConstructSubtitlesPC(NUISystem::CComponent* menu, CSubtitleMap& subtitles, NUISystem::CComponent* list);
 };

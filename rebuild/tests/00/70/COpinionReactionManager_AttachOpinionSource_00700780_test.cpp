@@ -1,13 +1,13 @@
 // behaviour test for 0x00700780 COpinionReactionManager::AttachOpinionSource
 #include <cstdio>
-struct CTCBase { int dummy; };
-struct CTCOpinionSource : CTCBase {
+class CTCBase { public: int dummy; };
+class CTCOpinionSource : public CTCBase { public:
     int pushed;
     bool PushNewSourceDef(const char* n) { pushed = n[0]; return n[0] != 0; }
 };
 static CTCOpinionSource g_added;
 static int g_addCalls = 0;
-struct CThing {
+class CThing { public:
     bool has; CTCOpinionSource* comp; bool addFails;
     bool GetInterface(CTCOpinionSource** ppOut, long) { if (has) { *ppOut = comp; return true; } return false; }
     CTCBase* AddTC(const char* name, bool, void*) { ++g_addCalls; if (addFails || name[0] != 'C') return 0; return &g_added; }

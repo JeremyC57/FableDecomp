@@ -13,7 +13,7 @@
 // Shape: the two zero offsets are written through an inline C2DVector::Set(x, y) member (stores through the member's `this`):
 //   that keeps `xor eax,eax` after the MiniMapScale 1.0f immediate store as retail; direct member stores let the lane hoist the xor.
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* text);      // 0x0099EFE0
 };
@@ -36,13 +36,13 @@ struct CLongVector {                               // STLport vector<long> (12 b
     }
     void clear() { erase(begin(), end()); }
 };
-struct C2DVector {
+class C2DVector { public:
     void Set(float x, float y) { X = x; Y = y; }
     float X; float Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct CRegion {
+class CRegion { public:
     CLongVector Maps;                              // +0x00
     CLongVector VisMaps;                           // +0x0c
     CCharString Name;                              // +0x18

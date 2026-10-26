@@ -2,7 +2,7 @@
 #include <cstdio>
 struct CShadowTarget28 { void Do(int v); };
 struct CLocalScene { int state; void Run_0047926c(void* obj24, int* arg); };
-struct CEngineLightingManager { char pad0[0x18]; int mode; char pad1c[0x24-0x1c]; void* obj24; CShadowTarget28* obj28; };
+class CEngineLightingManager { public: char pad0[0x18]; int mode; char pad1c[0x24-0x1c]; void* obj24; CShadowTarget28* obj28; };
 
 // --- stubs for masked callees so test.obj links stand-alone ---
 static int g_called=0, g_v=0, g_state=-1;

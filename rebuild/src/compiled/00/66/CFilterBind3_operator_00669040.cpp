@@ -16,7 +16,7 @@
 //   exits); the three filter operators are __forceinline (plain inline leaves calls). The SolidToThing test reads only SourceThing in retail (PTCSolidToThing is never loaded). The flags
 //   test reads the thing's component into a local before the null tests, then `a || b` on the source component. The
 //   circle test is the landed 0x0063EF50 body (dx squared first needs the two-statement `d2`). No pragma.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };

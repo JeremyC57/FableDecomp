@@ -4,10 +4,10 @@
 #include <cstdio>
 
 static int g_removed = 0;
-struct CAInputProcess { int removed; CAInputProcess() : removed(0) {} void RemoveFromInterface() { ++removed; ++g_removed; } };
+class CAInputProcess { public: int removed; CAInputProcess() : removed(0) {} void RemoveFromInterface() { ++removed; ++g_removed; } };
 struct CModes { long removedMode; CModes() : removedMode(-1) {} void RemoveMode(unsigned long m) { removedMode = (long)m; } };
 struct CTargeting { int cleared; CTargeting() : cleared(0) {} void ClearLockedTarget() { ++cleared; } };
-struct CCamera { int automatic; CCamera() : automatic(0) {} void SetAutomaticCameraControl() { ++automatic; } };
+class CCamera { public: int automatic; CCamera() : automatic(0) {} void SetAutomaticCameraControl() { ++automatic; } };
 struct CHero { CModes* modes; CTargeting* targeting; };
 struct CPlayerModel {
     CAInputProcess* procs[16];

@@ -6,9 +6,9 @@
 // Shape: the size-optimised factory module: `#pragma optimize("s", on)` (pass-through `push dword ptr [esp+8]`); the float
 // zero is `fldz ; fstp` ahead of the vtable store, the byte after it (the same shape as 0x0044C47B).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08

@@ -1,7 +1,7 @@
 // Behaviour test for CTCTalk::IsTalking @ 0x006E28A0: frame - started < duration (signed).
 #include <cstdio>
 static long g_frame;
-struct CTCTalk {
+class CTCTalk { public:
     long SampleStartedFrame, SampleDurationFrames;
     bool IsTalking() { return g_frame - SampleStartedFrame < SampleDurationFrames; }
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CNavQuadTreeNode {
+class CNavQuadTreeNode { public:
     void* vftable;
     int destroyed;
 };

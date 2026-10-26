@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 struct CComponent {
     C2DVector Position, TargetPosition, InitialPosition;
     void SetPosition(const C2DVector& p) { TargetPosition = p; InitialPosition = p; Position = p; }

@@ -11,7 +11,7 @@ struct CamObj {
     virtual bool onScreen(void* pos) { return g_onScreen; }
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v0() {}
     virtual void v1() {}
     virtual void v2() {}

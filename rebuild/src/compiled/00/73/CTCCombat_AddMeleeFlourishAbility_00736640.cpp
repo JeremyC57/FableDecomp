@@ -12,7 +12,7 @@
 // edi, which serves the inline push_back's add-ref copy (constructor testing its parameter's pointer) and the hand-written
 // release at the end; STLport push_back inlined with a fresh `__false_type()` tag in the dead `defIndex` slot.
 // Layout: CTCCombat AbilityList {first,last,end} at +0x2C (engine/CTCCombat.h offset; the retail vector is 12 bytes).
-struct CMeleeCombatAbilityDef {
+class CMeleeCombatAbilityDef { public:
     virtual void v00();
     virtual void Destroy();                                       // slot 1 (+0x04)
     long RefCount;                                                // +0x04
@@ -28,7 +28,7 @@ struct CDefPointer {                                              // CDefPointer
             ++object->RefCount;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef_00737f80(long defIndex, CDefPointer* def);                 // 0x00737F80
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -75,7 +75,7 @@ __declspec(noinline) void CDefPointerVector::_M_insert_overflow(CDefPointer* pos
         return;
 }
 #pragma auto_inline(on)
-struct CTCCombat {
+class CTCCombat { public:
     void* __vftable;                                              // +0x00
     unsigned char _pad_0x04[0x28];
     CDefPointerVector AbilityList;                                // +0x2C

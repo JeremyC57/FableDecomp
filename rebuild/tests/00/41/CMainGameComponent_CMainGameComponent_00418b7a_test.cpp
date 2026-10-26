@@ -68,8 +68,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -77,8 +77,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -183,8 +183,8 @@ public:
     CWideString fourthWideString;
 };
 
-struct CFrontendGameComponentInit
-{
+class CFrontendGameComponentInit
+{ public:
     fable_u32 value;
 };
 
@@ -268,34 +268,34 @@ FABLE_STATIC_ASSERT(sizeof(CGame) == 0x210);
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -536,11 +536,11 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x1b0);
 #include <stddef.h>
 
 
-struct CGameDefinitionManager;
-struct CMainGameComponent;
+class CGameDefinitionManager;
+class CMainGameComponent;
 
 #pragma pack(push, 1)
-struct CPlayerManager {
+class CPlayerManager { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CMainGameComponent*     Component;                       // +0x04
     CGameDefinitionManager* DefinitionManager;               // +0x08
@@ -574,12 +574,12 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerManager, HeroSwapPlayerScriptNames) == 0x24)
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
-struct CMainGameComponent;
-struct CPlayerManager;
+class CDefPointeeBase;
+class CMainGameComponent;
+class CPlayerManager;
 
 #pragma pack(push, 1)
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -1086,18 +1086,18 @@ FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, HasCalledInputUpdateThisFrame
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CDisplayViewManager;
-struct CGameDefinitionManager;
-struct CGraphicDataBank;
-struct CIEngine;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CPlayerManager;
-struct CWorld;
+class CCPPointerInfo;
+class CDisplayViewManager;
+class CGameDefinitionManager;
+class CGraphicDataBank;
+class CIEngine;
+class CMainGameComponent;
+class CMeshDataBank;
+class CPlayerManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CDisplayEngine {
+class CDisplayEngine { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long           EnginePreloadFlags;              // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -1191,7 +1191,7 @@ FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, World) == 0xf8);
 #include <stddef.h>
 
 
-struct CMainGameComponent;
+class CMainGameComponent;
 struct CNetworkPlayer;
 
 #pragma pack(push, 1)
@@ -1246,10 +1246,10 @@ FABLE_STATIC_ASSERT(offsetof(CNetworkClient, GameComponent) == 0x2678);
 #include <stddef.h>
 
 
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    AccessType[0x4];                        // +0x04 FileAccessType
     long             Position;                               // +0x08
@@ -1284,11 +1284,11 @@ FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, Pathname_PStringData) == 0x18);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CFontManager;
+class CCharStringData;
+class CFontManager;
 
 #pragma pack(push, 1)
-struct CFontBank {
+class CFontBank { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long    FontHeight;                             // +0x04
     CCharStringData* Name_PStringData;                       // +0x08 CCharString::PStringData
@@ -1305,13 +1305,13 @@ FABLE_STATIC_ASSERT(offsetof(CFontBank, PManager) == 0xc);
 #endif // FABLE_ENGINE_CFONTBANK_H
 
 #undef CFontBank
-struct CCharString { CCharStringData* Data; CCharString(); CCharString(const CCharString&); ~CCharString(); };
-struct CGame;struct CFontBank;struct CLUA;struct CGraphicDataBank;struct CCPPointerInfo;
-namespace NGameText {struct CDataBank;}
-struct CBaseClass { CBaseClass(); virtual ~CBaseClass(); }; //0099a300 destructor
+class CCharString { public: CCharStringData* Data; CCharString(); CCharString(const CCharString&); ~CCharString(); };
+class CGame;class CFontBank;class CLUA;class CGraphicDataBank;class CCPPointerInfo;
+namespace NGameText {class CDataBank;}
+class CBaseClass { public: CBaseClass(); virtual ~CBaseClass(); }; //0099a300 destructor
 struct CBaseClassNonCopyable : CBaseClass { CBaseClassNonCopyable(); private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
-struct CDeviceResetCallback {CDeviceResetCallback();virtual void OnPreDeviceReset()=0;virtual bool OnPostDeviceReset()=0;};
-struct CGameComponent : CBaseClassNonCopyable,CDeviceResetCallback {
+class CDeviceResetCallback { public:CDeviceResetCallback();virtual void OnPreDeviceReset()=0;virtual bool OnPostDeviceReset()=0;};
+class CGameComponent : public CBaseClassNonCopyable,public CDeviceResetCallback { public:
  bool Quit,Running; CGame* Game;
  CGameComponent(CGame&);
  virtual ~CGameComponent(){}
@@ -1321,20 +1321,20 @@ struct CGameComponent : CBaseClassNonCopyable,CDeviceResetCallback {
  virtual void SetQuit();
 };
 // Deleted-pointee interface views: only destructor prefix is used; fixtures supply pre-existing interface doubles, not native game constructors.
-struct CWorld { virtual ~CWorld(); };
-struct CPlayerManager { virtual ~CPlayerManager(); };
-struct CGamePlayerInterface { virtual ~CGamePlayerInterface(); };
-struct CDisplayEngine : CBaseClassNonCopyable { virtual ~CDisplayEngine(); virtual bool InitEngine(); virtual void UninitEngine(); };
+class CWorld { public: virtual ~CWorld(); };
+class CPlayerManager { public: virtual ~CPlayerManager(); };
+class CGamePlayerInterface { public: virtual ~CGamePlayerInterface(); };
+class CDisplayEngine : public CBaseClassNonCopyable { public: virtual ~CDisplayEngine(); virtual bool InitEngine(); virtual void UninitEngine(); };
 template<class T>struct scoped_ptr {
  T* ptr;
  scoped_ptr():ptr(0){}
  ~scoped_ptr(){delete ptr;}
 };
-template<class T>struct CCountedPointer {T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}~CCountedPointer();};
-struct CInitBaseClass : CBaseClass {bool Valid;CInitBaseClass();virtual void Validate()const;};
+template<class T>class CCountedPointer { public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}~CCountedPointer();};
+class CInitBaseClass : public CBaseClass { public:bool Valid;CInitBaseClass();virtual void Validate()const;};
 struct CNetworkClient : CInitBaseClass {unsigned char NetworkState[0x2678];CNetworkClient();virtual ~CNetworkClient();}; //00419352
-enum FileAccessType {FileRead=0};struct CASuspendableProcess;
-struct CAFile : CBaseClassNonCopyable {
+enum FileAccessType {FileRead=0};class CASuspendableProcess;
+class CAFile : public CBaseClassNonCopyable { public:
  CAFile();virtual ~CAFile();
  virtual void Open(const CWideString&,FileAccessType,unsigned long)=0;
  virtual void Close()=0;
@@ -1351,7 +1351,7 @@ struct CAFile : CBaseClassNonCopyable {
  virtual long GetAlignment()const;
  virtual CAFile* Clone()const=0;
 };
-struct CDiskFileWin32 : CAFile {
+class CDiskFileWin32 : public CAFile { public:
  long AccessType,Position,Length;void* WinFileHandle;bool Opened;CWideString Pathname;
  CDiskFileWin32();virtual ~CDiskFileWin32(); //00401630
  virtual void Open(const CWideString&,FileAccessType,unsigned long);
@@ -1363,8 +1363,8 @@ struct CDiskFileWin32 : CAFile {
 struct CFrameRateSmoother : CInitBaseClass {
  unsigned char Times[0x10];long MaxNoTimes,NoTimes,NoFramesToChangeFrameRateOver,FirstTime,LastTime;double SmoothedTime;
  CFrameRateSmoother();virtual ~CFrameRateSmoother();}; //00419764
-struct CMainGameComponentInit {CWideString InitialWorldName,InitialWorldHolySiteName;CCharString InitialQuestName;CWideString SaveGameName;CMainGameComponentInit();CMainGameComponentInit(const CMainGameComponentInit&);~CMainGameComponentInit();}; //004131d0
-struct CMainGameComponent : CGameComponent {
+class CMainGameComponentInit { public:CWideString InitialWorldName,InitialWorldHolySiteName;CCharString InitialQuestName;CWideString SaveGameName;CMainGameComponentInit();CMainGameComponentInit(const CMainGameComponentInit&);~CMainGameComponentInit();}; //004131d0
+class CMainGameComponent : public CGameComponent { public:
  void* PSampleBank;
  CCountedPointer<NGameText::CDataBank> PTextBank;
  scoped_ptr<CPlayerManager> PPlayerManager;
@@ -1427,7 +1427,7 @@ static int good=1,events[64],nEvents=0,active=0,callbackCount=0,liveStrings=0;
 static CMainGameComponent* owner=0;
 static void event(int n){if(active)events[nEvents++]=n;}
 struct CountedPayload {int id;CountedPayload(int n):id(n){}};
-struct CCPPointerInfo {unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
+class CCPPointerInfo { public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,RefCount)==0);
 FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,DeleteFunc)==4);
@@ -1503,7 +1503,7 @@ template<class T>CCountedPointer<T>::~CCountedPointer(){
  if(Info&&--Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}Data=0;Info=0;
 }
 template<class T>static void assignCounted(CCountedPointer<T>& p,int id,int refs){CCPPointerInfo* c=new CCPPointerInfo;c->RefCount=refs;c->DeleteFunc=countedDelete;c->Data=new CountedPayload(id);p.Data=reinterpret_cast<T*>(c->Data);p.Info=c;}
-struct CGame : CInitBaseClass {CGameComponent* CurrentGameComponent;unsigned char ParameterBuffer[512];bool Quit;CGame();virtual ~CGame();};
+class CGame : public CInitBaseClass { public:CGameComponent* CurrentGameComponent;unsigned char ParameterBuffer[512];bool Quit;CGame();virtual ~CGame();};
 CGame::CGame():CurrentGameComponent(0),Quit(false){}
 CGame::~CGame(){}
 #ifdef _MSC_VER

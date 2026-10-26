@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 // Leaf: IS_THING_DEAD<CThing*>
 // IS_THING_DEAD(CThing*) @ 0x005cbdbd
-struct CThing { char pad[0x91]; unsigned char m_flags; };
+class CThing { public: char pad[0x91]; unsigned char m_flags; };
 struct Wrap { CThing *m_p; };
 extern "C" char FABLE_FASTCALL FableIsDead_5cbdbd(Wrap *w){
     CThing *p = w->m_p;

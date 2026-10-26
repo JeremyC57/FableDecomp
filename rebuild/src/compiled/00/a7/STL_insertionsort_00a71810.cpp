@@ -10,7 +10,7 @@
 // Shape: STLport's explicit pair copy constructor builds the by-value `*i` in the argument area (`sub esp,38h ; mov
 // esi,esp`): the string copy constructor, then the 52-byte POD second as a 13-dword `rep movsd` from a second
 // induction pointer (`lea ebp,[ebx+4]`); with ebp taken the comparator is re-read from its slot every pass.
-struct CCharString {
+class CCharString { public:
     void* m_pData;                                      // shared string block
     CCharString(const CCharString& other);              // 0x0099EC30
 };

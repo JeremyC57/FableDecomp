@@ -13,7 +13,7 @@
 //   members sit 0x74 below it: StateBlock +0x164, Fonts +0x178, Filename +0x184, streamingEntry +0x188.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
@@ -26,7 +26,7 @@ public:
     virtual void Unload();                              // slot 3 (0x00A5F250)
 };
 
-template <class T> struct CArray {                      // retail CArray (STLport vector): first / last / end
+template <class T> class CArray { public:                      // retail CArray (STLport vector): first / last / end
     T* m_first;
     T* m_last;
     T* m_end;

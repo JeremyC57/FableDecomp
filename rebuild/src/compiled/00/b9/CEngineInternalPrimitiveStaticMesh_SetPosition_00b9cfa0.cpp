@@ -1,5 +1,5 @@
 // CEngineInternalPrimitiveStaticMesh::SetPosition @ 00b9cfa0
-struct CEnginePrimitivePosition {
+class CEnginePrimitivePosition { public:
     char pad[0xc];
     int payload; // member at +0xc
 };
@@ -13,7 +13,7 @@ void __fastcall CEngineInternalPrimitiveStaticMesh_Sub_Apply(
         void* self, const CEnginePrimitivePosition* rawPos,
         const void* payloadPtr, int field58);
 
-struct CEngineInternalPrimitiveStaticMesh {
+class CEngineInternalPrimitiveStaticMesh { public:
     char pad0[0x58];
     int field58;                 // +0x58
     char pad1[0x70 - 0x58 - 4];

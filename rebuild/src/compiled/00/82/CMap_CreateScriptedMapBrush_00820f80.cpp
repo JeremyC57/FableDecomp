@@ -11,9 +11,9 @@
 //   computed after the map-ID calls, `add edi,8` just before the push), the map ID is a named local evaluated before the world-map call.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct C2DCoordI { long X, Y; };
-struct CScriptedMapBrush {
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class C2DCoordI { public: long X, Y; };
+class CScriptedMapBrush { public:
     unsigned char _body[0x54];
     explicit CScriptedMapBrush(const C2DBoxI& area);            // 0x0082E600
     CScriptedMapBrush(const CScriptedMapBrush& other);          // 0x00827040
@@ -44,7 +44,7 @@ struct CBrushList {
     void push_back(const CScriptedMapBrush& x) { insert(_M_node, x); }
     CScriptedMapBrush& back() { return _M_node->_M_prev->_M_data; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     void RegisterScriptedMapBrush(long id, CScriptedMapBrush* brush);   // 0x004FF900
 };
 struct CMapRegistry {
@@ -53,13 +53,13 @@ struct CMapRegistry {
     virtual void v16();
     virtual long GetMapIDAt(const C2DCoordI& pos);   // slot 17 (+0x44)
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();              // slot 12 (+0x30)
     virtual CMapRegistry* GetMapRegistry();        // slot 13 (+0x34)
 };
-struct CMap {
+class CMap { public:
     unsigned char _pad00[0xc];
     CBrushList    ScriptedMapBrushes;              // +0x0c
     unsigned char _pad10[0x10];

@@ -1,15 +1,15 @@
 // behaviour test for CThingPlayerCreature::vfunc_68 (0x00663E90): skip when already the unfinished main anim, else SetMainAnim with the guard bit held
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; } };
-struct CAnimInit { long AnimType, AnimIndex, Mode, Percent; bool Flag05;
+class CAnimInit { public: long AnimType, AnimIndex, Mode, Percent; bool Flag05;
     void Set(long animType, long, long animIndex, long mode, bool flag05, unsigned long, long percent) { AnimType = animType; AnimIndex = animIndex; Mode = mode; Flag05 = flag05; Percent = percent; }
     CAnimInit(long a, long b, long c, long d, bool e, unsigned long f, long g) { Set(a, b, c, d, e, f, g); } };
 struct CShortVector { short* _M_start; short* _M_finish; short* begin() const { return _M_start; } bool empty() const { return _M_start == _M_finish; } };
-struct CAnimSet { CShortVector Anims; unsigned char Finished : 1; };
+class CAnimSet { public: CShortVector Anims; unsigned char Finished : 1; };
 static int g_calls = 0; static bool g_guardSeen = false; static CAnimInit g_last(0, 0, 0, 0, false, 0, 0);
-struct CAnimateThing { CAnimSet MainAnimSet; unsigned char SettingMainAnim : 1;
+class CAnimateThing { public: CAnimSet MainAnimSet; unsigned char SettingMainAnim : 1;
     void SetMainAnim(const CAnimInit& init, long mode, long delay) { ++g_calls; g_guardSeen = SettingMainAnim && mode == 1 && delay == 0; g_last = init; } };
 struct CTCAnimation { CAnimateThing m_anim; CAnimateThing& GetAnimation() { return m_anim; } };
 class CThing { public:

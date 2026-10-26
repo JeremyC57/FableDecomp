@@ -15,7 +15,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -65,14 +65,14 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void HeroReceiveMessageFromGuildMaster(CCharString const &, CCharString const &, bool, bool) const; //slot274 0x008918c0
 };
 extern GameCalls* g_pGameScriptInterface;                   // 0x0143E8F8
-struct CTimer {                                             // a script timer: the interface's timer index
+class CTimer { public:                                             // a script timer: the interface's timer index
     long Index;
     CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }   // out of line 0x00CD4470
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
     long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
 };
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                              // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                       // 0x00CB7940

@@ -6,7 +6,7 @@ struct LearnedSet {
     void Insert(long* p);
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     char pad[0x318];
     LearnedSet learned;
     void AddLearnedExpression(long value);

@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const;      // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -50,11 +50,11 @@ struct CLongVector {
     unsigned long size() const { return (unsigned long)(last - first); }
     long& operator[](unsigned long n) { return *(first + n); }
 };
-struct CTCInventory {                                // interface type 0x11
+class CTCInventory { public:                                // interface type 0x11
     unsigned char _pad_0x000[0x148];
     CLongVector QuickAccessItems;                    // +0x148
 };
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long RefCount;                                   // +0x04
@@ -62,22 +62,22 @@ struct CHeroAbilityDef {
     long QuickAccessItem;                            // +0x98
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CPlayer {
+class CPlayer { public:
     long GetPlayerNumber();                          // 0x00487510
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960
 };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     bool IsAssignableSpecialMoveButtonInQueue(long button, long buttonEventType, long playerNumber);   // 0x004460C0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     CGamePlayerInterface* GetGamePlayerInterface(); // 0x00416359
 };
 extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
@@ -94,7 +94,7 @@ struct CAbilityVector {                              // STLport vector<SAbilityE
     SAbilityEntry* _M_end_of_storage;
     const SAbilityEntry& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void* __vftable;
     CThing* ParentThing;                             // +0x04
     unsigned char _pad_0x08[0x160 - 0x08];

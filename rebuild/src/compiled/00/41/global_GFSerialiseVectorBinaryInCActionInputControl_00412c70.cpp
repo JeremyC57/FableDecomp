@@ -53,7 +53,7 @@ public:
     void resize(unsigned int newSize) { resize(newSize, T()); }
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector(float x, float y) : X(x), Y(y) { }

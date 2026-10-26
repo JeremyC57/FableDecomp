@@ -24,20 +24,20 @@ struct CInputStreamAccess : CDataInputStream {
  }
  __forceinline int ReadLong() {int value;Read(&value,4);return value;}
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
  T* Begin; T* End; T* EndOfStorage;
  void Resize(unsigned long,const T&); // material-index specialization 0x004428F0
  T& operator[](long i) {return Begin[i];}
 };
 struct CCountedChunk {void* Object;void* Count;};
-struct CChunkedFileLoader;
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileLoader;
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
  CArray<CCountedChunk> SubChunks;
  CArray<CCountedChunk> RegisteredSubChunkTypes;
  unsigned long CurrentChunkIndex;
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&); // 0x00AA8830
 };
-struct C3DMeshFilePrimitiveChunk : CChunkedFileSuperChunk {
+class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
  CArray<int> MaterialIndices;
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
 };

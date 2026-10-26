@@ -12,7 +12,7 @@ struct CBase {
     virtual ~CBase();
     CBase();                                // 0x0099A2D0
 };
-struct CVolumeTexture : CBase {             // vtable 0x0129DC18
+class CVolumeTexture : public CBase { public:             // vtable 0x0129DC18
     IDirect3DVolumeTexture9* m_pTexture;    // +0x04
     long                     m_format;      // +0x08
     long                     m_levels;      // +0x0c

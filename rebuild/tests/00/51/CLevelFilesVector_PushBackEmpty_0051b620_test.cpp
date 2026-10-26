@@ -2,11 +2,11 @@
 // counted file pointers are empty; the temporary is destroyed after the copy.
 #include <cstdio>
 
-struct CAFile { int unused; };
+class CAFile { public: int unused; };
 static int g_destroyed = 0;
 
 template<class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T*    m_pObject;
     void* m_pBlock;
     CCountedPointer() : m_pObject(0), m_pBlock(0) { }

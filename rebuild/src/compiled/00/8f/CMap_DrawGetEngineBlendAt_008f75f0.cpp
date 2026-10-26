@@ -1,7 +1,7 @@
 // CMap::DrawGetEngineBlendAt(long x, long y, long which) -- blend byte `which` (+7) of the game map cell at (x, y) (rows stored top-down: (maxY - y) * (width + 1) + x)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F75F0, length 47 bytes.
 // Shape: the 12-byte cell address through `lea eax,[eax+eax*2] ; lea edx,[ecx+eax*4]`, `mov al, byte ptr [edx+eax+7]`, `ret 0Ch`.
-struct CHeightMapCell {                           // engine/CHeightMapCell.h: 12 bytes
+class CHeightMapCell { public:                           // engine/CHeightMapCell.h: 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -19,8 +19,8 @@ struct CGameMapGrid {                              // the game map's cell grid (
     long            m_width;                       // +0x204 (cells per row minus one)
     long            m_maxY;                        // +0x208 (rows are stored top-down)
 };
-struct C2DCoordI { long X; long Y; };
-struct CMap {
+class C2DCoordI { public: long X; long Y; };
+class CMap { public:
     unsigned char _pad[0x1a7c];
     CGameMapGrid* m_pGameMapGrid;                  // +0x1a7c
     unsigned char DrawGetEngineBlendAt(long x, long y, long which);

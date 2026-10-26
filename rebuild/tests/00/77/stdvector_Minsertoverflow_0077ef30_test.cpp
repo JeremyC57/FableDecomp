@@ -6,14 +6,14 @@
 
 static int g_live = 0;                          // live CCharString payloads
 
-struct CCharString {
+class CCharString { public:
     char* PStringData;
     CCharString(const char* s) { PStringData = (char*)std::malloc(std::strlen(s) + 1); std::strcpy(PStringData, s); ++g_live; }
     CCharString(const CCharString& o) { PStringData = (char*)std::malloc(std::strlen(o.PStringData) + 1); std::strcpy(PStringData, o.PStringData); ++g_live; }
     ~CCharString() { std::free(PStringData); --g_live; }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CSkeletalMorph {                         // pair<CCharString, C3DVector>
     CCharString first;
     C3DVector   second;

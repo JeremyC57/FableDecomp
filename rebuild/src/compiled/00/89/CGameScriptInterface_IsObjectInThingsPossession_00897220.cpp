@@ -7,7 +7,7 @@
 // Layout: CThing UsingComponents +0x20 (bitset words), component map +0x44 {first, last} (the landed CloseDoor 0x00895DE0 model).
 // Shape: each component test reads its mask word (`test dword` / `test byte` narrowed for TC 0x46), the lookup key is
 //   homed in the dead objectDefName argument slot, the map pointer is a named pointer in edi.
-struct CCharString;
+class CCharString;
 struct CTCBase_Retail;
 struct CInterfaceMap_Retail {                 // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase_Retail* component; };
@@ -31,15 +31,15 @@ struct CThing_Retail {
     }
 };
 struct CTCInventoryBase { long GetNumberOfItemsOfTypeInInventory(long defIndex); };   // 0x005BDF08
-struct CTCCarrying { bool IsCarryingThing(long defIndex); };                          // 0x006A10A0
+class CTCCarrying { public: bool IsCarryingThing(long defIndex); };                          // 0x006A10A0
 struct CTCHouseContents { bool ContainsItemOfType(long defIndex); };                  // 0x008ED010
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
 };
 struct CDefinitionManager_Retail { long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     void*                       World;              // +0x04 (engine/CGameScriptInterface.h)
     void*                       Component;          // +0x08

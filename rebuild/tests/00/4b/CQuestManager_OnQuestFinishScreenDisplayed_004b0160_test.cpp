@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <string.h>
 
-struct CCharString { const char* m_text; };
+class CCharString { public: const char* m_text; };
 struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
 
 static CCharString* FindString_004b8e40(CCharString* first, CCharString* last, const CCharString& value, const SRandomAccessIteratorTag&)
@@ -22,7 +22,7 @@ struct CCharStringVector {
     }
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     CCharStringVector BetweenStartAndEndScreenQuests;
     long              NumberOfQuestsBetweenStartAndFinishScreens;
     bool OnQuestFinishScreenDisplayed(const CCharString& quest)

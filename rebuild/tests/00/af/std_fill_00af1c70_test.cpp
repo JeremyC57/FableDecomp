@@ -5,14 +5,14 @@
 #endif
 static int g_stringCopies = 0, g_stringAssigns = 0;
 static int g_destroyed = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_count;                               // +0x04
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;                                  // +0x00
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
@@ -32,9 +32,9 @@ struct CIVCountedPointer {
 };
 
 namespace NParticleEngine {
-struct CParticleDataBank;
-struct CParticleEmitterInfo {                   // 12 bytes
-    struct CEmitterData : CIVCountedPointeeBase { };
+class CParticleDataBank;
+class CParticleEmitterInfo { public:                   // 12 bytes
+    class CEmitterData : public CIVCountedPointeeBase { public: };
     CIVCountedPointer<CEmitterData> Data;       // +0x00
     CParticleDataBank*              Bank;       // +0x04
     unsigned long                   Index;      // +0x08

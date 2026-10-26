@@ -47,7 +47,7 @@ public:
 };
 
 namespace CSymbolMap {
-struct CSymbolInfo {                                    // Ego_r.pdb, 0xc bytes
+class CSymbolInfo { public:                                    // Ego_r.pdb, 0xc bytes
     CCharString GroupName;                              // +0x00
     CCharString EntryName;                              // +0x04
     long        Val;                                    // +0x08

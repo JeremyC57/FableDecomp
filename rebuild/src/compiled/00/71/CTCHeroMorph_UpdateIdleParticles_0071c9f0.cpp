@@ -74,7 +74,7 @@ public:
     }
     T* operator->() const { return Object; }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CParticleMorphEntry {
     long Type;
     bool Interpolate;                                   // +0x04
@@ -97,7 +97,7 @@ template<class T> struct vector {
             free(_M_start);
     }
 };
-struct CParticleMorphs {
+class CParticleMorphs { public:
     bool GetAllMorphsOfType(long type, vector<CParticleMorphEntry>& entries) const;   // 0x0081B160
 };
 class CHeroMorphDef : public CDefClassBase {

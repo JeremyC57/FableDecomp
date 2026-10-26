@@ -12,16 +12,16 @@
 // the dead argument slot.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct CSystemManager {
+class CSystemManager { public:
     bool SetExclusiveMode(bool exclusive);         // 0x009A59A0
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
-struct C2DExtentsI { long Width; long Height; };
-struct CPixelFormat {
+class C2DExtentsI { public: long Width; long Height; };
+class CPixelFormat { public:
     unsigned long m_format;
     unsigned long GetColourDepth() const;          // 0x009E3820
 };
-struct CSurface {
+class CSurface { public:
     C2DExtentsI   GetDimensions() const;           // 0x009F2F90
     CPixelFormat  GetPixelFormat() const;          // 0x009F2F60
     unsigned long GetHeight() const;               // 0x00415BF0
@@ -34,7 +34,7 @@ extern CDisplayDevice* g_pDisplayDevice;           // 0x013B8390
 struct CDisplayHolder {
     void OnExclusiveModeChange();                  // 0x00434A10
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayHolder* m_pDisplay;                    // +0x28
     void PostChangeResolution(unsigned long width, unsigned long height, unsigned long depth);   // 0x00416365

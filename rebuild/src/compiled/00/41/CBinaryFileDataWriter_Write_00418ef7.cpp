@@ -5,7 +5,7 @@
 // zero third argument, then `mov al,1`: a size-optimised TU (0x0041xxxx) returning a constant
 // true. The manifest calls it vfunc_0; it is the writer's Write override.
 #pragma optimize("s", on)
-struct CAFile {
+class CAFile { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

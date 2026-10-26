@@ -6,9 +6,9 @@
 // (the retail CArray is 12 bytes), so the retail layout is modelled locally.
 #include "fable_string.h"
 
-struct CStaticMapBankFile;
+class CStaticMapBankFile;
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     unsigned char       _pad0[0x5a8];
     CStaticMapBankFile* StaticMapBankFile;         // +0x5a8
     CCharString         StaticMapSeaEntryPrefix;   // +0x5ac

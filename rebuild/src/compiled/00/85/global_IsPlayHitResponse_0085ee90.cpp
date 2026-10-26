@@ -17,7 +17,7 @@ struct Inner {
     virtual bool IsHitResponse(); // +0xC0
 };
 
-struct CThing {
+class CThing { public:
     char pad0[0x6c];
     unsigned char flags;      // +0x6c
     char pad1[0x100 - 0x6d];

@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cmath>
 #include <vector>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -15,7 +15,7 @@ struct C3DVector {
 static C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 static C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 static C3DVector operator*(const C3DVector& a, float s) { return C3DVector(a.X * s, a.Y * s, a.Z * s); }
-struct CThing { bool Dead; };
+class CThing { public: bool Dead; };
 static std::vector<C3DVector> g_created;
 static CThing g_things[16];
 static int g_failEvery = 0;
@@ -29,8 +29,8 @@ static CThing* CreateEmitter(const C3DVector& pos)
 }
 static int g_shakes = 0;
 static C3DVector g_shakeAt;
-struct CExplosionDef { long EmitterDefIndex; bool ShakeCamera; };
-struct CTCDExplosion {
+class CExplosionDef { public: long EmitterDefIndex; bool ShakeCamera; };
+class CTCDExplosion { public:
     float DamageRadius;
     C3DVector StartPos, EndPos;
     CExplosionDef* PExplosionDef;

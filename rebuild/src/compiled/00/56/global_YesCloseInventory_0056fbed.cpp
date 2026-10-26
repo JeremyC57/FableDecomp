@@ -75,7 +75,7 @@ class CPlayerManager {
 public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;                   // +0x1c
 };
@@ -88,7 +88,7 @@ template<class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& t
     return thing != 0 && (thing->DeadFlags & 1) == 0;
 }
 
-struct CTCInventoryExperience {                      // interface type 0x16
+class CTCInventoryExperience { public:                      // interface type 0x16
     virtual void v000();
     virtual void v001();
     virtual void v002();

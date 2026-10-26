@@ -10,13 +10,13 @@
 // jne ; call [vtbl+4]`). Retail layout is the PDB's minus 4 bytes from +0x34 (12-byte vector + compare byte + flag byte
 // in the state-group map): PActiveStateGroup +0x38, Output +0x44, OutputValid +0x8c, PBrainDef +0x90, UpdateZones +0x94,
 // PCurrentUpdateZone +0xa0, OnKillCalled +0xa4.
-struct CMainGameComponent;
-struct CWorld;
-struct CThingManager;
-struct CPlayerManager;
-struct CThingAICreature;
-struct CAIStateGroupBase;
-struct CBrainUpdateZone;
+class CMainGameComponent;
+class CWorld;
+class CThingManager;
+class CPlayerManager;
+class CThingAICreature;
+class CAIStateGroupBase;
+class CBrainUpdateZone;
 
 template <class T> struct _STLP_alloc_proxy        // STLport allocator proxy holding end_of_storage
 {
@@ -37,8 +37,8 @@ struct CBrainUpdateZoneVector : _Vector_base<CBrainUpdateZone>   // vector<CBrai
     CBrainUpdateZoneVector& operator=(const CBrainUpdateZoneVector& other);   // 0x00462CB0
 };
 
-struct CBrainDef
-{
+class CBrainDef
+{ public:
     virtual void v00();
     virtual void Destroy() const;                   // slot 1 (+0x04)
     mutable long RefCount;                          // +0x04
@@ -47,8 +47,8 @@ struct CBrainDef
 };
 
 template <class T>
-struct CDefPointer
-{
+class CDefPointer
+{ public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
@@ -63,8 +63,8 @@ struct CStateGroupMap                               // CVectorMap<long, CAIState
     CStateGroupMap() : Sorted(false) { }
 };
 
-struct CBrainOutput                                 // 0x48 bytes
-{
+class CBrainOutput                                 // 0x48 bytes
+{ public:
     unsigned char _data[0x48];
     CBrainOutput();                                 // 0x00835620
 };
@@ -76,8 +76,8 @@ struct CAIBrainBase                                 // the brain's base class (0
     CAIBrainBase(long a, long b, float c);          // 0x00A44740
 };
 
-struct CAIBrain : CAIBrainBase
-{
+class CAIBrain : public CAIBrainBase
+{ public:
     CMainGameComponent* Component;                  // +0x14
     CThingAICreature* Creature;                     // +0x18
     CThingManager* ThingManager;                    // +0x1c

@@ -35,7 +35,7 @@ static int fails = 0;
 //   BlockAttackerProng) lives, and the frame grows to 60h (key spellings, pointer/reference info, block scopes, /Oa, QFE do not help).
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -47,7 +47,7 @@ struct C3DVector {
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
     C3DVector& operator*=(float f) { X *= f; Y *= f; Z *= f; return *this; }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -59,11 +59,11 @@ struct CPhysicsObject {
     C3DVector Pos;                                    // +0x0c
     C3DVector LastPos;                                // +0x18
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     bool IsAbleToNavigateFromPosToPos(const C3DVector* from, const C3DVector* to, float tolerance);   // 0x006CB620
 };
 #pragma pack(push, 4)
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -96,18 +96,18 @@ struct CThing {
     }
 };
 #pragma pack(pop)
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsRegisteredCombatant() const;               // 0x00662410
     long GetRegionAtPosition(const C3DVector& pos) const;   // 0x00661D20
 };
 extern const float g_Epsilon;                        // 0x0129BA3C (1e-4f)
-struct CThingFindNavigationLayerAt {
+class CThingFindNavigationLayerAt { public:
     C3DVector Pos;                                    // +0x00
     long      Layer;                                  // +0x0c
     CThingFindNavigationLayerAt(const C3DVector& pos) : Pos(pos), Layer(0) {}
     bool operator()(CThing* thing);                   // 0x0063EFB0
 };
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;                     // +0x00
     long AttackerNumber;                              // +0x04
     long CombatWheelRingIndex;                        // +0x08
@@ -150,7 +150,7 @@ __declspec(noinline) CCombatantMap::node* CCombatantMap::find(const unsigned __i
         y = header;
     return y;
 }
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];                    // +0x04
     CCombatantMap Combatants;                         // +0x10

@@ -2,9 +2,9 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A7D9C0, length 57 bytes.
 // Leaf: SetTarget
 // The chunk label (CMurderTwistLeader::Init) is propagated; named by address. Shape: a 12-byte frame for the vector (X and Y through the FPU, Z through an integer register), `ret 4`.
-struct C2DVector { float X, Y; C2DVector() { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
+class C2DVector { public: float X, Y; C2DVector() { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
 static __forceinline C2DVector Sub(const C2DVector& a, const C2DVector& b) { C2DVector r; r.X = a.X - b.X; r.Y = a.Y - b.Y; return r; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct ITargetOwner_00a7d9c0 {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void SetRelativeTarget(const C3DVector* position, long size, long flags);   // slot 4 (+0x10)

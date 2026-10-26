@@ -9,11 +9,11 @@
 #include "engine/CTCBase.h"
 #undef CTCBase
 #pragma optimize("t", on)
-struct CTCBase {                            // vtable 0x0125BE0C (.?AVCTCBase@@)
+class CTCBase { public:                            // vtable 0x0125BE0C (.?AVCTCBase@@)
     void* _vptr;
     ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
 };
-struct CCharString {                        // one word: CCharStringData*
+class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;
     ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
 };

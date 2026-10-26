@@ -11,7 +11,7 @@
 // set with equal length -> `Compare(...) ? false : true`, the 8-bit `neg ; sbb al,al ; inc al`); three returns, each with its
 // own inline destructor call. The suffix block stays in esi across Compare only with Compare's real body (landed 0x00411570)
 // compiled above under `auto_inline(off)`, as the landed CTCCameraPointScriptedSpline::HasMessage 0x0075D2B0.
-struct CCharStringData {                                // the shared string block
+class CCharStringData { public:                                // the shared string block
     const char*   m_pData;                              // +0x00
     unsigned long m_length;                             // +0x04
 };
@@ -32,7 +32,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
     }
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                     // 0x0099EAE0
     bool operator==(const CCharString& other) const
@@ -46,15 +46,15 @@ struct CCharString {
 };
 extern CCharString g_DayOnlySuffix;                     // 0x013BAC18 "DayOnly"
 extern CCharString g_NightOnlySuffix;                   // 0x013BAC1C "NightOnly"
-struct CQuestManager {
+class CQuestManager { public:
     CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& sectionName);   // 0x004AF350
 };
 extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x58];
     CCharString   SerialisationSectionName;             // +0x58
 };
-struct CTCDayOrNightOnlySupport {
+class CTCDayOrNightOnlySupport { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

@@ -11,13 +11,13 @@
 // Shape: the walk starts from the cached head (`mov eax,[ebx+4] ; mov edi,[eax] ; cmp edi,eax`) and re-reads the head at
 // the loop end (the body writes memory); the argument's string block is re-read every iteration for the same reason.
 // The manifest labels this body "CScriptBase::KillSpawnedFunction" (propagated from 0x00CB7AA0).
-struct CCharStringData {                       // the shared string block
+class CCharStringData { public:                       // the shared string block
     const char*   m_pData;                     // +0x00
     unsigned long m_length;                    // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     // The inlined equality: the same block, or both present with equal lengths and Compare == 0
     // (`neg eax ; sbb al,al ; inc al`).
@@ -57,7 +57,7 @@ FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, ID) == offsetof(CSpawnedFuncBaseR
 FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, Name_PStringData) == offsetof(CSpawnedFuncBaseRetail, Name));
 FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, FuncPaused) == offsetof(CSpawnedFuncBaseRetail, FuncPaused));
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct SThreadNode {                           // STLport list node of CCountedPointer<CSpawnedFuncBase>
     SThreadNode*            next;              // +0x00
     SThreadNode*            prev;              // +0x04
@@ -68,7 +68,7 @@ struct CThreadList {                           // STLport list: the sentinel nod
     SThreadNode* m_pNode;
 };
 
-struct CScriptBase {                           // retail model (PDB 0x54; STLport list at +4)
+class CScriptBase { public:                           // retail model (PDB 0x54; STLport list at +4)
     virtual void v00();
     CThreadList Threads;                       // +0x04 list<CCountedPointer<CSpawnedFuncBase> >
     void KillSpawnedFunction(const CCharString& name, unsigned long id);

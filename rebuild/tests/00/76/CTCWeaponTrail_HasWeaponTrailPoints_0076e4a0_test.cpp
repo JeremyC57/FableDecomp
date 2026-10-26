@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CThing { unsigned long m_properties; };
-struct CTCWeaponTrail {
+class CThing { public: unsigned long m_properties; };
+class CTCWeaponTrail { public:
     CThing* ParentThing; long NoTrails; long NoProjectileTrails;
     bool HasWeaponTrailPoints() const { if (ParentThing->m_properties & 0x00800000) return NoProjectileTrails == 1; return NoTrails > 0; }
 };

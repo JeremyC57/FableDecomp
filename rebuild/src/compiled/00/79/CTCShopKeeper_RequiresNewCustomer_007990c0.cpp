@@ -7,8 +7,8 @@
 // is read into a local before the second GetPItem call (ebx, pushed inside the branch); the two early-true tests are
 // written as nested `!=` ifs with ONE `return true` at the end (two `if (..) return true;` place the `mov al,1` exit in
 // the middle of the body instead of after it).
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -26,15 +26,15 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CTCShopKeeper;
+class CTCShopKeeper;
 
-struct CThingFilter_IsPotentialCustomer {
+class CThingFilter_IsPotentialCustomer { public:
     unsigned char m_state[0x18];
     CThingFilter_IsPotentialCustomer(CTCShopKeeper* shopKeeper, bool checkShop);   // 0x00799D80
     bool operator()(CThing* thing);                                                  // 0x00799E30
 };
 
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     void*               m_vtable;            // +0
     CThing*             m_pOwner;            // +4
     unsigned char       _pad8[4];

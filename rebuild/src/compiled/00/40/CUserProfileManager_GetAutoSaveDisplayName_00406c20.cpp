@@ -1,5 +1,5 @@
-struct CWideString
-{
+class CWideString
+{ public:
     void* p;
     CWideString(const unsigned short* s);          // ctor helper 0x594a90 (this, str)        [factory ret]
     CWideString(const CWideString& o);             // user copy ctor -> non-POD, memory return
@@ -8,8 +8,8 @@ struct CWideString
 
 // The (lit,-1) temporary is a CCharString symbol name (relocation identity: ctor 0x0099EBF0, dtor 0x0099EAE0),
 // handed to CDataBank::GetTextBySymbol 0x009C95E0.
-struct CCharString
-{
+class CCharString
+{ public:
     void* p;
     CCharString(const char* s, long n);            // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
@@ -30,8 +30,8 @@ extern NodeB* g_B;   // ds:0x13b871c
 static const char* const LIT_AB = (const char*)0x122dfbc;
 static const unsigned short* const LIT_FACTORY = (const unsigned short*)0x122de9c;
 
-struct CUserProfileManager
-{
+class CUserProfileManager
+{ public:
     CWideString GetAutoSaveDisplayName();          // __fastcall member, returns CWideString by value
 };
 

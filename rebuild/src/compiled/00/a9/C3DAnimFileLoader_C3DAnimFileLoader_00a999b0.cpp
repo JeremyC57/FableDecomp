@@ -21,7 +21,7 @@
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);        // 0x00BFEA1A
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                         // 0x0099EAE0
 };
@@ -32,7 +32,7 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
@@ -69,7 +69,7 @@ struct CCountedPointer {
 };
 
 template <class T>
-struct CArray {                             // retail CArray is 12 bytes (the PDB's is 16)
+class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
     T* m_pBegin;
     T* m_pEnd;
     T* m_pEndOfStorage;
@@ -93,35 +93,35 @@ template <class T> struct vector : _Vector_base<T> {
     explicit vector(const allocator<T>& a = allocator<T>()) : _Vector_base<T>(a) {}
 };
 
-struct CChunkedFileSuperChunk;
-struct CChunkedFileChunk {                  // 0x10
+class CChunkedFileSuperChunk;
+class CChunkedFileChunk { public:                  // 0x10
     char ChunkType[5];                      // +0x04
     unsigned char _pad_0x09[3];
     CChunkedFileSuperChunk* Parent;         // +0x0c
     virtual ~CChunkedFileChunk();           // 0x00AA75C0
 };
-struct CChunkedFileSuperChunk : CChunkedFileChunk {   // 0x2c
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:   // 0x2c
     CArray<CCountedPointer<CChunkedFileChunk> > SubChunks;               // +0x10
     CArray<CCountedPointer<CChunkedFileChunk> > RegisteredSubChunkTypes; // +0x1c
     unsigned long CurrentChunkIndex;                                      // +0x28
     CChunkedFileSuperChunk(const char* type);                             // 0x00AA8360
     virtual ~CChunkedFileSuperChunk();                                    // 0x00AA8490
 };
-struct CMatrix3x4 { float m[12]; };
-struct C3DAnimFileRootChunk : CChunkedFileSuperChunk {        // vtable 0x0129DFF0
+class CMatrix3x4 { public: float m[12]; };
+class C3DAnimFileRootChunk : public CChunkedFileSuperChunk { public:        // vtable 0x0129DFF0
     bool LoopFlag;                          // +0x2c
     float Duration;                         // +0x30
     C3DAnimFileRootChunk() : CChunkedFileSuperChunk("ANRT") {}
 };
-struct C3DAnimFileObjectChunk : CChunkedFileSuperChunk {
+class C3DAnimFileObjectChunk : public CChunkedFileSuperChunk { public:
     CCharString Name;                       // +0x2c
     long SubMeshIndex, ParentIndex, FirstChildIndex, NextSiblingIndex;
     C3DAnimFileObjectChunk();               // 0x00AB0020
 };
-struct C3DAnimFileHelpersChunk : CChunkedFileSuperChunk {
+class C3DAnimFileHelpersChunk : public CChunkedFileSuperChunk { public:
     C3DAnimFileHelpersChunk();              // 0x00AAE090
 };
-struct C3DAnimFileSequenceChunk : CChunkedFileSuperChunk {
+class C3DAnimFileSequenceChunk : public CChunkedFileSuperChunk { public:
     long BoneIndex;                         // +0x2c
     long ParentIndex;                       // +0x30
     CCharString BoneName;                   // +0x34
@@ -130,22 +130,22 @@ struct C3DAnimFileSequenceChunk : CChunkedFileSuperChunk {
     CArray<CMatrix3x4> Matrices;            // +0x40
     C3DAnimFileSequenceChunk();             // 0x00AAF730
 };
-struct C3DAnimFileBoneMaskChunk : CChunkedFileChunk {
+class C3DAnimFileBoneMaskChunk : public CChunkedFileChunk { public:
     CArray<bool> EnableMask;                // +0x10
     C3DAnimFileBoneMaskChunk();             // 0x00AB0700
 };
-struct C3DVector { float X, Y, Z; };
-struct C3DAnimFileMovementVectorChunk : CChunkedFileSuperChunk {
+class C3DVector { public: float X, Y, Z; };
+class C3DAnimFileMovementVectorChunk : public CChunkedFileSuperChunk { public:
     C3DVector Vector;                       // +0x2c
     C3DAnimFileMovementVectorChunk();       // 0x00AAE2A0
 };
-struct C3DAnimFileTimingEventChunk : CChunkedFileChunk {
+class C3DAnimFileTimingEventChunk : public CChunkedFileChunk { public:
     CCharString Name;                       // +0x10
     float Time;                             // +0x14
     C3DAnimFileTimingEventChunk();          // 0x00AAE170
 };
 
-struct CChunkedFileLoader {                 // 0x10
+class CChunkedFileLoader { public:                 // 0x10
     long ReadUnknownChunkTypes;             // +0x04
     char SupportedFileType[5];              // +0x08
     CChunkedFileLoader(const char* fileType);   // 0x00AA7510

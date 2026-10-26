@@ -6,7 +6,7 @@ struct TargetVtbl {
 struct Target {
     TargetVtbl* vtbl;
 };
-struct CScriptThing {
+class CScriptThing { public:
     void* pad0;
     Target* m_target;
 };

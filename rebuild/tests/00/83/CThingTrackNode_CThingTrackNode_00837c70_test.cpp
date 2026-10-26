@@ -5,13 +5,13 @@
 static long g_type = -1;
 struct CBaseIntelligentPointer { void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) {} };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() : CBaseIntelligentPointer() {} };
-struct CCharString { const char* text; CCharString() : text("") {} };
-struct CThing { long type; CThing(long t) : type(t) { g_type = t; } };
-struct CThingGameObject : CThing {
+class CCharString { public: const char* text; CCharString() : text("") {} };
+class CThing { public: long type; CThing(long t) : type(t) { g_type = t; } };
+class CThingGameObject : public CThing { public:
     CIntelligentPointer m_owner;
     CThingGameObject(long type) : CThing(type), m_owner() {}
 };
-struct CThingTrackNode : CThingGameObject {
+class CThingTrackNode : public CThingGameObject { public:
     CThingTrackNode* PNextNode;
     CThingTrackNode* PPreviousNode;
     unsigned long long NextNodeUID;

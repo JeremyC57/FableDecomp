@@ -62,7 +62,7 @@ public:
     CCharString ReadAsString();                    // 0x009BA6F0
     void SetStringPos(unsigned long pos);          // 0x009B9940
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char  _pad000[0xb0];
     TErrorCallback ErrorCallback;                  // +0xb0
     CCharString    CurrentFilename;                // +0xb4

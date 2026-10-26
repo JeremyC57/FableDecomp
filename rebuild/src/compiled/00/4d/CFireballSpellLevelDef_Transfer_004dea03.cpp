@@ -1,5 +1,5 @@
 #include "engine/CFireballSpellLevelDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CPersistContext { void Xfer(void* sub); };
+class CPersistContext { public: void Xfer(void* sub); };
 struct CFireballSpellLevelDef_Methods : CFireballSpellLevelDef {
     void Transfer(CPersistContext* ctx);
 };

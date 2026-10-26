@@ -8,7 +8,7 @@ struct Sub28 {
 
 void operator delete(void*);   // stands in for operator delete 0xbfe9bc
 
-struct CTCMapwho {
+class CTCMapwho { public:
     char pad0[0x28];
     Sub28 sub;        // +0x28
     void OnDie();

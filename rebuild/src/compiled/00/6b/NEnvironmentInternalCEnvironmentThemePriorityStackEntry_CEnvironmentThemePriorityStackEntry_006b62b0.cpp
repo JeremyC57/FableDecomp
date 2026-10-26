@@ -11,7 +11,7 @@
 // Shape: memberwise in declaration order; floats move through integer registers, the double through the FPU.
 namespace NEnvironmentInternal {
 
-struct CEnvironmentThemePriorityStackEntry {                // 0x30 bytes in retail
+class CEnvironmentThemePriorityStackEntry { public:                // 0x30 bytes in retail
     struct CThemeWeight;
     struct CThemeWeightArray {                              // retail CArray<CThemeWeight>: three pointers
         CThemeWeight* m_pFirst;

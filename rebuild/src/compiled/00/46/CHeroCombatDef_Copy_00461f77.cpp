@@ -6,7 +6,7 @@
 // implementation. VC7.1 emits `jmp rel32` for a tail call whose result/void matches,
 // which byte-matches (rel32 masked in parity).
 
-struct CHeroCombatDef;
+class CHeroCombatDef;
 
 // The real implementation this thunk forwards to (relocation-masked extern).
 extern "C" void __fastcall CHeroCombatDef_Copy_impl(CHeroCombatDef* thisptr, CHeroCombatDef* src);

@@ -21,17 +21,17 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCAnimationBase;
+class CTCAnimationBase;
 
-struct CThing {
+class CThing { public:
     void AddToRenderList();                             // 0x004C7AC0 (manifest CThing::AddToRenderList)
 };
 
 namespace NGraphicAppearance {
 
-struct CAGraphicAppearanceComponent;
+class CAGraphicAppearanceComponent;
 
 struct CEnginePersistentPrimitiveBase {                 // CIVCountedPointer<CEnginePersistentPrimitiveBase> target
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -43,7 +43,7 @@ struct CEnginePrimitiveHandle {                         // 8 bytes (Ego_r.pdb): 
     CEnginePersistentPrimitiveBase* Data;               // +0x04 CIVCountedPointer<CEnginePersistentPrimitiveBase>
 };
 
-struct CPrimitive {                                     // 16 bytes (Ego_r.pdb)
+class CPrimitive { public:                                     // 16 bytes (Ego_r.pdb)
     long                            Type;               // +0x00 EPrimitiveType
     CEnginePrimitiveHandle          PrimitiveHandle;    // +0x04
     long                            BankIndex;          // +0x0c
@@ -82,7 +82,7 @@ extern bool g_LatchForceResendPrimitives;               // 0x013B8A14
 extern bool g_PreparePrimitivesEnabled;                 // 0x01375480
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                                 // 14 bytes (PDB size 14)
+class CEngineGraphic { public:                                 // 14 bytes (PDB size 14)
     unsigned long BankIndex;                            // +0x00
     float         AnimStep;                             // +0x04
     float         RenderSizeX;                          // +0x08
@@ -93,7 +93,7 @@ struct CEngineGraphic {                                 // 14 bytes (PDB size 14
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void*          __vftable;                           // +0x00 (CTCBase)
     CThing*        ParentThing;                         // +0x04
     bool           ToBeRemoved;                         // +0x08

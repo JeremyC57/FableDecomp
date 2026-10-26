@@ -22,8 +22,8 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);   // 0x00BFEAE6
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
-struct CDataInputStream {
+class CChunkedFileLoader;
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     unsigned long m_position;              // +4
@@ -58,7 +58,7 @@ inline void* __copy_trivial(const void* first, const void* last, void* result)
         ((char*)memmove(result, first, ((const char*)last - (const char*)first))) + ((const char*)last - (const char*)first);
 }
 
-template <class T> struct CArray {                 // retail STLport vector layout
+template <class T> class CArray { public:                 // retail STLport vector layout
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -91,7 +91,7 @@ template <class T> __declspec(noinline) void CArray<T>::_M_insert_overflow(T* po
 }
 #pragma auto_inline(on)
 
-struct C3DMeshFileSmoothingGroupsChunk {
+class C3DMeshFileSmoothingGroupsChunk { public:
     virtual void v0();
     unsigned char _base_body[0x0c];        // CChunkedFileChunk: ChunkType[5] + pad + Parent
     CArray<unsigned long> FaceGroupsList;  // +0x10

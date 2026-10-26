@@ -8,7 +8,7 @@
 // LookDirSet +0x80, StartPosSet +0x81, EndPosSet +0x82.
 // Shape: three early-return `if`s; `ThingUID == 0` gives `mov eax,[lo] ; or eax,[hi]`;
 // `TransitionTime > eps` gives `fcomp ; test ah,41h ; jne`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* s);          // 0x0099EFE0
 };
@@ -16,9 +16,9 @@ struct CCharString {
 extern float g_CameraPointMinTransitionTime;        // 0x0129BA3C (0.0001f)
 
 #pragma pack(push, 1)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCCameraPointScripted {
+class CTCCameraPointScripted { public:
     virtual void v00();
     unsigned char      _pad04[0x40 - 0x04];     // +0x04 CTCBase + CTCCameraPointDefinitionBase
     C3DVector          StartPos;                // +0x40

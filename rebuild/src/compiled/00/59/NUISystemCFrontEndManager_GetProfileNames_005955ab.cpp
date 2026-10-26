@@ -17,8 +17,8 @@
 // Opt: size TU (`#pragma optimize("s", on)`: the biased /GS frame).
 #pragma optimize("s", on)
 #include <string.h>
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                              // 0x0099AED0
     CWideString(const unsigned short* text);    // 0x0099B6B0
@@ -27,7 +27,7 @@ struct CWideString {
     CWideString& operator+=(const unsigned short* text);   // 0x0099B940
     class CCharString ConvertToCharString() const;          // 0x0099B2C0
 };
-struct CCharStringData {
+class CCharStringData { public:
     char* Text;
     long  Length;
 };

@@ -11,7 +11,7 @@
 // words are read at +0x14/+0x18 before `add eax,14h`; the implicit copy forms the address first), `direction * strength`
 // builds a by-value C3DVector temporary (user constructor) in the second frame vector that is then copied into the
 // member through ecx/edx; the strength stays on the FPU across the three products; `++PausedStepsPending` last.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -25,7 +25,7 @@ struct SWindRecord {
     float         Strength;                        // +0x20
 };
 
-struct CEnvironment {
+class CEnvironment { public:
     virtual void v00();
     virtual SWindRecord* GetWind();                // slot 1
 };
@@ -41,7 +41,7 @@ struct SEngineState_01436e8c {
 };
 extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
 
-struct CEngineSimulationManager {
+class CEngineSimulationManager { public:
     unsigned char _pad[0x104c];                     // vptr at +0x00
     C3DVector     WindVector;                      // +0x1050
     unsigned char _pad105c[0x14];

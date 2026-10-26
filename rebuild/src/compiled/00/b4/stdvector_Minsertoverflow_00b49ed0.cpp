@@ -1,5 +1,5 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<CEngineLightingManager::CManagerShadowedSpotLight*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@PAVCManagerShadowedSpotLight@CEngineLightingManager@@V?$allocator@PAVCManagerShadowedSpotLight@CEngineLightingManager@@@std@@@std@@IAEX
+// Leaf: ?_M_insert_overflow@?$vector@PAUCManagerShadowedSpotLight@CEngineLightingManager@@V?$allocator@PAUCManagerShadowedSpotLight@CEngineLightingManager@@@std@@@std@@IAEX
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B49ED0, 216 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
 // Identity: element `CEngineLightingManager::CManagerShadowedSpotLight*`; evidence: the landed CEngineLightingManager::AddLightPrimitive 0x00B47FD0 (`vector<CManagerShadowedSpotLight*>::_M_insert_overflow @ 0x00B49ED0`); the class is nested in CEngineLightingManager (Ego_r `CManagerShadowedSpotLight@CEngineLightingManager@@`).
 //   Family F007 (32 byte-identical bodies; the same STLport source as family F005, split from it only by the int3 padding):
@@ -14,7 +14,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
 
-class CEngineLightingManager { public: class CManagerShadowedSpotLight; };
+class CEngineLightingManager { public: struct CManagerShadowedSpotLight; };
 
 namespace std {
 

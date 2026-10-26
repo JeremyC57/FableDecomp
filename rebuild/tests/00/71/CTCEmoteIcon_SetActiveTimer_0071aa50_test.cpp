@@ -5,7 +5,7 @@ struct CWorldTime {
     static long SecondsToFrames(float seconds) { return (long)(g_framesPerSecond * seconds); }
 };
 static CWorldTime g_subsystem;
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     void* vptrSlot; void* ParentThing; bool m_flags[4];
     long ActiveTimer;
     CWorldTime* GetGameSubsystem1C() { ++g_getterCalls; return &g_subsystem; }

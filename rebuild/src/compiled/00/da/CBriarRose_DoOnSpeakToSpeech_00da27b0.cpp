@@ -8,7 +8,7 @@
 // Layout = Ego_r.pdb CBriarRose (80 bytes, the landed DoSpeech model): ParentClass +0x14 (CQ_MinionCampScript*), whose
 //          timer sits at +0x60.
 // Shape: the parent's timer is read through an inline CTimer getter taking the timer by reference (`add eax,60h ; mov eax,[eax]`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -31,7 +31,7 @@ struct CTimerManager {
     virtual long GetTimer(long index);        // slot 90 (+0x168)
 };
 extern CTimerManager* g_pScriptTimerManager;  // 0x0143E8F8
-struct CTimer {
+class CTimer { public:
     long TimerIndex;                          // +0x00
 };
 inline long GetTime(const CTimer& timer) { return g_pScriptTimerManager->GetTimer(timer.TimerIndex); }

@@ -1,9 +1,9 @@
 // Behaviour test for CAIStateGroup_TellStory::IsRunnable (0x00942D40): same logic over mocks.
 #include <cstdio>
 #include <cstring>
-struct CMaterialDef { int refs; int destroyed; unsigned long Flags; void Release() { if (--refs == 0) ++destroyed; } };
+class CMaterialDef { public: int refs; int destroyed; unsigned long Flags; void Release() { if (--refs == 0) ++destroyed; } };
 struct CVillage { bool cookTime; bool IsCookTime() { return cookTime; } };
-struct CThing { CThing* workplace; bool hasVillager; CVillage* village; CMaterialDef* material; };
+class CThing { public: CThing* workplace; bool hasVillager; CVillage* village; CMaterialDef* material; };
 static CVillage* GFGetPVillageInterface(CThing* t) { return t->village; }
 static int g_lookups = 0;
 static int g_index = 0;

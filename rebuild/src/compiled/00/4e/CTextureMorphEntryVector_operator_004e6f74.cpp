@@ -14,7 +14,7 @@
 #include <new>
 
 struct CTextureMorphData { unsigned char Bytes[0x14]; };
-struct CTextureMorphEntry {                  // 24 bytes: a word then a 20-byte block (the placement copy writes them apart)
+class CTextureMorphEntry { public:                  // 24 bytes: a word then a 20-byte block (the placement copy writes them apart)
     long              Index;                    // +0x00
     CTextureMorphData Data;                     // +0x04 (descriptive: four words + the morph value)
     CTextureMorphEntry(const CTextureMorphEntry& other) : Index(other.Index), Data(other.Data) {}

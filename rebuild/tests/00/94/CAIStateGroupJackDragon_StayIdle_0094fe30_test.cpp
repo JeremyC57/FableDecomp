@@ -7,7 +7,7 @@ static long g_frame = 100;
 static int g_idles = 0, g_terminates = 0, g_dieAfter = -1;
 static bool g_stopping = false;
 
-struct CThing { unsigned char m_flags91; };
+class CThing { public: unsigned char m_flags91; };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
@@ -20,7 +20,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 static CWorld g_world;
 static CThing g_enemy;
 

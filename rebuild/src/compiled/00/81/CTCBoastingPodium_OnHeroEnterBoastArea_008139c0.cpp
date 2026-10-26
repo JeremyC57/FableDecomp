@@ -14,16 +14,16 @@
 //   (loaded before the argument pushes). goldText sits in a nested `if (entry)` block, which frees the canAfford slot for
 //   the "TEXT_GUI_GOLD" temporary, so both branches build their CCharString in the same word (the lea is hoisted above the
 //   branch). The second bank read is a named local in that block.
-struct CFontBank;
+class CFontBank;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     unsigned long GetCRC() const;                          // 0x00404310
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);               // 0x0099B6B0
     CWideString(const CWideString& other);                 // 0x0099B720
@@ -42,7 +42,7 @@ struct CIVCountedVirtual {
     virtual void Destroy(int flags);
     virtual void Delete();                                 // slot 1
 };
-struct CIVCountedPointeeBase : CIVCountedVirtual, CRefCounted {
+class CIVCountedPointeeBase : public CIVCountedVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -50,7 +50,7 @@ struct CIVCountedPointeeBase : CIVCountedVirtual, CRefCounted {
             Delete();
     }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     ~CIVCountedPointer()
     {
@@ -60,15 +60,15 @@ template <class T> struct CIVCountedPointer {
     T* operator->() const { return Object; }
 };
 namespace NGameText {
-struct CGroupEntry : CIVCountedPointeeBase {
+class CGroupEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                           // 0x009C7A40
 };
-struct CDataBank {
+class CDataBank { public:
     unsigned long LookupValue(unsigned long key) const;    // 0x009CC410
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* TextBank;                        // +0x14
     unsigned char         _pad18[0x1614c - 0x18];
@@ -76,19 +76,19 @@ struct CMainGameComponent {
 };
 extern CMainGameComponent* g_pMainGameComponent;           // 0x013B86A0
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CWideString& text, const CWideString& button1, const CWideString& button2,
                  const CWideString& button3, unsigned long colour, float time, bool a, bool b);   // 0x00492F69
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                    // +0x18
 };
 extern CPlayerGui* g_pPlayerGui;                           // 0x013B8790
 
-struct CQuestManager {
-    struct CBoast {
+class CQuestManager { public:
+    class CBoast { public:
         long        ID;                                    // +0x00
         long        Cost;                                  // +0x04
         long        Reward;                                // +0x08
@@ -100,12 +100,12 @@ struct CQuestManager {
 };
 extern CQuestManager* g_pQuestManager;                     // 0x013B89FC
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x10];
     unsigned char ThingClass;                              // +0x10 (2: the hero)
 };
 
-struct CTCBoastingPodium {
+class CTCBoastingPodium { public:
     void OnHeroEnterBoastArea(long boastID, bool canAfford, CThingCreatureBase& hero);
 };
 

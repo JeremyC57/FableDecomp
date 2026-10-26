@@ -3,9 +3,9 @@
 #include <cstring>
 static int g_baseInit = 0, g_baseChange = 0, g_creates = 0, g_layerCalls = 0, g_setCalls = 0; static long g_baseState = -1, g_layerDepth = -1, g_createEffect = -1;
 static const void* g_createPos = 0; static long g_createLayer = -1; static bool g_createStart = false; static float g_axes[6];
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(0.0f, 1.0f, 0.0f) { } };
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(0.0f, 1.0f, 0.0f) { } };
 enum EEngine2DLayer { ENGINE_2D_LAYER_DEFAULT = 0 };
 namespace NParticleEngine { class CParticleEmitter { public: int tag; }; }
 using NParticleEngine::CParticleEmitter;

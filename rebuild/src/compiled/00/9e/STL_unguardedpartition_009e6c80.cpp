@@ -59,7 +59,7 @@ _RandomAccessIter __fastcall __unguarded_partition(_RandomAccessIter __first, _R
 typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
 
 template <class T>
-struct CCompareString {
+class CCompareString { public:
     bool operator()(const SSymbolEntry& a, const SSymbolEntry& b) const { return a.first.FastCompare(b.first); }
 };
 

@@ -4,7 +4,7 @@
 #include <cstdio>
 
 static int g_deleted = 0;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;

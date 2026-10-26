@@ -10,7 +10,7 @@
 //   flag is cleared after the level/def/owner loads; the player test is `sete cl`
 //   pushed as the bool; the sound handle is stored before the string's destructor runs.
 // Leaf: ResumeForCutscene
-struct CCharString {
+class CCharString { public:
     void* PStringData;                      // +0 the shared string block
     ~CCharString();                         // 0x0099EAE0
 };
@@ -21,17 +21,17 @@ struct CDefStringTable {
 
 extern CDefStringTable g_DefStringTable;    // 0x013CA828
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char Type;                     // +0x10 (2 = player)
 };
 
-struct CSpecialAbilitiesPhysicalShieldDef {
+class CSpecialAbilitiesPhysicalShieldDef { public:
     unsigned char _pad00[0x54];
     long          LoopingSound[4];          // +0x54 CDefString
 };
 
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     void*                                     __vftable;           // +0x00
     CThing*                                   ParentThing;         // +0x04
     unsigned char                             _pad08[0x4];         // +0x08

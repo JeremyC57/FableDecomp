@@ -5,7 +5,7 @@
 // out of line, so EH state 0 is entered once it exists -- the zero is shared with the state store)
 // then the body calls the out-of-line Set with the argument. The manifest label (a persist-traits
 // name) is propagated; the class is named by address.
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer_00c168b0 {
     void* m_pThing;                        // +0
     void* m_pLink;                         // +4

@@ -16,23 +16,23 @@
 // Retail layout: engine/CTCBuyableHouse.h (PDef +0x0c, IsScripted +0x10, MaxDressLevel +0x20); CBuyableHouseDef (retail
 //   12-byte vectors, PDB offsets less 0x04 past the first vector): IsBuyable +0x25, Price +0x28, IsScripted +0x48,
 //   IsBuyableWithoutSignpost +0x49; CTCBuildingContents (0x21) VC6 list head +0x0c.
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                      // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) {}
     T* operator->() const { return (T*)Object; }
 };
-template <class T> struct CArray {              // retail std::vector (12 bytes)
+template <class T> class CArray { public:              // retail std::vector (12 bytes)
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
     unsigned long size() const { return m_pLast - m_pFirst; }
 };
-struct CBuyableHouseDef : CDefPointeeBase {
+class CBuyableHouseDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x25 - 0x08];
     bool          IsBuyable;                    // +0x25
     bool          InitiallyEmpty;               // +0x26
@@ -44,7 +44,7 @@ struct CBuyableHouseDef : CDefPointeeBase {
     bool          IsScripted;                   // +0x48
     bool          IsBuyableWithoutSignpost;     // +0x49
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CBuyableHouseDef>* out);   // 0x006C1B00
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below

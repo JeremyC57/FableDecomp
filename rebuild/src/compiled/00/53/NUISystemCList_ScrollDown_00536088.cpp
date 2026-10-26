@@ -5,15 +5,15 @@
 // CList TU is size-optimised (no inter-function padding, odd addresses): landed CList rows use optimize("s").
 // Local model: rebuild/include/engine/CList.h is the donor (Ego_r) flattened layout whose offsets disagree with retail
 // (retail ScrollingChildren +0x164, NonScrollingChildren +0x170, DefaultChild +0x1c4; landed 0x005361D3 neighbours).
-struct C2DVector {
+class C2DVector { public:
  float X, Y;
  C2DVector(float x, float y) : X(x), Y(y) {}
  C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}   // user copy ctor: X goes through the FPU, Y through a register (0x0053CDCA)
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 namespace NUISystem {
-struct CAction;
-struct CComponent {
+class CAction;
+class CComponent { public:
  virtual void Slot000()=0; virtual void Slot001()=0; virtual void Slot002()=0; virtual void Slot003()=0; virtual void Slot004()=0; virtual void Slot005()=0;
  virtual void Slot006()=0; virtual void Slot007()=0; virtual void Slot008()=0; virtual void Slot009()=0; virtual void Slot010()=0; virtual void Slot011()=0;
  virtual void Slot012()=0; virtual void Slot013()=0; virtual void Slot014()=0; virtual void Slot015()=0; virtual void Slot016()=0; virtual void Slot017()=0;
@@ -54,7 +54,7 @@ template<class T> struct CRetailVector {   // VC7.1 vector<T>: 12 bytes, first/l
  unsigned long size() const { return (unsigned long)(Last - First); }
  T& operator[](unsigned long i) { return First[i]; }
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
  virtual long GetSelectedChild(); // slot 142 (+0x238)
  virtual void Slot143()=0; virtual void Slot144()=0; virtual void Slot145()=0; virtual void Slot146()=0;
  virtual C2DVector GetPositionOffset(); // slot 147 (+0x24c)

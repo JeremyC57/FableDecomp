@@ -1,6 +1,6 @@
 // Behaviour test for CEngineMeshEffectOutlineSmooth::CEngineMeshEffectOutlineSmooth @ 0x004C3000.
 #include <cstdio>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) { }
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for CQuestDesc::CQuestDesc (0x0047BF90): id 999, default text, status 0, empty objectives.
-struct CCharString { const char* p; long n; CCharString(const char* t, long len) : p(t), n(len < 0 ? (long)std::strlen(t) : len) { } };
+class CCharString { public: const char* p; long n; CCharString(const char* t, long len) : p(t), n(len < 0 ? (long)std::strlen(t) : len) { } };
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { } };
 struct CQuestDesc {
     unsigned long ScriptID; CCharString TextDescription; long QuestStatus; vector<int> QuestSubObjectives;

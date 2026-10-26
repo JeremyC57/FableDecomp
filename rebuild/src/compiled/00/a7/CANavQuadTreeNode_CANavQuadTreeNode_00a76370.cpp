@@ -6,7 +6,7 @@
 // Shape: base call, vtable, the position copied memberwise (ecx, edx: a user copy constructor;
 // a POD copy schedules the level byte store before Position.Y), the two byte
 // arguments, then LeafNode = true and Blocked = false, all in init-list order. `ret 0Ch`.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}   // memberwise: one register per dword
 };
@@ -16,7 +16,7 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                    // 0x0099A2F0
 };
 
-struct CANavQuadTreeNode : CBaseClassNonCopyable {
+class CANavQuadTreeNode : public CBaseClassNonCopyable { public:
     C2DVector Position;                         // +0x04
     unsigned char QuadTreeLevel;                // +0x0c
     unsigned char NavLayer;                     // +0x0d

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00570161 CTCInventoryExperience::SaveExperienceValuesForCountDown
 #include <cstdio>
 struct CHeroExp { long GeneralExperience; long stats[3]; long GetStatExperience(long s) { return stats[s]; } };
-struct CThing { CHeroExp* exp; bool GetInterface(CHeroExp** out, long) { if (!exp) return false; *out = exp; return true; } };
+class CThing { public: CHeroExp* exp; bool GetInterface(CHeroExp** out, long) { if (!exp) return false; *out = exp; return true; } };
 struct CInv {
     CThing* ParentThing; long PointsGeneral, PointsStrength, PointsSkill, PointsWill;
     void Save()

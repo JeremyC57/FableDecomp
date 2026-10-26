@@ -8,40 +8,40 @@
 // QuestName/ObjectiveName/RegionName/TeleporterRegionName/ScriptQuestName +0x18..+0x28, GoldReward +0x2C,
 // RenownReward +0x30; the parent thing's def pointer +0x70. CQuestCardDef: GoldReward +0x48, RenownReward +0x44.
 // Shape: GetSubDef writes straight into the PDef member; the rewards are read back through PDef.Object.
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     long m_refCount;                                // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     const T* Object;
     CDefPointer() : Object(0) { }
     const T* operator->() const { return Object; }
 };
-struct CQuestCardDef : CDefPointeeBase {
+class CQuestCardDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x44 - 0x08];
     long RenownReward;                              // +0x44
     long GoldReward;                                // +0x48
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CQuestCardDef>* out);   // 0x00702930
 };
 struct CThingR {
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                            // +0x70
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThingR* ParentThing;                           // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
     CTCBase(CThing* thing);                         // 0x00686800
 };
-struct CTCQuestCard : CTCBase {                     // vtable 0x01264C44
+class CTCQuestCard : public CTCBase { public:                     // vtable 0x01264C44
     CDefPointer<CQuestCardDef> PDef;                // +0x0c
     bool Finished;                                  // +0x10
     bool Replayable;                                // +0x11

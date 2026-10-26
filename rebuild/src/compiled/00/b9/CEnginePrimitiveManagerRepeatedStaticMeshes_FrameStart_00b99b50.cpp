@@ -10,7 +10,7 @@ extern SRenderSettings_01436e60* g_pRenderSettings_01436e60;   // 0x01436E60
 
 struct SMeshBuffer { void* m_pA; void* m_pB; };   // 8 bytes
 
-struct CEnginePrimitiveManagerRepeatedStaticMeshes {
+class CEnginePrimitiveManagerRepeatedStaticMeshes { public:
     unsigned char _pad[0x40];
     SMeshBuffer   m_normal[4];                     // +0x40 .. +0x60
     SMeshBuffer   m_shadow[4];                     // +0x60 .. +0x80

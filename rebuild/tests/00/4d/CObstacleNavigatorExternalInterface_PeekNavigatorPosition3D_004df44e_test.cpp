@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CObstacleNavigatorExternalInterface::PeekNavigatorPosition3D @ 0x004DF44E
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
 class CTCPhysicsBase { public: virtual ~CTCPhysicsBase() {} C3DVector m_position; };
 class CThing { public: CTCPhysicsBase* PhysicsTC; };
 class CObstacleNavigatorExternalInterface {

@@ -64,22 +64,22 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
-struct CDefinitionManager;
-struct CGraphicDataBank;
-struct CInputManager;
-struct CMeshDataBank;
-struct CTCHeroExperience;
-struct CTCInventory;
-struct CTCInventoryAbilities;
-struct CTCInventoryClothing;
-struct CTCInventoryExperience;
-struct CTCInventoryMap;
-struct CTCInventoryQuests;
-struct CTCInventoryTrade;
-struct CTCInventoryWeapons;
-struct CThing;
+class CDefinitionManager;
+class CGraphicDataBank;
+class CInputManager;
+class CMeshDataBank;
+class CTCHeroExperience;
+class CTCInventory;
+class CTCInventoryAbilities;
+class CTCInventoryClothing;
+class CTCInventoryExperience;
+class CTCInventoryMap;
+class CTCInventoryQuests;
+class CTCInventoryTrade;
+class CTCInventoryWeapons;
+class CThing;
 
 #pragma pack(push, 1)
 struct CManager {
@@ -201,20 +201,20 @@ FABLE_STATIC_ASSERT(offsetof(CManager, AssignmentSpellsSwapping) == 0xfb);
 #include <stddef.h>
 
 
-struct C3DAnimFileXLoader;
-struct C3DAnimationManager;
-struct C3DMeshFileXLoader;
-struct C3DMeshStripifier;
-struct C3DQuadricBasedMeshOptimiser;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGraphicDataBank;
-struct CMovableResourceMemoryPool;
-struct CPushBufferBuildInfo;
-struct CXboxBufferMemoryPool;
+class C3DAnimFileXLoader;
+class C3DAnimationManager;
+class C3DMeshFileXLoader;
+class C3DMeshStripifier;
+class C3DQuadricBasedMeshOptimiser;
+class CCPPointerInfo;
+class CCharStringData;
+class CGraphicDataBank;
+class CMovableResourceMemoryPool;
+class CPushBufferBuildInfo;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CMeshDataBank {
+class CMeshDataBank { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -439,10 +439,10 @@ FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, StateBlock) == 0x4bc);
 #include <stddef.h>
 
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char          _pad_0x04[0x4];                   // +0x04
     unsigned char          _pad_0x08[0x4];                   // +0x08
@@ -475,8 +475,8 @@ FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, Rotation) == 0x24);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -484,8 +484,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -570,27 +570,27 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 void operator delete(void*) throw(); //00BFE9BC
-struct CCPPointerInfo {unsigned long RefCount;void(FABLE_FASTCALL* DeleteFunc)(void*);void* Data;};
-template<class T>struct CCountedPointer {
+class CCPPointerInfo { public:unsigned long RefCount;void(FABLE_FASTCALL* DeleteFunc)(void*);void* Data;};
+template<class T>class CCountedPointer { public:
  T* Data;CCPPointerInfo* Info;
  CCountedPointer():Data(0),Info(0){}
  CCountedPointer(const CCountedPointer& o):Data(o.Data),Info(o.Info){if(Info)++Info->RefCount;}
  ~CCountedPointer(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}
 };
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
  // No header exists. PDB stats Duration+0C; native6F914E independently reads+0C.
  unsigned char NativeStatsPrefix[12];float Duration;
  float GetEventTime(const CCharString&)const; //00A4EAE0
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
  CCountedPointer<const C3DAnimationStats> GetAnimationStats()const; //00A269C0
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
  // NativeA242C0 returns an indexed pointer from table+380; original inline getter spelling and full bank layout remain unestablished.
  const C3DAnimationInfo* GetAnimationInfo(unsigned long)const; //00A242C0
 };
 extern float g_MinEmbeddedAnimationDuration; //0129BA3C exactfloat0.0001
-namespace NAnimationEvents {struct CManager {
+namespace NAnimationEvents {class CManager { public:
  unsigned long NativeManagerPrefix;CMeshDataBank* MeshDataBank;
  float GetEmbeddedEventTime(unsigned long,const CCharString&)const;
 };}

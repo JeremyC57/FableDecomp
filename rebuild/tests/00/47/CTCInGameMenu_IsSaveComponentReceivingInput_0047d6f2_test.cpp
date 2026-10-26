@@ -20,7 +20,7 @@ struct CComponent {
     }
     int GetState() { return state; }
 };
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     CComponent** first; CComponent** last;
     unsigned int size() const { return (unsigned int)(last - first); }
     bool IsSaveComponentReceivingInput()

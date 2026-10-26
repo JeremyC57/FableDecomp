@@ -3,7 +3,7 @@ struct CDazedDef {
     char pad[0x84];
     int dazedThreshold; /* +0x84 */
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     char pad[0xe0];
     CDazedDef* pDef; /* +0xe0 */
 };

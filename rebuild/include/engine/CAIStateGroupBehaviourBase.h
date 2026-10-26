@@ -8,9 +8,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CTCCreatureModeManager;
-struct CTCCreatureOpinionOfHero;
-struct CTCPerceiveThing;
+class CTCCreatureModeManager;
+class CTCCreatureOpinionOfHero;
+class CTCPerceiveThing;
 
 #pragma pack(push, 1)
 struct CAIStateGroupBehaviourBase {

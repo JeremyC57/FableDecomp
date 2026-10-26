@@ -7,7 +7,7 @@
 #include <algorithm>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* t) : S(t) {}
     bool operator==(const CCharString& o) const { return S == o.S; }
@@ -17,11 +17,11 @@ CCharString operator+(const CCharString& l, const char* r) { return CCharString(
 CCharString operator+(const CCharString& l, const CCharString& r) { return CCharString((l.S + r.S).c_str()); }
 static CCharString g_DayOnlySuffix("DayOnly"), g_NightOnlySuffix("NightOnly");
 static std::vector<std::string> g_log;
-struct CScriptBase { int Shutdowns; void* RunningAtShutdown; void Shutdown(); };
+class CScriptBase { public: int Shutdowns; void* RunningAtShutdown; void Shutdown(); };
 struct CActiveQuest { long ID; CScriptBase* PScript; bool LoadedResources; CCharString QuestName; CActiveQuest(const char* n) : QuestName(n) {} };
-struct CQuestManager;
+class CQuestManager;
 static CQuestManager* g_qm;
-template <class T> struct CCountedPointer {      // modelled as a shared count
+template <class T> class CCountedPointer { public:      // modelled as a shared count
     T* Data; int* Count;
     CCountedPointer(T* d) : Data(d), Count(new int(1)) {}
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Count(o.Count) { if (Count) ++*Count; }
@@ -30,13 +30,13 @@ template <class T> struct CCountedPointer {      // modelled as a shared count
     void Reset() { Release(); Data = 0; Count = 0; }
 };
 typedef std::set<CCharString> CSectionSet;
-struct CThingManager { void DeleteThingsWithSectionName(const CCharString& n) { g_log.push_back("delete:" + n.S); } };
-struct CWorldMap { void UpdateNavMaps(const CSectionSet& s, bool) { std::string t = "nav:"; for (CSectionSet::const_iterator i = s.begin(); i != s.end(); ++i) t += i->S + ","; g_log.push_back(t); } };
-struct CWorld { CThingManager TM; CWorldMap WM; CThingManager* GetThingManager() { return &TM; } CWorldMap* GetWorldMap() { return &WM; } };
+class CThingManager { public: void DeleteThingsWithSectionName(const CCharString& n) { g_log.push_back("delete:" + n.S); } };
+class CWorldMap { public: void UpdateNavMaps(const CSectionSet& s, bool) { std::string t = "nav:"; for (CSectionSet::const_iterator i = s.begin(); i != s.end(); ++i) t += i->S + ","; g_log.push_back(t); } };
+class CWorld { public: CThingManager TM; CWorldMap WM; CThingManager* GetThingManager() { return &TM; } CWorldMap* GetWorldMap() { return &WM; } };
 struct CDrawQuestInfo { void RemoveElementsFromScript(long id) { char b[32]; sprintf(b, "gui:%ld", id); g_log.push_back(b); } };
-struct CPlayerGui { CDrawQuestInfo* PDrawQuestInfo; };
+class CPlayerGui { public: CDrawQuestInfo* PDrawQuestInfo; };
 static CDrawQuestInfo g_dqi; static CPlayerGui g_gui = { &g_dqi }; static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CCodeSectionManager {
+class CCodeSectionManager { public:
     std::set<std::string> Loaded;
     bool Contains(const CCharString& n) { return Loaded.count(n.S) != 0; }
     long GetSectionHandle(const CCharString& n) { return (long)n.S.size(); }
@@ -44,7 +44,7 @@ struct CCodeSectionManager {
 };
 static CCodeSectionManager g_csm;
 CCodeSectionManager* GetCodeSectionManager() { return &g_csm; }
-struct CQuestManager {
+class CQuestManager { public:
     std::list<CCountedPointer<CActiveQuest> > ActiveQuests;
     std::vector<CCharString> BetweenStartAndEndScreenQuests;
     CWorld* World;

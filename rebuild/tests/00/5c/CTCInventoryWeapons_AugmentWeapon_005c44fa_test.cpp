@@ -32,29 +32,29 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 template <class T> bool IS_THING_ALIVE(const T& p) { return p.m_pItem && p.m_pItem->alive; }
 
 static int g_attach = 0; static long g_attachDef = 0, g_attachSlot = 0;
-struct CTCObjectAugmentations : CTCBase {
+class CTCObjectAugmentations : public CTCBase { public:
     long freeSlots[3]; int used;
     long GetFreeSlot() const { return used < 3 ? freeSlots[used] : -1; }
     void AttachAugmentationToSlot(long a, long slot) { ++g_attach; g_attachDef = a; g_attachSlot = slot; ++used; }
 };
 static int g_showEnded = 0;
 struct CTCShowableItem : CTCBase { void OnShowEnded() { ++g_showEnded; } };
-struct CTCInventoryItem { static long GetInventoryCategory(long defIndex) { return defIndex >= 100 ? 0x13 : 0x12; } };
+class CTCInventoryItem { public: static long GetInventoryCategory(long defIndex) { return defIndex >= 100 ? 0x13 : 0x12; } };
 
 static int g_removes = 0; static long g_removeDef = 0, g_removeCount = 0; static void* g_removeFrom = 0;
 static CThing* g_createdThing = 0; static int g_creates = 0; static long g_createDef = 0;
 namespace NInventory {
-struct CTCInventoryBase : CTCBase {
+class CTCInventoryBase : public CTCBase { public:
     CThing* ParentThing;
     virtual void RemoveItem(long item, long count) { ++g_removes; g_removeDef = item; g_removeCount = count; g_removeFrom = this; }
     CThing* CreateInventoryObject(long defIndex) { ++g_creates; g_createDef = defIndex; return g_createdThing; }
 };
 }
-struct CTCInventoryWeapons : NInventory::CTCInventoryBase {
+class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     CIntelligentPointer<CThing> PActiveMeleeWeapon;
     long ActiveMeleeWeaponDefIndex;
     bool MeleeWeaponCarriedOnLoad;

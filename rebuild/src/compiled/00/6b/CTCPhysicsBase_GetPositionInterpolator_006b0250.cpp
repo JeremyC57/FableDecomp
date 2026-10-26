@@ -10,7 +10,7 @@
 //   its constructor and assignment inline here (the landed 0x006AF570 ctor is the out-of-line copy).
 class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -25,7 +25,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                        // 0x0099A2D0
     ~CBase();                                       // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
-struct C3DPositionInterpolator : CBase {            // 0x1c bytes
+class C3DPositionInterpolator : public CBase { public:            // 0x1c bytes
     C3DVector StartPosition;                        // +0x04
     C3DVector EndPosition;                          // +0x10
     C3DPositionInterpolator(const C3DVector& start, const C3DVector& end)
@@ -47,7 +47,7 @@ struct CBulletTime {
     float GetTimeScale();                           // 0x004C5FA0
     bool IsActive() const { return m_active || m_pController != 0; }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x68];
     CBulletTime*  m_pBulletTime;                    // +0x68
     static long GetWorldFrame();                    // 0x0049D870

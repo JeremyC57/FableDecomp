@@ -5,7 +5,7 @@
 // Shape: the member's address formed once in esi (`lea esi,[ecx+8]`) and reused for the compare and the SetPItem; the
 // assignment is `member = CIntelligentPointer(0)` through a frame temporary (push 0, vtable 0x01237F1C), then `*flag = 0`.
 // Member names from CVillageTaskSecuritySweep.h (CreatureAssignedToTask +0x08).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(CThing* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CVillageTaskSecuritySweep {
+class CVillageTaskSecuritySweep { public:
     virtual void v00();
     void*               m_pVillage;                 // +0x04
     CIntelligentPointer CreatureAssignedToTask;     // +0x08

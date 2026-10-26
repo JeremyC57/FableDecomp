@@ -5,13 +5,13 @@ struct Subobject
     int GetId();
 };
 
-struct CThingAICreature
-{
+class CThingAICreature
+{ public:
     char pad[0x174];
 };
 
-struct CThingFilter_HasBuildingAsHome
-{
+class CThingFilter_HasBuildingAsHome
+{ public:
     int m_expected;
     bool operator()(CThingAICreature* creature);
 };

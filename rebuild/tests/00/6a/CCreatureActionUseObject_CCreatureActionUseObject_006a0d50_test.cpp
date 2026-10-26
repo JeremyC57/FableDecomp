@@ -63,10 +63,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CCreatureAction_UseObject {
+class CCreatureAction_UseObject { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char   _pad_0x04[0x4];                          // +0x04
     unsigned char   _pad_0x08[0x4];                          // +0x08
@@ -154,11 +154,11 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, AllowTurn) == 0xeb);
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -250,10 +250,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             sub;                                    // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -305,7 +305,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldMoving) == 0x3c);
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -323,8 +323,8 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -332,8 +332,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -417,13 +417,13 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct CThing;
-struct CThingCreatureBase;
-struct CTCWeaponTrail;
-struct C3DVector { float x, y, z; };
-struct CThingCreatureBase;
-struct CSoundPair { long first; long last; };
-struct CCreatureActionBase {
+class CThing;
+class CThingCreatureBase;
+class CTCWeaponTrail;
+class C3DVector { public: float x, y, z; };
+class CThingCreatureBase;
+class CSoundPair { public: long first; long last; };
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -506,7 +506,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;
     void SetPItem(CBaseObject* item);
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual ~CIntelligentPointer(); // CIntelligentPointer<CThing> vtable 0x01238C6C, slot 0 @0x004A9710
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(reinterpret_cast<CBaseObject*>(item)); } // native initializer used by overload @0x0069F230
     CIntelligentPointer(const CIntelligentPointer& other)
@@ -515,7 +515,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
         SetPItem(other.GetPItem());
     }
 };
-struct CCreatureAction_UseObject : CCreatureActionBase {
+class CCreatureAction_UseObject : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PUsedThing; // retail +0xA8, PDB +0xB4
     CTCPhysicsBase* PreviousPhysicsComponent; // retail +0xB0, PDB +0xBC
     float DummyUpX, DummyUpY, DummyUpZ; // CRightHandedSet::Up, retail +0xB4
@@ -551,7 +551,7 @@ CCreatureAction_UseObject::CCreatureAction_UseObject(const CCreatureAction_UseOb
 {
 }
 
-struct CThingCreatureBase {};
+class CThingCreatureBase { public:};
 static CCreatureAction_UseObject* MutateSource;
 static int Phase; static bool Bad;
 static unsigned baseCopyCalls, pointerCtorCalls, getterCalls, setterCalls, releasedEmptyRecords;

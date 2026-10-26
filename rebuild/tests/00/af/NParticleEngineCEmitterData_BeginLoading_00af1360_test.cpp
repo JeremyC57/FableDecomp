@@ -4,7 +4,7 @@
 static int g_destroyed = 0;
 static void DestroyCountedObject(void*) { ++g_destroyed; }
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object; SCountBlock* Info;
     CCountedPointer() : Object(0), Info(0) {}
     CCountedPointer(T* o) : Object(o), Info(0) { if (o) { Info = new SCountBlock; Info->m_references = 1; Info->m_pfnDestroy = DestroyCountedObject; Info->m_pObject = o; } }
@@ -16,16 +16,16 @@ template <class T> struct CCountedPointer {
 };
 enum EThreadedFilePriority { PRIORITY_NORMAL = 2 };
 static EThreadedFilePriority g_ParticleReadPriority = PRIORITY_NORMAL;
-struct CBankFileAsyncData { unsigned long bytes; unsigned long Sizeof() const { return bytes + 16; } };
+class CBankFileAsyncData { public: unsigned long bytes; unsigned long Sizeof() const { return bytes + 16; } };
 static CBankFileAsyncData g_data;
 static unsigned long g_readOffset = 99, g_readSize = 0; static int g_readPriority = 0;
-struct CBankFileAsyncEntry {
+class CBankFileAsyncEntry { public:
     CCountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long offset, unsigned long size, EThreadedFilePriority p)
     { g_readOffset = offset; g_readSize = size; g_readPriority = p; g_data.bytes = size; return CCountedPointer<CBankFileAsyncData>(&g_data); }
 };
 static CBankFileAsyncEntry g_entry;
 struct CResourceListMethods { unsigned long freed; bool MakeFreeSpace(unsigned long s) { freed = s; return true; } };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     CResourceListMethods ResourceList; unsigned long index;
     unsigned long GetEntryDataSize(unsigned long i) { index = i; return 1000; }
     CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long) { return CCountedPointer<CBankFileAsyncEntry>(&g_entry); }

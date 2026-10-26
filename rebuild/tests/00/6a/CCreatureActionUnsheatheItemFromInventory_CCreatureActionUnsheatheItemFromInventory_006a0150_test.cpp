@@ -2,13 +2,13 @@
 // for the item with transition 4, sound pair zero, 100, c), the item pointer and the counted follow-up action.
 #include <cstdio>
 #include <cstring>
-struct CThing { const char* anim; };
-struct CThingCreatureBase { int id; };
-struct CAnimationEntry { char name[32]; long transition; CAnimationEntry(const char* n, long t) : transition(t) { std::strcpy(name, n); } };
+class CThing { public: const char* anim; };
+class CThingCreatureBase { public: int id; };
+class CAnimationEntry { public: char name[32]; long transition; CAnimationEntry(const char* n, long t) : transition(t) { std::strcpy(name, n); } };
 static const char* GetAnimationToUse(CThingCreatureBase*, CThing* item) { return item->anim; }
 static const char* GetAnimationFromName(CThingCreatureBase*, const char* name) { return name; }
-struct CSoundPair { long a, b; CSoundPair() : a(0), b(0) { } };
-struct CCreatureActionBase {
+class CSoundPair { public: long a, b; CSoundPair() : a(0), b(0) { } };
+class CCreatureActionBase { public:
     CThingCreatureBase* owner; float fa, fb; char anim[32]; long transition; long sa, sb; long c, d;
     CCreatureActionBase(CThingCreatureBase* o, float a, float b, const CAnimationEntry& e, const CSoundPair& s, long cc, long dd)
         : owner(o), fa(a), fb(b), transition(e.transition), sa(s.a), sb(s.b), c(cc), d(dd) { std::strcpy(anim, e.name); }

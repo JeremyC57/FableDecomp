@@ -1,7 +1,7 @@
 // Behaviour test for 0079ce80 PlaySoundW: with an interface-16 component the sound is played through it (sound, 0, flags, 0, -1); without one the invalid handle comes back.
 #include <cstdio>
 
-struct CTCBase { long tag; };
+class CTCBase { public: long tag; };
 
 static unsigned long g_lastSound, g_lastFlags; static long g_lastA, g_lastB, g_lastC;
 
@@ -27,8 +27,8 @@ struct CInterfaceMap
     }
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
 
@@ -50,8 +50,8 @@ struct CThing
 
 static unsigned long g_InvalidSoundHandle = 0xFFFFFFFFUL;
 
-struct CTCBulletTime
-{
+class CTCBulletTime
+{ public:
     CThing* ParentThing;
     unsigned long PlaySoundW(unsigned long sound, unsigned long flags)
     {

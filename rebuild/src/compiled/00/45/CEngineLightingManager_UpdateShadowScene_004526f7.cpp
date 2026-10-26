@@ -5,7 +5,7 @@ extern void __stdcall Setup(const void* p);
 struct CObjA { void DoA(void* arg); };
 struct TLocal { int v; void DoB(void* a, void** b); };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad[0x18];
     int field_18;      // +0x18
     char pad2[0x24-0x1c];

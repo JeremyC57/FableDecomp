@@ -1,12 +1,12 @@
 // Behaviour test for NCameraModes::CStringAndCageBase::UpdateZVars (0x00872050): the height offset eases toward (clamped target - z), rate 10 when dropping, 3 otherwise.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     const C3DVector& GetPosition() const;                  // 0x004C73D0
 };
 class CThingGameObject : public CThing { };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char _pad000[0xf8];
     float         MinWorldHeight;                          // +0xf8
     float         MaxWorldHeight;                          // +0xfc

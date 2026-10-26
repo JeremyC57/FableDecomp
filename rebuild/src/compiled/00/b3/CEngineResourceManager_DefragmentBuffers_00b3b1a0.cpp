@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B3B1A0, length 70 bytes.
 // Callees: CHandleBasedMemoryPool::Defragment @ 0x00A02730 three times, the buffer owner's defragment @ 0x00BD9B50 (a tail jump; an empty `ret` in retail; the
 // manifest label "$E2" is propagated). Shape: `pop esi` is scheduled before the third pool's `je`; the global is tested through eax.
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void Defragment();                             // 0x00A02730
 };
 
@@ -16,7 +16,7 @@ struct CBufferOwner_00bd9b50 {
     void Defragment();                             // 0x00BD9B50 (an empty `ret` in retail)
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned char           _pad[0x8f0];
     CHandleBasedMemoryPool* m_pPoolA;              // +0x8f0
     unsigned char           _pad8f4[4];

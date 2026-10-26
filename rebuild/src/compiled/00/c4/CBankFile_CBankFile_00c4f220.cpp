@@ -13,7 +13,7 @@ struct CBankFileBase_00c4f220 {            // vtable 0x012B5868
     ~CBankFileBase_00c4f220() { }
 };
 
-struct CBankFile : CBankFileBase_00c4f220 {   // vtable 0x012B87F4
+class CBankFile : public CBankFileBase_00c4f220 { public:   // vtable 0x012B87F4
     unsigned char _pad[0xe0];
     CProgress_00c4f220* m_pProgress;       // +0xe4
     ~CBankFile();

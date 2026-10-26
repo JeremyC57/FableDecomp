@@ -13,15 +13,15 @@
 //          FrameOfLastHit +0x24); PTarget (intelligent pointer) at +0x14 as in the landed IsRunnable 0x0095AA60.
 #include "engine/CAIStateGroup_HoverHornetQueenTakeDamage.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CCombatManager;
-struct CThing {
+class CCombatManager;
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,15 +41,15 @@ struct CThing {
         return false;
     }
 };
-struct CCombatManager {
+class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
     void SetAttackerAsReadyToAttack(CThing* creature, bool ready);         // 0x006EA450
 };
-struct CTCBoss {                                // interface 0xad
+class CTCBoss { public:                                // interface 0xad
     bool IsReadyForPhaseChange();               // 0x007AEE90
     void IncrementBossPhase();                  // 0x007AED20
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
     static long GetWorldFrame();                // 0x0049D870 (static: the world pointer is evaluated and dropped)
@@ -59,19 +59,19 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void* __vftable;
     unsigned char _body[0xa4];                  // +0x04..+0xa7
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                // +0xa8..+0x113
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_DragonRoar : CCombatActionBase {
+class CCreatureAction_DragonRoar : public CCombatActionBase { public:
     CCreatureAction_DragonRoar(CThing* creature, CThing* target);   // 0x0095CAC0
 };
 

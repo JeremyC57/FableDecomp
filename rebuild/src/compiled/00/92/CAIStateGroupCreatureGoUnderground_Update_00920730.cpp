@@ -10,7 +10,7 @@
 // the temporary (0x114 bytes); the creature is read into a named local first (that is what keeps
 // it in eax rather than ecx for the push). Taking a temporary's address is the VC extension the retail
 // code relied on (C4238).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 namespace N_0062e900 { struct CCreatureActionBase {
     virtual void v00();
@@ -22,12 +22,12 @@ namespace N_008ec6a0 { struct CCreatureAction_GoUnderground : CCreatureActionBas
     CCreatureAction_GoUnderground(CThingCreatureBase* creature);    // 0x008EC6A0
 }; } using N_008ec6a0::CCreatureAction_GoUnderground;
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

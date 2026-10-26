@@ -13,7 +13,7 @@ namespace N_008bfce0 { struct C3DAnimFileHelpersChunk {
     C3DAnimFileHelpersChunk();                           // 0x008BFCE0
 }; } using N_008bfce0::C3DAnimFileHelpersChunk;
 
-struct CCreatureAction_ScreamerAdvance : C3DAnimFileHelpersChunk {
+class CCreatureAction_ScreamerAdvance : public C3DAnimFileHelpersChunk { public:
     virtual void v00();                    // this class has its own vtable
     CCreatureAction_ScreamerAdvance();
 };

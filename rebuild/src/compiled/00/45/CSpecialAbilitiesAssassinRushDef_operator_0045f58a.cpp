@@ -9,7 +9,7 @@
 // Shape: memberwise assignment in declaration order; the last scalar's store sinks below the vector's
 // argument setup (`add edi,80h ; push edi`) because the vector is the final member.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -23,7 +23,7 @@ struct CFloatVector {                   // retail std::vector<float> (12 bytes)
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
 };
 
-struct CSpecialAbilitiesAssassinRushDef : CParentDefClassBase {   // vtable 0x0123405C
+class CSpecialAbilitiesAssassinRushDef : public CParentDefClassBase { public:   // vtable 0x0123405C
     float DistanceAwayFromtargetToAssassinRushTo;   // +0x3c
     float SafeCollideRadiusPercentage;              // +0x40
     float DistFromFloor;                            // +0x44

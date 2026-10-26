@@ -8,8 +8,8 @@
 #define __stdcall
 #endif
 
-struct CWeatherMask { float BSphere[4]; float BBox[6]; float InvTransform[12]; float Scale; };
-struct CEngineWeatherRenderer { unsigned char _pad0[0x66c]; CWeatherMask WeatherMaskList[3]; long CurrentMask;
+class CWeatherMask { public: float BSphere[4]; float BBox[6]; float InvTransform[12]; float Scale; };
+class CEngineWeatherRenderer { public: unsigned char _pad0[0x66c]; CWeatherMask WeatherMaskList[3]; long CurrentMask;
     void AddWeatherMask(const CWeatherMask& mask, long unused) { WeatherMaskList[CurrentMask] = mask; CurrentMask = (CurrentMask + 1) % 3; } };
 int main()
 {

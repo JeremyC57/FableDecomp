@@ -16,8 +16,8 @@ void __fastcall op_delete_4c73b0(void* p)
     g_delete_self = p;
 }
 
-struct CThingHolySite
-{
+class CThingHolySite
+{ public:
     void* vDeletingDtor(unsigned int flags)
     {
         dtor_scalar_529ad0(this);

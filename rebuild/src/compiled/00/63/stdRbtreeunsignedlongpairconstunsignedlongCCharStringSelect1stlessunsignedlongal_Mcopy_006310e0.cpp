@@ -12,7 +12,7 @@
 // memberwise STLport pair copy constructor (the key dword, then the out-of-line CCharString copy), so the loop's zero
 // register is re-materialised after it (`xor ecx,ecx` after the call). Exceptions are off (no unwind). VC parks `this`
 // in the `push ecx` frame word because ebx is reused for `p`.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
 };

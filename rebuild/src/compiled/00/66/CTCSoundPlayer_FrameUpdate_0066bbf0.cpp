@@ -6,12 +6,12 @@
 // Layout: CThing keeps a 32-bit thing-component bitset whose word at +0x28 bit 26 is tested here (the inlined HasTC
 // probe, see GOTCHAS wave 24b).
 // Shape: a void forwarder as the last statement of an `if`: VC7.1 tail-jumps it.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x28];
     unsigned long m_tcBits28;                               // +0x28
 };
 
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     void UpdateSounds();                                    // 0x0066B370

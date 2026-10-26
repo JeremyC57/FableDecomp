@@ -9,8 +9,8 @@ static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";");
 typedef long T;
 static T MK(long n) { return n; }
 static long VAL(const T& v) { return v; }
-struct CMemoryDataInputStream { int id;  };
-struct CDataOutputStream { int id; long written; void WriteLong(long v) { LOG("write"); written = v; } };
+class CMemoryDataInputStream { public: int id;  };
+class CDataOutputStream { public: int id; long written; void WriteLong(long v) { LOG("write"); written = v; } };
 template <class U> struct CPersistTraits {
     U DefaultVal;
     CPersistTraits() : DefaultVal() {}
@@ -22,7 +22,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual long Peek() { return VAL(*Value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     bool UseDefaults;
     long Mode;
     CMemoryDataInputStream* PLoadStream;

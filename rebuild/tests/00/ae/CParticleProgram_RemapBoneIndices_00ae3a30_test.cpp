@@ -1,7 +1,7 @@
 // Behaviour test for 00ae3a30 (CParticleProgram::RemapBoneIndices): the same remap table is applied to the simulated groups, then to the non-simulated groups.
 #include <cstdio>
-struct C3DGroup2 { long BoneIndex; };
-template <class T> struct CArray {
+class C3DGroup2 { public: long BoneIndex; };
+template <class T> class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

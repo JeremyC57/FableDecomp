@@ -6,7 +6,7 @@
 #include <new>
 
 static int g_dtors = 0;
-struct CCharString { int m_v; ~CCharString() { ++g_dtors; } };
+class CCharString { public: int m_v; ~CCharString() { ++g_dtors; } };
 struct Value { CCharString first; long second; };
 
 struct NodeBase { bool color; NodeBase* parent; NodeBase* left; NodeBase* right; };

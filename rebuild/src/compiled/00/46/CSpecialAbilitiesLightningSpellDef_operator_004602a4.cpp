@@ -11,7 +11,7 @@
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes, 16-byte SubDefInfoMap); the retail
 // base is modelled locally as a packed polymorphic base exactly as the landed sibling 0x00460256 does.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -24,9 +24,9 @@ struct CParentDefClassBase {
 FABLE_RETAIL_VECTOR(CFloatVector);                  // vector<float>::operator= 0x0045EF2D
 FABLE_RETAIL_VECTOR(CLongVector);                   // vector<long>::operator= 0x00454886
 
-struct CDefString { long m_index; };               // 4-byte string-table handle, copied as one dword
+class CDefString { public: long m_index; };               // 4-byte string-table handle, copied as one dword
 
-struct CSpecialAbilitiesLightningSpellDef : CParentDefClassBase {          // vtable 0x0123460C
+class CSpecialAbilitiesLightningSpellDef : public CParentDefClassBase { public:          // vtable 0x0123460C
     CFloatVector m_faAreaEffect;
     CFloatVector m_faDamagePerHit;
     CFloatVector m_faSubBeamDamagePerHit;

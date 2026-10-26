@@ -26,7 +26,7 @@ enum EDialogueLayer { DIALOGUE_LAYER_0 };
 enum ECrimeSeverity { CRIME_SEVERITY_0 };
 enum ETutorialCategory { TUTORIAL_CATEGORY_0 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& value);                                              // 0x00431102
     void Transfer(float& value);                                             // 0x00431061
     void Transfer(COpinionTransientOffsetList& value);                       // 0x004792CF
@@ -43,7 +43,7 @@ struct CDefBase {
     unsigned char _pad04[0x3c - 4];
 };
 
-struct COpinionDeedEffectsDef : CDefBase {
+class COpinionDeedEffectsDef : public CDefBase { public:
     long                          KnowledgeLifeInSeconds;                    // +0x3c
     long                          MinimumSecondsBetweenPostings;             // +0x40
     long                          MinimumSecondsBetweenEffectsForIndividual; // +0x44

@@ -6,22 +6,22 @@
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static void ResetLog() { g_log[0] = 0; }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long = -1) : Text(text) {}
 };
-struct CWideString {
+class CWideString { public:
     const void* Text;
     CWideString(const void* text) : Text(text) {}
 };
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     const bool* AliveFlag;
     CScriptThing() : Name(""), AliveFlag(0) {}
     CScriptThing(const char* n, const bool* a) : Name(n), AliveFlag(a) {}
     bool IsAlive() const { return AliveFlag && *AliveFlag; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     long TerminateAfter;                                 // IsActiveThreadTerminating() turns true after this many calls
     long TerminateCalls;
     CScriptBase() : TerminateAfter(1000), TerminateCalls(0) {}
@@ -35,8 +35,8 @@ struct CFrameEvents {
     void Schedule(int i, bool* f, long at, bool v) { Flag[i] = f; At[i] = at; Value[i] = v; }
     void Tick() { ++Frames; for (int i = 0; i < 4; ++i) if (Flag[i] && At[i] == Frames) *Flag[i] = Value[i]; }
 };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) {} };
-struct CGameScriptInterface {
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) {} };
+class CGameScriptInterface { public:
     long Timers[4];
     void SetTimer(long i, long t) { Timers[i] = t; }
     void AddQuestRegion(const CCharString& q, const CCharString& r) { char t[96]; std::sprintf(t, "%s>%s", q.Text, r.Text); Log(t); }
@@ -44,7 +44,7 @@ struct CGameScriptInterface {
 };
 static CGameScriptInterface g_global;
 static CGameScriptInterface* g_pGameScriptInterface = &g_global;
-struct CTimer {
+class CTimer { public:
     long TimerIndex;
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
 };

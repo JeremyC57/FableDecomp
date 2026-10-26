@@ -3,8 +3,8 @@
 #include <vector>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CRGBFloatColour { float R, G, B, A; };
-template <class T> struct CArray {
+class CRGBFloatColour { public: float R, G, B, A; };
+template <class T> class CArray { public:
     std::vector<T> V;
     void push_back(const T& x) { V.push_back(x); }
 };
@@ -13,7 +13,7 @@ struct CEnvironmentLookupTexture {
     CRGBFloatColour GetColour(long column, long row) const
     { CRGBFloatColour c; c.R = (float)(column * 100 + row); c.G = c.R + 0.25f; c.B = c.R + 0.5f; c.A = c.R + 0.75f; return c; }
 };
-struct CEnvironmentDef {
+class CEnvironmentDef { public:
     char _pad00[0x40];
     long DiffuseLookupRow;                     // +0x40
     long AmbientLookupRow;
@@ -38,7 +38,7 @@ struct CEnvironmentDef {
     long GlowBloomColourLookupRow;             // +0x90
     long SunlightAttenuatorColourLookupRow;
 };
-struct CEnvironmentThemeDaySetDef {
+class CEnvironmentThemeDaySetDef { public:
     char _pad00[0x48];
     float SunTilt;                             // +0x48
     float SunRotate;
@@ -47,7 +47,7 @@ struct CEnvironmentThemeDaySetDef {
     float MoonRotate;
     float MoonHeight;
 };
-struct CEnvironmentThemeDef {
+class CEnvironmentThemeDef { public:
     char _pad00[0x3c];
     float TimeOfDay;                           // +0x3c
     bool  MoonLit;                             // +0x40

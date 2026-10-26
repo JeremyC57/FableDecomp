@@ -7,8 +7,8 @@
 // Shape: no `optimize("y", off)` -- the /Os large frame gives the biased EBP; frame members must not be char arrays (/GS moves char buffers next to the cookie); the file name is a named CWideString in its own block (built before SplitPath's pushes); the loop condition is computed inside the body (`more = FindNextFile(...)` before the destructors).
 #pragma optimize("s", on)
 #include <stddef.h>
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                              // 0x0099AED0
     CWideString(const wchar_t* text);           // 0x0099B6B0
@@ -28,7 +28,7 @@ bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handl
 bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850
 CWideString __fastcall GetSoundDirectory();     // 0x0041A2B0 (L"Data\\Sound\\")
 enum FileAccessType { FILE_ACCESS_2 = 2 };
-struct CMemoryFile {                            // retail 0x24 bytes (PDB 0x28: the CArray is 12 bytes in retail)
+class CMemoryFile { public:                            // retail 0x24 bytes (PDB 0x28: the CArray is 12 bytes in retail)
     long _body[9];
     CMemoryFile(const CWideString& path, long mode, unsigned long flags);   // 0x009E97B0
     ~CMemoryFile();                             // 0x00412020
@@ -50,13 +50,13 @@ struct CSoundInterface {
     virtual void v48(); virtual void v49(); virtual void v50();
     virtual void CompileLugFile(const CWideString& path, CBinaryFileDataWriter* writer);   // slot 51 (+0xcc)
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad00[0x7c];
     CSoundInterface* Sound;                     // +0x7c
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     static void GenerateMetFilesFromLugFiles();
 };
 

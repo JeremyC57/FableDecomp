@@ -4,7 +4,7 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThing {
+class CThing { public:
     u64 UniqueID;
     unsigned char Dead : 1;
     unsigned char CreatedByOwnerThingCreation : 1;
@@ -27,7 +27,7 @@ struct CGroupMemberMap {
         return Header;
     }
 };
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     CGroupMemberMap Members;
     bool IsMember(const CThing* thing) const
     {

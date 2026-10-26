@@ -13,7 +13,7 @@ struct CCRCVectorMap {
     void Sort() { if (NeedsSort) { SortCRCPairs(_M_start, _M_finish, Compare); NeedsSort = false; } }
     void DeallocateUnusedMemory() { ++trims; }
 };
-struct CBankFile {
+class CBankFile { public:
     bool ReadOnly; CCRCVectorMap SymbolCRCIndices; int packs;
     void PackRuntimeData() { ++packs; }
     void PostInitEntries() { SymbolCRCIndices.Sort(); SymbolCRCIndices.DeallocateUnusedMemory(); if (ReadOnly) PackRuntimeData(); }

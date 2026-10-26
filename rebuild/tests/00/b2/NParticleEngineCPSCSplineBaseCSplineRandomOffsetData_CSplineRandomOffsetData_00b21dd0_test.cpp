@@ -2,10 +2,10 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct C3DVector { float X, Y, Z; C3DVector() {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} };
 template <class T> struct SRetailAllocProxy { T* _M_data; SRetailAllocProxy(T* data) : _M_data(data) {} };
 static int g_assigns = 0;
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start; T* _M_finish; SRetailAllocProxy<T> _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     CArray(const CArray& other) : _M_start(0), _M_finish(0), _M_end_of_storage(0) { *this = other; }
@@ -23,7 +23,7 @@ template <class T> struct CArray {
     }
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints; float Tension; bool EndPointsConnected;
     CCardinalSpline() : Tension(0.5f), EndPointsConnected(false) {}
 };

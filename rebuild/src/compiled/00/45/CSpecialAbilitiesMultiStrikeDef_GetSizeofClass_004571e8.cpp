@@ -1,4 +1,4 @@
-struct CSpecialAbilitiesMultiStrikeDef { int dummy; };
+class CSpecialAbilitiesMultiStrikeDef { public: int dummy; };
 
 unsigned long __fastcall CSpecialAbilitiesMultiStrikeDef_GetSizeofClass(const CSpecialAbilitiesMultiStrikeDef* self)
 {

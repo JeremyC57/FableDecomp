@@ -10,13 +10,13 @@
 // Layout: Ego_r.pdb CMeshBankManager {vptr, +4 (unnamed base word), MeshDataBanks +8} (retail list = sentinel
 //   pointer); CMeshDataBankInfo {BankHandle +0, MeshDataBank +4}.
 // Shape: identical to CloseGraphicBank 0x009F8290 (same source shape, different record offsets).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                         // +0x00
     unsigned long m_length;                        // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                // 0x0099EAE0
     bool SameText(const CCharString& other) const
@@ -35,12 +35,12 @@ struct CCharString {
     }
 };
 
-struct CBankFile {
+class CBankFile { public:
     CCharString GetBankHandle();                   // 0x009CBA40
 };
-struct CMeshDataBank : CBankFile { };
+class CMeshDataBank : public CBankFile { public: };
 
-template <class T> struct CCountedPointer {        // {Data, Info}; Info = {count, destroy(object in ecx), object}
+template <class T> class CCountedPointer { public:        // {Data, Info}; Info = {count, destroy(object in ecx), object}
     struct SInfo {
         long m_references;
         void (__fastcall* m_pfnDestroy)(T*);
@@ -86,7 +86,7 @@ struct CMeshDataBankInfoList {                  // retail list<CMeshDataBankInfo
     CListIterator<CMeshDataBankInfo> erase(CListIterator<CMeshDataBankInfo> where);   // 0x00A0A650
 };
 
-struct CMeshBankManager {
+class CMeshBankManager { public:
     virtual void v00();
     unsigned char         _base04[4];              // +0x04 (unnamed in the PDB layout)
     CMeshDataBankInfoList MeshDataBanks;           // +0x08

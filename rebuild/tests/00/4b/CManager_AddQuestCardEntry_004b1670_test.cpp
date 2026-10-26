@@ -18,7 +18,7 @@ static int fails = 0;
 // Shape: the landed 0x004B14F0 entry/list model; find(begin(), end(), name) through the out-of-line STLport __find with
 // both iterators built in their argument slots (user copy ctor); push_back = insert(end(), x).
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0

@@ -12,11 +12,11 @@
 // 0x004046B0, 0x0099A2E0. The generated data-only header gives size 0x11 and members
 // TargetOffset +8, Vector_X +9, Vector_Y +0xd. Its virtual slots are absent, so this
 // packed local polymorphic model uses the header's field layout and supplies slots 3/8.
-struct CPersistContext;
-struct CCharString { void* data; CCharString(const char*, long); ~CCharString(); };
+class CPersistContext;
+class CCharString { public: void* data; CCharString(const char*, long); ~CCharString(); };
 struct CBase { virtual ~CBase(); };
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); }; // retail sentinel-only list, 4 bytes
-struct CStringParser : CBase {
+class CStringParser : public CBase { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
  CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
  CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);
@@ -24,7 +24,7 @@ struct CStringParser : CBase {
 };
 template<class T> struct CPersistTraits { CPersistTraits() {} void TransferIn(CPersistContext&, CStringParser&, T*); };
 #pragma pack(push, 1)
-struct CAnimComponentCombatFlourishTargetOffset {
+class CAnimComponentCombatFlourishTargetOffset { public:
  virtual ~CAnimComponentCombatFlourishTargetOffset(); virtual void v1(); virtual void v2(); virtual bool Initialise(CPersistContext&, const CCharString&);
  virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7(); virtual void Reset();
  long base; bool TargetOffset; float TargetOffsetVector_X; float TargetOffsetVector_Y;
@@ -41,7 +41,7 @@ bool CAnimComponentCombatFlourishTargetOffset::Initialise(CPersistContext& conte
  return true;
 }
 
-struct CPersistContext { float values[2]; int calls; };
+class CPersistContext { public: float values[2]; int calls; };
 static bool bad,found;static char events[48];static int eventCount;
 static CPersistContext* gContext;static const CCharString* gText;static CStringParser* gParser;
 static CAnimComponentCombatFlourishTargetOffset* gOwner;

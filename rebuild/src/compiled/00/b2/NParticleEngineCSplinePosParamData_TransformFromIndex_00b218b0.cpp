@@ -8,7 +8,7 @@
 // after a successful lookup, four C3DVector locals declared after it.
 // Leaf: TransformFromIndex
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 struct CCardinalSpline;
 struct C3DVector { float X, Y, Z; };
 

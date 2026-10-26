@@ -27,7 +27,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CObjectAugmentationSoundSet {                        // Ego_r.pdb, 12 bytes
+class CObjectAugmentationSoundSet { public:                        // Ego_r.pdb, 12 bytes
     bool          Played;                                   // +0x00
     CCharString   Sound;                                    // +0x04
     unsigned long Handle;                                   // +0x08
@@ -191,7 +191,7 @@ public:
     unsigned char InLimbo : 1;                              // bit 5 (0x20)
 };
 
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 
 class CDefStringTable {
 public:

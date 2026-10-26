@@ -8,7 +8,7 @@ struct CBase {
     CBase() {}
     virtual ~CBase() {}
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 namespace std {
 template <class _Tp> struct less { bool operator()(const _Tp& a, const _Tp& b) const { return a < b; } };
 template <class _Tp> class allocator {
@@ -68,15 +68,15 @@ template <class T> struct CVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
 };
 template <class K, class V> struct CKeyValuePair { K first; V second; };
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V, class C> class CVectorMap { public:
     CVector<CKeyValuePair<K, V> > Data;
     C                             Compare;
     bool                          Dirty;
     void Clear() { ++gMapClears; Data._M_finish = Data._M_start; }   // stand-in
 };
-template <class T> struct CCompareString { };
-struct CSymbolMap : CBase {
-    struct CSymbolInfo { CCharString GroupName; CCharString EntryName; long Val; };
+template <class T> class CCompareString { public: };
+class CSymbolMap : public CBase { public:
+    class CSymbolInfo { public: CCharString GroupName; CCharString EntryName; long Val; };
     CVectorMap<CCharString, CSymbolInfo, CCompareString<CSymbolInfo> > SLONGMap;
     std::set<CCharString>                                             NamesUsed;
     bool                                                               CheckForDuplicateSymbols;

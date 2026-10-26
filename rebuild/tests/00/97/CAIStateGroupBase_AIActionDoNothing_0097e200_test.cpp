@@ -1,8 +1,8 @@
 // Behaviour test for 0x0097E200: DoNothing returns 1 when stopping, else ticks look + brain and returns 1/4.
 #include <cstdio>
-struct CTCLook { int tracked; bool TrackNearestInterestingThing(bool) { tracked++; return true; } };
+class CTCLook { public: int tracked; bool TrackNearestInterestingThing(bool) { tracked++; return true; } };
 struct CCreature { CTCLook* look; bool GetInterface(CTCLook** out, long t) { if (t == 0x43 && look) { *out = look; return true; } return false; } };
-struct CAIBrain { int updates; CCreature* Creature; void Update() { updates++; } };
+class CAIBrain { public: int updates; CCreature* Creature; void Update() { updates++; } };
 struct CGroup {
     CAIBrain* PBrain; int stopCalls; int stopAfter;
     bool IsStopping() { return ++stopCalls > stopAfter; }

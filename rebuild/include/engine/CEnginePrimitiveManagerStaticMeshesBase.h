@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CVertexShader;
+class CVertexShader;
 
 #pragma pack(push, 1)
 struct CEnginePrimitiveManagerStaticMeshesBase {

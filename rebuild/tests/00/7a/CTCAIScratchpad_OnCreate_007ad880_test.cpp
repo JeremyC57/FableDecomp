@@ -2,15 +2,15 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     const char* text;
     int assigns;
     CCharString& operator=(const CCharString& other) { text = other.text; ++assigns; return *this; }
 };
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE };
 
-struct CAIScratchpadDef {
+class CAIScratchpadDef { public:
     long          _base;                                     // CDefClassBase part (size irrelevant here)
     unsigned long ThankingPhrase;                            // +0x28
     unsigned long IgnoringPhrase;                            // +0x2c
@@ -47,20 +47,20 @@ struct CAIScratchpadDef {
     float         TargetingDistanceOffset;                   // +0x98
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     const CAIScratchpadDef* sub;
     bool GetSubDef(CDefPointer<const CAIScratchpadDef>& out) { out.Object = sub; return true; }
 };
-struct CThing {
+class CThing { public:
     CDefClassBase* PBaseDef;
 };
 
-struct CTCAIScratchpad {
+class CTCAIScratchpad { public:
     void*         __vftable;                                 // +0x00 (CTCBase)
     CThing*       ParentThing;                               // +0x04
     bool          ToBeRemoved;                               // +0x08

@@ -25,8 +25,8 @@ struct IRefObject
     IVTable* vptr;   // +0 : pointer to the function table
 };
 
-struct CVolume
-{
+class CVolume
+{ public:
     void*       m_pad0;     // +0
     IRefObject* m_pObject;  // +4
 

@@ -3,7 +3,7 @@
 
 struct Item { long first; int second; };
 
-struct CTCContainer {
+class CTCContainer { public:
     Item  items[8];
     Item* start;
     Item* finish;

@@ -13,7 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) throw() { return p; }
 
-template <class T> struct CCountedPointer {     // 8 bytes: object + shared count
+template <class T> class CCountedPointer { public:     // 8 bytes: object + shared count
     T*    Object;
     long* Count;
     CCountedPointer(const CCountedPointer& o) : Object(o.Object), Count(o.Count)
@@ -22,8 +22,8 @@ template <class T> struct CCountedPointer {     // 8 bytes: object + shared coun
             ++*Count;
     }
 };
-struct CCombatAbilityData;
-struct CCombatAbility {                         // Ego_r.pdb, 8 bytes
+class CCombatAbilityData;
+class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;
     long ActiveTimer;
 };

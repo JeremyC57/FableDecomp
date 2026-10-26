@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CMeleeCombatAbilityDef;
+class CMeleeCombatAbilityDef;
 
 extern void __fastcall CMeleeCombatAbilityDef_Copy_impl(CMeleeCombatAbilityDef* thisptr, void* other);
 extern void __fastcall CMeleeCombatAbilityDef_Copy(CMeleeCombatAbilityDef* thisptr, void* other);

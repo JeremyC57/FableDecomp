@@ -15,8 +15,8 @@
 //   CEngineThemeDef::DestructionThemeDef retail +0x98 (PDB +0x9c, def layouts sit 4 below the PDB); the def's count at +4.
 #include <new>
 struct __false_type { __false_type() { } };
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI() { }
     C2DCoordI(long x, long y) : X(x), Y(y) { }
@@ -37,17 +37,17 @@ struct CCoordVector {                              // STLport vector<C2DCoordI> 
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long m_refCount;                               // +0x04
 };
-struct CEngineThemeDef : CDefPointeeBase {
+class CEngineThemeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x98 - 0x08];
     long          DestructionThemeDef;             // +0x98
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
@@ -67,7 +67,7 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CEngineThemeDef> GetPDefFromGlobalIndex(long index) const;      // 0x009AD9E0
     bool GetDef(long globalIndex, CDefPointer<CEngineThemeDef>& out) const;   // 0x0063F3A0
 };

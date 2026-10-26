@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <new>
-struct CTexture;
+class CTexture;
 namespace N3DPrimitive {
 struct CBlockBase {
     long m_start; long m_count; unsigned char m_flag0, m_flag1, m_flag2;
     CBlockBase() : m_start(0), m_count(0), m_flag0(0), m_flag1(0), m_flag2(0) {}
 };
-struct CStaticBlock : CBlockBase {
+class CStaticBlock : public CBlockBase { public:
     unsigned long DiffuseTextureFixupOffset, BumpTextureFixupOffset;
     CTexture* DiffuseTexture;
     CTexture* BumpTexture;

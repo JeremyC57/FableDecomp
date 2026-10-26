@@ -1,4 +1,4 @@
-struct CTCFishing {
+class CTCFishing { public:
     void* vftable;
 };
 

@@ -8,7 +8,7 @@
 // Shape: one stream call per member in declaration order; each bool bit-field is passed by value, which VC7.1
 //   extracts as `xor ; mov r8 ; shr ; and r,0xffffff01` (the top bit needs no mask).
 #include "engine/CDataOutputStream.h"
-struct CRGBColour { union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };   // 4-byte aligned packed colour
+class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };   // 4-byte aligned packed colour
 struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteEBOOL(bool value);                        // 0x00993E30
     void WriteLong(long value);                         // 0x00993EB0
@@ -17,7 +17,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteColour(const CRGBColour& value);          // 0x00993F30
 };
 namespace NParticleEngine {
-struct CPSCLight {
+class CPSCLight { public:
     unsigned char _base[0xc];                           // CPSCBase
     long LightLifeTimer;                                // +0x0c
     long LightRespawnDelayTimer;                        // +0x10

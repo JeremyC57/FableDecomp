@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 struct CharStringData { char* buffer; };
-struct CCharString { CharStringData* data; };
+class CCharString { public: CharStringData* data; };
 
 static int g_detach_called = 0;
 void __fastcall CCharString_Detach(CCharString* /*self*/) { g_detach_called++; }

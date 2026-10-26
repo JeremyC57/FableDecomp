@@ -5,12 +5,12 @@
 
 static int g_destroyed = 0;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long m_refCount;
     virtual void Destroy() { ++g_destroyed; }
     virtual ~CDefPointeeBase() {}
 };
-struct CVillageDef : CDefPointeeBase {
+class CVillageDef : public CDefPointeeBase { public:
     long SleepAdultStartTime, SleepAdultEndTime, SleepChildStartTime, SleepChildEndTime,
          SleepElderlyStartTime, SleepElderlyEndTime;
 };
@@ -18,25 +18,25 @@ struct CDefaultVillageTimes {
     long SleepAdultStartTime, SleepAdultEndTime, SleepChildStartTime, SleepChildEndTime,
          SleepElderlyStartTime, SleepElderlyEndTime;
 };
-struct CDefinitionManager { CDefaultVillageTimes* DefaultVillageDef; };
+class CDefinitionManager { public: CDefaultVillageTimes* DefaultVillageDef; };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer() { if (--Object->m_refCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CTCVillage { CDefPointer<CVillageDef> PDef; };
-struct CTCVillageMember {
+class CTCVillage { public: CDefPointer<CVillageDef> PDef; };
+class CTCVillageMember { public:
     CTCVillage* village;
     CTCVillage* GetPVillage() const { return village; }
 };
-struct CThingCreatureDef { long Age; };
+class CThingCreatureDef { public: long Age; };
 
 static CDefinitionManager g_manager;
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CTCVillageMember* m_member;
     bool HasTC(long interfaceType) const
@@ -49,7 +49,7 @@ struct CThing {
     CDefinitionManager* GetDefinitionManager() { return &g_manager; }
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     CThingCreatureDef* PDef;
     void GetSleepTimes(long& start, long& end);
 };

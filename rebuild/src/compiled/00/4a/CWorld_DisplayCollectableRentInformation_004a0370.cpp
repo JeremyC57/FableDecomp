@@ -19,12 +19,12 @@
 #include "engine/CWorld.h"
 #undef CWorld
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString& operator=(const CWideString& other);  // 0x0099B7D0
     ~CWideString();                                    // 0x0099B510
@@ -33,12 +33,12 @@ bool __fastcall ConstructString(CWideString& text, long value0, long value1);   
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                            // +0x14
 };
 extern CMainGameComponent* g_pMainGameComponent;       // 0x013B86A0
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                 // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -46,7 +46,7 @@ struct CInterfaceMap {                                 // CVectorMap<ETCInterfac
     SEntry* LowerBound(const long* type);              // 0x0040F020
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                    // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                        // +0x44
@@ -80,20 +80,20 @@ struct CThing {
     }
 };
 inline bool IsThingAlive(const CThing* thing) { return thing && !(thing->Flags91 & 1); }
-struct CTCBuyableHouse {
+class CTCBuyableHouse { public:
     unsigned char _pad00[0x12];
     bool          Rented;                              // +0x12
     long GetCurrentCollectableRentValue();             // 0x006C0160
     long GetMaxCollectableRentValue();                 // 0x006C0270
 };
-struct CTCRegionDisplay {
+class CTCRegionDisplay { public:
     unsigned char _pad00[0x10];
     CWideString   CurrentAreaNameExtra;                // +0x10
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                         // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                          // 0x00449970
 };
 template <class T> struct vector {                     // STLport vector<T> (12 bytes)
@@ -105,14 +105,14 @@ template <class T> struct vector {                     // STLport vector<T> (12 
     unsigned int size() const { return _M_finish - _M_start; }
     T& operator[](unsigned int n) { return _M_start[n]; }
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Type;                                         // ETCInterfaceType
     CThingFilter_HasTC(long type) : Type(type) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllLeafThings(const CThingFilter_HasTC& filter, vector<const CThing*>& things);   // 0x004AD780
 };
-struct CWorld : CWorld_PDB {
+class CWorld : public CWorld_PDB { public:
     void DisplayCollectableRentInformation();
 };
 const CThing** CollectLeafThings(long type, const CThing** first, const CThing** last);

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThingCreatureBase { bool perf, free; int finished; bool IsPerformingAnyAction() { return perf; } bool IsFreeToFinishAction() { return free; } void FinishCurrentAction() { ++finished; } };
+class CThingCreatureBase { public: bool perf, free; int finished; bool IsPerformingAnyAction() { return perf; } bool IsFreeToFinishAction() { return free; } void FinishCurrentAction() { ++finished; } };
 struct CAIStateGroup_MeleeCombatNearbyBase { static void UpdateCurrentAction(CThingCreatureBase* creature); };
 void CAIStateGroup_MeleeCombatNearbyBase::UpdateCurrentAction(CThingCreatureBase* creature) { if (creature->IsPerformingAnyAction() && creature->IsFreeToFinishAction()) creature->FinishCurrentAction(); }
 int main()

@@ -9,19 +9,19 @@
 // own virtual slot 4 (+0x10, persist its data into the context), CRuntimeScriptedEntityPersist::
 // SaveToGameStateScript(CCharString&) @ 0x00CB7A00 on the member at +0x30.
 // Shape: the context is the whole 0x2C-byte frame (no destructor call); `out` is cached in esi after the loop.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator+=(const char* text);       // 0x0099F100
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _body[0x2c];
     CPersistContext(CCharString& output);            // 0x009BAE10
 };
 
 class CActiveEntityScriptBase;
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
 };

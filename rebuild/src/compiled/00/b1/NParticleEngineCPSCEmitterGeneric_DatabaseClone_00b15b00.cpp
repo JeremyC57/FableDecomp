@@ -2,7 +2,7 @@
 // Leaf: ?DatabaseClone@CPSCEmitterGeneric@NParticleEngine@@
 // Renamed (fistp pass, 2026-10-24) from CThingTrackNode::DrawIsDrawable @ 00/b1/CThingTrackNode_DrawIsDrawable_00b15b00.cpp: vtable slot 2 of NParticleEngine::CPSCEmitterGeneric; Ego_r.pdb lists Alloc / DatabaseClone / DatabaseCopy on every particle component class and the body is exactly alloc-then-copy-from-this; the clone target is the slot-18 virtual
 #pragma optimize("g",on)
-namespace NParticleEngine { struct CPSCEmitterGeneric; }
+namespace NParticleEngine { class CPSCEmitterGeneric; }
 using NParticleEngine::CPSCEmitterGeneric;
 
 // Object with a virtual method occupying vtable slot 0x12 (offset 0x48).
@@ -31,7 +31,7 @@ struct IDrawableBase {
 extern IDrawableBase* __fastcall GetDrawableObject(CPSCEmitterGeneric* self);
 
 namespace NParticleEngine {
-struct CPSCEmitterGeneric {
+class CPSCEmitterGeneric { public:
     IDrawableBase* DatabaseClone();
 };
 }

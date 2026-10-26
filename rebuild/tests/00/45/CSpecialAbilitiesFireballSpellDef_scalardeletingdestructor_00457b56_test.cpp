@@ -6,7 +6,7 @@ static void* g_deleted_ptr = 0;
 
 void __cdecl eng_operator_delete(void* p) { g_delete_called++; g_deleted_ptr = p; }
 
-struct CSpecialAbilitiesFireballSpellDef {
+class CSpecialAbilitiesFireballSpellDef { public:
     void* vftable;
     void dtor();
     void* scalar_deleting_destructor(unsigned int flags);

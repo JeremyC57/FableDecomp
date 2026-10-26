@@ -7,7 +7,7 @@
 // operator delete 0x00BFE9BC) then block and object zeroed. Either way MeshesAndAnimations[index]
 // (+0x380) = 0; VC duplicates that store into both arms. Retail CArray is 12 bytes (PDB 16), so the
 // arrays sit 0x74 + 4n below the PDB offsets.
-struct CMeshDataBankEntry;
+class CMeshDataBankEntry;
 
 struct SCountBlock {
     long m_references;                              // +0
@@ -15,7 +15,7 @@ struct SCountBlock {
     void* m_pObject;                                // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;                              // +0
     SCountBlock* m_pCount;                          // +4
     CCountedPointer& operator=(T* object)           // used with null
@@ -33,7 +33,7 @@ template <class T> struct CCountedPointer {
     }
 };
 
-template <class T> struct CArray {                  // STLport vector
+template <class T> class CArray { public:                  // STLport vector
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -42,7 +42,7 @@ template <class T> struct CArray {                  // STLport vector
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     virtual void v00();
     unsigned char _pad004[0x380 - 4];
     CArray<CMeshDataBankEntry*> MeshesAndAnimations;                 // +0x380

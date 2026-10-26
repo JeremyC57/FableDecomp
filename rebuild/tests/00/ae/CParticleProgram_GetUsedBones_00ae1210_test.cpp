@@ -1,7 +1,7 @@
 // behaviour test for 0x00AE1210 CParticleProgram::GetUsedBones (static): mark every bone that owns at least one blend
 #include <cstdio>
-struct C3DVertexBlend2 { long Vertex; float Weight; };
-struct C3DGroup2 { long BoneIndex; C3DVertexBlend2* Start; C3DVertexBlend2* Finish;
+class C3DVertexBlend2 { public: long Vertex; float Weight; };
+class C3DGroup2 { public: long BoneIndex; C3DVertexBlend2* Start; C3DVertexBlend2* Finish;
     unsigned int BlendCount() const { return (unsigned int)(Finish - Start); } };
 struct CGroupArray { C3DGroup2* Start; C3DGroup2* Finish;
     unsigned int size() const { return (unsigned int)(Finish - Start); }

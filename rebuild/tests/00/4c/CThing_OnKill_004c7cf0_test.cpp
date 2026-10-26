@@ -1,21 +1,21 @@
 // Behaviour test for CThing::OnKill @ 0x004C7CF0: quest manager told (with the unloading flag), components killed with adds forbidden, manager notified.
 #include <cstdio>
-struct CThing;
+class CThing;
 static int g_order = 0;
-struct CTCBase { int killedAt; bool addsAllowed; CThing* owner; void OnKill(); };
+class CTCBase { public: int killedAt; bool addsAllowed; CThing* owner; void OnKill(); };
 struct SComponentPair { long first; CTCBase* second; };
-struct CCallOnKill { void operator()(SComponentPair& p) const { p.second->OnKill(); } };
+class CCallOnKill { public: void operator()(SComponentPair& p) const { p.second->OnKill(); } };
 static CCallOnKill for_each(SComponentPair* first, SComponentPair* last, CCallOnKill f)
 {
     for (; first != last; ++first) f(*first);
     return f;
 }
-struct CQuestManager { int at; CThing* thing; bool unloading; void OnDeactivateEntity(CThing* t, bool u) { at = ++g_order; thing = t; unloading = u; } };
-struct CThingManager { int at; CThing* thing; void OnThingKill(CThing* t) { at = ++g_order; thing = t; } };
+class CQuestManager { public: int at; CThing* thing; bool unloading; void OnDeactivateEntity(CThing* t, bool u) { at = ++g_order; thing = t; unloading = u; } };
+class CThingManager { public: int at; CThing* thing; void OnThingKill(CThing* t) { at = ++g_order; thing = t; } };
 static CQuestManager g_quests; static CThingManager g_things;
 static CQuestManager* g_pQuestManager = &g_quests;
 static CThingManager* g_pThingManager = &g_things;
-struct CThing {
+class CThing { public:
     SComponentPair* m_componentsFirst;
     SComponentPair* m_componentsLast;
     unsigned char   low : 4;

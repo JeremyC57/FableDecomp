@@ -14,7 +14,7 @@
 #include <stddef.h>
 extern "C" wchar_t* __cdecl wcsstr(const wchar_t* string, const wchar_t* pattern);   // 0x00BFEB2E
 
-struct CWideStringData {
+class CWideStringData { public:
     wchar_t*      text;                         // +0x00
     unsigned long unknown04;
     unsigned long unknown08;

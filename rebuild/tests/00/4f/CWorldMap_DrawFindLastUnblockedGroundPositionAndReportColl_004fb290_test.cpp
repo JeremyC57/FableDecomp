@@ -1,7 +1,7 @@
 #include <stdio.h>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CBaseClassNonCopyable { virtual ~CBaseClassNonCopyable() {} };
-struct CIDrawWorldMap {
+class CIDrawWorldMap { public:
     virtual ~CIDrawWorldMap() {}
     virtual void Draw1() const = 0;
     virtual void Draw2() const = 0;
@@ -14,7 +14,7 @@ struct CIDrawWorldMap {
     virtual bool DrawFindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const = 0;
 };
 static const void* g_this; static const C3DVector* g_from; static const C3DVector* g_to; static C3DVector* g_out;
-struct CWorldMap : CBaseClassNonCopyable, CIDrawWorldMap {
+class CWorldMap : public CBaseClassNonCopyable, public CIDrawWorldMap { public:
     bool result;
     virtual void Draw1() const {} virtual void Draw2() const {} virtual void Draw3() const {} virtual void Draw4() const {}
     virtual void Draw5() const {} virtual void Draw6() const {} virtual void Draw7() const {}

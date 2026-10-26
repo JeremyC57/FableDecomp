@@ -7,7 +7,7 @@ class CInputEvent {};
 class CProcessedInput {};
 class CInputProcessBetting;
 static int g_procCalls = 0; static const void* g_procEvent = 0; static const void* g_procProcessed = 0; static CInputProcessBetting* g_procProcess = 0;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {}
     virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {} virtual void v12() {} virtual void v13() {} virtual void v14() {} virtual void v15() {}
     virtual void v16() {} virtual void v17() {} virtual void v18() {} virtual void v19() {} virtual void v20() {} virtual void v21() {} virtual void v22() {} virtual void v23() {}
@@ -26,7 +26,7 @@ struct CTCMap {
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];
     unsigned char _pad40[4];
@@ -34,12 +34,12 @@ struct CThing {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCBase* GetTC(long kind) { return m_tcs.Find(kind); }
 };
-struct CPlayer { CThing* hero; CThing* GetHeroCreature() { return hero; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
-struct CMainGameComponent { unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };
+class CPlayer { public: CThing* hero; CThing* GetHeroCreature() { return hero; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };
 static CMainGameComponent g_component; CMainGameComponent* g_pMainGameComponent = &g_component;
 bool g_bBettingInputEnabled = false;
-struct CTCBetting : CTCBase {
+class CTCBetting : public CTCBase { public:
     void ProcessInputIfEnabled(const CInputEvent& event, CProcessedInput& processed, CInputProcessBetting* process)
     {
         if (g_bBettingInputEnabled)

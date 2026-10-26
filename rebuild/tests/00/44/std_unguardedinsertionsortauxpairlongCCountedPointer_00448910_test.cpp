@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
 };
 template <class T> class CCountedPointer {
@@ -16,7 +16,7 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 }
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 namespace std {

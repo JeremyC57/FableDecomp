@@ -17,7 +17,7 @@
 // and swaps the two dead-slot temporaries); the message is a named local built by one operator+ chain (VC evaluates the right operands first: the message
 // and the two literals are pushed before the line number is formatted; the last two temporaries reuse the dead
 // argument slots), all temporaries die before the callback call, the local after it.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                                      // 0x0099EAE0
     static CCharString __fastcall FromLong(long value);                  // 0x0099F830
@@ -30,7 +30,7 @@ struct CCursorPos {
     unsigned long StringPos;                       // +0x04
     unsigned long Line;                            // +0x08
 };
-struct CStringParser {                             // retail 0x28 bytes
+class CStringParser { public:                             // retail 0x28 bytes
     void* __vftable;                               // +0x00
     char* String;                                  // +0x04
     unsigned long BaseLineOffset;                  // +0x08
@@ -41,8 +41,8 @@ struct CStringParser {                             // retail 0x28 bytes
     CCursorPos CursorPos;                          // +0x1c
 };
 
-struct CDefinitionManager;
-struct CSymbolMap;
+class CDefinitionManager;
+class CSymbolMap;
 class CPersistContext {
 public:
     CDefinitionManager* PDefinitionManager;        // +0x00

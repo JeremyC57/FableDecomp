@@ -3,24 +3,24 @@
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (stores vtable 0x01231710; rtti-vtables.tsv).
 // PDB layout: C3DAnimationInterpolator = {vptr, StartState +4, EndState +0xc} (0x14 bytes);
 // C3DAnimationBlendState = {vptr, CIVCountedPointer<CSharedData> Data +4} (8 bytes).
-struct CBaseClass {                        // vtable 0x01231710
+class CBaseClass { public:                        // vtable 0x01231710
     virtual void v00();
     CBaseClass();                          // 0x0099A2D0
 };
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 struct CIVCountedPointer {
     CIVCountedPointeeBase* Object;
     CIVCountedPointer() : Object(0) { }
 };
 
-struct C3DAnimationBlendState : CBaseClass {   // vtable 0x01239838
+class C3DAnimationBlendState : public CBaseClass { public:   // vtable 0x01239838
     CIVCountedPointer Data;                // +4
     C3DAnimationBlendState() { }
 };
 
-struct C3DAnimationInterpolator : CBaseClass {   // vtable 0x01239840
+class C3DAnimationInterpolator : public CBaseClass { public:   // vtable 0x01239840
     C3DAnimationBlendState StartState;     // +4
     C3DAnimationBlendState EndState;       // +0xc
     C3DAnimationInterpolator();

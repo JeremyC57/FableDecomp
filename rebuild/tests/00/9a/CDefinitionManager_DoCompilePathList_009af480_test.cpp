@@ -10,8 +10,8 @@
 #define __fastcall
 #endif
 
-struct CWideString;
-struct CCharString {
+class CWideString;
+class CCharString { public:
     char m_Text[128];
     CCharString(const char* text, long length = -1) { (void)length; strcpy(m_Text, text); }
     CCharString(const CCharString& other) { strcpy(m_Text, other.m_Text); }
@@ -26,7 +26,7 @@ struct CCharString {
     }
     CWideString ToWideString() const;
 };
-struct CWideString {
+class CWideString { public:
     char m_Text[128];
     CWideString() { m_Text[0] = 0; }
     CWideString(const char* text) { strcpy(m_Text, text); }
@@ -55,7 +55,7 @@ static const SFakeFile g_Files[] = {
 static const int g_FileCount = sizeof(g_Files) / sizeof(g_Files[0]);
 static int g_OpenFiles = 0;
 
-struct CDiskFileWin32 : CBase {
+class CDiskFileWin32 : public CBase { public:
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags) { (void)pathname; (void)access; (void)flags; }
     virtual void Close() { if (Opened) { Opened = false; --g_OpenFiles; } }
     virtual void Read(void* data, long size, CASuspendableProcess* process)

@@ -16,7 +16,7 @@ struct CEngineInterface {
         g_removed[g_removedCount++] = primitiveId;
     }
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_pData;
     T* m_pLast;
     T* m_pEnd;

@@ -8,7 +8,7 @@ struct RCObj {
 
 extern bool __stdcall CookTest(void* a, int b);
 
-struct CTCVillage {
+class CTCVillage { public:
     char pad[0x94];
     RCObj* handle;
 };

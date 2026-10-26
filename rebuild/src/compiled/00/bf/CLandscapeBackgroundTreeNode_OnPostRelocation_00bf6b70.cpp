@@ -6,13 +6,13 @@
 // Retail CLandscapeBackgroundTreeNode is 0xE8 bytes: every member from LODLoadInfo on sits 8 bytes below the
 // Ego_r.pdb offsets (two containers ahead of it are 4 bytes smaller in the shipped build), so a retail-offset
 // model is declared here instead of engine/CLandscapeBackgroundTreeNode.h.
-struct CMovableResource {                          // landscape-memory resources: re-parented after a relocation
+class CMovableResource { public:                          // landscape-memory resources: re-parented after a relocation
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
     virtual bool IsPatch();                        // slot 4 (+0x10), meaningful on a tree node's sub node
     virtual void v14(); virtual void v18(); virtual void v1c();
     virtual void OnPostParentRelocation(CMovableResource* parent);   // slot 8 (+0x20)
 };
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner);   // 0x00BD9AB0
 };
 struct SEngine_01436ea8 {
@@ -26,7 +26,7 @@ struct SLandscapeMapHeader {
     unsigned short OriginY;                        // +0x62
 };
 enum LANDSCAPE_EDGE_STRIP_SIDE { EDGE_RIGHT = 0, EDGE_LEFT = 1, EDGE_BOTTOM = 2, EDGE_TOP = 3 };
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     unsigned char        _pad00[0x14];
     SLandscapeMapHeader* Header;                   // +0x14
     void InvalidateEdge(long x, long y, long length, LANDSCAPE_EDGE_STRIP_SIDE side);   // 0x00BDCBB0
@@ -42,9 +42,9 @@ struct CLandscapeBackgroundLoadTask {              // 16 bytes, no vtable
 };
 struct CLandscapeBackgroundSubNodeBase : CMovableResource {   // the node's sub node: a leaf patch or a split branch
 };
-struct CLandscapeBackgroundPatch;
-struct CLandscapeBackgroundSubNodeSplitBranch;
-struct CLandscapeBackgroundTreeNode : CMovableResource {
+class CLandscapeBackgroundPatch;
+class CLandscapeBackgroundSubNodeSplitBranch;
+class CLandscapeBackgroundTreeNode : public CMovableResource { public:
     unsigned char                    _pad04[0x88];
     long                             FileBlockPos;            // +0x8c
     long                             FileBlockSize;           // +0x90
@@ -83,11 +83,11 @@ struct CLandscapeBackgroundTreeNode : CMovableResource {
     }
     void OnPostRelocation();
 };
-struct CLandscapeBackgroundPatch : CLandscapeBackgroundSubNodeBase {
+class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:
     unsigned char _pad04[0x114];
     unsigned char LODBand;                         // +0x118
 };
-struct CLandscapeBackgroundSubNodeSplitBranch : CLandscapeBackgroundSubNodeBase {
+class CLandscapeBackgroundSubNodeSplitBranch : public CLandscapeBackgroundSubNodeBase { public:
     CLandscapeBackgroundTreeNode LeftBranch;       // +0x04
     CLandscapeBackgroundTreeNode RightBranch;      // +0xec
 };

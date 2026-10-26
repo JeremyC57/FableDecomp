@@ -2,12 +2,12 @@
 #include <cstring>
 // Behaviour test for CTCTavernGameCardSorting::GetAdditionalInfo (0x007D5560): the body of src/ over stand-ins -- the
 // "round n/total" text built from the def's label, the card-order count and the rounds left.
-struct CWideString {
+class CWideString { public:
     char text[64];
     CWideString() { text[0] = 0; }
     CWideString(const char* t) { strcpy(text, t); }
 };
-struct CCharString {
+class CCharString { public:
     char text[16];
     CWideString ToWideString() const { return CWideString(text); }
 };
@@ -27,10 +27,10 @@ template <class T> struct CRetailVector {
     T* _M_end_of_storage;
     long size() const { return _M_finish - _M_start; }
 };
-struct CCardPositionsDef { int dummy; };
+class CCardPositionsDef { public: int dummy; };
 static int g_releases = 0;
-struct CTavernGameDef { long m_count; unsigned long AdditionalInfo; void ReleaseTemporary() { --m_count; ++g_releases; } };
-struct CTavernGameCardBaseDef { long m_count; CRetailVector<CCardPositionsDef> CardOrders; void ReleaseTemporary() { --m_count; ++g_releases; } };
+class CTavernGameDef { public: long m_count; unsigned long AdditionalInfo; void ReleaseTemporary() { --m_count; ++g_releases; } };
+class CTavernGameCardBaseDef { public: long m_count; CRetailVector<CCardPositionsDef> CardOrders; void ReleaseTemporary() { --m_count; ++g_releases; } };
 struct CDefPointer {
     CTavernGameDef* Object;
     CDefPointer() : Object(0) {}
@@ -47,7 +47,7 @@ static CCardPositionsDef g_orders[5];
 static CTavernGameDef g_def = { 1, 42 };
 static CTavernGameCardBaseDef g_cardDef = { 1, { g_orders, g_orders + 5, g_orders + 5 } };
 static unsigned long g_textId = 0;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     long NumRounds;
     void GetTavernGameDef(CDefPointer* out) { out->Object = &g_def; ++g_def.m_count; }
     CWideString GetText(unsigned long id) { g_textId = id; return CWideString("Round "); }

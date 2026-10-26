@@ -2,13 +2,13 @@
 // characters (a null string reads as "").
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pChars; unsigned int m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pChars; unsigned int m_length; };
+class CCharString { public:
     CCharStringData* m_pStringData;
     const char* GetChars() const { return m_pStringData == 0 ? "" : m_pStringData->m_pChars; }
 };
 static const char* g_table[3] = { "", "SWORD", "AXE" };
-struct CDefString {
+class CDefString { public:
     int TablePos;
     bool operator!=(const CCharString& text) const { return std::strcmp(g_table[TablePos], text.GetChars()) != 0; }
 };

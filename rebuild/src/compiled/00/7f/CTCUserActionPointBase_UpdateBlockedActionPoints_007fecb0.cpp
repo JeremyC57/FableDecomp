@@ -16,9 +16,9 @@
 //        landed STLport body (CWorldMap::LoadTopologyFromFile 0x004FF080), operator= as the STLport assignment (it only
 //        reads its argument, so the local's start pointer survives the call in edi).
 class CThing;
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14

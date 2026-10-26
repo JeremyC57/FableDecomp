@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for 0x0056EA9A: pool 0..3 -> OrigGeneral/Strength/Skill/Will, else 0.
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     long OrigGeneral, OrigStrength, OrigSkill, OrigWill;
     long GetOriginalExperience(long pool);
 };

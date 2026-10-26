@@ -3,8 +3,8 @@
 #include <cstring>
 static char g_log[256];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct C3DVector { float X, Y, Z; };
-struct CCharString { char Text[32]; CCharString(const char* t, long = -1) { std::strcpy(Text, t); } ~CCharString() {} };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: char Text[32]; CCharString(const char* t, long = -1) { std::strcpy(Text, t); } ~CCharString() {} };
 class CScriptThing {
 public:
     C3DVector Pos; int id;
@@ -13,7 +13,7 @@ public:
     ~CScriptThing() { if (id == 99) LOG("~effect"); }
     virtual const C3DVector& GetPos() const { return Pos; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int updates; const C3DVector* where;
     virtual void Update() { ++updates; LOG("update"); }
     virtual CScriptThing CreateEffect(const CCharString& name, const C3DVector& position, const CCharString& bone,

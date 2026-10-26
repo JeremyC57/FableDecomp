@@ -5,9 +5,9 @@
 #define CHECK(c) do { if (!(c)) { std::printf("00bc68b0_TEST FAIL\n"); return 1; } } while (0)
 
 static int g_strings = 0;
-struct CEngineInternalPrimitiveBase { unsigned int Type; unsigned int Flags; CEngineInternalPrimitiveBase(unsigned int t, unsigned int f) : Type(t), Flags(f) { } virtual ~CEngineInternalPrimitiveBase() { } virtual int Kind() { return 0; } };
-struct CWideString { void* d; CWideString() : d(0) { ++g_strings; } };
-struct CEngineInternalPrimitiveText : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public: unsigned int Type; unsigned int Flags; CEngineInternalPrimitiveBase(unsigned int t, unsigned int f) : Type(t), Flags(f) { } virtual ~CEngineInternalPrimitiveBase() { } virtual int Kind() { return 0; } };
+class CWideString { public: void* d; CWideString() : d(0) { ++g_strings; } };
+class CEngineInternalPrimitiveText : public CEngineInternalPrimitiveBase { public:
     float Pos[3]; float Scale; unsigned int Colour; bool ScaleIn3D; CWideString Text; void* Font;
     CEngineInternalPrimitiveText(unsigned int t, unsigned int f) : CEngineInternalPrimitiveBase(t, f) { }
     virtual int Kind() { return 1; }
@@ -15,7 +15,7 @@ struct CEngineInternalPrimitiveText : CEngineInternalPrimitiveBase {
 struct CEngineInternalPrimitive2DText : CEngineInternalPrimitiveText {
     int Layer; CEngineInternalPrimitive2DText() : CEngineInternalPrimitiveText(0x27, 0x80000000u) { } virtual int Kind() { return 2; }
 };
-struct CEnginePrimitiveManagerText {
+class CEnginePrimitiveManagerText { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(int type)
     {
         switch (type) {

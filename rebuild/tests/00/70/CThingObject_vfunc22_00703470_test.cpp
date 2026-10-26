@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for CThingObject::vfunc_22 (0x00703470).
-struct CTCBase { void* m_pLink; };
+class CTCBase { public: void* m_pLink; };
 struct SEntry { long type; CTCBase* component; };
-struct CThingObject {
+class CThingObject { public:
     unsigned long m_presentBits[9]; SEntry* first; SEntry* last; unsigned char Dead : 1; unsigned char CreatedByOwnerThingCreation : 1;
     SEntry* LowerBound(const long* key) { SEntry* it = first; while (it != last && it->type < *key) ++it; return it; }
     bool GetInterface(long type, CTCBase** out)

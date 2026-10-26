@@ -1,5 +1,5 @@
 // CTCEmoteIcon::GetClassTypeName @ 0071b0e0
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int n);
 };

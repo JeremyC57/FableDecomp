@@ -10,9 +10,9 @@
 //   (`fstp [esp+4]` ... `fsub [esp+4]`).
 #include <math.h>
 
-struct C3DVector { float X, Y, Z; };            // 12 bytes, 1-aligned in retail
+class C3DVector { public: float X, Y, Z; };            // 12 bytes, 1-aligned in retail
 
-struct CMatrix3x4 {                             // 0x30 bytes: four rows
+class CMatrix3x4 { public:                             // 0x30 bytes: four rows
     C3DVector Right;                            // +0x00
     C3DVector Up;                               // +0x0C
     C3DVector Forward;                          // +0x18

@@ -8,7 +8,7 @@
 // (vector<NUISystem::CComponent*>) +0x10, Quitting +0x1c; LastRenderTime / FirstRenderFrame are left uninitialised.
 // Shape: speed TU (`mov eax,[esp+4] ; push eax`); all initialisers follow the derived vtable store from one `xor eax,eax`
 // (the two bools as `al`, the vector's three pointers through its inline zeroing constructor), then the body's call.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -19,7 +19,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     void AddToGlobalUpdateTCs();                            // 0x00686ED0
 };
 
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 struct CRetailVector_Component {                            // retail std::vector, 12 bytes
     NUISystem::CComponent** _Myfirst;
     NUISystem::CComponent** _Mylast;
@@ -27,7 +27,7 @@ struct CRetailVector_Component {                            // retail std::vecto
     CRetailVector_Component() : _Myfirst(0), _Mylast(0), _Myend(0) { }
 };
 
-struct CTCQuickAccessMenu : CTCBase_Calls {                 // vtable 0x01258B74
+class CTCQuickAccessMenu : public CTCBase_Calls { public:                 // vtable 0x01258B74
     bool                    Active;                         // +0x0c
     CRetailVector_Component Components;                     // +0x10
     bool                    Quitting;                       // +0x1c

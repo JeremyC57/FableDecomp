@@ -9,7 +9,7 @@
 // trivially copyable value at +4, moved as an inline dword block through the strength-reduced src+4/dst+4 pointers
 // (re-addressed in eax/ecx); the count is decremented in the dead `result` argument slot. The manifest label
 // pair<pair<long,long>, CEngineTextureDecal> is propagated.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };

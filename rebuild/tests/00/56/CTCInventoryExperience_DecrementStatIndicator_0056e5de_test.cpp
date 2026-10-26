@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     char pad[0x1bc];
     int count;
     int* __fastcall DecrementStatIndicator();

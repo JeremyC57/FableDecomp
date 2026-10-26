@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureStatsDef { int v; };
+class CCreatureStatsDef { public: int v; };
 
 static int g_called = 0;
 static CCreatureStatsDef* g_self = 0;

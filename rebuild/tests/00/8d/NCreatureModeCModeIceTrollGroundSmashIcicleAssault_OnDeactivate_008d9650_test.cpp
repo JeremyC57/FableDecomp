@@ -2,8 +2,8 @@
 // reset, every entry is erased from the front
 #include <cstdio>
 static int g_base = 0, g_resume = -1, g_reset = 0, g_destroyed = 0;
-struct CTCTrapBase { long TrapType; void ManualReset() { ++g_reset; } };
-struct CThing { unsigned char m_state; unsigned char m_flags91; CTCTrapBase trap;
+class CTCTrapBase { public: long TrapType; void ManualReset() { ++g_reset; } };
+class CThing { public: unsigned char m_state; unsigned char m_flags91; CTCTrapBase trap;
     void SetSuspendAnimation(bool s, long) { g_resume = s; }
     bool GetInterface(CTCTrapBase** out, long type) { if (type == 0x7d) { *out = &trap; return true; } return false; } };
 struct CIP { CThing* PItem; CThing* GetPItem() const { return PItem; } ~CIP() { ++g_destroyed; } };

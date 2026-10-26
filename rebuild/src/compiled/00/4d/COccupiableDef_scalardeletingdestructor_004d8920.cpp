@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct COccupiableDef
-{
+class COccupiableDef
+{ public:
     void* vftable;
 };
 extern void* const g_COccupiableDef_vftable;

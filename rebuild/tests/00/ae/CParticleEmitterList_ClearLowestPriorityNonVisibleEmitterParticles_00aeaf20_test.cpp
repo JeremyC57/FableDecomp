@@ -1,7 +1,7 @@
 // Behaviour of CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterParticles (0x00AEAF20): from the back of the active
 // list, the first initialised, non-visible emitter that has Particles allocated is cleared; nothing else is.
 #include <cstdio>
-struct CIEngine { int id; };
+class CIEngine { public: int id; };
 struct CParticleStats;
 struct CParticleEmitter {
     unsigned short Priority : 3; unsigned short IsScreenDisplacement : 1; unsigned short ReadZBuffer : 1;

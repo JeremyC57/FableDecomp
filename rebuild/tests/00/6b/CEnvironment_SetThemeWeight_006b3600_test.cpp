@@ -1,11 +1,11 @@
 // Behaviour test for 0x006b3600 CEnvironment::SetThemeWeight
 #include <cstdio>
 static long g_calls = 0, g_lastTheme = -1, g_lastEntry = -1; static float g_lastValue = 0;
-struct CDefinitionManager { long GetDefClassIndexFromGlobalIndex(long g) { return g - 100; } };
+class CDefinitionManager { public: long GetDefClassIndexFromGlobalIndex(long g) { return g - 100; } };
 struct CEntry { long m_id; void SetWeight(long theme, float v) { ++g_calls; g_lastTheme = theme; g_lastValue = v; g_lastEntry = m_id; } };
 struct CStack { CEntry* m_pBegin; CEntry* m_pEnd; CEntry* m_pCapacity; };
 struct SThemeRecord { long a, b, c; };
-struct CEnvironment {
+class CEnvironment { public:
     CDefinitionManager* DefinitionManager; bool ForcedEnvironmentTheme; CStack* PriorityStackChannels;
     SThemeRecord* m_pThemesBegin; SThemeRecord* m_pThemesEnd;
     void SetThemeWeight(long channel, long priority, long globalThemeIndex, float v)

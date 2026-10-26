@@ -11,19 +11,19 @@
 // +0x30}. The enum values 1 (direction) / 2 (position) / 0 (none) are named from their use.
 // Leaf: ?ConvertToGenericLight@CShaderDirectionalLight
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
-struct CShaderLightAttenuation {
+class CShaderLightAttenuation { public:
     float Attenuation0;                          // +0x00
     float Attenuation1;                          // +0x04
     float Attenuation2;                          // +0x08
@@ -36,7 +36,7 @@ enum EParameterType {
     PARAMETER_TYPE_POSITION = 2
 };
 
-struct CShaderGenericLight {
+class CShaderGenericLight { public:
     C4DVector      Parameters[2];                // +0x00
     EParameterType Types[2];                     // +0x20
     float          Attenuation2;                 // +0x28

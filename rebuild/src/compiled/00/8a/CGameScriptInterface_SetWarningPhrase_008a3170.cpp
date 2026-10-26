@@ -12,8 +12,8 @@
 // and the argument is stored at +0x30 of the TC. The CScriptThing parameter's destructor
 // is inlined on both paths (vtable store, count-block release through the flag-tested
 // operator delete, fields nulled, then CBase::~CBase @ 0x0099A2E0). One of 28 bodies.
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 
 enum ETCInterfaceType { TC_FIRST = 0 };
 
@@ -60,7 +60,7 @@ struct CBase {
     ~CBase();                              // 0x0099A2E0 (sets the CBase vtable; manifest label propagated)
 };
 
-struct CScriptThing : CBase {             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
+class CScriptThing : public CBase { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
     CCountedPointer PImp;                  // +4 Data / +8 Info
     ~CScriptThing() { }
     CThing* GetThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }
@@ -85,7 +85,7 @@ struct CVectorMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x34];
     unsigned long m_34;                 // +0x34 flags
     unsigned char _pad2[0xc];
@@ -104,7 +104,7 @@ struct STC_30 {
     long m_30;                          // +0x30
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void SetWarningPhrase(CScriptThing thing, long value);
 };
 

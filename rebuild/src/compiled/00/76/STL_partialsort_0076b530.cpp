@@ -9,7 +9,7 @@
 //   comp(*i, *first) the inlined `__pop_heap(first, middle, i, _Tp(*i), comp, _Distance*)` stores *first into *i
 //   and sifts the saved value down from the root (`xor edx,edx`); VC holds the saved vector's X/Y on the x87 stack
 //   across the `*i = *first` copy. The trailing sort_heap is an out-of-line call.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
@@ -26,7 +26,7 @@ public:
 
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

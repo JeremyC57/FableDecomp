@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCFamilyMember {
+class CTCFamilyMember { public:
     void* vftable;
     int destroyed;
 };

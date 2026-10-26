@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float X; float Y; float Z; };
+class C3DVector { public: float X; float Y; float Z; };
 static int g_calls = 0;
 static long g_worldFrame = 1234;
 struct CThingCreatureBase_Calls {
@@ -11,7 +11,7 @@ struct CBaseIntelligentPointer_Calls {
     CThingCreatureBase_Calls* GetPItem() { return m_pItem; }
 };
 long GetWorldFrame_0049d870() { return g_worldFrame; }
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00() { }
     unsigned char _pad04[4];
     CBaseIntelligentPointer_Calls PCreature;

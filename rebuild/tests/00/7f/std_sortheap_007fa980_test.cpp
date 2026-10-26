@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -14,7 +14,7 @@ public:
     C3DVector Position;
     long      m_id;
 };
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;
     C3DVector PreferredLine;
     float     AngleCompare;
@@ -25,7 +25,7 @@ struct CVectorCompare_BestForTargeting {
     CVectorCompare_BestForTargeting() : AngleCompare(0), SqrDistCompare(0), OverrideShortDistanceFactor(0),
         OverrideShortDistanceFalloff(0), CompareInXYPlane(false) { }
 };
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero;
     CVectorCompare_BestForTargeting VectorCompare;
     float EnemyPreferenceFactor;

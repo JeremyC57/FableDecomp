@@ -8,15 +8,15 @@
 // Shape: the path string reuses the dead `name` argument slot; the save result is kept in bl across the two dtors.
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                         // 0x0099B510
     bool operator!=(const wchar_t* text) const;             // 0x0099B150
 };
 CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);   // 0x0099BF30
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();           // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     CWideString GetPathNameFromFileName(const CWideString& file, bool b) const;   // 0x00408120
     CWideString GetAutoSaveRegionLeavingPathName() const;   // 0x00407FD0
@@ -24,7 +24,7 @@ struct CUserProfileManager {
     CWideString GetAutoSaveRegionLeavingFileName() const;   // 0x00406730
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x102];
     bool          SerialisingHeroState;             // +0x102 (PDB +0x10E)
     bool SaveGameStateInternal(const CWideString& path, bool b);   // 0x0049F4C0

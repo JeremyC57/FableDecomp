@@ -3,7 +3,7 @@
 // runs Uninitialise (only when initialised), releases the counted texture (its destroy function at the last texture
 // reference) and frees the frame data.
 static int g_uninitialised = 0, g_texturesDestroyed = 0, g_framesFreed = 0, g_infosFreed = 0;
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void* data); void* Data; };
 static void DestroyTexture(void*) { ++g_texturesDestroyed; }
 struct CCountedPointer {
     void* Data; CCPPointerInfo* Info;
@@ -13,7 +13,7 @@ struct CCountedPointer {
         Data = 0; Info = 0;
     }
 };
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned long ReferenceCount; void* Data; CCountedPointer PTexture; unsigned char IsInitialised;
     void Uninitialise() { ++g_uninitialised; }
     ~CGraphicFrameData() { if (IsInitialised) Uninitialise(); }

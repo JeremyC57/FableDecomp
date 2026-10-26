@@ -4,11 +4,11 @@
 #include <vector>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct SVectorParam { unsigned long m_key; C3DVector m_value; SVectorParam(unsigned long k, const C3DVector& v) : m_key(k), m_value(v) {} };
 struct CParticleUpdateParameters { std::vector<SVectorParam> Vector; };
-struct CThing;
-struct CTCDParticleEmitter {
+class CThing;
+class CTCDParticleEmitter { public:
     CThing* AttachedTo; long AttachType; std::string Helper; CParticleUpdateParameters Params;
     void AttachToThing(CThing* t, long type, const std::string& h, int, int) { AttachedTo = t; AttachType = type; Helper = h; }
     void SetEmitterUpdateParameters(const CParticleUpdateParameters& p) { Params = p; }
@@ -19,12 +19,12 @@ struct CThingAppearance {
     bool HasHelperPoint(const char*) { return Helper; }
 };
 struct CPhysics { C3DVector Dir; C3DVector GetDirection() { return Dir; } };
-struct CThing { unsigned char m_flags91; CTCDParticleEmitter* Driver; CThingAppearance* Appearance; CPhysics* PhysicsTC; C3DVector Pos;
+class CThing { public: unsigned char m_flags91; CTCDParticleEmitter* Driver; CThingAppearance* Appearance; CPhysics* PhysicsTC; C3DVector Pos;
     bool HasTC(long) { return Driver != 0; } };
 static CThing* g_created; static long g_createdType;
 static CThing* CreateEffectThing(long type, const C3DVector*, bool) { g_createdType = type; return g_created; }
 static unsigned long Crc(const char*) { return 0x1234; }
-struct CThingShotDef { long AttachedContinuousEffect; bool UseEndTimeLineOnContinousEffect; };
+class CThingShotDef { public: long AttachedContinuousEffect; bool UseEndTimeLineOnContinousEffect; };
 struct CTCShotDefinitionBase {
     CThing* ParentThing; CThing* PEffect; const CThingShotDef* PShotDef;
     void InitAttachedEffects();

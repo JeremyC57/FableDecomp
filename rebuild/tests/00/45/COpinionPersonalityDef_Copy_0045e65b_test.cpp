@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct COpinionPersonalityDef;
+class COpinionPersonalityDef;
 
 extern "C" int printf(const char*, ...);
 

@@ -19,7 +19,7 @@ struct CTCInventoryBase {
     virtual ~CTCInventoryBase() { g_order[g_n++] = 'B'; }
 };
 struct CBase { virtual ~CBase() { g_order[g_n++] = 'C'; } };
-struct CTCInventoryTrade : CTCInventoryBase, CBase {
+class CTCInventoryTrade : public CTCInventoryBase, public CBase { public:
     CMember First;
     CMember Last;
     CTCInventoryTrade() : First('1'), Last('2') { }

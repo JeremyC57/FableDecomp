@@ -10,14 +10,14 @@
 //   Three CCharString::operator= 0x0099EFB0 calls per element at [esi+N]/[edi+N].
 struct random_access_iterator_tag { random_access_iterator_tag() { } };   // empty tag, passed by const reference
 
-struct CCharString {                            // 4-byte counted string handle
+class CCharString { public:                            // 4-byte counted string handle
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 namespace NQuestManager {
 struct CRuntimeQuestPersistence {
-    struct CPersistInfo {                       // Ego_r.pdb, 8 bytes
+    class CPersistInfo { public:                       // Ego_r.pdb, 8 bytes
         CCharString QuestName;                  // +0x00
         CCharString PersistScript;              // +0x04
     };

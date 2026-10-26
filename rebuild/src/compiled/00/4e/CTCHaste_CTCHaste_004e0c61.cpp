@@ -18,7 +18,7 @@
 
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                           // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -35,7 +35,7 @@ struct CHasteMultiplierMap {                     // std::map<void*, float> (reta
     CHasteMultiplierMap();                       // 0x004DF9A0
 };
 
-struct CTCHaste : CTCBase_Calls {                // vtable 0x012423CC
+class CTCHaste : public CTCBase_Calls { public:                // vtable 0x012423CC
     float               Multiplier;              // +0x0C
     bool                ToTerminate;             // +0x10
     long                PauseFrames;             // +0x14

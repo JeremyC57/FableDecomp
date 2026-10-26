@@ -5,7 +5,7 @@
 // a plain `return false`, the rest one `&&` chain (full-register 0/1). `!Dead` goes through an inline
 // `IsAlive()` returning bool: retail materialises it (`mov cl,al ; not cl ; test cl,1`); the direct bit test
 // merges Dead and InLimbo into one `test cl,21h`.
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad00[0x41];
     unsigned char AvailableInEditor : 1;             // +0x41 bit 0
     unsigned char AlwaysFrameUpdate : 1;             // bit 1
@@ -17,7 +17,7 @@ struct CThingBaseDef {
     unsigned char InMapSearches : 1;                 // bit 7
 };
 
-struct CThing {
+class CThing { public:
     void*           __vftable;                       // +0x00
     unsigned char   _pad04[0x70 - 0x04];
     CThingBaseDef*  PBaseDef;                        // +0x70 CDefPointer<CThingBaseDef const> (PDB +0x80)

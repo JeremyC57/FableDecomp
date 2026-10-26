@@ -41,11 +41,11 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void RemoveThingAndUpdateCameraPoints(CThing* thing);   // 0x0065B6DD
 };
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04
     unsigned char _pad_0x08[0x8];

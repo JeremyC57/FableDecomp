@@ -11,7 +11,7 @@
 // Shape: the names are assigned in the body (default construction, then operator=), so the two scalar
 // stores follow the assignments.
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     CCharString();                                    // 0x0099E4B0
     CCharString& operator=(const CCharString& other); // 0x0099EFB0

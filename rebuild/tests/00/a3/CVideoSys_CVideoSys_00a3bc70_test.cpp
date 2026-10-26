@@ -7,7 +7,7 @@
 #include <new>
 static int g_coInit = 0, g_subs = 0; static void* g_coArg = (void*)1;
 static long CoInitialize(void* r) { ++g_coInit; g_coArg = r; return 0; }
-struct CMovieSubtitles { unsigned char _body[0x2c]; CMovieSubtitles() { ++g_subs; } };
+class CMovieSubtitles { public: unsigned char _body[0x2c]; CMovieSubtitles() { ++g_subs; } };
 struct CVideoSys {
     void* GBuilder; void* MControl; void* MPosition; void* MSeeking; void* MEvent; void* BasicAudio; void* PAsfReader; void* PFileSource;
     void* TexRenderer; long PlayMode; long State; unsigned char RenderVideo; unsigned char _pad2d[3]; CMovieSubtitles Subtitles;

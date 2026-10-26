@@ -2,7 +2,7 @@
 // Shared test model: a thing with an interface presence bitset and a sorted {kind, component} map searched by lower bound
 // (the retail CThing::PeekTC / GetTC shape), and the CTCWillResponse response bits.
 struct STCEntry { long m_kind; void* m_pTC; };
-struct CThing {
+class CThing { public:
     unsigned long m_tcMask[9];
     STCEntry      m_entries[8];
     int           m_count;
@@ -34,7 +34,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCWillResponse {
+class CTCWillResponse { public:
     enum { INTERFACE_TYPE = 0x9c };
     bool IsForcePushable : 1;
     bool IsLifeDrainable : 1;

@@ -4,7 +4,7 @@
 // The chunk label is propagated; named by address. Shape: no vtable (a non-polymorphic class deleted with `delete`), `this` in esi, `test byte ptr [esp+8],1`, `ret 4`.
 #pragma optimize("s", on)
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                // 0x0099B510
 };

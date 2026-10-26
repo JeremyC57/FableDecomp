@@ -10,10 +10,10 @@
 // the string, so `this` is parked in esi across the call), the reader parses into
 // &TransVector->first[index], and the implicit traits destructor destroys the string. The module is
 // built without C++ exceptions (no EH frame around the string's lifetime).
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     CCharString();                         // 0x0099E4B0
     ~CCharString();                        // 0x0099EAE0

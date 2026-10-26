@@ -2,12 +2,12 @@
 #include <stdio.h>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector { float X, Y, Z; };
-struct C4DVector { float X, Y, Z, W; };
+class C3DVector { public: float X, Y, Z; };
+class C4DVector { public: float X, Y, Z, W; };
 struct SEngineSystem_01436e48 { C3DVector WindSheerHistory[256]; };
 static SEngineSystem_01436e48 g_sys;
 static SEngineSystem_01436e48* g_pEngineSystem_01436e48 = &g_sys;
-struct CEngineInternalPrimitiveRepeatedStaticMesh { float WindScaleFactor; };
+class CEngineInternalPrimitiveRepeatedStaticMesh { public: float WindScaleFactor; };
 struct CEnginePrimitiveManagerRepeatedStaticMeshes_Wind {
     void UpdateBoneMatrixForWindSheer(CEngineInternalPrimitiveRepeatedStaticMesh* primitive, C4DVector* matrices,
                                       unsigned char* delays, long count)

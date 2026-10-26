@@ -25,7 +25,7 @@ void ShadowSink::Push(void* v) {
     g_push++; g_push_this = this; g_push_v = v;
 }
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char   pad0[0x18];
     int    mode;
     char   pad1[0x24 - 0x1c];

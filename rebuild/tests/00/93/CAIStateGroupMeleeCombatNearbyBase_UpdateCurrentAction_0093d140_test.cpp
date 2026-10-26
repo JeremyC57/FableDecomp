@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThingCreatureBase { bool perf, free; int finished; bool IsPerformingAnyAction() { return perf; } bool IsFreeToFinishAction() { return free; } void FinishCurrentAction() { ++finished; } };
-struct CAIBrain { unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; };
+class CThingCreatureBase { public: bool perf, free; int finished; bool IsPerformingAnyAction() { return perf; } bool IsFreeToFinishAction() { return free; } void FinishCurrentAction() { ++finished; } };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; };
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase { unsigned char PEnemy[8]; void UpdateCurrentAction(); };
 void CAIStateGroup_MeleeCombatNearbyBase::UpdateCurrentAction() { if (PBrain->Creature->IsPerformingAnyAction() && PBrain->Creature->IsFreeToFinishAction()) PBrain->Creature->FinishCurrentAction(); }
 int main()

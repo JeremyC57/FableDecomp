@@ -10,15 +10,15 @@
 // overload leaves MemoryPool, StatsMemoryHandle, PackedNames and PackedNamesSize uninitialised and only
 // sets AnimatedFlag (+0x7A) from its bool argument. Every container has an inline constructor that
 // nulls its pointers and clears its flag.
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere {
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DBoundingSphere() { Center.X = 0.0f; Center.Y = 0.0f; Center.Z = 0.0f; Radius = 0.0f; }
 };
-struct C3DBoundingBox { C3DVector Min, Max; };
+class C3DBoundingBox { public: C3DVector Min, Max; };
 
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     CCharString();                         // 0x0099E4B0
 };
@@ -33,7 +33,7 @@ template <class T> struct CPreAllocVectorMap {   // retail: 16 bytes
     CPreAllocVectorMap() : Elements(0), Size(0), Dirty(false) { }
 };
 
-template <class T> struct CVectorMap {     // retail: 16 bytes
+template <class T> class CVectorMap { public:     // retail: 16 bytes
     T* m_pFirst;                           // +0
     T* m_pLast;                            // +4
     T* m_pEnd;                             // +8
@@ -42,20 +42,20 @@ template <class T> struct CVectorMap {     // retail: 16 bytes
     CVectorMap() : m_pFirst(0), m_pLast(0), m_pEnd(0), Dirty(false) { }
 };
 
-template <class T> struct CArray {         // retail: 12 bytes
+template <class T> class CArray { public:         // retail: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
     CArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
 
-struct CMovableResourceMemoryPool;
+class CMovableResourceMemoryPool;
 struct C3DHelperPointPair;                 // pair<ulong, C3DHelperPoint>
 struct C3DDummyObjectPair;                 // pair<ulong, C3DDummyObject>
 struct C3DMeshVolumePair;                  // pair<ulong, C3DMeshVolume>
-struct C3DGeneratorObject;
+class C3DGeneratorObject;
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();                    // vtable 0x0129CF04
     CMovableResourceMemoryPool*          MemoryPool;         // +0x04 (not initialised here)
     long                                 StatsMemoryHandle;  // +0x08 (not initialised here)

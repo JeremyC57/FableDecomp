@@ -14,7 +14,7 @@ struct CBase_006f83c0 {
     CBase_006f83c0(const CBase_006f83c0& other);     // 0x006F83C0
 };
 
-struct CCreatureAction_NymphGetHitDie : CBase_006f83c0 {
+class CCreatureAction_NymphGetHitDie : public CBase_006f83c0 { public:
     long m_extra;                          // +0x148
     virtual void v00();                    // own vtable; copy constructor implicit
     CBase_006f83c0* Clone();

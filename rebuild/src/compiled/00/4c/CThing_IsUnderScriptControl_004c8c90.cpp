@@ -5,7 +5,7 @@
 // Shape: the landed GetInterface out-parameter template; interface 0x1f is bit 31 of bitset word 0
 // (`mov eax,[ecx+20h] ; test eax,eax ; jns`). The missing-component exit is a plain `return false`
 // (`xor al,al`); the rest is one `||` expression (full-register 0/1). The component's flag is the byte at +0x18.
-struct CTCBase;
+class CTCBase;
 
 struct CTCScriptControl {
     unsigned char _pad00[0x18];
@@ -21,7 +21,7 @@ struct CInterfaceMap {                               // CVectorMap<ETCInterfaceT
     SEntry* LowerBound(const long* type) const;            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     void*               __vftable;                   // +0x00
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>

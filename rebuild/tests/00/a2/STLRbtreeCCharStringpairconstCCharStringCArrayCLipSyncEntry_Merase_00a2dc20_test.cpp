@@ -7,7 +7,7 @@ static int g_strings = 0;      // live strings
 static int g_frees = 0;
 static void Free(void* p) { ++g_frees; std::free(p); }
 
-struct CCharString {
+class CCharString { public:
     int id;
     void Init(int i) { id = i; ++g_strings; }
     void Destroy() { --g_strings; }

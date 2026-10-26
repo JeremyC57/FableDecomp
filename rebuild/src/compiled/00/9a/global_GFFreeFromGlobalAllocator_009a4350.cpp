@@ -6,7 +6,7 @@
 // Globals: the allocator @ 0x013CAA90, the destroy-when-empty flag (byte) @ 0x013CAA94. Shape: a `__fastcall` free function (the block in ecx, saved in esi);
 // the teardown is `delete` of the global (loaded into ecx, saved in esi) and the store of zero. The same body with a null test on the block and a
 // stack argument is CEngineLandscapeMemoryManager::FreeVirtual @ 0x00BD9B90; the chunk label (CEngineLandscapeMemoryManager::FreeVirtual) is propagated from it.
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void InternalDeallocate(void* block);          // 0x009F2920
     long GetAllocationCount();                     // 0x009F1F10
     ~CMemoryAllocator();                           // 0x009F2310

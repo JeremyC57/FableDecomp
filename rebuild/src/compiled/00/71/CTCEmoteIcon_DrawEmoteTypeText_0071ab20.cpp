@@ -17,7 +17,7 @@
 //   the focal point reuses the camera temporary's frame words; the font is a named local fetched first; the text
 //   primitive is a named local built from the white CRGBColour temporary and handed to the renderer.
 extern float g_EmoteTextHeight;                 // 0x01381044 (0.5f)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -25,17 +25,17 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float GetLengthSquared() const { float s = Z * Z; s += Y * Y; s += X * X; return s; }
 };
-struct CRGBColour {                             // D3DCOLOR byte order
+class CRGBColour { public:                             // D3DCOLOR byte order
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { Set(r, g, b, a); }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                             // 0x0099B510
 };
-struct CFontBank;
-struct CEnginePrimitiveText {                   // 0x2c bytes
+class CFontBank;
+class CEnginePrimitiveText { public:                   // 0x2c bytes
     unsigned char _base[0x20];
     CWideString   Text;                         // +0x20
     CFontBank*    PFont;                        // +0x24
@@ -43,18 +43,18 @@ struct CEnginePrimitiveText {                   // 0x2c bytes
     CEnginePrimitiveText(unsigned __int64 handle, const C3DVector& pos, float scale, const CWideString& text,
                          const CFontBank& font, const CRGBColour& colour, bool scaleIn3D, long interpolationSet);   // 0x004C3120
 };
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
     virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void AddPrimitive(const CEnginePrimitiveText& primitive);   // slot 20 (+0x50)
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CEnginePrimitiveRenderer* PRenderer;        // +0x34
 };
-struct CCamera {
+class CCamera { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual C3DVector GetPosition() const;      // slot 8 (+0x20)
@@ -62,7 +62,7 @@ struct CCamera {
 struct CTCGraphicAppearance {
     bool GetStaticFocalPosIfLoaded(C3DVector* pos);   // 0x004C11F0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned char _pad20[0x64 - 0x20];
@@ -70,12 +70,12 @@ struct CThing {
     CTCGraphicAppearance* GetGraphicAppearance() const { return PGraphicAppearance; }
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x16144];
     CFontBank* EmoteFont;                       // +0x16144
     CFontBank* GetEmoteFont() const { return EmoteFont; }
 };
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

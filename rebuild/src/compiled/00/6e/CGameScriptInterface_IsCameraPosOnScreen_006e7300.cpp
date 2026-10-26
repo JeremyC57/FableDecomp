@@ -6,7 +6,7 @@ struct CamObj {
     virtual bool onScreen(void* pos); // slot index 3 => 0xc
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v0();
     virtual void v1();
     virtual void v2();

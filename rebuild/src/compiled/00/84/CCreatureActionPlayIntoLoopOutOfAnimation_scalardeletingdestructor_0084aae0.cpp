@@ -16,7 +16,7 @@ struct CMember_0099eae0 {
     ~CMember_0099eae0();                            // 0x0099EAE0
 };
 
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     unsigned char _body[0xbc];
     ~CPhysicsMeshInfo();                             // 0x00693EF0
 };

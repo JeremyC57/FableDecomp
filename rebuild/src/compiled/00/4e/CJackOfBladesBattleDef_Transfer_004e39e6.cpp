@@ -12,12 +12,12 @@
 //   so the def base is a vptr + pad model.
 // Shape: each member goes by address in declaration order; the last member's address is formed in place
 //   (`add esi,7Ch ; push esi`), the natural `&RushAwayDistance` of the final call.
-struct CPersistContext {
+class CPersistContext { public:
     void TransferLong(long* value);              // 0x00431102
     void TransferFloat(float* value);            // 0x00431061
 };
 
-struct CJackOfBladesBattleDef {
+class CJackOfBladesBattleDef { public:
     virtual void v00();
     unsigned char _defBase[0x38];                // CDefClassBase / CParentDefClassBase (retail 0x3c bytes incl. vptr)
     float IdealShootDistance;                    // +0x3c

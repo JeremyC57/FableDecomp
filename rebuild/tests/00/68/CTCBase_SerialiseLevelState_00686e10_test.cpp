@@ -21,7 +21,7 @@ public:
     CStringParserCommentList Comments;
     CStringParser() { String = 0; }
 };
-struct CPersistContext { unsigned char _body[0x2c]; };
+class CPersistContext { public: unsigned char _body[0x2c]; };
 static bool g_begin = true, g_shouldSave = true;
 static int g_begins = 0, g_ends = 0, g_serialises = 0;
 static bool g_parserOk = false, g_argSeen = false;

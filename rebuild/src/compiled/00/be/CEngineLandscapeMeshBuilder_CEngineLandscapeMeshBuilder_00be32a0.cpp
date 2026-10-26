@@ -10,7 +10,7 @@ struct CBase {
     virtual void v0();
     CBase();                                            // 0x0099A2F0
 };
-struct CEngineLandscapeMeshBuilder : CBase {
+class CEngineLandscapeMeshBuilder : public CBase { public:
     unsigned long m_state[0x121];                       // +0x04 .. +0x487, zero-filled
     CEngineLandscapeMeshBuilder();
     void Initialise();                                  // 0x00BE3110

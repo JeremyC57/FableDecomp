@@ -14,19 +14,19 @@
 // the base destructor call follows), then the base.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CBankFile {                                 // polymorphic base, 0x110 bytes
+class CBankFile { public:                                 // polymorphic base, 0x110 bytes
     virtual ~CBankFile();                          // 0x009CE180
     unsigned char _body[0x10c];
     CBankFile();
 };
 
-struct CBankStateBlock {                           // vtable 0x0129C82C
+class CBankStateBlock { public:                           // vtable 0x0129C82C
     virtual void v00();
     unsigned char _body[0x0c];
     CBankStateBlock() { }
@@ -41,7 +41,7 @@ struct CFontArray {                                // CArray<...>, 0x0c bytes
     ~CFontArray() { if (m_pData) free(m_pData); }
 };
 
-struct CFontDataBank : CBankFile {                 // vtable 0x0129DA84
+class CFontDataBank : public CBankFile { public:                 // vtable 0x0129DA84
     CBankStateBlock m_stateBlock;                  // +0x110
     CFontArray      m_fonts;                       // +0x120
     CCharString     m_name;                        // +0x12c

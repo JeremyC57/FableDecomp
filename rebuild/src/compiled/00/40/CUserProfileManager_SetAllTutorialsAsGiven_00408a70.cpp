@@ -11,12 +11,12 @@
 // Shape: CCharString::EndsWith is an inline member (length difference, then the strcmp intrinsic on the tail).
 #include <string.h>
 #pragma intrinsic(strcmp)
-struct CCharStringData { const char* PData; long Length; };
-struct CWideString {
+class CCharStringData { public: const char* PData; long Length; };
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                         // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     CCharString(const CCharString& other);                  // 0x0099EC30
@@ -43,22 +43,22 @@ template <class T> struct vector {                          // STLport vector: {
     T* _M_end_of_storage;
     T& operator[](unsigned int i) { return _M_start[i]; }
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char       _pad000[0x91c];
     vector<CCharString> TutorialText;                       // +0x91c
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();                     // 0x00438570
-struct CHeroLogBook {
+class CHeroLogBook { public:
     void AddLogEntry(const CWideString& title, const CWideString& heading, const CWideString& text, long category, bool given);   // 0x0047A9F0
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad000[0xf8];
     CHeroLogBook* PHeroLogBook;                             // +0xf8 (CCountedPointer data)
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                               // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                          // +0x1c
 };
@@ -82,7 +82,7 @@ struct CTutorialCategoryVector {                            // STLport vector<ET
         }
     }
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char           _pad00[0x8c];
     CTutorialCategoryVector GivenTutorialCategories;        // +0x8c
     void SetAllTutorialsAsGiven();

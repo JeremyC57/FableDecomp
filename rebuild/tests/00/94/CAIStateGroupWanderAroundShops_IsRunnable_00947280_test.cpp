@@ -19,7 +19,7 @@ static int fails = 0;
 //          GetPItem. Separate `mov al,1` / `xor al,al` exits (nested success path).
 // Layout: engine/CAIStateGroup_WanderAroundShops.h (Shop +0x14, PrettyThing +0x1c, NextFrameBuy +0x24) over the landed
 //          CAIStateGroupBase model (the header flattens the vptr, so the base is modelled locally).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -28,7 +28,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -76,17 +76,17 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIStateGroupBase;
-struct CTCIdleScheduler {                       // interface 211
+class CAIStateGroupBase;
+class CTCIdleScheduler { public:                       // interface 211
     bool IsPreferredIdle(CAIStateGroupBase* group);   // 0x00801BE0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

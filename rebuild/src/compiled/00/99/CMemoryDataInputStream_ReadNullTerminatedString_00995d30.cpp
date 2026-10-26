@@ -8,8 +8,8 @@
 //   +0x0c uint8  flags0C
 //   +0x0d..0x10  owners (packed, unaligned)
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char*      text;
     fable_u32  length;
     fable_u32  unknown08;
@@ -21,8 +21,8 @@ struct CCharStringData
 // CCharString ABI: a single storage pointer (sizeof == 4), see fable_string.h.
 // Real member functions (default calling convention = thiscall) model the
 // retail ctor/copy-ctor/dtor calls without an extra fastcall 'edx' slot.
-struct CCharString
-{
+class CCharString
+{ public:
     CCharStringData* storage_;
 
     CCharString(const char* text, long length);
@@ -39,8 +39,8 @@ struct CCharString
 //   +0x10 chunkPosition      (unused here)
 //   +0x14 chunkLength        (current chunk length, tracks position)
 //   +0x18 sourceBase         (full source base pointer)
-struct CMemoryDataInputStream
-{
+class CMemoryDataInputStream
+{ public:
     void**   vtable;
     long     position;      // +0x04
     long     sourceLength;  // +0x08

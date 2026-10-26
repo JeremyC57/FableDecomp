@@ -1,8 +1,8 @@
 // Behaviour test for 0x008FD1B0: DestroyItem kills the carried item of the named definition and clears the slot.
 #include <cstdio>
 #include <cstring>
-struct CThing { bool killed; void Kill(bool) { killed = true; } };
-struct CTCCarrying {
+class CThing { public: bool killed; void Kill(bool) { killed = true; } };
+class CTCCarrying { public:
     CThing* slot[4]; bool removed[4];
     CThing* GetThingInCarrySlot(long i) { return slot[i]; }
     CThing* RemoveThingInCarrySlot(long i, bool) { removed[i] = true; CThing* t = slot[i]; slot[i] = 0; return t; }

@@ -8,14 +8,14 @@ struct CReactionMatchList {
     CReactionMatchList() { SNode* head = (SNode*)std::malloc(sizeof(SNode)); head->m_next = head; head->m_prev = head; m_node = head; ++g_heads; }
     ~CReactionMatchList() { std::free(m_node); --g_heads; }
 };
-struct CDataOutputStream { int id; };
-struct CMemoryDataInputStream { int id; };
+class CDataOutputStream { public: int id; };
+class CMemoryDataInputStream { public: int id; };
 struct CPersistTraitsReactionMatchList {
     CReactionMatchList m_scratch;
     void TransferBinaryOut(CDataOutputStream* s, CReactionMatchList* v) { if (s && v && m_scratch.m_node->m_next == m_scratch.m_node) ++g_out; }
     void TransferBinaryIn(CMemoryDataInputStream* s, CReactionMatchList* v) { if (s && v) ++g_in; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long m_mode; CMemoryDataInputStream* m_pLoadStream; CDataOutputStream* m_pSaveStream;
     void CheckCRC(const char* name) { if (name[0] == 0) ++g_crc; }
     void Transfer(CReactionMatchList* value)

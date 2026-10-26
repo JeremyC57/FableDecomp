@@ -16,13 +16,13 @@
 // `for` with `return false` rotates the loop instead.
 #include "engine/CContainmentVolume.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CPlane {
+class CPlane { public:
     C3DVector Normal;
     float     Distance;
     __forceinline float GetSignedDistance(const C3DVector& point) const
@@ -31,7 +31,7 @@ struct CPlane {
     }
 };
 
-struct CIsContainingPartOfSphere {
+class CIsContainingPartOfSphere { public:
     C3DVector Point;
     float     Radius;
     __forceinline bool operator()(const CPlane& plane) const

@@ -8,12 +8,12 @@
 // words +0x14/+0x18, then two CIntelligentPointers +0x1C/+0x24 (SetPItem(other.GetPItem()), 0x00A01B50 / 0x00A01B90).
 // The manifest's `_Copy_backward<pair<CCharString,C3DHelperPoint>*>` label is propagated (this is a forward copy of a
 // 0x2C-byte record); the record stays descriptive.
-struct CCharString {                         // one-word handle
+class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
     virtual void v00();
@@ -23,11 +23,11 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThing;
+class CThing;
 
 struct SRecord2C {                           // 0x2C bytes
     CCharString                 Name;        // +0x00

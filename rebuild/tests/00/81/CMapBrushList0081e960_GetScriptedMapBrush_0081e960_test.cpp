@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
-struct CCharString { CCharStringData* m_pData;
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
+class CCharString { public: CCharStringData* m_pData;
     bool operator==(const CCharString& other) const { CCharStringData* a = m_pData; CCharStringData* b = other.m_pData; if (a == b) return true;
         if (a && b && a->m_length == b->m_length) return std::strcmp(a->m_pData, b->m_pData) == 0; return false; } };
 struct CModeBlock { unsigned char _pad[0x48]; CCharString m_name; CCharString& GetName() { return m_name; } };

@@ -4,7 +4,7 @@
 // Shape: every availability access re-indexes available[i] (no named slot reference); the restore after the recursion is
 //   current, remaining, then the flag; best is homed in the frame because std::min takes it by reference; the fresh-block
 //   arm restores its flag and `break`s to the shared `return best`.
-template <class T> struct CArray {                 // retail 12-byte STLport-style vector
+template <class T> class CArray { public:                 // retail 12-byte STLport-style vector
     T* m_first;
     T* m_last;
     T* m_end;

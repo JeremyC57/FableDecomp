@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSkeletalMorph {
     long       GroupID;
     CDefString Name;
@@ -16,7 +16,7 @@ template<class T1, class T2> struct pair {
     pair() : first() { }
 };
 typedef pair<long, CSkeletalMorph> TEntry;
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };

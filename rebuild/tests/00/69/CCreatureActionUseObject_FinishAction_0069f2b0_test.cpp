@@ -2,13 +2,13 @@
 // physics params block holding the creature's position/orientation and the params are deleted and cleared.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CTCParamsPhysicsBase { C3DVector Position; CRightHandedSet Rhs; CTCParamsPhysicsBase(const C3DVector& p, const CRightHandedSet& r) : Position(p), Rhs(r) { } };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CTCParamsPhysicsBase { public: C3DVector Position; CRightHandedSet Rhs; CTCParamsPhysicsBase(const C3DVector& p, const CRightHandedSet& r) : Position(p), Rhs(r) { } };
 static int g_deleted = 0;
 struct CUseObjectParams { virtual ~CUseObjectParams() { ++g_deleted; } const char* GetTCName() { return "CTCUseable"; } };
 struct CPhysics { C3DVector Position; CRightHandedSet rhs; const CRightHandedSet& GetRHS() { return rhs; } };
-struct CThing {
+class CThing { public:
     CPhysics physics; char added[32]; CTCParamsPhysicsBase* seen; float seenX, seenUpZ;
     CPhysics* GetPhysics() { return &physics; }
     void AddTC(const char* name, bool, CTCParamsPhysicsBase* p) { std::strcpy(added, name); seenX = p->Position.X; seenUpZ = p->Rhs.Up.Z; }

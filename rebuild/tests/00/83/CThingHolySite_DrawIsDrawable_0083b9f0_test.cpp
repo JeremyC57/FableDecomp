@@ -1,17 +1,17 @@
 #include <cstdio>
 // Behaviour test for CThingHolySite::DrawIsDrawable (0x0083B9F0): engine flag AND base predicate.
-struct CDisplayEngine {
+class CDisplayEngine { public:
     bool enabled;
     bool IsDrawingEnabled() { return enabled; }
 };
-struct CThing {
+class CThing { public:
     CDisplayEngine* engine;
     bool baseDrawable;
     int baseCalls;
     CDisplayEngine* GetDisplayEngine() { return engine; }
     bool BaseDrawIsDrawable() { ++baseCalls; return baseDrawable; }
 };
-struct CThingHolySite : CThing {
+class CThingHolySite : public CThing { public:
     bool DrawIsDrawable() { return GetDisplayEngine()->IsDrawingEnabled() && BaseDrawIsDrawable(); }
 };
 int main()

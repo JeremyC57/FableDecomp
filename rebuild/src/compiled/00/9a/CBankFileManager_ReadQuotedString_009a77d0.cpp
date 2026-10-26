@@ -12,7 +12,7 @@
 #include <string.h>
 #pragma intrinsic(memcpy)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                          // 0x0099E4B0
     CCharString(const CCharString& other);  // 0x0099EC30
@@ -20,7 +20,7 @@ struct CCharString {
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass { virtual ~CBaseClassNonCopyable(); };
 struct CDataStream : CBaseClassNonCopyable {
     virtual ~CDataStream();
@@ -28,7 +28,7 @@ struct CDataStream : CBaseClassNonCopyable {
     virtual unsigned long GetPosition() const = 0;          // slot 2 (+8)
     virtual void Close() = 0;
 };
-struct CDataInputStream : CDataStream {
+class CDataInputStream : public CDataStream { public:
     unsigned long StreamPos;                 // +0x04
     long StreamSize;                         // +0x08
     void* CurrentSourcePtr;                  // +0x0c

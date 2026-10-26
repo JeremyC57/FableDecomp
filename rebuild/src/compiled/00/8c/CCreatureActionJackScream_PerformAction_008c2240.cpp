@@ -13,23 +13,23 @@
 // Shape: the track-name filter is a named local built before the position (the box is an argument temporary); the
 //   marker and the target computation sit in a block of their own (so the 0x46 lookup key and the dummy name reuse the
 //   marker's frame word); the marker branch loads target.Z for the shared `fadd 1.4`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct C2DBoxI {
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     CCharString(const CCharString& other);                   // 0x0099EC30
     ~CCharString();                                          // 0x0099EAE0
 };
-struct CThingFilter_HasTrackName {
+class CThingFilter_HasTrackName { public:
     CCharString Name;
     CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
 };
@@ -47,7 +47,7 @@ struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
                         CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -81,13 +81,13 @@ public:
         return false;
     }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, CThing** out) const;   // 0x007FD110
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetHeightZBelowPos(const C3DVector& position);     // 0x0063E480
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();                         // 0x006A1440
     void RemoveThingFromPrimarySlot(bool drop);              // 0x006A1E00
 };
@@ -103,7 +103,7 @@ struct CModeJackOfBladesScream {
     unsigned char   _pad95[0xa4 - 0x95];
     C3DVector       SwordTarget;                             // +0xa4
 };
-struct CCombatActionBase {                                   // retail sizeof 0x114
+class CCombatActionBase { public:                                   // retail sizeof 0x114
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                       // +0x08
@@ -112,7 +112,7 @@ struct CCombatActionBase {                                   // retail sizeof 0x
     CThingSearchTools* GetThingSearchTools() const;          // 0x00692990
     CWorldMap* GetWorldMap() const;                          // 0x00692C10
 };
-struct CCreatureAction_JackScream : CCombatActionBase {
+class CCreatureAction_JackScream : public CCombatActionBase { public:
     CModeJackOfBladesScream* PMode;                          // +0x114 CCountedPointer object
     void*                    PModeCount;                     // +0x118
     virtual void PerformAction();

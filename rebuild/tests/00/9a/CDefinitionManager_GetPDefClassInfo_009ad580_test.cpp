@@ -20,8 +20,8 @@ static unsigned int Calc(unsigned int seed, const void* data, unsigned int n)
     return crc;
 }
 
-struct CCharStringData { const char* PData; unsigned int StringLength; };
-struct CCharString {
+class CCharStringData { public: const char* PData; unsigned int StringLength; };
+class CCharString { public:
     CCharStringData* PStringData;
     unsigned int GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->PData; }
@@ -52,7 +52,7 @@ struct CDefClassInfoMap {
         return it;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefClassInfoMap DefClassInfo;
     CDefClassInfo* GetPDefClassInfo(unsigned int key)
     {

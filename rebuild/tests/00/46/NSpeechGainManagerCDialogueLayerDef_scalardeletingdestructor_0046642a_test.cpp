@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch { void** vftable; };
+class CLandscapeBackgroundPatch { public: void** vftable; };
 void* g_CLandscapeBackgroundPatch_vftable;
 int g_deleted = 0;
 void __fastcall CDialogueLayerDef_dtor(CLandscapeBackgroundPatch*) {}

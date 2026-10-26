@@ -17,18 +17,18 @@
 // x87 stack; the RHW is a void helper over the vertex reference whose three arms assign (the first an integer copy) and
 // whose z reads go back to memory.
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CTVertexRHWColSpecTex1 {                        // 32 bytes
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CTVertexRHWColSpecTex1 { public:                        // 32 bytes
     float X, Y, Z, RHW;
     unsigned long Diffuse;
     unsigned long Specular;
     float U, V;
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI();
 };
-struct CTexture {
+class CTexture { public:
     C2DExtentsI GetDimensions(unsigned long mip) const;   // 0x009F9DB0
 };
 struct CTextureQuadUVs {
@@ -56,7 +56,7 @@ struct CCountedPointer_CTexture {
         m_pCount = 0;
     }
 };
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned long            ReferenceCount;           // +0x00
     void*                    Data;                     // +0x04
     CCountedPointer_CTexture PTexture;                 // +0x08
@@ -71,7 +71,7 @@ struct CGraphicFrameData {
             Uninitialise();
     }
 };
-struct CGraphicFrame {
+class CGraphicFrame { public:
     CGraphicFrameData* FrameData;
     CGraphicFrame() : FrameData(0) { }
     __forceinline ~CGraphicFrame()
@@ -87,7 +87,7 @@ struct CGraphicFrame {
         }
     }
 };
-struct CGraphicInfo {                                  // 0x2c bytes
+class CGraphicInfo { public:                                  // 0x2c bytes
     unsigned char _pad[0x2c];
     bool GetFrame(CGraphicFrame& frame, unsigned long frameIndex, unsigned long a, unsigned long flags) const;   // 0x009FF8D0
 };
@@ -98,7 +98,7 @@ template <class T> struct CRetailVector {
     unsigned long size() const { return end() - begin(); }
     const T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     unsigned char               _pad[0x1e0];
     CRetailVector<CGraphicInfo> m_records;             // +0x1e0
     __forceinline const CGraphicInfo* Get(unsigned long index) const { return index < m_records.size() ? &m_records[index] : 0; }

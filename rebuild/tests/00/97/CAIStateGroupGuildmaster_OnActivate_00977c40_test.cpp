@@ -3,23 +3,23 @@
 #include <cstring>
 #include <vector>
 
-struct C3DVector { float X, Y, Z; };
-struct CTCCreatureModeManager {
+class C3DVector { public: float X, Y, Z; };
+class CTCCreatureModeManager { public:
     int modes[4]; int n;
     bool HasMode(unsigned long m) { for (int i = 0; i < n; ++i) if (modes[i] == (int)m) return true; return false; }
     bool AddMode(unsigned long m) { modes[n++] = (int)m; return true; }
 };
-struct CThing {
+class CThing { public:
     C3DVector pos; const char* track; CTCCreatureModeManager* modes;
     const C3DVector& GetPosition() { return pos; }
     void GetInterface(CTCCreatureModeManager** o, long t) { if (t == 0x31) *o = modes; }
 };
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY; C2DBoxI(long a, long b, long c, long d) : MinX(a), MinY(b), MaxX(c), MaxY(d) { } };
-struct CCharString { const char* s; CCharString(const char* t, long = -1) : s(t) { } };
-struct CThingFilter_HasTrackName { CCharString Name; CThingFilter_HasTrackName(const CCharString& n) : Name(n) { } };
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; C2DBoxI(long a, long b, long c, long d) : MinX(a), MinY(b), MaxX(c), MaxY(d) { } };
+class CCharString { public: const char* s; CCharString(const char* t, long = -1) : s(t) { } };
+class CThingFilter_HasTrackName { public: CCharString Name; CThingFilter_HasTrackName(const CCharString& n) : Name(n) { } };
 static CThing* g_world[8]; static int g_nworld;
 static C2DBoxI g_lastBox(0, 0, 0, 0);
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, std::vector<CThing*>& out) const
     {
         g_lastBox = area;
@@ -32,7 +32,7 @@ struct CThingSearchTools {
     }
 };
 struct CIntelligentPointer { CThing* item; CIntelligentPointer(CThing* p) : item(p) { } };
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 static int g_bodyguards;
 
 struct CAIStateGroup_Guildmaster {

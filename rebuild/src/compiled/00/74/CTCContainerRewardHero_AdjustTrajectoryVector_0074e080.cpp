@@ -7,8 +7,8 @@ extern float g_half; // 0x0122F59C
 extern float g_vector_scale; // 0x01238170
 extern float g_bias_base; // 0x0122DED8
 extern float g_bias_scale; // 0x012305A0
-struct C3DVector { float X,Y,Z; };
-struct CTCContainerRewardHero { void AdjustTrajectoryVector(int, C3DVector*); };
+class C3DVector { public: float X,Y,Z; };
+class CTCContainerRewardHero { public: void AdjustTrajectoryVector(int, C3DVector*); };
 void CTCContainerRewardHero::AdjustTrajectoryVector(int bias, C3DVector* v) {
     float x=v->X, y=v->Y, z=v->Z;
     float lengthSquared=x*x+y*y+z*z;

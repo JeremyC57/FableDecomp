@@ -11,8 +11,8 @@
 // its Y is ever stored); the bool argument is unused.
 #include <string.h>
 
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
 extern const C2DCoordI g_BlockNeighbourOffsets[9];          // 0x01385978
 
 struct CFloatVector {                                        // STLport vector<float> (12 bytes)
@@ -33,8 +33,8 @@ struct CFloatVector {                                        // STLport vector<f
     void clear() { erase(begin(), end()); }
 };
 
-struct CGameDefinitionManager { };
-struct CWorldMap {
+class CGameDefinitionManager { public: };
+class CWorldMap { public:
     const CGameDefinitionManager& PeekDefinitionManager() const;      // 0x004FB310
     bool IsPosPassable(const C2DCoordI& pos) const;                   // 0x004FCBD0
     void GetImpassabilityFactorAround(const C3DVector& pos, CFloatVector& factors, bool unused) const;

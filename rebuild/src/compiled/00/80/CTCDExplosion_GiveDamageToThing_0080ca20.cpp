@@ -27,7 +27,7 @@ class CBaseObject;
 class CThing;
 namespace NHitLocations { class CHitLocation; }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -117,7 +117,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                     // 0x00A01C10
     void SetPItem(CBaseObject* item);               // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
@@ -128,7 +128,7 @@ template <class T> struct CRetailVector {           // STLport vector (12 bytes)
     void push_back(const T& value);                 // 0x004AD520
 };
 
-struct CExplosionDef {
+class CExplosionDef { public:
     unsigned char _pad00[0x38];
     bool DamageFalloffWithRadius;                   // +0x38
     unsigned char _pad39[0x65 - 0x39];

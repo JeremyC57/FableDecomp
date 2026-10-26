@@ -9,7 +9,7 @@
    members; the tail call reuses the incoming ecx/edx unchanged, which the
    compiler emits as a plain jmp. */
 
-struct COpinionDeedEffectsDef;
+class COpinionDeedEffectsDef;
 
 /* Forwarding target (relocation-masked). Same calling convention/signature so
    the incoming this + arg pass straight through as a tail jmp. */

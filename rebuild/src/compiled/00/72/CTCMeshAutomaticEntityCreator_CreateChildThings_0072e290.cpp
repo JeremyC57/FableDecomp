@@ -14,7 +14,7 @@
 //   followed by the storage free.
 #include <stdlib.h>
 #include "engine/CTCBase.h"
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -22,7 +22,7 @@ struct CCharString {
     bool operator!=(const CCharString& other) const;    // 0x0099E900
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct CBaseClass {                                     // the CStringParser root (polymorphic)
+class CBaseClass { public:                                     // the CStringParser root (polymorphic)
     virtual void v00();
     ~CBaseClass();                                      // 0x0099A2E0
 };
@@ -45,7 +45,7 @@ struct CStringParserCommentList {                       // STLport list<CStringP
         free(_M_node);
     }
 };
-struct CStringParser : CBaseClass {                     // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                     // retail 0x28 bytes
     char*                    String;                    // +0x04
     unsigned long            BaseLineOffset;            // +0x08
     CCharString              Filename;                  // +0x0c
@@ -78,7 +78,7 @@ struct CCharStringVector {                              // STLport vector<CCharS
 struct CTCGraphicAppearance {
     void GetAllDummyObjectNames(CCharStringVector& names);   // 0x004BDB40
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* GraphicAppearance;            // +0x64
 };

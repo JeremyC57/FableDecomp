@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CWifeDef
-{
+class CWifeDef
+{ public:
     void* vftable;
 };
 extern void* const g_CWifeDef_vftable;

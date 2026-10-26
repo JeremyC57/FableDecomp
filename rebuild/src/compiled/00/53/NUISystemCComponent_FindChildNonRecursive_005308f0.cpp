@@ -8,7 +8,7 @@
 //   identity/null/length condition, then `Compare(...) ? false : true`). The child's name is read through the inline
 //   GetName() reference (`add eax,20h ; mov eax,[eax]`); the loop is `for (long i = size() - 1; i != -1; --i)` over
 //   `Children[i]` (STLport `*(begin() + n)`), strength-reduced to an element pointer walking down by 8.
-struct CCharStringData {                                        // the shared string block
+class CCharStringData { public:                                        // the shared string block
     const char*   m_pData;                                      // +0x00
     unsigned long m_length;                                     // +0x04
 };
@@ -30,7 +30,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
 }
 #pragma auto_inline(on)
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                      // 0x0099EC30
     ~CCharString();                                             // 0x0099EAE0

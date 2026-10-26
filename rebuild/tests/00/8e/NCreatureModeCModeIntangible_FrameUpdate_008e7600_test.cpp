@@ -2,7 +2,7 @@
 // Behaviour test for NCreatureMode::CModeIntangible::FrameUpdate (retail 0x008E7600): the mode tracks the boss phase
 // (interface 0xad); when the phase changes, or a running timer reaches zero, the mode manager (interface 0x31) removes the
 // intangible mode (0x51).
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -55,12 +55,12 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
-struct CTCBoss : CTCBase {
+class CThing : public CThingLookup { public: };
+class CTCBoss : public CTCBase { public:
     long Phase;
     long GetBossPhase() const { return Phase; }
 };
-struct CTCCreatureModeManager : CTCBase {
+class CTCCreatureModeManager : public CTCBase { public:
     int removals;
     long removed;
     void RemoveMode(long type) { ++removals; removed = type; }

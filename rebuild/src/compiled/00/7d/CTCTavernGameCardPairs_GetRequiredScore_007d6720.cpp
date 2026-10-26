@@ -14,11 +14,11 @@
 // Shape: both returns build straight into the hidden result (no named result, so no copy-out); the CDefPointer dtor
 //        releases through the def's DecRef/GetRefCount pair and clears the field (`mov edx,edi ; test edx,edx`, the
 //        dead null store elided), expanded at both returns.
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -36,7 +36,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0xb4];
     unsigned long RequiredScore;                // +0xbc
     void ReleaseTemporary()
@@ -59,7 +59,7 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
     CWideString GetText(unsigned long id);      // 0x005E9E70

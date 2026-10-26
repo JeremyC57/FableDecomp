@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCHitOnCollision {
+class CTCHitOnCollision { public:
     void* vftable;
     int destroyed;
 };

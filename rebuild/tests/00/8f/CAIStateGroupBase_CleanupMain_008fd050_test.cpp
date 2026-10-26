@@ -1,17 +1,17 @@
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 static int g_removed = 0, g_replace = 0, g_cleanup = 0;
-struct CTCBase { void OnStateGroupRemoved() { ++g_removed; } };
-struct CThingAICreature { unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
+class CTCBase { public: void OnStateGroupRemoved() { ++g_removed; } };
+class CThingAICreature { public: unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); } };
-struct CAIBrain { void* __vftable; unsigned char _pad[0x14]; CThingAICreature* Creature; };
-struct CAIStateGroupBase { CAIBrain* PBrain;
+class CAIBrain { public: void* __vftable; unsigned char _pad[0x14]; CThingAICreature* Creature; };
+class CAIStateGroupBase { public: CAIBrain* PBrain;
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {} virtual void v08() {}
     virtual void Cleanup() { ++g_cleanup; } virtual void OnReplace() { ++g_replace; } void CleanupMain(); };
 void CAIStateGroupBase::CleanupMain()

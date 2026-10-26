@@ -11,11 +11,11 @@
 // Shape: the filter is a scoped frame object; each wait is `while (!test) { NewScriptFrame(); if (IsDone()) return; }`
 //   followed by `if (IsDone()) return;`; the outer loop is a top-tested `while (!IsDone())` after the first frame and
 //   its own early-out test.
-struct CScriptThing {                          // 12 bytes
+class CScriptThing { public:                          // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };
-struct CGameScriptInterface {                 // vtable slots per ghidra_out/cgsi_slots_aligned.tsv
+class CGameScriptInterface { public:                 // vtable slots per ghidra_out/cgsi_slots_aligned.tsv
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();                               // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

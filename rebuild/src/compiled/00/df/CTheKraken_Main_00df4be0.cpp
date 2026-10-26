@@ -12,18 +12,18 @@
 // Layout: entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18 (Ego_r.pdb CTheKraken).
 // Shape: the landed CKrakenMinion::Main 0x00DF4610 filter / handle model and the CMK_GHC_HERO3::Main 0x00D29DB0
 //   cast-map / destructor-less movie model; a first handle is constructed (never used) before the health wait.
-struct CScriptThing {                          // 12 bytes
+class CScriptThing { public:                          // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
     ~CScriptThing();                          // 0x004AA840
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CBaseObject {                           // CBaseIntelligentPointer root (vtable 0x0129A7D8 stored by its ctor)
+class CBaseObject { public:                           // CBaseIntelligentPointer root (vtable 0x0129A7D8 stored by its ctor)
     virtual void v00();
     void* m_pIntelligentPointer;               // +0x04
     CBaseObject();                             // 0x0099A380
@@ -40,7 +40,7 @@ struct CCountedPointerWords {                  // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                 // +0x08 Data, +0x0c Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
@@ -53,7 +53,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                       // 0x006E7AB0
 };
 struct CMovieImpWords { void* Data; void* Info; };
-struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4; destructor-less view, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                       // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
@@ -72,7 +72,7 @@ struct CCutsceneCastMap {                      // map<CCharString, CScriptGameRe
 struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20) StartScriptingEntity

@@ -1,5 +1,5 @@
 // CTCEnemy::OnInitialActivate @ 0076c830
-struct CTCEnemy;
+class CTCEnemy;
 
 // g_global singleton at 0x13b8790; its method is a real __fastcall member
 struct GlobalThing {

@@ -16,12 +16,12 @@
 //   +0x15c, FadeOutStart +0x160, FadeInStart +0x164, FadeInEnd +0x168. CParticleSystem: flag byte +0x50 (Enabled bit 1,
 //   Dead bit 2, Visible bit 5), GlobalAlpha +0x54, FadeAlpha +0x58 (landed 0x00AF4660). CEnginePrimitivePrepareInfo engine
 //   +0x34 (landed 0x00AEB2D0).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DBoundingSphere() : Center(0.0f, 0.0f, 0.0f), Radius(0.0f) {}
@@ -29,10 +29,10 @@ struct C3DBoundingSphere {
     void Set(const C3DVector& center, float radius) { Center = center; Radius = radius; }
     void AddToBounds(const C3DVector& center, float radius);   // 0x00ADDD80
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Translation;
 };
-struct CIEngine {
+class CIEngine { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -40,7 +40,7 @@ struct CIEngine {
     virtual void v20();
     virtual bool IsSphereVisible(const C3DBoundingSphere& sphere);   // slot 21 (+0x54)
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[4];
     float         AlwaysUpdateDistance;                // +0x04
     unsigned char _pad08[0x1c];
@@ -53,7 +53,7 @@ struct CParticleUpdateParameters {
     void*         __vftable;                           // +0x00
     unsigned char _maps[0x20];                         // +0x04 VectorParams, UpdateParams
 };
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char _state00[0x50];
     bool Initialised : 1;                              // +0x50
     bool Enabled : 1;

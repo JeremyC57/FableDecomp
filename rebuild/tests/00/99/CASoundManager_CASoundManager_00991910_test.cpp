@@ -3,10 +3,10 @@
 // installed, its resource list gets the init memory budget and a zero unload delay.
 #include <cstdio>
 #include <cmath>
-struct CResourceList { long MaximumMemory; unsigned long UnloadDelay; int makeFreeCalls;
+class CResourceList { public: long MaximumMemory; unsigned long UnloadDelay; int makeFreeCalls;
     void SetMaximumMemory(unsigned long m) { MaximumMemory = (long)m; ++makeFreeCalls; } };
-struct CResourceBank { CResourceList ResourceList; CResourceBank() { ResourceList.MaximumMemory = -1; ResourceList.UnloadDelay = 77; ResourceList.makeFreeCalls = 0; } };
-template <class T> struct CCountedPointer {
+class CResourceBank { public: CResourceList ResourceList; CResourceBank() { ResourceList.MaximumMemory = -1; ResourceList.UnloadDelay = 77; ResourceList.makeFreeCalls = 0; } };
+template <class T> class CCountedPointer { public:
     T* Data; int resets;
     CCountedPointer() : Data(0), resets(0) { }
     void Reset(T* item) { delete Data; Data = item; ++resets; }

@@ -2,10 +2,10 @@
 #include <cstring>
 // Behaviour of CWADFile::Open (0x00A39CC0): the entry index is the bank's lookup of the CRC of the narrowed name
 // (crc0 over its text, the empty text when the string has no data), and the file position is rewound.
-struct CCharStringData { const char* m_pText; unsigned long m_length; };
+class CCharStringData { public: const char* m_pText; unsigned long m_length; };
 static const char g_EmptyString[] = "";
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString() : m_pData(0) { ++g_live; }
     CCharString(const CCharString& o) : m_pData(o.m_pData) { ++g_live; }
@@ -14,7 +14,7 @@ struct CCharString {
     const char* GetData() const { return m_pData == 0 ? g_EmptyString : m_pData->m_pText; }
 };
 static CCharStringData g_narrow;
-struct CWideString {
+class CWideString { public:
     bool m_empty;
     CCharString ConvertToCharString() const { CCharString s; s.m_pData = m_empty ? 0 : &g_narrow; return s; }
 };
@@ -25,12 +25,12 @@ static unsigned long Calc_004014a0(unsigned long seed, const void* data, unsigne
     return crc;
 }
 inline unsigned long GetNameCRC(const CCharString& name) { return Calc_004014a0(0, name.GetData(), name.GetLength()); }
-struct CBankFileAsync {
+class CBankFileAsync { public:
     unsigned long m_lastCRC;
     unsigned long LookupValue(unsigned long nameCRC) { m_lastCRC = nameCRC; return nameCRC == 0 ? 99 : 7; }
 };
 enum FileAccessType { FILE_ACCESS_READ };
-struct CWADFile {
+class CWADFile { public:
     void* m_vtable; CBankFileAsync* Bank; unsigned long Index; long FilePos;
     void Open(const CWideString& name, FileAccessType, unsigned long)
     {

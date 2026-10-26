@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CThing { int id; };
-struct CThingPhysical;
-struct CThingBuilding : CThing { };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: int id; };
+class CThingPhysical;
+class CThingBuilding : public CThing { public: };
+class CCharString { public:
     void* PData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
@@ -22,7 +22,7 @@ struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPoin
     CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
     CBuildingPointer& operator=(const CBuildingPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CThingAICreatureInit {
+class CThingAICreatureInit { public:
     CThingPhysical* OriginalThing;              // +0x00
     CThingPhysical* PreviousThing;              // +0x04
     CCharString     ScriptName;                 // +0x08
@@ -34,13 +34,13 @@ struct CThingAICreatureInit {
     CThingBuilding* HomeBuilding;               // +0x14
     CThingBuilding* WorkBuilding;               // +0x18
 };
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x50];
     float Health;                               // +0x50
     unsigned char _pad54[0x11c - 0x54];
     long  DefaultOwner;                         // +0x11c
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*         __vftable;
     unsigned char _pad04[0x90 - 0x04];
     signed char   PlayerNumber;                 // +0x90
@@ -56,7 +56,7 @@ struct CThingCreatureBase {
     bool ConstructFromParams(long defIndex, const C3DVector& position, long creationType, CThingPhysical* originalThing,
                              CThingPhysical* previousThing, const CCharString& scriptName, bool placeAtEndOfList);   // 0x00662880
 };
-struct CThingAICreature : CThingCreatureBase {
+class CThingAICreature : public CThingCreatureBase { public:
     unsigned char    _pad160[0x168 - 0x160];
     CBuildingPointer HomeBuilding;              // +0x168
     CBuildingPointer WorkBuilding;              // +0x170

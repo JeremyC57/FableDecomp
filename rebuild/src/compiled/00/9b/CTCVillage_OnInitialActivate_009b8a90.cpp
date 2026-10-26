@@ -1,7 +1,7 @@
 void __fastcall Sub_9b84c0(void* ecx, void* edx, unsigned char arg);
 // Leaf: OnInitialActivate
 
-struct CTCVillage {
+class CTCVillage { public:
     void*         field_0;   // +0x00  -> ecx
     void*         ParentThing;   // +0x04  -> edx
     char          pad8[4];   // +0x08

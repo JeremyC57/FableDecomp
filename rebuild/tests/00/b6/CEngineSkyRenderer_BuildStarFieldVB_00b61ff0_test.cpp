@@ -4,14 +4,14 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString { const char* Path; };
+class CWideString { public: const char* Path; };
 static bool g_exists = false;
 bool PathExists(const CWideString&) { return g_exists; }
-struct CASuspendableProcess;
+class CASuspendableProcess;
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 static unsigned char g_fileData[64]; static int g_filePos = 0; static int g_closes = 0; static long g_lastFlags = 0;
 struct CBaseClassNonCopyable { virtual ~CBaseClassNonCopyable() {} };
-struct CDiskFileWin32 : CBaseClassNonCopyable {
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:
     CWideString Pathname;
     CDiskFileWin32(const CWideString& pathname, FileAccessType, unsigned long flags) { Pathname = pathname; g_filePos = 0; g_lastFlags = (long)flags; }
     virtual void Close() { ++g_closes; }

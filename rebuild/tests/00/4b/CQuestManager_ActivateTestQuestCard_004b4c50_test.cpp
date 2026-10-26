@@ -3,14 +3,14 @@
 // every early exit returns false and the def reference is always released.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[64];
     CCharString(const char* t) { std::strncpy(Text, t, 63); Text[63] = 0; }
 };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct CQuestCardDef { long RefCount; int deleted; void DeleteThis() { ++deleted; } };
-struct CTCQuestCard { CQuestCardDef* PDef; CCharString ScriptQuestName; CTCQuestCard() : PDef(0), ScriptQuestName("") {} };
-struct CThing {
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class CQuestCardDef { public: long RefCount; int deleted; void DeleteThis() { ++deleted; } };
+class CTCQuestCard { public: CQuestCardDef* PDef; CCharString ScriptQuestName; CTCQuestCard() : PDef(0), ScriptQuestName("") {} };
+class CThing { public:
     bool Dead; bool hasTC; CTCQuestCard* tc; bool inLimbo; bool persisted; C3DVector pos;
     CThing() : Dead(false), hasTC(true), tc(0), inLimbo(false), persisted(false), pos(1, 2, 3) {}
     bool HasTC(long type) const { return type == 0x6c && hasTC; }
@@ -22,11 +22,11 @@ static CThing* g_created = 0;
 static int g_createdDef = 0;
 CThing* CreateThingObject(long defIndex, const C3DVector&, long player, void*, unsigned long, const CCharString&)
 { g_createdDef = (int)defIndex + (int)player * 1000; return g_created; }
-struct CPlayer { long PlayerNumber; CThing* hero; long GetPlayerNumber() const { return PlayerNumber; } CThing* GetHeroCreature() { return hero; } };
-struct CWorld { C3DVector GuildSealRecallPos; float GuildSealRecallAngleXY; CWorld() : GuildSealRecallPos(5, 5, 5), GuildSealRecallAngleXY(0.5f) {} };
+class CPlayer { public: long PlayerNumber; CThing* hero; long GetPlayerNumber() const { return PlayerNumber; } CThing* GetHeroCreature() { return hero; } };
+class CWorld { public: C3DVector GuildSealRecallPos; float GuildSealRecallAngleXY; CWorld() : GuildSealRecallPos(5, 5, 5), GuildSealRecallAngleXY(0.5f) {} };
 static long g_defIndex = 7;
 static int g_refreshes = 0;
-struct CQuestManager {
+class CQuestManager { public:
     CPlayer* player; CWorld* World; bool activateResult; int pushed; char removed[64];
     bool ActivateQuest(const CCharString& name, bool a, bool load) { return a && load && std::strcmp(name.Text, "Q_Test") == 0 && activateResult; }
     void RemoveAvailableQuestCardType(const CCharString& n) { std::strcpy(removed, n.Text); }

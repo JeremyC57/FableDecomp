@@ -1,4 +1,4 @@
-struct CTCVillage {
+class CTCVillage { public:
     void* field0;      // +0x00
     void* ParentThing;      // +0x04
     char  pad8[4];     // +0x08

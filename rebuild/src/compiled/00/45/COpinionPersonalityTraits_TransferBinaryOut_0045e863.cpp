@@ -8,11 +8,11 @@
 // VillageOpinionScaling, TimeScalingRunIn, TimeScalingRunOut, PeakScalingIfPos, PeakScalingIfNeg,
 // PersistScalingIfPos, PersistScalingIfNeg (+0x00..+0x20). No engine header exists for it.
 // Shape: the stream reference is kept in edi and `this` in esi; one WriteFloat per member.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteFloat(float value);                       // 0x00993EE0
 };
 
-struct COpinionPersonalityTraits {
+class COpinionPersonalityTraits { public:
     float BaseOffset;                   // +0x00
     float HeroStatScaling;              // +0x04
     float VillageOpinionScaling;        // +0x08

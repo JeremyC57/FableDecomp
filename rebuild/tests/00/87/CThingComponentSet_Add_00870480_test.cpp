@@ -2,7 +2,7 @@
 #include <cstdlib>
 // behaviour test for CThingComponentSet::Add (0x00870480)
 #pragma pack(push, 1)
-struct CDefString { int TablePos; CDefString() : TablePos(-1) { } };
+class CDefString { public: int TablePos; CDefString() : TablePos(-1) { } };
 struct CEntry {
     CDefString Name;
     unsigned int DriverType;
@@ -11,7 +11,7 @@ struct CEntry {
 };
 #pragma pack(pop)
 static int g_resizes = 0;
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T* Start;
     signed char Size;
     void resize(long n, const T& fill)
@@ -24,7 +24,7 @@ template<class T, int N> struct CSmallVector {
     }
     T& back() { return Start[Size - 1]; }
 };
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVector<CEntry, 8> Entries;
     void Add(const CEntry& entry);
 };

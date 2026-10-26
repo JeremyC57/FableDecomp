@@ -5,7 +5,7 @@ struct CObj;
 // callee at 0xbef5c0: __fastcall (ecx=obj, edx=edxarg, stack=byteval)
 extern void __fastcall Callee(CObj* obj, void* edxarg, unsigned char v);
 
-struct CTCVillage {
+class CTCVillage { public:
     CObj*  f0;       // +0x00 -> ecx
     void*  ParentThing;       // +0x04 -> edx
     // +0x08

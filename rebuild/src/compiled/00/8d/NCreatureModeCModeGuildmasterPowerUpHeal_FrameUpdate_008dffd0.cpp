@@ -11,8 +11,8 @@
 // Layout: Ego_r.pdb CModeGuildmasterPowerUpHeal: CModeStandBase 0x68, Filter +0x68, Timer +0x74.
 // Shape: the decremented timer is a named local (kept in ebx across the lookup call); the CTCBoss lookup result is not
 //   tested (the absent path joins with the never-written out variable); `||` short-circuits the helper count.
-struct CCreatureActionBase;
-struct CTCBase;
+class CCreatureActionBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -41,19 +41,19 @@ struct CThingCreatureBase {
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CTCBoss {                           // interface type 0xad
+class CTCBoss { public:                           // interface type 0xad
     long CountLivingHelperCreatures() const;   // 0x007AEEC0
 };
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                  // 0x0062E900
 };
-struct CCombatAction_Guildmaster_HealFollowersRelease : CCombatActionBase {
+class CCombatAction_Guildmaster_HealFollowersRelease : public CCombatActionBase { public:
     CCombatAction_Guildmaster_HealFollowersRelease(CThingCreatureBase* owner);   // 0x008E4860
 };
 

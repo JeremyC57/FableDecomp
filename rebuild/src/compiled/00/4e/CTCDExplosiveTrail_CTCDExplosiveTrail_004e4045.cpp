@@ -12,10 +12,10 @@
 // 12 bytes, so ThingsToIgnore sits at +0x20 and PDef at +0x2c in retail.
 // Shape: the ~CTCTargetingBase 0x004DA8B7 shape (no vtable store: `__declspec(novtable)`, size TU, inline def release
 // with `and [..],0`), the containers destroyed by their out-of-line destructors.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08

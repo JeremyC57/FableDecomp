@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 
 struct Vec {
     const CThing** m_start;

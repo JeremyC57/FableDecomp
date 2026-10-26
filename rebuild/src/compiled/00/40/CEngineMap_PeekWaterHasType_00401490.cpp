@@ -6,7 +6,7 @@
 // quick yes/no before doing heavier water work.
 //
 // Matching: `type` is forwarded unchanged and the result is folded with `test eax,eax; sete al`.
-struct CEngineMap;
+class CEngineMap;
 // The map's water lookup; a zero result is what this predicate reports as "true".
 extern int __cdecl Water_QueryType(CEngineMap* self, int type);
 

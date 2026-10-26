@@ -14,7 +14,7 @@
 // The local view is named CTCInventoryTrade_Retail so it does not shadow the PDB header engine/CTCInventoryTrade.h.
 #pragma optimize("s", on)
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     void RemoveItem(long itemType, long count);     // 0x005BF221
 };
 }

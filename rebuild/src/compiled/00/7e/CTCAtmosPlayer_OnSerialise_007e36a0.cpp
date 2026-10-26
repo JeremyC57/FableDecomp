@@ -9,23 +9,23 @@
 // Shape: both arms home a local in the dead `context` slot (the save default -1, the load name); the load default is an
 // inline by-value empty string (built, copied into the argument temporary, destroyed: no NRVO); the def-manager singleton
 // is fetched after the call arguments are pushed.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
 inline CCharString EmptyString() { CCharString empty; return empty; }
-struct CDefString {                                     // 4-byte def-name handle (user constructor: hidden-pointer return)
+class CDefString { public:                                     // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_tablePos;
     CDefString();
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();        // 0x0044C6B0
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }

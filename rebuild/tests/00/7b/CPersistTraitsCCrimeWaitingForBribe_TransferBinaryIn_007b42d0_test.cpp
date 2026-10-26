@@ -8,7 +8,7 @@
 typedef long long __int64;
 #endif
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* __vftable;
     long  position;
     long  sourceLength;
@@ -41,7 +41,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     }
 };
 
-struct CCrimeWaitingForBribe { long DeedHandle; long Type; };
+class CCrimeWaitingForBribe { public: long DeedHandle; long Type; };
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {

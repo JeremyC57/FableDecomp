@@ -4,10 +4,10 @@
 // Callees: itself on the child grid, primitive virtuals GetBoundingBox (slot 0x44) and GetDrawRange (slot 0x34, by-value result).
 // Layout: local model (grid: Child +0x0c, Side +0x10, cell table +0x14; cell: primitive list +0x04, Box +0x08, DrawDistance +0x20,
 //   flags +0x44 bit 0 = cached).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CAABox { C3DVector Min, Max; };
 struct SDrawRange { float Near, Far; };
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10(); virtual void v14();
     virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24(); virtual void v28(); virtual void v2c();
     virtual void v30();
@@ -25,7 +25,7 @@ struct CSceneCell {
     unsigned char                 _pad24[0x44 - 0x24];
     unsigned char                 Flags;                      // +0x44
 };
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     void*             _vptr;                                  // +0x00
     long              Level;                                  // +0x04
     CEngineSceneGrid* Parent;                                 // +0x08

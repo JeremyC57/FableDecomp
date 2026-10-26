@@ -11,14 +11,14 @@
 // Shape: a null-initialised slot pointer set inside the search loop (VC drops the test on the loop-exhausted path),
 //   size() re-evaluated each iteration (`imul 38E38E39h ; sar 4` = /0x48); the box is a struct assignment, then
 //   translated so its top-left sits at the position.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CMap;
-struct CMapInfo {                                      // 0x48 bytes (Ego_r.pdb = retail)
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CMap;
+class CMapInfo { public:                                      // 0x48 bytes (Ego_r.pdb = retail)
     C2DBoxI       Area;                                // +0x00
     CMap*         PMap_Data;                           // +0x10 CCountedPointer<CMap>
     void*         PMap_Info;                           // +0x14
@@ -31,7 +31,7 @@ struct CMapInfo {                                      // 0x48 bytes (Ego_r.pdb 
     bool          Loading;                             // +0x27
     unsigned char _body[0x20];
 };
-template <class T> struct CArray {                     // retail 12-byte STLport-style vector
+template <class T> class CArray { public:                     // retail 12-byte STLport-style vector
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -39,7 +39,7 @@ template <class T> struct CArray {                     // retail 12-byte STLport
     T& operator[](unsigned int i) { return *(_M_start + i); }
     void resize(unsigned int n);                       // 0x0051BE20
 };
-struct CEngineManager {
+class CEngineManager { public:
     static CEngineManager& __fastcall Get();           // 0x00436FB0 CTBaseSingleton<CEngineManager>::Get
     void AddMap(long map);                             // 0x006403A0
 };

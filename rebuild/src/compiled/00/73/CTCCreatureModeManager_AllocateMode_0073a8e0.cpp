@@ -22,7 +22,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
         return seed % range;
     return 0;
 }
-struct CThing;
+class CThing;
 struct CModeBase;
 struct SCountBlock {
     long m_references;                                  // +0
@@ -30,7 +30,7 @@ struct SCountBlock {
     void* m_pObject;                                    // +8
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_007180b0), m_pObject(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                             // +0
     SCountBlock* m_pCount;                              // +4
     CCountedPointer(T* object) : m_pObject(object)
@@ -56,7 +56,7 @@ struct CModeRegistry {                                  // CVectorMap<unsigned l
     SRegisteredMode* LowerBound(const unsigned long& key);               // 0x0073D0E0
 };
 extern CModeRegistry g_CreatureModeRegistry;            // 0x013BAD44
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();                    // 0x0049D810
 };
 inline long CountRegisteredModes(const CModeRegistry& registry, const unsigned long& type)
@@ -64,7 +64,7 @@ inline long CountRegisteredModes(const CModeRegistry& registry, const unsigned l
     const SRegisteredMode* last = registry.UpperBound(type);
     return last - registry.LowerBound(type);
 }
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     CWorld* GetWorld() const;                           // 0x00686A80 (CTCBase)

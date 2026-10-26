@@ -3,7 +3,7 @@
 // Retail 0x00566530. Destroys a pair<CWideString, CSymbolInfo> in place.
 //   [esi+0xc] dtor 0x99eae0 ; [esi+8] dtor 0x99b510 (CWideString) ; [esi+0] dtor 0x99b510 (tail)
 
-struct CWideString {            // dtor 0x99b510 ; 4 bytes
+class CWideString { public:            // dtor 0x99b510 ; 4 bytes
     unsigned short* m_pData;
     ~CWideString();
 };

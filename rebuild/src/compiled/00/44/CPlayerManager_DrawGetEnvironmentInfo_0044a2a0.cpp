@@ -13,7 +13,7 @@
 // Shape: the uninitialised `CTCCoopSpirit* spirit; if (HasTC) spirit = GetTC;` (the stale value is the find key's
 // frame word); all wide-string temporaries and the key live in the two dead argument slots.
 typedef unsigned short wchar_t;                        // VC7.1 default: wchar_t is not a native type
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                    // 0x0099B510
     const CWideString& operator=(const wchar_t* text); // 0x0099B800
@@ -23,7 +23,7 @@ struct CWideString {
 CWideString __fastcall IntToWideString(long value);                            // 0x00405F00 (hidden result in ecx)
 CWideString __fastcall operator+(const wchar_t* left, const CWideString& right);   // 0x0099BFF0 (hidden result in ecx)
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {
     long     Type;
     CTCBase* TC;
@@ -41,7 +41,7 @@ struct CTCMap {
         return it->TC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                  // +0x20
     unsigned char _pad40[4];
@@ -49,17 +49,17 @@ struct CThing {
     __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
 };
-struct CTCCoopSpirit {                                 // TC type 0xc7
+class CTCCoopSpirit { public:                                 // TC type 0xc7
     long GetScore() const;                             // 0x0066FB20
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                            // 0x00487DC0
     bool IsMainPlayer() const;                         // 0x00487520
     long GetJoystickDeviceNumber() const;                      // 0x00487510
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPlayer_00449910(long number);                   // 0x00449910
     bool DrawGetEnvironmentInfo(long playerNumber, CWideString& text);
 };

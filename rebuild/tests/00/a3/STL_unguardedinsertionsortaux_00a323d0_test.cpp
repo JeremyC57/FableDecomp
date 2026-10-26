@@ -1,8 +1,8 @@
 // Behaviour test for 0x00A323D0 std::__unguarded_insertion_sort_aux over pair<unsigned long, C3DDummyObject>: with a
 // sentinel minimum in front of the range, the pass sorts by unsigned key and keeps equal keys in their original order.
 #include <cstdio>
-struct CMatrix3x4 { float M[12]; };
-struct C3DDummyObject { CMatrix3x4 Transform; int BoneIndex; };
+class CMatrix3x4 { public: float M[12]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; int BoneIndex; };
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;

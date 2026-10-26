@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 struct CDef { int refs; int destroyed; int type; };
-struct CThing { bool dead; CDef* subDef; };
+class CThing { public: bool dead; CDef* subDef; };
 static unsigned int Ror13(unsigned int v) { return (v >> 13) | (v << 19); }
 struct CState {
     CThing* enemyOfSource; CThing* arenaMarker; unsigned int seed;

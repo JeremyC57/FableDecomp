@@ -7,12 +7,12 @@
 // virtual CEntityScriptBase::OnPersist(CPersistContext&) (slot 4, +0x10) through the active script's +0x34 pointer
 // (landed SaveEntityScript 0x00CB83D0).
 // Shape: DoScriptDataPersist with the persist call on the entity script (re-read after the constructors; `this` unused).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBaseClass {                                // the CStringParser root (polymorphic)
+class CBaseClass { public:                                // the CStringParser root (polymorphic)
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -20,7 +20,7 @@ struct CStringParserCommentList {                  // retail std::list<CStringPa
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBaseClass {                // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -31,16 +31,16 @@ struct CStringParser : CBaseClass {                // retail 0x28 bytes
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
 };
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CPersistContext {                           // retail 0x2c bytes, trivial destructor
+class CDefinitionManager;
+class CSymbolMap;
+class CPersistContext { public:                           // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CCharString& output);          // 0x009BAE10 (saving: writes into the string)
     CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool reportErrors,
                     CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0
 };
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void OnPersist(CPersistContext& context);   // slot 4 (+0x10)
 };

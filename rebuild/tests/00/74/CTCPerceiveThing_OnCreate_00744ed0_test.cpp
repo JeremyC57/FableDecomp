@@ -4,12 +4,12 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_destroyed = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long RefCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
@@ -20,7 +20,7 @@ struct CThingDefOut {
     CThingDef* Object;
     CThingDefOut() : Object(0) {}
 };
-struct CPerceivedThingDef : CDefClassBase {
+class CPerceivedThingDef : public CDefClassBase { public:
     unsigned char _pad08[0x24];
     float GiveUpChaseRadius;
     float SightRadius;
@@ -33,16 +33,16 @@ struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CPerceivedThingDef>* out) { ++g_getSubDef; ++g_perceived.RefCount; out->Object = &g_perceived; return true; }
 };
 static CThingDef g_thingDef; static int g_getDef = 0; static long g_getDefIndex = -1;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CThingDefOut* out) { ++g_getDef; g_getDefIndex = globalIndex; ++g_thingDef.RefCount; out->Object = &g_thingDef; return true; }
 };
 static CDefinitionManager g_manager;
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefGlobalIndex;
 };
 static int g_reset = 0;
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     void*     __vftable;
     CThing*   ParentThing;
     bool      ToBeRemoved;

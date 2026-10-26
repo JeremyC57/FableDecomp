@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { int x; };
+class CThing { public: int x; };
 struct CBaseIntelligentPointer { virtual void v00() { } CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 struct CProng { bool Blocked; float Prong_X, Prong_Y, Prong_Z; long ProngBlockageTimer; CBaseIntelligentPointer POccupier; };
 struct CCombatRing {

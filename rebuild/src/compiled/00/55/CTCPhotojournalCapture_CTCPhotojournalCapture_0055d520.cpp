@@ -9,19 +9,19 @@
 //   Components +0x2c, PMannequin +0x38 (PDB +0x3c), WasPlayerGuiOpen +0x3c, TakeScreenshotAfterFrames +0x40.
 // Shape: init list in declaration order (the double is loaded from the 0.0 pool constant 0x0122ED70 and scheduled first), one
 //   shared zero register; the registration call is the body.
-struct CThing;
-struct CWideString {
+class CThing;
+class CWideString { public:
     void* m_data;
     CWideString();                              // 0x0099AED0
 };
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 struct CComponentVector {                       // STLport vector<NUISystem::CComponent*> (12 bytes)
     NUISystem::CComponent** _M_start;
     NUISystem::CComponent** _M_finish;
     NUISystem::CComponent** _M_end_of_storage;
     CComponentVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
@@ -29,7 +29,7 @@ struct CTCBase {
     CTCBase(CThing* parent);                    // 0x00686800
     void AddToGlobalUpdateTCs();                // 0x00686ED0
 };
-struct CTCPhotojournalCapture : CTCBase {
+class CTCPhotojournalCapture : public CTCBase { public:
     CWideString Description;                    // +0x0c
     bool        DiscardScreenShot;              // +0x10
     long        FrameCounter;                   // +0x14

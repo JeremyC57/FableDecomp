@@ -16,12 +16,12 @@
 // A miss inserts pair(path, null pointer) (the pair's inline counted-pointer dtor releases through Info, then
 // clears both words) and finds again; an empty pointer is reset to a new target that is loaded from the file
 // when the path exists (a scoped CDiskFileWin32).
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                // 0x0099B510
-    struct CCharString ConvertToCharString() const;   // 0x0099B2C0
+    class CCharString ConvertToCharString() const;   // 0x0099B2C0
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
@@ -36,7 +36,7 @@ namespace N_0099a300 { struct CBase {
     ~CBase();                                      // 0x0099A300
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CDiskFileWin32 : CBase {                    // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                          // 0x0099A920 (slot 2)
@@ -49,12 +49,12 @@ struct CDiskFileWin32 : CBase {                    // vtable 0x0122D06C, 0x1c by
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32() { Close(); }
 };
-struct C3DSkeletalMorphTarget {
+class C3DSkeletalMorphTarget { public:
     unsigned char _pad[0x10];
     C3DSkeletalMorphTarget();                      // 0x00A44E60
 };
 void __fastcall GFLoadSkeletalMorphTargetFromFile(CDiskFileWin32* file, C3DSkeletalMorphTarget* target);   // 0x0088B0C0
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* Deleter)(void* object);
     void* Object;
@@ -99,7 +99,7 @@ struct CMorphMap {                                 // STLport map<CCharString, C
     CMorphInsertResult insert(const CMorphPair& value);   // 0x006C3410
     CMorphNode* end() const { return Header; }
 };
-struct CSkeletalMorphResourceManager {
+class CSkeletalMorphResourceManager { public:
     virtual void v00();
     CMorphMap Morphs;                              // +0x04
     CMorphTargetPointer& GetMorphTarget(const CCharString& name);

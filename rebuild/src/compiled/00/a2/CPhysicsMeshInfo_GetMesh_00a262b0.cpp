@@ -12,16 +12,16 @@
 //   implicit `const char*` -> CCharString conversion, so its temporary is built before the `false`/-1.0f pushes (an
 //   explicit CCharString("...") is built after them); the touch block is the inline
 //   resource-list move-to-tail; the result is the add-ref copy (`inc [ecx+4]`) straight into the hidden result.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
 
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
     virtual void v00();
     unsigned long IVRefCount;                  // +4
     CResourceList* ResourceList;           // +8
@@ -33,7 +33,7 @@ struct CResource {
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
     void Touch();
 };
-struct CResourceList {
+class CResourceList { public:
     long m_pad0;                           // +0
     CResource Head;                        // +4
     unsigned long ResourceCount;           // +0x20
@@ -50,12 +50,12 @@ inline void CResource::Touch()
     }
 }
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished();                     // 0x009D54E0
     bool WaitUntilFinished();              // 0x009D5B60
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -65,7 +65,7 @@ struct CIVCountedObject {                  // intrusive reference count at +4
     virtual void v00();
     mutable long RefCount;
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     T* operator->() const { return Object; }
@@ -75,7 +75,7 @@ class CPhysicsMesh : public CIVCountedObject {};
 
 class CPhysicsMeshInfo {
 public:
-    struct CMeshData : CResource {
+    class CMeshData : public CResource { public:
         CCountedPointer<CBankFileAsyncData>     FileData;   // +0x1C
         CIVCountedPointer<const CPhysicsMesh>   Mesh;       // +0x24
         void BuildMesh();                                   // 0x00A25D20

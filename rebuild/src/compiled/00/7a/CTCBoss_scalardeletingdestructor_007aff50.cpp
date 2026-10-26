@@ -1,4 +1,4 @@
-struct CTCBoss {
+class CTCBoss { public:
     void* vftable;
 };
 

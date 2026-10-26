@@ -26,7 +26,7 @@ public:
     float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
 };
 
-struct CVectorCompare_BestForTargeting {                   // Ego_r.pdb, 0x2c bytes
+class CVectorCompare_BestForTargeting { public:                   // Ego_r.pdb, 0x2c bytes
     C3DVector AnchorPos;                                   // +0x00
     C3DVector PreferredLine;                               // +0x0c
     float AngleCompare;                                    // +0x18

@@ -4,7 +4,7 @@
 
 static char g_order[32]; static int g_n; static int g_bodyCloses, g_dtorCloses, g_defDestroyed;
 static void Mark(char c) { g_order[g_n++] = c; g_order[g_n] = 0; }
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     bool inBody;
     void Close() { if (inBody) ++g_bodyCloses; else ++g_dtorCloses; }
     ~CDiskFileWin32() { inBody = false; Close(); Mark('F'); }
@@ -13,7 +13,7 @@ struct CDef { long RefCount; void Destroy() { ++g_defDestroyed; } };
 struct CDefPointer { CDef* Object; ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); Object = 0; } Mark('D'); } };
 struct CVec { char tag; ~CVec() { Mark(tag); } };
 struct CBase { ~CBase() { Mark('B'); } };
-struct CGamePlayerInterface : CBase {
+class CGamePlayerInterface : public CBase { public:
     bool PacketSave, PacketLoad;
     CDiskFileWin32 PacketFile;
     CDefPointer PControlsDef;

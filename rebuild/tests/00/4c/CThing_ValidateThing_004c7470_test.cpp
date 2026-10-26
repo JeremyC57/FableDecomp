@@ -1,12 +1,12 @@
 // Behaviour test for CThing::ValidateThing @ 0x004C7470: false on the first live TC that refuses, removed TCs skipped.
 #include <cstdio>
-struct CTCBase {
+class CTCBase { public:
     bool ToBeRemoved; bool ok; int calls; long seen;
     CTCBase(bool removed, bool okay) : ToBeRemoved(removed), ok(okay), calls(0), seen(0) { }
     virtual bool ValidateTC(long context) { ++calls; seen = context; return ok; }
 };
 struct SComponentPair { long first; CTCBase* second; };
-struct CThing {
+class CThing { public:
     SComponentPair* m_componentsFirst;
     SComponentPair* m_componentsLast;
     bool ValidateThing(long context)

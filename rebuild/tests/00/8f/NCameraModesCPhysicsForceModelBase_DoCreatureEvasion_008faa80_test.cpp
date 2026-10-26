@@ -21,7 +21,7 @@ extern "C" void* __cdecl malloc(unsigned int size); // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);              // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* place) { return place; }
 float __cdecl sqrtf_(float);
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -80,18 +80,18 @@ extern const C3DVector g_EvasionSampleOffsets[4];  // 0x013893AC: 0, X, Y, Z
 struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float t) const;    // 0x004C12D0
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* Appearance;              // +0x64
 };
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     CThing* GetThing() const;                      // 0x0084F1B0
 };
-struct CPhysicsState {
+class CPhysicsState { public:
     C3DVector Position;                            // +0x00
 };
-struct CPhysicsForceModelBase {
+class CPhysicsForceModelBase { public:
     virtual void v00();
     CPhysicsState* LinkedState;                    // +0x04
     unsigned char  _pad08[0xa4 - 0x08];

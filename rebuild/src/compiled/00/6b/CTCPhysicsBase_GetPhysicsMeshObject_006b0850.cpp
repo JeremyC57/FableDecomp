@@ -10,8 +10,8 @@
 // Shape: the mesh info, the bank and the bank's physics mesh info are named locals (edi / eax / ebx) taken before the argument list; the ctor's
 //   arguments evaluate right to left (scale, orientation, position, the GetMesh temporary); the temporary counted pointer is
 //   released with the inline ReleaseTemporary (DecRef / GetRefCount on the ref-count base at +4).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
 struct CRefCounted {
     long m_count;
     void DecRef() { --m_count; }
@@ -21,7 +21,7 @@ struct CRefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CPhysicsMesh : CRefVirtual, CRefCounted {
+class CPhysicsMesh : public CRefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -29,29 +29,29 @@ struct CPhysicsMesh : CRefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     ~CIVCountedPointer() { if (Data) Data->ReleaseTemporary(); }
 };
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     CIVCountedPointer<CPhysicsMesh> GetMesh() const;   // 0x00A262B0
 };
 struct CMeshBank {
     CPhysicsMeshInfo* GetPhysicsMeshInfo(long index);  // 0x00A24250
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x3c];
     CMeshBank* PMeshBank;                       // +0x3c
 };
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     unsigned char _body[0x40];
     CPhysicsMeshObject(const CIVCountedPointer<CPhysicsMesh>& mesh, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00A12CC0
 };
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned short BankIndex;                   // +0x00
     float          RenderSizeX;                 // +0x04
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

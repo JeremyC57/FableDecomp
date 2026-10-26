@@ -24,7 +24,7 @@ struct CDisplayEngine_Methods : CDisplayEngine {
 struct CNetworkClient_Methods : CNetworkClient {
     void SendGameEvent(const CGameEvent* event);                     // 0x004AE9A0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char             _pad00[0x24];
     CWorld_Methods*           PWorld;                    // +0x24 scoped_ptr<CWorld>
     CDisplayEngine_Methods*   PDisplayEngine;            // +0x28 scoped_ptr<CDisplayEngine>

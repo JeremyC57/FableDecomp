@@ -3,8 +3,8 @@
 #include <cstring>
 // Memory input stream model: position, read pointer and bytes left in the current chunk; the slow path
 // (ReadWithSrcChunkOverflow) copies from the same buffer and counts its use.
-struct CCharString { char text[64]; CCharString() { text[0] = 0; } };
-struct CDataInputStream {
+class CCharString { public: char text[64]; CCharString() { text[0] = 0; } };
+class CDataInputStream { public:
     unsigned long m_position;
     const unsigned char* m_pData;
     int m_remaining;

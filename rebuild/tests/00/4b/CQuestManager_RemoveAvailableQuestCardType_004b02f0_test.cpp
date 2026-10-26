@@ -8,7 +8,7 @@ struct SubList {
 	void Remove(CCharString *name);
 };
 
-struct CQuestManager {
+class CQuestManager { public:
 	char pad0[0x58];
 	SubList list;          // +0x58
 	char pad1[0x8f - 0x58 - 4];

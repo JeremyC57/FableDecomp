@@ -7,45 +7,45 @@
 
 static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CGamePlayerInterface { int id; };
-struct CAInputProcess { const char* name; CGamePlayerInterface* attachedTo;
+class CGamePlayerInterface { public: int id; };
+class CAInputProcess { public: const char* name; CGamePlayerInterface* attachedTo;
     CAInputProcess(const char* n) : name(n), attachedTo(0) {}
     virtual bool AddToInterface(CGamePlayerInterface* pi) { attachedTo = pi; Log(name); return true; } };
-struct CPlayerGui { bool DisplayBottomHalfGUI; void ResetDrawSpiritsHealth() { Log("spirits"); } };
+class CPlayerGui { public: bool DisplayBottomHalfGUI; void ResetDrawSpiritsHealth() { Log("spirits"); } };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
 struct CDefPointee {
     mutable long RefCount; int deleted;
     virtual void DeleteThis() const { const_cast<CDefPointee*>(this)->deleted = 1; }
     void Release() const { --RefCount; if (RefCount == 0) DeleteThis(); }
 };
-struct CCameraModeDef : CDefPointee { };
-template <class T> struct CDefPointer { T* Data; CDefPointer() : Data(0) {} ~CDefPointer() { if (Data) Data->Release(); } };
+class CCameraModeDef : public CDefPointee { public: };
+template <class T> class CDefPointer { public: T* Data; CDefPointer() : Data(0) {} ~CDefPointer() { if (Data) Data->Release(); } };
 static CCameraModeDef g_def;
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; }
     bool GetDef(const CCharString& n, CDefPointer<const CCameraModeDef>& d)
     { if (std::strcmp(n.t, "CAMERA_MODE_PC_VIEW_HERO")) return false; d.Data = &g_def; ++g_def.RefCount; return true; }
 };
 struct SCountBlock { long References; void* Object; SCountBlock(void* o) : References(1), Object(o) {} };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; SCountBlock* Info;
     CCountedPointer(T* p) : Data(p) { if (Data) Info = new SCountBlock(Data); else Info = 0; }
 };
-struct CGameCameraManager;
+class CGameCameraManager;
 namespace NCameraModes {
-    struct CBase { CGameCameraManager* manager; const CCameraModeDef* def;
+    class CBase { public: CGameCameraManager* manager; const CCameraModeDef* def;
         CBase(CGameCameraManager* m, const CDefPointer<const CCameraModeDef>& d) : manager(m), def(d.Data) {} virtual ~CBase() {} };
     struct CMoveOnCylinder : CBase { CMoveOnCylinder(CGameCameraManager* m, const CDefPointer<const CCameraModeDef>& d) : CBase(m, d) {} };
 }
-struct CGameCameraManager {
+class CGameCameraManager { public:
     NCameraModes::CBase* pushed; long refs;
     void PushCameraMode(CCountedPointer<NCameraModes::CBase> mode) { pushed = mode.Data; refs = mode.Info ? mode.Info->References : 0; delete mode.Info; Log("push"); }
 };
 static CGameCameraManager g_cam;
 struct CCameraManagerSource { bool GetCameraManager(CGameCameraManager** c) { *c = &g_cam; return true; } };
-struct CWorld { CCameraManagerSource* CameraSource; };
-struct CPlayer {
+class CWorld { public: CCameraManagerSource* CameraSource; };
+class CPlayer { public:
     CGamePlayerInterface* PlayerInterface; CWorld* World;
     CAInputProcess *InputProcessLeftStickLookAround_ptr, *InputProcessBButtonExitMode_ptr, *InputProcessToggleViewHeroMode_ptr;
     void InitModeViewHero(long mode, void* input);

@@ -13,14 +13,14 @@
 //   the ability pointer's release (`dec [eax] ; cmp [eax],0`) inlines only with `__forceinline` on its destructor and helpers.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C3DVector;
-struct CRightHandedSet;
-struct CCharString {
+class C3DVector;
+class CRightHandedSet;
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 struct CRefCounted {                                   // second base of the def: the count at +4
@@ -32,7 +32,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                            // slot 1
 };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
     __forceinline void ReleaseTemporary()
     {
         DecRef();
@@ -40,7 +40,7 @@ struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     __forceinline ~CDefPointer()
@@ -55,11 +55,11 @@ class CThing;
 CThing* __fastcall CreateShot(long defIndex, CThing* shooter, CThing* origin, CThing* target, float accuracy, float a, float b,
                               CDefPointer<CMeleeCombatAbilityDef>* ability, C3DVector* position, CRightHandedSet* frame);   // 0x007C0AD0
 extern long g_framesPerSecond;                         // 0x01375550
-struct CTrapDef {
+class CTrapDef { public:
     unsigned char _pad00[0x60];
     float SecondsBetweenShots;                         // +0x60 (PDB +0x64)
 };
-struct CTCTrapBase {
+class CTCTrapBase { public:
     virtual void v00();
     CThing*       ParentThing;                         // +0x04 (CTCBase)
     unsigned char _pad08[0x54 - 0x08];

@@ -1,12 +1,12 @@
 // CTCTavern::GetClassTypeName @ 0x007bace0
 // __fastcall member returning CCharString by value (hidden retptr on stack, this in ecx, ret 4).
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int n);
 };
 
-struct CTCTavern {
+class CTCTavern { public:
     char pad;
     CCharString GetClassTypeName();
 };

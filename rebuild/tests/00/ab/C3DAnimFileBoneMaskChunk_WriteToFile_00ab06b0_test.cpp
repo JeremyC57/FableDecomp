@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CChunkedFileSaver { };
-struct CCharString { const char* m_pData; CCharString() : m_pData(0) {} };
-struct CDataOutputStream {
+class CChunkedFileSaver { public: };
+class CCharString { public: const char* m_pData; CCharString() : m_pData(0) {} };
+class CDataOutputStream { public:
     char m_log[512]; unsigned long m_bytes;
     CDataOutputStream() : m_bytes(0) { m_log[0] = 0; }
     void Append(const char* s) { std::strcat(m_log, s); }
@@ -15,7 +15,7 @@ struct CDataOutputStream {
     void WriteBOOL(bool v) { Append(v ? "T;" : "f;"); }
     void WriteNullTerminatedString(const CCharString& s) { Append("S:"); Append(s.m_pData ? s.m_pData : ""); Append(";"); }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin; T* m_pEnd; T* m_pEndOfStorage;
     CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) {}
     unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
@@ -26,15 +26,15 @@ template <class T> struct CArray {
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
 static int g_destroyed = 0;
 static void DestroyChunk(void*) { ++g_destroyed; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* object) : m_pObject(object), m_pCount(0) { if (object) { m_pCount = new SCountBlock; m_pCount->m_references = 1; m_pCount->m_pfnDestroy = DestroyChunk; m_pCount->m_pObject = object; } }
     CCountedPointer(const CCountedPointer& o) : m_pObject(o.m_pObject), m_pCount(o.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
     ~CCountedPointer() { if (m_pCount) { --m_pCount->m_references; if (m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; } } }
 };
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 static int g_initCalls = 0;
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual ~CChunkedFileChunk() {}
     virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const { out.Append("base;"); }
     virtual CChunkedFileChunk* CreateNewInstance() const { return 0; }
@@ -42,14 +42,14 @@ struct CChunkedFileChunk {
     char ChunkType[5]; CChunkedFileSuperChunk* Parent;
     CChunkedFileChunk(const char* type) : Parent(0) { std::strncpy(ChunkType, type, 4); ChunkType[4] = 0; }
 };
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CChunkedFileChunk* m_pFound;
     CChunkedFileSuperChunk(const char* type) : CChunkedFileChunk(type), m_pFound(0) {}
     virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const { out.Append("super;"); }
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const { return CCountedPointer<CChunkedFileChunk>(std::strcmp(type, m_wanted) == 0 ? m_pFound : 0); }
     const char* m_wanted;
 };
-struct C3DAnimFileBoneMaskChunk : CChunkedFileChunk {
+class C3DAnimFileBoneMaskChunk : public CChunkedFileChunk { public:
     CArray<bool> EnableMask;
     C3DAnimFileBoneMaskChunk() : CChunkedFileChunk("AMSK") {}
     virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver&) const { out.WriteULONG(EnableMask.Size()); for (unsigned long i = 0; i < EnableMask.Size(); ++i) out.WriteBOOL(EnableMask[i]); }

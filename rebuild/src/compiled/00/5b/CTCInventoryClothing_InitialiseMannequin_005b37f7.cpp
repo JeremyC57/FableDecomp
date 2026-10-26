@@ -1,17 +1,17 @@
 // CTCInventoryClothing::InitialiseMannequin() -- create the inventory mannequin from the inventory def at the owner, copy the owner's appearance components onto it and start its DEFAULT animation
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                                            // +0x00
     unsigned long GetAnimateThingFlags() const;                // 0x005DC390
     long GetTransitionInTime() const;                          // 0x005DC1D0
 };
-struct CAnimFilterBase {                                       // vtable 0x0122FFCC
+class CAnimFilterBase { public:                                       // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -20,26 +20,26 @@ struct CAnimFilterNoGroup : CAnimFilterBase {                  // vtable 0x0122F
     virtual bool Accept(const CAnimationEntry* entry) const;
     virtual CAnimFilterBase* Clone() const;
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                                    // slot 1
     long RefCount;                                             // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* p) : Object(p) { if (Object) ++Object->RefCount; }
     __forceinline ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                                   // +0x34
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
 };
 void* FindDef_CThingBaseDef_GetSubDef_0();
@@ -54,13 +54,13 @@ __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAppearanceDef>* 
 }
 #pragma auto_inline(on)
 
-struct CAnimFrameInfo {
+class CAnimFrameInfo { public:
     float Current;
     float Last;
     CAnimFrameInfo() : Current(0), Last(0) {}
     CAnimFrameInfo(const CAnimFrameInfo& o) : Current(o.Current), Last(o.Last) {}
 };
-struct CAnimInit {                                             // 0x2c bytes
+class CAnimInit { public:                                             // 0x2c bytes
     long          UpdateMode;
     unsigned char Type;
     bool          Looping;
@@ -87,23 +87,23 @@ struct CAnimFrameUpdate {
     CAnimFrameUpdate(float time) { Time = time; Reserved0 = 0; Reserved1 = 0; }
 };
 struct CAnimRef { short Index; };
-struct CAnimSet {
+class CAnimSet { public:
     long          UpdateMode;                                  // +0x00
     CAnimRef*     Anims;                                       // +0x04 vector _M_start
     unsigned char _pad08[0x1c - 0x08];
     CAnimFrameInfo Frame;                                      // +0x1c
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     CAnimSet MainAnimSet;
     CAnimFrameInfo GetFrameInfo() const { return MainAnimSet.Frame; }
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
     void UpdateFrameLogic(const CAnimFrameUpdate& update);     // 0x0070E8B0
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();                             // 0x0070B460
 };
-struct CTCBase;
-struct CTCHeroAttachableAppearanceModifiers {                  // interface 0x5E
+class CTCBase;
+class CTCHeroAttachableAppearanceModifiers { public:                  // interface 0x5E
     void EditFrameUpdate();                                    // 0x00707930
 };
 struct CPresenceBits { bool test(long bit); };                 // 0x00410DE0
@@ -113,8 +113,8 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);                      // 0x0040F020
 };
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     unsigned char  _pad00[0x20];
     CPresenceBits  m_present;                                  // +0x20
     unsigned char  _pad21[0x23];
@@ -166,7 +166,7 @@ struct CThing {
 };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, bool flag);   // 0x00835A20
 
-struct CInventoryDef : CDefPointeeBase {
+class CInventoryDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xd4 - 0x08];
     long MannequinDef;                                         // +0xd4
 };
@@ -177,7 +177,7 @@ template <class T> struct CDefPointerCopy {
     T* operator->() const { return Object; }
 };
 // Layout: retail CTCInventoryClothing (12-byte containers): ParentThing +0x04, the inventory def +0x68, PMannequin +0x158.
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     void*   __vftable;
     CThing* ParentThing;                                       // +0x04
     unsigned char _pad08[0x68 - 0x08];

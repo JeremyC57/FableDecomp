@@ -1,4 +1,4 @@
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     void* vftable;
 };
 

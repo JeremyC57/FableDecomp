@@ -1,14 +1,14 @@
 // Behaviour test for 0x005E4740 CTCQuestCompletionUI::Activate (copy of the source logic over spy callees).
 #include <cstdio>
 #include <cstring>
-struct CTCBase { long tag; };
-struct CCharString {
+class CTCBase { public: long tag; };
+class CCharString { public:
     const char* text;
     CCharString(const char* t) : text(t) {}
     CCharString(const CCharString& o) : text(o.text) {}
     CCharString& operator=(const CCharString& o) { text = o.text; return *this; }
 };
-struct CWideString {
+class CWideString { public:
     const wchar_t* text;
     CWideString& operator=(const CWideString& o) { text = o.text; return *this; }
 };
@@ -37,11 +37,11 @@ public:
     }
 };
 static int g_deactivated = 0;
-struct CTCBoastUI : CTCBase { void Deactivate() { ++g_deactivated; } };
-struct CTCQuestCard : CTCBase {};
+class CTCBoastUI : public CTCBase { public: void Deactivate() { ++g_deactivated; } };
+class CTCQuestCard : public CTCBase { public:};
 static CThing* g_cardThing = 0;
 static const char* g_removedFor = 0;
-struct CQuestManager {
+class CQuestManager { public:
     CThing* GetActiveQuestCardFromScriptName(const CCharString&) { return g_cardThing; }
     void RemoveAcceptedBoastsForScript(CCharString name) { g_removedFor = name.text; }
 };
@@ -49,7 +49,7 @@ static CQuestManager g_qm;
 static CQuestManager* g_pQuestManager = &g_qm;
 enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };
 static int g_actType = -1; static CTCQuestCard* g_actCard = (CTCQuestCard*)1; static bool g_actArg = false;
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     CThing*     ParentThing;
     CCharString ScriptName;
     CWideString FailureReason;

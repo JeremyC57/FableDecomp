@@ -19,7 +19,7 @@ template <class A, class B> struct pair {
 class CModeBase; class CThing;
 class CTCCreatureModeManager {
 public:
-    struct CRegisteredModeInfo {
+    class CRegisteredModeInfo { public:
         CModeBase* (__cdecl* AllocFunc)(CThing*);
     };
 };

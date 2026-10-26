@@ -2,7 +2,7 @@
 #include <cstring>
 static bool g_exists = false;
 struct File { int access; long length; void Open(int a) { access = a; } long GetLength() { return length; } };
-struct CBankFile {
+class CBankFile { public:
     unsigned long OpenFlags, ChangeCount, Alignment; File* BankFile; int name;
     bool RetailMode, ReadOnly, WrittenToFile, Solid, FileValid, UpdatingFlag; int infoReads, postOpens; File file;
     void ReadFileInformation(bool) { ++infoReads; }

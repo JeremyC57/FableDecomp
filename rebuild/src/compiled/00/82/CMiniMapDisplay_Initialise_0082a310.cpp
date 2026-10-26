@@ -9,7 +9,7 @@ struct Sub;  // subobject living at CMiniMapDisplay+0x20
 // callee 0x440730 : __fastcall on Sub (no extra args) -> ecx=Sub*
 extern void __fastcall Sub_Reset(Sub* self);
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     char pad[0x20];
     Sub* subAt20;   // &(this->pad[0x20]) == this+0x20
 };

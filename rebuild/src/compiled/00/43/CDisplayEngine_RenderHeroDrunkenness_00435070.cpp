@@ -12,7 +12,7 @@
 // ScriptOverridePreventStaminaRefill +0x68 (PDB +0x70), TrainingStatus +0x114 (PDB +0x11c).
 // Shape: GetTC's end-or-mismatch choice is one ternary whose ->component is stored (`*out = ((it == last ||
 // type < it->type) ? last : it)->component`); the if/assign form tests the TC in eax and copies it to ecx (2 bytes longer).
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

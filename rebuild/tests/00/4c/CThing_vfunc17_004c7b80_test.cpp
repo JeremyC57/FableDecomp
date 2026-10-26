@@ -1,7 +1,7 @@
 // Behaviour test for CThing::vfunc_17 @ 0x004C7B80: def present, scannable, activated, alive, not in limbo, def InMapSearches.
 #include <cstdio>
-struct CThingBaseDef { unsigned char low : 7; unsigned char InMapSearches : 1; };
-struct CThing {
+class CThingBaseDef { public: unsigned char low : 7; unsigned char InMapSearches : 1; };
+class CThing { public:
     CThingBaseDef* PBaseDef;
     unsigned char Dead : 1;
     unsigned char CreatedByOwnerThingCreation : 1;

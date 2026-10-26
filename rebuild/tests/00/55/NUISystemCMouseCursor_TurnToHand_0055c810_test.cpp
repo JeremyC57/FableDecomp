@@ -4,7 +4,7 @@ struct CMouseCursorDef {
     long Ref; unsigned long HandGraphicIndex; unsigned long ClosedHandGraphicIndex;
     void ReleaseTemporary() { if (--Ref == 0) ++g_destroyed; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) {}
     CDefPointer(const CDefPointer& o) : Data(o.Data) { if (Data) ++Data->Ref; }

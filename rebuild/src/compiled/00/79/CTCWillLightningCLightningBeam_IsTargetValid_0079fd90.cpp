@@ -1,7 +1,7 @@
 // CTCWillLightning::CLightningBeam::IsTargetValid() -- beam target check through the home thing's interface-8 component
 // Grade: see STATUS.tsv
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CThing* m_pItem;                            // +0x04
@@ -33,7 +33,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_thingType;                  // +0x10 (1: creature)
     unsigned char _pad11[0x20 - 0x11];

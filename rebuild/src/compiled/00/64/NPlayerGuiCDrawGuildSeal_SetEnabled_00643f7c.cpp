@@ -12,7 +12,7 @@ extern CGuiDef* __fastcall PeekGuiDef();          // 0x00438570
 
 namespace NPlayerGui {
 
-struct CDrawGuildSeal {
+class CDrawGuildSeal { public:
     unsigned char _pad[0x28];
     bool          Enabled;                         // +0x28
     bool          ReadyToLevelUp;                  // +0x29

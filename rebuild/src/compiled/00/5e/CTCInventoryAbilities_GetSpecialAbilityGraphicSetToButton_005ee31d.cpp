@@ -25,7 +25,7 @@ template <class A, class B> struct pair {
 }
 enum EHeroAbility { HERO_ABILITY_NULL };
 
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
     unsigned char _pad_0x00[0x44];
     long          IconGraphicIndex;               // +0x44 (PDB +0x48)
 };

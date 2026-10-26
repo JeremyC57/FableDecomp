@@ -1,4 +1,4 @@
-struct CEngineBillboardGenerator;
+class CEngineBillboardGenerator;
 
 unsigned long __fastcall PeekSceneFilterFlags(CEngineBillboardGenerator* generator)
 {

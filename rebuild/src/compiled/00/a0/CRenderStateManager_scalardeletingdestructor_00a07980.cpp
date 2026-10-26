@@ -3,13 +3,13 @@
 // Leaf: ??_GCRenderStateManager@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x0129C978) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CRenderStateManager;
+class CRenderStateManager;
 extern CRenderStateManager* g_pRenderStateManager_013cb508;   // 0x013CB508
 struct CBaseClassNonCopyable {
     virtual void v00();
     ~CBaseClassNonCopyable();                      // 0x0099A300
 };
-struct CRenderStateManager : CBaseClassNonCopyable {              // vtable 0x0129C978
+class CRenderStateManager : public CBaseClassNonCopyable { public:              // vtable 0x0129C978
     void* m_4;                                     // +0x04
     __forceinline virtual ~CRenderStateManager()
     {

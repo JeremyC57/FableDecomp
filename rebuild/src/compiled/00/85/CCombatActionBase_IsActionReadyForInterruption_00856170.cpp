@@ -1,6 +1,6 @@
 // ?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ  0x00856170
 // bool __fastcall CCombatActionBase::IsActionReadyForInterruption(void) const
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual bool IsActionReadyForInterruption() const; // vptr at +0
     char pad[0xd8 - 4];  // vptr occupies +0..+3
     bool m_flagA;        // +0xd8

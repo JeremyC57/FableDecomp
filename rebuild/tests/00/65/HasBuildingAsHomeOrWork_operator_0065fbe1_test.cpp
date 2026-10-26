@@ -6,20 +6,20 @@
 #define __fastcall
 #define __forceinline inline
 #endif
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     void*   VTable;
     CThing* PItem;
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x168];
 };
 struct CBuildingPointer : CBaseIntelligentPointer { };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     CBuildingPointer HomeBuilding;                    // +0x168
     CBuildingPointer WorkBuilding;                    // +0x170
     const CBuildingPointer& GetHomeBuilding() const { return HomeBuilding; }
@@ -28,7 +28,7 @@ struct CThingAICreature : CThing {
 
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThingAICreature>& thing);   // 0x004AB8F0
 
-struct HasBuildingAsHomeOrWork {
+class HasBuildingAsHomeOrWork { public:
     CThing* Building;                                 // +0x00
     bool operator()(const CIntelligentPointer<CThingAICreature>& creature) const;
 };

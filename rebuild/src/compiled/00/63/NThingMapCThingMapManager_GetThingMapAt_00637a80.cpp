@@ -9,11 +9,11 @@
 // Shape: `last` and pos.x are loop-invariant (no calls, no stores) and live in ebx/edi; the area
 // test is an inline member on the box (`add eax,20h` materialises its `this`), pos.y re-read per
 // test; the entry is a named local (esi) and the hit re-reads info->PMap through it.
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;
     long Y;
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     bool Contains(const C2DCoordI& pos) const
     {
@@ -21,12 +21,12 @@ struct C2DBoxI {
     }
 };
 namespace NThingMap {
-struct CThingMap {
+class CThingMap { public:
     unsigned char _pad00[0x20];
     C2DBoxI       Area;                         // +0x20
 };
-struct CThingMapManager {
-    struct CThingMapInfo {
+class CThingMapManager { public:
+    class CThingMapInfo { public:
         CThingMap* PMap;                        // +0x00
     };
     void*           __vftable;                  // +0x00

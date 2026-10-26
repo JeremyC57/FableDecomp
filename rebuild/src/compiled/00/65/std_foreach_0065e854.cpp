@@ -12,7 +12,7 @@
 #pragma optimize("s", on)
 class CThing;
 class CVillageTaskPatrol;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;                                    // +0x00

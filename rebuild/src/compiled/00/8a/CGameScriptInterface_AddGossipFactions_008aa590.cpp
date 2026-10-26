@@ -6,13 +6,13 @@
 // destroyed. Modeled here as a __fastcall free function with an edx dummy so the
 // CCharString argument stays on the stack (=> ret 4), matching the thiscall layout.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const CCharString& o);
     ~CCharString();
 };
 
-struct CGameScriptInterface { char pad[4]; };
+class CGameScriptInterface { public: char pad[4]; };
 
 // Inner gossip routine @ 0x8ae660: takes the string BY VALUE (owns/destroys the copy).
 void __fastcall Inner_008aeac0(CCharString byval);

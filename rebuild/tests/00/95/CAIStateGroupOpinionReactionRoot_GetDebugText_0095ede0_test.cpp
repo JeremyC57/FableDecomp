@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharString; struct Elem40 { char _[40]; };
+class CCharString; struct Elem40 { char _[40]; };
 static Elem40 g_dbgtable[4];
 struct S { char pad[0x18]; unsigned long CurrentReactionType; };
 static const CCharString* f(S* stateGroup){ return (const CCharString*)&g_dbgtable[stateGroup->CurrentReactionType]; }

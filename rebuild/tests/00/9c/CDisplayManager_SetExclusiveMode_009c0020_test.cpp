@@ -7,7 +7,7 @@ struct CCreateDeviceParameters {
     void* WinHandle; long X, Y; long BackBufferBitDepth, ZBufferBitDepth, BackBufferCount, RefreshRate;
     bool ExclusiveMode; CPresentationIntervalDesc PresentationInterval; long MultisampleType;
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     bool ExclusiveMode;
     CCreateDeviceParameters LastDeviceCreationParameters;
     int resets; CCreateDeviceParameters seen;

@@ -2,11 +2,11 @@
 // from the script def, and every quest-state member reset.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[48];
     CCharString(const char* text) { std::strncpy(Text, text, 47); Text[47] = 0; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     char log[512];
     void AddQuestRegion(const CCharString& quest, const CCharString& region) {
         std::strcat(log, quest.Text); std::strcat(log, ">"); std::strcat(log, region.Text); std::strcat(log, ";");
@@ -17,7 +17,7 @@ struct CGameScriptInterface {
         std::strcat(log, b);
     }
 };
-struct CScriptDef { long NakedCost, NakedReward, NoDamageCost, NoDamageReward; };
+class CScriptDef { public: long NakedCost, NakedReward, NoDamageCost, NoDamageReward; };
 static CScriptDef g_def = { 10, 20, 30, 40 };
 static CScriptDef* g_pScriptDef = &g_def;
 struct CScript {

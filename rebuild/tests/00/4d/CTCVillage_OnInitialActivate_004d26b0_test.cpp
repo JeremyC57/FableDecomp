@@ -14,7 +14,7 @@ void __fastcall Sub_Call(SubObj* self, int a1, unsigned char a2)
     g_lastA2 = a2;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     SubObj* sub;
     int     ParentThing;
     char    pad8[4];

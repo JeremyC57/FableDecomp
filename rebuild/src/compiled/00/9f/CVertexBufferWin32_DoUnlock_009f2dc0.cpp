@@ -25,7 +25,7 @@ struct IInterface {                       // COM-style: `this` is pushed as the 
     virtual long __stdcall Method();       // slot 14
 };
 
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     unsigned char _pad[0x4];
     IInterface* m_pInterface;              // +0x4
     void DoUnlock();

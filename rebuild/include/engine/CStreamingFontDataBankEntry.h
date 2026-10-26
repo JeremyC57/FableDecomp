@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CFontBank;
-struct CStreamingFontDataBank;
+class CCPPointerInfo;
+class CFontBank;
+class CStreamingFontDataBank;
 
 #pragma pack(push, 1)
-struct CStreamingFontDataBankEntry {
+class CStreamingFontDataBankEntry {
+public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CFontBank*              Font_Data;                       // +0x04 CCountedPointer<CFontBank>::Data
     CCPPointerInfo*         Font_Info;                       // +0x08 CCountedPointer<CFontBank>::Info

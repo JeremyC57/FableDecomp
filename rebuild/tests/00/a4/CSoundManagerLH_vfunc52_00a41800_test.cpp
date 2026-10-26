@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CSoundManagerLH {
     virtual void v00() { }
     C3DVector m_vector;

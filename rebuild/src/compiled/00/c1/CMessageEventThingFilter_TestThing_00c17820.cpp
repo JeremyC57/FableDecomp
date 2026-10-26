@@ -10,9 +10,9 @@
 // Shape: the event record is a named local (retail re-derives `lea eax,[esp+4]` after the constructor
 //        instead of reusing the constructor's eax).
 
-struct CThing;
+class CThing;
 
-struct CMessageEvent {
+class CMessageEvent { public:
     long    m_type;                               // +0x00 (0 = none)
     CThing* m_pThing;                             // +0x04
     CMessageEvent(CThing* thing);                 // 0x00C31990

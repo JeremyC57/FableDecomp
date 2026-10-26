@@ -1,15 +1,15 @@
 // Behaviour test for 0x008FBCB0 CPhysicsForceModelBase::GetPointIntersection: first hit in list order wins.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CMeshIntersectionData {
+class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;
     C3DVector Normal;
     float     DistanceSquared;
 };
 
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     bool  hits;
     float hitX;
     mutable int queried;

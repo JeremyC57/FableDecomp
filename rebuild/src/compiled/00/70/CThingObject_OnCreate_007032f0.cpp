@@ -15,10 +15,10 @@
 // Shape: the sprite test binds the literal CCharString to a block-scoped const reference and stores the comparison in a
 //   bool, so both temporaries die before the test (retail destroys them ahead of `test bl,bl`) and the compare re-reads the
 //   literal's data word from the frame instead of keeping the constructor's returned address.
-struct CTCBase;
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CTCBase;
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare(const char* a, const char* b);  // 0x00411570
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -39,7 +39,7 @@ struct CCharString {
 };
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                                 // 14 bytes (Ego_r.pdb)
+class CEngineGraphic { public:                                 // 14 bytes (Ego_r.pdb)
     unsigned long BankIndex;                            // +0
     float         AnimStep;                             // +4
     float         RenderSizeX;                          // +8
@@ -52,7 +52,7 @@ struct CTCGraphicAppearance {
     CEngineGraphic Graphic;                             // +0x44
     void SetScale(float scale);                         // 0x004BFA50
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -63,7 +63,7 @@ struct CTCGraphicAppearanceSprite : CTCBase {
     void SetRotationAngle(float angle);                 // 0x0077C490
 };
 
-struct CThingObjectDef {
+class CThingObjectDef { public:
     unsigned char  _pad00[0x70];
     CEngineGraphic Graphic;                             // +0x70
     float          RotationTime;                        // +0x80
@@ -103,7 +103,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -127,15 +127,15 @@ struct CThing {
         return (it == end || type < it->type ? end : it)->component;
     }
 };
-struct CThingPhysical : CThing {
+class CThingPhysical : public CThing { public:
     unsigned char _pad94[0x9c - 0x94];                  // CThing rounds to 0x94
     float         Scale;                                // +0x9c
     bool ValidateInitialisation();                      // 0x006A4D60
 };
-struct CThingGameObject : CThingPhysical {
+class CThingGameObject : public CThingPhysical { public:
     bool OnCreate();                                    // 0x00838A40
 };
-struct CThingObject : CThingGameObject {
+class CThingObject : public CThingGameObject { public:
     unsigned char           _pada0[0xd0 - 0xa0];
     const CThingObjectDef*  PDef;                       // +0xd0 CDefPointer<const CThingObjectDef>
     long                    DieOffTimer;                // +0xd4

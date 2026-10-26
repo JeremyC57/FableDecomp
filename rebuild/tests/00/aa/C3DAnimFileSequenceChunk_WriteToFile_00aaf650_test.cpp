@@ -1,27 +1,27 @@
 #include <cstdio>
 #include <cstring>
 // mock stream: records a trace of what was written
-struct CCharString { const char* m_pText; };
-struct CMatrix3x4 { float m_row[3][4]; };
-struct CChunkedFileSaver { int dummy; };
+class CCharString { public: const char* m_pText; };
+class CMatrix3x4 { public: float m_row[3][4]; };
+class CChunkedFileSaver { public: int dummy; };
 static char g_trace[512];
 static void Log(const char* s) { std::strcat(g_trace, s); }
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLONG(long v) { char b[32]; std::sprintf(b, "L%ld;", v); Log(b); }
     void WriteFLOAT(float v) { char b[32]; std::sprintf(b, "F%g;", v); Log(b); }
     void WriteUBYTE(unsigned char v) { char b[32]; std::sprintf(b, "B%d;", (int)v); Log(b); }
     void WriteMatrix3x4(const CMatrix3x4& m) { char b[32]; std::sprintf(b, "M%g;", m.m_row[0][0]); Log(b); }
     void WriteNullTerminatedString(const CCharString& s) { Log("S"); Log(s.m_pText); Log(";"); }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin; T* m_pEnd; T* m_pEndOfStorage;
     unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
     const T& operator[](unsigned long i) const { return m_pBegin[i]; }
 };
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     void WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const { Log("SUPER;"); }
 };
-struct C3DAnimFileSequenceChunk : CChunkedFileSuperChunk {
+class C3DAnimFileSequenceChunk : public CChunkedFileSuperChunk { public:
     long BoneIndex; long ParentIndex; CCharString BoneName; float SamplesPerSecond;
     unsigned char BoneType; CArray<CMatrix3x4> Matrices;
     void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const;

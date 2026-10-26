@@ -5,7 +5,7 @@
 // two words and a CIntelligentPointer (base @ 0x00A01B10, SetPItem(GetPItem) @ 0x00A01B90 / 0x00A01B50).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (landed-trusted)
 inline void* operator new(unsigned int, void* p) { return p; }   // placement form: the null test on its result is what retail emits
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                       // +4

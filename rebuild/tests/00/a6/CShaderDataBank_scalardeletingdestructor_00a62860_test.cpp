@@ -8,12 +8,12 @@ static int g_count = 0;
 
 static void FreeBlock(void* p) { g_events[g_count++] = 3; std::free(p); }
 
-struct CBankFile {
+class CBankFile { public:
     virtual ~CBankFile() { g_events[g_count++] = 4; }
     unsigned char _body[0x10c];
 };
 
-struct CShaderBankEntry;
+class CShaderBankEntry;
 
 struct CShaderEntryVector {
     CShaderBankEntry** m_first; CShaderBankEntry** m_last; CShaderBankEntry** m_end;
@@ -21,11 +21,11 @@ struct CShaderEntryVector {
     ~CShaderEntryVector() { if (m_first) FreeBlock(m_first); }
 };
 
-struct CBankStateBlock {
+class CBankStateBlock { public:
     virtual ~CBankStateBlock() { g_events[g_count++] = 2; }
 };
 
-struct CShaderDataBank : CBankFile {
+class CShaderDataBank : public CBankFile { public:
     CShaderEntryVector Shaders;
     CBankStateBlock    StateBlock;
     CShaderDataBank() {}

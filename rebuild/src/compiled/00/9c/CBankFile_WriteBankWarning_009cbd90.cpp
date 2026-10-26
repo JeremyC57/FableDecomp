@@ -7,7 +7,7 @@
 // Forwards the warning text to the progress callback's virtual slot 3 when one is attached and
 // latches WarningFlag so the bank reports that a warning was raised.
 
-struct CCharString;
+class CCharString;
 
 // Retail CBankFile layout. In the shipped binary every std::vector / CArray / map / CVectorMap is
 // 4 bytes smaller than in Ego_r.pdb (engine/CBankFile.h), so each container before a member moves

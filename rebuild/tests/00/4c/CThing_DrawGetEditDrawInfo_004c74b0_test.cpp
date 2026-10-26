@@ -1,11 +1,11 @@
 // Behaviour test for CThing::DrawGetEditDrawInfo @ 0x004C74B0: fills player number, grey opaque colour, empty label, no highlight.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString& operator=(const char* text) { m_text = text; return *this; }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -15,7 +15,7 @@ struct SEditDrawInfo {
     long        PlayerNumber;
     bool        Highlighted;
 };
-struct CThing {
+class CThing { public:
     signed char PlayerNumber;
     bool DrawGetEditDrawInfo(void* context, SEditDrawInfo* info)
     {

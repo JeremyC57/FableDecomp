@@ -9,7 +9,7 @@
 // ParentThing +4, Morality +0x28 (PDB +0x30).
 // Shape: the experience component comes through the inline accessor with an unset local (the absent path reads the
 // dead argument slot); the morality sum is written def-first (`mov eax,[def+2Ch] ; add eax,[stats+28h]`).
-struct CTCHeroExperience;
+class CTCHeroExperience;
 struct STCEntry {                                  // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long               m_kind;
     CTCHeroExperience* m_pTC;
@@ -27,7 +27,7 @@ struct CTCMap {                                    // the thing's component map 
         return it->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];
@@ -41,17 +41,17 @@ __forceinline CTCHeroExperience* GetTCIfPresent(CThing* thing, long kind)
         tc = thing->m_tcs.Find(kind);
     return tc;
 }
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     void AddTrainableStatExperience(long stat, long amount);   // 0x006D8300
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                       // +0x00
     CThing*       ParentThing;                     // +0x04
     unsigned char _pad08[0x20];
     long          Morality;                        // +0x28
     void SetMorality(long morality);               // 0x0057C2E6
 };
-struct CCreatureStatsDef {
+class CCreatureStatsDef { public:
     unsigned char _pad[0x2c];
     long          MoralityForPunch;                // +0x2c
     long          MoralityForWeaponHit;            // +0x30

@@ -3,13 +3,13 @@
 // Behaviour test for 007b7d20 COverheadDisplayDef::Transfer: three CRC checks and, by mode, the three flags written in order
 // (save) or read in order (load); other modes only check.
 static char g_log[16]; static int g_n = 0, g_crc = 0, g_inPos = 0; static bool g_in[3] = { true, false, true };
-struct COverheadDisplayDef {
+class COverheadDisplayDef { public:
     void* vtbl;
     unsigned char pad[0x21];
     bool DisplayDamage, DisplayRepair, DisplayRenown;
 };
-struct CMemoryDataInputStream;
-struct CDataOutputStream {
+class CMemoryDataInputStream;
+class CDataOutputStream { public:
     void WriteBool(bool value) { g_log[g_n++] = value ? 'T' : 'F'; }
 };
 template<class T> struct CPersistTraits;
@@ -18,7 +18,7 @@ template<> struct CPersistTraits<bool> {
     void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value) { *value = g_in[g_inPos++]; }
     static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1c[0x08];

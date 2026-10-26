@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char b[0x50];
 };
 

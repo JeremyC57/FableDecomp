@@ -4,7 +4,7 @@
 // "CQuest_Array_FindByName": walks the quest list at +0x38 comparing the name data pointer; bool result), virtual
 // FinishAction (slot 4, +0x10) tail-jumped.
 // ScriptName is the CCharString at +0xa8 (engine header PDB +0xb4: retail CCreatureActionBase is 0xa8 bytes, 0xc less).
-struct CCharString {                        // one pointer (fable_string.h)
+class CCharString { public:                        // one pointer (fable_string.h)
     char* m_pData;
 };
 
@@ -16,7 +16,7 @@ extern CQuestManager_Calls* g_pQuestManager;   // 0x013B89FC
 
 // engine/CCreatureAction_ActivateQuest.h exists but is not used: its PDB layout puts ScriptName at +0xb4 (retail +0xa8,
 // the base's three containers are 4 bytes wider there) and carries no vtable; the retail `this` is modelled locally.
-struct CCreatureAction_ActivateQuest {
+class CCreatureAction_ActivateQuest { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4 (+0x10)
     unsigned char _pad04[0xa8 - 4];         // +0x04 CCreatureActionBase body

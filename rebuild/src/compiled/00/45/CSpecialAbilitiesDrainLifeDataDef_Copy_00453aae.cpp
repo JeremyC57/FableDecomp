@@ -1,5 +1,5 @@
 struct CSubField { int v; };
-struct CSpecialAbilitiesDrainLifeDataDef {
+class CSpecialAbilitiesDrainLifeDataDef { public:
     unsigned char _pad_0x0[0x28]; // to 0x28
     CSubField sub; // +0x28
 };

@@ -1,7 +1,7 @@
 // Behaviour test for 0x008527F0 (CScriptModuleConversationBase::IsThingsOk): both things present and distinct.
 #include <cstdio>
 
-struct CThing { int dummy; };
+class CThing { public: int dummy; };
 struct CIntelligentPointer_CThingConst {
     const CThing* m_pItem;
     const CThing* GetPItem() const { return m_pItem; }

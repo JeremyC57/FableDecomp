@@ -1,6 +1,6 @@
 // std::vector<NSpeechGainManager::CDialogueLayerDef>::erase(iterator first, iterator last) -- STLport: assign the tail [last, finish) down over first, destroy the leftover elements, pull finish back, return first
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- same-TU noinline __destroy_aux template body (tag unnamed, never touched) homes the empty __false_type tag over the live first slot
-// Leaf: ?erase@?$vector@UCDialogueLayerDef@NSpeechGainManager@@@std@@QAEPAUCDialogueLayerDef@NSpeechGainManager@@PAU34@0@Z
+// Leaf: ?erase@?$vector@VCDialogueLayerDef@NSpeechGainManager@@@std@@QAEPAVCDialogueLayerDef@NSpeechGainManager@@PAV34@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00472BDD, 77 bytes, `ret 8` (thiscall: first, last; the iterator is returned in eax).
 // Identity: the catalog's "Vector_ShiftDialogueLayersRight" is behavioural. Stride 0x40 with the element assignment
 //   CDialogueLayerDef::operator= @ 0x004663AE (landed as NSpeechGainManager::CDialogueLayerDef::operator=) and the
@@ -18,7 +18,7 @@
 #pragma optimize("s", on)
 
 namespace NSpeechGainManager {
-struct CDialogueLayerDef {                          // retail sizeof 0x40, polymorphic
+class CDialogueLayerDef { public:                          // retail sizeof 0x40, polymorphic
     unsigned long Data[15];                         // +0x04
     virtual ~CDialogueLayerDef();
     CDialogueLayerDef& operator=(const CDialogueLayerDef& other);   // 0x004663AE

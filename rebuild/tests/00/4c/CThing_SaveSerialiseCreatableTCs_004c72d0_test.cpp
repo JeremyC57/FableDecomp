@@ -17,10 +17,10 @@ public:
 CCharString operator+(const char* left, const CCharString& right) { CCharString r(left); r += right; return r; }
 CCharString operator+(const CCharString& left, const char* right) { CCharString r(left); CCharString t(right); r += t; return r; }
 static bool g_addingPermittedDuringWalk = true;
-struct CThing;
+class CThing;
 static CThing* g_thing;
 static bool thingPermits(CThing* t);
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
     virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {}
     virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {}
@@ -32,7 +32,7 @@ struct CTCBase {
     void* ParentThing; bool ToBeRemoved; bool creatable; const char* name;
 };
 struct SComponentPair { long first; CTCBase* second; };
-struct CThing {
+class CThing { public:
     void* __vftable; unsigned char _pad04[0x44 - 0x04];
     SComponentPair* m_componentsFirst; SComponentPair* m_componentsLast;
     unsigned char _pad4c[0x93 - 0x4c];

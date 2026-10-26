@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cmath>
 unsigned int g_InvSqrtMantissaTable[128];
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector& Normalise();

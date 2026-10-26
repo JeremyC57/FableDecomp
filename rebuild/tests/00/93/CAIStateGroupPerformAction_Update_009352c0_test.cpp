@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { unsigned char m_flags91; };
+class CThing { public: unsigned char m_flags91; };
 static bool IsAlive(const CThing* thing)
 {
     if (thing != 0 && !(thing->m_flags91 & 1))
@@ -15,9 +15,9 @@ static const char* g_lastAnim;
 static bool g_lastFace;
 static const CThing* g_lastTarget;
 static long g_lastPriority;
-struct CTCPerceiveThing { CThing* GetPerceivedThing() { return g_perceived; } };
-struct CCharString { const char* text; CCharString(const char* t) : text(t) { } CCharString(const CCharString& o) : text(o.text) { } };
-struct CTCAIScratchpad {
+class CTCPerceiveThing { public: CThing* GetPerceivedThing() { return g_perceived; } };
+class CCharString { public: const char* text; CCharString(const char* t) : text(t) { } CCharString(const CCharString& o) : text(o.text) { } };
+class CTCAIScratchpad { public:
     long ScriptingStateGroup;
     CCharString Action;
     bool FaceHeroForAction;
@@ -26,18 +26,18 @@ struct CTCAIScratchpad {
 static CTCAIScratchpad* g_pad;
 static int g_changeAfter = -1;          // the scratchpad state switches to g_changeTo after this many speak/perform calls
 static long g_changeTo;
-struct CCreatureActionBase { };
-struct CCreatureAction_PlayCombatAnimation : CCreatureActionBase {
+class CCreatureActionBase { public: };
+class CCreatureAction_PlayCombatAnimation : public CCreatureActionBase { public:
     const CThing* target; const char* anim; bool face;
     CCreatureAction_PlayCombatAnimation(CThing*, CThing* t, const CCharString& a, bool f) : target(t), anim(a.text), face(f) { }
 };
 static void Tick() { if (g_changeAfter > 0 && --g_changeAfter == 0) g_pad->ScriptingStateGroup = g_changeTo; }
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CTCPerceiveThing perceive;
     CTCAIScratchpad pad;
 };
 static CThingCreatureBase* g_hero;
-struct CAIBrain { CThingCreatureBase* PCreature; };
+class CAIBrain { public: CThingCreatureBase* PCreature; };
 struct CAIStateGroup_PerformAction {
     CAIBrain* PBrain;
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }

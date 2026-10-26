@@ -16,19 +16,19 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();  // 0x0044C6B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x8c];
     unsigned short DefIndex;                          // +0x8c global def index
     unsigned char _pad8e[0x91 - 0x8e];
@@ -81,11 +81,11 @@ template <class T> struct list {                      // STLport list<T>: one he
     iterator end() { return iterator(_M_node); }
 };
 
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Type;                                        // ETCInterfaceType
     CThingFilter_HasTC(long type) : Type(type) {}
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThings(const CThingFilter_HasTC& filter, list<CThing*>& things);   // 0x00617860
 };
 CThing* FirstSearchThing();                           // stand-in callees of the stand-in body below
@@ -101,18 +101,18 @@ __declspec(noinline) void CThingSearchTools::GetAllThings(const CThingFilter_Has
             things.push_back(thing);
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* ThingSearchTools;              // +0x20
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature() const;            // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                   // 0x00449960
 };
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     CPlayerManager* GetPlayerManager() const;         // 0x00686D50 (CTCBase)
     CWorld* GetWorld();                               // 0x00686A70 (CTCBase)
     void TeleportHeroToTeleporter(CThing* teleporter);   // 0x005FBD20

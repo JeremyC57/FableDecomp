@@ -9,14 +9,14 @@
 // Shape: the UNCHECKED out-parameter lookup in an inline accessor (the absent arm reads the uninitialised out pointer = the
 // shared key word); the component stays in esi for both the call and the HeadTrackTarget store, so both arms duplicate the tail.
 // Layout: CTCKraken retail HeadTrackTarget +0x51 (Ego_r.pdb +0x61: the two std::list members are 4 bytes smaller each in retail).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -43,13 +43,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCKraken {                              // interface type 0xe2 component
+class CTCKraken { public:                              // interface type 0xe2 component
     unsigned char _pad00[0x51];
     bool          HeadTrackTarget;              // +0x51 (PDB +0x61)
     void StartLowAttackBeam();                  // 0x007FC7A0
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void v01();
     virtual void v02();

@@ -8,10 +8,10 @@
 // Layout (retail CTCWillLightning, the PDB list/pointer members 0xc larger): WeaponState +0x0c, LeftHandAnim +0x10,
 //   PrimaryHandEffect +0x20, SecondaryHandEffect +0x24, m_lsState +0x6c, m_cbpPlayer +0x70, m_tpLeftHandEffect +0x78,
 //   m_tpRightHandEffect +0x80.
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
-struct CBaseObject;
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
+class CBaseObject;
+class CCharString { public:
     void* PStringData;
 };
 extern CCharString g_RightHandAttachmentName;   // 0x013BAC30
@@ -23,7 +23,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -60,7 +60,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
@@ -79,11 +79,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCDParticleEmitter {                    // interface 0x4B
+class CTCDParticleEmitter { public:                    // interface 0x4B
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 
-struct CTCWillLightning {
+class CTCWillLightning { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x0c - 0x08];

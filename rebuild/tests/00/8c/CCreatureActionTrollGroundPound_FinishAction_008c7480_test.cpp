@@ -9,11 +9,11 @@ struct CActionSet {                         // minimal set<CAction*>: erase by k
     int size() const { return m_count; }
     int count(CAction* key) const { for (int i = 0; i < m_count; ++i) if (m_items[i] == key) return 1; return 0; }
 };
-struct CTCHaste {
+class CTCHaste { public:
     CActionSet SpeedSources; int m_recalcs;
     void RecalculateSpeed() { ++m_recalcs; }
 };
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     CTCHaste* m_haste;
     template<class T> bool GetInterface(T** ppOut, int interfaceType)

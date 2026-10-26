@@ -1,8 +1,8 @@
 // CGameScriptInterface::SetQuestAsPersistent
-struct CCharString;
+class CCharString;
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void SetQuestAsPersistent(
         const CCharString& questName,
         bool persistent);

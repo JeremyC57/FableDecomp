@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CGraphicDataBank;
+class CGraphicDataBank;
 
 #pragma pack(push, 1)
 struct CEngineInternalPrimitive2DStaticMesh {

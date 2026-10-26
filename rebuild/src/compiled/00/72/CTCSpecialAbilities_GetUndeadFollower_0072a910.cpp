@@ -12,7 +12,7 @@
 // reference to the node value kept in a local; `this` in ebx, the thing in ebp; null is `xor eax,eax`, the hit `mov eax,edi`.
 #include "engine/CTCBase.h"
 
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {                 // CIntelligentPointer<CThing>: 8 bytes
     void* m_pItem;
@@ -34,7 +34,7 @@ struct CUndeadFollowerList {                     // retail std::list<CUndeadFoll
     node* head;
 };
 
-struct CTCSpecialAbilities : CTCBase {
+class CTCSpecialAbilities : public CTCBase { public:
     bool                AbilityMutexLock;        // +0x0c
     bool                UsingBed;                // +0x0d
     long                CurrentAbility;          // +0x10 EHeroAbility

@@ -8,7 +8,7 @@
 struct CMemoryArea;
 struct CMemoryAreaChunk;
 
-struct CMemoryAllocatorVariableSize : CMemoryAllocatorBase {
+class CMemoryAllocatorVariableSize : public CMemoryAllocatorBase { public:
     CMemoryAreaChunk* PFirstChunk;                // +0xC1C
     long              MinChunkSize;               // +0xC20
     long              NoFreesSinceConsolidation;  // +0xC24

@@ -3,7 +3,7 @@
 // behaviour test: CQ_HangingTreeEvilScript::CleanUp -- remove every HTE_FreedomFighter, then (unless the thread is
 // ending) the prisoner and the two guards if they are still alive
 static int g_removed[16]; static int g_frames = 0, g_endAt = 1000;
-struct CScriptThing { int id; bool alive; bool IsAlive() const { return alive; } };
+class CScriptThing { public: int id; bool alive; bool IsAlive() const { return alive; } };
 static CScriptThing Make(int id, bool alive) { CScriptThing t; t.id = id; t.alive = alive; return t; }
 static bool g_guard2Alive = true;
 struct CScriptThingVector {
@@ -13,7 +13,7 @@ struct CScriptThingVector {
     unsigned int size() const { return Count; }
     const CScriptThing& operator[](unsigned int i) const { return Items[i]; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing GetThingWithScriptName(const char* n) const
     { return !std::strcmp(n, "GUARD1") ? Make(1, false) : !std::strcmp(n, "GUARD2") ? Make(2, g_guard2Alive) : Make(3, true); }
     void GetAllThingsWithScriptName(const char* n, CScriptThingVector& v) const

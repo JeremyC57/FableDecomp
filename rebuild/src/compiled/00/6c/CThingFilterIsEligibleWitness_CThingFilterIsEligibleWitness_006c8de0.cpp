@@ -13,7 +13,7 @@
 //   null-safe `deed ? deed->Type : 0`); UsePerceiving is then narrowed in the body from the inline HasTC/GetTC lookup as
 //   `UsePerceiving = UsePerceiving && !source->AlwaysAwareOf` -- the && over the known-true flag yields the full-register
 //   0/1 (`xor eax,eax ; test dl,dl ; sete al`); a plain `= !x` (or == false, ternary, if/else, accessor) gives `sete dl`.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
 
-struct CTCOpinionSource {
+class CTCOpinionSource { public:
     unsigned char _pad00[0x75];
     bool AlwaysAwareOf;                         // +0x75
 };
@@ -49,11 +49,11 @@ public:
 };
 class CThingAICreature;
 class CFaction;
-struct COpinionDeed {
+class COpinionDeed { public:
     long Type;                                  // +0x00 EOpinionDeedType
 };
 
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Type;
     CThingFilter_HasTC(long type) : Type(type) { }
 };
@@ -66,11 +66,11 @@ struct CThingFilter_IsPerceivingThingAndIsThingPerceived {
     bool UseHearing;
     CThingFilter_IsPerceivingThingAndIsThingPerceived(CThing* thing, bool useHearing) : Thing(thing), UseHearing(useHearing) { }
 };
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     const void* Thing;
     CThingFilter_IsNot(const void* thing) : Thing(thing) { }
 };
-struct CThingFilter_IsAlliedWithFaction {
+class CThingFilter_IsAlliedWithFaction { public:
     CFaction* Faction;
     CThingFilter_IsAlliedWithFaction(CFaction* faction) : Faction(faction) { }
 };
@@ -79,7 +79,7 @@ struct CThingFilter_IsEnemyOfFaction {
     CThingFilter_IsEnemyOfFaction(CFaction* faction) : Faction(faction) { }
 };
 
-struct CThingFilter_IsEligibleWitness {
+class CThingFilter_IsEligibleWitness { public:
     CThing* Perpetrator;                                            // +0x00
     COpinionDeed* PDeed;                                            // +0x04
     CThingFilter_HasTC HasOpinions;                                 // +0x08

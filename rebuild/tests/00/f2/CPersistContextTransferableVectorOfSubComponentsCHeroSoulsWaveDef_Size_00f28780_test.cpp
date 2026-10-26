@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for 00f28780: CPersistContext_TransferableVectorOfSubComponents<CHeroSoulsWaveDef>::Size on a model vector.
-struct CPersistContext { int calls; };
+class CPersistContext { public: int calls; };
 struct Def {
     int transferred;
     unsigned char Setup : 1;

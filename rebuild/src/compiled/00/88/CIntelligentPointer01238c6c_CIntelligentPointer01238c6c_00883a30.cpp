@@ -8,7 +8,7 @@
 // (this body is a pointer-wrapper constructor, not a def). Sibling default constructor @ 0x008840B0.
 // Shape: base ctor call, then `push 0 ; mov ecx,esi ; mov [esi],vtable ; call SetPItem ; mov byte [esi+8],0`
 // (the vtable store is scheduled between the argument push and the call), `mov eax,esi` returns this.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

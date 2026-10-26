@@ -18,7 +18,7 @@
 //   The six source lookups after the type-3 block go through a const CThing reference, i.e. the const GetInterface
 //   over the const LowerBound overload (retail's 0x004365B0); the type-3 and target lookups use the non-const one
 //   (0x0040F020): the two byte-identical copies are the two overloads, one symbol per retail address.
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void CopyStateFrom(CTCBase* source);     // slot 12 (+0x30)

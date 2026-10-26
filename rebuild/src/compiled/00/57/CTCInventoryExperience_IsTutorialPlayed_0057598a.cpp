@@ -7,7 +7,7 @@
 // vector, address kept in esi) and returns `xor al,al` -- an unsigned char result.
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
@@ -20,7 +20,7 @@ struct SCharStringVector {
     void push_back(const CCharString& value);      // 0x0044BFF0
 };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x248];
     SCharStringVector TutorialsPlayed;             // +0x248
     unsigned char IsTutorialPlayed(const CCharString& name);

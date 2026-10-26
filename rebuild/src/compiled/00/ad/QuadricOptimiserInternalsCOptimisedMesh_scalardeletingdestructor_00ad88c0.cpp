@@ -11,7 +11,7 @@ struct CBaseClassNonCopyable {
     virtual void v00();
     ~CBaseClassNonCopyable();                      // 0x0099A300
 };
-struct C3DOptimisedMeshBase : CBaseClassNonCopyable {   // vtable 0x0129F048
+class C3DOptimisedMeshBase : public CBaseClassNonCopyable { public:   // vtable 0x0129F048
     virtual void v00();
     ~C3DOptimisedMeshBase() { }                    // inline: the vtable store then the base destructor
 };

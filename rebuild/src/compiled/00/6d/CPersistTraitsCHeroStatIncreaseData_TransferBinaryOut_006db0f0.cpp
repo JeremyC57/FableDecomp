@@ -76,7 +76,7 @@ public:
 
 }
 
-struct CHeroStatIncreaseData {
+class CHeroStatIncreaseData { public:
     std::map<EHeroExperienceStatCategory, float> StatIncreases;   // +0x00
 };
 

@@ -12,7 +12,7 @@
 
 struct CClass_Calls;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                          // 0x0099E4B0
 };
@@ -32,7 +32,7 @@ template<class T> struct CRetailList {                      // retail std::list:
 
 typedef CClass_Calls* (__cdecl* ClassAllocFunc)();
 
-struct CClassTypeInfo {
+class CClassTypeInfo { public:
     CRetailList<CClass_Calls*> TypeList;                    // +0x00
     unsigned long  NoAllocated;                             // +0x04
     bool           Used;                                    // +0x08

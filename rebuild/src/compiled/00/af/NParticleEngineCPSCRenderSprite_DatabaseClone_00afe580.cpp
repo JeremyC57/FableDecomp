@@ -1,7 +1,7 @@
 // NParticleEngine::CPSCRenderSprite::DatabaseClone() -- allocate a fresh component of this class and copy this one into it (virtual slot 18 = DatabaseCopy), returning the copy
 // Leaf: ?DatabaseClone@CPSCRenderSprite@NParticleEngine@@
 // Renamed (fistp pass, 2026-10-24) from CThingTrackNode::DrawIsDrawable @ 00/af/CThingTrackNode_DrawIsDrawable_00afe580.cpp: vtable slot 2 of NParticleEngine::CPSCRenderSprite; Ego_r.pdb lists Alloc / DatabaseClone / DatabaseCopy on every particle component class and the body is exactly alloc-then-copy-from-this; the clone target is the slot-18 virtual
-namespace NParticleEngine { struct CPSCRenderSprite; }
+namespace NParticleEngine { class CPSCRenderSprite; }
 using NParticleEngine::CPSCRenderSprite;
 
 struct IDrawableObj {
@@ -14,7 +14,7 @@ struct IDrawableObj {
 extern IDrawableObj* __fastcall GetDrawableObject(CPSCRenderSprite* self);
 
 namespace NParticleEngine {
-struct CPSCRenderSprite {
+class CPSCRenderSprite { public:
     IDrawableObj* DatabaseClone();
 };
 }

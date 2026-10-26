@@ -12,7 +12,7 @@
 //   CEvent (8 bytes): packed word (index in the low 30 bits, two flags in bits 30/31) and time.
 // Shape: size() is the signed /12 of the pointer difference compared unsigned; the inner count is re-read each pass; the flag bits
 //   are written as `(word & bit) == bit`; the file is a scoped stack object written as Write(PeekData(), GetSize(), 0).
-struct CWideString {
+class CWideString { public:
     void* PStringData;                              // +0x00
     ~CWideString();                                 // 0x0099B510
 };
@@ -23,7 +23,7 @@ namespace N_0099a300 { struct CBase {
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
 
-struct CDiskFileWin32 : CBase {                     // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                     // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                           // 0x0099A920 (slot 2)
@@ -38,14 +38,14 @@ struct CDiskFileWin32 : CBase {                     // vtable 0x0122D06C, 0x1c b
     void Write(const void* data, long size, CASuspendableProcess* process);   // 0x0099AA90
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteEBOOL(bool value);                    // 0x00993E30
     void WriteULONG(unsigned long value);           // 0x00993EA0
     void WriteSLONG(long value);                    // 0x00993EB0
     void WriteFLOAT(float value);                   // 0x00993EE0
 };
 
-struct CMemoryDataOutputStream : CDataOutputStream {
+class CMemoryDataOutputStream : public CDataOutputStream { public:
     unsigned char _body[0x18];
     CMemoryDataOutputStream();                      // 0x00996AF0
     ~CMemoryDataOutputStream();                     // 0x00996B30
@@ -55,7 +55,7 @@ struct CMemoryDataOutputStream : CDataOutputStream {
 
 namespace NAnimationEvents {
 
-struct CEvent {                                     // 8 bytes
+class CEvent { public:                                     // 8 bytes
     unsigned long Packed;                           // index (30 bits), flags in bits 30 and 31
     float         Time;
 };

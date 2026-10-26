@@ -17,7 +17,7 @@
 // inline destructor frees the storage when it is non-null.
 #include <stdlib.h>
 
-struct CEngineComponent {                          // vtable 0x012A2544
+class CEngineComponent { public:                          // vtable 0x012A2544
     virtual void v00();
     long GlobalPointerAddress;                                      // +0x04
     bool m_enabled;                                // +0x08
@@ -26,7 +26,7 @@ struct CEngineComponent {                          // vtable 0x012A2544
 };
 
 class CCamera;
-struct C2DBoxF;
+class C2DBoxF;
 
 struct CEngineCameraDesc {                         // 0x6C bytes
     unsigned char m_data[0x68];
@@ -50,7 +50,7 @@ struct CDebugScriptArray {                         // CArray<CEngineCamera::CDeb
     CDebugScriptArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) {}
 };
 
-struct CEngineCamera : CEngineComponent {
+class CEngineCamera : public CEngineComponent { public:
     CCamera* GameCamera;                           // +0x0C
     C2DBoxF* GameWindow;                           // +0x10
     CEngineCameraDesc CameraDesc;                  // +0x14

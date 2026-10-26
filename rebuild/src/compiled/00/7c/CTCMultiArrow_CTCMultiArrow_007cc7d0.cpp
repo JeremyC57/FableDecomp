@@ -10,7 +10,7 @@
 // `allocator_type()` temporary) -- with three plain zeroing words the `mov ecx,edi` for BowEffect is scheduled before
 // the vector stores; BowEffect built from a null pointer (the base constructor, its vtable, SetPItem(0) with `push ebx`);
 // Init is a body call.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem(item); }
     virtual void v00();
 };
@@ -54,7 +54,7 @@ struct CTCBase_007cc7d0 {
     CTCBase_007cc7d0(CThing* owner);                // 0x00686800
 };
 
-struct CTCMultiArrow : CTCBase_007cc7d0 {
+class CTCMultiArrow : public CTCBase_007cc7d0 { public:
     CDefPointerMultiArrow                      PDef;   // +0x0c
     long                                       NumberOfShots;   // +0x10
     long                                       NumberInVolley;  // +0x14

@@ -11,7 +11,7 @@
 // Shape: the STLport _List_base (sentinel in an _STLP_alloc_proxy) with clear() inline in ~_List_base; the sentinel
 // member is re-read after every free (the call may alias it).
 extern "C" void __cdecl free(void* p);      // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };

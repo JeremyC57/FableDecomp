@@ -12,29 +12,29 @@
 // The window copy is C2DBoxF's implicit operator= on a class that declares a user copy constructor: that gives
 // the `lea` address form (a user operator= gives four direct moves).
 // Leaf: ??4CQuickDrawTriInfo
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF(const C2DBoxF& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
-struct CTexture {
+class CTexture { public:
     void* m_p0;
     void* m_p1;
     CTexture& operator=(const CTexture& other);         // 0x009FA1C0
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char b, g, r, a;
 };
 
 class CFontBank;
 
-struct CQuickDrawTriInfo {
+class CQuickDrawTriInfo { public:
     unsigned char Line   : 1;                           // +0x00 bit 0
     unsigned char IsText : 1;                           // +0x00 bit 1
     C2DBoxF     Window;                                 // +0x04

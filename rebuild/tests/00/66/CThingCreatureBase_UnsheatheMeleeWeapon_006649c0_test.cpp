@@ -1,11 +1,11 @@
 // Behaviour test for CThingCreatureBase::UnsheatheMeleeWeapon (0x006649C0)
 #include <cstdio>
-struct CThingCreatureDef { long DefaultMeleeWeapon; long DefaultSecondaryMeleeWeapon; long DefaultRangedWeapon; };
+class CThingCreatureDef { public: long DefaultMeleeWeapon; long DefaultSecondaryMeleeWeapon; long DefaultRangedWeapon; };
 static long g_log[8]; static int g_n;
-struct CThingCreatureBase;
+class CThingCreatureBase;
 static bool IsThingCarryingMeleeWeapon(const CThingCreatureBase& creature);
 static bool IsThingCarryingRangedWeapon(const CThingCreatureBase& creature);
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool m_unsheathed; bool m_carrying;
     CThingCreatureDef* m_pDef;
     virtual bool AreWeaponsUnsheathed() { return m_unsheathed; }

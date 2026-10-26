@@ -8,8 +8,8 @@ struct CTCInventoryItemBase
     void OnDieBase(); // -> 0x0099eae0
 };
 
-struct CTCInventoryItem : public CTCInventoryItemBase
-{
+class CTCInventoryItem : public CTCInventoryItemBase
+{ public:
     void OnDie();
 };
 

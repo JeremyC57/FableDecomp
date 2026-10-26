@@ -13,7 +13,7 @@
 //   __forceinline, the dtor releases through `if (--count == 0) Destroy()` and nulls; the definition manager is read into a named local
 //   ahead of the argument; the layer is a named local defaulting to 0x44.
 #include <stdlib.h>
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 void __fastcall GFAPositionToScreen(C2DVector* out, const C2DVector* in);   // 0x00643D0C
 struct ComponentEntry { long Type; void* Component; };
 struct ComponentMap {
@@ -25,8 +25,8 @@ struct CThingNative {
     void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components;
     unsigned char State[0x45]; unsigned char LifeFlags;
 };
-struct CPlayer { CThingNative* GetCharacterThing(); };          // 0x00487DD0
-struct CPlayerManager;
+class CPlayer { public: CThingNative* GetCharacterThing(); };          // 0x00487DD0
+class CPlayerManager;
 struct LongVector {
     long *Start, *Finish, *End;
     LongVector() : Start(0), Finish(0), End(0) {}
@@ -40,7 +40,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
     void Release() { if (--m_count == 0) Destroy(); }
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-struct CExpressionDef : CDefBase { unsigned char _pad08[0x58]; long Graphic; };   // +0x60
+class CExpressionDef : public CDefBase { public: unsigned char _pad08[0x58]; long Graphic; };   // +0x60
 struct CDefPointer {
     CExpressionDef* m_p;
     CDefPointer() : m_p(0) {}
@@ -55,11 +55,11 @@ struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager { CDefPointer GetPDefFromGlobalIndex(long index) const; };   // 0x009AD9E0
-struct CWorld { unsigned char _pad[0x10]; CDefinitionManager* Definitions; };
+class CDefinitionManager { public: CDefPointer GetPDefFromGlobalIndex(long index) const; };   // 0x009AD9E0
+class CWorld { public: unsigned char _pad[0x10]; CDefinitionManager* Definitions; };
 struct SButtonEntry { unsigned char _pad[0x54]; C2DVector Position; };   // 0x5c bytes
 struct ButtonVector { SButtonEntry *Start, *Finish, *End; long size() const; };   // 0x0043CAC0
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad00[0x214];
     C2DVector     ExpressionOrigin;             // +0x214
     unsigned char _pad21c[0x7a4 - 0x21c];
@@ -72,7 +72,7 @@ struct CPlayerGuiDef {
     ButtonVector  ExpressionButtons;            // +0x808
 };
 extern CPlayerGuiDef* __fastcall PeekGuiDef();  // 0x00438570
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 enum EEngine2DLayer { LAYER_44 = 0x44, LAYER_45 = 0x45 };
 
 namespace NPlayerGui {

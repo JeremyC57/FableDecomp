@@ -8,7 +8,7 @@
 //   into a local (homed in the dead `in` argument slot) and then stored.
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -26,10 +26,10 @@ struct CDataInputStream {
     }
     template <class T> __forceinline void Read(T& value) { Read(&value, sizeof(T)); }
 };
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector MinCoord, MaxCoord; };             // 0x18
-struct C3DBoundingSphere { C3DVector Centre; float Radius; };        // 0x10
-struct CMatrix3x4 { float E[12]; };                                  // 0x30
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };             // 0x18
+class C3DBoundingSphere { public: C3DVector Centre; float Radius; };        // 0x10
+class CMatrix3x4 { public: float E[12]; };                                  // 0x30
 struct CLocalDetailPrimitiveMesh {
     void*             __vftable;                    // +0x00
     unsigned char     _pad04[4];

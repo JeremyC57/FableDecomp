@@ -36,7 +36,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad00[0x94];
     unsigned char m_changed : 1;            // +0x94 bit 0: animation changed
     unsigned char m_flags94_1 : 7;
@@ -45,13 +45,13 @@ struct CTCBaseAny {
     void OnStateGroupRemoved();             // 0x006CB6B0 (interface 7 component)
     CAnimateThing& GetAnimation();          // 0x0070B460 (CTCAnimationComplex, interface 0x5A)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20
     CInterfaceMap m_interfaces;             // +0x44
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12();
@@ -60,7 +60,7 @@ struct CTCBase {
     bool    ToBeRemoved;                    // +0x08
     bool    IsInGlobalUpdateTCs;            // +0x09
 };
-struct CTCScriptedControl : CTCBase {       // vtable 0x012658E4
+class CTCScriptedControl : public CTCBase { public:       // vtable 0x012658E4
     virtual void vfunc_13();
 };
 

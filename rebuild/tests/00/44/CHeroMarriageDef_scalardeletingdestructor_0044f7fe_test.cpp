@@ -10,7 +10,7 @@ void __cdecl engine_operator_delete(void *p)
     g_deleted = p;
 }
 
-struct CHeroMarriageDef {
+class CHeroMarriageDef { public:
     void *vptr;
     void real_dtor() { g_dtor_called++; }
     void * CHeroMarriageDef_scalar_deleting_destructor(unsigned int flags);

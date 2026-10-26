@@ -18,9 +18,9 @@
 //        manager are named locals read before the argument pushes (ebp, and the spilled `push ecx` word); the unchecked
 //        GetInterface (end/hit choice as one ternary, so the component lands in ecx) and the stats out pointer each sit
 //        in their own `{}` block so they share that single frame word.
-struct CTCBase;
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
 typedef long ETavernGameStates;
 
 extern bool g_bTavernGameQuitRequested;         // 0x013BAE1C
@@ -32,7 +32,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -65,41 +65,41 @@ struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointe
     CBaseObject* m_pItem;                       // +4
     CBaseObject* GetPItem() const;              // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void* AddMessage(long type, unsigned long distance, C3DVector* pos, CThing* source, CThing* extra, float a, float b, long c);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessages;          // +0x60
 };
 
-struct CTCTavernGame;
-struct CTCGamePlayer {
+class CTCTavernGame;
+class CTCGamePlayer { public:
     void SetGame(CTCTavernGame* game);          // 0x005EDC00
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void SetMoney(long money, bool notify);     // 0x0057A774
 };
-struct CPlayer {
+class CPlayer { public:
     void RemoveMode(long mode);                 // 0x00634190
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void Clear(bool now);                       // 0x00492BAB
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad_0x00[0x18];
     CSubtitleRenderer Subtitles;                // +0x18
     unsigned char     _pad_0x19[0x2a4];
@@ -108,7 +108,7 @@ struct CPlayerGui {
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

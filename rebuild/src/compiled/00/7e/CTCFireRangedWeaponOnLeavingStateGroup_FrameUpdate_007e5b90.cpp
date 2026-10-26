@@ -17,7 +17,7 @@
 // first (nested inside it, VC sinks the esi push below the entry); the creature's lookup goes through a const thing, so it reaches the
 // const LowerBound; the world is taken into a local before the last call so it is fetched ahead of the pushes. The lookup key and the `performed` flag share the single `push ecx` frame word.
 class CTCBase;
-struct CCombatActionBase;
+class CCombatActionBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -70,20 +70,20 @@ public:
     bool SetCurrentAction(CCombatActionBase* action);   // 0x006644F0
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     bool IsProjectileWeapon();                  // 0x005DAA40
     bool IsProjectileWeaponLoaded();            // 0x005DA980
     void SetFireRequested();                    // 0x005DA4C0 (+0x18 = 1)
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     CCombatActionBase* GetNextActionForCreature(CThingCreatureBase* creature);           // 0x006EB600
     void SetCreatureAsAttemptedToPerformedAction(CThingCreatureBase* creature, bool performed);   // 0x006EA540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
     CCombatManager* GetPCombatManager() { return PCombatManager; }

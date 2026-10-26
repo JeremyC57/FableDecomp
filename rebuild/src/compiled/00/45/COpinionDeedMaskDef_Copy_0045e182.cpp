@@ -5,7 +5,7 @@
 // The rel32 target is relocation-masked, so any tail-call to an extern
 // produces the identical `jmp rel32` byte pattern.
 
-struct COpinionDeedMaskDef;
+class COpinionDeedMaskDef;
 
 // The real target of the thunk (address relocation-masked in parity).
 extern void __fastcall COpinionDeedMaskDef_Copy_impl(COpinionDeedMaskDef* thisptr, void* other);

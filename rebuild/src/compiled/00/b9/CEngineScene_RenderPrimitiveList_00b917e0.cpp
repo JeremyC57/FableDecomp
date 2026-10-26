@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B917E0, length 55 bytes.
 // Callees: virtual slot 8 (+0x20) of the primitive's manager (`g_pEngine->m_managers[type]` @ 0x01436E84 + 0x10). Shape: `test esi,esi ; je` skips an empty chain, the
 // mask stays in edi, the loop head is aligned with `mov edi,edi`; the two trailing arguments and `this` are unused (`ret 10h`).
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
 struct CEnginePrimitiveManagerBase_00b917e0 {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -15,7 +15,7 @@ struct CEngine_01436e84 {
 };
 extern CEngine_01436e84* g_pEngine_01436e84;       // 0x01436E84
 
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     unsigned char                 _pad0[8];
     long                          m_type;          // +0x08
     unsigned char                 _pad0c[0x24];
@@ -26,7 +26,7 @@ struct CEngineInternalPrimitiveBase {
     CEngineInternalPrimitiveBase* m_pNextSkipped;  // +0x40
 };
 
-struct CEngineScene {
+class CEngineScene { public:
     void RenderPrimitiveList(CEngineInternalPrimitiveBase* first, unsigned long layerMask, long a, long b);
 };
 

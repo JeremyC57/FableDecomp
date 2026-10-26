@@ -17,19 +17,19 @@ struct random_access_iterator_tag {
     random_access_iterator_tag() { }
 };
 
-struct CEngineGraphic {                           // 16 bytes (PDB: BankIndex, AnimStep, RenderSizeX, AdditiveAlpha, Type)
+class CEngineGraphic { public:                           // 16 bytes (PDB: BankIndex, AnimStep, RenderSizeX, AdditiveAlpha, Type)
     long m_words[4];
 };
 
-struct CDegradableInfo {                          // 28 bytes, POD
+class CDegradableInfo { public:                          // 28 bytes, POD
     float          HealthPercentage;              // +0x00
     CEngineGraphic EngineGraphic;                 // +0x04
     long           SmashParticleEmitter;          // +0x14
     bool           BlocksNavigation;              // +0x18
 };
 
-struct CDegradableDef {
-    struct CIsHealth1GTHealth2 {                  // empty functor (PDB size 1), passed in a 4-byte slot
+class CDegradableDef { public:
+    class CIsHealth1GTHealth2 { public:                  // empty functor (PDB size 1), passed in a 4-byte slot
         bool operator()(const CDegradableInfo& a, const CDegradableInfo& b) const { return a.HealthPercentage > b.HealthPercentage; }
     };
 };

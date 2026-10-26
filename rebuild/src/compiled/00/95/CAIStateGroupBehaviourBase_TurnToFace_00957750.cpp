@@ -9,7 +9,7 @@
 // copy. `cmp eax,2 ; sete al` is `return r == 2 ? true : false` (a plain `return r == 2` goes through ecx).
 // The manifest module "CAIStateGroup_OpinionReactionRoot" is wrong: the target pointer at +0x14 is
 // CAIStateGroupBehaviourBase::PTargetThing (its Cleanup @ 0x00957790 and OnActivate @ 0x009576C0 surround it).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -23,7 +23,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x0
     CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   // 0x0097D6F0

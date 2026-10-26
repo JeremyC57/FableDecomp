@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { long type; };
+class CThing { public: long type; };
 static CThing g_made; static int g_creates = 0;
 struct Inv {
     long counts[4];

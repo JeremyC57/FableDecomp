@@ -7,7 +7,7 @@
 // ActionTime (+0x14) are the engine-header CCreatureActionBase names.
 #include "fable_string.h"
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00857520
@@ -17,7 +17,7 @@ struct CCombatActionBase {
     long ActionTime;                        // +0x14
 };
 
-struct CCreatureAction_DragonRoar : CCombatActionBase {
+class CCreatureAction_DragonRoar : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

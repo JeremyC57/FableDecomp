@@ -11,16 +11,16 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCAnimationBase;
+class CTCAnimationBase;
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad_0x00[0x4c];
     unsigned long PersistenceFlags;                     // +0x4c (retail)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CThingBaseDef* PBaseDef;                            // +0x70 (retail)
     void AddToRenderList();                             // 0x004C7AC0 (manifest CThing::AddToRenderList)
@@ -28,7 +28,7 @@ struct CThing {
 
 namespace NGraphicAppearance {
 
-struct CAGraphicAppearanceComponent;
+class CAGraphicAppearanceComponent;
 
 struct CEnginePersistentPrimitiveBase {                 // CIVCountedPointer<CEnginePersistentPrimitiveBase> target
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -40,7 +40,7 @@ struct CEnginePrimitiveHandle {                         // 8 bytes (Ego_r.pdb): 
     CEnginePersistentPrimitiveBase* Data;               // +0x04 CIVCountedPointer<CEnginePersistentPrimitiveBase>
 };
 
-struct CPrimitive {                                     // 16 bytes (Ego_r.pdb)
+class CPrimitive { public:                                     // 16 bytes (Ego_r.pdb)
     long                            Type;               // +0x00 EPrimitiveType
     CEnginePrimitiveHandle          PrimitiveHandle;    // +0x04
     long                            BankIndex;          // +0x0c
@@ -72,7 +72,7 @@ struct CComponentList {                                 // STLport list<CAGraphi
 };
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                                 // 14 bytes (PDB size 14)
+class CEngineGraphic { public:                                 // 14 bytes (PDB size 14)
     unsigned long BankIndex;                            // +0x00
     float         AnimStep;                             // +0x04
     float         RenderSizeX;                          // +0x08
@@ -83,7 +83,7 @@ struct CEngineGraphic {                                 // 14 bytes (PDB size 14
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void*          __vftable;                           // +0x00 (CTCBase)
     CThing*        ParentThing;                         // +0x04
     bool           ToBeRemoved;                         // +0x08

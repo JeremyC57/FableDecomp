@@ -4,22 +4,22 @@
 static int g_log[32]; static int g_n = 0;
 static void Log(int v) { if (g_n < 32) g_log[g_n++] = v; }
 
-struct C2DExtentsI { long X, Y; };
-struct C2DBoxI {
+class C2DExtentsI { public: long X, Y; };
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) { }
 };
-struct CPixelFormat { long FormatIndex; CPixelFormat() : FormatIndex(-1) { } };
-struct CDisplayManager {
+class CPixelFormat { public: long FormatIndex; CPixelFormat() : FormatIndex(-1) { } };
+class CDisplayManager { public:
     long seenFormatIn;
     bool GetBestCompressedAlphaTextureFormat(unsigned long flags, CPixelFormat* format)
     { Log(2); seenFormatIn = format->FormatIndex; if (flags == 0x10) format->FormatIndex = 7; return true; }
 };
-struct CSystemManager { CDisplayManager* PDisplayManager; };
+class CSystemManager { public: CDisplayManager* PDisplayManager; };
 static CDisplayManager g_display; static CSystemManager g_system;
 static CSystemManager* GFGetSystemManager() { return &g_system; }
 
-struct CSurface {
+class CSurface { public:
     int id;
     CSurface(int i) : id(i) { }
     ~CSurface() { Uninitialise(); }
@@ -33,7 +33,7 @@ void CSurface::CopyFromSurface(const C2DBoxI* destBox, const CSurface* source, c
     Log(5); g_copyBox[0] = destBox->X0; g_copyBox[1] = destBox->Y0; g_copyBox[2] = sourceBox->X1; g_copyBox[3] = sourceBox->Y1;
     g_copySrc = source; g_copyFlags = f; g_copyThis = id;
 }
-struct CTexture {
+class CTexture { public:
     void* PD3DTexture;
     long sizeX, sizeY, levels, format, usage, pool;
     bool IsInitialised() const { return PD3DTexture != 0; }

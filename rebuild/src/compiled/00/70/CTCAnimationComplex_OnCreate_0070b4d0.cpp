@@ -11,15 +11,15 @@
 // release share one null test, both count stores kept) and the raw pointer then asks for the appearance sub-def; the
 // "DEFAULT" lookup is the 0x007F8F30 PlayDefaultAnimation block (def read after the string is built, kept in esi for the
 // release at the end).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                             // +0x00
 };
-struct CAnimFilterBase {                        // vtable 0x0122FFCC
+class CAnimFilterBase { public:                        // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -28,12 +28,12 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
 
-struct CAnimInit;
-struct CAnimateThing {
+class CAnimInit;
+class CAnimateThing { public:
     void ResetAnimations_0070ec30();            // 0x0070EC30 (descriptive)
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
 };
@@ -42,7 +42,7 @@ struct CBlendPair {
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                              // 0x2c bytes
+class CAnimInit { public:                              // 0x2c bytes
     long          Mode;                         // +0x00
     unsigned char AnimType;                     // +0x04
     bool          Flag05;                       // +0x05
@@ -59,14 +59,14 @@ struct CAnimInit {                              // 0x2c bytes
     }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -75,14 +75,14 @@ template <class T> struct CCountedDefPointer {  // the by-value CDefPointer<T> c
     CCountedDefPointer(T* object) : Object(object) { if (Object) Object->AddRef(); }
     ~CCountedDefPointer() { if (Object) Object->Release(); }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                    // +0x34
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CThingBaseDef* PBaseDef;                    // +0x70
     CCountedDefPointer<CThingBaseDef> GetBaseDef() const { return CCountedDefPointer<CThingBaseDef>(PBaseDef); }

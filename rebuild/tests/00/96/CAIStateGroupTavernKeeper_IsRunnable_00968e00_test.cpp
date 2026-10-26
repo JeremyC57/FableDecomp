@@ -1,6 +1,6 @@
 // Behaviour test for CAIStateGroup_TavernKeeper::IsRunnable (0x00968E00): same logic over mocks.
 #include <cstdio>
-struct CThing { bool dead; CThing* workplace; bool villager; int village; CThing* keeper; CThing() : dead(false), workplace(0), villager(false), village(0), keeper(0) { } };
+class CThing { public: bool dead; CThing* workplace; bool villager; int village; CThing* keeper; CThing() : dead(false), workplace(0), villager(false), village(0), keeper(0) { } };
 static bool IS_THING_ALIVE(CThing* p) { return p != 0 && !p->dead; }
 struct CState {
     CThing* creature; CThing* PBar; CThing* PPub; CThing* barCandidate; int getBarCalls;

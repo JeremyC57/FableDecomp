@@ -10,20 +10,20 @@
 #ifndef _MSC_VER
 #define __int64 long long
 #endif
-struct CProcessedInput {
+class CProcessedInput { public:
     long Priority; int Events[8]; int NoEvents;
     void SetPriority(long priority) { Priority = priority; }
 };
 void __fastcall AddManualCameraEvent_0B(bool on, CProcessedInput& input) { input.Events[input.NoEvents++] = on ? 0xB1 : 0xB0; }
 void __fastcall AddManualCameraEvent_0C(bool on, CProcessedInput& input) { input.Events[input.NoEvents++] = on ? 0xC1 : 0xC0; }
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad000[0x220];
     bool          UsingFreeCamera;                 // +0x220
     long Mode;
     long GetCurrentMode() { return Mode; }
 };
-struct CInputProcessMain {
+class CInputProcessMain { public:
     virtual void v00() {}
     void*    PPlayerInterface;                     // +0x04 (CAInputProcess)
     unsigned char InputProcessListPos[0xc];        // +0x08

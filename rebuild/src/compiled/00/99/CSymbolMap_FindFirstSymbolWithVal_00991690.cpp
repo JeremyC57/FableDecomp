@@ -13,7 +13,7 @@ struct SSymbolValueRecord {                        // 0x24 bytes
     unsigned char _pad10[0x24 - 0x10];
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     unsigned char       _pad00[0x30];
     SSymbolValueRecord* m_pFirst;                  // +0x30
     SSymbolValueRecord* m_pLast;                   // +0x34

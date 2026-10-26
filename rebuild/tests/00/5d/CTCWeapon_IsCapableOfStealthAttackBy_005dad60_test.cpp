@@ -1,12 +1,12 @@
 #include <cstdio>
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long RefCount;
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) ++g_destroyed; }
 };
 enum EWeaponClass { WEAPON_CLASS_NONE = 0, WEAPON_CLASS_1 = 1, WEAPON_CLASS_2 = 2, WEAPON_CLASS_3 = 3 };
-struct CWeaponDef : CDefPointeeBase {
+class CWeaponDef : public CDefPointeeBase { public:
     long Type; EWeaponClass Class; float AnimationSpeedVal; bool ProjectileWeaponAutoReload; bool NeedsLoading;
 };
 struct CWeaponDefPointer {
@@ -15,8 +15,8 @@ struct CWeaponDefPointer {
     ~CWeaponDefPointer() { Object->Release(); }
     CWeaponDef* operator->() const { return Object; }
 };
-struct CThing { bool canUse; };
-struct CTCWeapon {
+class CThing { public: bool canUse; };
+class CTCWeapon { public:
     CDefPointeeBase* WeaponDef_Object; bool ProjectileWeaponLoaded;
     bool IsUsableBy(const CThing& t) const { return t.canUse; }
     bool IsCapableOfStealthAttackBy(const CThing& t) const { long ty; { CWeaponDefPointer def(WeaponDef_Object); ty = def->Type; } if (ty == 0) return IsUsableBy(t); return false; }

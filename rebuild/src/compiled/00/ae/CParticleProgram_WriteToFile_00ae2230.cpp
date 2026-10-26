@@ -16,14 +16,14 @@
 //   CArray data accessor). The byte count is read through a may-alias view of the array (`const CArray<T>* const&`)
 //   written in the function body itself: retail re-reads first/last after the select's join instead of reusing the
 //   select's size. The same view inside a __forceinline template writer is seen through (CSE'd size, 654 bytes).
-struct CCharStringData;
-struct CCharString { CCharStringData* m_pData; };
-struct C4DVector { float X, Y, Z, W; };
-struct C2DVector { float X, Y; };
-struct C3DTriangle2 { unsigned short Index[3]; };
-struct C3DQuad2 { unsigned short Index[4]; };
-struct C3DClothRenderVertex { unsigned short Particle; unsigned short TexCoord; };
-struct C3DGroup2;
+class CCharStringData;
+class CCharString { public: CCharStringData* m_pData; };
+class C4DVector { public: float X, Y, Z, W; };
+class C2DVector { public: float X, Y; };
+class C3DTriangle2 { public: unsigned short Index[3]; };
+class C3DQuad2 { public: unsigned short Index[4]; };
+class C3DClothRenderVertex { public: unsigned short Particle; unsigned short TexCoord; };
+class C3DGroup2;
 
 class CDataOutputStream {
 public:
@@ -44,7 +44,7 @@ public:
     void* PeekData();                                                  // 0x00995E70
 };
 
-template <class T> struct CArray {                                     // retail 12 bytes
+template <class T> class CArray { public:                                     // retail 12 bytes
     T* m_first;
     T* m_last;
     T* m_end;
@@ -52,7 +52,7 @@ template <class T> struct CArray {                                     // retail
     const T* GetData() const { return size() > 0 ? m_first : (const T*)this; }
 };
 
-struct CParticleSimulation {
+class CParticleSimulation { public:
     unsigned char _body[0x80];
     void WriteToFile(CDataOutputStream& stream);                       // 0x00AE2050
 };

@@ -5,7 +5,7 @@
 // fit the CAnimateThing layout): an array of 8-byte CIntelligentPointers at +0x08, an array of 16-byte slot
 // records at +0x14 (item index at +4) and the current slot index at +0x20. Both indices are "none" when -1
 // (`cmp eax,-1 ; jle`), giving the shared `xor eax,eax` tail.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {               // 8 bytes: vptr + item
     virtual void v0();

@@ -4,7 +4,7 @@
 static void* g_args[4];
 static int g_n = 0;
 
-struct CPersistContext {
+class CPersistContext { public:
     void TByte(unsigned char* p) { g_args[g_n++] = p; }
     void TWord(unsigned short* p) { g_args[g_n++] = p; }
     void TSub(void* p) { g_args[g_n++] = p; }

@@ -14,7 +14,7 @@ struct SMapEntry_00b59840 {
     CPatchTesselationEdgeStrip* m_pStrip;          // +0x04
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     void DestroyMapStrip_00b59840(SMapEntry_00b59840& entry);
 };
 

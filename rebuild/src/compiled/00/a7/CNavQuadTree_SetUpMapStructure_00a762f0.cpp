@@ -2,9 +2,9 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A762F0, length 48 bytes.
 // Leaf: SetUpMapStructure
 // Shape: no frame, the stores through eax/edx, `ret 10h`.
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 #pragma pack(push, 1)
-struct CNavQuadTree {
+class CNavQuadTree { public:
     long          m_0;
     bool          m_setUp;                         // +0x04
     unsigned char _pad05[2];

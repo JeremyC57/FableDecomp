@@ -19,7 +19,7 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -48,7 +48,7 @@ struct CCursorPos {
     long StringPos;                             // +0x04
     long Line;                                  // +0x08
 };
-struct CStringParser : CBase {                  // retail 0x28 bytes
+class CStringParser : public CBase { public:                  // retail 0x28 bytes
     char*                    String;            // +0x04
     unsigned long            BaseLineOffset;    // +0x08
     CCharString              Filename;          // +0x0c
@@ -60,16 +60,16 @@ struct CStringParser : CBase {                  // retail 0x28 bytes
     bool SkipToItem(const CCharString& name);   // 0x009B9C00 (descriptive)
     CCharString ReadAsSymbol();                 // 0x009BA790
 };
-struct CPersistContext;
+class CPersistContext;
 struct CPersistContext_TransferableObjectBase {
     virtual void v00();
     virtual void TransferIn(CPersistContext* context, CStringParser* parser);   // slot 1 (+4)
 };
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CMemoryDataInputStream;
-struct CDataOutputStream;
-struct CPersistContext {
+class CDefinitionManager;
+class CSymbolMap;
+class CMemoryDataInputStream;
+class CDataOutputStream;
+class CPersistContext { public:
     CDefinitionManager*     PDefinitionManager;           // +0x00
     CSymbolMap*             PSymbolMap;                   // +0x04
     CStringParser*          PParser;                      // +0x08

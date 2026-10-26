@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicsBase::GetBoundingInfo (0x006AF640)
-struct C3DVector { float X, Y, Z; };
-struct CThingPhysicsMeshInfo { C3DVector ToCentre; float BoundingRadius; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CThingPhysicsMeshInfo { public: C3DVector ToCentre; float BoundingRadius; };
+class CTCPhysicsBase { public:
     const CThingPhysicsMeshInfo* mesh; C3DVector Position; float Radius;
     const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() { return mesh; }
     void GetBoundingInfo(C3DVector& centre, float& radius) {

@@ -1,9 +1,9 @@
 // Behaviour test for CTCOpinionSource::CTCOpinionSource @ 0x00771360: empty stack, flags false, no deed, deed ID -1.
 #include <cstdio>
-struct CThing { long id; };
+class CThing { public: long id; };
 struct CLongVector { long* f; long* l; long* e; CLongVector() : f(0), l(0), e(0) {} };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* owner) : ParentThing(owner) {} virtual ~CTCBase() {} };
-struct CTCOpinionSource : CTCBase {
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* owner) : ParentThing(owner) {} virtual ~CTCBase() {} };
+class CTCOpinionSource : public CTCBase { public:
     CLongVector DefStack;
     bool UseNavLineOfSight, WitnessesWillNotAttack, WitnessesWillOverrideFactionEnemy, BypassesPersonality, RelativeEffect;
     const void* RestrictToFactionAndAllies;

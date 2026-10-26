@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Mock the impl so the thunk has something to call.
-struct CSpecialAbilitiesElectrocutedEffectDef;
+class CSpecialAbilitiesElectrocutedEffectDef;
 static int g_called = 0;
 extern "C" {}
 

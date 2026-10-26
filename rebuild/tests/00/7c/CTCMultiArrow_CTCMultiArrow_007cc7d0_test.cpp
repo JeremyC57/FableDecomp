@@ -1,14 +1,14 @@
 // Behaviour test for CTCMultiArrow::CTCMultiArrow @ 0x007CC7D0: counters cleared, empty BowEffect, Init() runs last.
 #include <cstdio>
-struct CThing { long id; };
+class CThing { public: long id; };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer() : m_pItem((CThing*)1) {}
     void SetPItem(CThing* item) { m_pItem = item; }
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer(CThing* item) { SetPItem(item); } };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* owner) : ParentThing(owner) {} virtual ~CTCBase() {} };
-struct CTCMultiArrow : CTCBase {
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* owner) : ParentThing(owner) {} virtual ~CTCBase() {} };
+class CTCMultiArrow : public CTCBase { public:
     const void* PDef;
     long SpellLevel; bool RemovedEffect;
     long CreateAmmoEffectCount, CreateAmmoEffectDelay, CreateAmmoEffectTimer;

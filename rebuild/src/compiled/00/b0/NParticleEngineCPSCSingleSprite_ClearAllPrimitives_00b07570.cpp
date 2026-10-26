@@ -25,7 +25,7 @@ struct CEngineInterface {
     virtual void RemovePrimitive(const CPrimitiveGroupHandle& group, long primitiveId);   // slot 30 (+0x78)
 };
 
-template<class T> struct CArray {           // retail CArray<T>: three pointers
+template<class T> class CArray { public:           // retail CArray<T>: three pointers
     T* m_pData;
     T* m_pLast;
     T* m_pEnd;
@@ -38,7 +38,7 @@ struct CBase {
 };
 
 namespace NParticleEngine {
-struct CPSCSingleSprite : CBase {           // vtable 0x0129FB84
+class CPSCSingleSprite : public CBase { public:           // vtable 0x0129FB84
     unsigned char _body[0x128];             // +0x04 .. +0x12c (CPSCBase part, sprite settings, trail primitive)
     CArray<long>  PrimIDList;               // +0x12c
     void ClearAllPrimitives(CEngineInterface* engine, const CPrimitiveGroupHandle& group);

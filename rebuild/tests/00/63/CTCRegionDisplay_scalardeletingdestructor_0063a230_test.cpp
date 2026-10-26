@@ -2,15 +2,15 @@
 static int g_log[16]; static int g_n = 0;
 static void Log(int v) { if (g_n < 16) g_log[g_n++] = v; }
 static bool Expect(const int* want, int n) { int i; if (g_n != n) return false; for (i = 0; i < n; ++i) if (g_log[i] != want[i]) return false; return true; }
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     CTCBase() : ParentThing(0), ToBeRemoved(false), IsInGlobalUpdateTCs(true) {}
     virtual ~CTCBase() { Log(100); }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     void RemoveFromGlobalTCs() { IsInGlobalUpdateTCs = false; Log(1); }
 };
-struct CWideString { int m_tag; CWideString() : m_tag(0) {} ~CWideString() { Log(m_tag); } };
-struct CTCRegionDisplay : CTCBase {
+class CWideString { public: int m_tag; CWideString() : m_tag(0) {} ~CWideString() { Log(m_tag); } };
+class CTCRegionDisplay : public CTCBase { public:
     CWideString CurrentAreaName; CWideString CurrentAreaNameExtra;
     long FrameNameChanged, CurrentAlpha, LastAlpha; float DisplayTime; bool TimeOut, InfoDisplay, UpdateWhilePaused;
     virtual ~CTCRegionDisplay() { RemoveFromGlobalTCs(); }

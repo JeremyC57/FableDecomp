@@ -14,7 +14,7 @@
 //   (the landed 0x00807B70 / 0x00809D60 siblings): CTargetPoint's implicit operator= is SetPItem(GetPItem()), Index,
 //   C3DVector's implicit operator= (a user copy constructor and no operator=: the pointer-register block copy), then
 //   FrameRejected, through induction pointers at +0xc on both sides.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                             // 0x00A01B50
     void SetPItem(CThing* item);                          // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
@@ -30,19 +30,19 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
         return *this;
     }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor, implicit operator=
 };
 namespace NPlayerTargeting {
-struct CTargetPoint {                                     // 0x1c bytes
+class CTargetPoint { public:                                     // 0x1c bytes
     CIntelligentPointer<CThing> PThing;                   // +0x00
     long Index;                                           // +0x08
     C3DVector TargetingPosition;                          // +0x0C
     long FrameRejected;                                   // +0x18
 };
 }
-struct CThingFilter_IsInFOV {
+class CThingFilter_IsInFOV { public:
     C3DVector FromPos;                                    // +0x00
     C3DVector Direction;                                  // +0x0c
     float CosFOV;                                         // +0x18

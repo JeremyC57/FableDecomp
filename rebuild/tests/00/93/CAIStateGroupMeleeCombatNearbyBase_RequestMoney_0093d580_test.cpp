@@ -1,17 +1,17 @@
 // Behaviour test for CAIStateGroup_MeleeCombatNearbyBase::RequestMoney (0x0093D580): model copy with stub callees.
 #include <cstdio>
 
-struct CTCVillage { long fineDue; long GetFineAmountForCurrentCrimes() { return fineDue; } };
+class CTCVillage { public: long fineDue; long GetFineAmountForCurrentCrimes() { return fineDue; } };
 struct CTCVillager { CTCVillage* village; };
 static CTCVillage* GFGetPVillageInterface(CTCVillager* v) { return v->village; }
-struct CTCFineDialogue {
+class CTCFineDialogue { public:
     bool allowed; int shown; long fine, amount; CTCVillage* village;
     bool IsAllowed() { return allowed; }
     void Show(long f, long a, CTCVillage* v) { ++shown; fine = f; amount = a; village = v; }
 };
 struct CTCHeroInterface4 { long m_amount; };
-struct CTCTargetingAI { int updated; void UpdatePBestEnemyCreatureForAttack(bool force) { if (force) ++updated; } };
-struct CThing {
+class CTCTargetingAI { public: int updated; void UpdatePBestEnemyCreatureForAttack(bool force) { if (force) ++updated; } };
+class CThing { public:
     unsigned char m_flags91;
     CTCFineDialogue* fine; CTCHeroInterface4* tc4; CTCTargetingAI* targeting; CTCVillager* villager;
     bool GetInterface(CTCFineDialogue** o, long) { if (!fine) return false; *o = fine; return true; }
@@ -21,7 +21,7 @@ struct CThing {
     template<class T> T* GetTC(long) { return villager; }
 };
 struct CPointer { CThing* item; CThing* GetPItem() const { return item; } };
-struct CAIBrain { int yields; CThing* PCreature; void Yield() { ++yields; } };
+class CAIBrain { public: int yields; CThing* PCreature; void Yield() { ++yields; } };
 static CThing* g_hero;
 
 struct CAIStateGroup_MeleeCombatNearbyBase {

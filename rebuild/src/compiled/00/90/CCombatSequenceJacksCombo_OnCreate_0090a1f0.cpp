@@ -11,8 +11,8 @@
 // zero register (ebx) is hoisted over all three allocations.
 // Layout: local model (engine/CCombatSequenceJacksCombo.h is a flattened 0x2c-byte base blob); CCombatSequenceBase
 // owner +0x1c / target +0x20 as the landed family.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -20,13 +20,13 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CSoundPair {                         // the zeroed two-dword sound argument of CCombatActionBase
+class CSoundPair { public:                         // the zeroed two-dword sound argument of CCombatActionBase
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase() { }
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
@@ -52,7 +52,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pOwner;           // +0x1c
@@ -61,7 +61,7 @@ struct CCombatSequenceBase {
     virtual void OnCreate();                // 0x008B0650
 };
 
-struct CCreatureAction_InterruptableMidAttack : CCombatActionBase {   // vtable 0x01262EDC
+class CCreatureAction_InterruptableMidAttack : public CCombatActionBase { public:   // vtable 0x01262EDC
     unsigned char _body[0x114];             // sizeof = 0x118
     virtual void v00();
     CCreatureAction_InterruptableMidAttack(CThingCreatureBase* owner, CThing* thing)

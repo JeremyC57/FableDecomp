@@ -5,14 +5,14 @@
 #include <new>
 
 static int g_live = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned long Name;
     CParentDefClassBase() : Name(0) { ++g_live; }
     CParentDefClassBase(const CParentDefClassBase& o) : Name(o.Name) { ++g_live; }
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { Name = o.Name; return *this; }
     virtual ~CParentDefClassBase() { --g_live; }
 };
-struct CEngineLocalDetailObjectDef : CParentDefClassBase {
+class CEngineLocalDetailObjectDef : public CParentDefClassBase { public:
     unsigned long Fields[19];
     CEngineLocalDetailObjectDef() { }
     CEngineLocalDetailObjectDef(const CEngineLocalDetailObjectDef& o) : CParentDefClassBase(o) { for (int i = 0; i < 19; ++i) Fields[i] = o.Fields[i]; }

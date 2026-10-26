@@ -2,7 +2,7 @@
 // destructor prologue for a polymorphic class), then destroys and optionally frees.
 // __fastcall this=ecx, flags=stack (ret 4).
 extern void* g_vtable[];              // 0x01230BA0
-struct CSubDefClassBase { void** vptr; void Dtor(); void* ScalarDeletingDestructor(unsigned flags); };
+class CSubDefClassBase { public: void** vptr; void Dtor(); void* ScalarDeletingDestructor(unsigned flags); };
 void operator delete(void*);
 void* CSubDefClassBase::ScalarDeletingDestructor(unsigned flags) {
     this->vptr = g_vtable;

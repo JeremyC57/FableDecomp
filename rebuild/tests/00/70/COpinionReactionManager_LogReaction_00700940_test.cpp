@@ -1,24 +1,24 @@
 // behaviour test for 0x00700940 COpinionReactionManager::LogReaction
 #include <cstdio>
 static long g_frame = 500;
-struct CThing;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CThing;
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 static CWorld g_world;
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     long LastOpinionReactionFrame;
     CWorld* GetWorld() { return &g_world; }
 };
-struct CThing {
+class CThing { public:
     CTCCreatureOpinionOfHero* tc;
     CTCCreatureOpinionOfHero* GetOpinionOfHeroTC() { return tc; }
 };
-struct CReactionFrequencyTraits {
+class CReactionFrequencyTraits { public:
     int calls; bool lastFlag; const CThing* lastThing;
     virtual void LogReaction(const CThing* creature, bool fromScript) { ++calls; lastFlag = fromScript; lastThing = creature; }
     virtual ~CReactionFrequencyTraits() {}
 };
-struct COpinionReactionManagerDef { CReactionFrequencyTraits** FrequencyTraits; CReactionFrequencyTraits** FrequencyTraitsHigh; };
-struct COpinionReactionManager {
+class COpinionReactionManagerDef { public: CReactionFrequencyTraits** FrequencyTraits; CReactionFrequencyTraits** FrequencyTraitsHigh; };
+class COpinionReactionManager { public:
     const COpinionReactionManagerDef* PDef;
     void LogReaction(long reaction, CThing* creature, bool fromScript)
     {

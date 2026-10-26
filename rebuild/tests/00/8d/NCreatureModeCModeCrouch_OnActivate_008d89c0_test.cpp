@@ -3,7 +3,7 @@
 // Behaviour test for NCreatureMode::CModeCrouch::OnActivate (retail 0x008D89C0): with a weapon in the primary carry slot
 // the crouch filter takes the groups ("CROUCH", <weapon group>); the interface-0x36 component is marked crouching; then the
 // base activation runs.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -56,12 +56,12 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
-struct CTCWeapon : CTCBase {
+class CThing : public CThingLookup { public: };
+class CTCWeapon : public CTCBase { public:
     const char* Group;
     const char* GetAnimationGroupName() const { return Group; }
 };
-struct CTCCarrying : CTCBase {
+class CTCCarrying : public CTCBase { public:
     CThing* Primary;
     CThing* GetThingInPrimarySlot() { return Primary; }
 };
@@ -69,7 +69,7 @@ struct CTCInterface36 : CTCBase {
     bool m_crouching;
     bool m_flag10;
 };
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     char Group1[16];
     char Group2[16];
     void SetGroups(const char* a, const char* b) { std::strcpy(Group1, a); std::strcpy(Group2, b); }

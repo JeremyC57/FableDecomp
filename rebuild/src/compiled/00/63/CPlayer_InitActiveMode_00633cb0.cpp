@@ -22,7 +22,7 @@ typedef long EPlayerMode;
 typedef long EProcessedEventType;
 typedef long EGameEventPriority;
 
-struct CGameEvent {                                     // 0x28 bytes
+class CGameEvent { public:                                     // 0x28 bytes
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -32,7 +32,7 @@ struct CGameEvent {                                     // 0x28 bytes
     CGameEvent() : Player(-1), Valid(false) { }
 };
 
-struct CProcessedInput {                                // 0xb0 bytes
+class CProcessedInput { public:                                // 0xb0 bytes
     long                Player;                         // +0x00
     EProcessedEventType Type;                           // +0x04
     CGameEvent          GameEvents[4];                  // +0x08
@@ -43,13 +43,13 @@ struct CProcessedInput {                                // 0xb0 bytes
     void SetPlayer(long player);                        // 0x00A0D3A0
 };
 
-struct CInputProcessManager {
+class CInputProcessManager { public:
     void AddQueuedProcessedInput(CProcessedInput* input);   // 0x00A0D460
 };
-struct CGamePlayerInterface : CInputProcessManager { };
+class CGamePlayerInterface : public CInputProcessManager { public: };
 
 #pragma pointers_to_members(full_generality, multiple_inheritance)
-struct CPlayer;
+class CPlayer;
 typedef void (CPlayer::*TModeFunc)(EPlayerMode, CProcessedInput*);   // {function, this delta}
 struct CPlayerModeInfo {                                // 0x20 bytes
     TModeFunc     InitFunc;                             // +0x00
@@ -64,7 +64,7 @@ struct SModeListNode {                                  // list<EPlayerMode> nod
     EPlayerMode    Value;
 };
 
-struct CPlayer {
+class CPlayer { public:
     void*                 __vftable;
     unsigned char         _pad04[0x0c - 0x04];
     CGamePlayerInterface* PlayerInterface;              // +0x0c

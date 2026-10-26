@@ -6,17 +6,17 @@
 // NoUpdates +0x18, MovementVectorValid +0x1c, CurrentCam +0x20, LastCam +0x58 (CCamera, 56 bytes), MovementVector +0x90.
 // Shape: the difference is a C3DVector temporary built by the 3-float ctor (no user copy ctor) and copied into the member
 // through integer registers.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c
 };
-struct CCamera {                                   // 56 bytes
+class CCamera { public:                                   // 56 bytes
     C3DVector       WorldPosition;                 // +0x00
     CRightHandedSet RHSet;                         // +0x0c
     bool            HeightLocked;                  // +0x24
@@ -33,10 +33,10 @@ struct CCameraMovementInfo {
     CCamera   LastCam;                             // +0x40
     C3DVector MovementVector;                      // +0x78
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float X0, Y0, X1, Y1;
 };
-struct CIEngine;
+class CIEngine;
 struct CView3DBase {
     virtual void v00();
     CIEngine*           PEngine;                   // +0x04

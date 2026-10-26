@@ -60,7 +60,7 @@ _RandomAccessIter __fastcall __find_if(_RandomAccessIter __first, _RandomAccessI
 }
 }
 
-struct CCharStringData {
+class CCharStringData { public:
     char* m_pData;
     long m_length;
 };

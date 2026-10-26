@@ -3,13 +3,13 @@
 #include <new>
 // DeleteSplineRandomOffsetData: null-safe; destroys the four C3DVector arrays (reverse order) and frees the object
 static long g_frees; static void* g_freed[8]; static long g_deletes;
-struct C3DVector { float X, Y, Z; };
-template <class T> struct CArray {
+class C3DVector { public: float X, Y, Z; };
+template <class T> class CArray { public:
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     CArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
     ~CArray() { if (m_pFirst) { g_freed[g_frees++] = m_pFirst; std::free(m_pFirst); } }
 };
-struct CCardinalSpline { CArray<C3DVector> ControlPoints; float Tension; bool EndPointsConnected; };
+class CCardinalSpline { public: CArray<C3DVector> ControlPoints; float Tension; bool EndPointsConnected; };
 struct CSplineRandomOffsetData {
     CCardinalSpline* InitialSpline; CCardinalSpline ThisSpline; CCardinalSpline PreviousSpline;
     bool OffsetOnlyAtStartup; bool ResetEachFrame;

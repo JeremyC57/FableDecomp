@@ -10,7 +10,7 @@ struct CTCGraphicAppearance {
     void SetAlpha(unsigned char alpha);     // 0x004BFAC0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                  // +0x10 (compared with 1, as in the landed 0x008C4B00)
     unsigned char _pad11[0x64 - 0x11];

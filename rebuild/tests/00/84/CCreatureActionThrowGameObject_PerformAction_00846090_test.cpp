@@ -1,8 +1,8 @@
 // Behaviour test for 0x00846090 CCreatureAction_ThrowGameObject::PerformAction.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase { C3DVector m_acc; int m_calls; void ApplyAcceleration(const C3DVector& a) { m_acc = a; ++m_calls; } };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public: C3DVector m_acc; int m_calls; void ApplyAcceleration(const C3DVector& a) { m_acc = a; ++m_calls; } };
+class CThing { public:
     unsigned int m_presentBits[9];
     void* m_carrying;
     CTCPhysicsBase* m_pPhysics;
@@ -12,7 +12,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* m_primary; int m_removed;
     CThing* GetThingInPrimarySlot() { return m_primary; }
     void RemoveThing(CThing* t) { if (t == m_primary) m_primary = 0; ++m_removed; }

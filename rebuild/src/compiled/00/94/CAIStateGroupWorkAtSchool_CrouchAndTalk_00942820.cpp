@@ -10,7 +10,7 @@
 // the bool result rides in bl across the three destructors. `this` is the PDB header layout (no members used).
 #include "engine/CAIStateGroup_WorkAtSchool.h"
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0

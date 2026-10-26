@@ -4,10 +4,10 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static int g_deleted = 0;
 static void DeletePointee(void*) { ++g_deleted; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer& operator=(const CCountedPointer& other)
     {
@@ -19,8 +19,8 @@ template <class T> struct CCountedPointer {
         return *this;
     }
 };
-struct CBaseClass { virtual ~CBaseClass() {} };
-struct CScriptThing : CBaseClass {
+class CBaseClass { public: virtual ~CBaseClass() {} };
+class CScriptThing : public CBaseClass { public:
     CCountedPointer<CScriptThing> PImp;
     bool alive;
     CScriptThing() : alive(false) { PImp.Data = 0; PImp.Info = 0; }
@@ -30,12 +30,12 @@ struct CScriptThing : CBaseClass {
     virtual bool IsNull() const { return PImp.Data == 0; }
 };
 static CScriptThing g_hero, g_game;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     const CScriptThing* gaveTo;
     virtual CScriptThing& GetHero() { return g_hero; }
     virtual void GiveThingBestEnemyTarget(const CScriptThing& t, const CScriptThing& e) { gaveTo = &t; if (&e != &g_hero) gaveTo = 0; }
 };
-struct CScriptBase { bool term; int polls; bool IsActiveThreadTerminating() { ++polls; return term; } };
+class CScriptBase { public: bool term; int polls; bool IsActiveThreadTerminating() { ++polls; return term; } };
 struct CQ_MinionCampScript : CScriptBase {
     CGameScriptInterface* m_pInterface;
     CScriptThing HeroAttackerOne;

@@ -19,22 +19,22 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
 };
-struct CThing {                                    // 0xc0 bytes
+class CThing { public:                                    // 0xc0 bytes
     virtual void v00();
     unsigned char _body[0xbc];
     CThing(long type);                             // 0x005296B0
 };
-struct CThingGameObject : CThing {                 // vtable 0x01244F7C
+class CThingGameObject : public CThing { public:                 // vtable 0x01244F7C
     virtual void v00();
     CIntelligentPointer m_owner;                   // +0xc0
     unsigned char       _padc8[0x8];               // +0xc8
     CThingGameObject(long type) : CThing(type), m_owner() { }
 };
-struct CThingTrackNode : CThingGameObject {        // vtable 0x01272CE4
+class CThingTrackNode : public CThingGameObject { public:        // vtable 0x01272CE4
     virtual void v00();
     CThingTrackNode* PNextNode;                    // +0xd0
     CThingTrackNode* PPreviousNode;                // +0xd4

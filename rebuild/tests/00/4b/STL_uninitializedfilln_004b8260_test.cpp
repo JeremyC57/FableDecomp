@@ -4,7 +4,7 @@
 // Behaviour model of __uninitialized_fill_n of pair<CCharString, pair<CCharString, CCharString> > (0x004B8260): copy x
 // into n slots (three string copies each), return the end.
 static int g_copies = 0;
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* s) : p(s) { }
     CCharString(const CCharString& o) : p(o.p) { ++g_copies; }

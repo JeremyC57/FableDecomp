@@ -1,17 +1,17 @@
 #include <cstdio>
 // Behaviour of CTCInventoryMap::TeleportHeroToRegionTeleporter (0x005FC840): teleports only when hero and teleporter are alive.
-struct CRegion { long m_index; };
-struct CThing { unsigned char m_flags; };
+class CRegion { public: long m_index; };
+class CThing { public: unsigned char m_flags; };
 static CThing g_hero, g_teleporter;
 static CRegion g_regions[4];
 static bool g_noTeleporter = false;
-struct CPlayer { CThing* GetCharacterThing_00487dd0() { return &g_hero; } };
+class CPlayer { public: CThing* GetCharacterThing_00487dd0() { return &g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() const { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() const { return &g_player; } };
 static CPlayerManager g_players;
-struct CWorldMap { CRegion& GetRegion(long index) { return g_regions[index]; } };
+class CWorldMap { public: CRegion& GetRegion(long index) { return g_regions[index]; } };
 static CWorldMap g_world;
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     long m_teleports; CThing* m_lastTarget; long m_askedRegion;
     CPlayerManager* GetPlayerManager() { return &g_players; }
     CWorldMap* GetWorldMap() { return &g_world; }

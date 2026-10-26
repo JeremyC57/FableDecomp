@@ -63,17 +63,17 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CFontBank;
-struct CGraphicDataBank;
-struct CLoadingMemoryFailureHandler;
-struct CMeshDataBank;
-struct CMovableResourceMemoryPool;
-struct CWideStringData;
+class CCPPointerInfo;
+class CFontBank;
+class CGraphicDataBank;
+class CLoadingMemoryFailureHandler;
+class CMeshDataBank;
+class CMovableResourceMemoryPool;
+class CWideStringData;
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -173,20 +173,20 @@ FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ExternalTexturesAllocatedFr
 #include <stddef.h>
 
 
-struct C3DAnimFileXLoader;
-struct C3DAnimationManager;
-struct C3DMeshFileXLoader;
-struct C3DMeshStripifier;
-struct C3DQuadricBasedMeshOptimiser;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGraphicDataBank;
-struct CMovableResourceMemoryPool;
-struct CPushBufferBuildInfo;
-struct CXboxBufferMemoryPool;
+class C3DAnimFileXLoader;
+class C3DAnimationManager;
+class C3DMeshFileXLoader;
+class C3DMeshStripifier;
+class C3DQuadricBasedMeshOptimiser;
+class CCPPointerInfo;
+class CCharStringData;
+class CGraphicDataBank;
+class CMovableResourceMemoryPool;
+class CPushBufferBuildInfo;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CMeshDataBank {
+class CMeshDataBank { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -410,15 +410,15 @@ FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, StateBlock) == 0x4bc);
 #include <stddef.h>
 
 
-struct CBankFileEntryDependencies;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CDiskFileWin32;
+class CBankFileEntryDependencies;
+class CCPPointerInfo;
+class CCharStringData;
+class CDiskFileWin32;
 struct CProgressCallback;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CBankFile {
+class CBankFile { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long               Size;                        // +0x04
     unsigned char               Symbols[0x10];               // +0x08 CArray<CCharString>
@@ -516,10 +516,10 @@ FABLE_STATIC_ASSERT(offsetof(CBankFile, CurrentEntryDependencies) == 0x170);
 #include <stddef.h>
 
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     long                   f4;                               // +0x04 retail-only long (previous header)
     unsigned char          _pad_0x08[0x4];                   // +0x08
@@ -561,7 +561,7 @@ FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, LODDataSizes) == 0x50);
 struct CVertexShaderData;
 
 #pragma pack(push, 1)
-struct CVertexShader {
+class CVertexShader { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     CVertexShaderData* Data;                                 // +0x04
 };
@@ -585,11 +585,11 @@ FABLE_STATIC_ASSERT(offsetof(CVertexShader, Data) == 0x4);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CShaderPreParser;
+class CCharStringData;
+class CShaderPreParser;
 
 #pragma pack(push, 1)
-struct CShaderDataBank {
+class CShaderDataBank { public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char     _pad_0x04[0x4];                        // +0x04
     unsigned char     _pad_0x08[0x4];                        // +0x08
@@ -708,8 +708,8 @@ FABLE_STATIC_ASSERT(offsetof(CShaderDataBank, StateBlock) == 0x19c);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -717,8 +717,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -807,15 +807,15 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #define __forceinline inline
 #endif
 
-struct CEngineScene;
-template<class T> struct CArray;
-struct CEngineInternalPrimitiveBase;
-struct CEngineSubPrimitiveBase;
-struct CEngineSubPrimitiveChain;
-struct CEnginePrimitiveTypeList;
-struct C3DVector;
-struct C3DMesh2;
-namespace NEngineShadowRenderer { struct CShadowSceneContext; }
+class CEngineScene;
+template<class T> class CArray;
+class CEngineInternalPrimitiveBase;
+class CEngineSubPrimitiveBase;
+class CEngineSubPrimitiveChain;
+class CEnginePrimitiveTypeList;
+class C3DVector;
+class C3DMesh2;
+namespace NEngineShadowRenderer { class CShadowSceneContext; }
 
 enum ERendered { ERenderedNativeView = 0 };
 enum EEngineRenderLayer { EEngineRenderLayerNativeView = 0 };
@@ -823,7 +823,7 @@ enum EEnginePrimitiveType { EEnginePrimitiveTypeNativeView = 0 };
 enum ERenderPassType { ERenderPassTypeNativeView = 0 };
 enum ESubPrimitiveType { ESubPrimitiveTypeNativeView = 0 };
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass(); // native 0099A2D0
     virtual ~CBaseClass();
 };
@@ -836,7 +836,7 @@ struct CEnginePrimitiveRenderUtil : CBaseClassNonCopyable {
     CEnginePrimitiveRenderUtil(); // native 00B8B5E0
     virtual ~CEnginePrimitiveRenderUtil();
 };
-struct CEnginePrimitiveManager : CEnginePrimitiveRenderUtil {
+class CEnginePrimitiveManager : public CEnginePrimitiveRenderUtil { public:
     virtual ~CEnginePrimitiveManager();
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType) = 0;
     virtual void GetSupportedTypes(CEnginePrimitiveTypeList&) const = 0;
@@ -855,7 +855,7 @@ struct CEnginePrimitiveManager : CEnginePrimitiveRenderUtil {
     CEnginePrimitiveManager(CArray<CEngineScene*>&); // native 00BACDB0
 };
 
-struct CShaderBase {
+class CShaderBase {
 protected:
     CShaderBase();
     __forceinline virtual ~CShaderBase() { }
@@ -869,7 +869,7 @@ struct CVertexShaderData {
     unsigned long ReferenceCount;
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
-struct CVertexShader : CShaderBase {
+class CVertexShader : public CShaderBase { public:
     CVertexShaderData* Data;
     CVertexShader(); // native 00A62FB0
     CVertexShader(const CVertexShader& other) : CShaderBase(other), Data(other.Data) {
@@ -897,7 +897,7 @@ extern CEngineResourceManager_PDB* g_pEngineData; // native global 01436E98
 
 // Native CCPPointerInfo evidence in the landed renderer and surface-composition
 // sources: 32-bit RefCount at +0, __fastcall DeleteFunc at +4, Data at +8.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (FABLE_FASTCALL *DeleteFunc)(void*);
     void* Data;
@@ -995,15 +995,15 @@ typedef char CEnginePrimitiveManagerOcclusionBaseNativeSize[(sizeof(CEnginePrimi
 #include <cstdio>
 #include <cstring>
 
-struct CEngineInternalPrimitiveBase { };
-struct CEngineSubPrimitiveBase { };
-struct CEngineSubPrimitiveChain { };
-struct CEnginePrimitiveTypeList { };
-struct C3DVector { };
-struct CEngineScene { };
-template<class T> struct CArray { T* values; unsigned long count; };
-struct C3DMesh2 { };
-namespace NEngineShadowRenderer { struct CShadowSceneContext { }; }
+class CEngineInternalPrimitiveBase { public: };
+class CEngineSubPrimitiveBase { public: };
+class CEngineSubPrimitiveChain { public: };
+class CEnginePrimitiveTypeList { public: };
+class C3DVector { public: };
+class CEngineScene { public: };
+template<class T> class CArray { public: T* values; unsigned long count; };
+class C3DMesh2 { public: };
+namespace NEngineShadowRenderer { class CShadowSceneContext { public: }; }
 
 static long g_baseCtorCount;
 static long g_baseDtorCount;

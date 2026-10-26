@@ -15,14 +15,14 @@
 #include "engine/CNavigatorBase.h"
 #undef CNavigatorBase
 inline void* operator new(unsigned int, void* where) { return where; }
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {}
-    C2DVector(const struct C3DVector& v);
-    void operator=(const struct C3DVector& v);
+    C2DVector(const class C3DVector& v);
+    void operator=(const class C3DVector& v);
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 inline C2DVector::C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) {}
@@ -32,7 +32,7 @@ struct SRoutePoint {                               // std::pair<C2DVector, unsig
     C2DVector     first;
     unsigned char second;
 };
-struct CNavWayPoint {                              // 10 bytes
+class CNavWayPoint { public:                              // 10 bytes
     C2DVector     Position;
     unsigned char Type;
     bool          Valid;
@@ -134,30 +134,30 @@ struct CStatePtrVector {                           // STLport vector<CAStarState
     }
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CANavQuadTreeNode;
-struct CIsNavigator {
+class CANavQuadTreeNode;
+class CIsNavigator { public:
     const CNavigatorBaseLayout* Navigator;
     CIsNavigator(const CNavigatorBaseLayout* n) : Navigator(n) {}
 };
 struct CNavigatorList {
     void remove_if(CIsNavigator pred);             // 0x00A155C0
 };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     unsigned char  _pad00[0x2c];
     CNavigatorList Navigators;                     // +0x2c
     CANavQuadTreeNode* GetNodeAt(const C2DVector& position, long layer);   // 0x00A14F70
 };
-struct CNavigatorExternalInterface {
+class CNavigatorExternalInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual long GetLayerAt(const C3DVector& position);   // slot 16 (+0x40)
 };
-struct CSteeringAgent {
+class CSteeringAgent { public:
     void SetGoal(const CNavWayPoint& goal, const CNavWayPoint& next);   // 0x00A20970
 };
 extern long g_AStarSearchesInProgress;             // 0x013D27B0
-struct CNavigatorAStar {
+class CNavigatorAStar { public:
     // +0x00 vptr
     unsigned char                _pad04[0x10];
     CNavigatorExternalInterface* PInterface;       // +0x14

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CClass {
+class CClass { public:
     void* vftable;
     int destroyed;
 };

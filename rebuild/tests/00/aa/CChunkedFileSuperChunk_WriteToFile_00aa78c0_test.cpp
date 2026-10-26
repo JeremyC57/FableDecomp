@@ -1,8 +1,8 @@
 // Behaviour test for 0x00AA78C0 CChunkedFileSuperChunk::WriteToFile: [fourcc][size][body] per sub-chunk with the size back-patched.
 #include <cstdio>
 #include <cstring>
-struct CChunkedFileSuperChunk;
-struct CDataOutputStream {
+class CChunkedFileSuperChunk;
+class CDataOutputStream { public:
     unsigned char buf[256]; long pos; long end;
     CDataOutputStream() : pos(0), end(0) { std::memset(buf, 0, sizeof(buf)); }
     void SetPosition(long p) { pos = p; }
@@ -10,7 +10,7 @@ struct CDataOutputStream {
     void Write(const void* d, long n) { std::memcpy(buf + pos, d, n); pos += n; if (pos > end) end = pos; }
     void WriteLong_00993ea0(long v) { int x = (int)v; Write(&x, 4); }
 };
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     long unknown; long bodySize;
     char ChunkType[5];
     CChunkedFileSuperChunk* Parent;
@@ -27,7 +27,7 @@ struct CChunkArray {
     unsigned long size() const { return (unsigned long)(m_pLast - m_pFirst); }
     CChunkPointer* erase(CChunkPointer* p) { for (CChunkPointer* q = p; q + 1 < m_pLast; ++q) *q = *(q + 1); --m_pLast; return p; }
 };
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     CChunkArray SubChunks;
     void WriteToFile(CDataOutputStream& stream) const
     {

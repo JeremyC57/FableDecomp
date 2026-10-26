@@ -3,14 +3,14 @@
 // legs (p1-p0, p2-p1) are normalised once per lead step plus the final corner after the loop, in route order.
 static int g_calls = 0;
 static float g_seen[32][2];
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector operator-(const C2DVector& o) const { return C2DVector(X - o.X, Y - o.Y); }
     C2DVector& Normalise();
 };
-struct CNavWayPoint {                              // 10 bytes
+class CNavWayPoint { public:                              // 10 bytes
     C2DVector     Position;                        // +0x00
     unsigned char NavLayer;                        // +0x08
     bool          Removable;                       // +0x09

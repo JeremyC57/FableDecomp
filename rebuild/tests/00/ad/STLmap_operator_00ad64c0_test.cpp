@@ -4,7 +4,7 @@
 #include <map>
 
 static int g_deletes = 0;
-struct CCPPointerInfo { unsigned int RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: unsigned int RefCount; void (*DeleteFunc)(void*); void* Data; };
 static void DeleteData(void* p) { if (p) ++g_deletes; }
 
 struct CCountedPointer {

@@ -17,14 +17,14 @@
 extern "C" void* __cdecl malloc(unsigned int size);
 extern "C" void __cdecl free(void* p);
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     CCharString& operator=(const CCharString& other);      // 0x0099EFB0
 };
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);                 // 0x0099B720
     ~CWideString();                                        // 0x0099B510
@@ -33,7 +33,7 @@ struct CWideString {
 
 class CQuestManager {
 public:
-    struct CBoast {                                        // Ego_r.pdb, 0x20 bytes; implicit copy / assign / destroy
+    class CBoast { public:                                        // Ego_r.pdb, 0x20 bytes; implicit copy / assign / destroy
         long        ID;                                    // +0x00
         long        Cost;                                  // +0x04
         long        Reward;                                // +0x08

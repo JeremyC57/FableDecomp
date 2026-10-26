@@ -8,7 +8,7 @@
 // Layout: Ego_r.pdb CScriptModuleDolly (0x68): PosAround +0x4c, DollyVector +0x58, TimeFor360Turn +0x64.
 // Shape: /O2 (16-aligned entry); __forceinline CCountedPointer(T*) handing Object to the info block; C3DVector user copy
 // ctor (direct-offset member copies).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
@@ -28,7 +28,7 @@ public:
         : PosAround(posAround), DollyVector(dollyVector), TimeFor360Turn(timeFor360Turn) {}
 };
 }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

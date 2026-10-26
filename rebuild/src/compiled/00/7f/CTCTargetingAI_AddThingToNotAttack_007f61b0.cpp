@@ -10,8 +10,8 @@
 // ThingsToNotAttack, and the guard is the landed CTCTargetingAI::IsThingAttackable.
 // Shape: as CTCSolidToThing::AddThingNotSolidTo 0x00770FA0 -- an 8-byte stack CIntelligentPointer built by its inline
 // converting constructor, pushed by reference and destroyed through the base destructor.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -31,7 +31,7 @@ struct CThingPointerList {                                  // retail std::list:
     void push_back(const CIntelligentPointer& value);       // 0x004BA4E0
 };
 
-struct CTCTargetingAI {
+class CTCTargetingAI { public:
     unsigned char           _base[0x38];                    // CTCTargetingBase
     CBaseIntelligentPointer PBestEnemyCreatureForAttack;    // +0x38
     CBaseIntelligentPointer PScriptTargetOverride;          // +0x40

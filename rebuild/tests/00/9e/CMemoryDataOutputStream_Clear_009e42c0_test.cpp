@@ -7,7 +7,7 @@ struct SubBuffer {
     int dummy;
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     char pad[0xd0c];
     SubBuffer sub;
     unsigned int count;

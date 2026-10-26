@@ -7,24 +7,24 @@
 // Layout: Ego_r.pdb CTCSwitchableNavigation (0x10 bytes): MapIndex +0x0c; CWorld::PNavigationManager +0x48; CThing::UniqueID
 // (ulong64) +0x18, passed masked to 40 bits (`and ecx,0FFh` on the high word).
 // Shape: the navigation manager is a named local (edi) across both calls.
-struct C3DVector;
+class C3DVector;
 
-struct CNavigatorManager {
+class CNavigatorManager { public:
     bool IsNavigationMapActivated(long mapIndex) const;     // 0x00A14EB0
     void SetSwitchableNodesAsBlocked(long mapIndex, unsigned __int64 uid, bool blocked);   // 0x00A15470
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad[0x48];
     CNavigatorManager* PNavigationManager;                  // +0x48 scoped_ptr<CNavigatorManager>
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad[0x18];
     unsigned __int64 UniqueID;                              // +0x18 (only the low 40 bits identify the thing)
 };
 
-struct CTCSwitchableNavigation {
+class CTCSwitchableNavigation { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08

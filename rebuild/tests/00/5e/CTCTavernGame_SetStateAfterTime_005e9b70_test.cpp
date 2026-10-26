@@ -1,7 +1,7 @@
 // Behaviour test for CTCTavernGame::SetStateAfterTime @ 0x005E9B70: quit request leaves; else wait state 14 then `state` after `time`.
 #include <cstdio>
 static bool g_quit;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     long TavernGameState, PreviousTavernGameState, NextTavernGameState; float StateTimer; int left;
     void LeaveGame() { ++left; }
     void SetStateAfterTime(long state, float time)

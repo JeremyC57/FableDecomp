@@ -18,7 +18,7 @@ class CThing;
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6 (import thunk)
 
 // C3DVector with the engine's memberwise user copy constructor (Ego_r.pdb: X, Y, Z).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };

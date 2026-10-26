@@ -13,7 +13,7 @@
 //   expressions: the text path's zero store dies with the temporary, the group path keeps a pointer to the entry list
 //   (`&bank->GetPGroupEntry(..)->Entries`, read after the release exactly as retail) and its zero store survives.
 typedef unsigned short wchar_fable;
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
@@ -21,8 +21,8 @@ struct CWideString {
     bool operator!=(const wchar_fable* text) const;     // 0x0099B150
 };
 CWideString __fastcall operator+(const wchar_fable* left, const CWideString& right);   // 0x0099BFF0
-struct CCharStringData { char* PData; unsigned long StringLength; };
-struct CCharString {
+class CCharStringData { public: char* PData; unsigned long StringLength; };
+class CCharString { public:
     CCharStringData* PStringData;
     const char* GetData() const { return PStringData == 0 ? "" : PStringData->PData; }
     unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
@@ -46,7 +46,7 @@ struct CRefCountedEntry : CRefVirtual, CRefCounted {
             Destroy();
     }
 };
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* Data;
     ~CIVCountedPointer() { if (Data) { Data->ReleaseTemporary(); Data = 0; } }
     T* operator->() const { return Data; }
@@ -70,12 +70,12 @@ struct CTextDataBank {
 };
 struct CEngine_Retail { unsigned char _pad[0x14]; CTextDataBank* TextBank; };
 extern CEngine_Retail* g_pEngine;                       // 0x013B86A0
-struct CPlayerGui { void AddScreenMessage(const CWideString& text); };   // 0x00438AA0
+class CPlayerGui { public: void AddScreenMessage(const CWideString& text); };   // 0x00438AA0
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
 struct CWorld_Retail { unsigned long* GetRandomSeed(); };   // 0x0049D810
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECT_FIRST, TEXT_GROUP_SELECT_RANDOM };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const;
     CWorld_Retail* World;                               // +0x04
 };

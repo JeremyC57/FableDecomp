@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCFlammable {
+class CTCFlammable { public:
     void* vftable;
     int destroyed;
 };

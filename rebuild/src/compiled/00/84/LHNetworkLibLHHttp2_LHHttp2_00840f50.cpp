@@ -52,14 +52,14 @@ struct LSocket;
 
 namespace LHNetworkLib {
 
-struct LHHttpHeaders {
+class LHHttpHeaders { public:
     CRetailVector<CRetailString> HdrDocumentHeader;   // +0x00
     CRetailString                HeaderString;        // +0x0c
 };
 
 struct LHHttpDocumentParts;
 
-struct LHHttp2 {                                   // retail offsets (Ego_r.pdb names)
+class LHHttp2 { public:                                   // retail offsets (Ego_r.pdb names)
     LSocket*            Host;                      // +0x000
     CRetailString       Hostname;                  // +0x004
     unsigned short      Port;                      // +0x010

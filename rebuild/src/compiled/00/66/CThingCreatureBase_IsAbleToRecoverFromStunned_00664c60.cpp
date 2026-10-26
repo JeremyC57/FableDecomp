@@ -8,7 +8,7 @@
 // Shape: Ego_r.pdb `?IsAbleToRecoverFromStunned@CThingCreatureBase@@QBE_NXZ`. The out-parameter GetInterface template
 // (the component comes back in eax: `mov eax,[eax+4] ; mov ecx,eax`), `kind 0x42` tested as `test byte ptr [ecx+28h],4`;
 // `if (GetInterface(..) && mode->IsInMode(13)) return false; return true;` (the true exit is the shared tail).
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -22,7 +22,7 @@ struct CTCMap {                                 // the thing's component map at 
     STCEntry* LowerBound(const long* kind) const;        // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -46,7 +46,7 @@ struct CTCCreatureModeQuery {                   // component kind 0x42
     bool IsInMode(long mode) const;             // 0x00811340
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsAbleToRecoverFromStunned() const;
 };
 

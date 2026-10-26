@@ -1,13 +1,13 @@
 // Behaviour test for CThing::OnLevelUnload @ 0x004C77D0: flags around the loop, live TCs notified with adds forbidden.
 #include <cstdio>
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     bool ToBeRemoved; int calls; bool addsAllowedDuringCall; CThing* owner;
     CTCBase(bool removed, CThing* o) : ToBeRemoved(removed), calls(0), addsAllowedDuringCall(true), owner(o) { }
     virtual void OnLevelUnload();
 };
 struct SComponentPair { long first; CTCBase* second; };
-struct CThing {
+class CThing { public:
     SComponentPair* m_componentsFirst;
     SComponentPair* m_componentsLast;
     unsigned char   NotPausedDuringCutscenes : 1;

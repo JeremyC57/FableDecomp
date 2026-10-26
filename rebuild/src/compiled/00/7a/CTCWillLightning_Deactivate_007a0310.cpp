@@ -9,13 +9,13 @@
 //        pointer is copy-built in the argument area (base ctor, vptr, SetPItem(other.GetPItem())).
 // Layout: retail CTCWillLightning (vtable 0x0126C724): m_fTime +0x60, m_fTimeBase +0x64, m_lbBeams +0x68 (STLport list,
 //         4 bytes), m_lsState +0x6C, m_cbpPlayer +0x70 (PDB +0x64/+0x68/+0x6C/+0x78/+0x7C).
-struct CCPPointerInfo {                          // counted-pointer info block
+class CCPPointerInfo { public:                          // counted-pointer info block
     long Count;                                  // +0
     void (__fastcall* Destroy)(void*);           // +4 per-type deleter, object in ecx
     void* Object;                                // +8
 };
 void operator delete(void* p);                   // 0x00BFE9BC
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
@@ -36,7 +36,7 @@ template <class T> struct CRetailList {          // STLport list: the sentinel n
     Node* begin() const { return Head->Next; }
     Node* end() const { return Head; }
 };
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                               // +4
@@ -51,7 +51,7 @@ struct CLightningBeam {
     long m_lsState;                              // +0x00 ELightningState
     void Deactivate(CIntelligentPointer player); // 0x0079FE90
 };
-struct CTCWillLightning {
+class CTCWillLightning { public:
     void* __vftable;                             // +0x00
     unsigned char _pad_0x04[0x60 - 0x04];
     float m_fTime;                               // +0x60

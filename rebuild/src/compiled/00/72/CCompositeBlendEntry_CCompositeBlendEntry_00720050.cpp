@@ -8,11 +8,11 @@
 // Callees: CCompositeBlendDesc::CCompositeBlendDesc(const CCompositeBlendDesc&) 0x005BA48A.
 // Shape: the key is passed BY VALUE (stored straight from its slot, `mov [esi],eax`; a `const&` key would load
 //   through the pointer), the description by reference; the key store is scheduled after the member's `lea`.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
 
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long TextureIndex;                                 // +0x00
     long          BlendType;                                    // +0x04 (ECompositeBlendType)
     CRGBColour    DiffuseColour;                                // +0x08

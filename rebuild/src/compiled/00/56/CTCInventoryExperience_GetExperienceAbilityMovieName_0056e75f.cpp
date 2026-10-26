@@ -11,14 +11,14 @@
 
 typedef unsigned short wchar_t;                    // VC7.1 without /Zc:wchar_t
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString(const wchar_t* text);              // 0x0099B6B0
 };
 
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CWideString GetExperienceAbilityMovieName(EHeroAbility ability);
 };
 

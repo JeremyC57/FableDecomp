@@ -2,7 +2,7 @@ struct CPos;
 struct CNavHelper { int __fastcall Compute(const CPos* edx, const CPos* p); };
 struct CVtbl { bool (__fastcall *m[16])(void*, float arg); };
 struct CNavObj { CVtbl* vptr; };
-struct CTCCreatureNavigation { void* pad0; CNavHelper* helper; void* pad8; CNavObj* obj; };
+class CTCCreatureNavigation { public: void* pad0; CNavHelper* helper; void* pad8; CNavObj* obj; };
 bool __fastcall CTCCreatureNavigation_IsPosNavLineOfSightTo(CTCCreatureNavigation* self, void* edxpad, const CPos* pos)
 {
     CNavObj* obj = self->obj;

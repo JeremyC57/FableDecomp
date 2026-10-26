@@ -5,13 +5,13 @@
 // lists emptied and the screen cleared to opaque black when a display exists.
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CFrontEndDef {
+class CFrontEndDef { public:
     virtual void v00() {}
     virtual void Destroy() { Log("DefDestroy"); }
     long RefCount;                                 // +0x04
     void ReleaseRef() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     void Clear() { if (Object) { Object->ReleaseRef(); Object = 0; } }
     CDefPointer& operator=(T* p) { Clear(); Object = p; return *this; }
@@ -23,9 +23,9 @@ template <class T> struct vector {                 // STLport vector, 12 bytes
     T* erase(T* first, T* last) { Log("Erase"); _M_finish = first; return first; }
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CWideString { void* m_pData; };
-struct CDateAndTime { unsigned char _body[0x10]; };
-struct CRGBColour {
+class CWideString { public: void* m_pData; };
+class CDateAndTime { public: unsigned char _body[0x10]; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };

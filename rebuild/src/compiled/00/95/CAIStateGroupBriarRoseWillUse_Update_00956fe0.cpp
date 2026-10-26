@@ -16,26 +16,26 @@
 //          creature PDef +0x70; CBriarRoseDef (PDB): SecondsBetweenWillUse +0x48, DistanceForcePushThreshold +0x50.
 #include "engine/CAIStateGroup_BriarRoseWillUse.h"
 
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct C2DVector {
+class CThing;
+class C3DVector { public: float x, y, z; };
+class C2DVector { public:
     float x, y;
     float GetLengthSquared() const { return x * x + y * y; }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1: `call [eax+4]`
     long m_refCount;                            // +0x04
 };
-struct CBriarRoseDef : CDefPointeeBase {
+class CBriarRoseDef : public CDefPointeeBase { public:
     unsigned char _08[0x48 - 0x08];
     float SecondsBetweenWillUse;                // +0x48
     float SecondsBetweenTeleportAway;           // +0x4c
     float DistanceForcePushThreshold;           // +0x50
 };
 struct SDefOut { CDefPointeeBase* Object; };   // the GetSubDef out slot (plain)
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(SDefOut* out);               // 0x008E7790 GetSubDef<CBriarRoseDef> (stand-in body below)
     CDefPointeeBase* FindSubDef(const char* name);   // the index lookup + manager fetch (add-refs its result)
 };
@@ -59,7 +59,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _00[0x6c];
     unsigned char m_flags6C;                    // +0x6c bit 3 tested
     unsigned char _6d[0x70 - 0x6d];
@@ -82,15 +82,15 @@ namespace N_0062e900 { struct CCreatureActionBase {
     unsigned char _body[0x114];
     ~CCreatureActionBase();                     // 0x0062E900
 }; } using N_0062e900::CCreatureActionBase;
-struct CCreatureAction_BriarRoseForcePush : CCreatureActionBase {
+class CCreatureAction_BriarRoseForcePush : public CCreatureActionBase { public:
     CBaseIntelligentPointer PTarget;            // +0x114
     CCreatureAction_BriarRoseForcePush(CThing* creature, CThing* target);   // 0x009572A0
 };
-struct CCreatureAction_BriarRoseShotFarInto : CCreatureActionBase {
+class CCreatureAction_BriarRoseShotFarInto : public CCreatureActionBase { public:
     CCreatureAction_BriarRoseShotFarInto(CThing* creature, CThing* target);   // 0x00957170
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

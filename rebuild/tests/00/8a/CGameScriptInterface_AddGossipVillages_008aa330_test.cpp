@@ -7,14 +7,14 @@
 static int g_events[8];
 static int g_n = 0;
 
-struct CCharString {
+class CCharString { public:
     void* data;
     CCharString() { data = 0; }
     CCharString(const CCharString& o) { data = o.data; g_events[g_n++] = 1; } // 1 copyctor
     ~CCharString() { g_events[g_n++] = 3; }                                    // 3 dtor
 };
 
-struct CGameScriptInterface { int dummy; };
+class CGameScriptInterface { public: int dummy; };
 
 // impl takes the string BY VALUE and owns (destroys) it -> emits one dtor(3) for the
 // copy it received.

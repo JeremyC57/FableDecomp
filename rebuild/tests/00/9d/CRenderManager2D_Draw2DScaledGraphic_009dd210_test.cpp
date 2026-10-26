@@ -4,11 +4,11 @@
 // through the flip order (normal, flag 0x10 = {1,0,3,2}, flag 0x20 = {3,2,1,0}), Z is 0 so RHW is the screen RHW, and
 // the blend mode is 3 (flag 1), 2 (flag 2), 4 (frame flag 2 or flag 4), else 3 / 1 by frame flag 1; two triangles
 // (0,1,2) and (0,2,3) are queued. A frame the bank cannot produce queues nothing and returns false.
-struct C2DVector { float X, Y; };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 struct CTVertex { float X, Y, Z, RHW; unsigned long Diffuse, Specular; float U, V; };
 struct CTextureQuadUVs { float U[4]; float V[4]; };
-struct CTexture { long W, H; };
+class CTexture { public: long W, H; };
 struct CFrameData { CTextureQuadUVs quad; CTexture* tex; unsigned char m_flags; };
 struct CBank {
     bool has; CFrameData data; unsigned long w, h;

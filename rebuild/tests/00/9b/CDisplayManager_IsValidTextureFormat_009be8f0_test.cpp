@@ -6,7 +6,7 @@ struct CDispVtbl {
     int (__stdcall *fns[64])(void*, unsigned int, unsigned int, unsigned int, int, int, unsigned int);
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     char pad0[0x54];
     void* dev;
     char pad1[0x5c-0x58];

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessQuestCompletionUI {
+class CInputProcessQuestCompletionUI { public:
     void* vftable;
     int destroyed;
 };

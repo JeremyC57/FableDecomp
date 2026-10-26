@@ -8,14 +8,14 @@
 // lookup key's `push ecx` word).
 // Layout: Ego_r.pdb PTrophyBeingShown +0xb4, ShowingTrophyDeedHandle +0xbc, PostedDeed +0xc0, PEmitter +0xc1 (packed);
 // retail CCreatureActionBase is 0xa8, so the members sit 12 bytes lower (PEmitter at the odd offset +0xb5).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -37,7 +37,7 @@ struct CThing {
     }
 };
 
-struct CTCTrophy {
+class CTCTrophy { public:
     void OnShownByCreature(CThing* creature);   // 0x006DD740
 };
 

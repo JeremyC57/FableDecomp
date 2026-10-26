@@ -20,14 +20,14 @@ struct CBase {
     virtual ~CBase();                               // 0x0099A2E0
 };
 
-struct CVolume : CBase {                            // vtable 0x0129C840
+class CVolume : public CBase { public:                            // vtable 0x0129C840
     IDirect3DVolume9* m_pVolume;                    // +0x04
     void ReleaseVolume(bool release);               // 0x00A67460
     void Helper_00a67450(void* argument);                    // 0x00A67450 (empty)
     virtual ~CVolume() { ReleaseVolume(true); }
 };
 
-struct CVolumeTexture {
+class CVolumeTexture { public:
     CVolume GetVolumeLevel(unsigned long level);    // 0x00A67EA0
     void ForwardToVolumeLevel(unsigned long level, void* argument);
 };

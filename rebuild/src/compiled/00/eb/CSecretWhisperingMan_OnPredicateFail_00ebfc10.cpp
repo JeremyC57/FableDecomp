@@ -13,14 +13,14 @@
 // Layout = Ego_r.pdb CSecretWhisperingMan (40 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8},
 //   ParentClass +0x14 (CV_ParanoidWhispersScript: ParanoidState +0x48, HideDiggingSpot +0x4C = PDB - 0x14),
 //   PMasterData +0x18, StartPos +0x1C.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 #define SCRIPT_SLOT(n) virtual void slot##n()
 #define SCRIPT_SLOTS10(d) SCRIPT_SLOT(d##0); SCRIPT_SLOT(d##1); SCRIPT_SLOT(d##2); SCRIPT_SLOT(d##3); SCRIPT_SLOT(d##4); SCRIPT_SLOT(d##5); SCRIPT_SLOT(d##6); SCRIPT_SLOT(d##7); SCRIPT_SLOT(d##8); SCRIPT_SLOT(d##9)
-struct CGameScriptInterface {                          // vtable 0x01260F0C (only the slot used is typed)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (only the slot used is typed)
     SCRIPT_SLOTS10(0); SCRIPT_SLOTS10(1); SCRIPT_SLOTS10(2); SCRIPT_SLOTS10(3); SCRIPT_SLOTS10(4);
     SCRIPT_SLOTS10(5); SCRIPT_SLOTS10(6); SCRIPT_SLOTS10(7); SCRIPT_SLOTS10(8); SCRIPT_SLOTS10(9);
     SCRIPT_SLOTS10(10); SCRIPT_SLOTS10(11); SCRIPT_SLOTS10(12); SCRIPT_SLOTS10(13); SCRIPT_SLOTS10(14);
@@ -30,7 +30,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (onl
     SCRIPT_SLOT(290); SCRIPT_SLOT(291); SCRIPT_SLOT(292); SCRIPT_SLOT(293); SCRIPT_SLOT(294); SCRIPT_SLOT(295);
     virtual void SetQuestCardObjective(const CCharString& quest, const CCharString& text, const CCharString& region, const CCharString& regionAlt) const;   // slot 296 (+0x4a0)
 };
-struct CScriptThing {                                  // vtable 0x01238C8C (only the slot used is typed)
+class CScriptThing { public:                                  // vtable 0x01238C8C (only the slot used is typed)
     SCRIPT_SLOTS10(0); SCRIPT_SLOT(10); SCRIPT_SLOT(11); SCRIPT_SLOT(12); SCRIPT_SLOT(13); SCRIPT_SLOT(14);
     SCRIPT_SLOT(15); SCRIPT_SLOT(16); SCRIPT_SLOT(17);
     virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48, 0x004AAAF0)
@@ -42,7 +42,7 @@ struct CV_ParanoidWhispersScript {
     bool          HideDiggingSpot;                     // +0x4c (PDB +0x60)
 };
 struct CQ_SunnyvaleMasterData;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CSecretWhisperingMan {
 public:
     void*                      __vftable;              // +0x00

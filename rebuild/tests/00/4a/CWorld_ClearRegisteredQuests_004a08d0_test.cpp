@@ -4,7 +4,7 @@
 // Behaviour model of CWorld::ClearRegisteredQuests (0x004A08D0): clear() = erase(begin(), end()) on three lists.
 static int g_strings = 0, g_quests = 0;
 
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* s) : p(s) { ++g_strings; }
     CCharString(const CCharString& o) : p(o.p) { ++g_strings; }
@@ -12,7 +12,7 @@ struct CCharString {
     CCharString& operator=(const CCharString& o) { p = o.p; return *this; }
 };
 
-struct CTestQuest {
+class CTestQuest { public:
     CCharString QuestName, HSPName;
     long        ColourIndex;
     CCharString DisplayName, IniFile, OutiFile, QuestCardDefName;
@@ -34,7 +34,7 @@ struct Vec {
     void clear() { erase(_M_start, _M_finish); }
 };
 
-struct CWorld {
+class CWorld { public:
     Vec<CCharString> InitialActiveQuests;
     Vec<CCharString> RegisteredQuests;
     Vec<CTestQuest>  ActiveTestQuests;

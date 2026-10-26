@@ -17,17 +17,17 @@ extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 void __cdecl operator delete[](void* block);           // 0x00BFEB1C
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  References;                                  // +0x00
     void (__fastcall* Destroy)(void* object);          // +0x04
     void* Object;                                      // +0x08
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -65,8 +65,8 @@ struct CPaletteVector {                                // vector<CPaletteEntry> 
     }
 };
 
-struct CGraphicDataBank;
-struct CEngineTexturePalette {                         // retail 0x18 bytes
+class CGraphicDataBank;
+class CEngineTexturePalette { public:                         // retail 0x18 bytes
     CGraphicDataBank* Bank;                            // +0x00
     CPaletteVector    Palette;                         // +0x04
     unsigned long     DefaultIndex;                    // +0x10
@@ -81,24 +81,24 @@ struct CMapFileHeader {
     long PatchTreeFileBlockSize;
 };
 
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(long request);                 // 0x00BE0400
 };
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     virtual ~CLandscapeBackgroundTreeNode();
 };
-struct CEngineLandscapePatch {
+class CEngineLandscapePatch { public:
     virtual ~CEngineLandscapePatch();
 };
-struct CBankFileAsyncEntry;
-struct CBankFileAsyncData;
-struct CEngineMap;
+class CBankFileAsyncEntry;
+class CBankFileAsyncData;
+class CEngineMap;
 
-struct CMovableResource {                              // vtable 0x0129B860
+class CMovableResource { public:                              // vtable 0x0129B860
     virtual ~CMovableResource() { }
 };
 
-struct CEngineLandscapeMap : CMovableResource {        // vtable 0x012A7D6C
+class CEngineLandscapeMap : public CMovableResource { public:        // vtable 0x012A7D6C
     CLandscapeBackgroundTreeNode*         PatchTree;   // +0x04
     CEngineLandscapePatch*                Patches;     // +0x08
     long                                  PatchGridWidth;    // +0x0c

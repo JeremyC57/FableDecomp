@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCWeapon {
+class CTCWeapon { public:
     long AimingTime; long TimeWielded; bool Wielded;
     void FrameUpdate() { if (Wielded) ++TimeWielded; if (AimingTime != -1) ++AimingTime; }
 };

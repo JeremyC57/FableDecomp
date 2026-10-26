@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct COpinionOfHeroDef
-{
+class COpinionOfHeroDef
+{ public:
     void* vftable;
 };
 extern void* const g_COpinionOfHeroDef_vftable;

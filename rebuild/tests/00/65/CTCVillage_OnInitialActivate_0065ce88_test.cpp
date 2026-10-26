@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCVillage {
+class CTCVillage { public:
     bool Limbo; int calls; bool lastArg;
     void SetVillageLimbo(bool limbo) { ++calls; lastArg = limbo; }
     void OnInitialActivate() { if (Limbo) SetVillageLimbo(Limbo); }

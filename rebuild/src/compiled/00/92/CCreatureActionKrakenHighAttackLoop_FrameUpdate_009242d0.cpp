@@ -8,14 +8,14 @@
 // Shape: Interrupt is tested before the lookup and re-read after the bool call (the nested `if (!Interrupt)` guard around
 // FinishAction); the UNCHECKED lookup sits in an inline accessor (absent arm reads the key word).
 // Layout: Ego_r.pdb Interrupt / LoopNum +0x12c / +0x130, retail +0x114 / +0x118 (landed ctor 0x00925780).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -42,11 +42,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCKraken {                              // interface type 0xe2 component
+class CTCKraken { public:                              // interface type 0xe2 component
     bool HasTargetBeenHitByKraken();            // 0x007FB500
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void v01();
     virtual void v02();

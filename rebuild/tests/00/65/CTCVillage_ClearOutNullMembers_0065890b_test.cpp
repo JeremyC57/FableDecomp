@@ -8,7 +8,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     ~CBaseIntelligentPointer() { --g_live; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer(T* item) { m_pItem = item; ++g_live; }
 };
@@ -16,7 +16,7 @@ template<class T> struct CRetailList {
     int id;
     void remove(const T& value) { g_order[g_calls++] = id; if (value.m_pItem) ++g_nonNull; }
 };
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00() {}
     CRetailList< CIntelligentPointer<CThingBuilding> >   VillageBuildings;
     CRetailList< CIntelligentPointer<CThingAICreature> > VillagePeople;

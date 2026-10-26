@@ -10,14 +10,14 @@
 // two bar stores; the alpha is an `unsigned char` parameter fed `(unsigned char)(Alpha * 255.0f)` (`fld ; fmul [pool] ; call
 // __ftol2`; a long parameter moves `mov ecx,ebx` down to the last push), the position is the last lea
 // folded into `add esi,4A4h`, the caller's info is forwarded with `push dword ptr [esp+2Ch]`.
-struct CEnginePrimitivePrepareInfo;
-struct CGraphicDataBank;
-struct CRGBColour { unsigned char R, G, B, A; };
-struct C2DVector { float X, Y; };
+class CEnginePrimitivePrepareInfo;
+class CGraphicDataBank;
+class CRGBColour { public: unsigned char R, G, B, A; };
+class C2DVector { public: float X, Y; };
 
 namespace NPlayerGui {
 
-struct CStatBar {                                  // NPlayerGui::CStatBar (PDB 120 bytes; retail 8 lower: CStatBase's vectors are 12 bytes)
+class CStatBar { public:                                  // NPlayerGui::CStatBar (PDB 120 bytes; retail 8 lower: CStatBase's vectors are 12 bytes)
     virtual void Draw(CEnginePrimitivePrepareInfo* info, CGraphicDataBank* bank, const C2DVector& pos,
                       const C2DVector& textOffset, const CRGBColour& textColour, unsigned char alpha, bool forceOpen);   // slot 0
     unsigned char _base[0x48 - 4];                 // CStatBase
@@ -36,7 +36,7 @@ template <class T> struct CCountedPointer {        // object + count block
 
 }
 
-struct CPlayerGui {                                // retail offsets (PDB Alpha +0x2b4, PMoney +0x2e0: the shipped build drops the
+class CPlayerGui { public:                                // retail offsets (PDB Alpha +0x2b4, PMoney +0x2e0: the shipped build drops the
     unsigned char _pad[0x2a0];                     // ulong64 alignment gap and the vectors are 12 bytes)
     float         Alpha;                           // +0x2a0
     unsigned char _pad2a4[0x2cc - 0x2a4];
@@ -47,7 +47,7 @@ struct CPlayerGui {                                // retail offsets (PDB Alpha 
     NPlayerGui::CCountedPointer<NPlayerGui::CStatBar> PCrime;       // +0x2ec (CCrimeStatBar)
 };
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x2e8];
     long          StatBoxGoldGraphic;              // +0x2e8
     long          StatBoxGoldGainEffect;           // +0x2ec
@@ -63,7 +63,7 @@ extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
 
 namespace NPlayerGui {
 
-struct CDrawMoney {
+class CDrawMoney { public:
     void*             _vtable;                     // +0x00 CDrawBase vptr
     CPlayerGui*       PlayerGui;                   // +0x04
     void*             PlayerManager;               // +0x08

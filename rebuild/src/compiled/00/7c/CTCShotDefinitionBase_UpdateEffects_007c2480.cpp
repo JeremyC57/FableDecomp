@@ -16,14 +16,14 @@
 //   {crc, movement} pair is a named local built before the parameter block (a push_back temporary is built after it); the parameter block is a local with an inline constructor (CBaseClass base, two empty maps), filled by
 //   push_back of the pair and released by its out-of-line destructor.
 class CTCBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
-struct CBaseClass {                                     // vtable 0x01231710
+class CBaseClass { public:                                     // vtable 0x01231710
     virtual void v00();
     CBaseClass();                                       // 0x0099A2D0
 };
@@ -67,10 +67,10 @@ struct CParticleUpdateParameters : CBaseClass {         // <unsigned long, unsig
     virtual ~CParticleUpdateParameters();               // 0x006E2500
 };
 }
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters& parameters);   // 0x006E11A0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                             // +0x0c
     C3DVector     OldPosition;                          // +0x18

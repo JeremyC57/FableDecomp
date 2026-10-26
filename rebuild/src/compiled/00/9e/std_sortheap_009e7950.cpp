@@ -11,14 +11,14 @@
 // __pop_heap_aux inline (16-byte stride: `and -16 ; cmp 16`). The value copy in the argument area is the implicit
 // pair copy: the key string, then CSymbolInfo's implicit copy through its own address (`add edi,4`: two string
 // copies and the Val dword).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
-struct CSymbolMap {
-    struct CSymbolInfo {                    // Ego_r.pdb, 12 bytes
+class CSymbolMap { public:
+    class CSymbolInfo { public:                    // Ego_r.pdb, 12 bytes
         CCharString GroupName;              // +0x00
         CCharString EntryName;              // +0x04
         long        Val;                    // +0x08

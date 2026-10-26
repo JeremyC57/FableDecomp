@@ -8,7 +8,7 @@
 // propagated; the vector is named by its element shape (0x005E1E60 is the 8-byte-element twin).
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     unsigned long RefCount;                        // +4

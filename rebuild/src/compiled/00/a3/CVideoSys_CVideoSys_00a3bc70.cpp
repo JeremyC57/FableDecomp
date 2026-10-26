@@ -11,7 +11,7 @@
 // lower than the header (SubtitlesEnabled +0x5c, pTextBank +0x60, RenderEvent +0x7c, Height/Width +0x84/+0x88).
 extern "C" __declspec(dllimport) long __stdcall CoInitialize(void* reserved);
 
-struct CMovieSubtitles {                      // 0x2c bytes in retail
+class CMovieSubtitles { public:                      // 0x2c bytes in retail
     unsigned char _body[0x2c];
     CMovieSubtitles();                        // 0x009BDBA0
 };

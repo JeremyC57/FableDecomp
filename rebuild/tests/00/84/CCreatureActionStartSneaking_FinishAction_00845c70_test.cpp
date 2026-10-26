@@ -2,8 +2,8 @@
 #include <cstdio>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-struct CTCCreatureModeManager { unsigned int m_mode; bool AddMode(unsigned int mode) { m_mode = mode; Log(1); return true; } };
-struct CThing {
+class CTCCreatureModeManager { public: unsigned int m_mode; bool AddMode(unsigned int mode) { m_mode = mode; Log(1); return true; } };
+class CThing { public:
     unsigned int m_presentBits[9];
     CTCCreatureModeManager* m_modes;
     template<class T> bool GetInterface(T** ppOut, int interfaceType)

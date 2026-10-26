@@ -4,14 +4,14 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags6c;
@@ -42,7 +42,7 @@ struct SCountBlock {
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(DestroyMode), m_pObject(object) { }
 };
 struct CModeBase { };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer(T* object) : m_pObject(object) { if (object) m_pCount = new SCountBlock(m_pObject); else m_pCount = 0; }
@@ -64,7 +64,7 @@ struct CModeX : CModeBase {
 };
 void DestroyMode(void* object) { ++g_destroyed; delete (CModeX*)object; }
 static CModeX* g_added = 0; static long g_refsSeen = 0; static CThing* g_addedTarget = 0; static CThing* g_addedOwner = 0;
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode)
     {
         g_added = (CModeX*)mode.m_pObject; g_refsSeen = mode.m_pCount->m_references;

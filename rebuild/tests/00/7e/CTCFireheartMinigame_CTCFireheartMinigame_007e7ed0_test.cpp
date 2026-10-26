@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <stdlib.h>
 static int g_defDeleted = 0, g_handleDtors = 0, g_impDestroyed = 0, g_blockDeleted = 0, g_baseObj = 0, g_tcBase = 0, g_freed = 0;
-struct CFireheartMinigameDef {
+class CFireheartMinigameDef { public:
     virtual void Delete() const { ++g_defDeleted; }
     long RefCount;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
     {
@@ -17,7 +17,7 @@ template<class T> struct CDefPointer {
         }
     }
 };
-struct CBaseObject { virtual ~CBaseObject() { ++g_baseObj; } void* IntelligentPointer; };
+class CBaseObject { public: virtual ~CBaseObject() { ++g_baseObj; } void* IntelligentPointer; };
 struct CScriptThingImp { void DestroySelf() { ++g_impDestroyed; } };
 struct SCountBlock { long Count; void (CScriptThingImp::*Destroy)(); CScriptThingImp* Object; };
 struct CCountedPointer {
@@ -31,16 +31,16 @@ struct CCountedPointer {
         Data = 0; Info = 0;
     }
 };
-struct CScriptGameResourceObjectBase : CBaseObject { ~CScriptGameResourceObjectBase() { } };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase { CCountedPointer PImp; };
-struct CEnginePrimitiveHandle { virtual ~CEnginePrimitiveHandle() { ++g_handleDtors; } void* Data; };
+class CScriptGameResourceObjectBase : public CBaseObject { public: ~CScriptGameResourceObjectBase() { } };
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public: CCountedPointer PImp; };
+class CEnginePrimitiveHandle { public: virtual ~CEnginePrimitiveHandle() { ++g_handleDtors; } void* Data; };
 template <class T> void _Destroy(T* first, T* last) { for (; first != last; ++first) first->~T(); }
 template <class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     ~CRetailVector() { _Destroy(_M_start, _M_finish); if (_M_start) { ++g_freed; free(_M_start); } }
 };
-struct CTCBase { virtual void v00() { } ~CTCBase() { ++g_tcBase; } };
-struct CTCFireheartMinigame : CTCBase {
+class CTCBase { public: virtual void v00() { } ~CTCBase() { ++g_tcBase; } };
+class CTCFireheartMinigame : public CTCBase { public:
     CScriptGameResourceObjectScriptedThingBase ScriptData;
     bool QuitWithDelay;
     CRetailVector<CEnginePrimitiveHandle> Handles;

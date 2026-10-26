@@ -1,4 +1,4 @@
-struct CCreatureAction_ReleasePhysicalShieldSpell {
+class CCreatureAction_ReleasePhysicalShieldSpell { public:
     void* vftable;
 };
 

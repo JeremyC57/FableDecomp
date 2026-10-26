@@ -1,5 +1,5 @@
 #include "engine/CGroundNavigatorExternalInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct C2DVector {
+class C2DVector { public:
     float x;
     float y;
     C2DVector() {}
@@ -11,7 +11,7 @@ struct Navigator {
     C2DVector pos;     // 0x0c
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     char pad0[0x60];   // 0x00
     Navigator* nav;    // 0x60
 };

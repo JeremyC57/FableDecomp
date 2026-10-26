@@ -5,7 +5,7 @@ extern "C" int __fastcall sub_4c5fa0(void* self);      // this->method, result u
 extern "C" int __cdecl   sub_bfea70(void);             // returns divisor -> esi
 extern "C" int __cdecl   sub_49d870(void);             // returns dividend -> eax
 
-struct CBulletTimeManager;
+class CBulletTimeManager;
 
 extern "C" bool __fastcall IsTimeForFullUpdate(CBulletTimeManager* self)
 {

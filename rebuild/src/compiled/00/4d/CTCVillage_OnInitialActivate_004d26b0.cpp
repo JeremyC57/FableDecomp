@@ -6,7 +6,7 @@ struct SubObj;
 // callee at 0x4d24f0: __fastcall (ecx=this, edx=arg1, stack: arg2 byte)
 void __fastcall Sub_Call(SubObj* self, int a1, unsigned char a2);
 
-struct CTCVillage {
+class CTCVillage { public:
     SubObj* sub;       // +0x00 -> ecx
     int     ParentThing;    // +0x04 -> edx
     // +0x08 ...

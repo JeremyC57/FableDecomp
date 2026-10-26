@@ -12,7 +12,7 @@
 //          x87 work): locked builds C3DVector(dx, dy, 0), unlocked uses target - WorldPosition; VC7.1 merges the common X/Y
 //          head above the branch. C3DVector has a user ctor + user copy ctor and no operator=, so each assignment builds a frame temporary and
 //          copies it through a pointer register; Dot with (0,0,1) keeps the 0.0f products (x87, no fast-math).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -23,13 +23,13 @@ inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DV
 inline C3DVector operator*(const C3DVector& a, float s) { return C3DVector(a.X * s, a.Y * s, a.Z * s); }
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0C
     void Normalise() { Up.Normalise(); Forward.Normalise(); }
 };
 
-struct CCamera {
+class CCamera { public:
     C3DVector       WorldPosition;              // +0x00
     CRightHandedSet RHSet;                      // +0x0C
     bool            HeightLocked;               // +0x24

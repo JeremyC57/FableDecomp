@@ -4,7 +4,7 @@ struct CSub {
     int v;
     void Copy(const CSub* o) { v = o->v + 100; }
 };
-struct CTextureReplacementDef {
+class CTextureReplacementDef { public:
     int marker;
     char pad[0x24];
     CSub sub;

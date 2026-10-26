@@ -16,12 +16,12 @@ long __fastcall GFGetCurrentFrame();                                // 0x0049D87
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 extern long g_framesPerSecond;                                      // 0x01375550
 
-struct CWorld {
+class CWorld { public:
     static long GetFramesPerSecond() { return g_framesPerSecond; }
     static long GetFrame() { return GFGetCurrentFrame(); }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
     CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0 (PBrain->+0x1c->+0x24)

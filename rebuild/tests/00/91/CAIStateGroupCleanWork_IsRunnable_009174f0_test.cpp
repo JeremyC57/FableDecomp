@@ -1,7 +1,7 @@
 #include <cstdio>
 static long g_frame; struct CBuilding {};
 static long GFGetFrameCount() { return g_frame; }
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
 struct CAIStateGroup_CleanWork : CAIStateGroupBase {
     long m_nextFrame; long m_frameToStart; CBuilding* m_building;
     virtual bool IsRunnable() { return GetBuilding() != 0 && GFGetFrameCount() > m_frameToStart; }

@@ -15,16 +15,16 @@
 // new size push is scheduled above DependentThings' first two zero stores.
 // Layout: local model (as the copy constructor 0x0062EBC0): engine/CCreatureActionBase.h agrees up to +0x80, the
 // retail containers are 12 bytes (ActionEvents +0x84, CutSceneEvents +0x90, DependentThings +0x9c).
-struct CThing;
-struct CThingCreatureBase;
-struct CAnimationEntry {
+class CThing;
+class CThingCreatureBase;
+class CAnimationEntry { public:
     unsigned char _body[0x10];
     CAnimationEntry(long a, long b, long c, long type);    // 0x005DED00
 };
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 
 struct CBaseObjectPointer;
-struct CBaseObject {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     virtual void v00();
     CBaseObjectPointer* IntelligentPointer; // +0x04
     CBaseObject();                          // 0x0099A380 (manifest label CBaseIntelligentPointer is propagated)
@@ -44,7 +44,7 @@ struct CThingPointer : CBaseIntelligentPointer {        // CIntelligentPointer<C
     virtual void v00();
     CThingPointer() : CBaseIntelligentPointer() {}
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long Count;
 };
 struct CAnimationEntryPointer {             // CCountedPointer<CAnimationEntry>
@@ -53,11 +53,11 @@ struct CAnimationEntryPointer {             // CCountedPointer<CAnimationEntry>
     CAnimationEntryPointer() : Data(0), Info(0) {}
     void Reset(CAnimationEntry* entry);     // 0x00696830 (release the old entry, take the new one)
 };
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
@@ -104,7 +104,7 @@ struct CCutSceneEventMap {                  // map<long, CCharString> (STLport, 
     }
 };
 
-struct CCreatureActionBase : CBaseObject {  // vtable 0x01259D24
+class CCreatureActionBase : public CBaseObject { public:  // vtable 0x01259D24
     CCreaturePointer       PCreature;                   // +0x08
     long                   TotalTime;                   // +0x10
     long                   ActionTime;                  // +0x14

@@ -14,16 +14,16 @@
 #define CThingCreatureBase CThingCreatureBase_PDB
 #include "engine/CThingCreatureBase.h"
 #undef CThingCreatureBase
-struct CTCWeaponTrail;
-struct C3DVector {float X,Y,Z;};
-struct CThing;
-struct CTCCarrying {CThing* GetThingInPrimarySlot()const;}; //0x006A1440
+class CTCWeaponTrail;
+class C3DVector { public:float X,Y,Z;};
+class CThing;
+class CTCCarrying { public:CThing* GetThingInPrimarySlot()const;}; //0x006A1440
 struct CInterfaceMap {
  struct Entry {long Type;CTCCarrying* Component;};
  Entry* First;Entry* Last;
  Entry* LowerBound(const long*) const; //0x004365B0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
  unsigned char _nativeBeforeComponentFlags[0x20];
  unsigned long UsingComponents[9];
  CInterfaceMap Components;
@@ -36,7 +36,7 @@ struct CThingCreatureBase {
   return false;
  }
 };
-struct CBaseObject {
+class CBaseObject { public:
  virtual ~CBaseObject(); // ordinary 0x0099A430, deleting0x0099A4D0
  virtual void Validate()const; //0x0099A400
  CBaseObjectPointer* IntelligentPointer;
@@ -57,7 +57,7 @@ struct CIntelligentPointer_CThingCreatureBase : CBaseIntelligentPointer {
  CIntelligentPointer_CThingCreatureBase() {}
  CThingCreatureBase* GetPItem() const {return reinterpret_cast<CThingCreatureBase*>(CBaseIntelligentPointer::GetPItem());}
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
  long BankIndex; unsigned long AnimName,GroupName; void* Components;
  CAnimationEntry(long,long,long,long); //0x005DED00
 };
@@ -66,7 +66,7 @@ struct CAnimationEntryPointer {
  CAnimationEntryPointer():Data(0),Info(0){}
  void Reset(CAnimationEntry*); //0x00696830
 };
-struct CSoundPair {
+class CSoundPair { public:
  long FirstSound,LastSound;
  CSoundPair():FirstSound(0),LastSound(0){}
 };
@@ -89,7 +89,7 @@ struct CCutSceneEventMap {
  }
 };
 extern long g_NextCreatureActionID; //0x013BA8B4
-struct CCreatureActionBase : CBaseObject {
+class CCreatureActionBase : public CBaseObject { public:
     virtual ~CCreatureActionBase(); // native slot0 0062ED20
     virtual void EditUpdate(float elapsed); // native slot2 00692DB0
     virtual void PerformAction() = 0; // native slot3 00BFEA08
@@ -182,7 +182,7 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureActionBase)==0xA8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase,CutSceneEvents)==0x90);
 
 // Donor PFollowUpAction+0xb4, native+0xa8 after compact containers.
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
  CCreatureActionBase* FollowUpData; CCPPointerInfo* FollowUpInfo;
  CCreatureAction_SheatheItemToInventory(CThingCreatureBase&,CCreatureActionBase*,long); //0x0069FFD0
  virtual void PerformAction(); //0x0069F4F0

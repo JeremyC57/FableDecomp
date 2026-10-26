@@ -9,17 +9,17 @@
 // bit +0x91; CThingSwitch TriggerRadius +0xd0, the area-name-shown flag +0xdc (Triggered in Ego_r.pdb at that offset).
 // Shape: the sibling TriggerSetEnvironment 0x0083BE90 with the box test out of line (the C2DVector conversion
 // temporary in the frame, passed by reference); the flag is set between the argument pushes and the call.
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
     bool ContainsPoint(const C2DVector& p) const;              // 0x00535CD0
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 class CTCBase;
 class CTCRegionDisplay {
 public:
@@ -31,7 +31,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);                      // 0x0040F020
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                                    // +0x0c
 };

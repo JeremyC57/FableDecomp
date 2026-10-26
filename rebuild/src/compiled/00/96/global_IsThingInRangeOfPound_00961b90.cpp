@@ -14,13 +14,13 @@
 // Label: catalog name confirmed (its callers are CAIStateGroup_IceTrollPoundGroundAttack::IsStillRunnable 0x00961C50
 //   and ::IsRunnable 0x00961E80).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CSnowTrollDef {
+class CSnowTrollDef { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1
     long RefCount;                              // +0x04
@@ -35,7 +35,7 @@ struct CDefPointerSnowTroll {                   // CDefPointer<const CSnowTrollD
     ~CDefPointerSnowTroll() { if (m_p) m_p->Release(); }
     CSnowTrollDef* operator->() const { return m_p; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1
     long RefCount;                              // +0x04
@@ -49,8 +49,8 @@ struct CDefClassPointer {                       // the counted def class pointer
     ~CDefClassPointer() { if (m_p) m_p->Release(); }
     CDefClassBase* operator->() const { return m_p; }
 };
-struct CTCPhysicsBase;
-struct CThing {
+class CTCPhysicsBase;
+class CThing { public:
     unsigned char _pad0[0x60];
     CTCPhysicsBase* m_pPhysics;                 // +0x60
     unsigned char _pad64[0x0c];

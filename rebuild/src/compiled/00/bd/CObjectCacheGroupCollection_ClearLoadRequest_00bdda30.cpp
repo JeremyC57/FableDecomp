@@ -1,4 +1,4 @@
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void Release(void* block);  // __fastcall -> rewritten to __fastcall(this): ecx=this, stack arg
 };
 

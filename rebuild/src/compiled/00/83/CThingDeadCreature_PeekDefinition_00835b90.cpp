@@ -17,7 +17,7 @@ struct CRefCounted {                            // second base: the count sits a
     long m_refCount;
 };
 
-struct CDefPointeeBase : CDefVirtual, CRefCounted {
+class CDefPointeeBase : public CDefVirtual, public CRefCounted { public:
     void ReleaseDef()
     {
         if (--m_refCount == 0)
@@ -25,7 +25,7 @@ struct CDefPointeeBase : CDefVirtual, CRefCounted {
     }
 };
 
-template<class T> struct CDefPointer {          // CDefPointer<const T>: one counted pointer to a definition
+template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer()
@@ -36,10 +36,10 @@ template<class T> struct CDefPointer {          // CDefPointer<const T>: one cou
     T& operator*() const { return *m_pObject; }
 };
 
-struct CThingCreatureDef : CDefPointeeBase {
+class CThingCreatureDef : public CDefPointeeBase { public:
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingCreatureDef>& out);   // 0x00513160 (GetDef<CThingCreatureDef>)
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -56,13 +56,13 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CTh
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short m_defGlobalIndex;            // +0x8c
     CDefinitionManager* GetDefinitionManager() const;       // 0x004C7990
 };
 
-struct CThingDeadCreature : CThing {
+class CThingDeadCreature : public CThing { public:
     const CThingCreatureDef& PeekDefinition() const;
 };
 

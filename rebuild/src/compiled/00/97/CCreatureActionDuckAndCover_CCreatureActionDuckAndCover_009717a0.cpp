@@ -8,15 +8,15 @@
 //   into +0x114..+0x11c (ecx/edx/eax): three scalar members
 //   (a struct member is addressed once with `lea` and copied through it).
 // No engine header exists for this class; the retail CCombatActionBase is 0x114 bytes.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCharString {                        // one pointer; the defaulted length makes a literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length makes a literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CSoundPair {                         // user constructor: the 8-byte result comes back through the hidden pointer
+class CSoundPair { public:                         // user constructor: the 8-byte result comes back through the hidden pointer
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -24,15 +24,15 @@ struct CSoundPair {                         // user constructor: the 8-byte resu
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
-struct CCreatureAction_DuckAndCover : CCombatActionBase {   // vtable 0x012974A4
+class CCreatureAction_DuckAndCover : public CCombatActionBase { public:   // vtable 0x012974A4
     float PosX;                             // +0x114 position to duck away from (three scalars: a C3DVector
     float PosY;                             // +0x118   member would copy through `lea ecx,[esi+114h]`)
     float PosZ;                             // +0x11c

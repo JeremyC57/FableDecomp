@@ -2,7 +2,7 @@
 #include <new>
 struct __false_type { __false_type() { } };
 static int g_wideCopies = 0;
-struct CWideString { const unsigned short* PData; CWideString() : PData(0) { } CWideString(const CWideString& other) : PData(other.PData) { ++g_wideCopies; } };
+class CWideString { public: const unsigned short* PData; CWideString() : PData(0) { } CWideString(const CWideString& other) : PData(other.PData) { ++g_wideCopies; } };
 struct CRegisteredMusicEntry { CWideString SrcFileName, DstFileName; float Gain, Offset; bool CacheToHD; CRegisteredMusicEntry() : Gain(0), Offset(0), CacheToHD(false) { } };
 template <class T1, class T2>
 struct pair {

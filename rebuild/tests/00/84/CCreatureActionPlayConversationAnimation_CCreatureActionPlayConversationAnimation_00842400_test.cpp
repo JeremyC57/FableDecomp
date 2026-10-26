@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSoundPair { long a, b; };
+class CSoundPair { public: long a, b; };
 struct S { long id; };
 static S g_groups[4] = { {0}, {1}, {2}, {3} }; static long g_attitude = -1; static bool g_loaded = false; static long g_nameid = -1;
 static void* g_o = 0; static float g_a = 0, g_b = 0; static void* g_anim = 0; static const CSoundPair* g_sp = 0; static long g_c = 0, g_d = 0;

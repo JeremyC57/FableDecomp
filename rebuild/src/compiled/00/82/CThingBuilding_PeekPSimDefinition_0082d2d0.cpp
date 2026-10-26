@@ -9,19 +9,19 @@
 //        the release (`[edi+74h]`); the result holder is zeroed, filled, copied into the hidden result (add-ref) and released
 //        (the increment and decrement through one register under a shared null test); the empty arm stores a null result.
 // Layout: CThing DefGlobalIndex +0x8C; CThingBuildingDef::SimBuildingDef +0x74 (Ego_r.pdb +0x78, def classes pack to 1).
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Delete();                           // slot 1 (+0x04)
     long RefCount;                                   // +0x04
 };
 #pragma pack(push, 1)
-struct CThingBuildingDef : CDefClassBase {
+class CThingBuildingDef : public CDefClassBase { public:
     unsigned char _pad08[0x74 - 0x08];
     unsigned long SimBuildingDef;                    // +0x74
 };
 #pragma pack(pop)
-struct CSimBuildingDef : CDefClassBase { };
-template <class T> struct CDefPointer {
+class CSimBuildingDef : public CDefClassBase { public: };
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object)
@@ -38,7 +38,7 @@ template <class T> struct CDefPointer {
         }
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingBuildingDef>* out);   // 0x004AB840
     bool GetDef(long index, CDefPointer<CSimBuildingDef>* out);     // 0x0082E1E0
 };
@@ -68,7 +68,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CSi
     return true;
 }
 #pragma auto_inline(on)
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefGlobalIndex;                   // +0x8c
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990

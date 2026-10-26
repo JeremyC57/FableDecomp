@@ -9,7 +9,7 @@
 // 13-byte block with a memberwise user operator= (its implicit one block-copies 13 bytes: 3 dwords + 1 byte); then a long at +0x10 (the outer struct realigns) and a CIntelligentPointer at +0x14
 // (SetPItem(other.GetPItem()), CBaseIntelligentPointer @ 0x00A01B50 / 0x00A01B90). The manifest's
 // `CTCSmokeGenerator::CGenerationPos` label is propagated (that record is 0x14 bytes, see 0x00722C90).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
     virtual void v00();
@@ -19,11 +19,11 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
@@ -41,7 +41,7 @@ struct SFlaggedPos {                         // 13 bytes, byte-packed in retail 
 };
 #pragma pack(pop)
 
-struct CThing;
+class CThing;
 
 struct SFlaggedPosEmitter {                  // 0x1C bytes
     SFlaggedPos                 Where;       // +0x00

@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 struct SNode { bool Color; SNode* Parent; SNode* Left; SNode* Right; unsigned int Key; long Value; };
-struct CVertexGroupBlock {
+class CVertexGroupBlock { public:
     unsigned int* GroupsStart; unsigned int* GroupsFinish; unsigned int* GroupsEnd;
     SNode* Header; unsigned int Count; char Compare;
     CVertexGroupBlock() : GroupsStart(0), GroupsFinish(0), GroupsEnd(0), Header(0)

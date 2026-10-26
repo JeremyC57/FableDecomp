@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CThing { unsigned char _pad[0x91]; unsigned char m_flags91; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: unsigned char _pad[0x91]; unsigned char m_flags91; };
 static bool g_facing; static CThingCreatureBase* g_c; static CThing* g_t;
 bool __fastcall CompareActorRotations(CThingCreatureBase* creature, CThing* target) { g_c = creature; g_t = target; return g_facing; }
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p) { if (p.GetPItem() != 0) { if (!(p.GetPItem()->m_flags91 & 1)) return true; } return false; }
-struct CCombatActionBase { virtual void v00() {} unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xa8 - 0x10]; CBaseIntelligentPointer PTarget; unsigned char _padb0[0x114 - 0xb0]; };
+class CCombatActionBase { public: virtual void v00() {} unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xa8 - 0x10]; CBaseIntelligentPointer PTarget; unsigned char _padb0[0x114 - 0xb0]; };
 
-struct CCreatureAction_BanditKingAttack : CCombatActionBase { unsigned char FaceTarget; unsigned char ForceCauseRecoil; bool IsToCauseRecoil() const; };
+class CCreatureAction_BanditKingAttack : public CCombatActionBase { public: unsigned char FaceTarget; unsigned char ForceCauseRecoil; bool IsToCauseRecoil() const; };
 bool CCreatureAction_BanditKingAttack::IsToCauseRecoil() const
 {
     if (!ForceCauseRecoil) {

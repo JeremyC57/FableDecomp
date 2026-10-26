@@ -3,15 +3,15 @@
 #include <cstring>
 static int g_deleted = 0;
 static void DeleteMap(void*) { ++g_deleted; }
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString() : text("") { }
     CCharString(const CCharString& o) : text(o.text) { }
     CCharString& operator=(const char* t) { text = t; return *this; }
 };
-struct C2DBoxI { int TLX, TLY, BRX, BRY; };
-struct CCPPointerInfo { unsigned int RefCount; void (*DeleteFunc)(void*); void* Data; };
-struct CMap { int dummy; };
+class C2DBoxI { public: int TLX, TLY, BRX, BRY; };
+class CCPPointerInfo { public: unsigned int RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CMap { public: int dummy; };
 struct CCountedPointer {
     CMap* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -26,7 +26,7 @@ struct Stream {
     void WriteLong(int v) { log[n++] = v; }
     void WriteUInt64(unsigned int v) { log[n++] = (int)v; }
 };
-struct CMapInfo {
+class CMapInfo { public:
     C2DBoxI Area; CCountedPointer PMap; CCharString LevelName, LevelScriptName; unsigned int MapUID;
     bool Used, Placed, Activated, Loading, LoadedOnPlayerProximity; CCharString SerialiseScript; unsigned int LevStamp[2], TngStamp[2]; bool IsSea;
     CMapInfo() { }

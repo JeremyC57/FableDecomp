@@ -10,7 +10,7 @@
 //   types (model as the landed sibling 0x00B86C00).
 // Shape: the per-quad X/Y/Z then U/V stores and a 4-iteration colour loop over the four quads; VC7.1 fully unrolls the loop and
 //   schedules the stores exactly as retail.
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -33,10 +33,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -49,7 +49,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -63,7 +63,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
@@ -77,12 +77,12 @@ struct CEngineData {
 };
 extern CEngineData* g_pEngineData;                 // 0x01436E98
 
-struct CEngineInit {
+class CEngineInit { public:
     unsigned char _pad00[0x60];
     unsigned long Flags;                           // +0x60
 };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     CEngineComponent();                            // 0x00B59710
     virtual ~CEngineComponent();
     void**        GlobalPointerAddress;            // +0x04
@@ -91,7 +91,7 @@ struct CEngineComponent {
     unsigned char Padding[2];
 };
 
-struct CTVertexColTex1 {                           // 0x18 bytes
+class CTVertexColTex1 { public:                           // 0x18 bytes
     float         X, Y, Z;
     unsigned long DiffuseColour;
     float         U1, V1;
@@ -101,16 +101,16 @@ struct CTVertexColTex1 {                           // 0x18 bytes
     }
 };
 
-struct CTexture;
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
+class CTexture;
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
 struct CRadialBlurParameters {                     // CEngineScreenEffectRadialBlurRenderer::CParameters, 0x28 bytes
     float ThresholdR, ThresholdG, ThresholdB;
     float IntensityR, IntensityG, IntensityB;
     float Length, Fade, Range, Twist;
 };
 
-struct CEngineScreenEffectRadialBlurRenderer : CEngineComponent {   // vtable 0x012A2658, 0x22c bytes
+class CEngineScreenEffectRadialBlurRenderer : public CEngineComponent { public:   // vtable 0x012A2658, 0x22c bytes
     CTexture*       BlurTexture256_1;              // +0x0c
     CTexture*       BlurTexture256_2;              // +0x10
     long            BlurTextureHandle256_1;        // +0x14

@@ -3,7 +3,7 @@ struct SubObj {
     void call(long a);   // __fastcall member: this in ecx, long on stack
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long flags;   // +0
     char pad[4];           // +4
     SubObj sub;            // +8

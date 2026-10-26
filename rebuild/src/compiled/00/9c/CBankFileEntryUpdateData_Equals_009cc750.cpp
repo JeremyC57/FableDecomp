@@ -17,19 +17,19 @@ extern "C" int __cdecl strcmp(const char* a, const char* b);   // 0x00BFEBA8
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 extern const char g_emptyString[];                 // "" @ 0x0129AAF4
 
-struct CCharStringData { const char* Text; };
-struct CCharString {
+class CCharStringData { public: const char* Text; };
+class CCharString { public:
     CCharStringData* PStringData;
     const char* c_str() const { if (PStringData == 0) return g_emptyString; return PStringData->Text; }
 };
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
     long size() const { return m_pLast - m_pFirst; }
     const T& operator[](unsigned long index) const { return m_pFirst[index]; }
 };
-template <class T, int N> struct CSmallVector {
+template <class T, int N> class CSmallVector { public:
     T* Start;                                      // +0
     signed char Size;                              // +4
     long size() const { return Size; }
@@ -40,7 +40,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                       // +0
     SCountBlock* Info;                             // +4
     ~CCountedPointer()

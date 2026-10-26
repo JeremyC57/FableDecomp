@@ -28,7 +28,7 @@ __forceinline float TableCos01(float x)
     return 0.5f - ((1.0f - frac) * g_cosTable[index] + frac * g_cosTable[index + 1]) * 0.5f;
 }
 namespace NParticleEngine {
-struct CPSCUpdateNormal {
+class CPSCUpdateNormal { public:
     unsigned char _pad00[0x0c];
     unsigned long FadeBits;                         // +0x0c
     unsigned char _pad10[0x08];

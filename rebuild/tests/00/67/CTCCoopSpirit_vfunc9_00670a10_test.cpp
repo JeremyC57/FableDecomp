@@ -1,6 +1,6 @@
 // behaviour test for 0x00670A10 CTCCoopSpirit::vfunc_9 (frame update)
 #include <cstdio>
-struct CThing { unsigned char flags91; float life; int kills; void Kill(bool) { ++kills; } };
+class CThing { public: unsigned char flags91; float life; int kills; void Kill(bool) { ++kills; } };
 struct Ptr { CThing* p; CThing* GetPItem() const { return p; } };
 static int g_log[16]; static int g_n = 0;
 struct Spirit {

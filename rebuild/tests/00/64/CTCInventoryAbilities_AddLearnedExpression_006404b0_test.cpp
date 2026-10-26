@@ -1,13 +1,13 @@
 #include <cstdio>
 
-struct CTCBase;
+class CTCBase;
 
 struct TList {
     void* head;
     void remove(CTCBase* const& val);
 };
 
-struct CTCInventoryAbilities { int pad0; TList learned; };
+class CTCInventoryAbilities { public: int pad0; TList learned; };
 
 static TList*   g_self;
 static CTCBase* g_val;

@@ -22,13 +22,13 @@ class CThing;
 class CThingCreatureBase;
 class CAttackPatternDef;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void DeleteThis();                               // slot 1 (+4)
     unsigned long RefCount;                                  // +0x04
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     ~CDefPointer()
     {
@@ -45,9 +45,9 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
     void* PItem;                                             // +0x04
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 
@@ -90,7 +90,7 @@ struct CAttackerTree {                                       // STLport _Rb_tree
     }
 };
 
-struct CDefendingCombatantInfo {
+class CDefendingCombatantInfo { public:
     CAttackerTree                         Attackers;         // +0x00
     CCombatWheel                          CombatWheel;       // +0x0c
     C3DVector                             LastVictimWheelUpdatePos;    // +0x18

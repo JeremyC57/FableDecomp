@@ -1,11 +1,11 @@
 // CGameScriptInterface::IsBoastTaken
-struct CCharString
-{
+class CCharString
+{ public:
     CCharString(const CCharString& other);
 };
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     bool IsBoastTaken(long questId, CCharString boast);
 };
 

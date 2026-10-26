@@ -24,7 +24,7 @@ public:
         return h & 0xFFFFFFFFu;
     }
 };
-struct CCharStringData {
+class CCharStringData { public:
     const char* Data;
     long        Length;
     long        RefCount;

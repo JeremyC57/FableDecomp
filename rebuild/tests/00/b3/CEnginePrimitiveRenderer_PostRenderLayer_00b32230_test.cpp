@@ -1,10 +1,10 @@
 // CEnginePrimitiveRenderer::PostRenderLayer -- reset current layer, normalize-normals tracked state, lights/world transform, then saved shader enable flags. Retail00b32230 complete207bytes+1int3. Shared renderer/state/lighting headers; donor leaves renderer saved layer+78 and shaderflags+260/+261 opaque. DeviceState NormalizeNormals at+230 (manager2a48), nativeCStateInfo20bytes and statecapture8bytes. CalleesB44D50/B32100/988110/988190/987FE0/9880E0.
 #ifndef _MSC_VER
 #define __forceinline inline
-struct CEnginePrimitiveRenderer {unsigned char _pad_0x78[sizeof(long)];unsigned char _pad_0x260[4];};
-struct CEngineLightingManager {};
+class CEnginePrimitiveRenderer { public:unsigned char _pad_0x78[sizeof(long)];unsigned char _pad_0x260[4];};
+class CEngineLightingManager { public:};
 struct CStateInfo;
-struct CRenderStateManager {unsigned char StateStack[32768];CStateInfo* StateUpdateList[256];long StateStackSize,StateUpdateListSize;unsigned long CurrentBookmarkMask;unsigned char DeviceState[16384];};
+class CRenderStateManager { public:unsigned char StateStack[32768];CStateInfo* StateUpdateList[256];long StateStackSize,StateUpdateListSize;unsigned long CurrentBookmarkMask;unsigned char DeviceState[16384];};
 #else
 #include "engine/CEnginePrimitiveRenderer.h"
 #include "engine/CRenderStateManager.h"
@@ -13,7 +13,7 @@ struct CRenderStateManager {unsigned char StateStack[32768];CStateInfo* StateUpd
 struct CStateInfo {unsigned long CurrentState,DesiredState,BookmarkMask,DeviceStateID;bool DirtyListFlag;unsigned char StateType,TextureStage;};
 struct CStateStackElement {CStateInfo* State;unsigned long Value;};
 struct CDeviceStateNormalizeView {unsigned char EarlierStates[0x230];CStateInfo NormalizeNormals;};
-struct CShaderRenderManager {unsigned char EarlierMembers[0x390];bool VertexShadersEnabled,PixelShadersEnabled;
+class CShaderRenderManager { public:unsigned char EarlierMembers[0x390];bool VertexShadersEnabled,PixelShadersEnabled;
  void EnablePixelShaders(); //00988110
  void DisablePixelShaders(); //00988190
  void EnableVertexShaders(); //00987fe0

@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct C3DVector { float x,y,z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x,y,z; };
+class CTCCreatureNavigation;
 
 struct Inner {
     virtual void v0()=0;
@@ -13,7 +13,7 @@ struct Inner {
     virtual bool v6(CTCCreatureNavigation* a, C3DVector* b)=0;
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* field_0;
     Inner* ParentThing;
 };

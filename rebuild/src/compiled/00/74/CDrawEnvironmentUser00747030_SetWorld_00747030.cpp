@@ -4,9 +4,9 @@
 // CIDrawEnvironment*); the result is stored at +0x2c and the single argument is popped (`ret 4`).
 // The manifest label (CAIStateGroup_BuyFromSeller::BoughtSomething) is propagated from an
 // unrelated body (BuyFromSeller is 0x18 bytes); the class is named by what the body does.
-struct CIDrawEnvironment;
+class CIDrawEnvironment;
 
-struct CWorld {
+class CWorld { public:
     CIDrawEnvironment* DrawGetEnvironment();    // 0x00692620
 };
 

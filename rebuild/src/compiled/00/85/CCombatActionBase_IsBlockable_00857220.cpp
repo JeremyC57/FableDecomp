@@ -5,7 +5,7 @@
 // (compare the by-value getter of 0x00856EA0). Protected virtual (`MBE` in the decorated name); bool result:
 // `xor al,al` false path, `test eax,eax ; sete al` for the named bool (a direct `return p == 0;` zeroes eax
 // first and is 2 bytes longer). Layout modelled locally (retail base sizeof 0x114).
-struct CMeleeCombatAbilityDef;
+class CMeleeCombatAbilityDef;
 
 struct CThingCreatureBase_Retail {              // engine/CThingCreatureBase.h exists but is not used: only the flags dword at +0x30 is read (retail offset)
     unsigned char _pad[0x30];
@@ -18,7 +18,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Retail* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08

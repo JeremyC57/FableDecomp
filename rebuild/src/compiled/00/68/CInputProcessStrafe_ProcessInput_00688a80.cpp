@@ -15,11 +15,11 @@ public:
     long GetDeviceType() const;                    // 0x00A03B50
     long GetKey() const;                           // 0x00A03B70
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -35,7 +35,7 @@ class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                     // +0x18
     unsigned char    _pad20[0x91 - 0x20];
@@ -45,7 +45,7 @@ class CPlayer {
 public:
     CThing* GetControlledCreature() const;         // 0x00487DD0
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

@@ -44,7 +44,7 @@ __forceinline bool operator==(const CBasicStringW& s, const wchar16* text)
     return s.size() == n && char_traits_w::compare(s.data(), text, n) == 0;
 }
 
-struct CWideStringData {                                // 16 bytes
+class CWideStringData { public:                                // 16 bytes
     CBasicStringW Data;                                 // +0x00
     long          NoRefs;                               // +0x0c
 };

@@ -4,7 +4,7 @@ static int g_dtor_called = 0;
 static int g_delete_called = 0;
 static void* g_vft = (void*)0x1230ba0;
 
-struct CPhysicsDef {
+class CPhysicsDef { public:
     void* vftable;
 };
 

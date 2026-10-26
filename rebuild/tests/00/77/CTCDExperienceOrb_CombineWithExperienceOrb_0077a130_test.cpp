@@ -12,11 +12,11 @@ static int fails = 0;
 // Shape: the other thing's orb driver is the inlined GetTCDriver probe: bitset word +0x2c (CThing UsingComponents +0x20,
 // word 3) bit 9 selects PTCDriver (+0x5c, retail offset) else null, read without a null test (`->ExperiencePoints`, +0x10).
 // The effect is CExperienceDef::OrbCombiningParticleEffect (def +0x28) created at the parent thing's position.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCDExperienceOrb;
+class CTCDExperienceOrb;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];       // +0x20 bitset<274>
     unsigned char _pad44[0x5c - 0x44];
@@ -34,17 +34,17 @@ struct CThing {
 
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, long flags);   // 0x006E0880
 
-struct CExperienceDef {
+class CExperienceDef { public:
     unsigned char _pad00[0x28];
     long OrbCombiningParticleEffect;        // +0x28
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
 
-struct CTCDExperienceOrb {
+class CTCDExperienceOrb { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

@@ -20,17 +20,17 @@ static int g_mallocs = 0, g_frees = 0;
 extern "C" void* __cdecl test_malloc(unsigned int size) { g_mallocs++; return ::operator new(size); }
 extern "C" void __cdecl test_free(void* p) { if (p) g_frees++; ::operator delete(p); }
 extern unsigned long g_crc32Table[256];           // test only: filled at run time (retail: const table @ 0x0129A168)
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);
     ~CCharString();
     CWideString ToWideString() const;
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -65,7 +65,7 @@ struct CByteVector {                                   // CArray<char> (STLport 
     char* GetData() { return _M_finish - _M_start != 0 ? _M_start : (char*)this; }
     const char* GetData() const { return _M_finish - _M_start != 0 ? _M_start : (const char*)this; }
 };
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     unsigned long StateBlockCRC;                       // +0x00
     unsigned long InfoSize;                            // +0x04
     char*         InfoBuffer;                          // +0x08
@@ -103,7 +103,7 @@ struct CPackedUIntArray {
     unsigned long operator[](unsigned long index) const;
     bool IsPacked() const { return m_pData != 0; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

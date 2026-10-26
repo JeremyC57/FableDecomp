@@ -7,12 +7,12 @@
 // Default constructor that passes the constant 19525068 (0x129edcc) to the base constructor @ 0x00AA7590
 // (an identifier/type code of this class in the base's scheme) and installs this class's vtable
 // (0x0129EE90, named through rtti-vtables.tsv). One of 11 bodies of this shape.
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual void v00();
     CChunkedFileChunk(long typeCode);              // 0x00AA7590
 };
 
-struct C3DMeshFileMaterialExtChunk : CChunkedFileChunk {
+class C3DMeshFileMaterialExtChunk : public CChunkedFileChunk { public:
     virtual void v00();
     C3DMeshFileMaterialExtChunk();
 };

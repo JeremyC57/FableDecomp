@@ -6,12 +6,12 @@
 // Shape: `active != member` in source order (`cmp al,[ecx+10h]`); the refresh is the last statement,
 //        so it becomes a tail jump that reuses the dead argument slot for its 0 argument
 //        (`mov [esp+4],0 ; jmp`).
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);            // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;        // 0x013B8790
 
-struct CTCTeleporter {
+class CTCTeleporter { public:
     unsigned char _pad[0x10];
     bool m_teleportActive;              // +0x10
     bool m_teleportActivated;           // +0x11

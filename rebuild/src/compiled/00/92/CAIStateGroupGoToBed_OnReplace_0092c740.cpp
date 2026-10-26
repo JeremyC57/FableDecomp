@@ -13,8 +13,8 @@
 //          read before the call.
 // Layout: PDB CAIStateGroup_GoToBed: PBed +0x14, IsBedSleepPointMarker +0x1C, ActionPointIndex +0x2C (retail agrees,
 //          see the landed GoToBed rows). No engine header exists for the class; the base follows engine/CAIStateGroupBase.h.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -66,12 +66,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -85,7 +85,7 @@ struct CAIStateGroupBase {
 struct CTCActionPointOwner {                    // interface 0x2d
     void FreePoint(long index);                 // 0x007FEF40
 };
-struct CTCBed {                                 // interface 0xac
+class CTCBed { public:                                 // interface 0xac
     CThing* GetOccupant();                      // 0x0087C3E0
     void SetOccupant(CThing* occupant);         // 0x0087C390
 };

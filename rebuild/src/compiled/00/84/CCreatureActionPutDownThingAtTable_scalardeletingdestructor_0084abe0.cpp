@@ -1,4 +1,4 @@
-struct CCreatureAction_PutDownThingAtTable {
+class CCreatureAction_PutDownThingAtTable { public:
     void* vftable;
 };
 

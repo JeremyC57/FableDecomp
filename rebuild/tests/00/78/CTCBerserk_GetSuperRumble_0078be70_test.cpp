@@ -2,8 +2,8 @@
 // component's own rumble value.
 #include <cstdio>
 
-struct CSpecialAbilitiesBerserkDef { float SuperRumbleLevel, SuperRumbleSmoothness, SuperRumbleAttack, SuperRumbleDecay; };
-struct CTCBerserk {
+class CSpecialAbilitiesBerserkDef { public: float SuperRumbleLevel, SuperRumbleSmoothness, SuperRumbleAttack, SuperRumbleDecay; };
+class CTCBerserk { public:
     float RumbleLevel, RumbleSmoothness, RumbleAttack, RumbleDecay;
     CSpecialAbilitiesBerserkDef* PDef;
     void GetSuperRumble(float& level, float& smoothness, float& attack, float& decay)

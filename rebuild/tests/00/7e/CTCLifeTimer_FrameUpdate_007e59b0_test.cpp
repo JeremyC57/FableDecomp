@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <cstring>
 
-struct CTCFadeOutAndIn {
+class CTCFadeOutAndIn { public:
     bool FadingIn, FadingOut;
     int Fades; float LastTime; bool LastFadeIn;
     void Fade(float time, bool fadeIn) { ++Fades; LastTime = time; LastFadeIn = fadeIn; FadingOut = !fadeIn; }
 };
-struct CThing {
+class CThing { public:
     CTCFadeOutAndIn* Fade;     // the 0xf9 component, or 0
     CTCFadeOutAndIn Added;
     int Adds, Kills; bool LastKill;
@@ -16,7 +16,7 @@ struct CThing {
     CTCFadeOutAndIn* AddTC(const char* name, bool, void*) { if (std::strcmp(name, "CTCFadeOutAndIn") == 0) { ++Adds; Fade = &Added; } return Fade; }
     void Kill(bool performOnDie) { ++Kills; LastKill = performOnDie; }
 };
-struct CTCLifeTimer {
+class CTCLifeTimer { public:
     CThing* ParentThing;
     long    FramesLeft;
     bool    FadeOutBeforeKill;

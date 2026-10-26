@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -11,7 +11,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 class CThing;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool collides, interacts;
     virtual bool GetCollidesWithThings() const { return collides; }
     virtual bool GetCollidesWithThingsOneWay() const { return false; }
@@ -19,7 +19,7 @@ struct CTCPhysicsBase {
     CThing* ParentThing;
 };
 static int g_solidCalls = 0; static const CThing* g_solidArg = 0;
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     bool solid;
     bool IsSolidToThing(const CThing* thing) const { ++g_solidCalls; g_solidArg = thing; return solid; }
 };
@@ -46,7 +46,7 @@ public:
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CThingFilter_CanCollideOrInteractWithThing {
+class CThingFilter_CanCollideOrInteractWithThing { public:
     CTCPhysicsBase* TCPhysics;
     bool ExcludeCreatures;
     bool operator()(CThing* thing) const;

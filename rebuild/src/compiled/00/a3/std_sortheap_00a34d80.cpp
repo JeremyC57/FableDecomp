@@ -24,7 +24,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                                       // +0
     SCountBlock* m_pCount;                              // +4
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -33,7 +33,7 @@ struct CCountedPointer {
     }
 };
 
-struct CFaction;
+class CFaction;
 
 struct SNamedPointer {                                  // 12 bytes
     CCharString                 Name;                   // +0x00

@@ -14,7 +14,7 @@
 // `optimize("s", on)` (GOTCHAS: frame body that still uses esi/edi freely).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CSoundPair {                             // 8 bytes
+class CSoundPair { public:                             // 8 bytes
     long FirstSound;                            // +0x00
     long LastSound;                             // +0x04
 };
@@ -29,7 +29,7 @@ struct pair {
 }
 
 template <class K, class V>
-struct CKeyPairCompareLess {
+class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

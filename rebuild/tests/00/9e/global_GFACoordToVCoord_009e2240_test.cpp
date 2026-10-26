@@ -14,8 +14,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 #define __declspec(x)
 #define __int64 long long
 #endif
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     long X;
     long Y;
 };

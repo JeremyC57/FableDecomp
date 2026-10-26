@@ -20,7 +20,7 @@
 #pragma optimize("s", on)
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -33,7 +33,7 @@ struct CDefBase {
     long RefCount;                                   // +0x04
 };
 
-struct CInventoryDef : CDefBase {
+class CInventoryDef : public CDefBase { public:
     unsigned char _pad_0x08[0x1D4];
     float         NumberOfSecondsForObjectRotation;  // +0x1DC (PDB +0x1F8)
     unsigned char _pad_0x1e0[0x850];
@@ -47,13 +47,13 @@ struct CInventoryDefPointer {                        // CDefPointer<const CInven
     CInventoryDef* operator->() const { return Object; }
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     float m[6];
     void RotateAboutAxis_00a22f80(const C3DVector& axis, float angle);   // 0x00A22F80
 };
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     void*                __vftable;                  // +0x00
     unsigned char        _pad_0x04[0x64];
     CInventoryDefPointer PDef;                       // +0x68
@@ -62,7 +62,7 @@ struct CTCInventoryBase {
 };
 }
 
-struct CTCInventory : NInventory::CTCInventoryBase {
+class CTCInventory : public NInventory::CTCInventoryBase { public:
     void*           __vftable_130;                   // +0x130 NHeroInformationScreens::CBase
     unsigned char   _pad_0x134[0x5C];
     CRightHandedSet OldObjectRHSet;                  // +0x190

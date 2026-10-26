@@ -15,7 +15,7 @@ struct CInterfaceMap {                          // a thing's sorted {type, compo
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
@@ -36,7 +36,7 @@ struct CThing {
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
 };
@@ -45,7 +45,7 @@ struct CBoast {
     long Cost;                                  // +0x04
     long Reward;                                // +0x08
 };
-struct CQuestManager {
+class CQuestManager { public:
     CBoast* GetBoast(long id, CCharString scriptName);          // 0x004AF7A0
     void SetBoastAsMade(long id, CCharString scriptName);       // 0x004B1A80
 };

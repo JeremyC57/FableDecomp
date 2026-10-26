@@ -54,7 +54,7 @@ struct CCombatantInfo {
     void* CombatSequences[3];                   // +0x28 STLport vector<CCountedPointer<CCombatSequenceBase> >
     CAttackerMap Attackers;                     // +0x34 DefenderInfo.Attackers
 };
-struct CCombatManager {
+class CCombatManager { public:
     const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) const;   // 0x006E9360
 };
 class CThingCreatureBase {

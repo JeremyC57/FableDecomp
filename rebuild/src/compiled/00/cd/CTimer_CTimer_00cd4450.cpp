@@ -33,7 +33,7 @@ struct CThingManager_Calls {
 };
 extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
 
-struct CTimer {
+class CTimer { public:
     long TimerIndex;                               // +0x00
     CTimer();
 };

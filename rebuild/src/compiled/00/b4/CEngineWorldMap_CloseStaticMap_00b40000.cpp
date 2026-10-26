@@ -9,22 +9,22 @@
 //   CEngineMap*) begin/end +0x20/+0x24, StaticMapFile +0x34, StaticMapOpenState +0x1a8, StaticMapBuildStatus +0x1b0.
 // Shape: the count is re-derived each pass (`(end - begin) >> 2`, unsigned compare), the loop starts at map 1; the global
 //   is tested before its call; the two state words are cleared with immediates.
-struct CEngineMap {
+class CEngineMap { public:
     void CloseStaticMap();                       // 0x00B3EF40
 };
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     void CloseStaticMap();                       // 0x00B6DB80
 };
 
 extern CEngineWaterRenderer* g_pEngineWaterRenderer;   // 0x01436E54
 
-struct CStaticMapBankFile {
+class CStaticMapBankFile { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void Close();                        // slot 5
 };
 
-template <class T> struct CArray {               // retail CArray: begin, end, capacity
+template <class T> class CArray { public:               // retail CArray: begin, end, capacity
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;
@@ -35,7 +35,7 @@ template <class T> struct CArray {               // retail CArray: begin, end, c
 enum STATIC_MAP_OPEN_STATE { STATIC_MAP_CLOSED = 0 };
 enum STATIC_MAP_BUILD_STATUS { STATIC_MAP_BUILD_NONE = 0 };
 
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     unsigned char           _pad0[0x20];
     CArray<CEngineMap*>     MapList;             // +0x20
     unsigned char           _pad2c[0x34 - 0x2c];

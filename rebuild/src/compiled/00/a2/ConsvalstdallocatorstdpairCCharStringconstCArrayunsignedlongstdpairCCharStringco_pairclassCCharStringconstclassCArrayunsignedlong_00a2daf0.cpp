@@ -1,4 +1,4 @@
-struct CCharString { void* p; };
+class CCharString { public: void* p; };
 struct CArrayUL { void* p; };
 struct Pair { CCharString first; CArrayUL second; };
 

@@ -24,13 +24,13 @@ class CMainGameComponent;
 class CGraphicDataBank;
 class CMeleeCombatAbilityDef;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void DeleteThis();                               // slot 1 (+4)
     unsigned long RefCount;                                  // +0x04
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     ~CDefPointer()
     {
@@ -43,12 +43,12 @@ template<class T> struct CDefPointer {
     }
 };
 
-struct CEnginePersistentPrimitiveBase;
-template<class T> struct CIVCountedPointer {
+class CEnginePersistentPrimitiveBase;
+template<class T> class CIVCountedPointer { public:
     T* Object;
 };
 
-struct CEnginePrimitiveHandle {                              // 8 bytes, polymorphic
+class CEnginePrimitiveHandle { public:                              // 8 bytes, polymorphic
     virtual ~CEnginePrimitiveHandle();
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;  // +0x04
 };
@@ -57,7 +57,7 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                      // 0x00A01C10 (slot 0 = ??_G)
     void* PItem;                                             // +0x04
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 namespace NParticleEngine { class CParticleEmitter; }
 
@@ -82,7 +82,7 @@ template<class T> struct vector {                            // STLport: three w
 
 namespace NPlayerGui {
 
-struct CDrawBase {                                           // vtable 0x0125A52C
+class CDrawBase { public:                                           // vtable 0x0125A52C
     virtual void ClearPrimitivesIfNecessary();               // slot 0 (0x00644627)
     virtual void PrepareForLoad();                           // slot 1 (0x00442760)
     CPlayerGui*                              PlayerGui;      // +0x04
@@ -94,7 +94,7 @@ struct CDrawBase {                                           // vtable 0x0125A52
     std::vector<CEnginePrimitiveHandle>      PrimitiveHandles;   // +0x1c
 };
 
-struct CDrawMeleeActionButtonEffects : CDrawBase {           // vtable 0x0125A714
+class CDrawMeleeActionButtonEffects : public CDrawBase { public:           // vtable 0x0125A714
     virtual void ClearPrimitivesIfNecessary();               // slot 0 (0x00645829)
     std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> > Effects;   // +0x28
     long                                     FlashTimer;     // +0x34

@@ -6,8 +6,8 @@
 // Shape: the landed UseLamp copy constructor (0x0084C070) plus the inline CCountedPointer<CCreatureActionBase> copy
 // constructor (object word, then the count word loaded, tested and stored, `inc dword ptr [edi]`).
 // Layout (Ego_r.pdb, retail offsets 0xc lower): PUnsheatheItem +0xa8, PFollowUpAction +0xb0/+0xb4.
-struct CBaseObject;
-struct CCreatureActionBase;
+class CBaseObject;
+class CCreatureActionBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -32,13 +32,13 @@ struct CCountedPointer {                    // CCountedPointer<CCreatureActionBa
     }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
 };
 
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     CIntelligentPointer PUnsheatheItem;     // +0xa8
     CCountedPointer PFollowUpAction;        // +0xb0
     virtual void v00();

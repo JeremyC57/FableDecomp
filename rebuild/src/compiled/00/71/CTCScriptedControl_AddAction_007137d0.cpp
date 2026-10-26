@@ -15,7 +15,7 @@ void __cdecl operator delete(void* block);          // 0x00BFE9BC
 extern "C" void* __cdecl malloc(size_t size);       // 0x00BFEA0E
 inline void* operator new(size_t, void* where) { return where; }
 
-struct CTCScriptedControl;
+class CTCScriptedControl;
 struct CActionBase {                                // CTCScriptedControl::CActionBase, vtable 0x01265504
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void OnAddedToControl();                // slot 3 (+0x0c)
@@ -30,7 +30,7 @@ template <class T> struct SCountBlock {
     T*   m_pItem;                                   // +0x08
     SCountBlock(T* item) : m_references(1), m_pfnDestroy(&T::DeleteData), m_pItem(item) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                        // +0x00
     SCountBlock<T>* Info;                           // +0x04
     CCountedPointer(T* item) : Data(item), Info(new SCountBlock<T>(item)) { }
@@ -65,7 +65,7 @@ struct CActionList {                                // STLport list<CCountedPoin
         pos->_M_prev = tmp;
     }
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     virtual void v00();
     void*         ParentThing;                      // +0x04 (CTCBase)
     bool          ToBeRemoved;                      // +0x08

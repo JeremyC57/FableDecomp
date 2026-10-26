@@ -15,7 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 struct RTL_CRITICAL_SECTION_ { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(RTL_CRITICAL_SECTION_* section);   // import 0x0143FEE4
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -68,10 +68,10 @@ public:
     unsigned char _body[0x10c];                    // retail CBankFile ends at +0x110
     CBankFile();                                   // 0x009CD480
 };
-struct CThreadedFile;
-struct CMovableResourceMemoryPool;
-struct CLoadingMemoryFailureHandler;
-struct CBankFileAsyncData;
+class CThreadedFile;
+class CMovableResourceMemoryPool;
+class CLoadingMemoryFailureHandler;
+class CBankFileAsyncData;
 
 class CBankFileAsync : public CBankFile {          // vtable 0x0129B8D4
 public:

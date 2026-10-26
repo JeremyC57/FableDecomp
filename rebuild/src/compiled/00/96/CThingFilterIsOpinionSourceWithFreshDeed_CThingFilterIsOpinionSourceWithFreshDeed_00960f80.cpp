@@ -7,7 +7,7 @@
 // LastVDeedID, LastSourceUID}. The vtable stored at +0 (0x0123E7E0) is CIntelligentPointer's own
 // (a member; the filter object itself is not polymorphic). The 64-bit argument's halves are stored
 // from two registers.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -21,7 +21,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {           // vtable 0x012
     CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CThingFilter_IsOpinionSourceWithFreshDeed {
+class CThingFilter_IsOpinionSourceWithFreshDeed { public:
     CIntelligentPointer PCreature;                               // +0x00 CIntelligentPointer<CThingAICreature>
     long                LastVDeedID;                             // +0x08
     unsigned __int64    LastSourceUID;                           // +0x10

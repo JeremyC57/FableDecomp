@@ -8,8 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CDisplayManager;
-struct CIndexBuffer;
+class CDisplayManager;
+class CIndexBuffer;
 struct IDirect3DBaseTexture9;
 struct IDirect3DDevice9;
 

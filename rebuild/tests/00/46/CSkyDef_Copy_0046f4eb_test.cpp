@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CSkyDef { int tag; };
+class CSkyDef { public: int tag; };
 
 // Mock the relocation-masked real target for a self-contained run.
 static int g_copied = 0;

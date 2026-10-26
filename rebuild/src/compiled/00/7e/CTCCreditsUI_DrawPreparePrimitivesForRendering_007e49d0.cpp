@@ -10,12 +10,12 @@
 // size() recomputed every pass (`sar 2 ; jb`).
 double __fastcall GFGetTime();                  // 0x009E1BC0
 
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     long m_target;                              // +0x34
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void Update(float deltaTime);                                   // slot 1
     virtual void Draw(long target, long a, long b, long c, long d);        // slot 2
@@ -29,16 +29,16 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     unsigned int size() const { return _M_finish - _M_start; }
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
-struct CCharString { void* m_pData; };
-struct CTCBase {
+class CCharString { public: void* m_pData; };
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual void DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info);   // slot 11
-    struct CThing* ParentThing;                 // +0x04
+    class CThing* ParentThing;                 // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
 };
-struct CTCCreditsUI : CTCBase {
+class CTCCreditsUI : public CTCBase { public:
     bool Active;                                // +0x0c
     CRetailVector<NUISystem::CComponent*> Components;   // +0x10
     bool Quitting;                              // +0x1c

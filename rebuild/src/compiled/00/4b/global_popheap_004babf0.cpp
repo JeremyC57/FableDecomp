@@ -22,7 +22,7 @@ public:
 
 namespace NQuestManager {
 struct CRuntimeQuestPersistence {
-    struct CPersistInfo {                               // Ego_r.pdb, 8 bytes
+    class CPersistInfo { public:                               // Ego_r.pdb, 8 bytes
         CCharString QuestName;                          // +0x00
         CCharString PersistScript;                      // +0x04
     };

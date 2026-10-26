@@ -4,7 +4,7 @@
 #endif
 // Model of NCameraModes::GetCameraHeightfieldHeightAtPos(map, pos, includeWater) @ 0x00874F40: the ground height at pos, or the water surface when
 // water counts and lies above the ground.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CWorldMap {
 public:
     float Ground;

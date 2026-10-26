@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DA6C8, length 47 bytes.
 // The chunk label "CHitLocation::~CHitLocation" names a class without a vtable store here; named by address. Shape: the size-optimised module (`and dword ptr [esi+8],0`), no vtable store.
 #pragma optimize("s", on)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4

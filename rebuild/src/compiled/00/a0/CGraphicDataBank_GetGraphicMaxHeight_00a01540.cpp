@@ -5,7 +5,7 @@
 // of range, the frame count read without a guard), a down-counter over 16-byte frames, `if (max <= height) max = height`.
 // Layout: Ego_r.pdb CGraphicInfo / CGraphicHeader / CGraphicInfoFrame; the retail GraphicList sits at +0x1e0 (12-byte CArray).
 // Leaf: ?GetGraphicMaxHeight@CGraphicDataBank@@
-struct CGraphicInfo;
+class CGraphicInfo;
 struct CGraphicHeader {                            // Ego_r.pdb, 28 bytes
     unsigned short Width;                          // +0x00
     unsigned short Height;                         // +0x02
@@ -15,14 +15,14 @@ struct CGraphicHeader {                            // Ego_r.pdb, 28 bytes
     unsigned short FrameCount;                     // +0x0a
     unsigned char  _rest[0x10];
 };
-struct CGraphicInfoFrame {                         // Ego_r.pdb, 16 bytes
+class CGraphicInfoFrame { public:                         // Ego_r.pdb, 16 bytes
     long           _pad00;
     unsigned short FrameNum;                       // +0x04
     signed char    SmallMipmapLevel;               // +0x06
     void*          Data;                           // +0x08 CIVCountedPointer<CFrameData>
     CGraphicInfo*  GraphicInfo;                    // +0x0c
 };
-struct CGraphicInfo {                              // Ego_r.pdb, 0x2c bytes
+class CGraphicInfo { public:                              // Ego_r.pdb, 0x2c bytes
     CGraphicHeader     Header;                     // +0x00
     long               TextureType;                // +0x1c
     void*              Bank;                       // +0x20
@@ -35,7 +35,7 @@ struct CArray_CGraphicInfo {                       // retail CArray<CGraphicInfo
     CGraphicInfo* m_pEnd;
     unsigned long size() const { return m_pLast - m_pFirst; }
 };
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     unsigned char       _pad000[0x1e0];
     CArray_CGraphicInfo GraphicList;               // +0x1e0
     const CGraphicInfo* GetGraphicInfo(unsigned long index) const { return index < GraphicList.size() ? &GraphicList.m_pFirst[index] : 0; }

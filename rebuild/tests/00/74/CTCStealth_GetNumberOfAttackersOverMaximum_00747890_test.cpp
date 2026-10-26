@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer { CThing* m_pItem; const CThing* GetPItem() const
 struct CDangerStatus { long Status; long Timer; };
 struct SDangerThing { CBaseIntelligentPointer first; CDangerStatus second; };
 static long g_maxNumberOfAttackers = -1;
-struct CTCStealth {
+class CTCStealth { public:
     CRetailVector<SDangerThing> DangerThings;
     long MaxNumberOfDangerThings;
     long RegionBasedMaxNumberOfDangerThings;

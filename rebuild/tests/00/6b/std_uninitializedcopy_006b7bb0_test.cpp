@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 struct __false_type { __false_type() { } };
-struct CGameMapCell { unsigned char AtmosThemes[3]; unsigned char AtmosBlends[2]; signed char SoundTheme; unsigned char Music; };
+class CGameMapCell { public: unsigned char AtmosThemes[3]; unsigned char AtmosBlends[2]; signed char SoundTheme; unsigned char Music; };
 typedef CGameMapCell TElem;
 static void Fill(TElem& e, int i)
 {

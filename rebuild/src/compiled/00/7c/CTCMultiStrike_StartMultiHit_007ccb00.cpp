@@ -16,19 +16,19 @@ class CTCBase;
 class CThing;
 class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -38,7 +38,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefPointeeBase {
+class CSpecialEffectsDef : public CDefPointeeBase { public:
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString& name);   // stand-in callee
@@ -53,7 +53,7 @@ __declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& n
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
 };
 void* FindDef_CDefClassBase_GetSubDef_0();
@@ -74,7 +74,7 @@ template <class T> struct CStdVector {                 // STLport vector, 12 byt
     T* _M_end_of_storage;
     T& operator[](long i) const { return _M_start[i]; }
 };
-struct CSpecialAbilitiesMultiStrikeDef : CDefClassBase {
+class CSpecialAbilitiesMultiStrikeDef : public CDefClassBase { public:
     unsigned char     _pad08[0x6c - 0x08];
     CStdVector<float> DelayTimeSecs;                   // +0x6c
 };
@@ -97,7 +97,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                          // 0x00A01B50
     void SetPItem(CBaseObject* item);                  // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -193,12 +193,12 @@ struct CJoystickEntry {                                // 8 bytes
     CJoystickDevice* Device;
     long             Id;
 };
-struct CInputManager {
+class CInputManager { public:
     unsigned char   _pad00[0x2c];
     CJoystickEntry* Joysticks;                         // +0x2c (vector begin)
     CJoystickDevice* GetJoystick(long n) const { return Joysticks[n].Device; }
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char  _pad00[0x58];
     CInputManager* InputManager;                       // +0x58
 };

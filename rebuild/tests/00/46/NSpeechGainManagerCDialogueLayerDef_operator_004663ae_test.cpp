@@ -1,8 +1,8 @@
 #include <cstdio>
 static const void* g_baseSrc = 0;
-struct CDefClassBase { virtual void v00() { } unsigned char _body[0x24]; CDefClassBase& operator=(const CDefClassBase& o) { g_baseSrc = &o; return *this; } };
+class CDefClassBase { public: virtual void v00() { } unsigned char _body[0x24]; CDefClassBase& operator=(const CDefClassBase& o) { g_baseSrc = &o; return *this; } };
 namespace NSpeechGainManager {
-struct CDialogueLayerDef : CDefClassBase {
+class CDialogueLayerDef : public CDefClassBase { public:
     virtual void v00() { }
     long ResponseTimeSecsAttack, ResponseTimeSecsRelease, GainLevelHigh, GainLevelMid, GainLevelLow, FocusShiftDistanceThreshold;
     CDialogueLayerDef& operator=(const CDialogueLayerDef& o) {

@@ -5,7 +5,7 @@
 // destroyed with the same ~CCharString. vecB's leading string sits at the object's +0x0, so its destructor
 // call runs on this. __fastcall, this in ecx.
 #pragma optimize("t", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                 // 0x0099EAE0
 };
@@ -19,7 +19,7 @@ struct HandleVec {
     Handle* last;                   // +0x08
     void*   end;                    // +0x0C
 };
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     HandleVec vecB;                 // +0x00
     HandleVec vecA;                 // +0x10
 };

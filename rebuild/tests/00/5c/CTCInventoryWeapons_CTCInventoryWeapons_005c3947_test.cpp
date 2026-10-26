@@ -11,7 +11,7 @@
 #define __int64 long long
 #endif
 
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -52,7 +52,7 @@ public:
 };
 }
 
-struct CDefIndex {                                   // a def table index
+class CDefIndex { public:                                   // a def table index
     long Index;
     CDefIndex(long index) : Index(index) {}
 };

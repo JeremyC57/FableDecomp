@@ -6,12 +6,12 @@
 // which means the stored vtable belongs to the base (CAnimFilterBase per rtti-vtables.tsv,
 // inline empty destructor) and the most-derived class owning the string stores no vtable of
 // its own (novtable).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                        // 0x0099EAE0
 };
 
-struct CAnimFilterBase {                   // vtable 0x0122FFCC
+class CAnimFilterBase { public:                   // vtable 0x0122FFCC
     virtual void v00();
     ~CAnimFilterBase() { }
 };

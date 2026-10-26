@@ -1,17 +1,17 @@
 // behaviour copy of CTCCreatureModeManager::CModeBase::OnActivate: the weapon filter follows the primary-slot weapon's group, else "STAND"
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* p; CCharString(const char* t = 0) : p(t) {} };
+class CCharString { public: const char* p; CCharString(const char* t = 0) : p(t) {} };
 static int g_outOfLine = 0;
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     CCharString Group; unsigned long GroupCRC;
     void SetGroup(const CCharString& g) { ++g_outOfLine; Group = g; GroupCRC = (unsigned long)std::strlen(g.p); }
     void SetGroupInline(const CCharString& g) { Group = g; GroupCRC = (unsigned long)std::strlen(g.p); }
 };
-struct CTCWeapon { CCharString Name; const CCharString& GetAnimationGroupName() const { return Name; } };
-struct CThing;
-struct CTCCarrying { CThing* item; CThing* GetThingInPrimarySlot() { return item; } };
-struct CThing {
+class CTCWeapon { public: CCharString Name; const CCharString& GetAnimationGroupName() const { return Name; } };
+class CThing;
+class CTCCarrying { public: CThing* item; CThing* GetThingInPrimarySlot() { return item; } };
+class CThing { public:
     bool hasCarrying, hasWeapon, dead; CTCCarrying* carrying; CTCWeapon* weapon;
     bool IsDead() const { return dead; }
     bool GetInterface(CTCCarrying** out, long type) { if (type == 0x46 && hasCarrying) { *out = carrying; return true; } return false; }

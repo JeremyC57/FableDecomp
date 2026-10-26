@@ -15,13 +15,13 @@ extern "C" __declspec(dllimport) int __stdcall ClientToScreen(HWND__* window, PO
 extern "C" __declspec(dllimport) int __stdcall GetClientRect(HWND__* window, RECT* rect);      // IAT 0x01440338
 extern "C" __declspec(dllimport) int __stdcall OffsetRect(RECT* rect, int dx, int dy);         // IAT 0x014403A4
 
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad00[0x94];
     HWND__*       m_hWnd;                           // +0x94
 };
 CSystemManager* __cdecl GFGetSystemManager();       // 0x009A4EC0
 
-struct C2DVector {
+class C2DVector { public:
     float x;
     float y;
     C2DVector(float ax, float ay) : x(ax), y(ay) { }

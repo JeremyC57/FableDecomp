@@ -8,8 +8,8 @@
 // Both callees are declared but NOT defined in this TU so /O2 cannot
 // inline them away -- the compiler must emit a real `call`.
 
-struct CThingVillage
-{
+class CThingVillage
+{ public:
     void Destroy();                 // @0x838a00
     void FreeSelf();                // @0x4c73b0
     void *ScalarDeletingDestructor(unsigned int flags);

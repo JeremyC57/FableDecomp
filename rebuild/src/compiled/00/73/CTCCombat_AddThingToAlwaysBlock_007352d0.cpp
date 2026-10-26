@@ -12,7 +12,7 @@
 //   before the find and compared after it; STLport `find` inlined down to the `__find` call with the iterator tag
 //   temporary in the dead argument slot (the tag has a user constructor: a value-initialised empty POD tag adds a
 //   `mov byte ptr [esp+1Ch],0`); the derived destructor is implicit (straight base destructor call).
-struct CCombatAbilityData {                     // Ego_r.pdb, 0x18 bytes
+class CCombatAbilityData { public:                     // Ego_r.pdb, 0x18 bytes
     void*  __vftable;                           // +0x00
     long   PercentageChance;                    // +0x04
     float  SecondsDuration;                     // +0x08
@@ -20,12 +20,12 @@ struct CCombatAbilityData {                     // Ego_r.pdb, 0x18 bytes
     void*  Anim;                                // +0x10 CDefString
     long   InterfaceType;                       // +0x14 ECombatAbilityInterfaceType
 };
-template <class T> struct CCountedPointer {     // 8 bytes: object + count block
+template <class T> class CCountedPointer { public:     // 8 bytes: object + count block
     T*    Object;
     long* Count;
     T* operator->() const { return Object; }
 };
-struct CCombatAbility {                         // Ego_r.pdb, 8 bytes
+class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;                           // +0x00
     long ActiveTimer;                           // +0x04
     void Reset()
@@ -123,7 +123,7 @@ struct CCombatAbilityMap {                      // STLport multimap<ECombatAbili
     pair<iterator, iterator> equal_range(const long& k) { return pair<iterator, iterator>(lower_bound(k), upper_bound(k)); }
 };
 
-struct CBaseObject;
+class CBaseObject;
 class CThing;
 class CBaseIntelligentPointer {                 // 8 bytes: vptr + handle
 public:
@@ -156,7 +156,7 @@ struct CThingPtrVector {                        // STLport vector<CIntelligentPo
 
 class CCombatManager;
 class CThingCreatureBase;
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 class CTCCombat {                               // retail layout (STLport containers), 0x98 bytes
 public:

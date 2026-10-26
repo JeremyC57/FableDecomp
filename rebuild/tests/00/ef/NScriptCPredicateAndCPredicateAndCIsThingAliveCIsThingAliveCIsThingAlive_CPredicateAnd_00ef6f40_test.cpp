@@ -1,19 +1,19 @@
 #include <cstdio>
 static int g_copies = 0;
-struct CScriptThing {
+class CScriptThing { public:
     long m_id; long m_a; long m_b;
     CScriptThing(long id) : m_id(id), m_a(0), m_b(0) { }
     CScriptThing(const CScriptThing& other) : m_id(other.m_id), m_a(other.m_a), m_b(other.m_b) { ++g_copies; }
 };
 namespace NScript {
-struct CIsThingAlive {
+class CIsThingAlive { public:
     virtual void v00() { }
     CScriptThing Thing;
     CIsThingAlive(long id) : Thing(id) { }
     CIsThingAlive(const CIsThingAlive& other) : Thing(other.Thing) { }
 };
 template<class TLeft, class TRight>
-struct CPredicate_And {
+class CPredicate_And { public:
     virtual void v00() { }
     TLeft  m_left;
     TRight m_right;

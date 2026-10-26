@@ -10,13 +10,13 @@
 // Shape: base copy, vtable store, then every dword copied through eax in declaration order; returns `this`.
 #pragma optimize("s", on)
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x3c - 4];
     CParentDefClassBase(const CParentDefClassBase& other);              // 0x0046EE98
 };
 
-struct CEnvironmentThemeDef : CParentDefClassBase {                       // vtable 0x01236244, retail sizeof 0xC4
+class CEnvironmentThemeDef : public CParentDefClassBase { public:                       // vtable 0x01236244, retail sizeof 0xC4
     float  TimeOfDay;                       // +0x3c
     bool   MoonLit;                         // +0x40
     float  FogStartZ;                       // +0x44

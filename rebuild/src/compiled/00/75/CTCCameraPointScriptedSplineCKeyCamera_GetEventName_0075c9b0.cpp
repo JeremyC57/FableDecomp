@@ -7,9 +7,9 @@
 struct CRetailCharString : CCharString {
     CRetailCharString(const CCharString& other); // native CCharString copy ctor @ 0x0099EC30
 };
-struct C3DVector { float x, y, z; };
-struct CTCCameraPointScriptedSpline {
-    struct CKeyCamera {
+class C3DVector { public: float x, y, z; };
+class CTCCameraPointScriptedSpline { public:
+    class CKeyCamera { public:
         float DeltaIndex;
         C3DVector Pos;
         C3DVector LookDirection;

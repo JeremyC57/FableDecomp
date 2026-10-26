@@ -13,7 +13,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad_0x00[0x18];
     unsigned __int64 UID;                            // +0x18
     CPresenceBits    m_present;                      // +0x20
@@ -47,12 +47,12 @@ struct CThing {
     }
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
 };
 
 enum EMarriageState { MARRIAGE_STATE_NONE };
 
-struct CHeroMarriageInfo {
+class CHeroMarriageInfo { public:
     unsigned __int64 WifeUID;                        // +0x00
     unsigned __int64 MaritalHomeUID;                 // +0x08
     EMarriageState   State;                          // +0x10
@@ -69,11 +69,11 @@ struct CHeroMarriageList {                           // std::list<CHeroMarriageI
     CHeroMarriageNode* _M_node;
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);  // 0x0055F3B0
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*             __vftable;                     // +0x000
     CThing*           ParentThing;                   // +0x004 CTCBase
     unsigned char     _pad_0x008[0x13C];

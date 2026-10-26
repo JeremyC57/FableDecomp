@@ -3,7 +3,7 @@
 #include <new>
 static int g_live = 0;
 static const char* const g_names[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     explicit CCharString(int k) : m_pData((void*)g_names[k]) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }   // stands in for 0x0099EC30
@@ -17,8 +17,8 @@ template <class T1, class T2> struct pair {
     pair(const T1& a, const T2& b) : first(a), second(b) { }
     pair(const pair& o) : first(o.first), second(o.second) { }
 };
-struct CSymbolMap {
-    struct CSymbolInfo {
+class CSymbolMap { public:
+    class CSymbolInfo { public:
         CCharString GroupName;
         CCharString EntryName;
         long        Val;

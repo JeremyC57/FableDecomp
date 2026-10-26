@@ -34,7 +34,7 @@ struct CBasicStringChar {                           // CBasicString<char> (PDB 1
     char* PData;                                    // +0x00
     __forceinline bool operator<(const CBasicStringChar& other) const { return Compare_00411570(PData, other.PData) < 0; }
 };
-struct CCharStringData {                            // the shared string block (PDB 17 bytes: Data, then NoRefs at +0x0D)
+class CCharStringData { public:                            // the shared string block (PDB 17 bytes: Data, then NoRefs at +0x0D)
     CBasicStringChar Data;                          // +0x00
 };
 class CCharString {

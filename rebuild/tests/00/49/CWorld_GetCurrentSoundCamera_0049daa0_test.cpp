@@ -1,26 +1,26 @@
 // Behaviour test for CWorld::GetCurrentSoundCamera (0x0049DAA0): each source of the sound camera in priority order.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CCamera { C3DVector WorldPosition; int Source; };
-struct CInterpolationInfo { long Frame; float Fraction; };
+class C3DVector { public: float X, Y, Z; };
+class CCamera { public: C3DVector WorldPosition; int Source; };
+class CInterpolationInfo { public: long Frame; float Fraction; };
 static float g_tSeen;
-struct CTCPhysicsBase { C3DVector Pos; C3DVector GetInterpolatedPosition(float t) const { g_tSeen = t; return Pos; } };
-struct CThing { CTCPhysicsBase* PPhysics; };
-struct CPlayer {
+class CTCPhysicsBase { public: C3DVector Pos; C3DVector GetInterpolatedPosition(float t) const { g_tSeen = t; return Pos; } };
+class CThing { public: CTCPhysicsBase* PPhysics; };
+class CPlayer { public:
     bool UsingFreeCamera; CThing* Hero;
     CCamera GetFreeCamera(float t) const { CCamera c = { { t, 0, 0 }, 3 }; return c; }
     CThing* GetHeroThing() { return Hero; }
 };
-struct CPlayerManager { CPlayer* P; CPlayer* GetMainPlayer() { return P; } };
-struct CGameCameraManager { bool Scripted; bool IsUsingScriptedCameraMode() const { return Scripted; } };
-struct CAIGameCameraBase {
+class CPlayerManager { public: CPlayer* P; CPlayer* GetMainPlayer() { return P; } };
+class CGameCameraManager { public: bool Scripted; bool IsUsingScriptedCameraMode() const { return Scripted; } };
+class CAIGameCameraBase { public:
     CGameCameraManager* M;
     CCamera GetCamera(float t) const { CCamera c = { { 7.0f, 8.0f, 9.0f }, 4 }; c.WorldPosition.Y += t; return c; }
     bool GetCameraManager(CGameCameraManager*& m) { m = M; return M != 0; }
 };
-struct CMainGameComponent { bool Editor; bool IsEditorActive() { return Editor; } };
+class CMainGameComponent { public: bool Editor; bool IsEditorActive() { return Editor; } };
 static CMainGameComponent g_mgc; static CMainGameComponent* g_pMainGameComponent = &g_mgc; static void* g_pSoundManager;
-struct CWorld {
+class CWorld { public:
     CPlayerManager* PlayerManager; CAIGameCameraBase* PCurrentGameCamera;
     CCamera GetCurrentRenderCamera() const { CCamera c = { { 0, 0, 0 }, 2 }; return c; }
     CCamera GetCurrentRenderCamera(const CInterpolationInfo&) const { CCamera c = { { 0, 0, 0 }, 1 }; return c; }

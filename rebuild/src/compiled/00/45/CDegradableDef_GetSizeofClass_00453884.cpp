@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 typedef unsigned long ulong;
-struct CDegradableDef {};
+class CDegradableDef { public:};
 ulong __fastcall CDegradableDef_GetSizeofClass(CDegradableDef* self)
 {
     (void)self;

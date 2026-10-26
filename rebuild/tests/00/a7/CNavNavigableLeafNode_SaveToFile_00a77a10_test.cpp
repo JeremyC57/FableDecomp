@@ -1,7 +1,7 @@
 #include <stdio.h>
 // Behaviour test for CNavNavigableLeafNode::SaveToFile (0x00A77A10): base record, region id (low 16 bits or 0),
 // preferability byte, neighbour count, then each neighbour's index from the table.
-struct CAFile {
+class CAFile { public:
     virtual void Slot0() {}
     virtual void Slot1() {}
     virtual void Slot2() {}
@@ -9,8 +9,8 @@ struct CAFile {
     virtual void Write(const void* data, long size, long flags) { for (long i = 0; i < size; ++i) buf[n++] = ((const unsigned char*)data)[i]; if (flags) bad = 1; }
     unsigned char buf[256]; long n; int bad;
 };
-struct C2DVector { float X, Y; };
-struct CANavQuadTreeNode;
+class C2DVector { public: float X, Y; };
+class CANavQuadTreeNode;
 namespace std {
 template <class T> struct allocator { };
 template <class T> struct less { bool operator()(const T& a, const T& b) const { return a < b; } };
@@ -49,7 +49,7 @@ template <class K, class V, class C = less<K>, class A = allocator<pair<const K,
 };
 }
 typedef std::map<const CANavQuadTreeNode*, long> CNodeIndexTable;
-template <class T, int N> struct CSmallVector {
+template <class T, int N> class CSmallVector { public:
     T*          m_data;                            // +0
     signed char m_size;                            // +4
     signed char m_capacity;                        // +5
@@ -57,7 +57,7 @@ template <class T, int N> struct CSmallVector {
     T* end() const { return m_data + m_size; }
     long size() const { return m_size; }
 };
-struct CNavRegion {
+class CNavRegion { public:
     long RegionID;                                 // +0x00
 };
 class CANavQuadTreeNode {

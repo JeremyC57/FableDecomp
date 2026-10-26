@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour model of CTCPerceiveThing::ResetPerceptionVariables (0x00744DB0)
 static int g_removes;
-struct CPerceivedThingDef { long StartWithoutTarget; };
-struct CTCPerceiveThing {
+class CPerceivedThingDef { public: long StartWithoutTarget; };
+class CTCPerceiveThing { public:
     void* ParentThing; void* Perceived; const CPerceivedThingDef* PDef;
     float AwarenessTimer, DistanceFromPerceivedThingSquared; long FrameHitByPerceivedThing, FramesSinceDirectlyPerceivedThing;
     bool Perceiving, Smelt, Heard, PerceptionCombat, SearchingForThingToPerceive, LineOfSight, ExtendedLineOfSight, IgnoreFOVLineOfSight;

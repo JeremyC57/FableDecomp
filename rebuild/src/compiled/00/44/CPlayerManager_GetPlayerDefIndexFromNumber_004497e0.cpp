@@ -12,21 +12,21 @@
 // Tried: explicit CCharString("...") temporaries (73 bytes: all three paths merge and the constructor's eax is
 // pushed), implicit conversions in three returns (this file, 101), an if/else chain into a `long` local (101),
 // `if (number != 4 && number == MainPlayer)` plus a literal ternary (94: the literal goes through eax).
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* m_pStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
 };
 
-struct CMainGameComponent;
-struct CPlayer;
+class CMainGameComponent;
+class CPlayer;
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void*                   __vftable;                      // +0x00
     CMainGameComponent*     Component;                      // +0x04
     CGameDefinitionManager* DefinitionManager;              // +0x08

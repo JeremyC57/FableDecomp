@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CMeshDataBank { int tag; };
+class CMeshDataBank { public: int tag; };
 struct SubObj { char pad[208]; CMeshDataBank* bank; };
 struct GlobalObj { char pad[32]; SubObj* sub; };
 GlobalObj* g_animGlobal;
-struct CAnimateThing;
+class CAnimateThing;
 CMeshDataBank* __fastcall CAnimateThing_GetMeshBank(CAnimateThing* self)
 {
     return g_animGlobal->sub->bank;

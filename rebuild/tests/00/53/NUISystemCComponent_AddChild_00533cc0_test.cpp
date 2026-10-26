@@ -18,7 +18,7 @@ static void Check(bool ok, int line)
 #define CHECK(c) Check((c) ? true : false, __LINE__)
 
 #include <new>
-struct CCPPointerInfo { long Count; };
+class CCPPointerInfo { public: long Count; };
 template <class T> class CCountedPointer {
 public:
     T*              Data;

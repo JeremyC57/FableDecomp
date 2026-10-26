@@ -2,12 +2,12 @@
 // resets, opaque-white tint, timer clears and the attach-and-initialise pass over parentless children.
 #include <cstdio>
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     void Clear() { X = 0.0f; Y = 0.0f; }
 };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct SComponentState {
     C2DVector  Position;
     C2DVector  Zoom;

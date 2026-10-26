@@ -2,7 +2,7 @@
 // stream stand-in with the inline Read (fast path + chunk-overflow slow path), the long traits reader and the entry reader.
 #include <cstdio>
 #include <cstring>
-struct CDataInputStream {
+class CDataInputStream { public:
     long           StreamPos;
     unsigned char* CurrentSourcePtr;
     long           SourceChunkBytesRemaining;
@@ -39,7 +39,7 @@ struct CDataInputStreamReader : CDataInputStream {
     }
     float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
-struct CObjectFamilyEntry { long Object; long Probability; };
+class CObjectFamilyEntry { public: long Object; long Probability; };
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<long> {
     long DefaultVal;

@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_converted = 0, g_destroyed = 0;
-struct CCharString { void* m_pData; CCharString(void* d) : m_pData(d) {} CCharString(const CCharString& o) : m_pData(o.m_pData) {} ~CCharString() { ++g_destroyed; } operator const char*() const { ++g_converted; return "x"; } };
+class CCharString { public: void* m_pData; CCharString(void* d) : m_pData(d) {} CCharString(const CCharString& o) : m_pData(o.m_pData) {} ~CCharString() { ++g_destroyed; } operator const char*() const { ++g_converted; return "x"; } };
 struct CNamedHandle_0099ae50 { void* m_pObject; CNamedHandle_0099ae50(CCharString name, void* object); };
 CNamedHandle_0099ae50::CNamedHandle_0099ae50(CCharString name, void* object) { const char* text = name; m_pObject = object; (void)text; }
 int main()

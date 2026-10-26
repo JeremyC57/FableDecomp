@@ -20,7 +20,7 @@ struct CInterpolationInfoSet {
     float WFInterpolate;                             // +0x04
 };
 
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     CInterpolationInfoSet Current;                   // +0x00 (Interpolate.Current)
 };
 
@@ -38,7 +38,7 @@ struct CFadeVector {
     CFadeInFadeOutBase_Calls& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char _pad_0x000[0x154];
     CLongVector   ContextSensitiveItems;             // +0x154 (PDB +0x178)
     CFadeVector   ContextSensitiveFadeTimes;         // +0x160 (PDB +0x188)

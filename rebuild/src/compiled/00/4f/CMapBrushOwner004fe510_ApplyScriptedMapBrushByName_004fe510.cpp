@@ -6,7 +6,7 @@
 // whose word at +0x10 is the map, so it is named by address (its neighbour @ 0x004FE550 is CreatureMode_ApplyAnimatedBrush).
 // Shape: the map is a named pointer (`lea edi,[esi+14h]`) whose head is compared with the result; the node's value (+0x14) indexes the entry
 // array (`lea edx,[eax+eax*8]` then `[eax+edx*8+10h]`); the second argument is forwarded as a 4-byte value.
-struct CCharString;
+class CCharString;
 
 struct CRetailNameMap {                            // VC6 Dinkumware map<CCharString, long>: head node pointer (+ size)
     struct node { node* left; node* parent; node* right; long colour; void* key; long value; };
@@ -14,7 +14,7 @@ struct CRetailNameMap {                            // VC6 Dinkumware map<CCharSt
     node* Find(const CCharString& key);            // 0x0042B467
 };
 
-struct CMap {
+class CMap { public:
     void ApplyScriptedMapBrush(const CCharString& name, long flags);   // 0x00820B80
 };
 

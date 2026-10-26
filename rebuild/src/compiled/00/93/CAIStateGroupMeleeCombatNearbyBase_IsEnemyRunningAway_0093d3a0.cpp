@@ -10,8 +10,8 @@
 // body in ecx before the vptr load; the scratchpad pointer is uninitialised on a miss (retail reads the frame word the
 // perceiver occupies, as VC packs both there); `bool b = false; if (..) b = true;` gives `xor bl,bl ; ... ; mov bl,1`.
 // Layout: engine/CAIStateGroup_MeleeCombatNearbyBase.h flattens the base; local model with its PEnemy (+0x14).
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -36,7 +36,7 @@ struct CPhysicsBody {
     const C3DVector& GetPosition() const { return Position; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -70,22 +70,22 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     CThing* GetPerceivedThing();                // 0x007446A0
     float GetPerceptionRange();                 // 0x00744460
 };
-struct CTCAIScratchpad {                        // interface 0xAA
+class CTCAIScratchpad { public:                        // interface 0xAA
     unsigned char _pad[0x60];
     float CombatNearbyEnemyFleeingBreakOffRange;   // +0x60
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     unsigned char _pad[0x14];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

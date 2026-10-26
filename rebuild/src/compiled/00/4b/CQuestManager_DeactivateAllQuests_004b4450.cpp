@@ -9,7 +9,7 @@
 // vector/list sizes), so the class is modelled locally. List node: next +0, prev +4, value +8.
 // Shape: /O2 (16-aligned entry, `lea ebx,[ebx]` loop-head pad); front() as *begin() through the node-base iterator cast
 // (a direct node-to-data reference adds an `add eax,8`).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
 };
 template <class T> class CCountedPointer {

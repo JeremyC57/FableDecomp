@@ -20,11 +20,11 @@
 //   (an external LowerBound costs a 4-byte frame slot); the stats component is the `T* p = 0` preload then
 //   `if (HasTC) p = GetTC` and is null-tested; the scoreboard pointer is declared uninitialised (retail reads the shared
 //   key slot on a miss).
-struct CTCBase;
+class CTCBase;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);     // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                     // +0x00
     signed char   Player;                                   // +0x04
     unsigned char Data[32];                                 // +0x05
@@ -34,7 +34,7 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddBool(bool value) { value = value ? true : false; Copy(1, &value); }
 };
-struct CRGBColour {                                         // B,G,R,A bytes over a packed 32-bit colour
+class CRGBColour { public:                                         // B,G,R,A bytes over a packed 32-bit colour
     union {
         struct { unsigned char B, G, R, A; };
         unsigned long Colour;
@@ -42,10 +42,10 @@ struct CRGBColour {                                         // B,G,R,A bytes ove
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) : Colour(other.Colour) { }
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     void StartScreenFadeOut(float fadeOutTime, float fadeInTime, CRGBColour colour, float holdTime);   // 0x00434C00
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* DisplayEngine;                          // +0x28
     CDisplayEngine* GetDisplayEngine() const { return DisplayEngine; }
@@ -76,7 +76,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
@@ -95,7 +95,7 @@ struct CThing {
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CThingPhysical : CThing {
+class CThingPhysical : public CThing { public:
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
@@ -108,36 +108,36 @@ struct CThingPhysical : CThing {
     virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58();
     virtual void ModifyHealth(float amount, bool showEffect);   // slot 59 (+0xec) 0x006A68F0
 };
-struct CTCHeroStats {                                       // interface 4 (descriptive)
+class CTCHeroStats { public:                                       // interface 4 (descriptive)
     unsigned char _pad00[0x154];
     long          TimesHadSex;                              // +0x154 (descriptive)
 };
 enum EOnlineScoreboardActivity { ONLINE_SCOREBOARD_ACTIVITY_SEX = 6 };
-struct CTCHeroOnlineScoreboard {                            // interface 0x10D
+class CTCHeroOnlineScoreboard { public:                            // interface 0x10D
     void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float value, bool flag);   // 0x0055F3B0
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad_0x00[0x28];
     signed char   m_playerNumber;                           // +0x28
     CThing* GetHeroThing();                                 // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer& GetMainPlayer();                               // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;                      // 0x0049D9D0
 };
-struct CHeroMarriageDef {
+class CHeroMarriageDef { public:
     unsigned char _pad00[0x28];
     float         WeddingTimeForScreenToFadeOut;            // +0x28
     float         WeddingTimeForScreenToFadeIn;             // +0x2c
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     void*             ParentThing;                          // +0x04
     unsigned char     _pad_0x08[4];

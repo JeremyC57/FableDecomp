@@ -1,10 +1,10 @@
 // Behaviour test for 0x00820F80 CMap::CreateScriptedMapBrush: the brush is appended to the list and registered under the map ID.
 #include <cstdio>
-struct C2DBoxI { int TLX, TLY, BRX, BRY; };
+class C2DBoxI { public: int TLX, TLY, BRX, BRY; };
 struct Brush { int area; Brush(const C2DBoxI& a) : area((a.BRX - a.TLX) * (a.BRY - a.TLY)) { } };
 struct Node { Node* next; Node* prev; Brush data; Node(const Brush& b) : next(0), prev(0), data(b) { } };
 static int g_regID = 0; static Brush* g_regBrush = 0;
-struct CMap {
+class CMap { public:
     Node* header; int worldPosX;
     Brush* CreateScriptedMapBrush(const C2DBoxI& area)
     {

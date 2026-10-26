@@ -9,7 +9,7 @@
 // (STLport-era) basic_string<wchar_t> {Start, Finish, EndOfStorage} and the fourth is NoRefs.
 // (The Ego_r PDB shows a 28-byte VC7 basic_string there; retail is the 12-byte form.)
 #include <stddef.h>
-struct CWideStringData {
+class CWideStringData { public:
     wchar_t* Start;                             // +0x00
     wchar_t* Finish;                            // +0x04
     wchar_t* EndOfStorage;                      // +0x08

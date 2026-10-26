@@ -3,7 +3,7 @@
 extern "C" void __cdecl eng_free(void* p);
 extern void __fastcall CBase_dtor(void* self);
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     unsigned char _pad_0x0[0x48];
     void* p48;   // +0x48
     unsigned char _pad_0x4c[0x8];

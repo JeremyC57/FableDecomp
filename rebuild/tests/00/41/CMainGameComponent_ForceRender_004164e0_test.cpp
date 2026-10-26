@@ -7,11 +7,11 @@ static int fails = 0;
 // ---- source (verbatim) ----
 // CMainGameComponent::ForceRender(long) -- render interpolated frames until the server frame is caught up
 #pragma optimize("s", on)
-struct CASoundBank;
-struct CPlayerManager;
-struct CGamePlayerInterface;
+class CASoundBank;
+class CPlayerManager;
+class CGamePlayerInterface;
 struct CMainGameComponentParent;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -21,15 +21,15 @@ template <class T> struct scoped_ptr {
     scoped_ptr() : ptr(0) { }
     T* operator->() const { return ptr; }
 };
-namespace NGameText { struct CDataBank; }
-struct CLUA;
-struct CFontBank;
-struct CGraphicDataBank;
+namespace NGameText { class CDataBank; }
+class CLUA;
+class CFontBank;
+class CGraphicDataBank;
 struct CInterpolationInfoSet {
     float GTPredictedTimeSinceLastRenderFrame;
     float WFInterpolate;
 };
-struct CInterpolationInfo {                        // 0x34 bytes
+class CInterpolationInfo { public:                        // 0x34 bytes
     CInterpolationInfoSet Current;                 // +0x00
     CInterpolationInfoSet Last;                    // +0x08
     CInterpolationInfoSet PausedCurrent;           // +0x10
@@ -39,21 +39,21 @@ struct CInterpolationInfo {                        // 0x34 bytes
     long                  WFServerCurrentTime;     // +0x30
     CInterpolationInfo();                          // 0x00415A60
 };
-struct CWorld { void RenderUpdate(CInterpolationInfo* info); };                          // 0x0049E080
-struct CDisplayEngine { void DoRender(CInterpolationInfo* info, bool worldUpdateTurn, bool b); };   // 0x00435F70
-struct CGameEventPackageSet { long _body[0x13a14 / 4]; CGameEventPackageSet(); };   // 0x009F1A80
+class CWorld { public: void RenderUpdate(CInterpolationInfo* info); };                          // 0x0049E080
+class CDisplayEngine { public: void DoRender(CInterpolationInfo* info, bool worldUpdateTurn, bool b); };   // 0x00435F70
+class CGameEventPackageSet { public: long _body[0x13a14 / 4]; CGameEventPackageSet(); };   // 0x009F1A80
 struct CNetworkClient { long _body[0x2680 / 4]; CNetworkClient(); };                // 0x00419323
-struct CDiskFileWin32 { long _body[0x1c / 4]; CDiskFileWin32(); };                  // 0x00415C30
+class CDiskFileWin32 { public: long _body[0x1c / 4]; CDiskFileWin32(); };                  // 0x00415C30
 struct CEventPackageFileHeader { long Version; };
 struct CFrameRateSmoother { long _body[0x30 / 4]; CFrameRateSmoother(); };          // 0x00419747
 struct CRoughFrameCounter { long _body[0x8 / 4]; CRoughFrameCounter(); };           // 0x009F8B10
-struct CMainGameComponentInit {
+class CMainGameComponentInit { public:
     long _body[0x10 / 4];
     CMainGameComponentInit(const CMainGameComponentInit& other);                          // 0x00415E17
 };
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CComponentListEntry { virtual void v00(); };                                      // the +4 interface
-struct CGameComponent : CBaseClass, CComponentListEntry {
+class CGameComponent : public CBaseClass, public CComponentListEntry { public:
     bool  m_b08;                                   // +0x08
     bool  m_b09;                                   // +0x09
     CMainGameComponentParent* m_pParent;           // +0x0c

@@ -29,7 +29,7 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -49,7 +49,7 @@ public:
     }
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-struct CDefString { long m_index; };
+class CDefString { public: long m_index; };
 struct CDefStringTable { CCharString GetString(CDefString name); };   // 0x009D49B0
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}
@@ -59,23 +59,23 @@ template<class T> struct CRetailVector {
     T* last;
     T* end_of_storage;
 };
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     unsigned char _pad[0x50];
     CRetailVector<CCharString> CombatSequence;      // +0x50
     CRetailVector<long> CombatSequenceDef;          // +0x5c
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x10];
     unsigned char ThingClass;                       // +0x10
     CDefString GetDefName() const;                  // 0x004C7CC0
     const CCombatTypeDef* GetCombatTypeDef();       // 0x00666D10
 };
-struct CCombatSequenceDef {
+class CCombatSequenceDef { public:
     virtual void v00();
     virtual void Destroy();
     long RefCount;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) {}
     CDefPointer(const CDefPointer& o) { T* d = o.Data; Data = d; if (d) ++d->RefCount; }
@@ -98,12 +98,12 @@ __declspec(noinline) void CDefManager::GetDef(long index, CDefPointer<CCombatSeq
     }
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x10];
     CDefManager* DefManager;                        // +0x10
 };
 struct CRegisteredSequenceMap;
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     virtual void OnCreate();                        // slot 1 (+0x04)
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -190,7 +190,7 @@ __declspec(noinline) void CSequenceVector::_M_insert_overflow(CSequencePointer* 
 }
 #pragma auto_inline(on)
 
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     CRegisteredSequenceMap RegisteredCombatSequences;   // +0x04
     unsigned char _combatants[0xc];                     // +0x10

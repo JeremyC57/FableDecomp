@@ -3,7 +3,7 @@
 #include <cstdio>
 static int g_showCursorArg = -1, g_cursorEnabled = -1, g_exclusiveArg = -1, g_order = 0, g_clearOrder = 0, g_showOrder = 0;
 static void ShowCursorStub(int show) { g_showCursorArg = show; g_showOrder = ++g_order; }
-struct CMouse {
+class CMouse { public:
     long NoStoredEvents; long NoEventScansRunning; void* Manager; bool BaseExclusive;
     CMouse(void* manager, bool exclusive) : NoStoredEvents(5), NoEventScansRunning(3), Manager(manager), BaseExclusive(exclusive) {}
     void ClearStoredEvents() { NoStoredEvents = 0; g_clearOrder = ++g_order; }

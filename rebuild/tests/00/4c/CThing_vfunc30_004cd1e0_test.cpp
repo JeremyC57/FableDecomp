@@ -1,6 +1,6 @@
 // Behaviour test for 004cd1e0 CThing::vfunc_30 (forwards to the virtual DrawIsDrawable)
 #include <cstdio>
-struct CThing {
+class CThing { public:
     bool drawable;
     virtual bool DrawIsDrawable() { return drawable; }
     virtual bool vfunc_30();

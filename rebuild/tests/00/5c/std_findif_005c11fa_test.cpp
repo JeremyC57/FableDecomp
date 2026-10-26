@@ -67,7 +67,7 @@ public:
     binder2nd(const Op& x, const A& y) : op(x), value(y) {}
     bool operator()(const CItem& x) const { return op(x, value); }
 };
-struct CIsSameItemType {
+class CIsSameItemType { public:
     long ItemType;
     bool OnlyFindNonFullSlots;
     bool operator()(const CItem& item) const { return item.IsSameItemTypeAsDefIndex(ItemType) && (!OnlyFindNonFullSlots || !item.IsSlotFull()); }

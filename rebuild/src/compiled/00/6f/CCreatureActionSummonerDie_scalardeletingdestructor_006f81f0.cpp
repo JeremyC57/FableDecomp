@@ -1,4 +1,4 @@
-struct CCreatureAction_SummonerDie {
+class CCreatureAction_SummonerDie { public:
     void* vftable;
 };
 

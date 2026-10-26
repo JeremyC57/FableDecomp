@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     char pad0[0xc];
     int  field_c;
     int  field_10;

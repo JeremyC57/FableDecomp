@@ -20,7 +20,7 @@
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5)
@@ -30,7 +30,7 @@ struct CTCPhysicsBase {
     virtual void SetFacingAngleYZ(float angle);         // slot 67 (+0x10C)
 };
 
-struct CThingBodyReorienter {
+class CThingBodyReorienter { public:
     bool IsUpdateNeeded();                              // 0x00863250
     void UpdateBodyReorienation();                      // 0x00863E10
     void SetFlag_00863260(bool value);                  // 0x00863260 (`[this+8] = value`)
@@ -42,12 +42,12 @@ template<class T> struct scoped_ptr {
     T* operator->() const { return px; }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     unsigned char _pad[0x61];
     bool Finished;                                      // +0x61
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char _pad64[0x91 - 0x64];
@@ -61,7 +61,7 @@ extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 bool __fastcall IsLyingDown(CThing* thing);             // 0x0085F2B0
 bool __fastcall IsIncapacitated(CThing* thing);         // 0x0085F0C0
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad94[0x100 - 0x94];
     CCreatureActionBase* PCurrentAction_Data;           // +0x100 CCountedPointer<CCreatureActionBase>::Data
     unsigned char _pad104[0x140 - 0x104];

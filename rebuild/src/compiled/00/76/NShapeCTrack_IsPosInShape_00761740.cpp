@@ -5,17 +5,17 @@
 // track has fewer than two points); the 0.25f literal at 0x0126A1FC.
 // Shape: the distance local is homed in the dead `pos` argument slot (`lea eax,[esp+4]`); the miss path is the `else` arm
 // (its own `xor al,al` exit placed last; `if (!Get()) return false;` reuses the call's zero al instead), the compare `return distance < 0.25f;` materialises 1/0 in eax on the two `fcomp ; test ah,5 ; jp` arms.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
     virtual void v03();
     virtual bool IsPosInShape(const C3DVector& pos) const;   // slot 4
 };
-struct CTrack : CShape {
+class CTrack : public CShape { public:
     bool GetMinDistanceToTrack(const C3DVector& pos, float& distance) const;   // 0x00760E70
     virtual bool IsPosInShape(const C3DVector& pos) const;
 };

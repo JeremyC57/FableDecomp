@@ -1,10 +1,10 @@
 // Behaviour test for CV_BanditCampPathScript::CV_BanditCampPathScript (0x00E46BD0).
 #include <cstdio>
 
-struct CGameScriptInterface { int dummy; };
+class CGameScriptInterface { public: int dummy; };
 
 static int g_baseBuilt = 0, g_cbaseBuilt = 0;
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00() { }
     unsigned char _body[0x3c];
     CScriptBase() { ++g_baseBuilt; }
@@ -21,15 +21,15 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase() { }
 }; } using N_0099a2d0::CBase;
 
-struct CScriptThing;
-struct CCPPointerInfo;
+class CScriptThing;
+class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {
     CScriptThing* Data;
     CCPPointerInfo* Info;
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
 
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CCountedPointer_CScriptThing PImp;
     CScriptThing() { }
     virtual ~CScriptThing() { }

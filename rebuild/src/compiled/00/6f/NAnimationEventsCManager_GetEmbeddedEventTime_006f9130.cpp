@@ -11,27 +11,27 @@
 #undef C3DAnimationInfo
 #include "fable_string.h"
 void operator delete(void*) throw(); //00BFE9BC
-struct CCPPointerInfo {unsigned long RefCount;void(FABLE_FASTCALL* DeleteFunc)(void*);void* Data;};
-template<class T>struct CCountedPointer {
+class CCPPointerInfo { public:unsigned long RefCount;void(FABLE_FASTCALL* DeleteFunc)(void*);void* Data;};
+template<class T>class CCountedPointer { public:
  T* Data;CCPPointerInfo* Info;
  CCountedPointer():Data(0),Info(0){}
  CCountedPointer(const CCountedPointer& o):Data(o.Data),Info(o.Info){if(Info)++Info->RefCount;}
  ~CCountedPointer(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}
 };
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
  // No header exists. PDB stats Duration+0C; native6F914E independently reads+0C.
  unsigned char NativeStatsPrefix[12];float Duration;
  float GetEventTime(const CCharString&)const; //00A4EAE0
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
  CCountedPointer<const C3DAnimationStats> GetAnimationStats()const; //00A269C0
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
  // NativeA242C0 returns an indexed pointer from table+380; original inline getter spelling and full bank layout remain unestablished.
  const C3DAnimationInfo* GetAnimationInfo(unsigned long)const; //00A242C0
 };
 extern float g_MinEmbeddedAnimationDuration; //0129BA3C exactfloat0.0001
-namespace NAnimationEvents {struct CManager {
+namespace NAnimationEvents {class CManager { public:
  unsigned long NativeManagerPrefix;CMeshDataBank* MeshDataBank;
  float GetEmbeddedEventTime(unsigned long,const CCharString&)const;
 };}

@@ -14,12 +14,12 @@ struct CBase_009fc550 {
     ~CBase_009fc550() { g_rootOrder = g_freeCount; }
 };
 
-struct CDefPointeeBase : CBase_009fc550 {
+class CDefPointeeBase : public CBase_009fc550 { public:
     virtual void v00() { }
     ~CDefPointeeBase() { }
 };
 
-struct CPatchTesselationEdgeStrip : CDefPointeeBase {
+class CPatchTesselationEdgeStrip : public CDefPointeeBase { public:
     unsigned char m_pad04[0x24];
     CHeapArray m_arrayA;
     CHeapArray m_arrayB;

@@ -37,7 +37,7 @@ static void md5_finish(md5_state_t* pms, md5_byte_t digest[16])                 
     for (int i = 0; i < 16; ++i)
         digest[i] = (md5_byte_t)(i * 17 + pms->count[0]);
 }
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_pData;
     long m_length;
 };

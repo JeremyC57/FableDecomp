@@ -13,12 +13,12 @@
 // Shape: the watch loop is rotated (entry test, bottom test) and its normal exit keeps its own destructor epilogue; the
 // completed and failed outcomes each re-check thread termination before reporting; the two failure tests share one
 // failure block, which falls into the terminating exit.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
@@ -88,7 +88,7 @@ struct CGameScriptInterface {
 };
 
 namespace NScript {
-struct CQ_SunnyvaleMasterData {
+class CQ_SunnyvaleMasterData { public:
     unsigned char _pad000[0x117];
     bool          BreakSiegeKilledLeader;               // +0x117
 };
@@ -101,7 +101,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
 
 enum { BOAST_BREAK_SIEGE_KILLED_LEADER = 26 };
 
-struct CHeroBoastsScript : CScriptBase {
+class CHeroBoastsScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                        // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44
     void BoastBreakSiegeKilledLeader(CCharString questName);

@@ -9,11 +9,11 @@
 //   trailing allocator, so it does not fit): vptr +0, PWorld +4, ThingMaps +0x08 (STLport vector, 12 bytes; 8-byte
 //   CThingMapInfo {PThingMap, RefCount}), ActiveThingMaps +0x14, ActiveGameMaps +0x20 (set<long>, 12 bytes), NoThings
 //   +0x2c, Dimensions {X +0x30, Y +0x34} -- retail indexes the cells as y * Dimensions.X + x.
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(long tlx, long tly, long brx, long bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}
 };
-struct C2DExtentsI { long X, Y; };
+class C2DExtentsI { public: long X, Y; };
 
 struct CThingMapManager;
 struct CThingMap {
@@ -79,7 +79,7 @@ struct CLongSet {                                       // STLport set<long>
     pair_iterator_bool insert(long value) { return insert_unique(value); }
 };
 
-struct CWorld;
+class CWorld;
 struct CThingMapManager {
     void*                   __vftable;                  // +0x00
     CWorld*                 PWorld;                     // +0x04

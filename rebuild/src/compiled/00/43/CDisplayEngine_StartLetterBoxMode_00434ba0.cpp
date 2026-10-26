@@ -12,7 +12,7 @@
 // come first, then Active / Closing / Opening / OpenTimer / CloseTimer / ToColour: other orders keep the fade-out time in a
 // register (esi) instead of re-reading the argument for CloseTimer.
 #include "engine/CDisplayEngine.h"
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

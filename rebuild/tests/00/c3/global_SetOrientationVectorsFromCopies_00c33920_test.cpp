@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(float a, float b, float c) : x(a), y(b), z(c) { }
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector f, u; int calls;
     CRightHandedSet() : f(0, 0, 0), u(0, 0, 0), calls(0) { }
     void SetOrientationVectors(const C3DVector& forward, const C3DVector& up) { f = forward; u = up; ++calls; }

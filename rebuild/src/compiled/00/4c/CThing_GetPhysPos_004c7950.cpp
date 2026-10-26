@@ -6,13 +6,13 @@
 // through the returned pointer (eax); a named local (or a reference local) re-reads it from the frame. The
 // C3DVector (x, y, z) constructor's arguments are evaluated right to left (z load, then y sum, then x sum);
 // C2DVector/C3DVector have user constructors (non-POD hidden returns).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -23,7 +23,7 @@ inline C3DVector operator+(const C2DVector& offset, const C3DVector& position)
     return C3DVector(offset.X + position.X, offset.Y + position.Y, position.Z);
 }
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -36,7 +36,7 @@ struct CTCPhysicsBase {
     C3DVector     Position;                          // +0x0c
 };
 
-struct CThing {
+class CThing { public:
     void*           __vftable;                       // +0x00
     unsigned char   _pad04[0x60 - 0x04];
     CTCPhysicsBase* PhysicsTC;                       // +0x60 (PDB +0x70)

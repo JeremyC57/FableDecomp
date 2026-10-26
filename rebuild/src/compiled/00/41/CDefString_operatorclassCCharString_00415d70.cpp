@@ -2,7 +2,7 @@
 // __fastcall this=ecx, dst=stack (ret 4).
 struct Pool { void Assign(void* dst, void* src); };
 extern Pool g_pool;
-struct CCharString {
+class CCharString { public:
     void* data;
     void* AssignTo(void* dst);
 };

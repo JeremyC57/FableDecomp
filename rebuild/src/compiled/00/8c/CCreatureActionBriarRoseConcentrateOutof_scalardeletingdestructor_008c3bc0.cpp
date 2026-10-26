@@ -1,4 +1,4 @@
-struct CCreatureAction_BriarRoseConcentrateOutof {
+class CCreatureAction_BriarRoseConcentrateOutof { public:
     void* vftable;
 };
 

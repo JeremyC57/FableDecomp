@@ -44,7 +44,7 @@ struct CGameScriptInterface_Calls {                      // the quest's game scr
     virtual bool HasHeroForceQuitFireheartMinigame() const;   // slot 256 (+0x400)
 };
 
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                              // +0x04 .. +0x40 (PActiveThread at +0x2c)
     bool IsActiveThreadTerminating();                       // 0x00CB7940

@@ -2,13 +2,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*  PData;
     unsigned int StringLength;
 };
 
 static int g_assigns = 0, g_copies = 0;
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) {}
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }
@@ -33,7 +33,7 @@ static unsigned int Calc_004014a0(unsigned int seed, const void* data, unsigned 
 static CCharStringData g_dWalk = { "walk", 4 }, g_dRun = { "run_fast", 8 }, g_dIdle = { "idle", 4 };
 static CCharString Str(CCharStringData* d) { CCharString s; s.PStringData = d; return s; }
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     void*        vptr_stand_in;
     CCharString  Group;
     unsigned int GroupCRC;

@@ -11,7 +11,7 @@
 // divided by 56 (`imul 92492493h ; sar edx,5`).
 struct CKeyCamera { unsigned char _body[0x38]; };
 
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     unsigned char _pad00[0x68];
     CKeyCamera*   KeyCameras_first;                 // +0x68 vector<CKeyCamera>
     CKeyCamera*   KeyCameras_last;                  // +0x6c

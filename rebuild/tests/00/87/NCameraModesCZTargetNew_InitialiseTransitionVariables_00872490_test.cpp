@@ -20,7 +20,7 @@
 //   Y, Z, X and clamped to [-1, 1]; `turn = acos * 1/2pi` is named so the sign multiplies last; dividing by the long
 //   member each time keeps one fild and three fdivs (a float `frames` local becomes a reciprocal multiply).
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -30,11 +30,11 @@ struct C3DVector {
 };
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
 
-struct CCameraModeDef {
+class CCameraModeDef { public:
     unsigned char _pad[0x40];
     float StringLengthXY;                               // +0x40
     float CageRadius;                                   // +0x44

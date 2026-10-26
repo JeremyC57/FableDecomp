@@ -15,19 +15,19 @@
 // retail's first block); the event's bool payload goes through an inline by-value `SetData(T value)` (Copy(sizeof(T),
 // &value)) so it is homed in its own aligned frame word and stored last, as retail; a named bool before the event
 // gives a byte in a shared word (326v326).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);                   // 0x0099B6B0
     CWideString(const CWideString& other);
     ~CWideString();                                            // 0x0099B510
 };
-struct CFontBank;
-struct CSubtitleRenderer {
+class CFontBank;
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CWideString& title, const CWideString& speaker, const CWideString& text,
                  const CWideString& altText, unsigned long flags, float time, bool b0, bool b1);   // 0x00492F69
 };
@@ -35,7 +35,7 @@ struct CGameEventData {
     unsigned char Bytes[0x24];
     void Copy(long size, const void* data);                    // 0x009F1760
 };
-struct CGameEvent {
+class CGameEvent { public:
     long           Type;                                       // +0x00
     unsigned char  Flag;                                       // +0x04
     unsigned char  _pad05[0x20];
@@ -43,7 +43,7 @@ struct CGameEvent {
     CGameEvent(long type) : Type(type), Flag(0xff), B25(0), B26(1), B27(0) { }
     template <class T> void SetData(T value) { ((CGameEventData*)this)->Copy(sizeof(T), &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x1614c];
     CFontBank*    PFont;                                       // +0x1614c
     void AddGameEvent(CGameEvent* event);                      // 0x0041649C

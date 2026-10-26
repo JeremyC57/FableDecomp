@@ -8,7 +8,7 @@
 // inline); no direct callers, so the class is named by address.
 // Shape: the leading word is an initialiser stored first (`mov dword ptr [esi],0`), the vector copied whole with two
 // integer moves, GetLength() on the argument still in ecx, `fstp [esi+0Ch]`.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     float GetLength() const;                 // 0x00C46E90
 };

@@ -1,10 +1,10 @@
 #include <stdio.h>
 // Behaviour test for CEngineInternalPrimitiveGroup::SetChildPrimitive (0x00BC65D0): grows the handle vector,
 // creates the child through the type's manager, releases the old child, updates and enables the new one.
-struct CEnginePrimitive { long Type; };
-struct CEnginePrimitiveHandle;
+class CEnginePrimitive { public: long Type; };
+class CEnginePrimitiveHandle;
 static int g_destroyed = 0, g_lastReleased = 0, g_updates = 0, g_layer = 0, g_resize = -1;
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     virtual void v02() {}
@@ -28,7 +28,7 @@ public:
     CIVCountedPointer& operator=(CEngineInternalPrimitiveBase* p)
     { if (Object) { Object->Release(); Object = 0; } Object = p; return *this; }
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     virtual void v00() {}
     CIVCountedPointer Data;
     void Clear() { if (Data.IsUnique()) Data->OnLastHandleReleased(this); Data = 0; }

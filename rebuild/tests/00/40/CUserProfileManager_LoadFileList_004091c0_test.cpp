@@ -8,7 +8,7 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 
-struct CWideString {
+class CWideString { public:
     std::wstring S; bool Null;
     CWideString() : Null(true) {}
     CWideString(const wchar_t* t) : S(t), Null(false) {}
@@ -31,10 +31,10 @@ static std::wstring g_pattern;
 static bool Fill(CFindFileHandle& h, CFindFileData& d) { if (!g_files[h.Index]) return false; wcscpy(d.FileName, g_files[h.Index]); return true; }
 static bool FindFirstFile(const CWideString& pat, CFindFileHandle& h, CFindFileData& d) { g_pattern = pat.S; h.Index = 0; return Fill(h, d); }
 static bool FindNextFile(const CWideString&, CFindFileHandle& h, CFindFileData& d) { ++h.Index; return Fill(h, d); }
-struct CDateAndTime { long Fields[7]; };
+class CDateAndTime { public: long Fields[7]; };
 static CDateAndTime GetFileModifiedTime(const CWideString& path) { CDateAndTime t; memset(&t, 0, sizeof t); t.Fields[0] = (long)path.S.size(); return t; }
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWideString ProfileName;
     CWideString GetPathNameFromFileName(const CWideString& f, bool) const { return CWideString((L"C:\\Profiles\\" + f.S).c_str()); }
     void LoadFileList(std::vector<CWideString>& names, std::vector<CDateAndTime>& times)

@@ -12,7 +12,7 @@
 // counted Data pointer -- a member object with its own inline constructor, so the shared `xor ebx,ebx` lands after the
 // vtable store -- zeroed from ebx), the vectors' inline constructors store three zeros (Effects through edi, reused
 // as `this` of the Resize); the def vector's size() is `(last - first) / 0x5c` (`push 5Ch ; pop ecx ; cdq ; idiv`).
-struct CPlayerGui;
+class CPlayerGui;
 
 struct CAbilityButtonEffectDef { unsigned char _body[0x5c]; };
 
@@ -23,7 +23,7 @@ struct CRetailEffectDefVector {                    // VC6 Dinkumware vector<0x5c
     long size() const { return m_pLast - m_pFirst; }
 };
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char          _pad[0x7fc];
     CRetailEffectDefVector AbilityButtonEffects;   // +0x7fc
 };
@@ -35,14 +35,14 @@ namespace N_0099a2d0 { struct CBase {                                     // vta
     CBase();                                       // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 struct CIVCountedPointer {                         // embedded member with an inline constructor: its zero store follows the
     CIVCountedPointeeBase* Object;                 // handle's vtable store
     __forceinline CIVCountedPointer() : Object(0) { }
 };
 
-struct CEnginePrimitiveHandle : CBase {            // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBase { public:            // vtable 0x0122F598
     CIVCountedPointer Data;                        // +4 (PDB: CIVCountedPointer<CEnginePersistentPrimitiveBase>)
     virtual void v00();
     __forceinline CEnginePrimitiveHandle() { }
@@ -65,13 +65,13 @@ struct CRetailEmitterVector {                      // VC6 Dinkumware vector<CInt
     void Resize(long count);                       // 0x00657037
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char _body[0x28 - 4];                 // +0x04 .. +0x28 (GUI pointers, Drawing, PrimitiveHandles)
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawAbilityButtons : CDrawBase {           // vtable 0x0125A6C8
+class CDrawAbilityButtons : public CDrawBase { public:           // vtable 0x0125A6C8
     virtual void v00();
     long                   Columns;                        // +0x28
     CEnginePrimitiveHandle BackgroundPrimitiveHandle;      // +0x2c

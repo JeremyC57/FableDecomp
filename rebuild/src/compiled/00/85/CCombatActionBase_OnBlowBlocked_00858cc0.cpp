@@ -9,7 +9,7 @@
 //          CThingCreatureBase::SetCurrentAction 0x006644F0, ~CCombatActionBase 0x0062E900; literal 0x012764F0.
 // Layout: the retail CCombatActionBase (PCreature +8, PTarget +0xa8, 0x114 bytes); the creature's state byte +0x10;
 //          the combat type def's block response +0x98.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -17,7 +17,7 @@ struct CInterfaceMap {
     SEntry* end;
     SEntry* LowerBound(const long* type) const;  // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_state;                       // +0x10
     unsigned char _pad11[0x20 - 0x11];
@@ -37,14 +37,14 @@ struct CThing {
         return false;
     }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();             // 0x006A1440
 };
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     unsigned char _pad[0x98];
     long          BlockedResponse;               // +0x98
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                              // 0x0099EAE0
@@ -54,7 +54,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                             // +0x04
     CThing* GetPItem() const;                    // 0x00A01B50
 };
-struct CSoundPair { long FirstSound, LastSound; };
+class CSoundPair { public: long FirstSound, LastSound; };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
@@ -63,8 +63,8 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CThingCreatureBase;
-struct CCombatActionBase {
+class CThingCreatureBase;
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();                 // slot 4 (+0x10)
     unsigned char           _pad04[4];
@@ -76,10 +76,10 @@ struct CCombatActionBase {
     void CreatureOnBlowBlocked(bool flag);       // 0x006927F0 (CCreatureActionBase::OnBlowBlocked)
     void OnBlowBlocked(bool flag);
 };
-struct CCreatureAction_GeneralInterruptedAttack : CCombatActionBase {   // vtable 0x01277A14
+class CCreatureAction_GeneralInterruptedAttack : public CCombatActionBase { public:   // vtable 0x01277A14
     CCreatureAction_GeneralInterruptedAttack(CThingCreatureBase* owner, CThing* target, CCharString animName);   // 0x0087CF90
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CCombatTypeDef* GetCombatTypeDef();          // 0x00666D10
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };

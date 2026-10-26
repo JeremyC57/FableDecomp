@@ -9,7 +9,7 @@
 // Shape: a user (empty) inline virtual destructor stores the vtable (scheduled after the member's `lea`);
 // the intelligent pointer's generated destructor calls the base destructor directly; then the out-of-line
 // base destructor; a `new` factory pulls the `??_G` into the TU.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<C
     virtual void v00();
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 namespace NCameraModes {
 

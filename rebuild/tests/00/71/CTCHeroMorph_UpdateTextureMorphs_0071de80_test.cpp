@@ -17,7 +17,7 @@ struct CTCTextureMorphs {
     void AddMorph(int, int name, float s) { Names.push_back(name); Strengths.push_back(s); }
 };
 static const float g_fEpsilon = 1e-4f;
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     CTextureMapSet Maps; CTCTextureMorphs* Textures; float Strengths[0x13]; int Particles; int Kills;
     float GetMorphStrength(int type) { return Strengths[type]; }
     void KillParticles() { ++Kills; }

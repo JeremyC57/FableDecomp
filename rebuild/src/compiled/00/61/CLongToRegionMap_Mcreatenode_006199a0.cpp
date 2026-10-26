@@ -8,7 +8,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CRegion {                                            // 0x58 bytes
+class CRegion { public:                                            // 0x58 bytes
     unsigned char _data[0x58];
     CRegion(const CRegion& other);                          // 0x0051A900
 };

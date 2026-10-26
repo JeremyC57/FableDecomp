@@ -42,7 +42,7 @@ public:
 };
 static bool Eq(const CCharString& s, const char* t) { return strcmp(s.c_str(), t) == 0; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;

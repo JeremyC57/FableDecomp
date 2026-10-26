@@ -8,23 +8,23 @@
 // frame), each component is `XAxis * x + YAxis * y + ZAxis * z + Position` read straight from the sphere local
 // (a reference to its centre reorders the products) into a NAMED result local, and the result goes out through
 // the copy constructor (the sums stay on the x87 stack: `fxch st(2)` + three fstp). VC7.1 emits the z product first.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
-struct C3DBoundingSphere {
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
+class C3DBoundingSphere { public:
     C3DVector Centre;
     float     Radius;
     C3DBoundingSphere(const C3DBoundingSphere& o) : Centre(o.Centre), Radius(o.Radius) { }
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     unsigned char     _pad00[0x28];
     C3DBoundingSphere BoundingSphere;                    // +0x28
 };
 
-struct C3DMeshObject {
+class C3DMeshObject { public:
     virtual void v00();
     C3DMeshInfo*  MeshInfo;                              // +0x04
     void*         Mesh_Data;                             // +0x08 CCountedPointer<const C3DMeshStats>

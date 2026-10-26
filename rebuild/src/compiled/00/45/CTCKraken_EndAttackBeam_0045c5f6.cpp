@@ -13,7 +13,7 @@ extern void* Sub_vtbl_1230ba0;
 // helper at 0x9fc550, __fastcall on the subobject (ecx = sub)
 void __fastcall helper_9fc550(Sub* sub);
 
-struct CTCKraken {
+class CTCKraken { public:
     char pad[0x70];
     Sub sub;   // at +0x70
 

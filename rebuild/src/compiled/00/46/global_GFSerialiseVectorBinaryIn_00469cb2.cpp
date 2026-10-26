@@ -39,8 +39,8 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
-struct CTextureReplacementDef {
-    struct CEntry {
+class CTextureReplacementDef { public:
+    class CEntry { public:
         long OriginalTexture;                               // +0x00
         long NewTexture;                                    // +0x04
         CEntry() { }

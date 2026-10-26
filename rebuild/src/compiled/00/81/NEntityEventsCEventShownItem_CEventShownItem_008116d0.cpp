@@ -10,7 +10,7 @@
 //   GetInterface (bit test, key temporary in the `push ecx` frame word, `it == end || 0x1a < it->type` falls back to end, result
 //   used unchecked); members are destroyed in reverse order and the inlined CEventBase destructor stores its vtable last. A
 //   non-virtual destructor in the polymorphic class keeps the `??_G` out of the TU.
-struct CTCBase;
+class CTCBase;
 
 struct CTCShowableItem {                         // the type-0x1a thing component
     void OnShowEnded();                          // 0x005D8E50
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);        // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];              // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                  // +0x44
@@ -61,7 +61,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 namespace NEntityEvents {
-struct CEventBase {                              // vtable 0x0124F2C4
+class CEventBase { public:                              // vtable 0x0124F2C4
     virtual void v00();
     unsigned long m_index;                       // +0x04
     ~CEventBase() {}

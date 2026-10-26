@@ -10,14 +10,14 @@
 // `inc dword ptr [eax]` on the block's reference count.
 // Layout: PMode (CCountedPointer<CModeSitBase>) at +0xa8/+0xac; the PDB header (CCreatureAction_SitDown.h, 0xbc bytes) sits 0x0c high
 // against retail's 0xa8-byte CCreatureActionBase, so `this` is modelled locally.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -52,18 +52,18 @@ struct CCountedPointer_CModeBase {          // {object, count block}
     }
     ~CCountedPointer_CModeBase();           // the callee destroys its by-value parameter
 };
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     bool AddMode(CCountedPointer_CModeBase mode);   // 0x0073ACC0
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
-struct CCreatureAction_SitDown : CCreatureActionBase {
+class CCreatureAction_SitDown : public CCreatureActionBase { public:
     CCountedPointer_CModeBase PMode;        // +0xa8 CCountedPointer<CModeSitBase>
     virtual void PerformAction();
 };

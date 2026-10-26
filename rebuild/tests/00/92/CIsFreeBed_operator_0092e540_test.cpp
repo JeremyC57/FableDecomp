@@ -3,7 +3,7 @@
 #define __fastcall
 #define __forceinline inline
 #endif
-struct CTCBase { int m_dummy; };
+class CTCBase { public: int m_dummy; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_stateFlags;
     unsigned char m_thingType;
     unsigned long m_presentBits[9];
@@ -80,7 +80,7 @@ struct CTCUserActionPointBase : CTCBase {
     bool IsActionPointFree() { return m_free; }
     long GetNumberOfActionPointsInUse() { return m_inUse; }
 };
-struct CTCBed : CTCBase {
+class CTCBed : public CTCBase { public:
     bool m_taken;
 };
 class CThingFilter_BedOccupant {                  // test stand-in: a thing whose state-flag bit 0 is set is occupied

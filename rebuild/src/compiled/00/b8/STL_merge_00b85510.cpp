@@ -11,7 +11,7 @@
 // (VC7.1 folds source and destination into one `[ecx+eax]` walk). The SubPrimitive word is copied through ebx after
 // the branch join.
 // Label: catalogued as Dinkumware `_Merge<CSortElement*, CSortElement*, CSortElement*>`.
-struct CEngineSubPrimitiveBase;
+class CEngineSubPrimitiveBase;
 
 struct CSortElement {                     // CEngineSubPrimitiveRenderer::CSortElement (PDB, 8 bytes)
     unsigned long SortValue;              // +0x00

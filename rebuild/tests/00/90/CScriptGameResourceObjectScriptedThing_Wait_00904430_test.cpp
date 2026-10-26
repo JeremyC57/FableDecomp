@@ -1,7 +1,7 @@
 // Behaviour model of CScriptGameResourceObjectScriptedThing::Wait @ 0x00904430 (copy of the source logic, stand-in callees).
 #include <cstdio>
 #include <new>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
@@ -27,13 +27,13 @@ struct CThing_Retail {
     }
 };
 struct CIntelligentPointer_Retail { CThing_Retail* m_pItem; CThing_Retail* GetPItem() { return m_pItem; } };
-struct CScriptThing {
+class CScriptThing { public:
     CThing_Retail* thing; bool alive;
     CThing_Retail* GetPThing() const { return thing; }
     bool IsAlive() const { return alive; }
 };
 struct CActionBase { virtual ~CActionBase() {} };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     CActionBase* actions[8]; int n;
     void AddAction(CActionBase* a) { actions[n++] = a; }
 };
@@ -42,7 +42,7 @@ struct CActionWait : CActionBase {
     void* PTCScript; bool Activated, Terminated; long NoFramesToWait, UpdateCounter;
     CActionWait(long frames) : PTCScript(0), Activated(false), Terminated(false), NoFramesToWait(frames), UpdateCounter(0) {}
 };
-struct CScriptGameResourceObjectScriptedThing {
+class CScriptGameResourceObjectScriptedThing { public:
     CIntelligentPointer_Retail PThing;
     void Wait(float seconds)
     {

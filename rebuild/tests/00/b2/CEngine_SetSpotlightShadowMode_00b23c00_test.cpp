@@ -8,8 +8,8 @@ struct CGlobalState
 
 CGlobalState* g_engineGlobal;
 
-struct CEngine
-{
+class CEngine
+{ public:
     void SetSpotlightShadowMode(bool enable);
 };
 

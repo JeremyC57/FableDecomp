@@ -14,30 +14,30 @@
 // AddAction `lea` stays in eax instead of rotating eax/ecx/edx); edi is only saved for the inline CombatIdle.
 // Layout: local model (engine/CCombatSequence_NonInterruptableBoxStrafe.h is a flattened base blob);
 // CCombatSequenceBase owner +0x1c / target +0x20 as the landed family.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CSoundPair { long first; long last; CSoundPair() : first(0), last(0) { } };
+class CSoundPair { public: long first; long last; CSoundPair() : first(0), last(0) { } };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     unsigned char nativeFields[0xa4];      // native action base is 0xa8 bytes
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();
     unsigned char nativeCombatFields[0x6c]; // retail combat action base is 0x114 bytes
     CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds); // 0x00857F30
 };
-struct CCreatureAction_StrafeBackward : CCombatActionBase {   // vtable 0x0127FDCC
+class CCreatureAction_StrafeBackward : public CCombatActionBase { public:   // vtable 0x0127FDCC
     CCreatureAction_StrafeBackward(CThingCreatureBase& owner, CThing& target);   // 0x008BFD60
 };
-struct CCreatureAction_DiagonalStrafeBR : CCombatActionBase {   // vtable 0x0127FB3C
+class CCreatureAction_DiagonalStrafeBR : public CCombatActionBase { public:   // vtable 0x0127FB3C
     CCreatureAction_DiagonalStrafeBR(CThingCreatureBase& owner, CThing& target);  // 0x008BFCA0
 };
-struct CCreatureAction_DiagonalStrafeBL : CCombatActionBase {   // vtable 0x0127F9F4
+class CCreatureAction_DiagonalStrafeBL : public CCombatActionBase { public:   // vtable 0x0127F9F4
     CCreatureAction_DiagonalStrafeBL(CThingCreatureBase& owner, CThing& target);  // 0x008BFC40
 };
-struct CCreatureAction_CombatIdle : CCombatActionBase {         // vtable 0x012632B4, 0x114 bytes
+class CCreatureAction_CombatIdle : public CCombatActionBase { public:         // vtable 0x012632B4, 0x114 bytes
     virtual ~CCreatureAction_CombatIdle();
     CCreatureAction_CombatIdle(CThingCreatureBase& owner, CThing& target)
         : CCombatActionBase(owner, target, 50, CSoundPair()) { }
@@ -66,7 +66,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     void* nativeVptr;
     unsigned char nativePrefix[0x18];
     CThingCreatureBase* Creature;           // +0x1c

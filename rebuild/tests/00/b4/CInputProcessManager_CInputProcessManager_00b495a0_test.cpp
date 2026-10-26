@@ -1,6 +1,6 @@
 
 #include <cstdio>
-struct CInputProcessManager { void* vtbl; };
+class CInputProcessManager { public: void* vtbl; };
 static int g_helper=0, g_base=0;
 int helper(CInputProcessManager* s){ g_helper++; return 0; }
 void basedtor(CInputProcessManager* s){ g_base++; }

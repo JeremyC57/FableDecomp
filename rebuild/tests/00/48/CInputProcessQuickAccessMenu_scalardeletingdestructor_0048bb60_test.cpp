@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessQuickAccessMenu {
+class CInputProcessQuickAccessMenu { public:
     void* vftable;
     int destroyed;
 };

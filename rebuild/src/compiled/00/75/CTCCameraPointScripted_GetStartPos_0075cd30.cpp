@@ -12,7 +12,7 @@
 // Shape: the sum is a 12-byte frame temporary built by an inline free operator+ (three-float constructor); the parent thing
 //   is reached through an inline GetParentThing() accessor -- with the plain member VC7.1 loads the position's X first
 //   (`fld [eax] ; fadd [esi+N]`), through the accessor the member first as retail.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -25,9 +25,9 @@ inline C3DVector operator+(const C3DVector& a, const C3DVector& b)
     return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
 }
 
-struct CRightHandedSet;
+class CRightHandedSet;
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
 

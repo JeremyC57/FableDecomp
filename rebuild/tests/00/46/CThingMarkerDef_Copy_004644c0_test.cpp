@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for CThingMarkerDef::Copy (0x004644c0): base copy + Graphic + TriggerType + Properties.
-struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
-struct CThingBaseDef {
+class CEngineGraphic { public: unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CThingBaseDef { public:
     long m_base;
     void CopyBase(const CThingBaseDef* src) { m_base = src->m_base; }
 };
-struct CThingMarkerDef : CThingBaseDef {
+class CThingMarkerDef : public CThingBaseDef { public:
     CEngineGraphic Graphic; long TriggerType; unsigned long Properties; long m_untouched;
     void Copy(const CThingBaseDef* src)
     {

@@ -5,7 +5,7 @@
 static int g_limboCalls = 0;
 static bool g_limboArg = false;
 
-struct CThing {
+class CThing { public:
     unsigned char m_thingFlags;
     void SetInLimbo(bool inLimbo) { ++g_limboCalls; g_limboArg = inLimbo; }
 };
@@ -15,7 +15,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
 };
 
-struct CTCSummonSpell {
+class CTCSummonSpell { public:
     bool                    JustReleased;
     CBaseIntelligentPointer Minion;
     bool                    CutSceneCancelled;

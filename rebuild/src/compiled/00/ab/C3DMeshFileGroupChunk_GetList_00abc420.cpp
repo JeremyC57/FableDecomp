@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 // C3DMeshFileGroupChunk::GetList @ 0x00abc420
 struct Vec32 { void *m_begin; void *m_end; };
-struct C3DMeshFileGroupChunk { char pad[0x10]; Vec32 v; void *GetList(); };
+class C3DMeshFileGroupChunk { public: char pad[0x10]; Vec32 v; void *GetList(); };
 void *C3DMeshFileGroupChunk::GetList()
 {
     Vec32 *pv = &v;

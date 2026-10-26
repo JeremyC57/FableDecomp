@@ -12,7 +12,7 @@
 // `size() == 1` compiles to `(finish - start) & ~3 == 4`; the point is the implicit 12-byte assignment.
 // Shape: CreateShape's by-value result is built straight in AddNewShape's argument area (`sub esp,8 ; mov ecx,esp`);
 // the erase result's store into SelectedShape is scheduled after the pushes.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 struct CPointVector {                               // STLport vector<C3DVector>
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;
@@ -20,7 +20,7 @@ struct CPointVector {                               // STLport vector<C3DVector>
     ~CPointVector() { if (_M_start) free(_M_start); }
 };
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00();
     virtual long GetShapeType() const;              // slot 1 (+0x04)
     void* Owner;                                    // +0x04
@@ -32,7 +32,7 @@ struct CShape {
     } SelectedPoints;                               // +0x14
 };
 }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CShapePointer {                              // CCountedPointer<NShape::CShape>
     NShape::CShape* Data;
     CCPPointerInfo* Info;
@@ -47,7 +47,7 @@ struct CShapeVector {                               // STLport vector<CCountedPo
     CShapePointer* end() const { return _M_finish; }
     CShapePointer* erase(CShapePointer* pos);       // 0x00764D10
 };
-struct CTCShapeManager {
+class CTCShapeManager { public:
     virtual void v00();
     void*          ParentThing;                     // +0x04 (CTCBase)
     bool           ToBeRemoved;                     // +0x08

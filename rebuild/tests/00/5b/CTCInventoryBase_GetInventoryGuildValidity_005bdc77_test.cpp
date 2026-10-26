@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThing { long tc; };
+class CThing { public: long tc; };
 static CThing g_things[2]; static int g_n = 0;
-struct CThingFilter_HasTC { long m_tc; CThingFilter_HasTC(long tc) : m_tc(tc) {} };
-struct CThingSearchTools {
+class CThingFilter_HasTC { public: long m_tc; CThingFilter_HasTC(long tc) : m_tc(tc) {} };
+class CThingSearchTools { public:
     bool GetPFirstLeafThing(const CThingFilter_HasTC& filter, CThing** out)
     {
         for (int i = 0; i < g_n; ++i) if (g_things[i].tc == filter.m_tc) { *out = &g_things[i]; return true; }

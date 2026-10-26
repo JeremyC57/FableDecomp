@@ -11,11 +11,11 @@
 // Shape: the search result position is a block-scoped local (the pair temporary reuses its word); the empty iterator
 //   tags land in the dead `to` argument slot; STLport push_back inline with the out-of-line overflow path.
 inline void* operator new(unsigned int, void* where) { return where; }
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 #pragma pack(push, 1)
 struct SRoutePoint {                               // std::pair<C2DVector, unsigned char> (9 bytes)
     C2DVector     first;
@@ -103,7 +103,7 @@ struct CWayPointList {                             // STLport list<CNavWayPoint>
 };
 enum ENavigatorReturn { NAV_RETURN_0, NAV_RETURN_FAILED };
 
-struct CNavigatorAStar {
+class CNavigatorAStar { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

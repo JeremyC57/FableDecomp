@@ -1,34 +1,34 @@
 // Behaviour test for 0x00773C90 CTCShop::SetAlarm (copy of the source logic over spy callees).
 #include <cstdio>
 #include <cstring>
-struct CTCBase { long tag; };
-struct CCharString {
+class CTCBase { public: long tag; };
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long = -1) : text(t) {}
 };
 static int g_lookups = 0;
-struct CASoundBank {
+class CASoundBank { public:
     long index;
     long GetSoundIndexFromSymbol(const CCharString& symbol) { ++g_lookups; return std::strcmp(symbol.text, "SND_SHOPALARM_01") == 0 ? index : 0; }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     CASoundBank* PSampleBank;
     CASoundBank* GetSampleBank() const { return PSampleBank; }
 };
 static CASoundBank g_bank = { 42 };
 static CMainGameComponent g_mgc = { &g_bank };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
-struct CSoundPair {
+class CSoundPair { public:
     long First, Second;
     CSoundPair(long first, long second) : First(first), Second(second) {}
 };
-struct CSoundInit {
+class CSoundInit { public:
     float Volume, Pitch; long Delay, LoopCount, Priority, Flags, Pan, Id;
     CSoundInit() : Volume(1.0f), Pitch(1.0f), Delay(0), LoopCount(1), Priority(1), Flags(0), Pan(0), Id(-1) {}
 };
 static long g_playedFirst = 0, g_playedSecond = 0, g_playLoop = 0, g_playFlags = 0; static bool g_playAttach = false;
 static unsigned long g_stopped = 0; static int g_stopAll = 0;
-struct CTCSoundPlayer : CTCBase {
+class CTCSoundPlayer : public CTCBase { public:
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool attach, long, long)
     { g_playedFirst = sound.First; g_playedSecond = sound.Second; g_playLoop = init.LoopCount; g_playFlags = init.Flags; g_playAttach = attach; return 0x777; }
     void StopSample_0066ad90(unsigned long sample) { g_stopped = sample; }
@@ -52,7 +52,7 @@ public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CTCShop {
+class CTCShop { public:
     CThing*       ParentThing;
     unsigned long Alarm;
     void SetAlarm(bool on);

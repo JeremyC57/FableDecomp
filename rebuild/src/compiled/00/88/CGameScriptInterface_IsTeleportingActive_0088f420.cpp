@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld { char pad[0xd5]; bool active; };
+class CWorld { public: char pad[0xd5]; bool active; };
 
 bool __fastcall CGameScriptInterface_IsTeleportingActive(const CGameScriptInterface* self)
 {

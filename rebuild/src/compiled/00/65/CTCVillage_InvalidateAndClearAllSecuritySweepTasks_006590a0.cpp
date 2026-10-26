@@ -16,7 +16,7 @@ struct List {
     ListNode* head;   // +0  -> sentinel
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     char pad[0x5c];
     List list;        // +0x5c
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-struct TreeNode { char pad0[8]; TreeNode* next; TreeNode* child; };
+class TreeNode { public: char pad0[8]; TreeNode* next; TreeNode* child; };
 static int g_freed = 0;
 extern "C" void __cdecl tree_free(void* p){ g_freed++; std::free(p); }
 struct LTextTreeWalkThrough {

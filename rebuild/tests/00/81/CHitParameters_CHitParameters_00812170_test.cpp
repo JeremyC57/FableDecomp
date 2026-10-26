@@ -66,7 +66,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -89,7 +89,7 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -112,7 +112,7 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 
 #pragma pack(push, 1)
-struct CMaterialDef {
+class CMaterialDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -164,7 +164,7 @@ FABLE_STATIC_ASSERT(offsetof(CMaterialDef, BlendedSwordHitEffects) == 0xa4);
 
 // No CHitParameters/C3DVector/intelligent-pointer class headers exist. Native map/vector sizes12 vs donor16 shift the tail by8.
 #pragma pack(push,1)
-struct C3DVector {C3DVector();C3DVector(const C3DVector&o):X(o.X),Y(o.Y),Z(o.Z){} float X,Y,Z;};
+class C3DVector { public:C3DVector();C3DVector(const C3DVector&o):X(o.X),Y(o.Y),Z(o.Z){} float X,Y,Z;};
 #pragma pack(pop)
 struct DamageMap {DamageMap();DamageMap(const DamageMap&);~DamageMap();void*Head;unsigned long Size;unsigned long Allocator;}; //004F97B3 copies native tree,12 bytes
 struct AugmentationVector {AugmentationVector();AugmentationVector(const AugmentationVector&);~AugmentationVector();long*First,*Last,*End;}; //00811D40, enum vector copy12 bytes
@@ -174,7 +174,7 @@ struct ThingPointer:CBaseIntelligentPointer {ThingPointer();ThingPointer(const T
 // CDefPointer<CMaterialDef const> copy PDB01D83F90; unsigned inherited refcount+4.
 enum ENullDef {NullDef=0};
 struct MaterialPointer {MaterialPointer(ENullDef);~MaterialPointer();MaterialPointer(const MaterialPointer&o):P(o.P){if(P)++reinterpret_cast<CIVCountedPointeeBase*>(const_cast<CMaterialDef*>(P))->IVRefCount;}const CMaterialDef*P;};
-struct CHitParameters {
+class CHitParameters { public:
  CHitParameters();CHitParameters(const CHitParameters&);
  bool Localised,Directional;C3DVector Position,Direction;
  bool KnockDown,Decapitate,Blockable,Flourish,EpicSpell,BlockCounter,PlayHitResponse,PlayHitResponseOverrideSet,MoveBack,CreateParticleEffectOnHit,CreateDustParticleEffectOnHit,GuaranteeHit,Blocked,HitNegated,CauseRecoil;

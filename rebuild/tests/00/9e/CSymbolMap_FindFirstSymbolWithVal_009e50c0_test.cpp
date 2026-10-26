@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pChars; unsigned long m_length; };
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
 static long Compare(const char* a, const char* b) { return std::strcmp(a, b); }
-struct CCharString { CCharStringData* m_pStringData; };
+class CCharString { public: CCharStringData* m_pStringData; };
 static bool SameText(CCharStringData* a, CCharStringData* b)
 {
     if (a == b) return true;
@@ -13,7 +13,7 @@ static bool SameText(CCharStringData* a, CCharStringData* b)
 struct CSymbolInfo { CCharString GroupName; CCharString EntryName; long Val; };
 struct SSymbolPair { CCharString first; CSymbolInfo second; };
 struct CSymbolVectorMap { SSymbolPair* m_pFirst; SSymbolPair* m_pLast; SSymbolPair* m_pEnd; };
-struct CSymbolMap {
+class CSymbolMap { public:
     void* _padding_; CSymbolVectorMap SLONGMap;
     const CSymbolInfo* FindFirstSymbolWithVal(const CCharString& group, long value) const
     {

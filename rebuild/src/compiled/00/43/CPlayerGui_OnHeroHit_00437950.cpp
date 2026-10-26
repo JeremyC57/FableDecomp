@@ -12,8 +12,8 @@ public:
     void OnHeroHit();                                    // 0x0064DA5C
 };
 }
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }

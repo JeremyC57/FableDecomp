@@ -12,11 +12,11 @@
 // Size-optimised TU (`#pragma optimize("s", on)`): the pass-through `push dword ptr [esp+10h]` and the vtable constant
 // cached in ebx.
 #pragma optimize("s", on)
-struct CThing;
-struct CLightningDef;
+class CThing;
+class CLightningDef;
 struct CLightningBranchPointer;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
     CThing* m_pThing;                              // +0x04
@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                 // +0x04
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     virtual void v00();
 };
@@ -47,7 +47,7 @@ struct CLightningBranchVector {                    // STLport vector<CCountedPoi
     CLightningBranchVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CTCLightningNode : CTCBase {
+class CTCLightningNode : public CTCBase { public:
     CIntelligentPointer<CThing>       PParent;            // +0x0c
     CIntelligentPointer<const CThing> PSourceOfFaction;   // +0x14
     CIntelligentPointer<CThing>       PSourceOfHit;       // +0x1c

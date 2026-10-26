@@ -6,7 +6,7 @@
 // (IVRefCount +4, slot 1 on zero) then `Object = p` with no add-ref. The name Attach is behavioural (no Ego_r.pdb match).
 // Opt: size TU (`and dword ptr [esi],0`).
 #pragma optimize("s", on)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();
     virtual void DeleteThis();                           // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04

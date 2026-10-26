@@ -1,6 +1,6 @@
 // Behaviour test for 0x00988290 CShaderRenderManager::ResetWorldTransform.
 #include <cstdio>
-struct CMatrix4x4 { float m[4][4]; };
+class CMatrix4x4 { public: float m[4][4]; };
 struct Manager {
     bool WorldMatrixIsIdentity; CMatrix4x4 WorldMatrix; unsigned long UpdateFlags;
     void ResetWorldTransform()

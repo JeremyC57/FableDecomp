@@ -1,8 +1,8 @@
 // Test for 004de7fd CTCParticleAttacher::CTCParticleAttacher: CTCBase(parent), empty def pointer and particle vector.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_baseCalls = 0;
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing; bool ToBeRemoved;
     CTCBase(CThing* parent) : ParentThing(parent), ToBeRemoved(false) { ++g_baseCalls; }
     virtual ~CTCBase() {}
@@ -10,7 +10,7 @@ struct CTCBase {
 };
 struct CDefPointer { void* Object; CDefPointer() : Object(0) {} };
 struct CThingPointerVector { void* First; void* Last; void* End; CThingPointerVector() : First(0), Last(0), End(0) {} };
-struct CTCParticleAttacher : CTCBase {
+class CTCParticleAttacher : public CTCBase { public:
     CDefPointer PDef;
     CThingPointerVector ParticleList;
     CTCParticleAttacher(CThing* parent) : CTCBase(parent) {}

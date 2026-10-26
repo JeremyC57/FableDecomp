@@ -2,11 +2,11 @@
 
 // Model of CTCHeroExperience::GetCostToUpgradeTrainableStat @ 0x006D67B0: the next level's cost, or -1 at the top level
 // (the level is compared unsigned against size - 1).
-struct CAbilityTrackLevelDef { long ExperienceCost; long AbilityUnlocked; long Description; };
-struct CAbilityTrackDef { long ExperienceStat; CAbilityTrackLevelDef* first; CAbilityTrackLevelDef* last;
+class CAbilityTrackLevelDef { public: long ExperienceCost; long AbilityUnlocked; long Description; };
+class CAbilityTrackDef { public: long ExperienceStat; CAbilityTrackLevelDef* first; CAbilityTrackLevelDef* last;
     unsigned long size() const { return (unsigned long)(last - first); } };
-struct CHeroStatsDef { CAbilityTrackDef* StatLevels; };
-struct CTCHeroExperience {
+class CHeroStatsDef { public: CAbilityTrackDef* StatLevels; };
+class CTCHeroExperience { public:
     long TrainableStatLevels[10]; CHeroStatsDef* PHeroStatsDef;
     long GetCostToUpgradeTrainableStat(long stat) const
     {

@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing { bool m_force; int calls; void SetForceFrameUpdate(bool f) { m_force = f; ++calls; } };
-struct CTCBase { CThing* m_pThing; long m_baseWord; CTCBase(CThing* o) : m_pThing(o), m_baseWord(0) { } virtual ~CTCBase() { } };
-struct CTCLifeTimer : CTCBase {
+class CThing { public: bool m_force; int calls; void SetForceFrameUpdate(bool f) { m_force = f; ++calls; } };
+class CTCBase { public: CThing* m_pThing; long m_baseWord; CTCBase(CThing* o) : m_pThing(o), m_baseWord(0) { } virtual ~CTCBase() { } };
+class CTCLifeTimer : public CTCBase { public:
     long FramesLeft; bool FadeOutBeforeKill; bool PerformOnDie;
     CTCLifeTimer(CThing* owner) : CTCBase(owner), FramesLeft(-1), FadeOutBeforeKill(false), PerformOnDie(true) { m_pThing->SetForceFrameUpdate(true); }
 };

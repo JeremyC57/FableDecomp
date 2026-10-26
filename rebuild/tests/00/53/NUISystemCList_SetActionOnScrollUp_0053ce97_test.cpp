@@ -6,7 +6,7 @@ static void Log(const char* s) { strcat(g_log, s); strcat(g_log, " "); }
 static void LogN(const char* s, long n) { char b[64]; sprintf(b, "%s%lx", s, n); Log(b); }
 static void Reset() { g_log[0] = 0; }
 static bool Is(const char* want) { return strcmp(g_log, want) == 0; }
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {} };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {} };
 struct CActionPointer { void* Data; void* Info; int Shares;
  void ShareData(void* d, void* i) { Data = d; Info = i; ++Shares; }
  void operator=(const CActionPointer& p) { ShareData(p.Data, p.Info); } };

@@ -14,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -44,7 +44,7 @@ struct CThing {
 
 enum ETutorialCategory { TUTORIAL_CATEGORY_NULL, TUTORIAL_CATEGORY_QUICK_ACCESS = 0x17 };
 
-struct CTCHero {                                     // interface type 0x29
+class CTCHero { public:                                     // interface type 0x29
     bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0
 };
 
@@ -59,7 +59,7 @@ struct CLongVector {                                 // std::vector<long> {first
     long& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x140];

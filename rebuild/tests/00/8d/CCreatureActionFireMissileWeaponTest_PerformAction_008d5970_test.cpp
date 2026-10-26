@@ -64,7 +64,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CMeleeCombatAbilityDef {
+class CMeleeCombatAbilityDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -134,11 +134,11 @@ FABLE_STATIC_ASSERT(offsetof(CMeleeCombatAbilityDef, ComboMultiplierUpperBound) 
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -232,14 +232,14 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -311,15 +311,15 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -467,7 +467,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -485,8 +485,8 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -494,8 +494,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -579,9 +579,9 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct CThing;struct CThingCreatureBase;struct CCreatureActionBase;struct CTCWeaponTrail;
-struct C3DVector {float x,y,z;};
-struct CSoundPair {long first,last;CSoundPair():first(0),last(0){}};
+class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
+class C3DVector { public:float x,y,z;};
+class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer();
@@ -590,7 +590,7 @@ struct CBaseIntelligentPointer {
  CBaseObject* GetPItem()const;
  void SetPItem(CBaseObject*);
 };
-template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
+template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { public:
  virtual ~CIntelligentPointer();
  CIntelligentPointer():CBaseIntelligentPointer(){}
  explicit CIntelligentPointer(T* p):CBaseIntelligentPointer(){SetPItem(p);}
@@ -601,14 +601,14 @@ template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
 };
 // Retail DeadFlags91 vs donor ThingStateA1: actual PDB containers add16 bytes before this flag.
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
-struct CTCPhysicsBase;struct CDefLookup;
+class CTCPhysicsBase;struct CDefLookup;
 struct CInterfaceMap {
     struct Entry { long type; void* component; };
     Entry *Start,*Finish,*End;
     Entry* LowerBound(const long*); //40F020
     Entry* LowerBound(const long*)const; //4365B0
 };
-struct CThing:CBaseObject {
+class CThing:public CBaseObject { public:
     unsigned char BaseState[0x18];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
@@ -645,7 +645,7 @@ struct CThing:CBaseObject {
         return false;
     }
 };
-struct CThingCreatureBase:CThing {void MakeNoise(const CCharString&); /*00662110*/ long GetShotAccuracyPercentage()const; /*00663B10*/ CThing* GetPrimaryHeldThing()const; bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
+class CThingCreatureBase:public CThing { public:void MakeNoise(const CCharString&); /*00662110*/ long GetShotAccuracyPercentage()const; /*00663B10*/ CThing* GetPrimaryHeldThing()const; bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
 struct __declspec(novtable) CCreatureActionBase {
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
@@ -775,13 +775,13 @@ template<class T>struct DefPointer {
  T* operator->()const{return Object;}
 };
 
-struct CMeleeCombatAbilityDef:NativeCountedDef {}; // borrowed native lifetime view, no definition fields accessed
+class CMeleeCombatAbilityDef:public NativeCountedDef { public:}; // borrowed native lifetime view, no definition fields accessed
 
-struct CTCCarrying {CThing* GetThingInPrimarySlot();}; //006A1440
+class CTCCarrying { public:CThing* GetThingInPrimarySlot();}; //006A1440
 __forceinline CThing* CThingCreatureBase::GetPrimaryHeldThing()const {CThing* held=0;CTCCarrying* carrying;if(GetInterface(&carrying,70))held=carrying->GetThingInPrimarySlot();return held;}
-struct CRightHandedSet;
+class CRightHandedSet;
 CThing* __fastcall CreateShot(long,CThing*,CThing*,const CThing*,float,float,float,const DefPointer<CMeleeCombatAbilityDef>&,const C3DVector*,const CRightHandedSet*); //007C0AD0
-struct CCreatureAction_FireMissileTest:CCreatureActionBase {
+class CCreatureAction_FireMissileTest:public CCreatureActionBase { public:
     virtual ~CCreatureAction_FireMissileTest();
     virtual CCreatureActionBase* Clone()const;
     virtual void PerformAction();
@@ -892,8 +892,8 @@ void CBaseIntelligentPointer::SetPItem(CBaseObject* item){
 }
 template<class T>CIntelligentPointer<T>::~CIntelligentPointer(){}
 
-struct CAnimComponentMap;
-struct CAnimationEntry {long BankIndex;unsigned long AnimName,GroupName;CAnimComponentMap* Components;};
+class CAnimComponentMap;
+class CAnimationEntry { public:long BankIndex;unsigned long AnimName,GroupName;CAnimComponentMap* Components;};
 static CAnimationEntry entry={7,11,13,0};
 CCreatureActionBase::CCreatureActionBase(CThingCreatureBase* actor,float duration,float fraction,const CAnimationEntry& animation,const CSoundPair&,long,long){if(duration!=-1.0f||fraction!=0.5f||&animation!=&entry)wrong=true;PCreature.SetPItem(actor);}
 CCreatureActionBase::~CCreatureActionBase(){}

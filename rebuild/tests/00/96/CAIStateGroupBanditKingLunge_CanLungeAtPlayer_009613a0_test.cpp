@@ -3,10 +3,10 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
-struct CThing;
-struct CWorld;
-struct CThingAICreature;
+class CTCBase;
+class CThing;
+class CWorld;
+class CThingAICreature;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -28,7 +28,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -57,9 +57,9 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* PCreature; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* PCreature; };
 static CWorld* g_world = 0; static int g_getPWorld = 0;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {}
@@ -79,7 +79,7 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
     CWorld* GetPWorld() { ++g_getPWorld; return g_world; }
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
@@ -92,7 +92,7 @@ static void MakeThing(CThing& t, CInterfaceMap::SEntry* entries, long type, CTCB
     t.m_interfaces.first = entries; t.m_interfaces.last = entries + 2;
     t.m_presentBits[type >> 5] |= 1UL << (type & 31);
 }
-struct CWorld { int dummy; };
+class CWorld { public: int dummy; };
 template<class T> struct CRetailVector {
     T* first;
     T* last;
@@ -107,7 +107,7 @@ struct CTCBossDef {
     float LungeIntervalSeconds;
 };
 static long g_phase = 0, g_hitsThisPhase = 0;
-struct CTCBoss {
+class CTCBoss { public:
     unsigned char _pad[0x0c];
     CTCBossDef* Def;
     long GetBossPhase() const { return g_phase; }

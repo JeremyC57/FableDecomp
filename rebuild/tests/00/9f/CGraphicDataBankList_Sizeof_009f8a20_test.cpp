@@ -4,7 +4,7 @@
 
 static int gSizeofCalls = 0;
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     long m_size;
     long Sizeof() { ++gSizeofCalls; return m_size; }
 };

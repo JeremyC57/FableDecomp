@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
-struct CDefString {
+class CDefString { public:
     const char* m_text;
     bool operator!=(const char* text) const { return std::strcmp(m_text, text) != 0; }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_type;
     const char* m_defName;
     CDefString GetDefName() const { CDefString d; d.m_text = m_defName; return d; }

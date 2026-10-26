@@ -15,7 +15,7 @@
 //   at retail +0x114 (PDB +0x158).
 // Shape: the sound component is a named local (esi); the string is a named local in its own block so it shares the interface
 //   key's frame word; the handle is stored before the string's destructor.
-struct CCharString {
+class CCharString { public:
     void* PStringData;                          // +0 the shared string block
     ~CCharString();                             // 0x0099EAE0
 };
@@ -34,7 +34,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -52,11 +52,11 @@ struct CThing {
         return false;
     }
 };
-struct CSpecialAbilitiesLightningSpellDef {
+class CSpecialAbilitiesLightningSpellDef { public:
     unsigned char _pad00[0x114];
     long LoopingSound;                          // +0x114 CDefString id
 };
-struct CTCWillLightning {
+class CTCWillLightning { public:
     void*   __vftable;                          // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x20];

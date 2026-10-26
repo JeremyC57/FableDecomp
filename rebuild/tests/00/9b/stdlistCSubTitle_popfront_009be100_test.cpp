@@ -31,7 +31,7 @@ public:
     }
 };
 
-class CSubTitle {
+struct CSubTitle {
 public:
     CIVCountedPointer<const CTextEntry> TextEntry;
     CWideString FormattedText;

@@ -5,8 +5,8 @@
 #include <cmath>
 #define CHECK(c) do { if (!(c)) { std::printf("00b99670_TEST FAIL\n"); return 1; } } while (0)
 
-struct C4DVector { float X, Y, Z, W; };
-struct CShaderRenderManager {
+class C4DVector { public: float X, Y, Z, W; };
+class CShaderRenderManager { public:
     int userCalls; unsigned int idx[2]; float v[2][4]; int vsCalls; int regs[2]; const void* data[2]; unsigned int counts[2];
     void SetUserVertexShaderConstant(unsigned int i, float x, float y, float z, float w)
     { idx[userCalls] = i; v[userCalls][0] = x; v[userCalls][1] = y; v[userCalls][2] = z; v[userCalls][3] = w; ++userCalls; }

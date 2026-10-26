@@ -17,8 +17,8 @@
 //          retail PTarget +0x14 (CIntelligentPointer<CThing>, PDB `_pad`), TrapThings +0x1c, FrameLastRun +0x28,
 //          Jump_to_pos +0x2c. CCombatTypeDef +0x6c is a float range (PDB offsets are vector-shifted; descriptive name).
 #include <math.h>
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -27,14 +27,14 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     unsigned char _pad[0x6c];
     float PotionCombatRange;                    // +0x6c (descriptive)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -61,11 +61,11 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CTCBoss {                                // interface 173
+class CTCBoss { public:                                // interface 173
     long GetBossPhase();                        // 0x007AED10
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
@@ -81,12 +81,12 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return 0;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -38,13 +38,13 @@ struct CThing {
     }
 };
 enum EHeroTrainableStatType { STAT_STRENGTH = 0, STAT_SKILL = 1, STAT_WILL = 2 };
-struct CTCHeroExperience {                           // interface type 0x68
+class CTCHeroExperience { public:                           // interface type 0x68
     unsigned char _pad_0x00[0x14];
     long GeneralExperience;                          // +0x14
     long GetStatExperience(long stat);               // 0x006D6510
 };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     void*  __vftable;                                // +0x00
     CThing* ParentThing;                             // +0x04
     unsigned char _pad_0x08[0x258];

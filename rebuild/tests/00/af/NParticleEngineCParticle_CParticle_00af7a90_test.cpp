@@ -13,7 +13,7 @@ struct CBase {
 
 namespace NParticleEngine {
 
-struct CRandomAcceleration {
+class CRandomAcceleration { public:
     virtual ~CRandomAcceleration() { ++g_deletes; }
 };
 
@@ -39,7 +39,7 @@ struct CPrimitiveHandleArray {
     CPrimitiveHandleArray() : m_pData(0), m_size(0), m_capacity(0) {}
 };
 
-struct CParticle : CBase {
+class CParticle : public CBase { public:
     unsigned char                _state[0x7c];
     CRandomAccelerationScopedPtr RandomAcceleration;
     CLongArrayArray              PrimIDList;

@@ -6,7 +6,7 @@
 //   constructor; VC evaluates its four arguments right to left, so alpha (byte 3) is converted first, then blue (byte 0),
 //   green (byte 1), red (byte 2), and the four values leave the FPU stack R, G, B, A; each byte goes through `fild` of a
 //   dword temporary homed in the dead `y` argument slot, with the double constants (`fadd qword ; fmul qword`).
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) {}
 };

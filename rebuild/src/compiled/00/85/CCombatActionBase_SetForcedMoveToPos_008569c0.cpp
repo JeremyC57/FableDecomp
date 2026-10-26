@@ -8,7 +8,7 @@
 // Shape: the flag store is scheduled before GetPItem; the inline vector subtraction builds its 12-byte POD
 // result in the frame (x and y stored, z computed while the first two dwords are copied) and the member is
 // assigned by three register moves; `add esi,108h` forms the member address.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -33,7 +33,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08

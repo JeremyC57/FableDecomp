@@ -4,7 +4,7 @@
 
 static int g_base = 0, g_susp = 0; static bool g_suspArg = false; static void* g_suspMode = 0;
 struct CModeBase;
-struct CThing { unsigned char pad[0x10]; unsigned char type; void SetSuspendAnimation(bool s, CModeBase* m) { ++g_susp; g_suspArg = s; g_suspMode = m; } };
+class CThing { public: unsigned char pad[0x10]; unsigned char type; void SetSuspendAnimation(bool s, CModeBase* m) { ++g_susp; g_suspArg = s; g_suspMode = m; } };
 struct CModeBase { virtual ~CModeBase() { } CThing* thing; };
 struct CModeStandBase : CModeBase { void OnActivate() { ++g_base; } void OnDeactivate() { ++g_base; } };
 

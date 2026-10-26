@@ -6,11 +6,11 @@
 // @ 0x008FCEC0 with the five arguments forwarded.
 // Shape: the vtable load is hoisted above the `mov byte ptr [esi+38h],0` store (scheduling), then the five
 // argument re-loads/pushes. No engine header for this class; the layout is local (flag at +0x38 descriptive).
-struct CAIBrain;
-struct CThingAICreature;
-struct CCharString;
+class CAIBrain;
+class CThingAICreature;
+class CCharString;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long id, long priority, const CCharString& name);   // slot 1, 0x008FCEC0
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();

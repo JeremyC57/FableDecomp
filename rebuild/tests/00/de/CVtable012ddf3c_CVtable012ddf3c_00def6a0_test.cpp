@@ -14,7 +14,7 @@ struct CScriptThingRef {
     void* m_pCount;
     CScriptThingRef() : m_pObject(0), m_pCount(0) { }
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CScriptThingRef m_ref;
     virtual void v00() {}
     CScriptThing() { }

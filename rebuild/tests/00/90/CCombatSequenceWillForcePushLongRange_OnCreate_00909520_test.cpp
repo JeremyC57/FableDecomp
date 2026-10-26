@@ -2,12 +2,12 @@
 // owner/target, each held once by the queue after the local counted pointer is released.
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
 static int g_live = 0;
 struct CActionBase { virtual ~CActionBase() { --g_live; } const char* kind; CThingCreatureBase* owner; CThing* target; char anim[32]; CActionBase() { ++g_live; anim[0] = 0; } };
-struct CCreatureAction_PlayCombatAnimation : CActionBase { bool flag; CCreatureAction_PlayCombatAnimation(CThingCreatureBase* o, CThing* t, const char* s, bool f) { flag = f; init(o, t, s); } void init(CThingCreatureBase* o, CThing* t, const char* s) { kind = "CCreatureAction_PlayCombatAnimation"; owner = o; target = t; std::strcpy(anim, s); } };
-struct CCreatureAction_CastWillForceSpell : CActionBase { long level; bool flag; CCreatureAction_CastWillForceSpell(CThingCreatureBase* o, long l, bool f, const char* s) { kind = "CCreatureAction_CastWillForceSpell"; owner = o; target = 0; level = l; flag = f; std::strcpy(anim, s); } };
+class CCreatureAction_PlayCombatAnimation : public CActionBase { public: bool flag; CCreatureAction_PlayCombatAnimation(CThingCreatureBase* o, CThing* t, const char* s, bool f) { flag = f; init(o, t, s); } void init(CThingCreatureBase* o, CThing* t, const char* s) { kind = "CCreatureAction_PlayCombatAnimation"; owner = o; target = t; std::strcpy(anim, s); } };
+class CCreatureAction_CastWillForceSpell : public CActionBase { public: long level; bool flag; CCreatureAction_CastWillForceSpell(CThingCreatureBase* o, long l, bool f, const char* s) { kind = "CCreatureAction_CastWillForceSpell"; owner = o; target = 0; level = l; flag = f; std::strcpy(anim, s); } };
 struct SCountBlock { long references; void (*destroy)(void*); void* object; };
 static void DestroyAction(void* p) { delete static_cast<CActionBase*>(p); }
 struct CCountedPointer {

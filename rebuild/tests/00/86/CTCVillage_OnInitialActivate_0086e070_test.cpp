@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CTCVillage {
+class CTCVillage { public:
     void*        field_0;
     void*        ParentThing;
     char         pad8[4];

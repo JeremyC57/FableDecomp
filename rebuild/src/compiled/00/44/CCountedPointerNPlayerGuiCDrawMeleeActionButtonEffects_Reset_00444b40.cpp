@@ -16,7 +16,7 @@ namespace NPlayerGui {
 class CDrawMeleeActionButtonEffects;
 }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                       // +0
     void (__fastcall* DeleteFunc)(void* data);    // +4
     void* Data;                                   // +8

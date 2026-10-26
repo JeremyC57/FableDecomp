@@ -8,14 +8,14 @@
 // test ah,41h ; jne` is `threshold > Health` with the call result on the left; two separate exits
 // (`mov al,1` / the shared `xor al,al`) come from the `if (...) return true; return false;` form.
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad_0x00[0x6c];
     unsigned long ThingTypeFlags;                   // +0x6c
 };
 
-struct CThingPhysical : CThing
-{
+class CThingPhysical : public CThing
+{ public:
     unsigned char _pad_0x70[0x40];
     float         MaxHealth;                        // +0xb0
     float         Health;                           // +0xb4
@@ -24,8 +24,8 @@ struct CThingPhysical : CThing
 enum { THING_TYPE_PHYSICAL = 4 };
 
 #pragma pack(push, 1)
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     CThing*       ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

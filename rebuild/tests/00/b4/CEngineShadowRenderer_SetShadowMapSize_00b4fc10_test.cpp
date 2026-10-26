@@ -2,7 +2,7 @@
 #include <cstring>
 static const bool g_is32 = sizeof(void*) == 4 && sizeof(long) == 4;   // the layout checks hold for the 32-bit VC7.1 build
 static char g_seq[32] = "";
-struct CEngineShadowRenderer { unsigned char _pad[0x338]; long m_shadowMapWidth; long m_shadowMapHeight;
+class CEngineShadowRenderer { public: unsigned char _pad[0x338]; long m_shadowMapWidth; long m_shadowMapHeight;
     void OnReleaseDefaultPoolResources() { std::strcat(g_seq, "R"); } bool InitialiseTextures() { std::strcat(g_seq, "I"); return true; }
     void SetShadowMapSize(long width, long height) { m_shadowMapWidth = width; m_shadowMapHeight = height; OnReleaseDefaultPoolResources(); InitialiseTextures(); } };
 int main()

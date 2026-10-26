@@ -6,7 +6,7 @@
 #define __fastcall
 #endif
 class CThingBuilding { public: long HouseSize; };
-struct CIsHouseLargerThan {
+class CIsHouseLargerThan { public:
     bool operator()(const CThingBuilding* a, const CThingBuilding* b) const { return a->HouseSize > b->HouseSize; }
 };
 template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>

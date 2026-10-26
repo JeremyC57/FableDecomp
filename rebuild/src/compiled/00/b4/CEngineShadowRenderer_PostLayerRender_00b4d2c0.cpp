@@ -7,16 +7,16 @@
 #include "engine/CRenderStateManager.h"
 #include "engine/CTexture.h"
 #else
-struct CEngineShadowRenderer {unsigned char ShadowBufferRenderStateCaptureBlock[4];unsigned char ShadowBufferColourTexture[8];long RenderingTechnique[1];};
-struct CEngineCamera {};struct CRenderStateManager {};struct CTexture {};
+class CEngineShadowRenderer { public:unsigned char ShadowBufferRenderStateCaptureBlock[4];unsigned char ShadowBufferColourTexture[8];long RenderingTechnique[1];};
+class CEngineCamera { public:};class CRenderStateManager { public:};class CTexture { public:};
 #endif
 #ifdef _MSC_VER
 #include "fable_display_viewport.h"
 #else
-struct C2DBoxF {float left,top,right,bottom;};
+class C2DBoxF { public:float left,top,right,bottom;};
 #endif
 struct BoxMethods:C2DBoxF {BoxMethods(float l,float t,float r,float b){left=l;top=t;right=r;bottom=b;}};
-struct CRGBColour {unsigned char R,G,B,A;CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){B=b;G=g;R=r;A=a;}};
+class CRGBColour { public:unsigned char R,G,B,A;CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){B=b;G=g;R=r;A=a;}};
 struct DisplayMethods {bool SetRenderTargetAsBackScreen();};
 struct CameraMethods:CEngineCamera {void RefreshD3DTransforms();};
 struct StateMethods:CRenderStateManager {void RestoreCaptureBlock();};
@@ -26,7 +26,7 @@ extern CameraMethods* gCamera; //01436ea0
 extern StateMethods* gState; //013cb508
 extern Render2DMethods* g2D; //01436e18
 extern bool gShowShadowBuffer; //01437800
-struct CEngineComponentRenderParams {long Unknown;long Layer;};
+class CEngineComponentRenderParams { public:long Unknown;long Layer;};
 struct ShadowMethods:CEngineShadowRenderer {void PostLayerRender(const CEngineComponentRenderParams&);};
 void ShadowMethods::PostLayerRender(const CEngineComponentRenderParams& params) {
  if(*reinterpret_cast<long*>(RenderingTechnique) && params.Layer==2){

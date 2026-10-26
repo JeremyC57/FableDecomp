@@ -21,14 +21,14 @@
 
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     CCharString(const CCharString& other);        // 0x0099EC30
     ~CCharString();                               // 0x0099EAE0
 };
 
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                      // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();             // 0x0099A300
@@ -39,7 +39,7 @@ struct CDataStream : CBaseClassNonCopyable {      // vtable 0x0129A69C
     virtual unsigned long GetPosition() const = 0;          // slot 2
     virtual void Close() = 0;                               // slot 3
 };
-struct CDataOutputStream : CDataStream {          // vtable 0x0129A6E0
+class CDataOutputStream : public CDataStream { public:          // vtable 0x0129A6E0
     CCharString NewLine;                          // +0x04
     CDataOutputStream() : NewLine("\r\n", -1) { }
     virtual void Write(const void* data, long length) = 0;  // slot 4 (+0x10)
@@ -53,7 +53,7 @@ struct SByteBuffer {                              // +0x08 the growable buffer o
     SByteBuffer() : First(0), Last(0), End(0), Position(0) { }
     unsigned char* GetData() { return (Last - First) ? First : (unsigned char*)this; }
 };
-struct CMemoryDataOutputStream : CDataOutputStream {   // vtable 0x0129A788
+class CMemoryDataOutputStream : public CDataOutputStream { public:   // vtable 0x0129A788
     SByteBuffer Buffer;                           // +0x08
     CMemoryDataOutputStream() { }
     ~CMemoryDataOutputStream() { if (Buffer.First) free(Buffer.First); }
@@ -63,7 +63,7 @@ struct CMemoryDataOutputStream : CDataOutputStream {   // vtable 0x0129A788
     virtual void Write(const void* data, long length);
 };
 
-struct CDataInputStream : CDataStream {
+class CDataInputStream : public CDataStream { public:
     unsigned long StreamPos;                      // +0x04
     long StreamSize;                              // +0x08
     void* CurrentSourcePtr;                       // +0x0c

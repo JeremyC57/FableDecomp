@@ -5,7 +5,7 @@
 // Shape: every test squares the tolerance (VC7.1 computes it once into the `push ecx` frame word); each row minus its identity row
 // (the zero subtractions fold, the translation included) is compared by squared length; the four tests are one `&&` chain
 // guarding `return true` (the shared `return false` exit after it).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -14,7 +14,7 @@ struct C3DVector {
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 extern const float g_IdentityTolerance;         // 0x0129BA3C (0.0001f)
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector m_row0;                           // +0x00
     C3DVector m_row1;                           // +0x0c
     C3DVector m_row2;                           // +0x18

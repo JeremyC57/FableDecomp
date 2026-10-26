@@ -3,7 +3,7 @@
 // Behaviour test for 00eb1ec0 CMurderTwistSheriff::Init: the five interface calls in order, then the conditional handle releases.
 static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing {
+class CScriptThing { public:
     int id; bool friends;
     void SetFriendsWithEverythingFlag(bool f) { friends = f; Log(f ? "F1" : "F0"); }
 };
@@ -12,7 +12,7 @@ struct Handle {
     bool IsScripting() { return scripting; }
     void Release() { ++released; scripting = false; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     virtual CScriptThing& GetHero() { Log("Hero"); return hero; }
     virtual void GiveThingBestEnemyTarget(const CScriptThing& t, const CScriptThing& target) const { Log(t.id == 7 && target.id == 99 ? "Enemy" : "EnemyBAD"); }

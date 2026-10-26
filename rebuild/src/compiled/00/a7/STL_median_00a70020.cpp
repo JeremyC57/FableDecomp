@@ -38,7 +38,7 @@ struct pair {
 };
 
 template <class K, class V>
-struct CKeyPairCompareLess {                       // empty functor, passed in a 4-byte slot
+class CKeyPairCompareLess { public:                       // empty functor, passed in a 4-byte slot
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 

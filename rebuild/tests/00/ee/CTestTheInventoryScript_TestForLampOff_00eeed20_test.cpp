@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -9,7 +9,7 @@ struct CCharString {
 
 
 
-struct CSpawnedFuncBase {                               // retail 0x34 bytes (CScriptProcessBase + thread state)
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes (CScriptProcessBase + thread state)
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -27,7 +27,7 @@ template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
 
-struct CGameScriptInterface {                   // vtable 0x01260F0C
+class CGameScriptInterface { public:                   // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006();
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
@@ -98,7 +98,7 @@ struct CGameScriptInterface {                   // vtable 0x01260F0C
     virtual void v372(); virtual void v373(); virtual void v374(); virtual void v375();
     virtual void Pause(float seconds) const;                                 // slot 376 (+0x5e0)
 };
-struct CScriptBase {                                    // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                    // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                          // +0x04 .. +0x40 (PActiveThread at +0x2c)
     bool IsActiveThreadTerminating();                   // 0x00CB7940

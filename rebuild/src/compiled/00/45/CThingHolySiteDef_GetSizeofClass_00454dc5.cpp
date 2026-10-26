@@ -1,4 +1,4 @@
-struct CThingHolySiteDef;
+class CThingHolySiteDef;
 
 unsigned long __fastcall CThingHolySiteDef_GetSizeofClass(const CThingHolySiteDef* self)
 {

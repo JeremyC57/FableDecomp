@@ -10,12 +10,12 @@
 // Shape: the checked out-parameter GetInterface keeps the component in eax for the byte store; the helper result is negated as
 // `found ? false : true` (8-bit neg/sbb/inc in bl, kept across the string destructor); the fallback position is a
 // named temporary filled member by member (x, y copied, z raised by 1.7) and assigned with the implicit operator=.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0

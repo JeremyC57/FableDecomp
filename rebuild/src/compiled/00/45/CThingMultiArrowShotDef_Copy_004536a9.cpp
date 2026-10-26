@@ -1,4 +1,4 @@
-struct CThingMultiArrowShotDef;
+class CThingMultiArrowShotDef;
 
 extern void __fastcall CThingMultiArrowShotDef_CopyBase(CThingMultiArrowShotDef* self, void* edx, const CThingMultiArrowShotDef* other);
 

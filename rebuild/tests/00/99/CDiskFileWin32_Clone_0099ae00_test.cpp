@@ -1,10 +1,10 @@
 #include <cstdio>
 static int g_base = 0; static const void* g_openPath = 0; static long g_openAccess = -1; static unsigned long g_openFlags = 0;
 struct CBase { virtual void v00() { } CBase() { ++g_base; } };
-struct CWideString { void* PStringData; CWideString() : PStringData(0) { } };
+class CWideString { public: void* PStringData; CWideString() : PStringData(0) { } };
 enum FileAccessType { FILE_ACCESS_READ = 1 };
-struct CAFile;
-struct CDiskFileWin32 : CBase {
+class CAFile;
+class CDiskFileWin32 : public CBase { public:
     virtual CAFile* Clone() const { return (CAFile*)new CDiskFileWin32(*this); }
     long AccessType; long Position; long Length; void* WinFileHandle; bool Opened; CWideString Pathname;
     CDiskFileWin32() { Opened = true; }

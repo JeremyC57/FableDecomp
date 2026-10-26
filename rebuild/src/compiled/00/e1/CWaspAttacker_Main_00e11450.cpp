@@ -1,11 +1,11 @@
 // CWaspAttacker::Main() -- entity script: register an "is alive" predicate on Me, yield, make Me attack the WaspVictim until the victim dies, then make Me attack the hero
 // Leaf: Main
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CScriptThing {                                   // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                   // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                            // slot 0; the destructor proper is 0x004AA840
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const;
     virtual void v05() const; virtual void v06() const; virtual void v07() const; virtual void v08() const;
@@ -31,7 +31,7 @@ struct CScriptThing {                                   // vtable 0x01238C8C, 12
     void* PImp_Info;                                    // +0x08
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
 };
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) CGameScriptInterface::NewScriptFrame @ 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -90,7 +90,7 @@ struct CIsThingAlive {                                  // vtable 0x012C32F0: a 
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CBaseObject {                                    // CBaseIntelligentPointer root
+class CBaseObject { public:                                    // CBaseIntelligentPointer root
     virtual void v00();
     void* m_pIntelligentPointer;                        // +0x04
     CBaseObject();                                      // 0x0099A380
@@ -100,7 +100,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                          // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual void v00();

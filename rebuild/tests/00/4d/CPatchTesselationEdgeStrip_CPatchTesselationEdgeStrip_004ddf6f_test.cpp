@@ -20,7 +20,7 @@ struct CChunkedFileChunkBase {
     ~CChunkedFileChunkBase() { g_log[g_n++] = 3; }
 };
 
-struct CPatchTesselationEdgeStrip : CChunkedFileChunkBase {
+class CPatchTesselationEdgeStrip : public CChunkedFileChunkBase { public:
     CHeapArray m_arrayA;
     CHeapArray m_arrayB;
     unsigned char m_pad24[8];

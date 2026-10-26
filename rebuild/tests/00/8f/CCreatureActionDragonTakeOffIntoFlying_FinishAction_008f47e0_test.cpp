@@ -5,8 +5,8 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 static int g_flying = 0, g_removedTC = 0, g_listRemoved = 0, g_baseFinish = 0, g_modesAdded = 0;
 static C3DVector g_setPos; static float g_modeSpeed = 0; static C3DVector g_modePos; static int g_modeAction = 0;
 static CThing* g_modeCreature = 0; static int g_modePathLen = 0;
@@ -15,8 +15,8 @@ struct CPhysicsBody {
     void SetFlying(bool f) { g_flying = f ? 1 : 2; }
 };
 struct CTC4D { CThing* Removed; void RemoveThing(CThing* t) { Removed = t; ++g_listRemoved; } };
-struct CTCCreatureModeManager;
-struct CThing {
+class CTCCreatureModeManager;
+class CThing { public:
     CPhysicsBody* PhysicsBody; C3DVector Pos; CTC4D* List; CTCCreatureModeManager* Modes;
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
     const C3DVector& GetPosition() const { return Pos; }
@@ -24,9 +24,9 @@ struct CThing {
     bool GetInterface(CTC4D** out, long) { if (!List) return false; *out = List; return true; }
     bool GetInterface(CTCCreatureModeManager** out, long) { if (!Modes) return false; *out = Modes; return true; }
 };
-struct CPlayer { CThing* Hero; CThing* GetHeroCreature() { return Hero; } };
-struct CPlayerManager { CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
-struct CMainGameComponent { CPlayerManager* PlayerManager; };
+class CPlayer { public: CThing* Hero; CThing* GetHeroCreature() { return Hero; } };
+class CPlayerManager { public: CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; };
 static CMainGameComponent* g_pMainGameComponent;
 struct C3DVectorVector {
     C3DVector Data[8]; int Size;
@@ -40,14 +40,14 @@ struct CModeDragonFlying {
     { g_modeCreature = c; g_modePathLen = path.Size; g_modePos = pos; g_modeSpeed = speed; g_modeAction = a.Id; }
 };
 struct CCountedModePointer { CModeDragonFlying* m_pObject; CCountedModePointer(CModeDragonFlying* o) : m_pObject(o) {} };
-struct CTCCreatureModeManager { bool AddMode(CCountedModePointer m) { ++g_modesAdded; delete m.m_pObject; return true; } };
+class CTCCreatureModeManager { public: bool AddMode(CCountedModePointer m) { ++g_modesAdded; delete m.m_pObject; return true; } };
 struct CPtr { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CPtr PCreature;
     void FinishAction() { ++g_baseFinish; }
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_DragonTakeOffIntoFlying : CCombatActionBase {
+class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { public:
     C3DVector Dest, StartPos, PreviousPoint; C3DVectorVector MovementPoints; bool UsePreviousPoint; CCountedActionPointer PEndAction;
     void FinishAction();
 };

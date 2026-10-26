@@ -11,7 +11,7 @@
 // No engine header exists for the class: modelled locally from struct_layouts_egor.tsv.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                                            // +0x04..+0x28
     CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
@@ -24,11 +24,11 @@ struct CLongVector {                                                      // ret
     CLongVector& operator=(const CLongVector& other);                     // 0x00454886
 };
 
-struct CRGBColour {                                                       // B, G, R, A bytes
+class CRGBColour { public:                                                       // B, G, R, A bytes
     unsigned char B, G, R, A;
 };
 
-struct CTavernGameSpotTheAdditionDef : CDefClassBase {                    // vtable 0x01241A4C
+class CTavernGameSpotTheAdditionDef : public CDefClassBase { public:                    // vtable 0x01241A4C
     long        Pointer;                                                  // +0x28
     long        Cover;                                                    // +0x2c
     float       CoverWidth;                                               // +0x30

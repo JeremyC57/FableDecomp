@@ -11,7 +11,7 @@
 //   in ecx -> esi, last in edx -> edi, the 8-byte predicate by value and the tag reference on the stack) with
 //   iter_swap -> swap inlined: the 12-byte temporary goes through the frame because C3DVector has its memberwise user
 //   copy constructor (as the same TU's out-of-line swap 0x008E2DB0).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };

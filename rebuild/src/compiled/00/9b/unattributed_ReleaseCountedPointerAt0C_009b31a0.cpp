@@ -10,7 +10,7 @@
 // Callees: the pointee's virtual slot 1 (+4) at zero references.
 // Shape: the pointer is loaded straight into ecx (the inline Release() member runs on it), the zero store sits inside
 // the null test.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();       // slot 0
     virtual void OnLastReference();         // slot 1 (+0x04)
     unsigned long IVRefCount;               // +0x04
@@ -20,7 +20,7 @@ struct CIVCountedPointeeBase {
             OnLastReference();
     }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     ~CIVCountedPointer()
     {

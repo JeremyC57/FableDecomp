@@ -15,7 +15,7 @@
 //   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
 //   are classes (V in every PDB signature).
 class CThingObject;
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -35,7 +35,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                              // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct Coin {                                   // 0x3c bytes
+class Coin { public:                                   // 0x3c bytes
     long      _pad_0x00;
     C2DVector Pos;                              // +0x04
     C2DVector Velocity;                         // +0x0c

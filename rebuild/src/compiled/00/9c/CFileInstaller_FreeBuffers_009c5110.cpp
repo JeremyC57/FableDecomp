@@ -34,7 +34,7 @@ struct CBufferChunkArray {                         // retail CArray<CFileInstall
     void DeallocateMemory();                       // 0x009C76D0
 };
 
-struct CFileInstaller {                            // vtable 0x0129B43C
+class CFileInstaller { public:                            // vtable 0x0129B43C
     virtual void v00();
     _RTL_CRITICAL_SECTION      CriticalSection;    // +0x04
     CBufferChunkArray          BufferChunks;       // +0x1c

@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for 00a1a1a0: 1 when either current best clearance exceeds the next-waypoint clearance, else 0.
-struct CSteeringAgent {
+class CSteeringAgent { public:
     float BestDistLeft;
     float BestDistRight;
     float BestNextDistLeft;

@@ -26,7 +26,7 @@ static void* wfopen_(const wchar_t* name, const wchar_t* mode)
 static int fclose_(void* f) { if (f == &g_stream) --g_openStreams; return 0; }
 static int DeleteFileW_(const wchar_t* name) { if (g_failStep == 3 || std::wcscmp(name, g_lastName) != 0) return 0; ++g_deleted; return 1; }
 
-struct CWideString {
+class CWideString { public:
     wchar_t s[256];
     bool null;
     CWideString() : null(true) { s[0] = 0; }
@@ -41,7 +41,7 @@ struct CWideString {
     bool operator==(const wchar_t* t) const { return null ? std::wcscmp(t, L"") == 0 : std::wcscmp(s, t) == 0; }
 };
 static CWideString operator+(const CWideString& a, const wchar_t* b) { CWideString r(a.s); std::wcscat(r.s, b); return r; }
-struct CCharString {
+class CCharString { public:
     char s[128];
     CCharString() { s[0] = 0; }
     CCharString& operator=(const char* t) { std::strcpy(s, t); return *this; }

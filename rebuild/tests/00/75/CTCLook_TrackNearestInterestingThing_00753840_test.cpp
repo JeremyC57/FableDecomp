@@ -1,8 +1,8 @@
 // Behaviour test for CTCLook::TrackNearestInterestingThing @ 0x00753840 (self-contained model of the candidate logic).
 #include <stdio.h>
 #include <string.h>
-struct CTCTargetingBase { void* nearest; void* GetPNearestInterestingThing() { return nearest; } };
-struct CThing { CTCTargetingBase* targeting; bool GetInterface(CTCTargetingBase** out) { if (targeting) { *out = targeting; return true; } return false; } };
+class CTCTargetingBase { public: void* nearest; void* GetPNearestInterestingThing() { return nearest; } };
+class CThing { public: CTCTargetingBase* targeting; bool GetInterface(CTCTargetingBase** out) { if (targeting) { *out = targeting; return true; } return false; } };
 static char g_log[64];
 struct Model {
     CThing* ParentThing; unsigned long HeadTurnState; long TimeToStopLooking; bool OneFrameDelay;

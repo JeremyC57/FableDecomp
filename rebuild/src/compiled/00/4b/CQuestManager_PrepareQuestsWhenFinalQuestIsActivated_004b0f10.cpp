@@ -13,12 +13,12 @@
 // GetActiveQuestCardFromScriptName 0x004B0C80; the closing World store is duplicated into both exits.
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14 (MSVCR71)
 
-struct CCharStringData {                                 // the shared string block
+class CCharStringData { public:                                 // the shared string block
     const char*   Data;                                  // +0x00
     unsigned long Length;                                // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570 (strcmp-style, landed)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator!=(const CCharString& other) const;     // 0x0099E900
     bool operator==(const CCharString& other) const
@@ -33,7 +33,7 @@ struct CCharString {
     }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {                                        // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     Type;
     CTCBase* TC;
@@ -52,13 +52,13 @@ struct CTCMap {                                          // CThing::Components: 
     }
 };
 
-struct CThing {                                          // retail CThing (local model: engine/CThing.h is the quarantined donor)
+class CThing { public:                                          // retail CThing (local model: engine/CThing.h is the quarantined donor)
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                    // +0x20 which TC types the thing holds
     unsigned char _pad40[4];
     CTCMap        Components;                            // +0x44
     unsigned char _pad50[0x10];
-    struct CTCPhysicsBase* PhysicsTC;                    // +0x60 (PDB +0x70)
+    class CTCPhysicsBase* PhysicsTC;                    // +0x60 (PDB +0x70)
     unsigned char _pad64[0x2d];
     unsigned char Dead : 1;                              // +0x91 bit 0 (PDB +0xa1)
     unsigned char CreatedByOwnerThingCreation : 1;
@@ -73,7 +73,7 @@ struct CThing {                                          // retail CThing (local
     void Kill(bool immediately);                         // 0x004C9B80
 };
 
-struct CTCQuestCard;                                     // TC type 0x6c
+class CTCQuestCard;                                     // TC type 0x6c
 __forceinline CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup: unset when the thing has no quest card TC
 {
     CTCQuestCard* tc;
@@ -103,23 +103,23 @@ inline void EraseNode(CCardNode* node)                   // STLport list::erase(
     free(node);
 }
 
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                             // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 
-struct CTCQuestCard {
+class CTCQuestCard { public:
     unsigned char _pad00[0x28];
     CCharString   ScriptQuestName;                       // +0x28 (PDB name)
     bool IsVignette() const;                             // 0x007022E0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xda];
     bool          MapTableShowQuestCardsOnUsed;          // +0xda (PDB +0xe6)
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x5c];
     CCardNode*    ActiveQuestCards;                      // +0x5c list<CIntelligentPointer<CThing>> (head node)
     CCardNode*    CompletedQuestCards;                   // +0x60

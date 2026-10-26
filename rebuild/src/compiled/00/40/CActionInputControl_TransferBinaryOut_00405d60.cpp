@@ -12,7 +12,7 @@
 // 0x0040FCA0 inlines this same body per element. Layout (Ego_r.pdb, 0x1C): GameAction +0,
 // ControllerType +4, KeyboardKey +8, XboxButton +0xC, MouseButton +0x10, ControlDirection +0x14.
 // engine/CDataOutputStream.h is a flattened data record; the stream is only a call target here.
-struct C2DVector {
+class C2DVector { public:
     float X;                                      // +0
     float Y;                                      // +4
 };

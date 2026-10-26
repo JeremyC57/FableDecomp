@@ -11,7 +11,7 @@
 //   is walked by an unsigned index with size() recomputed per pass; every list returns false on its own.
 enum EInputButtonEventType { INPUT_BUTTON_EVENT_NONE };
 enum EGameAction { GAME_ACTION_SPECIAL_MOVE_BUTTON = 0x36, GAME_ACTION_QUICK_ACCESS_ITEM = 0x37, GAME_ACTION_CONTEXT_SENSITIVE_ITEM = 0x38 };
-struct CInputTypeBase {
+class CInputTypeBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const;   // slot 5 (+0x14)
 };
@@ -42,7 +42,7 @@ struct CInputPointerVector {
     unsigned long size() const { return _M_finish - _M_start; }
     const CInputPointer& operator[](unsigned long i) const { return _M_start[i]; }
 };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     unsigned char       _pad000[0x7a8];
     CControlMap         Controls;                       // +0x7A8
     CInputPointerVector AssignableSpecialMoveButtons;   // +0x7B8

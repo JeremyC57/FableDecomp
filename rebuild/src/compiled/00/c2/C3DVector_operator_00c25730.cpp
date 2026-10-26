@@ -5,7 +5,7 @@
 // 0x00C256F0 with the exits swapped.
 // Shape: a `__fastcall` member (this in ecx, the other vector in edx, plain `ret`); right operand loaded
 // first in each compare, `||` chain with the shared true tail `mov eax,1` after the `xor eax,eax` exit.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     int __fastcall operator!=(const C3DVector& other) const;
 };

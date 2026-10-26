@@ -11,32 +11,32 @@
 //   InitialWorldHolySiteName, InitialQuestName, SaveGameName}; the front-end init blocks are one zeroed long.
 // Shape: each front-end arm calls Start() itself (VC7.1 tail-merges the two calls into the shared join; a single Start()
 //   after the inner if/else leaves arm 2 forming its init address in edx); the component pointer doubles as Run's out parameter (so it lives in the frame from the start); `new` with the null-tested constructor call; the init block's zero store is shared by both front-end arms.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CMainGameComponentInit {
+class CMainGameComponentInit { public:
     CWideString InitialWorldName;
     CWideString InitialWorldHolySiteName;
     CCharString InitialQuestName;
     CWideString SaveGameName;
 };
-struct CFrontendGameComponentInit { long Nowt; };
-struct CNewFrontendGameComponentInit { long Nothing; };
-struct CGame;
-struct CGameComponent {
+class CFrontendGameComponentInit { public: long Nowt; };
+class CNewFrontendGameComponentInit { public: long Nothing; };
+class CGame;
+class CGameComponent { public:
     virtual ~CGameComponent();                          // slot 0 (deleting destructor)
     virtual void Start();                               // slot 1
     virtual bool Run(CGameComponent*& next);            // slot 2
 };
-struct CMainGameComponent : CGameComponent {
+class CMainGameComponent : public CGameComponent { public:
     CMainGameComponent(CGame* game, const CMainGameComponentInit& init);   // 0x00418DCA
     unsigned char _body[0x161e4];
 };
@@ -44,7 +44,7 @@ struct CFrontendGameComponent : CGameComponent {
     CFrontendGameComponent(CGame* game, const CFrontendGameComponentInit& init);   // 0x00496070
     unsigned char _body[0x1e5c];
 };
-struct CNewFrontendGameComponent : CGameComponent {
+class CNewFrontendGameComponent : public CGameComponent { public:
     CNewFrontendGameComponent(CGame* game, const CNewFrontendGameComponentInit& init);   // 0x0042EA8F
     unsigned char _body[0x144];
 };
@@ -55,7 +55,7 @@ extern bool g_bUseLegacyFrontend;                       // 0x013B8642
 extern CWideString g_MainGameStartupPath;               // 0x013B7D5C
 extern CGameComponent* g_pRetiredGameComponent;         // 0x013B7D58
 
-struct CGame {
+class CGame { public:
     void*           __vftable;                          // +0x00
     unsigned char   _pad04[4];
     CGameComponent* CurrentGameComponent;               // +0x08

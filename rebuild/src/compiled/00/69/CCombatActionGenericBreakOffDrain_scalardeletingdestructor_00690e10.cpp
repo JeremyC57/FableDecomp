@@ -1,4 +1,4 @@
-struct CCombatAction_GenericBreakOffDrain {
+class CCombatAction_GenericBreakOffDrain { public:
     void* vftable;
 };
 

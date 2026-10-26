@@ -21,7 +21,7 @@
 // Drunkenness +0x19C (PDB +0x1B4), BeerReservoir +0x1A0, FrameToVomit +0x1AC, DeedHandle +0x1B0, FrameEndVomit +0x1B4.
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -34,9 +34,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -68,19 +68,19 @@ struct CThing {
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1); // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xA4];
     ~CCreatureActionBase();                          // 0x00693EF0
 };
-struct CThingCreatureBase;
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureActionBase {
+class CThingCreatureBase;
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x14];
     CCharString   LoopAnimName;                      // +0xBC
     CCharString   OutOfAnimName;                     // +0xC0
@@ -88,29 +88,29 @@ struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureActionBase {
         const CCharString& loop, const CCharString& outOf, float loopTime, bool b, long c, long d);   // 0x008427E0
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
     bool SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
 };
-struct CThingPlayerCreature : CThingCreatureBase {};
-struct CPlayer {
+class CThingPlayerCreature : public CThingCreatureBase { public:};
+class CPlayer { public:
     CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);  // 0x0055F3B0
 };
-struct CThingAICreature;
-struct CFaction;
-struct CTCHeroOpinionDeedLog {
+class CThingAICreature;
+class CFaction;
+class CTCHeroOpinionDeedLog { public:
     long PostDeed(long type, const C3DVector& position, const CThing* victim, CThingAICreature* witness, long postType,
                   bool a, bool b, const CFaction* faction, bool c, long extra);   // 0x006C6990
 };
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad_0x00[0x8C];
     long          MinVomitSeconds;                   // +0x8C
     long          MaxVomitSeconds;                   // +0x90
@@ -127,7 +127,7 @@ unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   /
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 extern long g_framesPerSecond;                       // 0x01375550
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x000
     CThing*       ParentThing;                       // +0x004 CTCBase
     unsigned char _pad_0x008[0xE4];

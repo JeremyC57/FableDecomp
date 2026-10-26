@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CMatrix3x4 { float m_rows[3][4]; };
-struct C3DDummyObject {
+class CMatrix3x4 { public: float m_rows[3][4]; };
+class C3DDummyObject { public:
     CMatrix3x4 Transform;
     long       BoneIndex;
 };

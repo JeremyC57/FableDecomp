@@ -5,18 +5,18 @@
 // @ 0x006622A0, IsFreeToFinishAction @ 0x006621C0, FinishCurrentAction @ 0x00662650 (tail jump).
 // Shape: `if (a() && b()) c();` with the creature read through PBrain each time (no local), which is what
 // gives the three separate `mov [esi+4] ; mov [+18h]` pairs and the sibling-call `jmp` at the end.
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsPerformingAnyAction();           // 0x006622A0
     bool IsFreeToFinishAction();            // 0x006621C0
     void FinishCurrentAction();             // 0x00662650
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDefClassBase { int tag; };
+class CDefClassBase { public: int tag; };
 
 struct SubDef {
     int copied_from;

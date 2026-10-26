@@ -1,9 +1,9 @@
 // Standalone behaviour test for CEditControlCentre::PeekConnectedToTrackNode
 #include <cstdio>
 
-struct CThingTrackNode;
+class CThingTrackNode;
 
-struct CEditControlCentre {
+class CEditControlCentre { public:
     char _pad0[0x0c];
     unsigned char use_connected;    // 0x0c
     char _pad1[0x38 - 0x0d];

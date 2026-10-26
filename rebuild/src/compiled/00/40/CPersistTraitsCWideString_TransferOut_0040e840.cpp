@@ -8,9 +8,9 @@
 //   to left (the closing quote is pushed first, then the conversion, then the opening quote and the empty string), the
 //   five temporaries are destroyed in reverse order of construction after the append (as the landed
 //   CPersistContext::TransferVectorSaveText 0x009BAC80). Speed-optimised (default) TU.
-struct CCharStringData;
-struct CPersistContext;
-struct CCharString {
+class CCharStringData;
+class CPersistContext;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -18,8 +18,8 @@ struct CCharString {
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CCharString ConvertToCharString() const;            // 0x0099B2C0
 };

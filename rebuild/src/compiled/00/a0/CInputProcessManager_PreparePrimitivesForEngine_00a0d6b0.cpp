@@ -9,12 +9,12 @@
 #include "engine/CInputProcessGameBase.h"
 #undef CInputProcessGameBase
 #include "engine/CProcessedInput.h"
-struct CInputEvent; struct CEnginePrimitivePrepareInfo;
-struct CBaseClass {virtual ~CBaseClass();};
+class CInputEvent; class CEnginePrimitivePrepareInfo;
+class CBaseClass { public:virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {virtual ~CBaseClassNonCopyable();};
-struct CLinkedListPosition {CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
-struct CInputProcessManager;
-struct CAInputProcess:CBaseClassNonCopyable {
+class CLinkedListPosition { public:CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
+class CInputProcessManager;
+class CAInputProcess:public CBaseClassNonCopyable { public:
  CInputProcessManager* PPlayerInterface;
  CLinkedListPosition InputProcessListPos;
  virtual ~CAInputProcess();
@@ -28,14 +28,14 @@ struct CAInputProcess:CBaseClassNonCopyable {
  virtual bool IsInputEventToBeSentToThisInputProcess(const CInputEvent&)const;
 };
 
-struct CLinkedListScanInfo;
+class CLinkedListScanInfo;
 struct CInputProcessList {
  CLinkedListPosition* Head; CLinkedListPosition* Tail; int NoEntries; mutable CLinkedListScanInfo* FirstScanInfo;
  CAInputProcess* StartScanAtHead(CLinkedListScanInfo*)const;
  CAInputProcess* ScanForward(CLinkedListScanInfo*)const;
  void RemoveScanInfo(CLinkedListScanInfo*)const;
 };
-struct CLinkedListScanInfo {
+class CLinkedListScanInfo { public:
  CLinkedListPosition* Current; CLinkedListPosition* Next; CLinkedListPosition* Previous;
  bool Started,Forwards;
  CLinkedListScanInfo* NextScan; CLinkedListScanInfo* PreviousScan;
@@ -65,7 +65,7 @@ inline void CInputProcessList::RemoveScanInfo(CLinkedListScanInfo* s)const {
  s->PreviousScan->NextScan=s->NextScan;
  if(s->NextScan)s->NextScan->PreviousScan=s->PreviousScan;
 }
-struct CInputProcessManager:CBaseClassNonCopyable {
+class CInputProcessManager:public CBaseClassNonCopyable { public:
  CInputProcessList InputProcessList;
  CProcessedInput QueuedProcessedInputs[10]; int NoQueuedProcessedInputs;
  void PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo&)const;

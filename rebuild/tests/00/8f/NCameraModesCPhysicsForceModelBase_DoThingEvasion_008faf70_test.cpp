@@ -26,7 +26,7 @@ extern "C" void* __cdecl malloc(unsigned int size); // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double);
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -40,7 +40,7 @@ inline float Magnitude(const C3DVector& v) { return (float)sqrt(v.Z * v.Z + v.Y 
 struct SVectorNode { SVectorNode* _M_next; SVectorNode* _M_prev; C3DVector _M_data; };
 extern const C3DVector g_EvasionSampleOffsets[4];  // 0x013893AC: 0, X, Y, Z
 
-struct CThing;
+class CThing;
 struct SThingNode { SThingNode* _M_next; SThingNode* _M_prev; const CThing* _M_data; };
 struct SThingListIterator {
     SThingNode* _M_node;
@@ -48,8 +48,8 @@ struct SThingListIterator {
     SThingListIterator(const SThingListIterator& o) : _M_node(o._M_node) { }
 };
 namespace NCameraModes {
-struct CGetThingsWithCollisionMesh { CGetThingsWithCollisionMesh() { } bool operator()(const CThing* t) const; };
-struct CGetMeshObject { CGetMeshObject() { } };
+class CGetThingsWithCollisionMesh { public: CGetThingsWithCollisionMesh() { } bool operator()(const CThing* t) const; };
+class CGetMeshObject { public: CGetMeshObject() { } };
 }
 template <class P> struct unary_negate {
     P pred;
@@ -75,7 +75,7 @@ namespace N_00615540 { struct CThingList {                                 // li
     SThingListIterator end() { return SThingListIterator(_M_node._M_data); }
     void remove_if(unary_negate<NCameraModes::CGetThingsWithCollisionMesh> pred);   // 0x008FBDD0
 }; } using N_00615540::CThingList;
-struct CPhysicsMeshObject { virtual ~CPhysicsMeshObject(); unsigned char _data[0x3c]; };
+class CPhysicsMeshObject { public: virtual ~CPhysicsMeshObject(); unsigned char _data[0x3c]; };
 struct SMeshNode { SMeshNode* _M_next; SMeshNode* _M_prev; CPhysicsMeshObject _M_data; };
 struct CMeshList {                                  // list<CPhysicsMeshObject> (header node 0x48)
     SListProxy<SMeshNode> _M_node;
@@ -104,20 +104,20 @@ SMeshBackInserter __fastcall transform(SThingListIterator first, SThingListItera
 struct CTools {
     void GetStandardThings(CThingList& things, const C3DVector& centre, float radius);   // 0x00877720
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char _pad00[0x78];
     CTools        Tools;                           // +0x78
 };
 namespace NCameraModes {
-struct CPhysicsState {
+class CPhysicsState { public:
     C3DVector Position;                            // +0x00
 };
-struct CPhysicsCollisionPointsObject {             // retail 0x24 bytes
+class CPhysicsCollisionPointsObject { public:             // retail 0x24 bytes
     SVectorNode* Points;                           // +0x00 list<C3DVector> header
     unsigned char _pad04[0x20];
     void Finalise();                               // 0x008FA9F0
 };
-struct CPhysicsForceModelBase {
+class CPhysicsForceModelBase { public:
     virtual void v00();
     CPhysicsState*                LinkedState;     // +0x04
     CPhysicsCollisionPointsObject Things;          // +0x08
@@ -154,7 +154,7 @@ C3DVector CPhysicsForceModelBase::DoThingEvasion()
 // ---- stubs and driver ----
 const C3DVector g_EvasionSampleOffsets[4] = { C3DVector(0.0f, 0.0f, 0.0f), C3DVector(1.0f, 0.0f, 0.0f),
                                               C3DVector(0.0f, 1.0f, 0.0f), C3DVector(0.0f, 0.0f, 1.0f) };
-struct CThing { int hasMesh; };
+class CThing { public: int hasMesh; };
 static CThing g_world[5];
 static int g_seq = 0, g_atGet = 0, g_atRemove = 0, g_atTransform = 0, g_atScan = 0, g_atFinal = 0, g_atClear = 0, g_atThingDtor = 0;
 static int g_liveNodes = 0, g_meshDtors = 0, g_scanMeshes = 0;

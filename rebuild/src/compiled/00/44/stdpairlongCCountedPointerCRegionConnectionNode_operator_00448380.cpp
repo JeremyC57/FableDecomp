@@ -6,7 +6,7 @@
 // DeleteFunc(Data) __fastcall + operator delete(Info) 0x00BFE9BC); Data = o.Data; Info = o.Info; if (Info) ++RefCount }.
 // Layout: pair {long first +0, CCountedPointer second: Data +4, Info +8}; CCPPointerInfo {RefCount, DeleteFunc, Data}.
 // Shape: /O2 (16-aligned entry); the source Data / Info read into locals first (retail loads both before the compare); the compiler-generated operator=, emitted out of line by an assignment in a helper.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

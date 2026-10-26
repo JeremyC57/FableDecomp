@@ -13,26 +13,26 @@
 #include <stdlib.h>
 #include "engine/CTCBase.h"
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-template <class T> struct CDefPointer;
-struct CDefClassBase {
+template <class T> class CDefPointer;
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy() const;                           // slot 1
     mutable long RefCount;                                  // +0x04
-    bool GetSubDef(CDefPointer<const struct CSpecialEffectsDef>* out) const;   // GetSubDef<CSpecialEffectsDef> 0x00669580
+    bool GetSubDef(CDefPointer<const class CSpecialEffectsDef>* out) const;   // GetSubDef<CSpecialEffectsDef> 0x00669580
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -42,7 +42,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefClassBase {
+class CSpecialEffectsDef : public CDefClassBase { public:
     bool GetEffectFromString(const CCharString& name, long* effect) const;   // 0x00669D30
 };
 
@@ -89,7 +89,7 @@ struct CInterfaceBits {                                     // bitset<> at CThin
     unsigned long _M_w[9];
     bool test(unsigned long pos) const { return (_M_w[pos / 32] & (1ul << (pos % 32))) != 0; }
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -109,7 +109,7 @@ struct CThing {
     unsigned char _pad92[0xbc - 0x92];
     unsigned char FlagsBC;                                  // +0xbc
     void Kill(bool removeNow);                              // 0x004C9B80
-    bool GetDummyObject(const CCharString& name, C3DVector* position, struct CRightHandedSet* orientation);
+    bool GetDummyObject(const CCharString& name, C3DVector* position, class CRightHandedSet* orientation);
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
@@ -139,7 +139,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<const CSpecialEffectsDef>* out) const
 
 
 
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CTCGraphicAppearance {
     void SetAlpha(unsigned char alpha);                     // 0x004BFAC0
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
@@ -149,7 +149,7 @@ inline bool CThing::GetDummyObject(const CCharString& name, C3DVector* position,
 {
     return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
 }
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long effect, const C3DVector& position, bool attached);   // 0x006E0880
     void AttachToThing(CThing* thing, long mode, const CCharString& bone, long flags, float offset);   // 0x006E0BE0
 };
@@ -163,7 +163,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CThing* item);                            // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -186,15 +186,15 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
         return 0;
     return seed % range;
 }
-struct CThingSearchTools;
-struct CTCShapeManager;
-struct CWorld {
+class CThingSearchTools;
+class CTCShapeManager;
+class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* PThingSearchTools;                   // +0x20
     static long GetWorldFrame();                            // 0x0049D870
     unsigned long* GetPRandomSeed();                        // 0x0049D810
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetHeightZBelowPos(const C3DVector& pos) const;   // 0x0063E480
 };
 struct CPositionVector {                                    // STLport vector<C3DVector> (12 bytes)
@@ -208,7 +208,7 @@ struct CPositionVector {                                    // STLport vector<C3
 };
 void __fastcall GetValidPositions(CPositionVector& positions, const CWorldMap& map, const CThingSearchTools& search,
                                   const C3DVector& pos, float radius, bool flag, const CTCShapeManager* shapes);   // 0x0074A5D0
-struct CCardinalSpline {                                    // retail 0x14 bytes
+class CCardinalSpline { public:                                    // retail 0x14 bytes
     CPositionVector ControlPoints;
     float Tension;
     bool EndPointsConnected;
@@ -242,7 +242,7 @@ struct CPhysicsBody {
     virtual void v42(); virtual void v43();
     virtual void Reset();                                   // slot 44 (+0xb0)
 };
-struct CNymphDef {
+class CNymphDef { public:
     unsigned char _pad00[0x34];
     float CircleRange;                                      // +0x34
     unsigned char _pad38[0x48 - 0x38];
@@ -250,11 +250,11 @@ struct CNymphDef {
     float FadeOutTime;                                      // +0x4c
 };
 struct CTCBaseFrame : CTCBase {
-    struct CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
+    class CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
     void FrameUpdate();                                     // 0x006868A0 (CTCBase)
     CWorldMap& GetWorldMap();                               // 0x00686D30 (CTCBase)
 };
-struct CTCNymph : CTCBaseFrame {
+class CTCNymph : public CTCBaseFrame { public:
     const CNymphDef* PDef;                                  // +0x0c
     C3DVector PointToFlyAround;                             // +0x10
     float EffectHeightOffset;                               // +0x1c

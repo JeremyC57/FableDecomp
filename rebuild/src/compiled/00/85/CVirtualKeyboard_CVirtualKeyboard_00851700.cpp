@@ -7,7 +7,7 @@
 // Shape: plain initialiser list; VC schedules the argument store last (Canceled, Done, PEntryBox from the xor register, then PEntryScreen).
 struct CComponent;
 struct CEditBox;
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                          // 0x0099AED0
 };

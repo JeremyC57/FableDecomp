@@ -11,7 +11,7 @@
 //   two literals go first, then the line string is built; the five intermediate temporaries die in reverse order at the
 //   end of the statement and the finished text lives in the dead `message` argument slot. The callback is a
 //   `__fastcall` function pointer (string in ecx).
-struct CCharString {                     // one CCharStringData pointer
+class CCharString { public:                     // one CCharStringData pointer
     void* PStringData;
     ~CCharString();                      // 0x0099EAE0
 };
@@ -24,7 +24,7 @@ struct CCursorPos {                      // PDB: InQuotes / StringPos / Line (12
     unsigned long Line;
 };
 // Retail layout (0x28 bytes; the Ego_r PDB's debug-build layout is 0x30):
-struct CStringParser {
+class CStringParser { public:
     virtual ~CStringParser();
     char*          String;               // +0x04
     unsigned long  BaseLineOffset;       // +0x08

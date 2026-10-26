@@ -10,9 +10,9 @@
 // Leaf: IsRunnable@CAIStateGroup_CreatureSeekEnemyUnderground
 #include <math.h>
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -44,7 +44,7 @@ struct CThing {
         }
         return false;
     }
-    const struct C3DVector& GetPosition() const;   // 0x004C73D0
+    const class C3DVector& GetPosition() const;   // 0x004C73D0
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
     __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
@@ -59,12 +59,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -108,7 +108,7 @@ struct CTCEnemySource {                         // the interface-8 component
     virtual CThing* GetEnemy();                 // slot 29 (+0x74)
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 
 struct CTCUndergroundMover {                    // the interface-0x34 component

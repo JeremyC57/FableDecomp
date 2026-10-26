@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour of CTCInventoryTrade::ApplyHairCard (0x0059D9C2): only a thing with interface 0x5E gets the modifier.
-struct CTCBase { long m_applied; long m_last; };
+class CTCBase { public: long m_applied; long m_last; };
 struct CPresenceBits { unsigned long m_bits[4]; bool test(long bit) { return (m_bits[bit >> 5] >> (bit & 31)) & 1; } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits m_present; CInterfaceMap m_interfaces;
     template <class T> bool GetInterface(long type, T** out)
     {
@@ -23,11 +23,11 @@ struct CThing {
         return false;
     }
 };
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void AddAppearanceModifierWithReplace(long index) { ++m_applied; m_last = index; }
 };
-struct CHairCardDef { long AppearanceModifier; };
-struct CTCInventoryTrade {
+class CHairCardDef { public: long AppearanceModifier; };
+class CTCInventoryTrade { public:
     CThing* ParentThing;
     void ApplyHairCard(const CHairCardDef* card)
     {

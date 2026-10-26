@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CTavernGameCoinGolfDef
-{
+class CTavernGameCoinGolfDef
+{ public:
     void* vftable;
 };
 extern void* const g_CTavernGameCoinGolfDef_vftable;

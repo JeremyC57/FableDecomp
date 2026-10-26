@@ -29,12 +29,12 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -44,21 +44,21 @@ struct CInterfaceMap {
 struct CHitLocation {
     C3DVector GetClosestPointToPos2D(const C3DVector& position, const C3DVector& direction);   // 0x00815370
 };
-struct CTCHitLocations {                                // interface 0x7F
+class CTCHitLocations { public:                                // interface 0x7F
     CHitLocation* GetHitLocation();                     // 0x00814BF0
 };
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing();                      // slot 70 (+0x118)
 };
-struct CThing;
-struct CTCSolidToThing {
+class CThing;
+class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing);             // 0x00770FA0
 };
-struct CTCParamsBase;
-struct CThing {
+class CTCParamsBase;
+class CThing { public:
     unsigned char   _pad0[0x10];
     unsigned char   ThingType;                          // +0x10
     unsigned char   _pad11[0x20 - 0x11];
@@ -85,7 +85,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     void SetSuspendAnimation(bool suspend, void* suspender);   // 0x00833A10
 };
 struct CBaseIntelligentPointer {

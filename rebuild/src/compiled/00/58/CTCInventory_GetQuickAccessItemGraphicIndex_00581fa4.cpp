@@ -17,7 +17,7 @@
 // the pointer and copies the result. The element is tested (`cmp [ecx+eax],0 ; jle`) and re-read for the call; only BankIndex of the
 // returned temporary is used (`mov eax,[eax]`).
 #pragma pack(push, 2)
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;                         // +0x00
     float         AnimStep;                          // +0x04
     float         RenderSizeX;                       // +0x08
@@ -38,7 +38,7 @@ struct CLongVector {
     long& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char _pad_0x000[0x148];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
     long GetQuickAccessItemGraphicIndex(long index);

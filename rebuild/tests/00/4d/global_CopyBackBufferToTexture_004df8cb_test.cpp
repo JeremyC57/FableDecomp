@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CTexture;
+class CTexture;
 
-struct CDisplayManager {
+class CDisplayManager { public:
     int marker;
     void Helper_004dd342(char *a, char *b);
     CTexture * CopyBackBufferToTexture();

@@ -14,12 +14,12 @@
 // Layout: Ego_r.pdb CTCHeroMorph at retail offsets (one-word STLport lists, 12-byte containers): PMeshMorphSet
 // +0x0C, ParticleEmitters +0x14, IdleParticleEmitters +0x18, Tattoos +0x1C, CustomToBankIndex +0x28,
 // FrameTattoosChanged +0x34 .. Teenager +0x60 -- as in the landed destructor 0x007223D0.
-struct CThing;
+class CThing;
 
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 void* __cdecl operator new(unsigned int size);       // 0x00BFEA1A
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                             // +0x04
     bool    ToBeRemoved;                             // +0x08
@@ -62,7 +62,7 @@ struct CEmitterList {                                // std::list<CIntelligentPo
     }
 };
 
-struct CThingBaseDef;
+class CThingBaseDef;
 struct CTattooVector {                               // std::vector<CDefPointer<const CThingBaseDef>>
     CThingBaseDef** _M_start;
     CThingBaseDef** _M_finish;
@@ -86,7 +86,7 @@ struct CTattooMap {                                  // std::map<CCharString, pa
     }
 };
 
-struct CTCHeroMorph : CTCBase {                      // vtable 0x01265CF4
+class CTCHeroMorph : public CTCBase { public:                      // vtable 0x01265CF4
     CCountedPointerMeshMorphSet PMeshMorphSet;       // +0x0C
     CEmitterList  ParticleEmitters;                  // +0x14
     CEmitterList  IdleParticleEmitters;              // +0x18

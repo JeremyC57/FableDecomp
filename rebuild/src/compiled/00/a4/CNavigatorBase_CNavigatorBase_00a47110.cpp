@@ -6,17 +6,17 @@
 // Layout = Ego_r.pdb CNavigatorBase: PInterface +0x14, OnRoute +0x18, Interrupted +0x19, NavigationManager +0x1c, SteeringAgent +0x20.
 // Shape: the flags and the manager are initialisers (stored right after the vtable); the cloned interface and the steering agent
 //   are body assignments (the null-checked `new` stores 0 on its failure path); the agent ctor re-reads PInterface.
-struct CClassFactory {
+class CClassFactory { public:
     virtual void v00();
 };
-struct CNavigatorManager : CClassFactory {
+class CNavigatorManager : public CClassFactory { public:
 };
-struct CClass {
+class CClass { public:
     virtual void v00();
     unsigned char _pad04[0x10];
     CClass(CClassFactory& factory, unsigned long type, bool registerNow);   // 0x00A372D0
 };
-struct CNavigatorExternalInterface {
+class CNavigatorExternalInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -24,11 +24,11 @@ struct CNavigatorExternalInterface {
     virtual CNavigatorExternalInterface* Clone() const;     // slot 24 (+0x60)
 };
 void* __cdecl operator new(unsigned int size);              // 0x00BFEA1A
-struct CSteeringAgent {
+class CSteeringAgent { public:
     unsigned char _data[0x68];
     CSteeringAgent(const CNavigatorExternalInterface* iface, bool b);   // 0x00A1C700
 };
-struct CNavigatorBase : CClass {
+class CNavigatorBase : public CClass { public:
     CNavigatorExternalInterface* PInterface;                // +0x14
     bool                         OnRoute;                   // +0x18
     bool                         Interrupted;               // +0x19

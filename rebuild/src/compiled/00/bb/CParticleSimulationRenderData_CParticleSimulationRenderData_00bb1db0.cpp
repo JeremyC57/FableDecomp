@@ -13,7 +13,7 @@ struct CBase {
     CBase();                           // 0x0099A2F0
 };
 
-struct CParticleSimulationRenderData : CBase {
+class CParticleSimulationRenderData : public CBase { public:
     virtual void v00();                    // this class has its own vtable
     CParticleSimulationRenderData();
 };

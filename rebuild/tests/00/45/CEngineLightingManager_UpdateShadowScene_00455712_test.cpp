@@ -3,7 +3,7 @@
 struct CObjA { void Do(int v); };
 struct CFreeTgt { void Do(void* a24, void* arg); };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad0[0x18];
     int mode;
     char pad1c[0x24-0x1c];

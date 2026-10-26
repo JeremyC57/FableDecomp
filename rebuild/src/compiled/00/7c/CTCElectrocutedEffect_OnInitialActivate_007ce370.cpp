@@ -4,7 +4,7 @@ struct Sub {
     int  SetActive(int on);   // 0x4c7590  (thiscall)
     void Refresh();           // 0x4c7c40  (thiscall)
 };
-struct CTCElectrocutedEffect {
+class CTCElectrocutedEffect { public:
     void* vt;
     Sub*  sub;   // +4
 };

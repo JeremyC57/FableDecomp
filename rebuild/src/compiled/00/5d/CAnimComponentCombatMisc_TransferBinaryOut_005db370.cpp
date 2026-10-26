@@ -8,7 +8,7 @@
 // the stream reference is kept in edi across the two calls.
 #include "engine/CAnimComponentCombatMisc.h"
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);                 // 0x00993E30
 };
 

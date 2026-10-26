@@ -4,7 +4,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 static int g_destroy = 0, g_lastCleared = 0; static CEnginePrimitiveHandle* g_lastHandle = 0;
 struct CEnginePrimitiveBase {
     virtual void v00() {}
@@ -38,7 +38,7 @@ struct CIVCountedPointer_Primitive {
 struct CBase {
     virtual void v00() {}
 };
-struct CEnginePrimitiveHandle : CBase {
+class CEnginePrimitiveHandle : public CBase { public:
     CIVCountedPointer_Primitive Data;
     void Clear()
     {
@@ -47,7 +47,7 @@ struct CEnginePrimitiveHandle : CBase {
         Data = CIVCountedPointer_Primitive();
     }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Set(float x, float y, float z) { Z = z; Y = y; X = x; }
 };

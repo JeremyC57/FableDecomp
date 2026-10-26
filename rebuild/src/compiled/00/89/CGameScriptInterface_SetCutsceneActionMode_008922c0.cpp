@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString;
+class CCharString;
 struct Inner { void SetMode(bool, const CCharString&); };
 extern Inner* g_cutscene;
 struct CGameScriptInterface_Methods : CGameScriptInterface {

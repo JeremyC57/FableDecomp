@@ -1,8 +1,8 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     char pad[0x3c];
     void* m_ptr;
 };

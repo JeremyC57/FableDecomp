@@ -13,7 +13,7 @@
 // Shape: early `return false` for a dead bar; the component pointer preset to null (`xor ebx,ebx`, no miss-path load); the creature a named local read before the by-value string copy;
 // the integer string temporary shares the lookup-key slot. Engine header is padding only, so a local model.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
+class CTCBase;
 
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -66,12 +66,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -82,9 +82,9 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
 };
 
-struct CRightHandedSet { float m[6]; };         // 0x18 bytes
-struct C3DVector { float X, Y, Z; };
-struct CCharString {                            // 4 bytes: the shared string data pointer
+class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:                            // 4 bytes: the shared string data pointer
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -94,7 +94,7 @@ struct CCharString {                            // 4 bytes: the shared string da
 };
 CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830 (hidden result in ecx)
 
-struct CTCNamedUserActionPoints {               // interface 0x2E
+class CTCNamedUserActionPoints { public:               // interface 0x2E
     bool GetFreeNamedActionPoint(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, CCharString name,
                                  long* actionPointIndex, long slot, bool reserve);   // 0x007FF190
 };

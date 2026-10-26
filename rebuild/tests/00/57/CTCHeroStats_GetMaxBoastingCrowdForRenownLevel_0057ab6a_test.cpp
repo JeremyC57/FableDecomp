@@ -6,7 +6,7 @@ struct CLongVector {
     unsigned long size() const { return (unsigned long)(m_pLast - m_pFirst); }
     const long& operator[](unsigned long index) const { return m_pFirst[index]; }
 };
-struct CHeroStatsDef { CLongVector RenownLevelMaxBoastingCrowd; };
+class CHeroStatsDef { public: CLongVector RenownLevelMaxBoastingCrowd; };
 struct CDefinitionHolder { CHeroStatsDef* PHeroStatsDef; };
 static CDefinitionHolder* g_holder = 0;
 struct CTCHeroStats_Retail {

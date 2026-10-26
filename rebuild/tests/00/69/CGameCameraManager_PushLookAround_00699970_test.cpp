@@ -55,13 +55,13 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CBase;
-struct CCPPointerInfo;
-struct CDefPointeeBase;
+class CCPPointerInfo;
+class CDefPointeeBase;
 struct CScriptModuleBase;
-struct CWorld;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char      Camera[0x38];                         // +0x04 CCamera
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
@@ -195,8 +195,8 @@ FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPoints) == 0x178);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -204,8 +204,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -300,14 +300,14 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -370,15 +370,15 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #endif // FABLE_ENGINE_CTHING_H
 
 #undef CThing
-struct CThing {unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
+class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
 struct CObservedThingPointer {void* VTable;void* PointerInfo;CThing* GetPItem()const;}; //00A01B50
-struct CCameraManagerDef;struct CCameraManagerDefPointer {CCameraManagerDef* Object;operator CCameraManagerDef*()const{return Object;}};
+class CCameraManagerDef;struct CCameraManagerDefPointer {CCameraManagerDef* Object;operator CCameraManagerDef*()const{return Object;}};
 struct CCameraModeDefPointer {void* Object;};
 extern CCameraModeDefPointer g_DefaultCameraModeDef; //013BA8D8
-struct CGameCameraManager;
+class CGameCameraManager;
 struct CPhysicsState {float Position[3],Velocity[3],Acceleration[3];void* Attractors;void* Incidentals;bool Cull;};
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
  void* VTable;float DefaultFOV,DefaultRoll,DefaultOffset;CPhysicsState LookAt;
  CGameCameraManager* Manager;void* ModeDef;void *SubFirst,*SubLast,*SubEnd;
  CPhysicsState GoTo;float FOV,Roll,Offset,RightStick[2],LeftStick[2];bool ViewOccluded;
@@ -394,7 +394,7 @@ struct CManualScriptModule;
 struct CManualScriptVTable {void* ScalarDeletingDestructor;void* InheritedSlot1;bool (__fastcall* AllowsManualControl)(CManualScriptModule*);};
 struct CManualScriptModule {CManualScriptVTable* VTable;bool AllowsManualControl(){return VTable->AllowsManualControl(this);}};
 void __fastcall PlayCameraSoundThroughObservedThing(CThing*,CCameraManagerDef*,const CCharString&); //00698A30
-struct CGameCameraManager {
+class CGameCameraManager { public:
  void* VTable;unsigned char CameraAndControlState[0xd0];
  CManualScriptModule* PCurrentScriptModule;void* CurrentScriptInfo;CManualScriptModule* PPendingScriptModule;void* PendingScriptInfo;
  unsigned char ScriptAndQuakeState[0x1c];CObservedThingPointer PObservedThing;

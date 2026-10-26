@@ -15,7 +15,7 @@
 //        parameter by address.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
@@ -26,7 +26,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CBitset       m_present;                    // +0x20
     unsigned char _pad24[0x20];
@@ -51,21 +51,21 @@ struct CThing {
     }
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 
-struct CTCHeroOpinionDeedLog {
-    struct COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+class CTCHeroOpinionDeedLog { public:
+    class COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
     long FindWitnessDeed(long handle);          // 0x006C5710
     void RemoveDeedStillSearchingForWitnesses(long handle);   // 0x006C5920
     void RemoveDeed(long handle);               // 0x006C59E0
@@ -80,7 +80,7 @@ struct CCrimeSet {                              // retail STLport set<long>, 12 
     unsigned long erase(const long& key);       // 0x00639590
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad_0x00[0x64];
     CCrimeSet     PlayersCrimes;                // +0x64
     unsigned char _pad_0x70[0xc];

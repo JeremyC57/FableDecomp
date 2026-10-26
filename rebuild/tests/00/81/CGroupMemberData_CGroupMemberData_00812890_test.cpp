@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CBaseObject { int x; };
+class CBaseObject { public: int x; };
 static int g_ctor = 0;
 struct CBaseIntelligentPointer { virtual void v00() { } CBaseObject* PItem; CBaseIntelligentPointer() : PItem((CBaseObject*)1) { ++g_ctor; }
     void SetPItem(CBaseObject* item) { PItem = item; } };
 
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() { } CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); } };
-struct CGroupMemberData { CIntelligentPointer PMember; bool IsActive; unsigned long JoinedFrame; unsigned long DeactivatedFrame;
+class CGroupMemberData { public: CIntelligentPointer PMember; bool IsActive; unsigned long JoinedFrame; unsigned long DeactivatedFrame;
     CGroupMemberData(CBaseObject* member, bool isActive, unsigned long joinedFrame, unsigned long deactivatedFrame)
         : PMember(member), IsActive(isActive), JoinedFrame(joinedFrame), DeactivatedFrame(deactivatedFrame) { } };
 int main()

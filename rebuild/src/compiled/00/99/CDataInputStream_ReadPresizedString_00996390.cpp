@@ -13,7 +13,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     CCharString(const CCharString& other);                 // 0x0099EC30

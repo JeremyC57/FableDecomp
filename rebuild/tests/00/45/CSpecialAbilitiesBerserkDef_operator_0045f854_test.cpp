@@ -1,12 +1,12 @@
 #include <cstdio>
 static int g_calls = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     long m_base;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { m_base = o.m_base; ++g_calls; return *this; }
 };
 struct CFloatVector { long v; CFloatVector& operator=(const CFloatVector& o) { v = o.v; ++g_calls; return *this; } };
 struct CLongVector { long v; CLongVector& operator=(const CLongVector& o) { v = o.v; ++g_calls; return *this; } };
-struct CSpecialAbilitiesBerserkDef : CParentDefClassBase {
+class CSpecialAbilitiesBerserkDef : public CParentDefClassBase { public:
     float SpeedMultiplier;
     long FramesToFadeOut;
     float LowerBerserkPercent;

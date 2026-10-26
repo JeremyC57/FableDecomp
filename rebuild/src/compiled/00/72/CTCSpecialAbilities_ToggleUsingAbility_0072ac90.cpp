@@ -8,7 +8,7 @@
 // interface map at +0x44 (the landed GetInterface shape of 0x007504E0).
 // Shape: the inline out-parameter GetInterface keeps the map and then the component in esi; nested ifs share the
 // `xor al,al` exit. GetInterface must be `__forceinline`: as a plain inline template VC7.1 emits it out of line here.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
     CInterfaceMap m_interfaces;                             // +0x44
@@ -37,12 +37,12 @@ struct CThing {
     }
 };
 
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     bool IsMoveActive();                                    // 0x0079DCB0
     void CancelMove();                                      // 0x0079E300
 };
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     bool ToggleUsingAbility(long ability);

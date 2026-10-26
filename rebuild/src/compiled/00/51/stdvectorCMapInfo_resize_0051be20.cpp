@@ -15,7 +15,7 @@
 //   counted pointer's release re-reading its block).
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
@@ -25,7 +25,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);     // +4 per-type deleter, object in ecx
     void* m_pObject;                            // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* m_pCount;
     CCountedPointer() : Data(0), m_pCount(0) { }
@@ -37,9 +37,9 @@ template <class T> struct CCountedPointer {
         }
     }
 };
-struct C2DBoxI { long Left, Top, Right, Bottom; };
-struct CMap;
-struct CMapInfo {                               // 0x48 bytes
+class C2DBoxI { public: long Left, Top, Right, Bottom; };
+class CMap;
+class CMapInfo { public:                               // 0x48 bytes
     C2DBoxI Area;                               // +0x00
     CCountedPointer<CMap> PMap;                 // +0x10
     CCharString LevelName;                      // +0x18

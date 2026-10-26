@@ -30,16 +30,16 @@ struct CPhysicsBody {                           // the thing's physics body at +
 #undef VF
     virtual C3DVector GetFacing();              // slot 70 (+0x118)
 };
-struct CThing;
-struct CThingCreatureBase;
-struct CTCBase;
+class CThing;
+class CThingCreatureBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -62,15 +62,15 @@ struct CThing {
         return false;
     }
 };
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
     bool IsPerformingAnyAction();               // 0x006622A0
 };
-struct CTCStealth {                             // interface 0x36
+class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* source, long status);   // 0x00747B80
 };
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     bool HasMode(long mode);                    // 0x0073A8A0
 };
 struct CBaseIntelligentPointer {
@@ -93,12 +93,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -125,7 +125,7 @@ struct CCountedPointer {
         Block = 0;
     }
 };
-struct CBrainOutput {                           // 0x48 bytes
+class CBrainOutput { public:                           // 0x48 bytes
     unsigned long Flags;                        // +0x00 (8: perform action)
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointer PAction;                    // +0x20
@@ -133,32 +133,32 @@ struct CBrainOutput {                           // 0x48 bytes
     CBaseIntelligentPointer PTarget;            // +0x40
     CBrainOutput();                             // 0x00835620
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
     virtual void* Clone() const;                // slot 11 (+0x2c)
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_IceTrollIcicleAttack : CCombatActionBase {   // vtable 0x012960C4
+class CCreatureAction_IceTrollIcicleAttack : public CCombatActionBase { public:   // vtable 0x012960C4
     virtual void v00();
     CCreatureAction_IceTrollIcicleAttack(CThingCreatureBase* owner, CThing* target)
         : CCombatActionBase(owner, target, 0x96, CSoundPair()) { }
 };
-struct CCombatAction_StabThing : CCombatActionBase {   // manifest label (propagated?) for 0x0094E5F0
+class CCombatAction_StabThing : public CCombatActionBase { public:   // manifest label (propagated?) for 0x0094E5F0
     unsigned char _stab[4];
     CCombatAction_StabThing(CThingCreatureBase* owner, CThing* target);   // 0x0094E5F0
 };
-struct CCreatureAction_RiseUp : CCombatActionBase {
+class CCreatureAction_RiseUp : public CCombatActionBase { public:
     long m_riseState;
     CCreatureAction_RiseUp(CThingCreatureBase* creature);   // 0x008BD880
 };
-struct CCreatureAction_PlayCombatAnimation : CCombatActionBase {
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     long m_loop;                                // retail sizeof 0x118 (frame)
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
@@ -167,14 +167,14 @@ inline void SetPerformAction(CBrainOutput& output, CCombatActionBase* action)
     output.Flags |= 8;
     output.PAction.Reset(action->Clone());
 }
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                       // slot 2 (+0x08)
     unsigned char _pad04[0x18 - 0x04];
     CThingCreatureBase* PCreature;              // +0x18
     void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

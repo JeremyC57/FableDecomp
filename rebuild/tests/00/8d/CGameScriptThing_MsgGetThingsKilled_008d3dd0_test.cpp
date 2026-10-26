@@ -22,7 +22,7 @@ struct CULongVector {
     unsigned long data[8]; int n;
     void push_back(const unsigned long& value) { data[n++] = value; }
 };
-struct CGameScriptThing {
+class CGameScriptThing { public:
     CThingNative* PThing;
     bool MsgGetThingsKilled(CULongVector& groups) const
     {

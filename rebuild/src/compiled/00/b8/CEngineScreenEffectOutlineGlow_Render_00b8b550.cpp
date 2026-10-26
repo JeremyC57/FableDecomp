@@ -2,12 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B8B550, length 39 bytes.
 // Callees: ApplyOutline @ 0x00B89C30 and the texture release @ 0x00B89080 (both on `this`). Shape: the flag byte through al, the immediate compare on the params word,
 // `ret 4`.
-struct CEngineComponentRenderParams {
+class CEngineComponentRenderParams { public:
     long m_a;
     long m_kind;                                   // +0x04
 };
 
-struct CEngineScreenEffectOutlineGlow {
+class CEngineScreenEffectOutlineGlow { public:
     unsigned char _pad[8];
     bool          m_enabled;                       // +0x08
     void ApplyOutline();                           // 0x00B89C30

@@ -10,12 +10,12 @@
 // Layout: as the landed sibling BoastUseNoHealthPotions 0x00CE4600 (CScriptBase retail 0x40 bytes, GSI +0x40).
 // Shape: the failure test is one `||` expression whose middle operand holds the conditionally built "OBJECT_FRYING_PAN"
 //   temporary (destruction flag in the first frame word, result in bl); a quest-failed failure skips the game-info.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -68,7 +68,7 @@ struct CGameScriptInterface {
 };
 
 namespace NScript {
-struct CQ_SunnyvaleMasterData;
+class CQ_SunnyvaleMasterData;
 
 struct CScriptBase {                               // retail 0x40 bytes
     virtual void v00();
@@ -78,7 +78,7 @@ struct CScriptBase {                               // retail 0x40 bytes
 
 enum { BOAST_USE_ONLY_FRYING_PAN = 2 };
 
-struct CHeroBoastsScript : CScriptBase {
+class CHeroBoastsScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                   // +0x40
     CQ_SunnyvaleMasterData* PMasterData;           // +0x44
     void BoastUseOnlyFryingPan(CCharString questName);

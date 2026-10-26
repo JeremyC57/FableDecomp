@@ -16,7 +16,7 @@
 //          local before SetAttackedByCreature. Two same-TU stand-in bodies (const LowerBound 0x004365B0 and GetEvent
 //          0x008AF0A0, both seen by retail's LTCG) tell VC7.1 the key and the hit pointer do not escape.
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -60,24 +60,24 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
 };
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     float GetLengthSquared() const { return x * x + y * y; }
 };
 
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -115,17 +115,17 @@ struct CThing {
     }
 };
 
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);   // 0x006CB840
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
     CThing* GetPCreature() const { return PCreature; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -146,7 +146,7 @@ struct CThingWorld {
 };
 extern long g_ChickenPanicMemory;               // 0x01375550
 
-struct CDefString {
+class CDefString { public:
     long Index;
     bool operator==(const char* text) const;    // 0x005B3440
 };
@@ -165,14 +165,14 @@ struct CHitDefPointer {
     CHitDef* operator->() const { return Object; }
 };
 namespace NEntityEvents {
-    struct CEventHitBy {
+    class CEventHitBy { public:
         unsigned char _00[8];
         CBaseIntelligentPointer Attacker;       // +0x08
         CHitDef* Def;                           // +0x10
     };
-    struct CEventFilter_None { CEventFilter_None() { } };
+    class CEventFilter_None { public: CEventFilter_None() { } };
 }
-struct CTCEntityEvents {                        // interface 0x42
+class CTCEntityEvents { public:                        // interface 0x42
     unsigned char _00[0x0c];
     const NEntityEvents::CEventHitBy* FirstHit; // stand-in view of the event list
     bool GetEvent_008af0a0(const NEntityEvents::CEventHitBy** out, const NEntityEvents::CEventFilter_None& filter);   // 0x008AF0A0 (stand-in body below)

@@ -3,8 +3,8 @@
 #include <cstring>
 static char g_seq[128] = "";
 static void note(const char* s) { std::strcat(g_seq, s); }
-struct CMovableResource { virtual void v00() { } }; static void* g_blocks[5]; static long g_n = 0; static CMovableResource* g_owner = 0;
-struct CEngineLandscapeMemoryManager { void RebindBlockOwner(void* b, CMovableResource* o) { note("B"); g_blocks[g_n++] = b; g_owner = o; } void RebindBufferOwner(void* b, CMovableResource* o) { note("b"); g_blocks[g_n++] = b; g_owner = o; } };
+class CMovableResource { public: virtual void v00() { } }; static void* g_blocks[5]; static long g_n = 0; static CMovableResource* g_owner = 0;
+class CEngineLandscapeMemoryManager { public: void RebindBlockOwner(void* b, CMovableResource* o) { note("B"); g_blocks[g_n++] = b; g_owner = o; } void RebindBufferOwner(void* b, CMovableResource* o) { note("b"); g_blocks[g_n++] = b; g_owner = o; } };
 struct SEngine { unsigned char _pad[0x6b0]; CEngineLandscapeMemoryManager* m_pLandscapeMemory; }; static CEngineLandscapeMemoryManager g_mem; static SEngine g_engine; static SEngine* g_pEngine = &g_engine;
 struct CMesh : CMovableResource { unsigned char _pad04[0x40]; void* m_pBuffer44; void* m_pBlock48; void* m_pBuffer4c; void* m_pBlock50; void* m_pBuffer54;
     void OnPostRelocation() { CEngineLandscapeMemoryManager* manager = g_pEngine->m_pLandscapeMemory; manager->RebindBlockOwner(m_pBlock50, this); manager->RebindBufferOwner(m_pBuffer54, this); manager->RebindBufferOwner(m_pBuffer44, this); manager->RebindBlockOwner(m_pBlock48, this); manager->RebindBufferOwner(m_pBuffer4c, this); } };

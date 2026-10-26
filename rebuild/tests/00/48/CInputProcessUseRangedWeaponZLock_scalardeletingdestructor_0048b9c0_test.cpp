@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessUseRangedWeaponZLock {
+class CInputProcessUseRangedWeaponZLock { public:
     void* vftable;
     int destroyed;
 };

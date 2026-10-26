@@ -10,13 +10,13 @@
 // pointer with the inline `if (p) Count = new Block(Object); else Count = 0;` constructor (three duplicated exits,
 // the object re-read through `this`).
 // Layout: Ego_r.pdb PFollowUpAction at +0xb4; retail CCreatureActionBase is 0xa8, so it sits at +0xa8.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -31,7 +31,7 @@ struct CPointeeVirtual {
     virtual void v00();
     virtual void Destroy();                            // slot 1
 };
-struct CAnimComponentMap : CPointeeVirtual, CRefCountedBase {
+class CAnimComponentMap : public CPointeeVirtual, public CRefCountedBase { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -40,7 +40,7 @@ struct CAnimComponentMap : CPointeeVirtual, CRefCountedBase {
     }
 };
 
-struct CAnimationEntry {                               // 16 bytes
+class CAnimationEntry { public:                               // 16 bytes
     long               BankIndex;                      // +0x00
     long               AnimName;                       // +0x04 CDefString
     long               GroupName;                      // +0x08 CDefString
@@ -57,7 +57,7 @@ struct CAnimationEntry {                               // 16 bytes
 
 const CAnimationEntry& __fastcall GetAnimationFromName(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureActionBase {                           // retail sizeof 0xa8
+class CCreatureActionBase { public:                           // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, const CAnimationEntry& animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
@@ -72,7 +72,7 @@ struct SCountBlock {
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(DeleteCreatureAction), m_pObject(object) { }
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                            // +0
     SCountBlock* m_pCount;                             // +4
     CCountedPointer(T* object) : m_pObject(object)
@@ -84,7 +84,7 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {   // vtable 0x0125C83C
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:   // vtable 0x0125C83C
     CCountedPointer<CCreatureActionBase> PFollowUpAction;              // +0xa8 (PDB +0xb4)
     virtual void v00();
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase* owner, const CCharString& animation, CCreatureActionBase* followUp, long c);

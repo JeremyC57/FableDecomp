@@ -9,12 +9,12 @@ struct CLongVector {
     long v[2]; int assigned;
     CLongVector& operator=(const CLongVector& o) { v[0] = o.v[0]; v[1] = o.v[1]; ++assigned; return *this; }
 };
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     virtual void Copy(const CTCBase& other) { ParentThing = other.ParentThing; ++g_baseCopies; }
     virtual ~CTCBase() {}
 };
-struct CTCHeroStats : CTCBase {
+class CTCHeroStats : public CTCBase { public:
     long  Morality; float Age; float SunTan; float Fatness; long Money; long ConfiscatedMoney;
     long  Stamina; long MaxStamina; long FramesUntilStaminaRefills;
     long  RenownLevel; long RenownPointsInLevel; long RenownTotal;

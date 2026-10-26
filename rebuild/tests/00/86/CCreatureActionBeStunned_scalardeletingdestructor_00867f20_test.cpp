@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BeStunned {
+class CCreatureAction_BeStunned { public:
     void* vftable;
     int destroyed;
 };

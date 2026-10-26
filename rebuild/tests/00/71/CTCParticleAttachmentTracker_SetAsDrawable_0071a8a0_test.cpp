@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     unsigned char m_removeFlags;
     int drawable;
     virtual ~CThing() { }
@@ -12,7 +12,7 @@ struct CParticleList {
     SParticleNode* begin() const { return m_node->m_next; }
     SParticleNode* end() const { return m_node; }
 };
-struct CTCParticleAttachmentTracker {
+class CTCParticleAttachmentTracker { public:
     CParticleList AttachedParticles;
     void SetAsDrawable(bool drawable)
     {

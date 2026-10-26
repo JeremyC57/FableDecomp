@@ -13,10 +13,10 @@
 // Shape: the thing's def comes from an inline by-value getter (null-tested add-ref into edi, GetSubDef,
 // null-tested release); the ability def pointer is a named local zeroed in the dead argument slot and
 // released by its destructor with no null test (load/dec/store); `1.0f / frameRate` is `fdivr`.
-struct CDefClassBase;
-struct CSpecialAbilitiesDrunkennessDef;
+class CDefClassBase;
+class CSpecialAbilitiesDrunkennessDef;
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object != 0) Object->AddRef(); }
@@ -24,7 +24,7 @@ template<class T> struct CDefPointer {
     T* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long RefCount;                                          // +0x04
@@ -46,7 +46,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(struct CDrunkennessDefPointer
 }
 #pragma auto_inline(on)
 
-struct CSpecialAbilitiesDrunkennessDef {
+class CSpecialAbilitiesDrunkennessDef { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long          RefCount;                                 // +0x04
@@ -62,7 +62,7 @@ struct CDrunkennessDefPointer {                             // CDefPointer<const
     CSpecialAbilitiesDrunkennessDef* operator->() const { return Object; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char             _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;                        // +0x70
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }
@@ -72,7 +72,7 @@ extern long g_FrameRate;                                    // 0x01375550
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -81,7 +81,7 @@ struct CTCBase {
     unsigned long* GetPLocalSeed() const;                   // 0x00686DA0
 };
 
-struct CTCDrunkenness : CTCBase {                           // vtable 0x0126DEB4
+class CTCDrunkenness : public CTCBase { public:                           // vtable 0x0126DEB4
     bool  Drunk;                                            // +0x0c
     float Drunkenness;                                      // +0x10
     long  FrameLastUpdatedSobering;                         // +0x14

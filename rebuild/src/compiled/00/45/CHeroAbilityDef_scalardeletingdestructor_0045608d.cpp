@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 extern "C" void __cdecl fable_operator_delete(void* p);
 
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
     int f0;
     void CHeroAbilityDef_dtor();
     void* scalar_deleting_destructor(unsigned int flags);

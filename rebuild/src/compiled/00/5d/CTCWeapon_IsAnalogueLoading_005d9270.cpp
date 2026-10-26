@@ -5,7 +5,7 @@ struct RefTarget {
     bool analogueLoading;
 };
 
-struct CTCWeapon {
+class CTCWeapon { public:
     char pad[0xc];
     RefTarget* m_target;
 };

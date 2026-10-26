@@ -3,7 +3,7 @@
 #include <cstring>
 namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() {} }; } using N_0099a2d0::CBase;
 struct CEventRecord { unsigned char _body[0x2c]; CEventRecord() { std::memset(_body, 0, sizeof(_body)); } };
-struct CMaintainedEvent : CBase { CEventRecord m_record; virtual void v00() {} CMaintainedEvent(); };
+class CMaintainedEvent : public CBase { public: CEventRecord m_record; virtual void v00() {} CMaintainedEvent(); };
 CMaintainedEvent::CMaintainedEvent() : CBase(), m_record() { }
 int main()
 {

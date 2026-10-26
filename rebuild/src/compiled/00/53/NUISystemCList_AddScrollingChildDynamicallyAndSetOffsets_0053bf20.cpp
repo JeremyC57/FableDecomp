@@ -12,7 +12,7 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -108,7 +108,7 @@ struct CEventListener {
     virtual void e00(); virtual void e01(); virtual void e02();
     virtual void HandleEvent(long event);   // slot 3 (+0x0c)
 };
-struct CComponent : CComponentBase, CEventListener {
+class CComponent : public CComponentBase, public CEventListener { public:
 };
 class CFrontEndManager {
 public:
@@ -144,10 +144,10 @@ struct CCountedPointerVector {              // vector<CCountedPointer<CComponent
     unsigned int size() const { return (unsigned int)(Last - First); }
 };
 
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
     void AddChildDynamically(const CCountedPointer<CComponent>& child);   // 0x0052CAB0
 };
-struct CList : CChangingStateComponent {
+class CList : public CChangingStateComponent { public:
     unsigned char           _pad008[0xb0 - 8];
     CCountedPointerVector   Children;                       // +0xb0
     unsigned char           _pad0bc[0xe4 - 0xbc];

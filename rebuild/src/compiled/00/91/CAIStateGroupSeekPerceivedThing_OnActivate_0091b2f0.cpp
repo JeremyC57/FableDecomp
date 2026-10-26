@@ -8,14 +8,14 @@
 // Shape: `FrameLastCaptured = GetPWorld()->GetFrameCount() - GFSecondsToFrames(g_seekBackSeconds)` -- the object
 // expression is evaluated first, then the right operand (kept in edi), then the static call. Member +0x14 from
 // struct_layouts_egor.tsv (no engine header).
-struct CWorld {
+class CWorld { public:
     static long GetFrameCount();                // 0x0049D870 (GFGetCurrentFrame)
 };
 
 extern long __stdcall GFSecondsToFrames(float seconds);   // 0x00415FC1
 extern float g_seekBackSeconds;                 // 0x0138C6C4
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01();
     virtual void OnActivate();                  // slot 2 (+0x08)

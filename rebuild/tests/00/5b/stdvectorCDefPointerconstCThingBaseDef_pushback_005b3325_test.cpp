@@ -3,15 +3,15 @@
 // x, __false_type(), 1, true) (stubbed here).
 #include <stdio.h>
 #include <stddef.h>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;
     mutable long m_refCount;
 };
 void CDefPointeeBase::v00() { }
 void CDefPointeeBase::Destroy() const { }
-struct CThingBaseDef;
-template <class T> struct CDefPointer { CDefPointeeBase* Object; };
+class CThingBaseDef;
+template <class T> class CDefPointer { public: CDefPointeeBase* Object; };
 typedef CDefPointer<const CThingBaseDef> P;
 namespace std {
 struct __false_type { __false_type() {} };

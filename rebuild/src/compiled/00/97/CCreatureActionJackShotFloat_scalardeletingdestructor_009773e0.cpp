@@ -1,4 +1,4 @@
-struct CCreatureAction_JackShotFloat {
+class CCreatureAction_JackShotFloat { public:
     void* vftable;
 };
 

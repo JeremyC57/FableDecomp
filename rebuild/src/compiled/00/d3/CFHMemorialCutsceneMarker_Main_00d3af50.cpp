@@ -11,10 +11,10 @@
 //   interface pointer re-read for it; the float argument goes through `push ecx ; fstp [esp]`; the cutscene name is built
 //   in the argument slot (`push ecx ; mov ecx,esp`) by a by-value CCharString with a user copy constructor; &Me is formed
 //   once for the last two calls.
-struct CThing;
-struct CScriptThing { unsigned char _body[12]; };
+class CThing;
+class CScriptThing { public: unsigned char _body[12]; };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);  // 0x0099EBF0
     CCharString(const CCharString& other);

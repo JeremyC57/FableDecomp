@@ -17,7 +17,7 @@
 // The local view is named CTCInventoryTrade_Retail so it does not shadow the PDB header engine/CTCInventoryTrade.h.
 #pragma optimize("s", on)
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual ~CComponent();
 };
 }

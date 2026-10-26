@@ -11,7 +11,7 @@
 // Shape: the light pointer is zero-initialised before the presence test (`xor esi,esi` preloaded, GOTCHAS chunk 144), the def
 // out pointer is homed in the dead `user` argument slot and released by a null-tested CDefPointer dtor calling the def's inline
 // ReleaseTemporary() over its ref-count base at +4 (`mov esi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec esi ; ... test`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -27,7 +27,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                             // slot 1
 };
-struct CLightDef : CDefVirtual, CRefCounted {
+class CLightDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -35,7 +35,7 @@ struct CLightDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -44,10 +44,10 @@ template <class T> struct CDefPointer {
             Object->ReleaseTemporary();
     }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CLightDef>* out) const;   // 0x0059346A
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20 interface-present bitset
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -64,7 +64,7 @@ struct CThing {
         return it->component;
     }
 };
-struct CTCLight {
+class CTCLight { public:
     unsigned char _pad00[0x1c];
     bool Active;                                        // +0x1c
     void SetLightDef(const CDefPointer<CLightDef>& def);   // 0x00640E60
@@ -73,7 +73,7 @@ struct CTCLight {
 struct CTCShowableItem {
     void OnShowEnded();                                 // 0x005D8E50
 };
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     void OnUseBase(CThing* user);                       // 0x007EAB90 (empty base implementation)

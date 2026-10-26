@@ -1,8 +1,8 @@
 // Behaviour test for CEnginePrimitiveLine::CEnginePrimitiveLine @ 0x004C3090.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CEnginePrimitiveLine {
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CEnginePrimitiveLine { public:
     long m_type; long m_interpolation; bool m_flag8, m_flag9, m_flagA; C3DVector m_start, m_end; CRGBColour m_colour;
     float m_width; unsigned int m_flags; long m_blendMode, m_blendOp; bool m_depthTest;
     CEnginePrimitiveLine(unsigned long long, const C3DVector& s, const C3DVector& e, const CRGBColour& c, float w, long blend,

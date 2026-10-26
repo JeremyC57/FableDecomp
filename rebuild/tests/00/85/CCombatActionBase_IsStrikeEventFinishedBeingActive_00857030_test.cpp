@@ -12,7 +12,7 @@ static void Link(CStrikeEventNode* head, CStrikeEventNode* nodes, int n) { head-
 
 struct CIsStrikeEventActiveAfterFrame { long m_frame; CIsStrikeEventActiveAfterFrame(long f) : m_frame(f) { } bool operator()(const CStrikeEvent* e) const { return e->EndFrame > m_frame; } };
 template<class I, class P> I find_if(I first, I last, P pred) { for (; first != last; ++first) { if (pred(*first)) break; } return first; }
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() {} unsigned char _pad04[0x1c - 4]; long FramesRunning; unsigned char _pad20[0xbc - 0x20]; CStrikeEventList StrikeEvents; unsigned char _padc4[0x114 - 0xc4];
     bool IsStrikeEventFinishedBeingActive() const {
         if (StrikeEvents.m_size <= 0) return false;

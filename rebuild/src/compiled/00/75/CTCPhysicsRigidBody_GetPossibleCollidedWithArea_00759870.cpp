@@ -8,9 +8,9 @@
 // Shape: a C2DBoxI local filled corner by corner in order (x0, y0, x1, y1: the radius stays on the FPU stack), validated, and
 //   returned by value through the hidden pointer (copied out by the __forceinline memberwise copy ctor:
 //   no NRVO; the implicit copy goes through ecx with `mov ecx,eax`).
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     C2DBoxI() {}
@@ -23,7 +23,7 @@ struct C2DBoxI {
     }
     void ValidateOrientationAndFlip();          // 0x00A3A150
 };
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned short BankIndex;                   // +0x00
     float          RenderSizeX;                 // +0x04
     C3DVector      ToCentre;                    // +0x08

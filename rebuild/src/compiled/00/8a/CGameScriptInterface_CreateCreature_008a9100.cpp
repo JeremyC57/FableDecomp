@@ -14,20 +14,20 @@
 // Shape: the init's two CCharString default arguments are `""` literals (converted temporaries built before the
 //   copies, passed by `lea`); `result` is declared before the def pointer; the delay loop counts down from the member.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -50,14 +50,14 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
     CCountedScriptImp PImp;                             // +0x04
     CScriptThing() {}
     virtual ~CScriptThing() {}
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
 };
 
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
@@ -69,7 +69,7 @@ struct CDefPointerThingCreatureDef {
     CDefPointerThingCreatureDef() : Object(0) {}
     ~CDefPointerThingCreatureDef() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);                     // 0x009AD410
     bool GetDef(long globalIndex, CDefPointerThingCreatureDef* out);             // 0x00513160
 };
@@ -85,9 +85,9 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long globalIndex, CDefP
 }
 #pragma auto_inline(on)
 
-struct CThingPhysical;
-struct CThingBuilding;
-struct CThingAICreatureInit {                           // Ego_r.pdb, 28 bytes
+class CThingPhysical;
+class CThingBuilding;
+class CThingAICreatureInit { public:                           // Ego_r.pdb, 28 bytes
     CThingPhysical* OriginalThing;                      // +0x00
     CThingPhysical* PreviousThing;                      // +0x04
     CCharString ScriptName;                             // +0x08
@@ -103,8 +103,8 @@ struct CThingAICreatureInit {                           // Ego_r.pdb, 28 bytes
           PlayerCharacter(false), Drawable(true), PlaceAtEndOfList(true), EnableCreatureAutoPlacing(false),
           HomeBuilding(0), WorkBuilding(0) {}
 };
-struct CCreatureActionBase;
-struct CThingAICreature {
+class CCreatureActionBase;
+class CThingAICreature { public:
     CScriptThing GetScriptThing();                      // 0x004C7E50 (CThing)
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0 (CThingCreatureBase)
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& position, long player,
@@ -117,8 +117,8 @@ struct CCreatureActionAppear {                          // 0x114-byte creature a
     operator const CCreatureActionBase&() const { return *(const CCreatureActionBase*)this; }
 };
 
-struct CWorld; struct CMainGameComponent; struct CDisplayEngine;
-struct CGameScriptInterface {
+class CWorld; class CMainGameComponent; class CDisplayEngine;
+class CGameScriptInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void NewScriptFrame();                      // slot 7 (+0x1C)
     CWorld*                 World;                      // +0x04

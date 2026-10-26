@@ -15,22 +15,22 @@
 //         loads the global into ebx; a frames-per-second local read first puts the load ahead of the call).
 extern long g_FramesPerSecond;                  // 0x01375550
 long __fastcall GFGetCurrentFrame();             // 0x0049D870
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const C3DVector& GetPosition() const;       // 0x006A4D00
 };
-struct CThingAICreature : CThingCreatureBase { };
-struct CThingPlayerCreature : CThingCreatureBase { };
+class CThingAICreature : public CThingCreatureBase { public: };
+class CThingPlayerCreature : public CThingCreatureBase { public: };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
@@ -39,7 +39,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     template<class U> __forceinline CIntelligentPointer(const CIntelligentPointer<U>& other) { SetPItem(other.GetPItem()); }
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
@@ -49,16 +49,16 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {    // the MoveToThin
     CIntelligentPointerThing(const CBaseIntelligentPointer& other);   // 0x00930D20
 };
 __forceinline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void AddMessage(long type, unsigned long lifetime, const C3DVector* pos, CThing* from, CThing* to,
                     float range, float radius, long data);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* PMessageEventManager; // +0x60
     static unsigned long GetWorldFrame() { return GFGetCurrentFrame(); }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
 };
@@ -67,11 +67,11 @@ namespace N_00910c30 { struct CCreatureAction_DeclarePlayerACriminal : CCreature
     CCreatureAction_DeclarePlayerACriminal(CThingCreatureBase* creature, CThingPlayerCreature* player);   // 0x00910C30
     ~CCreatureAction_DeclarePlayerACriminal();  // 0x00910B20
 }; } using N_00910c30::CCreatureAction_DeclarePlayerACriminal;
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

@@ -1,6 +1,6 @@
 // Behaviour test for 0x0061A2C0 CTCInventoryQuests::GetQuestPositionAndRemoveIt
 #include <cstdio>
-struct CThing { unsigned short DefIndex; unsigned char Dead; };
+class CThing { public: unsigned short DefIndex; unsigned char Dead; };
 struct CPtr { CThing* p; CThing* GetPItem() const { return p; } };
 struct CVec {
     CPtr data[8]; CPtr* _M_start; CPtr* _M_finish;

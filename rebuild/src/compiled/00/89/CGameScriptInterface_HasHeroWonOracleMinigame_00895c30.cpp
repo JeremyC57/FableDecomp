@@ -6,9 +6,9 @@ struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
 struct CDefinitionManager_Retail;
-struct CWorld;
-struct CCharString;
-struct CScriptThing;
+class CWorld;
+class CCharString;
+class CScriptThing;
 struct CDefPointer_Retail;
 #include "engine/CTCOracleMinigame.h"
 struct CTCBase_Retail;
@@ -68,7 +68,7 @@ struct CPlayer_Retail {
 struct CPlayerManager_Retail {
     CPlayer_Retail* GetPlayer();                 // 0x00449970 (labelled "Catch@0040d959", propagated)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent_Retail*  Component;          // +0x08

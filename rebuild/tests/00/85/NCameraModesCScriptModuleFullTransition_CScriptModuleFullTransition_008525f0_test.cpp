@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour model of NCameraModes::CScriptModuleFullTransition ctor @ 0x008525F0 (copy of the source logic, stand-ins).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -9,7 +9,7 @@ struct C3DVector {
     C3DVector operator/(float d) const { float inverse = 1.0f / d; return C3DVector(X * inverse, Y * inverse, Z * inverse); }
 };
 static long g_frame = 1000;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 struct CScriptModuleBase { int baseBuilt; CScriptModuleBase() : baseBuilt(1) {} };
 struct CScriptModuleFullTransition : CScriptModuleBase {
     C3DVector IncrementForLookAtPoints, Increment, LookAtPos, StartPos; long EndFrame;

@@ -9,12 +9,12 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 005663f0: element [index] of the float vector is formatted with six digits and appended.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 static long g_digits = 0;
 static double g_formatted = 0.0;
 static int g_destroyed = 0;
-struct CCharString {
+class CCharString { public:
     long m_tag;
     ~CCharString() { ++g_destroyed; }
     CCharString& operator+=(const CCharString& other) { m_tag += other.m_tag; return *this; }

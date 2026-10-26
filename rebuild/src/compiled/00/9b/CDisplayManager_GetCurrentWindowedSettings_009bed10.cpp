@@ -36,18 +36,18 @@ struct IDirect3D9 {                                // COM: IUnknown + IDirect3D9
     virtual long __stdcall GetAdapterDisplayMode(unsigned long adapter, D3DDISPLAYMODE* mode);                   // slot 8 (+0x20)
 };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;                                        // +0x00
     long Y;                                        // +0x04
 };
 
-struct CPixelFormat {
+class CPixelFormat { public:
     unsigned long m_format;
     void Initialise(unsigned long format);         // 0x009E3830
     unsigned long GetColourDepth();                // 0x009E3820
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad0[0x54];
     IDirect3D9*   D3D;                             // +0x54
     void*         D3DDevice;                       // +0x58

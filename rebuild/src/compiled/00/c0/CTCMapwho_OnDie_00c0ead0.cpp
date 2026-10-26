@@ -1,6 +1,6 @@
 // CTCMapwho::OnDie @ 0x00c0ead0
 // Static/free style: pointer param on stack, ret 4 (stdcall).
-struct CTCMapwho {
+class CTCMapwho { public:
     void Cleanup();  // thiscall method @ 0xc1e260
 };
 

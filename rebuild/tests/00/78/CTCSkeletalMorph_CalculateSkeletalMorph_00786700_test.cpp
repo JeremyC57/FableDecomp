@@ -3,14 +3,14 @@
 // Behaviour test for CTCSkeletalMorph::CalculateSkeletalMorph (0x00786700): the body of src/ over stand-ins -- the morph's
 // parameters are cleared, the resource manager is created on first use, one counted parameter per named morph is built from
 // its target, added and given the morph's value, then the combined morph is reset.
-struct CCharString { const char* text; };
+class CCharString { public: const char* text; };
 struct SCountBlock {
     long  references;
     void (*destroy)(void*);
     void* object;
     SCountBlock(long refs, void (*fn)(void*), void* data) : references(refs), destroy(fn), object(data) {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           object;
     SCountBlock* count;
     CCountedPointer() : object(0), count(0) {}
@@ -34,9 +34,9 @@ template <class T> struct CCountedPointer {
     T* operator->() const { return object; }
     void Reset(T* value) { object = value; count = 0; }
 };
-struct C3DSkeletalMorphTarget { char name[16]; };
+class C3DSkeletalMorphTarget { public: char name[16]; };
 static int g_paramsAlive = 0;
-struct C3DSkeletalMorphParameter {
+class C3DSkeletalMorphParameter { public:
     C3DSkeletalMorphTarget* target;
     float value;
     C3DSkeletalMorphParameter(C3DSkeletalMorphTarget* t) : target(t), value(0) { ++g_paramsAlive; }
@@ -66,7 +66,7 @@ public:
 };
 static CCountedPointer<CSkeletalMorphResourceManager> g_SkeletalMorphResourceManager;
 static char g_log[128];
-struct C3DSkeletalMorph {
+class C3DSkeletalMorph { public:
     CCountedPointer<C3DSkeletalMorphParameter> params[4];
     int n;
     void ClearMorphParameters() { strcat(g_log, "clear,"); n = 0; }

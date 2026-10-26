@@ -39,15 +39,15 @@ struct IDirect3DVolume9 {                          // IUnknown + IDirect3DVolume
     virtual long __stdcall LockBox(void* lockedVolume, const void* box, unsigned long flags);
     virtual long __stdcall UnlockBox();                                      // slot 10 (+0x28)
 };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CPixelFormat {
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CPixelFormat { public:
     long FormatIndex;                              // +0x00
     void Initialise(unsigned long d3dFormat);      // 0x009E3830
     unsigned long GetByteColourDepth() const;      // 0x009E3800 (bytes per pixel)
     void ConvertRGBToPFDData(const CRGBColour& colour, unsigned char* data) const;   // 0x009E3F60
 };
-struct C3DExtentsI { long X, Y, Z; };
-struct CVolumeLockedBox {                          // 24 bytes (Ego_r.pdb)
+class C3DExtentsI { public: long X, Y, Z; };
+class CVolumeLockedBox { public:                          // 24 bytes (Ego_r.pdb)
     C3DExtentsI    Dimensions;                     // +0x00
     long           RowPitch;                       // +0x0c
     long           SlicePitch;                     // +0x10
@@ -57,7 +57,7 @@ struct CVolumeLockedBox {                          // 24 bytes (Ego_r.pdb)
 struct CBase {
     virtual ~CBase();
 };
-struct CVolume : CBase {                           // vtable 0x0129C840
+class CVolume : public CBase { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
     CVolumeLockedBox Lock(unsigned long flags);    // 0x00A677D0
     void Unlock() const { PD3DVolume->UnlockBox(); }

@@ -1,6 +1,6 @@
 // Behaviour test for 0x008078A0 STLport remove_if<CTargetPoint*, CThingFilter_IsInFOV>: find the first point in view, compact the rest after it.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPointer {
     CThing* Item;
     CThing* GetPItem() const { return Item; }

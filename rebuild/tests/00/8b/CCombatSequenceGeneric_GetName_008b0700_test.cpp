@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_live = 0;
-struct CCharString { long value; CCharString(long v) : value(v) { ++g_live; } CCharString(const CCharString& o) : value(o.value) { ++g_live; } ~CCharString() { --g_live; } };
+class CCharString { public: long value; CCharString(long v) : value(v) { ++g_live; } CCharString(const CCharString& o) : value(o.value) { ++g_live; } ~CCharString() { --g_live; } };
 struct CDefStringId { long m_id; CDefStringId(long id) : m_id(id) { } };
 struct CDefStringTable { CCharString GetString(long id) { return CCharString(id * 10); } };
 static CDefStringTable g_DefStringTable;

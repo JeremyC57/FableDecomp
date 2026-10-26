@@ -5,7 +5,7 @@ struct CPackedUIntArray {
     unsigned int* PackedInts; unsigned int Size; unsigned char Bits; unsigned int Bias;
     unsigned int operator[](unsigned int index) { return PackedInts[index] + Bias; }
 };
-struct CBankFile { CRuntimeData* RuntimeData; CPackedUIntArray PackedDataOffset; };
+class CBankFile { public: CRuntimeData* RuntimeData; CPackedUIntArray PackedDataOffset; };
 inline unsigned int GetEntryDataOffset(CBankFile* bank, unsigned int index)
 {
     if (bank->PackedDataOffset.Size != 0)

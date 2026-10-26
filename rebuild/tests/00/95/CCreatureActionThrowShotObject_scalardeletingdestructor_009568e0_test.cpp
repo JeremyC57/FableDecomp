@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ThrowShotObject {
+class CCreatureAction_ThrowShotObject { public:
     void* vftable;
     int destroyed;
 };

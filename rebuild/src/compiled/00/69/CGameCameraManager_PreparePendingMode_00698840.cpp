@@ -8,7 +8,7 @@
 // Shape: the key is a frame local (bound to find's reference); the iterator is a named local (re-read from its frame slot; chaining off the call
 // uses the returned eax); the by-value CDefPointer destructor is the landed GetDef family's ReleaseTemporary (`add eax,4` adjusted base,
 // stored count forwarded to the test, def kept in ecx for the virtual call).
-struct CGameCameraManager;
+class CGameCameraManager;
 
 struct CRefCounted {                       // second base: the count sits at +4 behind the vptr
     long m_count;
@@ -27,7 +27,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-struct CCameraModeDef : CDefBase {
+class CCameraModeDef : public CDefBase { public:
     unsigned char _pad08[0x34];
     long          Mode;                    // +0x3c NCameraModes::EMode
 };
@@ -42,15 +42,15 @@ struct CDefPointer_CCameraModeDef {
 };
 
 namespace NCameraModes {
-struct CBase;
-struct CBaseInit {
+class CBase;
+class CBaseInit { public:
     CBase* AllocMain(CGameCameraManager* manager, CDefPointer_CCameraModeDef& def);   // 0x0084D270
 };
 }
 
 struct SCountBlock;
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                          // +0
     SCountBlock* m_pCount;                 // +4
     T* operator->() const { return m_pObject; }
@@ -73,7 +73,7 @@ struct CModeMap {
     CModeMapIterator find(const long& key);   // 0x0069CF90
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*         __vftable;                                  // +0x00
     unsigned char _pad04[0x9c];                               // +0x04
     CCountedPointer<NCameraModes::CBase> PendingMode;         // +0xa0

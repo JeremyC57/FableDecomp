@@ -5,21 +5,21 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing {
+class CThing { public:
     const char* ScriptName;
     bool IsHolySite;                                   // the +0xD4 flag the copy template tests
     int Id;
 };
 static int g_released = 0, g_releaseOrder[4], g_teleports = 0, g_lastHero = -1, g_lastSite = -1;
 static bool g_lastFlag = true;
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     CScriptThing(int id) : Id(id) { }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { }
     ~CScriptThing() { if (g_released < 4) g_releaseOrder[g_released] = Id; ++g_released; }
 };
 static CScriptThing GetScriptThing(const CThing* t) { return CScriptThing(t->Id); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void EntityTeleportToThing(const CScriptThing& thing, const CScriptThing& target, bool a) const
     {
         ++g_teleports; g_lastHero = thing.Id; g_lastSite = target.Id; g_lastFlag = a;

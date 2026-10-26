@@ -15,18 +15,18 @@
 //   construction flags in ebx (1/2, 4/8) and materialises the condition in a frame byte; each wait loop is
 //   `while (...) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; }` preceded by its own terminate check;
 //   the first region wait compares IsRegionLoaded `!= false` (`test al,al ; setne bl`; a plain condition gives `mov bl,al`, `== true` gives dec/neg/sbb), the negated waits use `!` (neg/sbb/inc).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CScriptThing {
+class CScriptThing { public:
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
     ~CScriptThing();                                        // 0x004AA840
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -94,7 +94,7 @@ struct CGameScriptInterface {
     virtual void EnableGuards(const CScriptThing& thing, bool enable) const;   // slot 443 (+0x6ec)
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
 };

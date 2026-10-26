@@ -6,7 +6,7 @@
 // Shape: the landed ReadFromParserAsSLONG (0x00A640D0) item model -- a 12-byte frame item that owns its string; each
 // successful arm runs its own item destructor before `mov al,1`; the long is converted through the dead parser argument
 // slot (`mov [esp+14h],eax ; fild`).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
@@ -18,10 +18,10 @@ struct SParsedItem {                               // 12 bytes: the item type, i
     long  GetAsLong();                             // 0x009B9890
     float GetAsFloat();                            // 0x009B98A0
 };
-struct CStringParser {
+class CStringParser { public:
     bool ReadNextItem(SParsedItem& item);          // 0x009BA080
 };
-struct CGenericVar {
+class CGenericVar { public:
     unsigned char _pad[0x18];
     float         m_floatValue;                    // +0x18
     bool ReadFromParserAsFloat(CStringParser& parser);

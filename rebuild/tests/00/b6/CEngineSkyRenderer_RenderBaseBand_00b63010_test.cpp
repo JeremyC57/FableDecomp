@@ -39,9 +39,9 @@ static void InitState(CTrackedRenderState& s, unsigned long v) { s.m_stateId = 0
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); }
-struct CTexture { int id; };
-struct CVertexShader { int id; };
-struct CPixelShader { int id; };
+class CTexture { public: int id; };
+class CVertexShader { public: int id; };
+class CPixelShader { public: int id; };
 struct CStaticShaderManager {
     bool VertexShadersEnabled, PixelShadersEnabled;
     long CurrentVSConstantLayoutIndex;
@@ -92,7 +92,7 @@ struct CRenderStateCaptureBlock {
     ~CRenderStateCaptureBlock() { g_rsm.RestoreCaptureBlock(); }
 };
 static void ResetEnv() { g_log[0] = 0; g_drawnTexture = 0; g_ShaderRenderManager.VertexShadersEnabled = false; g_ShaderRenderManager.PixelShadersEnabled = false; g_ShaderRenderManager.CurrentVSConstantLayoutIndex = 0; g_rsm.depth = 0; }
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 struct Core : CoreBase { CTrackedRenderState s28b8, s28cc; };
 static Core g_core;
 static C4DVector g_constant;

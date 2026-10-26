@@ -4,11 +4,11 @@ struct CMapManager {
     bool loaded; long asked;
     virtual bool IsMapLoaded(long mapNumber) { asked = mapNumber; return loaded; }
 };
-struct CThingManager { CMapManager* m_pMapManager; };
+class CThingManager { public: CMapManager* m_pMapManager; };
 static CMapManager g_maps;
 static CThingManager g_manager;
 static CThingManager* g_pThingManager = &g_manager;
-struct CThing {
+class CThing { public:
     short CurrentMapNumber;
     unsigned char InLimbo : 1;
     unsigned char KillOnLevelUnload : 1;

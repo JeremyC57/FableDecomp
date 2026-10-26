@@ -7,20 +7,20 @@
 // ButtonGraphic +0x3c, Position +0x40, Offset +0x48 (PDB +0x40/+0x44/+0x4c over a 4-byte smaller retail base).
 // Shape: a size-optimised TU; the qualified base call is direct, every dword moves through eax and nothing is
 // returned (eax is left holding the last word: a `void` virtual, not an operator=).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
 };
 
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     unsigned char _body[0x3c - 4];
     virtual void Copy(const CDefClassBase* other);    // 0x00431ED0
 };
 
-struct CQuickAccessItemButtonGuiDef : CParentDefClassBase {   // vtable 0x012360A4, retail sizeof 0x50
+class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:   // vtable 0x012360A4, retail sizeof 0x50
     long      ButtonGraphic;                    // +0x3c
     C2DVector Position;                         // +0x40
     C2DVector Offset;                           // +0x48

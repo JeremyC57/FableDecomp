@@ -34,7 +34,7 @@ template <class T, class C> void adjust_impl(T* first, long holeIndex, long len,
     }
     push_impl(first, holeIndex, topIndex, value, comp);
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
@@ -47,7 +47,7 @@ struct PairVectorLong {                                // std::pair<C3DVector, l
     PairVectorLong(const PairVectorLong& other) : first(other.first), second(other.second) { }
 };
 
-struct CVectorCompare_BestForTargeting {               // 0x2c bytes (Ego_r.pdb, matches retail)
+class CVectorCompare_BestForTargeting { public:               // 0x2c bytes (Ego_r.pdb, matches retail)
     C3DVector AnchorPos;                               // +0x00
     C3DVector PreferredLine;                           // +0x0c
     float     AngleCompare;                            // +0x18

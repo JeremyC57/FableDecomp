@@ -4,7 +4,7 @@
 // 4 bytes below its PDB offset: HeadTurnState +0x48, TimeToStopLooking +0xb4, OneFrameDelay +0xb8. No engine header exists
 // for CTCLook, so the members this body touches are modelled locally. Shape: the -1 store is scheduled between the compare
 // and its branch; the change test is the usual `if (member != value) { member = value; flag = true; }`.
-struct CTCLook {
+class CTCLook { public:
     unsigned char _pad_0x00[0x48];
     long          HeadTurnState;                 // +0x48
     long          BodyTurnState;                 // +0x4c

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCQuestCard {
+class CTCQuestCard { public:
     void* vftable;
     int destroyed;
 };

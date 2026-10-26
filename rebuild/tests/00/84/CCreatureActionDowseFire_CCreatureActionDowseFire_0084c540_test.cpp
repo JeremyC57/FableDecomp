@@ -3,24 +3,24 @@
 #include <cstdio>
 #include <cstring>
 
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem; int m_sets;
     CBaseIntelligentPointer() : m_pItem(0), m_sets(0) { }
     CBaseObject* GetPItem() const { return m_pItem; }
     void SetPItem(CBaseObject* p) { m_pItem = p; ++m_sets; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     int m_baseValue; int m_copies;
     CCreatureActionBase() : m_baseValue(0), m_copies(0) { }
     CCreatureActionBase(const CCreatureActionBase& o) : m_baseValue(o.m_baseValue), m_copies(o.m_copies + 1) { }
 };
-struct CThing; struct CThingAICreature; struct CThingBuilding;
-struct CCreatureAction_DowseFire : CCreatureActionBase {
+class CThing; class CThingAICreature; class CThingBuilding;
+class CCreatureAction_DowseFire : public CCreatureActionBase { public:
     CIntelligentPointer<CThingAICreature> PAICreature; CIntelligentPointer<CThingBuilding> PBuilding; unsigned long FireNumber;
     CCreatureAction_DowseFire() : FireNumber(0) { }
     CCreatureAction_DowseFire(const CCreatureAction_DowseFire& o)

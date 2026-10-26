@@ -8,7 +8,7 @@
 // Shape: the 12-byte vector copy through a `lea edx,[ecx+0Ch]` source base and a `mov esi,ecx` destination with edi as the
 // carrier (the implicit assignment of a POD C3DVector), then one `xor eax,eax` feeding three ascending zero stores.
 // Members are descriptive (record of three vectors; the class is unidentified, named after the landed caller).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct SBodyRecord_00c55030 {
     C3DVector m_current;                           // +0x00

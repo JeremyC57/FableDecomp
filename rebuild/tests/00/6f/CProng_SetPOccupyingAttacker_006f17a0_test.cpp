@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0;
-struct CBaseObject {};
+class CBaseObject { public:};
 struct CBaseIntelligentPointer {
     virtual void v00() {}
     CBaseObject* m_pItem;
@@ -15,7 +15,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     virtual void v00() {}
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
-struct CThingCreatureBase : CBaseObject {
+class CThingCreatureBase : public CBaseObject { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;
     unsigned char m_91_1 : 7;

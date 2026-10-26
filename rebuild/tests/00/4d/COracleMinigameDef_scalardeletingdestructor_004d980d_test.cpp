@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct COracleMinigameDef
-{
+class COracleMinigameDef
+{ public:
     void* vftable;
 };
 void* const g_COracleMinigameDef_vftable = (void*)0x12345678;

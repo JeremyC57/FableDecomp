@@ -1,4 +1,4 @@
-struct CInputProcessFireheartMinigame {
+class CInputProcessFireheartMinigame { public:
     void* vftable;
 };
 

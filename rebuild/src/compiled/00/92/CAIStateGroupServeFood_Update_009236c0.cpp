@@ -16,12 +16,12 @@
 // Shape: the bit-24 presence test reads the bitset word into a named local and shifts it (the masked / unnamed forms narrow to
 // `mov cl,byte [eax+37h]`; the landed 0x0094BB20 TestTC form), bound to a `const bool&` (frame byte at +0x17); the action temporaries' generated destructors run inline (member intelligent pointer, then ~CCreatureActionBase);
 // a `break` out of the state-2 block skips the notification but still destroys the food pointer.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -47,14 +47,14 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 #pragma auto_inline(on)
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CCarryableDef {
+class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
     unsigned char _pad08[0x28 - 0x08];
     long CarrySlot;                             // +0x28
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -74,15 +74,15 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CCarryableDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -109,7 +109,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* out)
     return false;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -147,8 +147,8 @@ struct CThing {
         return false;
     }
 };
-struct CThingObject : CThing { };
-struct CThingCreatureBase : CThing { };
+class CThingObject : public CThing { public: };
+class CThingCreatureBase : public CThing { public: };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
@@ -162,35 +162,35 @@ struct CIntelligentPointerThingObject : CBaseIntelligentPointer {   // CIntellig
     __forceinline CIntelligentPointerThingObject(CThingObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThingObject& pointer);   // 0x0078B2A0
-struct CTCCarrying {                            // interface 0x46
+class CTCCarrying { public:                            // interface 0x46
     CThing* RemoveThingFromPrimarySlot(long flags);                     // 0x006A1E00
     void PutThingInCarrySlot(CThingObject* thing, long slot, bool immediately);   // 0x006A1F80
 };
-struct CTCTavernTable {                         // interface 0xb8
+class CTCTavernTable { public:                         // interface 0xb8
     unsigned char _pad[0xc];
     bool Occupied;                              // +0x0c
     CThingObject* GetFood(long taskIndex);      // 0x007B85C0
     void NotifyFoodServed(long taskIndex, CThing* food);   // 0x007B85F0
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_RemoveFoodFromTable : CCreatureActionBase {   // retail sizeof 0xb4
+class CCreatureAction_RemoveFoodFromTable : public CCreatureActionBase { public:   // retail sizeof 0xb4
     CBaseIntelligentPointer PThing;             // +0xa8
     long Kind;                                  // +0xb0
     CCreatureAction_RemoveFoodFromTable(CThingCreatureBase* owner, CThing* thing);   // 0x00922EE0
 };
-struct CCreatureAction_PutDownTankard : CCreatureActionBase {   // retail sizeof 0xac
+class CCreatureAction_PutDownTankard : public CCreatureActionBase { public:   // retail sizeof 0xac
     long Slot;                                  // +0xa8
     CCreatureAction_PutDownTankard(CThingCreatureBase* owner);     // 0x00922F50
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5

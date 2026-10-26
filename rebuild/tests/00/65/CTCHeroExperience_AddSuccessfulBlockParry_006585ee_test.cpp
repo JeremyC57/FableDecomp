@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCHeroExperience { char pad[0xd8]; int value; };
+class CTCHeroExperience { public: char pad[0xd8]; int value; };
 static int g_prep = 0;
 extern "C" void __cdecl helper_prep(void) { g_prep = 1; }
 extern "C" int __cdecl helper_get(void) { return 0x1234; }

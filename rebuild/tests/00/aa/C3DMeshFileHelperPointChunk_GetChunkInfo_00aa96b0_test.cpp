@@ -1,7 +1,7 @@
 // Behaviour test for C3DMeshFileHelperPointChunk::GetChunkInfo (0x00AA96B0): the description string built by the chain.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char text[256];
     CCharString() { text[0] = 0; }
     CCharString(const char* t) { std::strcpy(text, t); }
@@ -13,7 +13,7 @@ struct CCharString {
 CCharString operator+(const CCharString& a, const CCharString& b) { CCharString r(a.text); std::strcat(r.text, b.text); return r; }
 CCharString operator+(const CCharString& a, const char* b) { CCharString r(a.text); std::strcat(r.text, b); return r; }
 CCharString GFIntToCharString(long v) { CCharString s; std::sprintf(s.text, "%ld", v); return s; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CHelperPoint {
     C3DVector Position; long SubMeshIndex; long BoneIndex; CCharString Name;
     CCharString GetChunkInfo() const

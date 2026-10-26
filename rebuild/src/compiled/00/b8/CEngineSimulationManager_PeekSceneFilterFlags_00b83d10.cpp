@@ -1,4 +1,4 @@
-struct CEngineSimulationManager;
+class CEngineSimulationManager;
 
 unsigned long __fastcall CEngineSimulationManager_PeekSceneFilterFlags(CEngineSimulationManager* manager)
 {

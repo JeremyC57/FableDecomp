@@ -7,7 +7,7 @@
 // GainLevelMid +0x34, GainLevelLow +0x38, FocusShiftDistanceThreshold +0x3c after the 0x25-byte CDefClassBase (padded
 // to 0x28). The floats are copied with plain dword moves, so they are modelled as dwords; the member-wise copy is
 // written out because the DDK out-lines the implicit assignment of a record whose base has its own operator=.
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                         // +0x04 .. +0x28: CResource links, PDefManager, GlobalIndex, flag bits
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
@@ -15,7 +15,7 @@ struct CDefClassBase {
 
 namespace NSpeechGainManager {
 
-struct CDialogueLayerDef : CDefClassBase {             // vtable 0x0123543C
+class CDialogueLayerDef : public CDefClassBase { public:             // vtable 0x0123543C
     virtual void v00();
     long ResponseTimeSecsAttack;                       // +0x28 (float)
     long ResponseTimeSecsRelease;                      // +0x2c (float)

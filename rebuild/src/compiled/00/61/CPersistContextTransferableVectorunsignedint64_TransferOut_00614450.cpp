@@ -10,10 +10,10 @@
 // `lea ecx,[esp+0Ch]`), so the function has no frame.
 // The vector's first pointer is a named local: through the member chain VC loads it into ecx and
 // the index into eax, where retail loads the index into ecx and keeps `first` in eax.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0

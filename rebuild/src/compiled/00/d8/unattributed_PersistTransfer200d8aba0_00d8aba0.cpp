@@ -9,7 +9,7 @@
 // zero default materialised as a one-byte temporary right before its call (named locals would be
 // hoisted and shared; the second member's address is formed by advancing
 // the first, as retail does). Member names are taken from the persisted keys. One of 16 bodies.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, signed char& value, const signed char& defaultValue);   // Transfer<signed char> @ 0x004045C0
 };
 

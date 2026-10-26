@@ -15,18 +15,18 @@ static int fails = 0;
 //   MapArea +0xc, SectionName +0x1c}.
 // Shape: the inserted entry is re-read as back(); on a failed load the last entry is erased through a by-value iterator
 //   (--end(), the prev link of the header) whose result lands in the dead index-argument slot.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CCharString {
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class CAFile;
 class CASuspendableProcess;
-struct CNavigationAreaInit;
+class CNavigationAreaInit;
 class CNavQuadTree {                               // 0x88 bytes
 public:
     unsigned char _body[0x88];
@@ -35,13 +35,13 @@ public:
     void Initialise(CNavigationAreaInit& init);    // 0x00A7A8D0
     bool LoadFromFile(CAFile& file, long mapIndex, const C2DBoxI& area, CASuspendableProcess* process);   // 0x00A7AF60
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* operator->() const { return Data; }
     void Reset(T* object);                         // 0x00A16640 for CNavQuadTree
 };
-struct CNavQuadTreeMap {                           // 32 bytes
+class CNavQuadTreeMap { public:                           // 32 bytes
     CCountedPointer<CNavQuadTree> PQuadTree;       // +0x00
     long                          Index;           // +0x08
     C2DBoxI                       MapArea;         // +0x0c

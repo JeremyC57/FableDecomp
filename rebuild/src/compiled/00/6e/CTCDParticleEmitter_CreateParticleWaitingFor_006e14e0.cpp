@@ -15,9 +15,9 @@
 //   parameters through the counted pointer; the emitter's inline setters give the 16-bit insert and the `or 200h` on the
 //   combined word; the always-update test is the inline alive test plus a third GetPItem; the parameters are dropped with
 //   the counted pointer's inline clear (count block re-read after the decrement, block then object zeroed).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
@@ -37,7 +37,7 @@ struct CParticleCreationParameters {
     CParticleUpdateParameters UpdateParameters; // +0x28
 };
 namespace NParticleEngine {
-struct CParticleEmitter {                       // retail layout
+class CParticleEmitter { public:                       // retail layout
     unsigned char _pad00[0x40];
     unsigned short Priority : 3;                // +0x40
     unsigned short IsScreenDisplacement : 1;
@@ -95,7 +95,7 @@ struct CCreationParametersPointer {             // CCountedPointer<CParticleCrea
         Object = 0;
     }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];          // CTCBase tail, EmitterName

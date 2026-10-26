@@ -24,7 +24,7 @@ struct CScopedSectionLock {
     ~CScopedSectionLock() { LeaveCriticalSection(m_pSection); }
 };
 
-struct C2DCoordI {                          // the two values form one small value struct with a user operator=
+class C2DCoordI { public:                          // the two values form one small value struct with a user operator=
     long X, Y;
     C2DCoordI() {}
     C2DCoordI(long x, long y) : X(x), Y(y) {}

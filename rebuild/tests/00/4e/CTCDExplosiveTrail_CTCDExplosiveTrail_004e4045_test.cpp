@@ -6,8 +6,8 @@ struct CDefPointer { CDefPointee* Object; ~CDefPointer() { CDefPointee* d = Obje
 struct CIntelligentPointer { ~CIntelligentPointer() { g_log[g_n++] = 1; } };
 struct CComponentTrapList { ~CComponentTrapList() { g_log[g_n++] = 2; } };
 struct CThingPointerVector { ~CThingPointerVector() { g_log[g_n++] = 3; } };
-struct CTCBase { ~CTCBase() { g_log[g_n++] = 99; } };
-struct CTCDExplosiveTrail : CTCBase { CIntelligentPointer PTarget; long Timer; bool Terminated; CComponentTrapList ComponentTraps; CThingPointerVector ThingsToIgnore; CDefPointer PDef; };
+class CTCBase { public: ~CTCBase() { g_log[g_n++] = 99; } };
+class CTCDExplosiveTrail : public CTCBase { public: CIntelligentPointer PTarget; long Timer; bool Terminated; CComponentTrapList ComponentTraps; CThingPointerVector ThingsToIgnore; CDefPointer PDef; };
 int main()
 {
     CDefPointee def; def.m_refCount = 2; def.destroyed = 0; g_n = 0;

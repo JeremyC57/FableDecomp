@@ -14,7 +14,7 @@ struct CTCInventoryBase {
     void SetNumberOfSelectedItemOwned(long item) { Note('N', item); }
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     void OnItemHighlighted(long item);
 };
 

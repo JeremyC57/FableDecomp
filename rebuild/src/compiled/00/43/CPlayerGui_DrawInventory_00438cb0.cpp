@@ -6,7 +6,7 @@
 // GiveHeroGold 0x00435000.
 // Shape: the key shares the dead argument slot (the argument lives in ebx); the presence test is the raw bitset word
 // AND mask in the `if` (a bool-returning `!= 0` helper gives `shr ; test al,1`); the entry pick is one ternary.
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual void DrawInventory(void* world);               // slot 11 (+0x2c) (descriptive)
@@ -17,7 +17,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);                  // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                        // +0x20
     CInterfaceMap m_interfaces;                            // +0x44
@@ -31,13 +31,13 @@ struct CThing {
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature_00487dc0();                       // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                              // 0x00449970
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char   _pad000[8];
     CPlayerManager* PlayerManager;                         // +0x08
     void DrawInventory(void* world);

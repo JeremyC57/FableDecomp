@@ -12,7 +12,7 @@
 // unique. One of 12 bodies.
 #include <new>
 
-struct CFeatDef {
+class CFeatDef { public:
     unsigned char _body[0x64];
     CFeatDef(const CFeatDef& other);           // 0x00F2D270
 };

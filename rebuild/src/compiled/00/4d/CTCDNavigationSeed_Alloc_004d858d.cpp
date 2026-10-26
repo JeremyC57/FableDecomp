@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCDNavigationSeed {
+class CTCDNavigationSeed { public:
     unsigned char _body[0xc];       // sizeof(CTCDNavigationSeed) = 0xc
     CTCDNavigationSeed(void* owner);                   // 0x004D41F6
 };

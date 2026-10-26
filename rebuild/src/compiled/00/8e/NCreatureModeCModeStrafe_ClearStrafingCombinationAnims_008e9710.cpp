@@ -7,14 +7,14 @@
 // CThing dead bit +0x91 bit 0; CModeBase::ParentThing +4.
 // Shape: `if (parent && !dead && GetInterface(..))` (the template's bool is the third test); each found set gets an
 // inline `FadeOut()` (test the bit, set it, copy the alpha).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -35,7 +35,7 @@ struct CThing {
     }
 };
 
-struct CAnimSet {                           // retail layout (12-byte vectors)
+class CAnimSet { public:                           // retail layout (12-byte vectors)
     unsigned char _pad00[0x2c];
     float         CurrentAlpha;             // +0x2c
     float         LastAlpha;                // +0x30
@@ -53,10 +53,10 @@ struct CAnimSet {                           // retail layout (12-byte vectors)
     }
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     CAnimSet* FindCombinationAnim(long type);   // 0x0070C4E0
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();          // 0x0070B460
 };
 

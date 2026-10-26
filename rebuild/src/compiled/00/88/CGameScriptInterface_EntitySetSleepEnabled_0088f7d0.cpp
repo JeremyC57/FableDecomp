@@ -6,7 +6,7 @@ public:
     ~CCharString();
 };
 
-struct CScriptThing;
+class CScriptThing;
 
 #pragma pointers_to_members(full_generality, single_inheritance)
 struct CGameScriptInterfaceDispatch { void member(); };

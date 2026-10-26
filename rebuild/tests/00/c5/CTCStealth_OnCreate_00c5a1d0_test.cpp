@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCStealth {
+class CTCStealth { public:
     char pad_d8[0xd8];
     unsigned int f_d8;
     char pad2[0x1e8 - 0xd8 - 4];

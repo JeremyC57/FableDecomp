@@ -10,7 +10,7 @@
 // `comp(val, *middle)` (signed `cmp ecx,ebx ; jge`) -> len = half, else first = middle + 1, `len = len - half - 1` (the
 // `or edx,-1 ; sub edx,esi` form); val is loaded once ahead of the loop.
 struct CHitLocation;
-struct C3DVector { float X, Y, Z; };                // 12 bytes
+class C3DVector { public: float X, Y, Z; };                // 12 bytes
 namespace {
 struct THitLocationIntersectionElement {        // 32 bytes
     long          key;                          // +0x00

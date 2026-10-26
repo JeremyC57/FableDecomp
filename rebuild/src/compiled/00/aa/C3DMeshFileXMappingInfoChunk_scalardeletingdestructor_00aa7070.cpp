@@ -1,4 +1,4 @@
-struct C3DMeshFileXMappingInfoChunk {
+class C3DMeshFileXMappingInfoChunk { public:
     void* vftable;
 };
 

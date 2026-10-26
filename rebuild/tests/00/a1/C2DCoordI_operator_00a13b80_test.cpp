@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C2DVector { float X; float Y; };
-struct C2DCoordI { long X; long Y; C2DCoordI& operator+=(const C2DVector& v); };
+class C2DVector { public: float X; float Y; };
+class C2DCoordI { public: long X; long Y; C2DCoordI& operator+=(const C2DVector& v); };
 C2DCoordI& C2DCoordI::operator+=(const C2DVector& v)
 {
     X = (long)((float)X + v.X);

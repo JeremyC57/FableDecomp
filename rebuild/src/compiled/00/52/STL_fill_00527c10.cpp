@@ -1,5 +1,5 @@
 // std::fill(CSharerParserOutputToDebugContextMapper::CEntry* first, CSharerParserOutputToDebugContextMapper::CEntry* last, const CSharerParserOutputToDebugContextMapper::CEntry& value) -- assign one line-mapping entry to every element of a range
-// Leaf: ??$fill@PAVCEntry@CSharerParserOutputToDebugContextMapper@@
+// Leaf: ??$fill@PAUCEntry@CSharerParserOutputToDebugContextMapper@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00527C10, 52 bytes, `__fastcall` (first ecx, last edx, value
 //   pointer on the stack), `ret 4`.
 // Identity: the manifest label agrees with the bytes: 12-byte stride and the element is Ego_r.pdb
@@ -17,7 +17,7 @@ public:
 
 class CSharerParserOutputToDebugContextMapper {
 public:
-    class CEntry {                                       // 12 bytes
+    struct CEntry {                                       // 12 bytes
     public:
         long        SrcLine;                             // +0x00
         long        DestLine;                            // +0x04

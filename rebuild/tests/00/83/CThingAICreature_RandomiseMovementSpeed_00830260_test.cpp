@@ -6,8 +6,8 @@ typedef unsigned int u32;   // 32-bit unsigned on both hosts
 static float GFFloatRandom(float range, u32* seed) { *seed = *seed * 3u + 1u; return range * 0.5f; }
 static int g_lastRor;
 static int GFROR13(u32 v) { g_lastRor = (int)((v >> 13) | (v << 19)); return g_lastRor; }
-struct CCreatureDef { float m_speedVariation; };
-struct CThingAICreature {
+class CCreatureDef { public: float m_speedVariation; };
+class CThingAICreature { public:
     u32 m_uniqueIdLow; CCreatureDef* m_pCreatureDef;
     void RandomiseMovementSpeed(float* speed);
 };

@@ -5,7 +5,7 @@
 // the body scales a by-reference index by 16, adds the array base at +0x28 and copy-constructs a
 // CCharString from the element's first member into the hidden result (ret 8 = hidden pointer +
 // one reference). The class and the entry are named by what the body does.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other); // 0x0099EC30
 };

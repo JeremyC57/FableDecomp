@@ -7,20 +7,20 @@
 // MinimapSurface +0x14, ColourMinimapTheme +0x30 (CRGBColour).
 // Shape: width/height read first (ebp / a spilled frame word), the surface pointer kept in the frame, the extents passed through a local
 // copy, the cell index `MinimapExtents.X * y + x` re-read from the member each pass, the colour copied to a frame local for SetPixel.
-struct CWideString;
-struct C2DExtentsI {
+class CWideString;
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) { }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat() : FormatIndex(-1) { }
     void Initialise(long r, long g, long b, long a, bool alpha);   // 0x009E3790
 };
-struct CSurface {
+class CSurface { public:
     virtual void v00();
     void*         PD3DSurface;                  // +0x04
     unsigned long AllocationSource;             // +0x08
@@ -38,11 +38,11 @@ template<class T> struct vector {               // STLport vector (12 bytes)
     T* _M_end_of_storage;
     T& operator[](unsigned long i) { return *(_M_start + i); }
 };
-struct CTexture {
+class CTexture { public:
     void*         PD3DTexture;
     unsigned long Bits;
 };
-struct CMinimapData {
+class CMinimapData { public:
     C2DExtentsI          MinimapExtents;        // +0x00
     vector<MinimapTheme> MinimapThemeList;      // +0x08
     CSurface             MinimapSurface;        // +0x14

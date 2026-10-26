@@ -3,7 +3,7 @@
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStackEntry {
 public:
-    class CThemeWeight { public: long ThemeID; float Weight; bool LockWeight; };
+    struct CThemeWeight { public: long ThemeID; float Weight; bool LockWeight; };
     class CThemeVector {                            // the empty STLport vector: three null pointers
     public:
         CThemeWeight* _M_start;

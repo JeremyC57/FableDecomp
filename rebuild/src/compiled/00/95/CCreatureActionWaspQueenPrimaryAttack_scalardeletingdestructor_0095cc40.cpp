@@ -1,4 +1,4 @@
-struct CCreatureAction_WaspQueenPrimaryAttack {
+class CCreatureAction_WaspQueenPrimaryAttack { public:
     void* vftable;
 };
 

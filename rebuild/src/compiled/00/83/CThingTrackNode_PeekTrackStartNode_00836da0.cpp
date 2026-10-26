@@ -6,19 +6,19 @@
 // IsStart +0xec, IsEnd +0xed.
 // Shape: `this` is copied to eax and null-tested (the walk starts at `this`), the loop is rotated (flag test
 // at the head, link load + null test at the bottom), the found node is returned straight from eax.
-struct CThingTrackNode;
+class CThingTrackNode;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
-struct CThingGameObject {                          // retail 0xd0 bytes
+class CThingGameObject { public:                          // retail 0xd0 bytes
     virtual void v00();
     unsigned char _pad04[0xcc];                    // +0x04
 };
 
 #pragma pack(push, 4)
-struct CThingTrackNode : CThingGameObject {
+class CThingTrackNode : public CThingGameObject { public:
     long             m_trackWordD0;                // +0xd0 (CThingTrackNode_u_232)
     CThingTrackNode* PreviousNode;                 // +0xd4 (CThingTrackNode_u_236)
     unsigned __int64 NextNodeUID;                  // +0xd8

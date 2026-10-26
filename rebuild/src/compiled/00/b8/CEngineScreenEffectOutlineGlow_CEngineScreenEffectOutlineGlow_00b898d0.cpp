@@ -15,7 +15,7 @@
 //   (`if (Open) { Open = false; Restore(); }`), each shader (own vtable, null-tested `dec ; jne ; call [vt]` release,
 //   CShaderBase vtable), then the render target's implicit destructor (no vtable store): ZBufferSurface then
 //   RenderToSurface (own vtable + Uninitialise), then ~CBaseClass; the base destructor is tail-called.
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page);                // 0x00F37030
 };
 struct CEngineGlobal_01436e98 {
@@ -24,7 +24,7 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
-struct CRenderStateManager {
+class CRenderStateManager { public:
     void RestoreCaptureBlock();                    // 0x00A05840
 };
 extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
@@ -51,10 +51,10 @@ struct CVertexShaderData {
     long  m_refCount;                              // +0x10
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
     __forceinline virtual ~CPixelShader()
     {
@@ -65,7 +65,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054
         }
     }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* Data;                       // +0x04
     __forceinline virtual ~CVertexShader()
     {
@@ -77,12 +77,12 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0
     }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
 struct IDirect3DSurface9;
-struct CSurface {                                  // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                                  // vtable 0x0122F84C, 0x10 bytes
     IDirect3DSurface9* PD3DSurface;                // +0x04
     unsigned long      AllocationSource;           // +0x08
     void*              PAllocatedMemory;           // +0x0c
@@ -90,19 +90,19 @@ struct CSurface {                                  // vtable 0x0122F84C, 0x10 by
     void Uninitialise();                           // 0x009F2E20
     __forceinline ~CSurface() { Uninitialise(); }
 };
-struct CRenderTarget : CBaseClass {                // 0x24 bytes, implicit destructor
+class CRenderTarget : public CBaseClass { public:                // 0x24 bytes, implicit destructor
     CSurface RenderToSurface;                      // +0x04
     CSurface ZBufferSurface;                       // +0x14
 };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual void v00();
     void** m_ppOwnerLink;                          // +0x04
     ~CEngineComponent();                           // 0x00B59730
 };
 
-struct CTexture;
-struct CEngineScreenEffectOutlineGlow : CEngineComponent {   // vtable 0x012A3B6C, 0x1e4 bytes
+class CTexture;
+class CEngineScreenEffectOutlineGlow : public CEngineComponent { public:   // vtable 0x012A3B6C, 0x1e4 bytes
     unsigned char  _pad_0x08[0x4];                 // +0x08 active flag
     CTexture*      OutlineTexture;                 // +0x0c
     CTexture*      Blur1Texture;                   // +0x10

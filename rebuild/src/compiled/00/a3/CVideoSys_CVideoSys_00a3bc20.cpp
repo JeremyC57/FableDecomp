@@ -20,7 +20,7 @@ struct CTextureRenderer {                     // COM-style object: slot 3 is the
     virtual ~CTextureRenderer();
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                           // 0x0099B510
 };
@@ -37,7 +37,7 @@ struct CSubtitleList {                        // VC6-era list: {head node, count
     }
 };
 
-struct CMovieSubtitles {                      // 0x2c bytes in retail
+class CMovieSubtitles { public:                      // 0x2c bytes in retail
     CSubtitleList m_subtitles;                // +0x00
     unsigned char _pad08[0xc];                // +0x08
     CWideString   m_text;                     // +0x14

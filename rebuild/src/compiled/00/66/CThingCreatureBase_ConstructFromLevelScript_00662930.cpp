@@ -6,24 +6,24 @@
 // CDefPointer<const CThingCreatureDef> at +0xe0 (engine/CThingCreatureBase.h lists +0xe0 only as a retail-only long).
 // Shape: the success path is the `if` body, `GetDefinitionManager()->GetDef(index, &m_def)` with the arguments pushed
 // before the accessor runs (a chained call), `return false` the cold tail.
-struct CThingCreatureDef;
+class CThingCreatureDef;
 
 struct CDefPointerCreature {                    // CDefPointer<const CThingCreatureDef>
     CThingCreatureDef* m_pObject;
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointerCreature* out);      // 0x00513160 (GetDef<CThingCreatureDef>)
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char  _pad00[0x8c];
     unsigned short m_defGlobalIndex;            // +0x8c
     CDefinitionManager* GetDefinitionManager() const;       // 0x004C7990
     bool ConstructFromLevelScript(const char* script);      // 0x00838930
 };
 
-struct CThingCreatureBase : CThingPhysical {
+class CThingCreatureBase : public CThingPhysical { public:
     unsigned char       _pad8e[0x52];
     CDefPointerCreature m_def;                  // +0xe0
     bool ConstructFromLevelScript(const char* script);

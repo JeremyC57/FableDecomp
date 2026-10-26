@@ -14,7 +14,7 @@
 // HasTC returns the raw masked word (`test ch,8` on +0x28).
 // Layout (packed, landed 0x0077F5C0): PParticle +0x15; retail CWorld flags +0xd6 ExperienceSpendingEnabled (PDB +0xe2) and +0xd7
 // (PDB +0xe3 SavingEnabled by the same -0xC shift of three 16-byte PDB vectors; unproven, kept descriptive); CThing interface bitset +0x20, interface map +0x44, dead bit 0 of +0x91.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -40,7 +40,7 @@ public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -67,7 +67,7 @@ public:
 };
 template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xd6];
     bool ExperienceSpendingEnabled;                     // +0xd6
     bool WorldFlagD7;                                   // +0xd7 (PDB SavingEnabled by offset; unproven)

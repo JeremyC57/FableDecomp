@@ -15,7 +15,7 @@ void CMid::Save(int a)
     g_self = (void*)this;
 }
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void* vt;
     CMid* mid;
 };

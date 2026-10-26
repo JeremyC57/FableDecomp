@@ -12,13 +12,13 @@
 //   OpinionDebugIndicatorIcon +0x118 .. DamageForMaximumBlood +0x14c. No generated engine header for the class.
 // Pragma: #pragma optimize("s", on) -- a size TU: every member address goes through eax.
 // Shape: one transfer per member in declaration order; the def base transfer is not called.
-struct CCharString { void* m_pData; };
-struct CEngineGraphic { unsigned char _body[0xe]; };
+class CCharString { public: void* m_pData; };
+class CEngineGraphic { public: unsigned char _body[0xe]; };
 struct CConversationCameraMap { void* _M_header[3]; };   // STLport map<long, CCharString>, 12 bytes
 struct CCharStringVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
 struct CDialogueLayerDefVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& value);                         // 0x00431102
     void Transfer(float& value);                        // 0x00431061
     void Transfer(CCharString& value);                  // 0x00431143
@@ -28,12 +28,12 @@ struct CPersistContext {
     void Transfer(CDialogueLayerDefVector& value);      // 0x00472A8D
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x3c - 4];
 };
 
-struct CGlobalDef : CDefClassBase {
+class CGlobalDef : public CDefClassBase { public:
     long  ControlSchemePC;                                        // +0x3c
     long  ControlSchemePCAggressive;                              // +0x40
     long  ControlSchemeXBOX;                                      // +0x44

@@ -1,11 +1,11 @@
 // Behaviour test for 0x00783C80 CTCBoastingCrowdControl::OnHeroAttackCrowdMember: an existing crowd is told,
 // and the crowd sizes are suppressed in either case.
 #include <cstdio>
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 static int g_events[8];
 static int g_ne;
 static long g_boast;
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     void OnHeroApproachBoastingArea() { g_events[g_ne++] = 1; }
     void OnHeroEnterBoastingArea() { g_events[g_ne++] = 2; }
     void OnHeroLeaveBoastingArea() { g_events[g_ne++] = 3; }
@@ -17,7 +17,7 @@ static CThing g_groupThing;
 static bool g_haveCrowd;
 static CThing* g_askedThing;
 static bool g_askedCreate;
-struct CTCBoastingCrowdControl {
+class CTCBoastingCrowdControl { public:
     CThing* ParentThing;
     bool    Active;
     bool    CrowdSizesSuppressed;

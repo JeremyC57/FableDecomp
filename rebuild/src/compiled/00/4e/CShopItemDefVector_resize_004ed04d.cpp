@@ -17,11 +17,11 @@ struct CBase_009fc550 {
     virtual void v00();
     ~CBase_009fc550();                             // 0x009FC550 (labelled "~CMemoryBlock")
 };
-struct CDefPointeeBase : CBase_009fc550 {          // vtable 0x01230BA0
+class CDefPointeeBase : public CBase_009fc550 { public:          // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };
-struct CShopItemDef : CDefPointeeBase {            // vtable 0x0123B644, 0x48 bytes (engine/CShopItemDef.h, landed ctor)
+class CShopItemDef : public CDefPointeeBase { public:            // vtable 0x0123B644, 0x48 bytes (engine/CShopItemDef.h, landed ctor)
     unsigned char _body[0x44];                     // +0x04 the def base fields, Type +0x28, the CShopItem member +0x2c..+0x48
     virtual void v00();
     CShopItemDef();                                // 0x004D405A

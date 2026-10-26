@@ -2,12 +2,12 @@
 // game's thing through both owned-entity components, has the 0x5b flag set and is deactivated.
 #include <cstdio>
 
-struct CThing;
+class CThing;
 struct COwnerA { CThing* owner; };
 struct COwnerB { CThing* owner; void SetPOwner(CThing* t) { owner = t; } };
 struct CTC5B { unsigned char flags; };
 
-struct CThing {
+class CThing { public:
     bool visible, active;
     unsigned char flags91;
     int tcCount;
@@ -15,7 +15,7 @@ struct CThing {
     void AddTC() { ++tcCount; }
 };
 
-struct CGame {
+class CGame { public:
     CThing* ParentThing;
     CThing pieceStore;
     CThing* CreateGamePiece()

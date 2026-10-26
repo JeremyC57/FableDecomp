@@ -10,7 +10,7 @@ void __fastcall Callee_method(Callee* obj, void* edxArg, bool flag) {
     obj->lastFlag = flag;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     Callee*       field0;
     void*         ParentThing;
     int           dummy8;

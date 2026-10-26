@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "rebuild_abi.h"
 
-struct CSpecialAbilitiesGhostSwordDef { int x; };
+class CSpecialAbilitiesGhostSwordDef { public: int x; };
 
 static int g_called = 0;
 static CSpecialAbilitiesGhostSwordDef* g_this = 0;

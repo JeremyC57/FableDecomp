@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
 struct CIntelligentPointer : CBaseIntelligentPointer {
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
 struct SCountBlock {                            // the shared count block of a CCountedPointer
     long m_references;                          // +0x00
@@ -47,13 +47,13 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CNavigationInput {                       // 24 bytes, trivially destructible
+class CNavigationInput { public:                       // 24 bytes, trivially destructible
     unsigned char _body[0x18];
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long                     Types;            // +0x00
     long                              LookFlags;        // +0x04
     CNavigationInput                  NavigationInput;  // +0x08
@@ -63,7 +63,7 @@ struct CBrainOutput {
     CIntelligentPointer               LookAtThing;      // +0x40
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Data;                                 // +0x00
     void* Info;                                 // +0x04
     static void __fastcall DeleteData(void* data)
@@ -72,4 +72,4 @@ template<class T> struct CCountedPointer {
     }
 };
 
-template struct CCountedPointer<CBrainOutput>;
+template class CCountedPointer<CBrainOutput>;

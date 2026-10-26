@@ -8,7 +8,7 @@
 // bytes (operator new @ 0x00BFEA1A), null-checks the block and runs the two-argument
 // constructor @ 0x00DEC7F0 on it, returning the new object (or null). The argument types are
 // not recoverable from the body; `void*` models them. One of 10 bodies of this shape.
-struct CHeroMorphDef {
+class CHeroMorphDef { public:
     unsigned char _body[0x12c];
     CHeroMorphDef(void* first, void* second);     // 0x00DEC7F0
 };

@@ -1,4 +1,4 @@
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
 // Leaf: TransferToGui
     void*        field_0;   // +0x00 -> ecx for callee
     int          field_4;   // +0x04 -> edx for callee

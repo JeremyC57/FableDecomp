@@ -45,7 +45,7 @@ struct CBuildingDef : CRefVirtual, CRefCounted {
             Destroy();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_count; }
@@ -58,7 +58,7 @@ template<class T> struct CDefPointer {
     }
 };
 static int g_getDef = 0;
-struct CThingBuilding {
+class CThingBuilding { public:
     CBuildingDef* m_pDef;
     CDefPointer<CBuildingDef> GetPBuildingDef() const
     {
@@ -76,7 +76,7 @@ struct CBuildingList {
     struct node { node* next; node* prev; CBaseIntelligentPointer value; };
     node* head;
 };
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad00[0x28];
     CBuildingList VillageBuildings;
 };

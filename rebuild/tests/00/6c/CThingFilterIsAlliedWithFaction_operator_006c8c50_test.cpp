@@ -1,6 +1,6 @@
 // Behaviour test for CThingFilter_IsAlliedWithFaction::operator() (0x006C8C50)
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct STCEntry { long m_kind; CTCBase* m_pTC; };
 struct CTCMap {
     STCEntry* m_pFirst; STCEntry* m_pLast; STCEntry* m_pEnd;
@@ -11,7 +11,7 @@ struct CTCMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_tcMask[8];
     CTCMap m_tcs;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
@@ -32,8 +32,8 @@ struct CThing {
 };
 
 
-struct CTCEnemy { long m_faction; bool IsAlliedWithFaction(long faction) const { return m_faction == faction; } };
-struct CThingFilter_IsAlliedWithFaction {
+class CTCEnemy { public: long m_faction; bool IsAlliedWithFaction(long faction) const { return m_faction == faction; } };
+class CThingFilter_IsAlliedWithFaction { public:
     long m_faction;
     bool operator()(const CThing& thing) const
     {

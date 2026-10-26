@@ -13,7 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CShopItem {                                          // 28 bytes (landed CTCShop::CTCShop model)
+class CShopItem { public:                                          // 28 bytes (landed CTCShop::CTCShop model)
     float Quantity;                                         // +0x00
     float PriceMultiplier;                                  // +0x04
     float MaxStock;                                         // +0x08

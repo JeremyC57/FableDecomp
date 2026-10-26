@@ -1,8 +1,8 @@
 #include <cstdio>
 
 static int g_base = 0, g_copies = 0;
-struct CCharString { void* m_pData; CCharString(void* p) : m_pData(p) { } CCharString(const CCharString& o) : m_pData(o.m_pData) { ++g_copies; } };
-struct CThing;
+class CCharString { public: void* m_pData; CCharString(void* p) : m_pData(p) { } CCharString(const CCharString& o) : m_pData(o.m_pData) { ++g_copies; } };
+class CThing;
 struct CBase { virtual void v00() { } CBase() { ++g_base; } };
 struct __declspec(novtable) CAction : CBase { CThing* m_pThing; bool m_active; bool m_finished;
     CAction() : CBase(), m_pThing(0), m_active(false), m_finished(false) { } };

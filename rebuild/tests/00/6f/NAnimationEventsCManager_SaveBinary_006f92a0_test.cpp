@@ -3,8 +3,8 @@
 
 static unsigned long g_out[64]; static int g_n = 0;
 static int g_fileWrites = 0; static long g_fileSize = 0;
-struct CWideString { int dummy; };
-struct CMemoryDataOutputStream {
+class CWideString { public: int dummy; };
+class CMemoryDataOutputStream { public:
     void WriteEBOOL(bool v) { g_out[g_n++] = v ? 1 : 0; }
     void WriteULONG(unsigned long v) { g_out[g_n++] = v; }
     void WriteSLONG(long v) { g_out[g_n++] = (unsigned long)v; }
@@ -12,7 +12,7 @@ struct CMemoryDataOutputStream {
     long GetSize() const { return g_n * 4; }
     const void* PeekData() const { return g_out; }
 };
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     CDiskFileWin32(const CWideString&, int access, unsigned long flags) { if (access != 4 || flags != 2) g_fileWrites = -100; }
     void Write(const void* data, long size, void* process) { if (data == g_out && !process) { ++g_fileWrites; g_fileSize = size; } }
 };

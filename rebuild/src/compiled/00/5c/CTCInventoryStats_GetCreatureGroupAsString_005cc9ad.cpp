@@ -9,19 +9,19 @@
 // head-merges the `push -1` and tail-merges everything after the per-arm literal push, so only the first arm keeps its own body.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct CWideString {
+class CWideString { public:
     void* PStringData;
 };
 struct CDataBank {                                      // NGameText::CDataBank
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };

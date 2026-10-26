@@ -1,6 +1,6 @@
 
 #include <cstdio>
-struct C3DVector { float x,y,z; };
+class C3DVector { public: float x,y,z; };
 struct Nav;
 struct Helper {
     int called;

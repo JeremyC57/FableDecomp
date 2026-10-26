@@ -2,10 +2,10 @@
 // Native0x0081e810 length247. Actual quarantined donor included; retail arrays are16bytes earlier.
 // CHeightMap::AreaChanged 0x008f5fa0; conversion helper _ftol2 0x00bfea70.
 #include "engine/_quarantine/CMap.h"
-struct C2DBoxI { long MinX,MinY,MaxX,MaxY;
+class C2DBoxI { public: long MinX,MinY,MaxX,MaxY;
  void Set(float x,float y,float xx,float yy) {MinX=(long)x;MinY=(long)y;MaxX=(long)xx;MaxY=(long)yy;}
 };
-struct CHeightMap { void AreaChanged(const C2DBoxI&); }; // 0x008f5fa0
+class CHeightMap { public: void AreaChanged(const C2DBoxI&); }; // 0x008f5fa0
 struct RetailMap {
  unsigned char MapState[0x1a7c]; CHeightMap* HeightMap_ptr;
  C2DBoxI ChangedHeightAreas[20],ChangedGameAreas[20];

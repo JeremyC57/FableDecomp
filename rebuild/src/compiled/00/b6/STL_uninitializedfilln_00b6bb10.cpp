@@ -1,5 +1,5 @@
 // std::uninitialized_fill_n(CVertexShader* first, unsigned int n, const CVertexShader& x) -- STLport uninitialized_fill_n over vertex-shader handles (the non-POD __uninitialized_fill_n inline): placement-copy n handles, bumping the shared data ReferenceCount; returns the end of the run
-// Leaf: ??$uninitialized_fill_n@PAUCVertexShader@@IU1@@std@@YIPAUCVertexShader@@PAU1@IABU1@@Z
+// Leaf: ??$uninitialized_fill_n@PAVCVertexShader@@IV1@@std@@YIPAVCVertexShader@@PAV1@IABV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6BB10, 49 bytes (+15 int3 pad), `__fastcall` (first ecx, n edx, &x the
 //   only stack argument), `ret 4`. No callees.
 // Identity: the only caller 0x00B6C5D0 (vector<CVertexShader>::_M_fill_insert: STLport calls the 3-argument
@@ -23,7 +23,7 @@ struct CVertexShaderData {
     unsigned long ReferenceCount;                 // +0x10
 };
 
-struct CVertexShader {                            // vtable 0x0129B3D0
+class CVertexShader { public:                            // vtable 0x0129B3D0
     virtual void v00();
     CVertexShaderData* Data;                      // +4
     CVertexShader(const CVertexShader& other) : Data(other.Data)

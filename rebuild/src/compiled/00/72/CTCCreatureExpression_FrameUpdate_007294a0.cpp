@@ -12,8 +12,8 @@
 // band): the lane does not reproduce that choice for a plain inline member, so the last site goes through a __forceinline
 // copy of the landed body (SetExpressionInline). The id is a named local read before the frame call; the camera through an
 // inline accessor; the dot product accumulates Z, Y, X in statements; the morality weights are named float locals.
-struct C3DVector { float X, Y, Z; C3DVector() { } };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -36,7 +36,7 @@ struct CExpressionStateList {                       // STLport list<CExpressionS
     bool empty() const { return head->next == head; }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long m_refCount;                                // +4
@@ -52,7 +52,7 @@ struct CCreatureExpressionDef : CDefPointeeBase {
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -63,7 +63,7 @@ struct CDefPointer {
     T* operator->() const { return Object; }
 };
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CCreatureExpressionDef>* out);   // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -90,7 +90,7 @@ struct CThingFacing {
 #undef VF
     virtual C3DVector GetFacing();                  // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x18];
     unsigned __int64 UniqueID;                      // +0x18
     unsigned long  m_presentBits[9];                // +0x20
@@ -108,17 +108,17 @@ struct CThing {
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
 };
-struct CCamera {
+class CCamera { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual const C3DVector& GetDirection();        // slot 4 (+0x10)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x18];
     CCamera* Camera;                                // +0x18
     CCamera* GetCamera() { return Camera; }
     unsigned long* GetPRandomSeed();                // 0x0049D810
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     float GetMoralityPercentage() const;            // 0x0057A690
 };
 inline float Dot(const C3DVector& a, const C3DVector& b)
@@ -130,7 +130,7 @@ inline float Dot(const C3DVector& a, const C3DVector& b)
 }
 long __fastcall GFGetCurrentFrame();                // 0x0049D870
 
-struct CTCCreatureExpression {
+class CTCCreatureExpression { public:
     virtual void v00();
     CThing*              ParentThing;               // +0x04 (CTCBase)
     unsigned char        _pad08[4];

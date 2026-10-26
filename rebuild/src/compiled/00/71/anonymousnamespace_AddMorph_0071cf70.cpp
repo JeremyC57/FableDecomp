@@ -20,7 +20,7 @@ struct __false_type { __false_type() {} };
 
 enum EHeroMorphType { HERO_MORPH_TYPE_DUMMY };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;                                      // +0x00
 };
 

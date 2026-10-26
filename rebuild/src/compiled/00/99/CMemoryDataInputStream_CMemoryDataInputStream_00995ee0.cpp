@@ -22,7 +22,7 @@ struct CArrayChar {                                // CArray<char> (STLport vect
     const char* GetData() const { return size() ? m_start : (const char*)this; }
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     virtual void v00();
     unsigned char _pad_0x04[0x4];                  // +0x04
     CArrayChar Data;                               // +0x08
@@ -43,7 +43,7 @@ struct __declspec(novtable) CMemoryDataInputStreamBase : CBaseClassNonCopyable, 
         : CBaseClassNonCopyable(), SMemoryStreamState(data, size, sizeCopy) { }
 };
 
-struct CMemoryDataInputStream : CMemoryDataInputStreamBase {   // vtable 0x0123675C
+class CMemoryDataInputStream : public CMemoryDataInputStreamBase { public:   // vtable 0x0123675C
     const char* StreamSource;                      // +0x18
     CMemoryDataInputStream(const CMemoryDataOutputStream& output);
 };

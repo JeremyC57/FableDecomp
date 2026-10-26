@@ -1,6 +1,6 @@
 // Behaviour test for 0x0086f590 (vector TransferBinaryOut, 12-byte elements)
 #include <cstdio>
-struct CDataOutputStream {
+class CDataOutputStream { public:
     long m_longs[4]; int m_nLongs; const void* m_data; long m_bytes; int m_nWrites;
     CDataOutputStream() : m_nLongs(0), m_data(0), m_bytes(-1), m_nWrites(0) {}
     virtual void Write(const void* data, long bytes) { m_data = data; m_bytes = bytes; ++m_nWrites; }

@@ -30,14 +30,14 @@ struct CSubDef {
     CSubDefMap    m_map;                                 // +0x60
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) {}
     ~CDefPointer() { if (m_pDef) { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); } }
     T* operator->() const { return m_pDef; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CSubDef>* out);           // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -54,7 +54,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CSubDef>* out)
 }
 #pragma auto_inline(on)
 
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     unsigned char               _pad00[0x70];
     CDefClassBase*              PBaseDef;                // +0x70
     void* vfunc_71(long key);

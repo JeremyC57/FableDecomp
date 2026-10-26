@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCVillage { bool schoolTime; bool IsTimeToGoToSchool(void*, void*, bool) { return schoolTime; } };
+class CTCVillage { public: bool schoolTime; bool IsTimeToGoToSchool(void*, void*, bool) { return schoolTime; } };
 struct CTCVillager { CTCVillage* village; };
 static CTCVillage* GFGetPVillageInterface(CTCVillager* v) { return v ? v->village : 0; }
 struct Material { unsigned long Flags; int refs; };

@@ -13,7 +13,7 @@ extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 #pragma intrinsic(atan2, fmod)
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)

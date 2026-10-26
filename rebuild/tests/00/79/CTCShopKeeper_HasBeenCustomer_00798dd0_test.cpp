@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CBaseObject { int id; };
-struct CThing : CBaseObject { };
+class CBaseObject { public: int id; };
+class CThing : public CBaseObject { public: };
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -17,7 +17,7 @@ template<class T> struct CRetailVector {
     T* first; T* last; T* end_of_storage;
     T& operator[](unsigned long n) { return first[n]; }
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     CRetailVector<CIntelligentPointer> m_recentCustomers;
     bool HasBeenCustomer(CThing* thing)
     {

@@ -27,12 +27,12 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                          // 0x0099E4B0
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
@@ -47,13 +47,13 @@ struct CCharString {
         return PStringData->Data == text;
     }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                          // 0x0099AED0
     ~CWideString();                                         // 0x0099B510
     const CWideString& operator=(const wchar_t* text);      // 0x0099B800
 };
-struct CScriptThing {                                       // vtable 0x01238C8C, 12 bytes {vptr, PImp.Data, PImp.Info}
+class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes {vptr, PImp.Data, PImp.Info}
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
     virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
     virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020(); virtual void t021(); virtual void t022(); virtual void t023();
@@ -73,7 +73,7 @@ struct CDefStringTable {
     CCharString GetString(long index);                      // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                    // 0x013CA828
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xbb0];
     long KnotholeGladeSiegeTheme;                           // +0xbb0 (string-table index of the siege music theme)
 };
@@ -82,7 +82,7 @@ struct CQ_BreakSiegeMasterData {
     unsigned char _pad[0xe0];
     bool BreakSiegeCompleted;                               // +0xe0
 };
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();

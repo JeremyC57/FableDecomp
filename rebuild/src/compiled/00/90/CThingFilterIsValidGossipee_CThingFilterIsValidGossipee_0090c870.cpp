@@ -57,10 +57,10 @@ struct CTCFactionMember {                       // component kind 0x49
     unsigned char _pad00[0x18];
     CFaction*     PFaction;                     // +0x18
 };
-struct CTCVillageMember {                       // component kind 0x23
+class CTCVillageMember { public:                       // component kind 0x23
     CTCVillage* GetPTCVillage() const;          // 0x007EE540
 };
-struct CThingFilter_IsValidGossipee {
+class CThingFilter_IsValidGossipee { public:
     CThingAICreature* Thing;                    // +0x00
     CFaction*         PFaction;                 // +0x04
     CTCVillage*       PTCVillage;               // +0x08

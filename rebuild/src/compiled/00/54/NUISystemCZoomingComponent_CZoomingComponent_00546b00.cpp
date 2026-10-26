@@ -34,12 +34,12 @@ struct C2DVector {
     float X, Y;
 };
 
-struct CChangingStateComponent : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x15C bytes
+class CChangingStateComponent : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:   // retail 0x15C bytes
     unsigned char _body[0x15c - 0x1c];
     CChangingStateComponent(long owner);         // 0x0052CC50
 };
 
-struct CZoomingComponent : CChangingStateComponent {   // vtables 0x01247DC4 / 0x01247DA0 / 0x01247D98
+class CZoomingComponent : public CChangingStateComponent { public:   // vtables 0x01247DC4 / 0x01247DA0 / 0x01247D98
     virtual void v000();
     virtual void ProcessEvent();
     virtual void v0();

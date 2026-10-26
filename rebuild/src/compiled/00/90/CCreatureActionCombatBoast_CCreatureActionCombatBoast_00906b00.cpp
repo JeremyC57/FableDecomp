@@ -9,21 +9,21 @@
 // constructor; then this class's vtable (0x012633FC, rtti-vtables.tsv).
 // One of 13 bodies of this shape.
 
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
 
-struct CCreatureAction_CombatBoast : CCombatActionBase {
+class CCreatureAction_CombatBoast : public CCombatActionBase { public:
     virtual void v00();
     CCreatureAction_CombatBoast(CThingCreatureBase* owner, CThing* thing);
 };

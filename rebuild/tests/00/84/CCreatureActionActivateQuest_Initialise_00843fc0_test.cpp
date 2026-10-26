@@ -13,12 +13,12 @@
 //   fetched before GetDefName's hidden result pointer is pushed; the display string is a named local. ActivateQuest takes
 //   its real PDB signature (const CCharString&, bool, bool) -> bool: the bool LoadResources argument is what gives the
 //   `xor edx,edx ; mov dl,[edi+0ACh]` widening (an unsigned long parameter gives movzx).
-struct CDefString {
+class CDefString { public:
     long m_index;
     CDefString& operator=(const CDefString& other);   // user assignment: returned through the hidden pointer, copied as a dword
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                             // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
@@ -29,7 +29,7 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
 
-struct CThing {
+class CThing { public:
     CDefString GetDefName();                    // 0x004C7CC0
 };
 
@@ -48,7 +48,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0xa8];
     CIntelligentPointer LastObjectUsed;         // +0xa8
     CCharString LastObjectUsedName;             // +0xb0
@@ -57,7 +57,7 @@ struct CQuestManager {
 extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 
 #pragma pack(push, 1)                           // the real (PDB) layout: PObjectToUse is unaligned
-struct CCreatureAction_ActivateQuest {
+class CCreatureAction_ActivateQuest { public:
     virtual void v00();
     unsigned char _pad04[0x63 - 4];
     bool Initialised;                           // +0x63

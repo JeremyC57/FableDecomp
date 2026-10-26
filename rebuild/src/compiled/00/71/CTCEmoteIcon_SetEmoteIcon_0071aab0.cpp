@@ -8,7 +8,7 @@
 // the clearing arm pushes the 0.0f literal as `push 0`. The calls are not tail jumps (the argument counts differ).
 #include "engine/CTCBase.h"
 
-struct CTCEmoteIcon : CTCBase {
+class CTCEmoteIcon : public CTCBase { public:
     long          ActiveTimer;                     // +0x0c
     void*         EmoteText;                       // +0x10 CWideString
     long          EmoteIcon;                       // +0x14

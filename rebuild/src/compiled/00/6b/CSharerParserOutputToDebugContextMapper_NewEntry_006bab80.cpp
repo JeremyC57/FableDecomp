@@ -8,7 +8,7 @@
 // Shape: VC7.1 has no named-return-value optimisation, so the local is built in the 0x1c frame, the implicit copy
 // constructor is inlined into the result (string at +0, sets at +4 / +0x10, each source re-addressed with `lea`),
 // and the local's destructor runs before the return.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();
@@ -22,7 +22,7 @@ struct SStringSet {                             // STLport set<CCharString>: hea
     ~SStringSet();
 };
 
-struct CSharerParserOutputToDebugContextMapper {
+class CSharerParserOutputToDebugContextMapper { public:
     struct CEntry {                             // 0x1c bytes
         CCharString Name;                       // +0x00
         SStringSet  Sharers;                    // +0x04

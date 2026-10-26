@@ -1,7 +1,7 @@
 // Behaviour test for CWorld::GetCurrentRenderCamera() const (0x0049DA60): the free camera while in use, else the game
 // camera, both at fraction 1.0.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CCamera {
 public:
     C3DVector WorldPosition;
@@ -17,12 +17,12 @@ public:
     CInterpolationInfoSet Current, Last, PausedCurrent, PausedLast, BulletTimeCurrent, BulletTimeLast;
     long WFServerCurrentTime;
 };
-struct CPlayer {
+class CPlayer { public:
     bool UsingFreeCamera;
     CCamera GetFreeCamera(float t) const { return CCamera(1, t); }
 };
-struct CPlayerManager { CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
-struct CAIGameCameraBase {
+class CPlayerManager { public: CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
+class CAIGameCameraBase { public:
     virtual ~CAIGameCameraBase() {}
     virtual CCamera GetCamera(float t) const { return CCamera(2, t); }
 };

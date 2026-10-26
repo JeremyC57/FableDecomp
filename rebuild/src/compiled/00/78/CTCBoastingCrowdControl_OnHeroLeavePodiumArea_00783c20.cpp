@@ -9,9 +9,9 @@
 // up in HeroCrowdThings and returns the crowd thing and its group component through the out pointers.
 // Shape: the crowd call sits under the GetCrowd result (`test al,al ; je`); the parent pointer is read
 // into a local FIRST (retail loads [ecx+4] before `sub esp,8`; the inline member read sinks below the pushes).
-struct CThing;
+class CThing;
 
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     void OnHeroApproachBoastingArea();                      // 0x00784600
     void OnHeroEnterBoastingArea();                         // 0x00784690
     void OnHeroLeaveBoastingArea();                         // 0x007846B0
@@ -19,7 +19,7 @@ struct CTCCreatureGroupBoastingCrowd {
     void OnHeroAttackCrowdMember();                         // 0x007849C0
 };
 
-struct CTCBoastingCrowdControl {
+class CTCBoastingCrowdControl { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x4];

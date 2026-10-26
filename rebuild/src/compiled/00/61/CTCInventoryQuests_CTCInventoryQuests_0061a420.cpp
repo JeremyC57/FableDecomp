@@ -13,7 +13,7 @@
 // Shape: the STLport `_Vector_base` / `_Rb_tree_base` + `_Rb_tree` models (as 0x007673C0); every scalar is an initialiser and
 //   lands after both vtable stores; the zeros share ebx, the trues one `mov al,1`.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-struct CThing;
+class CThing;
 template <class P> struct CAllocProxy {                 // STLport _STLP_alloc_proxy<P, ...> over an empty allocator
     P _M_data;
     CAllocProxy(P p) : _M_data(p) { }
@@ -30,7 +30,7 @@ struct SRbTreeNodeBase {                                // STLport _Rb_tree_node
     SRbTreeNodeBase* _M_left;
     SRbTreeNodeBase* _M_right;
 };
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 struct SQuestComponentNode : SRbTreeNodeBase {          // 0x18 bytes
     CThing*               first;
     NUISystem::CComponent* second;
@@ -56,23 +56,23 @@ struct CQuestComponentMap : CQuestComponentTreeBase {   // map<CThing*, NUISyste
         _M_header._M_data->_M_right = _M_header._M_data;
     }
 };
-struct CEnginePrimitiveHandle;
-struct CQuestCardItem;
+class CEnginePrimitiveHandle;
+class CQuestCardItem;
 struct CIntelligentPointerThing;
 namespace NInventory {
-    struct CTCInventoryBase {                           // retail size 0x130
+    class CTCInventoryBase { public:                           // retail size 0x130
         CTCInventoryBase(CThing& thing);                // 0x005BFF07
         virtual ~CTCInventoryBase();
         unsigned char _pad04[0x130 - 0x04];
     };
 }
 namespace NHeroInformationScreens {
-    struct CBase {                                      // secondary base at +0x130
+    class CBase { public:                                      // secondary base at +0x130
         CBase();                                        // 0x0066E734
         virtual void v00();
     };
 }
-struct CTCInventoryQuests : NInventory::CTCInventoryBase, NHeroInformationScreens::CBase {   // vtables 0x012585B4 / 0x012585A0
+class CTCInventoryQuests : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase { public:   // vtables 0x012585B4 / 0x012585A0
     vector<CEnginePrimitiveHandle> InventoryQuestCardSelectPrimitiveHandles;   // +0x134
     vector<CQuestCardItem> QuestCardItemList;           // +0x140
     bool          IsGuildValid;                         // +0x14c

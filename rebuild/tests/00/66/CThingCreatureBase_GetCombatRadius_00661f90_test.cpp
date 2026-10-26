@@ -2,7 +2,7 @@
 
 struct Inner { char pad[0x134]; float f134; };
 struct Other { char pad[0x34]; float f34; };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     char pad0[0x60];
     Other* q;
     char pad1[0xe0 - 0x64];

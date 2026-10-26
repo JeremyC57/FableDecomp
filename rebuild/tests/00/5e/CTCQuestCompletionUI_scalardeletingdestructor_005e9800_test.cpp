@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     void* vftable;
     int destroyed;
 };

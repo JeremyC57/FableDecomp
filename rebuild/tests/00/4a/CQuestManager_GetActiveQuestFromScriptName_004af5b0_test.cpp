@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 static int g_compares = 0;
 static long Compare(const char* a, const char* b) { ++g_compares; return std::strcmp(a, b); }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {
@@ -17,7 +17,7 @@ static CCharStringData Block(const char* s) { CCharStringData d; d.m_pData = s; 
 // Behaviour model of 0x004AF5B0: CQuestManager::GetActiveQuestFromScriptName over the active-quest list.
 struct CActiveQuest { long ID; CCharString QuestName; };
 struct SNode { SNode* next; SNode* prev; CActiveQuest* m_pData; void* m_pInfo; };
-struct CQuestManager {
+class CQuestManager { public:
     SNode* ActiveQuests;
     CActiveQuest* GetActiveQuestFromScriptName(const CCharString& name) const
     {

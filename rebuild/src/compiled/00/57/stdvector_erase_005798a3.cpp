@@ -1,5 +1,5 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CTCInventoryExperience::ExperienceSpendInfo>) STLport range erase: assign the tail [last, finish) down onto first with the out-of-line __copy, destroy the vacated (trivially destructible) tail, finish = the new end; returns first
-// Leaf: ?erase@?$vector@VExperienceSpendInfo@CTCInventoryExperience@@V?$allocator@VExperienceSpendInfo@CTCInventoryExperience@@@std@@@std@@QAEPAVExperienceSpendInfo@CTCInventoryExperience@@PAV34@0@Z
+// Leaf: ?erase@?$vector@UExperienceSpendInfo@CTCInventoryExperience@@V?$allocator@UExperienceSpendInfo@CTCInventoryExperience@@@std@@@std@@QAEPAUExperienceSpendInfo@CTCInventoryExperience@@PAU34@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005798A3, 37 bytes, thiscall `ret 8`; frame-pointer size-optimised TU (`push ebp ; mov ebp,esp`, the empty random_access_iterator_tag homed in the dead argument slot `[ebp+0Bh]`).
 // Identity (proven): vector<CTCInventoryExperience::ExperienceSpendInfo>::erase; evidence: its only caller is the resize 0x00579EF5 (12-byte stride, `lea eax,[esi+esi*2] ; lea eax,[edi+eax*4]`), reached through 0x00579F8A three times from CTCInventoryExperience::OnCreate (slot 4 of its RTTI vtable) -- Ego_r.pdb's three vector<CTCInventoryExperience::ExperienceSpendInfo> members ExperienceSpendValuesPool / Stats / Ability (12-byte {currentSpend, initialSpend, levelUpSpend}). The catalog's CMusicSetEntry (also 12 bytes) is a propagated label.
 // Label: the manifest's "CMusicSetEntry_MoveConstruct" is descriptive / propagated (family H062: six range erases whose element assignment is not trivial to STLport, one per element).
@@ -10,7 +10,7 @@
 #pragma optimize("s", on)
 class CTCInventoryExperience {
 public:
-    class ExperienceSpendInfo {                             // Ego_r.pdb, 12 bytes
+    struct ExperienceSpendInfo {                             // Ego_r.pdb, 12 bytes
     public:
         long currentSpend;
         long initialSpend;

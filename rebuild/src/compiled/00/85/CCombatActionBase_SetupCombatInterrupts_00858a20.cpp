@@ -22,7 +22,7 @@
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 extern long g_FramesPerSecond;                         // 0x01375550
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -54,7 +54,7 @@ struct CAnimEventVector {                              // std::vector<std::pair<
 };
 
 namespace NAnimationEvents {
-struct CManager {
+class CManager { public:
     virtual void GetEvents(unsigned long animID, CAnimEventVector& events) const;          // slot 0
     bool  AnimHasEvent(unsigned long animID, const CCharString& eventName) const;          // 0x006F9720
     float GetEventTimeInSeconds(unsigned long animID, const CCharString& eventName) const; // 0x006F9790
@@ -68,17 +68,17 @@ struct CDefBase {
     long RefCount;                                     // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CCreatureStatsDef : CDefBase {
+class CCreatureStatsDef : public CDefBase { public:
     unsigned char _pad08[0x3c - 0x08];
     float Speed;                                       // +0x3c
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p) m_p->Release(); }
     T* operator->() const { return m_p; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CCreatureStatsDef>& out);   // 0x00696130
 };
 void* FindSubDef_CCreatureStatsDef(CDefClassBase* def);
@@ -92,7 +92,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureStatsDef
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x70];
     CDefClassBase* PDef;                               // +0x70
 };
@@ -101,11 +101,11 @@ struct CBaseIntelligentPointer {
     void* m_pData;
     CThing* GetPItem() const;                          // 0x00A01B50
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     unsigned long AnimID;                              // +0x00
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual long GetAnimDelayTime() const;             // slot 6 (+0x18)
     unsigned char           _pad04[4];

@@ -7,9 +7,9 @@
 #endif
 #include <new>
 static int g_scriptBase = 0, g_timers = 0;
-struct CScriptBase { virtual void v00() { } unsigned char _body[0x3c]; CScriptBase() { ++g_scriptBase; } };
+class CScriptBase { public: virtual void v00() { } unsigned char _body[0x3c]; CScriptBase() { ++g_scriptBase; } };
 struct __declspec(novtable) CScriptObject : CScriptBase { void* m_pInterface; void* m_pData; CScriptObject(void* data, void* iface) : CScriptBase(), m_pInterface(iface), m_pData(data) { } };
-struct CGameScriptInterface { virtual void v000() { } virtual long RegisterTimer() { return 100 + g_timers++; } };
+class CGameScriptInterface { public: virtual void v000() { } virtual long RegisterTimer() { return 100 + g_timers++; } };
 static CGameScriptInterface g_interface; CGameScriptInterface* g_pGameScriptInterface = &g_interface;
 struct SSwordState { long m_swordState; long m_crowdState; long m_pullCount; SSwordState() : m_swordState(0), m_crowdState(0), m_pullCount(0) { } };
 struct CV_SwordInTheStoneScript : CScriptObject {

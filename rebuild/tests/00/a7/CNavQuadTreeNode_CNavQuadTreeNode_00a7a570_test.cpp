@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
 static int g_init = 0;
 struct Base {
     C2DVector Position; unsigned char QuadTreeLevel; unsigned char NavLayer; bool LeafNode; bool Blocked;

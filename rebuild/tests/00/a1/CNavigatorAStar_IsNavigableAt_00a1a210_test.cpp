@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct C3DVector { float X, Y, Z; }; struct C2DVector { float X, Y; C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { } }; struct CNode { unsigned char p[0xf]; bool off; }; static CNode* g_node = 0; static float g_x, g_y; static long g_layer = -1; static long g_calls = 0;
+class C3DVector { public: float X, Y, Z; }; class C2DVector { public: float X, Y; C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { } }; struct CNode { unsigned char p[0xf]; bool off; }; static CNode* g_node = 0; static float g_x, g_y; static long g_layer = -1; static long g_calls = 0;
 struct CMgr { CNode* GetNodeAt(const C2DVector& p, bool layer) { g_x = p.X; g_y = p.Y; g_layer = layer; ++g_calls; return g_node; } };
 struct CAStar { unsigned char _pad[0x1c]; CMgr* mgr; long IsNavigableAt(const C3DVector* p, bool layer) { CNode* n = mgr->GetNodeAt(*p, layer); if (n && !n->off) return 1; return 0; } };
 

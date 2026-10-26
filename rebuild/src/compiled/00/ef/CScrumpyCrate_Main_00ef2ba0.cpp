@@ -10,12 +10,12 @@
 // Layout: Ego_r.pdb CScrumpyCrate (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14,
 // PMasterData +0x18 (neither used here).
 // Shape: the carry waits are `while (!(!x))` (retail's `test al,al ; setne`), the first carry tests plain `if (x)`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void t00(); virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05();
     virtual void t06(); virtual void t07(); virtual void t08(); virtual void t09(); virtual void t10(); virtual void t11();
     virtual void t12(); virtual void t13(); virtual void t14(); virtual void t15(); virtual void t16(); virtual void t17();
@@ -48,7 +48,7 @@ enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_0 };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     VPAD64(qa)                                                                       // slots 8..71
@@ -61,7 +61,7 @@ struct CGameScriptInterface {
     VPAD64(ta) VPAD16(tb) VPAD2(tc) VPAD1(td)                                        // slots 427..509
     virtual void EntitySetAlpha(const CScriptThing& thing, float alpha, bool fade) const;   // slot 510 (+0x7f8)
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

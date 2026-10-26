@@ -1,6 +1,6 @@
 #include <cstdio>
 // test thing: the retail state bits, the type mask, a position and an attribute word the test filters read
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned long ThingTypeFlags;
     unsigned char StateBits;
@@ -35,27 +35,27 @@ struct CThingList {
     iterator begin() { return iterator(m_pHead->m_pNext); }
     iterator end() { return iterator(m_pHead); }
 };
-struct CThingAICreature : CThing { enum { ThingListType = 1 }; };
-struct CThingBuilding : CThing { enum { ThingListType = 3 }; };
-struct CThingVillage : CThing { enum { ThingListType = 4 }; };
-struct CThingGameObject : CThing { enum { ThingTypeMask = 0x7 }; };
-struct CThingObject : CThingGameObject { enum { ThingTypeMask = 0x807 }; };
-struct C3DVector { float X, Y, Z; };
-struct CThingFilter_In2DRange { C3DVector Pos; float Range; bool operator()(const CThing& t) const { return (t.Attr & 2) != 0; } };
-struct CThingFilter_In3DRange { C3DVector Pos; float Range; bool operator()(const CThing& t) const { return (t.Attr & 0x400) != 0; } };
-struct CThingFilter_ObjectHasProperty { long Property; bool operator()(const CThing& t) const { return (t.Attr & 0x40) != 0; } };
-struct CThingFilter_HasFreeActionPoint { bool operator()(const CThing& t) const { return (t.Attr & 0x80) != 0; } };
-struct CThingFilter_HasTC { long Type; bool operator()(const CThing& t) const { return t.HasTCType(Type); } };
-struct CThingFilter_AICreatureHasProperty { unsigned long Property; bool operator()(const CThing& t) const { return (t.Attr & 0x20) != 0; } };
-struct CThingFilter_HasScriptedControl { bool CheckForActive; bool operator()(const CThing& t) const { return (t.Attr & 0x10) != 0; } };
+class CThingAICreature : public CThing { public: enum { ThingListType = 1 }; };
+class CThingBuilding : public CThing { public: enum { ThingListType = 3 }; };
+class CThingVillage : public CThing { public: enum { ThingListType = 4 }; };
+class CThingGameObject : public CThing { public: enum { ThingTypeMask = 0x7 }; };
+class CThingObject : public CThingGameObject { public: enum { ThingTypeMask = 0x807 }; };
+class C3DVector { public: float X, Y, Z; };
+class CThingFilter_In2DRange { public: C3DVector Pos; float Range; bool operator()(const CThing& t) const { return (t.Attr & 2) != 0; } };
+class CThingFilter_In3DRange { public: C3DVector Pos; float Range; bool operator()(const CThing& t) const { return (t.Attr & 0x400) != 0; } };
+class CThingFilter_ObjectHasProperty { public: long Property; bool operator()(const CThing& t) const { return (t.Attr & 0x40) != 0; } };
+class CThingFilter_HasFreeActionPoint { public: bool operator()(const CThing& t) const { return (t.Attr & 0x80) != 0; } };
+class CThingFilter_HasTC { public: long Type; bool operator()(const CThing& t) const { return t.HasTCType(Type); } };
+class CThingFilter_AICreatureHasProperty { public: unsigned long Property; bool operator()(const CThing& t) const { return (t.Attr & 0x20) != 0; } };
+class CThingFilter_HasScriptedControl { public: bool CheckForActive; bool operator()(const CThing& t) const { return (t.Attr & 0x10) != 0; } };
 struct CThingFilter_OnFire { bool operator()(const CThing& t) const { return (t.Attr & 0x8) != 0; } };
 struct CThingFilter_IsValidAttackTargetForCreature { unsigned char _sub[0x20]; bool operator()(const CThing& t) const { return (t.Attr & 0x4) != 0; } };
-template <class T> struct CFilter_Not { const T& F; template <class U> bool operator()(const U& thing) const { return !F(thing); } };
-template <class A, class B> struct CFilter_Bind2 {
+template <class T> class CFilter_Not { public: const T& F; template <class U> bool operator()(const U& thing) const { return !F(thing); } };
+template <class A, class B> class CFilter_Bind2 { public:
     const A& First; const B& Second;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing); }
 };
-template <class A, class B, class C, class D> struct CFilter_Bind4 {
+template <class A, class B, class C, class D> class CFilter_Bind4 { public:
     const A& First; const B& Second; const C& Third; const D& Fourth;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing) && Third(thing) && Fourth(thing); }
 };
@@ -97,7 +97,7 @@ public:
 };
 }
 static float Dist(const CThing* t, float x) { float d = t->X - x; return d < 0 ? -d : d; }
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector Pos;
     template <class T> T* operator()(T* best, T* candidate) const
     {
@@ -105,8 +105,8 @@ struct CThingCompare_Nearest {
         return best;
     }
 };
-struct CThingCreatureBase;
-struct CThingCompare_BestCreatureToAttack {           // test: the highest X wins
+class CThingCreatureBase;
+class CThingCompare_BestCreatureToAttack { public:           // test: the highest X wins
     CThingCreatureBase* Targeter; CThing* PCurrentBestTargetForAttack;
     float PreferPlayerWeight, PreferNonCombatantsWeight, PreferLastAttackerWeight, PreferCurrentBestEnemyWeight;
     template <class T> T* operator()(T* best, T* candidate) const

@@ -3,7 +3,7 @@
 // is runnable, then terminates.
 static int g_doNothing = 0, g_runnable = 0, g_terminated = 0;
 static long g_doNothingResults[8] = { 4, 4, 4, 4, 4, 4, 4, 4 }; static bool g_runnableResults[8] = { true, true, false, true, true, true, true, true };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual bool IsRunnable() { return g_runnableResults[g_runnable++]; }
     long AIAction_DoNothing() { return g_doNothingResults[g_doNothing++]; }
     void Terminate() { g_terminated++; }

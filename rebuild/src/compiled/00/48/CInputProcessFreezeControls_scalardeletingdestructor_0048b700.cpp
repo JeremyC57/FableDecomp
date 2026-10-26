@@ -1,4 +1,4 @@
-struct CInputProcessFreezeControls {
+class CInputProcessFreezeControls { public:
     void* vftable;
 };
 

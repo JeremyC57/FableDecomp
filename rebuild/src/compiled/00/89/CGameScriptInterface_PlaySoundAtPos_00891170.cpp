@@ -15,14 +15,14 @@
 // argument) and is re-read from the global for the PlaySample argument.
 
 class CCharString;
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 
-struct CASoundBank {
+class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol);     // 0x00A01920
 };
 
-struct CSoundInit {
+class CSoundInit { public:
     float Volume, Pitch, Pan;
     long NoPlays, PlaybackType;
     unsigned long GainFaderBits, PitchFaderBits;
@@ -34,7 +34,7 @@ struct CSoundInit {
     }
 };
 
-struct CThingSoundEmitter {
+class CThingSoundEmitter { public:
     unsigned char _pad00[0x91];
     unsigned char Dead : 1;               // +0x91 bit 0
     unsigned char _flags91_1 : 7;
@@ -42,7 +42,7 @@ struct CThingSoundEmitter {
     unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);       // 0x00836810
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x10];
     CASoundBank* PSampleBank;             // +0x10
     CASoundBank& GetSampleBank() const { return *PSampleBank; }
@@ -50,7 +50,7 @@ struct CMainGameComponent {
 extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
 extern unsigned long g_InvalidSoundHandle;          // 0x0129D25C
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual unsigned long PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const;
 };
 

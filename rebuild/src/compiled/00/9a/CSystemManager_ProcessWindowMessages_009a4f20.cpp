@@ -24,7 +24,7 @@ extern "C" __declspec(dllimport) int __stdcall PeekMessageW(MSG*, HWND__*, unsig
 extern "C" __declspec(dllimport) int __stdcall TranslateMessage(const MSG*);
 extern "C" __declspec(dllimport) long __stdcall DispatchMessageW(const MSG*);
 
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad00[0x34];
     RTL_CRITICAL_SECTION CriticalSection;       // +0x34
     unsigned char _pad4c[0x94 - 0x4c];

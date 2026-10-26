@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
 };
 
 namespace NEntityEvents {
-struct CEventBase {                                // vtable 0x0124F2C4
+class CEventBase { public:                                // vtable 0x0124F2C4
     virtual void v00();
     long m_eventType;                              // +0x04
     ~CEventBase() { }

@@ -11,7 +11,7 @@
 // Shape: the search is a __forceinline FindAcceptedBoast(id, name, CBoast*& out) returning bool; only that form gives
 // retail's ebx push on the non-empty path and the store straight on the hit (an inline loop in the body pushes ebx at entry,
 // a pointer-returning helper adds `lea ; test` before the store).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // (by-value parameter; built by the caller)
     ~CCharString();                                  // 0x0099EAE0
@@ -20,7 +20,7 @@ struct CCharString {
     bool operator==(const char* text) const { return !(*this != text); }
     bool operator==(const CCharString& other) const { return !(*this != other); }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
 };
 struct CBoast {                                    // CQuestManager::CBoast (PDB, 32 bytes)
@@ -40,7 +40,7 @@ struct CBoastNode {                                // STLport list node
     CBoastNode* prev;
     CBoast      value;                             // +0x08
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x68];
     CBoastNode*   Boasts;                          // +0x68 list<CBoast> (head node; PDB +0xa4)
     CBoastNode*   AcceptedBoasts;                  // +0x6c list<CBoast> (head node; PDB +0xb0)

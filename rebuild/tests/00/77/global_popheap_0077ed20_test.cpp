@@ -11,7 +11,7 @@ public:
     ~CCharString() { --g_strings; }
     CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
 };
-struct C3DVector {
+class C3DVector { public:
     unsigned int X, Y, Z;
     C3DVector(unsigned int x, unsigned int y, unsigned int z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}

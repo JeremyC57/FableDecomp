@@ -27,7 +27,7 @@ struct CBasicStringChar {
 
 static int g_liveStrings = 0;
 
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(CBasicStringChar* p) : PStringData(p) { ++g_liveStrings; }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_liveStrings; }
@@ -45,7 +45,7 @@ struct CCharString {
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     unsigned int X, Y, Z;
     C3DVector(unsigned int x, unsigned int y, unsigned int z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -60,7 +60,7 @@ template <class T1, class T2> struct pair {
 };
 typedef pair<CCharString, C3DVector> SNamedPosition;
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<CCharString, C3DVector> CNamedPositionLess;

@@ -30,7 +30,7 @@ struct CTCEmoteIconBase {
     unsigned char EmoteAlpha; bool Replaceable; bool Enabled;
     CEnginePrimitiveHandle PrimitiveHandle;
 };
-struct CTCEmoteIcon : CTCEmoteIconBase {
+class CTCEmoteIcon : public CTCEmoteIconBase { public:
     void SetAsDrawable(bool drawable) { if (!drawable) PrimitiveHandle.Release(); }
 };
 int main()

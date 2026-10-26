@@ -1,14 +1,14 @@
 // Behaviour test for NPlayerGui::CMultiStatBar::DrawStatBarOnLeft @ 0x00646C44: queue front pickup and the two countdowns.
 #include <cstdio>
 #include <cstring>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
-struct CGraphicDataBank;
-struct CEnginePrimitivePrepareInfo {
+class CGraphicDataBank;
+class CEnginePrimitivePrepareInfo { public:
     float FrameTime;                       // +0x00
 };
 
@@ -16,7 +16,7 @@ struct CGameState {
     unsigned char _pad00[0xa4];
     bool          Paused;                  // +0xa4
 };
-struct CGame {
+class CGame { public:
     unsigned char _pad00[0x24];
     CGameState*   GameState;               // +0x24
 };
@@ -45,8 +45,8 @@ struct CStatBarOwner {                     // the owning player GUI def (only th
     CVector<long>       TypeEffects;       // +0x558
 };
 
-struct CMultiStatBar {
-    struct CStatUpdate {                   // 12 bytes
+class CMultiStatBar { public:
+    class CStatUpdate { public:                   // 12 bytes
         EStatUpdateType Type;
         long            Change;
         float           TimeRemaining;

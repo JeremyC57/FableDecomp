@@ -7,7 +7,7 @@ static void L(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static int g_frames = 0, g_gensOn = 0, g_gensOff = 0, g_unloadAt = 5;
 struct CQ_HobbeCaveScript;
 static CQ_HobbeCaveScript* g_s = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const;
     bool IsLevelLoaded(const char*) const { return g_frames < g_unloadAt; }
     void SetCreatureGeneratorsEnabled(const char*, bool on) const { if (on) ++g_gensOn; else ++g_gensOff; }

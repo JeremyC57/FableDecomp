@@ -15,9 +15,9 @@
 #include "engine/CPlayerGui.h"
 #include "engine/_quarantine/CPlayerGuiDef.h"
 #include "engine/_quarantine/CGraphicDataBank.h"
-struct CEnginePrimitivePrepareInfo;
-struct C2DVector {float X,Y;};
-struct CRGBColour {unsigned char Blue,Green,Red,Alpha;};
+class CEnginePrimitivePrepareInfo;
+class C2DVector { public:float X,Y;};
+class CRGBColour { public:unsigned char Blue,Green,Red,Alpha;};
 struct StatBarNative {
  virtual void DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,const C2DVector&,const CRGBColour&,unsigned char,bool);
  float GetValue()const{return Value;}

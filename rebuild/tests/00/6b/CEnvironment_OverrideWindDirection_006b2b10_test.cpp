@@ -1,7 +1,7 @@
 // Behaviour test for 0x006b2b10 CEnvironment::OverrideWindDirection
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CEnvironment {
+class C3DVector { public: float x, y, z; };
+class CEnvironment { public:
     float WindSpeed; C3DVector WindDirection; bool OverrideWindDirectionFlag; C3DVector OldWindDirection; float OldWindSpeed;
     void OverrideWindDirection(const C3DVector& direction, float speed)
     {

@@ -11,31 +11,31 @@
 // Layout: the entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14 (Ego_r.pdb).
 // Shape: the spawned name is two explicit temporaries joined by operator+ and the region an explicit CCharString(""),
 //   built after the new-expression; the distance test is the inline (a - b).MagSquared() against 36.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     float MagSquared() const { return X * X + Y * Y + Z * Z; }
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 extern C3DVector g_ZeroVector;                              // 0x0143E8E0
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass() { }
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 void* __cdecl operator new(unsigned int size);              // 0x00BFEA1A
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -51,7 +51,7 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes; PImp is the game-side thing
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                     // +0x04 Data, +0x08 Info
     ~CScriptThing() { }                                     // out of line 0x004AA840
     virtual void t01() const; virtual void t02() const; virtual void t03() const; virtual void t04() const; virtual void t05() const;
@@ -72,7 +72,7 @@ struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C
     virtual void t71() const; virtual void t72() const; virtual void t73() const; virtual void t74() const; virtual void t75() const; virtual void t76() const;
     virtual bool IsNull() const { return !PImp.Data || PImp.Data->IsNull(); }   // slot 77 (+0x134)
 };
-struct CSpawnedFuncBase {                                   // retail 0x34 bytes
+class CSpawnedFuncBase { public:                                   // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -88,7 +88,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -101,7 +101,7 @@ struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slo
     virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;    // slot 72 (+0x120)
 };
 
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };

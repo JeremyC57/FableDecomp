@@ -3,7 +3,7 @@
 
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     const void* order[64];
     int kind[64];
     int count;
@@ -13,7 +13,7 @@ struct CPersistContext {
     void Transfer(long& v) { kind[count] = 4; order[count++] = &v; }
 };
 
-struct CVillagePeopleDef {
+class CVillagePeopleDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x21];              // CDefClassBase fields (+0x04)
     bool               Enable;                                          // +0x25

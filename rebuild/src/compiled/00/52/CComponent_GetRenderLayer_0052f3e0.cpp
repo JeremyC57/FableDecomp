@@ -4,7 +4,7 @@
 // GetRenderLayer itself on the parent (slot 129, `call [eax+204h]`).
 // Vtable 0x0122F5D4 slot 129. Layer is the signed char at +0x12f (PDB +0x157 `char Layer`), hence the
 // `movsx`; the parent sum reads the member after the call. No engine header for CComponent.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }

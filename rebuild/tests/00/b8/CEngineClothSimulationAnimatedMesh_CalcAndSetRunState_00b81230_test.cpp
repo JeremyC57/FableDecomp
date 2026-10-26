@@ -1,10 +1,10 @@
 // Behaviour test for CEngineClothSimulationAnimatedMesh::CalcAndSetRunState @ 0x00B81230
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct C3DMeshInfo { C3DBoundingSphere BoundingSphere; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class C3DMeshInfo { public: C3DBoundingSphere BoundingSphere; };
 struct COwner { float Scale; };
-struct CMatrix3x4 { float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43; };
+class CMatrix3x4 { public: float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43; };
 struct CMesh {
     long RunState;
     CMatrix3x4 CurrentTransform;

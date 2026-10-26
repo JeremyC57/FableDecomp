@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DVector { float X, Y; C2DVector() { } C2DVector(float x, float y) : X(x), Y(y) { } };
+class C2DVector { public: float X, Y; C2DVector() { } C2DVector(float x, float y) : X(x), Y(y) { } };
 struct CComp {
     virtual void ChangeZoom(const C2DVector& z, long t, long f) { got = z; gt = t; gf = f; }
     virtual void ChangeZoomDelta(const C2DVector& d, long t, long f) { ChangeZoom(C2DVector(Zoom.X + d.X, Zoom.Y + d.Y), t, f); }

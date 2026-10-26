@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CDefClassBase;
-struct CTCNoiseDef;
+class CDefClassBase;
+class CTCNoiseDef;
 static int g_called = 0;
 static const void* g_self = 0;
 static const void* g_other = 0;

@@ -18,7 +18,7 @@
 #pragma optimize("s", on)
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x21];                       // +0x04..+0x25
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10

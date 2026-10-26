@@ -13,7 +13,7 @@
 // operator== VC folds both results straight into bl instead of retail's `xor al,al ; mov bl,al` / `inc al ; mov bl,al`.
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);               // 0x00BFEA14
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;
     unsigned long m_length;
 };
@@ -34,7 +34,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
     }
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool SameText(const CCharStringData& other) const
     {
@@ -100,14 +100,14 @@ struct CSectionSet {                                 // STLport set<CCharString>
         return node;
     }
 };
-struct CThingManager {
+class CThingManager { public:
     void DeleteThingsWithSectionName(const CCharString& section);   // 0x0051FC20
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CThingManager* GetThingManager();        // slot 3 (+0x0c)
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x7c];
     CWorld*       World;                             // +0x7c
     unsigned char _pad80[0x0c];

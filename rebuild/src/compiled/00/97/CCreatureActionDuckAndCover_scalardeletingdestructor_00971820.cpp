@@ -1,4 +1,4 @@
-struct CCreatureAction_DuckAndCover {
+class CCreatureAction_DuckAndCover { public:
     void* vftable;
 };
 

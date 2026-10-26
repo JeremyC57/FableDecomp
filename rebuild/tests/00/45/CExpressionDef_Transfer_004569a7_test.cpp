@@ -16,7 +16,7 @@
 // native+0x3c, all subsequent members -4. Native layout below uses donor names.
 #pragma optimize("s",on)
 #include <stddef.h>
-struct CPersistContext {
+class CPersistContext { public:
  void TransferDefString(int&); //0045228f
  void TransferFloat(float&); //00431061
  void TransferInt(int&); //00431102
@@ -27,7 +27,7 @@ struct CPersistContext {
  void TransferUnsigned(unsigned int&); //00431020
  void TransferExpressionType(int&); //00456c21
 };
-struct CExpressionDef {
+class CExpressionDef { public:
  unsigned char DefinitionBase[0x3c];
  int Animation_TablePos, AnimationInto_TablePos, AnimationLoop_TablePos, AnimationOutOf_TablePos;
  int AnimationToOther_TablePos, AnimationToOtherInto_TablePos, AnimationToOtherLoop_TablePos, AnimationToOtherOutOf_TablePos;

@@ -1,14 +1,14 @@
 // Behaviour test for CEM_Rhodri::Init @ 0x00E76540
 #include <cstdio>
-struct CBaseClass { virtual void v00() {} };
+class CBaseClass { public: virtual void v00() {} };
 struct CCountedPointerWords {
     void* Data; long* Info;
     CCountedPointerWords() : Data(0), Info(0) {}
     CCountedPointerWords(const CCountedPointerWords& other) : Data(other.Data), Info(other.Info) { if (Info) ++*Info; }
 };
-struct CScriptThing : CBaseClass { CCountedPointerWords PImp; };
+class CScriptThing : public CBaseClass { public: CCountedPointerWords PImp; };
 static int g_log[8]; static int g_n = 0; static long g_countSeen = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void SetThingFlags(const CScriptThing&, long a, long b, long c) { g_log[g_n++] = 360 + a * 1000 + b + c; }
     virtual void SetThingAsTarget(CScriptThing thing, long) { g_countSeen = *thing.PImp.Info; g_log[g_n++] = 844; }
     virtual void Slot745(const CScriptThing&, long) { g_log[g_n++] = 745; }

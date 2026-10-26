@@ -5,7 +5,7 @@ struct CPresentationIntervalDesc {
     CPresentationIntervalDesc(bool presentImmediate, long vsyncCount, bool presentImmediateIfSyncMissed)
         : PresentImmediate(presentImmediate), PresentImmediateIfSyncMissed(presentImmediateIfSyncMissed), VSyncCount(vsyncCount) { }
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     CPresentationIntervalDesc current;
     CDisplayManager() : current(false, 0, false) { }
     void SetPresentParameters(const CPresentationIntervalDesc& desc) { current = desc; }

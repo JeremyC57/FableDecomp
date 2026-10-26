@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour test: CPersistContext::TransferMapBinary<ETableSprites, long>: CheckCRC("") always, then the binary reader for mode 2
 // (load stream), the binary writer for mode 3 (save stream), nothing for any other mode.
-struct CMemoryDataInputStream { int Reads; };
-struct CDataOutputStream { int Writes; };
+class CMemoryDataInputStream { public: int Reads; };
+class CDataOutputStream { public: int Writes; };
 struct TestMap { int Size; };
 static int g_crc = 0;
 static const char* g_crcName = 0;
 static void GFSerialiseMapBinaryIn(CMemoryDataInputStream& s, TestMap& m) { ++s.Reads; m.Size = 42; }
 static void GFSerialiseMapBinaryOut(CDataOutputStream& s, const TestMap&) { ++s.Writes; }
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     CMemoryDataInputStream* PLoadStream;
     CDataOutputStream* PSaveStream;

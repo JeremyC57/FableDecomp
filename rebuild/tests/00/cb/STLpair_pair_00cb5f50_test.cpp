@@ -10,12 +10,12 @@ public:
     CCharString(const CCharString& other) { std::strcpy(Text, other.Text); ++g_copies; }
 };
 
-struct CScriptBase;
-struct CScriptDataBase;
+class CScriptBase;
+class CScriptDataBase;
 static CScriptDataBase* MasterAlloc() { return 0; }
 static CScriptBase* Alloc(CScriptDataBase*, void*) { return 0; }
 
-struct CScriptInfo {
+class CScriptInfo { public:
     CScriptBase*     (*AllocFunc)(CScriptDataBase*, void*);
     CScriptDataBase* (*MasterScriptDataAlloc)();
     CCharString      Name;

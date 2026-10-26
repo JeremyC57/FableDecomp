@@ -3,7 +3,7 @@
 // Retail: push esi; esi=[esp+8]=hidden ret buf; push -1; push 0x123c110;
 //         mov ecx,esi; call CCharString(const char*,int); mov eax,esi; pop esi; ret 4.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     // this(ecx)=self, stack args (const char*, int)
     CCharString(const char* s, int len);

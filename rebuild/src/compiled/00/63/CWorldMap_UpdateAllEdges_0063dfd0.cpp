@@ -5,8 +5,8 @@
 //   ConvertWorldMapCoordsToLocalCoords(long, const C2DCoordI&) 0x004FC3C0, CMap::CopyPos 0x0081F240.
 // Layout: the landed 0x0063A7E0 CWorldMap model (retail offsets; Maps +0x20, 0x48-byte CMapInfo).
 #include <math.h>
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X;
     float Y;
     float Z;
@@ -15,16 +15,16 @@ struct C3DVector
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
-struct C2DCoordI
-{
+class C2DCoordI
+{ public:
     long x;
     long y;
     C2DCoordI() {}
     C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
 };
 
-struct C2DBoxI
-{
+class C2DBoxI
+{ public:
     long TLX;
     long TLY;
     long BRX;
@@ -53,8 +53,8 @@ public:
 
 // CMapInfo (PDB: 72 bytes): Area C2DBoxI +0x00, PMap +0x10, LevelName +0x18, LevelScriptName +0x1C,
 // MapUID +0x20, Used +0x24, Placed +0x25, Activated +0x26, Loading +0x27, ... IsSea +0x40.
-struct CMapInfo
-{
+class CMapInfo
+{ public:
     C2DBoxI        Area;                 // +0x00
     void*          PMap_Data;            // +0x10
     void*          PMap_Info;            // +0x14

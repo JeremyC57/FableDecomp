@@ -64,11 +64,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CTextureManager;
+class CCPPointerInfo;
+class CTextureManager;
 
 #pragma pack(push, 1)
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -272,15 +272,15 @@ FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, BlankTextures) == 0x330);
 #include <stddef.h>
 
 
-struct CBankFileEntryDependencies;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CDiskFileWin32;
+class CBankFileEntryDependencies;
+class CCPPointerInfo;
+class CCharStringData;
+class CDiskFileWin32;
 struct CProgressCallback;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CBankFile {
+class CBankFile { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long               Size;                        // +0x04
     unsigned char               Symbols[0x10];               // +0x08 CArray<CCharString>
@@ -377,7 +377,7 @@ FABLE_STATIC_ASSERT(offsetof(CBankFile, CurrentEntryDependencies) == 0x170);
 
 
 #pragma pack(push, 1)
-struct CDataInputStream {
+class CDataInputStream { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long StreamPos;                                 // +0x04
     long          StreamSize;                                // +0x08
@@ -408,7 +408,7 @@ FABLE_STATIC_ASSERT(offsetof(CDataInputStream, SourceChunkBytesRemaining) == 0x1
 
 
 #pragma pack(push, 1)
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
     long  position;                                          // +0x04 retail-only long (previous header)
     long  sourceLength;                                      // +0x08 retail-only long (previous header)
@@ -441,7 +441,7 @@ FABLE_STATIC_ASSERT(offsetof(CMemoryDataInputStream, StreamSource) == 0x18);
 
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -457,8 +457,8 @@ FABLE_STATIC_ASSERT(offsetof(CPixelFormat, FormatIndex) == 0x0);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -466,8 +466,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -554,12 +554,12 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 struct CharArray;
 // RTTI129C8CC/129C938: primary Async->BankFile->NonCopy->Base; secondary ResourceBank->NonCopy->Base.
 // Native BankFile110 (ctor9CD480 final ChecksumCacheF8..110), Async164 (ctor9D5F80); donor174/1D8.
-struct CBaseClass {CBaseClass();virtual ~CBaseClass();};
+class CBaseClass { public:CBaseClass();virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
 struct BankState;struct OutputStream;struct BankTypeCount;struct PointerInfo;
 template<class T>struct BankArrayView {T*First,*Last,*End;};
 struct StatePointer {BankState*Data;PointerInfo*Info;StatePointer(const StatePointer&);~StatePointer();}; // genuine non-POD counted pointer passed by value
-struct CDateAndTime {fable_i32 Year;fable_u32 Month,Day,Hour,Minute,Second,Millisecond;CDateAndTime();}; // genuine defaultFW0308B860; hidden-result class
+class CDateAndTime { public:fable_i32 Year;fable_u32 Month,Day,Hour,Minute,Second,Millisecond;CDateAndTime();}; // genuine defaultFW0308B860; hidden-result class
 struct CBankFileNative:CBaseClassNonCopyable {
  CBankFileNative();virtual ~CBankFileNative();
  virtual bool OpenReadOnly(const CCharString&,unsigned long);
@@ -583,8 +583,8 @@ struct CBankFileNative:CBaseClassNonCopyable {
  virtual CCharString GetEnumerationType(unsigned long)const;
  unsigned char UntouchedBankState[0x10c];
 };
-struct CBankFileAsync:CBankFileNative {CBankFileAsync();virtual ~CBankFileAsync();virtual bool OpenReadOnly(const CCharString&,unsigned long);virtual void OpenReadWrite(const CCharString&,unsigned long,unsigned long);virtual bool OpenFileReadOnly(const CWideString&,unsigned long);virtual void OpenFileReadWrite(const CWideString&,unsigned long,unsigned long);virtual void Close();unsigned char UntouchedAsyncState[0x54];}; // defaultFW02FF5CA0; dtor9D6490
-struct CResourceBank:CBaseClassNonCopyable {CResourceBank();virtual ~CResourceBank();unsigned char UntouchedResourceLists[0x78];}; // defaultFW03178950/9FC5F0, dtor9FC690; native124
+class CBankFileAsync:public CBankFileNative { public:CBankFileAsync();virtual ~CBankFileAsync();virtual bool OpenReadOnly(const CCharString&,unsigned long);virtual void OpenReadWrite(const CCharString&,unsigned long,unsigned long);virtual bool OpenFileReadOnly(const CWideString&,unsigned long);virtual void OpenFileReadWrite(const CWideString&,unsigned long,unsigned long);virtual void Close();unsigned char UntouchedAsyncState[0x54];}; // defaultFW02FF5CA0; dtor9D6490
+class CResourceBank:public CBaseClassNonCopyable { public:CResourceBank();virtual ~CResourceBank();unsigned char UntouchedResourceLists[0x78];}; // defaultFW03178950/9FC5F0, dtor9FC690; native124
 
 
 // String-returning virtuals use genuine non-POD classes and VC7.1 hidden-result ABI.
@@ -594,11 +594,11 @@ struct MemoryInput:InputStream {MemoryInput(const void*,unsigned long);virtual C
 struct CharArray {char*First,*Last,*End;unsigned long size()const{return Last-First;}const char*data()const{return size()?First:reinterpret_cast<const char*>(this);}};
 struct PixelFormatValue:CPixelFormat {PixelFormatValue(){FormatIndex=-1;}};
 struct GraphicHeader {void Load(InputStream&);unsigned short Width,Height,Depth,FrameWidth,FrameHeight,FrameCount;PixelFormatValue PixelFormat;unsigned char TransparencyType,MipmapLevels;unsigned char IsFlatAnimatedGraphic:1;unsigned long FrameDataSize,CompressedMipmapSizes;GraphicHeader():Width(0),Height(0),Depth(0),FrameWidth(0),FrameHeight(0),FrameCount(1),TransparencyType(0),MipmapLevels(0),IsFlatAnimatedGraphic(false),FrameDataSize(0),CompressedMipmapSizes(0){}}; // genuine ctorPDBB57C50; byte18 remaining bits untouched
-struct CGraphicDataBank;
+class CGraphicDataBank;
 struct GraphicInfo {GraphicInfo(); /* genuine default PDB00B57D00 */ GraphicInfo(unsigned long,CGraphicDataBank*,const GraphicHeader&);GraphicHeader Header;long TextureType;CGraphicDataBank*Bank;long Index;void*Frames;}; // ctor9FD700/PDBB57C80
 struct GraphicArray {GraphicInfo*First,*Last,*End;unsigned long size()const{return Last-First;}void push_back();}; // CArray<CGraphicInfo> (Ego_r.pdb GraphicList): push_back() is STLport's no-argument vector<CGraphicInfo>::push_back @ 0x00A01650 (builds a default CGraphicInfo, copies it to _M_finish or calls _M_insert_overflow 0x00A01120 when full)
 struct BankMethods {void NotifyEntryAdded(unsigned long,unsigned long,const CharArray&);}; //CBankFile qualified nonvirtual call9CBC20, PDBB19970
-struct CGraphicDataBank:CBankFileAsync,CResourceBank {CGraphicDataBank(); virtual ~CGraphicDataBank();
+class CGraphicDataBank:public CBankFileAsync,public CResourceBank { public:CGraphicDataBank(); virtual ~CGraphicDataBank();
  virtual void Close();virtual unsigned long GetDataFormatVersion();virtual void NotifyBankSize(unsigned long,const BankArrayView<BankTypeCount>&);virtual void NotifyBankOpened();
  virtual void NotifyEntryAdded(unsigned long,unsigned long,const CharArray&);virtual void NotifyEntryUpdated(unsigned long,unsigned long,const CharArray&);virtual void NotifyEntryRemoved(unsigned long);
  virtual void PrepareDataForInclusion(unsigned long,const BankArrayView<CCharString>&,unsigned long,StatePointer,OutputStream&,OutputStream&);

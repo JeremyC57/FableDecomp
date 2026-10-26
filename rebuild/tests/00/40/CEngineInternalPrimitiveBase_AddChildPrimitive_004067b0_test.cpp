@@ -1,6 +1,6 @@
 #include <cstdio>
 typedef unsigned long ulong;
-struct CEngineInternalPrimitiveBase {};
+class CEngineInternalPrimitiveBase { public:};
 ulong __fastcall CEngineInternalPrimitiveBase_AddChildPrimitive(CEngineInternalPrimitiveBase* self, void* a)
 {
     (void)self; (void)a;

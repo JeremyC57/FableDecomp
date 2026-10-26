@@ -1,4 +1,4 @@
-struct CCombatAction_Guildmaster_HealFollowersRelease {
+class CCombatAction_Guildmaster_HealFollowersRelease { public:
     void* vftable;
 };
 

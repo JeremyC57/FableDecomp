@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     T& operator[](unsigned long index) const { return m_pFirst[index]; }
 };

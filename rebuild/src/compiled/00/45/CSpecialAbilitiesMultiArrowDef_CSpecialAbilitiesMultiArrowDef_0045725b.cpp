@@ -19,7 +19,7 @@ struct CParentDefClassBase_Calls {                          // retail 0x39 bytes
 };
 #pragma pack(pop)
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -29,7 +29,7 @@ template<class T> struct CRetailVector {                    // retail std::vecto
     CRetailVector() : first(0), last(0), end_of_storage(0) { }
 };
 
-struct CSpecialAbilitiesMultiArrowDef : CParentDefClassBase_Calls {
+class CSpecialAbilitiesMultiArrowDef : public CParentDefClassBase_Calls { public:
     long  NumberOfShots[4];                                 // +0x3c
     long  NumberInVolley[4];                                // +0x4c
     float AmmoEffectCreationDelaySecs;                      // +0x5c

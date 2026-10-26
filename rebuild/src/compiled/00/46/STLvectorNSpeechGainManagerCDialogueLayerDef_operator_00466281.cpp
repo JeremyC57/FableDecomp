@@ -1,11 +1,11 @@
 // 00466281 std::vector<NSpeechGainManager::CDialogueLayerDef>::operator=
 // Flags: /O2 /Oy /W3 /O1 /Oy-
-// Leaf: ??4?$vector@UCDialogueLayerDef@NSpeechGainManager@@@std@@QAEAAU01@ABU01@@Z
+// Leaf: ??4?$vector@VCDialogueLayerDef@NSpeechGainManager@@@std@@QAEAAU01@ABU01@@Z
 #include <stdlib.h>
 #include <new>
 namespace NSpeechGainManager {
 // Layout: vtable slot0 is a genuine virtual destructor; opaque payload follows vptr. Retail copy assignment and ctor operate on 64-byte CDialogueLayerDef; no engine header exists.
-struct CDialogueLayerDef {unsigned data[15];CDialogueLayerDef();CDialogueLayerDef(const CDialogueLayerDef&);virtual ~CDialogueLayerDef();CDialogueLayerDef&operator=(const CDialogueLayerDef&);};
+class CDialogueLayerDef { public:unsigned data[15];CDialogueLayerDef();CDialogueLayerDef(const CDialogueLayerDef&);virtual ~CDialogueLayerDef();CDialogueLayerDef&operator=(const CDialogueLayerDef&);};
 }
 namespace std {
 struct __false_type{__false_type(){}};

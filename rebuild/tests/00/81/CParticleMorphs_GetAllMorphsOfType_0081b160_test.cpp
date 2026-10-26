@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 // Behaviour test for CParticleMorphs::GetAllMorphsOfType (0x0081B160).
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) {}
 };
@@ -45,7 +45,7 @@ struct CParticleMorphsEntryVector {                // vector<CParticleMorphs::CE
     CParticleMorphsEntry& operator[](long i) { return m_first[i]; }
 };
 
-struct CParticleMorphs {
+class CParticleMorphs { public:
     CVectorMap_00819ec0 Morphs;                    // +0x00
     bool GetAllMorphsOfType(long type, CParticleMorphsEntryVector& out);
 };

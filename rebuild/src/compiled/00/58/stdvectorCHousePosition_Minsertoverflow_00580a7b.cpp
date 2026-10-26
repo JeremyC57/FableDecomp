@@ -24,7 +24,7 @@ extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 
 class CRegion;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

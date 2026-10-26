@@ -9,7 +9,7 @@
 // release; the target vector is a 2-word local copied memberwise.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     C2DVector() { }
     C2DVector(const C2DVector& other) : x(other.x), y(other.y) { }
@@ -46,7 +46,7 @@ struct CListOwnerPointer {                         // 4 bytes: the counted objec
     }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -79,7 +79,7 @@ struct CComponent {
     virtual void RefreshChildren();                // slot 187 (+0x2EC)
     void ChangePosition(const C2DVector& position, float time, bool immediate);   // 0x0052E9C0
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
     void ChangePosition(const C2DVector& position, float time, bool immediate);
 };
 }

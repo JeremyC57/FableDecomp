@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_Guildmaster_HealFollowersInto {
+class CCombatAction_Guildmaster_HealFollowersInto { public:
     void* vftable;
     int destroyed;
 };

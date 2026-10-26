@@ -1,10 +1,10 @@
 #pragma optimize("s",on)
-struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     void TransferLong(int& value);                  // 0x00431102 Transfer(long&)
     void Transfer_00452e01(int& value);             // 0x00452E01 per-type transfer instantiation, element type not attributed
 };
 
-struct CVillagerInteractionsDef {
+class CVillagerInteractionsDef { public:
     char pad[0x3c];
     int fieldA;   // +0x3c
     int fieldB;   // +0x40

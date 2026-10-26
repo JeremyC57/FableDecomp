@@ -3,11 +3,11 @@
 static void* g_removed; static float g_weight; static int g_releaseTexture;
 struct CRenderStatistics { void RemoveTexture(void* texture, float weight) { g_removed = texture; g_weight = weight; } };
 struct CRenderSystem { CRenderStatistics* m_pStatistics; };
-struct CSystemManager { CRenderSystem* m_pRender; };
+class CSystemManager { public: CRenderSystem* m_pRender; };
 static CRenderStatistics g_stats; static CRenderSystem g_render; static CSystemManager g_system;
 CSystemManager* GFGetSystemManager() { g_render.m_pStatistics = &g_stats; g_system.m_pRender = &g_render; return &g_system; }
 struct CFakeTexture { long m_refs; unsigned long AddRef() { return ++m_refs; } unsigned long Release() { return --m_refs; } };
-struct CVolumeTexture {
+class CVolumeTexture { public:
     CFakeTexture* m_pTexture; long m_format; long m_levels;
     void ReleaseTexture() { ++g_releaseTexture; if (m_pTexture) m_pTexture->Release(); }
     void Uninitialise()

@@ -14,7 +14,7 @@
 //   under its null test and `add [ecx+4],8`, or the overflow call with the empty tag homed in the dead `chunk` slot.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
     void*         Data;                                 // +0x08

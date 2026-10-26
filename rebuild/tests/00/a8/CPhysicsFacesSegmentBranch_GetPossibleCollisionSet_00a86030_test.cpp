@@ -1,12 +1,12 @@
 // Behaviour test for CPhysicsFacesSegmentBranch::GetPossibleCollisionSet (0x00A86030): visit each child whose half-space the inflated segment reaches.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPlaneModel {
     C3DVector Normal; float Distance;
     float GetDistanceToPoint(const C3DVector& p) const { return Normal.X * p.X + Normal.Y * p.Y + Normal.Z * p.Z - Distance; }
 };
 struct Faces { int visits[2]; };
-struct CIPhysicsFacesSegmentBase {
+class CIPhysicsFacesSegmentBase { public:
     int which;
     virtual void GetPossibleCollisionSet(float, const C3DVector&, const C3DVector&, Faces& faces) const { faces.visits[which]++; }
     virtual ~CIPhysicsFacesSegmentBase() {}

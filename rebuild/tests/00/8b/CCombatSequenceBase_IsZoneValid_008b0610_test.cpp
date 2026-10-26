@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThingCreatureBase { int x; };
+class CThingCreatureBase { public: int x; };
 static long g_frames = 0; static CThingCreatureBase* g_def = 0; static CThingCreatureBase* g_att = 0;
-struct CCombatManager { long zone; long GetDefenderZone(CThingCreatureBase* d, CThingCreatureBase* a, long f) { g_def = d; g_att = a; g_frames = f; return zone; } };
+class CCombatManager { public: long zone; long GetDefenderZone(CThingCreatureBase* d, CThingCreatureBase* a, long f) { g_def = d; g_att = a; g_frames = f; return zone; } };
 static CCombatManager g_mgr; CCombatManager* GetCombatManager() { return &g_mgr; }
 struct CSeq {
     virtual long GetZone() { return mask; } virtual long GetFramesToPredictTargetPosition() { return 7; }

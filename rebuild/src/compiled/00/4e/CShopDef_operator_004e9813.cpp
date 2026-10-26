@@ -12,11 +12,11 @@
 // float members copy through eax.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x28];
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
@@ -29,7 +29,7 @@ struct CAttitudeFloatMap {                                  // map<EOpinionAttit
     CAttitudeFloatMap& operator=(const CAttitudeFloatMap& other);     // 0x004E99AE
 };
 
-struct CShopDef : CDefClassBase {                           // vtable 0x01241F9C
+class CShopDef : public CDefClassBase { public:                           // vtable 0x01241F9C
     unsigned long Name;                                     // +0x28
     unsigned long InitialHawkingPhrase;                     // +0x2c
     unsigned long ReplyToRequestPhrase;                     // +0x30

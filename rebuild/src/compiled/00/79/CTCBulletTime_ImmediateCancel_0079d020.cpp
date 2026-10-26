@@ -20,7 +20,7 @@ struct CInterfaceMap {                          // a thing's sorted {type, compo
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
@@ -44,7 +44,7 @@ struct CTCTimeControlled {                      // interface type 0x46
     bool m_flag1c;                              // +0x1c
 };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad00[0x40];
     unsigned short Flags40 : 5;                 // +0x40
     unsigned short Dead : 1;                    // +0x40 bit 5
@@ -60,7 +60,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-t
     NParticleEngine::CParticleEmitter* GetPItem() const;   // 0x00A01B50
     void SetPItem(NParticleEngine::CParticleEmitter* item); // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A26C for <CParticleEmitter>
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A26C for <CParticleEmitter>
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
@@ -72,14 +72,14 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
 struct CEnvironmentSpellEffects {
     void RemoveFilter_006b83f0(long mode, void* key);   // 0x006B83F0 (descriptive)
 };
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char _pad00[0x1964];
     CEnvironmentSpellEffects* SpellEffects;     // +0x1964
 };
-struct CBulletTimeManager {
+class CBulletTimeManager { public:
     void RemoveBulletTimeSlowdown(unsigned long key);   // 0x004C6140
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x18];
     CEnvironment* PEnvironment;                 // +0x18
     unsigned char _pad1c[0x68 - 0x1c];

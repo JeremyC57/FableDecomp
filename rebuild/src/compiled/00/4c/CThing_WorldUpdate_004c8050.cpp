@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPointer<CThing>
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                                     // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08();

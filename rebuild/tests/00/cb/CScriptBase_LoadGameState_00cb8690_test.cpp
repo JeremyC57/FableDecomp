@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
 // behaviour test: CScriptBase::LoadGameState hands the script-data and entity-script sections to their loaders
-struct CCharString {
+class CCharString { public:
     char m[64];
     CCharString(const char* text, long) { std::strncpy(m, text, 63); m[63] = 0; }
     CCharString() { m[0] = 0; }
 };
 static const char* g_text = 0;
-struct CStringParser {
+class CStringParser { public:
     const char* pos;
     CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long) : pos(g_text) {}
     void skip() { while (*pos == ' ') ++pos; }

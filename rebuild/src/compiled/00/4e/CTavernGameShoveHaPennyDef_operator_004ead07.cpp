@@ -13,7 +13,7 @@
 //   header flattens the bases, so the classes are modelled locally.
 #pragma optimize("s", on)
 
-struct CTavernGameDef {
+class CTavernGameDef { public:
     unsigned char _body[0x1a4];                  // CDefClassBase head + the tavern-game text ids
     CTavernGameDef& operator=(const CTavernGameDef& other);   // 0x004EA6DD
 };
@@ -22,7 +22,7 @@ struct CShoveHaPennyRegionDefVector {            // retail std::vector<CShoveHaP
     CShoveHaPennyRegionDefVector& operator=(const CShoveHaPennyRegionDefVector& other);   // 0x004EAE1E
 };
 
-struct CTavernGameShoveHaPennyDef : CTavernGameDef {
+class CTavernGameShoveHaPennyDef : public CTavernGameDef { public:
     CShoveHaPennyRegionDefVector Regions;        // +0x1a4
     long  BoardDefIndex;                         // +0x1b0
     long  ArrowDefIndex;                         // +0x1b4

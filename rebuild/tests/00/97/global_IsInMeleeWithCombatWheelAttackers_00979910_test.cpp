@@ -44,7 +44,7 @@ struct CCombatantInfo {
     bool UsingCombatWheel;
     CAttackerMap Attackers;
 };
-struct CCombatManager {
+class CCombatManager { public:
     const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& creature) const;
 };
 class CThingCreatureBase {

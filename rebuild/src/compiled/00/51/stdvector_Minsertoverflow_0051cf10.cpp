@@ -21,8 +21,8 @@ extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                    // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* where) throw() { return where; }
 
-struct CCharString { void* PStringData; };
-struct C2DVector { float X, Y; };
+class CCharString { public: void* PStringData; };
+class C2DVector { public: float X, Y; };
 template <class T> struct CRetailVector { T* m_first; T* m_last; T* m_end; };
 struct CRetailMapHeader { void* m_header; unsigned long m_node_count; unsigned long m_compare; };
 struct CDefPointerRaw { void* Object; };

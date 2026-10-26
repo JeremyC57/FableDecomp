@@ -5,14 +5,14 @@
 // Behaviour test for 00b423f0 CEngineWorldMap::CEngineWorldMap: base and member constructors run once each (the list header is
 // self-linked, the bank file is flagged static), the quality is clamped to 0..10 and the flag bit and defaults are set.
 static int g_component = 0, g_strings = 0, g_banks = 0, g_staticSet = 0;
-struct CEngineComponent {                          // vtable 0x012A2544
+class CEngineComponent { public:                          // vtable 0x012A2544
     virtual void v00() {}
     long GlobalPointerAddress;                                      // +0x04
     bool m_enabled;                                // +0x08
     bool KeepAlive;                                      // +0x09
     CEngineComponent() : GlobalPointerAddress(7), m_enabled(true), KeepAlive(true) { ++g_component; }
 };
-template <class T> struct CArray {                 // retail CArray (STLport vector): first / last / end
+template <class T> class CArray { public:                 // retail CArray (STLport vector): first / last / end
     T* m_first;
     T* m_last;
     T* m_end;
@@ -33,7 +33,7 @@ template <class T> struct list {                   // STLport list, 4 bytes
         _M_node = node;
     }
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString() : m_pData(0) { ++g_strings; }
 };
@@ -57,8 +57,8 @@ struct CEngineWorldMapSettings {                   // local model of the setting
     unsigned long Flag0 : 1;                       // +0x60 bit 0
     unsigned long EnableMinimumStaticMapRebuild : 1;   // +0x60 bit 1
 };
-struct CEngineMap;
-struct C2DBoxI;
+class CEngineMap;
+class C2DBoxI;
 class CIDrawWorld;
 class CIDrawWorldMap;
 class CEngineWorldMap : public CEngineComponent {  // vtable 0x012A1F50

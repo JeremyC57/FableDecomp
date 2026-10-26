@@ -10,14 +10,14 @@
 //          PWeapon CIntelligentPointer<CThing> +0x14 (item +0x18); CThing: interface bitset +0x20, map +0x44, dead bit +0x91.
 // Shape: the functor is built in its by-value argument slot (`mov ebx,esp`); the out-parameter GetInterface
 //          (landed ScorpionUnblockable 0x008C4430 idiom) with the type local homed in the dead argument slot.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -74,7 +74,7 @@ struct CStrikeEventList {
     CStrikeEventIterator end() const { CStrikeEventIterator i = { head }; return i; }
 };
 
-struct CTCWeaponTrail;
+class CTCWeaponTrail;
 
 class CCombatActionBase {
 public:

@@ -14,7 +14,7 @@
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 
-struct CTextureMorphEntry {
+class CTextureMorphEntry { public:
     EHeroMorphType MorphType;                   // +0x00
     long TextureLayer;                          // +0x04
     long ReplacingTextureIndex;                 // +0x08
@@ -29,7 +29,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<EHeroMorphType, CTextureMorphEntry> TEntry;
 
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };

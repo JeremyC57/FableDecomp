@@ -3,10 +3,10 @@
 // recipient is re-pointed through SetPItem.
 #include <cstdio>
 
-struct CThing { long m_id; };
-struct CThingAICreature;
-struct CBaseObject;
-struct CFaction { long m_id; };
+class CThing { public: long m_id; };
+class CThingAICreature;
+class CBaseObject;
+class CFaction { public: long m_id; };
 
 static long g_setCalls = 0;
 
@@ -18,7 +18,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { m_pItem = (CThing*)item; ++g_setCalls; }
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual long Kind() const { return 2; }
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -32,7 +32,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE, OPINION_DEED_TYPE_THEFT = 5 };
 enum EOpinionPostDeedType { OPINION_POST_DEED_TYPE_NONE, OPINION_POST_DEED_TYPE_REPORT = 3 };
 
-struct CWitnessesSearchingDeed {
+class CWitnessesSearchingDeed { public:
     long                                  DeedHandle;
     EOpinionDeedType                      DeedType;
     CIntelligentPointer<CThingAICreature> Recipient;

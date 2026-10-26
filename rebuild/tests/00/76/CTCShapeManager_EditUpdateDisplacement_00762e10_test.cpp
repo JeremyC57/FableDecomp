@@ -19,8 +19,8 @@ static int fails = 0;
 //   EditUpdateDelete. Retail keeps the point list's _M_start in ebx across the calls and reuses delta's frame slot for the
 //   first arm's temporary: VC7.1 escape analysis is flow-insensitive, so the vector copy ctor, operator=, CreateShape and
 //   UpdateDisplacePoints (all instantiated or defined in retail's TU) are same-TU stand-ins taking the bounds / delta by value.
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -58,7 +58,7 @@ __declspec(noinline) CPointVector& CPointVector::operator=(const CPointVector& o
     return *this;
 }
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00();
     virtual long GetShapeType() const;              // slot 1 (+0x04)
     void* Owner;                                    // +0x04
@@ -67,7 +67,7 @@ struct CShape {
     CPointVector GetPoints() const { return Points; }
 };
 }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CShapePointer {                              // CCountedPointer<NShape::CShape>
     NShape::CShape* Data;
     CCPPointerInfo* Info;
@@ -81,7 +81,7 @@ struct CShapeVector {                               // STLport vector<CCountedPo
     CShapePointer* end() const { return _M_finish; }
     CShapePointer* erase(CShapePointer* pos);       // 0x00764D10
 };
-struct CTCShapeManager {
+class CTCShapeManager { public:
     virtual void v00();
     void*          ParentThing;                     // +0x04 (CTCBase)
     bool           ToBeRemoved;                     // +0x08

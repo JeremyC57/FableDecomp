@@ -3,8 +3,8 @@
 #include <cstdio>
 #include <new>
 
-struct CThing { long m_id; };
-struct CBaseObject;
+class CThing { public: long m_id; };
+class CBaseObject;
 
 static long g_setCalls = 0;
 
@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { m_pItem = (CThing*)item; ++g_setCalls; }
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual long Kind() const { return 2; }
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)other.GetPItem()); }

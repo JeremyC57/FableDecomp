@@ -4,7 +4,7 @@
 
 // Interface table model shared by the GetInterface-based rows: presence bits + sorted {type, component} entries.
 struct CEntry { int type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned int presentBits[9];
     CEntry entries[4];
     int count;

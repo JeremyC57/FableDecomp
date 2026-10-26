@@ -10,9 +10,9 @@
 // constructor at 0x009E9A70 is modelled as (year, month, day, hour, minute, second, millisecond);
 // the parameter names are inferred.
 
-struct CCharString;
+class CCharString;
 
-struct CDateAndTime {
+class CDateAndTime { public:
     unsigned char _raw[0x10];       // opaque; built in place by the constructor
     CDateAndTime(long year, long month, long day, long hour, long minute, long second, long millisecond);   // 0x009E9A70
 };

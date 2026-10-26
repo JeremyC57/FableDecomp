@@ -7,7 +7,7 @@
 // before the object expression `PObstruction.GetPItem()`.
 // Layout: CTCTrapBase.h is the PDB layout (PObstruction +0x2C); the retail constructor 0x0078918D puts the
 // CIntelligentPointer at +0x24 (12-byte STLport vectors), so a local model is used.
-struct CThing {
+class CThing { public:
     void Kill(bool checkLocked);            // 0x004C9B80
 };
 
@@ -22,13 +22,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
 
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer* pointer);   // 0x004CC340
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _pad_0x04[0x8];           // +0x04 owner thing, +0x08
     virtual void OnKill();                  // 0x006868F0
 };
 
-struct CTCTrapBase : CTCBase {
+class CTCTrapBase : public CTCBase { public:
     unsigned char       _vectors[0x18];     // +0x0C HitThings, ImmuneThings (12-byte vectors)
     CIntelligentPointer PObstruction;       // +0x24
     virtual void OnKill();

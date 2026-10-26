@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CCharString {
+class CCharString { public:
     char text[16];
     CCharString(const char* s) { std::strncpy(text, s, 15); text[15] = 0; }
     CCharString(const CCharString& o) { std::memcpy(text, o.text, 16); }

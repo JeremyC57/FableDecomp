@@ -8,8 +8,8 @@ struct Entrance
     char data[8];   // occupies +0x20..+0x27
 };
 
-struct CTCActionUseScriptedHook
-{
+class CTCActionUseScriptedHook
+{ public:
     char pad0[0x20];
     Entrance m_entrance;   // +0x20
     char m_locked;         // +0x28

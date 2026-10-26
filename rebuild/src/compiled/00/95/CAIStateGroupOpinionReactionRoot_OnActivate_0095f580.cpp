@@ -11,9 +11,9 @@
 // reaction manager pointer is a named local; the per-reaction flag table is a byte array at manager+0x45f.
 // Engine header names; ThingReactingTo is the unaligned CIntelligentPointer at +0x6b (PDB, packed).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -61,12 +61,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -103,31 +103,31 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 extern long g_framesPerSecond;                  // 0x01375550
 extern float g_maxActionSecondsBeforeReaction;  // 0x0122DEDC
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     unsigned char _pad[0x20];
     long LoopCount;                             // +0x20
     long GetFramesRemaining();                  // 0x006925D0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x100];
     CCreatureActionBase* PCurrentAction;        // +0x100
     void FinishCurrentAction();                 // 0x00662650
 };
 
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     unsigned char _pad[0x45f];
     bool AllowSpeechOnNonPureAISpeaker[1];      // +0x45f, indexed by reaction type
     void LogReaction(long reactionType, CThing* creature, bool flag);   // 0x00700940
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x74];
     COpinionReactionManager* POpinionReactionManager;   // +0x74
 };
 
-struct CTCTalk;
+class CTCTalk;
 
 #pragma pack(push, 1)
-struct CAIStateGroup_OpinionReactionRoot : CAIStateGroupBase {
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     CTCTalk* PTCTalk;                           // +0x14
     long CurrentReactionType;                   // +0x18 EOpinionReactionType
     bool ReactionFlags[79];                     // +0x1c

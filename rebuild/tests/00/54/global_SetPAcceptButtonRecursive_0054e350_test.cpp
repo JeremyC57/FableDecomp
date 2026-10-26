@@ -18,7 +18,7 @@ static void Check(bool ok, int line)
 #define CHECK(c) Check((c) ? true : false, __LINE__)
 
 namespace NUISystem { class CComponent; }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;

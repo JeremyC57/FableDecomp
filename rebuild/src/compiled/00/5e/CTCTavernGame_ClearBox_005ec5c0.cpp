@@ -10,15 +10,15 @@
 // Shape: the handle reset is an inline member (`if (GetRefCount() == 1) P->slot3(this); if (p = P) { release; P = 0; } P = 0;` with the
 // null-safe GetRefCount -- `P && P->count == 1` hoists the 1 into ebp -- and the release through a pointer local); the clear is
 // the inline STLport `erase(begin(), end())`: `__copy(last, finish, first, tag, (int*)0)`, the range destroy, then `finish = i`.
-struct CEnginePrimitiveHandle;
-struct CEnginePrimitive {
+class CEnginePrimitiveHandle;
+class CEnginePrimitive { public:
     virtual void v00();
     virtual void Destroy();                                     // slot 1
     virtual void v02();
     virtual void OnLastHandleReleased(CEnginePrimitiveHandle* handle);   // slot 3 (+0xc)
     long RefCount;                                              // +0x04
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     virtual ~CEnginePrimitiveHandle();
     CEnginePrimitive* P;                                        // +0x04
     long GetRefCount() const { return P ? P->RefCount : 0; }
@@ -57,7 +57,7 @@ struct CHandleVector {                          // STLport vector<CEnginePrimiti
     }
     void clear() { erase(begin(), end()); }
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void* __vfptr;                              // +0x00 (CTCBase)
     void* ParentThing;                          // +0x04
     unsigned char _pad08[0x44 - 0x08];

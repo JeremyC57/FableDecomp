@@ -1,4 +1,4 @@
-struct CTCWallMountEffects {
+class CTCWallMountEffects { public:
     void* vftable;
 };
 

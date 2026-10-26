@@ -10,14 +10,14 @@
 // Shape: the manager is fetched once into esi; each registration is one full expression -- an IMPLICIT CCharString
 // conversion of the literal (re-addressed with `lea` for the copy; an explicit temporary reuses eax), a CDefClassInit temporary copying it (copy constructor out of line, the allocator stored after it),
 // AddDefClass by reference, then the two strings destroyed in reverse order of construction.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
 };
 class CDefClassBase;
-struct CDefClassInit {
+class CDefClassInit { public:
     CCharString     Name;                              // +0x00
     CDefClassBase* (*AllocFunc)();                     // +0x04
     CDefClassInit(const CCharString& name, CDefClassBase* (*allocFunc)()) : Name(name), AllocFunc(allocFunc) { }

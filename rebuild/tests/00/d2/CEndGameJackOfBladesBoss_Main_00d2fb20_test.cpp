@@ -2,13 +2,13 @@
 // the targeting hand-over, with the IsDone early exits.
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[32]; CCharString(const char* t, long = -1) { std::strcpy(text, t); } ~CCharString() {} };
-struct CScriptThing { int id; };
+class CCharString { public: char text[32]; CCharString(const char* t, long = -1) { std::strcpy(text, t); } ~CCharString() {} };
+class CScriptThing { public: int id; };
 struct CQ_EndGameBossBattleScript { bool JackReadyToFight; };
 static int g_frames = 0, g_markers = 0, g_targets = 0, g_filters = 0; static char g_marker[32]; static int g_targetId = 0;
 static CScriptThing g_hero = { 42 };
 static CQ_EndGameBossBattleScript* g_parent = 0; static int g_readyAfter = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void NewScriptFrame() const { ++g_frames; if (g_frames == g_readyAfter) g_parent->JackReadyToFight = true; }
     virtual const CScriptThing& GetHero() const { return g_hero; }
     virtual void MiniMapAddMarker(const CScriptThing&, const CCharString& g) const { ++g_markers; std::strcpy(g_marker, g.text); }

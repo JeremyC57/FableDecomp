@@ -8,9 +8,9 @@
 // class is modelled locally. Component vtable slots are named by use (no RTTI names): 10 = scene filter flags, 7/8 = the frame updates.
 // Shape: twin of WorldFrameUpdate @ 0x00B24030 without the argument (the unused `push ecx` frame word comes out of the same source);
 // the component loop re-reads `end()` every pass.
-struct CEngineComponentParams;
+class CEngineComponentParams;
 
-struct CEngineComponent {                    // engine component interface (vtable slots used here only)
+class CEngineComponent { public:                    // engine component interface (vtable slots used here only)
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -33,7 +33,7 @@ struct CRetailVector {                       // STLport vector: 12 bytes
     T* end() const { return m_finish; }
 };
 
-struct CEngine {                             // retail layout: the PDB members from IsInitialised on sit 8 bytes lower (see header comment)
+class CEngine { public:                             // retail layout: the PDB members from IsInitialised on sit 8 bytes lower (see header comment)
     unsigned char  _pad00[0x84];
     bool           IsInitialised;            // +0x84 (PDB +0x8c)
     long           CurrentRenderFrame;       // +0x88

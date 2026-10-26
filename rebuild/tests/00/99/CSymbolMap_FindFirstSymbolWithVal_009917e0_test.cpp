@@ -6,13 +6,13 @@ static int StrICmp(const char* a, const char* b)
     return Lower((unsigned char)*a) - Lower((unsigned char)*b);
 }
 static const char g_EmptyCharString[] = "";
-struct CCharStringData { const char* m_pChars; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* m_pData;
     const char* GetChars() const { return m_pData == 0 ? g_EmptyCharString : m_pData->m_pChars; }
 };
 struct SSymbolNameRecord { long m_flags; long m_symbol; long _pad[3]; CCharString m_name; long _pad2[3]; };
-struct CSymbolMap {
+class CSymbolMap { public:
     SSymbolNameRecord* m_pFirst; SSymbolNameRecord* m_pLast;
     long FindFirstSymbolWithVal(const CCharString& name) const
     {

@@ -5,7 +5,7 @@
 // Behaviour model of CQuestManager::AddPendingQuestToDeactivate (0x004B0A30): push_back a (name, flags) pair onto the
 // pending list (new 16-byte-style node linked before the head; the temporary pair destroyed).
 static int g_alive = 0;
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* s) : p(s) { ++g_alive; }
     CCharString(const CCharString& o) : p(o.p) { ++g_alive; }
@@ -24,7 +24,7 @@ struct List {
         tmp->next = n; tmp->prev = p; p->next = tmp; n->prev = tmp;
     }
 };
-struct CQuestManager {
+class CQuestManager { public:
     List PendingQuestsToDeactivate;
     void AddPendingQuestToDeactivate(const CCharString& name, unsigned long flags) { PendingQuestsToDeactivate.push_back(Pair(name, flags)); }
 };

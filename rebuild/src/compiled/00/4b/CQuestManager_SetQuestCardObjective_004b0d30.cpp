@@ -12,7 +12,7 @@
 // under a construction flag (cleared at entry in the `push ecx` word); the lookup key and the temporary both land in
 // the dead `scriptName` argument slot; HasTC + the end/hit Find inline (the landed 0x004B0C80 CThing model); nested
 // ifs with one trailing `return false` keep ebp/esi/edi pushed at entry and the false exit last.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                    // 0x0099EAE0
     bool operator!=(const CCharString& other) const;   // 0x0099E900
@@ -20,7 +20,7 @@ struct CCharString {
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {                                      // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     Type;
     CTCBase* TC;
@@ -39,7 +39,7 @@ struct CTCMap {                                        // CThing::Components: a 
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                  // +0x20 which TC types the thing holds
     unsigned char _pad40[4];
@@ -50,7 +50,7 @@ struct CThing {
     __forceinline CTCBase* GetTC(long type) { return Components.Find(type); }
 };
 
-struct CTCQuestCard {                                  // TC type 0x6c (Ego_r.pdb)
+class CTCQuestCard { public:                                  // TC type 0x6c (Ego_r.pdb)
     unsigned char _pad00[0x1c];
     CCharString   ObjectiveName;                       // +0x1c
     CCharString GetRegionName();                       // 0x007025A0
@@ -58,7 +58,7 @@ struct CTCQuestCard {                                  // TC type 0x6c (Ego_r.pd
     void SetTeleporterRegionName(const CCharString& region);   // 0x007021E0
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     CThing* GetActiveQuestCardFromScriptName(const CCharString& scriptName) const;   // 0x004B0C80
     bool SetQuestCardObjective(const CCharString& scriptName, const CCharString& objective, const CCharString& region, const CCharString& teleporterRegion);
 };

@@ -1,8 +1,8 @@
 // CLipSyncDataBank_0075e460::InsertSample(const SSampleSource* source) -- when the insertion iterator (+0x74) has not reached the end of the sample vector (+0x68..: last at +0x6c), a 0x38-byte sample is built on the stack from the source (0x0075F180 with (source, &source->+0x18, the dwords +0x1c and +0x24 of the sample at the iterator, 1.0f, 2.0f, 0)), inserted before the iterator (0x0075FAE0, vector insert returning the new iterator), its CCharString (+0x30) destroyed (the temporary's inlined destructor); then the bank is refreshed (0x0075DDF0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075E460, length 96 bytes.
 // Callees: 0x0075F180 (sample constructor, seven arguments), 0x0075FAE0 (`insert(where, value)` on the vector at +0x68), CCharString::~CCharString @ 0x0099EAE0, 0x0075DDF0 (thiscall on `this`). The chunk labels are propagated. Shape: a 0x38-byte frame holding the sample temporary, `this` in esi, `ret 4`.
-struct C3DVector { float x, y, z; };
-struct CCharString {
+class C3DVector { public: float x, y, z; };
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };

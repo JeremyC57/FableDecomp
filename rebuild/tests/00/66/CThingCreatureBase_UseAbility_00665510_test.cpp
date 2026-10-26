@@ -17,7 +17,7 @@ static int fails = 0;
 //   HasTC + GetTC spelling loads it straight into ecx); the def pointer lives in the dead pressure argument slot; its release is the inline CDefPointer dtor
 //   (`dec [esi+4] ; jne ; call [vtbl+4]`).
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -34,16 +34,16 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return (SEntry*)r;
 }
 #pragma auto_inline(on)
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     void SetButtonPressure(float pressure);     // 0x007899E0
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
 };
-struct CHeroAbilityDef : CDefClassBase { };
-template<class T> struct CDefPointer {
+class CHeroAbilityDef : public CDefClassBase { public: };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -56,7 +56,7 @@ template<class T> struct CDefHolder {          // releases a def taken out of a 
             ((CDefClassBase*)Object)->Destroy();
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     template<class T> bool GetDef(long index, CDefPointer<const T>* out);   // 0x0043FFA0
 };
 void* FindDef_s7r_0();
@@ -88,7 +88,7 @@ template<class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0, 
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];             // +0x20
@@ -124,7 +124,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();

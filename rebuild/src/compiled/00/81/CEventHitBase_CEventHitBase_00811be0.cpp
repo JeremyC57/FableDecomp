@@ -26,11 +26,11 @@ struct CCountedPointer_00811be0 {                       // {object, count block}
     }
 };
 namespace NEntityEvents {
-struct CEventBase {                                  // vtable 0x0124F2C4
+class CEventBase { public:                                  // vtable 0x0124F2C4
     virtual void v00();
     ~CEventBase() { }                                // inline: the vtable store
 };
-struct CEventHitBase : CEventBase {                        // vtable 0x01272344
+class CEventHitBase : public CEventBase { public:                        // vtable 0x01272344
     long          WorldFrame;                             // +0x04
     CCountedPointer_00811be0 m_pointer;             // +0x8
     ~CEventHitBase();

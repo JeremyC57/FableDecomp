@@ -8,9 +8,9 @@
 // and narrows it into *value. TransferableValue (+0x4) is loaded before the call into esi.
 // Shape: `CPersistTraits<T> traits; traits.TransferIn(context, parser, TransferableValue);` with the long-forwarding
 // inline traits reader -- the same body as the landed enum rows (0x004AA320, 0x0077FDA0).
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE };
 
@@ -26,7 +26,7 @@ template <class T> struct CPersistTraits {
     }
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

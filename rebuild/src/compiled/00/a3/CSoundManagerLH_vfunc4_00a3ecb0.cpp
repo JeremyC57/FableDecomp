@@ -15,7 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // MSVCR71 import th
 void* __cdecl operator new(unsigned int size);               // MSVCR71 import thunk 0x00BFEA1A
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CSoundManagerLH;
 

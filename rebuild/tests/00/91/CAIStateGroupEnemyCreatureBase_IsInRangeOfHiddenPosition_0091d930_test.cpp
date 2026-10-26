@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -16,9 +16,9 @@ struct CPositionVector {
     C3DVector* end() const { return _M_finish; }
     bool empty() const { return _M_start == _M_finish; }
 };
-struct CWorldMap { int unused; };
-struct CThingSearchTools { int unused; };
-struct CTCShapeManager;
+class CWorldMap { public: int unused; };
+class CThingSearchTools { public: int unused; };
+class CTCShapeManager;
 static C3DVector g_pts[8]; static int g_npts = 0; static float g_radius = 0;
 static void GetValidPositions(CPositionVector& positions, const CWorldMap& map, const CThingSearchTools& search,
                               const C3DVector& pos, float radius, bool flag, const CTCShapeManager* shapes)
@@ -29,12 +29,12 @@ static void GetValidPositions(CPositionVector& positions, const CWorldMap& map, 
     memcpy(positions._M_start, g_pts, sizeof(C3DVector) * g_npts);
     positions._M_finish = positions._M_end_of_storage = positions._M_start + g_npts;
 }
-struct CThing { C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
-struct CThingCreatureBase : CThing { };
+class CThing { public: C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class CThingCreatureBase : public CThing { public: };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CAIBrain { CThingCreatureBase* Creature; };
+class CAIBrain { public: CThingCreatureBase* Creature; };
 static CWorldMap g_map; static CThingSearchTools g_search;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     float GetHidingRange() { return 20.0f; }
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }

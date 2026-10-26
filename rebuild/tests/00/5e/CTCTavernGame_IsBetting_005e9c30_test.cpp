@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     char pad[0xa8];
     int stateA;
     char pad2[0xc0 - 0xa8 - 4];

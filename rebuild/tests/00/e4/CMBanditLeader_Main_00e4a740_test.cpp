@@ -1,10 +1,10 @@
 // Behaviour test for CM_BanditLeader::Main @ 0x00E4A740 (copy of the model with a stub world).
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 static int g_created, g_attached, g_live;
 static bool g_done, g_leaderDead;
-struct CScriptThing {
+class CScriptThing { public:
     int kind;
     CScriptThing() : kind(0) { ++g_live; }
     CScriptThing(const CScriptThing& o) : kind(o.kind) { ++g_live; }
@@ -13,7 +13,7 @@ struct CScriptThing {
     const C3DVector& GetPos() const { static C3DVector p = { 1, 2, 3 }; return p; }
     bool IsDead() const { return kind == 4 ? g_leaderDead : true; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing GetThingWithScriptName(const char* name) const
     { CScriptThing t; if (!std::strcmp(name, "BanditTollVillage")) t.kind = 3; else if (!std::strcmp(name, "BanditLeader")) t.kind = 4; return t; }
     CScriptThing CreateCreature(const char* def, const C3DVector&, const char* name, bool f) const

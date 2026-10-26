@@ -6,15 +6,15 @@
 // Vtable 0x012A3E60 = CEngineSceneMap. Retail layout = Ego_r.pdb minus 4 after the CArray: Area
 // +4, MaxLevels +0x14, GridLevels (CArray<CCountedPointer<CEngineSceneGrid>>, 12 bytes) +0x18,
 // Scene +0x24; size 0x28. The manifest's "CColourConverter" label is propagated.
-struct CEngineScene;
-struct CEngineSceneGrid;
+class CEngineScene;
+class CEngineSceneGrid;
 
 struct CBase {
     virtual void v00();
     CBase();                                                // 0x0099A2F0
 };
 
-struct C2DBoxF { float MinX, MinY, MaxX, MaxY; };
+class C2DBoxF { public: float MinX, MinY, MaxX, MaxY; };
 
 struct CCountedGrid { void* m_pObject; void* m_pCount; };
 
@@ -23,7 +23,7 @@ template<class T> struct CRetailArray {                     // retail CArray: {f
     CRetailArray() : first(0), last(0), end_of_storage(0) { }
 };
 
-struct CEngineSceneMap : CBase {
+class CEngineSceneMap : public CBase { public:
     C2DBoxF       Area;                                     // +0x04
     unsigned long MaxLevels;                                // +0x14
     CRetailArray<CCountedGrid> GridLevels;                  // +0x18

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DB7DB0, length 64 bytes.
 // Leaf: OnPredicateFail
 // Shape: `this` in esi, the quest reloaded for each store, the position copied as three dwords, `ret`.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 #pragma pack(push, 1)
 struct SQuest_00db7db0 {
     unsigned char _pad00[0x74];
@@ -11,7 +11,7 @@ struct SQuest_00db7db0 {
     C3DVector     m_barrelPosition;                // +0x76 (unaligned)
 };
 #pragma pack(pop)
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual C3DVector* GetPosition();              // slot 6 (+0x18)
     unsigned char _body[8];

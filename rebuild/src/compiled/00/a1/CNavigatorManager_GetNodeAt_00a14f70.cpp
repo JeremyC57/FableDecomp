@@ -2,9 +2,9 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A14F70, length 96 bytes.
 // Leaf: GetNodeAt
 // Callees: __ftol2 @ 0x00BFEA70 (the two coordinates truncated once, after the empty test), the tree's member. Shape: the sentinel in ebx, the node in esi, the integer coordinates in edi / eax, `ret`.
-struct C2DVector { float X, Y; };
-struct CANavQuadTreeNode;
-struct CNavQuadTree {
+class C2DVector { public: float X, Y; };
+class CANavQuadTreeNode;
+class CNavQuadTree { public:
     CANavQuadTreeNode* GetNodeAt(const C2DVector* position, long layer);   // 0x00A770B0 (the bool widened with movzx)
 };
 struct STreeNode_00a14f70 {                           // the navigation-map list node: id at +0x10, the tree at +8, the integer bounds at +0x14..+0x20
@@ -19,7 +19,7 @@ struct STreeNode_00a14f70 {                           // the navigation-map list
     long             m_maxY;                       // +0x20
 };
 
-struct CNavigatorManager {
+class CNavigatorManager { public:
     unsigned char    _pad00[0x24];
     STreeNode_00a14f70* m_pMaps;                      // +0x24: the sentinel
     CANavQuadTreeNode* GetNodeAt(const C2DVector& position, bool layer);

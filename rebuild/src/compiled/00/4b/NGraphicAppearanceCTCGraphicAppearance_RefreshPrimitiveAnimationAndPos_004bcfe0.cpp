@@ -15,17 +15,17 @@
 // (SelfIlluminating 0, ForceResendEveryRenderFrame 1, ResendPrimsEveryRenderFrame 2, DisableOcclusionTesting 3, DrawAfterWater 4,
 // CachedStaticFocalPos 5, RenderedLastFrame 6, PrimitivesDrawn 7), Alpha +0x5a, ByPassColorFilter +0x5b.
 // No engine header exists for CTCGraphicAppearance: local model.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCAnimationBase;
+class CTCAnimationBase;
 
-struct CThing {
+class CThing { public:
     void AddToRenderList();                             // 0x004C7AC0 (manifest CThing::AddToRenderList)
 };
 
 namespace NGraphicAppearance {
 
-struct CAGraphicAppearanceComponent;
+class CAGraphicAppearanceComponent;
 
 struct CEnginePersistentPrimitiveBase {                 // CIVCountedPointer<CEnginePersistentPrimitiveBase> target
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -37,7 +37,7 @@ struct CEnginePrimitiveHandle {                         // 8 bytes (Ego_r.pdb): 
     CEnginePersistentPrimitiveBase* Data;               // +0x04 CIVCountedPointer<CEnginePersistentPrimitiveBase>
 };
 
-struct CPrimitive {                                     // 16 bytes (Ego_r.pdb)
+class CPrimitive { public:                                     // 16 bytes (Ego_r.pdb)
     long                            Type;               // +0x00 EPrimitiveType
     CEnginePrimitiveHandle          PrimitiveHandle;    // +0x04
     long                            BankIndex;          // +0x0c
@@ -73,28 +73,28 @@ struct CInterpolatorBase {                              // vptr only; out-of-lin
     ~CInterpolatorBase();                               // 0x0099A2E0
 };
 
-struct CRightHandedSet { float m[6]; };
+class CRightHandedSet { public: float m[6]; };
 
-struct C3DAnimationInterpolator {                       // 20 bytes
+class C3DAnimationInterpolator { public:                       // 20 bytes
     void*         __vftable;
     unsigned long StartState[2];                        // C3DAnimationBlendState
     unsigned long EndState[2];
     ~C3DAnimationInterpolator();                        // 0x004C2E90
 };
 
-struct C3DPositionInterpolator {                        // 28 bytes
+class C3DPositionInterpolator { public:                        // 28 bytes
     CInterpolatorBase m_base;
     C3DVector         StartPosition;
     C3DVector         EndPosition;
 };
 
-struct C3DOrientationInterpolator {                     // 52 bytes
+class C3DOrientationInterpolator { public:                     // 52 bytes
     CInterpolatorBase m_base;
     CRightHandedSet   StartOrientation;
     CRightHandedSet   EndOrientation;
 };
 
-struct CEnginePrimitiveAnimation {                      // 100 bytes
+class CEnginePrimitiveAnimation { public:                      // 100 bytes
     C3DAnimationInterpolator   Anim;                    // +0x00
     C3DPositionInterpolator    WorldPos;                // +0x14
     C3DOrientationInterpolator Orientation;             // +0x30
@@ -102,7 +102,7 @@ struct CEnginePrimitiveAnimation {                      // 100 bytes
                               const C3DOrientationInterpolator& orientation);   // 0x004C3D30
 };
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -119,7 +119,7 @@ struct CEngineGlobals {
 extern CEngineGlobals* g_pEngineGlobals_013b8a18;                // 0x013B8A18
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                                 // 14 bytes (PDB size 14)
+class CEngineGraphic { public:                                 // 14 bytes (PDB size 14)
     unsigned long BankIndex;                            // +0x00
     float         AnimStep;                             // +0x04
     float         RenderSizeX;                          // +0x08
@@ -130,7 +130,7 @@ struct CEngineGraphic {                                 // 14 bytes (PDB size 14
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void*          __vftable;                           // +0x00 (CTCBase)
     CThing*        ParentThing;                         // +0x04
     bool           ToBeRemoved;                         // +0x08

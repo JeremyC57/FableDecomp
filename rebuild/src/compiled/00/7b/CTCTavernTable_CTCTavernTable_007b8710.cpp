@@ -11,20 +11,20 @@
 //        order and share the ebx zero; each Strlen is the inline length of a temporary CCharString (`data ? data->Length
 //        : 0`), the temporary destroyed right after; VC duplicates the epilogue into both arms of the last length test.
 class CThing;
-struct CThingAICreature;
+class CThingAICreature;
 
-struct CCharStringData {
+class CCharStringData { public:
     char* Text;                                 // +0x00
     long  Length;                               // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
     long GetLength() const { return m_data == 0 ? 0 : m_data->Length; }
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
@@ -40,7 +40,7 @@ template<class T> struct CRetailVector {        // retail STLport vector (12 byt
 };
 struct CIntelligentPointerSlot { void* _vfptr; void* m_pItem; };   // CIntelligentPointer<CThingObject> element
 
-struct CTCTavernTable : CTCBase {               // vtable 0x0126DBB4
+class CTCTavernTable : public CTCBase { public:               // vtable 0x0126DBB4
     bool  BeingServed;                          // +0x0c
     CRetailVector<CThingAICreature*>        Occupants;    // +0x10
     CRetailVector<CIntelligentPointerSlot>  Tankards;     // +0x1c

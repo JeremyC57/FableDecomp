@@ -10,7 +10,7 @@
 // and `true` folds the caller's `if`. The type key lives in the `push ecx` frame slot and the
 // map pointer is a named local (esi). A direct `it->component->flag = value` allocates the
 // component in ecx instead; the out-parameter form is what keeps it in eax.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -19,12 +19,12 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CTCBase {
+class CTCBase { public:
     unsigned char _pad[0x10];
     bool          m_flag;                   // +0x10
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44

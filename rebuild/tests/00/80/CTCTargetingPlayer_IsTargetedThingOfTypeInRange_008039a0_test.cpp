@@ -1,29 +1,29 @@
 #include <cstdio>
 // Behaviour test for CTCTargetingPlayer::vfunc_38 (0x008039A0): the body of src/ over stand-ins -- false with no target or
 // a type the target rejects, true under free targeting (except type 2), otherwise the squared-distance range test.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CTargetingDef {
+class CTargetingDef { public:
     long m_count;
     int destroyed;
     void Destroy() { ++destroyed; }
     void Release() { if (--m_count == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->Release(); }
 };
 static CTargetingDef g_tdef = { 1, 0 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTargetingDef>* out) { out->Object = &g_tdef; ++g_tdef.m_count; return true; }
 };
-struct CTCTargeted { unsigned long TargetingFlags; };
+class CTCTargeted { public: unsigned long TargetingFlags; };
 class CThing;
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* weapon;
     CThing* GetThingInPrimarySlot() { return weapon; }
 };
@@ -45,9 +45,9 @@ static float GetTargetingRangeForTargetType(unsigned long type, const CTargeting
 }
 struct CGameSettings { bool FreeTargeting; };
 static CGameSettings g_settings = { false };
-struct CWorld { CGameSettings* GetSettings() const { return &g_settings; } };
+class CWorld { public: CGameSettings* GetSettings() const { return &g_settings; } };
 static CWorld g_world;
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     CThing* target;
     CThing* GetPTargetedThing() const { return target; }
     CThing* ParentThing;

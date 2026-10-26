@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) { }
     virtual void Delete() { ++g_deleted; }
     unsigned long IVRefCount;
@@ -29,8 +29,8 @@ struct CIVCountedPointer {
 };
 struct CIVCountedPointerR { CIVCountedPointeeBase* Object;
     CIVCountedPointerR& operator=(CIVCountedPointeeBase* p) { CIVCountedPointeeBase* old = Object; if (old) { if (--old->IVRefCount == 0) old->Delete(); Object = 0; } Object = p; if (p) ++p->IVRefCount; return *this; } };
-struct C3DVector { float X, Y, Z; };
-struct C3DAnimationInfo { virtual void v00() { } void* Bank; unsigned long Index; CIVCountedPointerR Data; float Duration; float NonLoopingDuration; C3DVector MovementVector; float Rotation;
+class C3DVector { public: float X, Y, Z; };
+class C3DAnimationInfo { public: virtual void v00() { } void* Bank; unsigned long Index; CIVCountedPointerR Data; float Duration; float NonLoopingDuration; C3DVector MovementVector; float Rotation;
     void Reset() { Data = 0; Duration = 0.0f; NonLoopingDuration = 0.0f; MovementVector.X = MovementVector.Y = MovementVector.Z = 0.0f; } };
 int main()
 {

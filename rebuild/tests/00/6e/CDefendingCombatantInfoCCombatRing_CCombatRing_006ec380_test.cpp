@@ -21,12 +21,12 @@ static int fails = 0;
 //   _M_insert_overflow with the __false_type tag in the argument slot, n = 1, at end); the temporary's destructor is
 //   POccupier's out-of-line base destructor. RotationAngle = (index % 2) * step * 0.5f.
 #include <new>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     void Rotate(const C3DVector& axis, float angle);  // 0x00A13C60
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                             // +4
@@ -84,12 +84,12 @@ __declspec(noinline) void CProngVector::_M_insert_overflow(CProng* pos, const CP
     
 }
 #pragma auto_inline(on)
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     unsigned char _pad00[0x3c];
     long* ProngsPerRing;                              // +0x3c (vector data)
 };
-struct CDefendingCombatantInfo {
-    struct CCombatRing {
+class CDefendingCombatantInfo { public:
+    class CCombatRing { public:
         float RotationAngle;                          // +0x00
         float DeltaRotation;                          // +0x04
         long Index;                                   // +0x08

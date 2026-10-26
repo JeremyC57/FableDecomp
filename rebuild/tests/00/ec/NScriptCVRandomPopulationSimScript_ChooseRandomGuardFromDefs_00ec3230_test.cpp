@@ -4,7 +4,7 @@
 // CV_RandomPopulationSimScript::ChooseRandomGuardFromDefs: returns "CREATURE_BS_GUARD" by value and
 // advances the guard generator index (the other indices are untouched).
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString() { m_text[0] = 0; ++g_live; }
     CCharString(const CCharString& other) { std::strcpy(m_text, other.m_text); ++g_live; }

@@ -9,12 +9,12 @@ static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static int g_strings = 0, g_destroyed = 0; static int g_gate = 0; static const void* g_me = 0;
 static void __fastcall Destroy(void*) { ++g_destroyed; }
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length) : m_pData((void*)text) { ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00() {}
     ~CBaseClass() {}
 };
@@ -40,12 +40,12 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                 // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                 // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
     virtual void v00() {}
     ~CScriptThing() {}
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual CScriptThing GetThingWithScriptName(const CCharString& name) const
     { Log(std::strcmp((const char*)name.m_pData, "OakValeBanditRaidGate") == 0 ? "Lookup" : "LookupBAD"); CScriptThing t; t.PImp.Data = (CScriptThingImp*)&g_gate; t.PImp.Info = new SCountBlock; t.PImp.Info->m_references = 1; t.PImp.Info->m_pfnDestroy = &Destroy; t.PImp.Info->m_pObject = 0; return t; }
     virtual void OpenDoor(const CScriptThing& door) const { Log(door.PImp.Data == (CScriptThingImp*)&g_gate ? "Open" : "OpenBAD"); }
@@ -54,7 +54,7 @@ struct CGameScriptInterface {
     virtual void SetIsThingTurncoatable(const CScriptThing& thing, bool t) const { Log(&thing == g_me && !t ? "Turn" : "TurnBAD"); }
     virtual ~CGameScriptInterface() {}
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xd5c];
     float         OVBRBanditSightRadius;           // +0xd5c
     float         OVBRBanditSoundRadius;           // +0xd60

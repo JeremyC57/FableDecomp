@@ -7,7 +7,7 @@
 // left alone, then the three bools at +0x14..+0x16 cleared from one `xor al,al`. The manifest label
 // "CAIStateGroup_OpinionReactionRoot ctor" is propagated from a byte-identical shell (that class is a state group
 // with a 0x14-byte base); the owner is a plain aggregate used by the creature-action module, named descriptively.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

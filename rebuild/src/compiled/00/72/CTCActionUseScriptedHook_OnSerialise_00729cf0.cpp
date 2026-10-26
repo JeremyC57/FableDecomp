@@ -10,16 +10,16 @@
 // also loading (mode 2 or 3); loading reads the version, bails out on anything but 1, and remaps each non-zero UID.
 // Layout = Ego_r.pdb CTCActionUseScriptedHook (0x50 bytes; the landed 0x00729C30 agrees on EntranceLocked +0x28).
 #include "engine/CTCBase.h"
-struct CCharString { void* PStringData; };
-struct CThing {
+class CCharString { public: void* PStringData; };
+class CThing { public:
     unsigned char _pad00[0x8e];
     short m_level;                              // +0x8e
     bool IsLevelLess();                         // 0x004C7930
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }

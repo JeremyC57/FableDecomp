@@ -1,6 +1,6 @@
 // CThing::SetAsGameStatePersisted  0x004c7770
 // Sets bit 3 (0x08) of the byte bitfield at this+0x91 from a bool param.
-struct CThing {
+class CThing { public:
     char pad[0x91];
     unsigned char flags;   // +0x91
 };

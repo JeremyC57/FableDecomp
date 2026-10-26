@@ -1,5 +1,5 @@
-struct CMovableResourceMemoryPool;
-struct CIEngine;
+class CMovableResourceMemoryPool;
+class CIEngine;
 
 CMovableResourceMemoryPool* __fastcall CIEngine_GetLoadingMemoryPool(CIEngine* engine)
 {

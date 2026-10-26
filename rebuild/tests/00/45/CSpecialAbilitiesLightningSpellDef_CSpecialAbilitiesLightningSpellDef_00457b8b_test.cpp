@@ -2,12 +2,12 @@
 #include <cstring>
 #include <new>
 static int g_baseCalls = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _base[0x38];
     CParentDefClassBase() { ++g_baseCalls; }
 };
-struct CDefString {                             // def-table string index, -1 = none
+class CDefString { public:                             // def-table string index, -1 = none
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -25,7 +25,7 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CSpecialAbilitiesLightningSpellDef : CParentDefClassBase {
+class CSpecialAbilitiesLightningSpellDef : public CParentDefClassBase { public:
     CRetailVector<float> m_faAreaEffect;                // +0x3c
     CRetailVector<float> m_faDamagePerHit;              // +0x48
     CRetailVector<float> m_faSubBeamDamagePerHit;       // +0x54

@@ -12,7 +12,7 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" int __cdecl rand();                     // 0x00BFEB16
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);
     ~CCharString();                                // 0x0099EAE0

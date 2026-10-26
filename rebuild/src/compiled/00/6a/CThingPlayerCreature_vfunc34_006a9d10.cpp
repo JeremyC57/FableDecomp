@@ -12,36 +12,36 @@
 // Shape: the player def is a by-value CDefPointer copy (add-ref with its null test, the def's inline Release on
 //   destruction); the fallback CRGBColour(0, 0, 0, 255) is built byte by byte in the frame; the value clamp is
 //   `v = x; if (v < 0) v = 0; else if (v > 1) v = 1;` on the record field.
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() { }
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CPlayerDef : CDefPointeeBase {
+class CPlayerDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x40 - 0x08];
     CRGBColour Colour;                          // +0x40
 };
-struct CInitBaseClass {
+class CInitBaseClass { public:
     bool IsInitialised();                       // 0x0099A330
 };
-struct CPlayer : CInitBaseClass {
+class CPlayer : public CInitBaseClass { public:
     unsigned char _pad00[0x21c];
     CDefPointer<CPlayerDef> PlayerDef;          // +0x21c
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPlayer_00449910(long number);            // 0x00449910
 };
 struct CThingHighlightInfo {

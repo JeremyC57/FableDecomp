@@ -60,21 +60,21 @@ struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing>: 
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 #pragma pack(push, 1)
-struct CTCOwnedEntity {                         // interface 0x33
+class CTCOwnedEntity { public:                         // interface 0x33
     unsigned char _pad00[0x0d];
     CBaseIntelligentPointer POwner;             // +0x0d
 };
 #pragma pack(pop)
 class CTCVillage;
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetPVillage() const;            // 0x007EE540
 };
-struct CTCBuyableHouse {                        // interface 0xD5 (engine/CTCBuyableHouse.h)
+class CTCBuyableHouse { public:                        // interface 0xD5 (engine/CTCBuyableHouse.h)
     unsigned char _pad00[0x11];
     bool OwnedByPlayer;                         // +0x11
 };
 
-struct CTCActionUseBase {
+class CTCActionUseBase { public:
     void*         __vftable;                    // +0x00 (CTCBase)
     const CThing* ParentThing;                  // +0x04
     bool          ToBeRemoved;                  // +0x08

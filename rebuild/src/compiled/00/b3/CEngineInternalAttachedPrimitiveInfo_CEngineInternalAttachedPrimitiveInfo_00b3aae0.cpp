@@ -6,18 +6,18 @@
 // Shape: the member CEnginePrimitiveHandle (vptr + a primitive pointer zeroed by its inline
 // constructor) sits at +0x4; the member's address is formed into edi before this class's vtable
 // store, the handle's base call, vtable and null store follow in init order.
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();
     CBaseClass();                               // 0x0099A2D0
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {
+class CEnginePrimitiveHandle : public CBaseClass { public:
     virtual void Release();                     // own vtable 0x0122F598
     void* m_pPrimitive;                         // +0x04
     CEnginePrimitiveHandle() : CBaseClass(), m_pPrimitive(0) {}
 };
 
-struct CEngineInternalAttachedPrimitiveInfo : CBaseClass {
+class CEngineInternalAttachedPrimitiveInfo : public CBaseClass { public:
     virtual void Release();                     // own vtable 0x012A1AB8
     CEnginePrimitiveHandle Handle;              // +0x04
     CEngineInternalAttachedPrimitiveInfo();

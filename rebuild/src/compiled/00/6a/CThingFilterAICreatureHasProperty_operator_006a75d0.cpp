@@ -6,7 +6,7 @@
 // GetPFirstLeafThing<CThingFilter_AICreatureHasProperty, CThingAICreature> (0x00685F21) and CTCTrophy::FrameUpdate.
 // Layout (local model): the filter's property value (long) at +0.
 // Shape: `this` kept in esi across the virtual call; `return creature.f() == m_property;` as `sub eax,[esi] ; neg ; sbb ; inc`.
-struct CThingAICreature {
+class CThingAICreature { public:
     virtual void v000();
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();
@@ -17,7 +17,7 @@ struct CThingAICreature {
     virtual long GetAIProperty() const;         // slot 48 (+0xc0)
 };
 
-struct CThingFilter_AICreatureHasProperty {
+class CThingFilter_AICreatureHasProperty { public:
     long m_property;                            // +0x00
     bool operator()(const CThingAICreature& creature) const;
 };

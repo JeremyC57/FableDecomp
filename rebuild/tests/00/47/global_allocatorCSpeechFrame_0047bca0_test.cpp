@@ -17,12 +17,12 @@
 // ------------------------------------------------------------------------
 
 // ---- element / member layout mirrors the reconstruction ----
-struct CCharString {
+class CCharString { public:
     char* _ptr;
     ~CCharString();   // defined out-of-line below (the masked-callee stub)
 };
 
-struct CSpeechFrame {
+class CSpeechFrame { public:
     long         _id;
     CCharString  text;
     long         _data;

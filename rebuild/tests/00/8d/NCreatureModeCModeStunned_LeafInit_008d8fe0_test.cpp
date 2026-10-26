@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeStunned::LeafInit (retail 0x008D8FE0): the stunned creature's targeting component
 // (interface 9) gets flags 4, and its combat component (interface 0x30) takes it out of combat.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,12 +54,12 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
+class CThing : public CThingLookup { public: };
 struct CTCTargetedFlags : CTCBase {
     unsigned long m_flags;
     void SetFlags(unsigned long flags) { m_flags = flags; }
 };
-struct CTCCombat : CTCBase {
+class CTCCombat : public CTCBase { public:
     int removals;
     void RemoveFromCombat() { ++removals; }
 };

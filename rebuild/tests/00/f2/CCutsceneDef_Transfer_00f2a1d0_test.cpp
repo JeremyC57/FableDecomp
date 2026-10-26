@@ -3,8 +3,8 @@
 // Macro, SkipCond, SetupCond, Lights, LightScene, Sound, Answer0, Answer1.
 struct Vec { int tag; };
 static const Vec* g_seen[16]; static int g_count = 0;
-struct CPersistContext { void TransferVectorBinary(Vec& v) { if (g_count < 16) g_seen[g_count++] = &v; } };
-struct CCutsceneDef {
+class CPersistContext { public: void TransferVectorBinary(Vec& v) { if (g_count < 16) g_seen[g_count++] = &v; } };
+class CCutsceneDef { public:
     Vec Macro, SkipCond, Lights, LightScene, SetupCond, Sound, Answer0, Answer1;
     void Transfer(CPersistContext& c)
     {

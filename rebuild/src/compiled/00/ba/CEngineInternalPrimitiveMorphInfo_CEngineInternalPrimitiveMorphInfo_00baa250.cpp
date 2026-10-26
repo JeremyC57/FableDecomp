@@ -14,7 +14,7 @@
 // is scheduled before the CArray stores instead of before its last one.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 struct SAllocator { SAllocator() {} };          // empty allocator (user constructor: no zero fill of the temporary)
 
@@ -34,7 +34,7 @@ template<class T> struct CRetailVector : CVectorBase<T> {
     CRetailVector() : CVectorBase<T>(SAllocator()) {}
 };
 
-template<class T> struct CVectorMap {
+template<class T> class CVectorMap { public:
     CRetailVector<T> m_entries;                     // +0x00
     unsigned char    m_compare;                     // +0x0c CKeyPairCompareLess (empty)
     bool             m_dirty;                       // +0x0d
@@ -66,14 +66,14 @@ struct CStringSet : CRbTreeBase {                   // set<CCharString>
     }
 };
 
-template<class T> struct CArray : CRetailVector<T> {   // retail CArray: an STLport vector (three words)
+template<class T> class CArray : public CRetailVector<T> { public:   // retail CArray: an STLport vector (three words)
     CArray() {}
 };
 
 struct CEngineTextureDecalEntry { long key[2]; long value[4]; };
 struct CCompositeSurfaceEntry { long key; long value[6]; };
 
-struct CEngineInternalPrimitiveMorphInfo {
+class CEngineInternalPrimitiveMorphInfo { public:
     CVectorMap<CEngineTextureDecalEntry> TextureDecals;     // +0x00
     CVectorMap<CCompositeSurfaceEntry>   CompositeSurfaces; // +0x10
     CStringSet                           HiddenMaterialNames;   // +0x20

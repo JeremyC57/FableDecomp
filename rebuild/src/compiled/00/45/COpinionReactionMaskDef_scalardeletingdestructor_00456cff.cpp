@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 struct Member { int pad[16]; };
-struct COpinionReactionMaskDef {
+class COpinionReactionMaskDef { public:
     char pad[0x3c];
     Member m;
 };

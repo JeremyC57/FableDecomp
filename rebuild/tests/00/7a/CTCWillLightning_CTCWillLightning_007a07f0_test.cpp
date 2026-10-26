@@ -10,7 +10,7 @@ static void Log(int v) { if (g_n < 64) g_log[g_n++] = v; }
 static void TestFree(void* p) { Log(p ? 60 : 61); }
 
 class CTCBase;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     int id;
     void EnterTimelineEnd() { Log(id); }
 };
@@ -61,7 +61,7 @@ class CTCBase {
 public:
     virtual ~CTCBase() { Log(99); }
 };
-struct CTCWillLightning : CTCBase {
+class CTCWillLightning : public CTCBase { public:
     CBaseIntelligentPointer PItemRemoved;
     CLightningSpellDefPointer m_lspDef;
     CWillButtonHelperTimer m_tTimer;

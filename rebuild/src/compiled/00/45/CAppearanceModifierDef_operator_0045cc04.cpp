@@ -10,7 +10,7 @@
 // SuitPart/AppearanceType are 4-byte enums (long). Retail vectors are 12 bytes, so offsets after HideMaterials sit 4/8 below the PDB.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -18,12 +18,12 @@ struct CCharStringVector {                       // retail std::vector<CCharStri
     unsigned long m_words[3];
     CCharStringVector& operator=(const CCharStringVector& other);   // 0x00432EE9
 };
-struct CAppearanceModifierGraphics {                       // CArray<CEntry>, PDB 16 bytes (retail 0xc bytes)
+class CAppearanceModifierGraphics { public:                       // CArray<CEntry>, PDB 16 bytes (retail 0xc bytes)
     unsigned long m_words[3];
     CAppearanceModifierGraphics& operator=(const CAppearanceModifierGraphics& other);   // 0x0045CC79
 };
 
-struct CAppearanceModifierDef : CDefClassBase {
+class CAppearanceModifierDef : public CDefClassBase { public:
     CCharStringVector        HideMaterials;               // +0x28
     CAppearanceModifierGraphics MorphGraphics;               // +0x34
     long                     CoversBodyAreaFlags;         // +0x40

@@ -8,14 +8,14 @@
 // (computed y first into the argument area) and a non-null result is returned as is, else the full query's result.
 // Layout: EnableLightCache is +0xAA in the PDB; the retail ThemeChannels CArray is 12 bytes (PDB 16), so it sits at +0xA6
 // -- modelled locally.
-struct CEngineLocalLightArray;
+class CEngineLocalLightArray;
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     float X, Y, Z;                                 // +0x00 centre
     float Radius;                                  // +0x0C
 };
 
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0;                   // +0x00
     unsigned char ChannelIndex1;                   // +0x01
     unsigned char ChannelBlendFactor;              // +0x02
@@ -24,7 +24,7 @@ struct CEnginePrimitiveThemeChannelDesc {
 
 extern const float g_smallObjectLightCacheDiameter_0122dcdc;   // 0x0122DCDC
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char _pad000[0xa6];
     bool          EnableLightCache;                // +0xA6
     CEngineLocalLightArray* LookupSmallObjectLightCache(float minX, float minY, long layerMask);   // 0x00B46A30

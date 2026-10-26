@@ -2,7 +2,7 @@
 struct Inner {
     void Apply_006b38d0(int one, int n, int duration);
 };
-struct CWorld { unsigned char pad[0x18]; Inner* PEnvironment; };
+class CWorld { public: unsigned char pad[0x18]; Inner* PEnvironment; };
 
 extern void* __stdcall Resolve(int a);
 extern int __fastcall CountOf(void* self);

@@ -64,33 +64,33 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CEngineClothRenderer;
-struct CEnginePrimitiveChangerManager;
-struct CEnginePrimitiveGroupManager;
-struct CEnginePrimitiveManagerAnimatedMeshes;
-struct CEnginePrimitiveManagerDecal;
-struct CEnginePrimitiveManagerFlareSprites;
-struct CEnginePrimitiveManagerGameMeshes;
-struct CEnginePrimitiveManagerLines;
-struct CEnginePrimitiveManagerParticleDecalGroup;
-struct CEnginePrimitiveManagerParticleGroup;
-struct CEnginePrimitiveManagerParticleLineGroup;
-struct CEnginePrimitiveManagerParticleMeshGroup;
-struct CEnginePrimitiveManagerParticleSpriteGroup;
-struct CEnginePrimitiveManagerParticleSpriteTrailGroup;
-struct CEnginePrimitiveManagerRepeatedStaticMeshes;
-struct CEnginePrimitiveManagerRepeatedZSprites;
-struct CEnginePrimitiveManagerSpriteTrails;
-struct CEnginePrimitiveManagerSprites;
-struct CEnginePrimitiveManagerStaticMeshes;
-struct CEnginePrimitiveManagerText;
-struct CEnginePrimitiveManagerWeaponTrails;
-struct CEnginePrimitiveManagerWeatherMask;
-struct CEnginePrimitiveOcclusionGroupManager;
+class CCPPointerInfo;
+class CEngineClothRenderer;
+class CEnginePrimitiveChangerManager;
+class CEnginePrimitiveGroupManager;
+class CEnginePrimitiveManagerAnimatedMeshes;
+class CEnginePrimitiveManagerDecal;
+class CEnginePrimitiveManagerFlareSprites;
+class CEnginePrimitiveManagerGameMeshes;
+class CEnginePrimitiveManagerLines;
+class CEnginePrimitiveManagerParticleDecalGroup;
+class CEnginePrimitiveManagerParticleGroup;
+class CEnginePrimitiveManagerParticleLineGroup;
+class CEnginePrimitiveManagerParticleMeshGroup;
+class CEnginePrimitiveManagerParticleSpriteGroup;
+class CEnginePrimitiveManagerParticleSpriteTrailGroup;
+class CEnginePrimitiveManagerRepeatedStaticMeshes;
+class CEnginePrimitiveManagerRepeatedZSprites;
+class CEnginePrimitiveManagerSpriteTrails;
+class CEnginePrimitiveManagerSprites;
+class CEnginePrimitiveManagerStaticMeshes;
+class CEnginePrimitiveManagerText;
+class CEnginePrimitiveManagerWeaponTrails;
+class CEnginePrimitiveManagerWeatherMask;
+class CEnginePrimitiveOcclusionGroupManager;
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     void*                                            __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                    _pad_0x04[0x4]; // +0x04
     unsigned char                                    _pad_0x08[0x4]; // +0x08
@@ -370,7 +370,7 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer, MaxPreloadMipmapTolerance
 
 
 #pragma pack(push, 1)
-struct CMovableResource {
+class CMovableResource { public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
 };
 #pragma pack(pop)
@@ -393,7 +393,7 @@ FABLE_STATIC_ASSERT(offsetof(CMovableResource, __vftable) == 0x0);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -418,7 +418,7 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 
 #pragma pack(push, 1)
-struct CEnginePersistentPrimitiveBase {
+class CEnginePersistentPrimitiveBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     long          Type;                                      // +0x08
@@ -435,9 +435,9 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePersistentPrimitiveBase, Type) == 0x8);
 namespace std { template<class T> struct less; template<class T> class allocator; template<class A,class B> struct pair; template<class K,class V,class C,class A> class map; }
 enum EEnginePrimitiveStatIndex { PrimitiveStatCount = 0 };
 typedef std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > > PrimitiveStatsMap;
-struct CEnginePrimitiveHandle;
-struct CBaseClass { CBaseClass(); virtual ~CBaseClass(); }; // 0x0099A2E0
-struct CIVCountedPointeeBase {
+class CEnginePrimitiveHandle;
+class CBaseClass { public: CBaseClass(); virtual ~CBaseClass(); }; // 0x0099A2E0
+class CIVCountedPointeeBase { public:
  virtual ~CIVCountedPointeeBase();
  virtual void Delete() const; // 0x0042D930
  unsigned long IVRefCount;
@@ -445,7 +445,7 @@ struct CIVCountedPointeeBase {
  long GetRefCount()const{return IVRefCount;}
  __forceinline void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
 };
-struct CEnginePersistentPrimitiveBase : CIVCountedPointeeBase {
+class CEnginePersistentPrimitiveBase : public CIVCountedPointeeBase { public:
  long Type;
  virtual void CollectStats(PrimitiveStatsMap&,EEnginePrimitiveStatIndex,unsigned long) const = 0; // genuine pure slot2 (fablewin PDB)
  virtual void NotifyReleased(const CEnginePrimitiveHandle&); // slot3 0x00B8FFC0
@@ -462,19 +462,19 @@ struct CIVPrimitivePointer {
  __forceinline ~CIVPrimitivePointer() { Clear(); }
  __forceinline CIVPrimitivePointer& operator=(const CIVPrimitivePointer& r) { if(Object!=r.Object) { Clear(); Object=r.Object; if(Object) ++Object->IVRefCount; } return *this; }
 };
-struct CEnginePrimitiveHandle : CBaseClass {
+class CEnginePrimitiveHandle : public CBaseClass { public:
  CIVPrimitivePointer Data;
  __forceinline void Clear() { if(Data.GetRefCount()==1) Data->NotifyReleased(*this); Data.Clear(); Data.Object=0; }
  __forceinline CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& r) { Clear(); Data=r.Data; return *this; }
  __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
 }; // actual vtable 0x0122F598
-struct CMovableResource {
+class CMovableResource { public:
  virtual ~CMovableResource() {} // 0x0129B860
  virtual void RelocateData(long,void*,void*,long)=0;
  virtual bool CanRelocateData(long) const;
  virtual unsigned long Verify() const;
 };
-struct CEngineCamera; struct CLocalDetailObjectCollectionType; struct CDataInputStream;
+class CEngineCamera; class CLocalDetailObjectCollectionType; class CDataInputStream;
 enum LOCAL_DETAIL_PRIMITIVE_TYPE { LocalDetailPrimitiveUnspecified = 0 };
 // Native VTs contain ten slots; donor's extra virtual APIs are not projected.
 struct __declspec(novtable) CLocalDetailPrimitiveBase : CMovableResource {
@@ -490,7 +490,7 @@ struct __declspec(novtable) CLocalDetailPrimitiveBase : CMovableResource {
  float BoundingBox[6]; float BoundingSphere[4];
  void* Type; void* Map;
 };
-struct C4DVector { float X,Y,Z,W; };
+class C4DVector { public: float X,Y,Z,W; };
 struct CSubsectionElement;
 struct CAddMeshDesc {
  void* MeshInfo; float MaxScale; float* VectorNormals; long ObjectCount;
@@ -523,7 +523,7 @@ struct CLocalDetailPrimitiveRepeatedMesh : CLocalDetailPrimitiveBase {
 
 };
 struct CLocalDetailPrimitiveMeshZSpriteBatch : CLocalDetailPrimitiveBase {
- struct CObject { float Matrix[12],Scale,BoundingSphere[4]; CEnginePrimitiveHandle PrimitiveHandle; ~CObject(); }; // 0x00BFBBF0
+ class CObject { public: float Matrix[12],Scale,BoundingSphere[4]; CEnginePrimitiveHandle PrimitiveHandle; ~CObject(); }; // 0x00BFBBF0
  CObject* Objects; void* ZSpriteEntries; long ObjectCount; bool HasMeshPrimitiveHandles;
  CEnginePrimitiveHandle ZSpriteHandle;
  CAddPrimitiveDesc SetupPrimitiveDesc(); // 0x00BF9FA0
@@ -568,11 +568,11 @@ FABLE_STATIC_ASSERT(sizeof(LocalDetailAddPMF)==4);
 #include <stddef.h>
 
 
-struct CMovableResourceMemoryPool;
-struct CXboxBufferMemoryPool;
+class CMovableResourceMemoryPool;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _pad_0x04[0x4];              // +0x04
     CMovableResourceMemoryPool* VirtualMemPool;              // +0x08
@@ -619,11 +619,11 @@ struct LandscapeMemoryMethods : CEngineLandscapeMemoryManager { void FreeVirtual
 #include <stddef.h>
 
 
-struct CEngineLandscapeMemoryManager;
-struct CPixelShader;
+class CEngineLandscapeMemoryManager;
+class CPixelShader;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void*                          __vftable;                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                  _pad_0x04[0x4];           // +0x04
     unsigned char                  _pad_0x08[0x4];           // +0x08

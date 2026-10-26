@@ -4,7 +4,7 @@
 // (was: NParticleEngine::CPSCSpline::GetGUIName -> CCharString by value)
 // retail 0x00b1b470
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     CCharString(const char* s, int n);
 };
@@ -13,7 +13,7 @@ struct CCharString {
 extern char g_actionName_str[];
 
 namespace NParticleEngine {
-struct CPSCSpline {
+class CPSCSpline { public:
     CCharString GetGUIName();
 };
 }

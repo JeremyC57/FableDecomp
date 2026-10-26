@@ -2,7 +2,7 @@
 // copies [first, last) in order into new nodes linked before pos
 #include <cstdio>
 #include <cstdlib>
-struct CStringParserCommentBoundaries { char* PStart; char* PEnd; };
+class CStringParserCommentBoundaries { public: char* PStart; char* PEnd; };
 struct NodeBase { NodeBase* next; NodeBase* prev; };
 struct Node : NodeBase { CStringParserCommentBoundaries data; };
 struct List {

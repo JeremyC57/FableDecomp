@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CWorld; struct CMap; struct CGameMapInit { long m_a; long m_b; }; static long g_deleted = 0; static void* g_lastDeleted = 0;
-struct CGameMap { CWorld* m_world; CMap* m_map; CGameMapInit m_init; CGameMap(CWorld* w, CMap* m, CGameMapInit* i) : m_world(w), m_map(m), m_init(*i) { } virtual ~CGameMap() { ++g_deleted; g_lastDeleted = this; } };
-struct CMap { unsigned char _pad[0x20]; CWorld* m_pWorld; unsigned char _pad24[0x1a54]; CGameMap* m_pGameMap; unsigned char _pad1a7c[0x2a0]; CGameMapInit m_gameMapInit;
+class CWorld; class CMap; class CGameMapInit { public: long m_a; long m_b; }; static long g_deleted = 0; static void* g_lastDeleted = 0;
+class CGameMap { public: CWorld* m_world; CMap* m_map; CGameMapInit m_init; CGameMap(CWorld* w, CMap* m, CGameMapInit* i) : m_world(w), m_map(m), m_init(*i) { } virtual ~CGameMap() { ++g_deleted; g_lastDeleted = this; } };
+class CMap { public: unsigned char _pad[0x20]; CWorld* m_pWorld; unsigned char _pad24[0x1a54]; CGameMap* m_pGameMap; unsigned char _pad1a7c[0x2a0]; CGameMapInit m_gameMapInit;
     void InitGameMap() { CGameMapInit init = m_gameMapInit; CGameMap* map = new CGameMap(m_pWorld, this, &init); CGameMap* old = m_pGameMap; m_pGameMap = map; if (old) delete old; } };
 
 int main()

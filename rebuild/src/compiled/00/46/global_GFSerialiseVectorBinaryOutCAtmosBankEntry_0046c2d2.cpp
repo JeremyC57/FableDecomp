@@ -6,7 +6,7 @@
 //   0x527bde : Serialise(int)    -- push [ebx]; call
 //   0x527c0e : Serialise(float)  -- fild [ebx+4]; fstp [esp]; call
 
-struct CAtmosBankEntry {
+class CAtmosBankEntry { public:
     int a;   // +0x0
     int b;   // +0x4  (serialised as float via fild)
 };

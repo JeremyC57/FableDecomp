@@ -7,14 +7,14 @@
 // Shape: the landed IS_THING_ALIVE idiom on the +0x114 pointer, then a NULL-INITIALISED emitter pointer (`xor edi,edi`, pushed inside
 // the if: edi is only live there) filled by the out-parameter GetInterface and used unconditionally. `this` rides in ebx.
 // No engine header for this class; modelled locally (CCombatActionBase is 0x114 bytes in retail, the effect pointer is the first own member).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -51,11 +51,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCDParticleEmitter {                // interface type 0x4b component
+class CTCDParticleEmitter { public:                // interface type 0x4b component
     void ClearAttachments_006e0de0();                // 0x006E0DE0
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x00859A20
     unsigned char _pad04[4];                // +0x04
@@ -63,7 +63,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_ScreamerDie : CCombatActionBase {
+class CCreatureAction_ScreamerDie : public CCombatActionBase { public:
     CBaseIntelligentPointer PEffect;        // +0x114 CIntelligentPointer<CThing>: the scream effect thing
     virtual void FinishAction();
 };

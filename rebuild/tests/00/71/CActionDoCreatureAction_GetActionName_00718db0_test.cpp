@@ -3,7 +3,7 @@
 static const char* g_captured_s;
 static int g_captured_n;
 
-struct CCharString {
+class CCharString { public:
     char* buf;
     CCharString(const char* s, int n) {
         g_captured_s = s;

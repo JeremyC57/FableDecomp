@@ -17,12 +17,12 @@ template<class T> struct CRetailVector {                // STLport vector: begin
     T* m_first; T* m_last; T* m_end;
     ~CRetailVector() { if (m_first) free(m_first); }
 };
-struct CRGBColour { unsigned long Colour; };
-struct CParentDefClassBase {                            // retail 0x3c bytes incl. alignment of the packed tail
+class CRGBColour { public: unsigned long Colour; };
+class CParentDefClassBase { public:                            // retail 0x3c bytes incl. alignment of the packed tail
     unsigned char _base[0x3c];
     ~CParentDefClassBase();                             // 0x00430300
 };
-struct CInventoryDef : CParentDefClassBase {
+class CInventoryDef : public CParentDefClassBase { public:
     unsigned char InitialCategoryMovementRepeatDelay_to_TrackSelectedItems[0x20]; // +0x3c..+0x5b
     CRetailVector<long> InitialInventoryClothingItems;  // +0x5c
     CRetailVector<long> InitialInventoryWeaponsItems;   // +0x68

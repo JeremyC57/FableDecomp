@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CEnginePrimitiveThemeChannelDesc { long m_channel; };
+class CEnginePrimitiveThemeChannelDesc { public: long m_channel; };
 struct CTCGraphicAppearance {
     long channel; bool a, b; unsigned long changed; int sets;
     void SetLightingChannel(const CEnginePrimitiveThemeChannelDesc& c, bool x, bool y) { channel = c.m_channel; a = x; b = y; ++sets; }
     void SetAsChanged(unsigned long f) { changed |= f; }
 };
-struct CThing { CTCGraphicAppearance* m_pGraphicAppearance; };
-struct CTCVolumeContainmentTracker {
+class CThing { public: CTCGraphicAppearance* m_pGraphicAppearance; };
+class CTCVolumeContainmentTracker { public:
     CEnginePrimitiveThemeChannelDesc CurrentThemeChannel; bool PreviouslyUpdated; int updates;
     void Update() { ++updates; PreviouslyUpdated = true; CurrentThemeChannel.m_channel = 9; }
     void OnThingCarried(CThing* carrier)

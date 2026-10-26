@@ -30,7 +30,7 @@ enum EConsoleParameterType {
     CONSOLE_PARAM_STRING = 5
 };
 
-struct CConsoleCommandParameters {
+class CConsoleCommandParameters { public:
     long* m_pTypes;                                 // +0x00 parameter types (vector first)
     CCharString GetParameterTypeAsString(long index) const;
 };

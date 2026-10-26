@@ -12,7 +12,7 @@
 // inlined GetPDefClassInfo(unsigned long key): the by-value key is homed in the dead `name` argument slot (its address
 // goes to LowerBound), Find() = lower bound, end() when the key sorts before the entry; a miss returns null
 // (`xor eax,eax` at the return), a hit the entry's value at +4.
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                        // +0x00
     unsigned long StringLength;                 // +0x04
 };
@@ -35,7 +35,7 @@ template <class A, class B> struct pair {
     A first;                                    // +0x00
     B second;                                   // +0x04
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
 };
 template <class K, class V, class C> class CVectorMap {
 public:

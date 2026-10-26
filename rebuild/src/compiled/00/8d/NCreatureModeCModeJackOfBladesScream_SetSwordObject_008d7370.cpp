@@ -8,14 +8,14 @@
 // SwordFallPos +0xa4, InitialSwordPos +0xb0.
 // Shape: `PSword = CIntelligentPointer<CThing>(sword)` (8-byte frame temporary, inline operator= that takes GetPItem() into a local BEFORE SetPItem: retail calls GetPItem before forming the member address; the direct `SetPItem(other.GetPItem())` puts the `lea edi` first),
 // then the position copied word by word through the pointer's inline operator-> (the member address stays in edi).
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;          // 0x004C73D0 (CThing::GetPosition, GOTCHAS chunk 141)
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                          // +4
@@ -25,7 +25,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                 // 0x00A01B50
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
@@ -44,7 +44,7 @@ struct CModeStandBase : CModeBase {
 
 namespace NCreatureMode {
 
-struct CModeJackOfBladesScream : CModeStandBase {
+class CModeJackOfBladesScream : public CModeStandBase { public:
     unsigned char               _filter[0xc];      // +0x68 CAnimFilterOfGroup Filter
     CIntelligentPointer<CThing> PSword;            // +0x74 (vtable 0x01238C6C)
     unsigned char               InitialSwordRHS[0x18];   // +0x7c CRightHandedSet

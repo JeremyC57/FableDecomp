@@ -1,6 +1,6 @@
 // Behaviour test for 0x0094F000: FollowPlayer::Update loops move/idle while moves succeed, then terminates.
 #include <cstdio>
-struct CThing { unsigned char m_flags91; };
+class CThing { public: unsigned char m_flags91; };
 struct CGroup { CThing* follow; float FollowDistance; int moves, idles, succeedFor; bool Terminated; float lastDist;
     long Move(CThing* t, float d, bool* arrived) { ++moves; lastDist = d; *arrived = true; return moves <= succeedFor ? 2 : 1; }
     void Update()

@@ -10,8 +10,8 @@
 //   CEngineStaticMapFileBlockManager::DeleteUnusedBlocks @ 0x00BE04F0 (landed; Ego_r.pdb
 //   ?DeleteUnusedBlocks@CEngineStaticMapFileBlockManager@@QAEXXZ). Shape: the double re-pushed through the FPU, the result
 //   kept in bl across the second call, `ret 8`.
-struct CEngineMap;
-struct CEngineStaticMapFileBlockManager {
+class CEngineMap;
+class CEngineStaticMapFileBlockManager { public:
     void DeleteUnusedBlocks();                     // 0x00BE04F0
 };
 struct CObjectTypeCollectionPalette { unsigned char Entries[0xc]; };   // CArray<const CLocalDetailObjectCollectionType*>
@@ -20,7 +20,7 @@ struct CQuadTreeElement {
     bool Update(CEngineStaticMapFileBlockManager* blocks, const CObjectTypeCollectionPalette& palette, double deadline);   // 0x00BDEBF0
 };
 
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     bool                              LockedFromMemoryRelocation; // +0x00
     CEngineStaticMapFileBlockManager* FileBlockManager;       // +0x04
     CEngineMap*                       Map;                    // +0x08

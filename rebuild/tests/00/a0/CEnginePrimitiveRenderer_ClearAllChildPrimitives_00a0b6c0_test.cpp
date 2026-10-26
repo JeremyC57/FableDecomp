@@ -3,8 +3,8 @@
 struct Child;
 struct ChildVtbl { void (__fastcall *slot0)(Child* self); };
 struct Child { ChildVtbl* vtbl; };
-struct CEnginePrimitiveHandle;
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveHandle;
+class CEnginePrimitiveRenderer { public:
     char pad[0x10];
     Child* child;
 };

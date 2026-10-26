@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_NymphTeleportLimboBase {
+class CCreatureAction_NymphTeleportLimboBase { public:
     void* vftable;
     int destroyed;
 };

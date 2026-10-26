@@ -74,17 +74,17 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CFontBank;
-struct CGraphicDataBank;
-struct CLoadingMemoryFailureHandler;
-struct CMeshDataBank;
-struct CMovableResourceMemoryPool;
-struct CWideStringData;
+class CCPPointerInfo;
+class CFontBank;
+class CGraphicDataBank;
+class CLoadingMemoryFailureHandler;
+class CMeshDataBank;
+class CMovableResourceMemoryPool;
+class CWideStringData;
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -185,15 +185,15 @@ FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ExternalTexturesAllocatedFr
 #include <stddef.h>
 
 
-struct CBankFileEntryDependencies;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CDiskFileWin32;
+class CBankFileEntryDependencies;
+class CCPPointerInfo;
+class CCharStringData;
+class CDiskFileWin32;
 struct CProgressCallback;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CBankFile {
+class CBankFile { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long               Size;                        // +0x04
     unsigned char               Symbols[0x10];               // +0x08 CArray<CCharString>
@@ -291,11 +291,11 @@ FABLE_STATIC_ASSERT(offsetof(CBankFile, CurrentEntryDependencies) == 0x170);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CShaderPreParser;
+class CCharStringData;
+class CShaderPreParser;
 
 #pragma pack(push, 1)
-struct CShaderDataBank {
+class CShaderDataBank { public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char     _pad_0x04[0x4];                        // +0x04
     unsigned char     _pad_0x08[0x4];                        // +0x08
@@ -414,8 +414,8 @@ FABLE_STATIC_ASSERT(offsetof(CShaderDataBank, StateBlock) == 0x19c);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -423,8 +423,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -520,8 +520,8 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 enum EShaderBankNo { ShaderBankFixtureBase = 0 };
 enum EVertexType { VertexTypeFixtureBase = 0 };
 struct _D3DVERTEXELEMENT9;
-struct CWideString;
-struct CShaderRenderManager;
+class CWideString;
+class CShaderRenderManager;
 
 // This ABI view models only the verified native bank vtable prefix. Retail vtable
 // data at 0x0129B54C (CBankFile) and 0x0129D644 (CShaderDataBank) confirms slot 0
@@ -533,7 +533,7 @@ struct CBankFileNativeInterface {
     virtual ~CBankFileNativeInterface();
     virtual bool OpenReadOnly(const CCharString& name, unsigned long flags); // 0x009D06F0
 };
-struct CShaderDataBank : CBankFileNativeInterface {
+class CShaderDataBank : public CBankFileNativeInterface { public:
     unsigned char NativeBankState[0x124];
     CShaderDataBank(); // genuine PDB default constructor: Egor 0x00BDF0C0
 };
@@ -550,7 +550,7 @@ public:
     void SetVertexFormat(EVertexType format);
 private:
     CShaderResource(); // genuine private default constructor: PDB 0x00BCF2F0; retail helper 0x00A5D870
-    friend struct CShaderRenderManager;
+    friend class CShaderRenderManager;
 };
 typedef void (__fastcall *CCPPointerDeleteFunc)(void*);
 struct CCPPointerInfoNative {
@@ -587,11 +587,11 @@ struct CShaderResourcePointer {
         return *this;
     }
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CShaderResourcePointer CreateResource();
 };
 extern CShaderRenderManager* g_pShaderRenderManager_01436e14;
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned char NativeBeforeVertexBanks[0x960];
     CShaderDataBank VertexShaderBanks[27];
     unsigned char NativeBetweenBanksAndResources[0x29c0 - 0x960 - 27 * 0x128];

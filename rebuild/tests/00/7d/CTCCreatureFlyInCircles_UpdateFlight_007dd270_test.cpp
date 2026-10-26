@@ -17,7 +17,7 @@ static int fails = 0;
 //   SpeedChangeTicks +0x24, CurrentRadius +0x28, DeltaRadius +0x2c, RadiusChangeTicks +0x30, Mode +0x34,
 //   Transitioning +0x38; CThingCreatureBase PCurrentAction +0x100 (retail).
 // Shape: straight-line source with inline C3DVector operators; the bank lives in the dead position-argument slot.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -31,10 +31,10 @@ struct C3DVector {
     void RotateAboutZ(float angle);                          // 0x00A14040
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     float GetProgressRatio();                                // 0x006925E0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char        _pad00[0x100];
     CCreatureActionBase* PCurrentAction;                     // +0x100 (CCountedPointer<CCreatureActionBase> data)
 };

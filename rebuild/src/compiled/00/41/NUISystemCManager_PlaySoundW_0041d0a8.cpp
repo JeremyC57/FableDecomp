@@ -25,7 +25,7 @@ class CASoundBank {
 public:
     long GetSoundIndexFromSymbol(const CCharString& symbol);   // 0x00A01920
 };
-struct CSoundInit {                                      // 0x20 bytes
+class CSoundInit { public:                                      // 0x20 bytes
     float         Volume;                                // +0x00
     float         Pitch;                                 // +0x04
     float         Pan;                                   // +0x08

@@ -7,7 +7,7 @@ static int g_arc_called = 0;
 static int* g_field_seen = 0;
 static void* g_self_seen = 0;
 
-struct CThingVillageDef {
+class CThingVillageDef { public:
     void BaseTransfer(CTransferArc* arc);
     char pad[0x70];
     int member70;

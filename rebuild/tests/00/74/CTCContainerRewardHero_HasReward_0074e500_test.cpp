@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CTCBase { long m_gold; };
+class CTCBase { public: long m_gold; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CTCGold : CTCBase { long GetGold() { return m_gold; } };
-struct CThing {
+class CTCGold : public CTCBase { public: long GetGold() { return m_gold; } };
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     bool GetInterface(long type, CTCGold** out)
@@ -24,7 +24,7 @@ struct CThing {
     }
 };
 struct SContainerItem { long first; void* second; };
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     CThing* ParentThing; SContainerItem* ItemsStart; SContainerItem* ItemsFinish;
     unsigned long ItemCount() const { return ItemsFinish - ItemsStart; }
     long HasReward()

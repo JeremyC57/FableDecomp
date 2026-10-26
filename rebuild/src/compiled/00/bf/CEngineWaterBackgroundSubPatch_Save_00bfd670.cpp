@@ -23,7 +23,7 @@ public:
     void WriteLong(long value);                          // 0x00993EB0
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -38,11 +38,11 @@ public:
     long Compress(void* data, long count, long stride, CArray<unsigned char>* output);   // 0x00F3AFC0
 };
 
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
     void Unlock();                                       // 0x00AC20B0
 };
-struct CIndexBuffer {
+class CIndexBuffer { public:
     void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC1FB0
     void Unlock();                                       // 0x00AC1F00
 };

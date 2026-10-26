@@ -1,12 +1,12 @@
 // behaviour test for 0x0046F4F0 CSkyDef::operator=: base part, 14 scalars and the flare vector are copied, *this returned
 #include <cstdio>
 static int g_baseCopies = 0, g_vecCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned char body[0x35];
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { ++g_baseCopies; for (int i = 0; i < 0x35; ++i) body[i] = o.body[i]; return *this; }
 };
 struct CVec { int* f; int* l; int* e; CVec& operator=(const CVec& o) { ++g_vecCopies; f = o.f; l = o.l; e = o.e; return *this; } };
-struct CSkyDef : CParentDefClassBase {
+class CSkyDef : public CParentDefClassBase { public:
     long SunRadius, SunTexture, MoonRadius, MoonTexture, SunFlareRadius, SunFlareTexture, StarTexture, StarChartTextureSize;
     float StarSize; long StarChartFilter, TwinkleInterval; float TwinkleSpeed, TwinkleMin, TwinkleMax;
     CVec FlareElements;

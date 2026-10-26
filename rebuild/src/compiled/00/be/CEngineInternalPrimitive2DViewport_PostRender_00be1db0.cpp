@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE1DB0, length 52 bytes.
 // Callees: virtual slot 14 (PostRender) of each child. Shape: the child-handle vector at +0x94 (8-byte entries, the primitive at +4) is walked with the end
 // pointer re-read after each virtual call; the flag test is a raw `test byte ptr [ecx+34h],8`.
-struct CEngineInternalPrimitiveBase;
-struct C3DBoundingBox { float Min[3]; float Max[3]; };
+class CEngineInternalPrimitiveBase;
+class C3DBoundingBox { public: float Min[3]; float Max[3]; };
 
 struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalPrimitiveBase vtable slots used by the group/changer/viewport bodies
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -19,14 +19,14 @@ struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalP
     virtual void ResetOcclusionInfo(long layer);                     // slot 28 (+0x70)
 };
 
-struct CEngineInternalPrimitiveBase : CEngineInternalPrimitiveVtable {   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
+class CEngineInternalPrimitiveBase : public CEngineInternalPrimitiveVtable { public:   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
     unsigned char  _pad04[0x2c];                   // +0x04 .. +0x30
     unsigned long  RenderLayerMask;                // +0x30
     unsigned char  PostRenderEnable;               // +0x34 bitfield group: bit 3 = post-render enabled
     unsigned char  _pad35[0x13];                   // +0x35 .. +0x48
 };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: the handle id and the primitive
+class CEnginePrimitiveHandle { public:                    // 8 bytes: the handle id and the primitive
     long                          m_id;
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };
@@ -41,7 +41,7 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
 };
 void __fastcall UpdatePosition_00b91840(CEngineInternalPrimitiveBase* primitive, unsigned long flags);   // 0x00B91840
 
-struct CEngineInternalPrimitive2DViewport : CEngineInternalPrimitiveBase {   // engine/CEngineInternalPrimitive2DViewport.h: Primitives at +0x94
+class CEngineInternalPrimitive2DViewport : public CEngineInternalPrimitiveBase { public:   // engine/CEngineInternalPrimitive2DViewport.h: Primitives at +0x94
     unsigned char       _pad48[0x94 - 0x48];
     CRetailHandleVector Primitives;                // +0x94 (retail: three words)
     virtual void PostRender();

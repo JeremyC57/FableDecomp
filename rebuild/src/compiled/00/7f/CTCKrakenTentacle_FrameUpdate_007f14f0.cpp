@@ -31,7 +31,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits UsingComponents;                   // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
@@ -70,12 +70,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)   // the pointer is
     }
     return false;
 }
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                     // 0x0049D870
 };
 extern const float g_one;                            // 0x0122DED8
 
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual void FrameUpdate();                      // slot 9

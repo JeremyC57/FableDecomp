@@ -18,7 +18,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit) const;                       // 0x00410DE0 (std::bitset::test)
@@ -31,7 +31,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -50,24 +50,24 @@ struct CThing {
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1); // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsChild();                                  // 0x00661F70
 };
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     bool LearnExpression(const CCharString& name, long index, bool notify);   // 0x006AC430
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     long GetAbilityLevel_006d6520(long ability);              // 0x006D6520
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x68];

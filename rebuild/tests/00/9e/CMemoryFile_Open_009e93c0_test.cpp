@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct CWideString {
+class CWideString { public:
     const unsigned short* Text;
     CWideString& operator=(const unsigned short* text) { Text = text; return *this; }
 };
@@ -23,7 +23,7 @@ struct vector {
     unsigned char* GetData() { return size() ? _M_start : (unsigned char*)this; }
 };
 
-struct CMemoryFile {
+class CMemoryFile { public:
     long AccessType; long Position; long Length; vector DataBuffer; bool Opened; CWideString Pathname;
     void Open(void* data, long length)
     {

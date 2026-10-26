@@ -6,23 +6,23 @@
 // the two intelligent pointers are init-list members constructed from raw pointers (inline converting ctors: base ctor, derived
 // vtable -- CIntelligentPointer<CThingAICreature> 0x0123E7E0, CIntelligentPointer<CThingBuilding> 0x01244344 -- SetPItem).
 // Layout: PAICreature / PBuilding / FireNumber at retail +0xa8 / +0xb0 / +0xb8 (PDB +0xb4 / +0xbc / +0xc4).
-struct CThingAICreature;
-struct CThingBuilding;
-struct CThingCreatureBase;
-struct CAnimationEntry;
-struct CBaseObject;
+class CThingAICreature;
+class CThingBuilding;
+class CThingCreatureBase;
+class CAnimationEntry;
+class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CSoundPair {                             // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                             // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
@@ -44,7 +44,7 @@ struct CIntelligentPointerBuilding : CBaseIntelligentPointer {     // CIntellige
     CIntelligentPointerBuilding(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-struct CCreatureAction_DowseFire : CCreatureActionBase {   // vtable 0x01274D0C
+class CCreatureAction_DowseFire : public CCreatureActionBase { public:   // vtable 0x01274D0C
     CIntelligentPointerAICreature PAICreature;  // +0xa8 (PDB +0xb4)
     CIntelligentPointerBuilding   PBuilding;    // +0xb0 (PDB +0xbc)
     unsigned long                 FireNumber;   // +0xb8 (PDB +0xc4)

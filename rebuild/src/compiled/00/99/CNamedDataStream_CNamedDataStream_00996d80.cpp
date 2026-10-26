@@ -16,7 +16,7 @@ namespace N_0099a300 { struct CBase {
     ~CBase();                                   // 0x0099A300
 }; } using N_0099a300::CBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                             // 0x0099EAE0
 };

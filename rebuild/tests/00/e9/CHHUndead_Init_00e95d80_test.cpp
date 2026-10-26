@@ -3,10 +3,10 @@
 #include <cstring>
 // behaviour test for 0x00E95D80: exercises the same logic through a copy of the model (compiled separately from the source)
 static bool near(float a, float b) { float d = a - b; if (d < 0) d = -d; return d < 1e-4f; }
-struct CScriptThing { long m_id; };
+class CScriptThing { public: long m_id; };
 static int g_targetCalls = 0; static const CScriptThing* g_targetThing = 0; static const CScriptThing* g_targetHero = 0;
 static int g_usableCalls = 0; static const CScriptThing* g_usableThing = 0; static bool g_usable = false;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing m_hero; float m_health;
     virtual CScriptThing& GetHero() { return m_hero; }
     virtual float GetHealth(const CScriptThing& thing) const { return m_health + (float)thing.m_id; }

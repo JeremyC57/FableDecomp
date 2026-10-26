@@ -19,10 +19,10 @@
 #include "engine/CScriptThing.h"
 #include "engine/CASuspendableProcess.h"
 
-struct CCPPointerInfo { long References; };
-struct C3DVector { float X, Y, Z; };
+class CCPPointerInfo { public: long References; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CBaseClass {                           // vtable 0x01231710
+class CBaseClass { public:                           // vtable 0x01231710
     virtual void b00();
     CBaseClass() { }
 };
@@ -1076,7 +1076,7 @@ struct CQuestGlobals {
     long GetAcolyteTimerTime() const { return AcolyteTimerTime; }
 };
 extern CQuestGlobals* g_pQuestGlobals;        // 0x0143E90C
-struct CTimer {
+class CTimer { public:
     long TimerIndex;                          // +0x00
 };
 

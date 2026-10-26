@@ -12,7 +12,7 @@
 //   an inline GetFont() accessor at both uses; the Draw2DText position is an explicit C2DVector(x, y) temporary.
 
 #pragma optimize("s", on)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -35,12 +35,12 @@ class CFontBank {
 public:
     float GetStringWidth(const CWideString& text);  // 0x0048DA62
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 enum EEngine2DLayer { ENGINE_2D_LAYER_TEXT = 0x43 };
-struct CEnginePrimitiveHandle { unsigned long Data[2]; };
+class CEnginePrimitiveHandle { public: unsigned long Data[2]; };
 class CEnginePrimitive2DSprite {
 public:
     unsigned char _body[0x54];
@@ -63,7 +63,7 @@ public:
     CEnginePrimitiveRenderer* Renderer;             // +0x34
 };
 struct LongVector { long *Start, *Finish, *End; unsigned int size() const { return Finish - Start; } };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x138];
     C2DVector     PerceiverPos;                     // +0x138
     long          FriendlyBackGraphic;              // +0x140
@@ -92,7 +92,7 @@ struct CHandleVector {
 };
 
 namespace NPlayerGui {
-struct CDrawPerceivers {
+class CDrawPerceivers { public:
     virtual void v00();
     CGameUI*       PlayerGui;                       // +0x04
     void*          PlayerManager;                   // +0x08

@@ -3,7 +3,7 @@
 // Leaf: Init
 // The chunk label is propagated from the state-5 twin @ 0x00EABAC0 (this is another script of the family).
 // Shape: `this` in esi (advanced to the thing for the last push), the game interface and its vtable reloaded for each call, `ret`.
-struct CScriptThing { unsigned char m_body[0xc]; };
+class CScriptThing { public: unsigned char m_body[0xc]; };
 struct SQuestState_00eace90 { unsigned char _pad[0x50]; long m_state; };
 struct CGameCalls_00eace90 {
     virtual void v000();

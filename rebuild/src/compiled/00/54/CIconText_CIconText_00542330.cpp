@@ -13,12 +13,12 @@
 #include "engine/CObserver.h"
 typedef ::CComponent CComponentDonorLayout;
 typedef ::CObserver CObserverDonorLayout;
-struct CBaseClass {
+class CBaseClass { public:
  CBaseClass(); //0099A2D0 VT01231710
  virtual ~CBaseClass();
 };
 class CEnginePersistentPrimitiveBase;
-struct CEnginePrimitiveHandle : CBaseClass {
+class CEnginePrimitiveHandle : public CBaseClass { public:
  CEnginePersistentPrimitiveBase* Data;
  CEnginePrimitiveHandle() : Data(0) {} //own VT0122F598, genuine inline default ctor
  virtual ~CEnginePrimitiveHandle();
@@ -29,20 +29,20 @@ template<class T> struct CNativeVector {
 };
 namespace NUISystem {
 struct CUIInterface { virtual ~CUIInterface(); };
-struct CObserver {
+class CObserver { public:
  virtual ~CObserver();
  void* EventsToObserve[3];
  bool PreventObservation;
 };
-struct CActionParam {
+class CActionParam { public:
  virtual ~CActionParam();
  fable_i32 ActionParamType;
 };
-struct CComponent : CUIInterface,CObserver,CActionParam {
+class CComponent : public CUIInterface,public CObserver,public CActionParam { public:
  unsigned char ComponentMembers[0x134-0x20]; //opaque native base data; unrelated to this constructor
  virtual ~CComponent();
 };
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
  fable_i32 StatesBeingDone,StatesDone;
  void* StatesToDo;
  float ParentUpdateTime;
@@ -55,7 +55,7 @@ struct CChangingStateComponent : CComponent {
 };
 class CFontBank;
 struct CFontPointer { CFontBank* Data;void* Info;CFontPointer():Data(0),Info(0) {} };
-struct CIconText : CChangingStateComponent {
+class CIconText : public CChangingStateComponent { public:
  CWideString Text,DisplayText;
  CFontPointer PFont;
  bool Unavailable;

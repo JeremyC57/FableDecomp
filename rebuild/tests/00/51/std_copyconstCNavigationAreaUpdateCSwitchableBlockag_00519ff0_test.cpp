@@ -18,7 +18,7 @@ public:
     list<T>& operator=(const list<T>& x) { g_from[g_n] = &x; g_to[g_n] = this; ++g_n; _M_node = x._M_node; return *this; }
 };
 template <class T1, class T2> struct pair { T1 first; T2 second; };
-struct C2DLineF { float a, b, c, d; };
+class C2DLineF { public: float a, b, c, d; };
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 _OutputIter __fastcall __copy(_RandomAccessIter first, _RandomAccessIter last, _OutputIter result,
                               const random_access_iterator_tag&, _Distance*)

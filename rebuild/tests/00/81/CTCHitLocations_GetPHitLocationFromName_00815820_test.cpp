@@ -3,11 +3,11 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* m_pText;
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString(long pos) : TablePos(pos) {}
     CDefString(const CDefString& other) : TablePos(other.TablePos) {}
@@ -21,7 +21,7 @@ bool CDefString::operator==(const CCharString& other) const
     return std::strcmp(g_table[TablePos], other.m_pText) == 0;
 }
 
-struct CHitLocationDef {
+class CHitLocationDef { public:
     long m_name;
     virtual void v00() {}
     virtual void v01() {}
@@ -37,13 +37,13 @@ struct CHitLocationDef {
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pObject;
     T* operator->() const { return m_pObject; }
 };
 
 namespace NHitLocations {
-struct CHitLocation {
+class CHitLocation { public:
     void*                        POwnerThing;
     CDefPointer<CHitLocationDef> PDef;
     void*                        PArmourDef;
@@ -56,7 +56,7 @@ struct CHitLocation {
 struct SHitLocationEntry { NHitLocations::CHitLocation first; long second; };
 struct CHitLocationVector { SHitLocationEntry* m_first; SHitLocationEntry* m_last; SHitLocationEntry* m_end; };
 
-struct CTCHitLocations {
+class CTCHitLocations { public:
     virtual void v00() {}
     unsigned char      _base[8];
     CHitLocationVector HitLocations;

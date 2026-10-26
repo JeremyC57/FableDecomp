@@ -11,7 +11,7 @@ struct CList {
     void erase(SNode* n) { n->prev->next = n->next; n->next->prev = n->prev; }
 };
 
-struct CTCKraken {
+class CTCKraken { public:
     CList Tentacles; long Phase;
     bool HaveAllTentaclesBeenHit() const { if (!Phase) return false; return Tentacles.size() == 0; }
 };

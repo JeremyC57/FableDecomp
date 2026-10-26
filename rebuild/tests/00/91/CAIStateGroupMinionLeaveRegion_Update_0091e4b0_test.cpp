@@ -8,10 +8,10 @@
 #define FABLE_ENGINE_CWORLD_H
 #define FABLE_ENGINE_CTHINGSEARCHTOOLS_H
 struct CAIStateGroup_MinionLeaveRegion { unsigned char _pad_0x04[sizeof(void*)]; float ExitPoint_X,ExitPoint_Y,ExitPoint_Z; };
-struct CThingAICreature;
-struct CAIBrain { void* __vftable; CThingAICreature* Creature; };
-struct CThingSearchTools {};
-struct CWorld { CThingSearchTools* PThingSearchTools_ptr; };
+class CThingAICreature;
+class CAIBrain { public: void* __vftable; CThingAICreature* Creature; };
+class CThingSearchTools { public:};
+class CWorld { public: CThingSearchTools* PThingSearchTools_ptr; };
 #endif
 // BEGIN EXACT CANDIDATE
 // CAIStateGroup_MinionLeaveRegion::Update() -- leave through exit, suspend in limbo, then relocate to a random entrance
@@ -22,7 +22,7 @@ struct CWorld { CThingSearchTools* PThingSearchTools_ptr; };
 #include "engine/CWorld.h"
 #include "engine/CThingSearchTools.h"
 #include <stdlib.h>
-struct C3DVector { float X,Y,Z; C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){} };
+class C3DVector { public: float X,Y,Z; C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){} };
 struct CThingBody {
  virtual void v00();
  virtual void v01();
@@ -56,7 +56,7 @@ struct CThingBody {
  virtual void v29();
  virtual void v30();
  virtual void SetPosition(const C3DVector&); };
-struct CThing { unsigned char prefix[0x60]; CThingBody* Body; void SetInLimbo(bool); const C3DVector& GetPosition() const; };
+class CThing { public: unsigned char prefix[0x60]; CThingBody* Body; void SetInLimbo(bool); const C3DVector& GetPosition() const; };
 struct CBrainVirtual { virtual void v0(); virtual void v1(); virtual bool SuspendSuspendableProcess(); };
 struct ThingVector { CThing** first; CThing** last; CThing** capacity; ThingVector():first(0),last(0),capacity(0){}  };
 struct CThingFilter_IsRegionNode { bool Exit; CThingFilter_IsRegionNode(bool exit):Exit(exit){} };

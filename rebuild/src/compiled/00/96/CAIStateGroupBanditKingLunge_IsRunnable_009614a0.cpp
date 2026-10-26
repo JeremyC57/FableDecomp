@@ -5,22 +5,22 @@
 // CPlayer::GetHeroThing @ 0x00487DC0, CAIStateGroup_BanditKingLunge::CanLungeAtPlayer(CThing*) @ 0x009613A0,
 // CThing::GetPosition @ 0x004C73D0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10.
 // Shape: `dist2 < R` gives `fcomp ; test ah,5 ; jp`; PTargetThing = CIntelligentPointer<..>(hero) (vtable 0x01231C4C).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
 };
 
-struct CPlayer
-{
+class CPlayer
+{ public:
     CThing* GetHeroThing();                         // 0x00487DC0
 };
 
-struct CPlayerManager
-{
+class CPlayerManager
+{ public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 
@@ -40,8 +40,8 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer    // CIntelligentPoin
     CIntelligentPointerThing(CThing* item) { SetPItem(item); }
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad[0x18];
     CThing* Creature;                               // +0x18
 };

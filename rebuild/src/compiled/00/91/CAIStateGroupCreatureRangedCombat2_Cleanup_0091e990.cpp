@@ -12,10 +12,10 @@
 // in ecx before the pushes (a direct PBrain->Creature splits through edx); the component is kept in edi across
 // the destructor.
 // Model: local (engine/CAIStateGroup_CreatureRangedCombat2.h flattens the base; AddedStrafe +0x1c from it).
-struct CTCParamsBase;
-struct CThing;
+class CTCParamsBase;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -23,7 +23,7 @@ struct CCharString {
 
 void __fastcall CleanupRangedWeapon(CThing* creature);     // 0x007E5B40
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -33,7 +33,7 @@ struct CTCBase {
     virtual void Trigger();                                 // slot 28 (+0x70)
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     CTCBase* AddTC(const CCharString& name, bool initialise, CTCParamsBase* params);   // 0x004C9D60 (CThing)
 };
 
@@ -42,19 +42,19 @@ struct CGameState {
     unsigned char m_bShuttingDown;                          // +0xd4
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11();
     virtual CGameState* GetGameState();                     // slot 12 (+0x30)
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                             // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                       // +0x04
     long ScriptAIPriority;                                  // +0x08

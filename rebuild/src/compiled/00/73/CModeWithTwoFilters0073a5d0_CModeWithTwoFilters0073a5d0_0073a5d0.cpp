@@ -16,17 +16,17 @@ struct CBaseIntelligentPointer {         // 8 bytes: vptr + the pointee link
 struct CIntelligentPointer : CBaseIntelligentPointer {
 };
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CAnimFilterBase {                    // vtable 0x0122FFCC
+class CAnimFilterBase { public:                    // vtable 0x0122FFCC
     virtual void v00();
     ~CAnimFilterBase() { }
 };
 
-struct CAnimFilterOfGroup : CAnimFilterBase {   // 12 bytes
+class CAnimFilterOfGroup : public CAnimFilterBase { public:   // 12 bytes
     CCharString m_group;                    // +4
     long        m_groupIndex;               // +8
 };

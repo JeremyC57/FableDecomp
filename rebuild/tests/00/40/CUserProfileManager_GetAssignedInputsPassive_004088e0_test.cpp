@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CActionInputControl { int x; };
+class CActionInputControl { public: int x; };
 struct Vec { CActionInputControl* begin; CActionInputControl* end; };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad[0x54];
     Vec inputs;
 };

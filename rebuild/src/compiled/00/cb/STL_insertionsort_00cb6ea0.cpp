@@ -11,16 +11,16 @@
 // Shape: STLport's explicit pair copy constructor builds the by-value `*i` in the argument area (`sub esp,18h ; mov
 // esi,esp`): the key string, then CScriptInfo's implicit memberwise copy (two function pointers, the Name string, ID and
 // the bool byte), its sources read through a second induction pointer at Name (`lea edi,[ebx+0Ch]`).
-struct CCharString {                         // one-word handle
+class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
     CCharString(const CCharString& other);   // 0x0099EC30
 };
 
-struct CScriptBase;
-struct CScriptDataBase;
-struct CGameScriptInterfaceBase;
+class CScriptBase;
+class CScriptDataBase;
+class CGameScriptInterfaceBase;
 
-struct CScriptInfo {                         // Ego_r.pdb, 0x14 bytes (implicit copy)
+class CScriptInfo { public:                         // Ego_r.pdb, 0x14 bytes (implicit copy)
     CScriptBase*     (__cdecl* AllocFunc)(CScriptDataBase*, CGameScriptInterfaceBase*);   // +0x00
     CScriptDataBase* (__cdecl* MasterScriptDataAlloc)();                                  // +0x04
     CCharString      Name;                   // +0x08

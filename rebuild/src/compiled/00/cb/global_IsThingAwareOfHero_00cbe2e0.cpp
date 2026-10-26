@@ -2,12 +2,12 @@
 // __fastcall(CScriptThing* self) -> bool
 // return Check() && (*(this->vtbl)[0x40/4])();
 
-struct CScriptThing;
+class CScriptThing;
 
 // vtable modeled as array of function pointers; slot 0x40 = index 16
 typedef char (__fastcall *VFn)(CScriptThing* self);
 
-struct CScriptThing {
+class CScriptThing { public:
     VFn* vtbl;   // [esi] -> vtable at offset 0
 };
 

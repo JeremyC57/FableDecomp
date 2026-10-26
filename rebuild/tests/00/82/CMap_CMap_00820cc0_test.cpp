@@ -2,16 +2,16 @@
 #include <cstdio>
 #include <cstring>
 
-struct C2DCoordI { long X, Y; C2DCoordI() {} C2DCoordI(long x, long y) : X(x), Y(y) {} };
-struct C2DBoxI { C2DCoordI Min, Max; };
-struct CMapInit { long WorldSizeX, WorldSizeY; };
-struct CAFile { int dummy; };
-struct CASuspendableProcess { int dummy; };
+class C2DCoordI { public: long X, Y; C2DCoordI() {} C2DCoordI(long x, long y) : X(x), Y(y) {} };
+class C2DBoxI { public: C2DCoordI Min, Max; };
+class CMapInit { public: long WorldSizeX, WorldSizeY; };
+class CAFile { public: int dummy; };
+class CASuspendableProcess { public: int dummy; };
 
 static char g_log[64];
 static void logc(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
 
-struct CMap {
+class CMap { public:
     const void* DefinitionManager; void* World; unsigned long* WorldSeed;
     long NoChangedHeightAreas, NoChangedGameAreas, SeaLevel, WorldSizeX, WorldSizeY;
     long HeightMapSizeX, HeightMapSizeY, GameMapSizeX, GameMapSizeY; C2DCoordI WorldPos;

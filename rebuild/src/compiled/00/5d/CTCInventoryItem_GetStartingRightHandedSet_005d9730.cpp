@@ -26,7 +26,7 @@ public:
     CRightHandedSet(const C3DVector& up, const C3DVector& forward);   // Ego_r ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z
 };
 extern const CRightHandedSet g_DefaultRHSet;            // 0x0137CF74
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

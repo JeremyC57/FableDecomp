@@ -14,11 +14,11 @@
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 
-struct CRGBColour {                                     // D3DCOLOR byte order
+class CRGBColour { public:                                     // D3DCOLOR byte order
     unsigned char B, G, R, A;
 };
 
-struct CCompositeBlendDesc {                            // 16 bytes
+class CCompositeBlendDesc { public:                            // 16 bytes
     unsigned long       TextureIndex;                   // +0x00
     ECompositeBlendType BlendType;                      // +0x04
     CRGBColour          DiffuseColour;                  // +0x08
@@ -26,7 +26,7 @@ struct CCompositeBlendDesc {                            // 16 bytes
     CCompositeBlendDesc(const CCompositeBlendDesc& other);   // 0x005BA48A
 };
 
-struct CTextureMorphEntry {                             // retail, 20 bytes
+class CTextureMorphEntry { public:                             // retail, 20 bytes
     long                TextureLayer;                   // +0x00
     CCompositeBlendDesc Blend;                          // +0x04
 };

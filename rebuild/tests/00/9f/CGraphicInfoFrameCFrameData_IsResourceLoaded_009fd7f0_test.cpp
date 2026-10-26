@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static int g_calls = 0;
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool m_finished;
     bool IsFinished() { ++g_calls; return m_finished; }
 };

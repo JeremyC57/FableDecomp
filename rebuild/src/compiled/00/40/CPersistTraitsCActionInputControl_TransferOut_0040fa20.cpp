@@ -12,10 +12,10 @@
 //   dead `out` argument slot, then TransferOutLong); the controller switch (1 Xbox button, 2 keyboard key, 3 mouse button)
 //   is a `dec eax ; je` chain with one merged call; the direction is written when its squared length beats eps*eps and the
 //   action is 0x3C or 0x72 (the float test first). Speed-optimised (default) TU.
-struct CPersistContext;
+class CPersistContext;
 class CCharString {
 public:
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
     CCharString& operator+=(const char* text);         // 0x0099F100
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560

@@ -10,7 +10,7 @@
 // Shape: MakeWritable() inlined, then the seek through the counted pointer (re-read), the output stream as a
 // 12-byte local built on the disk file, the copy, the padding (out of line) and the stream's destructor.
 // No exception frame: the TU is built without /EHsc.
-struct CWideString;
+class CWideString;
 
 struct CDiskFileCalls {
     virtual void v00();

@@ -1,8 +1,8 @@
 // Behaviour test for CReadableDef::Transfer @ 0x007E81B0: CRC check, then load (mode 2) or save (mode 3) of the flag.
 #include <cstdio>
 
-struct CDataOutputStream { int writes; bool last; CDataOutputStream() : writes(0), last(false) {} void WriteBool(bool v) { ++writes; last = v; } };
-struct CMemoryDataInputStream { bool next; int reads; CMemoryDataInputStream() : next(false), reads(0) {} };
+class CDataOutputStream { public: int writes; bool last; CDataOutputStream() : writes(0), last(false) {} void WriteBool(bool v) { ++writes; last = v; } };
+class CMemoryDataInputStream { public: bool next; int reads; CMemoryDataInputStream() : next(false), reads(0) {} };
 
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<bool> {
@@ -11,7 +11,7 @@ template<> struct CPersistTraits<bool> {
     static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     long m_mode; CMemoryDataInputStream* m_pLoadStream; CDataOutputStream* m_pSaveStream; int m_crcChecks;
     void CheckCRC(const char* name) { if (name[0] == 0) ++m_crcChecks; }
     template<class T> void Transfer(const char* name, T& value)
@@ -24,7 +24,7 @@ struct CPersistContext {
     }
 };
 
-struct CReadableDef {
+class CReadableDef { public:
     bool UseInfoDisplay;
     void Transfer(CPersistContext& context) { context.Transfer("", UseInfoDisplay); }
 };

@@ -11,11 +11,11 @@
 //   carry-slot index, a positive slot removes the carried thing (without dropping it) and a live thing (`!(flags91 & 1)`)
 //   is killed immediately.
 // Layout: Ego_r.pdb CActionEventBase {vptr, Finished +4, ActivationFrame +8, PThing +0xc, PCameraManager +0x10}, Hand +0x14.
-struct CTCBase;
-struct CCreatureActionBase;
-struct CGameCameraManager;
+class CTCBase;
+class CCreatureActionBase;
+class CGameCameraManager;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -46,14 +46,14 @@ struct CThing {
         return false;
     }
 };
-struct CTCCarrying {                            // interface 70
+class CTCCarrying { public:                            // interface 70
     CThing* RemoveThingInCarrySlot(long slot, bool drop);   // 0x006A16A0
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
 

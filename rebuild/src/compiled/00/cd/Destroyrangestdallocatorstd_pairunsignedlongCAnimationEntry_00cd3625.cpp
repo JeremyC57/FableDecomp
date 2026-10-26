@@ -3,7 +3,7 @@
 // Reconstruction of std::_Destroy_range<allocator<pair<unsigned long, CAnimationEntry>>>
 // retail 0x00cd3625, __fastcall(first /*ecx*/, last /*edx*/, allocator* /*stack, ret 4*/)
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     // 12 bytes of members so the pair is 16 bytes total (key u32 + 12)
     unsigned long a;
     unsigned long b;

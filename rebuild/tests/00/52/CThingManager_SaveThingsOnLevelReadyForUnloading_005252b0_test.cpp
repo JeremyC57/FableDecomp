@@ -4,7 +4,7 @@
 #include <vector>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CThing {
+class CThing { public:
     long CurrentMapNumber;
     bool KillOnLevelUnload, GloballyLoaded, PersistOnUnloadWhenInLimbo, InLimbo, DeletedOnOwnerLevelOutOfScope, Dead;
     bool GameState, LevelPersistent;
@@ -15,10 +15,10 @@ struct CThing {
     bool IsLevelPersistent() { return LevelPersistent; }
 };
 static std::vector<CThing*> g_deactivated;
-struct CQuestManager { void OnDeactivateEntity(CThing* t, bool) { g_deactivated.push_back(t); } };
+class CQuestManager { public: void OnDeactivateEntity(CThing* t, bool) { g_deactivated.push_back(t); } };
 static CQuestManager g_quests; static CQuestManager* g_pQuestManager = &g_quests;
 typedef std::vector<CThing*> CThingVector;
-struct CThingManager {
+class CThingManager { public:
     std::list<CThing*> Things;
     std::vector<CThing*> SavedGame, SavedLevel; long SavedMap;
     void SavePersistentState(long mapNumber, CThingVector& things, bool gameState)

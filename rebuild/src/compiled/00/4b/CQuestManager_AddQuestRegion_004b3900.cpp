@@ -9,11 +9,11 @@
 // Shape: the GetAvailableQuestCardDefNameFromScriptName (0x004AF670) search: head in ebp, the key's string block
 // loaded once inside the non-empty guard (esi), the quest object in ebx, the do/while walk; the found branch
 // calls AddPRegion on the quest and returns through its own epilogue.
-struct CRegion;
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CRegion;
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
 };
 
@@ -39,7 +39,7 @@ struct CActiveQuestNode {                          // list node: next, prev, CCo
     void*             questInfo;                   // +0x0c
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad_0x00[0x38];
     CActiveQuestNode* ActiveQuests;                // +0x38 (head node)
     void AddQuestRegion(const CCharString& questName, const CRegion* region);

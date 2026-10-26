@@ -8,8 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C3DMesh2;
-struct CEngineLocalLightArray;
+class C3DMesh2;
+class CEngineLocalLightArray;
 
 #pragma pack(push, 1)
 struct CEngineInternalPrimitiveParticleMesh {

@@ -1,10 +1,10 @@
 // Behaviour test for CAIStateGroup_IceTrollIcicleAssault::IsRunnable (0x00961FB0): model copy with stub callees.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing { unsigned char m_flags91; C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: unsigned char m_flags91; C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
 struct CPointer { CThing* m_pItem; CPointer& operator=(CThing* t) { m_pItem = t; return *this; } };
-struct CSnowTrollDef { long RefCount; float IceTrailDistanceLimit; };
+class CSnowTrollDef { public: long RefCount; float IceTrailDistanceLimit; };
 static int g_releases;
 struct CDefPointer {
     CSnowTrollDef* m_p;
@@ -14,10 +14,10 @@ struct CDefPointer {
 };
 static CSnowTrollDef* g_def;
 struct CDefClass { bool GetSubDef(CDefPointer* out) const { out->m_p = g_def; if (g_def) ++g_def->RefCount; return g_def != 0; } };
-struct CTCTargetingAI { CThing* target; CThing* GetPTarget() { return target; } };
-struct CTCBoss { bool ready; bool IsReadyForPhaseChange() const { return ready; } };
+class CTCTargetingAI { public: CThing* target; CThing* GetPTarget() { return target; } };
+class CTCBoss { public: bool ready; bool IsReadyForPhaseChange() const { return ready; } };
 struct CCreature { CThing thing; CTCTargetingAI* targeting; CTCBoss* boss; CDefClass defClass; };
-struct CAIBrain { CCreature* PCreature; };
+class CAIBrain { public: CCreature* PCreature; };
 
 struct CAIStateGroup_IceTrollIcicleAssault {
     CAIBrain* PBrain; CPointer PTarget;

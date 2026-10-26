@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCPhysicsNavigator {
     bool      Navigating;
     C3DVector PositionToNavigateTo;

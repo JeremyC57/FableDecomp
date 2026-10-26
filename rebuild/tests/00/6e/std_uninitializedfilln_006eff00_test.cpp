@@ -3,7 +3,7 @@
 #include <cstring>
 #include <new>
 #pragma pack(push, 1)
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 struct SProngVector { C3DVector first; bool second; SProngVector(const SProngVector& o) : first(o.first), second(o.second) { } SProngVector(const C3DVector& v, bool b) : first(v), second(b) { } };
 #pragma pack(pop)
 struct __false_type { };

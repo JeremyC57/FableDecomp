@@ -55,8 +55,8 @@ template<> bool CBasicString<char>::operator==(const CBasicString<char>& other) 
     return Compare_00411570(PData, other.PData) == 0;
 }
 #pragma auto_inline(on)
-struct CCharStringData : CBasicString<char> { };
-struct CCharString {
+class CCharStringData : public CBasicString<char> { public: };
+class CCharString { public:
     CCharStringData* PStringData;
     __forceinline const char* GetPString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = 0x0129AAF4
     __forceinline unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
@@ -94,11 +94,11 @@ CAnimationManager* GetAnimationManager();                   // 0x006F90B0
 struct CAnimationBank {
     long Query(long animation) const;                       // 0x00A242C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char   _pad00[0x3c];
     CAnimationBank* PAnimationBank;                         // +0x3C
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long Animation;                                         // +0x00
 };
 

@@ -1,23 +1,23 @@
 // Behaviour test for 0084b7c0 (NCreatureMode::CModeSleepBed::CModeSleepBed): the base takes the thing, the filter takes the group (third argument), the name copies the second argument, the remove-action pointer starts null.
 #include <cstdio>
 
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 struct SCountBlock;
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text) : m_pData(text) { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { }
 };
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     CCharString   Group;
     unsigned long GroupCRC;
     CAnimFilterOfGroup(const CCharString& group) : Group(group), GroupCRC(0) { }
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) { }

@@ -9,10 +9,10 @@
 //   ~ 0x0099EAE0. CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Layout (retail CTCTurncoatSpell = Ego_r.pdb less 4 after the timer): PDef +0x40, PTarget +0x44, LoopingSound +0x50,
 //   TurncoatingEffectOnMe +0x74, TurncoatingEffectOnTarget +0x7c.
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
-struct CBaseObject;
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
+class CBaseObject;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -55,7 +55,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
@@ -74,10 +74,10 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCDParticleEmitter {                            // interface 0x4B
+class CTCDParticleEmitter { public:                            // interface 0x4B
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-struct CTCSoundPlayer {                                 // interface 0x10
+class CTCSoundPlayer { public:                                 // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
 
@@ -99,7 +99,7 @@ struct CEffectTablePointer {
     }
     CEffectTableDef* operator->() const { return Object; }
 };
-struct CSpecialAbilitiesTurncoatSpellDef {
+class CSpecialAbilitiesTurncoatSpellDef { public:
     bool GetSubDef(CEffectTablePointer* out);           // 0x00669580
 };
 long* GetSubDefIndex(CSpecialAbilitiesTurncoatSpellDef* def, const CCharString& name);
@@ -122,7 +122,7 @@ struct CSpellDefPointer {
     CSpecialAbilitiesTurncoatSpellDef* operator->() const { return Object; }
 };
 
-struct CTCTurncoatSpell {
+class CTCTurncoatSpell { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x40 - 0x08];

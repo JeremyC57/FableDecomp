@@ -11,21 +11,21 @@
 // BowDrawbackSoundID +0x48.
 // Shape: init list in declaration order; VC groups the stores by register (zeros in eax, -1 in ecx, 0.01f in edx, other floats
 // as immediates).
-struct CThing;
-struct CThingCreatureBase;
-struct CHeroCombatDef;
-template<class T> struct CDefPointer {
+class CThing;
+class CThingCreatureBase;
+class CHeroCombatDef;
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
     CTCBase(CThing* thing);                         // 0x00686800
 };
-struct CTCHeroRangedAttacks : CTCBase {             // vtable 0x0126BAF4
+class CTCHeroRangedAttacks : public CTCBase { public:             // vtable 0x0126BAF4
     CThingCreatureBase* PParentCreature;            // +0x0c
     CDefPointer<const CHeroCombatDef> PHeroCombatDef;   // +0x10
     bool  FireCycleInProgress;                      // +0x14

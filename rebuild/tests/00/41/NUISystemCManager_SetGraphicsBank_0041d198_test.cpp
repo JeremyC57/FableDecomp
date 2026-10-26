@@ -1,7 +1,7 @@
 // behaviour test for 0x0041D198
 #include <stdio.h>
 class CGraphicDataBank { public: int x; };
-struct CCPPointerInfo { int refs; };
+class CCPPointerInfo { public: int refs; };
 static int g_dtors = 0;
 template <class T> class CCountedPointer_0042918c {
 public:

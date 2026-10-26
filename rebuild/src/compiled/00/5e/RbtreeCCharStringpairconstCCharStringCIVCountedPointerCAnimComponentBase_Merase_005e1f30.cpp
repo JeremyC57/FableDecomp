@@ -14,18 +14,18 @@
 // Label correction: catalogued as `BinaryTree_DestroyRecursive_WithRefcount`; the body is STLport `_Rb_tree::_M_erase`.
 extern "C" void __cdecl free(void* p);
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                        // 0x0099EAE0
 };
 
-struct CAnimComponentBase {                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
+class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
     long IVRefCount;                                       // +0x04
 };
 
-template <class T> struct CIVCountedPointer {              // one word: the intrusively counted object
+template <class T> class CIVCountedPointer { public:              // one word: the intrusively counted object
     T* Object;
     __forceinline void Release()
     {

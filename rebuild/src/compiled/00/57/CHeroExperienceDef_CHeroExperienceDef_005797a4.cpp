@@ -12,7 +12,7 @@ struct SRecord16_005797a4 {                        // four words, cleared
     long m_a, m_b, m_c, m_d;
     SRecord16_005797a4() { m_d = 0; m_c = 0; m_b = 0; m_a = 0; }
 };
-struct CHeroExperienceDef {
+class CHeroExperienceDef { public:
     CList_0042ab58     m_list0;                    // +0x00
     CList_0042ab58     m_list1;                    // +0x04
     CList_0042ab58     m_list2;                    // +0x08

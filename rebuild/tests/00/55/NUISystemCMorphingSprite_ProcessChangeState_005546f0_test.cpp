@@ -4,7 +4,7 @@
 
 static char g_seq[64] = ""; static long g_entry = -1, g_word = -1; static unsigned long g_flags = 0; static long g_mapped = 500;
 struct SInfo { unsigned long flags; };
-struct CMap { long& operator[](const long& k) { std::strcat(g_seq, "M"); g_mapped += k; return g_mapped; } };
+class CMap { public: long& operator[](const long& k) { std::strcat(g_seq, "M"); g_mapped += k; return g_mapped; } };
 struct CBase { virtual ~CBase() { } virtual const SInfo* GetStateInfo(long s) { std::strcat(g_seq, "I"); static SInfo i; i.flags = g_flags; return &i; } virtual void ApplyMorph(long e, long w) { std::strcat(g_seq, "A"); g_entry = e; g_word = w; }
     void ProcessChangeState() { std::strcat(g_seq, "P"); } };
 struct CSprite : CBase { unsigned char pad[0x144]; long state; long x; long word; unsigned char pad2[0x38]; CMap map;

@@ -67,9 +67,9 @@ class CTCInGameMenu {
 public:
     void ConfirmedVideoOptionsNotAccepted();                // 0x0047DA50
 };
-struct CPlayer { CThing* GetPlayerCharacter(); };           // 0x00487B70
-struct CPlayerManager { CPlayer* GetMainPlayer() const; };  // 0x00449960
-struct CMainGameComponent {
+class CPlayer { public: CThing* GetPlayerCharacter(); };           // 0x00487B70
+class CPlayerManager { public: CPlayer* GetMainPlayer() const; };  // 0x00449960
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* m_pPlayerManager;                       // +0x1C
 };

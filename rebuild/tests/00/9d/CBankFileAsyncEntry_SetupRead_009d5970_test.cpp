@@ -25,7 +25,7 @@ static int fails = 0;
 // QueueWhenFinished +0x10, Priority +0x14.
 class CBankFileAsyncData;
 enum EThreadedFilePriority { THREADED_FILE_PRIORITY_DEFAULT = 3 };
-struct CThreadedFileObjectDesc {                   // 0x18 bytes
+class CThreadedFileObjectDesc { public:                   // 0x18 bytes
     void* PDst;                                    // +0x00
     unsigned long FilePos;                         // +0x04
     unsigned long Size;                            // +0x08
@@ -33,10 +33,10 @@ struct CThreadedFileObjectDesc {                   // 0x18 bytes
     bool QueueWhenFinished;                        // +0x10
     EThreadedFilePriority Priority;                // +0x14
 };
-struct CThreadedFile {
+class CThreadedFile { public:
     unsigned long QueueRead(const CThreadedFileObjectDesc& desc);   // 0x0098F350
 };
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
 class CBankFileAsync {
 public:
     unsigned char _pad[0x110];

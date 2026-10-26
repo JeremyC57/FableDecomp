@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 template <class T> struct vec {
     typedef T value_type;
     T* _M_start; T* _M_finish; T* _M_end_of_storage; int overflows;

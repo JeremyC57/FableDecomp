@@ -1,6 +1,6 @@
 // Behaviour test for 0x0071F570 __unguarded_insertion_sort_aux over pair<CSkeletalMorphs::CEntry,float>.
 #include <cstdio>
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSkeletalMorphsEntry { CDefString MorphName; short Priority; bool SupressesLowerMorphs; };
 struct SMorphWeight {
     CSkeletalMorphsEntry first;
@@ -8,7 +8,7 @@ struct SMorphWeight {
     SMorphWeight() { }
     SMorphWeight(const SMorphWeight& other) : first(other.first), second(other.second) { }
 };
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

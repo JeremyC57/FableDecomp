@@ -9,8 +9,8 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct CCard;
-struct C2DVector { float X, Y; };
+class CCard;
+class C2DVector { public: float X, Y; };
 
 struct __true_type { __true_type() { } };
 inline void* operator new(size_t, void* where) { return where; }
@@ -33,7 +33,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     }
 };
 
-struct CCardPositionsDef {
+class CCardPositionsDef { public:
     unsigned char _defbase[0x3c];               // CDefClassBase (retail 0x3c)
     CRetailVector<C2DVector> Offset;            // +0x3c
 };
@@ -46,7 +46,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameCardBaseDef : CDefVirtual, CRefCounted {
+class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x64];
     CRetailVector<CCardPositionsDef> CardOrders;   // +0x6c
     void ReleaseTemporary()

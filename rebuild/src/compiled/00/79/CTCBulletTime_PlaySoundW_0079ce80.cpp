@@ -11,7 +11,7 @@
 // Unicode-renamed "PlaySound" (windows.h maps it to PlaySoundW). A byte-identical body at
 // 0x0079DE00 belongs to the class whose CancelMove calls it (CTCPhysicalShieldSpell).
 
-struct CTCBase;
+class CTCBase;
 
 struct CTCSound                                     // the thing's interface-16 component
 {
@@ -26,8 +26,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -53,8 +53,8 @@ extern unsigned long g_InvalidSoundHandle;          // 0x0129D25C
 enum { TC_INTERFACE_SOUND = 16 };
 
 #pragma pack(push, 1)
-struct CTCBulletTime
-{
+class CTCBulletTime
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     CThing*       ParentThing;                      // +0x04 (CTCBase)
 

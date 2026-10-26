@@ -7,9 +7,9 @@
 #define __forceinline inline
 #endif
 struct __true_type { __true_type() {} };
-struct CBaseObject { int Tag; };
+class CBaseObject { public: int Tag; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char UsingComponents[0x24];
     unsigned long ThingTypeFlags;
@@ -52,7 +52,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { Item = item; }
     CBaseObject* GetPItem() const { return Item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* p) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)p); }
 };
 template <class T> struct CResultList {
@@ -60,19 +60,19 @@ template <class T> struct CResultList {
     int Count;
     void push_back(const T& x) { Items[Count++] = x.GetPItem(); }
 };
-struct CThingAICreature : CThing { enum { ThingTypeMask = 0x1f }; };
-template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
+class CThingAICreature : public CThing { public: enum { ThingTypeMask = 0x1f }; };
+template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing); }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A& First;
     const B& Second;
     const C& Third;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing) && Third(thing); }
 };
-template <class A, class B, class C, class D, class E> struct CFilter_Bind5 {
+template <class A, class B, class C, class D, class E> class CFilter_Bind5 { public:
     const A& First;
     const B& Second;
     const C& Third;
@@ -81,23 +81,23 @@ template <class A, class B, class C, class D, class E> struct CFilter_Bind5 {
     template <class T> __forceinline bool operator()(const T& thing) const
     { return First(thing) && Second(thing) && Third(thing) && Fourth(thing) && Fifth(thing); }
 };
-template <class A> struct CFilter_Not {               // the negated filter, held by reference
+template <class A> class CFilter_Not { public:               // the negated filter, held by reference
     const A& Filter;
     template <class T> bool operator()(const T& thing) const { return !Filter(thing); }
 };
-struct CThingFilter_AICreatureHasProperty {
+class CThingFilter_AICreatureHasProperty { public:
     long Data;
     bool operator()(const CThing& thing) const { return ((thing.Accept >> Data) & 1) != 0; }
 };
-struct CThingFilter_HasScriptSupervision {
+class CThingFilter_HasScriptSupervision { public:
     long Data;
     bool operator()(const CThing& thing) const { return ((thing.Accept >> Data) & 1) != 0; }
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Data;
     bool operator()(const CThing& thing) const { return ((thing.Accept >> Data) & 1) != 0; }
 };
-struct CThingFilter_IsLyingDown {
+class CThingFilter_IsLyingDown { public:
     long Data;
     bool operator()(const CThing& thing) const { return ((thing.Accept >> Data) & 1) != 0; }
 };

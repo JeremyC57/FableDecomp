@@ -54,16 +54,16 @@ public:
 };
 class CDefinitionHolder : public CDefinitionManager { };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 struct CThing_Retail;
 struct CMessageEvent_Retail;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent_Retail* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x60];
     CMessageEventManager* MessageEventManager;      // +0x60
     static long GetWorldFrame();                    // 0x0049D870

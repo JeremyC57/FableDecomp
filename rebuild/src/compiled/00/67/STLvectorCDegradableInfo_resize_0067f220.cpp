@@ -13,7 +13,7 @@
 //   size(), __x);` -- erase is `__i = __copy_ptrs(__last, _M_finish, __first, __false_type()); _Destroy(__i, _M_finish);
 //   _M_finish = __i;` (the destroy loop of the trivially destructible record compiles away); size() is the 0x92492493
 //   reciprocal divide by 28.
-struct CDegradableInfo {                                // Ego_r.pdb, 28 bytes (only copied here)
+class CDegradableInfo { public:                                // Ego_r.pdb, 28 bytes (only copied here)
     float         HealthPercentage;                     // +0x00
     unsigned char EngineGraphic[0x10];                  // +0x04 CEngineGraphic (14 packed bytes + padding)
     long          SmashParticleEmitter;                 // +0x14

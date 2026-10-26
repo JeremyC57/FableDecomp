@@ -5,10 +5,10 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CPersistContext { int id; };
+class CPersistContext { public: int id; };
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char Buf[128];
     CCharString(const char* text, long length = -1) { std::strcpy(Buf, text); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Buf, o.Buf); ++g_live; }

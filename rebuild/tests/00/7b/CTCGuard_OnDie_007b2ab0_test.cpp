@@ -23,18 +23,18 @@ static int fails = 0;
 // Shape: the def name is a named local in its own block (the definition-manager getter is called after the name is
 // pushed), the empty script name an implicit conversion temporary (built first, re-addressed with `lea`); the money component is null-tested after the lookup; the throw velocity is a C3DVector(0.3, 0, 0.4) local rotated
 // by a random angle and copied into the physics component (a named local) with the implicit assignment (`lea edx,[ecx+28h]` then three dword stores).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     void RotateXY(float angle);                             // 0x00A14040
 };
-struct CRightHandedSet;
+class CRightHandedSet;
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
@@ -46,7 +46,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x28];
     C3DVector     Velocity;                                 // +0x28
     void SetAsMoving(bool moving);                          // 0x006B0130
@@ -88,7 +88,7 @@ public:
                                            const CCharString& scriptName);   // 0x00703210
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 
@@ -103,7 +103,7 @@ public:
     unsigned long* GetPRandomSeed();                        // 0x00686DA0
 };
 
-struct CGuardDef;
+class CGuardDef;
 class CTCGuard : public CTCBase {
 public:
     const CGuardDef* PDef;                                  // +0x0c CDefPointer<CGuardDef const>

@@ -8,16 +8,16 @@
 #endif
 using std::sqrt;
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0, g_lowerBounds = 0, g_frames = 0;
-struct CTCBase;
-struct CWorld;
-struct C3DVector { float x, y, z; };
+class CTCBase;
+class CWorld;
+class C3DVector { public: float x, y, z; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const { ++g_lowerBounds; SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -46,11 +46,11 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer() { ++g_dtors; }
     void SetPItem(CThing* item) { ++g_sets; m_pItem = item; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void Cleanup() {}
     virtual void OnReplace() {}
@@ -65,7 +65,7 @@ struct CAIStateGroupBase {
     unsigned char Enabled;
     unsigned char _pad_0x13;
 };
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     float GetLength() const { return (float)sqrt(x * x + y * y); }
 };
@@ -82,7 +82,7 @@ inline CTCEnemyTracker* GetEnemyTracker(CThing* thing)
     thing->GetInterfaceX(&tracker, 8);
     return tracker;
 }
-struct CThingPhysical : CThing {
+class CThingPhysical : public CThing { public:
     const C3DVector& GetPhysicsPosition() { return m_pos; }
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {

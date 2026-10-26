@@ -5,16 +5,16 @@
 // Layout: Ego_r.pdb CScriptModuleFullTransition (landed ctor 0x008525F0): LookAtPos +0x64, StartPos +0x70; the owner (POwner
 //         +0x38) is the NCameraModes::CBase with LookAt +0x10 and GoTo.Position +0x54.
 // Shape: two inline CBase setters (SetPosition, SetObservedPos); POwner re-read after the first copy.
-struct CBaseObject;
-struct CGameCameraManager;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CBaseObject;
+class CGameCameraManager;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
     virtual void v00();
     void* m_pItem;
 };
 namespace NCameraModes {
-struct CBase {                                       // the owning camera mode (retail offsets, landed CBase dtor 0x0056E0E0)
+class CBase { public:                                       // the owning camera mode (retail offsets, landed CBase dtor 0x0056E0E0)
     virtual void v00();
     unsigned char _pad04[0x10 - 0x04];
     C3DVector     LookAt;                            // +0x10 (SetObservedPos)
@@ -27,7 +27,7 @@ struct CBase {                                       // the owning camera mode (
     void SetFOV(float fov) { FOV = fov; }
     float GetFOV() const { return FOV; }
 };
-struct CScriptModuleBase {                           // vtable 0x01255F74, 0x4c bytes
+class CScriptModuleBase { public:                           // vtable 0x01255F74, 0x4c bytes
     virtual ~CScriptModuleBase();                    // slot 0
     virtual void Update() = 0;                       // slot 1
     virtual bool IsFinished() const;                 // slot 2

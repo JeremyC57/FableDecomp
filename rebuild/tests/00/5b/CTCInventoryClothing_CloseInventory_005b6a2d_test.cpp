@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[32] = "";
-struct CThing { bool killed; void Kill(bool immediate) { killed = true; std::strcat(g_seq, immediate ? "k!" : "k"); } };
+class CThing { public: bool killed; void Kill(bool immediate) { killed = true; std::strcat(g_seq, immediate ? "k!" : "k"); } };
 struct Map { int n; void clear() { n = 0; std::strcat(g_seq, "M"); } };
 struct Clothing {
     bool InventoryOpen; Map MorphPrimitiveHandles; CThing* PMannequin; bool UseMannequin; int entries;

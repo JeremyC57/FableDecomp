@@ -4,10 +4,10 @@
 // wait with autosave, and taking the pass / key only when the hero carries them
 static int g_frames = 0, g_endAt = 1000, g_openAt = 3, g_bound = 0, g_spawned = 0, g_posted = 0, g_card = 0, g_raid = 0, g_saves = 0, g_takenPass = 0, g_takenKey = 0;
 static bool g_hasPass = true, g_hasKey = false;
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CQ_BanditCampScript;
 static CQ_BanditCampScript* g_script = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const;
     void PostAddScriptedEntities() const { ++g_posted; }

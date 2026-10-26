@@ -24,7 +24,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     mutable long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
@@ -38,8 +38,8 @@ template <class T> struct CDefHolder {                  // owns the reference Ge
             Object->Destroy();
     }
 };
-struct CTattooDef : CDefBase { };
-struct CDefClassBase : CDefBase {
+class CTattooDef : public CDefBase { public: };
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x005B1EFC (T = const CTattooDef)
 };
 void* FindDef_s7r_0();
@@ -60,7 +60,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
     return true;
 }
 #pragma auto_inline(on)
-struct CThingBaseDef : CDefClassBase { };
+class CThingBaseDef : public CDefClassBase { public: };
 struct SMoveTag { SMoveTag() { } };
 struct SScalarTag { SScalarTag() { } };
 typedef CDefPointer<const CTattooDef> CTattooDefPointer;
@@ -109,8 +109,8 @@ template <class T> struct vector {                      // STLport vector, 12 by
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-struct CThing;
-struct CTCHeroMorph {
+class CThing;
+class CTCHeroMorph { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x1c - 0x08];

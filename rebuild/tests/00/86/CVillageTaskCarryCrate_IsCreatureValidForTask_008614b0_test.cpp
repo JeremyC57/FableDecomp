@@ -10,14 +10,14 @@
 // Layout: engine/CVillageTaskCarryCrate.h (Pickup +0x18).
 // Shape: the out pointer is uninitialised (on a miss retail passes the stale argument-slot word); the `== valid` compares
 // read the result local while it still holds true (bl), the false arms assign it.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;          // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                    // +0x44
@@ -40,13 +40,13 @@ struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vp
     CThing* PItem;
     CThing* GetPItem() const;                      // 0x00A01B50
 };
-struct CTCCrateStack {
+class CTCCrateStack { public:
     long GetNumCrates() const;                     // 0x007B6660
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot() const;         // 0x006A1440
 };
-struct CVillageTaskCarryCrate {                    // engine/CVillageTaskCarryCrate.h layout (flattened pointers there)
+class CVillageTaskCarryCrate { public:                    // engine/CVillageTaskCarryCrate.h layout (flattened pointers there)
     virtual void v00();
     unsigned char           _pad04[4];             // +0x04 (CVillageTaskBase)
     CBaseIntelligentPointer CreatureAssignedToTask;   // +0x08 CIntelligentPointer<const CThing>

@@ -1,6 +1,6 @@
 // Behaviour test for 0x00ADEBC0 C3DBoundingBox::CalculateMatrix (model copy).
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -9,7 +9,7 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E11, E12, E13;
     float E21, E22, E23;
     float E31, E32, E33;
@@ -18,7 +18,7 @@ struct CMatrix3x4 {
 
 float g_epsilon_0129ba3c = 1e-4f;
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord;                            // +0
     C3DVector MaxCoord;                            // +0xc
     void CalculateMatrix(CMatrix3x4& matrix) const;

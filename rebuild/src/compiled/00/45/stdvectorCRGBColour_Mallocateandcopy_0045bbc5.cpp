@@ -11,7 +11,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-struct CRGBColour {                                // D3DCOLOR byte order, 4 bytes
+class CRGBColour { public:                                // D3DCOLOR byte order, 4 bytes
     unsigned char B, G, R, A;
     CRGBColour(const CRGBColour& other);
 };

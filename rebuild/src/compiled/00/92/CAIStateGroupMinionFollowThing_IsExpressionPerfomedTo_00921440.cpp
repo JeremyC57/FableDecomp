@@ -16,8 +16,8 @@
 // slot); `== "EXPRESSION_FOLLOW"` is the inline CCharString compare with `strcmp(text, "")` on the null block.
 #include <string.h>
 
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;     // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -78,10 +78,10 @@ struct CBasicStringChar {                       // CBasicString<char>
     bool UseFastExtend : 1;
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     __forceinline bool operator==(const char* text) const
     {
@@ -94,13 +94,13 @@ struct CCharString {
     }
 };
 
-struct CDefString {
+class CDefString { public:
     long Index;
     CDefString(const CDefString& other) : Index(other.Index) { }
     bool operator==(const CCharString& name) const;     // 0x004B7980
 };
 
-struct CExpressionDef {
+class CExpressionDef { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -146,17 +146,17 @@ struct CEventExpressionPerformedTo {
     CDefPointerExpression GetPExpressionDef() const { return PExpressionDef; }
 };
 
-struct CIsEventOfType {
+class CIsEventOfType { public:
     long Type;
     CIsEventOfType(long type) : Type(type) { }
 };
 
-struct CTCEntityEvents {                        // interface 0x42
+class CTCEntityEvents { public:                        // interface 0x42
     template<class T, class F> bool GetEvent(T** out, const F* filter);
     void RemoveEvent(void* event);              // 0x008112D0
 };
 
-struct CTCAIScratchpad {                        // interface 0xAA
+class CTCAIScratchpad { public:                        // interface 0xAA
     unsigned char _pad[0x6c];
     bool AllowedToFollow;                       // +0x6c
 };
@@ -181,12 +181,12 @@ template<> __declspec(noinline) bool CTCEntityEvents::GetEvent<CEventExpressionP
 }
 #pragma auto_inline(on)
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

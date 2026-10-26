@@ -1,14 +1,14 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) { }
 };
-struct CCamera {
+class CCamera { public:
     C3DVector WorldPosition; CRightHandedSet RHSet; bool HeightLocked; bool ViewVecZLocked;
     unsigned long FOVFlags; float HorizontalFOV, VerticalFOV, Zoom;
     CCamera(const C3DVector& position, const C3DVector& forward, const C3DVector& up, float h, float v)

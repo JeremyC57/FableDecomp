@@ -1,7 +1,7 @@
 // Behaviour test for CTCOpinionSource::PeekWitnessWillOverrideFactionEnemy @ 0x008640F0: 1 only when WitnessesWillOverrideFactionEnemy is set and the source applies.
 #include <cstdio>
-struct CThingAICreature { bool applies; };
-struct CTCOpinionSource {
+class CThingAICreature { public: bool applies; };
+class CTCOpinionSource { public:
     bool UseNavLineOfSight, WitnessesWillNotAttack, WitnessesWillOverrideFactionEnemy;
     mutable int m_calls;
     bool AppliesToWitness(CThingAICreature* w) const { ++m_calls; return w->applies; }

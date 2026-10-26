@@ -9,12 +9,12 @@
 // Leaf: GetMapwhoPosition
 #include "engine/CTCPhysicsBase.h"
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

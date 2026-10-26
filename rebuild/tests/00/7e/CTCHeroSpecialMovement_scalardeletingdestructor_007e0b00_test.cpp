@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCHeroSpecialMovement {
+class CTCHeroSpecialMovement { public:
     void* vftable;
     int destroyed;
 };

@@ -15,22 +15,22 @@ static int fails = 0;
 // Shape: as CCreatureAction_CastStrengthMultiStrikeProper::Initialise 0x008E6690 (named def-name block, function-scope CDefPointer);
 // the GetString result is a temporary argument of SetAnimationName; Animations[SpellLevel - 1] reads `[def+level*4+4Ch]`.
 // Layout: SpellLevel at retail +0x114 (PDB +0x12c); Animations (CDefString[4]) at def +0x50 (Ego_r.pdb).
-struct CTCBase;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 
 struct CDefStringTable {
     CCharString GetString(CDefString name);     // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
 
-struct CSpecialAbilitiesMultiStrikeDef {
+class CSpecialAbilitiesMultiStrikeDef { public:
     virtual void v00();
     virtual void Release();                     // slot 1 (+4): destroys the def when the last reference goes
     long          RefCount;                     // +0x04
@@ -50,7 +50,7 @@ struct CDefPointerMultiStrike {                 // CDefPointer<const CSpecialAbi
     CSpecialAbilitiesMultiStrikeDef* operator->() const { return Object; }
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                      // 0x0044C6B0
     long GetDefIndexFromName(const CCharString& name, long column);       // 0x009AD390
     bool GetDef(long index, CDefPointerMultiStrike* out);                 // 0x007CD760
@@ -69,15 +69,15 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
 }
 #pragma auto_inline(on)
 
-struct CThingCreatureBase;
-struct CThing;
-struct CSoundPair {                             // two sound ids, zeroed by the inline constructor
+class CThingCreatureBase;
+class CThing;
+class CSoundPair { public:                             // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
@@ -85,7 +85,7 @@ struct CCombatActionBase {                      // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_CastStrengthMultiStrikeProper : CCombatActionBase {   // vtable 0x012877A4
+class CCreatureAction_CastStrengthMultiStrikeProper : public CCombatActionBase { public:   // vtable 0x012877A4
     long SpellLevel;                            // +0x114 (PDB +0x12c)
     virtual void v00();
     CCreatureAction_CastStrengthMultiStrikeProper(CThingCreatureBase* owner, CThing* target, long spellLevel);

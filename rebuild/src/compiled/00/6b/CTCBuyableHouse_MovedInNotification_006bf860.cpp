@@ -14,8 +14,8 @@ inline const T& DinkumMin(const T& _Left, const T& _Right)   // VC6/7.1 Dinkumwa
 }
 
 #pragma pack(push, 1)
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     void*         ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

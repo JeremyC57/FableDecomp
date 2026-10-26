@@ -1,15 +1,15 @@
 // Behaviour test for 0x00b52090 CEngineWeatherRenderer::IsPointInPrecipitation
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(x - o.x, y - o.y, z - o.z); }
     float Length() const { return (float)std::sqrt(x * x + y * y + z * z); }
 };
-struct C3DBoundingSphere { C3DVector Centre; float Radius; C3DVector GetCentre() const { return Centre; } };
-struct CWeatherMask { C3DBoundingSphere BSphere; };
-struct CEngineWeatherRenderer {
+class C3DBoundingSphere { public: C3DVector Centre; float Radius; C3DVector GetCentre() const { return Centre; } };
+class CWeatherMask { public: C3DBoundingSphere BSphere; };
+class CEngineWeatherRenderer { public:
     CWeatherMask WeatherMaskList[3]; float m_boxRadiusSquared;
     float GetBoxBoundingSphereRadiusSquared() { return m_boxRadiusSquared; }
     long IsPointInPrecipitation(const C3DVector& point)

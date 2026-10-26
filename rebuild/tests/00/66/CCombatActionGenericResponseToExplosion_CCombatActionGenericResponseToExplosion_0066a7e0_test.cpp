@@ -1,6 +1,6 @@
 // Behaviour test for 0x0066A7E0 CCombatAction_GenericResponseToExplosion copy constructor.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer {
     void* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -12,11 +12,11 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     CIntelligentPointer_CThing(const CIntelligentPointer_CThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 static int g_baseCopies = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CCombatActionBase() { }
     CCombatActionBase(const CCombatActionBase&) { ++g_baseCopies; }
 };
-struct CCombatAction_GenericResponseToExplosion : CCombatActionBase {
+class CCombatAction_GenericResponseToExplosion : public CCombatActionBase { public:
     CIntelligentPointer_CThing PExplosion;
     float PointOfHit_X, PointOfHit_Y, PointOfHit_Z, HitDir_X, HitDir_Y, HitDir_Z;
     bool FlipFacing;

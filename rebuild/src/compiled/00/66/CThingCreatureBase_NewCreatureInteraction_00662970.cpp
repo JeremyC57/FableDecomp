@@ -9,10 +9,10 @@
 // (engine/CThingCreatureBase.h has PCreatureInteraction at the PDB offset +0x150).
 // Shape: `Reset(new T(a, b))` -- the null test of operator new's result tail-duplicates the out-of-line Reset call
 // into both arms (`xor eax,eax ; push eax` for the failed allocation).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 enum ECreatureInteractionType { CREATURE_INTERACTION_NONE };
 
-struct CCreatureInteraction {
+class CCreatureInteraction { public:
     void* m_participants;                       // +0 list head
     ECreatureInteractionType m_type;            // +4
     CCreatureInteraction(ECreatureInteractionType type, CThingCreatureBase& first);   // 0x00863200
@@ -30,7 +30,7 @@ struct CInteractionPointer {                    // CCountedPointer<CCreatureInte
     void Reset(CCreatureInteraction* object);   // 0x00669440
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char       _pad00[0x12c];
     CInteractionPointer m_creatureInteraction;  // +0x12c
     void NewCreatureInteraction(ECreatureInteractionType type);

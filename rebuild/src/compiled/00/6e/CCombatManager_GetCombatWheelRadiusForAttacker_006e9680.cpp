@@ -40,7 +40,7 @@ struct CCombatWheel {                                       // CDefendingCombata
     float GetWheelRadius() const { return GetRingRadius(CombatRings.size() - 1); }
 };
 
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     const CThingCreatureBase* Attacked;                     // +0x00
     long AttackerNumber;                                    // +0x04
     long CombatWheelRingIndex;                              // +0x08

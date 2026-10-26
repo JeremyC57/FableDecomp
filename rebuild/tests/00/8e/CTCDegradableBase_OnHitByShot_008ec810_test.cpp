@@ -1,12 +1,12 @@
 // Behaviour test for CTCDegradableBase::OnHitByShot(const C3DVector&, const C3DVector&, CThing&) @ 0x008EC810: the hit is forwarded
 // to the virtual OnHit with the same two vectors (the override in a derived class receives it).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CThing { int id; };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: int id; };
 static int g_hits = 0;
 static const C3DVector* g_pos = 0;
 static const C3DVector* g_dir = 0;
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void OnHitByMelee(const C3DVector& position, const C3DVector& direction, CThing& attacker);
     virtual void OnHitByShot(const C3DVector& position, const C3DVector& direction, CThing& attacker);
     virtual void OnHit(const C3DVector& position, const C3DVector& direction) { }

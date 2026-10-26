@@ -8,13 +8,13 @@
 // shorter than three direct stores, so the five vectors that fit disp8 (+0x3c..+0x74) are stored directly and the rest go
 // through ecx; the four -1 CDefStrings share `or eax,-1`. Local model: engine/CParentDefClassBase.h is a flat generated layout.
 #pragma optimize("s", on)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
     CParentDefClassBase();                      // 0x00430370
 };
 
-struct CDefString {                             // def-table string index, -1 = none
+class CDefString { public:                             // def-table string index, -1 = none
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -32,7 +32,7 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CSpecialAbilitiesLightningSpellDef : CParentDefClassBase {
+class CSpecialAbilitiesLightningSpellDef : public CParentDefClassBase { public:
     CRetailVector<float> m_faAreaEffect;                // +0x3c
     CRetailVector<float> m_faDamagePerHit;              // +0x48
     CRetailVector<float> m_faSubBeamDamagePerHit;       // +0x54

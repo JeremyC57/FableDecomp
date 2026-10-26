@@ -8,7 +8,7 @@
 // agrees below +0x24). The interface-8 component (modelled CTCTargetingBase at 0x0089D8B0) and the callee name
 // (0x008ABC90, takes one pointer and wraps it in a counted handle) are not confirmed.
 // Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

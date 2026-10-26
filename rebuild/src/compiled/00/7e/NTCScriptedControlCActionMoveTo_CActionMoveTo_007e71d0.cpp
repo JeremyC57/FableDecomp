@@ -21,20 +21,20 @@ namespace N_0099a2d0 { struct CScriptBase {                            // CScrip
     CScriptBase();                              // 0x0099A2D0
 }; } using N_0099a2d0::CScriptBase;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 typedef long EMovementType;
-struct CTCBase;
+class CTCBase;
 
-template <class T> struct CCountedPointer {      // the counted pointer record with its own inline constructor
+template <class T> class CCountedPointer { public:      // the counted pointer record with its own inline constructor
     T*    Object;
     void* Count;
     CCountedPointer() : Object(0), Count(0) { }
 };
 
-struct CScriptThing : CScriptBase {             // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CScriptBase { public:             // vtable 0x01238C8C, 12 bytes
     virtual void v00();
     CCountedPointer<CScriptThing> PImp;         // +0x04 (Ego_r.pdb: CCountedPointer<CScriptThing> PImp -- object, count block)
     CScriptThing() : CScriptBase(), PImp() { }

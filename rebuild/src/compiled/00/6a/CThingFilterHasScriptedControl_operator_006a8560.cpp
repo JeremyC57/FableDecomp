@@ -8,20 +8,20 @@
 //   (TC 0x1f = CTCScriptedControl: the sign bit of word +0x20), CVectorMap +0x44; CTCScriptedControl Locked +0x18.
 // Shape: the agent160 GetTC form with the lookup key in the dead thing-argument slot (no frame: the function has no
 //   named locals); CTCScriptedControl::IsActive inline (`Locked || !IsTaskListEmpty()`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     unsigned char _pad[0x18];
     bool Locked;                                // +0x18
     bool IsTaskListEmpty();                     // 0x007122C0
     bool IsActive() { return Locked || !IsTaskListEmpty(); }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,7 +41,7 @@ struct CThing {
 };
 bool __fastcall GFHasScriptThing(CThing* thing);   // 0x004C7E70
 
-struct CThingFilter_HasScriptedControl {
+class CThingFilter_HasScriptedControl { public:
     bool CheckForActive;                        // +0x00
     bool operator()(CThing* thing) const;
 };

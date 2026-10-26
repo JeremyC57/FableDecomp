@@ -6,7 +6,7 @@
 #include <new>
 
 class CThing { public: int id; };
-template <class T> struct CIntelligentPointer {
+template <class T> class CIntelligentPointer { public:
     T* Item;
     CIntelligentPointer(T* item) : Item(item) { }
     CIntelligentPointer(const CIntelligentPointer& other) : Item(other.Item) { }

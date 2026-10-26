@@ -2,7 +2,7 @@
 // interface 0xda while no minigame runs goes to the wall-mount action; every other case goes to the trophy.
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -14,7 +14,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     virtual void v000() {}
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -48,7 +48,7 @@ struct CThing {
     void Init() { for (int i = 0; i < 9; ++i) m_presentBits[i] = 0; m_interfaces.first = m_interfaces.last = 0; m_dead = 0; m_91_1 = 0; }
     void Add(CInterfaceMap::SEntry* e, int n) { m_interfaces.first = e; m_interfaces.last = e + n; for (int i = 0; i < n; ++i) m_presentBits[e[i].type >> 5] |= 1UL << (e[i].type & 31); }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool Player;
     virtual bool IsPlayer() const { return Player; }
 };
@@ -60,7 +60,7 @@ static int g_wallMount = 0, g_trophy = 0;
 struct CTCCarriedActionUseWallMount {
     virtual void OnActionUse(CThingCreatureBase* user) { ++g_wallMount; }
 };
-struct CTCTrophy {
+class CTCTrophy { public:
     bool MinigameInProgress;
     void OnTrophyUseAction(CThingCreatureBase* user) { ++g_trophy; }
 };

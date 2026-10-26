@@ -8,10 +8,10 @@
 // Ego_r.pdb CTCWallMount (0x20): BoughtForAmount +0x0c, Trophy (CIntelligentPointer<CThing>) +0x10, TrophyID (ulong64) +0x18.
 // Shape: an initialiser list in declaration order: the immediate zero for BoughtForAmount after the vtable store, the
 // trophy pointer's base constructor and vtable, then the two halves of the 64-bit id as immediates.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08
@@ -25,12 +25,12 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();               // 0x00A01B10
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for T = CThing
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
     virtual void v00();
     CIntelligentPointer() { }
 };
 
-struct CTCWallMount : CTCBase {              // vtable 0x0126FB7C
+class CTCWallMount : public CTCBase { public:              // vtable 0x0126FB7C
     long                        BoughtForAmount;   // +0x0c
     CIntelligentPointer<CThing> Trophy;            // +0x10
     unsigned __int64            TrophyID;          // +0x18

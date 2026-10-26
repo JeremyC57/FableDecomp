@@ -9,8 +9,8 @@
 // "retail-only longs" are XAxis/YAxis. Vtable 0x0129EA7C.
 // Shape: body assignments in retail's store order (manager, device, ranges, axes; initialisers would store in declaration
 // order); VC keeps 0, 0x5556 and 0xaaaa in registers and schedules the 0xaaaa stores ahead of the vtable store.
-struct CInputManager;
-struct CInputManagerDX;
+class CInputManager;
+class CInputManagerDX;
 struct IDirectInputDevice8W;
 class CJoystick {
 public:

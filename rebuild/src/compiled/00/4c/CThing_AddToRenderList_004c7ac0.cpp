@@ -1,12 +1,12 @@
 // CThing::AddToRenderList  @ 0x004c7ac0
 
-struct CThing;
+class CThing;
 
-struct CRenderManager {
+class CRenderManager { public:
     void Add(CThing* t);
 };
 
-struct CThing {
+class CThing { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

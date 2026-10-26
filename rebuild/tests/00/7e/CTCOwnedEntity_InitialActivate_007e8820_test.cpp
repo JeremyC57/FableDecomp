@@ -1,14 +1,14 @@
 // Behaviour test for CTCOwnedEntity::InitialActivate @ 0x007E8820: base first, then the owner looked up by UID when set.
 #include <cstdio>
-struct CThing { long id; };
+class CThing { public: long id; };
 static CThing g_thing = { 42 };
 static int g_baseCalls = 0, g_lookups = 0;
 static unsigned long g_lastLow = 0;
-struct CGame {
+class CGame { public:
     CThing* GetThingFromUID(unsigned long low, unsigned long high) { ++g_lookups; g_lastLow = low; return high == 0 && low == 9 ? &g_thing : 0; }
 };
 static CGame g_game;
-struct CTCOwnedEntity {
+class CTCOwnedEntity { public:
     unsigned long OwnerUIDLow, OwnerUIDHigh;
     CThing* m_owner;
     int m_sets;

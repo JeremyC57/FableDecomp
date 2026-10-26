@@ -30,7 +30,7 @@ public:
 };
 class CThingPhysical {
 public:
-    struct CHealthOverTimeHelper {
+    class CHealthOverTimeHelper { public:
         long FramesLeft; float HealthPerFrame;
         CHealthOverTimeHelper(float amount, long frames) : FramesLeft(frames), HealthPerFrame(amount) { }
     };

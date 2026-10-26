@@ -3,14 +3,14 @@
 #include <cstring>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString(const char* t, long = -1) { std::strcpy(text, t); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); ++g_live; }
     ~CCharString() { --g_live; }
 };
 class CDefClassBase { public: int kind; };
-struct CDefClassInit {
+class CDefClassInit { public:
     CCharString Name; CDefClassBase* (*AllocFunc)();
     CDefClassInit(const CCharString& name, CDefClassBase* (*allocFunc)()) : Name(name), AllocFunc(allocFunc) { }
 };
@@ -25,7 +25,7 @@ public:
 };
 static CDefinitionManager g_manager;
 static CDefinitionManager* GFGetPDefinitionManager() { return &g_manager; }
-struct CScriptInfoManager {
+class CScriptInfoManager { public:
     void RegisterDefs()
     {
         CDefinitionManager* manager = GFGetPDefinitionManager();

@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_globalAdds = 0;
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
@@ -14,8 +14,8 @@ struct CIntelligentPointer {
     CIntelligentPointer() : PData(0) { }
     virtual ~CIntelligentPointer() { }
 };
-struct CWideString { const unsigned short* m_pData; CWideString() : m_pData(0) { } };
-struct CTCRegionDisplay : CTCBase {
+class CWideString { public: const unsigned short* m_pData; CWideString() : m_pData(0) { } };
+class CTCRegionDisplay : public CTCBase { public:
     CWideString CurrentAreaName, CurrentAreaNameExtra;
     long FrameNameChanged, CurrentAlpha, LastAlpha; float DisplayTime; bool TimeOut, InfoDisplay, UpdateWhilePaused;
     CTCRegionDisplay(CThing* thing) : CTCBase(thing), FrameNameChanged(0), CurrentAlpha(0), LastAlpha(0), DisplayTime(0),

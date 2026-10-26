@@ -14,7 +14,7 @@
 
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                           // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -31,7 +31,7 @@ struct CGroupMemberMap {                         // std::map<unsigned __int64, C
     CGroupMemberMap();                           // 0x004E4082
 };
 
-struct CTCCreatureGroup : CTCBase_Calls {        // vtable 0x0124326C
+class CTCCreatureGroup : public CTCBase_Calls { public:        // vtable 0x0124326C
     unsigned long   MemberCount;                 // +0x0C
     unsigned long   ActiveMemberCount;           // +0x10
     bool            ShutdownOnEmpty;             // +0x14

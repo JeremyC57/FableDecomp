@@ -1,4 +1,4 @@
-struct CShaderLight {
+class CShaderLight { public:
     void* vftable;
 };
 

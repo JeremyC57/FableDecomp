@@ -13,7 +13,7 @@
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct C3DVector;
+class C3DVector;
 struct CTrailSegment {                             // CArray<C3DVector>
     C3DVector* m_pData;
     long m_count;
@@ -34,7 +34,7 @@ struct CFloatArray {                               // CArray<float>
     ~CFloatArray() { if (m_pData) free(m_pData); }
 };
 
-struct CIVCountedPointeeBase {                     // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
     virtual void v00();
     ~CIVCountedPointeeBase() { }
 };

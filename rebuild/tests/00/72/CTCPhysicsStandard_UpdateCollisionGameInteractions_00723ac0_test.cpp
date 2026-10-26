@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicsStandard::UpdateCollisionGameInteractions (0x00723AC0)
-struct C3DVector { float X, Y, Z; };
-struct CPhysicsCollideResponse { C3DVector CollidePos, CollideNormal; };
-struct CThing;
-struct CTCPhysicsBase { bool interacts; CThing* ParentThing; bool GetInteractsWithThings() { return interacts; } };
-struct CThing { CTCPhysicsBase* PPhysics; unsigned char Flags91; int hits; CThing* lastOther; const C3DVector* lastNormal;
+class C3DVector { public: float X, Y, Z; };
+class CPhysicsCollideResponse { public: C3DVector CollidePos, CollideNormal; };
+class CThing;
+class CTCPhysicsBase { public: bool interacts; CThing* ParentThing; bool GetInteractsWithThings() { return interacts; } };
+class CThing { public: CTCPhysicsBase* PPhysics; unsigned char Flags91; int hits; CThing* lastOther; const C3DVector* lastNormal;
     void OnCollision(long, const C3DVector*, const C3DVector* n, CThing* o) { ++hits; lastOther = o; lastNormal = n; } };
 static void Update(CTCPhysicsBase* self, CThing* other, CPhysicsCollideResponse* r)
 {

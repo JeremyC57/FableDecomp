@@ -55,8 +55,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -64,8 +64,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -160,10 +160,10 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -289,11 +289,11 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -378,8 +378,8 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
-struct C3DVector {float X,Y,Z;C3DVector(float x,float y,float z):X(x),Y(y),Z(z){} void RotateXY(float angle);}; //0x00A14040
-struct CCombatActionBase;
+class C3DVector { public:float X,Y,Z;C3DVector(float x,float y,float z):X(x),Y(y),Z(z){} void RotateXY(float angle);}; //0x00A14040
+class CCombatActionBase;
 extern long g_GameFramesPerSecond; //0x01375550
 extern const float g_VectorZeroThreshold; //0x0129BA3C
 #ifndef FABLE_ENGINE_CTCCOMBAT_H
@@ -392,12 +392,12 @@ extern const float g_VectorZeroThreshold; //0x0129BA3C
 #include <stddef.h>
 
 
-struct CCombatManager;
-struct CDefPointeeBase;
-struct CThingCreatureBase;
+class CCombatManager;
+class CDefPointeeBase;
+class CThingCreatureBase;
 
 #pragma pack(push, 1)
-struct CTCCombat {
+class CTCCombat { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     long                obj;                                 // +0x04 retail-only long (previous header)
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -482,7 +482,7 @@ struct Creature {
 bool FABLE_FASTCALL IsThingCarryingMeleeWeapon(Creature* creature); //006A15A0
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate()const;virtual void EditUpdate(float);virtual void PerformAction();virtual void FinishAction();
     virtual bool IsPlayingAnimation()const;virtual long GetAnimDelayTime()const;virtual long GetAnimationIndex()const;
@@ -495,7 +495,7 @@ struct CCreatureActionBase {
     unsigned char _baseObjectState[4];CBaseIntelligentPointer PCreature;long TotalTime,ActionTime,AnimDelayTime,FramesRunning;unsigned char _actionBody[0x88];
     void FrameUpdate(); //qualified direct base call00694020
 };
-struct CCombatActionBase:CCreatureActionBase {
+class CCombatActionBase:public CCreatureActionBase { public:
     CBaseIntelligentPointer PTarget,PCameraPoint;void* PMeleeAbilityDef_Object;void* StrikeEventsHead;
     long LastStrikeEventEndTime;float StrikeEventInterruptTime,StrikeEventResetComboTime;long MovementEventInterruptFrame;
     float StrikeSpeedVariationStartTime,StrikeSpeedVariationEndTime;

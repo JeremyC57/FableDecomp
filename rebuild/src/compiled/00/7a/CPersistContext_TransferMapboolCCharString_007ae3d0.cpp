@@ -39,7 +39,7 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;           // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -221,8 +221,8 @@ void __fastcall GFSerialiseMapBinaryOut(CDataOutputStream& stream, const std::ma
 template <class _Tp, class _Key, class _Compare>
 void __fastcall GFSerialiseMapBinaryIn(CMemoryDataInputStream& stream, std::map<_Key, _Tp, _Compare>& map);     // 0x007ADBF0
 
-struct CDefinitionManager;
-struct CSymbolMap;
+class CDefinitionManager;
+class CSymbolMap;
 class CPersistContext {
 public:
     CDefinitionManager*     PDefinitionManager;           // +0x00

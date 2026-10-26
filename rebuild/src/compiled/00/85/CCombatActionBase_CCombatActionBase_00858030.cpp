@@ -13,8 +13,8 @@
 //          left (action code, 100, the sound pair reference, the owner). Callers: the derived combat actions (e.g. the landed
 //          CCreatureAction_BanditKingStuck 0x008C94D0 -> 0x00857F30; 0x00858030 from the action-code-50/254 actions).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -68,18 +68,18 @@ struct CAnimationVector {                   // STLport vector<const CAnimationEn
     CAnimationVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CSoundPair {                         // two sound ids
+class CSoundPair { public:                         // two sound ids
     long FirstSound;
     long LastSound;
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, const CSoundPair& sound, long interruptionGroup, long interruptionPriority);   // 0x00693C70
 };
 
-struct CCombatActionBase : CCreatureActionBase {   // vtable 0x01259E44
+class CCombatActionBase : public CCreatureActionBase { public:   // vtable 0x01259E44
     CIntelligentPointer PTarget;                    // +0xa8
     CConstIntelligentPointer PCameraPoint;          // +0xb0
     CDefPointer PMeleeAbilityDef;                   // +0xb8

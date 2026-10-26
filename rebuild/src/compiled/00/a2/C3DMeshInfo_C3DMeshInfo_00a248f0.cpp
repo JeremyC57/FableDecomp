@@ -18,26 +18,26 @@ struct C3DMeshInfoBase {                        // the 12-byte root: vptr + two 
 };
 
 template <class T>
-struct CIVCountedPointer {                      // intrusive counted pointer: the object only
+class CIVCountedPointer { public:                      // intrusive counted pointer: the object only
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
 };
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord;                         // +0x00
     C3DVector MaxCoord;                         // +0x0c
 };
 
-struct C3DBoundingSphere {                      // centre + radius, zeroed as dwords
+class C3DBoundingSphere { public:                      // centre + radius, zeroed as dwords
     long m_x, m_y, m_z;
     union { long m_radiusBits; float Radius; };
     C3DBoundingSphere() : m_x(0), m_y(0), m_z(0), m_radiusBits(0) { }
 };
 
-struct C3DMeshInfo : C3DMeshInfoBase {
-    struct CMeshData;
+class C3DMeshInfo : public C3DMeshInfoBase { public:
+    class CMeshData;
     CIVCountedPointer<CMeshData> MeshData;      // +0x0c
     C3DBoundingBox    BoundingBox;              // +0x10
     C3DBoundingSphere BoundingSphere;           // +0x28

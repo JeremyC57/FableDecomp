@@ -18,12 +18,12 @@ struct HWND__;
 
 enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE = 0 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                      // 0x0099AED0
 };
 
-struct CDisplayManagerInit {
+class CDisplayManagerInit { public:
     long                    Width;                              // +0x00
     long                    Height;                             // +0x04
     long                    Depth;                              // +0x08

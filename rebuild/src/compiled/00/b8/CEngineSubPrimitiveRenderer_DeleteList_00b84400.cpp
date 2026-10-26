@@ -37,7 +37,7 @@ struct CRetailEntryVector_00b84400 {
     }
 };
 
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
     static void __stdcall DeleteList(CRetailEntryVector_00b84400* list);
 };
 

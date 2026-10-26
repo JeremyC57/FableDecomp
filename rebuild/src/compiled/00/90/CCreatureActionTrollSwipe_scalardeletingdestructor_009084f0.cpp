@@ -1,4 +1,4 @@
-struct CCreatureAction_TrollSwipe {
+class CCreatureAction_TrollSwipe { public:
     void* vftable;
 };
 

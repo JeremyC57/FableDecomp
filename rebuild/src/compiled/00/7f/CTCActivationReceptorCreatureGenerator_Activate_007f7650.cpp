@@ -18,7 +18,7 @@ struct CInterfaceMap {                         // a thing's sorted {type, compon
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];            // +0x20 std::bitset<274> UsingComponents
     CInterfaceMap m_interfaces;                // +0x44 Components
@@ -37,20 +37,20 @@ struct CThing {
     }
 };
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
 };
 
-struct CTCActivationReceptorBase : CTCBase {   // retail 0x2c bytes (see 0x007F7710; engine header has the PDB layout)
+class CTCActivationReceptorBase : public CTCBase { public:   // retail 0x2c bytes (see 0x007F7710; engine header has the PDB layout)
     unsigned char _body[0x20];                 // +0x0c Activated .. +0x28 FrameAtLastActivation
     virtual void Activate();                   // slot 28: 0x007F76E0
     virtual void Deactivate();                 // slot 29: 0x007F7700
 };
 
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     unsigned char _pad[0x4f];
     bool ExternalTrigger;                      // +0x4f
     void SetAsActive(bool active);             // 0x00749DD0

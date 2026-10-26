@@ -9,28 +9,28 @@
 // CCharString temporary re-addressed with `lea` for SetAnimationName and destroyed after it. `ret 4`.
 // Layout: engine/CCreatureAction_CastPhysicalShieldSpell.h has the members at the PDB's +0x12c..; retail CCombatActionBase is
 // 0x114 bytes, so `this` is modelled locally at +0x114 / +0x115 / +0x118 / +0x11c (ShieldHealth +0x120 untouched).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCharString {                        // one pointer; the defaulted length lets the literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (register-zeroed frame stores)
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed frame stores)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase {   // vtable 0x0127BDCC
+class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public:   // vtable 0x0127BDCC
     bool  ImmediateCast;                    // +0x114 (PDB +0x12c)
     bool  OneAnimCast;                      // +0x115 (PDB +0x12d)
     unsigned char _pad116[2];

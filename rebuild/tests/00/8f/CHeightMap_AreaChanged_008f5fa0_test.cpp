@@ -5,14 +5,14 @@
 // Grade: MATCH -- q.py confirms the VC7.1 body; behavior passes under g++ and VC7.1.
 #include "engine/CHeightMapCell.h"
 #else
-struct CHeightMapCell { float Height; unsigned char EngineThemePaletteIndex[3]; unsigned char EngineBlend[2]; unsigned char NavPreferred[3]; };
+class CHeightMapCell { public: float Height; unsigned char EngineThemePaletteIndex[3]; unsigned char EngineBlend[2]; unsigned char NavPreferred[3]; };
 #endif
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY; };
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; };
 struct CHeightMapCellVector {
     CHeightMapCell *first, *last, *end;
     CHeightMapCell& operator[](long i) { return *(first + i); }
 };
-struct CHeightMap {
+class CHeightMap { public:
     void *World;
     void *_04;
     void *Map;

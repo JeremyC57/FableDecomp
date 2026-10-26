@@ -16,7 +16,7 @@ struct CDefBase {
     CDefBase();                             // 0x0044C0C0
 };
 
-struct CShopItem {                          // +0x2c..+0x48: Quantity, PriceMultiplier, MaxStock, RestockPeriod, ...
+class CShopItem { public:                          // +0x2c..+0x48: Quantity, PriceMultiplier, MaxStock, RestockPeriod, ...
     float Quantity;                         // +0x00
     float PriceMultiplier;                  // +0x04
     float MaxStock;                         // +0x08
@@ -27,7 +27,7 @@ struct CShopItem {                          // +0x2c..+0x48: Quantity, PriceMult
     CShopItem();                            // 0x004D4033
 };
 
-struct CShopItemDef : CDefBase {            // vtable 0x0123B644
+class CShopItemDef : public CDefBase { public:            // vtable 0x0123B644
     long      Type;                         // +0x28
     CShopItem Item;                         // +0x2c
     virtual void v00();

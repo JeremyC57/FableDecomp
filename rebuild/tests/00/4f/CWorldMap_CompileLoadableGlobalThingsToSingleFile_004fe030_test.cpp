@@ -8,14 +8,14 @@ static int g_fail = 0;
 static std::string IntToString(long i) { char b[16]; sprintf(b, "%ld", i); return b; }
 static int g_progress; static float g_lastFraction;
 static void DisplayProgress(const char*, bool, float f, bool) { ++g_progress; g_lastFraction = f; }
-struct CThingManager {
+class CThingManager { public:
     long SavingFlag; std::vector<long> Loaded; int Deletes;
     void SaveToScript(std::string& script, long map, std::vector<std::string>&) { script += "THINGS" + IntToString(map) + "@" + IntToString(SavingFlag); }
     void DeleteAllThings() { ++Deletes; Loaded.clear(); }
 };
-struct CMapInfo { bool Used, LoadedOnPlayerProximity; };
+class CMapInfo { public: bool Used, LoadedOnPlayerProximity; };
 static std::string g_savedName, g_savedText;
-struct CWorldMap {
+class CWorldMap { public:
     CThingManager* Manager; std::vector<CMapInfo> Maps;
     void LoadLoadableGlobalThingsForLevel(long map) { Manager->Loaded.push_back(map); }
     void CompileLoadableGlobalThingsToSingleFile(const std::string& filename);

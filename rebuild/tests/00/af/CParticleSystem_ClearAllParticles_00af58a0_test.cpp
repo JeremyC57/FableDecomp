@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour of CParticleSystem::ClearAllParticles (0x00AF58A0): ClearParticle sees every node of the particles list in order,
 // through an iterator that points at the current node; an empty list makes no call.
-struct CParticle; struct CDecal; struct CEnginePrimitiveHandle;
+struct CParticle; struct CDecal; class CEnginePrimitiveHandle;
 template <class T> struct SListNode { SListNode* _M_next; SListNode* _M_prev; T _M_data; };
 template <class T> struct CRetailList {
     struct iterator {

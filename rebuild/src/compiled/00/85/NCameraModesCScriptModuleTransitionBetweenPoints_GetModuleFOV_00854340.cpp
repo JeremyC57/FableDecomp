@@ -5,17 +5,17 @@
 //       ?GetModuleFOV@CScriptModuleTransitionBetweenPoints@NCameraModes@@UBE_NAAM@Z.
 // Layout: Ego_r.pdb CScriptModuleTransitionBetweenPoints (0x90) as the landed ctor 0x008524C0: FOV +0x88.
 // Shape: the float copied through eax, `mov al,1`.
-struct CBaseObject;
-struct CGameCameraManager;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CBaseObject;
+class CGameCameraManager;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
     virtual void v00();
     void* m_pItem;
 };
 namespace NCameraModes {
-struct CBase;
-struct CScriptModuleBase {                           // vtable 0x01255F74, 0x4c bytes
+class CBase;
+class CScriptModuleBase { public:                           // vtable 0x01255F74, 0x4c bytes
     virtual ~CScriptModuleBase();                    // slot 0
     virtual void Update() = 0;                       // slot 1
     virtual bool IsFinished() const;                 // slot 2

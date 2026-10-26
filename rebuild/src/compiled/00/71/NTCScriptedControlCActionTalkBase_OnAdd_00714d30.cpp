@@ -15,7 +15,7 @@
 //          new-expression arguments (ParentThing, Conversation.Get()) are read after its allocation; the parent thing is
 //          read into a local before the GetThing() compare; the inline Get() accessor (not a raw `.Data` read) keeps the
 //          conversation pointer in esi.
-struct CTCBase;
+class CTCBase;
 class CBaseObject {
 public:
     CBaseObject();                                 // 0x0099A380
@@ -28,7 +28,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     void*         __vftable;
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];              // +0x20
@@ -47,15 +47,15 @@ struct CThing {
         return false;
     }
 };
-struct CCPPointerInfo;
-struct CScriptThing {
+class CCPPointerInfo;
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;              // slot 11 (+0x2c)
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                          // +0x00
     CCPPointerInfo* Info;                          // +0x04
     void Reset(T* object);                         // 0x00718940
@@ -71,7 +71,7 @@ public:
 };
 }
 
-struct CTCScriptedControl {                        // interface 0x1F
+class CTCScriptedControl { public:                        // interface 0x1F
     void*   __vftable;
     CThing* ParentThing;                           // +0x04 (CTCBase)
     void AddAction(NTCScriptedControl::CActionBase* action);   // 0x007137D0

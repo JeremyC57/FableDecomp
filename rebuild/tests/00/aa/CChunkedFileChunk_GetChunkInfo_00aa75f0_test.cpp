@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-struct CCharString {
+class CCharString { public:
     CCharString(const char* lit, int len);
     int dummy;
 };
 
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     CCharString GetChunkInfo() const;
 };
 

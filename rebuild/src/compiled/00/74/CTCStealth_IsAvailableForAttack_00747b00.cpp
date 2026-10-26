@@ -1,4 +1,4 @@
-struct CTCStealth {
+class CTCStealth { public:
     int GetAttackAvailability(bool includePending);
     bool IsAvailableForAttack();
 };

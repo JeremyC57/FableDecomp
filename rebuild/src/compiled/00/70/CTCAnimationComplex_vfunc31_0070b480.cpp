@@ -11,7 +11,7 @@ struct CTarget {
     void Method_004c7590(long value);               // 0x004C7590
 };
 
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     unsigned char _pad[0x4];
     CTarget* m_pObject;                    // +0x4
     void vfunc_31();

@@ -6,13 +6,13 @@
 // Shape: no `mov eax,esi` -- the slot returns void (eax keeps the last copied word). Written as an explicit memberwise copy: the
 // compiler-generated operator= is emitted OUT of line under optimize("s") and this body becomes a `jmp` thunk (as CPlayerInventoryDef's slot 19).
 #pragma optimize("s", on)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                            // +0x04..+0x3c
     CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
 };
-struct CDefString { long TablePos; };
-struct CVillagerInteractionsDef : CParentDefClassBase {
+class CDefString { public: long TablePos; };
+class CVillagerInteractionsDef : public CParentDefClassBase { public:
     CDefString Animation1;      // +0x3c
     CDefString Animation2;      // +0x40
     float      Distance;        // +0x44

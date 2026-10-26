@@ -15,12 +15,12 @@
 static int g_failures = 0;
 #define CHECK(c) do { if (!(c)) { std::printf("FAIL line %d: %s\n", __LINE__, #c); ++g_failures; } } while (0)
 
-struct CTCBase { };
-struct CCharString {
+class CTCBase { public: };
+class CCharString { public:
     char Text[64];
     CCharString(const char* text, long length = -1) { (void)length; std::strncpy(Text, text, 63); Text[63] = 0; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name)
     {
         if (std::strcmp(name.Text, "CARRY_SLOT_RIGHT_HAND") == 0) return 11;
@@ -48,16 +48,16 @@ struct CDefBase {
     virtual ~CDefBase() { }
     virtual void Destroy() { ++Destroyed; }
 };
-struct CWeaponDef : CDefBase {
+class CWeaponDef : public CDefBase { public:
     long GlobalIndex;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     CWeaponDef* Weapon;
     CDefClassBase() : Weapon(0) { }
     bool GetSubDef(CDefPointer<CWeaponDef>* out)
@@ -79,7 +79,7 @@ struct CDefVirtual {
     virtual ~CDefVirtual() { }
     virtual void Destroy() { ++Destroyed; }
 };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -98,7 +98,7 @@ template <class T> struct CAbilityPointer {
         }
     }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     long State;
     int  Calls;
     CTCPhysicsBase() : State(0), Calls(0) { }
@@ -115,7 +115,7 @@ struct CTCBanditKingWeapons : CTCBase {
     long m_weaponDef;
     CTCBanditKingWeapons() : m_weaponDef(-99) { }
 };
-struct CThing {
+class CThing { public:
     unsigned long   m_presentBits[9];
     CInterfaceMap   m_interfaces;
     CTCPhysicsBase* m_pPhysics;
@@ -149,12 +149,12 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long Accuracy;
     CThingCreatureBase() : Accuracy(0) { }
     long GetShotAccuracyPercentage() { return Accuracy; }
 };
-struct CTCCarrying : CTCBase {
+class CTCCarrying : public CTCBase { public:
     CThing* Slot11;
     CThing* Slot22;
     int     Calls;

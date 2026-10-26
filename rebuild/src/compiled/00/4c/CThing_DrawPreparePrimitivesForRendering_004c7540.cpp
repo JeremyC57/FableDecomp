@@ -6,14 +6,14 @@
 // (the direct member form loads it into eax and copies it to ecx). Two `xor al,al` false exits share one tail.
 struct CRenderContext;
 
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10();
     virtual void DrawPreparePrimitivesForRendering(CRenderContext* context); // slot 11 (+0x2c)
 };
 
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

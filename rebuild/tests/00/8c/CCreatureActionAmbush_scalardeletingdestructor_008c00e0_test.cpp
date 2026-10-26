@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_Ambush {
+class CCreatureAction_Ambush { public:
     void* vftable;
     int destroyed;
 };

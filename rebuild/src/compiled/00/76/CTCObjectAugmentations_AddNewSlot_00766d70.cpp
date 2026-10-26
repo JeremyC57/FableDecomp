@@ -16,7 +16,7 @@ namespace std {
 struct __false_type { __false_type() { } };
 }
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;
     mutable unsigned long m_count;                // +0x04
@@ -66,7 +66,7 @@ public:
 };
 }
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     void* ParentThing;                            // +0x04
     unsigned char _base08[4];

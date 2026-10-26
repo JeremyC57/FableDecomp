@@ -14,7 +14,7 @@ namespace N_004d3a03 { struct CEnginePrimitiveGroupManager {
     CEnginePrimitiveGroupManager(void* argument);            // 0x004D3A03
 }; } using N_004d3a03::CEnginePrimitiveGroupManager;
 
-struct CTCCameraPointFixedDolly : CEnginePrimitiveGroupManager {
+class CTCCameraPointFixedDolly : public CEnginePrimitiveGroupManager { public:
     virtual void v00();
     CTCCameraPointFixedDolly(void* argument);
 };

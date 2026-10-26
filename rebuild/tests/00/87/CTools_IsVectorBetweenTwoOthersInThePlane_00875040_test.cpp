@@ -13,7 +13,7 @@ static int fails = 0;
 // place and returned by value); the reference-bound temporaries get retail's frame slots (b at +0, v at +0xc, a at +0x18),
 // named copies swap a and v. The v.b dot product is a named float kept on the FPU across both compares (`>=`);
 // each dot product sums x, y, z in source (VC emits z first).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
     void Normalise();                                       // 0x00A14440

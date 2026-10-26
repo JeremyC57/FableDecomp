@@ -16,7 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 
-struct CMessageEvent {                             // 0x58 bytes, polymorphic
+class CMessageEvent { public:                             // 0x58 bytes, polymorphic
     virtual ~CMessageEvent();
     unsigned char _body[0x54];
 };
@@ -25,7 +25,7 @@ struct SMessageNode {                              // list<CMessageEvent> node: 
     SMessageNode* m_pPrev;
     CMessageEvent m_value;
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long Type;
     CMessageEventFilter_IsOfType(long type) : Type(type) { }
     bool operator()(const CMessageEvent* event) const;   // 0x006AF1C0
@@ -62,8 +62,8 @@ struct CMessagePtrList {                           // STLport list<const CMessag
         m_pHead->m_pPrev = m_pHead;
     }
 };
-struct CWorld;
-struct CMessageEventManager {
+class CWorld;
+class CMessageEventManager { public:
     CWorld*       World;                           // +0x00
     SMessageNode* m_pMessages;                     // +0x04 list<CMessageEvent> sentinel
     template<class TFilter> long FindAllMessages(const TFilter& filter, CMessagePtrList& found);   // 0x00493EAB
@@ -112,11 +112,11 @@ template<class TFilter> long CMessageEventManager::FindAllMessages(const TFilter
 }
 #pragma auto_inline(on)
 
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* PMessageEventManager;    // +0x60
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld* World;                                 // +0x04
     void RemoveAllCutSceneSkippedMessages();

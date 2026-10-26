@@ -28,7 +28,7 @@
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 extern long g_FramesPerSecond;                         // 0x01375550
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                    // 0x0099EAE0
 };
@@ -66,20 +66,20 @@ struct CCharStringVector {                             // std::vector<CCharStrin
 };
 
 namespace NAnimationEvents {
-struct CManager {
+class CManager { public:
     virtual void GetEvents(unsigned long animID, CAnimEventVector& events) const;          // slot 0
 };
 }
 NAnimationEvents::CManager* __fastcall GetAnimManager();   // 0x006F90B0
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);              // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
@@ -97,7 +97,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCWeaponTrail {                                // interface 0x4c
+class CTCWeaponTrail { public:                                // interface 0x4c
     long GetStrikeEventIndexFromEventName(const CCharString& eventName);   // 0x0076DF90
 };
 
@@ -120,14 +120,14 @@ CThing* __fastcall GetThingDoingDamageFromCreatureAndEventName(CThing* creature,
 void __fastcall GetHelperPointNamesFromStrikeEventName(const CCharString& eventName, CCharStringVector& names,
                                                        bool isWeapon, bool legacy, bool primaryLegacy);   // 0x00858E00
 
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(T* data);                          // 0x0085B250
     ~CCountedPointer();                                // 0x0062D9A0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -139,12 +139,12 @@ struct CBaseIntelligentPointer {
     void* m_pData;
     CThing* GetPItem() const;                          // 0x00A01B50
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     unsigned long AnimID;                              // +0x00
 };
 
-struct CCombatActionBase {
-    struct CStrikeEvent {                              // retail 0x28 bytes
+class CCombatActionBase { public:
+    class CStrikeEvent { public:                              // retail 0x28 bytes
         bool          Legacy;                          // +0x00
         bool          PrimaryLegacy;                   // +0x01
         bool          Weapon;                          // +0x02

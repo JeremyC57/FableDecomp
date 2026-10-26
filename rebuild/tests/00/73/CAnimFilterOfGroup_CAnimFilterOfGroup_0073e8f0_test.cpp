@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <stddef.h>
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 static int g_defaultCtors = 0, g_assigns = 0;
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString() : m_pData(0) { ++g_defaultCtors; }
     CCharString(CCharStringData* d) : m_pData(d) { }
@@ -12,7 +12,7 @@ struct CCharString {
 };
 static const void* g_calcData = 0; static unsigned long g_calcLen = 99, g_calcSeed = 99;
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length) { g_calcSeed = seed; g_calcData = data; g_calcLen = length; return 0x1234 + length; }
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual void v00() { }
     CCharString Group; unsigned long GroupCRC;
     CAnimFilterOfGroup(const CCharString& name) : Group() { Group = name; GroupCRC = Calc_004014a0(0, name.GetPString(), name.GetLength()); }

@@ -12,7 +12,7 @@ typedef unsigned short wchar16;          // wchar_t is not a built-in type under
 
 extern "C" __declspec(dllimport) unsigned long __stdcall GetFileAttributesW(const wchar16* fileName);   // IAT 0x0143FDBC
 
-struct CWideStringData;
+class CWideStringData;
 class CWideString
 {
 public:

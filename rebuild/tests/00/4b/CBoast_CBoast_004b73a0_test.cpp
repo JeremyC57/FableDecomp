@@ -1,7 +1,7 @@
 #include <stdio.h>
 static int g_cs, g_ws;
-struct CCharString { void* m_pStringData; CCharString() : m_pStringData(0) {} CCharString(const CCharString& o) : m_pStringData(o.m_pStringData) { ++g_cs; } };
-struct CWideString { void* m_pStringData; CWideString() : m_pStringData(0) {} CWideString(const CWideString& o) : m_pStringData(o.m_pStringData) { ++g_ws; } };
+class CCharString { public: void* m_pStringData; CCharString() : m_pStringData(0) {} CCharString(const CCharString& o) : m_pStringData(o.m_pStringData) { ++g_cs; } };
+class CWideString { public: void* m_pStringData; CWideString() : m_pStringData(0) {} CWideString(const CWideString& o) : m_pStringData(o.m_pStringData) { ++g_ws; } };
 struct CBoast {
     long ID; long Cost; long Reward; CCharString ScriptName; CWideString Text; CWideString Title; bool Evil; bool Failed; bool Completed; long GroupIndex;
     CBoast() {}

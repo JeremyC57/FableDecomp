@@ -19,7 +19,7 @@ extern unsigned long g_MaxTextureWidth;            // 0x013B7D60
 extern unsigned long g_MaxTextureHeight;           // 0x013B7D64
 struct CTextureOwnerA { void SetMaxTextureSize(long size); };   // 0x00434DD0
 struct CTextureOwnerB { void SetMaxTextureSize(long size); };   // 0x0049D840
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x24];
     CTextureOwnerB* PWorld;                         // +0x24
     CTextureOwnerA* PDisplayEngine;                         // +0x28

@@ -71,7 +71,7 @@ public:
     ~CDefendingCombatantInfo() { ++gDefenderDtors; }   // stand-in for 0x006F48A0
 };
 
-class CCombatantInfo {
+struct CCombatantInfo {
 public:
     CThingCreatureBase* Parent;
     CAttackingCombatantInfo AttackerInfo;

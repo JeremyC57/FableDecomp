@@ -16,7 +16,7 @@ extern "C" double __cdecl sin(double x);
 extern "C" double __cdecl cos(double x);
 #pragma intrinsic(sin, cos)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

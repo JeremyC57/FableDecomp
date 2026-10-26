@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,16 +41,16 @@ struct CThing {
 
 
 
-struct CTCCombat { void SetMeleeFlourishValid(bool valid); };   // 0x00733E10
-struct CTCHeroStats {
+class CTCCombat { public: void SetMeleeFlourishValid(bool valid); };   // 0x00733E10
+class CTCHeroStats { public:
     unsigned char _pad00[0x98];
     long MaximumMultiplier;                     // +0x98 (PDB +0xa0)
 };
-struct CTCHeroOnlineScoreboard { void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
+class CTCHeroOnlineScoreboard { public: void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
 
 struct CComboMultiplierSounds { unsigned char _map[0xc]; };   // map<long, CDefString>
 
-struct CHeroExperienceDef {
+class CHeroExperienceDef { public:
     unsigned char _base[0x64];
     float ExperienceMultiplierParamPerUnitComboMultiplier;  // +0x64
     float ExperienceMultiplierRegionChangeMultiplier;       // +0x68

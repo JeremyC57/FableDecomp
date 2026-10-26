@@ -10,7 +10,7 @@ struct _GUID {
     unsigned char  Data4[8];
 };
 
-struct CSystemManager {
+class CSystemManager { public:
     bool  ApplicationActive;
     _GUID ApplicationGUID;
     _GUID BestGUID;

@@ -1,4 +1,4 @@
-struct CCreatureAction_UnsheatheWeapons {
+class CCreatureAction_UnsheatheWeapons { public:
     void* vftable;
 };
 

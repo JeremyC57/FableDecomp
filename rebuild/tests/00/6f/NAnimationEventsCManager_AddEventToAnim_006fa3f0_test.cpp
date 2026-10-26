@@ -64,22 +64,22 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
-struct CDefinitionManager;
-struct CGraphicDataBank;
-struct CInputManager;
-struct CMeshDataBank;
-struct CTCHeroExperience;
-struct CTCInventory;
-struct CTCInventoryAbilities;
-struct CTCInventoryClothing;
-struct CTCInventoryExperience;
-struct CTCInventoryMap;
-struct CTCInventoryQuests;
-struct CTCInventoryTrade;
-struct CTCInventoryWeapons;
-struct CThing;
+class CDefinitionManager;
+class CGraphicDataBank;
+class CInputManager;
+class CMeshDataBank;
+class CTCHeroExperience;
+class CTCInventory;
+class CTCInventoryAbilities;
+class CTCInventoryClothing;
+class CTCInventoryExperience;
+class CTCInventoryMap;
+class CTCInventoryQuests;
+class CTCInventoryTrade;
+class CTCInventoryWeapons;
+class CThing;
 
 #pragma pack(push, 1)
 struct CManager {
@@ -193,7 +193,7 @@ FABLE_STATIC_ASSERT(offsetof(CManager, AssignmentSpellsSwapping) == 0xfb);
 #include <stddef.h>
 void operator delete[](void*) throw(); //00BFEB1C native array delete, not scalar CRT delete
 namespace NAnimationEvents {
-struct CEvent {unsigned long Index:30;unsigned long ExternallyImported:1;unsigned long StopEvent:1;float Time;CEvent(){}};
+class CEvent { public:unsigned long Index:30;unsigned long ExternallyImported:1;unsigned long StopEvent:1;float Time;CEvent(){}};
 struct EventVector {
  CEvent* Start;int Size;
  EventVector():Start(0),Size(0){}
@@ -216,7 +216,7 @@ struct EventMap {
  void Insert(unsigned long key,const EventVector& value){{EventPair pair(key,value);PushBack(pair);}Dirty=true;}
  void Sort(){if(Dirty){SortEventPairs(First,Last,Compare);Dirty=false;}}
 };
-struct CManager {
+class CManager { public:
  unsigned char NativeManagerPrefix[0x2c];EventMap AnimToExtraEventsMap;bool DifferentToSavedCopy;
  void AddEventToAnim(unsigned long,const CEvent&);
 };

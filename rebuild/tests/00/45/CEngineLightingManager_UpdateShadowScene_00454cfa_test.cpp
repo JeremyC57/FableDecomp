@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad00[0x18];
     int mode;
     char pad1c[0x24-0x1c];

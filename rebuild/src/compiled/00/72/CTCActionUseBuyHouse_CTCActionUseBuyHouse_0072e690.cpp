@@ -14,9 +14,9 @@
 // is the /Os 0x004DA939): the base's two members are stored BEFORE the derived vtable (the base's
 // vtable store is dead and dropped), the derived members after it from one zero register, then the
 // body's call. engine/CTCBase.h holds the layout only, so the root is modelled as `CTCBase_Calls`.
-struct CThing;
-struct CActionUseDef;
-struct CBuyHouseDef;
+class CThing;
+class CActionUseDef;
+class CBuyHouseDef;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -28,12 +28,12 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     const T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };
 
-struct CTCActionUseBase : CTCBase_Calls {                   // vtable 0x0123F09C
+class CTCActionUseBase : public CTCBase_Calls { public:                   // vtable 0x0123F09C
     CDefPointer<CActionUseDef> PActionUseDef;               // +0x0c
     bool                       Usable;                      // +0x10
     virtual void v00();

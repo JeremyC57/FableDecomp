@@ -31,7 +31,7 @@ public:
 #define CWorld DonorCWorld
 #include "engine/CWorld.h"
 #undef CWorld
-struct CWorld : DonorCWorld {                      // engine/CWorld.h (Paused +0xA4 is written by SetAsPaused)
+class CWorld : public DonorCWorld { public:                      // engine/CWorld.h (Paused +0xA4 is written by SetAsPaused)
     void SetAsPaused(bool paused);                 // 0x0049D8F0
     void EASetPauseMode(const CGameEvent* event);
 };

@@ -3,7 +3,7 @@
 static int g_destroyed = 0;
 struct SCountBlock { int m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
 static void Destroy(void*) { ++g_destroyed; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; SCountBlock* m_pCount;
     CCountedPointer& operator=(const CCountedPointer& other)
     {
@@ -17,9 +17,9 @@ template <class T> struct CCountedPointer {
     }
     T* operator->() const { return Data; }
 };
-struct CThingCreatureBase;
-struct CCreatureInteraction { CThingCreatureBase* added[4]; int n; void AddCreature(CThingCreatureBase* c) { added[n++] = c; } };
-struct CThingCreatureBase {
+class CThingCreatureBase;
+class CCreatureInteraction { public: CThingCreatureBase* added[4]; int n; void AddCreature(CThingCreatureBase* c) { added[n++] = c; } };
+class CThingCreatureBase { public:
     CCountedPointer<CCreatureInteraction> PCreatureInteraction;
     void AddToCreatureInteraction(const CCountedPointer<CCreatureInteraction>& interaction)
     { PCreatureInteraction = interaction; PCreatureInteraction->AddCreature(this); }

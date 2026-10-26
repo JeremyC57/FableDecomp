@@ -14,7 +14,7 @@ struct CRenderSystem {
     unsigned char      _pad00[0x58];
     IDirect3DDevice9*  m_pDevice;           // +0x58
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char  _pad00[0x60];
     CRenderSystem* m_pRender;               // +0x60
 };
@@ -39,12 +39,12 @@ long __stdcall D3DXCreateTextureFromFileExW(IDirect3DDevice9* device, const unsi
     IDirect3DTexture9** texture);           // 0x00BFEFD4
 struct SPixelFormatInfo { long d3dFormat; long rest[8]; };   // 0x24 bytes
 extern SPixelFormatInfo g_pixelFormatInfo[];
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI() {}
     C2DExtentsI(long x, long y) : X(x), Y(y) {}
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     void Initialise(long d3dFormat);                         // 0x009E3830
 };

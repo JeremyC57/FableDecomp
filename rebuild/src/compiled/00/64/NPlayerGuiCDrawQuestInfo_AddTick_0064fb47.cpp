@@ -15,11 +15,11 @@
 // Shape: a frame-pointer size TU as the landed AddTimer/AddBar; the two binding lookups form one `||` condition; the
 // action name is a named local placed by VC in the dead `action` argument slot; the element ID is read through the
 // counted local before its destructor; both failure paths share `or eax,-1`.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 enum EGameAction { GAME_ACTION_NONE = 0 };
-struct CActionInputControl {
+class CActionInputControl { public:
     long GameAction;                               // +0x00
     long ControllerType;                           // +0x04
     long KeyboardKey;                              // +0x08
@@ -32,12 +32,12 @@ struct CActionInputControl {
         ControlDirection.Y = 0.0f;
     }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     ~CWideString();                                // 0x0099B510
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     bool GetAssignedInputForAction(EGameAction action, bool primary, CActionInputControl* control);   // 0x00408C90
 };
 template <class T> struct CTBaseSingleton {
@@ -65,7 +65,7 @@ struct CQuestInfoElementTick : CQuestInfoElement { // retail 0x28 bytes
     unsigned char _tick[0x28 - 0x1c];
     CQuestInfoElementTick(const CWideString& name, bool ticked, float scale);   // 0x00656C77
 };
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     void AddElement(CCountedPointer<CQuestInfoElement> element);       // 0x0064A3ED
     long AddTick(EGameAction action, bool ticked, float scale);
 };

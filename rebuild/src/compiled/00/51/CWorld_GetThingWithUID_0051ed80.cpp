@@ -12,7 +12,7 @@ struct Sub {
     Node* Find(void* key);      // __fastcall member @ 0x527d80 (this in ecx, key on stack)
 };
 
-struct CWorld {
+class CWorld { public:
     char pad[0x58];
     Sub sub;                    // at +0x58
     DWORD GetThingWithUID(int a1, int a2);

@@ -10,17 +10,17 @@
 //   (descriptive field name). Model shared with the landed CTCWillLightning::Deactivate 0x007A0310 and
 //   CLightningBeam::IsTargetValid 0x0079FD90.
 // Shape: the list size() is the counting loop (`size() != 0`); the interface lookup uses the one-ternary entry pick.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 struct CDefStringTable {
     CCharString GetString(CDefString name);           // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;              // 0x013CA828
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -45,7 +45,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -63,17 +63,17 @@ struct CThing {
         return false;
     }
 };
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(const CCharString& name, bool a, bool b, bool c, long d);   // 0x0066BD00
     unsigned long PlayUnattachedCriteria(const CCharString& name, const C3DVector& pos, bool a, bool b);   // 0x0066BDF0
 };
-struct CCPPointerInfo {                          // counted-pointer info block
+class CCPPointerInfo { public:                          // counted-pointer info block
     long Count;                                  // +0
     void (__fastcall* Destroy)(void*);           // +4 per-type deleter, object in ecx
     void* Object;                                // +8
 };
 void operator delete(void* p);                   // 0x00BFE9BC
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
@@ -114,7 +114,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CSpecialAbilitiesLightningSpellDef {
+class CSpecialAbilitiesLightningSpellDef { public:
     unsigned char _pad[0x11c];
     CDefString    HitSound;                      // +0x11c (descriptive name)
 };

@@ -4,13 +4,13 @@
 #include <new>
 static int g_base = 0;
 struct CBase { CBase() { ++g_base; } virtual ~CBase() {} };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 template <class T> struct CAllocProxy { T* _M_data; CAllocProxy(T* p) : _M_data(p) {} };
 template <class T> struct CVector {
     T* _M_start; T* _M_finish; CAllocProxy<T> _M_end_of_storage;
     CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-template <class K, class V> struct CVectorMap {
+template <class K, class V> class CVectorMap { public:
     CVector<V> Data;
     char       Compare;
     bool       Dirty;

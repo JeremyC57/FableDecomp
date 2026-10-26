@@ -9,8 +9,8 @@
 //   each call is the non-virtual CAInputProcess::RemoveFromInterface @ 0x00A0D2D0 on the scoped_ptr's raw pointer
 //   (engine/CPlayer.h offsets match retail here, as in the landed UninitModeBerserk 0x006339B0).
 #include "engine/CPlayer.h"
-typedef long EPlayerMode; struct CProcessedInput;
-struct CAInputProcess { void RemoveFromInterface(); };          // 0x00A0D2D0
+typedef long EPlayerMode; class CProcessedInput;
+class CAInputProcess { public: void RemoveFromInterface(); };          // 0x00A0D2D0
 struct CPlayer_Methods : CPlayer { void UninitModeQuickAccessMenu(EPlayerMode, CProcessedInput*); };
 void CPlayer_Methods::UninitModeQuickAccessMenu(EPlayerMode mode, CProcessedInput* input)
 {

@@ -6,11 +6,11 @@
 static unsigned long GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
 static unsigned long WorldRandom(unsigned long& seed) { seed = seed * 0x24A1 + 0x24DF; seed = GFROR13(seed); return seed; }
 struct CRingRotationDef { long RotationChance; float RotationSpeed; long RefCount; };
-struct CCombatTypeDef { CRingRotationDef* Rotation; bool GetSubDef(CRingRotationDef*& out) const { out = Rotation; if (out) ++out->RefCount; return out != 0; } };
-struct CThingCreatureBase { int Id; CCombatTypeDef* Type; bool OnRotatingRing; CCombatTypeDef* GetCombatTypeDef() const { return Type; } };
-struct CCombatSequenceBase { bool Melee, Running; int Stops; bool IsMeleeSequence() { return Melee; } void Stop() { ++Stops; Running = false; } };
+class CCombatTypeDef { public: CRingRotationDef* Rotation; bool GetSubDef(CRingRotationDef*& out) const { out = Rotation; if (out) ++out->RefCount; return out != 0; } };
+class CThingCreatureBase { public: int Id; CCombatTypeDef* Type; bool OnRotatingRing; CCombatTypeDef* GetCombatTypeDef() const { return Type; } };
+class CCombatSequenceBase { public: bool Melee, Running; int Stops; bool IsMeleeSequence() { return Melee; } void Stop() { ++Stops; Running = false; } };
 struct CCombatantInfo { CThingCreatureBase* Parent; CThingCreatureBase* Attacked; long CurrentSequence; CCombatSequenceBase* Sequences[1]; int PatternSteps; };
-struct CCombatManager {
+class CCombatManager { public:
     CCombatantInfo* Infos; int Count; unsigned long Seed; int Rotations; float LastSpeed;
     CCombatantInfo& GetCombatantInfo(const CThingCreatureBase& c) { for (int i = 0; i < Count; ++i) if (Infos[i].Parent->Id == c.Id) return Infos[i]; return Infos[0]; }
     void IncrementDefenderAttackPattern(CCombatantInfo& info) { ++info.PatternSteps; }

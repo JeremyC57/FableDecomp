@@ -4,29 +4,29 @@
 #include <cstring>
 #include <cmath>
 
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString(const char* t, long = -1) { std::strcpy(text, t); }
     bool operator!=(const CCharString& o) const { return std::strcmp(text, o.text) != 0; }
     CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; }
 };
-struct CThing { int id; };
-struct CAnimInit {
+class CThing { public: int id; };
+class CAnimInit { public:
     long animType, arg24, animIndex, mode; bool flag05; unsigned long flags; long percent;
     CAnimInit(long t, long a, long i, long m, bool f, unsigned long fl, long p)
         : animType(t), arg24(a), animIndex(i), mode(m), flag05(f), flags(fl), percent(p) { }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;
     unsigned long GetAnimateThingFlags() { return 0x40; }
     long GetAnimationTransitionInTime() { return 7; }
     long GetTimeToBlendIn(CThing*) { return 5; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CTCStealth { bool Viewable; };
+class C3DVector { public: float X, Y, Z; };
+class CTCStealth { public: bool Viewable; };
 static char g_requested[32];
 static CAnimationEntry g_entry = { 42 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     C3DVector MovementVector;
     CTCStealth* stealth;
     template <class T> bool GetInterface(const T** out, long type) const
@@ -36,7 +36,7 @@ struct CThingCreatureBase : CThing {
     }
     CAnimationEntry* GetAnimFromName(const CCharString& name, long) { std::strcpy(g_requested, name.text); return &g_entry; }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void* AnimsBegin; void* AnimsEnd;
     unsigned char CurrentAnimType, CurrentAnimFlags;
     int calls; long lastType, lastMode, lastIndex, lastBlend, lastTransition;

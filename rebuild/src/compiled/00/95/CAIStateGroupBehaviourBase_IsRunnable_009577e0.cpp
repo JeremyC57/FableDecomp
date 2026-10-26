@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH -- explicit reset temporary lifetime preserves retail target-address ordering.
 #include "engine/CAIStateGroupBehaviourBase.h"
 #include "engine/CTCPerceiveThing.h"
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

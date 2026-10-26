@@ -15,7 +15,7 @@ struct CTCFishingSpotBase_00c3cb30 {       // vtable 0x012B5868, 0x1c bytes
     ~CTCFishingSpotBase_00c3cb30() { }
 };
 
-struct CTCFishingSpot : CTCFishingSpotBase_00c3cb30 {   // vtable 0x012B5870
+class CTCFishingSpot : public CTCFishingSpotBase_00c3cb30 { public:   // vtable 0x012B5870
     CSlot_00c3cb30 m_slot1;                // +0x1c
     CSlot_00c3cb30 m_slot2;                // +0x30
     CSlot_00c3cb30 m_slot3;                // +0x44

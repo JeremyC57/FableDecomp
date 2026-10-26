@@ -16,7 +16,7 @@ struct CAnimComponentSetCreatureMode_Base {
     CAnimComponentSetCreatureMode_Base() : m_count(1) { }
 };
 
-struct CAnimComponentSetCreatureMode : CAnimComponentSetCreatureMode_Base {
+class CAnimComponentSetCreatureMode : public CAnimComponentSetCreatureMode_Base { public:
     virtual void v00();
     unsigned char _tail[0x4];
     CAnimComponentSetCreatureMode() : CAnimComponentSetCreatureMode_Base() { }

@@ -63,10 +63,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CCharStringData* NewLine_PStringData;                    // +0x04 CCharString::PStringData
 };
@@ -89,7 +89,7 @@ FABLE_STATIC_ASSERT(offsetof(CDataOutputStream, NewLine_PStringData) == 0x4);
 
 
 #pragma pack(push, 1)
-struct CHeroExperienceDef {
+class CHeroExperienceDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08

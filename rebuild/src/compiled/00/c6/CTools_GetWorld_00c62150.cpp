@@ -5,7 +5,7 @@
 // Shape: a static `__stdcall` member (no `this`, callee pops the one argument) taking a reference; each
 // hop is one load: [ref] -> +4 -> +0 -> +4 -> +0x38. The intermediate records are opaque here and named
 // by position only.
-struct CWorld;
+class CWorld;
 
 struct CWorldRecord {                              // the record that owns the world pointer
     unsigned char _pad[0x38];

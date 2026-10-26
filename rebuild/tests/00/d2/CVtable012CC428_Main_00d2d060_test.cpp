@@ -64,10 +64,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptThing {
+class CScriptThing { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
     CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
@@ -91,15 +91,15 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 #include <stddef.h>
 
 
-struct CDisplayEngine;
-struct CGameDefinitionManager;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingSearchTools;
-struct CWorld;
+class CDisplayEngine;
+class CGameDefinitionManager;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingSearchTools;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -155,7 +155,7 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) ==
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -177,10 +177,10 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     void*                                       __vftable;   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                               _pad_0x04[0x4]; // +0x04
     CScriptGameResourceObjectScriptedThingBase* PImp_Data;   // +0x08 CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::Data
@@ -195,7 +195,7 @@ FABLE_STATIC_ASSERT(offsetof(CScriptGameResourceObjectScriptedThingBase, PImp_In
 
 #endif // FABLE_ENGINE_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_H
 
-struct CCPPointerInfo {unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
+class CCPPointerInfo { public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
 extern const unsigned char ResourceBaseVTable[]; //0126008C genuine CScriptGameResourceObjectBase
 extern const unsigned char ResourceVTable[]; //0127094C
 // Generated resource header flattens CBaseObject. This field-free API binds the

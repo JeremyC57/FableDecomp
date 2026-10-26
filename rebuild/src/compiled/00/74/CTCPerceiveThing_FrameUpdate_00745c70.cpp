@@ -16,16 +16,16 @@
 // Shape: the melee flag is a bool local kept in bl (HasTC test, else 0) and stored into PerceptionCombat on every path; the
 //   update test is `IsUpdatingThisFrame() || (inMelee && !PerceptionCombat)`; the reset / update arms each get their own
 //   epilogue with the trailing store.
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;         // 0x004365B0 (const instantiation)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                         // +0x44
@@ -45,13 +45,13 @@ struct CThing {
         return it->component;
     }
 };
-struct CTCCombat {
+class CTCCombat { public:
     bool IsInMelee() const;                             // 0x00733190 (forwards to its creature +0x24, 0x00661E80)
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature() const;              // 0x00487DD0 (PDB GetPControlledCreature)
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                        // 0x0049D870
     const CPlayer* PeekMyPlayer() const;                // 0x0049D9D0
 };
@@ -60,11 +60,11 @@ struct CBaseIntelligentPointer {                        // CIntelligentPointer<c
     CThing* m_pItem;
     CThing* GetPItem() const;                           // 0x00A01B50
 };
-struct CPerceivedThingDef {
+class CPerceivedThingDef { public:
     unsigned char _pad00[0x40];
     long          Type;                                 // +0x40 EPerceivedThingType (0: the player)
 };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08

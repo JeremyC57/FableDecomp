@@ -1,7 +1,7 @@
 // Behaviour test for CTCOnHeroPush::IsAngry @ 0x007BBA50: strictly beyond the anger distance.
 #include <cstdio>
 static float g_angryPushDistance = 2.5f;
-struct CTCOnHeroPush {
+class CTCOnHeroPush { public:
     float DistPushed;
     long IsAngry() const { if (DistPushed > g_angryPushDistance) return 1; return 0; }
 };

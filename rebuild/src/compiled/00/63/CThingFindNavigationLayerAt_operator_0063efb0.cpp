@@ -6,18 +6,18 @@
 // CPhysicsMeshObject::GetNavigationLevelAt @ 0x00A11D10 (`const C3DVector&`), ~CPhysicsMeshObject @ 0x00A127D0.
 // Layout: PDB CThingFindNavigationLayerAt { C3DVector Pos; long Layer; }; retail CThing PhysicsTC +0x60.
 // Shape: no EH frame (exceptions off in this TU); `if (level > Layer) Layer = level;` is `cmp eax,[esi+0Ch] ; jle`.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     unsigned char _body[0x40];
     CPhysicsMeshObject(const CPhysicsMeshObject& other);
     ~CPhysicsMeshObject();                          // 0x00A127D0
     long GetNavigationLevelAt(const C3DVector& pos);   // 0x00A11D10
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -31,12 +31,12 @@ struct CTCPhysicsBase {
     CPhysicsMeshObject GetPhysicsMeshObject();      // 0x006B0850
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
 };
 
-struct CThingFindNavigationLayerAt {
+class CThingFindNavigationLayerAt { public:
     C3DVector Pos;                                  // +0x00
     long      Layer;                                // +0x0c
     bool operator()(CThing* thing);

@@ -1,6 +1,6 @@
 // CParticleProgram::PrepareForRendering(C4DVector*, CParticleSimulation*, float, float) -- fill the render vertices: the fixed (non-simulated) positions first, then the simulated ones interpolated between the saved and current simulation states, blended towards the initial simulation when the blend is significant
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE1600, length 181 bytes (`ret 10h`; the 4-argument overload).
-// Leaf: ?PrepareForRendering@CParticleProgram@@QAEXPAUC4DVector@@PAUCParticleSimulation@@MM@Z
+// Leaf: ?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MM@Z
 // Callees: the 8-argument vector interpolation @ 0x00A5BBA0 and GFInterpolateVectors @ 0x00A5B870 (__cdecl, labels
 //          both "GFInterpolateVectors"; strides 16). Global: 1e-4f @ 0x0129BA3C (ordered greater-than test).
 // Layout: engine/CParticleProgram.h is the PDB layout with 16-byte CArrays and a 0x14-byte vector map; the retail
@@ -8,16 +8,16 @@
 // +0xfc/+0x108 (modelled locally). The initial simulation's Positions is at +0x24.
 // Shape: the non-sim copy is the inline SGI random-access copy (n = (last - first), 16-byte elements; the result
 // pointer runs in a copy so the argument is re-read after the loop).
-struct C4DVector { float X, Y, Z, W; };
-struct CMatrix4x4;
-struct C3DGroup2;
-struct C3DAnimationBlendState;
-struct C3DAnimationManager;
-struct C3DVector;
-struct C3DMesh2;
-struct CMovableResourceMemoryPool;
+class C4DVector { public: float X, Y, Z, W; };
+class CMatrix4x4;
+class C3DGroup2;
+class C3DAnimationBlendState;
+class C3DAnimationManager;
+class C3DVector;
+class C3DMesh2;
+class CMovableResourceMemoryPool;
 
-template<class T> struct CArray {                  // retail CArray<T>: three pointers
+template<class T> class CArray { public:                  // retail CArray<T>: three pointers
     T* m_pData;
     T* m_pLast;
     T* m_pEnd;
@@ -32,7 +32,7 @@ void __cdecl GFInterpolateVectors(C4DVector* out, unsigned long outStride, const
 
 extern const float g_MinimumMorphBlend;            // 0x0129BA3C (1e-4f)
 
-struct CParticleSimulation {                       // Ego_r.pdb, retail 0x80 bytes
+class CParticleSimulation { public:                       // Ego_r.pdb, retail 0x80 bytes
     void*         __vftable;                       // +0x00
     unsigned char RenderData[8];                   // +0x04 CCountedPointer<CParticleSimulationRenderData>
     float         Timestep;                        // +0x0c

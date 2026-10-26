@@ -11,8 +11,8 @@
 #define __int64 long long
 #endif
 // (engine/CTCWeapon.h, self-contained copy without its 32-bit size asserts)
-struct CDefPointeeBase;
-struct CTCWeapon {
+class CDefPointeeBase;
+class CTCWeapon { public:
     void*            __vftable;                              // +0x00
     unsigned char    _pad_0x04[0x8];                         // +0x04
     CDefPointeeBase* WeaponDef_Object;                       // +0x0c
@@ -24,7 +24,7 @@ struct CTCWeapon {
     bool             Wielded;                                // +0x24
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -32,7 +32,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     const SEntry* LowerBound(const long& type) const;   // 0x004365B0 (the const instantiation)
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x10 - 0x04];
     unsigned char ThingClass;                   // +0x10
@@ -57,7 +57,7 @@ struct CThing {
     }
 };
 
-struct CTCHeroExperience;                       // interface 0x68
+class CTCHeroExperience;                       // interface 0x68
 struct CExperienceRequirements {                // the +0x13c sub-object of the creature's +0x1e8 record
     bool IsMetBy(const CTCHeroExperience* experience) const;   // 0x00851B50
 };
@@ -65,7 +65,7 @@ struct CCreatureRecord1E8 {                     // unidentified
     unsigned char           _pad00[0x13c];
     CExperienceRequirements Requirements;       // +0x13c
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const CCreatureRecord1E8* GetRecord1E8() const;   // 0x006A98D0
 };
 

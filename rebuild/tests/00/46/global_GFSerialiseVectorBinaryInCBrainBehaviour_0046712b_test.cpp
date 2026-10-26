@@ -9,8 +9,8 @@ struct Reader {
         if (chunkLength >= size) { std::memcpy(buffer, chunkBase, size); chunkBase += size; chunkLength -= size; position += size; }
     }
 };
-struct CDefString { int TablePos; CDefString() : TablePos(-1) { } };
-struct CBrainBehaviour { CDefString Name; int Priority; int ScriptAIPriority; CBrainBehaviour() : Priority(0), ScriptAIPriority(0) { } };
+class CDefString { public: int TablePos; CDefString() : TablePos(-1) { } };
+class CBrainBehaviour { public: CDefString Name; int Priority; int ScriptAIPriority; CBrainBehaviour() : Priority(0), ScriptAIPriority(0) { } };
 static int g_traitsBuilt = 0;
 struct Traits { CBrainBehaviour DefaultVal; Traits() { ++g_traitsBuilt; }
     void TransferBinaryIn(Reader* s, CBrainBehaviour* v) { s->Read(&v->Name.TablePos, 4); s->Read(&v->Priority, 4); s->Read(&v->ScriptAIPriority, 4); } };

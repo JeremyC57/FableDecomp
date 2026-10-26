@@ -10,12 +10,12 @@
 // Shape: `*result = *first` is the pair's implicit (trivial) assignment, five dwords through edi (C3DVector has no user
 //   operator=); the by-value copy is built in the argument area word by word through esi by STLport's explicit pair copy
 //   constructor and the helper point's implicit memberwise copy (C3DVector has a memberwise user copy constructor).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
 
-struct C3DHelperPoint {                                // 0x10 bytes
+class C3DHelperPoint { public:                                // 0x10 bytes
     C3DVector Position;                                // +0x00
     long      BoneIndex;                               // +0x0c
 };

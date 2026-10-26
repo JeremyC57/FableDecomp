@@ -83,8 +83,8 @@ struct CIntelligentPointerConstCreature : CBaseIntelligentPointerReal {  // vtab
     virtual void ip00();
 };
 
-struct CCharString { void* PStringData; };
-struct COpinionReactionManagerDef {
+class CCharString { public: void* PStringData; };
+class COpinionReactionManagerDef { public:
     unsigned char       _pad00[0x48];
     CRetailMap<long>    AttitudeCondition;           // +0x48
     CRetailMap<long>    TargetingCondition;          // +0x54
@@ -100,10 +100,10 @@ struct CDefPointerReactionDef {
     CDefPointerReactionDef() : Data(0) {}
     const COpinionReactionManagerDef* operator->() const { return Data; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointerReactionDef* out);   // 0x00701C90
 };
-struct CWorld {
+class CWorld { public:
     unsigned char       _pad00[0x10];
     CDefinitionManager* DefinitionManager;           // +0x10
 };

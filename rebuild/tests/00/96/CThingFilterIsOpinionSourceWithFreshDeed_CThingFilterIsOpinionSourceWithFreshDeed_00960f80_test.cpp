@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CBaseObject { int x; };
+class CBaseObject { public: int x; };
 static int g_ctor = 0;
 struct CBaseIntelligentPointer { virtual void v00() { } CBaseObject* PItem; CBaseIntelligentPointer() : PItem((CBaseObject*)1) { ++g_ctor; }
     void SetPItem(CBaseObject* item) { PItem = item; } };
 
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() { } CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); } };
-struct CThingFilter_IsOpinionSourceWithFreshDeed { CIntelligentPointer PCreature; long LastVDeedID; unsigned __int64 LastSourceUID;
+class CThingFilter_IsOpinionSourceWithFreshDeed { public: CIntelligentPointer PCreature; long LastVDeedID; unsigned __int64 LastSourceUID;
     CThingFilter_IsOpinionSourceWithFreshDeed(CBaseObject* creature, long lastVDeedID, unsigned __int64 lastSourceUID)
         : PCreature(creature), LastVDeedID(lastVDeedID), LastSourceUID(lastSourceUID) { } };
 int main()

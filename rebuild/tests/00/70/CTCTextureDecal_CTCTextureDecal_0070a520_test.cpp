@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
-struct CThing { int id; };
-struct CEngineTextureDecal;
+class CThing { public: int id; };
+class CEngineTextureDecal;
 static int g_baseCalls = 0;
 struct CTCBase_Calls {
     virtual void v00() { }
@@ -19,7 +19,7 @@ struct CRetailList_DecalEntry {
 };
 struct CRetailVector_EngineDecal { CEngineTextureDecal* First; CEngineTextureDecal* Last; CEngineTextureDecal* End;
     CRetailVector_EngineDecal() : First(0), Last(0), End(0) { } };
-struct CTCTextureDecal : CTCBase_Calls {
+class CTCTextureDecal : public CTCBase_Calls { public:
     CRetailList_DecalEntry Decals; CRetailVector_EngineDecal EngineDecals; long CurrentAllocEntryID; bool Dirty;
     virtual void v00() { }
     CTCTextureDecal(CThing* thing) : CTCBase_Calls(thing), Decals(), EngineDecals(), CurrentAllocEntryID(1), Dirty(false) { }

@@ -1,7 +1,7 @@
 #include <cstdio>
 static float g_fZero = 0.0f;
 static int g_baseCreate = 0;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     float mass;
     void OnCreate() { ++g_baseCreate; }
     float GetMass() { return mass; }

@@ -14,7 +14,7 @@
 // Label correction: catalogued as `LTextTree_InitSentinel`; the real routine is the CSkeletalMorphResourceManager ctor.
 #include <stdlib.h>                                   // malloc @ 0x00BFEA0E
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();                                  // 0x0099EAE0

@@ -3,8 +3,8 @@
 static int g_helper_arg = 0;
 int Helper(void* oldp) { g_helper_arg = (int)(long long)oldp; return 0x9999; }
 
-struct CCharString { void* p; };
-struct CRegion { void* field0; };
+class CCharString { public: void* p; };
+class CRegion { public: void* field0; };
 
 void model(CRegion* self, CCharString* out, float unused) {
     void* old = self->field0;

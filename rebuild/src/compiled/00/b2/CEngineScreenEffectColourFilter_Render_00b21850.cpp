@@ -4,9 +4,9 @@
 // same four locals). Shape: a 0x30-byte frame of four C3DVectors pushed last-first with `lea` into eax/ecx/edx, each argument read from the stack once, between
 // the pushes (`ret 0Ch`). The manifest labels of the callees ("CSplinePosParamData::TransformFromPosition",
 // "Transform_VectorWithQuaternion") are propagated.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CEngineScreenEffectColourFilter {
+class CEngineScreenEffectColourFilter { public:
     unsigned char _pad[8];
     bool          m_enabled;                       // +0x08
     bool ComputeCorners(void* params, void* camera, C3DVector& a, C3DVector& b, C3DVector& c, C3DVector& d);   // 0x00B214C0

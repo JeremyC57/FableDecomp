@@ -17,7 +17,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
     void Release()
     {
@@ -29,7 +29,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual ~CDataInputStream();
     virtual void v1(); virtual void v2(); virtual void v3();
     virtual void ReadData(void* buffer, unsigned long size);   // slot 4 (+0x10)
@@ -56,31 +56,31 @@ struct CDataInputStream {
     }
     __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
 };
-struct CMemoryDataInputStream : CDataInputStream {
+class CMemoryDataInputStream : public CDataInputStream { public:
     CMemoryDataInputStream(const void* data, unsigned long size);   // 0x00994930
     ~CMemoryDataInputStream();                     // 0x00993B10
     void* StreamSource;                            // +0x18 (retail 0x1c bytes)
 };
 
-struct CHandleBasedMemoryPool;
-struct CScopedMemoryHandle {
+class CHandleBasedMemoryPool;
+class CScopedMemoryHandle { public:
     CHandleBasedMemoryPool* Pool;
     long Handle;
     CScopedMemoryHandle() : Pool(0), Handle(-1) {}
     ~CScopedMemoryHandle();
     void* GetPointer() const;
 };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     bool Allocate(CScopedMemoryHandle* handle, unsigned long size, unsigned long flags);   // 0x00A032F0
     void* GetPointerFromHandle(long handle);       // 0x00A026B0
     void Free(long handle);                        // 0x00A02B30
 };
 inline CScopedMemoryHandle::~CScopedMemoryHandle() { if (Pool) Pool->Free(Handle); }
 inline void* CScopedMemoryHandle::GetPointer() const { return Pool->GetPointerFromHandle(Handle); }
-struct CMovableResourceMemoryPool : CHandleBasedMemoryPool {};
+class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:};
 extern CMovableResourceMemoryPool* g_ParticleMemoryPool;   // 0x013D2D70
 
-struct CParticleProgram {
+class CParticleProgram { public:
     CParticleProgram();                                            // 0x00AE3550
     bool ReadFromFile(CDataInputStream* in, CMovableResourceMemoryPool* pool);   // 0x00AE3C30
     unsigned char _body[0x140];

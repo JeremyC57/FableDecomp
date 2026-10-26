@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C3DVector { float x,y,z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x,y,z; };
+class CTCCreatureNavigation;
 struct IHelper {
     virtual bool v6(CTCCreatureNavigation* nav, C3DVector* dest) { return dest->x > 0.0f; }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* f0;
     IHelper* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest) {

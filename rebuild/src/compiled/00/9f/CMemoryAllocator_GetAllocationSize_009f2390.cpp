@@ -30,7 +30,7 @@ __forceinline unsigned char GetAllocatorID(void* block)
         return (unsigned char)((unsigned long)((unsigned char*)block - g_pRegionStart) >> 24);
     return ((unsigned char*)block)[-5];
 }
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     unsigned long MemoryAllocatedPerTrackingID[256];
     unsigned long MemoryAllocated;
     void** MemoryAuditBuffer;

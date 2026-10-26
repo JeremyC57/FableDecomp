@@ -1,4 +1,4 @@
-struct CCreatureAction_BlockRespond {
+class CCreatureAction_BlockRespond { public:
     void* vftable;
 };
 

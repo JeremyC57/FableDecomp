@@ -11,15 +11,15 @@
 // Layout: PDB (Ego_r) CMessageEvent (0x58) names/types; retail offsets equal the PDB. Local model: no engine/ header
 //   exists for CMessageEvent / CBaseObject / CBaseIntelligentPointer.
 struct CBaseObjectPointer;
-struct CThing;
-struct CFaction;
-struct C3DVector {                                      // the engine vector has a user-written member-wise copy
+class CThing;
+class CFaction;
+class C3DVector { public:                                      // the engine vector has a user-written member-wise copy
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
 enum EMessageEventType { EMessageEventType_Force32 = 0x7fffffff };
 enum EReactionSpeechType { EReactionSpeechType_Force32 = 0x7fffffff };
-struct CBaseObject {
+class CBaseObject { public:
     virtual ~CBaseObject();
     CBaseObjectPointer* IntelligentPointer;             // +0x04
     CBaseObject(const CBaseObject& other);              // 0x0099A390
@@ -31,11 +31,11 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                      // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
     virtual ~CIntelligentPointer();
 };
-struct CMessageEvent : CBaseObject {
+class CMessageEvent : public CBaseObject { public:
     EMessageEventType Type;                             // +0x08
     C3DVector Pos;                                      // +0x0c
     float SightRadius;                                  // +0x18

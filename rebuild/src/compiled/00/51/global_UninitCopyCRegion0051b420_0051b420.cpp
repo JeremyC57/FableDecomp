@@ -11,7 +11,7 @@
 // type is named from the copy constructor's label when unique. One of 21 bodies.
 #include <new>
 
-struct CRegion {
+class CRegion { public:
     unsigned char _body[0x58];
     CRegion(const CRegion& other);           // 0x0051A900
 };

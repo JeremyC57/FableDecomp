@@ -16,7 +16,7 @@ struct CHeader {                                // CHandleBasedMemoryPool::CHead
     unsigned char Locked;                       // +0x0f
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     unsigned char _pad00[0x18];
     long          LockCount;                    // +0x18
     unsigned char _pad1c[0x440 - 0x1c];

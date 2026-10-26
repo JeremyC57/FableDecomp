@@ -11,7 +11,7 @@
 //   component lands straight in ecx); the main anim index
 //   is read through `*begin()` before the empty test; the init record is the landed inline CAnimInit constructor (zero
 //   blend pair stored after the Set arguments).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -24,7 +24,7 @@ struct CBlendPair {
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                              // 0x2c bytes
+class CAnimInit { public:                              // 0x2c bytes
     long          Mode;                         // +0x00
     unsigned char AnimType;                     // +0x04
     bool          Flag05;                       // +0x05
@@ -49,14 +49,14 @@ struct CShortVector {                           // retail std::vector<short> (12
     short* end() const { return _M_finish; }
     bool empty() const { return _M_start == _M_finish; }
 };
-struct CAnimSet {
+class CAnimSet { public:
     long UpdateMode;                            // +0x00
     CShortVector Anims;                         // +0x04
     unsigned char _pad10[0x51 - 0x10];
     unsigned char Looping : 1;                  // +0x51 bit 0
     unsigned char Finished : 1;                 // +0x51 bit 1
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     CAnimSet MainAnimSet;                       // +0x00 CurrentAnim.MainAnimSet
     unsigned char _pad54[0x94 - 0x54];
     unsigned char SettingMainAnim : 1;          // +0x94 bit 0

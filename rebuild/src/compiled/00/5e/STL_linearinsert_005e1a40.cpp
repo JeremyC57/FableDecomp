@@ -39,7 +39,7 @@ bool CBasicStringChar::operator<(const CBasicStringChar& other) const
 }
 #pragma auto_inline(on)
 
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0

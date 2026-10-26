@@ -28,13 +28,13 @@ struct CIVAnimationDataPointer {
         return *this;
     }
 };
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     void* VTable;
     CIVAnimationDataPointer Data;
     C3DAnimationBlendState& operator=(const C3DAnimationBlendState&); // 00710600
 };
 inline CMeshDataBank* GetMainMeshBank(CWorld* world) { return world->PMainMeshBank_Data; }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _beforeWorld[0x24];
     CWorld* PWorld;
     CWorld* GetWorld() const { return PWorld; }
@@ -43,7 +43,7 @@ extern CMainGameComponent* g_pMainGameComponent; // 013B86A0
 extern bool g_ValidateAnimationStates; // 013B86C9
 // CMeshDataBank.h has data only; this method-only view accesses no members.
 struct CMeshDataBankAnimationAccess { bool FABLE_FASTCALL ValidateAnimationStates(const C3DAnimationBlendState*); }; // 0070C770
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _currentAndDelayedAnimations[0x68];
     C3DAnimationBlendState StartAnimState, EndAnimState, LastStartAnimState, LastEndAnimState;
     float Scale, ChangeAlphaBy;

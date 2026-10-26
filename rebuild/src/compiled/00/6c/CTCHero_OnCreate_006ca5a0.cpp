@@ -12,14 +12,14 @@
 // VC7.1 drops the destructor's null test after the `->` dereference, and folds the first temporary's tests into the `if`). The
 // condition reads `.Object` straight (an IsNull()/bool helper materialises a `setne bl`); with the release written inline in the
 // destructor the folded count copy lands in edi instead of edx.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CThing {
 public:
     const C3DVector& GetPosition() const;                // 0x004C73D0
 };
 
-struct CRegionDef {
+class CRegionDef { public:
     virtual void v00();
     virtual void Destroy();                              // slot 1
     long          m_refCount;                            // +0x04
@@ -29,14 +29,14 @@ struct CRegionDef {
     bool          PreventHeroWillUse;                    // +0x71
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 
-struct CRegion {                                         // 0x58-byte world-map region record
+class CRegion { public:                                         // 0x58-byte world-map region record
     unsigned char           _pad00[0x24];
     CDefPointer<CRegionDef> PDef;                        // +0x24
     CDefPointer<CRegionDef> GetDef() const { return PDef; }

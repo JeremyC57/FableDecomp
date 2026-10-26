@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static int g_mode;
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     bool IsHeroControlledByPlayer() const
     {
         switch (g_mode) {

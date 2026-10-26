@@ -9,7 +9,7 @@
 //        parent has bit 4 of its +0x6C byte set, PostDeed(0x50, &pos, parent, parent, 1, false, false, 0, false, 0).
 // Layout: CTCWife ParentThing +0x04, FrameGotMarriedToThePlayer +0x20; retail CThing bitset +0x20, interface map +0x44,
 //         Dead +0x91.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -43,23 +43,23 @@ public:
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CFaction;
+class CFaction;
 class CThingAICreature;
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     long PostDeed(long deedType, const C3DVector* position, CThing* thing, CThing* creature, long postType,
                   bool b1, bool b2, CFaction* faction, bool b3, long value);   // 0x006C6990
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[0x20 - 0x08];

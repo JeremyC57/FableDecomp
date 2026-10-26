@@ -1,4 +1,4 @@
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     void* vftable;
 };
 

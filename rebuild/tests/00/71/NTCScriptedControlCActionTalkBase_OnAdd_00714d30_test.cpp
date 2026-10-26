@@ -1,7 +1,7 @@
 // Behaviour test for 0x00714D30 NTCScriptedControl::CActionTalkBase::OnAdd
 #include <cstdio>
-struct CThing { bool hasControl; struct CControl* control; };
-struct CConversation { int id; };
+class CThing { public: bool hasControl; struct CControl* control; };
+class CConversation { public: int id; };
 struct CActionTalkedTo { CThing* talker; CConversation* conversation; };
 struct CControl {
     int added; CActionTalkedTo* last;

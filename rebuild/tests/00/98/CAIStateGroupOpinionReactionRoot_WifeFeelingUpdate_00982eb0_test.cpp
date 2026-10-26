@@ -10,7 +10,7 @@ public:
     char m_text[128];
 };
 static CCharString g_OpinionAttitudeNames[3] = { CCharString("LOVE", -1), CCharString("LIKE", -1), CCharString("NEUTRAL", -1) };
-struct CAIStateGroup_OpinionReactionRoot {
+class CAIStateGroup_OpinionReactionRoot { public:
     char m_said[128]; long m_layer; EAIActionReturn m_result; int m_contextCalls;
     long GetReactionContext() { ++m_contextCalls; return 0; }
     EAIActionReturn SayToThingReactingTo(const CCharString& text) { std::strcpy(m_said, text.m_text); m_layer = -1; return m_result; }

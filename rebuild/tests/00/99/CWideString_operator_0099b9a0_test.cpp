@@ -44,12 +44,12 @@ struct CWideBasicString {
     static wchar_t* __fastcall UninitFillN(wchar_t* first, size_t n, const wchar_t& value);   // 0x005123A0
 };
 
-struct CWideStringData {
+class CWideStringData { public:
     CWideBasicString Data;   // +0x00
     long NoRefs;             // +0x0C
 };
 
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;   // +0x00
     void MakeOwnCopyOfData();       // 0x0099B560
     CWideStringData* AllocStringData(const wchar_t* text, long length);   // 0x0099B3C0

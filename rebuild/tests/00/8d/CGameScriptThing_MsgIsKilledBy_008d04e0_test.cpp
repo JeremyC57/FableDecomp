@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharStringData { const char* PData; unsigned long StringLength; };
+class CCharStringData { public: const char* PData; unsigned long StringLength; };
 static bool BasicEquals(const CCharStringData& d, const char* text) { return std::strcmp(d.PData, text) == 0; }
 static long Compare_00411570(const char* a, const char* b) { int r = std::strcmp(a, b); return r < 0 ? -1 : (r > 0 ? 1 : 0); }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {
@@ -15,7 +15,7 @@ struct CCharString {
     }
 };
 static int g_scriptThings;
-struct CScriptThing {
+class CScriptThing { public:
     CCharString Name;
     CScriptThing(const CCharString& n) : Name(n) { ++g_scriptThings; }
     CScriptThing(const CScriptThing& o) : Name(o.Name) { ++g_scriptThings; }
@@ -26,13 +26,13 @@ struct CThingRetail {
     CCharString ScriptName; unsigned char Dead;
     CScriptThing GetScriptThing() const { return CScriptThing(ScriptName); }
 };
-struct CMessageEvent { long Type; unsigned long long Target; CThingRetail* Originator; };
+class CMessageEvent { public: long Type; unsigned long long Target; CThingRetail* Originator; };
 static CMessageEvent* g_message;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(long type, unsigned long long uid)
     { return (g_message && g_message->Type == type && g_message->Target == uid) ? g_message : 0; }
 };
-struct CGameScriptThing {
+class CGameScriptThing { public:
     unsigned long long ThingUID; CMessageEventManager* Messages;
     bool MsgIsKilledBy(const CCharString& killer) const
     {

@@ -2,16 +2,16 @@
 #include <cstring>
 #include <math.h>
 
-struct C3DVector { float X, Y, Z; };
-struct C3DAnimationInfo { float Duration; C3DVector MovementVector; };
-struct CMeshDataBank { C3DAnimationInfo m_infos[4]; C3DAnimationInfo* GetAnimation(long index) { return &m_infos[index]; } };
-struct CWorld { CMeshDataBank* PMainMeshBank; };
+class C3DVector { public: float X, Y, Z; };
+class C3DAnimationInfo { public: float Duration; C3DVector MovementVector; };
+class CMeshDataBank { public: C3DAnimationInfo m_infos[4]; C3DAnimationInfo* GetAnimation(long index) { return &m_infos[index]; } };
+class CWorld { public: CMeshDataBank* PMainMeshBank; };
 static CMeshDataBank g_bank; static CWorld g_world;
 static int g_worldPeeks = 0;
 
 inline float Magnitude(float x, float y, float z) { return (float)sqrt(x * x + y * y + z * z); }
-struct CThing { const CWorld& PeekWorld() const { ++g_worldPeeks; return g_world; } };
-struct CThingCreatureBase : CThing {
+class CThing { public: const CWorld& PeekWorld() const { ++g_worldPeeks; return g_world; } };
+class CThingCreatureBase : public CThing { public:
     float GetAnimMovementDistance(long animIndex) const
     {
         if (animIndex) {

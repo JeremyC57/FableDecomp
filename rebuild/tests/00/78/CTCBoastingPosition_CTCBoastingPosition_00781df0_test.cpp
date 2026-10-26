@@ -4,8 +4,8 @@
 static int g_kills = 0;
 static bool g_lastImmediate = false;
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char Dead : 1;
     void Kill(bool immediately) { ++g_kills; g_lastImmediate = immediately; }
 };
@@ -20,21 +20,21 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCBase
-{
+class CTCBase
+{ public:
     virtual void v00() {}
     CThing* ParentThing;
     CTCBase() : ParentThing(0) {}
     ~CTCBase() {}
 };
 
-struct CTCBoastingPosition : CTCBase
-{
+class CTCBoastingPosition : public CTCBase
+{ public:
     CIntelligentPointer<CThing> PBoastingPodium;
     CIntelligentPointer<CThing> PParticleEffect;
     ~CTCBoastingPosition()

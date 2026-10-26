@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <string.h>
 
-struct CCharString { const char* m_text; };
+class CCharString { public: const char* m_text; };
 
 struct CSymbolIndexMap {
     struct SNode { CCharString m_key; unsigned long m_index; };
@@ -16,7 +16,7 @@ struct CSymbolIndexMap {
     }
 };
 
-struct CBankFile {
+class CBankFile { public:
     CSymbolIndexMap SymbolIndices;
     unsigned long FindIndexBySymbol(const CCharString& symbol) const
     {

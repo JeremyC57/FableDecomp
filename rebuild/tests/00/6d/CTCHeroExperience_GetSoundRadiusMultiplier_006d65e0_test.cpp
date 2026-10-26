@@ -3,8 +3,8 @@
 // Model of CTCHeroExperience::GetSoundRadiusMultiplier @ 0x006d65e0: table[min(stealth level, size - 1)] from the stats def.
 template<class T> inline const T& Min(const T& left, const T& right) { return (right < left) ? right : left; }
 struct CFloatVector { float* _Myfirst; float* _Mylast; long size() const { return (long)(_Mylast - _Myfirst); } };
-struct CHeroStatsDef { CFloatVector SoundDistanceMultiplierPerStealthLevel; };
-struct CTCHeroExperience {
+class CHeroStatsDef { public: CFloatVector SoundDistanceMultiplierPerStealthLevel; };
+class CTCHeroExperience { public:
     long TrainableStatLevels[10]; CHeroStatsDef* PHeroStatsDef;
     float GetSoundRadiusMultiplier() const
     {

@@ -4,7 +4,7 @@
 #include <cstring>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString() : Text("") { ++g_live; }
     CCharString(const CCharString& other) : Text(other.Text) { ++g_live; }
@@ -13,7 +13,7 @@ struct CCharString {
 inline CCharString EmptyString() { CCharString empty; return empty; }
 
 static const char* g_names[8]; static const void* g_members[8]; static int g_count = 0; static bool g_defaultsOk = true;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, CCharString& value, const CCharString& defaultValue)
     { g_names[g_count] = name; g_members[g_count++] = &value; if (std::strcmp(defaultValue.Text, "") != 0) g_defaultsOk = false; value.Text = "loaded"; }
     void Transfer(const char* name, float& value, const float& defaultValue)

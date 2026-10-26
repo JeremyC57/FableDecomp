@@ -19,10 +19,10 @@
 //   built empty and assigned in a switch; the No/Yes/"" substitutions are block-scoped named locals (retail builds all three
 //   before pushing any argument, and destroys them before the pointer store); `CreaturePerformingAction = &creature` goes
 //   through the inline operator= with a converting temporary.
-struct CTCBase;
-struct CThing;
-struct CThingCreatureBase;
-struct CFontBank;
+class CTCBase;
+class CThing;
+class CThingCreatureBase;
+class CFontBank;
 
 class CCharString {
 public:
@@ -33,7 +33,7 @@ public:
     bool operator!=(const char* text) const;                // 0x0099E960
 };
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, const CCharString& a, const CCharString& b, const CCharString& c,
                  unsigned long colour, float time, bool b1, bool b2);   // 0x00492FB4
 };
@@ -54,7 +54,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CThing* item);                            // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7D8 for T = CThingCreatureBase
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7D8 for T = CThingCreatureBase
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -65,13 +65,13 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vt
     }
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
 
 enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT = 1, WALL_MOUNT_EFFECT_HEAL = 2 };
 enum EWallMountEffectsConfirmationType { WALL_MOUNT_CONFIRMATION_NONE = 0, WALL_MOUNT_CONFIRMATION_WAITING = 1 };
-struct CWallMountEffectsDef {
+class CWallMountEffectsDef { public:
     unsigned char     _pad_00[0x28];
     EWallMountEffects Effect;                               // +0x28
     float             HealingAmount;                        // +0x2c
@@ -83,7 +83,7 @@ struct CTCBaseModel {
     CThing* ParentThing;                                    // +0x04
     unsigned char _pad08[4];
 };
-struct CTCWallMountEffects : CTCBaseModel {
+class CTCWallMountEffects : public CTCBaseModel { public:
     const CWallMountEffectsDef*             PDef;                       // +0x0c CDefPointer<CWallMountEffectsDef const>
     EWallMountEffectsConfirmationType       WaitingForConfirmation;     // +0x10
     CIntelligentPointer<CThingCreatureBase> CreaturePerformingAction;   // +0x14

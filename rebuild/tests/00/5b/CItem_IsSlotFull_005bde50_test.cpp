@@ -4,7 +4,7 @@
 static char g_seq[64] = "";
 struct CIVCountedPointeeVirtual { virtual void Destroy(int) { } virtual void Delete() { std::strcat(g_seq, "D"); } };
 struct CIVRefCounted { unsigned long IVRefCount; void DecRef() { --IVRefCount; } unsigned long GetRefCount() const { return IVRefCount; } };
-struct CIVCountedPointeeBase : CIVCountedPointeeVirtual, CIVRefCounted { void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Delete(); } }; struct CDef : CIVCountedPointeeBase { unsigned char _pad[0x40 - sizeof(CIVCountedPointeeBase)]; long MaxItems; }; static CDef g_def;
+class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public: void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Delete(); } }; struct CDef : CIVCountedPointeeBase { unsigned char _pad[0x40 - sizeof(CIVCountedPointeeBase)]; long MaxItems; }; static CDef g_def;
 struct CIVCountedPointer_Def { CDef* Object; CIVCountedPointer_Def() : Object(0) { } CIVCountedPointer_Def(const CIVCountedPointer_Def& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; } ~CIVCountedPointer_Def() { if (Object) Object->ReleaseTemporary(); } };
 struct CItem { long ItemType; long NumberOfItems; void* PPerItemData_Data; void* PPerItemData_Info; long AverageBoughtPrice;
     CIVCountedPointer_Def GetInventoryItemDef() { std::strcat(g_seq, "G"); CIVCountedPointer_Def p; p.Object = &g_def; ++g_def.IVRefCount; return p; }

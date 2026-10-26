@@ -10,7 +10,7 @@
 // Shape: an unused "" local built by an inline by-value getter (build/copy/destroy, no NRVO); the suffix starts as
 //   "_A" and is re-assigned in each case (one merged `operator=` call); the concatenation's middle temporary is homed
 //   in the dead `level` argument slot once its value is in edx.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -27,7 +27,7 @@ static inline CCharString EmptyName()
     return name;
 }
 namespace NScript {
-struct CV_RandomPopulationSimScript {
+class CV_RandomPopulationSimScript { public:
     unsigned char _base[0x48];
     CCharString ChooseRandomBanditGruntString(long level);
 };

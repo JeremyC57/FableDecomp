@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
   char pad0[0x24];
   float SoundVolume;
   float MusicVolume;

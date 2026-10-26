@@ -1,13 +1,13 @@
 // Behaviour test for 0x008CAF10 CCreatureAction_SummonerFlameSlice::FrameUpdate: the obstruction is stretched over the summoner.
 #include <cstdio>
 static int g_base = 0;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCPlacement { C3DVector m_position; float m_radius; };
 struct CObstructionShape {
     C3DVector m_start, m_end; float m_width; int m_sets;
     void Set(const C3DVector& start, const C3DVector& end, float width) { m_start = start; m_end = end; m_width = width; ++m_sets; }
 };
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     CObstructionShape* m_pObstruction;
     CTCPlacement* m_pPlacement;

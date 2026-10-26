@@ -2,11 +2,11 @@
 // DeedMask[DeedType]; for deed type 1 the thing must also have a village-member interface whose village is set.
 #include <cstdio>
 
-struct CTCVillage { int m_id; };
-struct CTCVillageMember { CTCVillage* m_pVillage; CTCVillage* GetPVillage() const { return m_pVillage; } };
-struct CTCCreatureOpinionOfHero { bool* DeedMask; };
+class CTCVillage { public: int m_id; };
+class CTCVillageMember { public: CTCVillage* m_pVillage; CTCVillage* GetPVillage() const { return m_pVillage; } };
+class CTCCreatureOpinionOfHero { public: bool* DeedMask; };
 
-struct CThing {
+class CThing { public:
     CTCVillageMember* m_member;                 // null = no 0x23 interface
     CTCCreatureOpinionOfHero* m_opinion;        // always present in these tests
     bool GetMember(CTCVillageMember** out) const { if (!m_member) return false; *out = m_member; return true; }

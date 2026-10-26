@@ -15,7 +15,7 @@ static IVolumeManager g_mgr;
 static IVolumeManager* g_mgr_ptr = &g_mgr;
 static IVolumeManager** const g_volumeManager = &g_mgr_ptr;
 
-struct CVolume { int f0; int PD3DVolume; int f8; int handle; };
+class CVolume { public: int f0; int PD3DVolume; int f8; int handle; };
 
 void __fastcall ReleaseVolume(CVolume* self)
 {

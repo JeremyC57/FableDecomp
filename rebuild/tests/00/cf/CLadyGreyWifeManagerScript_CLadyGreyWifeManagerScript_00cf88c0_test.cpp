@@ -2,16 +2,16 @@
 #include <cstring>
 #include <new>
 static int g_base = 0, g_bc = 0, g_str = 0;
-struct CGameScriptInterface { int x; };
-struct CScriptBase { virtual ~CScriptBase() {} unsigned char _body[0x3c]; CScriptBase() { ++g_base; } };
+class CGameScriptInterface { public: int x; };
+class CScriptBase { public: virtual ~CScriptBase() {} unsigned char _body[0x3c]; CScriptBase() { ++g_base; } };
 struct CQuestScriptObject : CScriptBase {
     CGameScriptInterface* Game; void* Data;
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_str; } };
-struct CBaseClass { virtual ~CBaseClass() {} CBaseClass() { ++g_bc; } };
-template<class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
-struct CScriptThing : CBaseClass { CCountedPointer<CScriptThing> PImp; CScriptThing() : CBaseClass(), PImp() { } };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_str; } };
+class CBaseClass { public: virtual ~CBaseClass() {} CBaseClass() { ++g_bc; } };
+template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+class CScriptThing : public CBaseClass { public: CCountedPointer<CScriptThing> PImp; CScriptThing() : CBaseClass(), PImp() { } };
 struct CLadyGreyWifeManagerScript : CQuestScriptObject {
     CScriptThing LadyGrey, BowerstoneNorthVillage, MayorsBedroomVillage, MayorsBedroom, AppearPoint;
     long CurrentTime; bool NewRegionEntered;

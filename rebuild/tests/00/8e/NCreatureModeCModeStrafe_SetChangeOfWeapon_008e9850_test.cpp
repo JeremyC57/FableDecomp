@@ -4,18 +4,18 @@
 #include <cstring>
 
 static unsigned long Crc(const char* s, unsigned long n) { unsigned long h = 7; for (unsigned long i = 0; i < n; ++i) h = h * 31 + (unsigned char)s[i]; return h; }
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t) : text(t) {}
     const char* GetPString() const { return text ? text : ""; }
     unsigned long GetLength() const { return text ? (unsigned long)std::strlen(text) : 0; }
 };
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     const char* Group; unsigned long GroupCRC;
     void SetGroup(const CCharString& g) { Group = g.GetPString(); GroupCRC = Crc(g.GetPString(), g.GetLength()); }
 };
-struct CTCWeapon { CCharString group; const CCharString& GetAnimationGroupName() const { return group; } };
-struct CThing {
+class CTCWeapon { public: CCharString group; const CCharString& GetAnimationGroupName() const { return group; } };
+class CThing { public:
     unsigned long bits[9]; CTCWeapon* weapon; unsigned short m_weaponId;
     bool HasTC(long t) const { if (bits[t >> 5] & (1UL << (t & 31))) return true; return false; }
     const CTCWeapon* GetTCWeapon() const { return weapon; }

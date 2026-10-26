@@ -1,7 +1,7 @@
 // Behaviour test for 009e2330 (GF virtual/actual coordinate conversion family): fake system manager with a 1024x768 render target.
 #include <cstdio>
 
-struct C2DExtentsI { long X; long Y; };
+class C2DExtentsI { public: long X; long Y; };
 
 class CDisplayManager
 {

@@ -1,6 +1,6 @@
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x007d9ef0
 // Leaf: OnDie
-struct CTCInventoryItem;
+class CTCInventoryItem;
 
 // cdecl helper @ 0xbfea14  (add esp,4 after call => __cdecl, one ptr arg)
 void __cdecl SomeHelper(void* p);
@@ -8,8 +8,8 @@ void __cdecl SomeHelper(void* p);
 // base OnDie member @ 0x5eda50 (this-call, void)
 void __fastcall CTCInventoryItem_BaseOnDie(CTCInventoryItem* self);
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     char pad[0x110];
     void* m_ptr; // at +0x110
 };

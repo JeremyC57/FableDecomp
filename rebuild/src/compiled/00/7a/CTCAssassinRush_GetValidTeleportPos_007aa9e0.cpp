@@ -6,7 +6,7 @@
 // 0x00A14040, CThingCreatureBase::GetHeightZBelowAt 0x00666D40. Constants 1.0f 0x0122DED8, 1/36 0x0126C324.
 // Layout: Ego_r.pdb CTCAssassinRush (PDef +0x14, CollidedThing +0x39); retail CSpecialAbilitiesAssassinRushDef
 // distance +0x3c, size scale +0x40; CThing placement object +0x60 (its radius +0x34); the rusher's radius +0x34.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -93,7 +93,7 @@ struct CPlacement {
     unsigned char _pad04[0x34 - 0x04];
     float         Radius;                               // +0x34
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x34];
     float         Radius;                               // +0x34
     unsigned char _pad38[0x60 - 0x38];
@@ -107,7 +107,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
 };
 struct CWorldMapRef;
-struct CWorld {
+class CWorld { public:
     virtual void w00();
     virtual void w01();
     virtual void w02();
@@ -129,7 +129,7 @@ struct CAssassinRushDef {
     float         SizeScale;                            // +0x40
 };
 #pragma pack(push, 1)
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     void*                   __vftable;                  // +0x00
     CThing*                 ParentThing;                // +0x04
     unsigned char           _pad08[0x14 - 0x08];

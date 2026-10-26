@@ -9,7 +9,7 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
 
-namespace NGraphicAppearance { struct CPrimitive; }
+namespace NGraphicAppearance { class CPrimitive; }
 using NGraphicAppearance::CPrimitive;
 
 struct CPrimitiveVector {                           // STLport vector<NGraphicAppearance::CPrimitive*>
@@ -25,12 +25,12 @@ struct CPrimitiveVector {                           // STLport vector<NGraphicAp
     }
 };
 
-struct CCharStringData {
+class CCharStringData { public:
     char* m_pData;
     long  m_length;
 };
 long __fastcall Compare(const char* a, const char* b);  // 0x00411570
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -49,7 +49,7 @@ struct CCharString {
         return false;
     }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -152,7 +152,7 @@ public:
     }
 };
 
-struct CTCLight {
+class CTCLight { public:
     void*            __vftable;                         // +0x00
     CThing*          ParentThing;                       // +0x04
     unsigned char    _pad08[0x1c - 0x08];

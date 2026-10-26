@@ -11,11 +11,11 @@
 // offsets from these stores and the landed SetAngle 0x00731BE0): Angle +0, Width +4, InnerRadius +8, OuterRadius +0xC, Flicker +0x10,
 // Colour +0x14.
 // Shape: every copy re-reads both pointers (the stores may alias); `PLightInfo` address kept in esi, `&PLightDef` in edi.
-struct CCPPointerInfo;
-struct CRGBColour {
+class CCPPointerInfo;
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
-struct CSpotLightDef {
+class CSpotLightDef { public:
     unsigned char _pad00[0x28];
     CRGBColour Colour;                              // +0x28
     float InnerRadius;                              // +0x2c
@@ -25,13 +25,13 @@ struct CSpotLightDef {
     float FlickerSpeed;                             // +0x3c
     float Angle;                                    // +0x40
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CSpotLightDef>* out) const;   // 0x007325D0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                            // +0x70
 };
@@ -43,13 +43,13 @@ struct CSpotLightInfo {                             // CTCSpotLight::CSpotLightI
     float Flicker;                                  // +0x10
     CRGBColour Colour;                              // +0x14
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Reset(T* p);                               // 0x007323D0
 };
 void* operator new(unsigned int size);              // 0x00BFEA1A
-struct CTCSpotLight {
+class CTCSpotLight { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _base08[4];

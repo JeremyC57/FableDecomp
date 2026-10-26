@@ -9,15 +9,15 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharStringData { const char* m_pText; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pText; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
     virtual ~CScriptThing();                            // 0x004AA840
     virtual void s01(); virtual void s02(); virtual void s03(); virtual void s04(); virtual void s05();
     virtual const C3DVector& GetPosition() const;       // slot 6 (+0x18)
@@ -36,7 +36,7 @@ public:
     T& operator[](unsigned int n) { return _M_start[n]; }
 };
 }
-struct CGameScriptInterface {                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame(void) const;   // slot 7 (+0x1c) 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -59,14 +59,14 @@ struct CGameScriptInterface {                       // retail vtable 0x01260F0C 
     virtual CScriptThing CreateRumble(C3DVector const &, float, float, CCharString) const;   // slot 106 (+0x1a8) 0x0089FDA0
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-struct CTimer {                                         // a script timer: the interface's timer index
+class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) {}
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }
     long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

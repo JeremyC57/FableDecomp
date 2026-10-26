@@ -12,7 +12,7 @@ extern "C" __declspec(dllimport) void __stdcall DebugBreak();
 CDebugBreak::CDebugBreak(){DebugBreak();}
 #pragma auto_inline(on)
 static __forceinline void Check(bool ok,const char* text){if(!ok){if(AssertHook_0143bb2c)AssertHook_0143bb2c(text);CDebugBreak token;}}
-struct CCharString {
+class CCharString { public:
  char* data;
  __forceinline StringData* GetData()const{Check(data!=0,"m_pchData != NULL\n");return (StringData*)data-1;}
  StringData* GetDataOutOfLine();

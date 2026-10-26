@@ -1,4 +1,4 @@
-struct CInputProcessFirstPersonLookAround {
+class CInputProcessFirstPersonLookAround { public:
     void* vftable;
 };
 

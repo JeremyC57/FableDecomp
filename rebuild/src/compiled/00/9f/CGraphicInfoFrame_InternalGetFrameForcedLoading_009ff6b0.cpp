@@ -3,7 +3,7 @@
 // Callees: CBankFileAsyncData::IsFinished @ 0x009D54E0 and WaitUntilFinished @ 0x009D5B60, the load completion @ 0x009FC440 (labelled "CTCActivationTrigger::OnKill",
 // propagated), CFrameData::UploadFrame @ 0x009FF220 (1), CResource::SetAsUnloadable @ 0x009FBF50. Shape: the frame data re-read from +8 for every call, the flag byte tested
 // in the argument slot, `mov al,1` / `xor al,al`, `ret 4`.
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished();                             // 0x009D54E0
     void WaitUntilFinished();                      // 0x009D5B60
 };
@@ -15,7 +15,7 @@ struct CFrameData_009ff6b0 {
     void SetAsUnloadable();                        // 0x009FBF50
 };
 
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     unsigned char        _pad[8];
     CFrameData_009ff6b0* m_pData;                  // +0x08
     bool InternalGetFrameForcedLoading(long flags);

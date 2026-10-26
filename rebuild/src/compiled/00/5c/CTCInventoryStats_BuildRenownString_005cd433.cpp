@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -46,14 +46,14 @@ struct CThing {
         return component;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);              // 0x0099EBF0
     ~CCharString();                                               // 0x0099EAE0
     CCharString& operator+=(const CCharString& other);            // 0x0099F0A0
 };
 CCharString __fastcall GFIntToCharString(long value);             // 0x0099F830
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
 };
 struct CDataBank {
@@ -70,7 +70,7 @@ struct CTCHeroRenown {                                // interface type 4
     long RenownClassLevel;                            // +0x70
 };
 
-struct CTCInventoryStats {
+class CTCInventoryStats { public:
     void*   __vftable;
     CThing* ParentThing;                              // +0x04
     CWideString BuildRenownString();

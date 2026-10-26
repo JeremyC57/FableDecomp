@@ -6,7 +6,7 @@ extern "C" void engine_free(void* p){ freed[freed_count++] = p; }
 
 static int base_called = 0;
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
   char pad[0x60];
   void* p60;
   char pad2[0x70 - 0x64];

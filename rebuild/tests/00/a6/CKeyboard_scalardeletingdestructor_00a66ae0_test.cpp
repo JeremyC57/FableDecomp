@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CKeyboard {
+class CKeyboard { public:
     void* vftable;
     int destroyed;
 };

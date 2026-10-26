@@ -25,30 +25,30 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 // Shape: the const lookups go through `const CThingObject* const& self = this;` -- a reference to the this pointer (the
 //        pointer itself homed, then forwarded): VC7.1 then treats the 0x47 bit load as a may-alias of the frame-local
 //        interpolators and keeps the orientation vtable store ahead of it (a plain `self = this` or `this` hoists the load).
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     long  _f00;
     float Time;                                         // +0x04
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                                   // 0x0099A2E0
     CBase();                                            // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
-struct C3DPositionInterpolator : CBase {                // vtable 0x0123981C
+class C3DPositionInterpolator : public CBase { public:                // vtable 0x0123981C
     C3DVector StartPosition;                            // +0x04
     C3DVector EndPosition;                              // +0x10
 };
-struct C3DOrientationInterpolator : CBase {             // vtable 0x01239824
+class C3DOrientationInterpolator : public CBase { public:             // vtable 0x01239824
     CRightHandedSet StartOrientation;                   // +0x04
     CRightHandedSet EndOrientation;                     // +0x1c
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -61,18 +61,18 @@ struct CTCDrawPreparer {
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09) VF(10)
     virtual void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // slot 11 (+0x2c)
 };
-struct CTCWeaponTrail {
+class CTCWeaponTrail { public:
     void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);           // 0x0076E6A0
 };
-struct CTCCarryable {
+class CTCCarryable { public:
     unsigned char _pad00[0x10];
     void* Carrier;                                      // +0x10
     bool GetCarriedPositionInfo(C3DPositionInterpolator* position, C3DOrientationInterpolator* orientation, float time);   // 0x00705B00
 };
-struct CTCParticleAttachmentTracker {
+class CTCParticleAttachmentTracker { public:
     void UpdateAttachedParticles(float time);           // 0x0071A9C0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15)
     VF(16) VF(17) VF(18) VF(19) VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28) VF(29) VF(30)
     virtual void SetRenderPosition(const C3DVector* position);              // slot 31 (+0x7c)
@@ -86,7 +86,7 @@ struct CTCGraphicAppearance {
 };
 extern bool g_ShowWeaponTrails;                         // 0x0137548E
 
-struct CThingPhysical {
+class CThingPhysical { public:
     VF(00)
     unsigned char         _pad04[0x1c];
     unsigned long         UsingComponents[9];           // +0x20
@@ -144,7 +144,7 @@ struct CThingPhysical {
         return false;
     }
 };
-struct CThingObject : CThingPhysical {
+class CThingObject : public CThingPhysical { public:
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
 };
 

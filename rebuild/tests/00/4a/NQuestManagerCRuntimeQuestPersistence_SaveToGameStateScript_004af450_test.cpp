@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[256];
     CCharString() { text[0] = 0; }
     CCharString(const char* s) { std::strcpy(text, s); }

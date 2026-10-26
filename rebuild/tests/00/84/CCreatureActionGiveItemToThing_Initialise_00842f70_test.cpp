@@ -1,16 +1,16 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CMessageEvent;
-struct CThing { C3DVector m_pos; const C3DVector& GetPosition_006a4d00() const { return m_pos; } };
+class C3DVector { public: float X, Y, Z; };
+class CMessageEvent;
+class CThing { public: C3DVector m_pos; const C3DVector& GetPosition_006a4d00() const { return m_pos; } };
 static long g_type, g_flags, g_prio; static const C3DVector* g_pos; static CThing *g_t1, *g_t2; static float g_a, g_b; static int g_baseInit;
-struct CMessageEventManager { CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority)
+class CMessageEventManager { public: CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority)
     { g_type = type; g_flags = flags; g_pos = position; g_t1 = thing1; g_t2 = thing2; g_a = a; g_b = b; g_prio = priority; return 0; } };
-struct CWorld { unsigned char _pad[0x60]; CMessageEventManager* m_pMessageEventManager; };
+class CWorld { public: unsigned char _pad[0x60]; CMessageEventManager* m_pMessageEventManager; };
 struct CBaseIntelligentPointer { virtual void v00() { } CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 static CWorld g_world; static CMessageEventManager g_manager;
-struct CCreatureActionBase { virtual void v00() { } virtual void Initialise() { ++g_baseInit; } unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xa8 - 0x10];
+class CCreatureActionBase { public: virtual void v00() { } virtual void Initialise() { ++g_baseInit; } unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xa8 - 0x10];
     CWorld* GetPWorld() const { return &g_world; } };
-struct CCreatureAction_GiveItemToThing : CCreatureActionBase { CBaseIntelligentPointer PReceivingThing; CBaseIntelligentPointer PItemBeingGiven; virtual void Initialise(); };
+class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public: CBaseIntelligentPointer PReceivingThing; CBaseIntelligentPointer PItemBeingGiven; virtual void Initialise(); };
 void CCreatureAction_GiveItemToThing::Initialise()
 {
     CCreatureActionBase::Initialise();

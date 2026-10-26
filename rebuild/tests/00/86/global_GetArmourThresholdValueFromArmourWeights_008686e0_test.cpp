@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <map>
 
-struct CArmourDef { std::map<int, float> ArmourThresholds; };
+class CArmourDef { public: std::map<int, float> ArmourThresholds; };
 typedef std::multimap<const CArmourDef*, float> TArmourWeights;
 
 static float GetArmourThresholdValueFromArmourWeights(int attribute, const TArmourWeights& weights, float totalWeight)

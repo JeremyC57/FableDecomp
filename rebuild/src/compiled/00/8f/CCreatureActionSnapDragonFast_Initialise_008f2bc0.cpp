@@ -6,7 +6,7 @@
 // multiplied by the literal 0.25f (the literal is loaded second, GOTCHAS) and truncated back into a long member.
 #include "fable_string.h"
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[0x0c];             // +0x04
@@ -16,7 +16,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_SnapDragonFast : CCombatActionBase {
+class CCreatureAction_SnapDragonFast : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

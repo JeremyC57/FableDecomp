@@ -11,13 +11,13 @@
 // Shape: the recompute guard is `frame == -1 || frame != GetFrame()`; both arms assign
 //   through C3DVector's implicit operator= over a user copy ctor (the `lea ecx,[esi+0ECh]` pointer copy, tails merged);
 //   the result is copied out of the member.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet { C3DVector Right, Up; };
-struct CCamera {                                   // 0x38 bytes (Ego_r.pdb)
+class CRightHandedSet { public: C3DVector Right, Up; };
+class CCamera { public:                                   // 0x38 bytes (Ego_r.pdb)
     C3DVector       WorldPosition;                 // +0x00
     CRightHandedSet RHSet;                         // +0x0c
     bool            HeightLocked;                  // +0x24
@@ -27,23 +27,23 @@ struct CCamera {                                   // 0x38 bytes (Ego_r.pdb)
     float           VerticalFOV;                   // +0x30
     float           Zoom;                          // +0x34
 };
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual ~CAIGameCameraBase();
     virtual CCamera GetRenderCamera(float interpolation) const;   // slot 1 (+4)
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x40];
     CCamera       CurrentFreeCamera;               // +0x40
     unsigned char _pad78[0x220 - 0x78];
     bool          UsingFreeCamera;                 // +0x220
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     long GetFrame();                               // 0x00416225
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00();
     unsigned char       _base04[4];                // +0x04
     CMainGameComponent* Component;                 // +0x08

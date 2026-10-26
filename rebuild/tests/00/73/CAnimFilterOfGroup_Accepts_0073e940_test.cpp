@@ -1,9 +1,9 @@
 #include <cstdio>
 struct CDefStringTable { unsigned long GetStringCRC(long i) { return (unsigned long)i * 7u; } };
 CDefStringTable g_defStringTable;
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct CAnimInfo { unsigned char _pad[8]; long GroupName; };
-struct CAnimFilterOfGroup { virtual long Accepts(const CAnimInfo& anim); CCharString Group; unsigned long GroupCRC; };
+class CAnimFilterOfGroup { public: virtual long Accepts(const CAnimInfo& anim); CCharString Group; unsigned long GroupCRC; };
 long CAnimFilterOfGroup::Accepts(const CAnimInfo& anim) { return g_defStringTable.GetStringCRC(anim.GroupName) == GroupCRC; }
 int main()
 {

@@ -13,13 +13,13 @@
 //          Retail CThing PhysicsTC +0x60.
 // Shape: `v.erase(remove(v.begin(), v.end(), CPtr(0)), v.end())` (erase's end() read first); the collision flag and the
 //          iterator tag share a frame byte; the world frame comes from the static GetWorldFrame through GetWorld().
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void SetAsMoving(bool moving);              // 0x006B0130
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     void Kill(bool removeNow);                  // 0x004C9B80
@@ -55,7 +55,7 @@ struct CPtrVector {                             // STLport vector<CIntelligentPo
     CPtr* end() { return _M_finish; }
     CPtr* erase(CPtr* first, CPtr* last);       // 0x00738D70
 };
-struct CThingShotDef {                          // descriptive
+class CThingShotDef { public:                          // descriptive
     unsigned char _pad00[0x98];
     long NumSubShots;                           // +0x98
     unsigned char _pad9c[0xa0 - 0x9c];

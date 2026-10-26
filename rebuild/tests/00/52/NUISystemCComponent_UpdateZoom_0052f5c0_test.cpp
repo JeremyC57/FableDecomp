@@ -5,7 +5,7 @@
 // ZoomTime; the render zoom is the zoom times the parent zoom (or the bare zoom when parent zoom is ignored), the
 // relative render zoom the same with the relative parent zoom and an optional screen conversion, and a root or
 // zoom-ignoring component applies the UI scale to both. Same C2DVector forms as the reconstruction.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}

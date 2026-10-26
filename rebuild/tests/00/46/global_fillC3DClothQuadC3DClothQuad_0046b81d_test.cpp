@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct C3DClothQuad { unsigned int a, b, c, d; };
+class C3DClothQuad { public: unsigned int a, b, c, d; };
 
 static C3DClothQuad* fill_impl(C3DClothQuad* dest, unsigned int count, const C3DClothQuad* val)
 {

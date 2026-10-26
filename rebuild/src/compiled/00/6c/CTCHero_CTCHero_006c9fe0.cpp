@@ -12,9 +12,9 @@
 // constructors, in declaration order.
 // Local model: no engine header exists for CTCHero; engine/CTCBase.h is a flattened POD (vptr as a data member), so the
 // polymorphic CTCBase is modelled locally.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -22,7 +22,7 @@ struct CTCBase {
     CTCBase(CThing* thing);                                 // 0x00686800
 };
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 struct CDefPointer {                                        // CDefPointer<CHeroTitleDef const>
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
@@ -40,7 +40,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPoint
 };
 #pragma pack(pop)
 
-struct CTCHero : CTCBase {                                  // vtable 0x0125EB54
+class CTCHero : public CTCBase { public:                                  // vtable 0x0125EB54
     bool WeaponsUsable;                                     // +0x0c
     bool WillUsable;                                        // +0x0d
     bool WeaponUseOverriddenByScripts;                      // +0x0e

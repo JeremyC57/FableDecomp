@@ -6,11 +6,11 @@
 // BestNextDistLeft +0x48, BestNextDistRight +0x4C.
 // Shape: `fcomp ; test ah,41h ; je` is the ordered `>`; `mov eax,1` / `xor eax,eax` is an int-sized result (a bool
 // return would use `mov al,1` / `xor al,al`), written as the `||` of the two compares.
-struct C2DVector { float X, Y; };
-struct CNavigatorExternalInterface;
+class C2DVector { public: float X, Y; };
+class CNavigatorExternalInterface;
 struct CRetailList { void* m_pHead; };            // retail list: one word
 
-struct CSteeringAgent {
+class CSteeringAgent { public:
     CNavigatorExternalInterface* NavigatorInterface;          // +0x00
     bool                         DummyObstacle;               // +0x04
     float                        RepulsionMultiplier;         // +0x08

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_UndeadIdleUnderground {
+class CCreatureAction_UndeadIdleUnderground { public:
     void* vftable;
     int destroyed;
 };

@@ -1,4 +1,4 @@
-struct CInputProcessSpecialAbilities {
+class CInputProcessSpecialAbilities { public:
     void* vftable;
 };
 

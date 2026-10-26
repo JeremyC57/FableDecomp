@@ -18,7 +18,7 @@ enum EGameAction { GAME_ACTION_FORCE_DWORD = 0x7fffffff };
 enum EXboxControllerButton { XBOX_CONTROLLER_BUTTON_FORCE_DWORD = 0x7fffffff };
 enum EMouseButtonControl { MOUSE_BUTTON_CONTROL_FORCE_DWORD = 0x7fffffff };
 
-struct CInputTypeBase {
+class CInputTypeBase { public:
     virtual ~CInputTypeBase();                                                      // slot 0
     virtual void v01();
     virtual void v02();

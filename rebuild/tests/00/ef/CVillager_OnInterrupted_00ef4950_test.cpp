@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
-struct CScriptThing;
+class CScriptThing;
 static const CScriptThing* g_stopped; static int g_stopCalls;
-struct CGameScriptInterface { virtual void OnScriptThingStopped(const CScriptThing* thing) { g_stopped = thing; ++g_stopCalls; } };
-struct CScriptThing {
+class CGameScriptInterface { public: virtual void OnScriptThingStopped(const CScriptThing* thing) { g_stopped = thing; ++g_stopCalls; } };
+class CScriptThing { public:
     long m_handle; long m_carried; bool m_valid;
     virtual long GetDataHandle() const { return m_handle; }
     virtual bool IsCarrying(long handle) const { return handle == m_carried; }

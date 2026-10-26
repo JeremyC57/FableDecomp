@@ -5,9 +5,9 @@
 // derivation. The saver is unused; no super-chunk write (plain chunk base).
 #include "engine/C3DAnimFileXAllocationSizeChunk.h"
 
-struct CChunkedFileSaver;
+class CChunkedFileSaver;
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULONG(unsigned long value);                          // 0x00993EA0
 };
 

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CEngineLightingManager { char pad0[0x18]; int mode; char pad1c[8]; void* obj24; void* obj28; };
+class CEngineLightingManager { public: char pad0[0x18]; int mode; char pad1c[8]; void* obj24; void* obj28; };
 int g_log=0, g_do=0, g_push=0; void* g_pushArg=0; void* g_doThis=0;
 void run(CEngineLightingManager* self, void* param){
   int local;

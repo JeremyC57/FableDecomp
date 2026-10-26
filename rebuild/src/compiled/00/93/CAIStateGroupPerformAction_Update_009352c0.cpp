@@ -14,7 +14,7 @@
 // retail (PDB 0x130).
 // Shape: both lookups use the out-parameter GetInterface with the HasTC byte bound to a `const unsigned char&`; the
 // perception lookup goes through a const creature (const LowerBound); the misses read the never-written slots.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -35,7 +35,7 @@ __declspec(noinline) const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(cons
     return (const SEntry*)TmplSink(this, *type + 0);
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -65,22 +65,22 @@ struct CThing {
         return present != 0;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 __forceinline bool IsAlive(const CThing* thing)
 {
     if (thing != 0 && !(thing->m_flags91 & 1))
         return true;
     return false;
 }
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     CThing* GetPerceivedThing();                // 0x007446A0
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
 };
-struct CTCAIScratchpad {                        // interface 0xAA
+class CTCAIScratchpad { public:                        // interface 0xAA
     unsigned char _pad[0x38];
     long ScriptingStateGroup;                   // +0x38
     unsigned char _pad3c[0x48 - 0x3c];
@@ -101,28 +101,28 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {      // vtable 0x
     virtual void v00();
     __forceinline CIntelligentPointerCreature(CThingCreatureBase* item) { SetPItem(item); }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
 };
-struct CCombatActionBase : CCreatureActionBase {    // retail sizeof 0x118
+class CCombatActionBase : public CCreatureActionBase { public:    // retail sizeof 0x118
     unsigned char _body[0x114];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_PlayCombatAnimation : CCombatActionBase {
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* owner, CThingCreatureBase* target, const CCharString& animation,
         bool flag);                             // 0x008B7F80
 };
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetHeroCreature();      // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPMainPlayer();                  // 0x00449960
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

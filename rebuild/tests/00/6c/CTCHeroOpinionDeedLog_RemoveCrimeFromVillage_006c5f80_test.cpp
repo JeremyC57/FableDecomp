@@ -40,7 +40,7 @@ public:
     bool CrimeReportedFlag;
     void RemoveCrime(long handle) { ++g_removeCrime; g_removedHandle = handle; }
 };
-struct COpinionDeed { unsigned char _pad00[0x22]; bool ReportedToVillage; };
+class COpinionDeed { public: unsigned char _pad00[0x22]; bool ReportedToVillage; };
 struct SDeedNode { long _M_color; SDeedNode* _M_parent; SDeedNode* _M_left; SDeedNode* _M_right; long first; COpinionDeed* second; };
 struct CDeedMapIterator {
     SDeedNode* _M_node;

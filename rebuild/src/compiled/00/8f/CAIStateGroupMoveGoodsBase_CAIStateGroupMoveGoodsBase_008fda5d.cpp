@@ -7,7 +7,7 @@
 // Member names and offsets from the engine header. Pragma: `#pragma optimize("s", on)` (the `or [mem],-1` store
 // is the size-optimised form of the -1 initialiser).
 #pragma optimize("s", on)
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();                         // (a non-virtual destructor keeps the deleting destructor out of the TU)
     unsigned char _pad[0x10];                   // +0x4..+0x13
     CAIStateGroupBase();                        // 0x008FD255

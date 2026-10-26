@@ -5,10 +5,10 @@
 #else
 #define FASTCALL
 #endif
-struct CThing { int m_cleared; CThing() : m_cleared(0) { } void ClearCurrentAction() { ++m_cleared; } };
+class CThing { public: int m_cleared; CThing() : m_cleared(0) { } void ClearCurrentAction() { ++m_cleared; } };
 struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer() { } CThing* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { } CThing* GetPItem() const { return m_pItem; } };
 static long g_framesPerSecond = 30;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase() { }
     virtual void FinishAction() { ++m_finishCalls; }
     virtual long GetStartDelayFrames() { return m_startDelay; }

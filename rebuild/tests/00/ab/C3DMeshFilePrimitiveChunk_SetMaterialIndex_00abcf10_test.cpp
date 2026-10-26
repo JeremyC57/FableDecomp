@@ -2,7 +2,7 @@
 // working stand-in over a fixed buffer).
 #include <cstdio>
 static int g_resizes = 0;
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* Begin; T* End; T* EndOfStorage;
     void Resize(unsigned long n, const T& x)
     {
@@ -13,14 +13,14 @@ template<class T> struct CArray {
     }
     T& operator[](long i) { return Begin[i]; }
 };
-struct CChunkedFileChunk { void* vt; long Type; };
+class CChunkedFileChunk { public: void* vt; long Type; };
 struct CCountedChunk { void* Object; void* Count; };
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CArray<CCountedChunk> SubChunks;
     CArray<CCountedChunk> RegisteredSubChunkTypes;
     unsigned long CurrentChunkIndex;
 };
-struct C3DMeshFilePrimitiveChunk : CChunkedFileSuperChunk {
+class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
     CArray<int> MaterialIndices;
     void SetMaterialIndex(long materialIndex);
 };

@@ -3,9 +3,9 @@
 #include <cstdio>
 #include <cstring>
 
-struct CScriptThing { float X; };
+class CScriptThing { public: float X; };
 static int g_frames, g_filters, g_terminateAt; static bool g_damageable = true; static char g_faction[32]; static float g_lastDist;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     void NewScriptFrame() const { ++g_frames; }
     CScriptThing& GetHero() { Hero.X = 20.0f - 3.0f * g_frames; return Hero; }

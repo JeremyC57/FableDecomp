@@ -11,12 +11,12 @@
 #include "fable_string.h"
 #undef CCharString
 // Restore the native owning-copy declaration omitted by the hand header.
-struct CCharString { CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
+class CCharString { public: CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
 #define CDataBank CDataBankDonor
 #include "fable_game_text_bank.h"
 #undef CDataBank
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer { T* Data;CCPPointerInfo* Info; void Reset(T*); }; //00403e40
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public: T* Data;CCPPointerInfo* Info; void Reset(T*); }; //00403e40
 namespace NGameText {
 class CDataBank {
 public:
@@ -29,7 +29,7 @@ private:
 }
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&,float,bool,bool); } //009e9f40
 namespace NLocalisation { CCharString __fastcall GetFontBankName(); } //00415260
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char BaseAndSampleBank[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;
     void InitialiseText();

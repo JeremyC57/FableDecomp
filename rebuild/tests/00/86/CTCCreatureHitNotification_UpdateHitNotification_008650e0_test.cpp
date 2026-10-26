@@ -90,7 +90,7 @@ struct CFlashVector {
     }
 };
 
-struct CTCCreatureHitNotification {
+class CTCCreatureHitNotification { public:
     CFlashVector Flashes;
     void UpdateHitNotification()
     {

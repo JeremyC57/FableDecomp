@@ -5,8 +5,8 @@
 // Layout: Ego_r.pdb CPatchTesselationEdgeStrip (0x2c bytes, vtable 0x012A8318; same model as the landed Reset 0x00BFC3B0).
 // Shape: the handler kept in edi, one `if (Data) manager->SetHandler(Data, handler)` per array (Verts, FanBaseVerts,
 // WaterVerts, WaterFanBaseVerts), the vertex array's inline member; `ret 4`.
-struct CMovableResource;
-struct CEngineLandscapeMemoryManager {
+class CMovableResource;
+class CEngineLandscapeMemoryManager { public:
     void SetMovableResourceHandler(void* block, CMovableResource* handler);   // 0x00BD9AB0
 };
 struct SEngine_01436ea8 {
@@ -16,7 +16,7 @@ struct SEngine_01436ea8 {
 extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
 
 template <class T>
-struct CEdgeStipVertexArray {
+class CEdgeStipVertexArray { public:
     T*   Data;                                     // +0x00
     long Count;                                    // +0x04
     void SetMovableResourceHandler(CMovableResource* handler)
@@ -26,7 +26,7 @@ struct CEdgeStipVertexArray {
     }
 };
 
-struct CPatchTesselationEdgeStrip {                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
+class CPatchTesselationEdgeStrip { public:                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
     struct CVertex;
     struct CFanBaseVertex;
     struct CWaterVertex;

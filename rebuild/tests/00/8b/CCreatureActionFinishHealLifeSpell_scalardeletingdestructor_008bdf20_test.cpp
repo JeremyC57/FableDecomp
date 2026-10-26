@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_FinishHealLifeSpell {
+class CCreatureAction_FinishHealLifeSpell { public:
     void* vftable;
     int destroyed;
 };

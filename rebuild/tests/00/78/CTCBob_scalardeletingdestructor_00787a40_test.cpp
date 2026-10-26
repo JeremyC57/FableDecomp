@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCBob {
+class CTCBob { public:
     void* vftable;
     int destroyed;
 };

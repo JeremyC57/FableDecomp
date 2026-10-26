@@ -17,17 +17,17 @@ struct CEngineLandscapeMapInfo {
     unsigned short OriginX;                        // +0x60
     unsigned short OriginY;                        // +0x62
 };
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     unsigned char            _pad[0x14];
     CEngineLandscapeMapInfo* Info;                 // +0x14
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector Min;
     C3DVector Max;
     C3DBoundingBox() { }
@@ -42,9 +42,9 @@ struct CLODLoadInfo {
     long OffsetIntoFileBlock;
     bool Loaded;
 };
-struct CSubPatchTreeLODLockElement;
+class CSubPatchTreeLODLockElement;
 class CLandscapeBackgroundTreeNode;
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     static void* __fastcall operator new(unsigned int size, CLandscapeBackgroundTreeNode* owner);   // 0x00BE5BB0
     CLandscapeBackgroundPatch(CLandscapeBackgroundTreeNode* parent, float minZ, float maxZ, long mapX, long mapY, long width,
                               long height, long lodBand, long a, long b, CSubPatchTreeLODLockElement* lockU,

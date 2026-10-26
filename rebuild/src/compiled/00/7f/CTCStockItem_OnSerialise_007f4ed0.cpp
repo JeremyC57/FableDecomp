@@ -8,7 +8,7 @@
 // in the dead context argument slot.
 #include "engine/CTCStockItem.h"
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
 };

@@ -1,7 +1,7 @@
 #include <cstdio>
 struct Inner; typedef void (__fastcall* VFn)(Inner*);
 struct Inner { void** vtbl; };
-struct CScriptGameResourceObjectScriptedThingBase { char pad[8]; Inner* inner; };
+class CScriptGameResourceObjectScriptedThingBase { public: char pad[8]; Inner* inner; };
 static int g_hit=0;
 static void __fastcall tgt(Inner* p){ (void)p; g_hit=1; }
 static void ClearCommands(CScriptGameResourceObjectScriptedThingBase* thing){ Inner* p=thing->inner; if(p){ VFn fn=*reinterpret_cast<VFn*>(*reinterpret_cast<char**>(p)+0x28); fn(p); } }

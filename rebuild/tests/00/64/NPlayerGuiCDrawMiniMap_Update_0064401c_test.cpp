@@ -1,17 +1,17 @@
 // behaviour test for 0064401c NPlayerGui::CDrawMiniMap::Update (host g++/VC)
 #include <stdio.h>
 #include <string.h>
-struct CRGBColour { unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } CRGBColour(const CRGBColour& o) : B(o.B), G(o.G), R(o.R), A(o.A) {} };
+class CRGBColour { public: unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } CRGBColour(const CRGBColour& o) : B(o.B), G(o.G), R(o.R), A(o.A) {} };
 static int g_starts = 0, g_updates = 0; static float g_lastIn, g_lastOut, g_lastElapsed; static unsigned char g_lastA;
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool Active; float FadeInTime; float FadeOutTime; bool Closing; bool Opening; float OpenTimer; float CloseTimer;
     void Start(float in, float out, CRGBColour c) { ++g_starts; g_lastIn = in; g_lastOut = out; g_lastA = c.A; Active = true; Opening = true; Closing = false; }
     void Update(float e) { ++g_updates; g_lastElapsed = e; }
     void FadeOut() { Opening = false; Closing = true; }
 };
-struct CDisplayEngine { bool faded; bool IsScreenFullyFadedOut() { return faded; } };
-struct CMainGameComponent { CDisplayEngine* m_pDisplayEngine; };
-struct CWorld { bool showing; bool ready; bool MiniMapEnabled; bool MiniMapActive; long RegionLoadStage;
+class CDisplayEngine { public: bool faded; bool IsScreenFullyFadedOut() { return faded; } };
+class CMainGameComponent { public: CDisplayEngine* m_pDisplayEngine; };
+class CWorld { public: bool showing; bool ready; bool MiniMapEnabled; bool MiniMapActive; long RegionLoadStage;
     bool IsDisplayingMiniMapOnRegionLoad() { return showing; } bool IsRegionLoadShowingMiniMap() { return ready; } };
 struct CDrawMiniMap {
     CWorld* World; CMainGameComponent* Component; bool Enabled; bool Active; bool OldActive; bool RegionChange; CFadeInFadeOutBase FadeInOut; int activeCalls; bool lastActive;

@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct CThingPlayerCreature
-{
+class CThingPlayerCreature
+{ public:
     int tag;
     void destroy();
     void* vec_deleting_destructor(unsigned int flags);

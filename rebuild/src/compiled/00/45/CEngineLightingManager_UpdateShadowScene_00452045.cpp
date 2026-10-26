@@ -6,7 +6,7 @@ extern "C" void __stdcall LogShadowScene(int tag);
 struct Local4 { int v; void Consume(void* obj24, int* param); };
 struct Callee28 { void Fire(int a); };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad0[0x18];
     int mode;      // +0x18
     char pad1c[0x24 - 0x1c];

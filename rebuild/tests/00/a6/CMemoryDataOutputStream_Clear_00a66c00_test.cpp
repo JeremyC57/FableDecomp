@@ -5,7 +5,7 @@ struct SubBuffer {
     void Clear();
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     char     pad0[0x3404];
     unsigned WritePos;
     char     pad1[0x340c - 0x3408];

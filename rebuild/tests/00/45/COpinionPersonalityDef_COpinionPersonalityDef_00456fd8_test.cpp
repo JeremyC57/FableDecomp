@@ -6,7 +6,7 @@ static int g_base = 0;
 static int g_vtbl_val = 0x1233f8c;
 const int g_vtbl_01233f8c = 0;
 
-struct COpinionPersonalityDef {
+class COpinionPersonalityDef { public:
     void* vtbl;
     char pad[0x3c-4];
     void* ptr;

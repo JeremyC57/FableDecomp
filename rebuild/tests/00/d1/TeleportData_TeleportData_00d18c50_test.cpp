@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_copies = 0;
-struct CCharString {
+class CCharString { public:
     char Text[16];
     CCharString() { Text[0] = 0; }
     CCharString(const CCharString& o) { ++g_copies; std::strcpy(Text, o.Text); }

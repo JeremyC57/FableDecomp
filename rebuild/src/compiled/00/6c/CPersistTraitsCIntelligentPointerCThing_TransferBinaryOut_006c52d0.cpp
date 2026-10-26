@@ -10,7 +10,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteUInt64(unsigned __int64 value);       // 0x00993EC0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad_0x00[0x18];   // CBaseObject + CThing bookkeeping
     unsigned __int64 UniqueID;          // +0x18
 };
@@ -20,7 +20,7 @@ struct CBaseIntelligentPointer {
     void* PData;                        // +0x04 CBaseObjectPointer*
     CThing* GetPItem() const;           // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {};
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:};
 
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<CIntelligentPointer<CThing> > {

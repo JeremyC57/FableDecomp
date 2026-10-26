@@ -7,16 +7,16 @@
 // `ret 10h`: four arguments; the fourth is never read (OneAnimCast stays untouched), so it is a placeholder here. No SetAnimationName call in this body.
 #include "fable_string.h"
 
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (the register-zeroed
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
     long FirstSound;                        //   stack stores before the base call: an embedded object's inline ctor)
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114 (the PDB build is 0x12c: its containers are 4 bytes wider there)
+class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: its containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
@@ -24,7 +24,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114 (the PDB buil
     void SetAnimationName(const CCharString& name);   // 0x008574D0 (propagated manifest label; the landed family names it so)
 };
 
-struct CCreatureAction_CastWillFireballSpell : CCombatActionBase {   // vtable 0x0127DF4C
+class CCreatureAction_CastWillFireballSpell : public CCombatActionBase { public:   // vtable 0x0127DF4C
     unsigned char ImmediateCast;            // +0x114 (PDB +0x12c, bool)
     unsigned char OneAnimCast;              // +0x115 (PDB +0x12d, bool; untouched)
     long          LevelToCast;              // +0x118 (PDB +0x130)

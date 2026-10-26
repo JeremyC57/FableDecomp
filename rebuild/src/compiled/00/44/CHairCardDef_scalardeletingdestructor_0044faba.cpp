@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CHairCardDef {
+class CHairCardDef { public:
     void* vptr;
 };
 extern void __fastcall CHairCardDef_dtor(CHairCardDef* def);

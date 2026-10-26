@@ -9,7 +9,7 @@
 // the byte) and its sorted interface map at +0x44 -- the inline GetInterface shape of the landed
 // 0x007BEA08 family (lower bound, end or larger key -> the end entry). The type key lives in the
 // `push ecx` frame slot; the map pointer is a named local (esi) so the end is re-read through it.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -18,24 +18,24 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CTCBase {
+class CTCBase { public:
     void OnStateGroupRemoved();             // 0x006CB6B0
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }   // the raw masked word: a bool result adds a shift
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     void*             __vftable;            // +0x00
     unsigned char     _pad[0x14];           // +0x04..+0x18
     CThingAICreature* Creature;             // +0x18
 };
 
-struct CAIStateGroupBase {                  // vptr +0x00
+class CAIStateGroupBase { public:                  // vptr +0x00
     CAIBrain* PBrain;                       // +0x04
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();

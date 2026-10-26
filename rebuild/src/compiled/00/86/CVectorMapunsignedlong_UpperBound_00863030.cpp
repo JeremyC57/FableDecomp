@@ -11,14 +11,14 @@ template <class A, class B> struct pair {
     A first;
     B second;
 };
-struct CDefString { long TablePos; };
-struct CAnimationEntry {           // Ego_r.pdb 16 bytes
+class CDefString { public: long TablePos; };
+class CAnimationEntry { public:           // Ego_r.pdb 16 bytes
     long       BankIndex;          // +0x0
     CDefString AnimName;           // +0x4
     CDefString GroupName;          // +0x8
     long       Weight;             // +0xC
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const pair<K, V>& entry) const { return key < entry.first; }
 };

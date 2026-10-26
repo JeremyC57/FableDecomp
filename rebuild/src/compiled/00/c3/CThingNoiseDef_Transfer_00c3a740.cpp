@@ -3,8 +3,8 @@
 // push 1; push esi; lea ecx,[esi+0x14]; call 0xc39610(this=esi+0x14, esi, 1);
 // mov eax,esi; pop esi; ret
 
-struct CPersistContext;
-struct CThingNoiseDef;
+class CPersistContext;
+class CThingNoiseDef;
 
 // base-class persist call: void __fastcall(CThingNoiseDef*) -- no stack args
 void __fastcall BaseChain(CThingNoiseDef* self);
@@ -15,7 +15,7 @@ struct SubObj {
     void M(CThingNoiseDef* a, int b);
 };
 
-struct CThingNoiseDef {
+class CThingNoiseDef { public:
     char pad[0x14];
     SubObj sub;
 };

@@ -3,8 +3,8 @@
 #include <cstring>
 static const void* g_position = 0;
 struct CWorldMapTable { long m_number; virtual long GetWorldMapNumber(const void* position) { g_position = position; return m_number; } };
-struct CWorld { CWorldMapTable m_table; virtual CWorldMapTable* GetWorldMapTable() { return &m_table; } };
-struct CMap { unsigned char _pad[0x20]; CWorld* m_pWorld; unsigned char _pad24[0x1d00]; unsigned char m_position[0xc];
+class CWorld { public: CWorldMapTable m_table; virtual CWorldMapTable* GetWorldMapTable() { return &m_table; } };
+class CMap { public: unsigned char _pad[0x20]; CWorld* m_pWorld; unsigned char _pad24[0x1d00]; unsigned char m_position[0xc];
     long GetWorldMapNumber() { return m_pWorld->GetWorldMapTable()->GetWorldMapNumber(m_position); } };
 
 int main()

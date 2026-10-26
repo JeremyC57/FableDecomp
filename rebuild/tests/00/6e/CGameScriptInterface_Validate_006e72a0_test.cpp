@@ -1,7 +1,7 @@
 #include <stdio.h>
 static int g_interrupted = 0;
 
-struct CNavigatorManager {
+class CNavigatorManager { public:
     void InterruptAllNavigators();
 };
 void CNavigatorManager::InterruptAllNavigators() { g_interrupted = 1; }
@@ -21,7 +21,7 @@ struct CTestWorld : CGameScriptWorldBase {
     CNavigatorManager* GetNavigatorManager() { return &g_manager; }
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void* m_pUnknown0;
     CGameScriptWorldBase* m_pWorld;
     void Validate();

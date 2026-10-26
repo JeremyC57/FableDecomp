@@ -9,7 +9,7 @@
 // by its size only (two words copied memberwise at +0x08/+0x0C).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +0x04
@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // CIntelligentPo
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 namespace NStealth {
-struct CDangerStatus {
+class CDangerStatus { public:
     long m_level;                           // +0x00
     long m_time;                            // +0x04
 };

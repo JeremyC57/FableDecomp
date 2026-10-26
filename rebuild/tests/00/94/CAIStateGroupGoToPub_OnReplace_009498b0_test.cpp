@@ -2,13 +2,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPointer { CThing* item; CPointer& operator=(CThing* p) { item = p; return *this; } };
-struct CCharString { const char* s; CCharString(const char* t, long = -1) : s(t) { } };
+class CCharString { public: const char* s; CCharString(const char* t, long = -1) : s(t) { } };
 static unsigned long g_removed[8]; static int g_nr;
-struct CTCCreatureModeManager { void RemoveMode(unsigned long m) { g_removed[g_nr++] = m; } };
+class CTCCreatureModeManager { public: void RemoveMode(unsigned long m) { g_removed[g_nr++] = m; } };
 struct CCreature { CTCCreatureModeManager* modes; void GetInterface(CTCCreatureModeManager** o, long t) { if (t == 0x31 && modes) *o = modes; } };
-struct CAIBrain { CCreature* PCreature; };
+class CAIBrain { public: CCreature* PCreature; };
 static bool g_getUpResult; static int g_getUps; static const char* g_anim; static long g_movement;
 static bool GetUpFromSitting(CCreature*, long movement, const CCharString* anim, CAIBrain*) { ++g_getUps; g_anim = anim->s; g_movement = movement; return g_getUpResult; }
 static int g_freeSeat, g_freeBar;

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 struct CComponent {
     C2DVector Zoom, TargetZoom, InitialZoom;
     void SetZoom(const C2DVector& zoom) { TargetZoom = zoom; InitialZoom = zoom; Zoom = zoom; }

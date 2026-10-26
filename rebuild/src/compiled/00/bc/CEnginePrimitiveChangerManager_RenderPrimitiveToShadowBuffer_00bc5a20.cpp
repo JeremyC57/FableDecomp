@@ -24,7 +24,7 @@ struct CCountedVirtual {
     virtual void Destroy();                        // slot 1
 };
 
-struct CEngineMeshEffect : CCountedVirtual, CRefCounted {
+class CEngineMeshEffect : public CCountedVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -49,7 +49,7 @@ struct CMeshEffectPointer {                        // CIVCountedPointer<CEngineM
 
 typedef long ERendered;
 
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -62,7 +62,7 @@ struct CEngineInternalPrimitiveBase {
     unsigned char m_flags34;                       // +0x34 (bit 0: casts shadows)
 };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: the handle id and the primitive
+class CEnginePrimitiveHandle { public:                    // 8 bytes: the handle id and the primitive
     long                          m_id;
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };
@@ -95,7 +95,7 @@ struct CEngine_01436e84 {
 };
 extern CEngine_01436e84* g_pEngine_01436e84;       // 0x01436E84
 
-struct CEnginePrimitiveChangerManager {
+class CEnginePrimitiveChangerManager { public:
     ERendered RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase& primitive);
 };
 

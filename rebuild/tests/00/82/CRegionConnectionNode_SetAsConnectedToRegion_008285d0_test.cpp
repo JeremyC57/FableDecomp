@@ -65,7 +65,7 @@ static long* remove(long* first, long* last, const long& value)  // STLport remo
     return result;
 }
 
-struct CRegionConnectionNode {
+class CRegionConnectionNode { public:
     long        RegionID;
     CLongVector Connections;
     long        MostRecentSearchID;

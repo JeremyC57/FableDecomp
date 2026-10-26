@@ -11,7 +11,7 @@
 // Shape: the count is read once (`for (i = 0; i < count; ++i)` becomes a down-counter in a frame word next to the spilled
 //   groups reference); the blend count is the inline C3DGroup2::GetVertexBlendCount(); Write's byte count is pushed
 //   first (right-to-left), and the stream's vtable is fetched ahead of the out-of-line accessor call.
-struct C3DVertexBlend2 { long Vertex; float Weight; };   // 8 bytes
+class C3DVertexBlend2 { public: long Vertex; float Weight; };   // 8 bytes
 
 template <class T> class CArray {                      // retail CArray<T>: STLport vector, three pointers
 public:

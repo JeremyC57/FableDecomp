@@ -9,39 +9,39 @@
 // PBaseDef +0x70 (PDB +0x68/+0x80: retail lists are 4 bytes); CRegion +0x55 flag, CThingBaseDef +0x42 bit 0 (unnamed).
 // Shape: global generation on + the quest manager allowing it + the loaded region flagged and holding no active
 // quest => yes; otherwise yes when the thing's section names a quest or its def carries the bit.
-struct CCharStringData;
-struct CCharString { CCharStringData* PStringData; };
+class CCharStringData;
+class CCharString { public: CCharStringData* PStringData; };
 
-struct CRegion {
+class CRegion { public:
     unsigned char _pad[0x55];
     bool          CreatureGenerationFlag;          // +0x55 (unnamed)
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     bool IsCreatureGenerationEnabled() const;      // 0x004AFC60
     bool FindByName(const CCharString& name);      // 0x004AF610
     bool IsActiveQuestInRegion(const CRegion& region) const;   // 0x004AFDD0
 };
 extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 
-struct CWorldMap {
+class CWorldMap { public:
     long GetLoadedRegion() const;                  // 0x004FB150
     CRegion& GetRegion(long region);               // 0x004FC180
 };
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad[0x42];
     unsigned char CreatureGenerationBit : 1;       // +0x42 bit 0 (unnamed)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad[0x58];
     CCharString    SerialisationSectionName;       // +0x58 (PDB +0x68)
     unsigned char  _pad5c[0x14];
     CThingBaseDef* PBaseDef;                       // +0x70 (PDB +0x80, CDefPointer)
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

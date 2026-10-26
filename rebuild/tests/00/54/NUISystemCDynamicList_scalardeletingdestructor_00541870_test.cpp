@@ -15,13 +15,13 @@ struct IComponentA { virtual void va00() {} unsigned char _state[0x10]; };
 struct IComponentB { virtual void vb00() {} };
 struct CComponentRoot { virtual ~CComponentRoot() {} };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];
     CChangingStateComponent(long) {}
     virtual ~CChangingStateComponent() { g_events[g_count++] = 2; }
 };
 
-struct CComponent;
+class CComponent;
 
 struct CComponentPtrVector {
     CComponent** m_first; CComponent** m_last; CComponent** m_end;
@@ -31,7 +31,7 @@ struct CComponentPtrVector {
 
 struct C2DVector { float X; float Y; };
 
-struct CDynamicList : CChangingStateComponent {
+class CDynamicList : public CChangingStateComponent { public:
     long                BInitialised;
     C2DVector           PositionOffset;
     long                TopIndex;

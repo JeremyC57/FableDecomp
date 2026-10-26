@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static void* g_node = 0;
-struct C2DVector { float X, Y; }; static long g_layer = -1; static const C2DVector* g_pos = 0; struct CTree { void* GetNodeAt(const C2DVector* p, long layer) { g_pos = p; g_layer = layer; return g_node; } }; struct SNode { SNode* next; SNode* prev; CTree* tree; long c, id, minX, minY, maxX, maxY; };
+class C2DVector { public: float X, Y; }; static long g_layer = -1; static const C2DVector* g_pos = 0; struct CTree { void* GetNodeAt(const C2DVector* p, long layer) { g_pos = p; g_layer = layer; return g_node; } }; struct SNode { SNode* next; SNode* prev; CTree* tree; long c, id, minX, minY, maxX, maxY; };
 struct CMgr { unsigned char _pad[0x24]; SNode* maps; void* Get(const C2DVector& p, bool layer) { for (SNode* n = maps->next; n != maps; n = n->next) { long x = (long)p.X, y = (long)p.Y; if (x >= n->minX && x < n->maxX && y >= n->minY && y < n->maxY) return n->tree->GetNodeAt(&p, layer); } return 0; } };
 
 int main() {

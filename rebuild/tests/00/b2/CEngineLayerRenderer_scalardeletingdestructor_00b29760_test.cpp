@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineLayerRenderer {
+class CEngineLayerRenderer { public:
     void* vftable;
     int destroyed;
 };

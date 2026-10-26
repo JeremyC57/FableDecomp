@@ -11,7 +11,7 @@
 // Shape: CCharString has a user copy constructor, so the by-value argument is built in its stack slot
 // (`push ecx ; mov ecx,esp`) and destroyed by the callee; the component's vptr is loaded before the string is
 // built; the receiver is reached by the implicit derived-to-base adjustment (`lea ecx,[eax+4]`).
-struct CCharString {
+class CCharString { public:
     void* m_pData;                                   // +0x00
     CCharString(const char* text, long length = -1); // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -43,7 +43,7 @@ struct CComponentVector {
     CUIComponent*& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char    _pad_0x00[0x0c];
     CComponentVector Components;                     // +0x0c
     bool IsQuitMenuReceivingInput();

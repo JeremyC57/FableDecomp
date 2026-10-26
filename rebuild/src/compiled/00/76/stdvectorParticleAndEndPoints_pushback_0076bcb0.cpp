@@ -12,7 +12,7 @@
 //   the slot and the element's implicit copy constructor copies the two strings then the three dwords in member order.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
 };

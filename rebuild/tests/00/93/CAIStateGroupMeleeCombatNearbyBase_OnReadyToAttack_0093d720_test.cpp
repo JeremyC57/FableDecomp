@@ -19,7 +19,7 @@ static int fails = 0;
 // the whole body; the copy ctor add-refs through an inline AddRef() (`inc dword ptr [esi+4]`)
 // and the dtor releases (`dec [esi+4] ; jne`, then the virtual destroy) at both exits. The def
 // flag at +0x9d and the region/def classes are descriptive. No engine header models the vptr chain: local model.
-struct CRegionDef {
+class CRegionDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
@@ -34,17 +34,17 @@ struct CRegionDefPointer {                       // CDefPointer<CRegionDef>
     ~CRegionDefPointer() { if (m_pDef && --m_pDef->m_refCount == 0) m_pDef->Destroy(); }
     CRegionDef* operator->() const { return m_pDef; }
 };
-struct CRegion {                                // 0x58 bytes
+class CRegion { public:                                // 0x58 bytes
     unsigned char _pad[0x24];
     CRegionDefPointer PDef;                     // +0x24
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     long GetCurrentRegionIndex();               // 0x004FB150
     CRegion& GetRegion(long index);             // 0x004FC180
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -58,12 +58,12 @@ struct CThingCreatureBase {
     virtual long GetCombatMode();               // slot 48 (+0xc0, descriptive)
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool CanContinue();                 // slot 5 (+0x14, descriptive)

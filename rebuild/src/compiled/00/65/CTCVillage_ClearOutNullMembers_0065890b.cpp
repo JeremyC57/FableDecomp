@@ -28,7 +28,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(T* item);               // out of line: 0x0050F380 / 0x0050F3F0 / 0x0065E15D / 0x004A96F0 / 0x0065E133 / 0x0065E21E
 };
@@ -37,7 +37,7 @@ template<class T> struct CRetailList {          // retail std::list: one sentine
     void remove(const T& value);                // 0x0065DDDB / 0x0065DE48 / 0x0065DF94 / 0x0065DE8A / 0x0065DF0F / 0x0065E09E
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x20];

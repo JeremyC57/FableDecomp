@@ -1,4 +1,4 @@
-struct CCreatureAction_SummonerSheatheWeapon {
+class CCreatureAction_SummonerSheatheWeapon { public:
     void* vftable;
 };
 

@@ -1,8 +1,8 @@
 #include <cstdio>
 // Model of unary_negate<CVectorFilter_FurtherFromPointThan>::operator() @ 0x008AABC0: true when the point lies within
 // the radius of the centre on the XY plane (Z ignored, the boundary counts as within).
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float GetLengthSquared() const { return X * X + Y * Y; }

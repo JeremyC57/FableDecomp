@@ -32,7 +32,7 @@ struct CBulletTime {
     bool IsActive() const { return m_active || m_pController != 0; }
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x68];
     CBulletTime*  m_pBulletTime;                         // +0x68
 };

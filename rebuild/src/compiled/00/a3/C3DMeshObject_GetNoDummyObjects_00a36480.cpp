@@ -11,20 +11,20 @@
 // Shape: the CRC is a named local (edi, pushed twice); the statistics pointer is re-read from the counted pointer's Data for
 //   each call (`mov ecx,[ebx+8]`); End is called before Begin and its result is a named local (esi) -- the one-expression
 //   `End(h) - Begin(h)` calls Begin first and keeps the statistics pointer cached in edi.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CMatrix3x4 { float E[12]; };
-struct C3DDummyObject {                            // 0x34 bytes
+class CMatrix3x4 { public: float E[12]; };
+class C3DDummyObject { public:                            // 0x34 bytes
     CMatrix3x4 Transform;                          // +0x00
     long       BoneIndex;                          // +0x30
 };
@@ -33,20 +33,20 @@ template <class T1, class T2> struct pair { T1 first; T2 second; };
 }
 typedef std::pair<unsigned long, C3DDummyObject> TDummyObjectEntry;   // 56 bytes
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     const TDummyObjectEntry* FindDummyObjectsBegin(unsigned long nameHash) const;   // 0x00A2E900
     const TDummyObjectEntry* FindDummyObjectsEnd(unsigned long nameHash) const;     // 0x00A2E910
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;                                    // +0
     void* Info;                                    // +4
     T* operator->() const { return Data; }
 };
 
-struct C3DMeshInfo;
+class C3DMeshInfo;
 
-struct C3DMeshObject {
+class C3DMeshObject { public:
     virtual void v00();
     C3DMeshInfo*                         MeshInfo; // +0x04
     CCountedPointer<const C3DMeshStats>  Mesh;     // +0x08

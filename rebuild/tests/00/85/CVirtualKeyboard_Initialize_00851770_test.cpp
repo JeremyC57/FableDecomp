@@ -4,9 +4,9 @@
 #include <cstring>
 static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString { char text[40]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
-struct CWideString { unsigned short c; CWideString(const unsigned short* t) : c(t[0]) { } };
-struct CUserProfileManager { CWideString GetAutoSaveDisplayName() { static const unsigned short n[2] = { 'P', 0 }; return CWideString(n); } };
+class CCharString { public: char text[40]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
+class CWideString { public: unsigned short c; CWideString(const unsigned short* t) : c(t[0]) { } };
+class CUserProfileManager { public: CWideString GetAutoSaveDisplayName() { static const unsigned short n[2] = { 'P', 0 }; return CWideString(n); } };
 static CUserProfileManager g_profiles;
 struct CTBaseSingleton_CUserProfileManager { static CUserProfileManager& Get() { return g_profiles; } };
 struct CObserver {

@@ -2,7 +2,7 @@
 #include <cstdio>
 
 struct C2DVectorI { long X, Y; C2DVectorI(long x, long y) : X(x), Y(y) {} };
-struct C2DExtentsI { long Width, Height; C2DExtentsI(long w, long h) : Width(w), Height(h) {} };
+class C2DExtentsI { public: long Width, Height; C2DExtentsI(long w, long h) : Width(w), Height(h) {} };
 
 struct CRegionMinimap {
     long RegionMinimapSize, RegionMapBox_TLX, RegionMapBox_TLY, RegionMapBox_BRX, RegionMapBox_BRY;

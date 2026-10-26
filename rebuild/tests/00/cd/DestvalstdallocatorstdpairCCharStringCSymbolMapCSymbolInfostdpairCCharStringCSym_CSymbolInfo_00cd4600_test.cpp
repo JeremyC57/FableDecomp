@@ -3,7 +3,7 @@
 static int g_order[8];
 static int g_count = 0;
 
-struct CCharString {
+class CCharString { public:
     char* p;
 };
 

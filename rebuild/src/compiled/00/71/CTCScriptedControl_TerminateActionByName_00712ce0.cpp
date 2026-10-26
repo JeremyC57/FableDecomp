@@ -8,13 +8,13 @@
 // CActionBase (0x0C, vtable 0x01265504): PTCScript +0x04, Activated +0x08, Terminated +0x09.
 // Shape: the inlined operator== is the two-level form (pointer identity / null tests outside, the length test and
 // Compare in an inner inline whose own `return false` gives retail's `xor al,al ; mov bl,al`).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                     // +0x00
     unsigned long m_length;                    // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                            // 0x0099EAE0
     bool SameText(const CCharString& other) const
@@ -32,7 +32,7 @@ struct CCharString {
         return false;
     }
 };
-struct CTCScriptedControl;
+class CTCScriptedControl;
 struct CActionBase {                           // CTCScriptedControl::CActionBase, vtable 0x01265504
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual CCharString GetName() const;       // slot 4 (+0x10)
@@ -40,7 +40,7 @@ struct CActionBase {                           // CTCScriptedControl::CActionBas
     bool          Activated;                   // +0x08
     bool          Terminated;                  // +0x09
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct SActionNode {                           // STLport list node of CCountedPointer<CActionBase>
     SActionNode*    _M_next;                   // +0x00
     SActionNode*    _M_prev;                   // +0x04
@@ -48,7 +48,7 @@ struct SActionNode {                           // STLport list node of CCountedP
     CCPPointerInfo* Info;                      // +0x0c
 };
 struct CActionList { SActionNode* _M_node; };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     virtual void v00();
     void*         ParentThing;                 // +0x04 (CTCBase)
     bool          ToBeRemoved;                 // +0x08

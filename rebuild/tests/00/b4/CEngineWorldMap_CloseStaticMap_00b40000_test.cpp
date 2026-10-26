@@ -1,13 +1,13 @@
 // Behaviour test for 0x00b40000 CEngineWorldMap::CloseStaticMap
 #include <cstdio>
 static int g_mapCloses = 0, g_waterCloses = 0, g_bankCloses = 0;
-struct CEngineMap { int m_closed; void CloseStaticMap() { ++m_closed; ++g_mapCloses; } };
-struct CEngineWaterRenderer { void CloseStaticMap() { ++g_waterCloses; } };
+class CEngineMap { public: int m_closed; void CloseStaticMap() { ++m_closed; ++g_mapCloses; } };
+class CEngineWaterRenderer { public: void CloseStaticMap() { ++g_waterCloses; } };
 static CEngineWaterRenderer* g_pEngineWaterRenderer = 0;
-struct CStaticMapBankFile { virtual void Close() { ++g_bankCloses; } };
-template <class T> struct CArray { T* m_pBegin; T* m_pEnd; T* m_pCapacity;
+class CStaticMapBankFile { public: virtual void Close() { ++g_bankCloses; } };
+template <class T> class CArray { public: T* m_pBegin; T* m_pEnd; T* m_pCapacity;
     unsigned long Size() const { return m_pEnd - m_pBegin; } T& operator[](unsigned long i) { return m_pBegin[i]; } };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     CArray<CEngineMap*> MapList; CStaticMapBankFile StaticMapFile; long StaticMapOpenState; long StaticMapBuildStatus;
     void CloseStaticMap()
     {

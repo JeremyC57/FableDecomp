@@ -5,7 +5,7 @@
 // 8 bytes: vptr + item) at the unaligned +0x0d, OwnerUID (unsigned __int64) +0x18 -- modelled under pack(1).
 // Shape: the pointer fetched once into a local, `if (p && !dead) return true; return false;` gives `mov al,1` and the
 // shared `xor al,al` tail.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 };
@@ -23,7 +23,7 @@ struct CTCBase_007e8420 {
     unsigned char _pad08[4];
 };
 
-struct CTCOwnedEntity : CTCBase_007e8420 {
+class CTCOwnedEntity : public CTCBase_007e8420 { public:
     bool                    SwitchableNavigationTCAdded;   // +0x0c
     CBaseIntelligentPointer POwner;                 // +0x0d CIntelligentPointer<CThing>
     unsigned char           _pad15[3];

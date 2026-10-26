@@ -26,7 +26,7 @@ struct SPriorityEntry {                   // std::pair<long, CDefPointer<const C
     SPriorityEntry(const SPriorityEntry& o) : first(o.first), second(o.second) { }
 };
 
-struct CContextSensitivePriorityCompare { // 4-byte comparator slot passed by value
+class CContextSensitivePriorityCompare { public: // 4-byte comparator slot passed by value
     void* m_context;
 };
 

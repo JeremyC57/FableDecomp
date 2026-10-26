@@ -13,14 +13,14 @@
 //          enemy, the stop flag, IsStillRunnable and combat at its head.
 // Layout: engine/CAIStateGroup_MeleeCombatNearby2.h is flattened (vptr spelled as a data member) and this function makes
 //          virtual calls through slots 14/15, so the class is modelled locally (PBrain +0x04, PEnemy +0x14).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -39,7 +39,7 @@ struct CThing {
     }
     bool IsInCombatMode();                      // 0x006621A0
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsInMeleeAsAttacker() const;           // 0x00662410 (Ego_r.pdb ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ)
 };
 bool __fastcall IsAbleToMove(CThing* thing);                  // 0x0085F3E0
@@ -54,7 +54,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
@@ -67,25 +67,25 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void Refresh();                     // slot 9 (+0x24, descriptive)
 };
-struct CCombatManager {
+class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
     void SetAttackerAsReadyToAttack(CThing* creature, bool ready);         // 0x006EA450
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

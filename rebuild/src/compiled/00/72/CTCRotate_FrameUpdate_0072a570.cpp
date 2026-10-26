@@ -9,8 +9,8 @@
 // TimerLimit +0x24, Rotating +0x28; CThing: placement object +0x60, draw-state object +0x64 (flag byte +0x59 bit 1).
 // Shape: the orientation is copied into a 24-byte local by the implicit memberwise copy (dword moves interleaved
 // with the fild/fmul of the angle).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     void RotateAboutAxis(const C3DVector& axis, float angle);   // 0x00A22F80
@@ -97,13 +97,13 @@ struct CThingDrawState {
     unsigned char _pad00[0x59];
     unsigned char m_flags59;                                    // +0x59 (bit 1: orientation changed)
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x60];
     CThingPlacement* m_pPlacement;                              // +0x60
     CThingDrawState* m_pDrawState;                              // +0x64
     void RemoveTC(long type);                                   // 0x004C9840
 };
-struct CTCRotate {
+class CTCRotate { public:
     virtual void v00();
     CThing*   ParentThing;                                      // +0x04 (CTCBase)
     bool      ToBeRemoved;                                      // +0x08

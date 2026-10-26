@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 // Behaviour test for CParticleEmitterManager::CreateDecalEmitter (0x00AEABE0).
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     CRightHandedSet(const C3DVector& u, const C3DVector& f) : Up(u), Forward(f) {}
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c
@@ -20,19 +20,19 @@ public:
     CBaseClass() {}
     ~CBaseClass() {}
 };
-struct C3DPositionInterpolator : CBaseClass {      // 0x1c bytes
+class C3DPositionInterpolator : public CBaseClass { public:      // 0x1c bytes
     C3DVector Start;                               // +0x04
     C3DVector End;                                 // +0x10
     C3DPositionInterpolator(const C3DVector& start, const C3DVector& end) : Start(start), End(end) {}
 };
-struct C3DOrientationInterpolator : CBaseClass {   // 0x34 bytes
+class C3DOrientationInterpolator : public CBaseClass { public:   // 0x34 bytes
     CRightHandedSet Start;                         // +0x04
     CRightHandedSet End;                           // +0x1c
     C3DOrientationInterpolator(const CRightHandedSet& start, const CRightHandedSet& end) : Start(start), End(end) {}
 };
 
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void*          m_vtable;                       // +0x00
     unsigned char  m_base04[0x3c];                 // +0x04 .. +0x3f
     unsigned short Priority : 3;                   // +0x40

@@ -1,7 +1,7 @@
 // Behaviour test for CTCActionUseAcceptBoast::vfunc_28 @ 0x007EBBC0: after the (empty) base slot, the boasting position (interface 0x71) is told which creature accepted.
 #include <cstdio>
 
-struct CTCBase { int unused; };
+class CTCBase { public: int unused; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -15,7 +15,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -51,15 +51,15 @@ struct CTestThing : CThing {
     }
 };
 
-struct CThingCreatureBase { int unused; };
+class CThingCreatureBase { public: int unused; };
 static int g_baseCalls = 0;
 
-struct CTCBoastingPosition : CTCBase {
+class CTCBoastingPosition : public CTCBase { public:
     CThingCreatureBase* accepted; int calls;
     void OnBoastAccepted(CThingCreatureBase* creature) { accepted = creature; ++calls; }
 };
 
-struct CTCActionUseBase {
+class CTCActionUseBase { public:
     CThing* ParentThing;
     void vfunc_28(CThingCreatureBase*) { ++g_baseCalls; }
 };

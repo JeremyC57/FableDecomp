@@ -1,7 +1,7 @@
 // Behaviour test for 0x005B6881 CTCInventoryClothing::ConstructTitleString
 #include <cstdio>
 #include <cstring>
-struct CWideString {
+class CWideString { public:
     char buf[128];
     CWideString(const char* t) { std::strcpy(buf, t); }
     const CWideString& operator+=(const CWideString& o) { std::strcat(buf, o.buf); return *this; }

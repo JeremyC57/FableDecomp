@@ -18,9 +18,9 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CAllocProxy<T> end;
     CRetailVector() : first(0), last(0), end(0) { }
 };
-struct CDefString { long m_index; CDefString() : m_index(-1) { } };
+class CDefString { public: long m_index; CDefString() : m_index(-1) { } };
 struct CPrerequisiteMap { long m_words[4]; CPrerequisiteMap() { ++g_mapCtor; m_words[0] = 5; } };
-struct CQuestCardDef : CDefBase_0044c0c0 {
+class CQuestCardDef : public CDefBase_0044c0c0 { public:
     long QuestName; long QuestSummary; long QuestObjective; long SuccessSummary; CDefString RegionName; CDefString TeleporterRegionName;
     long InventoryCategory; long RenownReward; long GoldReward; CRetailVector<long> RewardObjects; bool IsCore; bool IsVignette; bool IsExclusive;
     bool MakeVignetteRouteAppearOnMinimap; CPrerequisiteMap Prerequisites;

@@ -1,18 +1,18 @@
 #include <cstdio>
-struct CMovableResource { virtual ~CMovableResource() {} };
+class CMovableResource { public: virtual ~CMovableResource() {} };
 static void* g_blocks[32]; static void* g_handlers[32]; static int g_n = 0; static int g_strips = 0; static long g_zs = -100;
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void SetMovableResourceHandler(void* block, CMovableResource* handler) { g_blocks[g_n] = block; g_handlers[g_n++] = handler; }
 };
-struct CLandscapeBackgroundPatch;
-struct CEngineLandscapeRenderer {
+class CLandscapeBackgroundPatch;
+class CEngineLandscapeRenderer { public:
     CEngineLandscapeMemoryManager* MemoryManager;
     void OnRegistedZSortingPatchRelocation(long handle, CLandscapeBackgroundPatch*) { g_zs = handle; }
 };
 static CEngineLandscapeMemoryManager g_mm; static CEngineLandscapeRenderer g_r = { &g_mm };
 static CEngineLandscapeRenderer* g_pLandscapeRenderer = &g_r;
-struct CPatchTesselationEdgeStrip { int id; void SetMovableResourceHandler(CMovableResource*) { ++g_strips; } };
-struct CLandscapeBackgroundPatch : CMovableResource {
+class CPatchTesselationEdgeStrip { public: int id; void SetMovableResourceHandler(CMovableResource*) { ++g_strips; } };
+class CLandscapeBackgroundPatch : public CMovableResource { public:
     CPatchTesselationEdgeStrip EdgeStrips[4];
     void* Texture; void* IndexBuffer; void* VertexBuffer; void* BridgeIndexBuffers[4]; void* BridgeVertexBuffers[4];
     void* WaterSubPatch; long ZSorterHandle; bool SharedIndexBuffer;

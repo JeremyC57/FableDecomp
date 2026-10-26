@@ -39,7 +39,7 @@ public:
         return false;
     }
 };
-struct CTCTextureDecal {
+class CTCTextureDecal { public:
     void DeleteDecal(long entryID);             // 0x0070A430
 };
 struct CWound {
@@ -68,13 +68,13 @@ struct CWoundList {                             // STLport list<CTCWound::CWound
     }
     ~CWoundList();                              // 0x00758B00 (erases the remaining nodes, frees the sentinel)
 };
-struct CTCBase {                                // 0xc bytes
+class CTCBase { public:                                // 0xc bytes
     virtual ~CTCBase();                         // 0x00686830
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
 };
-struct CTCWound : CTCBase {                     // vtable 0x012698B4
+class CTCWound : public CTCBase { public:                     // vtable 0x012698B4
     unsigned long LastFrameChanged;             // +0x0c
     CWoundList    Wounds;                       // +0x10
     virtual ~CTCWound();

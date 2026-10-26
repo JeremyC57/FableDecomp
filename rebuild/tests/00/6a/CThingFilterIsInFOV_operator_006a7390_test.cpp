@@ -1,12 +1,12 @@
 // Behaviour test for 0x006A7390 CThingFilter_IsInFOV::operator()(CThing*)
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float x, y, z; };
+class CTCPhysicsBase { public:
     C3DVector m_centre; float m_radius;
     void GetBoundingInfo(C3DVector* centre, float* radius) { *centre = m_centre; *radius = m_radius; }
 };
-struct CThing { CTCPhysicsBase* PhysicsTC; };
-struct CThingFilter_IsInFOV {
+class CThing { public: CTCPhysicsBase* PhysicsTC; };
+class CThingFilter_IsInFOV { public:
     C3DVector FromPos; C3DVector Direction; float CosFOV; float FOV; bool AngleTest3D;
     bool operator()(const C3DVector& pos) const
     {

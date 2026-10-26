@@ -1,7 +1,7 @@
 // Behaviour test for PerformForceUpdates (008e5670): air resistance (0x008E5670 only) scales the velocity by 1 - resistance; gravity
 // (-0.12 Z) applies unless the thing is on the ground, the ground normal's Z is at least 0.98 and the velocity is ~zero.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -9,7 +9,7 @@ struct C3DVector {
 };
 const float g_epsilon_0129ba3c = 1e-4f;
 static float g_normalZ = 1.0f; static int g_normalCalls = 0; static const C3DVector* g_normalAt = 0;
-struct CWorldMap {
+class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector& pos) const { ++g_normalCalls; g_normalAt = &pos; return C3DVector(0.0f, 0.0f, g_normalZ); }
 };
 static CWorldMap g_map;

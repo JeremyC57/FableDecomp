@@ -9,10 +9,10 @@
 //   ends in `default: __assume(0)` and VC7.1 emits the bare `jmp [eax*4+table]`; the case bodies are laid out in source
 //   order and retail has them 4,3,2,1,0. the traits object of the binary-load arm is empty and lives in the dead value-argument slot (`lea ecx,[esp+20h]` once the value is in eax). The 8-byte frame is the {vtable, value*} wrapper of the text arms.
 //   The enum's name is descriptive (from the key); it is a 4-byte enum written with WriteLong.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                   // 0x00993EB0
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 enum ENumAcceptedBoasts { ENumAcceptedBoasts_Default };
 
 template <class T> struct CPersistTraits {
@@ -29,7 +29,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     virtual void TransferIn();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

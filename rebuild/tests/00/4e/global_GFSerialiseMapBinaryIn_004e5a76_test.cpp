@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour copy of GFSerialiseMapBinaryIn<long, CDefString, CCompareDefString<long> >: clear, read the count, then per
 // entry a value-initialised pair {CDefString(-1), 0L} is filled key-then-value and inserted (unique keys, first wins).
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
 struct SStream {
     const long* data; int pos; int size;
     SStream(const long* d, int n) : data(d), pos(0), size(n) { }

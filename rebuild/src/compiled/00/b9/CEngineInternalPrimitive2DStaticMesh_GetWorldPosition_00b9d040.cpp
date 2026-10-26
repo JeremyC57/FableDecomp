@@ -1,4 +1,4 @@
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct CEngineInternalPrimitive2DStaticMesh {
     char pad[0x108];

@@ -5,7 +5,7 @@
 const float g_QuaternionEpsilon = 0.0001f;
 const float g_One = 1.0f;
 
-struct CQuaternion {
+class CQuaternion { public:
     float X, Y, Z, W;
     bool IsIdentity() const
     {

@@ -4,14 +4,14 @@
 #include <cstring>
 #include <cstdio>
 
-struct CTCBase { int calls; void* arg; };
+class CTCBase { public: int calls; void* arg; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -52,12 +52,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* t, long n = -1) : m_pData(t) { (void)n; ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
 };
-struct CTCForcePushPower : CTCBase { bool IgnoreFriendlies; };
+class CTCForcePushPower : public CTCBase { public: bool IgnoreFriendlies; };
 static CTCForcePushPower g_power;
 static int g_addCalls = 0;
 static CTCBase* AddTC(CThing*, const CCharString& name, bool init, void* params)
@@ -66,8 +66,8 @@ static CTCBase* AddTC(CThing*, const CCharString& name, bool init, void* params)
     g_power.IgnoreFriendlies = false;
     return &g_power;
 }
-struct CTCCreatureModeManager : CTCBase { void RemoveMode(unsigned long m) { ++calls; arg = (void*)m; } };
-struct CCreatureAction_ForcePushOutOf {
+class CTCCreatureModeManager : public CTCBase { public: void RemoveMode(unsigned long m) { ++calls; arg = (void*)m; } };
+class CCreatureAction_ForcePushOutOf { public:
     CBaseIntelligentPointer PCreature; bool OnlyHitEnemies; int m_stringsAfterAdd;
     void PerformAction()
     {

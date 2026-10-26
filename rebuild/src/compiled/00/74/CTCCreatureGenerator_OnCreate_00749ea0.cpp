@@ -12,7 +12,7 @@
 // Shape: the def pointer's address stays in edi from the call's push to the null test; seconds * rate is
 // `mov reg,[def+n] ; imul reg,[rate]`; the negated activation frame is `imul ; neg`; LevelPersistent is a
 // one-bit bitfield set (`mov al ; or al,10h ; mov`), the parent thing re-read into esi.
-struct CCreatureGeneratorDef {
+class CCreatureGeneratorDef { public:
     unsigned char _pad[0x38];
     long          SecondsBetweenEffects;                    // +0x38
     long          SecondsBetweenSoundEffects;               // +0x3c
@@ -22,11 +22,11 @@ struct CDefPointer_CreatureGeneratorDef {                   // CDefPointer<CCrea
     const CCreatureGeneratorDef* Object;
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer_CreatureGeneratorDef& out);  // 0x0074D160
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x70];
     CDefClassBase* DefClass;                                // +0x70
     unsigned char  _pad74[0x1e];
@@ -42,7 +42,7 @@ struct CThing {
 
 extern long g_FramesPerSecond;                              // 0x01375550
 
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     void*                            __vftable;             // +0x00
     CThing*                          ParentThing;           // +0x04 (CTCBase)
     unsigned char                    _pad08[0x2c];          // +0x08

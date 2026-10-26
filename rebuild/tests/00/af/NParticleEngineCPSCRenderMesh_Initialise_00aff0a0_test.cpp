@@ -2,10 +2,10 @@
 // blend mode/op) and a trail primitive (type 0x1a, trail bank, zero flags, trail blend mode/op) are created once each.
 #include <cstdio>
 
-struct CMatrix3x4 { float m[12]; void SetIdentity() { for (int i = 0; i < 12; ++i) m[i] = 0.0f; m[0] = m[4] = m[8] = 1.0f; } };
+class CMatrix3x4 { public: float m[12]; void SetIdentity() { for (int i = 0; i < 12; ++i) m[i] = 0.0f; m[0] = m[4] = m[8] = 1.0f; } };
 struct SInfo { long Type; long BankIndex; unsigned short Flags; unsigned long BlendMode, BlendOp; CMatrix3x4 Transform; };
 static SInfo g_last[4]; static int g_creates;
-struct CIEngine { long CreateChildPrimitive(void*, const SInfo* info, long) { g_last[g_creates] = *info; return 200 + g_creates++; } };
+class CIEngine { public: long CreateChildPrimitive(void*, const SInfo* info, long) { g_last[g_creates] = *info; return 200 + g_creates++; } };
 static SInfo MakeMesh(long bank, const CMatrix3x4& t, unsigned long mode, unsigned long op) { SInfo i; i.Type = 0x1c; i.BankIndex = bank; i.Flags = 0; i.BlendMode = mode; i.BlendOp = op; i.Transform = t; return i; }
 struct CPSCRenderMesh {
     bool Initialised; long BankIndex, TrailBankIndex;

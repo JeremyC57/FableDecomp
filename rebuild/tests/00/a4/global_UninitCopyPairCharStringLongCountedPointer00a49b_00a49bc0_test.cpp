@@ -11,7 +11,7 @@ public:
     void* PData;
 };
 struct CCountBlock { unsigned int RefCount; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCountBlock* Info;
     CCountedPointer() : Data(0), Info(0) { }

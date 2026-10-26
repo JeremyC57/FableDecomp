@@ -12,12 +12,12 @@
 // flattened PDB layout (12-byte list, 0x30 bytes), so the parser is modelled locally. The second and third string
 // temporaries are homed in the dead `parser` argument slot. The two terminators are implicit conversions (CCharString
 // ctor with a defaulted length, re-addressed with `lea`), the "" file name an explicit temporary (pushed from eax).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBaseClass {                                // the CStringParser root (polymorphic)
+class CBaseClass { public:                                // the CStringParser root (polymorphic)
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -25,7 +25,7 @@ struct CStringParserCommentList {                  // retail std::list<CStringPa
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBaseClass {                // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -39,9 +39,9 @@ struct CStringParser : CBaseClass {                // retail 0x28 bytes
     CCharString ReadAsStringUntilStringInclusive(const CCharString& terminator);   // 0x009BA330
     long SkipWhitespace();                         // 0x009B9C60
 };
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CPersistContext {                           // retail 0x2c bytes, trivial destructor
+class CDefinitionManager;
+class CSymbolMap;
+class CPersistContext { public:                           // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool reportErrors,
                     CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0

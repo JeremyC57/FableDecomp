@@ -1,14 +1,14 @@
 #include <cstdio>
 // CModeStrafe::ClearStrafingCombinationAnims model: fade out the two combination anims when present and running.
-struct CAnimSet {
+class CAnimSet { public:
     float CurrentAlpha; float ChangeAlphaBy; bool Finished;
     void FadeOut() { if (!Finished) { Finished = true; ChangeAlphaBy = CurrentAlpha; } }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     CAnimSet a1b; CAnimSet* p19;
     CAnimSet* FindCombinationAnim(long type) { return type == 0x1b ? &a1b : p19; }
 };
-struct CThing { bool dead; bool hasAnim; CAnimateThing anim; };
+class CThing { public: bool dead; bool hasAnim; CAnimateThing anim; };
 struct CModeStrafe {
     CThing* ParentThing;
     void ClearStrafingCombinationAnims(bool)

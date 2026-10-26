@@ -3,7 +3,7 @@
 extern "C" void __cdecl FreeThing(void* p);
 
 struct BaseItem { void OnDie(); };
-struct CTCInventoryItem : public BaseItem {
+class CTCInventoryItem : public BaseItem { public:
     char pad00[0x2c];
     void* ptr2c;
     void OnDie();

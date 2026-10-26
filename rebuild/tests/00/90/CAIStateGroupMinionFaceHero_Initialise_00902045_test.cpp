@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CThing {}; struct CAIBrain {}; struct CThingAICreature {}; struct CCharString {};
+class CThing { public:}; class CAIBrain { public:}; class CThingAICreature { public:}; class CCharString { public:};
 static int g_live = 0; static int g_base = 0; static long g_id = 0;
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { ++g_live; } CThing* GetPItem() const { return (CThing*)m_pItem; } void SetPItem(CThing* i) { m_pItem = i; } ~CBaseIntelligentPointer() { --g_live; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); } CIntelligentPointer& operator=(const CIntelligentPointer& o) { SetPItem(o.GetPItem()); return *this; } };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; void Initialise(CAIBrain&, CThingAICreature&, long id, long, const CCharString&) { ++g_base; g_id = id; } };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; void Initialise(CAIBrain&, CThingAICreature&, long id, long, const CCharString&) { ++g_base; g_id = id; } };
 struct CAIStateGroup_MinionFaceHero : CAIStateGroupBase { CIntelligentPointer PHero; long m_frameCleanedUp; CAIStateGroup_MinionFaceHero() : PHero(0) {}
     virtual void Initialise(CAIBrain& b, CThingAICreature& c, long id, long p, const CCharString& n); };
 void CAIStateGroup_MinionFaceHero::Initialise(CAIBrain& brain, CThingAICreature& creature, long id, long priority, const CCharString& name)

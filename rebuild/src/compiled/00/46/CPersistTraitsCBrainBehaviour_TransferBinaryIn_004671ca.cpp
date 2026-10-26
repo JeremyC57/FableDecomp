@@ -44,7 +44,7 @@ public:
     void TransferBinaryIn(CMemoryDataInputStream& stream);   // 0x0044FC00
 };
 
-struct CBrainBehaviour {                               // 12 bytes
+class CBrainBehaviour { public:                               // 12 bytes
     CDefString Name;                                   // +0x0
     long       Priority;                               // +0x4
     long       ScriptAIPriority;                       // +0x8

@@ -22,7 +22,7 @@ struct SZeroed {                        // the zeroed block is one embedded memb
     SZeroed() : m_00(0), m_01(0), m_02(0) { }           // inlined into every constructor that embeds it
 };
 
-struct CAttackPatternDef : CBase_00430370 {
+class CAttackPatternDef : public CBase_00430370 { public:
     unsigned char _pad[0x38];
     SZeroed m_data;                        // +0x3c
     virtual void v00();

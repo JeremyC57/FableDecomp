@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CConsole {
+class CConsole { public:
     void* vftable;
     int destroyed;
 };

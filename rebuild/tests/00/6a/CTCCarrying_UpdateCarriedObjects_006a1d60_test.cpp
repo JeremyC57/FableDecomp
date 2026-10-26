@@ -1,7 +1,7 @@
 // behaviour test for 0x006A1D60 CTCCarrying::UpdateCarriedObjects
 #include <cstdio>
 struct Carryable { int updates; bool last; void UpdateCarriedPosition(bool f) { ++updates; last = f; } };
-struct CThing {
+class CThing { public:
     unsigned int bits[9]; Carryable* comp;
     template<class T> bool GetInterface(T** out, long type) { if (bits[type >> 5] & (1u << (type & 31))) { *out = comp; return true; } return false; }
 };

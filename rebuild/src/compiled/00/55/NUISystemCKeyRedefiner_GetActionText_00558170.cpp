@@ -83,12 +83,12 @@ public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;                // 0x009C95E0
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;                                           // +0x14
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char         _pad00[0x60];
     NGameText::CDataBank* PGameTextDataBank;                                           // +0x60
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }

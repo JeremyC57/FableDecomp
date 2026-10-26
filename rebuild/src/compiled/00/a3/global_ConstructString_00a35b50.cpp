@@ -3,7 +3,7 @@ struct Inner {
     bool Build(void* a, long b, int zero);   // thiscall member: ecx=this, stack args a,b,zero
 };
 
-struct CWideString {
+class CWideString { public:
     char pad0[8];
     Inner* field8;   // +8
 };

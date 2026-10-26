@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     int d;
     const char* gotLit;
     int gotLen;
@@ -11,7 +11,7 @@ struct CCharString {
     }
 };
 
-struct CTCTavernGameCoinGolf {
+class CTCTavernGameCoinGolf { public:
     CCharString GetClassTypeName();
 };
 

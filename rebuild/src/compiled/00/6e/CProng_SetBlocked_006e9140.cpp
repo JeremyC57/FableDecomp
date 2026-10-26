@@ -5,7 +5,7 @@
 // Layout: Ego_r.pdb CProng (0x1c): Blocked +0, Prong +1, ProngBlockageTimer +0x10, POccupier +0x14.
 // Shape: the occupier release is the landed SetPTarget temporary-pointer shape (0x007A7150) with a null item; the
 // occupier's dead bit is tested through a second GetPItem.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -21,7 +21,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x0123E7D8
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CThingCreatureBase {                                 // only the dead bit is read here
+class CThingCreatureBase { public:                                 // only the dead bit is read here
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                               // +0x91 bit 0
     unsigned char m_91_1 : 7;

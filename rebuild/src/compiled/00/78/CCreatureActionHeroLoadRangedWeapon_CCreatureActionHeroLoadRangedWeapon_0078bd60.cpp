@@ -10,7 +10,7 @@
 // the second (0x0125A858, CIntelligentPointer<CThingObject>). `ret 4`.
 // Layout: retail CCreatureActionBase is 0xa8 bytes; no engine header exists for this class, so `this` is modelled locally
 // (the member names describe the weapon being loaded and its ammunition).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {            // 8 bytes: vptr + the pointed-to item
     virtual void v00();
@@ -30,13 +30,13 @@ struct CIntelligentPointer_CThingObject : CBaseIntelligentPointer {   // vtable 
     CIntelligentPointer_CThingObject(const CIntelligentPointer_CThingObject& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);   // 0x0062EBC0
 };
 
-struct CCreatureAction_HeroLoadRangedWeapon : CCreatureActionBase {   // vtable 0x0126B9D4
+class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:   // vtable 0x0126B9D4
     CIntelligentPointer_CThing       PWeapon;   // +0xa8
     CIntelligentPointer_CThingObject PAmmo;     // +0xb0
     virtual void v00();

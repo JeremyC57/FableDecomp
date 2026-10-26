@@ -27,7 +27,7 @@ struct D3DXMATRIX {
     }
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     D3DXMATRIX SetD3DMatrix(const CMatrix& matrix);
 };
 

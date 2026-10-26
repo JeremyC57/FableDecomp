@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-struct CParentDefClassBase { virtual void v00() { } CParentDefClassBase() { std::strcat(g_seq, "B"); } };
+class CParentDefClassBase { public: virtual void v00() { } CParentDefClassBase() { std::strcat(g_seq, "B"); } };
 struct CMember12 { unsigned char _body[0xc]; CMember12() { std::strcat(g_seq, "M"); } };
 struct CUILocaleGraphicsDef : CParentDefClassBase { unsigned char _pad04[0x38]; CMember12 m_member3c; long m_48, m_4c, m_50; virtual void v00() { } CUILocaleGraphicsDef() : CParentDefClassBase(), m_member3c(), m_48(0), m_4c(0), m_50(0) { } };
 

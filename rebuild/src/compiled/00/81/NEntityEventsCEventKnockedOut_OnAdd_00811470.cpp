@@ -102,7 +102,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -113,7 +113,7 @@ struct CDefPointee {
     virtual void Destroy();                             // slot 1
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
@@ -133,14 +133,14 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CCreatureDef : CDefPointee {
+class CCreatureDef : public CDefPointee { public:
     unsigned char _pad08[0x40 - 0x08];
     long m_value40;                                     // +0x40 the value the kill event reports
 };
 struct CDefinitionManagerBase {
     CDefPointer<CDefPointee> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase : CDefPointee {
+class CDefClassBase : public CDefPointee { public:
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
@@ -149,7 +149,7 @@ struct CDefClassBase : CDefPointee {
     CDefinitionManagerBase* m_pManager;                 // +0x1c
     bool GetSubDef(CDefPointer<CCreatureDef>* out);     // 0x00485815
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009AD9E0 (hidden result pointer)
     bool GetDef(long globalIndex, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
 };
@@ -185,12 +185,12 @@ bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
     return false;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
 };
 
 namespace NHeroStatModifierEvent {
-struct CBase {
+class CBase { public:
     virtual void v00();
 };
 struct CKnockedThingUnconscious : CBase {               // vtable 0x01272334
@@ -199,7 +199,7 @@ struct CKnockedThingUnconscious : CBase {               // vtable 0x01272334
     virtual void v00();
 };
 }
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void InformOfEvent(const NHeroStatModifierEvent::CBase* event);   // 0x0057A56C
 };
 struct CTCInterface_a0 {
@@ -208,20 +208,20 @@ struct CTCInterface_a0 {
 };
 bool __fastcall IsThingGhostSword(const CThing* thing); // 0x007C53F0
 
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void* _vptr;
     CThing* ParentThing;                                // +0x04
     const CThing* GetThing() const { return ParentThing; }
 };
 
 namespace NEntityEvents {
-struct CEventBase {
+class CEventBase { public:
     virtual void v00();
     virtual void v01();
     virtual void OnAdd(const CTCEntityEvents& events);
     long m_frame;                                       // +0x04
 };
-struct CEventKnockedOut : CEventBase {
+class CEventKnockedOut : public CEventBase { public:
     CBaseIntelligentPointer m_pKnockedOutBy;            // +0x08
     virtual void OnAdd(const CTCEntityEvents& events);
 };

@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_calls=0;
 static int g_seq[8]; static int g_n=0;
-struct CMessageEventDef {
+class CMessageEventDef { public:
     char pad[0x3c];
     int f3c;
     int MaxSeenRadius;
@@ -9,7 +9,7 @@ struct CMessageEventDef {
     int Lifespan;
     int ReactionSpeechType;
 };
-struct CPersistContext {
+class CPersistContext { public:
     void TransferA(void* p){ g_calls++; g_seq[g_n++]=1; }
     void TransferB_00455712(void* p){ g_calls++; g_seq[g_n++]=2; }
     void TransferC(void* p){ g_calls++; g_seq[g_n++]=3; }

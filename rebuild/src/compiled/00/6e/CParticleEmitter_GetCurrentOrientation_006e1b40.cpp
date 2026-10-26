@@ -14,7 +14,7 @@
 // row 2 is loaded straight onto the x87, and the memberwise C3DVector copy constructors store all
 // six floats into the result (`fxch st(2)` + `fstp` chain).
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -22,13 +22,13 @@ struct C3DVector {
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                                         // +0x00
     C3DVector Forward;                                                    // +0x0c
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {}
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Row[4];
     C3DVector GetRow(long index) const { return Row[index]; }
 };

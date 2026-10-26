@@ -1,8 +1,8 @@
 // behaviour test for CThingObject::OnDie (0x007038D0): spawn the on-death object with a random spin, base OnDie always runs
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CCharString { const char* m_text; CCharString(const char* t, long = -1) : m_text(t) {} ~CCharString() {} };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: const char* m_text; CCharString(const char* t, long = -1) : m_text(t) {} ~CCharString() {} };
 static float g_randoms[3]; static int g_rand = 0; static float g_ranges[3];
 static float GFFloatRandom(float range, unsigned long* seed) { ++*seed; g_ranges[g_rand] = range; return g_randoms[g_rand++]; }
 class CThingObject;
@@ -10,7 +10,7 @@ static long g_createdDef = 0; static const C3DVector* g_createdAt = 0; static lo
 static CThingObject* g_spawn = 0;
 static CThingObject* CreateObject(long d, C3DVector* p, long player, float*, unsigned long, const CCharString& n)
 { g_createdDef = d; g_createdAt = p; g_player = player; g_name = n.m_text; return g_spawn; }
-struct CThingObjectDef { long OnDeathObject; };
+class CThingObjectDef { public: long OnDeathObject; };
 static unsigned long g_seed = 0; static int g_baseDie = 0;
 class CThingPhysical { public:
     C3DVector m_pos; C3DVector m_spin;

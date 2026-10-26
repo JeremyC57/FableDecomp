@@ -2,8 +2,8 @@
 
 // Model of CTCHaste::FrameUpdate @ 0x00800000.
 static long g_removed = -1;
-struct CThing { void RemoveTC(long type) { g_removed = type; } };
-struct CTCHaste {
+class CThing { public: void RemoveTC(long type) { g_removed = type; } };
+class CTCHaste { public:
     CThing* ParentThing; float Multiplier; bool ToTerminate; long PauseFrames;
     void FrameUpdate()
     {

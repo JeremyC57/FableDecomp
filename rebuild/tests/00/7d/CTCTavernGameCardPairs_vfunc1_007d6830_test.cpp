@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for CTCTavernGameCardPairs::vfunc_1 (0x007D6830).
-struct CPersistContext {
+class CPersistContext { public:
     int calls; const char* name; float* value; float def; long baseArg;
     void Transfer(const char* n, float& v, const float& d) { ++calls; name = n; value = &v; def = d; }
 };

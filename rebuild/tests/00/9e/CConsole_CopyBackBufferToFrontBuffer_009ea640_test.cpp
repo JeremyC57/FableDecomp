@@ -7,7 +7,7 @@ struct CConBuf {
     void Assign(CConBuf* src);
 };
 
-struct CConsole {
+class CConsole { public:
     char pad20[0x20];
     CConBuf front;
     char pad2c[4];

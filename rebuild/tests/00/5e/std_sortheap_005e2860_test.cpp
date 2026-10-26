@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 static int g_destroyed = 0;
-struct CAnimComponentBase {                       // intrusively counted: vptr, count at +4
+class CAnimComponentBase { public:                       // intrusively counted: vptr, count at +4
     virtual void v00() { }
     virtual void Destroy() { ++g_destroyed; }   // slot 1
     long m_count;

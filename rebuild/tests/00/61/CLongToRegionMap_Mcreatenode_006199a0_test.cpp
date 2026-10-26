@@ -4,7 +4,7 @@
 #include <cstring>
 #include <new>
 static int g_copies = 0;
-struct CRegion {
+class CRegion { public:
     unsigned char _data[0x58];
     CRegion() { std::memset(_data, 0, sizeof _data); }
     CRegion(const CRegion& other) { std::memcpy(_data, other._data, sizeof _data); ++g_copies; }

@@ -9,7 +9,7 @@
 // result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result
 // would drop the xor). `this` is not
 // read. The class comes from the vtable-slot label of this address. One of 10 bodies.
-struct CTCDInternalMarker {
+class CTCDInternalMarker { public:
     virtual void v00();
     virtual long vfunc_28(long value);
 };

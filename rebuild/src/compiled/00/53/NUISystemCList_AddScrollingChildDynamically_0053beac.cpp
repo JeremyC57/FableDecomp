@@ -24,7 +24,7 @@ public:
 };
 }
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -58,7 +58,7 @@ struct CChangingStateComponent : NUISystem::CComponent {
     void AddChildDynamically(const CCountedPointer<NUISystem::CComponent>& child);   // 0x0052CAB0
 };
 namespace NUISystem {
-struct CList : CChangingStateComponent {
+class CList : public CChangingStateComponent { public:
     unsigned char               _pad04[0xac];
     CRetailVector<SRow>         m_rows;            // +0xb0
     unsigned char               _padbc[0x28];

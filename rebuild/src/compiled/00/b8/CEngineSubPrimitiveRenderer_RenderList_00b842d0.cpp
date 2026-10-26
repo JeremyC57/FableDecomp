@@ -25,7 +25,7 @@ struct CRetailEntryVector_00b842d0 {
     unsigned long GetCount() const { return m_pLast - m_pFirst; }
 };
 
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
     static void __stdcall RenderList(CRetailEntryVector_00b842d0* list, void* params);
 };
 

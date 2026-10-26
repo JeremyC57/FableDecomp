@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     const char* assigned;
     const CCharString& operator=(const char* text) { assigned = text; return *this; }
 };
-struct CConsoleCommandLine {
+class CConsoleCommandLine { public:
     virtual void v00() { }
     CCharString CurrentEntry;
     bool        UserEntry;

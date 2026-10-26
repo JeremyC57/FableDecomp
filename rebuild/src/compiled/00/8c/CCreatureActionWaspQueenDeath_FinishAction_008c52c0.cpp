@@ -9,10 +9,10 @@
 // CCreatureAction_WaspQueenDie::FinishAction (0x008C5370) temporary: inline constructor (base, vtable 0x01280D84, LoopNum 0
 // through the zero register shared with the CSoundPair() temporary) built in the SetCurrentAction call.
 // Layout: owner CIntelligentPointer +8; Ego_r.pdb PEmitter +0x12c, retail +0x114 (CCombatActionBase is 0x114 in retail).
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void ClearAttachments_006e0de0();                    // 0x006E0DE0
 };
-struct CThing {
+class CThing { public:
     unsigned char        _pad0[0x28];
     unsigned long        m_interfaceBits28;     // +0x28 (bit 11: particle emitter cached)
     unsigned char        _pad2c[0x5c - 0x2c];
@@ -29,14 +29,14 @@ struct CThing {
     }
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase;
-struct CThingCreatureBase : CThing {
+class CCombatActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 
@@ -46,7 +46,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -56,7 +56,7 @@ struct CCombatActionBase {
     void FinishAction();                        // 0x00859A20
 };
 
-struct CCreatureAction_WaspQueenDie : CCombatActionBase {   // retail sizeof 0x118, vtable 0x01280D84
+class CCreatureAction_WaspQueenDie : public CCombatActionBase { public:   // retail sizeof 0x118, vtable 0x01280D84
     long LoopNum;                               // +0x114
     virtual void v00();
     CCreatureAction_WaspQueenDie(CThingCreatureBase* owner, long loopNum)
@@ -66,7 +66,7 @@ struct CCreatureAction_WaspQueenDie : CCombatActionBase {   // retail sizeof 0x1
     }
 };
 
-struct CCreatureAction_WaspQueenDeath : CCombatActionBase {
+class CCreatureAction_WaspQueenDeath : public CCombatActionBase { public:
     CBaseIntelligentPointer PEmitter;           // +0x114 (PDB +0x12c)
     void FinishAction();
 };

@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThingSearchTools { void* WorldMap; void* PThingMapManager; void* ThingManager; };
+class CThingSearchTools { public: void* WorldMap; void* PThingMapManager; void* ThingManager; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components
@@ -42,19 +42,19 @@ struct CThingList {
     iterator end() { return iterator(m_pHead); }
 };
 
-struct CThingGameObject : CThing {
+class CThingGameObject : public CThing { public:
     enum { ThingTypeMask = 0x7 };
 };
-struct CThingCreatureBase : CThingGameObject {
+class CThingCreatureBase : public CThingGameObject { public:
     enum { ThingTypeMask = 0xf };
     long GetCreatureCategory() const;               // 0x00662000: def (+0xe0)->+0xc4
 };
-struct CThingAICreature : CThingCreatureBase {
+class CThingAICreature : public CThingCreatureBase { public:
     enum { ThingTypeMask = 0x1f };
     enum { ThingListType = 0x1 };                // PeekTypeList index
 };
 
-struct CThingFilter_AICreatureHasProperty {
+class CThingFilter_AICreatureHasProperty { public:
     long Property;
     bool operator()(const CThing* thing) const;      // 0x006A75D0
 };

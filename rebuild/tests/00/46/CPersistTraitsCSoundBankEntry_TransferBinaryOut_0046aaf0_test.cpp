@@ -73,7 +73,7 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct CSoundBankEntry { unsigned int ID; int Filename; int SymbolFilename; int LipSyncBankHandle; bool DVD; };
+class CSoundBankEntry { public: unsigned int ID; int Filename; int SymbolFilename; int LipSyncBankHandle; bool DVD; };
 struct Traits { void TransferBinaryOut(COut* out, const CSoundBankEntry* value)
 {
     out->WriteULong(value->ID);

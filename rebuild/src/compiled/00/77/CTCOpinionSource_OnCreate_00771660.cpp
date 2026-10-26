@@ -41,17 +41,17 @@ template <class T> struct CArrayBase {              // STLport _Vector_base
         m_End._M_data = m_pData + count;
     }
 };
-template <class T> struct CArray : CArrayBase<T> {  // retail CArray: 12 bytes
+template <class T> class CArray : public CArrayBase<T> { public:  // retail CArray: 12 bytes
     __forceinline CArray(unsigned long count) : CArrayBase<T>(count)
     {
         this->m_pLast = FillN(this->m_pData, count, T());
     }
 };
-struct COpinionSet {                                // retail 12 bytes
+class COpinionSet { public:                                // retail 12 bytes
     CArray<float> OpinionValues;
     __forceinline COpinionSet() : OpinionValues(5) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;                                     // +0x00
     void* Info;                                     // +0x04
     void Reset(T* object);                          // 0x00771B60
@@ -102,7 +102,7 @@ public:
     unsigned char    _pad00[0x74];
     COpinionManager* POpinionManager;               // +0x74
 };
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _pad00[0x41];
     bool AvailableInEditor : 1;                     // +0x41 (PDB +0x45)
     bool AlwaysFrameUpdate : 1;

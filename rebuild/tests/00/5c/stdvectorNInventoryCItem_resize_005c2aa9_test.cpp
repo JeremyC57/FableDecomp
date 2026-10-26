@@ -4,7 +4,7 @@
 // Behaviour of vector<NInventory::CItem>::resize(n) (0x005C2AA9): grows with zeroed items, shrinks by erasing the tail.
 struct SCountBlock { long m_count; };
 static long g_releases = 0;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pBlock;
     CCountedPointer() : m_pObject(0), m_pBlock(0) {}
     CCountedPointer(const CCountedPointer& o) : m_pObject(o.m_pObject), m_pBlock(o.m_pBlock) { if (m_pBlock) ++m_pBlock->m_count; }

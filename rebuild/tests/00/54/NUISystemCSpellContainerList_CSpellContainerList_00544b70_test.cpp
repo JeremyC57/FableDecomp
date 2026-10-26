@@ -6,14 +6,14 @@ namespace NUISystem {
 struct IComponentA { virtual void va00() { } unsigned char _state[0x10]; };
 struct IComponentB { virtual void vb00() { } };
 struct CComponentRoot { virtual void v00() { } };
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];
     CChangingStateComponent(long owner) { g_owner = owner; }
 };
-struct CComponent;
+class CComponent;
 template <class T> struct CRetailVector { T* first; T* last; T* end; CRetailVector() : first(0), last(0), end(0) { } };
 struct C2DVector { float x, y; };
-struct CSpellContainerList : CChangingStateComponent {
+class CSpellContainerList : public CChangingStateComponent { public:
     virtual void v00() { }
     virtual void va00() { }
     virtual void vb00() { }

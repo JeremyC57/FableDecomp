@@ -1,12 +1,12 @@
 // Behaviour test for CEnginePrimitiveRenderer2D::Set2DLighting @ 0x00B4A5F0
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Normalise() { float l = std::sqrt(X * X + Y * Y + Z * Z); float r = 1.0f / l; X *= r; Y *= r; Z *= r; }
 };
-struct CRGBFloatColour { float R, G, B, A; };
-struct CEnginePrimitiveRenderer2D {
+class CRGBFloatColour { public: float R, G, B, A; };
+class CEnginePrimitiveRenderer2D { public:
     CRGBFloatColour AmbientLightColour, DiffuseLightColour, BackLightColour;
     C3DVector LightVector;
     void Set2DLighting(const C3DVector& lightVector, const CRGBFloatColour& ambient, const CRGBFloatColour& diffuse, const CRGBFloatColour& back)

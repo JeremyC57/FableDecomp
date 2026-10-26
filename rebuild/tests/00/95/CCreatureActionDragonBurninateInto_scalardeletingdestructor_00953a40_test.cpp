@@ -14,7 +14,7 @@ struct CDragonActionBase {
     unsigned char _body[0x110];
 };
 
-struct C3DVector { float X; float Y; float Z; };
+class C3DVector { public: float X; float Y; float Z; };
 
 struct C3DVectorVector {
     C3DVector* m_first; C3DVector* m_last; C3DVector* m_end;
@@ -22,7 +22,7 @@ struct C3DVectorVector {
     ~C3DVectorVector() { if (m_first) FreeBlock(m_first); }
 };
 
-struct CCreatureAction_DragonBurninateInto : CDragonActionBase {
+class CCreatureAction_DragonBurninateInto : public CDragonActionBase { public:
     C3DVector       PreviousPoint;
     C3DVectorVector MovementPoints;
     float           BurnStart;

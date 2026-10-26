@@ -16,12 +16,12 @@
 // has a 0x40-byte base; native first member is +0x3c (all members -4).
 // Honest retail view uses the donor names; no native virtual calls occur here.
 #include <stddef.h>
-struct CPersistContext {
+class CPersistContext { public:
  void TransferInt(int&); // 00431102
  void TransferFloat(float&); // 00431061
  void TransferBool(bool&); // 0043314a
 };
-struct CEngineVideoOptionsDef {
+class CEngineVideoOptionsDef { public:
  unsigned char DefinitionBase[0x3c];
  int HiresTextureMemory;
  float LODErrorTolerance, CharacterLODErrorTolerance, DrawDistanceMultiplier;

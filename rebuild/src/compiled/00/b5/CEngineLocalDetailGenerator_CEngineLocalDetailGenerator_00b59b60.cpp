@@ -25,9 +25,9 @@ template <class T> struct CRetailArray {            // 12-byte retail array {fir
     T* m_first; T* m_last; T* m_end;
     CRetailArray() : m_first(0), m_last(0), m_end(0) {}
 };
-struct CLocalDetailObjectCollectionType;
+class CLocalDetailObjectCollectionType;
 
-struct CEngineLocalDetailGenerator : CEngineBaseGenerator {   // vtable 0x012A2588
+class CEngineLocalDetailGenerator : public CEngineBaseGenerator { public:   // vtable 0x012A2588
     CRetailArray<CLocalDetailObjectCollectionType*> ObjectCollectionTypes;   // +0x0c
     unsigned char _pad18[0xc];                       // +0x18 (retail layout differs from the PDB here)
     bool          ZSpriteGenerationEnabled;          // +0x24

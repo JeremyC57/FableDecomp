@@ -1,8 +1,8 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CExplosionDriver { float m_innerRadius, m_outerRadius, m_maxDamage; long m_fireDamage; };
 static int g_kills = 0;
-struct CThing {
+class CThing { public:
     unsigned char m_driverFlags; CExplosionDriver* m_pDriver; C3DVector m_pos; bool m_dead;
     const C3DVector& GetPosition() { return m_pos; }
     void Kill(bool immediately) { if (immediately) { m_dead = true; ++g_kills; } }
@@ -17,8 +17,8 @@ CThing* CreateThing(long defIndex, const C3DVector& position)
     g_explosion.m_driverFlags = 2; g_explosion.m_pDriver = &g_driver;
     return &g_explosion;
 }
-struct CExplodingObjectDef { long ExplosionType; };
-struct CTCExplodingObject {
+class CExplodingObjectDef { public: long ExplosionType; };
+class CTCExplodingObject { public:
     CThing* ParentThing; float MaxDamage; float Radius; long FireDamage; CExplodingObjectDef* PDef;
     void Explode()
     {

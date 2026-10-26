@@ -7,20 +7,20 @@
 // Layout: engine/CTCInventoryClothing.h is the Ego_r.pdb layout and no data member is read here, so `this` is a method-only
 //   local model; CAction 0x10 (thing-param list<long> at +0x08), CActionParamLong 0x0C (vtable 0x012366F4, type 3).
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T*              m_pObject;
     CCPPointerInfo* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
@@ -36,7 +36,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 namespace NUISystem {
-struct CActionParam {
+class CActionParam { public:
     virtual void v00();
     long Type;                                          // +0x04
     CActionParam(long type) : Type(type) {}
@@ -62,7 +62,7 @@ __declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CAct
 }
 #pragma auto_inline(on)
 namespace NUISystem {
-struct CAction {
+class CAction { public:
     long             ActionType;                        // +0x00
     CActionParamList UIActionParams;                    // +0x04
     CLongList        ThingActionParams;                 // +0x08
@@ -83,7 +83,7 @@ struct CComponentBase {
     virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049();
     virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
     virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058();
-    virtual void AddChildAtEnd(const CCountedPointer<struct CComponent>& child);     // slot 59 (+0xEC)
+    virtual void AddChildAtEnd(const CCountedPointer<class CComponent>& child);     // slot 59 (+0xEC)
     virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064();
     virtual void v065(); virtual void v066();
     virtual void AddSelectedAction(const CCountedPointer<CAction>& action);         // slot 67 (+0x10C)
@@ -103,13 +103,13 @@ struct CComponentBase {
     virtual void v113(); virtual void v114(); virtual void v115(); virtual void v116(); virtual void v117();
     virtual void v118(); virtual void v119(); virtual void v120(); virtual void v121(); virtual void v122();
     virtual void v123();
-    virtual void AddFrameMember(struct CComponent* member);                         // slot 124 (+0x1F0)
+    virtual void AddFrameMember(class CComponent* member);                         // slot 124 (+0x1F0)
     virtual void v125(); virtual void v126(); virtual void v127(); virtual void v128(); virtual void v129();
     virtual void v130(); virtual void v131(); virtual void v132(); virtual void v133(); virtual void v134();
     virtual void v135(); virtual void v136(); virtual void v137(); virtual void v138(); virtual void v139();
     virtual void v140(); virtual void v141(); virtual void v142(); virtual void v143();
     virtual void SetText(const CWideString& text, bool a, bool b);                  // slot 144 (+0x240, CText)
-    virtual void SetHeader(const CCountedPointer<struct CComponent>& header);       // slot 145 (+0x244)
+    virtual void SetHeader(const CCountedPointer<class CComponent>& header);       // slot 145 (+0x244)
     virtual void v146(); virtual void v147(); virtual void v148(); virtual void v149();
     virtual void SetUserValue(long value);                                          // slot 150 (+0x258)
     virtual void v151();
@@ -119,10 +119,10 @@ struct CComponentBase {
     virtual void SetItemCount(long count);                                          // slot 156 (+0x270)
     unsigned char _pad04[0x18 - 0x04];
 };
-struct CComponent : CComponentBase, CActionParam {};
-struct CText : CComponent {};
-struct CViewport : CComponent {};
-struct CList {                                          // a list component (separate view of the vtable: slot 152 adds an entry)
+class CComponent : public CComponentBase, public CActionParam { public:};
+class CText : public CComponent { public:};
+class CViewport : public CComponent { public:};
+class CList { public:                                          // a list component (separate view of the vtable: slot 152 adds an entry)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
@@ -159,12 +159,12 @@ struct CList {                                          // a list component (sep
     virtual void v153(); virtual void v154(); virtual void v155();
     virtual void SetItemCount(long count);                                   // slot 156 (+0x270)
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString button);   // 0x00428494
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 }
@@ -182,7 +182,7 @@ template <class T> struct vector {
 }
 typedef std::vector<std::pair<long, long> > CItemVector;
 enum EClothingSuitPart { CLOTHING_SUIT_PART_NONE };
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     void ConstructTitleString(CWideString& out);        // 0x005B6881
     void AddClothingMenuEntry(EClothingSuitPart part, CComponent* entry);   // 0x005B4771
     CComponent* ConstructClothingList(const CItemVector& items, CViewport* viewport, EClothingSuitPart part, bool plainEntries);

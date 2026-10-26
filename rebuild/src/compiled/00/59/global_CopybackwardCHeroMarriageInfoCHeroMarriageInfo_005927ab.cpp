@@ -16,8 +16,8 @@
 // pointer-compare, which enregisters _Dest and diverges).
 
 // 28-byte POD -> compiler-generated assignment lowers to a 7-dword block move.
-struct CHeroMarriageInfo
-{
+class CHeroMarriageInfo
+{ public:
     unsigned long m[7];   // 0x1c bytes
 };
 

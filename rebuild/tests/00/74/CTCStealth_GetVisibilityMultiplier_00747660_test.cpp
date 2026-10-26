@@ -1,7 +1,7 @@
 // Behaviour test for 0x00747660 CTCStealth::GetVisibilityMultiplier (copy of the source logic over spy components).
 #include <cstdio>
 #include <cstring>
-struct CTCBase { virtual ~CTCBase() {} };
+class CTCBase { public: virtual ~CTCBase() {} };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -35,16 +35,16 @@ public:
         return false;
     }
 };
-struct CGameTimeManager {
+class CGameTimeManager { public:
     int phase;
     bool IsDay() const { return phase == 0; }
     bool IsNightTime() const { return phase == 1; }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char     _pad00[0x1c];
     CGameTimeManager* GameTimeManager;                  // +0x1c
 };
-struct CStealthDef {
+class CStealthDef { public:
     float DayTimeLampVisibilityMultiplier;                  // +0x38
     float NightTimeLampVisibilityMultiplier;                // +0x3c
 };
@@ -57,7 +57,7 @@ struct CTCVisibility68 : CTCBase {
 struct CTCVisibility4 : CTCBase {
     float         VisibilityFactor;
 };
-struct CTCStealth {
+class CTCStealth { public:
     CThing*       ParentThing;
     const CStealthDef* PDef;
     CWorld* world;

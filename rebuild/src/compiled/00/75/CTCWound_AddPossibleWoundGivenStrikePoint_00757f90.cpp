@@ -7,9 +7,9 @@
 //        the world's LCG seed is advanced in place (`seed = seed*0x24A1 + 0x24DF`, stored, then `seed = GFROR13(seed)`),
 //        and an unsigned `% 100` compared signed (`jl`) against 95.
 // Layout: CTCWound ParentThing +0x04 (CTCBase).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 long __fastcall GFROR13(unsigned long value);    // 0x00497890
-struct CWorld {
+class CWorld { public:
     unsigned long* GetRandomSeed();              // 0x0049D810
 };
 __forceinline long GetRandomBelow(CWorld* world, unsigned long n)
@@ -19,7 +19,7 @@ __forceinline long GetRandomBelow(CWorld* world, unsigned long n)
     *seed = GFROR13(*seed);
     return *seed % n;
 }
-struct CTCWound {
+class CTCWound { public:
     virtual void v00();
     void* ParentThing;                           // +0x04
     CWorld* GetWorld();                          // 0x00686A70 (CTCBase)

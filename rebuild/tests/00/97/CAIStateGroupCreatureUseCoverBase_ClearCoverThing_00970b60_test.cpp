@@ -1,7 +1,7 @@
 // behaviour test for CAIStateGroup_CreatureUseCoverBase cover release (0x00970b60)
 #include <cstdio>
 struct CCover { void* user; int calls; void SetUser(void* u) { user = u; ++calls; } };
-struct CThing { bool dead; bool hasCover; CCover* cover; };
+class CThing { public: bool dead; bool hasCover; CCover* cover; };
 struct Group {
     CThing* PCoverThing; int listSize; bool TimingCritical;
     void ClearCoverThing()

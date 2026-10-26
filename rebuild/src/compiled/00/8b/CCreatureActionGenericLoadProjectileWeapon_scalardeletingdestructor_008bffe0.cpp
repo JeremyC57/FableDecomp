@@ -1,4 +1,4 @@
-struct CCreatureAction_GenericLoadProjectileWeapon {
+class CCreatureAction_GenericLoadProjectileWeapon { public:
     void* vftable;
 };
 

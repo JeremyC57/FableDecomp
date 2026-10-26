@@ -1,8 +1,8 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CDefClassBase;
-struct CSpecialAbilitiesMultiStrikeDef;
+class CDefClassBase;
+class CSpecialAbilitiesMultiStrikeDef;
 
 // Capture the tail-call so the test is deterministic without the real engine impl.
 static int g_called = 0;

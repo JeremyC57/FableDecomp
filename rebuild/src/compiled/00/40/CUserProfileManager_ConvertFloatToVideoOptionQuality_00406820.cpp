@@ -11,7 +11,7 @@ enum EEngineVideoOptionQuality {
     VIDEO_OPTION_QUALITY_VERY_HIGH = 3
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     EEngineVideoOptionQuality ConvertFloatToVideoOptionQuality(float value);
 };
 

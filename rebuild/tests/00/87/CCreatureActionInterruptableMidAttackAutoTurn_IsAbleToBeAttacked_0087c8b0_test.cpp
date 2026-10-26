@@ -1,15 +1,15 @@
 #include <cstdio>
 static int g_deletes; static bool g_evade, g_recoil;
-struct CMeleeCombatAbilityDef { virtual void v00() { } virtual void Delete() { ++g_deletes; } long m_references; };
+class CMeleeCombatAbilityDef { public: virtual void v00() { } virtual void Delete() { ++g_deletes; } long m_references; };
 struct CCountedAbilityPointer { CMeleeCombatAbilityDef* m_pItem; CCountedAbilityPointer(CMeleeCombatAbilityDef* p) : m_pItem(p) { }
     CCountedAbilityPointer(const CCountedAbilityPointer& other) : m_pItem(other.m_pItem) { if (m_pItem != 0) ++m_pItem->m_references; }
     ~CCountedAbilityPointer() { if (m_pItem != 0) { if (--m_pItem->m_references == 0) m_pItem->Delete(); } }
     CMeleeCombatAbilityDef* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase { virtual void v00() { } virtual bool IsToEvadeAllHits() const { return g_evade; } virtual bool IsToCauseRecoil() const { return g_recoil; }
+class CCombatActionBase { public: virtual void v00() { } virtual bool IsToEvadeAllHits() const { return g_evade; } virtual bool IsToCauseRecoil() const { return g_recoil; }
     unsigned char _pad04[0xb8 - 4]; CCountedAbilityPointer PMeleeAbilityDef; unsigned char _padbc[0x114 - 0xbc];
     CCombatActionBase(CMeleeCombatAbilityDef* p) : PMeleeAbilityDef(p) { }
     CCountedAbilityPointer GetPMeleeAbilityDef() const { return PMeleeAbilityDef; } };
-struct CCreatureAction_InterruptableMidAttackAutoTurn : CCombatActionBase { CCreatureAction_InterruptableMidAttackAutoTurn(CMeleeCombatAbilityDef* p) : CCombatActionBase(p) { } bool IsAbleToBeAttacked() const; };
+class CCreatureAction_InterruptableMidAttackAutoTurn : public CCombatActionBase { public: CCreatureAction_InterruptableMidAttackAutoTurn(CMeleeCombatAbilityDef* p) : CCombatActionBase(p) { } bool IsAbleToBeAttacked() const; };
 bool CCreatureAction_InterruptableMidAttackAutoTurn::IsAbleToBeAttacked() const
 {
     if (IsToEvadeAllHits() || IsToCauseRecoil()) return false;

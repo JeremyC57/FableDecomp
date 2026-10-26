@@ -27,17 +27,17 @@ static int fails = 0;
 //   (frame zero stores after the pushes); the mesh bank is named before the PeekAnimation argument; the helper reset is an
 //   inline Init in retail's store order (closed flag, both transition amounts last-first, the two times, then the
 //   opening/closing flags); the transition test compares Last != Amount.
-struct CTCBase;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                                            // +0x00
 };
-struct CAnimFilterBase {                                       // vtable 0x0122FFCC
+class CAnimFilterBase { public:                                       // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -46,16 +46,16 @@ struct CAnimFilterNoGroup : CAnimFilterBase {                  // vtable 0x0122F
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                    // 0x00429A2F
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                                    // slot 1 (+0x04)
     long RefCount;                                             // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
@@ -66,11 +66,11 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                                   // +0x34
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
 };
 void* FindDef_CThingBaseDef_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -87,12 +87,12 @@ __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAppearanceDef>* 
 }
 #pragma auto_inline(on)
 
-struct CAnimFrameInfo {
+class CAnimFrameInfo { public:
     float Current;
     float Last;
     CAnimFrameInfo() : Current(0), Last(0) {}
 };
-struct CAnimInit {                                             // 0x2c bytes
+class CAnimInit { public:                                             // 0x2c bytes
     long          UpdateMode;                                  // +0x00
     unsigned char Type;                                        // +0x04
     bool          Looping;                                     // +0x05
@@ -112,18 +112,18 @@ struct CAnimInit {                                             // 0x2c bytes
     void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
              long priority);                                   // 0x0070C050
 };
-struct CAnimSet {
+class CAnimSet { public:
     long          UpdateMode;                                  // +0x00
     unsigned char _pad04[0x1c - 0x04];                         // Anims, InternalAlphas
     float         CurrentPercentageComplete;                   // +0x1c
     float         LastPercentageComplete;                      // +0x20
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     CAnimSet MainAnimSet;                                      // +0x00 (CurrentAnim.MainAnimSet)
     void Reset();                                              // 0x0070EC30
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();                             // 0x0070B460
 };
 
@@ -133,7 +133,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);                      // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                           // +0x20
     CInterfaceMap  m_interfaces;                               // +0x44
@@ -150,13 +150,13 @@ struct CThing {
     }
 };
 
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     float GetNonLoopingDuration() const;                       // 0x00A23CE0
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     const C3DAnimationInfo* PeekAnimation(unsigned long index) const;   // 0x00A242C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char  _pad00[0x3c];
     CMeshDataBank* PMainMeshBank;                              // +0x3c
 };

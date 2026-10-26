@@ -1,13 +1,13 @@
 #include <cstdio>
-struct CTexture { int id; };
+class CTexture { public: int id; };
 static CTexture* g_tex = 0; static unsigned long g_count = 0; static const void* g_verts = 0; static long g_stride = 0, g_vcount = 0, g_tris = 0;
 static const void* g_indices = 0; static long g_blend = -1; static int g_order = 0, g_blendAt = 0, g_drawAt = 0;
 struct CRenderManagerCore {
     void DrawAsIndexedTris(CTexture** textures, unsigned long count, const void* vertices, long stride, long vcount, const void* indices, long tris)
     { g_tex = textures[0]; g_count = count; g_verts = vertices; g_stride = stride; g_vcount = vcount; g_indices = indices; g_tris = tris; g_drawAt = ++g_order; }
 };
-struct CDisplayManager { CRenderManagerCore* PRenderManager; };
-struct CSystemManager { CDisplayManager* PDisplayManager; };
+class CDisplayManager { public: CRenderManagerCore* PRenderManager; };
+class CSystemManager { public: CDisplayManager* PDisplayManager; };
 static CSystemManager g_system;
 static CSystemManager* GFGetSystemManager() { return &g_system; }
 static const unsigned short g_QuadIndices[6] = { 0, 1, 2, 0, 2, 3 };

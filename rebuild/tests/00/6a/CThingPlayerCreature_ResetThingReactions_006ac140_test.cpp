@@ -9,7 +9,7 @@ static void my_free(void* p) { if (p) ++g_frees; std::free(p); }
 #define malloc my_malloc
 #define free my_free
 
-struct CBaseObject {};
+class CBaseObject { public:};
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) {}
@@ -17,11 +17,11 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { ++g_sets; m_pItem = item; }
     CBaseObject* GetPItem() const { ++g_gets; return m_pItem; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags;
     unsigned char _pad92[0xf4 - 0x92];
@@ -59,9 +59,9 @@ struct CThingList {
         _M_node->_M_prev = _M_node;
     }
 };
-struct CThingFilter_None { CThingFilter_None() { } };
+class CThingFilter_None { public: CThingFilter_None() { } };
 static CThingList* g_all = 0;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThingList* GetThingList(long type) { return type == 1 ? g_all : 0; }
     void GetAllLeafThings(const CThingFilter_None& filter, CThingList& out);
 };
@@ -84,7 +84,7 @@ void CThingSearchTools::GetAllLeafThings(const CThingFilter_None&, CThingList& o
     }
 }
 static CThingSearchTools g_tools;
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     CThingSearchTools* GetThingSearchTools() { return &g_tools; }
     void ResetThingReactions();
 };

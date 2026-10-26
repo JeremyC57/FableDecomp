@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CVillagePeopleDef { int f0; };
+class CVillagePeopleDef { public: int f0; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 static void __fastcall CVillagePeopleDef_dtor(CVillagePeopleDef* def) { (void)def; g_dtor_called++; }

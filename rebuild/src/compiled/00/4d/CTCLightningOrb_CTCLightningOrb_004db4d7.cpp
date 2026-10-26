@@ -9,11 +9,11 @@
 // (pass-through argument push, `or dword ptr [..],0FFFFFFFFh` for -1, the vtable constant in ebx), inline CIntelligentPointer
 // constructors, and initialisers in declaration order sharing the `xor eax,eax` zero.
 #pragma optimize("s", on)
-struct CThing;
-struct CLightningOrbDef;
+class CThing;
+class CLightningOrbDef;
 struct CLinearSpline;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
     CThing* m_pThing;                              // +0x04
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                 // +0x04
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     virtual void v00();
 };
@@ -43,7 +43,7 @@ struct CSplinePointer {                            // CCountedPointer<NBBBMaths:
     CSplinePointer() : m_pObject(0), m_pBlock(0) { }
 };
 
-struct CTCLightningOrb : CTCBase {
+class CTCLightningOrb : public CTCBase { public:
     CIntelligentPointer<CThing> PParent;                       // +0x0c
     CIntelligentPointer<CThing> PTarget;                       // +0x14
     CLightningOrbDefPointer     PDef;                          // +0x1c

@@ -17,10 +17,10 @@
 //   goes through a CCreatureActionBase reference (a virtual call), and both branches' implicit action destructor is
 //   the member then base destructor call pair. The named action sits in the else block: at function scope it gets
 //   its own 0xb0-byte slot (frame 0x1ac v retail 0xfc).
-struct CThing;
-struct CBaseObject;
-struct CCharString;
-struct CAnimationEntry;
+class CThing;
+class CBaseObject;
+class CCharString;
+class CAnimationEntry;
 
 struct CInterfaceMap {                                  // CVectorMap<long, CTCBase*>
     struct SEntry { long type; void* component; };
@@ -30,7 +30,7 @@ struct CInterfaceMap {                                  // CVectorMap<long, CTCB
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CCreatureActionBase {                            // retail 0xa8 bytes
+class CCreatureActionBase { public:                            // retail 0xa8 bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
@@ -44,10 +44,10 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;                               // +0x04
     ~CBaseIntelligentPointer();                         // 0x00A01C10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 class CThingCreatureBase;
-struct CCreatureAction_GetOutOfBed : CCreatureActionBase {
+class CCreatureAction_GetOutOfBed : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PBed;                   // +0xa8
     CCreatureAction_GetOutOfBed(CThingCreatureBase* owner, CThing* bed, const CCharString& animation);   // 0x00860060
 };
@@ -79,7 +79,7 @@ struct CCountedPointerBase {                            // CCountedPointer<CCrea
     void* Block;
     void Reset(void* object);                           // 0x00668D90
 };
-struct CBrainOutput {                                   // 0x48 bytes
+class CBrainOutput { public:                                   // 0x48 bytes
     unsigned long Flags;                                // +0x00 (8: perform action)
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointerBase PAction;                        // +0x20
@@ -87,7 +87,7 @@ struct CBrainOutput {                                   // 0x48 bytes
     CBrainOutput();                                     // 0x00835620
     ~CBrainOutput();                                    // 0x006D60C0
 };
-struct CAIBrain {
+class CAIBrain { public:
     void SetBrainOutput(const CBrainOutput& output);    // 0x0088B8F0
 };
 
@@ -103,7 +103,7 @@ public:
 };
 }
 
-struct CTCCreatureModeManager {                         // interface 0x31
+class CTCCreatureModeManager { public:                         // interface 0x31
     NCreatureMode::CModeBase& GetCurrentMode() const;   // 0x0073A6E0
 };
 

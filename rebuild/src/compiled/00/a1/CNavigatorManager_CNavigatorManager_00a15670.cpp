@@ -24,7 +24,7 @@ template<unsigned int N> struct CRetailList {      // VC7.1 Dinkumware list: one
     }
 };
 
-struct CNavigatorManager : CNavigatorBase_00a373b0 {   // vtable 0x0129CA84
+class CNavigatorManager : public CNavigatorBase_00a373b0 { public:   // vtable 0x0129CA84
     void*                 m_pOwner;                // +0x1c
     long                  m_capacity;              // +0x20
     CRetailList<0x28>     m_maps;                  // +0x24

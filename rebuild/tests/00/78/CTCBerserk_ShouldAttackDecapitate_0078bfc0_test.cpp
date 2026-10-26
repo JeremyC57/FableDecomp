@@ -5,12 +5,12 @@
 static float g_roll;
 static float g_range;
 static unsigned long* g_seedSeen;
-struct CWorld { unsigned long m_seed; unsigned long* GetPRandomSeed() { return &m_seed; } };
+class CWorld { public: unsigned long m_seed; unsigned long* GetPRandomSeed() { return &m_seed; } };
 static CWorld g_world;
 static float GFFloatRandom(float range, unsigned long* seed) { g_range = range; g_seedSeen = seed; return g_roll; }
 
-struct CSpecialAbilitiesBerserkDef { float* DecapitateChances; };
-struct CTCBerserk {
+class CSpecialAbilitiesBerserkDef { public: float* DecapitateChances; };
+class CTCBerserk { public:
     long SpellLevel;
     CSpecialAbilitiesBerserkDef* PDef;
     CWorld* GetWorld() { return &g_world; }

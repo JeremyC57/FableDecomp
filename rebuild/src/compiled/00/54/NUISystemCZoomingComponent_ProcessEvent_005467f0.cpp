@@ -65,7 +65,7 @@ struct CEventSinkInterface {                         // vtable at +0x18
     virtual void w0();
 };
 
-struct CChangingStateComponent : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x15C bytes
+class CChangingStateComponent : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:   // retail 0x15C bytes
     unsigned char _pad1c[0x14];                      // +0x1c
     float Time;                                      // +0x30
     unsigned char _pad34[0x8];                       // +0x34
@@ -75,7 +75,7 @@ struct CChangingStateComponent : CComponentInterface, CObserver_Retail, CEventSi
     unsigned char _pad6c[0x15c - 0x6c];              // +0x6c
 };
 
-struct CZoomingComponent : CChangingStateComponent {   // vtables 0x01247DC4 / 0x01247DA0 / 0x01247D98
+class CZoomingComponent : public CChangingStateComponent { public:   // vtables 0x01247DC4 / 0x01247DA0 / 0x01247D98
     float     LastInputTime;                         // +0x15C
     C2DVector ZoomCenter;                            // +0x160
     C2DVector MinZoom;                               // +0x168

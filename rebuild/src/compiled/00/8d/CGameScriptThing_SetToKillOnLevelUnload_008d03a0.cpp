@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 three times (on +0xc; the pointer re-fetched for every access), CThing::SetToKillOnLevelUnload @ 0x004C9C40 (on the thing, the flag).
 // Shape: the intelligent pointer's address kept in esi, `ret 4`.
 struct CTCGraphicAppearance_Retail;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     CCharString(const char* text, long length);    // 0x0099EBF0
@@ -30,7 +30,7 @@ struct CIntelligentPointer_Retail {                // 8 bytes: vptr + the pointe
     CThing_Retail* GetPItem();                     // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
 };
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     unsigned char             _pad[0xc];
     CIntelligentPointer_Retail m_thing;            // +0x0c
     void SetToKillOnLevelUnload(long kill);

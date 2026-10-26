@@ -3,12 +3,12 @@
 // Callee: __ftol2 @ 0x00BFEA70 (float->long, once per component).
 // Layout from the PDB (C2DCoordI: X +0, Y +4; C2DVector: X +0, Y +4). Each component is
 // `fild member ; fadd v.member ; __ftol2 ; store`, X then Y; returns *this.
-struct C2DVector {
+class C2DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
 };
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;     // +0x00
     long Y;     // +0x04
     C2DCoordI& operator+=(const C2DVector& v);

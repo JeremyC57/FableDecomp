@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CMatrix3x4 { float m_rows[12]; }; static int g_calls = 0; static bool g_result = true;
+class CMatrix3x4 { public: float m_rows[12]; }; static int g_calls = 0; static bool g_result = true;
 struct CAttached { unsigned char _pad[0x7c]; long m_childType; unsigned char _pad80[0x28]; CMatrix3x4 m_inv; bool m_valid;
     bool GetChildInverseTransformStaticMesh(CMatrix3x4* m) { ++g_calls; m->m_rows[0] = 5; return g_result; }
     bool GetChildInverseTransform() { if (m_valid) return true; bool valid = false; switch (m_childType) { case 1: valid = GetChildInverseTransformStaticMesh(&m_inv); break; } m_valid = valid; return valid; } };

@@ -18,7 +18,7 @@
 enum EWaterType { WATER_TYPE_NONE };
 enum EMinimapThemeType { MINIMAP_THEME_NONE };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& value);                                              // 0x00431102
     void Transfer(float& value);                                             // 0x00431061
     void Transfer(EMinimapThemeType& value);                                 // 0x0045990B
@@ -26,12 +26,12 @@ struct CPersistContext {
     void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x3c - 4];
 };
 
-struct CEngineThemeDef : CDefClassBase {
+class CEngineThemeDef : public CDefClassBase { public:
     long              BaseTexture;                    // +0x3c
     long              BackgroundTexture;              // +0x40
     long              CliffBaseTexture;               // +0x44

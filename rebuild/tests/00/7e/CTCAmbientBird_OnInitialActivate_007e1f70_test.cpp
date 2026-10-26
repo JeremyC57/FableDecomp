@@ -2,12 +2,12 @@
 #include <cstring>
 
 struct CGameSubsystem { bool m_suppressed; bool IsSuppressed() { return m_suppressed; } };
-struct CWorld { unsigned long m_seed; unsigned long* GetPRandomSeed() { return &m_seed; } };
+class CWorld { public: unsigned long m_seed; unsigned long* GetPRandomSeed() { return &m_seed; } };
 static float g_nextRandom = 0.0f; static float g_lastRange = 0.0f; static unsigned long* g_lastSeed = 0;
 static float GFFloatRandom(float range, unsigned long* seed) { g_lastRange = range; g_lastSeed = seed; return g_nextRandom; }
-struct CThing { int kills; bool lastImmediate; void Kill(bool immediately) { ++kills; lastImmediate = immediately; } };
+class CThing { public: int kills; bool lastImmediate; void Kill(bool immediately) { ++kills; lastImmediate = immediately; } };
 static CGameSubsystem g_subsystem; static CWorld g_world;
-struct CTCBase { CThing* ParentThing; CWorld* GetWorld() { return &g_world; } CGameSubsystem* GetSubsystem() { return &g_subsystem; } };
+class CTCBase { public: CThing* ParentThing; CWorld* GetWorld() { return &g_world; } CGameSubsystem* GetSubsystem() { return &g_subsystem; } };
 struct CTCAmbientBird : CTCBase {
     void OnInitialActivate()
     {

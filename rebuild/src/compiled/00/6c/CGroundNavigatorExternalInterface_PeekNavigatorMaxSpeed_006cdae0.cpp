@@ -14,12 +14,12 @@ struct CTCMap_Retail {                             // the creature's component m
     STCEntry_Retail* LowerBound(const long* kind);          // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound)
     STCEntry_Retail* LowerBound(const long* kind) const;    // 0x004365B0 (the second instantiation)
 };
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
 };
-struct CCreatureNavigationDef;
+class CCreatureNavigationDef;
 struct CDefPointer_Nav {                           // CDefPointer<CCreatureNavigationDef>: one counted def pointer (released by hand in the bodies: the slot is reused for the float)
     CCreatureNavigationDef* m_p;
 };
@@ -47,7 +47,7 @@ struct CTCCreatureNavigation_Retail {              // component kind 7
     unsigned char m_obstacles[0x18];               // +0x40 the obstacle record
     float         m_proximityForDirectApproach;    // +0x58
 };
-struct CThingCreatureBase {                        // the retail creature as seen from the navigator interface
+class CThingCreatureBase { public:                        // the retail creature as seen from the navigator interface
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

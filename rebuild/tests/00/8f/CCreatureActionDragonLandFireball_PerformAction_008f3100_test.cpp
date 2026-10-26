@@ -7,12 +7,12 @@
 #define __forceinline inline
 #endif
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector First; C3DVector Second; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 
 static int g_strings = 0;
 static char g_lastString[64];
-struct CCharString {
+class CCharString { public:
     char m_text[64];
     CCharString(const char* text, long = -1) { std::strcpy(m_text, text); ++g_strings; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_strings; }
@@ -34,8 +34,8 @@ struct CDefBase {
     long RefCount;
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CWeaponDef : CDefBase { long Shot; };
-struct CThingShotDef : CDefBase { long TCName; long Thing; };
+class CWeaponDef : public CDefBase { public: long Shot; };
+class CThingShotDef : public CDefBase { public: long TCName; long Thing; };
 
 template <class T> struct CDefPointerByValue {
     T* m_p;
@@ -54,10 +54,10 @@ struct CDefVirtual {
     virtual void v00() { }
     virtual void Destroy() { ++g_abilityDestroyed; }
 };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } }
@@ -65,21 +65,21 @@ template <class T> struct CDefPointer {
 
 static CWeaponDef g_weaponDef;
 static CThingShotDef g_shotDef;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CWeaponDef** out) { ++g_weaponDef.RefCount; *out = &g_weaponDef; return true; }
 };
 static long g_getDefIndex = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CThingShotDef** out) { g_getDefIndex = index; ++g_shotDef.RefCount; *out = &g_shotDef; return true; }
 };
-struct CWorld { CDefinitionManager* PDefinitionManager; };
+class CWorld { public: CDefinitionManager* PDefinitionManager; };
 
 static char g_dummyName[64];
 static C3DVector* g_dummyPos = 0;
 static CRightHandedSet* g_dummySet = 0;
 static float g_dummyScale = 0;
-struct CTCBase { };
-struct CTCParamsBase;
+class CTCBase { public: };
+class CTCParamsBase;
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
                         CRightHandedSet* orientation, float scale)
@@ -95,7 +95,7 @@ struct CTCGraphicAppearance {
 struct CThingShotTC;
 static char g_tcName[64];
 static bool g_tcInit = false;
-struct CThing {
+class CThing { public:
     CTCGraphicAppearance* PGraphicAppearance;
     CDefClassBase*        PDef;
     signed char           PlayerNumber;
@@ -112,7 +112,7 @@ __forceinline bool GetDummyObject(const CThing* thing, const CCharString& name, 
     CTCGraphicAppearance* appearance = thing->PGraphicAppearance;
     return appearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
 }
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long m_accuracy;
     long GetShotAccuracyPercentage() { return m_accuracy; }
 };
@@ -164,7 +164,7 @@ struct CCreatureBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const { return m_pItem; }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void PerformAction() { }
     CCreatureBaseIntelligentPointer PCreature;
     CBaseIntelligentPointer PTarget;

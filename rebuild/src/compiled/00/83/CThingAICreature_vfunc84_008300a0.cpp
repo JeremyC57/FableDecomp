@@ -7,7 +7,7 @@
 // Tiny-body shape `ForwardWithConstant` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CThingAICreature {
+class CThingAICreature { public:
     void Method(void* value, long kind);   // 0x00663BA0
     void vfunc_84(void* value);
 };

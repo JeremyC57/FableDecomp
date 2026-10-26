@@ -6,7 +6,7 @@
 // +0x1c..+0x24 -- so those three pointers are an embedded member object with an inline constructor
 // (an init-list member would sink the vtable store below it, GOTCHAS) -- and the argument is
 // assigned to +0x28 in the body. CResource occupies +0..+0x1c (engine/CResource.h).
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];              // +0x04..+0x1c (ref count, list, prev/next, size, frame)
     CResource();                            // 0x009FBEC0
@@ -19,8 +19,8 @@ struct SMeshBuffers {                       // three raw buffer pointers, nulled
     SMeshBuffers() : m_pVertices(0), m_pIndices(0), m_pMesh(0) { }
 };
 
-struct CPhysicsMeshInfo {
-    struct CMeshData : CResource {          // vtable 0x0129CD78
+class CPhysicsMeshInfo { public:
+    class CMeshData : public CResource { public:          // vtable 0x0129CD78
         SMeshBuffers  m_buffers;            // +0x1c
         unsigned long m_size;               // +0x28
         virtual void v00();

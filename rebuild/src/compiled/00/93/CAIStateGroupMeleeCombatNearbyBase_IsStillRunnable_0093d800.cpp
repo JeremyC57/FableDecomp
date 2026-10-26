@@ -10,8 +10,8 @@
 // Shape: masked-test GetInterface lookups used unchecked (a miss reads an undefined slot); the early checks nest so they share one
 // `return false` tail (early returns duplicate the epilogue and shrink-wrap esi); the combat target is a named local compared as
 // `PEnemy == target`; one bool result kept in bl; vector subtract / squared length must be __forceinline.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);                   // 0x0040F020
     const SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -56,7 +56,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsRegisteredCombatant();               // 0x00662410
 };
 bool __fastcall IsAbleToBeEngagedInCombat(CThing* thing);  // 0x0085FBC0
@@ -70,7 +70,7 @@ struct CTCCombatTarget {                        // interface 8
     VF(18) VF(19) VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28)
     virtual CThing* GetTarget();                // slot 29 (+0x74)
 };
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     CThing* GetPerceivedThing();                // 0x007446A0
     bool CanSeeOrSmellPerceivedThing();         // 0x00661600
     bool GetDirectAwareness();                  // 0x00744430
@@ -79,7 +79,7 @@ struct CTCCombatRange {                         // interface 0xAA
     unsigned char _pad[0x64];
     float Range;                                // +0x64
 };
-struct CTCStealth {                             // interface 0x36
+class CTCStealth { public:                             // interface 0x36
     void SetAsRunningAwayFromCombat();          // 0x007470E0
 };
 struct CBaseIntelligentPointer {
@@ -95,11 +95,11 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

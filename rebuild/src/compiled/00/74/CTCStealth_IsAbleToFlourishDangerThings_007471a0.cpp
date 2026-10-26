@@ -9,7 +9,7 @@
 // Name and signature confirmed by ghidra_out/egor_signatures.tsv (Ego_r).
 // Shape: `last` re-read every iteration; the thing pointer is a named local.
 extern bool g_FlourishDangerThings;                         // 0x0137574D
-struct CThing;
+class CThing;
 bool __fastcall IsKnockedDown(CThing* thing);               // 0x0085F010
 
 struct CDangerThing {                                       // pair<CIntelligentPointer<CThing const>, NStealth::CDangerStatus>, 16 bytes
@@ -22,12 +22,12 @@ struct CDangerThing {                                       // pair<CIntelligent
     long Timer;                                             // +0x0c
 };
 
-struct CStealthDef {
+class CStealthDef { public:
     unsigned char _pad[0x44];
     float         RunningAwayFromCombatHangtimeSeconds;     // +0x44
 };
 
-struct CTCStealth {
+class CTCStealth { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04
     bool          ToBeRemoved;                              // +0x08

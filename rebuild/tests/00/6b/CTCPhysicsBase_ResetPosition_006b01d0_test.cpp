@@ -1,8 +1,8 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_updated = 0;
-struct CThing { void SetAsFrameUpdated() { ++g_updated; } };
-struct CTCPhysicsBase {
+class CThing { public: void SetAsFrameUpdated() { ++g_updated; } };
+class CTCPhysicsBase { public:
     CThing* sub;
     C3DVector Position;
     C3DVector OldPosition;

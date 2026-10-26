@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_StopSneaking {
+class CCreatureAction_StopSneaking { public:
     void* vftable;
     int destroyed;
 };

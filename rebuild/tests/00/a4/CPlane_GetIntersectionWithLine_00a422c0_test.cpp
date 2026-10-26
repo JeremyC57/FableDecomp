@@ -1,6 +1,6 @@
 // Behaviour test for CPlane::GetIntersectionWithLine (0x00A422C0).
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
@@ -10,7 +10,7 @@ struct C3DVector {
 };
 inline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 inline float DotProductByValue(C3DVector a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
-struct CPlane {
+class CPlane { public:
     C3DVector Normal; float Distance;
     bool GetIntersectionWithLine(const C3DVector& point, const C3DVector& direction, C3DVector& intersection) const
     {

@@ -6,8 +6,8 @@ static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 static void *g_last_deleted = 0;
 
-struct CInputProcessInventoryStatsScreen
-{
+class CInputProcessInventoryStatsScreen
+{ public:
     int marker;
     void * vecdtor(unsigned int flags);
 };

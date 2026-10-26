@@ -26,14 +26,14 @@ struct IComponentB {                               // the interface base at +0x1
 struct CComponentRoot {                            // the primary base: vptr at +0
     virtual void v00();
 };
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body1c[0x34 - 0x1c];
     C2DVector Position;                            // +0x34
     C2DVector TargetPosition;                      // +0x3c
     unsigned char _body44[0x15c - 0x44];
     void Update(float time);                       // 0x0052C7E0
 };
-struct CZoomingComponent : CChangingStateComponent {
+class CZoomingComponent : public CChangingStateComponent { public:
     unsigned char _body15c[0x178 - 0x15c];
     bool Panning;                                  // +0x178
     void Update(float time);

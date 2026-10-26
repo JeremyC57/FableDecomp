@@ -15,13 +15,13 @@
 // the top of each pass (retail loads it before the timer test).
 extern long g_UnarmedCombatIdleFrames;                     // 0x013BAD40
 extern long g_framesPerSecond;                             // 0x01375550
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14();
     virtual bool IsStrikeAction();                         // slot 15 (+0x3c)
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char      _pad000[0x100];
     CCombatActionBase* CurrentAction;                      // +0x100
     unsigned char      _pad104[0x138 - 0x104];
@@ -29,7 +29,7 @@ struct CThingCreatureBase {
     bool IsPerformingAnyAction();                          // 0x006622A0
     void SetLastActionHandedness(long handedness);         // 0x006619F0
 };
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     unsigned char _pad00[0x0c];
     float         CooldownSeconds;                         // +0x0c
 };

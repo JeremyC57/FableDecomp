@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 struct IDirect3DSurface9 { int id; };
-struct CCharString { const char* m_text; };
+class CCharString { public: const char* m_text; };
 static int g_wideAlive = 0, g_loads = 0;
 static long g_result = 0;
 static unsigned long g_lastFilter = 0;
@@ -18,7 +18,7 @@ public:
 static CWideString ConvertPathToFullPath(const CCharString& path) { return CWideString(path.m_text); }
 static long D3DXLoadSurfaceFromFileW(IDirect3DSurface9* dest, const void*, const void*, const unsigned short* file, const void*, unsigned long filter, unsigned long, void*)
 { ++g_loads; g_lastSurface = dest; g_lastFilter = filter; g_lastFirst = file[0]; return g_result; }
-struct CSurface {
+class CSurface { public:
     void* __vftable; IDirect3DSurface9* PD3DSurface; unsigned long AllocationSource; void* PAllocatedMemory;
     bool LoadFromBitmapFileToPreallocatedSurface(const CCharString& filename, unsigned long filter)
     {

@@ -1,6 +1,6 @@
 // behaviour test for the cover groups' projectile-weapon runnable checks (0x00978f10)
 #include <cstdio>
-struct CThing { bool dead; bool incap; bool hasCarry; CThing* primary; bool hasWeapon; bool projectile; bool melee; };
+class CThing { public: bool dead; bool incap; bool hasCarry; CThing* primary; bool hasWeapon; bool projectile; bool melee; };
 static bool alive(CThing* t) { return t && !t->dead; }
 static bool ProjectileInPrimary(CThing* t)
 {

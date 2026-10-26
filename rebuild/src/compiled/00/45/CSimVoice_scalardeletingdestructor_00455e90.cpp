@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSimVoice { int f0; };
+class CSimVoice { public: int f0; };
 extern "C" void __fastcall CSimVoice_dtor(CSimVoice* voice);
 extern "C" void __cdecl op_delete(void* p);
 

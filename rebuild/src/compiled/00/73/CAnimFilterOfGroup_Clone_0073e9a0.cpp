@@ -3,9 +3,9 @@
 // Callees: operator new 0x00BFEA1A, CAnimFilterOfGroup::CAnimFilterOfGroup(const CCharString&) 0x0073E8F0
 //          (stores vtable 0x01267568 and returns `this`, which Clone hands back directly).
 // Layout (PDB, 0xc bytes): vptr +0, Group +4, GroupCRC +8.
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual long Accepts(const void* anim);
     virtual CAnimFilterOfGroup* Clone();
     CCharString Group;                                   // +4

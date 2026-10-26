@@ -12,11 +12,11 @@
 //   the ten-frame pump is a counted `for`; the child search leaves its index for the "not found" test after the loop.
 #pragma optimize("s", on)
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 struct ChildPointer { CComponent* Data; void* CountInfo; };
 struct ChildVector { ChildPointer* Start; ChildPointer* Finish; ChildPointer* Limit; unsigned long size() const { return Finish - Start; } };
 struct ComponentVector { CComponent** Start; CComponent** Finish; CComponent** Limit; };
-struct CComponent {
+class CComponent { public:
     virtual void v000();
     virtual void Update(float dt);                                       // slot 1 (+0x4)
     virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -67,7 +67,7 @@ struct ListNode {
 struct LongList {
     ListNode* _M_node;
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
     void RestoreState(const LongList& path);
 };
 

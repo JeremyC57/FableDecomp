@@ -13,14 +13,14 @@
 // result unused; `this` is spilled to a frame word and re-read for the pending list. IsCrime tests `Type > 9` first (retail
 // lays the 2..9 arm second); the linked handle is swapped in BEFORE the first decriminalise call (`first = handle; handle =
 // linked; Decriminalise(first)`), which keeps the deed log in ebx and the list sentinel in ebp (no extra frame word).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -36,24 +36,24 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                      // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                 // 0x00449960
 };
 struct CTCVillager;
-struct CTCVillage;
+class CTCVillage;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);   // 0x007EE540
 
-struct COpinionDeed {
+class COpinionDeed { public:
     long          Type;                             // +0x00 EOpinionDeedType
     unsigned char _pad04[0x22 - 0x04];
     bool          Decriminalised;                   // +0x22
     bool          IsCrime;                          // +0x23
     long          LinkedHandle;                     // +0x24
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
     void DecriminaliseDeed(long handle);            // 0x006C59A0
 };
@@ -96,7 +96,7 @@ __forceinline void DecriminaliseList(CTCHeroOpinionDeedLog* log, CLongList& deed
     }
 }
 
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     void*         __vftable;                        // +0x00
     CThing*       Thing;                            // +0x04 CTCBase parent thing
     unsigned char _pad08[0x54 - 0x08];

@@ -8,13 +8,13 @@
 //   creature is 0x28 narrower there); CThingCreatureDef speeds at PDB - 4 (+0x8c..+0x98, MaxFlyingSpeed +0xa0).
 // Shape: each name is an implicit const char* -> CCharString conversion temporary (one shared frame slot, re-addressed
 //   with `lea` for the push); the speed-member addresses of the first three calls live in edi/ebx/ebp.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x8c];
     float         MaxSlowWalkingSpeed;                   // +0x8c
     float         MaxWalkingSpeed;                       // +0x90
@@ -24,18 +24,18 @@ struct CThingCreatureDef {
     float         MaxFlyingSpeed;                        // +0xa0
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     T* operator->() const { return m_pDef; }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char                   _pad00[0xe0];
     CDefPointer<CThingCreatureDef>  PDef;                // +0xe0
     void InitialiseMovementSpeed(float* speed, const CCharString& name);   // 0x00663510
 };
 
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     unsigned char _pade4[0x18c - 0xe4];
     float         MaxSlowWalkingSpeed;                   // +0x18c
     float         MaxWalkingSpeed;                       // +0x190

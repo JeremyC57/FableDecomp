@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CTCCreditsUI
-{
+class CTCCreditsUI
+{ public:
     char pad[0x16];
     char flag16;
     char flag17;

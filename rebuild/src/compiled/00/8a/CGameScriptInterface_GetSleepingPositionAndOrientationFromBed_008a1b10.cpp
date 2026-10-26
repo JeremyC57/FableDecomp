@@ -39,11 +39,11 @@ struct CThing_Retail {
     CTCMap_Retail  m_tcs;                          // +0x44
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c
     CRightHandedSet() { }
@@ -52,7 +52,7 @@ struct CTCUserActionPointBase {
     bool GetFreeActionPoint(CThing_Retail* user, C3DVector* position, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
     void UseActionPoint(long index);               // 0x007FEF40
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010();
     virtual CThing_Retail* GetThing() const;       // slot 11 (+0x2c)
@@ -77,7 +77,7 @@ __forceinline bool ClaimFreeActionPoint(CTCUserActionPointBase* points, const CS
     }
     return false;
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();

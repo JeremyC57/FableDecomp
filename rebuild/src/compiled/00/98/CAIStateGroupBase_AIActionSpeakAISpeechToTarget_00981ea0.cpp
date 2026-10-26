@@ -10,7 +10,7 @@
 // the call through the base destructor (the CIntelligentPointer<T> classes declare none); the result rides in esi.
 // The two rows 0x009812C0 / 0x00981EA0 are this same forwarder over two different seven-argument targets
 // (0x009812C0 -> 0x00980BD0 AIAction_SpeakToTarget, 0x00981EA0 -> 0x00981350 AIAction_SpeakAISpeechToTarget). Parameter types from the manifest prototype; the 4-byte speech argument is modelled as an id.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -34,7 +34,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligent
 enum EAIActionRepeat { AI_ACTION_REPEAT_NONE };
 enum EAIActionReturn { AI_ACTION_RETURN_NONE };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     EAIActionReturn AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointerCreature speaker,
         CIntelligentPointerThing target, unsigned long speech, bool interrupt, long priority, bool wait);   // 0x00981350

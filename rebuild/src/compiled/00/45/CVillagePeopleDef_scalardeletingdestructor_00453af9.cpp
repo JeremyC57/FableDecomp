@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CVillagePeopleDef { int f0; };
+class CVillagePeopleDef { public: int f0; };
 extern void __fastcall CVillagePeopleDef_dtor(CVillagePeopleDef* def);
 extern void __cdecl op_delete(void* p);
 

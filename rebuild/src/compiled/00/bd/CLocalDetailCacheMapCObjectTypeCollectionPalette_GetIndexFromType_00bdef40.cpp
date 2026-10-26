@@ -9,7 +9,7 @@
 //   __true_type temporary and the value both addressed in the `type` argument slot.
 #pragma warning(disable: 4291)
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
-struct CLocalDetailObjectCollectionType;
+class CLocalDetailObjectCollectionType;
 namespace std {
 struct __true_type { __true_type() { } };
 template <class T> struct allocator { };
@@ -46,8 +46,8 @@ __declspec(noinline) void vector<T, A>::_M_insert_overflow(T* position, const T&
 }
 #pragma auto_inline(on)
 }
-struct CLocalDetailCacheMap {
-    struct CObjectTypeCollectionPalette {
+class CLocalDetailCacheMap { public:
+    class CObjectTypeCollectionPalette { public:
         std::vector<const CLocalDetailObjectCollectionType*> Types;   // +0x00
         long GetIndexFromType(const CLocalDetailObjectCollectionType* type);
     };

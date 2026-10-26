@@ -13,12 +13,12 @@
 //   transferred straight after WarehouseCrateDef, ahead of the activity start-time vector/duration pairs.
 enum EVillageStanceToHero { VILLAGE_STANCE_DEFAULT };
 enum EVillageTaskType { VILLAGE_TASK_DEFAULT };
-struct CDefString { long Index; };
-struct CCharString { void* PData; };
+class CDefString { public: long Index; };
+class CCharString { public: void* PData; };
 struct CTaskVector { EVillageTaskType* _M_start; EVillageTaskType* _M_finish; EVillageTaskType* _M_end_of_storage; };
 struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(CTaskVector& value);            // 0x004E85AE
     void Transfer(CDefString& value);             // 0x0045228F
     void Transfer(EVillageStanceToHero& value);   // 0x004E850A
@@ -28,12 +28,12 @@ struct CPersistContext {
     void Transfer(CCharString& value);            // 0x00431143
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x28 - 4];
 };
 
-struct CVillageDef : CDefClassBase {
+class CVillageDef : public CDefClassBase { public:
     CTaskVector Tasks;                            // +0x28
     CDefString PatrolTrackName;                   // +0x34
     EVillageStanceToHero DefaultStanceToHero;     // +0x38

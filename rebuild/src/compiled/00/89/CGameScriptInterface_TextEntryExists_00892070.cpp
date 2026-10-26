@@ -6,19 +6,19 @@ struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
 struct CDefinitionManager_Retail;
-struct CWorld;
-struct CCharString;
-struct CScriptThing;
+class CWorld;
+class CCharString;
+class CScriptThing;
 struct CDefPointer_Retail;
 typedef unsigned short wchar_t;                // VC7.1 without /Zc:wchar_t: the type of L""
 struct CCharStringData_Retail { const char* m_pData; unsigned long m_length; };   // CBasicString<char>: PData, StringLength
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);         // 0x0099B720
     ~CWideString();                                // 0x0099B510
     bool operator!=(const wchar_t* text) const;    // 0x0099B150
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData_Retail* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -39,7 +39,7 @@ struct CEngineGlobals_Retail {
 extern CEngineGlobals_Retail* g_pEngineGlobals_013b86a0;   // 0x013B86A0
 bool __fastcall ConstructString(CWideString* text, CWideStringVector_Retail* args);   // 0x009C7C20
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 (CRC)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent_Retail*  Component;          // +0x08

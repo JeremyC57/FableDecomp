@@ -16,8 +16,8 @@
 
 #include <stddef.h>
 
-struct CTCInventory
-{
+class CTCInventory
+{ public:
     unsigned char  pad00[0x0E]; // +0x00 .. +0x0D  (opaque)
     unsigned short slotType;    // +0x0E  the switched-on field
 };

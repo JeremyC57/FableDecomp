@@ -17,7 +17,7 @@ struct CMember_0099e4b0 {
     CMember_0099e4b0();                              // 0x0099E4B0
 };
 
-struct CChestDef : CBase_0044c0c0 {
+class CChestDef : public CBase_0044c0c0 { public:
     unsigned char _pad[0x2c];
     CMember_0099e4b0 m_member;                       // +0x30
     virtual void v00();

@@ -7,7 +7,7 @@
 // Tiny-body shape `Increment` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     unsigned char _pad[0xc];
     long m_count;                          // +0xc
     void DecrementScriptCounter();

@@ -1,9 +1,9 @@
 // CMapBrushList_0081e960::GetScriptedMapBrush(const CCharString& name) -- walk the list at +0xc for the brush whose name (the accessor @ 0x0082E250 on the node's +8: `lea eax,[ecx+48h]`, the block's CCharString) equals the given name (the inlined CCharString ==: same data block, or both present with equal lengths and Compare @ 0x00411570 == 0); return the node's brush (+8), rethrowing (`throw;` = _CxxThrowException @ 0x00BFEB84 with (0, 0)) when none matches
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081E960, length 90 bytes.
 // Callees: the mode block's name accessor @ 0x0082E250 (manifest "CModeBlock::GetAnimFilter"; no arguments), Compare(const char*, const char*) @ 0x00411570 (`__fastcall`), _CxxThrowException @ 0x00BFEB84. Shape: the sentinel walk (`mov esi,[eax] ; cmp esi,eax` then `cmp esi,[ebx+0Ch]`), `neg eax ; sbb al,al ; inc al` for `Compare == 0`, the throw at the end of the loop, `lea eax,[esi+8]`, `ret 4`. Two byte-identical copies (0x0081E960 / 0x0081E9F0).
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     bool operator==(const CCharString& other) const
     {

@@ -1,7 +1,7 @@
 // CEngineScreenEffectColourFilter::Render  0x00b5af60
-struct CEngineComponentRenderParams;
+class CEngineComponentRenderParams;
 
-struct CEngineScreenEffectColourFilter {
+class CEngineScreenEffectColourFilter { public:
     char pad0[8];
     unsigned char enabled;   // +8
     char pad9[7];

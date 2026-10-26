@@ -3,12 +3,12 @@
 // Callees: the member destructor @ 0x00BAA2B0 (CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip), the base destructor @ 0x00BEBC50 (CEngineInternalPrimitiveMeshBase::~CEngineInternalPrimitiveMeshBase), operator delete @ 0x00BFE9BC. Shape: no vtable store (the class is
 // non-polymorphic: the polymorphic object at +0 is a member, so VC7.1 emits the non-virtual deleting destructor); the member at +0xac is destroyed first. The chunk label
 // "CEngineSubPrimitiveText `scalar deleting destructor'" is propagated; the class is named by address.
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     unsigned char _body[0x4];
     ~CPatchTesselationEdgeStrip();                                  // 0x00BAA2B0
 };
 
-struct CEngineInternalPrimitiveMeshBase {                                  // polymorphic base of 0xac bytes
+class CEngineInternalPrimitiveMeshBase { public:                                  // polymorphic base of 0xac bytes
     virtual void v00();
     unsigned char _pad[0xa8];
     ~CEngineInternalPrimitiveMeshBase();                                   // 0x00BEBC50

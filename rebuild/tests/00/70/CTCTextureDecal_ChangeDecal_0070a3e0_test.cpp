@@ -3,7 +3,7 @@
 struct SDecalData { long m_words[4]; };
 struct CDecalEntry { long m_allocEntryID; long m_unknown; SDecalData m_data; };
 struct SDecalNode { SDecalNode* Next; SDecalNode* Prev; CDecalEntry Entry; };
-struct CTCTextureDecal {
+class CTCTextureDecal { public:
     SDecalNode* Decals;
     long CurrentAllocEntryID;
     bool Dirty;

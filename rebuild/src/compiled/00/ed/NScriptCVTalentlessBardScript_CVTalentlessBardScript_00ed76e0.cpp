@@ -8,7 +8,7 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
-struct CScriptDataBase;
+class CScriptDataBase;
 struct CGameScriptTimerMethods {
     void* BeforeRegisterTimer[87];
     long (__fastcall *RegisterTimer)(CGameScriptInterface*); // slot87,0x006E79E0
@@ -25,7 +25,7 @@ struct __declspec(novtable) CQuestScriptObjectNative : CScriptBaseNative {
     CQuestScriptObjectNative(CScriptDataBase* data,CGameScriptInterface* game)
         : CScriptBaseNative(),Game(game),Data(data) {}
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass(); // RTTI1231710 slot0, deleting destructor004371F0
     CBaseClass(); // 0x0099A2D0
 };

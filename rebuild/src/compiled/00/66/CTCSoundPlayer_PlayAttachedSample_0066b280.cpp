@@ -19,7 +19,7 @@
 //   list it is called after them).
 // No pragma.
 class CCharString { public: void* PStringData; };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CASoundBank {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

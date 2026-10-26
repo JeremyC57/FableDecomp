@@ -9,7 +9,7 @@
 // landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor
 // (which returns `this`). The class is named from the constructor's manifest label when that label
 // is unique. One of 12 bodies of this shape.
-struct CExplosionDef {
+class CExplosionDef { public:
     unsigned char _body[0x70];       // sizeof(CExplosionDef) = 0x70
     CExplosionDef();                               // 0x004E1341
 };

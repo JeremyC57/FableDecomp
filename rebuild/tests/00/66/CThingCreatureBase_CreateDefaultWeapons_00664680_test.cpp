@@ -26,10 +26,10 @@
 //   UseMeleeWeaponAsDefault bit 4 of +0x148 (PDB 8 higher: def base 4, the NavigatorTypes vector 4).
 // Shape: every def read goes through an inline GetDef() pointer accessor (retail copies the def into eax for the melee
 //   pair and keeps it in edi across GetPosition); the object's lookup goes through a `const CThing*` (const LowerBound).
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
-struct CCharString {
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -43,7 +43,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -81,10 +81,10 @@ struct CThing {
     }
 };
 
-struct CTCCarryable {
+class CTCCarryable { public:
     long GetCarrySlotPassive() const;                   // 0x00705D00
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
 };
 
@@ -92,7 +92,7 @@ void __fastcall CreateWeaponForThingFromDef(CThing* thing, long def);   // 0x006
 CThing* __fastcall CreateThingObject(long defIndex, const C3DVector& position, long player, CRightHandedSet* orientation,
     unsigned long flags, const CCharString& scriptName);   // 0x00703210
 
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0xd4];
     long          InitialWeaponDef;                     // +0xd4
     long          PrimaryMeleeWeaponDef;                // +0xd8
@@ -104,7 +104,7 @@ struct CThingCreatureDef {
     unsigned char UseMeleeWeaponAsDefault : 1;          // +0x148 bit 4
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad94[0xe0 - 0x94];
     const CThingCreatureDef* PDef;                      // +0xe0 CDefPointer<const CThingCreatureDef>::Object
     const CThingCreatureDef* GetDef() const { return PDef; }

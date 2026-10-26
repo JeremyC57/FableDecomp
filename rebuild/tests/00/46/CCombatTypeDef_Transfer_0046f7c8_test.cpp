@@ -53,7 +53,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -193,7 +193,7 @@ public:
 #undef CPersistContext
 struct NativeVector32 { unsigned int first, last, capacity; };
 struct NativeMap32 { unsigned int root, first, size; };
-struct CPersistContext {
+class CPersistContext { public:
     void TransferLongVector(NativeVector32* value);   // 0x00466A47
     void TransferLong(int* value);                   // 0x00431102
     void TransferBool(bool* value);                  // 0x0043314A
@@ -203,7 +203,7 @@ struct CPersistContext {
     void TransferCombatType(int* value);             // 0x0046F8DA
     void TransferRecoil(int* value);                 // 0x0046F97E
 };
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     unsigned char prefix[0x3c];
     NativeVector32 DefenderCombatRingOccupationNumbers; // +0x3c; PDB donor +0x40
     int DefenderWheelOuterRingStartIndex;              // +0x48; donor +0x50

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00929220: GetDiceGame walks creature -> villager -> village -> village thing -> dice game (0xf0).
 #include <cstdio>
-struct CThing { long type; void* comp; void* GetIface(long t) { return t == type ? comp : 0; } };
-struct CTCVillage { CThing* Owner; };
+class CThing { public: long type; void* comp; void* GetIface(long t) { return t == type ? comp : 0; } };
+class CTCVillage { public: CThing* Owner; };
 struct CTCVillager { CTCVillage* village; };
 static CTCVillage* GetVillage(CTCVillager* v) { return v->village; }
 static void* GetDiceGame(CThing* creature)

@@ -1,9 +1,9 @@
 // behaviour test for CFishingDef::operator= (0x004E2C52): every member copied, base assignment called, *this returned
 #include <cstdio>
 static int g_base = 0, g_ops = 0;
-struct CDefClassBase { unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
+class CDefClassBase { public: unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
 struct CLongVector { unsigned long m_words[3]; CLongVector& operator=(const CLongVector& o) { ++g_ops; for (int i = 0; i < 3; ++i) m_words[i] = o.m_words[i]; return *this; } };
-struct CFishingDef : CDefClassBase {
+class CFishingDef : public CDefClassBase { public:
     CLongVector FishTypes;
     float FishingSpotProximity;
     float FishingSpotMinDepth;

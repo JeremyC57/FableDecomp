@@ -3,7 +3,7 @@
 struct CTarget2 { void Draw(void* a, void* b); };
 struct CTarget3 { void Draw(void* a); };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad[0x18];
     int mode;        // +0x18
     char pad2[0x24 - 0x1c];

@@ -16,27 +16,27 @@
 #include "engine/CRegionMinimap.h"
 
 struct IDirect3DSurface9;
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) { }
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat() : FormatIndex(-1) { }
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     bool GetBestCompressedAlphaTextureFormat(unsigned long flags, CPixelFormat* format);   // 0x009BE870
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CDisplayManager* PDisplayManager;           // +0x60 CCountedPointer<CDisplayManager>
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
-struct CSurface {                               // vtable 0x0122F84C
+class CSurface { public:                               // vtable 0x0122F84C
     IDirect3DSurface9* PD3DSurface;             // +0x04
     unsigned long      AllocationSource;        // +0x08
     void*              PAllocatedMemory;        // +0x0c
@@ -45,7 +45,7 @@ struct CSurface {                               // vtable 0x0122F84C
     void Uninitialise();                        // 0x009F2E20
     void CopyFromSurface(const C2DBoxI* destBox, const CSurface* source, const C2DBoxI* sourceBox, unsigned long flags);   // 0x009F37E0
 };
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;             // +0x00
     unsigned long      Bits;                    // +0x04 ByteLength:28, AllocationSource:4
     bool IsInitialised() const { return PD3DTexture != 0; }

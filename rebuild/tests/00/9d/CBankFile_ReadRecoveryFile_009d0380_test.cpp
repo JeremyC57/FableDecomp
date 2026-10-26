@@ -21,7 +21,7 @@ struct CStream {
     ~CStream() { --g_alive; }
     void Read(void* dst, unsigned int n) { if (Pos + n <= g_fileLen) std::memcpy(dst, g_file + Pos, n); else std::memset(dst, 0, n); Pos += n; }
 };
-struct CBankFile {
+class CBankFile { public:
     bool ReadEntryList(CStream&, unsigned int a, unsigned int b) { g_entryA = a; g_entryB = b; ++g_entryCalls; return true; }
     bool ReadRecoveryFile(unsigned int validation);
 };

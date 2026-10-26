@@ -15,8 +15,8 @@
 //        virtual call); every later use re-fetches the item, the two presence tests use one fetch each
 //        for both the bitset and the lookup (named locals).
 class CThing;
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -24,7 +24,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -55,7 +55,7 @@ public:
     void RemoveTC(long interfaceType);          // 0x004C9840
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingWithUID(__int64 uid);       // 0x0051ED80
 };
 
@@ -67,7 +67,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for T = CThing
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -89,7 +89,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 struct CTCComponent82 {                         // the interface-0x82 component (class unidentified)
     void ClearEntries();                        // 0x007F8860
 };
-struct CTCTargeted {
+class CTCTargeted { public:
     unsigned char _pad_0x00[0x10];
     bool          Targetable;                   // +0x10
 };
@@ -101,7 +101,7 @@ struct CTCBaseModel {
     bool    IsInGlobalUpdateTCs;                // +0x09
     CThingManager* GetThingManager();           // 0x00686AE0
 };
-struct CTCWallMount : CTCBaseModel {
+class CTCWallMount : public CTCBaseModel { public:
     long                        BoughtForAmount;   // +0x0c
     CIntelligentPointer<CThing> Trophy;            // +0x10
     unsigned __int64            TrophyID;          // +0x18

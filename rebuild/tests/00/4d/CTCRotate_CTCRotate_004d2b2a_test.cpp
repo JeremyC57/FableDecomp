@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CCharString { const char* m_pData; CCharString() : m_pData("") { } };
-struct CTCBase {
+class CThing { public: int id; };
+class CCharString { public: const char* m_pData; CCharString() : m_pData("") { } };
+class CTCBase { public:
     CThing* m_pParent; bool m_flag8, m_flag9;
     CTCBase(CThing* parent) : m_pParent(parent), m_flag8(false), m_flag9(false) { }
     virtual ~CTCBase() { }
 };
-struct CTCRotate : CTCBase {
+class CTCRotate : public CTCBase { public:
     float m_axis[3]; float m_speed; long m_unknown1c; long m_framesElapsed; long m_framesTotal;
     bool m_finished; CCharString m_name; long m_index; bool m_active;
     CTCRotate(CThing* parent)

@@ -6,7 +6,7 @@
 // Shape: C3DVector needs a user copy ctor and operator* with a named result (no NRVO in VC7.1): retail keeps the ctor temporary and copies it.
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -23,7 +23,7 @@ struct SWindRecord {
     unsigned char      _pad[0x54];
     SWeatherStrengths* Weather;                    // +0x54
 };
-struct CEnvironment {
+class CEnvironment { public:
     virtual void v00();
     virtual SWindRecord* GetWind();                // slot 1
 };
@@ -48,7 +48,7 @@ extern SEngineGlobals_01436e48* g_pEngineGlobals_01436e48;   // 0x01436E48
 
 static inline float Clamp(float v, float lo, float hi) { return v < lo ? lo : (v > hi ? hi : v); }
 
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     unsigned char _pad04[4];
     bool          Initialised;                     // +0x08
     unsigned char _pad09[0x110];

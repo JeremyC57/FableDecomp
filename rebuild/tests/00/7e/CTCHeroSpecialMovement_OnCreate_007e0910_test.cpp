@@ -5,22 +5,22 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 long g_framesPerSecond_01375550 = 30;
 static int g_deleted = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy() {}
     virtual void Delete() { ++g_deleted; }
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) {}
     T* operator->() const { return (T*)Object; }
 };
-struct CHeroSpecialMovementDef : CDefPointeeBase {
+class CHeroSpecialMovementDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     float SprintDurationSeconds;
 };
 static CHeroSpecialMovementDef* g_subDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CHeroSpecialMovementDef>* out);
 };
 bool CDefClassBase::GetSubDef(CDefPointer<const CHeroSpecialMovementDef>* out)

@@ -6,7 +6,7 @@ struct StringHeader {
     unsigned long length;
 };
 
-struct CCharString {
+class CCharString { public:
     StringHeader* header;
 };
 

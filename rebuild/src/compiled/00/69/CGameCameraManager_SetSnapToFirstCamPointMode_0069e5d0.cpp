@@ -15,10 +15,10 @@
 void* operator new(unsigned int size);              // 0x00BFEA1A
 void __fastcall Destroy_0056c0f0(void* object);     // 0x0056C0F0
 
-struct CBaseObject;
-struct CThing;
-struct CCameraModeDef;
-template <class T> struct CDefPointer { T* Data; };
+class CBaseObject;
+class CThing;
+class CCameraModeDef;
+template <class T> class CDefPointer { public: T* Data; };
 extern CDefPointer<const CCameraModeDef> g_CameraModeDef;   // 0x013BA8D8
 
 struct CBaseIntelligentPointer {
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                  // 0x00A01B50
     CBaseObject* Item;
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
@@ -55,7 +55,7 @@ struct SCountBlock {
     SCountBlock(void* object) : References(1), Destroy(Destroy_0056c0f0), Object(object) {}
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* Info;
     CCountedPointer(T* p) : Data(p)
@@ -70,7 +70,7 @@ template <class T> struct CCountedPointer {
 
 class CGameCameraManager;
 namespace NCameraModes {
-    struct CBase { virtual ~CBase(); };
+    class CBase { public: virtual ~CBase(); };
     struct CSnapToPoint : CBase {
         CSnapToPoint(CGameCameraManager* manager, const CDefPointer<const CCameraModeDef>& def, CThing* point);   // 0x0056E330
         unsigned char _body[0xD0 - 4];

@@ -5,7 +5,7 @@
 // imprisoned leader unkillable and succeeds -- unless the mission failed or the thread is ending
 static int g_frames = 0, g_deadAt = 3, g_endAt = 1000, g_leaderAdds = 0, g_killable = 0;
 struct CScriptThingVector { int count; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void GetAllThingsWithScriptName(const char* name, CScriptThingVector& v) const
     { if (std::strcmp(name, "BanditSiegeLeader") == 0) ++g_leaderAdds; ++v.count; }
     bool IsRegionLoaded(const char* name) const { return std::strcmp(name, "KnotholeGlade") == 0; }

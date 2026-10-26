@@ -1,4 +1,4 @@
-struct CTCQuestCard {
+class CTCQuestCard { public:
     void* vftable;
 };
 

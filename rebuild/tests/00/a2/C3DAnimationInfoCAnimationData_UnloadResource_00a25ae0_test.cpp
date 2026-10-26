@@ -1,13 +1,13 @@
 // Behaviour test for CAnimationData::UnloadResource @ 0x00a25ae0: true (kept) when it cannot unload; else release AnimInfo's data and return false.
 #include <cstdio>
 static int g_destroyed = 0;
-struct CIVCountedPointeeBase { virtual void v0() { } virtual void Destroy() { ++g_destroyed; } long m_refCount; };
-template<class T> struct CIVCountedPointer {
+class CIVCountedPointeeBase { public: virtual void v0() { } virtual void Destroy() { ++g_destroyed; } long m_refCount; };
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     void Release() { T* p = m_pObject; if (p) { if (--p->m_refCount == 0) p->Destroy(); m_pObject = 0; } }
     CIVCountedPointer& operator=(T* object) { Release(); m_pObject = object; return *this; }
 };
-struct C3DAnimationInfo { unsigned char _pad[0x0c]; CIVCountedPointer<CIVCountedPointeeBase> m_data; };
+class C3DAnimationInfo { public: unsigned char _pad[0x0c]; CIVCountedPointer<CIVCountedPointeeBase> m_data; };
 struct CAnimationData {
     virtual void v0() { } virtual void v1() { }
     virtual bool UnloadResource() { if (CanUnload()) { AnimInfo->m_data = 0; return false; } return true; }

@@ -7,14 +7,14 @@
 // "CTCInventoryBase::GetCanItemBeQuickAssigned", called on `this`), this action's virtual slot 4 (`call [edx+10h]`, FinishAction).
 // Shape: IS_THING_ALIVE inlined; the GetInterface result is ignored (absent arm reads the key's frame word); the FinishAction call is
 // duplicated into the dead/absent arm placed after the main path.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -56,14 +56,14 @@ public:
     CTCCarrying* PCarryingTC;               // +0x10 (Ego_r.pdb CTCCarryable; the carrier, null when not carried)
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4
     unsigned char _pad04[0xa8 - 4];
     void FrameUpdate();                     // 0x00694020
     bool GetCanItemBeQuickAssigned();       // 0x006925A0
 };
-struct CCreatureAction_PickUpGenericBox : CCreatureActionBase {
+class CCreatureAction_PickUpGenericBox : public CCreatureActionBase { public:
     CBaseIntelligentPointer PBox;           // +0xa8 the box being picked up
     void FrameUpdate();
 };

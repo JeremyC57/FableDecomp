@@ -1,8 +1,8 @@
 // CGuiVarTransferBool::TransferToGui @ 0x006bf700
 // Leaf: TransferToGui
 
-struct CGuiVarTransferBool
-{
+class CGuiVarTransferBool
+{ public:
     void*         field0;   // +0x00 -> ecx to helper
     void*         field4;   // +0x04 -> edx to helper
     int           field8;   // +0x08

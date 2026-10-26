@@ -12,7 +12,7 @@
 // arguments; a __fastcall free function with the pointer in ecx produces the same call site.
 #include "engine/CAIStateGroup_ServeFoodAtHome.h"
 
-struct CThingBuilding;
+class CThingBuilding;
 
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (ecx = the CIntelligentPointer object).
 CThingBuilding* __fastcall IntelligentPointer_GetPItem_00a01b50(void* intelligentPointer);

@@ -2,7 +2,7 @@
 // Native __fastcall member: this in ECX (ignored), struct return via hidden
 // stack pointer, ret 4. Constructs CCharString(0x1265850, -1) into the slot.
 
-struct CCharString {
+class CCharString { public:
     char* buf;
     CCharString(const char* s, int n);
     CCharString(const CCharString&);   // forces return-in-memory ABI

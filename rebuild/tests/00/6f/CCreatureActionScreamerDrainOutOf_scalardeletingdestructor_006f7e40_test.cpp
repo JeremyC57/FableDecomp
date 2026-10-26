@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ScreamerDrainOutOf {
+class CCreatureAction_ScreamerDrainOutOf { public:
     void* vftable;
     int destroyed;
 };

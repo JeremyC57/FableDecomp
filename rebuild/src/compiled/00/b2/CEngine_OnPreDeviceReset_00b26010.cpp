@@ -10,11 +10,11 @@
 // `n ? ... : result` form tests the difference with `je` instead); the layer loop re-reads `end()` every pass.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-struct CSurface {
+class CSurface { public:
     virtual ~CSurface();
 };
 
-struct CEngineLayerRenderer {
+class CEngineLayerRenderer { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -55,7 +55,7 @@ struct CRetailVector {                       // STLport vector of pointers: 12 b
     void clear() { erase(begin(), end()); }
 };
 
-struct CEngine {
+class CEngine { public:
     virtual void v00();
     unsigned char _pad04[0x140 - 4];
     CRetailVector<CSurface*>             ScratchZBuffersD24S8;   // +0x140

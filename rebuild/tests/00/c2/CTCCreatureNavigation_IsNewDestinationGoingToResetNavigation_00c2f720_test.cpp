@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 
 static void* g_owner;
 static C3DVector* g_dest;
@@ -23,7 +23,7 @@ struct SubBase {
     }
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* pad0;
     SubBase* ParentThing;
 };

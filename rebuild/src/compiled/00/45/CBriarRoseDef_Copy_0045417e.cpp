@@ -1,4 +1,4 @@
-struct CBriarRoseDef;
+class CBriarRoseDef;
 
 extern void __fastcall CBriarRoseDef_CopyImpl(CBriarRoseDef* self, const CBriarRoseDef* src);
 

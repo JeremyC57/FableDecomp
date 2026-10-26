@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     void* vftable;
     int destroyed;
 };

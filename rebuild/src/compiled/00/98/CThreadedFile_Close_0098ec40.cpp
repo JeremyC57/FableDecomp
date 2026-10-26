@@ -9,18 +9,18 @@
 // so it is assigned first in the source); the same body is inlined into the deleting destructor 0x00991450.
 extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);   // IAT 0x0143FE30
 
-struct CThreadedFile;
+class CThreadedFile;
 
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     void RemovePendingRequests(CThreadedFile* file);   // 0x0098E7D0
 };
 extern CThreadedFileManager g_ThreadedFileManager;    // 0x013BC870
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
 };
 
-struct CThreadedFile {
+class CThreadedFile { public:
     void*         m_vtable;                        // +0x00
     long          DeviceID;                        // +0x04 EThreadedFileDeviceID
     void*         FileHandle;                      // +0x08

@@ -3,13 +3,13 @@
 
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char m_flags91; float m_health;
     CInterfaceMap::SEntry m_entries[4]; int m_count;
     CThing() : m_flags91(0), m_health(0), m_count(0)
@@ -37,16 +37,16 @@ struct CThing {
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 static inline bool IsThingAlive(const CThing* thing) { return thing && !(thing->m_flags91 & 1); }
 static bool g_hit = false;
-struct CTCKraken { bool HasTargetBeenHitByKraken() { return g_hit; } };
-struct CTCKrakenTentacle { CBaseIntelligentPointer PKraken; };
+class CTCKraken { public: bool HasTargetBeenHitByKraken() { return g_hit; } };
+class CTCKrakenTentacle { public: CBaseIntelligentPointer PKraken; };
 static int g_finish = 0, g_frame = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void FinishAction() { ++g_finish; }
     virtual void FrameUpdate() { ++g_frame; }
     CBaseIntelligentPointer PCreature;
     CTCKrakenTentacle* GetTentacle() const { CTCKrakenTentacle* t = 0; PCreature.GetPItem()->GetInterface(&t, 0xe3); return t; }
 };
-struct CCreatureAction_TentacleStrikeLoop : CCombatActionBase {
+class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:
     long StartTick; bool Interrupt; float StartHealth;
     virtual void FrameUpdate();
 };

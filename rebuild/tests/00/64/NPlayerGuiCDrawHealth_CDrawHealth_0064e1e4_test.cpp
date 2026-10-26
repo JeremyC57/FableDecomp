@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for 0064e1e4.
 
-struct CPlayerGui { int id; };
+class CPlayerGui { public: int id; };
 struct CRetailHandleVector { unsigned int reserved; CRetailHandleVector() : reserved(0) { } void Resize(long n) { reserved = (unsigned int)n; } };
 struct CRetailEmitterVector { void* m_pFirst; void* m_pLast; void* m_pEnd; unsigned int reserved;
     CRetailEmitterVector() : m_pFirst(0), m_pLast(0), m_pEnd(0), reserved(0) { } void Resize(long n) { reserved = (unsigned int)n; } };
-struct CFadeInFadeOutBase { int built; CFadeInFadeOutBase() : built(1) { } };
+class CFadeInFadeOutBase { public: int built; CFadeInFadeOutBase() : built(1) { } };
 struct CDrawBase {
     CPlayerGui* PlayerGui; void* DrawList; CRetailHandleVector PrimitiveHandles;
     CDrawBase(CPlayerGui* gui, void* list) : PlayerGui(gui), DrawList(list) { }

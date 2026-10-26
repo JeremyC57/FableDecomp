@@ -11,18 +11,18 @@
 //   temporary's inline destructor = vtable store + counted-pointer release + ~CBaseClass); the member assignment is the implicit
 //   CScriptThing::operator= forwarding to the out-of-line CCountedPointer::operator=; IsAlive on the member dispatches through
 //   the vtable (+0x12c).
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580
@@ -39,13 +39,13 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CBaseClass {                                      // polymorphic root of the script handles
+class C3DVector { public: float X, Y, Z; };
+class CBaseClass { public:                                      // polymorphic root of the script handles
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
 struct CScriptThingImp;
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;               // +0x04 Data, +0x08 Info
     ~CScriptThing() {}
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -61,7 +61,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual void v72(); virtual void v73(); virtual void v74();
     virtual bool IsAlive() const;                        // slot 75 (+0x12c) 0x004AB130
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -131,7 +131,7 @@ struct CGameScriptInterface {
     virtual void v474(); virtual void v475(); virtual void v476();
     virtual void SetThingPersistent(const CScriptThing& thing, bool persistent) const;   // slot 477 (+0x774)
 };
-struct CScriptBase {                                     // retail 0x40 bytes
+class CScriptBase { public:                                     // retail 0x40 bytes
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                           // +0x04 .. +0x40
 };

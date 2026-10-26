@@ -28,7 +28,7 @@ public:
 namespace NLocalisation {
 CCharString __fastcall GetTextBankName();                // 0x00415260
 }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Object;

@@ -8,9 +8,9 @@
 // dedicated deallocator at 0x00bfe9bc. ret 0x1c pops 28 bytes of args.
 
 #include "engine/CLipSyncDataBank.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorldMap;
+class CWorldMap;
 struct CArrayCCharString;
-struct CDataOutputStream;
+class CDataOutputStream;
 
 // The refcounted control block. Layout implied by the disasm:
 //   +0x00 : long refCount           (dec [esi])

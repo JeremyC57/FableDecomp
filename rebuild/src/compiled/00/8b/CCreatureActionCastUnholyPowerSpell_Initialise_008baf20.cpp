@@ -16,9 +16,9 @@
 //   inline setter on the component (the copy is the second frame object, sharing the string's slot). The component
 //   name is an IMPLICIT CCharString conversion temporary: a named block local takes its own frame word instead of
 //   sharing the inlined lookup key's.
-struct CTCBase;
-struct CTCParamsBase;
-struct CCharString {
+class CTCBase;
+class CTCParamsBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, int length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -49,7 +49,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                       // +0x44
@@ -93,14 +93,14 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCUnholyPower {
+class CTCUnholyPower { public:
     unsigned char _pad00[0x10];
     CIntelligentPointer PTarget;                      // +0x10
     unsigned char m_bArmed;                           // +0x18
     void SetTarget(CIntelligentPointer target) { PTarget = target; }
 };
 
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -109,7 +109,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     unsigned char _pad34[0x114 - 0x34];
     void Initialise();                                // 0x00857520
 };
-struct CCreatureAction_CastUnholyPowerSpell : CCombatActionBase {
+class CCreatureAction_CastUnholyPowerSpell : public CCombatActionBase { public:
     void Initialise();
 };
 

@@ -8,7 +8,7 @@ struct ConBuffer {
     void CopyContents(ConBuffer* src);
 };
 
-struct CConsole {
+class CConsole { public:
     char      pad0[0x20];
     ConBuffer back;
     ConBuffer front;

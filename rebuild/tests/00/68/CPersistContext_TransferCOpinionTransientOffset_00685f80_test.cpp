@@ -6,13 +6,13 @@
 #endif
 static char g_log[512];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CMemoryDataInputStream;
-struct COpinionTransientOffset { long Data[6]; void TransferBinaryIn(CMemoryDataInputStream* stream); };
+class CMemoryDataInputStream;
+class COpinionTransientOffset { public: long Data[6]; void TransferBinaryIn(CMemoryDataInputStream* stream); };
 typedef COpinionTransientOffset T;
 static T MK(long n) { T t; for (int i = 0; i < 6; ++i) t.Data[i] = n * 10 + i; t.Data[0] = n; return t; }
 static long VAL(const T& v) { return v.Data[0]; }
-struct CMemoryDataInputStream { int id;  };
-struct CDataOutputStream { int id; long written; virtual void Write(const void* data, long size) { LOG(size == (long)sizeof(COpinionTransientOffset) ? "write" : "write?"); written = static_cast<const COpinionTransientOffset*>(data)->Data[0]; } virtual ~CDataOutputStream() {} };
+class CMemoryDataInputStream { public: int id;  };
+class CDataOutputStream { public: int id; long written; virtual void Write(const void* data, long size) { LOG(size == (long)sizeof(COpinionTransientOffset) ? "write" : "write?"); written = static_cast<const COpinionTransientOffset*>(data)->Data[0]; } virtual ~CDataOutputStream() {} };
 void COpinionTransientOffset::TransferBinaryIn(CMemoryDataInputStream* s) { LOG(s->id == 1 ? "binin" : "binin?"); *this = MK(7); }
 struct CPersistContext_TransferableObjectBase { virtual long Peek() { return -1; } virtual ~CPersistContext_TransferableObjectBase() {} };
 template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableObjectBase {
@@ -20,7 +20,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual long Peek() { return VAL(*Value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     bool UseDefaults;
     long Mode;
     CMemoryDataInputStream* PLoadStream;

@@ -2,8 +2,8 @@
 #include <cstdio>
 
 static int g_freed = 0; static long g_nextPage = 40; static long g_texResult = 3; static long g_sizeX = 0, g_fmt = 0;
-struct CPixelFormat { long FormatIndex; CPixelFormat(unsigned int f) : FormatIndex((long)f) {} };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) {} };
+class CPixelFormat { public: long FormatIndex; CPixelFormat(unsigned int f) : FormatIndex((long)f) {} };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) {} };
 struct CMgr {
     void FreeMemoryPage(long) { ++g_freed; }
     long AllocateMemoryPage(long, long) { return g_nextPage++; }

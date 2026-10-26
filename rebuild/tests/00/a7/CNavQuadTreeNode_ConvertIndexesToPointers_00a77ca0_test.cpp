@@ -2,8 +2,8 @@
 // Behaviour test for 00a77ca0 CNavQuadTreeNode::ConvertIndexesToPointers: the four child indexes become the table's node
 // pointers (in TL, TR, BL, BR order) and each child is then asked to convert its own indexes with the same table.
 static int g_finds = 0;
-struct C2DVector { float X, Y; };
-struct CANavQuadTreeNode;
+class C2DVector { public: float X, Y; };
+class CANavQuadTreeNode;
 namespace std {
 template <class T> struct less { };
 template <class T> struct allocator { };

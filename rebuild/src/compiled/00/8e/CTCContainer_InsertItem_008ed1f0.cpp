@@ -10,7 +10,7 @@
 // Shape: a pair<long, CCharString> local (index stored next to the string copy) handed to the inline STLport push_back
 // (placement memberwise copy / _M_insert_overflow with the __false_type tag in the dead index slot); the def out pointer also
 // reuses the dead index slot, the def taken out of it into a holder whose release loses its null test after the flag read.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
@@ -45,7 +45,7 @@ struct CThingDef {
     unsigned char Flags42;                              // +0x42 (bit 1: persist the container's game state)
     bool PersistsGameState() const { return (Flags42 & 2) != 0; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -55,7 +55,7 @@ template <class T> struct CDefHolder {                  // the def taken out of 
     ~CDefHolder() { if (Object && --Object->m_refCount == 0) Object->Delete(); }
     T* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -71,11 +71,11 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CTh
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     bool IsGameStatePersisted() const;                  // 0x004C8280
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
 };
-struct CTCContainer {
+class CTCContainer { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

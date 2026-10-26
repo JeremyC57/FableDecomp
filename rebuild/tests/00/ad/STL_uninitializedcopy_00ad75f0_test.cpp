@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CCPPointerInfo { unsigned int RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: unsigned int RefCount; void (*DeleteFunc)(void*); void* Data; };
 struct SCounted { void* Data; CCPPointerInfo* Info; };
 struct SBone { const char* BoneName; long Parent; bool Remapped; long NewIndex; };
 

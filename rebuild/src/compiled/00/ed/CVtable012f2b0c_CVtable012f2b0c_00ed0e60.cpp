@@ -6,7 +6,7 @@ struct CVtable_012c1648 {                          // 0x40 bytes (landed 0x00CB8
     unsigned char _body[0x3c];
     CVtable_012c1648();                            // 0x00CB8110
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
 };

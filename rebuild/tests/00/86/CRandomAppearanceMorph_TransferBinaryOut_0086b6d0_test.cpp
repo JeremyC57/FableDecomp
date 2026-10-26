@@ -6,12 +6,12 @@
 
 static char g_log[1024];
 static void Log(const char* f, long v) { char b[32]; std::sprintf(b, "%s%ld;", f, v); std::strcat(g_log, b); }
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool v) { Log("b", v ? 1 : 0); }
     void WriteULong(unsigned long v) { Log("u", (long)v); }
     void WriteLong(long v) { Log("l", v); }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     T& operator[](unsigned long n) { return *(_M_start + n); }
@@ -22,7 +22,7 @@ struct CBodyPartMesh { long MeshID; long Weight; CTextureMorphMap TextureMorphs;
 struct CSkeletalMorph { long Bone; long Amount; bool Enabled; };
 struct CSkeletalMorphEntry { long Key; CSkeletalMorph Morph; };
 struct CSkeletalMorphMap { CArray<CSkeletalMorphEntry> Entries; };
-struct CRandomAppearanceMorph {
+class CRandomAppearanceMorph { public:
     CArray<CArray<CBodyPartMesh> > BodyParts;
     CArray<CTextureMorphMap> BodyPartTextureMorphs;
     CSkeletalMorphMap SkeletalMorphs;

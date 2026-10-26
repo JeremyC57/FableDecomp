@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     bool operator!=(const CCharString& other) const { return std::strcmp(m_text, other.m_text) != 0; }
     CCharString& operator=(const CCharString& other) { std::strcpy(m_text, other.m_text); return *this; }
 };
 static int g_refreshes = 0;
 static long g_lastFlag = -1;
-struct CPlayerGui { void Refresh(long flag) { ++g_refreshes; g_lastFlag = flag; } };
+class CPlayerGui { public: void Refresh(long flag) { ++g_refreshes; g_lastFlag = flag; } };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CTCQuestCard {
+class CTCQuestCard { public:
     CCharString QuestName, ObjectiveName, RegionName;
     void SetRegionName(const CCharString& name)
     {

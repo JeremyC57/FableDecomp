@@ -17,9 +17,9 @@
 //          engine/CAIStateGroupBase.h.
 #include "engine/CAIStateGroupBehaviourBase.h"
 
-struct CTCBase;
-struct CThing;
-struct CThingCreatureBase;
+class CTCBase;
+class CThing;
+class CThingCreatureBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -43,39 +43,39 @@ struct CThing {
         return false;
     }
 };
-struct CTCTalk {                                // interface 0xf
+class CTCTalk { public:                                // interface 0xf
     float GetCurrentSpeechDuration();           // 0x006E2840
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                         // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 struct CThingWorld {
     static long GetCurrentFrame();              // 0x0049D870
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     static float __stdcall DivideByGameSpeed(float value);   // 0x00415FD3
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890

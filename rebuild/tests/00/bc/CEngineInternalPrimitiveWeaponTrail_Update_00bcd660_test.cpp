@@ -65,10 +65,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CEngineSceneGridCell;
+class CEngineSceneGridCell;
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -122,7 +122,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveBase, RefLayerMask) == 0x44
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEBASE_H
 
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -145,7 +145,7 @@ struct CWeaponTrailListHead {
     CWeaponTrailListNode* Head;
 };
 
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     unsigned long Type;
     unsigned long InterpolationSet;
     unsigned long ThemeChannelDesc;
@@ -175,7 +175,7 @@ struct CNativeVector12 {
     T& operator[](unsigned long index) { return _M_start[index]; }
 };
 
-struct CEngineInternalPrimitiveWeaponTrail : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveWeaponTrail : public CEngineInternalPrimitiveBase { public:
     unsigned long TrailType;
     unsigned long GraphicIndex;
     unsigned long GraphicFrame;

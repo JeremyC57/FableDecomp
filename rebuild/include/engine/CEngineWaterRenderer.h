@@ -8,16 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CBankFileAsyncData;
-struct CBankFileAsyncEntry;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CStaticMapBankFile;
-struct CTexture;
-struct CWaterGenerator;
+class CBankFileAsyncData;
+class CBankFileAsyncEntry;
+class CCPPointerInfo;
+class CCharStringData;
+class CStaticMapBankFile;
+class CTexture;
+class CWaterGenerator;
 
 #pragma pack(push, 1)
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer {
+public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char        _pad_0x04[0x4];                     // +0x04
     unsigned char        _pad_0x08[0x4];                     // +0x08

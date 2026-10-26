@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CKickableDef
-{
+class CKickableDef
+{ public:
     void* vftable;
 };
 extern void* const g_CKickableDef_vftable;

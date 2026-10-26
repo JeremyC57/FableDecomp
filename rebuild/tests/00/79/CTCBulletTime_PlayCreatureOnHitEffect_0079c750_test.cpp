@@ -1,7 +1,7 @@
 // Behaviour test for CTCBulletTime::PlayCreatureOnHitEffect (0x0079C750).
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing { public: C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
@@ -9,13 +9,13 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { CThing* item = o.GetPItem(); SetPItem(item); return *this; }
 };
 struct CRadialBlurParams { C3DVector ThresholdCol; float Length; C3DVector IntensityCol; float Fade, Range, Twist, FadeTimeSecs; };
-struct CSpecialAbilitiesBulletTimeDef { CRadialBlurParams RadialBlur, DamageRadialBlur; };
-template <class T> struct CDefPointer { T* Object; T* operator->() const { return Object; } };
+class CSpecialAbilitiesBulletTimeDef { public: CRadialBlurParams RadialBlur, DamageRadialBlur; };
+template <class T> class CDefPointer { public: T* Object; T* operator->() const { return Object; } };
 static float g_length = 0, g_fadeOut = 0; static void* g_fadeKey = 0; static int g_next = 100;
 struct CRadialBlurManager {
     void* AddRadialBlur(long, long, const C3DVector&, float length, const C3DVector&, float, float, float)
@@ -23,9 +23,9 @@ struct CRadialBlurManager {
     void FadeOutRadialBlur(float seconds, void* key) { g_fadeOut = seconds; g_fadeKey = key; }
 };
 static const C3DVector* g_centre = 0;
-struct CEnvironmentSpellEffectInterface { void SetRadialBlurCenterWorldPos(const C3DVector& p, bool) { g_centre = &p; } };
+class CEnvironmentSpellEffectInterface { public: void SetRadialBlurCenterWorldPos(const C3DVector& p, bool) { g_centre = &p; } };
 struct CWorldEffects { CEnvironmentSpellEffectInterface* SpellEffects; CRadialBlurManager* RadialBlurs; };
-struct CWorld { CWorldEffects* PEffects; };
+class CWorld { public: CWorldEffects* PEffects; };
 class CTCBulletTime {
 public:
     CThing* ParentThing; CWorld* world;

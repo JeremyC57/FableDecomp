@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     bool LineOfSight; bool Smelt;
     bool CanSeeOrSmellPerceivedThing() const { return LineOfSight || Smelt; }
 };

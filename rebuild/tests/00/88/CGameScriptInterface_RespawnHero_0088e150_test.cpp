@@ -11,7 +11,7 @@ struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
 
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                           // +0x00
     signed char   Player;                         // +0x04
     unsigned char Data[32];                       // +0x05
@@ -22,7 +22,7 @@ struct CGameEvent : CMemoryBuffer {
     __forceinline void AddBOOL(bool value) { Copy(1, &value); }   // __forceinline + bool: the by-value copy is homed in the caller's dead bool slot
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
@@ -33,8 +33,8 @@ struct CPlayerManager_Retail {
 
 enum { GAME_EVENT_RESPAWN_HERO = 8 };
 
-struct CWorld;
-struct CGameScriptInterface {
+class CWorld;
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                World;                 // +0x04 (engine/CGameScriptInterface.h)
     void*                  Component;             // +0x08

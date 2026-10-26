@@ -13,7 +13,7 @@ struct CWideStringModel {
 
 static void FormatChar(CWideStringModel* text, wchar_t16 c) { text->m_buf[0] = c; text->m_buf[1] = 0; }
 
-struct C2DExtentsF { float Width, Height; C2DExtentsF(float w, float h) : Width(w), Height(h) { } };
+class C2DExtentsF { public: float Width, Height; C2DExtentsF(float w, float h) : Width(w), Height(h) { } };
 
 struct CFontBankModel {
     C2DExtentsF GetVStringExtents(const CWideStringModel& text) const

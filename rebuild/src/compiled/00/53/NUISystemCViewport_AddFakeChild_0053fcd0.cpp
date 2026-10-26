@@ -7,7 +7,7 @@
 // component vtable slot count is modelled with fillers.
 namespace NUISystem {
 
-struct CComponent;
+class CComponent;
 
 struct CComponentVector {                      // 12-byte retail vector {first, last, end}
     CComponent* m_pFirst;
@@ -16,7 +16,7 @@ struct CComponentVector {                      // 12-byte retail vector {first, 
     void push_back(CComponent* const& child);  // 0x00486024
 };
 
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
@@ -39,7 +39,7 @@ struct CComponent {
     virtual void SetParent(CComponent* parent);   // slot 90 (+0x168)
 };
 
-struct CViewport : CComponent {
+class CViewport : public CComponent { public:
     unsigned char    _pad04[0x160];            // +0x004..+0x163
     CComponentVector m_fakeChildren;           // +0x164
     void AddFakeChild(CComponent* child);

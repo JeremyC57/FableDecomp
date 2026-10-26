@@ -7,11 +7,11 @@ static int g_fail = 0;
 static std::string g_log;
 static int g_calls = 0, g_termAt = 0, g_frames = 0;
 static int g_usedPattern = 0;
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     bool MsgIsUsedBy(const std::string& user) const { (void)user; return ((g_frames >> g_usedPattern) & 1) != 0 || g_frames == 0; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     std::string LastMsg; float LastSecs;
     void GetAllThingsWithScriptName(const std::string& n, std::vector<CScriptThing>& out) const
     { if (n == "TestGate") { for (int k = 0; k < 3; ++k) { CScriptThing t; t.Id = k; out.push_back(t); } } }

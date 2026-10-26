@@ -6,7 +6,7 @@
 // "End" @ 0x0125BE7C, ";\r\n" @ 0x012353B8), CCharString::~CCharString @ 0x0099EAE0 (x3), CCharString::operator+= @ 0x0099F0A0.
 // Shape: the ";\r\n" push precedes the class-name call (arguments right to left); the two inner temporaries die before the
 // append, the final sum is a named local (inner temporaries die at its declaration) living in the dead `textMode` argument slot (esp+0xC after `sub esp,8`).
-struct CCharString {
+class CCharString { public:
     void* PString;
     ~CCharString();                             // 0x0099EAE0
     CCharString& operator+=(const CCharString& other);   // 0x0099F0A0

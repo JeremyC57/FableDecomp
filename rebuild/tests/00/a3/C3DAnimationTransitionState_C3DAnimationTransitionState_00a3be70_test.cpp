@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) { }
     virtual void Delete() { ++g_deleted; }
     unsigned long IVRefCount;
@@ -30,7 +30,7 @@ struct CIVCountedPointer {
 struct CIVCountedPointerC { CIVCountedPointeeBase* Object; CIVCountedPointerC(CIVCountedPointeeBase* p) : Object(p) { }
     CIVCountedPointerC(const CIVCountedPointerC& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; } };
 struct CStateBase : CIVCountedPointeeBase { CStateBase() { IVRefCount = 1; } };
-struct C3DAnimationTransitionState : CStateBase { CIVCountedPointerC StartState; CIVCountedPointerC EndState; float Progress;
+class C3DAnimationTransitionState : public CStateBase { public: CIVCountedPointerC StartState; CIVCountedPointerC EndState; float Progress;
     C3DAnimationTransitionState(const CIVCountedPointerC& s, const CIVCountedPointerC& e, float p) : StartState(s), EndState(e), Progress(p) { } };
 int main()
 {

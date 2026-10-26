@@ -49,8 +49,8 @@ public:
     void Initialise(long r, long g, long b, long a, bool flag);   // 0x009E3790
     CPixelFormat(long r, long g, long b, long a, bool flag) { Initialise(r, g, b, a, flag); }
 };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
-struct C2DExtentsI { long X, Y; C2DExtentsI() { } };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class C2DExtentsI { public: long X, Y; C2DExtentsI() { } };
 C2DExtentsI __fastcall GetSurfaceExtents(const C2DCoordI& size, const CPixelFormat& format);   // 0x009F3220
 
 class CSurface {                                    // vtable 0x0122F84C, 0x10 bytes

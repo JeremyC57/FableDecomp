@@ -6,8 +6,8 @@ struct CBase
 
 extern void* g_CChunkedFileChunkVTable_0129a69c[];
 
-struct CChunkedFileChunk : CBase
-{
+class CChunkedFileChunk : public CBase
+{ public:
     ~CChunkedFileChunk();
 };
 

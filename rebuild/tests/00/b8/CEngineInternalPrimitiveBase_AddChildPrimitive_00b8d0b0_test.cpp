@@ -1,6 +1,6 @@
 #include <stdio.h>
-struct CEnginePrimitive;
-struct CEngineInternalPrimitiveBase {
+class CEnginePrimitive;
+class CEngineInternalPrimitiveBase { public:
     unsigned long AddChildPrimitive(CEnginePrimitive* prim, unsigned long flags) {
         (void)prim; (void)flags;
         return 0;

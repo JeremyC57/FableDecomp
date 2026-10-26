@@ -8,7 +8,7 @@
 //   becomes `jmp` with a and b still in ecx/edx: Position is the key's first member).
 // Shape: `fld [edx+8] ; fld [ecx+8] ; fucompp ; test ah,44h ; jp` then the tail jump; the `<` arm returns through
 //   `fnstsw ; test ah,5 ; jp` with full-register 1/0.
-struct C2DVector {
+class C2DVector { public:
     float X;                                    // +0x00
     float Y;                                    // +0x04
 };

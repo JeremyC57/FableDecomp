@@ -2,14 +2,14 @@
 // component of its type with (false, true, 0, false, false); a non-item thing is killed (not immediately).
 #include <cstdio>
 #include <stdlib.h>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
     int Kills; bool KillFlag;
@@ -39,18 +39,18 @@ struct CThing {
     void Init() { for (int i = 0; i < 9; ++i) UsingComponents[i] = 0; Components.first = Components.last = 0; Kills = 0; KillFlag = true; }
 };
 struct CTCInventoryBase { int id; };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     long Type; int Adds; CTCInventoryBase* Into; bool A, B, D, E; long C;
     long GetInventoryType() { return Type; }
     bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool e)
     { ++Adds; Into = inventory; A = a; B = b; C = c; D = d; E = e; return true; }
 };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetHeroCreature() { return g_hero; } };
+class CPlayer { public: CThing* GetHeroCreature() { return g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static CPlayerManager g_pm;
-struct CTCContainer {
+class CTCContainer { public:
     virtual void v00() {}
     CThing* ParentThing;
     CPlayerManager* GetPlayerManager() { return &g_pm; }

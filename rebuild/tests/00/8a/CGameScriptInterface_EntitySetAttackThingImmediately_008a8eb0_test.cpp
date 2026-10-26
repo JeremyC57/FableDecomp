@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x6c];
     unsigned char m_flags6c;                    // +0x6c bit 3
     unsigned char _pad6d[0x91 - 0x6d];
@@ -9,12 +9,12 @@ inline bool IS_THING_ALIVE(const CThing* t)
 {
     return t != 0 && !(t->m_flags91 & 1);
 }
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 4];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 struct CCreatureAction_AttackThing : CCombatActionBase {      // retail sizeof 0x118 (name not recovered)

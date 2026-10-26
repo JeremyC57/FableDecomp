@@ -14,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern bool g_SuppressInventoryBaseCopy;                // 0x013B8A88
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit) const;                          // 0x00410DE0 (std::bitset::test)
 };
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const;         // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CPresenceBits UsingComponents;                      // +0x20
     unsigned char _pad21[0x44 - 0x21];
@@ -40,7 +40,7 @@ struct CThing {
     }
 };
 namespace NHeroInformationScreens {
-struct CBase {                                          // the screen interface base at +0x130
+class CBase { public:                                          // the screen interface base at +0x130
     virtual void Copy(const CBase* other);              // 0x0066E7A6 (empty)
 };
 }
@@ -52,8 +52,8 @@ struct CTCInventoryBase {                               // retail 0x130 bytes
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x130 - 0x08];
 };
-struct CTCHeroExperience;
-struct CTCHeroStats;
+class CTCHeroExperience;
+class CTCHeroStats;
 class CTCInventoryStats : public CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     unsigned char      CreaturesKilled[0xc];            // +0x134 map<unsigned long, long>

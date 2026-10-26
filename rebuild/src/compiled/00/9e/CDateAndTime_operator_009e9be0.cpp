@@ -4,7 +4,7 @@
 // Shape: the mirror of operator< @ 0x009E9B80 -- `setg` for the signed year, and for the unsigned fields the
 // operands of each `cmp` are swapped (`cmp esi,edx` = other.field < field) so the same merged
 // `sbb eax,eax ; neg eax` tail yields field > other.field. The manifest label says operator<.
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;            // +0x00
     unsigned long Month;           // +0x04
     unsigned long Day;             // +0x08

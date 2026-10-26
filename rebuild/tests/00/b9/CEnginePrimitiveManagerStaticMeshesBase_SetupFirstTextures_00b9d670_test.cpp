@@ -22,10 +22,10 @@ struct CRenderManagerCore {
 };
 static CRenderManagerCore g_core;
 
-struct CTexture { void* PD3DTexture; unsigned long Bits; };
+class CTexture { public: void* PD3DTexture; unsigned long Bits; };
 struct CStaticBlock { CTexture* DiffuseTexture; CTexture* BumpTexture; };
-struct C3DPrimitive2 { CStaticBlock* StaticBlocks; };
-struct C3DTextureStages { long DiffuseTextureStage; long BumpTextureStage; bool UseBlankTextures; };
+class C3DPrimitive2 { public: CStaticBlock* StaticBlocks; };
+class C3DTextureStages { public: long DiffuseTextureStage; long BumpTextureStage; bool UseBlankTextures; };
 
 static void SetupFirstTextures(C3DPrimitive2& primitive, C3DTextureStages& stages)
 {

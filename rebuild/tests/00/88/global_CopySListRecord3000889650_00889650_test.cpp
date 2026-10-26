@@ -16,7 +16,7 @@ static const char* Name(int i)
     return pool[i];
 }
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
 };

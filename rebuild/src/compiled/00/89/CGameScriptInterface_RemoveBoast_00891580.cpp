@@ -1,11 +1,11 @@
 // CGameScriptInterface::RemoveBoast
-struct CCharString
-{
+class CCharString
+{ public:
     CCharString(const CCharString& other);
 };
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void RemoveBoast(long questId, CCharString boast);
 };
 

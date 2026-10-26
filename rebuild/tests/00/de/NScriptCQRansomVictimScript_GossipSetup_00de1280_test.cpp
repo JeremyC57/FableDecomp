@@ -1,13 +1,13 @@
 // behaviour test for CQ_RansomVictimScript::GossipSetup (0x00DE1280): two categories, four registrations each
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text) : Text(text) {}
 };
 static char g_log[2048]; 
 static void Log(const char* op, const char* a, const char* b) { std::strcat(g_log, op); std::strcat(g_log, ":"); std::strcat(g_log, a); if (b) { std::strcat(g_log, ","); std::strcat(g_log, b); } std::strcat(g_log, ";"); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void AddRumourCategory(const CCharString& c) const { Log("R", c.Text, 0); }
     void AddNewRumourToCategory(const CCharString& c, const CCharString& r) const { Log("N", c.Text, r.Text); }
     void AddGossipVillage(const CCharString& c, const CCharString& v) const { Log("V", c.Text, v.Text); }

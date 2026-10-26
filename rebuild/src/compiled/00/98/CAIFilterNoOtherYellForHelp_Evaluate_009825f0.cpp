@@ -7,14 +7,14 @@
 // through an inline accessor (the creature rides in eax and the filter address in edx -- a
 // direct member chain allocates them the other way round). Result `neg eax ; sbb eax,eax ;
 // inc eax` is the full-register `== 0` of the returned pointer; no arguments (`ret`).
-struct CMessageEvent;
+class CMessageEvent;
 
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(CMessageEventFilter_IsOfType* filter);   // 0x004AB8B0
 };
 

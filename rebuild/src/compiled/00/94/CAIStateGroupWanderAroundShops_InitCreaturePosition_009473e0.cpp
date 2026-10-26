@@ -12,10 +12,10 @@
 //          conversion temporary (`(Shop = SelectRandomShop()).GetPItem() != 0`): VC keeps the temporary's construction
 //          flag in ebx (set after the converting ctor; an explicit functional cast sets it before the picker call) and the
 //          condition in a frame byte; each placement arm reads the creature into a named local before its call.
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct CThingBuilding;
-struct CThingPhysical {
+class CThing;
+class C3DVector { public: float x, y, z; };
+class CThingBuilding;
+class CThingPhysical { public:
     unsigned char _pad[0x6c];
     unsigned char m_flags6c;                    // +0x6c bit 6: a building
     const C3DVector& GetPosition();             // 0x004C73D0
@@ -33,18 +33,18 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CThing*)other.GetPItem()); return *this; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool AutoPlaceNearBuilding(CThingBuilding* building, float radius);   // 0x00666EF0
     bool AutoPlaceNear(const C3DVector& position, float radius);          // 0x00665DF0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 extern unsigned long g_WanderAroundShopsChance;          // 0x0138CE34 (percent)
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

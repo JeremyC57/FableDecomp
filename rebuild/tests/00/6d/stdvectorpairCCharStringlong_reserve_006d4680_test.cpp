@@ -6,7 +6,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s) { p = (char*)std::malloc(std::strlen(s) + 1); std::strcpy(p, s); ++g_live; }
     CCharString(const CCharString& o) { p = (char*)std::malloc(std::strlen(o.p) + 1); std::strcpy(p, o.p); ++g_live; }

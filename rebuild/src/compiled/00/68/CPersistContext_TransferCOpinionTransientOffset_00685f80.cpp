@@ -9,15 +9,15 @@
 //   of the two text arms.
 //   COpinionTransientOffset is a 24-byte POD (six dwords: the reset and the seeded load copy it field by field); its
 //   binary save is a raw 0x18-byte virtual Write of the save stream, its binary load the member TransferBinaryIn.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void _v00();
     virtual void _v04();
     virtual void _v08();
     virtual void _v0c();
     virtual void Write(const void* data, long size);   // slot +0x10
 };
-struct CMemoryDataInputStream;
-struct COpinionTransientOffset {
+class CMemoryDataInputStream;
+class COpinionTransientOffset { public:
     long m_data[6];                               // 0x18 bytes, copied as six dwords
     void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x004793F8
 };
@@ -31,7 +31,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     virtual void TransferIn();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

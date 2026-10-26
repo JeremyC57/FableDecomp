@@ -13,29 +13,29 @@
 // Shape: the message is a temporary passed straight to the inline push_back (retail keeps the ctor's eax as the source);
 // the insert reads the old tail into a local before linking; the font counted pointer is a temporary whose dtor does not
 // clear its words; the margin clamp is `if (area.TLX < margin) area.TLX = margin;`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                          // 0x0099AED0
     CWideString(const CWideString& other);                  // 0x0099B720
     ~CWideString();                                         // 0x0099B510
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF(float tlx, float tly, float brx, float bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) { }
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     C2DBoxF GetVVisibleTelevisionScreenArea() const;        // 0x009BECE0
 };
 extern CDisplayManager* g_pDisplayManager;                  // 0x013B8390
 float __stdcall GFVXToAX(float x);                          // 0x009E1DA0
 extern long g_framesPerSecond;                              // 0x01375550
 
-struct CPlayerGuiDef {                                      // the "PLAYER_GUI_PC" definition (descriptive)
+class CPlayerGuiDef { public:                                      // the "PLAYER_GUI_PC" definition (descriptive)
     unsigned char _pad000[0x8e0];
     float         MessageLeftMargin;                        // +0x8e0
     unsigned char _pad8e4[0x8f8 - 0x8e4];
@@ -46,10 +46,10 @@ struct CPlayerGuiDef {                                      // the "PLAYER_GUI_P
 };
 struct CPlayerGuiDefPointer { CPlayerGuiDef* Object; };
 extern CPlayerGuiDefPointer g_PlayerGuiDef;                 // 0x013B878C
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CPlayerGuiDefPointer* out);   // 0x0043FF30
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
@@ -61,12 +61,12 @@ __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
     return g_PlayerGuiDef.Object;
 }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long References;
     void (__fastcall* Destroy)(void* object);
     void* Object;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -80,14 +80,14 @@ template <class T> struct CCountedPointer {
         }
     }
 };
-struct CFontBank;
+class CFontBank;
 struct CFontBankManager {
     CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
 };
 extern CFontBankManager* g_pFontBankManager;                // 0x013B838C
 
 namespace NPlayerGui {
-struct CScreenMessage {
+class CScreenMessage { public:
     CWideString Text;
     long        FramesToShowFor;
     long        NumberOfCharactersShowing;
@@ -118,7 +118,7 @@ struct CScreenMessageList {                                 // STLport list<CScr
     }
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char      _pad000[0x328];
     CScreenMessageList ScreenMessages;                      // +0x328
     static void __fastcall FormatStringForArea(const C2DBoxF& area, const CFontBank& font, const CWideString& text, CWideString& out);   // 0x00437D10

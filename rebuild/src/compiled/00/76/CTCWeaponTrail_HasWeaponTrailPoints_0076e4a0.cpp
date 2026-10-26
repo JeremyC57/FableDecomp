@@ -5,14 +5,14 @@
 // thing's property word at CThing +0x2c carries the projectile bit 0x00800000.
 // Shape: `xor eax,eax` is hoisted above the branch and each arm sets al (`sete` / `setg`) -- the two compares are
 // returned directly from the if/else arms.
-struct CThing {
+class CThing { public:
     unsigned char _pad_00[0x2c];
     unsigned long m_properties;                             // +0x2c (0x00800000 = projectile)
 };
 
 enum { THING_PROPERTY_PROJECTILE = 0x00800000 };
 
-struct CTCWeaponTrail {
+class CTCWeaponTrail { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04
     bool          ToBeRemoved;                              // +0x08

@@ -1,12 +1,12 @@
 // Behaviour test for 0x0080F240 CTCNymph::MakeSummonedCreaturesImmuneToTrap (model copy over a hand-built STLport list).
 #include <cstdio>
-struct CThing { int id; int immuneCount; };
+class CThing { public: int id; int immuneCount; };
 struct CIntelligentPointer { int vptr_slot; CThing* PData; CThing* GetPItem() const { return PData; } };
 struct Node { Node* next; Node* prev; CIntelligentPointer data; };
 struct List { Node* node; };
 static List g_list;
 static List& GetAllSummonedCreatures() { return g_list; }
-struct CTCTrapBase { int calls; CThing* last; void SetThingAsImmune(CThing& t) { ++calls; last = &t; ++t.immuneCount; } };
+class CTCTrapBase { public: int calls; CThing* last; void SetThingAsImmune(CThing& t) { ++calls; last = &t; ++t.immuneCount; } };
 static void make_immune_model(CTCTrapBase* trap)
 {
     List& creatures = GetAllSummonedCreatures();

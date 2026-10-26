@@ -2,13 +2,13 @@
 
 // Standalone behavior fixture for
 // CGameScriptInterface::SetQuestAsPersistent @ 0x00893020.
-struct CCharString
-{
+class CCharString
+{ public:
     const char* text;
 };
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void SetQuestAsPersistent(
         const CCharString& questName,
         bool persistent);

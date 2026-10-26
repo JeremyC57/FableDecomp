@@ -15,7 +15,7 @@
 // (`xor eax,eax ; sete al`, tested with `test eax,eax`). The handle is a named local (esi is reused for it after the
 // last use of `this`), tested signed (`jl`).
 struct CPooledResource;
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void FreeAllocation(long handle);         // 0x00C28690
 };
 struct CPooledResourceManager {

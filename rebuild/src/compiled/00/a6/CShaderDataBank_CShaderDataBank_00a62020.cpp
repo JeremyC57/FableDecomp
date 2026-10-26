@@ -7,7 +7,7 @@
 // Shape: the derived vtable store precedes the zero stores because the zeroed block is a member
 // object (a retail vector, first/last/end) with an inline constructor; the polymorphic member
 // is constructed after it in declaration order.
-struct CBankFile {
+class CBankFile { public:
     virtual void v00();
     unsigned char _body[0x10c];                 // +0x004..+0x10f
     CBankFile();                                // 0x009CD480
@@ -26,7 +26,7 @@ struct CShaderBankStateBlock {                  // vtable 0x0129D630
     CShaderBankStateBlock() { }
 };
 
-struct CShaderDataBank : CBankFile {            // vtable 0x0129D644
+class CShaderDataBank : public CBankFile { public:            // vtable 0x0129D644
     CRetailVector<void*>  m_shaders;            // +0x110
     CShaderBankStateBlock m_stateBlock;         // +0x11c
     virtual void v00();

@@ -15,12 +15,12 @@
 // pointer release, double null store).
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                                  // +0x00
     void (__fastcall* DeleteFunc)(void* data);               // +0x04
     void*         Data;                                      // +0x08
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Release()
@@ -42,7 +42,7 @@ template<class T> struct CCountedPointer {
     }
 };
 
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     void Release()
     {
@@ -62,20 +62,20 @@ template<class T> struct CIVCountedPointer {
 };
 
 class CBankFileAsyncData;
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void*         __vftable;                                 // +0x00
     unsigned char _pad04[0x25 - 4];
     bool          ShutdownFlag;                              // +0x25
 };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     void DiscardAsyncData(CCountedPointer<CBankFileAsyncData>& data);   // 0x009D67E0
 };
-struct CMeshDataBank : CBankFileAsync {
+class CMeshDataBank : public CBankFileAsync { public:
     unsigned char           _pad00[0x360];
     CHandleBasedMemoryPool* AnimationMemoryPool;             // +0x360 CCountedPointer<CMovableResourceMemoryPool>::Data
 };
 
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     class CAnimationData;
     void*                             __vftable;             // +0x00
     CMeshDataBank*                    PBank;                 // +0x04 the owning mesh data bank

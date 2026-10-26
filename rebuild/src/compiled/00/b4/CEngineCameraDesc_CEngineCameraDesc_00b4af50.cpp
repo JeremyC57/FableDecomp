@@ -6,16 +6,16 @@
 // Shape: `mov eax,ecx` (returns `this`), the window's four dwords through ecx alone (C2DBoxF has a user member-wise copy constructor: a POD
 // member copies through re-based esi/edi pointers instead), the 48-byte matrix as a `rep movsd` block (a POD member), the position's three
 // dwords through ecx (C3DVector's user copy constructor), then every scalar dword / byte through ecx/cl -- a member-wise copy constructor.
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF(const C2DBoxF& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m_elements[12];
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };

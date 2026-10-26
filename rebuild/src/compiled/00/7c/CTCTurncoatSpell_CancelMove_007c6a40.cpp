@@ -17,7 +17,7 @@
 //   `push ecx` frame slot; the component comes back through the out pointer (eax); a running ability other than 5
 //   returns early, the two clears share one zero register and the `[edi+20h] = 3` store is the common tail.
 // Leaf: ?CancelMove@CTCTurncoatSpell@@QAEXXZ
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -46,7 +46,7 @@ public:
     }
 };
 
-struct CTCSpecialAbilities {                // interface 0xA7
+class CTCSpecialAbilities { public:                // interface 0xA7
     unsigned char _pad00[0x0c];
     bool          AbilityMutexLock;         // +0x0c
     long          CurrentAbility;           // +0x10 EHeroAbility (5 = turncoat)

@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString() : p("") {}
     CCharString(const char* t, long = -1) : p(t) {}
@@ -28,20 +28,20 @@ static int FindLog(const char* s)
 }
 // Script timers: SetTime(t) at frame f reads back t - (frame - f).
 static long g_timerSet[8], g_timerAt[8]; static int g_ntimers = 0;
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() { Index = g_ntimers++; g_timerSet[Index] = 0; g_timerAt[Index] = g_frame; }
     void SetTime(long t) { g_timerSet[Index] = t; g_timerAt[Index] = g_frame; }
     long GetTime() const { return g_timerSet[Index] - (g_frame - g_timerAt[Index]); }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 // Things: an id into a small world table (health > 0 means alive).
 static float g_health[64];
 static C3DVector g_pos[64];
 static int g_nextThing = 10;
 static const char* g_data[64];
 static bool (*g_isHit)(int id, int kind, const char* by) = 0;
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     CScriptThing() : id(0) {}
     explicit CScriptThing(int i) : id(i) {}
@@ -62,7 +62,7 @@ inline CCharString operator+(const CCharString& a, const char* b) { return a + C
 template <class T> struct vector { T items[4]; T& operator[](unsigned int i) { return items[i]; } };
 inline bool operator==(const CCharString& a, const CCharString& b) { return std::strcmp(a.p, b.p) == 0; }
 static bool g_bScriptAnimationFlag = true;
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     int busyUntil; const char* anim; bool animUntilDone; const char* loop; int plays;
     CScriptGameResourceObjectScriptedThingBase() : busyUntil(0), anim(""), animUntilDone(false), loop(""), plays(0) {}
     void PlayAnimation(const CCharString& a, bool b1, bool b2, bool b3, bool waitDone, bool flag, bool b6, bool b7)
@@ -71,7 +71,7 @@ struct CScriptGameResourceObjectScriptedThingBase {
     { if (n == -1 && !b1 && !b2 && b3 && !b4 && flag && !b6 && !b7) loop = a.p; }
     bool IsPerformingScriptTask() { return g_frame < busyUntil; }
 };
-struct CConversation { long Lines; vector<CCharString> Speaker, Dialogue, Animation, AnimLoop; };
+class CConversation { public: long Lines; vector<CCharString> Speaker, Dialogue, Animation, AnimLoop; };
 static int g_convActiveUntil = 3, g_conv_n = 0, g_convSpeaker = -1, g_convPerson = -1, g_removed = -99, g_removedFrame = -1;
 static const char* g_convLine = "";
 struct GameCalls {

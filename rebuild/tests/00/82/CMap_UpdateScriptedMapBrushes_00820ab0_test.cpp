@@ -5,7 +5,7 @@ struct Area { float TimeLeft; int name; };
 static int g_fps = 4;
 static Brush g_brush = { 2.0f };
 static float g_progress[8]; static int g_applied = 0;
-struct CMap {
+class CMap { public:
     Area areas[8]; Area* start; Area* finish;
     Brush* GetScriptedMapBrush(int) { return &g_brush; }
     void Apply(float p, Brush*) { g_progress[g_applied++] = p; }

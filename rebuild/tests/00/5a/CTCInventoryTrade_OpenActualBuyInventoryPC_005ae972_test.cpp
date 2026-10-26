@@ -1,7 +1,7 @@
 // Behaviour test for 0x005AE972 CTCInventoryTrade::OpenActualBuyInventoryPC
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     bool operator==(const char* text) const
     {

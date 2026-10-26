@@ -11,7 +11,7 @@ struct vector_float {                                  // STLport vector<float> 
     float* _M_end_of_storage;
     float& operator[](long n) { return *(_M_start + n); }
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad000[0x260];
     vector_float  AbilityButtonsAlpha;                   // +0x260
     vector_float  QuickAccessButtonsAlpha;               // +0x26c

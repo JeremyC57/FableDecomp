@@ -6,7 +6,7 @@ struct FakeObj {
     void** vtbl;   // +0x00
 };
 
-struct CGuiWindow {
+class CGuiWindow { public:
     char pad0[4];
     FakeObj* m_obj;   // +0x04
     char pad1[0x44];

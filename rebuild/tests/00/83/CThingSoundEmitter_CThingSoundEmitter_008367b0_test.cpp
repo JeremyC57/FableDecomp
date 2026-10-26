@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     virtual void v000() {}
     unsigned long m_type; bool m_killOnUnload;
     CThing(unsigned long thingType) : m_type(thingType), m_killOnUnload(true) {}
     void SetToKillOnLevelUnload(bool kill) { m_killOnUnload = kill; }
 };
-struct CEngine {
+class CEngine { public:
     bool m_persistent;
     virtual bool IsLevelPersistent() { return m_persistent; }
 };
@@ -15,13 +15,13 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) {}
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() {}
     virtual void v000() {}
 };
 struct CSoundPlayer;
-struct C3DVector { float x, y, z; };
-struct CThingSoundEmitter : CThing {
+class C3DVector { public: float x, y, z; };
+class CThingSoundEmitter : public CThing { public:
     CSoundPlayer*               m_pSoundPlayer;
     bool                        AttachedToThing;
     CIntelligentPointer<CThing> PAttachedThing;

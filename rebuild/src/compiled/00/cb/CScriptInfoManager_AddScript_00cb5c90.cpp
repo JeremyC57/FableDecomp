@@ -116,7 +116,7 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __positio
 }
 
 template <class K, class V>
-struct CKeyPairCompareLess { };
+class CKeyPairCompareLess { public: };
 
 template <class K, class V, class C>
 class CVectorMap : public std::vector<std::pair<K, V> > {

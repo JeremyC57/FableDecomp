@@ -2,8 +2,8 @@
 // Standard MSVC7.1 vector deleting destructor thunk:
 //   this->~T(); if (flags & 1) operator delete(this); return this;
 
-struct CInputProcessInventoryTradeScreen
-{
+class CInputProcessInventoryTradeScreen
+{ public:
     void Destroy();  // scalar destructor body @ 0xa0d3d0 (this in ecx)
 };
 

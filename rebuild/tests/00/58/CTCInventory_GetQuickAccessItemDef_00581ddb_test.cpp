@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for CTCInventory::GetQuickAccessItemDef (retail 0x00581DDB).
-struct CInventoryItemDef { long id; };
+class CInventoryItemDef { public: long id; };
 static CInventoryItemDef g_defs[300];
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* p) : Object(p) { }
@@ -17,7 +17,7 @@ struct CLongVector {
     unsigned long size() const { return (unsigned long)(last - first); }
     long& operator[](unsigned long n) { return first[n]; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CLongVector QuickAccessItems;
     CLongVector ContextSensitiveItems;
     long GetQuickAccessItem(unsigned long index)

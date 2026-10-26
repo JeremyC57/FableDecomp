@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_FodderSecondaryAttack {
+class CCreatureAction_FodderSecondaryAttack { public:
     void* vftable;
     int destroyed;
 };

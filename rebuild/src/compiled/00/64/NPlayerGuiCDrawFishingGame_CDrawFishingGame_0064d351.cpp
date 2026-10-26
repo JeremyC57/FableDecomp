@@ -9,7 +9,7 @@
 // constructor @ 0x0064CC65 and installs this class's vtable (0x0125A580, named through
 // rtti-vtables.tsv). Argument types follow the base constructor's manifest prototype. One of
 // 10 bodies of this shape.
-struct CPlayerGui;
+class CPlayerGui;
 
 struct CDrawBase {
     virtual void v00();

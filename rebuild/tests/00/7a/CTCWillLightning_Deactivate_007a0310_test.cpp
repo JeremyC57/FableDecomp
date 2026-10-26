@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CBeam { long state; void* player; void Deactivate(void* p) { state = 5; player = p; } };
 struct Node { Node* next; CBeam* beam; };
-struct CTCWillLightning {
+class CTCWillLightning { public:
     float time, timeBase; Node head; long state; int player;
     void Deactivate() {
         if (state == 3 || state == 2 || state == 1) {

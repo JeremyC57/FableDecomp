@@ -8,13 +8,13 @@
 // Layout: Orientation +0x174, RotationAxis +0x18c, RotationSpeed +0x198 (Ego_r.pdb CMesh offsets minus 0x30, as SetOrientation
 // 0x00550BE0).
 // Shape: `fld dt ; fmul speed` is `RotationSpeed * deltaTime`; the float argument is stored into its pushed slot.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     void RotateAboutAxis(const C3DVector& axis, float angle);   // 0x00A22F80

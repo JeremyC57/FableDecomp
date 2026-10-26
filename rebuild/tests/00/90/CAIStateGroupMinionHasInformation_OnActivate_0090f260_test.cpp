@@ -1,7 +1,7 @@
 #include <cstdio>
 static long g_frame = 77;
 long GFGetCurrentFrame() { return g_frame; }
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
 struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
     long LastFrameWaved, LastFrameWandered, FrameInitialised, WavesWithoutCalling;
     virtual void OnActivate();

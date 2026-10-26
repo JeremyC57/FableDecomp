@@ -6,8 +6,8 @@
 // push esi; mov esi,ecx; mov eax,[esi+0x3c]; test eax,eax; je skip;
 //   push eax; call <free>; pop ecx; skip: mov ecx,esi; pop esi; jmp <base::OnDie>
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     char pad[0x3c];
     void* m_ptr;   // +0x3c
 };

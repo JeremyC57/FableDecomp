@@ -8,22 +8,22 @@
 // the component's position is the C3DVector at +0x0C.
 // Shape: an absent component returns the byte constant (`xor al,al`); the float compare materialises an int
 // (`mov eax,1` / `xor eax,eax`); Range is read into a local first (retail loads it before the deltas).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*     __vftable;
     unsigned char _pad04[8];
     C3DVector m_position;                           // +0x0c
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
 };
 
-struct CThingFilter_In3DRange {
+class CThingFilter_In3DRange { public:
     C3DVector Pos;                                  // +0x00
     float     Range;                                // +0x0c
     bool operator()(CThing* thing) const;

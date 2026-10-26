@@ -10,8 +10,8 @@
 // grow path together with the empty SScalarTag temporary.
 #include <new>
 
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {                     // 8 bytes: vptr, item block
     void* m_vtable;
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {                     // 8 bytes: vptr, item bloc
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -73,7 +73,7 @@ __declspec(noinline) void CRetailVector<T>::InsertGrow(T* where, const T& value,
 }
 #pragma auto_inline(on)
 
-struct CTCFollowed {
+class CTCFollowed { public:
     void*                                         m_vtable;     // +0x00
     CThing*                                       m_pThing;     // +0x04
     unsigned char                                 m_pad08[0x04];

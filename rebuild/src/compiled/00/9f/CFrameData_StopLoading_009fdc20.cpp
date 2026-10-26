@@ -17,7 +17,7 @@ struct SCountBlock {
     void* m_pObject;                       // +8
 };
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished();                     // 0x009D54E0
 };
 
@@ -38,10 +38,10 @@ struct CCountedPointer_BankFileAsyncData {
     }
 };
 
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     long Sizeof();                         // 0x009FCBF0
 };
-struct CManagedTexture {
+class CManagedTexture { public:
     long  m_0;
     void* m_pData;                         // +0x04
     bool HasData() const { return m_pData != 0; }

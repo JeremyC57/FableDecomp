@@ -9,7 +9,7 @@
 // float at +0x588 is the delay in seconds before the box shrinks to mini mode (retail offset; the PDB def has wider vectors).
 // Shape: frame-pointer size TU; the zero for MiniMode shares ecx with the `display` test (`xor ecx,ecx ; cmp [ebp+8],cl`);
 // the frame rate is read into a long local BEFORE the def call, and VC homes it in the dead `display` slot for the `fild`.
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x588];
     float         QuestInfoMiniModeDelaySeconds;   // +0x588
 };
@@ -19,7 +19,7 @@ extern long g_framesPerSecond;                     // 0x01375550
 
 namespace NPlayerGui {
 
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     unsigned char _base[0x28];                     // CDrawBase (vptr, GUI pointers, Drawing, primitive handles)
     long          GuiMode;                         // +0x28 (EPlayerGuiMode)
     float         FadeInTimer;                     // +0x2c

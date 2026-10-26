@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CSoundPair {
+class CSoundPair { public:
     unsigned long a;
     unsigned long b;
 };

@@ -19,7 +19,7 @@ struct CDefCountedBase {                        // counted def: vtable +0, refer
 };
 
 template <class T>
-struct CDefPointer {                            // 4-byte intrusive pointer
+class CDefPointer { public:                            // 4-byte intrusive pointer
     CDefCountedBase* Object;                    // +0x00
     CDefPointer(const CDefPointer& other) : Object(other.Object)
     {
@@ -28,10 +28,10 @@ struct CDefPointer {                            // 4-byte intrusive pointer
     }
 };
 
-struct CTextureReplacementDef;
+class CTextureReplacementDef;
 
 namespace CTCHeroAttachableAppearanceModifiers {
-struct CModifierGraphic {                       // Ego_r.pdb, 12 bytes
+class CModifierGraphic { public:                       // Ego_r.pdb, 12 bytes
     CDefPointer<const CTextureReplacementDef> PTextureReplacement;   // +0x00
     long  BankIndex;                            // +0x04
     float RenderSizeX;                          // +0x08

@@ -3,19 +3,19 @@
 #include <cstring>
 
 static char g_lastFind[64];
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long) : text(t) {}
     CCharString(const CCharString& o) : text(o.text) {}
     ~CCharString() {}
 };
 namespace NUISystem {
-struct CObserver { int events[4]; int eventCount; void ObserveEvent(long e) { events[eventCount++] = (int)e; } };
-struct CComponent;
+class CObserver { public: int events[4]; int eventCount; void ObserveEvent(long e) { events[eventCount++] = (int)e; } };
+class CComponent;
 struct CComponentBase { CComponent* child; bool active; CComponent* FindChild(CCharString name) { std::strcpy(g_lastFind, name.text); return child; } void SetActive_slot48(bool a) { active = a; } };
-struct CComponent : CComponentBase, CObserver { };
-struct CYesNo : CComponent { };
-struct CManager {
+class CComponent : public CComponentBase, public CObserver { public: };
+class CYesNo : public CComponent { public: };
+class CManager { public:
     CObserver* released[8]; int releasedCount; CObserver* added;
     void AddObserver(CObserver* o) { added = o; }
     void ReleaseObserver_0055ca00(CObserver* o) { released[releasedCount++] = o; }
@@ -45,15 +45,15 @@ public:
         return false;
     }
 };
-struct CTCInventory { int reverts; void RevertVideoChanges() { ++reverts; } };
+class CTCInventory { public: int reverts; void RevertVideoChanges() { ++reverts; } };
 static int g_order[8]; static int g_orderCount = 0;
-struct CUserProfileManager {
+class CUserProfileManager { public:
     bool DisplayDialogOnOptionsChanged;
     void Apply() { g_order[g_orderCount++] = DisplayDialogOnOptionsChanged ? 11 : 10; }
     void Save() { g_order[g_orderCount++] = DisplayDialogOnOptionsChanged ? 21 : 20; }
     static CUserProfileManager& Get() { static CUserProfileManager m = { true }; return m; }
 };
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     CThing* ParentThing;
     NUISystem::CYesNo* PVideoOptionsNotAcceptedDialog;
     NUISystem::CComponent* PMousePointer;

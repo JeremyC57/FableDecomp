@@ -13,14 +13,14 @@
 // with no zero store (dead local).
 // Layout: retail CThing (+0x20 component bitset, +0x70 PBaseDef object word, +0x91 bit 0 Dead); CTCBase +4 ParentThing.
 class CThing;
-struct CDefClassBase;
+class CDefClassBase;
 struct CPickUpDef {
     virtual void v00();
     virtual void Destroy();                        // slot 1 (+0x04)
     long RefCount;                                 // +0x04
     void ReleaseTemporary() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) {}
     ~CDefPointer()
@@ -29,7 +29,7 @@ template <class T> struct CDefPointer {
             Data->Destroy();
     }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CPickUpDef>* out) const;     // 0x005CC10E
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below

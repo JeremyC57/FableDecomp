@@ -14,7 +14,7 @@
 //        SetPVillage argument.
 class CTCBase;
 class CThing;
-struct CTCVillage;
+class CTCVillage;
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
@@ -55,11 +55,11 @@ struct CThingList {                             // retail std::list<CIntelligent
     void push_back(const CIntelligentPointer& value);   // 0x004BA4E0
 };
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     void SetPVillage(CTCVillage* village);      // 0x007EE270
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad_0x00[0x30];
     CThingList    VillageTorches;               // +0x30
     void AddTorchToVillage(CThing* torch);

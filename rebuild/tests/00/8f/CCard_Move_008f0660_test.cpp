@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CCard {
+class C3DVector { public: float X, Y, Z; };
+class CCard { public:
     float MoveFraction; bool Moving; C3DVector LocalPos, NewLocalPos, CurrentPos;
     void Move(const C3DVector& position, bool immediately)
     {

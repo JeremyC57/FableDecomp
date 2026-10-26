@@ -1,10 +1,10 @@
 // Behaviour test for 0x00B949A0 CEngineSceneMap::Initialise: fields stored, one grid level holding a new top-level grid.
 #include <cstdio>
 
-struct CEngineScene { int id; };
-struct CEngineSceneGrid { CEngineSceneGrid* LevelUp; CEngineSceneGrid(CEngineSceneGrid* up) : LevelUp(up) {} };
-struct C2DBoxF { float MinX, MinY, MaxX, MaxY; };
-template <class T> struct CCountedPointer {
+class CEngineScene { public: int id; };
+class CEngineSceneGrid { public: CEngineSceneGrid* LevelUp; CEngineSceneGrid(CEngineSceneGrid* up) : LevelUp(up) {} };
+class C2DBoxF { public: float MinX, MinY, MaxX, MaxY; };
+template <class T> class CCountedPointer { public:
     T* m_pObject; long* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
     void Reset(T* o) { m_pObject = o; }
@@ -14,7 +14,7 @@ template <class T> struct CRetailArray {
     void resize(unsigned int count, const T& value) { first = storage; for (unsigned int i = 0; i < count; ++i) storage[i] = value; last = first + count; end_of_storage = storage + 4; }
     T& operator[](unsigned int n) { return first[n]; }
 };
-struct CEngineSceneMap {
+class CEngineSceneMap { public:
     C2DBoxF Area; unsigned long MaxLevels; CRetailArray<CCountedPointer<CEngineSceneGrid> > GridLevels; CEngineScene* Scene;
     void Initialise(CEngineScene* scene, unsigned long maxLevels, const C2DBoxF& area)
     {

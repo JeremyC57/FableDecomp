@@ -1,9 +1,9 @@
 // Behaviour test for CTCPhysicsControlled::GetPossibleCollidedWithArea (0x00725A30).
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     void ValidateOrientationAndFlip()
@@ -12,7 +12,7 @@ struct C2DBoxI {
         if (BottomRight.Y < TopLeft.Y) { long t = TopLeft.Y; TopLeft.Y = BottomRight.Y; BottomRight.Y = t; }
     }
 };
-struct CThing { unsigned long UsingComponents[9]; };
+class CThing { public: unsigned long UsingComponents[9]; };
 
 template <class T> inline T Min(T a, T b) { return a < b ? a : b; }
 template <class T> inline T Max(T a, T b) { return a > b ? a : b; }

@@ -14,7 +14,7 @@
 //   the OverrideWindDirection argument pushes.
 extern unsigned long g_InvSqrtMantissaTable[128];       // 0x013CE558
 
-struct C3DVector {
+class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     float Z;    // +0x08
@@ -38,7 +38,7 @@ struct C3DVector {
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                         // 0x0099E4B0
     ~CCharString();                                        // 0x0099EAE0
@@ -51,8 +51,8 @@ struct CPhysicsBody {                                      // the thing's physic
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing();                         // slot 70 (+0x118)
 };
-struct CCreatureActionBase;
-struct CThing {
+class CCreatureActionBase;
+class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* PhysicsBody;                             // +0x60
     unsigned char _pad64[0x91 - 0x64];
@@ -60,25 +60,25 @@ struct CThing {
     const C3DVector& GetPosition() const;                  // 0x004C73D0
     bool IsDead() const { return (StateBits & 1) != 0; }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-struct CCreatureActionBase { };
-struct CCombatActionBase : CCreatureActionBase {
+class CCreatureActionBase { public: };
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _body[0x11c];
     ~CCombatActionBase();                                  // 0x0062E900
 };
-struct CCreatureAction_DragonFlight : CCombatActionBase {
+class CCreatureAction_DragonFlight : public CCombatActionBase { public:
     CCreatureAction_DragonFlight(CThingCreatureBase* creature, const CCharString& animation);   // 0x008F4CB0
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPPlayerCharacter() const;                   // 0x00487DC0
 };
-struct CEnvironment {
+class CEnvironment { public:
     void OverrideWindDirection(const C3DVector& direction, float speed);   // 0x006B2B10
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x18];
     CEnvironment* Environment;                             // +0x18
     CPlayer* PeekMyPlayer() const;                         // 0x0049D9D0

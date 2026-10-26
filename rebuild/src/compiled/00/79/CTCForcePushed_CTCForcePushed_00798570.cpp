@@ -16,7 +16,7 @@ class CThing;
 class CBaseObject;
 class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -63,7 +63,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() {}
 };

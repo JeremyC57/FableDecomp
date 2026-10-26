@@ -15,7 +15,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -42,7 +42,7 @@ struct CDataInputStream {
     __forceinline float ReadFloat() { float v; Read(&v, sizeof(v)); return v; }
 };
 
-struct CExplosionRing {
+class CExplosionRing { public:
     float RingRadius;                      // +0x00
     long  NumExplosions;                   // +0x04
     float AngleOffset;                     // +0x08

@@ -58,7 +58,7 @@ template <class T> struct vector : _Vector_base<T> {
     }
 };
 }
-template <class T> struct CArray : std::vector<T> {
+template <class T> class CArray : public std::vector<T> { public:
     void Clear()
     {
         if (this->capacity() != 0) {

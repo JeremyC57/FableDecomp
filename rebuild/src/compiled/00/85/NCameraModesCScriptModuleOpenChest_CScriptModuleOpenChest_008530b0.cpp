@@ -13,8 +13,8 @@
 // Rad +0x74, Height +0x78, DeltaTheta +0x7c, DeltaRad +0x80, DeltaHeight +0x84, AxisX +0x88, AxisY +0x94.
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -28,7 +28,7 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
     CIntelligentPointer_CThingConst(const CThing* thing) : CBaseIntelligentPointer() { SetPItem((const CBaseObject*)thing); }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptModuleBase {
     virtual void v00();

@@ -73,8 +73,8 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct CPersistContext { int id; };
-struct CStringParser { int value; };
+class CPersistContext { public: int id; };
+class CStringParser { public: int value; };
 enum EInputKey { KEY_NONE = 0 };
 static void TransferIn(CPersistContext* context, CStringParser* parser, long* value) { *value = parser->value + context->id; }
 struct Traits { void TransferIn(CPersistContext* context, CStringParser* parser, EInputKey* value)

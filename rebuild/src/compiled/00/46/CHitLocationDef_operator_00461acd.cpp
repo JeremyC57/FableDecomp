@@ -12,7 +12,7 @@
 // arguments right to left). The init record and the pointer need written __forceinline operator=s: the implicit one is
 // emitted out of line because its member has a user assignment, and a size TU out-lines plain inline ones. Enums/longs are dword moves, bools byte moves, in declaration order.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -20,7 +20,7 @@ struct CParentDefClassBase {
 #pragma pack(pop)
 
 struct CPhysicalPrimitiveBase;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 struct CPhysicalPrimitivePointer {      // CCountedPointer<NHitLocations::CPhysicalPrimitiveBase> (8 bytes)
     CPhysicalPrimitiveBase* Data;
@@ -33,7 +33,7 @@ struct CPhysicalPrimitivePointer {      // CCountedPointer<NHitLocations::CPhysi
     }
 };
 
-struct CPhysicalPrimitiveInit {         // 8 bytes
+class CPhysicalPrimitiveInit { public:         // 8 bytes
     CPhysicalPrimitivePointer PPrimitive;
     __forceinline CPhysicalPrimitiveInit& operator=(const CPhysicalPrimitiveInit& other)
     {
@@ -42,7 +42,7 @@ struct CPhysicalPrimitiveInit {         // 8 bytes
     }
 };
 
-struct CHitLocationDef : CParentDefClassBase {  // vtable 0x01234B54
+class CHitLocationDef : public CParentDefClassBase { public:  // vtable 0x01234B54
     CPhysicalPrimitiveInit PhysicalPrimitive;   // +0x3c
     long Armour;                                // +0x44
     long HitResponseAction;                     // +0x48 EActionRegisteredType

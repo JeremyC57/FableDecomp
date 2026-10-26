@@ -1,8 +1,8 @@
 // Behaviour test for CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable (0x0095D590): same logic over mocks.
 #include <cstdio>
 #include <cstdlib>
-struct C3DVector { float x, y, z; };
-struct CThing { bool dead; C3DVector pos; CThing* reservedBy; CThing() : dead(false), reservedBy(0) { pos.x = pos.y = pos.z = 0; } };
+class C3DVector { public: float x, y, z; };
+class CThing { public: bool dead; C3DVector pos; CThing* reservedBy; CThing() : dead(false), reservedBy(0) { pos.x = pos.y = pos.z = 0; } };
 static float Dist2(const C3DVector& a, const C3DVector& b) { float dx = a.x - b.x, dy = a.y - b.y, dz = a.z - b.z; return dx * dx + dy * dy + dz * dz; }
 struct CThingVector {
     CThing** _M_start; CThing** _M_finish; CThing** _M_end_of_storage;

@@ -5,7 +5,7 @@ static int g_mapCopies = 0, g_vecCopies = 0;
 struct CAttackerMap { int n; CAttackerMap() : n(3) {} CAttackerMap(const CAttackerMap& o) : n(o.n) { ++g_mapCopies; } };
 struct CCombatRingVector { int n; CCombatRingVector() : n(2) {} CCombatRingVector(const CCombatRingVector& o) : n(o.n) { ++g_vecCopies; } };
 struct CCombatWheel { CCombatRingVector CombatRings; };
-struct C3DVector { unsigned int X, Y, Z; C3DVector() : X(1), Y(2), Z(3) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
+class C3DVector { public: unsigned int X, Y, Z; C3DVector() : X(1), Y(2), Z(3) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
 struct CIntelligentPointer { void* m_p; CIntelligentPointer() : m_p(0) {} CIntelligentPointer(const CIntelligentPointer& o) : m_p(0) { m_p = o.m_p; } };
 struct CDefPointee { int m_refCount; };
 struct CDefPointer { CDefPointee* Object; CDefPointer() : Object(0) {} CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; } };

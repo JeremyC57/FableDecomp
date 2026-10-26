@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMap {
+class CMap { public:
     char pad[0x1d08];
     float seaLevel; // +0x1d08
 };

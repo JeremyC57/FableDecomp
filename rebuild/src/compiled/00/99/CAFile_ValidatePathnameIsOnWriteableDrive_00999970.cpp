@@ -15,8 +15,8 @@ typedef unsigned short wchar16;          // wchar_t is not a built-in type under
 
 extern "C" void __cdecl _splitpath(const char* path, char* drive, char* dir, char* fname, char* ext);   // 0x00BFED52
 
-struct CWideStringData;
-struct CCharStringData;
+class CWideStringData;
+class CCharStringData;
 class CCharString
 {
 public:

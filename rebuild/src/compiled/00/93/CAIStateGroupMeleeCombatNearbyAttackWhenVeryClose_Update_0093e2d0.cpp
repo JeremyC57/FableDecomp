@@ -12,15 +12,15 @@
 // the enemy pointer address stays in ebx, zero in ebp (also the `false` of the final SetAttackerAsReadyToAttack).
 // Layout: engine/CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h flattens the base, and the function makes virtual
 // calls through slots 14/15, so the class is modelled locally (PBrain +0x04, PEnemy +0x14).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CCombatManager;
-struct CThing {
+class CCombatManager;
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -55,7 +55,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct SCountBlock {                            // the shared count block of a CCountedPointer
     long m_references;                          // +0x00
     void (__fastcall* m_pfnDestroy)(CCreatureActionBase*);   // +0x04
@@ -90,15 +90,15 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
         m_pObject = object;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CNavigationInput {                       // 24 bytes (Ego_r.pdb): Destination is left to the caller
+class C3DVector { public: float X, Y, Z; };
+class CNavigationInput { public:                       // 24 bytes (Ego_r.pdb): Destination is left to the caller
     C3DVector Destination;                      // +0x00
     float Proximity;                            // +0x0c (float zero stores are immediates, the long uses the zero register)
     long MovementType;                          // +0x10 EMovementType
     float Speed;                                // +0x14
     CNavigationInput() : Proximity(0.0f), MovementType(0), Speed(0.0f) { }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long                       Types;            // +0x00
     long                                LookFlags;        // +0x04
     CNavigationInput                    NavigationInput;  // +0x08
@@ -137,27 +137,27 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void Refresh();                     // slot 9 (+0x24, descriptive)
 };
-struct CCombatManager {
+class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
     void SetAttackerAsReadyToAttack(CThing* creature, bool ready);         // 0x006EA450
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                       // slot 2 (+0x08)
     unsigned char _pad04[0x14];
     CThing* PCreature;                          // +0x18
     void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

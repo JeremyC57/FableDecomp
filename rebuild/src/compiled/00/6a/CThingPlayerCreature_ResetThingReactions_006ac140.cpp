@@ -15,7 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                                   // +0x04
@@ -24,13 +24,13 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item);                       // 0x00A01B90
     CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7D8 for CThing
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7D8 for CThing
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
     virtual void v00();
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags;                                  // +0x91 (bit 2 active, 3 in world, 0 dead, 5 limbo)
     unsigned char _pad92[0xf4 - 0x92];
@@ -69,8 +69,8 @@ struct CThingList {                                         // STLport list<CThi
     }
 };
 
-struct CThingFilter_None { CThingFilter_None() { } };
-struct CThingSearchTools {
+class CThingFilter_None { public: CThingFilter_None() { } };
+class CThingSearchTools { public:
     CThingList* GetThingList(long type);                    // 0x0049C780
     void GetAllLeafThings(const CThingFilter_None& filter, CThingList& out);   // 0x006AE830
 };
@@ -96,7 +96,7 @@ void CThingSearchTools::GetAllLeafThings(const CThingFilter_None&, CThingList& o
 }
 #pragma auto_inline(on)
 
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     CThingSearchTools* GetThingSearchTools();               // 0x004C7A50
     void ResetThingReactions();
 };

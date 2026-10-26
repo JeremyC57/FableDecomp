@@ -11,8 +11,8 @@
 // at +0xb8 / +0xbc (Ego_r.pdb +0xc8 / +0xcc less 0x10: four retail 12-byte vectors before them).
 // Shape: the building pointers are assigned from temporaries (as SetupFromVillager); the UIDs are modelled as two words (an
 // __int64 member pads the vptr to 8); the random wait is the inline LCG + GFROR13 with a zero-range guard.
-struct CBaseObject;
-struct CThingBuilding;
+class CBaseObject;
+class CThingBuilding;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     void SetPItem(CBaseObject* item);                       // 0x00A01B90
     CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
@@ -34,7 +34,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 
-template<class T> struct CDefPointer;
+template<class T> class CDefPointer;
 class CDefClassBase {
 public:
     virtual void v00();
@@ -47,7 +47,7 @@ public:
     }
     template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x00485815 for CCreatureDef
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -94,12 +94,12 @@ struct CGameClock {
     unsigned char _pad00[0x14];
     long Day;                                               // +0x14
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x1c];
     CGameClock* Clock;                                      // +0x1c
 };
 
-struct CTCDummyVillager {
+class CTCDummyVillager { public:
     virtual void v00();
     void*                                 ParentThing;      // +0x04 (CTCBase)
     unsigned char                         _pad08[0x4];

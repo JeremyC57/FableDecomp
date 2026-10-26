@@ -1,5 +1,5 @@
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char m_Pad00[0x04];
     long m_Length; // 0x04
 };

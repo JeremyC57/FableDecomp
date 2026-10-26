@@ -6,8 +6,8 @@ struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
 struct CDefinitionManager_Retail;
-struct CWorld;
-struct CCharString;
+class CWorld;
+class CCharString;
 class CScriptThing;
 struct CDefPointer_Retail;
 struct CTCBase_Retail;
@@ -82,7 +82,7 @@ class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThi
 public:
     static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent_Retail*  Component;          // +0x08

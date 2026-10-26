@@ -8,7 +8,7 @@
 // Layout (retail, the landed ctor 0x008E1580): FlameActive +0xbc; the type-9 component's flag +0x10.
 // Shape: the GetInterface result is not tested: the absent path joins with the never-written out variable (`mov eax,[esp+4]`)
 //   before the single flag store.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44

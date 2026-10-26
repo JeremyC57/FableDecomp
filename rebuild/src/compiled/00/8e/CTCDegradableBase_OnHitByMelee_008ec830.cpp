@@ -10,10 +10,10 @@
 // 0x008EC830 OnHitByMelee (slot 28); the two bodies are byte-identical.
 // Shape: `ret 0Ch` (three arguments, the attacker unused); the two references are re-pushed from the
 // caller's slots around the vtable load; a plain call (the callee pops 8, the caller 12: no sibling jump).
-struct C3DVector;
-struct CThing;
+class C3DVector;
+class CThing;
 
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

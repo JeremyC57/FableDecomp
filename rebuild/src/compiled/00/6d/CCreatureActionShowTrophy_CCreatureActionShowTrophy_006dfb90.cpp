@@ -5,7 +5,7 @@
 // CIntelligentPointer copy constructor of the landed 0x0084C070 shape, vtable 0x01238C6C). Own vtable 0x0125F7B4.
 // Shape: memberwise copy in declaration order; the second pointer sits at the unaligned +0xb5 (the class is packed to 1, see the
 // constructor 0x006DF730), the flag byte is copied through cl. Each pointer member's address rides in ebx. `ret 4`.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -19,14 +19,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01238
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
 };
 
 #pragma pack(push, 1)
-struct CCreatureAction_ShowTrophy : CCreatureActionBase {      // vtable 0x0125F7B4; retail sizeof 0xbd
+class CCreatureAction_ShowTrophy : public CCreatureActionBase { public:      // vtable 0x0125F7B4; retail sizeof 0xbd
     CIntelligentPointer PTrophy;            // +0xa8 CIntelligentPointer<CThing>
     long TrophyState;                       // +0xb0
     unsigned char Shown;                    // +0xb4

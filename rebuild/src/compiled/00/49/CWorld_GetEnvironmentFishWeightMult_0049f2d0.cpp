@@ -7,7 +7,7 @@
 // Shape: GetDef is a same-TU noinline stand-in body that fills the raw, null-initialised def pointer through `T*&`
 // (writes only the out slot), so the def stays in edi and the dead out slot's word is reused for the fild temporaries
 // (0x14 frame); the def is released by hand at the end of each iteration.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
@@ -23,11 +23,11 @@ struct CDefBase : CDefVirtual {
             Destroy();
     }
 };
-struct CEnvironmentThemeDaySetDef : CDefBase {
+class CEnvironmentThemeDaySetDef : public CDefBase { public:
     unsigned char _pad08[0x68 - 0x08];
     float FishWeightMult;                          // +0x68 (Ego_r.pdb +0x70)
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     template <class T> bool GetDef(long index, T*& out);   // 0x004ABA00 (CEnvironmentThemeDaySetDef instantiation)
 };
 void* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
@@ -41,27 +41,27 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long ind
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
-struct CGameMapCell {
+class CGameMapCell { public:
     unsigned char AtmosThemes[3];                  // +0x00
     unsigned char AtmosBlends[2];                  // +0x03
     signed char   SoundTheme;                      // +0x05
     unsigned char Music;                           // +0x06
     unsigned char GetAtmosBlend(long index) const; // 0x006B74E0
 };
-struct CWorldMap {
+class CWorldMap { public:
     const CGameMapCell* GetPGameMapCellAt(const C3DVector& pos) const;   // 0x0063D8A0
 };
-struct CEnvironment {
+class CEnvironment { public:
     void* __vftable;
     void* DefinitionManager;                       // +0x04
     unsigned char _pad08[8];
     long  RegionTheme;                             // +0x10
     long GetGlobalEnvironmentThemeIndexFromLocal(long localIndex);   // 0x006B2C60
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();

@@ -7,7 +7,7 @@
 // Tiny-body shape `IsSet` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CASuspendableProcess {
+class CASuspendableProcess { public:
     unsigned char _pad[0x3a];
     unsigned char m_value;                 // +0x3a
     unsigned char CheckTermination();                   // a byte result: a `bool` return would zero eax first

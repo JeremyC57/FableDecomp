@@ -6,13 +6,13 @@
 // C2DCoordI return (the user constructor forces the hidden-pointer return). Constructor
 // arguments are evaluated right to left (Y converted first, kept in edi, then X), and the
 // Y store precedes the X store.
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;     // +0x00
     long Y;     // +0x04
     C2DCoordI(long x, long y) : X(x), Y(y) {}
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     C2DCoordI ToC2DCoordI() const;

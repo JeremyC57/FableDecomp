@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { unsigned char m_flags91; void* owner; };
-struct CTCAIScratchpad { const char* TableName; const char* SeatName; };
+class CThing { public: unsigned char m_flags91; void* owner; };
+class CTCAIScratchpad { public: const char* TableName; const char* SeatName; };
 static CThing* g_marker;
 static long g_frame, g_placed;
 static bool g_runnable, g_placeOk;

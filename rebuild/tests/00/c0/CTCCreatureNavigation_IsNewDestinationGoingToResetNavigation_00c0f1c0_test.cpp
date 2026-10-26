@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 
 struct Helper {
     virtual bool m07(CTCCreatureNavigation* nav, C3DVector* dest) = 0;
@@ -17,7 +17,7 @@ struct HelperImpl : Helper {
     }
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* field_0;
     Helper* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest) {

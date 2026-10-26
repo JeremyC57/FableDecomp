@@ -64,10 +64,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     long                   f4;                               // +0x04 retail-only long (previous header)
     unsigned char          _pad_0x08[0x4];                   // +0x08
@@ -94,16 +94,16 @@ FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, LODDataSizes) == 0x50);
 
 #endif // FABLE_ENGINE_C3DMESHINFO_H
 
-struct C4DVector;struct CSubsectionElement;
-struct C3DBoundingBox { C3DBoundingBox(); // PDB02cfbc90 default constructor
+class C4DVector;struct CSubsectionElement;
+class C3DBoundingBox { public: C3DBoundingBox(); // PDB02cfbc90 default constructor
  float MinX,MinY,MinZ,MaxX,MaxY,MaxZ;
  C3DBoundingBox(const C3DBoundingBox& b):MinX(b.MinX),MinY(b.MinY),MinZ(b.MinZ),MaxX(b.MaxX),MaxY(b.MaxY),MaxZ(b.MaxZ){}
 };
-struct C3DBoundingSphere { C3DBoundingSphere(); // PDB02d3eb90 default constructor
+class C3DBoundingSphere { public: C3DBoundingSphere(); // PDB02d3eb90 default constructor
  float X,Y,Z,Radius;
  C3DBoundingSphere(const C3DBoundingSphere& s):X(s.X),Y(s.Y),Z(s.Z),Radius(s.Radius){}
 };
-struct CEngineFadeDistance { float FadeStart,FadeEnd; CEngineFadeDistance(float s,float e):FadeStart(s),FadeEnd(e){} };
+class CEngineFadeDistance { public: float FadeStart,FadeEnd; CEngineFadeDistance(float s,float e):FadeStart(s),FadeEnd(e){} };
 struct CollectionType { void* vtable;C3DMeshInfo *Mesh,*ZSpriteMesh,*ShadowMesh;long MeshPolyCount,MeshBankIndex,ZSpriteMeshBankIndex,ShadowMeshBankIndex;
  float FadeStart,FadeEnd;long AlphaRef;float AlphaMipBias,WindSkewConstantFactor,WindSkewRandomFactor,WindSkewSpeedFactor,ZSpriteFadeStart,ZSpriteFadeEnd;long PrimitiveType,CacheGroup;
  bool AlphaIsBoolean,LandscapeNormalLighting,HasWindSkew,CastsShadows,ReceivesShadows;

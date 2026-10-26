@@ -16,7 +16,7 @@ struct SCountBlock {
     void* m_pObject;                                // +8
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     ~CCountedPointer()
@@ -33,24 +33,24 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                 // 0x0099B510
 };
 
-struct CInitBaseClass {
+class CInitBaseClass { public:
     bool m_initialised;                             // +0x04
     virtual ~CInitBaseClass();                      // 0x0099A410
 };
 
-struct CDebugManager; struct CInputManager; struct CDisplayManager; struct CGraphicBankManager;
-struct CMeshBankManager; struct CFontManager; struct CExtraManager; struct CProfileManager;
+class CDebugManager; class CInputManager; class CDisplayManager; class CGraphicBankManager;
+class CMeshBankManager; class CFontManager; struct CExtraManager; class CProfileManager;
 
-struct CSystemManager : CInitBaseClass {
+class CSystemManager : public CInitBaseClass { public:
     unsigned char _pad08[0x50 - 0x08];
     CCountedPointer<CDebugManager>       LibDebugManager;      // +0x50
     CCountedPointer<CInputManager>       PInputManager;        // +0x58

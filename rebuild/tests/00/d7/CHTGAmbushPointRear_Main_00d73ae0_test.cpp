@@ -1,12 +1,12 @@
 // Behaviour test for CHTG_AmbushPointRear::Main @ 0x00D73AE0 (copy of the model with a scripted stub world).
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 static int g_frame, g_doneAt, g_spawned, g_pauses, g_onScreenUntil;
 static float g_dist[64];
-struct CScriptThing { C3DVector pos; const C3DVector& GetPos() const { return pos; } int GetDataString() const { return 7; } };
+class CScriptThing { public: C3DVector pos; const C3DVector& GetPos() const { return pos; } int GetDataString() const { return 7; } };
 static bool IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float d) { return g_dist[g_frame] < d; }
 static bool IsDistanceBetweenThingsOver(const CScriptThing&, const CScriptThing&, float d) { return g_dist[g_frame] > d; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frame; }
     void Pause(float) const { ++g_pauses; ++g_frame; }
     bool IsCameraPosOnScreen(const C3DVector&) const { return g_frame < g_onScreenUntil; }

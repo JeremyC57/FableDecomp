@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_TentacleStrikeInto {
+class CCreatureAction_TentacleStrikeInto { public:
     void* vftable;
     int destroyed;
 };

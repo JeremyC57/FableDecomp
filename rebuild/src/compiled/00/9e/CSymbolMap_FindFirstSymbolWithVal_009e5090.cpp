@@ -5,8 +5,8 @@
 // tail (the address of pair.second), `ret 4`.
 // Model: PDB CSymbolMap (+4 SLONGMap = CVectorMap<CCharString, CSymbolInfo>; the retail vector is 12 bytes so
 // its first/last words sit at +4/+8), pair<CCharString, CSymbolInfo {GroupName, EntryName, Val}> = 16 bytes.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* m_pStringData;
 };
 
@@ -27,7 +27,7 @@ struct CSymbolVectorMap {                          // the retail 12-byte vector 
     SSymbolPair* m_pEnd;                           // +0x08
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     void*            _padding_;                    // +0x00
     CSymbolVectorMap SLONGMap;                     // +0x04
     const CSymbolInfo* FindFirstSymbolWithVal(long value) const;

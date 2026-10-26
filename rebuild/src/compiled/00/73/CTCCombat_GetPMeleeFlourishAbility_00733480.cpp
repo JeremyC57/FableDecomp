@@ -27,7 +27,7 @@ template<class T> struct CRetailVector {
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     void* __vftable;        // +0x00
     long  RefCount;         // +0x04
 };

@@ -12,9 +12,9 @@
 // constructor (three zero stores through ebp), then each handle's inline default constructor: the
 // CBaseClass call, the handle vtable (kept in ebx across the three) and the null CIVCountedPointer.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CThingConst;
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 
 struct CTCDriverBase_Calls {
     virtual void v00();
@@ -22,7 +22,7 @@ struct CTCDriverBase_Calls {
     CTCDriverBase_Calls(CThing* parent);                    // 0x00771200
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
@@ -45,7 +45,7 @@ struct CIntelligentPointerThing {                           // CIntelligentPoint
     void* PData;
 };
 
-struct CBaseClass {                                         // vtable 0x01231710
+class CBaseClass { public:                                         // vtable 0x01231710
     virtual void v00();
     CBaseClass();                                           // 0x0099A2D0
 };
@@ -55,13 +55,13 @@ struct CIVCountedPointer {                                  // CIVCountedPointer
     __forceinline CIVCountedPointer() : Object(0) { }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {                // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598
     CIVCountedPointer Data;                                 // +4
     virtual void v00();
     __forceinline CEnginePrimitiveHandle() { }             // inline under /Os only when forced
 };
 
-struct CTCDPhysicalObstruction : CTCDriverBase_Calls {
+class CTCDPhysicalObstruction : public CTCDriverBase_Calls { public:
     C3DVector                               StartPos;                   // +0x0c
     C3DVector                               EndPos;                     // +0x18
     long                                    LifeTimer;                  // +0x24

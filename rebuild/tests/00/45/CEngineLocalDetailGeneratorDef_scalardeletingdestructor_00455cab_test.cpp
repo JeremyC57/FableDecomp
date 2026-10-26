@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 
-struct CEngineLocalDetailGeneratorDef { char pad[0x3c]; };
+class CEngineLocalDetailGeneratorDef { public: char pad[0x3c]; };
 struct CMember { char c; };
 
 static int g_member = 0;

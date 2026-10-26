@@ -5,20 +5,20 @@
 static int g_copies = 0;
 static int g_dtors = 0;
 
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     explicit CCharString(const char* s) : PStringData(s) { }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }
     ~CCharString() { ++g_dtors; }
 };
 
-struct CAIStateGroupBase { int kind; };
+class CAIStateGroupBase { public: int kind; };
 typedef CAIStateGroupBase* (*TAIStateGroupAllocFunc)();
 
 static CAIStateGroupBase g_wander = { 42 };
 static CAIStateGroupBase* AllocWander() { return &g_wander; }
 
-struct CAIStateGroupInfo {
+class CAIStateGroupInfo { public:
     CCharString            StateGroupName;
     TAIStateGroupAllocFunc AllocFunc;
     CAIStateGroupInfo(CCharString name, TAIStateGroupAllocFunc alloc);

@@ -18,18 +18,18 @@
 //   ScriptName +0x74, DefGlobalIndex +0x8c, PlayerNumber +0x90 (PDB +0x84/+0x9c/+0xa0, the 0x10 retail CThing shift).
 //   CThingPlayerCreatureInit as Ego_r.pdb (12 bytes).
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -53,7 +53,7 @@ struct CCountedScriptImp {
     }
 };
 class CThing;
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
     virtual void s01() const; virtual void s02() const; virtual void s03() const; virtual void s04() const;
     virtual void s05() const; virtual void s06() const; virtual void s07() const; virtual void s08() const;
     virtual void s09() const; virtual void s10() const;
@@ -87,14 +87,14 @@ struct CDefVirtual {
 struct CRefCounted {
     long m_refCount;
 };
-struct CDefPointeeBase : CDefVirtual, CRefCounted {
+class CDefPointeeBase : public CDefVirtual, public CRefCounted { public:
     void ReleaseDef()
     {
         if (--m_refCount == 0)
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer()
@@ -103,8 +103,8 @@ template<class T> struct CDefPointer {
             m_pObject->ReleaseDef();
     }
 };
-struct CThingCreatureDef : CDefPointeeBase { };
-struct CGameDefinitionManager {
+class CThingCreatureDef : public CDefPointeeBase { public: };
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);             // 0x009AD410
     bool GetDef(long index, CDefPointer<CThingCreatureDef>& out);        // 0x00513160 (GetDef<CThingCreatureDef>)
 };
@@ -119,16 +119,16 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
     return true;
 }
 #pragma auto_inline(on)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThingPhysical;
-struct CThingBuilding;
-struct CThingAICreatureInit {
+class CThingPhysical;
+class CThingBuilding;
+class CThingAICreatureInit { public:
     CThingPhysical* OriginalThing;                      // +0x00
     CThingPhysical* PreviousThing;                      // +0x04
     CCharString     ScriptName;                         // +0x08
@@ -142,7 +142,7 @@ struct CThingAICreatureInit {
     CThingAICreatureInit(CThingPhysical* original, CThingPhysical* previous, bool playerCharacter,
                          const CCharString& scriptName, const CCharString& overridingBrainName, bool drawable);   // 0x004FACD0
 };
-struct CThingPlayerCreatureInit {
+class CThingPlayerCreatureInit { public:
     CThingPhysical* OriginalThing;                      // +0x00
     CThingPhysical* PreviousThing;                      // +0x04
     bool            PlaceAtEndOfList;                   // +0x08
@@ -181,30 +181,30 @@ public:
         return false;
     }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                                const CThingAICreatureInit& init);        // 0x00833800
 };
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     static CThingPlayerCreature* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                                    const CThingPlayerCreatureInit& init);  // 0x006AC910
 };
 struct CManager {
     void DeregisterAllScreens();                        // 0x0066EBE0
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     CManager* GetPHeroInfoScreensManager() const;       // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
-struct CPlayer {
+class CPlayer { public:
     void SetPlayerCharacter_00487B80(CThingPlayerCreature* creature);   // 0x00487B80
     void SetControlledCreature(CThingPlayerCreature* creature);         // 0x00487CF0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   World;                      // +0x04
     void*                   Component;                  // +0x08
     void*                   DisplayEngine;              // +0x0c

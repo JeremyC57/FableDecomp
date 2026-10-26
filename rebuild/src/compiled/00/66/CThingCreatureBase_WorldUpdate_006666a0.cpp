@@ -20,10 +20,10 @@
 // Shape: the world is a named local and the last-attacked frame is read into a local after it (retail loads it into
 //   edi between PeekWorld and the static GetWorldFrame); the action is a temporary destroyed before the pointer reset;
 //   the CIntelligentPointer converting ctor and operator= are `__forceinline` (VC keeps them out of line otherwise).
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                                      // +0x04
@@ -38,7 +38,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     float GetTurnSpeed();                               // 0x006AFF40
 };
 namespace NThingShot {
@@ -46,10 +46,10 @@ class CTCShotDefinitionBase { public: void Update(); };            // 0x007C21A0
 }
 class CTCCreatureHitNotification { public: void UpdateHitNotification(); };   // 0x008650E0, interface 0xCD
 
-struct CWorld {
+class CWorld { public:
     static unsigned long GetWorldFrame();               // 0x0049D870 (reads the global frame; called through the world)
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x54];
     bool          NonScriptedEntitesPauseMode;          // +0x54
     bool          AllEntitesPauseMode;                  // +0x55
@@ -64,7 +64,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -89,23 +89,23 @@ struct CThing {
     }
 };
 
-struct CThingGameObject : CThing {
+class CThingGameObject : public CThing { public:
     bool WorldUpdate();                                 // 0x00838BA0
 };
 
-struct CThingCreatureBase;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
 };
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     unsigned char _body[0x10];
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase* owner, CThing* item, CCreatureActionBase* next,
                                                long timeout);   // 0x006A0150
     ~CCreatureAction_UnsheatheItemFromInventory();      // 0x005CC091
 };
 
-struct CThingCreatureBase : CThingGameObject {
+class CThingCreatureBase : public CThingGameObject { public:
     unsigned char _pad94[0xf4 - 0x94];
     CIntelligentPointerThing PLastAttackedByCreature;   // +0xf4
     unsigned long WFLastAttackedByCreature;             // +0xfc

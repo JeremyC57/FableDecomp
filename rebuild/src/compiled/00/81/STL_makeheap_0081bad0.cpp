@@ -14,7 +14,7 @@
 //   cursor first + parent strength-reduced into ebx; the by-value pair is built in the argument area by STLport pair's
 //   memberwise user copy constructor: the key dword, then the trivially copyable entry through its own address
 //   (`add eax,4 ; lea ecx,[ebx+4]`, five dwords) -- the 0x0081C670 model.
-struct CTextureMorphEntry {                 // Ego_r.pdb, 20 bytes, trivially copyable
+class CTextureMorphEntry { public:                 // Ego_r.pdb, 20 bytes, trivially copyable
     long MorphType;                         // +0x00 EHeroMorphType
     long TextureLayer;                      // +0x04
     long ReplacingTextureIndex;             // +0x08

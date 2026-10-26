@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static int g_render = 0, g_cleared = 0;
-struct CThing { void AddToRenderList() { ++g_render; } };
+class CThing { public: void AddToRenderList() { ++g_render; } };
 struct CListNode { CListNode* m_next; CListNode* m_prev; };
 struct CPrimitiveList { CListNode* m_head; bool empty() const { return m_head->m_next == m_head; } };
 struct CMessage;

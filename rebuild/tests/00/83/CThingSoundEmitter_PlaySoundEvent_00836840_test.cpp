@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CASoundBank { int id; };
-struct CSoundInit { int id; };
-struct CCharString { const char* m_pData; };
+class CASoundBank { public: int id; };
+class CSoundInit { public: int id; };
+class CCharString { public: const char* m_pData; };
 static int g_stateObj;
 void*         g_pGameState = 0;
 unsigned long g_InvalidSoundHandle = 0xFFFFFFFFUL;
@@ -14,7 +14,7 @@ struct CSoundPlayer {
     virtual bool IsSampleLoadedAndPlaying(unsigned long sampleID) const { (void)sampleID; return m_loaded; }
     virtual bool IsSamplePlaying(unsigned long sampleID) const { (void)sampleID; return m_playing; }
 };
-struct CThingSoundEmitter {
+class CThingSoundEmitter { public:
     unsigned char  Dead : 1;
     unsigned char  _flags91_1 : 7;
     CSoundPlayer*  m_pSoundPlayer;

@@ -36,7 +36,7 @@ public:
     virtual void v000() { }
     virtual long GetType() const { return m_type; }
 };
-struct CTCEmoteIcon : CTCEmoteIconBase {
+class CTCEmoteIcon : public CTCEmoteIconBase { public:
     void HandleMessage(const CTCMessage* message)
     {
         if (message->GetType() == 1 && PrimitiveHandle.IsValid())

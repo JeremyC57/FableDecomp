@@ -40,7 +40,7 @@ public:
     unsigned char       Flag2 : 1;
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                            // +0x00
     void (__fastcall* DeleteFunc)(void* data);         // +0x04
     void*         Data;                                // +0x08

@@ -5,7 +5,7 @@ struct CInputThing {
 	long GetDeviceNumber(long which) { return val + which; }
 };
 
-struct CPlayer {
+class CPlayer { public:
 	char pad0[0x10];
 	CInputThing *PlayerManager;
 	char pad14[0x28 - 0x14];

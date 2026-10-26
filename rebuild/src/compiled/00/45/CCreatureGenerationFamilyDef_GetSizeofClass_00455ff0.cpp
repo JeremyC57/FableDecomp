@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CCreatureGenerationFamilyDef {};
+class CCreatureGenerationFamilyDef { public:};
 
 unsigned long __fastcall CCreatureGenerationFamilyDef_GetSizeofClass(const CCreatureGenerationFamilyDef* self)
 {

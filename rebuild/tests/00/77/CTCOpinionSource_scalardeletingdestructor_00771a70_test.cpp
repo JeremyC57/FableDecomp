@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCOpinionSource {
+class CTCOpinionSource { public:
     void* vftable;
     int destroyed;
 };

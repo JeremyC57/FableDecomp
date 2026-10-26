@@ -4,10 +4,10 @@
 static int g_log[16]; static int g_n = 0; static long g_released = 0;
 struct CEffect;
 static CEffect* g_effect = 0;
-struct CRenderStateManager { void RestoreCaptureBlock() { g_log[g_n++] = 1; } };
+class CRenderStateManager { public: void RestoreCaptureBlock() { g_log[g_n++] = 1; } };
 static CRenderStateManager g_rsm; static CRenderStateManager* g_pRenderStateManager = &g_rsm;
-struct CRenderTarget { int x; void Uninitialise(); };
-struct CDisplayManager {
+class CRenderTarget { public: int x; void Uninitialise(); };
+class CDisplayManager { public:
     void SetRenderTarget(CRenderTarget*) { g_log[g_n++] = 2; }
     void SetViewport(void*) { g_log[g_n++] = 3; }
 };

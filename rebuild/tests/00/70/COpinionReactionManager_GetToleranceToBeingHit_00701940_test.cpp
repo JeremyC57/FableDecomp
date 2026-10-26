@@ -19,7 +19,7 @@ struct CToleranceMap {
     }
     CToleranceIterator end() const { return CToleranceIterator(m_pHeader); }
 };
-struct COpinionReactionManagerDef { CToleranceMap ToleranceToBeingHit; };
+class COpinionReactionManagerDef { public: CToleranceMap ToleranceToBeingHit; };
 class COpinionReactionManager {
 public:
     const COpinionReactionManagerDef* PDef;

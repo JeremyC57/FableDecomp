@@ -10,7 +10,7 @@
 // Identity: the catalog names the first filter CThingFilter_EnemyCreature; its callee 0x006A80A0 is the HasTC bitset test (UsingComponents +0x20).
 #include "engine/CThingSearchTools.h"
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20
     unsigned char _pad_0x44[0x6c - 0x44];
@@ -39,7 +39,7 @@ struct CThingList {
     iterator begin() { return iterator(m_pHead->m_pNext); }
     iterator end() { return iterator(m_pHead); }
 };
-struct CThingAICreature : CThing { enum { ThingListType = 1 }; };
+class CThingAICreature : public CThing { public: enum { ThingListType = 1 }; };
 
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
@@ -69,15 +69,15 @@ template <> void std::vector<CThingAICreature*>::_M_insert_overflow(CThingAICrea
 }
 #pragma auto_inline(on)
 
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     unsigned long TCType;
     bool operator()(CThing* thing) const;             // 0x006A80A0
 };
-struct CThingFilter_InMap {
+class CThingFilter_InMap { public:
     void* Map;
     bool operator()(CThing* thing) const;             // 0x006A7930
 };
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A* Filter1;
     const B* Filter2;
     template <class T> bool operator()(T* thing) const { return (*Filter1)(thing) && (*Filter2)(thing); }

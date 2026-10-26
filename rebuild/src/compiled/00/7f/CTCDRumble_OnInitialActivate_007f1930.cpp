@@ -17,15 +17,15 @@
 // scale fmul and the init stores); building init first, or binding the device as const&, reorders the tail.
 // Shape: the def pointer assignment is the inline CDefPointer::operator= (release + clear, then add a reference); the decay and
 // attack times are locals computed before the hero fetch; the falloff scale defaults to 1 in the def's dead frame slot.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                       // slot 1
     mutable long m_refCount;                            // +0x04
     void Release() const { if (--m_refCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->m_refCount == 0) Object->Destroy(); }
@@ -43,8 +43,8 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CRumbleDef : CDefPointeeBase { };
-struct CThingBaseDef : CDefPointeeBase {
+class CRumbleDef : public CDefPointeeBase { public: };
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CRumbleDef>* out) const;   // 0x007F1EE0
 };
 void* FindSubDef(const CThingBaseDef* def);
@@ -71,21 +71,21 @@ public:
     const C3DVector& GetPosition() const;               // 0x004C73D0
     long GetJoystickDeviceNumber() const;               // 0x004C7CA0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetEarthquakeAt(const C3DVector& position, float strength, float length, bool global);   // 0x00699560
 };
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetGameCameraManager(CGameCameraManager** out);   // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad00[0x34];
     CAIGameCameraBase* PCurrentGameCamera;              // +0x34
     bool GetGameCameraManager(CGameCameraManager** out) { return PCurrentGameCamera->GetGameCameraManager(out); }
@@ -109,7 +109,7 @@ struct CJoystickEntry {
     CJoystickDevice* Device;
     long             Index;
 };
-struct CInputManager {
+class CInputManager { public:
     unsigned char   _pad00[0x2c];
     CJoystickEntry* Joysticks;                          // +0x2c
 };

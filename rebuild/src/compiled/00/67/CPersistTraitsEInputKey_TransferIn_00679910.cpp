@@ -3,8 +3,8 @@
 // Callees: TransferIn(CPersistContext*, CStringParser*, long*) @ 0x009E2590 (__fastcall: context in ecx, parser in edx).
 // Shape: the long temporary is homed in the parser-argument slot ([esp+8]) once the parser is in edx; the enum store
 //   re-reads it. Speed-optimised (default) TU.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 enum EInputKey { INPUT_KEY_NONE = 0 };
 
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590

@@ -10,7 +10,7 @@
 typedef long EAIActionReturn;
 enum { AI_ACTION_FINISHED = 4 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();                         // slot 0  (deleting destructor)
     virtual void v01();                         // slot 1  Initialise
     virtual void v02();                         // slot 2  OnActivate

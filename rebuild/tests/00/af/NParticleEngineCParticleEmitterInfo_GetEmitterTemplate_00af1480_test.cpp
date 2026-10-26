@@ -25,7 +25,7 @@
 // object directly. A template that already exists skips the "has the file finished" test.
 void* __cdecl operator new(size_t size);     // 0x00BFEA1A
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long           RefCount;                       // +0x04
@@ -34,13 +34,13 @@ struct CResource {
     void Release() { if (--RefCount == 0) Destroy(); }
 };
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished();                             // 0x009D54E0
     bool WaitUntilFinished();                      // 0x009D5B60
 };
 
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -48,7 +48,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return Data; }
 };
 
-template<class T> struct CIVCountedPointer {       // intrusive: the object carries its own count
+template<class T> class CIVCountedPointer { public:       // intrusive: the object carries its own count
     T* Object;
     void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
     CIVCountedPointer& operator=(T* p) { ReleaseRef(); Object = p; return *this; }
@@ -60,7 +60,7 @@ class CParticleEmitter;
 
 class CParticleEmitterInfo {
 public:
-    struct CEmitterData : CResource {              // vtable 0x0129F354
+    class CEmitterData : public CResource { public:              // vtable 0x0129F354
         CCountedPointer<CBankFileAsyncData> FileData;          // +0x1c
         CCountedPointer<CParticleEmitter>   EmitterTemplate;   // +0x24
         CParticleEmitterInfo*               Owner;             // +0x2c

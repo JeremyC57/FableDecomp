@@ -23,7 +23,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object;                                     // +0
     SCountBlock* Info;                             // +4
     CCountedPointer() : Object(0), Info(0) {}
@@ -42,19 +42,19 @@ template <class T> struct CCountedPointer {
 };
 enum EThreadedFilePriority { };
 extern EThreadedFilePriority g_PhysicsMeshReadPriority;   // 0x0139723C
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     unsigned long Sizeof() const;                  // 0x009D5620
 };
-struct CBankFile {
+class CBankFile { public:
     unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
 };
-struct CBankFileAsyncEntry {
+class CBankFileAsyncEntry { public:
     void*          __vftable;
     CBankFile*     Bank;                           // +4
     unsigned long  Index;                          // +8
     CCountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long offset, unsigned long size, EThreadedFilePriority priority);   // 0x009D6100
 };
-struct CPhysicsMesh { unsigned long Sizeof() const; };   // 0x00A6C900
+class CPhysicsMesh { public: unsigned long Sizeof() const; };   // 0x00A6C900
 
 struct CResourceBase {                             // CResource with its virtual interface (engine/CResource.h layout)
     virtual void v00();
@@ -64,16 +64,16 @@ struct CResourceBase {                             // CResource with its virtual
     CResourceBase();                               // 0x009FBEC0
     void SetResourceSize(unsigned long size);      // 0x009FBF20
 };
-struct CResourceBank {
+class CResourceBank { public:
     void AddResource(CResourceBase* resource);     // 0x009FC3D0
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     unsigned char _pad000[0x2e4];
     CResourceBank ResourceBank;                    // +0x2e4
     CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
 };
 
-struct CPhysicsMeshInfo;
+class CPhysicsMeshInfo;
 struct CMeshPointer {                              // CIVCountedPointer<const CPhysicsMesh>, nulled by its ctor
     CPhysicsMesh* m_pObject;
     CMeshPointer() : m_pObject(0) {}
@@ -86,7 +86,7 @@ struct CMeshData : CResourceBase {                 // CPhysicsMeshInfo::CMeshDat
     CMeshData(CPhysicsMeshInfo* owner) : FileData(), Mesh() { Owner = owner; }
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     void Release()
     {
@@ -106,7 +106,7 @@ template <class T> struct CIVCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 
-struct CPhysicsMeshInfo {                          // CMeshDataBankEntry + MeshData
+class CPhysicsMeshInfo { public:                          // CMeshDataBankEntry + MeshData
     virtual void v00();
     CMeshDataBank*               Bank;             // +0x04
     unsigned long                Index;            // +0x08

@@ -7,16 +7,16 @@
 //         the owner (POwner +0x38) is the NCameraModes::CBase with LookAt +0x10, GoTo.Position +0x54, the FOV +0x84.
 // Shape: three inline CBase setters (FableWin.pdb SetPosition/SetObservedPos/SetFOV); POwner is re-read for each store because
 //        the C3DVector copies may alias it.
-struct CBaseObject;
-struct CGameCameraManager;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CBaseObject;
+class CGameCameraManager;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
     virtual void v00();
     void* m_pItem;
 };
 namespace NCameraModes {
-struct CBase {                                       // the owning camera mode (retail offsets, landed CBase dtor 0x0056E0E0)
+class CBase { public:                                       // the owning camera mode (retail offsets, landed CBase dtor 0x0056E0E0)
     virtual void v00();
     unsigned char _pad04[0x10 - 0x04];
     C3DVector     LookAt;                            // +0x10 (SetObservedPos)
@@ -29,7 +29,7 @@ struct CBase {                                       // the owning camera mode (
     void SetFOV(float fov) { FOV = fov; }
     float GetFOV() const { return FOV; }
 };
-struct CScriptModuleBase {                           // vtable 0x01255F74, 0x4c bytes
+class CScriptModuleBase { public:                           // vtable 0x01255F74, 0x4c bytes
     virtual ~CScriptModuleBase();                    // slot 0
     virtual void Update() = 0;                       // slot 1
     virtual bool IsFinished() const;                 // slot 2

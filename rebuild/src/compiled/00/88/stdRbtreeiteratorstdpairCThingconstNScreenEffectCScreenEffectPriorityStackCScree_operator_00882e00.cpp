@@ -11,7 +11,7 @@ class CThing;
 namespace NScreenEffect {
 class CScreenEffectPriorityStack {
 public:
-    class CScreenFilterEntry {
+    struct CScreenFilterEntry {
     public:
         class CThingGraphicByPassFlagState;
     };

@@ -21,7 +21,7 @@ public:
     virtual ~CBase();
 };
 
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                           // +0x0
     unsigned long Length;                          // +0x4
 };
@@ -57,7 +57,7 @@ struct CCursorPos {
     unsigned long Line;                            // +0x8
 };
 
-struct CParsedItem;
+class CParsedItem;
 typedef void (*TStringParserErrorCallback)(CCharString* message);
 
 class CStringParser : public CBase {               // vtable 0x0122D874

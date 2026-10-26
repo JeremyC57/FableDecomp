@@ -1,4 +1,4 @@
-struct CCreatureAction_ReleaseWillLightningSpell {
+class CCreatureAction_ReleaseWillLightningSpell { public:
     void* vftable;
 };
 

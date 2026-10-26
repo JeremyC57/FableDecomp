@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeDragonGetHit::FrameUpdate (retail 0x008E06E0): after the base update the get-hit
 // timer counts down; at zero (and every frame after) the dragon snaps out of it at its target.
-struct CThing { unsigned char m_state; unsigned char m_flags91; };
-struct CCreatureActionBase { int Kind; CThing* Owner; CThing* Target; };
-struct CThingCreatureBase : CThing {
+class CThing { public: unsigned char m_state; unsigned char m_flags91; };
+class CCreatureActionBase { public: int Kind; CThing* Owner; CThing* Target; };
+class CThingCreatureBase : public CThing { public:
     int actions;
     CCreatureActionBase last;
     bool SetCurrentAction(const CCreatureActionBase& action) { ++actions; last = action; return true; }
@@ -17,7 +17,7 @@ struct CModeBase {
     CThingCreatureBase* ParentThing;
     void FrameUpdate() { ++g_baseUpdates; }
 };
-struct CCreatureAction_SnapDragonOutOf : CCreatureActionBase {
+class CCreatureAction_SnapDragonOutOf : public CCreatureActionBase { public:
     CCreatureAction_SnapDragonOutOf(CThingCreatureBase* owner, CThing* target) { Kind = 2; Owner = owner; Target = target; }
 };
 struct CModeDragonGetHit : CModeBase {

@@ -7,13 +7,13 @@
 // Layout: retail CComponent (PDB offsets minus 8 from Time on): RenderZoom +0x7c (PDB +0x84).
 // Ego_r.pdb mangles the parameter as a non-const reference (?SetRenderZoom@CComponent@NUISystem@@UAEXAAVC2DVector@@@Z).
 // Shape: one memberwise C2DVector copy through edx/eax.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     unsigned char _pad00[0x7c];
     C2DVector RenderZoom;                   // +0x7c
     void SetRenderZoom(C2DVector& zoom);

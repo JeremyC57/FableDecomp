@@ -20,7 +20,7 @@
 // destructor's null-tested release on a local copy (`dec [esi+4] ; jne ; call [eax+4]`, no null store).
 // Header note: engine/CDefClassBase.h, CActionUseDef.h and CDefinitionManager.h hold layouts only, so the
 // def classes are modelled locally with a _Retail suffix.
-template <class T> struct CDefPointer;
+template <class T> class CDefPointer;
 struct CActionUseDef_Retail;
 
 struct CDefClassBase_Retail
@@ -45,8 +45,8 @@ __declspec(noinline) bool CDefClassBase_Retail::GetSubDef(CDefPointer<CActionUse
 #pragma auto_inline(on)
 
 template <class T>
-struct CDefPointer
-{
+class CDefPointer
+{ public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -82,8 +82,8 @@ __declspec(noinline) bool CDefinitionManager_Retail::GetDef(long globalIndex, CD
 }
 #pragma auto_inline(on)
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char  _pad_0x00[0x8c];
     unsigned short DefGlobalIndex;                  // +0x8c
 };
@@ -100,8 +100,8 @@ struct CTCBase_Calls                                   // engine/CTCBase.h layou
     CDefinitionManager_Retail* GetDefinitionManager() const;   // 0x006869D0
 };
 
-struct CTCActionUseBase : CTCBase_Calls
-{
+class CTCActionUseBase : public CTCBase_Calls
+{ public:
     CDefPointer<CActionUseDef_Retail> PActionUseDef;       // +0x0c
     bool                       Usable;              // +0x10
     void OnCreate();

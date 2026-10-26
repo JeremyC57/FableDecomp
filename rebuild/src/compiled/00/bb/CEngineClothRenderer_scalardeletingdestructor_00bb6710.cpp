@@ -1,4 +1,4 @@
-struct CEngineClothRenderer {
+class CEngineClothRenderer { public:
     void* vftable;
 };
 

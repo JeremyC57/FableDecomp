@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CIntelligentPointer {
     CThing* m_pItem;
     CIntelligentPointer() : m_pItem(0) { }
@@ -8,12 +8,12 @@ struct CIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { m_pItem = o.m_pItem; return *this; }
 };
 struct Node { Node* next; Node* prev; void* a; void* b; };
-struct CSoundPair { long FirstSound, LastSound; };
-struct CCreatureActionBase {
+class CSoundPair { public: long FirstSound, LastSound; };
+class CCreatureActionBase { public:
     const CSoundPair* Sound; long Group; long Priority;
     CCreatureActionBase(const CSoundPair& s, long g, long p) : Sound(&s), Group(g), Priority(p) { }
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     CIntelligentPointer PTarget, PCameraPoint; void* PMeleeAbilityDef; Node* StrikeEvents;
     bool SentMissedEvent, HasResetMeleeCombatAbilityEffects; void* Anim[3]; long ActiveStrikeEventIndex;
     CIntelligentPointer LastWeaponUsedInStrike; int inits;

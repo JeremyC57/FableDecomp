@@ -17,11 +17,11 @@
 //   one-byte temporary at [ebp-1]; the bit is merged back with xor/and/xor (template of landed CEngineThemeDef 0x0045979B).
 enum EReverbEnvironmentType { REVERB_ENVIRONMENT_DEFAULT };
 
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned char _body[0x10];
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& value);                                              // 0x00431102
     void Transfer(unsigned long& value);                                     // 0x00431020
     void Transfer(float& value);                                             // 0x00431061
@@ -30,12 +30,12 @@ struct CPersistContext {
     void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
 };
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     virtual void Transfer(CPersistContext& context);                         // 0x00676BE0
     unsigned char _body[0x70 - 4];
 };
 
-struct CThingBuildingDef : CThingBaseDef {          // vtable 0x01233144
+class CThingBuildingDef : public CThingBaseDef { public:          // vtable 0x01233144
     long                   DieOffTimer;             // +0x70
     unsigned long          SimBuildingDef;          // +0x74
     CEngineGraphic         Graphic;                 // +0x78

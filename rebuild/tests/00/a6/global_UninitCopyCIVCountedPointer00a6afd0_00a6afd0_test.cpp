@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <new>
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) { (void)flags; }
     virtual void Delete() { }
     unsigned int IVRefCount;

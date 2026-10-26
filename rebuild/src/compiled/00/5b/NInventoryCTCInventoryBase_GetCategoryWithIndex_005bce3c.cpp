@@ -4,7 +4,7 @@
 // Layout: retail CTCInventoryBase (no engine header; PDB minus 4 per preceding std::vector): Categories +0x20.
 #pragma optimize("s", on)
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     unsigned char _body[0x2C];
 };
 struct CCategoryVector {

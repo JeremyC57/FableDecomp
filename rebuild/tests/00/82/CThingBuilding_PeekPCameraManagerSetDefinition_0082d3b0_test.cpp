@@ -6,30 +6,30 @@
 #endif
 #include <stdio.h>
 #include <string.h>
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Delete();                           // slot 1 (+0x04)
     long RefCount;                                   // +0x04
 };
 #pragma pack(push, 1)
-struct CThingBuildingDef : CDefClassBase {
+class CThingBuildingDef : public CDefClassBase { public:
     unsigned char _pad08[0x88 - 0x08];
     unsigned long WallMaterial;                    // +0x88
     unsigned char _pad8c[0x9c - 0x8c];
     long CameraManagerSet;                         // +0x9c
 };
 #pragma pack(pop)
-struct CCameraManagerSetDef : CDefClassBase { };
-struct CRegionDef : CDefClassBase {
+class CCameraManagerSetDef : public CDefClassBase { public: };
+class CRegionDef : public CDefClassBase { public:
     unsigned char _pad08[0x4c - 0x08];
     long CameraManagerSet;                         // +0x4c
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* object) : Object(object)
@@ -51,7 +51,7 @@ template <class T> struct CDefPointer {
         }
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingBuildingDef>* out);   // 0x004AB840
     bool GetDef(long index, CDefPointer<CCameraManagerSetDef>* out);   // 0x004AB920
     bool GetDef(const CCharString& name, CDefPointer<CCameraManagerSetDef>* out);   // 0x004AB990
@@ -82,15 +82,15 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CCa
     return true;
 }
 #pragma auto_inline(on)
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x24];
     CRegionDef* PDef;                              // +0x24 CDefPointer<const CRegionDef>
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetCurrentRegionIndex() const;            // 0x004FB150
     CRegion& GetRegion(long index);                // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();
@@ -107,7 +107,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(const CCharString& name, CD
     return true;
 }
 #pragma auto_inline(on)
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefGlobalIndex;                   // +0x8c
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990

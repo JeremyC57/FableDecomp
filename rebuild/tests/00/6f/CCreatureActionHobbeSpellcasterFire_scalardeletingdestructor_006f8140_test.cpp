@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_HobbeSpellcasterFire {
+class CCreatureAction_HobbeSpellcasterFire { public:
     void* vftable;
     int destroyed;
 };

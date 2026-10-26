@@ -1,6 +1,6 @@
 // Behaviour test for CEnginePrimitiveRenderer::CollectPrimitiveStats @ 0x00B321B0
 #include <cstdio>
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 struct CPrimitiveStatMap { int total; };
 static int g_baseDestroyed = 0;
 namespace N_0099a300 { struct CBase { virtual void v00() {} ~CBase() { ++g_baseDestroyed; } }; } using N_0099a300::CBase;
@@ -9,7 +9,7 @@ struct CEngineScenePrimitiveStatsEnumerator : CBase {
     CEngineScenePrimitiveStatsEnumerator(CPrimitiveStatMap* destination, const C2DBoxF& area, long statIndex, unsigned int statFlags)
         : Destination(destination), Area(area), StatIndex(statIndex), StatFlags(statFlags) {}
 };
-struct CEngineScene {
+class CEngineScene { public:
     int m_primitives;
     void Enumerate(CBase& enumerator)
     {
@@ -23,7 +23,7 @@ template <class T> struct CRetailVector {
     unsigned int size() const { return (unsigned int)(m_finish - m_start); }
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     CRetailVector<CEngineScene*> SceneList;
     void CollectPrimitiveStats(CPrimitiveStatMap* destination, const C2DBoxF& area, long statIndex, unsigned int statFlags)
     {

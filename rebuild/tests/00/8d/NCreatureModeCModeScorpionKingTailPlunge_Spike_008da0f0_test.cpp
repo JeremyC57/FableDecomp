@@ -16,12 +16,12 @@
 //   dropped at the top {0, 0, CCharString x2, false, true, true, false, 0, 0} is a local model (no PDB match pinned).
 // Shape: as the landed StrikeResponseScorpionKing::Initialise 0x008C4B80 (stand-in GetSubDef / GetEffectFromString bodies
 //   that only write their out slots) and ScorpionTailPlunge::PerformAction 0x008C4810 (def index from a scoped name).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
-struct CRightHandedSet;
-struct CCharString {
+class CRightHandedSet;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
@@ -39,7 +39,7 @@ struct CDefBase : CDefVirtual {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
@@ -52,7 +52,7 @@ template <class T> struct CCountedDefPointer {
             m_p->Release();
     }
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
@@ -66,7 +66,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -80,8 +80,8 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
     return true;
 }
 #pragma auto_inline(on)
-struct CThingObjectDef : CDefBase { };
-struct CGameDefinitionManager {
+class CThingObjectDef : public CDefBase { public: };
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                    // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);            // 0x009AD410
     bool GetDef(long globalIndex, CCountedDefPointer<CThingObjectDef>* out);   // 0x0042B040
@@ -99,7 +99,7 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long globalIndex, CCoun
     return true;
 }
 #pragma auto_inline(on)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -128,7 +128,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 struct CTCSpike {                               // interface type 0x7D
     void Trigger();                             // 0x00788388
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
@@ -157,8 +157,8 @@ struct CThing {
         return component;
     }
 };
-struct CThingCreatureBase : CThing { };
-struct CThingObject : CThing {
+class CThingCreatureBase : public CThing { public: };
+class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                            const CRightHandedSet* orientation, unsigned long uid,
                                            const CCharString& scriptName);   // 0x00703210
@@ -183,7 +183,7 @@ struct CModeBase {
 };
 namespace NCreatureMode {
 #pragma pack(push, 1)
-struct CModeScorpionKingTailPlunge : CModeBase {
+class CModeScorpionKingTailPlunge : public CModeBase { public:
     unsigned char       _pad08[0x84 - 0x08];
     CThingCreatureBase* PCreature;              // +0x84
     bool                bRecovering;            // +0x88

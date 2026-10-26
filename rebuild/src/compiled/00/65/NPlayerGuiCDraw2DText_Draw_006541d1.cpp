@@ -13,17 +13,17 @@
 // count; the count is a named local taken BEFORE the handle-vector pointer local, else the lea is hoisted above the walk);
 // the handle vector is cached in a frame slot ([ebp-8]) and indexed as `*(begin() + i)` (the 8-byte stride kept as a
 // running offset in [ebp-4], begin() re-read per pass); each node is copied into a frame primitive whose destructor runs per pass.
-struct CWideString {
+class CWideString { public:
     unsigned short* m_pData;
     ~CWideString();                                // 0x0099B510
 };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes
+class CEnginePrimitiveHandle { public:                    // 8 bytes
     void* _vtable;
     void* m_pData;
 };
 
-struct CEnginePrimitive2DText {                    // PDB 44 bytes
+class CEnginePrimitive2DText { public:                    // PDB 44 bytes
     unsigned char _base[0xc];                      // CEnginePrimitive base
     float         Pos[3];                          // +0x0c C3DVector
     long          Layer;                           // +0x18 EEngine2DLayer
@@ -34,7 +34,7 @@ struct CEnginePrimitive2DText {                    // PDB 44 bytes
     CEnginePrimitive2DText(const CEnginePrimitive2DText& other);   // 0x00655048
 };
 
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -42,7 +42,7 @@ struct CEnginePrimitiveRenderer {
     virtual void AddPrimitive(CEnginePrimitiveHandle* handle, const CEnginePrimitive2DText* primitive, long flags);   // slot 23
 };
 
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char             _pad[0x34];
     CEnginePrimitiveRenderer* Renderer;            // +0x34
 };
@@ -72,7 +72,7 @@ struct CRetailTextList {                           // VC6 Dinkumware list<CEngin
     void clear();                                  // 0x00440770
 };
 
-struct CDraw2DText {
+class CDraw2DText { public:
     void*               _vtable;                   // +0x00
     unsigned char       _base04[0x18 - 4];         // GUI pointers
     bool                Drawing;                   // +0x18

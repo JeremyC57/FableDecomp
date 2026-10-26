@@ -1,7 +1,7 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 static int g_destroys = 0; static float g_matrixScale = 0.0f; static float g_fadeStart = 0.0f;
 class CEffect { public: long RefCount; virtual ~CEffect() { } virtual void Destroy() { ++g_destroys; } void Release() { if (--RefCount == 0) Destroy(); } };
 class CIVCountedPointer {

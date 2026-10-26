@@ -15,7 +15,7 @@
 // temporary bound to a helper's reference parameter, read through the returned pointer; dx / dy / the summed radius as
 // named floats; the squared distance accumulated in two statements); the Bind2 returns its `&&` whole (`mov eax,1` /
 // `xor eax,eax`).
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

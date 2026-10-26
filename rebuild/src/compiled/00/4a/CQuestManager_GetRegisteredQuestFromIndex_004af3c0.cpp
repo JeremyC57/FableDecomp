@@ -29,7 +29,7 @@ template<class T> struct CRetailVector {
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 extern CCharString g_EmptyQuestName;       // 0x013BD804 -- returned for an out-of-range index
 

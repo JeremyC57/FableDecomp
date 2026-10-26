@@ -11,7 +11,7 @@
 // Layout: PDB NCameraModes::CScriptModuleFOVZoom (see 0x008520F0). Parameter names are descriptive.
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}

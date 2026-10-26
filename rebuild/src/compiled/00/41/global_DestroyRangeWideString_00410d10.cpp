@@ -5,7 +5,7 @@
 // with /Gr: first in ecx, last in edx, the empty `__false_type` tag on the stack, `ret 4`).
 // Shape: `for (; first != last; ++first) first->~CWideString();` -- first in esi, last in edi, a
 // `lea ebx,[ebx]` alignment filler before the loop head, a 4-byte element step.
-struct CWideString {
+class CWideString { public:
     void* m_pData;                 // +0 (pointer to the shared string block)
     ~CWideString();                // 0x0099B510
 };

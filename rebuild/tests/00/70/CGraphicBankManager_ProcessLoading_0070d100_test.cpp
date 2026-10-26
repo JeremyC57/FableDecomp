@@ -23,7 +23,7 @@ struct CRetailVector_ptr {
 };
 struct _List_node { _List_node* _M_next; _List_node* _M_prev; unsigned char _M_data[4]; };
 struct list { _List_node* _M_node; };
-struct CGraphicBankManager {
+class CGraphicBankManager { public:
     unsigned char _pad00[0x58]; list m_loadingA; unsigned char _pad5c[8]; list m_loadingB;
     void ProcessLoading(CRetailVector_ptr& out);
 };

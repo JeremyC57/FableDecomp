@@ -9,7 +9,7 @@
 //        CTCDivineWrath copy of this body is 0x0078E900.
 // Shape: the out-parameter GetInterface template (component left in eax, `mov ecx,eax` after the push); both lookup keys
 //        share the `push ecx` frame word.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -59,7 +59,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCCreatureModeManager {                     // interface 0x31
+class CTCCreatureModeManager { public:                     // interface 0x31
     void RemoveMode(unsigned long mode);            // 0x0073ABA0
 };
 
@@ -72,7 +72,7 @@ struct CTCHitState_8b {                             // interface 0x8B component 
     long ResetHitFrame;                             // +0x1C
 };
 
-struct CTCUnholyPower {
+class CTCUnholyPower { public:
     virtual void v00();
     void ResetCreatureHitState(CIntelligentPointerCreature creature);
 };

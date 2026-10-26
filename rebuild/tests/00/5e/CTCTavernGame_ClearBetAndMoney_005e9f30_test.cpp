@@ -1,8 +1,8 @@
 // Behaviour test for CTCTavernGame::ClearBetAndMoney (0x005E9F30): every handle in the three display vectors is cleared;
 // a primitive held by one handle is notified (slot 3) and destroyed (slot 1), a shared one is only decremented.
 #include <cstdio>
-struct CEnginePrimitiveHandle;
-struct CEnginePrimitive {
+class CEnginePrimitiveHandle;
+class CEnginePrimitive { public:
     int notified, destroyed;
     CEnginePrimitiveHandle* lastHandle;
     virtual void v00() { }
@@ -12,7 +12,7 @@ struct CEnginePrimitive {
     long RefCount;
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     virtual ~CEnginePrimitiveHandle() { }
     CEnginePrimitive* P;
     long GetRefCount() const { return P ? P->RefCount : 0; }
@@ -34,7 +34,7 @@ struct CHandleVector {
     CEnginePrimitiveHandle* begin() { return _M_start; }
     CEnginePrimitiveHandle* end() { return _M_finish; }
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void* __vfptr;
     void* ParentThing;
     unsigned char _pad08[0x44 - 0x08];

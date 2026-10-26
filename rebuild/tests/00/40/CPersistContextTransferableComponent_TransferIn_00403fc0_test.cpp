@@ -5,8 +5,8 @@
 #ifndef _MSC_VER
 #define _snprintf snprintf
 #endif
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
 template <class T> struct CPersistTraits {
     T DefaultVal;

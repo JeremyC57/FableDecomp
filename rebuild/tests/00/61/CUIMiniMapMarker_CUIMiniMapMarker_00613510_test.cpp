@@ -3,11 +3,11 @@
 
 static const char* g_lastText = 0;
 static long g_lastLength = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString(const char* text, long length) { m_text = text; g_lastText = text; g_lastLength = length; }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };

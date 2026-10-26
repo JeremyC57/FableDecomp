@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCTrespasser {
+class CTCTrespasser { public:
     long GetDeedType(long trespassType)
     {
         switch (trespassType) {

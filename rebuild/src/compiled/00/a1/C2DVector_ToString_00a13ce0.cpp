@@ -9,8 +9,8 @@
 // left in edx), ~CCharString @ 0x0099EAE0 (six temporaries). Strings "(" @ 0x0122E028, ", " @ 0x012397CC, ")" @ 0x0122E020.
 // Shape: `CCharString("(") + FormatDouble(2, X) + ", " + FormatDouble(2, Y) + ")"` -- VC evaluates the operands right to
 // left (")" pushed first, then Y, then X), the final operator+ writes straight into the hidden result.
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     CCharString(const char* text, long length = -1);                         // 0x0099EBF0
     ~CCharString();                                                          // 0x0099EAE0
@@ -20,8 +20,8 @@ struct CCharString
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 
-struct C2DVector
-{
+class C2DVector
+{ public:
     float X, Y;
     CCharString ToString() const;
 };

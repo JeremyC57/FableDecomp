@@ -5,8 +5,8 @@
 #endif
 #include <string.h>
 // Behaviour test for NCreatureMode::CModeStrafe::UpdateWeaponState (0x008E9950).
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -15,7 +15,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     const SEntry* LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;           // +0x44
@@ -53,12 +53,12 @@ struct CThing {
     }
 };
 
-struct CTCCarrying {                       // interface type 0x46
+class CTCCarrying { public:                       // interface type 0x46
     CThing* primary;
     CThing* GetThingInPrimarySlot() const { return primary; }
 };
 
-struct CTCWeapon {                         // interface type 0x48
+class CTCWeapon { public:                         // interface type 0x48
     bool usable; mutable CThing* lastUser;
     bool IsUsableBy(CThing* user) const { lastUser = user; return usable; }
 };

@@ -3,7 +3,7 @@
 static const unsigned long g_InvalidSoundHandle = 0xFFFFFFFFu;
 static long g_played;
 struct CTCSound { unsigned long PlaySound(long name, bool, long, long, long) { g_played = name; return 42; } };
-struct CThing { CTCSound* sound; bool GetInterface(CTCSound** out, long t) { if (t == 16 && sound) { *out = sound; return true; } return false; } };
+class CThing { public: CTCSound* sound; bool GetInterface(CTCSound** out, long t) { if (t == 16 && sound) { *out = sound; return true; } return false; } };
 struct CDef { long LoopingSound; };
 struct CSpell { CThing* Owner; const CDef* Def; unsigned long LoopingSound;
     void ResumeForCutscene() {

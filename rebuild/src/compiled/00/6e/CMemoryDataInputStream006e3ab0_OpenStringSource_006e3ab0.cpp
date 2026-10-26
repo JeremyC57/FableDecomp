@@ -2,12 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E3AB0, length 96 bytes.
 // Leaf: OpenStringSource
 // Callees: Calc @ 0x004014A0, CVectorMap::LookupValue @ 0x009CC410, 0x006E3890 (labelled CTCTalk::PlaySpeech). The chunk label is propagated; named by address. Shape: the map read before the string, `this` in esi, the map in edi, `ret 10h`.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }

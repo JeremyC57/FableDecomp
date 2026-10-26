@@ -2,7 +2,7 @@
 #include <new>
 
 // Model of std::__uninitialized_fill_n over CEngineCamera::CDebugScriptElement: n placement copies, returns first + n.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }

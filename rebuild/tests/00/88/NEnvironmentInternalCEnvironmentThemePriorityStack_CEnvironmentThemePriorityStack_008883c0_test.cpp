@@ -42,7 +42,7 @@ public:
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStackEntry {
 public:
-    class CThemeWeight { public: long ThemeID; float Weight; };
+    struct CThemeWeight { public: long ThemeID; float Weight; };
     float                BaseWeight;
     bool                 BaseWeightLocked;
     CArray<CThemeWeight> Themes;

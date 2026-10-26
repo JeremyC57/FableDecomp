@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_freed = 0;
-struct CCombatTypeDef { float thickness[4]; };
+class CCombatTypeDef { public: float thickness[4]; };
 struct CCombatRing {
     int Index; float RingThickness; void* m_prongs;
     CCombatRing(int index, const CCombatTypeDef& def) : Index(index), RingThickness(def.thickness[index]), m_prongs(std::malloc(4)) {}

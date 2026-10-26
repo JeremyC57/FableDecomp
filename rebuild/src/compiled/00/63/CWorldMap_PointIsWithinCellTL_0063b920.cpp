@@ -6,8 +6,8 @@
 // gives the int-valued `mov eax,1` / `xor eax,eax` exits.
 // Name note: 0x0063B890 / 0x0063B920 / 0x0063B9B0 / 0x0063BA30 all carry propagated TL/BR labels; the
 // geometry (origin corner = TL: fx+fy <= 1) identifies this one as TL.
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X;
     float Y;
     float Z;

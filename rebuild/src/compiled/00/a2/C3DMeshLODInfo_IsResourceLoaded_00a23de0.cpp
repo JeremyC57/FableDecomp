@@ -2,11 +2,11 @@
 // (CBankFileAsyncData::IsFinished, 0x009D54E0); no record means already resident.
 // The non-null case is tested first so the `return true` block lands last, which is
 // the layout retail emitted.
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished();
 };
 
-struct C3DMeshLODInfo {
+class C3DMeshLODInfo { public:
     char m_leading[0x24];
     CBankFileAsyncData* m_pAsyncData;
     bool IsResourceLoaded();

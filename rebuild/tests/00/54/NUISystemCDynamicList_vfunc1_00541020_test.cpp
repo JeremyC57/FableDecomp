@@ -6,7 +6,7 @@
 // +0x19c and ScrollingChildren +0x1a4 are retail +0x16c/+0x174 (base -0x30).
 // Update is recovered from base call/slot 1. State-accessor names are inferred.
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void Slot000() = 0;
     virtual void Update(float delta) = 0;
     virtual void Slot002() = 0;
@@ -96,10 +96,10 @@ struct CComponent {
     virtual int GetActiveState() = 0;
     virtual int GetInactiveState() = 0;
 };
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
     void Update(float delta); // 0x0052c7e0
 };
-struct CDynamicList : CChangingStateComponent {
+class CDynamicList : public CChangingStateComponent { public:
     unsigned char InheritedState[0x168-4];
     int TopIndex;
     int SelectionIndex;

@@ -3,26 +3,26 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_strCtors = 0, g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1) : m_pData((void*)text) { ++g_strCtors; CHECK(length == -1); }
     ~CCharString() { ++g_strDtors; }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*        m_vtable;
     CBaseObject* m_pItem;
     CBaseObject* GetPItem() const { return m_pItem; }
 };
 static int g_deleted = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy() {}
     virtual void Delete() { ++g_deleted; }
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -37,11 +37,11 @@ template <class T> struct CDefHolder {
     T* operator->() const { return Object; }
 };
 static bool g_found = false; static long g_effect = 0; static int g_lookups = 0; static const char* g_lookupName = 0;
-struct CSpecialEffectsDef : CDefPointeeBase {
+class CSpecialEffectsDef : public CDefPointeeBase { public:
     bool CalcAndLookup(const CCharString& name, long* value) { ++g_lookups; g_lookupName = (const char*)name.m_pData; *value = g_effect; return g_found; }
 };
 static CSpecialEffectsDef* g_effects = 0; static int g_getSubDef = 0; static long g_countAtGet = -1;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
     {
         ++g_getSubDef; g_countAtGet = m_refCount;
@@ -60,7 +60,7 @@ template <class T> struct CDefCopy {
     T* operator->() const { return Object; }
 };
 static C3DVector g_position = { 7, 8, 9 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;
     const C3DVector& GetPosition() const { return g_position; }
@@ -68,7 +68,7 @@ struct CThing {
 static int g_creates = 0; static long g_createDef = -1; static const C3DVector* g_createPos = 0;
 CThing* __fastcall Create(long defIndex, const C3DVector& position, long flags) { ++g_creates; g_createDef = defIndex; g_createPos = &position; CHECK(flags == 0); return 0; }
 static int g_setAnim = 0; static const char* g_animName = 0; static int g_baseInit = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() {}
     long                    _pad04;
     CBaseIntelligentPointer POwner;
@@ -84,7 +84,7 @@ struct CCombatActionBase {
         return out.Object;
     }
 };
-struct CCreatureAction_ScorpionKingDeath : CCombatActionBase {
+class CCreatureAction_ScorpionKingDeath : public CCombatActionBase { public:
     void Initialise();
 };
 void CCreatureAction_ScorpionKingDeath::Initialise()

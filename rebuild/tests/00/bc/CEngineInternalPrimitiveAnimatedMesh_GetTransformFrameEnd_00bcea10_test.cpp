@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMatrix3x4 { int tag; };
+class CMatrix3x4 { public: int tag; };
 
 static CMatrix3x4* g_m;
 static void* g_sub;

@@ -11,7 +11,7 @@ struct SCountBlock {
 };
 static void DestroyObj(void* p) { ++g_destroyed; (void)p; }
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     ~CCountedPointer()
@@ -27,11 +27,11 @@ template<class T> struct CCountedPointer {
         m_pCount = 0;
     }
 };
-struct CCharString { void* PStringData; ~CCharString() { ++g_strings; } };
-struct CWideString { void* PStringData; ~CWideString() { ++g_strings; } };
-struct CInitBaseClass { bool m_initialised; CInitBaseClass() : m_initialised(true) {} virtual ~CInitBaseClass() { ++g_base; } };
+class CCharString { public: void* PStringData; ~CCharString() { ++g_strings; } };
+class CWideString { public: void* PStringData; ~CWideString() { ++g_strings; } };
+class CInitBaseClass { public: bool m_initialised; CInitBaseClass() : m_initialised(true) {} virtual ~CInitBaseClass() { ++g_base; } };
 struct X;
-struct CSystemManager : CInitBaseClass {
+class CSystemManager : public CInitBaseClass { public:
     CCountedPointer<X> LibDebugManager, PInputManager, PDisplayManager;
     X* DebugManager;
     CCountedPointer<X> PGraphicBankManager, PMeshBankManager, PFontManager, PExtraManager;

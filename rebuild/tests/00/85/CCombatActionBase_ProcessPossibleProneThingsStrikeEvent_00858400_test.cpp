@@ -9,8 +9,8 @@ static int fails = 0;
 // Leaf: ?ProcessPossibleProneThingsStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (CRT import thunk)
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
 };
 namespace std {
@@ -80,7 +80,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -100,9 +100,9 @@ struct CThing {
         return false;
     }
 };
-struct CThingGameObject : CThing { };
-namespace NHitLocations { struct CHitLocation; }
-struct CTCHitLocations {                        // interface type 0x7F
+class CThingGameObject : public CThing { public: };
+namespace NHitLocations { class CHitLocation; }
+class CTCHitLocations { public:                        // interface type 0x7F
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithTriangle(const CVector<C3DVector>& triangle,
         C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008169B0
 };
@@ -118,7 +118,7 @@ void __fastcall ProcessFramesRunningForOnHitWithParams(float& runningTime, float
     const C3DVector& hitPosition);              // 0x00856040 (file-static)
 }
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();               // slot 3 (+0x0c)
     virtual void v04();
@@ -205,7 +205,7 @@ struct CCombatActionBase {
     bool  HitThing;                             // +0xe8
     unsigned char _pade9[3];
     long  FrameUpdatePauseFrames;               // +0xec
-    struct CStrikeEvent {
+    class CStrikeEvent { public:
         unsigned char _pad00[0x1c];
         CVector<CThingGameObject*> StruckThingList;   // +0x1c
     };

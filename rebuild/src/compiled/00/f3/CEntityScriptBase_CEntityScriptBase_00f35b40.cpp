@@ -10,7 +10,7 @@
 // vptr, PImp CCountedPointer<CScriptThing> +4/+8 -- engine/CScriptThing.h flattens the vptr into a data member, so the
 // polymorphic classes are declared here).
 // Shape: /O2.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

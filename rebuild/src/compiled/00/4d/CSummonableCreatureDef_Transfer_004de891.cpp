@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
 struct CMember { int x; };
 
-struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     void TransferFloat(CMember* value);             // 0x00431061 Transfer(float&)
     void TransferDefString(CMember* value);         // 0x0045228F Transfer(CDefString&): dword write / CDefString read 0x0044FC00
 };
 
-struct CGuildMasterDef {
+class CGuildMasterDef { public:
     unsigned char pad0[0x28];
     CMember m28;
     CMember m2c;

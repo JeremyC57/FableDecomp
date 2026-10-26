@@ -19,9 +19,9 @@ static int fails = 0;
 // Shape: the category out value shares the lookup key's frame word; a NAMED CCharString line destroyed on both returns.
 // Engine header names for the state group; the header flattens the base, so the class is modelled locally.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -32,7 +32,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -69,12 +69,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -108,7 +108,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
     CCharString& operator+=(const CCharString& other);   // 0x0099F0A0
@@ -118,14 +118,14 @@ struct CCharString {
 extern CCharString g_WifeAppearanceLinePrefix[];    // 0x013BAB40 (indexed by EWifeAppearanceCategories)
 extern CCharString g_WifeAppearanceLineSuffix[];    // 0x013BABD0
 
-struct CTCWife {
+class CTCWife { public:
     bool GetAppearanceChangedNoticed(long* category);   // 0x006CED50
     void ClearAppearanceChangedNoticed(const long* category);   // 0x006CECD0
 };
 
 enum EOpinionAttitudeType { OPINION_ATTITUDE_NONE };
 
-struct CAIStateGroup_OpinionReactionRoot : CAIStateGroupBase {
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     CWorld* GetPWorld();                        // 0x008FCFC0 (CAIStateGroupBase)
     long SayToThingReactingTo(const CCharString& line);  // 0x0095EE70
     bool WifeClothingUpdate(EOpinionAttitudeType attitude);

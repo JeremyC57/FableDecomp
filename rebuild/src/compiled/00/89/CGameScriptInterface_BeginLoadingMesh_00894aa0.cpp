@@ -11,13 +11,13 @@
 #include "fable_string.h"
 #include "engine/_quarantine/CThingObjectDef.h"
 #include "engine/_quarantine/CThingCreatureDef.h"
-struct CEngineGraphic {unsigned long BankIndex;float AnimStep,RenderSizeX;bool AdditiveAlpha;unsigned char Type;};
+class CEngineGraphic { public:unsigned long BankIndex;float AnimStep,RenderSizeX;bool AdditiveAlpha;unsigned char Type;};
 struct CDefPointeeNative {void* VTable;long References;};
 union DefReleaseSlot {void* Native;void(CDefPointeeNative::*Release)();};
 struct CThingObjectDefNative:CDefPointeeNative {unsigned char BeforeGraphic[0x68];CEngineGraphic Graphic;};
 struct CThingCreatureDefNative:CDefPointeeNative {unsigned char BeforeGraphic[0xf8];CEngineGraphic Graphic;};
 __forceinline void ReleaseDef(CDefPointeeNative* p){if(--p->References==0)(p->*reinterpret_cast<DefReleaseSlot*>(p->VTable)[1].Release)();}
-template<class T>struct CDefPointer {T* Object;CDefPointer():Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)++Object->References;}~CDefPointer(){if(Object)ReleaseDef(Object);}void Reset(T* p){if(Object!=p){if(Object){ReleaseDef(Object);Object=0;}Object=p;if(p)++p->References;}}};
+template<class T>class CDefPointer { public:T* Object;CDefPointer():Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)++Object->References;}~CDefPointer(){if(Object)ReleaseDef(Object);}void Reset(T* p){if(Object!=p){if(Object){ReleaseDef(Object);Object=0;}Object=p;if(p)++p->References;}}};
 struct CDefinitionManagerMethods:CDefinitionManager {static CDefinitionManagerMethods& Get();CDefPointer<CDefPointeeNative> GetPDefByName(const CCharString&);bool GetObjectDef(const CCharString&,CDefPointer<CThingObjectDefNative>&);bool GetCreatureDef(const CCharString&,CDefPointer<CThingCreatureDefNative>&);};
 #pragma auto_inline(off)
 bool CDefinitionManagerMethods::GetObjectDef(const CCharString& meshName,CDefPointer<CThingObjectDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(meshName);if(p.Object){out.Reset(static_cast<CThingObjectDefNative*>(p.Object));return true;}return false;}

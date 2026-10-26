@@ -1,7 +1,7 @@
 #include <cstdio>
 static const float g_zero = 0.0f;
 struct CThingPlacement { float angle; virtual float GetAngleXY() const { return angle; } virtual ~CThingPlacement() { } };
-struct CThing { CThingPlacement* m_pPlacement; };
+class CThing { public: CThingPlacement* m_pPlacement; };
 struct CTCWeatherVane {
     CThing* ParentThing; float InitialOffsetXY;
     void OnInitialActivate()

@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CThingGameObject;
+class CThing { public: int id; };
+class CThingGameObject;
 static int g_baseCalls = 0;
 struct CTCBase_Calls {
     virtual void v00() { }
@@ -9,7 +9,7 @@ struct CTCBase_Calls {
 };
 struct CRetailVector_GameObjectPtr { CThingGameObject** First; CThingGameObject** Last; CThingGameObject** End;
     CRetailVector_GameObjectPtr() : First(0), Last(0), End(0) { } };
-struct CTCHitOnCollision : CTCBase_Calls {
+class CTCHitOnCollision : public CTCBase_Calls { public:
     CRetailVector_GameObjectPtr CollidedList; bool DontHitWhenCombatAction, Blockable, PassThroughIfBlocked, PushSideways; float Damage;
     virtual void v00() { }
     CTCHitOnCollision(CThing* thing) : CTCBase_Calls(thing), CollidedList(), DontHitWhenCombatAction(false), Blockable(false),

@@ -30,7 +30,7 @@ struct CCountedPointer_004bb600 {                  // the thing and its count bl
         m_pCount = 0;
     }
 };
-struct CScriptThing : CBase {                      // vtable 0x01238C8C
+class CScriptThing : public CBase { public:                      // vtable 0x01238C8C
     CCountedPointer_004bb600 m_thing;              // +0x04
     virtual ~CScriptThing() {}
 };
@@ -46,7 +46,7 @@ struct CScriptThingListBase_004bb600 {             // the base at +0: the thing 
     }
 };
 
-struct CGameScriptThingManager : CScriptThingListBase_004bb600 {
+class CGameScriptThingManager : public CScriptThingListBase_004bb600 { public:
     CScriptThing m_nullThing;                      // +0x04
     ~CGameScriptThingManager();
 };

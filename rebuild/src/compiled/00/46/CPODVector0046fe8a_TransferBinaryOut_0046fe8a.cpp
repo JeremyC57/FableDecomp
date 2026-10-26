@@ -10,7 +10,7 @@
 //   `size() > 0 ? first : (void*)this` (unsigned `ja`), byte count size() * sizeof; both accessors __forceinline, the
 //   second size() shared by both arguments. Size-optimised TU: #pragma optimize("s", on) (`push 18h ; pop ecx`, `lea ; shl` for the *24).
 #pragma optimize("s", on)
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

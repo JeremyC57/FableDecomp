@@ -15,7 +15,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x3c];
     bool Moving : 1;                            // +0x3c bit 0
     bool OldMoving : 1;

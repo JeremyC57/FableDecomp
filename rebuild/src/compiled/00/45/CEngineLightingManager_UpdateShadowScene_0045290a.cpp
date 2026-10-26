@@ -11,7 +11,7 @@ struct CLocalScene {
     void Fill(void* rendA, void* scene);
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad0[0x18];
     int  mode;                 // +0x18
     char pad1[0x24-0x1c];

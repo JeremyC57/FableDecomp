@@ -1,20 +1,20 @@
 // Behaviour test for CActionDoCreatureAction::Update (0x00712BB0).
 #include <cstdio>
 
-struct CCreatureActionBase { long id; };
+class CCreatureActionBase { public: long id; };
 
 struct CCreatureActionQueue {
     long current;
     long GetCurrentActionID() { return current; }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CCreatureActionQueue* PActionQueue; bool busy; CCreatureActionBase* given;
     bool IsPerformingAnyAction() { return busy; }
     bool SetCurrentAction(CCreatureActionBase* a) { given = a; busy = true; PActionQueue->current = a->id; return true; }
 };
 
-struct CTCScriptedControl { CThingCreatureBase* PThing; };
+class CTCScriptedControl { public: CThingCreatureBase* PThing; };
 
 struct CActionDoCreatureAction {
     CTCScriptedControl* PTCScript; bool Activated; bool Terminated;

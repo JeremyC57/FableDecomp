@@ -2,7 +2,7 @@ struct CInner;
 void __fastcall CConsoleInputBase_dtor_inner(CInner* input);
 extern void __cdecl engine_operator_delete(void* p);
 
-struct CConsoleInputBase {
+class CConsoleInputBase { public:
     unsigned int vftable;
     char inner[0xb4];
     void* tex;

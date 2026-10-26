@@ -23,7 +23,7 @@ class C3DVector { public:
 };
 
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     void UpdateFixLookDirection(const C3DVector& pos, const C3DVector& target, C3DVector& lookDir, float angle);
 };
 

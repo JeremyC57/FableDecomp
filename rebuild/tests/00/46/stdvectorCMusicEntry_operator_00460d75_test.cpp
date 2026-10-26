@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <new>
 // behaviour test: std::vector<CMusicEntry>::operator= -- the three STLport paths (grow, shrink-copy, copy + construct tail)
-struct CMusicEntry { int a; int b; float c; int d; };
+class CMusicEntry { public: int a; int b; float c; int d; };
 static int g_allocs = 0, g_clears = 0;
 struct CMusicEntryVector {
     typedef CMusicEntry* pointer;

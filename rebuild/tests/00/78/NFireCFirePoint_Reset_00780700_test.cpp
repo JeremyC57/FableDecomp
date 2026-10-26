@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_strings;
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* text, long = -1) : p(text) { ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CTCBase { int dummy; };
+class CTCBase { public: int dummy; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -42,7 +42,7 @@ static CThing* Create(const CCharString& defName, const C3DVector& position, boo
     return flag ? 0 : &g_spawned;
 }
 static int g_attached; static CThing* g_attachThing; static long g_attachType, g_attachIndex; static const char* g_attachName;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     int id;
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float delay)
     { ++g_attached; g_attachThing = thing; g_attachType = attachType; g_attachName = helperName.p; g_attachIndex = helperIndex; if (delay != 0.0f) g_attached = 100; }

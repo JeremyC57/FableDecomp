@@ -8,7 +8,7 @@
 // The evil-ending twin of 0x00E2BAC0 (which reads MoralityGood +0x2b4).
 // Shape: each argument is read through the def global and pushed as a dword (a float lvalue argument is copied with
 // integer moves); the interface pointer is re-read from +0x40 for each call.
-struct CGameScriptInterface {                       // retail vtable @ 0x01260F0C
+class CGameScriptInterface { public:                       // retail vtable @ 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -35,7 +35,7 @@ struct CGameScriptInterface {                       // retail vtable @ 0x01260F0
     virtual void GiveHeroRenownPoints(long amount) const;  // slot 161 (+0x284)
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x2a8];
     long AmbushScamExperience;                           // +0x2a8
     long AmbushScamRenown;                               // +0x2ac

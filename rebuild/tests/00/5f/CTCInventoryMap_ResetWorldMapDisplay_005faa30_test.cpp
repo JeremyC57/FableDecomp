@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for 0x005FAA30: the map is shown and the active region comes from world -> region map -> index.
 struct CWorldRegionMap { long index; long GetActiveRegionIndex() { return index; } };
-struct CWorld { CWorldRegionMap* map; virtual CWorldRegionMap* GetRegionMap() { return map; } };
+class CWorld { public: CWorldRegionMap* map; virtual CWorldRegionMap* GetRegionMap() { return map; } };
 static CWorld* g_world = 0;
 struct CTCInventoryBase { virtual void v00() {} CWorld* GetWorld() const { return g_world; } };
-struct CTCInventoryMap : CTCInventoryBase {
+class CTCInventoryMap : public CTCInventoryBase { public:
     bool WorldMapActive; long ActiveRegionIndex; long NumRegions;
     virtual void v00() {}
     void ResetWorldMapDisplay();

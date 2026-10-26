@@ -11,7 +11,7 @@
 // Shape: `if (!IsThingAlive(PParticleEmitter))` over the intelligent pointer (GetPItem for the null test
 // and again for the dead bit); the name is the by-value temporary of an inline CDefString::GetString()
 // destroyed after the call; `value <= 0.0f` gives `test ah,41h ; jp`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                 // 0x0099EAE0
 };
@@ -21,12 +21,12 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_DefStringTable;            // 0x013CA828
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CCharString GetString() const { return g_DefStringTable.GetString(TablePos); }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                     // +0x91 (bit 0 = dead)
     unsigned char _pad92[0xb4 - 0x92];
@@ -45,14 +45,14 @@ inline bool IsThingAlive(const CBaseIntelligentPointer& p)
     return p.GetPItem() && !(p.GetPItem()->m_stateFlags & 1);
 }
 
-struct CCoopSpiritDef {
+class CCoopSpiritDef { public:
     unsigned char _pad00[0x30];
     CDefString    AppearanceParticle;               // +0x30
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     virtual void v00();
     CThing*         ParentThing;                    // +0x04 (CTCBase)
     unsigned char   _pad08[4];

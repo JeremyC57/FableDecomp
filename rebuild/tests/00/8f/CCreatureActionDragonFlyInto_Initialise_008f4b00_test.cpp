@@ -5,17 +5,17 @@
 #include <cstring>
 #include <cmath>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 static char g_anim[32]; static int g_baseInit = 0, g_modesAdded = 0;
 static C3DVector g_modePos; static float g_modeSpeed = 0; static CThing* g_modeCreature = 0;
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} };
-struct CAnimSet { float StartFraction, CurrentFraction; };
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
+class CAnimSet { public: float StartFraction, CurrentFraction; };
 static CAnimSet* g_set = 0; static long g_bank = -1;
-struct CTCCreatureModeManager;
-struct CThing { CTCCreatureModeManager* Modes; bool GetInterface(CTCCreatureModeManager** out, long) { if (!Modes) return false; *out = Modes; return true; } };
+class CTCCreatureModeManager;
+class CThing { public: CTCCreatureModeManager* Modes; bool GetInterface(CTCCreatureModeManager** out, long) { if (!Modes) return false; *out = Modes; return true; } };
 CAnimSet* GetSingleActionAnimSet(CThing*, long bank) { g_bank = bank; return g_set; }
-struct CAnimationEntry { long BankIndex; };
+class CAnimationEntry { public: long BankIndex; };
 static long g_framesPerSecond = 10;
 struct C3DVectorVector { C3DVector Data[4]; C3DVector& operator[](long i) { return Data[i]; } };
 struct CCountedActionPointer { int Id; };
@@ -24,9 +24,9 @@ struct CModeDragonFlying {
     { g_modeCreature = c; g_modePos = pos; g_modeSpeed = speed; }
 };
 struct CCountedModePointer { CModeDragonFlying* m_pObject; CCountedModePointer(CModeDragonFlying* o) : m_pObject(o) {} };
-struct CTCCreatureModeManager { bool AddMode(CCountedModePointer m) { ++g_modesAdded; delete m.m_pObject; return true; } };
+class CTCCreatureModeManager { public: bool AddMode(CCountedModePointer m) { ++g_modesAdded; delete m.m_pObject; return true; } };
 struct CPtr { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CPtr PCreature; long TotalTime; float RunningTimeSeconds; CAnimationEntry* PAnimEntry; long Delay; float StartRun;
     long GetAnimDelayTime() { return Delay; }
     float GetStartRunningTimeSeconds() { return StartRun; }

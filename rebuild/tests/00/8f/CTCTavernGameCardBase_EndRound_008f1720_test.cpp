@@ -17,9 +17,9 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
 
-struct CTCBase;
-struct CCard;
-struct CThingObject;
+class CTCBase;
+class CCard;
+class CThingObject;
 
 struct CCardVector {                            // STLport vector<CCard*> (12 bytes)
     CCard** _M_start;
@@ -32,14 +32,14 @@ struct CCardVector {                            // STLport vector<CCard*> (12 by
     }
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 
 namespace NGraphicAppearance {
 enum EAppearanceMeshEffectPriority { APPEARANCE_MESH_EFFECT_PRIORITY_3 = 3 };
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAsHighlighted(float a, float b, const CRGBColour& colour, bool c, bool d, EAppearanceMeshEffectPriority priority,
                           void* owner);       // 0x004C04C0
 };
@@ -51,7 +51,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -64,11 +64,11 @@ struct CThing {
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CCard {
+class CCard { public:
     CThing* Thing;                              // +0x00 CThingObject*
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _body04[0xf0 - 0x04];         // CTCBase + CTCTavernGame members (retail 0xF0)
     void EndRound();                            // 0x005E9AA0

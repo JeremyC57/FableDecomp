@@ -8,7 +8,7 @@
 // `CTCBase_Calls` (as the landed 0x007AEE10 / 0x007B2720); slot names are descriptive.
 // Shape: `mode == 1 || mode == 3` with the mode loaded once; the slot-23 test and the forward share
 // the exit, the `&&` folds into one `if` around the forward.
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                     // +0x18 EMode
 };

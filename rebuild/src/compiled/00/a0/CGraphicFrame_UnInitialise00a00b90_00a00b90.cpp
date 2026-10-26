@@ -38,7 +38,7 @@ struct CGraphicFrameData_00a00b90 {                   // the shared frame data: 
     }
 };
 
-struct CGraphicFrame {
+class CGraphicFrame { public:
     CGraphicFrameData_00a00b90* m_pData;                // +0x00
     void UnInitialise_00a00b90();
 };

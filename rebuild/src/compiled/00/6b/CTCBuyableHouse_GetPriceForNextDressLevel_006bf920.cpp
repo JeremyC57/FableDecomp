@@ -17,8 +17,8 @@ struct CRetailVector                                // retail std::vector: {firs
     const T& operator[](unsigned int i) const { return _First[i]; }
 };
 
-struct CBuyableHouseDef
-{
+class CBuyableHouseDef
+{ public:
     unsigned char       _pad_0x00[0x28];
     CRetailVector<long> Price;                      // +0x28
     CRetailVector<long> Rent;                       // +0x34
@@ -27,8 +27,8 @@ struct CBuyableHouseDef
 };
 
 #pragma pack(push, 1)
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     void*         ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

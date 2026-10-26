@@ -14,7 +14,7 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
 };
@@ -29,7 +29,7 @@ struct CCountedPointer {
     }
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     CCharString Name;                       // +0
     CCountedPointer PImp;                   // +4
 };

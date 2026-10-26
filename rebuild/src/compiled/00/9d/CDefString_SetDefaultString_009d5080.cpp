@@ -4,7 +4,7 @@
 // byte is read directly @ 0x013CA85C = table + 0x34).
 // PDB CDefStringTable (64 bytes): StringMap +0, StringStream +16, StringCount +44, SharedCount +48, RandomID +52,
 // TableFilename +56, bool Locked +60; retail map (12) and stream (24) are 8 bytes smaller in all, so Locked is +0x34.
-struct CCharString;
+class CCharString;
 
 struct CDefStringTable {
     unsigned char _pad[0x34];                      // +0x00 StringMap, StringStream, counts, random id, filename
@@ -15,7 +15,7 @@ struct CDefStringTable {
 
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 
-struct CDefString {
+class CDefString { public:
     long TablePos;                                 // +0
     void SetDefaultString(const CCharString& text);
 };

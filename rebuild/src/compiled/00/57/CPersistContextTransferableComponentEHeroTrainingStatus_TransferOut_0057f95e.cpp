@@ -2,8 +2,8 @@
 // Byte-exact reconstruction of
 // CPersistContext_TransferableComponent<NUISystem::ETextAlignement>::TransferOut @ 0x0057f95e
 
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 typedef int ETextAlignement;
 
 struct CPersistContext_TransferableComponent {

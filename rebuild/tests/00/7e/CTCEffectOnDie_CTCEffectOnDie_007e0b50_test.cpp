@@ -2,7 +2,7 @@
 // string default-constructed, Pausable true, Paused false.
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseParent = 0;
 static int g_stringCtors = 0;
 struct CTCBase_Calls {
@@ -10,11 +10,11 @@ struct CTCBase_Calls {
     unsigned char _body[0x8];
     CTCBase_Calls(CThing* parent) { g_baseParent = parent; }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString() : m_pData(0) { ++g_stringCtors; }
 };
-struct CTCEffectOnDie : CTCBase_Calls {
+class CTCEffectOnDie : public CTCBase_Calls { public:
     bool        StartedNonRecoverableFadeout;
     long        Effect;
     long        Timer;

@@ -1,12 +1,12 @@
 // Behaviour test for 0x00A90700 C3DPrimitive2::C3DPrimitive2
 #include <cstdio>
 #include <new>
-struct C3DBoundingSphere { long m_x, m_y, m_z, m_r; C3DBoundingSphere() : m_x(0), m_y(0), m_z(0), m_r(0) {} };
-template<class T> struct CArray { T* m_begin; T* m_end; T* m_capacity; CArray() : m_begin(0), m_end(0), m_capacity(0) {} };
+class C3DBoundingSphere { public: long m_x, m_y, m_z, m_r; C3DBoundingSphere() : m_x(0), m_y(0), m_z(0), m_r(0) {} };
+template<class T> class CArray { public: T* m_begin; T* m_end; T* m_capacity; CArray() : m_begin(0), m_end(0), m_capacity(0) {} };
 template<class T> struct scoped_ptr { T* m_p; scoped_ptr() : m_p(0) {} };
-template<class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) {} };
-struct C3DTextureStages { long D, B; bool U; C3DTextureStages() : D(-1), B(-1), U(false) {} };
-struct C3DPrimitive2 {
+template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) {} };
+class C3DTextureStages { public: long D, B; bool U; C3DTextureStages() : D(-1), B(-1), U(false) {} };
+class C3DPrimitive2 { public:
     long MaterialIndex, RepeatingMeshReps; C3DBoundingSphere BoundingSphere; float AverageTextureStretch;
     CArray<int> ClothPrimitives; scoped_ptr<int> Data, VertexBuffer, IndexBuffer;
     unsigned long VertexBufferStatus, IndexBufferStatus, StaticBlockCount; void* StaticBlocks;

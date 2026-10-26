@@ -10,7 +10,7 @@
 // Shape: the inline CVectorMap find (lower bound, then `it == end || id < it->first` -> end) and `if (it != end()) return it->second;` (found arm first) that
 //        re-reads end (`cmp eax,[edi+34h]`); the key is the argument's own slot (`lea eax,[esp+0Ch]`).
 class CASoundBank;
-template <class K, class V> struct CVectorMap {
+template <class K, class V> class CVectorMap { public:
     struct SEntry { K first; V second; };
     SEntry* _M_start;
     SEntry* _M_finish;

@@ -8,7 +8,7 @@ struct IDirect3DVolume9 {
 };
 static unsigned long g_VolumeMemoryBytes = 0, g_GraphicsMemoryBytes = 0;
 static unsigned long g_byteLength = 0;
-struct CVolume {
+class CVolume { public:
     void* __vftable;
     IDirect3DVolume9* PD3DVolume;
     void ReleaseVolume() { if (PD3DVolume) { PD3DVolume->Release(); PD3DVolume = 0; } }

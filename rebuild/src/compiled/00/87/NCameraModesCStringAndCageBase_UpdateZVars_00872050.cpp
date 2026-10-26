@@ -13,13 +13,13 @@
 // Retail layout (Ego_r.pdb - 0x24 for this class, as the landed CStringAndCage ctor 0x0069DE30): CBase::CameraManager +0x40,
 //   ViewOccluded +0xA0; DesiredHeightOffset +0xA4, CurrentHeightOffset +0xB0. CGameCameraManager (retail): MinWorldHeight
 //   +0xF8, MaxWorldHeight +0xFC, LimitMinMaxWorldHeight +0x152 (PDB +0x108 / +0x10C / +0x16E).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     const C3DVector& GetPosition() const;                  // 0x004C73D0
 };
 class CThingGameObject : public CThing { };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char _pad000[0xf8];
     float         MinWorldHeight;                          // +0xf8
     float         MaxWorldHeight;                          // +0xfc

@@ -10,7 +10,7 @@
 // OverlaidBlends } is 24 bytes in the PDB but 20 in retail (STLport vectors are 12 bytes, not the PDB's 16). The
 // implicit operator= moves the key pair and the two longs and calls the out-of-line vector operator= @ 0x006CADE0;
 // the count lives in the dead `result` argument slot, src/dst and src+0x10/dst+0x10 are the two pointer pairs.
-struct CCompositeBlendDesc;
+class CCompositeBlendDesc;
 
 template <class T>
 struct CRetailVector {                           // STLport vector<T>: 12 bytes
@@ -20,7 +20,7 @@ struct CRetailVector {                           // STLport vector<T>: 12 bytes
     CRetailVector& operator=(const CRetailVector& other);   // 0x006CADE0 for CCompositeBlendDesc
 };
 
-struct CEngineTextureDecal {                     // Ego_r.pdb names; 20 bytes in retail
+class CEngineTextureDecal { public:                     // Ego_r.pdb names; 20 bytes in retail
     long                                OriginalTextureIndex;   // +0x00
     long                                DecalID;                // +0x04
     CRetailVector<CCompositeBlendDesc>  OverlaidBlends;         // +0x08

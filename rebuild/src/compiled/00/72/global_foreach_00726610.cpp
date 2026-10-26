@@ -15,12 +15,12 @@
 class CThingCreatureBase;
 class CTCPhysicsBase;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
-struct CApplyAdditionalPlayerImpulseIfTooClose {    // 20 bytes (PDB)
+class CApplyAdditionalPlayerImpulseIfTooClose { public:    // 20 bytes (PDB)
     C3DVector       Position;                       // +0x00
     float           Radius;                         // +0x0c
     CTCPhysicsBase* Owner;                          // +0x10

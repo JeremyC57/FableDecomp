@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesBulletTimeDef { int f0; };
+class CSpecialAbilitiesBulletTimeDef { public: int f0; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 static void* g_deleted = 0;

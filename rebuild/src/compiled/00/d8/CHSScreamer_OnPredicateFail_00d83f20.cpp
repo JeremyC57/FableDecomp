@@ -9,11 +9,11 @@
 // NewSuperScreamerTimer +0x68 -- the PDB offsets sit 0x18 higher), PMasterData +0x18, SuperScreamer +0x1c,
 // SuperScreamerEffect +0x20.
 // Shape: `BarToFill += def` loads the def first (`fld def ; fadd member`); the parent is re-read for every access.
-struct CScriptThing {                              // 12 bytes (vtable 0x01238C8C, word aligned)
+class CScriptThing { public:                              // 12 bytes (vtable 0x01238C8C, word aligned)
     void* __vftable;
     long  m_data[2];
 };
-struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
+class CGameScriptInterface { public:                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -93,13 +93,13 @@ struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vta
     virtual void v540(); virtual void v541(); virtual void v542();
     virtual void EntityEndScreamerSuperAttackThing(const CScriptThing& thing) const;   // slot 543 (+0x87c)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xc78];
     float         ScreamerBarIncrease;             // +0xc78
     unsigned char _padc7c[8];
     long          SuperScreamerTimerTime;          // +0xc84
 };
-struct CTimer {
+class CTimer { public:
     long Handle;                                   // +0x00
 };
 struct CQ_HeroSoulsMotherScript {

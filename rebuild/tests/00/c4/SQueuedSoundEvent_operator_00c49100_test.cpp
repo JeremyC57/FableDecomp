@@ -6,7 +6,7 @@ struct CIntelligentPointer {
     virtual ~CIntelligentPointer() { }
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { m_pItem = o.m_pItem; ++g_ptrAssigns; return *this; }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct SFourWords { unsigned int m_words[4]; };
 struct SQueuedSoundEvent {
     unsigned int m_id, m_kind; C3DVector m_position; CIntelligentPointer m_creature; unsigned int m_param1C, m_param20;

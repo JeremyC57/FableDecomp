@@ -6,7 +6,7 @@
 // item re-fetched for every use (each GetPItem is a call, so nothing is CSE'd); the virtual call
 // with an argument evaluates the object first and pushes the creature afterwards. Bool result
 // (`mov al,1` / shared `xor al,al`); the pointer's address is formed once into esi.
-struct CThing;
+class CThing;
 
 struct CVillageTaskThing {
     virtual void v00(); virtual void v01(); virtual void v02();
@@ -22,12 +22,12 @@ struct CBaseIntelligentPointer {
     CVillageTaskThing* GetPItem();              // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

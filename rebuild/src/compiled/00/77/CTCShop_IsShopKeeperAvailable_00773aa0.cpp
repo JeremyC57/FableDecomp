@@ -33,7 +33,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20
     CInterfaceMap m_interfaces;                     // +0x44
@@ -76,11 +76,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     unsigned char _pad00[0x42];
     bool RepressedOpinions;                         // +0x42
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     void*                   ParentThing;            // +0x04 (CTCBase)
     bool                    ToBeRemoved;            // +0x08

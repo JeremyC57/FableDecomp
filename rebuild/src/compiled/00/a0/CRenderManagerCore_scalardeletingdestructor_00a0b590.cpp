@@ -15,16 +15,16 @@
 // deleting destructor) into the object; it is not part of the retail body.
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-struct CDisplayManager;
+class CDisplayManager;
 
 // engine/CRenderStateManager.h gives the 0x3A3C-byte layout (flattened vptr); only its size matters here.
-struct CRenderStateManager {                         // 0x3A3C bytes, vtable 0x0129C978
+class CRenderStateManager { public:                         // 0x3A3C bytes, vtable 0x0129C978
     CRenderStateManager();
     virtual ~CRenderStateManager();                  // 0x00A044B0
     unsigned char _state[0x3a38];                    // +0x04 .. +0x3A3B (device pointer, state stacks, device state)
 };
 
-struct CInitBaseClass {                              // vptr + one word
+class CInitBaseClass { public:                              // vptr + one word
     virtual void v00();
     bool IsInitialised();                            // 0x0099A330
     void Uninitialise_00a6c120();                             // 0x00A6C120

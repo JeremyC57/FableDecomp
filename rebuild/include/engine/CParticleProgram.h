@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C4DVector;
-struct CMovableResourceMemoryPool;
+class C4DVector;
+class CMovableResourceMemoryPool;
 
 #pragma pack(push, 1)
-struct CParticleProgram {
+class CParticleProgram {
+public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     unsigned char               InitialSimulation[0x80];     // +0x08 CParticleSimulation

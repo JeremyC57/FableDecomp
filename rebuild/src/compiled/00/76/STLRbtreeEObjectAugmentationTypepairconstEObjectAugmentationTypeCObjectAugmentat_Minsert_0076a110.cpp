@@ -20,7 +20,7 @@ public:
     CCharString(const CCharString& other);                  // 0x0099EC30
 };
 
-struct CObjectAugmentationSoundSet {                        // Ego_r.pdb, 12 bytes
+class CObjectAugmentationSoundSet { public:                        // Ego_r.pdb, 12 bytes
     bool          Played;                                   // +0x00
     CCharString   Sound;                                    // +0x04
     unsigned long Handle;                                   // +0x08

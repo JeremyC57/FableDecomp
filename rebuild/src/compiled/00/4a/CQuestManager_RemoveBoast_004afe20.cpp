@@ -35,7 +35,7 @@ struct CBasicStringChar {                          // CBasicString<char>, 13 byt
     bool          UseFastExtend : 1;               // +0x0c
     bool operator==(const char* text) const;       // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;                         // +0x00
     long             NoRefs;                       // +0x0d
 };
@@ -46,7 +46,7 @@ bool CBasicStringChar::operator==(const char* text) const   // 0x004115A0 (same-
     return Compare_00411570(PData, text) ? false : true;
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                  // 0x0099EAE0
     bool operator!=(const char* text) const;         // 0x0099E960
@@ -71,7 +71,7 @@ struct CCharString {
         return Compare_00411570(PStringData->Data.PData, other.PStringData->Data.PData) ? false : true;
     }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                  // 0x0099B510
 };
@@ -102,7 +102,7 @@ inline CBoastNode* EraseBoast(CBoastNode* node)    // STLport list::erase(iterat
     free(node);
     return next;
 }
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x64];
     unsigned long FrameBoastsLastUpdated;          // +0x64 (PDB +0xa0)
     CBoastNode*   Boasts;                          // +0x68 list<CBoast> (head node; PDB +0xa4)

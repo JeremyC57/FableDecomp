@@ -1,7 +1,7 @@
 #include <cstdio>
 static float g_fMinusOne = -1.0f;
-struct CPerceivedThingDef { float SightRadius; float ExtendedSightRadius; };
-struct CTCPerceiveThing {
+class CPerceivedThingDef { public: float SightRadius; float ExtendedSightRadius; };
+class CTCPerceiveThing { public:
     const CPerceivedThingDef* PDef_Object;
     float SightRadius;
     float ExtendedSightRadius;

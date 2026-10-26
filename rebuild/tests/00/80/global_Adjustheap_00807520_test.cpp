@@ -2,7 +2,7 @@
 // CDoNotUseBinaryPredicate: each comparison advances the world seed (ROR13(seed*0x24a1+0x24df))
 // and answers "low bit clear"; the sift must keep every element exactly once.
 #include <cstdio>
-struct CThing { int Id; };
+class CThing { public: int Id; };
 struct ThingPointer {
     CThing* Item;
     ThingPointer() : Item(0) { }

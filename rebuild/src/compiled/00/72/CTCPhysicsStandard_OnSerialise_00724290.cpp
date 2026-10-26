@@ -13,17 +13,17 @@
 // (implicit operator=) after the six transfers.
 // Layout: Ego_r.pdb CTCPhysicsStandard (RHSet +0x50 = Up, Forward +0x5c); modelled locally like the landed UpdateOldRHSet
 // 0x00723930 / ResetRHSet 0x00723980 (engine/CTCPhysicsBase.h is a flattened POD with no virtuals).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
 };
 
-struct CTCPhysicsBase {                        // 0x40 bytes
+class CTCPhysicsBase { public:                        // 0x40 bytes
     virtual void v00();
     virtual void OnSerialise(CPersistContext& context, bool loading);   // slot 1; CTCPhysicsBase's body 0x006B08F0
     void*     m_tcBase[2];                     // +0x04 CTCBase body

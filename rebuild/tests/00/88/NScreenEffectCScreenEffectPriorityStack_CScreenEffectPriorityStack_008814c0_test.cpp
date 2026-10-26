@@ -45,7 +45,7 @@ template <class T> struct List {
     }
 };
 
-struct TreeNode { char color; TreeNode* parent; TreeNode* left; TreeNode* right; void* value; };
+class TreeNode { public: char color; TreeNode* parent; TreeNode* left; TreeNode* right; void* value; };
 struct Set {
     TreeNode* header;
     unsigned int count;

@@ -1,4 +1,4 @@
-struct CMovableResourceMemoryPool {
+class CMovableResourceMemoryPool { public:
     void* vftable;
 };
 

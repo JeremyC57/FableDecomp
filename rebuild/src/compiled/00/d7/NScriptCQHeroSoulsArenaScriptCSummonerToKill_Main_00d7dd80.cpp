@@ -14,14 +14,14 @@
 // Shape: the landed CSummonerToKill / CFishermanWasp prelude (block-scoped filter); the scripted-thing handle is
 //   block-local in the `if` (it shares the filter's frame words) and its out-of-line destructor runs on the normal path
 //   and on the merged early returns of the wait loop.
-struct CScriptThing {                              // 12 bytes
+class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CScriptGameResourceObjectScriptedThingBase;
+class CScriptGameResourceObjectScriptedThingBase;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                      // vtable 0x01260F0C
+class CGameScriptInterface { public:                      // vtable 0x01260F0C
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -33,7 +33,7 @@ struct CIsThingAlive {                             // vtable 0x012C32F0: a filte
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CBaseObject {                               // CBaseIntelligentPointer root
+class CBaseObject { public:                               // CBaseIntelligentPointer root
     virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04
     CBaseObject();                                 // 0x0099A380
@@ -43,14 +43,14 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual void v00();
     ~CScriptGameResourceObjectScriptedThingBase(); // 0x007E74D0
 };
 namespace NScript {
-struct CQ_HeroSoulsArenaScript {
+class CQ_HeroSoulsArenaScript { public:
     unsigned char _body[0x4c];
     bool          PlayedArenaCS;                   // +0x4C (PDB +0x60)
     bool          PlayerHitSummoner1;              // +0x4D

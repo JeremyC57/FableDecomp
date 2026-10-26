@@ -13,7 +13,7 @@
 // Shape: base call inlined; CVectorMap::Sort() inline (sort + clear the flag); the count is the
 // signed 12-byte element difference; the loop re-reads the vector start for the key and again for the
 // value, whose two longs are written through a reference.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteCBYTE(char value);                   // 0x00993E50
     void WriteUShort(unsigned short value);        // 0x00993E80
     void WriteULong(unsigned long value);          // 0x00993EA0
@@ -57,7 +57,7 @@ struct CSubDefInfoMap {                            // CVectorMap<unsigned long, 
     CSubDefInfoPair& operator[](unsigned long i) { return m_first[i]; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char       _body[0x20];               // +0x04 .. +0x24: CResource links, PDefManager, GlobalIndex
     unsigned char       Setup : 1;                 // +0x24 bit 0
@@ -71,7 +71,7 @@ struct CDefClassBase {
     }
 };
 
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     long           InstantiationName_TablePos;     // +0x25
     CSubDefInfoMap SubDefInfoMap;                  // +0x29
     virtual void InternalSaveBinary(CDataOutputStream& stream);

@@ -10,22 +10,22 @@
 //   unaligned +0x8a); in retail it sits at +0x85 and the quest's barrel timer handle at +0x108 (retail offsets, local model).
 // Shape: one `xor ebx,ebx` zero feeds every false/0 argument and store; the home position is copied with the implicit
 //   C3DVector assignment (one `add edx,0x85` destination, three dword moves).
-struct C3DVector { float X, Y, Z; };
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class C3DVector { public: float X, Y, Z; };
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
 };
-struct CBaseClass {                              // vtable 0x01231710
+class CBaseClass { public:                              // vtable 0x01231710
     virtual ~CBaseClass();
 };
 struct CScriptThingImp;
-struct CScriptThing : CBaseClass {               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:               // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImp> PImp;       // +0x04
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual C3DVector GetHomePos() const;        // slot 7 (+0x1c) 0x004AA9A0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

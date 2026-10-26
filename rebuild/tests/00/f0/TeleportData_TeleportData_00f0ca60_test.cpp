@@ -5,7 +5,7 @@
 #include <cstring>
 static int g_stringCopies = 0;
 static int g_vectorCopies = 0;
-struct CCharString {
+class CCharString { public:
     char Text[16];
     CCharString() { Text[0] = 0; }
     CCharString(const CCharString& o) { ++g_stringCopies; std::strcpy(Text, o.Text); }

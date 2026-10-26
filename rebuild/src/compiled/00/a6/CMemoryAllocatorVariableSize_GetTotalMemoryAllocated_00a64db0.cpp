@@ -30,7 +30,7 @@ struct CMemoryAreaChunk {
     CMemoryArea*      PLastFreeArea;               // +0x2c
     CMemoryArea*      PFirstAllocatedArea;         // +0x30
 };
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     unsigned char     _base[0xc14];                // vptr + CPerformanceStats
     unsigned long     Alignment;                   // +0xc14
     unsigned long     AlignmentShift;              // +0xc18

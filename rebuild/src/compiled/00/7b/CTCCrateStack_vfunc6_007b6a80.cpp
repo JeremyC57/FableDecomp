@@ -12,7 +12,7 @@
 // uninitialised out pointer (stale `mov eax,[esp+4]`); `CDefPointer<const CVillageDef> def =
 // village->PDef;` is a local copy (null-tested add-ref) whose destructor releases WITHOUT a null test
 // (`dec [ecx+4] ; jne`); CrateDefIndex is re-read for the test; one shared Kill(false).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -41,19 +41,19 @@ struct CThing {
     void Kill(bool removeNow);                              // 0x004C9B80
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                                 // slot 1
     long m_refCount;                                        // +4
 };
 
-struct CVillageDef : CDefPointeeBase {
+class CVillageDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x40 - 0x08];
     long          CrateDefIndex;                            // +0x40
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object)
     {
@@ -73,7 +73,7 @@ struct CTCVillage_Model {
     CDefPointer<CVillageDef> PDef;                          // +0x94 CDefPointer<const CVillageDef>
 };
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage_Model* GetPVillage() const;                  // 0x007EE540
 };
 
@@ -83,7 +83,7 @@ struct CGameSubsystem {                                     // the main game com
     virtual bool IsSuppressed();                            // slot 9 (+0x24)
 };
 
-struct CTCCrateStack {
+class CTCCrateStack { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x1c - 0x08];                      // +0x08 CTCBase, FirstCrate, SecondCrate

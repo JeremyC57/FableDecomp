@@ -3,8 +3,8 @@
 //   push esi; mov esi,ecx; call <dtor>; test [esp+8],1; jz L;
 //   push esi; call operator delete; add esp,4; L: mov eax,esi; pop esi; ret 4
 
-struct CInputProcessInventory
-{
+class CInputProcessInventory
+{ public:
     void dtor();  // real scalar destructor @ 0xa0d3d0 (declaration only -> real call)
 };
 

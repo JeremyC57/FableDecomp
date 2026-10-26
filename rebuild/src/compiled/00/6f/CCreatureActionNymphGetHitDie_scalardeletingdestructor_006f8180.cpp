@@ -1,4 +1,4 @@
-struct CCreatureAction_NymphGetHitDie {
+class CCreatureAction_NymphGetHitDie { public:
     void* vftable;
 };
 

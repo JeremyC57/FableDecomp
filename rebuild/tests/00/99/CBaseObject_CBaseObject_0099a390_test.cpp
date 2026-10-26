@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 struct CBaseObjectPointer;
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00() {}
     CBaseObjectPointer* IntelligentPointer;
     CBaseObject() : IntelligentPointer((CBaseObjectPointer*)0x4321) {}

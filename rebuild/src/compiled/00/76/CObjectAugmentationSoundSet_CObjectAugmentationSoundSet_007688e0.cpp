@@ -12,7 +12,7 @@ public:
     void* m_pStringData;
 };
 
-struct CObjectAugmentationSoundSet {
+class CObjectAugmentationSoundSet { public:
     bool          Played;    // +0x00
     CCharString   Sound;     // +0x04
     unsigned long Handle;    // +0x08

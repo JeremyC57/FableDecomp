@@ -3,15 +3,15 @@
 // Z offset is cleared; without a current game nothing changes.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CTCTavernGameCoinGolf {
+class C3DVector { public: float X, Y, Z; };
+class CTCTavernGameCoinGolf { public:
     C3DVector pos, target;
     void GetCamera(C3DVector& p, C3DVector& t) { p = pos; t = target; }
 };
-struct CThing { void* components[256]; };
+class CThing { public: void* components[256]; };
 template <class T> static void GetInterface(CThing* thing, T** out, long type) { *out = (T*)thing->components[type]; }
-struct CTCTavernGame { CThing* ParentThing; };
-struct CTCGamePlayer { CTCTavernGame* game; CTCTavernGame* GetGame() const { return game; } };
+class CTCTavernGame { public: CThing* ParentThing; };
+class CTCGamePlayer { public: CTCTavernGame* game; CTCTavernGame* GetGame() const { return game; } };
 struct COrbitGame {
     C3DVector LookAt, GoTo; float ObservedPositionZOffset; CThing* hero;
     void Update()

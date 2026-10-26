@@ -3,7 +3,7 @@
 // Standalone build of the thunk-shaped function for a smoke test.
 // (Real link forwards to the engine impl; here we stub it to observe forwarding.)
 
-struct CThingObjectDef { int tag; };
+class CThingObjectDef { public: int tag; };
 
 static int g_calls = 0;
 static CThingObjectDef* g_this = 0;

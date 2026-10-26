@@ -9,12 +9,12 @@ static int g_fail = 0;
 static std::string g_log;
 static void logs(const std::string& s) { g_log += s; g_log += ";"; }
 enum EHeroAbility { HERO_ABILITY_NONE };
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString(const char* text, long length = -1) : s(text) { (void)length; }
 };
 static int g_hitHero = 0, g_hitAbility = 0, g_hitAbility14 = 0, g_hitAny = 0;   // hit messages pending on Me
-struct CScriptThing {
+class CScriptThing { public:
     std::string Name;
     CScriptThing() {}
     CScriptThing(const char* n) : Name(n) {}
@@ -41,7 +41,7 @@ struct CIsThingAlive {
 };
 static int g_releases = 0;
 static bool g_scripting = true;
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     bool IsScripting() { return g_scripting; }
     void Release() { ++g_releases; }
 };
@@ -52,7 +52,7 @@ struct CQ_HangingTreeGoodScript {
     CScriptThingVector CurrentGuardVector;
 };
 static CQ_HangingTreeGoodScript* g_parent = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     long Frames, FrameLimit;
     long StateAtFrame;        // HTG_State becomes 7 at this frame
@@ -76,7 +76,7 @@ struct CGameScriptInterface {
     void SetIsThingForcePushable(const CScriptThing& a0, bool a1) const { logs("push-" + a0.Name + (a1 ? "-t" : "-f")); }
 };
 static int g_filters = 0;
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     CGameScriptInterface* Game;
     CScriptThing          Me;
     long Checks, TerminateAtCheck;

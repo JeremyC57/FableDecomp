@@ -9,9 +9,9 @@
 // re-fetched for the null test, the Dead bit (+0x91 bit 0) and the Kill target, `push 1` ahead of the third GetPItem.
 // Layout: CTCDExplosion (Ego_r.pdb) with Emitters at +0x40 as a 12-byte STLport vector (first +0x40, last +0x44). No
 // engine header for the class, so a local model.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {                             // only the dead bit and the call are modelled
+class CThing { public:                             // only the dead bit and the call are modelled
     unsigned char _pad[0x91];
     unsigned char Dead : 1;                 // +0x91 bit 0
     void Kill(bool checkLocked);            // 0x004C9B80
@@ -46,7 +46,7 @@ struct CEmitterVector {                     // STLport vector<CEmitterEntry> (12
     CEmitterEntry* end() { return _M_finish; }
 };
 
-struct CTCDExplosion {
+class CTCDExplosion { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();

@@ -14,34 +14,34 @@
 //   C2DCoordI(x, y) temporary (both words loaded before the stores; a plain struct copy interleaves them).
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct CWorld;
-struct CGameDefinitionManager;
-struct CCachedVolumes;
-struct CGameMap;
-struct CAFile;
-struct CASuspendableProcess;
+class CWorld;
+class CGameDefinitionManager;
+class CCachedVolumes;
+class CGameMap;
+class CAFile;
+class CASuspendableProcess;
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI() {}
     C2DCoordI(long x, long y) : X(x), Y(y) {}
 };
 
-struct C2DBoxI {
+class C2DBoxI { public:
     C2DCoordI Min, Max;
 };
 
-struct CMapInit {
+class CMapInit { public:
     long WorldSizeX;
     long WorldSizeY;
 };
 
-struct CThemePaletteEntry {
+class CThemePaletteEntry { public:
     unsigned long ThemeDefIndex;
     bool          ThemePaletteIndexUsed;
 };
 
-struct CHeightMap {
+class CHeightMap { public:
     void Clear();                                       // 0x008F6050
 };
 

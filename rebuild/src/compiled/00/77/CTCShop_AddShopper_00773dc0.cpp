@@ -4,8 +4,8 @@
 // @ 0x00A01B10, SetPItem @ 0x00A01B90, ~CBaseIntelligentPointer @ 0x00A01C10, the shopper container's push_back
 // (const CIntelligentPointer&) @ 0x0074DA40; the temporary's vtable is the CIntelligentPointer copy 0x0123E7D8.
 // Shape: the shopper argument is cached in edi for both uses; the temporary is a named stack CIntelligentPointer.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -23,13 +23,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct CShopperList {
     void PushBack(const CIntelligentPointer& shopper);   // 0x0074DA40
 };
 
-struct CTCShop {
+class CTCShop { public:
     unsigned char _pad[0x18];
     CShopperList  m_shoppers;                // +0x18
     void RemoveShopper(CThingCreatureBase* shopper);     // 0x00772120

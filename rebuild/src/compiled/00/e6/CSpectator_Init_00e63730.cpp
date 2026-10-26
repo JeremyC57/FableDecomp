@@ -11,7 +11,7 @@
 // every arm is `if (IsDone()) return; SpectatorNumber = n;` -- VC hoists the second pair's shared IsDone call above
 // the branch on the second result.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
@@ -42,12 +42,12 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-struct CScriptThing : CBase {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
     __forceinline ~CScriptThing() {}
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

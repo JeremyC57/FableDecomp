@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstddef>
 // Behaviour model of CVtable_12dfd3c::CVtable_12dfd3c(CScriptBase*, long) @ 0x00E0AFE0.
-struct CScriptBase { virtual void v00() {} CScriptBase() {} };
+class CScriptBase { public: virtual void v00() {} CScriptBase() {} };
 struct SScriptState { long m_stage, m_frame, m_counter; void* m_pThingA; void* m_pThingB; void* m_pThingC;
     SScriptState() : m_stage(0), m_frame(0), m_counter(0), m_pThingA(0), m_pThingB(0), m_pThingC(0) {} };
 struct CScriptOwnedBase : CScriptBase { unsigned char _scriptBody[0x3c]; long m_argument; CScriptBase* m_pOwner;

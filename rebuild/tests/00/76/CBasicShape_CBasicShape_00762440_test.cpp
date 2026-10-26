@@ -7,9 +7,9 @@ template <class T> struct CRetailVector {
 };
 namespace NShape {
 struct C3DVector { float X, Y, Z; };
-struct CSubdivisionTriangle;
+class CSubdivisionTriangle;
 template <class T> struct CCountedPointer { T* m_pObject; void* m_pCount; };
-struct CShape {
+class CShape { public:
     virtual void v00() {}
     long m_id; CRetailVector<C3DVector> m_points; CRetailVector<C3DVector> m_edges;
     CShape(long id, const CRetailVector<C3DVector>& points) : m_id(id), m_points(points), m_edges() { }

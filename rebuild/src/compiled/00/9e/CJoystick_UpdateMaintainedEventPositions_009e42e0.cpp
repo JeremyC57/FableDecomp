@@ -15,7 +15,7 @@
 // Shape: the event re-addressed through the node at every use (a reference local moves the registers); `C2DVector position(GetStickX(), GetStickY())` evaluates slot 4 first (right to left) and copies it; the call's
 // arguments evaluate right to left (the double start time, the position, then the two getters); the list end is
 // re-read every iteration; the double argument gives the 8-aligned frame.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
@@ -27,7 +27,7 @@ public:
     float         GetJoystickButtonPressureFraction() const;   // 0x00A03BA0
     void SetAsJoystickButtonHeld(long button, float pressure, const C2DVector& position, double time);   // 0x00A040D0 (event type 0x14)
 };
-struct CMaintainedEvent {
+class CMaintainedEvent { public:
     long        m_id;                              // +0x00
     CInputEvent Event;                             // +0x04
 };
@@ -41,7 +41,7 @@ struct CMaintainedEventList {                      // STLport list<CMaintainedEv
     SMaintainedNode* begin() const { return m_pNode->m_pNext; }
     SMaintainedNode* end() const { return m_pNode; }
 };
-struct CInputManager;
+class CInputManager;
 class CJoystick {
 public:
     virtual void v00(); virtual void v01(); virtual void v02();

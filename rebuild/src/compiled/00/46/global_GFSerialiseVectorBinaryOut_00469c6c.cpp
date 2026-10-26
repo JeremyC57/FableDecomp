@@ -19,8 +19,8 @@
 struct CDataOutputStreamWriter : CDataOutputStream {
     void WriteSLONG(long value);                             // 0x00993EB0
 };
-struct CTextureReplacementDef {
-    struct CEntry {
+class CTextureReplacementDef { public:
+    class CEntry { public:
         long OriginalTexture;                               // +0x00
         long NewTexture;                                    // +0x04
     };

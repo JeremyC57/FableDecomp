@@ -9,8 +9,8 @@
 //   CentreParam +0x0c, Orbits (3 x COrbitSettings, 0x30 each) +0x10, OrbitStates (3 x 0x44, opaque here) +0xa0,
 //   LifeTimer +0x16c, LifeTimeSecs +0x170. Local model: no engine/ header exists for these classes.
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase {
+class CParticleSystem;
+class CPSCBase { public:
     virtual ~CPSCBase();
     CParticleSystem* ParticleSystem;                    // +0x04
     bool UpdateStarted : 1;                             // +0x08
@@ -25,7 +25,7 @@ struct COrbitSettings {
 inline COrbitSettings::COrbitSettings() : Type(0), Enabled(false), Radius(1.0f), Expand(0), CycleFlag(false), CycleTime(5.0f),
     SqueezeScale(1.0f), SqueezeAngle(0), RotateSpeed(.25f), RotateStart(0), RotateSpeedRandom(0), RotateStartRandom(0) {}
 struct COrbitState { unsigned char _opaque[0x44]; };
-struct CPSCOrbit : CPSCBase {
+class CPSCOrbit : public CPSCBase { public:
     unsigned long CentreParam;                          // +0x0c
     COrbitSettings Orbits[3];                           // +0x10
     COrbitState OrbitStates[3];                         // +0xa0

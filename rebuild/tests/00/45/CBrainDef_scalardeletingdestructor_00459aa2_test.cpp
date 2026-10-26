@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CBrainDef { void *vtbl; };
+class CBrainDef { public: void *vtbl; };
 
 static int g_dtor_called = 0;
 static int g_delete_called = 0;

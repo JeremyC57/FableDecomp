@@ -9,7 +9,7 @@ static SScriptDef g_def;
 static int g_frames = 0, g_endAt = 1000, g_created = 0, g_updates = 0, g_removedBar = 0, g_seed = 0;
 static float g_timer = 0, g_lastValue = -1;
 static int NextRandom() { return g_seed++; }
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CThings {
     CScriptThing Items[4]; unsigned int Count;
     CThings() : Count(0) { }
@@ -19,7 +19,7 @@ struct CThings {
 };
 struct SMasterData { bool CollectedSoulFromMother; };
 struct CQ_HeroSoulsMotherScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CQ_HeroSoulsMotherScript* Owner;
     void NewScriptFrame() const;
     void GetAllThingsWithScriptName(const char* n, CThings& v) const { if (!std::strcmp(n, "ScreamerHere")) { v.push_back(30); v.push_back(31); } }

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <stddef.h>
 static unsigned long g_sizeSet = 0; static int g_sets = 0;
-struct CGraphicFrameData { unsigned long size; unsigned long Sizeof() { return size; } };
+class CGraphicFrameData { public: unsigned long size; unsigned long Sizeof() { return size; } };
 struct CGraphicFrame_Retail { CGraphicFrameData* FrameData; };
 struct CCompositeSurfaceCache_Retail {
     virtual void v00() { }

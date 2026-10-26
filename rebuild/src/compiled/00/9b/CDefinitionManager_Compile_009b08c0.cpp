@@ -22,21 +22,21 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                             // 0x0099A2F0
     ~CBaseClassNonCopyable();                            // 0x0099A300
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                       // 0x0099AED0
     ~CWideString();                                      // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 bool __fastcall PathExists(const CWideString& path);     // 0x00999230
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CASuspendableProcess;
+class CASuspendableProcess;
 // Layout: engine/CDiskFileWin32.h (vptr 0x0122D06C, Opened +0x14, Pathname +0x18), as in CDefStringTable::LoadTable.
-struct CDiskFileWin32 : CBaseClassNonCopyable {
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:
     long        AccessType;                              // +0x04
     long        Position;                                // +0x08
     long        Length;                                  // +0x0c
@@ -49,12 +49,12 @@ struct CDiskFileWin32 : CBaseClassNonCopyable {
     virtual void Close();                                // 0x0099A920
     virtual void Write(const void* data, long size, CASuspendableProcess* process);              // 0x0099AA90
 };
-struct CFileDataInputStream : CDataInputStream {         // 0x24 bytes: the 0x18-byte CDataInputStream + file, buffer
+class CFileDataInputStream : public CDataInputStream { public:         // 0x24 bytes: the 0x18-byte CDataInputStream + file, buffer
     unsigned char _body[0xc];
     CFileDataInputStream(CDiskFileWin32* file, unsigned long bufferSize);   // 0x00994700
     ~CFileDataInputStream();                             // 0x00994780
 };
-struct CMemoryDataOutputStream : CDataOutputStream {      // 0x18 bytes
+class CMemoryDataOutputStream : public CDataOutputStream { public:      // 0x18 bytes
     unsigned char _body[0x10];
     CMemoryDataOutputStream();                           // 0x00996AF0
     ~CMemoryDataOutputStream();                          // 0x00996B30

@@ -12,7 +12,7 @@
 struct LandscapeMemory : CEngineLandscapeMemoryManager { void Deallocate(void*); }; //0x00bd9b90
 struct EngineGlobal { unsigned char EngineState[0x6b0]; LandscapeMemory* LandscapeMemoryManager; };
 extern EngineGlobal* gEngine; //0x01436ea8
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 // Native RTTI: QuadTreeElement -> CMovableResource; four genuine slots.
 struct MovableNative {virtual ~MovableNative(){} virtual void RelocateData(long,void*,void*,long)=0;virtual bool CanRelocateData(long)const;virtual unsigned long Verify()const;};
 struct QuadTreeElement:MovableNative {

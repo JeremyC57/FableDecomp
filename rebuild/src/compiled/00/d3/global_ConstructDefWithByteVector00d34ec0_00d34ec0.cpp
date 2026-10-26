@@ -12,7 +12,7 @@
 inline void* operator new(unsigned int, void* p) { return p; }
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x21];                     // +0x04..+0x25 (CResource, PDefManager, GlobalIndex, flags)
     CDefClassBase(const CDefClassBase& other);     // 0x0046644C

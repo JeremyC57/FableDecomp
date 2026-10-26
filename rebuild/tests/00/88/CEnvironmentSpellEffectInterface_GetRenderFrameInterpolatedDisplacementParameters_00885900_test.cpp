@@ -1,6 +1,6 @@
 // CEnvironmentSpellEffectInterface::GetRenderFrameInterpolatedDisplacementParameters(float) -- blend current and previous monochrome colour.
 // Retail 00885900, 226 bytes. No calls. PDB interface has no generated header; its native offsets agree with donor.
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
  float R,G,B,A;
  CRGBFloatColour() {}
  CRGBFloatColour(float r,float g,float b,float a):R(r),G(g),B(b),A(a) {}
@@ -8,7 +8,7 @@ struct CRGBFloatColour {
  CRGBFloatColour operator+(const CRGBFloatColour& x) const { return CRGBFloatColour(R+x.R,G+x.G,B+x.B,A+x.A); }
 };
 struct CIDrawEnvironmentDisplacementParameters { CRGBFloatColour MonochromeEffectColour; };
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
  unsigned char beforeDisplacement[0x54];
  CRGBFloatColour DisplacementParams;
  unsigned char beforePrevious[0x70];

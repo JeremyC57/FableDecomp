@@ -25,7 +25,7 @@ struct CEventPacket {
     long CopyToBuffer(SPacketBuffer* buffer);      // 0x009F17A0
 };
 
-struct CWorld {
+class CWorld { public:
     bool AutoLoadRegionLeaving();                  // 0x004A5E90
     void ResetToFrontEnd();                        // 0x0049DCC0
     void HandleLeaveWorldPacket(CEventPacket* packet);

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad0[0xc];
     char UseNewProfileValues;    // +0xc
     char SubtitlingEnabled;      // +0xd

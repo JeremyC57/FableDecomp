@@ -68,13 +68,13 @@ template <class T> struct CRetailVector : CVectorBase<T> {  // STLport vector<T>
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     void GetAllCarriedThings(CRetailVector<CThing*>& things) const;   // 0x006A2220
 };
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     struct CMeshEffectPriorityEntry {
         void*         PEffect;                              // +0x0 CIVCountedPointer<CEngineMeshEffect>
         long          Priority;                             // +0x4 EAppearanceMeshEffectPriority

@@ -13,7 +13,7 @@
 double __fastcall GFGetTime();                               // 0x009E1BC0
 namespace NUISystem {
 enum ERRORMESSAGE_TYPE { ERRORMESSAGE_CONTROLLER_DISCONNECTED = 0 };
-struct CManager {
+class CManager { public:
     unsigned char _pad00[0x9c];
     bool          m_errorMessageShowing;                     // +0x9c
     static CManager* __fastcall GetInstance();               // 0x0041E5F2
@@ -25,7 +25,7 @@ struct CFrontEndManager {
     bool IsBlockingControllerMessage();                      // 0x00595A03
     void Update(float dt);                                   // 0x00599E3F
 };
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     void*             __vftable;                             // +0x00
     unsigned char     _pad04[0xb0];
     CFrontEndManager* m_pFrontEndManager;                    // +0xb4

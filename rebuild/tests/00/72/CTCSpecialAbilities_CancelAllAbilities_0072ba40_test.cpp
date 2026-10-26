@@ -4,7 +4,7 @@
 static int g_log[16];
 static int g_count = 0;
 
-struct CTCBase { int tag; void CancelMove() { g_log[g_count++] = tag; } };
+class CTCBase { public: int tag; void CancelMove() { g_log[g_count++] = tag; } };
 
 struct CInterfaceMap {
     struct SEntry { int type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     CInterfaceMap m_interfaces;
     bool HasTC(int type) const
@@ -38,7 +38,7 @@ struct CThing {
 
 static const int kTypes[] = { 0x92, 0x93, 0x84, 0x91, 0x9a, 0x87, 0x88, 0x85, 0x86 };
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     CThing* ParentThing;
     void CancelAllAbilities()
     {

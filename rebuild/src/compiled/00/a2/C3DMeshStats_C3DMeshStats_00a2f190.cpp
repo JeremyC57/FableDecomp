@@ -15,14 +15,14 @@
 // destructor stores its vtable 0x0129B860 and returns.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void Free_00a62ed0(long handle);                        // 0x00A62ED0
 };
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     ~CMovableResource() { }
 };
@@ -31,7 +31,7 @@ struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 struct SMeshVolumePair;                            // pair<unsigned long, C3DMeshVolume>
 void __fastcall DestroyRange(SMeshVolumePair* first, SMeshVolumePair* last, const SNonscalarPtrIteratorTag& tag);   // 0x00A33720
 
-struct C3DGeneratorObject {                        // 0x40 bytes
+class C3DGeneratorObject { public:                        // 0x40 bytes
     unsigned char _pad[0x34];
     CCharString   ObjectName;                      // +0x34
     unsigned long BankIndex;                       // +0x38
@@ -70,7 +70,7 @@ struct CMeshVolumeMap {                            // CVectorMap<unsigned long, 
 };
 struct CPreAllocVectorMap { void* m_p[4]; };       // pool-backed, nothing to destroy
 
-struct C3DMeshStats : CMovableResource {           // vtable 0x0129CF04, retail 0x7c bytes
+class C3DMeshStats : public CMovableResource { public:           // vtable 0x0129CF04, retail 0x7c bytes
     CHandleBasedMemoryPool* MemoryPool;            // +0x04
     long                    StatsMemoryHandle;     // +0x08
     CCharString             Name;                  // +0x0c

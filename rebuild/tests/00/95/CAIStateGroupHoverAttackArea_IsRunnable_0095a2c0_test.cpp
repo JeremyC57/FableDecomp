@@ -4,14 +4,14 @@
 #include <cmath>
 using std::sqrt;
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0, g_validCalls = 0, g_enemyValid = 1;
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float Length() const { return (float)sqrt(X * X + Y * Y); }
 };
 static C3DVector g_pos = { 0, 0, 0 };
-struct CThing {
+class CThing { public:
     const C3DVector* GetPosition() { return &g_pos; }
 };
 class CThingCreatureBase : public CThing {};
@@ -23,7 +23,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { ++g_gets; return (CThing*)m_pItem; }
     void SetPItem(void* item) { ++g_sets; m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer() : CBaseIntelligentPointer() {}
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
@@ -35,7 +35,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 static CThingCreatureBase* g_enemy = 0;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {}

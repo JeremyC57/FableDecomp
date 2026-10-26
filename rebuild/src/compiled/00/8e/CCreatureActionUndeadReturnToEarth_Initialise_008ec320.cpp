@@ -11,9 +11,9 @@
 // condition with the implicitly converted string temporary keeps its construction flag in ebx (zeroed at entry) and the
 // condition in a frame byte. The suspend call goes through a second named creature local so GetPItem runs before the
 // two constant arguments are pushed.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -26,10 +26,10 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                            // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
-template <class T> struct CDefPointer {      // the out-slot GetSubDef fills (counted reference handed over)
+template <class T> class CDefPointer { public:      // the out-slot GetSubDef fills (counted reference handed over)
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
@@ -38,7 +38,7 @@ template <class T> __forceinline void ReleaseDef(T* def)
     if (def && --def->m_refCount == 0)
         def->Destroy();
 }
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 
@@ -46,7 +46,7 @@ struct CThingAnimatable {
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThing : CThingAnimatable {
+class CThing : public CThingAnimatable { public:
     unsigned char  _pad0[0x70];
     CDefClassBase* m_pDef;                      // +0x70
     const C3DVector& GetPosition() const;       // 0x004C73D0
@@ -60,7 +60,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];
@@ -68,7 +68,7 @@ struct CCombatActionBase {
     unsigned char           _pad10[0x114 - 0x10];
 };
 
-struct CCreatureAction_UndeadReturnToEarth : CCombatActionBase {
+class CCreatureAction_UndeadReturnToEarth : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

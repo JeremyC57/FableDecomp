@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessUseEnvironment {
+class CInputProcessUseEnvironment { public:
     void* vftable;
     int destroyed;
 };

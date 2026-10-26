@@ -27,7 +27,7 @@ struct CBatchRecord_0122f598 : CBase {             // vtable 0x0122F598
 };
 
 namespace NUISystem {
-struct CMesh : CDraggableInto {                    // vtables 0x01249F9C / 0x01249F74 / 0x01249F6C
+class CMesh : public CDraggableInto { public:                    // vtables 0x01249F9C / 0x01249F74 / 0x01249F6C
     virtual void v00();
     virtual void a00();
     virtual void b00();

@@ -9,14 +9,14 @@
 // Shape: `village && village->GetDef()->Flag` with GetDef returning a CDefPointer BY VALUE (copy ctor `inc [ecx+4]`):
 //   the conditionally built temporary gets a construction flag (zeroed at entry, set to 1 on the arm that builds it)
 //   tested before its release; the && result is a bool local tested after the release.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
@@ -25,7 +25,7 @@ struct CTCVillageDef : CDefClassBase {
     unsigned char _pad08[0xe4 - 0x08];
     bool RequiresAutoPlacement;                 // +0xe4 (name unverified)
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& o) : Object(o.Object)
     {
@@ -39,16 +39,16 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad[0x94];
     CDefPointer<const CTCVillageDef> PDef;      // +0x94
     CDefPointer<const CTCVillageDef> GetDef() const { return PDef; }
 };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage* GetPVillage() const;            // 0x007EE540
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -69,7 +69,7 @@ struct CThing {
     }
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     bool RequiresAutoPlacement();
 };
 

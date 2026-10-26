@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 
-struct CRegion;
-struct CMiniMapDisplay {
+class CRegion;
+class CMiniMapDisplay { public:
     void SetRegionDisp(CRegion* r);            // 0x82ba00
     void InitialiseOnRegionLoad(void* s);      // 0x82a180
 };

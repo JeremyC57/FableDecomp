@@ -5,9 +5,9 @@
 // QuickAccessItemButtons +0x7c4, ContextSensitiveItemButtons +0x7d0 (PDB +0x7bc/+0x7cc/+0x7dc with 16-byte vectors).
 // Shape: a signed pointer difference (`sar eax,3`), not the unsigned size().
 
-struct CInputTypeBase;
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CInputTypeBase;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
 };

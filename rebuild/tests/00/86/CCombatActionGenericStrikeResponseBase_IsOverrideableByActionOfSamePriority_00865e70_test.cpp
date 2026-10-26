@@ -1,10 +1,10 @@
 #include <cstdio>
 
 // Model of CCombatAction_GenericStrikeResponseBase::IsOverrideableByActionOfSamePriority @ 0x00865E70
-struct CThing { unsigned char _pad[0x30]; unsigned long Flags; unsigned char _pad34[0x91 - 0x34]; unsigned char DeadFlags; };
+class CThing { public: unsigned char _pad[0x30]; unsigned long Flags; unsigned char _pad34[0x91 - 0x34]; unsigned char DeadFlags; };
 static int g_gets = 0;
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CThing* GetPItem() const { ++g_gets; return m_pItem; } };
-struct CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_GenericStrikeResponseBase { public:
     virtual void v00() {}
     unsigned char _body[0x114 - 4]; CBaseIntelligentPointer PAttacker;
     bool IsOverrideableByActionOfSamePriority() const {

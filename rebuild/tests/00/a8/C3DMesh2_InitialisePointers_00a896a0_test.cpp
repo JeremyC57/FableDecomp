@@ -8,13 +8,13 @@ inline void ConstructElements(T* elements, unsigned long count)
         new (elements) T;
 }
 static unsigned char g_block[4096];
-struct CMovableResourceMemoryPool { void* GetPointerFromHandle(long) { return g_block; } };
-struct C3DMeshMaterial { unsigned char _body[0x30]; C3DMeshMaterial() { ++g_materials; _body[0] = 0x4D; } };
-struct C3DPrimitive2 { unsigned char _body[0xA0]; C3DPrimitive2() { ++g_primitives; _body[0] = 0x50; } };
-struct C3DBone2 { unsigned char _body[0x3C]; };
-struct C3DKeyframe { unsigned char _body[0x30]; };
-struct CMatrix4x4 { float m[4][4]; };
-struct C3DMesh2 {
+class CMovableResourceMemoryPool { public: void* GetPointerFromHandle(long) { return g_block; } };
+class C3DMeshMaterial { public: unsigned char _body[0x30]; C3DMeshMaterial() { ++g_materials; _body[0] = 0x4D; } };
+class C3DPrimitive2 { public: unsigned char _body[0xA0]; C3DPrimitive2() { ++g_primitives; _body[0] = 0x50; } };
+class C3DBone2 { public: unsigned char _body[0x3C]; };
+class C3DKeyframe { public: unsigned char _body[0x30]; };
+class CMatrix4x4 { public: float m[4][4]; };
+class C3DMesh2 { public:
     CMovableResourceMemoryPool* MemoryPool;
     long MemoryHandle;
     unsigned long MaterialCount; C3DMeshMaterial* Materials;

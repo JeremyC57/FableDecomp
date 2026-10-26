@@ -12,13 +12,13 @@
 // Shape: the extension test is a named bool over three implicit wide-string temporaries (ebx construction flags); the
 //   profile directory is a named local; the disposition an if-assigned local;
 //   open result is a named bool (neg/sbb/inc); the joined path is a named local copied into the result (no NRVO).
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     CWideString(const CWideString& other);              // 0x0099B720

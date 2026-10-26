@@ -1,9 +1,9 @@
 #include <cstdio>
 // Model of CAIStateGroup_WorkInWarehouse::InitCreaturePosition @ 0x00943AE0.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static bool g_runnable, g_placed; static float g_radius; static const C3DVector* g_pos; static unsigned long g_seed = 11; static unsigned long* g_seedArg;
 float GFFloatRandom(float range, unsigned long* seed) { g_seedArg = seed; return range * 0.5f; }
-struct CThing { C3DVector pos; CThing* owner; const C3DVector& GetPosition() { return pos; } CThing* GetPWarehouse() { return owner; } };
+class CThing { public: C3DVector pos; CThing* owner; const C3DVector& GetPosition() { return pos; } CThing* GetPWarehouse() { return owner; } };
 struct Creature { bool AutoPlaceNear(const C3DVector& p, float r) { g_pos = &p; g_radius = r; return g_placed; } };
 struct Group {
     Creature creature; CThing* crate;

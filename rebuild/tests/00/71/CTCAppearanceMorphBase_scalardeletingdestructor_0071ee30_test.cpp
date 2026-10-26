@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCAppearanceMorphBase {
+class CTCAppearanceMorphBase { public:
     void* vftable;
     int destroyed;
 };

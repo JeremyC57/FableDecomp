@@ -16,9 +16,9 @@
 // Leaf: ??0CActionOverheadTalkToThing
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
-struct CThing;
+class CThing;
 
-struct CSubtitledMessage {                      // 0x44 bytes in retail
+class CSubtitledMessage { public:                      // 0x44 bytes in retail
     unsigned char _body[0x44];
     ~CSubtitledMessage();                       // 0x004D1DB0
 };

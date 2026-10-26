@@ -34,11 +34,11 @@ template <class T> struct vector : _Vector_base<T> {
     explicit vector(const allocator_type& a = allocator_type()) : _Vector_base<T>(a) { }
 };
 
-template <class T> struct CArray : vector<T> {     // retail 12 bytes
+template <class T> class CArray : public vector<T> { public:     // retail 12 bytes
     CArray() { }
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 

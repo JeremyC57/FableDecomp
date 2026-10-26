@@ -23,7 +23,7 @@ struct SDecalNode {                     // STLport _List_node<CTCTextureDecal::C
     CDecalEntry Entry;                  // +0x08
 };
 
-struct CTCTextureDecal {
+class CTCTextureDecal { public:
     void* __vftable;                    // +0x00
     unsigned char _pad_0x04[0x8];       // +0x04 CTCBase
     SDecalNode* Decals;                 // +0x0c STLport list<CEntry> (sentinel)

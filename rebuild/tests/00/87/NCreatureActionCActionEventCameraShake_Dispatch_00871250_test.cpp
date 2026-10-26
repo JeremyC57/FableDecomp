@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct C3DVector { int v; };
+class C3DVector { public: int v; };
 static int g_created = 0; static long g_bone = -1, g_strength = -1; static unsigned char g_flag = 0; static C3DVector g_pos;
-struct CThing { unsigned char _pad[0x91]; unsigned char m_isDead : 1;
+class CThing { public: unsigned char _pad[0x91]; unsigned char m_isDead : 1;
     C3DVector* GetBonePosition(long bone, unsigned char flag) { g_bone = bone; g_flag = flag; return &g_pos; } };
 struct CIntelligentPointer { virtual void v00() { } CThing* PItem; CThing* GetPItem() { return PItem; } };
 struct CActionEventContext { unsigned char _pad[8]; CIntelligentPointer m_pThing; };

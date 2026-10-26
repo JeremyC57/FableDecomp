@@ -7,7 +7,7 @@
 // Virtual predicate that forwards to the __fastcall helper @ 0x004C9560 on the same object
 // (ecx passes through untouched) and returns its byte result as a normalised bool. Callee name
 // kept from the manifest only when the label is unique. One of 6 bodies of this shape.
-struct CThingNoise {
+class CThingNoise { public:
     virtual void v00();
     virtual bool vfunc_8();
     unsigned char OnCreate();                // 0x004C9560

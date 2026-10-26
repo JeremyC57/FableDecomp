@@ -1,4 +1,4 @@
-struct CCreatureAction_CastSkillMultiArrow {
+class CCreatureAction_CastSkillMultiArrow { public:
     void* vftable;
 };
 

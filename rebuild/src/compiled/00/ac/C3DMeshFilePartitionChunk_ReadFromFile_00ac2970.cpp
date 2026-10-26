@@ -4,13 +4,13 @@
 // Only the stream is used; the other two arguments are the chunk reader's standard signature (ret 0Ch).
 //
 #include "engine/C3DMeshFilePartitionChunk.h"   // PDB layout agrees with retail here (counted pointer at +0x10)
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual void v0();
     CChunkedFileChunk(const char* chunkType);           // 0x00AA7590
     unsigned char _base_body[0x0c];                     // ChunkType[5] + pad + Parent  (sizeof == 0x10)
 };
-struct CDataInputStream;
-struct C3DMeshPartitionElement {
+class CDataInputStream;
+class C3DMeshPartitionElement { public:
     unsigned char _bounds[0x18];                       // +0x00 bounding volume, read from the stream
     void* m_pTriangles;   void* m_pTrianglesInfo;      // +0x18 counted pointer
     void* m_pVertices;    void* m_pVerticesInfo;       // +0x20 counted pointer
@@ -27,8 +27,8 @@ struct C3DMeshPartitionElement {
     }
     void ReadFromFile(CDataInputStream& in);           // 0x00AC21E0
 };
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T* m_pData; CCPPointerInfo* m_pInfo;
     CCountedPointer() : m_pData(0), m_pInfo(0) {}
     void Reset(T* p);                                   // 0x00AC38A0
@@ -45,7 +45,7 @@ struct CChunkedFileChunkFactory {
     virtual CChunkedFileChunk* RegisterNewChunk(CChunkedFileChunk* chunk);   // slot 10 (+0x28)
 };
 
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 struct C3DMeshFilePartitionChunk_Methods : C3DMeshFilePartitionChunkRetail {
     void ReadFromFile(CDataInputStream& in, long chunkSize, CChunkedFileLoader& loader);
 };

@@ -10,7 +10,7 @@
 // sizeof 0x65c) does not fit the bytes past +0x24: the retail STLport lists are 4 bytes (PDB 12), so PendingDeeds sits at
 // +0x54, KnownDeeds[92] at +0x1c8, HeroOpinionEnemy at +0x342 and PUnknownThreatOpinionSource at +0x344 (as the landed
 // SetHeroOpinionEnemy 0x006815D0 also shows), hence a local model.
-struct CThing {                             // only the dead bit and the call are modelled
+class CThing { public:                             // only the dead bit and the call are modelled
     unsigned char _pad[0x91];
     unsigned char Dead : 1;                 // +0x91 bit 0
     void Kill(bool checkLocked);            // 0x004C9B80
@@ -42,7 +42,7 @@ struct CLongList {                          // STLport list<long> (4 bytes)
     SLongNode* Header;                      // +0x00
 };
 
-struct COpinionPersonalityTraits {          // 36 bytes
+class COpinionPersonalityTraits { public:          // 36 bytes
     float BaseOffset;                       // +0x00
     float HeroStatScaling;                  // +0x04
     float VillageOpinionScaling;            // +0x08
@@ -54,16 +54,16 @@ struct COpinionPersonalityTraits {          // 36 bytes
     float PersistScalingIfNeg;              // +0x20
 };
 
-struct COpinionPersonalityDef {             // retail offsets (the def root is 4 bytes shorter than the PDB's)
+class COpinionPersonalityDef { public:             // retail offsets (the def root is 4 bytes shorter than the PDB's)
     unsigned char _pad00[0x3c];
     COpinionPersonalityTraits* PersonalityTraits;   // +0x3c
     unsigned char _pad40[0x10];
     float ToleranceToBeingHit;              // +0x50
 };
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();

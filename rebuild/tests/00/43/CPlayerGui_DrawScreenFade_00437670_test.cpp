@@ -11,7 +11,7 @@ public:
     void Draw(const CEnginePrimitivePrepareInfo& info);  // 0x00644677
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                      // +0x28 scoped_ptr<CDisplayEngine>
 };

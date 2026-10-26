@@ -23,7 +23,7 @@ struct SComponentNode {                            // a doubly linked list node:
     CEngineComponent_00640320* m_pComponent;       // +0x08
 };
 
-struct CEngineManager {
+class CEngineManager { public:
     unsigned char   _pad[4];
     SComponentNode* m_pComponents;                 // +0x04 (sentinel node)
     void AddMap(void* map);

@@ -1,4 +1,4 @@
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     void* vftable;
 };
 

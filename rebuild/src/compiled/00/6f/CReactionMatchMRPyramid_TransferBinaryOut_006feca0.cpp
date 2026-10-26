@@ -12,7 +12,7 @@
 #include "engine/CReactionMatch_AsymmetricPyramid.h"
 #include "engine/CReactionMatch_MRPyramid.h"
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteFloat(float value);                       // 0x00993EE0
 };
 

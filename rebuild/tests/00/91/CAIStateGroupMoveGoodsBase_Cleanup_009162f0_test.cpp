@@ -1,16 +1,16 @@
 // Behaviour test for CAIStateGroup_MoveGoodsBase::Cleanup (0x009162F0): same control flow over a mock model.
 #include <cstdio>
 #include <cstring>
-struct CTCBase { };
-struct CTCPhysicsBase { bool moving; CTCPhysicsBase() : moving(false) { } void SetAsMoving(bool m) { moving = m; } };
+class CTCBase { public: };
+class CTCPhysicsBase { public: bool moving; CTCPhysicsBase() : moving(false) { } void SetAsMoving(bool m) { moving = m; } };
 struct CTCGoods : CTCBase { bool Dropped; CTCGoods() : Dropped(false) { } };
-struct CThing;
-struct CTCSolidToThing : CTCBase {
+class CThing;
+class CTCSolidToThing : public CTCBase { public:
     CThing* notSolid[4]; int n;
     CTCSolidToThing() : n(0) { }
     void AddThingNotSolidTo(CThing* t) { notSolid[n++] = t; }
 };
-struct CThing {
+class CThing { public:
     CTCPhysicsBase* PhysicsTC;
     CTCBase* tc[0x60];
     CTCSolidToThing added; int addCalls; char addedName[32];
@@ -21,19 +21,19 @@ struct CThing {
     CTCBase* AddTC(const char* name, bool, void*) { ++addCalls; std::strcpy(addedName, name); tc[0x4d] = &added; return &added; }
 };
 struct CActionBase { long ID; long GetID() const { return ID; } };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CActionBase* PCurrentAction; bool performing; int finished;
     CThingCreatureBase() : PCurrentAction(0), performing(false), finished(0) { }
     bool IsPerformingAnyAction() { return performing; }
     void FinishCurrentAction() { ++finished; }
 };
-struct CTCCarrying : CTCBase {
+class CTCCarrying : public CTCBase { public:
     CThing* slot;
     CThing* GetThingInPrimarySlot() { return slot; }
     CThing* RemoveThingFromPrimarySlot(bool) { CThing* t = slot; slot = 0; return t; }
 };
-struct CTCCreatureModeManager : CTCBase { unsigned long removed; void RemoveMode(unsigned long m) { removed = m; } };
-struct CAIBrain { CThingCreatureBase* PCreature; };
+class CTCCreatureModeManager : public CTCBase { public: unsigned long removed; void RemoveMode(unsigned long m) { removed = m; } };
+class CAIBrain { public: CThingCreatureBase* PCreature; };
 struct CState {
     CAIBrain* PBrain; bool DroppingGoods; long PickUpGoodsActionID; CThing* hero;
     void Cleanup()

@@ -10,12 +10,12 @@
 // last-first; the pool and handle are re-read for the second pool call; each case ends in its own copy of the base
 // destructor tail-jump.
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void Unlock(long handle);                      // 0x00A02710
     void Free(long handle);                        // 0x00A02B30
 };
 
-struct CScratchBuffer {
+class CScratchBuffer { public:
     void Unlock();                                 // 0x009F49A0
 };
 

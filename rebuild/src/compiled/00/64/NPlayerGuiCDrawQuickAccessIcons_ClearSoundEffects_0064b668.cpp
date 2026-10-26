@@ -13,7 +13,7 @@
 // it to memory and re-reads it), which the interface key temporary then reuses; the presence test is a plain inline over the
 // out-of-line bitset::test and the lookup a `__forceinline` template RETURNING the component, so it is loaded straight into ecx
 // for the call (the out-pointer GetInterface form goes through eax); the ID is cleared with `and [edi+28h],0`.
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
@@ -45,13 +45,13 @@ struct CThing {
 
 template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
 
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetCharacterThing();       // 0x00487DC0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
 
@@ -63,7 +63,7 @@ enum { TC_SOUND = 0x10 };
 
 namespace NPlayerGui {
 
-struct CDrawQuickAccessIcons {
+class CDrawQuickAccessIcons { public:
     void*           _vtable;                       // +0x00
     void*           PlayerGui;                     // +0x04
     CPlayerManager* PlayerManager;                 // +0x08

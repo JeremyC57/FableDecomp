@@ -1,12 +1,12 @@
 // Behaviour test for 0x008CE1B0 CCreatureAction_CastAssassinRush ctor (counted FinalAction: add-ref on copy, param release).
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct CCreatureActionBase { int id; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class CCreatureActionBase { public: int id; };
 static int g_destroyed = 0;
 struct CCountedItem { void Destroy() { ++g_destroyed; } };
-struct CCPPointerInfo { long m_count; void (CCountedItem::*m_pfnDestroy)(); CCountedItem* m_pItem; };
+class CCPPointerInfo { public: long m_count; void (CCountedItem::*m_pfnDestroy)(); CCountedItem* m_pItem; };
 static int g_deleted = 0;
 struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* Data; CCPPointerInfo* Info;
@@ -15,16 +15,16 @@ struct CCountedPointer_CCreatureActionBase {
     ~CCountedPointer_CCreatureActionBase()
     { if (Info) { if (--Info->m_count == 0) { (Info->m_pItem->*Info->m_pfnDestroy)(); ++g_deleted; } } }
 };
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CSoundPair { long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) {} };
-struct CCombatActionBase {
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CSoundPair { public: long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) {} };
+class CCombatActionBase { public:
     CThingCreatureBase* owner; CThing* target; long code; const char* anim;
     CCombatActionBase(CThingCreatureBase* o, long c, const CSoundPair&) : owner(o), target(0), code(c), anim(0) {}
     CCombatActionBase(CThingCreatureBase* o, CThing* t, long c, const CSoundPair&) : owner(o), target(t), code(c), anim(0) {}
     void SetAnimationName(const CCharString& n) { anim = n.t; }
 };
-struct CCreatureAction_CastAssassinRush : CCombatActionBase {
+class CCreatureAction_CastAssassinRush : public CCombatActionBase { public:
     bool Override; C3DVector Dir; float Distance; long Level; CCountedPointer_CCreatureActionBase FinalAction; bool UseCollision, IsZTargetting;
     CCreatureAction_CastAssassinRush(CThingCreatureBase* owner, CThing* target, bool isZ, long level, CCountedPointer_CCreatureActionBase fa)
         : CCombatActionBase(owner, target, 150, CSoundPair()), Override(false), Level(level), FinalAction(fa), IsZTargetting(isZ)

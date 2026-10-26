@@ -21,7 +21,7 @@ struct CMemoryBuffer {
     void Read(unsigned long length, void* data);   // 0x009F18F0
     __forceinline bool ReadBool() { bool value; Read(1, &value); return value; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -32,12 +32,12 @@ struct CGameEvent {
 };
 
 enum EPlayerMode { PLAYER_MODE_FREE_CAMERA = 0x13 };
-struct CPlayer {
+class CPlayer { public:
     void AddMode(EPlayerMode mode, bool b);        // 0x006345C0
     void RemoveMode(EPlayerMode mode);             // 0x00634190
 };
 
-struct CWorld {
+class CWorld { public:
     CPlayer* GetPlayer(long number);               // 0x0049D850
     void EASetFreeCameraMode(const CGameEvent* event);
 };

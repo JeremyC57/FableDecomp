@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour of CTCHeroStats::Drink (0x0057A82A): reservoir += multiplier * amount, one more drink, and the
 // multiplier scaled by 1 - (1 - def multiplier-multiplier) * amount.
-struct CHeroStatsDef { float DrinkAffectMultiplierMultiplier; };
+class CHeroStatsDef { public: float DrinkAffectMultiplierMultiplier; };
 struct CDefinitionHolder { CHeroStatsDef* PHeroStatsDef; };
 static CDefinitionHolder* g_holder = 0;
 struct CTCHeroStats_Retail {

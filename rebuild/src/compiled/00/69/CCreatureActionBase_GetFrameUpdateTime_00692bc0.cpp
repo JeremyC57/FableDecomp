@@ -19,7 +19,7 @@ extern long g_frameRate;                    // 0x01375550: frames per second (in
 
 // engine/CCreatureActionBase.h exists but is not used: it is the PDB build's flat pack(1) layout (0xb4 bytes, three
 // containers 4 bytes wider than retail's 0xa8, no vtable or methods); the retail `this` is modelled locally.
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>

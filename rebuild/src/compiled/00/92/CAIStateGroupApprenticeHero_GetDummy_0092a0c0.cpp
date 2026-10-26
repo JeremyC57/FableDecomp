@@ -12,7 +12,7 @@
 // Layout: engine/CAIStateGroup_ApprenticeHero.h (PDummy +0x18, Action +0x1C) behind engine/CAIStateGroupBase.h.
 #include "engine/CAIStateGroup_ApprenticeHero.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -33,7 +33,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -51,13 +51,13 @@ struct CThing {
 };
 struct CTCInformation;                          // interface 0xaa
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

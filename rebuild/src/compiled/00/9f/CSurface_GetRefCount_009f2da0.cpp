@@ -16,7 +16,7 @@ struct IRefObj {
     IRefVtbl* vtbl;  // +0
 };
 
-struct CSurface {
+class CSurface { public:
     void* pad0;      // +0
     IRefObj* obj;    // +4
 };

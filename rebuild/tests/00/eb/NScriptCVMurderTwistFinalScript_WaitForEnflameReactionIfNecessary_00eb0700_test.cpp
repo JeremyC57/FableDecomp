@@ -1,8 +1,8 @@
 // Behaviour test for 0x00EB0700 CV_MurderTwistFinalScript::WaitForEnflameReactionIfNecessary: no-op when the thing was
 // not set alight; otherwise will disabled, 3-second timer waited frame by frame, will re-enabled, timer deregistered.
 #include <cstdio>
-struct CScriptThing { bool enflamed; };
-struct CGameScriptInterface {
+class CScriptThing { public: bool enflamed; };
+class CGameScriptInterface { public:
     long timeLeft; int registered, deregistered, frames; int willCalls; bool willUsable;
     virtual void NewScriptFrame() { ++frames; --timeLeft; }
     virtual long RegisterTimer() { ++registered; return 5; }
@@ -13,7 +13,7 @@ struct CGameScriptInterface {
 };
 static CGameScriptInterface g_iface;
 static CGameScriptInterface* g_pGameScriptInterface = &g_iface;
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }

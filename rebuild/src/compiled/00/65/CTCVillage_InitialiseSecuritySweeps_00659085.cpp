@@ -7,8 +7,8 @@ struct Sweeps
     void Reset();  // 0x65fefc, non-inlined method on member at +0x5c
 };
 
-struct CTCVillage
-{
+class CTCVillage
+{ public:
     char  pad00[0x10];    // +0x00
     int   m_field10;      // +0x10
     char  pad14[0x5c-0x14];  // +0x14 .. +0x5b
