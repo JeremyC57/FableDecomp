@@ -1,0 +1,132 @@
+addr       parity           behav  name
+00c19e90   MATCH            PASS   Compare
+00c1ac30   RELOCATION_MATCH PASS   ThreadProc
+00c1b8b0   RELOCATION_MATCH PASS   Create
+00c1bab0   MATCH            PASS   GetByteD
+00c1d950   WARN RELOC_NAME: ?GetCurrentFrame@CScriptModuleTimer@@QAEKXZ -> 00c1d810 labelled 'NCameraModes::CScriptModuleSelfTerminateBase::IsFinished'
+00c1d950   RELOCATION_MATCH PASS   DispatchTimes
+00c1e090   MATCH            PASS   CopyData
+00c1ea20   MATCH            PASS   IsUnreferenced
+00c1ea30   MATCH            PASS   IncrementLifetimer
+00c20ee0   WARN RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c20ee0   RELOCATION_MATCH PASS   GetMode
+00c21360   RELOCATION_MATCH PASS   ApplyPan
+00c21380   RELOCATION_MATCH PASS   GetGain
+00c21f00   RELOCATION_MATCH PASS   Visit
+00c22d90   MATCH            PASS   Visit
+00c22dd0   MATCH            PASS   Visit
+00c259e0   RELOCATION_MATCH PASS   ThreadMain
+00c265a0   MATCH            PASS   IsActive
+00c26650   MATCH            PASS   SetRecord54
+00c26680   WARN RELOC_NAME: ?Set2_00c20480@State@@QAEXI@Z -> 00c20480 labelled 'CBrainOutput::SetAsPumpCombatActions'
+00c26680   WARN RELOC_NAME: ?Set3_00c204a0@State@@QAEXI@Z -> 00c204a0 labelled 'CBrainOutput::SetAsPumpCombatActions'
+00c26680   RELOCATION_MATCH PASS   SetStateValues
+00c26a60   RELOCATION_MATCH PASS   PostRequest
+00c26ec0   RELOCATION_MATCH PASS   PostRequest
+00c280e0   MATCH            PASS   ValidateLargestFreeArea
+00c28220   RELOCATION_MATCH PASS   MoveResource
+00c283a0   MATCH            PASS   GetSizeFromHandle
+00c2a470   RELOCATION_MATCH PASS   Invoke
+00c2b750   MATCH            PASS   Equal
+00c2b780   MATCH            PASS   Less
+00c2b7b0   MATCH            PASS   EqualToKey
+00c2b7e0   MATCH            PASS   LessThanKey
+00c2d910   MATCH            PASS   GetLoopEnd
+00c2df40   RELOCATION_MATCH PASS   Equal
+00c2df60   RELOCATION_MATCH PASS   Less
+00c2df80   RELOCATION_MATCH PASS   EqualToKey
+00c2dfa0   RELOCATION_MATCH PASS   LessThanKey
+00c31eb0   MATCH            PASS   Read
+00c32f40   RELOCATION_MATCH PASS   GetSize
+00c32f60   WARN RELOC_NAME: ?QueueRead@CFileManager_00c1a070@@QAE_NKKPAX000@Z -> 00c1a110 labelled 'FileManager_IncrementAndCheckReference'
+00c32f60   RELOCATION_MATCH PASS   Read
+00c34a10   RELOCATION_MATCH PASS   InsertAt
+00c34a50   WARN RELOC_NAME: ?GetCount@?$CPtrArray@PAUCUnprovenItem_012b4fbc@@@@QAEKXZ -> 00c42ac0 labelled '_global::GetMember_dword0x8_00c42ac0'
+00c34a50   RELOCATION_MATCH PASS   IsNotEmpty
+00c34c40   WARN RELOC_NAME: ?Grow@?$CPtrArray@PAUCBlendEntry@@@@QAEXK@Z -> 00c1e640 labelled 'Vector_ExpandCapacityBy'
+00c34c40   RELOCATION_MATCH PASS   InsertAt
+00c34c80   RELOCATION_MATCH PASS   RemoveAt
+
+WINS: 40
+  00c19e90 MATCH CVtable_012b2f88::?Compare@CVtable_012b2f88@@UAEJPAUCUnprovenKeyPair_00c19e90@@@Z
+  00c1ac30 RELOCATION_MATCH PKCDefaultFileManager::?ThreadProc@PKCDefaultFileManager@@SGKPAX@Z
+  00c1b8b0 RELOCATION_MATCH CVtable_012b3224::?Create@CVtable_012b3224@@UAEPAUCVtable_012b4f60@@J@Z
+  00c1bab0 MATCH CChickenSign::?GetByteD@CChickenSign@@QBEGXZ
+  00c1d950 RELOCATION_MATCH CScriptModuleTimer::?DispatchTimes@CScriptModuleTimer@@UAEJPAX@Z
+  00c1e090 MATCH CVtable_012b33a4::?CopyData@CVtable_012b33a4@@UAEJPAX@Z
+  00c1ea20 MATCH CScriptOwnerThing::?IsUnreferenced@CScriptOwnerThing@@QBE_NXZ
+  00c1ea30 MATCH CParticle::?IncrementLifetimer@CParticle@@QAEXXZ
+  00c20ee0 RELOCATION_MATCH CSoundEvent::?GetMode@CSoundEvent@@QAEJXZ
+  00c21360 RELOCATION_MATCH CSoundEvent::?ApplyPan@CSoundEvent@@QAEXPAUCSoundEventManager@@M@Z
+  00c21380 RELOCATION_MATCH CSoundEvent::?GetGain@CSoundEvent@@QAEMPAUCSoundEventManager@@PAJ@Z
+  00c21f00 RELOCATION_MATCH CVtable_012b3858::?Visit@CVtable_012b3858@@UAEXPAUCLifetimeRef_00c26060@@@Z
+  00c22d90 MATCH CVtable_012b3840::?Visit@CVtable_012b3840@@UAEXPAUCUnprovenEntry_012b3840@@@Z
+  00c22dd0 MATCH CVtable_012b3848::?Visit@CVtable_012b3848@@UAEXPAUCUnprovenEntry_012b3848@@@Z
+  00c259e0 RELOCATION_MATCH PKCTimerManager::?ThreadMain@PKCTimerManager@@UAEXXZ
+  00c265a0 MATCH CPooledResource::?IsActive@CPooledResource@@QAEJXZ
+  00c26650 MATCH CPooledResource::?SetRecord54@CPooledResource@@UAEXJABUSUnprovenRecord_00c26650@@@Z
+  00c26680 RELOCATION_MATCH CPooledResource::?SetStateValues@CPooledResource@@UAEXJII@Z
+  00c26a60 RELOCATION_MATCH CVtable_012b401c::?PostRequest@CVtable_012b401c@@UAEXEPAUPKCRequest@@@Z
+  00c26ec0 RELOCATION_MATCH CVtable_012b4030::?PostRequest@CVtable_012b4030@@UAEXEPAUPKCStreamRequest@@@Z
+  00c280e0 MATCH CHandleBasedMemoryPool::?ValidateLargestFreeArea@CHandleBasedMemoryPool@@AAEXXZ
+  00c28220 RELOCATION_MATCH CHandleBasedMemoryPool::?MoveResource@CHandleBasedMemoryPool@@MAEXPAXJ00K@Z
+  00c283a0 MATCH CHandleBasedMemoryPool::?GetSizeFromHandle@CHandleBasedMemoryPool@@QAEKJ@Z
+  00c2a470 RELOCATION_MATCH CVtable_012b4178::?Invoke@CVtable_012b4178@@UAEXPAUCUnprovenTarget_00c371c0@@@Z
+  00c2b750 MATCH CVtable_012b4340::?Equal@CVtable_012b4340@@UBEHPBUCUnprovenItem_012b4340@@0@Z
+  00c2b780 MATCH CVtable_012b4340::?Less@CVtable_012b4340@@UBEHPBUCUnprovenItem_012b4340@@0@Z
+  00c2b7b0 MATCH CVtable_012b4340::?EqualToKey@CVtable_012b4340@@UBEHABMPBUCUnprovenItem_012b4340@@@Z
+  00c2b7e0 MATCH CVtable_012b4340::?LessThanKey@CVtable_012b4340@@UBEHABMPBUCUnprovenItem_012b4340@@@Z
+  00c2d910 MATCH CAudioFormat::?GetLoopEnd@CAudioFormat@@QAEKXZ
+  00c2df40 RELOCATION_MATCH CVtable_012b4788::?Equal@CVtable_012b4788@@UBEHPBUCUnprovenItem_012b4788@@0@Z
+  00c2df60 RELOCATION_MATCH CVtable_012b4788::?Less@CVtable_012b4788@@UBEHPBUCUnprovenItem_012b4788@@0@Z
+  00c2df80 RELOCATION_MATCH CVtable_012b4788::?EqualToKey@CVtable_012b4788@@UBEHABVCString@@PBUCUnprovenItem_012b4788@@@Z
+  00c2dfa0 RELOCATION_MATCH CVtable_012b4788::?LessThanKey@CVtable_012b4788@@UBEHABVCString@@PBUCUnprovenItem_012b4788@@@Z
+  00c31eb0 MATCH CVtable_012b4e08::?Read@CVtable_012b4e08@@UAE_NPAXK@Z
+  00c32f40 RELOCATION_MATCH CVtable_012b4f4c::?GetSize@CVtable_012b4f4c@@UAE_NPAK@Z
+  00c32f60 RELOCATION_MATCH CVtable_012b4f4c::?Read@CVtable_012b4f4c@@UAE_NKJPAX000@Z
+  00c34a10 RELOCATION_MATCH CVtable_012b4fbc::?InsertAt@CVtable_012b4fbc@@UAEJKPAUCUnprovenItem_012b4fbc@@@Z
+  00c34a50 RELOCATION_MATCH CVtable_012b4fbc::?IsNotEmpty@CVtable_012b4fbc@@UAEJXZ
+  00c34c40 RELOCATION_MATCH CVtable_012b4fec::?InsertAt@CVtable_012b4fec@@UAEJKPAUCBlendEntry@@@Z
+  00c34c80 RELOCATION_MATCH CVtable_012b4fec::?RemoveAt@CVtable_012b4fec@@UAEXKJ@Z
+
+LANDED 40 wins into src/compiled + tests + catalog + oracle
+  CVtable012b2f88_Compare_00c19e90
+  PKCDefaultFileManager_ThreadProc_00c1ac30
+  CVtable012b3224_Create_00c1b8b0
+  CChickenSign_GetByteD_00c1bab0
+  CScriptModuleTimer_DispatchTimes_00c1d950
+  CVtable012b33a4_CopyData_00c1e090
+  CScriptOwnerThing_IsUnreferenced_00c1ea20
+  CParticle_IncrementLifetimer_00c1ea30
+  CSoundEvent_GetMode_00c20ee0
+  CSoundEvent_ApplyPan_00c21360
+  CSoundEvent_GetGain_00c21380
+  CVtable012b3858_Visit_00c21f00
+  CVtable012b3840_Visit_00c22d90
+  CVtable012b3848_Visit_00c22dd0
+  PKCTimerManager_ThreadMain_00c259e0
+  CPooledResource_IsActive_00c265a0
+  CPooledResource_SetRecord54_00c26650
+  CPooledResource_SetStateValues_00c26680
+  CVtable012b401c_PostRequest_00c26a60
+  CVtable012b4030_PostRequest_00c26ec0
+  CHandleBasedMemoryPool_ValidateLargestFreeArea_00c280e0
+  CHandleBasedMemoryPool_MoveResource_00c28220
+  CHandleBasedMemoryPool_GetSizeFromHandle_00c283a0
+  CVtable012b4178_Invoke_00c2a470
+  CVtable012b4340_Equal_00c2b750
+  CVtable012b4340_Less_00c2b780
+  CVtable012b4340_EqualToKey_00c2b7b0
+  CVtable012b4340_LessThanKey_00c2b7e0
+  CAudioFormat_GetLoopEnd_00c2d910
+  CVtable012b4788_Equal_00c2df40
+  CVtable012b4788_Less_00c2df60
+  CVtable012b4788_EqualToKey_00c2df80
+  CVtable012b4788_LessThanKey_00c2dfa0
+  CVtable012b4e08_Read_00c31eb0
+  CVtable012b4f4c_GetSize_00c32f40
+  CVtable012b4f4c_Read_00c32f60
+  CVtable012b4fbc_InsertAt_00c34a10
+  CVtable012b4fbc_IsNotEmpty_00c34a50
+  CVtable012b4fec_InsertAt_00c34c40
+  CVtable012b4fec_RemoveAt_00c34c80

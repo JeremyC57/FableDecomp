@@ -33898,3 +33898,17 @@ __imp__DebugBreak@0	0143fe64	00c16750
 ?BuildFromPoints@C3DBoundingBox@@QAEXPBVC3DVector@@M@Z	00aded70	00adeea0
 ?g_GlowConfigurations_0139a580@@3PAVCGlowConfiguration_0139a580@@A	0139a580	00b5ebf0
 ?Clear@CEngineLandscapeMap@@QAEXXZ	00bdc450	00b676f0
+?AsyncReadThread@PKCDefaultFileManager@@QAEXXZ	00c1a9c0	00c1ac30
+??0CVtable_012b4f60@@QAE@PAX0@Z	00c330a0	00c1b8b0
+?InitializeAndDispatch@CAIStateGroup_00c1df70@@QAE_NPAX000@Z	00c1df70	00c1d950
+?GetMode@CSoundEvent@@QAEJXZ	00c20ee0	00c21360
+?Set2DPosition@CSoundEvent@@QAEXM@Z	00c20eb0	00c21360
+??1CLifetimeRef_00c26060@@QAE@XZ	00c26060	00c21f00
+?Push@CWorkerQueue_00c26cd0@@QAEXPAUPKCRequest@@@Z	00c26cd0	00c26a60
+?Push@CWorkerQueue_00c27130@@QAEXPAUPKCStreamRequest@@@Z	00c27130	00c26ec0
+?Update@CUnprovenTarget_00c371c0@@QAEXJ@Z	00c371c0	00c2a470
+?GetFileSize@CFileManager_00c1a070@@QAE_NKPAK@Z	00c1a070	00c32f40
+?QueueRead@CFileManager_00c1a070@@QAE_NKKPAX000@Z	00c1a110	00c32f60
+?Add@?$CPtrArray@PAUCUnprovenItem_012b4fbc@@@@QAEXPAUCUnprovenItem_012b4fbc@@@Z	00c42b50	00c34a10
+?GetCount@?$CPtrArray@PAUCUnprovenItem_012b4fbc@@@@QAEKXZ	00c42ac0	00c34a50
+?Remove@?$CPtrArray@PAUCBlendEntry@@@@QAEXPAUCBlendEntry@@@Z	00c1e900	00c34c80

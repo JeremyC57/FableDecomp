@@ -1,0 +1,4 @@
+address	name	evidence
+00c280e0	CHandleBasedMemoryPool::ValidateLargestFreeArea	proven per batch 2026-10-27_linux_hand494 NOTES.md (chunk 494)
+00c28220	CHandleBasedMemoryPool::MoveResource	proven per batch 2026-10-27_linux_hand494 NOTES.md (chunk 494)
+00c283a0	CHandleBasedMemoryPool::GetSizeFromHandle	proven per batch 2026-10-27_linux_hand494 NOTES.md (chunk 494)
