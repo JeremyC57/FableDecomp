@@ -1,0 +1,33 @@
+addr       parity           behav  name
+0072a970   RELOCATION_MATCH PASS   SetupBulletTime
+0072a9b0   RELOCATION_MATCH PASS   SetupForceMove
+0072aa00   RELOCATION_MATCH PASS   SetupHealLifeSpell
+0072aa50   RELOCATION_MATCH PASS   SetupGhostSwordSpell
+0072aaa0   RELOCATION_MATCH PASS   SetupMultiArrow
+0072c680   WARN SHARED_HEADER_AVAILABLE CTCWillLightning
+0072c680   WARN RELOC_NAME: ?SetWeaponState@CTCWillLightning@@QAEXW4EWEAPON_STATE@CTCSpecialAbilities@@@Z -> 0079f680 labelled '_global::SetMember_dword0xc_0079f680'
+0072c680   RELOCATION_MATCH PASS   SetupLightningSpell
+0072caa0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0072caa0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastAssassinRush
+0072caa0   WARN RELOC_CONFLICT: ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ -> 004c7a10 here, 004c7a30 in landed 007b0950
+0072caa0   WARN RELOC_NAME: ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ -> 004c7a10 labelled 'CThing::PeekPlayer'
+0072caa0   WARN RELOC_NAME: ??1CCreatureAction_CastAssassinRush@@QAE@XZ -> 0072d990 labelled '_unattributed::~CBase_0062e900_Derived_0072d990'
+0072caa0   RELOCATION_MATCH PASS   SetupAssassinRush
+
+WINS: 7
+  0072a970 RELOCATION_MATCH CTCSpecialAbilities::SetupBulletTime
+  0072a9b0 RELOCATION_MATCH CTCSpecialAbilities::SetupForceMove
+  0072aa00 RELOCATION_MATCH CTCSpecialAbilities::SetupHealLifeSpell
+  0072aa50 RELOCATION_MATCH CTCSpecialAbilities::SetupGhostSwordSpell
+  0072aaa0 RELOCATION_MATCH CTCSpecialAbilities::SetupMultiArrow
+  0072c680 RELOCATION_MATCH CTCSpecialAbilities::SetupLightningSpell
+  0072caa0 RELOCATION_MATCH CTCSpecialAbilities::SetupAssassinRush
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CTCSpecialAbilities_SetupBulletTime_0072a970
+  CTCSpecialAbilities_SetupForceMove_0072a9b0
+  CTCSpecialAbilities_SetupHealLifeSpell_0072aa00
+  CTCSpecialAbilities_SetupGhostSwordSpell_0072aa50
+  CTCSpecialAbilities_SetupMultiArrow_0072aaa0
+  CTCSpecialAbilities_SetupLightningSpell_0072c680
+  CTCSpecialAbilities_SetupAssassinRush_0072caa0

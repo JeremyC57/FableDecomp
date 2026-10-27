@@ -1,0 +1,79 @@
+0072a970	1	v1 implicit temp + HasTC inline	DIFFER	63v63
+0072a970	2	v2 named creature local before test	DIFFER	60v63
+0072a970	3	v3 flags /Os (load-first+lea eax but ebp frame, byte test)	DIFFER	65v63
+0072a970	4	v4 CThing* const& member alias	DIFFER	63v63
+0072a970	5	v5 Creature typed CThingCreatureBase* (base conversion)	DIFFER	63v63
+0072a970	6	P6 bitset member object test() (CPresenceBits)	DIFFER	63v63
+0072a970	7	P7 free __forceinline helpers with pointer params	DIFFER	60v63
+0072a970	8	P8 duplicated HasTC use	DIFFER	63v63
+0072a970	9	P10 early return form	DIFFER	63v63
+0072a970	10	synthetic dynamic-bit HasTC(CurrentAbility) (mechanism probe)	DIFFER	78v63
+0072a970	11	flags /Og-	DIFFER	94v63
+0072a970	12	flags /Oa (keeps Creature in esi)	DIFFER	60v63
+0072a970	13	flags /Ow	DIFFER	63v63
+0072a970	14	flags /Op	DIFFER	63v63
+0072a970	15	flags /Oi-	DIFFER	63v63
+0072a970	16	P11 STLport bitset<274>::test (range check + !=0) for HasTC	RELOCATION_MATCH	63v63
+0072a970	17	family source (bitset::test model)	RELOCATION_MATCH	63v63
+0072a9b0	1	bitset::test model, shared return true	DIFFER	63v68
+0072aa00	1	bitset::test model, shared return true	DIFFER	63v68
+0072aa50	1	bitset::test model + MakeSwordsAppear	RELOCATION_MATCH	72v72
+0072aaa0	1	bitset::test model, shared return true	DIFFER	62v67
+0072c680	1	bitset::test model + CalculateWeaponState/SetWeaponState	RELOCATION_MATCH	83v83
+0072a9b0	2	early return false	DIFFER	68v68
+0072aa00	2	early return false	DIFFER	68v68
+0072aaa0	2	early return false	DIFFER	67v67
+0072a9b0	3	if(!HasTC){AddTC;return true;} return false	RELOCATION_MATCH	68v68
+0072aa00	3	if(!HasTC){AddTC;return true;} return false	RELOCATION_MATCH	68v68
+0072aaa0	3	if(!HasTC){AddTC;return true;} return false	RELOCATION_MATCH	67v67
+0072a970	18	research: bitset::test WITHOUT range check (lever is the range check)	DIFFER	63v63
+0072caa0	1	prior + bitset::test model (tests no longer merged)	DIFFER	304v252
+0072caa0	2	temporaries bound to const& SetCurrentAction, enum keys, bitfield Dead (tails merge)	DIFFER	217v252
+0072caa0	3	+ __forceinline GetTC	RELOCATION_MATCH	252v252
+007bc8fc	1	V2 GetPhysics inline accessor	DIFFER	308v308
+007bc8fc	2	V3 GetParentThing inline accessor for AddTC	DIFFER	308v308
+007bc8fc	3	V4 (*ParentThing).AddTC	DIFFER	308v308
+007bc8fc	4	E6 inline wrapper taking const CCharString&	DIFFER	308v308
+007bc8fc	5	E7 named string + named thing local after it	DIFFER	308v308
+007bc8fc	6	E11 nested if (no early return)	DIFFER	308v308
+0062b7c0	1	prior + STLport bitset::test model	DIFFER	280v280
+006d7b80	1	prior + STLport bitset::test model	DIFFER	289v297
+00664d40	1	prior + STLport bitset::test model	DIFFER	268v268
+008c2ad0	1	prior + STLport bitset::test model	DIFFER	381v370
+00909a00	1	prior + STLport bitset::test model	DIFFER	298v336
+00914d80	1	prior + STLport bitset::test model	DIFFER	343v338
+0091b190	1	prior + STLport bitset::test model	DIFFER	332v332
+00934f20	1	prior + STLport bitset::test model	DIFFER	281v281
+009852c0	1	prior + STLport bitset::test model	DIFFER	337v337
+005fbfa0	1	prior + STLport bitset::test model	DIFFER	274v277
+00753380	1	prior + STLport bitset::test model	DIFFER	298v297
+00af56e0	1	chained current = it = erase(it)	DIFFER	138v138
+00af56e0	2	user copy ctor + operator= on the iterator	DIFFER	138v138
+00934f20	1	F1 inner return-a then return-b (select persists)	DIFFER	281v281
+00934f20	2	G1 single short-circuit condition (select gone, return-b block moves to the end)	DIFFER	281v281
+00934f20	3	G2 separate nearestA test + compound compare (select again)	DIFFER	281v281
+00934f20	4	G3 return-a compound condition + trailing return b (return-b at end)	DIFFER	281v281
+00934f20	5	G4 explicit else (same as G1)	DIFFER	281v281
+007f67c0	1	B1 C2DBoxI(centre, radius) ctor	DIFFER	236v235
+007f67c0	2	B2 temporary C2DCoordI + inline (long)maxRange	DIFFER	236v235
+00664d40	2	C1 ++RefCount/DecRefToZero(long&) idiom (worse: 266)	DIFFER	266v268
+00664d40	3	C2 AddRef = ++m_refCount (no change)	DIFFER	268v268
+00664d40	4	C3 Release = if (--m_refCount == 0) (no change)	DIFFER	268v268
+00836de0	1	D1 pointer-to-member locals in FlipNode	DIFFER	249v247
+00836de0	2	D2 node reference + SwapValues inline in the loop	DIFFER	249v247
+005b6767	1	named game-component local before the difference (forward-substituted)	DIFFER	282v282
+00933db0	2	CAIBrain inline GetCreature accessor (no change)	DIFFER	347v347
+009852c0	2	CAIBrain inline GetCreature accessor (no change)	DIFFER	337v337
+007da520	1	H1 named long handValue (frame 0x10 but call order differs)	DIFFER	286v286
+007da520	2	H2 inline ScoreToWideString(long) helper (argument evaluated first; 283)	DIFFER	283v286
+009852c0	3	named CAIBrain* brain local before the lookup (no change)	DIFFER	337v337
+005be284	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	298v301
+005fbfa0	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	274v277
+0062b7c0	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	280v280
+00664d40	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	268v268
+006d7b80	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	289v297
+00753380	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	298v297
+00775b40	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	274v274
+00909a00	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	298v336
+00934f20	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	281v281
+009852c0	9	same-TU noinline binary-search LowerBound body (auto_inline off/on around it)	DIFFER	337v337

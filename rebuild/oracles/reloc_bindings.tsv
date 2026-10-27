@@ -32771,3 +32771,10 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??4?$vector@VCHeroSoulsWaveDef@@V?$allocator@VCHeroSoulsWaveDef@@@std@@@std@@QAEAAV01@ABV01@@Z	00f27bc0	00f27e00
 ??_7CRegionScriptDef@@6B@	012fb630	00f29c10
 ??4?$vector@GV?$allocator@G@std@@@std@@QAEAAV01@ABV01@@Z	00f3b640	00f3b850
+?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	004c9d60	0072a970
+?MakeSwordsAppear@CTCGhostSword@@QAEXXZ	007c5db0	0072aa50
+?CalculateWeaponState@@YI?AW4EWEAPON_STATE@CTCSpecialAbilities@@PAVCThingCreatureBase@@@Z	0072b940	0072c680
+?SetWeaponState@CTCWillLightning@@QAEXW4EWEAPON_STATE@CTCSpecialAbilities@@@Z	0079f680	0072c680
+??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@AAVCThing@@_NJV?$CCountedPointer@VCCreatureActionBase@@@@@Z	008ce040	0072caa0
+??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@JV?$CCountedPointer@VCCreatureActionBase@@@@@Z	008ce100	0072caa0
+?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBW4ETCInterfaceType@@@Z	004365b0	0072caa0

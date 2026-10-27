@@ -1,0 +1,6 @@
+address	name	evidence
+0072aa00	CTCSpecialAbilities::SetupHealLifeSpell	Ego_r.pdb name set; manifest "SetupForceMove" was propagated (chunk 993)
+0072aaa0	CTCSpecialAbilities::SetupMultiArrow	Ego_r.pdb name set; manifest "SetupForceMove" was propagated (chunk 993)
+0079f680	CTCWillLightning::SetWeaponState	(EWEAPON_STATE); manifest CObservable::AddExclusiveObserver, landed placeholder C_0079f680::M (chunk 993)
+00476e3e	CPersistContext::TransferVectorOfSubComponents<CEnvironmentThemeDef>	callers; manifest <CAbilityButtonGuiDef> (chunk 993)
+00477cd2	CPersistContext::TransferVectorOfSubComponents<CEngineLocalDetailObjectDef>	callers; manifest <CAbilityButtonGuiDef> (chunk 993)

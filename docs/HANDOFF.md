@@ -5,7 +5,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **47413 (95.7%)** of 49,568
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **47420 (95.7%)** of 49,568
   (`rebuild/oracles/auto-re-candidates.tsv`). No agents running; chunk 484 was paused by the owner and its scratch
   workspace is gone (re-cut it with `lane_tools/chunk_pool/mkchunk.py` if wanted).
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by

@@ -333873,6 +333873,55 @@ $catalog = @(
         TestSource = '00/f3/std_fill_00f3b850_test.cpp'
         PassPattern = '00f3b850_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0072a970'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupBulletTime_0072a970.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupBulletTime_0072a970_test.cpp'
+        PassPattern = '0072a970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072a9b0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupForceMove_0072a9b0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupForceMove_0072a9b0_test.cpp'
+        PassPattern = '0072a9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072aa00'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupHealLifeSpell_0072aa00.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupHealLifeSpell_0072aa00_test.cpp'
+        PassPattern = '0072aa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072aa50'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupGhostSwordSpell_0072aa50.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupGhostSwordSpell_0072aa50_test.cpp'
+        PassPattern = '0072aa50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072aaa0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupMultiArrow_0072aaa0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupMultiArrow_0072aaa0_test.cpp'
+        PassPattern = '0072aaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072c680'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupLightningSpell_0072c680.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupLightningSpell_0072c680_test.cpp'
+        PassPattern = '0072c680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072caa0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupAssassinRush_0072caa0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupAssassinRush_0072caa0_test.cpp'
+        PassPattern = '0072caa0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
