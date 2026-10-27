@@ -5,7 +5,7 @@
 //   0.5f 0x0122F59C, the table scale 0x01230010, 2^32 0x0122DCB4.
 // Layout: local model: packed fade word +0x0C (bits 0-9 fade-in end, 10-19 fade-out start, bit 25 enabled), lifetime
 //   float +0x18, frame count long +0x98.
-// Retail-asm: `fstp [slot] ; fld [slot] ; fistp dword ptr [slot]` in the inline table-cosine (x2) -- the engine's inline-assembly float-to-long helper (the by-value copy is stored and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` without the reload).
+// Retail-asm: 0x00B0A848 / 0x00B0A8CC (fistp at 0x00B0A850 / 0x00B0A8D4) `fstp [slot] ; fld [slot] ; fistp dword ptr [slot]` in the inline table-cosine (x2) -- the engine's inline-assembly float-to-long helper (the by-value copy is stored and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` without the reload).
 extern const float g_cosTable[1025];                // 0x013CD550
 extern const float g_fadeScale;                     // 0x01266300
 extern const float g_cosTableScale;                 // 0x01230010

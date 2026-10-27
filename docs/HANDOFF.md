@@ -32,7 +32,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 3. CRetailTree remainder: 882 kept rows + ~180 misnamed /Os tree functions (`treepass/KEPT.tsv`, `OS_FAMILY.tsv`).
 4. Recheck sweep: 35 rows failing since before the class-key pass, 93 Leafs naming no symbol, ~484 stale bindings,
    318 unknown-key headers, 389 headers without size evidence, CEngineResourceManager size drift.
-5. Parked rows (`rebuild/candidates/manual/pending/*/differ/`), incl. family pass 3/4 parks; retail_asm candidates
+5. Parked rows (`rebuild/candidates/manual/pending/*/differ/`), incl. family pass 3/4 parks; retail_asm candidates (no instruction cap since 2026-10-27; agent994 verifying all 218 open candidates)
    (0x774610, 0x779EF0, 0x81EA50, 0xB17BD0, 0xB1BC80, 0xA145C0, J032 x87 power-of-ten helpers 0xC40E60 ...);
    volatile candidates 0x9919C0, 0x991C10.
 6. Review-at-landing items in each batch `LESSONS.md` (e.g. 0x81B510/0x81A4F0 are CParticleMorphs code; 0x62FC20 uses
