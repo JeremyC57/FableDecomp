@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c34e20	RELOCATION_MATCH	23v23	PASS	4 grades; CItemGridTable_012b501c::GetAt (slot 6); row read into a named local
+00c34ff0	RELOCATION_MATCH	71v71	PASS	1 grade; CItemGridTable_012b501c::Remove (slot 8)
+00c350f0	MATCH	41v41	PASS	1 grade; CSingleItemTable_012b504c::Insert (slot 3)
+00c35120	MATCH	13v13	PASS	1 grade; CSingleItemTable_012b504c::GetColumnCount (slot 4)
+00c35460	SKIP	-v51	-	0 grades; row packs four functions (jmp [eax+14h], then ret 8 / ret 4 / ret 4 stubs after int3 padding)
+00c36170	RELOCATION_MATCH	14v14	PASS	1 grade; CSemaphore::Release
+00c36cc0	RELOCATION_MATCH	40v40	PASS	1 grade; CMaxValueVisitor::Visit
+00c377e0	MATCH	11v11	PASS	1 grade; CSoundLoop_00c377f0::GetSoundSystem (label CPlayer::GetCurrentMode wrong)
+00c37a40	MATCH	38v38	PASS	1 grade; CSoundEmitter_00c37ad0::SetPosition (slot 5)
+00c38b10	RELOCATION_MATCH	15v15	PASS	1 grade; CActivationReceptor_00c38b20::Final (bound name; label CComponent::GetCurrentState wrong)
+00c3aa40	MATCH	7v7	PASS	1 grade; CSegmentFile::GetPosition (label CGameScriptThing::GetPThingUniqueID wrong)
+00c3c4b0	SKIP	-v40	-	0 grades; row packs two functions (virtual dispatch on +0x2c bit 2, then mov eax,-9 ; ret 4 after int3 padding)
+00c3d030	DIFFER	92v94	-	4 grades (1 SRC_FAIL); counts-pointer register and last-store tail duplication
+00c3d390	RELOCATION_MATCH	65v65	PASS	3 grades; literal 1.0f/330.0f constant
+00c3d9a0	RELOCATION_MATCH	84v84	PASS	3 grades; ??_E needs /EHsc and CPKObject::operator delete[]
+00c3f000	RELOCATION_MATCH	35v35	PASS	1 grade; CLimitedMixBuffer::Reset (slot 1)
+00c3f460	MATCH	12v12	PASS	1 grade; CCodaVoice slot 3, descriptive
+00c40c70	RELOCATION_MATCH	37v37	PASS	1 grade; CLibpkObject78::SetLong68
+00c40cc0	RELOCATION_MATCH	36v36	PASS	1 grade; CLibpkObject78::SetFloat70
+00c40cf0	RELOCATION_MATCH	25v25	PASS	1 grade; CLibpkObject78::SetLong74
+00c412d0	RELOCATION_MATCH	49v49	PASS	1 grade; CLibpkObject1D8::GetEffectiveGain (slot 5)
+00c415e0	MATCH	42v42	PASS	1 grade; CLibpkObject1D8::SetFloat154
+00c417f0	MATCH	67v67	PASS	2 grades; per-arm state reads, mask if-form
+00c41840	MATCH	53v53	PASS	2 grades; per-arm state reads
+00c42720	MATCH	70v70	PASS	1 grade; StreamReader::Read (slot 3)
+00c42fb0	DIFFER	40v36	-	1 grade; lane gap: LTCG keeps this in ecx across a cdecl call
+00c43890	RELOCATION_MATCH	93v93	PASS	1 grade; CAudioObject::Devirtualize
+00c447a0	RELOCATION_MATCH	91v91	PASS	1 grade; CLibpkObject1D8::SetLoopPointPair
+00c44800	RELOCATION_MATCH	92v92	PASS	1 grade; CLibpkObject1D8::SetVolumeParamPair
+00c46360	MATCH	55v55	PASS	1 grade; CEntryArray_012b7d50::Add (slot 2)
+00c4aa20	MATCH	11v11	PASS	1 grade; PKCBufferedReader::Tell (label CGameMap::GetMemoryFootprint wrong)
+00c4bff0	MATCH	11v11	PASS	1 grade; CRACBuffer::GetAlignedSize (label CWorld::DrawGetEnvironment wrong)
+00c4c000	MATCH	9v9	PASS	1 grade; CRACBuffer::GetPointer (label CBasicString<char>::GetChar wrong)
+00c4e350	RELOCATION_MATCH	39v39	PASS	1 grade; CEAXManager::GetEffectProperty
+00c547a0	RELOCATION_MATCH	35v35	PASS	1 grade; CDecodedStream::Open (slot 2)
+00c556e0	RELOCATION_MATCH	99v99	PASS	2 grades; CAudioSource::Setup (slot 1); source word in a named local
+00c55d70	RELOCATION_MATCH	40v40	PASS	1 grade; CAudioContext::SetDistanceExponent (slot 7)
+00c56060	RELOCATION_MATCH	48v48	PASS	1 grade; CAudioContext::SetDefaultSpeakerConfig (slot 3)
+00c570d0	MATCH	62v62	PASS	1 grade; CDSoundStreamBuffer::LockChunk (slot 9)
+00c57110	MATCH	43v43	PASS	1 grade; CDSoundStreamBuffer::UnlockChunk (slot 10)

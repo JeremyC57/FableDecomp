@@ -1,0 +1,121 @@
+addr       parity           behav  name
+00c34e20   WARN RELOC_NAME: ?GetAt@?$CPtrArray@PAUCTableEntry@@@@QAEPAUCTableEntry@@K@Z -> 00c42ab0 labelled 'CSmallVector<CANavQuadTreeNode_const*,8>::operator[]'
+00c34e20   RELOCATION_MATCH PASS   GetAt
+00c34ff0   WARN RELOC_NAME: ?GetCount@?$CPtrArray@PAUCTableEntry@@@@QAEKXZ -> 00c42ac0 labelled '_global::GetMember_dword0x8_00c42ac0'
+00c34ff0   RELOCATION_MATCH PASS   Remove
+00c350f0   MATCH            PASS   Insert
+00c35120   MATCH            PASS   GetColumnCount
+00c36170   RELOCATION_MATCH PASS   Release
+00c36cc0   RELOCATION_MATCH PASS   Visit
+00c377e0   MATCH            PASS   GetSoundSystem
+00c37a40   MATCH            PASS   SetPosition
+00c38b10   RELOCATION_MATCH PASS   Final
+00c3aa40   MATCH            PASS   GetPosition
+00c3d390   RELOCATION_MATCH PASS   SetFloat94
+00c3d9a0   WARN RELOC_NAME: ??1CMorphAction_00c3dcd0@@UAE@XZ -> 00c3d7b0 labelled 'CVtable_012b5a80::~CVtable_012b5a80'
+00c3d9a0   WARN RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c3d9a0   RELOCATION_MATCH PASS   `vector deleting destructor'
+00c3f000   RELOCATION_MATCH PASS   Reset
+00c3f460   MATCH            PASS   ClearField0C
+00c40c70   RELOCATION_MATCH PASS   SetLong68
+00c40cc0   RELOCATION_MATCH PASS   SetFloat70
+00c40cf0   RELOCATION_MATCH PASS   SetLong74
+00c412d0   RELOCATION_MATCH PASS   GetEffectiveGain
+00c415e0   MATCH            PASS   SetFloat154
+00c417f0   MATCH            PASS   SetFlag40000
+00c41840   MATCH            PASS   SetFlag80000
+00c42720   MATCH            PASS   Read
+00c43890   RELOCATION_MATCH PASS   Devirtualize
+00c447a0   WARN RELOC_NAME: ?UpdateLoopPoints@CAudioObject@@QAEXPAPAUSLoopPoints@@PAU2@PBU2@@Z -> 00c43420 labelled 'CMusicManager::SetLoopPoints'
+00c447a0   RELOCATION_MATCH PASS   SetLoopPointPair
+00c44800   WARN RELOC_NAME: ?UpdateVolumeParams@CAudioObject@@QAEXPAPAUSVolumeParams@@PAU2@PBU2@@Z -> 00c434a0 labelled 'CMusicManager::SetVolumeParams'
+00c44800   RELOCATION_MATCH PASS   SetVolumeParamPair
+00c46360   MATCH            PASS   Add
+00c4aa20   MATCH            PASS   Tell
+00c4bff0   MATCH            PASS   GetAlignedSize
+00c4c000   MATCH            PASS   GetPointer
+00c4e350   RELOCATION_MATCH PASS   GetEffectProperty
+00c547a0   WARN RELOC_NAME: ?Initialise@CDecodedStream@@QAE_NXZ -> 00c54510 labelled 'Audio_InitializeParameters'
+00c547a0   RELOCATION_MATCH PASS   Open
+00c556e0   WARN RELOC_NAME: ?Setup@CSoftwareVoice_00c5a1d0@@UAEJPAUCVoiceDesc_00c556e0@@@Z -> 00c5a1d0 labelled 'CTCStealth::OnCreate'
+00c556e0   RELOCATION_MATCH PASS   Setup
+00c55d70   RELOCATION_MATCH PASS   SetDistanceExponent
+00c56060   RELOCATION_MATCH PASS   SetDefaultSpeakerConfig
+00c570d0   MATCH            PASS   LockChunk
+00c57110   MATCH            PASS   UnlockChunk
+
+WINS: 36
+  00c34e20 RELOCATION_MATCH CItemGridTable_012b501c::?GetAt@CItemGridTable_012b501c@@UAEPAUCTableEntry@@KK@Z
+  00c34ff0 RELOCATION_MATCH CItemGridTable_012b501c::?Remove@CItemGridTable_012b501c@@UAEXKK@Z
+  00c350f0 MATCH CSingleItemTable_012b504c::?Insert@CSingleItemTable_012b504c@@UAEJKPAUCTableEntry@@@Z
+  00c35120 MATCH CSingleItemTable_012b504c::?GetColumnCount@CSingleItemTable_012b504c@@UAEKK@Z
+  00c36170 RELOCATION_MATCH CSemaphore::?Release@CSemaphore@@QAEXXZ
+  00c36cc0 RELOCATION_MATCH CMaxValueVisitor::?Visit@CMaxValueVisitor@@UAEXPAX@Z
+  00c377e0 MATCH CSoundLoop_00c377f0::?GetSoundSystem@CSoundLoop_00c377f0@@QAEPAUCSoundSystem_00c377f0@@XZ
+  00c37a40 MATCH CSoundEmitter_00c37ad0::?SetPosition@CSoundEmitter_00c37ad0@@UAEXJABUSEmitterPosition_00c37a40@@@Z
+  00c38b10 RELOCATION_MATCH CActivationReceptor_00c38b20::?Final@CActivationReceptor_00c38b20@@QAEXXZ
+  00c3aa40 MATCH CSegmentFile::?GetPosition@CSegmentFile@@QBEKXZ
+  00c3d390 RELOCATION_MATCH CLibpkStateA4::?SetFloat94@CLibpkStateA4@@QAEXM@Z
+  00c3d9a0 RELOCATION_MATCH CMorphAction_00c3dcd0::??_ECMorphAction_00c3dcd0@@UAEPAXI@Z
+  00c3f000 RELOCATION_MATCH CLimitedMixBuffer::?Reset@CLimitedMixBuffer@@UAEXXZ
+  00c3f460 MATCH CCodaVoice::?ClearField0C@CCodaVoice@@UAEJJ@Z
+  00c40c70 RELOCATION_MATCH CLibpkObject78::?SetLong68@CLibpkObject78@@QAEXK@Z
+  00c40cc0 RELOCATION_MATCH CLibpkObject78::?SetFloat70@CLibpkObject78@@QAEXM@Z
+  00c40cf0 RELOCATION_MATCH CLibpkObject78::?SetLong74@CLibpkObject78@@QAEXK@Z
+  00c412d0 RELOCATION_MATCH CLibpkObject1D8::?GetEffectiveGain@CLibpkObject1D8@@UAEMXZ
+  00c415e0 MATCH CLibpkObject1D8::?SetFloat154@CLibpkObject1D8@@QAEXM@Z
+  00c417f0 MATCH CLibpkObject1D8::?SetFlag40000@CLibpkObject1D8@@QAEX_N@Z
+  00c41840 MATCH CLibpkObject1D8::?SetFlag80000@CLibpkObject1D8@@QAEX_N@Z
+  00c42720 MATCH StreamReader::?Read@StreamReader@@UAE_NPAXK@Z
+  00c43890 RELOCATION_MATCH CAudioObject::?Devirtualize@CAudioObject@@QAEXJ@Z
+  00c447a0 RELOCATION_MATCH CLibpkObject1D8::?SetLoopPointPair@CLibpkObject1D8@@QAEXPBUSLoopPoints@@0@Z
+  00c44800 RELOCATION_MATCH CLibpkObject1D8::?SetVolumeParamPair@CLibpkObject1D8@@QAEXPBUSVolumeParams@@0@Z
+  00c46360 MATCH CEntryArray_012b7d50::?Add@CEntryArray_012b7d50@@UAEXABUSEntry_00c46360@@@Z
+  00c4aa20 MATCH PKCBufferedReader::?Tell@PKCBufferedReader@@QAEKXZ
+  00c4bff0 MATCH CRACBuffer::?GetAlignedSize@CRACBuffer@@QBEKK@Z
+  00c4c000 MATCH CRACBuffer::?GetPointer@CRACBuffer@@QBEPAEK@Z
+  00c4e350 RELOCATION_MATCH CEAXManager::?GetEffectProperty@CEAXManager@@QAEJKPAXKK@Z
+  00c547a0 RELOCATION_MATCH CDecodedStream::?Open@CDecodedStream@@UAEJPBUSStreamDesc_00c547a0@@@Z
+  00c556e0 RELOCATION_MATCH CAudioSource::?Setup@CAudioSource@@UAEJPAUCVoiceDesc_00c556e0@@@Z
+  00c55d70 RELOCATION_MATCH CAudioContext::?SetDistanceExponent@CAudioContext@@UAEXJ@Z
+  00c56060 RELOCATION_MATCH CAudioContext::?SetDefaultSpeakerConfig@CAudioContext@@UAEXXZ
+  00c570d0 MATCH CDSoundStreamBuffer::?LockChunk@CDSoundStreamBuffer@@UAEPAXXZ
+  00c57110 MATCH CDSoundStreamBuffer::?UnlockChunk@CDSoundStreamBuffer@@UAEXPAX@Z
+
+LANDED 36 wins into src/compiled + tests + catalog + oracle
+  CItemGridTable012b501c_GetAt_00c34e20
+  CItemGridTable012b501c_Remove_00c34ff0
+  CSingleItemTable012b504c_Insert_00c350f0
+  CSingleItemTable012b504c_GetColumnCount_00c35120
+  CSemaphore_Release_00c36170
+  CMaxValueVisitor_Visit_00c36cc0
+  CSoundLoop00c377f0_GetSoundSystem_00c377e0
+  CSoundEmitter00c37ad0_SetPosition_00c37a40
+  CActivationReceptor00c38b20_Final_00c38b10
+  CSegmentFile_GetPosition_00c3aa40
+  CLibpkStateA4_SetFloat94_00c3d390
+  CMorphAction00c3dcd0_vectordeletingdestructor_00c3d9a0
+  CLimitedMixBuffer_Reset_00c3f000
+  CCodaVoice_ClearField0C_00c3f460
+  CLibpkObject78_SetLong68_00c40c70
+  CLibpkObject78_SetFloat70_00c40cc0
+  CLibpkObject78_SetLong74_00c40cf0
+  CLibpkObject1D8_GetEffectiveGain_00c412d0
+  CLibpkObject1D8_SetFloat154_00c415e0
+  CLibpkObject1D8_SetFlag40000_00c417f0
+  CLibpkObject1D8_SetFlag80000_00c41840
+  StreamReader_Read_00c42720
+  CAudioObject_Devirtualize_00c43890
+  CLibpkObject1D8_SetLoopPointPair_00c447a0
+  CLibpkObject1D8_SetVolumeParamPair_00c44800
+  CEntryArray012b7d50_Add_00c46360
+  PKCBufferedReader_Tell_00c4aa20
+  CRACBuffer_GetAlignedSize_00c4bff0
+  CRACBuffer_GetPointer_00c4c000
+  CEAXManager_GetEffectProperty_00c4e350
+  CDecodedStream_Open_00c547a0
+  CAudioSource_Setup_00c556e0
+  CAudioContext_SetDistanceExponent_00c55d70
+  CAudioContext_SetDefaultSpeakerConfig_00c56060
+  CDSoundStreamBuffer_LockChunk_00c570d0
+  CDSoundStreamBuffer_UnlockChunk_00c57110

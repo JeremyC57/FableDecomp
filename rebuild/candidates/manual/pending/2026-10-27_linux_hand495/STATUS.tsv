@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00c3d030	DIFFER	92v94	-	4 grades (1 SRC_FAIL); counts-pointer register and last-store tail duplication
+00c42fb0	DIFFER	40v36	-	1 grade; lane gap: LTCG keeps this in ecx across a cdecl call
