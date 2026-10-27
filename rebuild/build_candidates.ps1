@@ -350123,6 +350123,258 @@ $catalog = @(
         TestSource = '00/ca/CPosPassThru_GetPreroll_00caf160_test.cpp'
         PassPattern = '00caf160_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cb0d80'
+        Module = 'CAMThread'
+        Source = '00/cb/CAMThread_InitialThreadProc_00cb0d80.cpp'
+        TestSource = '00/cb/CAMThread_InitialThreadProc_00cb0d80_test.cpp'
+        PassPattern = '00cb0d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb15d0'
+        Module = 'CBaseList'
+        Source = '00/cb/CBaseList_AddAfterI_00cb15d0.cpp'
+        TestSource = '00/cb/CBaseList_AddAfterI_00cb15d0_test.cpp'
+        PassPattern = '00cb15d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb1dc0'
+        Module = 'CMediaType'
+        Source = '00/cb/CMediaType_operator_00cb1dc0.cpp'
+        TestSource = '00/cb/CMediaType_operator_00cb1dc0_test.cpp'
+        PassPattern = '00cb1dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb6650'
+        Module = 'CVectorMap<CCharString,CScriptInfo,CKeyPairCompareLess<CCharString,CScriptInfo> >'
+        Source = '00/cb/CVectorMapCCharStringCScriptInfoCKeyPairCompareLessCCharStringCScriptInfo_LowerBound_00cb6650.cpp'
+        TestSource = '00/cb/CVectorMapCCharStringCScriptInfoCKeyPairCompareLessCCharStringCScriptInfo_LowerBound_00cb6650_test.cpp'
+        PassPattern = '00cb6650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd23b9'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/cd/CScriptGameResourceObjectScriptedThingBase_IsValid_00cd23b9.cpp'
+        TestSource = '00/cd/CScriptGameResourceObjectScriptedThingBase_IsValid_00cd23b9_test.cpp'
+        PassPattern = '00cd23b9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cddab0'
+        Module = 'NScript::CIsThingConscious'
+        Source = '00/cd/NScriptCIsThingConscious_operator_00cddab0.cpp'
+        TestSource = '00/cd/NScriptCIsThingConscious_operator_00cddab0_test.cpp'
+        PassPattern = '00cddab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cddae0'
+        Module = 'NScript::CIsThingConscious'
+        Source = '00/cd/NScriptCIsThingConscious_Clone_00cddae0.cpp'
+        TestSource = '00/cd/NScriptCIsThingConscious_Clone_00cddae0_test.cpp'
+        PassPattern = '00cddae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cef8e0'
+        Module = 'NScript::CGameflowScript'
+        Source = '00/ce/NScriptCGameflowScript_OnPersist_00cef8e0.cpp'
+        TestSource = '00/ce/NScriptCGameflowScript_OnPersist_00cef8e0_test.cpp'
+        PassPattern = '00cef8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cefa00'
+        Module = 'NScript::CGameflowAssistanceScript'
+        Source = '00/ce/NScriptCGameflowAssistanceScript_Init_00cefa00.cpp'
+        TestSource = '00/ce/NScriptCGameflowAssistanceScript_Init_00cefa00_test.cpp'
+        PassPattern = '00cefa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf8850'
+        Module = 'CScriptGameResourceObjectMovieBase'
+        Source = '00/cf/CScriptGameResourceObjectMovieBase_Release_00cf8850.cpp'
+        TestSource = '00/cf/CScriptGameResourceObjectMovieBase_Release_00cf8850_test.cpp'
+        PassPattern = '00cf8850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfc950'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_OnPredicateFail_00cfc950.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_OnPredicateFail_00cfc950_test.cpp'
+        PassPattern = '00cfc950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d02b20'
+        Module = 'NScript::CQ_BanditCampScript::CGate1GuardInner'
+        Source = '00/d0/NScriptCQBanditCampScriptCGate1GuardInner_Init_00d02b20.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampScriptCGate1GuardInner_Init_00d02b20_test.cpp'
+        PassPattern = '00d02b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d072c0'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CGate2Guard1'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_Init_00d072c0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_Init_00d072c0_test.cpp'
+        PassPattern = '00d072c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d07dd0'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CCampHostage'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_Init_00d07dd0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_Init_00d07dd0_test.cpp'
+        PassPattern = '00d07dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d08720'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CCampHostage2'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_Init_00d08720.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_Init_00d08720_test.cpp'
+        PassPattern = '00d08720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d08fb0'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_OnPredicateFail_00d08fb0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_OnPredicateFail_00d08fb0_test.cpp'
+        PassPattern = '00d08fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d0a7b0'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CBanditKing'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_OnPredicateFail_00d0a7b0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_OnPredicateFail_00d0a7b0_test.cpp'
+        PassPattern = '00d0a7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d0c390'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CBanditForger'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_Init_00d0c390.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_Init_00d0c390_test.cpp'
+        PassPattern = '00d0c390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d154a0'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Init_00d154a0.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Init_00d154a0_test.cpp'
+        PassPattern = '00d154a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1dea0'
+        Module = 'NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_OnPredicateFail_00d1dea0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_OnPredicateFail_00d1dea0_test.cpp'
+        PassPattern = '00d1dea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1e140'
+        Module = 'NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_OnPredicateFail_00d1e140.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_OnPredicateFail_00d1e140_test.cpp'
+        PassPattern = '00d1e140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1e1b0'
+        Module = 'NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_Init_00d1e1b0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_Init_00d1e1b0_test.cpp'
+        PassPattern = '00d1e1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1f5c0'
+        Module = 'NScript::CQ_BreakSiegeScript::CBanditAttacker'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_Init_00d1f5c0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_Init_00d1f5c0_test.cpp'
+        PassPattern = '00d1f5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1fce0'
+        Module = 'NScript::CQ_BreakSiegeScript::CDisplacedTrader'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Init_00d1fce0.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Init_00d1fce0_test.cpp'
+        PassPattern = '00d1fce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d242c0'
+        Module = 'NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard'
+        Source = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Init_00d242c0.cpp'
+        TestSource = '00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Init_00d242c0_test.cpp'
+        PassPattern = '00d242c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d273a0'
+        Module = 'NScript::CQ_EndGameScript'
+        Source = '00/d2/NScriptCQEndGameScript_Init_00d273a0.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScript_Init_00d273a0_test.cpp'
+        PassPattern = '00d273a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d29020'
+        Module = 'NScript::CQ_EndGameScript::CHookCoastTeleporter'
+        Source = '00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_Init_00d29020.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_Init_00d29020_test.cpp'
+        PassPattern = '00d29020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d29620'
+        Module = 'NScript::CQ_EndGameScript::CMazeJournal'
+        Source = '00/d2/NScriptCQEndGameScriptCMazeJournal_Init_00d29620.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScriptCMazeJournal_Init_00d29620_test.cpp'
+        PassPattern = '00d29620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2aa10'
+        Module = 'NScript::CQ_EndGameFocalSitesScript'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScript_OnPersist_00d2aa10.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScript_OnPersist_00d2aa10_test.cpp'
+        PassPattern = '00d2aa10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d34fb0'
+        Module = 'CFireHeartPatternDef'
+        Source = '00/d3/CFireHeartPatternDef_Copy_00d34fb0.cpp'
+        TestSource = '00/d3/CFireHeartPatternDef_Copy_00d34fb0_test.cpp'
+        PassPattern = '00d34fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d35070'
+        Module = 'CFireHeartPatternDef'
+        Source = '00/d3/CFireHeartPatternDef_Transfer_00d35070.cpp'
+        TestSource = '00/d3/CFireHeartPatternDef_Transfer_00d35070_test.cpp'
+        PassPattern = '00d35070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d36620'
+        Module = 'NScript::CQ_FireHeartScript::CFH_Prisoner'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHPrisoner_Init_00d36620.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHPrisoner_Init_00d36620_test.cpp'
+        PassPattern = '00d36620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d36730'
+        Module = 'NScript::CQ_FireHeartScript::CProphetCage'
+        Source = '00/d3/NScriptCQFireHeartScriptCProphetCage_Init_00d36730.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCProphetCage_Init_00d36730_test.cpp'
+        PassPattern = '00d36730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d40cc0'
+        Module = 'NScript::CQ_GuildTrainingScript::CMeleeApprentice'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Init_00d40cc0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Init_00d40cc0_test.cpp'
+        PassPattern = '00d40cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d43120'
+        Module = 'NScript::CQ_GuildTrainingScript::CKillBird'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCKillBird_OnPredicateFail_00d43120.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCKillBird_OnPredicateFail_00d43120_test.cpp'
+        PassPattern = '00d43120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d55da0'
+        Module = 'NScript::CQ_GuildTrainingMeleeScript'
+        Source = '00/d5/NScriptCQGuildTrainingMeleeScript_Init_00d55da0.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingMeleeScript_Init_00d55da0_test.cpp'
+        PassPattern = '00d55da0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

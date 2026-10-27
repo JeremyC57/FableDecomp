@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00caf430	SKIP	-v78	-	two+ functions: three COM forwarding thunks 0x00CAF430/0x00CAF440/0x00CAF450 and a scalar deleting dtor 0x00CAF460 (vtable 0x012BF8B8)
+00cafc40	SKIP	-v120	-	many functions: three forwarding thunks, E_FAIL stub 0x00CAFC70, three `sub [esp+4],4` adjustor thunks, `sub ecx,8` thunk 0x00CAFCB0
+00cb0d80	RELOCATION_MATCH	73v73	PASS	CAMThread::InitialThreadProc(void* pv); grades 1
+00cb15d0	RELOCATION_MATCH	124v124	PASS	CBaseList::AddAfterI(POSITION pos, void* pObj); grades 2 (pBefore read after SetData)
+00cb1dc0	MATCH	101v101	PASS	CMediaType::operator==(const CMediaType& rt) const; grades 1
+00cb6650	RELOCATION_MATCH	121v121	PASS	CVectorMap<CCharString,CScriptInfo,CKeyPairCompareLess<CCharString,CScriptInfo> >::LowerBound(const CCharString& key) const; grades 1
+00cd23b9	MATCH	9v9	PASS	CScriptGameResourceObjectScriptedThingBase::IsValid() const; grades 2 (#pragma optimize("s") (size TU))
+00cddab0	MATCH	44v44	PASS	NScript::CIsThingConscious::operator()() const; grades 1
+00cddae0	RELOCATION_MATCH	48v48	PASS	NScript::CIsThingConscious::Clone() const; grades 1
+00cdf120	SKIP	-v64	-	two functions: NScript::CIsThingAlive::operator() 0x00CDF120 (jmp [eax+0x12c]) and CIsThingAlive::Clone 0x00CDF130
+00ce1090	SKIP	-v29	-	two functions: forwarders 0x00CE1090 ([this+0x34] slot 5) and 0x00CE10A0 (slot 6)
+00cef8e0	RELOCATION_MATCH	108v108	PASS	NScript::CGameflowScript::OnPersist(CPersistContext& context); grades 2 (enum moved to global scope (mangling))
+00cefa00	MATCH	31v31	PASS	NScript::CGameflowAssistanceScript::Init(); grades 1
+00cf8850	RELOCATION_MATCH	11v11	PASS	CScriptGameResourceObjectMovieBase::Release(); grades 1
+00cfc950	MATCH	18v18	PASS	NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail(); grades 1
+00d02b20	RELOCATION_MATCH	59v59	PASS	NScript::CQ_BanditCampScript::CGate1GuardInner::Init(); grades 1
+00d072c0	RELOCATION_MATCH	127v127	PASS	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::Init(); grades 1
+00d07dd0	RELOCATION_MATCH	88v88	PASS	NScript::CQ_BanditCampBossBattleScript::CCampHostage::Init(); grades 1
+00d08720	RELOCATION_MATCH	70v70	PASS	NScript::CQ_BanditCampBossBattleScript::CCampHostage2::Init(); grades 1
+00d08fb0	RELOCATION_MATCH	59v59	PASS	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::OnPredicateFail(); grades 1
+00d0a7b0	RELOCATION_MATCH	96v96	PASS	NScript::CQ_BanditCampBossBattleScript::CBanditKing::OnPredicateFail(); grades 1
+00d0c390	RELOCATION_MATCH	124v124	PASS	NScript::CQ_BanditCampBossBattleScript::CBanditForger::Init(); grades 1
+00d154a0	RELOCATION_MATCH	23v23	PASS	NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::Init(); grades 1
+00d1dea0	RELOCATION_MATCH	87v87	PASS	NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege::OnPredicateFail(); grades 1
+00d1e140	RELOCATION_MATCH	80v80	PASS	NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::OnPredicateFail(); grades 1
+00d1e1b0	RELOCATION_MATCH	116v116	PASS	NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::Init(); grades 1
+00d1f5c0	MATCH	24v24	PASS	NScript::CQ_BreakSiegeScript::CBanditAttacker::Init(); grades 1
+00d1fce0	RELOCATION_MATCH	30v30	PASS	NScript::CQ_BreakSiegeScript::CDisplacedTrader::Init(); grades 1
+00d242c0	MATCH	44v44	PASS	NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard::Init(); grades 1
+00d273a0	MATCH	24v24	PASS	NScript::CQ_EndGameScript::Init(); grades 1
+00d29020	RELOCATION_MATCH	93v93	PASS	NScript::CQ_EndGameScript::CHookCoastTeleporter::Init(); grades 1
+00d29620	RELOCATION_MATCH	62v62	PASS	NScript::CQ_EndGameScript::CMazeJournal::Init(); grades 1
+00d2aa10	RELOCATION_MATCH	36v36	PASS	NScript::CQ_EndGameFocalSitesScript::OnPersist(CPersistContext& context); grades 1
+00d34fb0	RELOCATION_MATCH	31v31	PASS	CFireHeartPatternDef::Copy(const CDefClassBase* other); grades 1
+00d35070	RELOCATION_MATCH	21v21	PASS	CFireHeartPatternDef::Transfer(CPersistContext& context); grades 1
+00d36620	RELOCATION_MATCH	88v88	PASS	NScript::CQ_FireHeartScript::CFH_Prisoner::Init(); grades 1
+00d36730	RELOCATION_MATCH	44v44	PASS	NScript::CQ_FireHeartScript::CProphetCage::Init(); grades 1
+00d40cc0	MATCH	9v9	PASS	NScript::CQ_GuildTrainingScript::CMeleeApprentice::Init(); grades 2 (regraded with engine/CScriptThing.h)
+00d43120	RELOCATION_MATCH	67v67	PASS	NScript::CQ_GuildTrainingScript::CKillBird::OnPredicateFail(); grades 1
+00d55da0	MATCH	35v35	PASS	NScript::CQ_GuildTrainingMeleeScript::Init(); grades 1

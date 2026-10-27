@@ -33969,3 +33969,9 @@ _IID_IMemAllocatorCallbackTemp	012a9a44	00ca9d70
 _IID_IDeferredCommand	012aa014	00caec30
 ?CheckTime@CCmdQueue@@QAEHVCRefTime@@H@Z	00cae170	00caecf0
 ??_9@$BEM@AG	00caef50	00caf160
+__imp__GetModuleHandleW@4	0143fea4	00cb0d80
+??$Transfer@K@CPersistContext@@QAEXPBDAAKABK@Z	004106f0	00cef8e0
+??$Transfer@W4EGameflowPosition@@@CPersistContext@@QAEXPBDAAW4EGameflowPosition@@ABW41@@Z	00cdca70	00cef8e0
+?Reset@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXPAVCScriptGameResourceObjectMovieBase@@@Z	008ab2b0	00cf8850
+??$TransferVector@_N@CPersistContext@@QAEXPBDAAV?$vector@_NV?$allocator@_N@std@@@std@@@Z	00cdcf80	00d35070
+??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z	00704580	00d36620

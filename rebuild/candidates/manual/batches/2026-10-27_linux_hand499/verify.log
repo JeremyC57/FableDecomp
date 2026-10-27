@@ -1,0 +1,118 @@
+addr       parity           behav  name
+00cb0d80   RELOCATION_MATCH PASS   InitialThreadProc
+00cb15d0   RELOCATION_MATCH PASS   AddAfterI
+00cb1dc0   MATCH            PASS   operator==
+00cb6650   RELOCATION_MATCH PASS   LowerBound
+00cd23b9   MATCH            PASS   IsValid
+00cddab0   MATCH            PASS   operator()
+00cddae0   RELOCATION_MATCH PASS   Clone
+00cef8e0   WARN RELOC_NAME: ??$TransferVector@VCCharString@@@CPersistContext@@QAEXPBDAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 0049b8d0 labelled 'CPersistContext::Transfer<CCharString>'
+00cef8e0   RELOCATION_MATCH PASS   OnPersist
+00cefa00   MATCH            PASS   Init
+00cf8850   RELOCATION_MATCH PASS   Release
+00cfc950   MATCH            PASS   OnPredicateFail
+00d02b20   RELOCATION_MATCH PASS   Init
+00d072c0   RELOCATION_MATCH PASS   Init
+00d07dd0   RELOCATION_MATCH PASS   Init
+00d08720   RELOCATION_MATCH PASS   Init
+00d08fb0   RELOCATION_MATCH PASS   OnPredicateFail
+00d0a7b0   RELOCATION_MATCH PASS   OnPredicateFail
+00d0c390   RELOCATION_MATCH PASS   Init
+00d154a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d154a0   RELOCATION_MATCH PASS   Init
+00d1dea0   RELOCATION_MATCH PASS   OnPredicateFail
+00d1e140   RELOCATION_MATCH PASS   OnPredicateFail
+00d1e1b0   RELOCATION_MATCH PASS   Init
+00d1f5c0   MATCH            PASS   Init
+00d1fce0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d1fce0   RELOCATION_MATCH PASS   Init
+00d242c0   MATCH            PASS   Init
+00d273a0   MATCH            PASS   Init
+00d29020   RELOCATION_MATCH PASS   Init
+00d29620   RELOCATION_MATCH PASS   Init
+00d2aa10   RELOCATION_MATCH PASS   OnPersist
+00d34fb0   WARN RELOC_NAME: ??4?$vector@_NV?$allocator@_N@std@@@std@@QAEAAV01@ABV01@@Z -> 00462e78 labelled 'CSimpleMemoryPool_AssignFrom'
+00d34fb0   RELOCATION_MATCH PASS   Copy
+00d35070   RELOCATION_MATCH PASS   Transfer
+00d36620   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d36620   RELOCATION_MATCH PASS   Init
+00d36730   RELOCATION_MATCH PASS   Init
+00d40cc0   MATCH            PASS   Init
+00d43120   RELOCATION_MATCH PASS   OnPredicateFail
+00d55da0   MATCH            PASS   Init
+
+WINS: 36
+  00cb0d80 RELOCATION_MATCH CAMThread::?InitialThreadProc@CAMThread@@SGKPAX@Z
+  00cb15d0 RELOCATION_MATCH CBaseList::?AddAfterI@CBaseList@@QAEPAU__POSITION@@PAU2@PAX@Z
+  00cb1dc0 MATCH CMediaType::??8CMediaType@@QBEHABV0@@Z
+  00cb6650 RELOCATION_MATCH CVectorMap<CCharString,CScriptInfo,CKeyPairCompareLess<CCharString,CScriptInfo> >::?LowerBound@?$CVectorMap@VCCharString@@VCScriptInfo@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@@QBEPBU?$pair@VCCharString@@VCScriptInfo@@@std@@ABVCCharString@@@Z
+  00cd23b9 MATCH CScriptGameResourceObjectScriptedThingBase::?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+  00cddab0 MATCH NScript::CIsThingConscious::??RCIsThingConscious@NScript@@UBE_NXZ
+  00cddae0 RELOCATION_MATCH NScript::CIsThingConscious::?Clone@CIsThingConscious@NScript@@UBEPAVCPredicateBase@2@XZ
+  00cef8e0 RELOCATION_MATCH NScript::CGameflowScript::?OnPersist@CGameflowScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00cefa00 MATCH NScript::CGameflowAssistanceScript::?Init@CGameflowAssistanceScript@NScript@@UAEXXZ
+  00cf8850 RELOCATION_MATCH CScriptGameResourceObjectMovieBase::?Release@CScriptGameResourceObjectMovieBase@@QAEXXZ
+  00cfc950 MATCH NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::?OnPredicateFail@CChunkCollectionIndicator@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+  00d02b20 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardInner::?Init@CGate1GuardInner@CQ_BanditCampScript@NScript@@EAEXXZ
+  00d072c0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::?Init@CGate2Guard1@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d07dd0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage::?Init@CCampHostage@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d08720 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage2::?Init@CCampHostage2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d08fb0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::?OnPredicateFail@CCampHostageGuard@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d0a7b0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditKing::?OnPredicateFail@CBanditKing@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d0c390 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditForger::?Init@CBanditForger@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d154a0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::?Init@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@EAEXXZ
+  00d1dea0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege::?OnPredicateFail@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1e140 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::?OnPredicateFail@CImprisonedBanditLeader@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1e1b0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::?Init@CImprisonedBanditLeader@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1f5c0 MATCH NScript::CQ_BreakSiegeScript::CBanditAttacker::?Init@CBanditAttacker@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1fce0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CDisplacedTrader::?Init@CDisplacedTrader@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d242c0 MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard::?Init@CBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@EAEXXZ
+  00d273a0 MATCH NScript::CQ_EndGameScript::?Init@CQ_EndGameScript@NScript@@UAEXXZ
+  00d29020 RELOCATION_MATCH NScript::CQ_EndGameScript::CHookCoastTeleporter::?Init@CHookCoastTeleporter@CQ_EndGameScript@NScript@@EAEXXZ
+  00d29620 RELOCATION_MATCH NScript::CQ_EndGameScript::CMazeJournal::?Init@CMazeJournal@CQ_EndGameScript@NScript@@EAEXXZ
+  00d2aa10 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::?OnPersist@CQ_EndGameFocalSitesScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00d34fb0 RELOCATION_MATCH CFireHeartPatternDef::?Copy@CFireHeartPatternDef@@UAEXPBVCDefClassBase@@@Z
+  00d35070 RELOCATION_MATCH CFireHeartPatternDef::?Transfer@CFireHeartPatternDef@@UAEXAAVCPersistContext@@@Z
+  00d36620 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Prisoner::?Init@CFH_Prisoner@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d36730 RELOCATION_MATCH NScript::CQ_FireHeartScript::CProphetCage::?Init@CProphetCage@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d40cc0 MATCH NScript::CQ_GuildTrainingScript::CMeleeApprentice::?Init@CMeleeApprentice@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00d43120 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CKillBird::?OnPredicateFail@CKillBird@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00d55da0 MATCH NScript::CQ_GuildTrainingMeleeScript::?Init@CQ_GuildTrainingMeleeScript@NScript@@UAEXXZ
+
+LANDED 36 wins into src/compiled + tests + catalog + oracle
+  CAMThread_InitialThreadProc_00cb0d80
+  CBaseList_AddAfterI_00cb15d0
+  CMediaType_operator_00cb1dc0
+  CVectorMapCCharStringCScriptInfoCKeyPairCompareLessCCharStringCScriptInfo_LowerBound_00cb6650
+  CScriptGameResourceObjectScriptedThingBase_IsValid_00cd23b9
+  NScriptCIsThingConscious_operator_00cddab0
+  NScriptCIsThingConscious_Clone_00cddae0
+  NScriptCGameflowScript_OnPersist_00cef8e0
+  NScriptCGameflowAssistanceScript_Init_00cefa00
+  CScriptGameResourceObjectMovieBase_Release_00cf8850
+  NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_OnPredicateFail_00cfc950
+  NScriptCQBanditCampScriptCGate1GuardInner_Init_00d02b20
+  NScriptCQBanditCampBossBattleScriptCGate2Guard1_Init_00d072c0
+  NScriptCQBanditCampBossBattleScriptCCampHostage_Init_00d07dd0
+  NScriptCQBanditCampBossBattleScriptCCampHostage2_Init_00d08720
+  NScriptCQBanditCampBossBattleScriptCCampHostageGuard_OnPredicateFail_00d08fb0
+  NScriptCQBanditCampBossBattleScriptCBanditKing_OnPredicateFail_00d0a7b0
+  NScriptCQBanditCampBossBattleScriptCBanditForger_Init_00d0c390
+  NScriptCQBountyHuntScriptCBHGangGruntSpawn_Init_00d154a0
+  NScriptCQBreakSiegeScriptCKGChiefBreakSiege_OnPredicateFail_00d1dea0
+  NScriptCQBreakSiegeScriptCImprisonedBanditLeader_OnPredicateFail_00d1e140
+  NScriptCQBreakSiegeScriptCImprisonedBanditLeader_Init_00d1e1b0
+  NScriptCQBreakSiegeScriptCBanditAttacker_Init_00d1f5c0
+  NScriptCQBreakSiegeScriptCDisplacedTrader_Init_00d1fce0
+  NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Init_00d242c0
+  NScriptCQEndGameScript_Init_00d273a0
+  NScriptCQEndGameScriptCHookCoastTeleporter_Init_00d29020
+  NScriptCQEndGameScriptCMazeJournal_Init_00d29620
+  NScriptCQEndGameFocalSitesScript_OnPersist_00d2aa10
+  CFireHeartPatternDef_Copy_00d34fb0
+  CFireHeartPatternDef_Transfer_00d35070
+  NScriptCQFireHeartScriptCFHPrisoner_Init_00d36620
+  NScriptCQFireHeartScriptCProphetCage_Init_00d36730
+  NScriptCQGuildTrainingScriptCMeleeApprentice_Init_00d40cc0
+  NScriptCQGuildTrainingScriptCKillBird_OnPredicateFail_00d43120
+  NScriptCQGuildTrainingMeleeScript_Init_00d55da0
