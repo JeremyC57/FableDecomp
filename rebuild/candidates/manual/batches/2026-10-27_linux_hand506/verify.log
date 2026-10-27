@@ -1,0 +1,80 @@
+addr       parity           behav  name
+00c62920   WARN RELOC_NAME: ?CreateDecoderStream_00c73af0@@YIPAVIAudioStream@@PAVIStreamSource_00c62920@@PBDABUSStreamSegment@@@Z -> 00c73af0 labelled 'NHeroInformationScreens_CreateScreen'
+00c62920   RELOCATION_MATCH PASS   CAudioStreamOwner_00c62920
+00c69b60   RELOCATION_MATCH PASS   Reset
+00c74130   MATCH            PASS   ScaleRampCopy
+00c74230   MATCH            PASS   Mix
+00c742c0   MATCH            PASS   MixRamp
+00c774f0   MATCH            PASS   CommitAndProcess_00c774f0
+00c886b0   RELOCATION_MATCH PASS   Read
+00c89750   RELOCATION_MATCH PASS   Process
+00ca3600   RELOCATION_MATCH PASS   floor0_unpack
+00ca7210   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca7210   RELOCATION_MATCH PASS   Receive
+00ca8370   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8370   RELOCATION_MATCH PASS   ConnectionMediaType
+00ca89f0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca89f0   RELOCATION_MATCH PASS   GetAllocator
+00ca8ac0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8ac0   RELOCATION_MATCH PASS   NotifyAllocator
+00ca9450   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9450   MATCH            PASS   GetProperties
+00ca9f20   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9f20   RELOCATION_MATCH PASS   GetBuffer
+00caa0a0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caa0a0   RELOCATION_MATCH PASS   Commit
+00cab580   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cab580   RELOCATION_MATCH PASS   Disconnect
+00cab770   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cab770   WARN RELOC_NAME: ??0CBasePin@@QAE@PBGPAUCBaseFilter@@PAUCCritSec@@PAJ0W4PIN_DIRECTION@@@Z -> 00cab370 labelled 'CParticleMorphs::CEntry_Constructor'
+00cab770   RELOCATION_MATCH PASS   CDynamicOutputPin
+
+WINS: 18
+  00c62920 RELOCATION_MATCH CAudioStreamOwner_00c62920::??0CAudioStreamOwner_00c62920@@QAE@PAVIStreamOpener_00c62920@@PBDABUSStreamSegment@@@Z
+  00c69b60 RELOCATION_MATCH CReverbProcessor::?Reset@CReverbProcessor@@UAEXXZ
+  00c74130 MATCH CDspOps::?ScaleRampCopy@CDspOps@@UAEXPAMPBMMMI@Z
+  00c74230 MATCH CDspOps::?Mix@CDspOps@@UAEXPAMPBMMI@Z
+  00c742c0 MATCH CDspOps::?MixRamp@CDspOps@@UAEXPAMPBMMMI@Z
+  00c774f0 MATCH CVtable_012bf0c8::?CommitAndProcess_00c774f0@CVtable_012bf0c8@@UAE_NPBM_NPBQBMK@Z
+  00c886b0 RELOCATION_MATCH COggVorbisStream::?Read@COggVorbisStream@@UAEJPAUSAudioBuffer@@K@Z
+  00c89750 RELOCATION_MATCH CReverbFilterTap::?Process@CReverbFilterTap@@QAEXPBUSReverbTapParams@@PBUCRingBuffer@@PAMPBMI@Z
+  00ca3600 RELOCATION_MATCH libvorbis::@floor0_unpack@8
+  00ca7210 RELOCATION_MATCH CRendererInputPin::?Receive@CRendererInputPin@@UAGJPAUIMediaSample@@@Z
+  00ca8370 RELOCATION_MATCH CBasePin::?ConnectionMediaType@CBasePin@@UAGJPAUAM_MEDIA_TYPE@@@Z
+  00ca89f0 RELOCATION_MATCH CBaseInputPin::?GetAllocator@CBaseInputPin@@UAGJPAPAUIMemAllocator@@@Z
+  00ca8ac0 RELOCATION_MATCH CBaseInputPin::?NotifyAllocator@CBaseInputPin@@UAGJPAUIMemAllocator@@H@Z
+  00ca9450 MATCH CMediaSample::?GetProperties@CMediaSample@@UAGJKPAE@Z
+  00ca9f20 RELOCATION_MATCH CBaseAllocator::?GetBuffer@CBaseAllocator@@UAGJPAPAUIMediaSample@@PA_J1K@Z
+  00caa0a0 RELOCATION_MATCH CBaseAllocator::?Commit@CBaseAllocator@@UAGJXZ
+  00cab580 RELOCATION_MATCH CBasePin::?Disconnect@CBasePin@@UAGJXZ
+  00cab770 RELOCATION_MATCH CDynamicOutputPin::??0CDynamicOutputPin@@QAE@PBGPAUCBaseFilter@@PAUCCritSec@@PAJ0@Z
+
+LANDED 18 wins into src/compiled + tests + catalog + oracle
+  CAudioStreamOwner00c62920_CAudioStreamOwner00c62920_00c62920
+  CReverbProcessor_Reset_00c69b60
+  CDspOps_ScaleRampCopy_00c74130
+  CDspOps_Mix_00c74230
+  CDspOps_MixRamp_00c742c0
+  CVtable012bf0c8_CommitAndProcess00c774f0_00c774f0
+  COggVorbisStream_Read_00c886b0
+  CReverbFilterTap_Process_00c89750
+  libvorbis_floor0unpack_00ca3600
+  CRendererInputPin_Receive_00ca7210
+  CBasePin_ConnectionMediaType_00ca8370
+  CBaseInputPin_GetAllocator_00ca89f0
+  CBaseInputPin_NotifyAllocator_00ca8ac0
+  CMediaSample_GetProperties_00ca9450
+  CBaseAllocator_GetBuffer_00ca9f20
+  CBaseAllocator_Commit_00caa0a0
+  CBasePin_Disconnect_00cab580
+  CDynamicOutputPin_CDynamicOutputPin_00cab770
+=== retail_asm payload ===
+addr       parity           behav  name
+00c6b5d0   WARN RELOC_NAME: ?DetectCpu@@YAXXZ -> 00c52e40 labelled 'InitCPUCapabilities'
+00c6b5d0   RELOCATION_MATCH PASS   ConvertInt128BlockToFloatInPlace_00c6b5d0
+
+WINS: 1
+  00c6b5d0 RELOCATION_MATCH _global::?ConvertInt128BlockToFloatInPlace_00c6b5d0@@YAXPAM@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  global_ConvertInt128BlockToFloatInPlace00c6b5d0_00c6b5d0

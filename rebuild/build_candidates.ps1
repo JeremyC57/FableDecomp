@@ -351508,6 +351508,148 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c1dd70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c62920'
+        Module = 'CAudioStreamOwner_00c62920'
+        Source = '00/c6/CAudioStreamOwner00c62920_CAudioStreamOwner00c62920_00c62920.cpp'
+        TestSource = '00/c6/CAudioStreamOwner00c62920_CAudioStreamOwner00c62920_00c62920_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c62920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c69b60'
+        Module = 'CReverbProcessor'
+        Source = '00/c6/CReverbProcessor_Reset_00c69b60.cpp'
+        TestSource = '00/c6/CReverbProcessor_Reset_00c69b60_test.cpp'
+        PassPattern = '00c69b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c74130'
+        Module = 'CDspOps'
+        Source = '00/c7/CDspOps_ScaleRampCopy_00c74130.cpp'
+        TestSource = '00/c7/CDspOps_ScaleRampCopy_00c74130_test.cpp'
+        PassPattern = '00c74130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c74230'
+        Module = 'CDspOps'
+        Source = '00/c7/CDspOps_Mix_00c74230.cpp'
+        TestSource = '00/c7/CDspOps_Mix_00c74230_test.cpp'
+        PassPattern = '00c74230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c742c0'
+        Module = 'CDspOps'
+        Source = '00/c7/CDspOps_MixRamp_00c742c0.cpp'
+        TestSource = '00/c7/CDspOps_MixRamp_00c742c0_test.cpp'
+        PassPattern = '00c742c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c774f0'
+        Module = 'CVtable_012bf0c8'
+        Source = '00/c7/CVtable012bf0c8_CommitAndProcess00c774f0_00c774f0.cpp'
+        TestSource = '00/c7/CVtable012bf0c8_CommitAndProcess00c774f0_00c774f0_test.cpp'
+        PassPattern = '00c774f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c886b0'
+        Module = 'COggVorbisStream'
+        Source = '00/c8/COggVorbisStream_Read_00c886b0.cpp'
+        TestSource = '00/c8/COggVorbisStream_Read_00c886b0_test.cpp'
+        PassPattern = '00c886b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c89750'
+        Module = 'CReverbFilterTap'
+        Source = '00/c8/CReverbFilterTap_Process_00c89750.cpp'
+        TestSource = '00/c8/CReverbFilterTap_Process_00c89750_test.cpp'
+        PassPattern = '00c89750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3600'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_floor0unpack_00ca3600.cpp'
+        TestSource = '00/ca/libvorbis_floor0unpack_00ca3600_test.cpp'
+        PassPattern = '00ca3600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca7210'
+        Module = 'CRendererInputPin'
+        Source = '00/ca/CRendererInputPin_Receive_00ca7210.cpp'
+        TestSource = '00/ca/CRendererInputPin_Receive_00ca7210_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca7210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8370'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_ConnectionMediaType_00ca8370.cpp'
+        TestSource = '00/ca/CBasePin_ConnectionMediaType_00ca8370_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca8370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca89f0'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_GetAllocator_00ca89f0.cpp'
+        TestSource = '00/ca/CBaseInputPin_GetAllocator_00ca89f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca89f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8ac0'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_NotifyAllocator_00ca8ac0.cpp'
+        TestSource = '00/ca/CBaseInputPin_NotifyAllocator_00ca8ac0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca8ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9450'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_GetProperties_00ca9450.cpp'
+        TestSource = '00/ca/CMediaSample_GetProperties_00ca9450_test.cpp'
+        PassPattern = '00ca9450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9f20'
+        Module = 'CBaseAllocator'
+        Source = '00/ca/CBaseAllocator_GetBuffer_00ca9f20.cpp'
+        TestSource = '00/ca/CBaseAllocator_GetBuffer_00ca9f20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca9f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caa0a0'
+        Module = 'CBaseAllocator'
+        Source = '00/ca/CBaseAllocator_Commit_00caa0a0.cpp'
+        TestSource = '00/ca/CBaseAllocator_Commit_00caa0a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00caa0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cab580'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_Disconnect_00cab580.cpp'
+        TestSource = '00/ca/CBasePin_Disconnect_00cab580_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00cab580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cab770'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_CDynamicOutputPin_00cab770.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_CDynamicOutputPin_00cab770_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00cab770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6b5d0'
+        Module = '_global'
+        Source = '00/c6/global_ConvertInt128BlockToFloatInPlace00c6b5d0_00c6b5d0.cpp'
+        TestSource = '00/c6/global_ConvertInt128BlockToFloatInPlace00c6b5d0_00c6b5d0_test.cpp'
+        PassPattern = '00c6b5d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

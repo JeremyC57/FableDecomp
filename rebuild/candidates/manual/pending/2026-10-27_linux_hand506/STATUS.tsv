@@ -1,0 +1,10 @@
+address	status	bytes	test	note
+00c6b7c0	DIFFER	251v249	-	retail_asm row (FloatToLong helper) parked: one extra x87 fxch in the gain lerp; 4 grades
+00c72800	DIFFER	179v179	-	CAudioSource::Rewind: esi/edi swap for this vs SourceId; 2 grades
+00c72d00	DIFFER	256v256	-	CAudioSource::BindSound: register allocation ebx/ebp/edi vs retail ebp/ebx/edx; 4 grades
+00c74ab0	DIFFER	256v256	-	CBiquadCoefficients::ComputeLowPass_00c74ab0: rate load/test scheduled after fmul [baseFrequency]; 4 grades
+00c8e6e0	DIFFER	179v175	-	libvorbis _vorbis_pack_info: LTCG private register args (eax/esi, callee in ebx) -- lane gap
+00c8f960	DIFFER	248v246	-	libvorbis _preextrapolate_helper: LTCG v arrives in esi -- lane gap
+00c911f0	DIFFER	193v190	-	libogg oggpack_writecopy_helper: LTCG b in esi / source in ebx -- lane gap
+00c95910	DIFFER	259v253	-	libvorbis _dist: LTCG step arrives in esi -- lane gap
+00c9fea0	DIFFER	206v215	-	libvorbis res0_pack: LTCG keeps edx live across ilog; no loop padding -- lane gap

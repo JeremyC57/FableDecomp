@@ -1,0 +1,11 @@
+address	name	evidence
+00ca3600	libvorbis floor0_unpack	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)
+00ca7210	strmbase CRendererInputPin::Receive	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)
+00ca8370	strmbase CBasePin::ConnectionMediaType	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)
+00ca89f0	strmbase CBaseInputPin::GetAllocator	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)
+00ca8ac0	strmbase CBaseInputPin::NotifyAllocator	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)
+00ca9450	strmbase CMediaSample::GetProperties	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)
+00ca9f20	strmbase CBaseAllocator::GetBuffer	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)
+00caa0a0	strmbase CBaseAllocator::Commit	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)
+00cab580	strmbase CBasePin::Disconnect	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)
+00cab770	strmbase CDynamicOutputPin ctor, wide object-name overload	proven per batch 2026-10-27_linux_hand506 NOTES.md (chunk 506)

@@ -1,0 +1,31 @@
+address	status	bytes	test	note
+00c62920	RELOCATION_MATCH	256v256	PASS	CAudioStreamOwner_00c62920 ctor (descriptive); grade 4
+00c69b60	RELOCATION_MATCH	245v245	PASS	CReverbProcessor::Reset, vtable 0x012B9594 slot 3
+00c6b5d0	RELOCATION_MATCH	219v219	PASS	retail_asm (retail_asm/, payload_retail_asm.json): ConvertInt128BlockToFloatInPlace_00c6b5d0, cvtdq2ps/cvtpi2ps blocks
+00c6b7c0	DIFFER	251v249	-	retail_asm row (FloatToLong helper) parked: one extra x87 fxch in the gain lerp; 4 grades
+00c72800	DIFFER	179v179	-	CAudioSource::Rewind: esi/edi swap for this vs SourceId; 2 grades
+00c72d00	DIFFER	256v256	-	CAudioSource::BindSound: register allocation ebx/ebp/edi vs retail ebp/ebx/edx; 4 grades
+00c74130	MATCH	130v130	PASS	CDspOps::ScaleRampCopy, x87 table 0x012BF02C
+00c74230	MATCH	129v129	PASS	CDspOps::Mix, x87 table 0x012BF02C
+00c742c0	MATCH	145v145	PASS	CDspOps::MixRamp, x87 table 0x012BF02C
+00c74ab0	DIFFER	256v256	-	CBiquadCoefficients::ComputeLowPass_00c74ab0: rate load/test scheduled after fmul [baseFrequency]; 4 grades
+00c774f0	MATCH	160v160	PASS	CVtable_012bf0c8::CommitAndProcess_00c774f0, slot 2
+00c886b0	RELOCATION_MATCH	137v137	PASS	COggVorbisStream::Read, slot 3 of 0x012BF1C4; grade 2
+00c89750	RELOCATION_MATCH	255v255	PASS	CReverbFilterTap::Process (landed caller 0x00C75E90 binding)
+00c8e6e0	DIFFER	179v175	-	libvorbis _vorbis_pack_info: LTCG private register args (eax/esi, callee in ebx) -- lane gap
+00c8f960	DIFFER	248v246	-	libvorbis _preextrapolate_helper: LTCG v arrives in esi -- lane gap
+00c911f0	DIFFER	193v190	-	libogg oggpack_writecopy_helper: LTCG b in esi / source in ebx -- lane gap
+00c95910	DIFFER	259v253	-	libvorbis _dist: LTCG step arrives in esi -- lane gap
+00c9fea0	DIFFER	206v215	-	libvorbis res0_pack: LTCG keeps edx live across ilog; no loop padding -- lane gap
+00ca3600	RELOCATION_MATCH	221v221	PASS	libvorbis floor0_unpack (LTCG __fastcall leaf)
+00ca5200	SKIP	-	-	not one function: the gap-scan span packs several thunks/stubs separated by int3 padding (0xCA5200 is a 14-byte forwarding thunk; 0xCA62D0 a 16-byte this-adjust thunk)
+00ca62d0	SKIP	-	-	not one function: the gap-scan span packs several thunks/stubs separated by int3 padding (0xCA5200 is a 14-byte forwarding thunk; 0xCA62D0 a 16-byte this-adjust thunk)
+00ca7210	RELOCATION_MATCH	213v213	PASS	strmbase CRendererInputPin::Receive
+00ca8370	RELOCATION_MATCH	168v168	PASS	strmbase CBasePin::ConnectionMediaType
+00ca89f0	RELOCATION_MATCH	195v195	PASS	strmbase CBaseInputPin::GetAllocator
+00ca8ac0	RELOCATION_MATCH	144v144	PASS	strmbase CBaseInputPin::NotifyAllocator
+00ca9450	MATCH	182v182	PASS	strmbase CMediaSample::GetProperties
+00ca9f20	RELOCATION_MATCH	154v154	PASS	strmbase CBaseAllocator::GetBuffer
+00caa0a0	RELOCATION_MATCH	177v177	PASS	strmbase CBaseAllocator::Commit
+00cab580	RELOCATION_MATCH	168v168	PASS	strmbase CBasePin::Disconnect (DisconnectInternal inlined)
+00cab770	RELOCATION_MATCH	241v241	PASS	strmbase CDynamicOutputPin ctor, wide object-name overload
