@@ -1,0 +1,127 @@
+addr       parity           behav  name
+00c57380   WARN RELOC_NAME: ?CreateBuffer@CDSoundStreamBuffer@@QAE_NKK_N@Z -> 00c57140 labelled 'CSound_AllocateBuffers'
+00c57380   RELOCATION_MATCH PASS   CreateAndPlay
+00c57420   MATCH            PASS   Create
+00c57460   RELOCATION_MATCH PASS   Initialize
+00c57af0   RELOCATION_MATCH PASS   IsChunkReady
+00c58000   MATCH            PASS   MixAdd32
+00c58040   MATCH            PASS   MixAdd32Gain
+00c580c0   MATCH            PASS   MixAdd16
+00c591c0   RELOCATION_MATCH PASS   WriteChannel
+00c59770   MATCH            PASS   CheckPosition
+00c597b0   MATCH            PASS   SetPositionC
+00c5a210   MATCH            PASS   SetPositionB
+00c5a250   RELOCATION_MATCH PASS   SeekBytes
+00c5b0f0   RELOCATION_MATCH PASS   RenderBlock
+00c5c1b0   WARN RELOC_NAME: ?Setup@CSoftwareVoice_00c5a1d0@@UAEJPAUCVoiceDesc_00c556e0@@@Z -> 00c5a1d0 labelled 'CTCStealth::OnCreate'
+00c5c1b0   RELOCATION_MATCH PASS   Setup
+00c5cdc0   RELOCATION_MATCH PASS   MixBlock
+00c5ceb0   MATCH            PASS   Reset
+00c5d490   WARN RELOC_NAME: ?AddFloat128BlockSSE2@@YAXPBMPAJ@Z -> 00c5d2e0 labelled 'Math_AccumulateFloatArray'
+00c5d490   RELOCATION_MATCH PASS   MixAddFloat
+00c5d5f0   RELOCATION_MATCH PASS   Initialize
+00c5d6a0   MATCH            PASS   LockChunk
+00c5e2b0   MATCH            PASS   LockChunk
+00c5ee60   MATCH            PASS   IsChunkReady
+00c5eeb0   MATCH            PASS   WriteBuffer
+00c62c30   RELOCATION_MATCH PASS   OnComplete
+00c62e40   RELOCATION_MATCH PASS   OnComplete
+00c6bff0   MATCH            PASS   CTreePointer_00c555e0
+00c6cad0   MATCH            PASS   ClearHistory
+00c6ec80   WARN RELOC_NAME: ?UpdateGainRamp@CVtable_012bedb8@@QAEX_N@Z -> 00c6ebe0 labelled 'Audio_SetVolume_Channel'
+00c6ec80   RELOCATION_MATCH PASS   SetParameters
+00c71820   RELOCATION_MATCH PASS   DisableReverb
+00c727b0   WARN RELOC_NAME: ?SourcePause@CAudioContext@@QAEXK@Z -> 00c72560 labelled 'CAudioSource::PausePlayback'
+00c727b0   RELOCATION_MATCH PASS   SetPositionB
+
+WINS: 29
+  00c57380 RELOCATION_MATCH CDSoundStreamBuffer::?CreateAndPlay@CDSoundStreamBuffer@@UAE_NKK@Z
+  00c57420 MATCH CVtable_012b8e20::?Create@CVtable_012b8e20@@UAE_NK@Z
+  00c57460 RELOCATION_MATCH CVtable_012b8ed4::?Initialize@CVtable_012b8ed4@@UAE_NPBXPAX_N@Z
+  00c57af0 RELOCATION_MATCH CVtable_012b8ed4::?IsChunkReady@CVtable_012b8ed4@@UAE_NXZ
+  00c58000 MATCH CMixBuffer::?MixAdd32@CMixBuffer@@UAEXPBJPAJ@Z
+  00c58040 MATCH CMixBuffer::?MixAdd32Gain@CMixBuffer@@UAEXPBJPAJG@Z
+  00c580c0 MATCH CMixBuffer::?MixAdd16@CMixBuffer@@UAEXPBFPAJG@Z
+  00c591c0 RELOCATION_MATCH CLimitedMixBuffer::?WriteChannel@CLimitedMixBuffer@@UAEXPAFK@Z
+  00c59770 MATCH CCodaVoice::?CheckPosition@CCodaVoice@@UAEJ_J@Z
+  00c597b0 MATCH CCodaVoice::?SetPositionC@CCodaVoice@@UAEX_J@Z
+  00c5a210 MATCH CSoftwareVoice::?SetPositionB@CSoftwareVoice@@UAE_NKK@Z
+  00c5a250 RELOCATION_MATCH CSoftwareVoice::?SeekBytes@CSoftwareVoice@@UAEXK@Z
+  00c5b0f0 RELOCATION_MATCH CSoftwareVoice::?RenderBlock@CSoftwareVoice@@UAEXPAVCAudioRingBuffer@@K_N@Z
+  00c5c1b0 RELOCATION_MATCH CSoftwareStreamVoice::?Setup@CSoftwareStreamVoice@@UAEJPAUCVoiceDesc_00c556e0@@@Z
+  00c5cdc0 RELOCATION_MATCH CSoftwareStreamVoice::?MixBlock@CSoftwareStreamVoice@@UAEXPAVCSoftwareMixer@@PAVCAudioRingBuffer@@K@Z
+  00c5ceb0 MATCH CAudioRingBuffer::?Reset@CAudioRingBuffer@@QAEXXZ
+  00c5d490 RELOCATION_MATCH CVtable_012b5de0::?MixAddFloat@CVtable_012b5de0@@UAEXPBMPAJ@Z
+  00c5d5f0 RELOCATION_MATCH CAudioWaveOut::?Initialize@CAudioWaveOut@@UAE_NPBXPAX_N@Z
+  00c5d6a0 MATCH CAudioWaveOut::?LockChunk@CAudioWaveOut@@UAEPAXXZ
+  00c5e2b0 MATCH CWound_00c5eca0::?LockChunk@CWound_00c5eca0@@UAEPAXXZ
+  00c5ee60 MATCH CVtable_012b9174::?IsChunkReady@CVtable_012b9174@@UAE_NXZ
+  00c5eeb0 MATCH CVtable_012b9174::?WriteBuffer@CVtable_012b9174@@UAEXJ@Z
+  00c62c30 RELOCATION_MATCH CVtable_012b938c::?OnComplete@CVtable_012b938c@@UAEX_NJ@Z
+  00c62e40 RELOCATION_MATCH PKRASlaveObject::?OnComplete@PKRASlaveObject@@UAEX_NJ@Z
+  00c6bff0 MATCH CTreePointer_00c555e0::??0CTreePointer_00c555e0@@QAE@XZ
+  00c6cad0 MATCH CVtable_012bed7c::?ClearHistory@CVtable_012bed7c@@UAEXXZ
+  00c6ec80 RELOCATION_MATCH CVtable_012bedb8::?SetParameters@CVtable_012bedb8@@UAEXJJJMJ_N0@Z
+  00c71820 RELOCATION_MATCH CAudioContextEAX::?DisableReverb@CAudioContextEAX@@UAEXXZ
+  00c727b0 RELOCATION_MATCH CAudioSource::?SetPositionB@CAudioSource@@UAE_NKK@Z
+
+LANDED 29 wins into src/compiled + tests + catalog + oracle
+  CDSoundStreamBuffer_CreateAndPlay_00c57380
+  CVtable012b8e20_Create_00c57420
+  CVtable012b8ed4_Initialize_00c57460
+  CVtable012b8ed4_IsChunkReady_00c57af0
+  CMixBuffer_MixAdd32_00c58000
+  CMixBuffer_MixAdd32Gain_00c58040
+  CMixBuffer_MixAdd16_00c580c0
+  CLimitedMixBuffer_WriteChannel_00c591c0
+  CCodaVoice_CheckPosition_00c59770
+  CCodaVoice_SetPositionC_00c597b0
+  CSoftwareVoice_SetPositionB_00c5a210
+  CSoftwareVoice_SeekBytes_00c5a250
+  CSoftwareVoice_RenderBlock_00c5b0f0
+  CSoftwareStreamVoice_Setup_00c5c1b0
+  CSoftwareStreamVoice_MixBlock_00c5cdc0
+  CAudioRingBuffer_Reset_00c5ceb0
+  CVtable012b5de0_MixAddFloat_00c5d490
+  CAudioWaveOut_Initialize_00c5d5f0
+  CAudioWaveOut_LockChunk_00c5d6a0
+  CWound00c5eca0_LockChunk_00c5e2b0
+  CVtable012b9174_IsChunkReady_00c5ee60
+  CVtable012b9174_WriteBuffer_00c5eeb0
+  CVtable012b938c_OnComplete_00c62c30
+  PKRASlaveObject_OnComplete_00c62e40
+  CTreePointer00c555e0_CTreePointer00c555e0_00c6bff0
+  CVtable012bed7c_ClearHistory_00c6cad0
+  CVtable012bedb8_SetParameters_00c6ec80
+  CAudioContextEAX_DisableReverb_00c71820
+  CAudioSource_SetPositionB_00c727b0
+=== retail_asm payload ===
+addr       parity           behav  name
+00c57f20   MATCH            PASS   MixAddFloat
+00c57f60   RELOCATION_MATCH PASS   MixAddFloatGain16
+00c57fc0   MATCH            PASS   MixAddFloatGain
+00c6d560   MATCH            PASS   ClearHistory
+00c6f300   MATCH            PASS   ClearHistory
+00c700d0   MATCH            PASS   ZeroBlock128MMX_00c700d0
+00c701e0   MATCH            PASS   ClearScratch
+00c70bc0   MATCH            PASS   ClearScratch
+
+WINS: 8
+  00c57f20 MATCH CMixBuffer::?MixAddFloat@CMixBuffer@@UAEXPBMPAJ@Z
+  00c57f60 RELOCATION_MATCH CMixBuffer::?MixAddFloatGain16@CMixBuffer@@UAEXPBMPAJG@Z
+  00c57fc0 MATCH CMixBuffer::?MixAddFloatGain@CMixBuffer@@UAEXPBMPAJM@Z
+  00c6d560 MATCH CVtable_012b8a64::?ClearHistory@CVtable_012b8a64@@UAEXXZ
+  00c6f300 MATCH CVtable_012b8aa0::?ClearHistory@CVtable_012b8aa0@@UAEXXZ
+  00c700d0 MATCH _global::?ZeroBlock128MMX_00c700d0@@YAXPAX@Z
+  00c701e0 MATCH CVtable_012bedcc::?ClearScratch@CVtable_012bedcc@@UAEXXZ
+  00c70bc0 MATCH CVtable_012bede0::?ClearScratch@CVtable_012bede0@@UAEXXZ
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CMixBuffer_MixAddFloat_00c57f20
+  CMixBuffer_MixAddFloatGain16_00c57f60
+  CMixBuffer_MixAddFloatGain_00c57fc0
+  CVtable012b8a64_ClearHistory_00c6d560
+  CVtable012b8aa0_ClearHistory_00c6f300
+  global_ZeroBlock128MMX00c700d0_00c700d0
+  CVtable012bedcc_ClearScratch_00c701e0
+  CVtable012bede0_ClearScratch_00c70bc0

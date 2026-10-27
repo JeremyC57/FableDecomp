@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00c5e2c0	DIFFER	102v102	PASS	CWound_00c5eca0::WriteBuffer; register swap ecx/edx only; 3 grades (2 multi-variant probes); differ/

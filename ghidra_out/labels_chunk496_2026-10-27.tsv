@@ -1,0 +1,8 @@
+address	name	evidence
+00c57f20	retail_asm CMixBuffer::MixAddFloat	proven per batch 2026-10-27_linux_hand496 NOTES.md (chunk 496)
+00c57f60	retail_asm CMixBuffer::MixAddFloatGain16	proven per batch 2026-10-27_linux_hand496 NOTES.md (chunk 496)
+00c57fc0	retail_asm CMixBuffer::MixAddFloatGain	proven per batch 2026-10-27_linux_hand496 NOTES.md (chunk 496)
+00c58000	CMixBuffer::MixAdd32	proven per batch 2026-10-27_linux_hand496 NOTES.md (chunk 496)
+00c58040	CMixBuffer::MixAdd32Gain	proven per batch 2026-10-27_linux_hand496 NOTES.md (chunk 496)
+00c580c0	CMixBuffer::MixAdd16	proven per batch 2026-10-27_linux_hand496 NOTES.md (chunk 496)
+00c6bff0	CTreePointer_00c555e0 ctor	proven per batch 2026-10-27_linux_hand496 NOTES.md (chunk 496)

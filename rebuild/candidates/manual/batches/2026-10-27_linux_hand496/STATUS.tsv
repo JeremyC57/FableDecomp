@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c57380	RELOCATION_MATCH	55v55	PASS	CDSoundStreamBuffer::CreateAndPlay; 2 grades
+00c57420	MATCH	20v20	PASS	CVtable_012b8e20::Create; 4 grades (incl. 1 multi-variant probe)
+00c57460	RELOCATION_MATCH	37v37	PASS	CVtable_012b8ed4::Initialize; 1 grade
+00c57490	SKIP	-v20	-	two functions: `mov eax,[ecx] ; jmp [eax+14h]` (5 bytes) then int3 padding and a 4-byte `lea eax,[ecx+4] ; ret` at 0x00C574A0
+00c57af0	RELOCATION_MATCH	109v109	PASS	CVtable_012b8ed4::IsChunkReady; 1 grade
+00c57f20	MATCH	53v53	PASS	retail_asm CMixBuffer::MixAddFloat; 1 grade
+00c57f60	RELOCATION_MATCH	88v88	PASS	retail_asm CMixBuffer::MixAddFloatGain16; 1 grade
+00c57fc0	MATCH	57v57	PASS	retail_asm CMixBuffer::MixAddFloatGain; 1 grade
+00c58000	MATCH	59v59	PASS	CMixBuffer::MixAdd32; 1 grade
+00c58040	MATCH	113v113	PASS	CMixBuffer::MixAdd32Gain; 1 grade
+00c580c0	MATCH	116v116	PASS	CMixBuffer::MixAdd16; 1 grade
+00c591c0	RELOCATION_MATCH	43v43	PASS	CLimitedMixBuffer::WriteChannel; 1 grade
+00c59770	MATCH	54v54	PASS	CCodaVoice::CheckPosition; 2 grades
+00c597b0	MATCH	38v38	PASS	CCodaVoice::SetPositionC; 4 grades (incl. 1 multi-variant probe)
+00c5a210	MATCH	55v55	PASS	CSoftwareVoice::SetPositionB; 2 grades (incl. 1 probe)
+00c5a250	RELOCATION_MATCH	72v72	PASS	CSoftwareVoice::SeekBytes; 1 grade
+00c5b0f0	RELOCATION_MATCH	116v116	PASS	CSoftwareVoice::RenderBlock; 1 grade
+00c5c1b0	RELOCATION_MATCH	114v114	PASS	CSoftwareStreamVoice::Setup; 2 grades (incl. 1 probe)
+00c5cdc0	RELOCATION_MATCH	56v56	PASS	CSoftwareStreamVoice::MixBlock; 1 grade
+00c5ceb0	MATCH	15v15	PASS	CAudioRingBuffer::Reset (label CThingSearchTools wrong); 1 grade
+00c5d490	RELOCATION_MATCH	21v21	PASS	CVtable_012b5de0::MixAddFloat; 1 grade
+00c5d5f0	RELOCATION_MATCH	14v14	PASS	CAudioWaveOut::Initialize; 2 grades
+00c5d6a0	MATCH	13v13	PASS	CAudioWaveOut::LockChunk; 1 grade
+00c5e2b0	MATCH	14v14	PASS	CWound_00c5eca0::LockChunk; 1 grade
+00c5e2c0	DIFFER	102v102	PASS	CWound_00c5eca0::WriteBuffer; register swap ecx/edx only; 3 grades (2 multi-variant probes); differ/
+00c5ee20	SKIP	-v48	-	two functions: `mov eax,[ecx] ; jmp [eax+14h]` (5 bytes) then int3 padding and a 0x20-byte body at 0x00C5EE30 (slot 3 of 0x012B9174)
+00c5ee60	MATCH	51v51	PASS	CVtable_012b9174::IsChunkReady; 1 grade
+00c5eeb0	MATCH	9v9	PASS	CVtable_012b9174::WriteBuffer; 1 grade
+00c62c30	RELOCATION_MATCH	64v64	PASS	CVtable_012b938c::OnComplete; 1 grade
+00c62e40	RELOCATION_MATCH	28v28	PASS	PKRASlaveObject::OnComplete; 1 grade
+00c6bff0	MATCH	16v16	PASS	CTreePointer_00c555e0 ctor (label CBaseIntelligentPointer wrong); 1 grade
+00c6cad0	MATCH	23v23	PASS	CVtable_012bed7c::ClearHistory; 1 grade
+00c6d560	MATCH	44v44	PASS	retail_asm CVtable_012b8a64::ClearHistory (SSE2); 1 grade
+00c6ec80	RELOCATION_MATCH	44v44	PASS	CVtable_012bedb8::SetParameters; 2 grades
+00c6f300	MATCH	58v58	PASS	retail_asm CVtable_012b8aa0::ClearHistory (MMX); 1 grade
+00c700d0	MATCH	75v75	PASS	retail_asm ZeroBlock128MMX_00c700d0 (MMX); 1 grade
+00c701e0	MATCH	92v92	PASS	retail_asm CVtable_012bedcc::ClearScratch (MMX); 1 grade
+00c70bc0	MATCH	66v66	PASS	retail_asm CVtable_012bede0::ClearScratch (SSE2); 1 grade
+00c71820	RELOCATION_MATCH	69v69	PASS	CAudioContextEAX::DisableReverb; 1 grade
+00c727b0	RELOCATION_MATCH	65v65	PASS	CAudioSource::SetPositionB; 1 grade

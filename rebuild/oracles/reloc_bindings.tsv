@@ -33946,3 +33946,15 @@ __01class@16	00ca0680	00ca1250
 _INVSQ2EXP_LOOKUP	013ac4f0	00ca3ef0
 ?CompleteConnect@CBasePin@@UAEJPAUIPin@@@Z	00ca8090	00ca5190
 _AMGetWideString@8	00cb0940	00ca84b0
+?CreateBuffer@CDSoundStreamBuffer@@QAE_NKK_N@Z	00c57140	00c57380
+?Initialize@CAudioContext@@QAE_N_N@Z	00c565f0	00c57460
+?Process@CLimiter@@QAEXPAFKPBJJ@Z	00c593c0	00c591c0
+?Reset@CAudioRingBuffer@@QAEXXZ	00c5ceb0	00c5a250
+?Mix@CSoftwareStreamVoice@@QAEXPBFK@Z	00c5c880	00c5cdc0
+?MixMono@CSoftwareStreamVoice@@QAEXPBF@Z	00c5c800	00c5cdc0
+?AddFloat128BlockSSE2@@YAXPBMPAJ@Z	00c5d2e0	00c5d490
+__imp__waveOutGetNumDevs@0	01440498	00c5d5f0
+?ReceiveObject@PKRACMasterObject@@QAEX_N@Z	00c4c7a0	00c62c30
+?UpdateGainRamp@CVtable_012bedb8@@QAEX_N@Z	00c6ebe0	00c6ec80
+?DSPROPSETID_EAX30_ListenerProperties@@3UGUID@@B	012bee90	00c71820
+?SourcePause@CAudioContext@@QAEXK@Z	00c72560	00c727b0
