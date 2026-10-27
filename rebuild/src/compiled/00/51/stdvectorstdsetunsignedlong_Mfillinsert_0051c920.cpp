@@ -1,0 +1,129 @@
+// std::vector<std::set<unsigned long>>::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
+// Leaf: ?_M_fill_insert@?$vector@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@V?$allocator@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@2@@std@@IAEXPAV?$set@KU?$less@K@std@@V?$allocator@K@2@@2@IABV32@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0051c920, 300 bytes, thiscall, `ret 0Ch`.
+// Identity (proven): bound ?_M_fill_insert@?$vector@V?$set@KU?$less@K@std@@...@Z in reloc_bindings; landed caller vector<set<unsigned long> >::resize(n, x) 0x0051D030; overflow callee the landed vector<set<unsigned long> >::_M_insert_overflow 0x0051C470.
+// Callees: set<unsigned long>::set(const set&) 0x00513700 (bound), _Rb_tree<unsigned long, ...>::~_Rb_tree 0x00517850 (the inline ~set's member destructor; landed under a CRetailTree stand-in), __uninitialized_copy 0x00518F30 (bound), __copy_backward 0x00517430, uninitialized_fill_n 0x00518F80, fill 0x00517060 (landed), _M_insert_overflow 0x0051C470 (landed).
+// Shape (family L004, representative 0x0051C920): STLport 4.6 vector.c `_M_fill_insert` verbatim; __x_copy lives in the
+//   frame and is destroyed at the end of the in-place arm; __copy_backward_ptrs is inline over the out-of-line
+//   __copy_backward; the tag-taking helpers (__uninitialized_copy, uninitialized_fill_n, fill) are same-TU
+//   `__declspec(noinline)` bodies (they never read their tags), __copy_backward and _M_insert_overflow are declarations.
+inline void* operator new(unsigned int, void* p) { return p; }
+namespace std {
+struct __false_type { __false_type() { } };
+struct input_iterator_tag { input_iterator_tag() { } };
+struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
+struct bidirectional_iterator_tag : public forward_iterator_tag { bidirectional_iterator_tag() { } };
+struct random_access_iterator_tag : public bidirectional_iterator_tag { random_access_iterator_tag() { } };
+template <class _Tp> class allocator {
+public:
+    allocator() { }
+    allocator(const allocator&) { }
+};
+template <class _Value, class _Tp, class _MaybeReboundAlloc>
+class _STLP_alloc_proxy : public _MaybeReboundAlloc {
+public:
+    _Value _M_data;
+};
+template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class _InputIter, class _ForwardIter>
+__declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last,
+                                                                  _ForwardIter __result, const __false_type&)
+{                                                                                              // 0x00518F30
+    _ForwardIter __cur = __result;
+    for (; __first != __last; ++__first, ++__cur)
+        _Construct(&*__cur, *__first);
+    return __cur;
+}
+template <class _ForwardIter, class _Size, class _Tp>
+inline _ForwardIter __fastcall __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x,
+                                                      const __false_type&)
+{
+    _ForwardIter __cur = __first;
+    for (; __n > 0; --__n, ++__cur)
+        _Construct(&*__cur, __x);
+    return __cur;
+}
+template <class _ForwardIter, class _Size, class _Tp>
+__declspec(noinline) _ForwardIter __fastcall uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+{                                                                                              // 0x00518F80
+    return __uninitialized_fill_n(__first, __n, __x, __false_type());
+}
+template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
+_BidirectionalIter __fastcall __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+                                              _BidirectionalIter __result, const random_access_iterator_tag&,
+                                              _Distance*);                                     // 0x00517430
+template <class _BidirectionalIter1, class _BidirectionalIter2>
+inline _BidirectionalIter2 __fastcall __copy_backward_ptrs(_BidirectionalIter1 __first, _BidirectionalIter1 __last,
+                                                           _BidirectionalIter2 __result, const __false_type&)
+{
+    return __copy_backward(__first, __last, __result, random_access_iterator_tag(), (int*)0);
+}
+template <class _ForwardIter, class _Tp>
+__declspec(noinline) void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+{                                                                                              // 0x00517060
+    for (; __first != __last; ++__first)
+        *__first = __val;
+}
+template <class _Tp, class _Alloc> class _Vector_base {
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
+};
+template <class _Tp, class _Alloc = allocator<_Tp> >
+class vector : protected _Vector_base<_Tp, _Alloc> {
+public:
+    typedef unsigned int size_type;
+    typedef _Tp* pointer;
+protected:
+    void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
+                            bool __atend = false);                                             // 0x0051C470
+    void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
+};
+template <class _Tp, class _Alloc>
+void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, const _Tp& __x)
+{
+    if (__n != 0) {
+        if (size_type(this->_M_end_of_storage._M_data - this->_M_finish) >= __n) {
+            _Tp __x_copy = __x;
+            const size_type __elems_after = this->_M_finish - __position;
+            pointer __old_finish = this->_M_finish;
+            if (__elems_after > __n) {
+                __uninitialized_copy(this->_M_finish - __n, this->_M_finish, this->_M_finish, __false_type());
+                this->_M_finish += __n;
+                __copy_backward_ptrs(__position, __old_finish - __n, __old_finish, __false_type());
+                fill(__position, __position + __n, __x_copy);
+            }
+            else {
+                uninitialized_fill_n(this->_M_finish, __n - __elems_after, __x_copy);
+                this->_M_finish += __n - __elems_after;
+                __uninitialized_copy(__position, __old_finish, this->_M_finish, __false_type());
+                this->_M_finish += __elems_after;
+                fill(__position, __old_finish, __x_copy);
+            }
+        }
+        else
+            _M_insert_overflow(__position, __x, __false_type(), __n);
+    }
+}
+}
+namespace std {
+template <class _Tp> struct less { };
+template <class _Tp> struct _Identity { };
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+class _Rb_tree {                                           // 12 bytes
+public:
+    void* _M_header;                                      // +0x00
+    unsigned int _M_node_count;                           // +0x04
+    _Compare _M_key_compare;                              // +0x08
+    ~_Rb_tree();                                          // 0x00517850 (clear + free the header)
+    _Rb_tree& operator=(const _Rb_tree& __x);             // 0x00512CE0
+};
+template <class _Key, class _Compare = less<_Key>, class _Alloc = allocator<_Key> >
+class set {
+public:
+    _Rb_tree<_Key, _Key, _Identity<_Key>, _Compare, _Alloc> _M_t;   // +0x00
+    set(const set& __x);                                  // 0x00513700
+};
+}
+template void std::vector<std::set<unsigned long> >::_M_fill_insert(std::set<unsigned long>*, unsigned int, const std::set<unsigned long>&);

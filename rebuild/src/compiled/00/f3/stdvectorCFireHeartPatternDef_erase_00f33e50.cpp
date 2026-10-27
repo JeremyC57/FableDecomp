@@ -1,0 +1,42 @@
+// std::vector<CFireHeartPatternDef>::erase(iterator first, iterator last) -- STLport range erase: move the tail down, destroy the vacated elements, shrink
+// Leaf: ?erase@?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@QAEPAVCFireHeartPatternDef@@PAV3@0@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00f33e50, 78 bytes, thiscall, `ret 8`, returns first.
+// Identity (proven): bound ?erase@?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@QAEPAVCFireHeartPatternDef@@PAV3@0@Z by the landed vector<CFireHeartPatternDef>::resize 0x00F33DE0, its only caller.
+// Callees: __copy_ptrs(last, finish, first, __false_type) 0x00F33EA0 (/Gr __fastcall, out of line); each vacated element's
+//   virtual destructor (vtable slot 0, the scalar deleting destructor with 0).
+// Shape (family L150): STLport 4.6 `pointer __i = __copy_ptrs(__last, _M_finish, __first, __false_type()); _Destroy(__i,
+//   _M_finish); _M_finish = __i; return __first;` -- the value-initialised empty tag is a zeroed frame byte.
+class CFireHeartPatternDef {                                        // retail 0x34 bytes, polymorphic (def record)
+public:
+    virtual ~CFireHeartPatternDef();
+    unsigned char _body[0x34 - 4];
+};
+namespace std {
+struct __false_type { };
+template <class _Tp> class allocator { };
+template <class _InputIter, class _OutputIter>
+_OutputIter __fastcall __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&);   // 0x00F33EA0
+template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+{
+    for (; __first != __last; ++__first)
+        _Destroy(&*__first);
+}
+template <class _Tp, class _Alloc = allocator<_Tp> >
+class vector {
+public:
+    typedef _Tp* iterator;
+    typedef _Tp* pointer;
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    iterator erase(iterator __first, iterator __last)
+    {
+        pointer __i = __copy_ptrs(__last, this->_M_finish, __first, __false_type());
+        _Destroy(__i, this->_M_finish);
+        this->_M_finish = __i;
+        return __first;
+    }
+};
+template CFireHeartPatternDef* vector<CFireHeartPatternDef>::erase(CFireHeartPatternDef*, CFireHeartPatternDef*);
+}

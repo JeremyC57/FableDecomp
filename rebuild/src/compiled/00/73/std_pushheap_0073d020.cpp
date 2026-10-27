@@ -1,0 +1,41 @@
+// std::__push_heap(std::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo >* first, int holeIndex, int topIndex, std::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo > value, CKeyPairCompareLess<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo > comp) -- STLport heap sift-up: move parents down while they compare below value, then drop value into the hole
+// Leaf: ??$__push_heap@PAU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@std@@HU12@V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@std@@YIXPAU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@0@HHU10@V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0073d020, 79 bytes, /Gr __fastcall (first in ecx, holeIndex in edx; topIndex, value, comp on the stack), `ret 10h`.
+// Identity (proven): its only caller is the landed __adjust_heap 0x0073D7C0, under the __make_heap 0x0073DF30 / sort_heap 0x007423D0 / __partial_sort 0x00743470 bound to pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo> with CKeyPairCompareLess<unsigned long, CRegisteredModeInfo>; bound only as the stand-in ?_Push_heap@FableHeap_0073d7c0@@....
+// Callees: none (the comparator is inline: an unsigned compare of the first dword).
+// Shape (family L053): STLport 4.6 _heap.c __push_heap verbatim -- parent = (hole - 1) / 2 (`cdq ; sub ; sar`), the
+//   8-byte element moved as two dwords, value's key kept in ebx.
+class CModeBase;
+class CThing;
+class CTCCreatureModeManager {
+public:
+    class CRegisteredModeInfo {                            // Ego_r.pdb, 4 bytes
+    public:
+        CModeBase* (__cdecl* AllocFunc)(CThing&);         // +0x00
+    };
+};
+namespace std {
+template <class _T1, class _T2> struct pair {
+    _T1 first;                                            // +0x00
+    _T2 second;                                           // +0x04
+};
+}
+template <class K, class V> class CKeyPairCompareLess {    // empty, passed by value
+public:
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+};
+namespace std {
+template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
+void __fastcall __push_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __topIndex, _Tp __val,
+                            _Compare __comp)
+{
+    _Distance __parent = (__holeIndex - 1) / 2;
+    while (__holeIndex > __topIndex && __comp(*(__first + __parent), __val)) {
+        *(__first + __holeIndex) = *(__first + __parent);
+        __holeIndex = __parent;
+        __parent = (__holeIndex - 1) / 2;
+    }
+    *(__first + __holeIndex) = __val;
+}
+}
+template void __fastcall std::__push_heap(std::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo >*, int, int, std::pair<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo >, CKeyPairCompareLess<unsigned long, CTCCreatureModeManager::CRegisteredModeInfo >);
