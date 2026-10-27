@@ -351329,6 +351329,185 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00a4ac60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a5aaa0'
+        Module = 'std'
+        Source = '00/a5/std_introsortloop_00a5aaa0.cpp'
+        TestSource = '00/a5/std_introsortloop_00a5aaa0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a5aaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6bec0'
+        Module = 'std'
+        Source = '00/a6/std_introsortloop_00a6bec0.cpp'
+        TestSource = '00/a6/std_introsortloop_00a6bec0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a6bec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a80ee0'
+        Module = 'std::vector<CANavQuadTreeNode*>'
+        Source = '00/a8/stdvectorCANavQuadTreeNode_operator_00a80ee0.cpp'
+        TestSource = '00/a8/stdvectorCANavQuadTreeNode_operator_00a80ee0_test.cpp'
+        PassPattern = '00a80ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a82380'
+        Module = 'std::vector'
+        Source = '00/a8/stdvector_Minsertoverflow_00a82380.cpp'
+        TestSource = '00/a8/stdvector_Minsertoverflow_00a82380_test.cpp'
+        PassPattern = '00a82380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a82480'
+        Module = 'std::vector'
+        Source = '00/a8/stdvector_Minsertoverflow_00a82480.cpp'
+        TestSource = '00/a8/stdvector_Minsertoverflow_00a82480_test.cpp'
+        PassPattern = '00a82480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aacda0'
+        Module = 'std::vector'
+        Source = '00/aa/stdvector_Minsertoverflow_00aacda0.cpp'
+        TestSource = '00/aa/stdvector_Minsertoverflow_00aacda0_test.cpp'
+        PassPattern = '00aacda0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac8720'
+        Module = 'QuadricOptimiserInternals::COptimisedVertex'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedVertex_InterpolateGroups_00ac8720.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedVertex_InterpolateGroups_00ac8720_test.cpp'
+        PassPattern = '00ac8720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad83d0'
+        Module = 'std::vector'
+        Source = '00/ad/stdvector_Minsertoverflow_00ad83d0.cpp'
+        TestSource = '00/ad/stdvector_Minsertoverflow_00ad83d0_test.cpp'
+        PassPattern = '00ad83d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adc650'
+        Module = 'std'
+        Source = '00/ad/std_introsortloop_00adc650.cpp'
+        TestSource = '00/ad/std_introsortloop_00adc650_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adc650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adce60'
+        Module = 'std::vector'
+        Source = '00/ad/stdvector_Minsertoverflow_00adce60.cpp'
+        TestSource = '00/ad/stdvector_Minsertoverflow_00adce60_test.cpp'
+        PassPattern = '00adce60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae7be0'
+        Module = 'std'
+        Source = '00/ae/std_introsortloop_00ae7be0.cpp'
+        TestSource = '00/ae/std_introsortloop_00ae7be0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ae7be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af1e90'
+        Module = 'std::vector'
+        Source = '00/af/stdvector_Minsertoverflow_00af1e90.cpp'
+        TestSource = '00/af/stdvector_Minsertoverflow_00af1e90_test.cpp'
+        PassPattern = '00af1e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0f9f0'
+        Module = 'std::vector'
+        Source = '00/b0/stdvector_Minsertoverflow_00b0f9f0.cpp'
+        TestSource = '00/b0/stdvector_Minsertoverflow_00b0f9f0_test.cpp'
+        PassPattern = '00b0f9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6c120'
+        Module = 'std::vector'
+        Source = '00/b6/stdvector_Minsertoverflow_00b6c120.cpp'
+        TestSource = '00/b6/stdvector_Minsertoverflow_00b6c120_test.cpp'
+        PassPattern = '00b6c120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b91e70'
+        Module = 'CEngineSceneGrid'
+        Source = '00/b9/CEngineSceneGrid_GetTotalCellCount_00b91e70.cpp'
+        TestSource = '00/b9/CEngineSceneGrid_GetTotalCellCount_00b91e70_test.cpp'
+        PassPattern = '00b91e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd9ed0'
+        Module = 'CEngineLandscapeMemoryManager'
+        Source = '00/bd/CEngineLandscapeMemoryManager_CEngineLandscapeMemoryManager_00bd9ed0.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_CEngineLandscapeMemoryManager_00bd9ed0_test.cpp'
+        PassPattern = '00bd9ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdb9f0'
+        Module = 'std::vector<CVertexShaderConstant>'
+        Source = '00/bd/stdvectorCVertexShaderConstant_operator_00bdb9f0.cpp'
+        TestSource = '00/bd/stdvectorCVertexShaderConstant_operator_00bdb9f0_test.cpp'
+        PassPattern = '00bdb9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bed690'
+        Module = 'std'
+        Source = '00/be/std_swap_00bed690.cpp'
+        TestSource = '00/be/std_swap_00bed690_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bed690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bef700'
+        Module = 'std'
+        Source = '00/be/std_partialsort_00bef700.cpp'
+        TestSource = '00/be/std_partialsort_00bef700_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bef700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf94d0'
+        Module = 'std::vector<CEngineTexturePalette::CPaletteEntry>'
+        Source = '00/bf/stdvectorCEngineTexturePaletteCPaletteEntry_Minsertoverflow_00bf94d0.cpp'
+        TestSource = '00/bf/stdvectorCEngineTexturePaletteCPaletteEntry_Minsertoverflow_00bf94d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00bf94d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c186d0'
+        Module = 'CMorphableNode_00c185b0'
+        Source = '00/c1/CMorphableNode00c185b0_Slot00_00c186d0.cpp'
+        TestSource = '00/c1/CMorphableNode00c185b0_Slot00_00c186d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c186d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1aec0'
+        Module = 'PKCStaticQueue<SFileRequest>'
+        Source = '00/c1/PKCStaticQueueSFileRequest_Push_00c1aec0.cpp'
+        TestSource = '00/c1/PKCStaticQueueSFileRequest_Push_00c1aec0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1aec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1b370'
+        Module = 'PKCStaticQueue<SFileRequest>'
+        Source = '00/c1/PKCStaticQueueSFileRequest_Pop_00c1b370.cpp'
+        TestSource = '00/c1/PKCStaticQueueSFileRequest_Pop_00c1b370_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1b370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1dd70'
+        Module = 'PKCOneShotQueue<SFileReply>'
+        Source = '00/c1/PKCOneShotQueueSFileReply_Pop_00c1dd70.cpp'
+        TestSource = '00/c1/PKCOneShotQueueSFileReply_Pop_00c1dd70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1dd70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

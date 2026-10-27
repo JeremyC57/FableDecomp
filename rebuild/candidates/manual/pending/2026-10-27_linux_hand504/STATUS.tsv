@@ -1,0 +1,7 @@
+address	status	bytes	test	note
+00a60410	DIFFER	262v245	-	grades 3; loop inversion
+00ac7200	DIFFER	255v255	-	grades 2 + probe compiles; x87 dot term order
+00b67e30	DIFFER	128v129	-	grades 3; bitfield word not value-forwarded
+00c0ffe0	DIFFER	256v253	-	grades 4; GetTickCount-minus-tick memory operand not folded
+00c11230	DIFFER	242v242	-	grades 4; return-0 / return-1 epilogue block placement
+00c1ca20	DIFFER	140v140	-	grades 4; x87 operand order of the first row (zero-displacement X)

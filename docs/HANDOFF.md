@@ -5,10 +5,10 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **49,896 rows**: **49,864 of 57,267 known
-  functions (87.1%)**, or 43,298 of the original 49,568 (87.4%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
-  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): chunks 504 and 505 (128-256 bytes) running (485-502, the singles under
-  128 bytes, landed 671 of 713; 503 26 of 30); chunks 506-508 queued (30 rows each, 128-256 bytes) (the last singles under 128 bytes) (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **49,920 rows**: **49,888 of 57,267 known
+  functions (87.1%)**, or 43,317 of the original 49,568 (87.4%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
+  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): chunks 505 and 506 (128-256 bytes) running (485-502, the singles under
+  128 bytes, landed 671 of 713; 503-504 50 of 60); chunks 507-508 queued (30 rows each, 128-256 bytes) (the last singles under 128 bytes) (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by
   default, 4035 via `--qfe`.
 
@@ -27,7 +27,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
   (`2026-10-26_one_address_one_name_pass.md`, `namepass/`).
 
 ## Open (owner picks the order)
-1. Family pass 8 (979 rows) out to ChatGPT, re-verify on our lane before landing; 7,403 functions left in all.
+1. Family pass 8 (979 rows) out to ChatGPT, re-verify on our lane before landing; 7,379 functions left in all.
 2. One-address-one-name remainder: GetPItem return type (~340 rows), free/static stand-in callers (~3,490), CRT
    free-mock tests (59), LowerBound const overloads, CDataInputStream (227); still ~5,085 targets with >1 spelling.
 3. CRetailTree remainder: 882 kept rows + ~180 misnamed /Os tree functions (`treepass/KEPT.tsv`, `OS_FAMILY.tsv`).

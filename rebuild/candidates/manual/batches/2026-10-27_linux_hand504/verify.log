@@ -1,0 +1,100 @@
+addr       parity           behav  name
+00a5aaa0   WARN RELOC_NAME: ??$__introsort_loop@PAMMHU?$less@M@std@@@std@@YIXPAM00HU?$less@M@0@@Z -> 00a5aaa0 labelled 'Quicksort_Float'
+00a5aaa0   RELOCATION_MATCH PASS   __introsort_loop
+00a6bec0   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@KK@std@@U12@HU?$less@U?$pair@KK@std@@@2@@std@@YIXPAU?$pair@KK@0@00HU?$less@U?$pair@KK@std@@@0@@Z -> 00a6bec0 labelled 'QuickSort_Median3_Partition'
+00a6bec0   RELOCATION_MATCH PASS   __introsort_loop
+00a80ee0   RELOCATION_MATCH PASS   operator=
+00a82380   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@_K_N@std@@PAU12@@std@@YIPAU?$pair@_K_N@0@PAU10@00ABU__false_type@0@@Z -> 00a7e5c0 labelled '_global::UninitCopy_PairU64Bool_00a7e5c0'
+00a82380   RELOCATION_MATCH PASS   _M_insert_overflow
+00a82480   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@_KPAVCANavQuadTreeNode@@@std@@PAU12@@std@@YIPAU?$pair@_KPAVCANavQuadTreeNode@@@0@PAU10@00ABU__false_type@0@@Z -> 00a7e630 labelled '_global::UninitCopy_PairU64Long_00a7e630'
+00a82480   RELOCATION_MATCH PASS   _M_insert_overflow
+00aacda0   RELOCATION_MATCH PASS   _M_insert_overflow
+00ac8720   RELOCATION_MATCH PASS   InterpolateGroups
+00ad83d0   RELOCATION_MATCH PASS   _M_insert_overflow
+00adc650   WARN RELOC_NAME: ??$__introsort_loop@PAVCBlockInfo@CVertexGroupBlockOptimiser@@V12@HU?$less@VCBlockInfo@CVertexGroupBlockOptimiser@@@std@@@std@@YIXPAVCBlockInfo@CVertexGroupBlockOptimiser@@00HU?$less@VCBlockInfo@CVertexGroupBlockOptimiser@@@0@@Z -> 00adc650 labelled 'Quicksort_Partition_Recursive'
+00adc650   RELOCATION_MATCH PASS   __introsort_loop
+00adce60   WARN RELOC_NAME: ??0?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z -> 00a96e40 labelled 'std::map::map'
+00adce60   RELOCATION_MATCH PASS   _M_insert_overflow
+00ae7be0   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@JK@std@@U12@HU?$less@U?$pair@JK@std@@@2@@std@@YIXPAU?$pair@JK@0@00HU?$less@U?$pair@JK@std@@@0@@Z -> 00ae7be0 labelled 'Quicksort_Partition_64Bit'
+00ae7be0   RELOCATION_MATCH PASS   __introsort_loop
+00af1e90   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00af1e90   RELOCATION_MATCH PASS   _M_insert_overflow
+00b0f9f0   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@PAU12@@std@@YIPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@PAU10@00ABU__false_type@0@@Z -> 00b0f670 labelled '_global::UninitCopy_ParamDescPair_00b0f670'
+00b0f9f0   RELOCATION_MATCH PASS   _M_insert_overflow
+00b6c120   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCVertexShader@@PAV1@@std@@YIPAVCVertexShader@@PAV1@00ABU__false_type@0@@Z -> 00b6bab0 labelled '_global::UninitCopy_CVertexShader_00b6bab0'
+00b6c120   RELOCATION_MATCH PASS   _M_insert_overflow
+00b91e70   RELOCATION_MATCH PASS   GetTotalCellCount
+00bd9ed0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bd9ed0   WARN RELOC_NAME: ?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ -> 00bd9ce0 labelled 'TexturePool_Clear'
+00bd9ed0   RELOCATION_MATCH PASS   ~CEngineLandscapeMemoryManager
+00bdb9f0   RELOCATION_MATCH PASS   operator=
+00bed690   RELOCATION_MATCH PASS   swap
+00bef700   RELOCATION_MATCH PASS   __partial_sort
+00bf94d0   WARN RELOC_NAME: ??$__uninitialized_copy@PAUCPaletteEntry@CEngineTexturePalette@@PAU12@@std@@YIPAUCPaletteEntry@CEngineTexturePalette@@PAU12@00ABU__false_type@0@@Z -> 00bf8f30 labelled '_global::UninitCopy_SPairLongCSecond_0099ec30_00bf8f30'
+00bf94d0   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAUCPaletteEntry@CEngineTexturePalette@@IU12@@std@@YIPAUCPaletteEntry@CEngineTexturePalette@@PAU12@IABU12@ABU__false_type@0@@Z -> 00bf8f70 labelled '_global::UninitFillN_SPairLongCSecond_0099ec30_00bf8f70'
+00bf94d0   RELOCATION_MATCH PASS   _M_insert_overflow
+00c186d0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c186d0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c186d0   RELOCATION_MATCH PASS   Slot00
+00c1aec0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c1aec0   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c1aec0   RELOCATION_MATCH PASS   Push
+00c1b370   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c1b370   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c1b370   WARN RELOC_NAME: ?GetTailIndex@?$PKCStaticQueue@USFileRequest@@@@QAEJXZ -> 00c1b460 labelled 'CAIStateGroup_HoverHornetQueen::GetNextCirclePoint'
+00c1b370   RELOCATION_MATCH PASS   Pop
+00c1dd70   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c1dd70   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c1dd70   RELOCATION_MATCH PASS   Pop
+
+WINS: 24
+  00a5aaa0 RELOCATION_MATCH std::??$__introsort_loop@PAMMHU?$less@M@std@@@std@@
+  00a6bec0 RELOCATION_MATCH std::??$__introsort_loop@
+  00a80ee0 RELOCATION_MATCH std::vector<CANavQuadTreeNode*>::??4?$vector@PAVCANavQuadTreeNode@@
+  00a82380 RELOCATION_MATCH std::vector::?_M_insert_overflow@
+  00a82480 RELOCATION_MATCH std::vector::?_M_insert_overflow@
+  00aacda0 RELOCATION_MATCH std::vector::?_M_insert_overflow@
+  00ac8720 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedVertex::?InterpolateGroups@COptimisedVertex@QuadricOptimiserInternals@@QAEXABV12@M@Z
+  00ad83d0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCOptimisedSubMesh@QuadricOptimiserInternals@@
+  00adc650 RELOCATION_MATCH std::??$__introsort_loop@PAVCBlockInfo@CVertexGroupBlockOptimiser@@
+  00adce60 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCVertexGroupBlock@@
+  00ae7be0 RELOCATION_MATCH std::??$__introsort_loop@
+  00af1e90 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCParticleEmitterInfo@NParticleEngine@@
+  00b0f9f0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@
+  00b6c120 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCVertexShader@@
+  00b91e70 RELOCATION_MATCH CEngineSceneGrid::?GetTotalCellCount@CEngineSceneGrid@@AAEKKK@Z
+  00bd9ed0 RELOCATION_MATCH CEngineLandscapeMemoryManager::??1CEngineLandscapeMemoryManager@@UAE@XZ
+  00bdb9f0 RELOCATION_MATCH std::vector<CVertexShaderConstant>::??4?$vector@VCVertexShaderConstant@@V?$allocator@VCVertexShaderConstant@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00bed690 RELOCATION_MATCH std::??$swap@U?$pair@JVCCompositeSurfaceInfo@@@std@@@std@@YIXAAU?$pair@JVCCompositeSurfaceInfo@@@0@0@Z
+  00bef700 RELOCATION_MATCH std::??$__partial_sort@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@
+  00bf94d0 RELOCATION_MATCH std::vector<CEngineTexturePalette::CPaletteEntry>::?_M_insert_overflow@?$vector@UCPaletteEntry@CEngineTexturePalette@@
+  00c186d0 RELOCATION_MATCH CMorphableNode_00c185b0::?Slot00@CMorphableNode_00c185b0@@UAEXXZ
+  00c1aec0 RELOCATION_MATCH PKCStaticQueue<SFileRequest>::?Push@?$PKCStaticQueue@USFileRequest@@@@UAEJPBUSFileRequest@@@Z
+  00c1b370 RELOCATION_MATCH PKCStaticQueue<SFileRequest>::?Pop@?$PKCStaticQueue@USFileRequest@@@@UAEPAUSFileRequest@@PAU2@@Z
+  00c1dd70 RELOCATION_MATCH PKCOneShotQueue<SFileReply>::?Pop@?$PKCOneShotQueue@USFileReply@@@@UAEPAUSFileReply@@PAU2@@Z
+
+LANDED 24 wins into src/compiled + tests + catalog + oracle
+  std_introsortloop_00a5aaa0
+  std_introsortloop_00a6bec0
+  stdvectorCANavQuadTreeNode_operator_00a80ee0
+  stdvector_Minsertoverflow_00a82380
+  stdvector_Minsertoverflow_00a82480
+  stdvector_Minsertoverflow_00aacda0
+  QuadricOptimiserInternalsCOptimisedVertex_InterpolateGroups_00ac8720
+  stdvector_Minsertoverflow_00ad83d0
+  std_introsortloop_00adc650
+  stdvector_Minsertoverflow_00adce60
+  std_introsortloop_00ae7be0
+  stdvector_Minsertoverflow_00af1e90
+  stdvector_Minsertoverflow_00b0f9f0
+  stdvector_Minsertoverflow_00b6c120
+  CEngineSceneGrid_GetTotalCellCount_00b91e70
+  CEngineLandscapeMemoryManager_CEngineLandscapeMemoryManager_00bd9ed0
+  stdvectorCVertexShaderConstant_operator_00bdb9f0
+  std_swap_00bed690
+  std_partialsort_00bef700
+  stdvectorCEngineTexturePaletteCPaletteEntry_Minsertoverflow_00bf94d0
+  CMorphableNode00c185b0_Slot00_00c186d0
+  PKCStaticQueueSFileRequest_Push_00c1aec0
+  PKCStaticQueueSFileRequest_Pop_00c1b370
+  PKCOneShotQueueSFileReply_Pop_00c1dd70

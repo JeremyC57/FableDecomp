@@ -1,0 +1,31 @@
+address	status	bytes	test	note
+00a5aaa0	RELOCATION_MATCH	242v242	PASS	std::__introsort_loop<float*,float,int,less<float>> (/Gr; __unguarded_partition inline)
+00a60410	DIFFER	262v245	-	grades 3; loop inversion
+00a6bec0	RELOCATION_MATCH	248v248	PASS	std::__introsort_loop over pair<unsigned long,unsigned long> (/Gr; struct pair with user copy ctor)
+00a80ee0	RELOCATION_MATCH	243v243	PASS	std::vector<CANavQuadTreeNode*>::operator= (twin of landed 0x007DC3F0)
+00a82380	RELOCATION_MATCH	252v252	PASS	vector<pair<unsigned __int64,bool>>::_M_insert_overflow (CNavSwitchableLeafNode::UniqueIDsOpen)
+00a82480	RELOCATION_MATCH	252v252	PASS	vector<pair<unsigned __int64,CANavQuadTreeNode*>>::_M_insert_overflow (CNavQuadTree::SwitchableNodes)
+00aacda0	RELOCATION_MATCH	255v255	PASS	vector<CActiveSoundInfo>::_M_insert_overflow (landed 0x007B6EF0 recipe)
+00ac7200	DIFFER	255v255	-	grades 2 + probe compiles; x87 dot term order
+00ac8720	RELOCATION_MATCH	251v251	PASS	COptimisedVertex::InterpolateGroups; 4 grades (same-TU insert_unique + _M_insert stand-in hoist the 0.0f store)
+00ad83d0	RELOCATION_MATCH	243v243	PASS	vector<COptimisedSubMesh>::_M_insert_overflow (same-TU noinline helpers)
+00adc650	RELOCATION_MATCH	247v247	PASS	std::__introsort_loop<CVertexGroupBlockOptimiser::CBlockInfo*> (/Gr)
+00adce60	RELOCATION_MATCH	243v243	PASS	vector<CVertexGroupBlock>::_M_insert_overflow
+00ae7be0	RELOCATION_MATCH	248v248	PASS	std::__introsort_loop over pair<long,unsigned long> (/Gr)
+00af1e90	RELOCATION_MATCH	241v241	PASS	vector<NParticleEngine::CParticleEmitterInfo>::_M_insert_overflow
+00b0f9f0	RELOCATION_MATCH	254v254	PASS	vector<pair<unsigned long,CParticleUpdateParamDesc<unsigned long,unsigned long>>>::_M_insert_overflow
+00b67e30	DIFFER	128v129	-	grades 3; bitfield word not value-forwarded
+00b6c120	RELOCATION_MATCH	252v252	PASS	vector<CVertexShader>::_M_insert_overflow
+00b91e70	RELOCATION_MATCH	129v129	PASS	CEngineSceneGrid::GetTotalCellCount (PDB donor order)
+00bd9ed0	RELOCATION_MATCH	245v245	PASS	CEngineLandscapeMemoryManager::~CEngineLandscapeMemoryManager (local model; 3x3 STLport list arrays)
+00bdb9f0	RELOCATION_MATCH	253v253	PASS	std::vector<CVertexShaderConstant>::operator= (twin of landed 0x00A81790)
+00bed690	RELOCATION_MATCH	250v250	PASS	std::swap<pair<long,CCompositeSurfaceInfo>> (/Gr)
+00bef700	RELOCATION_MATCH	249v249	PASS	std::__partial_sort over pair<pair<long,long>,CEngineTextureDecal> (/Gr)
+00bf94d0	RELOCATION_MATCH	249v249	PASS	vector<CEngineTexturePalette::CPaletteEntry>::_M_insert_overflow (/Gr; twin of landed 0x00624B90)
+00c0ffe0	DIFFER	256v253	-	grades 4; GetTickCount-minus-tick memory operand not folded
+00c11230	DIFFER	242v242	-	grades 4; return-0 / return-1 epilogue block placement
+00c186d0	RELOCATION_MATCH	193v193	PASS	CMorphableNode_00c185b0::Slot00 (libpk; twin of landed Slot01 0x00C187A0)
+00c1aec0	RELOCATION_MATCH	235v235	PASS	PKCStaticQueue<SFileRequest>::Push (libpk; unsigned count/capacity)
+00c1b370	RELOCATION_MATCH	227v227	PASS	PKCStaticQueue<SFileRequest>::Pop (libpk; returns item: slot 0 is T* Pop(T*))
+00c1ca20	DIFFER	140v140	-	grades 4; x87 operand order of the first row (zero-displacement X)
+00c1dd70	RELOCATION_MATCH	210v210	PASS	PKCOneShotQueue<SFileReply>::Pop (libpk; 2 grades: flag cleared before the copy)
