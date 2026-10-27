@@ -33456,3 +33456,12 @@ _kRadiansPerHz	012bed78	00c6c000
 ??0?$vector@GV?$allocator@G@std@@@std@@QAE@ABV01@@Z	00a87090	00f3f890
 ?_M_clear@?$vector@V?$CArray@G@@V?$allocator@V?$CArray@G@@@std@@@std@@IAEXXZ	00f3f820	00f3f890
 _s_NoGroupAnimFilter_01382438	01382438	01229a10
+??0CChangingStateComponent@NUISystem@@QAE@ABV01@@Z	0052cca0	0041b870
+??_7CSprite@NUISystem@@6BCActionParam@1@@	0122f5a4	0041b870
+??_7CSprite@NUISystem@@6BCObserver@1@@	0122f5ac	0041b870
+??_7CSprite@NUISystem@@6BCUIInterface@1@@	0122f5d4	0041b870
+??_7CXMVPlayerBuffers@@6B@	01230c34	0042db40
+??_7CControlsDef@@6B@	01230e84	00432180
+??$__copy@PAV?$CCountedPointer@$$CBVCInputTypeBase@@@@PAV1@H@std@@YIPAV?$CCountedPointer@$$CBVCInputTypeBase@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	00448300	00448df0
+??_7CAppearanceDef@@6B@	012354dc	0046a130
+??0?$vector@VCQuestObjectiveDesc@CHeroLogBook@@V?$allocator@VCQuestObjectiveDesc@CHeroLogBook@@@std@@@std@@QAE@ABV01@@Z	0047ba50	0047bde0

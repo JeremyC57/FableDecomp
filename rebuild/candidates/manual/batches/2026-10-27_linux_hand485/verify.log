@@ -1,0 +1,127 @@
+addr       parity           behav  name
+00404a60   RELOCATION_MATCH PASS   Callback_malloc
+00405db0   MATCH            PASS   IsSameButton
+00405f70   MATCH            PASS   operator*=
+004065f0   RELOCATION_MATCH PASS   GetManualSaveBaseFileName
+0040db10   RELOCATION_MATCH PASS   allocate
+0040dd10   MATCH            PASS   _Construct
+0040e3a0   MATCH            PASS   fill_n
+00415040   MATCH            PASS   CallCommandFunction
+00415a10   MATCH            PASS   fabs
+0041b870   WARN SHARED_HEADER_AVAILABLE CObserver
+0041b870   RELOCATION_MATCH PASS   CSprite
+0041cd13   MATCH            PASS   operator()
+00428c38   MATCH            PASS   CUnprovenPointer_00428c38
+0042db40   RELOCATION_MATCH PASS   CXMVPlayerBuffers
+0042fdb8   MATCH            PASS   _M_empty_initialize
+00432180   RELOCATION_MATCH PASS   Alloc
+004343f0   RELOCATION_MATCH PASS   Alloc
+00434660   RELOCATION_MATCH PASS   Alloc
+00437710   MATCH            PASS   SetMoralityAsDisplaying
+0043ce90   MATCH            PASS   Initialise
+0043dc10   MATCH            PASS   GFLimitUpper
+0043dfa0   RELOCATION_MATCH PASS   __copy_backward_ptrs
+0043f4f0   MATCH            PASS   fill_n
+004405f0   RELOCATION_MATCH PASS   insert
+00441b90   RELOCATION_MATCH PASS   ~CDrawStatUpdates
+00442190   RELOCATION_MATCH PASS   ~CDrawSpiritTargetingCursor
+00442e60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00448df0   WARN RELOC_NAME: ??$__copy@PAV?$CCountedPointer@$$CBVCInputTypeBase@@@@PAV1@H@std@@YIPAV?$CCountedPointer@$$CBVCInputTypeBase@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00448300 labelled '_global::Move_CountedPointer_00448300'
+00448df0   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@YIXPAV?$CCountedPointer@$$CBVCInputTypeBase@@@@0ABU__false_type@0@@Z -> 00448860 labelled 'std::_Destroy_range<std::allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_>_>'
+00448df0   RELOCATION_MATCH PASS   erase
+0044bfa0   RELOCATION_MATCH PASS   GetTC<const CTCCoopSpirit>
+0044f5f0   MATCH            PASS   fill_n
+0046a130   WARN SHARED_HEADER_AVAILABLE CResource
+0046a130   RELOCATION_MATCH PASS   CAppearanceDef
+0047b7b0   RELOCATION_MATCH PASS   _Vector_base
+0047b8a0   WARN RELOC_NAME: ??$__uninitialized_copy@PBVCQuestObjectiveDesc@CHeroLogBook@@PAV12@@std@@YIPAVCQuestObjectiveDesc@CHeroLogBook@@PBV12@0PAV12@ABU__false_type@0@@Z -> 0047b830 labelled 'std::_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>'
+0047b8a0   RELOCATION_MATCH PASS   _M_allocate_and_copy
+0047bde0   RELOCATION_MATCH PASS   CQuestDesc
+0047d478   RELOCATION_MATCH PASS   InGameMenu_ToggleLiveGui_0047d478
+0049ae70   RELOCATION_MATCH PASS   __copy_backward<CTexture*, CTexture*, int>
+0049ca20   MATCH            PASS   SetStartTime
+0049d8e0   RELOCATION_MATCH PASS   GetEventDispatchTableEntry
+004a96a0   MATCH            PASS   operator[]
+004acab0   RELOCATION_MATCH PASS   GetTC<CTCRegionDisplay>
+
+WINS: 39
+  00404a60 RELOCATION_MATCH NUISystem::CIME::?Callback_malloc@CIME@NUISystem@@SIPAXI@Z
+  00405db0 MATCH CActionInputControl::?IsSameButton@CActionInputControl@@QBE_NABV1@@Z
+  00405f70 MATCH CRGBFloatColour::??XCRGBFloatColour@@QAEAAV0@M@Z
+  004065f0 RELOCATION_MATCH CUserProfileManager::?GetManualSaveBaseFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+  0040db10 RELOCATION_MATCH std::allocator<CDateAndTime>::?allocate@?$allocator@VCDateAndTime@@@std@@QAEPAVCDateAndTime@@IPBX@Z
+  0040dd10 MATCH std::??$_Construct@VCUnprovenRecord16_0040dd10@@V1@@std@@YIXPAVCUnprovenRecord16_0040dd10@@ABV1@@Z
+  0040e3a0 MATCH std::??$fill_n@I@std@@YIPAEPAEIABE@Z
+  00415040 MATCH CConsoleClasslessCommand::?CallCommandFunction@CConsoleClasslessCommand@@UBEXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  00415a10 MATCH _global::?fabs@@YAMM@Z
+  0041b870 RELOCATION_MATCH NUISystem::CSprite::??0CSprite@NUISystem@@QAE@ABV01@@Z
+  0041cd13 MATCH CAnimFilterNoGroup::??RCAnimFilterNoGroup@@UBE_NABVCAnimationEntry@@@Z
+  00428c38 MATCH CUnprovenPointer_00428c38::??0CUnprovenPointer_00428c38@@QAE@ABV0@@Z
+  0042db40 RELOCATION_MATCH CXMVPlayerBuffers::??0CXMVPlayerBuffers@@QAE@XZ
+  0042fdb8 MATCH std::_Rb_tree::?_M_empty_initialize@?$_Rb_tree@UCUnprovenKey_0042fdb8@@UCUnprovenValue_0042fdb8@@UCUnprovenKeyOfValue_0042fdb8@@U?$less@UCUnprovenKey_0042fdb8@@@std@@V?$allocator@UCUnprovenValue_0042fdb8@@@5@@std@@AAEXXZ
+  00432180 RELOCATION_MATCH CControlsDef::?Alloc@CControlsDef@@SIPAVCDefClassBase@@XZ
+  004343f0 RELOCATION_MATCH CEngineDef::?Alloc@CEngineDef@@SIPAVCDefClassBase@@XZ
+  00434660 RELOCATION_MATCH CConfigOptionsDefaultsDef::?Alloc@CConfigOptionsDefaultsDef@@SIPAVCDefClassBase@@XZ
+  00437710 MATCH CPlayerGui::?SetMoralityAsDisplaying@CPlayerGui@@QAEXXZ
+  0043ce90 MATCH C3DVector::?Initialise@C3DVector@@QAEXMMM@Z
+  0043dc10 MATCH _global::??$GFLimitUpper@MM@@YIXAAMABM@Z
+  0043dfa0 RELOCATION_MATCH std::??$__copy_backward_ptrs@PAUCUnprovenPod_0043dfa0@@PAU1@@std@@YIPAUCUnprovenPod_0043dfa0@@PAU1@00ABU__true_type@0@@Z
+  0043f4f0 MATCH std::??$fill_n@PAUCUnprovenWord_0043f4f0@@IU1@@std@@YIPAUCUnprovenWord_0043f4f0@@PAU1@IABU1@@Z
+  004405f0 RELOCATION_MATCH std::list::?insert@?$list@UCUnprovenValue_004405f0@@V?$allocator@UCUnprovenValue_004405f0@@@std@@@std@@QAE?AU?$_List_iterator@UCUnprovenValue_004405f0@@U?$_Nonconst_traits@UCUnprovenValue_004405f0@@@std@@@2@U32@ABUCUnprovenValue_004405f0@@@Z
+  00441b90 RELOCATION_MATCH NPlayerGui::CDrawStatUpdates::??1CDrawStatUpdates@NPlayerGui@@QAE@XZ
+  00442190 RELOCATION_MATCH NPlayerGui::CDrawSpiritTargetingCursor::??1CDrawSpiritTargetingCursor@NPlayerGui@@QAE@XZ
+  00442e60 RELOCATION_MATCH NPlayerGui::CDrawHighlightingTargetingCursor::??_GCDrawHighlightingTargetingCursor@NPlayerGui@@QAEPAXI@Z
+  00448df0 RELOCATION_MATCH std::vector::?erase@?$vector@V?$CCountedPointer@$$CBVCInputTypeBase@@@@V?$allocator@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@@std@@QAEPAV?$CCountedPointer@$$CBVCInputTypeBase@@@@PAV3@0@Z
+  0044bfa0 RELOCATION_MATCH CThing::??$GetTC@$$CBVCTCCoopSpirit@@@CThing@@QAE_NPAPBVCTCCoopSpirit@@@Z
+  0044f5f0 MATCH std::??$fill_n@PAUCUnprovenWord_0044f5f0@@HU1@@std@@YIPAUCUnprovenWord_0044f5f0@@PAU1@HABU1@@Z
+  0046a130 RELOCATION_MATCH CAppearanceDef::??0CAppearanceDef@@QAE@XZ
+  0047b7b0 RELOCATION_MATCH std::_Vector_base<CHeroLogBook::CQuestObjectiveDesc>::??0?$_Vector_base@VCQuestObjectiveDesc@CHeroLogBook@@V?$allocator@VCQuestObjectiveDesc@CHeroLogBook@@@std@@@std@@QAE@IABV?$allocator@VCQuestObjectiveDesc@CHeroLogBook@@@1@@Z
+  0047b8a0 RELOCATION_MATCH std::vector<CHeroLogBook::CQuestObjectiveDesc>::?_M_allocate_and_copy@?$vector@VCQuestObjectiveDesc@CHeroLogBook@@V?$allocator@VCQuestObjectiveDesc@CHeroLogBook@@@std@@@std@@QAEPAVCQuestObjectiveDesc@CHeroLogBook@@IPBV34@0@Z
+  0047bde0 RELOCATION_MATCH CHeroLogBook::CQuestDesc::??0CQuestDesc@CHeroLogBook@@QAE@ABV01@@Z
+  0047d478 RELOCATION_MATCH _global::?InGameMenu_ToggleLiveGui_0047d478@@YAXXZ
+  0049ae70 RELOCATION_MATCH std::??$__copy_backward@PAVCTexture@@PAV1@H@std@@YIPAVCTexture@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+  0049ca20 MATCH CWorld::?SetStartTime@CWorld@@QAEXN@Z
+  0049d8e0 RELOCATION_MATCH CWorld::?GetEventDispatchTableEntry@CWorld@@IBEPBVCGameEventDispatch@@J@Z
+  004a96a0 MATCH std::vector<CUnprovenElement8_004a96a0>::??A?$vector@VCUnprovenElement8_004a96a0@@V?$allocator@VCUnprovenElement8_004a96a0@@@std@@@std@@QAEAAVCUnprovenElement8_004a96a0@@I@Z
+  004acab0 RELOCATION_MATCH CThing::??$GetTC@VCTCRegionDisplay@@@CThing@@QAE_NPAPAVCTCRegionDisplay@@@Z
+
+LANDED 39 wins into src/compiled + tests + catalog + oracle
+  NUISystemCIME_Callbackmalloc_00404a60
+  CActionInputControl_IsSameButton_00405db0
+  CRGBFloatColour_operator_00405f70
+  CUserProfileManager_GetManualSaveBaseFileName_004065f0
+  stdallocatorCDateAndTime_allocate_0040db10
+  std_Construct_0040dd10
+  std_filln_0040e3a0
+  CConsoleClasslessCommand_CallCommandFunction_00415040
+  global_fabs_00415a10
+  NUISystemCSprite_CSprite_0041b870
+  CAnimFilterNoGroup_operator_0041cd13
+  CUnprovenPointer00428c38_CUnprovenPointer00428c38_00428c38
+  CXMVPlayerBuffers_CXMVPlayerBuffers_0042db40
+  stdRbtree_Memptyinitialize_0042fdb8
+  CControlsDef_Alloc_00432180
+  CEngineDef_Alloc_004343f0
+  CConfigOptionsDefaultsDef_Alloc_00434660
+  CPlayerGui_SetMoralityAsDisplaying_00437710
+  C3DVector_Initialise_0043ce90
+  global_GFLimitUpper_0043dc10
+  std_copybackwardptrs_0043dfa0
+  std_filln_0043f4f0
+  stdlist_insert_004405f0
+  NPlayerGuiCDrawStatUpdates_CDrawStatUpdates_00441b90
+  NPlayerGuiCDrawSpiritTargetingCursor_CDrawSpiritTargetingCursor_00442190
+  NPlayerGuiCDrawHighlightingTargetingCursor_scalardeletingdestructor_00442e60
+  stdvector_erase_00448df0
+  CThing_GetTCconstCTCCoopSpirit_0044bfa0
+  std_filln_0044f5f0
+  CAppearanceDef_CAppearanceDef_0046a130
+  stdVectorbaseCHeroLogBookCQuestObjectiveDesc_Vectorbase_0047b7b0
+  stdvectorCHeroLogBookCQuestObjectiveDesc_Mallocateandcopy_0047b8a0
+  CHeroLogBookCQuestDesc_CQuestDesc_0047bde0
+  global_InGameMenuToggleLiveGui0047d478_0047d478
+  std_copybackwardCTextureCTextureint_0049ae70
+  CWorld_SetStartTime_0049ca20
+  CWorld_GetEventDispatchTableEntry_0049d8e0
+  stdvectorCUnprovenElement8004a96a0_operator_004a96a0
+  CThing_GetTCCTCRegionDisplay_004acab0

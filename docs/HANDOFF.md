@@ -5,10 +5,10 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **48,615 rows**: **48,583 of 57,267 known
-  functions (84.8%)**, or 42,686 of the original 49,568 (86.1%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
-  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents: family pass 7 (agent956) and single-function chunk 485 running;
-  chunks 486-490 queued (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **48,654 rows**: **48,622 of 57,267 known
+  functions (84.9%)**, or 42,690 of the original 49,568 (86.1%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
+  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents: family pass 7 (agent956) and single-function chunk 486 running
+  (chunk 485 landed 39/40); chunks 487-490 queued (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by
   default, 4035 via `--qfe`.
 
@@ -28,7 +28,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 
 ## Open (owner picks the order)
 1. Family pass 7 (agent956, 601 rows) running; pass 8 (979 rows) out to ChatGPT, re-verify on our lane before landing;
-   8,684 functions left in all.
+   8,645 functions left in all.
 2. One-address-one-name remainder: GetPItem return type (~340 rows), free/static stand-in callers (~3,490), CRT
    free-mock tests (59), LowerBound const overloads, CDataInputStream (227); still ~5,085 targets with >1 spelling.
 3. CRetailTree remainder: 882 kept rows + ~180 misnamed /Os tree functions (`treepass/KEPT.tsv`, `OS_FAMILY.tsv`).
