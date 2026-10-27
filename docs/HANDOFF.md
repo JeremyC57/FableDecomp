@@ -5,17 +5,17 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **48,654 rows**: **48,622 of 57,267 known
-  functions (84.9%)**, or 42,690 of the original 49,568 (86.1%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
-  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents: family pass 7 (agent956) and single-function chunk 486 running
-  (chunk 485 landed 39/40); chunks 487-490 queued (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **49,238 rows**: **49,206 of 57,267 known
+  functions (85.9%)**, or 43,209 of the original 49,568 (87.2%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
+  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents: single-function chunks 486 and 487 running (chunk 485 landed
+  39/40); chunks 488-490 queued (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by
   default, 4035 via `--qfe`.
 
 ## What changed 2026-10-25/26 (all regraded MATCH/RELOCATION_MATCH + test PASS; notes in `docs/journal/2026-10/`)
 - **STLport namespace:** `_STL` -> `std` everywhere (retail mangles `@std@@`).
 - **Landed-errors sweeps 1-3:** ~2,100 renames + ~510 source fixes (`*_sweep{1,2,3}_landed_errors.md`).
-- **Family passes 1-6:** 613 + 576 + 587 + 577 + 560 + 591 rows (batches `2026-10-24_linux_hand950..953`, `2026-10-27_linux_hand954..955`).
+- **Family passes 1-7:** 613 + 576 + 587 + 577 + 560 + 591 + 584 rows (batches `2026-10-24_linux_hand950..953`, `2026-10-27_linux_hand954..956`).
 - **Class-key pass:** every type uses retail's `class`/`struct` key from the PDB (`ghidra_out/pdb_class_keys.tsv`;
   951 headers, ~107k declarations; `2026-10-26_class_key_pass.md`).
 - **STL layout pass:** 714 engine headers re-laid out with STLport 4.6 container sizes, bases from Fable.exe RTTI
@@ -27,8 +27,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
   (`2026-10-26_one_address_one_name_pass.md`, `namepass/`).
 
 ## Open (owner picks the order)
-1. Family pass 7 (agent956, 601 rows) running; pass 8 (979 rows) out to ChatGPT, re-verify on our lane before landing;
-   8,645 functions left in all.
+1. Family pass 8 (979 rows) out to ChatGPT, re-verify on our lane before landing; 8,061 functions left in all.
 2. One-address-one-name remainder: GetPItem return type (~340 rows), free/static stand-in callers (~3,490), CRT
    free-mock tests (59), LowerBound const overloads, CDataInputStream (227); still ~5,085 targets with >1 spelling.
 3. CRetailTree remainder: 882 kept rows + ~180 misnamed /Os tree functions (`treepass/KEPT.tsv`, `OS_FAMILY.tsv`).

@@ -1,0 +1,19 @@
+// behaviour test for 0x00456344: the new block holds a copy of every element
+#include <cstdio>
+#include <cstdlib>
+struct E { unsigned int a, b; };
+static E* AllocateAndCopy(unsigned int n, const E* first, const E* last)
+{
+    E* r = n ? (E*)std::malloc(n * sizeof(E)) : 0; E* c = r;
+    for (; first != last; ++first, ++c) if (c) *c = *first;
+    return r;
+}
+int main()
+{
+    E v[3] = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
+    E* p = AllocateAndCopy(4, v, v + 3); E* z = AllocateAndCopy(0, v, v);
+    if (!p || p[0].a != 1 || p[2].b != 6 || z) { std::printf("00456344_TEST FAIL\n"); return 1; }
+    std::free(p);
+    std::printf("00456344_TEST PASS\n");
+    return 0;
+}
