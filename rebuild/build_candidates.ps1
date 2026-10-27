@@ -349849,6 +349849,280 @@ $catalog = @(
         TestSource = '00/c7/CVtable012bede0_ClearScratch_00c70bc0_test.cpp'
         PassPattern = '00c70bc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ca85a0'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_NewSegment_00ca85a0.cpp'
+        TestSource = '00/ca/CBasePin_NewSegment_00ca85a0_test.cpp'
+        PassPattern = '00ca85a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca86b0'
+        Module = 'CBaseOutputPin'
+        Source = '00/ca/CBaseOutputPin_InitAllocator_00ca86b0.cpp'
+        TestSource = '00/ca/CBaseOutputPin_InitAllocator_00ca86b0_test.cpp'
+        PassPattern = '00ca86b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca87c0'
+        Module = 'CBaseOutputPin'
+        Source = '00/ca/CBaseOutputPin_GetDeliveryBuffer_00ca87c0.cpp'
+        TestSource = '00/ca/CBaseOutputPin_GetDeliveryBuffer_00ca87c0_test.cpp'
+        PassPattern = '00ca87c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca87f0'
+        Module = 'CBaseOutputPin'
+        Source = '00/ca/CBaseOutputPin_Deliver_00ca87f0.cpp'
+        TestSource = '00/ca/CBaseOutputPin_Deliver_00ca87f0_test.cpp'
+        PassPattern = '00ca87f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8820'
+        Module = 'CBaseOutputPin'
+        Source = '00/ca/CBaseOutputPin_DeliverEndOfStream_00ca8820.cpp'
+        TestSource = '00/ca/CBaseOutputPin_DeliverEndOfStream_00ca8820_test.cpp'
+        PassPattern = '00ca8820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca88f0'
+        Module = 'CBaseOutputPin'
+        Source = '00/ca/CBaseOutputPin_DeliverNewSegment_00ca88f0.cpp'
+        TestSource = '00/ca/CBaseOutputPin_DeliverNewSegment_00ca88f0_test.cpp'
+        PassPattern = '00ca88f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca89a0'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_NonDelegatingQueryInterface_00ca89a0.cpp'
+        TestSource = '00/ca/CBaseInputPin_NonDelegatingQueryInterface_00ca89a0_test.cpp'
+        PassPattern = '00ca89a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8e70'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_Notify_00ca8e70.cpp'
+        TestSource = '00/ca/CBaseInputPin_Notify_00ca8e70_test.cpp'
+        PassPattern = '00ca8e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8ed0'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_CheckStreaming_00ca8ed0.cpp'
+        TestSource = '00/ca/CBaseInputPin_CheckStreaming_00ca8ed0_test.cpp'
+        PassPattern = '00ca8ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9000'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_QueryInterface_00ca9000.cpp'
+        TestSource = '00/ca/CMediaSample_QueryInterface_00ca9000_test.cpp'
+        PassPattern = '00ca9000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9100'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_GetPointer_00ca9100.cpp'
+        TestSource = '00/ca/CMediaSample_GetPointer_00ca9100_test.cpp'
+        PassPattern = '00ca9100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9130'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_GetTime_00ca9130.cpp'
+        TestSource = '00/ca/CMediaSample_GetTime_00ca9130_test.cpp'
+        PassPattern = '00ca9130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca91a0'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_SetTime_00ca91a0.cpp'
+        TestSource = '00/ca/CMediaSample_SetTime_00ca91a0_test.cpp'
+        PassPattern = '00ca91a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9210'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_GetMediaTime_00ca9210.cpp'
+        TestSource = '00/ca/CMediaSample_GetMediaTime_00ca9210_test.cpp'
+        PassPattern = '00ca9210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9250'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_SetMediaTime_00ca9250.cpp'
+        TestSource = '00/ca/CMediaSample_SetMediaTime_00ca9250_test.cpp'
+        PassPattern = '00ca9250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9290'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_IsSyncPoint_00ca9290.cpp'
+        TestSource = '00/ca/CMediaSample_IsSyncPoint_00ca9290_test.cpp'
+        PassPattern = '00ca9290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca92e0'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_IsDiscontinuity_00ca92e0.cpp'
+        TestSource = '00/ca/CMediaSample_IsDiscontinuity_00ca92e0_test.cpp'
+        PassPattern = '00ca92e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9330'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_IsPreroll_00ca9330.cpp'
+        TestSource = '00/ca/CMediaSample_IsPreroll_00ca9330_test.cpp'
+        PassPattern = '00ca9330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9390'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_SetActualDataLength_00ca9390.cpp'
+        TestSource = '00/ca/CMediaSample_SetActualDataLength_00ca9390_test.cpp'
+        PassPattern = '00ca9390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca93b0'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_GetMediaType_00ca93b0.cpp'
+        TestSource = '00/ca/CMediaSample_GetMediaType_00ca93b0_test.cpp'
+        PassPattern = '00ca93b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9700'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_AddRef_00ca9700.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_AddRef_00ca9700_test.cpp'
+        PassPattern = '00ca9700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9d70'
+        Module = 'CBaseAllocator'
+        Source = '00/ca/CBaseAllocator_NonDelegatingQueryInterface_00ca9d70.cpp'
+        TestSource = '00/ca/CBaseAllocator_NonDelegatingQueryInterface_00ca9d70_test.cpp'
+        PassPattern = '00ca9d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9fc0'
+        Module = 'CBaseAllocator'
+        Source = '00/ca/CBaseAllocator_SetNotify_00ca9fc0.cpp'
+        TestSource = '00/ca/CBaseAllocator_SetNotify_00ca9fc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca9fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caa770'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_Releaseadjustor148_00caa770.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_Releaseadjustor148_00caa770_test.cpp'
+        PassPattern = '00caa770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad290'
+        Module = 'CMediaPosition'
+        Source = '00/ca/CMediaPosition_GetTypeInfoCount_00cad290.cpp'
+        TestSource = '00/ca/CMediaPosition_GetTypeInfoCount_00cad290_test.cpp'
+        PassPattern = '00cad290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad2b0'
+        Module = 'CMediaPosition'
+        Source = '00/ca/CMediaPosition_GetTypeInfo_00cad2b0.cpp'
+        TestSource = '00/ca/CMediaPosition_GetTypeInfo_00cad2b0_test.cpp'
+        PassPattern = '00cad2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad300'
+        Module = 'CMediaPosition'
+        Source = '00/ca/CMediaPosition_Invoke_00cad300.cpp'
+        TestSource = '00/ca/CMediaPosition_Invoke_00cad300_test.cpp'
+        PassPattern = '00cad300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad380'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_NonDelegatingQueryInterface_00cad380.cpp'
+        TestSource = '00/ca/CPosPassThru_NonDelegatingQueryInterface_00cad380_test.cpp'
+        PassPattern = '00cad380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad680'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_ConvertTimeFormat_00cad680.cpp'
+        TestSource = '00/ca/CPosPassThru_ConvertTimeFormat_00cad680_test.cpp'
+        PassPattern = '00cad680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad6d0'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_SetPositions_00cad6d0.cpp'
+        TestSource = '00/ca/CPosPassThru_SetPositions_00cad6d0_test.cpp'
+        PassPattern = '00cad6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad720'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_GetPositions_00cad720.cpp'
+        TestSource = '00/ca/CPosPassThru_GetPositions_00cad720_test.cpp'
+        PassPattern = '00cad720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad790'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_GetAvailable_00cad790.cpp'
+        TestSource = '00/ca/CPosPassThru_GetAvailable_00cad790_test.cpp'
+        PassPattern = '00cad790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad810'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_SetRate_00cad810.cpp'
+        TestSource = '00/ca/CPosPassThru_SetRate_00cad810_test.cpp'
+        PassPattern = '00cad810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad970'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_putStopTime_00cad970.cpp'
+        TestSource = '00/ca/CPosPassThru_putStopTime_00cad970_test.cpp'
+        PassPattern = '00cad970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cada80'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_putRate_00cada80.cpp'
+        TestSource = '00/ca/CPosPassThru_putRate_00cada80_test.cpp'
+        PassPattern = '00cada80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caec30'
+        Module = 'CDeferredCommand'
+        Source = '00/ca/CDeferredCommand_NonDelegatingQueryInterface_00caec30.cpp'
+        TestSource = '00/ca/CDeferredCommand_NonDelegatingQueryInterface_00caec30_test.cpp'
+        PassPattern = '00caec30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caecc0'
+        Module = 'CDeferredCommand'
+        Source = '00/ca/CDeferredCommand_GetHResult_00caecc0.cpp'
+        TestSource = '00/ca/CDeferredCommand_GetHResult_00caecc0_test.cpp'
+        PassPattern = '00caecc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caecf0'
+        Module = 'CDeferredCommand'
+        Source = '00/ca/CDeferredCommand_Postpone_00caecf0.cpp'
+        TestSource = '00/ca/CDeferredCommand_Postpone_00caecf0_test.cpp'
+        PassPattern = '00caecf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caf160'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_GetPreroll_00caf160.cpp'
+        TestSource = '00/ca/CPosPassThru_GetPreroll_00caf160_test.cpp'
+        PassPattern = '00caf160_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

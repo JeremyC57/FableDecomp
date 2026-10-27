@@ -1,0 +1,162 @@
+addr       parity           behav  name
+00ca85a0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca85a0   MATCH            PASS   NewSegment
+00ca86b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca86b0   RELOCATION_MATCH PASS   InitAllocator
+00ca87c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca87c0   MATCH            PASS   GetDeliveryBuffer
+00ca87f0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca87f0   MATCH            PASS   Deliver
+00ca8820   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8820   MATCH            PASS   DeliverEndOfStream
+00ca88f0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca88f0   MATCH            PASS   DeliverNewSegment
+00ca89a0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca89a0   RELOCATION_MATCH PASS   NonDelegatingQueryInterface
+00ca8e70   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8e70   MATCH            PASS   Notify
+00ca8ed0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8ed0   MATCH            PASS   CheckStreaming
+00ca9000   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9000   RELOCATION_MATCH PASS   QueryInterface
+00ca9100   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9100   MATCH            PASS   GetPointer
+00ca9130   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9130   MATCH            PASS   GetTime
+00ca91a0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca91a0   MATCH            PASS   SetTime
+00ca9210   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9210   MATCH            PASS   GetMediaTime
+00ca9250   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9250   MATCH            PASS   SetMediaTime
+00ca9290   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9290   MATCH            PASS   IsSyncPoint
+00ca92e0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca92e0   MATCH            PASS   IsDiscontinuity
+00ca9330   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9330   MATCH            PASS   IsPreroll
+00ca9390   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9390   MATCH            PASS   SetActualDataLength
+00ca93b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca93b0   RELOCATION_MATCH PASS   GetMediaType
+00ca9700   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9700   MATCH            PASS   AddRef
+00ca9d70   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9d70   RELOCATION_MATCH PASS   NonDelegatingQueryInterface
+00ca9fc0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9fc0   RELOCATION_MATCH PASS   SetNotify
+00caa770   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caa770   WARN RELOC_NAME: ?Release@CDynamicOutputPin@@UAGKXZ -> 00ca9710 labelled 'Thunk_VirtualMethod_2'
+00caa770   RELOCATION_MATCH PASS   Release`adjustor{148}'
+00cad290   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad290   MATCH            PASS   GetTypeInfoCount
+00cad2b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad2b0   RELOCATION_MATCH PASS   GetTypeInfo
+00cad300   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad300   RELOCATION_MATCH PASS   Invoke
+00cad380   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad380   RELOCATION_MATCH PASS   NonDelegatingQueryInterface
+00cad680   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad680   RELOCATION_MATCH PASS   ConvertTimeFormat
+00cad6d0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad6d0   RELOCATION_MATCH PASS   SetPositions
+00cad720   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad720   RELOCATION_MATCH PASS   GetPositions
+00cad790   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad790   RELOCATION_MATCH PASS   GetAvailable
+00cad810   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad810   RELOCATION_MATCH PASS   SetRate
+00cad970   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cad970   RELOCATION_MATCH PASS   put_StopTime
+00cada80   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cada80   RELOCATION_MATCH PASS   put_Rate
+00caec30   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caec30   RELOCATION_MATCH PASS   NonDelegatingQueryInterface
+00caecc0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caecc0   MATCH            PASS   GetHResult
+00caecf0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caecf0   RELOCATION_MATCH PASS   Postpone
+00caf160   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caf160   RELOCATION_MATCH PASS   GetPreroll
+
+WINS: 39
+  00ca85a0 MATCH CBasePin::?NewSegment@CBasePin
+  00ca86b0 RELOCATION_MATCH CBaseOutputPin::?InitAllocator@CBaseOutputPin
+  00ca87c0 MATCH CBaseOutputPin::?GetDeliveryBuffer@CBaseOutputPin
+  00ca87f0 MATCH CBaseOutputPin::?Deliver@CBaseOutputPin
+  00ca8820 MATCH CBaseOutputPin::?DeliverEndOfStream@CBaseOutputPin
+  00ca88f0 MATCH CBaseOutputPin::?DeliverNewSegment@CBaseOutputPin
+  00ca89a0 RELOCATION_MATCH CBaseInputPin::?NonDelegatingQueryInterface@CBaseInputPin
+  00ca8e70 MATCH CBaseInputPin::?Notify@CBaseInputPin
+  00ca8ed0 MATCH CBaseInputPin::?CheckStreaming@CBaseInputPin
+  00ca9000 RELOCATION_MATCH CMediaSample::?QueryInterface@CMediaSample
+  00ca9100 MATCH CMediaSample::?GetPointer@CMediaSample
+  00ca9130 MATCH CMediaSample::?GetTime@CMediaSample
+  00ca91a0 MATCH CMediaSample::?SetTime@CMediaSample
+  00ca9210 MATCH CMediaSample::?GetMediaTime@CMediaSample
+  00ca9250 MATCH CMediaSample::?SetMediaTime@CMediaSample
+  00ca9290 MATCH CMediaSample::?IsSyncPoint@CMediaSample
+  00ca92e0 MATCH CMediaSample::?IsDiscontinuity@CMediaSample
+  00ca9330 MATCH CMediaSample::?IsPreroll@CMediaSample
+  00ca9390 MATCH CMediaSample::?SetActualDataLength@CMediaSample
+  00ca93b0 RELOCATION_MATCH CMediaSample::?GetMediaType@CMediaSample
+  00ca9700 MATCH CDynamicOutputPin::?AddRef@CDynamicOutputPin
+  00ca9d70 RELOCATION_MATCH CBaseAllocator::?NonDelegatingQueryInterface@CBaseAllocator
+  00ca9fc0 RELOCATION_MATCH CBaseAllocator::?SetNotify@CBaseAllocator
+  00caa770 RELOCATION_MATCH CDynamicOutputPin::?Release@CDynamicOutputPin@@WJE@AGKXZ
+  00cad290 MATCH CMediaPosition::?GetTypeInfoCount@CMediaPosition
+  00cad2b0 RELOCATION_MATCH CMediaPosition::?GetTypeInfo@CMediaPosition
+  00cad300 RELOCATION_MATCH CMediaPosition::?Invoke@CMediaPosition
+  00cad380 RELOCATION_MATCH CPosPassThru::?NonDelegatingQueryInterface@CPosPassThru
+  00cad680 RELOCATION_MATCH CPosPassThru::?ConvertTimeFormat@CPosPassThru
+  00cad6d0 RELOCATION_MATCH CPosPassThru::?SetPositions@CPosPassThru
+  00cad720 RELOCATION_MATCH CPosPassThru::?GetPositions@CPosPassThru
+  00cad790 RELOCATION_MATCH CPosPassThru::?GetAvailable@CPosPassThru
+  00cad810 RELOCATION_MATCH CPosPassThru::?SetRate@CPosPassThru
+  00cad970 RELOCATION_MATCH CPosPassThru::?put_StopTime@CPosPassThru
+  00cada80 RELOCATION_MATCH CPosPassThru::?put_Rate@CPosPassThru
+  00caec30 RELOCATION_MATCH CDeferredCommand::?NonDelegatingQueryInterface@CDeferredCommand
+  00caecc0 MATCH CDeferredCommand::?GetHResult@CDeferredCommand
+  00caecf0 RELOCATION_MATCH CDeferredCommand::?Postpone@CDeferredCommand
+  00caf160 RELOCATION_MATCH CPosPassThru::?GetPreroll@CPosPassThru
+
+LANDED 39 wins into src/compiled + tests + catalog + oracle
+  CBasePin_NewSegment_00ca85a0
+  CBaseOutputPin_InitAllocator_00ca86b0
+  CBaseOutputPin_GetDeliveryBuffer_00ca87c0
+  CBaseOutputPin_Deliver_00ca87f0
+  CBaseOutputPin_DeliverEndOfStream_00ca8820
+  CBaseOutputPin_DeliverNewSegment_00ca88f0
+  CBaseInputPin_NonDelegatingQueryInterface_00ca89a0
+  CBaseInputPin_Notify_00ca8e70
+  CBaseInputPin_CheckStreaming_00ca8ed0
+  CMediaSample_QueryInterface_00ca9000
+  CMediaSample_GetPointer_00ca9100
+  CMediaSample_GetTime_00ca9130
+  CMediaSample_SetTime_00ca91a0
+  CMediaSample_GetMediaTime_00ca9210
+  CMediaSample_SetMediaTime_00ca9250
+  CMediaSample_IsSyncPoint_00ca9290
+  CMediaSample_IsDiscontinuity_00ca92e0
+  CMediaSample_IsPreroll_00ca9330
+  CMediaSample_SetActualDataLength_00ca9390
+  CMediaSample_GetMediaType_00ca93b0
+  CDynamicOutputPin_AddRef_00ca9700
+  CBaseAllocator_NonDelegatingQueryInterface_00ca9d70
+  CBaseAllocator_SetNotify_00ca9fc0
+  CDynamicOutputPin_Releaseadjustor148_00caa770
+  CMediaPosition_GetTypeInfoCount_00cad290
+  CMediaPosition_GetTypeInfo_00cad2b0
+  CMediaPosition_Invoke_00cad300
+  CPosPassThru_NonDelegatingQueryInterface_00cad380
+  CPosPassThru_ConvertTimeFormat_00cad680
+  CPosPassThru_SetPositions_00cad6d0
+  CPosPassThru_GetPositions_00cad720
+  CPosPassThru_GetAvailable_00cad790
+  CPosPassThru_SetRate_00cad810
+  CPosPassThru_putStopTime_00cad970
+  CPosPassThru_putRate_00cada80
+  CDeferredCommand_NonDelegatingQueryInterface_00caec30
+  CDeferredCommand_GetHResult_00caecc0
+  CDeferredCommand_Postpone_00caecf0
+  CPosPassThru_GetPreroll_00caf160

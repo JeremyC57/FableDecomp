@@ -33958,3 +33958,14 @@ __imp__waveOutGetNumDevs@0	01440498	00c5d5f0
 ?UpdateGainRamp@CVtable_012bedb8@@QAEX_N@Z	00c6ebe0	00c6ec80
 ?DSPROPSETID_EAX30_ListenerProperties@@3UGUID@@B	012bee90	00c71820
 ?SourcePause@CAudioContext@@QAEXK@Z	00c72560	00c727b0
+_CLSID_MemoryAllocator	012aac24	00ca86b0
+_IID_IMemAllocator	012a9a54	00ca86b0
+?NonDelegatingQueryInterface@CBasePin@@UAGJABU_GUID@@PAPAX@Z	00ca7ce0	00ca89a0
+_IID_IMediaSample	012a9a74	00ca9000
+_IID_IMediaSample2	012a9a64	00ca9000
+_IID_IMemAllocatorCallbackTemp	012a9a44	00ca9d70
+?Release@CDynamicOutputPin@@UAGKXZ	00ca9710	00caa770
+?GetTypeInfo@CBaseDispatch@@QAGJABU_GUID@@IKPAPAUITypeInfo@@@Z	00cacd90	00cad2b0
+_IID_IDeferredCommand	012aa014	00caec30
+?CheckTime@CCmdQueue@@QAEHVCRefTime@@H@Z	00cae170	00caecf0
+??_9@$BEM@AG	00caef50	00caf160
