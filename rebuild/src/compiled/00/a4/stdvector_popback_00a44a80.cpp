@@ -1,0 +1,34 @@
+// std::vector::pop_back() -- drop the top entry of the scheduler's process stack (--finish; the pointer element needs no destructor)
+// Leaf: ?pop_back@?$vector@PAVCASuspendableProcess@@V?$allocator@PAVCASuspendableProcess@@@std@@@std@@QAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A44A80, 5 bytes. std::vector<CASuspendableProcess*>::pop_back(), the out-of-line
+//   COMDAT the unoptimised CSuspendableProcessMicrothread::RunSuspendableProcess (0x00A44880) calls right after back()
+//   (0x00A44A70) on g_ProcessStack (0x013D2828). STLport 4.6: `--_M_finish; _Destroy(_M_finish);` -- the pseudo
+//   destructor of a pointer emits nothing, leaving `add dword ptr [ecx+4],-4`.
+// Layout: STLport 4.6 vector, 12 bytes (_M_start +0, _M_finish +4, _M_end_of_storage +8).
+class CASuspendableProcess;
+
+namespace std {
+
+template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+
+template <class _Tp> class allocator { };
+
+template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {   // the end-of-storage pointer
+    _Value _M_data;
+};
+
+template <class _Tp, class _Alloc> class _Vector_base {
+public:
+    _Tp* _M_start;                                          // +0x00
+    _Tp* _M_finish;                                         // +0x04
+    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage; // +0x08
+};
+
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _Vector_base<_Tp, _Alloc> {
+public:
+    void pop_back() { --this->_M_finish; _Destroy(this->_M_finish); }
+};
+
+}   // namespace std
+
+template void std::vector<CASuspendableProcess*, std::allocator<CASuspendableProcess*> >::pop_back();

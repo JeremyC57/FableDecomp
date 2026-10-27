@@ -1,0 +1,10 @@
+address	name	evidence
+00b80780	CEngineClothSimulation2DAnimatedMesh::CalcAndSetRunState	proven per batch 2026-10-27_linux_hand493 NOTES.md (chunk 493)
+00b80930	CEngineClothSimulationMeshBase::IsRunning	proven per batch 2026-10-27_linux_hand493 NOTES.md (chunk 493)
+00b8d280	CEngineOcclusionManager::GetFlareTestResult	proven per batch 2026-10-27_linux_hand493 NOTES.md (chunk 493)
+00b8d2f0	CEngineOcclusionManager::GetPrevFrameFlareTestResult	proven per batch 2026-10-27_linux_hand493 NOTES.md (chunk 493)
+00b8f180	std::__lower_bound<pair<ulong,ulong>*,ulong,MapperPred,int>	proven per batch 2026-10-27_linux_hand493 NOTES.md (chunk 493)
+00bf2e00	CEngineTreeFilerBase::CheckStructure	proven per batch 2026-10-27_linux_hand493 NOTES.md (chunk 493)
+00c03eb0	zlib 1.2.1 z_compressBound	proven per batch 2026-10-27_linux_hand493 NOTES.md (chunk 493)
+00c08530	LZO 1.08 lzo_assert	proven per batch 2026-10-27_linux_hand493 NOTES.md (chunk 493)
+00c109a0	std::logic_error::what	proven per batch 2026-10-27_linux_hand493 NOTES.md (chunk 493)

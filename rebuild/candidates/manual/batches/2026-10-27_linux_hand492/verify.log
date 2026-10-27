@@ -1,0 +1,124 @@
+addr       parity           behav  name
+00a44930   MATCH            PASS   empty
+00a44a80   MATCH            PASS   pop_back
+00a44c90   MATCH            PASS   CompareCRCs
+00a4be80   MATCH            PASS   GetDuration
+00a553f0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00a553f0   MATCH            PASS   CanRelocateData
+00a629c0   MATCH            PASS   CPackedUIntArray
+00a6be40   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CIVCountedPointer@VCManagedTextureData@@@@@std@@YIXPAV?$CIVCountedPointer@VCManagedTextureData@@@@0ABU__false_type@0@@Z -> 00a6b700 labelled '_global::Destroy_00a6b700'
+00a6be40   RELOCATION_MATCH PASS   DeallocateMemory
+00a6ca00   RELOCATION_MATCH PASS   GetDummyObjectPositionStatic
+00a6f2f0   RELOCATION_MATCH PASS   LowerBound
+00a75a70   MATCH            PASS   GetRegionID
+00a76280   MATCH            PASS   AddToIndexTable
+00a76520   MATCH            PASS   HasNeighbours
+00a80100   RELOCATION_MATCH PASS   __pop_heap_aux
+00a8ece0   MATCH            PASS   GetTotalTriangleCount
+00a8ed30   MATCH            PASS   GetTotalIndexCount
+00a90510   RELOCATION_MATCH PASS   AddMirroredTextureVertexIndex
+00a96270   MATCH            PASS   GFExplicitNew
+00a9def0   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo
+00a9def0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00a9def0   RELOCATION_MATCH PASS   IsAnimationLoaded
+00a9df50   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo
+00a9df50   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00a9df50   RELOCATION_MATCH PASS   BeginLoadingAnimation
+00aa7550   RELOCATION_MATCH PASS   CChunkedFileSaver
+00abe910   RELOCATION_MATCH PASS   SetStaticCast
+00ac3910   RELOCATION_MATCH PASS   GFPSizeof
+00ac4f30   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00ac4f30   MATCH            PASS   GetList
+00ac6b40   MATCH            PASS   CompareWeight
+00ad01f0   MATCH            PASS   _S_minimum
+00addf70   RELOCATION_MATCH PASS   AccurateBuildFromPoints
+00adeea0   RELOCATION_MATCH PASS   BuildFromPoints
+00ae5730   MATCH            PASS   __uninitialized_copy
+00ae60d0   RELOCATION_MATCH PASS   LowerBound
+00af2ab0   MATCH            PASS   Initialise
+00af7250   RELOCATION_MATCH PASS   erase
+00b15af0   MATCH            PASS   EnterTimelineEnd
+00b1ae60   MATCH            PASS   EnterTimelineEnd
+00b2e900   MATCH            PASS   _M_find
+00b5ebf0   RELOCATION_MATCH PASS   SetConfiguration
+00b676f0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer
+00b676f0   RELOCATION_MATCH PASS   Clear
+00b806d0   RELOCATION_MATCH PASS   GetMaximumDistanceError
+
+WINS: 37
+  00a44930 MATCH std::vector::?empty@?$vector@PAVCASuspendableProcess@@V?$allocator@PAVCASuspendableProcess@@@std@@@std@@QBE_NXZ
+  00a44a80 MATCH std::vector::?pop_back@?$vector@PAVCASuspendableProcess@@V?$allocator@PAVCASuspendableProcess@@@std@@@std@@QAEXXZ
+  00a44c90 MATCH C3DSkeletalBoneMorph::?CompareCRCs@C3DSkeletalBoneMorph@@SI_NABV1@0@Z
+  00a4be80 MATCH C3DAnimationSequenceData::?GetDuration@C3DAnimationSequenceData@@QBEM_N@Z
+  00a553f0 MATCH C3DAnimation2::?CanRelocateData@C3DAnimation2@@UBE_NJ@Z
+  00a629c0 MATCH CPackedUIntArray::??0CPackedUIntArray@@QAE@XZ
+  00a6be40 RELOCATION_MATCH CArray::?DeallocateMemory@?$CArray@V?$CIVCountedPointer@VCManagedTextureData@@@@@@QAEXXZ
+  00a6ca00 RELOCATION_MATCH CPhysicsMesh::?GetDummyObjectPositionStatic@CPhysicsMesh@@QBEABVC3DDummyObject@@ABVCCharString@@J@Z
+  00a6f2f0 RELOCATION_MATCH CVectorMap::?LowerBound@?$CVectorMap@VCCharString@@VC3DDummyObject@@V?$CCompareString@VC3DDummyObject@@@@@@QBEPBU?$pair@VCCharString@@VC3DDummyObject@@@std@@ABVCCharString@@@Z
+  00a75a70 MATCH CNavNavigableLeafNode::?GetRegionID@CNavNavigableLeafNode@@UBEJXZ
+  00a76280 MATCH CNavBlockedQuadTreeNode::?AddToIndexTable@CNavBlockedQuadTreeNode@@MBEXAAJAAV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@@Z
+  00a76520 MATCH CNavNavigableLeafNode::?HasNeighbours@CNavNavigableLeafNode@@UBE_NXZ
+  00a80100 RELOCATION_MATCH std::??$__pop_heap_aux@PAU?$pair@_K_N@std@@U12@V?$CKeyPairCompareLess@_K_N@@@std@@YIXPAU?$pair@_K_N@0@00V?$CKeyPairCompareLess@_K_N@@@Z
+  00a8ece0 MATCH N3DPrimitive::CDeviceIndependent::?GetTotalTriangleCount@CDeviceIndependent@N3DPrimitive@@QBEKXZ
+  00a8ed30 MATCH N3DPrimitive::CDeviceIndependent::?GetTotalIndexCount@CDeviceIndependent@N3DPrimitive@@QBEKXZ
+  00a90510 RELOCATION_MATCH C3DPrimitive2::?AddMirroredTextureVertexIndex@C3DPrimitive2@@AAEXPBKK@Z
+  00a96270 MATCH _global::??$GFExplicitNew@VCAnimatedBlock@N3DPrimitive@@@@YIXPAVCAnimatedBlock@N3DPrimitive@@K@Z
+  00a9def0 RELOCATION_MATCH C3DAnimationManager::?IsAnimationLoaded@C3DAnimationManager@@QBE_NABVC3DAnimationStateBase@@@Z
+  00a9df50 RELOCATION_MATCH C3DAnimationManager::?BeginLoadingAnimation@C3DAnimationManager@@QAEXABVC3DAnimationStateBase@@@Z
+  00aa7550 RELOCATION_MATCH CChunkedFileSaver::??0CChunkedFileSaver@@QAE@PBD@Z
+  00abe910 RELOCATION_MATCH CCountedPointer::??$SetStaticCast@VCUnprovenSource_00abe910@@@?$CCountedPointer@VCUnprovenTarget_00abe910@@@@QAEXABV?$CCountedPointer@VCUnprovenSource_00abe910@@@@@Z
+  00ac3910 RELOCATION_MATCH _global::??$GFPSizeof@QAVC3DMeshPartitionElement@@@@YIKABQAVC3DMeshPartitionElement@@@Z
+  00ac4f30 MATCH CMirroredTextureHighlightsChunk::?GetList@CMirroredTextureHighlightsChunk@@QAEPAKXZ
+  00ac6b40 MATCH QuadricOptimiserInternals::COptimisedVertex::CGroup::?CompareWeight@CGroup@COptimisedVertex@QuadricOptimiserInternals@@SI_NABV123@0@Z
+  00ad01f0 MATCH std::_Rb_tree_node_base::?_S_minimum@_Rb_tree_node_base@std@@SAPAU12@PAU12@@Z
+  00addf70 RELOCATION_MATCH C3DBoundingSphere::?AccurateBuildFromPoints@C3DBoundingSphere@@QAEXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@M@Z
+  00adeea0 RELOCATION_MATCH C3DBoundingBox::?BuildFromPoints@C3DBoundingBox@@QAEXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z
+  00ae5730 MATCH std::??$__uninitialized_copy@PBUCUnprovenElement_00ae5730@@PAU1@@std@@YIPAUCUnprovenElement_00ae5730@@PBU1@0PAU1@ABU__false_type@0@@Z
+  00ae60d0 RELOCATION_MATCH CVectorMap::?LowerBound@?$CVectorMap@VCCharString@@KV?$CKeyPairCompareLess@VCCharString@@K@@@@QBEPBU?$pair@VCCharString@@K@std@@ABVCCharString@@@Z
+  00af2ab0 MATCH NParticleEngine::CPSCBase::?Initialise@CPSCBase@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+  00af7250 RELOCATION_MATCH std::vector<std::pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance> >::?erase@?$vector@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@V?$allocator@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@@2@@std@@QAEPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@2@PAU32@@Z
+  00b15af0 MATCH NParticleEngine::CPSCEmitterGeneric::?EnterTimelineEnd@CPSCEmitterGeneric@NParticleEngine@@UAEXXZ
+  00b1ae60 MATCH NParticleEngine::CPSCLight::?EnterTimelineEnd@CPSCLight@NParticleEngine@@UAEXXZ
+  00b2e900 MATCH std::_Rb_tree<CUnprovenKey_00b2e900, CUnprovenValue_00b2e900, CUnprovenKeyOfValue_00b2e900, std::less<CUnprovenKey_00b2e900>, std::allocator<CUnprovenValue_00b2e900>>::?_M_find@?$_Rb_tree@UCUnprovenKey_00b2e900@@UCUnprovenValue_00b2e900@@UCUnprovenKeyOfValue_00b2e900@@U?$less@UCUnprovenKey_00b2e900@@@std@@V?$allocator@UCUnprovenValue_00b2e900@@@5@@std@@ABEPAU?$_Rb_tree_node@UCUnprovenValue_00b2e900@@@2@ABUCUnprovenKey_00b2e900@@@Z
+  00b5ebf0 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::?SetConfiguration@CEngineScreenEffectGlowRenderer@@QAEXH@Z
+  00b676f0 RELOCATION_MATCH CEngineLandscapeRenderer::?Clear@CEngineLandscapeRenderer@@QAEXXZ
+  00b806d0 RELOCATION_MATCH CEngineSimulationBase::?GetMaximumDistanceError@CEngineSimulationBase@@UBEMXZ
+
+LANDED 37 wins into src/compiled + tests + catalog + oracle
+  stdvector_empty_00a44930
+  stdvector_popback_00a44a80
+  C3DSkeletalBoneMorph_CompareCRCs_00a44c90
+  C3DAnimationSequenceData_GetDuration_00a4be80
+  C3DAnimation2_CanRelocateData_00a553f0
+  CPackedUIntArray_CPackedUIntArray_00a629c0
+  CArray_DeallocateMemory_00a6be40
+  CPhysicsMesh_GetDummyObjectPositionStatic_00a6ca00
+  CVectorMap_LowerBound_00a6f2f0
+  CNavNavigableLeafNode_GetRegionID_00a75a70
+  CNavBlockedQuadTreeNode_AddToIndexTable_00a76280
+  CNavNavigableLeafNode_HasNeighbours_00a76520
+  std_popheapaux_00a80100
+  N3DPrimitiveCDeviceIndependent_GetTotalTriangleCount_00a8ece0
+  N3DPrimitiveCDeviceIndependent_GetTotalIndexCount_00a8ed30
+  C3DPrimitive2_AddMirroredTextureVertexIndex_00a90510
+  global_GFExplicitNew_00a96270
+  C3DAnimationManager_IsAnimationLoaded_00a9def0
+  C3DAnimationManager_BeginLoadingAnimation_00a9df50
+  CChunkedFileSaver_CChunkedFileSaver_00aa7550
+  CCountedPointer_SetStaticCast_00abe910
+  global_GFPSizeof_00ac3910
+  CMirroredTextureHighlightsChunk_GetList_00ac4f30
+  QuadricOptimiserInternalsCOptimisedVertexCGroup_CompareWeight_00ac6b40
+  stdRbtreenodebase_Sminimum_00ad01f0
+  C3DBoundingSphere_AccurateBuildFromPoints_00addf70
+  C3DBoundingBox_BuildFromPoints_00adeea0
+  std_uninitializedcopy_00ae5730
+  CVectorMap_LowerBound_00ae60d0
+  NParticleEngineCPSCBase_Initialise_00af2ab0
+  stdvectorstdpairNParticleEngineEPSCTypeNParticleEngineCComponentInstance_erase_00af7250
+  NParticleEngineCPSCEmitterGeneric_EnterTimelineEnd_00b15af0
+  NParticleEngineCPSCLight_EnterTimelineEnd_00b1ae60
+  stdRbtreeCUnprovenKey00b2e900CUnprovenValue00b2e900CUnprovenKeyOfValue00b2e900st_Mfind_00b2e900
+  CEngineScreenEffectGlowRenderer_SetConfiguration_00b5ebf0
+  CEngineLandscapeRenderer_Clear_00b676f0
+  CEngineSimulationBase_GetMaximumDistanceError_00b806d0

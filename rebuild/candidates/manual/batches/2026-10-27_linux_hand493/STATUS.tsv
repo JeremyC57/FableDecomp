@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b80780	flags=	10v10	PASS	CEngineClothSimulation2DAnimatedMesh::CalcAndSetRunState (Ego_r); 1 grade
+00b80930	flags=	10v10	PASS	CEngineClothSimulationMeshBase::IsRunning (Ego_r); `empty() ? false : true` for bare setcc; 2 grades
+00b8d280	flags=	108v108	PASS	CEngineOcclusionManager::GetFlareTestResult (Ego_r); donor-include header; 1 grade
+00b8d2f0	flags=	108v108	PASS	CEngineOcclusionManager::GetPrevFrameFlareTestResult (Ego_r); 1 grade
+00b8f180	flags=	54v54	PASS	std::__lower_bound<pair<ulong,ulong>*,ulong,MapperPred,int> (Ego_r Dinkumware spelling); 1 grade
+00bca080	flags=	14v14	PASS	CArray<16-byte>::operator[] COMDAT, descriptive; 1 grade
+00bce900	flags=	50v50	PASS	CEnginePrimitiveManagerAnimatedMeshesBase::ApplyPalSkinVertexShaderSpotShadow (Ego_r AAEXKK, +0x2fc selector); 2 grades (2nd only swapped in engine/CVertexShader.h)
+00bdd6b0	flags=	29v29	PASS	CLocalDetailObjectCollectionType default ctor (RTTI vtable 0x012A7D94 + Ego_r ??0 QAE@XZ); label was CXMVPlayerBuffers; 1 grade
+00be8b00	flags=	9v9	PASS	CArray<4-byte>::size COMDAT, descriptive; 1 grade
+00bf2980	DIFFER	113v96	-	CEngineTreeFilerBase::GetTreeMemSize (Ego_r); VC7.1 strength-reduces the child-table walk, retail indexes it; 4 grades
+00bf2e00	flags=	69v69	PASS	CEngineTreeFilerBase::CheckStructure (Ego_r); ChildListHead read once by CSE, no named head local; 3 grades
+00bfeea9	SKIP	-v46	-	CRT SEH filter fragment on its parent's ebp frame, not a function
+00c039f0	DIFFER	92v82	-	zlib 1.2.1 static syncsearch: LTCG register args (edi/esi), lane gap; 1 grade
+00c03eb0	flags=	21v21	PASS	zlib 1.2.1 z_compressBound; 1 grade
+00c08530	flags=	12v12	PASS	LZO 1.08 lzo_assert; 1 grade
+00c08880	flags=	11v11	PASS	CString::CString() (m_pchData = g_pchNil); label was Object_SetVtable; 1 grade
+00c088b0	SKIP	-v28	-	two functions in one row (thunk + int3 padding + 0x00C088C0); catalog must re-split
+00c0b880	flags=	20v20	PASS	CRampedParam::SetTarget(float,float), byte twin of landed 0x00C3A950; 1 grade
+00c0bb70	flags=	82v82	PASS	CString::Find(char,int) MFC text; 1 grade
+00c0bc50	flags=	112v112	PASS	CString::Find(const char*,int) MFC text; 1 grade
+00c0bf9b	SKIP	-v67	-	mid-routine fragment: flags live at entry, pops an ebx it never pushed
+00c0dd30	flags=	15v15	PASS	CString::Append(char) = ConcatInPlace(1,&ch); 1 grade
+00c0e6b0	flags=	47v47	PASS	CScriptHost slot 4 GetQueuedEvent (descriptive); 1 grade
+00c0e970	flags=	10v10	PASS	CScriptHost slot 0 Post: m_pQueue->Process(this) (descriptive); 1 grade
+00c0efe0	flags=	22v22	PASS	nth-key visitor slot 0 (vtable 0x012B2240, descriptive); 2 grades (2nd only retyped void* to void**)
+00c109a0	flags=	14v14	PASS	std::logic_error::what (RTTI vtable 0x012B263C); hand Dinkumware model; 1 grade
+00c10db0	flags=	19v19	PASS	vtable 0x012B2748 slot 10: int !world->Paused (descriptive); 2 grades (2nd only renamed the lib world class)
+00c155f0	flags=	33v33	PASS	comparator slot 1 Less (vtable 0x012B28D8, descriptive); 1 grade
+00c15620	flags=	23v23	PASS	comparator slot 2 EqualToKey (descriptive); 1 grade
+00c15640	flags=	22v22	PASS	comparator slot 3 LessThanKey (descriptive); 1 grade
+00c16700	flags=	17v17	PASS	malloc allocator slot 1 (vtable 0x012B2AB8 : LHA::CAllocator, descriptive); 1 grade
+00c16720	flags=	15v15	PASS	malloc allocator slot 2 Free (descriptive); 1 grade
+00c16750	flags=	13v13	PASS	CDebugBreak ctor (DebugBreak import); label was list<CMessageEvent> ctor; 1 grade
+00c19010	flags=	103v103	PASS	red-black tree slot 8 FindByKey (descriptive); 1 grade
+00c19080	flags=	102v102	PASS	red-black tree slot 7 Find (descriptive); 1 grade
+00c19110	flags=	17v17	PASS	red-black tree slot 13 ForEach -> VisitInOrder (descriptive); 1 grade
+00c19130	flags=	27v27	PASS	red-black tree slot 10 GetCount -> CountNodes (descriptive); 1 grade
+00c19150	flags=	39v39	PASS	red-black tree slot 11 GetFirst; found-path written first; 2 grades
+00c19180	flags=	40v40	PASS	red-black tree slot 12 GetLast; found-path written first; 2 grades
+00c19970	flags=	45v45	PASS	string-key hasher slot 0 (vtable 0x012B2F98): Jenkins hash of strlen bytes (descriptive); 1 grade

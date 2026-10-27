@@ -5,10 +5,10 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **49,465 rows**: **49,433 of 57,267 known
-  functions (86.3%)**, or 43,259 of the original 49,568 (87.3%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
-  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): single-function chunks 492 and 493 running
-  (485-491 landed 266 of 280); chunks 494-496 queued (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **49,537 rows**: **49,505 of 57,267 known
+  functions (86.4%)**, or 43,272 of the original 49,568 (87.3%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
+  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): single-function chunks 494 and 495 running
+  (485-493 landed 338 of 360); chunk 496 queued (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by
   default, 4035 via `--qfe`.
 
@@ -27,7 +27,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
   (`2026-10-26_one_address_one_name_pass.md`, `namepass/`).
 
 ## Open (owner picks the order)
-1. Family pass 8 (979 rows) out to ChatGPT, re-verify on our lane before landing; 7,834 functions left in all.
+1. Family pass 8 (979 rows) out to ChatGPT, re-verify on our lane before landing; 7,762 functions left in all.
 2. One-address-one-name remainder: GetPItem return type (~340 rows), free/static stand-in callers (~3,490), CRT
    free-mock tests (59), LowerBound const overloads, CDataInputStream (227); still ~5,085 targets with >1 spelling.
 3. CRetailTree remainder: 882 kept rows + ~180 misnamed /Os tree functions (`treepass/KEPT.tsv`, `OS_FAMILY.tsv`).

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a446ce	SKIP	-v38	-	fragment of the parent's ebp frame
+00a44719	SKIP	-v37	-	fragment of the parent's ebp frame
+00a44930	MATCH	11v11	PASS	std::vector::empty()
+00a44a80	MATCH	5v5	PASS	std::vector::pop_back()
+00a44c90	MATCH	11v11	PASS	C3DSkeletalBoneMorph::CompareCRCs(const C3DSkeletalBoneMorph& a, const C3DSkeletalBoneMorph& b)
+00a46594	SKIP	-v69	-	fragment: pops registers it never pushed
+00a4be80	MATCH	45v45	PASS	C3DAnimationSequenceData::GetDuration(bool looping)
+00a553f0	MATCH	13v13	PASS	C3DAnimation2::CanRelocateData(long)
+00a629c0	MATCH	16v16	PASS	CPackedUIntArray::CPackedUIntArray()
+00a6be40	RELOCATION_MATCH	111v111	PASS	CArray::DeallocateMemory()
+00a6ca00	RELOCATION_MATCH	27v27	PASS	CPhysicsMesh::GetDummyObjectPositionStatic(const CCharString& name, long index) const
+00a6f2f0	RELOCATION_MATCH	93v93	PASS	CVectorMap::LowerBound(const CCharString& key) const
+00a75a70	MATCH	11v11	PASS	CNavNavigableLeafNode::GetRegionID()
+00a76280	MATCH	9v9	PASS	CNavBlockedQuadTreeNode::AddToIndexTable(long& index, map& table)
+00a76520	MATCH	11v11	PASS	CNavNavigableLeafNode::HasNeighbours()
+00a80100	RELOCATION_MATCH	79v79	PASS	std::__pop_heap_aux(first, last, _Tp*, CKeyPairCompareLess comp)
+00a8ece0	MATCH	80v80	PASS	N3DPrimitive::CDeviceIndependent::GetTotalTriangleCount()
+00a8ed30	MATCH	111v111	PASS	N3DPrimitive::CDeviceIndependent::GetTotalIndexCount()
+00a90510	RELOCATION_MATCH	75v75	PASS	C3DPrimitive2::AddMirroredTextureVertexIndex(const unsigned long* indices, unsigned long count)
+00a96270	MATCH	48v48	PASS	GFExplicitNew(N3DPrimitive::CAnimatedBlock* blocks, unsigned long count)
+00a9def0	RELOCATION_MATCH	91v91	PASS	C3DAnimationManager::IsAnimationLoaded(const C3DAnimationStateBase& state) const
+00a9df50	RELOCATION_MATCH	72v72	PASS	C3DAnimationManager::BeginLoadingAnimation(const C3DAnimationStateBase& state)
+00aa7550	RELOCATION_MATCH	33v33	PASS	CChunkedFileSaver::CChunkedFileSaver(const char* type)
+00abe910	RELOCATION_MATCH	70v70	PASS	CCountedPointer::SetStaticCast(const CCountedPointer<U>& other)
+00ac3910	RELOCATION_MATCH	40v40	PASS	GFPSizeof(C3DMeshPartitionElement* const& element)
+00ac4f30	MATCH	20v20	PASS	CMirroredTextureHighlightsChunk::GetList()
+00ac6b40	MATCH	22v22	PASS	QuadricOptimiserInternals::COptimisedVertex::CGroup::CompareWeight(const CGroup& a, const CGroup& b)
+00ad01f0	MATCH	26v26	PASS	std::_Rb_tree_node_base::_S_minimum(_Rb_tree_node_base* __x)
+00addf70	RELOCATION_MATCH	44v44	PASS	C3DBoundingSphere::AccurateBuildFromPoints(const std::vector<C3DVector>& points, float tolerance)
+00adeea0	RELOCATION_MATCH	60v60	PASS	C3DBoundingBox::BuildFromPoints(const std::vector<C3DVector>& points)
+00ae5730	MATCH	62v62	PASS	std::__uninitialized_copy(const CUnprovenElement_00ae5730* first, const CUnprovenElement_00ae5730* last, CUnprovenElement_00ae5730* result, const __false_type&)
+00ae60d0	RELOCATION_MATCH	86v86	PASS	CVectorMap::LowerBound(const CCharString& key) const
+00af2ab0	MATCH	15v15	PASS	NParticleEngine::CPSCBase::Initialise(CIEngine*, CParticleSystem&, const CParticleUpdateParameters<unsigned long,unsigned long>&, CEnginePrimitiveHandle&)
+00af7250	RELOCATION_MATCH	108v108	PASS	std::vector<std::pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance> >::erase(iterator position)
+00b15af0	MATCH	8v8	PASS	NParticleEngine::CPSCEmitterGeneric::EnterTimelineEnd()
+00b1ae60	MATCH	5v5	PASS	NParticleEngine::CPSCLight::EnterTimelineEnd()
+00b2e900	MATCH	56v56	PASS	std::_Rb_tree<CUnprovenKey_00b2e900, CUnprovenValue_00b2e900, CUnprovenKeyOfValue_00b2e900, std::less<CUnprovenKey_00b2e900>, std::allocator<CUnprovenValue_00b2e900>>::_M_find(CUnprovenKey_00b2e900 const &) const
+00b5ebf0	RELOCATION_MATCH	103v103	PASS	CEngineScreenEffectGlowRenderer::SetConfiguration(int configuration)
+00b676f0	RELOCATION_MATCH	69v69	PASS	CEngineLandscapeRenderer::Clear()
+00b806d0	RELOCATION_MATCH	9v9	PASS	CEngineSimulationBase::GetMaximumDistanceError()

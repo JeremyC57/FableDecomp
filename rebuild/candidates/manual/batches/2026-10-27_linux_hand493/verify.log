@@ -1,0 +1,112 @@
+addr       parity           behav  name
+00b80780   MATCH            PASS   CalcAndSetRunState
+00b80930   MATCH            PASS   IsRunning
+00b8d280   RELOCATION_MATCH PASS   GetFlareTestResult
+00b8d2f0   RELOCATION_MATCH PASS   GetPrevFrameFlareTestResult
+00b8f180   MATCH            PASS   __lower_bound
+00bca080   MATCH            PASS   operator[]
+00bce900   RELOCATION_MATCH PASS   ApplyPalSkinVertexShaderSpotShadow
+00bdd6b0   RELOCATION_MATCH PASS   CLocalDetailObjectCollectionType
+00be8b00   MATCH            PASS   size
+00bf2e00   RELOCATION_MATCH PASS   CheckStructure
+00c03eb0   MATCH            PASS   z_compressBound
+00c08530   MATCH            PASS   lzo_assert
+00c08880   RELOCATION_MATCH PASS   CString
+00c0b880   RELOCATION_MATCH PASS   SetTarget
+00c0bb70   RELOCATION_MATCH PASS   Find
+00c0bc50   RELOCATION_MATCH PASS   Find
+00c0dd30   WARN RELOC_NAME: ?ConcatInPlace@CString@@QAEXHPBD@Z -> 00c0c270 labelled 'CCharString_InsertData'
+00c0dd30   RELOCATION_MATCH PASS   Append
+00c0e6b0   MATCH            PASS   GetQueuedEvent
+00c0e970   WARN RELOC_NAME: ?Process@CEventQueue_00c08940@@QAEXPAUCEvent_00c08940@@@Z -> 00c08940 labelled '_global::CTCHero_OnBlockParrySuccess'
+00c0e970   RELOCATION_MATCH PASS   Post
+00c0efe0   MATCH            PASS   Visit
+00c109a0   MATCH            PASS   what
+00c10db0   MATCH            PASS   IsRunning
+00c155f0   MATCH            PASS   Less
+00c15620   MATCH            PASS   EqualToKey
+00c15640   MATCH            PASS   LessThanKey
+00c16700   RELOCATION_MATCH PASS   Allocate
+00c16720   RELOCATION_MATCH PASS   Free
+00c16750   RELOCATION_MATCH PASS   CDebugBreak
+00c19010   MATCH            PASS   FindByKey
+00c19080   MATCH            PASS   Find
+00c19110   RELOCATION_MATCH PASS   ForEach
+00c19130   RELOCATION_MATCH PASS   GetCount
+00c19150   MATCH            PASS   GetFirst
+00c19180   MATCH            PASS   GetLast
+00c19970   RELOCATION_MATCH PASS   Hash
+
+WINS: 35
+  00b80780 MATCH CEngineClothSimulation2DAnimatedMesh::?CalcAndSetRunState@CEngineClothSimulation2DAnimatedMesh@@MAE_NXZ
+  00b80930 MATCH CEngineClothSimulationMeshBase::?IsRunning@CEngineClothSimulationMeshBase@@UBE_NXZ
+  00b8d280 RELOCATION_MATCH CEngineOcclusionManager::?GetFlareTestResult@CEngineOcclusionManager@@QAEMK@Z
+  00b8d2f0 RELOCATION_MATCH CEngineOcclusionManager::?GetPrevFrameFlareTestResult@CEngineOcclusionManager@@QAEMK@Z
+  00b8f180 MATCH std::??$__lower_bound@PAU?$pair@KK@std@@KUMapperPred@
+  00bca080 MATCH CArray<CUnprovenElement16_00bca080>::??A?$CArray@UCUnprovenElement16_00bca080@@@@QAEAAUCUnprovenElement16_00bca080@@I@Z
+  00bce900 RELOCATION_MATCH CEnginePrimitiveManagerAnimatedMeshesBase::?ApplyPalSkinVertexShaderSpotShadow@CEnginePrimitiveManagerAnimatedMeshesBase@@AAEXKK@Z
+  00bdd6b0 RELOCATION_MATCH CLocalDetailObjectCollectionType::??0CLocalDetailObjectCollectionType@@QAE@XZ
+  00be8b00 MATCH CArray<CUnprovenElement4_00be8b00>::?size@?$CArray@UCUnprovenElement4_00be8b00@@@@QBEIXZ
+  00bf2e00 RELOCATION_MATCH CEngineTreeFilerBase::?CheckStructure@CEngineTreeFilerBase@@AAEXPAUCNodeHeader@1@0@Z
+  00c03eb0 MATCH _global::_z_compressBound
+  00c08530 MATCH _global::_lzo_assert
+  00c08880 RELOCATION_MATCH CString::??0CString@@QAE@XZ
+  00c0b880 RELOCATION_MATCH CRampedParam::?SetTarget@CRampedParam@@QAEXMM@Z
+  00c0bb70 RELOCATION_MATCH CString::?Find@CString@@QBEHDH@Z
+  00c0bc50 RELOCATION_MATCH CString::?Find@CString@@QBEHPBDH@Z
+  00c0dd30 RELOCATION_MATCH CString::?Append@CString@@QAEXD@Z
+  00c0e6b0 MATCH CScriptHost::?GetQueuedEvent@CScriptHost@@UAEJJPAJ0@Z
+  00c0e970 RELOCATION_MATCH CScriptHost::?Post@CScriptHost@@UAEXXZ
+  00c0efe0 MATCH CVtable_012b2240::?Visit@CVtable_012b2240@@UAEXPAPAX@Z
+  00c109a0 MATCH std::logic_error::?what@logic_error@std@@UBEPBDXZ
+  00c10db0 MATCH CUnprovenPKInterface_012B2748::?IsRunning@CUnprovenPKInterface_012B2748@@UAEHXZ
+  00c155f0 MATCH CVtable_012b28d8::?Less@CVtable_012b28d8@@UBEHPBUCUnprovenItem_012b28d8@@0@Z
+  00c15620 MATCH CVtable_012b28d8::?EqualToKey@CVtable_012b28d8@@UBEHABKPBUCUnprovenItem_012b28d8@@@Z
+  00c15640 MATCH CVtable_012b28d8::?LessThanKey@CVtable_012b28d8@@UBEHABKPBUCUnprovenItem_012b28d8@@@Z
+  00c16700 RELOCATION_MATCH CVtable_012b2ab8::?Allocate@CVtable_012b2ab8@@UAEPAXI@Z
+  00c16720 RELOCATION_MATCH CVtable_012b2ab8::?Free@CVtable_012b2ab8@@UAEXPAX@Z
+  00c16750 RELOCATION_MATCH CDebugBreak::??0CDebugBreak@@QAE@XZ
+  00c19010 MATCH PKCTRRedblackTree_00c18b20::?FindByKey@PKCTRRedblackTree_00c18b20@@UAEPAXPAVPKCTRComparator_00c19010@@PBX@Z
+  00c19080 MATCH PKCTRRedblackTree_00c18b20::?Find@PKCTRRedblackTree_00c18b20@@UAEPAXPAVPKCTRComparator_00c19010@@PBX@Z
+  00c19110 RELOCATION_MATCH PKCTRRedblackTree_00c18d50::?ForEach@PKCTRRedblackTree_00c18d50@@UAEXPAVPKCTRVisitor_00c18d50@@@Z
+  00c19130 RELOCATION_MATCH PKCTRRedblackTree_00c18df0::?GetCount@PKCTRRedblackTree_00c18df0@@UAEJXZ
+  00c19150 MATCH PKCTRRedblackTree_00c18b20::?GetFirst@PKCTRRedblackTree_00c18b20@@UAEPAXXZ
+  00c19180 MATCH PKCTRRedblackTree_00c18b20::?GetLast@PKCTRRedblackTree_00c18b20@@UAEPAXXZ
+  00c19970 RELOCATION_MATCH CVtable_012b2f98::?Hash@CVtable_012b2f98@@UAEKPBD@Z
+
+LANDED 35 wins into src/compiled + tests + catalog + oracle
+  CEngineClothSimulation2DAnimatedMesh_CalcAndSetRunState_00b80780
+  CEngineClothSimulationMeshBase_IsRunning_00b80930
+  CEngineOcclusionManager_GetFlareTestResult_00b8d280
+  CEngineOcclusionManager_GetPrevFrameFlareTestResult_00b8d2f0
+  std_lowerbound_00b8f180
+  CArrayCUnprovenElement1600bca080_operator_00bca080
+  CEnginePrimitiveManagerAnimatedMeshesBase_ApplyPalSkinVertexShaderSpotShadow_00bce900
+  CLocalDetailObjectCollectionType_CLocalDetailObjectCollectionType_00bdd6b0
+  CArrayCUnprovenElement400be8b00_size_00be8b00
+  CEngineTreeFilerBase_CheckStructure_00bf2e00
+  global_zcompressBound_00c03eb0
+  global_lzoassert_00c08530
+  CString_CString_00c08880
+  CRampedParam_SetTarget_00c0b880
+  CString_Find_00c0bb70
+  CString_Find_00c0bc50
+  CString_Append_00c0dd30
+  CScriptHost_GetQueuedEvent_00c0e6b0
+  CScriptHost_Post_00c0e970
+  CVtable012b2240_Visit_00c0efe0
+  stdlogicerror_what_00c109a0
+  CUnprovenPKInterface012B2748_IsRunning_00c10db0
+  CVtable012b28d8_Less_00c155f0
+  CVtable012b28d8_EqualToKey_00c15620
+  CVtable012b28d8_LessThanKey_00c15640
+  CVtable012b2ab8_Allocate_00c16700
+  CVtable012b2ab8_Free_00c16720
+  CDebugBreak_CDebugBreak_00c16750
+  PKCTRRedblackTree00c18b20_FindByKey_00c19010
+  PKCTRRedblackTree00c18b20_Find_00c19080
+  PKCTRRedblackTree00c18d50_ForEach_00c19110
+  PKCTRRedblackTree00c18df0_GetCount_00c19130
+  PKCTRRedblackTree00c18b20_GetFirst_00c19150
+  PKCTRRedblackTree00c18b20_GetLast_00c19180
+  CVtable012b2f98_Hash_00c19970
