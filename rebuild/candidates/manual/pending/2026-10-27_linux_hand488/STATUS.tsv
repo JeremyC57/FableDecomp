@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00680840	DIFFER	114v114	-	CSimVoice::GetRandomSampleIndexVariation (proven); 2-byte slot-choice residue, see NOTES

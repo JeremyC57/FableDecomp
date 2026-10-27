@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00680840	DIFFER	114v114	-	CSimVoice::GetRandomSampleIndexVariation (proven); 2-byte slot-choice residue, see NOTES
+00685200	MATCH	9v9	PASS	std::_List_iterator::operator++ (descriptive element CUnprovenValue_00685200)
+00685620	MATCH	13v13	PASS	std::list::begin (descriptive element CUnprovenValue_00685620)
+00687d40	RELOCATION_MATCH	16v16	PASS	CInputProcessGameBase::GetMouseWheelMovement (proven); label was operator_new
+006924b0	RELOCATION_MATCH	9v9	PASS	CCreatureActionBase::GetRandomAnimFromName (proven); label was BeginInputLoading
+0069c8b0	MATCH	60v60	PASS	std::__copy_ptrs<CGameCameraManager::CQuake*> (probable)
+006a5220	MATCH	10v10	PASS	CUnproven_006a5220::IsNotPositive_006a5220 (descriptive)
+006a6be0	MATCH	88v88	PASS	CPhysicsMeshObject::operator= (proven, Ego_r)
+006b3750	RELOCATION_MATCH	70v70	PASS	CEnvironment::RestoreDefaultWeightAllChannels (probable)
+006bb940	RELOCATION_MATCH	39v39	PASS	CGameTimeManager::ConsoleSetDaySpeed (proven, Ego_r + landed ctor binding)
+006bef30	RELOCATION_MATCH	86v86	PASS	std::__pop_heap_aux<pair<long,CMusicManager::CRegisteredMusicEntry>*> (probable)
+006c9c60	SKIP	-	-	SKIP: catalog label Catch@004ab920 (looks like a real thiscall function, ret 8; left for the lander)
+006cb6a0	MATCH	8v8	PASS	CTCCreatureNavigation::GetNavigatorType (proven); label was CIsHitEventBlocked::operator()
+006cb920	MATCH	11v11	PASS	CTCCreatureNavigation::OnSetInLimbo slot 16 (proven)
+006dc2e0	RELOCATION_MATCH	104v104	PASS	std::__copy<const long*, back_insert_iterator<vector<long>>> (probable)
+006e6950	RELOCATION_MATCH	18v18	PASS	std::find<CIntelligentPointer<CThing>*, CThing*> (probable)
+006ef000	MATCH	80v80	PASS	std::__copy<pair<C3DVector,bool>*> (probable)
+006f1250	RELOCATION_MATCH	42v42	PASS	_Rb_tree<unsigned __int64, pair<const unsigned __int64,CThing*>>::_M_create_node (probable)
+006f45a0	RELOCATION_MATCH	94v94	PASS	vector<CDefendingCombatantInfo::CCombatRing>::erase (probable)
+006fb8f0	RELOCATION_MATCH	102v102	PASS	std::swap<pair<unsigned long,CSmallVector<NAnimationEvents::CEvent,32>>> (probable)
+006fd400	RELOCATION_MATCH	60v60	PASS	CCountedPointer<NAnimationEvents::CManager>::DeleteData (probable)
+00702cb0	MATCH	14v14	PASS	CThingObject::IsCrop slot 49 (probable)
+0070b490	MATCH	10v10	PASS	CTCAnimationComplex::GetAnimIndex (proven)
+0070be80	MATCH	5v5	PASS	CAnimateThing::SetAsFinished (proven)
+0070fcb0	MATCH	51v51	PASS	std::__unguarded_linear_insert<list<CAnimSet>::const_iterator*> (probable)
+007122c0	MATCH	15v15	PASS	CTCScriptedControl::IsActionListEmpty (proven); label was CScriptTask_IsRunning
+0071efc0	RELOCATION_MATCH	45v45	PASS	pair<const CCharString, pair<long,CDateAndTime>>::pair (probable)
+007222b0	RELOCATION_MATCH	58v58	PASS	CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>::DeleteData (probable)
+00723350	MATCH	12v12	PASS	CTCPhysicsLight::FillPhysicsDebugInfoForSelf slot 89 (proven)
+00723a50	MATCH	16v16	PASS	CTCPhysicsStandard::ReturnToDefaultInteractionFlags slot 44 (proven)
+00736910	RELOCATION_MATCH	120v120	PASS	(anonymous)::GiveHeroMeleeAbility(long,bool) (proven, Ego_r)
+00736ad0	RELOCATION_MATCH	15v15	PASS	CTCCombat::OnInitialActivate slot 6 (probable)
+0073a6e0	MATCH	9v9	PASS	CTCCreatureModeManager::GetCurrentMode (proven); label was CPixelShader::CountReferences
+0073d5a0	MATCH	51v51	PASS	std::__find_if<list<CCountedPointer<CModeBase>>::iterator, CModeBase::CIsType> (probable)
+007431c0	RELOCATION_MATCH	33v33	PASS	NCreatureMode::CModeStrafe::Alloc (proven, Ego_r)
+00743b70	RELOCATION_MATCH	71v71	PASS	std::__final_insertion_sort<pair<unsigned long,CRegisteredModeInfo>*> (probable)
+00746b20	RELOCATION_MATCH	16v16	PASS	CTCBed::FrameUpdate slot 9 (proven)
+0074f350	RELOCATION_MATCH	64v64	PASS	std::for_each<CThingObject* const*, CAddObjectNotSolidTo> (proven, FableWin)
+00751a80	MATCH	7v7	PASS	CTCLook::GetLookAngleRelToBodyXY (proven); label was CMap::DrawGetSeaLevel
+00757930	RELOCATION_MATCH	86v86	PASS	CWoundMorphs::GetPWoundWithIndex (proven, Ego_r)

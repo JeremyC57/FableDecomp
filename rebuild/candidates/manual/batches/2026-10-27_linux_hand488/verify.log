@@ -1,0 +1,134 @@
+addr       parity           behav  name
+00685200   MATCH            PASS   operator++
+00685620   MATCH            PASS   begin
+00687d40   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00687d40   WARN RELOC_NAME: ?GetMouseWheelMovement@CGamePlayerInterface@@QBEMABVCInputEvent@@@Z -> 00445920 labelled '_global::CdeclCall_DrawGetSeaLevel_00445920'
+00687d40   RELOCATION_MATCH PASS   GetMouseWheelMovement
+006924b0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006924b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006924b0   RELOCATION_MATCH PASS   GetRandomAnimFromName
+0069c8b0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0069c8b0   MATCH            PASS   __copy_ptrs
+006a5220   MATCH            PASS   IsNotPositive_006a5220
+006a6be0   MATCH            PASS   operator=
+006b3750   RELOCATION_MATCH PASS   RestoreDefaultWeightAllChannels
+006bb940   RELOCATION_MATCH PASS   ConsoleSetDaySpeed
+006bef30   RELOCATION_MATCH PASS   __pop_heap_aux
+006cb6a0   MATCH            PASS   GetNavigatorType
+006cb920   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cb920   MATCH            PASS   OnSetInLimbo
+006dc2e0   RELOCATION_MATCH PASS   __copy
+006e6950   RELOCATION_MATCH PASS   find
+006ef000   MATCH            PASS   __copy
+006f1250   RELOCATION_MATCH PASS   _M_create_node
+006f45a0   RELOCATION_MATCH PASS   erase
+006fb8f0   RELOCATION_MATCH PASS   swap
+006fd400   WARN SHARED_HEADER_AVAILABLE CManager
+006fd400   RELOCATION_MATCH PASS   DeleteData
+00702cb0   MATCH            PASS   IsCrop
+0070b490   MATCH            PASS   GetAnimIndex
+0070be80   MATCH            PASS   SetAsFinished
+0070fcb0   MATCH            PASS   __unguarded_linear_insert
+007122c0   MATCH            PASS   IsActionListEmpty
+0071efc0   RELOCATION_MATCH PASS   pair
+007222b0   WARN RELOC_NAME: ??1CEngineTextureMorphSet@@QAE@XZ -> 005bc0d3 labelled '_global::StdList_Dtor_005bc0d3'
+007222b0   RELOCATION_MATCH PASS   DeleteData
+00723350   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00723350   MATCH            PASS   FillPhysicsDebugInfoForSelf
+00723a50   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00723a50   MATCH            PASS   ReturnToDefaultInteractionFlags
+00736910   WARN SHARED_HEADER_AVAILABLE CTCCombat
+00736910   WARN SHARED_HEADER_AVAILABLE CPlayer
+00736910   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00736910   WARN RELOC_CONFLICT: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 here, 00487dd0 in landed 00896ee0
+00736910   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00736910   RELOCATION_MATCH PASS   GiveHeroMeleeAbility
+00736ad0   RELOCATION_MATCH PASS   OnInitialActivate
+0073a6e0   MATCH            PASS   GetCurrentMode
+0073d5a0   MATCH            PASS   __find_if
+007431c0   RELOCATION_MATCH PASS   Alloc
+00743b70   RELOCATION_MATCH PASS   __final_insertion_sort
+00746b20   RELOCATION_MATCH PASS   FrameUpdate
+0074f350   RELOCATION_MATCH PASS   for_each
+00751a80   MATCH            PASS   GetLookAngleRelToBodyXY
+00757930   RELOCATION_MATCH PASS   GetPWoundWithIndex
+
+WINS: 38
+  00685200 MATCH std::_List_iterator::??E?$_List_iterator@VCUnprovenValue_00685200@@U?$_Nonconst_traits@VCUnprovenValue_00685200@@@std@@@std@@QAEAAU01@XZ
+  00685620 MATCH std::list::?begin@?$list@VCUnprovenValue_00685620@@V?$allocator@VCUnprovenValue_00685620@@@std@@@std@@QAE?AU?$_List_iterator@VCUnprovenValue_00685620@@U?$_Nonconst_traits@VCUnprovenValue_00685620@@@std@@@2@XZ
+  00687d40 RELOCATION_MATCH CInputProcessGameBase::?GetMouseWheelMovement@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z
+  006924b0 RELOCATION_MATCH CCreatureActionBase::?GetRandomAnimFromName@CCreatureActionBase@@KIABVCAnimationEntry@@ABVCThingCreatureBase@@ABVCCharString@@@Z
+  0069c8b0 MATCH std::??$__copy_ptrs@PAVCQuake@CGameCameraManager@@PAV12@@std@@YIPAVCQuake@CGameCameraManager@@PAV12@00ABU__false_type@0@@Z
+  006a5220 MATCH CUnproven_006a5220::?IsNotPositive_006a5220@CUnproven_006a5220@@QBEJXZ
+  006a6be0 MATCH CPhysicsMeshObject::??4CPhysicsMeshObject@@QAEAAV0@ABV0@@Z
+  006b3750 RELOCATION_MATCH CEnvironment::?RestoreDefaultWeightAllChannels@CEnvironment@@QAEXJM@Z
+  006bb940 RELOCATION_MATCH CGameTimeManager::?ConsoleSetDaySpeed@CGameTimeManager@@CIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  006bef30 RELOCATION_MATCH std::??$__pop_heap_aux@PAU?$pair@JVCRegisteredMusicEntry@CMusicManager@@@std@@U12@V?$CKeyPairCompareLess@JVCRegisteredMusicEntry@CMusicManager@@@@@std@@YIXPAU?$pair@JVCRegisteredMusicEntry@CMusicManager@@@0@00V?$CKeyPairCompareLess@JVCRegisteredMusicEntry@CMusicManager@@@@@Z
+  006cb6a0 MATCH CTCCreatureNavigation::?GetNavigatorType@CTCCreatureNavigation@@QBEKXZ
+  006cb920 MATCH CTCCreatureNavigation::?OnSetInLimbo@CTCCreatureNavigation@@UAEX_N@Z
+  006dc2e0 RELOCATION_MATCH std::??$__copy@PBJV?$back_insert_iterator@V?$vector@JV?$allocator@J@std@@@std@@@std@@H@std@@YI?AV?$back_insert_iterator@V?$vector@JV?$allocator@J@std@@@std@@@0@PBJ0V10@ABUrandom_access_iterator_tag@0@PAH@Z
+  006e6950 RELOCATION_MATCH std::??$find@PAV?$CIntelligentPointer@VCThing@@@@PAVCThing@@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@0ABQAVCThing@@@Z
+  006ef000 MATCH std::??$__copy@PAU?$pair@VC3DVector@@_N@std@@PAU12@H@std@@YIPAU?$pair@VC3DVector@@_N@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+  006f1250 RELOCATION_MATCH std::_Rb_tree::?_M_create_node@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CB_KPAVCThing@@@std@@@2@ABU?$pair@$$CB_KPAVCThing@@@2@@Z
+  006f45a0 RELOCATION_MATCH std::vector<CDefendingCombatantInfo::CCombatRing>::?erase@?$vector@VCCombatRing@CDefendingCombatantInfo@@V?$allocator@VCCombatRing@CDefendingCombatantInfo@@@std@@@std@@QAEPAVCCombatRing@CDefendingCombatantInfo@@PAV34@@Z
+  006fb8f0 RELOCATION_MATCH std::??$swap@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@@std@@YIXAAU?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@0@0@Z
+  006fd400 RELOCATION_MATCH CCountedPointer<NAnimationEvents::CManager>::?DeleteData@?$CCountedPointer@VCManager@NAnimationEvents@@@@SIXPAX@Z
+  00702cb0 MATCH CThingObject::?IsCrop@CThingObject@@UBE_NXZ
+  0070b490 MATCH CTCAnimationComplex::?GetAnimIndex@CTCAnimationComplex@@QBEJXZ
+  0070be80 MATCH CAnimateThing::?SetAsFinished@CAnimateThing@@QAEXXZ
+  0070fcb0 MATCH std::??$__unguarded_linear_insert@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@U12@VCAnimSetItPriorityLessThan@@@std@@YIXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@U10@VCAnimSetItPriorityLessThan@@@Z
+  007122c0 MATCH CTCScriptedControl::?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ
+  0071efc0 RELOCATION_MATCH std::pair<const CCharString, std::pair<long, CDateAndTime> >::??0?$pair@$$CBVCCharString@@U?$pair@JVCDateAndTime@@@std@@@std@@QAE@ABVCCharString@@ABU?$pair@JVCDateAndTime@@@1@@Z
+  007222b0 RELOCATION_MATCH CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>::?DeleteData@?$CCountedPointer@VCMeshMorphSet@CTCAppearanceMorphBase@@@@SIXPAX@Z
+  00723350 MATCH CTCPhysicsLight::?FillPhysicsDebugInfoForSelf@CTCPhysicsLight@@UBEXAAVCPhysicsDebugInfo@@@Z
+  00723a50 MATCH CTCPhysicsStandard::?ReturnToDefaultInteractionFlags@CTCPhysicsStandard@@UAEXXZ
+  00736910 RELOCATION_MATCH _global::?GiveHeroMeleeAbility@?A0x
+  00736ad0 RELOCATION_MATCH CTCCombat::?OnInitialActivate@CTCCombat@@UAEXXZ
+  0073a6e0 MATCH CTCCreatureModeManager::?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ
+  0073d5a0 MATCH std::??$__find_if@U?$_List_iterator@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@std@@@std@@VCIsType@CModeBase@CTCCreatureModeManager@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@std@@@0@U10@0VCIsType@CModeBase@CTCCreatureModeManager@@ABUinput_iterator_tag@0@@Z
+  007431c0 RELOCATION_MATCH NCreatureMode::CModeStrafe::?Alloc@CModeStrafe@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z
+  00743b70 RELOCATION_MATCH std::??$__final_insertion_sort@PAU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@std@@V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@std@@YIXPAU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@0@0V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@Z
+  00746b20 RELOCATION_MATCH CTCBed::?FrameUpdate@CTCBed@@UAEXXZ
+  0074f350 RELOCATION_MATCH std::??$for_each@PBQAVCThingObject@@VCAddObjectNotSolidTo@@@std@@YI?AVCAddObjectNotSolidTo@@PBQAVCThingObject@@0V1@@Z
+  00751a80 MATCH CTCLook::?GetLookAngleRelToBodyXY@CTCLook@@QBEMXZ
+  00757930 RELOCATION_MATCH CWoundMorphs::?GetPWoundWithIndex@CWoundMorphs@@QBEPBVCEntry@1@J@Z
+
+LANDED 38 wins into src/compiled + tests + catalog + oracle
+  stdListiterator_operator_00685200
+  stdlist_begin_00685620
+  CInputProcessGameBase_GetMouseWheelMovement_00687d40
+  CCreatureActionBase_GetRandomAnimFromName_006924b0
+  std_copyptrs_0069c8b0
+  CUnproven006a5220_IsNotPositive006a5220_006a5220
+  CPhysicsMeshObject_operator_006a6be0
+  CEnvironment_RestoreDefaultWeightAllChannels_006b3750
+  CGameTimeManager_ConsoleSetDaySpeed_006bb940
+  std_popheapaux_006bef30
+  CTCCreatureNavigation_GetNavigatorType_006cb6a0
+  CTCCreatureNavigation_OnSetInLimbo_006cb920
+  std_copy_006dc2e0
+  std_find_006e6950
+  std_copy_006ef000
+  stdRbtree_Mcreatenode_006f1250
+  stdvectorCDefendingCombatantInfoCCombatRing_erase_006f45a0
+  std_swap_006fb8f0
+  CCountedPointerNAnimationEventsCManager_DeleteData_006fd400
+  CThingObject_IsCrop_00702cb0
+  CTCAnimationComplex_GetAnimIndex_0070b490
+  CAnimateThing_SetAsFinished_0070be80
+  std_unguardedlinearinsert_0070fcb0
+  CTCScriptedControl_IsActionListEmpty_007122c0
+  stdpairconstCCharStringstdpairlongCDateAndTime_pair_0071efc0
+  CCountedPointerCTCAppearanceMorphBaseCMeshMorphSet_DeleteData_007222b0
+  CTCPhysicsLight_FillPhysicsDebugInfoForSelf_00723350
+  CTCPhysicsStandard_ReturnToDefaultInteractionFlags_00723a50
+  global_GiveHeroMeleeAbility_00736910
+  CTCCombat_OnInitialActivate_00736ad0
+  CTCCreatureModeManager_GetCurrentMode_0073a6e0
+  std_findif_0073d5a0
+  NCreatureModeCModeStrafe_Alloc_007431c0
+  std_finalinsertionsort_00743b70
+  CTCBed_FrameUpdate_00746b20
+  std_foreach_0074f350
+  CTCLook_GetLookAngleRelToBodyXY_00751a80
+  CWoundMorphs_GetPWoundWithIndex_00757930

@@ -33830,3 +33830,15 @@ _s_NoGroupAnimFilter_01382438	01382438	01229a10
 ?_M_fill_insert@?$vector@W4MinimapTheme@CMinimapData@@V?$allocator@W4MinimapTheme@CMinimapData@@@std@@@std@@QAEXPAW4MinimapTheme@CMinimapData@@IABW434@@Z	006436c0	00643890
 ?IsLineOfSight@CWorldMap@@QBE_NABVCThing@@0_N@Z	0063e6f0	00666ea0
 ?PeekWorldMap@CThing@@QBEABVCWorldMap@@XZ	004c79e0	00666ea0
+?GetMouseWheelMovement@CGamePlayerInterface@@QBEMABVCInputEvent@@@Z	00445920	00687d40
+?SetDefaultThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXM_N@Z	00886430	006b3750
+??$__find@PAV?$CIntelligentPointer@VCThing@@@@PAVCThing@@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@0ABQAVCThing@@ABUrandom_access_iterator_tag@0@@Z	006e66e0	006e6950
+??$__copy@PAVCCombatRing@CDefendingCombatantInfo@@PAV12@H@std@@YIPAVCCombatRing@CDefendingCombatantInfo@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z	006f4470	006f45a0
+??1CEngineTextureMorphSet@@QAE@XZ	005bc0d3	007222b0
+?AddMeleeFlourishAbility@CTCCombat@@QAEXJ@Z	00736640	00736910
+?RemoveMeleeFlourishAbility@CTCCombat@@QAEXJ@Z	007366c0	00736910
+??0CModeStrafe@NCreatureMode@@QAE@AAVCThing@@_N@Z	00741fe0	007431c0
+?__insertion_sort@std@@YIXPAU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@1@0V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@Z	00743430	00743b70
+?__unguarded_insertion_sort_aux@std@@YIXPAU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@1@00V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@Z	0073d720	00743b70
+?UpdateAnimation@CTCBed@@AAEXXZ	007468c0	00746b20
+?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	00770fa0	0074f350
