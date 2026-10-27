@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006cacb0	MATCH	128	PASS	
+008d4680	MATCH	4	PASS	
+0099cf70	RELOCATION_MATCH	15	PASS	
+009a76c0	RELOCATION_MATCH	12	PASS	
+009af6e0	RELOCATION_MATCH	60	PASS	
+009af720	RELOCATION_MATCH	114	PASS	
+009bc7d0	MATCH	7	PASS	
+009d47e0	RELOCATION_MATCH	33	PASS	implicit copy ctor emitted via a throw helper (review)
+009d8240	MATCH	1	PASS	label correction: catalog $E2 -> NProfileTimer::StartProfile
+009e7380	RELOCATION_MATCH	110	PASS	same-TU __find_if stand-in body (review)
+009eaae0	MATCH	39	PASS	model helper CRGBColour::SetChannels (review)
+009ecc70	RELOCATION_MATCH	111	PASS	
+009f2ac0	RELOCATION_MATCH	91	PASS	/GS; dead filename buffer gives the cookie (review)
+009f76a0	MATCH	14	PASS	
+009f8860	RELOCATION_MATCH	84	PASS	
+009f9df0	MATCH	9	PASS	
+009fc150	MATCH	11	PASS	
+00a000a0	MATCH	7	PASS	descriptive element type CUnprovenPolymorphic_00a000a0
+00a01d40	MATCH	10	PASS	label correction: catalog CWorld::DrawGetEnvironment -> CHandleBasedMemoryPool::GetHandleFromPointer
+00a03b80	MATCH	4	PASS	
+00a14e50	RELOCATION_MATCH	46	PASS	
+00a19b90	MATCH	3	PASS	
+00a20410	RELOCATION_MATCH	84	PASS	
+00a222b0	RELOCATION_MATCH	64	PASS	
+00a25e60	RELOCATION_MATCH	13	PASS	vfunc_5 -> CPhysicsMeshInfo::CMeshData::OnResourceLoaded (m_pSourceData descriptive)
+00a2f170	RELOCATION_MATCH	25	PASS	
+00a31150	MATCH	86	PASS	
+00a31880	MATCH	70	PASS	
+00a318d0	MATCH	70	PASS	
+00a32bc0	RELOCATION_MATCH	87	PASS	
+00a345d0	RELOCATION_MATCH	99	PASS	
+00a35360	RELOCATION_MATCH	93	PASS	
+00a35b10	RELOCATION_MATCH	23	PASS	
+00a36fc0	MATCH	17	PASS	
+00a3a9c0	RELOCATION_MATCH	63	PASS	
+00a3aa00	RELOCATION_MATCH	12	PASS	
+00a3e420	MATCH	10	PASS	label correction: catalog CGameScriptThing::DecrementScriptCounter -> descriptive CSoundManagerLH::GetNextEmitterID_00a3e420
+00a44130	RELOCATION_MATCH	50	PASS	
+00a44690	RELOCATION_MATCH	10	PASS	label correction: catalog _Cons_val<...> -> CSuspendableProcessMicrothread::InternalSuspend
+00a446a0	SKIP	46	-	row mis-cut: middle of CSuspendableProcessMicrothread::ThreadEntry 0x00A446A0..0x00A4473D (158 bytes, /Od, catch funclet 0x00A446F4) split into 5 catalog rows

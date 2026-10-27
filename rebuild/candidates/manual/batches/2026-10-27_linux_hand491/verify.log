@@ -1,0 +1,125 @@
+addr       parity           behav  name
+006cacb0   MATCH            PASS   __uninitialized_fill_n
+008d4680   MATCH            PASS   DecrementScriptCounter
+0099cf70   RELOCATION_MATCH PASS   ~CSystemRegistry
+009a76c0   RELOCATION_MATCH PASS   SetHeaderDir
+009af6e0   RELOCATION_MATCH PASS   RecompileDefType
+009af720   RELOCATION_MATCH PASS   RecompileAllDefs
+009bc7d0   MATCH            PASS   CXMVPlaybackInfo
+009d47e0   RELOCATION_MATCH PASS   CBankCreatorException
+009d8240   MATCH            PASS   StartProfile
+009e7380   RELOCATION_MATCH PASS   remove_if<pair<CCharString, CSymbolInfo>*, CPred_HasGroupName>
+009eaae0   MATCH            PASS   SetConsoleHelpWindowColour
+009ecc70   RELOCATION_MATCH PASS   ConsoleAddKeyBinding
+009f2ac0   RELOCATION_MATCH PASS   InternalAllocate
+009f76a0   MATCH            PASS   CFourierAnalysis
+009f8860   RELOCATION_MATCH PASS   _M_create_node
+009f9df0   MATCH            PASS   GetNoLevels
+009fc150   MATCH            PASS   FrameEnd
+00a000a0   MATCH            PASS   _Destroy<CUnprovenPolymorphic_00a000a0>
+00a01d40   MATCH            PASS   GetHandleFromPointer
+00a03b80   MATCH            PASS   GetChar
+00a14e50   RELOCATION_MATCH PASS   SaveNavigationMapToFile
+00a19b90   MATCH            PASS   GetPreferabilityCost
+00a20410   RELOCATION_MATCH PASS   pair
+00a222b0   RELOCATION_MATCH PASS   insert_equal
+00a25e60   RELOCATION_MATCH PASS   OnResourceLoaded
+00a2f170   RELOCATION_MATCH PASS   GetHelperPointNamesStartingWith
+00a31150   MATCH            PASS   __copy<pair<unsigned long, C3DHelperPoint>*, pair<unsigned long, C3DHelperPoint>*, int>
+00a31880   MATCH            PASS   LowerBound
+00a318d0   MATCH            PASS   UpperBound
+00a32bc0   RELOCATION_MATCH PASS   __pop_heap<pair<unsigned long, C3DDummyObject>*, pair<unsigned long, C3DDummyObject>, CKeyPairCompareLess<unsigned long, C3DDummyObject>, int>
+00a345d0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VC3DGeneratorObject@@V?$allocator@VC3DGeneratorObject@@@std@@@std@@IAEXPAVC3DGeneratorObject@@ABV3@ABU__false_type@2@I_N@Z -> 00a33c50 labelled 'Vector_Reallocate_C3DGeneratorObject_RangeShift'
+00a345d0   RELOCATION_MATCH PASS   push_back
+00a35360   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@KVC3DMeshVolume@@@std@@V?$allocator@U?$pair@KVC3DMeshVolume@@@std@@@2@@std@@IAEXPAU?$pair@KVC3DMeshVolume@@@2@ABU32@ABU__false_type@2@I_N@Z -> 00a34f00 labelled 'Vector_Reallocate_Pair'
+00a35360   RELOCATION_MATCH PASS   push_back
+00a35b10   RELOCATION_MATCH PASS   GetHelperPointNamesStartingWith
+00a36fc0   MATCH            PASS   GetNoAllocatedOfType
+00a3a9c0   RELOCATION_MATCH PASS   Alloc
+00a3aa00   RELOCATION_MATCH PASS   Free
+00a3e420   MATCH            PASS   GetNextEmitterID_00a3e420
+00a44130   WARN RELOC_NAME: ??$__destroy_aux@PAVCLipSyncFrameData@@@std@@YIXPAVCLipSyncFrameData@@0ABU__false_type@0@@Z -> 00a43f80 labelled '_global::Destroy_StringRecordVector_00a43f80'
+00a44130   RELOCATION_MATCH PASS   DeleteData
+00a44690   RELOCATION_MATCH PASS   InternalSuspend
+
+WINS: 39
+  006cacb0 MATCH std::??$__uninitialized_fill_n@PAVCCompositeBlendDesc@@IV1@@std@@YIPAVCCompositeBlendDesc@@PAV1@IABV1@ABU__false_type@0@@Z
+  008d4680 MATCH CGameScriptThing::?DecrementScriptCounter@CGameScriptThing@@UAEXXZ
+  0099cf70 RELOCATION_MATCH CSystemRegistry::??1CSystemRegistry@@QAE@XZ
+  009a76c0 RELOCATION_MATCH NBankFileManager::?SetHeaderDir@NBankFileManager@@YIXABVCWideString@@@Z
+  009af6e0 RELOCATION_MATCH CDefinitionManager::?RecompileDefType@CDefinitionManager@@QAEXABVCCharString@@@Z
+  009af720 RELOCATION_MATCH CDefinitionManager::?RecompileAllDefs@CDefinitionManager@@QAEXXZ
+  009bc7d0 MATCH CXMVPlaybackInfo::??0CXMVPlaybackInfo@@QAE@XZ
+  009d47e0 RELOCATION_MATCH CBankCreatorException::??0CBankCreatorException@@QAE@ABV0@@Z
+  009d8240 MATCH NProfileTimer::?StartProfile@NProfileTimer@@YIXABVCCharString@@J@Z
+  009e7380 RELOCATION_MATCH std::??$remove_if@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@VCPred_HasGroupName@@@std@@
+  009eaae0 MATCH CConsole::?SetConsoleHelpWindowColour@CConsole@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  009ecc70 RELOCATION_MATCH CConsole::?ConsoleAddKeyBinding@CConsole@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  009f2ac0 RELOCATION_MATCH CMemoryAllocator::?InternalAllocate@CMemoryAllocator@@IAEPAXJKPBDJ0@Z
+  009f76a0 MATCH CFourierAnalysis::??0CFourierAnalysis@@QAE@XZ
+  009f8860 RELOCATION_MATCH std::list<CGraphicBankManager::CGraphicDataBankInfo>::?_M_create_node@?$list@VCGraphicDataBankInfo@CGraphicBankManager@@
+  009f9df0 MATCH CTexture::?GetNoLevels@CTexture@@QBEJXZ
+  009fc150 MATCH CResourceList::?FrameEnd@CResourceList@@QAEXXZ
+  00a000a0 MATCH std::??$_Destroy@VCUnprovenPolymorphic_00a000a0@@@std@@YIXPAVCUnprovenPolymorphic_00a000a0@@@Z
+  00a01d40 MATCH CHandleBasedMemoryPool::?GetHandleFromPointer@CHandleBasedMemoryPool@@QAEJPAX@Z
+  00a03b80 MATCH CInputEvent::?GetChar@CInputEvent@@QBEGXZ
+  00a14e50 RELOCATION_MATCH CNavigatorManager::?SaveNavigationMapToFile@CNavigatorManager@@QBEXJAAVCAFile@@@Z
+  00a19b90 MATCH CANavQuadTreeNode::?GetPreferabilityCost@CANavQuadTreeNode@@UBEEXZ
+  00a20410 RELOCATION_MATCH std::pair<const long, CNavigatorAStar::CAStarState>::??0?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@QAE@ABJABVCAStarState@CNavigatorAStar@@@Z
+  00a222b0 RELOCATION_MATCH std::_Rb_tree<float, pair<const float, const CANavQuadTreeNode*>, ...>::?insert_equal@?$_Rb_tree@MU?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@
+  00a25e60 RELOCATION_MATCH CPhysicsMeshInfo::CMeshData::?OnResourceLoaded@CMeshData@CPhysicsMeshInfo@@UAEXXZ
+  00a2f170 RELOCATION_MATCH C3DMeshStats::?GetHelperPointNamesStartingWith@C3DMeshStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@_N@Z
+  00a31150 MATCH std::??$__copy@PAU?$pair@KVC3DHelperPoint@@@std@@PAU12@H@std@@
+  00a31880 MATCH CVectorMap<unsigned long, C3DMeshVolume, CKeyPairCompareLess<unsigned long, C3DMeshVolume> >::?LowerBound@?$CVectorMap@KVC3DMeshVolume@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@@QBEPBU?$pair@KVC3DMeshVolume@@@std@@ABK@Z
+  00a318d0 MATCH CVectorMap<unsigned long, C3DMeshVolume, CKeyPairCompareLess<unsigned long, C3DMeshVolume> >::?UpperBound@?$CVectorMap@KVC3DMeshVolume@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@@QBEPBU?$pair@KVC3DMeshVolume@@@std@@ABK@Z
+  00a32bc0 RELOCATION_MATCH std::??$__pop_heap@PAU?$pair@KVC3DDummyObject@@@std@@U12@V?$CKeyPairCompareLess@KVC3DDummyObject@@@@H@std@@
+  00a345d0 RELOCATION_MATCH std::vector<C3DGeneratorObject>::?push_back@?$vector@VC3DGeneratorObject@@V?$allocator@VC3DGeneratorObject@@@std@@@std@@QAEXABVC3DGeneratorObject@@@Z
+  00a35360 RELOCATION_MATCH std::vector<std::pair<unsigned long, C3DMeshVolume> >::?push_back@?$vector@U?$pair@KVC3DMeshVolume@@@std@@V?$allocator@U?$pair@KVC3DMeshVolume@@@std@@@2@@std@@QAEXABU?$pair@KVC3DMeshVolume@@@2@@Z
+  00a35b10 RELOCATION_MATCH C3DMeshObject::?GetHelperPointNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z
+  00a36fc0 MATCH CClassFactory::?GetNoAllocatedOfType@CClassFactory@@QBEKK@Z
+  00a3a9c0 RELOCATION_MATCH CCompressorZlib::?Alloc@CCompressorZlib@@CAPAXPAXII@Z
+  00a3aa00 RELOCATION_MATCH CCompressorZlib::?Free@CCompressorZlib@@CAXPAX0@Z
+  00a3e420 MATCH CSoundManagerLH::?GetNextEmitterID_00a3e420@CSoundManagerLH@@QAEJXZ
+  00a44130 RELOCATION_MATCH CCountedPointer<CLipSyncSampleData>::?DeleteData@?$CCountedPointer@VCLipSyncSampleData@@@@SIXPAX@Z
+  00a44690 RELOCATION_MATCH CSuspendableProcessMicrothread::?InternalSuspend@CSuspendableProcessMicrothread@@KIXXZ
+
+LANDED 39 wins into src/compiled + tests + catalog + oracle
+  std_uninitializedfilln_006cacb0
+  CGameScriptThing_DecrementScriptCounter_008d4680
+  CSystemRegistry_CSystemRegistry_0099cf70
+  NBankFileManager_SetHeaderDir_009a76c0
+  CDefinitionManager_RecompileDefType_009af6e0
+  CDefinitionManager_RecompileAllDefs_009af720
+  CXMVPlaybackInfo_CXMVPlaybackInfo_009bc7d0
+  CBankCreatorException_CBankCreatorException_009d47e0
+  NProfileTimer_StartProfile_009d8240
+  std_removeifpairCCharStringCSymbolInfoCPredHasGroupN_009e7380
+  CConsole_SetConsoleHelpWindowColour_009eaae0
+  CConsole_ConsoleAddKeyBinding_009ecc70
+  CMemoryAllocator_InternalAllocate_009f2ac0
+  CFourierAnalysis_CFourierAnalysis_009f76a0
+  stdlistCGraphicBankManagerCGraphicDataBankInfo_Mcreatenode_009f8860
+  CTexture_GetNoLevels_009f9df0
+  CResourceList_FrameEnd_009fc150
+  std_DestroyCUnprovenPolymorphic00a000a0_00a000a0
+  CHandleBasedMemoryPool_GetHandleFromPointer_00a01d40
+  CInputEvent_GetChar_00a03b80
+  CNavigatorManager_SaveNavigationMapToFile_00a14e50
+  CANavQuadTreeNode_GetPreferabilityCost_00a19b90
+  stdpairconstlongCNavigatorAStarCAStarState_pair_00a20410
+  stdRbtreefloatpairconstfloatconstCANavQuadTreeNode_insertequal_00a222b0
+  CPhysicsMeshInfoCMeshData_OnResourceLoaded_00a25e60
+  C3DMeshStats_GetHelperPointNamesStartingWith_00a2f170
+  std_copypairunsignedlongC3DHelperPointpairunsignedlo_00a31150
+  CVectorMapunsignedlongC3DMeshVolumeCKeyPairCompareLessunsignedlongC3DMeshVolume_LowerBound_00a31880
+  CVectorMapunsignedlongC3DMeshVolumeCKeyPairCompareLessunsignedlongC3DMeshVolume_UpperBound_00a318d0
+  std_popheappairunsignedlongC3DDummyObjectpairunsigne_00a32bc0
+  stdvectorC3DGeneratorObject_pushback_00a345d0
+  stdvectorstdpairunsignedlongC3DMeshVolume_pushback_00a35360
+  C3DMeshObject_GetHelperPointNamesStartingWith_00a35b10
+  CClassFactory_GetNoAllocatedOfType_00a36fc0
+  CCompressorZlib_Alloc_00a3a9c0
+  CCompressorZlib_Free_00a3aa00
+  CSoundManagerLH_GetNextEmitterID00a3e420_00a3e420
+  CCountedPointerCLipSyncSampleData_DeleteData_00a44130
+  CSuspendableProcessMicrothread_InternalSuspend_00a44690

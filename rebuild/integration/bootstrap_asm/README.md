@@ -81,3 +81,9 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - CWideString_Constructor_0099aed0.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CBase_RestoreVTable_0099a300_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CWideString_Constructor_0099aed0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- NProfileTimer_StartProfile_009d8240.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CSystemRegistry_Destructor_0099cf70_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CSystemRegistry_Destructor_0099cf70.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- NProfileTimer_StartProfile_009d8240_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- NBankFileManager_SetHeaderDir_009a76c0.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- NBankFileManager_SetHeaderDir_009a76c0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.

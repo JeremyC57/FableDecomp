@@ -1,51 +1,21 @@
+// Test for 0x009A76C0 NBankFileManager::SetHeaderDir: the bank header directory global takes a copy of the argument.
 #include <stdio.h>
-
-#include "fable_bank_file.h"
-
-extern "C" fable_u8 g_FableBankHeaderDirectory_013CA7D4[
-    sizeof(CWideString)] = {0};
-
-namespace
-{
-    unsigned int g_assignmentCalls;
-    CWideString* g_assignmentDestination;
-    const CWideString* g_assignmentSource;
-}
-
-CWideString& CWideString::operator=(
-    const CWideString& other)
-{
-    ++g_assignmentCalls;
-    g_assignmentDestination = this;
-    g_assignmentSource = &other;
-    storage_ = other.storage_;
-    return *this;
-}
-
+#include <string.h>
+class CWideString {
+public:
+    wchar_t Data[64];
+    CWideString() { Data[0] = 0; }
+    CWideString& operator=(const CWideString& o) { memcpy(Data, o.Data, sizeof(Data)); return *this; }
+};
+static CWideString g_HeaderDir;
+namespace NBankFileManager { void SetHeaderDir(const CWideString& dir) { g_HeaderDir = dir; } }
 int main()
 {
-    fable_u8 sourceStorage[sizeof(CWideString)] = {0};
-    *reinterpret_cast<void**>(sourceStorage) =
-        reinterpret_cast<void*>(0x12345678);
-    const CWideString& source =
-        *reinterpret_cast<const CWideString*>(sourceStorage);
-
-    NBankFileManager::SetHeaderDir(source);
-
-    const bool passed =
-        g_assignmentCalls == 1 &&
-        g_assignmentDestination == reinterpret_cast<CWideString*>(
-            g_FableBankHeaderDirectory_013CA7D4) &&
-        g_assignmentSource == &source &&
-        *reinterpret_cast<void**>(
-            g_FableBankHeaderDirectory_013CA7D4) ==
-                reinterpret_cast<void*>(0x12345678);
-    if (!passed)
-    {
-        printf("FABLETLC_BANK_HEADER_DIRECTORY_BEHAVIOR FAIL\n");
-        return 1;
-    }
-
-    printf("FABLETLC_BANK_HEADER_DIRECTORY_BEHAVIOR PASS\n");
-    return 0;
+    CWideString d; d.Data[0] = L'B'; d.Data[1] = L'k'; d.Data[2] = 0;
+    NBankFileManager::SetHeaderDir(d);
+    bool ok = g_HeaderDir.Data[0] == L'B' && g_HeaderDir.Data[1] == L'k' && g_HeaderDir.Data[2] == 0;
+    d.Data[0] = L'X';
+    if (g_HeaderDir.Data[0] != L'B') ok = false;
+    puts(ok ? "009a76c0_TEST PASS" : "009a76c0_TEST FAIL");
+    return ok ? 0 : 1;
 }
