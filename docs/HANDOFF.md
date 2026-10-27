@@ -7,8 +7,8 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 ## State
 - Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **49,920 rows**: **49,888 of 57,267 known
   functions (87.1%)**, or 43,317 of the original 49,568 (87.4%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
-  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): chunks 508 (128-256 bytes) and 509 (256-512 bytes) running (485-502, the singles under
-  128 bytes, landed 671 of 713; 503-507 122 of 150); chunk 510 queued (20 rows, 256-512 bytes) (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
+  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): chunks 509 and 510 (256-512 bytes) running (485-502, the singles under
+  128 bytes, landed 671 of 713; 503-508 151 of 180); chunks 511-512 queued (20 rows each, 256-512 bytes) (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by
   default, 4035 via `--qfe`.
 

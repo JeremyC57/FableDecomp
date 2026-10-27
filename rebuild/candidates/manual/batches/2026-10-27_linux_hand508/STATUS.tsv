@@ -1,0 +1,31 @@
+address	status	bytes	test	note
+00dd8fd0	RELOCATION_MATCH	207v207	PASS	CCellDoor::Main; do-while with the tail inside the if (3 grades)
+00dfb1b0	RELOCATION_MATCH	155v155	PASS	CTraderToRescue::Init
+00dfc050	RELOCATION_MATCH	134v134	PASS	CCampHostageDoor::Main
+00e1e470	RELOCATION_MATCH	165v165	PASS	CQR_EscortTraderScript::WatchForRegionLoads (spawned func)
+00e2abc0	RELOCATION_MATCH	205v205	PASS	CV_AmbushScamScript::Init
+00e323b0	RELOCATION_MATCH	231v231	PASS	CV_ArcheryCompetitionScript::Init (2 grades: first SRC_FAIL, CTimer declared before the interface)
+00e39780	RELOCATION_MATCH	207v207	PASS	CV_AssassinAttacksScript::OnPersist
+00e3b060	RELOCATION_MATCH	142v142	PASS	CMagicman::Init
+00e3b1a0	RELOCATION_MATCH	137v137	PASS	CBordelloClient::Init
+00e5fb80	RELOCATION_MATCH	232v232	PASS	CBodyGuard::OnPredicateFail
+00e68dc0	RELOCATION_MATCH	153v153	PASS	CChickenSign::Init (/Zc:wchar_t)
+00e68fa0	RELOCATION_MATCH	131v131	PASS	CV_ChapelOfEvilScript::Init
+00e766a0	RELOCATION_MATCH	138v138	PASS	CEM_Rhodri::Init
+00e7bca0	RELOCATION_MATCH	150v150	PASS	CFishermanBulletinBoard::Main
+00e836f0	RELOCATION_MATCH	131v131	PASS	CTyler::Init
+00e909a0	RELOCATION_MATCH	134v134	PASS	CGuildMasterGameFlow::Init
+00e95dc0	RELOCATION_MATCH	147v147	PASS	CHHUndead::OnPredicateFail
+00ea35a0	RELOCATION_MATCH	150v150	PASS	CLostTraderTrader::Init
+00eb2070	RELOCATION_MATCH	206v206	PASS	CMurderTwistSheriffGuard::Init (2 grades: ternary operand order)
+00eb3e40	RELOCATION_MATCH	247v247	PASS	CMurderTwistAssassin::Init
+00ec1c20	RELOCATION_MATCH	176v176	PASS	CRandomPopulationCreature::OnPredicateFail
+00ec8230	RELOCATION_MATCH	170v170	PASS	CManInLove::OnPredicateFail (2 grades: 2nd only re-spells the non-const CDefString conversion)
+00ed85a0	RELOCATION_MATCH	213v213	PASS	CV_TalentlessBardScript::OnPersist
+00edc390	RELOCATION_MATCH	149v149	PASS	CTOL_AltarGood::Main
+00ee0350	RELOCATION_MATCH	131v131	PASS	CTH_SnowTroll::OnPredicateFail
+00ee29d0	RELOCATION_MATCH	164v164	PASS	CV_TravellingHeroesScript::ThunderChatter (spawned func)
+00ee3fc0	RELOCATION_MATCH	219v219	PASS	CTH_Trigger_NorthernWastes::Main
+00ee82d0	DIFFER	172v181	-	CCS_OakValeRevisitedScript::Main parked: retail entry zero store mov [esp+8],0 + loop-align nop (3 grades)
+00eee800	RELOCATION_MATCH	170v170	PASS	CEmptyScript::Main
+00efc260	RELOCATION_MATCH	155v155	PASS	CHeroTurningDebuggerScript::Main

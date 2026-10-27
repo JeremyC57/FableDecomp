@@ -34074,3 +34074,12 @@ __imp__GetModuleHandleW@4	0143fea4	00cb0d80
 ?ScheduleSound@CSoftwareVoice@@QAEXPAUCAudioSound@@_J@Z	00c5acb0	00c5b250
 __imp__CreateSemaphoreW@16	0143fe54	00cabae0
 ??_7CQ_OrchardFarmRaidScript@NScript@@6B@	012daf78	00dcc040
+??$TransferVector@J@CPersistContext@@QAEXPBDAAV?$vector@JV?$allocator@J@std@@@std@@@Z	005815d6	00e39780
+?GetGoldCost@CBodyGuard@CV_BodyGuardScript@NScript@@AAEJXZ	00e5fc70	00e5fb80
+??4CWideString@@QAEABV0@PB_W@Z	0099b800	00e68dc0
+?resize@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXIABVCWideString@@@Z	00412b20	00e68dc0
+??BCDefString@@QAE?AVCCharString@@XZ	00415d70	00ec8230
+?DoConversation@CV_TravellingHeroesScript@NScript@@QAEXJ@Z	00ee2a80	00ee29d0
+?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@@Z	00ee2db0	00ee3fc0
+?Bum@CEmptyScript@NScript@@QAEXXZ	00eee8b0	00eee800
+?MoveHeroTest@CHeroTurningDebuggerScript@NScript@@QAEXXZ	00efc300	00efc260

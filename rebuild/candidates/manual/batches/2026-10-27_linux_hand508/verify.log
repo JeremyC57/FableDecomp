@@ -1,0 +1,124 @@
+addr       parity           behav  name
+00dd8fd0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00dd8fd0   RELOCATION_MATCH PASS   Main
+00dfb1b0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00dfb1b0   RELOCATION_MATCH PASS   Init
+00dfc050   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00dfc050   RELOCATION_MATCH PASS   Main
+00e1e470   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e1e470   RELOCATION_MATCH PASS   WatchForRegionLoads
+00e2abc0   RELOCATION_MATCH PASS   Init
+00e323b0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e323b0   RELOCATION_MATCH PASS   Init
+00e39780   RELOCATION_MATCH PASS   OnPersist
+00e3b060   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e3b060   RELOCATION_MATCH PASS   Init
+00e3b1a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e3b1a0   RELOCATION_MATCH PASS   Init
+00e5fb80   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e5fb80   WARN RELOC_NAME: ?GetGoldCost@CBodyGuard@CV_BodyGuardScript@NScript@@AAEJXZ -> 00e5fc70 labelled 'NScript::CV_BodyGuardScript::CBodyGuard::GetHenchmanGoldCost'
+00e5fb80   RELOCATION_MATCH PASS   OnPredicateFail
+00e68dc0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PB_W@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00e68dc0   RELOCATION_MATCH PASS   Init
+00e68fa0   RELOCATION_MATCH PASS   Init
+00e766a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e766a0   RELOCATION_MATCH PASS   Init
+00e7bca0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e7bca0   RELOCATION_MATCH PASS   Main
+00e836f0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e836f0   RELOCATION_MATCH PASS   Init
+00e909a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e909a0   RELOCATION_MATCH PASS   Init
+00e95dc0   RELOCATION_MATCH PASS   OnPredicateFail
+00ea35a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ea35a0   RELOCATION_MATCH PASS   Init
+00eb2070   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb2070   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00eb2070   RELOCATION_MATCH PASS   Init
+00eb3e40   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb3e40   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00eb3e40   RELOCATION_MATCH PASS   Init
+00ec1c20   RELOCATION_MATCH PASS   OnPredicateFail
+00ec8230   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ec8230   WARN RELOC_NAME: ??BCDefString@@QAE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator_class_CCharString'
+00ec8230   RELOCATION_MATCH PASS   OnPredicateFail
+00ed85a0   RELOCATION_MATCH PASS   OnPersist
+00edc390   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00edc390   RELOCATION_MATCH PASS   Main
+00ee0350   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ee0350   RELOCATION_MATCH PASS   OnPredicateFail
+00ee29d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00ee29d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ee29d0   RELOCATION_MATCH PASS   ThunderChatter
+00ee3fc0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ee3fc0   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00ee3fc0   RELOCATION_MATCH PASS   Main
+00eee800   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+00eee800   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00eee800   RELOCATION_MATCH PASS   Main
+00efc260   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+00efc260   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00efc260   WARN RELOC_NAME: ?MoveHeroTest@CHeroTurningDebuggerScript@NScript@@QAEXXZ -> 00efc300 labelled 'Script_MarkerToFace_Thread'
+00efc260   RELOCATION_MATCH PASS   Main
+
+WINS: 29
+  00dd8fd0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoor::?Main@CCellDoor@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00dfb1b0 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CTraderToRescue::?Init@CTraderToRescue@CQ_TraderConflictGoodScript@NScript@@EAEXXZ
+  00dfc050 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CCampHostageDoor::?Main@CCampHostageDoor@CQ_TraderConflictGoodScript@NScript@@EAEXXZ
+  00e1e470 RELOCATION_MATCH NScript::CQR_EscortTraderScript::?WatchForRegionLoads@CQR_EscortTraderScript@NScript@@QAEXXZ
+  00e2abc0 RELOCATION_MATCH NScript::CV_AmbushScamScript::?Init@CV_AmbushScamScript@NScript@@UAEXXZ
+  00e323b0 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::?Init@CV_ArcheryCompetitionScript@NScript@@UAEXXZ
+  00e39780 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::?OnPersist@CV_AssassinAttacksScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00e3b060 RELOCATION_MATCH NScript::CV_BordelloScript::CMagicman::?Init@CMagicman@CV_BordelloScript@NScript@@EAEXXZ
+  00e3b1a0 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloClient::?Init@CBordelloClient@CV_BordelloScript@NScript@@EAEXXZ
+  00e5fb80 RELOCATION_MATCH NScript::CV_BodyGuardScript::CBodyGuard::?OnPredicateFail@CBodyGuard@CV_BodyGuardScript@NScript@@EAEXXZ
+  00e68dc0 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CChickenSign::?Init@CChickenSign@CV_ChickenKickingScript@NScript@@EAEXXZ
+  00e68fa0 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?Init@CV_ChapelOfEvilScript@NScript@@UAEXXZ
+  00e766a0 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CEM_Rhodri::?Init@CEM_Rhodri@CV_ExposeMayorScript@NScript@@EAEXXZ
+  00e7bca0 RELOCATION_MATCH NScript::CV_FishermanScript::CFishermanBulletinBoard::?Main@CFishermanBulletinBoard@CV_FishermanScript@NScript@@EAEXXZ
+  00e836f0 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CTyler::?Init@CTyler@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00e909a0 RELOCATION_MATCH NScript::CV_GuildMasterScript::CGuildMasterGameFlow::?Init@CGuildMasterGameFlow@CV_GuildMasterScript@NScript@@EAEXXZ
+  00e95dc0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CHHUndead::?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ
+  00ea35a0 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderTrader::?Init@CLostTraderTrader@CV_LostTraderScript@NScript@@EAEXXZ
+  00eb2070 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::?Init@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@EAEXXZ
+  00eb3e40 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::?Init@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@EAEXXZ
+  00ec1c20 RELOCATION_MATCH NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature::?OnPredicateFail@CRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@EAEXXZ
+  00ec8230 RELOCATION_MATCH NScript::CV_SickChildScript::CManInLove::?OnPredicateFail@CManInLove@CV_SickChildScript@NScript@@EAEXXZ
+  00ed85a0 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?OnPersist@CV_TalentlessBardScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00edc390 RELOCATION_MATCH NScript::CV_TempleOfLightScript::CTOL_AltarGood::?Main@CTOL_AltarGood@CV_TempleOfLightScript@NScript@@EAEXXZ
+  00ee0350 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_SnowTroll::?OnPredicateFail@CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@EAEXXZ
+  00ee29d0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::?ThunderChatter@CV_TravellingHeroesScript@NScript@@QAEXXZ
+  00ee3fc0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_NorthernWastes::?Main@CTH_Trigger_NorthernWastes@CV_TravellingHeroesScript@NScript@@EAEXXZ
+  00eee800 RELOCATION_MATCH NScript::CEmptyScript::?Main@CEmptyScript@NScript@@UAEXXZ
+  00efc260 RELOCATION_MATCH NScript::CHeroTurningDebuggerScript::?Main@CHeroTurningDebuggerScript@NScript@@UAEXXZ
+
+LANDED 29 wins into src/compiled + tests + catalog + oracle
+  NScriptCQPrisonEscapeRescueMotherScriptCCellDoor_Main_00dd8fd0
+  NScriptCQTraderConflictGoodScriptCTraderToRescue_Init_00dfb1b0
+  NScriptCQTraderConflictGoodScriptCCampHostageDoor_Main_00dfc050
+  NScriptCQREscortTraderScript_WatchForRegionLoads_00e1e470
+  NScriptCVAmbushScamScript_Init_00e2abc0
+  NScriptCVArcheryCompetitionScript_Init_00e323b0
+  NScriptCVAssassinAttacksScript_OnPersist_00e39780
+  NScriptCVBordelloScriptCMagicman_Init_00e3b060
+  NScriptCVBordelloScriptCBordelloClient_Init_00e3b1a0
+  NScriptCVBodyGuardScriptCBodyGuard_OnPredicateFail_00e5fb80
+  NScriptCVChickenKickingScriptCChickenSign_Init_00e68dc0
+  NScriptCVChapelOfEvilScript_Init_00e68fa0
+  NScriptCVExposeMayorScriptCEMRhodri_Init_00e766a0
+  NScriptCVFishermanScriptCFishermanBulletinBoard_Main_00e7bca0
+  NScriptCVFisticuffsClubScriptCTyler_Init_00e836f0
+  NScriptCVGuildMasterScriptCGuildMasterGameFlow_Init_00e909a0
+  NScriptCVHauntedHouseScriptCHHUndead_OnPredicateFail_00e95dc0
+  NScriptCVLostTraderScriptCLostTraderTrader_Init_00ea35a0
+  NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Init_00eb2070
+  NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Init_00eb3e40
+  NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_OnPredicateFail_00ec1c20
+  NScriptCVSickChildScriptCManInLove_OnPredicateFail_00ec8230
+  NScriptCVTalentlessBardScript_OnPersist_00ed85a0
+  NScriptCVTempleOfLightScriptCTOLAltarGood_Main_00edc390
+  NScriptCVTravellingHeroesScriptCTHSnowTroll_OnPredicateFail_00ee0350
+  NScriptCVTravellingHeroesScript_ThunderChatter_00ee29d0
+  NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_Main_00ee3fc0
+  NScriptCEmptyScript_Main_00eee800
+  NScriptCHeroTurningDebuggerScript_Main_00efc260
