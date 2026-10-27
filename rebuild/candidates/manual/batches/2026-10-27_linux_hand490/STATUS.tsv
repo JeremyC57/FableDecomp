@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0081e9c0	RELOCATION_MATCH	43v43	PASS	CMap::GetScriptedMapBrush(long)
+0082d0c0	MATCH	16v16	PASS	CThingBuilding::IsEntitySerialisable() const
+0082ff60	MATCH	16v16	PASS	CThingAICreature::GetMaxSprintingSpeed(const C3DVector&) const
+00838570	RELOCATION_MATCH	8v8	PASS	CThingNoise::WorldUpdate()
+00838950	RELOCATION_MATCH	28v28	PASS	CThing::IsLineOfSightTo_00838950(const CThing&) const
+0084ecd0	MATCH	50v50	PASS	std::__uninitialized_copy(const CCountedPointer<NCameraModes::CSubComponentBase>* first, last, CCountedPointer<..>* result, const __false_type&)
+00855b90	RELOCATION_MATCH	80v80	PASS	CCreatureAction_BlockRespond::CCreatureAction_BlockRespond(CThingCreatureBase&, const C3DVector&, long)
+0085bd60	MATCH	11v11	PASS	CCombatAction_ControlledStrafeJump::IsOverrideableByActionOfSamePriority() const
+00860300	MATCH	11v11	PASS	CVillageTaskSecuritySweep::IsValid() const
+00863250	MATCH	10v10	PASS	CThingBodyReorienter::IsUpdateNeeded() const
+00863790	RELOCATION_MATCH	55v55	PASS	CThingBodyReorienter::~CThingBodyReorienter()
+00865b50	RELOCATION_MATCH	11v11	PASS	CCombatAction_GenericStrikeResponseBase::IsAlwaysPhysicsPushableBySelfAvoidance() const
+0086b4d0	RELOCATION_MATCH	87v87	PASS	std::__pop_heap(pair<long,CRandomAppearanceMorph::CSkeletalMorph>* first, last, result, value, CKeyPairCompareLess<..>, int*)
+0086e9f0	RELOCATION_MATCH	100v100	PASS	std::vector<CRandomAppearanceMorph::CBodyPartMesh>::resize(unsigned int, const CBodyPartMesh&)
+0086f9a0	RELOCATION_MATCH	86v86	PASS	std::__pop_heap_aux(pair<EExpressionType,CExpressionSet::CEntry>* first, last, pair<..>*, CKeyPairCompareLess<..>)
+00877fd0	RELOCATION_MATCH	52v52	PASS	std::__find_if(_List_iterator<const CThingBuilding*> first, last, NCameraModes::CIsPosInBuilding pred, const input_iterator_tag&)
+00884d40	RELOCATION_MATCH	72v72	PASS	NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CScreenFilterEntry(const CScreenFilterEntry&)
+00886430	RELOCATION_MATCH	70v70	PASS	NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::SetDefaultThemeWeight(float, bool)
+008b0000	RELOCATION_MATCH	19v19	PASS	CCombatSequence_BanditKingSpinAround::StatGetName()
+008e9b60	RELOCATION_MATCH	16v16	PASS	NCreatureMode::CModeStrafe::OnDeactivate()
+008edc70	DIFFER	83v85	-	parked DIFFER(83v85): Index load/copy scheduling (mov eax,ecx) around the bool test; descriptive CUnprovenSequence_008edc70
+008ee850	MATCH	56v56	PASS	std::_Rb_tree<CUnprovenKey_008ee850, CUnprovenValue_008ee850, CUnprovenKeyOfValue_008ee850, std::less<CUnprovenKey_008ee850>, std::allocator<CUnprovenValue_008ee850>>::_M_find(CUnprovenKey_008ee850 const &) const
+008f0000	MATCH	52v52	PASS	CUnprovenCountedPointer_008f0000::Assign_008f0000(const CUnprovenCountedPointer_008f0000&)
+008f92ef	SKIP	-v14	-	skipped: catch-block funclet (Catch@) using the parent frame's [ebp-0x28]; not a standalone function
+008f92fd	SKIP	-v29	-	skipped: continuation code after the Catch@008F92EF funclet; runs on the parent frame (ebp, fs:[0]) and pops registers it never pushed
+008f9d00	RELOCATION_MATCH	60v60	PASS	LHNetworkLib::LTimer::Start()
+008fc840	RELOCATION_MATCH	73v73	PASS	std::pair<float, std::list<C3DVector> >::pair(const pair&)
+008fc890	RELOCATION_MATCH	99v99	PASS	std::list<CPhysicsMeshObject>::insert(iterator, const CPhysicsMeshObject&)
+009054f0	RELOCATION_MATCH	11v11	PASS	NBalverineCombat::SetLungedThisFrame()
+0090c190	MATCH	8v8	PASS	CAIStateGroup_MinionGuardFollowPlayer::IsStillValid() const
+0090e120	RELOCATION_MATCH	69v69	PASS	CMessageEventFilter_ThingSearchFilter<CThingFilter_IsValidGossipee>::operator()(const CMessageEvent&) const
+00918050	RELOCATION_MATCH	123v123	PASS	CIsFreeBench::operator()(const CIntelligentPointer<CThing>&) const
+009277cb	SKIP	-v60	-	skipped: mid-function fragment of an STL tree routine (pops with no matching pushes); not a function entry
+00982390	MATCH	10v10	PASS	NEntityEvents::CEventVillagerInteraction::GetLifeTime() const
+0098e590	RELOCATION_MATCH	95v95	PASS	CThreadedFileManager::IsObjectFinished(unsigned long) const
+00991670	RELOCATION_MATCH	23v23	PASS	CASoundManager::FlushLoadingQueue_00991670()
+00992db0	RELOCATION_MATCH	98v98	PASS	std::__pop_heap(pair<long,CSoundBankRecord>* first, last, result, value, CKeyPairCompareLess<long,CSoundBankRecord>, int*)
+0099a300	RELOCATION_MATCH	7v7	PASS	CBaseClass::~CBaseClass()
+0099a350	MATCH	6v6	PASS	CInitBaseClass::Initialise()
+0099aed0	RELOCATION_MATCH	15v15	PASS	CWideString::CWideString()

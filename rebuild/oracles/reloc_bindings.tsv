@@ -33858,3 +33858,13 @@ _s_NoGroupAnimFilter_01382438	01382438	01229a10
 ?_M_insert_overflow@?$CResultVector@PAVCThing@@@@QAEXPAPAVCThing@@ABQAV2@ABU__true_type@@K_N@Z	00436ac0	008093d0
 ??$__linear_insert@PAV?$CIntelligentPointer@VCThing@@@@V1@UCDoNotUseBinaryPredicate@?A0x861af7bc@@@std@@YIXPAV?$CIntelligentPointer@VCThing@@@@0V1@UCDoNotUseBinaryPredicate@?A0x861af7bc@@@Z	00809650	00809f30
 ??$__adjust_heap@PAUTHitLocationIntersectionElement@?A0x7ea22800@@HU12@UTHitLocationIntersectionElementPred@2@@std@@YIXPAUTHitLocationIntersectionElement@?A0x7ea22800@@HHU12@UTHitLocationIntersectionElementPred@2@@Z	008175d0	008178e0
+?WorldUpdate@CThing@@UAE_NXZ	004c8050	00838570
+??0CCreatureAction_BlockBase@@QAE@AAVCThingCreatureBase@@0JJ@Z	00855af0	00855b90
+?IsUsingActionMovement@CCreatureActionBase@@QBE_NXZ	00692a50	00865b50
+?_M_fill_insert@?$vector@VCBodyPartMesh@CRandomAppearanceMorph@@V?$allocator@VCBodyPartMesh@CRandomAppearanceMorph@@@std@@@std@@QAEXPAVCBodyPartMesh@CRandomAppearanceMorph@@IABV34@@Z	0086e5c0	0086e9f0
+?erase@?$vector@VCBodyPartMesh@CRandomAppearanceMorph@@V?$allocator@VCBodyPartMesh@CRandomAppearanceMorph@@@std@@@std@@QAEPAVCBodyPartMesh@CRandomAppearanceMorph@@PAV34@0@Z	0086e150	0086e9f0
+??0?$map@PAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$less@PAVCThing@@@std@@V?$allocator@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@7@@std@@QAE@ABV01@@Z	00884a40	00884d40
+?ResetStrafeAnims_008e97b0@CModeStrafe@NCreatureMode@@AAEXXZ	008e97b0	008e9b60
+?find@?$_Rb_tree@KU?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Select1st@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Const_traits@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@2@ABK@Z	00990320	0098e590
+?ProcessLoadingQueue@CResourceBank@@QAEX_NN@Z	009fc410	00991670
+??$__adjust_heap@PAU?$pair@JVCSoundBankRecord@@@std@@HU12@V?$CKeyPairCompareLess@JVCSoundBankRecord@@@@@std@@YIXPAU?$pair@JVCSoundBankRecord@@@0@HHU10@V?$CKeyPairCompareLess@JVCSoundBankRecord@@@@@Z	00992b80	00992db0

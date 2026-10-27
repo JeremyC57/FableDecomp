@@ -1,0 +1,125 @@
+addr       parity           behav  name
+0081e9c0   WARN SHARED_HEADER_AVAILABLE CScriptedMapBrush
+0081e9c0   RELOCATION_MATCH PASS   GetScriptedMapBrush
+0082d0c0   MATCH            PASS   IsEntitySerialisable
+0082ff60   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0082ff60   MATCH            PASS   GetMaxSprintingSpeed
+00838570   RELOCATION_MATCH PASS   WorldUpdate
+00838950   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00838950   RELOCATION_MATCH PASS   IsLineOfSightTo_00838950
+0084ecd0   MATCH            PASS   __uninitialized_copy
+00855b90   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BlockBase
+00855b90   RELOCATION_MATCH PASS   CCreatureAction_BlockRespond
+0085bd60   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0085bd60   MATCH            PASS   IsOverrideableByActionOfSamePriority
+00860300   MATCH            PASS   IsValid
+00863250   MATCH            PASS   IsUpdateNeeded
+00863790   RELOCATION_MATCH PASS   ~CThingBodyReorienter
+00865b50   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00865b50   RELOCATION_MATCH PASS   IsAlwaysPhysicsPushableBySelfAvoidance
+0086b4d0   RELOCATION_MATCH PASS   __pop_heap
+0086e9f0   WARN RELOC_NAME: ?_M_fill_insert@?$vector@VCBodyPartMesh@CRandomAppearanceMorph@@V?$allocator@VCBodyPartMesh@CRandomAppearanceMorph@@@std@@@std@@QAEXPAVCBodyPartMesh@CRandomAppearanceMorph@@IABV34@@Z -> 0086e5c0 labelled 'std::vector::std::vector::Resize_CSharerParserEntry_24byte'
+0086e9f0   RELOCATION_MATCH PASS   resize
+0086f9a0   RELOCATION_MATCH PASS   __pop_heap_aux
+00877fd0   RELOCATION_MATCH PASS   __find_if
+00884d40   RELOCATION_MATCH PASS   CScreenFilterEntry
+00886430   RELOCATION_MATCH PASS   SetDefaultThemeWeight
+008b0000   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingSpinAround
+008b0000   RELOCATION_MATCH PASS   StatGetName
+008e9b60   RELOCATION_MATCH PASS   OnDeactivate
+008ee850   MATCH            PASS   _M_find
+008f0000   MATCH            PASS   Assign_008f0000
+008f9d00   RELOCATION_MATCH PASS   Start
+008fc840   RELOCATION_MATCH PASS   pair
+008fc890   RELOCATION_MATCH PASS   insert
+009054f0   WARN SHARED_HEADER_AVAILABLE CWorld
+009054f0   RELOCATION_MATCH PASS   SetLungedThisFrame
+0090c190   MATCH            PASS   IsStillValid
+0090e120   RELOCATION_MATCH PASS   operator()
+00918050   RELOCATION_MATCH PASS   operator()
+00982390   MATCH            PASS   GetLifeTime
+0098e590   RELOCATION_MATCH PASS   IsObjectFinished
+00991670   WARN RELOC_NAME: ?ProcessLoadingQueue@CResourceBank@@QAEX_NN@Z -> 009fc410 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00991670   RELOCATION_MATCH PASS   FlushLoadingQueue_00991670
+00992db0   WARN RELOC_NAME: ??4CSoundBankRecord@@QAEAAV0@ABV0@@Z -> 00992630 labelled 'CCamera::UpdateCleanupFlags'
+00992db0   WARN RELOC_NAME: ??0CSoundBankRecord@@QAE@ABV0@@Z -> 009922f0 labelled 'SRecord::SRecord'
+00992db0   RELOCATION_MATCH PASS   __pop_heap
+0099a300   RELOCATION_MATCH PASS   ~CBaseClass
+0099a350   MATCH            PASS   Initialise
+0099aed0   RELOCATION_MATCH PASS   CWideString
+
+WINS: 36
+  0081e9c0 RELOCATION_MATCH CMap::?GetScriptedMapBrush@CMap@@QAEAAVCScriptedMapBrush@@J@Z
+  0082d0c0 MATCH CThingBuilding::?IsEntitySerialisable@CThingBuilding@@UBE_NXZ
+  0082ff60 MATCH CThingAICreature::?GetMaxSprintingSpeed@CThingAICreature@@UBEMABVC3DVector@@@Z
+  00838570 RELOCATION_MATCH CThingNoise::?WorldUpdate@CThingNoise@@UAE_NXZ
+  00838950 RELOCATION_MATCH CThing::?IsLineOfSightTo_00838950@CThing@@QBE_NABV1@@Z
+  0084ecd0 MATCH std::??$__uninitialized_copy@PBV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@PAV1@@std@@YIPAV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@PBV1@0PAV1@ABU__false_type@0@@Z
+  00855b90 RELOCATION_MATCH CCreatureAction_BlockRespond::??0CCreatureAction_BlockRespond@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@J@Z
+  0085bd60 MATCH CCombatAction_ControlledStrafeJump::?IsOverrideableByActionOfSamePriority@CCombatAction_ControlledStrafeJump@@UBE_NXZ
+  00860300 MATCH CVillageTaskSecuritySweep::?IsValid@CVillageTaskSecuritySweep@@QBE_NXZ
+  00863250 MATCH CThingBodyReorienter::?IsUpdateNeeded@CThingBodyReorienter@@QBE_NXZ
+  00863790 RELOCATION_MATCH CThingBodyReorienter::??1CThingBodyReorienter@@QAE@XZ
+  00865b50 RELOCATION_MATCH CCombatAction_GenericStrikeResponseBase::?IsAlwaysPhysicsPushableBySelfAvoidance@CCombatAction_GenericStrikeResponseBase@@UBE_NXZ
+  0086b4d0 RELOCATION_MATCH std::??$__pop_heap@PAU?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@@std@@U12@V?$CKeyPairCompareLess@JVCSkeletalMorph@CRandomAppearanceMorph@@@@H@std@@YIXPAU?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@@0@00U10@V?$CKeyPairCompareLess@JVCSkeletalMorph@CRandomAppearanceMorph@@@@PAH@Z
+  0086e9f0 RELOCATION_MATCH std::vector<CRandomAppearanceMorph::CBodyPartMesh>::?resize@?$vector@VCBodyPartMesh@CRandomAppearanceMorph@@V?$allocator@VCBodyPartMesh@CRandomAppearanceMorph@@@std@@@std@@QAEXIABVCBodyPartMesh@CRandomAppearanceMorph@@@Z
+  0086f9a0 RELOCATION_MATCH std::??$__pop_heap_aux@PAU?$pair@W4EExpressionType@@VCEntry@CExpressionSet@@@std@@U12@V?$CKeyPairCompareLess@W4EExpressionType@@VCEntry@CExpressionSet@@@@@std@@YIXPAU?$pair@W4EExpressionType@@VCEntry@CExpressionSet@@@0@00V?$CKeyPairCompareLess@W4EExpressionType@@VCEntry@CExpressionSet@@@@@Z
+  00877fd0 RELOCATION_MATCH std::??$__find_if@U?$_List_iterator@PBVCThingBuilding@@U?$_Nonconst_traits@PBVCThingBuilding@@@std@@@std@@VCIsPosInBuilding@NCameraModes@@@std@@YI?AU?$_List_iterator@PBVCThingBuilding@@U?$_Nonconst_traits@PBVCThingBuilding@@@std@@@0@U10@0VCIsPosInBuilding@NCameraModes@@ABUinput_iterator_tag@0@@Z
+  00884d40 RELOCATION_MATCH NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::??0CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@QAE@ABU012@@Z
+  00886430 RELOCATION_MATCH NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::?SetDefaultThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXM_N@Z
+  008b0000 RELOCATION_MATCH CCombatSequence_BanditKingSpinAround::?StatGetName@CCombatSequence_BanditKingSpinAround@@SI?AVCCharString@@XZ
+  008e9b60 RELOCATION_MATCH NCreatureMode::CModeStrafe::?OnDeactivate@CModeStrafe@NCreatureMode@@UAEXXZ
+  008ee850 MATCH std::_Rb_tree<CUnprovenKey_008ee850, CUnprovenValue_008ee850, CUnprovenKeyOfValue_008ee850, std::less<CUnprovenKey_008ee850>, std::allocator<CUnprovenValue_008ee850>>::?_M_find@?$_Rb_tree@UCUnprovenKey_008ee850@@UCUnprovenValue_008ee850@@UCUnprovenKeyOfValue_008ee850@@U?$less@UCUnprovenKey_008ee850@@@std@@V?$allocator@UCUnprovenValue_008ee850@@@5@@std@@ABEPAU?$_Rb_tree_node@UCUnprovenValue_008ee850@@@2@ABUCUnprovenKey_008ee850@@@Z
+  008f0000 MATCH CUnprovenCountedPointer_008f0000::?Assign_008f0000@CUnprovenCountedPointer_008f0000@@QAEXABV1@@Z
+  008f9d00 RELOCATION_MATCH LHNetworkLib::LTimer::?Start@LTimer@LHNetworkLib@@QAEXXZ
+  008fc840 RELOCATION_MATCH std::pair<float, std::list<C3DVector> >::??0?$pair@MV?$list@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@std@@QAE@ABU01@@Z
+  008fc890 RELOCATION_MATCH std::list<CPhysicsMeshObject>::?insert@?$list@VCPhysicsMeshObject@@V?$allocator@VCPhysicsMeshObject@@@std@@@std@@QAE?AU?$_List_iterator@VCPhysicsMeshObject@@U?$_Nonconst_traits@VCPhysicsMeshObject@@@std@@@2@U32@ABVCPhysicsMeshObject@@@Z
+  009054f0 RELOCATION_MATCH NBalverineCombat::?SetLungedThisFrame@NBalverineCombat@@YIXXZ
+  0090c190 MATCH CAIStateGroup_MinionGuardFollowPlayer::?IsStillValid@CAIStateGroup_MinionGuardFollowPlayer@@UBE_NXZ
+  0090e120 RELOCATION_MATCH CMessageEventFilter_ThingSearchFilter<CThingFilter_IsValidGossipee>::??R?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@QBE_NABVCMessageEvent@@@Z
+  00918050 RELOCATION_MATCH CIsFreeBench::??RCIsFreeBench@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z
+  00982390 MATCH NEntityEvents::CEventVillagerInteraction::?GetLifeTime@CEventVillagerInteraction@NEntityEvents@@UBEJXZ
+  0098e590 RELOCATION_MATCH CThreadedFileManager::?IsObjectFinished@CThreadedFileManager@@QBE_NK@Z
+  00991670 RELOCATION_MATCH CASoundManager::?FlushLoadingQueue_00991670@CASoundManager@@UAEXXZ
+  00992db0 RELOCATION_MATCH std::??$__pop_heap@PAU?$pair@JVCSoundBankRecord@@@std@@U12@V?$CKeyPairCompareLess@JVCSoundBankRecord@@@@H@std@@YIXPAU?$pair@JVCSoundBankRecord@@@0@00U10@V?$CKeyPairCompareLess@JVCSoundBankRecord@@@@PAH@Z
+  0099a300 RELOCATION_MATCH CBaseClass::??1CBaseClass@@UAE@XZ
+  0099a350 MATCH CInitBaseClass::?Initialise@CInitBaseClass@@IAE_NXZ
+  0099aed0 RELOCATION_MATCH CWideString::??0CWideString@@QAE@XZ
+
+LANDED 36 wins into src/compiled + tests + catalog + oracle
+  CMap_GetScriptedMapBrush_0081e9c0
+  CThingBuilding_IsEntitySerialisable_0082d0c0
+  CThingAICreature_GetMaxSprintingSpeed_0082ff60
+  CThingNoise_WorldUpdate_00838570
+  CThing_IsLineOfSightTo00838950_00838950
+  std_uninitializedcopy_0084ecd0
+  CCreatureActionBlockRespond_CCreatureActionBlockRespond_00855b90
+  CCombatActionControlledStrafeJump_IsOverrideableByActionOfSamePriority_0085bd60
+  CVillageTaskSecuritySweep_IsValid_00860300
+  CThingBodyReorienter_IsUpdateNeeded_00863250
+  CThingBodyReorienter_CThingBodyReorienter_00863790
+  CCombatActionGenericStrikeResponseBase_IsAlwaysPhysicsPushableBySelfAvoidance_00865b50
+  std_popheap_0086b4d0
+  stdvectorCRandomAppearanceMorphCBodyPartMesh_resize_0086e9f0
+  std_popheapaux_0086f9a0
+  std_findif_00877fd0
+  NScreenEffectCScreenEffectPriorityStackCScreenFilterEntry_CScreenFilterEntry_00884d40
+  NEnvironmentInternalCEnvironmentThemePriorityStackEntry_SetDefaultThemeWeight_00886430
+  CCombatSequenceBanditKingSpinAround_StatGetName_008b0000
+  NCreatureModeCModeStrafe_OnDeactivate_008e9b60
+  stdRbtreeCUnprovenKey008ee850CUnprovenValue008ee850CUnprovenKeyOfValue008ee850st_Mfind_008ee850
+  CUnprovenCountedPointer008f0000_Assign008f0000_008f0000
+  LHNetworkLibLTimer_Start_008f9d00
+  stdpairfloatstdlistC3DVector_pair_008fc840
+  stdlistCPhysicsMeshObject_insert_008fc890
+  NBalverineCombat_SetLungedThisFrame_009054f0
+  CAIStateGroupMinionGuardFollowPlayer_IsStillValid_0090c190
+  CMessageEventFilterThingSearchFilterCThingFilterIsValidGossipee_operator_0090e120
+  CIsFreeBench_operator_00918050
+  NEntityEventsCEventVillagerInteraction_GetLifeTime_00982390
+  CThreadedFileManager_IsObjectFinished_0098e590
+  CASoundManager_FlushLoadingQueue00991670_00991670
+  std_popheap_00992db0
+  CBaseClass_CBaseClass_0099a300
+  CInitBaseClass_Initialise_0099a350
+  CWideString_CWideString_0099aed0

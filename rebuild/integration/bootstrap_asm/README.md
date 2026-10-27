@@ -77,3 +77,7 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - Global_GetLanguageDirectoryA_0041a120_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - Global_GetLanguageDirectoryA_0041a120.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - Global_GetLanguageDirectoryB_0041a330.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CBase_RestoreVTable_0099a300.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CWideString_Constructor_0099aed0.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CBase_RestoreVTable_0099a300_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- CWideString_Constructor_0099aed0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
