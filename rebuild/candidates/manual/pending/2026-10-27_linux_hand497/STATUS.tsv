@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+00c8a8b0	DIFFER	107v105	-	ov_halfrate; 1 grade; LTCG register arg to _decode_clear (lane gap)
+00c8cb20	DIFFER	5v22	-	ov_test_callbacks; 1 grade; LTCG _ov_open1 eax/ebx args (lane gap)
+00c8d9c0	DIFFER	22v14	-	ogg_stream_reset_serialno; 1 grade; LTCG keeps ecx/edx across call (lane gap)
+00c8db20	DIFFER	8v12	-	ogg_stream_packetpeek; 1 grade; LTCG _packetout eax/ecx args (lane gap)

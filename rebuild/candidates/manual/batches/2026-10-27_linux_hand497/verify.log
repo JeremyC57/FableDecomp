@@ -1,0 +1,121 @@
+addr       parity           behav  name
+00c72fe0   WARN RELOC_NAME: ?ApplySound@CAudioSource@@QAEXPAUCAudioSound@@_J@Z -> 00c72e00 labelled 'Audio_InitializeSource_AL'
+00c72fe0   RELOCATION_MATCH PASS   Update
+00c73eb0   MATCH            PASS   GetLength
+00c73ec0   MATCH            PASS   Seek
+00c73f10   RELOCATION_MATCH PASS   Read
+00c73fc0   MATCH            PASS   Scale
+00c74030   MATCH            PASS   ScaleCopy
+00c740b0   MATCH            PASS   ScaleRamp
+00c741c0   MATCH            PASS   Add
+00c75400   RELOCATION_MATCH PASS   ~CDelayLine
+00c75470   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c774a0   MATCH            PASS   SetSettings
+00c88620   RELOCATION_MATCH PASS   GetLength
+00c88640   RELOCATION_MATCH PASS   Seek
+00c88740   RELOCATION_MATCH PASS   GetRate
+00c88770   MATCH            PASS   GetState
+00c888f0   RELOCATION_MATCH PASS   CVtable_012bf1dc
+00c8aa00   RELOCATION_MATCH PASS   ov_raw_total
+00c8ccf0   MATCH            PASS   ogg_page_version
+00c8f030   MATCH            PASS   vorbis_synthesis_halfrate
+00c91570   MATCH            PASS   oggpack_adv1
+00c917d0   MATCH            PASS   oggpack_bits
+00c95440   RELOCATION_MATCH PASS   vorbis_book_clear
+00c9ea70   RELOCATION_MATCH PASS   _vorbis_window_get
+00ca1250   WARN RELOC_NAME: __01class@16 -> 00ca0680 labelled 'Audio_InterpolateScaledSamples'
+00ca1250   RELOCATION_MATCH PASS   res1_class
+00ca1770   RELOCATION_MATCH PASS   floor1_free_look
+00ca3850   RELOCATION_MATCH PASS   floor0_look
+00ca3ef0   RELOCATION_MATCH PASS   vorbis_invsq2explook
+00ca5190   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca5190   WARN RELOC_NAME: ?CompleteConnect@CBasePin@@UAEJPAUIPin@@@Z -> 00ca8090 labelled '_global::ReturnZero_ret4_00ca8090'
+00ca5190   RELOCATION_MATCH PASS   CompleteConnect
+00ca5360   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca5360   MATCH            PASS   OnStartStreaming
+00ca80c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca80c0   MATCH            PASS   CheckConnect
+00ca8340   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8340   MATCH            PASS   ConnectedTo
+00ca8490   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8490   MATCH            PASS   QueryDirection
+00ca84b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca84b0   RELOCATION_MATCH PASS   QueryId
+00ca84c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca84c0   MATCH            PASS   QueryAccept
+00ca8560   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8560   RELOCATION_MATCH PASS   SetSink
+
+WINS: 35
+  00c72fe0 RELOCATION_MATCH CAudioSource::?Update@CAudioSource@@
+  00c73eb0 MATCH CVtable_012bf014::?GetLength@CVtable_012bf014@@
+  00c73ec0 MATCH CVtable_012bf014::?Seek@CVtable_012bf014@@
+  00c73f10 RELOCATION_MATCH CVtable_012bf014::?Read@CVtable_012bf014@@
+  00c73fc0 MATCH CDspOps::?Scale@CDspOps@@
+  00c74030 MATCH CDspOps::?ScaleCopy@CDspOps@@
+  00c740b0 MATCH CDspOps::?ScaleRamp@CDspOps@@
+  00c741c0 MATCH CDspOps::?Add@CDspOps@@
+  00c75400 RELOCATION_MATCH CDelayLine::??1CDelayLine@@UAE@XZ
+  00c75470 RELOCATION_MATCH CDelayLine::??_GCDelayLine@@UAEPAXI@Z
+  00c774a0 MATCH CVtable_012bf0c8::?SetSettings@CVtable_012bf0c8@@
+  00c88620 RELOCATION_MATCH COggVorbisStream::?GetLength@COggVorbisStream@@
+  00c88640 RELOCATION_MATCH COggVorbisStream::?Seek@COggVorbisStream@@
+  00c88740 RELOCATION_MATCH COggVorbisStream::?GetRate@COggVorbisStream@@
+  00c88770 MATCH COggVorbisStream::?GetState@COggVorbisStream@@
+  00c888f0 RELOCATION_MATCH CVtable_012bf1dc::??0CVtable_012bf1dc@@
+  00c8aa00 RELOCATION_MATCH libvorbis::@ov_raw_total@8
+  00c8ccf0 MATCH libogg::@ogg_page_version@4
+  00c8f030 MATCH libvorbis::@vorbis_synthesis_halfrate@8
+  00c91570 MATCH libogg::@oggpack_adv1@4
+  00c917d0 MATCH libogg::@oggpack_bits@4
+  00c95440 RELOCATION_MATCH libvorbis::@vorbis_book_clear@4
+  00c9ea70 RELOCATION_MATCH libvorbis::@_vorbis_window_get@4
+  00ca1250 RELOCATION_MATCH libvorbis::@res1_class@20
+  00ca1770 RELOCATION_MATCH libvorbis::@floor1_free_look@4
+  00ca3850 RELOCATION_MATCH libvorbis::@floor0_look@8
+  00ca3ef0 RELOCATION_MATCH libvorbis::@vorbis_invsq2explook@4
+  00ca5190 RELOCATION_MATCH CRendererInputPin::?CompleteConnect@CRendererInputPin@@
+  00ca5360 MATCH CBaseVideoRenderer::?OnStartStreaming@CBaseVideoRenderer@@
+  00ca80c0 MATCH CBasePin::?CheckConnect@CBasePin@@
+  00ca8340 MATCH CBasePin::?ConnectedTo@CBasePin@@
+  00ca8490 MATCH CBasePin::?QueryDirection@CBasePin@@
+  00ca84b0 RELOCATION_MATCH CBasePin::?QueryId@CBasePin@@
+  00ca84c0 MATCH CBasePin::?QueryAccept@CBasePin@@
+  00ca8560 RELOCATION_MATCH CBasePin::?SetSink@CBasePin@@
+
+LANDED 35 wins into src/compiled + tests + catalog + oracle
+  CAudioSource_Update_00c72fe0
+  CVtable012bf014_GetLength_00c73eb0
+  CVtable012bf014_Seek_00c73ec0
+  CVtable012bf014_Read_00c73f10
+  CDspOps_Scale_00c73fc0
+  CDspOps_ScaleCopy_00c74030
+  CDspOps_ScaleRamp_00c740b0
+  CDspOps_Add_00c741c0
+  CDelayLine_CDelayLine_00c75400
+  CDelayLine_scalardeletingdestructor_00c75470
+  CVtable012bf0c8_SetSettings_00c774a0
+  COggVorbisStream_GetLength_00c88620
+  COggVorbisStream_Seek_00c88640
+  COggVorbisStream_GetRate_00c88740
+  COggVorbisStream_GetState_00c88770
+  CVtable012bf1dc_CVtable012bf1dc_00c888f0
+  libvorbis_ovrawtotal_00c8aa00
+  libogg_oggpageversion_00c8ccf0
+  libvorbis_vorbissynthesishalfrate_00c8f030
+  libogg_oggpackadv1_00c91570
+  libogg_oggpackbits_00c917d0
+  libvorbis_vorbisbookclear_00c95440
+  libvorbis_vorbiswindowget_00c9ea70
+  libvorbis_res1class_00ca1250
+  libvorbis_floor1freelook_00ca1770
+  libvorbis_floor0look_00ca3850
+  libvorbis_vorbisinvsq2explook_00ca3ef0
+  CRendererInputPin_CompleteConnect_00ca5190
+  CBaseVideoRenderer_OnStartStreaming_00ca5360
+  CBasePin_CheckConnect_00ca80c0
+  CBasePin_ConnectedTo_00ca8340
+  CBasePin_QueryDirection_00ca8490
+  CBasePin_QueryId_00ca84b0
+  CBasePin_QueryAccept_00ca84c0
+  CBasePin_SetSink_00ca8560

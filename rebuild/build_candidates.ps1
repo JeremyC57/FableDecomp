@@ -349345,6 +349345,251 @@ $catalog = @(
         TestSource = '00/c5/CDSoundStreamBuffer_UnlockChunk_00c57110_test.cpp'
         PassPattern = '00c57110_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c72fe0'
+        Module = 'CAudioSource'
+        Source = '00/c7/CAudioSource_Update_00c72fe0.cpp'
+        TestSource = '00/c7/CAudioSource_Update_00c72fe0_test.cpp'
+        PassPattern = '00c72fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c73eb0'
+        Module = 'CVtable_012bf014'
+        Source = '00/c7/CVtable012bf014_GetLength_00c73eb0.cpp'
+        TestSource = '00/c7/CVtable012bf014_GetLength_00c73eb0_test.cpp'
+        PassPattern = '00c73eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c73ec0'
+        Module = 'CVtable_012bf014'
+        Source = '00/c7/CVtable012bf014_Seek_00c73ec0.cpp'
+        TestSource = '00/c7/CVtable012bf014_Seek_00c73ec0_test.cpp'
+        PassPattern = '00c73ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c73f10'
+        Module = 'CVtable_012bf014'
+        Source = '00/c7/CVtable012bf014_Read_00c73f10.cpp'
+        TestSource = '00/c7/CVtable012bf014_Read_00c73f10_test.cpp'
+        PassPattern = '00c73f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c73fc0'
+        Module = 'CDspOps'
+        Source = '00/c7/CDspOps_Scale_00c73fc0.cpp'
+        TestSource = '00/c7/CDspOps_Scale_00c73fc0_test.cpp'
+        PassPattern = '00c73fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c74030'
+        Module = 'CDspOps'
+        Source = '00/c7/CDspOps_ScaleCopy_00c74030.cpp'
+        TestSource = '00/c7/CDspOps_ScaleCopy_00c74030_test.cpp'
+        PassPattern = '00c74030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c740b0'
+        Module = 'CDspOps'
+        Source = '00/c7/CDspOps_ScaleRamp_00c740b0.cpp'
+        TestSource = '00/c7/CDspOps_ScaleRamp_00c740b0_test.cpp'
+        PassPattern = '00c740b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c741c0'
+        Module = 'CDspOps'
+        Source = '00/c7/CDspOps_Add_00c741c0.cpp'
+        TestSource = '00/c7/CDspOps_Add_00c741c0_test.cpp'
+        PassPattern = '00c741c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c75400'
+        Module = 'CDelayLine'
+        Source = '00/c7/CDelayLine_CDelayLine_00c75400.cpp'
+        TestSource = '00/c7/CDelayLine_CDelayLine_00c75400_test.cpp'
+        PassPattern = '00c75400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c75470'
+        Module = 'CDelayLine'
+        Source = '00/c7/CDelayLine_scalardeletingdestructor_00c75470.cpp'
+        TestSource = '00/c7/CDelayLine_scalardeletingdestructor_00c75470_test.cpp'
+        PassPattern = '00c75470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c774a0'
+        Module = 'CVtable_012bf0c8'
+        Source = '00/c7/CVtable012bf0c8_SetSettings_00c774a0.cpp'
+        TestSource = '00/c7/CVtable012bf0c8_SetSettings_00c774a0_test.cpp'
+        PassPattern = '00c774a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88620'
+        Module = 'COggVorbisStream'
+        Source = '00/c8/COggVorbisStream_GetLength_00c88620.cpp'
+        TestSource = '00/c8/COggVorbisStream_GetLength_00c88620_test.cpp'
+        PassPattern = '00c88620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88640'
+        Module = 'COggVorbisStream'
+        Source = '00/c8/COggVorbisStream_Seek_00c88640.cpp'
+        TestSource = '00/c8/COggVorbisStream_Seek_00c88640_test.cpp'
+        PassPattern = '00c88640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88740'
+        Module = 'COggVorbisStream'
+        Source = '00/c8/COggVorbisStream_GetRate_00c88740.cpp'
+        TestSource = '00/c8/COggVorbisStream_GetRate_00c88740_test.cpp'
+        PassPattern = '00c88740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88770'
+        Module = 'COggVorbisStream'
+        Source = '00/c8/COggVorbisStream_GetState_00c88770.cpp'
+        TestSource = '00/c8/COggVorbisStream_GetState_00c88770_test.cpp'
+        PassPattern = '00c88770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c888f0'
+        Module = 'CVtable_012bf1dc'
+        Source = '00/c8/CVtable012bf1dc_CVtable012bf1dc_00c888f0.cpp'
+        TestSource = '00/c8/CVtable012bf1dc_CVtable012bf1dc_00c888f0_test.cpp'
+        PassPattern = '00c888f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8aa00'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_ovrawtotal_00c8aa00.cpp'
+        TestSource = '00/c8/libvorbis_ovrawtotal_00c8aa00_test.cpp'
+        PassPattern = '00c8aa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8ccf0'
+        Module = 'libogg'
+        Source = '00/c8/libogg_oggpageversion_00c8ccf0.cpp'
+        TestSource = '00/c8/libogg_oggpageversion_00c8ccf0_test.cpp'
+        PassPattern = '00c8ccf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8f030'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_vorbissynthesishalfrate_00c8f030.cpp'
+        TestSource = '00/c8/libvorbis_vorbissynthesishalfrate_00c8f030_test.cpp'
+        PassPattern = '00c8f030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c91570'
+        Module = 'libogg'
+        Source = '00/c9/libogg_oggpackadv1_00c91570.cpp'
+        TestSource = '00/c9/libogg_oggpackadv1_00c91570_test.cpp'
+        PassPattern = '00c91570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c917d0'
+        Module = 'libogg'
+        Source = '00/c9/libogg_oggpackbits_00c917d0.cpp'
+        TestSource = '00/c9/libogg_oggpackbits_00c917d0_test.cpp'
+        PassPattern = '00c917d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c95440'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_vorbisbookclear_00c95440.cpp'
+        TestSource = '00/c9/libvorbis_vorbisbookclear_00c95440_test.cpp'
+        PassPattern = '00c95440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9ea70'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_vorbiswindowget_00c9ea70.cpp'
+        TestSource = '00/c9/libvorbis_vorbiswindowget_00c9ea70_test.cpp'
+        PassPattern = '00c9ea70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca1250'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_res1class_00ca1250.cpp'
+        TestSource = '00/ca/libvorbis_res1class_00ca1250_test.cpp'
+        PassPattern = '00ca1250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca1770'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_floor1freelook_00ca1770.cpp'
+        TestSource = '00/ca/libvorbis_floor1freelook_00ca1770_test.cpp'
+        PassPattern = '00ca1770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3850'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_floor0look_00ca3850.cpp'
+        TestSource = '00/ca/libvorbis_floor0look_00ca3850_test.cpp'
+        PassPattern = '00ca3850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3ef0'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_vorbisinvsq2explook_00ca3ef0.cpp'
+        TestSource = '00/ca/libvorbis_vorbisinvsq2explook_00ca3ef0_test.cpp'
+        PassPattern = '00ca3ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5190'
+        Module = 'CRendererInputPin'
+        Source = '00/ca/CRendererInputPin_CompleteConnect_00ca5190.cpp'
+        TestSource = '00/ca/CRendererInputPin_CompleteConnect_00ca5190_test.cpp'
+        PassPattern = '00ca5190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5360'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_OnStartStreaming_00ca5360.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_OnStartStreaming_00ca5360_test.cpp'
+        PassPattern = '00ca5360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca80c0'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_CheckConnect_00ca80c0.cpp'
+        TestSource = '00/ca/CBasePin_CheckConnect_00ca80c0_test.cpp'
+        PassPattern = '00ca80c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8340'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_ConnectedTo_00ca8340.cpp'
+        TestSource = '00/ca/CBasePin_ConnectedTo_00ca8340_test.cpp'
+        PassPattern = '00ca8340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8490'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_QueryDirection_00ca8490.cpp'
+        TestSource = '00/ca/CBasePin_QueryDirection_00ca8490_test.cpp'
+        PassPattern = '00ca8490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca84b0'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_QueryId_00ca84b0.cpp'
+        TestSource = '00/ca/CBasePin_QueryId_00ca84b0_test.cpp'
+        PassPattern = '00ca84b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca84c0'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_QueryAccept_00ca84c0.cpp'
+        TestSource = '00/ca/CBasePin_QueryAccept_00ca84c0_test.cpp'
+        PassPattern = '00ca84c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8560'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_SetSink_00ca8560.cpp'
+        TestSource = '00/ca/CBasePin_SetSink_00ca8560_test.cpp'
+        PassPattern = '00ca8560_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

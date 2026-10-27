@@ -33932,3 +33932,17 @@ __imp__DebugBreak@0	0143fe64	00c16750
 ?g_speakerWord_0139c994@@3JA	0139c994	00c56060
 ?g_speakerWord_0139c9ac@@3JA	0139c9ac	00c56060
 ?g_speakerWord_0139ca00@@3JA	0139ca00	00c56060
+?ApplySound@CAudioSource@@QAEXPAUCAudioSound@@_J@Z	00c72e00	00c72fe0
+?BeginSound@CAudioSource@@QAEXPAUCAudioSound@@@Z	00c59bc0	00c72fe0
+?QueueNextBuffer@CAudioSource@@QAEJPAVCircularQueue@@_J_N@Z	00c72c40	00c72fe0
+@ov_pcm_seek@12	00c8b490	00c88640
+@ov_pcm_seek_page@12	00c8ae90	00c88640
+@ov_pcm_tell@4	00c8b9b0	00c88640
+@ov_info@8	00c8bab0	00c88740
+??_7CVtable_012bf1dc@@6B@	012bf1dc	00c888f0
+@ov_raw_total@8	00c8aa00	00c8aa00
+_vwin	013abd90	00c9ea70
+__01class@16	00ca0680	00ca1250
+_INVSQ2EXP_LOOKUP	013ac4f0	00ca3ef0
+?CompleteConnect@CBasePin@@UAEJPAUIPin@@@Z	00ca8090	00ca5190
+_AMGetWideString@8	00cb0940	00ca84b0

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c72fe0	RELOCATION_MATCH	108v108	PASS	CAudioSource::Update (descriptive); 2 grades (vfptr padded to 8 by the __int64)
+00c73eb0	MATCH	10v10	PASS	CVtable_012bf014::GetLength (test-tone stream); 1 grade
+00c73ec0	MATCH	7v7	PASS	CVtable_012bf014::Seek; 1 grade
+00c73f10	RELOCATION_MATCH	107v107	PASS	CVtable_012bf014::Read; 2 grades (up-counting unsigned loop for jbe)
+00c73fc0	MATCH	104v104	PASS	CDspOps::Scale; 2 grades (pointer walk)
+00c74030	MATCH	119v119	PASS	CDspOps::ScaleCopy; 2 grades
+00c740b0	MATCH	120v120	PASS	CDspOps::ScaleRamp; 2 grades
+00c741c0	MATCH	107v107	PASS	CDspOps::Add; 2 grades
+00c75400	RELOCATION_MATCH	15v15	PASS	CDelayLine::~CDelayLine (bound name); 1 grade
+00c75470	RELOCATION_MATCH	39v39	PASS	CDelayLine scalar deleting dtor; 1 grade
+00c774a0	MATCH	67v67	PASS	CVtable_012bf0c8::SetSettings (descriptive); 1 grade
+00c88620	RELOCATION_MATCH	25v25	PASS	COggVorbisStream::GetLength; 1 grade
+00c88640	RELOCATION_MATCH	101v101	PASS	COggVorbisStream::Seek; 1 grade
+00c88740	RELOCATION_MATCH	33v33	PASS	COggVorbisStream::GetRate; 1 grade
+00c88770	MATCH	12v12	PASS	COggVorbisStream::GetState; 1 grade
+00c888f0	RELOCATION_MATCH	11v11	PASS	CVtable_012bf1dc ctor (null audio stream); 1 grade
+00c8a8b0	DIFFER	107v105	-	ov_halfrate; 1 grade; LTCG register arg to _decode_clear (lane gap)
+00c8aa00	RELOCATION_MATCH	114v114	PASS	ov_raw_total; 1 grade
+00c8cb20	DIFFER	5v22	-	ov_test_callbacks; 1 grade; LTCG _ov_open1 eax/ebx args (lane gap)
+00c8ccf0	MATCH	7v7	PASS	ogg_page_version; 1 grade
+00c8d9c0	DIFFER	22v14	-	ogg_stream_reset_serialno; 1 grade; LTCG keeps ecx/edx across call (lane gap)
+00c8db20	DIFFER	8v12	-	ogg_stream_packetpeek; 1 grade; LTCG _packetout eax/ecx args (lane gap)
+00c8f030	MATCH	32v32	PASS	vorbis_synthesis_halfrate; 1 grade
+00c91570	MATCH	28v28	PASS	oggpack_adv1; 1 grade
+00c917d0	MATCH	9v9	PASS	oggpack_bits; 1 grade
+00c95440	RELOCATION_MATCH	87v87	PASS	vorbis_book_clear; 1 grade
+00c9ea70	RELOCATION_MATCH	8v8	PASS	_vorbis_window_get; 1 grade
+00ca1250	RELOCATION_MATCH	84v84	PASS	res1_class; 1 grade (_01class __stdcall at the call site)
+00ca1770	RELOCATION_MATCH	30v30	PASS	floor1_free_look; 1 grade
+00ca3850	RELOCATION_MATCH	50v50	PASS	floor0_look; 1 grade
+00ca3ef0	RELOCATION_MATCH	8v8	PASS	vorbis_invsq2explook; 1 grade
+00ca5190	RELOCATION_MATCH	40v40	PASS	CRendererInputPin::CompleteConnect; 1 grade
+00ca5360	MATCH	11v11	PASS	CBaseVideoRenderer::OnStartStreaming; 2 grades (first SRC_FAIL)
+00ca7d60	SKIP	-v83	-	row packs 4 functions (CBasePin::NonDelegatingAddRef/Release + two ret-N stubs); catalog re-split
+00ca80c0	MATCH	42v42	PASS	CBasePin::CheckConnect; 1 grade
+00ca8340	MATCH	48v48	PASS	CBasePin::ConnectedTo; 1 grade
+00ca8490	MATCH	30v30	PASS	CBasePin::QueryDirection; 1 grade
+00ca84b0	RELOCATION_MATCH	16v16	PASS	CBasePin::QueryId; 1 grade
+00ca84c0	MATCH	42v42	PASS	CBasePin::QueryAccept; 1 grade
+00ca8560	RELOCATION_MATCH	37v37	PASS	CBasePin::SetSink; 1 grade
