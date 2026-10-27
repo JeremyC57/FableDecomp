@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+00c35290	DIFFER	251v220	-	251v220: m_pos cached in register vs retail memory forms
+00c35370	DIFFER	198v198	-	198v198: commutative add order only
+00c371c0	DIFFER	242v255	-	242v255: zero kept in ebx vs retail immediates
+00c56d70	DIFFER	206v206	-	206v206: placement of the merged false-return block
+00c590e0	DIFFER	217v217	-	217v217: esi/edi register swap

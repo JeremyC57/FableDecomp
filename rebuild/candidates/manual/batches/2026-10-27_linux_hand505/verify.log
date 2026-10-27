@@ -1,0 +1,115 @@
+addr       parity           behav  name
+00c1de50   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c1de50   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c1de50   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c1de50   RELOCATION_MATCH PASS   Push
+00c31660   WARN RELOC_NAME: ??0CDebugStream@@QAE@PBD@Z -> 00c0bfe0 labelled 'CString::CString'
+00c31660   WARN RELOC_NAME: ?CreateEntry@CAutoMapOwner_00c31710@@QAEPAUCEntry_00c31710@@PAX@Z -> 00c31710 labelled '_global::CControllerDisconnect_Constructor'
+00c31660   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c31660   WARN RELOC_NAME: ??ACAutoDeleteArray_00c3b7a0@@QAEAAKK@Z -> 00c2ebc0 labelled '_global::PKCAutoDeleteArray_RangeCheck_Abort'
+00c31660   RELOCATION_MATCH PASS   OnRecord
+00c325f0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c325f0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c325f0   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c325f0   RELOCATION_MATCH PASS   GetFirst
+00c326d0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c326d0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c326d0   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c326d0   RELOCATION_MATCH PASS   GetLast
+00c34f30   WARN RELOC_NAME: ??0CPlaybackEntry@@QAE@XZ -> 00c42a60 labelled 'CIndexBuffer::CIndexBuffer'
+00c34f30   RELOCATION_MATCH PASS   Insert
+00c3a330   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c3a330   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c3a330   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c3a330   RELOCATION_MATCH PASS   Pop
+00c3a420   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c3a420   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c3a420   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c3a420   RELOCATION_MATCH PASS   Push
+00c40650   RELOCATION_MATCH PASS   SetTransform
+00c430e0   MATCH            PASS   SetEightFloatParams
+00c431a0   MATCH            PASS   SetVectorParam
+00c43230   MATCH            PASS   SetFourFloatParams
+00c445f0   MATCH            PASS   SetSpeakerLevels
+00c44680   MATCH            PASS   SetSpeakerGains
+00c49010   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c49010   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c49010   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c49010   RELOCATION_MATCH PASS   Push
+00c4ab90   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c4ab90   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c4ab90   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c4ab90   RELOCATION_MATCH PASS   OnReadComplete
+00c4b060   WARN RELOC_NAME: ?GetCount@PKCMailbox@@QAEJXZ -> 00c4be10 labelled '_unattributed::Query_00c4be10'
+00c4b060   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c4b060   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c4b060   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c4b060   RELOCATION_MATCH PASS   ReturnCompletedBuffers
+00c54f30   WARN RELOC_NAME: ?Process@CBlockEffect_00c6c530@@QAEXPAUSAudioBlock@@0@Z -> 00c6c530 labelled 'Audio_ApplyGainFilter_SIMD'
+00c54f30   WARN RELOC_NAME: ?Process@CBlockFilter_00c6c0f0@@QAEXPAUSAudioBlock@@@Z -> 00c6c0f0 labelled 'Audio_ApplyIIRFilter'
+00c54f30   RELOCATION_MATCH PASS   MixBlock
+00c56f70   RELOCATION_MATCH PASS   OpenDevice
+00c57d80   WARN RELOC_NAME: ?QueueChunk_00c57b60@CVtable_012b8ed4@@QAEXXZ -> 00c57b60 labelled 'CAudioSource_BufferNextFrame'
+00c57d80   WARN RELOC_NAME: ?SourcePlay@CAudioContext@@QAEXK@Z -> 00c575f0 labelled 'CAudioContext::PlaySource'
+00c57d80   RELOCATION_MATCH PASS   UnlockChunk
+00c58140   MATCH            PASS   MixAdd16Ramp
+00c58420   MATCH            PASS   MixStereo16Ramped
+00c5a2e0   WARN RELOC_NAME: ?GetDesc@CSoundBuffer@@QBEPBUSBufferDesc@@XZ -> 00c3c4a0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c5a2e0   WARN RELOC_NAME: ?SetBuffer@CCodaVoice@@UAEXPAVCSoundBuffer@@_N@Z -> 00c59880 labelled 'CVtable_012b5c10::vfunc_18'
+00c5a2e0   RELOCATION_MATCH PASS   SetBuffer
+00c5a5b0   WARN RELOC_NAME: ?GetDesc@CSoundBuffer@@QBEPBUSBufferDesc@@XZ -> 00c3c4a0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c5a5b0   RELOCATION_MATCH PASS   ReadChannel
+00c5b250   WARN RELOC_NAME: ?ScheduleSound@CSoftwareVoice@@QAEXPAUCAudioSound@@_J@Z -> 00c5acb0 labelled 'C3DMeshFileXBoundingBoxChunk::LoadData'
+00c5b250   RELOCATION_MATCH PASS   StartSound
+
+WINS: 24
+  00c1de50 RELOCATION_MATCH PKCOneShotQueue<SFileReply>::?Push@?$PKCOneShotQueue@USFileReply@@@@UAEXPBUSFileReply@@@Z
+  00c31660 RELOCATION_MATCH CSampleTableReader_012b4d40::?OnRecord@CSampleTableReader_012b4d40@@UAEXPAXPBDKPBK@Z
+  00c325f0 RELOCATION_MATCH PKCTRArray::?GetFirst@PKCTRArray@@UAEPAXXZ
+  00c326d0 RELOCATION_MATCH PKCTRArray::?GetLast@PKCTRArray@@UAEPAXXZ
+  00c34f30 RELOCATION_MATCH CItemGridTable_012b501c::?Insert@CItemGridTable_012b501c@@UAEJKPAUCTableEntry@@@Z
+  00c3a330 RELOCATION_MATCH PKCOneShotQueue<CUnprovenItem_012b54b4>::?Pop@?$PKCOneShotQueue@UCUnprovenItem_012b54b4@@@@UAEPAUCUnprovenItem_012b54b4@@PAU2@@Z
+  00c3a420 RELOCATION_MATCH PKCOneShotQueue<CUnprovenItem_012b54b4>::?Push@?$PKCOneShotQueue@UCUnprovenItem_012b54b4@@@@UAEXPBUCUnprovenItem_012b54b4@@@Z
+  00c40650 RELOCATION_MATCH CTrackedTransform_00c40450::?SetTransform@CTrackedTransform_00c40450@@QAEXABUSTrackedTransform_00c40650@@@Z
+  00c430e0 MATCH CAudioObject::?SetEightFloatParams@CAudioObject@@QAEXPBUSEightFloatParams_00c430e0@@@Z
+  00c431a0 MATCH CAudioObject::?SetVectorParam@CAudioObject@@QAEXPBUSVectorParam_00c431a0@@@Z
+  00c43230 MATCH CAudioObject::?SetFourFloatParams@CAudioObject@@QAEXPBUSFourFloatParams_00c43230@@@Z
+  00c445f0 MATCH C2DAudioObject::?SetSpeakerLevels@C2DAudioObject@@QAEXPBUSSpeakerLevelTable_00c445f0@@@Z
+  00c44680 MATCH C2DAudioObject::?SetSpeakerGains@C2DAudioObject@@QAEXPBUSSpeakerGainTable_00c44680@@@Z
+  00c49010 RELOCATION_MATCH PKCStaticQueue<SDecoderMessage>::?Push@?$PKCStaticQueue@USDecoderMessage@@@@UAEJPBUSDecoderMessage@@@Z
+  00c4ab90 RELOCATION_MATCH PKCBufferedReader::?OnReadComplete@PKCBufferedReader@@UAEX_NPAE@Z
+  00c4b060 RELOCATION_MATCH PKCBufferedReader::?ReturnCompletedBuffers@PKCBufferedReader@@QAEXXZ
+  00c54f30 RELOCATION_MATCH CAudioSource::?MixBlock@CAudioSource@@QAEXPAVCAudioRingBuffer@@PAX_N@Z
+  00c56f70 RELOCATION_MATCH CDSoundStreamBuffer::?OpenDevice@CDSoundStreamBuffer@@UAE_NPBUGUID@@PAX_N@Z
+  00c57d80 RELOCATION_MATCH CVtable_012b8ed4::?UnlockChunk@CVtable_012b8ed4@@UAEXPAX@Z
+  00c58140 MATCH CMixBuffer::?MixAdd16Ramp@CMixBuffer@@UAEXPBFPAJGF@Z
+  00c58420 MATCH CMixBuffer::?MixStereo16Ramped@CMixBuffer@@QAEXPBFPBG1@Z
+  00c5a2e0 RELOCATION_MATCH CSoftwareVoice::?SetBuffer@CSoftwareVoice@@UAEXPAVCSoundBuffer@@_N@Z
+  00c5a5b0 RELOCATION_MATCH CSoftwareVoice::?ReadChannel@CSoftwareVoice@@UAEXPAVCAudioRingBuffer@@PBEKK@Z
+  00c5b250 RELOCATION_MATCH CSoftwareVoice::?StartSound@CSoftwareVoice@@UAEJPAUCAudioSound@@_J@Z
+
+LANDED 24 wins into src/compiled + tests + catalog + oracle
+  PKCOneShotQueueSFileReply_Push_00c1de50
+  CSampleTableReader012b4d40_OnRecord_00c31660
+  PKCTRArray_GetFirst_00c325f0
+  PKCTRArray_GetLast_00c326d0
+  CItemGridTable012b501c_Insert_00c34f30
+  PKCOneShotQueueCUnprovenItem012b54b4_Pop_00c3a330
+  PKCOneShotQueueCUnprovenItem012b54b4_Push_00c3a420
+  CTrackedTransform00c40450_SetTransform_00c40650
+  CAudioObject_SetEightFloatParams_00c430e0
+  CAudioObject_SetVectorParam_00c431a0
+  CAudioObject_SetFourFloatParams_00c43230
+  C2DAudioObject_SetSpeakerLevels_00c445f0
+  C2DAudioObject_SetSpeakerGains_00c44680
+  PKCStaticQueueSDecoderMessage_Push_00c49010
+  PKCBufferedReader_OnReadComplete_00c4ab90
+  PKCBufferedReader_ReturnCompletedBuffers_00c4b060
+  CAudioSource_MixBlock_00c54f30
+  CDSoundStreamBuffer_OpenDevice_00c56f70
+  CVtable012b8ed4_UnlockChunk_00c57d80
+  CMixBuffer_MixAdd16Ramp_00c58140
+  CMixBuffer_MixStereo16Ramped_00c58420
+  CSoftwareVoice_SetBuffer_00c5a2e0
+  CSoftwareVoice_ReadChannel_00c5a5b0
+  CSoftwareVoice_StartSound_00c5b250

@@ -1,0 +1,31 @@
+address	status	bytes	test	note
+00c1de50	RELOCATION_MATCH	210v210	PASS	/EHsc; libpk trace; void Push (landed PKCQueue decls say long)
+00c29dc0	SKIP	-v232	-	row packs seven short functions (forwarders and list walkers through +0x08, int3 padding between bodies; the last is cut off)
+00c31660	RELOCATION_MATCH	168v168	PASS	/EHsc; CString temp key; find-or-create inline
+00c325f0	RELOCATION_MATCH	218v218	PASS	/EHsc; PKCTRArray.cpp line 204
+00c326d0	RELOCATION_MATCH	224v224	PASS	/EHsc; PKCTRArray.cpp line 212
+00c34f30	RELOCATION_MATCH	180v180	PASS	/EHsc; named count local; 2 grades
+00c35290	DIFFER	251v220	-	251v220: m_pos cached in register vs retail memory forms
+00c35370	DIFFER	198v198	-	198v198: commutative add order only
+00c371c0	DIFFER	242v255	-	242v255: zero kept in ebx vs retail immediates
+00c3a330	RELOCATION_MATCH	226v226	PASS	/EHsc; PKCOneShotQueue.h line 28
+00c3a420	RELOCATION_MATCH	224v224	PASS	/EHsc; PKCOneShotQueue.h line 35
+00c40650	RELOCATION_MATCH	249v249	PASS	user member-wise C3DVector copy ctor; 2 grades
+00c430e0	MATCH	189v189	PASS	forceinline operator== repeating field 0
+00c431a0	MATCH	138v138	PASS	set-or-clear record, bit 0x20
+00c43230	MATCH	189v189	PASS	set-or-clear record, bit 0x40
+00c445f0	MATCH	142v142	PASS	-10000 mB floor while seeking
+00c44680	MATCH	151v151	PASS	0.0 gain floor while seeking
+00c49010	RELOCATION_MATCH	230v230	PASS	/EHsc; PKCStaticQueue.h line 57; 0x00C49100 binding conflict expected
+00c4ab90	RELOCATION_MATCH	213v213	PASS	/EHsc; PKCBufferedReader.cpp line 5
+00c4b060	RELOCATION_MATCH	248v248	PASS	/EHsc; PKCBufferedReader.cpp line 471; label correction
+00c54f30	RELOCATION_MATCH	245v245	PASS	/GS; byte-array blocks give the cookie; 2 grades; label correction
+00c56d70	DIFFER	206v206	-	206v206: placement of the merged false-return block
+00c56f70	RELOCATION_MATCH	156v156	PASS	COM through dllimport; CLSID/IID C++ spellings
+00c57d80	RELOCATION_MATCH	239v239	PASS	inline GetSourcei; while (n-- > 0)
+00c58140	MATCH	137v137	PASS	indexed dst[i] form; 2 grades
+00c58420	MATCH	244v244	PASS	(short)steps[i] / 2 in the mono arm; label correction
+00c590e0	DIFFER	217v217	-	217v217: esi/edi register swap
+00c5a2e0	RELOCATION_MATCH	222v222	PASS	implicit 28-byte struct copy (rep movsd 7)
+00c5a5b0	RELOCATION_MATCH	250v250	PASS	signed-char 8-bit widen; writePos*frameBytes order (RELOC_IDENTITY fix); 2 grades
+00c5b250	RELOCATION_MATCH	162v162	PASS	pragma pack(4) puts the __int64 clock at +0x10; 2 grades
