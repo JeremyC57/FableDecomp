@@ -34072,3 +34072,5 @@ __imp__GetModuleHandleW@4	0143fea4	00cb0d80
 ?CommitWrite@CAudioRingBuffer@@QAEXK@Z	00c5cf00	00c5a5b0
 ?g_monoRing@@3VCAudioRingBuffer@@A	0143bf88	00c5a5b0
 ?ScheduleSound@CSoftwareVoice@@QAEXPAUCAudioSound@@_J@Z	00c5acb0	00c5b250
+__imp__CreateSemaphoreW@16	0143fe54	00cabae0
+??_7CQ_OrchardFarmRaidScript@NScript@@6B@	012daf78	00dcc040

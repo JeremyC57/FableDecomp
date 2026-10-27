@@ -1,0 +1,31 @@
+address	status	bytes	test	note
+00cabae0	RELOCATION_MATCH	130v130	PASS	CBaseAllocator ctor (WCHAR name; CUnknown 0xCACB80); 1 grade
+00cabb70	RELOCATION_MATCH	237v237	PASS	CBaseAllocator::ReleaseBuffer, /EHsc, strmbase model of landed 0x00CA9F20; 1 grade
+00cac170	RELOCATION_MATCH	171v171	PASS	CBasePin::EnumMediaTypes with inline CEnumMediaTypes ctor, /EHsc; 1 grade
+00cac570	RELOCATION_MATCH	130v130	PASS	CBaseAllocator ctor (char name; CUnknown 0xCACC80); 1 grade
+00cace70	RELOCATION_MATCH	219v219	PASS	CBaseDispatch::GetIDsOfNames, GetTypeInfo inlined; braceless first CheckPointer if for the ?N@ static scope; 2 grades
+00cba9b0	RELOCATION_MATCH	247v247	PASS	std::__unguarded_linear_insert over (CCharString, CCountedPointer) pairs; label correction; 1 grade
+00cdeed0	RELOCATION_MATCH	179v179	PASS	CClickableDoor::Main; 1 grade
+00cf0560	RELOCATION_MATCH	219v219	PASS	CGameflowAssistanceScript::OnPersist; 1 grade
+00cfab10	RELOCATION_MATCH	215v215	PASS	CQ_ArenaScript::OnPersist; 1 grade
+00cfadd0	RELOCATION_MATCH	209v209	PASS	CQ_AwakeningTheOracleScript::Init (public Init, PDB UAE); 2 grades
+00d01590	RELOCATION_MATCH	145v145	PASS	CGate1GuardOuter::Init; 1 grade
+00d08f00	RELOCATION_MATCH	170v170	PASS	CCampHostageGuard::Init; 1 grade
+00d243e0	RELOCATION_MATCH	170v170	PASS	CBowerstoneIntroGuardToPosh::Init; 2 grades
+00d29160	RELOCATION_MATCH	171v171	PASS	CM_UndeadSpawn::Main (pGlobalScriptDef UndeadBarMaximum +0xbe4); 1 grade
+00d29320	RELOCATION_MATCH	175v175	PASS	CGatewayUndead::OnPredicateFail; 1 grade
+00d2a8a0	RELOCATION_MATCH	168v168	PASS	CQ_EndGameFocalSitesScript::Init (public Init); 2 grades
+00d374a0	RELOCATION_MATCH	135v135	PASS	CFH_Villager::Init; STLport operator[] as *(begin()+n); 2 grades
+00d6bac0	DIFFER	174v187	-	CHTE_AmbushPoint::Main parked: retail push ecx + dead zero store to an unread local + 3-byte loop pad; 2 grades
+00d6ccc0	RELOCATION_MATCH	247v247	PASS	CQ_HangingTreeEvilScript::MonitorBanditRegion; 1 grade
+00d71a70	RELOCATION_MATCH	182v182	PASS	CHTG_Prisoner::OnPredicateFail; 1 grade
+00d8a560	RELOCATION_MATCH	204v204	PASS	CGhostFisherman::Init; 1 grade
+00d8a8a0	RELOCATION_MATCH	147v147	PASS	CExtraBooty::Main; 1 grade
+00d8fd90	RELOCATION_MATCH	145v145	PASS	CGranny::Init; 1 grade
+00d8fef0	RELOCATION_MATCH	136v136	PASS	CNymph::OnPredicateFail; 1 grade
+00d900e0	RELOCATION_MATCH	198v198	PASS	CJames::Init; 1 grade
+00dc4b70	RELOCATION_MATCH	175v175	PASS	CSecretPassageGraveyardKeeper::OnPredicateFail; 1 grade
+00dcc040	RELOCATION_MATCH	242v242	PASS	CQ_OrchardFarmRaidScript ctor; label correction; 1 grade
+00dcded0	RELOCATION_MATCH	137v137	PASS	CGuardTeamMember::OnPredicateFail (probable class name); 2 grades
+00dcf000	RELOCATION_MATCH	144v144	PASS	COrchardFarmWhisper::Init; if/else of two whole calls; 3 grades
+00dd6950	RELOCATION_MATCH	175v175	PASS	CMotherTorture::Init; 1 grade

@@ -1,0 +1,97 @@
+addr       parity           behav  name
+00cabae0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cabae0   RELOCATION_MATCH PASS   CBaseAllocator
+00cabb70   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cabb70   RELOCATION_MATCH PASS   ReleaseBuffer
+00cac170   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cac170   RELOCATION_MATCH PASS   EnumMediaTypes
+00cac570   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cac570   RELOCATION_MATCH PASS   CBaseAllocator
+00cace70   RELOCATION_MATCH PASS   GetIDsOfNames
+00cba9b0   RELOCATION_MATCH PASS   __unguarded_linear_insert
+00cdeed0   RELOCATION_MATCH PASS   Main
+00cf0560   RELOCATION_MATCH PASS   OnPersist
+00cfab10   RELOCATION_MATCH PASS   OnPersist
+00cfadd0   RELOCATION_MATCH PASS   Init
+00d01590   RELOCATION_MATCH PASS   Init
+00d08f00   RELOCATION_MATCH PASS   Init
+00d243e0   RELOCATION_MATCH PASS   Init
+00d29160   RELOCATION_MATCH PASS   Main
+00d29320   RELOCATION_MATCH PASS   OnPredicateFail
+00d2a8a0   RELOCATION_MATCH PASS   Init
+00d374a0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d374a0   RELOCATION_MATCH PASS   Init
+00d6ccc0   RELOCATION_MATCH PASS   MonitorBanditRegion
+00d71a70   RELOCATION_MATCH PASS   OnPredicateFail
+00d8a560   RELOCATION_MATCH PASS   Init
+00d8a8a0   RELOCATION_MATCH PASS   Main
+00d8fd90   RELOCATION_MATCH PASS   Init
+00d8fef0   RELOCATION_MATCH PASS   OnPredicateFail
+00d900e0   RELOCATION_MATCH PASS   Init
+00dc4b70   RELOCATION_MATCH PASS   OnPredicateFail
+00dcc040   RELOCATION_MATCH PASS   CQ_OrchardFarmRaidScript
+00dcded0   RELOCATION_MATCH PASS   OnPredicateFail
+00dcf000   RELOCATION_MATCH PASS   Init
+00dd6950   RELOCATION_MATCH PASS   Init
+
+WINS: 29
+  00cabae0 RELOCATION_MATCH CBaseAllocator::??0CBaseAllocator@@QAE@PAGPAUIUnknown@@PAJHH@Z
+  00cabb70 RELOCATION_MATCH CBaseAllocator::?ReleaseBuffer@CBaseAllocator@@UAGJPAUIMediaSample@@@Z
+  00cac170 RELOCATION_MATCH CBasePin::?EnumMediaTypes@CBasePin@@UAGJPAPAUIEnumMediaTypes@@@Z
+  00cac570 RELOCATION_MATCH CBaseAllocator::??0CBaseAllocator@@QAE@PADPAUIUnknown@@PAJHH@Z
+  00cace70 RELOCATION_MATCH CBaseDispatch::?GetIDsOfNames@CBaseDispatch@@QAGJABU_GUID@@PAPAGIKPAJ@Z
+  00cba9b0 RELOCATION_MATCH std::??$__unguarded_linear_insert@
+  00cdeed0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CClickableDoor::?Main@CClickableDoor@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00cf0560 RELOCATION_MATCH NScript::CGameflowAssistanceScript::?OnPersist@CGameflowAssistanceScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00cfab10 RELOCATION_MATCH NScript::CQ_ArenaScript::?OnPersist@CQ_ArenaScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00cfadd0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::?Init@CQ_AwakeningTheOracleScript@NScript@@UAEXXZ
+  00d01590 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardOuter::?Init@CGate1GuardOuter@CQ_BanditCampScript@NScript@@EAEXXZ
+  00d08f00 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::?Init@CCampHostageGuard@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d243e0 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh::?Init@CBowerstoneIntroGuardToPosh@CQ_BowerstoneTownLifeIntroScript@NScript@@EAEXXZ
+  00d29160 RELOCATION_MATCH NScript::CQ_EndGameScript::CM_UndeadSpawn::?Main@CM_UndeadSpawn@CQ_EndGameScript@NScript@@EAEXXZ
+  00d29320 RELOCATION_MATCH NScript::CQ_EndGameScript::CGatewayUndead::?OnPredicateFail@CGatewayUndead@CQ_EndGameScript@NScript@@EAEXXZ
+  00d2a8a0 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::?Init@CQ_EndGameFocalSitesScript@NScript@@UAEXXZ
+  00d374a0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Villager::?Init@CFH_Villager@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d6ccc0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::?MonitorBanditRegion@CQ_HangingTreeEvilScript@NScript@@QAEXXZ
+  00d71a70 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::?OnPredicateFail@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d8a560 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CGhostFisherman::?Init@CGhostFisherman@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8a8a0 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CExtraBooty::?Main@CExtraBooty@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8fd90 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CGranny::?Init@CGranny@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d8fef0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CNymph::?OnPredicateFail@CNymph@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d900e0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CJames::?Init@CJames@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00dc4b70 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGraveyardKeeper::?OnPredicateFail@CSecretPassageGraveyardKeeper@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
+  00dcc040 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::??0CQ_OrchardFarmRaidScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00dcded0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CGuardTeamMember::?OnPredicateFail@CGuardTeamMember@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+  00dcf000 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::?Init@COrchardFarmWhisper@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+  00dd6950 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture::?Init@CMotherTorture@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+
+LANDED 29 wins into src/compiled + tests + catalog + oracle
+  CBaseAllocator_CBaseAllocator_00cabae0
+  CBaseAllocator_ReleaseBuffer_00cabb70
+  CBasePin_EnumMediaTypes_00cac170
+  CBaseAllocator_CBaseAllocator_00cac570
+  CBaseDispatch_GetIDsOfNames_00cace70
+  std_unguardedlinearinsert_00cba9b0
+  NScriptCPersonalScriptGlobalThingsScriptCClickableDoor_Main_00cdeed0
+  NScriptCGameflowAssistanceScript_OnPersist_00cf0560
+  NScriptCQArenaScript_OnPersist_00cfab10
+  NScriptCQAwakeningTheOracleScript_Init_00cfadd0
+  NScriptCQBanditCampScriptCGate1GuardOuter_Init_00d01590
+  NScriptCQBanditCampBossBattleScriptCCampHostageGuard_Init_00d08f00
+  NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuardToPosh_Init_00d243e0
+  NScriptCQEndGameScriptCMUndeadSpawn_Main_00d29160
+  NScriptCQEndGameScriptCGatewayUndead_OnPredicateFail_00d29320
+  NScriptCQEndGameFocalSitesScript_Init_00d2a8a0
+  NScriptCQFireHeartScriptCFHVillager_Init_00d374a0
+  NScriptCQHangingTreeEvilScript_MonitorBanditRegion_00d6ccc0
+  NScriptCQHangingTreeGoodScriptCHTGPrisoner_OnPredicateFail_00d71a70
+  NScriptCQHerosOldHouseScriptCGhostFisherman_Init_00d8a560
+  NScriptCQHerosOldHouseScriptCExtraBooty_Main_00d8a8a0
+  NScriptCQHobbeCaveScriptCGranny_Init_00d8fd90
+  NScriptCQHobbeCaveScriptCNymph_OnPredicateFail_00d8fef0
+  NScriptCQHobbeCaveScriptCJames_Init_00d900e0
+  NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_OnPredicateFail_00dc4b70
+  NScriptCQOrchardFarmRaidScript_CQOrchardFarmRaidScript_00dcc040
+  NScriptCQOrchardFarmRaidScriptCGuardTeamMember_OnPredicateFail_00dcded0
+  NScriptCQOrchardFarmRaidScriptCOrchardFarmWhisper_Init_00dcf000
+  NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Init_00dd6950
