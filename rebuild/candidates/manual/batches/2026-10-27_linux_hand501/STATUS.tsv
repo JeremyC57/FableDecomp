@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00e04b50	RELOCATION_MATCH	114v114	PASS	NScript::CQ_TraderEscortScript::CEndTrader::Init; 1 grade
+00e10a90	RELOCATION_MATCH	102v102	PASS	NScript::CQ_WaspBossScript::CGratefulVillagerSpawn::Main; 1 grade
+00e25750	RELOCATION_MATCH	99v99	PASS	NScript::CQR_EscortTrader_ManagerScript::OnPersist; 1 grade
+00e25d20	MATCH	12v12	PASS	NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::Init; 1 grade
+00e25d30	RELOCATION_MATCH	60v60	PASS	NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::OnPredicateFail; 1 grade
+00e26bd0	RELOCATION_MATCH	118v118	PASS	NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern::Init; 1 grade
+00e38d80	RELOCATION_MATCH	79v79	PASS	NScript::CV_AssassinAttacksScript::CM_AssassinTrigger::OnPersist; 2 grades; enum GetDefaultVal as inline specialization (generic+CCharString specialization ICEs)
+00e3af30	RELOCATION_MATCH	88v88	PASS	NScript::CV_BordelloScript::CBordelloGuard::Init; 1 grade
+00e3b230	MATCH	18v18	PASS	NScript::CV_BordelloScript::CBordelloClient::OnPredicateFail; 1 grade
+00e478d0	RELOCATION_MATCH	51v51	PASS	NScript::CV_BanditTollScript::Init; 1 grade
+00e49900	RELOCATION_MATCH	96v96	PASS	NScript::CV_BanditTollScript::CBlockingBandit::Init; 1 grade
+00e4a940	RELOCATION_MATCH	79v79	PASS	NScript::CV_BanditTollScript::CBanditLeader::Init; 1 grade
+00e50890	MATCH	53v53	PASS	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Init; 1 grade
+00e54630	RELOCATION_MATCH	98v98	PASS	NScript::CV_BookCollectingScript::CBS_Teacher::Init; 1 grade
+00e54d10	RELOCATION_MATCH	73v73	PASS	CConversation::Copy; 1 grade
+00e579e0	RELOCATION_MATCH	108v108	PASS	CConversation::Transfer; 1 grade
+00e57c00	RELOCATION_MATCH	86v86	PASS	NScript::CV_BeggarAndChildScript::Init; 1 grade
+00e628b0	MATCH	33v33	PASS	NScript::CV_ChickenKickingScript::Init; 1 grade
+00e63560	MATCH	15v15	PASS	NScript::CV_ChickenKickingScript::CChickenMaster::Init; 1 grade
+00e76410	MATCH	49v49	PASS	NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager::Init; 1 grade
+00e7ddd0	MATCH	15v15	PASS	NScript::CIsVariableFalse::operator()() const; 1 grade
+00e7dde0	RELOCATION_MATCH	35v35	PASS	NScript::CIsVariableFalse::Clone; 2 grades; new CIsVariableFalse(*Variable) reads Variable before the vtable store
+00e7e060	RELOCATION_MATCH	68v68	PASS	NScript::CPredicate_And::Clone; 1 grade
+00e8b880	MATCH	27v27	PASS	NScript::CV_GhostGrannyNecklaceScript::Init; 1 grade
+00e90780	MATCH	11v11	PASS	NScript::CV_GuildMasterScript::Init; 1 grade
+00e93d80	MATCH	31v31	PASS	NScript::CV_HauntedHouseScript::Init; 1 grade
+00e986d0	MATCH	46v46	PASS	NScript::CV_HeroDuelScript::Init; 1 grade
+00e9c3b0	RELOCATION_MATCH	93v93	PASS	NScript::CV_IntroductionToTrophiesScript::Init; 1 grade
+00e9fef0	RELOCATION_MATCH	106v106	PASS	NScript::CV_KnotholeGladeGatesScript::WatchForTermination; 1 grade
+00ea0030	MATCH	29v29	PASS	NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::Init; 1 grade
+00ea50e0	RELOCATION_MATCH	71v71	PASS	NScript::CV_LostTraderScript::CLostTraderBrother::OnPredicateFail; 1 grade
+00ea80f0	RELOCATION_MATCH	51v51	PASS	NScript::CV_MazeResearchScript::CEmptyGrave::Init; 1 grade
+00ea8720	MATCH	19v19	PASS	NScript::CV_MurderTwistScript::Init; 1 grade
+00eae5a0	RELOCATION_MATCH	122v122	PASS	NScript::CV_MurderTwistScript::CMurderTwistBrotherFriend::OnPredicateFail; 2 grades; operator== via CCountedPointer operator->/operator* (`.Data` swaps eax/edx)
+00eae820	RELOCATION_MATCH	103v103	PASS	NScript::CV_MurderTwistScript::CMurderTwistBuriedGem::Init; 2 grades; __false_type moved into std (symbol only)
+00eaee10	RELOCATION_MATCH	112v112	PASS	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::OnPredicateFail; 1 grade
+00ebeec0	MATCH	12v12	PASS	NScript::CV_ParanoidWhispersScript::Init; 1 grade
+00ebfbb0	RELOCATION_MATCH	94v94	PASS	NScript::CV_ParanoidWhispersScript::CSecretWhisperingMan::Init; 1 grade
+00ec1810	MATCH	43v43	PASS	NScript::CV_RandomPopulationSimScript::Init; 1 grade
+00ec3c50	RELOCATION_MATCH	77v77	PASS	NScript::CV_RockTrollFirstEncounterScript::Init; 1 grade

@@ -33977,3 +33977,9 @@ __imp__GetModuleHandleW@4	0143fea4	00cb0d80
 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z	00704580	00d36620
 ?push_back@?$list@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXABVCScriptThing@@@Z	00da01e0	00da0160
 ?push_back@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXABVCScriptThing@@@Z	008adf90	00dcfa10
+??$Transfer@W4EscortTraderManagerPhase@CQR_EscortTrader_ManagerScript@NScript@@@CPersistContext@@QAEXPBDAAW4EscortTraderManagerPhase@CQR_EscortTrader_ManagerScript@NScript@@ABW4123@@Z	00e257c0	00e25750
+??$GetDefaultVal@VCCharString@@@CPersistContext@@KI?AVCCharString@@XZ	0040e1e0	00e38d80
+??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z	004109a0	00e38d80
+??$Transfer@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@CPersistContext@@QAEXPBDAAW4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@ABW4123@@Z	00e38dd0	00e38d80
+?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@@Z	00cd3152	00eae5a0
+?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z	008ad5f0	00eae820

@@ -689,3 +689,5 @@ Chunk 498 (agent498, DirectShow BaseClasses singles; batch 2026-10-27_linux_hand
 Chunk 499 (agent499, singles 0x00CAF430..0x00D55DA0; batch 2026-10-27_linux_hand499): 36 landed (10 MATCH, 26 RELOCATION_MATCH), 0 parked, 4 skipped multi-function rows. 34 proven names. The entity- and level-script vtable layouts are now mapped (GOTCHAS), and level-script members sit 0x14 below their Ego_r offsets because retail CScriptBase is 0x40 bytes.
 
 Chunk 500 (agent500, NScript quest/entity script singles; batch 2026-10-27_linux_hand500): all 40 landed (9 MATCH, 31 RELOCATION_MATCH) with every name proven by vtable slot plus both PDBs. Quest-script gap-scan rows are now a solved pattern: the vtable finder and source generators are in the agent500 scratch workspace and the method is in GOTCHAS.
+
+Chunk 501 (agent501, script singles 0x00E04B50..0x00EC3C50; batch 2026-10-27_linux_hand501): all 40 landed (15 MATCH, 25 RELOCATION_MATCH), every name proven. Owner-attribution caveat: a catalog row that runs past its real end (MakeRandomComment into CLostTraderBrother's Alloc 0x00EA4FF0) makes the vtable-store owner lookup name the wrong function.
