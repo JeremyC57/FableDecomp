@@ -1,0 +1,70 @@
+// std::vector<CAbilityButtonGuiDef>::_M_insert_overflow(CAbilityButtonGuiDef* position, const CAbilityButtonGuiDef& x, const __false_type&, unsigned int fillLength, bool atEnd) -- STLport growth path: allocate old+max(old,n), copy-construct the head, n copies of x and the tail unless inserting at the end, clear the old block, adopt the new one
+// Leaf: ?_M_insert_overflow@?$vector@VCAbilityButtonGuiDef@@
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00476816, 226 bytes, thiscall `ret 14h`; size TU with a frame pointer.
+// Identity (proven): every placement copy calls 0x0046F1B4, bound ??0CAbilityButtonGuiDef@@QAE@ABV0@@Z (the CAbilityButtonGuiDef copy constructor, 0x5C-byte
+//   stride); the old block goes through _M_clear 0x0046F191; its only caller is the vector's _M_fill_insert 0x004766C2 (resize 0x0047662A).
+// Callees: malloc 0x00BFEA0E, CAbilityButtonGuiDef::CAbilityButtonGuiDef(const CAbilityButtonGuiDef&) 0x0046F1B4, vector<CAbilityButtonGuiDef>::_M_clear() 0x0046F191.
+// Shape (family K102, representative 0x00476816): the landed 0x0046AECC _M_insert_overflow (K100) with a non-trivial element:
+//   the null-checked placement copies call the out-of-line copy constructor and _M_clear (destroy + free) is out of line.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+extern "C" void* __cdecl malloc(unsigned int bytes);                                   // 0x00BFEA0E
+
+inline void* operator new(unsigned int, void* where) { return where; }
+
+class CAbilityButtonGuiDef {                                            // retail 0x5C bytes (members not touched here)
+public:
+    CAbilityButtonGuiDef(const CAbilityButtonGuiDef& other);                           // 0x0046F1B4
+    unsigned char _data[0x5C];
+};
+
+namespace std {
+struct __false_type { };
+template <class T> __forceinline const T& (max)(const T& a, const T& b) { return a < b ? b : a; }
+template <class _T1, class _T2> __forceinline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }
+template <class T> __forceinline T* __uninitialized_copy(T* first, T* last, T* result, const __false_type&)
+{
+    T* cur = result;
+    for (; first != last; ++first, ++cur)
+        _Construct(cur, *first);
+    return cur;
+}
+template <class T> __forceinline T* __uninitialized_fill_n(T* first, unsigned int n, const T& x, const __false_type&)
+{
+    T* cur = first;
+    for (; n > 0; --n, ++cur)
+        _Construct(cur, x);
+    return cur;
+}
+template <class T> class allocator { };
+template <class T, class A = allocator<T> > class vector {
+public:
+    T* _M_start;                    // +0x00
+    T* _M_finish;                   // +0x04
+    T* _M_end_of_storage;           // +0x08
+    unsigned int size() const { return _M_finish - _M_start; }
+    static __forceinline T* allocate(unsigned int n) { return n != 0 ? (T*)malloc(n * sizeof(T)) : 0; }
+    void _M_clear();                                    // 0x0046F191
+    __forceinline void _M_set(T* s, T* f, T* e) { _M_start = s; _M_finish = f; _M_end_of_storage = e; }
+protected:
+    void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd);
+};
+template <class T, class A> void vector<T, A>::_M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd)
+{
+    const unsigned int oldSize = size();
+    const unsigned int length = oldSize + (max)(oldSize, fillLength);
+    T* newStart = allocate(length);
+    T* newFinish = __uninitialized_copy(_M_start, position, newStart, __false_type());
+    if (fillLength == 1) {
+        _Construct(newFinish, x);
+        ++newFinish;
+    }
+    else
+        newFinish = __uninitialized_fill_n(newFinish, fillLength, x, __false_type());
+    if (!atEnd)
+        newFinish = __uninitialized_copy(position, _M_finish, newFinish, __false_type());
+    _M_clear();
+    _M_set(newStart, newFinish, newStart + length);
+}
+template void vector<CAbilityButtonGuiDef >::_M_insert_overflow(CAbilityButtonGuiDef*, const CAbilityButtonGuiDef&, const __false_type&, unsigned int, bool);
+}

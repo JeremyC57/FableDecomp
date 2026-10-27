@@ -65,3 +65,11 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - Global_GetWindowTitle_004023f0.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - Global_MyDocuments_CheckWritePermissions_00402130.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - Global_GFConfigDetection_004017b0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetShadersDirectory_0041a1e0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetMiscDirectoryA_0041a0a0_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetShadersDirectory_0041a1e0.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetCacheDirectory_0041a180_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetGraphicsDirectory_0041a100_test.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetCacheDirectory_0041a180.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetGraphicsDirectory_0041a100.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- Global_GetMiscDirectoryA_0041a0a0.cpp moved here 2026-10-24 when the address landed as genuine C++.

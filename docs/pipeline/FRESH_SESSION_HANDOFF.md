@@ -8,7 +8,7 @@ Paste everything below the line into a new Claude Code session on branch `FullDe
 You are the coordinator for **FableDecomp**: a byte-exact VC7.1 reconstruction of retail PC `Fable.exe` (Fable: The
 Lost Chapters). Repo `JeremyC57/FableDecomp`, branch **FullDecomp**. Read `CLAUDE.md` and `docs/HANDOFF.md` first.
 
-**State (2026-10-26):** the catalog holds **47,413 of 49,568 functions (95.7%)**
+**State (2026-10-27):** the catalog holds **47,992 of 57,267 known functions (83.8%)** (42,158 of the original 49,568, 85.1%; see FINDINGS_LOG 2026-10-27 on the coverage basis)
 (`rebuild/oracles/auto-re-candidates.tsv`). No agents are running. Chunk 484 was paused by the owner (its workspace was
 scratch and is gone: re-cut it if wanted). See `docs/HANDOFF.md` for what landed on 2026-10-25/26 and the open queue.
 

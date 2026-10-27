@@ -1,0 +1,601 @@
+address	status	bytes	test	note
+004084b0	DIFFER	84v67	PASS	K072 lane gap: retail cmp [cap],-1/fild [cap] and the def release scheduled with the field read into the shared push-ecx slot; 14 forms tried (RemoveReference variants, def-local Release, /Os, optimize s/sy, QFE)
+00408500	DIFFER	84v67	PASS	K072 lane gap: retail cmp [cap],-1/fild [cap] and the def release scheduled with the field read into the shared push-ecx slot; 14 forms tried (RemoveReference variants, def-local Release, /Os, optimize s/sy, QFE)
+00408550	DIFFER	84v67	PASS	K072 lane gap: retail cmp [cap],-1/fild [cap] and the def release scheduled with the field read into the shared push-ecx slot; 14 forms tried (RemoveReference variants, def-local Release, /Os, optimize s/sy, QFE)
+004085a0	DIFFER	84v67	PASS	K072 lane gap: retail cmp [cap],-1/fild [cap] and the def release scheduled with the field read into the shared push-ecx slot; 14 forms tried (RemoveReference variants, def-local Release, /Os, optimize s/sy, QFE)
+0040e290	RELOCATION_MATCH	53v53	PASS	K073 __copy with out-of-line operator=
+0040e4d0	RELOCATION_MATCH	50v50	PASS	K074 TransferableComponent string transfer
+0040e5f0	RELOCATION_MATCH	50v50	PASS	K074 TransferableComponent string transfer
+0040e6d0	RELOCATION_MATCH	50v50	PASS	K074 TransferableComponent string transfer
+0040e800	RELOCATION_MATCH	50v50	PASS	K074 TransferableComponent string transfer
+0040e910	RELOCATION_MATCH	30v30	PASS	K075 TransferableComponent scalar TransferOut
+0040ea70	MATCH	34v34	PASS	K076 uninitialized_fill_n 4-byte false_type
+0040f8a0	RELOCATION_MATCH	129v129	PASS	K077 scalar TransferBinaryIn
+0040f970	RELOCATION_MATCH	30v30	PASS	K075 TransferableComponent scalar TransferOut
+0040fb70	RELOCATION_MATCH	39v39	PASS	K078 TransferableVector enum TransferIn
+00411f10	RELOCATION_MATCH	272v272	PASS	K079 vector _M_fill_insert 4-byte false_type
+004196b2	RELOCATION_MATCH	92v92	PASS	K080 GetDef size TU
+00419f50	RELOCATION_MATCH	112v112	PASS	K081 vector copy ctor 4-byte false_type
+0041a0a0	RELOCATION_MATCH	17v17	PASS	K082 resource directory getters
+0041a100	RELOCATION_MATCH	17v17	PASS	K082 resource directory getters
+0041a180	RELOCATION_MATCH	17v17	PASS	K082 resource directory getters
+0041a1e0	RELOCATION_MATCH	17v17	PASS	K082 resource directory getters
+0041a4f0	RELOCATION_MATCH	72v72	PASS	K083 user-data dir getters
+0041a5b0	RELOCATION_MATCH	72v72	PASS	K083 user-data dir getters
+0041a600	RELOCATION_MATCH	72v72	PASS	K083 user-data dir getters
+0041a650	RELOCATION_MATCH	72v72	PASS	K083 user-data dir getters
+0042ad91	MATCH	37v37	PASS	K084 _Rb_tree _M_lower_bound pointer key
+0042ae90	MATCH	37v37	PASS	K084 _Rb_tree _M_lower_bound pointer key
+0042b467	RELOCATION_MATCH	92v92	PASS	K085 _M_find CCharString size TU
+0042b52b	RELOCATION_MATCH	92v92	PASS	K085 _M_find CCharString size TU
+0042c1c1	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+0042c300	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+00436d60	DIFFER	583v583	PASS	K086 lane gap (as K016): one SIB operand order -- retail mov ecx,[ecx+eax+4] where the lane emits [eax+ecx+4]; every other byte identical; the K016 forms plus an STLport-vector operator[] spelling tried
+004427d0	RELOCATION_MATCH	150v150	PASS	K007 deque dtor
+004432b0	RELOCATION_MATCH	150v150	PASS	K007 deque dtor
+00448e90	RELOCATION_MATCH	113v113	PASS	K087 __linear_insert keyed counted pairs
+00448f10	RELOCATION_MATCH	122v122	PASS	K088 sort_heap keyed counted pairs
+0044c1dc	RELOCATION_MATCH	26v26	PASS	K089 def ctors with CDefString members
+0044c3aa	RELOCATION_MATCH	42v42	PASS	K090 def ctors with member ctors
+0044c4d5	RELOCATION_MATCH	35v35	PASS	K091 one-arg ctors two member inits
+0044c535	RELOCATION_MATCH	20v20	PASS	K092 type-constant base ctors
+0044c54d	RELOCATION_MATCH	20v20	PASS	K092 type-constant base ctors
+0044c565	RELOCATION_MATCH	20v20	PASS	K092 type-constant base ctors
+00453e6a	RELOCATION_MATCH	22v22	PASS	K093 block attack def ctors
+00453e84	RELOCATION_MATCH	22v22	PASS	K093 block attack def ctors
+00453e9e	RELOCATION_MATCH	22v22	PASS	K093 block attack def ctors
+00453eb8	RELOCATION_MATCH	22v22	PASS	K093 block attack def ctors
+00456f09	RELOCATION_MATCH	26v26	PASS	K089 def ctors with CDefString members
+00456ffe	RELOCATION_MATCH	42v42	PASS	K090 def ctors with member ctors
+00457f13	RELOCATION_MATCH	68v68	PASS	K094 def Transfer five members
+00457f73	RELOCATION_MATCH	26v26	PASS	K089 def ctors with CDefString members
+00458573	RELOCATION_MATCH	42v42	PASS	K090 def ctors with member ctors
+0045f008	RELOCATION_MATCH	50v50	PASS	K095 _M_allocate_and_copy frame TU
+004616d6	RELOCATION_MATCH	176v176	PASS	K096 GFSerialiseMapBinaryIn float maps size TU
+0046190a	RELOCATION_MATCH	176v176	PASS	K096 GFSerialiseMapBinaryIn float maps size TU
+0046280e	RELOCATION_MATCH	25v25	PASS	K097 def Copy one member
+0046284b	RELOCATION_MATCH	25v25	PASS	K097 def Copy one member
+004629b9	RELOCATION_MATCH	25v25	PASS	K097 def Copy one member
+00466889	RELOCATION_MATCH	176v176	PASS	K096 GFSerialiseMapBinaryIn float maps size TU
+00466de5	MATCH	57v57	PASS	K098 vector erase 12-byte
+004672d6	MATCH	57v57	PASS	K098 vector erase 12-byte
+00469e3e	MATCH	54v54	PASS	K099 vector erase 8-byte
+00469fc8	RELOCATION_MATCH	232v232	PASS	K100 insert_overflow 8-byte
+0046b182	MATCH	54v54	PASS	K099 vector erase 8-byte
+0046b30c	RELOCATION_MATCH	232v232	PASS	K100 insert_overflow 8-byte
+0046b681	RELOCATION_MATCH	64v64	PASS	K101 vector resize 16-byte
+0046bba2	MATCH	57v57	PASS	K098 vector erase 12-byte
+0046c46e	MATCH	54v54	PASS	K099 vector erase 8-byte
+0046c5f8	RELOCATION_MATCH	232v232	PASS	K100 insert_overflow 8-byte
+0047073f	MATCH	57v57	PASS	K098 vector erase 12-byte
+00470a66	MATCH	54v54	PASS	K099 vector erase 8-byte
+00470bf0	RELOCATION_MATCH	232v232	PASS	K100 insert_overflow 8-byte
+00476816	RELOCATION_MATCH	226v226	PASS	K102 insert_overflow def elements
+00476cbb	RELOCATION_MATCH	226v226	PASS	K102 insert_overflow def elements
+00478c79	RELOCATION_MATCH	349v349	PASS	K103 fill_insert def elements
+00479630	RELOCATION_MATCH	349v349	PASS	K103 fill_insert def elements
+00479bb2	RELOCATION_MATCH	226v226	PASS	K102 insert_overflow def elements
+0047a08c	RELOCATION_MATCH	349v349	PASS	K103 fill_insert def elements
+0047a4a2	RELOCATION_MATCH	349v349	PASS	K103 fill_insert def elements
+0047bd70	RELOCATION_MATCH	50v50	PASS	K104 vector _M_clear one-member dtor
+0048573d	RELOCATION_MATCH	10v10	PASS	K004 global forwarders
+00485dbc	RELOCATION_MATCH	137v137	PASS	K105 insert_overflow pointer true_type size TU
+0048d400	RELOCATION_MATCH	140v140	PASS	K106 GetAllThings single filter
+0048d520	RELOCATION_MATCH	150v150	PASS	K007 deque dtor
+0049ae30	RELOCATION_MATCH	53v53	PASS	K073 __copy with out-of-line operator=
+004aa190	RELOCATION_MATCH	62v62	PASS	K008 uninitialized_fill_n CIntelligentPointer
+004aa270	RELOCATION_MATCH	129v129	PASS	K077 scalar TransferBinaryIn
+004ac480	RELOCATION_MATCH	45v45	PASS	K107 list push_back 4-byte
+004ac4b0	RELOCATION_MATCH	45v45	PASS	K107 list push_back 4-byte
+004ac940	RELOCATION_MATCH	265v265	PASS	K108 insert_overflow CIntelligentPointer
+004ad780	RELOCATION_MATCH	136v136	PASS	K109 GetAllLeafThings single filter
+004aebc0	RELOCATION_MATCH	20v20	PASS	K110 two-string record ctor
+004b8680	RELOCATION_MATCH	30v30	PASS	K075 TransferableComponent scalar TransferOut
+004bb270	RELOCATION_MATCH	92v92	PASS	K111 Rb_tree erase by key speed TU
+004c1e90	MATCH	45v45	PASS	K112 swap 12-byte
+004c2ad0	MATCH	56v56	PASS	K113 uninitialized_copy 12-byte
+004c2b60	MATCH	45v45	PASS	K112 swap 12-byte
+004c3460	RELOCATION_MATCH	54v54	PASS	K114 list remove pointer
+004cbbb0	RELOCATION_MATCH	47v47	PASS	K115 pair<CIntelligentPointer> copy ctor
+004cc150	RELOCATION_MATCH	54v54	PASS	K116 list remove 4-byte
+004cf400	RELOCATION_MATCH	78v78	PASS	K117 swap pair with out-of-line second
+004d0ee0	RELOCATION_MATCH	34v34	PASS	K118 _Destroy range one-member dtor
+004d1800	RELOCATION_MATCH	50v50	PASS	K104 vector _M_clear one-member dtor
+004d3af4	RELOCATION_MATCH	38v38	PASS	K091 one-arg ctors two member inits
+004d5eca	RELOCATION_MATCH	26v26	PASS	K089 def ctors with CDefString members
+004dc03d	RELOCATION_MATCH	40v40	PASS	K119 TC implicit dtor
+004dc659	RELOCATION_MATCH	40v40	PASS	K119 TC implicit dtor
+004de623	RELOCATION_MATCH	32v32	PASS	K091 one-arg ctors two member inits
+004dea13	RELOCATION_MATCH	68v68	PASS	K094 def Transfer five members
+004dfda6	RELOCATION_MATCH	21v21	PASS	K120 copy_backward wrapper
+004e0860	RELOCATION_MATCH	42v42	PASS	K090 def ctors with member ctors
+004e0bf6	RELOCATION_MATCH	40v40	PASS	K119 TC implicit dtor
+004e1856	RELOCATION_MATCH	40v40	PASS	K119 TC implicit dtor
+004e3526	RELOCATION_MATCH	174v174	PASS	K121 insert_overflow 16-byte non-POD helpers out of line
+004e41dd	RELOCATION_MATCH	60v60	PASS	K122 sort_heap pop_heap_aux out of line
+004e468b	RELOCATION_MATCH	25v25	PASS	K097 def Copy one member
+004e50c0	RELOCATION_MATCH	176v176	PASS	K096 GFSerialiseMapBinaryIn float maps size TU
+004e7ee0	RELOCATION_MATCH	68v68	PASS	K094 def Transfer five members
+004e9c63	RELOCATION_MATCH	71v71	PASS	K123 allocate_and_copy def elements
+004e9f47	RELOCATION_MATCH	64v64	PASS	K101 vector resize 16-byte
+004eabe5	RELOCATION_MATCH	75v75	PASS	K124 __copy_ptrs def elements
+004eacbb	RELOCATION_MATCH	71v71	PASS	K123 allocate_and_copy def elements
+004eafe8	RELOCATION_MATCH	71v71	PASS	K123 allocate_and_copy def elements
+004eb41f	RELOCATION_MATCH	64v64	PASS	K101 vector resize 16-byte
+004eb8c3	RELOCATION_MATCH	68v68	PASS	K094 def Transfer five members
+004ebedb	RELOCATION_MATCH	71v71	PASS	K123 allocate_and_copy def elements
+004ec03f	RELOCATION_MATCH	75v75	PASS	K124 __copy_ptrs def elements
+004ed437	RELOCATION_MATCH	34v34	PASS	K125 uninitialized_fill_n def elements
+004edaf3	RELOCATION_MATCH	75v75	PASS	K124 __copy_ptrs def elements
+004eddf9	RELOCATION_MATCH	34v34	PASS	K125 uninitialized_fill_n def elements
+004ee137	RELOCATION_MATCH	226v226	PASS	K102 insert_overflow def elements
+004fa087	RELOCATION_MATCH	34v34	PASS	K125 uninitialized_fill_n def elements
+004fa22c	RELOCATION_MATCH	75v75	PASS	K124 __copy_ptrs def elements
+004fa516	RELOCATION_MATCH	34v34	PASS	K125 uninitialized_fill_n def elements
+005128b0	RELOCATION_MATCH	56v56	PASS	K126 _Vector_base(n) speed TU
+005131d0	RELOCATION_MATCH	64v64	PASS	K127 random_shuffle rand
+00514050	RELOCATION_MATCH	67v67	PASS	K128 unguarded_linear_insert pointer comp out of line
+00515020	RELOCATION_MATCH	78v78	PASS	K129 allocate_and_copy copy ctor out of line
+0051b880	DIFFER	83v83	PASS	K009 Rb_tree erase(key) speed TU: one store/load pair scheduled differently (erase's two by-value iterators); 9 forms tried
+00526f50	RELOCATION_MATCH	20v20	PASS	K110 two-string record ctor
+00528830	RELOCATION_MATCH	20v20	PASS	K110 two-string record ctor
+0052afb0	DIFFER	83v83	PASS	K009 Rb_tree erase(key) speed TU: one store/load pair scheduled differently (erase's two by-value iterators); 9 forms tried
+0052d740	RELOCATION_MATCH	45v45	PASS	K107 list push_back 4-byte
+005550d0	RELOCATION_MATCH	45v45	PASS	K107 list push_back 4-byte
+00565b60	RELOCATION_MATCH	78v78	PASS	K117 swap pair with out-of-line second
+00566330	RELOCATION_MATCH	39v39	PASS	K078 TransferableVector enum TransferIn
+00593666	RELOCATION_MATCH	92v92	PASS	K080 GetDef size TU
+005940ec	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+005946f1	RELOCATION_MATCH	21v21	PASS	K120 copy_backward wrapper
+00594b8d	RELOCATION_MATCH	60v60	PASS	K122 sort_heap pop_heap_aux out of line
+0059b35c	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+005b1d38	MATCH	37v37	PASS	K084 _Rb_tree _M_lower_bound pointer key
+005b1da0	MATCH	37v37	PASS	K084 _Rb_tree _M_lower_bound pointer key
+005b2a37	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+005bb5ef	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+005bb85a	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+005bbe32	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+005d97f0	RELOCATION_MATCH	64v64	PASS	K002 CTCInventoryItem::IsX
+005d9830	RELOCATION_MATCH	64v64	PASS	K002 CTCInventoryItem::IsX
+005d9870	RELOCATION_MATCH	64v64	PASS	K002 CTCInventoryItem::IsX
+005d98b0	RELOCATION_MATCH	64v64	PASS	K002 CTCInventoryItem::IsX
+005d98f0	RELOCATION_MATCH	64v64	PASS	K002 CTCInventoryItem::IsX
+005d9930	RELOCATION_MATCH	64v64	PASS	K002 CTCInventoryItem::IsX
+005d9970	RELOCATION_MATCH	64v64	PASS	K002 CTCInventoryItem::IsX
+005e8cc0	RELOCATION_MATCH	39v39	PASS	K078 TransferableVector enum TransferIn
+005f83d7	RELOCATION_MATCH	50v50	PASS	K095 _M_allocate_and_copy frame TU
+005f8bd8	RELOCATION_MATCH	50v50	PASS	K095 _M_allocate_and_copy frame TU
+005f93d1	RELOCATION_MATCH	21v21	PASS	K120 copy_backward wrapper
+005f93f6	RELOCATION_MATCH	21v21	PASS	K120 copy_backward wrapper
+005f9714	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+005f9853	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+005f9a3c	RELOCATION_MATCH	50v50	PASS	K095 _M_allocate_and_copy frame TU
+005f9b1e	RELOCATION_MATCH	60v60	PASS	K122 sort_heap pop_heap_aux out of line
+005f9b5a	RELOCATION_MATCH	60v60	PASS	K122 sort_heap pop_heap_aux out of line
+006132b0	MATCH	34v34	PASS	K076 uninitialized_fill_n 4-byte false_type
+006144c0	RELOCATION_MATCH	39v39	PASS	K078 TransferableVector enum TransferIn
+006148a0	RELOCATION_MATCH	129v129	PASS	K077 scalar TransferBinaryIn
+00618ad0	RELOCATION_MATCH	272v272	PASS	K079 vector _M_fill_insert 4-byte false_type
+0062ed90	RELOCATION_MATCH	56v56	PASS	K126 _Vector_base(n) speed TU
+0062ee20	RELOCATION_MATCH	56v56	PASS	K126 _Vector_base(n) speed TU
+0062f5d0	RELOCATION_MATCH	56v56	PASS	K126 _Vector_base(n) speed TU
+00639590	DIFFER	83v83	PASS	K009 Rb_tree erase(key) speed TU: one store/load pair scheduled differently (erase's two by-value iterators); 9 forms tried
+006405b0	RELOCATION_MATCH	54v54	PASS	K116 list remove 4-byte
+0065625e	RELOCATION_MATCH	137v137	PASS	K105 insert_overflow pointer true_type size TU
+00656d5e	RELOCATION_MATCH	174v174	PASS	K121 insert_overflow 16-byte non-POD helpers out of line
+00660ae2	DIFFER	123v123	PASS	K005 RemoveThingFromTask<T>: erase's discarded result temp homed in the tasks slot (+14h) where retail reuses the find_if temp's thing slot (+10h); 8 forms tried
+00660b5d	DIFFER	123v123	PASS	K005 RemoveThingFromTask<T>: erase's discarded result temp homed in the tasks slot (+14h) where retail reuses the find_if temp's thing slot (+10h); 8 forms tried
+00660bd8	DIFFER	123v123	PASS	K005 RemoveThingFromTask<T>: erase's discarded result temp homed in the tasks slot (+14h) where retail reuses the find_if temp's thing slot (+10h); 8 forms tried
+00660c53	DIFFER	123v123	PASS	K005 RemoveThingFromTask<T>: erase's discarded result temp homed in the tasks slot (+14h) where retail reuses the find_if temp's thing slot (+10h); 8 forms tried
+00660cce	DIFFER	123v123	PASS	K005 RemoveThingFromTask<T>: erase's discarded result temp homed in the tasks slot (+14h) where retail reuses the find_if temp's thing slot (+10h); 8 forms tried
+00660d49	DIFFER	123v123	PASS	K005 RemoveThingFromTask<T>: erase's discarded result temp homed in the tasks slot (+14h) where retail reuses the find_if temp's thing slot (+10h); 8 forms tried
+0066ed1d	RELOCATION_MATCH	137v137	PASS	K105 insert_overflow pointer true_type size TU
+006758b0	RELOCATION_MATCH	78v78	PASS	K129 allocate_and_copy copy ctor out of line
+0067aa40	RELOCATION_MATCH	129v129	PASS	K077 scalar TransferBinaryIn
+00685860	RELOCATION_MATCH	30v30	PASS	K075 TransferableComponent scalar TransferOut
+0069cb80	MATCH	82v82	PASS	K010 std::__copy over 4-byte intrusive counted pointers
+0069cc00	RELOCATION_MATCH	47v47	PASS	K011 descriptive CIVCountedPointer<CUnprovenPointee_<addr>> ??_G (H021 shape)
+006a2bd0	RELOCATION_MATCH	47v47	PASS	K115 pair<CIntelligentPointer> copy ctor
+006b56f0	MATCH	56v56	PASS	K113 uninitialized_copy 12-byte
+006b8e20	RELOCATION_MATCH	78v78	PASS	K012 implicit std::pair<K,V>::operator= of CVectorMap entries
+006b9ed0	RELOCATION_MATCH	64v64	PASS	K013 std::__unguarded_insertion_sort_aux over CVectorMap counted entries
+006e2200	RELOCATION_MATCH	34v34	PASS	K118 _Destroy range one-member dtor
+006e2230	RELOCATION_MATCH	50v50	PASS	K104 vector _M_clear one-member dtor
+006e7b40	RELOCATION_MATCH	26v26	PASS	K014 default ctors with one embedded CCountedPointer
+006e7b60	RELOCATION_MATCH	26v26	PASS	K014 default ctors with one embedded CCountedPointer
+006e8b10	RELOCATION_MATCH	66v66	PASS	K015 Member = CIntelligentPointer<T>(0) clears
+006f2b00	RELOCATION_MATCH	34v34	PASS	K118 _Destroy range one-member dtor
+006f3450	RELOCATION_MATCH	50v50	PASS	K104 vector _M_clear one-member dtor
+006f3570	DIFFER	576v576	PASS	K016 lane gap: one SIB operand order -- retail mov ecx,[ecx+eax+4] (level*20 as base, LevelInfo as index) where the lane emits [eax+ecx+4]; every other byte identical; 13 forms tried (index expression spellings, level/param types, const method, push temporaries, QFE)
+006f37b0	DIFFER	570v570	PASS	K016 lane gap: one SIB operand order -- retail mov ecx,[ecx+eax+4] (level*20 as base, LevelInfo as index) where the lane emits [eax+ecx+4]; every other byte identical; 13 forms tried (index expression spellings, level/param types, const method, push temporaries, QFE)
+006f50b0	DIFFER	83v83	PASS	K009 Rb_tree erase(key) speed TU: one store/load pair scheduled differently (erase's two by-value iterators); 9 forms tried
+00702aa0	RELOCATION_MATCH	32v32	PASS	K017 TC ctors CTCBase(thing) + one zero member
+007092b0	RELOCATION_MATCH	78v78	PASS	K129 allocate_and_copy copy ctor out of line
+00710280	RELOCATION_MATCH	47v47	PASS	K011 descriptive CIVCountedPointer<CUnprovenPointee_<addr>> ??_G (H021 shape)
+00719210	RELOCATION_MATCH	85v85	PASS	K018 list<CCountedPointer<T> >::erase(iterator), speed TU
+007197c0	DIFFER	570v570	PASS	K016 lane gap: one SIB operand order -- retail mov ecx,[ecx+eax+4] (level*20 as base, LevelInfo as index) where the lane emits [eax+ecx+4]; every other byte identical; 13 forms tried (index expression spellings, level/param types, const method, push temporaries, QFE)
+0071f430	MATCH	82v82	PASS	K010 std::__copy over 4-byte intrusive counted pointers
+0071fb80	MATCH	82v82	PASS	K010 std::__copy over 4-byte intrusive counted pointers
+00722e80	RELOCATION_MATCH	34v34	PASS	K118 _Destroy range one-member dtor
+007304f0	RELOCATION_MATCH	64v64	PASS	K127 random_shuffle rand
+007377a0	RELOCATION_MATCH	62v62	PASS	K008 uninitialized_fill_n CIntelligentPointer
+00748880	RELOCATION_MATCH	97v97	PASS	K019 std::__push_heap over thing pointers
+00749280	RELOCATION_MATCH	76v76	PASS	K020 std::vector<T>::erase(first,last)
+0074cd10	RELOCATION_MATCH	62v62	PASS	K008 uninitialized_fill_n CIntelligentPointer
+0074d600	RELOCATION_MATCH	265v265	PASS	K108 insert_overflow CIntelligentPointer
+0074fb20	RELOCATION_MATCH	77v77	PASS	K021 std::vector<T>::erase(first,last), member dtor
+00758720	MATCH	49v49	PASS	K022 std::(__)uninitialized_fill_n over POD pairs
+007587e0	MATCH	49v49	PASS	K022 std::(__)uninitialized_fill_n over POD pairs
+00765d00	RELOCATION_MATCH	20v20	PASS	K023 two-CCharString record default ctor (descriptive)
+00768b80	RELOCATION_MATCH	20v20	PASS	K023 two-CCharString record default ctor (descriptive)
+0076a030	RELOCATION_MATCH	104v104	PASS	K024 std::vector<T> copy ctor
+0076a0a0	RELOCATION_MATCH	104v104	PASS	K024 std::vector<T> copy ctor
+00777080	RELOCATION_MATCH	64v64	PASS	K127 random_shuffle rand
+00777430	RELOCATION_MATCH	104v104	PASS	K024 std::vector<T> copy ctor
+00777b30	DIFFER	83v83	PASS	K009 Rb_tree erase(key) speed TU: one store/load pair scheduled differently (erase's two by-value iterators); 9 forms tried
+0077ec20	RELOCATION_MATCH	136v136	PASS	K109 GetAllLeafThings single filter
+00787dbc	RELOCATION_MATCH	32v32	PASS	K091 one-arg ctors two member inits
+00788ffc	RELOCATION_MATCH	137v137	PASS	K105 insert_overflow pointer true_type size TU
+007921c0	RELOCATION_MATCH	78v78	PASS	K025 map/_Rb_tree erase(iterator), two-member value
+00792640	RELOCATION_MATCH	78v78	PASS	K025 map/_Rb_tree erase(iterator), two-member value
+00797760	RELOCATION_MATCH	78v78	PASS	K025 map/_Rb_tree erase(iterator), two-member value
+00797a60	RELOCATION_MATCH	78v78	PASS	K025 map/_Rb_tree erase(iterator), two-member value
+007a30b0	RELOCATION_MATCH	97v97	PASS	K019 std::__push_heap over thing pointers
+007ade60	RELOCATION_MATCH	92v92	PASS	K111 Rb_tree erase by key speed TU
+007afd10	RELOCATION_MATCH	265v265	PASS	K108 insert_overflow CIntelligentPointer
+007b4d60	RELOCATION_MATCH	150v150	PASS	K007 deque dtor
+007b6d70	RELOCATION_MATCH	62v62	PASS	K008 uninitialized_fill_n CIntelligentPointer
+007b8230	RELOCATION_MATCH	62v62	PASS	K008 uninitialized_fill_n CIntelligentPointer
+007b99e0	RELOCATION_MATCH	265v265	PASS	K108 insert_overflow CIntelligentPointer
+007ca030	RELOCATION_MATCH	47v47	PASS	K011 descriptive CIVCountedPointer<CUnprovenPointee_<addr>> ??_G (H021 shape)
+007ca520	RELOCATION_MATCH	47v47	PASS	K115 pair<CIntelligentPointer> copy ctor
+007cbda0	RELOCATION_MATCH	32v32	PASS	K017 TC ctors CTCBase(thing) + one zero member
+007d53a0	RELOCATION_MATCH	167v167	PASS	K026 tavern-game score text, one decimal
+007d6670	RELOCATION_MATCH	167v167	PASS	K026 tavern-game score text, one decimal
+007d7860	RELOCATION_MATCH	64v64	PASS	K127 random_shuffle rand
+007d7d60	RELOCATION_MATCH	167v167	PASS	K026 tavern-game score text, one decimal
+007d7e10	RELOCATION_MATCH	167v167	PASS	K026 tavern-game score text, one decimal
+007e3020	RELOCATION_MATCH	32v32	PASS	K017 TC ctors CTCBase(thing) + one zero member
+007e72a0	RELOCATION_MATCH	26v26	PASS	K014 default ctors with one embedded CCountedPointer
+007e9b40	RELOCATION_MATCH	191v191	PASS	K027 _Rb_tree::_M_insert 8-byte values
+007eba20	RELOCATION_MATCH	99v99	PASS	K028 creature-action ctors (nonzero end time)
+007eebe0	RELOCATION_MATCH	32v32	PASS	K017 TC ctors CTCBase(thing) + one zero member
+00808520	RELOCATION_MATCH	76v76	PASS	K020 std::vector<T>::erase(first,last)
+00811d40	RELOCATION_MATCH	112v112	PASS	K081 vector copy ctor 4-byte false_type
+0081a2b0	MATCH	49v49	PASS	K022 std::(__)uninitialized_fill_n over POD pairs
+0081a530	MATCH	49v49	PASS	K022 std::(__)uninitialized_fill_n over POD pairs
+00824dd0	RELOCATION_MATCH	104v104	PASS	K024 std::vector<T> copy ctor
+00825090	RELOCATION_MATCH	78v78	PASS	K012 implicit std::pair<K,V>::operator= of CVectorMap entries
+00825b40	RELOCATION_MATCH	64v64	PASS	K013 std::__unguarded_insertion_sort_aux over CVectorMap counted entries
+00826dd0	RELOCATION_MATCH	113v113	PASS	K087 __linear_insert keyed counted pairs
+00826e50	RELOCATION_MATCH	122v122	PASS	K088 sort_heap keyed counted pairs
+00827f80	RELOCATION_MATCH	78v78	PASS	K012 implicit std::pair<K,V>::operator= of CVectorMap entries
+00828d80	RELOCATION_MATCH	64v64	PASS	K013 std::__unguarded_insertion_sort_aux over CVectorMap counted entries
+008293b0	RELOCATION_MATCH	113v113	PASS	K087 __linear_insert keyed counted pairs
+00829430	RELOCATION_MATCH	122v122	PASS	K088 sort_heap keyed counted pairs
+0082c620	RELOCATION_MATCH	112v112	PASS	K081 vector copy ctor 4-byte false_type
+0082cee0	RELOCATION_MATCH	76v76	PASS	K020 std::vector<T>::erase(first,last)
+00842150	RELOCATION_MATCH	99v99	PASS	K028 creature-action ctors (nonzero end time)
+0084ace0	RELOCATION_MATCH	54v54	PASS	K116 list remove 4-byte
+0085b0d0	RELOCATION_MATCH	140v140	PASS	K106 GetAllThings single filter
+0085dc30	MATCH	34v34	PASS	K076 uninitialized_fill_n 4-byte false_type
+0085de40	RELOCATION_MATCH	112v112	PASS	K081 vector copy ctor 4-byte false_type
+0085e6c0	RELOCATION_MATCH	272v272	PASS	K079 vector _M_fill_insert 4-byte false_type
+00860310	RELOCATION_MATCH	49v49	PASS	K029 village-task IsThingInvolvedWithTask
+00860350	RELOCATION_MATCH	49v49	PASS	K029 village-task IsThingInvolvedWithTask
+00860390	RELOCATION_MATCH	49v49	PASS	K029 village-task IsThingInvolvedWithTask
+008603d0	RELOCATION_MATCH	49v49	PASS	K029 village-task IsThingInvolvedWithTask
+00860520	RELOCATION_MATCH	49v49	PASS	K029 village-task IsThingInvolvedWithTask
+00863130	RELOCATION_MATCH	54v54	PASS	K114 list remove pointer
+00863e70	DIFFER	583v583	PASS	K086 lane gap (as K016): one SIB operand order -- retail mov ecx,[ecx+eax+4] where the lane emits [eax+ecx+4]; every other byte identical; the K016 forms plus an STLport-vector operator[] spelling tried
+008699f0	RELOCATION_MATCH	47v47	PASS	K011 descriptive CIVCountedPointer<CUnprovenPointee_<addr>> ??_G (H021 shape)
+0086de40	RELOCATION_MATCH	36v36	PASS	K030 vector<T>::resize(n) over 12-byte zero defaults
+008828d0	RELOCATION_MATCH	47v47	PASS	K115 pair<CIntelligentPointer> copy ctor
+00893ab0	RELOCATION_MATCH	80v80	PASS	K031 CGameScriptInterface message checks
+00893e20	RELOCATION_MATCH	80v80	PASS	K031 CGameScriptInterface message checks
+00893e70	RELOCATION_MATCH	80v80	PASS	K031 CGameScriptInterface message checks
+00893f30	RELOCATION_MATCH	80v80	PASS	K031 CGameScriptInterface message checks
+00894440	RELOCATION_MATCH	80v80	PASS	K031 CGameScriptInterface message checks
+008a60d0	RELOCATION_MATCH	240v240	PASS	K032 CGSI CTCAIScratchpad flag getters (default true)
+008a6390	RELOCATION_MATCH	240v240	PASS	K032 CGSI CTCAIScratchpad flag getters (default true)
+008a6eb0	RELOCATION_MATCH	240v240	PASS	K032 CGSI CTCAIScratchpad flag getters (default true)
+008a7170	RELOCATION_MATCH	240v240	PASS	K032 CGSI CTCAIScratchpad flag getters (default true)
+008a7430	RELOCATION_MATCH	240v240	PASS	K032 CGSI CTCAIScratchpad flag getters (default true)
+008a9760	RELOCATION_MATCH	108v108	PASS	K033 CGSI gossip map lookups
+008a9810	RELOCATION_MATCH	108v108	PASS	K033 CGSI gossip map lookups
+008a9f50	RELOCATION_MATCH	108v108	PASS	K033 CGSI gossip map lookups
+008aa1b0	RELOCATION_MATCH	108v108	PASS	K033 CGSI gossip map lookups
+008aa410	RELOCATION_MATCH	108v108	PASS	K033 CGSI gossip map lookups
+008aac10	RELOCATION_MATCH	53v53	PASS	K073 __copy with out-of-line operator=
+008abe70	RELOCATION_MATCH	85v85	PASS	K034 FindMostRecentMessage<Bind3>
+008abed0	RELOCATION_MATCH	72v72	PASS	K035 FindMostRecentMessage<Bind2>
+008abf20	RELOCATION_MATCH	85v85	PASS	K034 FindMostRecentMessage<Bind3>
+008adba0	RELOCATION_MATCH	140v140	PASS	K106 GetAllThings single filter
+008adc30	RELOCATION_MATCH	140v140	PASS	K106 GetAllThings single filter
+008adcc0	DIFFER	583v583	PASS	K086 lane gap (as K016): one SIB operand order -- retail mov ecx,[ecx+eax+4] where the lane emits [eax+ecx+4]; every other byte identical; the K016 forms plus an STLport-vector operator[] spelling tried
+008ae160	RELOCATION_MATCH	58v58	PASS	K036 combat-action ctors (owner,target)
+008ae420	RELOCATION_MATCH	92v92	PASS	K111 Rb_tree erase by key speed TU
+008af120	RELOCATION_MATCH	191v191	PASS	K027 _Rb_tree::_M_insert 8-byte values
+008b8840	RELOCATION_MATCH	83v83	PASS	K037 combat-action Clone with inline copy ctor
+008b8a10	RELOCATION_MATCH	75v75	PASS	K038 combat-action copy ctors
+008b9190	RELOCATION_MATCH	58v58	PASS	K036 combat-action ctors (owner,target)
+008b96a0	DIFFER	151v151	PASS	K039 DIFFER: callee-saved register choice (retail edi=&PItemRemoved, ebx=owner; build ebx/edi swapped); 9 source variants tried
+008b9740	DIFFER	151v151	PASS	K039 DIFFER: callee-saved register choice (retail edi=&PItemRemoved, ebx=owner; build ebx/edi swapped); 9 source variants tried
+008b98d0	DIFFER	151v151	PASS	K039 DIFFER: callee-saved register choice (retail edi=&PItemRemoved, ebx=owner; build ebx/edi swapped); 9 source variants tried
+008b9a60	DIFFER	151v151	PASS	K039 DIFFER: callee-saved register choice (retail edi=&PItemRemoved, ebx=owner; build ebx/edi swapped); 9 source variants tried
+008b9bf0	DIFFER	151v151	PASS	K039 DIFFER: callee-saved register choice (retail edi=&PItemRemoved, ebx=owner; build ebx/edi swapped); 9 source variants tried
+008be290	RELOCATION_MATCH	83v83	PASS	K037 combat-action Clone with inline copy ctor
+008be790	RELOCATION_MATCH	83v83	PASS	K037 combat-action Clone with inline copy ctor
+008be9c0	RELOCATION_MATCH	83v83	PASS	K037 combat-action Clone with inline copy ctor
+008beab0	RELOCATION_MATCH	75v75	PASS	K038 combat-action copy ctors
+008c19b0	RELOCATION_MATCH	82v82	PASS	K040 FinishAction mode remove/add + base finish
+008c1ac0	RELOCATION_MATCH	82v82	PASS	K040 FinishAction mode remove/add + base finish
+008c1bd0	RELOCATION_MATCH	82v82	PASS	K040 FinishAction mode remove/add + base finish
+008c38b0	RELOCATION_MATCH	82v82	PASS	K041 combat-action ctors (owner) with GetSoundPair
+008c5dc0	RELOCATION_MATCH	75v75	PASS	K038 combat-action copy ctors
+008c5e40	RELOCATION_MATCH	75v75	PASS	K038 combat-action copy ctors
+008c7f60	RELOCATION_MATCH	99v99	PASS	K028 creature-action ctors (nonzero end time)
+008cf8f0	RELOCATION_MATCH	23v23	PASS	K092 type-constant base ctors
+008cfb70	RELOCATION_MATCH	83v83	PASS	K037 combat-action Clone with inline copy ctor
+008d2700	RELOCATION_MATCH	219v219	PASS	K042 CGameScriptThing event-window checks
+008d3170	RELOCATION_MATCH	219v219	PASS	K042 CGameScriptThing event-window checks
+008d3850	RELOCATION_MATCH	219v219	PASS	K042 CGameScriptThing event-window checks
+008d3930	RELOCATION_MATCH	219v219	PASS	K042 CGameScriptThing event-window checks
+008d3a10	RELOCATION_MATCH	219v219	PASS	K042 CGameScriptThing event-window checks
+008d46d0	RELOCATION_MATCH	72v72	PASS	K035 FindMostRecentMessage<Bind2>
+008e4ad0	RELOCATION_MATCH	82v82	PASS	K041 combat-action ctors (owner) with GetSoundPair
+008ec850	RELOCATION_MATCH	32v32	PASS	K017 TC ctors CTCBase(thing) + one zero member
+008f0a70	RELOCATION_MATCH	167v167	PASS	K026 tavern-game score text, one decimal
+008f6800	MATCH	56v56	PASS	K113 uninitialized_copy 12-byte
+009061e0	RELOCATION_MATCH	188v188	PASS	K003 two-action OnCreate
+009068a0	RELOCATION_MATCH	150v150	PASS	K043 combat-sequence OnCreate queue one action
+00906940	RELOCATION_MATCH	150v150	PASS	K043 combat-sequence OnCreate queue one action
+009069e0	RELOCATION_MATCH	150v150	PASS	K043 combat-sequence OnCreate queue one action
+00906ba0	RELOCATION_MATCH	58v58	PASS	K036 combat-action ctors (owner,target)
+00907e00	RELOCATION_MATCH	188v188	PASS	K003 two-action OnCreate
+00907fb0	RELOCATION_MATCH	58v58	PASS	K036 combat-action ctors (owner,target)
+00908810	RELOCATION_MATCH	188v188	PASS	K003 two-action OnCreate
+00908960	RELOCATION_MATCH	188v188	PASS	K003 two-action OnCreate
+00908f20	RELOCATION_MATCH	188v188	PASS	K003 two-action OnCreate
+0090a0b0	RELOCATION_MATCH	150v150	PASS	K043 combat-sequence OnCreate queue one action
+0090a150	RELOCATION_MATCH	150v150	PASS	K043 combat-sequence OnCreate queue one action
+0090a340	RELOCATION_MATCH	188v188	PASS	K003 two-action OnCreate
+0090a400	RELOCATION_MATCH	188v188	PASS	K003 two-action OnCreate
+0090b8e0	RELOCATION_MATCH	54v54	PASS	K114 list remove pointer
+0090dee0	RELOCATION_MATCH	72v72	PASS	K035 FindMostRecentMessage<Bind2>
+0090edc0	RELOCATION_MATCH	85v85	PASS	K034 FindMostRecentMessage<Bind3>
+00910a90	RELOCATION_MATCH	136v136	PASS	K109 GetAllLeafThings single filter
+00910cf0	RELOCATION_MATCH	85v85	PASS	K034 FindMostRecentMessage<Bind3>
+00911180	RELOCATION_MATCH	99v99	PASS	K028 creature-action ctors (nonzero end time)
+00911240	RELOCATION_MATCH	85v85	PASS	K034 FindMostRecentMessage<Bind3>
+00913cc0	RELOCATION_MATCH	150v150	PASS	K007 deque dtor
+00914330	RELOCATION_MATCH	137v137	PASS	K044 GetPBestThing<Filter,Nearest,T>
+00916f30	RELOCATION_MATCH	137v137	PASS	K044 GetPBestThing<Filter,Nearest,T>
+00916fc0	RELOCATION_MATCH	137v137	PASS	K044 GetPBestThing<Filter,Nearest,T>
+00917d60	RELOCATION_MATCH	75v75	PASS	K045 AI state group OnReplace base + ChooseNewIdle
+00918110	RELOCATION_MATCH	50v50	PASS	K046 find_if over list<CIntelligentPointer<CThing>>
+00918510	RELOCATION_MATCH	75v75	PASS	K045 AI state group OnReplace base + ChooseNewIdle
+009185f0	RELOCATION_MATCH	75v75	PASS	K045 AI state group OnReplace base + ChooseNewIdle
+0091ad70	RELOCATION_MATCH	54v54	PASS	K114 list remove pointer
+0091c030	RELOCATION_MATCH	66v66	PASS	K015 Member = CIntelligentPointer<T>(0) clears
+0091f870	RELOCATION_MATCH	97v97	PASS	K019 std::__push_heap over thing pointers
+00933cc0	RELOCATION_MATCH	99v99	PASS	K028 creature-action ctors (nonzero end time)
+00935a80	RELOCATION_MATCH	66v66	PASS	K015 Member = CIntelligentPointer<T>(0) clears
+009361c0	RELOCATION_MATCH	66v66	PASS	K015 Member = CIntelligentPointer<T>(0) clears
+00938e50	RELOCATION_MATCH	50v50	PASS	K046 find_if over list<CIntelligentPointer<CThing>>
+009390e0	RELOCATION_MATCH	75v75	PASS	K045 AI state group OnReplace base + ChooseNewIdle
+00939220	RELOCATION_MATCH	75v75	PASS	K045 AI state group OnReplace base + ChooseNewIdle
+00939c60	RELOCATION_MATCH	72v72	PASS	K035 FindMostRecentMessage<Bind2>
+00939cb0	RELOCATION_MATCH	72v72	PASS	K035 FindMostRecentMessage<Bind2>
+0093ca60	RELOCATION_MATCH	66v66	PASS	K015 Member = CIntelligentPointer<T>(0) clears
+009465e0	RELOCATION_MATCH	50v50	PASS	K046 find_if over list<CIntelligentPointer<CThing>>
+00946d40	RELOCATION_MATCH	50v50	PASS	K046 find_if over list<CIntelligentPointer<CThing>>
+00947780	RELOCATION_MATCH	136v136	PASS	K109 GetAllLeafThings single filter
+0094ba90	RELOCATION_MATCH	50v50	PASS	K046 find_if over list<CIntelligentPointer<CThing>>
+0094d930	RELOCATION_MATCH	135v135	PASS	K047 boss AI IsStillRunnable
+009534d0	RELOCATION_MATCH	82v82	PASS	K041 combat-action ctors (owner) with GetSoundPair
+00953530	RELOCATION_MATCH	82v82	PASS	K041 combat-action ctors (owner) with GetSoundPair
+00956a70	RELOCATION_MATCH	135v135	PASS	K047 boss AI IsStillRunnable
+00959380	DIFFER	576v576	PASS	K016 lane gap: one SIB operand order -- retail mov ecx,[ecx+eax+4] (level*20 as base, LevelInfo as index) where the lane emits [eax+ecx+4]; every other byte identical; 13 forms tried (index expression spellings, level/param types, const method, push temporaries, QFE)
+0095c7c0	DIFFER	576v576	PASS	K016 lane gap: one SIB operand order -- retail mov ecx,[ecx+eax+4] (level*20 as base, LevelInfo as index) where the lane emits [eax+ecx+4]; every other byte identical; 13 forms tried (index expression spellings, level/param types, const method, push temporaries, QFE)
+0095cda0	RELOCATION_MATCH	67v67	PASS	K128 unguarded_linear_insert pointer comp out of line
+0095cdf0	RELOCATION_MATCH	97v97	PASS	K019 std::__push_heap over thing pointers
+00962af0	RELOCATION_MATCH	135v135	PASS	K047 boss AI IsStillRunnable
+009642d0	RELOCATION_MATCH	137v137	PASS	K044 GetPBestThing<Filter,Nearest,T>
+00965180	RELOCATION_MATCH	137v137	PASS	K044 GetPBestThing<Filter,Nearest,T>
+0096c6e0	RELOCATION_MATCH	82v82	PASS	K041 combat-action ctors (owner) with GetSoundPair
+00970420	RELOCATION_MATCH	58v58	PASS	K036 combat-action ctors (owner,target)
+00977690	RELOCATION_MATCH	75v75	PASS	K038 combat-action copy ctors
+009779a0	RELOCATION_MATCH	135v135	PASS	K047 boss AI IsStillRunnable
+00978250	DIFFER	583v583	PASS	K086 lane gap (as K016): one SIB operand order -- retail mov ecx,[ecx+eax+4] where the lane emits [eax+ecx+4]; every other byte identical; the K016 forms plus an STLport-vector operator[] spelling tried
+009789b0	RELOCATION_MATCH	67v67	PASS	K128 unguarded_linear_insert pointer comp out of line
+00978a00	RELOCATION_MATCH	97v97	PASS	K019 std::__push_heap over thing pointers
+0097ada0	RELOCATION_MATCH	67v67	PASS	K128 unguarded_linear_insert pointer comp out of line
+0097b870	RELOCATION_MATCH	135v135	PASS	K047 boss AI IsStillRunnable
+00982b50	RELOCATION_MATCH	82v82	PASS	K040 FinishAction mode remove/add + base finish
+00982bb0	RELOCATION_MATCH	82v82	PASS	K040 FinishAction mode remove/add + base finish
+00987f30	RELOCATION_MATCH	43v43	PASS	K048 scalar deleting dtors with one cleanup call
+0098c240	MATCH	68v68	PASS	K049 __copy_backward 16-byte POD
+0098ec90	RELOCATION_MATCH	10v10	PASS	K004 global forwarders
+00990a10	RELOCATION_MATCH	191v191	PASS	K027 _Rb_tree::_M_insert 8-byte values
+00990cd0	RELOCATION_MATCH	92v92	PASS	K111 Rb_tree erase by key speed TU
+009928a0	RELOCATION_MATCH	78v78	PASS	K117 swap pair with out-of-line second
+00992a90	RELOCATION_MATCH	78v78	PASS	K117 swap pair with out-of-line second
+00993030	RELOCATION_MATCH	77v77	PASS	K021 std::vector<T>::erase(first,last), member dtor
+00996f00	RELOCATION_MATCH	46v46	PASS	K050 ??_G implicit dtor: member + base inline dtor
+009aaae0	RELOCATION_MATCH	85v85	PASS	K018 list<CCountedPointer<T> >::erase(iterator), speed TU
+009ca6c0	MATCH	82v82	PASS	K010 std::__copy over 4-byte intrusive counted pointers
+009d23f0	MATCH	56v56	PASS	K113 uninitialized_copy 12-byte
+009d7c00	RELOCATION_MATCH	85v85	PASS	K018 list<CCountedPointer<T> >::erase(iterator), speed TU
+009e2890	RELOCATION_MATCH	43v43	PASS	K048 scalar deleting dtors with one cleanup call
+009f0060	RELOCATION_MATCH	20v20	PASS	K023 two-CCharString record default ctor (descriptive)
+009f00d0	RELOCATION_MATCH	20v20	PASS	K023 two-CCharString record default ctor (descriptive)
+009f0b10	RELOCATION_MATCH	20v20	PASS	K110 two-string record ctor
+009f0e80	RELOCATION_MATCH	78v78	PASS	K025 map/_Rb_tree erase(iterator), two-member value
+009f98d0	RELOCATION_MATCH	54v54	PASS	K116 list remove 4-byte
+00a0bd00	RELOCATION_MATCH	26v26	PASS	K014 default ctors with one embedded CCountedPointer
+00a2b030	RELOCATION_MATCH	78v78	PASS	K129 allocate_and_copy copy ctor out of line
+00a320a0	MATCH	49v49	PASS	K022 std::(__)uninitialized_fill_n over POD pairs
+00a33510	RELOCATION_MATCH	77v77	PASS	K021 std::vector<T>::erase(first,last), member dtor
+00a4a320	RELOCATION_MATCH	76v76	PASS	K020 std::vector<T>::erase(first,last)
+00a4b1d0	RELOCATION_MATCH	36v36	PASS	K030 vector<T>::resize(n) over 12-byte zero defaults
+00a74560	MATCH	68v68	PASS	K049 __copy_backward 16-byte POD
+00a752a0	RELOCATION_MATCH	36v36	PASS	K030 vector<T>::resize(n) over 12-byte zero defaults
+00a7d8a0	MATCH	68v68	PASS	K049 __copy_backward 16-byte POD
+00a80c20	RELOCATION_MATCH	191v191	PASS	K027 _Rb_tree::_M_insert 8-byte values
+00a80ff0	RELOCATION_MATCH	64v64	PASS	K013 std::__unguarded_insertion_sort_aux over CVectorMap counted entries
+00a81fc0	RELOCATION_MATCH	53v53	PASS	K073 __copy with out-of-line operator=
+00a95fe0	RELOCATION_MATCH	26v26	PASS	K014 default ctors with one embedded CCountedPointer
+00a964c0	MATCH	82v82	PASS	K010 std::__copy over 4-byte intrusive counted pointers
+00a9d360	RELOCATION_MATCH	54v54	PASS	K051 chunk ??_G with CArray member
+00aa46b0	RELOCATION_MATCH	83v83	PASS	K052 chunk CreateNewInstance factories
+00aacbb0	RELOCATION_MATCH	85v85	PASS	K018 list<CCountedPointer<T> >::erase(iterator), speed TU
+00ab0700	RELOCATION_MATCH	34v34	PASS	K053 one-array chunk default ctors
+00ab0730	RELOCATION_MATCH	83v83	PASS	K052 chunk CreateNewInstance factories
+00abc470	RELOCATION_MATCH	34v34	PASS	K053 one-array chunk default ctors
+00abc500	RELOCATION_MATCH	83v83	PASS	K052 chunk CreateNewInstance factories
+00abc560	RELOCATION_MATCH	34v34	PASS	K053 one-array chunk default ctors
+00abc5f0	RELOCATION_MATCH	83v83	PASS	K052 chunk CreateNewInstance factories
+00abc780	RELOCATION_MATCH	34v34	PASS	K053 one-array chunk default ctors
+00abc800	RELOCATION_MATCH	83v83	PASS	K052 chunk CreateNewInstance factories
+00abc860	RELOCATION_MATCH	34v34	PASS	K053 one-array chunk default ctors
+00abecb0	RELOCATION_MATCH	54v54	PASS	K051 chunk ??_G with CArray member
+00abedd0	RELOCATION_MATCH	54v54	PASS	K051 chunk ??_G with CArray member
+00abee10	RELOCATION_MATCH	54v54	PASS	K051 chunk ??_G with CArray member
+00abee50	RELOCATION_MATCH	54v54	PASS	K051 chunk ??_G with CArray member
+00ad3440	RELOCATION_MATCH	191v191	PASS	K027 _Rb_tree::_M_insert 8-byte values
+00ad8170	RELOCATION_MATCH	79v79	PASS	K020 std::vector<T>::erase(first,last)
+00adaa00	MATCH	45v45	PASS	K112 swap 12-byte
+00adaf60	MATCH	45v45	PASS	K112 swap 12-byte
+00adc7c0	RELOCATION_MATCH	104v104	PASS	K024 std::vector<T> copy ctor
+00ae4fe0	MATCH	34v34	PASS	K076 uninitialized_fill_n 4-byte false_type
+00ae6f90	RELOCATION_MATCH	272v272	PASS	K079 vector _M_fill_insert 4-byte false_type
+00ae98e0	RELOCATION_MATCH	78v78	PASS	K012 implicit std::pair<K,V>::operator= of CVectorMap entries
+00ae9db0	RELOCATION_MATCH	64v64	PASS	K013 std::__unguarded_insertion_sort_aux over CVectorMap counted entries
+00aea270	RELOCATION_MATCH	113v113	PASS	K087 __linear_insert keyed counted pairs
+00aea2f0	RELOCATION_MATCH	122v122	PASS	K088 sort_heap keyed counted pairs
+00aec7c0	RELOCATION_MATCH	85v85	PASS	K018 list<CCountedPointer<T> >::erase(iterator), speed TU
+00af8780	RELOCATION_MATCH	59v59	PASS	K054 CDynamicObjectHeap Release
+00af8860	RELOCATION_MATCH	59v59	PASS	K054 CDynamicObjectHeap Release
+00af89c0	RELOCATION_MATCH	46v46	PASS	K055 CDynamicObjectHeap Alloc
+00af8a10	RELOCATION_MATCH	46v46	PASS	K055 CDynamicObjectHeap Alloc
+00af8a70	RELOCATION_MATCH	43v43	PASS	K048 scalar deleting dtors with one cleanup call
+00af8bc0	RELOCATION_MATCH	59v59	PASS	K054 CDynamicObjectHeap Release
+00af8c70	RELOCATION_MATCH	46v46	PASS	K055 CDynamicObjectHeap Alloc
+00af8ca0	RELOCATION_MATCH	43v43	PASS	K048 scalar deleting dtors with one cleanup call
+00afe980	RELOCATION_MATCH	36v36	PASS	K030 vector<T>::resize(n) over 12-byte zero defaults
+00b48c70	RELOCATION_MATCH	59v59	PASS	K054 CDynamicObjectHeap Release
+00b48d40	RELOCATION_MATCH	59v59	PASS	K054 CDynamicObjectHeap Release
+00b495c0	RELOCATION_MATCH	46v46	PASS	K055 CDynamicObjectHeap Alloc
+00b49610	RELOCATION_MATCH	46v46	PASS	K055 CDynamicObjectHeap Alloc
+00b49710	RELOCATION_MATCH	43v43	PASS	K048 scalar deleting dtors with one cleanup call
+00b83260	RELOCATION_MATCH	47v47	PASS	K011 descriptive CIVCountedPointer<CUnprovenPointee_<addr>> ??_G (H021 shape)
+00b98b10	RELOCATION_MATCH	34v34	PASS	K056 sub-primitive ctors
+00bb1780	RELOCATION_MATCH	34v34	PASS	K056 sub-primitive ctors
+00bb6950	RELOCATION_MATCH	34v34	PASS	K056 sub-primitive ctors
+00bba260	RELOCATION_MATCH	34v34	PASS	K056 sub-primitive ctors
+00bc9ef0	MATCH	68v68	PASS	K049 __copy_backward 16-byte POD
+00bcdee0	RELOCATION_MATCH	36v36	PASS	K030 vector<T>::resize(n) over 12-byte zero defaults
+00bdf600	MATCH	68v68	PASS	K049 __copy_backward 16-byte POD
+00bdf9b0	RELOCATION_MATCH	38v38	PASS	K057 landscape resource ??_G
+00bdf9e0	RELOCATION_MATCH	38v38	PASS	K057 landscape resource ??_G
+00be1b50	RELOCATION_MATCH	34v34	PASS	K056 sub-primitive ctors
+00bed640	RELOCATION_MATCH	78v78	PASS	K012 implicit std::pair<K,V>::operator= of CVectorMap entries
+00bf8ce0	RELOCATION_MATCH	38v38	PASS	K057 landscape resource ??_G
+00bf9420	RELOCATION_MATCH	77v77	PASS	K021 std::vector<T>::erase(first,last), member dtor
+00bfbc50	RELOCATION_MATCH	38v38	PASS	K057 landscape resource ??_G
+00bfdc90	RELOCATION_MATCH	38v38	PASS	K057 landscape resource ??_G
+00c099f0	RELOCATION_MATCH	192v192	PASS	K058 PKCAutoDelete Release
+00c10b00	RELOCATION_MATCH	46v46	PASS	K059 libpk lock setters
+00c11120	RELOCATION_MATCH	46v46	PASS	K059 libpk lock setters
+00c11200	RELOCATION_MATCH	46v46	PASS	K059 libpk lock setters
+00c14860	RELOCATION_MATCH	46v46	PASS	K059 libpk lock setters
+00c14890	RELOCATION_MATCH	46v46	PASS	K059 libpk lock setters
+00c15f30	RELOCATION_MATCH	46v46	PASS	K060 libpk record setters
+00c15f60	RELOCATION_MATCH	46v46	PASS	K060 libpk record setters
+00c15f90	RELOCATION_MATCH	46v46	PASS	K060 libpk record setters
+00c15ff0	RELOCATION_MATCH	46v46	PASS	K060 libpk record setters
+00c16020	RELOCATION_MATCH	46v46	PASS	K060 libpk record setters
+00c17850	RELOCATION_MATCH	192v192	PASS	K058 PKCAutoDelete Release
+00c2bcf0	RELOCATION_MATCH	77v77	PASS	K061 libpk post-message members
+00c2bd40	RELOCATION_MATCH	77v77	PASS	K061 libpk post-message members
+00c2f070	RELOCATION_MATCH	192v192	PASS	K058 PKCAutoDelete Release
+00c2f190	RELOCATION_MATCH	192v192	PASS	K058 PKCAutoDelete Release
+00c2f2b0	RELOCATION_MATCH	192v192	PASS	K058 PKCAutoDelete Release
+00c33600	RELOCATION_MATCH	10v10	PASS	K004 global forwarders
+00c33820	RELOCATION_MATCH	10v10	PASS	K004 global forwarders
+00c33990	RELOCATION_MATCH	10v10	PASS	K004 global forwarders
+00c363e0	RELOCATION_MATCH	77v77	PASS	K061 libpk post-message members
+00c36e00	RELOCATION_MATCH	77v77	PASS	K061 libpk post-message members
+00c36fb0	RELOCATION_MATCH	77v77	PASS	K061 libpk post-message members
+00c40e60	DIFFER	15v75	PASS	K006 x87 10^x inline-assembly kernel (frndint/f2xm1/fscale): no C++ form
+00c42c30	DIFFER	15v75	PASS	K006 x87 10^x inline-assembly kernel (frndint/f2xm1/fscale): no C++ form
+00c54a80	DIFFER	15v75	PASS	K006 x87 10^x inline-assembly kernel (frndint/f2xm1/fscale): no C++ form
+00c5bef0	DIFFER	170v211	PASS	K062 libpk MMX kernel: inline-assembly block in a C shell (ecx input, caller-cleaned ret)
+00c5c0b0	DIFFER	15v75	PASS	K006 x87 10^x inline-assembly kernel (frndint/f2xm1/fscale): no C++ form
+00c640b0	MATCH	138v138	PASS	K063 EAX reverb flag setters
+00c64140	MATCH	138v138	PASS	K063 EAX reverb flag setters
+00c641d0	MATCH	138v138	PASS	K063 EAX reverb flag setters
+00c64260	MATCH	138v138	PASS	K063 EAX reverb flag setters
+00c642f0	MATCH	138v138	PASS	K063 EAX reverb flag setters
+00c64b00	RELOCATION_MATCH	102v102	PASS	K064 EAX source float setters
+00c64db0	RELOCATION_MATCH	102v102	PASS	K064 EAX source float setters
+00c64e20	RELOCATION_MATCH	102v102	PASS	K064 EAX source float setters
+00c64e90	RELOCATION_MATCH	102v102	PASS	K064 EAX source float setters
+00c64f00	RELOCATION_MATCH	102v102	PASS	K064 EAX source float setters
+00c6aae0	DIFFER	170v211	PASS	K062 libpk MMX kernel: inline-assembly block in a C shell (ecx input, caller-cleaned ret)
+00c6bf60	DIFFER	15v75	PASS	K006 x87 10^x inline-assembly kernel (frndint/f2xm1/fscale): no C++ form
+00c6f1a0	DIFFER	170v211	PASS	K062 libpk MMX kernel: inline-assembly block in a C shell (ecx input, caller-cleaned ret)
+00c6f800	DIFFER	170v211	PASS	K062 libpk MMX kernel: inline-assembly block in a C shell (ecx input, caller-cleaned ret)
+00c6fc80	DIFFER	170v211	PASS	K062 libpk MMX kernel: inline-assembly block in a C shell (ecx input, caller-cleaned ret)
+00c77690	DIFFER	15v75	PASS	K006 x87 10^x inline-assembly kernel (frndint/f2xm1/fscale): no C++ form
+00cad870	RELOCATION_MATCH	53v53	PASS	K065 CPosPassThru IMediaPosition getters
+00cad8b0	RELOCATION_MATCH	53v53	PASS	K065 CPosPassThru IMediaPosition getters
+00cad930	RELOCATION_MATCH	53v53	PASS	K065 CPosPassThru IMediaPosition getters
+00cad9c0	RELOCATION_MATCH	53v53	PASS	K065 CPosPassThru IMediaPosition getters
+00cada40	RELOCATION_MATCH	53v53	PASS	K065 CPosPassThru IMediaPosition getters
+00cbbda0	RELOCATION_MATCH	77v77	PASS	K021 std::vector<T>::erase(first,last), member dtor
+00cd2994	RELOCATION_MATCH	92v92	PASS	K080 GetDef size TU
+00cd2a71	RELOCATION_MATCH	92v92	PASS	K080 GetDef size TU
+00cd2b1c	RELOCATION_MATCH	92v92	PASS	K085 _M_find CCharString size TU
+00cd2b86	RELOCATION_MATCH	92v92	PASS	K085 _M_find CCharString size TU
+00cd34c5	RELOCATION_MATCH	319v319	PASS	K001 hinted insert_unique
+00cd36df	RELOCATION_MATCH	174v174	PASS	K121 insert_overflow 16-byte non-POD helpers out of line
+00cd3ccb	RELOCATION_MATCH	64v64	PASS	K101 vector resize 16-byte
+00cd3dcd	RELOCATION_MATCH	174v174	PASS	K121 insert_overflow 16-byte non-POD helpers out of line
+00cd45a0	RELOCATION_MATCH	20v20	PASS	K023 two-CCharString record default ctor (descriptive)
+00cf06d0	MATCH	18v18	PASS	K066 script Init state resets
+00d293f0	RELOCATION_MATCH	104v104	PASS	K067 entity-script guard Main
+00d6a220	RELOCATION_MATCH	104v104	PASS	K067 entity-script guard Main
+00d6a360	RELOCATION_MATCH	104v104	PASS	K067 entity-script guard Main
+00d73220	RELOCATION_MATCH	67v67	PASS	K068 entity-script ctors with a vector
+00d89da0	MATCH	18v18	PASS	K066 script Init state resets
+00d9bdc0	RELOCATION_MATCH	104v104	PASS	K067 entity-script guard Main
+00da4b10	RELOCATION_MATCH	104v104	PASS	K067 entity-script guard Main
+00dc4b50	MATCH	18v18	PASS	K066 script Init state resets
+00dd4480	MATCH	20v20	PASS	K069 entity Init one CGSI call
+00e10e20	MATCH	20v20	PASS	K069 entity Init one CGSI call
+00e11630	MATCH	20v20	PASS	K069 entity Init one CGSI call
+00e245a0	RELOCATION_MATCH	53v53	PASS	K070 CPredicate_And ??_G
+00e475b0	MATCH	20v20	PASS	K069 entity Init one CGSI call
+00e5f240	RELOCATION_MATCH	67v67	PASS	K068 entity-script ctors with a vector
+00e5f640	RELOCATION_MATCH	67v67	PASS	K068 entity-script ctors with a vector
+00e5f880	RELOCATION_MATCH	67v67	PASS	K068 entity-script ctors with a vector
+00e64d90	RELOCATION_MATCH	67v67	PASS	K068 entity-script ctors with a vector
+00e7b420	MATCH	18v18	PASS	K066 script Init state resets
+00e96f10	RELOCATION_MATCH	137v137	PASS	K071 script Main one binding
+00ebcf30	MATCH	18v18	PASS	K066 script Init state resets
+00ec09b0	MATCH	20v20	PASS	K069 entity Init one CGSI call
+00ef5b80	RELOCATION_MATCH	53v53	PASS	K070 CPredicate_And ??_G
+00ef6ec0	RELOCATION_MATCH	53v53	PASS	K070 CPredicate_And ??_G
+00ef7b10	RELOCATION_MATCH	53v53	PASS	K070 CPredicate_And ??_G
+00ef8700	RELOCATION_MATCH	53v53	PASS	K070 CPredicate_And ??_G
+00efa010	RELOCATION_MATCH	137v137	PASS	K071 script Main one binding
+00efb1e0	RELOCATION_MATCH	137v137	PASS	K071 script Main one binding
+00efb740	RELOCATION_MATCH	137v137	PASS	K071 script Main one binding
+00efbca0	RELOCATION_MATCH	137v137	PASS	K071 script Main one binding
+00f25b40	RELOCATION_MATCH	46v46	PASS	K050 ??_G implicit dtor: member + base inline dtor
+00f25cb0	RELOCATION_MATCH	46v46	PASS	K050 ??_G implicit dtor: member + base inline dtor
+00f26df0	RELOCATION_MATCH	46v46	PASS	K050 ??_G implicit dtor: member + base inline dtor
+00f26f40	RELOCATION_MATCH	46v46	PASS	K050 ??_G implicit dtor: member + base inline dtor
+01229170	RELOCATION_MATCH	10v10	PASS	K004 global forwarders

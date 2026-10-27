@@ -5,8 +5,9 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **47464 (95.8%)** of 49,568
-  (`rebuild/oracles/auto-re-candidates.tsv`). No agents running; chunk 484 was paused by the owner and its scratch
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **48,024 rows**: **47,992 of 57,267 known
+  functions (83.8%)**, or 42,158 of the original 49,568 (85.1%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
+  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). No agents running; chunk 484 was paused by the owner and its scratch
   workspace is gone (re-cut it with `lane_tools/chunk_pool/mkchunk.py` if wanted).
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by
   default, 4035 via `--qfe`.
@@ -14,7 +15,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 ## What changed 2026-10-25/26 (all regraded MATCH/RELOCATION_MATCH + test PASS; notes in `docs/journal/2026-10/`)
 - **STLport namespace:** `_STL` -> `std` everywhere (retail mangles `@std@@`).
 - **Landed-errors sweeps 1-3:** ~2,100 renames + ~510 source fixes (`*_sweep{1,2,3}_landed_errors.md`).
-- **Family passes 1-4:** 613 + 576 + 587 + 577 rows (batches `2026-10-24_linux_hand950..953`).
+- **Family passes 1-5:** 613 + 576 + 587 + 577 + 560 rows (batches `2026-10-24_linux_hand950..953`, `2026-10-27_linux_hand954`).
 - **Class-key pass:** every type uses retail's `class`/`struct` key from the PDB (`ghidra_out/pdb_class_keys.tsv`;
   951 headers, ~107k declarations; `2026-10-26_class_key_pass.md`).
 - **STL layout pass:** 714 engine headers re-laid out with STLport 4.6 container sizes, bases from Fable.exe RTTI
@@ -26,7 +27,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
   (`2026-10-26_one_address_one_name_pass.md`, `namepass/`).
 
 ## Open (owner picks the order)
-1. Family pass 5+: ~735 families / ~2,540 rows of shape families remain.
+1. Family pass 6+: 782 families / 2,366 rows remain (157 of four, 459 of three, 159 of two); 9,275 functions left in all.
 2. One-address-one-name remainder: GetPItem return type (~340 rows), free/static stand-in callers (~3,490), CRT
    free-mock tests (59), LowerBound const overloads, CDataInputStream (227); still ~5,085 targets with >1 spelling.
 3. CRetailTree remainder: 882 kept rows + ~180 misnamed /Os tree functions (`treepass/KEPT.tsv`, `OS_FAMILY.tsv`).
