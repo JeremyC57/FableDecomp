@@ -1,0 +1,153 @@
+addr       parity           behav  name
+0048d940   MATCH            PASS   GFFloatToLongFloor
+0050ef30   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+  WARN leaf 'operator()' matches no symbol in 0050ef30.obj; graded the largest function
+  WARN leaf 'operator()' matches no symbol in 0050ef30.obj; graded the largest function
+0050ef30   RELOCATION_MATCH PASS   operator()
+0057a60a   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057a60a   RELOCATION_MATCH PASS   GetFatnessReducingFrequencyInFrames
+006a68f0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+006a68f0   RELOCATION_MATCH PASS   ModifyHealth
+00766260   WARN SHARED_HEADER_AVAILABLE CWorld
+00766260   WARN RELOC_CONFLICT: ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NAAV?$CDefPointer@VCAugmentationDef@@@@@Z -> 0042b248 here, 0042af9e in landed 005bec92
+00766260   WARN RELOC_NAME: ?GetWorldFrame@CWorld@@SAJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+00766260   RELOCATION_MATCH PASS   GetHealthToAddThisFrame
+00766330   WARN SHARED_HEADER_AVAILABLE CWorld
+00766330   WARN RELOC_CONFLICT: ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NAAV?$CDefPointer@VCAugmentationDef@@@@@Z -> 0042b248 here, 0042af9e in landed 005bec92
+00766330   WARN RELOC_NAME: ?GetWorldFrame@CWorld@@SAJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+00766330   RELOCATION_MATCH PASS   GetStaminaToAddThisFrame
+007726b0   RELOCATION_MATCH PASS   GetStockQuantity
+00772720   RELOCATION_MATCH PASS   GetMaxStock
+00785b40   WARN RELOC_NAME: ?GFGetCurrentFrame@@YIJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+00785b40   WARN RELOC_CONFLICT: __aullrem -> 00bfec30 here, 00bfebb0 in landed 00770e80
+00785b40   RELOCATION_MATCH PASS   FrameUpdate
+0078bf00   RELOCATION_MATCH PASS   SetLevel
+0079c5f0   RELOCATION_MATCH PASS   GetBulletTimeTicksFromAbilityLevel
+0079c680   RELOCATION_MATCH PASS   GetBulletTimeRemainingPercentage
+0079c6d0   RELOCATION_MATCH PASS   GetBulletTimeElapsedTicks
+007e2da0   RELOCATION_MATCH PASS   SetWobbleParameters
+00a44250   MATCH            PASS   GFGetInterpolatedColour
+00a4dea0   RELOCATION_MATCH PASS   GetKeyframeInterpolate
+00a52650   MATCH            PASS   ConvertTimeToFrames
+00a526d0   MATCH            PASS   ConvertTimeToFrames
+00a5c2b0   MATCH            PASS   GFFinishPartialSlerp
+00a5c300   WARN RELOC_NAME: ?GFClear4DVectorsScalar@NVectorMath@@YIXPAVC4DVector@@KPBV2@@Z -> 00a5c510 labelled 'std::fill_n'
+00a5c300   RELOCATION_MATCH PASS   GFClear4DVectors
+00afe380   RELOCATION_MATCH PASS   GetRecordedPos
+00b52990   WARN SHARED_HEADER_AVAILABLE CEngineWeatherRenderer
+00b52990   RELOCATION_MATCH PASS   UpdateBoxPositions
+00c40e60   MATCH            PASS   Pow10_00c40e60
+00c40ee0   RELOCATION_MATCH PASS   MillibelsToAmplitude_00c40ee0
+00c42c30   MATCH            PASS   Pow10_00c42c30
+00c52aa0   MATCH            PASS   IsCpuidSupported
+00c53b10   MATCH            PASS   Pow10
+00c54a80   MATCH            PASS   Pow10_00c54a80
+00c59b00   RELOCATION_MATCH PASS   SecondsToMixBlocks
+00c5c0b0   MATCH            PASS   Pow10_00c5c0b0
+00c5d370   MATCH            PASS   AddInt128Block
+00c5d3f0   MATCH            PASS   AddInt128Block_00c5d3f0
+00c5d4b0   MATCH            PASS   AddInt128Block_00c5d4b0
+00c6b3a0   WARN RELOC_NAME: ?DetectCpu@@YAXXZ -> 00c52e40 labelled 'InitCPUCapabilities'
+00c6b3a0   RELOCATION_MATCH PASS   ConvertInt128BlockToFloat
+00c6bdc0   RELOCATION_MATCH PASS   GetFrequencyTableEntry
+00c6bf60   MATCH            PASS   Pow10_00c6bf60
+00c6c000   RELOCATION_MATCH PASS   SetLevel
+00c6d370   RELOCATION_MATCH PASS   ScaleAccumulate16
+00c6f0f0   RELOCATION_MATCH PASS   ScaleAccumulate16MMX
+00c70040   MATCH            PASS   Set
+00c70a60   MATCH            PASS   Set
+00c77690   MATCH            PASS   Pow10_00c77690
+00c77700   RELOCATION_MATCH PASS   MillibelsToAmplitude
+00cb0160   MATCH            PASS   EnlargedUnsignedDivide
+
+WINS: 44
+  0048d940 MATCH _global::GFFloatToLongFloor
+  0050ef30 RELOCATION_MATCH CThingFilter_OverlappingArea::operator()
+  0057a60a RELOCATION_MATCH CTCHeroStats::GetFatnessReducingFrequencyInFrames
+  006a68f0 RELOCATION_MATCH CThingPhysical::?ModifyHealth@CThingPhysical
+  00766260 RELOCATION_MATCH CTCObjectAugmentations::GetHealthToAddThisFrame
+  00766330 RELOCATION_MATCH CTCObjectAugmentations::GetStaminaToAddThisFrame
+  007726b0 RELOCATION_MATCH CTCShop::GetStockQuantity
+  00772720 RELOCATION_MATCH CTCShop::GetMaxStock
+  00785b40 RELOCATION_MATCH CTCVolumeContainmentTracker::?FrameUpdate@CTCVolumeContainmentTracker
+  0078bf00 RELOCATION_MATCH CTCBerserk::SetLevel
+  0079c5f0 RELOCATION_MATCH CTCBulletTime_Methods::GetBulletTimeTicksFromAbilityLevel
+  0079c680 RELOCATION_MATCH CTCBulletTime_Methods::GetBulletTimeRemainingPercentage
+  0079c6d0 RELOCATION_MATCH CTCBulletTime_Methods::GetBulletTimeElapsedTicks
+  007e2da0 RELOCATION_MATCH CTCWobble::SetWobbleParameters
+  00a44250 MATCH _global::?GFGetInterpolatedColour@@
+  00a4dea0 RELOCATION_MATCH C3DAnimationSequenceData::?GetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXPAVC3DKeyframe@@M@Z
+  00a52650 MATCH C3DAnimation2::ConvertTimeToFrames
+  00a526d0 MATCH C3DAnimationSequenceData::ConvertTimeToFrames
+  00a5c2b0 MATCH NVectorMath::?GFFinishPartialSlerp@NVectorMath@@
+  00a5c300 RELOCATION_MATCH NVectorMath::?GFClear4DVectors@NVectorMath@@
+  00afe380 RELOCATION_MATCH NParticleEngine::CParticle::?GetRecordedPos@CParticle@NParticleEngine@@
+  00b52990 RELOCATION_MATCH CEngineWeatherRenderer::UpdateBoxPositions
+  00c40e60 MATCH _global::?Pow10_00c40e60@@
+  00c40ee0 RELOCATION_MATCH _global::?MillibelsToAmplitude_00c40ee0@@
+  00c42c30 MATCH _global::?Pow10_00c42c30@@
+  00c52aa0 MATCH _global::?IsCpuidSupported@@
+  00c53b10 MATCH _global::?Pow10@@
+  00c54a80 MATCH _global::?Pow10_00c54a80@@
+  00c59b00 RELOCATION_MATCH _global::?SecondsToMixBlocks@@
+  00c5c0b0 MATCH _global::?Pow10_00c5c0b0@@
+  00c5d370 MATCH _global::?AddInt128Block@@
+  00c5d3f0 MATCH _global::?AddInt128Block_00c5d3f0@@
+  00c5d4b0 MATCH _global::?AddInt128Block_00c5d4b0@@
+  00c6b3a0 RELOCATION_MATCH _global::?ConvertInt128BlockToFloat@@
+  00c6bdc0 RELOCATION_MATCH _global::?GetFrequencyTableEntry@@
+  00c6bf60 MATCH _global::?Pow10_00c6bf60@@
+  00c6c000 RELOCATION_MATCH COnePoleLowPass::?SetLevel@COnePoleLowPass
+  00c6d370 RELOCATION_MATCH _global::?ScaleAccumulate16@@
+  00c6f0f0 RELOCATION_MATCH _global::?ScaleAccumulate16MMX@@
+  00c70040 MATCH CPreTransposedBoneMatrix::?Set@CPreTransposedBoneMatrix@@
+  00c70a60 MATCH CPreTransposedBoneMatrix::?Set@CPreTransposedBoneMatrix@@
+  00c77690 MATCH _global::?Pow10_00c77690@@
+  00c77700 RELOCATION_MATCH _global::?MillibelsToAmplitude@@
+  00cb0160 MATCH _global::?EnlargedUnsignedDivide@@
+
+LANDED 44 wins into src/compiled + tests + catalog + oracle
+  global_GFFloatToLongFloor_0048d940
+  CThingFilterOverlappingArea_operator_0050ef30
+  CTCHeroStats_GetFatnessReducingFrequencyInFrames_0057a60a
+  CThingPhysical_ModifyHealth_006a68f0
+  CTCObjectAugmentations_GetHealthToAddThisFrame_00766260
+  CTCObjectAugmentations_GetStaminaToAddThisFrame_00766330
+  CTCShop_GetStockQuantity_007726b0
+  CTCShop_GetMaxStock_00772720
+  CTCVolumeContainmentTracker_FrameUpdate_00785b40
+  CTCBerserk_SetLevel_0078bf00
+  CTCBulletTimeMethods_GetBulletTimeTicksFromAbilityLevel_0079c5f0
+  CTCBulletTimeMethods_GetBulletTimeRemainingPercentage_0079c680
+  CTCBulletTimeMethods_GetBulletTimeElapsedTicks_0079c6d0
+  CTCWobble_SetWobbleParameters_007e2da0
+  global_GFGetInterpolatedColour_00a44250
+  C3DAnimationSequenceData_GetKeyframeInterpolate_00a4dea0
+  C3DAnimation2_ConvertTimeToFrames_00a52650
+  C3DAnimationSequenceData_ConvertTimeToFrames_00a526d0
+  NVectorMath_GFFinishPartialSlerp_00a5c2b0
+  NVectorMath_GFClear4DVectors_00a5c300
+  NParticleEngineCParticle_GetRecordedPos_00afe380
+  CEngineWeatherRenderer_UpdateBoxPositions_00b52990
+  global_Pow1000c40e60_00c40e60
+  global_MillibelsToAmplitude00c40ee0_00c40ee0
+  global_Pow1000c42c30_00c42c30
+  global_IsCpuidSupported_00c52aa0
+  global_Pow10_00c53b10
+  global_Pow1000c54a80_00c54a80
+  global_SecondsToMixBlocks_00c59b00
+  global_Pow1000c5c0b0_00c5c0b0
+  global_AddInt128Block_00c5d370
+  global_AddInt128Block00c5d3f0_00c5d3f0
+  global_AddInt128Block00c5d4b0_00c5d4b0
+  global_ConvertInt128BlockToFloat_00c6b3a0
+  global_GetFrequencyTableEntry_00c6bdc0
+  global_Pow1000c6bf60_00c6bf60
+  COnePoleLowPass_SetLevel_00c6c000
+  global_ScaleAccumulate16_00c6d370
+  global_ScaleAccumulate16MMX_00c6f0f0
+  CPreTransposedBoneMatrix_Set_00c70040
+  CPreTransposedBoneMatrix_Set_00c70a60
+  global_Pow1000c77690_00c77690
+  global_MillibelsToAmplitude_00c77700
+  global_EnlargedUnsignedDivide_00cb0160

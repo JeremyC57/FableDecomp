@@ -333922,6 +333922,316 @@ $catalog = @(
         TestSource = '00/72/CTCSpecialAbilities_SetupAssassinRush_0072caa0_test.cpp'
         PassPattern = '0072caa0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0048d940'
+        Module = '_global'
+        Source = '00/48/global_GFFloatToLongFloor_0048d940.cpp'
+        TestSource = '00/48/global_GFFloatToLongFloor_0048d940_test.cpp'
+        PassPattern = '0048d940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050ef30'
+        Module = 'CThingFilter_OverlappingArea'
+        Source = '00/50/CThingFilterOverlappingArea_operator_0050ef30.cpp'
+        TestSource = '00/50/CThingFilterOverlappingArea_operator_0050ef30_test.cpp'
+        PassPattern = '0050ef30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057a60a'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_GetFatnessReducingFrequencyInFrames_0057a60a.cpp'
+        TestSource = '00/57/CTCHeroStats_GetFatnessReducingFrequencyInFrames_0057a60a_test.cpp'
+        PassPattern = '0057a60a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a68f0'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_ModifyHealth_006a68f0.cpp'
+        TestSource = '00/6a/CThingPhysical_ModifyHealth_006a68f0_test.cpp'
+        PassPattern = '006a68f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00766260'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_GetHealthToAddThisFrame_00766260.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_GetHealthToAddThisFrame_00766260_test.cpp'
+        PassPattern = '00766260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00766330'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_GetStaminaToAddThisFrame_00766330.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_GetStaminaToAddThisFrame_00766330_test.cpp'
+        PassPattern = '00766330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007726b0'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_GetStockQuantity_007726b0.cpp'
+        TestSource = '00/77/CTCShop_GetStockQuantity_007726b0_test.cpp'
+        PassPattern = '007726b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00772720'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_GetMaxStock_00772720.cpp'
+        TestSource = '00/77/CTCShop_GetMaxStock_00772720_test.cpp'
+        PassPattern = '00772720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00785b40'
+        Module = 'CTCVolumeContainmentTracker'
+        Source = '00/78/CTCVolumeContainmentTracker_FrameUpdate_00785b40.cpp'
+        TestSource = '00/78/CTCVolumeContainmentTracker_FrameUpdate_00785b40_test.cpp'
+        PassPattern = '00785b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078bf00'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_SetLevel_0078bf00.cpp'
+        TestSource = '00/78/CTCBerserk_SetLevel_0078bf00_test.cpp'
+        PassPattern = '0078bf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079c5f0'
+        Module = 'CTCBulletTime_Methods'
+        Source = '00/79/CTCBulletTimeMethods_GetBulletTimeTicksFromAbilityLevel_0079c5f0.cpp'
+        TestSource = '00/79/CTCBulletTimeMethods_GetBulletTimeTicksFromAbilityLevel_0079c5f0_test.cpp'
+        PassPattern = '0079c5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079c680'
+        Module = 'CTCBulletTime_Methods'
+        Source = '00/79/CTCBulletTimeMethods_GetBulletTimeRemainingPercentage_0079c680.cpp'
+        TestSource = '00/79/CTCBulletTimeMethods_GetBulletTimeRemainingPercentage_0079c680_test.cpp'
+        PassPattern = '0079c680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079c6d0'
+        Module = 'CTCBulletTime_Methods'
+        Source = '00/79/CTCBulletTimeMethods_GetBulletTimeElapsedTicks_0079c6d0.cpp'
+        TestSource = '00/79/CTCBulletTimeMethods_GetBulletTimeElapsedTicks_0079c6d0_test.cpp'
+        PassPattern = '0079c6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e2da0'
+        Module = 'CTCWobble'
+        Source = '00/7e/CTCWobble_SetWobbleParameters_007e2da0.cpp'
+        TestSource = '00/7e/CTCWobble_SetWobbleParameters_007e2da0_test.cpp'
+        PassPattern = '007e2da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a44250'
+        Module = '_global'
+        Source = '00/a4/global_GFGetInterpolatedColour_00a44250.cpp'
+        TestSource = '00/a4/global_GFGetInterpolatedColour_00a44250_test.cpp'
+        PassPattern = '00a44250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4dea0'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/a4/C3DAnimationSequenceData_GetKeyframeInterpolate_00a4dea0.cpp'
+        TestSource = '00/a4/C3DAnimationSequenceData_GetKeyframeInterpolate_00a4dea0_test.cpp'
+        PassPattern = '00a4dea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a52650'
+        Module = 'C3DAnimation2'
+        Source = '00/a5/C3DAnimation2_ConvertTimeToFrames_00a52650.cpp'
+        TestSource = '00/a5/C3DAnimation2_ConvertTimeToFrames_00a52650_test.cpp'
+        PassPattern = '00a52650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a526d0'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/a5/C3DAnimationSequenceData_ConvertTimeToFrames_00a526d0.cpp'
+        TestSource = '00/a5/C3DAnimationSequenceData_ConvertTimeToFrames_00a526d0_test.cpp'
+        PassPattern = '00a526d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5c2b0'
+        Module = 'NVectorMath'
+        Source = '00/a5/NVectorMath_GFFinishPartialSlerp_00a5c2b0.cpp'
+        TestSource = '00/a5/NVectorMath_GFFinishPartialSlerp_00a5c2b0_test.cpp'
+        PassPattern = '00a5c2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5c300'
+        Module = 'NVectorMath'
+        Source = '00/a5/NVectorMath_GFClear4DVectors_00a5c300.cpp'
+        TestSource = '00/a5/NVectorMath_GFClear4DVectors_00a5c300_test.cpp'
+        PassPattern = '00a5c300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00afe380'
+        Module = 'NParticleEngine::CParticle'
+        Source = '00/af/NParticleEngineCParticle_GetRecordedPos_00afe380.cpp'
+        TestSource = '00/af/NParticleEngineCParticle_GetRecordedPos_00afe380_test.cpp'
+        PassPattern = '00afe380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b52990'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_UpdateBoxPositions_00b52990.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_UpdateBoxPositions_00b52990_test.cpp'
+        PassPattern = '00b52990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c40e60'
+        Module = '_global'
+        Source = '00/c4/global_Pow1000c40e60_00c40e60.cpp'
+        TestSource = '00/c4/global_Pow1000c40e60_00c40e60_test.cpp'
+        PassPattern = '00c40e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c40ee0'
+        Module = '_global'
+        Source = '00/c4/global_MillibelsToAmplitude00c40ee0_00c40ee0.cpp'
+        TestSource = '00/c4/global_MillibelsToAmplitude00c40ee0_00c40ee0_test.cpp'
+        PassPattern = '00c40ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c42c30'
+        Module = '_global'
+        Source = '00/c4/global_Pow1000c42c30_00c42c30.cpp'
+        TestSource = '00/c4/global_Pow1000c42c30_00c42c30_test.cpp'
+        PassPattern = '00c42c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c52aa0'
+        Module = '_global'
+        Source = '00/c5/global_IsCpuidSupported_00c52aa0.cpp'
+        TestSource = '00/c5/global_IsCpuidSupported_00c52aa0_test.cpp'
+        PassPattern = '00c52aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53b10'
+        Module = '_global'
+        Source = '00/c5/global_Pow10_00c53b10.cpp'
+        TestSource = '00/c5/global_Pow10_00c53b10_test.cpp'
+        PassPattern = '00c53b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c54a80'
+        Module = '_global'
+        Source = '00/c5/global_Pow1000c54a80_00c54a80.cpp'
+        TestSource = '00/c5/global_Pow1000c54a80_00c54a80_test.cpp'
+        PassPattern = '00c54a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c59b00'
+        Module = '_global'
+        Source = '00/c5/global_SecondsToMixBlocks_00c59b00.cpp'
+        TestSource = '00/c5/global_SecondsToMixBlocks_00c59b00_test.cpp'
+        PassPattern = '00c59b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5c0b0'
+        Module = '_global'
+        Source = '00/c5/global_Pow1000c5c0b0_00c5c0b0.cpp'
+        TestSource = '00/c5/global_Pow1000c5c0b0_00c5c0b0_test.cpp'
+        PassPattern = '00c5c0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5d370'
+        Module = '_global'
+        Source = '00/c5/global_AddInt128Block_00c5d370.cpp'
+        TestSource = '00/c5/global_AddInt128Block_00c5d370_test.cpp'
+        PassPattern = '00c5d370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5d3f0'
+        Module = '_global'
+        Source = '00/c5/global_AddInt128Block00c5d3f0_00c5d3f0.cpp'
+        TestSource = '00/c5/global_AddInt128Block00c5d3f0_00c5d3f0_test.cpp'
+        PassPattern = '00c5d3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5d4b0'
+        Module = '_global'
+        Source = '00/c5/global_AddInt128Block00c5d4b0_00c5d4b0.cpp'
+        TestSource = '00/c5/global_AddInt128Block00c5d4b0_00c5d4b0_test.cpp'
+        PassPattern = '00c5d4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6b3a0'
+        Module = '_global'
+        Source = '00/c6/global_ConvertInt128BlockToFloat_00c6b3a0.cpp'
+        TestSource = '00/c6/global_ConvertInt128BlockToFloat_00c6b3a0_test.cpp'
+        PassPattern = '00c6b3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6bdc0'
+        Module = '_global'
+        Source = '00/c6/global_GetFrequencyTableEntry_00c6bdc0.cpp'
+        TestSource = '00/c6/global_GetFrequencyTableEntry_00c6bdc0_test.cpp'
+        PassPattern = '00c6bdc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6bf60'
+        Module = '_global'
+        Source = '00/c6/global_Pow1000c6bf60_00c6bf60.cpp'
+        TestSource = '00/c6/global_Pow1000c6bf60_00c6bf60_test.cpp'
+        PassPattern = '00c6bf60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6c000'
+        Module = 'COnePoleLowPass'
+        Source = '00/c6/COnePoleLowPass_SetLevel_00c6c000.cpp'
+        TestSource = '00/c6/COnePoleLowPass_SetLevel_00c6c000_test.cpp'
+        PassPattern = '00c6c000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6d370'
+        Module = '_global'
+        Source = '00/c6/global_ScaleAccumulate16_00c6d370.cpp'
+        TestSource = '00/c6/global_ScaleAccumulate16_00c6d370_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6d370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6f0f0'
+        Module = '_global'
+        Source = '00/c6/global_ScaleAccumulate16MMX_00c6f0f0.cpp'
+        TestSource = '00/c6/global_ScaleAccumulate16MMX_00c6f0f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6f0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c70040'
+        Module = 'CPreTransposedBoneMatrix'
+        Source = '00/c7/CPreTransposedBoneMatrix_Set_00c70040.cpp'
+        TestSource = '00/c7/CPreTransposedBoneMatrix_Set_00c70040_test.cpp'
+        PassPattern = '00c70040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c70a60'
+        Module = 'CPreTransposedBoneMatrix'
+        Source = '00/c7/CPreTransposedBoneMatrix_Set_00c70a60.cpp'
+        TestSource = '00/c7/CPreTransposedBoneMatrix_Set_00c70a60_test.cpp'
+        PassPattern = '00c70a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c77690'
+        Module = '_global'
+        Source = '00/c7/global_Pow1000c77690_00c77690.cpp'
+        TestSource = '00/c7/global_Pow1000c77690_00c77690_test.cpp'
+        PassPattern = '00c77690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c77700'
+        Module = '_global'
+        Source = '00/c7/global_MillibelsToAmplitude_00c77700.cpp'
+        TestSource = '00/c7/global_MillibelsToAmplitude_00c77700_test.cpp'
+        PassPattern = '00c77700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb0160'
+        Module = '_global'
+        Source = '00/cb/global_EnlargedUnsignedDivide_00cb0160.cpp'
+        TestSource = '00/cb/global_EnlargedUnsignedDivide_00cb0160_test.cpp'
+        PassPattern = '00cb0160_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

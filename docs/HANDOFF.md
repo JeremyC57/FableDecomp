@@ -5,7 +5,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **47420 (95.7%)** of 49,568
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **47464 (95.8%)** of 49,568
   (`rebuild/oracles/auto-re-candidates.tsv`). No agents running; chunk 484 was paused by the owner and its scratch
   workspace is gone (re-cut it with `lane_tools/chunk_pool/mkchunk.py` if wanted).
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by
@@ -32,7 +32,7 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 3. CRetailTree remainder: 882 kept rows + ~180 misnamed /Os tree functions (`treepass/KEPT.tsv`, `OS_FAMILY.tsv`).
 4. Recheck sweep: 35 rows failing since before the class-key pass, 93 Leafs naming no symbol, ~484 stale bindings,
    318 unknown-key headers, 389 headers without size evidence, CEngineResourceManager size drift.
-5. Parked rows (`rebuild/candidates/manual/pending/*/differ/`), incl. family pass 3/4 parks; retail_asm candidates (no instruction cap since 2026-10-27; agent994 verifying all 218 open candidates)
+5. Parked rows (`rebuild/candidates/manual/pending/*/differ/`), incl. family pass 3/4 parks; retail_asm candidates (no instruction cap since 2026-10-27; rasm2 landed 44 and parked the rest with verdicts, batch 2026-10-27_linux_retail_asm_rasm2)
    (0x774610, 0x779EF0, 0x81EA50, 0xB17BD0, 0xB1BC80, 0xA145C0, J032 x87 power-of-ten helpers 0xC40E60 ...);
    volatile candidates 0x9919C0, 0x991C10.
 6. Review-at-landing items in each batch `LESSONS.md` (e.g. 0x81B510/0x81A4F0 are CParticleMorphs code; 0x62FC20 uses

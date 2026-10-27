@@ -1,0 +1,215 @@
+address	n	strategy	result
+0048d940	1	forceinline-asm-helper [retail_asm/0048d940.cpp leaf=GFFloatToLongFloor]	DIFFER(56v58)
+0079c5f0	1	forceinline-asm-helper [retail_asm/0079c5f0.cpp leaf=GetBulletTimeTicksFromAbilityLevel]	SRC_FAIL
+0079c680	1	forceinline-asm-helper [retail_asm/0079c680.cpp leaf=GetBulletTimeRemainingPercentage]	SRC_FAIL
+0079c6d0	1	forceinline-asm-helper [retail_asm/0079c6d0.cpp leaf=GetBulletTimeElapsedTicks]	SRC_FAIL
+0048d940	2	forceinline-asm-helper [retail_asm/0048d940.cpp leaf=GFFloatToLongFloor]	MATCH
+007726b0	1	forceinline-asm-helper [retail_asm/007726b0.cpp leaf=GetStockQuantity]	DIFFER(110v101)
+00772720	1	forceinline-asm-helper [retail_asm/00772720.cpp leaf=GetMaxStock]	DIFFER(110v101)
+007e2da0	1	forceinline-asm-helper [retail_asm/007e2da0.cpp leaf=SetWobbleParameters]	DIFFER(88v79)
+0048d940	3	forceinline-10instr-asm-y-off [retail_asm/0048d940.cpp leaf=GFFloatToLongFloor]	MATCH
+0079c5f0	2	forceinline-10instr-asm-y-off [retail_asm/0079c5f0.cpp leaf=GetBulletTimeTicksFromAbilityLevel]	SRC_FAIL
+0079c680	2	forceinline-10instr-asm-y-off [retail_asm/0079c680.cpp leaf=GetBulletTimeRemainingPercentage]	SRC_FAIL
+0079c6d0	2	forceinline-10instr-asm-y-off [retail_asm/0079c6d0.cpp leaf=GetBulletTimeElapsedTicks]	SRC_FAIL
+007726b0	2	forceinline-10instr-asm-y-off [retail_asm/007726b0.cpp leaf=GetStockQuantity]	DIFFER(101v101)
+00772720	2	forceinline-10instr-asm-y-off [retail_asm/00772720.cpp leaf=GetMaxStock]	DIFFER(101v101)
+007e2da0	2	forceinline-10instr-asm-y-off [retail_asm/007e2da0.cpp leaf=SetWobbleParameters]	RELOCATION_MATCH
+00a52650	1	forceinline-10instr-asm-y-off [retail_asm/00a52650.cpp leaf=ConvertTimeToFrames]	SRC_FAIL
+00a526d0	1	forceinline-10instr-asm-y-off [retail_asm/00a526d0.cpp leaf=ConvertTimeToFrames]	DIFFER(113v123)
+00a4dea0	1	forceinline-10instr-asm-y-off [retail_asm/00a4dea0.cpp leaf=?GetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXPAVC3DKeyframe@@M@Z]	RELOCATION_MATCH
+0057a60a	1	forceinline-10instr-asm-y-off [retail_asm/0057a60a.cpp leaf=GetFatnessReducingFrequencyInFrames]	RELOCATION_MATCH
+0079c5f0	3	forceinline-10instr-asm-y-off [retail_asm/0079c5f0.cpp leaf=GetBulletTimeTicksFromAbilityLevel]	RELOCATION_MATCH
+0079c680	3	forceinline-10instr-asm-y-off [retail_asm/0079c680.cpp leaf=GetBulletTimeRemainingPercentage]	RELOCATION_MATCH
+0079c6d0	3	forceinline-10instr-asm-y-off [retail_asm/0079c6d0.cpp leaf=GetBulletTimeElapsedTicks]	RELOCATION_MATCH
+00a52650	2	forceinline-10instr-asm-y-off [retail_asm/00a52650.cpp leaf=ConvertTimeToFrames]	DIFFER(108v117)
+00a52650	3	ternary-wrap/same-TU-find [retail_asm/00a52650.cpp leaf=ConvertTimeToFrames]	MATCH
+00a526d0	2	ternary-wrap/same-TU-find [retail_asm/00a526d0.cpp leaf=ConvertTimeToFrames]	MATCH
+007726b0	3	ternary-wrap/same-TU-find [retail_asm/007726b0.cpp leaf=GetStockQuantity]	RELOCATION_MATCH
+00772720	3	ternary-wrap/same-TU-find [retail_asm/00772720.cpp leaf=GetMaxStock]	RELOCATION_MATCH
+0050ef30	1	prior+forceinline-10instr-asm [retail_asm/0050ef30.cpp leaf=operator()]	DIFFER(225v242)
+005115e0	1	prior+forceinline-10instr-asm [retail_asm/005115e0.cpp leaf=operator()]	DIFFER(310v299)
+00511a10	1	prior+forceinline-10instr-asm [retail_asm/00511a10.cpp leaf=operator()]	DIFFER(247v252)
+006378e0	1	prior+forceinline-10instr-asm [retail_asm/006378e0.cpp leaf=GetThingMapwhoLevel]	DIFFER(116v106)
+00afe380	1	prior+forceinline-10instr-asm [retail_asm/00afe380.cpp leaf=?GetRecordedPos@CParticle@NParticleEngine@@]	RELOCATION_MATCH
+0078bf00	1	prior+forceinline-10instr-asm [retail_asm/0078bf00.cpp]	DIFFER(184v187)
+00766260	1	prior+forceinline-10instr-asm [retail_asm/00766260.cpp leaf=GetHealthToAddThisFrame]	DIFFER(208v199)
+00766330	1	prior+forceinline-10instr-asm [retail_asm/00766330.cpp leaf=GetStaminaToAddThisFrame]	DIFFER(208v199)
+007e2df0	1	prior+forceinline-10instr-asm [retail_asm/007e2df0.cpp leaf=?OnInitialActivate@CTCWobble]	DIFFER(252v257)
+006a68f0	1	prior+forceinline-10instr-asm [retail_asm/006a68f0.cpp leaf=?ModifyHealth@CThingPhysical]	DIFFER(168v159)
+0050ef30	2	shape-fixes-2 [retail_asm/0050ef30.cpp leaf=operator()]	DIFFER(237v242)
+005115e0	2	shape-fixes-2 [retail_asm/005115e0.cpp leaf=operator()]	DIFFER(313v299)
+00511a10	2	shape-fixes-2 [retail_asm/00511a10.cpp leaf=operator()]	DIFFER(255v252)
+0078bf00	2	shape-fixes-2 [retail_asm/0078bf00.cpp]	DIFFER(187v187)
+00766260	2	shape-fixes-2 [retail_asm/00766260.cpp leaf=GetHealthToAddThisFrame]	RELOCATION_MATCH
+00766330	2	shape-fixes-2 [retail_asm/00766330.cpp leaf=GetStaminaToAddThisFrame]	RELOCATION_MATCH
+007e2df0	2	shape-fixes-2 [retail_asm/007e2df0.cpp leaf=?OnInitialActivate@CTCWobble]	DIFFER(252v257)
+006378e0	2	shape-fixes-2 [retail_asm/006378e0.cpp leaf=GetThingMapwhoLevel]	DIFFER(116v106)
+0050ef30	3	shape-fixes-3 [retail_asm/0050ef30.cpp leaf=operator()]	DIFFER(237v242)
+005115e0	3	shape-fixes-3 [retail_asm/005115e0.cpp leaf=operator()]	DIFFER(313v299)
+00511a10	3	shape-fixes-3 [retail_asm/00511a10.cpp leaf=operator()]	DIFFER(255v252)
+0078bf00	3	shape-fixes-3 [retail_asm/0078bf00.cpp]	DIFFER(187v187)
+007e2df0	3	shape-fixes-3 [retail_asm/007e2df0.cpp leaf=?OnInitialActivate@CTCWobble]	DIFFER(252v257)
+006378e0	3	shape-fixes-3 [retail_asm/006378e0.cpp leaf=GetThingMapwhoLevel]	DIFFER(116v106)
+006a68f0	2	shape-fixes-3 [retail_asm/006a68f0.cpp leaf=?ModifyHealth@CThingPhysical]	DIFFER(159v159)
+006a68f0	3	prior+asm-helpers [retail_asm/006a68f0.cpp leaf=?ModifyHealth@CThingPhysical]	RELOCATION_MATCH
+0050ef30	4	prior+asm-helpers [retail_asm/0050ef30.cpp leaf=operator()]	DIFFER(237v242)
+005115e0	4	prior+asm-helpers [retail_asm/005115e0.cpp leaf=operator()]	DIFFER(313v299)
+00511a10	4	prior+asm-helpers [retail_asm/00511a10.cpp leaf=operator()]	DIFFER(255v252)
+007e2df0	4	prior+asm-helpers [retail_asm/007e2df0.cpp leaf=?OnInitialActivate@CTCWobble]	DIFFER(252v257)
+00b52990	1	prior+asm-helpers [retail_asm/00b52990.cpp leaf=UpdateBoxPositions]	RELOCATION_MATCH
+00914650	1	prior+asm-helpers [retail_asm/00914650.cpp]	DIFFER(350v340)
+00a76e00	1	prior+asm-helpers [retail_asm/00a76e00.cpp leaf=GetPreferabilityCostForNode]	DIFFER(292v298)
+00b94bf0	1	prior+asm-helpers [retail_asm/00b94bf0.cpp]	DIFFER(297v311)
+00785b40	1	prior+asm-helpers [retail_asm/00785b40.cpp leaf=?FrameUpdate@CTCVolumeContainmentTracker]	DIFFER(310v318)
+00785b40	2	shape-fixes-4 [retail_asm/00785b40.cpp leaf=?FrameUpdate@CTCVolumeContainmentTracker]	DIFFER(319v318)
+0050ef30	5	shape-fixes-4 [retail_asm/0050ef30.cpp leaf=operator()]	DIFFER(237v242)
+005115e0	5	shape-fixes-4 [retail_asm/005115e0.cpp leaf=operator()]	DIFFER(313v299)
+00511a10	5	shape-fixes-4 [retail_asm/00511a10.cpp leaf=operator()]	DIFFER(255v252)
+007e2df0	5	shape-fixes-4 [retail_asm/007e2df0.cpp leaf=?OnInitialActivate@CTCWobble]	DIFFER(252v257)
+006378e0	4	shape-fixes-4 [retail_asm/006378e0.cpp leaf=GetThingMapwhoLevel]	DIFFER(114v106)
+0078bf00	4	shape-fixes-4 [retail_asm/0078bf00.cpp]	RELOCATION_MATCH
+00a76e00	2	shape-fixes-4 [retail_asm/00a76e00.cpp leaf=GetPreferabilityCostForNode]	DIFFER(298v298)
+00914650	2	shape-fixes-4 [retail_asm/00914650.cpp]	DIFFER(334v340)
+006cc800	1	shape-fixes-4 [retail_asm/006cc800.cpp leaf=FrameUpdate]	DIFFER(355v399)
+0082a020	1	shape-fixes-4 [retail_asm/0082a020.cpp leaf=GetDrawPosition]	DIFFER(307v343)
+00b94bf0	2	nested-map-model [retail_asm/00b94bf0.cpp]	SRC_FAIL
+007e2df0	6	scalar-operator= [retail_asm/007e2df0.cpp leaf=?OnInitialActivate@CTCWobble]	DIFFER(252v257)
+0050ef30	6	flags-Op [retail_asm/0050ef30.cpp leaf=operator() flags=/Op]	DIFFER(266v242)
+0050ef30	7	shape-fixes-5 [retail_asm/0050ef30.cpp leaf=operator()]	DIFFER(242v242)
+005115e0	6	shape-fixes-5 [retail_asm/005115e0.cpp leaf=operator()]	DIFFER(318v299)
+00511a10	6	shape-fixes-5 [retail_asm/00511a10.cpp leaf=operator()]	DIFFER(260v252)
+00785b40	3	shape-fixes-5 [retail_asm/00785b40.cpp leaf=?FrameUpdate@CTCVolumeContainmentTracker]	DIFFER(318v318)
+00a76e00	3	shape-fixes-5 [retail_asm/00a76e00.cpp leaf=GetPreferabilityCostForNode]	DIFFER(298v298)
+00914650	3	shape-fixes-5 [retail_asm/00914650.cpp]	DIFFER(334v340)
+006cc800	2	shape-fixes-5 [retail_asm/006cc800.cpp leaf=FrameUpdate]	DIFFER(402v399)
+00b94bf0	3	nested-map-model [retail_asm/00b94bf0.cpp]	DIFFER(333v311)
+0050ef30	8	shape-fixes-6 [retail_asm/0050ef30.cpp leaf=operator()]	RELOCATION_MATCH
+00511a10	7	shape-fixes-6 [retail_asm/00511a10.cpp leaf=operator()]	DIFFER(250v252)
+005115e0	7	shape-fixes-6 [retail_asm/005115e0.cpp leaf=operator()]	DIFFER(301v299)
+00785b40	4	shape-fixes-6 [retail_asm/00785b40.cpp leaf=?FrameUpdate@CTCVolumeContainmentTracker]	RELOCATION_MATCH
+006cc800	3	shape-fixes-6 [retail_asm/006cc800.cpp leaf=FrameUpdate]	DIFFER(401v399)
+00b94bf0	4	shape-fixes-6 [retail_asm/00b94bf0.cpp]	DIFFER(295v311)
+00914650	4	shape-fixes-6 [retail_asm/00914650.cpp]	DIFFER(334v340)
+0082a020	2	shape-fixes-6 [retail_asm/0082a020.cpp leaf=GetDrawPosition]	DIFFER(332v343)
+00c40e60	1	prior-asm-as-is [probe/pa/00c40e60.cpp leaf=?Pow10_00c40e60@@YAMM@Z]	DIFFER(109v75)
+00c42c30	1	prior-asm-as-is [probe/pa/00c42c30.cpp leaf=?Pow10_00c42c30@@YAMM@Z]	DIFFER(109v75)
+00c54a80	1	prior-asm-as-is [probe/pa/00c54a80.cpp leaf=?Pow10_00c54a80@@YAMM@Z]	DIFFER(109v75)
+00c5c0b0	1	prior-asm-as-is [probe/pa/00c5c0b0.cpp leaf=?Pow10_00c5c0b0@@YAMM@Z]	DIFFER(109v75)
+00c6bf60	1	prior-asm-as-is [probe/pa/00c6bf60.cpp leaf=?Pow10_00c6bf60@@YAMM@Z]	DIFFER(109v75)
+00c77690	1	prior-asm-as-is [probe/pa/00c77690.cpp leaf=?Pow10_00c77690@@YAMM@Z]	DIFFER(109v75)
+00c5d2e0	1	prior-asm-as-is [probe/pa/00c5d2e0.cpp leaf=?AccumulateFloatBlockSSE2@@YAXPBMPAJ@Z]	DIFFER(42v141)
+00c5d370	1	prior-asm-as-is [probe/pa/00c5d370.cpp leaf=?AccumulateBlockSSE2@@YAXPBJPAJ@Z]	DIFFER(57v84)
+00c5d3f0	1	prior-asm-as-is [probe/pa/00c5d3f0.cpp leaf=?AccumulateBlockSSE2Std@@YGXPBJPAJ@Z]	DIFFER(59v86)
+00c5d4b0	1	prior-asm-as-is [probe/pa/00c5d4b0.cpp leaf=?MixAdd32@CMixBufferSSE2@@]	DIFFER(59v86)
+00c59b00	1	prior-asm-as-is [probe/pa/00c59b00.cpp leaf=?SecondsToMixBlocks@@YAJM@Z]	DIFFER(129v155)
+00a9d480	1	prior-asm-as-is [probe/pa/00a9d480.cpp leaf=PostScale]	DIFFER(83v243)
+00adf960	1	prior-asm-as-is [probe/pa/00adf960.cpp leaf=SatisfyDistanceConstraints]	DIFFER(466v766)
+00ae1320	1	prior-asm-as-is [probe/pa/00ae1320.cpp leaf=ClingToMesh]	DIFFER(376v681)
+00ae29d0	1	prior-asm-as-is [probe/pa/00ae29d0.cpp leaf=SetupSimulation]	DIFFER(422v726)
+00f361d0	1	prior-asm-as-is [probe/pa/00f361d0.cpp leaf=Get3DNoise]	DIFFER(740v873)
+0077a430	1	prior-asm-as-is [probe/pa/0077a430.cpp leaf=FrameUpdate]	DIFFER(1067v1115)
+00c53b10	1	asm-block-authored [retail_asm/00c53b10.cpp leaf=?Pow10@@]	MATCH
+00c77700	1	asm-block-authored [retail_asm/00c77700.cpp leaf=?MillibelsToAmplitude@@]	RELOCATION_MATCH
+00c40ee0	1	asm-block-authored [retail_asm/00c40ee0.cpp leaf=?MillibelsToAmplitude@@]	RELOCATION_MATCH
+00c52aa0	1	asm-block-authored [retail_asm/00c52aa0.cpp leaf=?IsCpuidSupported@@]	DIFFER(49v47)
+00cb0160	1	asm-block-authored [retail_asm/00cb0160.cpp leaf=?EnlargedUnsignedDivide@@]	MATCH
+00a5c2b0	1	asm-block-authored [retail_asm/00a5c2b0.cpp leaf=?GFFinishPartialSlerp@NVectorMath@@]	MATCH
+00a5c300	1	asm-block-authored [retail_asm/00a5c300.cpp leaf=?GFClear4DVectors@NVectorMath@@]	RELOCATION_MATCH
+00c70a60	1	asm-block-authored [retail_asm/00c70a60.cpp leaf=?Set@CPreTransposedBoneMatrix@@]	MATCH
+00c70040	1	asm-block-authored [retail_asm/00c70040.cpp leaf=?Set@CPreTransposedBoneMatrix@@]	MATCH
+00a44250	1	asm-block-authored [retail_asm/00a44250.cpp leaf=?GFGetInterpolatedColour@@]	DIFFER(122v117)
+00c52aa0	2	asm-block-authored [retail_asm/00c52aa0.cpp leaf=?IsCpuidSupported@@]	MATCH
+00a44250	2	asm-block-authored [retail_asm/00a44250.cpp leaf=?GFGetInterpolatedColour@@]	DIFFER(128v117)
+00a44250	3	asm-block-authored [retail_asm/00a44250.cpp leaf=?GFGetInterpolatedColour@@]	MATCH
+00c40e60	2	asm-block-authored [retail_asm/00c40e60.cpp leaf=?Pow10_00c40e60@@]	MATCH
+00c42c30	2	asm-block-authored [retail_asm/00c42c30.cpp leaf=?Pow10_00c42c30@@]	MATCH
+00c54a80	2	asm-block-authored [retail_asm/00c54a80.cpp leaf=?Pow10_00c54a80@@]	MATCH
+00c5c0b0	2	asm-block-authored [retail_asm/00c5c0b0.cpp leaf=?Pow10_00c5c0b0@@]	MATCH
+00c6bf60	2	asm-block-authored [retail_asm/00c6bf60.cpp leaf=?Pow10_00c6bf60@@]	MATCH
+00c77690	2	asm-block-authored [retail_asm/00c77690.cpp leaf=?Pow10_00c77690@@]	MATCH
+00c40ee0	2	asm-block-authored [retail_asm/00c40ee0.cpp leaf=?MillibelsToAmplitude_00c40ee0@@]	RELOCATION_MATCH
+00c5d370	2	asm-helper [retail_asm/00c5d370.cpp leaf=?AddInt128Block@@]	DIFFER(82v84)
+00c5d2e0	2	asm-helper [retail_asm/00c5d2e0.cpp leaf=?AddFloat128BlockToInt@@]	DIFFER(141v141)
+00b84720	1	asm-helper [retail_asm/00b84720.cpp leaf=?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@]	DIFFER(146v142)
+0057b26f	1	asm-helper [retail_asm/0057b26f.cpp leaf=ForceStaminaTo]	SRC_FAIL
+00c6ebe0	1	asm-helper [retail_asm/00c6ebe0.cpp leaf=?SetAlternate@CVtable_012bedb8]	DIFFER(106v106)
+00c59b00	2	asm-helper [retail_asm/00c59b00.cpp leaf=?SecondsToMixBlocks@@]	DIFFER(133v155)
+00c5d370	3	asm-helper [retail_asm/00c5d370.cpp leaf=?AddInt128Block@@ flags=/G7]	DIFFER(82v84)
+00c5d370	4	asm-helper [retail_asm/00c5d370.cpp leaf=?AddInt128Block@@ flags=/G6]	DIFFER(82v84)
+00c5d370	5	asm-helper [retail_asm/00c5d370.cpp leaf=?AddInt128Block@@ flags=/G5]	DIFFER(82v84)
+00c5d370	6	asm-helper-v2 [retail_asm/00c5d370.cpp leaf=?AddInt128Block@@]	DIFFER(83v84)
+00c5d2e0	3	asm-helper-v2 [retail_asm/00c5d2e0.cpp leaf=?AddFloat128BlockToInt@@]	DIFFER(141v141)
+00c6ebe0	2	asm-helper-v2 [retail_asm/00c6ebe0.cpp leaf=?SetAlternate@CVtable_012bedb8]	DIFFER(106v106)
+00c59b00	3	asm-helper-v2 [retail_asm/00c59b00.cpp leaf=?SecondsToMixBlocks@@]	DIFFER(141v155)
+0057b26f	2	asm-helper-v2 [retail_asm/0057b26f.cpp leaf=ForceStaminaTo]	SRC_FAIL
+0057b26f	3	asm-helper-v3 [retail_asm/0057b26f.cpp leaf=ForceStaminaTo]	DIFFER(156v156)
+00c5d370	7	asm-helper-v3 [retail_asm/00c5d370.cpp leaf=?AddInt128Block@@]	DIFFER(84v84)
+00c5d2e0	4	asm-helper-v3 [retail_asm/00c5d2e0.cpp leaf=?AddFloat128BlockToInt@@]	DIFFER(141v141)
+00c6ebe0	3	asm-helper-v3 [retail_asm/00c6ebe0.cpp leaf=?SetAlternate@CVtable_012bedb8]	DIFFER(106v106)
+00c59b00	4	asm-helper-v3 [retail_asm/00c59b00.cpp leaf=?SecondsToMixBlocks@@]	DIFFER(141v155)
+00b84720	2	asm-helper-v3 [retail_asm/00b84720.cpp leaf=?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXW4ESubPrimitiveType@@]	DIFFER(145v142)
+00c5d370	8	asm-helper-v4 [retail_asm/00c5d370.cpp leaf=?AddInt128Block@@]	MATCH
+00c5d2e0	5	asm-helper-v4 [retail_asm/00c5d2e0.cpp leaf=?AddFloat128BlockToInt@@]	DIFFER(141v141)
+00c59b00	5	asm-helper-v4 [retail_asm/00c59b00.cpp leaf=?SecondsToMixBlocks@@]	DIFFER(155v155)
+0057b26f	4	asm-helper-v4 [retail_asm/0057b26f.cpp leaf=ForceStaminaTo]	DIFFER(157v156)
+00c5d2e0	6	asm-helper-v5 [retail_asm/00c5d2e0.cpp leaf=?AddFloat128BlockToInt@@]	DIFFER(143v141)
+00c5d3f0	2	asm-helper-v5 [retail_asm/00c5d3f0.cpp leaf=?AddInt128Block_00c5d3f0@@]	MATCH
+00c5d4b0	2	asm-helper-v5 [retail_asm/00c5d4b0.cpp leaf=?AddInt128Block_00c5d4b0@@]	MATCH
+00c5d2e0	7	asm-helper-v6 [retail_asm/00c5d2e0.cpp leaf=?AddFloat128BlockToInt@@]	DIFFER(143v141)
+0057b26f	5	asm-helper-v6 [retail_asm/0057b26f.cpp leaf=ForceStaminaTo]	DIFFER(156v156)
+00c6d370	1	asm-helper-v6 [retail_asm/00c6d370.cpp leaf=?ScaleAccumulate16@@ flags=/GS]	RELOCATION_MATCH
+00c6f0f0	1	asm-helper-v6 [retail_asm/00c6f0f0.cpp leaf=?ScaleAccumulate16MMX@@ flags=/GS]	RELOCATION_MATCH
+00c6b3a0	1	asm-helper-v6 [retail_asm/00c6b3a0.cpp leaf=?ConvertInt128BlockToFloat@@]	DIFFER(625v237)
+00c6bdc0	1	asm-helper-v6 [retail_asm/00c6bdc0.cpp leaf=?GetFrequencyTableEntry@@]	DIFFER(146v146)
+00c6c000	1	asm-helper-v6 [retail_asm/00c6c000.cpp leaf=?SetLevel@COnePoleLowPass]	DIFFER(240v240)
+00c6bdc0	2	asm-helper-v7 [retail_asm/00c6bdc0.cpp leaf=?GetFrequencyTableEntry@@]	DIFFER(146v146)
+00c6c000	2	asm-helper-v7 [retail_asm/00c6c000.cpp leaf=?SetLevel@COnePoleLowPass]	DIFFER(240v240)
+00c59b00	6	asm-helper-v7 [retail_asm/00c59b00.cpp leaf=?SecondsToMixBlocks@@]	RELOCATION_MATCH
+00c6b3a0	2	asm-helper-v7 [retail_asm/00c6b3a0.cpp leaf=?ConvertInt128BlockToFloat@@]	RELOCATION_MATCH
+00c5d2e0	8	asm-helper-v7 [retail_asm/00c5d2e0.cpp leaf=?AddFloat128BlockToInt@@]	DIFFER(140v141)
+00c6bdc0	3	asm-helper-v8 [retail_asm/00c6bdc0.cpp leaf=?GetFrequencyTableEntry@@]	DIFFER(146v146)
+00c6c000	3	asm-helper-v8 [retail_asm/00c6c000.cpp leaf=?SetLevel@COnePoleLowPass]	DIFFER(240v240)
+00c6bdc0	4	asm-helper-v9 [retail_asm/00c6bdc0.cpp leaf=?GetFrequencyTableEntry@@]	RELOCATION_MATCH
+00c6c000	4	asm-helper-v9 [retail_asm/00c6c000.cpp leaf=?SetLevel@COnePoleLowPass]	RELOCATION_MATCH
+00c77b30	1	asm-helper [retail_asm/00c77b30.cpp leaf=?UpdateLineLengths@CReverbProcessor]	DIFFER(192v193)
+00c77b30	2	asm-helper-v2 [retail_asm/00c77b30.cpp leaf=?UpdateLineLengths@CReverbProcessor]	DIFFER(194v193)
+004385f0	1	prior-asm-helper [retail_asm/004385f0.cpp]	DIFFER(325v379)
+00439bb0	1	prior-asm-helper [retail_asm/00439bb0.cpp]	DIFFER(588v592)
+0057c4f1	1	prior-asm-helper [retail_asm/0057c4f1.cpp leaf=ApplyBonusItemEffects]	DIFFER(1183v1192)
+005ee77c	1	prior-asm-helper [retail_asm/005ee77c.cpp]	DIFFER(261v267)
+00646010	1	prior-asm-helper [retail_asm/00646010.cpp leaf=DrawStatBarOnLeft]	DIFFER(370v399)
+00646762	1	prior-asm-helper [retail_asm/00646762.cpp leaf=DrawStatBarOnLeft@CStatBar]	DIFFER(731v740)
+0066cd50	1	prior-asm-helper [retail_asm/0066cd50.cpp leaf=BuildRegionMinimapTGA]	DIFFER(433v423)
+00747da0	1	prior-asm-helper [retail_asm/00747da0.cpp leaf=FrameUpdate]	DIFFER(999v1010)
+0077a430	2	prior-asm-helper [retail_asm/0077a430.cpp leaf=FrameUpdate]	DIFFER(1054v1115)
+0079d360	1	prior-asm-helper [retail_asm/0079d360.cpp leaf=??0CTCBulletTime]	DIFFER(1047v1115)
+009fca40	1	prior-asm-helper [retail_asm/009fca40.cpp leaf=InitialiseAsSurfaceSection]	DIFFER(218v218)
+00a48ba0	1	prior-asm-helper [retail_asm/00a48ba0.cpp leaf=WriteToFile]	DIFFER(881v875)
+00a48f10	1	prior-asm-helper [retail_asm/00a48f10.cpp leaf=GetFrameInterpolate]	DIFFER(815v811)
+00a567a0	1	prior-asm-helper [retail_asm/00a567a0.cpp]	DIFFER(683v766)
+00a88d10	1	prior-asm-helper [retail_asm/00a88d10.cpp]	DIFFER(176v196)
+00aad340	1	prior-asm-helper [retail_asm/00aad340.cpp]	DIFFER(606v584)
+00b16220	1	prior-asm-helper [retail_asm/00b16220.cpp leaf=InterpolateTo]	DIFFER(372v372)
+00b18820	1	prior-asm-helper [retail_asm/00b18820.cpp leaf=?Update@CPSCLight@@]	DIFFER(297v304)
+00b328c0	1	prior-asm-helper [retail_asm/00b328c0.cpp leaf=LoadNewScene]	DIFFER(529v517)
+00b51ad0	1	prior-asm-helper [retail_asm/00b51ad0.cpp leaf=?BuildBoxPositionMatrix@CEngineWeatherRenderer]	DIFFER(961v969)
+00b84580	1	prior-asm-helper [retail_asm/00b84580.cpp leaf=?AddSubPrimitive@CEngineSubPrimitiveRenderer@@QAEXPAVCEngineSubPrimitiveBase@@MEKPAVCEnginePrimitiveManager@@AAVCEngineSubPrimitiveChain@@@Z]	DIFFER(349v340)
+00b947e0	1	prior-asm-helper [retail_asm/00b947e0.cpp]	DIFFER(251v246)
+00bade40	1	prior-asm-helper [retail_asm/00bade40.cpp leaf=RenderSprite]	DIFFER(743v793)
+00c41fb0	1	prior-asm-helper [retail_asm/00c41fb0.cpp leaf=ComputeDerivedCombatStats]	DIFFER(1531v1570)
+00f36010	1	prior-asm-helper [retail_asm/00f36010.cpp leaf=GetGaussian2DNoise]	DIFFER(403v442)
+00f361d0	2	prior-asm-helper [retail_asm/00f361d0.cpp leaf=Get3DNoise]	DIFFER(744v873)
+00f36540	1	prior-asm-helper [retail_asm/00f36540.cpp]	DIFFER(319v321)
+006b2960	1	prior-asm-helper [retail_asm/006b2960.cpp leaf=GetNavigationInformation]	DIFFER(237v250)
+00986210	1	prior-asm-helper [retail_asm/00986210.cpp leaf=CallingChildrenIsRunnable]	DIFFER(450v461)
+009fca40	2	prior-asm-helper-v2 [retail_asm/009fca40.cpp leaf=InitialiseAsSurfaceSection]	DIFFER(218v218)
+006d63f0	1	cpp-reciprocal [src/006d63f0.cpp leaf=?GetExperiencePickupMultiplierCurrentLevelFractionComplete@]	DIFFER(64v68)
+00c34630	1	volatile-all-fields [overcap/00c34630.cpp leaf=DecodeAdpcmToPcm]	DIFFER(136v136)
+00c34630	2	volatile-two-fields [overcap/00c34630.cpp leaf=DecodeAdpcmToPcm]	RELOCATION_MATCH
+006d63f0	2	cpp-reciprocal-v2 [src/006d63f0.cpp leaf=?GetExperiencePickupMultiplierCurrentLevelFractionComplete@]	DIFFER(64v68)
+00cb0160	2	asm-block-authored [retail_asm/00cb0160.cpp leaf=?EnlargedUnsignedDivide@@]	MATCH
+00766260	3	rename-landed-labels [retail_asm/00766260.cpp leaf=GetHealthToAddThisFrame]	RELOCATION_MATCH
+00766330	3	rename-landed-labels [retail_asm/00766330.cpp leaf=GetStaminaToAddThisFrame]	RELOCATION_MATCH
+00785b40	5	rename-landed-labels [retail_asm/00785b40.cpp leaf=?FrameUpdate@CTCVolumeContainmentTracker]	RELOCATION_MATCH
+00c6b3a0	3	rename-landed-labels [retail_asm/00c6b3a0.cpp leaf=?ConvertInt128BlockToFloat@@]	RELOCATION_MATCH
+00a5c300	2	rename-landed-labels [retail_asm/00a5c300.cpp leaf=?GFClear4DVectors@NVectorMath@@]	RELOCATION_MATCH

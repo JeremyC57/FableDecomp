@@ -1,0 +1,14 @@
+address	name	evidence
+007726b0	CTCShop::GetStockQuantity	callers + ceil/floor block use (rasm2)
+00772720	CTCShop::GetMaxStock	callers (rasm2)
+00a526d0	C3DAnimationSequenceData::ConvertTimeToFrames	rasm2
+00c53b10	Pow10	log2(10) multiplier in the 2^x block; catalog "Pow2_Float" (rasm2)
+00c77700	MillibelsToAmplitude	2^x block over millibels (rasm2)
+00c40ee0	MillibelsToAmplitude_c40ee0	copy of 00c77700 (rasm2)
+00c70040	CPreTransposedBoneMatrix::Set	__cdecl (dst, src), not __thiscall (rasm2)
+00c70a60	CPreTransposedBoneMatrix::Set_SSE2	__cdecl (dst, src), SSE2 variant (rasm2)
+00b84720	CEngineSubPrimitiveRenderer::AddSubPrimitive	rasm2
+00a5c510	std::fill_n	landed STL_filln (rasm2)
+00c59b00	SecondsToMixBlocks	libpk (rasm2)
+00c6c000	COnePoleLowPass::SetLevel	libpk (rasm2)
+00c77b30	CReverbProcessor::UpdateLineLengths	libpk (rasm2)

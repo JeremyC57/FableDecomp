@@ -80,3 +80,5 @@ address	exported_length	corrected_length	reason
 00ad52a0	528	518	code 518 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
 00ad5030	528	518	code 518 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
 009b08c0	512	506	code 506 B; trailing 0xCC alignment trimmed (in-house 969-971 follow-up, verified all-CC)
+00ba1140	28	2344	split at the early-return ret 0Ch (0x00BA1159); the manifest's 0x00ba115c row is the rest of the same function (agent994, 2026-10-27; already in SKIPPED_ROWS)
+00bd71b0	28	2116	split at the early-return ret 0Ch (0x00BD71C9); the manifest's 0x00bd71cc row is the rest of the same function (agent994, 2026-10-27; already in SKIPPED_ROWS)

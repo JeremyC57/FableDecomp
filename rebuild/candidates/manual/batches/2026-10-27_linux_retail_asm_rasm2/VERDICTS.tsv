@@ -1,0 +1,219 @@
+address	verdict	asm_instructions	has_jcc	evidence
+00417747	not_reproduced	0	no	__ftol2 x3,fldcw,fnstcw | triage only: no reference body (pending:2026-10-22_linux_hand290); family __ftol2 x3,fldcw,fnstcw
+00418289	not_reproduced	0	no	fldcw,fnstcw | triage only: no reference body (pending:2026-10-22_linux_hand290); family fldcw,fnstcw
+0041afa0	not_reproduced	8	no	fistp_dword x4 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand323,rasm1:retail_asm_confirmed,retry10); family fistp_dword x4
+004385f0	not_reproduced	2	no	__ftol2 x1,fistp_dword x1 | differ/004385f0.cpp: prior+asm ROUND helper: 325v379, the status-bar flow residue of the parked reference remains
+00439bb0	not_reproduced	2	no	__ftol2 x1,fistp_dword x1 | differ/00439bb0.cpp: prior+asm ROUND helper: 588v592, one frame slot and the string-literal pushes differ
+0048d940	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/0048d940.cpp + test; ceilfloor_block x1,fistp_dword x1
+00492381	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | triage only: no reference body (pending:2026-10-23_linux_hand299); family ceilfloor_block x1,fistp_dword x1
+0050ef30	retail_asm_landable	10	yes	__ftol2 x6,ceilfloor_block x1,fistp_dword x1 | retail_asm/0050ef30.cpp + test; __ftol2 x6,ceilfloor_block x1,fistp_dword x1
+005115e0	not_reproduced	10	yes	__ftol2 x6,ceilfloor_block x1,fistp_dword x1 | differ/005115e0.cpp: ceil block authored: 301v299, retail keeps the Area pointer in esi and saves this to [ebp-1c]
+00511a10	not_reproduced	10	yes	__ftol2 x6,ceilfloor_block x1,fistp_dword x1 | differ/00511a10.cpp: ceil block authored: 250v252, retail loads Area into esi before the branch (mov eax,[esi] vs ours [esi+4])
+00516200	not_reproduced	10	yes	__ftol2 x6,ceilfloor_block x1,fistp_dword x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-24_linux_hand470); family __ftol2 x6,ceilfloor_block x1,fistp_dword x1
+00516830	not_reproduced	10	yes	__ftol2 x6,ceilfloor_block x1,fistp_dword x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-24_linux_hand470); family __ftol2 x6,ceilfloor_block x1,fistp_dword x1
+0057a60a	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/0057a60a.cpp + test; ceilfloor_block x1,fistp_dword x1
+0057b26f	not_reproduced	2	no	__ftol2 x1,fistp_dword x1 | differ/0057b26f.cpp: asm ROUND helper: 156v156, retail homes the GetInterface key in the dead fraction slot [ebp+8]; ours [ebp-8] (5 grades, 3 strategies)
+0057c4f1	not_reproduced	10	yes	__ftol2 x1,ceilfloor_block x1,fistp_dword x1 | differ/0057c4f1.cpp: prior+ceil block: 1183v1192, register residue of the reference body (this/def esi/edi)
+005c7452	not_reproduced	4	no	fistp_dword x2 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand303,rasm1:retail_asm_confirmed,retry10); family fistp_dword x2
+005ee77c	not_reproduced	2	no	fistp_dword x1 | differ/005ee77c.cpp: prior+asm ROUND helper: 261v267, retail copies the cost through the dead argument slot before fild
+006378e0	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | differ/006378e0.cpp: ceil block authored: 114v106, retail has a dead load of g_NoMapwhoLevels and an unrotated loop (4 grades)
+00645099	not_reproduced	0	no	__ftol2 x2 | rasm1 not_asm (x87 compare chain + __ftol2 only): reference draft 343v324, the sprite constructor argument list is inferred; no asm signature.
+00646010	not_reproduced	10	yes	__ftol2 x3,ceilfloor_block x1,fistp_dword x1 | differ/00646010.cpp: prior+floor block: 370v399, reference-body residue (stat text helpers)
+00646762	not_reproduced	10	yes	__ftol2 x2,ceilfloor_block x1,fistp_dword x1 | differ/00646762.cpp: prior+floor block: 731v740, reference-body residue
+006472b2	not_reproduced	2	no	__ftol2 x1,fistp_dword x1 | triage only: no reference body (pending:2026-10-15_linux_hand77); family __ftol2 x1,fistp_dword x1
+0064d404	not_reproduced	0	no	none | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand243,rasm1:retail_asm_confirmed,retry10); family none found
+0066cd50	not_reproduced	2	no	__ftol2 x3,fistp_dword x1 | differ/0066cd50.cpp: prior+asm ROUND helper: 433v423, reference-body residue (colour temporaries)
+006a68f0	retail_asm_landable	20	yes	ceilfloor_block x2,fistp_dword x2 | retail_asm/006a68f0.cpp + test; ceilfloor_block x2,fistp_dword x2
+006b2960	not_reproduced	24	yes	ceilfloor_block x2,fistp_dword x4 | differ/006b2960.cpp: prior+ROUND/floor helpers: 237v250, the double interface-slot-13 call of the reference remains
+006cc800	not_reproduced	10	yes	__ftol2 x2,ceilfloor_block x1,fistp_dword x1 | differ/006cc800.cpp: ceil block + stagger helper authored: 401v399, the erase() this pointer in ebx / frame slots
+006d63f0	not_reproduced	0	no	__ftol2 x1 | differ/006d63f0.cpp: plain C++ (rasm1 not_asm confirmed): 64v68, retail forms the reciprocal as fld [def+64] ; fdivr 1.0 and keeps it on the stack through the m
+006e5a00	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand322,rasm1:retail_asm_confirmed,retry10); family ceilfloor_block x2
+00716b30	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | triage only: no reference body (pending:2026-10-22_linux_hand280); family ceilfloor_block x2,fistp_dword x2
+00716de0	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | triage only: no reference body (pending:2026-10-23_linux_hand313,retry10); family ceilfloor_block x2,fistp_dword x2
+00747da0	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | differ/00747da0.cpp: prior+ceil block: 999v1010, reference-body residue
+00750e30	not_reproduced	10	yes	__ftol2 x2,ceilfloor_block x1,fistp_dword x1 | triage only: no reference body (pending:2026-10-21_linux_hand270); family __ftol2 x2,ceilfloor_block x1,fistp_dword x1
+00766260	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/00766260.cpp + test; ceilfloor_block x1,fistp_dword x1
+00766330	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/00766330.cpp + test; ceilfloor_block x1,fistp_dword x1
+007726b0	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/007726b0.cpp + test; ceilfloor_block x1,fistp_dword x1
+00772720	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/00772720.cpp + test; ceilfloor_block x1,fistp_dword x1
+007727e0	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand272,rasm1:retail_asm_confirmed,retry10); family ceilfloor_block x1
+00774610	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | triage only, no new grade: parked reference too far from retail (handoff,pending:2026-10-24_linux_hand478); family ceilfloor_block x1,fistp_dword x1
+00779ef0	not_reproduced	10	yes	__ftol2 x3,ceilfloor_block x1,fistp_dword x1 | triage only: no reference body (handoff,pending:2026-10-24_linux_hand478); family __ftol2 x3,ceilfloor_block x1,fistp_dword x1
+0077a430	not_reproduced	10	yes	__ftol2 x2,ceilfloor_block x1,fistp_dword x1 | differ/0077a430.cpp: prior+ceil block: 1054v1115, semantic first draft of the reference
+007808b0	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-24_linux_hand478); family none found in the row
+00785b40	retail_asm_landable	10	yes	ceilfloor_block x2,fistp_dword x2 | retail_asm/00785b40.cpp + test; ceilfloor_block x2,fistp_dword x2
+0078bf00	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/0078bf00.cpp + test; ceilfloor_block x1,fistp_dword x1
+0078c210	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | triage only: no reference body (pending:2026-10-23_linux_hand299); family ceilfloor_block x1,fistp_dword x1
+0078d250	not_reproduced	4	no	__ftol2 x3,fistp_dword x2 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand323,rasm1:retail_asm_confirmed,retry10); family __ftol2 x3,fistp_d
+0079c5f0	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/0079c5f0.cpp + test; ceilfloor_block x1,fistp_dword x1
+0079c680	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/0079c680.cpp + test; ceilfloor_block x1,fistp_dword x1
+0079c6d0	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/0079c6d0.cpp + test; ceilfloor_block x1,fistp_dword x1
+0079d360	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | differ/0079d360.cpp: prior+ceil block: 1047v1115, reference first draft
+007e2da0	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/007e2da0.cpp + test; ceilfloor_block x1,fistp_dword x1
+007e2df0	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | differ/007e2df0.cpp: ceil block authored: 252v257, retail copies ParentRHSet through lea ecx,[esi+0xc] / edx with an edi temp (6 grades)
+0081ea50	not_reproduced	4	no	fistp_dword x2 | triage only, no new grade: parked reference too far from retail (handoff,pending:2026-10-24_linux_hand480); family fistp_dword x2
+0082a020	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | differ/0082a020.cpp: floor blocks authored: 332v343, arithmetic/frame-slot residue of the minimap position (not pursued further)
+00909a00	not_reproduced	0	no	none | triage only, no new grade: parked reference too far from retail (handoff,pending:2026-10-27_linux_hand993_fable_test); family none found
+00914650	not_reproduced	10	yes	__ftol2 x2,ceilfloor_block x1,fistp_dword x1 | differ/00914650.cpp: ceil block authored: 334v340, frame layout residue (4 grades)
+009609b0	not_reproduced	20	yes	__ftol2 x2,ceilfloor_block x2,fistp_dword x2 | triage only: no reference body (pending:2026-10-23_linux_hand312); family __ftol2 x2,ceilfloor_block x2,fistp_dword x2
+00986210	not_reproduced	10	yes	__ftol2 x2,ceilfloor_block x1,fistp_dword x1 | differ/00986210.cpp: prior+ceil block: 450v461, reference-body residue
+00988e80	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand298,retry10); family xmm (SIMD present)
+00989230	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand298,retry10); family xmm (SIMD present)
+009919c0	not_reproduced	0	no	none | uncacheable-flag candidate unproven: the NeedsSort store/re-read sits across opaque calls in the reference draft (500v579), too far to isolate a volatile effect
+00991c10	not_reproduced	0	no	none | uncacheable-flag candidate unproven: same NeedsSort pattern, reference draft 233v338.
+009d8650	retail_asm_overcap	16	no	none | MicroThreadSleep: a naked stack switch (mov esp / jmp into the scheduler, 16 instructions) -- needs naked and exits inside the asm; refused by the rule (rasm1 f
+009fca40	not_reproduced	4	no	fistp_dword x2 | differ/009fca40.cpp: pointer-out ROUND helper (0xB1B5E0 form): 218v218, the value / pointer / result slots are assigned differently ([esp+10] vs [esp+24]); 2 gr
+00a145c0	not_reproduced	4	no	fistp_dword x2 | triage only: no reference body (handoff); family fistp_dword x2
+00a44250	retail_asm_landable	17	no	emms,mmx | retail_asm/00a44250.cpp + test; emms,mmx
+00a48ba0	not_reproduced	2	no	__ftol2 x1,fistp_dword x1 | differ/00a48ba0.cpp: prior+asm ROUND helper: 881v875, the lane <map> vs STLport map residue of the reference
+00a48f10	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | differ/00a48f10.cpp: prior+floor block: 815v811, one extra frame slot (retail reuses the dead argument slot for the frame pointer)
+00a4c1f0	not_reproduced	6	no	fistp_dword x3 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand276,rasm1:retail_asm_confirmed,retry10); family fistp_dword x3
+00a4cec0	not_reproduced	6	no	fistp_dword x3 | triage only: no reference body (pending:2026-10-23_linux_hand312); family fistp_dword x3
+00a4d330	not_reproduced	6	no	fistp_dword x3 | triage only: no reference body (pending:2026-10-23_linux_hand312); family fistp_dword x3
+00a4d770	not_reproduced	6	no	fistp_dword x3 | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand257,rasm1:retail_asm_confirmed,retry10); family fistp_dword x3
+00a4d920	not_reproduced	6	no	fistp_dword x3 | triage only: no reference body (pending:2026-10-23_linux_hand312); family fistp_dword x3
+00a4dea0	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/00a4dea0.cpp + test; ceilfloor_block x1,fistp_dword x1
+00a52650	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/00a52650.cpp + test; ceilfloor_block x1,fistp_dword x1
+00a526d0	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/00a526d0.cpp + test; ceilfloor_block x1,fistp_dword x1
+00a52760	not_reproduced	6	no	fistp_dword x3 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand276,rasm1:retail_asm_confirmed,retry10); family fistp_dword x3
+00a53860	not_reproduced	6	no	fistp_dword x3 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand276,rasm1:retail_asm_confirmed,retry10); family fistp_dword x3
+00a53c50	not_reproduced	6	no	fistp_dword x3 | triage only: no reference body (pending:2026-10-23_linux_hand312); family fistp_dword x3
+00a56670	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-22_linux_hand281); family none found in the row
+00a567a0	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | differ/00a567a0.cpp: prior+floor block: 683v766, reference-body residue
+00a5c2b0	retail_asm_landable	21	yes	xmm | retail_asm/00a5c2b0.cpp + test; xmm
+00a5c300	retail_asm_landable	10	yes	xmm | retail_asm/00a5c300.cpp + test; xmm
+00a5cb90	not_reproduced	0	no	xmm | triage only: no reference body (pending:2026-10-22_linux_hand290); family xmm (SIMD present)
+00a5cee0	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-20_linux_hand224); family xmm (SIMD present)
+00a76e00	not_reproduced	24	yes	ceilfloor_block x2,fistp_dword x4 | differ/00a76e00.cpp: ROUND helper authored: 298v298, identical code with frame 0x18 vs 0x28
+00a770b0	not_reproduced	30	yes	ceilfloor_block x3,fistp_dword x3 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand291,rasm1:retail_asm_confirmed,retry10); family ceilfloor_block x3
+00a781a0	not_reproduced	40	yes	__ftol2 x1,ceilfloor_block x4,fistp_dword x4 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand320,rasm1:retail_asm_confirmed,retry10); family __ftol2 x1,ceilflo
+00a88d10	not_reproduced	4	no	fistp_dword x2 | differ/00a88d10.cpp: asm ROUND helper in the cosine-table helper: 176v196, the second expansion is shaped differently (not pursued)
+00a9d480	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-20_linux_hand224); family xmm (SIMD present)
+00a9d580	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-19_linux_hand195,retry10); family xmm (SIMD present)
+00a9d750	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand276); family xmm (SIMD present)
+00a9eb90	not_reproduced	12	no	fistp_dword x6,rdtsc | triage only: no reference body (pending:2026-10-23_linux_hand312); family fistp_dword x6,rdtsc
+00aa3c50	not_reproduced	6	no	fistp_dword x3 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand297,rasm1:retail_asm_confirmed,retry10); family fistp_dword x3
+00aad340	not_reproduced	32	yes	ceilfloor_block x3,fistp_dword x4 | differ/00aad340.cpp: prior+floor blocks: 606v584, reference-body residue
+00adf960	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand293); family xmm (SIMD present)
+00ae0e60	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand266,rasm1:retail_asm_confirmed); family xmm (SIMD present)
+00ae1320	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand293); family xmm (SIMD present)
+00ae29d0	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand293); family xmm (SIMD present)
+00aed600	not_reproduced	24	no	fistp_dword x12 | triage only: no reference body (pending:2026-10-23_linux_hand321,retry10); family fistp_dword x12
+00af90c0	not_reproduced	6	no	fistp_dword x3 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand292,rasm1:retail_asm_confirmed,retry10); family fistp_dword x3
+00afb7c0	not_reproduced	32	no	fistp_dword x16 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand320,rasm1:retail_asm_confirmed,retry10); family fistp_dword x16
+00afe380	retail_asm_landable	10	yes	ceilfloor_block x1,fistp_dword x1 | retail_asm/00afe380.cpp + test; ceilfloor_block x1,fistp_dword x1
+00b00db0	not_reproduced	14	no	fistp_dword x7 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand320,rasm1:retail_asm_confirmed,retry10); family fistp_dword x7
+00b012e0	not_reproduced	44	no	fistp_dword x22 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand320,rasm1:retail_asm_confirmed,retry10); family fistp_dword x22
+00b05c60	not_reproduced	4	no	__ftol2 x2,fistp_dword x2 | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand266,rasm1:retail_asm_confirmed,retry10); family __ftol2 x2,fistp_d
+00b05e10	not_reproduced	2	no	fistp_dword x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-15_linux_hand150,rasm1:retail_asm_confirmed); family fistp_dword x1
+00b075d0	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand292,rasm1:retail_asm_confirmed,retry10); family ceilfloor_block x1
+00b0ca90	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-24_linux_hand951); family none found in the row
+00b0fbf0	not_reproduced	10	no	fistp_dword x5 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand292,rasm1:retail_asm_confirmed,retry10); family fistp_dword x5
+00b0ffc0	not_reproduced	6	no	fistp_dword x3 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand292,rasm1:retail_asm_confirmed,retry10); family fistp_dword x3
+00b103f0	not_reproduced	56	no	fistp_dword x28 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand320,rasm1:retail_asm_confirmed,retry10); family fistp_dword x28
+00b16220	not_reproduced	2	no	fistp_dword x1 | differ/00b16220.cpp: prior+asm ROUND helper: 372v372, the orbit struct stride is off by 4 in the reference (lea edx,[ecx+10] vs +14)
+00b16410	not_reproduced	16	no	fistp_dword x8 | triage only, no new grade: parked reference too far from retail (pending:2026-10-23_linux_hand320,rasm1:retail_asm_confirmed,retry10); family fistp_dword x8
+00b17bd0	not_reproduced	2	no	fistp_dword x1 | triage only, no new grade: parked reference too far from retail (handoff,pending:2026-10-24_linux_hand471); family fistp_dword x1
+00b18820	not_reproduced	2	no	__ftol2 x1,fistp_dword x1 | differ/00b18820.cpp: prior+asm ROUND helper: 297v304, early-return layout and fimul form differ
+00b1ad90	not_reproduced	2	no	fistp_dword x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-15_linux_hand150,rasm1:retail_asm_confirmed); family fistp_dword x1
+00b1bc80	not_reproduced	4	no	fistp_dword x2 | triage only, no new grade: parked reference too far from retail (handoff,pending:2026-10-24_linux_hand471); family fistp_dword x2
+00b1d550	not_reproduced	4	no	fistp_dword x2 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand292,rasm1:retail_asm_confirmed,retry10); family fistp_dword x2
+00b1d790	not_reproduced	4	no	__ftol2 x1,fistp_dword x2 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand292,rasm1:retail_asm_confirmed,retry10); family __ftol2 x1,fistp_d
+00b1dc70	not_reproduced	16	yes	ceilfloor_block x1,fistp_dword x4 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand292,rasm1:retail_asm_confirmed,retry10); family ceilfloor_block x1
+00b1dfd0	not_reproduced	28	no	fistp_dword x14 | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand292,rasm1:retail_asm_confirmed,retry10); family fistp_dword x14
+00b328c0	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | differ/00b328c0.cpp: prior+floor block: 529v517, reference-body residue
+00b399a0	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-23_linux_hand316); family none found in the row
+00b3f5e0	not_reproduced	8	no	fistp_dword x4 | triage only: no reference body (pending:2026-10-23_linux_hand316); family fistp_dword x4
+00b3fc40	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | triage only: no reference body (pending:2026-10-22_linux_hand285); family ceilfloor_block x2,fistp_dword x2
+00b40bd0	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-23_linux_hand316); family none found in the row
+00b41770	not_reproduced	2	no	fistp_dword x1 | triage only: no reference body (pending:2026-10-22_linux_hand285); family fistp_dword x1
+00b41a80	not_reproduced	2	no	fistp_dword x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand262,rasm1:retail_asm_confirmed,retry10); family fistp_dword x1
+00b44820	not_reproduced	0	no	xmm | triage only: no reference body (pending:2026-10-22_linux_hand285); family xmm (SIMD present)
+00b44a60	not_reproduced	0	no	xmm | triage only: no reference body (pending:2026-10-22_linux_hand285); family xmm (SIMD present)
+00b45fb0	not_reproduced	40	yes	ceilfloor_block x4,fistp_dword x4 | triage only: no reference body (pending:2026-10-22_linux_hand285); family ceilfloor_block x4,fistp_dword x4
+00b46280	not_reproduced	40	yes	ceilfloor_block x4,fistp_dword x4,xmm | triage only: no reference body (pending:2026-10-22_linux_hand285); family ceilfloor_block x4,fistp_dword x4,xmm (SIMD present)
+00b46660	not_reproduced	40	yes	ceilfloor_block x4,fistp_dword x4 | triage only: no reference body (pending:2026-10-22_linux_hand285); family ceilfloor_block x4,fistp_dword x4
+00b46c80	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-23_linux_hand316); family none found in the row
+00b47bc0	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-23_linux_hand316); family none found in the row
+00b484b0	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | triage only: no reference body (pending:2026-10-23_linux_hand316); family ceilfloor_block x2,fistp_dword x2
+00b49810	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-20_linux_hand218,pending:2026-10-20_linux_hand224); family xmm (SIMD present)
+00b4ced0	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-22_linux_hand298,retry10); family xmm (SIMD present)
+00b51ad0	not_reproduced	60	yes	ceilfloor_block x6,fistp_dword x6 | differ/00b51ad0.cpp: prior+floor blocks: 961v969, register allocation (ebx/esi) of the reference
+00b52990	retail_asm_landable	10	yes	ceilfloor_block x6,fistp_dword x6 | retail_asm/00b52990.cpp + test; ceilfloor_block x6,fistp_dword x6
+00b53f60	not_reproduced	0	no	none | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand263,retry10); family none found
+00b67270	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | triage only: no reference body (pending:2026-10-22_linux_hand285); family ceilfloor_block x1,fistp_dword x1
+00b68070	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | triage only: no reference body (pending:2026-10-23_linux_hand316); family ceilfloor_block x2,fistp_dword x2
+00b84580	not_reproduced	4	no	fistp_dword x2 | differ/00b84580.cpp: prior+asm ROUND helper: 349v340, reference-body residue
+00b84720	not_reproduced	2	no	fistp_dword x1 | differ/00b84720.cpp: asm ROUND helper authored: 146v142 (best), retail keeps subPrimitive in esi for the element copy and homes the empty __false_type temp in t
+00b8c830	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-23_linux_hand316); family none found in the row
+00b8dcd0	not_reproduced	4	no	fistp_dword x2 | triage only: no reference body (pending:2026-10-22_linux_hand285); family fistp_dword x2
+00b8df50	not_reproduced	2	no	fistp_dword x1 | triage only: no reference body (pending:2026-10-23_linux_hand316); family fistp_dword x1
+00b93b30	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand244,rasm1:retail_asm_confirmed,retry10); family ceilfloor_block x2
+00b947e0	not_reproduced	2	no	fistp_dword x1 | differ/00b947e0.cpp: prior+asm ROUND helper: 251v246, reference-body residue
+00b94bf0	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | differ/00b94bf0.cpp: floor blocks + nested-map model authored: 295v311, first floor result goes to the dead position slot in retail
+00b98e10	not_reproduced	0	no	xmm | triage only: no reference body (pending:2026-10-22_linux_hand285); family xmm (SIMD present)
+00b99bb0	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand262,retry10); family xmm (SIMD present)
+00b9a4a0	not_reproduced	0	no	xmm | triage only: no reference body (pending:2026-10-23_linux_hand316); family xmm (SIMD present)
+00b9c2e0	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-21_linux_hand268,retry10); family xmm (SIMD present)
+00b9c500	not_reproduced	0	no	xmm | triage only, no new grade: parked reference too far from retail (pending:2026-10-20_linux_hand218,pending:2026-10-20_linux_hand224); family xmm (SIMD present)
+00b9d220	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-23_linux_hand316); family none found in the row
+00ba1140	not_reproduced	0	no	none | boundary: the 28-byte row is only the early-return prefix of CEnginePrimitiveManagerStaticMeshesBase::RenderPrimitive (sub esp,298h ; test [ecx+8] ; jne ; xor e
+00ba4c10	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | triage only: no reference body (pending:2026-10-23_linux_hand316); family ceilfloor_block x1,fistp_dword x1
+00ba6ff0	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-23_linux_hand316); family none found in the row
+00bade40	not_reproduced	2	no	fistp_dword x1 | differ/00bade40.cpp: prior+asm ROUND helper: 743v793, reference-body residue
+00bb1f50	not_reproduced	0	no	xmm | triage only: no reference body (pending:2026-10-23_linux_hand316); family xmm (SIMD present)
+00bb8750	not_reproduced	40	yes	__ftol2 x1,ceilfloor_block x4,fistp_dword x4 | triage only: no reference body (pending:2026-10-23_linux_hand316); family __ftol2 x1,ceilfloor_block x4,fistp_dword x4
+00bb8ef0	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-23_linux_hand316); family none found in the row
+00bbddd0	not_reproduced	2	no	fistp_dword x1 | triage only: no reference body (pending:2026-10-22_linux_hand285); family fistp_dword x1
+00bd2360	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | triage only: no reference body (pending:2026-10-23_linux_hand316); family ceilfloor_block x1,fistp_dword x1
+00bd2d90	not_reproduced	0	no	xmm | triage only: no reference body (pending:2026-10-22_linux_hand285); family xmm (SIMD present)
+00bd71b0	not_reproduced	0	no	none | boundary: same prefix cut as 00ba1140 for CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitive (sub esp,294h); the row must be recut to the whole function
+00bf12a0	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-23_linux_hand316); family none found in the row
+00bf7bc0	not_reproduced	0	no	xmm | triage only: no reference body (pending:2026-10-22_linux_hand285); family xmm (SIMD present)
+00bfea70	retail_asm_overcap	37	yes	fistp_qword | CRT __ftol2 (ftol2.asm MASM object): the whole function is assembly ending in ret; needs naked + ret, refused by the rule. Reconstruction = link the retail CRT 
+00c34630	volatile	0	no	none | overcap/00c34630.cpp (two volatile fields: m_channels, m_sampleRate; the self-copies and the load order need them) + test
+00c35dd0	not_reproduced	0	no	none | dead-compare candidate, NOT volatile: the second test is on the register (test eax,eax ; je) with no reload, so a volatile field would not reproduce it either; 
+00c40e60	retail_asm_landable	17	no	f2xm1,frndint,fscale,wait | retail_asm/00c40e60.cpp + test; f2xm1,frndint,fscale,wait
+00c40ee0	retail_asm_landable	17	no	f2xm1,frndint,fscale,wait | retail_asm/00c40ee0.cpp + test; f2xm1,frndint,fscale,wait
+00c41fb0	not_reproduced	8	no	fistp_dword x4,trunc_helper x4 | differ/00c41fb0.cpp: prior+asm trunc helper: 1531v1570, reference first pass (81 blocks)
+00c42c30	retail_asm_landable	17	no	f2xm1,frndint,fscale,wait | retail_asm/00c42c30.cpp + test; f2xm1,frndint,fscale,wait
+00c52aa0	retail_asm_landable	11	yes	popfd,pushfd | retail_asm/00c52aa0.cpp + test; popfd,pushfd
+00c53b10	retail_asm_landable	17	no	f2xm1,frndint,fscale,wait | retail_asm/00c53b10.cpp + test; f2xm1,frndint,fscale,wait
+00c54a80	retail_asm_landable	17	no	f2xm1,frndint,fscale,wait | retail_asm/00c54a80.cpp + test; f2xm1,frndint,fscale,wait
+00c59b00	retail_asm_landable	2	no	fistp_dword x1 | retail_asm/00c59b00.cpp + test; fistp_dword x1
+00c5c0b0	retail_asm_landable	17	no	f2xm1,frndint,fscale,wait | retail_asm/00c5c0b0.cpp + test; f2xm1,frndint,fscale,wait
+00c5d2e0	not_reproduced	0	no	ldmxcsr,stmxcsr,xmm | differ/00c5d2e0.cpp: SSE2 kernel + MXCSR save/restore: 140v141 best (8 grades, 3 strategies): retail saves the rounding bits in a compiler-owned esi (push esi a
+00c5d370	retail_asm_landable	20	yes	xmm | retail_asm/00c5d370.cpp + test; xmm
+00c5d3f0	retail_asm_landable	20	yes	xmm | retail_asm/00c5d3f0.cpp + test; xmm
+00c5d4b0	retail_asm_landable	20	yes	xmm | retail_asm/00c5d4b0.cpp + test; xmm
+00c6ac90	not_reproduced	0	no	none | plain C++ but LTCG: the callee 0x00C6AAE0 takes the gain in ecx plus four caller-cleaned stack arguments (a /GL custom convention); 39v38 in the reference.
+00c6ad10	not_reproduced	0	no	none | plain C++ but LTCG: the same custom convention for 0x00C6AAE0 (gain in ecx); 92v89 in the reference.
+00c6b050	not_reproduced	12	no	fistp_dword x6,trunc_helper x6 | triage only: no reference body (pending:2026-10-21_linux_hand270); family fistp_dword x6,trunc_helper x6
+00c6b3a0	retail_asm_landable	33	yes	emms,xmm | retail_asm/00c6b3a0.cpp + test; emms,xmm
+00c6bdc0	retail_asm_landable	2	no	fistp_dword x3,trunc_helper x2 | retail_asm/00c6bdc0.cpp + test; fistp_dword x3,trunc_helper x2
+00c6be60	not_reproduced	0	no	fistp_dword x1,trunc_helper x1 | libpk trunc helper (one expansion) plus an LTCG register allocation across the call to 0x00C6BDC0 (edx live across the call, 250v226 in the reference).
+00c6bf60	retail_asm_landable	17	no	f2xm1,frndint,fscale,wait | retail_asm/00c6bf60.cpp + test; f2xm1,frndint,fscale,wait
+00c6c000	retail_asm_landable	19	no	f2xm1,fistp_dword x1,frndint,fscale,trunc_helper x1,wait | retail_asm/00c6c000.cpp + test; f2xm1,fistp_dword x1,frndint,fscale,trunc_helper x1,wait
+00c6d370	retail_asm_landable	21	yes	xmm | retail_asm/00c6d370.cpp + test; xmm
+00c6d410	not_reproduced	0	no	xmm | SSE2 gain-ramp kernel (xmm7 += xmm6 step, pmulhw/punpck/psrad/paddd, align 16 loop, /GS aligned locals) with the start gain arriving in ecx (LTCG register argum
+00c6ebe0	not_reproduced	4	no	fistp_dword x2 | differ/00c6ebe0.cpp: asm ROUND helper in both arms: 106v106, retail keeps this in esi and loads the gain ramp into ecx; ours uses esi (3 grades)
+00c6f0f0	retail_asm_landable	34	yes	emms,mmx | retail_asm/00c6f0f0.cpp + test; emms,mmx
+00c70040	retail_asm_landable	35	no	emms,mmx | retail_asm/00c70040.cpp + test; emms,mmx
+00c70a60	retail_asm_landable	18	no	xmm | retail_asm/00c70a60.cpp + test; xmm
+00c74ee0	not_reproduced	0	no	fistp_dword x1,trunc_helper x1 | IsPrime: libpk trunc helper (fsqrt ; fsub 0.5 ; fistp ; test ; jge ; inc) inside an LTCG register-argument function (n arrives in ebx): the helper is authorable
+00c755b0	not_reproduced	2	no	fistp_dword x1,trunc_helper x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-24_linux_hand444,rasm1:retail_asm_confirmed); family fistp_dword x1,trunc_helpe
+00c76ab0	not_reproduced	2	no	fistp_dword x1,trunc_helper x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-24_linux_hand444,rasm1:retail_asm_confirmed); family fistp_dword x1,trunc_helpe
+00c76dd0	not_reproduced	2	no	fistp_dword x1,trunc_helper x1 | triage only, no new grade: parked reference too far from retail (pending:2026-10-24_linux_hand444,rasm1:retail_asm_confirmed); family fistp_dword x1,trunc_helpe
+00c77690	retail_asm_landable	17	no	f2xm1,frndint,fscale,wait | retail_asm/00c77690.cpp + test; f2xm1,frndint,fscale,wait
+00c77700	retail_asm_landable	17	no	f2xm1,frndint,fscale,wait | retail_asm/00c77700.cpp + test; f2xm1,frndint,fscale,wait
+00c77b30	not_reproduced	4	no	fistp_dword x2,trunc_helper x2 | differ/00c77b30.cpp: asm trunc helper: 193v193 best (int loop), retail iterates the tuning table with an unsigned offset (cmp eax,54h ; jb) and two line pointer
+00cb0160	retail_asm_landable	8	yes	none | retail_asm/00cb0160.cpp + test; 
+00cb0310	retail_asm_overcap	41	yes	none | MemMove: a hand-written rep movsd/movsb copy ending in ret (whole function asm); not authorable without naked.
+00da2f90	not_reproduced	0	no	none | triage only: no reference body (pending:2026-10-24_linux_hand951); family none found in the row
+00dfca90	not_reproduced	10	yes	ceilfloor_block x1,fistp_dword x1 | triage only: no reference body (pending:2026-10-21_linux_hand241); family ceilfloor_block x1,fistp_dword x1
+00f36010	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | differ/00f36010.cpp: prior+floor blocks: 403v442, reference-body residue
+00f361d0	not_reproduced	30	yes	ceilfloor_block x3,fistp_dword x3 | differ/00f361d0.cpp: prior+floor blocks: 744v873, reference-body residue
+00f36540	not_reproduced	20	yes	ceilfloor_block x2,fistp_dword x2 | differ/00f36540.cpp: prior+floor blocks: 319v321, table-index register allocation differs
+00f3fc50	retail_asm_overcap	70	yes	none | CRT __alldiv (alldiv.asm): whole-function MASM with ret; not authorable without naked.
+00f3fd10	retail_asm_overcap	15	yes	none | CRT __allshr (allshr.asm): 15-instruction MASM helper with ret; not authorable without naked.
+00f3fd50	retail_asm_overcap	58	yes	none | CRT __aulldvrm (aulldvrm.asm): whole-function MASM with ret; not authorable without naked.
