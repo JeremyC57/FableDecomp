@@ -1,0 +1,125 @@
+addr       parity           behav  name
+00d56750   MATCH            PASS   Init
+00d5aa80   MATCH            PASS   Init
+00d5dc80   MATCH            PASS   Init
+00d69ee0   RELOCATION_MATCH PASS   OnPredicateFail
+00d6a080   RELOCATION_MATCH PASS   OnPredicateFail
+00d6a480   RELOCATION_MATCH PASS   Init
+00d6a4f0   RELOCATION_MATCH PASS   OnPredicateFail
+00d6ae30   RELOCATION_MATCH PASS   OnPredicateFail
+00d705d0   RELOCATION_MATCH PASS   Init
+00d70650   RELOCATION_MATCH PASS   OnPredicateFail
+00d71a30   RELOCATION_MATCH PASS   Init
+00d73280   MATCH            PASS   Init
+00d83f10   MATCH            PASS   Init
+00d8a700   RELOCATION_MATCH PASS   Init
+00d8a770   RELOCATION_MATCH PASS   OnPredicateFail
+00d90050   RELOCATION_MATCH PASS   OnPredicateFail
+00d90f40   RELOCATION_MATCH PASS   Init
+00d90fa0   RELOCATION_MATCH PASS   OnPredicateFail
+00d9c610   RELOCATION_MATCH PASS   Init
+00da0160   RELOCATION_MATCH PASS   Init
+00da4540   RELOCATION_MATCH PASS   Init
+00da4590   MATCH            PASS   OnPredicateFail
+00da4740   RELOCATION_MATCH PASS   OnPredicateFail
+00db8290   RELOCATION_MATCH PASS   Init
+00dbf1e0   MATCH            PASS   Init
+00dcfa10   RELOCATION_MATCH PASS   Init
+00dd4a50   RELOCATION_MATCH PASS   Init
+00dd8850   RELOCATION_MATCH PASS   Main
+00ddad60   MATCH            PASS   Init
+00ddc490   RELOCATION_MATCH PASS   Init
+00de1b60   RELOCATION_MATCH PASS   Init
+00de1c50   RELOCATION_MATCH PASS   OnPredicateFail
+00de1db0   RELOCATION_MATCH PASS   OnPredicateFail
+00de25d0   RELOCATION_MATCH PASS   Init
+00dee250   RELOCATION_MATCH PASS   Init
+00df22a0   RELOCATION_MATCH PASS   OnPredicateFail
+00df2310   RELOCATION_MATCH PASS   Init
+00df2a40   RELOCATION_MATCH PASS   Init
+00df4130   MATCH            PASS   Init
+00e04ae0   RELOCATION_MATCH PASS   OnPredicateFail
+
+WINS: 40
+  00d56750 MATCH NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::?Init@CMeleeOpponent@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ
+  00d5aa80 MATCH NScript::CQ_GuildTrainingSkillScript::?Init@CQ_GuildTrainingSkillScript@NScript@@UAEXXZ
+  00d5dc80 MATCH NScript::CQ_GuildTrainingWillScript::?Init@CQ_GuildTrainingWillScript@NScript@@UAEXXZ
+  00d69ee0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Prisoner::?OnPredicateFail@CHTE_Prisoner@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6a080 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Executioner::?OnPredicateFail@CHTE_Executioner@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6a480 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter::?Init@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6a4f0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter::?OnPredicateFail@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6ae30 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::?OnPredicateFail@CHTE_AssaultGuard@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d705d0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?Init@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d70650 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?OnPredicateFail@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d71a30 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::?Init@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d73280 MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Executioner::?Init@CHTG_Executioner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d83f10 MATCH NScript::CQ_HeroSoulsMotherScript::CHS_Screamer::?Init@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@EAEXXZ
+  00d8a700 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CFishermansWife::?Init@CFishermansWife@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8a770 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CFishermansWife::?OnPredicateFail@CFishermansWife@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d90050 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CJames::?OnPredicateFail@CJames@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d90f40 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CBanditSacrifice::?Init@CBanditSacrifice@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d90fa0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CBanditSacrifice::?OnPredicateFail@CBanditSacrifice@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d9c610 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::COrchardFarmFarmer::?Init@COrchardFarmFarmer@CQ_HobbeToothContestScript@NScript@@EAEXXZ
+  00da0160 RELOCATION_MATCH NScript::CQ_MinionCampScript::CMC_SpawnPoint::?Init@CMC_SpawnPoint@CQ_MinionCampScript@NScript@@EAEXXZ
+  00da4540 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionEscort::?Init@CMinionEscort@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+  00da4590 MATCH NScript::CQ_MinionClifftopChaseScript::CMinionEscort::?OnPredicateFail@CMinionEscort@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+  00da4740 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionEscortEnd::?OnPredicateFail@CMinionEscortEnd@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+  00db8290 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::COVI_DeadFather::?Init@COVI_DeadFather@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+  00dbf1e0 MATCH NScript::CQ_OakValeBanditRaidScript::?Init@CQ_OakValeBanditRaidScript@NScript@@UAEXXZ
+  00dcfa10 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CArtefact::?Init@CArtefact@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+  00dd4a50 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice::?Init@CPrisonerAccomplice@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00dd8850 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CInventoryChest::?Main@CInventoryChest@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00ddad60 MATCH NScript::CQ_PrisonRaceScript::?Init@CQ_PrisonRaceScript@NScript@@UAEXXZ
+  00ddc490 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRacer::?Init@CPrisonRacer@CQ_PrisonRaceScript@NScript@@EAEXXZ
+  00de1b60 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictim::?Init@CVictim@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00de1c50 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CRansommer::?OnPredicateFail@CRansommer@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00de1db0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CRansomHelper::?OnPredicateFail@CRansomHelper@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00de25d0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsFatherGuard::?Init@CVictimsFatherGuard@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00dee250 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CMotherTorture::?Init@CMotherTorture@CQ_SecretPassageScript@NScript@@EAEXXZ
+  00df22a0 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerAttacker::?OnPredicateFail@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+  00df2310 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerAttacker::?Init@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+  00df2a40 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerMinion::?Init@CSummonerMinion@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+  00df4130 MATCH NScript::CQ_TentacleKrakenBossFightScript::?Init@CQ_TentacleKrakenBossFightScript@NScript@@UAEXXZ
+  00e04ae0 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CEndTrader::?OnPredicateFail@CEndTrader@CQ_TraderEscortScript@NScript@@EAEXXZ
+
+LANDED 40 wins into src/compiled + tests + catalog + oracle
+  NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_Init_00d56750
+  NScriptCQGuildTrainingSkillScript_Init_00d5aa80
+  NScriptCQGuildTrainingWillScript_Init_00d5dc80
+  NScriptCQHangingTreeEvilScriptCHTEPrisoner_OnPredicateFail_00d69ee0
+  NScriptCQHangingTreeEvilScriptCHTEExecutioner_OnPredicateFail_00d6a080
+  NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Init_00d6a480
+  NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_OnPredicateFail_00d6a4f0
+  NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_OnPredicateFail_00d6ae30
+  NScriptCQHangingTreeGoodScriptCHTGGuard_Init_00d705d0
+  NScriptCQHangingTreeGoodScriptCHTGGuard_OnPredicateFail_00d70650
+  NScriptCQHangingTreeGoodScriptCHTGPrisoner_Init_00d71a30
+  NScriptCQHangingTreeGoodScriptCHTGExecutioner_Init_00d73280
+  NScriptCQHeroSoulsMotherScriptCHSScreamer_Init_00d83f10
+  NScriptCQHerosOldHouseScriptCFishermansWife_Init_00d8a700
+  NScriptCQHerosOldHouseScriptCFishermansWife_OnPredicateFail_00d8a770
+  NScriptCQHobbeCaveScriptCJames_OnPredicateFail_00d90050
+  NScriptCQHobbeCaveScriptCBanditSacrifice_Init_00d90f40
+  NScriptCQHobbeCaveScriptCBanditSacrifice_OnPredicateFail_00d90fa0
+  NScriptCQHobbeToothContestScriptCOrchardFarmFarmer_Init_00d9c610
+  NScriptCQMinionCampScriptCMCSpawnPoint_Init_00da0160
+  NScriptCQMinionClifftopChaseScriptCMinionEscort_Init_00da4540
+  NScriptCQMinionClifftopChaseScriptCMinionEscort_OnPredicateFail_00da4590
+  NScriptCQMinionClifftopChaseScriptCMinionEscortEnd_OnPredicateFail_00da4740
+  NScriptCQNewOakValeIntroScriptCOVIDeadFather_Init_00db8290
+  NScriptCQOakValeBanditRaidScript_Init_00dbf1e0
+  NScriptCQOrchardFarmRaidScriptCArtefact_Init_00dcfa10
+  NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_Init_00dd4a50
+  NScriptCQPrisonEscapeRescueMotherScriptCInventoryChest_Main_00dd8850
+  NScriptCQPrisonRaceScript_Init_00ddad60
+  NScriptCQPrisonRaceScriptCPrisonRacer_Init_00ddc490
+  NScriptCQRansomVictimScriptCVictim_Init_00de1b60
+  NScriptCQRansomVictimScriptCRansommer_OnPredicateFail_00de1c50
+  NScriptCQRansomVictimScriptCRansomHelper_OnPredicateFail_00de1db0
+  NScriptCQRansomVictimScriptCVictimsFatherGuard_Init_00de25d0
+  NScriptCQSecretPassageScriptCMotherTorture_Init_00dee250
+  NScriptCQSummoningTheShipScriptCSummonerAttacker_OnPredicateFail_00df22a0
+  NScriptCQSummoningTheShipScriptCSummonerAttacker_Init_00df2310
+  NScriptCQSummoningTheShipScriptCSummonerMinion_Init_00df2a40
+  NScriptCQTentacleKrakenBossFightScript_Init_00df4130
+  NScriptCQTraderEscortScriptCEndTrader_OnPredicateFail_00e04ae0

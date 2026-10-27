@@ -1,0 +1,18 @@
+# Chunk 500 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- (2026-10-27) Chunk 500 (NScript quest-script singles, 40/40): every gap-scan row in 0xD56750..0xE04AE0 was a vtable slot; finding the vtable a row sits in (walk back over .text pointers to the nearest address a `mov [reg], imm32` stores), the Alloc/ctor that stores it and the slot index named all 40 from the PDB name sets with no guessing. Entity vtables are [dtor, Main, Init, GetParentScript, OnPersist, OnPredicateFail, OnInterrupted] (entity members private virtual `EAEXXZ`); quest vtables are [dtor, RegisterMain, Main, Init, PersistTransfer] (public virtual `UAEXXZ`).
+- An `if (call()) { }` with an empty body keeps the call and its temporary's dtor and drops the result (0x00D6A080); `if (call()) { } else { x++; }` gives retail's `mov bl,al ; dtor ; test bl,bl ; jne` (a `!call()` condition gives `neg ; sbb ; inc`) (0x00D6AE30).
+- `if (a(tmp) && member)` after a call with a temporary argument adds a conditional-destruction flag store and a merged bool; retail's shape is two nested ifs (0x00E04AE0).
+- `m = (tmpString == "X") ? 2 : 1;` destroys the temporary after the store; retail's dtor-before-store comes from `bool b = tmpString == "X"; m = b ? 2 : 1;` (0x00DF2310, 0x00DF2A40). The null arm of CCharString::operator==(const char*) is `strcmp(text, "")`, which VC7.1 turns into `repe cmpsb` with esi = text, edi = "".
+- `Game->F(Me, Game->GetHero())` loads the outer call's vtable before the inner argument call and reuses it from ebx (0x00D6A480).
+- A by-value CScriptThing argument (SetIsPushableByHero slot 844) builds the copy in the argument slot with two vtable stores (CBaseClass 0x01231710, then CScriptThing 0x01238C8C) and an inline counted-pointer add-ref: model CScriptThing over CBaseClass with inline copy ctors (0x00DB8290, 0x00DE1B60, 0x00DE25D0).
+- Ego_r.pdb -> retail offsets for quest scripts: CScriptBase 0x54 -> 0x40, so members sit 0x14 lower, then 4 lower per Dinkumware vector/map before them; entity classes keep their PDB offsets; CScriptDef near +0xF50 is PDB - 0xBC (HOH_MoralityLoss +0xF64).
+
+Review at landing:
+- engine/CScriptThing.h and engine/CGameScriptInterface.h are data-only (vptr as a data member); these 40 sources use local polymorphic models (NOTES.md "Header debt"). Check vland's shared-header policy accepts them (the dry run printed no warning).
+- 0x00F35B30 is `?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ` (const, PDB); reloc_bindings.tsv holds ~40 other spellings for that address from landed rows (IsDone, helper_f35b30, CVtable012CC428 ...).
+- 0x0099EFE0 is `??4CCharString@@QAEABV0@PBD@Z` (const-ref return, PDB); landed rows such as 0x00D68FF0 declare `CCharString& operator=` (`QAEAAV0@PBD@Z`).
+- Landed 0x008ADF90 is spelled with a one-parameter `vector<_Tp>`; the PDB spelling carries the allocator (`?push_back@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXABVCScriptThing@@@Z`), which 0x00DCFA10 calls.
+- Landed entity GetParentScript bodies (e.g. 0x00D69ED0, 0x00D6A070) are `T::Get` over pack(1) pad structs; PDB names are `?GetParentScript@<Entity>@<Quest>@NScript@@UBEPAVCScriptBase@@XZ`. Landed CHS_Screamer::OnPredicateFail (0x00D83F20) and CTeamSpawn::Init (0x00DCD1D0) use global non-nested, non-virtual spellings where the PDB has `?...@<Entity>@<Quest>@NScript@@EAEXXZ`.
+- Catalog labels to fix: 0x00D73220 (CHTG_Executioner ctor, labelled CACompressor::CACompressor), 0x00D5DC50 (CQ_GuildTrainingWillScript ctor, labelled CEngineSubPrimitiveBase), 0x00DBF190 (CQ_OakValeBanditRaidScript ctor, labelled CScript_012d9e18).
+- No row needed more than 2 grades; no row holds several functions.
