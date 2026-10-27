@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00758d10	RELOCATION_MATCH	113v113	PASS	std::__pop_heap_aux(pair<EBodyLocation,CWoundMorphs::CEntry>* first, pair<...>* last, pair<...>*, CKeyPairCompareLess comp)
+00760000	MATCH	27v27	PASS	NShape::CTrack::GetBestCameraPosition(const C3DVector& pos, float) const
+0076dae0	MATCH	10v10	PASS	std::_List_iterator::operator--()
+0076dd10	MATCH	43v43	PASS	std::pair::pair(const pair& other)
+007771e0	MATCH	54v54	PASS	std::__lower_bound(long* first, long* last, const long& val, less<long> comp, int*)
+007776a0	MATCH	83v83	PASS	std::_Rb_tree::equal_range(const key_type& k)
+00779420	RELOCATION_MATCH	14v14	PASS	CTCDRegionExit::OnInitialActivate()
+00780400	MATCH	11v11	PASS	CTCFlammable::IsOnFire() const
+00780800	RELOCATION_MATCH	26v26	PASS	NFire::CFirePoint::AddFireDamage(long damage)
+00787bf1	MATCH	13v13	PASS	CTCTrapBase::Reset()
+00787bfe	RELOCATION_MATCH	9v9	PASS	CTCTrapBase::ManualDeactivate()
+007891f2	SKIP	-v6	-	two functions in one row: CTCTrapBase::BulletTimeFrameUpdate thunk (jmp [eax+24h]) + CTCTrapBase::InitTrap base `ret` at 0x007891F7
+007899d0	MATCH	9v9	PASS	CTCHeroRangedAttacks::AttemptToLoadRangedWeapon()
+00789a60	RELOCATION_MATCH	10v10	PASS	CTCHeroRangedAttacks::GetShotBuildupTime() const
+00789a80	RELOCATION_MATCH	10v10	PASS	CTCHeroRangedAttacks::GetShotAccuracyFraction() const
+0078c780	RELOCATION_MATCH	98v98	PASS	CTCBerserk::Pause()
+0078c7f0	RELOCATION_MATCH	103v103	PASS	CTCBerserk::UnPause()
+0079a4d0	RELOCATION_MATCH	73v73	PASS	CTCShopKeeper::~CTCShopKeeper()
+0079ec10	RELOCATION_MATCH	96v96	PASS	CTCPhysicalShieldSpell::UnPause()
+007a0950	RELOCATION_MATCH	83v83	PASS	CTCWillLightning::FinalCleanup()
+007a6b20	RELOCATION_MATCH	62v62	PASS	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::ReplaceMeshWithNext()
+007bbe24	RELOCATION_MATCH	16v16	PASS	NThingShot::CTCShotDefinitionTearInGround::OnPassingTarget()
+007c9760	MATCH	11v11	PASS	CTCCreatureGeneratorCreator::OnCreate()
+007d1aa0	RELOCATION_MATCH	65v65	PASS	CTCTavernGameCoinBase::~CTCTavernGameCoinBase()
+007e3690	RELOCATION_MATCH	14v14	PASS	CTCAtmosPlayer::OnCreate()
+007e5b30	RELOCATION_MATCH	12v12	PASS	CTCFireRangedWeaponOnLeavingStateGroup::OnInitialActivate()
+007ef6f0	MATCH	13v13	PASS	CTCDecapitation::Copy(const CTCBase& other)
+007f8b50	RELOCATION_MATCH	14v14	PASS	CTCParticleAttacher::OnInitialActivate()
+007fda20	RELOCATION_MATCH	82v82	PASS	CThingFilter_IsAffectedByObstructions::operator()(const CThing&) const
+00802370	RELOCATION_MATCH	15v15	PASS	InitTargetingPlayerFlags_00802370()
+00806800	RELOCATION_MATCH	30v30	PASS	std::__copy_ptrs(CUnprovenValue_00806800* first, CUnprovenValue_00806800* last, CUnprovenValue_00806800* result, const __true_type&)
+00806820	RELOCATION_MATCH	25v25	PASS	CIsNotThing_00806820::operator()(const CIntelligentPointer<CThing>& p) const
+00806840	MATCH	16v16	PASS	std::__distance(CUnprovenValue_00806840* const& first, CUnprovenValue_00806840* const& last, const random_access_iterator_tag&)
+00806850	RELOCATION_MATCH	30v30	PASS	std::__copy_ptrs(CUnprovenValue_00806850* first, CUnprovenValue_00806850* last, CUnprovenValue_00806850* result, const __true_type&)
+008093d0	RELOCATION_MATCH	125v125	PASS	CThingSearchTools::GetAllThings(const TFilter& filter, TContainer& result) [TThing = CThing, TContainer = std::vector<CThing*>, TFilter = CThingFilter
+00809f30	RELOCATION_MATCH	80v80	PASS	std::__insertion_sort(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CDoNotUseBinaryPredicate comp)
+0080e400	RELOCATION_MATCH	82v82	PASS	CThingFilter_IsThrownByExplosion::operator()(const CThing&) const
+0080ff20	RELOCATION_MATCH	73v73	PASS	CThing::GetInterface<CTCAISummon>(CTCAISummon** out)
+00810e50	RELOCATION_MATCH	8v8	PASS	NEntityEvents::CEventHitBase::GetLifeTime() const
+008178e0	RELOCATION_MATCH	104v104	PASS	std::__pop_heap(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElement* result, THitLocationIn

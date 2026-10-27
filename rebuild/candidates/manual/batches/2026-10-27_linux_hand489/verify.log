@@ -1,0 +1,139 @@
+addr       parity           behav  name
+00758d10   RELOCATION_MATCH PASS   __pop_heap_aux
+00760000   MATCH            PASS   GetBestCameraPosition
+0076dae0   MATCH            PASS   operator--
+0076dd10   MATCH            PASS   pair
+007771e0   MATCH            PASS   __lower_bound
+007776a0   MATCH            PASS   equal_range
+00779420   RELOCATION_MATCH PASS   OnInitialActivate
+00780400   MATCH            PASS   IsOnFire
+00780800   RELOCATION_MATCH PASS   AddFireDamage
+00787bf1   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00787bf1   MATCH            PASS   Reset
+00787bfe   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00787bfe   RELOCATION_MATCH PASS   ManualDeactivate
+007899d0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007899d0   MATCH            PASS   AttemptToLoadRangedWeapon
+00789a60   WARN SHARED_HEADER_AVAILABLE CTCBase
+00789a60   RELOCATION_MATCH PASS   GetShotBuildupTime
+00789a80   WARN SHARED_HEADER_AVAILABLE CTCBase
+00789a80   RELOCATION_MATCH PASS   GetShotAccuracyFraction
+0078c780   WARN SHARED_HEADER_AVAILABLE CTCBerserk
+0078c780   RELOCATION_MATCH PASS   Pause
+0078c7f0   WARN SHARED_HEADER_AVAILABLE CTCBerserk
+0078c7f0   RELOCATION_MATCH PASS   UnPause
+0079a4d0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0079a4d0   RELOCATION_MATCH PASS   ~CTCShopKeeper
+0079ec10   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesPhysicalShieldDef
+0079ec10   RELOCATION_MATCH PASS   UnPause
+007a0950   WARN SHARED_HEADER_AVAILABLE CTCWillLightning
+007a0950   RELOCATION_MATCH PASS   FinalCleanup
+007a6b20   RELOCATION_MATCH PASS   ReplaceMeshWithNext
+007bbe24   WARN RELOC_NAME: ?SetDieInSeconds@CTCShotDefinitionBase@NThingShot@@IAEXM@Z -> 007bed90 labelled 'CTCShotDefinitionBase::SetTimeToDie'
+007bbe24   RELOCATION_MATCH PASS   OnPassingTarget
+007c9760   MATCH            PASS   OnCreate
+007d1aa0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+007d1aa0   WARN RELOC_NAME: ??1CTCTavernGame@@UAE@XZ -> 005eda50 labelled 'CChunkedFileChunk::DestructorCleanup'
+007d1aa0   RELOCATION_MATCH PASS   ~CTCTavernGameCoinBase
+007e3690   RELOCATION_MATCH PASS   OnCreate
+007e5b30   RELOCATION_MATCH PASS   OnInitialActivate
+007ef6f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007ef6f0   MATCH            PASS   Copy
+007f8b50   RELOCATION_MATCH PASS   OnInitialActivate
+007fda20   WARN SHARED_HEADER_AVAILABLE CTCBase
+007fda20   RELOCATION_MATCH PASS   operator()
+00802370   RELOCATION_MATCH PASS   InitTargetingPlayerFlags_00802370
+00806800   RELOCATION_MATCH PASS   __copy_ptrs
+00806820   RELOCATION_MATCH PASS   operator()
+00806840   MATCH            PASS   __distance
+00806850   RELOCATION_MATCH PASS   __copy_ptrs
+008093d0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+008093d0   RELOCATION_MATCH PASS   GetAllThings
+00809f30   RELOCATION_MATCH PASS   __insertion_sort
+0080e400   WARN SHARED_HEADER_AVAILABLE CTCBase
+0080e400   RELOCATION_MATCH PASS   operator()
+0080ff20   RELOCATION_MATCH PASS   GetInterface<CTCAISummon>
+00810e50   RELOCATION_MATCH PASS   GetLifeTime
+008178e0   RELOCATION_MATCH PASS   __pop_heap
+
+WINS: 39
+  00758d10 RELOCATION_MATCH std::??$__pop_heap_aux@
+  00760000 MATCH NShape::CTrack::?GetBestCameraPosition@CTrack@NShape@@QBE?AVC3DVector@@ABV3@M@Z
+  0076dae0 MATCH std::_List_iterator::??F?$_List_iterator@UCUnprovenElement_0076dae0@@U?$_Nonconst_traits@UCUnprovenElement_0076dae0@@@std@@@std@@QAEAAU01@XZ
+  0076dd10 MATCH std::pair::??0?$pair@VC3DVector@@V1@@std@@QAE@ABU01@@Z
+  007771e0 MATCH std::??$__lower_bound@
+  007776a0 MATCH std::_Rb_tree::?equal_range@?$_Rb_tree@
+  00779420 RELOCATION_MATCH CTCDRegionExit::?OnInitialActivate@CTCDRegionExit@@UAEXXZ
+  00780400 MATCH CTCFlammable::?IsOnFire@CTCFlammable@@QBE_NXZ
+  00780800 RELOCATION_MATCH NFire::CFirePoint::?AddFireDamage@CFirePoint@NFire@@QAEXJ@Z
+  00787bf1 MATCH CTCTrapBase::?Reset@CTCTrapBase@@IAEXXZ
+  00787bfe RELOCATION_MATCH CTCTrapBase::?ManualDeactivate@CTCTrapBase@@QAEXXZ
+  007899d0 MATCH CTCHeroRangedAttacks::?AttemptToLoadRangedWeapon@CTCHeroRangedAttacks@@QAEXXZ
+  00789a60 RELOCATION_MATCH CTCHeroRangedAttacks::?GetShotBuildupTime@CTCHeroRangedAttacks@@QBEMXZ
+  00789a80 RELOCATION_MATCH CTCHeroRangedAttacks::?GetShotAccuracyFraction@CTCHeroRangedAttacks@@QBEMXZ
+  0078c780 RELOCATION_MATCH CTCBerserk::?Pause@CTCBerserk@@QAEXXZ
+  0078c7f0 RELOCATION_MATCH CTCBerserk::?UnPause@CTCBerserk@@QAEXXZ
+  0079a4d0 RELOCATION_MATCH CTCShopKeeper::??1CTCShopKeeper@@UAE@XZ
+  0079ec10 RELOCATION_MATCH CTCPhysicalShieldSpell::?UnPause@CTCPhysicalShieldSpell@@QAEXXZ
+  007a0950 RELOCATION_MATCH CTCWillLightning::?FinalCleanup@CTCWillLightning@@AAEXXZ
+  007a6b20 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::?ReplaceMeshWithNext@CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@QAEXXZ
+  007bbe24 RELOCATION_MATCH NThingShot::CTCShotDefinitionTearInGround::?OnPassingTarget@CTCShotDefinitionTearInGround@NThingShot@@MAEXXZ
+  007c9760 MATCH CTCCreatureGeneratorCreator::?OnCreate@CTCCreatureGeneratorCreator@@UAEXXZ
+  007d1aa0 RELOCATION_MATCH CTCTavernGameCoinBase::??1CTCTavernGameCoinBase@@UAE@XZ
+  007e3690 RELOCATION_MATCH CTCAtmosPlayer::?OnCreate@CTCAtmosPlayer@@UAEXXZ
+  007e5b30 RELOCATION_MATCH CTCFireRangedWeaponOnLeavingStateGroup::?OnInitialActivate@CTCFireRangedWeaponOnLeavingStateGroup@@UAEXXZ
+  007ef6f0 MATCH CTCDecapitation::?Copy@CTCDecapitation@@UAEXABVCTCBase@@@Z
+  007f8b50 RELOCATION_MATCH CTCParticleAttacher::?OnInitialActivate@CTCParticleAttacher@@UAEXXZ
+  007fda20 RELOCATION_MATCH CThingFilter_IsAffectedByObstructions::??RCThingFilter_IsAffectedByObstructions@
+  00802370 RELOCATION_MATCH _global::?InitTargetingPlayerFlags_00802370@@YAXXZ
+  00806800 RELOCATION_MATCH std::??$__copy_ptrs@
+  00806820 RELOCATION_MATCH CIsNotThing_00806820::??RCIsNotThing_00806820@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z
+  00806840 MATCH std::??$__distance@
+  00806850 RELOCATION_MATCH std::??$__copy_ptrs@
+  008093d0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  00809f30 RELOCATION_MATCH std::??$__insertion_sort@
+  0080e400 RELOCATION_MATCH CThingFilter_IsThrownByExplosion::??RCThingFilter_IsThrownByExplosion@
+  0080ff20 RELOCATION_MATCH CThing::??$GetInterface@VCTCAISummon@@@CThing@@QAE_NPAPAVCTCAISummon@@@Z
+  00810e50 RELOCATION_MATCH NEntityEvents::CEventHitBase::?GetLifeTime@CEventHitBase@NEntityEvents@@UBEJXZ
+  008178e0 RELOCATION_MATCH std::??$__pop_heap@
+
+LANDED 39 wins into src/compiled + tests + catalog + oracle
+  std_popheapaux_00758d10
+  NShapeCTrack_GetBestCameraPosition_00760000
+  stdListiterator_operator_0076dae0
+  stdpair_pair_0076dd10
+  std_lowerbound_007771e0
+  stdRbtree_equalrange_007776a0
+  CTCDRegionExit_OnInitialActivate_00779420
+  CTCFlammable_IsOnFire_00780400
+  NFireCFirePoint_AddFireDamage_00780800
+  CTCTrapBase_Reset_00787bf1
+  CTCTrapBase_ManualDeactivate_00787bfe
+  CTCHeroRangedAttacks_AttemptToLoadRangedWeapon_007899d0
+  CTCHeroRangedAttacks_GetShotBuildupTime_00789a60
+  CTCHeroRangedAttacks_GetShotAccuracyFraction_00789a80
+  CTCBerserk_Pause_0078c780
+  CTCBerserk_UnPause_0078c7f0
+  CTCShopKeeper_CTCShopKeeper_0079a4d0
+  CTCPhysicalShieldSpell_UnPause_0079ec10
+  CTCWillLightning_FinalCleanup_007a0950
+  NGraphicAppearanceCTCGraphicAppearanceReplaceableMesh_ReplaceMeshWithNext_007a6b20
+  NThingShotCTCShotDefinitionTearInGround_OnPassingTarget_007bbe24
+  CTCCreatureGeneratorCreator_OnCreate_007c9760
+  CTCTavernGameCoinBase_CTCTavernGameCoinBase_007d1aa0
+  CTCAtmosPlayer_OnCreate_007e3690
+  CTCFireRangedWeaponOnLeavingStateGroup_OnInitialActivate_007e5b30
+  CTCDecapitation_Copy_007ef6f0
+  CTCParticleAttacher_OnInitialActivate_007f8b50
+  CThingFilterIsAffectedByObstructions_operator_007fda20
+  global_InitTargetingPlayerFlags00802370_00802370
+  std_copyptrs_00806800
+  CIsNotThing00806820_operator_00806820
+  std_distance_00806840
+  std_copyptrs_00806850
+  CThingSearchTools_GetAllThings_008093d0
+  std_insertionsort_00809f30
+  CThingFilterIsThrownByExplosion_operator_0080e400
+  CThing_GetInterfaceCTCAISummon_0080ff20
+  NEntityEventsCEventHitBase_GetLifeTime_00810e50
+  std_popheap_008178e0
