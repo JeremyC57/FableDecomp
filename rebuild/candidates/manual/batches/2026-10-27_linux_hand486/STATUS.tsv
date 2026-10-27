@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004ad810	DIFFER	122v125	-	CThingSearchTools::GetAllThings<const CThing, vector<const CThing*>, CThingFilter_None> (proven); extra constant `xor al,al ; jne` after the InLimbo test + argument-slot homing
+004adaa0	RELOCATION_MATCH	49v49	PASS	std::vector<CTestQuest>::clear (proven chain: __copy 0x4AA580, __destroy_aux 0x4ABD90)
+004adc40	RELOCATION_MATCH	45v45	PASS	CCountedPointer<CMessageEventManager>::DeleteData (explicit instantiation)
+004ae0d0	RELOCATION_MATCH	13v13	PASS	std::_Destroy<pair<unsigned long, CCountedPointer<CFaction>>*> (/Gr-style __fastcall)
+004af000	RELOCATION_MATCH	44v44	PASS	CCodeSectionManager::LoadSectionLongName(CCharString) (proven: PDB name + callees)
+004b8ac0	RELOCATION_MATCH	54v54	PASS	std::list<CQuestManager::CObjective>::_M_create_node (probable element type)
+004c2c00	MATCH	105v105	PASS	std::__unguarded_insertion_sort_aux<CMeshInfo*, CMeshInfo, CSortPrimaryMeshesLast>; catalog _Copy_impl label wrong
+004c42b0	RELOCATION_MATCH	15v15	PASS	std::pop_heap<pair<float,CCameraTag>*, CKeyPairCompareLess<...>> (/Gr); callee __pop_heap_aux 0x4C3BF0
+004c7870	DIFFER	15v15	-	CThing slot 22 driver query (descriptive DriverQuery_004c7870); `xor al,al` placed before vs after the null test
+004c7ae0	RELOCATION_MATCH	9v9	PASS	CThing::GetPWorldSeed (catalog CViewBase::GetDisplayEngine wrong)
+004cd9c0	RELOCATION_MATCH	9v9	PASS	CConversationAttitude::GetAnimGroupName (static __fastcall)
+004d51f6	MATCH	9v9	PASS	CTCTavernJug::OnInitialActivate (pragma optimize s)
+004d5372	MATCH	10v10	PASS	CTCOnHeroPush::OnInitialActivate (pragma optimize s)
+004d5476	MATCH	12v12	PASS	NThingShot::CTCShotDefinitionThrow::GetStatToModifyOnHit (pragma optimize s)
+004d8b7c	MATCH	6v6	PASS	CTCTavernTankard::OnInitialActivate (pragma optimize s)
+004ddaa4	SKIP	-v16	-	catalog row holds 3 packed functions (CTCTargetingAI slot 10 + 2 more)
+004e0adc	SKIP	-v12	-	catalog row holds 4 packed functions (CTCGatherPointBase slot 6 + 3 more)
+004fc170	MATCH	16v16	PASS	CWorldMap::GetMapWithIndex(long) const (probable; CArray<CMapInfo> +0x20)
+0050b550	RELOCATION_MATCH	27v27	PASS	std::allocator<unsigned short>::allocate (element type probable)
+00510020	MATCH	5v5	PASS	ReturnShort2_00510020 (descriptive)
+00514210	RELOCATION_MATCH	19v19	PASS	std::set<unsigned long>::operator= (probable; tree operator= 0x512CE0 as bound by landed 0x517060)
+0051b410	RELOCATION_MATCH	11v11	PASS	std::_Construct<CRegion, CRegion> (/Gr; CRegion copy ctor 0x51A900)
+0051ccd0	RELOCATION_MATCH	50v50	PASS	CCountedPointer<CRegionConnectionGraph>::DeleteData
+0051e800	MATCH	114v114	PASS	NThingManager::CEntityRuntimePersistence::GetLevelSaveStats (proven; element count hoisted to a local)
+0051ea30	DIFFER	86v88	-	CThingManager::FillRenderListsWithAllEntities (probable); register allocation only (this vs vector base in ecx)
+0051ea90	RELOCATION_MATCH	18v18	PASS	CThingManager::SetUpdateAndRenderAllFlag(bool) (proven: PDB name + field +0x99)
+005269f0	MATCH	58v58	PASS	std::__uninitialized_fill_n over a 16-byte POD (descriptive element)
+00527300	RELOCATION_MATCH	26v26	PASS	CThingDeadCreature::Alloc (new (false), size 0xF0)
+00527680	MATCH	25v25	PASS	std::_Rb_tree<...>::_M_empty_initialize (descriptive key/value types)
+00528200	RELOCATION_MATCH	52v52	PASS	CEnginePrimitivePrepareInfo copy ctor (memberwise; CCamera copy ctor 0x49D380)
+00529720	MATCH	14v14	PASS	CThingPhysical::IsSolidToThing (probable name; slot 46)
+0052ace0	RELOCATION_MATCH	26v26	PASS	CThingSwitch::Alloc (new (false), size 0xE8)
+0052cca0	RELOCATION_MATCH	70v70	PASS	NUISystem::CChangingStateComponent copy ctor (StatesToDo list rebuilt empty)
+0052efe0	MATCH	8v8	PASS	NUISystem::CComponent::GetType (catalog CSprite::vfunc_65)
+0052f180	MATCH	11v11	PASS	NUISystem::CComponent::IsBastardChild (catalog CSprite::vfunc_100)
+00534430	RELOCATION_MATCH	55v55	PASS	_Pow_int<float> (/Gr; VC7.1 <math.h> template verbatim)
+00545840	RELOCATION_MATCH	92v92	PASS	NUISystem::CSpellContainer::~CSpellContainer (catalog ~CZoomingComponent wrong)
+00546660	RELOCATION_MATCH	48v48	PASS	NUISystem::CZoomingComponent::~CZoomingComponent
+00546c20	RELOCATION_MATCH	69v69	PASS	NUISystem::CZoomingComponent scalar deleting destructor
+00548780	MATCH	12v12	PASS	NUISystem::CTextSlider::OnDeactivate (IgnoreEvent(0x19) on the CObserver base)

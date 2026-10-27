@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+004ad810	DIFFER	122v125	-	CThingSearchTools::GetAllThings<const CThing, vector<const CThing*>, CThingFilter_None> (proven); extra constant `xor al,al ; jne` after the InLimbo test + argument-slot homing
+004c7870	DIFFER	15v15	-	CThing slot 22 driver query (descriptive DriverQuery_004c7870); `xor al,al` placed before vs after the null test
+0051ea30	DIFFER	86v88	-	CThingManager::FillRenderListsWithAllEntities (probable); register allocation only (this vs vector base in ecx)

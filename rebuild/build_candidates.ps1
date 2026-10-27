@@ -346709,6 +346709,254 @@ $catalog = @(
         TestSource = '00/51/CThingSearchTools_GetAllLeafThings_005166b0_test.cpp'
         PassPattern = '005166b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004adaa0'
+        Module = 'std::vector'
+        Source = '00/4a/stdvector_clear_004adaa0.cpp'
+        TestSource = '00/4a/stdvector_clear_004adaa0_test.cpp'
+        PassPattern = '004adaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004adc40'
+        Module = 'CCountedPointer'
+        Source = '00/4a/CCountedPointer_DeleteData_004adc40.cpp'
+        TestSource = '00/4a/CCountedPointer_DeleteData_004adc40_test.cpp'
+        PassPattern = '004adc40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ae0d0'
+        Module = 'std'
+        Source = '00/4a/std_Destroy_004ae0d0.cpp'
+        TestSource = '00/4a/std_Destroy_004ae0d0_test.cpp'
+        PassPattern = '004ae0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004af000'
+        Module = 'CCodeSectionManager'
+        Source = '00/4a/CCodeSectionManager_LoadSectionLongName_004af000.cpp'
+        TestSource = '00/4a/CCodeSectionManager_LoadSectionLongName_004af000_test.cpp'
+        PassPattern = '004af000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b8ac0'
+        Module = 'std::list<CQuestManager::CObjective>'
+        Source = '00/4b/stdlistCQuestManagerCObjective_Mcreatenode_004b8ac0.cpp'
+        TestSource = '00/4b/stdlistCQuestManagerCObjective_Mcreatenode_004b8ac0_test.cpp'
+        PassPattern = '004b8ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c2c00'
+        Module = 'std'
+        Source = '00/4c/std_unguardedinsertionsortaux_004c2c00.cpp'
+        TestSource = '00/4c/std_unguardedinsertionsortaux_004c2c00_test.cpp'
+        PassPattern = '004c2c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c42b0'
+        Module = 'std'
+        Source = '00/4c/std_popheap_004c42b0.cpp'
+        TestSource = '00/4c/std_popheap_004c42b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '004c42b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7ae0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_GetPWorldSeed_004c7ae0.cpp'
+        TestSource = '00/4c/CThing_GetPWorldSeed_004c7ae0_test.cpp'
+        PassPattern = '004c7ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cd9c0'
+        Module = 'CConversationAttitude'
+        Source = '00/4c/CConversationAttitude_GetAnimGroupName_004cd9c0.cpp'
+        TestSource = '00/4c/CConversationAttitude_GetAnimGroupName_004cd9c0_test.cpp'
+        PassPattern = '004cd9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d51f6'
+        Module = 'CTCTavernJug'
+        Source = '00/4d/CTCTavernJug_OnInitialActivate_004d51f6.cpp'
+        TestSource = '00/4d/CTCTavernJug_OnInitialActivate_004d51f6_test.cpp'
+        PassPattern = '004d51f6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d5372'
+        Module = 'CTCOnHeroPush'
+        Source = '00/4d/CTCOnHeroPush_OnInitialActivate_004d5372.cpp'
+        TestSource = '00/4d/CTCOnHeroPush_OnInitialActivate_004d5372_test.cpp'
+        PassPattern = '004d5372_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d5476'
+        Module = 'NThingShot::CTCShotDefinitionThrow'
+        Source = '00/4d/NThingShotCTCShotDefinitionThrow_GetStatToModifyOnHit_004d5476.cpp'
+        TestSource = '00/4d/NThingShotCTCShotDefinitionThrow_GetStatToModifyOnHit_004d5476_test.cpp'
+        PassPattern = '004d5476_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d8b7c'
+        Module = 'CTCTavernTankard'
+        Source = '00/4d/CTCTavernTankard_OnInitialActivate_004d8b7c.cpp'
+        TestSource = '00/4d/CTCTavernTankard_OnInitialActivate_004d8b7c_test.cpp'
+        PassPattern = '004d8b7c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc170'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetMapWithIndex_004fc170.cpp'
+        TestSource = '00/4f/CWorldMap_GetMapWithIndex_004fc170_test.cpp'
+        PassPattern = '004fc170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050b550'
+        Module = 'std::allocator<unsigned short>'
+        Source = '00/50/stdallocatorunsignedshort_allocate_0050b550.cpp'
+        TestSource = '00/50/stdallocatorunsignedshort_allocate_0050b550_test.cpp'
+        PassPattern = '0050b550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00510020'
+        Module = '_global'
+        Source = '00/51/global_ReturnShort200510020_00510020.cpp'
+        TestSource = '00/51/global_ReturnShort200510020_00510020_test.cpp'
+        PassPattern = '00510020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00514210'
+        Module = 'std::set<unsigned long>'
+        Source = '00/51/stdsetunsignedlong_operator_00514210.cpp'
+        TestSource = '00/51/stdsetunsignedlong_operator_00514210_test.cpp'
+        PassPattern = '00514210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051b410'
+        Module = 'std'
+        Source = '00/51/std_Construct_0051b410.cpp'
+        TestSource = '00/51/std_Construct_0051b410_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0051b410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051ccd0'
+        Module = 'CCountedPointer'
+        Source = '00/51/CCountedPointer_DeleteData_0051ccd0.cpp'
+        TestSource = '00/51/CCountedPointer_DeleteData_0051ccd0_test.cpp'
+        PassPattern = '0051ccd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051e800'
+        Module = 'NThingManager::CEntityRuntimePersistence'
+        Source = '00/51/NThingManagerCEntityRuntimePersistence_GetLevelSaveStats_0051e800.cpp'
+        TestSource = '00/51/NThingManagerCEntityRuntimePersistence_GetLevelSaveStats_0051e800_test.cpp'
+        PassPattern = '0051e800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051ea90'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_SetUpdateAndRenderAllFlag_0051ea90.cpp'
+        TestSource = '00/51/CThingManager_SetUpdateAndRenderAllFlag_0051ea90_test.cpp'
+        PassPattern = '0051ea90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005269f0'
+        Module = 'std'
+        Source = '00/52/std_uninitializedfilln_005269f0.cpp'
+        TestSource = '00/52/std_uninitializedfilln_005269f0_test.cpp'
+        PassPattern = '005269f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00527300'
+        Module = 'CThingDeadCreature'
+        Source = '00/52/CThingDeadCreature_Alloc_00527300.cpp'
+        TestSource = '00/52/CThingDeadCreature_Alloc_00527300_test.cpp'
+        PassPattern = '00527300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00527680'
+        Module = 'std::_Rb_tree'
+        Source = '00/52/stdRbtree_Memptyinitialize_00527680.cpp'
+        TestSource = '00/52/stdRbtree_Memptyinitialize_00527680_test.cpp'
+        PassPattern = '00527680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528200'
+        Module = 'CEnginePrimitivePrepareInfo'
+        Source = '00/52/CEnginePrimitivePrepareInfo_CEnginePrimitivePrepareInfo_00528200.cpp'
+        TestSource = '00/52/CEnginePrimitivePrepareInfo_CEnginePrimitivePrepareInfo_00528200_test.cpp'
+        PassPattern = '00528200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00529720'
+        Module = 'CThingPhysical'
+        Source = '00/52/CThingPhysical_IsSolidToThing_00529720.cpp'
+        TestSource = '00/52/CThingPhysical_IsSolidToThing_00529720_test.cpp'
+        PassPattern = '00529720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ace0'
+        Module = 'CThingSwitch'
+        Source = '00/52/CThingSwitch_Alloc_0052ace0.cpp'
+        TestSource = '00/52/CThingSwitch_Alloc_0052ace0_test.cpp'
+        PassPattern = '0052ace0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052cca0'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_CChangingStateComponent_0052cca0.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_CChangingStateComponent_0052cca0_test.cpp'
+        PassPattern = '0052cca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052efe0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_GetType_0052efe0.cpp'
+        TestSource = '00/52/NUISystemCComponent_GetType_0052efe0_test.cpp'
+        PassPattern = '0052efe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052f180'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_IsBastardChild_0052f180.cpp'
+        TestSource = '00/52/NUISystemCComponent_IsBastardChild_0052f180_test.cpp'
+        PassPattern = '0052f180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00534430'
+        Module = '_global'
+        Source = '00/53/global_Powintfloat_00534430.cpp'
+        TestSource = '00/53/global_Powintfloat_00534430_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00534430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00545840'
+        Module = 'NUISystem::CSpellContainer'
+        Source = '00/54/NUISystemCSpellContainer_CSpellContainer_00545840.cpp'
+        TestSource = '00/54/NUISystemCSpellContainer_CSpellContainer_00545840_test.cpp'
+        PassPattern = '00545840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546660'
+        Module = 'NUISystem::CZoomingComponent'
+        Source = '00/54/NUISystemCZoomingComponent_CZoomingComponent_00546660.cpp'
+        TestSource = '00/54/NUISystemCZoomingComponent_CZoomingComponent_00546660_test.cpp'
+        PassPattern = '00546660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546c20'
+        Module = 'NUISystem::CZoomingComponent'
+        Source = '00/54/NUISystemCZoomingComponent_scalardeletingdestructor_00546c20.cpp'
+        TestSource = '00/54/NUISystemCZoomingComponent_scalardeletingdestructor_00546c20_test.cpp'
+        PassPattern = '00546c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548780'
+        Module = 'NUISystem::CTextSlider'
+        Source = '00/54/NUISystemCTextSlider_OnDeactivate_00548780.cpp'
+        TestSource = '00/54/NUISystemCTextSlider_OnDeactivate_00548780_test.cpp'
+        PassPattern = '00548780_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

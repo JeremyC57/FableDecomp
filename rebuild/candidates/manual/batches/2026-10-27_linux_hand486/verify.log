@@ -1,0 +1,120 @@
+addr       parity           behav  name
+004adaa0   RELOCATION_MATCH PASS   clear
+004adc40   RELOCATION_MATCH PASS   DeleteData
+004ae0d0   RELOCATION_MATCH PASS   _Destroy
+004af000   RELOCATION_MATCH PASS   LoadSectionLongName
+004b8ac0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b8ac0   RELOCATION_MATCH PASS   _M_create_node
+004c2c00   MATCH            PASS   __unguarded_insertion_sort_aux
+004c42b0   RELOCATION_MATCH PASS   pop_heap
+004c7ae0   RELOCATION_MATCH PASS   GetPWorldSeed
+004cd9c0   RELOCATION_MATCH PASS   GetAnimGroupName
+004d51f6   MATCH            PASS   OnInitialActivate
+004d5372   MATCH            PASS   OnInitialActivate
+004d5476   MATCH            PASS   GetStatToModifyOnHit
+004d8b7c   MATCH            PASS   OnInitialActivate
+004fc170   MATCH            PASS   GetMapWithIndex
+0050b550   RELOCATION_MATCH PASS   allocate
+00510020   MATCH            PASS   ReturnShort2_00510020
+00514210   RELOCATION_MATCH PASS   operator=
+0051b410   WARN SHARED_HEADER_AVAILABLE CRegion
+0051b410   RELOCATION_MATCH PASS   _Construct
+0051ccd0   RELOCATION_MATCH PASS   DeleteData
+0051e800   MATCH            PASS   GetLevelSaveStats
+0051ea90   RELOCATION_MATCH PASS   SetUpdateAndRenderAllFlag
+005269f0   MATCH            PASS   __uninitialized_fill_n
+00527300   WARN SHARED_HEADER_AVAILABLE CClass
+00527300   RELOCATION_MATCH PASS   Alloc
+00527680   MATCH            PASS   _M_empty_initialize
+00528200   RELOCATION_MATCH PASS   CEnginePrimitivePrepareInfo
+00529720   MATCH            PASS   IsSolidToThing
+0052ace0   WARN SHARED_HEADER_AVAILABLE CClass
+0052ace0   RELOCATION_MATCH PASS   Alloc
+0052cca0   WARN SHARED_HEADER_AVAILABLE CObserver
+0052cca0   RELOCATION_MATCH PASS   CChangingStateComponent
+0052efe0   MATCH            PASS   GetType
+0052f180   MATCH            PASS   IsBastardChild
+00534430   RELOCATION_MATCH PASS   _Pow_int<float>
+00545840   WARN SHARED_HEADER_AVAILABLE CObserver
+00545840   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCComponent@NUISystem@@@@@std@@YIXPAV?$CCountedPointer@VCComponent@NUISystem@@@@0ABU__false_type@0@@Z -> 00535420 labelled '_global::DestroyRange_CountedPointer_00535420'
+00545840   RELOCATION_MATCH PASS   ~CSpellContainer
+00546660   WARN SHARED_HEADER_AVAILABLE CObserver
+00546660   RELOCATION_MATCH PASS   ~CZoomingComponent
+00546c20   WARN SHARED_HEADER_AVAILABLE CObserver
+00546c20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00548780   WARN SHARED_HEADER_AVAILABLE CObserver
+00548780   MATCH            PASS   OnDeactivate
+
+WINS: 35
+  004adaa0 RELOCATION_MATCH std::vector::?clear@?$vector@VCTestQuest@@V?$allocator@VCTestQuest@@@std@@@std@@QAEXXZ
+  004adc40 RELOCATION_MATCH CCountedPointer::?DeleteData@?$CCountedPointer@VCMessageEventManager@@@@SIXPAX@Z
+  004ae0d0 RELOCATION_MATCH std::??$_Destroy@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0@Z
+  004af000 RELOCATION_MATCH CCodeSectionManager::?LoadSectionLongName@CCodeSectionManager@@QAEXVCCharString@@@Z
+  004b8ac0 RELOCATION_MATCH std::list<CQuestManager::CObjective>::?_M_create_node@?$list@VCObjective@CQuestManager@@
+  004c2c00 MATCH std::??$__unguarded_insertion_sort_aux@PAVCMeshInfo@NGraphicAppearance@@V12@VCSortPrimaryMeshesLast@@@std@@YIXPAVCMeshInfo@NGraphicAppearance@@00VCSortPrimaryMeshesLast@@@Z
+  004c42b0 RELOCATION_MATCH std::??$pop_heap@PAU?$pair@MVCCameraTag@CSubtitledMessage@@@std@@V?$CKeyPairCompareLess@MVCCameraTag@CSubtitledMessage@@@@@std@@YIXPAU?$pair@MVCCameraTag@CSubtitledMessage@@@0@0V?$CKeyPairCompareLess@MVCCameraTag@CSubtitledMessage@@@@@Z
+  004c7ae0 RELOCATION_MATCH CThing::?GetPWorldSeed@CThing@@IBEPAKXZ
+  004cd9c0 RELOCATION_MATCH CConversationAttitude::?GetAnimGroupName@CConversationAttitude@@SIABVCCharString@@W4EConversationAttitude@@@Z
+  004d51f6 MATCH CTCTavernJug::?OnInitialActivate@CTCTavernJug@@UAEXXZ
+  004d5372 MATCH CTCOnHeroPush::?OnInitialActivate@CTCOnHeroPush@@UAEXXZ
+  004d5476 MATCH NThingShot::CTCShotDefinitionThrow::?GetStatToModifyOnHit@CTCShotDefinitionThrow@NThingShot@@UAE_NAAW4EHeroExperienceStatCategory@@@Z
+  004d8b7c MATCH CTCTavernTankard::?OnInitialActivate@CTCTavernTankard@@UAEXXZ
+  004fc170 MATCH CWorldMap::?GetMapWithIndex@CWorldMap@@QBEABVCMapInfo@@J@Z
+  0050b550 RELOCATION_MATCH std::allocator<unsigned short>::?allocate@?$allocator@G@std@@QAEPAGIPBX@Z
+  00510020 MATCH _global::?ReturnShort2_00510020@@YAFXZ
+  00514210 RELOCATION_MATCH std::set<unsigned long>::??4?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAEAAV01@ABV01@@Z
+  0051b410 RELOCATION_MATCH std::??$_Construct@VCRegion@@V1@@std@@YIXPAVCRegion@@ABV1@@Z
+  0051ccd0 RELOCATION_MATCH CCountedPointer::?DeleteData@?$CCountedPointer@VCRegionConnectionGraph@@@@SIXPAX@Z
+  0051e800 MATCH NThingManager::CEntityRuntimePersistence::?GetLevelSaveStats@CEntityRuntimePersistence@NThingManager@@QBEXAAK00@Z
+  0051ea90 RELOCATION_MATCH CThingManager::?SetUpdateAndRenderAllFlag@CThingManager@@QAEX_N@Z
+  005269f0 MATCH std::??$__uninitialized_fill_n@PAUCUnprovenElement16_005269f0@@IU1@@std@@YIPAUCUnprovenElement16_005269f0@@PAU1@IABU1@ABU__false_type@0@@Z
+  00527300 RELOCATION_MATCH CThingDeadCreature::?Alloc@CThingDeadCreature@@SIPAVCClass@@XZ
+  00527680 MATCH std::_Rb_tree::?_M_empty_initialize@?$_Rb_tree@UCUnprovenKey_00527680@@UCUnprovenValue_00527680@@UCUnprovenKeyOfValue_00527680@@U?$less@UCUnprovenKey_00527680@@@std@@V?$allocator@UCUnprovenValue_00527680@@@5@@std@@AAEXXZ
+  00528200 RELOCATION_MATCH CEnginePrimitivePrepareInfo::??0CEnginePrimitivePrepareInfo@@QAE@ABV0@@Z
+  00529720 MATCH CThingPhysical::?IsSolidToThing@CThingPhysical@@UBE_NPBV1@@Z
+  0052ace0 RELOCATION_MATCH CThingSwitch::?Alloc@CThingSwitch@@SIPAVCClass@@XZ
+  0052cca0 RELOCATION_MATCH NUISystem::CChangingStateComponent::??0CChangingStateComponent@NUISystem@@QAE@ABV01@@Z
+  0052efe0 MATCH NUISystem::CComponent::?GetType@CComponent@NUISystem@@UBE?AW4EType@2@XZ
+  0052f180 MATCH NUISystem::CComponent::?IsBastardChild@CComponent@NUISystem@@UBE_NXZ
+  00534430 RELOCATION_MATCH _global::??$_Pow_int@M@@YIMMH@Z
+  00545840 RELOCATION_MATCH NUISystem::CSpellContainer::??1CSpellContainer@NUISystem@@UAE@XZ
+  00546660 RELOCATION_MATCH NUISystem::CZoomingComponent::??1CZoomingComponent@NUISystem@@UAE@XZ
+  00546c20 RELOCATION_MATCH NUISystem::CZoomingComponent::??_GCZoomingComponent@NUISystem@@UAEPAXI@Z
+  00548780 MATCH NUISystem::CTextSlider::?OnDeactivate@CTextSlider@NUISystem@@MAEXXZ
+
+LANDED 35 wins into src/compiled + tests + catalog + oracle
+  stdvector_clear_004adaa0
+  CCountedPointer_DeleteData_004adc40
+  std_Destroy_004ae0d0
+  CCodeSectionManager_LoadSectionLongName_004af000
+  stdlistCQuestManagerCObjective_Mcreatenode_004b8ac0
+  std_unguardedinsertionsortaux_004c2c00
+  std_popheap_004c42b0
+  CThing_GetPWorldSeed_004c7ae0
+  CConversationAttitude_GetAnimGroupName_004cd9c0
+  CTCTavernJug_OnInitialActivate_004d51f6
+  CTCOnHeroPush_OnInitialActivate_004d5372
+  NThingShotCTCShotDefinitionThrow_GetStatToModifyOnHit_004d5476
+  CTCTavernTankard_OnInitialActivate_004d8b7c
+  CWorldMap_GetMapWithIndex_004fc170
+  stdallocatorunsignedshort_allocate_0050b550
+  global_ReturnShort200510020_00510020
+  stdsetunsignedlong_operator_00514210
+  std_Construct_0051b410
+  CCountedPointer_DeleteData_0051ccd0
+  NThingManagerCEntityRuntimePersistence_GetLevelSaveStats_0051e800
+  CThingManager_SetUpdateAndRenderAllFlag_0051ea90
+  std_uninitializedfilln_005269f0
+  CThingDeadCreature_Alloc_00527300
+  stdRbtree_Memptyinitialize_00527680
+  CEnginePrimitivePrepareInfo_CEnginePrimitivePrepareInfo_00528200
+  CThingPhysical_IsSolidToThing_00529720
+  CThingSwitch_Alloc_0052ace0
+  NUISystemCChangingStateComponent_CChangingStateComponent_0052cca0
+  NUISystemCComponent_GetType_0052efe0
+  NUISystemCComponent_IsBastardChild_0052f180
+  global_Powintfloat_00534430
+  NUISystemCSpellContainer_CSpellContainer_00545840
+  NUISystemCZoomingComponent_CZoomingComponent_00546660
+  NUISystemCZoomingComponent_scalardeletingdestructor_00546c20
+  NUISystemCTextSlider_OnDeactivate_00548780
