@@ -33990,3 +33990,17 @@ __imp__GetModuleHandleW@4	0143fea4	00cb0d80
 ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z	009e3830	012243b0
 ?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A	013d2d2c	012243d0
 ?LOCAL_HEAP_CParticle@@3V?$CDynamicObjectHeap@$0JM@$0IDE@@@A	013d7e50	01224540
+??1C3DMeshObject@@UAE@XZ	004c3200	004bc670
+??$__uninitialized_copy@PAVCUnprovenElement_005269b0@@PAV1@@std@@YIPAVCUnprovenElement_005269b0@@PAV1@00ABU__false_type@0@@Z	005269b0	0052b030
+??$__uninitialized_fill_n@PAUCUnprovenElement16_005269f0@@IU1@@std@@YIPAUCUnprovenElement16_005269f0@@PAU1@IABU1@ABU__false_type@0@@Z	005269f0	0052b030
+??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@PAVCThing@@ABVCCharString@@_N@Z	00843f50	006299c0
+??$__unguarded_linear_insert@PAV?$CIntelligentPointer@VCThing@@@@V1@UCDoNotUseBinaryPredicate@?A0x6f383f1e@@@std@@YIXPAV?$CIntelligentPointer@VCThing@@@@V1@UCDoNotUseBinaryPredicate@?A0x6f383f1e@@@Z	00806910	00809650
+?resize@?$vector@DV?$allocator@D@std@@@std@@QAEXIABD@Z	004122d0	0090af80
+?_M_copy@?$_Rb_tree@UCUnprovenKey_00999e50@@UCUnprovenValue_00999e50@@UCUnprovenKeyOfValue_00999e50@@U?$less@UCUnprovenKey_00999e50@@@std@@V?$allocator@UCUnprovenValue_00999e50@@@5@@std@@AAEPAU?$_Rb_tree_node@UCUnprovenValue_00999e50@@@2@PAU32@0@Z	0099a140	0099a140
+??$remove_if@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@VCPred_HasGroupName@@@std@@YIPAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@0@PAU10@0VCPred_HasGroupName@@@Z	009e7380	009e5360
+?_M_lower_bound@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	004b9d00	009e5360
+?_M_upper_bound@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	004b9d50	009e5360
+?erase@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QAEXU?$_Rb_tree_iterator@VCCharString@@U?$_Nonconst_traits@VCCharString@@@std@@@2@0@Z	004b9c10	009e5360
+??$__destroy_aux@PAVCLipSyncPhonemeSample@@@std@@YIXPAVCLipSyncPhonemeSample@@0ABU__false_type@0@@Z	00a4a2a0	00a4ac60
+??$__uninitialized_copy@PAVCLipSyncPhonemeSample@@PAV1@@std@@YIPAVCLipSyncPhonemeSample@@PAV1@00ABU__false_type@0@@Z	00a49bc0	00a4ac60
+??$__uninitialized_fill_n@PAVCLipSyncPhonemeSample@@IV1@@std@@YIPAVCLipSyncPhonemeSample@@PAV1@IABV1@ABU__false_type@0@@Z	00a49c10	00a4ac60

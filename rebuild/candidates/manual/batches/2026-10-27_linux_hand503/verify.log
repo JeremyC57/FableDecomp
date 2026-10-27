@@ -1,0 +1,107 @@
+addr       parity           behav  name
+004bc670   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+004bc670   WARN SHARED_HEADER_AVAILABLE CWorld
+004bc670   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+004bc670   WARN SHARED_HEADER_AVAILABLE CTCBase
+004bc670   WARN RELOC_NAME: ?GetMeshInfo@CMeshDataBank@@QAEPBVC3DMeshInfo@@J@Z -> 00a24270 labelled 'CMeshDataBank::PeekMesh'
+004bc670   RELOCATION_MATCH PASS   GetRenderMeshObject
+0052b030   RELOCATION_MATCH PASS   _M_insert_overflow
+0053b717   RELOCATION_MATCH PASS   CList
+006299c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006299c0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+006299c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+006299c0   WARN SHARED_HEADER_AVAILABLE CWorld
+006299c0   WARN RELOC_CONFLICT: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 here, 00487dd0 in landed 00896ee0
+006299c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006299c0   RELOCATION_MATCH PASS   EAExpressionWait
+00634890   RELOCATION_MATCH PASS   InitModeClickPastText
+00634f60   RELOCATION_MATCH PASS   InitModeNavigateInventoryMapScreen
+006360a0   WARN RELOC_CONFLICT: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 here, 00487dd0 in landed 00896ee0
+006360a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006360a0   RELOCATION_MATCH PASS   InitModeChargeUpWillSpell
+006369b0   WARN RELOC_CONFLICT: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 here, 00487dd0 in landed 00896ee0
+006369b0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006369b0   RELOCATION_MATCH PASS   UninitModeLiveGUI
+007a75f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007a75f0   WARN RELOC_NAME: ?EndSpecialMoveMode@CPlayer@@QAEXXZ -> 00487150 labelled 'NScript::CQ_HangingTreeGoodScript::CHTG_Executioner::OnPredicateFail'
+007a75f0   RELOCATION_MATCH PASS   FinalCleanup
+007b74a0   MATCH            PASS   CEnginePrimitiveSprite
+007c4320   RELOCATION_MATCH PASS   FinalCleanup
+007c90a0   RELOCATION_MATCH PASS   FinalCleanup
+007ccd70   RELOCATION_MATCH PASS   FinalCleanup
+007f2120   RELOCATION_MATCH PASS   GetLength
+00809650   WARN SHARED_HEADER_AVAILABLE CWorld
+00809650   RELOCATION_MATCH PASS   __linear_insert
+00836c50   WARN SHARED_HEADER_AVAILABLE CThingGameObject
+00836c50   RELOCATION_MATCH PASS   ConstructFromParams
+008e97b0   RELOCATION_MATCH PASS   LockStrafingCombinationAnimsToMainAnim
+0090af80   RELOCATION_MATCH PASS   GetUDPPacket
+00926980   RELOCATION_MATCH PASS   OrderByHeight
+00938cd0   RELOCATION_MATCH PASS   operator()
+0099a140   RELOCATION_MATCH PASS   _M_copy
+009e5360   WARN RELOC_NAME: ?_M_lower_bound@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z -> 004b9d00 labelled 'std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>::_Lbound'
+009e5360   RELOCATION_MATCH PASS   RemoveSymbolsOfGroupType
+009e6990   RELOCATION_MATCH PASS   remove_copy_if
+009ecb70   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+009ecb70   RELOCATION_MATCH PASS   ConsoleRunScript
+00a49e00   RELOCATION_MATCH PASS   __copy
+00a4ac60   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCLipSyncPhonemeSample@@PAV1@@std@@YIPAVCLipSyncPhonemeSample@@PAV1@00ABU__false_type@0@@Z -> 00a49bc0 labelled '_global::UninitCopy_PairCharStringLongCountedPointer_00a49bc0'
+00a4ac60   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCLipSyncPhonemeSample@@IV1@@std@@YIPAVCLipSyncPhonemeSample@@PAV1@IABV1@ABU__false_type@0@@Z -> 00a49c10 labelled '_global::UninitFillN_SPairCharStringLongCountedPointer_00a49c10'
+00a4ac60   WARN RELOC_NAME: ??$__destroy_aux@PAVCLipSyncPhonemeSample@@@std@@YIXPAVCLipSyncPhonemeSample@@0ABU__false_type@0@@Z -> 00a4a2a0 labelled 'std::_Destroy_range'
+00a4ac60   RELOCATION_MATCH PASS   _M_insert_overflow
+
+WINS: 26
+  004bc670 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?GetRenderMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DMeshObject@@M@Z
+  0052b030 RELOCATION_MATCH std::vector::?_M_insert_overflow@
+  0053b717 RELOCATION_MATCH NUISystem::CList::??0CList@NUISystem@@QAE@ABV01@@Z
+  006299c0 RELOCATION_MATCH CWorld::?EAExpressionWait@CWorld@@QAEXPBVCGameEvent@@@Z
+  00634890 RELOCATION_MATCH CPlayer::?InitModeClickPastText@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  00634f60 RELOCATION_MATCH CPlayer::?InitModeNavigateInventoryMapScreen@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  006360a0 RELOCATION_MATCH CPlayer::?InitModeChargeUpWillSpell@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  006369b0 RELOCATION_MATCH CPlayer::?UninitModeLiveGUI@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  007a75f0 RELOCATION_MATCH CTCBattleCharge::?FinalCleanup@CTCBattleCharge@@AAEXXZ
+  007b74a0 MATCH CEnginePrimitiveSprite::??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMABVC2DVector@@W4EEnginePrimitiveBlendMode@@EEEEMW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z
+  007c4320 RELOCATION_MATCH CTCHealLife::?FinalCleanup@CTCHealLife@@AAEXXZ
+  007c90a0 RELOCATION_MATCH CTCFireballSpell::?FinalCleanup@CTCFireballSpell@@AAEXXZ
+  007ccd70 RELOCATION_MATCH CTCMultiStrike::?FinalCleanup@CTCMultiStrike@@AAEXXZ
+  007f2120 RELOCATION_MATCH CMockSpline::?GetLength@CMockSpline@@QBEMXZ
+  00809650 RELOCATION_MATCH std::??$__linear_insert@
+  00836c50 RELOCATION_MATCH CThingTrackNode::?ConstructFromParams@CThingTrackNode@@IAE_NJABVC3DVector@@VCCharString@@@Z
+  008e97b0 RELOCATION_MATCH NCreatureMode::CModeStrafe::?LockStrafingCombinationAnimsToMainAnim@CModeStrafe@NCreatureMode@@AAEXXZ
+  0090af80 RELOCATION_MATCH LHNetworkLib::LSocketServer::?GetUDPPacket@LSocketServer@LHNetworkLib@@QAE_N
+  00926980 RELOCATION_MATCH _global::?OrderByHeight@@YI_NV?$CIntelligentPointer@$$CBVCThing@@@@0@Z
+  00938cd0 RELOCATION_MATCH CIsFreeSeat::??RCIsFreeSeat@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z
+  0099a140 RELOCATION_MATCH std::_Rb_tree::?_M_copy@?$_Rb_tree@UCUnprovenKey_00999e50@@
+  009e5360 RELOCATION_MATCH CSymbolMap::?RemoveSymbolsOfGroupType@CSymbolMap@@QAEXABVCCharString@@@Z
+  009e6990 RELOCATION_MATCH std::??$remove_copy_if@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@PAU12@VCPred_HasGroupName@@@std@@YIPAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@0@PAU10@00VCPred_HasGroupName@@@Z
+  009ecb70 RELOCATION_MATCH CConsole::?ConsoleRunScript@CConsole@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  00a49e00 RELOCATION_MATCH std::??$__copy@PAVCLipSyncPhonemeSample@@
+  00a4ac60 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCLipSyncPhonemeSample@@
+
+LANDED 26 wins into src/compiled + tests + catalog + oracle
+  NGraphicAppearanceCTCGraphicAppearance_GetRenderMeshObject_004bc670
+  stdvector_Minsertoverflow_0052b030
+  NUISystemCList_CList_0053b717
+  CWorld_EAExpressionWait_006299c0
+  CPlayer_InitModeClickPastText_00634890
+  CPlayer_InitModeNavigateInventoryMapScreen_00634f60
+  CPlayer_InitModeChargeUpWillSpell_006360a0
+  CPlayer_UninitModeLiveGUI_006369b0
+  CTCBattleCharge_FinalCleanup_007a75f0
+  CEnginePrimitiveSprite_CEnginePrimitiveSprite_007b74a0
+  CTCHealLife_FinalCleanup_007c4320
+  CTCFireballSpell_FinalCleanup_007c90a0
+  CTCMultiStrike_FinalCleanup_007ccd70
+  CMockSpline_GetLength_007f2120
+  std_linearinsert_00809650
+  CThingTrackNode_ConstructFromParams_00836c50
+  NCreatureModeCModeStrafe_LockStrafingCombinationAnimsToMainAnim_008e97b0
+  LHNetworkLibLSocketServer_GetUDPPacket_0090af80
+  global_OrderByHeight_00926980
+  CIsFreeSeat_operator_00938cd0
+  stdRbtree_Mcopy_0099a140
+  CSymbolMap_RemoveSymbolsOfGroupType_009e5360
+  std_removecopyif_009e6990
+  CConsole_ConsoleRunScript_009ecb70
+  std_copy_00a49e00
+  stdvector_Minsertoverflow_00a4ac60

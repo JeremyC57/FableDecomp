@@ -1,0 +1,31 @@
+address	status	bytes	test	note
+004bc670	RELOCATION_MATCH	214	PASS	NGraphicAppearance::CTCGraphicAppearance::GetRenderMeshObject(C3DMeshObject&, float) const (proven, PDB overload); grade 2
+0052b030	RELOCATION_MATCH	207	PASS	std::vector<CUnprovenElement_005269b0>::_M_insert_overflow (probable; element descriptive); grade 1
+0053b717	RELOCATION_MATCH	217	PASS	NUISystem::CList::CList(const CList&) (proven, PDB); landed CList(long) model; grade 1
+006299c0	RELOCATION_MATCH	138	PASS	CWorld::EAExpressionWait (proven); named script-name local; grade 2
+00634890	RELOCATION_MATCH	131	PASS	CPlayer::InitModeClickPastText (proven, mode 14); character ref declared after the adds; grade 2
+00634f60	RELOCATION_MATCH	156	PASS	CPlayer::InitModeNavigateInventoryMapScreen (proven, mode 8); grade 1
+006360a0	RELOCATION_MATCH	245	PASS	CPlayer::InitModeChargeUpWillSpell (proven, mode 35); grade 1
+006369b0	RELOCATION_MATCH	194	PASS	CPlayer::UninitModeLiveGUI (proven, mode 43); grade 1
+006bb860	DIFFER	181	-	CGameTimeManager::ConsoleSetTimeOfDay (proven); x87 residue under /Op: ours forwards [esp], retail reloads Time [ecx+8]; 4 grades
+007a75f0	RELOCATION_MATCH	243	PASS	CTCBattleCharge::FinalCleanup (proven); HasTC returns the mask; grade 2
+007b74a0	MATCH	158	PASS	CEnginePrimitiveSprite::CEnginePrimitiveSprite(..., const C2DVector& offset, ...) (proven, PDB 16-word overload); grade 1
+007c4320	RELOCATION_MATCH	226	PASS	CTCHealLife::FinalCleanup (proven); begin()-based operator[]; grade 2
+007c90a0	RELOCATION_MATCH	185	PASS	CTCFireballSpell::FinalCleanup (proven); grade 1
+007ccd70	RELOCATION_MATCH	137	PASS	CTCMultiStrike::FinalCleanup (proven); grade 1
+007f2120	RELOCATION_MATCH	159	PASS	CMockSpline::GetLength() const (proven, PDB); i != size() loop + memberwise C3DVector copy; grade 2
+00809650	RELOCATION_MATCH	172	PASS	std::__linear_insert<CIntelligentPointer<CThing>*, ..., CDoNotUseBinaryPredicate> (proven, bound); tag user ctor; grade 2
+00836c50	RELOCATION_MATCH	168	PASS	CThingTrackNode::ConstructFromParams(long, const C3DVector&, CCharString) (proven, PDB); scoped named "" local + positive branch; grade 3
+008e97b0	RELOCATION_MATCH	149	PASS	NCreatureMode::CModeStrafe::LockStrafingCombinationAnimsToMainAnim (probable); grade 1
+0090af80	RELOCATION_MATCH	181	PASS	LHNetworkLib::LSocketServer::GetUDPPacket (proven, PDB); front node kept as an iterator; grade 2
+00917e30	DIFFER	134	-	CAIStateGroup_Clean::GetBench (proven); frame: ours sub esp,8 vs retail one push ecx slot; 4 grades
+00926980	RELOCATION_MATCH	144	PASS	OrderByHeight (proven, PDB: only fn of that type); one && chain, a.Z < b.Z; grade 3
+00938cd0	RELOCATION_MATCH	145	PASS	CIsFreeSeat::operator() (proven, bound); grade 1
+0099a140	RELOCATION_MATCH	169	PASS	std::_Rb_tree<CUnprovenKey_00999e50,...>::_M_copy (probable; 1-byte value); landed set<long> _M_copy model; grade 1
+009e5360	RELOCATION_MATCH	187	PASS	CSymbolMap::RemoveSymbolsOfGroupType (proven); same-TU noinline __copy; grade 2
+009e6990	RELOCATION_MATCH	161	PASS	std::remove_copy_if<pair<CCharString,CSymbolInfo>*,...,CPred_HasGroupName> (proven); same-TU noinline Compare; grade 3
+009ecb70	RELOCATION_MATCH	255	PASS	CConsole::ConsoleRunScript (proven, registered handler); named ".ini" local in a block; grade 2
+00a0f6ea	SKIP	220	-	not a function entry: a block of 0x00A0F4B0 (deque insert) reached only by the jcc at 0x00A0F5BC; uses esi/edi/ebx/ebp unset
+00a0f98b	SKIP	219	-	not a function entry: a block of the same deque-insert body reached only by the jcc at 0x00A0F85F
+00a49e00	RELOCATION_MATCH	146	PASS	std::__copy<CLipSyncPhonemeSample*, CLipSyncPhonemeSample*, int> (probable); /Gr; counted-pointer operator= reads source into locals; grade 2
+00a4ac60	RELOCATION_MATCH	247	PASS	std::vector<CLipSyncPhonemeSample>::_M_insert_overflow (proven, bound); /Gr; grade 1

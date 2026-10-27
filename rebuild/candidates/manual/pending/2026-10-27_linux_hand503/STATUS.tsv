@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+006bb860	DIFFER	181	-	CGameTimeManager::ConsoleSetTimeOfDay (proven); x87 residue under /Op: ours forwards [esp], retail reloads Time [ecx+8]; 4 grades
+00917e30	DIFFER	134	-	CAIStateGroup_Clean::GetBench (proven); frame: ours sub esp,8 vs retail one push ecx slot; 4 grades
