@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+01223f00	DIFFER	71v88	n/a	`anonymous namespace'::$E_g_StreamingFontCacheBufferData; grades 4; name probable; VC7.1 RTM folds the static record into .data, no $E emitted
+01223f60	DIFFER	71v93	n/a	`anonymous namespace'::$E_g_StreamingFontCacheBufferData2; grades 4; name probable; VC7.1 RTM folds the static record into .data, no $E emitted

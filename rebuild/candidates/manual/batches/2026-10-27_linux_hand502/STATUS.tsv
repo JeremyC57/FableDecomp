@@ -1,0 +1,34 @@
+address	status	bytes	test	note
+00ec5420	MATCH	22v22	PASS	NScript::CV_SickChildScript::Init; grades 1; name proven
+00ecb050	MATCH	39v39	PASS	NScript::CV_SickChildScript::CIngredientOwner::Init; grades 1; name proven
+00ecd380	MATCH	9v9	PASS	NScript::CV_SickChildScript::CWomanToAttract::Init; grades 1; name proven
+00edae20	MATCH	72v72	PASS	NScript::CV_TempleOfLightScript::Init; grades 1; name proven
+00ee4c60	RELOCATION_MATCH	86v86	PASS	NScript::CV_TourGuideScript::CTourGuideGuide::Init; grades 1; name proven
+00ee73f0	MATCH	24v24	PASS	NScript::CV_TrophyDealerScript::CTrophyDealerInCave::Init; grades 1; name proven
+00ee74e0	MATCH	63v63	PASS	NScript::CV_TrophyDealerScript::CDemonDoorFace::Init; grades 1; name proven
+00eecf20	RELOCATION_MATCH	69v69	PASS	NScript::CGlobal_ToggleTimeDisplayScript::Main; grades 1; name proven
+00eed0e0	RELOCATION_MATCH	127v127	PASS	NScript::CalextestScript::Main; grades 1; name proven
+00ef37f0	MATCH	34v34	PASS	NScript::CPersonalScript_EmptyScript::CTestPos::Init; grades 1; name proven
+00ef5c40	RELOCATION_MATCH	100v100	PASS	NScript::CPredicate_And::Clone; grades 2; name proven
+00ef70b0	RELOCATION_MATCH	67v67	PASS	NScript::CPredicate_And::Clone; grades 2; name proven
+00ef7100	RELOCATION_MATCH	93v93	PASS	NScript::CPredicate_And::Clone; grades 2; name proven
+00ef7160	RELOCATION_MATCH	119v119	PASS	NScript::CPredicate_And::Clone; grades 2; name proven
+00efa160	RELOCATION_MATCH	115v115	PASS	NScript::Cguy_scriptScript::Chenchmen::Init; grades 1; name proven
+00f03850	MATCH	29v29	PASS	NScript::CQ_AmbushTradersScript::CAT_BanditAlly::OnPredicateFail; grades 1; name proven
+00f04480	RELOCATION_MATCH	102v102	PASS	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::OnPredicateFail; grades 1; name proven
+00f1b1b0	RELOCATION_MATCH	80v80	PASS	NScript::CQ_ArenaScript::CSUMMONED_CREATURE::OnPredicateFail; grades 1; name proven
+00f261f0	RELOCATION_MATCH	86v86	PASS	CArenaWaveDef::Transfer; grades 1; name proven
+00f27100	RELOCATION_MATCH	114v114	PASS	CHeroSoulsCreatureDef::Transfer; grades 1; name proven
+00f29f60	SKIP	-	n/a	two functions: a 5-byte `jmp 0x00F29F70` thunk, int3 padding, then a second body (copy-assign calling CParentDefClassBase::operator= 0x00431ED0); grades 0
+00f35da0	RELOCATION_MATCH	90v90	PASS	NFractal::CFractal::NewFractalData; grades 2; name proven
+01223ec0	RELOCATION_MATCH	22v22	PASS	CCharString::$E_NullString; grades 1; name proven
+01223f00	DIFFER	71v88	n/a	`anonymous namespace'::$E_g_StreamingFontCacheBufferData; grades 4; name probable; VC7.1 RTM folds the static record into .data, no $E emitted
+01223f60	DIFFER	71v93	n/a	`anonymous namespace'::$E_g_StreamingFontCacheBufferData2; grades 4; name probable; VC7.1 RTM folds the static record into .data, no $E emitted
+01223fc0	RELOCATION_MATCH	39v39	PASS	NStreamingFontBankGlobals::$E_g_PendingLoadedGlyphs; grades 1; name proven
+01224100	RELOCATION_MATCH	49v49	PASS	NProfileTimer::$E_LogFile; grades 1; name proven
+01224340	RELOCATION_MATCH	112v112	PASS	CMatrix4x4::$E_Identity; grades 3; name proven
+012243b0	RELOCATION_MATCH	13v13	PASS	_global::$E_DefaultUncompressedPFormat; grades 1; name proven
+012243d0	RELOCATION_MATCH	76v76	PASS	CNavQuadTree::$E_BlockedNode; grades 1; name proven
+01224540	RELOCATION_MATCH	73v73	PASS	_global::$E_LOCAL_HEAP_CParticle; grades 2; name proven
+01224c20	RELOCATION_MATCH	15v15	PASS	_global::$E_CpuDetect_01224c20; grades 1; name descriptive
+01224ca5	RELOCATION_MATCH	29v29	PASS	_global::$E_GlobalConsoleCutsceneName; grades 1; name proven

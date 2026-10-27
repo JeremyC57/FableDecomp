@@ -33983,3 +33983,10 @@ __imp__GetModuleHandleW@4	0143fea4	00cb0d80
 ??$Transfer@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@CPersistContext@@QAEXPBDAAW4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@ABW4123@@Z	00e38dd0	00e38d80
 ?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@@Z	00cd3152	00eae5a0
 ?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z	008ad5f0	00eae820
+??$TransferVectorOfSubComponents@VCArenaCreatureDef@@@CPersistContext@@QAEXPBDAAV?$vector@VCArenaCreatureDef@@V?$allocator@VCArenaCreatureDef@@@std@@@std@@@Z	00f26250	00f261f0
+?LogFile@NProfileTimer@@3VCDiskFileWin32@@A	013ca878	01224100
+?Identity@CMatrix4x4@@2V1@A	013d2890	01224340
+?DefaultUncompressedPFormat@@3VCPixelFormat@@A	013d28e4	012243b0
+?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z	009e3830	012243b0
+?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A	013d2d2c	012243d0
+?LOCAL_HEAP_CParticle@@3V?$CDynamicObjectHeap@$0JM@$0IDE@@@A	013d7e50	01224540

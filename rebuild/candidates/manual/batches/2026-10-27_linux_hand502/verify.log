@@ -1,0 +1,115 @@
+addr       parity           behav  name
+00ec5420   MATCH            PASS   Init
+00ecb050   MATCH            PASS   Init
+00ecd380   MATCH            PASS   Init
+00edae20   MATCH            PASS   Init
+00ee4c60   RELOCATION_MATCH PASS   Init
+00ee73f0   MATCH            PASS   Init
+00ee74e0   MATCH            PASS   Init
+00eecf20   RELOCATION_MATCH PASS   Main
+00eed0e0   RELOCATION_MATCH PASS   Main
+00ef37f0   MATCH            PASS   Init
+00ef5c40   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ef5c40   RELOCATION_MATCH PASS   Clone
+00ef70b0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ef70b0   RELOCATION_MATCH PASS   Clone
+00ef7100   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ef7100   RELOCATION_MATCH PASS   Clone
+00ef7160   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ef7160   RELOCATION_MATCH PASS   Clone
+00efa160   RELOCATION_MATCH PASS   Init
+00f03850   MATCH            PASS   OnPredicateFail
+00f04480   RELOCATION_MATCH PASS   OnPredicateFail
+00f1b1b0   RELOCATION_MATCH PASS   OnPredicateFail
+00f261f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00f261f0   RELOCATION_MATCH PASS   Transfer
+00f27100   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00f27100   RELOCATION_MATCH PASS   Transfer
+00f35da0   RELOCATION_MATCH PASS   NewFractalData
+01223ec0   WARN RELOC_CONFLICT: _$E2 -> 0122a5e0 here, 0122a940 in landed 009f0240
+01223ec0   WARN RELOC_NAME: _$E2 -> 0122a5e0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+01223ec0   RELOCATION_MATCH PASS   $E_NullString
+01223fc0   WARN RELOC_CONFLICT: _$E2 -> 0122a610 here, 0122a940 in landed 009f0240
+01223fc0   WARN RELOC_NAME: _$E2 -> 0122a610 labelled 'NStreamingFontBankGlobals::DestroyPendingLoadedGlyphs'
+01223fc0   RELOCATION_MATCH PASS   $E_g_PendingLoadedGlyphs
+01224100   WARN RELOC_CONFLICT: _$E2 -> 0122a790 here, 0122a940 in landed 009f0240
+01224100   RELOCATION_MATCH PASS   $E_LogFile
+01224340   RELOCATION_MATCH PASS   $E_Identity
+012243b0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+012243b0   RELOCATION_MATCH PASS   $E_DefaultUncompressedPFormat
+012243d0   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+012243d0   WARN RELOC_CONFLICT: _$E2 -> 0122aad0 here, 0122a940 in landed 009f0240
+012243d0   WARN RELOC_NAME: _$E2 -> 0122aad0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+012243d0   RELOCATION_MATCH PASS   $E_BlockedNode
+01224540   WARN RELOC_CONFLICT: _$E2 -> 0122ac90 here, 0122a940 in landed 009f0240
+01224540   WARN RELOC_NAME: _$E2 -> 0122ac90 labelled 'CTCInventoryItem::ClearCachedDefs'
+01224540   RELOCATION_MATCH PASS   $E_LOCAL_HEAP_CParticle
+01224c20   WARN RELOC_NAME: ?DetectCpu@@YAXXZ -> 00c52e40 labelled 'InitCPUCapabilities'
+01224c20   RELOCATION_MATCH PASS   $E_CpuDetect_01224c20
+01224ca5   WARN RELOC_CONFLICT: _$E2 -> 0122ae74 here, 0122a940 in landed 009f0240
+01224ca5   WARN RELOC_NAME: _$E2 -> 0122ae74 labelled '_global::AtexitDtor_CCharString_at_0143e91c_0122ae74'
+01224ca5   RELOCATION_MATCH PASS   $E_GlobalConsoleCutsceneName
+
+WINS: 30
+  00ec5420 MATCH NScript::CV_SickChildScript::?Init@CV_SickChildScript@NScript@@UAEXXZ
+  00ecb050 MATCH NScript::CV_SickChildScript::CIngredientOwner::?Init@CIngredientOwner@CV_SickChildScript@NScript@@EAEXXZ
+  00ecd380 MATCH NScript::CV_SickChildScript::CWomanToAttract::?Init@CWomanToAttract@CV_SickChildScript@NScript@@EAEXXZ
+  00edae20 MATCH NScript::CV_TempleOfLightScript::?Init@CV_TempleOfLightScript@NScript@@UAEXXZ
+  00ee4c60 RELOCATION_MATCH NScript::CV_TourGuideScript::CTourGuideGuide::?Init@CTourGuideGuide@CV_TourGuideScript@NScript@@EAEXXZ
+  00ee73f0 MATCH NScript::CV_TrophyDealerScript::CTrophyDealerInCave::?Init@CTrophyDealerInCave@CV_TrophyDealerScript@NScript@@EAEXXZ
+  00ee74e0 MATCH NScript::CV_TrophyDealerScript::CDemonDoorFace::?Init@CDemonDoorFace@CV_TrophyDealerScript@NScript@@EAEXXZ
+  00eecf20 RELOCATION_MATCH NScript::CGlobal_ToggleTimeDisplayScript::?Main@CGlobal_ToggleTimeDisplayScript@NScript@@UAEXXZ
+  00eed0e0 RELOCATION_MATCH NScript::CalextestScript::?Main@CalextestScript@NScript@@UAEXXZ
+  00ef37f0 MATCH NScript::CPersonalScript_EmptyScript::CTestPos::?Init@CTestPos@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00ef5c40 RELOCATION_MATCH NScript::CPredicate_And::?Clone@?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@UBEPAVCPredicateBase@2@XZ
+  00ef70b0 RELOCATION_MATCH NScript::CPredicate_And::?Clone@?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@UBEPAVCPredicateBase@2@XZ
+  00ef7100 RELOCATION_MATCH NScript::CPredicate_And::?Clone@?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@UBEPAVCPredicateBase@2@XZ
+  00ef7160 RELOCATION_MATCH NScript::CPredicate_And::?Clone@?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@UBEPAVCPredicateBase@2@XZ
+  00efa160 RELOCATION_MATCH NScript::Cguy_scriptScript::Chenchmen::?Init@Chenchmen@Cguy_scriptScript@NScript@@EAEXXZ
+  00f03850 MATCH NScript::CQ_AmbushTradersScript::CAT_BanditAlly::?OnPredicateFail@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00f04480 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::?OnPredicateFail@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00f1b1b0 RELOCATION_MATCH NScript::CQ_ArenaScript::CSUMMONED_CREATURE::?OnPredicateFail@CSUMMONED_CREATURE@CQ_ArenaScript@NScript@@EAEXXZ
+  00f261f0 RELOCATION_MATCH CArenaWaveDef::?Transfer@CArenaWaveDef@@UAEXAAVCPersistContext@@@Z
+  00f27100 RELOCATION_MATCH CHeroSoulsCreatureDef::?Transfer@CHeroSoulsCreatureDef@@UAEXAAVCPersistContext@@@Z
+  00f35da0 RELOCATION_MATCH NFractal::CFractal::?NewFractalData@CFractal@NFractal@@QAEXNNN@Z
+  01223ec0 RELOCATION_MATCH CCharString::_$E1
+  01223fc0 RELOCATION_MATCH NStreamingFontBankGlobals::_$E1
+  01224100 RELOCATION_MATCH NProfileTimer::_$E1
+  01224340 RELOCATION_MATCH CMatrix4x4::_$E1
+  012243b0 RELOCATION_MATCH _global::_$E1
+  012243d0 RELOCATION_MATCH CNavQuadTree::_$E1
+  01224540 RELOCATION_MATCH _global::_$E1
+  01224c20 RELOCATION_MATCH _global::_$E1
+  01224ca5 RELOCATION_MATCH _global::_$E1
+
+LANDED 30 wins into src/compiled + tests + catalog + oracle
+  NScriptCVSickChildScript_Init_00ec5420
+  NScriptCVSickChildScriptCIngredientOwner_Init_00ecb050
+  NScriptCVSickChildScriptCWomanToAttract_Init_00ecd380
+  NScriptCVTempleOfLightScript_Init_00edae20
+  NScriptCVTourGuideScriptCTourGuideGuide_Init_00ee4c60
+  NScriptCVTrophyDealerScriptCTrophyDealerInCave_Init_00ee73f0
+  NScriptCVTrophyDealerScriptCDemonDoorFace_Init_00ee74e0
+  NScriptCGlobalToggleTimeDisplayScript_Main_00eecf20
+  NScriptCalextestScript_Main_00eed0e0
+  NScriptCPersonalScriptEmptyScriptCTestPos_Init_00ef37f0
+  NScriptCPredicateAnd_Clone_00ef5c40
+  NScriptCPredicateAnd_Clone_00ef70b0
+  NScriptCPredicateAnd_Clone_00ef7100
+  NScriptCPredicateAnd_Clone_00ef7160
+  NScriptCguyscriptScriptChenchmen_Init_00efa160
+  NScriptCQAmbushTradersScriptCATBanditAlly_OnPredicateFail_00f03850
+  NScriptCQAmbushTradersScriptCATConvoySpy_OnPredicateFail_00f04480
+  NScriptCQArenaScriptCSUMMONEDCREATURE_OnPredicateFail_00f1b1b0
+  CArenaWaveDef_Transfer_00f261f0
+  CHeroSoulsCreatureDef_Transfer_00f27100
+  NFractalCFractal_NewFractalData_00f35da0
+  CCharString_ENullString_01223ec0
+  NStreamingFontBankGlobals_EgPendingLoadedGlyphs_01223fc0
+  NProfileTimer_ELogFile_01224100
+  CMatrix4x4_EIdentity_01224340
+  global_EDefaultUncompressedPFormat_012243b0
+  CNavQuadTree_EBlockedNode_012243d0
+  global_ELOCALHEAPCParticle_01224540
+  global_ECpuDetect01224c20_01224c20
+  global_EGlobalConsoleCutsceneName_01224ca5
