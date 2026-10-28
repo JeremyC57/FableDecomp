@@ -779,3 +779,5 @@ Chunk 532 (agent532, re-queue 520-637 bytes; batch 2026-10-27_linux_hand532): 3 
 Chunk 533 (agent533, re-queue 514-1022 bytes; batch 2026-10-27_linux_hand533): 4 of 10 landed (3 RELOCATION_MATCH + 0x00A22590 CQuaternion::SetSlerp retail_asm), 6 parked. 19 NAME_FIXES deferred (queue now 466); open: the STLport _Rb_tree template-argument count across landed _M_erase / _M_insert leaves.
 
 Chunk 534 (agent534, last re-queue chunk, 527-920 bytes; batch 2026-10-27_linux_hand534): 4 of 12 landed (RELOCATION_MATCH), 5 parked, 3 skipped (0x00C400D0 over-spans into its jump table). The chunk_history re-queue (520-534) is complete. 34 NAME_FIXES deferred (queue now 500). Next (owner, 2026-10-28): retry parked rows that carry a written next step.
+
+Parked-row retry (owner choice, 2026-10-28): of 1,067 parked / held rows outside ChatGPT pass 9, 220 are within 8 bytes of retail (125 the same length) with a concrete next step in their parking note and bytes under 1,024. They are cut into retry chunks 535-560 (10-18 rows up to 512 bytes, 8 rows above), appended to chunk_history.tsv; each brief lists the row's parked source, last grade, last note and written next step.
