@@ -361645,6 +361645,125 @@ $catalog = @(
         TestSource = '00/a1/C3DVector_GetRandomUnitVector_00a145c0_test.cpp'
         PassPattern = '00a145c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a2eef0'
+        Module = 'C3DMeshStats'
+        Source = '00/a2/C3DMeshStats_PackNames_00a2eef0.cpp'
+        TestSource = '00/a2/C3DMeshStats_PackNames_00a2eef0_test.cpp'
+        PassPattern = '00a2eef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a33c50'
+        Module = 'std::vector'
+        Source = '00/a3/stdvector_Minsertoverflow_00a33c50.cpp'
+        TestSource = '00/a3/stdvector_Minsertoverflow_00a33c50_test.cpp'
+        PassPattern = '00a33c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a33e80'
+        Module = 'std::vector'
+        Source = '00/a3/stdvector_Minsertoverflow_00a33e80.cpp'
+        TestSource = '00/a3/stdvector_Minsertoverflow_00a33e80_test.cpp'
+        PassPattern = '00a33e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a33f80'
+        Module = 'std::vector'
+        Source = '00/a3/stdvector_Mfillinsert_00a33f80.cpp'
+        TestSource = '00/a3/stdvector_Mfillinsert_00a33f80_test.cpp'
+        PassPattern = '00a33f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a34b00'
+        Module = 'std'
+        Source = '00/a3/std_introsortloop_00a34b00.cpp'
+        TestSource = '00/a3/std_introsortloop_00a34b00_test.cpp'
+        PassPattern = '00a34b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a34c00'
+        Module = 'std'
+        Source = '00/a3/std_introsortloop_00a34c00.cpp'
+        TestSource = '00/a3/std_introsortloop_00a34c00_test.cpp'
+        PassPattern = '00a34c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a34f00'
+        Module = 'std::vector'
+        Source = '00/a3/stdvector_Minsertoverflow_00a34f00.cpp'
+        TestSource = '00/a3/stdvector_Minsertoverflow_00a34f00_test.cpp'
+        PassPattern = '00a34f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a35010'
+        Module = 'std::vector'
+        Source = '00/a3/stdvector_Mfillinsert_00a35010.cpp'
+        TestSource = '00/a3/stdvector_Mfillinsert_00a35010_test.cpp'
+        PassPattern = '00a35010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a37f40'
+        Module = 'std::vector'
+        Source = '00/a3/stdvector_Mfillinsert_00a37f40.cpp'
+        TestSource = '00/a3/stdvector_Mfillinsert_00a37f40_test.cpp'
+        PassPattern = '00a37f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a39610'
+        Module = 'std::vector'
+        Source = '00/a3/stdvector_Mrangeinsert_00a39610.cpp'
+        TestSource = '00/a3/stdvector_Mrangeinsert_00a39610_test.cpp'
+        PassPattern = '00a39610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3d060'
+        Module = 'std::vector'
+        Source = '00/a3/stdvector_Minsertoverflow_00a3d060.cpp'
+        TestSource = '00/a3/stdvector_Minsertoverflow_00a3d060_test.cpp'
+        PassPattern = '00a3d060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3d190'
+        Module = 'std::vector'
+        Source = '00/a3/stdvector_Mfillinsert_00a3d190.cpp'
+        TestSource = '00/a3/stdvector_Mfillinsert_00a3d190_test.cpp'
+        PassPattern = '00a3d190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3f140'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_AddBank_00a3f140.cpp'
+        TestSource = '00/a3/CSoundManagerLH_AddBank_00a3f140_test.cpp'
+        PassPattern = '00a3f140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a409a0'
+        Module = 'std'
+        Source = '00/a4/std_pushheap_00a409a0.cpp'
+        TestSource = '00/a4/std_pushheap_00a409a0_test.cpp'
+        PassPattern = '00a409a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a40df0'
+        Module = 'std'
+        Source = '00/a4/std_unguardedpartition_00a40df0.cpp'
+        TestSource = '00/a4/std_unguardedpartition_00a40df0_test.cpp'
+        PassPattern = '00a40df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a410a0'
+        Module = 'std'
+        Source = '00/a4/std_adjustheap_00a410a0.cpp'
+        TestSource = '00/a4/std_adjustheap_00a410a0_test.cpp'
+        PassPattern = '00a410a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a41ea0'
+        Module = 'std'
+        Source = '00/a4/std_introsortloop_00a41ea0.cpp'
+        TestSource = '00/a4/std_introsortloop_00a41ea0_test.cpp'
+        PassPattern = '00a41ea0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

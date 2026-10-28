@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00a3bf10	DIFFER	432v432	-	C3DAnimationBlendState::CreateInterpolate (Ego_r name); scheduling-only residue (one fstp st(0) slot)
+00a43cd0	DIFFER	300v288	-	vector<CLipSyncDataBankEntry>::_M_fill_insert; x_copy release regalloc residue (RMW dec vs load/dec/store)
+00a44420	DIFFER	414v424	-	GFIsPointInTriangle (Ego_r/FableWin name); dot-product operand order residue

@@ -1,0 +1,82 @@
+addr       parity           behav  name
+00a2eef0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00a2eef0   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+00a2eef0   RELOCATION_MATCH PASS   PackNames
+00a33c50   RELOCATION_MATCH PASS   _M_insert_overflow
+00a33e80   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@KVC3DDummyObject@@@std@@PAU12@@std@@YIPAU?$pair@KVC3DDummyObject@@@0@PAU10@00ABU__false_type@0@@Z -> 00a32060 labelled '_Cons_val<std::allocator<CAppearanceModifierGraphics::CEntry>,CAppearanceModifierGraphics::CEntry,CAppearanceModifierGraphics::_Cons_val<std::allocator<CAppearanceModifierGraphics::CEntry>,CAppearanceModifierGraphics::CEntry,CAppearanceModifierGraphics::CEntry&>'
+00a33e80   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAU?$pair@KVC3DDummyObject@@@std@@IU12@@std@@YIPAU?$pair@KVC3DDummyObject@@@0@PAU10@IABU10@ABU__false_type@0@@Z -> 00a320a0 labelled '_Cons_val<std::allocator<std::pair<long_const_,CShopItem>_>,std::pair<long_const_,CShopItem>,std::_Cons_val<std::allocator<std::pair<long_const_,CShopItem>_>,std::pair<long_const_,CShopItem>,std::pair<long_const_,class_CShopItem>_>'
+00a33e80   RELOCATION_MATCH PASS   _M_insert_overflow
+00a33f80   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VC3DGeneratorObject@@V?$allocator@VC3DGeneratorObject@@@std@@@std@@IAEXPAVC3DGeneratorObject@@ABV3@ABU__false_type@2@I_N@Z -> 00a33c50 labelled 'Vector_Reallocate_C3DGeneratorObject_RangeShift'
+00a33f80   RELOCATION_MATCH PASS   _M_fill_insert
+00a34b00   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@KVC3DHelperPoint@@@std@@U12@HV?$CKeyPairCompareLess@KVC3DHelperPoint@@@@@std@@YIXPAU?$pair@KVC3DHelperPoint@@@0@00HV?$CKeyPairCompareLess@KVC3DHelperPoint@@@@@Z -> 00a34b00 labelled 'Introsort_Partition'
+00a34b00   RELOCATION_MATCH PASS   __introsort_loop
+00a34c00   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@KVC3DDummyObject@@@std@@U12@HV?$CKeyPairCompareLess@KVC3DDummyObject@@@@@std@@YIXPAU?$pair@KVC3DDummyObject@@@0@00HV?$CKeyPairCompareLess@KVC3DDummyObject@@@@@Z -> 00a34c00 labelled 'Partition_With_Swap'
+00a34c00   RELOCATION_MATCH PASS   __introsort_loop
+00a34f00   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@KVC3DMeshVolume@@@std@@PAU12@@std@@YIPAU?$pair@KVC3DMeshVolume@@@0@PAU10@00ABU__false_type@0@@Z -> 00a32f40 labelled '_global::UninitCopy_PairULongMeshVolume_00a32f40'
+00a34f00   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAU?$pair@KVC3DMeshVolume@@@std@@IU12@@std@@YIPAU?$pair@KVC3DMeshVolume@@@0@PAU10@IABU10@ABU__false_type@0@@Z -> 00a32fb0 labelled '_global::UninitFillN_SPairLongNamedCountedPointer_00a32fb0'
+00a34f00   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@KVC3DMeshVolume@@@std@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0ABU__false_type@0@@Z -> 00a33720 labelled '_Destroy_range<std::allocator<std::_Destroy_range<std::allocator<std::pair<long,CCompositeSurfaceInfo>_>_>'
+00a34f00   RELOCATION_MATCH PASS   _M_insert_overflow
+00a35010   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@KVC3DMeshVolume@@@std@@PAU12@@std@@YIPAU?$pair@KVC3DMeshVolume@@@0@PAU10@00ABU__false_type@0@@Z -> 00a32f40 labelled '_global::UninitCopy_PairULongMeshVolume_00a32f40'
+00a35010   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAU?$pair@KVC3DMeshVolume@@@std@@IU12@@std@@YIPAU?$pair@KVC3DMeshVolume@@@0@PAU10@IABU10@ABU__false_type@0@@Z -> 00a32fb0 labelled '_global::UninitFillN_SPairLongNamedCountedPointer_00a32fb0'
+00a35010   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@KVC3DMeshVolume@@@std@@V?$allocator@U?$pair@KVC3DMeshVolume@@@std@@@2@@std@@IAEXPAU?$pair@KVC3DMeshVolume@@@2@ABU32@ABU__false_type@2@I_N@Z -> 00a34f00 labelled 'Vector_Reallocate_Pair'
+00a35010   RELOCATION_MATCH PASS   _M_fill_insert
+00a37f40   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCClassTypeInfo@@PAV1@@std@@YIPAVCClassTypeInfo@@PAV1@00ABU__false_type@0@@Z -> 00a37d50 labelled '_global::UninitCopy_CElement20_00a37b50_00a37d50'
+00a37f40   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCClassTypeInfo@@IV1@@std@@YIPAVCClassTypeInfo@@PAV1@IABV1@@Z -> 00a37d80 labelled '_global::UninitFillN_CElement20_00a37b50_00a37d80'
+00a37f40   WARN RELOC_NAME: ??1?$_List_base@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QAE@XZ -> 00a376a0 labelled '_global::StdList_Clear_00a376a0'
+00a37f40   RELOCATION_MATCH PASS   _M_fill_insert
+00a39610   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@KJ@std@@PAU12@@std@@YIPAU?$pair@KJ@0@PAU10@00ABU__false_type@0@@Z -> 009b25c0 labelled '_global::UninitCopy_SElement8_009b25c0'
+00a39610   WARN RELOC_NAME: ??$copy@PAU?$pair@KJ@std@@PAU12@@std@@YIPAU?$pair@KJ@0@PAU10@00@Z -> 00a39460 labelled '_Copy_impl<std::pair<float,EConversationAttitude>*,std::_Copy_impl<std::pair<float,EConversationAttitude>*,std::pair<float,enum_EConversationAttitude>*>'
+00a39610   RELOCATION_MATCH PASS   _M_range_insert
+00a3d060   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00a3d060   RELOCATION_MATCH PASS   _M_insert_overflow
+00a3d190   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00a3d190   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VC3DAnimationStateAlpha@@V?$allocator@VC3DAnimationStateAlpha@@@std@@@std@@IAEXPAVC3DAnimationStateAlpha@@ABV3@ABU__false_type@2@I_N@Z -> 00a3d060 labelled 'Vector_Reallocate_CDisplayModeDesc'
+00a3d190   RELOCATION_MATCH PASS   _M_fill_insert
+00a3f140   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@PAVCSoundBankLH@@@std@@V?$allocator@U?$pair@VCCharString@@PAVCSoundBankLH@@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@PAVCSoundBankLH@@@2@ABU32@ABU__false_type@2@I_N@Z -> 00a41480 labelled '_global::Vector_InsertOrFill'
+00a3f140   RELOCATION_MATCH PASS   AddBank
+00a409a0   RELOCATION_MATCH PASS   __push_heap
+00a40df0   RELOCATION_MATCH PASS   __unguarded_partition
+00a410a0   WARN RELOC_NAME: ??$__push_heap@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@std@@YIXPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@Z -> 00a409a0 labelled 'Heap_AdjustDown_CCharStringTriple'
+00a410a0   RELOCATION_MATCH PASS   __adjust_heap
+00a41ea0   WARN RELOC_NAME: ??$?MVCCharString@@V0@@std@@YA_NABU?$pair@VCCharString@@V1@@0@0@Z -> 00a40250 labelled 'std::operator<'
+00a41ea0   WARN RELOC_NAME: ??$__unguarded_partition@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@U12@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@std@@YIPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@PAU10@0U10@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@Z -> 00a40df0 labelled 'Introsort_Partition_CSymbolInfo'
+00a41ea0   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@U12@HV?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@std@@YIXPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@00HV?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@Z -> 00a41ea0 labelled 'Introsort_Quicksort_CCharStringPair'
+00a41ea0   RELOCATION_MATCH PASS   __introsort_loop
+
+WINS: 17
+  00a2eef0 RELOCATION_MATCH C3DMeshStats::?PackNames@C3DMeshStats@@AAEXAAV?$CArray@D@@ABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@1@Z
+  00a33c50 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VC3DGeneratorObject@@V?$allocator@VC3DGeneratorObject@@@std@@@std@@IAEXPAVC3DGeneratorObject@@ABV3@ABU__false_type@2@I_N@Z
+  00a33e80 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@U?$pair@KVC3DDummyObject@@@std@@V?$allocator@U?$pair@KVC3DDummyObject@@@std@@@2@@std@@IAEXPAU?$pair@KVC3DDummyObject@@@2@ABU32@ABU__false_type@2@I_N@Z
+  00a33f80 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VC3DGeneratorObject@@V?$allocator@VC3DGeneratorObject@@@std@@@std@@QAEXPAVC3DGeneratorObject@@IABV3@@Z
+  00a34b00 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@KVC3DHelperPoint@@@std@@U12@HV?$CKeyPairCompareLess@KVC3DHelperPoint@@@@@std@@
+  00a34c00 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@KVC3DDummyObject@@@std@@U12@HV?$CKeyPairCompareLess@KVC3DDummyObject@@@@@std@@
+  00a34f00 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@U?$pair@KVC3DMeshVolume@@@std@@V?$allocator@U?$pair@KVC3DMeshVolume@@@std@@@2@@std@@IAEXPAU?$pair@KVC3DMeshVolume@@@2@ABU32@ABU__false_type@2@I_N@Z
+  00a35010 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@U?$pair@KVC3DMeshVolume@@@std@@V?$allocator@U?$pair@KVC3DMeshVolume@@@std@@@2@@std@@QAEXPAU?$pair@KVC3DMeshVolume@@@2@IABU32@@Z
+  00a37f40 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@QAEXPAVCClassTypeInfo@@IABV3@@Z
+  00a39610 RELOCATION_MATCH std::vector::??$_M_range_insert@PAU?$pair@KJ@std@@@?$vector@U?$pair@KJ@std@@V?$allocator@U?$pair@KJ@std@@@2@@std@@QAEXPAU?$pair@KJ@1@00ABUforward_iterator_tag@1@@Z
+  00a3d060 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VC3DAnimationStateAlpha@@V?$allocator@VC3DAnimationStateAlpha@@@std@@@std@@IAEXPAVC3DAnimationStateAlpha@@ABV3@ABU__false_type@2@I_N@Z
+  00a3d190 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VC3DAnimationStateAlpha@@V?$allocator@VC3DAnimationStateAlpha@@@std@@@std@@QAEXPAVC3DAnimationStateAlpha@@IABV3@@Z
+  00a3f140 RELOCATION_MATCH CSoundManagerLH::?AddBank@CSoundManagerLH@@QAE_NABVCCharString@@K@Z
+  00a409a0 RELOCATION_MATCH std::??$__push_heap@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@std@@YIXPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@Z
+  00a40df0 RELOCATION_MATCH std::??$__unguarded_partition@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@U12@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@std@@YIPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@PAU10@0U10@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@Z
+  00a410a0 RELOCATION_MATCH std::??$__adjust_heap@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@HU12@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@std@@YIXPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@HHU10@V?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@Z
+  00a41ea0 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@U12@HV?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@std@@YIXPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@00HV?$CKeyPairCompareLess@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@@@Z
+
+LANDED 17 wins into src/compiled + tests + catalog + oracle
+  C3DMeshStats_PackNames_00a2eef0
+  stdvector_Minsertoverflow_00a33c50
+  stdvector_Minsertoverflow_00a33e80
+  stdvector_Mfillinsert_00a33f80
+  std_introsortloop_00a34b00
+  std_introsortloop_00a34c00
+  stdvector_Minsertoverflow_00a34f00
+  stdvector_Mfillinsert_00a35010
+  stdvector_Mfillinsert_00a37f40
+  stdvector_Mrangeinsert_00a39610
+  stdvector_Minsertoverflow_00a3d060
+  stdvector_Mfillinsert_00a3d190
+  CSoundManagerLH_AddBank_00a3f140
+  std_pushheap_00a409a0
+  std_unguardedpartition_00a40df0
+  std_adjustheap_00a410a0
+  std_introsortloop_00a41ea0

@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00a2eef0	RELOCATION_MATCH	502v502	PASS	C3DMeshStats::PackNames (Ego_r name); set walks with inline _Rb_global::_M_increment, implicit CCharString("") terminators
+00a33c50	RELOCATION_MATCH	283v283	PASS	vector<C3DGeneratorObject>::_M_insert_overflow; same-TU noinline __uninitialized_copy/fill_n bodies
+00a33e80	RELOCATION_MATCH	251v251	PASS	vector<pair<unsigned long, C3DDummyObject> >::_M_insert_overflow; same-TU helper bodies
+00a33f80	RELOCATION_MATCH	312v312	PASS	vector<C3DGeneratorObject>::_M_fill_insert; same-TU helper bodies
+00a34b00	RELOCATION_MATCH	256v256	PASS	std::__introsort_loop<pair<unsigned long, C3DHelperPoint>*> (STLport _algo.c verbatim)
+00a34c00	RELOCATION_MATCH	261v261	PASS	std::__introsort_loop<pair<unsigned long, C3DDummyObject>*> (STLport _algo.c verbatim)
+00a34f00	RELOCATION_MATCH	258v258	PASS	vector<pair<unsigned long, C3DMeshVolume> >::_M_insert_overflow; same-TU helpers incl. __destroy_aux
+00a35010	RELOCATION_MATCH	309v309	PASS	vector<pair<unsigned long, C3DMeshVolume> >::_M_fill_insert; CCountedPointer inline release keeps ~pair out of line
+00a37f40	RELOCATION_MATCH	311v311	PASS	vector<CClassTypeInfo>::_M_fill_insert; same-TU helper bodies
+00a39610	RELOCATION_MATCH	389v389	PASS	vector<pair<unsigned long, long> >::_M_range_insert<pair*> (forward_iterator_tag); same-TU helpers
+00a3bf10	DIFFER	432v432	-	C3DAnimationBlendState::CreateInterpolate (Ego_r name); scheduling-only residue (one fstp st(0) slot)
+00a3d060	RELOCATION_MATCH	291v291	PASS	vector<C3DAnimationStateAlpha>::_M_insert_overflow; inline virtual base dtor + same-TU helpers
+00a3d190	RELOCATION_MATCH	325v325	PASS	vector<C3DAnimationStateAlpha>::_M_fill_insert; inline virtual base dtor
+00a3f140	RELOCATION_MATCH	272v272	PASS	CSoundManagerLH::AddBank (descriptive, RTTI slot 37); __forceinline Add/push_back
+00a409a0	RELOCATION_MATCH	249v249	PASS	std::__push_heap<pair<pair<CCharString,CCharString>,CSoundBankLH*>*>; inline STLport pair operator<
+00a40df0	RELOCATION_MATCH	241v241	PASS	std::__unguarded_partition<same 12-byte entry>; iter_swap inline to swap 0xA3FDC0
+00a410a0	RELOCATION_MATCH	339v339	PASS	std::__adjust_heap<same 12-byte entry>
+00a41ea0	RELOCATION_MATCH	401v401	PASS	std::__introsort_loop<same 12-byte entry>; first __median compare inlined, rest call operator< 0xA40250
+00a43cd0	DIFFER	300v288	-	vector<CLipSyncDataBankEntry>::_M_fill_insert; x_copy release regalloc residue (RMW dec vs load/dec/store)
+00a44420	DIFFER	414v424	-	GFIsPointInTriangle (Ego_r/FableWin name); dot-product operand order residue
