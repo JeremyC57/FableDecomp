@@ -1,0 +1,7 @@
+address	status	bytes	test	note
+00a4b670	DIFFER	314	-	NBBBMaths::IsPosInFOVWithWeight; DIFFER(312v314) Newton r spill; 4 grades
+00a55f90	DIFFER	259	-	CMatrix3x4::SetFromVectorAndAngle; DIFFER(259v259) x87 operand order; 4 grades
+00a5c360	DIFFER	421	-	NVectorMath::GFNormalise3DVectors; DIFFER(386v421) aligned-frame prologue lane gap; 4 grades
+00a618d0	DIFFER	421	-	CBusyResourceManager::OnPostSwapScreens; DIFFER(421v421) edi/ebx regalloc; 1 grade
+00a6bcd0	DIFFER	276	-	vector<CIVCountedPointer<CManagedTextureData>>::_M_fill_insert; DIFFER(285v276) dtor tail reload; 4 grades
+00a70cb0	HELD	-	PASS	RELOCATION_MATCH on the lane; held from landing: __copy<const C3DVector*,C3DVector*,int> -> 0x0074CA20 here vs 0x0075B560 in landed 0x0075B8D0, and retail 0x0066DDF0 bound to both PAV and PBV __uninitialized_copy<C3DVector> spellings

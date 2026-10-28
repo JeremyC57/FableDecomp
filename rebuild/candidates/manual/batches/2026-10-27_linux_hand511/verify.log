@@ -1,0 +1,63 @@
+addr       parity           behav  name
+009c75a0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCBufferChunk@CFileInstaller@@PAV12@@std@@YIPAVCBufferChunk@CFileInstaller@@PAV12@00ABU__false_type@0@@Z -> 009c6510 labelled '_global::UninitCopy_SElement8_009c6510'
+009c75a0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCBufferChunk@CFileInstaller@@IV12@@std@@YIPAVCBufferChunk@CFileInstaller@@PAV12@IABV12@@Z -> 009c6570 labelled '_global::UninitFillN_SPairLongLong_009c6570'
+009c75a0   RELOCATION_MATCH PASS   _M_fill_insert
+009caf60   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCTextTag@NGameText@@IV12@@std@@YIPAVCTextTag@NGameText@@PAV12@IABV12@@Z -> 009ca220 labelled '_global::UninitFillN_SPairLongCSecond_0099ec30_009ca220'
+009caf60   RELOCATION_MATCH PASS   _M_fill_insert
+009e7d30   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@U12@JV?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@std@@YIXPAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@0@00JV?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@Z -> 009e7d30 labelled 'std::introsort_partial_16byte_quicksort'
+009e7d30   RELOCATION_MATCH PASS   __introsort_loop
+009f6ac0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCInputEvent@@PAV1@@std@@YIPAVCInputEvent@@PAV1@00ABU__false_type@0@@Z -> 009f64a0 labelled '_global::UninitCopy_CInputEvent_009f64a0'
+009f6ac0   RELOCATION_MATCH PASS   _M_insert_overflow
+00a4a710   RELOCATION_MATCH PASS   _M_insert_overflow
+00a55070   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@00ABU__false_type@0@@Z -> 00a51c60 labelled '_global::UninitCopy_C3DTriangle2_00a51c60'
+00a55070   RELOCATION_MATCH PASS   _M_insert_overflow
+00a55190   RELOCATION_MATCH PASS   _M_fill_insert
+00a552b0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@@std@@YIPAVC3DVectorWord@C3DAnimationSequenceData@@PAV12@00ABU__false_type@0@@Z -> 00a51c60 labelled '_global::UninitCopy_C3DTriangle2_00a51c60'
+00a552b0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEXPAVC3DVectorWord@C3DAnimationSequenceData@@ABV34@ABU__false_type@2@I_N@Z -> 00a55070 labelled 'Vector_InsertN_uint48'
+00a552b0   RELOCATION_MATCH PASS   _M_fill_insert
+00a60200   RELOCATION_MATCH PASS   GFRemoveCommentsLeavingNewlines
+00a68910   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00a68910   WARN SHARED_HEADER_AVAILABLE CTexture
+00a68910   WARN RELOC_NAME: ?Unswizzle@CVolume@@QAEXAAVCVolumeLockedBox@@@Z -> 00a67450 labelled '_global::Nop_ret4_00a67450'
+00a68910   WARN RELOC_NAME: ?Swizzle@CVolume@@QAEXAAVCVolumeLockedBox@@@Z -> 00a67440 labelled '_global::Nop_ret4_00a67440'
+00a68910   RELOCATION_MATCH PASS   GetAsTextureList
+00a71550   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DTriangle2@@PAV1@@std@@YIPAVC3DTriangle2@@PAV1@00ABU__false_type@0@@Z -> 00a6e350 labelled '_global::UninitCopy_C3DTriangle2_00a6e350'
+00a71550   RELOCATION_MATCH PASS   _M_insert_overflow
+00a71fc0   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@VCCharString@@VC3DHelperPoint@@@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@VC3DHelperPoint@@@0@PAU10@00ABU__false_type@0@@Z -> 00a6ed80 labelled '_global::UninitCopy_SNamedRecord14_00a6ed80'
+00a71fc0   RELOCATION_MATCH PASS   _M_insert_overflow
+00a720e0   RELOCATION_MATCH PASS   _M_insert_overflow
+00a72cc0   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@JVC3DMeshVolume@@@std@@PAU12@@std@@YIPAU?$pair@JVC3DMeshVolume@@@0@PAU10@00ABU__false_type@0@@Z -> 00a6fe00 labelled '_global::UninitCopy_PairULongMeshVolume_00a6fe00'
+00a72cc0   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAU?$pair@JVC3DMeshVolume@@@std@@IU12@@std@@YIPAU?$pair@JVC3DMeshVolume@@@0@PAU10@IABU10@ABU__false_type@0@@Z -> 00a6fe70 labelled '_global::UninitFillN_SPairLongNamedCountedPointer_00a6fe70'
+00a72cc0   RELOCATION_MATCH PASS   _M_insert_overflow
+
+WINS: 14
+  009c75a0 RELOCATION_MATCH std::vector<CFileInstaller::CBufferChunk>::?_M_fill_insert@?$vector@VCBufferChunk@CFileInstaller@@V?$allocator@VCBufferChunk@CFileInstaller@@@std@@@std@@QAEXPAVCBufferChunk@CFileInstaller@@IABV34@@Z
+  009caf60 RELOCATION_MATCH std::vector<NGameText::CTextTag>::?_M_fill_insert@?$vector@VCTextTag@NGameText@@V?$allocator@VCTextTag@NGameText@@@std@@@std@@QAEXPAVCTextTag@NGameText@@IABV34@@Z
+  009e7d30 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@U12@JV?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@std@@YIXPAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@0@00JV?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@Z
+  009f6ac0 RELOCATION_MATCH std::vector<CInputEvent>::?_M_insert_overflow@?$vector@VCInputEvent@@V?$allocator@VCInputEvent@@@std@@@std@@IAEXPAVCInputEvent@@ABV3@ABU__false_type@2@I_N@Z
+  00a4a710 RELOCATION_MATCH std::vector<CLipSyncPhoneme>::?_M_insert_overflow@?$vector@VCLipSyncPhoneme@@V?$allocator@VCLipSyncPhoneme@@@std@@@std@@QAEXPAVCLipSyncPhoneme@@ABV3@ABU__false_type@2@I_N@Z
+  00a55070 RELOCATION_MATCH std::vector<C3DAnimationSequenceData::C3DVectorWord>::?_M_insert_overflow@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEXPAVC3DVectorWord@C3DAnimationSequenceData@@ABV34@ABU__false_type@2@I_N@Z
+  00a55190 RELOCATION_MATCH std::vector<CQuaternion>::?_M_fill_insert@?$vector@VCQuaternion@@V?$allocator@VCQuaternion@@@std@@@std@@QAEXPAVCQuaternion@@IABV3@@Z
+  00a552b0 RELOCATION_MATCH std::vector<C3DAnimationSequenceData::C3DVectorWord>::?_M_fill_insert@?$vector@VC3DVectorWord@C3DAnimationSequenceData@@V?$allocator@VC3DVectorWord@C3DAnimationSequenceData@@@std@@@std@@QAEXPAVC3DVectorWord@C3DAnimationSequenceData@@IABV34@@Z
+  00a60200 RELOCATION_MATCH _global::?GFRemoveCommentsLeavingNewlines@@YIXPADPBD1@Z
+  00a68910 RELOCATION_MATCH CVolumeTexture::?GetAsTextureList@CVolumeTexture@@QAEXPAVCTexture@@@Z
+  00a71550 RELOCATION_MATCH std::vector<C3DTriangle2>::?_M_insert_overflow@?$vector@VC3DTriangle2@@V?$allocator@VC3DTriangle2@@@std@@@std@@QAEXPAVC3DTriangle2@@ABV3@ABU__false_type@2@I_N@Z
+  00a71fc0 RELOCATION_MATCH std::vector<std::pair<CCharString, C3DHelperPoint> >::?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VC3DHelperPoint@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DHelperPoint@@@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@VC3DHelperPoint@@@2@ABU32@ABU__false_type@2@I_N@Z
+  00a720e0 RELOCATION_MATCH std::vector<std::pair<CCharString, C3DDummyObject> >::?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VC3DDummyObject@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DDummyObject@@@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@VC3DDummyObject@@@2@ABU32@ABU__false_type@2@I_N@Z
+  00a72cc0 RELOCATION_MATCH std::vector<std::pair<long, C3DMeshVolume> >::?_M_insert_overflow@?$vector@U?$pair@JVC3DMeshVolume@@@std@@V?$allocator@U?$pair@JVC3DMeshVolume@@@std@@@2@@std@@QAEXPAU?$pair@JVC3DMeshVolume@@@2@ABU32@ABU__false_type@2@I_N@Z
+
+LANDED 14 wins into src/compiled + tests + catalog + oracle
+  stdvectorCFileInstallerCBufferChunk_Mfillinsert_009c75a0
+  stdvectorNGameTextCTextTag_Mfillinsert_009caf60
+  std_introsortloop_009e7d30
+  stdvectorCInputEvent_Minsertoverflow_009f6ac0
+  stdvectorCLipSyncPhoneme_Minsertoverflow_00a4a710
+  stdvectorC3DAnimationSequenceDataC3DVectorWord_Minsertoverflow_00a55070
+  stdvectorCQuaternion_Mfillinsert_00a55190
+  stdvectorC3DAnimationSequenceDataC3DVectorWord_Mfillinsert_00a552b0
+  global_GFRemoveCommentsLeavingNewlines_00a60200
+  CVolumeTexture_GetAsTextureList_00a68910
+  stdvectorC3DTriangle2_Minsertoverflow_00a71550
+  stdvectorstdpairCCharStringC3DHelperPoint_Minsertoverflow_00a71fc0
+  stdvectorstdpairCCharStringC3DDummyObject_Minsertoverflow_00a720e0
+  stdvectorstdpairlongC3DMeshVolume_Minsertoverflow_00a72cc0

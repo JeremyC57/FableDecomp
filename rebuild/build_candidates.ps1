@@ -352464,6 +352464,104 @@ $catalog = @(
         TestSource = '00/9c/stdvector_Minsertoverflow_009c73e0_test.cpp'
         PassPattern = '009c73e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009c75a0'
+        Module = 'std::vector<CFileInstaller::CBufferChunk>'
+        Source = '00/9c/stdvectorCFileInstallerCBufferChunk_Mfillinsert_009c75a0.cpp'
+        TestSource = '00/9c/stdvectorCFileInstallerCBufferChunk_Mfillinsert_009c75a0_test.cpp'
+        PassPattern = '009c75a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009caf60'
+        Module = 'std::vector<NGameText::CTextTag>'
+        Source = '00/9c/stdvectorNGameTextCTextTag_Mfillinsert_009caf60.cpp'
+        TestSource = '00/9c/stdvectorNGameTextCTextTag_Mfillinsert_009caf60_test.cpp'
+        PassPattern = '009caf60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e7d30'
+        Module = 'std'
+        Source = '00/9e/std_introsortloop_009e7d30.cpp'
+        TestSource = '00/9e/std_introsortloop_009e7d30_test.cpp'
+        PassPattern = '009e7d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f6ac0'
+        Module = 'std::vector<CInputEvent>'
+        Source = '00/9f/stdvectorCInputEvent_Minsertoverflow_009f6ac0.cpp'
+        TestSource = '00/9f/stdvectorCInputEvent_Minsertoverflow_009f6ac0_test.cpp'
+        PassPattern = '009f6ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4a710'
+        Module = 'std::vector<CLipSyncPhoneme>'
+        Source = '00/a4/stdvectorCLipSyncPhoneme_Minsertoverflow_00a4a710.cpp'
+        TestSource = '00/a4/stdvectorCLipSyncPhoneme_Minsertoverflow_00a4a710_test.cpp'
+        PassPattern = '00a4a710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a55070'
+        Module = 'std::vector<C3DAnimationSequenceData::C3DVectorWord>'
+        Source = '00/a5/stdvectorC3DAnimationSequenceDataC3DVectorWord_Minsertoverflow_00a55070.cpp'
+        TestSource = '00/a5/stdvectorC3DAnimationSequenceDataC3DVectorWord_Minsertoverflow_00a55070_test.cpp'
+        PassPattern = '00a55070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a55190'
+        Module = 'std::vector<CQuaternion>'
+        Source = '00/a5/stdvectorCQuaternion_Mfillinsert_00a55190.cpp'
+        TestSource = '00/a5/stdvectorCQuaternion_Mfillinsert_00a55190_test.cpp'
+        PassPattern = '00a55190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a552b0'
+        Module = 'std::vector<C3DAnimationSequenceData::C3DVectorWord>'
+        Source = '00/a5/stdvectorC3DAnimationSequenceDataC3DVectorWord_Mfillinsert_00a552b0.cpp'
+        TestSource = '00/a5/stdvectorC3DAnimationSequenceDataC3DVectorWord_Mfillinsert_00a552b0_test.cpp'
+        PassPattern = '00a552b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a60200'
+        Module = '_global'
+        Source = '00/a6/global_GFRemoveCommentsLeavingNewlines_00a60200.cpp'
+        TestSource = '00/a6/global_GFRemoveCommentsLeavingNewlines_00a60200_test.cpp'
+        PassPattern = '00a60200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a68910'
+        Module = 'CVolumeTexture'
+        Source = '00/a6/CVolumeTexture_GetAsTextureList_00a68910.cpp'
+        TestSource = '00/a6/CVolumeTexture_GetAsTextureList_00a68910_test.cpp'
+        PassPattern = '00a68910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a71550'
+        Module = 'std::vector<C3DTriangle2>'
+        Source = '00/a7/stdvectorC3DTriangle2_Minsertoverflow_00a71550.cpp'
+        TestSource = '00/a7/stdvectorC3DTriangle2_Minsertoverflow_00a71550_test.cpp'
+        PassPattern = '00a71550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a71fc0'
+        Module = 'std::vector<std::pair<CCharString, C3DHelperPoint> >'
+        Source = '00/a7/stdvectorstdpairCCharStringC3DHelperPoint_Minsertoverflow_00a71fc0.cpp'
+        TestSource = '00/a7/stdvectorstdpairCCharStringC3DHelperPoint_Minsertoverflow_00a71fc0_test.cpp'
+        PassPattern = '00a71fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a720e0'
+        Module = 'std::vector<std::pair<CCharString, C3DDummyObject> >'
+        Source = '00/a7/stdvectorstdpairCCharStringC3DDummyObject_Minsertoverflow_00a720e0.cpp'
+        TestSource = '00/a7/stdvectorstdpairCCharStringC3DDummyObject_Minsertoverflow_00a720e0_test.cpp'
+        PassPattern = '00a720e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a72cc0'
+        Module = 'std::vector<std::pair<long, C3DMeshVolume> >'
+        Source = '00/a7/stdvectorstdpairlongC3DMeshVolume_Minsertoverflow_00a72cc0.cpp'
+        TestSource = '00/a7/stdvectorstdpairlongC3DMeshVolume_Minsertoverflow_00a72cc0_test.cpp'
+        PassPattern = '00a72cc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

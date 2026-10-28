@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+009c75a0	RELOCATION_MATCH	274	PASS	vector<CFileInstaller::CBufferChunk>::_M_fill_insert; model 0x98D360; grade 1
+009caf60	RELOCATION_MATCH	280	PASS	vector<NGameText::CTextTag>::_M_fill_insert; __copy_backward out of line 0x9C9DD0
+009e7d30	RELOCATION_MATCH	270	PASS	std::__introsort_loop<pair<CCharString,CSymbolMap::CSymbolInfo>,CCompareString>
+009f6ac0	RELOCATION_MATCH	282	PASS	vector<CInputEvent>::_M_insert_overflow (protected, IAE)
+00a4a710	RELOCATION_MATCH	267	PASS	vector<CLipSyncPhoneme>::_M_insert_overflow; model 0x624B90
+00a4b670	DIFFER	314	-	NBBBMaths::IsPosInFOVWithWeight; DIFFER(312v314) Newton r spill; 4 grades
+00a55070	RELOCATION_MATCH	279	PASS	vector<C3DVectorWord>::_M_insert_overflow; __forceinline fill_n; grade 2
+00a55190	RELOCATION_MATCH	285	PASS	vector<CQuaternion>::_M_fill_insert; model 0x98D360
+00a552b0	RELOCATION_MATCH	299	PASS	vector<C3DVectorWord>::_M_fill_insert
+00a55f90	DIFFER	259	-	CMatrix3x4::SetFromVectorAndAngle; DIFFER(259v259) x87 operand order; 4 grades
+00a5c360	DIFFER	421	-	NVectorMath::GFNormalise3DVectors; DIFFER(386v421) aligned-frame prologue lane gap; 4 grades
+00a60200	RELOCATION_MATCH	386	PASS	GFRemoveCommentsLeavingNewlines (__fastcall); grade 1
+00a618d0	DIFFER	421	-	CBusyResourceManager::OnPostSwapScreens; DIFFER(421v421) edi/ebx regalloc; 1 grade
+00a68910	RELOCATION_MATCH	452	PASS	CVolumeTexture::GetAsTextureList; grade 4
+00a6bcd0	DIFFER	276	-	vector<CIVCountedPointer<CManagedTextureData>>::_M_fill_insert; DIFFER(285v276) dtor tail reload; 4 grades
+00a70cb0	RELOCATION_MATCH	461	PASS	vector<C3DVector>::_M_range_insert<const C3DVector*>; model 0x9B5310
+00a71550	RELOCATION_MATCH	279	PASS	vector<C3DTriangle2>::_M_insert_overflow
+00a71fc0	RELOCATION_MATCH	283	PASS	vector<pair<CCharString,C3DHelperPoint>>::_M_insert_overflow; user copy ctors; grade 2
+00a720e0	RELOCATION_MATCH	282	PASS	vector<pair<CCharString,C3DDummyObject>>::_M_insert_overflow
+00a72cc0	RELOCATION_MATCH	258	PASS	vector<pair<long,C3DMeshVolume>>::_M_insert_overflow; __destroy_aux 0xA70E80 out of line
