@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00a72dd0	RELOCATION_MATCH	262v262	PASS	vector<pair<CCharString,C3DMeshVolume>>::_M_insert_overflow (protected, 2-arg vector); 2 grades
+00a72fa0	RELOCATION_MATCH	306v306	PASS	std::__introsort_loop<pair<CCharString,C3DHelperPoint>*,...,CCompareString<C3DHelperPoint>>; 1 grade
+00a730e0	RELOCATION_MATCH	298v298	PASS	std::__introsort_loop<pair<CCharString,C3DDummyObject>*,...>; symbol proven by landed sort 0xa73600; 1 grade
+00a74180	DIFFER	489v472	-	CPhysicsMesh::CalculateLayeredNavigationLineInfo; parked after 4 grades: second inline Find select + face-loop register allocation (differ/)
+00a74ac0	RELOCATION_MATCH	376v376	PASS	vector<C2DLineF>::_M_range_insert<const C2DLineF*>; 1 grade; RELOC_CONFLICT on __uninitialized_copy<const C2DLineF*> (NOTES Review at landing)
+00a750e0	RELOCATION_MATCH	308v308	PASS	vector<CArray<C2DLineF>>::_M_fill_insert; 2 grades
+00a77780	DIFFER	302v298	-	CNavRegion::IsConnectedToRegion; parked after 3 grades + 1 QFE probe: VC shrink-wraps the ebx/ebp/esi pushes past the RegionID early return (differ/)
+00a7eb00	RELOCATION_MATCH	412v412	PASS	std::__find<const CNavigationPosition*,C2DVector> (random-access); 2 grades
+00a83d70	RELOCATION_MATCH	268v268	PASS	vector<list<C2DLineF>>::operator=; 1 grade
+00a84270	RELOCATION_MATCH	258v258	PASS	vector<list<C2DLineF>>::_M_insert_overflow; 2 grades
+00a84690	RELOCATION_MATCH	260v260	PASS	vector<list<C2DLineF>>::_M_fill_insert; 1 grade
+00a84940	RELOCATION_MATCH	285v285	PASS	vector<pair<unsigned __int64,list<C2DLineF>>>::operator=; 1 grade
+00a85050	RELOCATION_MATCH	309v309	PASS	std::__introsort_loop<pair<unsigned __int64,list<C2DLineF>>*,...,CKeyPairCompareLess>; __forceinline __median; 2 grades
+00a85560	RELOCATION_MATCH	308v308	PASS	std::__uninitialized_fill_n<CNavQuadTree::CNavigationLayer*>; 2 grades
+00a85b90	RELOCATION_MATCH	289v289	PASS	vector<CNavQuadTree::CNavigationLayer>::_M_insert_overflow; 1 grade
+00a85cc0	RELOCATION_MATCH	342v342	PASS	vector<CNavQuadTree::CNavigationLayer>::_M_fill_insert; 1 grade
+00a8b6c0	RELOCATION_MATCH	348v348	PASS	C3DMesh2::PackBoneNames; 3 grades
+00a96f00	RELOCATION_MATCH	311v311	PASS	vector<C3DTriangle2>::_M_fill_insert, Flags /GS; 2 grades
+00a97040	RELOCATION_MATCH	307v307	PASS	vector<C3DVertex2>::_M_fill_insert; 1 grade
+00aa3af0	DIFFER	346v346	-	C3DKeyframe::ToMatrix(CMatrix4x4&,bool) const; parked after 4 grades: six integer stores scheduled early (differ/)

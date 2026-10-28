@@ -352562,6 +352562,119 @@ $catalog = @(
         TestSource = '00/a7/stdvectorstdpairlongC3DMeshVolume_Minsertoverflow_00a72cc0_test.cpp'
         PassPattern = '00a72cc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a72dd0'
+        Module = 'std::vector<std::pair<CCharString, C3DMeshVolume>>'
+        Source = '00/a7/stdvectorstdpairCCharStringC3DMeshVolume_Minsertoverflow_00a72dd0.cpp'
+        TestSource = '00/a7/stdvectorstdpairCCharStringC3DMeshVolume_Minsertoverflow_00a72dd0_test.cpp'
+        PassPattern = '00a72dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a72fa0'
+        Module = 'std'
+        Source = '00/a7/std_introsortloop_00a72fa0.cpp'
+        TestSource = '00/a7/std_introsortloop_00a72fa0_test.cpp'
+        PassPattern = '00a72fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a730e0'
+        Module = 'std'
+        Source = '00/a7/std_introsortloop_00a730e0.cpp'
+        TestSource = '00/a7/std_introsortloop_00a730e0_test.cpp'
+        PassPattern = '00a730e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a750e0'
+        Module = 'std::vector<CArray<C2DLineF>>'
+        Source = '00/a7/stdvectorCArrayC2DLineF_Mfillinsert_00a750e0.cpp'
+        TestSource = '00/a7/stdvectorCArrayC2DLineF_Mfillinsert_00a750e0_test.cpp'
+        PassPattern = '00a750e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7eb00'
+        Module = 'std'
+        Source = '00/a7/std_find_00a7eb00.cpp'
+        TestSource = '00/a7/std_find_00a7eb00_test.cpp'
+        PassPattern = '00a7eb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a83d70'
+        Module = 'std::vector<std::list<C2DLineF>>'
+        Source = '00/a8/stdvectorstdlistC2DLineF_operator_00a83d70.cpp'
+        TestSource = '00/a8/stdvectorstdlistC2DLineF_operator_00a83d70_test.cpp'
+        PassPattern = '00a83d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a84270'
+        Module = 'std::vector<std::list<C2DLineF>>'
+        Source = '00/a8/stdvectorstdlistC2DLineF_Minsertoverflow_00a84270.cpp'
+        TestSource = '00/a8/stdvectorstdlistC2DLineF_Minsertoverflow_00a84270_test.cpp'
+        PassPattern = '00a84270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a84690'
+        Module = 'std::vector<std::list<C2DLineF>>'
+        Source = '00/a8/stdvectorstdlistC2DLineF_Mfillinsert_00a84690.cpp'
+        TestSource = '00/a8/stdvectorstdlistC2DLineF_Mfillinsert_00a84690_test.cpp'
+        PassPattern = '00a84690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a84940'
+        Module = 'std::vector<std::pair<unsigned __int64, std::list<C2DLineF>>>'
+        Source = '00/a8/stdvectorstdpairunsignedint64stdlistC2DLineF_operator_00a84940.cpp'
+        TestSource = '00/a8/stdvectorstdpairunsignedint64stdlistC2DLineF_operator_00a84940_test.cpp'
+        PassPattern = '00a84940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a85050'
+        Module = 'std'
+        Source = '00/a8/std_introsortloop_00a85050.cpp'
+        TestSource = '00/a8/std_introsortloop_00a85050_test.cpp'
+        PassPattern = '00a85050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a85560'
+        Module = 'std'
+        Source = '00/a8/std_uninitializedfilln_00a85560.cpp'
+        TestSource = '00/a8/std_uninitializedfilln_00a85560_test.cpp'
+        PassPattern = '00a85560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a85b90'
+        Module = 'std::vector<CNavQuadTree::CNavigationLayer>'
+        Source = '00/a8/stdvectorCNavQuadTreeCNavigationLayer_Minsertoverflow_00a85b90.cpp'
+        TestSource = '00/a8/stdvectorCNavQuadTreeCNavigationLayer_Minsertoverflow_00a85b90_test.cpp'
+        PassPattern = '00a85b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a85cc0'
+        Module = 'std::vector<CNavQuadTree::CNavigationLayer>'
+        Source = '00/a8/stdvectorCNavQuadTreeCNavigationLayer_Mfillinsert_00a85cc0.cpp'
+        TestSource = '00/a8/stdvectorCNavQuadTreeCNavigationLayer_Mfillinsert_00a85cc0_test.cpp'
+        PassPattern = '00a85cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8b6c0'
+        Module = 'C3DMesh2'
+        Source = '00/a8/C3DMesh2_PackBoneNames_00a8b6c0.cpp'
+        TestSource = '00/a8/C3DMesh2_PackBoneNames_00a8b6c0_test.cpp'
+        PassPattern = '00a8b6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a96f00'
+        Module = 'std::vector<C3DTriangle2>'
+        Source = '00/a9/stdvectorC3DTriangle2_Mfillinsert_00a96f00.cpp'
+        TestSource = '00/a9/stdvectorC3DTriangle2_Mfillinsert_00a96f00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00a96f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a97040'
+        Module = 'std::vector<C3DVertex2>'
+        Source = '00/a9/stdvectorC3DVertex2_Mfillinsert_00a97040.cpp'
+        TestSource = '00/a9/stdvectorC3DVertex2_Mfillinsert_00a97040_test.cpp'
+        PassPattern = '00a97040_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

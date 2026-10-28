@@ -1,0 +1,71 @@
+addr       parity           behav  name
+00a72dd0   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@PAU10@00ABU__false_type@0@@Z -> 00a6fed0 labelled '_global::UninitCopy_PairCharStringMeshVolume_00a6fed0'
+00a72dd0   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@IU12@@std@@YIPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@PAU10@IABU10@ABU__false_type@0@@Z -> 00a6ff40 labelled '_global::UninitFillN_SPairCharStringNamedCountedPointer_00a6ff40'
+00a72dd0   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXPAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0ABU__false_type@0@@Z -> 00a70ee0 labelled 'std::_Destroy_range'
+00a72dd0   RELOCATION_MATCH PASS   _M_insert_overflow
+00a72fa0   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@VCCharString@@VC3DHelperPoint@@@std@@U12@HV?$CCompareString@VC3DHelperPoint@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DHelperPoint@@@0@00HV?$CCompareString@VC3DHelperPoint@@@@@Z -> 00a72fa0 labelled 'QuickSort_Partition_Small'
+00a72fa0   RELOCATION_MATCH PASS   __introsort_loop
+00a730e0   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@VCCharString@@VC3DDummyObject@@@std@@U12@HV?$CCompareString@VC3DDummyObject@@@@@std@@YIXPAU?$pair@VCCharString@@VC3DDummyObject@@@0@00HV?$CCompareString@VC3DDummyObject@@@@@Z -> 00a730e0 labelled 'QuickSort_Partition_Large'
+00a730e0   RELOCATION_MATCH PASS   __introsort_loop
+00a750e0   RELOCATION_MATCH PASS   _M_fill_insert
+00a7eb00   RELOCATION_MATCH PASS   __find
+00a83d70   RELOCATION_MATCH PASS   operator=
+00a84270   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@PAV12@@std@@YIPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@0@PAV10@00ABU__false_type@0@@Z -> 00a831d0 labelled '_global::UninitCopy_List16_00a831d0'
+00a84270   RELOCATION_MATCH PASS   _M_insert_overflow
+00a84690   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@PAV12@@std@@YIPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@0@PAV10@00ABU__false_type@0@@Z -> 00a831d0 labelled '_global::UninitCopy_List16_00a831d0'
+00a84690   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@IAEXPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z -> 00a84270 labelled 'Vector_Assign_FillOrCopy_BinaryTree'
+00a84690   RELOCATION_MATCH PASS   _M_fill_insert
+00a84940   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@0ABU__false_type@0@@Z -> 00a83420 labelled 'std::__destroy_aux<std::pair<unsigned __int64,std::list<C2DLineF> >*>'
+00a84940   RELOCATION_MATCH PASS   operator=
+00a85050   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@U12@HV?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@std@@YIXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@00HV?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@Z -> 00a85050 labelled 'HeapSort_BuildHeap_16ByteElements_v2'
+00a85050   RELOCATION_MATCH PASS   __introsort_loop
+00a85560   RELOCATION_MATCH PASS   __uninitialized_fill_n
+00a85b90   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCNavigationLayer@CNavQuadTree@@IV12@@std@@YIPAVCNavigationLayer@CNavQuadTree@@PAV12@IABV12@ABU__false_type@0@@Z -> 00a85560 labelled 'Std_Vector_Assign_Multi'
+00a85b90   RELOCATION_MATCH PASS   _M_insert_overflow
+00a85cc0   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCNavigationLayer@CNavQuadTree@@IV12@@std@@YIPAVCNavigationLayer@CNavQuadTree@@PAV12@IABV12@ABU__false_type@0@@Z -> 00a85560 labelled 'Std_Vector_Assign_Multi'
+00a85cc0   WARN RELOC_NAME: ??1CNavigationLayer@CNavQuadTree@@QAE@XZ -> 00a851e0 labelled 'CVectorTriple_00a851e0::~CVectorTriple_00a851e0'
+00a85cc0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCNavigationLayer@CNavQuadTree@@V?$allocator@VCNavigationLayer@CNavQuadTree@@@std@@@std@@IAEXPAVCNavigationLayer@CNavQuadTree@@ABV34@ABU__false_type@2@I_N@Z -> 00a85b90 labelled 'Vector_AssignCopy_NavQuadTreeLayer'
+00a85cc0   RELOCATION_MATCH PASS   _M_fill_insert
+00a8b6c0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00a8b6c0   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+00a8b6c0   RELOCATION_MATCH PASS   PackBoneNames
+00a96f00   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DTriangle2@@PAV1@@std@@YIPAVC3DTriangle2@@PAV1@00ABU__false_type@0@@Z -> 00a6e350 labelled '_global::UninitCopy_C3DTriangle2_00a6e350'
+00a96f00   RELOCATION_MATCH PASS   _M_fill_insert
+00a97040   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DVertex2@@PAV1@@std@@YIPAVC3DVertex2@@PAV1@00ABU__false_type@0@@Z -> 00a95a10 labelled '_global::UninitCopy_Record32_00a95a10'
+00a97040   RELOCATION_MATCH PASS   _M_fill_insert
+
+WINS: 16
+  00a72dd0 RELOCATION_MATCH std::vector<std::pair<CCharString, C3DMeshVolume>>::?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@VC3DMeshVolume@@@2@ABU32@ABU__false_type@2@I_N@Z
+  00a72fa0 RELOCATION_MATCH std::??$__introsort_loop@
+  00a730e0 RELOCATION_MATCH std::??$__introsort_loop@
+  00a750e0 RELOCATION_MATCH std::vector<CArray<C2DLineF>>::?_M_fill_insert@?$vector@V?$CArray@VC2DLineF@@@@V?$allocator@V?$CArray@VC2DLineF@@@@@std@@@std@@QAEXPAV?$CArray@VC2DLineF@@@@IABV3@@Z
+  00a7eb00 RELOCATION_MATCH std::??$__find@PBVCNavigationPosition@@VC2DVector@@@std@@YIPBVCNavigationPosition@@PBV1@0ABVC2DVector@@ABUrandom_access_iterator_tag@0@@Z
+  00a83d70 RELOCATION_MATCH std::vector<std::list<C2DLineF>>::??4?$vector@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  00a84270 RELOCATION_MATCH std::vector<std::list<C2DLineF>>::?_M_insert_overflow@?$vector@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@IAEXPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z
+  00a84690 RELOCATION_MATCH std::vector<std::list<C2DLineF>>::?_M_fill_insert@?$vector@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@V?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@QAEXPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@IABV32@@Z
+  00a84940 RELOCATION_MATCH std::vector<std::pair<unsigned __int64, std::list<C2DLineF>>>::??4?$vector@U?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@V?$allocator@U?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  00a85050 RELOCATION_MATCH std::??$__introsort_loop@
+  00a85560 RELOCATION_MATCH std::??$__uninitialized_fill_n@PAVCNavigationLayer@CNavQuadTree@@IV12@@std@@YIPAVCNavigationLayer@CNavQuadTree@@PAV12@IABV12@ABU__false_type@0@@Z
+  00a85b90 RELOCATION_MATCH std::vector<CNavQuadTree::CNavigationLayer>::?_M_insert_overflow@?$vector@VCNavigationLayer@CNavQuadTree@@V?$allocator@VCNavigationLayer@CNavQuadTree@@@std@@@std@@IAEXPAVCNavigationLayer@CNavQuadTree@@ABV34@ABU__false_type@2@I_N@Z
+  00a85cc0 RELOCATION_MATCH std::vector<CNavQuadTree::CNavigationLayer>::?_M_fill_insert@?$vector@VCNavigationLayer@CNavQuadTree@@V?$allocator@VCNavigationLayer@CNavQuadTree@@@std@@@std@@QAEXPAVCNavigationLayer@CNavQuadTree@@IABV34@@Z
+  00a8b6c0 RELOCATION_MATCH C3DMesh2::?PackBoneNames@C3DMesh2@@AAE_NABV?$CArray@VCCharString@@@@@Z
+  00a96f00 RELOCATION_MATCH std::vector<C3DTriangle2>::?_M_fill_insert@?$vector@VC3DTriangle2@@V?$allocator@VC3DTriangle2@@@std@@@std@@QAEXPAVC3DTriangle2@@IABV3@@Z
+  00a97040 RELOCATION_MATCH std::vector<C3DVertex2>::?_M_fill_insert@?$vector@VC3DVertex2@@V?$allocator@VC3DVertex2@@@std@@@std@@QAEXPAVC3DVertex2@@IABV3@@Z
+
+LANDED 16 wins into src/compiled + tests + catalog + oracle
+  stdvectorstdpairCCharStringC3DMeshVolume_Minsertoverflow_00a72dd0
+  std_introsortloop_00a72fa0
+  std_introsortloop_00a730e0
+  stdvectorCArrayC2DLineF_Mfillinsert_00a750e0
+  std_find_00a7eb00
+  stdvectorstdlistC2DLineF_operator_00a83d70
+  stdvectorstdlistC2DLineF_Minsertoverflow_00a84270
+  stdvectorstdlistC2DLineF_Mfillinsert_00a84690
+  stdvectorstdpairunsignedint64stdlistC2DLineF_operator_00a84940
+  std_introsortloop_00a85050
+  std_uninitializedfilln_00a85560
+  stdvectorCNavQuadTreeCNavigationLayer_Minsertoverflow_00a85b90
+  stdvectorCNavQuadTreeCNavigationLayer_Mfillinsert_00a85cc0
+  C3DMesh2_PackBoneNames_00a8b6c0
+  stdvectorC3DTriangle2_Mfillinsert_00a96f00
+  stdvectorC3DVertex2_Mfillinsert_00a97040

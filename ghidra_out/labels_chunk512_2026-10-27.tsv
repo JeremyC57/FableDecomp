@@ -1,0 +1,11 @@
+address	name	evidence
+00a730e0	std::__introsort_loop<pair<CCharString,C3DDummyObject>*,...>	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)
+00a750e0	vector<CArray<C2DLineF>>::_M_fill_insert	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)
+00a83d70	vector<list<C2DLineF>>::operator=	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)
+00a84270	vector<list<C2DLineF>>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)
+00a84690	vector<list<C2DLineF>>::_M_fill_insert	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)
+00a84940	vector<pair<unsigned __int64,list<C2DLineF>>>::operator=	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)
+00a85560	std::__uninitialized_fill_n<CNavQuadTree::CNavigationLayer*>	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)
+00a85b90	vector<CNavQuadTree::CNavigationLayer>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)
+00a85cc0	vector<CNavQuadTree::CNavigationLayer>::_M_fill_insert	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)
+00a8b6c0	C3DMesh2::PackBoneNames	proven per batch 2026-10-27_linux_hand512 NOTES.md (chunk 512)

@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+00a74180	DIFFER	489v472	-	CPhysicsMesh::CalculateLayeredNavigationLineInfo; parked after 4 grades: second inline Find select + face-loop register allocation (differ/)
+00a77780	DIFFER	302v298	-	CNavRegion::IsConnectedToRegion; parked after 3 grades + 1 QFE probe: VC shrink-wraps the ebx/ebp/esi pushes past the RegionID early return (differ/)
+00aa3af0	DIFFER	346v346	-	C3DKeyframe::ToMatrix(CMatrix4x4&,bool) const; parked after 4 grades: six integer stores scheduled early (differ/)
+00a74ac0	HELD	-	PASS	RELOCATION_MATCH on the lane; held from landing: __uninitialized_copy<const C2DLineF*,C2DLineF*> -> 0x00A13490 here vs 0x00A11210 in landed 0x00A13650 (byte-identical twins)
