@@ -34321,3 +34321,10 @@ __setdefaultprecision	0040135c	00401067
 ?SetCurrentAction@CThingCreatureBase@@QAE_NABV?$CCountedPointer@VCCreatureActionBase@@@@@Z	00664670	00712b60
 ?g_fFramesPerSecond_013ba860@@3MA	013ba860	006472b2
 ?push_front@?$list@VSDamageValue@CDrawDamage@NPlayerGui@@V?$allocator@VSDamageValue@CDrawDamage@NPlayerGui@@@std@@@std@@QAEXABVSDamageValue@CDrawDamage@NPlayerGui@@@Z	00655eb4	006472b2
+?SetAsUsingNarrator@CTCTalk@@QAEXABVCCharString@@@Z	006e2cf0	0089b050
+?SetAsWearing@CTCInventoryClothing@@QAEXABVCCharString@@@Z	005b413d	0089b3f0
+?SetAsAbleToMoveThroughSolidObjects@CTCCreatureNavigation@@QAEX_N@Z	006cb9d0	0089dbb0
+?SetAppearanceSeed@CTCRandomAppearanceMorph@@QAEXK@Z	00728460	008a0200
+?SetPScriptOverrideRangedTarget@CTCTargetingBase@@QAEXPAVCThing@@@Z	008abb50	008a0540
+?FadeIn@CTCFadeOutAndIn@@QAEXM_N@Z	006c3bd0	008a07c0
+??$__copy@PAVCCombatAction@@PAV1@H@std@@YIPAVCCombatAction@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	008b25c0	008b0ab0

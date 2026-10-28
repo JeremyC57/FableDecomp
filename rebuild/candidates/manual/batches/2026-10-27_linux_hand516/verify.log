@@ -1,0 +1,183 @@
+addr       parity           behav  name
+00899000   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00899000   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899000   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00899000   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00899000   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899000   RELOCATION_MATCH PASS   GiveHeroExperience
+0089b050   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089b050   RELOCATION_MATCH PASS   EntitySetWillBeUsingNarrator
+0089b3f0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089b3f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089b3f0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0089b3f0   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing
+0089b3f0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089b3f0   RELOCATION_MATCH PASS   SetHeroAsWearing
+0089c190   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089c190   RELOCATION_MATCH PASS   EntitySetInFaction
+0089c420   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089c420   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+0089c420   RELOCATION_MATCH PASS   EntitySetPersonalityOverride
+0089c470   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089c470   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+0089c470   RELOCATION_MATCH PASS   EntitySetPersonalityOverride
+0089c510   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089c510   RELOCATION_MATCH PASS   OpinionSourceSetAsAttentionGrabbing
+0089c850   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089c850   RELOCATION_MATCH PASS   RemoveOpinionDeedStillSearchingForWitnesses
+0089d910   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089d910   RELOCATION_MATCH PASS   EntityForceToLookAtNothing
+0089dbb0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089dbb0   RELOCATION_MATCH PASS   EntitySetAsAbleToWalkThroughSolidObjects
+0089dcd0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089dcd0   RELOCATION_MATCH PASS   EntitySetAllowBossPhaseChanges
+0089dd90   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089dd90   RELOCATION_MATCH PASS   EntitySetBossPhase
+0089de50   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089de50   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0089de50   RELOCATION_MATCH PASS   EntityLeaveCombatStance
+0089deb0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089deb0   RELOCATION_MATCH PASS   EntitySetAsDisplayingEmoteIcon
+0089e130   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089e130   RELOCATION_MATCH PASS   EntitySetMaxNumberOfAttackers
+0089ee00   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089ee00   RELOCATION_MATCH PASS   SetTeleporterAsActive
+0089ee60   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089ee60   RELOCATION_MATCH PASS   IsTeleporterActive
+0089ef30   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089ef30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089ef30   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0089ef30   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0089ef30   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089ef30   RELOCATION_MATCH PASS   SetMoralityChangingAsEnabled
+0089f1e0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089f1e0   RELOCATION_MATCH PASS   IsDiggingSpotEnabled
+0089f240   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089f240   RELOCATION_MATCH PASS   IsDiggingSpotHidden
+0089f2a0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089f2a0   RELOCATION_MATCH PASS   SetDiggingSpotAsHidden
+008a01a0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a01a0   WARN SHARED_HEADER_AVAILABLE CTCStockItem
+008a01a0   RELOCATION_MATCH PASS   EntityGetStockItemPrice
+008a0200   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a0200   WARN RELOC_NAME: ?SetAppearanceSeed@CTCRandomAppearanceMorph@@QAEXK@Z -> 00728460 labelled 'AddToInterface'
+008a0200   RELOCATION_MATCH PASS   EntitySetAppearanceMorphSeed
+008a0540   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a0540   RELOCATION_MATCH PASS   EntityClearRangedTarget
+008a0600   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a0600   WARN SHARED_HEADER_AVAILABLE CTCTargeted
+008a0600   RELOCATION_MATCH PASS   EntitySetTargetingType
+008a06c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a06c0   RELOCATION_MATCH PASS   EntitySetLightAsOn
+008a07c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a07c0   RELOCATION_MATCH PASS   EntityFadeIn
+008a0950   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a0950   RELOCATION_MATCH PASS   EntityEndScreamerSuperAttackThing
+008a0bc0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a0bc0   WARN RELOC_NAME: ?SetAppearanceSeed@CTCRandomAppearanceMorph@@QAEXK@Z -> 00728460 labelled 'AddToInterface'
+008a0bc0   RELOCATION_MATCH PASS   EntitySetAppearanceSeed
+008a0c10   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a0c10   RELOCATION_MATCH PASS   EntityGetAppearanceSeed
+008a0f70   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a0f70   RELOCATION_MATCH PASS   SetReadableObjectText
+008a1830   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a1830   RELOCATION_MATCH PASS   SetUseableByHero
+008a18f0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a18f0   RELOCATION_MATCH PASS   SetOwnedByHero
+008a1950   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a1950   WARN SHARED_HEADER_AVAILABLE CTCTurncoat
+008a1950   RELOCATION_MATCH PASS   SetIsThingTurncoatable
+008a1ab0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008a1ab0   RELOCATION_MATCH PASS   RemoveCreatureScriptedMode
+008a96f0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008a96f0   RELOCATION_MATCH PASS   SetIsGossipForPlayer
+008a97d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008a97d0   RELOCATION_MATCH PASS   SetIsGossipForPlayer
+008b0ab0   WARN RELOC_NAME: ??$__copy@PAVCCombatAction@@PAV1@H@std@@YIPAVCCombatAction@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 008b25c0 labelled '_global::Move_CountedPointer_008b25c0'
+008b0ab0   WARN RELOC_NAME: ??$__destroy_aux@PAVCCombatAction@@@std@@YIXPAVCCombatAction@@0ABU__false_type@0@@Z -> 008b3010 labelled '_global::DestroyRange_CountedPointer_008b3010'
+008b0ab0   RELOCATION_MATCH PASS   CCombatSequenceBase
+008d03e0   WARN SHARED_HEADER_AVAILABLE CGameScriptThing
+008d03e0   WARN RELOC_NAME: ?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z -> 004c1060 labelled 'CTCGraphicAppearance::GetHelperPointOr'
+008d03e0   RELOCATION_MATCH PASS   GetFocalPos
+
+WINS: 39
+  00899000 RELOCATION_MATCH CGameScriptInterface::?GiveHeroExperience@CGameScriptInterface@@UBEXJ@Z
+  0089b050 RELOCATION_MATCH CGameScriptInterface::?EntitySetWillBeUsingNarrator@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+  0089b3f0 RELOCATION_MATCH CGameScriptInterface::?SetHeroAsWearing@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  0089c190 RELOCATION_MATCH CGameScriptInterface::?EntitySetInFaction@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+  0089c420 RELOCATION_MATCH CGameScriptInterface::?EntitySetPersonalityOverride@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+  0089c470 RELOCATION_MATCH CGameScriptInterface::?EntitySetPersonalityOverride@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+  0089c510 RELOCATION_MATCH CGameScriptInterface::?OpinionSourceSetAsAttentionGrabbing@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0089c850 RELOCATION_MATCH CGameScriptInterface::?RemoveOpinionDeedStillSearchingForWitnesses@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+  0089d910 RELOCATION_MATCH CGameScriptInterface::?EntityForceToLookAtNothing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089dbb0 RELOCATION_MATCH CGameScriptInterface::?EntitySetAsAbleToWalkThroughSolidObjects@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0089dcd0 RELOCATION_MATCH CGameScriptInterface::?EntitySetAllowBossPhaseChanges@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0089dd90 RELOCATION_MATCH CGameScriptInterface::?EntitySetBossPhase@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+  0089de50 RELOCATION_MATCH CGameScriptInterface::?EntityLeaveCombatStance@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089deb0 RELOCATION_MATCH CGameScriptInterface::?EntitySetAsDisplayingEmoteIcon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0089e130 RELOCATION_MATCH CGameScriptInterface::?EntitySetMaxNumberOfAttackers@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+  0089ee00 RELOCATION_MATCH CGameScriptInterface::?SetTeleporterAsActive@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0089ee60 RELOCATION_MATCH CGameScriptInterface::?IsTeleporterActive@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  0089ef30 RELOCATION_MATCH CGameScriptInterface::?SetMoralityChangingAsEnabled@CGameScriptInterface@@UBEX_N@Z
+  0089f1e0 RELOCATION_MATCH CGameScriptInterface::?IsDiggingSpotEnabled@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  0089f240 RELOCATION_MATCH CGameScriptInterface::?IsDiggingSpotHidden@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  0089f2a0 RELOCATION_MATCH CGameScriptInterface::?SetDiggingSpotAsHidden@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008a01a0 RELOCATION_MATCH CGameScriptInterface::?EntityGetStockItemPrice@CGameScriptInterface@@UBEJABVCScriptThing@@@Z
+  008a0200 RELOCATION_MATCH CGameScriptInterface::?EntitySetAppearanceMorphSeed@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+  008a0540 RELOCATION_MATCH CGameScriptInterface::?EntityClearRangedTarget@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  008a0600 RELOCATION_MATCH CGameScriptInterface::?EntitySetTargetingType@CGameScriptInterface@@UBEXABVCScriptThing@@W4ETargetingType@@@Z
+  008a06c0 RELOCATION_MATCH CGameScriptInterface::?EntitySetLightAsOn@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008a07c0 RELOCATION_MATCH CGameScriptInterface::?EntityFadeIn@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+  008a0950 RELOCATION_MATCH CGameScriptInterface::?EntityEndScreamerSuperAttackThing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  008a0bc0 RELOCATION_MATCH CGameScriptInterface::?EntitySetAppearanceSeed@CGameScriptInterface@@UBEXABVCScriptThing@@K@Z
+  008a0c10 RELOCATION_MATCH CGameScriptInterface::?EntityGetAppearanceSeed@CGameScriptInterface@@UBEXABVCScriptThing@@AAK@Z
+  008a0f70 RELOCATION_MATCH CGameScriptInterface::?SetReadableObjectText@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCWideString@@@Z
+  008a1830 RELOCATION_MATCH CGameScriptInterface::?SetUseableByHero@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008a18f0 RELOCATION_MATCH CGameScriptInterface::?SetOwnedByHero@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008a1950 RELOCATION_MATCH CGameScriptInterface::?SetIsThingTurncoatable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008a1ab0 RELOCATION_MATCH CGameScriptInterface::?RemoveCreatureScriptedMode@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  008a96f0 RELOCATION_MATCH CGameScriptInterface::?SetIsGossipForPlayer@CGameScriptInterface@@UBEXABVCCharString@@_N@Z
+  008a97d0 RELOCATION_MATCH CGameScriptInterface::?SetIsGossipForPlayer@CGameScriptInterface@@UAEXVCCharString@@_N@Z
+  008b0ab0 RELOCATION_MATCH CCombatSequenceBase::??0CCombatSequenceBase@@QAE@AAVCThingCreatureBase@@0@Z
+  008d03e0 RELOCATION_MATCH CGameScriptThing::?GetFocalPos@CGameScriptThing@@UBE?AVC3DVector@@XZ
+
+LANDED 39 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_GiveHeroExperience_00899000
+  CGameScriptInterface_EntitySetWillBeUsingNarrator_0089b050
+  CGameScriptInterface_SetHeroAsWearing_0089b3f0
+  CGameScriptInterface_EntitySetInFaction_0089c190
+  CGameScriptInterface_EntitySetPersonalityOverride_0089c420
+  CGameScriptInterface_EntitySetPersonalityOverride_0089c470
+  CGameScriptInterface_OpinionSourceSetAsAttentionGrabbing_0089c510
+  CGameScriptInterface_RemoveOpinionDeedStillSearchingForWitnesses_0089c850
+  CGameScriptInterface_EntityForceToLookAtNothing_0089d910
+  CGameScriptInterface_EntitySetAsAbleToWalkThroughSolidObjects_0089dbb0
+  CGameScriptInterface_EntitySetAllowBossPhaseChanges_0089dcd0
+  CGameScriptInterface_EntitySetBossPhase_0089dd90
+  CGameScriptInterface_EntityLeaveCombatStance_0089de50
+  CGameScriptInterface_EntitySetAsDisplayingEmoteIcon_0089deb0
+  CGameScriptInterface_EntitySetMaxNumberOfAttackers_0089e130
+  CGameScriptInterface_SetTeleporterAsActive_0089ee00
+  CGameScriptInterface_IsTeleporterActive_0089ee60
+  CGameScriptInterface_SetMoralityChangingAsEnabled_0089ef30
+  CGameScriptInterface_IsDiggingSpotEnabled_0089f1e0
+  CGameScriptInterface_IsDiggingSpotHidden_0089f240
+  CGameScriptInterface_SetDiggingSpotAsHidden_0089f2a0
+  CGameScriptInterface_EntityGetStockItemPrice_008a01a0
+  CGameScriptInterface_EntitySetAppearanceMorphSeed_008a0200
+  CGameScriptInterface_EntityClearRangedTarget_008a0540
+  CGameScriptInterface_EntitySetTargetingType_008a0600
+  CGameScriptInterface_EntitySetLightAsOn_008a06c0
+  CGameScriptInterface_EntityFadeIn_008a07c0
+  CGameScriptInterface_EntityEndScreamerSuperAttackThing_008a0950
+  CGameScriptInterface_EntitySetAppearanceSeed_008a0bc0
+  CGameScriptInterface_EntityGetAppearanceSeed_008a0c10
+  CGameScriptInterface_SetReadableObjectText_008a0f70
+  CGameScriptInterface_SetUseableByHero_008a1830
+  CGameScriptInterface_SetOwnedByHero_008a18f0
+  CGameScriptInterface_SetIsThingTurncoatable_008a1950
+  CGameScriptInterface_RemoveCreatureScriptedMode_008a1ab0
+  CGameScriptInterface_SetIsGossipForPlayer_008a96f0
+  CGameScriptInterface_SetIsGossipForPlayer_008a97d0
+  CCombatSequenceBase_CCombatSequenceBase_008b0ab0
+  CGameScriptThing_GetFocalPos_008d03e0

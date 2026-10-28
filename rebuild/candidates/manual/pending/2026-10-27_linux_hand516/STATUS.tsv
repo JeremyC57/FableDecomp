@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+008c6160	DIFFER	87v87	-	register swap only (this esi/&PCreature edi in retail, swapped in ours); 4 grades; best in differ/

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00899000	RELOCATION_MATCH	95v95	PASS	GiveHeroExperience: GetInterface model (L083/L084), form H, interface 0x68
+0089b050	RELOCATION_MATCH	95v95	PASS	EntitySetWillBeUsingNarrator: GetInterface model (L083/L084), form VC, interface 0xF
+0089b3f0	RELOCATION_MATCH	96v96	PASS	SetHeroAsWearing: GetInterface model (L083/L084), form H, interface 0x12
+0089c190	RELOCATION_MATCH	90v90	PASS	EntitySetInFaction: GetInterface model (L083/L084), form V, interface 0x49
+0089c420	RELOCATION_MATCH	79v79	PASS	EntitySetPersonalityOverride: GetInterface model (L083/L084), form N, interface 0x4F
+0089c470	RELOCATION_MATCH	79v79	PASS	EntitySetPersonalityOverride: GetInterface model (L083/L084), form N, interface 0x4F
+0089c510	RELOCATION_MATCH	74v74	PASS	OpinionSourceSetAsAttentionGrabbing: GetInterface model (L083/L084), form N, interface 0x50
+0089c850	RELOCATION_MATCH	79v79	PASS	RemoveOpinionDeedStillSearchingForWitnesses: GetInterface model (L083/L084), form N, interface 0x51
+0089d910	RELOCATION_MATCH	82v82	PASS	EntityForceToLookAtNothing: GetInterface model (L083/L084), form V, interface 0x8
+0089dbb0	RELOCATION_MATCH	89v89	PASS	EntitySetAsAbleToWalkThroughSolidObjects: GetInterface model (L083/L084), form V, interface 0x7
+0089dcd0	RELOCATION_MATCH	88v88	PASS	EntitySetAllowBossPhaseChanges: GetInterface model (L083/L084), form V, interface 0xAD
+0089dd90	RELOCATION_MATCH	95v95	PASS	EntitySetBossPhase: GetInterface model (L083/L084), form V, interface 0xAD
+0089de50	RELOCATION_MATCH	86v86	PASS	EntityLeaveCombatStance: GetInterface model (L083/L084), form V, interface 0x30
+0089deb0	RELOCATION_MATCH	83v83	PASS	EntitySetAsDisplayingEmoteIcon: GetInterface model (L083/L084), form V, interface 0x45
+0089e130	RELOCATION_MATCH	83v83	PASS	EntitySetMaxNumberOfAttackers: GetInterface model (L083/L084), form ND, interface 0x36
+0089ee00	RELOCATION_MATCH	94v94	PASS	SetTeleporterAsActive: GetInterface model (L083/L084), form V, interface 0xDD
+0089ee60	RELOCATION_MATCH	91v91	PASS	IsTeleporterActive: GetInterface model (L083/L084), form V, interface 0xDD
+0089ef30	RELOCATION_MATCH	88v88	PASS	SetMoralityChangingAsEnabled: GetInterface model (L083/L084), form H, interface 0x4
+0089f1e0	RELOCATION_MATCH	89v89	PASS	IsDiggingSpotEnabled: GetInterface model (L083/L084), form V, interface 0xEF
+0089f240	RELOCATION_MATCH	89v89	PASS	IsDiggingSpotHidden: GetInterface model (L083/L084), form V, interface 0xEF
+0089f2a0	RELOCATION_MATCH	87v87	PASS	SetDiggingSpotAsHidden: GetInterface model (L083/L084), form V, interface 0xEF
+008a01a0	RELOCATION_MATCH	88v88	PASS	EntityGetStockItemPrice: GetInterface model (L083/L084), form V, interface 0x54
+008a0200	RELOCATION_MATCH	88v88	PASS	EntitySetAppearanceMorphSeed: GetInterface model (L083/L084), form V, interface 0x3
+008a0540	RELOCATION_MATCH	94v94	PASS	EntityClearRangedTarget: GetInterface model (L083/L084), form V, interface 0x8
+008a0600	RELOCATION_MATCH	90v90	PASS	EntitySetTargetingType: GetInterface model (L083/L084), form V, interface 0x9
+008a06c0	RELOCATION_MATCH	89v89	PASS	EntitySetLightAsOn: GetInterface model (L083/L084), form V, interface 0x27
+008a07c0	RELOCATION_MATCH	96v96	PASS	EntityFadeIn: GetInterface model (L083/L084), form V, interface 0xF9
+008a0950	RELOCATION_MATCH	95v95	PASS	EntityEndScreamerSuperAttackThing: GetInterface model (L083/L084), form V, interface 0x31
+008a0bc0	RELOCATION_MATCH	76v76	PASS	EntitySetAppearanceSeed: GetInterface model (L083/L084), form N, interface 0x3
+008a0c10	RELOCATION_MATCH	73v73	PASS	EntityGetAppearanceSeed: GetInterface model (L083/L084), form N, interface 0x3
+008a0f70	RELOCATION_MATCH	88v88	PASS	SetReadableObjectText: GetInterface model (L083/L084), form ND, interface 0xD
+008a1830	RELOCATION_MATCH	89v89	PASS	SetUseableByHero: GetInterface model (L083/L084), form V, interface 0xD
+008a18f0	RELOCATION_MATCH	89v89	PASS	SetOwnedByHero: GetInterface model (L083/L084), form V, interface 0xD
+008a1950	RELOCATION_MATCH	87v87	PASS	SetIsThingTurncoatable: GetInterface model (L083/L084), form V, interface 0x9F
+008a1ab0	RELOCATION_MATCH	95v95	PASS	RemoveCreatureScriptedMode: GetInterface model (L083/L084), form V, interface 0x31
+008a96f0	RELOCATION_MATCH	47v47	PASS	SetIsGossipForPlayer: inlined CTCAIScratchpad::SetIsGossipForPlayer(CCharString, bool)
+008a97d0	RELOCATION_MATCH	56v56	PASS	SetIsGossipForPlayer: inlined CTCAIScratchpad::SetIsGossipForPlayer(CCharString, bool)
+008b0ab0	RELOCATION_MATCH	96v96	PASS	CCombatSequenceBase ctor: real STLport vector with _STLP_alloc_proxy; same-TU __copy/__destroy_aux bodies
+008c6160	DIFFER	87v87	-	register swap only (this esi/&PCreature edi in retail, swapped in ours); 4 grades; best in differ/
+008d03e0	RELOCATION_MATCH	92v92	PASS	GetFocalPos: nested ifs, named thing local, C3DVector inline copy ctor
