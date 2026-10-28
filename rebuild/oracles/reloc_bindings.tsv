@@ -35135,3 +35135,14 @@ __imp__SetCursor@4	014402f4	0099d660
 ?g_pGlowRenderer_01436e34@@3PAVCEngineScreenEffectGlowRenderer@@A	01436e34	00b24500
 ?g_pRadialBlurRenderer_01436e30@@3PAVCEngineScreenEffectRadialBlurRenderer@@A	01436e30	00b24500
 ?SetDefaultRenderStates@CEngine@@AAEXXZ	00b24850	00b25950
+??4?$_Rb_tree@KU?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	00bd8d00	00bd2920
+?PeekAnimatedMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z	00a242b0	00bd2920
+?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveBase@@IAEXM@Z	00b8fd40	00bd2920
+?_M_erase@?$_Rb_tree@KU?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKV?$CArray@VC3DVector@@@@@std@@@2@@Z	00bd8a10	00bd2920
+??0CIndexBuffer@@QAE@KKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z	00ac2010	00be3110
+?BuildSharedIndexBufferGenerationTables@CEngineLandscapeMeshBuilder@@QAEXPAVC2DCoordI@@PAG1JJAAJ@Z	00be2cd0	00be3110
+?GetIndexBufferMemPool@CEngineResourceManager@@QAE?AW4EIndexBufferPool@@XZ	00b3b0a0	00be3110
+?RoundHalfDownToLong@@YAJM@Z	00c3ff70	00c3ff90
+?g_DirectionFilterTable_012b5e10@@3QBGB	012b5e10	00c3ff90
+?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z	00e80d60	00e81b40
+?_M_insert_overflow@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXPAVCWideString@@ABV3@ABU__false_type@2@I_N@Z	00412330	00e81b40

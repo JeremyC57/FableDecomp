@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00bcf4f0	DIFFER	374	test n/a	differ/00bcf4f0.cpp DIFFER(363v374): x87 store-reload of Scale + Initialised store order
+00bd2920	RELOCATION_MATCH	361	PASS	src
+00bd2bc0	RELOCATION_MATCH	389	PASS	src
+00be1c10	DIFFER	353	test n/a	differ/00be1c10.cpp DIFFER(353v353): retail stores factor X/Y before computing Z
+00be2b70	DIFFER	343	test n/a	differ/00be2b70.cpp DIFFER(343v343): retail frame sub esp,14h vs 10h (one dead slot)
+00be3110	RELOCATION_MATCH	386	PASS	src; stand-in BuildSharedIndexBufferGenerationTables (real callee 0x00BE2CD0)
+00beea00	DIFFER	266	test n/a	differ/00beea00.cpp DIFFER(266v266): by-value pair copy load/store pipelining; Flags /Gr
+00bf7df0	RELOCATION_MATCH	379	PASS	retail_asm (SSE maxps/minps box distance under g_SSEAvailable)
+00c0c270	DIFFER	433	test n/a	differ/00c0c270.cpp DIFFER(383v433): VC7.1 inlines fewer GetData calls than retail
+00c0cb50	RELOCATION_MATCH	278	PASS	src
+00c174a0	SKIP	406	-	libpk LTCG custom register-arg convention (esi/ebx live-in) + EH + /GS; lane gap
+00c1cda0	MATCH	380	PASS	src (__fastcall like landed PostMultiply 0x00C1CF20)
+00c2e610	SKIP	395	-	libpk EH frame with and esp,-8 alignment; owning class unproven; not attempted
+00c3ff90	RELOCATION_MATCH	318	PASS	retail_asm (bare fistp dword helper); stand-in RoundHalfDownToLong 0x00C3FF70
+00c43b30	SKIP	505	-	audio 505 B, 5 args with arg-slot bool reuse; class unproven; not attempted (budget)
+00c44460	RELOCATION_MATCH	228	PASS	src
+00cafa10	SKIP	395	-	DirectShow strmbase-style CAutoLock body, no xrefs, class unproven; not attempted (budget)
+00d226e0	RELOCATION_MATCH	413	PASS	src
+00e3ac70	RELOCATION_MATCH	482	PASS	src
+00e81b40	RELOCATION_MATCH	459	PASS	retail_asm (fistp float-to-long helper inlined twice)

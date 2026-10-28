@@ -769,3 +769,5 @@ Chunk 527 (agent527, re-queue 248-467 bytes; batch 2026-10-27_linux_hand527): 13
 Chunk 528 (agent528, re-queue 241-502 bytes; batch 2026-10-27_linux_hand528): 17 of 20 landed (RELOCATION_MATCH), 3 parked (x87 / refcount-in-memory / dot order). 37 NAME_FIXES deferred (queue now 346).
 
 Chunk 529 (agent529, re-queue 241-495 bytes; batch 2026-10-27_linux_hand529): 14 of 20 landed (1 MATCH, 10 RELOCATION_MATCH, 3 retail_asm quaternion / particle rows with the inline fistp helper), 6 parked. 38 NAME_FIXES deferred (queue now 384).
+
+Chunk 531 (agent531, re-queue 228-505 bytes; batch 2026-10-27_linux_hand531): 11 of 20 landed (1 MATCH, 7 RELOCATION_MATCH, 3 retail_asm incl. the hand SSE bounding-box kernel at 0x00BF7DF0), 5 parked, 4 skipped (libpk LTCG/EH rows, 2 not attempted). 15 NAME_FIXES deferred (queue now 399).

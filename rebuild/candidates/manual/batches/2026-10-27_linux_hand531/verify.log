@@ -1,0 +1,68 @@
+addr       parity           behav  name
+00bd2920   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00bd2920   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00bd2920   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00bd2920   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bd2920   RELOCATION_MATCH PASS   Update
+00bd2bc0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00bd2bc0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00bd2bc0   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00bd2bc0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bd2bc0   RELOCATION_MATCH PASS   Update
+00be3110   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00be3110   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00be3110   WARN RELOC_NAME: ?GetIndexBufferMemPool@CEngineResourceManager@@QAE?AW4EIndexBufferPool@@XZ -> 00b3b0a0 labelled '_global::ReturnConst_1_00b3b0a0'
+00be3110   RELOCATION_MATCH PASS   BuildSharedIndexBuffers
+00c0cb50   RELOCATION_MATCH PASS   Insert
+00c1cda0   MATCH            PASS   PreMultiply
+00c44460   WARN RELOC_NAME: ?GetDesc@CSoundBuffer@@QBEPBUSBufferDesc@@XZ -> 00c3c4a0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c44460   WARN RELOC_NAME: ?AddRef@CSoundBuffer@@QAE_NXZ -> 00c3c5d0 labelled 'CCreatureAction_FireMissileWeapon::FrameUpdate'
+00c44460   RELOCATION_MATCH PASS   Enqueue
+00d226e0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d226e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d226e0   RELOCATION_MATCH PASS   SendBodyguardsToTheRightPlace
+00e3ac70   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e3ac70   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e3ac70   RELOCATION_MATCH PASS   Init
+
+WINS: 8
+  00bd2920 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::?Update@CEngineInternalPrimitiveAnimatedMesh@@UAEXABVCEnginePrimitive@@K@Z
+  00bd2bc0 RELOCATION_MATCH CEngineInternalPrimitive2DAnimatedMesh::?Update@CEngineInternalPrimitive2DAnimatedMesh@@UAEXABVCEnginePrimitive@@K@Z
+  00be3110 RELOCATION_MATCH CEngineLandscapeMeshBuilder::?BuildSharedIndexBuffers@CEngineLandscapeMeshBuilder@@AAEXXZ
+  00c0cb50 RELOCATION_MATCH CString::?Insert@CString@@QAEHHD@Z
+  00c1cda0 MATCH CMatrix3x4::?PreMultiply@CMatrix3x4@@QAIXABV1@@Z
+  00c44460 RELOCATION_MATCH CircularQueue::?Enqueue@CircularQueue@@QAE_NPAUCSoundBuffer@@_K@Z
+  00d226e0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::?SendBodyguardsToTheRightPlace@CQ_BreakSiegeScript@NScript@@QAEXVCCharString@@0@Z
+  00e3ac70 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloLady::?Init@CBordelloLady@CV_BordelloScript@NScript@@EAEXXZ
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CEngineInternalPrimitiveAnimatedMesh_Update_00bd2920
+  CEngineInternalPrimitive2DAnimatedMesh_Update_00bd2bc0
+  CEngineLandscapeMeshBuilder_BuildSharedIndexBuffers_00be3110
+  CString_Insert_00c0cb50
+  CMatrix3x4_PreMultiply_00c1cda0
+  CircularQueue_Enqueue_00c44460
+  NScriptCQBreakSiegeScript_SendBodyguardsToTheRightPlace_00d226e0
+  NScriptCVBordelloScriptCBordelloLady_Init_00e3ac70
+=== retail_asm payload ===
+addr       parity           behav  name
+00bf7df0   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00bf7df0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer
+00bf7df0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode
+00bf7df0   RELOCATION_MATCH PASS   GetDesiredLODBand
+00c3ff90   RELOCATION_MATCH PASS   LookupAzimuthElevation
+00e81b40   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e81b40   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e81b40   WARN RELOC_NAME: ?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z -> 00e80d60 labelled '_global::CTCCarryable_Initialize'
+00e81b40   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PB_W@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00e81b40   RELOCATION_MATCH PASS   GetBiggestFishWeight
+
+WINS: 3
+  00bf7df0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ
+  00c3ff90 RELOCATION_MATCH _global::?LookupAzimuthElevation@@YAJMM@Z
+  00e81b40 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CFishCompOrganiser::?GetBiggestFishWeight@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEMXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CLandscapeBackgroundTreeNode_GetDesiredLODBand_00bf7df0
+  global_LookupAzimuthElevation_00c3ff90
+  NScriptCVFishingCompetitionScriptCFishCompOrganiser_GetBiggestFishWeight_00e81b40

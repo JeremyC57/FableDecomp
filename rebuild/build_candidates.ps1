@@ -361863,6 +361863,84 @@ $catalog = @(
         TestSource = '00/b0/NParticleEngineCParticle_GetInterpolatedOrientation_00b05620_test.cpp'
         PassPattern = '00b05620_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00bd2920'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/bd/CEngineInternalPrimitiveAnimatedMesh_Update_00bd2920.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitiveAnimatedMesh_Update_00bd2920_test.cpp'
+        PassPattern = '00bd2920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd2bc0'
+        Module = 'CEngineInternalPrimitive2DAnimatedMesh'
+        Source = '00/bd/CEngineInternalPrimitive2DAnimatedMesh_Update_00bd2bc0.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitive2DAnimatedMesh_Update_00bd2bc0_test.cpp'
+        PassPattern = '00bd2bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be3110'
+        Module = 'CEngineLandscapeMeshBuilder'
+        Source = '00/be/CEngineLandscapeMeshBuilder_BuildSharedIndexBuffers_00be3110.cpp'
+        TestSource = '00/be/CEngineLandscapeMeshBuilder_BuildSharedIndexBuffers_00be3110_test.cpp'
+        PassPattern = '00be3110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0cb50'
+        Module = 'CString'
+        Source = '00/c0/CString_Insert_00c0cb50.cpp'
+        TestSource = '00/c0/CString_Insert_00c0cb50_test.cpp'
+        PassPattern = '00c0cb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1cda0'
+        Module = 'CMatrix3x4'
+        Source = '00/c1/CMatrix3x4_PreMultiply_00c1cda0.cpp'
+        TestSource = '00/c1/CMatrix3x4_PreMultiply_00c1cda0_test.cpp'
+        PassPattern = '00c1cda0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c44460'
+        Module = 'CircularQueue'
+        Source = '00/c4/CircularQueue_Enqueue_00c44460.cpp'
+        TestSource = '00/c4/CircularQueue_Enqueue_00c44460_test.cpp'
+        PassPattern = '00c44460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d226e0'
+        Module = 'NScript::CQ_BreakSiegeScript'
+        Source = '00/d2/NScriptCQBreakSiegeScript_SendBodyguardsToTheRightPlace_00d226e0.cpp'
+        TestSource = '00/d2/NScriptCQBreakSiegeScript_SendBodyguardsToTheRightPlace_00d226e0_test.cpp'
+        PassPattern = '00d226e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3ac70'
+        Module = 'NScript::CV_BordelloScript::CBordelloLady'
+        Source = '00/e3/NScriptCVBordelloScriptCBordelloLady_Init_00e3ac70.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScriptCBordelloLady_Init_00e3ac70_test.cpp'
+        PassPattern = '00e3ac70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf7df0'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_GetDesiredLODBand_00bf7df0.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_GetDesiredLODBand_00bf7df0_test.cpp'
+        PassPattern = '00bf7df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3ff90'
+        Module = '_global'
+        Source = '00/c3/global_LookupAzimuthElevation_00c3ff90.cpp'
+        TestSource = '00/c3/global_LookupAzimuthElevation_00c3ff90_test.cpp'
+        PassPattern = '00c3ff90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e81b40'
+        Module = 'NScript::CV_FishingCompetitionScript::CFishCompOrganiser'
+        Source = '00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_GetBiggestFishWeight_00e81b40.cpp'
+        TestSource = '00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_GetBiggestFishWeight_00e81b40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        PassPattern = '00e81b40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
