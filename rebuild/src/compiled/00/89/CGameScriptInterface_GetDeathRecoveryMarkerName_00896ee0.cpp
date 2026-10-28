@@ -1,7 +1,7 @@
 // CGameScriptInterface::GetDeathRecoveryMarkerName() const -- the hero's death-recovery marker name (hero-stats component), or "" without a live hero holding it
 // Leaf: ?GetDeathRecoveryMarkerName@CGameScriptInterface@@UBE?AVCCharString@@XZ
 // Retail: Fable.exe @ 0x00896EE0, 125 bytes, `ret 4` (hidden result); Ego_r.pdb same symbol.
-// Body: hero = PlayerManager (+0x14)->GetMainPlayer() (0x00449970)->GetPControlledCreature() (0x00487DD0: `add ecx,2Ch;
+// Body: hero = PlayerManager (+0x14)->GetMainPlayer() (0x00449970)->PeekPControlledCreature() (0x00487DD0, Ego_r.pdb order Get 0x00493650 then Peek 0x00493660: `add ecx,2Ch;
 // jmp` into CPlayer::ControlledCreature +0x2c, Ego_r.pdb CIntelligentPointer<CThingPlayerCreature> at 44); if hero, not dead
 // and holding interface 4 (bit 4 of UsingComponents +0x20): PeekTC (const LowerBound 0x004365B0) and return a copy
 // (0x0099EC30) of CTCHeroStats::DeathRecoveryMarkerName (+0x170); else return CCharString("", -1) (0x0099EBF0, literal
@@ -75,7 +75,7 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
 class CPlayerManager {
 public:
@@ -92,7 +92,7 @@ public:
 };
 CCharString CGameScriptInterface::GetDeathRecoveryMarkerName() const
 {
-    const CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    const CThing* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
     if (hero && !hero->IsDead())
     {
         const CTCHeroStats* stats;

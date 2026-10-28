@@ -15835,7 +15835,7 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ??0CScriptModuleMoveBetweenLookFromAndLookTo@NCameraModes@@QAE@ABVC3DVector@@000J@Z	008525f0	00892610
 ??0CScriptModuleMoveBetweenLookingAt@NCameraModes@@QAE@ABVCThing@@ABVC3DVector@@1JM@Z	00852d90	008926d0
 ??0CScriptModuleBase@NCameraModes@@QAE@XZ	005ed070	00892b50
-?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dd0	00896ee0
+?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	00487dd0	00896ee0
 ?HasCurrentMarriage@CTCHeroStats@@QBE_NXZ	0057ac4b	00897b10
 ?HasMarriageInState@CTCHeroStats@@QBE_NW4EMarriageState@@@Z	0057ac29	00897b70
 ?PeekPPlayerCharacter@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	00487dd0	00899140

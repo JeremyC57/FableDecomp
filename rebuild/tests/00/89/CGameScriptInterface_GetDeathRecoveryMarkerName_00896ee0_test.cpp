@@ -64,7 +64,7 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
 class CPlayerManager {
 public:
@@ -81,7 +81,7 @@ public:
 };
 CCharString CGameScriptInterface::GetDeathRecoveryMarkerName() const
 {
-    const CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    const CThing* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
     if (hero && !hero->IsDead())
     {
         const CTCHeroStats* stats;
@@ -98,7 +98,7 @@ static int g_copies, g_literals; static long g_len;
 CCharString::CCharString(const char* s, long length) { PStringData = (void*)s; g_len = length; ++g_literals; }
 CCharString::CCharString(const CCharString& o) { PStringData = o.PStringData; ++g_copies; }
 static CThingPlayerCreature g_hero; static CThingPlayerCreature* g_heroPtr;
-CThingPlayerCreature* CPlayer::GetPControlledCreature() const { return g_heroPtr; }
+const CThingPlayerCreature* CPlayer::PeekPControlledCreature() const { return g_heroPtr; }
 static CPlayer g_player;
 CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
 int main()
