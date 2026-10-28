@@ -1,0 +1,26 @@
+address	status	bytes	test	note
+00bfac70	RELOCATION_MATCH	78v78	PASS	CLocalDetailPrimitiveMeshZSpriteBatch ctor (PDB); landed 0x00BFAA80 sibling model; base inits, Objects/ZSpriteEntries 0, HasMeshPrimitiveHandles false
+00bfde80	RELOCATION_MATCH	58v58	PASS	CLandscapeLayerMesh::RelocateData (private virtual, vtable 0x012A835C slot 1); callee 0x00AC1F60 is CIndexBuffer::OnPostRelocation (donor order)
+00bfef20	SKIP	24	-	SKIP: __finally funclet of CRT eh vector destructor iterator 0x00BFEED8 (runs on the parent ebp frame, called at 0x00BFEF13); not a function
+00c10c90	RELOCATION_MATCH	60v60	PASS	CSoundEventManager::GetPhysicalPlayer (libpk, descriptive); label CInputProcessRebootGame::ProcessInput is a propagated wrong label
+00c20cb0	RELOCATION_MATCH	46v46	PASS	CSoundEvent::HasPositiveGain (libpk, descriptive); CheckState 0x00C20720 same-TU noinline stand-in under its bound name
+00c28380	MATCH	21v21	PASS	CHandleBasedMemoryPool::GetPointerFromHandle (libpk copy of the engine pool; PDB name by donor order); return Handles[handle]+1
+00c28640	MATCH	75v75	PASS	CHandleBasedMemoryPool::ValidateResources (libpk pool copy); index Handles[i] directly (a named local gives 72v75)
+00c28690	RELOCATION_MATCH	82v82	PASS	CHandleBasedMemoryPool::Free (PDB name by donor order; bound FreeAllocation is wrong); callees InsertFreeArea/CombineAdjacentAreas/InternalFreeHandle
+00c2d260	RELOCATION_MATCH	66v66	PASS	CInstanceManager::UseInstance (bound by the landed Update); CInstance::Setup 0x00C38CD0, CName::GetString 0x00C16890
+00c38850	MATCH	28v28	PASS	CInstance::SetScale(float) (libpk, descriptive); float forwarded as tail jmp [edx+14h] proves the float parameter
+00c437c0	RELOCATION_MATCH	69v69	PASS	CAudioObject::FlushQueue (libpk, descriptive); landed ReleaseQueue 0x00C43810 shape without the per-buffer release; GetInfo returns SQueueInfo&
+00c52c40	DIFFER	75v75	-	DIFFER(75v75): CCpuInfo::GetCyrixModelName; register choice only (family-5 block loads Model into ecx, retail eax); 4 grades spent; in differ/
+00c59720	MATCH	74v74	PASS	CCodaVoice::Play (libpk vtable 0x012B5C10 slot 7); SetBuffer slot 18 with the 0x100 loop bit, SetFormat 14, Reset 17, return 2
+00c59bc0	MATCH	89v89	PASS	CAudioSource::BeginSound (bound spelling kept); current queue slot item/time, SetBuffer with loop bit, SetFormat
+00c624c0	RELOCATION_MATCH	54v54	PASS	CAmbientTrigger::UpdateVolume (libpk, descriptive); GetHandleTable 0x00C62440, GetVolume 0x00C46F40, slot 25 SetVolume
+00c91360	MATCH	36v36	PASS	oggpack_readinit (libogg bitwise.c, C /Gr fastcall); bound spelling kept
+00ca0620	RELOCATION_MATCH	81v81	PASS	_encodepart (libvorbis res0.c); local_book_besterror 0x00CA02B0 __stdcall LTCG static, vorbis_book_encode 0x00C96140 fastcall
+00cba7e0	RELOCATION_MATCH	88v88	PASS	std::swap<pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>> (landed 0x00CBA8E0 swap model, explicit instantiation)
+00d9f160	RELOCATION_MATCH	56v56	PASS	CQ_MinionCampScript::CMC_Minion::Init (PDB; vtable 0x012D6DAC slot 2); NumberOfMinions++ then heal Me to 100 via CGSI 264/265
+00e376d0	RELOCATION_MATCH	89v89	PASS	CV_AssassinAttacksScript ctor (PDB); level-script base, RegionOfMostRecentKill, RegionInfo[5] names, RegionKillCounts vector
+00e5dde0	RELOCATION_MATCH	90v90	PASS	CV_BodyGuardScript::CBodyGuard ctor (PDB); landed CFisticuffsMember 0x00E83920 model with AngerTimer +0x30 and AttackedBySummonersTimer +0x34
+00e7dfe0	RELOCATION_MATCH	52v52	PASS	CPredicate_And<CIsThingAlive,CIsVariableFalse> scalar deleting dtor; landed 0x00E245A0 model plus a user inline ~CIsVariableFalse
+00e7e110	RELOCATION_MATCH	53v53	PASS	CV_FishingCompetitionScript ctor (PDB); level-script base, Winner CCharString +0x68, SizeComment vector +0x74
+00eb4710	RELOCATION_MATCH	76v76	PASS	CV_MurderTwistFinalScript::CMurderTwistAssassin::IsFeelingThreatened (PDB, private bool); terminate-guarded returns on both paths; GetSquaredDistanceBetweenThings is 0x00CBE583 (bindings swapped, see NAME_FIXES)
+00f3fbe0	SKIP	24	-	SKIP: __finally funclet of CRT eh vector constructor iterator 0x00F3FB96 (parent ebp frame); not a function

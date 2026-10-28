@@ -30,8 +30,8 @@ class CGameScriptInterface { public:
     void EntitySetMaxRunningSpeed(const CScriptThing&, float s) { g_speeds.push_back(s); }
     long GetWorldFrame() const { return g_frames; }
 };
-static float GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b) { return (a.x - b.x) * (a.x - b.x); }
-static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float d) { return GetSquaredDistanceBetweenThings(a, b) < d * d; }
+static float GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b) { return (a.x - b.x) * (a.x - b.x); }
+static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float d) { return GetDistanceBetweenThings(a, b) < d * d; }
 static long ToInt(const std::string& s) { return std::atoi(s.c_str()); }
 struct CPrisonRacer {
     CGameScriptInterface* Game; CScriptThing Me; CQ_PrisonRaceScript* ParentClass; long RaceWaypointIndex;
@@ -57,7 +57,7 @@ void CPrisonRacer::Main()
         if (Game->GetWorldFrame() % 4 == 0) {
             float nearest = 1000.0f;
             for (unsigned long i = 0; i < speedChecks.size(); ++i) {
-                float d = GetSquaredDistanceBetweenThings(Me, speedChecks[i]);
+                float d = GetDistanceBetweenThings(Me, speedChecks[i]);
                 if (d < nearest) { nearest = d; RaceWaypointIndex = ToInt(speedChecks[i].GetDataString()); }
             }
         }

@@ -5,7 +5,7 @@
 //   0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 /
 //   MoveToPosition 0x007E72F0 / dtor 0x007E74D0, movie PImp dtor 0x006E7AB0 / out-of-line dtor 0x006E7B80, IsActiveThreadTerminating
 //   0x00F35B30, GFIntToCharString 0x0099F830, operator+ 0x0099F690 / 0x0099F600, CCharString 0x0099EBF0 / 0x0099EAE0 / 0x0099E4C0,
-//   GetDistanceBetweenThings 0x00CBE583, FadeOutAndKillEntity 0x00CBE716, operator delete 0x00BFE9BC; GameCalls slots 7, 8, 70,
+//   GetSquaredDistanceBetweenThings 0x00CBE583, FadeOutAndKillEntity 0x00CBE716, operator delete 0x00BFE9BC; GameCalls slots 7, 8, 70,
 //   108 RemoveThing, 264, 364-366, 370, 379; CScriptThing slots 6, 21, 27, 41, 42.
 // Layout: Ego_r.pdb CFH_Villager (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CQ_FireHeartScript),
 //   PMasterData +0x18, MyID +0x1c. The parent's retail offsets do not follow the PDB (its maps/vectors are smaller in retail):
@@ -178,7 +178,7 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
 CCharString __fastcall GFIntToCharString(long value);                   // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
-float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
+float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
 struct CQ_FireHeartScript {
     unsigned char _pad0[0x49];
@@ -305,7 +305,7 @@ void CFH_Villager::Main()
         }
         if (IsActiveThreadTerminating())
             return;
-        if (GetDistanceBetweenThings(Me, ParentClass->VillagerEscapeMarker) <= g_fSixteen) {
+        if (GetSquaredDistanceBetweenThings(Me, ParentClass->VillagerEscapeMarker) <= g_fSixteen) {
             if (IsActiveThreadTerminating())
                 return;
             FadeOutAndKillEntity(Me, true, 2.5f, true);

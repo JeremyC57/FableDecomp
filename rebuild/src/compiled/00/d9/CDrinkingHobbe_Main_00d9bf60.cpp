@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) NScript::CQ_HobbeToothContestScript::CDrinkingHobbe::Main @ 0x00D9BF60, 613 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate
 // 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380 / the scripted-thing handle's
-// IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0 (vtable 0x0127094C), GetDistanceBetweenThings
+// IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0 (vtable 0x0127094C), GetSquaredDistanceBetweenThings
 // 0x00CBE583 (__fastcall, float), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7 NewScriptFrame, 8
 // StartScriptingEntity, 70 GetHero, 72 GetThingWithScriptName (by value), 451 GiveThingBestEnemyTarget; CScriptThing slot
 // 21 MsgIsHitBy (+0x54). Strings "" 0x0122D70E, "Q_HobbeToothWhisper" 0x012D6788.
@@ -944,7 +944,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  bool IsScripting();                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
 };
-float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
+float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
 struct CQ_HobbeToothContestScript {
  unsigned char BaseState[0x5a];
  bool DrinkingHobbesNotHit;                         // +0x5a (PDB +0x6e)
@@ -984,8 +984,8 @@ void CDrinkingHobbe::Main()
   }
  }
  if (IsActiveThreadTerminating()) return;
- float heroDistance = GetDistanceBetweenThings(Me, Game->GetHero());
- float whisperDistance = GetDistanceBetweenThings(Me, Game->GetThingWithScriptName("Q_HobbeToothWhisper"));
+ float heroDistance = GetSquaredDistanceBetweenThings(Me, Game->GetHero());
+ float whisperDistance = GetSquaredDistanceBetweenThings(Me, Game->GetThingWithScriptName("Q_HobbeToothWhisper"));
  if (whisperDistance < heroDistance) {
   if (IsActiveThreadTerminating()) return;
   Game->GiveThingBestEnemyTarget(Me, Game->GetThingWithScriptName("Q_HobbeToothWhisper"));

@@ -360872,6 +360872,139 @@ $catalog = @(
         TestSource = '00/bf/CLocalDetailPrimitiveRepeatedMesh_CLocalDetailPrimitiveRepeatedMesh_00bfaa80_test.cpp'
         PassPattern = '00bfaa80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00bfac70'
+        Module = 'CLocalDetailPrimitiveMeshZSpriteBatch'
+        Source = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_CLocalDetailPrimitiveMeshZSpriteBatch_00bfac70.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_CLocalDetailPrimitiveMeshZSpriteBatch_00bfac70_test.cpp'
+        PassPattern = '00bfac70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfde80'
+        Module = 'CLandscapeLayerMesh'
+        Source = '00/bf/CLandscapeLayerMesh_RelocateData_00bfde80.cpp'
+        TestSource = '00/bf/CLandscapeLayerMesh_RelocateData_00bfde80_test.cpp'
+        PassPattern = '00bfde80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c10c90'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_GetPhysicalPlayer_00c10c90.cpp'
+        TestSource = '00/c1/CSoundEventManager_GetPhysicalPlayer_00c10c90_test.cpp'
+        PassPattern = '00c10c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c20cb0'
+        Module = 'CSoundEvent'
+        Source = '00/c2/CSoundEvent_HasPositiveGain_00c20cb0.cpp'
+        TestSource = '00/c2/CSoundEvent_HasPositiveGain_00c20cb0_test.cpp'
+        PassPattern = '00c20cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d260'
+        Module = 'CInstanceManager'
+        Source = '00/c2/CInstanceManager_UseInstance_00c2d260.cpp'
+        TestSource = '00/c2/CInstanceManager_UseInstance_00c2d260_test.cpp'
+        PassPattern = '00c2d260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38850'
+        Module = 'CInstance'
+        Source = '00/c3/CInstance_SetScale_00c38850.cpp'
+        TestSource = '00/c3/CInstance_SetScale_00c38850_test.cpp'
+        PassPattern = '00c38850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c437c0'
+        Module = 'CAudioObject'
+        Source = '00/c4/CAudioObject_FlushQueue_00c437c0.cpp'
+        TestSource = '00/c4/CAudioObject_FlushQueue_00c437c0_test.cpp'
+        PassPattern = '00c437c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c59720'
+        Module = 'CCodaVoice'
+        Source = '00/c5/CCodaVoice_Play_00c59720.cpp'
+        TestSource = '00/c5/CCodaVoice_Play_00c59720_test.cpp'
+        PassPattern = '00c59720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c59bc0'
+        Module = 'CAudioSource'
+        Source = '00/c5/CAudioSource_BeginSound_00c59bc0.cpp'
+        TestSource = '00/c5/CAudioSource_BeginSound_00c59bc0_test.cpp'
+        PassPattern = '00c59bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c624c0'
+        Module = 'CAmbientTrigger'
+        Source = '00/c6/CAmbientTrigger_UpdateVolume_00c624c0.cpp'
+        TestSource = '00/c6/CAmbientTrigger_UpdateVolume_00c624c0_test.cpp'
+        PassPattern = '00c624c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c91360'
+        Module = 'libogg'
+        Source = '00/c9/libogg_oggpackreadinit_00c91360.cpp'
+        TestSource = '00/c9/libogg_oggpackreadinit_00c91360_test.cpp'
+        PassPattern = '00c91360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca0620'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_encodepart_00ca0620.cpp'
+        TestSource = '00/ca/libvorbis_encodepart_00ca0620_test.cpp'
+        PassPattern = '00ca0620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cba7e0'
+        Module = 'std'
+        Source = '00/cb/std_swap_00cba7e0.cpp'
+        TestSource = '00/cb/std_swap_00cba7e0_test.cpp'
+        PassPattern = '00cba7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9f160'
+        Module = 'NScript::CQ_MinionCampScript::CMC_Minion'
+        Source = '00/d9/NScriptCQMinionCampScriptCMCMinion_Init_00d9f160.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScriptCMCMinion_Init_00d9f160_test.cpp'
+        PassPattern = '00d9f160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e376d0'
+        Module = 'NScript::CV_AssassinAttacksScript'
+        Source = '00/e3/NScriptCVAssassinAttacksScript_CVAssassinAttacksScript_00e376d0.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScript_CVAssassinAttacksScript_00e376d0_test.cpp'
+        PassPattern = '00e376d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5dde0'
+        Module = 'NScript::CV_BodyGuardScript::CBodyGuard'
+        Source = '00/e5/NScriptCVBodyGuardScriptCBodyGuard_CBodyGuard_00e5dde0.cpp'
+        TestSource = '00/e5/NScriptCVBodyGuardScriptCBodyGuard_CBodyGuard_00e5dde0_test.cpp'
+        PassPattern = '00e5dde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7dfe0'
+        Module = 'NScript::CPredicate_And<CIsThingAlive, CIsVariableFalse>'
+        Source = '00/e7/NScriptCPredicateAndCIsThingAliveCIsVariableFalse_scalardeletingdestructor_00e7dfe0.cpp'
+        TestSource = '00/e7/NScriptCPredicateAndCIsThingAliveCIsVariableFalse_scalardeletingdestructor_00e7dfe0_test.cpp'
+        PassPattern = '00e7dfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7e110'
+        Module = 'NScript::CV_FishingCompetitionScript'
+        Source = '00/e7/NScriptCVFishingCompetitionScript_CVFishingCompetitionScript_00e7e110.cpp'
+        TestSource = '00/e7/NScriptCVFishingCompetitionScript_CVFishingCompetitionScript_00e7e110_test.cpp'
+        PassPattern = '00e7e110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb4710'
+        Module = 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin'
+        Source = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_IsFeelingThreatened_00eb4710.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_IsFeelingThreatened_00eb4710_test.cpp'
+        PassPattern = '00eb4710_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static int g_notified = 0;
-class CIndexBuffer { public: void OnRelocated() { ++g_notified; } };
+class CIndexBuffer { public: void OnPostRelocation() { ++g_notified; } };
 class CVertexBufferWin32 { public: int x; };
 template <class T> inline void RelocatePointer(T*& p, void* oldBase, void* newBase)
 {
@@ -14,10 +14,10 @@ class CEngineWaterBackgroundSubPatch { public:
     void RelocateData(long, void* oldBase, void* newBase, long)
     {
         for (long i = 0; i < 4; ++i) {
-            if (oldBase == BridgeIndexBuffers[i]) { RelocatePointer(BridgeIndexBuffers[i], oldBase, newBase); BridgeIndexBuffers[i]->OnRelocated(); return; }
+            if (oldBase == BridgeIndexBuffers[i]) { RelocatePointer(BridgeIndexBuffers[i], oldBase, newBase); BridgeIndexBuffers[i]->OnPostRelocation(); return; }
             if (oldBase == BridgeVertexBuffers[i]) { RelocatePointer(BridgeVertexBuffers[i], oldBase, newBase); return; }
         }
-        if (oldBase == IndexBuffer) { RelocatePointer(IndexBuffer, oldBase, newBase); IndexBuffer->OnRelocated(); return; }
+        if (oldBase == IndexBuffer) { RelocatePointer(IndexBuffer, oldBase, newBase); IndexBuffer->OnPostRelocation(); return; }
         if (oldBase == VertexBuffer) RelocatePointer(VertexBuffer, oldBase, newBase);
     }
 };

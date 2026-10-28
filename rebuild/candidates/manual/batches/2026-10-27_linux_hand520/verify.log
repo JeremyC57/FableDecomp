@@ -1,0 +1,77 @@
+addr       parity           behav  name
+00bfac70   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bfac70   RELOCATION_MATCH PASS   CLocalDetailPrimitiveMeshZSpriteBatch
+00bfde80   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00bfde80   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bfde80   WARN RELOC_NAME: ?OnPostRelocation@CIndexBuffer@@QAEXXZ -> 00ac1f60 labelled '_global::Nop_ret0_00ac1f60'
+00bfde80   RELOCATION_MATCH PASS   RelocateData
+00c10c90   RELOCATION_MATCH PASS   GetPhysicalPlayer
+00c20cb0   WARN RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c20cb0   RELOCATION_MATCH PASS   HasPositiveGain
+00c2d260   WARN RELOC_NAME: ?GetString@CName@@QAEPBDXZ -> 00c16890 labelled '_global::TailJmp_GetNextRegionOnRouteTo_00c16890'
+00c2d260   RELOCATION_MATCH PASS   UseInstance
+00c38850   MATCH            PASS   SetScale
+00c437c0   WARN RELOC_NAME: ?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z -> 00c442f0 labelled 'CMarkedBuffer_00c44550::GetMark'
+00c437c0   RELOCATION_MATCH PASS   FlushQueue
+00c59720   MATCH            PASS   Play
+00c59bc0   MATCH            PASS   BeginSound
+00c624c0   WARN RELOC_NAME: ?GetHandleTable@CAmbientTrigger@@QAEPAVCHandleTable@@PAVCAmbientSource@@@Z -> 00c62440 labelled 'CRegion::SetMiniMapRegionExitTextOffsetY'
+00c624c0   WARN RELOC_NAME: ?GetVolume@CAmbientSource@@QAEMXZ -> 00c46f40 labelled 'TurnToPointer'
+00c624c0   RELOCATION_MATCH PASS   UpdateVolume
+00c91360   MATCH            PASS   oggpack_readinit
+00ca0620   WARN RELOC_NAME: _local_book_besterror@8 -> 00ca02b0 labelled 'Audio_ComputeTimeFrequencyMap'
+00ca0620   RELOCATION_MATCH PASS   _encodepart
+00cba7e0   RELOCATION_MATCH PASS   swap
+00d9f160   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d9f160   RELOCATION_MATCH PASS   Init
+00e376d0   RELOCATION_MATCH PASS   CV_AssassinAttacksScript
+00e5dde0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e5dde0   RELOCATION_MATCH PASS   CBodyGuard
+00e7dfe0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e7dfe0   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00e7dfe0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7e110   RELOCATION_MATCH PASS   CV_FishingCompetitionScript
+00eb4710   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00eb4710   RELOCATION_MATCH PASS   IsFeelingThreatened
+
+WINS: 19
+  00bfac70 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::??0CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@PBVCLocalDetailObjectCollectionType@@PAVCLocalDetailCacheMap@@@Z
+  00bfde80 RELOCATION_MATCH CLandscapeLayerMesh::?RelocateData@CLandscapeLayerMesh@@EAEXJPAX0J@Z
+  00c10c90 RELOCATION_MATCH CSoundEventManager::?GetPhysicalPlayer@CSoundEventManager@@QAEPAXK@Z
+  00c20cb0 RELOCATION_MATCH CSoundEvent::?HasPositiveGain@CSoundEvent@@QAEJPAUCSoundEventManager@@@Z
+  00c2d260 RELOCATION_MATCH CInstanceManager::?UseInstance@CInstanceManager@@QAEXIPAUSThemeRequest@@@Z
+  00c38850 MATCH CInstance::?SetScale@CInstance@@QAEXM@Z
+  00c437c0 RELOCATION_MATCH CAudioObject::?FlushQueue@CAudioObject@@QAEXXZ
+  00c59720 MATCH CCodaVoice::?Play@CCodaVoice@@UAEJPAUCAudioSound@@@Z
+  00c59bc0 MATCH CAudioSource::?BeginSound@CAudioSource@@QAEXPAUCAudioSound@@@Z
+  00c624c0 RELOCATION_MATCH CAmbientTrigger::?UpdateVolume@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z
+  00c91360 MATCH libogg::@oggpack_readinit@12
+  00ca0620 RELOCATION_MATCH libvorbis::@_encodepart@20
+  00cba7e0 RELOCATION_MATCH std::??$swap@U?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@@std@@YIXAAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@0@Z
+  00d9f160 RELOCATION_MATCH NScript::CQ_MinionCampScript::CMC_Minion::?Init@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ
+  00e376d0 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::??0CV_AssassinAttacksScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e5dde0 RELOCATION_MATCH NScript::CV_BodyGuardScript::CBodyGuard::??0CBodyGuard@CV_BodyGuardScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00e7dfe0 RELOCATION_MATCH NScript::CPredicate_And<CIsThingAlive, CIsVariableFalse>::??_G?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@UAEPAXI@Z
+  00e7e110 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::??0CV_FishingCompetitionScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eb4710 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::?IsFeelingThreatened@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAE_NXZ
+
+LANDED 19 wins into src/compiled + tests + catalog + oracle
+  CLocalDetailPrimitiveMeshZSpriteBatch_CLocalDetailPrimitiveMeshZSpriteBatch_00bfac70
+  CLandscapeLayerMesh_RelocateData_00bfde80
+  CSoundEventManager_GetPhysicalPlayer_00c10c90
+  CSoundEvent_HasPositiveGain_00c20cb0
+  CInstanceManager_UseInstance_00c2d260
+  CInstance_SetScale_00c38850
+  CAudioObject_FlushQueue_00c437c0
+  CCodaVoice_Play_00c59720
+  CAudioSource_BeginSound_00c59bc0
+  CAmbientTrigger_UpdateVolume_00c624c0
+  libogg_oggpackreadinit_00c91360
+  libvorbis_encodepart_00ca0620
+  std_swap_00cba7e0
+  NScriptCQMinionCampScriptCMCMinion_Init_00d9f160
+  NScriptCVAssassinAttacksScript_CVAssassinAttacksScript_00e376d0
+  NScriptCVBodyGuardScriptCBodyGuard_CBodyGuard_00e5dde0
+  NScriptCPredicateAndCIsThingAliveCIsVariableFalse_scalardeletingdestructor_00e7dfe0
+  NScriptCVFishingCompetitionScript_CVFishingCompetitionScript_00e7e110
+  NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_IsFeelingThreatened_00eb4710

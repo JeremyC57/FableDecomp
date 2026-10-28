@@ -12,7 +12,7 @@
 //   pointer lives in the dead oldBase argument slot).
 #include "engine/CLandscapeBackgroundPatch.h"
 class CIndexBuffer { public:
-    void OnRelocated();                            // 0x00AC1F60
+    void OnPostRelocation();                            // 0x00AC1F60
 };
 class CEngineWaterBackgroundSubPatch { public:
     void OnPostRelocation();                       // 0x00BFD3B0
@@ -44,7 +44,7 @@ void CLandscapeBackgroundPatch_RelocateData::RelocateData(long reason, void* old
     for (long i = 0; i < 4; ++i) {
         if (oldBase == BridgeIndexBuffers[i]) {
             RelocatePointer(BridgeIndexBuffers[i], oldBase, newBase);
-            BridgeIndexBuffers[i]->OnRelocated();
+            BridgeIndexBuffers[i]->OnPostRelocation();
             return;
         }
         if (oldBase == BridgeVertexBuffers[i]) {
@@ -60,7 +60,7 @@ void CLandscapeBackgroundPatch_RelocateData::RelocateData(long reason, void* old
     }
     if (oldBase == IndexBuffer && !SharedIndexBuffer) {
         RelocatePointer(IndexBuffer, oldBase, newBase);
-        IndexBuffer->OnRelocated();
+        IndexBuffer->OnPostRelocation();
         return;
     }
     if (oldBase == VertexBuffer)

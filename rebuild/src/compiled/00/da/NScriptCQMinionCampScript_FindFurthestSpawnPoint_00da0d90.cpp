@@ -6,7 +6,7 @@
 //   `furthest = 0` / `distance = -1.0f` pair).
 // Label correction: the catalog "CScriptBase_RunActiveSpawnPoints" is descriptive.
 // Callees: CScriptBase::IsActiveThreadTerminating() @ 0x00CB7940, the script's Game (+0x40) virtual slot 70 (+0x118)
-//   GetHero() (returns CScriptThing&), GetDistanceBetweenThings(const CScriptThing&, const CScriptThing&) @ 0x00CBE583
+//   GetHero() (returns CScriptThing&), GetSquaredDistanceBetweenThings(const CScriptThing&, const CScriptThing&) @ 0x00CBE583
 //   (__fastcall, float in st0; catalogued as CScriptBase::Activate).
 // Shape: speed TU (no pragma). The script translator's form: a terminate guard at the top of each iteration and before
 //   the update; the found flag lives in the `push ecx` slot, the distance is spilled to the dead furthestDistance-
@@ -19,7 +19,7 @@ public:
     void* PImp_Data;                                    // +0x04
     void* PImp_Info;                                    // +0x08
 };
-float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
+float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
 class CGameScriptInterfaceBase {
 public:
     virtual void v00();
@@ -142,7 +142,7 @@ bool CQ_MinionCampScript::FindFurthestSpawnPoint(const std::list<CScriptThing>& 
         if (IsActiveThreadTerminating())
             return false;
         const CScriptThing& spawnPoint = *it;
-        float distance = GetDistanceBetweenThings(spawnPoint, Game->GetHero());
+        float distance = GetSquaredDistanceBetweenThings(spawnPoint, Game->GetHero());
         if (distance > furthestDistance || furthestDistance == -1.0f) {
             if (IsActiveThreadTerminating())
                 return false;

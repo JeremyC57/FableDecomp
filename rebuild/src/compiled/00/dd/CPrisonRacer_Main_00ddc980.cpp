@@ -4,7 +4,7 @@
 // Callees: IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting
 //   0x00CD23B9 / Release 0x00CD2770 / FollowPreCalculatedRoute 0x007E7310 / ClearCommands 0x007E7360 / IsPerformingScriptTask
 //   0x007E7450 / dtor 0x007E74D0, CScriptThing::GetDataString 0x004AA900 (slot 3) / operator= 0x008AB980 / dtor 0x004AA840,
-//   ~vector<CScriptThing> 0x008AC970, ~CTimer 0x00CD4470, GetSquaredDistanceBetweenThings 0x00CBE512 /
+//   ~vector<CScriptThing> 0x008AC970, ~CTimer 0x00CD4470, GetDistanceBetweenThings 0x00CBE512 /
 //   IsDistanceBetweenThingsUnder 0x00CBE2FF / GFCharStringToInt 0x0099E7F0 (all __fastcall), MakePrisonerComment 0x00DDCF50
 //   (catalog class CQ_PrisonEscapeRescueMotherScript; called on the racer's CQ_PrisonRaceScript), CCharString 0x0099EBF0 /
 //   0x0099EAE0; g_pGameScriptInterface 0x0143E8F8 slots 87-90 (two inline CTimers); GameCalls (+0x04) slots 7, 8, 72, 75, 77,
@@ -216,7 +216,7 @@ class CScriptDef { public:
     long  PrisonRacerRestTime;                          // +0xdd4
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
+float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CTimer { public:                                         // 4 bytes: an index into the global script timers
     long TimerIndex;
@@ -284,7 +284,7 @@ void CPrisonRacer::Main()
                 return;
             float nearest = 1000.0f;
             for (unsigned long i = 0; i < speedChecks.size(); ++i) {
-                float distance = GetSquaredDistanceBetweenThings(Me, speedChecks[i]);
+                float distance = GetDistanceBetweenThings(Me, speedChecks[i]);
                 if (distance < nearest) {
                     nearest = distance;
                     RaceWaypointIndex = GFCharStringToInt(speedChecks[i].GetDataString());

@@ -13,7 +13,7 @@ class CScriptThing { public:
     bool IsAlive() const { return Alive; }
     bool IsNull() const { return Id == 0; }
 };
-static float GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b) { float d = a.X - b.X; return d < 0 ? -d : d; }
+static float GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b) { float d = a.X - b.X; return d < 0 ? -d : d; }
 class CGame { public:
     std::vector<CScriptThing> Guards; CScriptThing Hero; int GivenTo;
     long GetAllThingsWithScriptName(const char* name, std::vector<CScriptThing>& out) { if (std::strcmp(name, "MC_MinionGuard") == 0) out = Guards; return (long)out.size(); }
@@ -45,7 +45,7 @@ bool CBriarRose::UpdateTarget()
         if (IsActiveThreadTerminating())
             return false;
         if (things[i].IsAlive()) {
-            float distance = GetDistanceBetweenThings(Game->GetHero(), things[i]);
+            float distance = GetSquaredDistanceBetweenThings(Game->GetHero(), things[i]);
             if (distance < nearestDistance || nearestDistance == -1.0f) {
                 nearestDistance = distance;
                 nearest = &things[i];

@@ -5,7 +5,7 @@
 // Callees: CScriptThing slot 3 GetDataString() const (CCharString by hidden pointer, twice), ~CCharString 0x0099EAE0,
 //   Compare 0x00411570 (the inlined CBasicString<char>::operator==(const char*) 0x004115A0; same-TU stand-in body below,
 //   precedent 0x0075D2B0), the script base's IsActiveThreadTerminating 0x00F35B30 (x4), GetHero (slot 70, +0x118) and
-//   NewScriptFrame (slot 7) through Game (+4), __fastcall GetSquaredDistanceBetweenThings(const CScriptThing&, const
+//   NewScriptFrame (slot 7) through Game (+4), __fastcall GetDistanceBetweenThings(const CScriptThing&, const
 //   CScriptThing&) 0x00CBE512, __fastcall GFCharStringToInt 0x0099E7F0. Literals "0" 0x01238860, "" 0x0122D70E,
 //   1000.0f (0x447A0000, kept in esi).
 // Layout: entity script {vptr, Game +4, CScriptThing Me +8, data +0x14}; the data's best squared distance +0x54 and
@@ -64,7 +64,7 @@ class CScriptThing { public:                                   // vtable 0x01238
     void* PImp_Data;                                    // +0x04
     void* PImp_Info;                                    // +0x08
 };
-float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
+float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) CGameScriptInterface::NewScriptFrame @ 0x006E7410
@@ -105,7 +105,7 @@ void CWaypointSpeedCheck::Main()
                 return;
             Data->BestDistanceSquared = 1000.0f;
         }
-        float distance = GetSquaredDistanceBetweenThings(Me, Game->GetHero());
+        float distance = GetDistanceBetweenThings(Me, Game->GetHero());
         if (distance < Data->BestDistanceSquared) {
             if (IsActiveThreadTerminating())
                 return;

@@ -7,7 +7,7 @@
 //   default first; CCountedPointer::operator= reads the source pair before the self-compare; the distance test as
 //   `dist(Me, hero) > dist(blockWay, hero)`; early returns under inline_depth(0) (out-of-line ~CScriptThing).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CBaseClass 0x0099A2D0 / ~ 0x0099A2E0, ~CScriptThing 0x004AA840,
-//   GetSquaredDistanceBetweenThings 0x00CBE512 (__fastcall), IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC;
+//   GetDistanceBetweenThings 0x00CBE512 (__fastcall), IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC;
 //   CGameScriptInterface slots 70 GetHero, 72 GetThingWithScriptName, 91 CreateCreature, 472 EntityTeleportToThing,
 //   474 EntitySetFacingAngle. Default position 0x0143E8E0 for an empty handle.
 namespace NScript { class CPredicateBase; }
@@ -81,7 +81,7 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
     virtual void v07() const; virtual void v08() const; virtual void v09() const;
     virtual float GetHeading() const { return PImp.Data == 0 ? 0.0f : PImp.Data->GetHeading(); }          // slot 10
 };
-float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
+float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)
@@ -122,7 +122,7 @@ void CTollBanditScript::HandleBanditToll()
     CScriptThing point1;
     CScriptThing point2;
     CScriptThing point3;
-    if (GetSquaredDistanceBetweenThings(Me, Game->GetHero()) > GetSquaredDistanceBetweenThings(blockWay, Game->GetHero())) {
+    if (GetDistanceBetweenThings(Me, Game->GetHero()) > GetDistanceBetweenThings(blockWay, Game->GetHero())) {
         if (IsActiveThreadTerminating())
 #pragma inline_depth(0)
             return;

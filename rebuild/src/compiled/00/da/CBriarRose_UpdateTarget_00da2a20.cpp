@@ -44,7 +44,7 @@ template <class T> struct vector {                     // STLport vector (retail
     unsigned int size() const { return _M_finish - _M_start; }
     T& operator[](unsigned int i) { return *(_M_start + i); }
 };
-float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
+float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
 class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -187,7 +187,7 @@ bool CBriarRose::UpdateTarget()
         if (things[i].IsAlive()) {
             if (IsActiveThreadTerminating())
                 return false;
-            float distance = GetDistanceBetweenThings(Game->GetHero(), things[i]);
+            float distance = GetSquaredDistanceBetweenThings(Game->GetHero(), things[i]);
             if (distance < nearestDistance || nearestDistance == -1.0f) {
                 if (IsActiveThreadTerminating())
                     return false;

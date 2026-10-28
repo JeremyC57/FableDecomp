@@ -9847,7 +9847,7 @@ __allmul	00bfeb50	00bfb810
 ?RebindBlockOwner@CEngineLandscapeMemoryManager@@QAEXPAX0@Z	00bd9ab0	00bfd3b0
 ??_7CEngineWaterBackgroundSubPatch@@6B@	012a8334	00bfd480
 ?AppendFreeEdgeNode@CEngineLandscapeMemoryManager@@QAEXPAX@Z	00bda090	00bfd480
-?OnRelocated@CIndexBuffer@@QAEXXZ	00ac1f60	00bfd5d0
+?OnPostRelocation@CIndexBuffer@@QAEXXZ	00ac1f60	00bfd5d0
 ?CLandscapeLayerMesh_vtbl@@3PAXA	012a835c	00bfddd0
 ??_7CLandscapeLayerMesh@@6B@	012a835c	00bfde20
 __imp__real_puts_target	0144013c	00bfeaf2
@@ -21566,7 +21566,7 @@ __imp___mbschr	0144001c	00c0d740
 ??_7CItemVisitor@@6B@	012b260c	00c10400
 ?Run@CItemAction@@QAEXXZ	00c1f480	00c10400
 ?Assign@CPendingEntry@@QAEXPAUCPanel@@PAX@Z	00c21750	00c10cd0
-?GetFreeSlot@CPanelItemSet@@QAEPAXXZ	00c21e50	00c10cd0
+?GetFreeSlot@CSoundEventSet@@QAEPAXXZ	00c21e50	00c10cd0
 ?Place@CPlacedEntry@@QAEJPAUCPanel@@@Z	00c219f0	00c10cd0
 ??ACPanelItemArray@@QAEAAUCPanelItem@@K@Z	00c13620	00c11cb0
 ?Activate@CPanelItem@@QAEXPAUCPanel@@@Z	00c21620	00c11cb0
@@ -22387,7 +22387,7 @@ _ImmAssociateContext@8	00cb5564	00cb5130
 ??_7CQ_HeroSoulsThunderScript@NScript@@6B@	012d3488	00d7acb0
 ??_7CQ_HeroSoulsGuildmasterScript@NScript@@6B@	012d4804	00d84b50
 ?_M_create_node@?$list@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEPAU?$_List_node@VCScriptThing@@@2@ABVCScriptThing@@@Z	00da0200	00da01e0
-?GetDistanceBetweenThings@@YIMABVCScriptThing@@0@Z	00cbe583	00da0d90
+?GetDistanceBetweenThings@@YIMABVCScriptThing@@0@Z	00cbe512	00da0d90
 ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@@std@@_N@Z	00cbed82	00dc0830
 ??_7CQ_OakValeBanditRaidScript@NScript@@6B@	012d9e18	00dc24e0
 ??_7CSecretPassageSkeleton@CQ_OpeningGraveyardSecretPassageScript@NScript@@6B@	012da494	00dc3df0
@@ -30883,7 +30883,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CActiveEntityScriptBase@EntityScriptBinding_00dcf790@@QAE@PAVCScriptThing@@III@Z	00ce1110	00dcf790
 ?erase@CScriptThingVector@@QAEPAVCScriptThing@@PAV2@@Z	00cd3152	00dcf920
 ??0CActiveEntityScriptBase@EntityScriptBinding_00dd9300@@QAE@PAVCScriptThing@@III@Z	00ce1110	00dd9300
-?GetSquaredDistanceBetweenThings@@YIMABVCScriptThing@@0@Z	00cbe512	00ddc6c0
+?GetSquaredDistanceBetweenThings@@YIMABVCScriptThing@@0@Z	00cbe583	00ddc6c0
 ??0CActiveEntityScriptBase@EntityScriptBinding_00ddc7d0@@QAE@PAVCScriptThing@@III@Z	00ce1110	00ddc7d0
 ?MakePrisonerComment@CQ_PrisonRaceScript@@QAE_NABVCScriptThing@@ABVCCharString@@@Z	00ddcf50	00ddc980
 ??0CActiveEntityScriptBase@EntityScriptBinding_00ddeee0@@QAE@PAVCScriptThing@@III@Z	00ce1110	00ddeee0
@@ -34945,3 +34945,16 @@ _CUnprovenFloatProvider_00A76320	00a76320	012242b0
 ?Render@CEngineInternalPrimitive2DViewport@@QAEXXZ	00be1e70	00be2190
 ?DeleteTree@CEngineTreeFilerBase@@AAEXPAUCNodeHeader@1@@Z	00bf29e0	00bf3180
 ??_7?$CEngineDynamic3DResource@VCVertexBufferWin32@@$02@@6B@	012a81a0	00bf3250
+?FindEntry@CSoundEventSet@@QAEPAUCSoundEventEntry@@K@Z	00c21eb0	00c10c90
+?YieldPhysicalPlayer@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z	00c216d0	00c10c90
+?GetString@CName@@QAEPBDXZ	00c16890	00c2d260
+?Setup@CInstance@@QAEXJPBDJJJPAVCInstanceManager@@JJ@Z	00c38cd0	00c2d260
+?Clear@CircularQueue@@QAEXXZ	00c443d0	00c437c0
+?GetInfo@CircularQueue@@QAEAAUSQueueInfo@@AAU2@@Z	00c442f0	00c437c0
+?GetHandleTable@CAmbientTrigger@@QAEPAVCHandleTable@@PAVCAmbientSource@@@Z	00c62440	00c624c0
+?GetVolume@CAmbientSource@@QAEMXZ	00c46f40	00c624c0
+@vorbis_book_encode@12	00c96140	00ca0620
+_local_book_besterror@8	00ca02b0	00ca0620
+??_7CV_AssassinAttacksScript@NScript@@6B@	012e35b0	00e376d0
+??_7CBodyGuard@CV_BodyGuardScript@NScript@@6B@	012e701c	00e5dde0
+?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z	00cbeed2	00eb4710

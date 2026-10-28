@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D00050, 1002 bytes (+ int3 padding).
 // Callees: CTimer (inline ctor RegisterTimer 87 / dtor DeregisterTimer 88, out-of-line copy 0x00CD4470, SetTimer 89, GetTimer
 //   90) on g_pGameScriptInterface 0x0143E8F8, CCharString 0x0099EBF0 / 0x0099EAE0, CScriptThing dtor 0x004AA840,
-//   IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder 0x00CBE2FF and GetSquaredDistanceBetweenThings
+//   IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder 0x00CBE2FF and GetDistanceBetweenThings
 //   0x00CBE512 (__fastcall), CQ_AwakeningTheOracleScript::PlayCutscene(CCharString, bool) 0x00CFF9A0 (label
 //   "Main_InitializeHeroMorphComponents" is wrong); GameCalls slots 7 NewScriptFrame, 70 GetHero, 72 GetThingWithScriptName,
 //   108 RemoveThing, 364 AddNewConversation, 365 AddPersonToConversation, 366 AddLineToConversation, 472 EntityTeleportToThing.
@@ -1034,7 +1034,7 @@ class CTimer { public:                                     // 4 bytes: an index 
  long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);              // 0x00CBE512
+float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);              // 0x00CBE512
 struct CQ_AwakeningTheOracleScript {
  unsigned char BaseState[0x49];
  bool PlayedOpeningCS;                              // +0x49 (PDB +0x5d)
@@ -1079,8 +1079,8 @@ void CNecropolisGate::Main()
   }
   if (IsActiveThreadTerminating()) return;
   Game->RemoveThing(guard, false, true);
-  bool sideEntry = GetSquaredDistanceBetweenThings(Game->GetHero(), Game->GetThingWithScriptName("SIDE_ENTRY"))
-                 < GetSquaredDistanceBetweenThings(Game->GetHero(), Game->GetThingWithScriptName("FRONT_ENTRY"));
+  bool sideEntry = GetDistanceBetweenThings(Game->GetHero(), Game->GetThingWithScriptName("SIDE_ENTRY"))
+                 < GetDistanceBetweenThings(Game->GetHero(), Game->GetThingWithScriptName("FRONT_ENTRY"));
   if (sideEntry) {
    if (IsActiveThreadTerminating()) return;
    ParentClass->PlayCutscene("CS_ORACLE_NECROPOLIS_INTRO_OUTSIDE_SIDE", true);

@@ -1,7 +1,7 @@
 // CV_MurderTwistScript::MagicRuneProcess() -- once the quest passes state 1, every time the timer has run out while no region has unloaded, restart it and rumble each magic rune within 15 units (squared distance) of the hero
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EA8C20, 0x221 bytes, plain `ret`.
 // Callees: IsActiveThreadTerminating 0x00CB7940, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~ 0x0099EAE0,
-//   GetSquaredDistanceBetweenThings 0x00CBE512 (__fastcall, as in the landed CGuardInWoods / NecropolisGate code),
+//   GetDistanceBetweenThings 0x00CBE512 (__fastcall, as in the landed CGuardInWoods / NecropolisGate code),
 //   ~CScriptThing 0x004AA840; the timer runs through the global interface g_pGameScriptInterface 0x0143E8F8 (slots 87
 //   RegisterTimer / 88 DeregisterTimer / 89 SetTimer / 90 GetTimer); Game slots 7 NewScriptFrame, 23 MsgOnRegionUnloaded,
 //   70 GetHero, 106 CreateRumble; CScriptThing virtual slot 6 (+0x18) the position accessor. 15.0f is 0x0124E640.
@@ -24,7 +24,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
     void* PImpData;
     void* PImpInfo;
 };
-float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
+float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 namespace std {
 template<class T> class allocator { };
 template<class T, class A = allocator<T> > class vector {
@@ -110,7 +110,7 @@ void NScript::CV_MurderTwistScript::MagicRuneProcess()
                     if (IsActiveThreadTerminating())
                         return;
                     CScriptThing* start = MagicRuneRumbleList._M_start;
-                    if (GetSquaredDistanceBetweenThings(Game->GetHero(), start[i]) < 15.0f)
+                    if (GetDistanceBetweenThings(Game->GetHero(), start[i]) < 15.0f)
                         Game->CreateRumble(MagicRuneRumbleList[i].GetPosition(), 0.3f, 0.2f, "");
                 }
                 if (IsActiveThreadTerminating())

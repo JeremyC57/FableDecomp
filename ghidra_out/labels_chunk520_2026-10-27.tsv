@@ -1,0 +1,12 @@
+address	name	evidence
+00bfac70	CLocalDetailPrimitiveMeshZSpriteBatch ctor	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00bfde80	CLandscapeLayerMesh::RelocateData	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00c91360	oggpack_readinit	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00ca0620	_encodepart	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00cba7e0	std::swap<pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>>	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00d9f160	CQ_MinionCampScript::CMC_Minion::Init	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00e376d0	CV_AssassinAttacksScript ctor	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00e5dde0	CV_BodyGuardScript::CBodyGuard ctor	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00e7dfe0	CPredicate_And<CIsThingAlive,CIsVariableFalse> scalar deleting dtor	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00e7e110	CV_FishingCompetitionScript ctor	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)
+00eb4710	CV_MurderTwistFinalScript::CMurderTwistAssassin::IsFeelingThreatened	proven per batch 2026-10-27_linux_hand520 NOTES.md (chunk 520)

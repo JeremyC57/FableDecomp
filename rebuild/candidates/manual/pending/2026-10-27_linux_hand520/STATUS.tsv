@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00c52c40	DIFFER	75v75	-	DIFFER(75v75): CCpuInfo::GetCyrixModelName; register choice only (family-5 block loads Model into ecx, retail eax); 4 grades spent; in differ/

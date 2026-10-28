@@ -4,7 +4,7 @@
 // Callees: CScriptThing copy 0x004ABE90, ~CIsThingAlive 0x00E241B0 (out of line), SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, the scripted-thing
 //   handle's IsScripting 0x00CD23B9 / Release 0x00CD2770 / operator= 0x008ABD10, CScriptThing::operator= 0x008AB980,
-//   GetDistanceBetweenThings 0x00CBE583 (__fastcall, float); own state handlers 0x00EAF810, 0x00EB0830, 0x00EB10C0, 0x00EB15C0,
+//   GetSquaredDistanceBetweenThings 0x00CBE583 (__fastcall, float); own state handlers 0x00EAF810, 0x00EB0830, 0x00EB10C0, 0x00EB15C0,
 //   0x00EB19C0, 0x00EB1EC0; CV_MurderTwistFinalScript::PlayBeingRumbledCutscene 0x00EAF1E0; GameCalls slots 7, 8, 70, 589.
 // Layout: CMurderTwistSheriff (Ego_r.pdb 0x38, matches retail; see the landed Init 0x00EAEE80). The parent quest script
 //   CV_MurderTwistFinalScript is 0x14 smaller in retail than in the PDB view (SheriffState PDB +0x5c = retail +0x48,
@@ -30,7 +30,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes
     void Release();                                    // 0x00CD2770
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
-float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
+float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -199,7 +199,7 @@ void CMurderTwistSheriff::Main()
     while (ParentClass->SheriffState == SHERIFF_STATE_1) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating()) return;
-        if (!HasBeingRumbledCutscenePlayed && GetDistanceBetweenThings(Me, Game->GetHero()) <= 49.0f) {
+        if (!HasBeingRumbledCutscenePlayed && GetSquaredDistanceBetweenThings(Me, Game->GetHero()) <= 49.0f) {
             if (IsActiveThreadTerminating()) return;
             ParentClass->PlayBeingRumbledCutscene();
             HasBeingRumbledCutscenePlayed = true;

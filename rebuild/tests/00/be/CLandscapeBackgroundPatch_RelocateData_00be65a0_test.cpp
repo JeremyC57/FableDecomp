@@ -1,7 +1,7 @@
 // Behaviour test for CLandscapeBackgroundPatch::RelocateData @ 0x00BE65A0 (copy of the model with stub notifications).
 #include <cstdio>
 static int g_indexNotes, g_waterNotes, g_stripCalls;
-class CIndexBuffer { public: void OnRelocated() { ++g_indexNotes; } };
+class CIndexBuffer { public: void OnPostRelocation() { ++g_indexNotes; } };
 class CEngineWaterBackgroundSubPatch { public: void OnPostRelocation() { ++g_waterNotes; } };
 struct CVertexBuffer {};
 class CTexture { public:};
@@ -17,12 +17,12 @@ class CLandscapeBackgroundPatch { public:
     {
         if (WaterSubPatch == oldBase) { RelocatePointer(WaterSubPatch, oldBase, newBase); WaterSubPatch->OnPostRelocation(); return; }
         for (long i = 0; i < 4; ++i) {
-            if (oldBase == BridgeIndexBuffers[i]) { RelocatePointer(BridgeIndexBuffers[i], oldBase, newBase); BridgeIndexBuffers[i]->OnRelocated(); return; }
+            if (oldBase == BridgeIndexBuffers[i]) { RelocatePointer(BridgeIndexBuffers[i], oldBase, newBase); BridgeIndexBuffers[i]->OnPostRelocation(); return; }
             if (oldBase == BridgeVertexBuffers[i]) { RelocatePointer(BridgeVertexBuffers[i], oldBase, newBase); return; }
             if (EdgeStrips[i].RelocateData(oldBase, newBase)) return;
         }
         if (oldBase == Texture) { RelocatePointer(Texture, oldBase, newBase); return; }
-        if (oldBase == IndexBuffer && !SharedIndexBuffer) { RelocatePointer(IndexBuffer, oldBase, newBase); IndexBuffer->OnRelocated(); return; }
+        if (oldBase == IndexBuffer && !SharedIndexBuffer) { RelocatePointer(IndexBuffer, oldBase, newBase); IndexBuffer->OnPostRelocation(); return; }
         if (oldBase == VertexBuffer) RelocatePointer(VertexBuffer, oldBase, newBase);
     }
 };

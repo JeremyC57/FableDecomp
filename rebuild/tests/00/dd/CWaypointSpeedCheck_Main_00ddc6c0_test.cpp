@@ -7,7 +7,7 @@ class CCharString { public: const char* Text; bool operator==(const char* t) con
 static long GFCharStringToInt(const CCharString& s) { return std::atol(s.Text); }
 static const char* g_data; static float g_dist[8]; static int g_frame, g_termAt, g_termCalls;
 class CScriptThing { public: CCharString GetDataString() const { CCharString c = { g_data }; return c; } };
-static float GetSquaredDistanceBetweenThings(const CScriptThing&, const CScriptThing&) { return g_dist[g_frame]; }
+static float GetDistanceBetweenThings(const CScriptThing&, const CScriptThing&) { return g_dist[g_frame]; }
 class CGameScriptInterface { public: CScriptThing Hero; void NewScriptFrame() const { ++g_frame; } CScriptThing& GetHero() { return Hero; } };
 struct CWaypointSpeedCheckData { float BestDistanceSquared; long BestWaypointNumber; };
 struct CWaypointSpeedCheck {
@@ -22,7 +22,7 @@ struct CWaypointSpeedCheck {
                     return;
                 Data->BestDistanceSquared = 1000.0f;
             }
-            float distance = GetSquaredDistanceBetweenThings(Me, Game->GetHero());
+            float distance = GetDistanceBetweenThings(Me, Game->GetHero());
             if (distance < Data->BestDistanceSquared) {
                 if (IsActiveThreadTerminating())
                     return;

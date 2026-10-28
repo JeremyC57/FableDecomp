@@ -12,7 +12,7 @@
 #include "engine/CEngineWaterBackgroundSubPatch.h"
 
 class CIndexBuffer { public:
-    void OnRelocated();                            // 0x00AC1F60
+    void OnPostRelocation();                            // 0x00AC1F60
 };
 
 template <class T> inline void RelocatePointer(T*& p, void* oldBase, void* newBase)
@@ -30,7 +30,7 @@ void CEngineWaterBackgroundSubPatch_RelocateData::RelocateData(long reason, void
     for (long i = 0; i < 4; ++i) {
         if (oldBase == BridgeIndexBuffers[i]) {
             RelocatePointer(BridgeIndexBuffers[i], oldBase, newBase);
-            BridgeIndexBuffers[i]->OnRelocated();
+            BridgeIndexBuffers[i]->OnPostRelocation();
             return;
         }
         if (oldBase == BridgeVertexBuffers[i]) {
@@ -40,7 +40,7 @@ void CEngineWaterBackgroundSubPatch_RelocateData::RelocateData(long reason, void
     }
     if (oldBase == IndexBuffer) {
         RelocatePointer(IndexBuffer, oldBase, newBase);
-        IndexBuffer->OnRelocated();
+        IndexBuffer->OnPostRelocation();
         return;
     }
     if (oldBase == VertexBuffer)

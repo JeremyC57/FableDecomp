@@ -1,7 +1,7 @@
 // CQ_MinionCampScript::RunFirstWaveControl() -- during the first wave, whenever neither hero attacker is alive, pick the two minion guards nearest the hero that are not already attacking and assign them as the new hero attackers
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA0820, length 776 bytes; spawned by CQ_MinionCampScript::PhaseOne 0x00DA05D0.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
-//   0x0099EAE0, IsAssignedAsHeroAttacker 0x00D9EC50, GetDistanceBetweenThings 0x00CBE583 (__fastcall), AddNewHeroAttacker
+//   0x0099EAE0, IsAssignedAsHeroAttacker 0x00D9EC50, GetSquaredDistanceBetweenThings 0x00CBE583 (__fastcall), AddNewHeroAttacker
 //   0x00DA0B30, free 0x00BFEA14 (inline vector destructor copies), ~vector<CScriptThing> 0x008AC970 (the out-of-line copy);
 //   CScriptThing slots 0 (virtual destructor), 75 IsAlive and 77 IsNull; through the interface (+0x40): NewScriptFrame (7),
 //   GetHero (70), GetAllThingsWithScriptName (75).
@@ -56,7 +56,7 @@ struct CScriptThingVector {                             // STLport vector<CScrip
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     CScriptThing& operator[](unsigned int n) { return _M_start[n]; }
 };
-float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
+float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
 class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
@@ -118,7 +118,7 @@ void CQ_MinionCampScript::RunFirstWaveControl()
                         return;
 #pragma inline_depth()
                 } else {
-                    float distance = GetDistanceBetweenThings(guards[i], Game->GetHero());
+                    float distance = GetSquaredDistanceBetweenThings(guards[i], Game->GetHero());
                     if (distance < nearestDistance || nearestDistance == -1.0f) {
 #pragma inline_depth(0)
                         if (IsActiveThreadTerminating())

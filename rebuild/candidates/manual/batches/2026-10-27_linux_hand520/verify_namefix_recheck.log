@@ -1,0 +1,72 @@
+addr       parity           behav  name
+00be65a0   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00be65a0   WARN SHARED_HEADER_AVAILABLE CEngineWaterBackgroundSubPatch
+00be65a0   WARN RELOC_NAME: ?OnPostRelocation@CIndexBuffer@@QAEXXZ -> 00ac1f60 labelled '_global::Nop_ret0_00ac1f60'
+00be65a0   RELOCATION_MATCH PASS   CLandscapeBackgroundPatch::RelocateData
+00bfd5d0   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00bfd5d0   WARN RELOC_NAME: ?OnPostRelocation@CIndexBuffer@@QAEXXZ -> 00ac1f60 labelled '_global::Nop_ret0_00ac1f60'
+00bfd5d0   RELOCATION_MATCH PASS   CEngineWaterBackgroundSubPatch::RelocateData
+00d00050   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d00050   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d00050   RELOCATION_MATCH PASS   NScript::CQ_AwakeningTheOracleScript::CNecropolisGate::Main
+00d37530   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d37530   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d37530   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d37530   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00d37530   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d37530   WARN RELOC_NAME: ??1CScriptGameResourceObjectMovieFull@@UAE@XZ -> 006e7b80 labelled 'CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase'
+00d37530   RELOCATION_MATCH PASS   CFH_Villager::Main
+00d9bf60   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d9bf60   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d9bf60   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d9bf60   RELOCATION_MATCH PASS   CDrinkingHobbe::Main
+00da0820   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da0820   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00da0820   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::RunFirstWaveControl
+00da0d90   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da0d90   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::FindFurthestSpawnPoint
+00da2a20   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da2a20   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00da2a20   RELOCATION_MATCH PASS   CBriarRose::UpdateTarget
+00ddc6c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ddc6c0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ddc6c0   RELOCATION_MATCH PASS   CWaypointSpeedCheck::Main
+00ddc980   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ddc980   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ddc980   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00ddc980   WARN RELOC_NAME: ?MakePrisonerComment@CQ_PrisonRaceScript@@QAE_NABVCScriptThing@@ABVCCharString@@@Z -> 00ddcf50 labelled 'NScript::CQ_PrisonRaceScript::MakeRacerComment'
+00ddc980   RELOCATION_MATCH PASS   CPrisonRacer::Main
+00e4e0e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e4e0e0   RELOCATION_MATCH PASS   CTollBanditScript::HandleBanditToll
+00e7e640   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00e7e640   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e7e640   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00e7e640   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e7e640   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e7e640   RELOCATION_MATCH PASS   CFishCompCompetitor::Main
+00ea8c20   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ea8c20   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ea8c20   RELOCATION_MATCH PASS   NScript::CV_MurderTwistScript::MagicRuneProcess
+00eaef30   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00eaef30   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eaef30   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00eaef30   WARN RELOC_NAME: ??1CIsThingAlive@@QAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00eaef30   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00eaef30   WARN RELOC_NAME: ?DoFightHero@CMurderTwistSheriff@@QAEXXZ -> 00eb1ec0 labelled 'CMurderTwistSheriff::Init'
+00eaef30   RELOCATION_MATCH PASS   CMurderTwistSheriff::Main
+
+WINS: 14
+  00be65a0 RELOCATION_MATCH CLandscapeBackgroundPatch::RelocateData
+  00bfd5d0 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::RelocateData
+  00d00050 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CNecropolisGate::Main
+  00d37530 RELOCATION_MATCH CFH_Villager::Main
+  00d9bf60 RELOCATION_MATCH CDrinkingHobbe::Main
+  00da0820 RELOCATION_MATCH NScript::CQ_MinionCampScript::RunFirstWaveControl
+  00da0d90 RELOCATION_MATCH NScript::CQ_MinionCampScript::?FindFurthestSpawnPoint@
+  00da2a20 RELOCATION_MATCH CBriarRose::UpdateTarget
+  00ddc6c0 RELOCATION_MATCH CWaypointSpeedCheck::Main
+  00ddc980 RELOCATION_MATCH CPrisonRacer::?Main@CPrisonRacer@@
+  00e4e0e0 RELOCATION_MATCH CTollBanditScript::HandleBanditToll
+  00e7e640 RELOCATION_MATCH CFishCompCompetitor::Main
+  00ea8c20 RELOCATION_MATCH NScript::CV_MurderTwistScript::MagicRuneProcess
+  00eaef30 RELOCATION_MATCH CMurderTwistSheriff::Main

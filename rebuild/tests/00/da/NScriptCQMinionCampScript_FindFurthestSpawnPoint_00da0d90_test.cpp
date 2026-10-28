@@ -8,7 +8,7 @@ public:
     float x;
 };
 static float AbsF(float v) { return v < 0.0f ? -v : v; }
-float GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b) { return AbsF(a.x - b.x); }
+float GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b) { return AbsF(a.x - b.x); }
 struct CQ_MinionCampScript {
     bool terminating;
     CScriptThing hero;
@@ -20,7 +20,7 @@ struct CQ_MinionCampScript {
             if (IsActiveThreadTerminating())
                 return false;
             const CScriptThing& spawnPoint = *it;
-            float distance = GetDistanceBetweenThings(spawnPoint, hero);
+            float distance = GetSquaredDistanceBetweenThings(spawnPoint, hero);
             if (distance > furthestDistance || furthestDistance == -1.0f) {
                 if (IsActiveThreadTerminating())
                     return false;
