@@ -34342,3 +34342,9 @@ __setdefaultprecision	0040135c	00401067
 ?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z	00833010	00894b90
 ?EnableGuards@CTCVillage@@QAEX_N@Z	0065c45a	00896270
 ?EnableVillagerDefTypes@CTCVillage@@QAEX_NABVCCharString@@@Z	0065b142	008962d0
+?GetMemoryUsage@CNavQuadTree@@QBEKAAK000@Z	00a77e80	00a15100
+?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z	00a249a0	00a254f0
+??$copy@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@M@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@M@std@@@2@@std@@V?$back_insert_iterator@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@2@@std@@YI?AV?$back_insert_iterator@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@0@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@M@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@M@std@@@2@@0@0V10@@Z	00a557e0	00a4ef90
+?reserve@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXI@Z	004ba7a0	00a4ef90
+?IsContainingPoint@CContainmentVolume@@QBE_NABVC3DVector@@@Z	00a75430	00a5ac60
+??_7CFontBankStateBlock@@6B@	0129da5c	00a63630

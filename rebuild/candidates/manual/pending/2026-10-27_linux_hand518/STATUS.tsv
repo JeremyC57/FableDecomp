@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+009fd3a0	DIFFER	59v59	-	CGraphicDataBank::UpdateAvailableMemory; 4 grades; clamp register/store order
+009fd660	DIFFER	91v91	-	CGraphicDataBank::FrameEnd; 4 grades (shared model with 009fd3a0)
+009fdba0	DIFFER	61v61	-	CGraphicInfoFrame::UploadToVolumeTexture (label CKilledThing::ModifyHeroStats wrong); 4 grades (incl. 1 QFE); register choice
+00a0be30	DIFFER	70v68	-	CCamera::SetView; 4 grades; vector copy registers
+00a0d300	DIFFER	43v48	-	CProcessedInput::Clear (label CGameEventPackage ctor wrong); 4 grades; loop unroll vs /Os encodings
+00a24cd0	DIFFER	82v80	-	C3DMeshInfo::Reset; 4 grades; zero register CSE in the array clears
+00a2ea20	DIFFER	63v63	-	C3DMeshStats::HasHelperPoint (label HasDummyObject wrong); 4 grades; second end() register swap
+00a50bf0	DIFFER	50v48	-	C3DAnimationStats::GetAllEvents (label CGraphicDataBank::ChangeScene wrong); 4 grades; result temporary slot vs dead arg slot
+00a57140	DIFFER	82v90	-	C2DLineF::GetPointOnInfiniteLine; 4 grades; x87 spill/order of the projection
+00a76c30	DIFFER	55v53	-	CNavNavigableLeafNode::IsNeighbourOf; 4 grades; find tag temporary slot (known gap)
+00a76c70	DIFFER	77v72	-	CNavSwitchableLeafNode::IsNeighbourOf; 2 grades; inline param copy and find tag slot (known gap, as 00a76c30)
+00a77420	DIFFER	98v96	-	CNavSwitchableLeafNode::Unlock; 2 grades; LTCG ecx-preserved callee (lane gap)

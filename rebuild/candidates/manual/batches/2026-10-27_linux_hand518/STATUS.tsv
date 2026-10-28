@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009f4c00	RELOCATION_MATCH	84v84	PASS	CInputManager::IsMouseEventInQueue; STLport vector const operator[]
+009f7d10	RELOCATION_MATCH	94v94	PASS	std::list<CVsyncCallbackTimer::CPendingQuery>::insert (label CKinematic::operator= wrong); /Od TU
+009fd3a0	DIFFER	59v59	-	CGraphicDataBank::UpdateAvailableMemory; 4 grades; clamp register/store order
+009fd660	DIFFER	91v91	-	CGraphicDataBank::FrameEnd; 4 grades (shared model with 009fd3a0)
+009fd6c0	MATCH	58v58	PASS	CGraphicDataBank::CGraphicHeader ctor (label C3DAnimationSequenceData wrong); init list
+009fdba0	DIFFER	61v61	-	CGraphicInfoFrame::UploadToVolumeTexture (label CKilledThing::ModifyHeroStats wrong); 4 grades (incl. 1 QFE); register choice
+00a0be30	DIFFER	70v68	-	CCamera::SetView; 4 grades; vector copy registers
+00a0bed0	RELOCATION_MATCH	48v48	PASS	CCamera::SetFOV
+00a0d300	DIFFER	43v48	-	CProcessedInput::Clear (label CGameEventPackage ctor wrong); 4 grades; loop unroll vs /Os encodings
+00a13c20	RELOCATION_MATCH	57v57	PASS	retail_asm (retail_asm/): C3DCoordI::operator-= (Z added, as retail) + maxps; pure C++ 54v57
+00a14440	RELOCATION_MATCH	61v61	PASS	C3DVector::AccurateNormalise (label GetScaled wrong)
+00a14480	RELOCATION_MATCH	61v61	PASS	C3DVector::GetMagnitudeAndNormalise (label GetScaled wrong)
+00a14510	RELOCATION_MATCH	42v42	PASS	C2DVector::AccurateNormalise (label Dot wrong)
+00a15100	RELOCATION_MATCH	63v63	PASS	CNavigatorManager::GetQuadTreeMemoryUsage; STLport list const walk; old park was the QFE lane
+00a23d80	RELOCATION_MATCH	90v90	PASS	CMeshDataBank::GetEnumerationType
+00a23e40	MATCH	59v59	PASS	C3DMeshInfo::IsLoaded
+00a23e80	MATCH	74v74	PASS	C3DMeshInfo::IsLoadedStats
+00a24cd0	DIFFER	82v80	-	C3DMeshInfo::Reset; 4 grades; zero register CSE in the array clears
+00a25420	MATCH	77v77	PASS	CMeshDataBank::Sizeof; __forceinline GFPContainerSizeof
+00a254f0	RELOCATION_MATCH	51v51	PASS	C3DMeshLODInfo::UnloadResource; CanUnload as two returns
+00a2ea20	DIFFER	63v63	-	C3DMeshStats::HasHelperPoint (label HasDummyObject wrong); 4 grades; second end() register swap
+00a31220	MATCH	95v95	PASS	std::swap<pair<unsigned long, C3DHelperPoint> > (label CDebugScriptElement wrong); C3DVector user copy ctor
+00a39900	RELOCATION_MATCH	80v80	PASS	CVectorMap<ulong,long>::DeallocateMemory (label CActiveFile::OnReadFinished wrong); clear + swap with empty
+00a39950	RELOCATION_MATCH	90v90	PASS	CArray<pair<ulong,long> >::DeallocateMemory (label CArray<unsigned_short> wrong)
+00a4ef90	RELOCATION_MATCH	42v42	PASS	C3DAnimationStats::GetAllEventNames (label CGraphicDataBank::ChangeScene wrong)
+00a50bf0	DIFFER	50v48	-	C3DAnimationStats::GetAllEvents (label CGraphicDataBank::ChangeScene wrong); 4 grades; result temporary slot vs dead arg slot
+00a57140	DIFFER	82v90	-	C2DLineF::GetPointOnInfiniteLine; 4 grades; x87 spill/order of the projection
+00a5ac60	RELOCATION_MATCH	62v62	PASS	CCachedVolumes::GetNavigationLayerAt; key read before the volume test
+00a63630	RELOCATION_MATCH	75v75	PASS	CFontDataBank ctor; Filename = ""
+00a652d0	RELOCATION_MATCH	96v96	PASS	CMemoryAllocatorVariableSize::GetAllocatedArea; header size read back from the published globals (fixes ebx/edi)
+00a69da0	RELOCATION_MATCH	65v65	PASS	CManagedTextureData::Uninitialise; real CCountedPointer member keeps the post-clear re-read
+00a6a330	RELOCATION_MATCH	45v45	PASS	CPreallocTexturePool ctor (label CCompressedMemoryDataInputStream wrong; vtable 0x0129DC50)
+00a76900	RELOCATION_MATCH	74v74	PASS	CNavBlockedQuadTreeNode copy ctor; base ctor sets LeafNode/Blocked
+00a76950	MATCH	79v79	PASS	CNavBlockedQuadTreeNode::SaveToFile; WriteVar<T>
+00a76a30	RELOCATION_MATCH	80v80	PASS	CNavNavigableLeafNode ctor; base-ctor flag stores + C2DVector user copy ctor (grade 4)
+00a76c10	RELOCATION_MATCH	28v28	PASS	CNavNavigableLeafNode::RemoveNeighbours; inline CSmallVector::clear
+00a76c30	DIFFER	55v53	-	CNavNavigableLeafNode::IsNeighbourOf; 4 grades; find tag temporary slot (known gap)
+00a76c70	DIFFER	77v72	-	CNavSwitchableLeafNode::IsNeighbourOf; 2 grades; inline param copy and find tag slot (known gap, as 00a76c30)
+00a77420	DIFFER	98v96	-	CNavSwitchableLeafNode::Unlock; 2 grades; LTCG ecx-preserved callee (lane gap)
+00a779b0	MATCH	91v91	PASS	CNavNavigableLeafNode::ConvertIndexesToPointers; STLport map::find inline

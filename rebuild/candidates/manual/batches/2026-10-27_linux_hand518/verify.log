@@ -1,0 +1,109 @@
+addr       parity           behav  name
+009f4c00   RELOCATION_MATCH PASS   IsMouseEventInQueue
+009f7d10   RELOCATION_MATCH PASS   insert
+009fd6c0   MATCH            PASS   CGraphicHeader
+00a0bed0   RELOCATION_MATCH PASS   SetFOV
+00a14440   RELOCATION_MATCH PASS   AccurateNormalise
+00a14480   RELOCATION_MATCH PASS   GetMagnitudeAndNormalise
+00a14510   RELOCATION_MATCH PASS   AccurateNormalise
+00a15100   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a15100   RELOCATION_MATCH PASS   GetQuadTreeMemoryUsage
+00a23d80   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a23d80   RELOCATION_MATCH PASS   GetEnumerationType
+00a23e40   WARN SHARED_HEADER_AVAILABLE CResource
+00a23e40   MATCH            PASS   IsLoaded
+00a23e80   WARN SHARED_HEADER_AVAILABLE CResource
+00a23e80   MATCH            PASS   IsLoadedStats
+00a25420   WARN SHARED_HEADER_AVAILABLE CMeshDataBankEntry
+00a25420   MATCH            PASS   Sizeof
+00a254f0   WARN SHARED_HEADER_AVAILABLE CResource
+00a254f0   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00a254f0   RELOCATION_MATCH PASS   UnloadResource
+00a31220   MATCH            PASS   swap
+00a39900   RELOCATION_MATCH PASS   DeallocateMemory
+00a39950   RELOCATION_MATCH PASS   DeallocateMemory
+00a4ef90   RELOCATION_MATCH PASS   GetAllEventNames
+00a5ac60   WARN SHARED_HEADER_AVAILABLE CContainmentVolume
+00a5ac60   RELOCATION_MATCH PASS   GetNavigationLayerAt
+00a63630   WARN SHARED_HEADER_AVAILABLE CFontBankStateBlock
+00a63630   RELOCATION_MATCH PASS   CFontDataBank
+00a652d0   RELOCATION_MATCH PASS   GetAllocatedArea
+00a69da0   WARN SHARED_HEADER_AVAILABLE CTexture
+00a69da0   RELOCATION_MATCH PASS   Uninitialise
+00a6a330   WARN SHARED_HEADER_AVAILABLE CResourceList
+00a6a330   RELOCATION_MATCH PASS   CPreallocTexturePool
+00a76900   RELOCATION_MATCH PASS   CNavBlockedQuadTreeNode
+00a76950   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a76950   MATCH            PASS   SaveToFile
+00a76a30   RELOCATION_MATCH PASS   CNavNavigableLeafNode
+00a76c10   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a76c10   RELOCATION_MATCH PASS   RemoveNeighbours
+00a779b0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a779b0   MATCH            PASS   ConvertIndexesToPointers
+
+WINS: 27
+  009f4c00 RELOCATION_MATCH CInputManager::?IsMouseEventInQueue@CInputManager@@QBE_NW4EInputEventType@@AAVCInputEvent@@@Z
+  009f7d10 RELOCATION_MATCH std::list::?insert@?$list@
+  009fd6c0 MATCH CGraphicDataBank::CGraphicHeader::??0CGraphicHeader@CGraphicDataBank@@QAE@XZ
+  00a0bed0 RELOCATION_MATCH CCamera::?SetFOV@CCamera@@QAEXMM@Z
+  00a14440 RELOCATION_MATCH C3DVector::?AccurateNormalise@C3DVector@@QAEAAV1@XZ
+  00a14480 RELOCATION_MATCH C3DVector::?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ
+  00a14510 RELOCATION_MATCH C2DVector::?AccurateNormalise@C2DVector@@QAEAAV1@XZ
+  00a15100 RELOCATION_MATCH CNavigatorManager::?GetQuadTreeMemoryUsage@CNavigatorManager@@QBEKAAK000@Z
+  00a23d80 RELOCATION_MATCH CMeshDataBank::?GetEnumerationType@CMeshDataBank@@MBE?AVCCharString@@K@Z
+  00a23e40 MATCH C3DMeshInfo::?IsLoaded@C3DMeshInfo@@QBE_NXZ
+  00a23e80 MATCH C3DMeshInfo::?IsLoadedStats@C3DMeshInfo@@QBE_NXZ
+  00a25420 MATCH CMeshDataBank::?Sizeof@CMeshDataBank@@UBEKXZ
+  00a254f0 RELOCATION_MATCH C3DMeshLODInfo::?UnloadResource@C3DMeshLODInfo@@UAE_NXZ
+  00a31220 MATCH std::??$swap@U?$pair@KVC3DHelperPoint@@@std@@@std@@YIXAAU?$pair@KVC3DHelperPoint@@@0@0@Z
+  00a39900 RELOCATION_MATCH CVectorMap::?DeallocateMemory@?$CVectorMap@KJV?$CKeyPairCompareLess@KJ@@@@QAEXXZ
+  00a39950 RELOCATION_MATCH CArray::?DeallocateMemory@?$CArray@U?$pair@KJ@std@@@@QAEXXZ
+  00a4ef90 RELOCATION_MATCH C3DAnimationStats::?GetAllEventNames@C3DAnimationStats@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+  00a5ac60 RELOCATION_MATCH CCachedVolumes::?GetNavigationLayerAt@CCachedVolumes@@QBEJABVC3DVector@@@Z
+  00a63630 RELOCATION_MATCH CFontDataBank::??0CFontDataBank@@QAE@XZ
+  00a652d0 RELOCATION_MATCH CMemoryAllocatorVariableSize::?GetAllocatedArea@CMemoryAllocatorVariableSize@@UAEPAXJ@Z
+  00a69da0 RELOCATION_MATCH CManagedTextureData::?Uninitialise@CManagedTextureData@@QAEXXZ
+  00a6a330 RELOCATION_MATCH CPreallocTexturePool::??0CPreallocTexturePool@@QAE@XZ
+  00a76900 RELOCATION_MATCH CNavBlockedQuadTreeNode::??0CNavBlockedQuadTreeNode@@QAE@ABV0@@Z
+  00a76950 MATCH CNavBlockedQuadTreeNode::?SaveToFile@CNavBlockedQuadTreeNode@@MBEXAAVCAFile@@ABV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z
+  00a76a30 RELOCATION_MATCH CNavNavigableLeafNode::??0CNavNavigableLeafNode@@QAE@ABVC2DVector@@EEE@Z
+  00a76c10 RELOCATION_MATCH CNavNavigableLeafNode::?RemoveNeighbours@CNavNavigableLeafNode@@MAEXXZ
+  00a779b0 MATCH CNavNavigableLeafNode::?ConvertIndexesToPointers@CNavNavigableLeafNode@@MAEXABV?$map@JPAVCANavQuadTreeNode@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@@3@@std@@@Z
+
+LANDED 27 wins into src/compiled + tests + catalog + oracle
+  CInputManager_IsMouseEventInQueue_009f4c00
+  stdlist_insert_009f7d10
+  CGraphicDataBankCGraphicHeader_CGraphicHeader_009fd6c0
+  CCamera_SetFOV_00a0bed0
+  C3DVector_AccurateNormalise_00a14440
+  C3DVector_GetMagnitudeAndNormalise_00a14480
+  C2DVector_AccurateNormalise_00a14510
+  CNavigatorManager_GetQuadTreeMemoryUsage_00a15100
+  CMeshDataBank_GetEnumerationType_00a23d80
+  C3DMeshInfo_IsLoaded_00a23e40
+  C3DMeshInfo_IsLoadedStats_00a23e80
+  CMeshDataBank_Sizeof_00a25420
+  C3DMeshLODInfo_UnloadResource_00a254f0
+  std_swap_00a31220
+  CVectorMap_DeallocateMemory_00a39900
+  CArray_DeallocateMemory_00a39950
+  C3DAnimationStats_GetAllEventNames_00a4ef90
+  CCachedVolumes_GetNavigationLayerAt_00a5ac60
+  CFontDataBank_CFontDataBank_00a63630
+  CMemoryAllocatorVariableSize_GetAllocatedArea_00a652d0
+  CManagedTextureData_Uninitialise_00a69da0
+  CPreallocTexturePool_CPreallocTexturePool_00a6a330
+  CNavBlockedQuadTreeNode_CNavBlockedQuadTreeNode_00a76900
+  CNavBlockedQuadTreeNode_SaveToFile_00a76950
+  CNavNavigableLeafNode_CNavNavigableLeafNode_00a76a30
+  CNavNavigableLeafNode_RemoveNeighbours_00a76c10
+  CNavNavigableLeafNode_ConvertIndexesToPointers_00a779b0
+=== retail_asm payload ===
+addr       parity           behav  name
+00a13c20   RELOCATION_MATCH PASS   operator-=
+
+WINS: 1
+  00a13c20 RELOCATION_MATCH C3DCoordI::??ZC3DCoordI@@QAEABV0@ABVC3DVector@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DCoordI_operator_00a13c20
