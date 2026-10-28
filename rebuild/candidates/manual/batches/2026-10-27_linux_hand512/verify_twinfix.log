@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00a74ac0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC2DLineF@@PAV1@@std@@YIPAVC2DLineF@@PAV1@00ABU__false_type@0@@Z -> 00a13490 labelled '_global::UninitCopy_SElement16_00a13490'
+00a74ac0   WARN RELOC_NAME: ??$__copy_backward@PAVC2DLineF@@PAV1@H@std@@YIPAVC2DLineF@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00a74560 labelled '_Move_backward<std::pair<unsigned___int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*,std::pair<unsigned___int64,class_NScript::CRuntimeScriptedEntityPersist::_Move_backward<std::pair<unsigned___int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*,std::pair<unsigned___int64,class_NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*>'
+00a74ac0   RELOCATION_MATCH PASS   vector<C2DLineF>::_M_range_insert<C2DLineF*>
+
+WINS: 1
+  00a74ac0 RELOCATION_MATCH std::??$_M_range_insert@PAVC2DLineF@@@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXPAVC2DLineF@@00ABUforward_iterator_tag@1@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  std_MrangeinsertC2DLineF_00a74ac0
+addr       parity           behav  name
+00a74840   MATCH            PASS   00a74840
+00a74ea0   WARN RELOC_NAME: ??$_M_range_insert@PAVC2DLineF@@@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXPAVC2DLineF@@00ABUforward_iterator_tag@1@@Z -> 00a74ac0 labelled 'Vector_InsertRange_C2DLineF'
+00a74ea0   RELOCATION_MATCH PASS   00a74ea0
+
+WINS: 2
+  00a74840 MATCH std::??$copy@PAVC2DLineF@@PAV1@@std@@YI
+  00a74ea0 RELOCATION_MATCH std::?DeallocateUnusedMemory@

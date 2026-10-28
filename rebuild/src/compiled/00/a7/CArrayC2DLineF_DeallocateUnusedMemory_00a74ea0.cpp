@@ -3,8 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A74EA0, 173 bytes, thiscall `ret`.
 // Caller: 0x00A7416C (the CPhysicsMesh navigation-line TU). PDB name set: CArray<T> has DeallocateMemory and
 //   DeallocateUnusedMemory (Ego_r.pdb); the catalog's "Vector_ShrinkToFit_C2DLineF" is descriptive.
-// Callees: vector<C2DLineF>::reserve 0x00A74940 (this chunk, on the temporary), vector<C2DLineF>::_M_range_insert(pos,
-//   first, last, const forward_iterator_tag&) 0x00A74AC0, vector<C2DLineF>::erase(first, last) 0x00A748E0 (inside the
+// Callees: vector<C2DLineF>::reserve 0x00A74940 (this chunk, on the temporary), vector<C2DLineF>::_M_range_insert<C2DLineF*>(pos,
+//   first, last, const forward_iterator_tag&) 0x00A74AC0 (STLport member-template insert of non-const begin()/end()), vector<C2DLineF>::erase(first, last) 0x00A748E0 (inside the
 //   inline DeallocateMemory, landed 0x00A74C60), free 0x00BFEA14.
 // Shape: `if (capacity() > size()) { CArray<T> temp; temp.reserve(size()); temp.insert(temp.begin(), begin(), end());
 //   DeallocateMemory(); swap(temp); }` -- capacity/size from one start load (unsigned `jbe`), the temporary's inline
@@ -71,8 +71,10 @@ public:
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
     void reserve(size_type __n);                                                                    // 0x00A74940
-    void _M_range_insert(iterator __pos, const_iterator __first, const_iterator __last, const forward_iterator_tag&);   // 0x00A74AC0
-    void insert(iterator __pos, const_iterator __first, const_iterator __last)
+    template <class _ForwardIterator>
+    void _M_range_insert(iterator __pos, _ForwardIterator __first, _ForwardIterator __last, const forward_iterator_tag&);   // 0x00A74AC0 <C2DLineF*>
+    template <class _InputIterator>
+    void insert(iterator __pos, _InputIterator __first, _InputIterator __last)
     {
         _M_range_insert(__pos, __first, __last, forward_iterator_tag());
     }
@@ -102,8 +104,8 @@ __declspec(noinline) void vector<_Tp, _Alloc>::reserve(size_type __n)
     }
 }
 // 0x00A74AC0: the forward range insert -- same-TU noinline stand-in (append into reserved room; never touches the tag).
-template <class _Tp, class _Alloc>
-__declspec(noinline) void vector<_Tp, _Alloc>::_M_range_insert(iterator __pos, const_iterator __first, const_iterator __last, const forward_iterator_tag&)
+template <class _Tp, class _Alloc> template <class _ForwardIterator>
+__declspec(noinline) void vector<_Tp, _Alloc>::_M_range_insert(iterator __pos, _ForwardIterator __first, _ForwardIterator __last, const forward_iterator_tag&)
 {
     for (; __first != __last; ++__first, ++this->_M_finish)
         new (this->_M_finish) _Tp(*__first);

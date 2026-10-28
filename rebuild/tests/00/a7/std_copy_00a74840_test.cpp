@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 struct Rec { int Words[4]; };
-static Rec* CopyForward(const Rec* first, const Rec* last, Rec* result)
+static Rec* CopyForward(Rec* first, Rec* last, Rec* result)
 {
     for (int n = (int)(last - first); n > 0; --n) {
         *result = *first;

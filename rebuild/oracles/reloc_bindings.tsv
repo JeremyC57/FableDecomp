@@ -21405,7 +21405,7 @@ __imp__LocalFree@4	0143fe78	00a5ed60
 ??$__median@V?$pair@VCCharString@@USNamedChunk@@@std@@V?$CKeyPairCompareLess@VCCharString@@USNamedChunk@@@@@std@@YIABV?$pair@VCCharString@@USNamedChunk@@@0@ABV10@00V?$CKeyPairCompareLess@VCCharString@@USNamedChunk@@@@@Z	00a70020	00a73a00
 ??$__partial_sort@PAV?$pair@VCCharString@@USNamedChunk@@@std@@V12@V?$CKeyPairCompareLess@VCCharString@@USNamedChunk@@@@@std@@YIXPAV?$pair@VCCharString@@USNamedChunk@@@0@000V?$CKeyPairCompareLess@VCCharString@@USNamedChunk@@@@@Z	00a733b0	00a73a00
 ??$__unguarded_partition@PAV?$pair@VCCharString@@USNamedChunk@@@std@@V12@V?$CKeyPairCompareLess@VCCharString@@USNamedChunk@@@@@std@@YIPAV?$pair@VCCharString@@USNamedChunk@@@0@PAV10@0V10@V?$CKeyPairCompareLess@VCCharString@@USNamedChunk@@@@@Z	00a71910	00a73a00
-?_M_range_insert@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXPAVC2DLineF@@PBV3@1ABUforward_iterator_tag@2@@Z	00a74ac0	00a74ea0
+??$_M_range_insert@PAVC2DLineF@@@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXPAVC2DLineF@@00ABUforward_iterator_tag@1@@Z	00a74ac0	00a74ea0
 ?erase@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEPAVC2DLineF@@PAV3@0@Z	00a748e0	00a74ea0
 ?reserve@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXI@Z	00a74940	00a74ea0
 ??$__unguarded_linear_insert@PAV?$pair@_K_N@std@@V12@V?$CKeyPairCompareLess@_K_N@@@std@@YIXPAV?$pair@_K_N@0@V10@V?$CKeyPairCompareLess@_K_N@@@Z	00a7d570	00a7efe0
@@ -34262,3 +34262,5 @@ __setdefaultprecision	0040135c	00401067
 ??$__uninitialized_fill_n@PAVC3DVertex2@@IV1@@std@@YIPAVC3DVertex2@@PAV1@IABV1@ABU__false_type@0@@Z	00a94950	00a97040
 ??$fill@PAVC3DVertex2@@V1@@std@@YIXPAVC3DVertex2@@0ABV1@@Z	00a94600	00a97040
 ?_M_insert_overflow@?$vector@VC3DVertex2@@V?$allocator@VC3DVertex2@@@std@@@std@@IAEXPAVC3DVertex2@@ABV3@ABU__false_type@2@I_N@Z	00a96b30	00a97040
+??$__copy_backward@PAVC2DLineF@@PAV1@H@std@@YIPAVC2DLineF@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	00a74560	00a74ac0
+??$copy@PAVC2DLineF@@PAV1@@std@@YIPAVC2DLineF@@PAV1@00@Z	00a74840	00a74ac0

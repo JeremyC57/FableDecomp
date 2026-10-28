@@ -1,11 +1,14 @@
-// std::vector<C2DLineF>::_M_range_insert(iterator pos, const_iterator first, const_iterator last, const forward_iterator_tag&) -- STLport forward-range insert of 16-byte lines: in place when the spare capacity holds the range (shift the tail up, then copy the range in), otherwise allocate size + max(size, n), copy head, range and tail into it and adopt it
-// Leaf: ?_M_range_insert@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXPAVC2DLineF@@PBV3@1ABUforward_iterator_tag@2@@Z
+// std::vector<C2DLineF>::_M_range_insert<C2DLineF*>(iterator pos, C2DLineF* first, C2DLineF* last, const forward_iterator_tag&) -- STLport forward-range insert of 16-byte lines: in place when the spare capacity holds the range (shift the tail up, then copy the range in), otherwise allocate size + max(size, n), copy head, range and tail into it and adopt it
+// Leaf: ??$_M_range_insert@PAVC2DLineF@@@?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXPAVC2DLineF@@00ABUforward_iterator_tag@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A74AC0, 376 bytes, thiscall `ret 10h` (four arguments).
 // Identity (proven): the landed CArray<C2DLineF>::DeallocateUnusedMemory 0x00A74EA0 calls this row through vector<C2DLineF>'s
 //   insert(pos, first, last) and binds exactly this symbol; its callees __copy_backward<C2DLineF*, C2DLineF*, int> 0x00A74560 and
-//   copy<const C2DLineF*, C2DLineF*> 0x00A74840 are landed C2DLineF instances.
-// Callees: __uninitialized_copy 0x00A13490 (every placement copy; __fastcall first/last + result + tag; one ICF-folded body
-//   for the const and non-const instances), __copy_backward 0x00A74560 (the tail shift), copy 0x00A74840 (the range
+//   copy<C2DLineF*, C2DLineF*> 0x00A74840 are landed C2DLineF instances.
+// Template argument (proven): _ForwardIterator = C2DLineF*. The caller inserts a non-const CArray's begin()/end(), which
+//   STLport 4.6's member-template insert forwards unchanged; every placement copy then is __uninitialized_copy<C2DLineF*,
+//   C2DLineF*> and both range copies copy<C2DLineF*, C2DLineF*> -- retail calls exactly one target for each (0x00A13490,
+//   0x00A74840). The const_iterator form would instantiate two copy helpers, and retail does not fold identical code.
+// Callees: __uninitialized_copy<C2DLineF*, C2DLineF*> 0x00A13490 (every placement copy; __fastcall first/last + result + tag), __copy_backward 0x00A74560 (the tail shift), copy 0x00A74840 (the range
 //   assignment), malloc 0x00BFEA0E / free 0x00BFEA14.
 // Shape: STLport 4.6 vector.c `_M_range_insert(..., const forward_iterator_tag&)` verbatim (no EH); the tags are homed on
 //   live argument slots because the tag-taking copy bodies are same-TU noinline bodies that never read them.
@@ -94,10 +97,11 @@ public:
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
-    void _M_range_insert(iterator __position, const_iterator __first, const_iterator __last, const forward_iterator_tag&);
+    template <class _ForwardIterator>
+    void _M_range_insert(iterator __position, _ForwardIterator __first, _ForwardIterator __last, const forward_iterator_tag&);
 };
-template <class _Tp, class _Alloc>
-void vector<_Tp, _Alloc>::_M_range_insert(iterator __position, const_iterator __first, const_iterator __last, const forward_iterator_tag&)
+template <class _Tp, class _Alloc> template <class _ForwardIterator>
+void vector<_Tp, _Alloc>::_M_range_insert(iterator __position, _ForwardIterator __first, _ForwardIterator __last, const forward_iterator_tag&)
 {
     if (__first != __last) {
         size_type __n = __last - __first;
@@ -111,7 +115,7 @@ void vector<_Tp, _Alloc>::_M_range_insert(iterator __position, const_iterator __
                 copy(__first, __last, __position);
             }
             else {
-                const_iterator __mid = __first;
+                _ForwardIterator __mid = __first;
                 __mid += __elems_after;
                 __uninitialized_copy(__mid, __last, this->_M_finish, __false_type());
                 this->_M_finish += __n - __elems_after;
@@ -134,4 +138,4 @@ void vector<_Tp, _Alloc>::_M_range_insert(iterator __position, const_iterator __
     }
 }
 }
-template void std::vector<C2DLineF>::_M_range_insert(C2DLineF*, const C2DLineF*, const C2DLineF*, const std::forward_iterator_tag&);
+template void std::vector<C2DLineF>::_M_range_insert<C2DLineF*>(C2DLineF*, C2DLineF*, C2DLineF*, const std::forward_iterator_tag&);

@@ -1,4 +1,4 @@
-# Chunk 512 (agent512, 2026-10-28): 16 of 20 single functions landed (256-512 bytes), 1 held
+# Chunk 512 (agent512, 2026-10-28): 16 of 20 single functions landed (256-512 bytes), 1 held, landed 2026-10-28
 
 Single functions of 256-512 bytes (20 rows, address order, 0x00A72DD0..0x00AA3AF0): STLport instantiations over the
 navigation and mesh types, and engine navigation and keyframe code. One Opus 5.5 agent at high effort.
@@ -24,3 +24,13 @@ Outside it: 0x00A77540 is CNavQuadTree::IsActionPoint (probable), 0x00994B40 CMe
 the wrong access (IAE vs QAE); NOTES.md lists each. Header debt: CMemoryDataOutputStream.h / CDataOutputStream.h lack
 the virtuals; CNavQuadTree.h lacks the nested CNavigationLayer; no headers for CPhysicsMesh, C3DKeyframe, CQuaternion,
 CMatrix4x4.
+
+**2026-10-28: the held row landed.** 0x00A74AC0 is the member template `_M_range_insert<C2DLineF*>`, not the
+const_iterator form. Proof: retail calls one `__uninitialized_copy` target (0x00A13490) from all six placement copies and
+one `copy` target (0x00A74840) from both range copies. STLport 4.6 produces that only when the range iterator is the
+vector's own `C2DLineF*`. The const_iterator form instantiates two copy helpers, and retail does not fold identical
+code (18 separate identical IS_THING_ALIVE bodies). The caller agrees: FableWin.pdb has CArray<C2DLineF>::DeallocateUnusedMemory, and its landed
+body inserts a non-const CArray's begin()/end(). The landed copy 0x00A74840 was respelled `copy<C2DLineF*, C2DLineF*>` and
+the landed caller 0x00A74EA0 now declares the member-template insert; both recheck clean (verify_twinfix.log) and the new
+row landed RELOCATION_MATCH with no conflict. 0x00A11210, which landed 0x00A13650 binds as the C2DLineF copy, is called
+only from C3DClothQuad code (fill<C3DClothQuad*>, the ClothQuad assign): a separate review item.
