@@ -35241,3 +35241,11 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z	0051fd80	00521240
 ?SetPositionAssumeWithinSourceChunk@CDataInputStream@@IAEXK@Z	00993c10	00521240
 ?g_LoadTickInterval@@3KA	01375714	00521240
+??0CEnginePrimitiveSprite@@QAE@ABVC3DVector@@KKGMMMW4EEnginePrimitiveBlendMode@@EEEEMW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z	006558ce	00663c40
+?ClearAllPrimitivesDueToBeingOutOfRange@CTCGraphicAppearance@NGraphicAppearance@@QAEXXZ	004bf960	00663c40
+?ClearPrimitives@CTCEmoteIcon@@QAEXXZ	00669390	00663c40
+?Draw@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	004be4e0	00663c40
+?DrawAddWeaponTrails@CTCWeaponTrail@@QBEXABVCEnginePrimitivePrepareInfo@@@Z	0076e6a0	00663c40
+?DrawHitNotification@CTCCreatureHitNotification@@QBEXABVCEnginePrimitivePrepareInfo@@@Z	00864ff0	00663c40
+?GetFadeDistance@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ	004bc180	00663c40
+?GetWorld@CThing@@IAEAAVCWorld@@XZ	004c7aa0	00663c40

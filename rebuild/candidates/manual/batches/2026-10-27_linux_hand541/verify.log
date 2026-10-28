@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00663c40   WARN SHARED_HEADER_AVAILABLE CIEngine
+00663c40   WARN SHARED_HEADER_AVAILABLE CTCBase
+00663c40   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00663c40   WARN SHARED_HEADER_AVAILABLE CWorld
+00663c40   WARN RELOC_NAME: ?GetWorld@CThing@@IAEAAVCWorld@@XZ -> 004c7aa0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7aa0'
+00663c40   WARN RELOC_NAME: ?DrawHitNotification@CTCCreatureHitNotification@@QBEXABVCEnginePrimitivePrepareInfo@@@Z -> 00864ff0 labelled 'CThingPhysical_RenderWeaponTrails'
+00663c40   WARN RELOC_NAME: ?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z -> 0049d150 labelled 'CTCPhysicsBase::GetInterpolatedPosition'
+00663c40   WARN RELOC_NAME: ?ClearPrimitives@CTCEmoteIcon@@QAEXXZ -> 00669390 labelled 'CViewport::ClearHandle'
+00663c40   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+
+WINS: 1
+  00663c40 RELOCATION_MATCH CThingCreatureBase::?DrawPreparePrimitivesForRendering@CThingCreatureBase@@MAE_NABVCEnginePrimitivePrepareInfo@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CThingCreatureBase_DrawPreparePrimitivesForRendering_00663c40

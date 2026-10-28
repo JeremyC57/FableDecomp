@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+00622a00	DIFFER	880v877	-	PDB-exact names/layout; residue: local-vector frame order + _M_finish kept in ebp (lane gap: local STL container fields enregistered)
+00627400	DIFFER	750v742	-	only the CDeletion temporary _List_base null head store differs (lane gap: dead STL store kept)
+0063ab90	DIFFER	586v582	-	x87 cell-fraction scheduling after the parity test; callee renamed GetThemeSizeZAtBlock (probable)
+0063d0a0	DIFFER	1017v1017	-	same length; x87/pointer-load scheduling only; PointIsWithinCell TR/BL/TL/BR names fixed
+0063d4a0	DIFFER	1017v1017	-	same length; scheduling only; is FindThemeCollisionPointWithinCell (manifest label FindGround... is wrong)
+0063e6f0	DIFFER	607v599	-	real STLport list: null head store + early link stores (lane gap); leaf takes const CThing& references
+0065cb6b	DIFFER	748v747	-	frame 0x1c vs 0x18: retail shares one key-temporary slot; deed log respill

@@ -362182,6 +362182,13 @@ $catalog = @(
         TestSource = '00/5c/CPersistTraitsNInventoryCItem_TransferOut_005c0e81_test.cpp'
         PassPattern = '005c0e81_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00663c40'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_DrawPreparePrimitivesForRendering_00663c40.cpp'
+        TestSource = '00/66/CThingCreatureBase_DrawPreparePrimitivesForRendering_00663c40_test.cpp'
+        PassPattern = '00663c40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
