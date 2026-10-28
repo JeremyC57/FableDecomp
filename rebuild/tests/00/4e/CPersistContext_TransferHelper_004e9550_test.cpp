@@ -39,7 +39,7 @@ public:
     unsigned char           _pad1c[0x08];
     CMemoryDataInputStream* InputStream;           // +0x24
     CDataOutputStream*      OutputStream;          // +0x28
-    void CheckCRC(const char* name);               // 0x00404500
+    protected: void CheckCRC(const char* name); public:               // 0x00404500
     void TransferHelper(CObjectAugmentationParticleSet* value);
 };
 

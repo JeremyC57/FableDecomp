@@ -111,7 +111,7 @@ class CScriptThing : public CBaseClass { public:                          // vta
     CCountedPointer<CScriptThing> PImp;                     // +0x04 Data, +0x08 Info
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
-    ~CScriptThing();                                        // 0x004AA840
+    virtual ~CScriptThing();                                        // 0x004AA840
     virtual void s01();
     virtual CCharString GetDefName() const          // slot 2 (+0x08) 0x004AA8D0
     {

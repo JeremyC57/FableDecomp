@@ -4,12 +4,12 @@
 
 class CCharString { public:
     char* m_buf;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 // Local stand-in for CCharString::CCharString(char const*, int) @ 0x0099ebf0.
 // n==-1 means "use strlen". Copies the literal.
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     int len = (n < 0) ? (int)strlen(s) : n;
     m_buf = (char*)malloc(len + 1);

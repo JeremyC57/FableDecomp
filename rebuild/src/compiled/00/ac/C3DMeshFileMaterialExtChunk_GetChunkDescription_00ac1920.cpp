@@ -5,8 +5,8 @@
 
 class CCharString {
 public:
-    // ctor from (const char*, int length)  -> retail 0x0099ebf0
-    CCharString(const char* s, int len);
+    // ctor from (const char*, long length)  -> retail 0x0099ebf0
+    CCharString(const char* s, long len);
     CCharString(const CCharString& o);
     ~CCharString();
 private:

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 class CThing { public: int id; };
-class CCharString { public: char m_text[32]; CCharString(const char* t, int) { std::strcpy(m_text, t); } };
+class CCharString { public: char m_text[32]; CCharString(const char* t, long) { std::strcpy(m_text, t); } };
 class CSoundPair { public: int m_first, m_second; CSoundPair() : m_first(0), m_second(0) { } };
 struct CBaseIntelligentPointer { CThing* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { } };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() { } };

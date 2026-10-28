@@ -57,7 +57,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     virtual void t073(); virtual void t074();
     CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing() {}
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c), out of line 0x004AB130
 };

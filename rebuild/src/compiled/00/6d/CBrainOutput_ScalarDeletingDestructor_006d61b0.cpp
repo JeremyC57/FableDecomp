@@ -12,7 +12,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
     virtual void v00();
     void* m_pItem;                              // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {   // shares the base vtable in this TU (no store of its own in the destructor)

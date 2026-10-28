@@ -42,7 +42,7 @@ class CScriptThing : public CBase { public:
     CCPPointerInfo* PImp_Info;                          // +0x08
     CScriptThing() : PImp_Data(0), PImp_Info(0) {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 template <class T> struct CScriptThingVector {          // STLport vector<CScriptThing> (12 bytes)
     T* _M_start;

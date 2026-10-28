@@ -4,11 +4,11 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
     char* m_data;
 };
 
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     int n = (len < 0) ? (int)strlen(s) : len;
     m_data = (char*)malloc(n + 1);

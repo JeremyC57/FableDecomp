@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour model of CBeggar::Main: scripted waits on "talked to by the hero", sit / stand calls, termination exits.
-class CCharString { public: const char* text; CCharString(const char* t, int = -1) : text(t) {} };
+class CCharString { public: const char* text; CCharString(const char* t, long = -1) : text(t) {} };
 static int g_frame, g_terminateAt, g_talkFrames[8], g_talkCount, g_sitLog[8], g_sitCount, g_badName;
 class CScriptThing { public:
     bool MsgIsTalkedToBy(const CCharString& name) const

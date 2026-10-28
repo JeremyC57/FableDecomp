@@ -5,11 +5,11 @@ class CCharString
 {
 public:
     char* m_data;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 // local stand-in for the engine ctor @ 0x99ebf0
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     int n = (len < 0) ? (int)strlen(s) : len;
     m_data = new char[n + 1];

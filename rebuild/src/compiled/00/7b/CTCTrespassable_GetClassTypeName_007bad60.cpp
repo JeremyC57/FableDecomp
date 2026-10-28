@@ -1,7 +1,7 @@
 class CCharString
 {
 public:
-    CCharString(const char* pText, int length);
+    CCharString(const char* pText, long length);
 };
 
 class CTCTrespassable

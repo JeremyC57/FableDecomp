@@ -1,6 +1,6 @@
 class CCharString { public:
     void* p;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 class CTCScriptedControl { public:
     CCharString GetClassTypeName();

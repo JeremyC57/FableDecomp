@@ -1,5 +1,5 @@
 #include "engine/CCombatSequenceWhisperIdles.h"
 
-class CCharString { public: char* m_data; CCharString(); CCharString(const char*, int); CCharString(const CCharString&); ~CCharString(); };
+class CCharString { public: char* m_data; CCharString(); CCharString(const char*, long); CCharString(const CCharString&); ~CCharString(); };
 struct CCombatSequenceWhisperIdles_Methods : CCombatSequenceWhisperIdles { CCharString GetName(); };
 CCharString CCombatSequenceWhisperIdles_Methods::GetName() { return CCharString((const char*)0x1278e38, -1); }

@@ -4,7 +4,7 @@ class CCharString { public:
     int d;
     const char* gotLit;
     int gotLen;
-    CCharString(const char* lit, int len) {
+    CCharString(const char* lit, long len) {
         gotLit = lit;
         gotLen = len;
         d = 0x1234;

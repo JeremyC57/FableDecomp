@@ -31,7 +31,7 @@ class CScriptThing { public:                                      // 12 bytes: v
     virtual float GetAngleXY() const;                      // slot 10 (+0x28)
     void* PImp[2];
     CScriptThing(const CScriptThing& other);               // 0x004ABE90
-    ~CScriptThing();                                       // 0x004AA840
+    virtual ~CScriptThing();                                       // 0x004AA840
     bool IsAlive() const;                                  // 0x004AB130
 };
 

@@ -3,7 +3,7 @@
 #include <cstring>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-class CCharString { public: char m_text[32]; CCharString(const char* t, int) { std::strcpy(m_text, t); } };
+class CCharString { public: char m_text[32]; CCharString(const char* t, long) { std::strcpy(m_text, t); } };
 class CTCKrakenTentacle { public: int m_striking; void SetIsStriking(bool s) { m_striking = s ? 1 : 0; Log(2); } };
 class CThing { public:
     unsigned int m_presentBits[9];

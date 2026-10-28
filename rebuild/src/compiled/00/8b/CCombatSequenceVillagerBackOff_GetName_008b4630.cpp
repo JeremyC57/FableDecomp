@@ -1,5 +1,5 @@
 #include "engine/CCombatSequence_VillagerBackOff.h"
 
-class CCharString { public: char* m_pData; CCharString(const char*, int); };
+class CCharString { public: char* m_pData; CCharString(const char*, long); };
 struct CCombatSequence_VillagerBackOff_Methods : CCombatSequence_VillagerBackOff { CCharString GetName() const; };
 CCharString CCombatSequence_VillagerBackOff_Methods::GetName() const { return CCharString("CombatSequence_VillagerBackOff", -1); }

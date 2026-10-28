@@ -4,7 +4,7 @@
 //   CCreatureAction_CastDivineWrathSpell::Initialise 0x008BAE10 (type 0x85 / "CTCDivineWrath").
 // Callees: CCombatActionBase::Initialise 0x00857520 (direct base call, first), CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   CVectorMap::LowerBound 0x0040F020 (inlined GetInterface, type 0x86 = bit 6 of the word at +0x30),
-//   CCharString(const char*, int = -1) 0x0099EBF0 ("CTCUnholyPower" 0x0123C290), CThing::AddTC(const CCharString&, bool,
+//   CCharString(const char*, long = -1) 0x0099EBF0 ("CTCUnholyPower" 0x0123C290), CThing::AddTC(const CCharString&, bool,
 //   CTCParamsBase*) 0x004C9D60, ~CCharString 0x0099EAE0, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
 //   dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C).
 // Layout: PCreature +0x08 and the base action's CIntelligentPointer<CThing> at +0x2c (PItemRemoved in the PDB layout of
@@ -20,7 +20,7 @@ class CTCBase;
 class CTCParamsBase;
 class CCharString { public:
     void* PStringData;
-    CCharString(const char* text, int length = -1);   // 0x0099EBF0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 struct CInterfaceMap {
@@ -74,7 +74,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
-    ~CBaseIntelligentPointer();                       // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
     CThing* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };

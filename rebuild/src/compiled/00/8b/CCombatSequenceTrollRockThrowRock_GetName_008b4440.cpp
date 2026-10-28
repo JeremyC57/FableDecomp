@@ -3,15 +3,15 @@
 // string literal. 'this' is unused; the function constructs a constant name
 // string into the hidden struct-return buffer and returns it.
 // Retail: push esi; mov esi,[esp+8]; push -1; push 0x1278b60; mov ecx,esi;
-//         call CCharString::ctor(const char*,int); mov eax,esi; pop esi; ret 4
+//         call CCharString::ctor(const char*,long); mov eax,esi; pop esi; ret 4
 
 class CCharString
 {
 public:
-	// CCharString::CCharString(const char* str, int len)  @ 0x0099ebf0
+	// CCharString::CCharString(const char* str, long len)  @ 0x0099ebf0
 	// Real out-of-line ctor; declared but not defined here so the compiler
 	// emits a call to it (ecx = this buffer, str + len on stack).
-	CCharString(const char* str, int len);
+	CCharString(const char* str, long len);
 private:
 	char* m_data;
 };

@@ -6,7 +6,7 @@
 #include "engine/CCombatSequence_GenericLeader.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 struct CCombatSequence_GenericLeader_Methods : CCombatSequence_GenericLeader {

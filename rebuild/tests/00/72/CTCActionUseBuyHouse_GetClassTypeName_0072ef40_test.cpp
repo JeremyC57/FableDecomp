@@ -3,12 +3,12 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
     const char* m_data;
     int m_len;
 };
 
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     m_data = s;
     m_len = (len < 0) ? (int)std::strlen(s) : len;

@@ -13,7 +13,7 @@ class C3DVector { public:
 };
 class CCharString { public:
     const char* Text;
-    CCharString(const char* text, int length = -1) : Text(text) { (void)length; }
+    CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
 };
 static int g_destroys;
 static bool g_effectNameKnown;

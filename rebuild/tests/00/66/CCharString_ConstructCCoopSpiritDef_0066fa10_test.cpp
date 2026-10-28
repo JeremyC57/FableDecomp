@@ -3,7 +3,7 @@
 #include <cstring>
 class CCharString {
 public:
-    CCharString(const char* text, int length)
+    CCharString(const char* text, long length)
     {
         int n = length < 0 ? (int)std::strlen(text) : length;
         if (n > 63) n = 63;

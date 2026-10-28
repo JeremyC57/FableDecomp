@@ -24,7 +24,7 @@ class CPersistContext { public:
     unsigned char _pad1[8];
     CMemoryDataInputStream* m_pLoadStream; // +0x24
     CDataOutputStream* m_pSaveStream;      // +0x28
-    void CheckCRC(const char* name);       // 0x00404500
+    protected: void CheckCRC(const char* name); public:       // 0x00404500
     void TransferBinary_0046ca94(SValue* value);
 };
 

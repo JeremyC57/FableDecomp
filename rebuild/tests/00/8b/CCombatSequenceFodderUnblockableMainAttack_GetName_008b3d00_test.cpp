@@ -9,7 +9,7 @@ static int         g_last_len = 999;
 
 class CCharString {
 public:
-    CCharString(const char* s, int n) { g_last_str = s; g_last_len = n; }
+    CCharString(const char* s, long n) { g_last_str = s; g_last_len = n; }
 };
 
 class CCombatSequence_FodderUnblockableMainAttack {

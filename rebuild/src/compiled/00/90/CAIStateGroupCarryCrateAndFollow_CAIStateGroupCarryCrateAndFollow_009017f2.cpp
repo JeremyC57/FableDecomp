@@ -10,7 +10,7 @@
 struct CBaseIntelligentPointer {         // 8 bytes: vptr + the pointee link
     virtual void v00();
     void* m_pItem;                          // +4
-    ~CBaseIntelligentPointer();             // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {

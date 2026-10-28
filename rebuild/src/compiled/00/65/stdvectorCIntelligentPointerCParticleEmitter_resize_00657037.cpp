@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     virtual void v000();
     void* PItem;                                             // +0x04
     CBaseIntelligentPointer();                               // 0x00A01B10
-    ~CBaseIntelligentPointer();                              // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                              // 0x00A01C10
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A26C
     CIntelligentPointer() {}

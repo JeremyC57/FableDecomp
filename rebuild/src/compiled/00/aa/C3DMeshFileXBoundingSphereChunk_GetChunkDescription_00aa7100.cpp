@@ -5,7 +5,7 @@
 class CCharString {
 public:
     // ctor at 0x0099ebf0 : CCharString(char const* s, int n)
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 private:
     char* m_p;
 };

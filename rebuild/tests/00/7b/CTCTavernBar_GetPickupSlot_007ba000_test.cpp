@@ -60,7 +60,7 @@ CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                // +4
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CThing* GetPItem() const;                       // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:

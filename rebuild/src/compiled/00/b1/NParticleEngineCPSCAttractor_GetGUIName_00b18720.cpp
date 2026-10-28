@@ -10,7 +10,7 @@
 //   push -1
 //   push 0x129f5dc           ; const char* literal
 //   mov  ecx, esi            ; this = return buffer
-//   call CCharString::CCharString(const char*, int)  ; 0x99ebf0
+//   call CCharString::CCharString(const char*, long)  ; 0x99ebf0
 //   mov  eax, esi
 //   pop  esi
 //   ret  4
@@ -24,7 +24,7 @@ class CCharString
 public:
     // Declaration only: defined in another TU (retail 0x99ebf0), so the
     // compiler MUST emit a real call, matching retail's push/push/call.
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 private:
     char* m_data;
 };

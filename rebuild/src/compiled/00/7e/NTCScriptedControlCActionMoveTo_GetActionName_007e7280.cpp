@@ -6,7 +6,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     void* p;
 };
 

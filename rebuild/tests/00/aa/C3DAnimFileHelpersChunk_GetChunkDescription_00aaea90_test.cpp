@@ -2,7 +2,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     char* m_data;
     int m_n;
 };
@@ -14,7 +14,7 @@ public:
 };
 
 // Local stand-in for the real ctor at 0x99ebf0.
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     m_data = (char*)s;
     m_n = n;

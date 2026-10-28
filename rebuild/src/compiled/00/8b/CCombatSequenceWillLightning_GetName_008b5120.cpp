@@ -4,8 +4,8 @@
 class CCharString {
 public:
     char* m_ptr;
-    // out-of-line ctor -> retail CCharString::CCharString(const char*, int)
-    CCharString(const char* s, int len);
+    // out-of-line ctor -> retail CCharString::CCharString(const char*, long)
+    CCharString(const char* s, long len);
 };
 
 class CCombatSequence_WillLightning {

@@ -2,8 +2,8 @@
 
 class CCharString {
 public:
-    // ctor at 0x99ebf0: CCharString(const char* s, int n)
-    CCharString(const char* s, int n);
+    // ctor at 0x99ebf0: CCharString(const char* s, long n)
+    CCharString(const char* s, long n);
 private:
     void* m_data;
 };

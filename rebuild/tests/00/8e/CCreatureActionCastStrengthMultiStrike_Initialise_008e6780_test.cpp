@@ -1,7 +1,7 @@
 // CCreatureAction_CastStrengthMultiStrike::Initialise() -- make sure the creature has a CTCHaste, register this action's 1.75x multiplier, set the MULTI_STRIKE_FRONT animation, then the base Initialise
 // Leaf: ?Initialise@CCreatureAction_CastStrengthMultiStrike
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E6780, 244 bytes (256 with padding), virtual Initialise.
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature at +8), CCharString(const char*, int = -1)
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature at +8), CCharString(const char*, long = -1)
 //   0x0099EBF0 ("CTCHaste" 0x0123C2A0 / "MULTI_STRIKE_FRONT" 0x01287368), CThing::AddTC(const CCharString&, bool,
 //   CTCParamsBase*) 0x004C9D60, ~CCharString 0x0099EAE0, map<void*, float>::insert(const value_type&) 0x00580D21
 //   (pair<iterator,bool> by hidden pointer; byte twin of the landed set<ulong> insert), CTCHaste::RecalculateMultiplier
@@ -20,7 +20,7 @@ class CTCBase;
 class CTCParamsBase;
 class CCharString { public:
     void* PStringData;
-    CCharString(const char* text, int length = -1);   // 0x0099EBF0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 struct SInterfaceEntry { long type; CTCBase* component; };
@@ -118,7 +118,7 @@ static float g_insValue = 0.0f;
 static CTCHaste* g_recalcThis = 0;
 static CTCHaste g_haste;
 static SInterfaceEntry g_entries[4];
-CCharString::CCharString(const char* text, int) : PStringData((void*)text) { ++g_strings; g_lastText = text; }
+CCharString::CCharString(const char* text, long) : PStringData((void*)text) { ++g_strings; g_lastText = text; }
 CCharString::~CCharString() { --g_strings; }
 CTCBase* CThing::AddTC(const CCharString& name, bool, CTCParamsBase*)
 {

@@ -9,7 +9,7 @@
 //   push -1                 ; 2nd ctor arg (length = -1)
 //   push 0x1239f78          ; 1st ctor arg (const char* literal), reloc-masked
 //   mov  ecx,esi            ; ecx = this for the CCharString ctor
-//   call CCharString::CCharString(const char*,int)
+//   call CCharString::CCharString(const char*,long)
 //   mov  eax,esi            ; return the hidden return pointer in eax
 //   pop  esi
 //   ret  4                  ; clean the hidden return pointer
@@ -22,11 +22,11 @@ struct StringRep;
 class CCharString
 { public:
     StringRep* rep;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 #pragma auto_inline(off)
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     rep = (StringRep*)(s ? (void*)(n) : 0);
 }

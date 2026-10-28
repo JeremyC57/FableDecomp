@@ -7,12 +7,12 @@
 
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 static char g_buf[64];
 
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     // len == -1 means "use strlen"
     int n = (len < 0) ? (int)strlen(s) : len;

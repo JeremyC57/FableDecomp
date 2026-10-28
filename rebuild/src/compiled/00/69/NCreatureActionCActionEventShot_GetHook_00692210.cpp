@@ -6,7 +6,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int n);   // extern ctor -> real call (matches call 0x99ebf0)
+    CCharString(const char* s, long n);   // extern ctor -> real call (matches call 0x99ebf0)
     char* m_data;
 };
 

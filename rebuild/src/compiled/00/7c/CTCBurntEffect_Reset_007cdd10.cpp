@@ -4,7 +4,7 @@
 // def's "SINGE_EFFECT" sub-def names an effect type, spawn three effect things at the owner, attach their particle emitters
 // (two global helper names on attach type 10, "" on type 8) and keep all three in Effects
 // Retail 0x007CDD10, 0x2CF bytes. Callees: __ftol2 0x00BFEA70; CThing::GetPos 0x004C73D0;
-// CDefClassBase::GetSubDef 0x00669580; CCharString(const char*, int) 0x0099EBF0 / ~CCharString 0x0099EAE0;
+// CDefClassBase::GetSubDef 0x00669580; CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0;
 // GetEffectFromString 0x00669D30; CreateEffectThing 0x006E0880 (__fastcall); CVectorMap::LowerBound 0x0040F020
 // (inlined GetTC 0x4b); CTCDParticleEmitter::AttachToThing 0x006E0BE0; CBaseIntelligentPointer() 0x00A01B10 /
 // SetPItem 0x00A01B90 / ~CBaseIntelligentPointer 0x00A01C10; vector<CIntelligentPointer<CThing>>::push_back 0x004AD520.
@@ -17,7 +17,7 @@ class C3DVector { public:
 };
 class CCharString { public:
     void* PStringData;
-    CCharString(const char* text, int length = -1);   // 0x0099EBF0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 struct CEffectDef {

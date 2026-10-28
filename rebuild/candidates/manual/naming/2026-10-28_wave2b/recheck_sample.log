@@ -1,0 +1,629 @@
+addr       parity           behav  name
+00e257c0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00e257c0   RELOCATION_MATCH PASS   CPersistContext::Transfer<EOrchardFarmTraderEscortPhase>
+00e6b3a0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e6b3a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e6b3a0.obj; graded the largest function
+00e6b3a0   RELOCATION_MATCH PASS   CVtable_012e84d4::`scalar deleting destructor'
+00e1f7b0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e1f7b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e1f7b0.obj; graded the largest function
+00e1f7b0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e1f7b0   RELOCATION_MATCH PASS   CVtable_012e1610::`scalar deleting destructor'
+00efbb40   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efbb40.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efbb40.obj; graded the largest function
+00efbb40   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00efbb40   RELOCATION_MATCH PASS   CVtable_012f6bb8::`scalar deleting destructor'
+008137e0   MATCH            PASS   CTCCreatureGroupTag::FindNewTagger
+0080de90   RELOCATION_MATCH PASS   std::pair::pair
+00f012d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f012d0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f012d0.obj; graded the largest function
+00f012d0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00f012d0   RELOCATION_MATCH PASS   CVtable_012f72a8::`scalar deleting destructor'
+00e93be0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e93be0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e93be0.obj; graded the largest function
+00e93be0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e93be0   RELOCATION_MATCH PASS   CVtable_012ecb04::`scalar deleting destructor'
+0080f270   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0080f270   WARN SHARED_HEADER_AVAILABLE CWorld
+0080f270   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0080f270   WARN SHARED_HEADER_AVAILABLE CNymphDef
+0080f270   WARN RELOC_NAME: ?GetWorldFrame@CWorld@@SAJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+0080f270   RELOCATION_MATCH PASS   CTCNymph::PickNewTargetPos
+006d4c00   RELOCATION_MATCH PASS   CPersistContext::TransferVector<CNamedLong>
+00e10bf0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e10bf0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00e10bf0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00e10bf0   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::WatchForLeaving
+00942a00   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00942a00   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00942a00   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00942a00   RELOCATION_MATCH PASS   CAIStateGroup_WorkAtSchool::IsRunnable
+007a62d0   RELOCATION_MATCH PASS   CTCForcePushPower::`scalar_deleting_destructor'
+006c5460   RELOCATION_MATCH PASS   CWitnessesSearchingDeed::CWitnessesSearchingDeed
+004e9cba   RELOCATION_MATCH PASS   CPersistContext::TransferBinary_004e9cba
+00d34440   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d34440.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d34440.obj; graded the largest function
+00d34440   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor_007e74d0@@YIXPAX@Z -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00d34440   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00d34440   RELOCATION_MATCH PASS   CVtable_012cc60c::`scalar deleting destructor'
+00e25f10   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e25f10.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e25f10.obj; graded the largest function
+00e25f10   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e25f10   RELOCATION_MATCH PASS   CVtable_012e1e44::`scalar deleting destructor'
+007c7a00   WARN SHARED_HEADER_AVAILABLE CTCTurncoat
+007c7a00   WARN RELOC_NAME: ?PlaySound@CTCSoundPlayer@@QAEKABVCCharString@@JJJJ@Z -> 0066bd00 labelled 'CTCSoundPlayer::PlayAttachedCriteria'
+007c7a00   RELOCATION_MATCH PASS   CTCTurncoat::ModifyTurncoatedness
+004696fa   RELOCATION_MATCH PASS   CPersistContext::TransferBinary_004696fa
+006445ba   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+006445ba   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z -> 0065533c labelled '_global::CIntelligentPointer_Assign_0065533c'
+006445ba   RELOCATION_MATCH PASS   NPlayerGui::CDrawBase::ClearEffects
+00632420   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00632420   RELOCATION_MATCH PASS   CPersistContext::Transfer
+004db4d7   WARN SHARED_HEADER_AVAILABLE CTCBase
+004db4d7   RELOCATION_MATCH PASS   CTCLightningOrb::CTCLightningOrb
+008147d0   RELOCATION_MATCH PASS   _unattributed::AssignTarget_008147d0
+008c0900   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c0900   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c0900   WARN SHARED_HEADER_AVAILABLE CWorld
+008c0900   WARN RELOC_NAME: ?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ -> 00692940 labelled 'CCreatureActionBase::GetWorld'
+008c0900   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseShotFarOutof::PerformAction
+004c8a30   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004c8a30   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004c8a30   RELOCATION_MATCH PASS   CThing::GetSubTypeFromScript
+00e5f160   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e5f160.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e5f160.obj; graded the largest function
+00e5f160   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e5f160   RELOCATION_MATCH PASS   CVtable_012e70ac::`scalar deleting destructor'
+0095e260   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095e260   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets
+0095e260   WARN RELOC_NAME: ?GetPWorld@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+0095e260   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable
+00df9b50   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00df9b50.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00df9b50.obj; graded the largest function
+00df9b50   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00df9b50   RELOCATION_MATCH PASS   CVtable_012deaac::`scalar deleting destructor'
+00858030   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00858030   WARN RELOC_NAME: ?InitialiseStrikeState@CCombatActionBase@@QAEXXZ -> 008561c0 labelled 'CCombatActionBase::ResetStrikeState'
+00858030   RELOCATION_MATCH PASS   CCombatActionBase::CCombatActionBase
+01224ca5   WARN RELOC_CONFLICT: _$E2 -> 0122ae74 here, 0122a940 in landed 009f0240
+01224ca5   WARN RELOC_NAME: _$E2 -> 0122ae74 labelled '_global::AtexitDtor_CCharString_at_0143e91c_0122ae74'
+01224ca5   RELOCATION_MATCH PASS   _global::$E_GlobalConsoleCutsceneName
+008b5350   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillForcePushLongRange
+008b5350   RELOCATION_MATCH PASS   CCombatSequence_WillForcePushLongRange::GetName
+00937c20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00937c20   WARN SHARED_HEADER_AVAILABLE CWorld
+00937c20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00937c20   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00937c20   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson
+00eea7c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00eea7c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eea7c0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00eea7c0   WARN RELOC_NAME: ??0CScriptGameResourceObjectMovieBase@@QAE@XZ -> 006e7b60 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00eea7c0   WARN RELOC_NAME: ??1CScriptGameResourceObjectMovieBase@@QAE@XZ -> 006e7b80 labelled 'CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase'
+00eea7c0   RELOCATION_MATCH PASS   CExpression_DigScript::Main
+00431061   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00431061   RELOCATION_MATCH PASS   CPersistContext::Transfer
+006a2540   WARN RELOC_NAME: ?_M_insert_overflow@CCarrySlotVector@@QAEXPAUCCarrySlot@@ABU2@ABU__false_type@@K_N@Z -> 006a3a70 labelled 'Vector_ReserveAndFill'
+006a2540   WARN RELOC_NAME: ?SortCarrySlots@@YIXPAUCCarrySlot@@0UCKeyPairCompareLess@@@Z -> 006a3f20 labelled '_global::Sort_SElement12_006a3f20'
+006a2540   RELOCATION_MATCH PASS   CTCCarrying::OnCreate
+00e37310   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e37310.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e37310.obj; graded the largest function
+00e37310   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00e37310   RELOCATION_MATCH PASS   CVtable_012e30dc::`scalar deleting destructor'
+0091e750   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+0091e750   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0091e750   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091e750   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0091e750   RELOCATION_MATCH PASS   CAIStateGroup_MinionMotherConsoleChild::Update
+00d7a360   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d7a360   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d7a360   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d7a360   WARN RELOC_NAME: ??0CScriptGameResourceObjectMovieBase@@QAE@XZ -> 006e7b60 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00d7a360   WARN RELOC_NAME: ??1CScriptGameResourceObjectMovieBase@@UAE@XZ -> 006e7b80 labelled 'CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase'
+00d7a360   RELOCATION_MATCH PASS   CEndBriarRose::Main
+006926f0   RELOCATION_MATCH PASS   CCreatureActionBase::GetStrikeEventHelperName
+008d7bb0   RELOCATION_MATCH PASS   NCreatureMode::CModeDragonStrafeBurninate::EndBeamEffect
+0094d680   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0094d680   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0094d680   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0094d680   RELOCATION_MATCH PASS   CAIStateGroup_TrollBase::GetEnemyPredictedPos
+008b4e10   RELOCATION_MATCH PASS   CCombatSequenceWhisperIdles::GetName
+00f09c70   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00f09c70.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00f09c70.obj; graded the largest function
+00f09c70   RELOCATION_MATCH PASS   CVtable_012f7ebc::`scalar deleting destructor'
+00932990   WARN SHARED_HEADER_AVAILABLE CPlayer
+00932990   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00932990   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00932990   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+00932990   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00932990   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00932990   WARN RELOC_NAME: ?GetPPlayerManager@CAIStateGroupBase@@QAEPAVCPlayerManager@@XZ -> 008fcf90 labelled 'CAIStateGroupBase::GetPlayerManager'
+00932990   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00932990   WARN RELOC_NAME: ??8@YI_NPBVCThing@@ABUCIntelligentPointer@@@Z -> 00933250 labelled 'CVillageTaskCarryCrate::IsCreatureAssignedToTask'
+00932990   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardReactToCriminal::IsRunnable
+004c88e0   WARN RELOC_NAME: ?SkipToItem@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9c00 labelled 'CStringParser::SeekToName'
+004c88e0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004c88e0   RELOCATION_MATCH PASS   CThing::SerialiseThingInfo
+0066aef0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0066aef0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0066aef0   WARN SHARED_HEADER_AVAILABLE CWorld
+0066aef0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066aef0   RELOCATION_MATCH PASS   CTCSoundPlayer::CreatePAttachedEmitter
+0072a4a0   RELOCATION_MATCH PASS   _unattributed::AssignTarget_0072a4a0
+00d64370   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d64370.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d64370.obj; graded the largest function
+00d64370   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d64370   RELOCATION_MATCH PASS   CVtable_012d1a64::`scalar deleting destructor'
+007276b0   RELOCATION_MATCH PASS   CTCSimpleAppearanceMorph::GetClassTypeName
+009357f0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+009357f0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009357f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009357f0   WARN RELOC_NAME: ?GFGetCurrentFrame@@YIKXZ -> 0049d870 labelled 'CWorld::GetFrame'
+009357f0   RELOCATION_MATCH PASS   CAIStateGroup_MinionFaceHero::Update
+00cdcdd0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00cdcdd0   RELOCATION_MATCH PASS   CPersistContext::Transfer<EHeroSoulsPosition>
+0065f152   WARN SHARED_HEADER_AVAILABLE CThingAICreature
+0065f152   RELOCATION_MATCH PASS   HasGuardProperty::operator()
+0046b3f4   RELOCATION_MATCH PASS   CPersistContext::TransferBinary_0046b3f4
+00406f70   WARN RELOC_NAME: ?WConcat@@YI?AVCWideString@@PBGABV1@@Z -> 0099bff0 labelled '_global::operator+'
+00406f70   RELOCATION_MATCH PASS   CUserProfileManager::GetAutoSavePathName
+008b3c00   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingSpinAround
+008b3c00   RELOCATION_MATCH PASS   CCombatSequence_BanditKingSpinAround::GetName
+008b3710   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAttackFar
+008b3710   RELOCATION_MATCH PASS   CCombatSequence_BanditAttackFar::GetName
+005c2b8b   WARN SHARED_HEADER_AVAILABLE CItem
+005c2b8b   RELOCATION_MATCH PASS   CPersistContext::TransferVector<NInventory::CItem>
+00e74d40   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e74d40.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e74d40.obj; graded the largest function
+00e74d40   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e74d40   RELOCATION_MATCH PASS   CVtable_012e9600::`scalar deleting destructor'
+00ac1920   WARN SHARED_HEADER_AVAILABLE C3DMeshFileMaterialExtChunk
+00ac1920   RELOCATION_MATCH PASS   C3DMeshFileMaterialExtChunk::GetChunkDescription
+00d38cf0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d38cf0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d38cf0.obj; graded the largest function
+00d38cf0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d38cf0   RELOCATION_MATCH PASS   CVtable_012cd1a0::`scalar deleting destructor'
+00da0130   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00da0130.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00da0130.obj; graded the largest function
+00da0130   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00da0130   RELOCATION_MATCH PASS   CVtable_012d6e5c::`scalar deleting destructor'
+00671eb0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00671eb0   RELOCATION_MATCH PASS   CPersistContext::Transfer
+00860950   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00860950   RELOCATION_MATCH PASS   CVillageTaskPatrol::RemoveThingFromTask
+0090ca60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0090ca60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0090ca60   WARN SHARED_HEADER_AVAILABLE CWorld
+0090ca60   WARN RELOC_NAME: ?GetPWorld@CAIStateGroup_MinionGossip@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+0090ca60   WARN RELOC_NAME: ?FindMostRecentMessage_0090dee0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@UCMessageEventFilter_IsOriginatedByThing@N_006af2b0@@@@@Z -> 0090dee0 labelled 'CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<CMessageEventFilter_IsOfType,CMessageEventFilter_CanBeSeenOrHeard>_>'
+0090ca60   WARN RELOC_NAME: ?GFGetCurrentFrame@@YIJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+0090ca60   RELOCATION_MATCH PASS   CAIStateGroup_MinionGossip::OnReplace
+00966cf0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00966cf0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00966cf0   WARN SHARED_HEADER_AVAILABLE CTCInventory
+00966cf0   WARN RELOC_NAME: ?HasItemWithID@CTCInventory@@QAE_NJ@Z -> 006a1230 labelled 'CTCCarrying::IsCarrySlotFree'
+00966cf0   RELOCATION_MATCH PASS   CAIStateGroup_TavernServer::IsCarryingJug
+006af060   RELOCATION_MATCH PASS   CTCRegionFollower::GetClassTypeName
+0094c7e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0094c7e0   RELOCATION_MATCH PASS   CAIStateGroup_GameMaster::InitStateGroup
+009624d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009624d0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009624d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009624d0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+009624d0   WARN RELOC_NAME: ??0CCombatAction_StabThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 0094e5f0 labelled 'CCreatureAction_TrollGroundPound::CCreatureAction_TrollGroundPound'
+009624d0   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollPoundGroundAttack::Update
+00469c3e   RELOCATION_MATCH PASS   CPersistContext::TransferBinary_00469c3e
+00d84600   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d84600.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d84600.obj; graded the largest function
+00d84600   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d84600   RELOCATION_MATCH PASS   CVtable_012d47c0::`scalar deleting destructor'
+00750a40   RELOCATION_MATCH PASS   CTCDiscovery::GetClassTypeName
+00798d90   RELOCATION_MATCH PASS   CTCShopKeeper::AddNewCustomer
+008c8f70   WARN RELOC_DUPLICATE: retail 00a01b50 bound to ?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ, ?GetPItem@CCreaturePointer@@QBEPAVCThingCreatureBase@@XZ
+008c8f70   RELOCATION_MATCH PASS   CCreatureAction_BanditKingStuck::FinishAction
+006ed8c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006ed8c0   RELOCATION_MATCH PASS   CCombatManager::DeregisterAttackedCombatant
+00464b9a   RELOCATION_MATCH PASS   CPersistContext::Transfer
+00632500   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00632500   RELOCATION_MATCH PASS   CPersistContext::Transfer
+00e64180   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e64180.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e64180.obj; graded the largest function
+00e64180   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e64180   RELOCATION_MATCH PASS   CVtable_012e74fc::`scalar deleting destructor'
+00ebcc70   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ebcc70.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ebcc70.obj; graded the largest function
+00ebcc70   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00ebcc70   RELOCATION_MATCH PASS   CVtable_012f0528::`scalar deleting destructor'
+007f5890   RELOCATION_MATCH PASS   CTCTargetingBase::SetPScriptOverrideInterestingThing
+008126b0   RELOCATION_MATCH PASS   CGroupMemberData::CGroupMemberData
+00e18380   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e18380.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e18380.obj; graded the largest function
+00e18380   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e18380   RELOCATION_MATCH PASS   CVtable_012e0cc8::`scalar deleting destructor'
+00efd740   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00efd740   RELOCATION_MATCH PASS   CGift::Main
+0082c370   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay
+0082c370   WARN SHARED_HEADER_AVAILABLE CMarkerInfo
+0082c370   RELOCATION_MATCH PASS   CMiniMapDisplay::CMarkerInfo::CMarkerInfo
+0078f4d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0078f4d0   RELOCATION_MATCH PASS   CTCDivineWrath::OnCreate
+00d9ffa0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d9ffa0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d9ffa0.obj; graded the largest function
+00d9ffa0   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00d9ffa0   RELOCATION_MATCH PASS   CVtable_012d6d28::`scalar deleting destructor'
+00bdb040   WARN SHARED_HEADER_AVAILABLE CEngineVSConstantLayoutParticles
+00bdb040   RELOCATION_MATCH PASS   CEngineVSConstantLayoutParticles::PeekName
+0074de50   WARN RELOC_NAME: ?clear@?$vector@VCDefIndex@@@@QAEXXZ -> 0074d5d0 labelled 'NUISystem::CComponent::SetParentColour'
+0074de50   RELOCATION_MATCH PASS   CPersistContext::Transfer<CDefIndex>
+00d2a8a0   RELOCATION_MATCH PASS   NScript::CQ_EndGameFocalSitesScript::Init
+00da82f0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00da82f0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00da82f0.obj; graded the largest function
+00da82f0   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00da82f0   RELOCATION_MATCH PASS   CVtable_012d73e0::`scalar deleting destructor'
+008b3b00   RELOCATION_MATCH PASS   CCombatSequence_BanditKingAdvance::GetName
+00404500   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00404500   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00404500   RELOCATION_MATCH PASS   CPersistContext::CheckCRC
+009432c0   WARN SHARED_HEADER_AVAILABLE CWorld
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009432c0   WARN RELOC_NAME: ?CrouchAndTalk@CAIStateGroup_WorkAtSchool@@QAE_NM@Z -> 009428a0 labelled 'CAIStateGroup_WorkAtSchool::Teach'
+009432c0   WARN RELOC_NAME: ?SitAndTalk@CAIStateGroup_WorkAtSchool@@QAE_NM@Z -> 00942820 labelled 'CAIStateGroup_WorkAtSchool::CrouchAndTalk'
+009432c0   RELOCATION_MATCH PASS   CAIStateGroup_WorkAtSchool::Update
+00470301   WARN RELOC_NAME: ??0CSoundMap@@QAE@XZ -> 0047040e labelled 'CNavQuadTree::CNavigationLayer::CNavigationLayer'
+00470301   WARN RELOC_NAME: ??1CSoundMap@@QAE@XZ -> 0045645d labelled '_global::StdList_Dtor_0045645d'
+00470301   RELOCATION_MATCH PASS   CPersistContext::Transfer
+008b3890   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAttackNear
+008b3890   RELOCATION_MATCH PASS   CCombatSequence_BanditAttackNear::GetName
+  WARN leaf '~CEventReceivedItem' matches no symbol in 00810fe0.obj; graded the largest function
+  WARN leaf '~CEventReceivedItem' matches no symbol in 00810fe0.obj; graded the largest function
+00810fe0   RELOCATION_MATCH PASS   NEntityEvents::CEventReceivedItem::~CEventReceivedItem
+00d2a180   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d2a180   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d2a180   WARN RELOC_NAME: ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ -> 007e72a0 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00d2a180   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d2a180   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d2a180   WARN RELOC_NAME: ??4CHandlePImp@@QAEAAU0@ABU0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00d2a180   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d2a180   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00d2a180   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d2a180   RELOCATION_MATCH PASS   CMazeJournal::Main
+006ec380   WARN SHARED_HEADER_AVAILABLE CCombatTypeDef
+006ec380   RELOCATION_MATCH PASS   CDefendingCombatantInfo::CCombatRing::CCombatRing
+004ea21e   WARN RELOC_NAME: ??0?$CPersistTraits@VCReplaceableMeshes@NGraphicAppearance@@@@QAE@XZ -> 004ea2ae labelled 'CIndexBuffer::CIndexBuffer'
+004ea21e   WARN RELOC_NAME: ??1?$CPersistTraits@VCReplaceableMeshes@NGraphicAppearance@@@@QAE@XZ -> 004ea2bb labelled '_global::FreeMember0_004ea2bb'
+004ea21e   RELOCATION_MATCH PASS   CPersistContext::Transfer<NGraphicAppearance::CReplaceableMeshes>
+007b01c0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007b01c0   RELOCATION_MATCH PASS   CTCFishingSpot::RemoveParticles
+008b3b80   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingBackOff
+008b3b80   RELOCATION_MATCH PASS   CCombatSequence_BanditKingBackOff::GetName
+00dfc260   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dfc260.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dfc260.obj; graded the largest function
+00dfc260   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00dfc260   RELOCATION_MATCH PASS   CVtable_012dee4c::`scalar deleting destructor'
+008e6780   WARN RELOC_NAME: ?RecalculateMultiplier@CTCHaste@@QAEXXZ -> 00800020 labelled 'CTCHaste::UpdateActionSpeedMultiplier'
+008e6780   RELOCATION_MATCH PASS   CCreatureAction_CastStrengthMultiStrike::Initialise
+00463334   WARN RELOC_NAME: ?SkipToItem@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9c00 labelled 'CStringParser::SeekToName'
+00463334   WARN RELOC_NAME: ?EntryTransferred@CPersistContext@@QAEXXZ -> 009bab40 labelled 'CTCCreditsUI::Deactivate'
+00463334   WARN RELOC_NAME: ?clear@CStringLongMap@@QAEXXZ -> 0043027a labelled 'CTCCarryable::OnKill'
+00463334   WARN RELOC_NAME: ?TransferMapOut_0046367a@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z -> 0046367a labelled '_global::GFSerialiseMultiMapBinaryOut'
+00463334   WARN RELOC_NAME: ?TransferMapIn_00463732@@YIXPAVCMemoryDataInputStream@@AAUCStringLongMap@@@Z -> 00463732 labelled '_global::GFSerialiseMultiMapBinaryIn'
+00463334   WARN RELOC_NAME: ?_M_increment@@YAPAUSMapNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_tree_base::_Rb_tree_increment'
+00463334   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+009613a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009613a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009613a0   WARN RELOC_NAME: ?GetBossPhase@CTCBoss@@QBEJXZ -> 007aed10 labelled 'CTCBoss::GetCurrentPhase'
+009613a0   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+009613a0   WARN RELOC_NAME: ?GetWorldFrame@CWorldFrame@@SAJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+009613a0   WARN RELOC_NAME: ?GetHitsThisPhase@CTCBoss@@QBEJXZ -> 007aed40 labelled 'CTCBoss::Getter_007aed40'
+009613a0   RELOCATION_MATCH PASS   CAIStateGroup_BanditKingLunge::CanLungeAtPlayer
+0093a080   WARN SHARED_HEADER_AVAILABLE CWorld
+0093a080   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0093a080   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093a080   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093a080   WARN RELOC_NAME: ?GFGetCurrentFrame@@YIJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+0093a080   WARN RELOC_NAME: ??0CIntelligentPointerThing@@QAE@ABUCBaseIntelligentPointer@@@Z -> 00930d20 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0093a080   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update
+00cdcc20   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00cdcc20   RELOCATION_MATCH PASS   CPersistContext::Transfer<EArcheryState>
+00671f90   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00671f90   RELOCATION_MATCH PASS   CPersistContext::Transfer
+00676be0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00676be0   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00676be0   RELOCATION_MATCH PASS   CThingBaseDef::Transfer
+006c5310   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+006c5310   WARN RELOC_NAME: ?GFGetCurrentFrame@@YAJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+006c5310   WARN RELOC_NAME: ?WriteUInt64@CDataOutputStream_Methods@@QAEX_K@Z -> 00993ec0 labelled 'CDataOutputStream::WriteUHUGE'
+006c5310   RELOCATION_MATCH PASS   CPersistTraits<COpinionDeed*>::TransferBinaryOut
+008b3630   WARN SHARED_HEADER_AVAILABLE CCombatSequence_NonInterruptableBoxStrafe
+008b3630   RELOCATION_MATCH PASS   CCombatSequence_NonInterruptableBoxStrafe::GetName
+008c2c50   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseShotFarInto::FinishAction
+  WARN leaf 'GetChunkInfo' matches no symbol in 00aae0f0.obj; graded the largest function
+  WARN leaf 'GetChunkInfo' matches no symbol in 00aae0f0.obj; graded the largest function
+00aae0f0   RELOCATION_MATCH PASS   C3DAnimFileMovementVectorChunk::GetChunkInfo
+00ab9fa0   RELOCATION_MATCH PASS   C3DMeshFileUniqueVerticesChunk::GetChunkInfo
+00e26dd0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e26dd0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e26dd0.obj; graded the largest function
+00e26dd0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e26dd0   RELOCATION_MATCH PASS   CVtable_012e1f90::`scalar deleting destructor'
+00788229   WARN SHARED_HEADER_AVAILABLE CTCTrapBase
+00788229   WARN RELOC_CONFLICT: ??4CIntelligentPointer@@QAEAAU0@ABU0@@Z -> 004a9760 here, 00c16950 in landed 00c49100
+00788229   RELOCATION_MATCH PASS   CTCTrapBase::Trigger
+00ea86c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ea86c0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ea86c0.obj; graded the largest function
+00ea86c0   WARN RELOC_NAME: ?AutoTinyFirstMemberDestructor_007add50@@YIXPAX@Z -> 007add50 labelled 'CRetailTree_erase007acc50::~CRetailTree_erase007acc50'
+00ea86c0   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00ea86c0   RELOCATION_MATCH PASS   CVtable_012ee444::`scalar deleting destructor'
+00798e10   RELOCATION_MATCH PASS   CTCShopKeeper::EmptyCustomerList
+00802650   RELOCATION_MATCH PASS   CTCTargetingPlayer::ClearLockedTarget
+007bb610   RELOCATION_MATCH PASS   CTCTrespasser::GetClassTypeName
+0094bca0   WARN SHARED_HEADER_AVAILABLE CWorld
+0094bca0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0094bca0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0094bca0   WARN RELOC_NAME: ?GetWorldFrame@CWorld@@SAJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+0094bca0   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@N_00668b60@@QAE@PAVCThing@@@Z -> 00668b60 labelled 'CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer'
+0094bca0   WARN RELOC_NAME: ??4CIntelligentPointerConstThing@N_00668b60@@QAEAAU01@ABU01@@Z -> 00668b80 labelled '_global::CIntelligentPointer_Assign_00668b80'
+0094bca0   RELOCATION_MATCH PASS   CAIStateGroup_MinionHawkingFromStall::IsRunnable
+008b4ca0   RELOCATION_MATCH PASS   CCombatSequenceWhisperBoast::GetName
+008cbe10   RELOCATION_MATCH PASS   CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_SummonerLightningOrbOutOf
+007ca670   WARN SHARED_HEADER_AVAILABLE CTCBase
+007ca670   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+007ca670   RELOCATION_MATCH PASS   CTCHeroReceiveItems::PrepareToShowItems
+0085aa90   WARN SHARED_HEADER_AVAILABLE CBaseObject
+0085aa90   RELOCATION_MATCH PASS   CCombatActionBase::SetTarget
+00cfab10   RELOCATION_MATCH PASS   NScript::CQ_ArenaScript::OnPersist
+00ea7650   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ea7650.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ea7650.obj; graded the largest function
+00ea7650   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_00ea7650
+00686b00   WARN SHARED_HEADER_AVAILABLE CStringParser
+00686b00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00686b00   WARN SHARED_HEADER_AVAILABLE CTCBase
+00686b00   WARN RELOC_NAME: ?SkipToItem@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9c00 labelled 'CStringParser::SeekToName'
+00686b00   RELOCATION_MATCH PASS   CTCBase::BeginSerialising
+00da84b0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00da84b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00da84b0.obj; graded the largest function
+00da84b0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00da84b0   RELOCATION_MATCH PASS   CVtable_012d7844::`scalar deleting destructor'
+00518dc0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00518dc0   RELOCATION_MATCH PASS   CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::operator()
+00718610   RELOCATION_MATCH PASS   NTCScriptedControl::CActionTurnToFacePosition::GetActionName
+0072e130   WARN SHARED_HEADER_AVAILABLE CTCBase
+0072e130   RELOCATION_MATCH PASS   CTCMeshAutomaticEntityCreator::CreateParticle
+004e788a   WARN RELOC_NAME: ??0CSkeletalMorphs@@QAE@XZ -> 004e78d4 labelled 'CNavigationLayer::CNavigationLayer'
+004e788a   WARN RELOC_NAME: ??1CSkeletalMorphs@@QAE@XZ -> 004e78e4 labelled '_global::FreeMember0_004e78e4'
+004e788a   RELOCATION_MATCH PASS   CPersistContext::Transfer
+00f01e80   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f01e80.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f01e80.obj; graded the largest function
+00f01e80   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00f01e80   RELOCATION_MATCH PASS   CVtable_012f7354::`scalar deleting destructor'
+008d9740   RELOCATION_MATCH PASS   NCreatureMode::CModeJackOfBladesFloat::OnActivate
+008ba7f0   RELOCATION_MATCH PASS   CCreatureAction_CastWillDrainLifeSpell::PerformAction
+00d1e3e0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d1e3e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d1e3e0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d1e3e0   RELOCATION_MATCH PASS   CGuardHoldingBandit::Main
+008ddd70   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008ddd70   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008ddd70   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+008ddd70   WARN SHARED_HEADER_AVAILABLE CWorld
+008ddd70   WARN RELOC_NAME: ?SetSuspendAnimation@CThing@@QAEX_NPAUCModeBase@NCreatureMode@@@Z -> 00833a10 labelled 'CThingAICreature::SuspendAI'
+008ddd70   WARN RELOC_NAME: ?GetWorld@CModeBase@NCreatureMode@@QBEPAVCWorld@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+008ddd70   WARN RELOC_NAME: ?GetAllThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAUCCreatureVector@@@Z -> 008e3eb0 labelled 'CThingSearchTools::GetPBestThingInRoughArea<CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature>,CThingCompare_Nearest,CThingCreatureBase>'
+008ddd70   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008ddd70   WARN RELOC_NAME: ?SetState@CTCHealLife@@QAEXJ@Z -> 007c3ea0 labelled '_global::SetMember_dword0x18_007c3ea0'
+008ddd70   RELOCATION_MATCH PASS   NCreatureMode::CModeGuildmasterPowerUpHeal::OnActivate
+00ec5330   WARN SHARED_HEADER_AVAILABLE CScriptThing
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ec5330.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ec5330.obj; graded the largest function
+00ec5330   RELOCATION_MATCH PASS   CVtable_012f17a8::`scalar deleting destructor'
+009378f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009378f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009378f0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009378f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009378f0   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@CIntelligentPointerConstThing@@QAE@ABV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+009378f0   WARN RELOC_NAME: ??0CCreatureAction_AlertToPlayer@@QAE@PAVCThingCreatureBase@@@Z -> 009110f0 labelled 'CCreatureAction_OrderSecuritySweep::CCreatureAction_OrderSecuritySweep'
+009378f0   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToUnconsciousPerson::Update
+007f39f0   RELOCATION_MATCH PASS   _unattributed::AssignTarget_007f39f0
+00667310   RELOCATION_MATCH PASS   CThingCreatureBase::OnCollision
+007841f0   RELOCATION_MATCH PASS   _unattributed::AssignTarget_007841f0
+00e9dac0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e9dac0   WARN RELOC_NAME: ??0CSpawnedFuncBaseRuntime@@QAE@ABVCCharString@@K@Z -> 00cdd450 labelled 'CSpawnedFuncBase::CSpawnedFuncBase'
+00e9dac0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e9dac0   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00e9dac0   RELOCATION_MATCH PASS   NScript::CBriarRose::Init
+00676740   RELOCATION_MATCH PASS   CPersistContext::Transfer
+00921870   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00921870   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00921870   RELOCATION_MATCH PASS   CAIStateGroup_MinionFollowThing::Cleanup
+008b3a70   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingAttack
+008b3a70   RELOCATION_MATCH PASS   CCombatSequence_BanditKingAttack::GetName
+0088de10   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0088de10   RELOCATION_MATCH PASS   CGameScriptInterface::GiveThingItemInHand
+0046afc6   RELOCATION_MATCH PASS   CPersistContext::TransferBinary_0046afc6
+006691c0   RELOCATION_MATCH PASS   CAIStateGroupWithBuilding_006691c0::Cleanup
+0090c1a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0090c1a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0090c1a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0090c1a0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0090c1a0   WARN RELOC_NAME: ?GFGetCurrentFrame@@YIJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+0090c1a0   WARN RELOC_NAME: ?GetCurrentPlayer@CWorldP@@QAEPAVCPlayer@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+0090c1a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0090c1a0   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardFollowPlayer::IsRunnable
+
+WINS: 150
+  00e257c0 RELOCATION_MATCH CPersistContext::Transfer
+  00e6b3a0 RELOCATION_MATCH CVtable_012e84d4::`scalar_deleting_destructor'
+  00e1f7b0 RELOCATION_MATCH CVtable_012e1610::`vector_deleting_destructor'
+  00efbb40 RELOCATION_MATCH CVtable_012f6bb8::`vector_deleting_destructor'
+  008137e0 MATCH CTCCreatureGroupTag::?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ
+  0080de90 RELOCATION_MATCH std::pair::??$?0V?$CIntelligentPointer@VCThing@@@@H@?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@QAE@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@H@1@@Z
+  00f012d0 RELOCATION_MATCH CVtable_012f72a8::`vector_deleting_destructor'
+  00e93be0 RELOCATION_MATCH CVtable_012ecb04::`vector_deleting_destructor'
+  0080f270 RELOCATION_MATCH CTCNymph::PickNewTargetPos
+  006d4c00 RELOCATION_MATCH CPersistContext::TransferVector
+  00e10bf0 RELOCATION_MATCH CV_ChapelOfEvilScript::WatchForLeaving
+  00942a00 RELOCATION_MATCH CAIStateGroup_WorkAtSchool::?IsRunnable@CAIStateGroup_WorkAtSchool
+  007a62d0 RELOCATION_MATCH CTCForcePushPower::??_GCTCForcePushPower
+  006c5460 RELOCATION_MATCH CWitnessesSearchingDeed::??0CWitnessesSearchingDeed
+  004e9cba RELOCATION_MATCH CPersistContext::TransferBinary_004e9cba
+  00d34440 RELOCATION_MATCH CVtable_012cc60c::`vector_deleting_destructor'
+  00e25f10 RELOCATION_MATCH CVtable_012e1e44::`vector_deleting_destructor'
+  007c7a00 RELOCATION_MATCH CTCTurncoat::?ModifyTurncoatedness@CTCTurncoat
+  004696fa RELOCATION_MATCH CPersistContext::TransferBinary_004696fa
+  006445ba RELOCATION_MATCH NPlayerGui::CDrawBase::?ClearEffects@CDrawBase@NPlayerGui@@SIXAAV?$vector@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@@Z
+  00632420 RELOCATION_MATCH CPersistContext::??$Transfer@
+  004db4d7 RELOCATION_MATCH CTCLightningOrb::??0CTCLightningOrb
+  008147d0 RELOCATION_MATCH _unattributed::AssignTarget_008147d0
+  008c0900 RELOCATION_MATCH CCreatureAction_BriarRoseShotFarOutof::?PerformAction@CCreatureAction_BriarRoseShotFarOutof
+  004c8a30 RELOCATION_MATCH CThing::?GetSubTypeFromScript@CThing@@
+  00e5f160 RELOCATION_MATCH CVtable_012e70ac::`vector_deleting_destructor'
+  0095e260 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets
+  00df9b50 RELOCATION_MATCH CVtable_012deaac::`vector_deleting_destructor'
+  00858030 RELOCATION_MATCH CCombatActionBase::??0CCombatActionBase
+  01224ca5 RELOCATION_MATCH _global::_$E1
+  008b5350 RELOCATION_MATCH CCombatSequence_WillForcePushLongRange::GetName
+  00937c20 RELOCATION_MATCH CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson
+  00eea7c0 RELOCATION_MATCH CExpression_DigScript::Main
+  00431061 RELOCATION_MATCH CPersistContext::??$Transfer@M@CPersistContext@@QAEXAAM@Z
+  006a2540 RELOCATION_MATCH CTCCarrying::OnCreate
+  00e37310 RELOCATION_MATCH CVtable_012e30dc::`scalar_deleting_destructor'
+  0091e750 RELOCATION_MATCH CAIStateGroup_MinionMotherConsoleChild::Update
+  00d7a360 RELOCATION_MATCH CEndBriarRose::Main
+  006926f0 RELOCATION_MATCH CCreatureActionBase::GetStrikeEventHelperName
+  008d7bb0 RELOCATION_MATCH NCreatureMode::CModeDragonStrafeBurninate::EndBeamEffect
+  0094d680 RELOCATION_MATCH CAIStateGroup_TrollBase::GetEnemyPredictedPos
+  008b4e10 RELOCATION_MATCH CCombatSequenceWhisperIdles::GetName
+  00f09c70 RELOCATION_MATCH CVtable_012f7ebc::`scalar_deleting_destructor'
+  00932990 RELOCATION_MATCH CAIStateGroup_MinionGuardReactToCriminal::IsRunnable
+  004c88e0 RELOCATION_MATCH CThing::?SerialiseThingInfo@CThing@@SIX_N
+  0066aef0 RELOCATION_MATCH CTCSoundPlayer::CreatePAttachedEmitter
+  0072a4a0 RELOCATION_MATCH _unattributed::AssignTarget_0072a4a0
+  00d64370 RELOCATION_MATCH CVtable_012d1a64::`vector_deleting_destructor'
+  007276b0 RELOCATION_MATCH CTCSimpleAppearanceMorph::GetClassTypeName
+  009357f0 RELOCATION_MATCH CAIStateGroup_MinionFaceHero::Update
+  00cdcdd0 RELOCATION_MATCH CPersistContext::Transfer
+  0065f152 RELOCATION_MATCH HasGuardProperty::??RHasGuardProperty
+  0046b3f4 RELOCATION_MATCH CPersistContext::TransferBinary_0046b3f4
+  00406f70 RELOCATION_MATCH CUserProfileManager::GetAutoSavePathName
+  008b3c00 RELOCATION_MATCH CCombatSequence_BanditKingSpinAround::GetName
+  008b3710 RELOCATION_MATCH CCombatSequence_BanditAttackFar::GetName
+  005c2b8b RELOCATION_MATCH CPersistContext::TransferVector<NInventory::??$TransferVector@VCItem@NInventory@@@CPersistContext@@QAEXPBDAAV?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@Z
+  00e74d40 RELOCATION_MATCH CVtable_012e9600::`vector_deleting_destructor'
+  00ac1920 RELOCATION_MATCH C3DMeshFileMaterialExtChunk::GetChunkDescription
+  00d38cf0 RELOCATION_MATCH CVtable_012cd1a0::`vector_deleting_destructor'
+  00da0130 RELOCATION_MATCH CVtable_012d6e5c::`vector_deleting_destructor'
+  00671eb0 RELOCATION_MATCH CPersistContext::??$Transfer@
+  00860950 RELOCATION_MATCH CVillageTaskPatrol::RemoveThingFromTask
+  0090ca60 RELOCATION_MATCH CAIStateGroup_MinionGossip::OnReplace
+  00966cf0 RELOCATION_MATCH CAIStateGroup_TavernServer::IsCarryingJug
+  006af060 RELOCATION_MATCH CTCRegionFollower::GetClassTypeName
+  0094c7e0 RELOCATION_MATCH CAIStateGroup_GameMaster::InitStateGroup
+  009624d0 RELOCATION_MATCH CAIStateGroup_IceTrollPoundGroundAttack::Update
+  00469c3e RELOCATION_MATCH CPersistContext::TransferBinary_00469c3e
+  00d84600 RELOCATION_MATCH CVtable_012d47c0::`vector_deleting_destructor'
+  00750a40 RELOCATION_MATCH CTCDiscovery::GetClassTypeName
+  00798d90 RELOCATION_MATCH CTCShopKeeper::AddNewCustomer
+  008c8f70 RELOCATION_MATCH CCreatureAction_BanditKingStuck::FinishAction
+  006ed8c0 RELOCATION_MATCH CCombatManager::?DeregisterAttackedCombatant@CCombatManager
+  00464b9a RELOCATION_MATCH CPersistContext::??$Transfer@VCSimVoice@@@CPersistContext@@QAEXAAVCSimVoice@@@Z
+  00632500 RELOCATION_MATCH CPersistContext::??$Transfer@
+  00e64180 RELOCATION_MATCH CVtable_012e74fc::`vector_deleting_destructor'
+  00ebcc70 RELOCATION_MATCH CVtable_012f0528::`scalar_deleting_destructor'
+  007f5890 RELOCATION_MATCH CTCTargetingBase::SetPScriptOverrideInterestingThing
+  008126b0 RELOCATION_MATCH CGroupMemberData::??0CGroupMemberData@@QAE@ABV0@@Z
+  00e18380 RELOCATION_MATCH CVtable_012e0cc8::`vector_deleting_destructor'
+  00efd740 RELOCATION_MATCH CGift::Main
+  0082c370 RELOCATION_MATCH CMiniMapDisplay::CMarkerInfo::??0CMarkerInfo@CMiniMapDisplay@@QAE@ABV01@@Z
+  0078f4d0 RELOCATION_MATCH CTCDivineWrath::OnCreate
+  00d9ffa0 RELOCATION_MATCH CVtable_012d6d28::`scalar_deleting_destructor'
+  00bdb040 RELOCATION_MATCH CEngineVSConstantLayoutParticles::PeekName
+  0074de50 RELOCATION_MATCH CPersistContext::Transfer
+  00d2a8a0 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::?Init@CQ_EndGameFocalSitesScript@NScript@@UAEXXZ
+  00da82f0 RELOCATION_MATCH CVtable_012d73e0::`scalar_deleting_destructor'
+  008b3b00 RELOCATION_MATCH CCombatSequence_BanditKingAdvance::GetName
+  00404500 RELOCATION_MATCH CPersistContext::CheckCRC
+  009432c0 RELOCATION_MATCH CAIStateGroup_WorkAtSchool::Update
+  00470301 RELOCATION_MATCH CPersistContext::??$Transfer@VCSoundMap@@@CPersistContext@@QAEXAAVCSoundMap@@@Z
+  008b3890 RELOCATION_MATCH CCombatSequence_BanditAttackNear::GetName
+  00810fe0 RELOCATION_MATCH NEntityEvents::CEventReceivedItem::~CEventReceivedItem
+  00d2a180 RELOCATION_MATCH CMazeJournal::?Main@CMazeJournal@
+  006ec380 RELOCATION_MATCH CDefendingCombatantInfo::CCombatRing::??0CCombatRing
+  004ea21e RELOCATION_MATCH CPersistContext::Transfer<NGraphicAppearance::??$Transfer@VCReplaceableMeshes@NGraphicAppearance@@@CPersistContext@@QAEXAAVCReplaceableMeshes@NGraphicAppearance@@@Z
+  007b01c0 RELOCATION_MATCH CTCFishingSpot::RemoveParticles
+  008b3b80 RELOCATION_MATCH CCombatSequence_BanditKingBackOff::GetName
+  00dfc260 RELOCATION_MATCH CVtable_012dee4c::`vector_deleting_destructor'
+  008e6780 RELOCATION_MATCH CCreatureAction_CastStrengthMultiStrike::?Initialise@CCreatureAction_CastStrengthMultiStrike
+  00463334 RELOCATION_MATCH CPersistContext::TransferMap
+  009613a0 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::CanLungeAtPlayer@CAIStateGroup_BanditKingLunge
+  0093a080 RELOCATION_MATCH CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update
+  00cdcc20 RELOCATION_MATCH CPersistContext::Transfer
+  00671f90 RELOCATION_MATCH CPersistContext::??$Transfer@
+  00676be0 RELOCATION_MATCH CThingBaseDef::?Transfer@CThingBaseDef@@UAEXAAVCPersistContext@@@Z
+  006c5310 RELOCATION_MATCH CPersistTraits<COpinionDeed*>::TransferBinaryOut
+  008b3630 RELOCATION_MATCH CCombatSequence_NonInterruptableBoxStrafe::GetName
+  008c2c50 RELOCATION_MATCH CCreatureAction_BriarRoseShotFarInto::FinishAction
+  00aae0f0 RELOCATION_MATCH C3DAnimFileMovementVectorChunk::GetChunkInfo
+  00ab9fa0 RELOCATION_MATCH C3DMeshFileUniqueVerticesChunk::GetChunkInfo
+  00e26dd0 RELOCATION_MATCH CVtable_012e1f90::`vector_deleting_destructor'
+  00788229 RELOCATION_MATCH CTCTrapBase::Trigger
+  00ea86c0 RELOCATION_MATCH CVtable_012ee444::`vector_deleting_destructor'
+  00798e10 RELOCATION_MATCH CTCShopKeeper::EmptyCustomerList
+  00802650 RELOCATION_MATCH CTCTargetingPlayer::ClearLockedTarget
+  007bb610 RELOCATION_MATCH CTCTrespasser::GetClassTypeName
+  0094bca0 RELOCATION_MATCH CAIStateGroup_MinionHawkingFromStall::IsRunnable
+  008b4ca0 RELOCATION_MATCH CCombatSequenceWhisperBoast::GetName
+  008cbe10 RELOCATION_MATCH CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_SummonerLightningOrbOutOf
+  007ca670 RELOCATION_MATCH CTCHeroReceiveItems::PrepareToShowItems
+  0085aa90 RELOCATION_MATCH CCombatActionBase::?SetTarget@CCombatActionBase@@QAEXAAVCThing@@@Z
+  00cfab10 RELOCATION_MATCH NScript::CQ_ArenaScript::?OnPersist@CQ_ArenaScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00ea7650 RELOCATION_MATCH _global::`scalar_deleting_destructor'
+  00686b00 RELOCATION_MATCH CTCBase::BeginSerialising
+  00da84b0 RELOCATION_MATCH CVtable_012d7844::`vector_deleting_destructor'
+  00518dc0 RELOCATION_MATCH CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::??R?$CThingFilter_HasTCOfLeafType@VCTCActionUseScriptedHook@@@@QBE_NAAVCThing@@@Z
+  00718610 RELOCATION_MATCH NTCScriptedControl::CActionTurnToFacePosition::?GetActionName@CActionTurnToFacePosition@NTCScriptedControl@@
+  0072e130 RELOCATION_MATCH CTCMeshAutomaticEntityCreator::CreateParticle
+  004e788a RELOCATION_MATCH CPersistContext::??$Transfer@VCSkeletalMorphs@@@CPersistContext@@QAEXAAVCSkeletalMorphs@@@Z
+  00f01e80 RELOCATION_MATCH CVtable_012f7354::`vector_deleting_destructor'
+  008d9740 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesFloat::OnActivate
+  008ba7f0 RELOCATION_MATCH CCreatureAction_CastWillDrainLifeSpell::?PerformAction@CCreatureAction_CastWillDrainLifeSpell@@UAEXXZ
+  00d1e3e0 RELOCATION_MATCH CGuardHoldingBandit::Main
+  008ddd70 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpHeal::?OnActivate@CModeGuildmasterPowerUpHeal
+  00ec5330 RELOCATION_MATCH CVtable_012f17a8::`scalar_deleting_destructor'
+  009378f0 RELOCATION_MATCH CAIStateGroup_MinionReactToUnconsciousPerson::Update
+  007f39f0 RELOCATION_MATCH _unattributed::AssignTarget_007f39f0
+  00667310 RELOCATION_MATCH CThingCreatureBase::?OnCollision@CThingCreatureBase
+  007841f0 RELOCATION_MATCH _unattributed::AssignTarget_007841f0
+  00e9dac0 RELOCATION_MATCH NScript::CBriarRose::Init
+  00676740 RELOCATION_MATCH CPersistContext::??$Transfer@
+  00921870 RELOCATION_MATCH CAIStateGroup_MinionFollowThing::Cleanup
+  008b3a70 RELOCATION_MATCH CCombatSequence_BanditKingAttack::GetName
+  0088de10 RELOCATION_MATCH CGameScriptInterface::GiveThingItemInHand
+  0046afc6 RELOCATION_MATCH CPersistContext::TransferBinary_0046afc6
+  006691c0 RELOCATION_MATCH CAIStateGroupWithBuilding_006691c0::Cleanup
+  0090c1a0 RELOCATION_MATCH CAIStateGroup_MinionGuardFollowPlayer::IsRunnable

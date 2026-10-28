@@ -4,16 +4,16 @@
 class CCharString
 {
 public:
-	CCharString(const char* str, int len);
+	CCharString(const char* str, long len);
 	const char* data() const { return m_data; }
 private:
 	char* m_data;
 };
 
-// Local stand-in for CCharString::CCharString(const char*, int) @ 0x0099ebf0.
+// Local stand-in for CCharString::CCharString(const char*, long) @ 0x0099ebf0.
 static const char* g_lastStr = 0;
 static int g_lastLen = 0;
-CCharString::CCharString(const char* str, int len)
+CCharString::CCharString(const char* str, long len)
 {
 	g_lastStr = str;
 	g_lastLen = len;

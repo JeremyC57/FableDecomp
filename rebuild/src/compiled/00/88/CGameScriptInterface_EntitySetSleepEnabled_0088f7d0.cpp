@@ -2,7 +2,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* text, int length);
+    CCharString(const char* text, long length);
     ~CCharString();
 };
 

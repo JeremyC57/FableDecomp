@@ -7,7 +7,7 @@ static int fails = 0;
 // ---- source (verbatim) ----
 // CCombatSequence_BanditKingAttack::OnCreate() -- queue a CCreatureAction_BanditKingAttack on the "STRIKE_MEDIUM_FRONT" animation (flags 1, 0), then the base OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00906C60, 177 bytes (192 with padding), virtual `?OnCreate@CCombatSequence_BanditKingAttack@@UAEXXZ`.
-// Callees: operator new 0x00BFEA1A (0x118 bytes), CCharString::CCharString(const char*, int) 0x0099EBF0 ("STRIKE_MEDIUM_FRONT"
+// Callees: operator new 0x00BFEA1A (0x118 bytes), CCharString::CCharString(const char*, long) 0x0099EBF0 ("STRIKE_MEDIUM_FRONT"
 //   @ 0x012778B0), CCreatureAction_BanditKingAttack::CCreatureAction_BanditKingAttack 0x008C9410, CCountedPointer::Reset
 //   0x00905FD0, ~CCharString 0x0099EAE0, AddAction 0x008B0B10, base OnCreate 0x008B0650, operator delete 0x00BFE9BC.
 // Layout: sequence owner +0x1c, target +0x20 (landed sibling OnCreate model); engine header CCombatSequence_BanditKingAttack.h
@@ -72,7 +72,7 @@ class CCombatSequenceBase { public:
 
 class CCharString { public:
     void* PStringData;
-    CCharString(const char* text, int length = -1);   // 0x0099EBF0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0
 };
 
@@ -119,7 +119,7 @@ void CCombatSequenceBase::OnCreate() { ++g_baseCreate; Log('B'); }
 static CThingCreatureBase* const OWNER = (CThingCreatureBase*)0x1111;
 static CThing* const TARGET = (CThing*)0x2222;
 static const char* g_strText[4]; static int g_strLen[4], g_strCtor = 0, g_strDtor = 0;
-CCharString::CCharString(const char* text, int length) { PStringData = (void*)text; g_strText[g_strCtor & 3] = text; g_strLen[g_strCtor & 3] = length; ++g_strCtor; Log('S'); }
+CCharString::CCharString(const char* text, long length) { PStringData = (void*)text; g_strText[g_strCtor & 3] = text; g_strLen[g_strCtor & 3] = length; ++g_strCtor; Log('S'); }
 CCharString::~CCharString() { ++g_strDtor; Log('s'); }
 static CCombatActionBase* g_act; static CThingCreatureBase* g_owner; static CThing* g_thing; static const char* g_anim; static long g_a1, g_a2; static int g_actCtor = 0;
 CCreatureAction_BanditKingAttack::CCreatureAction_BanditKingAttack(CThingCreatureBase* owner, CThing* thing, const CCharString& animation, long first, long second)

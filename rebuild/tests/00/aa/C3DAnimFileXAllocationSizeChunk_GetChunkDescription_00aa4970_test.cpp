@@ -3,11 +3,11 @@
 
 class CCharString { public:
     char* m_data;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 static char g_buf[64];
-CCharString::CCharString(const char* s, int n) {
+CCharString::CCharString(const char* s, long n) {
     // emulate: length -1 means strlen
     strcpy(g_buf, s);
     m_data = g_buf;

@@ -1,13 +1,13 @@
 // CEngineWeatherRenderer::GetConsoleEnableFunctionName
 // retail 0x00b56650 : CCharString __fastcall (returns by value)
 //   push esi ; esi = hidden return-buffer ptr [esp+8]
-//   push -1 ; push <literal> ; ecx = retbuf ; call CCharString::CCharString(const char*, int)
+//   push -1 ; push <literal> ; ecx = retbuf ; call CCharString::CCharString(const char*, long)
 //   eax = retbuf ; ret 4
 
 class CCharString
 {
 public:
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 private:
     char* m_data;
 };

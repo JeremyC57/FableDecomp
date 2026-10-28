@@ -39,7 +39,7 @@ public:
     unsigned char _pad00[0x18];
     long          Mode;                            // +0x18
     unsigned char _pad1c[0x10];
-    void CheckCRC(const char* name);               // 0x00404500
+    protected: void CheckCRC(const char* name); public:               // 0x00404500
     void TransferSubComponentLoadText(const char* name, CPersistContext_TransferableSubComponentBase& item);   // 0x009BBCC0
     void TransferSubComponentSaveText(const char* name, CPersistContext_TransferableSubComponentBase& item);   // 0x009BADA0
     template <class T> void TransferSubComponent(const char* name, T& value);

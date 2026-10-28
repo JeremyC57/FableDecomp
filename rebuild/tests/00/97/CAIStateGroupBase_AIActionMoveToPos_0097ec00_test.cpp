@@ -142,7 +142,7 @@ CThing* __fastcall GetPBestTargetToFaceForCreature(CThingCreatureBase* creature)
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 struct CCountBlock {
     long Count;

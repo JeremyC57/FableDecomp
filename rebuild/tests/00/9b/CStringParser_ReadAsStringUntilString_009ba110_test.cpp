@@ -5,7 +5,7 @@ class CCharString
 {
 public:
     CCharString() : data(0) {}
-    CCharString(const char* text, int length);
+    CCharString(const char* text, long length);
     ~CCharString();
     const CCharString& operator=(const CCharString& rhs);
 
@@ -19,7 +19,7 @@ static int g_dtorCalls = 0;
 static int g_assignCalls = 0;
 static void* g_lastAssignRhsData = 0;
 
-CCharString::CCharString(const char* text, int length)
+CCharString::CCharString(const char* text, long length)
 {
     g_ctorCalls++;
     g_lastCtorText = text;

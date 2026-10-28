@@ -57,7 +57,7 @@ template <class T> class CCountedPointer { public:
 class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
     virtual void t000();
     CCountedPointer<void> PImp;                         // +0x04 Data, +0x08 Info
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
     __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 };
 class CSpawnedFuncBase { public:                               // retail 0x34 bytes

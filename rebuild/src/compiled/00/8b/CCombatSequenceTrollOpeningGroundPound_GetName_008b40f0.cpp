@@ -3,13 +3,13 @@
 // Body constructs the return CCharString in place (NRVO into the hidden
 // return buffer) from a fixed global literal pointer with length -1.
 //
-// CCharString(const char*, int) ctor lives at 0x0099ebf0.  'this' (ecx of
+// CCharString(const char*, long) ctor lives at 0x0099ebf0.  'this' (ecx of
 // GetName) is ignored by the body.
 
 #include "engine/CCombatSequence_TrollOpeningGroundPound.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString { public:
     void* p;
-    CCharString(const char* s, int len);   // 0x0099ebf0
+    CCharString(const char* s, long len);   // 0x0099ebf0
 };
 
 struct CCombatSequence_TrollOpeningGroundPound_Methods : CCombatSequence_TrollOpeningGroundPound {

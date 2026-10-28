@@ -6,7 +6,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int len) {
+    CCharString(const char* s, long len) {
         int n = (len < 0) ? (int)strlen(s) : len;
         m_len = n;
         for (int i = 0; i < n && i < 63; ++i) m_buf[i] = s[i];

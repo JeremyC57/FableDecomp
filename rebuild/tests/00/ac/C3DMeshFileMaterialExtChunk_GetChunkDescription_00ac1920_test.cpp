@@ -4,7 +4,7 @@
 // Standalone re-implementation matching the source's model for behaviour test.
 class CCharString {
 public:
-    CCharString(const char* s, int len) {
+    CCharString(const char* s, long len) {
         if (len < 0) len = (int)strlen(s);
         m_nLength = len;
         m_nAlloc = len + 1;

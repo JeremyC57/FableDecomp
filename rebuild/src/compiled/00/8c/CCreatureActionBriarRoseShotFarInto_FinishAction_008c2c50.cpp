@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CThingCreatureBase* m_pItem;            // +0x04
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
-    ~CBaseIntelligentPointer();             // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 
 struct __declspec(novtable) CIntelligentPointer : CBaseIntelligentPointer {   // implicit destructor: no vtable store of its own

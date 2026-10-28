@@ -2,7 +2,7 @@
 // Leaf: ?GetSubTypeFromScript@CThing@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8A30, 368 bytes, static __fastcall (script in ecx), plain `ret`. Ego_r.pdb
 //   `?GetSubTypeFromScript@CThing@@SIJPBD@Z`.
-// Callees: CCharString(const char*, int) 0x0099EBF0, CCharString() 0x0099E4B0, ~CCharString 0x0099EAE0, CBaseClass ctor
+// Callees: CCharString(const char*, long) 0x0099EBF0, CCharString() 0x0099E4B0, ~CCharString 0x0099EAE0, CBaseClass ctor
 //   0x0099A2D0 / dtor 0x0099A2E0, malloc 0x00BFEA0E, CStringParser::Init 0x009B9530, ReadAsStringUntilString 0x009BA330,
 //   CThing::SerialiseThingInfo(bool, CCharString&, CSerialiseInfo&) 0x004C88E0 (this chunk), CBasicString<char>::
 //   operator==(const char*) 0x004115A0, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, the comment list
@@ -34,7 +34,7 @@ class CCharString {
 public:
     CCharStringData* PStringData;
     CCharString();                                     // 0x0099E4B0
-    CCharString(const char* text, int length = -1);    // 0x0099EBF0
+    CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     bool operator==(const char* text) const
     {

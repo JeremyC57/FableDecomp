@@ -7,7 +7,7 @@
 
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 // The string literal lives at absolute 0x123b4b4 in retail .rdata.

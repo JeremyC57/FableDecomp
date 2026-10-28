@@ -19,7 +19,7 @@ class CBaseIntelligentPointer {
 public:
     virtual void v00();
     CBaseObject* PData;                                      // +0x04
-    ~CBaseIntelligentPointer();                              // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                              // 0x00A01C10
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 class CGroupMemberData {                                     // 0x14 bytes (Ego_r.pdb)

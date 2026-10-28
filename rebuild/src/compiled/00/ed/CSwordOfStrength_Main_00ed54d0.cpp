@@ -64,7 +64,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  CCountedPointer_CScriptThing PImp;
  CScriptThing() { }
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
  bool operator==(const CScriptThing& other) const;     // 0x008AAE20
  bool operator!=(const CScriptThing& other) const { return !(*this == other); }

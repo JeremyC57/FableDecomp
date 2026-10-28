@@ -128,7 +128,7 @@ class CPersistContext { public:
     CCharString*            PStringToSaveTo;              // +0x20
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
-    void CheckCRC(const char* name);                      // 0x00404500
+    protected: void CheckCRC(const char* name); public:                      // 0x00404500
     void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
     void EntryTransferred();                              // 0x009BAB40
     void CleanText(long start, long end);                 // 0x009BB0D0

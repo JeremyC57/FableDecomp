@@ -9,13 +9,13 @@
 class CCharString
 {
 public:
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     char* m_data;
     int   m_len;
 };
 
 // Local stand-in for the engine ctor: length -1 means strlen.
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     m_len  = (n < 0) ? (int)std::strlen(s) : n;
     m_data = new char[m_len + 1];

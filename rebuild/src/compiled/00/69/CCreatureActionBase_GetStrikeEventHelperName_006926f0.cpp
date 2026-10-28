@@ -1,6 +1,6 @@
 #include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString { public:
-    CCharString(const char* lit, int len);
+    CCharString(const char* lit, long len);
     int dummy;
 };
 

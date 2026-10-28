@@ -110,7 +110,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;
-    ~CBaseIntelligentPointer();                      // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
     CThing_Retail* GetPItem();                       // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C

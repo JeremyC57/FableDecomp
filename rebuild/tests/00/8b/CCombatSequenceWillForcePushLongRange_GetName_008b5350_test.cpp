@@ -2,7 +2,7 @@
 #include <string.h>
 
 // Standalone behaviour test for CCombatSequence_WillForcePushLongRange::GetName.
-// We provide a local CCharString whose (const char*, int) ctor records the string,
+// We provide a local CCharString whose (const char*, long) ctor records the string,
 // so we can observe which literal GetName constructs.
 
 static char g_last[256];
@@ -10,7 +10,7 @@ static int  g_last_n;
 
 class CCharString {
 public:
-    CCharString(const char* s, int n) {
+    CCharString(const char* s, long n) {
         g_last_n = n;
         if (s) { strncpy(g_last, s, sizeof(g_last)-1); g_last[sizeof(g_last)-1]=0; }
         else   { g_last[0]=0; }

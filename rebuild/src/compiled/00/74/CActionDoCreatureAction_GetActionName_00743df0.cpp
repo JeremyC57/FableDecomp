@@ -1,6 +1,6 @@
 class CCharString { public:
 // Leaf: GetActionName
-    CCharString(const char* lit, int len);
+    CCharString(const char* lit, long len);
     int dummy;
 };
 

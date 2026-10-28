@@ -3,7 +3,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     const char* c_str() const { return m_data; }
     int len() const { return m_len; }
     char* m_data;
@@ -11,7 +11,7 @@ public:
 };
 
 // local stand-in for the engine ctor: n==-1 means strlen
-CCharString::CCharString(const char* s, int n) {
+CCharString::CCharString(const char* s, long n) {
     m_len = (n < 0) ? (int)strlen(s) : n;
     m_data = new char[m_len + 1];
     memcpy(m_data, s, m_len);

@@ -71,7 +71,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 namespace N_0056c860 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>

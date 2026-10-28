@@ -4,7 +4,7 @@
 class CCharString { public:
     const char* p;
     int n;
-    CCharString(const char* s, int len) : p(s), n(len) {}
+    CCharString(const char* s, long len) : p(s), n(len) {}
 };
 
 class CTCEmoteIcon {

@@ -56,7 +56,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04

@@ -4,7 +4,7 @@
 class CCharString {
 public:
     // __fastcall ctor from a C string + explicit length (-1 = strlen).
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 private:
     char* m_pData;
 };

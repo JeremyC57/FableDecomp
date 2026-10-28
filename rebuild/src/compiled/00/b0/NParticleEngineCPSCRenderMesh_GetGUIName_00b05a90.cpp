@@ -6,11 +6,11 @@
 
 class CCharString { public:
     char* m_data;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 // ctor @0x99ebf0
-__declspec(noinline) CCharString::CCharString(const char* s, int len) {
+__declspec(noinline) CCharString::CCharString(const char* s, long len) {
     m_data = (char*)s;
     if (len) m_data = (char*)s + 1;
 }

@@ -37,7 +37,7 @@ class CScriptThing : public CBaseClass { public:                 // vtable 0x012
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
     CScriptThing() : PImp_Data(0), PImp_Info(0) { }
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 namespace std {
 template<class T> class allocator { };

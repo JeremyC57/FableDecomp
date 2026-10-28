@@ -8,7 +8,7 @@ public:
     virtual void v00();
     CBaseObject* m_pItem;
     CBaseIntelligentPointer();
-    ~CBaseIntelligentPointer();
+    virtual ~CBaseIntelligentPointer();
     CBaseObject* GetPItem() const;
     void SetPItem(CBaseObject* item);
 };

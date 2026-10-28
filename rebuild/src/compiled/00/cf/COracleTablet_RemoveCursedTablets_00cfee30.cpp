@@ -31,7 +31,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- ~CScriptThing();                                       // 0x004AA840
+ virtual ~CScriptThing();                                       // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
 };
 #include "engine/CGameScriptInterface.h"

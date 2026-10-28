@@ -10,7 +10,7 @@ class CCharString {
 public:
     const char* PStringData;
     CCharString() : PStringData(0) { }
-    CCharString(const char* text, int length = -1) : PStringData(text) { }
+    CCharString(const char* text, long length = -1) : PStringData(text) { }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { }
     const CCharString& operator=(const char* text) { PStringData = text; return *this; }
 };

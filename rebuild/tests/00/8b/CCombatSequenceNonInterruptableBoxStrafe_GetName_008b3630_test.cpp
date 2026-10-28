@@ -5,7 +5,7 @@
 // ---- local standalone CCharString definition for the behaviour test ----
 class CCharString {
 public:
-    CCharString(const char* s, int len) {
+    CCharString(const char* s, long len) {
         int n = (len < 0) ? (int)strlen(s) : len;
         m_data = (char*)malloc(n + 1);
         memcpy(m_data, s, n);

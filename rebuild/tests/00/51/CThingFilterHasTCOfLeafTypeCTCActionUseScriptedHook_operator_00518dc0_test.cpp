@@ -17,7 +17,7 @@ class CCharStringData { public:
 class CCharString {
 public:
     CCharStringData* PStringData;
-    CCharString(const char* text, int length = -1);   // 0x0099EBF0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
     bool SameText(const CCharStringData& other) const
     {
@@ -86,7 +86,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 
 static int g_ctors = 0, g_dtors = 0;
 long __fastcall Compare_00411570(const char* a, const char* b) { return strcmp(a, b); }
-CCharString::CCharString(const char* text, int length)
+CCharString::CCharString(const char* text, long length)
 {
     ++g_ctors;
     PStringData = (CCharStringData*)malloc(sizeof(CCharStringData));

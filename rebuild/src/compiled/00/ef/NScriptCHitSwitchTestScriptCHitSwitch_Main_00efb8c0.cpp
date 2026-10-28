@@ -32,7 +32,7 @@ class CScriptThing { public:
     virtual void v070();
     void* PImp[2];                               // +0x04 counted implementation pointer
     CScriptThing(const CScriptThing& other);     // 0x004ABE90
-    ~CScriptThing();
+    virtual ~CScriptThing();
 };
 
 struct CGameScriptInterface_Calls {

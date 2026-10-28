@@ -5,7 +5,7 @@
 class CCharString
 { public:
     void* buf;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 // Local stand-in for the retail ctor 0x0099ebf0: record the args so the test
@@ -13,7 +13,7 @@ class CCharString
 static const char* g_lastPtr = 0;
 static int g_lastLen = 999;
 
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     g_lastPtr = s;
     g_lastLen = len;

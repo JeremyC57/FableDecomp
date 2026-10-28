@@ -5,7 +5,7 @@
 class CCharString {
 public:
     void* p;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 class CTCGraphicAppearanceReplaceableMesh {

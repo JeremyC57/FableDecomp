@@ -773,7 +773,6 @@ _FreeThing@4	00451b82	00453630
 ??0CMemberBase_0044c0c0@@QAE@XZ	0044c0c0	00455ef0
 ??_7CThingNoiseDef@@6B@	0123388c	00455ef0
 ??_7?$CPersistContext_TransferableSubComponent@VCTCNoiseDef@@@@6B@	012338fc	00455f3c
-?CheckCRC@CPersistContext@@QAEXPBD@Z	00404500	00455f3c
 ?TransferSubComponentLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableSubComponentBase@@@Z	009bbcc0	00455f3c
 ?TransferSubComponentSaveText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableSubComponentBase@@@Z	009bada0	00455f3c
 ??_7CCreatureGenerationFamilyDef@@6B@	0123390c	00455fca
@@ -1512,7 +1511,6 @@ _helper_bfeb1c_00bfeb1c	00bfeb1c	004c73b0
 ??0CTCActivationTrigger@@QAE@PAUCThing@@@Z	00723fd0	004d297b
 ??0CTCPhysicsBase@@QAE@PAUCThing@@@Z	007266c0	004d29e1
 ??0CComponentContainer@@QAE@J@Z	00727580	004d2a14
-??0CCharString@@QAE@PBDH@Z	0099ebf0	004d2a74
 ?m@GAN004d2a91@@QAEPAXPAXH@Z	0099ebf0	004d2a91
 ??0CTCActionUseBase@@QAE@PAUCThing@@@Z	00729360	004d2aa4
 ?m@GAN004d2b04@@QAEPAXPAXH@Z	0099ebf0	004d2b04
@@ -31966,14 +31964,12 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetTextInfo@CDataBank@NGameText@@QBEPBVCDataBankTextEntry@2@K@Z	009c7d00	00542140
 ?Calc_004014a0@@YIKKPBDK@Z	004014a0	009c95e0
 ?AutoTinyCompositeDestructor@@YIXPAX@Z	00cdd4c0	00d30000
-?AutoTinyFirstMemberDestructor@@YIXPAX@Z	004aa840	00d30000
 ?AutoTinySecondMemberDestructor@@YIXPAX@Z	00ce1000	00d30000
 ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z	00cbd510	00d34440
 ?AutoTinySecondMemberDestructor_007e74d0@@YIXPAX@Z	007e74d0	00d34440
 ?AutoTinyMemberDestructor_00cd4470@@YIXPAX@Z	00cd4470	00d50650
 ?AutoTinyMemberDestructor_008ac970@@YIXPAX@Z	008ac970	00d61c00
 ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z	00f35b40	00d6b560
-?AutoTinyMemberDestructor@@YIXPAX@Z	004aa840	00d6b560
 ?AutoTinyMemberDestructor_009ac310@@YIXPAX@Z	009ac310	00d7c6d0
 ?AutoTinyFirstMemberDestructor_00cdb960@@YIXPAX@Z	00cdb960	00d80c00
 ?AutoTinySecondMemberDestructor_00cd4470@@YIXPAX@Z	00cd4470	00d80c00
@@ -31986,7 +31982,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AutoTinyMemberDestructor_007e74d0@@YIXPAX@Z	007e74d0	00e546a0
 ?AutoTinyMemberDestructor_00412130@@YIXPAX@Z	00412130	00e64f80
 ?AutoTinyFirstMemberDestructor_007add50@@YIXPAX@Z	007add50	00ea86c0
-?AutoTinySecondMemberDestructor_004aa840@@YIXPAX@Z	004aa840	00ea86c0
 ?DestructMember_00a94c70@@YIXPAX@Z	00a94c70	00ac3960
 ?DestructFirstMember_00ae94a0@@YIXPAX@Z	00ae94a0	00af1bd0
 ?DestructSecondMember_009a4400@@YIXPAX@Z	009a4400	00af1bd0

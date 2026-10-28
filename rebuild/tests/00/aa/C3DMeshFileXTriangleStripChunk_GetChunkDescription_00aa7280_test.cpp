@@ -2,7 +2,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     const char* ptr() const { return m_p; }
     int len() const { return m_len; }
 private:
@@ -15,7 +15,7 @@ private:
 static const char* g_seen_ptr = 0;
 static int g_seen_len = 999;
 
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     g_seen_ptr = s;
     g_seen_len = n;

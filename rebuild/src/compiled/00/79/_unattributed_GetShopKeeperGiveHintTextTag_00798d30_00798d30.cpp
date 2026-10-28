@@ -10,7 +10,7 @@
 class CCharString {
 public:
     // Ctor at 0x0099EBF3, __fastcall(this, const char* s, int len)
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 private:
     char* m_p;
 };

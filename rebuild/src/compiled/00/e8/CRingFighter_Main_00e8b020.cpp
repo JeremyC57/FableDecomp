@@ -60,7 +60,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& by) const;              // slot 42 (+0xa8)
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 struct CScriptPredicate {                               // vtable 0x012C2FF4
     virtual bool Evaluate() const = 0;

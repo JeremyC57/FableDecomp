@@ -46,7 +46,7 @@ class CPersistContext { public:
     unsigned char           _pad1c[0x08];
     CMemoryDataInputStream* m_pLoadStream;              // +0x24
     CDataOutputStream*      m_pSaveStream;              // +0x28
-    void CheckCRC(const char* name);                    // 0x00404500
+    protected: void CheckCRC(const char* name); public:                    // 0x00404500
     template<class T> void Transfer(const char* name, T& value)
     {
         CheckCRC(name);

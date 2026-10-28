@@ -10,7 +10,7 @@ class CCharString
 {
 public:
     CCharString() : data(0) {}
-    CCharString(const char* text, int length);
+    CCharString(const char* text, long length);
     ~CCharString();
     const CCharString& operator=(const CCharString& rhs);
 

@@ -9,7 +9,7 @@ static bool g_enabled = false;
 class CCharString
 {
 public:
-    CCharString(const char* pText, int length) { g_ctor++; (void)pText; (void)length; }
+    CCharString(const char* pText, long length) { g_ctor++; (void)pText; (void)length; }
     ~CCharString() { g_dtor++; }
 };
 

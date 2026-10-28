@@ -102,9 +102,8 @@ class CTCDPhysicalObstruction { public:                        // interface 0xED
 };
 
 struct CBaseIntelligentPointer {
-    void*   __vftable;
     CThing* m_pItem;                                    // +0x04
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
     CThing* GetPItem() const;                           // 0x00A01B50
 };
 struct CCreaturePointer {                               // CIntelligentPointer<CThingCreatureBase>

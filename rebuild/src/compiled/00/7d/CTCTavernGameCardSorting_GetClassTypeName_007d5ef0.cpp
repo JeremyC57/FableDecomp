@@ -3,7 +3,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* str, int len);
+    CCharString(const char* str, long len);
     void* m_data;
 };
 

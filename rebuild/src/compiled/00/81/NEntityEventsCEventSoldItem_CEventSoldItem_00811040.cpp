@@ -14,7 +14,7 @@ struct CBaseIntelligentPointer {                   // 8 bytes: vptr + the pointe
     virtual void v00();
     void* m_pItem;                                 // +0x04
     CThing_00811040* GetPItem();                      // 0x00A01B50
-    ~CBaseIntelligentPointer();                    // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C

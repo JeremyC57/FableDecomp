@@ -140,7 +140,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 

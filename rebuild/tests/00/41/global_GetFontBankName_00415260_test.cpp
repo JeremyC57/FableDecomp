@@ -6,7 +6,7 @@
 class CCharString {
 public:
     const char* Text;
-    CCharString(const char* text, int length) : Text(text) { (void)length; }
+    CCharString(const char* text, long length) : Text(text) { (void)length; }
 };
 static long g_language = 0;
 static long GetLanguage() { return g_language; }

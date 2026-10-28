@@ -13,8 +13,8 @@
 
 class CCharString {
 public:
-    // ctor at 0x99ebf0 : CCharString(const char*, int)
-    CCharString(const char* s, int n);
+    // ctor at 0x99ebf0 : CCharString(const char*, long)
+    CCharString(const char* s, long n);
 };
 
 // ecx=self (the sequence object), plus the by-value return buffer + unused param.

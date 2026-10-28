@@ -2,7 +2,7 @@
 
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 struct CCombatSequence_GenericLeader {
@@ -11,7 +11,7 @@ struct CCombatSequence_GenericLeader {
 
 static const char* g_lastStr = 0;
 static int g_lastLen = 0;
-CCharString::CCharString(const char* s, int len) {
+CCharString::CCharString(const char* s, long len) {
     g_lastStr = s;
     g_lastLen = len;
     p = (char*)s;

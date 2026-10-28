@@ -97,7 +97,7 @@ struct CTCEnemySource {                         // interface 8
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* thing);    // 0x004A96F0

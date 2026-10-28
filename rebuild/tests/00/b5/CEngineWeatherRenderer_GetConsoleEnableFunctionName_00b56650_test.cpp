@@ -8,7 +8,7 @@
 class CCharString
 {
 public:
-    CCharString(const char* s, int len)
+    CCharString(const char* s, long len)
     {
         strncpy(m_buf, s, sizeof(m_buf) - 1);
         m_buf[sizeof(m_buf) - 1] = 0;

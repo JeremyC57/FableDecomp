@@ -55,7 +55,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).

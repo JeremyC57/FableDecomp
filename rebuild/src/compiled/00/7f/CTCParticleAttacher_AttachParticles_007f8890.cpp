@@ -124,7 +124,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                         // 0x00A01B10
-    ~CBaseIntelligentPointer();                        // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
     void SetPItem(CBaseObject* item);                  // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing> vtable 0x01238C6C

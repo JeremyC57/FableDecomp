@@ -30,7 +30,7 @@ public:
     void*                   PStringToSaveTo;
     CMemoryDataInputStream* PLoadStream;
     CDataOutputStream*      PSaveStream;
-    void CheckCRC(const char* name);
+    protected: void CheckCRC(const char* name); public:
     template <class V, class K>
     void TransferMap(std::map<K, V, std::less<K>, std::allocator<std::pair<const K, V> > >& value);
 };

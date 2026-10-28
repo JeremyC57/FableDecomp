@@ -3,7 +3,7 @@
 
 class CCharString { public:
     char* m_ptr;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 struct CCombatSequence_BanditKingAdvance {
@@ -13,7 +13,7 @@ struct CCombatSequence_BanditKingAdvance {
 
 // Local definition of the CCharString ctor so the test links standalone.
 static char g_buf[256];
-CCharString::CCharString(const char* s, int len) {
+CCharString::CCharString(const char* s, long len) {
     if (len < 0) len = (int)strlen(s);
     memcpy(g_buf, s, len);
     g_buf[len] = 0;

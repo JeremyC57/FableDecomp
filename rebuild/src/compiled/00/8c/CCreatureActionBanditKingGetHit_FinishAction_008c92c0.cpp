@@ -2,7 +2,7 @@
 // Leaf: FinishAction
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C92C0, 235 bytes (240 with padding), virtual FinishAction.
 // Callees: CCombatAction_GenericStrikeResponseBase::FinishAction 0x008663D0, CBaseIntelligentPointer::GetPItem 0x00A01B50, the __fastcall hit-from-behind
-//   test 0x008C7E50 (manifest "CompareActorRotations") (creature in ecx, attacker in edx), CCharString::CCharString(const char*, int = -1) 0x0099EBF0
+//   test 0x008C7E50 (manifest "CompareActorRotations") (creature in ecx, attacker in edx), CCharString::CCharString(const char*, long = -1) 0x0099EBF0
 //   ("REAR_ATTACK" 0x01282028 / "STRIKE_MEDIUM_FRONT" 0x012778B0), CCreatureAction_BanditKingAttack ctor 0x008C9410,
 //   CThingCreatureBase::SetCurrentAction 0x006644F0, ~CCombatActionBase 0x0062E900, ~CCharString 0x0099EAE0.
 // Layout: retail CCombatActionBase is 0x114 bytes (PCreature +0x08); the attacker pointer is this class's +0x114; the
@@ -25,7 +25,7 @@ class CThingCreatureBase : public CThing { public:
 
 class CCharString { public:
     void* PStringData;
-    CCharString(const char* text, int length = -1);   // 0x0099EBF0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 

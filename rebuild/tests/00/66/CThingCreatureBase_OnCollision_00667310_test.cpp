@@ -70,9 +70,8 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 struct CBaseIntelligentPointer {
-    void* m_vtable;
     CThing* m_pItem;
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 class CThingCreatureBase;
 class CCombatActionBase { public:                      // retail sizeof 0x114

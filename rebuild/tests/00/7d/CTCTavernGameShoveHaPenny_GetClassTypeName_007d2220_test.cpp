@@ -4,7 +4,7 @@ class CCharString { public:
     char* m_data;
     int   m_len;
     int   m_ref;
-    CCharString(const char* s, int len) { m_data = (char*)s; m_len = len; m_ref = 0; }
+    CCharString(const char* s, long len) { m_data = (char*)s; m_len = len; m_ref = 0; }
 };
 
 static const char* const kActionNameLit = (const char*)0x0123d4b0;

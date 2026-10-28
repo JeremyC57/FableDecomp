@@ -21,10 +21,9 @@ class CThingAICreature { public:
 };
 
 struct CBaseIntelligentPointer {
-    void* VTable;
     void* PItem;
     CBaseIntelligentPointer(const CBaseIntelligentPointer& other);   // (built by the caller)
-    ~CBaseIntelligentPointer();                       // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
     void* GetPItem() const;                           // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:

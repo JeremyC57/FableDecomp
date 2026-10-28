@@ -2,13 +2,13 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     const char* s;
     int n;
 };
 
 // Local definition of the ctor for standalone link.
-CCharString::CCharString(const char* str, int num) {
+CCharString::CCharString(const char* str, long num) {
     s = str;
     n = num;
 }

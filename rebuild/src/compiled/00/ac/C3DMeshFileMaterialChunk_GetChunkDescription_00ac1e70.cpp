@@ -4,7 +4,7 @@
 class CCharString {
 public:
     // ctor takes (const char*, int) ; second defaults to -1 at call sites
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     CCharString(const CCharString& o);
     ~CCharString();
 private:

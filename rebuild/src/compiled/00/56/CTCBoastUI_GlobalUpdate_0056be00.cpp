@@ -4,7 +4,7 @@
 // the UI when allowed
 // Retail 0x0056BE00, 0x23E bytes, `ret 4`. Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall; virtual
 // slots +0x18, +0x74, +0x94), CTCBase::GetPlayerManager 0x00686D40, CPlayerManager::GetMainPlayer 0x00449970,
-// CPlayer::RemoveMode 0x00634190, CCharString(const char*, int) 0x0099EBF0 / copy 0x0099EC30 / dtor 0x0099EAE0,
+// CPlayer::RemoveMode 0x00634190, CCharString(const char*, long) 0x0099EBF0 / copy 0x0099EC30 / dtor 0x0099EAE0,
 // CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName,CThing> 0x0056D050, CGameDefinitionManager::Get
 // 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, GetDef<CCameraModeDef> 0x0056D0C0, operator
 // new 0x00BFEA1A, NCameraModes::CSnapToPoint ctor 0x0056E330, CCountedPointer<CBase>(T*) 0x0056C880 and dtor 0x0056C8D0,
@@ -17,7 +17,7 @@ void* operator new(unsigned int size);                                        //
 
 class CCharString { public:
     void* m_pData;
-    CCharString(const char* text, int length = -1);    // 0x0099EBF0
+    CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
 };

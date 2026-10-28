@@ -5,7 +5,7 @@
 class CCharString { public:
     char* m_buf;
     // CCharString::CCharString(char const*, int)  @ 0x0099ebf0  (__fastcall)
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 struct CCombatSequenceWhisperStrafeAround_Methods : CCombatSequenceWhisperStrafeAround {

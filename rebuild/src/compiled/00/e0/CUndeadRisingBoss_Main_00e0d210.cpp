@@ -112,7 +112,7 @@ class CScriptThing : public CBaseClass { public:                          // vta
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-    ~CScriptThing();                                        // 0x004AA840
+    virtual ~CScriptThing();                                        // 0x004AA840
     bool IsAlive() const                                    // 0x004AB130
     {
         return PImp.Data && PImp.Data->IsAlive();

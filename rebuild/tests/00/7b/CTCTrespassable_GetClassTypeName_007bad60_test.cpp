@@ -7,7 +7,7 @@ static int g_lastLen = 999;
 class CCharString
 {
 public:
-    CCharString(const char* pText, int length)
+    CCharString(const char* pText, long length)
     {
         g_lastPtr = pText;
         g_lastLen = length;

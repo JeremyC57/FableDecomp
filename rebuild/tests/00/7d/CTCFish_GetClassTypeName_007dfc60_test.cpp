@@ -9,7 +9,7 @@ static int g_lastLen;
 
 class CCharString {
 public:
-    CCharString(const char* s, int n) { g_lastStr = s; g_lastLen = n; p = (void*)s; }
+    CCharString(const char* s, long n) { g_lastStr = s; g_lastLen = n; p = (void*)s; }
     void* p;
 };
 

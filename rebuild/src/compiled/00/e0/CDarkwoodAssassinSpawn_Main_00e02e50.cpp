@@ -35,7 +35,7 @@ class CBaseClass { public:
 class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                  // +0x04
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
     virtual const C3DVector& GetPos() const;             // slot 6 (+0x18)
 };

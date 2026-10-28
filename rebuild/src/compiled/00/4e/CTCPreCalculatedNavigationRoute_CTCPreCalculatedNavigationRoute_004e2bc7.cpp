@@ -27,7 +27,7 @@ class CBaseObject;
 struct CBaseIntelligentPointer {                   // 8 bytes: vptr + item
     virtual void v00();
     CBaseObject* m_pItem;                          // +0x4
-    ~CBaseIntelligentPointer();                    // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {   // no destructor of its own

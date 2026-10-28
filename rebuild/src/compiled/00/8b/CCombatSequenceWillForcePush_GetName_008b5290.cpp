@@ -4,7 +4,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int len);   // 0x0099ebf0
+    CCharString(const char* s, long len);   // 0x0099ebf0
     CCharString(const CCharString& o);
 private:
     char* m_p;

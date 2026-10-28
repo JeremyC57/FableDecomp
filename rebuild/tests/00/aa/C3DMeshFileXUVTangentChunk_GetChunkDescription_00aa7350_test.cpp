@@ -10,7 +10,7 @@ static int g_lastLen = 0;
 
 class CCharString {
 public:
-    CCharString(const char* s, int n) { g_lastPtr = s; g_lastLen = n; m_data = (char*)s; }
+    CCharString(const char* s, long n) { g_lastPtr = s; g_lastLen = n; m_data = (char*)s; }
     const char* data() const { return m_data; }
 private:
     char* m_data;

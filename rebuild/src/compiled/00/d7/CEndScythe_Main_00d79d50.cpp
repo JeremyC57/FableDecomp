@@ -68,7 +68,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 namespace NScript {
 class CPredicateBase

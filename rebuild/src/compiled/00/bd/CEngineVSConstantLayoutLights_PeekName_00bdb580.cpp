@@ -5,7 +5,7 @@
 class CCharString { public:
     char* m_data;
     // __fastcall ctor(const char*, int len)
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 class CEngineVSConstantLayoutLights {

@@ -6,10 +6,10 @@
 class CCharString
 {
 public:
-	// CCharString::CCharString(const char* str, int len)  @ 0x0099ebf0
+	// CCharString::CCharString(const char* str, long len)  @ 0x0099ebf0
 	// Real out-of-line ctor; declared but not defined here so the compiler
 	// emits a call to it (ecx = this buffer, str + len on stack).
-	CCharString(const char* str, int len);
+	CCharString(const char* str, long len);
 private:
 	char* m_data;
 };

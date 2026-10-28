@@ -2,10 +2,10 @@
 
 class CCharString { public:
     char* Data;
-    CCharString(const char* text, int length);
+    CCharString(const char* text, long length);
 };
 
-__declspec(noinline) CCharString::CCharString(const char* text, int length)
+__declspec(noinline) CCharString::CCharString(const char* text, long length)
 {
     Data = (char*)text;
     if (length) Data = (char*)text + 1;

@@ -5,11 +5,11 @@ static int g_lastLen;
 
 class CCharString { public:
     void* p;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 // Local stand-in for the ctor at 0x0099ebf0.
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     g_lastS = s;
     g_lastLen = len;

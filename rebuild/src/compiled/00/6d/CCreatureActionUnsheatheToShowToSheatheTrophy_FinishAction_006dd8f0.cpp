@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
-    ~CBaseIntelligentPointer();             // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
 };

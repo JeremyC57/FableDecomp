@@ -4,12 +4,12 @@
 class CCharString
 {
 public:
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     char buf[64];
     int len;
 };
 
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     std::strncpy(buf, s, 63);
     buf[63] = 0;

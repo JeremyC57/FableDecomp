@@ -4,7 +4,7 @@
 // Local standalone model of CCharString for the behaviour test.
 class CCharString {
 public:
-    CCharString(const char* s, int n) {
+    CCharString(const char* s, long n) {
         if (n < 0) n = (int)strlen(s);
         m_p = new char[n + 1];
         memcpy(m_p, s, n);

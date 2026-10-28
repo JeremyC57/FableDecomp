@@ -70,7 +70,7 @@ class CPersistContext { public:
     unsigned char      _pad1c[8];
     CDataInputStream*  PLoadStream;          // +0x24
     CDataOutputStream* PSaveStream;          // +0x28
-    void CheckCRC(const char* name);         // 0x00404500
+    protected: void CheckCRC(const char* name); public:         // 0x00404500
     void TransferObjectSaveText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BAD60
     void TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BBA40
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);

@@ -3,7 +3,7 @@
 class CCharString { public:
     char* p;
     // ctor at 0x99ebf0: (char const*, int)
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 struct CCombatSequenceWhisperTooCloseLeapBack_Methods : CCombatSequenceWhisperTooCloseLeapBack {

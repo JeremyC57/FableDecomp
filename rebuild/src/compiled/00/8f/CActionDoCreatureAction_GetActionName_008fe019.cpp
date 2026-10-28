@@ -15,8 +15,8 @@ class CCharString
 {
 public:
     char* m_data;
-    // engine ctor @ 0x99ebf0 : CCharString(const char*, int len) ; -1 = strlen
-    CCharString(const char* s, int len);
+    // engine ctor @ 0x99ebf0 : CCharString(const char*, long len) ; -1 = strlen
+    CCharString(const char* s, long len);
 };
 
 class CActionDoCreatureAction { };

@@ -3,13 +3,13 @@
 
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 const char kActionNameLiteral[] = "DoCreatureAction";
 
 // Model ctor: len==-1 means strlen; store pointer for verification.
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     p = (char*)s;
     (void)len;

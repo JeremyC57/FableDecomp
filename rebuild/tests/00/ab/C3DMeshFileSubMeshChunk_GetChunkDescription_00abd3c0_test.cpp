@@ -5,13 +5,13 @@
 class CCharString { public:
     char* Data;
     int Length;
-    CCharString(const char* text, int length);
+    CCharString(const char* text, long length);
 };
 struct C3DMeshFileSubMeshChunk_Methods : C3DMeshFileSubMeshChunk {
     CCharString GetChunkDescription() const;
 };
 
-CCharString::CCharString(const char* text, int length)
+CCharString::CCharString(const char* text, long length)
 {
     Data = const_cast<char*>(text);
     Length = length < 0 ? (int)std::strlen(text) : length;

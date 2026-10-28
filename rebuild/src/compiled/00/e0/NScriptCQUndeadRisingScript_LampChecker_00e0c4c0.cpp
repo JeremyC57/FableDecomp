@@ -55,7 +55,7 @@ class CScriptThing : public CBaseClass { public:                      // vtable 
     }
     CScriptThingImp* PImpData;
     void* PImpInfo;
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 namespace std {
 template<class T> class allocator { };

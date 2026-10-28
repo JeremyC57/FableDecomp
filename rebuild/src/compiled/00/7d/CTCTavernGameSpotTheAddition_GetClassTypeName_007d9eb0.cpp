@@ -1,11 +1,11 @@
 // CTCTavernGameSpotTheAddition::GetClassTypeName -> returns CCharString by value.
-// Retail: push -1; push 0x123d584; ecx=ret-buf; call CCharString::CCharString(const char*, int)
+// Retail: push -1; push 0x123d584; ecx=ret-buf; call CCharString::CCharString(const char*, long)
 // then returns the ret buffer pointer in eax.
 
 class CCharString {
 public:
     char* m_data;
-    CCharString(const char* s, int n);   // declaration only -> real call emitted
+    CCharString(const char* s, long n);   // declaration only -> real call emitted
 };
 
 class CTCTavernGameSpotTheAddition {

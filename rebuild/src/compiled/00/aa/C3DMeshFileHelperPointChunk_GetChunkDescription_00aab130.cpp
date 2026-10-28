@@ -7,16 +7,16 @@
 //   push -1
 //   push 0x129e5e0           ; string literal
 //   mov  ecx, esi
-//   call CCharString::CCharString(const char*, int)
+//   call CCharString::CCharString(const char*, long)
 //   mov  eax, esi
 //   pop  esi
 //   ret  4
 
-// CCharString: a small string class. Only the ctor(const char*, int)
+// CCharString: a small string class. Only the ctor(const char*, long)
 // signature/ABI matters for byte parity; body is a link-only stub.
 class CCharString {
 public:
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 private:
     char* m_p;
     int   m_len;

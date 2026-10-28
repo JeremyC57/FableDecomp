@@ -2,14 +2,14 @@
 
 class CCharString { public:
     void* p;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 class CTCScriptedControl { public:
     CCharString GetClassTypeName();
 };
 
 static const char* g_s; static int g_n; static int g_calls;
-CCharString::CCharString(const char* s, int n){ g_s=s; g_n=n; g_calls++; p=(void*)s; }
+CCharString::CCharString(const char* s, long n){ g_s=s; g_n=n; g_calls++; p=(void*)s; }
 
 int main(){
     CTCScriptedControl obj;

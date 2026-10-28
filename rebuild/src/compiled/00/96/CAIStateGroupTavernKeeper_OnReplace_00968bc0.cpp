@@ -47,7 +47,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 class CCharString { public:
     void* m_pData;

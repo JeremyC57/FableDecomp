@@ -3,10 +3,10 @@
 
 class CCharString { public:
     char* m_data;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
-__declspec(noinline) CCharString::CCharString(const char* s, int len) {
+__declspec(noinline) CCharString::CCharString(const char* s, long len) {
     m_data = (char*)s;
     if (len == -2) m_data = 0;
 }

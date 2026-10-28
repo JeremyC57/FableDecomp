@@ -5,13 +5,13 @@
 class CCharString
 {
 public:
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
     const char* data() const { return m_data; }
 private:
     char* m_data;
 };
 
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     m_data = 0;
     if (s && len != 0)

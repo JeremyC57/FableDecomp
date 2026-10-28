@@ -3,7 +3,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int n) {
+    CCharString(const char* s, long n) {
         buf = s;
         len = (n < 0) ? (int)strlen(s) : n;
     }

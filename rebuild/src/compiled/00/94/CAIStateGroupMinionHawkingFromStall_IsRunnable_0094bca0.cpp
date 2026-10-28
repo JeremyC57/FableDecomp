@@ -57,9 +57,8 @@ class CWorld { public:
 };
 
 struct CBaseIntelligentPointer {
-    void* __vftable;
     CThing* m_pItem;                            // +0x04
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 namespace N_00668b60 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>

@@ -27,7 +27,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980
     void* PImpData;
     void* PImpInfo;
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();

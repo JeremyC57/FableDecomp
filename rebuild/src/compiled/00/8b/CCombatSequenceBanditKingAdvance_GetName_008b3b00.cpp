@@ -5,7 +5,7 @@
 #include "engine/CCombatSequence_BanditKingAdvance.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString { public:
     char* m_ptr;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 struct CCombatSequence_BanditKingAdvance_Methods : CCombatSequence_BanditKingAdvance {

@@ -4,7 +4,7 @@
 
 class CCharString { public:
     char Text[32];
-    CCharString(const char* t, int length = -1) { (void)length; std::strcpy(Text, t); }
+    CCharString(const char* t, long length = -1) { (void)length; std::strcpy(Text, t); }
 };
 class CAnimationEntry { public: int Id; };
 class CThing { public: int Id; };

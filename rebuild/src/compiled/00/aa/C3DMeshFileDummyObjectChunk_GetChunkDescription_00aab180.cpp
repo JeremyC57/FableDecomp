@@ -2,13 +2,13 @@
 // Retail 0x00aab180 : virtual const CCharString GetChunkDescription() const
 //
 // push esi ; mov esi,[esp+8] (hidden ret buf) ; push -1 ; push 0x129e620 ;
-// mov ecx,esi ; call CCharString::CCharString(const char*,int) ; mov eax,esi ; ret 4
+// mov ecx,esi ; call CCharString::CCharString(const char*,long) ; mov eax,esi ; ret 4
 
 class CCharString
 {
 public:
-    // ctor at 0x0099ebf0 : CCharString(const char* s, int len)
-    CCharString(const char* s, int len);
+    // ctor at 0x0099ebf0 : CCharString(const char* s, long len)
+    CCharString(const char* s, long len);
 private:
     char* m_data;
 };

@@ -21,7 +21,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF

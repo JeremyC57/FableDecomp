@@ -3,7 +3,7 @@
 #include <cstring>
 class CCharString { public:
     char m_text[32];
-    CCharString(const char* t, int) { std::strcpy(m_text, t); }
+    CCharString(const char* t, long) { std::strcpy(m_text, t); }
 };
 class CAnimationEntry { public: int id; };
 static CAnimationEntry g_anim;

@@ -47,7 +47,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 struct GameCalls {                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
     virtual void g000() {} virtual void g001() {} virtual void g002() {} virtual void g003() {} virtual void g004() {} virtual void g005() {} virtual void g006() {}

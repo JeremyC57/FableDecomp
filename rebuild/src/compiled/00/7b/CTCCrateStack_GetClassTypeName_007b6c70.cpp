@@ -4,7 +4,7 @@
 class CCharString { public:
     char* p;
     // ctor(const char*, int len) at the call target
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 class CTCCrateStack { public:

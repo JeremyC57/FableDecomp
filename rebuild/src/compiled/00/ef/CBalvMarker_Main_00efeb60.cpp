@@ -50,7 +50,7 @@ class CScriptThing : public CBase { public:                          // vtable 0
     virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
     CCountedPointerWords PImp;                         // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 struct CScriptThingInline : CBase {                    // the same object, destroyed by the inline body
     CCountedPointerWords PImp;

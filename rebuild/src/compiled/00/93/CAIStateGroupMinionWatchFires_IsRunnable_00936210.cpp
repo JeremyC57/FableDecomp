@@ -50,7 +50,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 struct CIntelligentPointerBuilding : CBaseIntelligentPointer {   // CIntelligentPointer<CThingBuilding> (vtable 0x01244344)
     virtual void v00();

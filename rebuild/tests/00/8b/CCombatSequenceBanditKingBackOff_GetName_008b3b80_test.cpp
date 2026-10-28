@@ -3,7 +3,7 @@
 
 class CCharString { public:
     int d;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 char kNameStr[] = "CombatSequence_BanditKingBackOff";
@@ -16,7 +16,7 @@ struct CCombatSequence_BanditKingBackOff {
 static const char* g_last_s;
 static int g_last_n;
 
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     d = 0x1234;
     g_last_s = s;

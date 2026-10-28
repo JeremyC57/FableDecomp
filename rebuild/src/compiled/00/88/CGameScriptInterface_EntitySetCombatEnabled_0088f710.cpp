@@ -5,7 +5,7 @@ class CScriptThing;
 class CCharString
 {
 public:
-    CCharString(const char*, int);
+    CCharString(const char*, long);
     ~CCharString();
 
 private:

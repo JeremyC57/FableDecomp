@@ -5,7 +5,7 @@
 //   push -1
 //   push 0x12a7cd0          ; const char* literal
 //   mov  ecx,esi
-//   call CCharString::CCharString(const char*,int)   @ 0x99ebf0
+//   call CCharString::CCharString(const char*,long)   @ 0x99ebf0
 //   mov  eax,esi            ; return the buffer
 //   pop  esi
 //   ret  4
@@ -15,7 +15,7 @@
 class CCharString {
 public:
     // Constructs a string from a literal with an explicit length (-1 = strlen).
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 private:
     void* m_data;
 };

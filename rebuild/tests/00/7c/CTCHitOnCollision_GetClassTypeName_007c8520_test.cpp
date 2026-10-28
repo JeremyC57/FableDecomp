@@ -13,10 +13,10 @@ static int g_seen_len;
 class CCharString
 { public:
     void* m_data;
-    CCharString(const char* text, int length);
+    CCharString(const char* text, long length);
 };
 
-CCharString::CCharString(const char* text, int length)
+CCharString::CCharString(const char* text, long length)
 {
     g_seen_text = text;
     g_seen_len = length;

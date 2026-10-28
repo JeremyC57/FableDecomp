@@ -4,7 +4,7 @@ typedef unsigned short wchar16;
 
 class CCharString { public:
     void* p;
-    CCharString(const char* s, int len);   // 0x597c80 (this, char*, len)
+    CCharString(const char* s, long len);   // 0x597c80 (this, char*, len)
     ~CCharString();                          // 0x597b70 (this)
 };
 

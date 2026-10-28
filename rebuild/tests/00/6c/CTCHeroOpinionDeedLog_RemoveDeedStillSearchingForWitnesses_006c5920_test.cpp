@@ -21,7 +21,7 @@ long __fastcall GetWorldFrame();                // 0x0049D870
 class CThing;
 class CBaseIntelligentPointer {
 public:
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     virtual void v00();
     void* PData;
 };

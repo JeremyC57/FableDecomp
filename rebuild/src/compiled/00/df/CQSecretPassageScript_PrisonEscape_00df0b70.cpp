@@ -102,7 +102,7 @@ class CScriptThing : public CBaseClass { public:                      // vtable 
     virtual void t071(); virtual void t072(); virtual void t073(); virtual void t074();
     virtual bool IsAlive() const;                       // slot 75 (+0x12c) 0x004AB130
     CScriptThingPointer PImp;                           // +0x04
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
     __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 };
 namespace std {

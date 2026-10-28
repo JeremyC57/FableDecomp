@@ -37,7 +37,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     void* PItem;                                    // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {

@@ -1,5 +1,5 @@
 #include "engine/C3DMeshFileTrianglesChunk.h"  // retyped onto the PDB layout; byte parity re-verified
-class CCharString { public: char* Data; CCharString(const char* text, int length); };
+class CCharString { public: char* Data; CCharString(const char* text, long length); };
 struct C3DMeshFileTrianglesChunk_Methods : C3DMeshFileTrianglesChunk {
     CCharString GetChunkDescription() const;
 };

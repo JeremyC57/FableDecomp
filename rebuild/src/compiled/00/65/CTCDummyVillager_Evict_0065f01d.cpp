@@ -16,9 +16,8 @@
 class CThing;
 
 struct CBaseIntelligentPointer {
-    void* __vftable;                        // +0x00
     void* PData;                            // +0x04
-    ~CBaseIntelligentPointer();             // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 
 namespace N_0050f3f0 { namespace N_0050f440 { struct CIntelligentPointerCreature : CBaseIntelligentPointer {

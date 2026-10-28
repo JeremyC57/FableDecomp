@@ -11,7 +11,7 @@
 class CCharString
 { public:
     void* m_data;
-    CCharString(const char* text, int length);
+    CCharString(const char* text, long length);
 };
 
 class CTCHitOnCollision

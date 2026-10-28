@@ -4,7 +4,7 @@
 
 class CCharString { public:
     char* buf;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     CCharString(const CCharString&);   // forces return-in-memory ABI
 };
 

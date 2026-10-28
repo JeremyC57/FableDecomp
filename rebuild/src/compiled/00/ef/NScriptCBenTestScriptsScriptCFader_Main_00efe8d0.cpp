@@ -29,7 +29,7 @@ class CScriptThing { public:
     virtual bool MsgIsTalkedToBy(const CCharString& talker) const;   // slot 27 (+0x6c)
     void* PImp[2];                               // +0x04 counted implementation pointer
     CScriptThing(const CScriptThing& other);     // 0x004ABE90
-    ~CScriptThing();
+    virtual ~CScriptThing();
 };
 
 struct CGameScriptInterface_Calls {

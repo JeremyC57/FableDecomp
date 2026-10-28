@@ -70,7 +70,7 @@ class CPersistContext { public:
     unsigned char           _pad1c[8];
     CMemoryDataInputStream* LoadStream;           // +0x24
     CDataOutputStream*      SaveStream;           // +0x28
-    void CheckCRC(const char* name);
+    protected: void CheckCRC(const char* name); public:
 };
 
 void CPersistContext::CheckCRC(const char* name)

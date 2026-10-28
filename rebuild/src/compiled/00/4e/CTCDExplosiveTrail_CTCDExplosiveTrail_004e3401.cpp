@@ -29,7 +29,7 @@ class CTCDriverBase { public:
 
 struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                     // 0x00A01B10
-    ~CBaseIntelligentPointer();                    // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
     virtual void v00();
     void* m_pItem;                                 // +0x04
 };

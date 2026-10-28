@@ -4,14 +4,14 @@
 // Local stand-in matching the source's CCharString layout/ctor.
 class CCharString {
 public:
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
     void* buf;
 };
 
 static const char* g_lastStr = 0;
 static int g_lastLen = 999;
 
-CCharString::CCharString(const char* s, int len) {
+CCharString::CCharString(const char* s, long len) {
     g_lastStr = s;
     g_lastLen = len;
     buf = (void*)s;

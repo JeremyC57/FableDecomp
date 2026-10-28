@@ -2,7 +2,7 @@
 // Leaf: ?GetFontBankName@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00415260, 240 bytes including the embedded jump table
 // (0x00415314, 8 dwords) and byte index table (0x00415334, 15 bytes) (+26 int3 pad). Callees:
-// GetLanguage 0x00415070, CCharString::CCharString(const char*, int) 0x0099EBF0; literals
+// GetLanguage 0x00415070, CCharString::CCharString(const char*, long) 0x0099EBF0; literals
 // 0x0122E960..0x0122E974.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; call GetLanguage ; add eax,-4 ; cmp eax,0xe ; ja D ;
@@ -21,7 +21,7 @@
 // Grading: the body embeds a jump table (verify_land_jumptable.py at landing).
 class CCharString {
 public:
-    CCharString(const char* text, int length);    // 0x0099EBF0
+    CCharString(const char* text, long length);    // 0x0099EBF0
 private:
     void* m_pData;
 };

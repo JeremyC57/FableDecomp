@@ -3,7 +3,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
     const char* c_str() const { return m_pData; }
 private:
     char* m_pData;
@@ -11,7 +11,7 @@ private:
 };
 
 static char g_buf[64];
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     if (len < 0) len = (int)strlen(s);
     strncpy(g_buf, s, sizeof(g_buf)-1);

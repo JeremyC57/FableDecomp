@@ -21,7 +21,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
 };
 class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes

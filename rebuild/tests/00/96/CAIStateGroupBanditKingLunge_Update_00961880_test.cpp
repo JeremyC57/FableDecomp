@@ -43,7 +43,7 @@ struct CThingRetail {
 struct CBaseIntelligentPointer {
  virtual void v00(); CThingRetail* item;
  CBaseIntelligentPointer(); // 0x00A01B10
- ~CBaseIntelligentPointer(); // 0x00A01C10; by-value pointer argument is destroyed by its callee
+ virtual ~CBaseIntelligentPointer(); // 0x00A01C10; by-value pointer argument is destroyed by its callee
  CThingRetail* GetPItem() const; // 0x00A01B50
  void SetPItem(CThingRetail*); // 0x00A01B90
 };

@@ -2,7 +2,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int n) { n_ = n; s_ = s; }
+    CCharString(const char* s, long n) { n_ = n; s_ = s; }
     int n_;
     const char* s_;
     void* pad;

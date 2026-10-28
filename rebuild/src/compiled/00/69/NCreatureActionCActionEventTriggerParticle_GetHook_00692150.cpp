@@ -11,7 +11,7 @@
 // esi = hidden return slot, ecx set to it for the ctor thiscall.
 class CCharString { public:
     int dummy;
-    CCharString(const char* lit, int len);
+    CCharString(const char* lit, long len);
 };
 
 namespace NCreatureAction {

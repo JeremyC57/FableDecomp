@@ -53,7 +53,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
 class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const; virtual void v06() const; virtual void v07() const; virtual void v08() const;
     virtual void v09() const; virtual void v10() const; virtual void v11() const; virtual void v12() const; virtual void v13() const; virtual void v14() const; virtual void v15() const; virtual void v16() const;
     virtual void v17() const; virtual void v18() const; virtual void v19() const; virtual void v20() const; virtual void v21() const; virtual void v22() const; virtual void v23() const; virtual void v24() const;

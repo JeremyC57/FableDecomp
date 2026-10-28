@@ -4,7 +4,7 @@
 class CCharString { public:
     char* p;
     int   len;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 struct CTCGraphicAppearanceStaticMesh {

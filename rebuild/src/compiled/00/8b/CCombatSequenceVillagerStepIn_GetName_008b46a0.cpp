@@ -4,7 +4,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int len);   // declared only -> real call emitted
+    CCharString(const char* s, long len);   // declared only -> real call emitted
     void* buf;
 };
 

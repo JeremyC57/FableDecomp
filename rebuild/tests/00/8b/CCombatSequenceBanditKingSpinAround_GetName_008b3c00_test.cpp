@@ -3,7 +3,7 @@
 class CCharString
 {
 public:
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
     void* m_data;
 };
 
@@ -16,7 +16,7 @@ public:
 // Local stub of the CCharString ctor so the test links standalone.
 static const char* g_seen_s = 0;
 static int g_seen_n = 0;
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     g_seen_s = s;
     g_seen_n = n;

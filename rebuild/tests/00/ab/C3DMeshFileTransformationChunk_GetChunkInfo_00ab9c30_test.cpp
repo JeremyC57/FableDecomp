@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 class CCharString { public:
-    CCharString(const char* lit, int len);
+    CCharString(const char* lit, long len);
     int dummy;
 };
 
@@ -12,7 +12,7 @@ class C3DMeshFileTransformationChunk { public:
 static const char* g_lit = 0;
 static int g_len = 0;
 
-CCharString::CCharString(const char* lit, int len)
+CCharString::CCharString(const char* lit, long len)
 {
     g_lit = lit;
     g_len = len;

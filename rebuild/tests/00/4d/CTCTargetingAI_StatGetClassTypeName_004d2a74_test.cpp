@@ -5,7 +5,7 @@ class CCharString {
 public:
     char buf[64];
     int  len;
-    CCharString(const char* s, int n) {
+    CCharString(const char* s, long n) {
         std::strncpy(buf, s, 63);
         buf[63] = 0;
         len = (n < 0) ? (int)std::strlen(buf) : n;

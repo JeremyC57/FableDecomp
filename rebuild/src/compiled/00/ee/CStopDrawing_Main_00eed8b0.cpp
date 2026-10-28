@@ -30,7 +30,7 @@ class CScriptThing { public:                              // vtable 0x01238C8C, 
     virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& from) const;    // slot 42 (+0xa8)
     unsigned char _body[8];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CGameScriptInterface { public:                     // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();

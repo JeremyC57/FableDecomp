@@ -59,7 +59,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(const CThing* item);          // 0x00A01B90
     CThing* GetPItem() const;                   // 0x00A01B50
 };

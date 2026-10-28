@@ -70,7 +70,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
     CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04

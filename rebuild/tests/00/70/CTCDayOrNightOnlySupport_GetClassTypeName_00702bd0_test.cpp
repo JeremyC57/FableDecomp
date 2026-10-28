@@ -2,13 +2,13 @@
 
 class CCharString { public:
     int dummy;
-    CCharString(const char* lit, int len);
+    CCharString(const char* lit, long len);
 };
 
 static const char* g_lit = 0;
 static int g_len = 0;
 
-CCharString::CCharString(const char* lit, int len)
+CCharString::CCharString(const char* lit, long len)
 {
     g_lit = lit; g_len = len;
     this->dummy = 0x1234;

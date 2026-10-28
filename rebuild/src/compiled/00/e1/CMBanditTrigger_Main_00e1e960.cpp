@@ -36,7 +36,7 @@ class CScriptThing : public CBaseClass { public:                      // vtable 
     CScriptThingPImp PImp;                              // +0x04
     CScriptThing() {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
     virtual const CCharString& GetName() const;         // slot 1
     virtual CCharString GetDefName() const;             // slot 2

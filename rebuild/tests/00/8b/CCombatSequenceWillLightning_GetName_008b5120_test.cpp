@@ -4,11 +4,11 @@
 class CCharString {
 public:
     char* m_ptr;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 // standalone impl of the extern ctor for linking the test
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     static char buf[256];
     int n = (len < 0) ? (int)std::strlen(s) : len;

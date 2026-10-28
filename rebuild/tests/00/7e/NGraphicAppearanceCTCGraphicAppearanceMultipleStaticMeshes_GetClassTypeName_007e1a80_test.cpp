@@ -9,7 +9,7 @@
 class CCharString { public:
     const char* rec_s;
     int rec_len;
-    CCharString(const char* s, int len) { rec_s = s; rec_len = len; }
+    CCharString(const char* s, long len) { rec_s = s; rec_len = len; }
 };
 
 struct CTCGraphicAppearanceMultipleStaticMeshes {

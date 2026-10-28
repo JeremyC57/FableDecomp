@@ -8,7 +8,7 @@ class CCharString { public:
     // ctor is defined out-of-line in another TU (retail 0x0099ebf0); leaving it
     // undefined here forces the compiler to treat the call as opaque so the
     // return-buffer pointer is parked in a callee-saved register (esi) across it.
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 struct C3DMeshFileEngineMaterialChunk_Methods : C3DMeshFileEngineMaterialChunk {

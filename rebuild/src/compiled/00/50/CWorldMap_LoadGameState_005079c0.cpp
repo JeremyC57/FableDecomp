@@ -132,7 +132,7 @@ public:
     CDataOutputStream*      PSaveStream;                // +0x28
     CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool useDefaults,
                     CDefinitionManager* definitionManager, CSymbolMap* symbolMap, CCharString* stringToClean);   // 0x009BADD0
-    void CheckCRC(const char* name);                    // 0x00404500
+    protected: void CheckCRC(const char* name); public:                    // 0x00404500
     template <class T> void Transfer(T& value);                  // 0x00431143
     bool IsBinary() const { return Mode == 2 || Mode == 3; }
     __forceinline void TransferBinary(unsigned long& value)

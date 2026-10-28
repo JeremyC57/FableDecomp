@@ -3,7 +3,7 @@
 class CCharString { public:
     const char* p;
     int len;
-    CCharString(const char* lit, int l) : p(lit), len(l) {}
+    CCharString(const char* lit, long l) : p(lit), len(l) {}
     int dummy;
 };
 

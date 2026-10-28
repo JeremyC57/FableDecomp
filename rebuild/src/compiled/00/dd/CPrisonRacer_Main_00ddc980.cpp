@@ -76,7 +76,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     virtual void s072() const; virtual void s073() const; virtual void s074() const;
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c), out of line 0x004AB130
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
 };
 template <class T> struct vector {                      // STLport vector (retail 12 bytes)

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-// Self-contained model of the CCharString(const char*, int) construction that
+// Self-contained model of the CCharString(const char*, long) construction that
 // GetActionName performs. len==-1 means "use strlen".
 
 class CCharString {
@@ -9,7 +9,7 @@ public:
     char buf[64];
     const char* src;
     int len;
-    CCharString(const char* s, int n) {
+    CCharString(const char* s, long n) {
         src = s; len = n;
         if (n < 0) strncpy(buf, s, 63);
         else       strncpy(buf, s, (n < 63 ? n : 63));

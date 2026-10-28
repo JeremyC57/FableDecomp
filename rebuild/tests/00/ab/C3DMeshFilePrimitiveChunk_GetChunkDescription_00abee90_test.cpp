@@ -6,7 +6,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int len) {
+    CCharString(const char* s, long len) {
         int n = (len < 0) ? (int)strlen(s) : len;
         m_data = new char[n + 1];
         memcpy(m_data, s, n);

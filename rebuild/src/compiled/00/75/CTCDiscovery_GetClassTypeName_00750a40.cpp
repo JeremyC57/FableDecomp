@@ -3,7 +3,7 @@
 
 class CCharString { public:
     int d;
-    CCharString(const char* s, int n);   // ctor is engine 0x0099ebf0 (extern)
+    CCharString(const char* s, long n);   // ctor is engine 0x0099ebf0 (extern)
 };
 
 class CTCDiscovery { public:

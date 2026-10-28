@@ -2,13 +2,13 @@
 
 class CCharString { public:
     int d;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 // Fake engine ctor: record the args it was called with.
 static const char* g_last_s;
 static int         g_last_n;
-CCharString::CCharString(const char* s, int n) {
+CCharString::CCharString(const char* s, long n) {
     g_last_s = s;
     g_last_n = n;
     this->d = (int)s;

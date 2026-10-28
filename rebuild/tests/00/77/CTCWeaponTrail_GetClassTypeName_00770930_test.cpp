@@ -2,10 +2,10 @@
 class CCharString { public:
     char* p;
     static int last;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 int CCharString::last=0;
-CCharString::CCharString(const char* s, int n){ p=(char*)s; last=n; }
+CCharString::CCharString(const char* s, long n){ p=(char*)s; last=n; }
 class CTCWeaponTrail { public: CCharString GetClassTypeName(); };
 int main(){
     CTCWeaponTrail a;

@@ -4,7 +4,7 @@
 // Local standalone stand-in for CCharString (test-only).
 class CCharString {
 public:
-    CCharString(const char* s, int len) {
+    CCharString(const char* s, long len) {
         int n = (len < 0) ? (int)strlen(s) : len;
         m_len = n;
         m_pData = new char[n + 1];

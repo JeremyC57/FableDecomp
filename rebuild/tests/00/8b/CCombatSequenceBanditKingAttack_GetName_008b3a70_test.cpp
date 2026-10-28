@@ -3,7 +3,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int n) {
+    CCharString(const char* s, long n) {
         // record what the ctor was called with
         g_last_ptr = s;
         g_last_n = n;

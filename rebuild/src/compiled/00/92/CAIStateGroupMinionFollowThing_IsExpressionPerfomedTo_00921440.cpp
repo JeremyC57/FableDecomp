@@ -123,7 +123,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
     CIntelligentPointerConstThing(const CThing* thing);     // 0x00668B60

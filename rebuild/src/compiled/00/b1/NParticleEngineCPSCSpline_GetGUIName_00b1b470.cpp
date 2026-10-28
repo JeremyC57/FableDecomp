@@ -6,7 +6,7 @@
 
 class CCharString { public:
     char* m_data;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 // address 0x129f608 = a global string literal's address (push imm)

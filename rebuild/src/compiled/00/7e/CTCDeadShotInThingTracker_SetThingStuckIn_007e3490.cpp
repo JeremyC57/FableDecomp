@@ -15,7 +15,7 @@ struct CBaseIntelligentPointer {                            // sizeof 8: vptr + 
     virtual void v00();
     void* PData;                                            // +0x04 CBaseObjectPointer*
     CBaseIntelligentPointer();                              // 0x00A01B10
-    ~CBaseIntelligentPointer();                             // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
     CBaseObject* GetPItem() const;                          // 0x00A01B50
     void SetPItem(CBaseObject* item);                       // 0x00A01B90
 };

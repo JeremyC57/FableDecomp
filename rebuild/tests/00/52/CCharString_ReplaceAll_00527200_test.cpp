@@ -14,7 +14,7 @@ class CCharString {
 public:
     CCharStringData* PStringData;               // +0x0 (null = empty)
     CCharString() : PStringData(0) { ++g_live; }
-    CCharString(const char* text, int length = -1) : PStringData(0) { ++g_live; Set(text, length < 0 ? (int)std::strlen(text) : length); }
+    CCharString(const char* text, long length = -1) : PStringData(0) { ++g_live; Set(text, length < 0 ? (int)std::strlen(text) : length); }
     ~CCharString() { --g_live; Free(); }
     void Free() { if (PStringData) { std::free(PStringData->m_pData); delete PStringData; PStringData = 0; } }
     void Set(const char* text, int n)

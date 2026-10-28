@@ -6,7 +6,7 @@ class CCharString { public:
     char* m_data;
     int   m_len;
     int   m_ref;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 static const char* const kActionNameLit = (const char*)0x0123d4b0;

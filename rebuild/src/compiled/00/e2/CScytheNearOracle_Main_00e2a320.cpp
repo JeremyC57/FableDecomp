@@ -38,7 +38,7 @@ class CScriptThing : public CBase { public:
     void* PImpData;                                     // +0x04
     void* PImpInfo;                                     // +0x08
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 namespace NScript {
 class CPredicateBase

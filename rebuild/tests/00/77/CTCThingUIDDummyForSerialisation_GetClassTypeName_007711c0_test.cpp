@@ -2,7 +2,7 @@
 
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 class CTCThingUIDDummyForSerialisation { public:
@@ -13,7 +13,7 @@ class CTCThingUIDDummyForSerialisation { public:
 static const char* g_last_s = 0;
 static int g_last_n = 999;
 
-CCharString::CCharString(const char* s, int n) {
+CCharString::CCharString(const char* s, long n) {
     g_last_s = s;
     g_last_n = n;
     p = (char*)s;

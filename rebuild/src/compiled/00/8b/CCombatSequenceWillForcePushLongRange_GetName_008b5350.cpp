@@ -4,8 +4,8 @@
 
 class CCharString {
 public:
-    // ctor from (const char*, int) — the retail call at 0x99ebf0.
-    CCharString(const char* s, int n);
+    // ctor from (const char*, long) — the retail call at 0x99ebf0.
+    CCharString(const char* s, long n);
 private:
     char* m_p;
 };

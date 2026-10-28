@@ -49,7 +49,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
  CCountedPointer<CScriptThingImpl> PImp;    // +0x04 Data, +0x08 Info
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // out-of-line copy 0x004AA840
+ virtual ~CScriptThing();                           // out-of-line copy 0x004AA840
  bool IsAlive() const;                      // slot 75, inlined below
 };
 struct CScriptThingImpl {

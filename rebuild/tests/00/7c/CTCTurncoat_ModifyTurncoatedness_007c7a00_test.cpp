@@ -61,7 +61,7 @@ CThing* __fastcall CreateParticleEffect(long effect, const C3DVector* pos);   //
 struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
     virtual void v00();
     void* m_pData;
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CThing* item);                        // 0x00A01B90
 };

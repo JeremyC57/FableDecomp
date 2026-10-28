@@ -14,7 +14,7 @@ namespace NCharStringPool {extern const char EmptyString[];} using NCharStringPo
 #pragma pack(push,1)
 struct Data {char* text;int size;unsigned capacity;bool fast;int refs;};
 #pragma pack(pop)
-class CCharString { public: Data* data;CCharString();CCharString(const char*,int=-1);CCharString(const CCharString&);~CCharString();void AppendCharacter(char);const char* Text()const{return !data?EmptyString:data->text;}int Size()const{return data?data->size:0;} CCharString Mutate();};
+class CCharString { public: Data* data;CCharString();CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();void AppendCharacter(char);const char* Text()const{return !data?EmptyString:data->text;}int Size()const{return data?data->size:0;} CCharString Mutate();};
 Data* MakeData(const char*,int);Data* ShareData(Data*);void DropData(Data*);
 
 class CPersistContext { public:char pad[24];int mode;void Write(const char*,CCharString&,CCharString&);void Read(const char*,CCharString&);};
@@ -36,7 +36,7 @@ void CPersistTraits::Transfer(CPersistContext* ctx,CCharString* name,BoolVector*
 
 #pragma auto_inline(off)
 CCharString::CCharString():data(0){}
-CCharString::CCharString(const char* p,int n):data(MakeData(p,n)){}
+CCharString::CCharString(const char* p,long n):data(MakeData(p,n)){}
 CCharString::CCharString(const CCharString& x):data(x.data){if(data)++data->refs;}
 CCharString::~CCharString(){DropData(data);data=0;}
 #pragma auto_inline(on)

@@ -61,7 +61,7 @@ public:
     void*                   PStringToSaveTo;
     CMemoryDataInputStream* PLoadStream;
     CDataOutputStream*      PSaveStream;
-    void CheckCRC(const char* name);
+    protected: void CheckCRC(const char* name); public:
     template <class T> void Transfer(T& value);
 };
 void CPersistContext::CheckCRC(const char* name) { std::strcat(g_seq, "N"); g_name = name; }

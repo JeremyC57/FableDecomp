@@ -3,7 +3,7 @@
 // context at it; loading parses the string, finds the block and hands its body to the context through the parser
 // Retail 0x00686B00, 0x211 bytes, `ret 10h`. Callees: virtual slot 22 (+0x58, CCharString GetClassTypeName() const),
 // CCharString operator+(const char*, const CCharString&) 0x0099F690 and operator+(const CCharString&, const char*)
-// 0x0099F600 (both __fastcall), CCharString(const char*, int) 0x0099EBF0, ~CCharString 0x0099EAE0, operator=
+// 0x0099F600 (both __fastcall), CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, operator=
 // 0x0099EFB0, operator+= 0x0099F0A0, CStringParser::Init(const char*, callback, const CCharString&, long) 0x009B9530,
 // SkipToItem 0x009B9C00 (label CThingCreatureBase::SerialiseGameState is propagated), ReadAsStringUntilString
 // 0x009BA330, CPersistContext::Init(CCharString&, CDefinitionManager*) 0x009BAA10 (save) and Init(CStringParser*,
@@ -17,7 +17,7 @@ class CCharString {
 public:
     struct SData { char* Data; };
     SData* PStringData;
-    CCharString(const char* text, int length = -1);    // 0x0099EBF0
+    CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
     CCharString& operator+=(const CCharString& other); // 0x0099F0A0

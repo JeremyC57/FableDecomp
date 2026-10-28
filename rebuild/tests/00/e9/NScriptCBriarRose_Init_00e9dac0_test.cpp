@@ -5,7 +5,7 @@
 static std::string g_log;
 class CCharString { public:
     std::string s;
-    CCharString(const char* t, int = -1) : s(t) {}
+    CCharString(const char* t, long = -1) : s(t) {}
 };
 static CCharString operator+(const CCharString& a, const CCharString& b) { return CCharString((a.s + b.s).c_str()); }
 static int g_refs = 1;

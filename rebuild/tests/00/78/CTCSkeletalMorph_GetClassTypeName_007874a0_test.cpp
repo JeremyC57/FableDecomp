@@ -2,7 +2,7 @@
 
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int n) { p = (char*)s; last_n = n; }
+    CCharString(const char* s, long n) { p = (char*)s; last_n = n; }
     static int last_n;
 };
 int CCharString::last_n = 0;

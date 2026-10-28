@@ -4,7 +4,7 @@
 class CCharString {
 public:
     char* m_ptr;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 class CEngineSkyRenderer {

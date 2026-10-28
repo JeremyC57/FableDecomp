@@ -6,7 +6,7 @@ class CScriptThing;
 class CCharString
 { public:
     void* m_pRep; // 0x00
-    CCharString(const char* pText, int length);
+    CCharString(const char* pText, long length);
     ~CCharString();
 };
 
@@ -33,7 +33,7 @@ static bool g_slotEnabled = false;
 static const void* g_slotThis = 0;
 static const void* g_slotEntity = 0;
 
-CCharString::CCharString(const char* pText, int length)
+CCharString::CCharString(const char* pText, long length)
 {
     g_ctorText = pText;
     g_ctorLen = length;

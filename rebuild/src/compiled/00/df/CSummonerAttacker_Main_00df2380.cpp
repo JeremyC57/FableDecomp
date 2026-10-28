@@ -85,7 +85,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     __forceinline CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
 };
 inline bool IsThingAlive(const CScriptThing& thing) { return thing.IsAlive(); }   // a virtual call (not devirtualised)

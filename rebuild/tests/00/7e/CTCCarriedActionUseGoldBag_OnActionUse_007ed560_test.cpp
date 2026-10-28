@@ -104,7 +104,7 @@ class CCreatureActionBase { public:                                // retail siz
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                                          // +0x04
-    ~CBaseIntelligentPointer();                             // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
 };
 class CThingCreatureBase;
 class CCreatureAction_GiveMoneyToThing : public CCreatureActionBase { public:

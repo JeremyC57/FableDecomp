@@ -23,7 +23,7 @@ class CScriptThing { public:   // 12 bytes: vptr + counted implementation (vtabl
     virtual bool MsgIsHitBy(const CCharString& hitter) const;   // slot 21 (+0x54)
     unsigned char _body[8];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CGameScriptInterface { public:   // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();

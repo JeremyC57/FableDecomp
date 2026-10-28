@@ -2,12 +2,12 @@
 
 class CCharString {
 public:
-    CCharString(const char* str, int len);
+    CCharString(const char* str, long len);
     void* m_data;
 };
 
 // Local standalone impl of the ctor for the behaviour test.
-CCharString::CCharString(const char* str, int len) {
+CCharString::CCharString(const char* str, long len) {
     m_data = (void*)str;
     (void)len;
 }

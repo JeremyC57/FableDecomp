@@ -3,7 +3,7 @@
 #include <cstring>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-class CCharString { public: char m_text[40]; CCharString(const char* t, int) { std::strcpy(m_text, t); } ~CCharString() { Log(8); } };
+class CCharString { public: char m_text[40]; CCharString(const char* t, long) { std::strcpy(m_text, t); } ~CCharString() { Log(8); } };
 class CDefinitionManager { public:
     int GetDefGlobalIndexFromName(const CCharString& name) { return std::strcmp(name.m_text, "CARRY_SLOT_PRIMARY_SHEATHE") == 0 ? 42 : -1; }
 };

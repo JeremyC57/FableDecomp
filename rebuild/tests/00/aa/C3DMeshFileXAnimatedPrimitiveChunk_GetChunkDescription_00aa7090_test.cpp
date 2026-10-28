@@ -13,7 +13,7 @@ static int         g_lastLen = 0;
 class CCharString
 {
 public:
-    CCharString(const char* str, int len)
+    CCharString(const char* str, long len)
     {
         g_lastPtr = str;
         g_lastLen = len;

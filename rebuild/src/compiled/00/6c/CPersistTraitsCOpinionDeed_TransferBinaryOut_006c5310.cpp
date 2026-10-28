@@ -34,7 +34,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();                             // vtable 0x0129C95C
     void* PData;                                    // +0x04 CBaseObjectPointer*
     CBaseIntelligentPointer();                      // 0x00A01B10
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CThing* GetPItem() const;                       // 0x00A01B50
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C

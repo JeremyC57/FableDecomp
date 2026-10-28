@@ -16,7 +16,7 @@ struct CBaseIntelligentPointer
     virtual void v00();
     CBaseObject* m_pItem;                           // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                  // 0x00A01B50
     void SetPItem(CBaseObject* item);               // 0x00A01B90
 };

@@ -8,10 +8,10 @@ class CCharString {
 public:
     char* m_ptr;
     int m_len;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     if (len < 0) len = (int)strlen(s);
     m_len = len;

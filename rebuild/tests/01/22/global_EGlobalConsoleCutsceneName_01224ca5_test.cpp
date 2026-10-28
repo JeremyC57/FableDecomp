@@ -5,7 +5,7 @@ static int g_live = 0; static const char* g_text = 0; static int g_len = 0;
 class CCharString {
 public:
     const char* PStringData;
-    CCharString(const char* text, int length = -1) : PStringData(text) { ++g_live; g_text = text; g_len = length; }
+    CCharString(const char* text, long length = -1) : PStringData(text) { ++g_live; g_text = text; g_len = length; }
     ~CCharString() { --g_live; }
 };
 

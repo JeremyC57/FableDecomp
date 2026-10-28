@@ -7,7 +7,7 @@
 //   push -1
 //   push 0x129e2a4             ; const char* literal
 //   mov  ecx, esi
-//   call 0x99ebf0             ; CCharString::CCharString(const char*, int)
+//   call 0x99ebf0             ; CCharString::CCharString(const char*, long)
 //   mov  eax, esi
 //   pop  esi
 //   ret  4
@@ -18,8 +18,8 @@
 class CCharString
 {
 public:
-    // ctor at 0x99ebf0 : (const char* str, int len)
-    CCharString(const char* str, int len);
+    // ctor at 0x99ebf0 : (const char* str, long len)
+    CCharString(const char* str, long len);
 private:
     char* m_ptr;
 };

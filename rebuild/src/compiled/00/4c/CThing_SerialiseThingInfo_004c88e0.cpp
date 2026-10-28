@@ -2,7 +2,7 @@
 // Leaf: ?SerialiseThingInfo@CThing@@SIX_N
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C88E0, 330 bytes, static __fastcall (saving in cl, data in edx, info on the
 //   stack), `ret 4`. Ego_r.pdb `?SerialiseThingInfo@CThing@@SIX_NAAVCCharString@@AAVCSerialiseInfo@1@@Z`.
-// Callees: CBaseClass ctor 0x0099A2D0 / dtor 0x0099A2E0, CCharString() 0x0099E4B0, (const char*, int) 0x0099EBF0,
+// Callees: CBaseClass ctor 0x0099A2D0 / dtor 0x0099A2E0, CCharString() 0x0099E4B0, (const char*, long) 0x0099EBF0,
 //   ~CCharString 0x0099EAE0, operator= 0x0099EFB0, malloc 0x00BFEA0E (the comment list head), CPersistContext::Init(
 //   CCharString&, CDefinitionManager*) 0x009BAA10 (save) and Init(CStringParser*, callback, bool, CDefinitionManager*,
 //   CSymbolMap*, CCharString*) 0x009BA9D0 (load), CStringParser::Init(const char*, callback, const CCharString&, long)
@@ -21,7 +21,7 @@ public:
     struct SData { char* Data; };
     SData* PStringData;
     CCharString();                                     // 0x0099E4B0
-    CCharString(const char* text, int length = -1);    // 0x0099EBF0
+    CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
     const char* c_str() const { return !PStringData ? "" : PStringData->Data; }

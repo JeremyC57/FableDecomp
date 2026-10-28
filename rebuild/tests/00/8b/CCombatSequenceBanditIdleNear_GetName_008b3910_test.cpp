@@ -4,7 +4,7 @@
 class CCharString {
 public:
     char *m_data;
-    CCharString(const char *s, int n);
+    CCharString(const char *s, long n);
 };
 
 class CCombatSequence_BanditIdleNear {
@@ -14,7 +14,7 @@ public:
 
 // Local stand-in ctor: record the string it was built from.
 static char g_last[64];
-CCharString::CCharString(const char *s, int n)
+CCharString::CCharString(const char *s, long n)
 {
     m_data = (char*)s;
     if (s) { strncpy(g_last, s, 63); g_last[63] = 0; }

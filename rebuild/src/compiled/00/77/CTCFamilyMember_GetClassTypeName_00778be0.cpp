@@ -5,8 +5,8 @@
 
 class CCharString {
 public:
-    // ctor(const char*, int) -> the call target 0x99ebf0
-    CCharString(const char* s, int n);
+    // ctor(const char*, long) -> the call target 0x99ebf0
+    CCharString(const char* s, long n);
     CCharString(const CCharString&);
     ~CCharString();
 private:

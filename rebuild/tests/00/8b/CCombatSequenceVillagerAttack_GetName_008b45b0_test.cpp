@@ -4,7 +4,7 @@
 // Local stand-in for CCharString ctor (mimics a length-counted string).
 class CCharString {
 public:
-    CCharString(const char* s, int n) {
+    CCharString(const char* s, long n) {
         if (n < 0) n = (int)strlen(s);
         m_len = n;
         m_data = new char[n + 1];

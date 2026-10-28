@@ -4,7 +4,7 @@
 class CCharString
 {
 public:
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
     const char* c_str() const { return m_data; }
 private:
     char* m_data;
@@ -12,7 +12,7 @@ private:
 };
 
 // local stand-in for the ctor at 0x0099ebf0
-CCharString::CCharString(const char* s, int len)
+CCharString::CCharString(const char* s, long len)
 {
     int n = (len < 0) ? (int)strlen(s) : len;
     if (n > 63) n = 63;

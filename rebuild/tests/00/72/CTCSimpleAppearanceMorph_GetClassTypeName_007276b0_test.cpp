@@ -5,11 +5,11 @@ struct StringRep;
 class CCharString
 { public:
     StringRep* rep;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 #pragma auto_inline(off)
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     rep = (StringRep*)(s ? (void*)(n) : 0);
 }

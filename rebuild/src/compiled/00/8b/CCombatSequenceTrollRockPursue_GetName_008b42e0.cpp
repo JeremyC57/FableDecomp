@@ -5,7 +5,7 @@
 #include "engine/CCombatSequence_TrollRockPursue.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString {
 public:
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
     // Construct-in-place without a null check (matches retail's unconditional ctor call).
     void Init(const char* s, int len);
     void* m_data;

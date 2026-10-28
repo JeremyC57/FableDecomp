@@ -9,7 +9,7 @@ static int         g_last_len = 999;
 class CCharString { public:
     char* m_data;
     CCharString() { m_data = 0; }
-    CCharString(const char* s, int n) { g_last_str = s; g_last_len = n; m_data = (char*)s; }
+    CCharString(const char* s, long n) { g_last_str = s; g_last_len = n; m_data = (char*)s; }
     CCharString(const CCharString& o) { m_data = o.m_data; }
     ~CCharString() {}
 };

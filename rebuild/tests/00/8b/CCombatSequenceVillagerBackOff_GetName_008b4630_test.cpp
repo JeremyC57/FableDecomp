@@ -3,11 +3,11 @@
 
 class CCharString { public:
     char* m_pData;
-    CCharString(const char* str, int len);
+    CCharString(const char* str, long len);
 };
 
 static char g_buf[256];
-CCharString::CCharString(const char* str, int len)
+CCharString::CCharString(const char* str, long len)
 {
     // emulate retail ctor: copy the literal (len<0 => strlen)
     if (len < 0) len = (int)std::strlen(str);

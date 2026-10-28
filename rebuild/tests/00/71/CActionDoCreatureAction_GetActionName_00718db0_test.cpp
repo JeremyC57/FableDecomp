@@ -5,7 +5,7 @@ static int g_captured_n;
 
 class CCharString { public:
     char* buf;
-    CCharString(const char* s, int n) {
+    CCharString(const char* s, long n) {
         g_captured_s = s;
         g_captured_n = n;
         buf = (char*)s;

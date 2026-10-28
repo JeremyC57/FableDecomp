@@ -30,9 +30,8 @@
 class C3DVector { public: float X, Y, Z; };
 class CThing;
 struct CBaseIntelligentPointer {
-    void*   __vftable;                                  // +0x00
     void*   PData;                                      // +0x04
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
     CThing* GetPItem() const;                           // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>

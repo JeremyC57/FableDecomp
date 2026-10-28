@@ -3,8 +3,8 @@
 
 class CCharString {
 public:
-    // (const char*, int length = -1) constructor; out-of-line (matches call 0x99ebf0)
-    CCharString(const char* s, int len);
+    // (const char*, long length = -1) constructor; out-of-line (matches call 0x99ebf0)
+    CCharString(const char* s, long len);
     CCharString(const CCharString& o);
     ~CCharString();
 private:

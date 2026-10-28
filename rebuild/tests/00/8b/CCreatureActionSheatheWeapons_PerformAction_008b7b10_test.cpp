@@ -5,7 +5,7 @@ static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
 class CCharString { public:
     const char* m_text;
-    CCharString(const char* text, int) : m_text(text) { }
+    CCharString(const char* text, long) : m_text(text) { }
     ~CCharString() { Log(9); }
 };
 class CTCCreatureModeManager { public: unsigned int m_removed; void RemoveMode(unsigned int mode) { m_removed = mode; Log(2); } };

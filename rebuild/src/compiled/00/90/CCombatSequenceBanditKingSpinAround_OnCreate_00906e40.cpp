@@ -1,6 +1,6 @@
 // CCombatSequence_BanditKingSpinAround::OnCreate() -- queue a CCreatureAction_BanditKingAttack on the "REAR_ATTACK" animation (flags 0, 1), then the base OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00906E40, 177 bytes (192 with padding), virtual `?OnCreate@CCombatSequence_BanditKingSpinAround@@UAEXXZ`.
-// Callees: operator new 0x00BFEA1A (0x118 bytes), CCharString::CCharString(const char*, int) 0x0099EBF0 ("REAR_ATTACK"
+// Callees: operator new 0x00BFEA1A (0x118 bytes), CCharString::CCharString(const char*, long) 0x0099EBF0 ("REAR_ATTACK"
 //   @ 0x01282028), CCreatureAction_BanditKingAttack::CCreatureAction_BanditKingAttack 0x008C9410, CCountedPointer::Reset
 //   0x00905FD0, ~CCharString 0x0099EAE0, AddAction 0x008B0B10, base OnCreate 0x008B0650, operator delete 0x00BFE9BC.
 // Layout: sequence owner +0x1c, target +0x20 (landed sibling OnCreate model); engine header CCombatSequence_BanditKingSpinAround.h
@@ -65,7 +65,7 @@ class CCombatSequenceBase { public:
 
 class CCharString { public:
     void* PStringData;
-    CCharString(const char* text, int length = -1);   // 0x0099EBF0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0
 };
 

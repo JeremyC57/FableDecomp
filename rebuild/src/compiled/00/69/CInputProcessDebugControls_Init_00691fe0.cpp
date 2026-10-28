@@ -14,7 +14,7 @@ class CBaseIntelligentPointer { public:               // 8 bytes: vptr + the poi
     CBaseIntelligentPointer();                      // 0x00A01B10
     void SetPItem(CBaseObject* item);               // 0x00A01B90 (Ego_r.pdb: PAVCBaseObject)
     CBaseObject* GetPItem() const;                  // 0x00A01B50 (Ego_r.pdb: QBEPAVCBaseObject)
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<const CThing>, vtable 0x01237F1C (RTTI .?AV?$CIntelligentPointer@$$CBVCThing@@@@)
     virtual void v00();

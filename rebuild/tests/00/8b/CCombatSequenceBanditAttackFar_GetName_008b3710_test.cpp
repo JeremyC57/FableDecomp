@@ -4,7 +4,7 @@
 class CCharString
 {
 public:
-	CCharString(const char* str, int len);
+	CCharString(const char* str, long len);
 	char* m_data;
 };
 
@@ -19,7 +19,7 @@ static char g_captured[64];
 static int  g_capturedLen = 0;
 static const char* g_capturedPtr = 0;
 
-CCharString::CCharString(const char* str, int len)
+CCharString::CCharString(const char* str, long len)
 {
 	g_capturedLen = len;
 	g_capturedPtr = str;

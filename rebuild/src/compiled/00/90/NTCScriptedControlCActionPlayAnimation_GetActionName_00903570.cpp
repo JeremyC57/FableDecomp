@@ -7,7 +7,7 @@
 // hidden struct-return buffer is the sole cleaned stack arg (ret 4).
 
 class CCharString { public:
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 namespace NTCScriptedControl {

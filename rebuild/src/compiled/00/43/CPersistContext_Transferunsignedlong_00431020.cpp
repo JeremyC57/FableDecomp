@@ -34,7 +34,7 @@ public:
     void*                   PStringToSaveTo;             // +0x20
     CMemoryDataInputStream* PLoadStream;                 // +0x24
     CDataOutputStream*      PSaveStream;                 // +0x28
-    void CheckCRC(const char* name);                     // 0x00404500
+    protected: void CheckCRC(const char* name); public:                     // 0x00404500
     template <class T> void Transfer(T& value);
 };
 template <> void CPersistContext::Transfer<unsigned long>(unsigned long& value)

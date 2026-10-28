@@ -1,7 +1,7 @@
 #include <cstdio>
 typedef unsigned short wchar16;
 
-class CCharString { public: void* p; CCharString(const char*, int); ~CCharString(); };
+class CCharString { public: void* p; CCharString(const char*, long); ~CCharString(); };
 class CWideString { public:
     void* p;
     CWideString(const wchar16* s);
@@ -18,7 +18,7 @@ class CUserProfileManager { public:
 };
 
 // fake defs so it links
-CCharString::CCharString(const char*, int) { p = 0; }
+CCharString::CCharString(const char*, long) { p = 0; }
 CCharString::~CCharString() {}
 static const wchar16* g_last_pre = 0;
 static const wchar16* g_last_single = 0;

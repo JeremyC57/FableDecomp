@@ -3,7 +3,7 @@
 
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int n);
+    CCharString(const char* s, long n);
 };
 
 struct CCombatSequenceWhisperTooCloseLeapBack {
@@ -14,7 +14,7 @@ struct CCombatSequenceWhisperTooCloseLeapBack {
 // Local stand-in for the real CCharString ctor at 0x99ebf0.
 static const char* g_lastStr;
 static int g_lastN;
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* s, long n)
 {
     g_lastStr = s;
     g_lastN = n;

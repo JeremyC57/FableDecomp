@@ -1,6 +1,6 @@
 // CCombatSequence_WillEnflame::OnCreate() -- queue a CCreatureAction_PlayCombatAnimation on "ST_BUILDUP_ENFLAME" (flag 1) and a 0x11C-byte enflame action (owner, 2), then the base OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009091D0, 237 bytes (192 with padding), virtual `?OnCreate@CCombatSequence_WillEnflame@@UAEXXZ`.
-// Callees: operator new 0x00BFEA1A (0x118 bytes), CCharString::CCharString(const char*, int) 0x0099EBF0 ("ST_BUILDUP_ENFLAME"
+// Callees: operator new 0x00BFEA1A (0x118 bytes), CCharString::CCharString(const char*, long) 0x0099EBF0 ("ST_BUILDUP_ENFLAME"
 //   @ 0x012801D0), CCreatureAction_PlayCombatAnimation ctor 0x008B7F80, the 0x11C-byte action ctor 0x008BB450 (owner, 2), CCountedPointer::Reset
 //   0x00905FD0, ~CCharString 0x0099EAE0, AddAction 0x008B0B10, base OnCreate 0x008B0650, operator delete 0x00BFE9BC.
 // Layout: sequence owner +0x1c, target +0x20 (landed sibling OnCreate model); engine header CCombatSequence_WillEnflame.h
@@ -65,7 +65,7 @@ class CCombatSequenceBase { public:
 
 class CCharString { public:
     void* PStringData;
-    CCharString(const char* text, int length = -1);   // 0x0099EBF0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0
 };
 

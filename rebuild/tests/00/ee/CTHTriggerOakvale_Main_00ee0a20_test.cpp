@@ -7,7 +7,7 @@ class CScriptThing { public:                              // vtable 0x01238C8C, 
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
     unsigned char _body[8];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CCharString { public:
     void* PStringData;

@@ -71,7 +71,7 @@ class CScriptThing : public CBaseClass { public:                      // vtable 
     void* PImpData;
     void* PImpInfo;
     CScriptThing() : PImpData(0), PImpInfo(0) {}
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
 };
 namespace std {

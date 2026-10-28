@@ -37,7 +37,7 @@ class CPersistContext { public:
     unsigned char           _pad1c[0x08];
     CMemoryDataInputStream* m_pLoadStream;              // +0x24
     CDataOutputStream*      m_pSaveStream;              // +0x28
-    void CheckCRC(const char* name);                    // 0x00404500
+    protected: void CheckCRC(const char* name); public:                    // 0x00404500
     void TransferVectorOfSubComponents(CBlurredAttitudesDefVector& value);     // 0x0067D6B0
     void TransferMatches(CReactionMatchList& value);                           // 0x0067BFB0
     void TransferComponent(CReactionFrequencyTraitsArray& value);              // 0x0067B820

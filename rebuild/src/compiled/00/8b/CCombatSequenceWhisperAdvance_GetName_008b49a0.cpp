@@ -3,12 +3,12 @@
 // Body:  CCharString::CCharString(retbuf, "literal", -1);  return retbuf;
 // The original 'this' is never read.
 
-// CCharString::CCharString(const char*, int) @ 0x0099ebf0 is a real __fastcall ctor
+// CCharString::CCharString(const char*, long) @ 0x0099ebf0 is a real __fastcall ctor
 // (ecx = this, args const char* and int on the stack, no edx).
 #include "engine/CCombatSequenceWhisperAdvance.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 // literal pointer baked in retail as 0x1278d00

@@ -3,7 +3,7 @@
 
 class CCharString {
 public:
-    CCharString(const char* s, int count) {
+    CCharString(const char* s, long count) {
         int n = (count < 0) ? (int)strlen(s) : count;
         m_data = new char[n + 1];
         memcpy(m_data, s, n);

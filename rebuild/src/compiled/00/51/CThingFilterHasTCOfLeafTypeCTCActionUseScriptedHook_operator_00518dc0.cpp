@@ -3,7 +3,7 @@
 // Leaf: ??R?$CThingFilter_HasTCOfLeafType@VCTCActionUseScriptedHook@@@@QBE_NAAVCThing@@@Z
 //
 // Retail 0x00518DC0, 181 bytes (then int3 padding), `ret 4` (thiscall; the filter `this` is unused).
-// Callees: 0x0040F020 CVectorMap::LowerBound (inline GetTC), 0x0099EBF0 CCharString(const char*, int = -1) on the literal
+// Callees: 0x0040F020 CVectorMap::LowerBound (inline GetTC), 0x0099EBF0 CCharString(const char*, long = -1) on the literal
 //   0x01239FE4 "CTCActionUseScriptedHook", the component's virtual slot 22 (+0x58) GetClassTypeName() (CCharString by
 //   hidden pointer into the frame word), 0x00411570 the string compare, 0x0099EAE0 ~CCharString (both temporaries).
 // Callers: 0x005198B0 and 0x00618E60 (CThingSearchTools::GetAllThings instances; the landed 0x00618E60 declares it).
@@ -28,7 +28,7 @@ class CCharStringData { public:
 class CCharString {
 public:
     CCharStringData* PStringData;
-    CCharString(const char* text, int length = -1);   // 0x0099EBF0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
     bool SameText(const CCharStringData& other) const
     {

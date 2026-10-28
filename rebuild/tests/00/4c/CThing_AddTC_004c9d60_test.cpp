@@ -45,7 +45,7 @@ CTCBase* __fastcall CreateTC(const CCharString& name, CThing* thing);   // 0x006
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
 };
 struct STCRemoval {
     CBaseIntelligentPointer PThing;                     // +0x00

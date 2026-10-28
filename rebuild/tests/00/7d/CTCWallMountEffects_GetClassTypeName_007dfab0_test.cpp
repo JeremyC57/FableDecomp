@@ -2,7 +2,7 @@
 
 class CCharString { public:
     char* p;
-    CCharString(const char* s, int len);
+    CCharString(const char* s, long len);
 };
 
 class CTCWallMountEffects { public:
@@ -11,7 +11,7 @@ class CTCWallMountEffects { public:
 
 static const char* g_lastStr = 0;
 static int g_lastLen = 0;
-CCharString::CCharString(const char* s, int len) {
+CCharString::CCharString(const char* s, long len) {
     g_lastStr = s;
     g_lastLen = len;
     p = (char*)s;

@@ -210,7 +210,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CThingCreatureBase* m_pItem;
     CBaseIntelligentPointer();                         // 0x00A01B10
-    ~CBaseIntelligentPointer();                        // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
     CThingCreatureBase* GetPItem() const;              // 0x00A01B50
     void SetPItem(CThing* item);                       // 0x00A01B90
 };
