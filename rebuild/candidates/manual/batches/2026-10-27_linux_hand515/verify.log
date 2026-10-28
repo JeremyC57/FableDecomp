@@ -1,0 +1,197 @@
+addr       parity           behav  name
+00722270   WARN RELOC_NAME: ??1CEngineTextureMorphSet@@QAE@XZ -> 005bc0d3 labelled '_global::StdList_Dtor_005bc0d3'
+00722270   RELOCATION_MATCH PASS   `scalar deleting destructor'
+007332f0   WARN SHARED_HEADER_AVAILABLE CCombatAbilityData
+007332f0   WARN SHARED_HEADER_AVAILABLE CCombatAbility
+007332f0   RELOCATION_MATCH PASS   IsValid
+00778ab0   RELOCATION_MATCH PASS   IsRelatedTo
+007b52b0   RELOCATION_MATCH PASS   copy
+007ca800   RELOCATION_MATCH PASS   HasPickedUpItem
+007fec30   RELOCATION_MATCH PASS   IsActionPointIndexBlocked
+0080c140   RELOCATION_MATCH PASS   IsTravellingAway
+00811190   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00811190   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00811190   RELOCATION_MATCH PASS   CEventKilledCreature
+00811380   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+00811380   RELOCATION_MATCH PASS   HasEventOfTypeCreatedAfterFrame
+0081f590   MATCH            PASS   GetSoundAt
+0084d0a0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0084d0a0   MATCH            PASS   Die
+00866fb0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00866fb0   RELOCATION_MATCH PASS   FinishAction
+0087b690   RELOCATION_MATCH PASS   UpdateDesiredPos
+00887380   RELOCATION_MATCH PASS   RestoreDefaultTheme
+0088b980   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0088b980   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0088b980   RELOCATION_MATCH PASS   IsStateGroupPresentAndEnabled
+0088b9e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0088b9e0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0088b9e0   RELOCATION_MATCH PASS   SetStateGroupEnabled
+0088e260   WARN SHARED_HEADER_AVAILABLE CWorld
+0088e260   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0088e260   WARN RELOC_NAME: ?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z -> 0051ed80 labelled 'CWorld::GetThingWithUID'
+0088e260   RELOCATION_MATCH PASS   IsThingWithThisUIDAlive
+0088e540   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0088e540   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0088e540   MATCH            PASS   EntityTeleportToThing
+008900d0   WARN SHARED_HEADER_AVAILABLE CEnvironment
+008900d0   WARN SHARED_HEADER_AVAILABLE CWorld
+008900d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008900d0   RELOCATION_MATCH PASS   RadialBlurFadeTo
+00890110   WARN SHARED_HEADER_AVAILABLE CEnvironment
+00890110   WARN SHARED_HEADER_AVAILABLE CWorld
+00890110   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00890110   RELOCATION_MATCH PASS   RadialBlurFadeTo
+00890820   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00890820   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+00890820   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00890820   RELOCATION_MATCH PASS   FadeScreenOut
+00890990   WARN SHARED_HEADER_AVAILABLE CWorld
+00890990   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00890990   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00890990   RELOCATION_MATCH PASS   EntityGetOpinionAttitudeToPlayer
+00894b90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00894b90   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00894b90   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00894b90   RELOCATION_MATCH PASS   SetCreatureBrain
+00896060   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00896060   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00896060   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00896060   RELOCATION_MATCH PASS   SetVillageLimbo
+008960c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008960c0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008960c0   RELOCATION_MATCH PASS   IsEntityUnderScriptedControl
+008961b0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008961b0   WARN SHARED_HEADER_AVAILABLE CTCVillage
+008961b0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008961b0   RELOCATION_MATCH PASS   ClearHeroEnemyOfGuards
+00896270   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00896270   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00896270   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00896270   RELOCATION_MATCH PASS   EnableGuards
+008962d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008962d0   WARN SHARED_HEADER_AVAILABLE CTCVillage
+008962d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008962d0   RELOCATION_MATCH PASS   EnableVillagerDefTypes
+00896330   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00896330   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00896330   RELOCATION_MATCH PASS   IsChestOpen
+00897030   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897030   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00897030   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00897030   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00897030   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00897030   RELOCATION_MATCH PASS   IsToFailQuestOnDeath
+00897150   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00897150   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00897150   RELOCATION_MATCH PASS   UnSetThingAndCarriedItemsNotAffectedByScreenFilter
+00897880   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897880   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00897880   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00897880   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897880   RELOCATION_MATCH PASS   GetHeroTitle
+008978e0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+008978e0   WARN SHARED_HEADER_AVAILABLE CTCWife
+008978e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008978e0   RELOCATION_MATCH PASS   EntitySetAsAbleToRegionFollowWhenMarried
+00897c90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897c90   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00897c90   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00897c90   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00897c90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897c90   RELOCATION_MATCH PASS   GetNumberOfTimesHeroHasHadSex
+00898e60   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898e60   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00898e60   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00898e60   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00898e60   RELOCATION_MATCH PASS   IsHeroHandLampLit
+00898f40   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898f40   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00898f40   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00898f40   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00898f40   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898f40   RELOCATION_MATCH PASS   GiveHeroGold
+00898fa0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898fa0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00898fa0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00898fa0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00898fa0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898fa0   RELOCATION_MATCH PASS   GetHeroGold
+
+WINS: 37
+  00722270 RELOCATION_MATCH CTCAppearanceMorphBase::CMeshMorphSet::??_GCMeshMorphSet@CTCAppearanceMorphBase@@QAEPAXI@Z
+  007332f0 RELOCATION_MATCH CCombatAbility::?IsValid@CCombatAbility@@QBE_NABVCCombatAbilityData@@PAK@Z
+  00778ab0 RELOCATION_MATCH CTCFamilyMember::?IsRelatedTo@CTCFamilyMember@@QBE_NABVCThing@@@Z
+  007b52b0 RELOCATION_MATCH std::??$copy@U?$_Deque_iterator@VCCrimeWaitingForBribe@@
+  007ca800 RELOCATION_MATCH CTCHeroReceiveItems::?HasPickedUpItem@CTCHeroReceiveItems@@QBE_NJ@Z
+  007fec30 RELOCATION_MATCH CTCUserActionPointBase::?IsActionPointIndexBlocked@CTCUserActionPointBase@@IAE_NJ@Z
+  0080c140 RELOCATION_MATCH CThingFilter_IsEvadeExplosion::?IsTravellingAway@CThingFilter_IsEvadeExplosion@?A0x
+  00811190 RELOCATION_MATCH NEntityEvents::CEventKilledCreature::??0CEventKilledCreature@NEntityEvents@@QAE@ABVCThing@@0@Z
+  00811380 RELOCATION_MATCH CTCEntityEvents::?HasEventOfTypeCreatedAfterFrame@CTCEntityEvents@@QBE_NW4EEventType@NEntityEvents@@J@Z
+  0081f590 MATCH CMap::?GetSoundAt@CMap@@QBEJABVC2DCoordI@@@Z
+  0084d0a0 MATCH NCameraModes::CBase::?Die@CBase@NCameraModes@@QAEXXZ
+  00866fb0 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath::?FinishAction@CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath@@UAEXXZ
+  0087b690 RELOCATION_MATCH NCameraModes::CFixedDolly::?UpdateDesiredPos@CFixedDolly@NCameraModes@@UAEXAAVC3DVector@@@Z
+  00887380 RELOCATION_MATCH NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::?RestoreDefaultTheme@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXXZ
+  0088b980 RELOCATION_MATCH CAIBrain::?IsStateGroupPresentAndEnabled@CAIBrain@@QBE_NABVCCharString@@@Z
+  0088b9e0 RELOCATION_MATCH CAIBrain::?SetStateGroupEnabled@CAIBrain@@QAEXABVCCharString@@_N@Z
+  0088e260 RELOCATION_MATCH CGameScriptInterface::?IsThingWithThisUIDAlive@CGameScriptInterface@@UBE_N_K@Z
+  0088e540 MATCH CGameScriptInterface::?EntityTeleportToThing@CGameScriptInterface@@UBEXABVCScriptThing@@0_N@Z
+  008900d0 RELOCATION_MATCH CGameScriptInterface::?RadialBlurFadeTo@CGameScriptInterface@@UBEPAXMVC3DVector@@M0MMM@Z
+  00890110 RELOCATION_MATCH CGameScriptInterface::?RadialBlurFadeTo@CGameScriptInterface@@UBEPAXMMMMMMM@Z
+  00890820 RELOCATION_MATCH CGameScriptInterface::?FadeScreenOut@CGameScriptInterface@@UAE_NMMVCRGBColour@@@Z
+  00890990 RELOCATION_MATCH CGameScriptInterface::?EntityGetOpinionAttitudeToPlayer@CGameScriptInterface@@UBE?AW4EOpinionAttitudeType@@ABVCScriptThing@@@Z
+  00894b90 RELOCATION_MATCH CGameScriptInterface::?SetCreatureBrain@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+  00896060 RELOCATION_MATCH CGameScriptInterface::?SetVillageLimbo@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008960c0 RELOCATION_MATCH CGameScriptInterface::?IsEntityUnderScriptedControl@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  008961b0 RELOCATION_MATCH CGameScriptInterface::?ClearHeroEnemyOfGuards@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  00896270 RELOCATION_MATCH CGameScriptInterface::?EnableGuards@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008962d0 RELOCATION_MATCH CGameScriptInterface::?EnableVillagerDefTypes@CGameScriptInterface@@UBEXABVCScriptThing@@_NABVCCharString@@@Z
+  00896330 RELOCATION_MATCH CGameScriptInterface::?IsChestOpen@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  00897030 RELOCATION_MATCH CGameScriptInterface::?IsToFailQuestOnDeath@CGameScriptInterface@@UBE_NXZ
+  00897150 RELOCATION_MATCH CGameScriptInterface::?UnSetThingAndCarriedItemsNotAffectedByScreenFilter@CGameScriptInterface@@UBEXAAVCScriptThing@@@Z
+  00897880 RELOCATION_MATCH CGameScriptInterface::?GetHeroTitle@CGameScriptInterface@@UBE?AW4EHeroTitle@@XZ
+  008978e0 RELOCATION_MATCH CGameScriptInterface::?EntitySetAsAbleToRegionFollowWhenMarried@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  00897c90 RELOCATION_MATCH CGameScriptInterface::?GetNumberOfTimesHeroHasHadSex@CGameScriptInterface@@UBEJXZ
+  00898e60 RELOCATION_MATCH CGameScriptInterface::?IsHeroHandLampLit@CGameScriptInterface@@UBE_NXZ
+  00898f40 RELOCATION_MATCH CGameScriptInterface::?GiveHeroGold@CGameScriptInterface@@UBEXJ@Z
+  00898fa0 RELOCATION_MATCH CGameScriptInterface::?GetHeroGold@CGameScriptInterface@@UBEJXZ
+
+LANDED 37 wins into src/compiled + tests + catalog + oracle
+  CTCAppearanceMorphBaseCMeshMorphSet_scalardeletingdestructor_00722270
+  CCombatAbility_IsValid_007332f0
+  CTCFamilyMember_IsRelatedTo_00778ab0
+  std_copy_007b52b0
+  CTCHeroReceiveItems_HasPickedUpItem_007ca800
+  CTCUserActionPointBase_IsActionPointIndexBlocked_007fec30
+  CThingFilterIsEvadeExplosion_IsTravellingAway_0080c140
+  NEntityEventsCEventKilledCreature_CEventKilledCreature_00811190
+  CTCEntityEvents_HasEventOfTypeCreatedAfterFrame_00811380
+  CMap_GetSoundAt_0081f590
+  NCameraModesCBase_Die_0084d0a0
+  CCombatActionGenericStrikeResponseKnockdownRecoverFromDeath_FinishAction_00866fb0
+  NCameraModesCFixedDolly_UpdateDesiredPos_0087b690
+  NEnvironmentInternalCEnvironmentThemePriorityStackEntry_RestoreDefaultTheme_00887380
+  CAIBrain_IsStateGroupPresentAndEnabled_0088b980
+  CAIBrain_SetStateGroupEnabled_0088b9e0
+  CGameScriptInterface_IsThingWithThisUIDAlive_0088e260
+  CGameScriptInterface_EntityTeleportToThing_0088e540
+  CGameScriptInterface_RadialBlurFadeTo_008900d0
+  CGameScriptInterface_RadialBlurFadeTo_00890110
+  CGameScriptInterface_FadeScreenOut_00890820
+  CGameScriptInterface_EntityGetOpinionAttitudeToPlayer_00890990
+  CGameScriptInterface_SetCreatureBrain_00894b90
+  CGameScriptInterface_SetVillageLimbo_00896060
+  CGameScriptInterface_IsEntityUnderScriptedControl_008960c0
+  CGameScriptInterface_ClearHeroEnemyOfGuards_008961b0
+  CGameScriptInterface_EnableGuards_00896270
+  CGameScriptInterface_EnableVillagerDefTypes_008962d0
+  CGameScriptInterface_IsChestOpen_00896330
+  CGameScriptInterface_IsToFailQuestOnDeath_00897030
+  CGameScriptInterface_UnSetThingAndCarriedItemsNotAffectedByScreenFilt_00897150
+  CGameScriptInterface_GetHeroTitle_00897880
+  CGameScriptInterface_EntitySetAsAbleToRegionFollowWhenMarried_008978e0
+  CGameScriptInterface_GetNumberOfTimesHeroHasHadSex_00897c90
+  CGameScriptInterface_IsHeroHandLampLit_00898e60
+  CGameScriptInterface_GiveHeroGold_00898f40
+  CGameScriptInterface_GetHeroGold_00898fa0

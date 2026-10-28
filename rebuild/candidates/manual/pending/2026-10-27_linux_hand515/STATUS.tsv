@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+007a9b10	DIFFER	91	none	CTCAssassinRush::ResetCameraOnStick (probable); 91v91: ctor argument register order (retail loads ParentThing first, add esi,74h); 1 grade + 2 probes + 1 probe
+007f3d60	DIFFER	90	none	(anon)::CThingFilter_IsElectrocutable::operator()(const CThingObject&) const; 90v90: second counted copy refcount in edx (retail ecx); 1 grade + 2 probes
+00891070	DIFFER	83	none	CGameScriptInterface::CameraUseCameraPoint (5-arg overload, slot 413); 83v83: PhysicsTC tested in ecx before push esi; grades used up

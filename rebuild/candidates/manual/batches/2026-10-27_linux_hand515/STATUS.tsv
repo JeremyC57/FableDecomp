@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00722270	RELOCATION_MATCH	63	PASS	CTCAppearanceMorphBase::CMeshMorphSet scalar deleting dtor (probable; catalog CActiveFile::~CActiveFile is propagated); same-TU __destroy_aux body; 2 grades
+007332f0	RELOCATION_MATCH	71	PASS	CCombatAbility::IsValid(const CCombatAbilityData&, unsigned long*) const; 1 grade
+00778ab0	RELOCATION_MATCH	45	PASS	CTCFamilyMember::IsRelatedTo(const CThing&) const (catalog CHitParameters::IsDivineWrathStrike is propagated); STLport find model of 0x006BBFA0; 3 grades + 1 SRC_FAIL
+007a9b10	DIFFER	91	none	CTCAssassinRush::ResetCameraOnStick (probable); 91v91: ctor argument register order (retail loads ParentThing first, add esi,74h); 1 grade + 2 probes + 1 probe
+007b52b0	RELOCATION_MATCH	89	PASS	std::copy<deque<CCrimeWaitingForBribe>::iterator, back_insert_iterator<vector<...>>> (caller landed CTCGuard::OnSerialise); __false_type homed in the dead inserter slot; 1 probe + 1 grade
+007ca800	RELOCATION_MATCH	33	PASS	CTCHeroReceiveItems::HasPickedUpItem(long) const (catalog IsDivineWrathStrike is propagated); if/return form; 3 grades + 1 SRC_FAIL + 1 probe
+007f3d60	DIFFER	90	none	(anon)::CThingFilter_IsElectrocutable::operator()(const CThingObject&) const; 90v90: second counted copy refcount in edx (retail ecx); 1 grade + 2 probes
+007fec30	RELOCATION_MATCH	33	PASS	CTCUserActionPointBase::IsActionPointIndexBlocked(long), protected (catalog IsDivineWrathStrike is propagated); if/return form; 3 grades + 1 SRC_FAIL + 1 probe
+0080c140	RELOCATION_MATCH	58	PASS	(anon)::CThingFilter_IsEvadeExplosion::IsTravellingAway (catalog CCompareTargetedPositions is propagated); bare fcos under pragma intrinsic; 1 grade + 3 probes
+00811190	RELOCATION_MATCH	87	PASS	NEntityEvents::CEventKilledCreature::CEventKilledCreature(const CThing&, const CThing&); same-TU GetSubDef<CCreatureDef> stand-in; 1 grade
+00811380	RELOCATION_MATCH	53	PASS	CTCEntityEvents::HasEventOfTypeCreatedAfterFrame (catalog GetPActiveStrikeEvent is propagated); the old dead lea edx is the STLport __find_if tag; 2 probes + 2 grades
+0081f590	MATCH	65	PASS	CMap::GetSoundAt(const C2DCoordI&) const; 1 grade
+0084d0a0	MATCH	50	PASS	NCameraModes::CBase::Die(); slot 22 pure virtual (descriptive OnDie); 1 grade
+00866fb0	RELOCATION_MATCH	83	PASS	CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath::FinishAction; GetTC out-pointer form (0x29 CTCHero); 1 grade
+0087b690	RELOCATION_MATCH	87	PASS	NCameraModes::CFixedDolly::UpdateDesiredPos(C3DVector&); pos + DollyVector (VC commutes the fadd); 2 grades
+00887380	RELOCATION_MATCH	49	PASS	NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::RestoreDefaultTheme (landed caller ProcessTransitions 0x00887A30); Themes.resize(0); 1 grade
+0088b980	RELOCATION_MATCH	91	PASS	CAIBrain::IsStateGroupPresentAndEnabled(const CCharString&) const; header debt engine/CAIBrain.h; 1 grade
+0088b9e0	RELOCATION_MATCH	93	PASS	CAIBrain::SetStateGroupEnabled(const CCharString&, bool); 1 grade
+0088e260	RELOCATION_MATCH	52	PASS	CGameScriptInterface::IsThingWithThisUIDAlive(unsigned __int64) const; callee CThingManager::GetPThingWithUID 0x0051ED80; 2 grades + 1 probe
+0088e540	MATCH	86	PASS	CGameScriptInterface::EntityTeleportToThing; 1 grade
+008900d0	RELOCATION_MATCH	57	PASS	CGameScriptInterface::RadialBlurFadeTo (C3DVector overload) -> 0x006B8550; 1 grade
+00890110	RELOCATION_MATCH	57	PASS	CGameScriptInterface::RadialBlurFadeTo (float overload) -> 0x006B8730; 1 grade
+00890820	RELOCATION_MATCH	80	PASS	CGameScriptInterface::FadeScreenOut(float, float, CRGBColour); StartFadeScreen 0x006E7370 tail-merged; 3 grades
+00890990	RELOCATION_MATCH	38	PASS	CGameScriptInterface::EntityGetOpinionAttitudeToPlayer -> COpinionReactionManager::GetThingAttitudeToPlayer 0x00701840; 1 grade
+00891070	DIFFER	83	none	CGameScriptInterface::CameraUseCameraPoint (5-arg overload, slot 413); 83v83: PhysicsTC tested in ecx before push esi; grades used up
+00894b90	RELOCATION_MATCH	95	PASS	CGameScriptInterface::SetCreatureBrain; GetDef<CBrainDef> 0x006D3E80 same-TU stand-in, SetNewBrain 0x00833010; 2 grades
+00896060	RELOCATION_MATCH	85	PASS	CGameScriptInterface::SetVillageLimbo (CTCVillage 0x22); 1 grade
+008960c0	RELOCATION_MATCH	82	PASS	CGameScriptInterface::IsEntityUnderScriptedControl (CTCScriptedControl 0x1f); 1 grade
+008961b0	RELOCATION_MATCH	83	PASS	CGameScriptInterface::ClearHeroEnemyOfGuards (CTCVillage 0x22); 1 grade
+00896270	RELOCATION_MATCH	85	PASS	CGameScriptInterface::EnableGuards (CTCVillage 0x22); 1 grade
+008962d0	RELOCATION_MATCH	90	PASS	CGameScriptInterface::EnableVillagerDefTypes (CTCVillage 0x22); 1 grade
+00896330	RELOCATION_MATCH	88	PASS	CGameScriptInterface::IsChestOpen (CTCChest 0x3c); 1 grade
+00897030	RELOCATION_MATCH	89	PASS	CGameScriptInterface::IsToFailQuestOnDeath (CTCHeroStats 4, PeekPControlledCreature 0x00487DD0); 1 grade
+00897150	RELOCATION_MATCH	64	PASS	CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter (CTCCarrying 0x46; setter descriptive); 1 grade
+00897880	RELOCATION_MATCH	88	PASS	CGameScriptInterface::GetHeroTitle (CTCHero 0x29); 1 grade
+008978e0	RELOCATION_MATCH	86	PASS	CGameScriptInterface::EntitySetAsAbleToRegionFollowWhenMarried (CTCWife 0xd7); 1 grade
+00897c90	RELOCATION_MATCH	89	PASS	CGameScriptInterface::GetNumberOfTimesHeroHasHadSex (CTCHeroStats 4); 1 grade
+00898e60	RELOCATION_MATCH	95	PASS	CGameScriptInterface::IsHeroHandLampLit (CTCLight 0x27; PeekTC result ignored as retail); 1 grade
+00898f40	RELOCATION_MATCH	95	PASS	CGameScriptInterface::GiveHeroGold (CTCHeroStats::AddMoney(amount, true)); 1 grade
+00898fa0	RELOCATION_MATCH	86	PASS	CGameScriptInterface::GetHeroGold (CTCHeroStats::GetMoney); 1 grade

@@ -34328,3 +34328,17 @@ __setdefaultprecision	0040135c	00401067
 ?SetPScriptOverrideRangedTarget@CTCTargetingBase@@QAEXPAVCThing@@@Z	008abb50	008a0540
 ?FadeIn@CTCFadeOutAndIn@@QAEXM_N@Z	006c3bd0	008a07c0
 ??$__copy@PAVCCombatAction@@PAV1@H@std@@YIPAVCCombatAction@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	008b25c0	008b0ab0
+??$__find@PBQBVCThing@@PBV1@@std@@YIPBQBVCThing@@PBQBV1@0ABQBV1@ABUrandom_access_iterator_tag@0@@Z	007789d0	00778ab0
+??$__copy_aux@U?$_Deque_iterator@VCCrimeWaitingForBribe@@U?$_Nonconst_traits@VCCrimeWaitingForBribe@@@std@@@std@@V?$back_insert_iterator@V?$vector@VCCrimeWaitingForBribe@@V?$allocator@VCCrimeWaitingForBribe@@@std@@@std@@@2@@std@@YI?AV?$back_insert_iterator@V?$vector@VCCrimeWaitingForBribe@@V?$allocator@VCCrimeWaitingForBribe@@@std@@@std@@@0@U?$_Deque_iterator@VCCrimeWaitingForBribe@@U?$_Nonconst_traits@VCCrimeWaitingForBribe@@@std@@@0@0V10@ABU__false_type@0@@Z	007b51b0	007b52b0
+??_7CEventKilledCreature@NEntityEvents@@6B@	012723a8	00811190
+??$__find_if@V?$CListIterator@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@@@VCIsEventOfTypeAfterFrame@NEntityEvents@@@std@@YI?AV?$CListIterator@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@@@V1@0VCIsEventOfTypeAfterFrame@NEntityEvents@@ABUinput_iterator_tag@0@@Z	00811e20	00811380
+?FinishAction@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ	00866e80	00866fb0
+?resize@?$vector@UCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@V?$allocator@UCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@std@@@std@@QAEXIABUCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@Z	00889440	00887380
+?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@ABVC3DVector@@M1MMM@Z	006b8550	008900d0
+?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@MMMMMM@Z	006b8730	00890110
+?StartFadeScreen@CGameScriptInterface@@IAEXMMVCRGBColour@@@Z	006e7370	00890820
+?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z	00701840	00890990
+??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCBrainDef@@@@@Z	006d3e80	00894b90
+?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z	00833010	00894b90
+?EnableGuards@CTCVillage@@QAEX_N@Z	0065c45a	00896270
+?EnableVillagerDefTypes@CTCVillage@@QAEX_NABVCCharString@@@Z	0065b142	008962d0

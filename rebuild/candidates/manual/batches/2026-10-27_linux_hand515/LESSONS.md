@@ -1,0 +1,25 @@
+# Chunk 515 lessons (GOTCHAS one-liners)
+
+- A "dead" `lea edx,[esp+N]` before a /Gr STLport call that returns through the hidden pointer in ecx is the iterator-tag reference argument (fastcall puts the first register-sized argument, the `const tag&`, in edx); write the STLport layer (`find_if` -> `__find_if(first, last, pred, iterator_category(first))`, `copy` -> `__copy_aux(..., __false_type())`) with a same-TU noinline callee body and the tag is homed in the dead slot (0x00811380, 0x007B52B0; the old parks called it a lane gap).
+- An out-of-line STLport `copy` / `__copy_aux` pair over 16-byte deque iterators (`ret 24h`, `sub esp,10h ; mov eax,esp` per iterator, `mov ecx,esi ; mov eax,esi` around the call) is the hidden-pointer return of a back_insert_iterator; look up the landed caller's STL model before inventing a class (0x007B52B0).
+- A list find_if whose result is compared with end(): `iterator it = find_if(...); return it != end();` re-reads end() after the call and gives `xor eax,eax ; cmp ; setne al`; the inline `!=` on the call gives `xor ecx,ecx ; setne cl ; mov al,cl`; a list iterator with a user copy constructor turns the pushes into `push ecx ; mov eax,esp ; mov [eax],..` (0x00811380).
+- VC7.1 commutes a float add: `pos + DollyVector` (pos from a call in eax, the member off esi) emits `fld [esi+X] ; fadd [eax]`, and the written order `DollyVector + pos` emits the opposite (0x0087B690).
+- A base class with an inline constructor and a virtual destructor under a derived constructor: VC7.1 drops the base vptr store, so `CEventBase() : WorldFrame(0) {}` gives retail's `mov [esi+4],0 ; mov [esi],vftable` order without any novtable trick (0x00811190).
+- STLport `vector::resize(n)` inline as `resize(n, _Tp())` gives the zeroed 12-byte frame temporary (all three words, padding included) passed to the out-of-line resize(n, const T&) (0x00887380).
+- "Test a flags dword at +0x24" (`mov ecx,[eax+24h] ; test ch,2`) is UsingComponents word 1 bit 9, i.e. HasTC(0x29) (CTCHero): use the GetTC out-pointer model, not a "flags" member (0x00866FB0; the old park loaded the hero straight into ecx).
+- Open: the second counted copy of `CThing::GetPBaseDef()` inside an inline `PeekDefinition()` keeps its reference count in edx where retail uses ecx (`mov ecx,[esi+4] ; inc ecx ; mov eax,ecx ; dec eax`); inline accessor, early-return and named-local forms are inert (0x007F3D60).
+- Open: `new CScriptModuleCameraOnAStick(ParentThing, LocalRelativeVectorForCamera, RelativeVectorForCamera)` -- retail loads ParentThing first (`mov edx,[esi+4]`) and builds the last address with `add esi,74h`; ours loads it between the two leas; pointer arguments and a template constructor are inert (0x007A9B10).
+- Open: the 5-argument CameraUseCameraPoint tests PhysicsTC in ecx before `push esi ; mov esi,ecx`; ours loads it into esi after the push (0x00891070).
+- Tests: VC7.1 has no `ULL` suffix and g++ has no `unsigned __int64`; a `u64` typedef split on `_MSC_VER` and `((u64)1 << 32) | 1` constants keep a 64-bit test standalone in both lanes.
+
+## Why earlier attempts stalled
+- The old parks (agent19 / 25 / 31 / 39, 2026-10-14) were graded under QFE 4035 and invented their classes (CScriptedShieldCameraAction, CFractalParams, CEventList, CAnimatedAction, "Flags at +0x24"), so they could not borrow the landed models of the real owners (CTCAssassinRush, CTCGuard's STL TU, CTCEntityEvents, CThingObjectDef, the HasTC/GetTC bitset). Three of them were STLport tag or return-slot shapes misread as "dead" instructions or lane gaps.
+- The catalog labels for 9 of the 40 rows were propagated across byte-similar bodies (IsDivineWrathStrike x3, GetDamageMultiplier, GetPActiveStrikeEvent, GenerateNewFractal, ReleasePhysicalShieldSpell::FinishAction, CActiveFile, CCompareTargetedPositions), which pointed every earlier attempt at the wrong class.
+
+## Review at landing
+- vland: no RELOC_IDENTITY / RELOC_CONFLICT / RELOC_DUPLICATE. Label-only RELOC_NAME warnings: 0x005BC0D3 (??1CEngineTextureMorphSet), 0x0051ED80 (CThingManager::GetPThingWithUID), 0x00487DC0 / 0x00487DD0 (Get/PeekPControlledCreature).
+- 0x00811E20: this row binds it as STLport `std::__find_if<..., CIsEventOfTypeAfterFrame>(first, last, pred, const input_iterator_tag&)`; the landed 0x00811E20 body is spelled `std::find_if` (its bytes do not read edx, so both spellings build the same body). One name should win.
+- 0x00889440: this row binds it as `std::vector<CEnvironmentThemePriorityStackEntry::CThemeWeight>::resize`; the landed body and the landed 0x00887330 are still spelled vector<CBrainBehaviour> / CBrainBehaviourSet_00887330::Init.
+- 0x007B5030 / 0x007B51B0: first bound here (std::__copy / std::__copy_aux of the CTCGuard STL TU); the landed 0x007B3760 binds only 0x007B52B0 (std::copy) of this chain.
+- 0x007AB450: kept as the landed `CScriptModuleCameraOnAStick(void*, const C3DVector&, const C3DVector&)` spelling (differ/007a9b10 only).
+- 0x00778AB0: the landed caller 0x006A8880 binds it as CTCFactionMembership::IsMember; this row lands it as CTCFamilyMember::IsRelatedTo.
