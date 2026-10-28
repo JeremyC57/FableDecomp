@@ -1,0 +1,4 @@
+address	name	evidence
+00401067	WinMainCRTStartup	proven per batch 2026-10-27_linux_hand509 NOTES.md (chunk 509)
+004fdcb0	CWorldMap::IsSectionToHaveNavigationMap	proven per batch 2026-10-27_linux_hand509 NOTES.md (chunk 509)
+00635d70	CPlayer::UninitModeUseProjectileWeapon	proven per batch 2026-10-27_linux_hand509 NOTES.md (chunk 509)

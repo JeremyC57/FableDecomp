@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00401067	RELOCATION_MATCH	511v511	PASS	WinMainCRTStartup (crtexe.c, _WINMAIN_), /O1
+00431f90	RELOCATION_MATCH	397v397	PASS	vector<pair<ulong,CDefClassBase::CSubDefInfo>>::operator=
+0047005b	RELOCATION_MATCH	337v337	PASS	vector<CAppearanceModifierGraphics::CEntry>::_M_fill_insert
+00470778	RELOCATION_MATCH	375v375	PASS	vector<pair<ulong,CSoundPair>>::_M_fill_insert
+00470918	RELOCATION_MATCH	272v272	PASS	vector<pair<ulong,CSoundPair>>::_M_insert_overflow
+00476ff7	RELOCATION_MATCH	370v370	PASS	vector<CEnvironmentThemeDef>::_M_fill_insert (biased frame, optimize s)
+00477e8e	RELOCATION_MATCH	384v384	PASS	vector<CEngineLocalDetailObjectDef>::_M_fill_insert
+004b8ff0	RELOCATION_MATCH	427v427	PASS	std::__find<const CCharString*,CCharString>
+004bc1a0	DIFFER	397v406	-	NGraphicAppearance::DrawRHSet; retail gives 3 CEnginePrimitiveLine temps own 0x40 slots (sub esp,0D0h), ours shares one (sub esp,58h)
+004d2760	RELOCATION_MATCH	282v282	PASS	vector<CSubtitledMessage>::_M_insert_overflow
+004fdcb0	RELOCATION_MATCH	293v293	PASS	CWorldMap::IsSectionToHaveNavigationMap
+0051d630	RELOCATION_MATCH	356v356	PASS	vector<CNavigationAreaUpdate::CNavigationLayerUpdate>::_M_fill_insert (IAE binding)
+005239cd	SKIP	-v366	-	mid-function fragment of 0x005239C0 (uses ebx unset, pops unpushed regs); real extent 0x5239C0-0x523B3B
+0052b3d0	RELOCATION_MATCH	270v270	PASS	vector<CThingTypeInfo>::_M_insert_overflow
+00624a30	RELOCATION_MATCH	345v345	PASS	vector<CTestQuest>::operator=
+00625440	RELOCATION_MATCH	364v364	PASS	std::__introsort_loop<CTestQuest*,CTestQuest,int,CTestQuestNameCompare>
+0062cf90	RELOCATION_MATCH	506v506	PASS	CWorld::EACreatureBlock; RELOC_CONFLICT IS_THING_ALIVE twin 0x43DBD0/0x43DBF0 for review
+006315e0	RELOCATION_MATCH	290v290	PASS	vector<NUISystem::CUIStateDef>::operator=
+00632ff0	RELOCATION_MATCH	509v509	PASS	vector<NUISystem::CUIStateDef>::_M_fill_insert
+00635d70	RELOCATION_MATCH	283v283	PASS	CPlayer::UninitModeUseProjectileWeapon

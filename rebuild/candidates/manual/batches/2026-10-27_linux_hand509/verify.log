@@ -1,0 +1,80 @@
+addr       parity           behav  name
+00401067   WARN RELOC_NAME: __setargv -> 00401377 labelled '_global::ReturnZero_ret0_00401377'
+00401067   WARN RELOC_ALIAS: __initterm -> 00401356 is the import thunk 'MSVCR71.DLL::initterm'
+00401067   RELOCATION_MATCH PASS   WinMainCRTStartup
+00431f90   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00431f90   WARN RELOC_NAME: ?_M_clear@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEXXZ -> 0043211d labelled '_unattributed::ReleaseFirstMember_0043211d'
+00431f90   RELOCATION_MATCH PASS   operator=
+0047005b   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@UCEntry@CAppearanceModifierGraphics@@V?$allocator@UCEntry@CAppearanceModifierGraphics@@@std@@@std@@IAEXPAUCEntry@CAppearanceModifierGraphics@@ABU34@ABU__false_type@2@I_N@Z -> 004701ce labelled 'std::vector_insert_reallocate_24byte'
+0047005b   RELOCATION_MATCH PASS   _M_fill_insert
+00470778   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@KVCSoundPair@@@std@@V?$allocator@U?$pair@KVCSoundPair@@@std@@@2@@std@@IAEXPAU?$pair@KVCSoundPair@@@2@ABU32@ABU__false_type@2@I_N@Z -> 00470918 labelled 'std::vector_insert_reallocate_12byte'
+00470778   RELOCATION_MATCH PASS   _M_fill_insert
+00470918   RELOCATION_MATCH PASS   _M_insert_overflow
+00476ff7   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+00476ff7   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCEnvironmentThemeDef@@IV1@@std@@YIPAVCEnvironmentThemeDef@@PAV1@IABV1@@Z -> 0047725f labelled '_global::UninitFillN_CEnvironmentThemeDef_0047725f'
+00476ff7   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00476ff7   RELOCATION_MATCH PASS   _M_fill_insert
+00477e8e   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+00477e8e   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCEngineLocalDetailObjectDef@@IV1@@std@@YIPAVCEngineLocalDetailObjectDef@@PAV1@IABV1@@Z -> 00478104 labelled '_global::UninitFillN_CEngineLocalDetailObjectDef_00478104'
+00477e8e   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00477e8e   RELOCATION_MATCH PASS   _M_fill_insert
+004b8ff0   RELOCATION_MATCH PASS   __find<const CCharString*, CCharString>
+004d2760   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCSubtitledMessage@@PAV1@@std@@YIPAVCSubtitledMessage@@PAV1@00ABU__false_type@0@@Z -> 004d2100 labelled '_global::UninitCopy_CElement68_004d1fe0_004d2100'
+004d2760   RELOCATION_MATCH PASS   _M_insert_overflow
+004fdcb0   RELOCATION_MATCH PASS   IsSectionToHaveNavigationMap
+0051d630   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCNavigationLayerUpdate@CNavigationAreaUpdate@@PAV12@@std@@YIPAVCNavigationLayerUpdate@CNavigationAreaUpdate@@PAV12@00ABU__false_type@0@@Z -> 0051c590 labelled '_global::ContainerArray_CopyMultiDimensional'
+0051d630   WARN RELOC_NAME: ??$__destroy_aux@PAVCSwitchableBlockage@CNavigationAreaUpdate@@@std@@YIXPAVCSwitchableBlockage@CNavigationAreaUpdate@@0ABU__false_type@0@@Z -> 00519ef0 labelled 'std::__destroy_aux<CNavigationAreaUpdate::CSwitchableBlockage*>'
+0051d630   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCNavigationLayerUpdate@CNavigationAreaUpdate@@V?$allocator@VCNavigationLayerUpdate@CNavigationAreaUpdate@@@std@@@std@@IAEXPAVCNavigationLayerUpdate@CNavigationAreaUpdate@@ABV34@ABU__false_type@2@I_N@Z -> 0051d400 labelled 'STL::Vector24_two12::InsertGrow_0051d400'
+0051d630   RELOCATION_MATCH PASS   _M_fill_insert
+0052b3d0   RELOCATION_MATCH PASS   _M_insert_overflow
+00624a30   RELOCATION_MATCH PASS   operator=
+00625440   WARN RELOC_NAME: ??$__introsort_loop@PAVCTestQuest@@V1@HVCTestQuestNameCompare@@@std@@YIXPAVCTestQuest@@00HVCTestQuestNameCompare@@@Z -> 00625440 labelled 'std::introsort_TestQuest'
+00625440   RELOCATION_MATCH PASS   __introsort_loop
+006315e0   WARN RELOC_NAME: ??$__uninitialized_copy@PBVCUIStateDef@NUISystem@@PAV12@@std@@YIPAVCUIStateDef@NUISystem@@PBV12@0PAV12@ABU__false_type@0@@Z -> 00631560 labelled '_global::UninitCopy_CElement124_006250b0_00631560'
+006315e0   RELOCATION_MATCH PASS   operator=
+00632ff0   WARN SHARED_HEADER_AVAILABLE CResource
+00632ff0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCUIStateDef@NUISystem@@IV12@@std@@YIPAVCUIStateDef@NUISystem@@PAV12@IABV12@@Z -> 00633340 labelled '_global::UninitFillN_CElement124_006250b0_00633340'
+00632ff0   RELOCATION_MATCH PASS   _M_fill_insert
+00635d70   WARN SHARED_HEADER_AVAILABLE CAInputProcess
+00635d70   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+00635d70   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+00635d70   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00635d70   RELOCATION_MATCH PASS   UninitModeUseProjectileWeapon
+
+WINS: 17
+  00401067 RELOCATION_MATCH _global::_WinMainCRTStartup
+  00431f90 RELOCATION_MATCH std::vector::??4?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  0047005b RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@UCEntry@CAppearanceModifierGraphics@@V?$allocator@UCEntry@CAppearanceModifierGraphics@@@std@@@std@@QAEXPAUCEntry@CAppearanceModifierGraphics@@IABU34@@Z
+  00470778 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@U?$pair@KVCSoundPair@@@std@@V?$allocator@U?$pair@KVCSoundPair@@@std@@@2@@std@@QAEXPAU?$pair@KVCSoundPair@@@2@IABU32@@Z
+  00470918 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@U?$pair@KVCSoundPair@@@std@@V?$allocator@U?$pair@KVCSoundPair@@@std@@@2@@std@@IAEXPAU?$pair@KVCSoundPair@@@2@ABU32@ABU__false_type@2@I_N@Z
+  00476ff7 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCEnvironmentThemeDef@@V?$allocator@VCEnvironmentThemeDef@@@std@@@std@@QAEXPAVCEnvironmentThemeDef@@IABV3@@Z
+  00477e8e RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCEngineLocalDetailObjectDef@@V?$allocator@VCEngineLocalDetailObjectDef@@@std@@@std@@QAEXPAVCEngineLocalDetailObjectDef@@IABV3@@Z
+  004b8ff0 RELOCATION_MATCH std::??$__find@PBVCCharString@@V1@@std@@
+  004d2760 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCSubtitledMessage@@V?$allocator@VCSubtitledMessage@@@std@@@std@@IAEXPAVCSubtitledMessage@@ABV3@ABU__false_type@2@I_N@Z
+  004fdcb0 RELOCATION_MATCH CWorldMap::?IsSectionToHaveNavigationMap@CWorldMap@@IBE_NABVCCharString@@J@Z
+  0051d630 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCNavigationLayerUpdate@CNavigationAreaUpdate@@V?$allocator@VCNavigationLayerUpdate@CNavigationAreaUpdate@@@std@@@std@@IAEXPAVCNavigationLayerUpdate@CNavigationAreaUpdate@@IABV34@@Z
+  0052b3d0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCThingTypeInfo@@V?$allocator@VCThingTypeInfo@@@std@@@std@@IAEXPAVCThingTypeInfo@@ABV3@ABU__false_type@2@I_N@Z
+  00624a30 RELOCATION_MATCH std::vector::??4?$vector@VCTestQuest@@V?$allocator@VCTestQuest@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00625440 RELOCATION_MATCH std::??$__introsort_loop@PAVCTestQuest@@V1@HVCTestQuestNameCompare@@@std@@YIXPAVCTestQuest@@00HVCTestQuestNameCompare@@@Z
+  006315e0 RELOCATION_MATCH std::vector::??4?$vector@VCUIStateDef@NUISystem@@V?$allocator@VCUIStateDef@NUISystem@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00632ff0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCUIStateDef@NUISystem@@V?$allocator@VCUIStateDef@NUISystem@@@std@@@std@@QAEXPAVCUIStateDef@NUISystem@@IABV34@@Z
+  00635d70 RELOCATION_MATCH CPlayer::?UninitModeUseProjectileWeapon@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+
+LANDED 17 wins into src/compiled + tests + catalog + oracle
+  global_WinMainCRTStartup_00401067
+  stdvector_operator_00431f90
+  stdvector_Mfillinsert_0047005b
+  stdvector_Mfillinsert_00470778
+  stdvector_Minsertoverflow_00470918
+  stdvector_Mfillinsert_00476ff7
+  stdvector_Mfillinsert_00477e8e
+  std_findconstCCharStringCCharString_004b8ff0
+  stdvector_Minsertoverflow_004d2760
+  CWorldMap_IsSectionToHaveNavigationMap_004fdcb0
+  stdvector_Mfillinsert_0051d630
+  stdvector_Minsertoverflow_0052b3d0
+  stdvector_operator_00624a30
+  std_introsortloop_00625440
+  stdvector_operator_006315e0
+  stdvector_Mfillinsert_00632ff0
+  CPlayer_UninitModeUseProjectileWeapon_00635d70
