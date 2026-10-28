@@ -23,3 +23,12 @@ SetBlocking; 0x00630DD0 std::_Destroy<CUIStateDef*>; 0x00401377 the CRT `_setarg
 ~CParentDefClassBase; 0x0043211D that vector's `_M_clear`. Review: STLport `_M_fill_insert` access is QAE in some landed
 bindings and IAE in others; header debt for the component and camera classes in 0x0062CF90 / 0x00635D70 and CResource
 in 0x00632FF0.
+
+**2026-10-28: identity pass on the held row (still held).** Retail feeds 0x0043DBD0 from the non-const
+GetPControlledCreature 0x00487DC0 at 26 call sites, and 0x0043DBF0 from PeekPControlledCreature 0x00487DD0 (returns
+`const CThingPlayerCreature*`) at 18. A pointer-to-const cannot reach a non-const local without a const_cast, so 0x0043DBF0's
+T is a pointer to const: the landed bindings of 0x0043DBF0 as `IS_THING_ALIVE<CThingPlayerCreature*>` (0x0064A568) and
+`<CThingCreatureBase*>` (0x0065196C) are provably wrong. Which class T names (CThingPlayerCreature or a base, all present
+in FableWin.pdb) and whether 0x0043DBD0's T is const cannot be proven from bytes or call sites, so 0x0062CF90 stays held.
+The probable reading is IS_THING_ALIVE<CThingPlayerCreature*> = 0x0043DBD0 and <const CThingPlayerCreature*> = 0x0043DBF0
+(each copy's feed returns exactly that type).
