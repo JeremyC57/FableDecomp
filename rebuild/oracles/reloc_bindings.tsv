@@ -21051,7 +21051,7 @@ __imp__RegSetValueExA@24	0143fbf4	0099dc50
 ??$__copy_backward@PAU?$pair@KUSValue8@@@std@@PAU12@H@std@@YIPAU?$pair@KUSValue8@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	009b18e0	009b4650
 ?_M_insert_overflow@?$vector@G@std@@QAEXPAGABGABU__true_type@@K_N@Z	005135d0	009b4a20
 ??$_M_allocate_and_copy@PBUSRecord12@@@?$vector@USRecord12@@V?$allocator@USRecord12@@@std@@@std@@QAEPAUSRecord12@@IPBU2@0@Z	009b2780	009b4d80
-??$__copy_backward@PAU?$pair@VCCharString@@J@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@J@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	009b1e20	009b5990
+??$__copy_backward@PAU?$pair@VCCharString@@K@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@K@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	009b1e20	009b5990
 ??$__unguarded_linear_insert@PAVCWideString@@V1@U?$less@VCWideString@@@std@@@std@@YIXPAVCWideString@@V1@U?$less@VCWideString@@@0@@Z	009b1870	009b68d0
 ?CreateRetailBank@CBankFileManager@@QAEXABVCWideString@@@Z	009a7720	009a7d40
 ?_M_find@?$set@VCWideString@@@std@@QBEPAU_Rb_tree_node_base@2@ABVCWideString@@@Z	009aa4c0	009a7d40
@@ -27123,8 +27123,8 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?TransferIn@?$CPersistTraits@U?$pair@VCCharString@@J@@@@QAEXPAVCPersistContext@@PAVCStringParser@@PAU?$pair@VCCharString@@J@@@Z	006d41f0	006d4180
 ?_M_clear@?$vector@U?$pair@VCCharString@@J@std@@U?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXXZ	006d45c0	006d4680
 ?__uninitialized_copy@std@@YIPAU?$pair@VCCharString@@J@1@PAU21@00ABU__false_type@1@@Z	006d3770	006d4680
-?_M_fill_insert@SNamedLongVector@@QAEXPAU?$pair@VCCharString@@J@@KABU2@@Z	006d4850	006d4aa0
-?erase@SNamedLongVector@@QAEPAU?$pair@VCCharString@@J@@PAU2@0@Z	006d44f0	006d4aa0
+?_M_fill_insert@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@J@2@IABU32@@Z	006d4850	006d4aa0
+?erase@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEPAU?$pair@VCCharString@@J@2@PAU32@0@Z	006d44f0	006d4aa0
 ?PostDeed@CTCHeroOpinionDeedLog@@QAEXJABVC3DVector@@PAVCThing@@1_NJJJJJ@Z	006c6990	006d53c0
 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJJABVC3DVector@@PAVCThing@@PAVCThingAICreature@@J_N3PAVCFaction@@3J@Z	006c6990	006d56e0
 ?GetHeadPosition@CTCGraphicAppearance@@QBE?AVC3DVector@@XZ	004c10e0	006d5b50
@@ -29746,7 +29746,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?__unguarded_linear_insert@@YIXPAVCWideString@@V1@UCWideStringLess@@@Z	009b1870	009b58b0
 ?copy_backward@@YIPAVCWideString@@PAV1@00@Z	00497460	009b58b0
 ??$__unguarded_linear_insert@PAU?$pair@KK@std@@U12@V?$CKeyPairCompareLess@KK@@@std@@YIXPAU?$pair@KK@0@U10@V?$CKeyPairCompareLess@KK@@@Z	009b1aa0	009b5920
-??$__unguarded_linear_insert@PAU?$pair@VCCharString@@J@std@@U12@V?$CKeyPairCompareLess@VCCharString@@J@@@std@@YIXPAU?$pair@VCCharString@@J@0@U10@V?$CKeyPairCompareLess@VCCharString@@J@@@Z	009b47f0	009b5990
+??$__unguarded_linear_insert@PAU?$pair@VCCharString@@K@std@@U12@V?$CKeyPairCompareLess@VCCharString@@K@@@std@@YIXPAU?$pair@VCCharString@@K@0@U10@V?$CKeyPairCompareLess@VCCharString@@K@@@Z	009b47f0	009b5990
 ?_Push_heap@@YIXPAU?$pair@VCCharString@@K@@JJU1@V?$CKeyPairCompareLess@VCCharString@@K@@@Z	009b4940	009b5c70
 ?_Adjust_heap@@YIXPAU?$pair@VCCharString@@K@@JJU1@V?$CKeyPairCompareLess@VCCharString@@K@@@Z	009b5c70	009b8170
 ?ReadNextNumber@CStringParser@@IAE_NAAVCParsedItem@@@Z	009b9ee0	009ba080
@@ -34264,3 +34264,7 @@ __setdefaultprecision	0040135c	00401067
 ?_M_insert_overflow@?$vector@VC3DVertex2@@V?$allocator@VC3DVertex2@@@std@@@std@@IAEXPAVC3DVertex2@@ABV3@ABU__false_type@2@I_N@Z	00a96b30	00a97040
 ??$__copy_backward@PAVC2DLineF@@PAV1@H@std@@YIPAVC2DLineF@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	00a74560	00a74ac0
 ??$copy@PAVC2DLineF@@PAV1@@std@@YIPAVC2DLineF@@PAV1@00@Z	00a74840	00a74ac0
+??$__copy_backward@PAU?$pair@VCCharString@@J@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@J@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	006d3610	006d4850
+??$__uninitialized_copy@PAU?$pair@VCCharString@@J@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@J@0@PAU10@00ABU__false_type@0@@Z	006d3770	006d4850
+??$fill@PAU?$pair@VCCharString@@J@std@@U12@@std@@YIXPAU?$pair@VCCharString@@J@0@0ABU10@@Z	006d3af0	006d4850
+??$uninitialized_fill_n@PAU?$pair@VCCharString@@J@std@@IU12@@std@@YIPAU?$pair@VCCharString@@J@0@PAU10@IABU10@@Z	006d3b20	006d4850

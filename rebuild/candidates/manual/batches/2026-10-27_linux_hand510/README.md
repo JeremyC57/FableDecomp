@@ -1,4 +1,4 @@
-# Chunk 510 (agent510, 2026-10-27/28): 15 of 20 single functions landed (256-512 bytes), 1 held
+# Chunk 510 (agent510, 2026-10-27/28): 15 of 20 single functions landed (256-512 bytes), 1 held, landed 2026-10-28
 
 Single functions of 256-512 bytes (20 rows, address order, 0x00635E90..0x009C73E0), mostly STLport instantiations. One
 Opus 5.5 agent at high effort; a container restart stopped the first agent after 2 drafts, and the resumed agent
@@ -25,3 +25,13 @@ spelling is its twin 0x008F6800); 0x0085DE40 the vector<CThingMapCell> copy ctor
 ~vector<CEngineTextureMorph>; 0x0067C490 CBlurredAttitudesDef::operator=; push_back 0x006A3C70's element is
 CThingGraphicArgPasser. Review: 0x009C6D60 is landed as a non-template __destroy_aux; 0x0086CC50 bound with a
 one-parameter vector spelling; 0x006D4750 declared QAE only to keep its bound spelling.
+
+**2026-10-28: the held row landed.** The conflict was in the landed rows, not in 0x006D4850. FableWin.pdb has 66
+`CKeyPairCompareLess<CCharString, unsigned long>` names (the CVectorMap<CCharString, unsigned long> Sort/Insert/Update
+comparator) and no `<CCharString, long>` comparator. So the sort family around 0x009B5990 is over pair<CCharString,
+unsigned long>, as every other landed binding in it already said, and its `__copy_backward` 0x009B1E20 is the unsigned long
+twin; the K `_M_fill_insert` 0x00AE7340 calls it too. 0x006D3610 is the long twin: it is called by
+GFSerialiseVectorBinaryOut<pair<CCharString,long>> and this row (CPersistContext's TransferVector<pair<CCharString,long>>, FableWin.pdb).
+Respelled and rechecked (verify_twinfix.log): 0x009B5990 and 0x009B47F0 (long -> unsigned long), and 0x006D4AA0 (its
+invented `SNamedLongVector` is std::vector<std::pair<CCharString, long>>). `_M_fill_insert` is spelled public (QAE), as 54 of
+63 landed bindings do; the access specifier is the one detail the bytes cannot show (probable).

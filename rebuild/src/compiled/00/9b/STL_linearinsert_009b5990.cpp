@@ -1,4 +1,4 @@
-// std::__linear_insert(pair<CCharString, long>* first, pair<CCharString, long>* last, pair<CCharString, long> val, CKeyPairCompareLess<CCharString, long> comp) -- insertion-sort step over (name, value) entries: a new minimum shifts the prefix up one slot, anything else goes through the unguarded insert
+// std::__linear_insert(pair<CCharString, unsigned long>* first, pair<CCharString, unsigned long>* last, pair<CCharString, unsigned long> val, CKeyPairCompareLess<CCharString, unsigned long> comp) -- insertion-sort step over (name, value) entries: a new minimum shifts the prefix up one slot, anything else goes through the unguarded insert
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B5990, 137 bytes, `ret 0Ch`: `__fastcall` (/Gr algorithm TU: first in ecx, last in
 // edx, the 8-byte pair value and the empty comparator on the stack). Catalog name "Sorted_Vector_InsertElement_CCharString"
@@ -8,6 +8,9 @@
 // CCharString(const CCharString&) @ 0x0099EC30 (val rebuilt in the callee's argument area), __unguarded_linear_insert
 // @ 0x009B47F0 (this chunk), ~CCharString @ 0x0099EAE0 (the by-value val, on both paths).
 // Shape: STLport 4.6 verbatim with CCharString::operator< inlined.
+// Identity: pair<CCharString, unsigned long> -- the comparator CKeyPairCompareLess<CCharString, unsigned long> is the
+//   CVectorMap<CCharString, unsigned long> one (FableWin.pdb Sort/Insert/Update; no <CCharString, long> comparator exists),
+//   and the caller 0x009B69E0 binds this row with it; the long twin of __copy_backward is 0x006D3610 (pair<CCharString,long>).
 struct CBasicStringChar {                           // CBasicString<char> (13 bytes packed; only compared here)
     char* PData;                                    // +0x00
     bool operator<(const CBasicStringChar& other) const;   // 0x00429950
@@ -74,6 +77,6 @@ template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef std::pair<CCharString, long> SNameEntry;
-template void __fastcall std::__linear_insert<SNameEntry*, SNameEntry, CKeyPairCompareLess<CCharString, long> >(
-    SNameEntry* __first, SNameEntry* __last, SNameEntry __val, CKeyPairCompareLess<CCharString, long> __comp);
+typedef std::pair<CCharString, unsigned long> SNameEntry;
+template void __fastcall std::__linear_insert<SNameEntry*, SNameEntry, CKeyPairCompareLess<CCharString, unsigned long> >(
+    SNameEntry* __first, SNameEntry* __last, SNameEntry __val, CKeyPairCompareLess<CCharString, unsigned long> __comp);

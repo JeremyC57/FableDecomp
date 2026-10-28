@@ -20,26 +20,27 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
+namespace std {
 template <class T1, class T2>
 struct pair {
     T1 first;
     T2 second;
     pair(const T1& a, const T2& b) : first(a), second(b) { }
 };
-
-typedef pair<CCharString, long> SNamedLong;
-
-struct SNamedLongVector {                          // STLport vector<pair<CCharString, long> >
-    SNamedLong* _M_start;
-    SNamedLong* _M_finish;
-    SNamedLong* _M_end_of_storage;
-    SNamedLong* begin() { return _M_start; }
-    SNamedLong* end() { return _M_finish; }
-    unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
-    SNamedLong* erase(SNamedLong* first, SNamedLong* last);                           // 0x006D44F0
-    void _M_fill_insert(SNamedLong* position, unsigned long n, const SNamedLong& x);   // 0x006D4850
-    void insert(SNamedLong* position, unsigned long n, const SNamedLong& x) { _M_fill_insert(position, n, x); }
-    __forceinline void resize(unsigned long newSize, const SNamedLong& x)
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> >
+class vector {                                     // STLport vector (12 bytes)
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    _Tp* begin() { return _M_start; }
+    _Tp* end() { return _M_finish; }
+    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
+    _Tp* erase(_Tp* first, _Tp* last);                                    // 0x006D44F0
+    void _M_fill_insert(_Tp* position, unsigned int n, const _Tp& x);     // 0x006D4850
+    void insert(_Tp* position, unsigned int n, const _Tp& x) { _M_fill_insert(position, n, x); }
+    __forceinline void resize(unsigned int newSize, const _Tp& x)
     {
         if (newSize < size())
             erase(begin() + newSize, end());
@@ -47,6 +48,9 @@ struct SNamedLongVector {                          // STLport vector<pair<CCharS
             insert(end(), newSize - size(), x);
     }
 };
+}
+
+typedef std::pair<CCharString, long> SNamedLong;
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<SNamedLong> {
@@ -59,7 +63,7 @@ struct CPersistContext_TransferableVector {
     virtual void Resize(unsigned long count);
     virtual void TransferOut(CPersistContext* context, CCharString* out, long index);
     virtual void TransferIn(CPersistContext* context, CStringParser* parser, long index);
-    SNamedLongVector* TransVector;                 // +0x4
+    std::vector<SNamedLong>* TransVector;          // +0x4
 };
 
 void CPersistContext_TransferableVector::Resize(unsigned long count)

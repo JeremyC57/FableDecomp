@@ -352689,6 +352689,13 @@ $catalog = @(
         TestSource = '00/a7/std_MrangeinsertC3DVector_00a70cb0_test.cpp'
         PassPattern = '00a70cb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006d4850'
+        Module = 'std'
+        Source = '00/6d/std_Mfillinsert_006d4850.cpp'
+        TestSource = '00/6d/std_Mfillinsert_006d4850_test.cpp'
+        PassPattern = '006d4850_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

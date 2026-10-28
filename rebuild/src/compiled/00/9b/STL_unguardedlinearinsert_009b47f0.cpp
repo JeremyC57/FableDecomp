@@ -1,10 +1,11 @@
-// std::__unguarded_linear_insert(pair<CCharString, long>* last, pair<CCharString, long> val, CKeyPairCompareLess<CCharString, long> comp) -- insertion-sort inner step over (name, value) entries: shift entries with larger names up one slot until val's name fits, then assign val there
+// std::__unguarded_linear_insert(pair<CCharString, unsigned long>* last, pair<CCharString, unsigned long> val, CKeyPairCompareLess<CCharString, unsigned long> comp) -- insertion-sort inner step over (name, value) entries: shift entries with larger names up one slot until val's name fits, then assign val there
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009B47F0, 89 bytes, `ret 0Ch`: `__fastcall` (/Gr algorithm TU: last in ecx, the 8-byte
 // pair value and the empty comparator on the stack). Catalog name "Sorted_Vector_InsertElement" (descriptive). Callers:
 // __linear_insert @ 0x009B5A06 (0x009B5990, this chunk) and the __unguarded_insertion_sort_aux @ 0x009B5A46 (0x009B5A20).
 // Callees: CBasicString<char>::operator< @ 0x00429950, CCharString::operator= @ 0x0099EFB0, ~CCharString @ 0x0099EAE0.
-// Element: a CVectorMap<CCharString, long>-style entry (key compare only; the second word is not recoverable: long).
+// Element: pair<CCharString, unsigned long> -- the CVectorMap<CCharString, unsigned long> entry (FableWin.pdb has only the
+//   unsigned long CKeyPairCompareLess over CCharString keys; the caller 0x009B5990 sorts with it).
 // Shape: STLport 4.6 verbatim; CCharString::operator< inlines (same block / empty-string tests, then the CBasicString
 // compare out of line), the pair assignment is operator= on the name plus a word copy, val's name is destroyed at the end.
 struct CBasicStringChar {                           // CBasicString<char> (13 bytes packed; only compared here)
@@ -58,6 +59,6 @@ template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-typedef std::pair<CCharString, long> SNameEntry;
-template void __fastcall std::__unguarded_linear_insert<SNameEntry*, SNameEntry, CKeyPairCompareLess<CCharString, long> >(
-    SNameEntry* __last, SNameEntry __val, CKeyPairCompareLess<CCharString, long> __comp);
+typedef std::pair<CCharString, unsigned long> SNameEntry;
+template void __fastcall std::__unguarded_linear_insert<SNameEntry*, SNameEntry, CKeyPairCompareLess<CCharString, unsigned long> >(
+    SNameEntry* __last, SNameEntry __val, CKeyPairCompareLess<CCharString, unsigned long> __comp);

@@ -1,0 +1,24 @@
+addr       parity           behav  name
+006d4850   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@VCCharString@@J@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@J@0@PAU10@00ABU__false_type@0@@Z -> 006d3770 labelled '_global::UninitCopy_SPairCSecond_0099ec30Long_006d3770'
+006d4850   WARN RELOC_NAME: ??$uninitialized_fill_n@PAU?$pair@VCCharString@@J@std@@IU12@@std@@YIPAU?$pair@VCCharString@@J@0@PAU10@IABU10@@Z -> 006d3b20 labelled '_global::UninitFillN_SPairCSecond_0099ec30Long_006d3b20'
+006d4850   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z -> 006d4750 labelled 'STL::Vector8_string8::InsertGrow_006d4750'
+006d4850   RELOCATION_MATCH PASS   vector<pair<CCharString,long>>::_M_fill_insert
+
+WINS: 1
+  006d4850 RELOCATION_MATCH std::?_M_fill_insert@?$vector@U?$pair@VCCharString@@J@std@@
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  std_Mfillinsert_006d4850
+addr       parity           behav  name
+006d4aa0   WARN RELOC_NAME: ?_M_fill_insert@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@J@2@IABU32@@Z -> 006d4850 labelled 'std::vector::_Insert_range_fill_8byte'
+006d4aa0   RELOCATION_MATCH PASS   006d4aa0
+
+WINS: 1
+  006d4aa0 RELOCATION_MATCH m::?Resize@CPersistContext_TransferableVector@@UAEXK@Z
+addr       parity           behav  name
+009b5990   RELOCATION_MATCH PASS   009b5990
+009b47f0   RELOCATION_MATCH PASS   009b47f0
+
+WINS: 2
+  009b5990 RELOCATION_MATCH m::??$__linear_insert@
+  009b47f0 RELOCATION_MATCH m::??$__unguarded_linear_insert@
