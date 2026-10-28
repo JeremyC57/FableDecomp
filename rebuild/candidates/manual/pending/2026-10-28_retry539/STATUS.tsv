@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+005542f0	DIFFER	727v727	-	NUISystem::CMorphingSprite::GetDataFromDef; 23 diffs: pair store schedule around insert_unique pushes + Touch register colouring (lane gap: register colouring); vector operator[] via begin() took 48->31
+00555a90	DIFFER	595v595	-	NUISystem::CScrollableList::UpdateVisibleList; 16 diffs, register colouring only (lane gap)
+005726a0	DIFFER	824v824	-	CTCInventoryExperience::RecheckAvailabilities (catalog UpdateAbilityDisplay wrong); 4 diffs: deletion.Method store hoisted above the vtable load (lane gap: store scheduling)
+00576c4f	DIFFER	642v642	-	CTCInventoryExperience::UndoBuyAbility; 2 diffs: push ecx / fsubp swap in ChangePosition args (shared x87 lane gap)
+00576ed1	DIFFER	622v622	-	CTCInventoryExperience::UndoBuyStat; 4 diffs: push ecx / fsubp swap + one load order after GetInstance (lane gap: scheduling)
+0057df85	DIFFER	876v876	-	CTCHeroStats::KickHeroToMostRecentSafeRegion; 17 diffs: one frame-slot rotation (currentRegion / literal / filter temp); same-TU GetPFirstLeafThing body took 32->17 (lane gap: frame-slot order)
+00584b86	DIFFER	873v854	-	CTCInventory::AssignThingPC; 79 diffs, +19 bytes: retail cross-jumps the two use arms into one push_back (lane gap: temp packing / cross-jumping); real same-TU GetDef/GetSubDef bodies replace invented stand-ins
+00589a30	DIFFER	549v549	-	CTCInventory::OpenPCMapMenu; 2 diffs: esi/edi reload order after repe cmpsb (lane gap: reload order)
