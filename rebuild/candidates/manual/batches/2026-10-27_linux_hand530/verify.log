@@ -1,0 +1,51 @@
+addr       parity           behav  name
+00b41e50   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b41e50   WARN RELOC_NAME: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@ABVCCharString@@@Z -> 0042b467 labelled '_global::StdMap_FindLE'
+00b41e50   RELOCATION_MATCH PASS   OpenRetailStaticMap
+00b59870   MATCH            PASS   UpdateLoadingDistanceVideoOptions
+00b67510   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00b67510   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00b67510   WARN SHARED_HEADER_AVAILABLE CTexture
+00b67510   RELOCATION_MATCH PASS   PostRenderClearRenderStates
+00b80940   RELOCATION_MATCH PASS   CalculateRunState
+00b80b70   RELOCATION_MATCH PASS   GetWindVectorNoise
+00b814b0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00b814b0   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00b814b0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b814b0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b814b0   RELOCATION_MATCH PASS   Render
+00b81640   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00b81640   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00b81640   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b81640   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b81640   RELOCATION_MATCH PASS   Render
+00b8b630   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b8b630   RELOCATION_MATCH PASS   CEngineBillboardGenerator
+00bae160   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00bae160   WARN RELOC_NAME: ?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z -> 00bacdd0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00bae160   RELOCATION_MATCH PASS   AddSprite
+00bcf2e0   RELOCATION_MATCH PASS   SetupMesh
+
+WINS: 10
+  00b41e50 RELOCATION_MATCH CEngineMap::?OpenRetailStaticMap@CEngineMap@@QAEXAAVCStaticMapBankFile@@AAVCDataInputStream@@AAV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z
+  00b59870 MATCH CEngineLocalDetailGenerator::?UpdateLoadingDistanceVideoOptions@CEngineLocalDetailGenerator@@QAEXABVCEngineVideoOptionsDef@@@Z
+  00b67510 RELOCATION_MATCH CEngineLandscapeRenderer::?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ
+  00b80940 RELOCATION_MATCH CEngineClothSimulationMeshBase::?CalculateRunState@CEngineClothSimulationMeshBase@@IBE?AW4ERunState@CEngineSimulationBase@@ABVC3DVector@@M@Z
+  00b80b70 RELOCATION_MATCH CEngineSimulationManager::?GetWindVectorNoise@CEngineSimulationManager@@QBE?AVC3DVector@@ABV2@@Z
+  00b814b0 RELOCATION_MATCH CEngineClothSimulationAnimatedMesh::?Render@CEngineClothSimulationAnimatedMesh@@UAEXABVC3DPrimitive2@@ABVCEngineSubPrimitiveAnimatedMesh@@ABVC3DMesh2@@ABVC3DAnimationBlendState@@3MABVCMatrix3x4@@W4ERenderPassType@@@Z
+  00b81640 RELOCATION_MATCH CEngineClothSimulation2DAnimatedMesh::?Render@CEngineClothSimulation2DAnimatedMesh@@UAEXABVC3DPrimitive2@@ABVCEngineSubPrimitiveAnimatedMesh@@ABVC3DMesh2@@ABVC3DAnimationBlendState@@3MABVCMatrix3x4@@W4ERenderPassType@@@Z
+  00b8b630 RELOCATION_MATCH CEngineBillboardGenerator::??0CEngineBillboardGenerator@@QAE@XZ
+  00bae160 RELOCATION_MATCH CEnginePrimitiveManagerSprites::?AddSprite@CEnginePrimitiveManagerSprites@@QAE?AVCEnginePrimitiveHandle@@PAVCTexture@@ABVC3DVector@@MMMW4EEnginePrimitiveBlendMode@@E_N3MM3@Z
+  00bcf2e0 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::?SetupMesh@CEngineInternalPrimitiveAnimatedMesh@@QAE_NMM@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CEngineMap_OpenRetailStaticMap_00b41e50
+  CEngineLocalDetailGenerator_UpdateLoadingDistanceVideoOptions_00b59870
+  CEngineLandscapeRenderer_PostRenderClearRenderStates_00b67510
+  CEngineClothSimulationMeshBase_CalculateRunState_00b80940
+  CEngineSimulationManager_GetWindVectorNoise_00b80b70
+  CEngineClothSimulationAnimatedMesh_Render_00b814b0
+  CEngineClothSimulation2DAnimatedMesh_Render_00b81640
+  CEngineBillboardGenerator_CEngineBillboardGenerator_00b8b630
+  CEnginePrimitiveManagerSprites_AddSprite_00bae160
+  CEngineInternalPrimitiveAnimatedMesh_SetupMesh_00bcf2e0

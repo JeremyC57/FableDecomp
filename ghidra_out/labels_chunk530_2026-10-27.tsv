@@ -1,0 +1,11 @@
+address	name	evidence
+00b41e50	CEngineMap::OpenRetailStaticMap	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)
+00b59870	CEngineLocalDetailGenerator::UpdateLoadingDistanceVideoOptions	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)
+00b67510	CEngineLandscapeRenderer::PostRenderClearRenderStates	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)
+00b80940	CEngineClothSimulationMeshBase::CalculateRunState	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)
+00b80b70	CEngineSimulationManager::GetWindVectorNoise	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)
+00b814b0	CEngineClothSimulationAnimatedMesh::Render	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)
+00b81640	CEngineClothSimulation2DAnimatedMesh::Render	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)
+00b8b630	CEngineBillboardGenerator ctor	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)
+00bae160	CEnginePrimitiveManagerSprites::AddSprite	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)
+00bcf2e0	CEngineInternalPrimitiveAnimatedMesh::SetupMesh	proven per batch 2026-10-27_linux_hand530 NOTES.md (chunk 530)

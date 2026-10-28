@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00b43720	DIFFER	327v324	-	CEngineMap::PeekThemeId (catalog PeekLandscapeHeight); mapY frame slot (retail extra push ecx slot)
+00b43870	DIFFER	327v324	-	CEngineMap::PeekThemeBlend (catalog PeekLandscapeHeight); same mapY slot residue
+00b439c0	DIFFER	345v356	-	CEngineMap::PeekLandscapeHeight; retail_asm candidate (GFFloatToLongNear fistp tail matches); mapY slot residue
+00b46a30	DIFFER	322v350	-	CEngineLightingManager::LookupSmallObjectLightCache (AAE); retail_asm candidate; box temporaries
+00b677d0	DIFFER	333v333	-	CEngineLandscapeRenderer::SetupForegroundStates; scheduling only (pointer copy vs value copy order)
+00b812f0	DIFFER	343v343	-	CEngineClothSimulationStaticMesh::Render; Size/NonSimCount load order (next: GetVertexPositionCount + CMatrix3x4::operator*)
+00b9dfc0	DIFFER	341v341	-	CEngineInternalPrimitive2DStaticMesh::Update; graded build had a double vptr (model error); corrected model probe-matched, not regraded
+00b9e120	DIFFER	373v365	-	CEngineInternalPrimitive2DStaticMesh::Initialise; eax/edx copy swap, Y kept via fst, scale reassociation
+00bcc1c0	DIFFER	334v334	-	CEngineInternalPrimitiveSpriteTrail::GetWorldPosition; frame-slot order (box vs point copy)
+00bcee20	DIFFER	342v351	-	CEngineInternalPrimitiveAnimatedMesh::GetBoundingBoxWorldSpace; x87 term order, enregistered sphere copy, frame 0x50

@@ -7,6 +7,7 @@
 #include "engine/CEngineLightingManager.h"
 #undef CEngineLightingManager
 #include <stddef.h>
+enum EEngine2DLayer { };                         // Ego_r.pdb layer enum (passed as a 32-bit value)
 class CEngineInternalPrimitiveBase;
 class CEngineSubPrimitiveChain;
 class C3DMesh2;
@@ -135,7 +136,7 @@ extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
 class CEnginePrimitiveRenderer2D { public:
     unsigned char _pad[0x320];
     bool          LayerEnabled[1];                 // +0x320
-    float Layer2DToDistance(long layer);           // 0x00B4A6A0
+    float Layer2DToSortDistance(EEngine2DLayer layer); // 0x00B4A6A0
 };
 extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D;   // 0x01436E7C
 struct CSimulationSettings { unsigned char _pad[0xa4]; bool Enabled; };
@@ -261,7 +262,7 @@ void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalP
         CEngineSubPrimitiveAnimatedMesh* subPrimitive = new CEngineSubPrimitiveAnimatedMesh(&mesh, subMesh, list, simulated);
         subPrimitive->Alpha = alpha;
         subPrimitive->RenderFlags = flags;
-        float depth = g_pPrimitiveRenderer2D->Layer2DToDistance(mesh.Layer);
+        float depth = g_pPrimitiveRenderer2D->Layer2DToSortDistance((EEngine2DLayer)mesh.Layer);
         if (flags & 1)
             depth -= g_pEngineSubPrimitiveRenderer->DepthBias * 9.3132257e-10f;
         g_pEngineSubPrimitiveRenderer->AddSubPrimitive(type, subPrimitive, depth, (CEnginePrimitiveManager*)this);

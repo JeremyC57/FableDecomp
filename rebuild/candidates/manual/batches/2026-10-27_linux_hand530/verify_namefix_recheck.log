@@ -1,0 +1,45 @@
+addr       parity           behav  name
+00b4a6a0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00b4a6a0   MATCH            PASS   CEnginePrimitiveRenderer2D::Layer2DToSortDistance
+00b4a6b0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00b4a6b0   MATCH            PASS   CEnginePrimitiveRenderer2D::Layer2DToDistance
+00b9e950   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DStaticMesh
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b9e950   WARN RELOC_NAME: ?SetLoadPriority@C3DMeshInfo@@QAEXJ@Z -> 00a23c50 labelled '_global::Nop_ret4_00a23c50'
+00b9e950   WARN RELOC_NAME: ??1CCountedMeshPointer@@QAE@XZ -> 00a36ec0 labelled 'CCountedPointer<constC3DMesh2>::~CCountedPointer'
+00b9e950   RELOCATION_MATCH PASS   CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive
+00bd1f70   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DAnimatedMesh
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00bd1f70   WARN RELOC_NAME: ?SetLoadPriority@C3DMeshInfo@@QAEXJ@Z -> 00a23c50 labelled '_global::Nop_ret4_00a23c50'
+00bd1f70   WARN RELOC_NAME: ?UpdateVisibilityVector@CEngineMeshVisibility@@QAEXPAVC3DMesh2@@@Z -> 00bec8d0 labelled 'CEngineInternalPrimitiveMorphInfo::InitialiseHiddenMaterials'
+00bd1f70   RELOCATION_MATCH PASS   CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive
+00be0cd0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00be0cd0   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00be0cd0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager2DParticleGroup
+00be0cd0   WARN RELOC_CONFLICT: ??0CBase@@QAE@XZ -> 0099a2f0 here, 0099a2d0 in landed 00df2380
+00be0cd0   RELOCATION_MATCH PASS   CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive
+00be0de0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00be0de0   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DParticleGroup::Update
+00be1ba0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00be1ba0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00be1ba0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00be1ba0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DViewportManager
+00be1ba0   WARN RELOC_CONFLICT: ??0CBase@@QAE@XZ -> 0099a2f0 here, 0099a2d0 in landed 00df2380
+00be1ba0   RELOCATION_MATCH PASS   CEnginePrimitive2DViewportManager::Render2DPrimitive
+
+WINS: 7
+  00b4a6a0 MATCH CEnginePrimitiveRenderer2D::?Layer2DToSortDistance@CEnginePrimitiveRenderer2D@@QAEMW4EEngine2DLayer@@@Z
+  00b4a6b0 MATCH CEnginePrimitiveRenderer2D::?Layer2DToDistance@CEnginePrimitiveRenderer2D@@QAEMW4EEngine2DLayer@@@Z
+  00b9e950 RELOCATION_MATCH CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive
+  00bd1f70 RELOCATION_MATCH CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive
+  00be0cd0 RELOCATION_MATCH CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive
+  00be0de0 RELOCATION_MATCH CEngineInternalPrimitive2DParticleGroup::Update
+  00be1ba0 RELOCATION_MATCH CEnginePrimitive2DViewportManager::Render2DPrimitive

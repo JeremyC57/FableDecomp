@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE0CD0, length 256 bytes (`ret 0Ch`, virtual).
 // Callees: CEngineSubPrimitiveBase::operator new @ 0x00BEB540 (`__fastcall`, size 0x18), CBase::CBase @ 0x0099A2F0,
 // CEngineSubPrimitiveParticleGroup::CEngineSubPrimitiveParticleGroup(CEngineInternalPrimitiveBase&) @ 0x00BBBDB0 (the second
-// construction calls it out of line; the first is inlined), CEnginePrimitiveRenderer2D::Layer2DToDistance(EEngine2DLayer)
+// construction calls it out of line; the first is inlined), CEnginePrimitiveRenderer2D::Layer2DToSortDistance(EEngine2DLayer)
 // @ 0x00B4A6A0 (2D renderer @ 0x01436E7C, layer-enable bytes at +0x320), CEngineSubPrimitiveRenderer::AddSubPrimitive(long,
 // CEngineSubPrimitiveBase*, float, CEnginePrimitiveManager*) @ 0x00B84720 (renderer @ 0x01436E74); the displacement-pass flag is
 // byte +0xee of the engine settings @ 0x01436E38. Vtable 0x012A5BB0 = CEngineSubPrimitiveParticleGroup.
@@ -13,6 +13,7 @@
 // CEngineInternalPrimitive2DParticleGroup::Update 0x00BE0DE0; the manager's Enable +8.
 // Shape: RenderFlags/Alpha are assigned after `new` (stored through the possibly-null pointer); the layer depth is a named
 // float homed in the dead `primitive` argument slot; the chain argument is unused.
+enum EEngine2DLayer { };                         // Ego_r.pdb layer enum (passed as a 32-bit value)
 class CBase {
 public:
     virtual ~CBase();
@@ -48,7 +49,7 @@ class CEnginePrimitiveRenderer2D {
 public:
     unsigned char _pad[0x320];
     bool          LayerEnabled[1];                  // +0x320 (indexed by layer)
-    float Layer2DToDistance(long layer);            // 0x00B4A6A0
+    float Layer2DToSortDistance(EEngine2DLayer layer); // 0x00B4A6A0
 };
 extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D;   // 0x01436E7C
 
@@ -84,7 +85,7 @@ void CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive(CEngineInternalPr
     CEngineSubPrimitiveParticleGroup* const& subPrimitive = new CEngineSubPrimitiveParticleGroup(primitive);
     subPrimitive->Alpha = 0xff;
     subPrimitive->RenderFlags = 1;
-    float depth = g_pPrimitiveRenderer2D->Layer2DToDistance(group.Layer);
+    float depth = g_pPrimitiveRenderer2D->Layer2DToSortDistance((EEngine2DLayer)group.Layer);
     if (group.ScreenDisplacement) {
         if (!g_pEngineSettings_01436e38->DisplacementPassEnabled)
             return;

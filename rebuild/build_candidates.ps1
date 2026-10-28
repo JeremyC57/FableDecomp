@@ -33552,8 +33552,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b4a6a0'
         Module = 'CEnginePrimitiveRenderer2D'
-        Source = '00/b4/CEnginePrimitiveRenderer2D_Layer2DToDistance_00b4a6a0.cpp'
-        TestSource = '00/b4/CEnginePrimitiveRenderer2D_Layer2DToDistance_00b4a6a0_test.cpp'
+        Source = '00/b4/CEnginePrimitiveRenderer2D_Layer2DToSortDistance_00b4a6a0.cpp'
+        TestSource = '00/b4/CEnginePrimitiveRenderer2D_Layer2DToSortDistance_00b4a6a0_test.cpp'
         PassPattern = '00b4a6a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -361940,6 +361940,76 @@ $catalog = @(
         TestSource = '00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_GetBiggestFishWeight_00e81b40_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
         PassPattern = '00e81b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b41e50'
+        Module = 'CEngineMap'
+        Source = '00/b4/CEngineMap_OpenRetailStaticMap_00b41e50.cpp'
+        TestSource = '00/b4/CEngineMap_OpenRetailStaticMap_00b41e50_test.cpp'
+        PassPattern = '00b41e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b59870'
+        Module = 'CEngineLocalDetailGenerator'
+        Source = '00/b5/CEngineLocalDetailGenerator_UpdateLoadingDistanceVideoOptions_00b59870.cpp'
+        TestSource = '00/b5/CEngineLocalDetailGenerator_UpdateLoadingDistanceVideoOptions_00b59870_test.cpp'
+        PassPattern = '00b59870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b67510'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_PostRenderClearRenderStates_00b67510.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_PostRenderClearRenderStates_00b67510_test.cpp'
+        PassPattern = '00b67510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b80940'
+        Module = 'CEngineClothSimulationMeshBase'
+        Source = '00/b8/CEngineClothSimulationMeshBase_CalculateRunState_00b80940.cpp'
+        TestSource = '00/b8/CEngineClothSimulationMeshBase_CalculateRunState_00b80940_test.cpp'
+        PassPattern = '00b80940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b80b70'
+        Module = 'CEngineSimulationManager'
+        Source = '00/b8/CEngineSimulationManager_GetWindVectorNoise_00b80b70.cpp'
+        TestSource = '00/b8/CEngineSimulationManager_GetWindVectorNoise_00b80b70_test.cpp'
+        PassPattern = '00b80b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b814b0'
+        Module = 'CEngineClothSimulationAnimatedMesh'
+        Source = '00/b8/CEngineClothSimulationAnimatedMesh_Render_00b814b0.cpp'
+        TestSource = '00/b8/CEngineClothSimulationAnimatedMesh_Render_00b814b0_test.cpp'
+        PassPattern = '00b814b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b81640'
+        Module = 'CEngineClothSimulation2DAnimatedMesh'
+        Source = '00/b8/CEngineClothSimulation2DAnimatedMesh_Render_00b81640.cpp'
+        TestSource = '00/b8/CEngineClothSimulation2DAnimatedMesh_Render_00b81640_test.cpp'
+        PassPattern = '00b81640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8b630'
+        Module = 'CEngineBillboardGenerator'
+        Source = '00/b8/CEngineBillboardGenerator_CEngineBillboardGenerator_00b8b630.cpp'
+        TestSource = '00/b8/CEngineBillboardGenerator_CEngineBillboardGenerator_00b8b630_test.cpp'
+        PassPattern = '00b8b630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bae160'
+        Module = 'CEnginePrimitiveManagerSprites'
+        Source = '00/ba/CEnginePrimitiveManagerSprites_AddSprite_00bae160.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerSprites_AddSprite_00bae160_test.cpp'
+        PassPattern = '00bae160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bcf2e0'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitiveAnimatedMesh_SetupMesh_00bcf2e0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveAnimatedMesh_SetupMesh_00bcf2e0_test.cpp'
+        PassPattern = '00bcf2e0_TEST PASS'
     }
 )
 

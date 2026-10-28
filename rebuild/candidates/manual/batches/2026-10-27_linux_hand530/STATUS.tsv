@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00b41e50	RELOCATION_MATCH	325v325	PASS	CEngineMap::OpenRetailStaticMap; counted-pointer operator= reads Info/Data into locals before the compare
+00b43720	DIFFER	327v324	-	CEngineMap::PeekThemeId (catalog PeekLandscapeHeight); mapY frame slot (retail extra push ecx slot)
+00b43870	DIFFER	327v324	-	CEngineMap::PeekThemeBlend (catalog PeekLandscapeHeight); same mapY slot residue
+00b439c0	DIFFER	345v356	-	CEngineMap::PeekLandscapeHeight; retail_asm candidate (GFFloatToLongNear fistp tail matches); mapY slot residue
+00b46a30	DIFFER	322v350	-	CEngineLightingManager::LookupSmallObjectLightCache (AAE); retail_asm candidate; box temporaries
+00b59870	MATCH	321v321	PASS	CEngineLocalDetailGenerator::UpdateLoadingDistanceVideoOptions (const ref)
+00b67510	RELOCATION_MATCH	389v389	PASS	CEngineLandscapeRenderer::PostRenderClearRenderStates (private)
+00b677d0	DIFFER	333v333	-	CEngineLandscapeRenderer::SetupForegroundStates; scheduling only (pointer copy vs value copy order)
+00b80940	RELOCATION_MATCH	388v388	PASS	CEngineClothSimulationMeshBase::CalculateRunState (IBE, ERunState)
+00b80b70	RELOCATION_MATCH	364v364	PASS	CEngineSimulationManager::GetWindVectorNoise (catalog _global::ComputeWindVector_Impl)
+00b812f0	DIFFER	343v343	-	CEngineClothSimulationStaticMesh::Render; Size/NonSimCount load order (next: GetVertexPositionCount + CMatrix3x4::operator*)
+00b814b0	RELOCATION_MATCH	397v397	PASS	CEngineClothSimulationAnimatedMesh::Render; same-TU noinline CalculateFadeOut + CMatrix3x4::operator*
+00b81640	RELOCATION_MATCH	397v397	PASS	CEngineClothSimulation2DAnimatedMesh::Render; as 0x00B814B0 with Render2DClothPrimitive
+00b8b630	RELOCATION_MATCH	333v333	PASS	CEngineBillboardGenerator ctor; pixel shader resource fetched into a local before the name string
+00b9dfc0	DIFFER	341v341	-	CEngineInternalPrimitive2DStaticMesh::Update; graded build had a double vptr (model error); corrected model probe-matched, not regraded
+00b9e120	DIFFER	373v365	-	CEngineInternalPrimitive2DStaticMesh::Initialise; eax/edx copy swap, Y kept via fst, scale reassociation
+00bae160	RELOCATION_MATCH	364v364	PASS	CEnginePrimitiveManagerSprites::AddSprite (catalog CParticleMorphs_CEntry_Constructor); forceinline handle dtor
+00bcc1c0	DIFFER	334v334	-	CEngineInternalPrimitiveSpriteTrail::GetWorldPosition; frame-slot order (box vs point copy)
+00bcee20	DIFFER	342v351	-	CEngineInternalPrimitiveAnimatedMesh::GetBoundingBoxWorldSpace; x87 term order, enregistered sphere copy, frame 0x50
+00bcf2e0	RELOCATION_MATCH	323v323	PASS	CEngineInternalPrimitiveAnimatedMesh::SetupMesh; inline GetAppropriateLOD, HasLOD bound, tolerance scaled in place

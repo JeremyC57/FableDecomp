@@ -771,3 +771,5 @@ Chunk 528 (agent528, re-queue 241-502 bytes; batch 2026-10-27_linux_hand528): 17
 Chunk 529 (agent529, re-queue 241-495 bytes; batch 2026-10-27_linux_hand529): 14 of 20 landed (1 MATCH, 10 RELOCATION_MATCH, 3 retail_asm quaternion / particle rows with the inline fistp helper), 6 parked. 38 NAME_FIXES deferred (queue now 384).
 
 Chunk 531 (agent531, re-queue 228-505 bytes; batch 2026-10-27_linux_hand531): 11 of 20 landed (1 MATCH, 7 RELOCATION_MATCH, 3 retail_asm incl. the hand SSE bounding-box kernel at 0x00BF7DF0), 5 parked, 4 skipped (libpk LTCG/EH rows, 2 not attempted). 15 NAME_FIXES deferred (queue now 399).
+
+Chunk 530 (agent530, re-queue 321-397 bytes; batch 2026-10-27_linux_hand530): 10 of 20 landed (1 MATCH, 9 RELOCATION_MATCH), 10 parked. Applied at landing: 0x00B4A6A0 Layer2DToSortDistance / 0x00B4A6B0 Layer2DToDistance (both rows had carried one name) with 5 callers respelled and rechecked. Found: ??0CBase@@QAE@XZ bound to 0x0099A2F0 and 0x0099A2D0. 28 NAME_FIXES deferred (queue now 428).

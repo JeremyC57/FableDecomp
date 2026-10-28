@@ -13,7 +13,7 @@ struct CEngineSubPrimitive2DViewport : CEngineSubPrimitiveBase {
     CEngineSubPrimitive2DViewport(CEngineInternalPrimitiveBase& p) : CEngineSubPrimitiveBase(p) { }
 };
 static long g_layerSeen = -1;
-class CEnginePrimitiveRenderer2D { public: float Layer2DToDistance(long layer) { g_layerSeen = layer; return layer * 10.0f; } };
+class CEnginePrimitiveRenderer2D { public: float Layer2DToSortDistance(long layer) { g_layerSeen = layer; return layer * 10.0f; } };
 static CEnginePrimitiveRenderer2D g_r2d; static CEnginePrimitiveRenderer2D* g_pR2D = &g_r2d;
 static CEngineSubPrimitiveChain* g_chain; static CEngineSubPrimitive2DViewport* g_sub; static float g_dist; static CEnginePrimitive2DViewportManager* g_mgr;
 class CEnginePrimitiveRenderer { public:
@@ -25,7 +25,7 @@ class CEnginePrimitive2DViewportManager { public:
     void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, long, CEngineSubPrimitiveChain& chain)
     {
         CEngineSubPrimitive2DViewport* sub = new CEngineSubPrimitive2DViewport(primitive);
-        g_pR->AddSubPrimitive(chain, sub, g_pR2D->Layer2DToDistance(primitive.m_layer), this);
+        g_pR->AddSubPrimitive(chain, sub, g_pR2D->Layer2DToSortDistance(primitive.m_layer), this);
     }
 };
 int main()

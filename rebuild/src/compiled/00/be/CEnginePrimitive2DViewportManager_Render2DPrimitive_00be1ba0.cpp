@@ -1,7 +1,7 @@
 // CEnginePrimitive2DViewportManager::Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, ESubPrimitiveType type, CEngineSubPrimitiveChain& chain) -- wraps the 2D viewport primitive in a new sub-primitive and queues it on the renderer at the depth of the primitive's 2D layer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE1BA0, length 98 bytes (112 with padding).
 // Callees: the sub-primitive class `operator new` @ 0x00BEB540 (`__fastcall`, size 0x18 in ecx), CBase::CBase @ 0x0099A2F0,
-// CEnginePrimitiveRenderer2D::Layer2DToDistance(EEngine2DLayer) @ 0x00B4A6A0 (float, on the 2D renderer @ 0x01436E7C),
+// CEnginePrimitiveRenderer2D::Layer2DToSortDistance(EEngine2DLayer) @ 0x00B4A6A0 (float, on the 2D renderer @ 0x01436E7C),
 // the renderer's sub-primitive queue call @ 0x00B84720 (on the primitive renderer @ 0x01436E74; manifest
 // "Engine_AddClockVertex" is a gap-scan name). Vtable 0x012A7ED0 = CEngineSubPrimitive2DViewport (rtti-vtables.tsv).
 // Shape: `new CEngineSubPrimitive2DViewport(primitive)` with the null-tested inline constructor (CBase call, primitive at
@@ -41,7 +41,7 @@ struct CEngineSubPrimitive2DViewport : CEngineSubPrimitiveBase {   // vtable 0x0
 };
 
 class CEnginePrimitiveRenderer2D { public:
-    float Layer2DToDistance(EEngine2DLayer layer); // 0x00B4A6A0
+    float Layer2DToSortDistance(EEngine2DLayer layer); // 0x00B4A6A0
 };
 extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D_01436e7c;   // 0x01436E7C
 
@@ -60,5 +60,5 @@ void CEnginePrimitive2DViewportManager::Render2DPrimitive(CEngineInternalPrimiti
 {
     CEngineSubPrimitive2DViewport* subPrimitive = new CEngineSubPrimitive2DViewport(primitive);
     g_pPrimitiveRenderer_01436e74->AddSubPrimitive(
-        chain, subPrimitive, g_pPrimitiveRenderer2D_01436e7c->Layer2DToDistance(primitive.m_layer), this);
+        chain, subPrimitive, g_pPrimitiveRenderer2D_01436e7c->Layer2DToSortDistance(primitive.m_layer), this);
 }

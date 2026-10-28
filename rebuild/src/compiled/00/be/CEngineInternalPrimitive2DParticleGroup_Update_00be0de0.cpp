@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE0DE0, 196 bytes (+ int3 padding), `ret 8`. Mangled
 //   ?Update@CEngineInternalPrimitive2DParticleGroup@@UAEXABVCEnginePrimitive@@K@Z (the key argument is unused here).
 // Callees: the 2D renderer (global 0x01436E7C) layer-depth getter 0x00B4A6B0 (`fld [this + layer*4 + 88h]`, ret 4; the
-//   manifest calls it Layer2DToDistance, a name the landed code gives to the neighbouring 0x00B4A6A0 table at +0x1d4).
+//   Ego_r.pdb Layer2DToDistance; the neighbouring 0x00B4A6A0 table at +0x1d4 is Layer2DToSortDistance).
 // Layout: the argument is a CEnginePrimitive2DParticleGroup (Ego_r.pdb: Layer +0x0c, ScreenDisplacement +0x10, ReadZBuffer +0x11,
 //   InverseTransform +0x14, C2DVector Position +0x44). `this` (retail, 0x14 below the PDB from the particle-group lists on,
 //   as noted for 0x00BBBE60): CEngineInternalPrimitiveBase Alpha +0x27 (PDB agrees); CEngineInternalPrimitiveParticleGroup
@@ -14,6 +14,7 @@
 //   in the frame and assigned (integer copies through `lea eax,[ebx+5Ch]`); C3DVector needs its memberwise user copy ctor
 //   for the centre to go through the frame temporary (the implicit copy forwards Pos straight into BSphere); plain stores
 //   in source order otherwise.
+enum EEngine2DLayer { };                         // Ego_r.pdb layer enum (passed as a 32-bit value)
 class C2DVector { public: float X, Y; };
 class C3DVector { public:
     float X, Y, Z;
@@ -43,7 +44,7 @@ struct CEnginePrimitive2DParticleGroup : CEnginePrimitive {
 };
 
 class CEnginePrimitiveRenderer2D { public:
-    float GetLayerDepth(long layer);                   // 0x00B4A6B0
+    float Layer2DToDistance(EEngine2DLayer layer);     // 0x00B4A6B0
 };
 extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D;   // 0x01436E7C
 
@@ -76,7 +77,7 @@ void CEngineInternalPrimitive2DParticleGroup::Update(const CEnginePrimitive& pri
     InverseTransform = group.InverseTransform;
     Pos.X = group.Position.X;
     Pos.Y = group.Position.Y;
-    Pos.Z = g_pPrimitiveRenderer2D->GetLayerDepth(group.Layer);
+    Pos.Z = g_pPrimitiveRenderer2D->Layer2DToDistance((EEngine2DLayer)group.Layer);
     BSphere = C3DBoundingSphere(Pos, 1.0f);
     DistanceFromCam = 0.0f;
     WaterStage = 2;
