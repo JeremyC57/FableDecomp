@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00635e90	RELOCATION_MATCH	290v290	PASS	CPlayer::InitModeUseProjectileWeaponThirdPerson (Ego_r.pdb)
+00636d40	RELOCATION_MATCH	264v264	PASS	CPlayer::UninitModePCProjectileWeaponThirdPersonAiming (Ego_r.pdb)
+0067d450	RELOCATION_MATCH	368v368	PASS	vector<CBlurredAttitudesDef>::operator=; __forceinline copy helpers
+0067f280	RELOCATION_MATCH	283v283	PASS	__introsort_loop<CDegradableInfo*,..,CIsHealth1GTHealth2> (bound)
+006a3950	RELOCATION_MATCH	282v282	PASS	vector<CThingGraphicArgPasser>::_M_insert_overflow (9-byte pack(1) element)
+006d4850	RELOCATION_MATCH	278v278	PASS	vector<pair<CCharString,long> >::_M_fill_insert (twin 0x0049B5A0)
+006fb240	RELOCATION_MATCH	340v340	PASS	__find_if<CEvent*, CFilter_Bind2<CIsEventIndexEqualTo,CIsEventTimeEqualTo> >
+00728df0	RELOCATION_MATCH	284v284	PASS	vector<CMeshMorphSetParts>::_M_fill_insert
+0074b77c	SKIP	-	-	not a function entry: Ghidra split of InitialiseCreatureGenerator(bool) 0x0074B770 (12-byte head + this tail)
+00780430	DIFFER	273v271	-	CTCFlammable::GetClosestFirePointTo; register allocation (closest/appearance ebp swap)
+007805d0	DIFFER	300v299	-	NFire::CFirePoint::SetAsSmoldering; conditional-temp flag in ebx vs frame word
+008066a0	RELOCATION_MATCH	352v352	PASS	__find<CTargetPoint*, CTargetPoint>
+0085eaa0	RELOCATION_MATCH	263v263	PASS	vector<vector<CThingMapCell> >::_M_insert_overflow (model 0x00765B70)
+0086cd70	RELOCATION_MATCH	287v287	PASS	vector<pair<long,CSkeletalMorph> >::_M_fill_insert (twin 0x0098D360)
+00889b20	RELOCATION_MATCH	269v269	PASS	vector<CEnvironmentThemePriorityStackEntry>::_M_insert_overflow; same-TU noinline helpers
+008aac50	DIFFER	411v411	-	__find_if<C3DVector*, unary_negate<CVectorFilter_FurtherFromPointThan> >; x87 square order in the first inline copy
+008ad5f0	RELOCATION_MATCH	272v272	PASS	vector<CScriptThing>::_M_insert_overflow (twin 0x00B6C120)
+008f6a90	RELOCATION_MATCH	281v281	PASS	vector<CHeightMapCell>::operator= (model 0x00888EE0)
+009b9320	RELOCATION_MATCH	358v358	PASS	__introsort_loop over pair<ulong,CDefClassInfo>, CKeyPairCompareLess; /Gr
+009c73e0	RELOCATION_MATCH	274v274	PASS	vector<CFileInstaller::CBufferChunk>::_M_insert_overflow; __false_type user ctor

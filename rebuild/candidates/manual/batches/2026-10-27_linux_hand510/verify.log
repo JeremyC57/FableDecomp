@@ -1,0 +1,65 @@
+addr       parity           behav  name
+00635e90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00635e90   RELOCATION_MATCH PASS   InitModeUseProjectileWeaponThirdPerson
+00636d40   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00636d40   RELOCATION_MATCH PASS   UninitModePCProjectileWeaponThirdPersonAiming
+0067d450   WARN RELOC_NAME: ?_M_clear@?$vector@VCBlurredAttitudesDef@@V?$allocator@VCBlurredAttitudesDef@@@std@@@std@@IAEXXZ -> 0067b7e0 labelled 'CRetailVector_poly0x48::~CRetailVector_poly0x48'
+0067d450   RELOCATION_MATCH PASS   operator=
+0067f280   RELOCATION_MATCH PASS   __introsort_loop
+006a3950   RELOCATION_MATCH PASS   _M_insert_overflow
+006fb240   RELOCATION_MATCH PASS   __find_if
+00728df0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@00ABU__false_type@0@@Z -> 00728b10 labelled '_global::UninitCopy_SPairLongCSecond_005bbdf1_00728b10'
+00728df0   WARN RELOC_NAME: ??1?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@XZ -> 005bc0d3 labelled '_global::StdList_Dtor_005bc0d3'
+00728df0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@IV123@@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@IABV123@@Z -> 00728b50 labelled '_global::UninitFillN_SPairLongCSecond_005bbdf1_00728b50'
+00728df0   RELOCATION_MATCH PASS   _M_fill_insert
+008066a0   RELOCATION_MATCH PASS   __find
+0085eaa0   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@PAV12@@std@@YIPAV?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@0@PAV10@00ABU__false_type@0@@Z -> 0085e3e0 labelled '_global::UninitCopy_CElement12_0085de40_0085e3e0'
+0085eaa0   WARN RELOC_NAME: ?_M_clear@?$vector@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@V?$allocator@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@@2@@std@@IAEXXZ -> 0085e9c0 labelled '_unattributed::Destroy_CRetailVector_0085e9c0'
+0085eaa0   RELOCATION_MATCH PASS   _M_insert_overflow
+0086cd70   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@@std@@PAU12@@std@@YIPAU?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@@0@PAU10@00ABU__false_type@0@@Z -> 0086abf0 labelled '_global::UninitCopy_PairLongRecord12_0086abf0'
+0086cd70   RELOCATION_MATCH PASS   _M_fill_insert
+00889b20   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@IV12@@std@@YIPAVCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@PAV12@IABV12@ABU__false_type@0@@Z -> 00889230 labelled '_global::UninitFillN_ThemeStackEntry_00889230'
+00889b20   WARN RELOC_NAME: ?_M_clear@?$vector@VCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@V?$allocator@VCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@std@@@std@@IAEXXZ -> 00889a30 labelled '_unattributed::Destroy_CRetailVector_00889a30'
+00889b20   RELOCATION_MATCH PASS   _M_insert_overflow
+008ad5f0   WARN RELOC_NAME: ??$__uninitialized_copy@PBVCScriptThing@@PAV1@@std@@YIPAVCScriptThing@@PBV1@0PAV1@ABU__false_type@0@@Z -> 008ac140 labelled '_global::UninitCopy_CScriptThing_008ac140'
+008ad5f0   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCScriptThing@@IV1@@std@@YIPAVCScriptThing@@PAV1@IABV1@ABU__false_type@0@@Z -> 008ac180 labelled '_global::UninitFillN_CScriptThing_008ac180'
+008ad5f0   RELOCATION_MATCH PASS   _M_insert_overflow
+008f6a90   RELOCATION_MATCH PASS   operator=
+009b9320   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009b9320   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@U12@HV?$CKeyPairCompareLess@KVCDefClassInfo@CDefinitionManager@@@@@std@@YIXPAU?$pair@KVCDefClassInfo@CDefinitionManager@@@0@00HV?$CKeyPairCompareLess@KVCDefClassInfo@CDefinitionManager@@@@@Z -> 009b9320 labelled 'std::introsort_partial_24byte_quicksort'
+009b9320   RELOCATION_MATCH PASS   __introsort_loop
+009c73e0   RELOCATION_MATCH PASS   _M_insert_overflow
+
+WINS: 15
+  00635e90 RELOCATION_MATCH CPlayer::?InitModeUseProjectileWeaponThirdPerson@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  00636d40 RELOCATION_MATCH CPlayer::?UninitModePCProjectileWeaponThirdPersonAiming@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+  0067d450 RELOCATION_MATCH std::vector::??4?$vector@VCBlurredAttitudesDef@@V?$allocator@VCBlurredAttitudesDef@@@std@@@std@@QAEAAV01@ABV01@@Z
+  0067f280 RELOCATION_MATCH std::??$__introsort_loop@PAVCDegradableInfo@@V1@HVCIsHealth1GTHealth2@CDegradableDef@@@std@@YIXPAVCDegradableInfo@@00HVCIsHealth1GTHealth2@CDegradableDef@@@Z
+  006a3950 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@
+  006fb240 RELOCATION_MATCH std::??$__find_if@PAVCEvent@NAnimationEvents@@
+  00728df0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@
+  008066a0 RELOCATION_MATCH std::??$__find@PAVCTargetPoint@NPlayerTargeting@@V12@@std@@
+  0085eaa0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@V?$allocator@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@@2@@std@@IAEXPAV?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z
+  0086cd70 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@U?$pair@JVCSkeletalMorph@CRandomAppearanceMorph@@@std@@
+  00889b20 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@
+  008ad5f0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z
+  008f6a90 RELOCATION_MATCH std::vector::??4?$vector@VCHeightMapCell@@V?$allocator@VCHeightMapCell@@@std@@@std@@QAEAAV01@ABV01@@Z
+  009b9320 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@KVCDefClassInfo@CDefinitionManager@@@std@@
+  009c73e0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCBufferChunk@CFileInstaller@@
+
+LANDED 15 wins into src/compiled + tests + catalog + oracle
+  CPlayer_InitModeUseProjectileWeaponThirdPerson_00635e90
+  CPlayer_UninitModePCProjectileWeaponThirdPersonAiming_00636d40
+  stdvector_operator_0067d450
+  std_introsortloop_0067f280
+  stdvector_Minsertoverflow_006a3950
+  std_findif_006fb240
+  stdvector_Mfillinsert_00728df0
+  std_find_008066a0
+  stdvector_Minsertoverflow_0085eaa0
+  stdvector_Mfillinsert_0086cd70
+  stdvector_Minsertoverflow_00889b20
+  stdvector_Minsertoverflow_008ad5f0
+  stdvector_operator_008f6a90
+  std_introsortloop_009b9320
+  stdvector_Minsertoverflow_009c73e0

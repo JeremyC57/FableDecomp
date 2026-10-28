@@ -7,8 +7,8 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 ## State
 - Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **49,920 rows**: **49,888 of 57,267 known
   functions (87.1%)**, or 43,317 of the original 49,568 (87.4%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
-  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): chunks 510 and 511 (256-512 bytes) running (509: 17 of 20, 0x0062CF90 held on the IS_THING_ALIVE twin identity) (485-502, the singles under
-  128 bytes, landed 671 of 713; 503-508 151 of 180); chunk 512 queued (20 rows, 256-512 bytes), then 513-534 (557 re-queued orphans: chunk_history rows never landed, parked or skipped; 513-520 under 128 bytes, 521-531 128-512, 532-534 512-1024) (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
+  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): chunks 511 and 512 (256-512 bytes) running (509-510: 32 of 40; 0x0062CF90 and 0x006D4850 held in pending/*/held on binding conflicts) (485-502, the singles under
+  128 bytes, landed 671 of 713; 503-508 151 of 180); chunks 513-534 queued (557 re-queued orphans: chunk_history rows never landed, parked or skipped; 513-520 under 128 bytes, 521-531 128-512, 532-534 512-1024) (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by
   default, 4035 via `--qfe`.
 

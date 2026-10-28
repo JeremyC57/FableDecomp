@@ -352358,6 +352358,112 @@ $catalog = @(
         TestSource = '00/63/CPlayer_UninitModeUseProjectileWeapon_00635d70_test.cpp'
         PassPattern = '00635d70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00635e90'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_InitModeUseProjectileWeaponThirdPerson_00635e90.cpp'
+        TestSource = '00/63/CPlayer_InitModeUseProjectileWeaponThirdPerson_00635e90_test.cpp'
+        PassPattern = '00635e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00636d40'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_UninitModePCProjectileWeaponThirdPersonAiming_00636d40.cpp'
+        TestSource = '00/63/CPlayer_UninitModePCProjectileWeaponThirdPersonAiming_00636d40_test.cpp'
+        PassPattern = '00636d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067d450'
+        Module = 'std::vector'
+        Source = '00/67/stdvector_operator_0067d450.cpp'
+        TestSource = '00/67/stdvector_operator_0067d450_test.cpp'
+        PassPattern = '0067d450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067f280'
+        Module = 'std'
+        Source = '00/67/std_introsortloop_0067f280.cpp'
+        TestSource = '00/67/std_introsortloop_0067f280_test.cpp'
+        PassPattern = '0067f280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a3950'
+        Module = 'std::vector'
+        Source = '00/6a/stdvector_Minsertoverflow_006a3950.cpp'
+        TestSource = '00/6a/stdvector_Minsertoverflow_006a3950_test.cpp'
+        PassPattern = '006a3950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fb240'
+        Module = 'std'
+        Source = '00/6f/std_findif_006fb240.cpp'
+        TestSource = '00/6f/std_findif_006fb240_test.cpp'
+        PassPattern = '006fb240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00728df0'
+        Module = 'std::vector'
+        Source = '00/72/stdvector_Mfillinsert_00728df0.cpp'
+        TestSource = '00/72/stdvector_Mfillinsert_00728df0_test.cpp'
+        PassPattern = '00728df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008066a0'
+        Module = 'std'
+        Source = '00/80/std_find_008066a0.cpp'
+        TestSource = '00/80/std_find_008066a0_test.cpp'
+        PassPattern = '008066a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085eaa0'
+        Module = 'std::vector'
+        Source = '00/85/stdvector_Minsertoverflow_0085eaa0.cpp'
+        TestSource = '00/85/stdvector_Minsertoverflow_0085eaa0_test.cpp'
+        PassPattern = '0085eaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086cd70'
+        Module = 'std::vector'
+        Source = '00/86/stdvector_Mfillinsert_0086cd70.cpp'
+        TestSource = '00/86/stdvector_Mfillinsert_0086cd70_test.cpp'
+        PassPattern = '0086cd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00889b20'
+        Module = 'std::vector'
+        Source = '00/88/stdvector_Minsertoverflow_00889b20.cpp'
+        TestSource = '00/88/stdvector_Minsertoverflow_00889b20_test.cpp'
+        PassPattern = '00889b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ad5f0'
+        Module = 'std::vector'
+        Source = '00/8a/stdvector_Minsertoverflow_008ad5f0.cpp'
+        TestSource = '00/8a/stdvector_Minsertoverflow_008ad5f0_test.cpp'
+        PassPattern = '008ad5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f6a90'
+        Module = 'std::vector'
+        Source = '00/8f/stdvector_operator_008f6a90.cpp'
+        TestSource = '00/8f/stdvector_operator_008f6a90_test.cpp'
+        PassPattern = '008f6a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b9320'
+        Module = 'std'
+        Source = '00/9b/std_introsortloop_009b9320.cpp'
+        TestSource = '00/9b/std_introsortloop_009b9320_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '009b9320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c73e0'
+        Module = 'std::vector'
+        Source = '00/9c/stdvector_Minsertoverflow_009c73e0.cpp'
+        TestSource = '00/9c/stdvector_Minsertoverflow_009c73e0_test.cpp'
+        PassPattern = '009c73e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+00780430	DIFFER	273v271	-	CTCFlammable::GetClosestFirePointTo; register allocation (closest/appearance ebp swap)
+007805d0	DIFFER	300v299	-	NFire::CFirePoint::SetAsSmoldering; conditional-temp flag in ebx vs frame word
+008aac50	DIFFER	411v411	-	__find_if<C3DVector*, unary_negate<CVectorFilter_FurtherFromPointThan> >; x87 square order in the first inline copy
+006d4850	HELD	-	PASS	RELOCATION_MATCH on the lane; held from landing: binds __copy_backward<pair<CCharString,long>*> to 0x006D3610 while landed 0x009B5990 binds it to 0x009B1E20
