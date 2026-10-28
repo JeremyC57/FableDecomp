@@ -35207,3 +35207,10 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ??0CCreatureAction_KrakenLowAttackOutOf@?A0xfe44b52e@@QAE@AAVCThingCreatureBase@@@Z	00925680	00924520
 ?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@AAVCParticleSimulation@@MM@Z	00ae1600	00b812f0
 ?PeekStaticMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z	00a24280	00b9dfc0
+??0CWideString@@QAE@PB_W@Z	0099b6b0	00492bab
+?pop_front@?$deque@VCSetTextInfo@CSubtitleRenderer@@V?$allocator@VCSetTextInfo@CSubtitleRenderer@@@std@@@std@@QAEXXZ	00493cf5	00492bab
+??H@YI?AVCWideString@@ABV0@PB_W@Z	0099bf30	0049ef50
+?IsPathFile@CAFile@@SI_NABVCWideString@@@Z	00999a30	0049ef50
+?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PA_W@Z	00999850	0049ef50
+?StartFileScan@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PA_W@Z	00999760	0049ef50
+?compare@?$__char_traits_base@_WG@std@@SAHPB_W0I@Z	00403c60	0049ef50

@@ -1,0 +1,3 @@
+address	name	evidence
+00492bab	CSubtitleRenderer::Clear: queue accessed through the cast expression each time	proven per batch 2026-10-27_linux_hand537 NOTES.md (chunk 537)
+0049ef50	CWorld::GetPathNameForFileName: STLport inline operator== forms + /Zc:wchar_t + 262-wchar buffers	proven per batch 2026-10-27_linux_hand537 NOTES.md (chunk 537)

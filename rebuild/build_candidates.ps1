@@ -362124,6 +362124,22 @@ $catalog = @(
         TestSource = '00/b9/CEngineInternalPrimitive2DStaticMesh_Update_00b9dfc0_test.cpp'
         PassPattern = '00b9dfc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00492bab'
+        Module = 'CSubtitleRenderer'
+        Source = '00/49/CSubtitleRenderer_Clear_00492bab.cpp'
+        TestSource = '00/49/CSubtitleRenderer_Clear_00492bab_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS /Zc:wchar_t'
+        PassPattern = '00492bab_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049ef50'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_GetPathNameForFileName_0049ef50.cpp'
+        TestSource = '00/49/CWorld_GetPathNameForFileName_0049ef50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS /Zc:wchar_t'
+        PassPattern = '0049ef50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

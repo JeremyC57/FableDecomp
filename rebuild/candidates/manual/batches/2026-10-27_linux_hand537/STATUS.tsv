@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+0040cec0	DIFFER	984v977	-	CUserProfileManager ctor: frame slots + defaults-release register (dec [ecx+4];jne); names fixed (CBaseClassNonCopyable, CArray, GetDisplayManager); lane gap: regalloc/frame-slot
+0047e651	DIFFER	752v752	-	CTCInGameMenu::VideoOptionsChanged: ChangePosition push ecx/fsubp scheduling swap; names fixed; lane gap: scheduling
+0047e9ae	DIFFER	860v860	-	CTCInGameMenu::GlobalUpdate (UAE): same push ecx/fsubp swap; names fixed; lane gap: scheduling
+0047f30f	DIFFER	636v636	-	CTCInGameMenu::VideoOptionsNotAccepted: same push ecx/fsubp swap; names fixed; lane gap: scheduling
+00489d40	DIFFER	815v815	-	CPlayer::CreateCharacter: registers now agree, frame slots of three C3DVector temps differ; lane gap: frame-slot
+00492bab	RELOCATION_MATCH	672v672	PASS	CSubtitleRenderer::Clear: queue accessed through the cast expression each time (no queue& local)
+0049be90	DIFFER	806v808	-	CParticleEnvironmentInteraction::IsParticleCollidingAt (UBE): regalloc (hitPos edi / iterator ebx); names fixed; lane gap: regalloc
+0049ef50	RELOCATION_MATCH	553v553	PASS	CWorld::GetPathNameForFileName: STLport inline operator== forms + /Zc:wchar_t + 262-wchar buffers

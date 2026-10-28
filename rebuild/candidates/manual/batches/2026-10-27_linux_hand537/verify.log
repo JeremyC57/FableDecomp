@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00492bab   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00492bab   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PB_W@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00492bab   RELOCATION_MATCH PASS   Clear
+0049ef50   WARN RELOC_NAME: ?compare@?$__char_traits_base@_WG@std@@SAHPB_W0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0049ef50   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PA_W@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+0049ef50   RELOCATION_MATCH PASS   GetPathNameForFileName
+
+WINS: 2
+  00492bab RELOCATION_MATCH CSubtitleRenderer::?Clear@CSubtitleRenderer@@QAEX_N@Z
+  0049ef50 RELOCATION_MATCH CWorld::?GetPathNameForFileName@CWorld@@QBE?AVCWideString@@ABV2@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CSubtitleRenderer_Clear_00492bab
+  CWorld_GetPathNameForFileName_0049ef50
