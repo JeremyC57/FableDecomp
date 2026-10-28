@@ -7,8 +7,8 @@ hashes, standing rules, landing/pass workflow, open work). Previous one-page han
 ## State
 - Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. Catalog **49,920 rows**: **49,888 of 57,267 known
   functions (87.1%)**, or 43,317 of the original 49,568 (87.4%); the old "rows / 49,568" ratio mixed the 7,699 gap-scan
-  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): re-queue chunks 513 and 514 running (509-512, 256-512 bytes: 62 of 80; 0x0062CF90 held in pending/2026-10-27_linux_hand509/held: IS_THING_ALIVE twin class not provable; 0x006D4850, 0x00A70CB0, 0x00A74AC0 proven and landed 2026-10-28) (485-502, the singles under
-  128 bytes, landed 671 of 713; 503-508 151 of 180); chunks 515-534 queued (557 re-queued orphans: chunk_history rows never landed, parked or skipped; 513-520 under 128 bytes, 521-531 128-512, 532-534 512-1024) (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
+  functions into the count but not the denominator (FINDINGS_LOG 2026-10-27) (`rebuild/oracles/auto-re-candidates.tsv`). Agents (owner: at most two authoring at a time): re-queue chunks 514 and 515 running (513, re-queue under 128 bytes: 32 of 40) (509-512, 256-512 bytes: 62 of 80; 0x0062CF90 held in pending/2026-10-27_linux_hand509/held: IS_THING_ALIVE twin class not provable; 0x006D4850, 0x00A70CB0, 0x00A74AC0 proven and landed 2026-10-28) (485-502, the singles under
+  128 bytes, landed 671 of 713; 503-508 151 of 180); chunks 516-534 queued (557 re-queued orphans: chunk_history rows never landed, parked or skipped; 513-520 under 128 bytes, 521-531 128-512, 532-534 512-1024) (chunk_history); family pass 8 (chunk 957, 979 rows) reserved for an external ChatGPT session.
 - Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Linux lane runs 3077 by
   default, 4035 via `--qfe`.
 

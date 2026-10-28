@@ -352696,6 +352696,230 @@ $catalog = @(
         TestSource = '00/6d/std_Mfillinsert_006d4850_test.cpp'
         PassPattern = '006d4850_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00407330'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_IsTutorialCategoryGiven_00407330.cpp'
+        TestSource = '00/40/CUserProfileManager_IsTutorialCategoryGiven_00407330_test.cpp'
+        PassPattern = '00407330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00436d30'
+        Module = 'CEngineManager'
+        Source = '00/43/CEngineManager_CEngineManager_00436d30.cpp'
+        TestSource = '00/43/CEngineManager_CEngineManager_00436d30_test.cpp'
+        PassPattern = '00436d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004525b3'
+        Module = 'CVillagePeopleDef'
+        Source = '00/45/CVillagePeopleDef_CVillagePeopleDef_004525b3.cpp'
+        TestSource = '00/45/CVillagePeopleDef_CVillagePeopleDef_004525b3_test.cpp'
+        PassPattern = '004525b3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455da3'
+        Module = 'CCombatTypeDef'
+        Source = '00/45/CCombatTypeDef_CCombatTypeDef_00455da3.cpp'
+        TestSource = '00/45/CCombatTypeDef_CCombatTypeDef_00455da3_test.cpp'
+        PassPattern = '00455da3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045604d'
+        Module = 'CHeroAbilityDef'
+        Source = '00/45/CHeroAbilityDef_CHeroAbilityDef_0045604d.cpp'
+        TestSource = '00/45/CHeroAbilityDef_CHeroAbilityDef_0045604d_test.cpp'
+        PassPattern = '0045604d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045647d'
+        Module = 'CEntitySoundDef'
+        Source = '00/45/CEntitySoundDef_CEntitySoundDef_0045647d.cpp'
+        TestSource = '00/45/CEntitySoundDef_CEntitySoundDef_0045647d_test.cpp'
+        PassPattern = '0045647d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046f6dc'
+        Module = 'CLensFlareElementDef'
+        Source = '00/46/CLensFlareElementDef_CLensFlareElementDef_0046f6dc.cpp'
+        TestSource = '00/46/CLensFlareElementDef_CLensFlareElementDef_0046f6dc_test.cpp'
+        PassPattern = '0046f6dc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049b9a0'
+        Module = 'CFrameRateSmoother'
+        Source = '00/49/CFrameRateSmoother_CalculateSmoothedTime_0049b9a0.cpp'
+        TestSource = '00/49/CFrameRateSmoother_CalculateSmoothedTime_0049b9a0_test.cpp'
+        PassPattern = '0049b9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049ba70'
+        Module = 'CFrameRateSmoother'
+        Source = '00/49/CFrameRateSmoother_Init_0049ba70.cpp'
+        TestSource = '00/49/CFrameRateSmoother_Init_0049ba70_test.cpp'
+        PassPattern = '0049ba70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004afd80'
+        Module = 'CQuestManager::CActiveQuest'
+        Source = '00/4a/CQuestManagerCActiveQuest_ContainsRegion_004afd80.cpp'
+        TestSource = '00/4a/CQuestManagerCActiveQuest_ContainsRegion_004afd80_test.cpp'
+        PassPattern = '004afd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c41d0'
+        Module = 'std::_Rb_tree<void*, pair<void* const, CRGBColour>, ...>'
+        Source = '00/4c/stdRbtreevoidpairvoidconstCRGBColour_Mcreatenode_004c41d0.cpp'
+        TestSource = '00/4c/stdRbtreevoidpairvoidconstCRGBColour_Mcreatenode_004c41d0_test.cpp'
+        PassPattern = '004c41d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c6170'
+        Module = 'CBulletTimeManager'
+        Source = '00/4c/CBulletTimeManager_SetBulletTimeSlowdownMultiplier_004c6170.cpp'
+        TestSource = '00/4c/CBulletTimeManager_SetBulletTimeSlowdownMultiplier_004c6170_test.cpp'
+        PassPattern = '004c6170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e1195'
+        Module = 'CTavernGameCardBaseDef'
+        Source = '00/4e/CTavernGameCardBaseDef_CTavernGameCardBaseDef_004e1195.cpp'
+        TestSource = '00/4e/CTavernGameCardBaseDef_CTavernGameCardBaseDef_004e1195_test.cpp'
+        PassPattern = '004e1195_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e1db5'
+        Module = 'std'
+        Source = '00/4e/std_popheapaux_004e1db5.cpp'
+        TestSource = '00/4e/std_popheapaux_004e1db5_test.cpp'
+        PassPattern = '004e1db5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ebba3'
+        Module = 'CObjectAugmentationsDef'
+        Source = '00/4e/CObjectAugmentationsDef_CObjectAugmentationsDef_004ebba3.cpp'
+        TestSource = '00/4e/CObjectAugmentationsDef_CObjectAugmentationsDef_004ebba3_test.cpp'
+        PassPattern = '004ebba3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051c760'
+        Module = 'CNavigationAreaUpdate::CNavigationLayerUpdate'
+        Source = '00/51/CNavigationAreaUpdateCNavigationLayerUpdate_scalardeletingdestructor_0051c760.cpp'
+        TestSource = '00/51/CNavigationAreaUpdateCNavigationLayerUpdate_scalardeletingdestructor_0051c760_test.cpp'
+        PassPattern = '0051c760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528930'
+        Module = 'std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CPersistedDeadEntity>, ...>'
+        Source = '00/52/stdRbtreeunsignedint64pairconstunsignedint64CPersistedDeadEntity_Mclonenode_00528930.cpp'
+        TestSource = '00/52/stdRbtreeunsignedint64pairconstunsignedint64CPersistedDeadEntity_Mclonenode_00528930_test.cpp'
+        PassPattern = '00528930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052ab20'
+        Module = 'CThingPlayerCreature'
+        Source = '00/52/CThingPlayerCreature_CThingPlayerCreature_0052ab20.cpp'
+        TestSource = '00/52/CThingPlayerCreature_CThingPlayerCreature_0052ab20_test.cpp'
+        PassPattern = '0052ab20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005383dd'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_AddScrollingChild_005383dd.cpp'
+        TestSource = '00/53/NUISystemCList_AddScrollingChild_005383dd_test.cpp'
+        PassPattern = '005383dd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d000'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_MakeUnavailableDynamically_0053d000.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_MakeUnavailableDynamically_0053d000_test.cpp'
+        PassPattern = '0053d000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d060'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_MakeAvailable_0053d060.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_MakeAvailable_0053d060_test.cpp'
+        PassPattern = '0053d060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053d0c0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_MakeAvailableDynamically_0053d0c0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_MakeAvailableDynamically_0053d0c0_test.cpp'
+        PassPattern = '0053d0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540120'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_ProcessEvent_00540120.cpp'
+        TestSource = '00/54/NUISystemCEditBox_ProcessEvent_00540120_test.cpp'
+        PassPattern = '00540120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005415f0'
+        Module = 'NUISystem::CDynamicList'
+        Source = '00/54/NUISystemCDynamicList_CDynamicList_005415f0.cpp'
+        TestSource = '00/54/NUISystemCDynamicList_CDynamicList_005415f0_test.cpp'
+        PassPattern = '005415f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055bae0'
+        Module = 'NUISystem::CHoverable'
+        Source = '00/55/NUISystemCHoverable_OnHovered_0055bae0.cpp'
+        TestSource = '00/55/NUISystemCHoverable_OnHovered_0055bae0_test.cpp'
+        PassPattern = '0055bae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bde96'
+        Module = 'NInventory::CCategory'
+        Source = '00/5b/NInventoryCCategory_GetNumberOfItemsOfTypeInCategory_005bde96.cpp'
+        TestSource = '00/5b/NInventoryCCategory_GetNumberOfItemsOfTypeInCategory_005bde96_test.cpp'
+        PassPattern = '005bde96_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bf00b'
+        Module = 'NInventory::CItem'
+        Source = '00/5b/NInventoryCItem_RemoveItem_005bf00b.cpp'
+        TestSource = '00/5b/NInventoryCItem_RemoveItem_005bf00b_test.cpp'
+        PassPattern = '005bf00b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bf556'
+        Module = 'NInventory::CItem'
+        Source = '00/5b/NInventoryCItem_AddItem_005bf556.cpp'
+        TestSource = '00/5b/NInventoryCItem_AddItem_005bf556_test.cpp'
+        PassPattern = '005bf556_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c08e6'
+        Module = 'NInventory::CItem'
+        Source = '00/5c/NInventoryCItem_CItem_005c08e6.cpp'
+        TestSource = '00/5c/NInventoryCItem_CItem_005c08e6_test.cpp'
+        PassPattern = '005c08e6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c0c24'
+        Module = 'NInventory::CItem'
+        Source = '00/5c/NInventoryCItem_operator_005c0c24.cpp'
+        TestSource = '00/5c/NInventoryCItem_operator_005c0c24_test.cpp'
+        PassPattern = '005c0c24_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db4c0'
+        Module = 'CAnimComponentFollowingOnAnim'
+        Source = '00/5d/CAnimComponentFollowingOnAnim_Initialise_005db4c0.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnim_Initialise_005db4c0_test.cpp'
+        PassPattern = '005db4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db530'
+        Module = 'CAnimComponentFollowingOnAnimFilter'
+        Source = '00/5d/CAnimComponentFollowingOnAnimFilter_Initialise_005db530.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnimFilter_Initialise_005db530_test.cpp'
+        PassPattern = '005db530_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

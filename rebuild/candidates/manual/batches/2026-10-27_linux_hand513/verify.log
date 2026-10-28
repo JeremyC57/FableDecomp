@@ -1,0 +1,120 @@
+addr       parity           behav  name
+00407330   WARN RELOC_NAME: ??$__find@PBW4ETutorialCategory@@W41@@std@@YIPBW4ETutorialCategory@@PBW41@0ABW41@ABUrandom_access_iterator_tag@0@@Z -> 0040e170 labelled 'Array_LinearSearchInt'
+00407330   RELOCATION_MATCH PASS   IsTutorialCategoryGiven
+00436d30   RELOCATION_MATCH PASS   CEngineManager
+004525b3   RELOCATION_MATCH PASS   CVillagePeopleDef
+00455da3   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+00455da3   RELOCATION_MATCH PASS   CCombatTypeDef
+0045604d   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+0045604d   RELOCATION_MATCH PASS   CHeroAbilityDef
+0045647d   RELOCATION_MATCH PASS   CEntitySoundDef
+0046f6dc   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+0046f6dc   RELOCATION_MATCH PASS   CLensFlareElementDef
+0049b9a0   RELOCATION_MATCH PASS   CalculateSmoothedTime
+0049ba70   RELOCATION_MATCH PASS   Init
+004afd80   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004afd80   RELOCATION_MATCH PASS   ContainsRegion
+004c41d0   RELOCATION_MATCH PASS   _M_create_node
+004c6170   RELOCATION_MATCH PASS   SetBulletTimeSlowdownMultiplier
+004e1195   RELOCATION_MATCH PASS   CTavernGameCardBaseDef
+004e1db5   WARN SHARED_HEADER_AVAILABLE CTCBase
+004e1db5   RELOCATION_MATCH PASS   __pop_heap_aux
+004ebba3   RELOCATION_MATCH PASS   CObjectAugmentationsDef
+0051c760   WARN RELOC_NAME: ??$__destroy_aux@PAVCSwitchableBlockage@CNavigationAreaUpdate@@@std@@YIXPAVCSwitchableBlockage@CNavigationAreaUpdate@@0ABU__false_type@0@@Z -> 00519ef0 labelled 'std::__destroy_aux<CNavigationAreaUpdate::CSwitchableBlockage*>'
+0051c760   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00528930   RELOCATION_MATCH PASS   _M_clone_node
+0052ab20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0052ab20   RELOCATION_MATCH PASS   CThingPlayerCreature
+005383dd   RELOCATION_MATCH PASS   AddScrollingChild
+0053d000   RELOCATION_MATCH PASS   MakeUnavailableDynamically
+0053d060   RELOCATION_MATCH PASS   MakeAvailable
+0053d0c0   RELOCATION_MATCH PASS   MakeAvailableDynamically
+00540120   WARN SHARED_HEADER_AVAILABLE CManager
+00540120   WARN SHARED_HEADER_AVAILABLE CObserver
+00540120   RELOCATION_MATCH PASS   ProcessEvent
+005415f0   WARN SHARED_HEADER_AVAILABLE CObserver
+005415f0   RELOCATION_MATCH PASS   CDynamicList
+0055bae0   MATCH            PASS   OnHovered
+005bde96   WARN SHARED_HEADER_AVAILABLE CItem
+005bde96   WARN SHARED_HEADER_AVAILABLE CCategory
+005bde96   WARN RELOC_NAME: ??$find_if@PBVCItem@NInventory@@V?$binder2nd@V?$const_mem_fun1_ref_t@_NVCItem@NInventory@@J@std@@@std@@@std@@YIPBVCItem@NInventory@@PBV12@0V?$binder2nd@V?$const_mem_fun1_ref_t@_NVCItem@NInventory@@J@std@@@0@@Z -> 005c13cd labelled 'std::vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_>::_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>'
+005bde96   RELOCATION_MATCH PASS   GetNumberOfItemsOfTypeInCategory
+005bf00b   WARN SHARED_HEADER_AVAILABLE CItem
+005bf00b   WARN RELOC_NAME: ?ReleaseData@?$CCountedPointer@VCPerItemData@NInventory@@@@QAEXXZ -> 005c04bf labelled '_global::CCountedPointer_Release_005c04bf'
+005bf00b   RELOCATION_MATCH PASS   RemoveItem
+005bf556   WARN SHARED_HEADER_AVAILABLE CItem
+005bf556   RELOCATION_MATCH PASS   AddItem
+005c08e6   WARN SHARED_HEADER_AVAILABLE CItem
+005c08e6   RELOCATION_MATCH PASS   CItem
+005c0c24   WARN SHARED_HEADER_AVAILABLE CItem
+005c0c24   RELOCATION_MATCH PASS   operator=
+005db4c0   RELOCATION_MATCH PASS   Initialise
+005db530   RELOCATION_MATCH PASS   Initialise
+
+WINS: 32
+  00407330 RELOCATION_MATCH CUserProfileManager::?IsTutorialCategoryGiven@CUserProfileManager@@QBE_NW4ETutorialCategory@@@Z
+  00436d30 RELOCATION_MATCH CEngineManager::??0CEngineManager@@QAE@XZ
+  004525b3 RELOCATION_MATCH CVillagePeopleDef::??0CVillagePeopleDef@@QAE@XZ
+  00455da3 RELOCATION_MATCH CCombatTypeDef::??0CCombatTypeDef@@QAE@XZ
+  0045604d RELOCATION_MATCH CHeroAbilityDef::??0CHeroAbilityDef@@QAE@XZ
+  0045647d RELOCATION_MATCH CEntitySoundDef::??0CEntitySoundDef@@QAE@XZ
+  0046f6dc RELOCATION_MATCH CLensFlareElementDef::??0CLensFlareElementDef@@QAE@ABV0@@Z
+  0049b9a0 RELOCATION_MATCH CFrameRateSmoother::?CalculateSmoothedTime@CFrameRateSmoother@@AAEXXZ
+  0049ba70 RELOCATION_MATCH CFrameRateSmoother::?Init@CFrameRateSmoother@@QAE_NJJ@Z
+  004afd80 RELOCATION_MATCH CQuestManager::CActiveQuest::?ContainsRegion@CActiveQuest@CQuestManager@@QBE_NABVCRegion@@@Z
+  004c41d0 RELOCATION_MATCH std::_Rb_tree<void*, pair<void* const, CRGBColour>, ...>::?_M_create_node@?$_Rb_tree@PAXU?$pair@QAXVCRGBColour@@@std@@U?$_Select1st@U?$pair@QAXVCRGBColour@@@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXVCRGBColour@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@QAXVCRGBColour@@@std@@@2@ABU?$pair@QAXVCRGBColour@@@2@@Z
+  004c6170 RELOCATION_MATCH CBulletTimeManager::?SetBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXJPAXM@Z
+  004e1195 RELOCATION_MATCH CTavernGameCardBaseDef::??0CTavernGameCardBaseDef@@QAE@XZ
+  004e1db5 RELOCATION_MATCH std::??$__pop_heap_aux@PAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@U12@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@std@@
+  004ebba3 RELOCATION_MATCH CObjectAugmentationsDef::??0CObjectAugmentationsDef@@QAE@XZ
+  0051c760 RELOCATION_MATCH CNavigationAreaUpdate::CNavigationLayerUpdate::??_GCNavigationLayerUpdate@CNavigationAreaUpdate@@QAEPAXI@Z
+  00528930 RELOCATION_MATCH std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CPersistedDeadEntity>, ...>::?_M_clone_node@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@
+  0052ab20 RELOCATION_MATCH CThingPlayerCreature::??0CThingPlayerCreature@@QAE@XZ
+  005383dd RELOCATION_MATCH NUISystem::CList::?AddScrollingChild@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  0053d000 RELOCATION_MATCH NUISystem::CMenuEntry::?MakeUnavailableDynamically@CMenuEntry@NUISystem@@UAEXXZ
+  0053d060 RELOCATION_MATCH NUISystem::CMenuEntry::?MakeAvailable@CMenuEntry@NUISystem@@UAEXXZ
+  0053d0c0 RELOCATION_MATCH NUISystem::CMenuEntry::?MakeAvailableDynamically@CMenuEntry@NUISystem@@UAEXXZ
+  00540120 RELOCATION_MATCH NUISystem::CEditBox::?ProcessEvent@CEditBox@NUISystem@@UAEXW4EEventType@2@@Z
+  005415f0 RELOCATION_MATCH NUISystem::CDynamicList::??0CDynamicList@NUISystem@@QAE@J@Z
+  0055bae0 MATCH NUISystem::CHoverable::?OnHovered@CHoverable@NUISystem@@UAEXXZ
+  005bde96 RELOCATION_MATCH NInventory::CCategory::?GetNumberOfItemsOfTypeInCategory@CCategory@NInventory@@QBEJJ@Z
+  005bf00b RELOCATION_MATCH NInventory::CItem::?RemoveItem@CItem@NInventory@@QAEXJ@Z
+  005bf556 RELOCATION_MATCH NInventory::CItem::?AddItem@CItem@NInventory@@QAEXAAVCThing@@J@Z
+  005c08e6 RELOCATION_MATCH NInventory::CItem::??0CItem@NInventory@@QAE@ABV01@@Z
+  005c0c24 RELOCATION_MATCH NInventory::CItem::??4CItem@NInventory@@QAEAAV01@ABV01@@Z
+  005db4c0 RELOCATION_MATCH CAnimComponentFollowingOnAnim::?Initialise@CAnimComponentFollowingOnAnim@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005db530 RELOCATION_MATCH CAnimComponentFollowingOnAnimFilter::?Initialise@CAnimComponentFollowingOnAnimFilter@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+
+LANDED 32 wins into src/compiled + tests + catalog + oracle
+  CUserProfileManager_IsTutorialCategoryGiven_00407330
+  CEngineManager_CEngineManager_00436d30
+  CVillagePeopleDef_CVillagePeopleDef_004525b3
+  CCombatTypeDef_CCombatTypeDef_00455da3
+  CHeroAbilityDef_CHeroAbilityDef_0045604d
+  CEntitySoundDef_CEntitySoundDef_0045647d
+  CLensFlareElementDef_CLensFlareElementDef_0046f6dc
+  CFrameRateSmoother_CalculateSmoothedTime_0049b9a0
+  CFrameRateSmoother_Init_0049ba70
+  CQuestManagerCActiveQuest_ContainsRegion_004afd80
+  stdRbtreevoidpairvoidconstCRGBColour_Mcreatenode_004c41d0
+  CBulletTimeManager_SetBulletTimeSlowdownMultiplier_004c6170
+  CTavernGameCardBaseDef_CTavernGameCardBaseDef_004e1195
+  std_popheapaux_004e1db5
+  CObjectAugmentationsDef_CObjectAugmentationsDef_004ebba3
+  CNavigationAreaUpdateCNavigationLayerUpdate_scalardeletingdestructor_0051c760
+  stdRbtreeunsignedint64pairconstunsignedint64CPersistedDeadEntity_Mclonenode_00528930
+  CThingPlayerCreature_CThingPlayerCreature_0052ab20
+  NUISystemCList_AddScrollingChild_005383dd
+  NUISystemCMenuEntry_MakeUnavailableDynamically_0053d000
+  NUISystemCMenuEntry_MakeAvailable_0053d060
+  NUISystemCMenuEntry_MakeAvailableDynamically_0053d0c0
+  NUISystemCEditBox_ProcessEvent_00540120
+  NUISystemCDynamicList_CDynamicList_005415f0
+  NUISystemCHoverable_OnHovered_0055bae0
+  NInventoryCCategory_GetNumberOfItemsOfTypeInCategory_005bde96
+  NInventoryCItem_RemoveItem_005bf00b
+  NInventoryCItem_AddItem_005bf556
+  NInventoryCItem_CItem_005c08e6
+  NInventoryCItem_operator_005c0c24
+  CAnimComponentFollowingOnAnim_Initialise_005db4c0
+  CAnimComponentFollowingOnAnimFilter_Initialise_005db530

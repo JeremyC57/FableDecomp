@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00407330	RELOCATION_MATCH	43	PASS	CUserProfileManager::IsTutorialCategoryGiven (proven); same-TU noinline __find homes the tag
+0041db1d	DIFFER	71	-	DIFFER(71v71) -- `push eax ; mov ecx,esi` (lane) vs retail `mov ecx,esi ; push eax` before CreateComponent(long) 0x0041D21B; everything else byte-exact
+00436d30	RELOCATION_MATCH	47	PASS	CEngineManager ctor (proven)
+0044c6c2	DIFFER	93	-	DIFFER(93v93) -- `push 80000h ; mov ecx,esi` for SetMaximumMemory scheduled above the vtable and +0xD0..+0xD8 stores (retail: after the +0xD8 store); all else byte-exact
+004525b3	RELOCATION_MATCH	48	PASS	CVillagePeopleDef ctor (proven, RTTI vtable)
+00455da3	RELOCATION_MATCH	58	PASS	CCombatTypeDef ctor (proven, RTTI vtable)
+0045604d	RELOCATION_MATCH	58	PASS	CHeroAbilityDef ctor (proven, RTTI vtable)
+0045647d	RELOCATION_MATCH	52	PASS	CEntitySoundDef ctor (proven, RTTI vtable)
+0046f6dc	RELOCATION_MATCH	71	PASS	CLensFlareElementDef copy ctor (proven); __forceinline CRGBColour copy in /Os
+0049b9a0	RELOCATION_MATCH	59	PASS	CFrameRateSmoother::CalculateSmoothedTime (proven, private)
+0049ba70	RELOCATION_MATCH	85	PASS	CFrameRateSmoother::Init (proven)
+004afd80	RELOCATION_MATCH	41	PASS	CQuestManager::CActiveQuest::ContainsRegion (proven); `? true : false`
+004c41d0	RELOCATION_MATCH	68	PASS	_Rb_tree<void*,pair<void* const,CRGBColour>>::_M_create_node (proven by callers)
+004c6170	RELOCATION_MATCH	81	PASS	CBulletTimeManager::SetBulletTimeSlowdownMultiplier (proven)
+004e1195	RELOCATION_MATCH	40	PASS	CTavernGameCardBaseDef ctor (proven, RTTI vtable)
+004e1db5	RELOCATION_MATCH	39	PASS	std::__pop_heap_aux<pair<CCharString,CTCBase::CRegisteredTCInfo>*> (proven by caller)
+004ebba3	RELOCATION_MATCH	73	PASS	CObjectAugmentationsDef ctor (proven, RTTI vtable)
+0051c760	RELOCATION_MATCH	72	PASS	CNavigationAreaUpdate::CNavigationLayerUpdate ??_G (probable)
+00525d90	DIFFER	74	-	DIFFER(105v74) -- retail has no zero stores of the three vector words, keeps the malloc block in esi across OnLevelsUnload and frees it with no null test or member reload; STLport 4.6 vector(1, level) gives all three
+00528930	RELOCATION_MATCH	81	PASS	_Rb_tree<u64,pair<const u64,CPersistedDeadEntity>>::_M_clone_node (proven by callers)
+0052ab20	RELOCATION_MATCH	93	PASS	CThingPlayerCreature ctor (proven)
+005383dd	RELOCATION_MATCH	94	PASS	NUISystem::CList::AddScrollingChild (proven, vtable slot 144)
+0053848f	DIFFER	78	-	DIFFER(67v78) -- retail keeps a dead `push ecx ; and dword ptr [ebp-4],0` (an EH state store with no EH frame) and holds the new list in edi (`push edi ; mov edi,eax ... mov eax,edi`); /EHsc adds the __EH_prolog frame instead
+005384dd	DIFFER	78	-	DIFFER(67v78) -- retail keeps a dead `push ecx ; and dword ptr [ebp-4],0` (an EH state store with no EH frame) and holds the new list in edi (`push edi ; mov edi,eax ... mov eax,edi`); /EHsc adds the __EH_prolog frame instead
+0053d000	RELOCATION_MATCH	94	PASS	NUISystem::CMenuEntry::MakeUnavailableDynamically (proven, slot 93); three tail-merged forwarding calls
+0053d060	RELOCATION_MATCH	94	PASS	NUISystem::CMenuEntry::MakeAvailable (proven, slot 94)
+0053d0c0	RELOCATION_MATCH	94	PASS	NUISystem::CMenuEntry::MakeAvailableDynamically (proven, slot 95; catalog said MakeAvailable)
+00540120	RELOCATION_MATCH	92	PASS	NUISystem::CEditBox::ProcessEvent (proven, CObserver-in-CEditBox slot 1)
+005415f0	RELOCATION_MATCH	90	PASS	NUISystem::CDynamicList::CDynamicList(long) (proven)
+0055bae0	MATCH	96	PASS	NUISystem::CHoverable::OnHovered (proven, slot 143; catalog CDraggableInto row)
+005bb190	DIFFER	51	-	DIFFER(49v51) -- retail destroys each value with `push 0 ; call ??_G` 0x005BAA41; the build calls the out-of-line ~CDefPointer (??1) then free.
+005bde96	RELOCATION_MATCH	43	PASS	NInventory::CCategory::GetNumberOfItemsOfTypeInCategory (proven)
+005bf00b	RELOCATION_MATCH	49	PASS	NInventory::CItem::RemoveItem (proven, FableWin.pdb); clamp via a by-reference inline helper (descriptive name)
+005bf556	RELOCATION_MATCH	78	PASS	NInventory::CItem::AddItem(CThing&, long) (proven, FableWin.pdb)
+005c08e6	RELOCATION_MATCH	43	PASS	NInventory::CItem copy ctor (probable; catalog said CEnginePrimitive2DText::operator=)
+005c0c24	RELOCATION_MATCH	43	PASS	NInventory::CItem::operator= (probable; catalog said CEnginePrimitive2DText::operator=)
+005db4c0	RELOCATION_MATCH	81	PASS	CAnimComponentFollowingOnAnim::Initialise (proven); signed length local
+005db530	RELOCATION_MATCH	81	PASS	CAnimComponentFollowingOnAnimFilter::Initialise (proven)
+005db5f0	DIFFER	56	-	DIFFER(52v56) -- retail keeps the null-string diamond of the inline length (`jne ; xor esi,esi ; jmp ; mov esi,[eax+4]`) and then re-tests the clamp (`test esi,esi ; jge`); VC7.1 here threads the null path straight onto the clamp's zero (4 bytes shorter).
+005e38c0	DIFFER	95	-	DIFFER(104v95) -- the pair temporary's release: retail `mov ecx,[esp+14h] ; test ecx,ecx ; je ; dec dword ptr [ecx+4] ; jne`; the build re-reads Object and the count after the `dec` (the temporary's address escaped to push_back).

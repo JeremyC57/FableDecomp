@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+0041db1d	DIFFER	71	-	DIFFER(71v71) -- `push eax ; mov ecx,esi` (lane) vs retail `mov ecx,esi ; push eax` before CreateComponent(long) 0x0041D21B; everything else byte-exact
+0044c6c2	DIFFER	93	-	DIFFER(93v93) -- `push 80000h ; mov ecx,esi` for SetMaximumMemory scheduled above the vtable and +0xD0..+0xD8 stores (retail: after the +0xD8 store); all else byte-exact
+00525d90	DIFFER	74	-	DIFFER(105v74) -- retail has no zero stores of the three vector words, keeps the malloc block in esi across OnLevelsUnload and frees it with no null test or member reload; STLport 4.6 vector(1, level) gives all three
+0053848f	DIFFER	78	-	DIFFER(67v78) -- retail keeps a dead `push ecx ; and dword ptr [ebp-4],0` (an EH state store with no EH frame) and holds the new list in edi (`push edi ; mov edi,eax ... mov eax,edi`); /EHsc adds the __EH_prolog frame instead
+005384dd	DIFFER	78	-	DIFFER(67v78) -- retail keeps a dead `push ecx ; and dword ptr [ebp-4],0` (an EH state store with no EH frame) and holds the new list in edi (`push edi ; mov edi,eax ... mov eax,edi`); /EHsc adds the __EH_prolog frame instead
+005bb190	DIFFER	51	-	DIFFER(49v51) -- retail destroys each value with `push 0 ; call ??_G` 0x005BAA41; the build calls the out-of-line ~CDefPointer (??1) then free.
+005db5f0	DIFFER	56	-	DIFFER(52v56) -- retail keeps the null-string diamond of the inline length (`jne ; xor esi,esi ; jmp ; mov esi,[eax+4]`) and then re-tests the clamp (`test esi,esi ; jge`); VC7.1 here threads the null path straight onto the clamp's zero (4 bytes shorter).
+005e38c0	DIFFER	95	-	DIFFER(104v95) -- the pair temporary's release: retail `mov ecx,[esp+14h] ; test ecx,ecx ; je ; dec dword ptr [ecx+4] ; jne`; the build re-reads Object and the count after the `dec` (the temporary's address escaped to push_back).
