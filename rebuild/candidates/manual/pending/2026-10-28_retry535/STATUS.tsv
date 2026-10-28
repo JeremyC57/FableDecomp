@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00476024	DIFFER	254v255	-	CPersistContext::TransferVectorOfSubComponents<CQuickAccessItemButtonGuiDef>: inline Read 64-bit position lo/hi in eax/edx vs retail edx/eax (lea edx,[eax+4]); RTM regrade unchanged; ~150 forms/flags inert
+0047652b	DIFFER	254v255	-	CPersistContext::TransferVectorOfSubComponents<CAbilityButtonGuiDef>: inline Read 64-bit position lo/hi in eax/edx vs retail edx/eax (lea edx,[eax+4]); RTM regrade unchanged; ~150 forms/flags inert
+004769d0	DIFFER	254v255	-	CPersistContext::TransferVectorOfSubComponents<CLensFlareElementDef>: inline Read 64-bit position lo/hi in eax/edx vs retail edx/eax (lea edx,[eax+4]); RTM regrade unchanged; ~150 forms/flags inert
+00478ae5	DIFFER	254v255	-	CPersistContext::TransferVectorOfSubComponents<CAbilityTrackLevelDef>: inline Read 64-bit position lo/hi in eax/edx vs retail edx/eax (lea edx,[eax+4]); RTM regrade unchanged; ~150 forms/flags inert
+00479466	DIFFER	244v245	-	CPersistContext::TransferVectorOfSubComponents<COpinionDeedReactionDef>: inline Read 64-bit position lo/hi in eax/edx vs retail edx/eax (lea edx,[eax+4]); RTM regrade unchanged; ~150 forms/flags inert
+004798ab	DIFFER	244v245	-	CPersistContext::TransferVectorOfSubComponents<CEngineLocalDetailLayerDef>: inline Read 64-bit position lo/hi in eax/edx vs retail edx/eax (lea edx,[eax+4]); RTM regrade unchanged; ~150 forms/flags inert
+00479ef4	DIFFER	254v255	-	CPersistContext::TransferVectorOfSubComponents<CAppearanceModifierScalingDef>: inline Read 64-bit position lo/hi in eax/edx vs retail edx/eax (lea edx,[eax+4]); RTM regrade unchanged; ~150 forms/flags inert
+0047a2f5	DIFFER	244v245	-	CPersistContext::TransferVectorOfSubComponents<CAbilityTrackDef>: inline Read 64-bit position lo/hi in eax/edx vs retail edx/eax (lea edx,[eax+4]); RTM regrade unchanged; ~150 forms/flags inert
+004f9c07	DIFFER	244v245	-	CPersistContext::TransferVectorOfSubComponents<CCardPositionsDef>: inline Read 64-bit position lo/hi in eax/edx vs retail edx/eax (lea edx,[eax+4]); RTM regrade unchanged; ~150 forms/flags inert
+00b2f760	DIFFER	101v95	-	CEnginePrimitiveOcclusionManager ctor: C3DVector(1,0,0) temporary copy reloads X and Z (retail reloads X only, forwards Y/Z); parked source fixed (missing C3DVector(), KeepAlive uchar)
