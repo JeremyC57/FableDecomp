@@ -68,3 +68,25 @@
 - NScript script classes (CV_*, CQ_*, CQR_*) live in `namespace NScript` and are `class`-keyed, as both PDBs spell them.
 - Names: from evidence only (PDB, vtable/RTTI, callers, strings). Propagated catalog labels are wrong more often than
   not. Where nothing proves a name, use one descriptive name and mark it "descriptive" in NOTES.md.
+
+## Owner rule, 2026-10-28: names right the first time (overrides anything above that disagrees)
+The owner wants every name an agent writes to be as close to retail as evidence allows, so that no later renaming pass is
+needed. This covers the row's own function, every callee and global it declares, its class and template arguments, its
+member names, and script names (NScript quest scripts: check work/aeon_lua_ports and docs/scripts/AEON_LUA_PORTS.md).
+- **Prove before you write.** Settle each name from at least two sources: a PDB name-set entry plus donor order or size,
+  an RTTI vtable slot, the sole caller's argument types, a literal string, or the real library source (STLport 4.6).
+  Catalog and manifest labels are hints only; most small-function labels are propagated and wrong.
+- **Exact spelling.** Class key (pdb_class_keys.tsv), namespace, const-ness, access (public QAE / protected IAE /
+  private AAE, and the virtual / static forms), calling convention, return and parameter types: all as the PDB mangles
+  them. Confirm the emitted symbol with `objdump -t`.
+- **One retail address, one name, everywhere.** Before declaring a callee or global, grep `rebuild/oracles/reloc_bindings.tsv`
+  for its retail address. If the bound spelling is right, use it exactly. If it is wrong, use the right one and record
+  the fix (below); never copy a wrong spelling to keep the verifier quiet, and never bind a name that already belongs
+  to another address. Byte-identical bodies at two addresses are two functions (retail has no identical-code folding).
+- **No placeholders where evidence exists.** `vfunc_N`, `sub_<addr>`, `FUN_<addr>`, `_gapscan`, `Helper`, `Wrapper`,
+  `View`, `Access`, `Methods`, `_Retail`, address-suffixed classes and free `@name@4` stand-ins for member calls are
+  not acceptable when a real name can be found. A name that stays unproven after a real search is `CUnproven<Kind>_<addr>`
+  or listed as Descriptive, with the search recorded in NOTES.md.
+- **Fix what you find.** Hand back `NAME_FIXES.tsv` (`address<TAB>correct_symbol<TAB>evidence<TAB>wrong_spellings_seen`)
+  for every retail address whose landed spelling (in reloc_bindings.tsv, a landed source or the catalog) you proved
+  wrong. The coordinator respells the landed callers in the same landing and rechecks them, so no separate pass is needed.

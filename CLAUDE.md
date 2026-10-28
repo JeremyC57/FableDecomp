@@ -40,6 +40,10 @@ reconstruction that must compile under VC7.1 to the retail bytes.
   asm. No instruction-count cap (owner, 2026-10-27: a fixed cap is arbitrary when retail runs a longer block).
 - **Shared headers** — model `this` with `#include "engine/<Class>.h"`, never a local
   `struct T { char pad[0x1a8]; ... }` when a header exists (the verifier warns; strict mode rejects).
+- **Names right the first time** (owner, 2026-10-28) — every function, callee, global, class, member and script name
+  as close to retail as evidence allows (two sources), in the exact PDB spelling; one retail address, one name. Agents
+  hand back `NAME_FIXES.tsv` for landed spellings they prove wrong; the coordinator respells those callers at landing.
+  Full rule: `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`.
 - **Trust the manifest carefully** — module labels are propagated across byte-identical bodies;
   use `label_trust.py` before attributing a function to a class.
 - **Reproducible DB** — names as `ghidra_out/labels_*.tsv`, applied with `LabelApply.java`.
