@@ -1,0 +1,13 @@
+address	name	evidence
+009c2800	std::_Rb_tree<CDisplayModeDesc,...>::insert_unique	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+009cc8b0	CBankFile::UpdateEntryInfoOnly(unsigned long, CDataInputStream&, unsigned long)	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+009eb760	CConsole::ConsoleCommandListContainingString	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+009eb9b0	CConsole::ConsoleVariableListContainingString	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+009ec890	CConsole::RunScript(const CWideString&)	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+00a14040	C3DVector::RotateXY	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+00a14260	C3DVector::Rotate(float, float)	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+00a145c0	retail_asm: C3DVector::GetRandomUnitVector	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+00a2c7f0	std::vector<C3DMeshInfo>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+00a2c960	std::vector<CPhysicsMeshInfo>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+00a2cac0	std::vector<C3DAnimationInfo>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)
+00a2d960	std::vector<CCountedPointer<CMeshDataBankEntry>>::_M_fill_insert	proven per batch 2026-10-27_linux_hand527 NOTES.md (chunk 527)

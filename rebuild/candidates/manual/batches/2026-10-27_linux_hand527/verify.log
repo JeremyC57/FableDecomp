@@ -1,0 +1,67 @@
+addr       parity           behav  name
+009c2800   WARN RELOC_NAME: ?_M_insert@?$_Rb_tree@VCDisplayModeDesc@@V1@U?$_Identity@VCDisplayModeDesc@@@std@@U?$less@VCDisplayModeDesc@@@3@V?$allocator@VCDisplayModeDesc@@@3@@std@@AAE?AU?$_Rb_tree_iterator@VCDisplayModeDesc@@U?$_Nonconst_traits@VCDisplayModeDesc@@@std@@@2@PAU_Rb_tree_node_base@2@0ABVCDisplayModeDesc@@0@Z -> 009c2350 labelled 'CMemoryAllocatorVariableSize::InsertNode_24byte'
+009c2800   RELOCATION_MATCH PASS   insert_unique
+009cc8b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+009cc8b0   WARN SHARED_HEADER_AVAILABLE CBankFile
+009cc8b0   RELOCATION_MATCH PASS   UpdateEntryInfoOnly
+009eb760   WARN RELOC_NAME: ?GetAsLowerCase@CCharString@@QBE?AV1@XZ -> 0099ed10 labelled 'CCharString::ToLower'
+009eb760   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+009eb760   RELOCATION_MATCH PASS   ConsoleCommandListContainingString
+009eb9b0   WARN RELOC_NAME: ?GetAsLowerCase@CCharString@@QBE?AV1@XZ -> 0099ed10 labelled 'CCharString::ToLower'
+009eb9b0   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+009eb9b0   RELOCATION_MATCH PASS   ConsoleVariableListContainingString
+009ec890   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009ec890   RELOCATION_MATCH PASS   RunScript
+00a14040   RELOCATION_MATCH PASS   RotateXY
+00a14260   RELOCATION_MATCH PASS   Rotate
+00a169b0   RELOCATION_MATCH PASS   __find
+00a2c7f0   WARN SHARED_HEADER_AVAILABLE CMeshDataBankEntry
+00a2c7f0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DMeshInfo@@PAV1@@std@@YIPAVC3DMeshInfo@@PAV1@00ABU__false_type@0@@Z -> 00a2ae20 labelled '_global::UninitCopy_C3DMeshInfo_00a2ae20'
+00a2c7f0   RELOCATION_MATCH PASS   _M_insert_overflow
+00a2c960   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00a2c960   WARN SHARED_HEADER_AVAILABLE CMeshDataBankEntry
+00a2c960   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPhysicsMeshInfo@@PAV1@@std@@YIPAVCPhysicsMeshInfo@@PAV1@00ABU__false_type@0@@Z -> 00a2ae80 labelled '_global::UninitCopy_CPhysicsMeshInfo_00a2ae80'
+00a2c960   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCPhysicsMeshInfo@@IV1@@std@@YIPAVCPhysicsMeshInfo@@PAV1@IABV1@ABU__false_type@0@@Z -> 00a2aed0 labelled '_global::UninitFillN_CPhysicsMeshInfo_00a2aed0'
+00a2c960   RELOCATION_MATCH PASS   _M_insert_overflow
+00a2cac0   WARN SHARED_HEADER_AVAILABLE CMeshDataBankEntry
+00a2cac0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DAnimationInfo@@PAV1@@std@@YIPAVC3DAnimationInfo@@PAV1@00ABU__false_type@0@@Z -> 00a2af20 labelled '_global::UninitCopy_C3DAnimationInfo_00a2af20'
+00a2cac0   RELOCATION_MATCH PASS   _M_insert_overflow
+00a2d960   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$CCountedPointer@VCMeshDataBankEntry@@@@PAV1@@std@@YIPAV?$CCountedPointer@VCMeshDataBankEntry@@@@PAV1@00ABU__false_type@0@@Z -> 00a2a610 labelled 'std::_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>'
+00a2d960   RELOCATION_MATCH PASS   _M_fill_insert
+
+WINS: 12
+  009c2800 RELOCATION_MATCH std::_Rb_tree<CDisplayModeDesc, CDisplayModeDesc, _Identity, less, allocator>::?insert_unique@?$_Rb_tree@VCDisplayModeDesc@@V1@U?$_Identity@VCDisplayModeDesc@@@std@@U?$less@VCDisplayModeDesc@@@3@V?$allocator@VCDisplayModeDesc@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCDisplayModeDesc@@U?$_Nonconst_traits@VCDisplayModeDesc@@@std@@@std@@_N@2@ABVCDisplayModeDesc@@@Z
+  009cc8b0 RELOCATION_MATCH CBankFile::?UpdateEntryInfoOnly@CBankFile@@QAEXKAAVCDataInputStream@@K@Z
+  009eb760 RELOCATION_MATCH CConsole::?ConsoleCommandListContainingString@CConsole@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  009eb9b0 RELOCATION_MATCH CConsole::?ConsoleVariableListContainingString@CConsole@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  009ec890 RELOCATION_MATCH CConsole::?RunScript@CConsole@@QAEXABVCWideString@@@Z
+  00a14040 RELOCATION_MATCH C3DVector::?RotateXY@C3DVector@@QAEXM@Z
+  00a14260 RELOCATION_MATCH C3DVector::?Rotate@C3DVector@@QAEXMM@Z
+  00a169b0 RELOCATION_MATCH std::??$__find@PAVC2DVector@@V1@@std@@YIPAVC2DVector@@PAV1@0ABV1@ABUrandom_access_iterator_tag@0@@Z
+  00a2c7f0 RELOCATION_MATCH std::vector<C3DMeshInfo>::?_M_insert_overflow@?$vector@VC3DMeshInfo@@V?$allocator@VC3DMeshInfo@@@std@@@std@@IAEXPAVC3DMeshInfo@@ABV3@ABU__false_type@2@I_N@Z
+  00a2c960 RELOCATION_MATCH std::vector<CPhysicsMeshInfo>::?_M_insert_overflow@?$vector@VCPhysicsMeshInfo@@V?$allocator@VCPhysicsMeshInfo@@@std@@@std@@IAEXPAVCPhysicsMeshInfo@@ABV3@ABU__false_type@2@I_N@Z
+  00a2cac0 RELOCATION_MATCH std::vector<C3DAnimationInfo>::?_M_insert_overflow@?$vector@VC3DAnimationInfo@@V?$allocator@VC3DAnimationInfo@@@std@@@std@@IAEXPAVC3DAnimationInfo@@ABV3@ABU__false_type@2@I_N@Z
+  00a2d960 RELOCATION_MATCH std::vector<CCountedPointer<CMeshDataBankEntry> >::?_M_fill_insert@?$vector@V?$CCountedPointer@VCMeshDataBankEntry@@@@V?$allocator@V?$CCountedPointer@VCMeshDataBankEntry@@@@@std@@@std@@QAEXPAV?$CCountedPointer@VCMeshDataBankEntry@@@@IABV3@@Z
+
+LANDED 12 wins into src/compiled + tests + catalog + oracle
+  stdRbtreeCDisplayModeDescCDisplayModeDescIdentitylessallocator_insertunique_009c2800
+  CBankFile_UpdateEntryInfoOnly_009cc8b0
+  CConsole_ConsoleCommandListContainingString_009eb760
+  CConsole_ConsoleVariableListContainingString_009eb9b0
+  CConsole_RunScript_009ec890
+  C3DVector_RotateXY_00a14040
+  C3DVector_Rotate_00a14260
+  std_find_00a169b0
+  stdvectorC3DMeshInfo_Minsertoverflow_00a2c7f0
+  stdvectorCPhysicsMeshInfo_Minsertoverflow_00a2c960
+  stdvectorC3DAnimationInfo_Minsertoverflow_00a2cac0
+  stdvectorCCountedPointerCMeshDataBankEntry_Mfillinsert_00a2d960
+=== retail_asm payload ===
+addr       parity           behav  name
+00a145c0   RELOCATION_MATCH PASS   GetRandomUnitVector
+
+WINS: 1
+  00a145c0 RELOCATION_MATCH C3DVector::?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DVector_GetRandomUnitVector_00a145c0

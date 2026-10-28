@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+009c2800	RELOCATION_MATCH	248v248	PASS	std::_Rb_tree<CDisplayModeDesc,...>::insert_unique (STLport set<CDisplayModeDesc>)
+009c5170	DIFFER	416v410	-	CFileInstaller::~CFileInstaller; zero-in-ebx prologue + &CS in ebp (thread-flag qualifier purity forbids); 2 grades
+009cc8b0	RELOCATION_MATCH	307v307	PASS	CBankFile::UpdateEntryInfoOnly(unsigned long, CDataInputStream&, unsigned long)
+009ce050	DIFFER	294v302	-	CBankFile::InitEntry; residue = ConvertPathToFilename temporary lifetime; next step named in differ header; 4 grades
+009eb760	RELOCATION_MATCH	376v376	PASS	CConsole::ConsoleCommandListContainingString
+009eb9b0	RELOCATION_MATCH	376v376	PASS	CConsole::ConsoleVariableListContainingString
+009ec890	RELOCATION_MATCH	402v402	PASS	CConsole::RunScript(const CWideString&) (manifest/landed: ExecuteConfigFile)
+009f39a0	DIFFER	377v346	-	CSurface::CopyToMemory; copy-rect shape (retail keeps only top/bottom live); 1 grade
+00a12d20	DIFFER	452v438	-	CPhysicsMeshObject::GetNavigationLineList; C2DLineF temporary materialised; 4 grades
+00a14040	RELOCATION_MATCH	395v395	PASS	C3DVector::RotateXY
+00a14260	RELOCATION_MATCH	467v467	PASS	C3DVector::Rotate(float, float) (landed binding: RotateAboutZ)
+00a145c0	RELOCATION_MATCH	248v248	PASS	retail_asm: C3DVector::GetRandomUnitVector (two inlined dword fistp float-to-long helpers)
+00a146c0	DIFFER	278v278	-	C3DVector::GetRandomPointWithinUnitSphere; scheduling only (seed update vs fmul order)
+00a169b0	RELOCATION_MATCH	383v383	PASS	std::__find<C2DVector*,C2DVector> (/Gr)
+00a1ad40	DIFFER	370v370	-	CNavigatorAStar::GetPosInDirection; ebx push placement, frame order, fadd order, cold exit; 3 grades
+00a22ca0	DIFFER	368v368	-	CRightHandedSet::GetAngleXZ; one fld/fmul operand swap in cross-product Z
+00a2c7f0	RELOCATION_MATCH	286v286	PASS	std::vector<C3DMeshInfo>::_M_insert_overflow
+00a2c960	RELOCATION_MATCH	267v267	PASS	std::vector<CPhysicsMeshInfo>::_M_insert_overflow
+00a2cac0	RELOCATION_MATCH	257v257	PASS	std::vector<C3DAnimationInfo>::_M_insert_overflow
+00a2d960	RELOCATION_MATCH	300v300	PASS	std::vector<CCountedPointer<CMeshDataBankEntry>>::_M_fill_insert

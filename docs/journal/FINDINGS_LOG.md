@@ -763,3 +763,5 @@ Chunk 524 (agent524, re-queue 161-421 bytes; batch 2026-10-27_linux_hand524): 13
 Chunk 525 (agent525, re-queue 161-357 bytes; batch 2026-10-27_linux_hand525): 19 of 20 landed (1 MATCH, 18 RELOCATION_MATCH), 1 parked (0x0084E420, final 8 instructions). 26 NAME_FIXES deferred (queue now 251).
 
 Chunk 526 (agent526, re-queue 176-373 bytes; batch 2026-10-27_linux_hand526): 12 of 20 landed (RELOCATION_MATCH), 1 held (0x00946F90: 0x00436AC0 bound as vector<CThing*> by landed rows but as vector<const CThingBuilding*> by its proven caller 0x00947780 -- naming-pass decision), 6 parked, 1 skipped (0x0099C7E0 catalog row over-spans; true length 306, next start 0x0099C920 missing from the catalog). 29 NAME_FIXES deferred (queue now 280).
+
+Chunk 527 (agent527, re-queue 248-467 bytes; batch 2026-10-27_linux_hand527): 13 of 20 landed (12 RELOCATION_MATCH + 0x00A145C0 retail_asm), 7 parked. 29 NAME_FIXES deferred (queue now 309).

@@ -361553,6 +361553,98 @@ $catalog = @(
         TestSource = '00/99/global_HyperlinkProc_0099d660_test.cpp'
         PassPattern = '0099d660_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009c2800'
+        Module = 'std::_Rb_tree<CDisplayModeDesc, CDisplayModeDesc, _Identity, less, allocator>'
+        Source = '00/9c/stdRbtreeCDisplayModeDescCDisplayModeDescIdentitylessallocator_insertunique_009c2800.cpp'
+        TestSource = '00/9c/stdRbtreeCDisplayModeDescCDisplayModeDescIdentitylessallocator_insertunique_009c2800_test.cpp'
+        PassPattern = '009c2800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cc8b0'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_UpdateEntryInfoOnly_009cc8b0.cpp'
+        TestSource = '00/9c/CBankFile_UpdateEntryInfoOnly_009cc8b0_test.cpp'
+        PassPattern = '009cc8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eb760'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_ConsoleCommandListContainingString_009eb760.cpp'
+        TestSource = '00/9e/CConsole_ConsoleCommandListContainingString_009eb760_test.cpp'
+        PassPattern = '009eb760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eb9b0'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_ConsoleVariableListContainingString_009eb9b0.cpp'
+        TestSource = '00/9e/CConsole_ConsoleVariableListContainingString_009eb9b0_test.cpp'
+        PassPattern = '009eb9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ec890'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_RunScript_009ec890.cpp'
+        TestSource = '00/9e/CConsole_RunScript_009ec890_test.cpp'
+        PassPattern = '009ec890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14040'
+        Module = 'C3DVector'
+        Source = '00/a1/C3DVector_RotateXY_00a14040.cpp'
+        TestSource = '00/a1/C3DVector_RotateXY_00a14040_test.cpp'
+        PassPattern = '00a14040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14260'
+        Module = 'C3DVector'
+        Source = '00/a1/C3DVector_Rotate_00a14260.cpp'
+        TestSource = '00/a1/C3DVector_Rotate_00a14260_test.cpp'
+        PassPattern = '00a14260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a169b0'
+        Module = 'std'
+        Source = '00/a1/std_find_00a169b0.cpp'
+        TestSource = '00/a1/std_find_00a169b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a169b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2c7f0'
+        Module = 'std::vector<C3DMeshInfo>'
+        Source = '00/a2/stdvectorC3DMeshInfo_Minsertoverflow_00a2c7f0.cpp'
+        TestSource = '00/a2/stdvectorC3DMeshInfo_Minsertoverflow_00a2c7f0_test.cpp'
+        PassPattern = '00a2c7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2c960'
+        Module = 'std::vector<CPhysicsMeshInfo>'
+        Source = '00/a2/stdvectorCPhysicsMeshInfo_Minsertoverflow_00a2c960.cpp'
+        TestSource = '00/a2/stdvectorCPhysicsMeshInfo_Minsertoverflow_00a2c960_test.cpp'
+        PassPattern = '00a2c960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2cac0'
+        Module = 'std::vector<C3DAnimationInfo>'
+        Source = '00/a2/stdvectorC3DAnimationInfo_Minsertoverflow_00a2cac0.cpp'
+        TestSource = '00/a2/stdvectorC3DAnimationInfo_Minsertoverflow_00a2cac0_test.cpp'
+        PassPattern = '00a2cac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2d960'
+        Module = 'std::vector<CCountedPointer<CMeshDataBankEntry> >'
+        Source = '00/a2/stdvectorCCountedPointerCMeshDataBankEntry_Mfillinsert_00a2d960.cpp'
+        TestSource = '00/a2/stdvectorCCountedPointerCMeshDataBankEntry_Mfillinsert_00a2d960_test.cpp'
+        PassPattern = '00a2d960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a145c0'
+        Module = 'C3DVector'
+        Source = '00/a1/C3DVector_GetRandomUnitVector_00a145c0.cpp'
+        TestSource = '00/a1/C3DVector_GetRandomUnitVector_00a145c0_test.cpp'
+        PassPattern = '00a145c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

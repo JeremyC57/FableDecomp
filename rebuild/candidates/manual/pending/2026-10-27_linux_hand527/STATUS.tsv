@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+009c5170	DIFFER	416v410	-	CFileInstaller::~CFileInstaller; zero-in-ebx prologue + &CS in ebp (thread-flag qualifier purity forbids); 2 grades
+009ce050	DIFFER	294v302	-	CBankFile::InitEntry; residue = ConvertPathToFilename temporary lifetime; next step named in differ header; 4 grades
+009f39a0	DIFFER	377v346	-	CSurface::CopyToMemory; copy-rect shape (retail keeps only top/bottom live); 1 grade
+00a12d20	DIFFER	452v438	-	CPhysicsMeshObject::GetNavigationLineList; C2DLineF temporary materialised; 4 grades
+00a146c0	DIFFER	278v278	-	C3DVector::GetRandomPointWithinUnitSphere; scheduling only (seed update vs fmul order)
+00a1ad40	DIFFER	370v370	-	CNavigatorAStar::GetPosInDirection; ebx push placement, frame order, fadd order, cold exit; 3 grades
+00a22ca0	DIFFER	368v368	-	CRightHandedSet::GetAngleXZ; one fld/fmul operand swap in cross-product Z

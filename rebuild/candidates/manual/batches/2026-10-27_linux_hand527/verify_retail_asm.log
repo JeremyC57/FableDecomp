@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a145c0   RELOCATION_MATCH PASS   GetRandomUnitVector
+
+WINS: 1
+  00a145c0 RELOCATION_MATCH C3DVector::?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DVector_GetRandomUnitVector_00a145c0
