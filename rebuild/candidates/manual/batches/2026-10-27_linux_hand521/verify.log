@@ -1,0 +1,40 @@
+addr       parity           behav  name
+00433df0   WARN RELOC_NAME: ??$__uninitialized_copy@PBVCWideString@@PAV1@@std@@YIPAVCWideString@@PBV1@0PAV1@ABU__false_type@0@@Z -> 00433d8a labelled 'std::_Uninit_copy<CArray<CRandomAppearanceMorph::CBodyPartMesh>*,CArray<class_CRandomAppearanceMorph::CBodyPartMesh>*,std::allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_>_>'
+00433df0   RELOCATION_MATCH PASS   operator=
+0044a1a0   WARN RELOC_NAME: ?GetPPlayerInterface@CMainGameComponent@@QAEPAVCGamePlayerInterface@@XZ -> 00416359 labelled 'CMainGameComponent::GetGamePlayerInterface'
+0044a1a0   RELOCATION_MATCH PASS   CreatePlayer
+004649a3   RELOCATION_MATCH PASS   _M_fill_insert
+0046c18c   RELOCATION_MATCH PASS   _M_insert_overflow
+004701ce   RELOCATION_MATCH PASS   _M_insert_overflow
+0048f939   WARN RELOC_NAME: ??$?8GU?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GU?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'WideString_EqualsLen'
+0048f939   RELOCATION_MATCH PASS   InitPlayerMode
+004bba40   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@U12@HV?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@std@@YIXPAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@0@00HV?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@Z -> 004bba40 labelled 'std::introsort_Recursive'
+004bba40   RELOCATION_MATCH PASS   __introsort_loop
+004bd040   RELOCATION_MATCH PASS   GetTintColour
+004d16a0   RELOCATION_MATCH PASS   sort_heap
+004ec8c2   WARN RELOC_NAME: ??0?$pair@W4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@QAE@XZ -> 004ec9b5 labelled 'CSoundInit::CSoundInit'
+004ec8c2   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn<CObjectAugmentationParticleSet,EObjectAugmentationType,less<EObjectAugmentationType> >
+
+WINS: 10
+  00433df0 RELOCATION_MATCH std::vector<CWideString>::??4?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEAAV01@ABV01@@Z
+  0044a1a0 RELOCATION_MATCH CPlayerManager::?CreatePlayer@CPlayerManager@@AAEXJ@Z
+  004649a3 RELOCATION_MATCH std::vector<unsigned long>::?_M_fill_insert@?$vector@KV?$allocator@K@std@@@std@@QAEXPAKIABK@Z
+  0046c18c RELOCATION_MATCH std::vector<CReverbEnvironmentEntry>::?_M_insert_overflow@?$vector@VCReverbEnvironmentEntry@@V?$allocator@VCReverbEnvironmentEntry@@@std@@@std@@IAEXPAVCReverbEnvironmentEntry@@ABV3@ABU__false_type@2@I_N@Z
+  004701ce RELOCATION_MATCH std::vector<CAppearanceModifierGraphics::CEntry>::?_M_insert_overflow@?$vector@UCEntry@CAppearanceModifierGraphics@@V?$allocator@UCEntry@CAppearanceModifierGraphics@@@std@@@std@@IAEXPAUCEntry@CAppearanceModifierGraphics@@ABU34@ABU__false_type@2@I_N@Z
+  0048f939 RELOCATION_MATCH CSubtitleRenderer::?InitPlayerMode@CSubtitleRenderer@@AAEXXZ
+  004bba40 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@U12@HV?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@std@@YIXPAU?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@0@00HV?$CKeyPairCompareLess@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@@@Z
+  004bd040 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?GetTintColour@CTCGraphicAppearance@NGraphicAppearance@@QBE?BVCRGBColour@@XZ
+  004d16a0 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@MVCCameraTag@CSubtitledMessage@@@std@@V?$CKeyPairCompareLess@MVCCameraTag@CSubtitledMessage@@@@@std@@YIXPAU?$pair@MVCCameraTag@CSubtitledMessage@@@0@0V?$CKeyPairCompareLess@MVCCameraTag@CSubtitledMessage@@@@@Z
+  004ec8c2 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@VCObjectAugmentationParticleSet@@W4EObjectAugmentationType@@U?$less@W4EObjectAugmentationType@@@std@@@@YIXAAVCMemoryDataInputStream@@AAV?$map@W4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@U?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@@4@@std@@@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  stdvectorCWideString_operator_00433df0
+  CPlayerManager_CreatePlayer_0044a1a0
+  stdvectorunsignedlong_Mfillinsert_004649a3
+  stdvectorCReverbEnvironmentEntry_Minsertoverflow_0046c18c
+  stdvectorCAppearanceModifierGraphicsCEntry_Minsertoverflow_004701ce
+  CSubtitleRenderer_InitPlayerMode_0048f939
+  std_introsortloop_004bba40
+  NGraphicAppearanceCTCGraphicAppearance_GetTintColour_004bd040
+  std_sortheap_004d16a0
+  global_GFSerialiseMapBinaryInCObjectAugmentationParticl_004ec8c2

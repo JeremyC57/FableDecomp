@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00433df0	RELOCATION_MATCH	369	PASS	std::vector<CWideString>::operator= (STLport 4.6, /Gr)
+0044a1a0	RELOCATION_MATCH	248	PASS	CPlayerManager::CreatePlayer (private); engine/CPlayer.h + CPlayerManager.h
+004649a3	RELOCATION_MATCH	264	PASS	std::vector<unsigned long>::_M_fill_insert
+0046c18c	RELOCATION_MATCH	248	PASS	std::vector<CReverbEnvironmentEntry>::_M_insert_overflow (__false_type, IAE)
+004701ce	RELOCATION_MATCH	250	PASS	std::vector<CAppearanceModifierGraphics::CEntry>::_M_insert_overflow (__false_type, IAE)
+00476024	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CQuickAccessItemButtonGuiDef>: inline Read eax/edx allocation (lea edx,[eax+4])
+0047652b	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CAbilityButtonGuiDef>: same inline Read residue
+004769d0	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CLensFlareElementDef>: same inline Read residue
+00478ae5	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CAbilityTrackLevelDef>: same inline Read residue
+00479466	DIFFER	245	none	DIFFER(244v245) TransferVectorOfSubComponents<COpinionDeedReactionDef>: same inline Read residue
+004798ab	DIFFER	245	none	DIFFER(244v245) TransferVectorOfSubComponents<CEngineLocalDetailLayerDef>: same inline Read residue
+00479ef4	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CAppearanceModifierScalingDef>: same inline Read residue
+0047a2f5	DIFFER	245	none	DIFFER(244v245) TransferVectorOfSubComponents<CAbilityTrackDef>: same inline Read residue
+0048f939	RELOCATION_MATCH	359	PASS	CSubtitleRenderer::InitPlayerMode (private); engine/CSubtitleRenderer.h + CPlayerManager.h + CPlayer.h
+0049ed80	DIFFER	310	none	DIFFER(310v310) CWorld::ConsoleSetFreeCameraLookVector: x87 operand order in the cross product
+004bba40	RELOCATION_MATCH	247	PASS	std::__introsort_loop<pair<CCharString,CPersistInfo>*,...> (__fastcall)
+004bd040	RELOCATION_MATCH	287	PASS	NGraphicAppearance::CTCGraphicAppearance::GetTintColour const
+004d16a0	RELOCATION_MATCH	254	PASS	std::sort_heap<pair<float,CSubtitledMessage::CCameraTag>*,...> (__fastcall)
+004ec8c2	RELOCATION_MATCH	243	PASS	GFSerialiseMapBinaryIn<CObjectAugmentationParticleSet,EObjectAugmentationType,less<> > (__fastcall)
+004f9c07	DIFFER	245	none	DIFFER(244v245) TransferVectorOfSubComponents<CCardPositionsDef>: same inline Read residue

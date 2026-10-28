@@ -1,0 +1,11 @@
+address	name	evidence
+00433df0	std::vector<CWideString>::operator=	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)
+0044a1a0	CPlayerManager::CreatePlayer	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)
+004649a3	std::vector<unsigned long>::_M_fill_insert	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)
+0046c18c	std::vector<CReverbEnvironmentEntry>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)
+004701ce	std::vector<CAppearanceModifierGraphics::CEntry>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)
+0048f939	CSubtitleRenderer::InitPlayerMode	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)
+004bba40	std::__introsort_loop<pair<CCharString,CPersistInfo>*,...>	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)
+004bd040	NGraphicAppearance::CTCGraphicAppearance::GetTintColour const	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)
+004d16a0	std::sort_heap<pair<float,CSubtitledMessage::CCameraTag>*,...>	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)
+004ec8c2	GFSerialiseMapBinaryIn<CObjectAugmentationParticleSet,EObjectAugmentationType,less<> >	proven per batch 2026-10-27_linux_hand521 NOTES.md (chunk 521)

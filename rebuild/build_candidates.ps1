@@ -361005,6 +361005,77 @@ $catalog = @(
         TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_IsFeelingThreatened_00eb4710_test.cpp'
         PassPattern = '00eb4710_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00433df0'
+        Module = 'std::vector<CWideString>'
+        Source = '00/43/stdvectorCWideString_operator_00433df0.cpp'
+        TestSource = '00/43/stdvectorCWideString_operator_00433df0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00433df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044a1a0'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_CreatePlayer_0044a1a0.cpp'
+        TestSource = '00/44/CPlayerManager_CreatePlayer_0044a1a0_test.cpp'
+        PassPattern = '0044a1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004649a3'
+        Module = 'std::vector<unsigned long>'
+        Source = '00/46/stdvectorunsignedlong_Mfillinsert_004649a3.cpp'
+        TestSource = '00/46/stdvectorunsignedlong_Mfillinsert_004649a3_test.cpp'
+        PassPattern = '004649a3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046c18c'
+        Module = 'std::vector<CReverbEnvironmentEntry>'
+        Source = '00/46/stdvectorCReverbEnvironmentEntry_Minsertoverflow_0046c18c.cpp'
+        TestSource = '00/46/stdvectorCReverbEnvironmentEntry_Minsertoverflow_0046c18c_test.cpp'
+        PassPattern = '0046c18c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004701ce'
+        Module = 'std::vector<CAppearanceModifierGraphics::CEntry>'
+        Source = '00/47/stdvectorCAppearanceModifierGraphicsCEntry_Minsertoverflow_004701ce.cpp'
+        TestSource = '00/47/stdvectorCAppearanceModifierGraphicsCEntry_Minsertoverflow_004701ce_test.cpp'
+        PassPattern = '004701ce_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048f939'
+        Module = 'CSubtitleRenderer'
+        Source = '00/48/CSubtitleRenderer_InitPlayerMode_0048f939.cpp'
+        TestSource = '00/48/CSubtitleRenderer_InitPlayerMode_0048f939_test.cpp'
+        PassPattern = '0048f939_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bba40'
+        Module = 'std'
+        Source = '00/4b/std_introsortloop_004bba40.cpp'
+        TestSource = '00/4b/std_introsortloop_004bba40_test.cpp'
+        PassPattern = '004bba40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bd040'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetTintColour_004bd040.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetTintColour_004bd040_test.cpp'
+        PassPattern = '004bd040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d16a0'
+        Module = 'std'
+        Source = '00/4d/std_sortheap_004d16a0.cpp'
+        TestSource = '00/4d/std_sortheap_004d16a0_test.cpp'
+        PassPattern = '004d16a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec8c2'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseMapBinaryInCObjectAugmentationParticl_004ec8c2.cpp'
+        TestSource = '00/4e/global_GFSerialiseMapBinaryInCObjectAugmentationParticl_004ec8c2_test.cpp'
+        PassPattern = '004ec8c2_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

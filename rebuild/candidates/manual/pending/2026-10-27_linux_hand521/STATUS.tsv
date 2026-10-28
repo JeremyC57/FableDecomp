@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00476024	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CQuickAccessItemButtonGuiDef>: inline Read eax/edx allocation (lea edx,[eax+4])
+0047652b	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CAbilityButtonGuiDef>: same inline Read residue
+004769d0	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CLensFlareElementDef>: same inline Read residue
+00478ae5	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CAbilityTrackLevelDef>: same inline Read residue
+00479466	DIFFER	245	none	DIFFER(244v245) TransferVectorOfSubComponents<COpinionDeedReactionDef>: same inline Read residue
+004798ab	DIFFER	245	none	DIFFER(244v245) TransferVectorOfSubComponents<CEngineLocalDetailLayerDef>: same inline Read residue
+00479ef4	DIFFER	255	none	DIFFER(254v255) TransferVectorOfSubComponents<CAppearanceModifierScalingDef>: same inline Read residue
+0047a2f5	DIFFER	245	none	DIFFER(244v245) TransferVectorOfSubComponents<CAbilityTrackDef>: same inline Read residue
+0049ed80	DIFFER	310	none	DIFFER(310v310) CWorld::ConsoleSetFreeCameraLookVector: x87 operand order in the cross product
+004f9c07	DIFFER	245	none	DIFFER(244v245) TransferVectorOfSubComponents<CCardPositionsDef>: same inline Read residue
