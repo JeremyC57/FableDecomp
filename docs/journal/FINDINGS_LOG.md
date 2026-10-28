@@ -789,3 +789,5 @@ Retry 536 (agent536; batches/2026-10-27_linux_hand536): 5 of 18 parked rows land
 Retry 537 (agent537; batches/2026-10-27_linux_hand537): 2 of 8 parked rows land (RELOCATION_MATCH: 0x00492BAB CSubtitleRenderer::Clear, 0x0049EF50 CWorld::GetPathNameForFileName); 6 re-parked (three CTCInGameMenu rows are a scheduling lane gap at equal length). 34 NAME_FIXES deferred (queue now 576), incl. 0x00403C60 __char_traits_base<wchar_t>::compare, 0x00999850 CAFile::ScanNextFile, 0x0040A740 CUserProfileManager::Save.
 
 Retry 539 (agent539; pending/2026-10-28_retry539): 0 of 8 matched; all residues are colouring / scheduling / frame-slot / cross-jumping lane gaps. 0x005726A0 is CTCInventoryExperience::RecheckAvailabilities. 35 NAME_FIXES deferred (queue now 611).
+
+Retry 538 (agent538; batches/2026-10-27_linux_hand538): 5 of 8 parked rows land (RELOCATION_MATCH: 0x004A6550 CWorld::PostInit, 0x005064C0, 0x005066E0, 0x00521240, 0x005424B0 ~CIconText); 3 re-parked. 59 NAME_FIXES deferred (queue now 670), incl. CCharString::operator= const-return spelling in ~900 landed files and g_pQuestManager's two types.

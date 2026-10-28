@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+004a34f0	DIFFER	564v564	-	CWorld::AutoLoadRegionLeaving; instructions identical, only two frame slots swap (heroState/fullPath vs path); PDB names applied
+00502620	DIFFER	561v559	-	CWorldMap::LoadLevel; register allocation (map offset/this/new result permuted); the temp-destruction flag now sits in ebx as in retail
+00542780	DIFFER	682v682	-	NUISystem::CIconText::AddIcon; 2 instructions: retail loads FrameHeight right after FrameWidth

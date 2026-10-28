@@ -1,0 +1,6 @@
+address	name	evidence
+004a6550	CWorld::PostInit	proven per batch 2026-10-27_linux_hand538 NOTES.md (chunk 538)
+005064c0	CWorldMap::PostRegionLoad	proven per batch 2026-10-27_linux_hand538 NOTES.md (chunk 538)
+005066e0	CWorldMap::CWorldMap	proven per batch 2026-10-27_linux_hand538 NOTES.md (chunk 538)
+00521240	CThingManager::LoadEntitiesBinary	proven per batch 2026-10-27_linux_hand538 NOTES.md (chunk 538)
+005424b0	NUISystem::CIconText::~CIconText	proven per batch 2026-10-27_linux_hand538 NOTES.md (chunk 538)

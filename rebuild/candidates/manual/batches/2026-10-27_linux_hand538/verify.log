@@ -1,0 +1,40 @@
+addr       parity           behav  name
+004a6550   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+004a6550   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004a6550   WARN SHARED_HEADER_AVAILABLE CIEngine
+004a6550   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+004a6550   WARN RELOC_NAME: ?g_pSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004a6550   RELOCATION_MATCH PASS   PostInit
+005064c0   WARN SHARED_HEADER_AVAILABLE CClass
+005064c0   WARN SHARED_HEADER_AVAILABLE CTCVillage
+005064c0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+005064c0   WARN SHARED_HEADER_AVAILABLE CWorld
+005064c0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005064c0   WARN RELOC_NAME: ?CreateDummyVillagersIfNecessary@CTCVillage@@QAEXXZ -> 00658603 labelled '_global::Nop_ret0_00658603'
+005064c0   RELOCATION_MATCH PASS   PostRegionLoad
+005066e0   WARN SHARED_HEADER_AVAILABLE CRegion
+005066e0   WARN SHARED_HEADER_AVAILABLE CThingMapManager
+005066e0   WARN RELOC_NAME: ??0?$CArray@VCMapInfo@@@@QAE@I@Z -> 00515ad0 labelled 'std::vector<CMapInfo,std::allocator<CMapInfo> >::vector'
+005066e0   RELOCATION_MATCH PASS   CWorldMap
+00521240   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00521240   WARN SHARED_HEADER_AVAILABLE CASuspendableProcess
+00521240   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+00521240   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00521240   RELOCATION_MATCH PASS   LoadEntitiesBinary
+005424b0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+005424b0   WARN SHARED_HEADER_AVAILABLE CObserver
+005424b0   RELOCATION_MATCH PASS   ~CIconText
+
+WINS: 5
+  004a6550 RELOCATION_MATCH CWorld::?PostInit@CWorld@@UAEXAAVCDisplayEngine@@@Z
+  005064c0 RELOCATION_MATCH CWorldMap::?PostRegionLoad@CWorldMap@@UAEXJ@Z
+  005066e0 RELOCATION_MATCH CWorldMap::??0CWorldMap@@QAE@ABVCMainGameComponent@@AAVCWorld@@ABVC2DBoxI@@K@Z
+  00521240 RELOCATION_MATCH CThingManager::?LoadEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataInputStream@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z
+  005424b0 RELOCATION_MATCH NUISystem::CIconText::??1CIconText@NUISystem@@UAE@XZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CWorld_PostInit_004a6550
+  CWorldMap_PostRegionLoad_005064c0
+  CWorldMap_CWorldMap_005066e0
+  CThingManager_LoadEntitiesBinary_00521240
+  NUISystemCIconText_CIconText_005424b0

@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+004a34f0	DIFFER	564v564	-	CWorld::AutoLoadRegionLeaving; instructions identical, only two frame slots swap (heroState/fullPath vs path); PDB names applied
+004a6550	RELOCATION_MATCH	625v625	PASS	CWorld::PostInit; PDB callee names plus a plain new-expression for the quest manager closed the 4-instruction SetWorld eax/edx swap
+00502620	DIFFER	561v559	-	CWorldMap::LoadLevel; register allocation (map offset/this/new result permuted); the temp-destruction flag now sits in ebx as in retail
+005064c0	RELOCATION_MATCH	542v542	PASS	CWorldMap::PostRegionLoad; same-TU GetAllThings body with the IsIncludedInThingScans test
+005066e0	RELOCATION_MATCH	601v601	PASS	CWorldMap::CWorldMap; same-TU vector<unsigned short>::resize body
+00521240	RELOCATION_MATCH	937v937	PASS	CThingManager::LoadEntitiesBinary; same-TU _M_find and _M_insert_overflow bodies, inline by-value GetLoadAllSectionName, opening-store order
+005424b0	RELOCATION_MATCH	627v627	PASS	NUISystem::CIconText::~CIconText (oracle label CText::~CText is wrong); forceinline handle dtor, inline CDefString conversion
+00542780	DIFFER	682v682	-	NUISystem::CIconText::AddIcon; 2 instructions: retail loads FrameHeight right after FrameWidth

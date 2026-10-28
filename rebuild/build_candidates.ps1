@@ -362140,6 +362140,41 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS /Zc:wchar_t'
         PassPattern = '0049ef50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004a6550'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_PostInit_004a6550.cpp'
+        TestSource = '00/4a/CWorld_PostInit_004a6550_test.cpp'
+        PassPattern = '004a6550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005064c0'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_PostRegionLoad_005064c0.cpp'
+        TestSource = '00/50/CWorldMap_PostRegionLoad_005064c0_test.cpp'
+        PassPattern = '005064c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005066e0'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_CWorldMap_005066e0.cpp'
+        TestSource = '00/50/CWorldMap_CWorldMap_005066e0_test.cpp'
+        PassPattern = '005066e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00521240'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_LoadEntitiesBinary_00521240.cpp'
+        TestSource = '00/52/CThingManager_LoadEntitiesBinary_00521240_test.cpp'
+        PassPattern = '00521240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005424b0'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_CIconText_005424b0.cpp'
+        TestSource = '00/54/NUISystemCIconText_CIconText_005424b0_test.cpp'
+        PassPattern = '005424b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
