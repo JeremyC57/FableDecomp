@@ -360540,6 +360540,338 @@ $catalog = @(
         TestSource = '00/c7/CVtable012bede0_SetupVoice_00c70f80_test.cpp'
         PassPattern = '00c70f80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0062cf90'
+        Module = 'cleanup1'
+        Source = '00/62/cleanup1_EACreatureBlock_0062cf90.cpp'
+        TestSource = '00/62/cleanup1_EACreatureBlock_0062cf90_test.cpp'
+        PassPattern = '0062cf90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093cfe0'
+        Module = 'cleanup1'
+        Source = '00/93/cleanup1_Initialise_0093cfe0.cpp'
+        TestSource = '00/93/cleanup1_Initialise_0093cfe0_test.cpp'
+        PassPattern = '0093cfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00959ee0'
+        Module = 'cleanup1'
+        Source = '00/95/cleanup1_Initialise_00959ee0.cpp'
+        TestSource = '00/95/cleanup1_Initialise_00959ee0_test.cpp'
+        PassPattern = '00959ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095a270'
+        Module = 'cleanup1'
+        Source = '00/95/cleanup1_Initialise_0095a270.cpp'
+        TestSource = '00/95/cleanup1_Initialise_0095a270_test.cpp'
+        PassPattern = '0095a270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009112a0'
+        Module = 'cleanup1'
+        Source = '00/91/cleanup1_FindBodyFoundEvent_009112a0.cpp'
+        TestSource = '00/91/cleanup1_FindBodyFoundEvent_009112a0_test.cpp'
+        PassPattern = '009112a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092edc0'
+        Module = 'cleanup1'
+        Source = '00/92/cleanup1_FindPlayerInteractionEvent_0092edc0.cpp'
+        TestSource = '00/92/cleanup1_FindPlayerInteractionEvent_0092edc0_test.cpp'
+        PassPattern = '0092edc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094bfc0'
+        Module = 'cleanup1'
+        Source = '00/94/cleanup1_GetBuyersOrder_0094bfc0.cpp'
+        TestSource = '00/94/cleanup1_GetBuyersOrder_0094bfc0_test.cpp'
+        PassPattern = '0094bfc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00958770'
+        Module = 'cleanup1'
+        Source = '00/95/cleanup1_GetSomeoneElseGettingHelpMessage_00958770.cpp'
+        TestSource = '00/95/cleanup1_GetSomeoneElseGettingHelpMessage_00958770_test.cpp'
+        PassPattern = '00958770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00917050'
+        Module = 'cleanup1'
+        Source = '00/91/cleanup1_GetPNearestFreeLogPile_00917050.cpp'
+        TestSource = '00/91/cleanup1_GetPNearestFreeLogPile_00917050_test.cpp'
+        PassPattern = '00917050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009170b0'
+        Module = 'cleanup1'
+        Source = '00/91/cleanup1_GetPNearestBonfire_009170b0.cpp'
+        TestSource = '00/91/cleanup1_GetPNearestBonfire_009170b0_test.cpp'
+        PassPattern = '009170b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009652c0'
+        Module = 'cleanup1'
+        Source = '00/96/cleanup1_FindPTargetPoint_009652c0.cpp'
+        TestSource = '00/96/cleanup1_FindPTargetPoint_009652c0_test.cpp'
+        PassPattern = '009652c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a787d0'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_AddToIndexTable_00a787d0.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_AddToIndexTable_00a787d0_test.cpp'
+        PassPattern = '00a787d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa0f60'
+        Module = 'C3DAnimationManager'
+        Source = '00/aa/C3DAnimationManager_C3DAnimationManager_00aa0f60.cpp'
+        TestSource = '00/aa/C3DAnimationManager_C3DAnimationManager_00aa0f60_test.cpp'
+        PassPattern = '00aa0f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa8400'
+        Module = 'CChunkedFileSuperChunk'
+        Source = '00/aa/CChunkedFileSuperChunk_RemoveAllSubChunks_00aa8400.cpp'
+        TestSource = '00/aa/CChunkedFileSuperChunk_RemoveAllSubChunks_00aa8400_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00aa8400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abbd70'
+        Module = 'C3DMeshFileVerticesChunk'
+        Source = '00/ab/C3DMeshFileVerticesChunk_GetChunkInfo_00abbd70.cpp'
+        TestSource = '00/ab/C3DMeshFileVerticesChunk_GetChunkInfo_00abbd70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00abbd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af0880'
+        Module = 'CEnginePrimitive2DParticleGroup'
+        Source = '00/af/CEnginePrimitive2DParticleGroup_CEnginePrimitive2DParticleGroup_00af0880.cpp'
+        TestSource = '00/af/CEnginePrimitive2DParticleGroup_CEnginePrimitive2DParticleGroup_00af0880_test.cpp'
+        PassPattern = '00af0880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00afead0'
+        Module = 'CEnginePrimitiveParticleMeshGroup'
+        Source = '00/af/CEnginePrimitiveParticleMeshGroup_CEnginePrimitiveParticleMeshGroup_00afead0.cpp'
+        TestSource = '00/af/CEnginePrimitiveParticleMeshGroup_CEnginePrimitiveParticleMeshGroup_00afead0_test.cpp'
+        PassPattern = '00afead0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b25d20'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_PeekGlobalDiffuseColour_00b25d20.cpp'
+        TestSource = '00/b2/CEngine_PeekGlobalDiffuseColour_00b25d20_test.cpp'
+        PassPattern = '00b25d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b25d50'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_PeekGlobalAmbientColour_00b25d50.cpp'
+        TestSource = '00/b2/CEngine_PeekGlobalAmbientColour_00b25d50_test.cpp'
+        PassPattern = '00b25d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2c400'
+        Module = 'CCompositeSurfaceCache'
+        Source = '00/b2/CCompositeSurfaceCache_CCompositeSurfaceCache_00b2c400.cpp'
+        TestSource = '00/b2/CCompositeSurfaceCache_CCompositeSurfaceCache_00b2c400_test.cpp'
+        PassPattern = '00b2c400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2f9f0'
+        Module = 'CEnginePrimitiveOcclusionManager'
+        Source = '00/b2/CEnginePrimitiveOcclusionManager_SetAsOccluded_00b2f9f0.cpp'
+        TestSource = '00/b2/CEnginePrimitiveOcclusionManager_SetAsOccluded_00b2f9f0_test.cpp'
+        PassPattern = '00b2f9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2fa90'
+        Module = 'CEnginePrimitiveOcclusionInfo'
+        Source = '00/b2/CEnginePrimitiveOcclusionInfo_CEnginePrimitiveOcclusionInfo_00b2fa90.cpp'
+        TestSource = '00/b2/CEnginePrimitiveOcclusionInfo_CEnginePrimitiveOcclusionInfo_00b2fa90_test.cpp'
+        PassPattern = '00b2fa90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3a0d0'
+        Module = 'CEnginePrimitiveAttachmentManager'
+        Source = '00/b3/CEnginePrimitiveAttachmentManager_UpdateSceneForPreload_00b3a0d0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveAttachmentManager_UpdateSceneForPreload_00b3a0d0_test.cpp'
+        PassPattern = '00b3a0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b80f90'
+        Module = 'CEngineClothSimulationMeshBase'
+        Source = '00/b8/CEngineClothSimulationMeshBase_GetGravityVector_00b80f90.cpp'
+        TestSource = '00/b8/CEngineClothSimulationMeshBase_GetGravityVector_00b80f90_test.cpp'
+        PassPattern = '00b80f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b812c0'
+        Module = 'CEnginePrimitiveSimulationInfo'
+        Source = '00/b8/CEnginePrimitiveSimulationInfo_FindSimulation_00b812c0.cpp'
+        TestSource = '00/b8/CEnginePrimitiveSimulationInfo_FindSimulation_00b812c0_test.cpp'
+        PassPattern = '00b812c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b81e00'
+        Module = 'CEnginePrimitiveSimulationInfo'
+        Source = '00/b8/CEnginePrimitiveSimulationInfo_CEnginePrimitiveSimulationInfo_00b81e00.cpp'
+        TestSource = '00/b8/CEnginePrimitiveSimulationInfo_CEnginePrimitiveSimulationInfo_00b81e00_test.cpp'
+        PassPattern = '00b81e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84120'
+        Module = 'CEngineClothSimulationMeshBase'
+        Source = '00/b8/CEngineClothSimulationMeshBase_scalardeletingdestructor_00b84120.cpp'
+        TestSource = '00/b8/CEngineClothSimulationMeshBase_scalardeletingdestructor_00b84120_test.cpp'
+        PassPattern = '00b84120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84990'
+        Module = 'CEngineSubPrimitiveRenderer'
+        Source = '00/b8/CEngineSubPrimitiveRenderer_SortList_00b84990.cpp'
+        TestSource = '00/b8/CEngineSubPrimitiveRenderer_SortList_00b84990_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00b84990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8faa0'
+        Module = 'CEnginePrimitiveTypeInfo'
+        Source = '00/b8/CEnginePrimitiveTypeInfo_CEnginePrimitiveTypeInfo_00b8faa0.cpp'
+        TestSource = '00/b8/CEnginePrimitiveTypeInfo_CEnginePrimitiveTypeInfo_00b8faa0_test.cpp'
+        PassPattern = '00b8faa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8fb60'
+        Module = 'CEnginePrimitiveTypeInfo'
+        Source = '00/b8/CEnginePrimitiveTypeInfo_scalardeletingdestructor_00b8fb60.cpp'
+        TestSource = '00/b8/CEnginePrimitiveTypeInfo_scalardeletingdestructor_00b8fb60_test.cpp'
+        PassPattern = '00b8fb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b98b40'
+        Module = 'CEngineSubPrimitiveMeshBase'
+        Source = '00/b9/CEngineSubPrimitiveMeshBase_CEngineSubPrimitiveMeshBase_00b98b40.cpp'
+        TestSource = '00/b9/CEngineSubPrimitiveMeshBase_CEngineSubPrimitiveMeshBase_00b98b40_test.cpp'
+        PassPattern = '00b98b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9d1e0'
+        Module = 'CEngineInternalPrimitiveStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveStaticMesh_GetWorldPosition_00b9d1e0.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveStaticMesh_GetWorldPosition_00b9d1e0_test.cpp'
+        PassPattern = '00b9d1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00baca20'
+        Module = 'CEngineScenePrimitiveStatsEnumerator'
+        Source = '00/ba/CEngineScenePrimitiveStatsEnumerator_CEngineScenePrimitiveStatsEnumerator_00baca20.cpp'
+        TestSource = '00/ba/CEngineScenePrimitiveStatsEnumerator_CEngineScenePrimitiveStatsEnumerator_00baca20_test.cpp'
+        PassPattern = '00baca20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb1ef0'
+        Module = 'CEngineClothRenderer'
+        Source = '00/bb/CEngineClothRenderer_FrameStart_00bb1ef0.cpp'
+        TestSource = '00/bb/CEngineClothRenderer_FrameStart_00bb1ef0_test.cpp'
+        PassPattern = '00bb1ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb6520'
+        Module = 'CEngineParticleSimulationRenderData'
+        Source = '00/bb/CEngineParticleSimulationRenderData_scalardeletingdestructor_00bb6520.cpp'
+        TestSource = '00/bb/CEngineParticleSimulationRenderData_scalardeletingdestructor_00bb6520_test.cpp'
+        PassPattern = '00bb6520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc25b0'
+        Module = 'CEngineInternalPrimitiveParticleMesh'
+        Source = '00/bc/CEngineInternalPrimitiveParticleMesh_GetWorldPosition_00bc25b0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveParticleMesh_GetWorldPosition_00bc25b0_test.cpp'
+        PassPattern = '00bc25b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc5620'
+        Module = 'CEngineInternalPrimitiveChanger'
+        Source = '00/bc/CEngineInternalPrimitiveChanger_SetAnimation_00bc5620.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveChanger_SetAnimation_00bc5620_test.cpp'
+        PassPattern = '00bc5620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc5660'
+        Module = 'CEngineInternalPrimitiveChanger'
+        Source = '00/bc/CEngineInternalPrimitiveChanger_SetPosition_00bc5660.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveChanger_SetPosition_00bc5660_test.cpp'
+        PassPattern = '00bc5660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc6210'
+        Module = 'CEnginePrimitiveGroupManager'
+        Source = '00/bc/CEnginePrimitiveGroupManager_RenderPrimitiveToShadowBuffer_00bc6210.cpp'
+        TestSource = '00/bc/CEnginePrimitiveGroupManager_RenderPrimitiveToShadowBuffer_00bc6210_test.cpp'
+        PassPattern = '00bc6210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc6270'
+        Module = 'CEnginePrimitiveGroupManager'
+        Source = '00/bc/CEnginePrimitiveGroupManager_PreloadPrimitive_00bc6270.cpp'
+        TestSource = '00/bc/CEnginePrimitiveGroupManager_PreloadPrimitive_00bc6270_test.cpp'
+        PassPattern = '00bc6270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc7a80'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/bc/CEngineSubPrimitiveText_scalardeletingdestructor_00bc7a80.cpp'
+        TestSource = '00/bc/CEngineSubPrimitiveText_scalardeletingdestructor_00bc7a80_test.cpp'
+        PassPattern = '00bc7a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdfb50'
+        Module = 'CLocalDetailPrimitiveMesh'
+        Source = '00/bd/CLocalDetailPrimitiveMesh_CLocalDetailPrimitiveMesh_00bdfb50.cpp'
+        TestSource = '00/bd/CLocalDetailPrimitiveMesh_CLocalDetailPrimitiveMesh_00bdfb50_test.cpp'
+        PassPattern = '00bdfb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be0420'
+        Module = 'CEngineStaticMapFileBlockManager'
+        Source = '00/be/CEngineStaticMapFileBlockManager_SetBlockToHighPriority_00be0420.cpp'
+        TestSource = '00/be/CEngineStaticMapFileBlockManager_SetBlockToHighPriority_00be0420_test.cpp'
+        PassPattern = '00be0420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be2190'
+        Module = 'CEnginePrimitive2DViewportManager'
+        Source = '00/be/CEnginePrimitive2DViewportManager_RenderSubPrimitive_00be2190.cpp'
+        TestSource = '00/be/CEnginePrimitive2DViewportManager_RenderSubPrimitive_00be2190_test.cpp'
+        PassPattern = '00be2190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf3180'
+        Module = 'CEngineTreeFilerBase'
+        Source = '00/bf/CEngineTreeFilerBase_Initialise_00bf3180.cpp'
+        TestSource = '00/bf/CEngineTreeFilerBase_Initialise_00bf3180_test.cpp'
+        PassPattern = '00bf3180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf3250'
+        Module = 'CEngineDynamic3DResource<CVertexBufferWin32,3>'
+        Source = '00/bf/CEngineDynamic3DResourceCVertexBufferWin323_CEngineDynamic3DResource_00bf3250.cpp'
+        TestSource = '00/bf/CEngineDynamic3DResourceCVertexBufferWin323_CEngineDynamic3DResource_00bf3250_test.cpp'
+        PassPattern = '00bf3250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfaa80'
+        Module = 'CLocalDetailPrimitiveRepeatedMesh'
+        Source = '00/bf/CLocalDetailPrimitiveRepeatedMesh_CLocalDetailPrimitiveRepeatedMesh_00bfaa80.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveRepeatedMesh_CLocalDetailPrimitiveRepeatedMesh_00bfaa80_test.cpp'
+        PassPattern = '00bfaa80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

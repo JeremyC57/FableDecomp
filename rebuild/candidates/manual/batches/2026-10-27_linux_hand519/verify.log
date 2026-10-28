@@ -1,0 +1,147 @@
+addr       parity           behav  name
+00a787d0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a787d0   RELOCATION_MATCH PASS   AddToIndexTable
+00aa0f60   WARN SHARED_HEADER_AVAILABLE CSimpleMemoryPool
+00aa0f60   RELOCATION_MATCH PASS   C3DAnimationManager
+00aa8400   WARN RELOC_NAME: ??$__copy@PAV?$CCountedPointer@VCChunkedFileChunk@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCChunkedFileChunk@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00aa8f40 labelled '_global::Move_CountedPointer_00aa8f40'
+00aa8400   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCChunkedFileChunk@@@@@std@@YIXPAV?$CCountedPointer@VCChunkedFileChunk@@@@0ABU__false_type@0@@Z -> 00aa9140 labelled '_global::DestroyRange_CountedPointer_00aa9140'
+00aa8400   RELOCATION_MATCH PASS   RemoveAllSubChunks
+00abbd70   RELOCATION_MATCH PASS   GetChunkInfo
+00af0880   MATCH            PASS   CEnginePrimitive2DParticleGroup
+00afead0   MATCH            PASS   CEnginePrimitiveParticleMeshGroup
+00b25d20   WARN SHARED_HEADER_AVAILABLE CIEngine
+00b25d20   RELOCATION_MATCH PASS   PeekGlobalDiffuseColour
+00b25d50   WARN SHARED_HEADER_AVAILABLE CIEngine
+00b25d50   RELOCATION_MATCH PASS   PeekGlobalAmbientColour
+00b2c400   WARN SHARED_HEADER_AVAILABLE CResource
+00b2c400   WARN SHARED_HEADER_AVAILABLE CGraphicFrame
+00b2c400   RELOCATION_MATCH PASS   CCompositeSurfaceCache
+00b2f9f0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00b2f9f0   RELOCATION_MATCH PASS   SetAsOccluded
+00b2fa90   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00b2fa90   RELOCATION_MATCH PASS   CEnginePrimitiveOcclusionInfo
+00b3a0d0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00b3a0d0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveAttachmentManager
+00b3a0d0   RELOCATION_MATCH PASS   UpdateSceneForPreload
+00b80f90   RELOCATION_MATCH PASS   GetGravityVector
+00b812c0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00b812c0   MATCH            PASS   FindSimulation
+00b81e00   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00b81e00   RELOCATION_MATCH PASS   CEnginePrimitiveSimulationInfo
+00b84120   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b84120   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00b84990   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b84990   RELOCATION_MATCH PASS   SortList
+00b8faa0   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b8faa0   RELOCATION_MATCH PASS   CEnginePrimitiveTypeInfo
+00b8fb60   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b8fb60   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b8fb60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00b98b40   RELOCATION_MATCH PASS   CEngineSubPrimitiveMeshBase
+00b9d1e0   MATCH            PASS   GetWorldPosition
+00baca20   RELOCATION_MATCH PASS   CEngineScenePrimitiveStatsEnumerator
+00bb1ef0   WARN SHARED_HEADER_AVAILABLE CVertexShader
+00bb1ef0   RELOCATION_MATCH PASS   FrameStart
+00bb6520   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00bb6520   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bc25b0   MATCH            PASS   GetWorldPosition
+00bc5620   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00bc5620   MATCH            PASS   SetAnimation
+00bc5660   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00bc5660   MATCH            PASS   SetPosition
+00bc6210   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00bc6210   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00bc6210   RELOCATION_MATCH PASS   RenderPrimitiveToShadowBuffer
+00bc6270   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00bc6270   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00bc6270   RELOCATION_MATCH PASS   PreloadPrimitive
+00bc7a80   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bc7a80   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00bc7a80   WARN RELOC_NAME: ??3CEngineSubPrimitiveBase@@SIXPAX@Z -> 00beb550 labelled '_global::Nop_ret0_00beb550'
+00bc7a80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00bdfb50   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bdfb50   RELOCATION_MATCH PASS   CLocalDetailPrimitiveMesh
+00be0420   RELOCATION_MATCH PASS   SetBlockToHighPriority
+00be2190   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00be2190   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive2DViewportManager
+00be2190   RELOCATION_MATCH PASS   RenderSubPrimitive
+00bf3180   RELOCATION_MATCH PASS   Initialise
+00bf3250   RELOCATION_MATCH PASS   CEngineDynamic3DResource
+00bfaa80   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bfaa80   RELOCATION_MATCH PASS   CLocalDetailPrimitiveRepeatedMesh
+
+WINS: 36
+  00a787d0 RELOCATION_MATCH CNavNavigableLeafNode::?AddToIndexTable@CNavNavigableLeafNode@@MBEXAAJAAV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@@Z
+  00aa0f60 RELOCATION_MATCH C3DAnimationManager::??0C3DAnimationManager@@QAE@XZ
+  00aa8400 RELOCATION_MATCH CChunkedFileSuperChunk::?RemoveAllSubChunks@CChunkedFileSuperChunk@@QAEXXZ
+  00abbd70 RELOCATION_MATCH C3DMeshFileVerticesChunk::?GetChunkInfo@C3DMeshFileVerticesChunk@@UBE?BVCCharString@@XZ
+  00af0880 MATCH CEnginePrimitive2DParticleGroup::??0CEnginePrimitive2DParticleGroup@@QAE@W4EEngine2DLayer@@ABVCMatrix3x4@@ABVC2DVector@@_N3@Z
+  00afead0 MATCH CEnginePrimitiveParticleMeshGroup::??0CEnginePrimitiveParticleMeshGroup@@QAE@KABVCMatrix3x4@@W4EEnginePrimitiveBlendMode@@W4EEnginePrimitiveBlendOp@@@Z
+  00b25d20 RELOCATION_MATCH CEngine::?PeekGlobalDiffuseColour@CEngine@@UBE?BVCRGBFloatColour@@XZ
+  00b25d50 RELOCATION_MATCH CEngine::?PeekGlobalAmbientColour@CEngine@@UBE?BVCRGBFloatColour@@XZ
+  00b2c400 RELOCATION_MATCH CCompositeSurfaceCache::??0CCompositeSurfaceCache@@QAE@AAVCEngineSurfaceCompositionManager@@@Z
+  00b2f9f0 RELOCATION_MATCH CEnginePrimitiveOcclusionManager::?SetAsOccluded@CEnginePrimitiveOcclusionManager@@QBEXAAVCEnginePrimitiveOcclusionInfo@@@Z
+  00b2fa90 RELOCATION_MATCH CEnginePrimitiveOcclusionInfo::??0CEnginePrimitiveOcclusionInfo@@QAE@XZ
+  00b3a0d0 RELOCATION_MATCH CEnginePrimitiveAttachmentManager::?UpdateSceneForPreload@CEnginePrimitiveAttachmentManager@@QAEXXZ
+  00b80f90 RELOCATION_MATCH CEngineClothSimulationMeshBase::?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ
+  00b812c0 MATCH CEnginePrimitiveSimulationInfo::?FindSimulation@CEnginePrimitiveSimulationInfo@@QAEPAVCEngineSimulationBase@@K@Z
+  00b81e00 RELOCATION_MATCH CEnginePrimitiveSimulationInfo::??0CEnginePrimitiveSimulationInfo@@QAE@XZ
+  00b84120 RELOCATION_MATCH CEngineClothSimulationMeshBase::??_GCEngineClothSimulationMeshBase@@UAEPAXI@Z
+  00b84990 RELOCATION_MATCH CEngineSubPrimitiveRenderer::?SortList@CEngineSubPrimitiveRenderer@@AAEXAAV?$CArray@VCSortElement@CEngineSubPrimitiveRenderer@@@@_N@Z
+  00b8faa0 RELOCATION_MATCH CEnginePrimitiveTypeInfo::??0CEnginePrimitiveTypeInfo@@QAE@XZ
+  00b8fb60 RELOCATION_MATCH CEnginePrimitiveTypeInfo::??_GCEnginePrimitiveTypeInfo@@UAEPAXI@Z
+  00b98b40 RELOCATION_MATCH CEngineSubPrimitiveMeshBase::??0CEngineSubPrimitiveMeshBase@@QAE@PAVCEngineInternalPrimitiveBase@@PAVC3DPrimitive2@@W4ERenderMode@@_N@Z
+  00b9d1e0 MATCH CEngineInternalPrimitiveStaticMesh::?GetWorldPosition@CEngineInternalPrimitiveStaticMesh@@UAE_NAAVC3DVector@@@Z
+  00baca20 RELOCATION_MATCH CEngineScenePrimitiveStatsEnumerator::??0CEngineScenePrimitiveStatsEnumerator@@QAE@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z
+  00bb1ef0 RELOCATION_MATCH CEngineClothRenderer::?FrameStart@CEngineClothRenderer@@UAEXXZ
+  00bb6520 RELOCATION_MATCH CEngineParticleSimulationRenderData::??_GCEngineParticleSimulationRenderData@@UAEPAXI@Z
+  00bc25b0 MATCH CEngineInternalPrimitiveParticleMesh::?GetWorldPosition@CEngineInternalPrimitiveParticleMesh@@UAE_NAAVC3DVector@@@Z
+  00bc5620 MATCH CEngineInternalPrimitiveChanger::?SetAnimation@CEngineInternalPrimitiveChanger@@UAEXABVCEnginePrimitiveAnimation@@@Z
+  00bc5660 MATCH CEngineInternalPrimitiveChanger::?SetPosition@CEngineInternalPrimitiveChanger@@UAEXABVCEnginePrimitivePosition@@@Z
+  00bc6210 RELOCATION_MATCH CEnginePrimitiveGroupManager::?RenderPrimitiveToShadowBuffer@CEnginePrimitiveGroupManager@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z
+  00bc6270 RELOCATION_MATCH CEnginePrimitiveGroupManager::?PreloadPrimitive@CEnginePrimitiveGroupManager@@UAE_NAAVCEngineInternalPrimitiveBase@@ABVC3DVector@@K@Z
+  00bc7a80 RELOCATION_MATCH CEngineSubPrimitiveText::??_GCEngineSubPrimitiveText@@UAEPAXI@Z
+  00bdfb50 RELOCATION_MATCH CLocalDetailPrimitiveMesh::??0CLocalDetailPrimitiveMesh@@QAE@PBVCLocalDetailObjectCollectionType@@PAVCLocalDetailCacheMap@@@Z
+  00be0420 RELOCATION_MATCH CEngineStaticMapFileBlockManager::?SetBlockToHighPriority@CEngineStaticMapFileBlockManager@@QAEXJ@Z
+  00be2190 RELOCATION_MATCH CEnginePrimitive2DViewportManager::?RenderSubPrimitive@CEnginePrimitive2DViewportManager@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
+  00bf3180 RELOCATION_MATCH CEngineTreeFilerBase::?Initialise@CEngineTreeFilerBase@@QAEXJ@Z
+  00bf3250 RELOCATION_MATCH CEngineDynamic3DResource<CVertexBufferWin32,3>::??0?$CEngineDynamic3DResource@VCVertexBufferWin32@@$02@@QAE@XZ
+  00bfaa80 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::??0CLocalDetailPrimitiveRepeatedMesh@@QAE@PBVCLocalDetailObjectCollectionType@@PAVCLocalDetailCacheMap@@@Z
+
+LANDED 36 wins into src/compiled + tests + catalog + oracle
+  CNavNavigableLeafNode_AddToIndexTable_00a787d0
+  C3DAnimationManager_C3DAnimationManager_00aa0f60
+  CChunkedFileSuperChunk_RemoveAllSubChunks_00aa8400
+  C3DMeshFileVerticesChunk_GetChunkInfo_00abbd70
+  CEnginePrimitive2DParticleGroup_CEnginePrimitive2DParticleGroup_00af0880
+  CEnginePrimitiveParticleMeshGroup_CEnginePrimitiveParticleMeshGroup_00afead0
+  CEngine_PeekGlobalDiffuseColour_00b25d20
+  CEngine_PeekGlobalAmbientColour_00b25d50
+  CCompositeSurfaceCache_CCompositeSurfaceCache_00b2c400
+  CEnginePrimitiveOcclusionManager_SetAsOccluded_00b2f9f0
+  CEnginePrimitiveOcclusionInfo_CEnginePrimitiveOcclusionInfo_00b2fa90
+  CEnginePrimitiveAttachmentManager_UpdateSceneForPreload_00b3a0d0
+  CEngineClothSimulationMeshBase_GetGravityVector_00b80f90
+  CEnginePrimitiveSimulationInfo_FindSimulation_00b812c0
+  CEnginePrimitiveSimulationInfo_CEnginePrimitiveSimulationInfo_00b81e00
+  CEngineClothSimulationMeshBase_scalardeletingdestructor_00b84120
+  CEngineSubPrimitiveRenderer_SortList_00b84990
+  CEnginePrimitiveTypeInfo_CEnginePrimitiveTypeInfo_00b8faa0
+  CEnginePrimitiveTypeInfo_scalardeletingdestructor_00b8fb60
+  CEngineSubPrimitiveMeshBase_CEngineSubPrimitiveMeshBase_00b98b40
+  CEngineInternalPrimitiveStaticMesh_GetWorldPosition_00b9d1e0
+  CEngineScenePrimitiveStatsEnumerator_CEngineScenePrimitiveStatsEnumerator_00baca20
+  CEngineClothRenderer_FrameStart_00bb1ef0
+  CEngineParticleSimulationRenderData_scalardeletingdestructor_00bb6520
+  CEngineInternalPrimitiveParticleMesh_GetWorldPosition_00bc25b0
+  CEngineInternalPrimitiveChanger_SetAnimation_00bc5620
+  CEngineInternalPrimitiveChanger_SetPosition_00bc5660
+  CEnginePrimitiveGroupManager_RenderPrimitiveToShadowBuffer_00bc6210
+  CEnginePrimitiveGroupManager_PreloadPrimitive_00bc6270
+  CEngineSubPrimitiveText_scalardeletingdestructor_00bc7a80
+  CLocalDetailPrimitiveMesh_CLocalDetailPrimitiveMesh_00bdfb50
+  CEngineStaticMapFileBlockManager_SetBlockToHighPriority_00be0420
+  CEnginePrimitive2DViewportManager_RenderSubPrimitive_00be2190
+  CEngineTreeFilerBase_Initialise_00bf3180
+  CEngineDynamic3DResourceCVertexBufferWin323_CEngineDynamic3DResource_00bf3250
+  CLocalDetailPrimitiveRepeatedMesh_CLocalDetailPrimitiveRepeatedMesh_00bfaa80

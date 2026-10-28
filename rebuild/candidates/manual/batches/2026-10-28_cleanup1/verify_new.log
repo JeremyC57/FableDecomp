@@ -1,0 +1,52 @@
+addr       parity           behav  name
+0062cf90   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0062cf90   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+0062cf90   WARN SHARED_HEADER_AVAILABLE CTCBerserk
+0062cf90   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0062cf90   WARN SHARED_HEADER_AVAILABLE CGameEvent
+0062cf90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0062cf90   WARN RELOC_NAME: ?IsBlocking@CTCCombat@@QBE_NXZ -> 007331e0 labelled '_global::GetMember_byte0x63_007331e0'
+0062cf90   WARN RELOC_NAME: ?CanBerserkBlock@CTCBerserk@@QBE_NXZ -> 0078bef0 labelled 'CTCShotDefinitionBase::CanBeHitByMeleeStrike'
+0062cf90   RELOCATION_MATCH PASS   CWorld::EACreatureBlock
+0093cfe0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0093cfe0   RELOCATION_MATCH PASS   CAIStateGroup_ButterflyWander::Initialise
+00959ee0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+00959ee0   RELOCATION_MATCH PASS   CAIStateGroup_HoverKeepInArea::Initialise
+0095a270   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0095a270   RELOCATION_MATCH PASS   CAIStateGroup_HoverAttackArea::Initialise
+009112a0   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardReactToBodyFoundMessage::FindBodyFoundEvent
+0092edc0   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToPlayerInteraction::FindPlayerInteractionEvent
+0094bfc0   RELOCATION_MATCH PASS   CAIStateGroup_SellToBuyer::GetBuyersOrder
+00958770   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToCrime::GetSomeoneElseGettingHelpMessage
+00917050   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00917050   RELOCATION_MATCH PASS   CAIStateGroup_ThrowLogsOnFire::GetPNearestFreeLogPile
+009170b0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+009170b0   RELOCATION_MATCH PASS   CAIStateGroup_ThrowLogsOnFire::GetPNearestBonfire
+009652c0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+009652c0   RELOCATION_MATCH PASS   CAIStateGroup_RecoverStealableItem::FindPTargetPoint
+
+WINS: 11
+  0062cf90 RELOCATION_MATCH cleanup1::?EACreatureBlock@CWorld@@QAEXPBVCGameEvent@@@Z
+  0093cfe0 RELOCATION_MATCH cleanup1::?Initialise@CAIStateGroup_ButterflyWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  00959ee0 RELOCATION_MATCH cleanup1::?Initialise@CAIStateGroup_HoverKeepInArea@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  0095a270 RELOCATION_MATCH cleanup1::?Initialise@CAIStateGroup_HoverAttackArea@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  009112a0 RELOCATION_MATCH cleanup1::?FindBodyFoundEvent@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@AAEPBVCMessageEvent@@XZ
+  0092edc0 RELOCATION_MATCH cleanup1::?FindPlayerInteractionEvent@CAIStateGroup_MinionReactToPlayerInteraction@@ABEPBVCMessageEvent@@XZ
+  0094bfc0 RELOCATION_MATCH cleanup1::?GetBuyersOrder@CAIStateGroup_SellToBuyer@@AAEPBVCMessageEvent@@XZ
+  00958770 RELOCATION_MATCH cleanup1::?GetSomeoneElseGettingHelpMessage@CAIStateGroup_MinionReactToCrime@@AAEPBVCMessageEvent@@J@Z
+  00917050 RELOCATION_MATCH cleanup1::?GetPNearestFreeLogPile@CAIStateGroup_ThrowLogsOnFire@@ABEPAVCThingObject@@XZ
+  009170b0 RELOCATION_MATCH cleanup1::?GetPNearestBonfire@CAIStateGroup_ThrowLogsOnFire@@ABEPAVCThingObject@@XZ
+  009652c0 RELOCATION_MATCH cleanup1::?FindPTargetPoint@CAIStateGroup_RecoverStealableItem@@ABEPBVCThing@@XZ
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  cleanup1_EACreatureBlock_0062cf90
+  cleanup1_Initialise_0093cfe0
+  cleanup1_Initialise_00959ee0
+  cleanup1_Initialise_0095a270
+  cleanup1_FindBodyFoundEvent_009112a0
+  cleanup1_FindPlayerInteractionEvent_0092edc0
+  cleanup1_GetBuyersOrder_0094bfc0
+  cleanup1_GetSomeoneElseGettingHelpMessage_00958770
+  cleanup1_GetPNearestFreeLogPile_00917050
+  cleanup1_GetPNearestBonfire_009170b0
+  cleanup1_FindPTargetPoint_009652c0

@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+00b2f760	DIFFER	101v95	-	parked: C3DVector(1,0,0) temp reload (VC reloads Y/Z too)
+00b84190	DIFFER	36v75	-	parked: base dtor not inlined into derived ??_G
+00bba3e0	DIFFER	87v87	-	parked: x87 scheduling only
+00bc9b30	DIFFER	66v66	-	parked: key/index register swap

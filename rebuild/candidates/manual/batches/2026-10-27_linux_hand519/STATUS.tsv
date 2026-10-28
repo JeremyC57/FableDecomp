@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a787d0	RELOCATION_MATCH	46v46	PASS	insert(make_pair(this,index)); ++index -- landed 0x00A789F0 shape; PDB class keys (class map/allocator)
+00aa0f60	RELOCATION_MATCH	62v62	PASS	CBaseClassNonCopyable + MeshBank(0), STLport vector, two CSimpleMemoryPool(0,0x1000)
+00aa8400	RELOCATION_MATCH	89v89	PASS	/Gr; unparent loop + STLport clear() = erase(begin,end) (__copy + __destroy_aux, shared tag byte)
+00abbd70	RELOCATION_MATCH	92v92	PASS	/GS; sprintf("Number of vertices: %u", size()) + CCharString(buffer)
+00af0880	MATCH	79v79	PASS	real identity CEnginePrimitive2DParticleGroup ctor (label wrong); base CEnginePrimitive(0x20)
+00afead0	MATCH	64v64	PASS	real identity CEnginePrimitiveParticleMeshGroup ctor (label wrong); base CEnginePrimitive(0x1C)
+00b25d20	RELOCATION_MATCH	41v41	PASS	g_pEngineLightingManager->PeekGlobalDiffuseColour() = ThemeChannels[0].DiffuseColour
+00b25d50	RELOCATION_MATCH	46v46	PASS	g_pEngineLightingManager->PeekGlobalAmbientColour() = ThemeChannels[0].AmbientColour
+00b2c400	RELOCATION_MATCH	91v91	PASS	CResource base, default morphs/frame/CManagedTexture members, BankFileIndex/LastUsedFrame 0
+00b2f760	DIFFER	101v95	-	parked: C3DVector(1,0,0) temp reload (VC reloads Y/Z too)
+00b2f9f0	RELOCATION_MATCH	67v67	PASS	InvisibleFrames=delay+1; inline ClearHandles (STLport erase); TestFrame stamp
+00b2fa90	RELOCATION_MATCH	48v48	PASS	TestFrame(g_pOcclusionManager->CurrentFrame) init list; body stores
+00b3a0d0	RELOCATION_MATCH	63v63	PASS	list walk; inline handle.GetReferenceCount() > 1 (ternary -> eax -> ecx), UpdateOutputPrimitive(0), Enable bit
+00b80f90	RELOCATION_MATCH	69v69	PASS	named factor local; same-TU noinline ConvertVectorToLocal body
+00b812c0	MATCH	33v33	PASS	index < size() ? Simulations[index].Data : 0
+00b81e00	RELOCATION_MATCH	27v27	PASS	CIVCountedPointeeBase(1) + real _Vector_base(alloc) ctor
+00b84120	RELOCATION_MATCH	75v75	PASS	??_G of user dtor { ClearParticleSims(); } + noinline __destroy_aux; chains to ~CBaseClassNonCopyable
+00b84190	DIFFER	36v75	-	parked: base dtor not inlined into derived ??_G
+00b84990	RELOCATION_MATCH	82v82	PASS	/Gr; list.empty() (begin read first), stable_sort inline wrapper, sort, RadixSort
+00b8faa0	RELOCATION_MATCH	48v48	PASS	MI CEngineComponent + CBaseClassNonCopyable; loop zero of 47 managers (memset misorders)
+00b8fb60	RELOCATION_MATCH	48v48	PASS	implicit ??_G emitted through the real ctor in the TU
+00b98b40	RELOCATION_MATCH	55v55	PASS	real identity CEngineSubPrimitiveMeshBase ctor (label CMemoryDataInputStream wrong)
+00b9d1e0	MATCH	63v63	PASS	virtual local model; position = ObjectTransform.GetTranslation()
+00baca20	RELOCATION_MATCH	68v68	PASS	init list; C2DBoxF user copy ctor; std::map forward-declared
+00bb1ef0	RELOCATION_MATCH	90v90	PASS	technique == 2 picks colour-buffer arrays; GetAsCArray size() > 0 form
+00bb6520	RELOCATION_MATCH	50v50	PASS	??_G via ??_I vector dtor iterator; ctor from landed 0x00BB63A0 emits it
+00bba3e0	DIFFER	87v87	-	parked: x87 scheduling only
+00bc25b0	MATCH	54v54	PASS	as 0x00B9D1E0 (ObjectTransform +0x48)
+00bc5620	MATCH	64v64	PASS	count local, reference handle, IsNull()/GetData() inline; slot 23
+00bc5660	MATCH	64v64	PASS	as 0x00BC5620; slot 24
+00bc6210	RELOCATION_MATCH	84v84	PASS	signed max over children via g_pEnginePrimitiveTypeInfo managers
+00bc6270	RELOCATION_MATCH	95v95	PASS	bool result declared first (push ecx frame byte); |= over children
+00bc7a80	RELOCATION_MATCH	38v38	PASS	implicit ??_G; static __fastcall class operator delete 0x00BEB550
+00bc9b30	DIFFER	66v66	-	parked: key/index register swap
+00bdfb50	RELOCATION_MATCH	69v69	PASS	real identity CLocalDetailPrimitiveMesh ctor (label said RepeatedMesh)
+00be0420	RELOCATION_MATCH	54v54	PASS	Blocks.find(index)->second; no end test; ChangeLoadingPriority(global 0x0139A728)
+00be2190	RELOCATION_MATCH	89v89	PASS	AlphaMaskInfo copy, Render(), inline C2DAlphaMaskInfo::Reset (dead C4DVector temp)
+00bf3180	RELOCATION_MATCH	76v76	PASS	delete old tree, KeySize, inline AllocNode branch root
+00bf3250	RELOCATION_MATCH	64v64	PASS	real identity CEngineDynamic3DResource<CVertexBufferWin32,3> ctor (label wrong)
+00bfaa80	RELOCATION_MATCH	93v93	PASS	base ctor + 8 zero stores in retail order

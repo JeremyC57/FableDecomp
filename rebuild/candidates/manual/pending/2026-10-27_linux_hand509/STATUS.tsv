@@ -1,3 +1,2 @@
 address	status	bytes	test	note
 004bc1a0	DIFFER	397v406	-	NGraphicAppearance::DrawRHSet; retail gives 3 CEnginePrimitiveLine temps own 0x40 slots (sub esp,0D0h), ours shares one (sub esp,58h)
-0062cf90	HELD	-	PASS	RELOCATION_MATCH on the lane; held from landing: binds ??$IS_THING_ALIVE@PAVCThingPlayerCreature@@ to 0x0043DBD0 while landed 0x0064A568 binds it to the identical twin 0x0043DBF0 (both unproven)

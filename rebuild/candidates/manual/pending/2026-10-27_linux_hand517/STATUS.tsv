@@ -7,11 +7,4 @@ address	status	bytes	test	note
 00994b10	DIFFER	46v45	PASS	CMemoryDataOutputStream::SetPosition; int3 after noreturn throw (46-byte span)
 009ace90	DIFFER	68v68	PASS	CDefClassBase::UnloadResource; block placement only
 009d5a30	DIFFER	92v89	PASS	CLoadingMemoryFailureHandler::UnregisterBank (label correction from CBankFile::PopLoadErrorQueue); _M_finish kept in edi
-009112a0	RELOCATION_MATCH	77v77	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- FindBodyFoundEvent; Bind3 + same-TU noinline FindMostRecentMessage stand-in
-00917050	RELOCATION_MATCH	83v83	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- GetPNearestFreeLogPile (label correction from GetPNearestBonfire); GetPBestThing stand-in
-009170b0	RELOCATION_MATCH	83v83	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- GetPNearestBonfire; GetPBestThing stand-in
-0092edc0	RELOCATION_MATCH	69v69	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- FindPlayerInteractionEvent; Bind2 + named filter/manager locals
-0094bfc0	RELOCATION_MATCH	69v69	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- SellToBuyer::GetBuyersOrder (label correction from FindPlayerInteractionEvent)
-00958770	RELOCATION_MATCH	95v95	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- GetSomeoneElseGettingHelpMessage; Bind4 inline chain via MessageEventManagerOf
-009652c0	RELOCATION_MATCH	83v83	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- RecoverStealableItem::FindPTargetPoint; stand-in must read filter.Type
 0099f3d0	RELOCATION_MATCH	42v42	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- CCharString::Insert; same-TU CBasicString<char>::Insert stand-in (review at landing)
